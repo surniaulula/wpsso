@@ -568,22 +568,23 @@ msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: lib/com/form.php:239 lib/config-gettext-extract.php:54
+#: lib/com/form.php:241 lib/config-gettext-extract.php:54
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/com/form.php:244 lib/config-gettext-extract.php:57
+#: lib/com/form.php:246 lib/config-gettext-extract.php:57
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:249 lib/config-gettext-extract.php:55
+#: lib/com/form.php:251 lib/config-gettext-extract.php:55
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:255 lib/com/form.php:356 lib/config-gettext-extract.php:15
+#: lib/com/form.php:257 lib/com/form.php:361 lib/com/form.php:498
+#: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "(default)"
 msgstr ""

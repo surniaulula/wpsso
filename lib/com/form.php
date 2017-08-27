@@ -171,6 +171,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = '';
 			$select_id = empty( $id ) ? 'select_'.$name : 'select_'.$id;
+			$in_options = $this->in_options( $name );	// optimize and call only once
+			$in_defaults = $this->in_defaults( $name );	// optimize and call only once
 
 			if ( is_string( $on_change ) ) {
 				switch ( $on_change ) {
@@ -192,9 +194,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						// if we have an option selected, unhide those rows
 						if ( $selected !== false ) {
 							if ( $selected === true ) {
-								if ( $this->in_options( $name ) ) {
+								if ( $in_options ) {
 									$unhide = $this->options[$name];
-								} elseif ( $this->in_defaults( $name ) ) {
+								} elseif ( $in_defaults ) {
 									$unhide = $this->defaults[$name];
 								} else {
 									$unhide = false;
@@ -251,15 +253,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						break;
 				}
 
-				if ( $this->in_defaults( $name ) && $val === $this->defaults[$name] ) {
+				if ( $in_defaults && $val === $this->defaults[$name] ) {
 					$desc .= ' '._x( '(default)', 'option value', $this->text_domain );
 				}
 
 				if ( ! is_bool( $selected ) ) {
 					$is_selected_html = selected( $selected, $val, false );
-				} elseif ( $this->in_options( $name ) ) {
+				} elseif ( $in_options ) {
 					$is_selected_html = selected( $this->options[$name], $val, false );
-				} elseif ( $this->in_defaults( $name ) ) {
+				} elseif ( $in_defaults ) {
 					$is_selected_html = selected( $this->defaults[$name], $val, false );
 				} else {
 					$is_selected_html = '';
@@ -267,7 +269,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				// for disabled selects, only include the first and/or selected option
 				if ( ! $disabled || $option_count === 1 || $is_selected_html ) {
-					$html .= '<option value="'.esc_attr( $val ).'"'.$is_selected_html.'>'.$desc.'</option>'."\n";
+					$html .= '<option value="'.esc_attr( $val ).'"'.
+						$is_selected_html.'>'.$desc.'</option>'."\n";
 				}
 			}
 
@@ -336,6 +339,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			natsort( $size_names );
 
 			$html = '<select name="'.esc_attr( $this->options_name.'['.$name.']' ).'">';
+			$in_options = $this->in_options( $name );	// optimize and call only once
+			$in_defaults = $this->in_defaults( $name );	// optimize and call only once
 
 			foreach ( $size_names as $size_name ) {
 				if ( ! is_string( $size_name ) ) {
@@ -345,14 +350,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$size = SucomUtil::get_size_info( $size_name );
 				$html .= '<option value="'.esc_attr( $size_name ).'" ';
 
-				if ( $this->in_options( $name ) ) {
+				if ( $in_options ) {
 					$html .= selected( $this->options[$name], $size_name, false );
 				}
 
 				$html .= '>'.esc_html( $size_name.' [ '.$size['width'].'x'.$size['height'].
 					( $size['crop'] ? ' cropped' : '' ).' ]' );
 
-				if ( $this->in_defaults( $name ) && $size_name == $this->defaults[$name] ) {
+				if ( $in_defaults && $size_name == $this->defaults[$name] ) {
 					$html .= ' '._x( '(default)', 'option value', $this->text_domain );
 				}
 
@@ -413,7 +418,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
 				$next_num = $key_num + 1;
-				$wrap_id = empty( $id ) ? $name.'_'.$key_num : $id.'_'.$key_num;
+				$wrap_id = $id.'_'.$key_num;
+				$wrap_id_next = $id.'_'.$next_num;
 				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
 
 				$html .= '<div class="wrap_multi" id="wrap_'.esc_attr( $wrap_id ).'"'.
@@ -422,10 +428,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				foreach ( $mixed as $name => $atts ) {
 
 					$opt_key = $name.'_'.$key_num;
+					$in_options = $this->in_options( $opt_key );	// optimize and call only once
+					$in_defaults = $this->in_defaults( $opt_key );	// optimize and call only once
 					$input_class = empty( $atts['input_class'] ) ? 'multi' : 'multi '.$atts['input_class'];
 					$input_id = empty( $atts['input_id'] ) ? $name.'_'.$key_num : $atts['input_id'].'_'.$key_num;
-					$input_id_next = empty( $atts['input_id'] ) ? $name.'_'.$next_num : $atts['input_id'].'_'.$next_num;
-					$input_value = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
+					$input_options = empty( $atts['input_options'] ) || ! is_array( $atts['input_options'] ) ? array() : $atts['input_options'];
+					$input_selected = empty( $atts['input_selected'] ) ? false : $atts['input_selected'];
+					$input_value = $in_options ? $this->options[$opt_key] : '';
 	
 					if ( $disabled && $key_num >= $show_first && empty( $input_value ) ) {
 						continue;
@@ -436,8 +445,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					}
 
 					if ( isset( $atts['input_type'] ) ) {
+
 						switch ( $atts['input_type'] ) {
+
 							case 'text':
+
 								if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
 									$html .= $this->get_no_input( $opt_key, $input_class, $input_id );
 								} else {
@@ -446,14 +458,71 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										' class="'.esc_attr( $input_class ).'"'.
 										' id="text_'.esc_attr( $input_id ).'"'.
 										' value="'.esc_attr( $input_value ).'"'.
-										' onFocus="jQuery(\'div#wrap_'.esc_attr( $wrap_id ).'\').show();" />'."\n";
+										' onFocus="jQuery(\'div#wrap_'.esc_attr( $wrap_id_next ).'\').show();" />'."\n";
 								}
-							break;
+
+								$one_more = empty( $input_value ) ? false : true;
+
+								break;
+
+							case 'select':
+
+								if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
+									$html .= $this->get_no_select( $opt_key, $input_options, $input_class, $input_id );
+								} else {
+									$is_assoc = SucomUtil::is_assoc( $input_options );
+
+									$html .= '<select'.
+										' name="'.esc_attr( $this->options_name.'['.$name.']' ).'"'.
+										' class="'.esc_attr( $input_class ).'"'.
+										' id="select_'.esc_attr( $input_id ).'"'.
+										' onFocus="jQuery(\'div#wrap_'.esc_attr( $wrap_id_next ).'\').show();">'."\n";
+
+									$option_count = 0;
+
+									foreach ( $input_options as $val => $desc ) {
+
+										$option_count++; 
+										
+										// if the array is NOT associative (so regular numered array),
+										// then the description is used as the saved value as well
+										if ( $is_assoc === false ) {
+											$val = $desc;
+										}
+
+										if ( $this->text_domain ) {
+											$desc = _x( $desc, 'option value', $this->text_domain );
+										}
+
+										if ( $in_defaults && $val === $this->defaults[$opt_key] ) {
+											$desc .= ' '._x( '(default)', 'option value', $this->text_domain );
+										}
+
+										if ( ! is_bool( $input_selected ) ) {
+											$is_selected_html = selected( $input_selected, $val, false );
+										} elseif ( $in_options ) {
+											$is_selected_html = selected( $this->options[$opt_key], $val, false );
+										} elseif ( $in_defaults ) {
+											$is_selected_html = selected( $this->defaults[$opt_key], $val, false );
+										} else {
+											$is_selected_html = '';
+										}
+
+										if ( ! $disabled || $option_count === 1 || $is_selected_html ) {
+											$html .= '<option value="'.esc_attr( $val ).'"'.
+												$is_selected_html.'>'.$desc.'</option>'."\n";
+										}
+									}
+									
+									$html .= '<!-- '.$option_count.' options values in select -->'."\n";
+									$html .= '</select>'."\n";
+								}
+
+								break;
 						}
 					}
 				}
 
-				$one_more = empty( $input_value ) ? false : true;
 				$html .= '</div>';
 			}
 
