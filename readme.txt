@@ -339,12 +339,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.7-dev.3 (2017/08/26)**
+**Version 3.45.7-dev.4 (2017/08/27)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Removed target="_blank" from all linked URLs.
+	* Removed target="_blank" (open in new window or tab) from all linked URLs.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -653,9 +653,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.7-dev.3 =
+= 3.45.7-dev.4 =
 
-(2017/08/26) Added more debugging messages to the WooCommerce module (Pro version).
+(2017/08/27) Removed target="_blank" (open in new window or tab) from all linked URLs. Added more debugging messages to the WooCommerce module (Pro version). Added sanity checks of the webpage HTML before checking for duplicates.
 
 = 3.45.6 =
 
