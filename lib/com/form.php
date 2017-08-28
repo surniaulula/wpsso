@@ -403,7 +403,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_mixed_multi( $mixed, $class, $id, $start_num = 0, $max_input = 99, $show_first = 5, $disabled = false ) {
+		public function get_mixed_multi( $mixed, $class, $id, $start_num = 0, $max_input = 10, $show_first = 2, $disabled = false ) {
 
 			if ( empty( $mixed ) ) {
 				return;	// just in case
@@ -531,7 +531,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_input_multi( $name, $class = '', $id = '', $start_num = 0, $max_input = 99, $show_first = 5, $disabled = false ) {
+		public function get_input_multi( $name, $class = '', $id = '', $start_num = 0, $max_input = 90, $show_first = 5, $disabled = false ) {
 
 			if ( empty( $name ) ) {
 				return;	// just in case
