@@ -671,7 +671,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			/*
-			 * Re-number multi options (example: schema type url, recipe ingredients, recipe instructions, etc.).
+			 * Re-number multi options (example: schema type url, recipe ingredient, recipe instruction, etc.).
 			 */
 			foreach ( $this->p->cf['opt']['md_multi'] as $md_multi => $is_multi ) {
 				$md_renum = array();	// start with a fresh array

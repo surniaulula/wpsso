@@ -1083,6 +1083,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'md_multi' => array(		// read values into numeric meta data index
 					'schema_add_type_url' => true,
+					'schema_event_offer_name' => true,
+					'schema_event_offer_price' => true,
+					'schema_event_offer_currency' => true,
 					'schema_recipe_ingredient' => true,
 					'schema_recipe_instruction' => true,
 				),
