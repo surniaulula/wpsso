@@ -2148,7 +2148,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_HIDE_ALL_ERRORS'] = false;		// auto-hide all error notices
 			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;		// auto-hide all warning notices
 			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;		// output pretty / human readable json
-			$var_const['WPSSO_PRODUCT_CURRENCY'] = 'USD';		// default for 'product_currency'
 			$var_const['WPSSO_UNDEF_INT'] = -1;			// undefined width / height value
 			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 1.00;
 			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = false;	// clear cache before fetching shortlink url
