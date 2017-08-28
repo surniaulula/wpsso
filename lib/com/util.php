@@ -802,7 +802,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( $idx === false ) {	// check for default first
 				// nothing to do
-			} elseif ( $idx === true ) {	// sort by value (dashicon name)
+			} elseif ( $idx === true ) {	// sort by value
 				asort( $array );
 			} elseif ( isset( $array[$idx] ) ) {	// return a specific dashicon label
 				return $array[$idx];
@@ -817,8 +817,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $array;
 		}
 
-		public static function get_currencies( $idx = false, $add_none = false ) {
-			return self::get_array( self::$currencies, $idx, $add_none );
+		public static function get_currencies( $idx = false, $add_none = false, $format = '%2$s (%1$s)' ) {
+			static $currencies = array();
+			if ( ! isset( $currencies[$format] ) ) {
+				if ( $format === '%2$s' ) {
+					$currencies[$format] =& self::$currencies;
+				} else {
+					foreach ( self::$currencies as $key => $name ) {
+						$currencies[$format][$key] = sprintf( $format, $key, $name );
+					}
+				}
+				asort( $currencies[$format] );
+			}
+			return self::get_array( $currencies[$format], $idx, $add_none );
 		}
 
 		public static function get_currency_abbrev( $idx = false, $add_none = false ) {
@@ -828,6 +839,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				foreach ( self::$currencies as $key => $name ) {
 					$currencies[$key] = $key;
 				}
+				asort( $currencies );
 			}
 			return self::get_array( $currencies, $idx, $add_none );
 		}

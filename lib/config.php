@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.45.7-dev.5',		// plugin version
-					'opt_version' => '538',		// increment when changing default options
+					'opt_version' => '539',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
 					'desc' => 'Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.',
@@ -902,6 +902,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_topic' => 0,	// bbpress
 					'plugin_add_to_user' => 1,
 					'plugin_wpseo_social_meta' => 0,		// Read Yoast SEO Social Meta
+					'plugin_product_currency' => 'USD',		// Default Product Currency
 					'plugin_cf_img_url' => '_format_image_url',	// Image URL Custom Field
 					'plugin_cf_vid_url' => '_format_video_url',	// Video URL Custom Field
 					'plugin_cf_vid_embed' => '',			// Video Embed HTML Custom Field

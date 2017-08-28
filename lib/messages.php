@@ -479,6 +479,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								'wpsso' );
 							break;
 
+						case 'tooltip-plugin_product_currency':
+							$text = __( 'The default currency used for product related options.', 'wpsso' );
+							break;
+
 						case 'tooltip-plugin_cf_img_url':
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
