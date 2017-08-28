@@ -1082,11 +1082,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_price' => 'product_price',
 					'plugin_cf_product_size' => 'product_size',
 				),
-				'md_multi' => array(		// read values into numeric meta data index
+				'cf_md_multi' => array(		// read values into numeric meta data index
 					'schema_add_type_url' => true,
-					'schema_event_offer_name' => true,
-					'schema_event_offer_price' => true,
-					'schema_event_offer_currency' => true,
 					'schema_recipe_ingredient' => true,
 					'schema_recipe_instruction' => true,
 				),

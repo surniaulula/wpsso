@@ -673,11 +673,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/*
 			 * Re-number multi options (example: schema type url, recipe ingredient, recipe instruction, etc.).
 			 */
-			foreach ( $this->p->cf['opt']['md_multi'] as $md_multi => $is_multi ) {
+			foreach ( $this->p->cf['opt']['cf_md_multi'] as $md_multi => $is_multi ) {
 				$md_renum = array();	// start with a fresh array
 				foreach ( SucomUtil::preg_grep_keys( '/^'.$md_multi.'_[0-9]+$/', $md_opts ) as $md_idx => $md_val ) {
 					unset( $md_opts[$md_idx] );
-					if ( ! empty( $md_val ) ) {
+					if ( $md_val !== '' ) {
 						$md_renum[] = $md_val;
 					}
 				}
@@ -788,7 +788,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_og_img_column_html( $head_info, $mod ) {
-			$value = false;
+
+			$html = false;
 			$force_regen = $this->p->util->is_force_regen( $mod, 'og' );	// false by default
 
 			if ( ! empty( $head_info['og:image:id'] ) ) {
@@ -813,10 +814,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$refresh_cache = $force_regen ? '?force_regen='.time() : '';
 			$media_url = SucomUtil::get_mt_media_url( $head_info, 'og:image' ).$refresh_cache;
 
-			if ( ! empty( $media_url ) )
-				$value = '<div class="preview_img" style="background-image:url('.$media_url.');"></div>';
+			if ( ! empty( $media_url ) ) {
+				$html = '<div class="preview_img" style="background-image:url('.$media_url.');"></div>';
+			}
 
-			return $value;
+			return $html;
 		}
 
 		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
@@ -1118,11 +1120,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $meta_key.' is array of '.count( $mixed ).' values (decoding each value)' );
 					}
-					foreach ( $mixed as $value ) {
-						if ( is_array( $value ) ) {
-							$value = SucomUtil::array_implode( $value );
+					foreach ( $mixed as $val ) {
+						if ( is_array( $val ) ) {
+							$val = SucomUtil::array_implode( $val );
 						}
-						$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $value ), ENT_QUOTES, $charset ) );
+						$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $val ), ENT_QUOTES, $charset ) );
 					}
 				} else {
 					if ( $this->p->debug->enabled ) {
@@ -1131,8 +1133,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset ) );
 				}
 
-				// check if option allows for numeric increments
-				if ( empty( $this->p->cf['opt']['md_multi'][$md_idx] ) ) {
+				// check if value should be split into numeric option increments
+				if ( empty( $this->p->cf['opt']['cf_md_multi'][$md_idx] ) ) {
 					$is_multi = false;
 				} else {
 					if ( ! is_array( $mixed ) ) {
@@ -1150,8 +1152,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					// remove any old values from the options array
 					$md_opts = SucomUtil::preg_grep_keys( '/^'.$md_idx.'_[0-9]+$/', $md_opts, true );	// $invert = true
 
-					foreach ( $values as $num => $value ) {
-						$md_opts[$md_idx.'_'.$num] = $value;
+					foreach ( $values as $num => $val ) {
+						$md_opts[$md_idx.'_'.$num] = $val;
 						$md_opts[$md_idx.'_'.$num.':is'] = 'disabled';
 					}
 				} else {
