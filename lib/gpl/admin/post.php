@@ -128,7 +128,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'label' => _x( 'Product Price', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_price', 'td_class' => 'blank',
 					'content' => $form->get_no_input( 'product_price', '', '', true ).' '.	// $placeholder = true for default value
-						_x( 'in', 'option comment', 'wpsso' ).' '.
+						_x( 'in', 'option comment (currency)', 'wpsso' ).' '.
 						$form->get_no_select( 'product_currency', SucomUtil::get_currency_abbrev(), 'currency' ),
 				);
 				$form_rows['product_size'] = array(
