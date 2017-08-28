@@ -468,7 +468,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$select_options = empty( $atts['select_options'] ) || 
 									! is_array( $atts['select_options'] ) ? array() : $atts['select_options'];
 								$select_selected = empty( $atts['select_selected'] ) ? false : $atts['select_selected'];
-								$select_default = empty( $atts['select_default'] ) ? false : $atts['select_default'];
 
 								if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
 									$html .= $this->get_no_select( $opt_key, $select_options, $input_class, $input_id );
@@ -507,8 +506,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 											$is_selected_html = selected( $this->options[$opt_key], $val, false );
 										} elseif ( $in_defaults ) {
 											$is_selected_html = selected( $this->defaults[$opt_key], $val, false );
-										} elseif ( ! is_bool( $select_default ) ) {
-											$is_selected_html = selected( $select_default, $val, false );
 										} else {
 											$is_selected_html = '';
 										}

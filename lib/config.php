@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.7-dev.4',		// plugin version
+					'version' => '3.45.7-dev.5',		// plugin version
 					'opt_version' => '538',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -2147,6 +2147,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_PRODUCT_CURRENCY'] = 'USD';		// default for 'product_currency'
 			$var_const['WPSSO_UNDEF_INT'] = -1;			// undefined width / height value
 			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 1.00;
+			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = false;	// clear cache before fetching shortlink url
 
 			/*
 			 * WPSSO option and meta array names

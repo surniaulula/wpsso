@@ -463,7 +463,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'checking '.$shortlink.' head meta for duplicates' );
 			}
 
-			$this->p->cache->clear( $shortlink );	// clear the transient cache
+			if ( SucomUtil::get_const( 'WPSSO_DUPE_CHECK_CLEAR_SHORTLINK' ) ) {
+				$this->p->cache->clear( $shortlink );	// clear cache before fetching shortlink url
+			}
+
 			$html = $this->p->cache->get( $shortlink, 'raw', 'transient' );
 			$in_secs = $this->p->cache->in_secs( $shortlink );
 			$max_secs = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_TIMEOUT', 3 );
