@@ -4416,23 +4416,23 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:322
+#: wpsso.php:323
 msgid ""
 "WP debug log mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:323 wpsso.php:331
+#: wpsso.php:324 wpsso.php:332
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:324 wpsso.php:332
+#: wpsso.php:325 wpsso.php:333
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:330
+#: wpsso.php:331
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
