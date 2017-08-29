@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.7-dev.5',		// plugin version
+					'version' => '3.45.7-b.1',		// plugin version
 					'opt_version' => '539',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -2148,6 +2148,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_UNDEF_INT'] = -1;			// undefined width / height value
 			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 1.00;
 			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = false;	// clear cache before fetching shortlink url
+			$var_const['WPSSO_DUPE_CHECK_WARNING_SECS'] = 2.5;	// issue a warning if getting shortlink took more than 2.5 seconds
+			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.0;	// crawlers often time-out after 3 seconds
 
 			/*
 			 * WPSSO option and meta array names

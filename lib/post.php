@@ -469,7 +469,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$html = $this->p->cache->get( $shortlink, 'raw', 'transient' );
 			$in_secs = $this->p->cache->in_secs( $shortlink );
-			$max_secs = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_TIMEOUT', 3 );
+			$warning_secs = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_WARNING_SECS', 2.5 );
+			$timeout_secs = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_TIMEOUT_SECS', 3.0 );
 
 			if ( $in_secs === true ) {
 				if ( $this->p->debug->enabled ) {
@@ -483,12 +484,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'fetched '.$shortlink.' in '.$in_secs.' secs' );
 				}
-				if ( $in_secs > $max_secs ) {
+				if ( $in_secs > $warning_secs ) {
 					$this->p->notice->warn(
 						sprintf( __( 'Retrieving the HTML document for %1$s took %2$s seconds.',
 							'wpsso' ), '<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>', $in_secs ).' '.
-						sprintf( __( 'This exceeds the recommended time limit of %1$s seconds (crawlers often time-out after %1$s seconds).',
-							'wpsso' ), $max_secs ).' '.
+						sprintf( __( 'This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds).',
+							'wpsso' ), $warning_secs, $timeout_secs ).' '.
 						__( 'Please consider improving the speed of your site.',
 							'wpsso' ).' '.
 						__( 'As an added benefit, a faster site will also improve ranking in search results.',

@@ -432,7 +432,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$in_defaults = $this->in_defaults( $opt_key );	// optimize and call only once
 					$input_class = empty( $atts['input_class'] ) ? 'multi' : 'multi '.$atts['input_class'];
 					$input_id = empty( $atts['input_id'] ) ? $name.'_'.$key_num : $atts['input_id'].'_'.$key_num;
-					$input_value = $in_options ? $this->options[$opt_key] : '';
 	
 					if ( $disabled && $key_num >= $show_first && empty( $input_value ) ) {
 						continue;
@@ -447,6 +446,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						switch ( $atts['input_type'] ) {
 
 							case 'text':
+
+								$input_value = $in_options ? $this->options[$opt_key] : '';
 
 								if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
 									$html .= $this->get_no_input( $opt_key, $input_class, $input_id );
@@ -467,7 +468,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								$select_options = empty( $atts['select_options'] ) || 
 									! is_array( $atts['select_options'] ) ? array() : $atts['select_options'];
-								$select_selected = empty( $atts['select_selected'] ) ? false : $atts['select_selected'];
+								$select_selected = empty( $atts['select_selected'] ) ? null : $atts['select_selected'];
+								$select_default = empty( $atts['select_default'] ) ? null : $atts['select_default'];
 
 								if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
 									$html .= $this->get_no_select( $opt_key, $select_options, $input_class, $input_id );
@@ -496,14 +498,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 											$desc = _x( $desc, 'option value', $this->text_domain );
 										}
 
-										if ( $in_defaults && $val === $this->defaults[$opt_key] ) {
+										if ( ( $in_defaults && $val === $this->defaults[$opt_key] ) ||
+											( $select_default !== null && $val === $select_default ) ) {
 											$desc .= ' '._x( '(default)', 'option value', $this->text_domain );
 										}
 
-										if ( ! is_bool( $select_selected ) ) {
+										if ( $select_selected !== null ) {
 											$is_selected_html = selected( $select_selected, $val, false );
 										} elseif ( $in_options ) {
 											$is_selected_html = selected( $this->options[$opt_key], $val, false );
+										} elseif ( $select_default !== null ) {
+											$is_selected_html = selected( $select_default, $val, false );
 										} elseif ( $in_defaults ) {
 											$is_selected_html = selected( $this->defaults[$opt_key], $val, false );
 										} else {

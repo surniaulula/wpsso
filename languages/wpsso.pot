@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.7-dev.5\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.7-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -583,7 +583,7 @@ msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:257 lib/com/form.php:361 lib/com/form.php:500
+#: lib/com/form.php:257 lib/com/form.php:361 lib/com/form.php:503
 #: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "(default)"
@@ -1774,7 +1774,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:674
+#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:675
 #: lib/pro/admin/post.php:174
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2194,7 +2194,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:396 lib/messages.php:406 lib/post.php:630
+#: lib/messages.php:396 lib/messages.php:406 lib/post.php:631
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -3486,74 +3486,74 @@ msgstr ""
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:488
+#: lib/post.php:489
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:490
+#: lib/post.php:491
 msgid ""
-"This exceeds the recommended time limit of %1$s seconds (crawlers often time-"
-"out after %1$s seconds)."
+"This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
+"after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:492
+#: lib/post.php:493
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:494
+#: lib/post.php:495
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:505 lib/util.php:854
+#: lib/post.php:506 lib/util.php:854
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:514
+#: lib/post.php:515
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:523
+#: lib/post.php:524
 msgid "A &lt;meta /&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:533
+#: lib/post.php:534
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:550
+#: lib/post.php:551
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:564
+#: lib/post.php:565
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:564
+#: lib/post.php:565
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:564
+#: lib/post.php:565
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors (suggested), or disable "
 "the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:587 lib/post.php:589
+#: lib/post.php:588 lib/post.php:590
 msgid "Awesome! No duplicate meta tags found. :-)"
 msgstr ""
 
-#: lib/post.php:590
+#: lib/post.php:591
 msgid "%s more checks to go..."
 msgstr ""
 
