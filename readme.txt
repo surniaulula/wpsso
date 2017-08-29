@@ -10,6 +10,7 @@ Tags: meta tags, open graph, share, social, schema markup, twitter card, video s
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.8.1
+Requires PHP: 5.3
 Stable Tag: 3.45.6
 
 Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.
@@ -339,7 +340,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.7-dev.5 (2017/08/28)**
+**Version 3.45.7-b.1 (2017/08/29)**
 
 * *New Features*
 	* None
@@ -349,9 +350,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Removed the WPSSO_PRODUCT_CURRENCY constant.
-	* Added more debugging messages to the WooCommerce module (Pro version).
+	* Removed the WPSSO_PRODUCT_CURRENCY constant (replaced by the new "Default Product Currency" option).
 	* Added a sanity check for &lt;html&gt; and &lt;meta /&gt; tags in the webpage before checking for duplicates.
+	* Added more debugging messages to the WooCommerce module (Pro version).
 
 **Version 3.45.6 (2017/08/23)**
 
@@ -655,9 +656,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.7-dev.5 =
+= 3.45.7-b.1 =
 
-(2017/08/28) Added a new "Default Product Currency" option on the Advanced settings page (Pro version). Removed target="_blank" from all linked URLs. Added more debugging messages to the WooCommerce module (Pro version). Added sanity checks of the webpage HTML before checking for duplicates.
+(2017/08/29) Added a new "Default Product Currency" option on the Advanced settings page (Pro version). Removed target="_blank" from all linked URLs. Added more debugging messages to the WooCommerce module (Pro version). Added sanity checks of the webpage HTML before checking for duplicates.
 
 = 3.45.6 =
 
