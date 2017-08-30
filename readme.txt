@@ -340,7 +340,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.7-rc.1 (2017/08/29)**
+**Version 3.45.7 (2017/08/30)**
 
 * *New Features*
 	* None
@@ -656,9 +656,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.7-rc.1 =
+= 3.45.7 =
 
-(2017/08/29) Added a new "Default Product Currency" option on the Advanced settings page (Pro version). Removed target="_blank" from all linked URLs. Added more debugging messages to the WooCommerce module (Pro version). Added sanity checks of the webpage HTML before checking for duplicates.
+(2017/08/30) Added a new "Default Product Currency" option on the Advanced settings page (Pro version). Removed target="_blank" from all linked URLs. Added more debugging messages to the WooCommerce module (Pro version). Added sanity checks of the webpage HTML before checking for duplicates.
 
 = 3.45.6 =
 
