@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.8.1
 Requires PHP: 5.3
-Stable Tag: 3.45.6
+Stable Tag: 3.45.7
 
 Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.
 
