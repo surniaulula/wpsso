@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-08-28 12:42-0400\n"
-"PO-Revision-Date: 2017-08-28 12:42-0400\n"
+"POT-Creation-Date: 2017-08-29 20:38-0400\n"
+"PO-Revision-Date: 2017-08-29 20:38-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -532,7 +532,7 @@ msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
 
-#: lib/com/form.php:257 lib/com/form.php:361 lib/com/form.php:500
+#: lib/com/form.php:257 lib/com/form.php:361 lib/com/form.php:503
 #: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "(default)"
@@ -1699,7 +1699,7 @@ msgid "Product Size"
 msgstr "Taille du produit"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:674
+#: lib/gpl/admin/post.php:141 lib/meta.php:205 lib/post.php:675
 #: lib/pro/admin/post.php:174
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -1994,7 +1994,7 @@ msgstr "Masquer la pré-visualisation des réglages de la version Pro dans les p
 msgid "Enabling this option also re-orders the %1$s metabox tabs for your convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr "L'activation de cette option re-ordonne également les onglets metabox %1$s pour votre commodité &ndash; déplaçant les onglets %2$s, %3$s et %4$s au premier plan."
 
-#: lib/messages.php:396 lib/messages.php:406 lib/post.php:630
+#: lib/messages.php:396 lib/messages.php:406 lib/post.php:631
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -2945,59 +2945,59 @@ msgstr "Conflit possible détecté &mdash; votre thème ou une autre extension a
 msgid "Checking %1$s for duplicate meta tags"
 msgstr "Vérification de balises méta en double pour %1$s"
 
-#: lib/post.php:488
+#: lib/post.php:489
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr "Récupérer le document HTML pour %1$s a pris %2$s secondes."
 
-#: lib/post.php:490
-msgid "This exceeds the recommended time limit of %1$s seconds (crawlers often time-out after %1$s seconds)."
-msgstr "Cela dépasse le délai recommandé de %1$s secondes (plusieurs crawlers déconnectent après %1$s secondes)."
+#: lib/post.php:491
+msgid "This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds)."
+msgstr "Cela dépasse le délai recommandé de %1$s secondes (plusieurs crawlers déconnectent après %2$s secondes)."
 
-#: lib/post.php:492
+#: lib/post.php:493
 msgid "Please consider improving the speed of your site."
 msgstr "Veuillez envisager d'améliorer la vitesse de votre site."
 
-#: lib/post.php:494
+#: lib/post.php:495
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:505 lib/util.php:854
+#: lib/post.php:506 lib/util.php:854
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:514
+#: lib/post.php:515
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr "Une balise &lt;html&gt; n'a pas été trouvée dans <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:523
+#: lib/post.php:524
 msgid "A &lt;meta /&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr "Une balise &lt;meta /&gt; n'a pas été trouvée dans <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:533
+#: lib/post.php:534
 msgid "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr "Une section de balises méta %2$s n'a pas été trouvée dans <a href=\"%1$s\">%1$s</a> &mdash; peut-être qu'une extension ou service de mise en cache de page Web doit être actualisé?"
 
-#: lib/post.php:550
+#: lib/post.php:551
 msgid "The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP's PCRE library or a webpage filter corrupting the %1$s meta tags."
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer la section de balises méta %1$s &mdash; ceci pourrait être une indication d'un problème avec la bibliothèque PHP PCRE ou un filtre de page Web qui corrompt les balises méta de %1$s."
 
-#: lib/post.php:564
+#: lib/post.php:565
 msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:564
+#: lib/post.php:565
 msgid "The webpage may contain serious HTML syntax errors &mdash; please review the <a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any errors."
 msgstr "La page Web pourrait contenir de graves erreurs de syntaxe HTML &mdash; SVP consulter les résultats du <a href=\"%1$s\">W3C Markup Validation Service</a> et corrigez toutes les erreurs."
 
-#: lib/post.php:564
+#: lib/post.php:565
 msgid "You may safely ignore any \"nopin\" attribute errors (suggested), or disable the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr "Vous pouvez ignorer toutes les erreurs d'attribut \"nopin\" sans risque (suggérées), ou désactiver l'attribut \"nopin\" sous l'<a href=\"%s\">onglet de réglages Pinterest</a>."
 
-#: lib/post.php:587 lib/post.php:589
+#: lib/post.php:588 lib/post.php:590
 msgid "Awesome! No duplicate meta tags found. :-)"
 msgstr "Génial! Aucune balise méta dupliquée trouvée. :-)"
 
-#: lib/post.php:590
+#: lib/post.php:591
 msgid "%s more checks to go..."
 msgstr "%s autres vérifications a faire..."
 
@@ -3815,19 +3815,19 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: wpsso.php:322
+#: wpsso.php:323
 msgid "WP debug log mode is active &mdash; debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif &mdash; des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:323 wpsso.php:331
+#: wpsso.php:324 wpsso.php:332
 msgid "Debug mode disables some %s caching features, which degrades performance slightly."
 msgstr "Le mode de débogage désactive certaines fonctionnalités de mise en cache de %s, ce qui dégrade la performance légèrement."
 
-#: wpsso.php:324 wpsso.php:332
+#: wpsso.php:325 wpsso.php:333
 msgid "Please disable debug mode when debugging is complete."
 msgstr "Veuillez désactiver le mode de débogage lorsque le débogage est terminé."
 
-#: wpsso.php:330
+#: wpsso.php:331
 msgid "HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif &mdash; des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
