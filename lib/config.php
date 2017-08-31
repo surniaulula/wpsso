@@ -2188,7 +2188,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * WPSSO cURL settings
 			 */
 			$var_const['WPSSO_PHP_CURL_CAINFO'] = ABSPATH.WPINC.'/certificates/ca-bundle.crt';
-			$var_const['WPSSO_PHP_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0';
+			$var_const['WPSSO_PHP_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0';
 
 			foreach ( $var_const as $name => $value ) {
 				if ( defined( $name ) ) {
