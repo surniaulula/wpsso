@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: meta tags, open graph, share, social, schema markup, twitter card, video seo, local seo, twitter card, woocommerce, bbpress, budddypress
+Tags: meta tags, open graph, share, social, schema markup, twitter card, seo, video seo, local seo, local business, twitter card, woocommerce
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.8.1
@@ -21,7 +21,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 
 <p><strong>WPSSO uses your <em>existing</em> content to create meta tags + Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, <em>but if you want to</em>, you can customize just about anything and everything. ;-)</p>
 
-<p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags + Schema markup</strong> &mdash; including hashtags, video seo, e-commerce products, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.</p>
+<p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags + Schema markup</strong> &mdash; including hashtags, image SEO, video SEO, e-commerce product SEO, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.</p>
 
 <p><strong>WPSSO offers special optimization features for Pinterest</strong> &mdash; providing an image for the Pin It button, excluding non-relevant images, and preventing conflicts between incompatible Pinterest and Facebook meta tag values.</p>
 

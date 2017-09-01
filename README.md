@@ -8,7 +8,7 @@
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.8.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>meta tags, open graph, share, social, schema markup, twitter card, video seo, local seo, twitter card, woocommerce, bbpress, budddypress</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>meta tags, open graph, share, social, schema markup, twitter card, seo, video seo, local seo, local business, twitter card, woocommerce</td></tr>
 </table>
 
 <h2>Description</h2>
@@ -17,7 +17,7 @@
 
 <p><strong>WPSSO uses your <em>existing</em> content to create meta tags + Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, <em>but if you want to</em>, you can customize just about anything and everything. ;-)</p>
 
-<p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags + Schema markup</strong> &mdash; including hashtags, video seo, e-commerce products, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.</p>
+<p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags + Schema markup</strong> &mdash; including hashtags, image SEO, video SEO, e-commerce product SEO, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.</p>
 
 <p><strong>WPSSO offers special optimization features for Pinterest</strong> &mdash; providing an image for the Pin It button, excluding non-relevant images, and preventing conflicts between incompatible Pinterest and Facebook meta tag values.</p>
 
