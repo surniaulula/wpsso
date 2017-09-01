@@ -340,6 +340,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.45.8-dev.1 (2017/09/01)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added detection of All In One SEO Pack Pro.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.45.7 (2017/08/30)**
 
 * *New Features*
@@ -655,6 +666,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.45.8-dev.1 =
+
+(2017/09/01) Added detection of All In One SEO Pack Pro.
 
 = 3.45.7 =
 
