@@ -219,11 +219,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'"' ).
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).' id="'.esc_attr( $select_id ).'"'.'>'."\n";
 
-			$option_count = 0;
+			$select_options_count = 0;
+			$select_options_shown = 0;
 
 			foreach ( $values as $val => $desc ) {
 
-				$option_count++;
+				$select_options_count++;
 
 				// if the array is NOT associative (so regular numered array),
 				// then the description is used as the saved value as well
@@ -268,13 +269,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				// for disabled selects, only include the first and/or selected option
-				if ( ! $disabled || $option_count === 1 || $is_selected_html ) {
+				if ( ! $disabled || $select_options_count === 1 || $is_selected_html ) {
 					$html .= '<option value="'.esc_attr( $val ).'"'.
 						$is_selected_html.'>'.$desc.'</option>'."\n";
+					$select_options_shown++; 
 				}
 			}
 
-			$html .= '<!-- '.$option_count.' options values in select -->'."\n";
+			$html .= '<!-- '.$select_options_shown.' select options shown -->'."\n";
 			$html .= '</select>'."\n";
 
 			return $html;
@@ -433,7 +435,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$input_class = empty( $atts['input_class'] ) ? 'multi' : 'multi '.$atts['input_class'];
 					$input_id = empty( $atts['input_id'] ) ? $name.'_'.$key_num : $atts['input_id'].'_'.$key_num;
 	
-					if ( $disabled && $key_num >= $show_first && empty( $input_value ) ) {
+					if ( $disabled && $key_num >= $show_first && empty( $display ) ) {
 						continue;
 					}
 	
@@ -466,74 +468,81 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							case 'select':
 
+								if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
+									$html .= '<select disabled="disabled"';
+								} else {
+									$html .= '<select name="'.esc_attr( $this->options_name.'['.$opt_key.']' ).'"';
+								}
+
+								$html .= ' class="'.esc_attr( $input_class ).'"'.
+									' id="select_'.esc_attr( $input_id ).'"'.
+									' onFocus="jQuery(\'div#wrap_'.esc_attr( $wrap_id_next ).'\').show();">'."\n";
+
 								$select_options = empty( $atts['select_options'] ) || 
-									! is_array( $atts['select_options'] ) ? array() : $atts['select_options'];
+									! is_array( $atts['select_options'] ) ?
+										array() : $atts['select_options'];
+
 								$select_selected = empty( $atts['select_selected'] ) ? null : $atts['select_selected'];
 								$select_default = empty( $atts['select_default'] ) ? null : $atts['select_default'];
+								$is_assoc = SucomUtil::is_assoc( $select_options );
+								$select_options_count = 0;
+								$select_options_shown = 0;
 
-								if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
-									$html .= $this->get_no_select( $opt_key, $select_options, $input_class, $input_id );
-								} else {
-									$is_assoc = SucomUtil::is_assoc( $select_options );
+								foreach ( $select_options as $val => $desc ) {
 
-									$html .= '<select'.
-										' name="'.esc_attr( $this->options_name.'['.$opt_key.']' ).'"'.
-										' class="'.esc_attr( $input_class ).'"'.
-										' id="select_'.esc_attr( $input_id ).'"'.
-										' onFocus="jQuery(\'div#wrap_'.esc_attr( $wrap_id_next ).'\').show();">'."\n";
-
-									$option_count = 0;
-
-									foreach ( $select_options as $val => $desc ) {
-
-										$option_count++; 
-										
-										// if the array is NOT associative (so regular numered array),
-										// then the description is used as the saved value as well
-										if ( $is_assoc === false ) {
-											$val = $desc;
-										}
-
-										if ( $this->text_domain ) {
-											$desc = _x( $desc, 'option value', $this->text_domain );
-										}
-
-										if ( ( $in_defaults && $val === $this->defaults[$opt_key] ) ||
-											( $select_default !== null && $val === $select_default ) ) {
-											$desc .= ' '._x( '(default)', 'option value', $this->text_domain );
-										}
-
-										if ( $select_selected !== null ) {
-											$is_selected_html = selected( $select_selected, $val, false );
-										} elseif ( $in_options ) {
-											$is_selected_html = selected( $this->options[$opt_key], $val, false );
-										} elseif ( $select_default !== null ) {
-											$is_selected_html = selected( $select_default, $val, false );
-										} elseif ( $in_defaults ) {
-											$is_selected_html = selected( $this->defaults[$opt_key], $val, false );
-										} else {
-											$is_selected_html = '';
-										}
-
-										if ( ! $disabled || $option_count === 1 || $is_selected_html ) {
-											$html .= '<option value="'.esc_attr( $val ).'"'.
-												$is_selected_html.'>'.$desc.'</option>'."\n";
-										}
-									}
+									$select_options_count++; 
 									
-									$html .= '<!-- '.$option_count.' options values in select -->'."\n";
-									$html .= '</select>'."\n";
+									// if the array is NOT associative (so regular numered array),
+									// then the description is used as the saved value as well
+									if ( $is_assoc === false ) {
+										$val = $desc;
+									}
+
+									if ( $this->text_domain ) {
+										$desc = _x( $desc, 'option value', $this->text_domain );
+									}
+
+									if ( ( $in_defaults && $val === $this->defaults[$opt_key] ) ||
+										( $select_default !== null && $val === $select_default ) ) {
+										$desc .= ' '._x( '(default)', 'option value', $this->text_domain );
+									}
+
+									if ( $select_selected !== null ) {
+										$is_selected_html = selected( $select_selected, $val, false );
+									} elseif ( $in_options ) {
+										$is_selected_html = selected( $this->options[$opt_key], $val, false );
+									} elseif ( $select_default !== null ) {
+										$is_selected_html = selected( $select_default, $val, false );
+									} elseif ( $in_defaults ) {
+										$is_selected_html = selected( $this->defaults[$opt_key], $val, false );
+									} else {
+										$is_selected_html = '';
+									}
+
+									// for disabled selects, only include the first and/or selected option
+									if ( ! $disabled || $select_options_count === 1 || $is_selected_html ) {
+										$html .= '<option value="'.esc_attr( $val ).'"'.
+											$is_selected_html.'>'.$desc.'</option>'."\n";
+										$select_options_shown++; 
+									}
 								}
+								
+								$html .= '<!-- '.$select_options_shown.' select options shown -->'."\n";
+								$html .= '</select>'."\n";
 
 								break;
 						}
 					}
 				}
 
-				$html .= '</div>';
+				$html .= '</div>'."\n";
 			}
 
 			return $html;
+		}
+
+		public function get_no_mixed_multi( $mixed, $class, $id, $start_num = 0, $max_input = 10, $show_first = 2 ) {
+			return $this->get_mixed_multi( $mixed, $class, $id, $start_num, $max_input, $show_first, true );
 		}
 
 		public function get_input_multi( $name, $class = '', $id = '', $start_num = 0, $max_input = 90, $show_first = 5, $disabled = false ) {
@@ -561,7 +570,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<div class="wrap_multi" id="wrap_'.esc_attr( $input_id ).'"'.
 					( $display ? '' : ' style="display:none;"' ).'>';
 
-				if ( $disabled && $key_num >= $show_first && empty( $input_value ) ) {
+				if ( $disabled && $key_num >= $show_first && empty( $display ) ) {
 					continue;
 				} elseif ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
 					$html .= $this->get_no_input( $opt_key, $input_class, $input_id );	// adds 'text_' to the id value
@@ -575,10 +584,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				$one_more = empty( $input_value ) ? false : true;
-				$html .= '</div>';
+				$html .= '</div>'."\n";
 			}
 
 			return $html;
+		}
+
+		public function get_no_input_multi( $name, $class = '', $id = '', $start_num = 0, $max_input = 90, $show_first = 5, $disabled = false ) {
+			return $this->get_input_multi( $name, $class, $id, $start_num, $max_input, $show_first, true );
 		}
 
 		public function get_input_color( $name = '', $class = '', $id = '', $disabled = false ) {

@@ -800,7 +800,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		private static function get_array( $array, $idx = false, $add_none = false ) {
 
-			if ( $idx === false ) {	// check for default first
+			if ( $idx === null ) {
+				// nothing to do
+			} elseif ( $idx === false ) {
 				// nothing to do
 			} elseif ( $idx === true ) {	// sort by value
 				asort( $array );
