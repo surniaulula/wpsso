@@ -1632,8 +1632,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'event_start_date' => 'schema_event_start',
 				'event_end_date' => 'schema_event_end',
 			) as $opt_key => $md_pre ) {
+
 				$event_date = $mod['obj']->get_options( $mod['id'], $md_pre.'_date' );
 				$event_time = $mod['obj']->get_options( $mod['id'], $md_pre.'_time' );
+
 				if ( ! empty( $event_date ) && ! empty( $event_time ) ) {
 					$event_opts[$opt_key] = $event_date.' '.$event_time;
 				// check for a date with no time
@@ -1642,6 +1644,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				// check for a time with no date
 				} elseif ( empty( $event_date ) && ! empty( $event_time ) ) {
 					$event_opts[$opt_key] = gmdate( 'Y-m-d', time() ).' '.$event_time;	// use the current date
+				}
+			}
+
+			// look for custom event offers
+			foreach ( range( 0, WPSSOJSON_SCHEMA_EVENT_OFFERS_MAX, 1 ) as $key_num ) {
+				$opt_offer = array();
+				foreach ( array( 
+					'event_name' => 'schema_event_offer_name',
+					'event_price' => 'schema_event_offer_price',
+					'event_price_currency' => 'schema_event_offer_currency',
+				) as $opt_key => $md_pre ) {
+					$opt_offer[$opt_key] = $mod['obj']->get_options( $mod['id'], $md_pre.'_'.$key_num );
+				}
+				if ( isset( $opt_offer['event_name'] ) && isset( $opt_offer['event_price'] ) ) {
+					$event_opts['event_offers'][] = $opt_offer;
 				}
 			}
 
@@ -1664,11 +1681,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = self::get_schema_type_context( $event_type_url );
 
-			self::add_data_itemprop_from_assoc( $ret, $event_opts, array(
-				'startDate' => 'event_start_date',
-				'endDate' => 'event_end_date',
-			) );
-
 			if ( ! empty( $event_opts['event_organizer_person_id'] ) &&
 				$event_opts['event_organizer_person_id'] !== 'none' ) {	// example: tribe_organizer-0
 
@@ -1686,6 +1698,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					unset( $ret['location'] );	// prevent null assignment
 				}
 			}
+
+			self::add_data_itemprop_from_assoc( $ret, $event_opts, array(
+				'startDate' => 'event_start_date',
+				'endDate' => 'event_end_date',
+			) );
 
 			if ( ! empty( $event_opts['event_offers'] ) &&
 				is_array( $event_opts['event_offers'] ) ) {
