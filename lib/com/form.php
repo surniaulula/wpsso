@@ -434,6 +434,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$opt_disabled = $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ? true : false;
 					$in_options = $this->in_options( $opt_key );	// optimize and call only once
 					$in_defaults = $this->in_defaults( $opt_key );	// optimize and call only once
+					$input_title = empty( $atts['input_title'] ) ? '' : $atts['input_title'];
 					$input_class = empty( $atts['input_class'] ) ? 'multi' : 'multi '.$atts['input_class'];
 					$input_id = empty( $atts['input_id'] ) ? $name.'_'.$key_num : $atts['input_id'].'_'.$key_num;
 	
@@ -442,7 +443,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					}
 	
 					if ( ! empty( $atts['input_label'] ) ) {
-						$html .= $atts['input_label'].' ';
+						$html .= '<p style="display:inline">'.$atts['input_label'].'</p> ';
 					}
 
 					if ( isset( $atts['input_type'] ) ) {
@@ -458,6 +459,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								} else {
 									$html .= '<input type="text"'.
 										' name="'.esc_attr( $this->options_name.'['.$opt_key.']' ).'"'.
+										' title="'.esc_attr( $input_title ).'"'.
 										' class="'.esc_attr( $input_class ).'"'.
 										' id="text_'.esc_attr( $input_id ).'"'.
 										' value="'.esc_attr( $input_value ).'"'.
@@ -476,7 +478,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									$html .= '<select name="'.esc_attr( $this->options_name.'['.$opt_key.']' ).'"';
 								}
 
-								$html .= ' class="'.esc_attr( $input_class ).'"'.
+									
+								$html .= ' title="'.esc_attr( $input_title ).'"'.
+									' class="'.esc_attr( $input_class ).'"'.
 									' id="select_'.esc_attr( $input_id ).'"'.
 									' onFocus="jQuery(\'div#wrap_'.esc_attr( $wrap_id_next ).'\').show();">'."\n";
 

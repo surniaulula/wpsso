@@ -260,11 +260,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_head_cache_exp', $form, $network );
 
-			$table_rows['plugin_shorten_cache_exp'] = $form->get_th_html( _x( 'Shortened URL Cache Expiry',
-				'option label', 'wpsso' ), '', 'plugin_shorten_cache_exp' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_shorten_cache_exp'].' '.
+			$table_rows['plugin_short_url_cache_exp'] = $form->get_th_html( _x( 'Shortened URL Cache Expiry',
+				'option label', 'wpsso' ), '', 'plugin_short_url_cache_exp' ).
+			'<td nowrap class="blank">'.$this->p->options['plugin_short_url_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
-			WpssoAdmin::get_option_site_use( 'plugin_shorten_cache_exp', $form, $network );
+			WpssoAdmin::get_option_site_use( 'plugin_short_url_cache_exp', $form, $network );
 
 			$table_rows['plugin_content_cache_exp'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Filtered Content Text Cache Expiry',

@@ -219,7 +219,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				if ( $mod['is_post'] ) {
 					$short_url = wp_get_shortlink( $mod['id'], 'post' );
 				} else {
-					$short_url = apply_filters( $this->p->cf['lca'].'_shorten_url',
+					$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',
 						$long_url, $this->p->options['plugin_shortener'] );
 				}
 

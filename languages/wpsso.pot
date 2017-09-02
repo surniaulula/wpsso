@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.8-dev.2\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.8-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -583,7 +583,7 @@ msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:259 lib/com/form.php:364 lib/com/form.php:509
+#: lib/com/form.php:259 lib/com/form.php:364 lib/com/form.php:513
 #: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "(default)"
@@ -1447,13 +1447,13 @@ msgid "Bitly URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:347 lib/pro/admin/advanced.php:338
-#: lib/pro/util/shorten.php:79
+#: lib/pro/util/shorten.php:86
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:352 lib/pro/admin/advanced.php:343
-#: lib/pro/util/shorten.php:90
+#: lib/pro/util/shorten.php:97
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
@@ -1479,7 +1479,7 @@ msgid "Google APIs"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:371 lib/pro/admin/advanced.php:362
-#: lib/pro/util/shorten.php:113
+#: lib/pro/util/shorten.php:120
 msgctxt "option label"
 msgid "Google Project App BrowserKey"
 msgstr ""
@@ -1495,7 +1495,7 @@ msgid "Ow.ly URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:386 lib/pro/admin/advanced.php:377
-#: lib/pro/util/shorten.php:135
+#: lib/pro/util/shorten.php:142
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
@@ -1506,7 +1506,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:395 lib/pro/admin/advanced.php:386
-#: lib/pro/util/shorten.php:166
+#: lib/pro/util/shorten.php:173
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
@@ -2221,7 +2221,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:401 lib/util.php:1956
+#: lib/messages.php:401 lib/util.php:1959
 msgid "No options available."
 msgstr ""
 
@@ -3692,31 +3692,31 @@ msgid ""
 "for the required %2$s image dimensions."
 msgstr ""
 
-#: lib/pro/util/shorten.php:78 lib/pro/util/shorten.php:112
-#: lib/pro/util/shorten.php:134 lib/pro/util/shorten.php:165
+#: lib/pro/util/shorten.php:85 lib/pro/util/shorten.php:119
+#: lib/pro/util/shorten.php:141 lib/pro/util/shorten.php:172
 msgid "The %s option is empty."
 msgstr ""
 
-#: lib/pro/util/shorten.php:89
+#: lib/pro/util/shorten.php:96
 msgid ""
 "The %1$s and %2$s options are empty &mdash; at least one option is required."
 msgstr ""
 
-#: lib/pro/util/shorten.php:91
+#: lib/pro/util/shorten.php:98
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr ""
 
-#: lib/pro/util/shorten.php:119
+#: lib/pro/util/shorten.php:126
 msgid "The %s option is not enabled."
 msgstr ""
 
-#: lib/pro/util/shorten.php:120
+#: lib/pro/util/shorten.php:127
 msgctxt "option label"
 msgid "Google URL Shortener API"
 msgstr ""
 
-#: lib/pro/util/shorten.php:195
+#: lib/pro/util/shorten.php:202
 msgid ""
 "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr ""
@@ -4396,22 +4396,22 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1982
+#: lib/util.php:1985
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1986
+#: lib/util.php:1989
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1989
+#: lib/util.php:1992
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1993
+#: lib/util.php:1996
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

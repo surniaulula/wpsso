@@ -69,7 +69,7 @@ if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( is_object( $wpsso->util ) ) {
 			$sharing_url = $wpsso->util->get_sharing_url( $mod, $add_page );
-			return apply_filters( 'wpsso_shorten_url', $sharing_url, $wpsso->options['plugin_shortener'] );
+			return apply_filters( 'wpsso_get_short_url', $sharing_url, $wpsso->options['plugin_shortener'] );
 		} else {
 			return false;
 		}

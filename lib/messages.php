@@ -668,8 +668,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									'wpsso' ), $cache_exp, $cache_diff );
 							break;
 
-						case 'tooltip-plugin_shorten_cache_exp':
-							$cache_exp = WpssoConfig::$cf['opt']['defaults']['plugin_shorten_cache_exp'];	// use original un-filtered value
+						case 'tooltip-plugin_short_url_cache_exp':
+							$cache_exp = WpssoConfig::$cf['opt']['defaults']['plugin_short_url_cache_exp'];	// use original un-filtered value
 							$cache_diff = $cache_exp ? human_time_diff( 0, $cache_exp ) : _x( 'disabled', 'option comment', 'wpsso' );
 							$text = __( 'Shortened URLs are saved to the WordPress transient cache to optimize performance and API connections.',
 								'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).',
@@ -701,7 +701,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_clear_short_urls':
-							$cache_exp = (int) apply_filters( $lca.'_cache_expire_shorten_url', $this->p->options['plugin_shorten_cache_exp'] );
+							$cache_exp = (int) apply_filters( $lca.'_cache_expire_short_url', $this->p->options['plugin_short_url_cache_exp'] );
 							$text = sprintf( __( 'Clear all shortened URLs when clearing all %s transients from the WordPress database (default is unchecked).', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'Shortened URLs are cached for %s to minimize service API calls. Updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider.', 'wpsso' ), human_time_diff( 0, $cache_exp ) );
 							break;
 

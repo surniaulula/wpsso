@@ -23,6 +23,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_cache_info' => 'plugin_show_purge_count',
 					'plugin_verify_certs' => '',
 				),
+				539 => array(
+					'plugin_shorten_cache_exp' => 'plugin_short_url_cache_exp',
+				),
 			),
 		);
 
@@ -146,6 +149,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'add_meta_itemprop_contributor.url' => 'add_link_itemprop_contributor.url',
 					'add_meta_itemprop_contributor.image' => 'add_link_itemprop_contributor.image',
 					'add_meta_itemprop_menu' => 'add_link_itemprop_menu',
+				),
+				539 => array(
+					'plugin_shorten_cache_exp' => 'plugin_short_url_cache_exp',
 				),
 			),
 		);

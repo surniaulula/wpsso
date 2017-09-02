@@ -1181,9 +1181,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$request_url = self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 			}
 
-			$short_url = empty( $atts['short_url'] ) ?
-				apply_filters( $this->p->cf['lca'].'_shorten_url', 
-					$sharing_url, $this->p->options['plugin_shortener'] ) : $atts['short_url'];
+			if ( empty( $atts['short_url'] ) ) {
+				$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',
+					$sharing_url, $this->p->options['plugin_shortener'] );
+			} else {
+				$short_url = $atts['short_url'];
+			}
 
 			return array(
 				$request_url,		// %%request_url%%
@@ -2003,7 +2006,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'shortening url '.$matches[2] );
 			}
-			return $matches[1].apply_filters( $this->p->cf['lca'].'_shorten_url',
+			return $matches[1].apply_filters( $this->p->cf['lca'].'_get_short_url',
 				$matches[2], $this->p->options['plugin_shortener'] ).$matches[3];
 		}
 

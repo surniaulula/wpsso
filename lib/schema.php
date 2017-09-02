@@ -1627,6 +1627,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$event_opts = apply_filters( $wpsso->cf['lca'].'_get_event_options', false, $mod, $event_id );
 
+			if ( ! empty( $event_opts ) ) {	// $event_opts could be false or empty array
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'get_event_options filter returned options' );
+					$wpsso->debug->log_arr( 'event_opts', $event_opts );
+				}
+			}
+
 			// look for custom event date and time
 			foreach ( array( 
 				'event_start_date' => 'schema_event_start',
@@ -1655,12 +1662,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'offer_name' => 'schema_event_offer_name',
 					'offer_price' => 'schema_event_offer_price',
 					'offer_price_currency' => 'schema_event_offer_currency',
+					'offer_price_availability' => 'schema_event_offer_avail',
 				) as $opt_key => $md_pre ) {
 					$opt_offer[$opt_key] = $mod['obj']->get_options( $mod['id'], $md_pre.'_'.$key_num );
 				}
 				if ( isset( $opt_offer['offer_name'] ) && isset( $opt_offer['offer_price'] ) ) {
 					if ( $have_offers === false ) {
 						$have_offers = true;
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'custom event offer found - creating new offers array' );
+						}
 						$event_opts['event_offers'] = array();	// clear offers from filter
 					}
 					$event_opts['event_offers'][] = $opt_offer;

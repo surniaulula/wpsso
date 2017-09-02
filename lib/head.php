@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$head_index = '';
 
 			if ( $mixed !== false ) {	// optimize for __construct()
-				$head_index = 'locale:'.SucomUtil::get_locale( $mixed );
+				$head_index .= '_locale:'.SucomUtil::get_locale( $mixed );
 			}
 
 			if ( $sharing_url !== false ) {
@@ -116,7 +116,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			return ltrim( $head_index, '_' );
+			$head_index = trim( $head_index, '_' );	// cleanup leading underscores
+
+			$head_index = apply_filters( $lca.'_head_cache_index', $head_index, $mixed, $sharing_url );
+
+			return $head_index;
 		}
 
 		// called by wp_head action
@@ -289,9 +293,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$lca = $this->p->cf['lca'];
 			$start_time = microtime( true );
 			$crawler_name = SucomUtil::get_crawler_name();
+			$added_on_date = 'added on '.date( 'c' ).( $crawler_name !== 'none' ? ' for '.$crawler_name : '' );
 			$add_mt_mark = apply_filters( $lca.'_add_meta_name_'.$lca.':mark', 
 				( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
-			$added_on = 'added on '.date( 'c' ).( $crawler_name !== 'none' ? ' for '.$crawler_name : '' );
 
 			// extra begin/end meta tag for duplicate meta tags check
 			$html = "\n\n".'<!-- '.$lca.' meta tags begin -->'."\n";
@@ -319,7 +323,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$html .= '<meta name="'.$lca.':mark:end" content="'.$lca.' meta tags end"/>'."\n";
 			}
 
-			$html .= '<!-- '.$added_on.' in '.sprintf( '%f secs', microtime( true ) - $start_time ).' -->'."\n";
+			$html .= '<!-- '.$added_on_date.' in '.sprintf( '%f secs', microtime( true ) - $start_time ).' -->'."\n";
 			$html .= '<!-- '.$lca.' meta tags end -->'."\n\n";
 
 			return $html;
@@ -472,7 +476,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( $mod['is_post'] ) {
 					$link_rel['shortlink'] = wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 				} else {
-					$link_rel['shortlink'] = apply_filters( $lca.'_shorten_url',
+					$link_rel['shortlink'] = apply_filters( $lca.'_get_short_url',
 						$mt_og['og:url'], $this->p->options['plugin_shortener'] );
 				}
 			}
