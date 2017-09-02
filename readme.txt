@@ -119,7 +119,7 @@ Automatically generate complete and accurate meta tags + Schema markup from your
 		* rtMedia for WordPress, BuddyPress and bbPress
 		* The Events Calendar
 		* The SEO Framework
-		* WooCommerce (version 1, 2, and 3)
+		* WooCommerce (versions 1, 2, and 3)
 		* WordPress REST API (version 2)
 		* WP eCommerce
 		* Yoast SEO (aka WordPress SEO)
@@ -192,7 +192,7 @@ WPSSO Pro integrates with [All in One SEO Pack](https://wordpress.org/plugins/al
 
 **eCommerce Products**
 
-WPSSO Pro also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce](https://wordpress.org/plugins/woocommerce/), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including variations and additional / custom images.
+WPSSO Pro also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce](https://wordpress.org/plugins/woocommerce/) (versions 1, 2, and 3), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including variations and additional / custom images.
 
 **Forums and Social**
 
