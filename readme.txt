@@ -340,7 +340,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.8-dev.2 (2017/09/01)**
+**Version 3.45.8-b.1 (2017/09/02)**
 
 * *New Features*
 	* None
@@ -349,7 +349,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added support for custom event offers, including their name, price and currency.
+	* Added support for custom event offers, including their name, price, currency, and availability.
+	* Renamed the 'wpsso_shorten_url' filter to 'wpsso_get_short_url'.
+	* Renamed the 'wpsso_cache_expire_shorten_url' filter to 'wpsso_cache_expire_short_url'.
 
 **Version 3.45.7 (2017/08/30)**
 
@@ -667,9 +669,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.8-dev.2 =
+= 3.45.8-b.1 =
 
-(2017/09/01) Added detection of All In One SEO Pack Pro.
+(2017/09/02) Added detection of All In One SEO Pack Pro. Added support for custom event offers, including their name, price, currency, and availability. Renamed the 'wpsso_shorten_url' filter to 'wpsso_get_short_url'.
 
 = 3.45.7 =
 
