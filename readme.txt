@@ -349,7 +349,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added support for custom event offers, including their name, price and currency.
 
 **Version 3.45.7 (2017/08/30)**
 
