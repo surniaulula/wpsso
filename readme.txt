@@ -340,7 +340,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.8-dev.1 (2017/09/01)**
+**Version 3.45.8-dev.2 (2017/09/01)**
 
 * *New Features*
 	* None
@@ -667,7 +667,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.8-dev.1 =
+= 3.45.8-dev.2 =
 
 (2017/09/01) Added detection of All In One SEO Pack Pro.
 
