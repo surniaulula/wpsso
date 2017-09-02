@@ -68,6 +68,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_checkbox( $name, $class = '', $id = '', $disabled = false, $force = null ) {
+
 			if ( empty( $name ) ) {
 				return;	// just in case
 			}
@@ -425,11 +426,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
 
 				$html .= '<div class="wrap_multi" id="wrap_'.esc_attr( $wrap_id ).'"'.
-					( $display ? '' : ' style="display:none;"' ).'>';
+					( $display ? '' : ' style="display:none;"' ).'>'."\n";
 
 				foreach ( $mixed as $name => $atts ) {
 
 					$opt_key = $name.'_'.$key_num;
+					$opt_disabled = $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ? true : false;
 					$in_options = $this->in_options( $opt_key );	// optimize and call only once
 					$in_defaults = $this->in_defaults( $opt_key );	// optimize and call only once
 					$input_class = empty( $atts['input_class'] ) ? 'multi' : 'multi '.$atts['input_class'];
@@ -451,7 +453,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 								$input_value = $in_options ? $this->options[$opt_key] : '';
 
-								if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
+								if ( $opt_disabled ) {
 									$html .= $this->get_no_input( $opt_key, $input_class, $input_id );
 								} else {
 									$html .= '<input type="text"'.
@@ -468,7 +470,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							case 'select':
 
-								if ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
+								if ( $opt_disabled ) {
 									$html .= '<select disabled="disabled"';
 								} else {
 									$html .= '<select name="'.esc_attr( $this->options_name.'['.$opt_key.']' ).'"';
@@ -520,7 +522,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									}
 
 									// for disabled selects, only include the first and/or selected option
-									if ( ! $disabled || $select_options_count === 1 || $is_selected_html ) {
+									if ( ! $opt_disabled || $select_options_count === 1 || $is_selected_html ) {
 										$html .= '<option value="'.esc_attr( $val ).'"'.
 											$is_selected_html.'>'.$desc.'</option>'."\n";
 										$select_options_shown++; 
@@ -561,6 +563,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$next_num = $key_num + 1;
 				$opt_key = $name.'_'.$key_num;
+				$opt_disabled = $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ? true : false;
 				$input_class = empty( $class ) ? 'multi' : 'multi '.$class;
 				$input_id = empty( $id ) ? $name.'_'.$key_num : $id.'_'.$key_num;
 				$input_id_next = empty( $id ) ? $name.'_'.$next_num : $id.'_'.$next_num;
@@ -568,11 +571,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
 
 				$html .= '<div class="wrap_multi" id="wrap_'.esc_attr( $input_id ).'"'.
-					( $display ? '' : ' style="display:none;"' ).'>';
+					( $display ? '' : ' style="display:none;"' ).'>'."\n";
 
 				if ( $disabled && $key_num >= $show_first && empty( $display ) ) {
 					continue;
-				} elseif ( $disabled || $this->get_options( $opt_key.':is' ) === 'disabled' ) {
+				} elseif ( $opt_disabled ) {
 					$html .= $this->get_no_input( $opt_key, $input_class, $input_id );	// adds 'text_' to the id value
 				} else {
 					$html .= '<input type="text"'.
@@ -658,17 +661,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			foreach ( range( 0, $end_num, 1 ) as $key_num ) {
 				if ( $max_input > 1 ) {
 					$input_id = empty( $id ) ? '' : $id.'_'.$key_num;
-					$html .= '<div class="wrap_multi">';
+					$html .= '<div class="wrap_multi">'."\n";
 				}
 
 				$html .= '<input type="text" disabled="disabled"'.
 					( empty( $input_class ) ? '' : ' class="'.esc_attr( $input_class ).'"' ).
 					( empty( $input_id ) ? '' : ' id="text_'.esc_attr( $input_id ).'"' ).
 					( $placeholder === '' ? '' : ' placeholder="'.esc_attr( $placeholder ).'"' ).
-					' value="'.esc_attr( $value ).'" />';
+					' value="'.esc_attr( $value ).'" />'."\n";
 
 				if ( $max_input > 1 ) {
-					$html .= '</div>';
+					$html .= '</div>'."\n";
 				}
 			}
 

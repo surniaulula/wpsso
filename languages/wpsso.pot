@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.8-dev.1\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.8-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -563,27 +563,27 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:94 lib/config-gettext-extract.php:59
+#: lib/com/form.php:95 lib/config-gettext-extract.php:59
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: lib/com/form.php:242 lib/config-gettext-extract.php:54
+#: lib/com/form.php:243 lib/config-gettext-extract.php:54
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/com/form.php:247 lib/config-gettext-extract.php:57
+#: lib/com/form.php:248 lib/config-gettext-extract.php:57
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:252 lib/config-gettext-extract.php:55
+#: lib/com/form.php:253 lib/config-gettext-extract.php:55
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:258 lib/com/form.php:363 lib/com/form.php:507
+#: lib/com/form.php:259 lib/com/form.php:364 lib/com/form.php:509
 #: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "(default)"

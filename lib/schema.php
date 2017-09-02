@@ -1193,11 +1193,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			static $cache = array();
 
-			if ( isset( $cache[$mod['name']][$mod['id'][$org_id]] ) ) {
+			if ( isset( $cache[$mod['name']][$mod['id']][$org_id] ) ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'using static cache data for organization id '.$org_id );
 				}
-				$ret =& $cache[$mod['name']][$mod['id'][$org_id]];	// use shorter variable name
+				$ret =& $cache[$mod['name']][$mod['id']][$org_id];	// use shorter variable name
 				if ( $ret === false ) {
 					return 0;
 				} else {
@@ -1213,8 +1213,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'creating static cache data for organization id '.$org_id );
 			}
-			$cache[$mod['name']][$mod['id'][$org_id]] = false;	// create the array element (false by default)
-			$ret =& $cache[$mod['name']][$mod['id'][$org_id]];	// use shorter variable name
+			$cache[$mod['name']][$mod['id']][$org_id] = false;	// create the array element (false by default)
+			$ret =& $cache[$mod['name']][$mod['id']][$org_id];	// use shorter variable name
 
 			$org_opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $org_id );	// returns localized values
 
@@ -1405,11 +1405,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			static $cache = array();
 
-			if ( isset( $cache[$mod['name']][$mod['id'][$place_id]] ) ) {
+			if ( isset( $cache[$mod['name']][$mod['id']][$place_id] ) ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'using static cache data for place id '.$place_id );
 				}
-				$ret =& $cache[$mod['name']][$mod['id'][$place_id]];	// use shorter variable name
+				$ret =& $cache[$mod['name']][$mod['id']][$place_id];	// use shorter variable name
 				if ( $ret === false ) {
 					return 0;
 				} else {
@@ -1425,8 +1425,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'creating static cache data for place id '.$place_id );
 			}
-			$cache[$mod['name']][$mod['id'][$place_id]] = false;	// create the array element (false by default)
-			$ret =& $cache[$mod['name']][$mod['id'][$place_id]];	// use shorter variable name
+			$cache[$mod['name']][$mod['id']][$place_id] = false;	// create the array element (false by default)
+			$ret =& $cache[$mod['name']][$mod['id']][$place_id];	// use shorter variable name
 
 			$size_name = $wpsso->cf['lca'].'-schema';
 			$sharing_url = $wpsso->util->get_sharing_url( $mod );
@@ -1602,11 +1602,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			static $cache = array();
 
-			if ( isset( $cache[$mod['name']][$mod['id'][$event_id]] ) ) {
+			if ( isset( $cache[$mod['name']][$mod['id']][$event_id] ) ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'using static cache data for event id '.$event_id );
 				}
-				$ret =& $cache[$mod['name']][$mod['id'][$event_id]];	// use shorter variable name
+				$ret =& $cache[$mod['name']][$mod['id']][$event_id];	// use shorter variable name
 				if ( $ret === false ) {
 					return 0;
 				} else {
@@ -1622,8 +1622,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'creating static cache data for event id '.$event_id );
 			}
-			$cache[$mod['name']][$mod['id'][$event_id]] = false;	// create the array element (false by default)
-			$ret =& $cache[$mod['name']][$mod['id'][$event_id]];	// use shorter variable name
+			$cache[$mod['name']][$mod['id']][$event_id] = false;	// create the array element (false by default)
+			$ret =& $cache[$mod['name']][$mod['id']][$event_id];	// use shorter variable name
 
 			$event_opts = apply_filters( $wpsso->cf['lca'].'_get_event_options', false, $mod, $event_id );
 
@@ -1637,27 +1637,32 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$event_time = $mod['obj']->get_options( $mod['id'], $md_pre.'_time' );
 
 				if ( ! empty( $event_date ) && ! empty( $event_time ) ) {
-					$event_opts[$opt_key] = $event_date.' '.$event_time;
+					$event_opts[$opt_key] = $event_date.'T'.$event_time;
 				// check for a date with no time
 				} elseif ( ! empty( $event_date ) && empty( $event_time ) ) {
-					$event_opts[$opt_key] = $event_date.' 00:00';
+					$event_opts[$opt_key] = $event_date.'T00:00';
 				// check for a time with no date
 				} elseif ( empty( $event_date ) && ! empty( $event_time ) ) {
-					$event_opts[$opt_key] = gmdate( 'Y-m-d', time() ).' '.$event_time;	// use the current date
+					$event_opts[$opt_key] = gmdate( 'Y-m-d', time() ).'T'.$event_time;	// use the current date
 				}
 			}
 
 			// look for custom event offers
+			$have_offers = false;
 			foreach ( range( 0, WPSSOJSON_SCHEMA_EVENT_OFFERS_MAX, 1 ) as $key_num ) {
 				$opt_offer = array();
 				foreach ( array( 
-					'event_name' => 'schema_event_offer_name',
-					'event_price' => 'schema_event_offer_price',
-					'event_price_currency' => 'schema_event_offer_currency',
+					'offer_name' => 'schema_event_offer_name',
+					'offer_price' => 'schema_event_offer_price',
+					'offer_price_currency' => 'schema_event_offer_currency',
 				) as $opt_key => $md_pre ) {
 					$opt_offer[$opt_key] = $mod['obj']->get_options( $mod['id'], $md_pre.'_'.$key_num );
 				}
-				if ( isset( $opt_offer['event_name'] ) && isset( $opt_offer['event_price'] ) ) {
+				if ( isset( $opt_offer['offer_name'] ) && isset( $opt_offer['offer_price'] ) ) {
+					if ( $have_offers === false ) {
+						$have_offers = true;
+						$event_opts['event_offers'] = array();	// clear offers from filter
+					}
 					$event_opts['event_offers'][] = $opt_offer;
 				}
 			}
@@ -1708,6 +1713,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				is_array( $event_opts['event_offers'] ) ) {
 
 				foreach ( $event_opts['event_offers'] as $event_offer ) {
+
 					// setup the offer with basic itemprops
 					if ( is_array( $event_offer ) &&	// just in case
 						( $offer = self::get_data_itemprop_from_assoc( $event_offer, array( 
@@ -1789,11 +1795,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			static $cache = array();
 
-			if ( isset( $cache[$mod['name']][$mod['id'][$user_id]] ) ) {
+			if ( isset( $cache[$mod['name']][$mod['id']][$user_id] ) ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'using static cache data for person id '.$user_id );
 				}
-				$ret =& $cache[$mod['name']][$mod['id'][$user_id]];	// use shorter variable name
+				$ret =& $cache[$mod['name']][$mod['id']][$user_id];	// use shorter variable name
 				if ( $ret === false ) {
 					return 0;
 				} else {
@@ -1809,8 +1815,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'creating static cache data for person id '.$user_id );
 			}
-			$cache[$mod['name']][$mod['id'][$user_id]] = false;	// create the array element (false by default)
-			$ret =& $cache[$mod['name']][$mod['id'][$user_id]];	// use shorter variable name
+			$cache[$mod['name']][$mod['id']][$user_id] = false;	// create the array element (false by default)
+			$ret =& $cache[$mod['name']][$mod['id']][$user_id];	// use shorter variable name
 
 			$person_opts = apply_filters( $wpsso->cf['lca'].'_get_person_options', false, $mod, $user_id );
 
