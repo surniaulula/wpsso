@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-08-30 13:31-0400\n"
-"PO-Revision-Date: 2017-09-01 11:10-0400\n"
+"POT-Creation-Date: 2017-09-02 10:23-0400\n"
+"PO-Revision-Date: 2017-09-02 10:23-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -512,27 +512,27 @@ msgstr "Le dossier de cache %s n'est pas accessible en écriture."
 msgid "Failed to open the cache file %s for writing."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 
-#: lib/com/form.php:94 lib/config-gettext-extract.php:59
+#: lib/com/form.php:95 lib/config-gettext-extract.php:59
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr "(option désactivée)"
 
-#: lib/com/form.php:241 lib/config-gettext-extract.php:54
+#: lib/com/form.php:243 lib/config-gettext-extract.php:54
 msgctxt "option value"
 msgid "(no images)"
 msgstr "(pas d'images)"
 
-#: lib/com/form.php:246 lib/config-gettext-extract.php:57
+#: lib/com/form.php:248 lib/config-gettext-extract.php:57
 msgctxt "option value"
 msgid "(no videos)"
 msgstr "(aucun vidéos)"
 
-#: lib/com/form.php:251 lib/config-gettext-extract.php:55
+#: lib/com/form.php:253 lib/config-gettext-extract.php:55
 msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
 
-#: lib/com/form.php:257 lib/com/form.php:361 lib/com/form.php:503
+#: lib/com/form.php:259 lib/com/form.php:364 lib/com/form.php:513
 #: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "(default)"
@@ -1370,13 +1370,13 @@ msgid "Bitly URL Shortener"
 msgstr "Raccourcisseur de Lien Bitly"
 
 #: lib/gpl/admin/advanced.php:347 lib/pro/admin/advanced.php:338
-#: lib/pro/util/shorten.php:79
+#: lib/pro/util/shorten.php:86
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr "Nom d'utilisateur Bitly"
 
 #: lib/gpl/admin/advanced.php:352 lib/pro/admin/advanced.php:343
-#: lib/pro/util/shorten.php:90
+#: lib/pro/util/shorten.php:97
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr "Jeton d'accès générique Bitly"
@@ -1402,7 +1402,7 @@ msgid "Google APIs"
 msgstr "APIs Google"
 
 #: lib/gpl/admin/advanced.php:371 lib/pro/admin/advanced.php:362
-#: lib/pro/util/shorten.php:113
+#: lib/pro/util/shorten.php:120
 msgctxt "option label"
 msgid "Google Project App BrowserKey"
 msgstr "App BrowserKey du projet Google"
@@ -1418,7 +1418,7 @@ msgid "Ow.ly URL Shortener"
 msgstr "Raccourcisseur de Lien Ow.ly"
 
 #: lib/gpl/admin/advanced.php:386 lib/pro/admin/advanced.php:377
-#: lib/pro/util/shorten.php:135
+#: lib/pro/util/shorten.php:142
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr "La Clé d'API pour Ow.ly"
@@ -1429,7 +1429,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr "Your Own URL Shortener (YOURLS)"
 
 #: lib/gpl/admin/advanced.php:395 lib/pro/admin/advanced.php:386
-#: lib/pro/util/shorten.php:166
+#: lib/pro/util/shorten.php:173
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr "URL de l'API YOURLS"
@@ -2019,7 +2019,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "Notez que certaines metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:401 lib/util.php:1956
+#: lib/messages.php:401 lib/util.php:1959
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -3121,30 +3121,30 @@ msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de
 msgid "Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions."
 msgstr "L'image %1$s du contenu a été ignoré &mdash; la largeur / hauteur est insuffisante pour les dimensions requis par %2$s."
 
-#: lib/pro/util/shorten.php:78 lib/pro/util/shorten.php:112
-#: lib/pro/util/shorten.php:134 lib/pro/util/shorten.php:165
+#: lib/pro/util/shorten.php:85 lib/pro/util/shorten.php:119
+#: lib/pro/util/shorten.php:141 lib/pro/util/shorten.php:172
 msgid "The %s option is empty."
 msgstr "L'option %s est vide."
 
-#: lib/pro/util/shorten.php:89
+#: lib/pro/util/shorten.php:96
 msgid "The %1$s and %2$s options are empty &mdash; at least one option is required."
 msgstr "Les options %1$s et %2$s sont vides &mdash; au moins une option est nécessaire."
 
-#: lib/pro/util/shorten.php:91
+#: lib/pro/util/shorten.php:98
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr "Clé d'API pour Bitly"
 
-#: lib/pro/util/shorten.php:119
+#: lib/pro/util/shorten.php:126
 msgid "The %s option is not enabled."
 msgstr "L'option %s n'est pas activée."
 
-#: lib/pro/util/shorten.php:120
+#: lib/pro/util/shorten.php:127
 msgctxt "option label"
 msgid "Google URL Shortener API"
 msgstr "API raccourcissement Google"
 
-#: lib/pro/util/shorten.php:195
+#: lib/pro/util/shorten.php:202
 msgid "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr "Identifiants API incomplet ou manquant pour le service de raccourcissement d'URL %s."
 
@@ -3795,22 +3795,22 @@ msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1982
+#: lib/util.php:1985
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1986
+#: lib/util.php:1989
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1989
+#: lib/util.php:1992
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1993
+#: lib/util.php:1996
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"

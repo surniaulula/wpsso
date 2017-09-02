@@ -85,6 +85,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $headers;
 		}
 
+		// $mixed = 'default' | 'current' | post ID | $mod array
 		public function get_head_cache_index( $mixed = 'current', $sharing_url = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -94,7 +95,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$lca = $this->p->cf['lca'];
 			$head_index = '';
 
-			if ( $mixed !== false ) {	// optimize for __construct()
+			if ( $mixed !== false ) {
 				$head_index .= '_locale:'.SucomUtil::get_locale( $mixed );
 			}
 
