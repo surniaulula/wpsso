@@ -798,23 +798,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function __construct() {
 		}
 
-		private static function get_timezone( $timezone, $format ) {
+		private static function get_timezone( $tz_name, $format ) {
 			$dt = new DateTime();
-			$dt->setTimeZone( new DateTimeZone( $timezone ) );
+			$dt->setTimeZone( new DateTimeZone( $tz_name ) );
 			return $dt->format( $format );
 		}
 
+		// use 'tz' in method name to hint that input is an abbreviation
 		public static function get_tz_name( $tz_abbr ) {
 			return timezone_name_from_abbr( $tz_abbr );
 		}
 
-		public static function get_timezone_abbr( $tz ) {
-			return self::get_timezone( $timezone, 'T' );
+		public static function get_timezone_abbr( $tz_name ) {
+			return self::get_timezone( $tz_name, 'T' );
 		}
 
 		// timezone offset in seconds - offset west of UTC is negative, and east of UTC is positive
-		public static function get_timezone_offset( $timezone ) {
-			return self::get_timezone( $timezone, 'Z' );
+		public static function get_timezone_offset( $tz_name ) {
+			return self::get_timezone( $tz_name, 'Z' );
 		}
 
 		private static function get_array( $array, $idx = false, $add_none = false ) {
