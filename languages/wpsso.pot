@@ -650,8 +650,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:7
 msgctxt "plugin description"
 msgid ""
-"Automatically generate complete and accurate meta tags + Schema markup from "
-"your content for social media optimization (SMO) and SEO."
+"Automatically generate complete and accurate meta tags and Schema markup "
+"from your content for social media optimization (SMO) and SEO."
 msgstr ""
 
 #: lib/config-gettext-extract.php:8
@@ -4448,8 +4448,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Automatically generate complete and accurate meta tags + Schema markup from "
-"your content for social media optimization (SMO) and SEO."
+"Automatically generate complete and accurate meta tags and Schema markup "
+"from your content for social media optimization (SMO) and SEO."
 msgstr ""
 
 #. Author of the plugin/theme
