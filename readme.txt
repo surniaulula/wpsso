@@ -340,7 +340,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.8-b.2 (2017/09/03)**
+**Version 3.45.8-rc.1 (2017/09/03)**
 
 * *New Features*
 	* None
@@ -673,7 +673,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.8-b.2 =
+= 3.45.8-rc.1 =
 
 (2017/09/03) Added detection of All In One SEO Pack Pro. Added support for custom event offers, including their name, price, currency, and availability. Renamed the 'wpsso_shorten_url' filter to 'wpsso_get_short_url'.
 
