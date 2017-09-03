@@ -1,8 +1,8 @@
-<h1>WPSSO (Core Plugin)</h1><h3>Advanced Plugin for Social Meta Tags, Schema Markup, SEO, Knowledge Graph</h3>
+<h1>WPSSO (Core Plugin)</h1><h3>Advanced Plugin for All Social Meta Tags, Schema/Rich Card Markup and SEO</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO (Core Plugin)</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically generate complete and accurate meta tags and Schema markup from your content for social media optimization (SMO) and SEO.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.45.7</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.7</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.8.1</td></tr>
@@ -15,15 +15,15 @@
 
 <p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-<p><strong>WPSSO uses your <em>existing</em> content to create meta tags + Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, <em>but if you want to</em>, you can customize just about anything and everything. ;-)</p>
+<p><strong>WPSSO uses your <em>existing</em> content to create meta tags and Schema markup</strong> &mdash; there's no need to manually enter / configure any additional settings or values, <em>but if you want to</em>, you can customize just about anything and everything. ;-)</p>
 
-<p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags + Schema markup</strong> &mdash; including hashtags, image SEO, video SEO, e-commerce product SEO, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.</p>
+<p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup</strong> &mdash; including hashtags, image SEO, video SEO, e-commerce product SEO, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.</p>
 
 <p><strong>WPSSO offers special optimization features for Pinterest</strong> &mdash; providing an image for the Pin It button, excluding non-relevant images, and preventing conflicts between incompatible Pinterest and Facebook meta tag values.</p>
 
 <p><strong>WPSSO includes advanced <em>quality control</em> features and options</strong> &mdash; checking minimum / maximum image dimensions and aspect ratios, verifying the webpage for duplicate meta tags, showing notices for missing and required images, along with theme header template validation.</p>
 
-<p><strong>WPSSO can enhance and integrate with your favorite SEO plugin!</strong> &mdash; WPSSO specializes in providing all the meta tags + Schema markup social sites and search engines need, and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
+<p><strong>WPSSO can enhance and integrate with your favorite SEO plugin!</strong> &mdash; WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need, and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
 
 <p><strong>WPSSO offers a <em>fast</em> and <em>reliable</em> social framework for developers</strong> &mdash; offering dozens of 3rd party integration modules in the Pro version, several Free and Pro extensions, and hundreds of filter hooks to easily customize WPSSO's behavior and output.</p>
 
@@ -202,7 +202,7 @@
 
 <h4>Complete Social Meta Tags</h4>
 
-<p>WPSSO adds Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, and Search Engine Optimization (SEO) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, e-commerce product details, author profile / authorship, publisher, etc.). WPSSO uses <em>existing</em> content to generate meta tags + Schema markup &mdash; there's no need to manually enter / configure any additional settings or values.</p>
+<p>WPSSO adds Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, and Search Engine Optimization (SEO) meta tags to the head section of webpages. These meta tags are used by Google Search and all social websites to describe and display your content correctly (title, description, hashtags, images, videos, e-commerce product details, author profile / authorship, publisher, etc.). WPSSO uses <em>existing</em> content to generate meta tags and Schema markup &mdash; there's no need to manually enter / configure any additional settings or values.</p>
 
 <h4>3rd Party Integration (Pro version)</h4>
 
