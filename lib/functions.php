@@ -89,7 +89,7 @@ if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 	function wpsso_clear_all_cache( $clear_ext = false ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( is_object( $wpsso->util ) ) {
-			return $wpsso->util->clear_all_cache( $clear_ext, __FUNCTION__.'_function', true );
+			$wpsso->util->clear_all_cache( $clear_ext, __FUNCTION__.'_function', true );
 		}
 	}
 }
@@ -98,7 +98,7 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 	function wpsso_clear_post_cache( $post_id ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( isset( $wpsso->m['util']['post'] ) ) {
-			return $wpsso->m['util']['post']->clear_cache( $post_id );
+			$wpsso->m['util']['post']->clear_cache( $post_id );
 		}
 	}
 }

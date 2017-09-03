@@ -79,20 +79,6 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
 					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod, false ), 'wide' ),	// $add_page = false
 				),
-				'product_avail' => null,	// placeholder
-				'product_condition' => null,	// placeholder
-				'product_price' => null,	// placeholder
-				'subsection_schema' => array(
-					'td_class' => 'subsection', 'header' => 'h4',
-					'label' => _x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' )
-				),
-				'schema_desc' => array(
-					'label' => _x( 'Schema Description', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
-					'no_auto_draft' => true,
-					'content' => $form->get_no_textarea_value( $this->p->page->get_description( $this->p->options['schema_desc_len'],
-						'...', $mod ), '', '', $this->p->options['schema_desc_len'] ),
-				),
 			);
 
 			if ( $og_type === 'product' ) {
@@ -136,6 +122,18 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'content' => $form->get_no_input( 'product_size', '', '', true ),	// $placeholder = true for default value
 				);
 			}
+
+			$form_rows['subsection_schema'] = array(
+				'td_class' => 'subsection', 'header' => 'h4',
+				'label' => _x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' )
+			);
+			$form_rows['schema_desc'] = array(
+				'label' => _x( 'Schema Description', 'option label', 'wpsso' ),
+				'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
+				'no_auto_draft' => true,
+				'content' => $form->get_no_textarea_value( $this->p->page->get_description( $this->p->options['schema_desc_len'],
+					'...', $mod ), '', '', $this->p->options['schema_desc_len'] ),
+			);
 
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
 				'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );

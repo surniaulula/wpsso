@@ -1637,15 +1637,15 @@ msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:76 lib/gpl/admin/post.php:87
-#: lib/pro/admin/meta.php:95 lib/pro/admin/post.php:118
+#: lib/gpl/admin/meta.php:76 lib/gpl/admin/post.php:128
+#: lib/pro/admin/meta.php:95 lib/pro/admin/post.php:156
 #: lib/submenu/general.php:260
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:79 lib/gpl/admin/post.php:90
-#: lib/pro/admin/meta.php:98 lib/pro/admin/post.php:121
+#: lib/gpl/admin/meta.php:79 lib/gpl/admin/post.php:131
+#: lib/pro/admin/meta.php:98 lib/pro/admin/post.php:159
 msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
@@ -1734,43 +1734,43 @@ msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:100 lib/messages.php:532 lib/pro/admin/post.php:133
+#: lib/gpl/admin/post.php:86 lib/messages.php:532 lib/pro/admin/post.php:114
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gpl/admin/post.php:106 lib/messages.php:539 lib/pro/admin/post.php:139
+#: lib/gpl/admin/post.php:92 lib/messages.php:539 lib/pro/admin/post.php:120
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/gpl/admin/post.php:111 lib/messages.php:546 lib/pro/admin/post.php:144
+#: lib/gpl/admin/post.php:97 lib/messages.php:546 lib/pro/admin/post.php:125
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gpl/admin/post.php:116 lib/messages.php:553 lib/pro/admin/post.php:149
+#: lib/gpl/admin/post.php:102 lib/messages.php:553 lib/pro/admin/post.php:130
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gpl/admin/post.php:122 lib/messages.php:567 lib/pro/admin/post.php:155
+#: lib/gpl/admin/post.php:108 lib/messages.php:567 lib/pro/admin/post.php:136
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gpl/admin/post.php:128 lib/messages.php:574 lib/pro/admin/post.php:161
+#: lib/gpl/admin/post.php:114 lib/messages.php:574 lib/pro/admin/post.php:142
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gpl/admin/post.php:134 lib/messages.php:581 lib/pro/admin/post.php:167
+#: lib/gpl/admin/post.php:120 lib/messages.php:581 lib/pro/admin/post.php:148
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:140 lib/meta.php:205 lib/post.php:675
-#: lib/pro/admin/post.php:173
+#: lib/gpl/admin/post.php:138 lib/meta.php:205 lib/post.php:675
+#: lib/pro/admin/post.php:168
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
