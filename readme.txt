@@ -340,7 +340,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.8-b.1 (2017/09/02)**
+**Version 3.45.8-b.2 (2017/09/03)**
 
 * *New Features*
 	* None
@@ -352,6 +352,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added support for custom event offers, including their name, price, currency, and availability.
 	* Renamed the 'wpsso_shorten_url' filter to 'wpsso_get_short_url'.
 	* Renamed the 'wpsso_cache_expire_shorten_url' filter to 'wpsso_cache_expire_short_url'.
+	* Renamed the SucomForm get_image_upload_input() method to get_input_image_upload().
+	* Renamed the SucomForm get_image_url_input() method to get_input_image_url().
+	* Renamed the SucomForm get_video_url_input() method to get_input_video_url().
+	* Renamed the SucomForm get_image_dimensions_input() method to get_input_image_dimensions().
 
 **Version 3.45.7 (2017/08/30)**
 
@@ -669,9 +673,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.8-b.1 =
+= 3.45.8-b.2 =
 
-(2017/09/02) Added detection of All In One SEO Pack Pro. Added support for custom event offers, including their name, price, currency, and availability. Renamed the 'wpsso_shorten_url' filter to 'wpsso_get_short_url'.
+(2017/09/03) Added detection of All In One SEO Pack Pro. Added support for custom event offers, including their name, price, currency, and availability. Renamed the 'wpsso_shorten_url' filter to 'wpsso_get_short_url'.
 
 = 3.45.7 =
 
