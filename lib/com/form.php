@@ -287,6 +287,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_select( $name, $values, $class, $id, $is_assoc, true, $selected, $on_change );
 		}
 
+		public function get_select_timezone( $name, $class = '', $id = '', $disabled = false, $selected = false ) {
+			$class = trim( 'timezone '.$class );
+			$timezones = timezone_identifiers_list();
+			return $this->get_select( $name, $timezones, $class, $id, $disabled, $selected );
+		}
+
+		public function get_no_select_timezone( $name, $class = '', $id = '', $selected = false ) {
+			return $this->get_select_timezone( $name, $class, $id, true, $selected );
+		}
+
 		public function get_select_time( $name, $class = '', $id = '', $disabled = false, $selected = false, $step_mins = 30 ) {
 
 			if ( empty( $name ) || ! isset( $this->defaults[$name] ) ) {
@@ -384,14 +394,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = '';
 			$value = $this->in_options( $name ) ? $this->options[$name] : '';
-			$placeholder = $this->get_sanitized_placeholder( $name, $placeholder );
+			$placeholder = $this->get_placeholder_sanitized( $name, $placeholder );
 
 			if ( ! is_array( $len ) ) {
 				$len = array( 'max' => $len );
 			}
 
 			if ( ! empty( $len['max'] ) && ! empty( $id ) ) {
-				$html .= $this->get_text_len_js( 'text_'.$id );
+				$html .= $this->get_text_length_js( 'text_'.$id );
 			}
 
 			$html .= '<input type="text" name="'.esc_attr( $this->options_name.'['.$name.']' ).'"'.
@@ -685,7 +695,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_no_input( $name = '', $class = '', $id = '', $placeholder = '' ) {
 			$html = '';
 			$value = $this->in_options( $name ) ? $this->options[$name] : '';
-			$placeholder = $this->get_sanitized_placeholder( $name, $placeholder );
+			$placeholder = $this->get_placeholder_sanitized( $name, $placeholder );
 			if ( ! empty( $name ) ) {
 				$html .= $this->get_hidden( $name );
 			}
@@ -693,7 +703,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
+		// deprecated on 2017/09/03
 		public function get_image_upload_input( $opt_prefix, $placeholder = '', $disabled = false ) {
+			return $this->get_input_image_upload( $opt_prefix, $placeholder, $disabled );
+		}
+
+		public function get_input_image_upload( $opt_prefix, $placeholder = '', $disabled = false ) {
 			$opt_suffix = '';
 			$select_lib = 'wp';
 			$media_libs = array( 'wp' => 'Media Library' );
@@ -731,11 +746,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'</div>';
 		}
 
+		// deprecated on 2017/09/03
 		public function get_no_image_upload_input( $opt_prefix, $placeholder = '' ) {
-			return $this->get_image_upload_input( $opt_prefix, $placeholder, true );
+			return $this->get_input_image_upload( $opt_prefix, $placeholder, true );
 		}
 
+		public function get_no_input_image_upload( $opt_prefix, $placeholder = '' ) {
+			return $this->get_input_image_upload( $opt_prefix, $placeholder, true );
+		}
+
+		// deprecated on 2017/09/03
 		public function get_image_url_input( $opt_prefix, $url = '' ) {
+			return $this->get_input_image_url( $opt_prefix, $url );
+		}
+
+		public function get_input_image_url( $opt_prefix, $url = '' ) {
 			$opt_suffix = '';
 
 			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
@@ -750,7 +775,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'wide', '', 0, SucomUtil::esc_url_encode( $url ), $disabled );
 		}
 
+		// deprecated on 2017/09/03
 		public function get_video_url_input( $opt_prefix, $url = '' ) {
+			return $this->get_input_video_url( $opt_prefix, $url );
+		}
+
+		public function get_input_video_url( $opt_prefix, $url = '' ) {
 			// disable if we have a custom video embed
 			$disabled = empty( $this->options[$opt_prefix.'_embed'] ) ? false : true;
 
@@ -758,7 +788,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				SucomUtil::esc_url_encode( $url ), $disabled );
 		}
 
+		// deprecated on 2017/09/03
 		public function get_image_dimensions_input( $name, $use_opts = false, $narrow = false, $disabled = false ) {
+			return $this->get_input_image_dimensions( $name, $use_opts, $narrow, $disabled );
+		}
+
+		public function get_input_image_dimensions( $name, $use_opts = false, $narrow = false, $disabled = false ) {
 
 			$def_width = '';
 			$def_height = '';
@@ -801,26 +836,42 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'px crop '.$this->get_checkbox( $name.'_crop', '', '', $disabled ).$crop_area_select;
 		}
 
+		// deprecated on 2017/09/03
 		public function get_no_image_dimensions_input( $name, $use_opts = false, $narrow = false ) {
-			return $this->get_image_dimensions_input( $name, $use_opts, $narrow, true );
+			return $this->get_input_image_dimensions( $name, $use_opts, $narrow, true );
+		}
+
+		public function get_no_input_image_dimensions( $name, $use_opts = false, $narrow = false ) {
+			return $this->get_input_image_dimensions( $name, $use_opts, $narrow, true );
 		}
 
 		public function get_image_dimensions_text( $name, $use_opts = false ) {
+
 			if ( ! empty( $this->options[$name.'_width'] ) &&
 				! empty( $this->options[$name.'_height'] ) ) {
+
 				return $this->options[$name.'_width'].' x '.$this->options[$name.'_height'].
 					( $this->options[$name.'_crop'] ? ', cropped' : '' );
+
 			} elseif ( $use_opts === true ) {
+
 				if ( ! empty( $this->p->options[$name.'_width'] ) &&
 					! empty( $this->p->options[$name.'_height'] ) ) {
+
 					return $this->p->options[$name.'_width'].' x '.$this->p->options[$name.'_height'].
 						( $this->p->options[$name.'_crop'] ? ', cropped' : '' );
 				}
 			}
+
 			return;
 		}
 
+		// deprecated on 2017/09/03
 		public function get_copy_input( $value, $class = 'wide', $id = '' ) {
+			$this->get_input_copy_clipboard( $value, $class, $id );
+		}
+
+		public function get_input_copy_clipboard( $value, $class = 'wide', $id = '' ) {
 			if ( empty( $id ) ) {
 				$id = uniqid();
 			}
@@ -859,14 +910,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = '';
 			$value = $this->in_options( $name ) ? $this->options[$name] : '';
-			$placeholder = $this->get_sanitized_placeholder( $name, $placeholder );
+			$placeholder = $this->get_placeholder_sanitized( $name, $placeholder );
 
 			if ( ! is_array( $len ) ) {
 				$len = array( 'max' => $len );
 			}
 
 			if ( ! empty( $len['max'] ) && ! empty( $id ) ) {
-				$html .= $this->get_text_len_js( 'textarea_'.$id );
+				$html .= $this->get_text_length_js( 'textarea_'.$id );
 			}
 
 			$html .= '<textarea '.
@@ -946,7 +997,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return isset( $this->defaults[$idx] ) ? true : false;
 		}
 
-		private function get_text_len_js( $id ) {
+		private function get_text_length_js( $id ) {
 			return empty( $id ) ?
 				'' : '<script type="text/javascript">
 				jQuery(document).ready(function(){
@@ -955,7 +1006,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				});</script>';
 		}
 
-		private function get_sanitized_placeholder( $name, $placeholder ) {
+		private function get_placeholder_sanitized( $name, $placeholder ) {
 
 			if ( empty( $name ) ) {
 				return $placeholder;	// just in case

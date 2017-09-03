@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.8-b.1\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.8-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -583,7 +583,7 @@ msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:259 lib/com/form.php:364 lib/com/form.php:513
+#: lib/com/form.php:259 lib/com/form.php:374 lib/com/form.php:523
 #: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "(default)"

@@ -1595,6 +1595,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$wpsso =& Wpsso::get_instance();
+			$sharing_url = $wpsso->util->get_sharing_url( $mod );
 
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'adding single event data for '.$event_id );
@@ -1643,38 +1644,57 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$event_date = $mod['obj']->get_options( $mod['id'], $md_pre.'_date' );
 				$event_time = $mod['obj']->get_options( $mod['id'], $md_pre.'_time' );
 
-				if ( ! empty( $event_date ) && ! empty( $event_time ) ) {
-					$event_opts[$opt_key] = $event_date.'T'.$event_time;
-				// check for a date with no time
-				} elseif ( ! empty( $event_date ) && empty( $event_time ) ) {
-					$event_opts[$opt_key] = $event_date.'T00:00';
-				// check for a time with no date
-				} elseif ( empty( $event_date ) && ! empty( $event_time ) ) {
-					$event_opts[$opt_key] = gmdate( 'Y-m-d', time() ).'T'.$event_time;	// use the current date
+				if ( ! $event_timezone = $mod['obj']->get_options( $mod['id'], $md_pre.'_timezone' ) ) {
+					$event_timezone = get_option( 'timezone_string' );
 				}
+
+				if ( empty( $event_date ) && empty( $event_time ) ) {
+					continue;	// nothing to do
+				} elseif ( ! empty( $event_date ) && empty( $event_time ) ) {	// date with no time
+					$event_time = '00:00';
+				} elseif ( empty( $event_date ) && ! empty( $event_time ) ) {	// time with no date
+					$event_date = gmdate( 'Y-m-d', time() );
+				}
+
+				$event_opts[$opt_key] = date_format( date_create( $event_date.' '.$event_time.' '.$event_timezone ), 'c' );
 			}
 
 			// look for custom event offers
 			$have_offers = false;
 			foreach ( range( 0, WPSSOJSON_SCHEMA_EVENT_OFFERS_MAX, 1 ) as $key_num ) {
-				$opt_offer = array();
+
+				$offer_opts = array();
+
 				foreach ( array( 
 					'offer_name' => 'schema_event_offer_name',
 					'offer_price' => 'schema_event_offer_price',
 					'offer_price_currency' => 'schema_event_offer_currency',
-					'offer_price_availability' => 'schema_event_offer_avail',
+					'offer_availability' => 'schema_event_offer_avail',
 				) as $opt_key => $md_pre ) {
-					$opt_offer[$opt_key] = $mod['obj']->get_options( $mod['id'], $md_pre.'_'.$key_num );
+					$offer_opts[$opt_key] = $mod['obj']->get_options( $mod['id'], $md_pre.'_'.$key_num );
 				}
-				if ( isset( $opt_offer['offer_name'] ) && isset( $opt_offer['offer_price'] ) ) {
+
+				if ( isset( $offer_opts['offer_name'] ) && isset( $offer_opts['offer_price'] ) ) {
+
+					$offer_opts['offer_url'] = $sharing_url;
+
+					if ( isset( $event_opts['event_start_date'] ) ) {
+						$offer_opts['offer_valid_from'] = $event_opts['event_start_date'];
+					}
+
+					if ( isset( $event_opts['event_start_date'] ) ) {
+						$offer_opts['offer_valid_through'] = $event_opts['event_end_date'];
+					}
+
 					if ( $have_offers === false ) {
 						$have_offers = true;
 						if ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'custom event offer found - creating new offers array' );
 						}
-						$event_opts['event_offers'] = array();	// clear offers from filter
+						$event_opts['event_offers'] = array();	// clear offers returned by filter
 					}
-					$event_opts['event_offers'][] = $opt_offer;
+
+					$event_opts['event_offers'][] = $offer_opts;
 				}
 			}
 
@@ -1729,9 +1749,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( is_array( $event_offer ) &&	// just in case
 						( $offer = self::get_data_itemprop_from_assoc( $event_offer, array( 
 							'name' => 'offer_name',
+							'url' => 'offer_url',
 							'price' => 'offer_price',
 							'priceCurrency' => 'offer_price_currency',
 							'availability' => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
+							'validFrom' => 'offer_valid_from',
+							'validThrough' => 'offer_valid_through',
 					) ) ) !== false ) {
 						// add the complete offer
 						$ret['offers'][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );

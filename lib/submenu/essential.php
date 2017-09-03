@@ -96,11 +96,11 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 					$table_rows['og_def_img_id'] = $this->form->get_th_html( _x( 'Default / Fallback Image ID',
 						'option label', 'wpsso' ), null, 'og_def_img_id' ).
-					'<td>'.$this->form->get_image_upload_input( 'og_def_img' ).'</td>';
+					'<td>'.$this->form->get_input_image_upload( 'og_def_img' ).'</td>';
 
 					$table_rows['og_def_img_url'] = $this->form->get_th_html( _x( 'or Default / Fallback Image URL',
 						'option label', 'wpsso' ), null, 'og_def_img_url' ).
-					'<td>'.$this->form->get_image_url_input( 'og_def_img' ).'</td>';
+					'<td>'.$this->form->get_input_image_url( 'og_def_img' ).'</td>';
 
 					$table_rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Google / Schema', 'metabox title', 'wpsso' ).'</h4></td>';

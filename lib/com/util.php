@@ -798,6 +798,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function __construct() {
 		}
 
+		private static function get_timezone( $timezone, $format ) {
+			$dt = new DateTime();
+			$dt->setTimeZone( new DateTimeZone( $timezone ) );
+			return $dt->format( $format );
+		}
+
+		public static function get_tz_name( $tz_abbr ) {
+			return timezone_name_from_abbr( $tz_abbr );
+		}
+
+		public static function get_timezone_abbr( $tz ) {
+			return self::get_timezone( $timezone, 'T' );
+		}
+
+		// timezone offset in seconds - offset west of UTC is negative, and east of UTC is positive
+		public static function get_timezone_offset( $timezone ) {
+			return self::get_timezone( $timezone, 'Z' );
+		}
+
 		private static function get_array( $array, $idx = false, $add_none = false ) {
 
 			if ( $idx === null ) {
@@ -2448,27 +2467,36 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_size_info( $size_name = 'thumbnail' ) {
-			if ( is_integer( $size_name ) )
+
+			if ( is_integer( $size_name ) ) {
 				return;
-			if ( is_array( $size_name ) )
+			} elseif ( is_array( $size_name ) ) {
 				return;
+			}
 
 			global $_wp_additional_image_sizes;
 
-			if ( isset( $_wp_additional_image_sizes[$size_name]['width'] ) )
+			if ( isset( $_wp_additional_image_sizes[$size_name]['width'] ) ) {
 				$width = intval( $_wp_additional_image_sizes[$size_name]['width'] );
-			else $width = get_option( $size_name.'_size_w' );
+			} else {
+				$width = get_option( $size_name.'_size_w' );
+			}
 
-			if ( isset( $_wp_additional_image_sizes[$size_name]['height'] ) )
+			if ( isset( $_wp_additional_image_sizes[$size_name]['height'] ) ) {
 				$height = intval( $_wp_additional_image_sizes[$size_name]['height'] );
-			else $height = get_option( $size_name.'_size_h' );
+			} else {
+				$height = get_option( $size_name.'_size_h' );
+			}
 
-			if ( isset( $_wp_additional_image_sizes[$size_name]['crop'] ) )
+			if ( isset( $_wp_additional_image_sizes[$size_name]['crop'] ) ) {
 				$crop = $_wp_additional_image_sizes[$size_name]['crop'];
-			else $crop = get_option( $size_name.'_crop' );
+			} else {
+				$crop = get_option( $size_name.'_crop' );
+			}
 
-			if ( ! is_array( $crop ) )
+			if ( ! is_array( $crop ) ) {
 				$crop = empty( $crop ) ? false : true;
+			}
 
 			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
 		}

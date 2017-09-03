@@ -225,11 +225,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				$table_rows[] = $form->get_th_html( _x( 'Sharing URL',
 					'option label', 'wpsso' ), 'medium' ).
-				'<td>'.$form->get_copy_input( $long_url ).'</td>';
+				'<td>'.$form->get_input_copy_clipboard( $long_url ).'</td>';
 
 				$table_rows[] = $form->get_th_html( _x( 'Shortened URL',
 					'option label', 'wpsso' ), 'medium' ).
-				'<td>'.$form->get_copy_input( $short_url ).'</td>';
+				'<td>'.$form->get_input_copy_clipboard( $short_url ).'</td>';
 			}
 
 			$table_rows[] = $form->get_th_html( _x( 'Open Graph Example',
@@ -365,7 +365,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			// Twitter
 			$table_rows[] = $form->get_th_html( _x( 'Twitter Card Validator', 'option label', 'wpsso' ), 'medium' ).
-			'<td class="validate">'.$this->p->msgs->get( 'info-meta-validate-twitter' ).$form->get_copy_input( $sharing_url ).'</td>'.
+			'<td class="validate">'.$this->p->msgs->get( 'info-meta-validate-twitter' ).$form->get_input_copy_clipboard( $sharing_url ).'</td>'.
 			'<td class="validate">'.$form->get_button( _x( 'Validate Twitter Card', 'submit button', 'wpsso' ),
 				'button-secondary', '', $twitter_url, true ).'</td>';
 

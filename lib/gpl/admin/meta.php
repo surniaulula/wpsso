@@ -118,12 +118,12 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'tr_class' => 'hide_in_basic',
 				'label' => _x( 'Image Dimensions', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'og_img_dimensions', 'td_class' => 'blank',
-				'content' => $form->get_no_image_dimensions_input( 'og_img', true ),	// $use_opts = true
+				'content' => $form->get_no_input_image_dimensions( 'og_img', true ),	// $use_opts = true
 			);
 			$form_rows['og_img_id'] = array(
 				'label' => _x( 'Image ID', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-og_img_id', 'td_class' => 'blank',
-				'content' => $form->get_no_image_upload_input( 'og_img', $media_info['pid'], true ),
+				'content' => $form->get_no_input_image_upload( 'og_img', $media_info['pid'], true ),
 			);
 			$form_rows['og_img_url'] = array(
 				'label' => _x( 'or an Image URL', 'option label', 'wpsso' ),
@@ -193,13 +193,13 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'tr_class' => 'hide_in_basic',
 				'label' => _x( 'Image Dimensions', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'schema_img_dimensions', 'td_class' => 'blank',
-				'content' => $form->get_no_image_dimensions_input( 'schema_img', true ),	// $use_opts = true
+				'content' => $form->get_no_input_image_dimensions( 'schema_img', true ),	// $use_opts = true
 			);
 			$form_rows['schema_img_id'] = array(
 				'tr_class' => 'hide_in_basic',
 				'label' => _x( 'Image ID', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-schema_img_id', 'td_class' => 'blank',
-				'content' => $form->get_no_image_upload_input( 'schema_img', $media_info['pid'], true ),
+				'content' => $form->get_no_input_image_upload( 'schema_img', $media_info['pid'], true ),
 			);
 			$form_rows['schema_img_url'] = array(
 				'tr_class' => 'hide_in_basic',

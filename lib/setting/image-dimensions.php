@@ -70,19 +70,19 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 					$table_rows['og_img_dimensions'] = $this->form->get_th_html( _x( 'Facebook / Open Graph',
 						'option label', 'wpsso' ), null, 'og_img_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'og_img' ).'</td>';	// $use_opts = false
+					'<td>'.$this->form->get_input_image_dimensions( 'og_img' ).'</td>';	// $use_opts = false
 
 					$table_rows['schema_img_dimensions'] = $this->form->get_th_html( _x( 'Google / Schema / Pinterest',
 						'option label', 'wpsso' ), null, 'schema_img_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'schema_img' ).'</td>';	// $use_opts = false
+					'<td>'.$this->form->get_input_image_dimensions( 'schema_img' ).'</td>';	// $use_opts = false
 
 					$table_rows['tc_sum_img_dimensions'] = $this->form->get_th_html( _x( 'Twitter <em>Summary</em> Card',
 						'option label', 'wpsso' ), null, 'tc_sum_img_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'tc_sum_img' ).'</td>';	// $use_opts = false
+					'<td>'.$this->form->get_input_image_dimensions( 'tc_sum_img' ).'</td>';	// $use_opts = false
 
 					$table_rows['tc_lrg_img_dimensions'] = $this->form->get_th_html( _x( 'Twitter <em>Large Image Summary</em> Card',
 						'option label', 'wpsso' ), null, 'tc_lrg_img_dimensions' ).
-					'<td>'.$this->form->get_image_dimensions_input( 'tc_lrg_img' ).'</td>';	// $use_opts = false
+					'<td>'.$this->form->get_input_image_dimensions( 'tc_lrg_img' ).'</td>';	// $use_opts = false
 
 					break;
 			}
