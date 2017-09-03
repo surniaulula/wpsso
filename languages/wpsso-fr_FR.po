@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-02 10:23-0400\n"
-"PO-Revision-Date: 2017-09-02 10:23-0400\n"
+"POT-Creation-Date: 2017-09-02 21:40-0400\n"
+"PO-Revision-Date: 2017-09-02 21:41-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -594,8 +594,8 @@ msgstr "Alpha et plus"
 
 #: lib/config-gettext-extract.php:7
 msgctxt "plugin description"
-msgid "Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO."
-msgstr "Créer automatiquement des balises méta + balisage de Schéma complet de votre contenu pour l'optimisation de partage sociale (SMO) et SEO."
+msgid "Automatically generate complete and accurate meta tags and Schema markup from your content for social media optimization (SMO) and SEO."
+msgstr "Créer automatiquement des balises méta et balisage de Schéma complet de votre contenu pour l'optimisation de partage sociale (SMO) et SEO."
 
 #: lib/config-gettext-extract.php:8
 msgctxt "option value"
@@ -3840,8 +3840,8 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Automatically generate complete and accurate meta tags + Schema markup from your content for social media optimization (SMO) and SEO."
-msgstr "Créer automatiquement des balises méta + balisage de Schéma complet de votre contenu pour l'optimisation de partage sociale (SMO) et SEO."
+msgid "Automatically generate complete and accurate meta tags and Schema markup from your content for social media optimization (SMO) and SEO."
+msgstr "Créer automatiquement des balises méta et balisage de Schéma complet de votre contenu pour l'optimisation de partage sociale (SMO) et SEO."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
