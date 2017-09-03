@@ -24,7 +24,7 @@ if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
 	function wpsso_get_post_mod( $post_id ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( isset( $wpsso->m['util']['post'] ) ) {
-			$wpsso->m['util']['post']->get_mod( $post_id );
+			return $wpsso->m['util']['post']->get_mod( $post_id );
 		} else {
 			return false;
 		}
@@ -35,7 +35,7 @@ if ( ! function_exists( 'wpsso_get_term_mod' ) ) {
 	function wpsso_get_term_mod( $term_id ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( isset( $wpsso->m['util']['term'] ) ) {
-			$wpsso->m['util']['term']->get_mod( $term_id );
+			return $wpsso->m['util']['term']->get_mod( $term_id );
 		} else {
 			return false;
 		}
@@ -46,7 +46,7 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
 	function wpsso_get_user_mod( $user_id ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( isset( $wpsso->m['util']['user'] ) ) {
-			$wpsso->m['util']['user']->get_mod( $user_id );
+			return $wpsso->m['util']['user']->get_mod( $user_id );
 		} else {
 			return false;
 		}
@@ -98,7 +98,7 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 	function wpsso_clear_post_cache( $post_id ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( isset( $wpsso->m['util']['post'] ) ) {
-			$wpsso->m['util']['post']->clear_cache( $post_id );
+			return $wpsso->m['util']['post']->clear_cache( $post_id );
 		}
 	}
 }
