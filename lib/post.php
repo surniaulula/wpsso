@@ -100,6 +100,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function get_mod( $mod_id ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}

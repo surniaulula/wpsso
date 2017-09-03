@@ -703,7 +703,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			// don't bother saving unless we have to
 			if ( $old_prefs !== $new_prefs ) {
 				self::$pref[$user_id] = $new_prefs;	// update the pref cache
-				unset( $new_prefs['options_filtered'] );
+				unset( $new_prefs['prefs_filtered'] );
 				update_user_meta( $user_id, WPSSO_PREF_NAME, $new_prefs );
 				return true;
 			} else return false;
@@ -713,28 +713,33 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_id = $user_id === false ? 
 				get_current_user_id() : $user_id;
 
-			if ( ! isset( self::$pref[$user_id]['options_filtered'] ) || 
-				self::$pref[$user_id]['options_filtered'] !== true ) {
+			if ( ! isset( self::$pref[$user_id]['prefs_filtered'] ) || self::$pref[$user_id]['prefs_filtered'] !== true ) {
 
 				$wpsso = Wpsso::get_instance();
 
-				self::$pref[$user_id] = apply_filters( $wpsso->cf['lca'].'_get_user_pref',
-					get_user_meta( $user_id, WPSSO_PREF_NAME, true ), $user_id );
+				self::$pref[$user_id] = get_user_meta( $user_id, WPSSO_PREF_NAME, true );
 
-				if ( ! is_array( self::$pref[$user_id] ) )
+				if ( ! is_array( self::$pref[$user_id] ) ) {
 					self::$pref[$user_id] = array();
+				}
 
-				if ( ! isset( self::$pref[$user_id]['show_opts'] ) )
+				self::$pref[$user_id]['prefs_filtered'] = true;	// set before calling filter to prevent recursion
+				self::$pref[$user_id] = apply_filters( $wpsso->cf['lca'].'_get_user_pref', self::$pref[$user_id], $user_id );
+
+				if ( ! isset( self::$pref[$user_id]['show_opts'] ) ) {
 					self::$pref[$user_id]['show_opts'] = $wpsso->options['plugin_show_opts'];
-
-				self::$pref[$user_id]['options_filtered'] = true;
+				}
 			}
 
 			if ( $idx !== false ) {
-				if ( isset( self::$pref[$user_id][$idx] ) ) 
+				if ( isset( self::$pref[$user_id][$idx] ) ) {
 					return self::$pref[$user_id][$idx];
-				else return false;
-			} else return self::$pref[$user_id];
+				} else {
+					return false;
+				}
+			} else {
+				return self::$pref[$user_id];
+			}
 		}
 
 		public static function is_show_all( $user_id = false ) {

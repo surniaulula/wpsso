@@ -2012,8 +2012,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		// get_config is called very early, so don't apply filters unless instructed
 		public static function get_config( $idx = false, $filter_cf = false ) {
 
-			if ( ! isset( self::$cf['config_filtered'] ) ||
-				self::$cf['config_filtered'] !== true ) {
+			if ( ! isset( self::$cf['config_filtered'] ) || self::$cf['config_filtered'] !== true ) {
 
 				self::$cf['*'] = array(
 					'base' => array(),
@@ -2028,9 +2027,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				if ( $filter_cf ) {
 
+					self::$cf['config_filtered'] = true;	// set before calling filter to prevent recursion
 					self::$cf = apply_filters( self::$cf['lca'].'_get_config', self::$cf, self::get_version() );
-
-					self::$cf['config_filtered'] = true;
 
 					foreach ( self::$cf['plugin'] as $ext => $info ) {
 

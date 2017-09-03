@@ -462,8 +462,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$opts =& $this->p->options;		// shortcut
 			$md_defs =& $this->defs[$mod_id];	// shortcut
 
-			if ( ! WpssoOptions::can_cache() || 
-				empty( $md_defs['options_filtered'] ) ) {
+			if ( ! WpssoOptions::can_cache() || empty( $md_defs['options_filtered'] ) ) {
 
 				$md_defs = array(
 					'options_filtered' => '',
@@ -520,17 +519,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'gv_id_img' => 0,
 				);
 
-				$md_defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults',
-					$md_defs, $this->get_mod( $mod_id ) );
-
 				if ( WpssoOptions::can_cache() ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting options_filtered to true' );
 					}
-					$md_defs['options_filtered'] = true;
+					$md_defs['options_filtered'] = true;	// set before calling filter to prevent recursion
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
 				}
+
+				$md_defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults', $md_defs, $this->get_mod( $mod_id ) );
 
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'get_defaults filter skipped' );

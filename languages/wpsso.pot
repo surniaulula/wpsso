@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:629 lib/post.php:373 lib/term.php:268 lib/user.php:251
+#: lib/admin.php:629 lib/post.php:374 lib/term.php:268 lib/user.php:251
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1769,7 +1769,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:138 lib/meta.php:205 lib/post.php:675
+#: lib/gpl/admin/post.php:138 lib/meta.php:205 lib/post.php:676
 #: lib/pro/admin/post.php:168
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2189,7 +2189,7 @@ msgid ""
 "convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
 msgstr ""
 
-#: lib/messages.php:396 lib/messages.php:406 lib/post.php:631
+#: lib/messages.php:396 lib/messages.php:406 lib/post.php:632
 #: lib/profile/social-settings.php:37 lib/term.php:292 lib/user.php:281
 msgctxt "metabox title"
 msgid "Social Settings"
@@ -3406,7 +3406,7 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:595
+#: lib/meta.php:593
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -3471,84 +3471,84 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/post.php:454
+#: lib/post.php:455
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding "
 "%1$s to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:458
+#: lib/post.php:459
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:489
+#: lib/post.php:490
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:491
+#: lib/post.php:492
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:493
+#: lib/post.php:494
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:495
+#: lib/post.php:496
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:506 lib/util.php:854
+#: lib/post.php:507 lib/util.php:854
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:515
+#: lib/post.php:516
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:524
+#: lib/post.php:525
 msgid "A &lt;meta /&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:534
+#: lib/post.php:535
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:551
+#: lib/post.php:552
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:565
+#: lib/post.php:566
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:565
+#: lib/post.php:566
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:565
+#: lib/post.php:566
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors (suggested), or disable "
 "the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:588 lib/post.php:590
+#: lib/post.php:589 lib/post.php:591
 msgid "Awesome! No duplicate meta tags found. :-)"
 msgstr ""
 
-#: lib/post.php:591
+#: lib/post.php:592
 msgid "%s more checks to go..."
 msgstr ""
 
