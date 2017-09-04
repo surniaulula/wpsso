@@ -279,7 +279,7 @@ msgstr ""
 
 #: lib/admin.php:1439
 msgctxt "option label"
-msgid "Support and Updates Expire"
+msgid "Updates and Support Expire"
 msgstr ""
 
 #: lib/admin.php:1440

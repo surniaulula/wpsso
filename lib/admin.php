@@ -1436,7 +1436,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						} elseif ( class_exists( 'SucomUpdate' ) ) {
 
 							foreach ( array(
-								'exp_date' => _x( 'Support and Updates Expire', 'option label', 'wpsso' ),
+								'exp_date' => _x( 'Updates and Support Expire', 'option label', 'wpsso' ),
 								'qty_used' => _x( 'Site Licenses Assigned', 'option label', 'wpsso' ),
 							) as $key => $label ) {
 								if ( $val = SucomUpdate::get_option( $ext, $key ) ) {
