@@ -340,7 +340,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.8 (2017/09/04)**
+**Version 3.45.9 (2017/09/04)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Changed a constant multiplication in the config.php array for it's numerical equivalent for older PHP versions.
+* *Developer Notes*
+	* None
+
+**Version 3.45.8 (2017/09/03)**
 
 * *New Features*
 	* None
@@ -673,9 +684,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
+= 3.45.9 =
+
+(2017/09/04) Changed a constant multiplication in the config.php array for it's numerical equivalent for older PHP versions.
+
 = 3.45.8 =
 
-(2017/09/04) Added detection of All In One SEO Pack Pro. Added support for custom event offers, including their name, price, currency, and availability. Renamed the 'wpsso_shorten_url' filter to 'wpsso_get_short_url'.
+(2017/09/03) Added detection of All In One SEO Pack Pro. Added support for custom event offers, including their name, price, currency, and availability. Renamed the 'wpsso_shorten_url' filter to 'wpsso_get_short_url'.
 
 = 3.45.7 =
 
