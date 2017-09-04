@@ -819,14 +819,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		//	/html/head/meta[starts-with(@property, 'og:video:')]
 		public function get_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false ) {
 
-			if ( empty( $query ) ) {
+			if ( empty( $request ) ) {	// just in case
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: the request argument is empty' );
+				}
+				return false;
+
+			} elseif ( empty( $query ) ) {	// just in case
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: the query argument is empty' );
 				}
 				return false;
-			}
 
-			if ( stripos( $request, '<html' ) !== false ) {	// request contains html
+			} elseif ( stripos( $request, '<html' ) !== false ) {	// request contains html
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using the html submitted as the request argument' );

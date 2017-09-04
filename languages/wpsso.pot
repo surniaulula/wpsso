@@ -2216,7 +2216,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:401 lib/util.php:1959
+#: lib/messages.php:401 lib/util.php:1966
 msgid "No options available."
 msgstr ""
 
@@ -3510,7 +3510,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:530 lib/util.php:854
+#: lib/post.php:530 lib/util.php:861
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -3657,12 +3657,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:151 lib/pro/media/vimeo.php:128
-#: lib/pro/media/wistia.php:264 lib/util.php:919
+#: lib/pro/media/wistia.php:264 lib/util.php:926
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:154 lib/pro/media/vimeo.php:131
-#: lib/pro/media/wistia.php:267 lib/util.php:922
+#: lib/pro/media/wistia.php:267 lib/util.php:929
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4386,36 +4386,36 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:843
+#: lib/util.php:850
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:865
+#: lib/util.php:872
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:964
+#: lib/util.php:971
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1985
+#: lib/util.php:1992
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1989
+#: lib/util.php:1996
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1992
+#: lib/util.php:1999
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr ""
 
-#: lib/util.php:1996
+#: lib/util.php:2003
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

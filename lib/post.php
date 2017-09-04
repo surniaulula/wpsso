@@ -448,7 +448,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			$exec_count = (int) $this->p->debug->enabled ? 0 : get_option( WPSSO_POST_CHECK_NAME );		// cast to change false to 0
+			$exec_count = $this->p->debug->enabled ? 0 : (int) get_option( WPSSO_POST_CHECK_NAME );		// cast to change false to 0
 			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 10 );
 
 			if ( $exec_count >= $max_count ) {
