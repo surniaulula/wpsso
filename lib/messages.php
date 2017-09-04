@@ -702,7 +702,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_clear_short_urls':
 							$cache_exp = (int) apply_filters( $lca.'_cache_expire_short_url', $this->p->options['plugin_short_url_cache_exp'] );
-							$text = sprintf( __( 'Clear all shortened URLs when clearing all %s transients from the WordPress database (default is unchecked).', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'Shortened URLs are cached for %s to minimize service API calls. Updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider.', 'wpsso' ), human_time_diff( 0, $cache_exp ) );
+							$text = sprintf( __( 'Clear all shortened URLs when clearing all %s transients from the WordPress database (default is unchecked).', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'Shortened URLs are cached for %s to minimize external service API calls. Updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider.', 'wpsso' ), human_time_diff( 0, $cache_exp ) );
 							break;
 
 						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for Comment
@@ -1341,26 +1341,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( strpos( $idx, 'column-' ) === 0 ) {
 				switch ( $idx ) {
 					case 'column-purchase-pro':
-						$text = '<p>'.sprintf( __( '<strong>%s includes:</strong>',
-							'wpsso' ), $info['short_pro'] ).'</p>';
-
+						$text = '<p>'.sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info['short_pro'] ).'</p>';
 						$text .= '<ul>';
-						$text .= '<li>'.__( 'Custom Social Settings for posts, terms, and users.',
-							'wpsso' ).'</li>';
-						$text .= '<li>'.__( 'Integration with 3rd party plugins and service APIs.',
-							'wpsso' ).'</li>';
-						$text .= '<li>'.__( 'Advanced settings page and features.',
-							'wpsso' ).'</li>';
+						$text .= '<li>'.__( 'Custom Social Settings for posts, pages, custom post types, terms (categories, tags, and custom taxonomies), and user profiles.', 'wpsso' ).'</li>';
+						$text .= '<li>'.__( 'Integration with numerous 3rd party plugins and external service APIs.', 'wpsso' ).'</li>';
+						$text .= '<li>'.__( 'Advanced plugin settings and features.', 'wpsso' ).'</li>';
 						$text .= '</ul>';
+						$text .= '<p>'.__( '<strong>Nontransferable Pro licenses never expire</strong> &mdash; you may receive unlimited / lifetime updates and support for each licensed WordPress Site Address.', 'wpsso' ).' '.__( 'How great is that!?', 'wpsso' ).' :-)</p>';
 
 						if ( $this->p->avail['*']['p_dir'] ) {
-							$text .= '<p>'.sprintf( __( '<strong>Purchase %s easily with PayPal</strong> &mdash; and license the Pro version immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';
+							$text .= '<p>'.sprintf( __( '<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; license the Pro version immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';
 						} else {
-							$text .= '<p>'.sprintf( __( '<strong>Purchase %s easily with PayPal</strong> &mdash; and update the Free plugin immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';
+							$text .= '<p>'.sprintf( __( '<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; update the Free plugin to Pro immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';
 						}
-
-						$text .= '<p>'.__( '<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees for support and updates.',
-							'wpsso' ).' '.__( 'How great is that?', 'wpsso' ).' :-)</p>';
 						break;
 
 					case 'column-help-support':

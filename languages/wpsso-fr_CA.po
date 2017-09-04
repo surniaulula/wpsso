@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-04 10:49-0400\n"
-"PO-Revision-Date: 2017-09-04 10:49-0400\n"
+"POT-Creation-Date: 2017-09-04 13:27-0400\n"
+"PO-Revision-Date: 2017-09-04 13:27-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2250,8 +2250,8 @@ msgid "Clear all shortened URLs when clearing all %s transients from the WordPre
 msgstr "Supprimez tout les URL raccourcies lors du vidange de tout les objets transitoire %s de la base de données WordPress (valeur par défaut est décochée)."
 
 #: lib/messages.php:705
-msgid "Shortened URLs are cached for %s to minimize service API calls. Updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider."
-msgstr "Les URL raccourcies sont mises en cache pendant %s pour minimiser les appels d'API de service. La mise à jour immédiate de toutes les URL raccourcies peut dépasser les limites d'appel API imposées par votre fournisseur de services de raccourcissement."
+msgid "Shortened URLs are cached for %s to minimize external service API calls. Updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider."
+msgstr "Les URL raccourcies sont mises en cache pendant %s pour minimiser les appels d'API de services externes. La mise à jour immédiate de toutes les URL raccourcies peut dépasser les limites d'appel API imposées par votre fournisseur de service de raccourcissement."
 
 #: lib/messages.php:709
 msgid "Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed."
@@ -2744,47 +2744,47 @@ msgstr "Si possible, mettre à jour %1$s à la dernière version stable de produ
 msgid "<strong>%s includes:</strong>"
 msgstr "<strong>%s comprend:</strong>"
 
+#: lib/messages.php:1346
+msgid "Custom Social Settings for posts, pages, custom post types, terms (categories, tags, and custom taxonomies), and user profiles."
+msgstr "Réglages Sociaux personnalisés pour les articles, pages, types de contenus personnalisés, termes (catégories, étiquettes, et taxonomie personnalisés), et profil d'utilisateurs."
+
+#: lib/messages.php:1347
+msgid "Integration with numerous 3rd party plugins and external service APIs."
+msgstr "Intégration avec de nombreux extensions tierces et API de services externes."
+
 #: lib/messages.php:1348
-msgid "Custom Social Settings for posts, terms, and users."
-msgstr "Réglages Sociaux personnalisés pour articles, termes, et utilisateurs."
-
-#: lib/messages.php:1350
-msgid "Integration with 3rd party plugins and service APIs."
-msgstr "Modules d'intégration pour les extensions tierces et les API de service."
-
-#: lib/messages.php:1352
-msgid "Advanced settings page and features."
+msgid "Advanced plugin settings and features."
 msgstr "Page de réglages et fonctions avancées."
 
-#: lib/messages.php:1357
-msgid "<strong>Purchase %s easily with PayPal</strong> &mdash; and license the Pro version immediately after your purchase!"
-msgstr "<strong>C'est facile d'acheter %s avec Paypal</strong> &mdash; vous pouvez autoriser la version Pro immédiatement après votre achat!"
+#: lib/messages.php:1350
+msgid "<strong>Nontransferable Pro licenses never expire</strong> &mdash; you may receive unlimited / lifetime updates and support for each licensed WordPress Site Address."
+msgstr "<strong>Les licences Pro non-transférables n'expirent jamais</strong> &mdash; vous pouvez recevoir des mises à jour et un soutien illimités / à vie pour chaque adresse de site WordPress autorisée."
 
-#: lib/messages.php:1359
-msgid "<strong>Purchase %s easily with PayPal</strong> &mdash; and update the Free plugin immediately after your purchase!"
-msgstr "<strong>C'est rfacile d'acheter %s avec Paypal</strong> &mdash; vous pouvez mettre à jour l'extension gratuite immédiatement après votre achat!"
-
-#: lib/messages.php:1362
-msgid "<strong>Pro licenses never expire</strong> &mdash; there are no yearly fees for support and updates."
-msgstr "<strong>Les licences Pro n'expirent jamais</strong> &mdash; il n'y a aucun frais annuels ou récurrents pour le soutien et les mises à jour."
-
-#: lib/messages.php:1363
-msgid "How great is that?"
+#: lib/messages.php:1350
+msgid "How great is that!?"
 msgstr "C'est génial!"
 
-#: lib/messages.php:1367
+#: lib/messages.php:1353
+msgid "<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; license the Pro version immediately after your purchase!"
+msgstr "<strong>C'est facile et rapide d'acheter %s avec Paypal</strong> &mdash; autorisez la version Pro immédiatement après votre achat!"
+
+#: lib/messages.php:1355
+msgid "<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; update the Free plugin to Pro immediately after your purchase!"
+msgstr "<strong>C'est facile et rapide d'acheter %s avec Paypal</strong> &mdash; mettez à jour l'extension gratuite à Pro immédiatement après votre achat!"
+
+#: lib/messages.php:1360
 msgid "<strong>The continued development of %1$s is driven by user requests</strong> &mdash; we welcome all your comments and suggestions!"
 msgstr "<strong>Le développement continu de %1$s est motivé par les demandes de nos clients</strong> &mdash; nous accueillons tous vos commentaires et suggestions!"
 
-#: lib/messages.php:1371
+#: lib/messages.php:1364
 msgid "<strong>Great ratings are a terrific way to encourage plugin developers</strong> &mdash; and it only takes a minute (or less)."
 msgstr "<strong>Une bonne cote est une excellente façon d'encourager un développeur d'extension</strong> &mdash; et ça ne prend qu'une minute (ou moins)."
 
-#: lib/messages.php:1371
+#: lib/messages.php:1364
 msgid "Please encourage us by rating the plugins you use."
 msgstr "Veuillez nous encourager en notant les plugins que vous utilisez."
 
-#: lib/messages.php:1384
+#: lib/messages.php:1377
 msgid "This option is localized &mdash; you may change the WordPress locale with %s, etc., to define alternate option values for different languages."
 msgstr "Cette option est localisé &mdash; vous pouvez changer la langue locale admin WordPress avec %s, etc., pour définir des valeurs d'option pour d'autres langues."
 
