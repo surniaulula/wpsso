@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-02 21:40-0400\n"
-"PO-Revision-Date: 2017-09-02 21:41-0400\n"
+"POT-Creation-Date: 2017-09-03 11:12-0400\n"
+"PO-Revision-Date: 2017-09-03 11:12-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -532,7 +532,7 @@ msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
 
-#: lib/com/form.php:259 lib/com/form.php:364 lib/com/form.php:513
+#: lib/com/form.php:259 lib/com/form.php:374 lib/com/form.php:523
 #: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "(default)"
