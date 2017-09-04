@@ -2360,8 +2360,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			// defines a two-dimensional array
 			} else {
-				$mt_image = $this->p->head->get_single_mt( 'link',
-					'itemprop', 'image.url', $mixed, '', $mod );
+				$mt_image = $this->p->head->get_single_mt( 'link', 'itemprop', 'image.url', $mixed, '', $mod );
 			}
 
 			// make sure we have html for at least one meta tag
