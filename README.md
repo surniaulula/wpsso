@@ -33,8 +33,8 @@
 
 <ul>
 <li>Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.</li>
-<li>Adds Pinterest Rich Pin meta tags + <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</li>
-<li>Adds author (Person), publisher (Organization), and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</li>
+<li>Adds Pinterest Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</li>
+<li>Adds author, publisher, and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</li>
 <li>Adds Weibo meta tags for article creation and update dates.</li>
 <li>Adds all available Twitter Card meta tags:
 
@@ -46,7 +46,7 @@
 </ul></li>
 <li>Customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.</li>
 <li>Support for Automattic's <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> plugin.</li>
-<li>Support for featured, attached, gallery shortcode, and/or image HTML tags in content.</li>
+<li>Support for featured, attached, gallery shortcode, and/or images from HTML tags in content.</li>
 <li>Optional fallback to a default image and video for index and search webpages.</li>
 <li>Configurable title and description lengths (Open Graph, Twitter Card, SEO).</li>
 <li>Configurable title separator character (hyphen by default).</li>
@@ -93,6 +93,7 @@
 <li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a> (Free version)</li>
 </ul></li>
+<li>Provides an option to hide the preview of all Pro settings and features.</li>
 </ul>
 
 <blockquote>

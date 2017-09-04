@@ -36,8 +36,8 @@ Automatically generate complete and accurate meta tags and Schema markup from yo
 **WPSSO Free / Standard Features**
 
 * Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.
-* Adds Pinterest Rich Pin meta tags + [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
-* Adds author (Person), publisher (Organization), and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
+* Adds Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
+* Adds author, publisher, and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
 * Adds Weibo meta tags for article creation and update dates.
 * Adds all available Twitter Card meta tags:
 	* [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
@@ -46,7 +46,7 @@ Automatically generate complete and accurate meta tags and Schema markup from yo
 	* [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
 * Customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.
 * Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
-* Support for featured, attached, gallery shortcode, and/or image HTML tags in content.
+* Support for featured, attached, gallery shortcode, and/or images from HTML tags in content.
 * Optional fallback to a default image and video for index and search webpages.
 * Configurable title and description lengths (Open Graph, Twitter Card, SEO).
 * Configurable title separator character (hyphen by default).
@@ -84,6 +84,7 @@ Automatically generate complete and accurate meta tags and Schema markup from yo
 	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) (Free version)
 	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) (Free version)
 	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) (Free version)
+* Provides an option to hide the preview of all Pro settings and features.
 
 <blockquote>
 <p>Download the Free version from <a href="https://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
