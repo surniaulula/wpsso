@@ -93,7 +93,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['plugin'] = 'wp-product-review/wp-product-review.php';
 							break;
 						case 'seo-aioseop':
-							$chk['plugin'] = 'all-in-one-seo-pack/all_in_one_seo_pack.php';
+							$chk['function'] = 'aioseop_init_class';	// free and pro versions
 							break;
 						case 'seo-autodescription':
 							$chk['plugin'] = 'autodescription/autodescription.php';
@@ -108,7 +108,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['plugin'] = 'squirrly-seo/squirrly.php';
 							break;
 						case 'seo-wpseo':
-							$chk['function'] = 'wpseo_init';	// includes wpseo premium
+							$chk['function'] = 'wpseo_init';	// free and premium versions
 							break;
 						case 'social-buddypress':
 							$chk['plugin'] = 'buddypress/bp-loader.php';
