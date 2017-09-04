@@ -166,40 +166,52 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				) );
 			}
 
-			if ( isset( $this->p->options['plugin_shortener'] ) &&
-				$this->p->options['plugin_shortener'] !== 'none' ) {
+			// check if a shortening service has been defined
+			if ( empty( $this->p->options['plugin_shortener'] ) || 
+				$this->p->options['plugin_shortener'] === 'none' ) {
 
-					$mod = $this->get_mod( $post_id );
-
-					if ( empty( $mod['post_type'] ) ) {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'exiting early: post_type is empty' );
-						}
-						return $shortlink;
-					} elseif ( empty( $mod['post_status'] ) ) {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'exiting early: post_status is empty' );
-						}
-						return $shortlink;
-					} elseif ( $mod['post_status'] === 'auto-draft' ) {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'exiting early: post_status is auto-draft' );
-						}
-						return $shortlink;
-					}
-
-					$long_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
-					$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',
-						$long_url, $this->p->options['plugin_shortener'] );
-
-					if ( $long_url !== $short_url ) {	// just in case
-						return $short_url;
-					}
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'no shortener defined for shortlinks' );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: no shortening service defined' );
+				}
+				return $shortlink;	// return original shortlink
 			}
 
-			return $shortlink;
+			$mod = $this->get_mod( $post_id );
+
+			if ( empty( $mod['post_type'] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: post_type is empty' );
+				}
+				return $shortlink;	// return original shortlink
+			} elseif ( empty( $mod['post_status'] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: post_status is empty' );
+				}
+				return $shortlink;	// return original shortlink
+			} elseif ( $mod['post_status'] === 'auto-draft' ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: post_status is auto-draft' );
+				}
+				return $shortlink;	// return original shortlink
+			}
+
+			$long_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
+			$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',
+				$long_url, $this->p->options['plugin_shortener'] );
+
+			if ( $long_url === $short_url ) {	// shortened failed
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: short URL ('.$short_url.') returned is identical to long URL.' );
+				}
+				return $shortlink;	// return original shortlink
+			} elseif ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// invalid url
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: invalid short URL ('.$short_url.') returned by filter' );
+				}
+				return $shortlink;	// return original shortlink
+			}
+
+			return $short_url;	// success - return short url
 		}
 
 		public function add_post_column_headings( $columns ) { 
@@ -448,8 +460,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$charset = get_bloginfo( 'charset' );
 			$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
-			$shortlink_encoded = SucomUtil::encode_emoji( htmlentities( urldecode( $shortlink ), 
-				ENT_QUOTES, $charset, false ) );	// double_encode = false
+			$shortlink_encoded = SucomUtil::encode_emoji( htmlentities( urldecode( $shortlink ), ENT_QUOTES, $charset, false ) );	// double_encode = false
+
+			if ( filter_var( $shortlink, FILTER_VALIDATE_URL ) === false ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: wp_get_shortlink() returned an invalid URL ('.$shortlink.') for post ID '.$post_id );
+				}
+				if ( is_admin() ) {
+					$this->p->notice->err( sprintf( __( 'The WordPress wp_get_shortlink() function returned an invalid URL (%1$s) for post ID %2$s.',
+						'wpsso' ), '<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>', $post_id ) );
+				}
+				return;
+			}
+
 			$check_opts = SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' );
 			$conflicts_found = 0;
 			$conflicts_msg = __( 'Possible conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage.',
