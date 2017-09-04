@@ -122,6 +122,9 @@ Automatically generate complete and accurate meta tags and Schema markup from yo
 		* WooCommerce (versions 1, 2, and 3)
 		* WordPress REST API (version 2)
 		* WP eCommerce
+		* WP Product Review (requires WPSSO JSON Pro extension)
+		* WP Recipe Maker (requires WPSSO JSON Pro extension)
+		* WP Ultimate Recipe (requires WPSSO JSON Pro extension)
 		* Yoast SEO (aka WordPress SEO)
 		* Yotpo Social Reviews for WooCommerce
 	* **Integration with Service APIs**
