@@ -1852,7 +1852,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public function do_metabox_tabs( $metabox = '', $tabs = array(), $table_rows = array(), $args = array() ) {
+		public function do_metabox_tabs( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 
 			$tab_keys = array_keys( $tabs );
 			$default_tab = '_'.reset( $tab_keys );		// must start with an underscore
@@ -1860,10 +1860,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$class_link = 'sucom-tablink';
 			$class_tabset = 'sucom-tabset';
 
-			if ( ! empty( $metabox ) ) {
-				$metabox = '_'.$metabox;		// must start with an underscore
-				$class_metabox_tabs .= ' '.$class_metabox_tabs.$metabox;
-				$class_link .= ' '.$class_link.$metabox;
+			if ( ! empty( $metabox_id ) ) {
+				$metabox_id = '_'.$metabox_id;		// must start with an underscore
+				$class_metabox_tabs .= ' '.$class_metabox_tabs.$metabox_id;
+				$class_link .= ' '.$class_link.$metabox_id;
 			}
 
 			// allow a css ID to be passed as a query argument
@@ -1873,11 +1873,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			), $args ) );
 
 			echo "\n".'<script type="text/javascript">jQuery(document).ready(function(){ '.
-				'sucomTabs(\''.$metabox.'\', \''.$default_tab.'\', \''.$scroll_to.'\'); });</script>'."\n";
+				'sucomTabs(\''.$metabox_id.'\', \''.$default_tab.'\', \''.$scroll_to.'\'); });</script>'."\n";
 			echo '<div class="'.$class_metabox_tabs.'">'."\n";
 			echo '<ul class="'.$class_metabox_tabs.'">'."\n";
 			foreach ( $tabs as $tab => $title ) {
-				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
+				$class_href_key = $class_tabset.$metabox_id.'-tab_'.$tab;
 				echo '<div class="tab_left">&nbsp;</div><li class="'.
 					$class_href_key.'"><a class="'.$class_link.'" href="#'.
 					$class_href_key.'">'.$title.'</a></li>'."\n";
@@ -1885,9 +1885,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			echo '</ul><!-- .'.$class_metabox_tabs.' -->'."\n";
 
 			foreach ( $tabs as $tab => $title ) {
-				$class_href_key = $class_tabset.$metabox.'-tab_'.$tab;
-				$this->do_table_rows( $table_rows[$tab], $class_href_key, ( empty( $metabox ) ?
-					'' : $class_tabset.$metabox ), $class_tabset );
+				$class_href_key = $class_tabset.$metabox_id.'-tab_'.$tab;
+				$this->do_table_rows( $table_rows[$tab], $class_href_key, ( empty( $metabox_id ) ?
+					'' : $class_tabset.$metabox_id ), $class_tabset );
 			}
 			echo '</div><!-- .'.$class_metabox_tabs.' -->'."\n\n";
 		}

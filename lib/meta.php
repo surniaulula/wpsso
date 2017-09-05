@@ -110,17 +110,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__ );
 		}
 
-		public function add_metaboxes() {
+		public function add_meta_boxes() {
 			return $this->must_be_extended( __METHOD__ );
 		}
 
-		public function show_metabox_social_settings( $obj ) {
+		public function show_metabox_custom_meta( $obj ) {
 			return $this->must_be_extended( __METHOD__ );
 		}
 
-		protected function get_social_tabs( $metabox, array &$mod ) {
-			switch ( $metabox ) {
-				case 'social_settings':
+		protected function get_custom_meta_tabs( $metabox_id, array &$mod ) {
+			switch ( $metabox_id ) {
+				case $this->p->cf['meta']['id']:
 					$tabs = array(
 						'text' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
 						'media' => _x( 'Select Media', 'metabox tab', 'wpsso' ),
@@ -128,7 +128,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
 						'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
 					);
-					// move the text and media option tabs to the end
+					// if pro options are hidden, move the (empty) text and media tabs to the end
 					if ( ! empty( $this->p->options['plugin_hide_pro'] ) ) {
 						foreach ( array( 'text', 'media' ) as $key ) {
 							SucomUtil::move_to_end( $tabs, $key );
@@ -139,10 +139,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$tabs = array();	// just in case
 					break;
 			}
-			return apply_filters( $this->p->cf['lca'].'_'.$mod['name'].'_'.$metabox.'_tabs', $tabs, $mod );
+			return apply_filters( $this->p->cf['lca'].'_'.$mod['name'].'_custom_meta_tabs', $tabs, $mod, $metabox_id );
 		}
 
-		protected function get_table_rows( &$metabox, &$key, &$head_info, &$mod ) {
+		protected function get_table_rows( &$metabox_id, &$key, &$head_info, &$mod ) {
 			$table_rows = array();
 			switch ( $key ) {
 				case 'preview':

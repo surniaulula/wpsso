@@ -1344,17 +1344,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::insert_in_array( 'replace', $array, $match_key, $mixed, $add_value );
 		}
 
-		// modifies the references array directly, and returns true or false
+		// modifies the referenced array directly, and returns true or false
 		public static function add_before_key( array &$array, $match_key, $mixed, $add_value = '' ) {
 			return self::insert_in_array( 'before', $array, $match_key, $mixed, $add_value, true );	// $ret_matched = true
 		}
 
-		// modifies the references array directly, and returns true or false
+		// modifies the referenced array directly, and returns true or false
 		public static function add_after_key( array &$array, $match_key, $mixed, $add_value = '' ) {
 			return self::insert_in_array( 'after', $array, $match_key, $mixed, $add_value, true );	// $ret_matched = true
 		}
 
-		// modifies the references array directly, and returns true or false
+		// modifies the referenced array directly, and returns true or false
 		public static function do_replace_key( array &$array, $match_key, $mixed, $add_value = '' ) {
 			return self::insert_in_array( 'replace', $array, $match_key, $mixed, $add_value, true );	// $ret_matched = true
 		}

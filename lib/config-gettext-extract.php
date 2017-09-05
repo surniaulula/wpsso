@@ -79,11 +79,13 @@ _x( 'Right', 'option value', 'wpsso' );
 _x( 'Saturday', 'option value', 'wpsso' );
 _x( '(settings value)', 'option value', 'wpsso' );
 _x( 'Social and SEO Image Dimensions', 'lib file description', 'wpsso' );
+_x( 'Social / Search', 'lib file description', 'wpsso' );
+_x( 'Social / Search', 'menu title', 'wpsso' );
+_x( 'Social / Search Optimization', 'metabox title', 'wpsso' );
 _x( 'Sold Out', 'option value', 'wpsso' );
 _x( 'SoundCloud Business URL', 'option value', 'wpsso' );
 _x( 'SSO Desc', 'column header', 'wpsso' );
 _x( 'SSO Img', 'column header', 'wpsso' );
-_x( 'SSO', 'menu label', 'wpsso' );
 _x( 'SSO Schema', 'column header', 'wpsso' );
 _x( 'Stable / Production', 'option value', 'wpsso' );
 _x( 'Sunday', 'option value', 'wpsso' );
@@ -114,6 +116,5 @@ _x( 'WPSSO extension to provide updates for the WPSSO Pro plugin and its Pro ext
 _x( 'WPSSO extension to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched.', 'plugin description', 'wpsso' );
 _x( 'Yes', 'option value', 'wpsso' );
 _x( 'YOURLS', 'option value', 'wpsso' );
-_x( 'Your Social Settings', 'lib file description', 'wpsso' );
 _x( 'YouTube Business Channel URL', 'option value', 'wpsso' );
 ?>

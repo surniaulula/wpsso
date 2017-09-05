@@ -32,8 +32,8 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 			) );
 		}
 
+		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
-			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_setup_guide',
 				_x( 'Setup Guide', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_setup_guide' ),

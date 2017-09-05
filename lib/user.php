@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( ! empty( $_GET ) && ! isset( $_GET['updated'] ) ) {
 					// common to both profile and user editing pages
-					add_action( 'admin_init', array( &$this, 'add_metaboxes' ) );
+					add_action( 'admin_init', array( &$this, 'add_meta_boxes' ) );
 					// load_meta_page() priorities: 100 post, 200 user, 300 term
 					// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
 					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 200, 1 );
@@ -261,7 +261,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public function add_metaboxes() {
+		public function add_meta_boxes() {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
@@ -276,10 +276,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
+			$metabox_id = $this->p->cf['meta']['id'];
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
+
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_user', $add_metabox, $user_id ) ) {
-				add_meta_box( $lca.'_social_settings', _x( 'Social Settings', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_social_settings' ), $lca.'-user', 'normal', 'low' );
+				add_meta_box( $lca.'_'.$metabox_id, _x( 'Social Settings', 'metabox title', 'wpsso' ),
+					array( &$this, 'show_metabox_custom_meta' ), $lca.'-user', 'normal', 'low' );
 			}
 		}
 
@@ -307,33 +309,35 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			echo '<!-- '.$lca.' user metabox section end -->'."\n";
 		}
 
-		public function show_metabox_social_settings( $user_obj ) {
+		public function show_metabox_custom_meta( $user_obj ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
 			$lca = $this->p->cf['lca'];
-			$metabox = 'social_settings';
+			$metabox_id = $this->p->cf['meta']['id'];
 			$mod = $this->get_mod( $user_obj->ID );
-			$tabs = $this->get_social_tabs( $metabox, $mod );
+			$tabs = $this->get_custom_meta_tabs( $metabox_id, $mod );
 			$opts = $this->get_options( $user_obj->ID );
 			$def_opts = $this->get_defaults( $user_obj->ID );
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
+
 			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( $metabox.' table rows' );	// start timer
+				$this->p->debug->mark( $metabox_id.' table rows' );	// start timer
 			}
 
 			$table_rows = array();
 			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key, WpssoMeta::$head_meta_info, $mod ), 
+				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ), 
 					apply_filters( $lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
-			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
+			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( $metabox.' table rows' );	// end timer
+				$this->p->debug->mark( $metabox_id.' table rows' );	// end timer
 			}
 		}
 

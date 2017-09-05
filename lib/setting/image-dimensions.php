@@ -32,8 +32,8 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			) );
 		}
 
+		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
-			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_image_dimensions',
 				_x( 'Image Dimensions', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_image_dimensions' ), $this->pagehook, 'normal' );
@@ -46,11 +46,11 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 		}
 
 		public function show_metabox_image_dimensions() {
-			$metabox = $this->menu_id;
+			$metabox_id = $this->menu_id;
 			echo '<table class="sucom-settings '.$this->p->cf['lca'].'">';
 
-			$table_rows = array_merge( $this->get_table_rows( $metabox, 'general' ),
-				apply_filters( SucomUtil::sanitize_hookname( $this->p->cf['lca'].'_'.$metabox.'_general_rows' ),
+			$table_rows = array_merge( $this->get_table_rows( $metabox_id, 'general' ),
+				apply_filters( SucomUtil::sanitize_hookname( $this->p->cf['lca'].'_'.$metabox_id.'_general_rows' ),
 					array(), $this->form ) );
 
 			sort( $table_rows );
@@ -61,10 +61,10 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			echo '</table>';
 		}
 
-		protected function get_table_rows( $metabox, $key ) {
+		protected function get_table_rows( $metabox_id, $key ) {
 			$table_rows = array();
 
-			switch ( $metabox.'-'.$key ) {
+			switch ( $metabox_id.'-'.$key ) {
 
 				case 'image-dimensions-general':
 

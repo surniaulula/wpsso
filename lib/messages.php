@@ -459,18 +459,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						/*
-						 * 'Social Settings' settings
+						 * 'Custom Meta' settings
 						 */
 						case 'tooltip-plugin_show_columns':
 							$text = __( 'Additional columns can be included in admin list pages to show the Schema type ID, Open Graph image, etc. When a column is enabled, <strong>individual users can also hide that column</strong> by using the <em>Screen Options</em> tab on each admin list page.', 'wpsso' );
 							break;
 
 						case 'tooltip-plugin_add_to':
-							$text = 'The Social Settings metabox, which allows you to enter custom Facebook / Open Graph values (among other options), is available on the User, Posts, Pages, Media, and Product admin pages by default. If your theme (or another plugin) supports additional custom post types, and you would like to include the Social Settings metabox on their admin pages, check the appropriate option(s) here.';
-							break;
-
-						case 'tooltip-plugin_add_tab':
-							$text = __( 'Include and exclude specific tabs in the Social Settings metabox.', 'wpsso' );
+							$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 							break;
 
 						case 'tooltip-plugin_wpseo_social_meta':

@@ -32,10 +32,11 @@ if ( ! class_exists( 'WpssoProfileSocialSettings' ) && class_exists( 'WpssoAdmin
 			) );
 		}
 
+		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
-			add_meta_box( $this->pagehook.'_social_settings', 
-				_x( 'Social Settings', 'metabox title', 'wpsso' ), 
-					array( &$this, 'show_metabox_social_settings' ), $this->pagehook, 'normal' );
+			$metabox_id = $this->p->cf['meta']['id'];
+			add_meta_box( $this->pagehook.'_'.$metabox_id, _x( 'Social Settings', 'metabox title', 'wpsso' ), 
+				array( &$this, 'show_metabox_custom_meta' ), $this->pagehook, 'normal' );
 
 		}
 
@@ -44,13 +45,13 @@ if ( ! class_exists( 'WpssoProfileSocialSettings' ) && class_exists( 'WpssoAdmin
 			return $action_buttons;
 		}
 
-		public function show_metabox_social_settings() {
+		public function show_metabox_custom_meta() {
 			$user_id = get_current_user_id();	// since wp 3.0
 			$user = get_userdata( $user_id );
-			if ( empty( $user->ID ) ) {
+			if ( empty( $user->ID ) ) {	// just in case
 				wp_die( __( 'Invalid user ID.' ) );
 			}
-			$this->p->m['util']['user']->show_metabox_social_settings( $user );
+			$this->p->m['util']['user']->show_metabox_custom_meta( $user );
 		}
 	}
 }

@@ -167,6 +167,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					array(), $plugin_version );
 
 			if ( isset( $this->p->cf['menu']['color'] ) ) {
+
 				$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
 				$sitemenu = $lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
 				$icon_highlight = defined( 'WPSSO_MENU_ICON_HIGHLIGHT' ) && 
@@ -183,6 +184,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			}
 
+			$metabox_id = $this->p->cf['meta']['id'];
 			$custom_style_css .= '
 				@font-face {
 					font-family:"Star";
@@ -194,8 +196,15 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					font-weight:normal;
 					font-style:normal;
 				}
-				#'.$lca.'_social_settings.postbox { 
+				#profile-page.wrap #your-profile #'.$lca.'_'.$metabox_id.'.postbox h3:first-of-type {
+					margin:0;
+				}
+				#'.$lca.'_'.$metabox_id.'.postbox { 
 					min-width:760px;
+				}
+				#'.$lca.'_'.$metabox_id.' .inside {
+					padding:0;
+					margin:0;
 				}
 				.column-'.$lca.'_og_img { 
 					width:'.$sort_cols['og_img']['width'].' !important;

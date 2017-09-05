@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.9',		// plugin version
+					'version' => '3.45.10-dev.1',		// plugin version
 					'opt_version' => '539',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'lib' => array(			// libraries
 						'profile' => array (	// lib file descriptions will be translated
-							'social-settings' => 'Your Social Settings',
+							'social-settings' => 'Social / Search',
 						),
 						'setting' => array (	// lib file descriptions will be translated
 							'image-dimensions' => 'Social and SEO Image Dimensions',
@@ -999,8 +999,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_hide_pro:use' => 'default',
 					'plugin_show_opts' => 'basic',			// Options to Show by Default
 					'plugin_show_opts:use' => 'default',
-					// Content and Filters Tab
-					// Social Settings Tab
 					// Integration Tab
 					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
 					'plugin_honor_force_ssl:use' => 'default',
@@ -1174,10 +1172,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'menu' => array(
-				'label' => 'SSO',		// menu item label
-				'color' => '33cc33',		// menu item color (lime green)
+				'title' => 'Social / Search',	// menu title
+				'color' => '33cc33',		// menu color (lime green)
 			),
-			'edit' => array(
+			'meta' => array(			// post, term, user add_meta_box() settings
+				'id' => 'sso',
+				'title' => 'Social / Search Optimization',
+			),
+			'edit' => array(			// post, term, user lists
 				'columns' => array(
 					'schema_type' => array(
 						'header' => 'SSO Schema',

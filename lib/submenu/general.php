@@ -26,8 +26,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->menu_ext = $ext;	// lowercase acronyn for plugin or extension
 		}
 
+		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
-			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
+
 			add_meta_box( $this->pagehook.'_opengraph',
 				_x( 'All Social Websites / Open Graph', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_opengraph' ), $this->pagehook, 'normal' );
@@ -44,24 +45,24 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_opengraph() {
-			$metabox = 'og';
+			$metabox_id = 'og';
 			$tabs = apply_filters( $this->p->cf['lca'].'_general_og_tabs', array(
 				'general' => _x( 'Site Information', 'metabox tab', 'wpsso' ),
-				'content' => _x( 'Descriptions', 'metabox tab', 'wpsso' ),	// same text as Social Settings tab
+				'text' => _x( 'Titles / Descriptions', 'metabox tab', 'wpsso' ),
 				'author' => _x( 'Authorship', 'metabox tab', 'wpsso' ),
 				'images' => _x( 'Images', 'metabox tab', 'wpsso' ),
 				'videos' => _x( 'Videos', 'metabox tab', 'wpsso' ),
 			) );
 			$table_rows = array();
 			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
-					$this->get_table_rows( $metabox, $key ), $this->form );
+				$table_rows[$key] = apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
+					$this->get_table_rows( $metabox_id, $key ), $this->form );
 			}
-			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
+			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_publishers() {
-			$metabox = 'pub';
+			$metabox_id = 'pub';
 			$tabs = apply_filters( $this->p->cf['lca'].'_general_pub_tabs', array(
 				'facebook' => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'google' => _x( 'Google / Schema', 'metabox tab', 'wpsso' ),
@@ -71,17 +72,17 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			) );
 			$table_rows = array();
 			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
-					$this->get_table_rows( $metabox, $key ), $this->form );
+				$table_rows[$key] = apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
+					$this->get_table_rows( $metabox_id, $key ), $this->form );
 			}
-			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
+			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 		}
 
-		protected function get_table_rows( $metabox, $key ) {
+		protected function get_table_rows( $metabox_id, $key ) {
 			$table_rows = array();
 			$user_contacts = $this->p->m['util']['user']->get_form_contact_fields();
 
-			switch ( $metabox.'-'.$key ) {
+			switch ( $metabox_id.'-'.$key ) {
 
 				case 'og-general':
 
@@ -105,7 +106,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
-				case 'og-content':
+				case 'og-text':
 
 					$table_rows['og_title_sep'] = $this->form->get_th_html( _x( 'Title Separator',
 						'option label', 'wpsso' ), '', 'og_title_sep' ).

@@ -26,8 +26,9 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 			$this->menu_ext = $ext;	// lowercase acronyn for plugin or extension
 		}
 
+		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
-			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
+
 			add_meta_box( $this->pagehook.'_general',
 				_x( 'Essential General Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_general' ), $this->pagehook, 'normal' );
@@ -44,22 +45,22 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 		}
 
 		public function show_metabox_general() {
-			$metabox = $this->menu_id;
+			$metabox_id = $this->menu_id;
 			$key = 'general';
-			$this->p->util->do_table_rows( apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
-				$this->get_table_rows( $metabox, $key ), $this->form, false ), 'metabox-'.$metabox.'-'.$key );
+			$this->p->util->do_table_rows( apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
+				$this->get_table_rows( $metabox_id, $key ), $this->form, false ), 'metabox-'.$metabox_id.'-'.$key );
 		}
 
 		public function show_metabox_advanced() {
-			$metabox = $this->menu_id;
+			$metabox_id = $this->menu_id;
 			$key = 'advanced';
-			$this->p->util->do_table_rows( apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
-				$this->get_table_rows( $metabox, $key ), $this->form, false ), 'metabox-'.$metabox.'-'.$key );
+			$this->p->util->do_table_rows( apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
+				$this->get_table_rows( $metabox_id, $key ), $this->form, false ), 'metabox-'.$metabox_id.'-'.$key );
 		}
 
-		protected function get_table_rows( $metabox, $key ) {
+		protected function get_table_rows( $metabox_id, $key ) {
 			$table_rows = array();
-			switch ( $metabox.'-'.$key ) {
+			switch ( $metabox_id.'-'.$key ) {
 				case 'essential-general':
 
 					$table_rows['subsection_site_information'] = '<td></td><td class="subsection top"><h4>'.

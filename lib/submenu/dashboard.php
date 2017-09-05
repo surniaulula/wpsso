@@ -37,6 +37,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			) );
 		}
 
+		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
 
 			$col = 0;

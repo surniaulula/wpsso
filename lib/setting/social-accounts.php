@@ -26,20 +26,20 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 			$this->menu_ext = $ext;	// lowercase acronyn for plugin or extension
 		}
 
+		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
-			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_social_accounts',
 				_x( 'Social Pages and Accounts', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_social_accounts' ), $this->pagehook, 'normal' );
 		}
 
 		public function show_metabox_social_accounts() {
-			$metabox = $this->menu_id;
+			$metabox_id = $this->menu_id;
 			echo '<table class="sucom-settings '.$this->p->cf['lca'].'">';
-			echo '<tr><td colspan="2">'.$this->p->msgs->get( 'info-'.$metabox ).'</td></tr>';
+			echo '<tr><td colspan="2">'.$this->p->msgs->get( 'info-'.$metabox_id ).'</td></tr>';
 
-			$table_rows = array_merge( $this->get_table_rows( $metabox, 'general' ),
-				apply_filters( SucomUtil::sanitize_hookname( $this->p->cf['lca'].'_'.$metabox.'_general_rows' ),
+			$table_rows = array_merge( $this->get_table_rows( $metabox_id, 'general' ),
+				apply_filters( SucomUtil::sanitize_hookname( $this->p->cf['lca'].'_'.$metabox_id.'_general_rows' ),
 					array(), $this->form ) );
 					
 			foreach ( $table_rows as $num => $row ) {
@@ -48,10 +48,10 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 			echo '</table>';
 		}
 
-		protected function get_table_rows( $metabox, $key ) {
+		protected function get_table_rows( $metabox_id, $key ) {
 			$table_rows = array();
 
-			switch ( $metabox.'-'.$key ) {
+			switch ( $metabox_id.'-'.$key ) {
 
 				case 'social-accounts-general':
 

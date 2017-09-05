@@ -32,8 +32,8 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 				$this->p->site_options, $def_site_opts, $menu_ext );
 		}
 
+		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
-			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_licenses',
 				_x( 'Extension Plugins and Pro Licenses', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_licenses' ), $this->pagehook, 'normal' );

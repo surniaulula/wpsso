@@ -271,20 +271,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_menu_page( $menu_slug ) {
 			global $wp_version;
-			$lca = $this->p->cf['lca'];
 
-			// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
-			$this->pagehook = add_menu_page(
-				self::$pkg[$lca]['short'].' &mdash; '.$this->menu_name,
-				$this->p->cf['menu']['label'].' '.self::$pkg[$lca]['type'],
-				( isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ?
-					$this->p->cf['wp']['admin'][$this->menu_lib]['cap'] :
-					'manage_options' ),	// fallback to manage_options capability
-				$menu_slug,
-				array( &$this, 'show_setting_page' ),
-				( version_compare( $wp_version, 3.8, '<' ) ? null : 'dashicons-share' ),
-				WPSSO_MENU_ORDER
-			);
+			$lca = $this->p->cf['lca'];
+			$page_title = self::$pkg[$lca]['short'].' &mdash; '.$this->menu_name;
+			$menu_title = $this->p->cf['menu']['title'];
+			$cap_name = isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ?
+				$this->p->cf['wp']['admin'][$this->menu_lib]['cap'] : 'manage_options';
+			$icon_url = version_compare( $wp_version, 3.8, '<' ) ? null : 'dashicons-share';
+			$function = array( &$this, 'show_setting_page' );
+
+			$this->pagehook = add_menu_page( $page_title, $menu_title, $cap_name, $menu_slug, $function, $icon_url, WPSSO_MENU_ORDER );
 
 			add_action( 'load-'.$this->pagehook, array( &$this, 'load_setting_page' ) );
 		}
@@ -317,18 +313,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'<div class="extension-plugin">'.$menu_name.'</div>';
 			}
 
-			if ( strpos( $menu_title, '<color>' ) !== false )
-				$menu_title = preg_replace( array( '/<color>/', '/<\/color>/' ),
-					array( '<span style="color:#'.$this->p->cf['menu']['color'].';">', '</span>' ), $menu_title );
+			if ( strpos( $menu_title, '<color>' ) !== false ) {
+				$menu_title = preg_replace( 
+					array( '/<color>/', '/<\/color>/' ),
+					array( '<span style="color:#'.$this->p->cf['menu']['color'].';">', '</span>' ),
+					$menu_title
+				);
+			}
 
 			$page_title = self::$pkg[$menu_ext]['short'].' &mdash; '.$menu_title;
-			$capability = isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ?
+			$cap_name = isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ?
 				$this->p->cf['wp']['admin'][$menu_lib]['cap'] : 'manage_options';
 			$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
 			$function = array( &$this, 'show_setting_page' );
 
-			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title,
-				$capability, $menu_slug, $function );
+			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title, $cap_name, $menu_slug, $function );
 
 			if ( $function ) {
 				add_action( 'load-'.$this->pagehook, array( &$this, 'load_setting_page' ) );

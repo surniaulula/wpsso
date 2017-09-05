@@ -32,8 +32,8 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 				$this->p->site_options, $def_site_opts, $menu_ext );
 		}
 
+		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
-			// add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
 			add_meta_box( $this->pagehook.'_plugin',
 				_x( 'Network Advanced Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
@@ -49,22 +49,22 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 		}
 
 		public function show_metabox_plugin() {
-			$metabox = 'plugin';
+			$metabox_id = 'plugin';
 			$tabs = apply_filters( $this->p->cf['lca'].'_siteadvanced_plugin_tabs', array(
 				'settings' => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
 				'cache' => _x( 'Cache Settings', 'metabox tab', 'wpsso' ),
 			) );
 			$table_rows = array();
 			foreach ( $tabs as $key => $title )
-				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox, $key ),
-					apply_filters( $this->p->cf['lca'].'_'.$metabox.'_'.$key.'_rows',
+				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key ),
+					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
 						array(), $this->form, true ) );	// $network = true
-			$this->p->util->do_metabox_tabs( $metabox, $tabs, $table_rows );
+			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 		}
 
-		protected function get_table_rows( $metabox, $key ) {
+		protected function get_table_rows( $metabox_id, $key ) {
 			$table_rows = array();
-			switch ( $metabox.'-'.$key ) {
+			switch ( $metabox_id.'-'.$key ) {
 				case 'plugin-settings':
 
 					$this->add_essential_advanced_table_rows( $table_rows, $this->form, true );	// $network = true

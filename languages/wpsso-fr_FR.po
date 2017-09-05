@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-04 15:07-0400\n"
-"PO-Revision-Date: 2017-09-04 15:07-0400\n"
+"POT-Creation-Date: 2017-09-04 18:07-0400\n"
+"PO-Revision-Date: 2017-09-04 18:07-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -276,8 +276,8 @@ msgstr "ID d'authentification %s"
 
 #: lib/admin.php:1439
 msgctxt "option label"
-msgid "Support and Updates Expire"
-msgstr "Support et mises à jour expire"
+msgid "Updates and Support Expire"
+msgstr "Mises à jour et soutien expire"
 
 #: lib/admin.php:1440
 msgctxt "option label"
@@ -2014,7 +2014,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "Notez que certaines metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:401 lib/util.php:1959
+#: lib/messages.php:401 lib/util.php:1966
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -2960,7 +2960,7 @@ msgstr "Veuillez envisager d'améliorer la vitesse de votre site."
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:530 lib/util.php:854
+#: lib/post.php:530 lib/util.php:861
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
@@ -3091,12 +3091,12 @@ msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too sma
 msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
 #: lib/pro/media/slideshare.php:151 lib/pro/media/vimeo.php:128
-#: lib/pro/media/wistia.php:264 lib/util.php:919
+#: lib/pro/media/wistia.php:264 lib/util.php:926
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr "<a href=\"%1$s\">La fonction PHP %2$s</a> n'est pas disponible."
 
 #: lib/pro/media/slideshare.php:154 lib/pro/media/vimeo.php:131
-#: lib/pro/media/wistia.php:267 lib/util.php:922
+#: lib/pro/media/wistia.php:267 lib/util.php:929
 msgid "Please contact your hosting provider to have the missing function installed."
 msgstr "SVP contactez votre hébergeur pour installer la fonction manquante."
 
@@ -3782,34 +3782,34 @@ msgstr "La valeur de l'option '%s' doit être du code HTML - l'option est remise
 msgid "The value of option '%s' cannot be an empty string - resetting option to default value."
 msgstr "La valeur de l'option '%s' ne peut pas être un chaine de caractère vide - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:843
+#: lib/util.php:850
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:865
+#: lib/util.php:872
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
-#: lib/util.php:964
+#: lib/util.php:971
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1985
+#: lib/util.php:1992
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1989
+#: lib/util.php:1996
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1992
+#: lib/util.php:1999
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1996
+#: lib/util.php:2003
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
