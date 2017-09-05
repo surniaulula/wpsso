@@ -356,7 +356,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Renamed the lib/profile/social-settings.php library file to social-search.php.
 	* Renamed the WpssoMeta get_social_tabs() method to get_custom_meta_tabs().
-	* Renamed the following filters and added a 3rd argument with the metabox id:
+	* Renamed the following filters and added a 3rd argument for the metabox id:
 		* 'wpsso_post_social_settings_tabs' to 'wpsso_post_custom_meta_tabs'.
 		* 'wpsso_term_social_settings_tabs' to 'wpsso_term_custom_meta_tabs'.
 		* 'wpsso_user_social_settings_tabs' to 'wpsso_user_custom_meta_tabs'.
