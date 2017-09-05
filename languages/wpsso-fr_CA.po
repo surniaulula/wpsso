@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-05 14:34-0400\n"
-"PO-Revision-Date: 2017-09-05 14:34-0400\n"
+"POT-Creation-Date: 2017-09-05 15:37-0400\n"
+"PO-Revision-Date: 2017-09-05 15:58-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -25,446 +25,446 @@ msgctxt "package type"
 msgid "Free"
 msgstr "Gratuit"
 
-#: lib/admin.php:357
+#: lib/admin.php:359
 msgctxt "plugin action link"
 msgid "FAQs"
 msgstr "FAQs"
 
-#: lib/admin.php:363
+#: lib/admin.php:365
 msgctxt "plugin action link"
 msgid "Other Notes"
 msgstr "Autres notes"
 
-#: lib/admin.php:369
+#: lib/admin.php:371
 msgctxt "plugin action link"
 msgid "Pro Support"
 msgstr "Soutien Pro"
 
-#: lib/admin.php:374
+#: lib/admin.php:376
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr "Forum communautaire"
 
-#: lib/admin.php:537
+#: lib/admin.php:539
 msgid "Submitted options are not an array."
 msgstr "Les options soumises ne sont pas un tableau."
 
-#: lib/admin.php:553 lib/admin.php:902
+#: lib/admin.php:555 lib/admin.php:904
 msgctxt "submit button"
 msgid "Clear All Caches"
 msgstr "Vider tout les caches"
 
-#: lib/admin.php:555 lib/admin.php:561 lib/admin.php:610
+#: lib/admin.php:557 lib/admin.php:563 lib/admin.php:612
 msgid "Plugin settings have been saved."
 msgstr "Les réglages ont été sauvegardés."
 
-#: lib/admin.php:556
+#: lib/admin.php:558
 msgid "Please note that webpage content may take several days to reflect changes."
 msgstr "Le contenu de la page Web pourais prendre plusieurs jours avant de refléter les changements."
 
-#: lib/admin.php:557
+#: lib/admin.php:559
 msgid "%s now to force a refresh."
 msgstr "%s maintenant pour forcer un rafraîchissement."
 
-#: lib/admin.php:562
+#: lib/admin.php:564
 msgid "All caches have also been cleared (the %s option is enabled)."
 msgstr "Tous les caches ont également été vidés (l'option %s est activée)."
 
-#: lib/admin.php:564 lib/gpl/admin/advanced.php:304
+#: lib/admin.php:566 lib/gpl/admin/advanced.php:304
 #: lib/pro/admin/advanced.php:298
 msgctxt "option label"
 msgid "Clear All Cache on Save Settings"
 msgstr "Vider tout les caches lors de l'enregistrement des réglages"
 
-#: lib/admin.php:591
+#: lib/admin.php:593
 msgid "Nonce token validation failed for network options (update ignored)."
 msgstr "La validation du jeton Nonce pour les options de réseau a échoué (mise à jour ignorée)."
 
-#: lib/admin.php:596
+#: lib/admin.php:598
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:628 lib/post.php:386 lib/term.php:268 lib/user.php:251
+#: lib/admin.php:630 lib/post.php:386 lib/term.php:268 lib/user.php:251
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton Nonce pour l'action %1$s \"%2$s\" a échoué."
 
-#: lib/admin.php:656
+#: lib/admin.php:658
 msgid "The <b>%2$s</b> extension is not initialized properly. Please make sure you are using the latest versions of %1$s and %2$s."
 msgstr "L'extension <b>%2$s</b> n'est pas initialisée correctement. S'il vous plaît assurez-vous que vous utilisez les dernières versions de %1$s et %2$s."
 
-#: lib/admin.php:659
+#: lib/admin.php:661
 msgid "The <b>%1$s</b> extension must be active in order to check for Pro version updates."
 msgstr "L'extension <b>%1$s</b> est requise afin de vérifier pour des mises à jour de versions Pro."
 
-#: lib/admin.php:672
+#: lib/admin.php:674
 msgid "Metabox layout preferences for user ID #%d \"%s\" have been reset."
 msgstr "Préférences de positionnement des metabox pour ID d'utilisateur #%d \"%s\" ont été réinitialisés."
 
-#: lib/admin.php:682
+#: lib/admin.php:684
 msgid "Hidden notices for user ID #%d \"%s\" have been cleared."
 msgstr "Avis cachés pour ID d'utilisateur #%d \"%s\" ont été réinitialisés."
 
-#: lib/admin.php:705
+#: lib/admin.php:707
 msgid "All image dimensions have been reloaded with their default value and saved."
 msgstr "Toutes les tailles d'images ont été rechargé avec leur valeur par défaut et sauvegardé."
 
-#: lib/admin.php:727
+#: lib/admin.php:729
 msgctxt "metabox title"
 msgid "Pro Version Available"
-msgstr "Version Pro Disponible"
+msgstr "Version Pro disponible"
 
-#: lib/admin.php:731
+#: lib/admin.php:733
 msgctxt "metabox title"
 msgid "Pro Version Features"
 msgstr "Fonctionnalités Pro"
 
-#: lib/admin.php:814
+#: lib/admin.php:816
 msgid "Profile updated."
 msgstr "Profil mis à jour."
 
-#: lib/admin.php:877
+#: lib/admin.php:879
 msgctxt "submit button"
 msgid "Save All Profile Settings"
 msgstr "Enregistrer les réglages"
 
-#: lib/admin.php:891
+#: lib/admin.php:893
 msgctxt "submit button"
 msgid "Save All Plugin Settings"
 msgstr "Enregistrer les réglages"
 
-#: lib/admin.php:896
+#: lib/admin.php:898
 msgctxt "submit button"
 msgid "View %s by Default"
 msgstr "Voir %s par défaut"
 
-#: lib/admin.php:899
+#: lib/admin.php:901
 msgctxt "submit button"
 msgid "Clear All Caches for Site %d"
 msgstr "Vider tout les caches pour site %d"
 
-#: lib/admin.php:913
+#: lib/admin.php:915
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr "Réinit. disposition metabox"
 
-#: lib/admin.php:914
+#: lib/admin.php:916
 msgctxt "submit button"
 msgid "Reset Hidden Notices"
 msgstr "Réinit. les avis cachés"
 
-#: lib/admin.php:955 lib/admin.php:956
+#: lib/admin.php:957 lib/admin.php:958
 msgid "Not Available"
 msgstr "Non disponible"
 
-#: lib/admin.php:995
+#: lib/admin.php:997
 msgctxt "option label"
 msgid "Installed"
 msgstr "Installé"
 
-#: lib/admin.php:998
+#: lib/admin.php:1000
 msgctxt "option label"
 msgid "Stable"
 msgstr "Stable"
 
-#: lib/admin.php:1001
+#: lib/admin.php:1003
 msgctxt "option label"
 msgid "Latest"
 msgstr "Dernière"
 
-#: lib/admin.php:1006
+#: lib/admin.php:1008
 msgid "View %s changelog..."
 msgstr "Voir le changelog %s…"
 
-#: lib/admin.php:1012 lib/messages.php:1324
+#: lib/admin.php:1014 lib/messages.php:1324
 msgctxt "submit button"
 msgid "Check for Updates"
 msgstr "Vérifier pour mises à jour"
 
-#: lib/admin.php:1142
+#: lib/admin.php:1144
 msgid "Module is enabled"
 msgstr "Module est activé"
 
-#: lib/admin.php:1146
+#: lib/admin.php:1148
 msgid "Module is disabled / not loaded"
 msgstr "Module désactivée / non chargée"
 
-#: lib/admin.php:1150
+#: lib/admin.php:1152
 msgid "Module recommended but disabled / not available"
 msgstr "Module recommandée mais désactivée / non disponible"
 
-#: lib/admin.php:1168
+#: lib/admin.php:1170
 msgid "Generic feature module"
 msgstr "Module de fonction générique"
 
-#: lib/admin.php:1176
+#: lib/admin.php:1178
 msgid "Service API module"
 msgstr "Module de service API"
 
-#: lib/admin.php:1180
+#: lib/admin.php:1182
 msgid "Meta tag and markup module"
 msgstr "Module de balisage et balises méta"
 
-#: lib/admin.php:1184
+#: lib/admin.php:1186
 msgid "Plugin integration module"
 msgstr "Module d'intégration d'extension"
 
-#: lib/admin.php:1188
+#: lib/admin.php:1190
 msgid "Sharing functionality module"
 msgstr "Module fonctionnalité de partage"
 
-#: lib/admin.php:1192
+#: lib/admin.php:1194
 msgid "Additional functionality module"
 msgstr "Module fonctionnalités supplémentaires"
 
-#: lib/admin.php:1235
+#: lib/admin.php:1237
 msgctxt "submit button"
 msgid "Purchase Pro Version"
 msgstr "Acheter version Pro"
 
-#: lib/admin.php:1257
+#: lib/admin.php:1259
 msgid "Read the <a href=\"%s\">Frequently Asked Questions</a>"
 msgstr "Consulter la <a href=\"%s\">foire aux questions</a>"
 
-#: lib/admin.php:1259
+#: lib/admin.php:1261
 msgid "and <a href=\"%s\">Other Notes</a>"
 msgstr "et <a href=\"%s\">autres notes</a>"
 
-#: lib/admin.php:1264
+#: lib/admin.php:1266
 msgid "Open a <a href=\"%s\">Priority Support Ticket</a>"
 msgstr "Ouvrez un <a href=\"%s\">billet de soutien prioritaire</a>"
 
-#: lib/admin.php:1265
+#: lib/admin.php:1267
 msgid "Pro version"
 msgstr "Version pro"
 
-#: lib/admin.php:1267
+#: lib/admin.php:1269
 msgid "Post in the <a href=\"%s\">Community Support Forum</a>"
 msgstr "Postez dans le <a href=\"%s\">forum de soutien communautaire</a>"
 
-#: lib/admin.php:1268
+#: lib/admin.php:1270
 msgid "Free version"
 msgstr "Version gratuite"
 
-#: lib/admin.php:1301
+#: lib/admin.php:1303
 msgid "Rate the %1$s plugin 5 stars."
 msgstr "Notez l'extension %1$s 5 étoiles."
 
-#: lib/admin.php:1386
+#: lib/admin.php:1388
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr "Afficher détails et mise à jour"
 
-#: lib/admin.php:1390
+#: lib/admin.php:1392
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr "Afficher détails"
 
-#: lib/admin.php:1394
+#: lib/admin.php:1396
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr "Afficher détails et installer"
 
-#: lib/admin.php:1399
+#: lib/admin.php:1401
 msgctxt "plugin action link"
 msgid "Plugin Description"
 msgstr "Description de l'extension"
 
-#: lib/admin.php:1421
+#: lib/admin.php:1423
 msgctxt "option label"
 msgid "%s Authentication ID"
 msgstr "ID d'authentification %s"
 
-#: lib/admin.php:1438
+#: lib/admin.php:1440
 msgctxt "option label"
 msgid "Updates and Support Expire"
 msgstr "Mises à jour et soutien expire"
 
-#: lib/admin.php:1439
+#: lib/admin.php:1441
 msgctxt "option label"
 msgid "Site Licenses Assigned"
 msgstr "Licences de site assignées"
 
-#: lib/admin.php:1445
+#: lib/admin.php:1447
 msgctxt "option value"
 msgid "Never"
 msgstr "Jamais"
 
-#: lib/admin.php:1497
+#: lib/admin.php:1499
 msgid "Plugin conflict detected"
 msgstr "Conflit détecté"
 
-#: lib/admin.php:1506
+#: lib/admin.php:1508
 msgid "The PHP <a href=\"%1$s\">%2$s extension</a> is not loaded."
 msgstr "<a href=\"%1$s\">L'extension PHP %2$s</a> n'est pas chargé."
 
-#: lib/admin.php:1508
+#: lib/admin.php:1510
 msgid "Please contact your hosting provider to have the missing PHP extension installed and/or enabled."
 msgstr "SVP contactez votre hébergeur pour installer l'extension PHP manquante."
 
-#: lib/admin.php:1520
+#: lib/admin.php:1522
 msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content."
 msgstr "L'option de WordPress <a href=\"%s\">Visibilité pour les moteurs de recherche</a> est définie afin de demander aux moteurs de recherche et robots sociaux de ne pas indexer ce site. Ceci n'est pas compatible avec le but de partager du contenu sur les sites sociaux &mdash; veuillez décocher cette option pour autoriser les moteurs de recherche et robots sociaux d'accéder votre contenu."
 
-#: lib/admin.php:1531
+#: lib/admin.php:1533
 msgid "please uncheck the <strong>Add Open Graph meta data</strong> option under the <a href=\"%s\">Yoast SEO / Social / Facebook</a> settings tab."
 msgstr "s'il vous plaît décocher l'option <strong>Ajouter les métadonnées OpenGraph</strong> sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Facebook</a>."
 
-#: lib/admin.php:1537
+#: lib/admin.php:1539
 msgid "please uncheck the <strong>Add Twitter card meta data</strong> option under the <a href=\"%s\">Yoast SEO / Social / Twitter</a> settings tab."
 msgstr "s'il vous plaît décocher l'option <strong>Ajoute les métadonnées de carte Twitter</strong> sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Twitter</a>."
 
-#: lib/admin.php:1543
+#: lib/admin.php:1545
 msgid "please uncheck the <strong>Add Google+ specific post meta data</strong> option under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr "s'il vous plaît décocher l'option <strong>Ajouter des méta données spécifiques à Google+</strong> sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Google+</a>."
 
-#: lib/admin.php:1549
+#: lib/admin.php:1551
 msgid "please remove the <strong>Google Publisher Page</strong> value entered under the <a href=\"%s\">Yoast SEO / Social / Google+</a> settings tab."
 msgstr "s'il vous plaît supprimer la valeur de <strong>Page Google Publisher</strong> entrée sous l'onglet de réglages <a href=\"%s\">Yoast SEO / Social / Google +</a>."
 
-#: lib/admin.php:1561
+#: lib/admin.php:1563
 msgid "please disable the <strong>Open Graph Integrator</strong> module in the <a href=\"%s\">SEO Ultimate Module Manager</a>."
 msgstr "s'il vous plaît désactiver le module <strong>Open Graph Integrator</strong> dans <a href=\"%s\">SEO Ultimate Module Manager</a>."
 
-#: lib/admin.php:1573
+#: lib/admin.php:1575
 msgid "please deactivate the <strong>Social Meta</strong> feature in the <a href=\"%s\">All in One SEO Pack Feature Manager</a>."
 msgstr "s'il vous plaît désactiver la fonctionnalité <strong>Social Meta</strong> dans le <a href=\"%s\">All in One SEO Pack Feature Manager</a>."
 
-#: lib/admin.php:1579
+#: lib/admin.php:1581
 msgid "please check the <strong>Disable Google Plus Profile</strong> option in the <a href=\"%s\">All in One SEO Pack General Settings</a>."
 msgstr "s'il vous plaît cocher l'option <strong>Disable Google Plus Profile</strong> dans les réglages généraux de l'extension <a href=\"%s\">All in One SEO Pack</a>."
 
-#: lib/admin.php:1585
+#: lib/admin.php:1587
 msgid "please uncheck the <strong>Use Schema.org Markup</strong> option in the <a href=\"%s\">All in One SEO Pack General Settings</a>."
 msgstr "s'il vous plaît cocher l'option <strong>Use Schema.org Markup</strong> dans les réglages généraux de l'extension <a href=\"%s\">All in One SEO Pack</a>."
 
-#: lib/admin.php:1596 lib/admin.php:1602 lib/admin.php:1608 lib/admin.php:1628
+#: lib/admin.php:1598 lib/admin.php:1604 lib/admin.php:1610 lib/admin.php:1630
 msgid "please uncheck the <strong>%1$s</strong> option in <a href=\"%2$s\">The SEO Framework</a> Social Meta Settings."
 msgstr "s'il vous plaît décocher l'option <strong>%1$s</strong> dans les réglages sociaux de l'extension <a href=\"%2$s\">The SEO Framework</a>."
 
-#: lib/admin.php:1614
+#: lib/admin.php:1616
 msgid "please uncheck the <strong>Output Authorized Presence?</strong> option in <a href=\"%s\">The SEO Framework</a> Schema Settings."
 msgstr "s'il vous plaît décocher l'option <strong>Output Authorized Presence?</strong> dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
 
-#: lib/admin.php:1640
+#: lib/admin.php:1642
 msgid "please uncheck <strong>Add the Social Open Graph objects</strong> in the <a href=\"%s\">Squirrly SEO</a> Social Media Options."
 msgstr "s'il vous plaît décocher l'option <strong>Add the Social Open Graph objects</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
 
-#: lib/admin.php:1646
+#: lib/admin.php:1648
 msgid "please uncheck <strong>Add the Twitter card in your tweets</strong> in the <a href=\"%s\">Squirrly SEO</a> Social Media Options."
 msgstr "s'il vous plaît décocher l'option <strong>Add the Twitter card in your tweets</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
 
-#: lib/admin.php:1652
+#: lib/admin.php:1654
 msgid "please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr "s'il vous plaît décocher l'option <strong>adds the JSON-LD metas for Semantic SEO</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
 
-#: lib/admin.php:1716
+#: lib/admin.php:1718
 msgid "Help us by rating the %s plugin 5 stars"
 msgstr "Aidez-nous en notant l'extension %s 5 étoiles"
 
-#: lib/admin.php:1718
+#: lib/admin.php:1720
 msgid "Thank you for rating the %s plugin! You're awesome!"
 msgstr "Merci d'avoir noté l'extension %s! Vous êtes super!"
 
-#: lib/admin.php:1722
+#: lib/admin.php:1724
 msgid "I've already rated the %s plugin 5 stars"
 msgstr "J'ai déjà noté l'extension %s 5 étoiles"
 
-#: lib/admin.php:1724
+#: lib/admin.php:1726
 msgid "Thank you for your earlier rating of %s! You're awesome!"
 msgstr "Merci d'avoir noté l'extension %s plus tôt! Vous êtes super!"
 
-#: lib/admin.php:1733
+#: lib/admin.php:1735
 msgid "Fantastic!"
 msgstr "Fantastique!"
 
-#: lib/admin.php:1734
+#: lib/admin.php:1736
 msgid "You've been using <b>%s</b> for more than a week."
 msgstr "Vous utilisez <b>%s</b> depuis plus d'une semaine."
 
-#: lib/admin.php:1736
+#: lib/admin.php:1738
 msgid "The %s plugin description page on WordPress.org"
 msgstr "La page de description pour l'extension %s sur WordPress.org"
 
-#: lib/admin.php:1738
+#: lib/admin.php:1740
 msgid "That's awesome!"
 msgstr "C'est génial!"
 
-#: lib/admin.php:1741
+#: lib/admin.php:1743
 msgid "Can I ask a small favor &mdash; would you rate the %s plugin on WordPress.org?"
 msgstr "Puis-je demander une petite faveur &mdash; pouvez vous noter l'extension %s sur WordPress.org ?"
 
-#: lib/admin.php:1744
+#: lib/admin.php:1746
 msgid "Your rating will help WordPress users find the plugin <em>and</em> encourage us to keep improving %s as well."
 msgstr "Votre note aidera les utilisateurs WordPress à trouver l'extension <em>et</em> nous encourager à continuer d'améliorer %s aussi."
 
-#: lib/admin.php:1751
+#: lib/admin.php:1753
 msgid "No thanks &mdash; I don't think %s is worth a 5 star rating and would like to offer a suggestion or report a problem."
 msgstr "Non merci &mdash; je ne pense pas que %s vaut une note de 5 étoiles et je préfère offrir une suggestion ou signaler un problème."
 
-#: lib/admin.php:1884
+#: lib/admin.php:1886
 msgid "No header templates found in the parent or child theme directories."
 msgstr "Aucun modèle d'en-tête trouvés dans le répertoire de thème parent ou enfant."
 
-#: lib/admin.php:1897
+#: lib/admin.php:1899
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr "Aucun élément HTML &lt;head&gt; trouvé dans le modèle %s."
 
-#: lib/admin.php:1904
+#: lib/admin.php:1906
 msgid "Error copying %1$s to %2$s."
 msgstr "Erreur copiant %1$s à %2$s."
 
-#: lib/admin.php:1913
+#: lib/admin.php:1915
 msgid "Failed to open template file %s for writing."
 msgstr "Impossible d'ouvrir le fichier modèle %s pour écriture."
 
-#: lib/admin.php:1919
+#: lib/admin.php:1921
 msgid "The %1$s template has been successfully modified and saved. A backup copy of the original template is available as %2$s in the same folder."
 msgstr "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sauvegarde du fichier original est disponible tant que %2$s dans le même dossier."
 
-#: lib/admin.php:1922
+#: lib/admin.php:1924
 msgid "Failed to write the %1$s template. You may need to restore the original template saved as %2$s in the same folder."
 msgstr "Erreur lors de l'écriture du modèle %1$s. Vous pouvez restaurer le modèle original a partir de %2$s dans dans le même dossier."
 
-#: lib/admin.php:1937
+#: lib/admin.php:1939
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr "Conserver réglages sur suppression"
 
-#: lib/admin.php:1942
+#: lib/admin.php:1944
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr "Ajout messages de débogage caché"
 
-#: lib/admin.php:1950
+#: lib/admin.php:1952
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr "Masquer toutes les options Pro"
 
-#: lib/admin.php:1958
+#: lib/admin.php:1960
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr "Options a montrer par défaut"
 
-#: lib/admin.php:1965
+#: lib/admin.php:1967
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
-msgstr "Activer le/les Shortcode(s)"
+msgstr "Activer le/les shortcode(s)"
 
-#: lib/admin.php:1973
+#: lib/admin.php:1975
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
-msgstr "Activer le/les Widget(s)"
+msgstr "Activer le/les widget(s)"
 
-#: lib/admin.php:1982
+#: lib/admin.php:1984
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:2132
+#: lib/admin.php:2134
 msgid "Return to %s"
 msgstr "Retour à %s"
 
-#: lib/admin.php:2154
+#: lib/admin.php:2156
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
@@ -580,7 +580,7 @@ msgstr "Champ pers. URLs de type supplémentaire"
 #: lib/config-gettext-extract.php:4
 msgctxt "lib file description"
 msgid "Advanced Settings"
-msgstr "Réglages Avancés"
+msgstr "Réglages avancés"
 
 #: lib/config-gettext-extract.php:5
 msgctxt "option value"
@@ -625,7 +625,7 @@ msgstr "Centre"
 #: lib/config-gettext-extract.php:13
 msgctxt "lib file description"
 msgid "<color>Plugin Setup Guide and Other Notes</color>"
-msgstr "<color>Guide de Configuration et Autres Notes</color>"
+msgstr "<color>Guide de config. et autres notes</color>"
 
 #: lib/config-gettext-extract.php:14
 msgctxt "option value"
@@ -650,7 +650,7 @@ msgstr "Nom d'affichage publique"
 #: lib/config-gettext-extract.php:19
 msgctxt "lib file description"
 msgid "Essential Settings"
-msgstr "Réglages Essentiels"
+msgstr "Réglages essentiels"
 
 #: lib/config-gettext-extract.php:20
 msgctxt "option value"
@@ -712,7 +712,7 @@ msgstr "Extrait seulement"
 #: lib/messages.php:1300
 msgctxt "lib file description"
 msgid "Extension Plugins and Pro Licenses"
-msgstr "Autres Extensions et Licences Pro"
+msgstr "Autres extensions et licences Pro"
 
 #: lib/config-gettext-extract.php:32
 msgctxt "option value"
@@ -742,7 +742,7 @@ msgstr "Vendredi"
 #: lib/config-gettext-extract.php:37
 msgctxt "lib file description"
 msgid "General Settings"
-msgstr "Réglages Généraux"
+msgstr "Réglages généraux"
 
 #: lib/config-gettext-extract.php:38
 msgctxt "option value"
@@ -942,22 +942,22 @@ msgstr "(valeur de réglages)"
 #: lib/config-gettext-extract.php:81 lib/messages.php:1209
 msgctxt "lib file description"
 msgid "Social and SEO Image Dimensions"
-msgstr "Dimensions des Images SEO et Sociaux"
+msgstr "Dimensions d'images sociaux et SEO"
 
 #: lib/config-gettext-extract.php:82
 msgctxt "lib file description"
 msgid "Social / Search"
-msgstr "Sociale / Recherche"
+msgstr "Social / recherche"
 
 #: lib/config-gettext-extract.php:83
 msgctxt "menu title"
 msgid "Social / Search"
-msgstr "Sociale / Recherche"
+msgstr "Social / recherche"
 
 #: lib/config-gettext-extract.php:84
 msgctxt "metabox title"
 msgid "Social / Search Optimization"
-msgstr "Optimisation Sociale / Recherche"
+msgstr "Optimisation social / recherche"
 
 #: lib/config-gettext-extract.php:85
 msgctxt "option value"
@@ -972,17 +972,17 @@ msgstr "URL page d'affaires SoundCloud"
 #: lib/config-gettext-extract.php:87
 msgctxt "column header"
 msgid "SSO Desc"
-msgstr "SSO Desc"
+msgstr "OSR Desc"
 
 #: lib/config-gettext-extract.php:88
 msgctxt "column header"
 msgid "SSO Img"
-msgstr "SSO Img"
+msgstr "OSR Img"
 
 #: lib/config-gettext-extract.php:89
 msgctxt "column header"
 msgid "SSO Schema"
-msgstr "SSO Schéma"
+msgstr "OSR Schéma"
 
 #: lib/config-gettext-extract.php:90
 msgctxt "option value"
@@ -1042,7 +1042,7 @@ msgstr "Usagé"
 #: lib/config-gettext-extract.php:101
 msgctxt "lib file description"
 msgid "User Profile Contact Methods"
-msgstr "Méthodes de Contact du Profil Utilisateur"
+msgstr "Méthodes de contact profil utilisateur"
 
 #: lib/config-gettext-extract.php:102
 msgctxt "option label"
@@ -1057,7 +1057,7 @@ msgstr "Champ personnalisé URL de vidéo"
 #: lib/config-gettext-extract.php:104
 msgctxt "lib file description"
 msgid "Website Social Pages and Accounts"
-msgstr "Pages et Comptes Sociaux du Site Web"
+msgstr "Pages et comptes sociaux site Web"
 
 #: lib/config-gettext-extract.php:105
 msgctxt "option value"
@@ -1132,9 +1132,7 @@ msgstr "YOURLS"
 #: lib/config-gettext-extract.php:119
 msgctxt "option value"
 msgid "YouTube Business Channel URL"
-msgstr ""
-"URL chaîne \n"
-"d'affaires Youtube"
+msgstr "URL chaîne d'affaires Youtube"
 
 #: lib/gpl/admin/advanced.php:46 lib/pro/admin/advanced.php:50
 msgctxt "option label"
@@ -1165,7 +1163,7 @@ msgstr "Utiliser Alt d'image, si aucun contenu"
 #: lib/gpl/admin/advanced.php:69 lib/pro/admin/advanced.php:73
 msgctxt "option label"
 msgid "Image Alt Text Prefix"
-msgstr "Préfixe pour texte Alt d'image"
+msgstr "Préfixe pour texte alt d'image"
 
 #: lib/gpl/admin/advanced.php:73 lib/pro/admin/advanced.php:77
 msgctxt "option label"
@@ -1215,7 +1213,7 @@ msgstr "Utilisez WP Locale pour la langue"
 #: lib/gpl/admin/advanced.php:137 lib/pro/admin/advanced.php:138
 msgctxt "option label"
 msgid "Create Missing WP Media Sizes"
-msgstr "Créer tailles manquantes Médias WP"
+msgstr "Créer tailles manquantes médias WP"
 
 #: lib/gpl/admin/advanced.php:141 lib/messages.php:1211
 #: lib/pro/admin/advanced.php:142
@@ -1232,7 +1230,7 @@ msgstr "recommandé"
 #: lib/pro/admin/advanced.php:147
 msgctxt "option label"
 msgid "Allow Upscale of WP Media Images"
-msgstr "Agrandir images Médias WP"
+msgstr "Agrandir images médias WP"
 
 #: lib/gpl/admin/advanced.php:151 lib/messages.php:1215
 #: lib/pro/admin/advanced.php:152
@@ -1243,12 +1241,12 @@ msgstr "Pourcentage d'agrandissement max"
 #: lib/gpl/admin/advanced.php:155 lib/pro/admin/advanced.php:156
 msgctxt "option label"
 msgid "Enable WP Excerpt for Pages"
-msgstr "Activer Extrait WP pour Pages"
+msgstr "Activer extrait WP pour Pages"
 
 #: lib/gpl/admin/advanced.php:159 lib/pro/admin/advanced.php:160
 msgctxt "option label"
 msgid "Enable WP Tags for Pages"
-msgstr "Activer Étiquettes WP pour Pages"
+msgstr "Activer étiquettes WP pour Pages"
 
 #: lib/gpl/admin/advanced.php:187 lib/pro/admin/advanced.php:183
 msgid "Posts, Pages, and Custom Post Types List"
@@ -1372,7 +1370,7 @@ msgstr "Utilisez l'URL raccourcie pour WP Shortlink"
 #: lib/gpl/admin/advanced.php:346 lib/pro/admin/advanced.php:337
 msgctxt "metabox title"
 msgid "Bitly URL Shortener"
-msgstr "Raccourcisseur de Lien Bitly"
+msgstr "Raccourcisseur de lien Bitly"
 
 #: lib/gpl/admin/advanced.php:348 lib/pro/admin/advanced.php:339
 #: lib/pro/util/shorten.php:86
@@ -1420,7 +1418,7 @@ msgstr "API raccourcissement Google est actif"
 #: lib/gpl/admin/advanced.php:384 lib/pro/admin/advanced.php:375
 msgctxt "metabox title"
 msgid "Ow.ly URL Shortener"
-msgstr "Raccourcisseur de Lien Ow.ly"
+msgstr "Raccourcisseur de lien Ow.ly"
 
 #: lib/gpl/admin/advanced.php:387 lib/pro/admin/advanced.php:378
 #: lib/pro/util/shorten.php:142
@@ -1465,14 +1463,14 @@ msgstr "Afficher"
 #: lib/pro/admin/advanced.php:465
 msgctxt "column title"
 msgid "Contact Field Name"
-msgstr "Nom du Champ Contact"
+msgstr "Nom du champ contact"
 
 #: lib/gpl/admin/advanced.php:429 lib/gpl/admin/advanced.php:481
 #: lib/messages.php:1108 lib/pro/admin/advanced.php:417
 #: lib/pro/admin/advanced.php:466
 msgctxt "column title"
 msgid "Profile Contact Label"
-msgstr "Titre du Champ Contact"
+msgstr "Titre du champ contact"
 
 #: lib/gpl/admin/general.php:36 lib/pro/admin/general.php:42
 msgctxt "option label"
@@ -1570,7 +1568,7 @@ msgstr "URL de partage"
 #: lib/submenu/general.php:261
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
-msgstr "Données Structurées / Balises de Schéma"
+msgstr "Données structurées / balises de Schéma"
 
 #: lib/gpl/admin/meta.php:79 lib/gpl/admin/post.php:131
 #: lib/pro/admin/meta.php:98 lib/pro/admin/post.php:159
@@ -1587,12 +1585,12 @@ msgstr "Enregistrer un brouillon ou publier pour activer ces options."
 #: lib/submenu/general.php:33
 msgctxt "metabox title"
 msgid "All Social Websites / Open Graph"
-msgstr "Tous les Sites Sociaux / Open Graph"
+msgstr "Tous les sites sociaux / Open Graph"
 
 #: lib/gpl/admin/meta.php:115 lib/pro/admin/meta.php:132
 msgctxt "metabox title"
 msgid "Priority Image Information"
-msgstr "Informations de l'Image Prioritaire"
+msgstr "Informations d'image prioritaire"
 
 #: lib/gpl/admin/meta.php:119 lib/gpl/admin/meta.php:194
 #: lib/pro/admin/meta.php:136 lib/pro/admin/meta.php:216
@@ -1621,7 +1619,7 @@ msgstr "Images maximum"
 #: lib/gpl/admin/meta.php:144 lib/pro/admin/meta.php:161
 msgctxt "metabox title"
 msgid "Priority Video Information"
-msgstr "Informations du Vidéo Prioritaire"
+msgstr "Informations du vidéo prioritaire"
 
 #: lib/gpl/admin/meta.php:147 lib/messages.php:501 lib/pro/admin/meta.php:164
 msgctxt "option label"
@@ -1656,7 +1654,7 @@ msgstr "Inclure l'image d'aperçu"
 #: lib/gpl/admin/meta.php:190 lib/pro/admin/meta.php:212
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
-msgstr "Données Structurées / Balises de Schéma / Pinterest"
+msgstr "Données structurées / balises de Schéma / Pinterest"
 
 #: lib/gpl/admin/post.php:41 lib/pro/admin/post.php:59
 msgctxt "option label"
@@ -2002,7 +2000,7 @@ msgstr "Aperçu"
 #: lib/messages.php:398 lib/meta.php:128
 msgctxt "metabox tab"
 msgid "Head Tags"
-msgstr "Balises d'Entête"
+msgstr "Balises d'entête"
 
 #: lib/messages.php:399 lib/meta.php:129
 msgctxt "metabox tab"
@@ -2013,7 +2011,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "Notez que certaines metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:401 lib/util.php:1966
+#: lib/messages.php:401 lib/util.php:1974
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -2616,7 +2614,7 @@ msgstr "Les modules d'API de services vidéo &mdash; nécessaires pour détecter
 
 #: lib/messages.php:1196
 msgid "A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %s metabox under the <em>Select Media</em> tab."
-msgstr "Une image personnalisée plus grande et/ou différente, précisément pour les balises méta et balisage de Schéma, peut être sélectionné dans le metabox %s sous l'onglet <em>Choisir Média</em>."
+msgstr "Une image personnalisée plus grande et/ou différente, précisément pour les balises méta et balisage de Schéma, peut être sélectionné dans le metabox %s sous l'onglet <em>Choisir média</em>."
 
 #: lib/messages.php:1218
 msgid "Additional information shown only to users with Administrative privileges:"
@@ -2733,7 +2731,7 @@ msgstr "Si une mise à jour pour %1$s n'est pas encore disponible dans la page d
 #: lib/messages.php:1324
 msgctxt "lib file description"
 msgid "Update Manager"
-msgstr "Gestionnaire de Mises à Jour"
+msgstr "Gestion mises à jour"
 
 #: lib/messages.php:1328 lib/register.php:204
 msgid "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features."
@@ -2794,12 +2792,12 @@ msgstr "Cette option est localisé &mdash; vous pouvez changer la langue locale 
 #: lib/meta.php:125
 msgctxt "metabox tab"
 msgid "Edit Text"
-msgstr "Modifier Texte"
+msgstr "Modifier texte"
 
 #: lib/meta.php:126
 msgctxt "metabox tab"
 msgid "Select Media"
-msgstr "Choisir Média"
+msgstr "Choisir média"
 
 #: lib/meta.php:190
 msgctxt "preview image error"
@@ -3182,7 +3180,7 @@ msgstr "Utiliser l'image"
 #: lib/setting/contact-fields.php:32 lib/submenu/advanced.php:37
 msgctxt "metabox title"
 msgid "Contact Field Names and Labels"
-msgstr "Nom et Titre des Champs Contacts"
+msgstr "Nom et titre des champs contacts"
 
 #: lib/setting/image-dimensions.php:38
 msgctxt "metabox title"
@@ -3217,42 +3215,42 @@ msgstr "Carte Twitter <em>grande image</em>"
 #: lib/setting/social-accounts.php:32
 msgctxt "metabox title"
 msgid "Social Pages and Accounts"
-msgstr "Pages et Comptes Sociaux"
+msgstr "Pages et comptes sociaux"
 
 #: lib/sitesubmenu/siteadvanced.php:38
 msgctxt "metabox title"
 msgid "Network Advanced Settings"
-msgstr "Réglages Avancés du Réseau"
+msgstr "Réglages avancés du réseau"
 
 #: lib/sitesubmenu/siteadvanced.php:54 lib/submenu/advanced.php:48
 msgctxt "metabox tab"
 msgid "Plugin Settings"
-msgstr "Réglages de l'Ext."
+msgstr "Réglages de l'ext."
 
 #: lib/sitesubmenu/siteadvanced.php:55 lib/submenu/advanced.php:52
 msgctxt "metabox tab"
 msgid "Cache Settings"
-msgstr "Réglages cache"
+msgstr "Réglages de cache"
 
 #: lib/sitesubmenu/sitelicenses.php:38 lib/submenu/licenses.php:32
 msgctxt "metabox title"
 msgid "Extension Plugins and Pro Licenses"
-msgstr "Autres Extensions et Licences Pro"
+msgstr "Autres extensions et licences Pro"
 
 #: lib/submenu/advanced.php:33
 msgctxt "metabox title"
 msgid "Advanced Settings"
-msgstr "Réglages Avancés"
+msgstr "Réglages avancés"
 
 #: lib/submenu/advanced.php:41
 msgctxt "metabox title"
 msgid "Head Tags List"
-msgstr "Liste des Balises d'Entête"
+msgstr "Balises d'entête"
 
 #: lib/submenu/advanced.php:49
 msgctxt "metabox tab"
 msgid "Content and Filters"
-msgstr "Contenu et Filtres"
+msgstr "Contenu et filtres"
 
 #: lib/submenu/advanced.php:50
 msgctxt "metabox tab"
@@ -3267,17 +3265,17 @@ msgstr "Méta personnalisé"
 #: lib/submenu/advanced.php:53
 msgctxt "metabox tab"
 msgid "Service APIs"
-msgstr "APIs de Service"
+msgstr "APIs de service"
 
 #: lib/submenu/advanced.php:67
 msgctxt "metabox tab"
 msgid "Custom Contacts"
-msgstr "Contacts Personnalisés"
+msgstr "Contacts personnalisés"
 
 #: lib/submenu/advanced.php:68
 msgctxt "metabox tab"
 msgid "Built-In Contacts"
-msgstr "Contacts Intégrés"
+msgstr "Contacts intégrés"
 
 #: lib/submenu/advanced.php:84 lib/submenu/general.php:67
 msgctxt "metabox tab"
@@ -3302,27 +3300,27 @@ msgstr "Schéma"
 #: lib/submenu/advanced.php:88
 msgctxt "metabox tab"
 msgid "SEO / Other"
-msgstr "SEO / Autre"
+msgstr "SEO / autre"
 
 #: lib/submenu/dashboard.php:45
 msgctxt "metabox title"
 msgid "Help and Support"
-msgstr "Assistance et Soutien"
+msgstr "Assistance et soutien"
 
 #: lib/submenu/dashboard.php:46
 msgctxt "metabox title"
 msgid "Ratings are Awesome!"
-msgstr "Une Note c'est Génial!"
+msgstr "Une note c'est génial!"
 
 #: lib/submenu/dashboard.php:47
 msgctxt "metabox title"
 msgid "Version Information"
-msgstr "Information de Version"
+msgstr "Information de version"
 
 #: lib/submenu/dashboard.php:48
 msgctxt "metabox title"
 msgid "Free / Standard Features"
-msgstr "Fonctionnalités de Base"
+msgstr "Fonctionnalités de dase"
 
 #: lib/submenu/dashboard.php:49
 msgctxt "metabox title"
@@ -3332,17 +3330,17 @@ msgstr "Fonctionnalités Pro"
 #: lib/submenu/essential.php:33
 msgctxt "metabox title"
 msgid "Essential General Settings"
-msgstr "Réglages Généraux Essentiels"
+msgstr "Réglages généraux essentiels"
 
 #: lib/submenu/essential.php:37
 msgctxt "metabox title"
 msgid "Optional Advanced Settings"
-msgstr "Réglages Avancés Optionnels"
+msgstr "Réglages avancés optionnels"
 
 #: lib/submenu/essential.php:67
 msgctxt "metabox title"
 msgid "Site Information"
-msgstr "Informations du Site"
+msgstr "Informations du site"
 
 #: lib/submenu/essential.php:69 lib/submenu/general.php:89
 msgctxt "option label"
@@ -3449,17 +3447,17 @@ msgstr "Le @nom d'affaires Twitter"
 #: lib/submenu/general.php:37
 msgctxt "metabox title"
 msgid "Specific Websites and Publishers"
-msgstr "Éditeurs et Sites Web Spécifiques"
+msgstr "Éditeurs et sites Web spécifiques"
 
 #: lib/submenu/general.php:50
 msgctxt "metabox tab"
 msgid "Site Information"
-msgstr "Informations du Site"
+msgstr "Informations du site"
 
 #: lib/submenu/general.php:51
 msgctxt "metabox tab"
 msgid "Titles / Descriptions"
-msgstr "Titres / Descriptions"
+msgstr "Titres / descriptions"
 
 #: lib/submenu/general.php:52
 msgctxt "metabox tab"
@@ -3693,17 +3691,17 @@ msgstr "Dimensions d'image carte <em>gr. image</em>"
 #: lib/submenu/setup.php:38
 msgctxt "metabox title"
 msgid "Setup Guide"
-msgstr "Guide de Configuration"
+msgstr "Guide de configuration"
 
 #: lib/twittercard.php:34
 msgctxt "image size label"
 msgid "Twitter Summary Card"
-msgstr "Carte Twitter Sommaire"
+msgstr "Carte Twitter sommaire"
 
 #: lib/twittercard.php:40
 msgctxt "image size label"
 msgid "Twitter Large Image Card"
-msgstr "Carte Twitter Grande Image"
+msgstr "Carte Twitter grande image"
 
 #: lib/user.php:462
 msgid "AIM"
@@ -3797,22 +3795,22 @@ msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1992
+#: lib/util.php:2000
 msgctxt "option comment"
 msgid "%1$d additional options not shown in %2$s view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:1996
+#: lib/util.php:2004
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:1999
+#: lib/util.php:2007
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in %2$s view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
 
-#: lib/util.php:2003
+#: lib/util.php:2011
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"

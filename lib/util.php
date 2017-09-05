@@ -1802,31 +1802,37 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$lca = $this->p->cf['lca'];
 
 			// $menu_id may start with a hash or query, so parse before checking its value
-			if ( strpos( $menu_id, '#' ) !== false )
+			if ( strpos( $menu_id, '#' ) !== false ) {
 				list( $menu_id, $hash ) = explode( '#', $menu_id );
+			}
 
-			if ( strpos( $menu_id, '?' ) !== false )
+			if ( strpos( $menu_id, '?' ) !== false ) {
 				list( $menu_id, $query ) = explode( '?', $menu_id );
+			}
 
 			if ( empty( $menu_id ) ) {
 				$current = $_SERVER['REQUEST_URI'];
-				if ( preg_match( '/^.*\?page='.$lca.'-([^&]*).*$/', $current, $match ) )
+				if ( preg_match( '/^.*\?page='.$lca.'-([^&]*).*$/', $current, $match ) ) {
 					$menu_id = $match[1];
-				else $menu_id = key( $this->p->cf['*']['lib']['submenu'] );	// default to first submenu
+				} else {
+					$menu_id = key( $this->p->cf['*']['lib']['submenu'] );	// default to first submenu
+				}
 			}
 
 			// find the menu_lib value for this menu_id
 			if ( empty( $menu_lib ) ) {
 				foreach ( $this->p->cf['*']['lib'] as $menu_lib => $menu ) {
-					if ( isset( $menu[$menu_id] ) )
+					if ( isset( $menu[$menu_id] ) ) {
 						break;
-					else $menu_lib = '';
+					} else {
+						$menu_lib = '';
+					}
 				}
 			}
 
-			if ( empty( $menu_lib ) ||
-				empty( $this->p->cf['wp']['admin'][$menu_lib]['page'] ) )
-					return;
+			if ( empty( $menu_lib ) || empty( $this->p->cf['wp']['admin'][$menu_lib]['page'] ) ) {
+				return;
+			}
 
 			$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'].'?page='.$lca.'-'.$menu_id;
 
@@ -1839,11 +1845,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					break;
 			}
 
-			if ( ! empty( $query ) ) 
+			if ( ! empty( $query ) ) {
 				$admin_url .= '&'.$query;
+			}
 
-			if ( ! empty( $hash ) ) 
+			if ( ! empty( $hash ) ) {
 				$admin_url .= '#'.$hash;
+			}
 
 			if ( empty( $link_text ) ) {
 				return $admin_url;

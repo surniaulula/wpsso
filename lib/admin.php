@@ -239,9 +239,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				ksort( $sorted_menu );
 
 				foreach ( $sorted_menu as $key => $arg ) {
-					if ( isset( $this->submenu[$arg[1]] ) )
+					if ( isset( $this->submenu[$arg[1]] ) ) {
 						$this->submenu[$arg[1]]->add_submenu_page( $arg[0] );
-					else $this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
+					} else {
+						$this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
+					}
 				}
 			}
 		}
@@ -274,7 +276,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$page_title = self::$pkg[$lca]['short'].' &mdash; '.$this->menu_name;
-			$menu_title = $this->p->cf['menu']['title'];
+			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' );
 			$cap_name = isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ?
 				$this->p->cf['wp']['admin'][$this->menu_lib]['cap'] : 'manage_options';
 			$icon_url = version_compare( $wp_version, 3.8, '<' ) ? null : 'dashicons-share';
