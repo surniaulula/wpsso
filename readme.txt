@@ -349,11 +349,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* Renamed the "Social Settings" metabox to "Social / Search Optimization".
+	* Renamed the "Social Settings" metabox to "Social and Search Optimization".
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Renamed the lib/profile/social-settings.php library file to social-search.php.
+	* Renamed the lib/profile/social-settings.php library file to your-sso.php.
 	* Renamed the WpssoMeta get_social_tabs() method to get_custom_meta_tabs().
 	* Renamed the following filters and added a 3rd argument for the metabox id:
 		* 'wpsso_post_social_settings_tabs' to 'wpsso_post_custom_meta_tabs'.
@@ -706,7 +706,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.45.10-dev.1 =
 
-(2017/09/05) Renamed the "Social Settings" metabox to "Social / Search Optimization".
+(2017/09/05) Renamed the "Social Settings" metabox to "Social and Search Optimization".
 
 = 3.45.9 =
 
