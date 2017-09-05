@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-05 16:41-0400\n"
-"PO-Revision-Date: 2017-09-05 16:41-0400\n"
+"POT-Creation-Date: 2017-09-05 17:18-0400\n"
+"PO-Revision-Date: 2017-09-05 17:25-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -949,189 +949,189 @@ msgid "Social and SEO Image Dimensions"
 msgstr "Dimensions d'images sociaux et SEO"
 
 #: lib/config-gettext-extract.php:82
-msgctxt "lib file description"
-msgid "Social / Search"
-msgstr "Social / recherche"
-
-#: lib/config-gettext-extract.php:83
-msgctxt "menu title"
-msgid "Social / Search"
-msgstr "Social / recherche"
-
-#: lib/config-gettext-extract.php:84
 msgctxt "metabox title"
 msgid "Social / Search Optimization"
 msgstr "Optimisation social / recherche"
 
-#: lib/config-gettext-extract.php:85
+#: lib/config-gettext-extract.php:83
 msgctxt "option value"
 msgid "Sold Out"
 msgstr "Épuisé"
 
-#: lib/config-gettext-extract.php:86
+#: lib/config-gettext-extract.php:84
 msgctxt "option value"
 msgid "SoundCloud Business URL"
 msgstr "URL page d'affaires SoundCloud"
 
-#: lib/config-gettext-extract.php:87
+#: lib/config-gettext-extract.php:85
 msgctxt "column header"
-msgid "SSO Desc"
-msgstr "OSR Desc"
+msgid "SSO Desc."
+msgstr "Desc. OSR"
+
+#: lib/config-gettext-extract.php:86
+msgctxt "column header"
+msgid "SSO Image"
+msgstr "Image OSR"
+
+#: lib/config-gettext-extract.php:87
+msgctxt "menu title"
+msgid "SSO"
+msgstr "OSR"
 
 #: lib/config-gettext-extract.php:88
 msgctxt "column header"
-msgid "SSO Img"
-msgstr "OSR Img"
+msgid "SSO Schema"
+msgstr "Schéma OSR"
 
 #: lib/config-gettext-extract.php:89
-msgctxt "column header"
-msgid "SSO Schema"
-msgstr "OSR Schéma"
-
-#: lib/config-gettext-extract.php:90
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr "Stable / production"
 
-#: lib/config-gettext-extract.php:91
+#: lib/config-gettext-extract.php:90
 msgctxt "option value"
 msgid "Sunday"
 msgstr "Dimanche"
 
-#: lib/config-gettext-extract.php:92
+#: lib/config-gettext-extract.php:91
 msgctxt "option value"
 msgid "Thursday"
 msgstr "Jeudi"
 
-#: lib/config-gettext-extract.php:93
+#: lib/config-gettext-extract.php:92
 msgctxt "option value"
 msgid "TinyURL"
 msgstr "TinyURL"
 
-#: lib/config-gettext-extract.php:94
+#: lib/config-gettext-extract.php:93
 msgctxt "option value"
 msgid "Title and Excerpt"
 msgstr "Titre et extrait"
 
-#: lib/config-gettext-extract.php:95
+#: lib/config-gettext-extract.php:94
 msgctxt "option value"
 msgid "Title Only"
 msgstr "Titre seulement"
 
-#: lib/config-gettext-extract.php:96
+#: lib/config-gettext-extract.php:95
 msgctxt "option value"
 msgid "Top"
 msgstr "Le haut"
 
-#: lib/config-gettext-extract.php:97
+#: lib/config-gettext-extract.php:96
 msgctxt "option value"
 msgid "Tuesday"
 msgstr "Mardi"
 
-#: lib/config-gettext-extract.php:98
+#: lib/config-gettext-extract.php:97
 msgctxt "option value"
 msgid "Tumblr Business Page URL"
 msgstr "URL page d'affaires Tumblr"
 
-#: lib/config-gettext-extract.php:99
+#: lib/config-gettext-extract.php:98
 msgctxt "option value"
 msgid "Twitter Business @username"
 msgstr "Le @nom d'affaires Twitter"
 
-#: lib/config-gettext-extract.php:100
+#: lib/config-gettext-extract.php:99
 msgctxt "option value"
 msgid "Used"
 msgstr "Usagé"
 
-#: lib/config-gettext-extract.php:101
+#: lib/config-gettext-extract.php:100
 msgctxt "lib file description"
 msgid "User Profile Contact Methods"
 msgstr "Méthodes de contact profil utilisateur"
 
-#: lib/config-gettext-extract.php:102
+#: lib/config-gettext-extract.php:101
 msgctxt "option label"
 msgid "Video Embed HTML Custom Field"
 msgstr "Champ pers. HTML vidéo intégrée"
 
-#: lib/config-gettext-extract.php:103
+#: lib/config-gettext-extract.php:102
 msgctxt "option label"
 msgid "Video URL Custom Field"
 msgstr "Champ personnalisé URL de vidéo"
 
-#: lib/config-gettext-extract.php:104
+#: lib/config-gettext-extract.php:103
 msgctxt "lib file description"
 msgid "Website Social Pages and Accounts"
 msgstr "Pages et comptes sociaux site Web"
 
-#: lib/config-gettext-extract.php:105
+#: lib/config-gettext-extract.php:104
 msgctxt "option value"
 msgid "Wednesday"
 msgstr "Mercredi"
 
-#: lib/config-gettext-extract.php:106
+#: lib/config-gettext-extract.php:105
 msgctxt "plugin description"
 msgid "WPSSO extension to add a user locale / language / region selector in the WordPress admin back-end and front-end toolbar menus."
 msgstr "Extension WPSSO pour ajouté un sélecteur de langue / région pour les utilisateurs dans la barre d'outils WordPress d'avant et arrière."
 
-#: lib/config-gettext-extract.php:107
+#: lib/config-gettext-extract.php:106
 msgctxt "plugin description"
 msgid "WPSSO extension to add CSS Twitter-style quoted text with a Tweet share link to post and page content (uses easily customized CSS)."
 msgstr "Extension WPSSO pour ajouter des citations de style Twitter à votre contenu avec un lien Tweet de partage (CSS facilement personnalisés)."
 
-#: lib/config-gettext-extract.php:108
+#: lib/config-gettext-extract.php:107
 msgctxt "plugin description"
 msgid "WPSSO extension to add ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup."
 msgstr "Extension WPSSO pour ajouter des notes et critiques aux commentaires WordPress, avec balises méta Aggregate Rating et balisage de Schéma Review."
 
-#: lib/config-gettext-extract.php:109
+#: lib/config-gettext-extract.php:108
 msgctxt "plugin description"
 msgid "WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc."
 msgstr "Extension WPSSO pour ajouter des boutons de partage sociaux ridiculement réactif (SVG) dans le contenu, extraits, barre flottante CSS, widget, etc."
 
-#: lib/config-gettext-extract.php:110
+#: lib/config-gettext-extract.php:109
 msgctxt "plugin description"
 msgid "WPSSO extension to add Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews + many more."
 msgstr "Extension WPSSO pour balisage de Schéma JSON-LD pour articles, événements, entreprise locale, produits, recettes, critiques + bien plus."
 
-#: lib/config-gettext-extract.php:111
+#: lib/config-gettext-extract.php:110
 msgctxt "plugin description"
 msgid "WPSSO extension to add Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr "Extension WPSSO pour ajouter des boutons de partage social avec support pour hashtags, URLs raccourcis, bbPress, BuddyPress, WooCommerce et bien plus."
 
-#: lib/config-gettext-extract.php:112
+#: lib/config-gettext-extract.php:111
 msgctxt "plugin description"
 msgid "WPSSO extension to manage Organizations and additional Schema Article / Event properties (Publisher, Organizer, Performer, etc.)."
 msgstr "Extension WPSSO pour gérer des organisations et propriétés Schéma d'articles / d'événements supplémentaires (organisateur, interprète, etc.)."
 
-#: lib/config-gettext-extract.php:113
+#: lib/config-gettext-extract.php:112
 msgctxt "plugin description"
 msgid "WPSSO extension to provide Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari and Twitter's App Card."
 msgstr "Extension WPSSO qui fournie des balises méta Apple Store / iTunes et Google Play App pour mobile Safari de Apple et la carte App de Twitter."
 
-#: lib/config-gettext-extract.php:114
+#: lib/config-gettext-extract.php:113
 msgctxt "plugin description"
 msgid "WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business, and Local SEO meta tags."
 msgstr "Extension WPSSO pour fournir des balises méta Pinterest place, Facebook / Open Graph de position, et Schéma d'entreprise locale."
 
-#: lib/config-gettext-extract.php:115
+#: lib/config-gettext-extract.php:114
 msgctxt "plugin description"
 msgid "WPSSO extension to provide updates for the WPSSO Pro plugin and its Pro extensions."
 msgstr "Extension WPSSO pour fournir des mises à jour a WPSSO Pro et ses extensions Pro."
 
-#: lib/config-gettext-extract.php:116
+#: lib/config-gettext-extract.php:115
 msgctxt "plugin description"
 msgid "WPSSO extension to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched."
 msgstr "Extension WPSSO pour supprimer les Microdonnées de Schéma obsolète / incomplète, laissant le balisage Schéma JSON-LD recommandé par Google intact."
 
-#: lib/config-gettext-extract.php:117
+#: lib/config-gettext-extract.php:116
 msgctxt "option value"
 msgid "Yes"
 msgstr "Oui"
 
-#: lib/config-gettext-extract.php:118
+#: lib/config-gettext-extract.php:117
 msgctxt "option value"
 msgid "YOURLS"
 msgstr "YOURLS"
+
+#: lib/config-gettext-extract.php:118
+msgctxt "lib file description"
+msgid "Your SSO"
+msgstr "Votre OSR"
 
 #: lib/config-gettext-extract.php:119
 msgctxt "option value"
@@ -2735,7 +2735,7 @@ msgstr "Si une mise à jour pour %1$s n'est pas encore disponible dans la page d
 #: lib/messages.php:1324
 msgctxt "lib file description"
 msgid "Update Manager"
-msgstr "Gestion mises à jour"
+msgstr "Gestionnaire de mises à jour"
 
 #: lib/messages.php:1328 lib/register.php:204
 msgid "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features."

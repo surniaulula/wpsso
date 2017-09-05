@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'lib' => array(			// libraries
 						'profile' => array (	// lib file descriptions will be translated
-							'social-search' => 'Social / Search',
+							'social-search' => 'Your SSO',
 						),
 						'setting' => array (	// lib file descriptions will be translated
 							'image-dimensions' => 'Social and SEO Image Dimensions',
@@ -1172,7 +1172,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'menu' => array(
-				'title' => 'Social / Search',	// menu title
+				'title' => 'SSO',		// menu title
 				'color' => '33cc33',		// menu color (lime green)
 			),
 			'meta' => array(			// post, term, user add_meta_box() settings
@@ -1189,14 +1189,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'height' => 'auto',
 					),
 					'og_img' => array(
-						'header' => 'SSO Img',
+						'header' => 'SSO Image',
 						'meta_key' => '_wpsso_head_info_og_img_thumb',
 						'orderby' => false,	// do not offer column sorting
-						'width' => '70px',
-						'height' => '37px',
+						'width' => '75px',
+						'height' => '40px',
 					),
 					'og_desc' => array(
-						'header' => 'SSO Desc',
+						'header' => 'SSO Desc.',
 						'meta_key' => '_wpsso_head_info_og_desc',
 						'orderby' => false,	// do not offer column sorting
 						'width' => '12%',
