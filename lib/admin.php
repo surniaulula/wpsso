@@ -687,8 +687,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'change_show_options':
 							if ( isset( $this->p->cf['form']['show_options'][$_GET['show-opts']] ) ) {
-								$this->p->notice->upd( sprintf( 'Option preference saved &mdash; viewing "%s" by default.',
-									$this->p->cf['form']['show_options'][$_GET['show-opts']] ) );
+								$this->p->notice->upd( sprintf( __( 'Option preference saved &mdash; viewing "%s" by default.',
+									'wpsso' ), $this->p->cf['form']['show_options'][$_GET['show-opts']] ) );
 								WpssoUser::save_pref( array( 'show_opts' => $_GET['show-opts'] ) );
 							}
 							$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'show-opts' ) );
@@ -895,7 +895,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$view_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
 			$view_name = _x( $this->p->cf['form']['show_options'][$view_next], 'option value', 'wpsso' );
-			$view_label = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name );
+			$view_label = sprintf( _x( 'View "%s" by Default', 'submit button', 'wpsso' ), $view_name );
 
 			if ( is_multisite() ) {
 				$clear_label = sprintf( _x( 'Clear All Caches for Site %d',

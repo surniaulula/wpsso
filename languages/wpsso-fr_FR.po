@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-05 15:37-0400\n"
-"PO-Revision-Date: 2017-09-05 15:58-0400\n"
+"POT-Creation-Date: 2017-09-05 16:41-0400\n"
+"PO-Revision-Date: 2017-09-05 16:41-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -104,6 +104,10 @@ msgstr "Préférences de positionnement des metabox pour ID d'utilisateur #%d \"
 msgid "Hidden notices for user ID #%d \"%s\" have been cleared."
 msgstr "Avis cachés pour ID d'utilisateur #%d \"%s\" ont été réinitialisés."
 
+#: lib/admin.php:690
+msgid "Option preference saved &mdash; viewing \"%s\" by default."
+msgstr "Option de préférence enregistré &mdash; visionnement \"%s\" par défaut."
+
 #: lib/admin.php:707
 msgid "All image dimensions have been reloaded with their default value and saved."
 msgstr "Toutes les tailles d'images ont été rechargé avec leur valeur par défaut et sauvegardé."
@@ -134,8 +138,8 @@ msgstr "Enregistrer les réglages"
 
 #: lib/admin.php:898
 msgctxt "submit button"
-msgid "View %s by Default"
-msgstr "Voir %s par défaut"
+msgid "View \"%s\" by Default"
+msgstr "Voir \"%s\" par défaut"
 
 #: lib/admin.php:901
 msgctxt "submit button"
@@ -585,7 +589,7 @@ msgstr "Réglages avancés"
 #: lib/config-gettext-extract.php:5
 msgctxt "option value"
 msgid "All Options"
-msgstr "Toutes les Options"
+msgstr "Toutes les options"
 
 #: lib/config-gettext-extract.php:6
 msgctxt "option value"
@@ -600,7 +604,7 @@ msgstr "Créer automatiquement des balises méta et balisage de Schéma complet 
 #: lib/config-gettext-extract.php:8
 msgctxt "option value"
 msgid "Basic Options"
-msgstr "Options de Base"
+msgstr "Options de base"
 
 #: lib/config-gettext-extract.php:9
 msgctxt "option value"
@@ -1158,7 +1162,7 @@ msgstr "Contenu commence 1er paragraphe"
 #: lib/gpl/admin/advanced.php:65 lib/pro/admin/advanced.php:69
 msgctxt "option label"
 msgid "Use Image Alt if No Content"
-msgstr "Utiliser Alt d'image, si aucun contenu"
+msgstr "Utiliser alt d'img si aucun contenu"
 
 #: lib/gpl/admin/advanced.php:69 lib/pro/admin/advanced.php:73
 msgctxt "option label"
@@ -1168,7 +1172,7 @@ msgstr "Préfixe pour texte alt d'image"
 #: lib/gpl/admin/advanced.php:73 lib/pro/admin/advanced.php:77
 msgctxt "option label"
 msgid "WP Caption Prefix"
-msgstr "Préfixe de Légende WP"
+msgstr "Préfixe de légende WP"
 
 #: lib/gpl/admin/advanced.php:78 lib/pro/admin/advanced.php:82
 msgctxt "option label"
@@ -1208,7 +1212,7 @@ msgstr "Vérifier doublons de balises méta"
 #: lib/gpl/admin/advanced.php:132 lib/pro/admin/advanced.php:133
 msgctxt "option label"
 msgid "Use WP Locale for Language"
-msgstr "Utilisez WP Locale pour la langue"
+msgstr "Utilisez locale WP pour la langue"
 
 #: lib/gpl/admin/advanced.php:137 lib/pro/admin/advanced.php:138
 msgctxt "option label"
@@ -1365,7 +1369,7 @@ msgstr "caractères"
 #: lib/gpl/admin/advanced.php:340 lib/pro/admin/advanced.php:331
 msgctxt "option label"
 msgid "Use Shortened URL for WP Shortlink"
-msgstr "Utilisez l'URL raccourcie pour WP Shortlink"
+msgstr "Utilisez URL raccourcie pour WP Shortlink"
 
 #: lib/gpl/admin/advanced.php:346 lib/pro/admin/advanced.php:337
 msgctxt "metabox title"
@@ -3666,7 +3670,7 @@ msgstr "Sommaire"
 #: lib/submenu/general.php:387
 msgctxt "option value"
 msgid "Summary Large Image"
-msgstr "Sommaire Grande Image"
+msgstr "Sommaire grande image"
 
 #: lib/submenu/general.php:402
 msgctxt "option label"
@@ -3795,22 +3799,22 @@ msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:2000
+#: lib/util.php:2001
 msgctxt "option comment"
-msgid "%1$d additional options not shown in %2$s view"
-msgstr "%1$d options supplémentaires ne figurent pas dans la vue %2$s"
+msgid "%1$d additional options not shown in \"%2$s\" view"
+msgstr "%1$d options supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2004
+#: lib/util.php:2005
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:2007
+#: lib/util.php:2008
 msgctxt "option comment"
-msgid "%1$d additional rows not shown in %2$s view"
-msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue %2$s"
+msgid "%1$d additional rows not shown in \"%2$s\" view"
+msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2011
+#: lib/util.php:2012
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"

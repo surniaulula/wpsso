@@ -1995,16 +1995,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			echo '</div>'."\n";
 
 			$show_opts_label = $this->p->cf['form']['show_options'][$show_opts];
+
 			if ( $hidden_opts > 0 ) {
 				echo '<div class="hidden_opts_msg '.$class_tabset.'-msg '.$class_tabset_mb.'-msg '.$class_href_key.'-msg">'.
-					sprintf( _x( '%1$d additional options not shown in %2$s view', 'option comment', 'wpsso' ), 
+					sprintf( _x( '%1$d additional options not shown in "%2$s" view', 'option comment', 'wpsso' ), 
 						$hidden_opts, _x( $show_opts_label, 'option value', 'wpsso' ) ).
 					' (<a href="javascript:void(0);"'.
 					' onClick="sucomViewUnhideRows( \''.$class_href_key.'\', \''.$show_opts.'\' );">'.
 					_x( 'unhide these options', 'option comment', 'wpsso' ).'</a>)</div>'."\n";
 			} elseif ( $hidden_rows > 0 ) {
 				echo '<div class="hidden_opts_msg '.$class_tabset.'-msg '.$class_tabset_mb.'-msg '.$class_href_key.'-msg">'.
-					sprintf( _x( '%1$d additional rows not shown in %2$s view', 'option comment', 'wpsso' ), 
+					sprintf( _x( '%1$d additional rows not shown in "%2$s" view', 'option comment', 'wpsso' ), 
 						$hidden_rows, _x( $show_opts_label, 'option value', 'wpsso' ) ).
 					' (<a href="javascript:void(0);"'.
 					' onClick="sucomViewUnhideRows( \''.$class_href_key.'\', \''.$show_opts.'\', \'hide_row_in\' );">'.

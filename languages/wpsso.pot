@@ -106,6 +106,10 @@ msgstr ""
 msgid "Hidden notices for user ID #%d \"%s\" have been cleared."
 msgstr ""
 
+#: lib/admin.php:690
+msgid "Option preference saved &mdash; viewing \"%s\" by default."
+msgstr ""
+
 #: lib/admin.php:707
 msgid ""
 "All image dimensions have been reloaded with their default value and saved."
@@ -137,7 +141,7 @@ msgstr ""
 
 #: lib/admin.php:898
 msgctxt "submit button"
-msgid "View %s by Default"
+msgid "View \"%s\" by Default"
 msgstr ""
 
 #: lib/admin.php:901
@@ -4410,22 +4414,22 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:2000
+#: lib/util.php:2001
 msgctxt "option comment"
-msgid "%1$d additional options not shown in %2$s view"
+msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2004
+#: lib/util.php:2005
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2007
+#: lib/util.php:2008
 msgctxt "option comment"
-msgid "%1$d additional rows not shown in %2$s view"
+msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2011
+#: lib/util.php:2012
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
