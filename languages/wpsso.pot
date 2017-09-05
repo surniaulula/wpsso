@@ -1000,14 +1000,14 @@ msgctxt "option value"
 msgid "(settings value)"
 msgstr ""
 
-#: lib/config-gettext-extract.php:81 lib/messages.php:1209
-msgctxt "lib file description"
-msgid "Social and SEO Image Dimensions"
+#: lib/config-gettext-extract.php:81
+msgctxt "metabox title"
+msgid "Social and Search Optimization"
 msgstr ""
 
-#: lib/config-gettext-extract.php:82
-msgctxt "metabox title"
-msgid "Social / Search Optimization"
+#: lib/config-gettext-extract.php:82 lib/messages.php:1209
+msgctxt "lib file description"
+msgid "Social and SEO Image Dimensions"
 msgstr ""
 
 #: lib/config-gettext-extract.php:83
@@ -3739,7 +3739,7 @@ msgid ""
 "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr ""
 
-#: lib/profile/social-search.php:54
+#: lib/profile/your-sso.php:54
 msgid "Invalid user ID."
 msgstr ""
 

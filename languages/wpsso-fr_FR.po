@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-05 17:18-0400\n"
-"PO-Revision-Date: 2017-09-05 17:25-0400\n"
+"POT-Creation-Date: 2017-09-05 17:41-0400\n"
+"PO-Revision-Date: 2017-09-05 17:43-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -943,15 +943,15 @@ msgctxt "option value"
 msgid "(settings value)"
 msgstr "(valeur de réglages)"
 
-#: lib/config-gettext-extract.php:81 lib/messages.php:1209
+#: lib/config-gettext-extract.php:81
+msgctxt "metabox title"
+msgid "Social and Search Optimization"
+msgstr "Optimisation sociale et de recherche"
+
+#: lib/config-gettext-extract.php:82 lib/messages.php:1209
 msgctxt "lib file description"
 msgid "Social and SEO Image Dimensions"
 msgstr "Dimensions d'images sociaux et SEO"
-
-#: lib/config-gettext-extract.php:82
-msgctxt "metabox title"
-msgid "Social / Search Optimization"
-msgstr "Optimisation social / recherche"
 
 #: lib/config-gettext-extract.php:83
 msgctxt "option value"
@@ -3152,7 +3152,7 @@ msgstr "API raccourcissement Google"
 msgid "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr "Identifiants API incomplet ou manquant pour le service de raccourcissement d'URL %s."
 
-#: lib/profile/social-search.php:54
+#: lib/profile/your-sso.php:54
 msgid "Invalid user ID."
 msgstr "ID d'utilisateur non valide"
 

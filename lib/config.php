@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'lib' => array(			// libraries
 						'profile' => array (	// lib file descriptions will be translated
-							'social-search' => 'Your SSO',
+							'your-sso' => 'Your SSO',
 						),
 						'setting' => array (	// lib file descriptions will be translated
 							'image-dimensions' => 'Social and SEO Image Dimensions',
@@ -1177,7 +1177,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'meta' => array(			// post, term, user add_meta_box() settings
 				'id' => 'sso',
-				'title' => 'Social / Search Optimization',
+				'title' => 'Social and Search Optimization',
 			),
 			'edit' => array(			// post, term, user lists
 				'columns' => array(
