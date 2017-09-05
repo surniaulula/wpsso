@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'lib' => array(			// libraries
 						'profile' => array (	// lib file descriptions will be translated
-							'social-settings' => 'Social / Search',
+							'social-search' => 'Social / Search',
 						),
 						'setting' => array (	// lib file descriptions will be translated
 							'image-dimensions' => 'Social and SEO Image Dimensions',

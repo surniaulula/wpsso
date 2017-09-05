@@ -393,7 +393,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'Remove Pro version preview options from settings pages and metaboxes (default is unchecked).',
 								'wpsso' ).' '.
 							sprintf( __( 'Enabling this option also re-orders the %1$s metabox tabs for your convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost.',
-								'wpsso' ), _x( 'Social Settings', 'metabox title', 'wpsso' ),
+								'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ),
 									_x( 'Preview', 'metabox tab', 'wpsso' ),
 									_x( 'Head Tags', 'metabox tab', 'wpsso' ),
 									_x( 'Validate', 'metabox tab', 'wpsso' ) ).' '.
@@ -403,7 +403,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_show_opts':	// Options to Show by Default
 							$text = sprintf( __( 'Select the set of options to display by default in %1$s settings pages and %2$s metabox.',
-								'wpsso' ), $info['short'], _x( 'Social Settings', 'metabox title', 'wpsso' ) ).' '.
+								'wpsso' ), $info['short'], _x( $this->p->cf['meta']['title'], 'metabox title',
+									'wpsso' ) ).' '.
 							__( 'The basic view shows only the most commonly used options, and includes a link to temporarily unhide all options.',
 								'wpsso' ).' '.
 							__( 'Showing all available options by default could prove to be overwhelming for new users.',
@@ -455,7 +456,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_embedded_media':
-							$text = 'Check the Post and Page content, along with the custom Social Settings, for embedded media URLs from supported media providers (Youtube, Wistia, etc.). If a supported URL is found, an API connection to the provider will be made to retrieve information about the media (preview image, flash player url, oembed player url, video width / height, etc.).';
+							$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.).', 'wpsso' );
 							break;
 
 						/*
@@ -578,7 +579,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							}
 							// no break - fall through
 
-							$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[0] ).' '.sprintf( __( 'If a custom field matching that name is found, its value may be used for the %1$s option in the Social Settings metabox.', 'wpsso' ), $plugin_cf_info[1] );
+							$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[0] ).' '.sprintf( __( 'If a custom field matching that name is found, its value may be used for the %1$s option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[1], _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 							break;	// stop here
 
 						/*
@@ -1075,7 +1076,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 	break;
 	
 						case 'info-meta-social-preview':
-						 	$text = '<p style="text-align:right;">'.__( 'The social preview shows an <em>example</em> link share on Facebook. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
+						 	$text = '<p style="text-align:right;">'.__( 'An <em>example</em> link share on Facebook. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
 						 	break;
 					}	// end of info-meta switch
 				} else {
@@ -1192,7 +1193,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						// do not add this text if hidding pro options or on a settings page
 						if ( empty( $this->p->options['plugin_hide_pro'] ) && $is_settings_page === false ) {
-							$text = __( 'A larger and/or different custom image &mdash; specifically for social meta tags and markup &mdash; can be selected in the Social Settings metabox under the <em>Select Media</em> tab.', 'wpsso' );
+							$text = sprintf( __( 'A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %1$s metabox under the <em>Select Media</em> tab.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 						} else {
 							$text = '';
 						}
@@ -1243,15 +1244,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 
 					case 'notice-missing-og-image':
-						$text = __( 'An Open Graph image meta tag could not be created from this webpage content or its custom Social Settings. Facebook <em>requires at least one image meta tag</em> to render shared content correctly.', 'wpsso' );
+						$text = sprintf( __( 'An Open Graph image meta tag could not be generated from this webpage content or its %1$s settings. Facebook <em>requires at least one image meta tag</em> to render shared content correctly.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 						break;
 
 					case 'notice-missing-og-description':
-						$text = __( 'An Open Graph description meta tag could not be created from this webpage content or its custom Social Settings. Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' );
+						$text = sprintf( __( 'An Open Graph description meta tag could not be generated from this webpage content or its %1$s settings. Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 						break;
 
 					case 'notice-missing-schema-image':
-						$text = __( 'A Schema image property could not be created from this webpage content and/or custom settings. Google <em>requires at least one image property</em> for this Schema item type.', 'wpsso' );
+						$text = sprintf( __( 'A Schema image property could not be generated from this webpage content or %1$s settings. Google <em>requires at least one image property</em> for this Schema item type.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 						break;
 
 					case 'notice-content-filters-disabled':
@@ -1339,9 +1340,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'column-purchase-pro':
 						$text = '<p>'.sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info['short_pro'] ).'</p>';
 						$text .= '<ul>';
-						$text .= '<li>'.__( 'Custom Social Settings for posts, pages, custom post types, terms (categories, tags, and custom taxonomies), and user profiles.', 'wpsso' ).'</li>';
+						$text .= '<li>'.sprintf( __( '%1$s options for posts, pages, custom post types, terms (categories, tags, and custom taxonomies), and user profiles.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) ).'</li>';
 						$text .= '<li>'.__( 'Integration with numerous 3rd party plugins and external service APIs.', 'wpsso' ).'</li>';
-						$text .= '<li>'.__( 'Advanced plugin settings and features.', 'wpsso' ).'</li>';
+						$text .= '<li>'.__( 'Advanced plugin features and settings page.', 'wpsso' ).'</li>';
 						$text .= '</ul>';
 						$text .= '<p>'.__( '<strong>Nontransferable Pro licenses never expire</strong> &mdash; you may receive unlimited / lifetime updates and support for each licensed WordPress Site Address.', 'wpsso' ).' '.__( 'How great is that!?', 'wpsso' ).' :-)</p>';
 

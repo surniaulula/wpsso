@@ -277,11 +277,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$metabox_id = $this->p->cf['meta']['id'];
+			$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
 
 			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_user', $add_metabox, $user_id ) ) {
-				add_meta_box( $lca.'_'.$metabox_id, _x( 'Social Settings', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_custom_meta' ), $lca.'-user', 'normal', 'low' );
+				add_meta_box( $lca.'_'.$metabox_id, $metabox_title,
+					array( &$this, 'show_metabox_custom_meta' ),
+						$lca.'-user', 'normal', 'low' );
 			}
 		}
 

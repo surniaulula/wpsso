@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoProfileSocialSettings' ) && class_exists( 'WpssoAdmin' ) ) {
+if ( ! class_exists( 'WpssoProfileSocialSearch' ) && class_exists( 'WpssoAdmin' ) ) {
 
-	class WpssoProfileSocialSettings extends WpssoAdmin {
+	class WpssoProfileSocialSearch extends WpssoAdmin {
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 			$this->p =& $plugin;
@@ -35,8 +35,10 @@ if ( ! class_exists( 'WpssoProfileSocialSettings' ) && class_exists( 'WpssoAdmin
 		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
 			$metabox_id = $this->p->cf['meta']['id'];
-			add_meta_box( $this->pagehook.'_'.$metabox_id, _x( 'Social Settings', 'metabox title', 'wpsso' ), 
-				array( &$this, 'show_metabox_custom_meta' ), $this->pagehook, 'normal' );
+			$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+			add_meta_box( $this->pagehook.'_'.$metabox_id, $metabox_title, 
+				array( &$this, 'show_metabox_custom_meta' ),
+					$this->pagehook, 'normal' );
 
 		}
 
