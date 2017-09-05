@@ -349,7 +349,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* Renamed the "SSO" top menu item to "Social / Search".
 	* Renamed the "Social Settings" metabox to "Social / Search Optimization".
 * *Bugfixes*
 	* None
@@ -707,7 +706,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.45.10-dev.1 =
 
-(2017/09/05) Renamed the "SSO" top menu item to "Social / Search". Renamed the "Social Settings" metabox to "Social / Search Optimization".
+(2017/09/05) Renamed the "Social Settings" metabox to "Social / Search Optimization".
 
 = 3.45.9 =
 
