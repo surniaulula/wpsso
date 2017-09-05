@@ -344,6 +344,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.45.10-dev.1 (2017/09/05)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Renamed the "SSO" top menu item to "Social / Search".
+	* Renamed the "Social Settings" metabox to "Social / Search Optimization".
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.45.9 (2017/09/04)**
 
 * *New Features*
@@ -687,6 +699,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
 
 == Upgrade Notice ==
+
+= 3.45.10-dev.1 =
+
+(2017/09/05) Renamed the "SSO" top menu item to "Social / Search". Renamed the "Social Settings" metabox to "Social / Search Optimization".
 
 = 3.45.9 =
 

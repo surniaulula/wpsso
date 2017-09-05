@@ -98,7 +98,7 @@
 'wpsso_post_cache_transients' ( $transients, $mod, $sharing_url );
 'wpsso_post_image_ids' ( array $ids, $size_name, $post_id );
 'wpsso_post_image_urls' ( array $urls, $size_name, $post_id );
-'wpsso_post_social_settings_tabs' ( $tabs, $mod );
+'wpsso_post_custom_meta_tabs' ( $tabs, $mod, $metabox_id );
 'wpsso_post_types' ( $post_types, $output );
 'wpsso_post_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_posts_per_page' ( $limit, $mod );
@@ -128,7 +128,7 @@
 'wpsso_term_cache_transients' ( $transients, $mod, $sharing_url );
 'wpsso_term_image_ids' ( array $ids, $size_name, $term_id );
 'wpsso_term_image_urls' ( array $urls, $size_name, $term_id );
-'wpsso_term_social_settings_tabs' ( $tabs, $mod );
+'wpsso_term_custom_meta_tabs' ( $tabs, $mod, $metabox_id );
 'wpsso_tc' ( $tc, $mod );
 'wpsso_tc_seed' ( $tc, $mod );
 'wpsso_term_url' ( $url, $mod, $add_page, $src_id );
@@ -143,6 +143,6 @@
 'wpsso_user_image_urls' ( array $urls, $size_name, $user_id );
 'wpsso_user_object_description' ( $desc, $author_obj );
 'wpsso_user_object_title' ( $title, $author_obj );
-'wpsso_user_social_settings_tabs' ( $tabs, $mod );
+'wpsso_user_custom_meta_tabs' ( $tabs, $mod, $metabox_id );
 'wpsso_user_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_wp_tags' ( $tags, $post_id );
