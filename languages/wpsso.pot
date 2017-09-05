@@ -3079,8 +3079,8 @@ msgstr ""
 #: lib/messages.php:1196
 msgid ""
 "A larger and/or different custom image, specifically for meta tags and "
-"Schema markup, can be selected in the %1$s metabox under the <em>Select "
-"Media</em> tab."
+"Schema markup, can be selected in the %s metabox under the <em>Select Media</"
+"em> tab."
 msgstr ""
 
 #: lib/messages.php:1218
@@ -3113,22 +3113,22 @@ msgstr ""
 #: lib/messages.php:1247
 msgid ""
 "An Open Graph image meta tag could not be generated from this webpage "
-"content or its %1$s settings. Facebook <em>requires at least one image meta "
-"tag</em> to render shared content correctly."
+"content or its custom %s settings. Facebook <em>requires at least one image "
+"meta tag</em> to render shared content correctly."
 msgstr ""
 
 #: lib/messages.php:1251
 msgid ""
 "An Open Graph description meta tag could not be generated from this webpage "
-"content or its %1$s settings. Facebook <em>requires a description meta tag</"
-"em> to render shared content correctly."
+"content or its custom %s settings. Facebook <em>requires a description meta "
+"tag</em> to render shared content correctly."
 msgstr ""
 
 #: lib/messages.php:1255
 msgid ""
 "A Schema image property could not be generated from this webpage content or "
-"%1$s settings. Google <em>requires at least one image property</em> for this "
-"Schema item type."
+"its custom %s settings. Google <em>requires at least one image property</em> "
+"for this Schema item type."
 msgstr ""
 
 #: lib/messages.php:1259
@@ -3267,8 +3267,8 @@ msgstr ""
 
 #: lib/messages.php:1343
 msgid ""
-"%1$s options for posts, pages, custom post types, terms (categories, tags, "
-"and custom taxonomies), and user profiles."
+"%s options for posts, pages, custom post types, terms (categories, tags, and "
+"custom taxonomies), and user profiles."
 msgstr ""
 
 #: lib/messages.php:1344

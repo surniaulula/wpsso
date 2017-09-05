@@ -1193,7 +1193,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						// do not add this text if hidding pro options or on a settings page
 						if ( empty( $this->p->options['plugin_hide_pro'] ) && $is_settings_page === false ) {
-							$text = sprintf( __( 'A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %1$s metabox under the <em>Select Media</em> tab.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+							$text = sprintf( __( 'A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %s metabox under the <em>Select Media</em> tab.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 						} else {
 							$text = '';
 						}
@@ -1244,15 +1244,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 
 					case 'notice-missing-og-image':
-						$text = sprintf( __( 'An Open Graph image meta tag could not be generated from this webpage content or its %1$s settings. Facebook <em>requires at least one image meta tag</em> to render shared content correctly.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+						$text = sprintf( __( 'An Open Graph image meta tag could not be generated from this webpage content or its custom %s settings. Facebook <em>requires at least one image meta tag</em> to render shared content correctly.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 						break;
 
 					case 'notice-missing-og-description':
-						$text = sprintf( __( 'An Open Graph description meta tag could not be generated from this webpage content or its %1$s settings. Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+						$text = sprintf( __( 'An Open Graph description meta tag could not be generated from this webpage content or its custom %s settings. Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 						break;
 
 					case 'notice-missing-schema-image':
-						$text = sprintf( __( 'A Schema image property could not be generated from this webpage content or %1$s settings. Google <em>requires at least one image property</em> for this Schema item type.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+						$text = sprintf( __( 'A Schema image property could not be generated from this webpage content or its custom %s settings. Google <em>requires at least one image property</em> for this Schema item type.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 						break;
 
 					case 'notice-content-filters-disabled':
@@ -1340,7 +1340,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'column-purchase-pro':
 						$text = '<p>'.sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info['short_pro'] ).'</p>';
 						$text .= '<ul>';
-						$text .= '<li>'.sprintf( __( '%1$s options for posts, pages, custom post types, terms (categories, tags, and custom taxonomies), and user profiles.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) ).'</li>';
+						$text .= '<li>'.sprintf( __( '%s options for posts, pages, custom post types, terms (categories, tags, and custom taxonomies), and user profiles.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) ).'</li>';
 						$text .= '<li>'.__( 'Integration with numerous 3rd party plugins and external service APIs.', 'wpsso' ).'</li>';
 						$text .= '<li>'.__( 'Advanced plugin features and settings page.', 'wpsso' ).'</li>';
 						$text .= '</ul>';
