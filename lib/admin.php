@@ -276,7 +276,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$page_title = self::$pkg[$lca]['short'].' &mdash; '.$this->menu_name;
-			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' );
+			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' ).
+				' '.self::$pkg[$lca]['type'];	// package type is pre-translated
 			$cap_name = isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ?
 				$this->p->cf['wp']['admin'][$this->menu_lib]['cap'] : 'manage_options';
 			$icon_url = version_compare( $wp_version, 3.8, '<' ) ? null : 'dashicons-share';
