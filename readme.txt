@@ -312,9 +312,9 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 == Screenshots ==
 
-01. WPSSO can check the front-end webpage for duplicate meta tags, and includes a handy social preview feature.
+01. WPSSO can check the front-end webpage for duplicate meta tags, and includes a handy preview feature.
 02. WPSSO also includes a detailed list of the generated meta tags, for the more advanced or curious users.
-03. WPSSO adds optional Schema type and social preview columns to the post, page, and custom post type lists (can be hidden/shown globally or per user).
+03. WPSSO adds optional Schema type and preview columns to the post, page, and custom post type lists (can be hidden/shown globally or per user).
 04. WPSSO provides an Essential settings page for a quick and easy setup, along with more detailed and advanced settings pages.
 05. WPSSO includes Author and Publisher social profile markup in your home page for Google Search and their Knowledge Graph.
 06. WPSSO detects embedded videos in your content and creates video meta tags for Twitter, Facebook, and Google (Pro version required).
