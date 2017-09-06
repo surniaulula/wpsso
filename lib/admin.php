@@ -261,6 +261,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function &get_form_object( $menu_ext ) {	// $menu_ext required for text_domain
 			if ( ! isset( $this->form ) ||
 				$this->form->get_menu_ext() !== $menu_ext ) {	// just in case
+
 				$this->set_form_object( $menu_ext );
 			}
 			return $this->form;
@@ -617,6 +618,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function load_setting_page() {
+
 			$lca = $this->p->cf['lca'];
 			$action_query = $lca.'-action';
 			wp_enqueue_script( 'postbox' );
@@ -1657,7 +1659,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		// only show timed notices on the dashboard and the settings pages
+		// only show notices on the dashboard and the settings pages
+		// hooked to 'current_screen' filter, so return the $screen object
 		public function screen_notices( $screen ) {
 			$lca = $this->p->cf['lca'];
 			$screen_id = SucomUtil::get_screen_id( $screen );
@@ -1674,8 +1677,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function timed_notices() {
 
-			if ( ! $this->p->notice->can_dismiss() ||	// notices are dismissible since wp v4.2
-				! current_user_can( 'manage_options' ) ) {
+			// notices are dismissible since wp v4.2
+			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
 				return;	// stop here
 			}
 

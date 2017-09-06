@@ -987,12 +987,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// returns false or the admin screen id text string
 		public static function get_screen_id( $screen = false ) {
-			if ( $screen === false &&
-				function_exists( 'get_current_screen' ) )
-					$screen = get_current_screen();
-			if ( isset( $screen->id ) )
+			if ( $screen === false && function_exists( 'get_current_screen' ) ) {
+				$screen = get_current_screen();
+			}
+			if ( isset( $screen->id ) ) {
 				return $screen->id;
-			else return false;
+			} else {
+				return false;
+			}
 		}
 
 		// returns false or the admin screen base text string

@@ -74,7 +74,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function __construct() {
 
-			require_once dirname( __FILE__ ).'/lib/config.php';
+			$plugin_dir = trailingslashit( dirname( __FILE__ ) );
+
+			require_once $plugin_dir.'lib/config.php';
 			$this->cf = WpssoConfig::get_config( false, false );	// unfiltered - $cf['*'] array is not available yet
 			WpssoConfig::set_constants( __FILE__ );
 			WpssoConfig::require_libs( __FILE__ );			// includes the register.php class library

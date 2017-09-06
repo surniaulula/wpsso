@@ -2007,8 +2007,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 		);
 
-		public static function get_version() {
-			return self::$cf['plugin']['wpsso']['version'];
+		public static function get_version( $slug = false ) {
+			$info =& self::$cf['plugin'][self::$cf['lca']];
+			if ( $slug ) {
+				return $info['slug'].'-'.$info['version'];
+			} else {
+				return $info['version'];
+			}
 		}
 
 		// get_config is called very early, so don't apply filters unless instructed
