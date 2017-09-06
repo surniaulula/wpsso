@@ -53,15 +53,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $content;
 			}
 				
-			static $added_to_mod = array();			// prevent recursion
+			static $do_once = array();			// prevent recursion
 
 			$mod = $this->p->util->get_page_mod( true );	// $use_post = true
 			$mod_salt = SucomUtil::get_mod_salt( $mod );
 
-			if ( ! empty( $added_to_mod[$mod_salt] ) ) {	// check for recursion
+			if ( ! empty( $do_once[$mod_salt] ) ) {	// check for recursion
 				return $content;
 			} else {
-				$added_to_mod[$mod_salt] = true;
+				$do_once[$mod_salt] = true;
 			}
 
 			$size_name = $this->p->cf['lca'].'-schema';

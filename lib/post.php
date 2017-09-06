@@ -253,14 +253,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function check_sortable_metadata( $value, $post_id, $meta_key, $single ) {
-			$lca = $this->p->cf['lca'];
-			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 )	// example: _wpsso_head_info_og_img_thumb
-				return $value;	// return null
 
-			static $checked_metadata = array();
-			if ( isset( $checked_metadata[$post_id][$meta_key] ) )
+			$lca = $this->p->cf['lca'];
+			static $do_once = array();
+
+			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
 				return $value;	// return null
-			else $checked_metadata[$post_id][$meta_key] = true;	// prevent recursion
+			}
+
+			if ( isset( $do_once[$post_id][$meta_key] ) ) {
+				return $value;	// return null
+			} else {
+				$do_once[$post_id][$meta_key] = true;	// prevent recursion
+			}
 
 			if ( get_post_meta( $post_id, $meta_key, true ) === '' ) {	// returns empty string if meta not found
 				$mod = $this->get_mod( $post_id );

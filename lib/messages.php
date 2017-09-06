@@ -1198,12 +1198,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = '';
 						}
 
-						static $upscale_shown = false;	// show the upscale options, etc., only once
+						static $do_once_upscale_notice = null;	// show the upscale details only once
 
-						if ( $upscale_shown === false && current_user_can( 'manage_options' ) && 
+						if ( $do_once_upscale_notice !== true && current_user_can( 'manage_options' ) && 
 							( ! isset( $info['allow_upscale'] ) || ! empty( $info['allow_upscale'] ) ) ) {
 
-							$upscale_shown = true;
+							$do_once_upscale_notice = true;
 
 							$img_dim_page = $this->p->util->get_admin_url( 'image-dimensions', 
 								_x( 'Social and SEO Image Dimensions', 'lib file description', 'wpsso' ) );

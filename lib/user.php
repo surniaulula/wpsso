@@ -154,14 +154,19 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function check_sortable_metadata( $value, $user_id, $meta_key, $single ) {
-			$lca = $this->p->cf['lca'];
-			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 )	// example: _wpsso_head_info_og_img_thumb
-				return $value;	// return null
 
-			static $checked_metadata = array();
-			if ( isset( $checked_metadata[$user_id][$meta_key] ) )
+			$lca = $this->p->cf['lca'];
+			static $do_once = array();
+
+			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
 				return $value;	// return null
-			else $checked_metadata[$user_id][$meta_key] = true;	// prevent recursion
+			}
+
+			if ( isset( $do_once[$user_id][$meta_key] ) ) {
+				return $value;	// return null
+			} else {
+				$do_once[$user_id][$meta_key] = true;	// prevent recursion
+			}
 
 			if ( get_user_meta( $user_id, $meta_key, true ) === '' ) {	// returns empty string if meta not found
 				$mod = $this->get_mod( $user_id );

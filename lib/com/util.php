@@ -840,30 +840,30 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_currencies( $idx = false, $add_none = false, $format = '%2$s (%1$s)' ) {
-			static $currencies = array();
-			if ( ! isset( $currencies[$format] ) ) {
-				if ( $format === '%2$s' ) {
-					$currencies[$format] =& self::$currencies;
+			static $cache = array();	// array of arrays, indexed by $format
+			if ( ! isset( $cache[$format] ) ) {
+				if ( $format === '%2$s' ) {	// optimize and get existing format
+					$cache[$format] =& self::$currencies;
 				} else {
 					foreach ( self::$currencies as $key => $name ) {
-						$currencies[$format][$key] = sprintf( $format, $key, $name );
+						$cache[$format][$key] = sprintf( $format, $key, $name );
 					}
 				}
-				asort( $currencies[$format] );
+				asort( $cache[$format] );
 			}
-			return self::get_array( $currencies[$format], $idx, $add_none );
+			return self::get_array( $cache[$format], $idx, $add_none );
 		}
 
 		public static function get_currency_abbrev( $idx = false, $add_none = false ) {
-			static $currencies = null;
-			if ( ! isset( $currencies ) ) {
-				$currencies = array();
+			static $cache = null;	// single dimension array
+			if ( ! isset( $cache ) ) {
+				$cache = array();
 				foreach ( self::$currencies as $key => $name ) {
-					$currencies[$key] = $key;
+					$cache[$key] = $key;
 				}
-				asort( $currencies );
+				asort( $cache );
 			}
-			return self::get_array( $currencies, $idx, $add_none );
+			return self::get_array( $cache, $idx, $add_none );
 		}
 
 		public static function get_currency_symbols( $idx = false, $add_none = false ) {

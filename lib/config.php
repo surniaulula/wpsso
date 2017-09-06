@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.10-dev.1',		// plugin version
+					'version' => '3.45.10-dev.2',		// plugin version
 					'opt_version' => '539',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -848,6 +848,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_debug' => 0,				// Add Hidden Debug Messages
 					'plugin_hide_pro' => 0,				// Hide All Pro Version Options
 					'plugin_show_opts' => 'basic',			// Options to Show by Default
+					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s)
+					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
 					// Content and Filters Tab
 					'plugin_filter_title' => 0,			// Use Filtered (SEO) Title
 					'plugin_filter_content' => 0,			// Apply WordPress Content Filters
@@ -876,8 +878,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_check_img_dims' => 0,			// Enforce Image Dimensions Check
 					'plugin_upscale_images' => 0,			// Allow Upscale of Smaller Images
 					'plugin_upscale_img_max' => 33,			// Maximum Image Upscale Percent
-					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s)
-					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
 					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
 					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
 					// Custom Meta Tab

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.10-dev.1\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.10-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:631 lib/post.php:386 lib/term.php:268 lib/user.php:251
+#: lib/admin.php:631 lib/post.php:391 lib/term.php:275 lib/user.php:256
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1778,17 +1778,17 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:138 lib/meta.php:205 lib/post.php:701
+#: lib/gpl/admin/post.php:138 lib/meta.php:205 lib/post.php:706
 #: lib/pro/admin/post.php:168
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/gpl/social/buddypress.php:47 lib/pro/social/buddypress.php:93
+#: lib/gpl/social/buddypress.php:47 lib/pro/social/buddypress.php:85
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
-#: lib/gpl/social/buddypress.php:60 lib/pro/social/buddypress.php:106
+#: lib/gpl/social/buddypress.php:60 lib/pro/social/buddypress.php:98
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
 "Info</em> text from the WordPress user profile. If you've created an "
@@ -3432,50 +3432,50 @@ msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/options.php:259
+#: lib/options.php:269
 msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:342
+#: lib/options.php:346
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:345
+#: lib/options.php:349
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:348
+#: lib/options.php:352
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:351
+#: lib/options.php:355
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:363
+#: lib/options.php:367
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:428
+#: lib/options.php:432
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:475
+#: lib/options.php:479
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:534
+#: lib/options.php:538
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
@@ -3488,90 +3488,90 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/post.php:470
+#: lib/post.php:475
 msgid ""
 "The WordPress wp_get_shortlink() function returned an invalid URL (%1$s) for "
 "post ID %2$s."
 msgstr ""
 
-#: lib/post.php:478
+#: lib/post.php:483
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding "
 "%1$s to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:482
+#: lib/post.php:487
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:513
+#: lib/post.php:518
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:515
+#: lib/post.php:520
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:517
+#: lib/post.php:522
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:519
+#: lib/post.php:524
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:530 lib/util.php:861
+#: lib/post.php:535 lib/util.php:861
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:539
+#: lib/post.php:544
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:548
+#: lib/post.php:553
 msgid "A &lt;meta /&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:558
+#: lib/post.php:563
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:575
+#: lib/post.php:580
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:589
+#: lib/post.php:594
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:589
+#: lib/post.php:594
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:589
+#: lib/post.php:594
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors (suggested), or disable "
 "the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:612 lib/post.php:614
+#: lib/post.php:617 lib/post.php:619
 msgid "Awesome! No duplicate meta tags found. :-)"
 msgstr ""
 
-#: lib/post.php:615
+#: lib/post.php:620
 msgid "%s more checks to go..."
 msgstr ""
 
@@ -4296,15 +4296,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:462
+#: lib/user.php:467
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:463
+#: lib/user.php:468
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:464
+#: lib/user.php:469
 msgid "Jabber / Google Talk"
 msgstr ""
 

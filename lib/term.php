@@ -174,14 +174,19 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function check_sortable_metadata( $value, $term_id, $meta_key, $single ) {
-			$lca = $this->p->cf['lca'];
-			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 )	// example: _wpsso_head_info_og_img_thumb
-				return $value;	// return null
 
-			static $checked_metadata = array();
-			if ( isset( $checked_metadata[$term_id][$meta_key] ) )
+			$lca = $this->p->cf['lca'];
+			static $do_once = array();
+
+			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
 				return $value;	// return null
-			else $checked_metadata[$term_id][$meta_key] = true;	// prevent recursion
+			}
+
+			if ( isset( $do_once[$term_id][$meta_key] ) ) {
+				return $value;	// return null
+			} else {
+				$do_once[$term_id][$meta_key] = true;	// prevent recursion
+			}
 
 			if ( self::get_term_meta( $term_id, $meta_key, true ) === '' ) {	// returns empty string if meta not found
 				$mod = $this->get_mod( $term_id );
@@ -189,8 +194,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
 
-			if ( ! self::use_meta_table( $term_id ) )
+			if ( ! self::use_meta_table( $term_id ) ) {
 				return self::get_term_meta( $term_id, $meta_key, $single );	// provide the options value
+			}
+
 			return $value;	// return null
 		}
 
@@ -442,21 +449,19 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public static function use_meta_table( $term_id = false ) {
-			static $use_meta_table = null;
-
-			if ( $use_meta_table === null )	{	// optimize and check only once
+			static $cache = null;
+			if ( $cache === null )	{	// optimize and check only once
 				if ( function_exists( 'get_term_meta' ) && get_option( 'db_version' ) >= 34370 ) {
 					if ( $term_id === false || ! wp_term_is_shared( $term_id ) ) {
-						$use_meta_table = true;
+						$cache = true;
 					} else {
-						$use_meta_table = false;
+						$cache = false;
 					}
 				} else {
-					$use_meta_table = false;
+					$cache = false;
 				}
 			}
-
-			return $use_meta_table;
+			return $cache;
 		}
 	}
 }

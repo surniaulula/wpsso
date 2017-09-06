@@ -189,7 +189,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$has_diff_version = false;
 				$has_diff_options = false;
 				$has_new_options = empty( $opts['options_version'] ) ? true : false;
-				$def_opts = null;
+				$def_opts = null;	// optimize and only get array when needed
 
 				/*
 				 * Check for a new plugin and/or extension versions.
@@ -256,14 +256,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$def_opts = $this->get_defaults();
 						}
 						$adv_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
+						foreach ( array(
+							'plugin_preserve',
+							'plugin_debug',
+							'plugin_hide_pro',
+							'plugin_show_opts',
+							'plugin_shortcodes',
+							'plugin_widgets',
+						) as $free_opt_key ) {
+							unset( $adv_opts[$free_opt_key] );
+						}
 						$warn_msg = __( 'Non-standard value found for "%s" option - resetting to default value.',
 							'wpsso' );
-						unset(
-							$adv_opts['plugin_preserve'],
-							$adv_opts['plugin_debug'],
-							$adv_opts['plugin_hide_pro'],
-							$adv_opts['plugin_show_opts']
-						);
 						foreach ( $adv_opts as $idx => $def_val ) {
 							if ( isset( $opts[$idx] ) ) {
 								if ( $opts[$idx] === $def_val ) {
