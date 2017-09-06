@@ -344,7 +344,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.10-dev.1 (2017/09/05)**
+**Version 3.45.10-dev.2 (2017/09/06)**
 
 * *New Features*
 	* None
@@ -704,9 +704,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.10-dev.1 =
+= 3.45.10-dev.2 =
 
-(2017/09/05) Renamed the "Social Settings" metabox to "Social and Search Optimization".
+(2017/09/06) Renamed the "Social Settings" metabox to "Social and Search Optimization".
 
 = 3.45.9 =
 
