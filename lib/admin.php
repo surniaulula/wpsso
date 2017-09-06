@@ -765,7 +765,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->set_form_object( $menu_ext );
 
 			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
-			echo '<h1>'.self::$pkg[$this->menu_ext]['short'].' &ndash; '.$this->menu_name.'</h1>'."\n";
+			echo '<h1>';
+			echo self::$pkg[$this->menu_ext]['short'].' ';	// example: WPSSO Free
+			echo '<span class="qualifier">&ndash; ';
+			echo _x( $this->p->cf['meta']['title'],		// example: Social and Search Optimization
+				'metabox title', 'wpsso' ).' ';
+			echo '('.$this->menu_name.')';			// example: (General Settings)
+			echo '</span></h1>'."\n";
 
 			if ( ! self::$pkg[$lca]['aop'] ) {
 				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">'."\n";
