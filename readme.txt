@@ -19,7 +19,7 @@ Automatically generate complete and accurate meta tags and Schema markup from yo
 
 <img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png">
 
-**WPSSO uses your *existing* content to create meta tags and Schema markup**
+= WPSSO uses your *existing* content to create meta tags and Schema markup =
 
 There's no need to manually enter / configure any additional settings or values, *but if you want to*, you can customize just about anything and everything. ;-)
 
