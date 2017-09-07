@@ -43,11 +43,11 @@
 
 <p><strong>WPSSO Free / Standard Features</strong></p>
 
-<p>&ndash; Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.</p>
+<p>&ndash; Adds complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.</p>
 
 <p>&ndash; Adds Pinterest Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</p>
 
-<p>&ndash; Adds author, publisher, and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</p>
+<p>&ndash; Adds author, publisher, and WebSite markup for Google Search and its <em>Knowledge Graph</em>, including markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</p>
 
 <p>&ndash; Adds Weibo meta tags for article creation and update dates.</p>
 
@@ -60,21 +60,19 @@
 <li><a href="https://dev.twitter.com/cards/types/app">App Card</a> (requires the <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> extension)</li>
 </ul>
 
-<p>&ndash; Customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.</p>
+<p>&ndash; Features customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.</p>
 
 <p>&ndash; Support for Automattic's <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> plugin.</p>
 
-<p>&ndash; Support for featured, attached, gallery shortcode, and/or images from HTML tags in content.</p>
+<p>&ndash; Finds images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.</p>
 
-<p>&ndash; Optional fallback to a default image and video for index and search webpages.</p>
-
-<p>&ndash; Configurable title and description lengths (Open Graph, Twitter Card, SEO).</p>
+<p>&ndash; Configurable title and description maximum lengths (Open Graph, Twitter Card, SEO), including both hard and soft limits.</p>
 
 <p>&ndash; Configurable title separator character (hyphen by default).</p>
 
 <p>&ndash; Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p>
 
-<p>&ndash; Configurable website / business social accounts for Schema markup:</p>
+<p>&ndash; Configurable website / business social accounts for Schema markup and Google's Knowledge Graph:</p>
 
 <ul>
 <li>Facebook Business Page URL</li>
@@ -89,7 +87,7 @@
 <li>YouTube Business Channel URL</li>
 </ul>
 
-<p>&ndash; User profile contact fields for Open Graph, Twitter Card, and Schema markup:</p>
+<p>&ndash; User profile contact fields for Open Graph, Twitter Card, Schema markup, and Google's Knowledge Graph:</p>
 
 <ul>
 <li>Facebook URL</li>
