@@ -6,10 +6,10 @@ WPSSO_PLUGINDIR
 WPSSO_PLUGINSLUG
 WPSSO_PLUGINBASE
 WPSSO_URLPATH
-WPSSO_NONCE
 /*
  * Variable constants (define in wp-config.php file to change default values).
  */
+WPSSO_NONCE_NAME
 WPSSO_TOPICS_LIST		= WPSSO_PLUGINDIR.'share/topics.txt'
 WPSSO_CACHEDIR			= WPSSO_PLUGINDIR.'cache/'
 WPSSO_CACHEURL			= WPSSO_URLPATH.'cache/'
