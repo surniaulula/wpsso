@@ -219,7 +219,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png">
 
-WPSSO detects and uses all images - associated or included in your content - including the WordPress image gallery and [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) shortcodes. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, etc). The Pro version detects embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube (including preview image, video title, and video description). WPSSO (Pro version) also includes support for [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries and images (shortcodes, image tags, album / gallery preview images, etc.).
+WPSSO detects and uses all images, associated or included in your content, including the WordPress image gallery shortcode and the [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) shortcode. WordPress Media Library images (and NextGEN Gallery images in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, Google, etc). The Pro version also detects embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube and includes their preview image, video title, and video description in meta tags and Schema markup. The Pro version includes complete support for [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries, and images (shortcodes, image tags, album / gallery preview images, and more).
 
 **Enhanced SEO**
 
@@ -227,7 +227,7 @@ WPSSO Pro integrates with [All in One SEO Pack](https://wordpress.org/plugins/al
 
 **eCommerce Products**
 
-WPSSO Pro also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce](https://wordpress.org/plugins/woocommerce/) (versions 1, 2, and 3), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including variations and additional / custom images.
+WPSSO Pro also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce](https://wordpress.org/plugins/woocommerce/) (versions 1, 2, and 3), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including product variations and additional / custom images.
 
 **Forums and Social**
 
