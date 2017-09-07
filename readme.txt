@@ -51,7 +51,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 &rsaquo; Adds Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search.
 
-&rsaquo; Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search and its <em>Knowledge Graph</em>, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
+&rsaquo; Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search and its Knowledge Graph, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
 
 &rsaquo; Adds Weibo meta tags for article creation and update dates.
 
@@ -73,6 +73,8 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 &rsaquo; Configurable title separator character (hyphen by default).
 
 &rsaquo; Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
+
+<img class="readme-example landscape" src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png">
 
 &rsaquo; Configurable website / business social accounts for Schema markup and Google's Knowledge Graph:
 
@@ -123,8 +125,6 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 &rsaquo; Download the Free version from [GitHub](https://surniaulula.github.io/wpsso/) or [WordPress.org](https://wordpress.org/plugins/wpsso/).
 
-<img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png">
-
 = Quick List of Features (Continued) =
 
 **WPSSO Pro / Additional Features**
@@ -161,7 +161,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 &rsaquo; Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 
-<img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png">
+<img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png">
 
 &rsaquo; Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 
@@ -215,15 +215,17 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 **Images and Videos**
 
+<img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png">
+
 WPSSO detects and uses all images - associated or included in your content - including the WordPress image gallery and [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) shortcodes. WordPress Media Library images (and NextGEN Gallery in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, etc). The Pro version detects embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube (including preview image, video title, and video description). WPSSO (Pro version) also includes support for [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries and images (shortcodes, image tags, album / gallery preview images, etc.).
 
 **Enhanced SEO**
 
 WPSSO Pro integrates with [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/), [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/), [The SEO Framework](https://wordpress.org/plugins/autodescription/), and [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema Structured Data, and Twitter Card meta tags.
 
-<img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png">
-
 **eCommerce Products**
+
+<img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png">
 
 WPSSO Pro also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce](https://wordpress.org/plugins/woocommerce/) (versions 1, 2, and 3), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including variations and additional / custom images.
 
