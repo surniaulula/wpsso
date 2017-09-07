@@ -1850,8 +1850,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								),
 								'employement.agency' => 'https://schema.org/EmploymentAgency',
 								'entertainment.business' => array(
+									'adult.entertainment' => 'https://schema.org/AdultEntertainment',
+									'amusement.park' => 'https://schema.org/AmusementPark',
+									'art.gallery' => 'https://schema.org/ArtGallery',
+									'casino' => 'https://schema.org/Casino',
+									'comedy.club' => 'https://schema.org/ComedyClub',
 									'entertainment.business' => 'https://schema.org/EntertainmentBusiness',
 									'movie.theatre' => 'https://schema.org/MovieTheatre',
+									'night.club' => 'https://schema.org/NightClub',
 								),
 								'financial.service' => 'https://schema.org/FinancialService',
 								'food.establishment' => array(
