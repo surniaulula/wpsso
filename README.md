@@ -43,15 +43,15 @@
 
 <p><strong>WPSSO Free / Standard Features</strong></p>
 
-<p>&sstarf; Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. to the head section of all webpages.</p>
+<p>&starf; Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. to the head section of all webpages.</p>
 
-<p>&sstarf; Adds Pinterest Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google Search.</p>
+<p>&starf; Adds Pinterest Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google Search.</p>
 
-<p>&sstarf; Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search and its Knowledge Graph, including markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</p>
+<p>&starf; Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search and its Knowledge Graph, including markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</p>
 
-<p>&sstarf; Adds Weibo meta tags for article creation and update dates.</p>
+<p>&starf; Adds Weibo meta tags for article creation and update dates.</p>
 
-<p>&sstarf; Adds all available Twitter Card meta tags:</p>
+<p>&starf; Adds all available Twitter Card meta tags:</p>
 
 <ul>
 <li><a href="https://dev.twitter.com/cards/types/summary-large-image">Summary Card with Large Image</a></li>
@@ -60,21 +60,21 @@
 <li><a href="https://dev.twitter.com/cards/types/app">App Card</a> (requires the <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> extension)</li>
 </ul>
 
-<p>&sstarf; Features customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.</p>
+<p>&starf; Features customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.</p>
 
-<p>&sstarf; Support for Automattic's <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> plugin.</p>
+<p>&starf; Support for Automattic's <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> plugin.</p>
 
-<p>&sstarf; Finds images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.</p>
+<p>&starf; Finds images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.</p>
 
-<p>&sstarf; Configurable title and description maximum lengths (Open Graph, Twitter Card, SEO), including both hard and soft limits.</p>
+<p>&starf; Configurable title and description maximum lengths (Open Graph, Twitter Card, SEO), including both hard and soft limits.</p>
 
-<p>&sstarf; Configurable title separator character (hyphen by default).</p>
+<p>&starf; Configurable title separator character (hyphen by default).</p>
 
-<p>&sstarf; Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p>
+<p>&starf; Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p>
 
 <p><img class="readme-example landscape" src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png"></p>
 
-<p>&sstarf; Configurable website / business social accounts for Schema markup and Google's Knowledge Graph:</p>
+<p>&starf; Configurable website / business social accounts for Schema markup and Google's Knowledge Graph:</p>
 
 <ul>
 <li>Facebook Business Page URL</li>
@@ -89,7 +89,7 @@
 <li>YouTube Business Channel URL</li>
 </ul>
 
-<p>&sstarf; User profile contact fields for Open Graph, Twitter Card, Schema markup, and Google's Knowledge Graph:</p>
+<p>&starf; User profile contact fields for Open Graph, Twitter Card, Schema markup, and Google's Knowledge Graph:</p>
 
 <ul>
 <li>Facebook URL</li>
@@ -104,15 +104,15 @@
 <li>YouTube Channel URL</li>
 </ul>
 
-<p>&sstarf; Provides an option to hide the preview of all Pro settings and features.</p>
+<p>&starf; Provides an option to hide the preview of all Pro settings and features.</p>
 
-<p>&sstarf; <em>Fast and coded for performance</em>, WPSSO makes full use of all available caching techniques (persistent / non-persistent object and disk caching).</p>
+<p>&starf; <em>Fast and coded for performance</em>, WPSSO makes full use of all available caching techniques (persistent / non-persistent object and disk caching).</p>
 
-<p>&sstarf; Loads only the PHP library files and object classes it needs, keeping it small, fast, light, and still able to support a wide range of 3rd party integration features.</p>
+<p>&starf; Loads only the PHP library files and object classes it needs, keeping it small, fast, light, and still able to support a wide range of 3rd party integration features.</p>
 
-<p>&sstarf; Fully tested and compatible with PHP v7.x (requires PHP v5.3 or better).</p>
+<p>&starf; Fully tested and compatible with PHP v7.x (requires PHP v5.3 or better).</p>
 
-<p>&sstarf; Additional (and optional) Free extension for WPSSO:</p>
+<p>&starf; Additional (and optional) Free extension for WPSSO:</p>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (Free version)</li>
@@ -127,7 +127,7 @@
 <li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a> (Free version)</li>
 </ul>
 
-<p>&sstarf; Download the Free version from <a href="https://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
+<p>&starf; Download the Free version from <a href="https://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
 
 <h4>Quick List of Features (Continued)</h4>
 
@@ -135,21 +135,21 @@
 
 <p><img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png"></p>
 
-<p>&sstarf; Includes a Social Settings metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google Search / Twitter Card descriptions, along with the shared image and/or video.</p>
+<p>&starf; Includes a Social Settings metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google Search / Twitter Card descriptions, along with the shared image and/or video.</p>
 
-<p>&sstarf; Fully renders content (including shortcodes) for accurate description texts.</p>
+<p>&starf; Fully renders content (including shortcodes) for accurate description texts.</p>
 
-<p>&sstarf; Validates minimum / maximum image dimensions and aspect ratios.</p>
+<p>&starf; Validates minimum / maximum image dimensions and aspect ratios.</p>
 
-<p>&sstarf; Support for embedded videos in content text (iframe and object HTML markup).</p>
+<p>&starf; Support for embedded videos in content text (iframe and object HTML markup).</p>
 
-<p>&sstarf; Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and e-commerce products.</p>
+<p>&starf; Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and e-commerce products.</p>
 
-<p>&sstarf; Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.</p>
+<p>&starf; Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.</p>
 
-<p>&sstarf; Include or exclude individual Facebook / Open Graph / Google / SEO / Twitter Card / Schema meta tag from the webpage head section.</p>
+<p>&starf; Include or exclude individual Facebook / Open Graph / Google / SEO / Twitter Card / Schema meta tag from the webpage head section.</p>
 
-<p>&sstarf; Allows you to customize the field names, label, and add / remove the contacts on user profile pages and Co-Authors Plus guest author profiles:</p>
+<p>&starf; Allows you to customize the field names, label, and add / remove the contacts on user profile pages and Co-Authors Plus guest author profiles:</p>
 
 <ul>
 <li>AIM</li>
@@ -167,9 +167,9 @@
 <li>YouTube Channel URL</li>
 </ul>
 
-<p>&sstarf; Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.</p>
+<p>&starf; Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.</p>
 
-<p>&sstarf; Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.</p>
+<p>&starf; Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.</p>
 
 <ul>
 <li><strong>Integration with 3rd Party Plugins</strong>
@@ -214,7 +214,7 @@
 </ul></li>
 </ul>
 
-<p>&sstarf; Additional Pro extensions for WPSSO:</p>
+<p>&starf; Additional Pro extensions for WPSSO:</p>
 
 <ul>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (Pro version)</li>
@@ -225,7 +225,7 @@
 <li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Pro version)</li>
 </ul>
 
-<p>&sstarf; <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the Pro version</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
+<p>&starf; <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the Pro version</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
 
 <h4>3rd Party Integration (Pro version)</h4>
 
