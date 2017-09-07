@@ -171,6 +171,8 @@
 
 <p>&rsaquo; Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.</p>
 
+<p><img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png"></p>
+
 <ul>
 <li><strong>Integration with 3rd Party Plugins</strong>
 
@@ -240,8 +242,6 @@
 <p>WPSSO Pro integrates with <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>, <a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a>, <a href="https://wordpress.org/plugins/autodescription/">The SEO Framework</a>, and <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema Structured Data, and Twitter Card meta tags.</p>
 
 <p><strong>eCommerce Products</strong></p>
-
-<p><img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png"></p>
 
 <p>WPSSO Pro also supports <a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a>, <a href="https://wordpress.org/plugins/wordpress-ecommerce/">MarketPress - WordPress eCommerce</a>, <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a> (versions 1, 2, and 3), and <a href="https://wordpress.org/plugins/wp-e-commerce/">WP e-Commerce</a> product pages, creating appropriate meta tags for <a href="https://developers.facebook.com/docs/payments/product/">Facebook Products</a> and <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, including variations and additional / custom images.</p>
 
