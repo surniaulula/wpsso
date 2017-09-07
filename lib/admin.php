@@ -1165,15 +1165,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			uksort( $features, array( __CLASS__, 'sort_plugin_features' ) );
 
 			foreach ( $features as $label => $arr ) {
-				if ( isset( $arr['classname'] ) )
+
+				if ( isset( $arr['classname'] ) ) {
 					$status_key = class_exists( $arr['classname'] ) ? 'on' : 'off';
-				elseif ( isset( $arr['constant'] ) )
+				} elseif ( isset( $arr['constant'] ) ) {
 					$status_key = SucomUtil::get_const( $arr['constant'] ) ? 'on' : 'off';
-				elseif ( isset( $arr['status'] ) )
+				} elseif ( isset( $arr['status'] ) ) {
 					$status_key = $arr['status'];
-				else $status_key = '';
+				} else {
+					$status_key = '';
+				}
 
 				if ( ! empty( $status_key ) ) {
+
 					$td_class = empty( $arr['td_class'] ) ? '' : ' '.$arr['td_class'];
 					$icon_type = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label, $match ) ? $match[1] : 'admin-generic';
 					$icon_title = __( 'Generic feature module', 'wpsso' );

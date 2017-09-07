@@ -158,34 +158,17 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// begin timer
 			}
 
-			$lca = $this->p->cf['lca'];
-			$sort_cols = WpssoMeta::get_sortable_columns();
-			$custom_style_css = '';
-
 			wp_enqueue_style( 'sucom-admin-page',
 				$plugin_urlpath.'css/com/admin-page.min.css',
 					array(), $plugin_version );
 
-			if ( isset( $this->p->cf['menu']['color'] ) ) {
-
-				$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
-				$sitemenu = $lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
-				$icon_highlight = defined( 'WPSSO_MENU_ICON_HIGHLIGHT' ) && 
-					WPSSO_MENU_ICON_HIGHLIGHT ? true : false;
-
-				if ( $icon_highlight )  {
-					$custom_style_css .= '
-						#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image:before,
-						#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before,
-						#adminmenu li.menu-top.toplevel_page_'.$menu.':hover div.wp-menu-image:before,
-						#adminmenu li.menu-top.toplevel_page_'.$sitemenu.':hover div.wp-menu-image:before {
-							color:#'.$this->p->cf['menu']['color'].'; }
-					';
-				}
-			}
-
+			$lca = $this->p->cf['lca'];
+			$sort_cols = WpssoMeta::get_sortable_columns();
 			$metabox_id = $this->p->cf['meta']['id'];
-			$custom_style_css .= '
+			$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
+			$sitemenu = $lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
+
+			$custom_style_css = '
 				@font-face {
 					font-family:"Star";
 					src:url("'.$plugin_urlpath.'fonts/star.eot");
@@ -195,6 +178,32 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					url("'.$plugin_urlpath.'fonts/star.svg#star") format("svg");
 					font-weight:normal;
 					font-style:normal;
+				}
+				#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image:before,
+				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before,
+				#adminmenu li.menu-top.toplevel_page_'.$menu.':hover div.wp-menu-image:before,
+				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.':hover div.wp-menu-image:before {
+			';
+
+			if ( ! empty( $this->p->cf['menu']['color'] ) &&
+				SucomUtil::get_const( 'WPSSO_MENU_ICON_HIGHLIGHT', true ) )  {
+				$custom_style_css .= '
+					color:#'.$this->p->cf['menu']['color'].';
+				';
+			}
+
+			if ( ! empty( $this->p->cf['menu']['before'] ) ) {
+				$custom_style_css .= '
+					content:"'.$this->p->cf['menu']['before'].'";
+					font-size:2.2em;
+					font-style:normal;
+					display:inline;
+					line-height:inherit;
+					vertical-align:middle;
+				';
+			}
+
+			$custom_style_css .= '
 				}
 				#profile-page.wrap #your-profile #'.$lca.'_'.$metabox_id.'.postbox h3:first-of-type {
 					margin:0;

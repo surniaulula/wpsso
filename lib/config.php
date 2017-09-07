@@ -1174,6 +1174,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'menu' => array(
 				'title' => 'SSO',		// menu title
 				'color' => '33cc33',		// menu color (lime green)
+				'before' => '\0229b',		// circle asterix
 			),
 			'meta' => array(			// post, term, user add_meta_box() settings
 				'id' => 'sso',
