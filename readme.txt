@@ -47,36 +47,36 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 **WPSSO Free / Standard Features**
 
-&mdash; Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.
+&ndash; Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.
 
-&mdash; Adds Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
+&ndash; Adds Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
 
-&mdash; Adds author, publisher, and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
+&ndash; Adds author, publisher, and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
 
-&mdash; Adds Weibo meta tags for article creation and update dates.
+&ndash; Adds Weibo meta tags for article creation and update dates.
 
-&mdash; Adds all available Twitter Card meta tags:
+&ndash; Adds all available Twitter Card meta tags:
 
 * [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 * [Summary Card](https://dev.twitter.com/cards/types/summary)
 * [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires video discovery modules, provided with the Pro version).
 * [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
 
-&mdash; Customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.
+&ndash; Customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.
 
-&mdash; Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
+&ndash; Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
 
-&mdash; Support for featured, attached, gallery shortcode, and/or images from HTML tags in content.
+&ndash; Support for featured, attached, gallery shortcode, and/or images from HTML tags in content.
 
-&mdash; Optional fallback to a default image and video for index and search webpages.
+&ndash; Optional fallback to a default image and video for index and search webpages.
 
-&mdash; Configurable title and description lengths (Open Graph, Twitter Card, SEO).
+&ndash; Configurable title and description lengths (Open Graph, Twitter Card, SEO).
 
-&mdash; Configurable title separator character (hyphen by default).
+&ndash; Configurable title separator character (hyphen by default).
 
-&mdash; Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
+&ndash; Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
-&mdash; Configurable website / business social accounts for Schema markup:
+&ndash; Configurable website / business social accounts for Schema markup:
 
 * Facebook Business Page URL
 * Google+ Business Page URL
@@ -89,7 +89,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * Twitter Business @username
 * YouTube Business Channel URL
 
-&mdash; User profile contact fields for Open Graph, Twitter Card, and Schema markup:
+&ndash; User profile contact fields for Open Graph, Twitter Card, and Schema markup:
 
 * Facebook URL
 * Google+ URL
@@ -102,7 +102,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * Twitter @username
 * YouTube Channel URL
 
-&mdash; Additional (and optional) Free extension plugins:
+&ndash; Additional (and optional) Free extension plugins:
 
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) (Free version)
@@ -115,7 +115,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) (Free version)
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) (Free version)
 
-&mdash; Provides an option to hide the preview of all Pro settings and features.
+&ndash; Provides an option to hide the preview of all Pro settings and features.
 
 <blockquote>
 <p>Download the Free version from <a href="https://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
@@ -127,25 +127,25 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 **WPSSO Pro / Additional Features**
 
-&mdash; Includes a Social Settings metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
+&ndash; Includes a Social Settings metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
 
-&mdash; Fully renders content (including shortcodes) for accurate description texts.
+&ndash; Fully renders content (including shortcodes) for accurate description texts.
 
-&mdash; Support for embedded videos in content text (iframe and object HTML markup).
+&ndash; Support for embedded videos in content text (iframe and object HTML markup).
 
-&mdash; Additional Facebook / Open Graph / Rich Pin meta tags for videos and e-commerce products.
+&ndash; Additional Facebook / Open Graph / Rich Pin meta tags for videos and e-commerce products.
 
-&mdash; Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and/or Youtube.
+&ndash; Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and/or Youtube.
 
-&mdash; Include or exclude individual Google / SEO, Open Graph, Twitter Card, and Schema meta tags in the webpage head section.
+&ndash; Include or exclude individual Google / SEO, Open Graph, Twitter Card, and Schema meta tags in the webpage head section.
 
-&mdash; Validation of minimum / maximum image dimensions and aspect ratios.
+&ndash; Validation of minimum / maximum image dimensions and aspect ratios.
 
-&mdash; Configurable user profile contact field names and labels.
+&ndash; Configurable user profile contact field names and labels.
 
-&mdash; Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
+&ndash; Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 
-&mdash; Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
+&ndash; Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 
 * **Integration with 3rd Party Plugins**
 	* All in One SEO Pack
@@ -182,7 +182,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 	* Your Own URL Shortener (YOURLS)
 	* YouTube Videos and Playlists
 
-&mdash; Additional Pro extension plugins:
+&ndash; Additional Pro extension plugins:
 
 * [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
 * [WPSSO Organization Markup](https://wpsso.com/extend/plugins/wpsso-organization/) (Pro version)
