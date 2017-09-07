@@ -133,6 +133,8 @@
 
 <p><strong>WPSSO Pro / Additional Features</strong></p>
 
+<p><img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png"></p>
+
 <p>&rsaquo; Includes a Social Settings metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google Search / Twitter Card descriptions, along with the shared image and/or video.</p>
 
 <p>&rsaquo; Fully renders content (including shortcodes) for accurate description texts.</p>
@@ -166,8 +168,6 @@
 </ul>
 
 <p>&rsaquo; Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.</p>
-
-<p><img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png"></p>
 
 <p>&rsaquo; Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.</p>
 
