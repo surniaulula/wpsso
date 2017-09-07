@@ -49,7 +49,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 <span style="color:#33cc33">&oast;</span> Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
 
-<span style="color:#33cc33">&oast;</span> Adds Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search.
+<span style="color:#33cc33">&oast;</span> Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search.
 
 <span style="color:#33cc33">&oast;</span> Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search and its Knowledge Graph, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
 
@@ -59,7 +59,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 * [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 * [Summary Card](https://dev.twitter.com/cards/types/summary)
-* [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires the video discovery modules provided in the Pro version).
+* [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires the video discovery modules in the Pro version).
 * [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
 
 <span style="color:#33cc33">&oast;</span> Features customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.
@@ -133,7 +133,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 <span style="color:#33cc33">&oast;</span> Includes a Social Settings metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google Search / Twitter Card descriptions, along with the shared image and/or video.
 
-<span style="color:#33cc33">&oast;</span> Fully renders content (including shortcodes) for accurate description texts.
+<span style="color:#33cc33">&oast;</span> Fully renders content (including shortcodes) for accurate description texts and embedded video detection.
 
 <span style="color:#33cc33">&oast;</span> Validates minimum / maximum image dimensions and aspect ratios.
 
@@ -163,7 +163,11 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 <span style="color:#33cc33">&oast;</span> Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 
+<span style="color:#ff6600">&oast;</span> Dynamic button language switching based on the current WordPress locale for contextual language meta tags.
+
 <span style="color:#33cc33">&oast;</span> Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
+
+<img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png">
 
 * **Integration with 3rd Party Plugins**
 	* All in One SEO Pack

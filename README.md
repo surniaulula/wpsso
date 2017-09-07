@@ -45,7 +45,7 @@
 
 <p><span style="color:#33cc33">&oast;</span> Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.</p>
 
-<p><span style="color:#33cc33">&oast;</span> Adds Pinterest Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google Search.</p>
+<p><span style="color:#33cc33">&oast;</span> Adds Pinterest-specific Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google Search.</p>
 
 <p><span style="color:#33cc33">&oast;</span> Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search and its Knowledge Graph, including markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</p>
 
@@ -56,7 +56,7 @@
 <ul>
 <li><a href="https://dev.twitter.com/cards/types/summary-large-image">Summary Card with Large Image</a></li>
 <li><a href="https://dev.twitter.com/cards/types/summary">Summary Card</a></li>
-<li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> is available in the Pro version (requires the video discovery modules provided in the Pro version).</li>
+<li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> is available in the Pro version (requires the video discovery modules in the Pro version).</li>
 <li><a href="https://dev.twitter.com/cards/types/app">App Card</a> (requires the <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> extension)</li>
 </ul>
 
@@ -137,7 +137,7 @@
 
 <p><span style="color:#33cc33">&oast;</span> Includes a Social Settings metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google Search / Twitter Card descriptions, along with the shared image and/or video.</p>
 
-<p><span style="color:#33cc33">&oast;</span> Fully renders content (including shortcodes) for accurate description texts.</p>
+<p><span style="color:#33cc33">&oast;</span> Fully renders content (including shortcodes) for accurate description texts and embedded video detection.</p>
 
 <p><span style="color:#33cc33">&oast;</span> Validates minimum / maximum image dimensions and aspect ratios.</p>
 
@@ -169,7 +169,11 @@
 
 <p><span style="color:#33cc33">&oast;</span> Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.</p>
 
+<p><span style="color:#ff6600">&oast;</span> Dynamic button language switching based on the current WordPress locale for contextual language meta tags.</p>
+
 <p><span style="color:#33cc33">&oast;</span> Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.</p>
+
+<p><img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png"></p>
 
 <ul>
 <li><strong>Integration with 3rd Party Plugins</strong>
