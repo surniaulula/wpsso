@@ -47,7 +47,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 **WPSSO Free / Standard Features**
 
-<span style="color:#33cc33">&oast;</span> Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
+&oast; Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
 
 <span style="color:#33cc33">&oast;</span> Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search.
 
