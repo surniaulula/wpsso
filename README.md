@@ -43,71 +43,83 @@
 
 <p><strong>WPSSO Free / Standard Features</strong></p>
 
-<p>Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.</p>
+<p>&mdash; Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.</p>
 
-<p>Adds Pinterest Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</p>
+<p>&mdash; Adds Pinterest Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</p>
 
-<p>Adds author, publisher, and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</p>
+<p>&mdash; Adds author, publisher, and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</p>
 
-<p>Adds Weibo meta tags for article creation and update dates.</p>
+<p>&mdash; Adds Weibo meta tags for article creation and update dates.</p>
 
-<p>Adds all available Twitter Card meta tags:
-    * <a href="https://dev.twitter.com/cards/types/summary-large-image">Summary Card with Large Image</a>
-    * <a href="https://dev.twitter.com/cards/types/summary">Summary Card</a>
-    * <a href="https://dev.twitter.com/cards/types/player">Player Card</a> is available in the Pro version (requires video discovery modules, provided with the Pro version).
-    * <a href="https://dev.twitter.com/cards/types/app">App Card</a> (requires the <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> extension)</p>
+<p>&mdash; Adds all available Twitter Card meta tags:</p>
 
-<p>Customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.</p>
+<ul>
+<li><a href="https://dev.twitter.com/cards/types/summary-large-image">Summary Card with Large Image</a></li>
+<li><a href="https://dev.twitter.com/cards/types/summary">Summary Card</a></li>
+<li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> is available in the Pro version (requires video discovery modules, provided with the Pro version).</li>
+<li><a href="https://dev.twitter.com/cards/types/app">App Card</a> (requires the <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> extension)</li>
+</ul>
 
-<p>Support for Automattic's <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> plugin.</p>
+<p>&mdash; Customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.</p>
 
-<p>Support for featured, attached, gallery shortcode, and/or images from HTML tags in content.</p>
+<p>&mdash; Support for Automattic's <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> plugin.</p>
 
-<p>Optional fallback to a default image and video for index and search webpages.</p>
+<p>&mdash; Support for featured, attached, gallery shortcode, and/or images from HTML tags in content.</p>
 
-<p>Configurable title and description lengths (Open Graph, Twitter Card, SEO).</p>
+<p>&mdash; Optional fallback to a default image and video for index and search webpages.</p>
 
-<p>Configurable title separator character (hyphen by default).</p>
+<p>&mdash; Configurable title and description lengths (Open Graph, Twitter Card, SEO).</p>
 
-<p>Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p>
+<p>&mdash; Configurable title separator character (hyphen by default).</p>
 
-<p>Configurable website / business social accounts for Schema markup:
-    * Facebook Business Page URL
-    * Google+ Business Page URL
-    * Instagram Business URL
-    * LinkedIn Company Page URL
-    * Myspace Business Page URL
-    * Pinterest Company Page URL
-    * SoundCloud Business URL
-    * Tumblr Business Page URL
-    * Twitter Business @username
-    * YouTube Business Channel URL</p>
+<p>&mdash; Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p>
 
-<p>User profile contact fields for Open Graph, Twitter Card, and Schema markup:
-    * Facebook URL
-    * Google+ URL
-    * Instagram URL
-    * LinkedIn URL
-    * Myspace URL
-    * Pinterest URL
-    * Skype Username
-    * Tumblr URL
-    * Twitter @username
-    * YouTube Channel URL</p>
+<p>&mdash; Configurable website / business social accounts for Schema markup:</p>
 
-<p>Additional (and optional) Free extension plugins:
-    * <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (Free version)
-    * <a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a> (Free version)
-    * <a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> (Free version)
-    * <a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a> (Free version)
-    * <a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> (Free version)
-    * <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> (Free version)
-    * <a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Free version)
-    * <a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a> (Free version)
-    * <a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a> (Free version)
-    * <a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a> (Free version)</p>
+<ul>
+<li>Facebook Business Page URL</li>
+<li>Google+ Business Page URL</li>
+<li>Instagram Business URL</li>
+<li>LinkedIn Company Page URL</li>
+<li>Myspace Business Page URL</li>
+<li>Pinterest Company Page URL</li>
+<li>SoundCloud Business URL</li>
+<li>Tumblr Business Page URL</li>
+<li>Twitter Business @username</li>
+<li>YouTube Business Channel URL</li>
+</ul>
 
-<p>Provides an option to hide the preview of all Pro settings and features.</p>
+<p>&mdash; User profile contact fields for Open Graph, Twitter Card, and Schema markup:</p>
+
+<ul>
+<li>Facebook URL</li>
+<li>Google+ URL</li>
+<li>Instagram URL</li>
+<li>LinkedIn URL</li>
+<li>Myspace URL</li>
+<li>Pinterest URL</li>
+<li>Skype Username</li>
+<li>Tumblr URL</li>
+<li>Twitter @username</li>
+<li>YouTube Channel URL</li>
+</ul>
+
+<p>&mdash; Additional (and optional) Free extension plugins:</p>
+
+<ul>
+<li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a> (Free version)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a> (Free version)</li>
+</ul>
+
+<p>&mdash; Provides an option to hide the preview of all Pro settings and features.</p>
 
 <blockquote>
 <p>Download the Free version from <a href="https://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>

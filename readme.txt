@@ -47,71 +47,75 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 **WPSSO Free / Standard Features**
 
-Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.
+&mdash; Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.
 
-Adds Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
+&mdash; Adds Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
 
-Adds author, publisher, and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
+&mdash; Adds author, publisher, and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
 
-Adds Weibo meta tags for article creation and update dates.
+&mdash; Adds Weibo meta tags for article creation and update dates.
 
-Adds all available Twitter Card meta tags:
-	* [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
-	* [Summary Card](https://dev.twitter.com/cards/types/summary)
-	* [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires video discovery modules, provided with the Pro version).
-	* [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
+&mdash; Adds all available Twitter Card meta tags:
 
-Customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.
+* [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
+* [Summary Card](https://dev.twitter.com/cards/types/summary)
+* [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires video discovery modules, provided with the Pro version).
+* [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
 
-Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
+&mdash; Customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.
 
-Support for featured, attached, gallery shortcode, and/or images from HTML tags in content.
+&mdash; Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
 
-Optional fallback to a default image and video for index and search webpages.
+&mdash; Support for featured, attached, gallery shortcode, and/or images from HTML tags in content.
 
-Configurable title and description lengths (Open Graph, Twitter Card, SEO).
+&mdash; Optional fallback to a default image and video for index and search webpages.
 
-Configurable title separator character (hyphen by default).
+&mdash; Configurable title and description lengths (Open Graph, Twitter Card, SEO).
 
-Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
+&mdash; Configurable title separator character (hyphen by default).
 
-Configurable website / business social accounts for Schema markup:
-	* Facebook Business Page URL
-	* Google+ Business Page URL
-	* Instagram Business URL
-	* LinkedIn Company Page URL
-	* Myspace Business Page URL
-	* Pinterest Company Page URL
-	* SoundCloud Business URL
-	* Tumblr Business Page URL
-	* Twitter Business @username
-	* YouTube Business Channel URL
+&mdash; Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
-User profile contact fields for Open Graph, Twitter Card, and Schema markup:
-	* Facebook URL
-	* Google+ URL
-	* Instagram URL
-	* LinkedIn URL
-	* Myspace URL
-	* Pinterest URL
-	* Skype Username
-	* Tumblr URL
-	* Twitter @username
-	* YouTube Channel URL
+&mdash; Configurable website / business social accounts for Schema markup:
 
-Additional (and optional) Free extension plugins:
-	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
-	* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) (Free version)
-	* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) (Free version)
-	* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) (Free version)
-	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) (Free version)
-	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) (Free version)
-	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) (Free version)
-	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) (Free version)
-	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) (Free version)
-	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) (Free version)
+* Facebook Business Page URL
+* Google+ Business Page URL
+* Instagram Business URL
+* LinkedIn Company Page URL
+* Myspace Business Page URL
+* Pinterest Company Page URL
+* SoundCloud Business URL
+* Tumblr Business Page URL
+* Twitter Business @username
+* YouTube Business Channel URL
 
-Provides an option to hide the preview of all Pro settings and features.
+&mdash; User profile contact fields for Open Graph, Twitter Card, and Schema markup:
+
+* Facebook URL
+* Google+ URL
+* Instagram URL
+* LinkedIn URL
+* Myspace URL
+* Pinterest URL
+* Skype Username
+* Tumblr URL
+* Twitter @username
+* YouTube Channel URL
+
+&mdash; Additional (and optional) Free extension plugins:
+
+* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
+* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) (Free version)
+* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) (Free version)
+* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) (Free version)
+* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) (Free version)
+* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) (Free version)
+* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) (Free version)
+* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) (Free version)
+* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) (Free version)
+* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) (Free version)
+
+&mdash; Provides an option to hide the preview of all Pro settings and features.
 
 <blockquote>
 <p>Download the Free version from <a href="https://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
