@@ -39,7 +39,7 @@ Providing a specific image for the Pinterest Pin It button, excluding non-releva
 
 WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
 
-**WPSSO offers a *fast* and *reliable* social framework for developers:**
+**WPSSO offers a *fast* and reliable social framework for developers:**
 
 Offering dozens of 3rd party integration modules in the Pro version, several Free and Pro extensions, and hundreds of filter hooks to easily customize WPSSO's behavior and output.
 
@@ -47,7 +47,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 **WPSSO Free / Standard Features**
 
-<span style="color:#33cc33">&#8859;</span> Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
+<span style="color:#33cc33">&#8859;</span> &nbsp; Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
 
 <span style="color:#33cc33">&#8859;</span> Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search.
 
