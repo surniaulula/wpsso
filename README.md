@@ -21,15 +21,15 @@
 
 <p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup:</strong></p>
 
-<p>Including hashtags, image SEO, video SEO, e-commerce product SEO, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.</p>
-
-<p><strong>WPSSO offers special optimization features for Pinterest:</strong></p>
-
-<p>Providing an image for the Pin It button, excluding non-relevant images, and preventing conflicts between incompatible Pinterest and Facebook meta tag values.</p>
+<p>Including description hashtags, complete image SEO, complete video SEO, complete and extensive e-commerce product SEO, author profile / authorship, co-authors, publisher information, aggregate and ratings, reviews, event details, recipe information, and much, much more &mdash; all from your <em>existing</em> content.</p>
 
 <p><strong>WPSSO includes advanced <em>quality control</em> features and options:</strong></p>
 
 <p>Checking minimum / maximum image dimensions and aspect ratios, verifying the front-end webpage for duplicate meta tags, showing notices for missing and required images, along with theme header template validation.</p>
+
+<p><strong>WPSSO offers special optimization features for Pinterest:</strong></p>
+
+<p>Providing a specific image for the website and web browser Pin It button, excluding non-relevant images from being detected by Pinterest, and preventing conflicts between incompatible Pinterest and Facebook meta tag values.</p>
 
 <p><strong>WPSSO can enhance and integrate with your favorite SEO plugin!</strong></p>
 
@@ -43,7 +43,7 @@
 
 <p><strong>WPSSO Free / Standard Features</strong></p>
 
-<p>&ndash; Automatically adds complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. to the head section of all webpages.</p>
+<p>&ndash; Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. to the head section of all webpages.</p>
 
 <p>&ndash; Adds Pinterest Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google Search.</p>
 
@@ -56,7 +56,7 @@
 <ul>
 <li><a href="https://dev.twitter.com/cards/types/summary-large-image">Summary Card with Large Image</a></li>
 <li><a href="https://dev.twitter.com/cards/types/summary">Summary Card</a></li>
-<li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> is available in the Pro version (requires video discovery modules, provided with the Pro version).</li>
+<li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> is available in the Pro version (requires the video discovery modules provided in the Pro version).</li>
 <li><a href="https://dev.twitter.com/cards/types/app">App Card</a> (requires the <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> extension)</li>
 </ul>
 
@@ -102,6 +102,14 @@
 <li>YouTube Channel URL</li>
 </ul>
 
+<p>&ndash; Provides an option to hide the preview of all Pro settings and features.</p>
+
+<p>&ndash; <em>Fast and coded for performance</em>, WPSSO makes full use of all available caching techniques (persistent / non-persistent object and disk caching).</p>
+
+<p>&ndash; Loads only the PHP library files and object classes it needs, keeping it small, fast, light, and still able to support a wide range of 3rd party integration features.</p>
+
+<p>&ndash; Fully tested and compatible with PHP v7.x (requires PHP v5.3 or better).</p>
+
 <p>&ndash; Additional (and optional) Free extension for WPSSO:</p>
 
 <ul>
@@ -116,14 +124,6 @@
 <li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a> (Free version)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a> (Free version)</li>
 </ul>
-
-<p>&ndash; Provides an option to hide the preview of all Pro settings and features.</p>
-
-<p>&ndash; <em>Fast and coded for performance</em>, WPSSO makes full use of all available caching techniques (persistent / non-persistent object and disk caching).</p>
-
-<p>&ndash; Loads only the PHP library files and object classes it needs, keeping it small, fast, light, and still able to support a wide range of 3rd party integration features.</p>
-
-<p>&ndash; Fully tested and compatible with PHP v7.x (requires PHP v5.3 or better).</p>
 
 <p>&ndash; Download the Free version from <a href="https://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
 
@@ -141,7 +141,7 @@
 
 <p>&ndash; Support for embedded videos in content text (iframe and object HTML markup).</p>
 
-<p>&ndash; Additional Facebook / Open Graph / Rich Pin meta tags for videos and e-commerce products.</p>
+<p>&ndash; Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and e-commerce products.</p>
 
 <p>&ndash; Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.</p>
 

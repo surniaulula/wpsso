@@ -25,15 +25,15 @@ There's no need to manually enter / configure any additional settings or values,
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
-Including hashtags, image SEO, video SEO, e-commerce product SEO, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.
-
-**WPSSO offers special optimization features for Pinterest:**
-
-Providing an image for the Pin It button, excluding non-relevant images, and preventing conflicts between incompatible Pinterest and Facebook meta tag values.
+Including description hashtags, complete image SEO, complete video SEO, complete and extensive e-commerce product SEO, author profile / authorship, co-authors, publisher information, aggregate and ratings, reviews, event details, recipe information, and much, much more &mdash; all from your *existing* content.
 
 **WPSSO includes advanced *quality control* features and options:**
 
 Checking minimum / maximum image dimensions and aspect ratios, verifying the front-end webpage for duplicate meta tags, showing notices for missing and required images, along with theme header template validation.
+
+**WPSSO offers special optimization features for Pinterest:**
+
+Providing a specific image for the website and web browser Pin It button, excluding non-relevant images from being detected by Pinterest, and preventing conflicts between incompatible Pinterest and Facebook meta tag values.
 
 **WPSSO can enhance and integrate with your favorite SEO plugin!**
 
@@ -47,7 +47,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 **WPSSO Free / Standard Features**
 
-&ndash; Automatically adds complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. to the head section of all webpages.
+&ndash; Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. to the head section of all webpages.
 
 &ndash; Adds Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search.
 
@@ -59,7 +59,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 * [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 * [Summary Card](https://dev.twitter.com/cards/types/summary)
-* [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires video discovery modules, provided with the Pro version).
+* [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires the video discovery modules provided in the Pro version).
 * [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
 
 &ndash; Features customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.
@@ -100,6 +100,14 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * Twitter @username
 * YouTube Channel URL
 
+&ndash; Provides an option to hide the preview of all Pro settings and features.
+
+&ndash; *Fast and coded for performance*, WPSSO makes full use of all available caching techniques (persistent / non-persistent object and disk caching).
+
+&ndash; Loads only the PHP library files and object classes it needs, keeping it small, fast, light, and still able to support a wide range of 3rd party integration features.
+
+&ndash; Fully tested and compatible with PHP v7.x (requires PHP v5.3 or better).
+
 &ndash; Additional (and optional) Free extension for WPSSO:
 
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
@@ -112,14 +120,6 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) (Free version)
 * [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) (Free version)
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) (Free version)
-
-&ndash; Provides an option to hide the preview of all Pro settings and features.
-
-&ndash; *Fast and coded for performance*, WPSSO makes full use of all available caching techniques (persistent / non-persistent object and disk caching).
-
-&ndash; Loads only the PHP library files and object classes it needs, keeping it small, fast, light, and still able to support a wide range of 3rd party integration features.
-
-&ndash; Fully tested and compatible with PHP v7.x (requires PHP v5.3 or better).
 
 &ndash; Download the Free version from [GitHub](https://surniaulula.github.io/wpsso/) or [WordPress.org](https://wordpress.org/plugins/wpsso/).
 
@@ -137,7 +137,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 &ndash; Support for embedded videos in content text (iframe and object HTML markup).
 
-&ndash; Additional Facebook / Open Graph / Rich Pin meta tags for videos and e-commerce products.
+&ndash; Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and e-commerce products.
 
 &ndash; Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
 
