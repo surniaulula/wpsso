@@ -19,51 +19,63 @@ Automatically generate complete and accurate meta tags and Schema markup from yo
 
 <img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png">
 
-**WPSSO uses your *existing* content to create meta tags and Schema markup:**
+**WPSSO uses your *existing* content for meta tags and Schema markup:**
 
-&mdash; There's no need to manually enter / configure any additional settings or values, but if you want to, you can also customize just about anything and everything. ;-)
+There's no need to manually enter / configure any additional settings or values, but if you want to, you can also customize just about anything and everything. ;-)
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
-&mdash; Including hashtags, image SEO, video SEO, e-commerce product SEO, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.
+Including hashtags, image SEO, video SEO, e-commerce product SEO, author profile / authorship, co-authors, publisher information, ratings, event details, recipe information, and much more &mdash; all from your <em>existing</em> content.
 
 **WPSSO offers special optimization features for Pinterest:**
 
-&mdash; Providing an image for the Pin It button, excluding non-relevant images, and preventing conflicts between incompatible Pinterest and Facebook meta tag values.
+Providing an image for the Pin It button, excluding non-relevant images, and preventing conflicts between incompatible Pinterest and Facebook meta tag values.
 
 **WPSSO includes advanced *quality control* features and options:**
 
-&mdash; Checking minimum / maximum image dimensions and aspect ratios, verifying the front-end webpage for duplicate meta tags, showing notices for missing and required images, along with theme header template validation.
+Checking minimum / maximum image dimensions and aspect ratios, verifying the front-end webpage for duplicate meta tags, showing notices for missing and required images, along with theme header template validation.
 
 **WPSSO can enhance and integrate with your favorite SEO plugin!**
 
-&mdash; WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need, and you can still continue to use your favorite SEO content / keyword analysis tools!
+WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need, and you can still continue to use your favorite SEO content / keyword analysis tools!
 
 **WPSSO offers a *fast* and *reliable* social framework for developers:**
 
-&mdash; Offering dozens of 3rd party integration modules in the Pro version, several Free and Pro extensions, and hundreds of filter hooks to easily customize WPSSO's behavior and output.
+Offering dozens of 3rd party integration modules in the Pro version, several Free and Pro extensions, and hundreds of filter hooks to easily customize WPSSO's behavior and output.
 
 = Quick List of Features =
 
 **WPSSO Free / Standard Features**
 
-* Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.
-* Adds Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
-* Adds author, publisher, and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
-* Adds Weibo meta tags for article creation and update dates.
-* Adds all available Twitter Card meta tags:
+Adds Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc.
+
+Adds Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
+
+Adds author, publisher, and WebSite markup for Google Search and <em>Knowledge Graph</em>, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
+
+Adds Weibo meta tags for article creation and update dates.
+
+Adds all available Twitter Card meta tags:
 	* [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 	* [Summary Card](https://dev.twitter.com/cards/types/summary)
 	* [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires video discovery modules, provided with the Pro version).
 	* [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
-* Customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.
-* Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
-* Support for featured, attached, gallery shortcode, and/or images from HTML tags in content.
-* Optional fallback to a default image and video for index and search webpages.
-* Configurable title and description lengths (Open Graph, Twitter Card, SEO).
-* Configurable title separator character (hyphen by default).
-* Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
-* Configurable website / business social accounts for Schema markup:
+
+Customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.
+
+Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
+
+Support for featured, attached, gallery shortcode, and/or images from HTML tags in content.
+
+Optional fallback to a default image and video for index and search webpages.
+
+Configurable title and description lengths (Open Graph, Twitter Card, SEO).
+
+Configurable title separator character (hyphen by default).
+
+Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
+
+Configurable website / business social accounts for Schema markup:
 	* Facebook Business Page URL
 	* Google+ Business Page URL
 	* Instagram Business URL
@@ -74,7 +86,8 @@ Automatically generate complete and accurate meta tags and Schema markup from yo
 	* Tumblr Business Page URL
 	* Twitter Business @username
 	* YouTube Business Channel URL
-* User profile contact fields for Open Graph, Twitter Card, and Schema markup:
+
+User profile contact fields for Open Graph, Twitter Card, and Schema markup:
 	* Facebook URL
 	* Google+ URL
 	* Instagram URL
@@ -85,7 +98,8 @@ Automatically generate complete and accurate meta tags and Schema markup from yo
 	* Tumblr URL
 	* Twitter @username
 	* YouTube Channel URL
-* Additional (and optional) Free extension plugins:
+
+Additional (and optional) Free extension plugins:
 	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
 	* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) (Free version)
 	* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) (Free version)
@@ -96,7 +110,8 @@ Automatically generate complete and accurate meta tags and Schema markup from yo
 	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) (Free version)
 	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) (Free version)
 	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) (Free version)
-* Provides an option to hide the preview of all Pro settings and features.
+
+Provides an option to hide the preview of all Pro settings and features.
 
 <blockquote>
 <p>Download the Free version from <a href="https://surniaulula.github.io/wpsso/">GitHub</a> or <a href="https://wordpress.org/plugins/wpsso/">WordPress.org</a>.</p>
