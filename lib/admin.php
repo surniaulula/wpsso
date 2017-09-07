@@ -554,7 +554,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				// admin url will redirect to the essential settings since we're not on a settings page
 				$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?'.$lca.'-action=clear_all_cache',
-					WpssoAdmin::get_nonce(), WPSSO_NONCE ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
+					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
 	
 				$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.', 'wpsso' ).'</strong> <em>'.
 					__( 'Please note that webpage content may take several days to reflect changes.', 'wpsso' ).' '.
@@ -585,13 +585,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$page = key( $this->p->cf['*']['lib']['sitesubmenu'] );
 			}
 
-			if ( empty( $_POST[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
+			if ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'nonce token validation post field missing' );
 				}
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
 				exit;
-			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
+			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
 				$this->p->notice->err( __( 'Nonce token validation failed for network options (update ignored).',
 					'wpsso' ) );
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
@@ -625,15 +625,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
-				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
+				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'nonce token validation query field missing' );
 					}
-				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
+				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
 					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
 						'wpsso' ), 'admin', $action_name ) );
 				} else {
-					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE ) );
+					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 
 					switch ( $action_name ) {
 
@@ -875,7 +875,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;
 			}
 
-			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );	// WPSSO_NONCE is an md5() string
+			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );	// WPSSO_NONCE_NAME is an md5() string
 			wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
 			wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
 
@@ -938,7 +938,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$submit_buttons .= '<input type="'.$action_arg.'" class="button-primary" value="'.$button_label.'" />';
 					} else {
 						$button_url = wp_nonce_url( $this->p->util->get_admin_url( '?'.$lca.'-action='.$action_arg ),
-							WpssoAdmin::get_nonce(), WPSSO_NONCE );
+							WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 						$submit_buttons .= $this->form->get_button( $button_label, $css_class, '', $button_url );
 					}
 				}
@@ -1022,7 +1022,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<tr><td colspan="2">';
 				echo $this->form->get_button( _x( 'Check for Updates', 'submit button', 'wpsso' ), 'button-secondary',
 					'column-check-for-updates', wp_nonce_url( $this->p->util->get_admin_url( '?'.$lca.'-action=check_for_updates' ), 
-						WpssoAdmin::get_nonce(), WPSSO_NONCE ) );
+						WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ) );
 				echo '</td></tr>';
 			}
 
@@ -1330,10 +1330,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</div>';
 		}
 
-		public static function get_nonce() {
-			$auth_salt = defined( 'AUTH_SALT' ) ? '::'.AUTH_SALT : '';
-			$nonce_salt = defined( 'NONCE_SALT' ) ? '::'.NONCE_SALT : '';
-			return __FILE__.$auth_salt.$nonce_salt;
+		public static function get_nonce_action() {
+			$salt = __FILE__.__METHOD__.__LINE__;
+			foreach ( array( 'AUTH_SALT', 'NONCE_SALT' ) as $const ) {
+				$salt .= defined( $const ) ? constant( $const ) : '';
+			}
+			return md5( $salt );
 		}
 
 		private function is_profile( $menu_id = false ) {

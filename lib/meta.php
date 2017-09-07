@@ -580,12 +580,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$this->p->debug->log( 'empty POST for submit' );
 				}
 				return false;
-			} elseif ( empty( $_POST[ WPSSO_NONCE ] ) ) {
+			} elseif ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'submit POST missing nonce token' );
 				}
 				return false;
-			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
+			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'submit nonce token validation failed' );
 				}

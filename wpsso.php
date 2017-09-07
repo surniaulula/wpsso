@@ -437,7 +437,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			// show constants
 			$defined_constants = get_defined_constants( true );
-			$defined_constants['user']['WPSSO_NONCE'] = '********';
+			$defined_constants['user']['WPSSO_NONCE_NAME'] = '********';
 
 			if ( is_multisite() ) {
 				$this->debug->show_html( SucomUtil::preg_grep_keys( '/^(MULTISITE|^SUBDOMAIN_INSTALL|.*_SITE)$/', 

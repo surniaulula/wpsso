@@ -268,14 +268,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
 				if ( $this->p->debug->enabled )
 					$this->p->debug->log( 'found action query: '.$action_name );
-				if ( empty( $_GET[ WPSSO_NONCE ] ) ) {	// WPSSO_NONCE is an md5() string
+				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
 					if ( $this->p->debug->enabled )
 						$this->p->debug->log( 'nonce token query field missing' );
-				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE ], WpssoAdmin::get_nonce() ) ) {
+				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
 					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
 						'wpsso' ), 'term', $action_name ) );
 				} else {
-					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE ) );
+					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 					switch ( $action_name ) {
 						default: 
 							do_action( $lca.'_load_meta_page_term_'.$action_name, $this->query_term_id );
@@ -341,7 +341,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$def_opts = $this->get_defaults( $term_obj->term_id );
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
 
-			wp_nonce_field( WpssoAdmin::get_nonce(), WPSSO_NONCE );
+			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id.' table rows' );	// start timer

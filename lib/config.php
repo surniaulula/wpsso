@@ -2121,9 +2121,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			define( 'WPSSO_PLUGINBASE', self::$cf['plugin']['wpsso']['base'] );		// wpsso/wpsso.php
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_filepath ) ) );
 
-			define( 'WPSSO_NONCE', md5( WPSSO_PLUGINDIR.'-'.self::$cf['plugin']['wpsso']['version'].
-				( defined( 'NONCE_SALT' ) ? NONCE_SALT : '' ) ) );
-
 			self::set_variable_constants();
 		}
 
@@ -2140,6 +2137,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function get_variable_constants() {
 			$var_const = array();
+
+			// create a unique md5 query name from the config array and the local wp nonce key
+			$var_const['NGFB_NONCE_NAME'] = md5( var_export( self::$cf, true ).
+				( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
 				$var_const['WPSSO_CACHEDIR'] = WPSSO_PLUGINDIR.'cache/';
