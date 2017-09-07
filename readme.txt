@@ -127,57 +127,69 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 **WPSSO Pro / Additional Features**
 
-* Includes a Social Settings metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
-* Fully renders content (including shortcodes) for accurate description texts.
-* Support for embedded videos in content text (iframe and object HTML markup).
-* Additional Facebook / Open Graph / Rich Pin meta tags for videos and e-commerce products.
-* Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and/or Youtube.
-* Include or exclude individual Google / SEO, Open Graph, Twitter Card, and Schema meta tags in the webpage head section.
-* Validation of minimum / maximum image dimensions and aspect ratios.
-* Configurable user profile contact field names and labels.
-* Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
-* Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
-	* **Integration with 3rd Party Plugins**
-		* All in One SEO Pack
-		* bbPress
-		* BuddyPress (including Group Forum Topics)
-		* Co-Authors Plus (including Guest Authors)
-		* Easy Digital Downloads
-		* Gravity Forms + GravityView
-		* HeadSpace2 SEO
-		* MarketPress - WordPress eCommerce
-		* NextGEN Gallery
-		* Polylang
-		* rtMedia for WordPress, BuddyPress and bbPress
-		* The Events Calendar
-		* The SEO Framework
-		* WooCommerce (versions 1, 2, and 3)
-		* WordPress REST API (version 2)
-		* WP eCommerce
-		* WP Product Review (requires WPSSO JSON Pro extension)
-		* WP Recipe Maker (requires WPSSO JSON Pro extension)
-		* WP Ultimate Recipe (requires WPSSO JSON Pro extension)
-		* Yoast SEO (aka WordPress SEO)
-		* Yotpo Social Reviews for WooCommerce
-	* **Integration with Service APIs**
-		* Bitly
-		* Facebook Embedded Videos
-		* Google URL Shortener
-		* Gravatar (Author Image)
-		* Ow.ly
-		* Slideshare Presentations
-		* TinyURL
-		* Vimeo Videos
-		* Wistia Videos
-		* Your Own URL Shortener (YOURLS)
-		* YouTube Videos and Playlists
-* Additional Pro extension plugins:
-	* [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
-	* [WPSSO Organization Markup](https://wpsso.com/extend/plugins/wpsso-organization/) (Pro version)
-	* [WPSSO Place / Location and Local Business Meta](https://wpsso.com/extend/plugins/wpsso-plm/) (Pro version)
-	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-rrssb/) (Pro version)
-	* [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
-	* [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
+&mdash; Includes a Social Settings metabox for Post, Page, custom post type, user profile, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin, Google Search, and Twitter Card descriptions, along with the shared image and/or video.
+
+&mdash; Fully renders content (including shortcodes) for accurate description texts.
+
+&mdash; Support for embedded videos in content text (iframe and object HTML markup).
+
+&mdash; Additional Facebook / Open Graph / Rich Pin meta tags for videos and e-commerce products.
+
+&mdash; Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and/or Youtube.
+
+&mdash; Include or exclude individual Google / SEO, Open Graph, Twitter Card, and Schema meta tags in the webpage head section.
+
+&mdash; Validation of minimum / maximum image dimensions and aspect ratios.
+
+&mdash; Configurable user profile contact field names and labels.
+
+&mdash; Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
+
+&mdash; Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
+
+* **Integration with 3rd Party Plugins**
+	* All in One SEO Pack
+	* bbPress
+	* BuddyPress (including Group Forum Topics)
+	* Co-Authors Plus (including Guest Authors)
+	* Easy Digital Downloads
+	* Gravity Forms + GravityView
+	* HeadSpace2 SEO
+	* MarketPress - WordPress eCommerce
+	* NextGEN Gallery
+	* Polylang
+	* rtMedia for WordPress, BuddyPress and bbPress
+	* The Events Calendar
+	* The SEO Framework
+	* WooCommerce (versions 1, 2, and 3)
+	* WordPress REST API (version 2)
+	* WP eCommerce
+	* WP Product Review (requires WPSSO JSON Pro extension)
+	* WP Recipe Maker (requires WPSSO JSON Pro extension)
+	* WP Ultimate Recipe (requires WPSSO JSON Pro extension)
+	* Yoast SEO (aka WordPress SEO)
+	* Yotpo Social Reviews for WooCommerce
+* **Integration with Service APIs**
+	* Bitly
+	* Facebook Embedded Videos
+	* Google URL Shortener
+	* Gravatar (Author Image)
+	* Ow.ly
+	* Slideshare Presentations
+	* TinyURL
+	* Vimeo Videos
+	* Wistia Videos
+	* Your Own URL Shortener (YOURLS)
+	* YouTube Videos and Playlists
+
+&mdash; Additional Pro extension plugins:
+
+* [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
+* [WPSSO Organization Markup](https://wpsso.com/extend/plugins/wpsso-organization/) (Pro version)
+* [WPSSO Place / Location and Local Business Meta](https://wpsso.com/extend/plugins/wpsso-plm/) (Pro version)
+* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-rrssb/) (Pro version)
+* [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
+* [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
 
 <blockquote>
 <p><a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the Pro version</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
