@@ -161,6 +161,8 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 &ndash; Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 
+<img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png">
+
 &ndash; Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 
 * **Integration with 3rd Party Plugins**
@@ -208,8 +210,6 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
 
 &ndash; [Purchase the Pro version](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase) (includes a *No Risk 30 Day Refund Policy*).
-
-<img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png">
 
 = 3rd Party Integration (Pro version) =
 
