@@ -47,36 +47,36 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 **WPSSO Free / Standard Features**
 
-&#8859; Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
+<span style="color:#33cc33">&#8859;</span> Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
 
-<span style="color:#33cc33">&oast;</span> Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search.
+<span style="color:#33cc33">&#8859;</span> Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search.
 
-<span style="color:#33cc33">&oast;</span> Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search and its Knowledge Graph, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
+<span style="color:#33cc33">&#8859;</span> Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search and its Knowledge Graph, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
 
-<span style="color:#33cc33">&oast;</span> Adds Weibo meta tags for article creation and update dates.
+<span style="color:#33cc33">&#8859;</span> Adds Weibo meta tags for article creation and update dates.
 
-<span style="color:#33cc33">&oast;</span> Adds all available Twitter Card meta tags:
+<span style="color:#33cc33">&#8859;</span> Adds all available Twitter Card meta tags:
 
 * [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 * [Summary Card](https://dev.twitter.com/cards/types/summary)
 * [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires the video discovery modules in the Pro version).
 * [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
 
-<span style="color:#33cc33">&oast;</span> Features customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.
+<span style="color:#33cc33">&#8859;</span> Features customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.
 
-<span style="color:#33cc33">&oast;</span> Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
+<span style="color:#33cc33">&#8859;</span> Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
 
-<span style="color:#33cc33">&oast;</span> Finds images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
+<span style="color:#33cc33">&#8859;</span> Finds images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
 
-<span style="color:#33cc33">&oast;</span> Configurable title and description maximum lengths (Open Graph, Twitter Card, SEO), including both hard and soft limits.
+<span style="color:#33cc33">&#8859;</span> Configurable title and description maximum lengths (Open Graph, Twitter Card, SEO), including both hard and soft limits.
 
-<span style="color:#33cc33">&oast;</span> Configurable title separator character (hyphen by default).
+<span style="color:#33cc33">&#8859;</span> Configurable title separator character (hyphen by default).
 
-<span style="color:#33cc33">&oast;</span> Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
+<span style="color:#33cc33">&#8859;</span> Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
 <img class="readme-example landscape" src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png">
 
-<span style="color:#33cc33">&oast;</span> Configurable website / business social accounts for Schema markup and Google's Knowledge Graph:
+<span style="color:#33cc33">&#8859;</span> Configurable website / business social accounts for Schema markup and Google's Knowledge Graph:
 
 * Facebook Business Page URL
 * Google+ Business Page URL
@@ -89,7 +89,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * Twitter Business @username
 * YouTube Business Channel URL
 
-<span style="color:#33cc33">&oast;</span> User profile contact fields for Open Graph, Twitter Card, Schema markup, and Google's Knowledge Graph:
+<span style="color:#33cc33">&#8859;</span> User profile contact fields for Open Graph, Twitter Card, Schema markup, and Google's Knowledge Graph:
 
 * Facebook URL
 * Google+ URL
@@ -102,15 +102,15 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * Twitter @username
 * YouTube Channel URL
 
-<span style="color:#33cc33">&oast;</span> Provides an option to hide the preview of all Pro settings and features.
+<span style="color:#33cc33">&#8859;</span> Provides an option to hide the preview of all Pro settings and features.
 
-<span style="color:#33cc33">&oast;</span> *Fast and coded for performance*, WPSSO makes full use of all available caching techniques (persistent / non-persistent object and disk caching).
+<span style="color:#33cc33">&#8859;</span> *Fast and coded for performance*, WPSSO makes full use of all available caching techniques (persistent / non-persistent object and disk caching).
 
-<span style="color:#33cc33">&oast;</span> Loads only the PHP library files and object classes it needs, keeping it small, fast, light, and still able to support a wide range of 3rd party integration features.
+<span style="color:#33cc33">&#8859;</span> Loads only the PHP library files and object classes it needs, keeping it small, fast, light, and still able to support a wide range of 3rd party integration features.
 
-<span style="color:#33cc33">&oast;</span> Fully tested and compatible with PHP v7.x (requires PHP v5.3 or better).
+<span style="color:#33cc33">&#8859;</span> Fully tested and compatible with PHP v7.x (requires PHP v5.3 or better).
 
-<span style="color:#33cc33">&oast;</span> Additional (and optional) Free extension for WPSSO:
+<span style="color:#33cc33">&#8859;</span> Additional (and optional) Free extension for WPSSO:
 
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) (Free version)
@@ -123,7 +123,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) (Free version)
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) (Free version)
 
-<span style="color:#33cc33">&oast;</span> Download the Free version from [GitHub](https://surniaulula.github.io/wpsso/) or [WordPress.org](https://wordpress.org/plugins/wpsso/).
+<span style="color:#33cc33">&#8859;</span> Download the Free version from [GitHub](https://surniaulula.github.io/wpsso/) or [WordPress.org](https://wordpress.org/plugins/wpsso/).
 
 = Quick List of Features (Continued) =
 
@@ -131,21 +131,21 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png">
 
-<span style="color:#33cc33">&oast;</span> Includes a Social Settings metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google Search / Twitter Card descriptions, along with the shared image and/or video.
+<span style="color:#33cc33">&#8859;</span> Includes a Social Settings metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google Search / Twitter Card descriptions, along with the shared image and/or video.
 
-<span style="color:#33cc33">&oast;</span> Fully renders content (including shortcodes) for accurate description texts and embedded video detection.
+<span style="color:#33cc33">&#8859;</span> Fully renders content (including shortcodes) for accurate description texts and embedded video detection.
 
-<span style="color:#33cc33">&oast;</span> Validates minimum / maximum image dimensions and aspect ratios.
+<span style="color:#33cc33">&#8859;</span> Validates minimum / maximum image dimensions and aspect ratios.
 
-<span style="color:#33cc33">&oast;</span> Support for embedded videos in content text (iframe and object HTML markup).
+<span style="color:#33cc33">&#8859;</span> Support for embedded videos in content text (iframe and object HTML markup).
 
-<span style="color:#33cc33">&oast;</span> Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and e-commerce products.
+<span style="color:#33cc33">&#8859;</span> Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and e-commerce products.
 
-<span style="color:#33cc33">&oast;</span> Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
+<span style="color:#33cc33">&#8859;</span> Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
 
-<span style="color:#33cc33">&oast;</span> Include or exclude individual Facebook / Open Graph / Google / SEO / Twitter Card / Schema meta tag from the webpage head section.
+<span style="color:#33cc33">&#8859;</span> Include or exclude individual Facebook / Open Graph / Google / SEO / Twitter Card / Schema meta tag from the webpage head section.
 
-<span style="color:#33cc33">&oast;</span> Allows you to customize the field names, label, and add / remove the contacts on user profile pages and Co-Authors Plus guest author profiles:
+<span style="color:#33cc33">&#8859;</span> Allows you to customize the field names, label, and add / remove the contacts on user profile pages and Co-Authors Plus guest author profiles:
 
 * AIM
 * Facebook URL
@@ -161,9 +161,9 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * Yahoo IM
 * YouTube Channel URL
 
-<span style="color:#33cc33">&oast;</span> Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
+<span style="color:#33cc33">&#8859;</span> Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 
-<span style="color:#33cc33">&oast;</span> Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
+<span style="color:#33cc33">&#8859;</span> Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png">
 
@@ -202,7 +202,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 	* Your Own URL Shortener (YOURLS)
 	* YouTube Videos and Playlists
 
-<span style="color:#33cc33">&oast;</span> Additional Pro extensions for WPSSO:
+<span style="color:#33cc33">&#8859;</span> Additional Pro extensions for WPSSO:
 
 * [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
 * [WPSSO Organization Markup](https://wpsso.com/extend/plugins/wpsso-organization/) (Pro version)
@@ -211,7 +211,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
 * [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
 
-<span style="color:#33cc33">&oast;</span> [Purchase the Pro version](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase) (includes a *No Risk 30 Day Refund Policy*).
+<span style="color:#33cc33">&#8859;</span> [Purchase the Pro version](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase) (includes a *No Risk 30 Day Refund Policy*).
 
 = 3rd Party Integration (Pro version) =
 
