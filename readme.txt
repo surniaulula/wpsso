@@ -163,8 +163,6 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 <span style="color:#33cc33">&oast;</span> Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 
-<span style="color:#ff6600">&oast;</span> Dynamic button language switching based on the current WordPress locale for contextual language meta tags.
-
 <span style="color:#33cc33">&oast;</span> Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png">
