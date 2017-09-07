@@ -21,7 +21,7 @@ Automatically generate complete and accurate meta tags and Schema markup from yo
 
 **WPSSO uses your *existing* content for meta tags and Schema markup:**
 
-There's no need to manually enter / configure any additional settings or values, but if you want to, you can also customize just about anything and everything. ;-)
+There's no need to manually enter or configure any additional settings or custom values, but if you want to, you can also customize just about anything and everything. ;-)
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
@@ -33,11 +33,11 @@ Checking minimum / maximum image dimensions and aspect ratios, verifying the fro
 
 **WPSSO offers special optimization features for Pinterest:**
 
-Providing a specific image for the website and web browser Pin It button, excluding non-relevant images from being detected by Pinterest, and preventing conflicts between incompatible Pinterest and Facebook meta tag values.
+Providing a specific image for the Pinterest Pin It button, excluding non-relevant images from being detected by Pinterest, and preventing conflicts between incompatible Pinterest and Facebook Open Graph meta tag values.
 
 **WPSSO can enhance and integrate with your favorite SEO plugin!**
 
-WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need, and you can still continue to use your favorite SEO content / keyword analysis tools!
+WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
 
 **WPSSO offers a *fast* and *reliable* social framework for developers:**
 
@@ -47,7 +47,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 **WPSSO Free / Standard Features**
 
-<span style="color:#33cc33">&oast;</span> Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. to the head section of all webpages.
+<span style="color:#33cc33">&oast;</span> Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
 
 <span style="color:#33cc33">&oast;</span> Adds Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search.
 
