@@ -1331,9 +1331,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public static function get_nonce() {
-			return __FILE__.'::'.
-				SucomUtil::get_const( 'NONCE_KEY' ).'::'.
-				SucomUtil::get_const( 'NONCE_SALT' );
+			$nonce_key = defined( 'AUTH_SALT' ) ? '::'.AUTH_SALT : '';
+			$nonce_salt = defined( 'NONCE_SALT' ) ? '::'.NONCE_SALT : '';
+			return __FILE__.$nonce_key.$nonce_salt;
 		}
 
 		private function is_profile( $menu_id = false ) {
