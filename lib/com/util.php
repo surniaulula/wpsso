@@ -1254,25 +1254,28 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			) );
 		}
 
+		public static function get_slug_name( $plugin_slug, $unfiltered = true ) {
+			$plugin_info = SucomUtil::get_slug_info( $plugin_slug, array(), $unfiltered );
+			return empty( $plugin_info->name ) ?
+				$plugin_slug : $plugin_info->name;
+		}
+
 		public static function get_slug_download_url( $plugin_slug, $unfiltered = true ) {
 
-			$plugin_info = SucomUtil::get_slug_info( $plugin_slug, 	// can return a wp_error object
-				array( 'downloadlink' => true ), $unfiltered );
+			$plugin_info = SucomUtil::get_slug_info( $plugin_slug, array( 'downloadlink' => true ), $unfiltered );
 
 			if ( is_wp_error( $plugin_info ) ) {
 				return $plugin_info;
 			} elseif ( isset( $plugin_info->download_link ) ) {
 				if ( filter_var( $plugin_info->download_link, FILTER_VALIDATE_URL ) === false ) {	// just in case
-					$plugin_name = empty( $plugin_info->name ) ?
-						$plugin_slug : $plugin_info->name;
+					$plugin_name = empty( $plugin_info->name ) ? $plugin_slug : $plugin_info->name;
 					return new WP_Error( 'invalid_download_link', 
 						sprintf( __( 'The plugin information for "%s" contains an invalid download link.' ),
 							$plugin_name ) );
 				}
 				return $plugin_info->download_link;
 			} else {
-				$plugin_name = empty( $plugin_info->name ) ?
-					$plugin_slug : $plugin_info->name;
+				$plugin_name = empty( $plugin_info->name ) ? $plugin_slug : $plugin_info->name;
 				return new WP_Error( 'missing_download_link', 
 					sprintf( __( 'The plugin information for "%s" does not contain a download link.' ),
 						$plugin_name ) );
@@ -1280,9 +1283,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// does not remove an existing plugin folder before extracting the zip file
-		public static function download_install_slug( $plugin_slug ) {
+		public static function download_install_slug( $plugin_slug, $unfiltered = true ) {
 
-			$plugin_url = self::get_slug_download_url( $plugin_slug, true );
+			$plugin_url = self::get_slug_download_url( $plugin_slug, $unfiltered );
 
 			if ( is_wp_error( $plugin_url ) ) {
 				return $plugin_url;

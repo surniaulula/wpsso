@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.45.10-dev.3\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.45.10-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -631,11 +631,11 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:1269
+#: lib/com/util.php:1273
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1277
+#: lib/com/util.php:1280
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -2227,7 +2227,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:406 lib/util.php:1976
+#: lib/messages.php:406 lib/util.php:1975
 msgid "No options available."
 msgstr ""
 
@@ -4467,22 +4467,22 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:2003
+#: lib/util.php:2002
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2007
+#: lib/util.php:2006
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2010
+#: lib/util.php:2009
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2014
+#: lib/util.php:2013
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

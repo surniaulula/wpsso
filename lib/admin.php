@@ -1711,7 +1711,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 			$user_id = get_current_user_id();
 			$all_times = $this->p->util->get_all_times();
-			$one_week_ago = time() - WEEK_IN_SECONDS;
+			$some_time_ago = time() - WEEK_IN_SECONDS;
 			$cache_salt = __METHOD__.'(user_id:'.$user_id.')';
 			$cache_id = $lca.'_'.md5( $cache_salt );
 			$this->set_form_object( $lca );
@@ -1732,7 +1732,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;
 				} elseif ( ! isset( $all_times[$ext.'_activate_time'] ) ) {	// never activated
 					continue;
-				} elseif ( $all_times[$ext.'_activate_time'] > $one_week_ago ) {	// activated less than a week ago
+				} elseif ( $all_times[$ext.'_activate_time'] > $some_time_ago ) {	// activated less than a week ago
 					continue;
 				}
 

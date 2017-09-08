@@ -1151,8 +1151,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 				}
 			}
-			return $has_changed === false ?
-				$all_times : get_option( WPSSO_TS_NAME, array() );
+			return $has_changed === false ? $all_times : get_option( WPSSO_TS_NAME, array() );
 		}
 
 		public function get_inline_vars() {

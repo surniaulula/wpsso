@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.45.10-dev.3',		// plugin version
+					'version' => '3.45.10-b.1',		// plugin version
 					'opt_version' => '539',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -2118,7 +2118,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		public static function set_constants( $plugin_filepath ) {
-
+			if ( defined( 'WPSSO_VERSION' ) ) {			// execute and define constants only once
+				return;
+			}
+			define( 'WPSSO_VERSION', self::$cf['plugin']['wpsso']['version'] );						
 			define( 'WPSSO_FILEPATH', $plugin_filepath );						
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
 			define( 'WPSSO_PLUGINSLUG', self::$cf['plugin']['wpsso']['slug'] );		// wpsso
