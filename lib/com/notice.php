@@ -61,7 +61,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				add_action( 'in_admin_header', array( &$this, 'hook_admin_notices' ), 300000 );
 			}
 
-			add_action( 'shutdown', array( &$this, 'shutdown_save_notices' ) );
+			add_action( 'shutdown', array( &$this, 'save_user_notices' ) );
 		}
 
 		public function hook_admin_notices() {
@@ -132,6 +132,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( ! isset( $user_notices[$msg_type][$msg_txt] ) ) {
 				$user_notices[$msg_type][$msg_txt] = $payload;
 			}
+		}
+
+		public function reload_user_notices( $user_id = true ) {
+			// returns reference to cache array
+			$user_notices =& $this->get_user_notices( $user_id, false );	// $use_cache = false
 		}
 
 		public function trunc_key( $dis_key, $user_id = true ) {
@@ -611,7 +616,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $user_ids;
 		}
 
-		private function &get_user_notices( $user_id = true ) {
+		private function &get_user_notices( $user_id = true, $use_cache = true ) {
 
 			if ( $user_id === true ) {
 				$user_id = (int) get_current_user_id();
@@ -619,7 +624,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$user_id = (int) $user_id;	// false = 0
 			}
 
-			if ( isset( $this->notice_cache[$user_id] ) ) {
+			if ( $use_cache && isset( $this->notice_cache[$user_id] ) ) {
 				return $this->notice_cache[$user_id];
 			}
 
@@ -641,7 +646,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $this->notice_cache[$user_id];
 		}
 
-		public function shutdown_save_notices() {
+		public function save_user_notices() {
 
 			$user_id = (int) get_current_user_id();
 			$have_notices = false;

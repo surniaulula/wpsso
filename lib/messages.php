@@ -53,8 +53,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				'' : add_query_arg( 'utm_source', $idx, $url['purchase'] );
 
 			foreach ( array( 'short', 'name', 'version' ) as $key ) {
-				$info[$key] = isset( $info[$key] ) ?
-					$info[$key] : $this->p->cf['plugin'][$lca][$key];
+				if ( ! isset( $info[$key] ) ) {
+					if ( ! isset( $this->p->cf['plugin'][$lca][$key] ) ) {	// just in case
+						$info[$key] = null;
+					} else {
+						$info[$key] = $this->p->cf['plugin'][$lca][$key];
+					}
+				}
 
 				$info[$key.'_pro'] = SucomUtil::get_pkg_name( $info[$key], 'Pro' );
 

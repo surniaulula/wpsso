@@ -1642,14 +1642,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		private function check_url_string( $url, $source ) {
 			if ( is_string( $url ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $source.' url = '.$url );
+				}
 				return $url;	// stop here
 			}
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $source.' url is '.gettype( $url ) );
-				if ( is_wp_error( $url ) )
+				if ( is_wp_error( $url ) ) {
 					$this->p->debug->log( $source.' url error: '.$url->get_error_message() );
+				}
 			}
 			return false;
 		}

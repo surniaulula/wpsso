@@ -117,13 +117,33 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		private function add_settings_page_style( $hook_name, $plugin_urlpath, $plugin_version ) {
 
 			$lca = $this->p->cf['lca'];
-			$custom_style_css = '';
+
+			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.
+				'_plugin_urlpath:'.$plugin_urlpath.
+				'_plugin_version:'.$plugin_version.')';
+
+			$cache_id = $lca.'_'.md5( $cache_salt );
+
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_admin_css',
+				$this->p->cf['expire']['admin_css'] );
 
 			wp_enqueue_style( 'sucom-settings-page',
 				$plugin_urlpath.'css/com/settings-page.min.css',
 					array(), $plugin_version );
 
-			if ( isset( $this->p->cf['menu']['color'] ) ) {
+			if ( $custom_style_css = get_transient( $cache_id ) ) {	// not empty
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'settings page style retrieved from cache' );
+				}
+				wp_add_inline_style( 'sucom-settings-page', $custom_style_css );
+				return;
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark( 'create and minify settings page style' );	// begin timer
+			}
+
+			if ( ! empty( $this->p->cf['menu']['color'] ) ) {
 				$custom_style_css .= '
 					#poststuff #side-info-column .postbox {
 						border:1px solid #'.$this->p->cf['menu']['color'].';
@@ -146,23 +166,47 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$custom_style_css = apply_filters( $lca.'_settings_page_custom_style_css',
 				$custom_style_css, $hook_name, $plugin_urlpath, $plugin_version );
+	
+			$custom_style_css = SucomUtil::minify_css( $custom_style_css, $lca );
 
-			if ( ! empty( $custom_style_css ) ) {
-				wp_add_inline_style( 'sucom-settings-page', SucomUtil::minify_css( $custom_style_css, $lca ) );
+			set_transient( $cache_id, $custom_style_css, $cache_exp );
+
+			wp_add_inline_style( 'sucom-settings-page', $custom_style_css );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark( 'create and minify settings page style' );	// end timer
 			}
 		}
 
 		private function add_admin_page_style( $hook_name, $plugin_urlpath, $plugin_version ) {
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'create and minify admin page style' );	// begin timer
-			}
+			$lca = $this->p->cf['lca'];
+
+			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.
+				'_plugin_urlpath:'.$plugin_urlpath.
+				'_plugin_version:'.$plugin_version.')';
+
+			$cache_id = $lca.'_'.md5( $cache_salt );
+
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_admin_css',
+				$this->p->cf['expire']['admin_css'] );
 
 			wp_enqueue_style( 'sucom-admin-page',
 				$plugin_urlpath.'css/com/admin-page.min.css',
 					array(), $plugin_version );
 
-			$lca = $this->p->cf['lca'];
+			if ( $custom_style_css = get_transient( $cache_id ) ) {	// not empty
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'admin page style retrieved from cache' );
+				}
+				wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
+				return;
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark( 'create and minify admin page style' );	// begin timer
+			}
+
 			$sort_cols = WpssoMeta::get_sortable_columns();
 			$metabox_id = $this->p->cf['meta']['id'];
 			$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
@@ -389,7 +433,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				';
 			}
 
-			wp_add_inline_style( 'sucom-admin-page', SucomUtil::minify_css( $custom_style_css, $lca ) );
+			$custom_style_css = SucomUtil::minify_css( $custom_style_css, $lca );
+
+			set_transient( $cache_id, $custom_style_css, $cache_exp );
+
+			wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// end timer

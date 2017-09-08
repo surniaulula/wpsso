@@ -1077,9 +1077,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ltrim( strtolower( preg_replace('/[A-Z]/', '_$0', $str ) ), '_' );
 		}
 
-		public static function active_plugins( $plugin_base = false ) {	// example: wpsso/wpsso.php
+		public static function active_plugins( $plugin_base = false, $use_cache = true ) {	// example: wpsso/wpsso.php
 			static $cache = null;
-			if ( ! isset( $cache ) ) {
+			if ( ! $use_cache || ! isset( $cache ) ) {
 				$cache = array();
 				$active_plugins = get_option( 'active_plugins', array() );
 				if ( is_multisite() ) {
@@ -1116,9 +1116,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $cache[$plugin_slug] = false;
 		}
 
-		public static function slug_is_installed( $plugin_slug ) {	// example: wpsso
+		// call wp_clean_plugins_cache() beforehand if you need to clear the wordpress plugins cache
+		public static function get_installed_slug_base( $plugin_slug, $use_cache = true ) {	// example: wpsso
 			static $cache = array();
-			if ( isset( $cache[$plugin_slug] ) ) {
+			if ( $use_cache && isset( $cache[$plugin_slug] ) ) {
 				return $cache[$plugin_slug];
 			} elseif ( empty( $plugin_slug ) ) {	// just in case
 				return $cache[$plugin_slug] = false;
@@ -1128,17 +1129,42 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 			foreach ( (array) get_plugins() as $plugin_base => $info ) {	// call with class to use common cache
 				if ( strpos( $plugin_base, $plugin_slug.'/' ) === 0 ) {
-					return $cache[$plugin_slug] = true;	// stop here
+					return $cache[$plugin_slug] = $plugin_base;	// stop here
 				}
 			}
 			return $cache[$plugin_slug] = false;
 		}
 
-		public static function plugin_is_active( $plugin_base ) {
+		public static function activate_plugin( $plugin_base, $network_wide = false, $silent = true ) {
+
+			$active_plugins = get_option( 'active_plugins', array() );
+
+			if ( empty( $active_plugins[$plugin_base] ) ) {
+
+				if ( ! $silent ) {
+					do_action( 'activate_plugin', $plugin_base );
+					do_action( 'activate_'.$plugin_base );
+				}
+
+				$active_plugins[] = $plugin_base;
+				sort( $active_plugins );	// emulate wp function
+				$updated = update_option( 'active_plugins', $active_plugins );
+
+				if ( ! $silent ) {
+					do_action( 'activated_plugin', $plugin_base );
+				}
+
+				return $updated;
+			}
+
+			return false;	// plugin already active
+		}
+
+		public static function plugin_is_active( $plugin_base, $use_cache = true ) {
 			if ( empty( $plugin_base ) ) {	// just in case
 				return false;
 			}
-			return SucomUtil::active_plugins( $plugin_base );	// call with class to use common cache
+			return SucomUtil::active_plugins( $plugin_base, $use_cache );	// call with class to use common cache
 		}
 
 		public static function plugin_is_installed( $plugin_base ) {
@@ -1228,12 +1254,59 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			) );
 		}
 
-		public static function get_slug_wp_download_url( $plugin_slug ) {
-			$plugin_info = SucomUtil::get_slug_info( $plugin_slug, array( 'downloadlink' => true ), true );
-			if ( isset( $plugin_info->download_link ) ) {
+		public static function get_slug_download_url( $plugin_slug, $unfiltered = true ) {
+
+			$plugin_info = SucomUtil::get_slug_info( $plugin_slug, 	// can return a wp_error object
+				array( 'downloadlink' => true ), $unfiltered );
+
+			if ( is_wp_error( $plugin_info ) ) {
+				return $plugin_info;
+			} elseif ( isset( $plugin_info->download_link ) ) {
+				if ( filter_var( $plugin_info->download_link, FILTER_VALIDATE_URL ) === false ) {	// just in case
+					$plugin_name = empty( $plugin_info->name ) ?
+						$plugin_slug : $plugin_info->name;
+					return new WP_Error( 'invalid_download_link', 
+						sprintf( __( 'The plugin information for "%s" contains an invalid download link.' ),
+							$plugin_name ) );
+				}
 				return $plugin_info->download_link;
+			} else {
+				$plugin_name = empty( $plugin_info->name ) ?
+					$plugin_slug : $plugin_info->name;
+				return new WP_Error( 'missing_download_link', 
+					sprintf( __( 'The plugin information for "%s" does not contain a download link.' ),
+						$plugin_name ) );
 			}
-			return false;
+		}
+
+		// does not remove an existing plugin folder before extracting the zip file
+		public static function download_install_slug( $plugin_slug ) {
+
+			$plugin_url = self::get_slug_download_url( $plugin_slug, true );
+
+			if ( is_wp_error( $plugin_url ) ) {
+				return $plugin_url;
+			}
+
+			if ( ! function_exists( 'download_url' ) ) {
+				require_once trailingslashit( ABSPATH ).'wp-admin/includes/file.php';
+			}
+
+			$plugin_zip = download_url( $plugin_url );
+
+			if ( is_wp_error( $plugin_zip ) ) {
+				return $plugin_zip;
+			}
+
+			WP_Filesystem();
+			$unzip_file = unzip_file( $plugin_zip, WP_PLUGIN_DIR );
+			@unlink( $plugin_zip );
+
+			if ( is_wp_error( $unzip_file ) ) {
+				return $unzip_file;
+			}
+
+			return true;	// just in case - signal success
 		}
 
 		public static function add_site_option_key( $name, $key, $value ) {

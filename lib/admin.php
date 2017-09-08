@@ -1799,6 +1799,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$version = $this->p->cf['plugin'][$lca]['version'];
+			$um_info = $this->p->cf['plugin']['wpssoum'];
 			$have_ext_tid = false;
 
 			if ( $this->p->avail['*']['p_dir'] === true &&
@@ -1812,20 +1813,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 					// found at least one plugin with an auth id
 					$have_ext_tid = true;
-					if ( ! self::$pkg[$ext]['pdir'] ) {
-						if ( ! empty( $info['base'] ) && ! SucomUtil::plugin_is_installed( $info['base'] ) ) {
-							$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed',
-								array( 'lca' => $ext ) ) );
-						} else {
-							$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated',
-								array( 'lca' => $ext ) ) );
+					// if the update manager is active, the version should be available
+					// skip individual warnings and show nag to install the update manager
+					if ( empty( $um_info['version'] ) ) {
+						break;
+					} else {
+						if ( ! self::$pkg[$ext]['pdir'] ) {
+							if ( ! empty( $info['base'] ) && ! SucomUtil::plugin_is_installed( $info['base'] ) ) {
+								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed',
+									array( 'lca' => $ext ) ) );
+							} else {
+								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated',
+									array( 'lca' => $ext ) ) );
+							}
 						}
 					}
 				}
 			}
 
 			if ( $have_ext_tid === true ) {
-				$um_info = $this->p->cf['plugin']['wpssoum'];
 				// if the update manager is active, the version should be available
 				if ( ! empty( $um_info['version'] ) ) {
 					// check for minimum update manager version required
@@ -2043,7 +2049,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cache_salt = __METHOD__.'(url:'.$readme_url.'_file:'.$readme_file.')';
 			$cache_id = $ext.'_'.md5( $cache_salt );
 			$cache_exp = (int) apply_filters( $lca.'_cache_expire_readme_txt',
-				$this->p->cf['readme_cache_exp'] );
+				$this->p->cf['expire']['readme_txt'] );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );
@@ -2124,7 +2130,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$cache_exp = (int) apply_filters( $lca.'_cache_expire_setup_html',
-				$this->p->cf['setup_cache_exp'] );
+				$this->p->cf['expire']['setup_html'] );
 			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['setup_html'] ) ?
 				$this->p->cf['plugin'][$ext]['url']['setup_html'] : '';
 			$file_path = constant( strtoupper( $ext ).'_PLUGINDIR' ).'setup.html';

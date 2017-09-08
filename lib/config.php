@@ -15,8 +15,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static $cf = array(
 			'lca' => 'wpsso',			// lowercase acronym
-			'readme_cache_exp' => DAY_IN_SECONDS,	// 1 day
-			'setup_cache_exp' => DAY_IN_SECONDS,	// 1 day
+			'expire' => array(
+				'admin_css' => DAY_IN_SECONDS,	// 1 day
+				'readme_txt' => DAY_IN_SECONDS,	// 1 day
+				'setup_html' => DAY_IN_SECONDS,	// 1 day
+			),
 			'install_hosts' => array(		// allow extensions to be installed from these hosts
 				'https://wpsso.com/extend/plugins/',
 			),
@@ -2140,7 +2143,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const = array();
 
 			// create a unique md5 query name from the config array and the local wp nonce key
-			$var_const['NGFB_NONCE_NAME'] = md5( var_export( self::$cf, true ).
+			$var_const['WPSSO_NONCE_NAME'] = md5( var_export( self::$cf, true ).
 				( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
@@ -2152,7 +2155,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$var_const['WPSSO_CACHEURL'] = WPSSO_URLPATH.'cache/';
 			}
 
-			$var_const['WPSSO_DEBUG_FILE_EXP'] = 300;
 			$var_const['WPSSO_MENU_ORDER'] = '99.10';		// position of the SSO menu item
 			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;		// highlight the SSO menu icon
 			$var_const['WPSSO_HIDE_ALL_ERRORS'] = false;		// auto-hide all error notices
