@@ -39,7 +39,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				( empty( $this->p->options['plugin_head_attr_filter_prio'] ) ? 
 					100 : $this->p->options['plugin_head_attr_filter_prio'] ), 1 );
 
-			if ( ! empty( $this->p->options['p_add_img_html'] ) && ! SucomUtil::is_amp() ) {
+			// do not add the pinterest image if the current webpage is amp or rss feed
+			if ( ! empty( $this->p->options['p_add_img_html'] ) && ! SucomUtil::is_amp() && ! is_feed() ) {
 				add_filter( 'the_content', array( &$this, 'get_pinterest_img_html' ) );
 			}
 		}

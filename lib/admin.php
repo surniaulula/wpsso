@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_attributes' ), 20 );
 				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ), 20 );
 
-				add_filter( 'current_screen', array( &$this, 'screen_notices' ) );
+				add_filter( 'current_screen', array( &$this, 'maybe_show_screen_notices' ) );
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 				add_filter( 'wp_redirect', array( &$this, 'profile_updated_redirect' ), -100, 2 );
 
@@ -624,16 +624,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			wp_enqueue_script( 'postbox' );
 
 			if ( ! empty( $_GET[$action_query] ) ) {
+
+				$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
+
 				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'nonce token validation query field missing' );
 					}
+
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
+
 					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
 						'wpsso' ), 'admin', $action_name ) );
+
 				} else {
-					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 
 					switch ( $action_name ) {
 
@@ -666,10 +672,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						case 'clear_all_cache':
+
 							$this->p->util->clear_all_cache( true );	// $clear_ext = true
 							break;
 
 						case 'clear_metabox_prefs':
+
 							$user_id = get_current_user_id();
 							$user = get_userdata( $user_id );
 							$user_name = $user->display_name;
@@ -679,6 +687,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						case 'clear_hidden_notices':
+
 							$user_id = get_current_user_id();
 							$user = get_userdata( $user_id );
 							//$user_name = trim( $user->first_name.' '.$user->last_name );
@@ -689,19 +698,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						case 'change_show_options':
+
+							$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'show-opts' ) );
+
 							if ( isset( $this->p->cf['form']['show_options'][$_GET['show-opts']] ) ) {
 								$this->p->notice->upd( sprintf( __( 'Option preference saved &mdash; viewing "%s" by default.',
 									'wpsso' ), $this->p->cf['form']['show_options'][$_GET['show-opts']] ) );
 								WpssoUser::save_pref( array( 'show_opts' => $_GET['show-opts'] ) );
 							}
-							$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'show-opts' ) );
 							break;
 
 						case 'modify_tmpl_head_attributes':
+
 							$this->modify_tmpl_head_attributes();
 							break;
 
 						case 'reload_default_sizes':
+
 							$opts =& $this->p->options;	// update the existing options array
 							$def_opts = $this->p->opt->get_defaults();
 							$img_opts = SucomUtil::preg_grep_keys( '/_img_(width|height|crop|crop_x|crop_y)$/', $def_opts );
@@ -712,6 +725,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						default:
+
 							do_action( $lca.'_load_setting_page_'.$action_name,
 								$this->pagehook, $this->menu_id, $this->menu_name, $this->menu_lib );
 							break;
@@ -1396,7 +1410,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						network_admin_url( 'plugin-install.php', null ) :
 						get_admin_url( null, 'plugin-install.php' ) );
 
-					if ( SucomUtil::installed_plugins( $info['base'] ) ) {
+					if ( SucomUtil::plugin_is_installed( $info['base'] ) ) {
 
 						if ( SucomUtil::plugin_has_update( $info['base'] ) ) {
 							$ext_links[] = '<a href="'.$details_url.'" class="thickbox" tabindex="'.++$tabindex.'">'.
@@ -1673,7 +1687,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		// only show notices on the dashboard and the settings pages
 		// hooked to 'current_screen' filter, so return the $screen object
-		public function screen_notices( $screen ) {
+		public function maybe_show_screen_notices( $screen ) {
 			$lca = $this->p->cf['lca'];
 			$screen_id = SucomUtil::get_screen_id( $screen );
 
@@ -1799,7 +1813,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					// found at least one plugin with an auth id
 					$have_ext_tid = true;
 					if ( ! self::$pkg[$ext]['pdir'] ) {
-						if ( ! empty( $info['base'] ) && ! SucomUtil::installed_plugins( $info['base'] ) ) {
+						if ( ! empty( $info['base'] ) && ! SucomUtil::plugin_is_installed( $info['base'] ) ) {
 							$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed',
 								array( 'lca' => $ext ) ) );
 						} else {
@@ -1821,7 +1835,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							array( 'min_version' => $min_version ) ) );
 					}
 				// if the update manager is not active, check if installed
-				} elseif ( SucomUtil::installed_plugins( $um_info['base'] ) ) {
+				} elseif ( SucomUtil::plugin_is_installed( $um_info['base'] ) ) {
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
 				// update manager is not active or installed
 				} else {

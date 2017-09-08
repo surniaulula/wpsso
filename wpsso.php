@@ -238,9 +238,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$wp_debug = false;
 			}
 
-			if ( ( $html_debug || $wp_debug ) &&	// only load debug class if debug options are enabled
-				( $classname = WpssoConfig::load_lib( false, 'com/debug', 'SucomDebug' ) ) ) {
-				$this->debug = new $classname( $this, array( 'html' => $html_debug, 'wp' => $wp_debug ) );
+			if ( $html_debug || $wp_debug ) {
+				require_once WPSSO_PLUGINDIR.'lib/com/debug.php';
+				$this->debug = new SucomDebug( $this, array( 'html' => $html_debug, 'wp' => $wp_debug ) );
 				if ( $this->debug->enabled ) {
 					global $wp_version;
 					$this->debug->log( 'debug enabled on '.date( 'c' ) );
@@ -254,9 +254,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			do_action( 'wpsso_init_textdomain', $this->debug->enabled );
 
-			if ( is_admin() &&	// only load notice class in the admin interface
-				( $classname = WpssoConfig::load_lib( false, 'com/notice', 'SucomNotice' ) ) ) {
-				$this->notice = new $classname( $this );
+			if ( is_admin() ) {
+				require_once WPSSO_PLUGINDIR.'lib/com/notice.php';
+				$this->notice = new SucomNotice( $this );
 			} else {
 				$this->notice = new SucomNoNotice();	// make sure the notice property is always available
 			}

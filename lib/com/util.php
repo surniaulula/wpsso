@@ -15,15 +15,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		protected $p;
 
-		protected static $is_mobile;			// is_mobile cached value
-		protected static $mobile_obj;			// SuextMobileDetect class object
-		protected static $active_plugins;		// active site and network plugins
-		protected static $active_site_plugins;
-		protected static $active_network_plugins;
-		protected static $crawler_name;			// saved crawler name from user-agent
-		protected static $filter_values = array();	// saved filter values
-		protected static $user_exists = array();	// saved user_exists() values
-		protected static $locales = array();		// saved get_locale() values
+		protected static $crawler_name;				// saved crawler name from user-agent
+		protected static $locales = array();			// saved get_locale() values
+		protected static $user_exists = array();		// saved user_exists() values
+		protected static $filter_return_values = array();	// saved filter return values
 
 		private static $currencies = array(
 			'AED' => 'United Arab Emirates dirham',
@@ -798,6 +793,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function __construct() {
 		}
 
+		public static function get_wp_plugin_dir() {
+			if ( defined( 'WP_PLUGIN_DIR' ) && is_dir( WP_PLUGIN_DIR ) && is_writable( WP_PLUGIN_DIR ) ) {
+				return WP_PLUGIN_DIR;
+			} else {
+				return false;
+			}
+		}
+
 		private static function get_timezone( $tz_name, $format ) {
 			$dt = new DateTime();
 			$dt->setTimeZone( new DateTimeZone( $tz_name ) );
@@ -894,49 +897,44 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function add_filter_protection( $filter_name ) {
 
-			if ( has_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ) ) ) {
+			if ( has_filter( $filter_name, array( __CLASS__, 'filter_restore_return_value' ) ) ) {
 				return false;
 			}
 
 			$int_min = self::get_const( 'PHP_INT_MIN', -2147483648 );	// since PHP v7.0.0
 			$int_max = self::get_const( 'PHP_INT_MAX', 2147483647 );	// since PHP v5.0.5
 
-			add_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), $int_min, 1 );
-			add_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), $int_max, 1 );
+			add_filter( $filter_name, array( __CLASS__, 'filter_save_return_value' ), $int_min, 1 );
+			add_filter( $filter_name, array( __CLASS__, 'filter_restore_return_value' ), $int_max, 1 );
 
 			return true;
 		}
 
 		public static function remove_filter_protection( $filter_name ) {
 
-			if ( ! has_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ) ) ) {
+			if ( ! has_filter( $filter_name, array( __CLASS__, 'filter_restore_return_value' ) ) ) {
 				return false;
 			}
 
 			$int_min = self::get_const( 'PHP_INT_MIN', -2147483648 );	// since PHP v7.0.0
 			$int_max = self::get_const( 'PHP_INT_MAX', 2147483647 );	// since PHP v5.0.5
 
-			remove_filter( $filter_name, array( __CLASS__, 'filter_value_save' ), $int_min );
-			remove_filter( $filter_name, array( __CLASS__, 'filter_value_restore' ), $int_max );
+			remove_filter( $filter_name, array( __CLASS__, 'filter_save_return_value' ), $int_min );
+			remove_filter( $filter_name, array( __CLASS__, 'filter_restore_return_value' ), $int_max );
 
 			return true;
 		}
 
-		public static function filter_value_save( $value ) {
+		public static function filter_save_return_value( $value ) {
 			$filter_name = current_filter();
-
-			// don't save / restore empty strings (for home page wp_title)
-			self::$filter_values[$filter_name] = trim( $value ) === '' ?
-				null : $value;
-
+			// don't save / restore empty strings (breaks the home page wp_title)
+			self::$filter_return_values[$filter_name] = trim( $value ) === '' ? null : $value;
 			return $value;
 		}
 
-		public static function filter_value_restore( $value ) {
+		public static function filter_restore_return_value( $value ) {
 			$filter_name = current_filter();
-
-			return self::$filter_values[$filter_name] === null ?
-				$value : self::$filter_values[$filter_name];
+			return self::$filter_return_values[$filter_name] === null ? $value : self::$filter_return_values[$filter_name];
 		}
 
 		public static function is_https( $url = '' ) {
@@ -1079,53 +1077,161 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ltrim( strtolower( preg_replace('/[A-Z]/', '_$0', $str ) ), '_' );
 		}
 
-		// active plugins array is cached in a static class property
-		public static function active_plugins( $plugin_base = false ) {
-			if ( ! isset( self::$plugins_index ) ) {
-				$combined_plugins = self::$active_site_plugins = get_option( 'active_plugins', array() );
+		public static function active_plugins( $plugin_base = false ) {	// example: wpsso/wpsso.php
+			static $cache = null;
+			if ( ! isset( $cache ) ) {
+				$cache = array();
+				$active_plugins = get_option( 'active_plugins', array() );
 				if ( is_multisite() ) {
-					self::$active_network_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
-					if ( ! empty( self::$active_network_plugins ) ) {
-						$combined_plugins = array_merge( self::$active_site_plugins, self::$active_network_plugins );
+					$active_network_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
+					if ( ! empty( $active_network_plugins ) ) {
+						$active_plugins = array_merge( $active_plugins, $active_network_plugins );
 					}
 				}
-				foreach ( $combined_plugins as $base ) {
-					self::$active_plugins[$base] = true;
+				foreach ( $active_plugins as $base ) {
+					$cache[$base] = true;
 				}
 			}
 			if ( $plugin_base !== false ) {
-				if ( isset( self::$active_plugins[$plugin_base] ) ) {
-					return self::$active_plugins[$plugin_base];
-				} else {
-					return false;
+				if ( isset( $cache[$plugin_base] ) ) {
+					return $cache[$plugin_base];
 				}
-			} else {
-				return self::$active_plugins;
+				return $cache[$plugin_base] = false;
 			}
+			return $cache;
 		}
 
-		public static function installed_plugins( $plugin_base = false ) {
-			if ( ! empty( $plugin_base ) && validate_file( $plugin_base ) > 0 ) {	// contains invalid characters
-				return false;
-			} elseif ( ! file_exists( WP_PLUGIN_DIR.'/'.$plugin_base) ) {	// check existence of plugin folder
-				return false;
+		public static function slug_is_active( $plugin_slug ) {	// example: wpsso
+			static $cache = array();
+			if ( isset( $cache[$plugin_slug] ) ) {
+				return $cache[$plugin_slug];
+			} elseif ( empty( $plugin_slug ) ) {	// just in case
+				return $cache[$plugin_slug] = false;
 			}
-			$installed_plugins = get_plugins();
-			if ( ! isset( $installed_plugins[$plugin_base] ) ) {	// check for a valid plugin header
-				return false;
+			foreach ( SucomUtil::active_plugins() as $plugin_base => $active ) {	// call with class to use common cache
+				if ( strpos( $plugin_base, $plugin_slug.'/' ) === 0 ) {
+					return $cache[$plugin_slug] = true;	// stop here
+				}
 			}
-			return true;
+			return $cache[$plugin_slug] = false;
 		}
 
-		public static function plugin_has_update( $plugin_base = false ) {
-			if ( ! self::installed_plugins( $plugin_base ) ) {
+		public static function slug_is_installed( $plugin_slug ) {	// example: wpsso
+			static $cache = array();
+			if ( isset( $cache[$plugin_slug] ) ) {
+				return $cache[$plugin_slug];
+			} elseif ( empty( $plugin_slug ) ) {	// just in case
+				return $cache[$plugin_slug] = false;
+			}
+			if ( ! function_exists( 'get_plugins' ) ) {
+				require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
+			}
+			foreach ( (array) get_plugins() as $plugin_base => $info ) {	// call with class to use common cache
+				if ( strpos( $plugin_base, $plugin_slug.'/' ) === 0 ) {
+					return $cache[$plugin_slug] = true;	// stop here
+				}
+			}
+			return $cache[$plugin_slug] = false;
+		}
+
+		public static function plugin_is_active( $plugin_base ) {
+			if ( empty( $plugin_base ) ) {	// just in case
 				return false;
+			}
+			return SucomUtil::active_plugins( $plugin_base );	// call with class to use common cache
+		}
+
+		public static function plugin_is_installed( $plugin_base ) {
+			static $cache = array();
+			if ( isset( $cache[$plugin_base] ) ) {
+				return $cache[$plugin_base];
+			} elseif ( empty( $plugin_base ) ) {	// just in case
+				return $cache[$plugin_base] = false;
+			} elseif ( validate_file( $plugin_base ) > 0 ) {	// contains invalid characters
+				return $cache[$plugin_base] = false;
+			} elseif ( ! is_file( WP_PLUGIN_DIR.'/'.$plugin_base ) ) {	// check existence of plugin folder
+				return $cache[$plugin_base] = false;
+			}
+			if ( ! function_exists( 'get_plugins' ) ) {
+				require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
+			}
+			$plugins = get_plugins();
+			if ( ! isset( $plugins[$plugin_base] ) ) {	// check for a valid plugin header
+				return $cache[$plugin_base] = false;
+			}
+			return $cache[$plugin_base] = true;
+		}
+
+		public static function plugin_has_update( $plugin_base ) {
+			static $cache = array();
+			if ( isset( $cache[$plugin_base] ) ) {
+				return $cache[$plugin_base];
+			} elseif ( empty( $plugin_base ) ) {	// just in case
+				return $cache[$plugin_base] = false;
+			} elseif ( ! SucomUtil::plugin_is_installed( $plugin_base ) ) {	// call with class to use common cache
+				return $cache[$plugin_base] = false;
 			}
 			$update_plugins = get_site_transient( 'update_plugins' );
 			if ( isset( $update_plugins->response ) && is_array( $update_plugins->response ) ) {
 				if ( isset( $update_plugins->response[$plugin_base] ) ) {
-					return true;
+					return $cache[$plugin_base] = true;
 				}
+			}
+			return $cache[$plugin_base] = false;
+		}
+
+		public static function get_slug_info( $plugin_slug, $plugin_fields = array(), $unfiltered = true ) {
+
+			static $cache = array();
+
+			$plugin_fields = array_merge( array(
+				'active_installs' => true,	// get by default
+				'added' => false,
+				'banners' => false,
+				'compatibility' => false,
+				'contributors' => false,
+				'description' => false,
+				'donate_link' => false,
+				'downloaded' => false,
+				'downloadlink' => true,		// get by default
+				'group' => false,
+				'homepage' => false,
+				'icons' => false,
+				'last_updated' => false,
+				'sections' => false,
+				'short_description' => false,
+				'rating' => true,		// get by default
+				'ratings' => true,		// get by default
+				'requires' => false,
+				'reviews' => false,
+				'tags' => false,
+				'tested' => false,
+				'versions' => false
+			), $plugin_fields );
+
+			$fields_key = json_encode( $plugin_fields );	// unique index based on selected fields
+
+			if ( isset( $cache[$plugin_slug][$fields_key] ) ) {
+				return $cache[$plugin_slug][$fields_key];
+			} elseif ( empty( $plugin_slug ) ) {	// just in case
+				return $cache[$plugin_slug][$fields_key] = false;
+			}
+
+			if ( ! function_exists( 'plugins_api' ) ) {
+				require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin-install.php';
+			}
+
+			return $cache[$plugin_slug][$fields_key] = plugins_api( 'plugin_information', array(
+				'slug' => $plugin_slug,
+				'fields' => $plugin_fields,
+				'unfiltered' => $unfiltered,	// true = skip the update manager filter
+			) );
+		}
+
+		public static function get_slug_wp_download_url( $plugin_slug ) {
+			$plugin_info = SucomUtil::get_slug_info( $plugin_slug, array( 'downloadlink' => true ), true );
+			if ( isset( $plugin_info->download_link ) ) {
+				return $plugin_info->download_link;
 			}
 			return false;
 		}
@@ -1165,12 +1271,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_option_key( $name, $key, $site = false ) {
-			if ( $site === true )
+			if ( $site === true ) {
 				$opts = get_site_option( $name, array() );
-			else $opts = get_option( $name, array() );
-			if ( isset( $opts[$key] ) )
+			} else {
+				$opts = get_option( $name, array() );
+			}
+			if ( isset( $opts[$key] ) ) {
 				return $opts[$key];
-			else return null;
+			} else {
+				return null;
+			}
 		}
 
 		public static function is_crawler_name( $crawler_name ) {
@@ -2315,19 +2425,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		// returns self::$is_mobile cached value after first check
 		public static function is_mobile() {
-			if ( ! isset( self::$is_mobile ) ) {
+
+			static $cache = null;
+			static $mobile = null;
+
+			if ( ! isset( $cache ) ) {
 				// load class object on first check
-				if ( ! isset( self::$mobile_obj ) ) {
+				if ( ! isset( $mobile ) ) {
 					if ( ! class_exists( 'SuextMobileDetect' ) ) {
 						require_once dirname( __FILE__ ).'/../ext/mobile-detect.php';
 					}
-					self::$mobile_obj = new SuextMobileDetect();
+					$mobile = new SuextMobileDetect();
 				}
-				self::$is_mobile = self::$mobile_obj->isMobile();
+				$cache = $mobile->isMobile();
 			}
-			return self::$is_mobile;
+
+			return $cache;
 		}
 
 		public static function is_desktop() {
