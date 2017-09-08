@@ -45,24 +45,32 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					switch ( $sub.'-'.$id ) {
 						/*
 						 * 3rd Party Plugins
+						 *
+						 * Prefer to check for class names than plugin slugs for 
+						 * compatibility with free / premium / pro versions.
 						 */
 						case 'ecom-edd':
-							$chk['plugin'] = 'easy-digital-downloads/easy-digital-downloads.php';
+							$chk['class'] = 'Easy_Digital_Downloads';
+							//$chk['plugin'] = 'easy-digital-downloads/easy-digital-downloads.php';
 							break;
 						case 'ecom-marketpress':
-							$chk['plugin'] = 'wordpress-ecommerce/marketpress.php';
+							$chk['class'] = 'Marketpress';
+							//$chk['plugin'] = 'wordpress-ecommerce/marketpress.php';
 							break;
 						case 'ecom-woocommerce':
-							$chk['plugin'] = 'woocommerce/woocommerce.php';
+							$chk['class'] = 'WooCommerce';
+							//$chk['plugin'] = 'woocommerce/woocommerce.php';
 							break;
 						case 'ecom-wpecommerce':
-							$chk['plugin'] = 'wp-e-commerce/wp-shopping-cart.php';
+							$chk['class'] = 'WP_eCommerce';
+							//$chk['plugin'] = 'wp-e-commerce/wp-shopping-cart.php';
 							break;
 						case 'ecom-yotpowc':	// yotpo-social-reviews-for-woocommerce
 							$chk['function'] = 'wc_yotpo_init';
 							break;
 						case 'event-tribe_events':
-							$chk['plugin'] = 'the-events-calendar/the-events-calendar.php';
+							$chk['class'] = 'Tribe__Events__Main';
+							//$chk['plugin'] = 'the-events-calendar/the-events-calendar.php';
 							break;
 						case 'form-gravityforms':
 							$chk['class'] = 'GFForms';
@@ -77,20 +85,23 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['class'] = 'Polylang';
 							break;
 						case 'media-ngg':
-							$chk['class'] = 'nggdb';	// C_NextGEN_Bootstrap
+							$chk['class'] = 'nggdb';
 							$chk['plugin'] = 'nextgen-gallery/nggallery.php';
 							break;
 						case 'media-rtmedia':
 							$chk['plugin'] = 'buddypress-media/index.php';
 							break;
 						case 'recipe-wprecipemaker':
-							$chk['plugin'] = 'wp-recipe-maker/wp-recipe-maker.php';
+							$chk['class'] = 'WP_Recipe_Maker';	// module in wpsso json pro
+							//$chk['plugin'] = 'wp-recipe-maker/wp-recipe-maker.php';
 							break;
 						case 'recipe-wpultimaterecipe':
-							$chk['plugin'] = 'wp-ultimate-recipe/wp-ultimate-recipe.php';
+							$chk['class'] = 'WPUltimateRecipe';	// module in wpsso json pro
+							//$chk['plugin'] = 'wp-ultimate-recipe/wp-ultimate-recipe.php';
 							break;
 						case 'review-wpproductreview':
-							$chk['plugin'] = 'wp-product-review/wp-product-review.php';
+							$chk['class'] = 'WPPR';	// module in wpsso json pro
+							//$chk['plugin'] = 'wp-product-review/wp-product-review.php';
 							break;
 						case 'seo-aioseop':
 							$chk['function'] = 'aioseop_init_class';	// free and pro versions
@@ -99,7 +110,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['plugin'] = 'autodescription/autodescription.php';
 							break;
 						case 'seo-headspace2':
-							$chk['plugin'] = 'headspace2/headspace.php';
+							$chk['class'] = 'HeadSpace_Plugin';
+							//$chk['plugin'] = 'headspace2/headspace.php';
 							break;
 						case 'seo-seou':
 							$chk['plugin'] = 'seo-ultimate/seo-ultimate.php';

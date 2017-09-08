@@ -1167,9 +1167,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return SucomUtil::active_plugins( $plugin_base, $use_cache );	// call with class to use common cache
 		}
 
-		public static function plugin_is_installed( $plugin_base ) {
+		public static function plugin_is_installed( $plugin_base, $use_cache = true ) {
 			static $cache = array();
-			if ( isset( $cache[$plugin_base] ) ) {
+			if ( $use_cache && isset( $cache[$plugin_base] ) ) {
 				return $cache[$plugin_base];
 			} elseif ( empty( $plugin_base ) ) {	// just in case
 				return $cache[$plugin_base] = false;
