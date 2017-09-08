@@ -376,10 +376,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
+	* Updated the top menu icon.
 	* Renamed the "Social Settings" metabox to "Social and Search Optimization".
 	* Added the Schema EntertainmentBusiness sub-types (AdultEntertainment, AmusementPark, etc.).
 * *Bugfixes*
-	* None
+	* Excluded the Pinterest image from being added to the content of RSS feeds.
 * *Developer Notes*
 	* Renamed the lib/profile/social-settings.php library file to your-sso.php.
 	* Renamed the WpssoMeta get_social_tabs() method to get_custom_meta_tabs().
