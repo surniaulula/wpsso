@@ -88,11 +88,16 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Check for Embedded Media',
 				'option label', 'wpsso' ), '', 'plugin_embedded_media' ).
 			'<td class="blank">'.
-			'<p>'.$this->get_nocb( $form, 'plugin_facebook_api' ).' Facebook Videos</p>'.
-			'<p>'.$this->get_nocb( $form, 'plugin_slideshare_api' ).' Slideshare Presentations</p>'.
-			'<p>'.$this->get_nocb( $form, 'plugin_vimeo_api' ).' Vimeo Videos</p>'.
-			'<p>'.$this->get_nocb( $form, 'plugin_wistia_api' ).' Wistia Videos</p>'.
-			'<p>'.$this->get_nocb( $form, 'plugin_youtube_api' ).' YouTube Videos and Playlists</p>'.
+			'<p>'.$this->get_nocb( $form, 'plugin_facebook_api' ).' '.
+				_x( 'Facebook Videos', 'option value', 'wpsso' ).'</p>'.
+			'<p>'.$this->get_nocb( $form, 'plugin_slideshare_api' ).' '.
+				_x( 'Slideshare Presentations', 'option value', 'wpsso' ).'</p>'.
+			'<p>'.$this->get_nocb( $form, 'plugin_vimeo_api' ).' '.
+				_x( 'Vimeo Videos', 'option value', 'wpsso' ).'</p>'.
+			'<p>'.$this->get_nocb( $form, 'plugin_wistia_api' ).' '.
+				_x( 'Wistia Videos', 'option value', 'wpsso' ).'</p>'.
+			'<p>'.$this->get_nocb( $form, 'plugin_youtube_api' ).' '.
+				_x( 'YouTube Videos and Playlists', 'option value', 'wpsso' ).'</p>'.
 			'</td>';
 
 			return $table_rows;
