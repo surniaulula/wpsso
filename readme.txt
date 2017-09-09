@@ -131,7 +131,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png">
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Includes a Social Settings metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social Settings metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google Search / Twitter Card descriptions, along with the shared image and/or video.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Includes a Social and Search Optimization metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social and Search Optimization metbox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google Search / Twitter Card descriptions, along with the shared image and/or video.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Fully renders content (including shortcodes) for accurate description texts and embedded video detection.
 
@@ -314,7 +314,6 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 			* [Add Schema aggregateRating Meta Tags](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/add-schema-aggregaterating-meta-tags/)
 			* [Define a Custom Post Type (CPT) as a Product](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/define-a-custom-post-type-cpt-as-a-product/)
 			* [Detect YouTube URL Links as Videos](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/)
-			* [Disable the Social Settings Metabox by Post ID](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/disable-the-social-settings-metabox-by-post-id/)
 			* [Modify the "article:tag" Keywords / Names](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
 			* [Modify the Default Article Topics List](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-default-topics-list/)
 			* [Modify the Home Page Title for Facebook / Open Graph](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-home-page-title-for-facebook-open-graph/)
@@ -371,7 +370,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.46.0-rc.1 (2017/09/09)**
+**Version 3.46.0 (2017/09/10)**
 
 * *New Features*
 	* None
@@ -701,43 +700,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* None
 
-**Version 3.42.0 (2017/04/30)**
-
-* *New Features*
-	* None
-* *Improvements*
-	* None
-* *Bugfixes*
-	* Fixed inheritance of Schema sub-types when adding Organization markup.
-	* Fixed check of variable product for WooCommerce v3.x (Pro version).
-* *Developer Notes*
-	* Code refactoring to rename the $is_avail array to $avail.
-	* Replaced WPSSO_VARY_USER_AGENT_DISABLE constant checks by $avail array checks.
-	* Added a Schema type inheritance feature when adding markup for single Schema elements.
-	* Renamed the "WP / Theme Integration" tab in the Advanced settings to "Integration".
-	* Moved the WPSSO_BP_MEMBER_BIOGRAPHICAL_FIELD constant value to a new "BuddyPress Member Bio Field Name" option in the Advanced settings page.
-
-**Version 3.41.0 (2017/04/22)**
-
-* *New Features*
-	* Added a new "Plugin Dashboard" settings page.
-* *Improvements*
-	* Moved all sidebar metaboxes (Help and Support, Version Information, etc.) to the new "Plugin Dashboard" settings page.
-	* Added a WpssoHead vary_user_agent_check() method to handle user agents with special needs like the Pinterest crawler.
-	* Improved the responsive styling of metaboxes for smaller displays.
-* *Bugfixes*
-	* Fixed a null value for the default publisher ID in Schema WebPage and BlogPosting markup.
-* *Developer Notes*
-	* Moved the validate button informational text from the WpssoMeta class to the WpssoMessages class.
-	* Renamed all Pinterest option key prefixes from 'rp' to 'p' to reflect the Pinterest meta tag prefix value.
-	* Renamed the SucomUtil crawler_name() method to get_crawler_name().
-	* Added a new optional WPSSO_VARY_USER_AGENT_DISABLE constant.
-
 == Upgrade Notice ==
 
-= 3.46.0-rc.1 =
+= 3.46.0 =
 
-(2017/09/09) Renamed the "Social Settings" metabox to "Social and Search Optimization".
+(2017/09/10) Renamed the "Social Settings" metabox to "Social and Search Optimization".
 
 = 3.45.9 =
 
@@ -818,12 +785,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 3.43.0 =
 
 (2017/05/07) Added a Gravity Forms + GravityView integration module with support for Single Entry view URL, title, description, and post image (Pro version). Added new Facebook AppLink and Twitter card meta tags for YouTube and Vimeo videos.
-
-= 3.42.0 =
-
-(2017/04/30) Fixed inheritance of Schema sub-types when adding Organization markup. Code refactoring to rename the $is_avail array and replace WPSSO_VARY_USER_AGENT_DISABLE constant checks.
-
-= 3.41.0 =
-
-(2017/04/22) Added a new "Plugin Dashboard" settings page, and moved all sidebar metaboxes to this new page. Fixed a null value for the default publisher ID in Schema WebPage and BlogPosting markup.
 
