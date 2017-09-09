@@ -347,19 +347,37 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					margin:0;
 					line-height:1.5em;
 				}
-				.'.$lca.'-notice .notice-message ul li {
-					margin-top:3px;
-					margin-bottom:3px;
+				.'.$lca.'-notice .notice-message h2 {
+					font-size:1.2em;
+				}
+				.'.$lca.'-notice .notice-message h3 {
+					font-size:1.1em;
+					margin-top:1.2em;
+					margin-bottom:0.8em;
 				}
 				.'.$lca.'-notice .notice-message a {
-					text-decoration:none;
 				}
 				.'.$lca.'-notice .notice-message p {
-					margin:10px 0 10px 0;
+					margin:1em 0;
 				}
 				.'.$lca.'-notice .notice-message p.ref_url {
 					font-size:0.8em;
 					margin:10px 0 0 0;
+				}
+				.'.$lca.'-notice .notice-message ul {
+					margin-top:0.8em;
+					margin-bottom:1.2em;
+				}
+				.'.$lca.'-notice .notice-message ul li {
+					margin-top:3px;
+					margin-bottom:3px;
+				}
+				.'.$lca.'-notice .notice-message .button-highlight {
+					border-color:#0074a2;
+					background-color:#daeefc;
+				}
+				.'.$lca.'-notice .notice-message .button-highlight:hover {
+					background-color:#c8e6fb;
 				}
 				.'.$lca.'-dismissible div.notice-dismiss:before {
 					display:inline-block;
