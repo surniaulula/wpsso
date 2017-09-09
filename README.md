@@ -193,9 +193,9 @@
 <li>WooCommerce (versions 1, 2, and 3)</li>
 <li>WordPress REST API (version 2)</li>
 <li>WP eCommerce</li>
-<li>WP Product Review (requires WPSSO JSON Pro extension)</li>
-<li>WP Recipe Maker (requires WPSSO JSON Pro extension)</li>
-<li>WP Ultimate Recipe (requires WPSSO JSON Pro extension)</li>
+<li>WP Product Review (requires the WPSSO JSON Pro extension)</li>
+<li>WP Recipe Maker (requires the WPSSO JSON Pro extension)</li>
+<li>WP Ultimate Recipe (requires the WPSSO JSON Pro extension)</li>
 <li>Yoast SEO (aka WordPress SEO)</li>
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul></li>
@@ -216,7 +216,7 @@
 </ul></li>
 </ul>
 
-<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Pro extensions for WPSSO:</p>
+<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Pro extensions for WPSSO Pro:</p>
 
 <ul>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (Pro version)</li>
@@ -227,7 +227,7 @@
 <li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Pro version)</li>
 </ul>
 
-<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the Pro version</a> (includes a <em>No Risk 30 Day Refund Policy</em>).</p>
+<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the WPSSO Pro (Core Plugin) here</a> (all purchases include a <em>No Risk 30 Day Refund Policy</em>).</p>
 
 <h4>3rd Party Integration (Pro version)</h4>
 

@@ -184,9 +184,9 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 	* WooCommerce (versions 1, 2, and 3)
 	* WordPress REST API (version 2)
 	* WP eCommerce
-	* WP Product Review (requires WPSSO JSON Pro extension)
-	* WP Recipe Maker (requires WPSSO JSON Pro extension)
-	* WP Ultimate Recipe (requires WPSSO JSON Pro extension)
+	* WP Product Review (requires the WPSSO JSON Pro extension)
+	* WP Recipe Maker (requires the WPSSO JSON Pro extension)
+	* WP Ultimate Recipe (requires the WPSSO JSON Pro extension)
 	* Yoast SEO (aka WordPress SEO)
 	* Yotpo Social Reviews for WooCommerce
 * **Integration with Service APIs**
@@ -202,7 +202,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 	* Your Own URL Shortener (YOURLS)
 	* YouTube Videos and Playlists
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Pro extensions for WPSSO:
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Pro extensions for WPSSO Pro:
 
 * [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/) (Pro version)
 * [WPSSO Organization Markup](https://wpsso.com/extend/plugins/wpsso-organization/) (Pro version)
@@ -211,7 +211,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
 * [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; [Purchase the Pro version](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase) (includes a *No Risk 30 Day Refund Policy*).
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; [Purchase the WPSSO Pro (Core Plugin) here](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase) (all purchases include a <em>No Risk 30 Day Refund Policy</em>).
 
 = 3rd Party Integration (Pro version) =
 
