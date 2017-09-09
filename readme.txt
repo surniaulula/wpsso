@@ -381,6 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added "Social and Search Optimization" to the top of settings pages (50% transparent).
 	* Added the Schema EntertainmentBusiness sub-types (AdultEntertainment, AmusementPark, etc.).
 * *Bugfixes*
+	* Fixed fetching of YouTube video information (Pro version).
 	* Excluded the Pinterest image from being added to the content of RSS feeds.
 * *Developer Notes*
 	* Renamed the lib/profile/social-settings.php library file to your-sso.php.
