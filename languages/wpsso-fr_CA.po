@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.45.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-09-08 20:34-0400\n"
-"PO-Revision-Date: 2017-09-08 20:35-0400\n"
+"PO-Revision-Date: 2017-09-08 20:51-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -78,7 +78,7 @@ msgstr "Vider tout les caches lors de l'enregistrement des réglages"
 
 #: lib/admin.php:595
 msgid "Nonce token validation failed for network options (update ignored)."
-msgstr "La validation du jeton Nonce pour les options de réseau a échoué (mise à jour ignorée)."
+msgstr "La validation du jeton nonce pour les options de réseau a échoué (mise à jour ignorée)."
 
 #: lib/admin.php:600
 msgid "Insufficient privileges to modify network options."
@@ -86,7 +86,7 @@ msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
 #: lib/admin.php:639 lib/post.php:391 lib/term.php:275 lib/user.php:256
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
-msgstr "La validation du jeton Nonce pour l'action %1$s \"%2$s\" a échoué."
+msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
 #: lib/admin.php:667
 msgid "The <b>%2$s</b> extension is not initialized properly. Please make sure you are using the latest versions of %1$s and %2$s."
@@ -2898,7 +2898,7 @@ msgstr "Valider le balisage AMP"
 
 #: lib/meta.php:593
 msgid "Nonce token validation failed for the submitted form (update ignored)."
-msgstr "La validation du jeton Nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
+msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
 #: lib/opengraph.php:56
 msgctxt "image size label"
