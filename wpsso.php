@@ -90,8 +90,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );		// runs at init 12 by default
 
 			if ( is_admin() ) {
-				add_action( 'wpsso_init_textdomain', 		// action is run after the debug property is defined
-					array( __CLASS__, 'init_textdomain' ), -10, 1 );	// hooks override_textdomain_mofile if debug enabled
+				/*
+				 * The 'wpsso_init_textdomain' action is run after the debug property is defined.
+				 * Hooks the 'override_textdomain_mofile' filter (if debug is enabled) to use 
+				 * local translation files instead.
+				 */
+				add_action( 'wpsso_init_textdomain', array( __CLASS__, 'init_textdomain' ), -10, 1 );
 			}
 		}
 
