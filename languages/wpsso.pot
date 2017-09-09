@@ -3905,51 +3905,6 @@ msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
 
-#: lib/submenu/buttons.php:57
-msgctxt "metabox title"
-msgid "Social Sharing Buttons"
-msgstr ""
-
-#: lib/submenu/buttons.php:109
-msgctxt "metabox tab"
-msgid "Include Buttons"
-msgstr ""
-
-#: lib/submenu/buttons.php:110
-msgctxt "metabox tab"
-msgid "Buttons Position"
-msgstr ""
-
-#: lib/submenu/buttons.php:111
-msgctxt "metabox tab"
-msgid "Buttons Presets"
-msgstr ""
-
-#: lib/submenu/buttons.php:112
-msgctxt "metabox tab"
-msgid "Advanced Settings"
-msgstr ""
-
-#: lib/submenu/buttons.php:147
-msgctxt "option label"
-msgid "Include on Archive Webpages"
-msgstr ""
-
-#: lib/submenu/buttons.php:151
-msgctxt "option label"
-msgid "Include on Static Front Page"
-msgstr ""
-
-#: lib/submenu/buttons.php:159
-msgctxt "option label"
-msgid "Position in Content Text"
-msgstr ""
-
-#: lib/submenu/buttons.php:164
-msgctxt "option label"
-msgid "Position in Excerpt Text"
-msgstr ""
-
 #: lib/submenu/dashboard.php:45
 msgctxt "metabox title"
 msgid "Help and Support"
