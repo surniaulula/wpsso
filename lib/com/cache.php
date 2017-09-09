@@ -126,7 +126,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
-		public function clear( $url, $url_ext = '' ) {
+		public function clear( $url, $file_ext = '' ) {
 
 			$get_url = preg_replace( '/#.*$/', '', $url );	// remove the fragment
 			$cache_salt = __CLASS__.'::get(url:'.$get_url.')';
@@ -146,14 +146,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$url_path = parse_url( $get_url, PHP_URL_PATH );
 
-			if ( $url_ext === '' ) {
-				$url_ext = pathinfo( $url_path, PATHINFO_EXTENSION );
-				if ( ! empty( $url_ext ) ) {
-					$url_ext = '.'.$url_ext;
+			if ( $file_ext === '' ) {
+				$file_ext = pathinfo( $url_path, PATHINFO_EXTENSION );
+				if ( ! empty( $file_ext ) ) {
+					$file_ext = '.'.$file_ext;
 				}
 			}
 
-			$cache_file = $this->base_dir.md5( $cache_salt ).$url_ext;
+			$cache_file = $this->base_dir.md5( $cache_salt ).$file_ext;
 
 			if ( file_exists( $cache_file ) && @unlink( $cache_file ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -174,14 +174,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
-		public function get( $url, $ret_type = 'url', $cache_name = 'file', $cache_exp = false, $curl_userpwd = false, $url_ext = '' ) {
+		public function get( $url, $format = 'url', $cache_type = 'file', $cache_exp = false, $file_ext = '', array $curl_opts = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
 			$uca = strtoupper( $this->p->cf['lca'] );
-			$failure = $ret_type === 'url' ? $url : false;
+			$failure = $format === 'url' ? $url : false;
 			$this->in_time[$url] = false;	// default value for failure
 
 			if ( ! extension_loaded( 'curl' ) ) {
@@ -203,10 +203,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$get_url = preg_replace( '/#.*$/', '', $url );	// remove the fragment
 			$url_path = parse_url( $get_url, PHP_URL_PATH );
 
-			if ( $url_ext === '' ) {
-				$url_ext = pathinfo( $url_path, PATHINFO_EXTENSION );
-				if ( ! empty( $url_ext ) ) {
-					$url_ext = '.'.$url_ext;
+			if ( $file_ext === '' ) {
+				$file_ext = pathinfo( $url_path, PATHINFO_EXTENSION );
+				if ( ! empty( $file_ext ) ) {
+					$file_ext = '.'.$file_ext;
 				}
 			}
 
@@ -217,16 +217,16 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			$cache_salt = __CLASS__.'::get(url:'.$get_url.')';	// SucomCache::get()
-			$cache_file = $this->base_dir.md5( $cache_salt ).$url_ext;
-			$cache_url = $this->base_url.md5( $cache_salt ).$url_ext.$url_frag;
+			$cache_file = $this->base_dir.md5( $cache_salt ).$file_ext;
+			$cache_url = $this->base_url.md5( $cache_salt ).$file_ext.$url_frag;
 			$cache_data = false;
 
 			// return immediately if the cache contains what we need
-			switch ( $ret_type ) {
+			switch ( $format ) {
 
 				case 'raw':
 
-					$cache_data = $this->get_cache_data( $cache_salt, $cache_name, $url_ext, $cache_exp );
+					$cache_data = $this->get_cache_data( $cache_salt, $cache_type, $cache_exp, $file_ext );
 
 					if ( $cache_data !== false ) {
 						if ( $this->p->debug->enabled ) {
@@ -248,11 +248,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						if ( filemtime( $cache_file ) > time() - $file_cache_exp ) {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'cached file found: returning '.$ret_type.' '.
-									( $ret_type === 'url' ? $cache_url : $cache_file ) );
+								$this->p->debug->log( 'cached file found: returning '.$format.' '.
+									( $format === 'url' ? $cache_url : $cache_file ) );
 							}
 							$this->in_time[$url] = true;	// signal return is from cache
-							return $ret_type === 'url' ? $cache_url : $cache_file;
+							return $format === 'url' ? $cache_url : $cache_file;
 
 						} elseif ( @unlink( $cache_file ) ) {	// remove expired file
 
@@ -277,7 +277,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				default:
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'cache return type for '.$ret_type.' is unknown' );
+						$this->p->debug->log( 'cache return type for '.$format.' is unknown' );
 					}
 
 					return $failure;
@@ -295,40 +295,46 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
 			curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, $this->curl_connect_timeout );
 			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->curl_timeout );
+			curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
+			curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 1 );
 
 			// define and disable the "Expect: 100-continue" header
 			curl_setopt( $ch, CURLOPT_HTTPHEADER, array( 'Expect:' ) );
 
 			if ( ini_get('safe_mode') || ini_get('open_basedir') ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'PHP safe_mode or open_basedir defined, cannot use CURLOPT_FOLLOWLOCATION' );
+					$this->p->debug->log( 'curl: PHP safe_mode or open_basedir defined - cannot use CURLOPT_FOLLOWLOCATION' );
 				}
 			} else {
-				curl_setopt( $ch, CURLOPT_MAXREDIRS, $this->curl_max_redirs );
 				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1 );
+				curl_setopt( $ch, CURLOPT_MAXREDIRS, $this->curl_max_redirs );
 			}
 
-			if ( defined( $uca.'_PHP_CURL_USERAGENT' ) ) {
-				curl_setopt( $ch, CURLOPT_USERAGENT, constant( $uca.'_PHP_CURL_USERAGENT' ) );
+			/*
+			 * Define cURL options from values defined as constants. Example: WPSSO_PHP_CURL_USERAGENT
+			 */
+			foreach ( array( 'USERAGENT', 'PROXY', 'PROXYUSERPWD', 'CAINFO' ) as $const_suffix ) {
+				if ( defined( $uca.'_PHP_CURL_'.$const_suffix ) ) {
+					curl_setopt( $ch, constant( 'CURLOPT_'.$const_suffix ),
+						constant( $uca.'_PHP_CURL_'.$const_suffix ) );
+				}
 			}
 
-			if ( defined( $uca.'_PHP_CURL_PROXY' ) ) {
-				curl_setopt( $ch, CURLOPT_PROXY, constant( $uca.'_PHP_CURL_PROXY' ) );
-			}
-
-			if ( defined( $uca.'_PHP_CURL_PROXYUSERPWD' ) ) {
-				curl_setopt( $ch, CURLOPT_PROXYUSERPWD, constant( $uca.'_PHP_CURL_PROXYUSERPWD' ) );
-			}
-
-			curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
-			curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 1 );
-
-			if ( defined( $uca.'_PHP_CURL_CAINFO' ) ) {
-				curl_setopt( $ch, CURLOPT_CAINFO, constant( $uca.'_PHP_CURL_CAINFO' ) );
-			}
-
-			if ( $curl_userpwd !== false ) {
-				curl_setopt( $ch, CURLOPT_USERPWD, $curl_userpwd );
+			/*
+			 * Define cURL options provided by the $curl_opts method arguent (empty by default). Example:
+			 *
+			 *	$curl_opts = array(
+			 *		'CURLOPT_USERAGENT' => 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)',
+			 *	);
+			 *
+			 */
+			if ( ! empty( $curl_opts ) ) {
+				foreach ( $curl_opts as $opt_name => $opt_value ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'curl: setting custom curl option '.$opt_name.' = '.$opt_value );
+					}
+					curl_setopt( $ch, constant( $opt_name ), $opt_value );
+				}
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -356,13 +362,13 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'cache data returned is empty' );
 					}
-				} elseif ( $this->save_cache_data( $cache_salt, $cache_data, $cache_name, $url_ext, $cache_exp ) ) {
+				} elseif ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type, $cache_exp, $file_ext ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'cache data sucessfully saved' );
 					}
 				}
 
-				switch ( $ret_type ) {
+				switch ( $format ) {
 					case 'raw':
 						return $cache_data;
 						break;
@@ -384,16 +390,16 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		}
 
 		// returns false on failure
-		protected function get_cache_data( $cache_salt, $cache_name = 'file', $url_ext = '', $cache_exp = false ) {
+		protected function get_cache_data( $cache_salt, $cache_type = 'file', $cache_exp = false, $file_ext = '' ) {
 
 			$cache_data = false;
 			$lca = $this->p->cf['lca'];
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $cache_name.' cache salt '.$cache_salt );
+				$this->p->debug->log( $cache_type.' cache salt '.$cache_salt );
 			}
 
-			switch ( $cache_name ) {
+			switch ( $cache_type ) {
 
 				case 'wp_cache':
 
@@ -412,7 +418,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				case 'file':
 
 					$cache_id = md5( $cache_salt );		// no lca prefix on filenames
-					$cache_file = $this->base_dir.$cache_id.$url_ext;
+					$cache_file = $this->base_dir.$cache_id.$file_ext;
 					$file_cache_exp = $cache_exp === false ? $this->default_file_cache_exp : $cache_exp;
 
 					if ( ! file_exists( $cache_file ) ) {
@@ -449,20 +455,20 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				default:
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'unknown cache name: '.$cache_name );
+						$this->p->debug->log( 'unknown cache type: '.$cache_type );
 					}
 
 					break;
 			}
 
 			if ( $this->p->debug->enabled && $cache_data !== false ) {
-				$this->p->debug->log( 'cache data retrieved from '.$cache_name );
+				$this->p->debug->log( 'cache data retrieved from '.$cache_type );
 			}
 
 			return $cache_data;	// return data or empty string
 		}
 
-		protected function save_cache_data( $cache_salt, &$cache_data = '', $cache_name = 'file', $url_ext = '', $cache_exp = false ) {
+		protected function save_cache_data( $cache_salt, &$cache_data = '', $cache_type = 'file', $cache_exp = false, $file_ext = '' ) {
 
 			$data_saved = false;
 			$lca = $this->p->cf['lca'];
@@ -475,10 +481,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$object_cache_exp = $cache_exp === false ? $this->default_object_cache_exp : $cache_exp;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $cache_name.' cache salt '.$cache_salt );
+				$this->p->debug->log( $cache_type.' cache salt '.$cache_salt );
 			}
 
-			switch ( $cache_name ) {
+			switch ( $cache_type ) {
 
 				case 'wp_cache':
 
@@ -486,7 +492,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					wp_cache_set( $cache_id, $cache_data, __CLASS__, $object_cache_exp );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'cache data saved to '.$cache_name.' '.
+						$this->p->debug->log( 'cache data saved to '.$cache_type.' '.
 							$cache_id.' ('.$object_cache_exp.' seconds)' );
 					}
 
@@ -500,7 +506,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					set_transient( $cache_id, $cache_data, $object_cache_exp );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'cache data saved to '.$cache_name.' '.
+						$this->p->debug->log( 'cache data saved to '.$cache_type.' '.
 							$cache_id.' ('.$object_cache_exp.' seconds)' );
 					}
 
@@ -511,7 +517,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				case 'file':
 
 					$cache_id = md5( $cache_salt );
-					$cache_file = $this->base_dir.$cache_id.$url_ext;
+					$cache_file = $this->base_dir.$cache_id.$file_ext;
 
 					if ( ! is_dir( $this->base_dir ) ) {
 						@mkdir( $this->base_dir );
@@ -554,7 +560,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				default:
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'unknown cache name: '.$cache_name );
+						$this->p->debug->log( 'unknown cache type: '.$cache_type );
 					}
 
 					break;

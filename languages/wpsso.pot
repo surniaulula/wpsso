@@ -547,23 +547,23 @@ msgstr ""
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/com/cache.php:427
+#: lib/com/cache.php:433
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:439
+#: lib/com/cache.php:445
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:525
+#: lib/com/cache.php:531
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: lib/com/cache.php:533
+#: lib/com/cache.php:539
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:541
+#: lib/com/cache.php:547
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
@@ -2227,7 +2227,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:406 lib/util.php:1975
+#: lib/messages.php:406 lib/util.php:1976
 msgid "No options available."
 msgstr ""
 
@@ -3532,7 +3532,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:535 lib/util.php:861
+#: lib/post.php:535 lib/util.php:862
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -3679,12 +3679,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:151 lib/pro/media/vimeo.php:128
-#: lib/pro/media/wistia.php:264 lib/util.php:926
+#: lib/pro/media/wistia.php:264 lib/util.php:927
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:154 lib/pro/media/vimeo.php:131
-#: lib/pro/media/wistia.php:267 lib/util.php:929
+#: lib/pro/media/wistia.php:267 lib/util.php:930
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4412,32 +4412,32 @@ msgstr ""
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:872
+#: lib/util.php:873
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:971
+#: lib/util.php:972
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:2002
+#: lib/util.php:2003
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2006
+#: lib/util.php:2007
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2009
+#: lib/util.php:2010
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2013
+#: lib/util.php:2014
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

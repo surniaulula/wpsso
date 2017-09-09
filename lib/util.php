@@ -817,7 +817,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// query examples:
 		//	/html/head/link|/html/head/meta
 		//	/html/head/meta[starts-with(@property, 'og:video:')]
-		public function get_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false ) {
+		public function get_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false, array $curl_opts = array() ) {
 
 			if ( empty( $request ) ) {	// just in case
 
@@ -852,7 +852,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 				return false;
 
-			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false ) {	// get html for url
+			// get( $url, $format, $cache_type, $cache_exp, $file_ext, $curl_opts )
+			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient', false, '', $curl_opts ) ) === false ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: error caching '.$request );
