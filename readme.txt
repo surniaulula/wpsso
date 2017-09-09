@@ -371,13 +371,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.45.10-b.1 (2017/09/08)**
+**Version 3.46.0-rc.1 (2017/09/09)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Updated the top menu icon.
 	* Renamed the "Social Settings" metabox to "Social and Search Optimization".
+	* Added "Social and Search Optimization" to the top of settings pages (50% transparent).
 	* Added the Schema EntertainmentBusiness sub-types (AdultEntertainment, AmusementPark, etc.).
 * *Bugfixes*
 	* Excluded the Pinterest image from being added to the content of RSS feeds.
@@ -733,9 +734,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.45.10-b.1 =
+= 3.46.0-rc.1 =
 
-(2017/09/08) Renamed the "Social Settings" metabox to "Social and Search Optimization".
+(2017/09/09) Renamed the "Social Settings" metabox to "Social and Search Optimization".
 
 = 3.45.9 =
 
