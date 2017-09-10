@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'your-sso' => 'Your SSO',
 						),
 						'setting' => array (	// lib file descriptions will be translated
-							'image-dimensions' => 'Social and SEO Image Dimensions',
+							'image-dimensions' => 'Social and Search Image Dimensions',
 							'social-accounts' => 'Website Social Pages and Accounts',
 							'contact-fields' => 'User Profile Contact Methods',
 						),

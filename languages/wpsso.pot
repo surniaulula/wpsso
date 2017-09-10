@@ -1008,14 +1008,14 @@ msgctxt "option value"
 msgid "(settings value)"
 msgstr ""
 
-#: lib/config-gettext-extract.php:81
-msgctxt "metabox title"
-msgid "Social and Search Optimization"
+#: lib/config-gettext-extract.php:81 lib/messages.php:1214
+msgctxt "lib file description"
+msgid "Social and Search Image Dimensions"
 msgstr ""
 
-#: lib/config-gettext-extract.php:82 lib/messages.php:1214
-msgctxt "lib file description"
-msgid "Social and SEO Image Dimensions"
+#: lib/config-gettext-extract.php:82
+msgctxt "metabox title"
+msgid "Social and Search Optimization"
 msgstr ""
 
 #: lib/config-gettext-extract.php:83

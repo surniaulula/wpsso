@@ -663,7 +663,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 									 * and don't use cached update data from the options table (fetch new update json).
 									 */
 									$wpssoum->update->check_for_updates( null, true, false );	// $use_cache = false
-									wp_redirect( add_query_arg( 'force-check', 1, admin_url( 'update-core.php' ) ) );
+									//wp_redirect( add_query_arg( 'force-check', 1, admin_url( 'update-core.php' ) ) );
 								} else {
 									$this->p->notice->err( sprintf( __( 'The <b>%2$s</b> extension is not initialized properly. Please make sure you are using the latest versions of %1$s and %2$s.', 'wpsso' ), $info['name'], $um_info['name'] ) );
 								}

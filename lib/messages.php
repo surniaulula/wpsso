@@ -616,7 +616,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_check_img_dims':
-							$text = 'When this option is enabled, selected images must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social and SEO Image Dimensions' ).' you\'ve defined -- images that do not meet or exceed the minimum requirements will be rejects / ignored. <strong>Enabling this option is highly recommended</strong> &mdash; it is disabled by default to avoid excessive warnings on sites with small / thumbnail images in their media library.';
+							$text = 'When this option is enabled, selected images must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social and Search Image Dimensions' ).' you\'ve defined -- images that do not meet or exceed the minimum requirements will be rejects / ignored. <strong>Enabling this option is highly recommended</strong> &mdash; it is disabled by default to avoid excessive warnings on sites with small / thumbnail images in their media library.';
 							break;
 
 						case 'tooltip-plugin_upscale_images':
@@ -1211,7 +1211,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$do_once_upscale_notice = true;
 
 							$img_dim_page = $this->p->util->get_admin_url( 'image-dimensions', 
-								_x( 'Social and SEO Image Dimensions', 'lib file description', 'wpsso' ) );
+								_x( 'Social and Search Image Dimensions', 'lib file description', 'wpsso' ) );
 							$img_dim_enable = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 								_x( 'Enforce Image Dimensions Check', 'option label', 'wpsso' ) );
 							$upscale_enable = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
