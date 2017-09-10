@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.8.1
 Requires PHP: 5.3
-Stable Tag: 3.45.9
+Stable Tag: 3.46.0
 
 Automatically generate complete and accurate meta tags and Schema markup from your content for social media optimization (SMO) and SEO.
 
@@ -211,7 +211,7 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
 * [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; [Purchase the WPSSO Pro (Core Plugin) here](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase) (all purchases include a <em>No Risk 30 Day Refund Policy</em>).
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; [Purchase WPSSO Pro (Core Plugin) here](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase) (all purchases include a <em>No Risk 30 Day Refund Policy</em>).
 
 = 3rd Party Integration (Pro version) =
 
