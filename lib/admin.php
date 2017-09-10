@@ -459,7 +459,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Get the plugin readme and cache on disk. Convert the readme array to a plugin data object.
+		 * Get the plugin readme and convert array elements to a plugin data object.
 		 */
 		public function get_plugin_data( $ext, $use_cache = true ) {
 
@@ -659,11 +659,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 								if ( isset( $wpssoum->update ) ) {	// just in case
 									/*
-									 * Check for updates for all extensions, show a notice for success or failure, 
-									 * and don't use cached update data from the options table (fetch new update json).
+									 * Check for updates for all extensions, show a notice 
+									 * for success or failure, and don't use cached update 
+									 * data from the options table (fetch new update json).
 									 */
 									$wpssoum->update->check_for_updates( null, true, false );	// $use_cache = false
-									//wp_redirect( add_query_arg( 'force-check', 1, admin_url( 'update-core.php' ) ) );
 								} else {
 									$this->p->notice->err( sprintf( __( 'The <b>%2$s</b> extension is not initialized properly. Please make sure you are using the latest versions of %1$s and %2$s.', 'wpsso' ), $info['name'], $um_info['name'] ) );
 								}
