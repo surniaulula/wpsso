@@ -917,7 +917,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$view_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
-			$view_name = _x( $this->p->cf['form']['show_options'][$view_next], 'submit button fragment', 'wpsso' );
+			$view_name = _x( $this->p->cf['form']['show_options'][$view_next], 'option value', 'wpsso' );
 			$view_label = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name );
 
 			if ( is_multisite() ) {
