@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.46.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-09-11 10:28-0400\n"
-"PO-Revision-Date: 2017-09-11 10:29-0400\n"
+"PO-Revision-Date: 2017-09-11 10:33-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3473,7 +3473,7 @@ msgstr "URL logo de organisation"
 #: lib/submenu/essential.php:136 lib/submenu/general.php:296
 msgctxt "option label"
 msgid "Organization Banner URL"
-msgstr "URL bannière de l'organisation"
+msgstr "URL bannière d'organisation"
 
 #: lib/submenu/essential.php:141
 msgctxt "metabox title"
@@ -3901,20 +3901,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://surniaulula.com/"
 msgstr "https://surniaulula.com/"
-
-#~ msgctxt "option label"
-#~ msgid "Maximum Images from Content"
-#~ msgstr "Images maximum du contenu"
-
-#~ msgctxt "option label"
-#~ msgid "Maximum Videos from Content"
-#~ msgstr "Vidéos maximum du contenu"
-
-#~ msgid "The maximum number of images that %s will consider using from the content."
-#~ msgstr "Le nombre maximum d'images que %s envisagera d'utiliser du contenu."
-
-#~ msgid "The maximum number of embedded videos that %s will consider using from the content."
-#~ msgstr "Le nombre maximum des vidéos intégrées que %s envisagera d'utiliser du contenu."
-
-#~ msgid "WordPress Plugins"
-#~ msgstr "Extensions WordPress"

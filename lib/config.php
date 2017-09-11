@@ -1207,8 +1207,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'form' => array(
-				'max_hashtags' => 10,
-				'max_media_items' => 20,
+				'max_hashtags' => 5,
+				'max_media_items' => 10,
 				'tooltip_class' => 'sucom_tooltip',
 				'yes_no' => array(
 					'1' => 'Yes',
