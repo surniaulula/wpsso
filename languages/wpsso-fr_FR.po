@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.46.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-09-11 10:28-0400\n"
-"PO-Revision-Date: 2017-09-11 10:33-0400\n"
+"PO-Revision-Date: 2017-09-11 11:14-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1064,7 +1064,7 @@ msgstr "Champ personnalisé URL de vidéo"
 #: lib/config-gettext-extract.php:103 lib/messages.php:871
 msgctxt "lib file description"
 msgid "Website Social Pages and Accounts"
-msgstr "Pages et comptes sociaux site Web"
+msgstr "Pages et comptes sociaux du site Web"
 
 #: lib/config-gettext-extract.php:104
 msgctxt "option value"
@@ -1526,7 +1526,7 @@ msgstr "utilise %s"
 #: lib/gpl/admin/general.php:63 lib/pro/admin/general.php:65
 msgctxt "option label"
 msgid "Include Video Preview Images"
-msgstr "Inclure l'image d'aperçu du vidéo"
+msgstr "Inclure l'image d'aperçu des vidéos"
 
 #: lib/gpl/admin/general.php:66 lib/pro/admin/general.php:68
 msgctxt "option comment"
@@ -1536,7 +1536,7 @@ msgstr "les images d'aperçu vidéo sont inclus en premier"
 #: lib/gpl/admin/general.php:69 lib/pro/admin/general.php:71
 msgctxt "option label"
 msgid "Include Embed text/html Type"
-msgstr "Inclure text/html pour vidéo intégrée"
+msgstr "Inclure le type text/html des vidéos"
 
 #: lib/gpl/admin/general.php:73 lib/pro/admin/general.php:75
 msgctxt "option label"
@@ -2618,7 +2618,7 @@ msgstr "Google / Schéma"
 
 #: lib/messages.php:1176
 msgid "The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) <a href=\"%s\">social markup for Google Search</a>."
-msgstr "Les valeurs des comptes sociaux site Web / d'affaires sont utilisées pour les balises méta SEO, Schéma, Open Graph, et autres &ndash; y compris le <a href=\"%s\">balisage sociale de l'organisation pour Google Search</a>."
+msgstr "Les valeurs des comptes sociaux du site Web / d'affaires sont utilisées pour les balises méta SEO, Schéma, Open Graph, et autres &ndash; y compris le <a href=\"%s\">balisage sociale de l'organisation pour Google Search</a>."
 
 #: lib/messages.php:1177
 msgid "See the %s settings tab to define an organization logo for Google Search results and enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup."
