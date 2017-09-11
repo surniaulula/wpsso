@@ -370,7 +370,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.46.1-dev.1 (TBD)**
+**Version 3.46.1-dev.1 (2017/09/11)**
 
 * *New Features*
 	* None
@@ -380,8 +380,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Developer Notes*
 	* Renamed the Advanced settings 'social' tab ID to 'custom_meta'.
-	* Replaced the "Maximum Images from Content" option value with a new NGFB_CONTENT_IMAGES_MAX_LIMIT constant (defaults to 5).
-	* Replaced the "Maximum Videos from Content" option value with a new NGFB_CONTENT_VIDEOS_MAX_LIMIT constant (defaults to 5).
+	* Removed the "Maximum Images from Content" option and replaced it with a new WPSSO_CONTENT_IMAGES_MAX_LIMIT constant (defaults to 5).
+	* Removed the "Maximum Videos from Content" option and replaced it with a new WPSSO_CONTENT_VIDEOS_MAX_LIMIT constant (defaults to 5).
 
 **Version 3.46.0 (2017/09/10)**
 
@@ -714,6 +714,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 
 == Upgrade Notice ==
+
+= 3.46.1-dev.1 =
+
+(2017/09/11) Replaced the "Maximum Images from Content" and "Maximum Videos from Content" options by constants.
 
 = 3.46.0 =
 
