@@ -370,6 +370,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
+**Version 3.46.1-dev.1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Renamed the Advanced settings 'social' tab ID to 'custom_meta'.
+	* Replaced the "Maximum Images from Content" option value with a new NGFB_CONTENT_IMAGES_MAX_LIMIT constant (defaults to 5).
+	* Replaced the "Maximum Videos from Content" option value with a new NGFB_CONTENT_VIDEOS_MAX_LIMIT constant (defaults to 5).
+
 **Version 3.46.0 (2017/09/10)**
 
 * *New Features*
