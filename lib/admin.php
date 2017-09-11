@@ -308,8 +308,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			global $wp_version;
-			if ( $menu_ext === $this->p->cf['lca'] ||		// plugin menu and sub-menu items
-				version_compare( $wp_version, 3.8, '<' ) ) {	// wp v3.8 required for dashicons
+			if ( $menu_ext === $this->p->cf['lca'] || version_compare( $wp_version, 3.8, '<' ) ) {	// wp v3.8 required for dashicons
 				$menu_title = $menu_name;
 			} else {
 				$menu_title = '<div class="extension-plugin'.	// add plugin icon for extensions
@@ -918,8 +917,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$view_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
-			$view_name = _x( $this->p->cf['form']['show_options'][$view_next], 'option value', 'wpsso' );
-			$view_label = sprintf( _x( 'View "%s" by Default', 'submit button', 'wpsso' ), $view_name );
+			$view_name = _x( $this->p->cf['form']['show_options'][$view_next], 'submit button fragment', 'wpsso' );
+			$view_label = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name );
 
 			if ( is_multisite() ) {
 				$clear_label = sprintf( _x( 'Clear All Caches for Site %d',
@@ -1244,9 +1243,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		private static function feature_priority( $feature ) {
-			if ( strpos( $feature, '(tool)' ) === 0 )
+			if ( strpos( $feature, '(tool)' ) === 0 ) {
 				return '(10) '.$feature;
-			else return $feature;
+			} else {
+				return $feature;
+			}
 		}
 
 		public function show_metabox_purchase_pro() {
@@ -2200,21 +2201,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function get_ext_img_icon( $ext ) {
 
+			// default transparent 1px image
 			$img_src = 'src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="';
 
 			if ( ! empty( $this->p->cf['plugin'][$ext]['img']['icons'] ) ) {
-
 				$icons = $this->p->cf['plugin'][$ext]['img']['icons'];
-
 				if ( ! empty( $icons['low'] ) ) {
 					$img_src = 'src="'.$icons['low'].'"';
 				}
-
 				if ( ! empty( $icons['high'] ) ) {
 					$img_src .= ' srcset="'.$icons['high'].' 256w"';
 				}
 			}
-
 			return '<img '.$img_src.' width="128" height="128" />';
 		}
 	}

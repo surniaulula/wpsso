@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$this->p->util->add_plugin_filters( $this, array(
 				'plugin_content_rows' => 2,	// $table_rows, $form
 				'plugin_integration_rows' => 2,	// $table_rows, $form
-				'plugin_social_rows' => 2,	// $table_rows, $form
+				'plugin_custom_meta_rows' => 2,	// $table_rows, $form
 				'plugin_cache_rows' => 3,	// $table_rows, $form, $network
 				'plugin_apikeys_rows' => 2,	// $table_rows, $form
 				'cm_custom_rows' => 2,		// $table_rows, $form
@@ -73,16 +73,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_p_cap_prefix'] = $form->get_th_html( _x( 'WP Caption Prefix',
 				'option label', 'wpsso' ), '', 'plugin_p_cap_prefix', array( 'is_locale' => true ) ).
 			'<td class="blank">'.SucomUtil::get_locale_opt( 'plugin_p_cap_prefix', $this->p->options ).'</td>';
-
-			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Maximum Images from Content',
-				'option label', 'wpsso' ), '', 'plugin_content_img_max' ).
-			'<td class="blank">'.$this->p->options['plugin_content_img_max'].'</td>';
-
-			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Maximum Videos from Content',
-				'option label', 'wpsso' ), '', 'plugin_content_vid_max' ).
-			'<td class="blank">'.$this->p->options['plugin_content_vid_max'].'</td>';
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Check for Embedded Media',
@@ -168,7 +158,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_plugin_social_rows( $table_rows, $form, $network = false ) {
+		public function filter_plugin_custom_meta_rows( $table_rows, $form, $network = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -204,7 +194,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$cols .= '</table>'."\n";
 
-			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Include Columns in Admin Lists',
+			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Show Columns in Admin Lists',
 				'option label', 'wpsso' ), '', 'plugin_show_columns' ).
 					'<td>'.$cols.'</td>';
 
@@ -218,8 +208,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				' '.__( 'User Profile', 'wpsso' ).'</p>';
 
 			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' );
+
 			$table_rows['plugin_add_to'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( sprintf( _x( 'Include %s Metabox',
+			$form->get_th_html( sprintf( _x( 'Add %s Metabox to',
 				'option label', 'wpsso' ), $menu_title ), '', 'plugin_add_to' ).
 			'<td class="blank">'.$add_to_checkboxes.'</td>';
 
@@ -317,7 +308,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$this->get_nocb_td( $form, 'plugin_clear_short_urls' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_short_urls', $form, $network );
 
-			$table_rows['plugin_clear_for_comment'] = $form->get_th_html( _x( 'Clear Post Cache for Comment',
+			$table_rows['plugin_clear_for_comment'] = $form->get_th_html( _x( 'Clear Post Cache for New Comment',
 				'option label', 'wpsso' ), '', 'plugin_clear_for_comment' ).
 			$this->get_nocb_td( $form, 'plugin_clear_for_comment' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );

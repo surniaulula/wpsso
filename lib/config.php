@@ -25,8 +25,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.46.0',		// plugin version
-					'opt_version' => '539',		// increment when changing default options
+					'version' => '3.46.1-dev.1',		// plugin version
+					'opt_version' => '541',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
 					'desc' => 'Automatically generate complete and accurate meta tags and Schema markup from your content for social media optimization (SMO) and SEO.',
@@ -76,14 +76,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'essential' => 'Essential Settings',
 							'general' => 'General Settings',
 							'advanced' => 'Advanced Settings',
-							'setup' => '<color>Plugin Setup Guide and Other Notes</color>',
 							'licenses' => 'Extension Plugins and Pro Licenses',
 							'dashboard' => 'Plugin Dashboard and Features Status',
+							'setup' => '<color>Plugin Setup Guide and Other Notes</color>',
 						),
 						'sitesubmenu' => array(	// lib file descriptions will be translated
 							'siteadvanced' => 'Advanced Settings',
-							'sitesetup' => '<color>Plugin Setup Guide and Other Notes</color>',
 							'sitelicenses' => 'Extension Plugins and Pro Licenses',
+							'sitesetup' => '<color>Plugin Setup Guide and Other Notes</color>',
 						),
 						'gpl' => array(
 							'admin' => array(
@@ -861,8 +861,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_use_img_alt' => 1,			// Use Image Alt if No Content
 					'plugin_img_alt_prefix' => 'Image:',		// Image Alt Text Prefix
 					'plugin_p_cap_prefix' => 'Caption:',		// WP Caption Prefix
-					'plugin_content_img_max' => 5,			// Maximum Images from Content
-					'plugin_content_vid_max' => 5,			// Maximum Videos from Content
 					'plugin_gravatar_api' => 1,			// Include Author Gravatar Image
 					'plugin_facebook_api' => 1,			// Check for Embedded Media: Facebook
 					'plugin_slideshare_api' => 1,			// Check for Embedded Media: Slideshare
@@ -930,7 +928,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
 					'plugin_clear_on_save' => 1,			// Clear All Cache on Save Settings
 					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Cache
-					'plugin_clear_for_comment' => 1,		// Clear Post Cache for Comment
+					'plugin_clear_for_comment' => 1,		// Clear Post Cache for New Comment
 					// Service APIs Tab
 					'plugin_shortener' => 'none',
 					'plugin_shortlink' => 1,			// Use Shortnened URL for WP Shortlink
@@ -1044,7 +1042,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_on_save:use' => 'default',
 					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Cache
 					'plugin_clear_short_urls:use' => 'default',
-					'plugin_clear_for_comment' => 1,		// Clear Post Cache for Comment
+					'plugin_clear_for_comment' => 1,		// Clear Post Cache for New Comment
 					'plugin_clear_for_comment:use' => 'default',
 				),	// end of site defaults
 				'cm_prefix' => array(		// contact method options prefix
@@ -2165,6 +2163,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;		// output pretty / human readable json
 			$var_const['WPSSO_UNDEF_INT'] = -1;			// undefined width / height value
 			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 1.00;
+			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT'] = 5;	// maximum number of images extracted from the content
+			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT'] = 5;	// maximum number of videos extracted from the content
 			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = false;	// clear cache before fetching shortlink url
 			$var_const['WPSSO_DUPE_CHECK_WARNING_SECS'] = 2.5;	// issue a warning if getting shortlink took more than 2.5 seconds
 			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.0;	// crawlers often time-out after 3 seconds

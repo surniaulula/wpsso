@@ -151,7 +151,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'add_meta_itemprop_menu' => 'add_link_itemprop_menu',
 				),
 				539 => array(
-					'plugin_shorten_cache_exp' => 'plugin_short_url_cache_exp',
+					'plugin_content_img_max' => '',
+					'plugin_content_vid_max' => '',
 				),
 			),
 		);

@@ -272,8 +272,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
 
-					$table_rows['schema_social_json'] = $this->form->get_th_html( _x( 'Google Knowledge Graph',
-						'option label', 'wpsso' ), '', 'schema_social_json' ).
+					$table_rows['schema_knowledge_graph'] = $this->form->get_th_html( _x( 'Google Knowledge Graph',
+						'option label', 'wpsso' ), '', 'schema_knowledge_graph' ).
 					'<td>'.
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
 						sprintf( __( 'Include <a href="%s">Website Information</a> for Google Search',

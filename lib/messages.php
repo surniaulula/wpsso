@@ -164,11 +164,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 	break;
 
 						case 'tooltip-meta-og_vid_embed':
-							$text = 'Custom Video Embed HTML to use for the first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_social', 'Video Embed HTML Custom Field' ).' advanced option also allows a 3rd-party theme or plugin to provide custom Video Embed HTML for this option.';
+
+							$option_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_custom_meta',
+								_x( 'Video Embed HTML Custom Field', 'option label', 'wpsso' ) );
+
+							$text = 'Custom Video Embed HTML to use for the first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$option_page_link.' advanced option also allows a 3rd-party theme or plugin to provide custom Video Embed HTML for this option.';
+
 						 	break;
 
 						case 'tooltip-meta-og_vid_url':
-							$text = 'A custom Video URL to include first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_social', 'Video URL Custom Field' ).' advanced option allows a 3rd-party theme or plugin to provide a custom Video URL value for this option.';
+
+							$option_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_custom_meta',
+								_x( 'Video URL Custom Field', 'option label', 'wpsso' ) );
+
+							$text = 'A custom Video URL to include first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$option_page_link.' advanced option allows a 3rd-party theme or plugin to provide a custom Video URL value for this option.';
+
 						 	break;
 
 						case 'tooltip-meta-og_vid_title':
@@ -231,11 +241,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-site_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-site_name':
-							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', get_admin_url( null, 'options-general.php' ) );
+
+							$settings_url = get_admin_url( null, 'options-general.php' );
+
+							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', $settings_url );
+
 							break;
 
 						case 'tooltip-site_desc':
-							$text = sprintf( __( 'The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ).' '.sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), get_admin_url( null, 'options-general.php' ) );
+
+							$settings_url = get_admin_url( null, 'options-general.php' );
+
+							$text = sprintf( __( 'The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ).' '.sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), $settings_url );
+
 							break;
 
 						case 'tooltip-site_org_type':
@@ -450,16 +468,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								'wpsso' );
 							break;
 
-						case 'tooltip-plugin_content_img_max':
-							$text = sprintf( __( 'The maximum number of images that %s will consider using from the content.',
-								'wpsso' ), $info['short'] );
-							break;
-
-						case 'tooltip-plugin_content_vid_max':
-							$text = sprintf( __( 'The maximum number of embedded videos that %s will consider using from the content.',
-								'wpsso' ), $info['short'] );
-							break;
-
 						case 'tooltip-plugin_embedded_media':
 							$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.).', 'wpsso' );
 							break;
@@ -476,9 +484,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_wpseo_social_meta':
-							$text = __( 'Read the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ).' '.
-							__( 'This option is checked by default if the Yoast SEO plugin is active, or its settings are found in the database.',
-								'wpsso' );
+
+							$text = __( 'Read the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ).' '.__( 'This option is checked by default if the Yoast SEO plugin is active, or its settings are found in the database.', 'wpsso' );
+
 							break;
 
 						case 'tooltip-plugin_product_currency':
@@ -595,8 +603,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_check_head':
-							$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 6 );
-							$text = sprintf( __( 'When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed &mdash; until the theme and/or any plugin is updated, when another %2$d checks are performed.', 'wpsso' ), $info['short'], $max_count );
+
+							$check_head_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 6 );
+
+							$text = sprintf( __( 'When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed &mdash; until the theme and/or any plugin is updated, when another %2$d checks are performed.', 'wpsso' ), $info['short'], $check_head_count );
+
 							break;
 
 						case 'tooltip-plugin_html_attr_filter':
@@ -616,31 +627,50 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_check_img_dims':
-							$text = 'When this option is enabled, selected images must be equal to (or larger) than the '.$this->p->util->get_admin_url( 'image-dimensions', 'Social and Search Image Dimensions' ).' you\'ve defined -- images that do not meet or exceed the minimum requirements will be rejects / ignored. <strong>Enabling this option is highly recommended</strong> &mdash; it is disabled by default to avoid excessive warnings on sites with small / thumbnail images in their media library.';
+
+							$settings_page_link = $this->p->util->get_admin_url( 'image-dimensions',
+								_x( 'Social and Search Image Dimensions', 'lib file description', 'wpsso' ) );
+
+							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'nextgen-faceboook' ), $settings_page_link ).' '.__( '<strong>Enabling this option is highly recommended</strong> &mdash; the option is disabled by default to avoid excessive warnings on sites with small / thumbnail images in their media library.', 'wpsso' );
+
 							break;
 
 						case 'tooltip-plugin_upscale_images':
-							$text = 'WordPress does not upscale (enlarge) images &mdash; WordPress only creates smaller images from larger full-size originals. Upscaled images do not look as sharp or clean when upscaled, and if enlarged too much, images will look fuzzy and unappealing &mdash; not something you want to promote on social sites. '.$info['short_pro'].' includes an optional module that allows upscaling of WordPress Media Library images for '.$info['short'].' image sizes (up to a maximum upscale percentage). <strong>Do not enable this option unless you want to publish lower quality images on social sites</strong>.';
+
+							$text = __( 'WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals.', 'wpsso' ).' '.__( 'Upscaled images do not look as sharp or clear when upscaled, and if enlarged too much, images will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites.', 'wpsso' ).' '.sprintf( __( '%1$s includes a feature that allows upscaling of WordPress Media Library images for %2$s image sizes (up to a maximum upscale percentage).', 'wpsso' ), $info['short_pro'], $info['short'] ).' <strong>'.__( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ).'</strong>';
+
 							break;
 
 						case 'tooltip-plugin_upscale_img_max':
-							$text = 'When upscaling of '.$info['short'].' image sizes is allowed, '.$info['short_pro'].' can make sure smaller / thumbnail images are not upscaled beyond reason, which could publish very low quality / fuzzy images on social sites (the default maximum is 33%). If an image needs to be upscaled beyond this maximum, <em>in either width or height</em>, the image will not be upscaled.';
+
+							$upscale_max = WpssoConfig::$cf['opt']['defaults']['plugin_upscale_img_max'];	// use original un-filtered value
+
+							$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info['short'], $info['short_pro'], $upscale_max ).' '.__( 'If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled.', 'wpsso' );
+
 							break;
 
 						case 'tooltip-plugin_shortcodes':
+
 							$text = 'Enable the '.$info['short'].' shortcode features (default is checked).';
+
 							break;
 
 						case 'tooltip-plugin_widgets':
+
 							$text = 'Enable the '.$info['short'].' widget features (default is checked).';
+
 							break;
 
 						case 'tooltip-plugin_page_excerpt':
+
 							$text = 'Enable the excerpt editing metabox for Pages. Excerpts are optional hand-crafted summaries of your content that '.$info['short'].' can use as a default description value.';
+
 							break;
 
 						case 'tooltip-plugin_page_tags':
+
 							$text = 'Enable the tags editing metabox for Pages. Tags are optional keywords that highlight the content subject(s), often used for searches and "tag clouds". '.$info['short'].' converts tags into hashtags for some social websites (Twitter, Facebook, Google+, etc.).';
+
 							break;
 
 						/*
@@ -707,8 +737,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'Clear all shortened URLs when clearing all %s transients from the WordPress database (default is unchecked).', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'Shortened URLs are cached for %s to minimize external service API calls. Updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider.', 'wpsso' ), human_time_diff( 0, $cache_exp ) );
 							break;
 
-						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for Comment
+						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment
+
 							$text = __( 'Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed.', 'wpsso' );
+
 							break;
 
 						/*
@@ -833,8 +865,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'When additional schema properties are available (product ratings, recipe ingredients, etc.), one or more <code>noscript</code> containers may be included in the webpage head section. <code>noscript</code> containers are read correctly by Google and Pinterest, but the W3C Validator will show errors for the included meta tags (these errors can be safely ignored). The <code>noscript</code> containers are always disabled for AMP webpages, and always enabled for the Pinterest crawler.';
 							break;
 
-						case 'tooltip-schema_social_json':
-							$text = 'Include Website, Organization, and/or Person schema markup in the front page for Google\'s Knowledge Graph. The Website markup includes the site name, alternate site name, site URL and search query URL. Developers can hook the "'.$lca.'_json_ld_search_url" filter to modify the site search URL (or disable its addition by returning false). The Organization markup includes all URLs entered on the '.$this->p->util->get_admin_url( 'social-accounts', 'Website Social Pages and Accounts' ).' settings page. The Person markup includes all contact method URLs from the user\'s profile page.';
+						case 'tooltip-schema_knowledge_graph':
+
+							$settings_page_link = $this->p->util->get_admin_url( 'social-accounts',
+								_x( 'Website Social Pages and Accounts', 'lib file description', 'wpsso' ) );
+
+							$text = 'Include Website, Organization, and/or Person schema markup in the front page for Google\'s Knowledge Graph. The Website markup includes the site name, alternate site name, site URL and search query URL. Developers can hook the "'.$lca.'_json_ld_search_url" filter to modify the site search URL (or disable its addition by returning false). The Organization markup includes all URLs entered on the '.$settings_page_link.' settings page. The Person markup includes all contact method URLs from the user\'s profile page.';
 							break;
 
 						case 'tooltip-schema_alt_name':
@@ -1034,7 +1070,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} else {
 					switch ( $idx ) {
 						case 'tooltip-custom-cm-field-name':
-							$text = '<strong>You should not modify the contact field names unless you have a specific reason to do so.</strong> As an example, to match the contact field name of a theme or other plugin, you might change "gplus" to "googleplus". If you change the Facebook or Google+ field names, please make sure to update the Open Graph <em>Author Profile URL</em> and <em>Google Author Link URL</em> options in the '.$this->p->util->get_admin_url( 'general', 'General Settings' ).' as well.';
+
+							$settings_page_link = $this->p->util->get_admin_url( 'general',
+								_x( 'General Settings', 'lib file description', 'wpsso' ) );
+
+							$text = '<strong>You should not modify the contact field names unless you have a specific reason to do so.</strong> As an example, to match the contact field name of a theme or other plugin, you might change "gplus" to "googleplus". If you change the Facebook or Google+ field names, please make sure to update the Open Graph <em>Author Profile URL</em> and <em>Google Author Link URL</em> options in the '.$settings_page_link.' as well.';
+
 							break;
 
 						case 'tooltip-wp-cm-field-name':
@@ -1073,7 +1114,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 	break;
 	
 						case 'info-meta-validate-w3c':
-							$text = '<p>'.__( 'Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates markup.', 'wpsso' ).'</p>'.( empty( $this->p->options['schema_add_noscript'] ) ? '' : '<p><i>'.sprintf( __( 'When the %1$s option is enabled, the W3C validator will show errors for itemprop attributes in meta elements &mdash; you may ignore these errors or disable the %1$s option.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google', _x( 'Meta Property Containers', 'option label', 'wpsso' ) ) ).'</i></p>' );
+
+							$settings_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google',
+								_x( 'Meta Property Containers', 'option label', 'wpsso' ) );
+
+							$text = '<p>'.__( 'Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates markup.', 'wpsso' ).'</p>'.( empty( $this->p->options['schema_add_noscript'] ) ? '' : '<p><i>'.sprintf( __( 'When the %1$s option is enabled, the W3C validator will show errors for itemprop attributes in meta elements &mdash; you may ignore these errors or disable the %1$s option.', 'wpsso' ), $settings_page_link ).'</i></p>' );
+
 						 	break;
 	
 						case 'info-meta-validate-amp':
@@ -1087,26 +1133,30 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} else {
 					switch ( $idx ) {
 						case 'info-plugin-tid':	// displayed on the Pro Licenses settings page
+
 							$um_info = $this->p->cf['plugin']['wpssoum'];
 	
 							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['short_pro'] ).' ';
 	
 							$text .= __( 'Enter the Authentication ID(s) on this settings page to upgrade the Free version and enable Pro version updates.', 'wpsso' ).' '.sprintf( __( 'The %1$s Free extension must be installed and active in order to check for Pro version updates, and a licensed %2$s plugin is required to use any of its Pro extensions.', 'wpsso' ), $um_info['name'], $info['short_pro'] ).'</blockquote>';
+
 							break;
 	
 						case 'info-plugin-tid-network':	// displayed on the Network Pro Licenses settings page
+
 							$um_info = $this->p->cf['plugin']['wpssoum'];
-							$ext_menu_html = $this->p->util->get_admin_url( 'licenses',
-								_x( 'Extension Plugins and Pro Licenses',
-									'lib file description', 'wpsso' ) );
-	
+
+							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
+								_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' ) );
+
 							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['short_pro'] ).' ';
-	
-							$text .= sprintf( __( 'You may enter the Authentication IDs on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $ext_menu_html ).'</p>';
-							
+
+							$text .= sprintf( __( 'You may enter the Authentication IDs on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
+
 							$text.= '<p>'.__( 'If you enter Authentication IDs on this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; as an example, to license a plugin for 10 sites, you would need an Authentication ID with a 10 license pack.', 'wpsso' ).'</p>';
-	
+
 							$text .= '<p>'.sprintf( __( '<strong>WordPress uses the default site / blog ID to install and update plugins from the Network Admin interface</strong> &mdash; to install Pro version updates from the Network Admin interface, please make sure the %1$s extension is active for the default site and the default site is licensed.', 'wpsso' ), $um_info['short'] ).'</p></blockquote>';
+
 							break;
 	
 						case 'info-cm':
@@ -1118,10 +1168,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 	
 						case 'info-social-accounts':
+							
+							$settings_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google',
+								_x( 'Google / Schema', 'metabox tab', 'wpsso' ) );
+
 							$text = '<blockquote class="top-info"><p>';
 							$text .= sprintf( __( 'The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) <a href="%s">social markup for Google Search</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/social-profile-links' ).' ';
-							$text .= sprintf( __( 'See the %s settings tab to define an organization logo for Google Search results and enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup.', 'wpsso' ), $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google', _x( 'Google / Schema', 'metabox tab', 'wpsso' ) ) );
+							$text .= sprintf( __( 'See the %s settings tab to define an organization logo for Google Search results and enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup.', 'wpsso' ), $settings_page_link );
 							$text .= '</p></blockquote>';
+
 							break;
 	
 						default:
@@ -1210,13 +1265,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$do_once_upscale_notice = true;
 
-							$img_dim_page = $this->p->util->get_admin_url( 'image-dimensions', 
+							$img_dim_page_link = $this->p->util->get_admin_url( 'image-dimensions', 
 								_x( 'Social and Search Image Dimensions', 'lib file description', 'wpsso' ) );
-							$img_dim_enable = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+
+							$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 								_x( 'Enforce Image Dimensions Check', 'option label', 'wpsso' ) );
-							$upscale_enable = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+
+							$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 								_x( 'Allow Upscale of WP Media Images', 'option label', 'wpsso' ) );
-							$upscale_percent = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+
+							$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 								_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
 
 							$text .= '<p style="margin-left:0;"><em>'.
@@ -1224,28 +1282,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									'wpsso' ).'</em></p>';
 
 							$text .= '<ul>';
-
-							$text .= '<li>'.sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.',
-								'wpsso' ), $info['size_label'], $img_dim_page ).'</li>';
+							$text .= '<li>'.sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.', 'wpsso' ), $info['size_label'], $img_dim_page_link ).'</li>';
 
 							if ( empty( $this->p->options['plugin_upscale_images'] ) ) {
-								$text .= '<li>'.sprintf( __( 'Enable the %1$s option.',
-									'wpsso' ), $upscale_enable ).'</li>';
+								$text .= '<li>'.sprintf( __( 'Enable the %1$s option.', 'wpsso' ), $upscale_option_link ).'</li>';
 							}
 
-							$text .= '<li>'.sprintf( __( 'Increase the %1$s option value.',
-								'wpsso' ), $upscale_percent ).'</li>';
-
-							$text .= '<li>'.sprintf( __( 'Disable the %1$s option (not recommended).',
-								'wpsso' ), $img_dim_enable ).'</li>';
+							$text .= '<li>'.sprintf( __( 'Increase the %1$s option value.', 'wpsso' ), $percent_option_link ).'</li>';
+							$text .= '<li>'.sprintf( __( 'Disable the %1$s option (not recommended).', 'wpsso' ), $img_dim_option_link ).'</li>';
 
 							if ( empty( $hidden_warnings ) ) {
-								$text .= '<li>'.sprintf( __( 'Define the %1$s constant as <em>true</em> to auto-hide all dismissable warnings.',
-									'wpsso' ), $hide_const_name ).'</li>';
+								$text .= '<li>'.sprintf( __( 'Define the %1$s constant as <em>true</em> to auto-hide all dismissable warnings.', 'wpsso' ), $hide_const_name ).'</li>';
 							}
-
 							$text .= '</ul>';
 						}
+
 						break;
 
 					case 'notice-missing-og-image':
@@ -1261,76 +1312,97 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 
 					case 'notice-content-filters-disabled':
-						$text = '<p><b>'.sprintf( __( 'The <a href="%1$s">%2$s</a> advanced option is currently disabled.', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ), _x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions, and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['short'] ).'</p><p><b>'.__( 'Some theme / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> '.sprintf( __( '<a href="%s">If you use any shortcodes in your content text, this option should be enabled</a> &mdash; if you experience display issues after enabling this option, determine which theme / plugin content filter is at fault, and report the problem to its author(s).', 'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' ) ).'</p>';
+
+						$settings_page_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' );
+						
+						$filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
+							_x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) );
+
+						$text = '<p><b>'.sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions, and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['short'] ).'</p><p><b>'.__( 'Some theme / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> '.sprintf( __( '<a href="%s">If you use any shortcodes in your content text, this option should be enabled</a> &mdash; if you experience display issues after enabling this option, determine which theme / plugin content filter is at fault, and report the problem to its author(s).', 'wpsso' ), $settings_page_url ).'</p>';
+
 						break;
 
 					case 'notice-header-tmpl-no-head-attr':
+
 						$action_url = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].'-action=modify_tmpl_head_attributes' ),
 							WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
+
 						$text = '<p><b>'.__( 'At least one of your theme header templates does not support Schema markup of the webpage head section &mdash; this is especially important for Google and Pinterest.', 'wpsso' ).'</b> '.sprintf( __( 'The %s element in your header templates should include a function, action, or filter for its attributes.', 'wpsso' ), '<code>&lt;head&gt;</code>' ).' '.sprintf( __( '%1$s can update your header templates automatically to change the default %2$s element to:', 'wpsso' ), $info['short'], '<code>&lt;head&gt;</code>' ).'</p>';
+
 						$text .= '<pre><code>&lt;head &lt;?php do_action( \'add_head_attributes\' ); ?&gt;&gt;</code></pre>';
+
 						$text .= '<p>'.sprintf( __( '<b><a href="%1$s">Click here to update header templates automatically</a></b> or update the templates yourself manually.', 'wpsso' ), $action_url ).'</p>';
+
 						break;
 
 					case 'notice-pro-tid-missing':
-						if ( ! is_multisite() ) {
-							$ext_menu_html = $this->p->util->get_admin_url( 'licenses',
-								_x( 'Extension Plugins and Pro Licenses',
-									'lib file description', 'wpsso' ) );
 
-							$text = '<p><b>'.sprintf( __( 'The %1$s plugin Authentication ID option is empty.', 'wpsso' ), $info['name'] ).'</b><br/>'.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the %s settings page.', 'wpsso' ), $ext_menu_html ).'</p>';
+						if ( ! is_multisite() ) {
+							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
+								_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' ) );
+
+							$text = '<p><b>'.sprintf( __( 'The %1$s plugin Authentication ID option is empty.', 'wpsso' ), $info['name'] ).'</b><br/>'.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the %s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
 						}
+
 						break;
 
 					case 'notice-pro-not-installed':
-						$ext_menu_html = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Extension Plugins and Pro Licenses',
-								'lib file description', 'wpsso' ) );
 
-						$text = sprintf( __( 'An Authentication ID has been provided for %1$s but the plugin has not been installed &mdash; you can install and activate the Pro version from the %2$s settings page.', 'wpsso' ), '<b>'.$info['name'].'</b>', $ext_menu_html ).' ;-)';
+						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
+							_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' ) );
+
+						$text = sprintf( __( 'An Authentication ID has been provided for %1$s but the plugin has not been installed &mdash; you can install and activate the Pro version from the %2$s settings page.', 'wpsso' ), '<b>'.$info['name'].'</b>', $settings_page_link ).' ;-)';
+
 						break;
 
 					case 'notice-pro-not-updated':
-						$ext_menu_html = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Extension Plugins and Pro Licenses',
-								'lib file description', 'wpsso' ) );
 
-						$text = sprintf( __( 'An Authentication ID has been provided for %1$s on the %2$s settings page but the Pro version has not been installed &mdash; don\'t forget to update the current plugin to install the latest Pro version.', 'wpsso' ), '<b>'.$info['name'].'</b>', $ext_menu_html ).' ;-)';
+						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
+							_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' ) );
+
+						$text = sprintf( __( 'An Authentication ID has been provided for %1$s on the %2$s settings page but the Pro version has not been installed &mdash; don\'t forget to update the current plugin to install the latest Pro version.', 'wpsso' ), '<b>'.$info['name'].'</b>', $settings_page_link ).' ;-)';
+
 						break;
 
 					case 'notice-um-extension-required':
 					case 'notice-um-activate-extension':
-						$um_info = $this->p->cf['plugin']['wpssoum'];
-						$ext_menu_html = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Extension Plugins and Pro Licenses',
-								'lib file description', 'wpsso' ) );
-						$plugins_html = '<a href="'.get_admin_url( null, 'plugins.php' ).'">'.
-							__( 'WordPress Plugins', 'wpsso' ).'</a>';
 
-						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the %1$s settings page,<br/>but the %2$s extension is not active.', 'wpsso' ), $ext_menu_html, $um_info['name'] ).'</b> '.sprintf( __( 'This Free plugin is required to update and enable the %1$s plugin and its Pro extensions.', 'wpsso' ), $info['name_pro'] ).'</p><p><b>';
+						$um_info = $this->p->cf['plugin']['wpssoum'];
+						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
+							_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' ) );
+						$plugins_page_link = '<a href="'.get_admin_url( null, 'plugins.php' ).'">'.__( 'Plugins' ).'</a>';
+
+						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the %1$s settings page,<br/>but the %2$s extension is not active.', 'wpsso' ), $settings_page_link, $um_info['name'] ).'</b> '.sprintf( __( 'This Free plugin is required to update and enable the %1$s plugin and its Pro extensions.', 'wpsso' ), $info['name_pro'] ).'</p><p><b>';
 
 						if ( $idx === 'notice-um-extension-required' ) {
 							$text .= sprintf( __( 'Install and activate the %1$s extension from the %2$s settings page.',
-								'wpsso' ), $um_info['short'], $ext_menu_html );
+								'wpsso' ), $um_info['short'], $settings_page_link );
 						} else {
-							$text .= sprintf( __( 'The %1$s extension can be activated from the %2$s settings page.',
-								'wpsso' ), $um_info['short'], $plugins_html );
+							$text .= sprintf( __( 'The %1$s extension can be activated from the WordPress %2$s settings page.',
+								'wpsso' ), $um_info['short'], $plugins_page_link );
 						}
 
 						$text .= '</b> '.sprintf( __( 'Once the %s extension is active, one or more Pro version updates may be available for your licensed plugin(s).', 'wpsso' ), $um_info['short'] ).'</p>';
+
 						break;
 
 					case 'notice-um-version-required':
+
 						$um_info = $this->p->cf['plugin']['wpssoum'];
 						$um_version = isset( $um_info['version'] ) ? $um_info['version'] : 'unknown';
+						$settings_page_link = $this->p->util->get_admin_url( 'um-general',
+							_x( 'Update Manager', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $info['version'], $um_info['short'], $info['min_version'], $um_version ).' ';
 						
-						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress Plugins page, please use the <em>%2$s</em> button on the %3$s settings page to force an immediate refresh of all %4$s update information.', 'wpsso' ), $um_info['name'], _x( 'Check for Updates', 'submit button', 'wpsso' ), $this->p->util->get_admin_url( 'um-general', _x( 'Update Manager', 'lib file description', 'wpsso-um' ) ), $info['short'] );
+						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress Plugins page, please use the <em>%2$s</em> button on the %3$s settings page to force an immediate refresh of all %4$s update information.', 'wpsso' ), $um_info['name'], _x( 'Check for Updates', 'submit button', 'wpsso' ), $settings_page_link, $info['short'] );
+
 						break;
 
 					case 'notice-recommend-version':
+
 						$text = sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.', 'wpsso' ), $info['app_label'], $info['app_version'], $info['version_url'] ).' '.sprintf( __( 'If possible, please update to the latest %1$s stable release (or at least version %2$s).', 'wpsso' ), $info['app_label'], $info['rec_version'] );
+
 						break;
 
 					default:

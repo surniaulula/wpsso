@@ -586,8 +586,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_img_max':
 				case 'og_vid_max':
 				case 'og_desc_hashtags': 
-				case 'plugin_content_img_max':
-				case 'plugin_content_vid_max':
 				case ( preg_match( '/_(cache_exp|filter_prio)$/', $key ) ? true : false ):
 					return 'integer';
 					break;
