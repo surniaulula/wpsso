@@ -97,11 +97,14 @@ img {
   max-width:100%;
 }
 
-img.readme-icon,
-img.readme-example {
+img.readme-icon {
 	display:block;
 	margin-left:auto;
 	margin-right:auto;
+}
+
+img.readme-example {
+	display:none;
 }
 
 header {
