@@ -39,7 +39,13 @@ Providing a specific image for the Pinterest Pin It button, excluding non-releva
 
 WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
 
-**WPSSO offers a *fast* and reliable social framework for developers:**
+**Fast and coded for performance:**
+
+WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching). They load only the PHP library files and object classes needed, keeping the code small, fast, light, and able to support a wide range of 3rd party integration features.
+
+Fully tested and compatible with PHP v7.x (requires PHP v5.3 or better).
+
+**WPSSO provides an easy social framework for developers:**
 
 Offering dozens of 3rd party integration modules in the Pro version, several Free and Pro extensions, and hundreds of filter hooks to easily customize WPSSO's behavior and output.
 
@@ -103,12 +109,6 @@ Offering dozens of 3rd party integration modules in the Pro version, several Fre
 * YouTube Channel URL
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Provides an option to hide the preview of all Pro settings and features.
-
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; *Fast and coded for performance*, WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching).
-
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; WPSSO and its extensions load only the PHP library files and object classes needed, keeping the code small, fast, light, and able to support a wide range of 3rd party integration features.
-
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Fully tested and compatible with PHP v7.x (requires PHP v5.3 or better).
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional (and optional) Free extension for WPSSO:
 

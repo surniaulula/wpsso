@@ -35,7 +35,13 @@
 
 <p>WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
 
-<p><strong>WPSSO offers a <em>fast</em> and reliable social framework for developers:</strong></p>
+<p><strong>Fast and coded for performance:</strong></p>
+
+<p>WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching). They load only the PHP library files and object classes needed, keeping the code small, fast, light, and able to support a wide range of 3rd party integration features.</p>
+
+<p>Fully tested and compatible with PHP v7.x (requires PHP v5.3 or better).</p>
+
+<p><strong>WPSSO provides an easy social framework for developers:</strong></p>
 
 <p>Offering dozens of 3rd party integration modules in the Pro version, several Free and Pro extensions, and hundreds of filter hooks to easily customize WPSSO's behavior and output.</p>
 
@@ -105,12 +111,6 @@
 </ul>
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Provides an option to hide the preview of all Pro settings and features.</p>
-
-<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; <em>Fast and coded for performance</em>, WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching).</p>
-
-<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; WPSSO and its extensions load only the PHP library files and object classes needed, keeping the code small, fast, light, and able to support a wide range of 3rd party integration features.</p>
-
-<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Fully tested and compatible with PHP v7.x (requires PHP v5.3 or better).</p>
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional (and optional) Free extension for WPSSO:</p>
 
