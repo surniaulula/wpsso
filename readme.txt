@@ -45,9 +45,9 @@ WPSSO and its extensions make full use of all available caching techniques (pers
 
 WPSSO and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3 or better required).
 
-**WPSSO provides an easy and flexible social framework for developers:**
+**WPSSO provides an easy social and SEO framework for developers:**
 
-WPSSO offers hundreds of filter hooks, to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions for WPSSO.
+WPSSO offers hundreds of filter hooks, to easily customize WPSSO's behavior and output (meta tags and/or Schema JSON-LD), dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions for WPSSO.
 
 = Quick List of Features =
 
