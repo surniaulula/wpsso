@@ -39,7 +39,7 @@ Providing a specific image for the Pinterest Pin It button, excluding non-releva
 
 WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
 
-**WPSSO is fast and coded for performance:**
+**WPSSO is *fast* and coded for performance:**
 
 WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes needed, keeping the code small, fast, light, and able to support a wide range of 3rd party integration features.
 
@@ -47,7 +47,7 @@ WPSSO is fully tested and compatible with PHP v7.x (requires PHP v5.3 or better)
 
 **WPSSO provides an easy and flexible social framework for developers:**
 
-WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, along with several Free and Pro extensions for WPSSO.
+WPSSO offers hundreds of filter hooks, to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions for WPSSO.
 
 = Quick List of Features =
 
