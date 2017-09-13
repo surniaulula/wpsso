@@ -370,11 +370,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.46.1-dev.2 (2017/09/13)**
+**Version 3.46.1-b.1 (2017/09/13)**
 
 * *New Features*
 	* None
 * *Improvements*
+	* Added the "Check for Embedded Media" option from the Advanced settings page to the General &gt; Open Graph &gt; Videos tab (Pro version).
 	* Removed the default video options for archive and search result pages:
 		* Default / Fallback Video URL
 		* Use Default Video on Archive
@@ -382,6 +383,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
+	* Moved some Schema options from the Google / Schema settings tab to methods the WpssoAdmin class.
 	* Renamed the Advanced settings 'social' tab ID to 'custom_meta'.
 	* Removed the "Maximum Images from Content" option and replaced it with a new WPSSO_CONTENT_IMAGES_MAX_LIMIT constant (defaults to 5).
 	* Removed the "Maximum Videos from Content" option and replaced it with a new WPSSO_CONTENT_VIDEOS_MAX_LIMIT constant (defaults to 5).
@@ -718,7 +720,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.46.1-dev.2 =
+= 3.46.1-b.1 =
 
 (2017/09/13) Removed the default video options for archive and search result pages. Replaced the "Maximum Images from Content" and "Maximum Videos from Content" options by constants.
 
