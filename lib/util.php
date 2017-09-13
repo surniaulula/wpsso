@@ -344,8 +344,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 			$lca = $this->p->cf['lca'];
-			$pts = get_post_types( array( 'public' => true ), $output );
-			return apply_filters( $lca.'_get_post_types', $pts, $output );
+			$ret = array();
+			switch ( $output ) {
+				case 'objects':
+				case 'names':
+					$ret = get_post_types( array( 'public' => true ), $output );
+					break;
+			}
+			return apply_filters( $lca.'_get_post_types', $ret, $output );
 		}
 
 		public function clear_all_cache( $clear_ext = true, $dis_key = false, $dis_time = false ) {

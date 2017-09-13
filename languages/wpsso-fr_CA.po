@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.46.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-09-11 10:28-0400\n"
-"PO-Revision-Date: 2017-09-11 11:14-0400\n"
+"PO-Revision-Date: 2017-09-13 09:31-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3569,7 +3569,7 @@ msgstr "Longueur de description maximale"
 #: lib/submenu/general.php:136
 msgctxt "option label"
 msgid "Add Hashtags to Descriptions"
-msgstr "Ajouter des hashtags aux descriptions"
+msgstr "Ajouter hashtags aux descriptions"
 
 #: lib/submenu/general.php:140
 msgctxt "option comment"
@@ -3579,7 +3579,7 @@ msgstr "noms d'étiquettes"
 #: lib/submenu/general.php:143
 msgctxt "option label"
 msgid "Add Page Title in Tags / Hashtags"
-msgstr "Ajouter le titre de Page au étiquettes"
+msgstr "Ajouter titre de Page au étiquettes"
 
 #: lib/submenu/general.php:148
 msgctxt "option label"
@@ -3642,7 +3642,7 @@ msgstr "caractères ou moins"
 #: lib/submenu/general.php:256
 msgctxt "option label"
 msgid "Author Link URL Field"
-msgstr "Champ URL pour balise Link d'auteur"
+msgstr "Champ URL pour balise Link auteur"
 
 #: lib/submenu/general.php:269
 msgctxt "option comment"
@@ -3662,27 +3662,27 @@ msgstr "Format du nom d'auteur"
 #: lib/submenu/general.php:327
 msgctxt "option label"
 msgid "Item Type for Blog Front Page"
-msgstr "Type d'élément pour page blog d'avant"
+msgstr "Type pour page blog d'avant"
 
 #: lib/submenu/general.php:328
 msgctxt "option label"
 msgid "Item Type for Static Front Page"
-msgstr "Type d'élément pour page statique d'avant"
+msgstr "Type page statique d'avant"
 
 #: lib/submenu/general.php:329
 msgctxt "option label"
 msgid "Item Type for Archive Page"
-msgstr "Type d'élément pour page d'archive"
+msgstr "Type pour page d'archive"
 
 #: lib/submenu/general.php:330
 msgctxt "option label"
 msgid "Item Type for User / Author Page"
-msgstr "Type d'élément pour page d'utilisateur / auteur"
+msgstr "Type pour page utilisateur / auteur"
 
 #: lib/submenu/general.php:331
 msgctxt "option label"
 msgid "Item Type for Search Results Page"
-msgstr "Type d'élément pour page résultats de recherche"
+msgstr "Type pour résultats de recherche"
 
 #: lib/submenu/general.php:345
 msgctxt "option label"

@@ -87,18 +87,34 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$checked = '';
 			}
 
-			$html = ( $disabled ? '' : $this->get_hidden( 'is_checkbox_'.$name, 1, false ) ).'<input type="checkbox"'.
+			$title = _x( 'default is ', 'option value', $this->text_domain ).
+				( $this->in_defaults( $name ) && ! empty( $this->defaults[$name] ) ?
+					_x( 'checked', 'option value', $this->text_domain ) :
+					_x( 'unchecked', 'option value', $this->text_domain ) ).
+				( $disabled ? ' '._x( '(option disabled)', 'option value', $this->text_domain ) : '' );
+
+			$html = ( $disabled ? '' : $this->get_hidden( 'is_checkbox_'.$name, 1, false ) ).
+				'<input type="checkbox"'.
 				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'" value="1"' ).
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
-				( empty( $id ) ? '' : ' id="checkbox_'.esc_attr( $id ).'"' ).$checked.' title="default is '.
-				( $this->in_defaults( $name ) && ! empty( $this->defaults[$name] ) ? 'checked' : 'unchecked' ).
-				( $disabled ? ' '._x( '(option disabled)', 'option value', $this->text_domain ) : '' ).'" />';
+				( empty( $id ) ? '' : ' id="checkbox_'.esc_attr( $id ).'"' ).
+				$checked.' title="'.$title.'" />';
 
 			return $html;
 		}
 
 		public function get_no_checkbox( $name, $class = '', $id = '', $force = null ) {
 			return $this->get_checkbox( $name, $class, $id, true, $force );
+		}
+
+		public function get_nocb_td( $name, $comment = '', $narrow = false ) {
+			return '<td class="'.( $narrow ? 'checkbox ' : '' ).'blank">'.
+				$this->get_nocb_cmt( $name, $comment ).'</td>';
+		}
+
+		public function get_nocb_cmt( $name, $comment = '' ) {
+			return $this->get_checkbox( $name, '', '', true, null ).
+				( empty( $comment ) ? '' : ' '.$comment );
 		}
 
 		public function get_post_type_checkboxes( $name_pre, $class = '', $id = '', $disabled = false, $force = null ) {

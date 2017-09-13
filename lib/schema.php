@@ -518,8 +518,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$schema_types = SucomUtil::array_flatten( $schema_types );
 			$select = array();
 
-			foreach ( $schema_types as $type_id => $label ) {
-				$select[$type_id] = $type_id.' | '.$label;
+			foreach ( $schema_types as $type_id => $type_url ) {
+				$type_url = preg_replace( '/^.*\/\//', '', $type_url );
+				$select[$type_id] = $type_id.' | '.$type_url;
 			}
 
 			if ( defined( 'SORT_NATURAL' ) ) {

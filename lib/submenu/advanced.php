@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			switch ( $metabox_id.'-'.$key ) {
 				case 'plugin-settings':
 
-					$this->add_essential_advanced_table_rows( $table_rows, $this->form );
+					$this->add_essential_advanced_table_rows( $table_rows );
 
 					break;
 			}

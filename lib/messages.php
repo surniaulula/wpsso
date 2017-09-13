@@ -858,11 +858,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'social-accounts',
 								_x( 'Website Social Pages and Accounts', 'lib file description', 'wpsso' ) );
 
-							$text = 'Include Website, Organization, and/or Person schema markup in the front page for Google\'s Knowledge Graph. The Website markup includes the site name, alternate site name, site URL and search query URL. Developers can hook the "'.$lca.'_json_ld_search_url" filter to modify the site search URL (or disable its addition by returning false). The Organization markup includes all URLs entered on the '.$settings_page_link.' settings page. The Person markup includes all contact method URLs from the user\'s profile page.';
+							$text = __( 'Include Website, Organization, and/or Person Schema markup in the front page for Google\'s Knowledge Graph.', 'wpsso' ).' '.__( 'The Website markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' '.sprintf( __( 'Developers can hook the "%s" filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $lca.'_json_ld_search_url' ).' '.sprintf( __( 'The Organization markup includes all URLs entered on the %s settings page.', 'wpsso' ), $settings_page_link ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
+							break;
+
+						case 'tooltip-schema_person_id':
+							$text = __( 'Select a site owner for the optional Person markup included in the front page.', 'wpsso' ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
 							break;
 
 						case 'tooltip-schema_alt_name':
-							$text = 'An alternate name for your Website that you want Google to consider (optional).';
+							$text = __( 'An alternate name for your Website that you want Google to consider (optional).', 'wpsso' );
 							break;
 
 						case 'tooltip-schema_logo_url':

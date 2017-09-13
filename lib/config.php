@@ -1250,6 +1250,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'no_videos' => '(no videos)',
 					'settings' => '(settings value)',
 					'disabled' => '(option disabled)',
+					'default_is' => 'default is',
+					'checked' => 'checked',
+					'unchecked' => 'unchecked',
 				),
 				'script_locations' => array(
 					'none' => '[None]',

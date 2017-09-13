@@ -47,26 +47,26 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows[] = $form->get_th_html( _x( 'Use Filtered (SEO) Title',
 				'option label', 'wpsso' ), '', 'plugin_filter_title' ).
-			$this->get_nocb_td( $form, 'plugin_filter_title' );
+			$form->get_nocb_td( 'plugin_filter_title' );
 
 			$table_rows[] = $form->get_th_html( _x( 'Apply WordPress Content Filters',
 				'option label', 'wpsso' ), '', 'plugin_filter_content' ).
-			$this->get_nocb_td( $form, 'plugin_filter_content' );
+			$form->get_nocb_td( 'plugin_filter_content' );
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Apply WordPress Excerpt Filters',
 				'option label', 'wpsso' ), '', 'plugin_filter_excerpt' ).
-			$this->get_nocb_td( $form, 'plugin_filter_excerpt' );
+			$form->get_nocb_td( 'plugin_filter_excerpt' );
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Content Starts at 1st Paragraph',
 				'option label', 'wpsso' ), '', 'plugin_p_strip' ).
-			$this->get_nocb_td( $form, 'plugin_p_strip' );
+			$form->get_nocb_td( 'plugin_p_strip' );
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Use Image Alt if No Content',
 				'option label', 'wpsso' ), '', 'plugin_use_img_alt' ).
-			$this->get_nocb_td( $form, 'plugin_use_img_alt' );
+			$form->get_nocb_td( 'plugin_use_img_alt' );
 
 			$table_rows['plugin_img_alt_prefix'] = $form->get_th_html( _x( 'Image Alt Text Prefix',
 				'option label', 'wpsso' ), '', 'plugin_img_alt_prefix', array( 'is_locale' => true ) ).
@@ -76,19 +76,19 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), '', 'plugin_p_cap_prefix', array( 'is_locale' => true ) ).
 			'<td class="blank">'.SucomUtil::get_locale_opt( 'plugin_p_cap_prefix', $this->p->options ).'</td>';
 
-			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Check for Videos in Content',
+			$table_rows['plugin_embedded_media'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Check for Embedded Media',
 				'option label', 'wpsso' ), '', 'plugin_embedded_media' ).
 			'<td class="blank">'.
-			'<p>'.$this->get_nocb( $form, 'plugin_facebook_api' ).' '.
+			'<p>'.$form->get_nocb_cmt( 'plugin_facebook_api' ).' '.
 				_x( 'Facebook Videos', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$this->get_nocb( $form, 'plugin_slideshare_api' ).' '.
+			'<p>'.$form->get_nocb_cmt( 'plugin_slideshare_api' ).' '.
 				_x( 'Slideshare Presentations', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$this->get_nocb( $form, 'plugin_vimeo_api' ).' '.
+			'<p>'.$form->get_nocb_cmt( 'plugin_vimeo_api' ).' '.
 				_x( 'Vimeo Videos', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$this->get_nocb( $form, 'plugin_wistia_api' ).' '.
+			'<p>'.$form->get_nocb_cmt( 'plugin_wistia_api' ).' '.
 				_x( 'Wistia Videos', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$this->get_nocb( $form, 'plugin_youtube_api' ).' '.
+			'<p>'.$form->get_nocb_cmt( 'plugin_youtube_api' ).' '.
 				_x( 'YouTube Videos and Playlists', 'option value', 'wpsso' ).'</p>'.
 			'</td>';
 
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_honor_force_ssl'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Honor the FORCE_SSL Constant',
 				'option label', 'wpsso' ), '', 'plugin_honor_force_ssl' ).
-			$this->get_nocb_td( $form, 'plugin_honor_force_ssl' );
+			$form->get_nocb_td( 'plugin_honor_force_ssl' );
 
 			$table_rows['plugin_html_attr_filter'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook',
@@ -123,26 +123,26 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows['plugin_check_head'] = $form->get_th_html( _x( 'Check for Duplicate Meta Tags',
 				'option label', 'wpsso' ), '', 'plugin_check_head' ).
-			$this->get_nocb_td( $form, 'plugin_check_head' );
+			$form->get_nocb_td( 'plugin_check_head' );
 
 			$table_rows['plugin_filter_lang'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Use WP Locale for Language',
 				'option label', 'wpsso' ), '', 'plugin_filter_lang' ).
-			$this->get_nocb_td( $form, 'plugin_filter_lang' );
+			$form->get_nocb_td( 'plugin_filter_lang' );
 
 			$table_rows['plugin_create_wp_sizes'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Create Missing WP Media Sizes',
 				'option label', 'wpsso' ), '', 'plugin_create_wp_sizes' ).
-			$this->get_nocb_td( $form, 'plugin_create_wp_sizes' );
+			$form->get_nocb_td( 'plugin_create_wp_sizes' );
 
 			$table_rows['plugin_check_img_dims'] = $form->get_th_html( _x( 'Enforce Image Dimensions Check',
 				'option label', 'wpsso' ), '', 'plugin_check_img_dims' ).
-			$this->get_nocb_td( $form, 'plugin_check_img_dims',
+			$form->get_nocb_td( 'plugin_check_img_dims',
 				'<em>'._x( 'recommended', 'option comment', 'wpsso' ).'</em>' );
 
 			$table_rows['plugin_upscale_images'] = $form->get_th_html( _x( 'Allow Upscale of WP Media Images',
 				'option label', 'wpsso' ), '', 'plugin_upscale_images' ).
-			$this->get_nocb_td( $form, 'plugin_upscale_images' ).'</td>';
+			$form->get_nocb_td( 'plugin_upscale_images' );
 
 			$table_rows['plugin_upscale_img_max'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Maximum Image Upscale Percent',
@@ -151,11 +151,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows[] = $form->get_th_html( _x( 'Enable WP Excerpt for Pages',
 				'option label', 'wpsso' ), '', 'plugin_page_excerpt' ).
-			$this->get_nocb_td( $form, 'plugin_page_excerpt' );
+			$form->get_nocb_td( 'plugin_page_excerpt' );
 
 			$table_rows[] = $form->get_th_html( _x( 'Enable WP Tags for Pages',
 				'option label', 'wpsso' ), '', 'plugin_page_tags' ).
-			$this->get_nocb_td( $form, 'plugin_page_tags' );
+			$form->get_nocb_td( 'plugin_page_tags' );
 
 			return $table_rows;
 		}
@@ -188,8 +188,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			) as $mod_name => $mod_label ) {
 				$cols .= '<tr>';
 				foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
-					$cols .= '<td class="checkbox blank">'.$this->get_nocb( $form,
-						'plugin_'.$col_idx.'_col_'.$mod_name ).'</td>';
+					$cols .= $form->get_nocb_td( 'plugin_'.$col_idx.'_col_'.$mod_name, '', true );
 				}
 				$cols .= '<td><p>'.$mod_label.'</p></td></tr>'."\n";
 			}
@@ -204,9 +203,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			 * Include Custom Meta Metabox
 			 */
 			$add_to_checkboxes = $form->get_post_type_checkboxes( 'plugin_add_to', '', '', true );
-			$add_to_checkboxes .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_term' ).	// add term checbox
+			$add_to_checkboxes .= '<p>'.$form->get_nocb_cmt( 'plugin_add_to_term' ).	// add term checbox
 				' '.__( 'Terms (Categories and Tags)', 'wpsso' ).'</p>';
-			$add_to_checkboxes .= '<p>'.$this->get_nocb( $form, 'plugin_add_to_user' ).	// add user checkbox
+			$add_to_checkboxes .= '<p>'.$form->get_nocb_cmt( 'plugin_add_to_user' ).	// add user checkbox
 				' '.__( 'User Profile', 'wpsso' ).'</p>';
 
 			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' );
@@ -219,7 +218,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_wpseo_social_meta'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Read Yoast SEO Social Meta',
 				'option label', 'wpsso' ), '', 'plugin_wpseo_social_meta' ).
-			'<td class="blank">'.$this->get_nocb( $form, 'plugin_wpseo_social_meta' ).'</td>';
+			$form->get_nocb_td( 'plugin_wpseo_social_meta' );
 
 			$table_rows['plugin_product_currency'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Default Product Currency',
@@ -237,8 +236,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 						$this->p->options[$cf_idx] = '';
 
 					$table_rows[$cf_idx] = '<tr class="hide_in_basic">'.
-					$form->get_th_html( _x( $label,
-						'option label', 'wpsso' ), '', $cf_idx ).
+					$form->get_th_html( _x( $label, 'option label', 'wpsso' ), '', $cf_idx ).
 					'<td class="blank">'.$form->get_no_input( $cf_idx ).'</td>';
 				}
 			}
@@ -298,23 +296,23 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_show_purge_count'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Show Cache Purge Count on Update',
 				'option label', 'wpsso' ), '', 'plugin_show_purge_count' ).
-			$this->get_nocb_td( $form, 'plugin_show_purge_count' ).
+			$form->get_nocb_td( 'plugin_show_purge_count' ).
 			WpssoAdmin::get_option_site_use( 'plugin_show_purge_count', $form, $network );
 
 			$table_rows['plugin_clear_on_save'] = $form->get_th_html( _x( 'Clear All Cache on Save Settings',
 				'option label', 'wpsso' ), '', 'plugin_clear_on_save' ).
-			$this->get_nocb_td( $form, 'plugin_clear_on_save' ).
+			$form->get_nocb_td( 'plugin_clear_on_save' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_save', $form, $network );
 
 			$table_rows['plugin_clear_short_urls'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Clear Short URLs on Clear All Cache',
 				'option label', 'wpsso' ), '', 'plugin_clear_short_urls' ).
-			$this->get_nocb_td( $form, 'plugin_clear_short_urls' ).
+			$form->get_nocb_td( 'plugin_clear_short_urls' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_short_urls', $form, $network );
 
 			$table_rows['plugin_clear_for_comment'] = $form->get_th_html( _x( 'Clear Post Cache for New Comment',
 				'option label', 'wpsso' ), '', 'plugin_clear_for_comment' ).
-			$this->get_nocb_td( $form, 'plugin_clear_for_comment' ).
+			$form->get_nocb_td( 'plugin_clear_for_comment' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
 
 			return $table_rows;
@@ -341,7 +339,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows['plugin_shortlink'] = $form->get_th_html( _x( 'Use Shortened URL for WP Shortlink',
 				'option label', 'wpsso' ), '', 'plugin_shortlink' ).
-			$this->get_nocb_td( $form, 'plugin_shortlink' );
+			$form->get_nocb_td( 'plugin_shortlink' );
 
 			$table_rows['subsection_plugin_bitly'] = '<tr class="hide_in_basic">'.
 				'<td></td><td class="subsection"><h4>'.
@@ -418,6 +416,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		}
 
 		public function filter_cm_custom_rows( $table_rows, $form ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
@@ -456,12 +455,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 					$label = empty( $this->p->cf['*']['lib']['website'][$id] ) ?
 						ucfirst( $id ) : $this->p->cf['*']['lib']['website'][$id];
 
-					if  ( $label === 'Googleplus' || $label === 'Gplus' ) {
+					$label_lc = strtolower( $label );
+
+					if  ( $label_lc === 'googleplus' || $label_lc === 'gplus' ) {
 						$label = 'Google+';
 					}
 
 					$table_rows[] = $tr.$form->get_th_html( $label, 'medium' ).
-					'<td class="checkbox blank">'.$this->get_nocb( $form, $cm_cb ).'</td>'.
+					$form->get_nocb_td( $cm_cb, '', true ).
 					'<td class="blank">'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
 					'<td class="blank">'.$form->get_no_input( $cm_label ).'</td>';
 				}
@@ -493,7 +494,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 				if ( isset( $this->p->options[$cm_cb] ) ) {
 					$table_rows[] = $form->get_th_html( $label, 'medium' ).
-					'<td class="checkbox blank">'.$this->get_nocb( $form, $cm_cb ).'</td>'.
+					'<td class="checkbox blank">'.$form->get_nocb_cmt( $cm_cb ).'</td>'.
 					'<td>'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
 					'<td class="blank">'.$form->get_no_input( $cm_label ).'</td>';
 				}
@@ -545,43 +546,31 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		private function get_taglist_rows( $table_rows, $form, $network, array $opt_preg_include ) {
 			$table_cells = array();
 			foreach ( $opt_preg_include as $preg ) {
-				foreach ( $form->defaults as $opt => $val ) {
+				foreach ( $form->defaults as $opt_key => $opt_val ) {
 
-					if ( strpos( $opt, 'add_' ) !== 0 ) {	// optimize
+					if ( strpos( $opt_key, 'add_' ) !== 0 ) {	// optimize
 						continue;
-					} elseif ( isset( $this->taglist_opts[$opt] ) ) {	// check cache for tags already shown
+					} elseif ( isset( $this->taglist_opts[$opt_key] ) ) {	// check cache for tags already shown
 						continue;
-					} elseif ( ! preg_match( $preg, $opt, $match ) ) {	// check option name for a match
+					} elseif ( ! preg_match( $preg, $opt_key, $match ) ) {	// check option name for a match
 						continue;
 					}
 
 					$highlight = '';
-					$this->taglist_opts[$opt] = $val;
-					switch ( $opt ) {
+					$this->taglist_opts[$opt_key] = $opt_val;
+					switch ( $opt_key ) {
 						// disabled with a constant instead
 						case 'add_meta_name_generator':
 							continue 2;
 					}
 					$table_cells[] = '<!-- '.( implode( ' ', $match ) ).' -->'.	// required for sorting
-						'<td class="checkbox blank">'.$this->get_nocb( $form, $opt ).'</td>'.
+						'<td class="checkbox blank">'.$form->get_nocb_cmt( $opt_key ).'</td>'.
 						'<td class="xshort'.$highlight.'">'.$match[1].'</td>'.
 						'<td class="taglist'.$highlight.'">'.$match[2].'</td>'.
 						'<th class="taglist'.$highlight.'">'.$match[3].'</th>';
 				}
 			}
 			return array_merge( $table_rows, SucomUtil::get_column_rows( $table_cells, 2 ) );
-		}
-
-		private function get_nocb_td( $form, $name, $comment = '' ) {
-			return '<td class="blank">'.$this->get_nocb( $form, $name, $comment ).'</td>';
-		}
-
-		private function get_nocb( $form, $name, $comment = '' ) {
-			$checked = empty( $form->options[$name] ) ? '' : ' checked="checked"';
-			$default = empty( $form->defaults[$name] ) ? 'unchecked' : 'checked';
-			return '<input type="checkbox" disabled="disabled"'.
-				$checked.' title="default is '.$default.'" />'.
-					( empty( $comment ) ? '' : ' '.$comment );
 		}
 	}
 }

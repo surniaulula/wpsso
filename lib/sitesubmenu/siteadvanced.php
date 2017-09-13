@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 			switch ( $metabox_id.'-'.$key ) {
 				case 'plugin-settings':
 
-					$this->add_essential_advanced_table_rows( $table_rows, $this->form, true );	// $network = true
+					$this->add_essential_advanced_table_rows( $table_rows, true );	// $network = true
 
 					break;
 			}

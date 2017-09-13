@@ -122,10 +122,13 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						sprintf( __( 'Include <a href="%s">Organization Social Profile</a>',
 							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
 					'<p>'.$this->form->get_checkbox( 'schema_person_json' ).' '.
-						sprintf( __( 'Include <a href="%s">Person Social Profile</a> for Site Owner',
-							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).' '.
-								$this->form->get_select( 'schema_person_id', $users, null, null, true ).'</p>'.
+						sprintf( __( 'Include <a href="%s">Person Social Profile</a> for the Site Owner',
+							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
 					'</td>';
+
+					$table_rows['schema_person_id'] = $this->form->get_th_html( _x( 'Site Owner for Social Profile',
+						'option label', 'wpsso' ), '', 'schema_person_id' ).
+					'<td>'.$this->form->get_select( 'schema_person_id', $users, '', '', true ).'</td>';
 
 					$table_rows['schema_logo_url'] = $this->form->get_th_html(
 						'<a href="https://developers.google.com/structured-data/customize/logos">'.
@@ -155,7 +158,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 				case 'essential-advanced':
 
-					$this->add_essential_advanced_table_rows( $table_rows, $this->form );
+					$this->add_essential_advanced_table_rows( $table_rows );
 
 					unset ( $table_rows['plugin_shortcodes'] );
 					unset ( $table_rows['plugin_widgets'] );
