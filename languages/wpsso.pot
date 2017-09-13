@@ -2571,9 +2571,9 @@ msgstr ""
 
 #: lib/messages.php:628
 msgid ""
-"Upscaled images do not look as sharp or clear when upscaled, and if enlarged "
-"too much, images will look fuzzy and unappealing &mdash; not something you "
-"want to promote on social and search sites."
+"Upscaled images do not look as sharp or clear, and if enlarged too much, "
+"will look fuzzy and unappealing &mdash; not something you want to promote on "
+"social and search sites."
 msgstr ""
 
 #: lib/messages.php:628

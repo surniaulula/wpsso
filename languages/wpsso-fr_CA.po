@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.46.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-13 12:30-0400\n"
-"PO-Revision-Date: 2017-09-13 12:37-0400\n"
+"POT-Creation-Date: 2017-09-13 13:09-0400\n"
+"PO-Revision-Date: 2017-09-13 13:10-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2306,10 +2306,10 @@ msgstr "<strong>L'activation de cette option est fortement recommandée</strong>
 
 #: lib/messages.php:628
 msgid "WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals."
-msgstr ""
+msgstr "WordPress n'agrandit pas les images &mdash; WordPress ne peut créer que des images plus petites à partir d'originaux plus grands."
 
 #: lib/messages.php:628
-msgid "Upscaled images do not look as sharp or clear when upscaled, and if enlarged too much, images will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites."
+msgid "Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites."
 msgstr ""
 
 #: lib/messages.php:628
