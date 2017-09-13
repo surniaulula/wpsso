@@ -637,9 +637,9 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:90
+#: lib/com/form.php:90 lib/config-gettext-extract.php:16
 msgctxt "option value"
-msgid "default is "
+msgid "default is %s"
 msgstr ""
 
 #: lib/com/form.php:92 lib/config-gettext-extract.php:13
@@ -784,11 +784,6 @@ msgstr ""
 #: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "Damaged"
-msgstr ""
-
-#: lib/config-gettext-extract.php:16
-msgctxt "option value"
-msgid "default is"
 msgstr ""
 
 #: lib/config-gettext-extract.php:18

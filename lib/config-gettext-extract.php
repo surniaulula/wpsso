@@ -13,7 +13,7 @@ _x( 'Center', 'option value', 'wpsso' );
 _x( 'checked', 'option value', 'wpsso' );
 _x( '<color>Plugin Setup Guide and Other Notes</color>', 'lib file description', 'wpsso' );
 _x( 'Damaged', 'option value', 'wpsso' );
-_x( 'default is', 'option value', 'wpsso' );
+_x( 'default is %s', 'option value', 'wpsso' );
 _x( '(default)', 'option value', 'wpsso' );
 _x( 'Development and Up', 'option value', 'wpsso' );
 _x( 'Discontinued', 'option value', 'wpsso' );
