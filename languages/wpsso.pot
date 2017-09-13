@@ -1352,38 +1352,38 @@ msgctxt "option label"
 msgid "WP Caption Prefix"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:80 lib/gpl/admin/general.php:81
-#: lib/pro/admin/advanced.php:84 lib/pro/admin/general.php:83
+#: lib/gpl/admin/advanced.php:80 lib/gpl/admin/general.php:82
+#: lib/pro/admin/advanced.php:84 lib/pro/admin/general.php:84
 msgctxt "option label"
 msgid "Check for Embedded Media"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:84 lib/gpl/admin/general.php:85
-#: lib/pro/admin/advanced.php:88 lib/pro/admin/general.php:87
+#: lib/gpl/admin/advanced.php:84 lib/gpl/admin/general.php:86
+#: lib/pro/admin/advanced.php:88 lib/pro/admin/general.php:88
 msgctxt "option value"
 msgid "Facebook Videos"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:86 lib/gpl/admin/general.php:87
-#: lib/pro/admin/advanced.php:90 lib/pro/admin/general.php:89
+#: lib/gpl/admin/advanced.php:86 lib/gpl/admin/general.php:88
+#: lib/pro/admin/advanced.php:90 lib/pro/admin/general.php:90
 msgctxt "option value"
 msgid "Slideshare Presentations"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:88 lib/gpl/admin/general.php:89
-#: lib/pro/admin/advanced.php:92 lib/pro/admin/general.php:91
+#: lib/gpl/admin/advanced.php:88 lib/gpl/admin/general.php:90
+#: lib/pro/admin/advanced.php:92 lib/pro/admin/general.php:92
 msgctxt "option value"
 msgid "Vimeo Videos"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:90 lib/gpl/admin/general.php:91
-#: lib/pro/admin/advanced.php:94 lib/pro/admin/general.php:93
+#: lib/gpl/admin/advanced.php:90 lib/gpl/admin/general.php:92
+#: lib/pro/admin/advanced.php:94 lib/pro/admin/general.php:94
 msgctxt "option value"
 msgid "Wistia Videos"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:92 lib/gpl/admin/general.php:93
-#: lib/pro/admin/advanced.php:96 lib/pro/admin/general.php:95
+#: lib/gpl/admin/advanced.php:92 lib/gpl/admin/general.php:94
+#: lib/pro/admin/advanced.php:96 lib/pro/admin/general.php:96
 msgctxt "option value"
 msgid "YouTube Videos and Playlists"
 msgstr ""
@@ -1685,37 +1685,37 @@ msgid ""
 "Video discovery and integration modules are provided with the Pro version."
 msgstr ""
 
-#: lib/gpl/admin/general.php:52 lib/pro/admin/general.php:53
+#: lib/gpl/admin/general.php:53 lib/pro/admin/general.php:54
 msgctxt "option label"
 msgid "Maximum Videos to Include"
 msgstr ""
 
-#: lib/gpl/admin/general.php:57 lib/pro/admin/general.php:59
+#: lib/gpl/admin/general.php:58 lib/pro/admin/general.php:60
 msgctxt "option label"
 msgid "Use HTTPS for Video API Requests"
 msgstr ""
 
-#: lib/gpl/admin/general.php:60 lib/pro/admin/general.php:62
+#: lib/gpl/admin/general.php:61 lib/pro/admin/general.php:63
 msgctxt "option comment"
 msgid "uses %s"
 msgstr ""
 
-#: lib/gpl/admin/general.php:63 lib/pro/admin/general.php:65
+#: lib/gpl/admin/general.php:64 lib/pro/admin/general.php:66
 msgctxt "option label"
 msgid "Include Video Preview Images"
 msgstr ""
 
-#: lib/gpl/admin/general.php:66 lib/pro/admin/general.php:68
+#: lib/gpl/admin/general.php:67 lib/pro/admin/general.php:69
 msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr ""
 
-#: lib/gpl/admin/general.php:69 lib/pro/admin/general.php:71
+#: lib/gpl/admin/general.php:70 lib/pro/admin/general.php:72
 msgctxt "option label"
 msgid "Include text/html Type Meta Tags"
 msgstr ""
 
-#: lib/gpl/admin/general.php:73 lib/pro/admin/general.php:75
+#: lib/gpl/admin/general.php:74 lib/pro/admin/general.php:76
 msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""

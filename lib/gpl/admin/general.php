@@ -49,7 +49,8 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 					'wpsso' ).'</p>'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$table_rows['og_vid_max'] = $form->get_th_html( _x( 'Maximum Videos to Include',
+			$table_rows['og_vid_max'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Maximum Videos to Include',
 				'option label', 'wpsso' ), null, 'og_vid_max' ).
 			'<td class="blank">'.$this->p->options['og_vid_max'].'</td>';
 
