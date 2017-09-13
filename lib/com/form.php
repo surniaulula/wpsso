@@ -119,7 +119,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_post_type_checkboxes( $name_pre, $class = '', $id = '', $disabled = false, $force = null ) {
 			$checkboxes = '';
-			foreach ( $this->p->util->get_post_types( 'object' ) as $pt ) {
+			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
 				$checkboxes .= '<p>'.$this->get_checkbox( $name_pre.'_'.$pt->name, $class, $id, $disabled, $force ).
 					' '.$pt->label.( empty( $pt->description ) ? '' : ' ('.$pt->description.')' ).'</p>';
 			}

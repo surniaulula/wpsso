@@ -346,8 +346,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$lca = $this->p->cf['lca'];
 			$ret = array();
 			switch ( $output ) {
-				case 'objects':
+				// make sure the output name is plural
+				case 'name':
+				case 'object':
+					$output = $output.'s';
+					// no break;
 				case 'names':
+				case 'objects':
 					$ret = get_post_types( array( 'public' => true ), $output );
 					break;
 			}

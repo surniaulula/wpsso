@@ -2037,7 +2037,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$select_by_ptn = '';
-			foreach ( $this->p->util->get_post_types( 'object' ) as $pt ) {
+			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
 				$select_by_ptn .= '<p>'.$this->form->get_select( 'schema_type_for_'.$pt->name,
 					$schema_types, 'schema_type' ).' for '.$pt->label.'</p>'."\n";
 			}
