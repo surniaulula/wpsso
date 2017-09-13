@@ -370,12 +370,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = Changelog / Release Notes =
 
-**Version 3.46.1-dev.1 (2017/09/11)**
+**Version 3.46.1-dev.2 (2017/09/13)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Removed the default video options for archive and search result pages:
+		* Default / Fallback Video URL
+		* Use Default Video on Archive
+		* Use Default Video on Search Results
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -715,9 +718,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.46.1-dev.1 =
+= 3.46.1-dev.2 =
 
-(2017/09/11) Replaced the "Maximum Images from Content" and "Maximum Videos from Content" options by constants.
+(2017/09/13) Removed the default video options for archive and search result pages. Replaced the "Maximum Images from Content" and "Maximum Videos from Content" options by constants.
 
 = 3.46.0 =
 
