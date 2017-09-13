@@ -25,8 +25,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.46.1-dev.1',		// plugin version
-					'opt_version' => '541',		// increment when changing default options
+					'version' => '3.46.1-dev.2',		// plugin version
+					'opt_version' => '542',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
 					'desc' => 'Automatically generate complete and accurate meta tags and Schema markup from your content for social media optimization (SMO) and SEO.',
@@ -628,9 +628,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_def_img_url' => '',
 					'og_def_img_on_index' => 1,
 					'og_def_img_on_search' => 0,
-					'og_def_vid_url' => '',
-					'og_def_vid_on_index' => 1,
-					'og_def_vid_on_search' => 0,
 					'og_ngg_tags' => 0,
 					'og_page_parent_tags' => 0,
 					'og_page_title_tag' => 0,
@@ -862,11 +859,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_img_alt_prefix' => 'Image:',		// Image Alt Text Prefix
 					'plugin_p_cap_prefix' => 'Caption:',		// WP Caption Prefix
 					'plugin_gravatar_api' => 1,			// Include Author Gravatar Image
-					'plugin_facebook_api' => 1,			// Check for Embedded Media: Facebook
-					'plugin_slideshare_api' => 1,			// Check for Embedded Media: Slideshare
-					'plugin_vimeo_api' => 1,			// Check for Embedded Media: Vimeo
-					'plugin_wistia_api' => 1,			// Check for Embedded Media: Wistia
-					'plugin_youtube_api' => 1,			// Check for Embedded Media: Youtube
+					'plugin_facebook_api' => 1,			// Check for Videos in Content: Facebook
+					'plugin_slideshare_api' => 1,			// Check for Videos in Content: Slideshare
+					'plugin_vimeo_api' => 1,			// Check for Videos in Content: Vimeo
+					'plugin_wistia_api' => 1,			// Check for Videos in Content: Wistia
+					'plugin_youtube_api' => 1,			// Check for Videos in Content: Youtube
 					// Integration Tab
 					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
 					'plugin_html_attr_filter_name' => 'language_attributes',

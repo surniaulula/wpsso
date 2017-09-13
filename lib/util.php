@@ -1073,39 +1073,40 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $this->force_default( 'img', $mod, $opt_pre );
 		}
 
-		// returns true if the default video is forced
-		public function force_default_video( array &$mod, $opt_pre = 'og' ) {
-			return $this->force_default( 'vid', $mod, $opt_pre );
-		}
-
 		// $type = author | img | vid
 		public function force_default( $type, array &$mod, $opt_pre = 'og') {
+
 			$lca = $this->p->cf['lca'];
 			$def = array();
 
 			// setup default true / false values
-			foreach ( array( 'id', 'url', 'on_index', 'on_search' ) as $key )
-				$def[$key] = apply_filters( $lca.'_'.$opt_pre.'_default_'.$type.'_'.$key, 
-					( isset( $this->p->options[$opt_pre.'_def_'.$type.'_'.$key] ) ? 
-						$this->p->options[$opt_pre.'_def_'.$type.'_'.$key] : null ) );
+			foreach ( array( 'id', 'url', 'on_index', 'on_search' ) as $key ) {
 
-			if ( empty( $def['id'] ) && empty( $def['url'] ) )	// save time - if no default media, then return false
+				$opt_key = $opt_pre.'_def_'.$type.'_'.$key;
+				$def_val = isset( $this->p->options[$opt_key] ) ? $this->p->options[$opt_key] : null;
+				$def[$key] = apply_filters( $lca.'_'.$opt_pre.'_default_'.$type.'_'.$key, $def_val );
+			}
+
+			if ( empty( $def['id'] ) && empty( $def['url'] ) ) {	// save time - if no default media, then return false
 				$ret = false;
-			elseif ( $mod['is_post'] )				// check for singular pages first
+			} elseif ( $mod['is_post'] ) {				// check for singular pages first
 				$ret = false;
-			elseif ( $mod['is_user'] )				// check for user pages first
+			} elseif ( $mod['is_user'] ) {				// check for user pages first
 				$ret = false;
-			elseif ( ! empty( $def['on_index'] ) && ( $mod['is_home_index'] || $mod['is_term'] || SucomUtil::is_archive_page() ) )
+			} elseif ( ! empty( $def['on_index'] ) && ( $mod['is_home_index'] || $mod['is_term'] || SucomUtil::is_archive_page() ) ) {
 				$ret = true;
-			elseif ( ! empty( $def['on_search'] ) && is_search() )
+			} elseif ( ! empty( $def['on_search'] ) && is_search() ) {
 				$ret = true;
-			else $ret = false;
+			} else {
+				$ret = false;
+			}
 
 			// 'wpsso_force_default_img' is hooked by the woocommerce module (false for product category and tag pages)
 			$ret = apply_filters( $this->p->cf['lca'].'_force_default_'.$type, $ret, $mod, $opt_pre );
 
-			if ( $ret && $this->p->debug->enabled )
+			if ( $ret && $this->p->debug->enabled ) {
 				$this->p->debug->log( 'default '.$type.' is forced' );
+			}
 
 			return $ret;
 		}

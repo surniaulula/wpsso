@@ -573,17 +573,20 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						if ( SucomUtil::is_assoc( $dd_val ) ) {
 
 							// prevent duplicates - ignore images from text/html video
-							if ( isset( $dd_val['og:video:type'] ) &&
-								$dd_val['og:video:type'] === 'text/html' ) {
+							if ( isset( $dd_val['og:video:type'] ) && $dd_val['og:video:type'] === 'text/html' ) {
 
 								// skip if text/html video markup is disabled
-								if ( empty( $this->p->options['og_vid_html_type'] ) )
+								if ( empty( $this->p->options['og_vid_html_type'] ) ) {
 									continue;
+								}
 
 								unset( $dd_val['og:video:embed_url'] );	// redundant - just in case
+
 								$ignore_images = true;
 
-							} else $ignore_images = false;
+							} else {
+								$ignore_images = false;
+							}
 
 							foreach ( $dd_val as $ddd_name => $ddd_val ) {	// third dimension array (associative)
 

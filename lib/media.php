@@ -845,36 +845,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_image;
 		}
 
-		public function get_default_video( $num = 0, $check_dupes = true ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_args( array(
-					'num' => $num,
-					'check_dupes' => $check_dupes,
-				) );
-			}
-			$og_ret = array();
-
-			$embed_url = empty( $this->p->options['og_def_vid_url'] ) ?
-				'' : $this->p->options['og_def_vid_url'];
-
-			if ( ! empty( $embed_url ) &&
-				( $check_dupes == false || $this->p->util->is_uniq_url( $embed_url, 'video' ) ) ) {	// $context = 'video'
-
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'using default video url = '.$embed_url );
-
-				// fallback to video url if necessary
-				$og_video = $this->get_video_info( $embed_url, 
-					WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, $check_dupes, true );	// $fallback = true
-
-				if ( ! empty( $og_video ) &&
-					$this->p->util->push_max( $og_ret, $og_video, $num ) )
-						return $og_ret;
-			}
-			return $og_ret;
-		}
-
 		public function get_content_videos( $num = 0, $mod = true, $check_dupes = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {

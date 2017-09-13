@@ -66,27 +66,12 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 				_x( 'video preview images are included first',
 					'option comment', 'wpsso' ).'</em></td>';
 
-			$table_rows['og_vid_html_type'] = $form->get_th_html( _x( 'Include Embed text/html Type',
+			$table_rows['og_vid_html_type'] = $form->get_th_html( _x( 'Include text/html Type Meta Tags',
 				'option label', 'wpsso' ), null, 'og_vid_html_type' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
 			$table_rows['og_vid_autoplay'] = $form->get_th_html( _x( 'Force Autoplay when Possible',
 				'option label', 'wpsso' ), null, 'og_vid_autoplay' ).
-			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
-
-			$table_rows['og_def_vid_url'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Default / Fallback Video URL',
-				'option label', 'wpsso' ), null, 'og_def_vid_url' ).
-			'<td class="blank">'.$this->p->options['og_def_vid_url'].'</td>';
-
-			$table_rows['og_def_vid_on_index'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Use Default Video on Archive',
-				'option label', 'wpsso' ), null, 'og_def_vid_on_index' ).
-			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
-
-			$table_rows['og_def_vid_on_search'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Use Default Video on Search Results',
-				'option label', 'wpsso' ), null, 'og_def_vid_on_search' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
 			return $table_rows;

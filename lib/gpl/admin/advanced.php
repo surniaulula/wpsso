@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td class="blank">'.SucomUtil::get_locale_opt( 'plugin_p_cap_prefix', $this->p->options ).'</td>';
 
 			$table_rows[] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Check for Embedded Media',
+			$form->get_th_html( _x( 'Check for Videos in Content',
 				'option label', 'wpsso' ), '', 'plugin_embedded_media' ).
 			'<td class="blank">'.
 			'<p>'.$this->get_nocb( $form, 'plugin_facebook_api' ).' '.

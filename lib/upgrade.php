@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			'wpsso' => array(
 				500 => array(
 					'plugin_tid' => 'plugin_wpsso_tid',
-					'plugin_ignore_small_img' => 'plugin_check_img_dims',		// renamed in v3.31.1-1
+					'plugin_ignore_small_img' => 'plugin_check_img_dims',
 					'plugin_file_cache_exp' => 'plugin_social_file_cache_exp',
 					'plugin_object_cache_exp' => '',
 					'plugin_cache_info' => 'plugin_show_purge_count',
@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 		);
 
 		private static $rename_options_keys = array(
-			'wpsso' => array(
+			'wpsso' => array(	// WPSSO
 				500 => array(
 					'og_img_resize' => 'plugin_create_wp_sizes',
 					'plugin_tid' => 'plugin_wpsso_tid',
@@ -69,17 +69,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'tc_prod_def_data2' => '',
 					'plugin_version' => '',
 					'seo_author_name' => '',
-					'plugin_columns_taxonomy' => 'plugin_columns_term',		// renamed in v3.31.0-1
-					'plugin_add_to_taxonomy' => 'plugin_add_to_term',		// renamed in v3.31.0-1
-					'plugin_ignore_small_img' => 'plugin_check_img_dims',		// renamed in v3.31.1-1
+					'plugin_columns_taxonomy' => 'plugin_columns_term',
+					'plugin_add_to_taxonomy' => 'plugin_add_to_term',
+					'plugin_ignore_small_img' => 'plugin_check_img_dims',
 					'plugin_file_cache_exp' => 'plugin_social_file_cache_exp',
 					'plugin_object_cache_exp' => '',
 					'buttons_use_social_css' => 'buttons_use_social_style',
 					'buttons_enqueue_social_css' => 'buttons_enqueue_social_style',
 					'fb_type' => 'fb_share_layout',
-					'plugin_schema_type_id_col_post' => 'plugin_schema_type_col_post',	// renamed in v3.39.1-1
-					'plugin_schema_type_id_col_term' => 'plugin_schema_type_col_term',	// renamed in v3.39.1-1
-					'plugin_schema_type_id_col_user' => 'plugin_schema_type_col_user',	// renamed in v3.39.1-1
+					'plugin_schema_type_id_col_post' => 'plugin_schema_type_col_post',
+					'plugin_schema_type_id_col_term' => 'plugin_schema_type_col_term',
+					'plugin_schema_type_id_col_user' => 'plugin_schema_type_col_user',
 					'plugin_auto_img_resize' => 'plugin_create_wp_sizes',
 					'plugin_cache_info' => 'plugin_show_purge_count',
 					'tc_sum_width' => 'tc_sum_img_width',
@@ -125,21 +125,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'rp_img_crop_y' => 'p_img_crop_y',
 					'rp_dom_verify' => 'p_dom_verify',
 				),
-				532 => array(
-					'plugin_bitly_token' => 'plugin_bitly_access_token',
-				),
-			),
-			'wpssossb' => array(
-				14 => array(
-					'stumble_js_loc' => 'stumble_script_loc',
-					'pin_js_loc' => 'pin_script_loc',
-					'tumblr_js_loc' => 'tumblr_script_loc',
-					'gp_js_loc' => 'gp_script_loc',
-					'fb_js_loc' => 'fb_script_loc',
-					'twitter_js_loc' => 'twitter_script_loc',
-					'buffer_js_loc' => 'buffer_script_loc',
-					'linkedin_js_loc' => 'linkedin_script_loc',
-				),
 				525 => array(
 					'add_meta_itemprop_url' => 'add_link_itemprop_url',
 					'add_meta_itemprop_image' => 'add_link_itemprop_image',
@@ -150,9 +135,30 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'add_meta_itemprop_contributor.image' => 'add_link_itemprop_contributor.image',
 					'add_meta_itemprop_menu' => 'add_link_itemprop_menu',
 				),
+				532 => array(
+					'plugin_bitly_token' => 'plugin_bitly_access_token',
+				),
 				539 => array(
+					'plugin_shorten_cache_exp' => 'plugin_short_url_cache_exp',
+				),
+				541 => array(
 					'plugin_content_img_max' => '',
 					'plugin_content_vid_max' => '',
+					'og_def_vid_url' => '',
+					'og_def_vid_on_index' => '',
+					'og_def_vid_on_search' => '',
+				),
+			),
+			'wpssossb' => array(	// WPSSO SSB
+				14 => array(
+					'stumble_js_loc' => 'stumble_script_loc',
+					'pin_js_loc' => 'pin_script_loc',
+					'tumblr_js_loc' => 'tumblr_script_loc',
+					'gp_js_loc' => 'gp_script_loc',
+					'fb_js_loc' => 'fb_script_loc',
+					'twitter_js_loc' => 'twitter_script_loc',
+					'buffer_js_loc' => 'buffer_script_loc',
+					'linkedin_js_loc' => 'linkedin_script_loc',
 				),
 			),
 		);

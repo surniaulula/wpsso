@@ -440,39 +440,49 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 			$this->p->util->clear_uniq_urls( 'video' );			// clear cache for 'video' context
 
+			/*
+			 * Get video and preview enable/disable option from the post/term/user meta.
+			 */
 			if ( $aop && ! empty( $mod['obj'] ) ) {
+
 				// get_options() returns null if an index key is not found
 				if ( ( $mod_prev = $mod['obj']->get_options( $mod['id'], 'og_vid_prev_img' ) ) !== null ) {
-					$use_prev = $mod_prev;	// use module option value
+
+					$use_prev = $mod_prev;	// use true/false/1/0 value from the custom option
+
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'setting use_prev to '.$use_prev.' from meta data' );
+						$this->p->debug->log( 'setting use_prev to '.( empty( $use_prev ) ?
+							'false' : 'true' ).' from meta data' );
 					}
 				}
+
 				$og_ret = array_merge( $og_ret, $mod['obj']->get_og_videos( $num_diff, $mod['id'], $check_dupes, $md_pre ) );
 			}
 
-			if ( count( $og_ret ) < 1 && $this->p->util->force_default_video( $mod ) ) {
+			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
-				$og_ret = array_merge( $og_ret, $this->p->media->get_default_video( $num_diff, $check_dupes ) );
-			} else {
-				$num_diff = SucomUtil::count_diff( $og_ret, $num );
+			/*
+			 * Optionally get more videos from the post content.
+			 */
+			if ( $mod['is_post'] && ! $this->p->util->is_maxed( $og_ret, $num ) ) {
+				$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num_diff, $mod, $check_dupes ) );
+			}
 
-				if ( $mod['is_post'] && ! $this->p->util->is_maxed( $og_ret, $num ) ) {
-					$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num_diff, $mod, $check_dupes ) );
+			$this->p->util->slice_max( $og_ret, $num );
+
+			/*
+			 * Optionally remove the image meta tags (aka video preview).
+			 */
+			if ( empty( $use_prev ) && empty( $force_prev ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'use_prev and force_prev are false - removing video preview images' );
 				}
 
-				$this->p->util->slice_max( $og_ret, $num );
-
-				if ( empty( $use_prev ) && $force_prev === false ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'use_prev and force_prev are false: removing video preview images' );
-					}
-					foreach ( $og_ret as $num => $single_video ) {
-						$og_ret[$num]['og:video:has_image'] = false;
-						foreach ( SucomUtil::preg_grep_keys( '/^og:image(:.*)?$/', $single_video ) as $k => $v ) {
-							unset ( $og_ret[$num][$k] );
-						}
+				foreach ( $og_ret as $num => $single_video ) {
+					$og_ret[$num]['og:video:has_image'] = false;
+					foreach ( SucomUtil::preg_grep_keys( '/^og:image(:.*)?$/', $single_video ) as $k => $v ) {
+						unset ( $og_ret[$num][$k] );
 					}
 				}
 			}
@@ -484,12 +494,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * meta tags are not standard and their values will only appear in Schema markup.
 			 */
 			if ( $aop && ! empty( $mod['obj'] ) && $md_pre !== 'none' ) {
+
 				foreach ( array(
 					'og_vid_title' => 'og:video:title',
 					'og_vid_desc' => 'og:video:description',
 				) as $idx => $mt_name ) {
+
 					// get_options() returns null if an index key is not found
 					$value = $mod['obj']->get_options( $mod['id'], $idx );
+
 					if ( ! empty( $value ) ) {	// must be a non-empty string
 						foreach ( $og_ret as $num => $single_video ) {
 							$og_ret[$num][$mt_name] = $value;
@@ -500,29 +513,33 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( ! empty( $this->p->options['og_vid_html_type'] ) ) {
+
 				$og_extend = array();
+
 				foreach ( $og_ret as $num => $single_video ) {
+
 					if ( ! empty( $single_video['og:video:embed_url'] ) ) {
 
 						// start with a copy of all og meta tags (exclude applink meta tags)
-						$og_embed = SucomUtil::preg_grep_keys( '/^og:/', $single_video );
+						$single_embed = SucomUtil::preg_grep_keys( '/^og:/', $single_video );
 
 						if ( strpos( $single_video['og:video:embed_url'], 'https:' ) !== false ) {
+
 							if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
-								$og_embed['og:video:secure_url'] = $single_video['og:video:embed_url'];
+								$single_embed['og:video:secure_url'] = $single_video['og:video:embed_url'];
 							} else {
-								$og_embed['og:video:secure_url'] = '';	// just in case
+								$single_embed['og:video:secure_url'] = '';	// just in case
 							}
 						}
 
-						$og_embed['og:video:url'] = $single_video['og:video:embed_url'];
-						$og_embed['og:video:type'] = 'text/html';
+						$single_embed['og:video:url'] = $single_video['og:video:embed_url'];
+						$single_embed['og:video:type'] = 'text/html';
 
 						// add application/x-shockwave-flash first
 						$og_extend[] = $single_video;
 
 						// add the new text/html video second
-						$og_extend[] = $og_embed;
+						$og_extend[] = $single_embed;
 
 					} else {
 						$og_extend[] = $single_video;
