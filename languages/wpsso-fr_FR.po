@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.46.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-13 13:09-0400\n"
-"PO-Revision-Date: 2017-09-13 13:10-0400\n"
+"POT-Creation-Date: 2017-09-14 07:02-0400\n"
+"PO-Revision-Date: 2017-09-14 07:02-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -635,29 +635,29 @@ msgstr "Cet avis peut être masqué temporairement pour une période de%s."
 msgid "Reference URL: %s"
 msgstr "URL de référence: %s"
 
-#: lib/com/notice.php:355
+#: lib/com/notice.php:350
 msgctxt "notification type"
 msgid "error"
 msgstr "erreur"
 
-#: lib/com/notice.php:356
+#: lib/com/notice.php:351
 msgctxt "notification type"
 msgid "warning"
 msgstr "attention"
 
-#: lib/com/notice.php:361
+#: lib/com/notice.php:356
 msgid "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
 
-#: lib/com/notice.php:363
+#: lib/com/notice.php:358
 msgid "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s message</a>."
 msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
 
-#: lib/com/notice.php:505
+#: lib/com/notice.php:500
 msgid "%s Note"
 msgstr "Avis %s"
 
-#: lib/com/notice.php:550
+#: lib/com/notice.php:545
 msgid "Dismiss"
 msgstr "Masquer"
 
@@ -2310,23 +2310,23 @@ msgstr "WordPress n'agrandit pas les images &mdash; WordPress ne peut créer que
 
 #: lib/messages.php:628
 msgid "Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites."
-msgstr ""
+msgstr "Les images agrandies ne semblent pas aussi nettes et claires, et si elles sont trop agrandies, peuvent apparaître floues et moins attrayantes - pas quelque chose que vous souhaitez promouvoir sur les sites sociaux et de recherche."
 
 #: lib/messages.php:628
 msgid "%1$s includes a feature that allows upscaling of WordPress Media Library images for %2$s image sizes (up to a maximum upscale percentage)."
-msgstr ""
+msgstr "%1$s comprend une fonctionnalité qui permet d'agrandir les images de la bibliothèque de médias WordPress pour %2$s (jusqu'à un pourcentage d'agrandissement maximal)."
 
 #: lib/messages.php:628
 msgid "Do not enable this option unless you want to publish lower quality images on social and search sites."
-msgstr ""
+msgstr "N'activez pas cette option, sauf si vous souhaitez publier des images de qualité inférieure sur les sites sociaux et de recherche."
 
 #: lib/messages.php:636
 msgid "When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%)."
-msgstr ""
+msgstr "Lorsque l'agrandissement des image pour %1$s est autorisé, %2$s peut s'assurer que les images plus petites ne sont pas agrandies au-delà de la raison, ce qui publiera des images peu claires / floues sur les sites sociaux et de recherche (le maximum par défaut est de %3$s%%)."
 
 #: lib/messages.php:636
 msgid "If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled."
-msgstr ""
+msgstr "Si une image doit être agrandie au-delà de ce maximum, en largeur ou en hauteur, l'image ne sera pas agrandie."
 
 #: lib/messages.php:669 lib/messages.php:677 lib/messages.php:685
 #: lib/messages.php:693 lib/messages.php:701 lib/messages.php:709
@@ -2494,31 +2494,31 @@ msgstr "Facebook ne supporte pas toutes les valeurs de langues WordPress. Si le 
 
 #: lib/messages.php:861
 msgid "Include Website, Organization, and/or Person Schema markup in the front page for Google's Knowledge Graph."
-msgstr ""
+msgstr "Inclure le balisage Schéma de site Web, d'Organisation, et/ou de Personne dans la page d'avant pour le Knowledge Graph de Google."
 
 #: lib/messages.php:861
 msgid "The Website markup includes the site name, alternate site name, site URL and search query URL."
-msgstr ""
+msgstr "Le balisage du site Web comprend le nom du site, le nom du site alternatif, l'URL du site et l'URL de la requête de recherche."
 
 #: lib/messages.php:861
 msgid "Developers can hook the \"%s\" filter to modify the site search URL (or disable its addition by returning false)."
-msgstr ""
+msgstr "Les développeurs peuvent accrocher le filtre \"%s\" pour modifier l'URL de recherche du site (ou désactiver son ajout en retournant false)."
 
 #: lib/messages.php:861
 msgid "The Organization markup includes all URLs entered on the %s settings page."
-msgstr ""
+msgstr "Le balisage de l'organisation comprend toutes les URL entrées dans la page de réglages %s."
 
 #: lib/messages.php:861 lib/messages.php:865
 msgid "The Person markup includes all contact method URLs entered in the user's WordPress profile page."
-msgstr ""
+msgstr "Le balisage de personne comprend toutes les URL de contact entrées dans la page de profil de l'utilisateur WordPress."
 
 #: lib/messages.php:865
 msgid "Select a site owner for the optional Person markup included in the front page."
-msgstr ""
+msgstr "Sélectionnez un propriétaire de site pour le balisage optionnel de Personne inclus dans la page d'accueil."
 
 #: lib/messages.php:869
 msgid "An alternate name for your Website that you want Google to consider (optional)."
-msgstr ""
+msgstr "Un autre nom pour votre site Web que vous souhaitez que Google considère (facultatif)."
 
 #: lib/messages.php:898
 msgid "Select an <em>%1$s</em> for the author / Person markup, or \"[None]\" to disable this feature (the recommended value is \"Display Name\")."
@@ -2526,23 +2526,23 @@ msgstr "Sélectionnez un <em>%1$s</em> pour le Schéma d'auteur (Personne) ou \"
 
 #: lib/messages.php:902
 msgid "Select the Schema type for a blog (non-static) front page. The default Schema type is %s."
-msgstr "Sélectionnez le type de Schéma pour la page blog (non-statique) d'avant du site. Le type de schéma par défaut est %s."
+msgstr "Sélectionnez le type de Schéma pour la page blog (non-statique) d'avant du site. Le type de Schéma par défaut est %s."
 
 #: lib/messages.php:907
 msgid "Select the Schema type for a static front page. The default Schema type is %s."
-msgstr "Sélectionnez le type de Schéma pour la page statique d'avant du site. Le type de schéma par défaut est %s."
+msgstr "Sélectionnez le type de Schéma pour la page statique d'avant du site. Le type de Schéma par défaut est %s."
 
 #: lib/messages.php:912
 msgid "Select the Schema type for archive pages (Category, Tags, etc.). The default Schema type is %s."
-msgstr "Sélectionnez le type de Schéma pour les pages d'archives (Catégories, Étiquettes, etc.). Le type de schéma par défaut est %s."
+msgstr "Sélectionnez le type de Schéma pour les pages d'archives (Catégories, Étiquettes, etc.). Le type de Schéma par défaut est %s."
 
 #: lib/messages.php:917
 msgid "Select the Schema type for user / author pages. The default Schema type is %s."
-msgstr "Sélectionnez le type de Schéma pour l'utilisateur / auteur des pages. Le type de schéma par défaut est %s."
+msgstr "Sélectionnez le type de Schéma pour l'utilisateur / auteur des pages. Le type de Schéma par défaut est %s."
 
 #: lib/messages.php:922
 msgid "Select the Schema type for search results pages. The default Schema type is %s."
-msgstr "Sélectionnez le type de Schéma pour les résultats de recherche. Le type de schéma par défaut est %s."
+msgstr "Sélectionnez le type de Schéma pour les résultats de recherche. Le type de Schéma par défaut est %s."
 
 #: lib/messages.php:927
 msgid "Select the Schema type for each WordPress post type. The Schema type defines the item type for Schema JSON-LD markup and/or meta tags in the webpage head section."
@@ -2610,7 +2610,7 @@ msgstr "Cliquez le bouton \"Fetch new scrape information\" quelques fois pour ac
 
 #: lib/messages.php:1097
 msgid "Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+."
-msgstr "Vérifiez que Google peut analyser correctement votre balisage de données structurées (méta, schéma, microdonnées, et JSON-LD) pour Google Search et Google+."
+msgstr "Vérifiez que Google peut analyser correctement votre balisage de données structurées (méta, Schéma, microdonnées, et JSON-LD) pour Google Search et Google+."
 
 #: lib/messages.php:1101
 msgid "Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins."
@@ -2819,7 +2819,7 @@ msgstr "<a href=\"%s\">Si vous utilisez des shortcodes dans votre contenu, cette
 
 #: lib/messages.php:1322
 msgid "At least one of your theme header templates does not support Schema markup of the webpage head section &mdash; this is especially important for Google and Pinterest."
-msgstr "Au moins un modèle header de votre thème ne supporte pas les balises de schéma d'entêtes de page Web &mdash; ceci est particulièrement important pour Google et Pinterest."
+msgstr "Au moins un modèle header de votre thème ne supporte pas les balises de Schéma d'entêtes de page Web &mdash; ceci est particulièrement important pour Google et Pinterest."
 
 #: lib/messages.php:1322
 msgid "The %s element in your header templates should include a function, action, or filter for its attributes."
@@ -3936,17 +3936,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://surniaulula.com/"
 msgstr "https://surniaulula.com/"
-
-#~ msgctxt "option label"
-#~ msgid "Default / Fallback Video URL"
-#~ msgstr "URL d'un vidéo par défaut"
-
-# Added a line break to improve layout.
-#~ msgctxt "option label"
-#~ msgid "Use Default Video on Archive"
-#~ msgstr "Utiliser vidéo par défaut<br/>pour pages d'archives"
-
-# Added a line break to improve layout.
-#~ msgctxt "option label"
-#~ msgid "Use Default Video on Search Results"
-#~ msgstr "Utiliser vidéo par défaut<br/>pour résultats de recherche"

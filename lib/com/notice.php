@@ -193,11 +193,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		// deprecated on 2017/06/29
-		public function set_reference_url( $url = null ) {
-			return $this->set_ref( $url );
-		}
-
 		// set reference values for admin notices
 		public function set_ref( $url = null, $mod = null, $context = null ) {
 			$this->ref_cache[] = array( 'url' => $url, 'mod' => $mod, 'context' => $context );
