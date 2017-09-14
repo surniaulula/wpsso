@@ -125,7 +125,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Download the Free version from [GitHub](https://surniaulula.github.io/wpsso/) or [WordPress.org](https://wordpress.org/plugins/wpsso/).
 
-= Quick List of Features (Continued) =
+<h3>Quick List of Features (Continued)</h3>
 
 **WPSSO Pro / Additional Features**
 
@@ -213,7 +213,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; [Purchase WPSSO Pro (Core Plugin) here](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase) (all purchases include a <em>No Risk 30 Day Refund Policy</em>).
 
-= 3rd Party Integration (Pro version) =
+<h3>3rd Party Integration (Pro version)</h3>
 
 **Images and Videos**
 
@@ -233,7 +233,7 @@ WPSSO Pro also supports [Easy Digital Downloads](https://wordpress.org/plugins/e
 
 WPSSO Pro supports [bbPress](https://wordpress.org/plugins/bbpress/), [BuddyPress](https://wordpress.org/plugins/buddypress/) (see the [BuddyPress Integration Notes](https://wpsso.com/docs/plugins/wpsso/notes/buddypress-integration/)), and [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.
 
-= Professional Support =
+<h3>Professional Support</h3>
 
 WPSSO support and development is on-going. You can review the [FAQ](https://wpsso.com/docs/plugins/wpsso/faqs/) and [Notes](https://wpsso.com/docs/plugins/wpsso/notes/) pages for additional setup information. If you have any suggestions or comments, post them to the [WordPress support forum](https://wordpress.org/support/plugin/wpsso) or the [Pro version support website](http://wpsso.support.wpsso.com).
 
@@ -241,7 +241,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 == Installation ==
 
-= Install and Uninstall =
+<h3>Install and Uninstall</h3>
 
 * [Install the WPSSO Plugin (Free and Pro version)](https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/)
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
@@ -252,13 +252,13 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [How-To Migrate from NextGEN Facebook to WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/)
 * [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 
-= Plugin Setup =
+<h3>Plugin Setup</h3>
 
 * [A Setup Guide for WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/)
 
 == Frequently Asked Questions ==
 
-= Frequently Asked Questions =
+<h3>Frequently Asked Questions</h3>
 
 * [Can I use the Pro version on multiple websites?](https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
 * [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
@@ -293,7 +293,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 == Other Notes ==
 
-= Additional Documentation =
+<h3>Additional Documentation</h3>
 
 * [About WPSSO Pro Integration Modules](https://wpsso.com/docs/plugins/wpsso/notes/modules/)
 	* [Author Gravatar](https://wpsso.com/docs/plugins/wpsso/notes/modules/author-gravatar/)
@@ -354,12 +354,12 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 <p>See <a href="https://en.wikipedia.org/wiki/Release_early,_release_often">release early, release often (RERO) software development philosophy</a> on Wikipedia for more information on the benefits of smaller / more frequent releases.</p>
 </blockquote>
 
-= Free / Standard Version Repository =
+<h3>Free / Standard Version Repository</h3>
 
 * [GitHub](https://surniaulula.github.io/wpsso/)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
 
-= Version Numbering =
+<h3>Version Numbering</h3>
 
 Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
@@ -368,7 +368,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * {bugfix} = Backwards-compatible bug fixes or small improvements.
 * {stage}.{level} = Pre-production release: dev < a (alpha) < b (beta) < rc (release candidate).
 
-= Changelog / Release Notes =
+<h3>Changelog / Release Notes</h3>
 
 **Version 3.46.1-rc.1 (2017/09/14)**
 
