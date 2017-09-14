@@ -47,7 +47,7 @@
 
 <h3>Quick List of Features</h3>
 
-<p><strong>WPSSO Free / Standard Features</strong></p>
+<h4>WPSSO Free / Standard Features</h4>
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.</p>
 
@@ -131,7 +131,7 @@
 
 <h3>Quick List of Features (Continued)</h3>
 
-<p><strong>WPSSO Pro / Additional Features</strong></p>
+<h4>WPSSO Pro / Additional Features</h4>
 
 <p><img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png"></p>
 

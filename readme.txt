@@ -51,7 +51,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <h3>Quick List of Features</h3>
 
-**WPSSO Free / Standard Features**
+= WPSSO Free / Standard Features =
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
 
@@ -127,7 +127,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <h3>Quick List of Features (Continued)</h3>
 
-**WPSSO Pro / Additional Features**
+= WPSSO Pro / Additional Features =
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png">
 
