@@ -25,7 +25,7 @@ There's no need to manually enter meta tag descriptions, titles, image / video U
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
-WPSSO includes Facebook / Open Graph, Twitter, Pinterest, Google / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive e-commerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, event details, recipe information, and much, much more &mdash; all from your *existing content*.
+WPSSO includes Facebook / Open Graph, Twitter, Pinterest, Google / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, event details, recipe information, and much, much more &mdash; all from your *existing content*.
 
 **WPSSO includes advanced *quality control* features and options:**
 
@@ -139,7 +139,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Support for embedded videos in content text (iframe and object HTML markup).
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and e-commerce products.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and eCommerce products.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
 
@@ -163,7 +163,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Integrates with 3rd party plugins and services for additional image, video, e-commerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, etc. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/pinterest-pin-wpsso-zoomed.png">
 
@@ -215,21 +215,21 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <h3>3rd Party Integration (Pro version)</h3>
 
-**Images and Videos**
+= Images and Videos =
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png">
 
 WPSSO detects and uses all images, associated or included in your content, including the WordPress image gallery shortcode and the [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) shortcode. WordPress Media Library images (and NextGEN Gallery images in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, Google, etc). The Pro version also detects embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube and includes their preview image, video title, and video description in meta tags and Schema markup. The Pro version includes complete support for [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries, and images (shortcodes, image tags, album / gallery preview images, and more).
 
-**Enhanced SEO**
+= Enhanced SEO =
 
 WPSSO Pro integrates with [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/), [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/), [The SEO Framework](https://wordpress.org/plugins/autodescription/), and [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema Structured Data, and Twitter Card meta tags.
 
-**eCommerce Products**
+= eCommerce Products =
 
 WPSSO Pro also supports [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/), [MarketPress - WordPress eCommerce](https://wordpress.org/plugins/wordpress-ecommerce/), [WooCommerce](https://wordpress.org/plugins/woocommerce/) (versions 1, 2, and 3), and [WP e-Commerce](https://wordpress.org/plugins/wp-e-commerce/) product pages, creating appropriate meta tags for [Facebook Products](https://developers.facebook.com/docs/payments/product/) and [Pinterest Rich Pins](http://developers.pinterest.com/rich_pins/), including product variations and additional / custom images.
 
-**Forums and Social**
+= Forums and Social =
 
 WPSSO Pro supports [bbPress](https://wordpress.org/plugins/bbpress/), [BuddyPress](https://wordpress.org/plugins/buddypress/) (see the [BuddyPress Integration Notes](https://wpsso.com/docs/plugins/wpsso/notes/buddypress-integration/)), and [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/), making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.
 
