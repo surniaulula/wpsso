@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: meta tags, open graph, share, social, schema markup, twitter card, seo, video seo, local seo, local business, twitter card, woocommerce
+Tags: meta tags, open graph, share, social, schema, twitter card, seo, video seo, local seo, local business, twitter card, woocommerce
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.8.1
@@ -25,7 +25,7 @@ There's no need to manually enter or configure any additional settings or custom
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
-Including description hashtags, complete image SEO, complete video SEO, complete and extensive e-commerce product SEO, author profile / authorship, co-authors, publisher information, aggregate and ratings, reviews, event details, recipe information, and much, much more &mdash; all from your *existing* content.
+Including description hashtags, complete image markup, complete video markup, complete and extensive e-commerce product markup, author profile / authorship, co-authors, publisher information, aggregate and ratings, reviews, event details, recipe information, and much, much more &mdash; all from your *existing* content.
 
 **WPSSO includes advanced *quality control* features and options:**
 
@@ -41,7 +41,7 @@ WPSSO specializes in providing all the meta tags and Schema markup social sites 
 
 **WPSSO is *fast* and coded for performance:**
 
-WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes needed, keeping the code small, fast, light, and able to support a wide range of 3rd party integration features.
+WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes it needs, keeping the code small, fast, light, and able to support a wide range of 3rd party integration features.
 
 WPSSO and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3 or better required).
 

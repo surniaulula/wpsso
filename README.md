@@ -8,7 +8,7 @@
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.8.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>meta tags, open graph, share, social, schema markup, twitter card, seo, video seo, local seo, local business, twitter card, woocommerce</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>meta tags, open graph, share, social, schema, twitter card, seo, video seo, local seo, local business, twitter card, woocommerce</td></tr>
 </table>
 
 <h2>Description</h2>
@@ -21,7 +21,7 @@
 
 <p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup:</strong></p>
 
-<p>Including description hashtags, complete image SEO, complete video SEO, complete and extensive e-commerce product SEO, author profile / authorship, co-authors, publisher information, aggregate and ratings, reviews, event details, recipe information, and much, much more &mdash; all from your <em>existing</em> content.</p>
+<p>Including description hashtags, complete image markup, complete video markup, complete and extensive e-commerce product markup, author profile / authorship, co-authors, publisher information, aggregate and ratings, reviews, event details, recipe information, and much, much more &mdash; all from your <em>existing</em> content.</p>
 
 <p><strong>WPSSO includes advanced <em>quality control</em> features and options:</strong></p>
 
@@ -37,7 +37,7 @@
 
 <p><strong>WPSSO is <em>fast</em> and coded for performance:</strong></p>
 
-<p>WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes needed, keeping the code small, fast, light, and able to support a wide range of 3rd party integration features.</p>
+<p>WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes it needs, keeping the code small, fast, light, and able to support a wide range of 3rd party integration features.</p>
 
 <p>WPSSO and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3 or better required).</p>
 
