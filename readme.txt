@@ -19,21 +19,21 @@ Automatically generate complete and accurate meta tags and Schema markup from yo
 
 <img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png">
 
-**WPSSO uses your *existing* content for meta tags and Schema markup:**
+**WPSSO uses your *existing content* for meta tags and Schema markup:**
 
-There's no need to manually enter or configure any additional settings or custom values, but if you want to, you can also customize just about anything and everything. ;-)
+There's no need to manually enter meta tag descriptions, titles, image / video URLs, or configure any additional settings or values &mdash; although if you want to, you can customize just about anything and everything. ;-)
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
-Including description hashtags, complete image markup, complete video markup, complete and extensive e-commerce product markup, author profile / authorship, co-authors, publisher information, aggregate and ratings, reviews, event details, recipe information, and much, much more &mdash; all from your *existing* content.
+WPSSO includes Facebook / Open Graph, Twitter, Pinterest, Google / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive e-commerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, event details, recipe information, and much, much more &mdash; all from your *existing content*.
 
 **WPSSO includes advanced *quality control* features and options:**
 
-Checking minimum / maximum image dimensions and aspect ratios, verifying the front-end webpage for duplicate meta tags, showing notices for missing and required images, along with theme header template validation.
+WPSSO checks minimum / maximum image dimensions and aspect ratios, verifies the front-end webpage for duplicate meta tags, shows notices for missing and required images, along with validating the theme header template.
 
 **WPSSO offers special optimization features for Pinterest:**
 
-Providing a specific image for the Pinterest Pin It button, excluding non-relevant images from being detected by Pinterest, and preventing conflicts between incompatible Pinterest and Facebook Open Graph meta tag values.
+WPSSO provides a specific image for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook Open Graph meta tag values.
 
 **WPSSO can enhance and integrate with your favorite SEO plugin!**
 
@@ -41,7 +41,7 @@ WPSSO specializes in providing all the meta tags and Schema markup social sites 
 
 **WPSSO is *fast* and coded for performance:**
 
-WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes it needs, keeping the code small, fast, light, and able to support a wide range of 3rd party integration features.
+WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the library files and object classes they need, keeping the code small, fast, and light.
 
 WPSSO and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3 or better required).
 
