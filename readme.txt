@@ -49,7 +49,7 @@ WPSSO and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3
 
 WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the core plugin.
 
-= Quick List of Features =
+<h3>Quick List of Features</h3>
 
 **WPSSO Free / Standard Features**
 
