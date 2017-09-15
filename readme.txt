@@ -370,7 +370,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.46.1-rc.1 (2017/09/14)**
+**Version 3.46.1 (2017/09/15)**
 
 * *New Features*
 	* None
@@ -720,9 +720,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.46.1-rc.1 =
+= 3.46.1 =
 
-(2017/09/14) Removed the default / fallback video options for archive and search result pages. Replaced the "Maximum Images from Content" and "Maximum Videos from Content" options by constants.
+(2017/09/15) Removed the default / fallback video options for archive and search result pages. Replaced the "Maximum Images from Content" and "Maximum Videos from Content" options by constants.
 
 = 3.46.0 =
 
