@@ -1,4 +1,4 @@
-=== WPSSO (Core Plugin) - Advanced Plugin for Social / SEO Meta Tags and Schema / Rich Card Markup ===
+=== WPSSO (Core Plugin) - Advanced Plugin for Social / Search Meta Tags and Schema / Rich Card Markup ===
 Plugin Name: WPSSO (Core Plugin)
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -13,7 +13,7 @@ Tested Up To: 4.8.1
 Requires PHP: 5.3
 Stable Tag: 3.46.1
 
-Complete and accurate meta tags and Schema markup from your content for social sharing, social media, and search engine optimization.
+Complete and accurate meta tags and Schema markup from your existing content for social sharing, social media, and search engine optimization.
 
 == Description ==
 

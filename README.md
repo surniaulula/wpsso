@@ -1,8 +1,8 @@
-<h1>WPSSO (Core Plugin)</h1><h3>Advanced Plugin for Social / SEO Meta Tags and Schema / Rich Card Markup</h3>
+<h1>WPSSO (Core Plugin)</h1><h3>Advanced Plugin for Social / Search Meta Tags and Schema / Rich Card Markup</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO (Core Plugin)</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Complete and accurate meta tags and Schema markup from your content for social sharing, social media, and search engine optimization.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Complete and accurate meta tags and Schema markup from your existing content for social sharing, social media, and search engine optimization.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.46.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.7</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.8.1</td></tr>
