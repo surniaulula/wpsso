@@ -1,4 +1,4 @@
-=== WPSSO (Core Plugin) - Advanced Social / Sharing / Search Meta Tags and Schema / SEO / Rich Card Markup ===
+=== WPSSO (Core Plugin) - Advanced Meta Tags and Schema Markup for Social, Sharing, Search, SEO, Rich Card ===
 Plugin Name: WPSSO (Core Plugin)
 Plugin Slug: wpsso
 Text Domain: wpsso
