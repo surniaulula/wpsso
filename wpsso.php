@@ -10,7 +10,7 @@
  * Author URI: https://surniaulula.com/
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
- * Description: Complete and accurate meta tags and Schema markup from your content for social sharing, social media, and search engine optimization.
+ * Description: Complete and accurate meta tags and Schema markup from your existing content for social sharing, social media, and search engine optimization.
  * Requires At Least: 3.7
  * Tested Up To: 4.8.1
  * Requires PHP: 5.3
