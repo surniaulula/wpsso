@@ -53,11 +53,11 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <h4>WPSSO Free / Standard Features</h4>
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Automatically creates complete Open Graph meta tags for Facebook, Google+, Pinterest, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Automatically creates complete Open Graph meta tags for Facebook, Google Plus / SEO / Rich Card, Pinterest Rich Pin, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search / SEO.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search and its Knowledge Graph, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search / SEO and its Knowledge Graph, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds Weibo meta tags for article creation and update dates.
 
@@ -68,7 +68,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 * [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires the video discovery modules in the Pro version).
 * [App Card](https://dev.twitter.com/cards/types/app) (requires the [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) extension)
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Features customizable image dimensions for Facebook / Open Graph, Google / Schema / Pinterest and all Twitter Card types.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Features customizable image dimensions for Facebook / Open Graph, Google / SEO / Schema / Pinterest and all Twitter Card types.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Support for Automattic's [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) plugin.
 
@@ -131,7 +131,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png">
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Includes a Social and Search Optimization metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social and Search Optimization metabox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google Search / Twitter Card descriptions, along with the shared image and/or video.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Includes a Social and Search Optimization metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social and Search Optimization metabox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google / SEO / Rich Card / Twitter Card descriptions, along with the shared image and/or video.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Fully renders content (including shortcodes) for accurate description texts and embedded video detection.
 
@@ -219,7 +219,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png">
 
-WPSSO detects and uses all images, associated or included in your content, including the WordPress image gallery shortcode and the [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) shortcode. WordPress Media Library images (and NextGEN Gallery images in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, Google, etc). The Pro version also detects embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube and includes their preview image, video title, and video description in meta tags and Schema markup. The Pro version includes complete support for [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries, and images (shortcodes, image tags, album / gallery preview images, and more).
+WPSSO detects and uses all images, associated or included in your content, including the WordPress image gallery shortcode and the [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) shortcode. WordPress Media Library images (and NextGEN Gallery images in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, Google / SEO, etc). The Pro version also detects embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube and includes their preview image, video title, and video description in meta tags and Schema markup. The Pro version includes complete support for [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries, and images (shortcodes, image tags, album / gallery preview images, and more).
 
 <h4>Enhanced SEO</h4>
 
