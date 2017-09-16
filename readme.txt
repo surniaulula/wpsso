@@ -13,7 +13,7 @@ Tested Up To: 4.8.1
 Requires PHP: 5.3
 Stable Tag: 3.46.1
 
-Complete and accurate meta tags and Schema markup from your existing content for social sharing, social media, SEO and rich cards.
+Complete and accurate meta tags and Schema markup from your content for social sharing, social media, search / SEO and rich cards.
 
 == Description ==
 
@@ -25,7 +25,7 @@ There's no need to manually enter meta tag descriptions, titles, image / video U
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
-WPSSO includes Facebook / Open Graph, Twitter, Pinterest, Google / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, event details, recipe information, and much, much more &mdash; all from your *existing content*.
+WPSSO includes Facebook / Open Graph / Twitter Cards / Pinterest Rich Pin / Google / SEO / Rich Card / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, event details, recipe information, and much, much more &mdash; all from your *existing content*.
 
 **WPSSO includes advanced *quality control* features and options:**
 
