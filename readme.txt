@@ -21,7 +21,7 @@ Complete and accurate meta tags and Schema markup from your content for social s
 
 **WPSSO uses your *existing content* for meta tags and Schema markup:**
 
-There's no need to manually enter meta tag descriptions, titles, image / video URLs, or configure any additional settings or values &mdash; although if you want to, you can customize just about anything and everything. ;-)
+There's no need to manually re-enter descriptions, titles, select image / video URLs, etc. &mdash; WPSSO reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about everything. ;-)
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
@@ -45,7 +45,7 @@ WPSSO and its extensions make full use of all available caching techniques (pers
 
 WPSSO and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3 or better required).
 
-**Quick and easy meta tag / JSON-LD framework for developers:**
+**Flexible meta tag / Schema JSON-LD framework for developers:**
 
 WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the core plugin.
 
