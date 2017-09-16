@@ -13,7 +13,7 @@ Tested Up To: 4.8.1
 Requires PHP: 5.3
 Stable Tag: 3.46.1
 
-Automatically generate complete and accurate meta tags and Schema markup from your content for social media optimization (SMO) and SEO.
+Complete and accurate social meta tags and Schema markup from your existing content for social media, sharing, and search optimization.
 
 == Description ==
 
@@ -722,7 +722,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.46.1 =
 
-(2017/09/15) Removed the default / fallback video options for archive and search result pages. Replaced the "Maximum Images from Content" and "Maximum Videos from Content" options by constants.
+(2017/09/15) Removed the default / fallback video options. Replaced the "Maximum Images from Content" and "Maximum Videos from Content" options by constants.
 
 = 3.46.0 =
 
