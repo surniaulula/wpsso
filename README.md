@@ -1,4 +1,4 @@
-<h1>WPSSO (Core Plugin)</h1><h3>Advanced Meta Tags and Schema Markup for Social Sharing / Media, SEO, Rich Cards</h3>
+<h1>WPSSO (Core Plugin)</h1><h3>Advanced Meta Tags and Schema Markup for Social, Search / SEO, Rich Cards</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO (Core Plugin)</td></tr>
