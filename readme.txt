@@ -13,7 +13,7 @@ Tested Up To: 4.8.1
 Requires PHP: 5.3
 Stable Tag: 3.46.1
 
-Complete and accurate social meta tags and Schema markup from your existing content for social media, sharing, and search optimization.
+Complete and accurate meta tags and Schema markup from your content for social sharing, social media, and search engine optimization.
 
 == Description ==
 
