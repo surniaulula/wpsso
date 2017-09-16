@@ -777,8 +777,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:14
 msgctxt "plugin description"
 msgid ""
-"Complete and accurate social meta tags and Schema markup from your existing "
-"content for social media, sharing, and search optimization."
+"Complete and accurate meta tags and Schema markup from your content for "
+"social sharing, social media, and search engine optimization."
 msgstr ""
 
 #: lib/config-gettext-extract.php:15
@@ -4583,8 +4583,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Complete and accurate social meta tags and Schema markup from your existing "
-"content for social media, sharing, and search optimization."
+"Complete and accurate meta tags and Schema markup from your content for "
+"social sharing, social media, and search engine optimization."
 msgstr ""
 
 #. Author of the plugin/theme

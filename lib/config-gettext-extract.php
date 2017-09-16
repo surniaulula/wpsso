@@ -11,7 +11,7 @@ _x( 'Bottom', 'option value', 'wpsso' );
 _x( 'Center', 'option value', 'wpsso' );
 _x( 'checked', 'option value', 'wpsso' );
 _x( '<color>Plugin Setup Guide and Other Notes</color>', 'lib file description', 'wpsso' );
-_x( 'Complete and accurate social meta tags and Schema markup from your existing content for social media, sharing, and search optimization.', 'plugin description', 'wpsso' );
+_x( 'Complete and accurate meta tags and Schema markup from your content for social sharing, social media, and search engine optimization.', 'plugin description', 'wpsso' );
 _x( 'Damaged', 'option value', 'wpsso' );
 _x( 'default is %s', 'option value', 'wpsso' );
 _x( '(default)', 'option value', 'wpsso' );
