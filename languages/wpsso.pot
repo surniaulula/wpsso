@@ -642,7 +642,7 @@ msgctxt "option value"
 msgid "default is %s"
 msgstr ""
 
-#: lib/com/form.php:92 lib/config-gettext-extract.php:13
+#: lib/com/form.php:92 lib/config-gettext-extract.php:12
 msgctxt "option value"
 msgid "checked"
 msgstr ""
@@ -745,40 +745,40 @@ msgid "Alpha and Up"
 msgstr ""
 
 #: lib/config-gettext-extract.php:7
-msgctxt "plugin description"
-msgid ""
-"Automatically generate complete and accurate meta tags and Schema markup "
-"from your content for social media optimization (SMO) and SEO."
-msgstr ""
-
-#: lib/config-gettext-extract.php:8
 msgctxt "option value"
 msgid "Basic Options"
 msgstr ""
 
-#: lib/config-gettext-extract.php:9
+#: lib/config-gettext-extract.php:8
 msgctxt "option value"
 msgid "Beta and Up"
 msgstr ""
 
-#: lib/config-gettext-extract.php:10
+#: lib/config-gettext-extract.php:9
 msgctxt "option value"
 msgid "Bitly (suggested)"
 msgstr ""
 
-#: lib/config-gettext-extract.php:11
+#: lib/config-gettext-extract.php:10
 msgctxt "option value"
 msgid "Bottom"
 msgstr ""
 
-#: lib/config-gettext-extract.php:12
+#: lib/config-gettext-extract.php:11
 msgctxt "option value"
 msgid "Center"
 msgstr ""
 
-#: lib/config-gettext-extract.php:14
+#: lib/config-gettext-extract.php:13
 msgctxt "lib file description"
 msgid "<color>Plugin Setup Guide and Other Notes</color>"
+msgstr ""
+
+#: lib/config-gettext-extract.php:14
+msgctxt "plugin description"
+msgid ""
+"Complete and accurate social meta tags and Schema markup from your existing "
+"content for social media, sharing, and search optimization."
 msgstr ""
 
 #: lib/config-gettext-extract.php:15
@@ -1093,8 +1093,7 @@ msgctxt "option value"
 msgid "(settings value)"
 msgstr ""
 
-#: lib/config-gettext-extract.php:83 lib/messages.php:620
-#: lib/messages.php:1261
+#: lib/config-gettext-extract.php:83 lib/messages.php:620 lib/messages.php:1261
 msgctxt "lib file description"
 msgid "Social and Search Image Dimensions"
 msgstr ""
@@ -4584,8 +4583,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Automatically generate complete and accurate meta tags and Schema markup "
-"from your content for social media optimization (SMO) and SEO."
+"Complete and accurate social meta tags and Schema markup from your existing "
+"content for social media, sharing, and search optimization."
 msgstr ""
 
 #. Author of the plugin/theme
