@@ -97,7 +97,7 @@ if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 	function wpsso_clear_post_cache( $post_id ) {
 		$wpsso =& Wpsso::get_instance();
-		if ( isset( $wpsso->m['util']['post'] ) ) {
+		if ( isset( $wpsso->m['util']['post'] ) ) {	// just in case
 			$wpsso->m['util']['post']->clear_cache( $post_id );
 		}
 	}

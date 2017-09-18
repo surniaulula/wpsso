@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.46.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-16 08:27-0400\n"
-"PO-Revision-Date: 2017-09-16 08:27-0400\n"
+"POT-Creation-Date: 2017-09-18 06:39-0600\n"
+"PO-Revision-Date: 2017-09-18 06:40-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -382,7 +382,7 @@ msgid "Fantastic!"
 msgstr "Fantastique!"
 
 #: lib/admin.php:1768
-msgid "You've been using <b>%s</b> for more than a week."
+msgid "You've been using <b>%s</b> for a week or more."
 msgstr "Vous utilisez <b>%s</b> depuis plus d'une semaine."
 
 #: lib/admin.php:1770
@@ -394,12 +394,12 @@ msgid "That's awesome!"
 msgstr "C'est génial!"
 
 #: lib/admin.php:1775
-msgid "Can I ask a small favor &mdash; would you rate the %s plugin on WordPress.org?"
-msgstr "Puis-je demander une petite faveur &mdash; pouvez vous noter l'extension %s sur WordPress.org ?"
+msgid "Could I ask you for a small favor? Would you rate the %s plugin on WordPress.org?"
+msgstr "Puis-je demander une petite faveur? Pouvez vous noter l'extension %s sur WordPress.org ?"
 
 #: lib/admin.php:1778
-msgid "Your rating will help WordPress users find the plugin <em>and</em> encourage us to keep improving %s as well."
-msgstr "Votre note aidera les utilisateurs WordPress à trouver l'extension <em>et</em> nous encourager à continuer d'améliorer %s aussi."
+msgid "Your rating will encourage us to keep improving %s and help new WordPress users find the plugin as well."
+msgstr "Votre note nous encouragera à continuer à améliorer %s et à aider les nouveaux utilisateurs de WordPress à trouver le plugin aussi."
 
 #: lib/admin.php:1785
 msgid "No thanks &mdash; I don't think %s is worth a 5 star rating and would like to offer a suggestion or report a problem."
