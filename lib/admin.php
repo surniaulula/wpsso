@@ -1718,7 +1718,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cache_id = $lca.'_'.md5( $cache_salt );
 			$this->set_form_object( $lca );
 
-			if ( get_transient( $cache_id ) ) {	// only show every 24 hours for each user id
+			if ( get_transient( $cache_id ) ) {	// only show once every 24 hours for each user id
 				return;	// stop here
 			}
 
@@ -1765,22 +1765,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$notice_msg .= '<p style="font-size:1.05em;">'.
 					'<b>'.__( 'Fantastic!', 'wpsso' ).'</b> '.
-					sprintf( __( 'You\'ve been using <b>%s</b> for more than a week.',
+					sprintf( __( 'You\'ve been using <b>%s</b> for a week or more.',
 						'wpsso' ), '<a href="'.$info['url']['home'].'" title="'.
 							sprintf( __( 'The %s plugin description page on WordPress.org',
 								'wpsso' ), $info['short'] ).'">'.$info['name'].'</a>' ).' '.
 					__( 'That\'s awesome!', 'wpsso' ).'</p>';
 					
 				$notice_msg .= '<p style="font-size:1.05em;">'.
-					sprintf( __( 'Can I ask a small favor &mdash; would you rate the %s plugin on WordPress.org?',
+					sprintf( __( 'Could I ask you for a small favor? Would you rate the %s plugin on WordPress.org?',
 						'wpsso' ), $info['short'] ).'</p>'; 
 				$notice_msg .= '<p style="font-size:1.05em;">'.
-					sprintf( __( 'Your rating will help WordPress users find the plugin <em>and</em> encourage us to keep improving %s as well.',
+					sprintf( __( 'Your rating will encourage us to keep improving %s and help new WordPress users find the plugin as well.',
 						'wpsso' ), $info['short'] ).' :-) '.'</p>';
 				
-				$notice_msg .= '<p>'.$rate_plugin_button.$already_rated_button.'</p>';
+				$notice_msg .= $rate_plugin_button.$already_rated_button;
 					
-				$notice_msg .= '<p style="font-size:0.9em;">'.
+				$notice_msg .= '<p style="font-size:0.85em;">'.
 					( empty( $support_url ) ? '' : '<a href="'.$support_url.'" class="dismiss-on-click">' ).
 					sprintf( __( 'No thanks &mdash; I don\'t think %s is worth a 5 star rating and would like to offer a suggestion or report a problem.',
 						'wpsso' ), $info['short'] ).
@@ -1976,36 +1976,36 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$table_rows['schema_logo_url'] = $this->form->get_th_html( 
 				'<a href="https://developers.google.com/structured-data/customize/logos">'.
-				_x( 'Organization Logo URL', 'option label', 'wpsso-schema-json-ld' ).'</a>',
+				_x( 'Organization Logo URL', 'option label', 'wpsso' ).'</a>',
 					'', 'schema_logo_url', array( 'is_locale' => true ) ).
 			'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ), 'wide' ).'</td>';
 
 			$table_rows['schema_banner_url'] = $this->form->get_th_html( _x( 'Organization Banner URL',
-				'option label', 'wpsso-organization' ), '', 'schema_banner_url', array( 'is_locale' => true ) ).
+				'option label', 'wpsso' ), '', 'schema_banner_url', array( 'is_locale' => true ) ).
 			'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ).'</td>';
 
 			$table_rows['schema_img_max'] = '<tr class="hide_in_basic">'.
 				$this->form->get_th_html( _x( 'Maximum Images to Include',
-				'option label', 'wpsso-schema-json-ld' ), '', 'schema_img_max' ).
+				'option label', 'wpsso' ), '', 'schema_img_max' ).
 			'<td>'.$this->form->get_select( 'schema_img_max', 
 				range( 0, $this->p->cf['form']['max_media_items'] ), 'short', '', true ).
 			( empty( $this->form->options['og_vid_prev_img'] ) ?
 				'' : ' <em>'._x( 'video preview images are enabled (and included first)',
-					'option comment', 'wpsso-schema-json-ld' ).'</em>' ).'</td>';
+					'option comment', 'wpsso' ).'</em>' ).'</td>';
 
 			$table_rows['schema_img'] = $this->form->get_th_html( _x( 'Schema Image Dimensions',
-				'option label', 'wpsso-schema-json-ld' ), '', 'schema_img_dimensions' ).
+				'option label', 'wpsso' ), '', 'schema_img_dimensions' ).
 			'<td>'.$this->form->get_input_image_dimensions( 'schema_img' ).'</td>';	// $use_opts = false
 
 			$table_rows['schema_desc_len'] = '<tr class="hide_in_basic">'.
 			$this->form->get_th_html( _x( 'Maximum Description Length',
-				'option label', 'wpsso-schema-json-ld' ), '', 'schema_desc_len' ).
+				'option label', 'wpsso' ), '', 'schema_desc_len' ).
 			'<td>'.$this->form->get_input( 'schema_desc_len', 'short' ).' '.
-				_x( 'characters or less', 'option comment', 'wpsso-schema-json-ld' ).'</td>';
+				_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
 			$table_rows['schema_author_name'] = '<tr class="hide_in_basic">'.
 			$this->form->get_th_html( _x( 'Author / Person Name Format',
-				'option label', 'wpsso-schema-json-ld' ), '', 'schema_author_name' ).
+				'option label', 'wpsso' ), '', 'schema_author_name' ).
 			'<td>'.$this->form->get_select( 'schema_author_name', 
 				$this->p->cf['form']['user_name_fields'] ).'</td>';
 		}

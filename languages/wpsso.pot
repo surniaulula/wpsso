@@ -419,7 +419,7 @@ msgid "Fantastic!"
 msgstr ""
 
 #: lib/admin.php:1768
-msgid "You've been using <b>%s</b> for more than a week."
+msgid "You've been using <b>%s</b> for a week or more."
 msgstr ""
 
 #: lib/admin.php:1770
@@ -432,14 +432,14 @@ msgstr ""
 
 #: lib/admin.php:1775
 msgid ""
-"Can I ask a small favor &mdash; would you rate the %s plugin on WordPress."
+"Could I ask you for a small favor? Would you rate the %s plugin on WordPress."
 "org?"
 msgstr ""
 
 #: lib/admin.php:1778
 msgid ""
-"Your rating will help WordPress users find the plugin <em>and</em> encourage "
-"us to keep improving %s as well."
+"Your rating will encourage us to keep improving %s and help new WordPress "
+"users find the plugin as well."
 msgstr ""
 
 #: lib/admin.php:1785
