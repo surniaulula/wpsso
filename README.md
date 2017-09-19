@@ -15,13 +15,13 @@
 
 <p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-<p><strong>WPSSO uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
+<p><strong>WPSSO uses your existing content for meta tags and Schema markup:</strong></p>
 
 <p>There's no need to manually re-enter descriptions, titles, select image / video URLs, etc. &mdash; WPSSO reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about everything. ;-)</p>
 
 <p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup:</strong></p>
 
-<p>WPSSO includes Facebook / Open Graph / Twitter Cards / Pinterest Rich Pin / Google / SEO / Rich Card / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, event details, recipe information, and much, much more &mdash; all from your <em>existing content</em>.</p>
+<p>WPSSO includes Facebook / Open Graph / Twitter Cards / Pinterest Rich Pin / Google / SEO / Rich Card / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, event details, recipe information, and much, much more &mdash; all from your existing content.</p>
 
 <p><strong>WPSSO includes advanced <em>quality control</em> features and options:</strong></p>
 
