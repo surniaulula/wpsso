@@ -1208,13 +1208,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 
 					case 'pro-purchase-text':
-						$text = _x( 'Purchase Pro', 'plugin action link', 'wpsso' );
+						if ( ! empty( $info['ext'] ) && WpssoAdmin::$pkg[$info['ext']]['aop'] ) {
+							$text = _x( 'More Licenses', 'plugin action link', 'wpsso' );
+						} else {
+							$text = _x( 'Purchase Pro', 'plugin action link', 'wpsso' );
+						}
 						if ( ! empty( $info['url'] ) ) {
 							$text = '<a href="'.$info['url'].'"'.
 								( empty( $info['tabindex'] ) ? '' : ' tabindex="'.$info['tabindex'].'"' ).'>'.
 									$text.'</a>';
 						}
-						if ( ! empty( $info['ext'] ) && $info['ext'] !== $lca && ! WpssoAdmin::$pkg[$lca]['aop'] ) {
+						if ( ! empty( $info['ext'] ) && ! WpssoAdmin::$pkg[$lca]['aop'] && $info['ext'] !== $lca ) {
 							$text .= ' <em>'.sprintf( _x( '(%s required)', 'plugin action link',
 								'wpsso' ), $info['short_pro'] ).'</em>';
 						}
