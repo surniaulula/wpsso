@@ -41,7 +41,7 @@
 
 <p>WPSSO and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3 or better required).</p>
 
-<p><strong>Flexible meta tag / Schema JSON-LD framework for developers:</strong></p>
+<p><strong>Advanced meta tag / Schema JSON-LD filter hooks for developers:</strong></p>
 
 <p>WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the core plugin.</p>
 

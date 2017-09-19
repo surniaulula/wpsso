@@ -45,7 +45,7 @@ WPSSO and its extensions make full use of all available caching techniques (pers
 
 WPSSO and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3 or better required).
 
-**Flexible meta tag / Schema JSON-LD framework for developers:**
+**Advanced meta tag / Schema JSON-LD filter hooks for developers:**
 
 WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the core plugin.
 
