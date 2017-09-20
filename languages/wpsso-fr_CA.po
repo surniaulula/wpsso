@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.46.0\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.46.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-19 07:01-0600\n"
-"PO-Revision-Date: 2017-09-19 07:01-0600\n"
+"POT-Creation-Date: 2017-09-20 08:40-0600\n"
+"PO-Revision-Date: 2017-09-20 08:45-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -591,7 +591,7 @@ msgctxt "option value"
 msgid "default is %s"
 msgstr "%s par défaut"
 
-#: lib/com/form.php:92 lib/config-gettext-extract.php:12
+#: lib/com/form.php:92 lib/config-gettext-extract.php:13
 msgctxt "option value"
 msgid "checked"
 msgstr "coché"
@@ -690,39 +690,39 @@ msgid "Alpha and Up"
 msgstr "Alpha et plus"
 
 #: lib/config-gettext-extract.php:7
+msgctxt "plugin description"
+msgid "Automatically create meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more."
+msgstr "Crée automatiquement des balises méta et balisage de Schéma pour le partage social, médias sociaux / SMO, recherche / SEO, cartes riches, et plus."
+
+#: lib/config-gettext-extract.php:8
 msgctxt "option value"
 msgid "Basic Options"
 msgstr "Options de base"
 
-#: lib/config-gettext-extract.php:8
+#: lib/config-gettext-extract.php:9
 msgctxt "option value"
 msgid "Beta and Up"
 msgstr "Bêta et plus"
 
-#: lib/config-gettext-extract.php:9
+#: lib/config-gettext-extract.php:10
 msgctxt "option value"
 msgid "Bitly (suggested)"
 msgstr "Bitly (suggéré)"
 
-#: lib/config-gettext-extract.php:10
+#: lib/config-gettext-extract.php:11
 msgctxt "option value"
 msgid "Bottom"
 msgstr "Le bas"
 
-#: lib/config-gettext-extract.php:11
+#: lib/config-gettext-extract.php:12
 msgctxt "option value"
 msgid "Center"
 msgstr "Centre"
 
-#: lib/config-gettext-extract.php:13
+#: lib/config-gettext-extract.php:14
 msgctxt "lib file description"
 msgid "<color>Plugin Setup Guide and Other Notes</color>"
 msgstr "<color>Guide de config. et autres notes</color>"
-
-#: lib/config-gettext-extract.php:14
-msgctxt "plugin description"
-msgid "Complete and accurate meta tags and Schema markup from your content for social sharing, social media, search / SEO and rich cards."
-msgstr "Créer des balises méta et balisage de Schéma complet de votre contenu pour l'optimisation de partage social, media social, et de recherche / SEO."
 
 #: lib/config-gettext-extract.php:15
 msgctxt "option value"
@@ -3931,8 +3931,8 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Complete and accurate meta tags and Schema markup from your content for social sharing, social media, search / SEO and rich cards."
-msgstr "Créer des balises méta et balisage de Schéma complet de votre contenu pour l'optimisation de partage social, media social, et de recherche / SEO."
+msgid "Automatically create meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more."
+msgstr "Crée automatiquement des balises méta et balisage de Schéma pour le partage social, médias sociaux / SMO, recherche / SEO, cartes riches, et plus."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
