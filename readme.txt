@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: meta tags, open graph, share, social, schema, twitter card, seo, video seo, local seo, local business, twitter card, woocommerce
 Contributors: jsmoriss
 Requires At Least: 3.7
-Tested Up To: 4.8.1
+Tested Up To: 4.8.2
 Requires PHP: 5.3
 Stable Tag: 3.46.1
 
