@@ -13,7 +13,7 @@ Tested Up To: 4.8.2
 Requires PHP: 5.3
 Stable Tag: 3.46.1
 
-Complete and accurate meta tags and Schema markup from your content for social sharing, social media, search / SEO / rich cards, and more.
+Automatically create complete &amp; accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.
 
 == Description ==
 
