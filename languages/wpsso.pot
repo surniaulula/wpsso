@@ -642,7 +642,7 @@ msgctxt "option value"
 msgid "default is %s"
 msgstr ""
 
-#: lib/com/form.php:92 lib/config-gettext-extract.php:12
+#: lib/com/form.php:92 lib/config-gettext-extract.php:13
 msgctxt "option value"
 msgid "checked"
 msgstr ""
@@ -745,40 +745,40 @@ msgid "Alpha and Up"
 msgstr ""
 
 #: lib/config-gettext-extract.php:7
-msgctxt "option value"
-msgid "Basic Options"
+msgctxt "plugin description"
+msgid ""
+"Automatically create meta tags and Schema markup from your content for "
+"social sharing, social media / SMO, search / SEO / rich cards, and more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:8
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Basic Options"
 msgstr ""
 
 #: lib/config-gettext-extract.php:9
 msgctxt "option value"
-msgid "Bitly (suggested)"
+msgid "Beta and Up"
 msgstr ""
 
 #: lib/config-gettext-extract.php:10
 msgctxt "option value"
-msgid "Bottom"
+msgid "Bitly (suggested)"
 msgstr ""
 
 #: lib/config-gettext-extract.php:11
 msgctxt "option value"
+msgid "Bottom"
+msgstr ""
+
+#: lib/config-gettext-extract.php:12
+msgctxt "option value"
 msgid "Center"
 msgstr ""
 
-#: lib/config-gettext-extract.php:13
+#: lib/config-gettext-extract.php:14
 msgctxt "lib file description"
 msgid "<color>Plugin Setup Guide and Other Notes</color>"
-msgstr ""
-
-#: lib/config-gettext-extract.php:14
-msgctxt "plugin description"
-msgid ""
-"Complete and accurate meta tags and Schema markup from your content for "
-"social sharing, social media, search / SEO / rich cards, and more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:15
@@ -4588,8 +4588,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Complete and accurate meta tags and Schema markup from your content for "
-"social sharing, social media, search / SEO / rich cards, and more."
+"Automatically create meta tags and Schema markup from your content for "
+"social sharing, social media / SMO, search / SEO / rich cards, and more."
 msgstr ""
 
 #. Author of the plugin/theme

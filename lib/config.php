@@ -29,7 +29,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'opt_version' => '542',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
-					'desc' => 'Complete and accurate meta tags and Schema markup from your content for social sharing, social media, search / SEO / rich cards, and more.',
+					'desc' => 'Automatically create meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
