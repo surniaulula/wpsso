@@ -21,7 +21,7 @@ Automatically create meta tags and Schema markup from your content for social sh
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
-WPSSO includes Facebook / Open Graph / Twitter Cards / Pinterest Rich Pin / Google / SEO / Rich Card / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, event details, recipe information, and much, much more &mdash; all from your existing content.
+WPSSO includes Facebook / Open Graph / Twitter Cards / Pinterest Rich Pin / Google / SEO / Rich Card / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
 
 **WPSSO uses your *existing content* for meta tags and Schema markup:**
 
@@ -31,7 +31,7 @@ There's no need to manually re-enter descriptions, titles, select image / video 
 
 WPSSO checks minimum / maximum image dimensions and aspect ratios, verifies the front-end webpage for duplicate meta tags, shows notices for missing and required images, along with validating the theme header template.
 
-**WPSSO offers special optimization features for Pinterest:**
+**WPSSO offers special meta tags and features for Pinterest:**
 
 WPSSO provides a specific image for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook Open Graph meta tag values.
 
