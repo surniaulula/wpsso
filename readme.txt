@@ -39,7 +39,7 @@ WPSSO provides a specific image for the Pinterest Pin It button, excludes non-re
 
 WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
 
-**WPSSO is *fast* and coded for performance:**
+**WPSSO is *super fast* and coded for performance:**
 
 WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light.
 

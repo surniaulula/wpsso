@@ -35,7 +35,7 @@
 
 <p>WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
 
-<p><strong>WPSSO is <em>fast</em> and coded for performance:</strong></p>
+<p><strong>WPSSO is <em>super fast</em> and coded for performance:</strong></p>
 
 <p>WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light.</p>
 
