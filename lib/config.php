@@ -1308,11 +1308,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				// social account keys and labels for organization sameas
 				'social_accounts' => array(
 					'fb_publisher_url' => 'Facebook Business Page URL',
-					'instgram_publisher_url' => 'Instagram Business URL',
+					'instgram_publisher_url' => 'Instagram Business Page URL',
 					'linkedin_publisher_url' => 'LinkedIn Company Page URL',
 					'myspace_publisher_url' => 'Myspace Business Page URL',
 					'p_publisher_url' => 'Pinterest Company Page URL',
-					'sc_publisher_url' => 'Soundcloud Business URL',
+					'sc_publisher_url' => 'Soundcloud Business Page URL',
 					'seo_publisher_url' => 'Google+ Business Page URL',
 					'tc_site' => 'Twitter Business @username',
 					'tumblr_publisher_url' => 'Tumblr Business Page URL',

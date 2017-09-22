@@ -1022,7 +1022,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-instgram_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-instgram_publisher_url':
-							$text = 'If you have an <a href="http://blog.business.instagram.com/">Instagram account for your website / business</a>, you may enter its URL here. The Instagram Business URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = 'If you have an <a href="http://blog.business.instagram.com/">Instagram account for your website / business</a>, you may enter its URL here. The Instagram Business Page URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 							break;
 
 						default:

@@ -925,7 +925,7 @@ msgstr ""
 
 #: lib/config-gettext-extract.php:45
 msgctxt "option value"
-msgid "Instagram Business URL"
+msgid "Instagram Business Page URL"
 msgstr ""
 
 #: lib/config-gettext-extract.php:46
@@ -1110,7 +1110,7 @@ msgstr ""
 
 #: lib/config-gettext-extract.php:86
 msgctxt "option value"
-msgid "Soundcloud Business URL"
+msgid "Soundcloud Business Page URL"
 msgstr ""
 
 #: lib/config-gettext-extract.php:87
