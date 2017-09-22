@@ -83,7 +83,7 @@ _x( '(settings value)', 'option value', 'wpsso' );
 _x( 'Social and Search Image Dimensions', 'lib file description', 'wpsso' );
 _x( 'Social and Search Optimization', 'metabox title', 'wpsso' );
 _x( 'Sold Out', 'option value', 'wpsso' );
-_x( 'SoundCloud Business URL', 'option value', 'wpsso' );
+_x( 'Soundcloud Business URL', 'option value', 'wpsso' );
 _x( 'SSO Desc.', 'column header', 'wpsso' );
 _x( 'SSO Image', 'column header', 'wpsso' );
 _x( 'SSO', 'menu title', 'wpsso' );

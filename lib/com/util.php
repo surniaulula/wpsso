@@ -938,41 +938,55 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_https( $url = '' ) {
-			if ( ! empty( $url ) ) {
-				if ( strpos( $url, '://' ) &&	// just in case
-					parse_url( $url, PHP_URL_SCHEME ) === 'https' ) {
-					return true;
-				} else {
-					return false;
-				}
-			} elseif ( is_ssl() ) {		// since wp 2.6.0
-				return true;
-			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) &&
-				strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) === 'https' ) {
-				return true;
-			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_SSL'] ) &&
-				strtolower( $_SERVER['HTTP_X_FORWARDED_SSL'] ) === 'on' ) {
-				return true;
-			} else {
-				return false;
+			static $cache = array();
+			if ( isset( $cache[$url] ) ) {
+				return $cache[$url];
 			}
+			if ( ! empty( $url ) ) {
+				if ( strpos( $url, '://' ) && 
+					parse_url( $url, PHP_URL_SCHEME ) === 'https' ) {
+					return $cache[$url] = true;
+				} else {
+					return $cache[$url] = false;
+				}
+			} else {
+				if ( is_ssl() ) {
+					return $cache[$url] = true;
+				} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) &&
+					strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) === 'https' ) {
+					return $cache[$url] = true;
+				} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_SSL'] ) &&
+					strtolower( $_SERVER['HTTP_X_FORWARDED_SSL'] ) === 'on' ) {
+					return $cache[$url] = true;
+				}
+			}
+			return $cache[$url] = false;
 		}
 
 		public static function get_prot( $url = '' ) {
-			if ( self::is_https( $url ) ) {
+			if ( ! empty( $url ) ) {
+				return self::is_https( $url ) ? 'https' : 'http';
+			} elseif ( self::is_https() ) {
 				return 'https';
 			} elseif ( is_admin() )  {
-				if ( self::get_const( 'FORCE_SSL_ADMIN' ) ) {
+				if ( defined( 'FORCE_SSL_ADMIN' ) && FORCE_SSL_ADMIN ) {
 					return 'https';
 				}
-			} elseif ( self::get_const( 'FORCE_SSL' ) ) {
+			} elseif ( defined( 'FORCE_SSL' ) && FORCE_SSL ) {
 				return 'https';
 			}
 			return 'http';
 		}
 
-		public static function add_prot( $url = '' ) {
-			return self::get_prot( $url ).'://'.preg_replace( '/^(.*://|//)/', '', $url );
+		public static function update_prot( $url = '' ) {
+			if ( strpos( $url, '/' ) === 0 ) {	// skip relative urls
+				return $url;
+			}
+			$prot_slash = self::get_prot().'://';
+			if ( strpos( $url, $prot_slash ) === 0 ) {	// skip correct urls
+				return $url;
+			}
+			return preg_replace( '/^([a-z]+:\/\/)/', $prot_slash, $url );
 		}
 
 		public static function get_const( $const, $not_found = null ) {
@@ -1658,39 +1672,45 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// return the first url from the associative array (og:image:secure_url, og:image:url, og:image)
-		public static function get_mt_media_url( array $assoc, $mt_pre = 'og:image' ) {
+		public static function get_mt_media_url( array $assoc, $mt_prefix = 'og:image', 
+			array $mt_suffixes = array( ':secure_url', ':url', '', ':embed_url' ) ) {
 
-			// check for two dimensional arrays and keep following the first array element
-			// prefer the $mt_pre array key (if it's available)
-			if ( isset( $assoc[$mt_pre] ) && is_array( $assoc[$mt_pre] ) ) {
-				$first_element = reset( $assoc[$mt_pre] );
+			/*
+			 * Check for two dimensional arrays and keep following the first array element.
+			 * Prefer the $mt_prefix array key (if it's available).
+			 */
+			if ( isset( $assoc[$mt_prefix] ) && is_array( $assoc[$mt_prefix] ) ) {
+				$first_element = reset( $assoc[$mt_prefix] );
 			} else {
 				$first_element = reset( $assoc );
 			}
 
 			if ( is_array( $first_element ) ) {
-				return self::get_mt_media_url( $first_element, $mt_pre );
+				return self::get_mt_media_url( $first_element, $mt_prefix );
 			}
 
-			// first element is a text string, so check the array keys
-			foreach ( array( ':secure_url', ':url', '' ) as $key ) {
-				if ( ! empty( $assoc[$mt_pre.$key] ) ) {
-					return $assoc[$mt_pre.$key];
+			/*
+			 * First element is a text string, so check the array keys.
+			 */
+			foreach ( $mt_suffixes as $mt_suffix ) {
+				if ( ! empty( $assoc[$mt_prefix.$mt_suffix] ) ) {
+					return $assoc[$mt_prefix.$mt_suffix];	// return first match
 				}
 			}
 
-			return '';
+			return '';	// empty string
 		}
 
-		public static function get_mt_prop_video() {
-			return array(
+		public static function get_mt_prop_video( array $og_video = array() ) {
+			return array_merge( array(
 				'og:video:secure_url' => '',
 				'og:video:url' => '',
-				// 'og:video' => '',			// not used - do not include
+				// 'og:video' => '',			// do not include - use og:video:url instead
 				'og:video:type' => 'application/x-shockwave-flash',
 				'og:video:width' => '',
 				'og:video:height' => '',
 				'og:video:tag' => array(),
+
 				'og:video:duration' => '',		// non-standard / internal meta tag
 				'og:video:upload_date' => '',		// non-standard / internal meta tag
 				'og:video:thumbnail_url' => '',		// non-standard / internal meta tag
@@ -1718,8 +1738,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				'al:android:package' => '',
 				'al:android:url' => '',
 				'al:web:url' => '',
-				'al:web:should_fallback' => 'true',
-			);
+				'al:web:should_fallback' => 'false',
+			), $og_video );
 		}
 
 		// pre-define the array key order for the list() construct (which assigns elements from right to left)

@@ -521,10 +521,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( ! empty( $single_video['og:video:embed_url'] ) ) {
 
 						// start with a copy of all og meta tags (exclude applink meta tags)
-						$single_embed = SucomUtil::preg_grep_keys( '/^og:/', $single_video );
+						$single_embed = SucomUtil::get_mt_prop_video ( $single_video );
+						$single_embed = SucomUtil::preg_grep_keys( '/^og:/', $single_embed );
 
 						if ( strpos( $single_video['og:video:embed_url'], 'https:' ) !== false ) {
-
 							if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
 								$single_embed['og:video:secure_url'] = $single_video['og:video:embed_url'];
 							} else {

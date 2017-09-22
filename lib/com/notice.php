@@ -28,6 +28,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public $enabled = true;
 
 		public function __construct( &$plugin ) {
+
 			$this->p =& $plugin;
 
 			if ( ! empty( $this->p->debug->enabled ) ) {
@@ -557,13 +558,23 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		private function get_nag_style() {
-			$custom_style_css = '';
 
-			if ( isset( $this->p->cf['menu']['color'] ) ) {
+			$custom_style_css = '';
+			$uca = strtoupper( $this->lca );
+
+			if ( defined( $uca.'_UPDATE_NAG_BORDER' ) ) {
 				$custom_style_css .= '
 					.'.$this->lca.'-notice.update-nag {
-						border:1px dotted #'.$this->p->cf['menu']['color'].';
+						border:'.constant( $uca.'_UPDATE_NAG_BORDER' ).';
 						border-top:none;
+					}
+				';
+			}
+
+			if ( defined( $uca.'_UPDATE_NAG_BGCOLOR' ) ) {
+				$custom_style_css .= '
+					.'.$this->lca.'-notice.update-nag {
+						background-color:'.constant( $uca.'_UPDATE_NAG_BGCOLOR' ).';
 					}
 				';
 			}
@@ -575,7 +586,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.'.$this->lca.'-notice.update-nag > div {
 					display:block;
 					margin:0 auto;
-					max-width:850px;
+					max-width:800px;
 				}
 				.'.$this->lca.'-notice.update-nag p,
 				.'.$this->lca.'-notice.update-nag ul,

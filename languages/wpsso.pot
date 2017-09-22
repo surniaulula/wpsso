@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.46.1\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.46.2-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -678,49 +678,49 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:108
+#: lib/com/notice.php:109
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr ""
 
-#: lib/com/notice.php:118
+#: lib/com/notice.php:119
 msgid "Reference URL: %s"
-msgstr ""
-
-#: lib/com/notice.php:350
-msgctxt "notification type"
-msgid "error"
 msgstr ""
 
 #: lib/com/notice.php:351
 msgctxt "notification type"
+msgid "error"
+msgstr ""
+
+#: lib/com/notice.php:352
+msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:356
+#: lib/com/notice.php:357
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:358
+#: lib/com/notice.php:359
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:500
+#: lib/com/notice.php:501
 msgid "%s Note"
 msgstr ""
 
-#: lib/com/notice.php:545
+#: lib/com/notice.php:546
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:1273
+#: lib/com/util.php:1287
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1280
+#: lib/com/util.php:1294
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -1110,7 +1110,7 @@ msgstr ""
 
 #: lib/config-gettext-extract.php:86
 msgctxt "option value"
-msgid "SoundCloud Business URL"
+msgid "Soundcloud Business URL"
 msgstr ""
 
 #: lib/config-gettext-extract.php:87
@@ -1920,18 +1920,18 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1067 lib/pro/util/checkimgdims.php:66
+#: lib/media.php:1079 lib/pro/util/checkimgdims.php:66
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:1127
+#: lib/media.php:1139
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1145
+#: lib/media.php:1157
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -2318,7 +2318,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:412 lib/util.php:1988
+#: lib/messages.php:412 lib/util.php:1989
 msgid "No options available."
 msgstr ""
 
@@ -3713,7 +3713,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:535 lib/util.php:873
+#: lib/post.php:535 lib/util.php:874
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -3859,13 +3859,13 @@ msgid ""
 "for the required %4$s image dimensions."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:156 lib/pro/media/vimeo.php:133
-#: lib/pro/media/wistia.php:264 lib/util.php:938
+#: lib/pro/media/slideshare.php:162 lib/pro/media/vimeo.php:141
+#: lib/pro/media/wistia.php:268 lib/util.php:939
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:159 lib/pro/media/vimeo.php:136
-#: lib/pro/media/wistia.php:267 lib/util.php:941
+#: lib/pro/media/slideshare.php:165 lib/pro/media/vimeo.php:144
+#: lib/pro/media/wistia.php:271 lib/util.php:942
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4522,36 +4522,36 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/util.php:861
+#: lib/util.php:862
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:884
+#: lib/util.php:885
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:983
+#: lib/util.php:984
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:2015
+#: lib/util.php:2016
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2019
+#: lib/util.php:2020
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2022
+#: lib/util.php:2023
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2026
+#: lib/util.php:2027
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

@@ -884,7 +884,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			// detect standard iframe/embed tags - use the wpsso_content_videos filter for additional html5/javascript methods
 			if ( preg_match_all( '/<(iframe|embed)[^<>]*? (data-share-src|data-lazy-src|data-src|src)=[\'"]'.
-				'([^\'"<>]+\/(embed\/|embed_code\/|swf\/|v\/|video\/|video\.php\?)[^\'"<>]+)[\'"][^<>]*>/i',
+				'([^\'"<>]+\/(embed\/|embed_code\/|player\/|swf\/|v\/|video\/|video\.php\?)[^\'"<>]+)[\'"][^<>]*>/i',
 					$content, $all_matches, PREG_SET_ORDER ) ) {
 
 				$content_vid_max = SucomUtil::get_const( 'WPSSO_CONTENT_VIDEOS_MAX_LIMIT', 5 );
@@ -995,6 +995,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				// fallback to the original url
 				if ( empty( $media_url ) && $prefix === 'og:video' && $fallback ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'no video returned by filters' );
 						$this->p->debug->log( 'falling back to embed url: '.$embed_url );
@@ -1039,6 +1040,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'video image width / height values: '.
 							$og_video['og:image:width'].'x'.$og_video['og:image:height'] );
+					}
+				} elseif ( $prefix === 'og:video' ) {
+					foreach ( array( ':secure_url', ':url', '', ':embed_url' ) as $key ) {
+						if ( empty( $og_video[$prefix.$key] ) ) {
+							unset( $og_video[$prefix.$key] );
+						}
+					}
+					if ( ! SucomUtil::get_mt_media_url( $og_video, $prefix, array( ':secure_url', ':url', '' ) ) ) {
+						unset( $og_video[$prefix.':type'] );
+						unset( $og_video[$prefix.':width'] );
+						unset( $og_video[$prefix.':height'] );
 					}
 				}
 			}
@@ -1152,8 +1164,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		public function can_make_size( $img_meta, $size_info ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$full_width = empty( $img_meta['width'] ) ? 0 : $img_meta['width'];
 			$full_height = empty( $img_meta['height'] ) ? 0 : $img_meta['height'];
@@ -1176,9 +1190,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 
 			if ( ( ! $img_cropped && ( ! $is_sufficient_w && ! $is_sufficient_h ) ) ||
-				( $img_cropped && ( ! $is_sufficient_w || ! $is_sufficient_h ) ) )
-					$ret = false;
-			else $ret = true;
+				( $img_cropped && ( ! $is_sufficient_w || ! $is_sufficient_h ) ) ) {
+				$ret = false;
+			} else {
+				$ret = true;
+			}
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'full size image of '.$full_width.'x'.$full_height.( $upscale_multiplier !== 1 ?
@@ -1188,6 +1204,132 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			return $ret;
+		}
+
+		public function add_og_video_from_url( array &$og_video, $url ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			/*
+			 * Fetch HTML using the Facebook agent to get Open Graph meta tags.
+			 *
+			 * get_head_meta( $request, $query, $libxml_errors, $curl_opts )
+			 */
+			$metas = $this->p->util->get_head_meta( $url, '//meta', false, array(
+				'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK,
+			) );
+
+			if ( isset( $metas['meta'] ) ) {
+
+				foreach ( $metas as $m ) {		// loop through all meta tags
+					foreach ( $m as $a ) {		// loop through all attributes for that meta tag
+
+						$meta_type = key( $a );
+						$meta_name = reset( $a );
+						$meta_match = $meta_type.'-'.$meta_name;
+
+						switch ( $meta_match ) {
+
+							// use the property meta tag content as-is
+							case 'property-og:video:width':
+							case 'property-og:video:height':
+							case ( strpos( $meta_match, 'property-al:' ) === 0 ? true : false ):	// Facebook AppLink
+								if ( ! empty( $a['content'] ) ) {
+									$og_video[$a['property']] = $a['content'];
+								}
+								break;
+
+							// add the property meta tag content as an array
+							case 'property-og:video:tag':
+								if ( ! empty( $a['content'] ) ) {
+									$og_video[$a['property']][] = $a['content'];	// array of tags
+								}
+								break;
+
+							case 'property-og:image:secure_url':
+								if ( ! empty( $a['content'] ) ) {
+
+									// add the meta name as a query string to know where the value came from
+									$a['content'] = add_query_arg( 'm', $meta_name, $a['content'] );
+
+									if ( ! empty( $this->p->options['add_meta_property_og:image:secure_url'] ) ) {
+										$og_video['og:image:secure_url'] = $a['content'];
+									} else {
+										$og_video['og:image'] = $a['content'];
+									}
+
+									$og_video['og:video:thumbnail_url'] = $a['content'];
+									$og_video['og:video:has_image'] = true;
+								}
+								break;
+
+							case 'property-og:image:url':
+							case 'property-og:image':
+								if ( ! empty( $a['content'] ) ) {
+
+									// add the meta name as a query string to know where the value came from
+									$a['content'] = add_query_arg( 'm', $meta_name, $a['content'] );
+
+									if ( strpos( $a['content'], 'https:' ) === 0 &&
+										! empty( $this->p->options['add_meta_property_og:image:secure_url'] ) ) {
+										$og_video['og:image:secure_url'] = $a['content'];
+									}
+
+									$og_video['og:image'] = $a['content'];
+									$og_video['og:video:thumbnail_url'] = $a['content'];
+									$og_video['og:video:has_image'] = true;
+								}
+								break;
+
+							// add additional, non-standard properties
+							// like og:video:title and og:video:description
+							case 'property-og:title':
+							case 'property-og:description':
+								if ( ! empty( $a['content'] ) ) {
+									$og_key = 'og:video:'.substr( $a['property'], 3 );
+									$og_video[$og_key] = $this->p->util->cleanup_html_tags( $a['content'] );
+									if ( $this->p->debug->enabled ) {
+										$this->p->debug->log( 'adding '.$og_key.' = '.$og_video[$og_key] );
+									}
+								}
+								break;
+
+							// twitter:app:name:iphone
+							// twitter:app:id:iphone
+							// twitter:app:url:iphone
+							case ( strpos( $meta_match, 'name-twitter:app:' ) === 0 ? true : false ):	// Twitter Apps
+								if ( ! empty( $a['content'] ) ) {
+									if ( preg_match( '/^twitter:app:([a-z]+):([a-z]+)$/', $meta_name, $matches ) ) {
+										$og_video['og:video:'.$matches[2].'_'.$matches[1]] = $a['content'];
+									}
+								}
+								break;
+
+							case 'itemprop-datePublished':
+								if ( ! empty( $a['content'] ) ) {
+									$og_video['og:video:upload_date'] = gmdate( 'c', strtotime( $a['content'] ) );
+								}
+								break;
+
+							case 'itemprop-embedUrl':
+							case 'itemprop-embedURL':
+								if ( ! empty( $a['content'] ) ) {
+									$og_video['og:video:embed_url'] = $a['content'];
+								}
+								break;
+						}
+					}
+				}
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $og_video );
+				}
+	
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'no head meta found in '.$url );
+			}
 		}
 	}
 }

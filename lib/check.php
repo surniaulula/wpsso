@@ -129,25 +129,16 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						 * Pro Version Features / Options
 						 */
 						case 'media-facebook':
-							$chk['optval'] = 'plugin_facebook_api';
-							break;
 						case 'media-gravatar':
-							$chk['optval'] = 'plugin_gravatar_api';
-							break;
 						case 'media-slideshare':
-							$chk['optval'] = 'plugin_slideshare_api';
+						case 'media-soundcloud':
+						case 'media-vimeo':
+						case 'media-wistia':
+						case 'media-youtube':
+							$chk['optval'] = 'plugin_'.$id.'_api';
 							break;
 						case 'media-upscale':
 							$chk['optval'] = 'plugin_upscale_images';
-							break;
-						case 'media-vimeo':
-							$chk['optval'] = 'plugin_vimeo_api';
-							break;
-						case 'media-wistia':
-							$chk['optval'] = 'plugin_wistia_api';
-							break;
-						case 'media-youtube':
-							$chk['optval'] = 'plugin_youtube_api';
 							break;
 						case 'admin-general':
 						case 'admin-advanced':

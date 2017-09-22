@@ -25,8 +25,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.46.1',		// plugin version
-					'opt_version' => '542',		// increment when changing default options
+					'version' => '3.46.2-dev.1',		// plugin version
+					'opt_version' => '543',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
 					'desc' => 'Automatically create meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -133,6 +133,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'ngg' => '(plugin) NextGEN Gallery',
 								'rtmedia' => '(plugin) rtMedia for WordPress, BuddyPress and bbPress',
 								'slideshare' => '(api) Slideshare API',
+								'soundcloud' => '(api) Soundcloud API',
 								'upscale' => '(tool) WP Media Library Image Upscaling',
 								'vimeo' => '(api) Vimeo Video API',
 								'wistia' => '(api) Wistia Video API',
@@ -861,6 +862,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_gravatar_api' => 1,			// Include Author Gravatar Image
 					'plugin_facebook_api' => 1,			// Check for Videos in Content: Facebook
 					'plugin_slideshare_api' => 1,			// Check for Videos in Content: Slideshare
+					'plugin_soundcloud_api' => 1,			// Check for Videos in Content: Soundcloud
 					'plugin_vimeo_api' => 1,			// Check for Videos in Content: Vimeo
 					'plugin_wistia_api' => 1,			// Check for Videos in Content: Wistia
 					'plugin_youtube_api' => 1,			// Check for Videos in Content: Youtube
@@ -960,6 +962,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cm_pin_name' => 'pinterest',
 					'plugin_cm_pin_label' => 'Pinterest URL',
 					'plugin_cm_pin_enabled' => 1,
+					'plugin_cm_sc_name' => 'soundcloud',
+					'plugin_cm_sc_label' => 'Soundcloud URL',
+					'plugin_cm_sc_enabled' => 1,
 					'plugin_cm_tumblr_name' => 'tumblr',
 					'plugin_cm_tumblr_label' => 'Tumblr URL',
 					'plugin_cm_tumblr_enabled' => 1,
@@ -1055,6 +1060,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'buffer' => 'buffer',
 					'reddit' => 'reddit',
 					'managewp' => 'managewp',
+					'soundcloud' => 'sc',
 					'stumbleupon' => 'stumble',
 					'tumblr' => 'tumblr',
 					'youtube' => 'yt',
@@ -1306,7 +1312,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'linkedin_publisher_url' => 'LinkedIn Company Page URL',
 					'myspace_publisher_url' => 'Myspace Business Page URL',
 					'p_publisher_url' => 'Pinterest Company Page URL',
-					'sc_publisher_url' => 'SoundCloud Business URL',
+					'sc_publisher_url' => 'Soundcloud Business URL',
 					'seo_publisher_url' => 'Google+ Business Page URL',
 					'tc_site' => 'Twitter Business @username',
 					'tumblr_publisher_url' => 'Tumblr Business Page URL',
@@ -2156,18 +2162,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$var_const['WPSSO_CACHEURL'] = WPSSO_URLPATH.'cache/';
 			}
 
-			$var_const['WPSSO_MENU_ORDER'] = '99.10';		// position of the SSO menu item
-			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;		// highlight the SSO menu icon
-			$var_const['WPSSO_HIDE_ALL_ERRORS'] = false;		// auto-hide all error notices
-			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;		// auto-hide all warning notices
-			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;		// output pretty / human readable json
-			$var_const['WPSSO_UNDEF_INT'] = -1;			// undefined width / height value
+			$var_const['WPSSO_MENU_ORDER'] = '99.10';			// position of the SSO menu item
+			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;			// highlight the SSO menu icon
+			$var_const['WPSSO_HIDE_ALL_ERRORS'] = false;			// auto-hide all error notices
+			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;			// auto-hide all warning notices
+			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;			// output pretty / human readable json
+			$var_const['WPSSO_UNDEF_INT'] = -1;				// undefined width / height value
 			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 1.00;
-			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT'] = 5;	// maximum number of images extracted from the content
-			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT'] = 5;	// maximum number of videos extracted from the content
-			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = false;	// clear cache before fetching shortlink url
-			$var_const['WPSSO_DUPE_CHECK_WARNING_SECS'] = 2.5;	// issue a warning if getting shortlink took more than 2.5 seconds
-			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.0;	// crawlers often time-out after 3 seconds
+			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT'] = 5;		// maximum number of images extracted from the content
+			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT'] = 5;		// maximum number of videos extracted from the content
+			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = false;		// clear cache before fetching shortlink url
+			$var_const['WPSSO_DUPE_CHECK_WARNING_SECS'] = 2.5;		// issue a warning if getting shortlink took more than 2.5 seconds
+			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.0;		// crawlers often time-out after 3 seconds
+			$var_const['WPSSO_UPDATE_NAG_BORDER'] = '1px dotted #33cc33';	// notice nag border
+			$var_const['WPSSO_UPDATE_NAG_BGCOLOR'] = '#e0f7e0';		// notice nag background color
 
 			/*
 			 * WPSSO option and meta array names

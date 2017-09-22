@@ -827,7 +827,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// query examples:
 		//	/html/head/link|/html/head/meta
-		//	/html/head/meta[starts-with(@property, 'og:video:')]
+		//	/html/head/link[@rel="canonical"]
+		//	/html/head/meta[starts-with(@property, "og:video:")]
 		public function get_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false, array $curl_opts = array() ) {
 
 			if ( empty( $request ) ) {	// just in case
