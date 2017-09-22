@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
 			$post_id = $mod['is_post'] ? $mod['id'] : false;
 			$check_dupes = true;
-			$prev_count = 0;
+			$preview_count = 0;
 
 			$mt_og = apply_filters( $lca.'_og_seed', $mt_og, $mod );
 
@@ -217,24 +217,33 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$this->p->debug->log( 'getting videos for og:video meta tag' );
 					}
 					$mt_og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $mod, $check_dupes, 'og' );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'checking for video preview images' );
+					}
 					if ( ! empty( $mt_og['og:video'] ) && is_array( $mt_og['og:video'] ) ) {
+
 						foreach ( $mt_og['og:video'] as $num => $single_video ) {
-							if ( isset( $single_video['og:video:type'] ) &&
-								$single_video['og:video:type'] !== 'text/html' &&
-									SucomUtil::get_mt_media_url( $single_video, 'og:image' ) ) {
-								$prev_count++;
+
+							if ( ( $image_url = SucomUtil::get_mt_media_url( $single_video, 'og:image' ) ) &&
+								$this->p->util->is_uniq_url( $image_url, 'preview' ) ) {
+
+								$preview_count++;
 								$mt_og['og:video'][$num]['og:video:has_image'] = true;
+
 							} else {
 								$mt_og['og:video'][$num]['og:video:has_image'] = false;
 							}
 						}
-						if ( $prev_count > 0 ) {
-							$max['og_img_max'] -= $prev_count;
+
+						if ( $preview_count > 0 ) {
+							$max['og_img_max'] -= $preview_count;
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $prev_count.
-									' video preview images found (og_img_max adjusted to '.
-										$max['og_img_max'].')' );
+								$this->p->debug->log( $preview_count.' video preview images found '.
+									'(og_img_max adjusted to '.$max['og_img_max'].')' );
 							}
+						} elseif ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'no video preview images found' );
 						}
 					}
 				}
@@ -260,7 +269,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$size_name, $mod, $check_dupes, $md_pre );
 
 						// if there's no image, and no video preview, then add the default image for singular (aka post) webpages
-						if ( empty( $mt_og[$md_pre.':image'] ) && ! $prev_count && $mod['is_post'] ) {
+						if ( empty( $mt_og[$md_pre.':image'] ) && ! $preview_count && $mod['is_post'] ) {
 							$mt_og[$md_pre.':image'] = $this->p->media->get_default_images( $max['og_img_max'],
 								$size_name, $check_dupes );
 						}
@@ -309,8 +318,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'product price amount must be numeric' );
 						}
-						unset( $mt_og['product:price:amount'],
-							$mt_og['product:price:currency'] );
+						unset( $mt_og['product:price:amount'] );
+						unset( $mt_og['product:price:currency'] );
 					}
 				}
 			}
@@ -480,10 +489,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				foreach ( $og_ret as $num => $single_video ) {
-					$og_ret[$num]['og:video:has_image'] = false;
 					foreach ( SucomUtil::preg_grep_keys( '/^og:image(:.*)?$/', $single_video ) as $k => $v ) {
 						unset ( $og_ret[$num][$k] );
 					}
+					$og_ret[$num]['og:video:has_image'] = false;
 				}
 			}
 
@@ -535,10 +544,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$single_embed['og:video:url'] = $single_video['og:video:embed_url'];
 						$single_embed['og:video:type'] = 'text/html';
 
-						// add application/x-shockwave-flash first
-						$og_extend[] = $single_video;
+						// embedded videos may not have width / height information
+						foreach ( array( 'og:video:width', 'og:video:height' ) as $mt_name ) {
+							if ( isset( $single_embed[$mt_name] ) && $single_embed[$mt_name] === '' ) {
+								unset( $single_embed[$mt_name] );
+							}
+						}
 
-						// add the new text/html video second
+						// add application/x-shockwave-flash video first and the text/html video second
+						if ( SucomUtil::get_mt_media_url( $single_video, 'og:video', array( ':secure_url', ':url', '' ) ) ) {
+							$og_extend[] = $single_video;
+						}
 						$og_extend[] = $single_embed;
 
 					} else {

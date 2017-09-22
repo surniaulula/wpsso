@@ -906,9 +906,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( '<'.$media[1].'/> html tag found '.$media[2].' = '.$media[3] );
 					}
 					$embed_url = $media[3];
-					if ( ! empty( $embed_url ) &&
-						( $check_dupes == false || 
-							$this->p->util->is_uniq_url( $embed_url, 'video' ) ) ) {	// $context = 'video'
+					if ( ! empty( $embed_url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $embed_url, 'video' ) ) ) {
 
 						$embed_width = preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i',
 							$media[0], $match) ? $match[1] : WPSSO_UNDEF_INT;
@@ -1040,17 +1038,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'video image width / height values: '.
 							$og_video['og:image:width'].'x'.$og_video['og:image:height'] );
-					}
-				} elseif ( $prefix === 'og:video' ) {
-					foreach ( array( ':secure_url', ':url', '', ':embed_url' ) as $key ) {
-						if ( empty( $og_video[$prefix.$key] ) ) {
-							unset( $og_video[$prefix.$key] );
-						}
-					}
-					if ( ! SucomUtil::get_mt_media_url( $og_video, $prefix, array( ':secure_url', ':url', '' ) ) ) {
-						unset( $og_video[$prefix.':type'] );
-						unset( $og_video[$prefix.':width'] );
-						unset( $og_video[$prefix.':height'] );
 					}
 				}
 			}

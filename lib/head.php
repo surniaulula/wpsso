@@ -571,30 +571,25 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					} else foreach ( $d_val as $dd_num => $dd_val ) {	// second dimension array
 
 						if ( SucomUtil::is_assoc( $dd_val ) ) {
+							$use_video_image = true;
 
-							// prevent duplicates - ignore images from text/html video
-							if ( isset( $dd_val['og:video:type'] ) && $dd_val['og:video:type'] === 'text/html' ) {
-
-								// skip if text/html video markup is disabled
-								if ( empty( $this->p->options['og_vid_html_type'] ) ) {
-									continue;
+							if ( isset( $dd_val['og:video:type'] ) ) {
+								if ( empty( $dd_val['og:video:has_image'] ) ) {
+									$use_video_image = false;
 								}
-
-								unset( $dd_val['og:video:embed_url'] );	// redundant - just in case
-
-								$ignore_images = true;
-
-							} else {
-								$ignore_images = false;
+								if ( $dd_val['og:video:type'] === 'text/html' ) {
+									// skip if text/html video markup is disabled
+									if ( empty( $this->p->options['og_vid_html_type'] ) ) {
+										continue;
+									}
+									unset( $dd_val['og:video:embed_url'] );	// redundant - just in case
+								}
 							}
 
 							foreach ( $dd_val as $ddd_name => $ddd_val ) {	// third dimension array (associative)
-
-								// prevent duplicates - ignore images from text/html video
-								if ( $ignore_images && strpos( $ddd_name, 'og:image' ) !== false ) {
+								if ( ! $use_video_image && strpos( $ddd_name, 'og:image' ) === 0 ) {
 									continue;
 								}
-
 								if ( is_array( $ddd_val ) ) {
 									if ( empty( $ddd_val ) ) {
 										$singles[] = $this->get_single_mt( $tag,
@@ -604,16 +599,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 											$type, $ddd_name, $dddd_val, $d_name.':'.
 												( $dd_num + 1 ), $mod );
 									}
-								} else $singles[] = $this->get_single_mt( $tag,
-									$type, $ddd_name, $ddd_val, $d_name.':'.
-										( $dd_num + 1 ), $mod );
+								} else {
+									$singles[] = $this->get_single_mt( $tag,
+										$type, $ddd_name, $ddd_val, $d_name.':'.
+											( $dd_num + 1 ), $mod );
+								}
 							}
-						} else $singles[] = $this->get_single_mt( $tag,
-							$type, $d_name, $dd_val, $d_name.':'.
-								( $dd_num + 1 ), $mod );
+						} else {
+							$singles[] = $this->get_single_mt( $tag,
+								$type, $d_name, $dd_val, $d_name.':'.
+									( $dd_num + 1 ), $mod );
+						}
 					}
-				} else $singles[] = $this->get_single_mt( $tag,
-					$type, $d_name, $d_val, '', $mod );
+				} else {
+					$singles[] = $this->get_single_mt( $tag,
+						$type, $d_name, $d_val, '', $mod );
+				}
 			}
 
 			$merged = array();
