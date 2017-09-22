@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.46.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-20 08:40-0600\n"
-"PO-Revision-Date: 2017-09-22 08:09-0600\n"
+"POT-Creation-Date: 2017-09-22 09:24-0600\n"
+"PO-Revision-Date: 2017-09-22 09:25-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -627,45 +627,45 @@ msgctxt "option value"
 msgid "(default)"
 msgstr "(défaut)"
 
-#: lib/com/notice.php:108
+#: lib/com/notice.php:109
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr "Cet avis peut être masqué temporairement pour une période de%s."
 
-#: lib/com/notice.php:118
+#: lib/com/notice.php:119
 msgid "Reference URL: %s"
 msgstr "URL de référence: %s"
 
-#: lib/com/notice.php:350
+#: lib/com/notice.php:351
 msgctxt "notification type"
 msgid "error"
 msgstr "erreur"
 
-#: lib/com/notice.php:351
+#: lib/com/notice.php:352
 msgctxt "notification type"
 msgid "warning"
 msgstr "attention"
 
-#: lib/com/notice.php:356
+#: lib/com/notice.php:357
 msgid "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
 
-#: lib/com/notice.php:358
+#: lib/com/notice.php:359
 msgid "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s message</a>."
 msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
 
-#: lib/com/notice.php:500
+#: lib/com/notice.php:501
 msgid "%s Note"
 msgstr "Avis %s"
 
-#: lib/com/notice.php:545
+#: lib/com/notice.php:546
 msgid "Dismiss"
 msgstr "Masquer"
 
-#: lib/com/util.php:1273
+#: lib/com/util.php:1287
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr "Les informations pour l'extension \"%s\" contiennent un lien de téléchargement invalide."
 
-#: lib/com/util.php:1280
+#: lib/com/util.php:1294
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr "L'information pour l'extension \"%s\" ne contient pas de lien de téléchargement."
 
@@ -868,7 +868,7 @@ msgstr "Champ personnalisé URL d'image"
 
 #: lib/config-gettext-extract.php:45
 msgctxt "option value"
-msgid "Instagram Business URL"
+msgid "Instagram Business Page URL"
 msgstr "URL page d'affaires Instagram"
 
 #: lib/config-gettext-extract.php:46
@@ -1053,8 +1053,8 @@ msgstr "Épuisé"
 
 #: lib/config-gettext-extract.php:86
 msgctxt "option value"
-msgid "SoundCloud Business URL"
-msgstr "URL page d'affaires SoundCloud"
+msgid "Soundcloud Business Page URL"
+msgstr "URL page d'affaires Soundcloud"
 
 #: lib/config-gettext-extract.php:87
 msgctxt "column header"
@@ -1828,15 +1828,15 @@ msgstr "Corruption possible de la bibliothèque de médias détecté &mdash; le 
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1067 lib/pro/util/checkimgdims.php:66
+#: lib/media.php:1079 lib/pro/util/checkimgdims.php:66
 msgid "Media Library"
 msgstr "la bibliothèque de médias"
 
-#: lib/media.php:1127
+#: lib/media.php:1139
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:1145
+#: lib/media.php:1157
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -2112,7 +2112,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "Notez que certaines metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:412 lib/util.php:1988
+#: lib/messages.php:412 lib/util.php:1989
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -3119,7 +3119,7 @@ msgstr "Veuillez envisager d'améliorer la vitesse de votre site."
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:535 lib/util.php:873
+#: lib/post.php:535 lib/util.php:874
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
@@ -3249,13 +3249,13 @@ msgstr "recadrée"
 msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
 msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
-#: lib/pro/media/slideshare.php:156 lib/pro/media/vimeo.php:133
-#: lib/pro/media/wistia.php:264 lib/util.php:938
+#: lib/pro/media/slideshare.php:162 lib/pro/media/vimeo.php:141
+#: lib/pro/media/wistia.php:268 lib/util.php:939
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr "<a href=\"%1$s\">La fonction PHP %2$s</a> n'est pas disponible."
 
-#: lib/pro/media/slideshare.php:159 lib/pro/media/vimeo.php:136
-#: lib/pro/media/wistia.php:267 lib/util.php:941
+#: lib/pro/media/slideshare.php:165 lib/pro/media/vimeo.php:144
+#: lib/pro/media/wistia.php:271 lib/util.php:942
 msgid "Please contact your hosting provider to have the missing function installed."
 msgstr "SVP contactez votre hébergeur pour installer la fonction manquante."
 
@@ -3874,34 +3874,34 @@ msgstr "La valeur de l'option '%s' doit être du code HTML - l'option est remise
 msgid "The value of option '%s' cannot be an empty string - resetting option to default value."
 msgstr "La valeur de l'option '%s' ne peut pas être un chaine de caractère vide - l'option est remise à sa valeur par défaut."
 
-#: lib/util.php:861
+#: lib/util.php:862
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:884
+#: lib/util.php:885
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
-#: lib/util.php:983
+#: lib/util.php:984
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:2015
+#: lib/util.php:2016
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2019
+#: lib/util.php:2020
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:2022
+#: lib/util.php:2023
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2026
+#: lib/util.php:2027
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
