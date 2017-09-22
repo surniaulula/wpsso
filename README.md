@@ -85,11 +85,11 @@
 <ul>
 <li>Facebook Business Page URL</li>
 <li>Google+ Business Page URL</li>
-<li>Instagram Business URL</li>
+<li>Instagram Business Page URL</li>
 <li>LinkedIn Company Page URL</li>
 <li>Myspace Business Page URL</li>
 <li>Pinterest Company Page URL</li>
-<li>SoundCloud Business URL</li>
+<li>Soundcloud Business Page URL</li>
 <li>Tumblr Business Page URL</li>
 <li>Twitter Business @username</li>
 <li>YouTube Business Channel URL</li>

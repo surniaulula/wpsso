@@ -86,11 +86,11 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 * Facebook Business Page URL
 * Google+ Business Page URL
-* Instagram Business URL
+* Instagram Business Page URL
 * LinkedIn Company Page URL
 * Myspace Business Page URL
 * Pinterest Company Page URL
-* SoundCloud Business URL
+* Soundcloud Business Page URL
 * Tumblr Business Page URL
 * Twitter Business @username
 * YouTube Business Channel URL
@@ -692,7 +692,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Added removal of HTML tags from the author / user description value in the Schema Person markup.
 	* Added new social business account URLs for Google's Knowledge Graph:
-		* SoundCloud Business URL
+		* Soundcloud Business Page URL
 		* Tumblr Business Page URL
 		* YouTube Business Channel URL
 * *Bugfixes*
