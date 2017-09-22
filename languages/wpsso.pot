@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.46.2-dev.1\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.46.2-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3859,13 +3859,13 @@ msgid ""
 "for the required %4$s image dimensions."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:162 lib/pro/media/vimeo.php:141
-#: lib/pro/media/wistia.php:268 lib/util.php:939
+#: lib/pro/media/slideshare.php:166 lib/pro/media/vimeo.php:142
+#: lib/pro/media/wistia.php:270 lib/util.php:939
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:165 lib/pro/media/vimeo.php:144
-#: lib/pro/media/wistia.php:271 lib/util.php:942
+#: lib/pro/media/slideshare.php:169 lib/pro/media/vimeo.php:145
+#: lib/pro/media/wistia.php:273 lib/util.php:942
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""

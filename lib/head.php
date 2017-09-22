@@ -569,7 +569,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$type, $d_name, null, '', $mod );
 
 					} else foreach ( $d_val as $dd_num => $dd_val ) {	// second dimension array
-
 						if ( SucomUtil::is_assoc( $dd_val ) ) {
 							$use_video_image = true;
 

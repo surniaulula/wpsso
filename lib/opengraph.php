@@ -224,13 +224,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( ! empty( $mt_og['og:video'] ) && is_array( $mt_og['og:video'] ) ) {
 
 						foreach ( $mt_og['og:video'] as $num => $single_video ) {
-
 							if ( ( $image_url = SucomUtil::get_mt_media_url( $single_video, 'og:image' ) ) &&
 								$this->p->util->is_uniq_url( $image_url, 'preview' ) ) {
-
-								$preview_count++;
 								$mt_og['og:video'][$num]['og:video:has_image'] = true;
-
+								$preview_count++;
 							} else {
 								$mt_og['og:video'][$num]['og:video:has_image'] = false;
 							}
