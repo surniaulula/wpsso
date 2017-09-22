@@ -370,6 +370,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.46.2-dev.1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added "Soundcloud URL" to the user profile contact list.
+	* Added Twitter player card and Open Graph text/html video meta tags for Soundclound embedded iframes. 
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.46.1 (2017/09/15)**
 
 * *New Features*
