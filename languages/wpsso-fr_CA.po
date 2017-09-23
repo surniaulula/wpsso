@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.46.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-22 09:24-0600\n"
-"PO-Revision-Date: 2017-09-22 09:25-0600\n"
+"POT-Creation-Date: 2017-09-23 07:56-0600\n"
+"PO-Revision-Date: 2017-09-23 07:56-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1828,15 +1828,15 @@ msgstr "Corruption possible de la bibliothèque de médias détecté &mdash; le 
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1079 lib/pro/util/checkimgdims.php:66
+#: lib/media.php:1073 lib/pro/util/checkimgdims.php:66
 msgid "Media Library"
 msgstr "la bibliothèque de médias"
 
-#: lib/media.php:1139
+#: lib/media.php:1133
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:1157
+#: lib/media.php:1151
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -3249,13 +3249,13 @@ msgstr "recadrée"
 msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
 msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
-#: lib/pro/media/slideshare.php:162 lib/pro/media/vimeo.php:141
-#: lib/pro/media/wistia.php:268 lib/util.php:939
+#: lib/pro/media/slideshare.php:166 lib/pro/media/vimeo.php:142
+#: lib/pro/media/wistia.php:270 lib/util.php:939
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr "<a href=\"%1$s\">La fonction PHP %2$s</a> n'est pas disponible."
 
-#: lib/pro/media/slideshare.php:165 lib/pro/media/vimeo.php:144
-#: lib/pro/media/wistia.php:271 lib/util.php:942
+#: lib/pro/media/slideshare.php:169 lib/pro/media/vimeo.php:145
+#: lib/pro/media/wistia.php:273 lib/util.php:942
 msgid "Please contact your hosting provider to have the missing function installed."
 msgstr "SVP contactez votre hébergeur pour installer la fonction manquante."
 
