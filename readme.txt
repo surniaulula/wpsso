@@ -387,6 +387,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 3.46.1 (2017/09/15)**
 
+The last version of WPSSO (Core Plugin) which shares a common code-base with NextGEN Facebook v8.46.1.
+
 * *New Features*
 	* None
 * *Improvements*
