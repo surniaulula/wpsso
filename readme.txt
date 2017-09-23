@@ -370,7 +370,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.46.2-dev.2 (2017/09/23)**
+**Version 3.46.2-b.1 (2017/09/23)**
 
 * *New Features*
 	* None
@@ -732,7 +732,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.46.2-dev.2 =
+= 3.46.2-b.1 =
 
 (2017/09/23) Added "Soundcloud URL" to the user profile contact list. Added Twitter player card and Open Graph text/html video meta tags for Soundclound embedded iframes (Pro version).
 
