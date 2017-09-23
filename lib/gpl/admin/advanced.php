@@ -463,8 +463,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 					$table_rows[] = $tr.$form->get_th_html( $label, 'medium' ).
 					$form->get_nocb_td( $cm_cb, '', true ).
-					'<td class="blank">'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
-					'<td class="blank">'.$form->get_no_input( $cm_label ).'</td>';
+					'<td class="blank medium">'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
+					'<td class="blank wide">'.$form->get_no_input( $cm_label ).'</td>';
 				}
 			}
 
@@ -495,8 +495,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				if ( isset( $this->p->options[$cm_cb] ) ) {
 					$table_rows[] = $form->get_th_html( $label, 'medium' ).
 					'<td class="checkbox blank">'.$form->get_nocb_cmt( $cm_cb ).'</td>'.
-					'<td>'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
-					'<td class="blank">'.$form->get_no_input( $cm_label ).'</td>';
+					'<td class="medium">'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
+					'<td class="blank wide">'.$form->get_no_input( $cm_label ).'</td>';
 				}
 			}
 
