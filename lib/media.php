@@ -794,8 +794,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 
 					if ( ! empty( $single_image['og:image'] ) ) {
+
 						$single_image['og:image'] = apply_filters( $this->p->cf['lca'].'_rewrite_image_url',
 							$this->p->util->fix_relative_url( $single_image['og:image'] ) );
+
 						if ( $check_dupes === false || $this->p->util->is_uniq_url( $single_image['og:image'], $size_name ) ) {
 							if ( $this->p->util->push_max( $og_ret, $single_image, $num ) ) {
 								return $og_ret;
@@ -902,10 +904,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				foreach ( $all_matches as $media ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( '<'.$media[1].'/> html tag found '.$media[2].' = '.$media[3] );
 					}
+
 					$embed_url = $media[3];
+
 					if ( ! empty( $embed_url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $embed_url, 'video' ) ) ) {
 
 						$embed_width = preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i',
@@ -916,9 +921,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						$og_video = $this->get_video_info( $embed_url, $embed_width, $embed_height, $check_dupes );
 
-						if ( ! empty( $og_video ) &&
-							$this->p->util->push_max( $og_ret, $og_video, $num ) )
-								return $og_ret;
+						if ( ! empty( $og_video ) && $this->p->util->push_max( $og_ret, $og_video, $num ) ) {
+							return $og_ret;
+						}
 					}
 				}
 			} elseif ( $this->p->debug->enabled ) {
@@ -938,22 +943,23 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( ( $all_matches = apply_filters( $filter_name, false, $content ) ) !== false ) {
 
 					if ( is_array( $all_matches ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( count( $all_matches ).' x videos returned by '.$filter_name.' filter' );
 						}
+
 						foreach ( $all_matches as $media ) {
-							if ( ! empty( $media[0] ) &&
-								( $check_dupes == false ||
-									$this->p->util->is_uniq_url( $media[0], 'video' ) ) ) {	// $context = 'video'
+
+							if ( ! empty( $media[0] ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $media[0], 'video' ) ) ) {
 
 								$og_video = $this->get_video_info( $media[0], $media[1], $media[2], $check_dupes );
 
-								if ( ! empty( $og_video ) &&
-									$this->p->util->push_max( $og_ret, $og_video, $num ) ) {
-										return $og_ret;
+								if ( ! empty( $og_video ) && $this->p->util->push_max( $og_ret, $og_video, $num ) ) {
+									return $og_ret;
 								}
 							}
 						}
+
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $filter_name.' filter did not return false or an array' );
 					}
@@ -972,11 +978,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$filter_name = $this->p->cf['lca'].'_video_info';
 
 			$og_video = array_merge(
-				SucomUtil::get_mt_prop_video(),
-				SucomUtil::get_mt_prop_image(),
+				SucomUtil::get_mt_prop_video(),	// includes og:image meta tags for the video preview image
 				array(
-					'og:video:width' => $embed_width,			// default width
-					'og:video:height' => $embed_height,			// default height
+					'og:video:width' => $embed_width,	// default width
+					'og:video:height' => $embed_height,	// default height
 				)
 			);
 
@@ -1017,19 +1022,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$have_media[$prefix] = empty( $media_url ) ? false : true;
 
 				// remove all meta tags if there's no media URL or media is a duplicate
-				if ( ! $have_media[$prefix] ||
-					( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video' ) ) ) {	// $context = 'video'	
+				if ( ! $have_media[$prefix] || ( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video' ) ) ) {
+
 					foreach( SucomUtil::preg_grep_keys( '/^'.$prefix.'(:.*)?$/', $og_video ) as $k => $v ) {
 						unset ( $og_video[$k] );
 					}
 
 				// if the media is an image, then check and add missing sizes
 				} elseif ( $prefix === 'og:image' ) {
+
 					if ( empty( $og_video['og:image:width'] ) || $og_video['og:image:width'] < 0 ||
 						empty( $og_video['og:image:height'] ) || $og_video['og:image:height'] < 0 ) {
 
 						// add correct image sizes for the image URL using getimagesize()
 						$this->p->util->add_image_url_size( 'og:image', $og_video );
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'fetched video image url size: '.
 								$og_video['og:image:width'].'x'.$og_video['og:image:height'] );
@@ -1054,9 +1061,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		// $src_name can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 		public function img_size_within_limits( $img_name, $size_name, $img_width, $img_height, $src_name = '' ) {
 
-			$lca =& $this->p->cf['lca'];
-			$min =& $this->p->cf['head']['limit_min'];
-			$max =& $this->p->cf['head']['limit_max'];
+			$lca = $this->p->cf['lca'];
+			$min = $this->p->cf['head']['limit_min'];
+			$max = $this->p->cf['head']['limit_max'];
 
 			if ( strpos( $size_name, $lca.'-' ) !== 0 ) {	// only check our own sizes
 				return true;

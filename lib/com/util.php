@@ -1701,50 +1701,64 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return '';	// empty string
 		}
 
-		public static function get_mt_prop_video( array $og_video = array() ) {
-			return array_merge( array(
-				'og:video:secure_url' => '',
-				'og:video:url' => '',
-				// 'og:video' => '',			// do not include - use og:video:url instead
-				'og:video:type' => 'application/x-shockwave-flash',
-				'og:video:width' => '',
-				'og:video:height' => '',
-				'og:video:tag' => array(),
+		public static function get_mt_prop_video( $mt_pre = 'og', array $og_partial = array() ) {
 
-				'og:video:duration' => '',		// non-standard / internal meta tag
-				'og:video:upload_date' => '',		// non-standard / internal meta tag
-				'og:video:thumbnail_url' => '',		// non-standard / internal meta tag
-				'og:video:embed_url' => '',		// non-standard / internal meta tag
-				'og:video:has_image' => false,		// non-standard / internal meta tag
-				'og:video:title' => '',			// non-standard / internal meta tag
-				'og:video:description' => '',		// non-standard / internal meta tag
+			$og_complete = array(
+				$mt_pre.':video:secure_url' => '',
+				$mt_pre.':video:url' => '',
+				//$mt_pre.':video' => '',			// do not include - use og:video:url instead
+				$mt_pre.':video:type' => 'application/x-shockwave-flash',
+				$mt_pre.':video:width' => '',
+				$mt_pre.':video:height' => '',
+				$mt_pre.':video:tag' => array(),
 
-				// used for Twitter player card meta tags
-				'og:video:iphone_name' => '',		// non-standard / internal meta tag
-				'og:video:iphone_id' => '',		// non-standard / internal meta tag
-				'og:video:iphone_url' => '',		// non-standard / internal meta tag
-				'og:video:ipad_name' => '',		// non-standard / internal meta tag
-				'og:video:ipad_id' => '',		// non-standard / internal meta tag
-				'og:video:ipad_url' => '',		// non-standard / internal meta tag
-				'og:video:googleplay_name' => '',	// non-standard / internal meta tag
-				'og:video:googleplay_id' => '',		// non-standard / internal meta tag
-				'og:video:googleplay_url' => '',	// non-standard / internal meta tag
+				$mt_pre.':video:duration' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:upload_date' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:thumbnail_url' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:embed_url' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:has_image' => false,		// non-standard / internal meta tag
+				$mt_pre.':video:title' => '',			// non-standard / internal meta tag
+				$mt_pre.':video:description' => '',		// non-standard / internal meta tag
 
-				// Facebook AppLink meta tags
-				'al:ios:app_name' => '',
-				'al:ios:app_store_id' => '',
-				'al:ios:url' => '',
-				'al:android:app_name' => '',
-				'al:android:package' => '',
-				'al:android:url' => '',
-				'al:web:url' => '',
-				'al:web:should_fallback' => 'false',
-			), $og_video );
+				// used for twitter player card meta tags
+				$mt_pre.':video:iphone_name' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:iphone_id' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:iphone_url' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:ipad_name' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:ipad_id' => '',			// non-standard / internal meta tag
+				$mt_pre.':video:ipad_url' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:googleplay_name' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:googleplay_id' => '',		// non-standard / internal meta tag
+				$mt_pre.':video:googleplay_url' => '',		// non-standard / internal meta tag
+			);
+
+			$og_complete += self::get_mt_prop_image( $mt_pre );
+
+			// facebook applink meta tags
+			if ( $mt_pre === 'og' ) {
+				$og_complete += array(
+					'al:ios:app_name' => '',
+					'al:ios:app_store_id' => '',
+					'al:ios:url' => '',
+					'al:android:app_name' => '',
+					'al:android:package' => '',
+					'al:android:url' => '',
+					'al:web:url' => '',
+					'al:web:should_fallback' => 'false',
+				);
+			}
+
+			if ( ! empty( $og_partial ) ) {
+				$og_complete = array_merge( $og_complete, $og_partial );
+			}
+
+			return $og_complete;
 		}
 
 		// pre-define the array key order for the list() construct (which assigns elements from right to left)
-		public static function get_mt_prop_image( $mt_pre = 'og' ) {
-			return array(
+		public static function get_mt_prop_image( $mt_pre = 'og', array $og_partial = array() ) {
+
+			$og_complete = array(
 				$mt_pre.':image:secure_url' => '',
 				//$mt_pre.':image:url' => '',		// not used - do not include
 				$mt_pre.':image' => '',
@@ -1753,6 +1767,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre.':image:cropped' => '',		// non-standard / internal meta tag
 				$mt_pre.':image:id' => '',		// non-standard / internal meta tag
 			);
+
+			if ( ! empty( $og_partial ) ) {
+				$og_complete = array_merge( $og_complete, $og_partial );
+			}
+
+			return $og_complete;
 		}
 
 		public static function get_site_url( array $opts, $mixed = 'current' ) {

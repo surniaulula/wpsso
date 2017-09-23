@@ -205,8 +205,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					'...', $mod, true, $this->p->options['og_desc_hashtags'], true, 'og_desc' );
 			}
 
-			// get all videos
-			// call before getting all images to find / use preview images
+			/*
+			 * Get all videos.
+			 *
+			 * Call before getting all images to find / use preview images.
+			 */
 			if ( ! isset( $mt_og['og:video'] ) && $aop ) {
 				if ( empty( $max['og_vid_max'] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -224,8 +227,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( ! empty( $mt_og['og:video'] ) && is_array( $mt_og['og:video'] ) ) {
 
 						foreach ( $mt_og['og:video'] as $num => $single_video ) {
-							if ( ( $image_url = SucomUtil::get_mt_media_url( $single_video, 'og:image' ) ) &&
-								$this->p->util->is_uniq_url( $image_url, 'preview' ) ) {
+
+							$image_url = SucomUtil::get_mt_media_url( $single_video, 'og:image' );
+
+							/*
+							 * Check preview images for duplicates since the same videos may be available in
+							 * different formats (application/x-shockwave-flash and text/html for example).
+							 */
+							if ( $image_url && $this->p->util->is_uniq_url( $image_url, 'preview' ) ) {
 								$mt_og['og:video'][$num]['og:video:has_image'] = true;
 								$preview_count++;
 							} else {
@@ -246,7 +255,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			// get all images
+			/*
+			 * Get all images.
+			 */
 			if ( ! isset( $mt_og['og:image'] ) ) {
 				if ( empty( $max['og_img_max'] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -526,8 +537,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( ! empty( $single_video['og:video:embed_url'] ) ) {
 
-						// start with a copy of all og meta tags (exclude applink meta tags)
-						$single_embed = SucomUtil::get_mt_prop_video ( $single_video );
+						// start with a copy of all og meta tags
+						$single_embed = SucomUtil::get_mt_prop_video( 'og', $single_video, false );
+
+						// exclude the facebook applink meta tags
 						$single_embed = SucomUtil::preg_grep_keys( '/^og:/', $single_embed );
 
 						if ( strpos( $single_video['og:video:embed_url'], 'https:' ) !== false ) {

@@ -573,15 +573,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$use_video_image = true;
 
 							if ( isset( $dd_val['og:video:type'] ) ) {
+								/*
+								 * og:video:has_image will be false if ithere is no preview 
+								 * image, or the preview image is a duplicate.
+								 */
 								if ( empty( $dd_val['og:video:has_image'] ) ) {
 									$use_video_image = false;
 								}
+
 								if ( $dd_val['og:video:type'] === 'text/html' ) {
 									// skip if text/html video markup is disabled
 									if ( empty( $this->p->options['og_vid_html_type'] ) ) {
 										continue;
 									}
-									unset( $dd_val['og:video:embed_url'] );	// redundant - just in case
 								}
 							}
 
