@@ -104,6 +104,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 * Myspace URL
 * Pinterest URL
 * Skype Username
+* Soundcloud URL
 * Tumblr URL
 * Twitter @username
 * YouTube Channel URL
@@ -156,6 +157,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 * MySpace URL
 * Pinterest URL
 * Skype Username
+* Soundcloud URL
 * Tumblr URL
 * Twitter @username
 * Yahoo IM
@@ -196,6 +198,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 	* Gravatar (Author Image)
 	* Ow.ly
 	* Slideshare Presentations
+	* Soundcloud Tracks (for Twitter Player Card)
 	* TinyURL
 	* Vimeo Videos
 	* Wistia Videos

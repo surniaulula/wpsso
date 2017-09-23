@@ -105,6 +105,7 @@
 <li>Myspace URL</li>
 <li>Pinterest URL</li>
 <li>Skype Username</li>
+<li>Soundcloud URL</li>
 <li>Tumblr URL</li>
 <li>Twitter @username</li>
 <li>YouTube Channel URL</li>
@@ -161,6 +162,7 @@
 <li>MySpace URL</li>
 <li>Pinterest URL</li>
 <li>Skype Username</li>
+<li>Soundcloud URL</li>
 <li>Tumblr URL</li>
 <li>Twitter @username</li>
 <li>Yahoo IM</li>
@@ -208,6 +210,7 @@
 <li>Gravatar (Author Image)</li>
 <li>Ow.ly</li>
 <li>Slideshare Presentations</li>
+<li>Soundcloud Tracks (for Twitter Player Card)</li>
 <li>TinyURL</li>
 <li>Vimeo Videos</li>
 <li>Wistia Videos</li>
