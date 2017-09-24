@@ -373,13 +373,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.46.2-b.1 (2017/09/23)**
+**Version 3.46.2-rc.1 (2017/09/24)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added "Soundcloud URL" to the user profile contact list.
-	* Added Twitter player card and Open Graph text/html video meta tags for Soundclound embedded iframes (Pro version).
+	* Added Twitter player card and Open Graph text/html video meta tags for Soundclound embedded tracks (Pro version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -737,9 +737,9 @@ The last version of WPSSO (Core Plugin) that shared a common code-base with Next
 
 == Upgrade Notice ==
 
-= 3.46.2-b.1 =
+= 3.46.2-rc.1 =
 
-(2017/09/23) Added "Soundcloud URL" to the user profile contact list. Added Twitter player card and Open Graph text/html video meta tags for Soundclound embedded iframes (Pro version).
+(2017/09/24) Added "Soundcloud URL" to the user profile contact list. Added Twitter player card and Open Graph text/html video meta tags for Soundclound embedded tracks (Pro version).
 
 = 3.46.1 =
 
