@@ -84,6 +84,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				_x( 'Facebook Videos', 'option value', 'wpsso' ).'</p>'.
 			'<p>'.$form->get_nocb_cmt( 'plugin_slideshare_api' ).' '.
 				_x( 'Slideshare Presentations', 'option value', 'wpsso' ).'</p>'.
+			'<p>'.$form->get_nocb_cmt( 'plugin_soundcloud_api' ).' '.
+				_x( 'Soundcloud Tracks', 'option value', 'wpsso' ).'</p>'.
 			'<p>'.$form->get_nocb_cmt( 'plugin_vimeo_api' ).' '.
 				_x( 'Vimeo Videos', 'option value', 'wpsso' ).'</p>'.
 			'<p>'.$form->get_nocb_cmt( 'plugin_wistia_api' ).' '.
