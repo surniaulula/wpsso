@@ -373,7 +373,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.46.2-rc.1 (2017/09/24)**
+**Version 3.46.2 (2017/09/25)**
 
 * *New Features*
 	* None
@@ -737,9 +737,9 @@ The last version of WPSSO (Core Plugin) that shared a common code-base with Next
 
 == Upgrade Notice ==
 
-= 3.46.2-rc.1 =
+= 3.46.2 =
 
-(2017/09/24) Added "Soundcloud URL" to the user profile contact list. Added Twitter player card and Open Graph text/html video meta tags for Soundclound embedded tracks (Pro version). Added a check for bp_is_activity_component() when in a BuddyPress post loop (Pro version).
+(2017/09/25) Added "Soundcloud URL" to the user profile contact list. Added Twitter player card and Open Graph text/html video meta tags for Soundclound embedded tracks (Pro version). Added a check for bp_is_activity_component() when in a BuddyPress post loop (Pro version).
 
 = 3.46.1 =
 
