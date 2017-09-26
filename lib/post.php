@@ -370,6 +370,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						if ( current_user_can( 'manage_options' ) ) {
 							if ( apply_filters( $lca.'_check_post_head', 
 								$this->p->options['plugin_check_head'], $post_id, $post_obj ) ) {
+
 								$this->check_post_head_duplicates( $post_id, $post_obj );
 							}
 						}
