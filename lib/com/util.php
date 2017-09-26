@@ -895,7 +895,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		// hook all filters by default
+		// hook a specific filter, or all filters by default
 		public static function block_filter_output( $filter_name = 'all' ) {
 			if ( has_filter( $filter_name, array( __CLASS__, 'start_filter_output_buffer' ) ) ) {	// just in case
 				return false;
@@ -905,6 +905,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return true;
 		}
 
+		// run at the beginning of a filter to start the output buffer
 		public static function start_filter_output_buffer( $value ) {
 			global $wp_actions;
 			static $do_once = array();
@@ -924,6 +925,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $value;
 		}
 
+		// check the output buffer for any non-empty string
 		public static function check_filter_output_buffer( $value ) {
 			static $do_once = array();
 			$filter_name = current_filter();
@@ -970,6 +972,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return '';
 		}
 
+		// wrap a filter to return its original / unchanged value
 		public static function protect_filter_value( $filter_name ) {
 			if ( has_filter( $filter_name, array( __CLASS__, 'restore_current_filter_value' ) ) ) {
 				return false;

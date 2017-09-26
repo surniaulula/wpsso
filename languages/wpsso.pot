@@ -716,7 +716,7 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:961
+#: lib/com/util.php:963
 msgid ""
 "%1$s filter output has been detected. WordPress filter hooks should return "
 "their values, not output their values.\\n\\nOne or more of these filter "
@@ -724,11 +724,11 @@ msgid ""
 "\\n\\n%3$s\\n"
 msgstr ""
 
-#: lib/com/util.php:1347
+#: lib/com/util.php:1350
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1354
+#: lib/com/util.php:1357
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
