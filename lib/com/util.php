@@ -15,10 +15,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		protected $p;
 
-		protected static $crawler_name;				// saved crawler name from user-agent
-		protected static $locales = array();			// saved get_locale() values
-		protected static $user_exists = array();		// saved user_exists() values
-		protected static $filter_return_values = array();	// saved filter return values
+		protected static $cache_crawler_name = null;		// saved crawler name from user-agent
+		protected static $cache_locale_names = array();		// saved get_locale() values
+		protected static $cache_user_exists = array();		// saved user_exists() values
+		protected static $cache_filter_values = array();	// saved filter return values
 
 		private static $currencies = array(
 			'AED' => 'United Arab Emirates dirham',
@@ -801,7 +801,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		private static function get_timezone( $tz_name, $format ) {
+		private static function get_formatted_timezone( $tz_name, $format ) {
 			$dt = new DateTime();
 			$dt->setTimeZone( new DateTimeZone( $tz_name ) );
 			return $dt->format( $format );
@@ -813,15 +813,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_timezone_abbr( $tz_name ) {
-			return self::get_timezone( $tz_name, 'T' );
+			return self::get_formatted_timezone( $tz_name, 'T' );
 		}
 
 		// timezone offset in seconds - offset west of UTC is negative, and east of UTC is positive
 		public static function get_timezone_offset( $tz_name ) {
-			return self::get_timezone( $tz_name, 'Z' );
+			return self::get_formatted_timezone( $tz_name, 'Z' );
 		}
 
-		private static function get_array( $array, $idx = false, $add_none = false ) {
+		private static function get_formatted_array( $array, $idx = false, $add_none = false ) {
 
 			if ( $idx === null ) {
 				// nothing to do
@@ -854,7 +854,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 				asort( $cache[$format] );
 			}
-			return self::get_array( $cache[$format], $idx, $add_none );
+			return self::get_formatted_array( $cache[$format], $idx, $add_none );
 		}
 
 		public static function get_currency_abbrev( $idx = false, $add_none = false ) {
@@ -866,15 +866,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 				asort( $cache );
 			}
-			return self::get_array( $cache, $idx, $add_none );
+			return self::get_formatted_array( $cache, $idx, $add_none );
 		}
 
 		public static function get_currency_symbols( $idx = false, $add_none = false ) {
-			return self::get_array( self::$currency_symbols, $idx, $add_none );
+			return self::get_formatted_array( self::$currency_symbols, $idx, $add_none );
 		}
 
 		public static function get_dashicons( $idx = false, $add_none = false ) {
-			return self::get_array( self::$dashicons, $idx, $add_none );
+			return self::get_formatted_array( self::$dashicons, $idx, $add_none );
 		}
 
 		public static function get_pub_lang( $pub = '' ) {
@@ -895,46 +895,106 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function add_filter_protection( $filter_name ) {
-
-			if ( has_filter( $filter_name, array( __CLASS__, 'filter_restore_return_value' ) ) ) {
+		// hook all filters by default
+		public static function block_filter_output( $filter_name = 'all' ) {
+			if ( has_filter( $filter_name, array( __CLASS__, 'start_filter_output_buffer' ) ) ) {	// just in case
 				return false;
 			}
-
-			$int_min = self::get_const( 'PHP_INT_MIN', -2147483648 );	// since PHP v7.0.0
-			$int_max = self::get_const( 'PHP_INT_MAX', 2147483647 );	// since PHP v5.0.5
-
-			add_filter( $filter_name, array( __CLASS__, 'filter_save_return_value' ), $int_min, 1 );
-			add_filter( $filter_name, array( __CLASS__, 'filter_restore_return_value' ), $int_max, 1 );
-
+			$min_priority = defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// since PHP v7.0.0 - fallback to 32 bit min integer
+			add_filter( $filter_name, array( __CLASS__, 'start_filter_output_buffer' ), $min_priority, 1 );
 			return true;
 		}
 
-		public static function remove_filter_protection( $filter_name ) {
-
-			if ( ! has_filter( $filter_name, array( __CLASS__, 'filter_restore_return_value' ) ) ) {
-				return false;
-			}
-
-			$int_min = self::get_const( 'PHP_INT_MIN', -2147483648 );	// since PHP v7.0.0
-			$int_max = self::get_const( 'PHP_INT_MAX', 2147483647 );	// since PHP v5.0.5
-
-			remove_filter( $filter_name, array( __CLASS__, 'filter_save_return_value' ), $int_min );
-			remove_filter( $filter_name, array( __CLASS__, 'filter_restore_return_value' ), $int_max );
-
-			return true;
-		}
-
-		public static function filter_save_return_value( $value ) {
+		public static function start_filter_output_buffer( $value ) {
+			global $wp_actions;
+			static $do_once = array();
 			$filter_name = current_filter();
-			// don't save / restore empty strings (breaks the home page wp_title)
-			self::$filter_return_values[$filter_name] = trim( $value ) === '' ? null : $value;
+
+			if ( ! empty( $wp_actions[$filter_name] ) ) {	// stop here - this is an action
+				return $value;
+			}
+
+			if ( ! isset( $do_once[$filter_name] ) ) {
+				$do_once[$filter_name] = true;	// only start an output buffer the first time this filter is run
+				if ( ob_start( array( __CLASS__, 'trunc_filter_output_buffer' ) ) ) {	// start the output buffer
+					$max_priority = defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// since PHP v5.0.5 - fallback to 32 bit max integer
+					add_filter( $filter_name, array( __CLASS__, 'check_filter_output_buffer' ), $max_priority, 1 );
+				}
+			}
 			return $value;
 		}
 
-		public static function filter_restore_return_value( $value ) {
+		public static function check_filter_output_buffer( $value ) {
+			static $do_once = array();
 			$filter_name = current_filter();
-			return self::$filter_return_values[$filter_name] === null ? $value : self::$filter_return_values[$filter_name];
+
+			if ( ! isset( $do_once[$filter_name] ) ) {
+				$output = ob_get_contents();	// check if any output is available
+				$do_once[$filter_name] = true;	// only log an error the first time this filter is run
+				if ( $output !== '' ) {
+					global $wp_filter;
+					$hook_list = array();
+					foreach( $wp_filter[$filter_name]->callbacks as $hook_prio => $hook_keys ) {
+						foreach( $hook_keys as $hook_info ) {
+							if ( is_array( $hook_info['function'] ) ) {
+								$class_name = '';
+								$function_name = '';
+								if ( is_object( $hook_info['function'][0] ) ) {
+									$class_name = get_class( $hook_info['function'][0] );
+								} elseif ( is_string( $hook_info['function'][0] ) ) {
+									$class_name = $hook_info['function'][0];
+								}
+								if ( is_string( $hook_info['function'][1] ) ) {
+									$function_name = $hook_info['function'][1];
+								}
+								switch ( $function_name ) {	// exclude our own filter hooks
+									case 'start_filter_output_buffer':
+									case 'check_filter_output_buffer':
+										continue 2;
+								}
+								$hook_list[] = $class_name.'::'.$function_name;
+							} elseif ( is_string ( $hook_info['function'] ) ) {
+								$hook_list[] = $hook_info['function'];
+							}
+						}
+					}
+					error_log( sprintf( __( '%1$s filter output has been detected. WordPress filter hooks should return their values, not output their values.\n\nOne or more of these filter hooks contributed some output:\n\n%2$s\n\n%1$s incorrect filter output:\n\n%3$s\n' ), $filter_name, implode( "\t\n", $hook_list ), $output ) );
+				}
+				ob_end_flush();	// call trunc_filter_output_buffer() to ignore / truncate any output
+			}
+			return $value;
+		}
+
+		// ignore / truncate any filter output
+		public static function trunc_filter_output_buffer( $content ) {
+			return '';
+		}
+
+		public static function protect_filter_value( $filter_name ) {
+			if ( has_filter( $filter_name, array( __CLASS__, 'restore_current_filter_value' ) ) ) {
+				return false;
+			}
+			$min_priority = defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// since PHP v7.0.0 - fallback to 32 bit min integer
+			$max_priority = defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// since PHP v5.0.5 - fallback to 32 bit max integer
+			add_filter( $filter_name, array( __CLASS__, 'save_current_filter_value' ), $min_priority, 1 );
+			add_filter( $filter_name, array( __CLASS__, 'restore_current_filter_value' ), $max_priority, 1 );
+			return true;
+		}
+
+		public static function save_current_filter_value( $value ) {
+			$filter_name = current_filter();
+			$min_priority = defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// since PHP v7.0.0 - fallback to 32 bit min integer
+			self::$cache_filter_values[$filter_name] = trim( $value ) === '' ? null : $value;	// restoring an empty string breaks wp_title
+			remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), $min_priority );	// remove ourselves
+			return $value;
+		}
+
+		public static function restore_current_filter_value( $value ) {
+			$filter_name = current_filter();
+			$max_priority = defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// since PHP v5.0.5 - fallback to 32 bit max integer
+			$value = self::$cache_filter_values[$filter_name] === null ? $value : self::$cache_filter_values[$filter_name];
+			remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), $max_priority );	// remove ourselves
+			return $value;
 		}
 
 		public static function is_https( $url = '' ) {
@@ -1075,11 +1135,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( empty( $str ) ) {
 				return array();
 			} else {
-				return array_map( array( __CLASS__, 'trim_csv_val' ), explode( ',', $str ) );
+				return array_map( array( __CLASS__, 'unquote_csv_value' ), explode( ',', $str ) );
 			}
 		}
 
-		private static function trim_csv_val( $val ) {
+		private static function unquote_csv_value( $val ) {
 			return trim( $val, '\'" ' );	// remove quotes and spaces
 		}
 
@@ -1379,7 +1439,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_crawler_name() {
 
-			if ( ! isset( self::$crawler_name ) ) {
+			if ( ! isset( self::$cache_crawler_name ) ) {
 
 				$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ?
 					strtolower( $_SERVER['HTTP_USER_AGENT'] ) : '';
@@ -1387,57 +1447,57 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				switch ( true ) {
 					// "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"
 					case ( strpos( $ua, 'facebookexternalhit/' ) === 0 ):
-						self::$crawler_name = 'facebook';
+						self::$cache_crawler_name = 'facebook';
 						break;
 
 					// "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
 					case ( strpos( $ua, 'compatible; bingbot/' ) !== false ):
-						self::$crawler_name = 'bing';
+						self::$cache_crawler_name = 'bing';
 						break;
 
 					// "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 					case ( strpos( $ua, 'compatible; googlebot/' ) !== false ):
-						self::$crawler_name = 'google';
+						self::$cache_crawler_name = 'google';
 						break;
 
 					// Mozilla/5.0 (compatible; Google-Structured-Data-Testing-Tool +https://search.google.com/structured-data/testing-tool)"
 					case ( strpos( $ua, 'compatible; google-structured-data-testing-tool' ) !== false ):
-						self::$crawler_name = 'google';
+						self::$cache_crawler_name = 'google';
 						break;
 
 					// "Pinterest/0.2 (+http://www.pinterest.com/bot.html)"
 					case ( strpos( $ua, 'pinterest/' ) === 0 ):
-						self::$crawler_name = 'pinterest';
+						self::$cache_crawler_name = 'pinterest';
 						break;
 
 					// "Twitterbot/1.0"
 					case ( strpos( $ua, 'twitterbot/' ) === 0 ):
-						self::$crawler_name = 'twitter';
+						self::$cache_crawler_name = 'twitter';
 						break;
 
 					// "W3C_Validator/1.3 http://validator.w3.org/services"
 					case ( strpos( $ua, 'w3c_validator/' ) === 0 ):
-						self::$crawler_name = 'w3c';
+						self::$cache_crawler_name = 'w3c';
 						break;
 
 					// "Validator.nu/LV http://validator.w3.org/services"
 					case ( strpos( $ua, 'validator.nu/' ) === 0 ):
-						self::$crawler_name = 'w3c';
+						self::$cache_crawler_name = 'w3c';
 						break;
 
 					// "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MTC19V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.81 Mobile Safari/537.36 (compatible; validator.ampproject.org) AppEngine-Google; (+http://code.google.com/appengine; appid: s~amp-validator)"
 					case ( strpos( $ua, 'validator.ampproject.org' ) === 0 ):
-						self::$crawler_name = 'amp';
+						self::$cache_crawler_name = 'amp';
 						break;
 
 					default:
-						self::$crawler_name = 'none';
+						self::$cache_crawler_name = 'none';
 						break;
 				}
-				self::$crawler_name = apply_filters( 'sucom_crawler_name', self::$crawler_name, $ua );
+				self::$cache_crawler_name = apply_filters( 'sucom_crawler_name', self::$cache_crawler_name, $ua );
 			}
 
-			return self::$crawler_name;
+			return self::$cache_crawler_name;
 		}
 
 		public static function a2aa( $a ) {
@@ -1929,8 +1989,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 */
 			$idx = is_array( $mixed ) ? $mixed['name'].'_'.$mixed['id'] : $mixed;
 
-			if ( isset( self::$locales[$idx] ) ) {
-				return self::$locales[$idx];
+			if ( isset( self::$cache_locale_names[$idx] ) ) {
+				return self::$cache_locale_names[$idx];
 			}
 
 			if ( $mixed === 'default' ) {
@@ -1965,12 +2025,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			return self::$locales[$idx] = apply_filters( 'sucom_locale', $locale, $mixed );
+			return self::$cache_locale_names[$idx] = apply_filters( 'sucom_locale', $locale, $mixed );
 		}
 
 		public static function get_available_locales() {
-			$locales = get_available_languages();	// since wp 3.0
-			return apply_filters( 'sucom_available_locales', $locales );
+			$available_locales = get_available_languages();	// since wp 3.0
+			return apply_filters( 'sucom_available_locales', $available_locales );
 		}
 
 		// examples:
@@ -2290,12 +2350,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function user_exists( $user_id ) {
 			if ( is_numeric( $user_id ) && $user_id > 0 ) {	// true is not valid
 				$user_id = (int) $user_id;	// cast as integer for array
-				if ( isset( self::$user_exists[$user_id] ) ) {
-					return self::$user_exists[$user_id];
+				if ( isset( self::$cache_user_exists[$user_id] ) ) {
+					return self::$cache_user_exists[$user_id];
 				} else {
 					global $wpdb;
 					$select_sql = 'SELECT COUNT(ID) FROM '.$wpdb->users.' WHERE ID = %d';
-					return self::$user_exists[$user_id] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
+					return self::$cache_user_exists[$user_id] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
 				}
 			} else {
 				return false;

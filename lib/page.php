@@ -199,7 +199,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			// setup filters to save and restore original / pre-filtered title value
 			if ( empty( $this->p->options['plugin_filter_title'] ) ) {
-				SucomUtil::add_filter_protection( 'wp_title' );
+				SucomUtil::protect_filter_value( 'wp_title' );
 			}
 
 			// skip if no metadata index / key name
@@ -295,10 +295,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$title = 'No Title';	// just in case
 					}
 				}
-			}
-
-			if ( empty( $this->p->options['plugin_filter_title'] ) ) {
-				SucomUtil::remove_filter_protection( 'wp_title' );
 			}
 
 			$title = $this->p->util->cleanup_html_tags( $title );	// strip html tags before removing separator

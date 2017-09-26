@@ -716,11 +716,19 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:1287
+#: lib/com/util.php:961
+msgid ""
+"%1$s filter output has been detected. WordPress filter hooks should return "
+"their values, not output their values.\\n\\nOne or more of these filter "
+"hooks contributed some output:\\n\\n%2$s\\n\\n%1$s incorrect filter output:"
+"\\n\\n%3$s\\n"
+msgstr ""
+
+#: lib/com/util.php:1347
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1294
+#: lib/com/util.php:1354
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -3674,7 +3682,7 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/page.php:716
+#: lib/page.php:712
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "

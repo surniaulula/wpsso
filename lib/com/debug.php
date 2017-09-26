@@ -95,14 +95,18 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$mixed = get_object_vars( $mixed );
 			}
 
-			if ( is_array( $mixed ) )
+			if ( is_array( $mixed ) ) {
 				$this->log( $prefix.' '.trim( print_r( self::pretty_array( $mixed, false ), true ) ), $class_idx, $function_idx );
-			else $this->log( $prefix.' '.$mixed, $class_idx, $function_idx );
+			} else {
+				$this->log( $prefix.' '.$mixed, $class_idx, $function_idx );
+			}
 		}
 
 		public function log( $input = '', $class_idx = 1, $function_idx = false ) {
-			if ( $this->enabled !== true )
+
+			if ( $this->enabled !== true ) {
 				return;
+			}
 
 			$first_col = '%-38s:: ';
 			$second_col = '%-48s: ';
