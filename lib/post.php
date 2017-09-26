@@ -433,6 +433,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			// in case post_id is true/false
 			if ( ! is_numeric( $post_id ) ) {
 				$post_id = $post_obj->ID;
+				if ( ! is_numeric( $post_id ) ) {	// just in case
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: non-numeric post ID in post object');
+					}
+					return;
+				}
 			}
 
 			// only check publicly available posts
