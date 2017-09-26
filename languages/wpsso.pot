@@ -716,19 +716,31 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:963
-msgid ""
-"%1$s filter output has been detected. WordPress filter hooks should return "
-"their values, not output their values.\\n\\nOne or more of these filter "
-"hooks contributed some output:\\n\\n%2$s\\n\\n%1$s incorrect filter output:"
-"\\n\\n%3$s\\n"
+#: lib/com/util.php:987
+msgid "Output from the \"%1$s\" filter has been detected."
 msgstr ""
 
-#: lib/com/util.php:1350
+#: lib/com/util.php:988
+msgid ""
+"WordPress filter hooks should return their data / text, not send it to the "
+"output."
+msgstr ""
+
+#: lib/com/util.php:989
+msgid ""
+"One or more of the following hooks contributed some output and must be "
+"fixed: %2$s"
+msgstr ""
+
+#: lib/com/util.php:990
+msgid "Incorrect output for the \"%1$s\" filter: %3$s"
+msgstr ""
+
+#: lib/com/util.php:1378
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1357
+#: lib/com/util.php:1385
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 

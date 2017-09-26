@@ -897,16 +897,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// hook a specific filter, or all filters by default
 		public static function block_filter_output( $filter_name = 'all' ) {
+
 			if ( has_filter( $filter_name, array( __CLASS__, 'start_filter_output_buffer' ) ) ) {	// just in case
 				return false;
 			}
+
 			$min_priority = defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// since PHP v7.0.0 - fallback to 32 bit min integer
+
 			add_filter( $filter_name, array( __CLASS__, 'start_filter_output_buffer' ), $min_priority, 1 );
+
 			return true;
 		}
 
 		// run at the beginning of a filter to start the output buffer
 		public static function start_filter_output_buffer( $value ) {
+
 			global $wp_actions;
 			static $do_once = array();
 			$filter_name = current_filter();
@@ -916,60 +921,83 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( ! isset( $do_once[$filter_name] ) ) {
+
 				$do_once[$filter_name] = true;	// only start an output buffer the first time this filter is run
-				if ( ob_start( array( __CLASS__, 'trunc_filter_output_buffer' ) ) ) {	// start the output buffer
+
+				if ( ob_start( '__return_empty_string' ) ) {	// start the output buffer
 					$max_priority = defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// since PHP v5.0.5 - fallback to 32 bit max integer
 					add_filter( $filter_name, array( __CLASS__, 'check_filter_output_buffer' ), $max_priority, 1 );
 				}
 			}
+
 			return $value;
 		}
 
 		// check the output buffer for any non-empty string
 		public static function check_filter_output_buffer( $value ) {
+
 			static $do_once = array();
 			$filter_name = current_filter();
 
 			if ( ! isset( $do_once[$filter_name] ) ) {
+
 				$output = ob_get_contents();	// check if any output is available
 				$do_once[$filter_name] = true;	// only log an error the first time this filter is run
+
 				if ( $output !== '' ) {
+
 					global $wp_filter;
 					$hook_list = array();
+
 					foreach( $wp_filter[$filter_name]->callbacks as $hook_prio => $hook_keys ) {
+
 						foreach( $hook_keys as $hook_info ) {
+
 							if ( is_array( $hook_info['function'] ) ) {
+
 								$class_name = '';
 								$function_name = '';
+
 								if ( is_object( $hook_info['function'][0] ) ) {
 									$class_name = get_class( $hook_info['function'][0] );
 								} elseif ( is_string( $hook_info['function'][0] ) ) {
 									$class_name = $hook_info['function'][0];
 								}
+
 								if ( is_string( $hook_info['function'][1] ) ) {
 									$function_name = $hook_info['function'][1];
 								}
-								switch ( $function_name ) {	// exclude our own filter hooks
-									case 'start_filter_output_buffer':
-									case 'check_filter_output_buffer':
+
+								$hook_name = $class_name.'::'.$function_name;
+
+								switch ( $hook_name ) {	// exclude our own filter hooks
+									case 'SucomUtil::start_filter_output_buffer':
+									case 'SucomUtil::check_filter_output_buffer':
 										continue 2;
 								}
-								$hook_list[] = $class_name.'::'.$function_name;
+
+								$hook_list[] = $hook_name;
+
 							} elseif ( is_string ( $hook_info['function'] ) ) {
 								$hook_list[] = $hook_info['function'];
 							}
 						}
 					}
-					error_log( sprintf( __( '%1$s filter output has been detected. WordPress filter hooks should return their values, not output their values.\n\nOne or more of these filter hooks contributed some output:\n\n%2$s\n\n%1$s incorrect filter output:\n\n%3$s\n' ), $filter_name, implode( "\t\n", $hook_list ), $output ) );
-				}
-				ob_end_flush();	// call trunc_filter_output_buffer() to ignore / truncate any output
-			}
-			return $value;
-		}
 
-		// ignore / truncate any filter output
-		public static function trunc_filter_output_buffer( $content ) {
-			return '';
+					$error_text = __( 'Output from the "%1$s" filter has been detected.' ).' '.
+						__( 'WordPress filter hooks should return their data / text, not send it to the output.' ).' '.
+						__( 'One or more of the following hooks contributed some output and must be fixed: %2$s', 'jsm-block-filter-output' )."\n".
+						__( 'Incorrect output for the "%1$s" filter: %3$s' );
+
+					$error_full = sprintf( $error_text, $filter_name, "\n\t".implode( "\n\t", $hook_list ), "\n".$output );
+
+					error_log( $error_full );
+				}
+
+				ob_end_flush();	// call __return_empty_string() to ignore / truncate any output
+			}
+
+			return $value;
 		}
 
 		// wrap a filter to return its original / unchanged value
