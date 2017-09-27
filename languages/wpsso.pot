@@ -678,69 +678,49 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:109
+#: lib/com/notice.php:115
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr ""
 
-#: lib/com/notice.php:119
+#: lib/com/notice.php:125
 msgid "Reference URL: %s"
 msgstr ""
 
-#: lib/com/notice.php:351
+#: lib/com/notice.php:358
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:352
+#: lib/com/notice.php:359
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:357
+#: lib/com/notice.php:364
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:359
+#: lib/com/notice.php:366
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:501
+#: lib/com/notice.php:508
 msgid "%s Note"
 msgstr ""
 
-#: lib/com/notice.php:546
+#: lib/com/notice.php:553
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:987
-msgid "Output from the \"%1$s\" filter has been detected."
-msgstr ""
-
-#: lib/com/util.php:988
-msgid ""
-"WordPress filter hooks should return their data / text, not send it to the "
-"output."
-msgstr ""
-
-#: lib/com/util.php:989
-msgid ""
-"One or more of the following hooks contributed some output and must be "
-"fixed: %2$s"
-msgstr ""
-
-#: lib/com/util.php:990
-msgid "Incorrect output for the \"%1$s\" filter: %3$s"
-msgstr ""
-
-#: lib/com/util.php:1378
+#: lib/com/util.php:1270
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1385
+#: lib/com/util.php:1277
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 

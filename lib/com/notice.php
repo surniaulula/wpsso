@@ -15,6 +15,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private $p;
 		private $lca = 'sucom';
+		private $short_name = 'SUCOM';
 		private $text_dom = 'sucom';
 		private $opt_name = 'sucom_notices';
 		private $dis_name = 'sucom_dismissed';
@@ -27,34 +28,39 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public $enabled = true;
 
-		public function __construct( &$plugin ) {
+		public function __construct( $plugin = null, $lca = null, $short_name = null, $text_dom = null ) {
 
-			$this->p =& $plugin;
-
-			if ( ! empty( $this->p->debug->enabled ) ) {
-				$this->p->debug->mark();
+			if ( $plugin !== null ) {
+				$this->p =& $plugin;
+				if ( ! empty( $this->p->debug->enabled ) ) {
+					$this->p->debug->mark();
+				}
 			}
 
-			if ( ! empty( $this->p->cf['lca'] ) ) {
+			if ( $lca !== null ) {
+				$this->lca = $lca;
+			} elseif ( ! empty( $this->p->cf['lca'] ) ) {
 				$this->lca = $this->p->cf['lca'];
-				if ( ! empty( $this->p->cf['plugin'][$this->lca]['text_domain'] ) ) {
-					$this->text_dom = $this->p->cf['plugin'][$this->lca]['text_domain'];
-				}
+			}
+
+			if ( $short_name !== null ) {
+				$this->short_name = $short_name;
+			} elseif ( ! empty( $this->p->cf['plugin'][$this->lca]['short'] ) ) {
+				$this->short_name = $this->p->cf['plugin'][$this->lca]['short'];
+			}
+
+			if ( $text_dom !== null ) {
+				$this->text_dom = $text_dom;
+			} elseif ( ! empty( $this->p->cf['plugin'][$this->lca]['text_domain'] ) ) {
+				$this->text_dom = $this->p->cf['plugin'][$this->lca]['text_domain'];
 			}
 
 			$uca = strtoupper( $this->lca );
 
-			$this->opt_name = defined( $uca.'_NOTICE_NAME' ) ?
-				constant( $uca.'_NOTICE_NAME' ) : $this->lca.'_notices';
-
-			$this->dis_name = defined( $uca.'_DISMISS_NAME' ) ?
-				constant( $uca.'_DISMISS_NAME' ) : $this->lca.'_dismissed';
-
-			$this->hide_err = defined( $uca.'_HIDE_ALL_ERRORS' ) ?
-				constant( $uca.'_HIDE_ALL_ERRORS' ) : false;
-
-			$this->hide_warn = defined( $uca.'_HIDE_ALL_WARNINGS' ) ?
-				constant( $uca.'_HIDE_ALL_WARNINGS' ) : false;
+			$this->opt_name = defined( $uca.'_NOTICE_NAME' ) ? constant( $uca.'_NOTICE_NAME' ) : $this->lca.'_notices';
+			$this->dis_name = defined( $uca.'_DISMISS_NAME' ) ? constant( $uca.'_DISMISS_NAME' ) : $this->lca.'_dismissed';
+			$this->hide_err = defined( $uca.'_HIDE_ALL_ERRORS' ) ? constant( $uca.'_HIDE_ALL_ERRORS' ) : false;
+			$this->hide_warn = defined( $uca.'_HIDE_ALL_WARNINGS' ) ? constant( $uca.'_HIDE_ALL_WARNINGS' ) : false;
 
 			if ( is_admin() ) {
 				add_action( 'wp_ajax_'.$this->lca.'_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
@@ -255,9 +261,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->has_shown = true;
 
 			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
-				foreach ( array_keys( $this->p->cf['plugin'] ) as $lca ) {
-					if ( ! empty( $this->p->options['plugin_'.$lca.'_tid'] ) ) {
-						$uerr = SucomUpdate::get_umsg( $lca );
+				foreach ( array_keys( $this->p->cf['plugin'] ) as $ext ) {
+					if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
+						$uerr = SucomUpdate::get_umsg( $ext );
 						if ( ! empty( $uerr ) ) {
 							$user_notices['err'][$uerr] = array();
 						}
@@ -340,6 +346,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			echo "\n";
 			echo '<!-- '.$this->lca.' admin notices begin -->'."\n";
+			echo $this->get_notice_style();
 
 			if ( ! empty( $nag_msgs ) ) {
 				echo $this->get_nag_style();
@@ -498,7 +505,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$charset = get_bloginfo( 'charset' );
 
 			if ( ! isset( $payload['label'] ) ) {
-				$payload['label'] = sprintf( __( '%s Note', $this->text_dom ), strtoupper( $this->lca ) );
+				$payload['label'] = sprintf( __( '%s Note', $this->text_dom ), $this->short_name );
 			}
 
 			switch ( $msg_type ) {
@@ -555,6 +562,112 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$msg_html .= '</div>'."\n";
 
 			return $msg_html;
+		}
+
+		private function get_notice_style() {
+
+			$custom_style_css = '
+				.'.$this->lca.'-notice.notice {
+					padding:0;
+				}
+				.'.$this->lca.'-notice ul {
+					margin:5px 0 5px 40px;
+					list-style:disc outside none;
+				}
+				.'.$this->lca.'-notice.notice-success .notice-label:before,
+				.'.$this->lca.'-notice.notice-info .notice-label:before,
+				.'.$this->lca.'-notice.notice-warning .notice-label:before,
+				.'.$this->lca.'-notice.notice-error .notice-label:before {
+					vertical-align:bottom;
+					font-family:dashicons;
+					font-size:1.2em;
+					margin-right:6px;
+				}
+				.'.$this->lca.'-notice.notice-success .notice-label:before {
+					content:"\f147";	/* yes */
+				}
+				.'.$this->lca.'-notice.notice-info .notice-label:before {
+					content:"\f537";	/* sticky */
+				}
+				.'.$this->lca.'-notice.notice-warning .notice-label:before {
+					content:"\f227";	/* flag */
+				}
+				.'.$this->lca.'-notice.notice-error .notice-label:before {
+					content:"\f488";	/* megaphone */
+				}
+				.'.$this->lca.'-notice .notice-label {
+					display:table-cell;
+					vertical-align:top;
+					padding:10px;
+					margin:0;
+					white-space:nowrap;
+					font-weight:bold;
+					background:#fcfcfc;
+					border-right:1px solid #ddd;
+				}
+				.'.$this->lca.'-notice .notice-message {
+					display:table-cell;
+					vertical-align:top;
+					padding:10px 20px;
+					margin:0;
+					line-height:1.5em;
+				}
+				.'.$this->lca.'-notice .notice-message h2 {
+					font-size:1.2em;
+				}
+				.'.$this->lca.'-notice .notice-message h3 {
+					font-size:1.1em;
+					margin-top:1.2em;
+					margin-bottom:0.8em;
+				}
+				.'.$this->lca.'-notice .notice-message a {
+				}
+				.'.$this->lca.'-notice .notice-message p {
+					margin:1em 0;
+				}
+				.'.$this->lca.'-notice .notice-message p.ref_url {
+					font-size:0.8em;
+					margin:10px 0 0 0;
+				}
+				.'.$this->lca.'-notice .notice-message ul {
+					margin-top:0.8em;
+					margin-bottom:1.2em;
+				}
+				.'.$this->lca.'-notice .notice-message ul li {
+					margin-top:3px;
+					margin-bottom:3px;
+				}
+				.'.$this->lca.'-notice .notice-message .button-highlight {
+					border-color:#0074a2;
+					background-color:#daeefc;
+				}
+				.'.$this->lca.'-notice .notice-message .button-highlight:hover {
+					background-color:#c8e6fb;
+				}
+				.'.$this->lca.'-dismissible div.notice-dismiss:before {
+					display:inline-block;
+					margin-right:2px;
+				}
+				.'.$this->lca.'-dismissible div.notice-dismiss {
+					float:right;
+					position:relative;
+					padding:10px;
+					margin:0;
+					top:0;
+					right:0;
+				}
+				.'.$this->lca.'-dismissible div.notice-dismiss-text {
+					display:inline-block;
+					font-size:12px;
+					vertical-align:top;
+				}
+			';
+
+			if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
+				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
+			}
+
+			return '<style type="text/css">'.$custom_style_css.'</style>';
 		}
 
 		private function get_nag_style() {
