@@ -2827,12 +2827,50 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return preg_replace( '/^(.*)( \(.+\))?$/U', '$1 '.$type.'$2', $name );
 		}
 
+		public static function get_wp_hook_names( $filter_name ) {
+			global $wp_filter;
+			$hook_names = array();
+			if ( isset( $wp_filter[$filter_name]->callbacks ) ) {
+				foreach ( $wp_filter[$filter_name]->callbacks as $hook_prio => $hook_group ) {
+					foreach ( $hook_group as $hook_ref => $hook_info ) {
+						if ( ( $hook_name = self::get_hook_function_name( $hook_info ) ) !== '' ) {
+							$hook_names[] = $hook_name;
+						}
+					}
+				}
+			}
+			return $hook_names;
+		}
+
+		public static function get_hook_function_name( array $hook_info ) {
+			$hook_name = '';
+			if ( ! isset( $hook_info['function'] ) ) {		// just in case
+				return $hook_name;				// stop here - return an empty string
+			} elseif ( is_array( $hook_info['function'] ) ) {	// hook is a class / method
+				$class_name = '';
+				$function_name = '';
+				if ( is_object( $hook_info['function'][0] ) ) {
+					$class_name = get_class( $hook_info['function'][0] );
+				} elseif ( is_string( $hook_info['function'][0] ) ) {
+					$class_name = $hook_info['function'][0];
+				}
+				if ( is_string( $hook_info['function'][1] ) ) {
+					$function_name = $hook_info['function'][1];
+
+				}
+				return $class_name.'::'.$function_name;
+			} elseif ( is_string ( $hook_info['function'] ) ) {	// hook is a function
+				return $hook_info['function'];
+			}
+			return $hook_name;
+		}
+		
 		public static function get_min_int() {
-			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;
+			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// available since PHP 7.0.0
 		}
 
 		public static function get_max_int() {
-			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;
+			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// available since PHP 5.0.2
 		}
 	}
 }
