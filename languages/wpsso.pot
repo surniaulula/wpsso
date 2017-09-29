@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.46.2\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.46.3-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -589,6 +589,24 @@ msgstr ""
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
+#: lib/com/bfo.php:198
+msgid ""
+"The \"%1$s\" filter hook with priority %2$d in the \"%3$s\" filter has "
+"mistakenly provided some output."
+msgstr ""
+
+#: lib/com/bfo.php:200
+msgid ""
+"All WordPress filter hooks must return their data / text and not send it to "
+"the output."
+msgstr ""
+
+#: lib/com/bfo.php:202
+msgid ""
+"Please contact the author of that filter hook and report this as a coding "
+"error / bug."
+msgstr ""
+
 #: lib/com/cache.php:103
 msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
 msgstr ""
@@ -678,41 +696,45 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:115
+#: lib/com/notice.php:55
+msgid "%s Notice"
+msgstr ""
+
+#: lib/com/notice.php:58
+msgid "Notice"
+msgstr ""
+
+#: lib/com/notice.php:118
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr ""
 
-#: lib/com/notice.php:125
+#: lib/com/notice.php:128
 msgid "Reference URL: %s"
 msgstr ""
 
-#: lib/com/notice.php:358
+#: lib/com/notice.php:361
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:359
+#: lib/com/notice.php:362
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:364
+#: lib/com/notice.php:367
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:366
+#: lib/com/notice.php:369
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:508
-msgid "%s Note"
-msgstr ""
-
-#: lib/com/notice.php:553
+#: lib/com/notice.php:556
 msgid "Dismiss"
 msgstr ""
 

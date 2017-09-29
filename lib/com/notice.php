@@ -15,7 +15,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private $p;
 		private $lca = 'sucom';
-		private $short_name = 'SUCOM';
+		private $label = '';
 		private $text_dom = 'sucom';
 		private $opt_name = 'sucom_notices';
 		private $dis_name = 'sucom_dismissed';
@@ -28,7 +28,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public $enabled = true;
 
-		public function __construct( $plugin = null, $lca = null, $short_name = null, $text_dom = null ) {
+		public function __construct( $plugin = null, $lca = null, $text_dom = null, $label = null ) {
 
 			if ( $plugin !== null ) {
 				$this->p =& $plugin;
@@ -43,16 +43,19 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->lca = $this->p->cf['lca'];
 			}
 
-			if ( $short_name !== null ) {
-				$this->short_name = $short_name;
-			} elseif ( ! empty( $this->p->cf['plugin'][$this->lca]['short'] ) ) {
-				$this->short_name = $this->p->cf['plugin'][$this->lca]['short'];
-			}
-
 			if ( $text_dom !== null ) {
 				$this->text_dom = $text_dom;
 			} elseif ( ! empty( $this->p->cf['plugin'][$this->lca]['text_domain'] ) ) {
 				$this->text_dom = $this->p->cf['plugin'][$this->lca]['text_domain'];
+			}
+
+			if ( $label !== null ) {
+				$this->label = $label;
+			} elseif ( ! empty( $this->p->cf['menu']['title'] ) ) {
+				$this->label = sprintf( __( '%s Notice', $this->text_dom ),
+					_x( $this->p->cf['menu']['title'], 'menu title', $this->text_dom ) );
+			} else {
+				$this->label = __( 'Notice', $this->text_dom );
 			}
 
 			$uca = strtoupper( $this->lca );
@@ -505,7 +508,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$charset = get_bloginfo( 'charset' );
 
 			if ( ! isset( $payload['label'] ) ) {
-				$payload['label'] = sprintf( __( '%s Note', $this->text_dom ), $this->short_name );
+				$payload['label'] = $this->label;
 			}
 
 			switch ( $msg_type ) {

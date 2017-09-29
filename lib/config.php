@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.46.2',		// plugin version
+					'version' => '3.46.3-dev.1',		// plugin version
 					'opt_version' => '544',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -2168,13 +2168,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;			// auto-hide all warning notices
 			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;			// output pretty / human readable json
 			$var_const['WPSSO_UNDEF_INT'] = -1;				// undefined width / height value
+
 			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 1.00;
 			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT'] = 5;		// maximum number of images extracted from the content
 			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT'] = 5;		// maximum number of videos extracted from the content
+
 			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = false;		// clear cache before fetching shortlink url
 			$var_const['WPSSO_DUPE_CHECK_WARNING_SECS'] = 2.5;		// issue a warning if getting shortlink took more than 2.5 seconds
 			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.0;		// crawlers often time-out after 3 seconds
+
 			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX'] = 10;
+			$var_const['WPSSO_SCHEMA_ADD_TYPE_URL_MAX'] = 5;
+			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX'] = 90;
+			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 90;
+
 			$var_const['WPSSO_UPDATE_NAG_BORDER'] = '1px dotted #33cc33';	// notice nag border
 			$var_const['WPSSO_UPDATE_NAG_BGCOLOR'] = '#e0f7e0';		// notice nag background color
 
