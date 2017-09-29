@@ -1663,7 +1663,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			// look for custom event offers
 			$have_offers = false;
-			foreach ( range( 0, WPSSOJSON_SCHEMA_EVENT_OFFERS_MAX, 1 ) as $key_num ) {
+			foreach ( range( 0, WPSSO_SCHEMA_EVENT_OFFERS_MAX - 1, 1 ) as $key_num ) {
 
 				$offer_opts = array();
 

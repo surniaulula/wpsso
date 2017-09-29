@@ -2174,6 +2174,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = false;		// clear cache before fetching shortlink url
 			$var_const['WPSSO_DUPE_CHECK_WARNING_SECS'] = 2.5;		// issue a warning if getting shortlink took more than 2.5 seconds
 			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.0;		// crawlers often time-out after 3 seconds
+			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX'] = 10;
 			$var_const['WPSSO_UPDATE_NAG_BORDER'] = '1px dotted #33cc33';	// notice nag border
 			$var_const['WPSSO_UPDATE_NAG_BGCOLOR'] = '#e0f7e0';		// notice nag background color
 

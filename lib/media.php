@@ -978,7 +978,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$filter_name = $this->p->cf['lca'].'_video_info';
 
 			$og_video = array_merge(
-				SucomUtil::get_mt_prop_video(),	// includes og:image meta tags for the video preview image
+				SucomUtil::get_mt_prop_video(),			// includes og:image meta tags for the preview image
 				array(
 					'og:video:width' => $embed_width,	// default width
 					'og:video:height' => $embed_height,	// default height
