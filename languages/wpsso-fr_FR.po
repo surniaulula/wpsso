@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.46.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-09-28 18:46-0600\n"
-"PO-Revision-Date: 2017-09-28 18:46-0600\n"
+"POT-Creation-Date: 2017-09-30 09:55-0600\n"
+"PO-Revision-Date: 2017-09-30 09:56-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -542,122 +542,159 @@ msgstr "Retour à %s"
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
-#: lib/com/cache.php:103
+#: lib/com/bfo.php:176 lib/com/cache.php:406 lib/com/notice.php:523
+#: lib/com-gettext-extract.php:23
+msgid "%s Notice"
+msgstr "Avis %s"
+
+#: lib/com/bfo.php:179 lib/com/cache.php:409 lib/com/notice.php:526
+#: lib/com-gettext-extract.php:17
+msgid "Notice"
+msgstr "Avis"
+
+#: lib/com/bfo.php:191 lib/com-gettext-extract.php:24
+msgid "The \"%1$s\" filter hook with priority %2$d in the \"%3$s\" filter has mistakenly provided some webpage output."
+msgstr "Le crochet de filtre \"%1$s\" avec la priorité %2$d dans le filtre \"%3$s\" a fourni une valeur à la sortie de la page Web."
+
+#: lib/com/bfo.php:193 lib/com-gettext-extract.php:5
+msgid "All WordPress filter hooks must return their text - not send it to the webpage output."
+msgstr "Tous les crochets de filtre WordPress doivent retourner leur texte - non pas l'envoyer à la sortie de la page Web."
+
+#: lib/com/bfo.php:195 lib/com-gettext-extract.php:20
+msgid "Please contact the author of that filter hook and report this issue as a coding error / bug."
+msgstr "Veuillez contacter l'auteur de ce filtre et signaler ce problème comme une erreur / bug dans leur code."
+
+#: lib/com/bfo.php:213 lib/com-gettext-extract.php:16
+msgid "Incorrect webpage output:"
+msgstr "Sortie incorrecte à la page Web:"
+
+#: lib/com/bfo.php:214 lib/com-gettext-extract.php:6
+msgid "---BEGIN---"
+msgstr "---DÉBUT---"
+
+#: lib/com/bfo.php:216 lib/com-gettext-extract.php:10
+msgid "---END---"
+msgstr "---FIN---"
+
+#: lib/com/cache.php:90 lib/com-gettext-extract.php:11
 msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
 msgstr "Erreur de connexion à %1$s pour la mise en cache (code HTTP %2$d)."
 
-#: lib/com/cache.php:108
+#: lib/com/cache.php:95 lib/com-gettext-extract.php:19
 msgid "PHP \"safe_mode\" or \"open_basedir\" is defined &mdash; the PHP cURL library cannot follow URL redirects."
 msgstr "PHP \"safe_mode\" ou \"open_basedir\" est défini &mdash; la bibliothèque cURL de PHP est incapable de suivre les redirections d'URL."
 
-#: lib/com/cache.php:111
+#: lib/com/cache.php:98 lib/com-gettext-extract.php:25
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr "Le nombre maximal de redirections d'URL (%d) peut avoir été dépassé."
 
-#: lib/com/cache.php:116
+#: lib/com/cache.php:103 lib/com-gettext-extract.php:22
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr "Les demandes de mise en cache de cette URL seront ignorées pour %d seconde(s)."
 
-#: lib/com/cache.php:192
+#: lib/com/cache.php:179 lib/com-gettext-extract.php:18
 msgid "PHP cURL library is missing &mdash; contact your hosting provider to have the cURL library installed."
 msgstr "La bibliothèque cURL de PHP est manquante &mdash; contactez votre hébergeur pour faire installer la bibliothèque cURL."
 
-#: lib/com/cache.php:269
+#: lib/com/cache.php:256 lib/com-gettext-extract.php:12
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
-#: lib/com/cache.php:433
+#: lib/com/cache.php:458 lib/com-gettext-extract.php:7
 msgid "Cache file %s is not readable."
 msgstr "Le fichier de cache %s n'est pas lisible."
 
-#: lib/com/cache.php:445
+#: lib/com/cache.php:470 lib/com-gettext-extract.php:14
 msgid "Failed to open the cache file %s for reading."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour lecture."
 
-#: lib/com/cache.php:531
+#: lib/com/cache.php:556 lib/com-gettext-extract.php:13
 msgid "Failed to create the %s cache folder."
 msgstr "Impossible de créer le dossier de cache %s."
 
-#: lib/com/cache.php:539
+#: lib/com/cache.php:564 lib/com-gettext-extract.php:8
 msgid "Cache folder %s is not writable."
 msgstr "Le dossier de cache %s n'est pas accessible en écriture."
 
-#: lib/com/cache.php:547
+#: lib/com/cache.php:572 lib/com-gettext-extract.php:15
 msgid "Failed to open the cache file %s for writing."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 
-#: lib/com/form.php:90 lib/config-gettext-extract.php:16
+#: lib/com/form.php:90 lib/com-gettext-extract.php:28
+#: lib/config-gettext-extract.php:16
 msgctxt "option value"
 msgid "default is %s"
 msgstr "%s par défaut"
 
-#: lib/com/form.php:92 lib/config-gettext-extract.php:13
+#: lib/com/form.php:92 lib/com-gettext-extract.php:27
+#: lib/config-gettext-extract.php:13
 msgctxt "option value"
 msgid "checked"
 msgstr "coché"
 
-#: lib/com/form.php:93 lib/config-gettext-extract.php:101
+#: lib/com/form.php:93 lib/com-gettext-extract.php:35
+#: lib/config-gettext-extract.php:101
 msgctxt "option value"
 msgid "unchecked"
 msgstr "décoché"
 
-#: lib/com/form.php:94 lib/config-gettext-extract.php:61
+#: lib/com/form.php:94 lib/com-gettext-extract.php:34
+#: lib/config-gettext-extract.php:61
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr "(option désactivée)"
 
-#: lib/com/form.php:259 lib/config-gettext-extract.php:56
+#: lib/com/form.php:259 lib/com-gettext-extract.php:31
+#: lib/config-gettext-extract.php:56
 msgctxt "option value"
 msgid "(no images)"
 msgstr "(pas d'images)"
 
-#: lib/com/form.php:264 lib/config-gettext-extract.php:59
+#: lib/com/form.php:264 lib/com-gettext-extract.php:33
+#: lib/config-gettext-extract.php:59
 msgctxt "option value"
 msgid "(no videos)"
 msgstr "(aucun vidéos)"
 
-#: lib/com/form.php:269 lib/config-gettext-extract.php:57
+#: lib/com/form.php:269 lib/com-gettext-extract.php:32
+#: lib/config-gettext-extract.php:57
 msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
 
 #: lib/com/form.php:275 lib/com/form.php:390 lib/com/form.php:539
-#: lib/config-gettext-extract.php:17
+#: lib/com-gettext-extract.php:29 lib/config-gettext-extract.php:17
 msgctxt "option value"
 msgid "(default)"
 msgstr "(défaut)"
 
-#: lib/com/notice.php:115
+#: lib/com/notice.php:81 lib/com-gettext-extract.php:26
 msgid "This notice can be dismissed temporarily for a period of %s."
-msgstr "Cet avis peut être masqué temporairement pour une période de%s."
+msgstr "Cet avis peut être masqué temporairement pour une période de %s."
 
-#: lib/com/notice.php:125
+#: lib/com/notice.php:91 lib/com-gettext-extract.php:21
 msgid "Reference URL: %s"
 msgstr "URL de référence: %s"
 
-#: lib/com/notice.php:358
+#: lib/com/notice.php:456 lib/com-gettext-extract.php:30
 msgctxt "notification type"
 msgid "error"
 msgstr "erreur"
 
-#: lib/com/notice.php:359
+#: lib/com/notice.php:457 lib/com-gettext-extract.php:36
 msgctxt "notification type"
 msgid "warning"
 msgstr "attention"
 
-#: lib/com/notice.php:364
+#: lib/com/notice.php:462 lib/com-gettext-extract.php:4
 msgid "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
 
-#: lib/com/notice.php:366
+#: lib/com/notice.php:464 lib/com-gettext-extract.php:3
 msgid "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s message</a>."
 msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
 
-#: lib/com/notice.php:508
-msgid "%s Note"
-msgstr "Avis %s"
-
-#: lib/com/notice.php:553
+#: lib/com/notice.php:587 lib/com-gettext-extract.php:9
 msgid "Dismiss"
 msgstr "Masquer"
 

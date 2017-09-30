@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.46.3-dev.1\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.46.3-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -602,23 +602,23 @@ msgstr ""
 #: lib/com/bfo.php:191 lib/com-gettext-extract.php:24
 msgid ""
 "The \"%1$s\" filter hook with priority %2$d in the \"%3$s\" filter has "
-"mistakenly provided some output."
+"mistakenly provided some webpage output."
 msgstr ""
 
 #: lib/com/bfo.php:193 lib/com-gettext-extract.php:5
 msgid ""
-"All WordPress filter hooks must return their data / text and not send it to "
-"the output."
+"All WordPress filter hooks must return their text - not send it to the "
+"webpage output."
 msgstr ""
 
 #: lib/com/bfo.php:195 lib/com-gettext-extract.php:20
 msgid ""
-"Please contact the author of that filter hook and report this as a coding "
-"error / bug."
+"Please contact the author of that filter hook and report this issue as a "
+"coding error / bug."
 msgstr ""
 
 #: lib/com/bfo.php:213 lib/com-gettext-extract.php:16
-msgid "Incorrect data / text output:"
+msgid "Incorrect webpage output:"
 msgstr ""
 
 #: lib/com/bfo.php:214 lib/com-gettext-extract.php:6

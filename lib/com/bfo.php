@@ -188,11 +188,11 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			$output = ob_get_contents();
 			if ( $output !== '' ) {	// the previous hook has contributed some output
 
-				$error_text = __( 'The "%1$s" filter hook with priority %2$d in the "%3$s" filter has mistakenly provided some output.',
+				$error_text = __( 'The "%1$s" filter hook with priority %2$d in the "%3$s" filter has mistakenly provided some webpage output.',
 					$this->text_domain ).' '.
-				__( 'All WordPress filter hooks must return their data / text and not send it to the output.',
+				__( 'All WordPress filter hooks must return their text - not send it to the webpage output.',
 					$this->text_domain ).' '.
-				__( 'Please contact the author of that filter hook and report this as a coding error / bug.',
+				__( 'Please contact the author of that filter hook and report this issue as a coding error / bug.',
 					$this->text_domain );
 
 				if ( preg_match( '/^'.$this->bfo_check_id.'_\[([0-9]+)\](.+)$/', urldecode( $method_name ), $matches ) ) {
@@ -210,7 +210,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					}
 					error_log(
 						$error_msg.' '.
-						__( 'Incorrect data / text output:', $this->text_domain )."\n".
+						__( 'Incorrect webpage output:', $this->text_domain )."\n".
 						__( '---BEGIN---', $this->text_domain )."\n".
 						print_r( $output, true )."\n".
 						__( '---END---', $this->text_domain )
