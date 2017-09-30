@@ -373,7 +373,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.46.3-dev.1 (TBD)**
+**Version 3.46.3-dev.2 (2017/09/30)**
 
 * *New Features*
 	* None
@@ -382,7 +382,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Minor code refactoring / standardizing.
 
 **Version 3.46.2 (2017/09/25)**
 
@@ -748,9 +748,9 @@ The last version of WPSSO (Core Plugin) that shared a common code-base with Next
 
 == Upgrade Notice ==
 
-= 3.46.3-dev.1 =
+= 3.46.3-dev.2 =
 
-(TBD) None.
+(2017/09/30) Minor code refactoring / standardizing.
 
 = 3.46.2 =
 
