@@ -15,8 +15,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private $p;
 		private $lca = 'sucom';
-		private $label = '';
-		private $text_dom = 'sucom';
+		private $text_domain = 'sucom';
+		private $notice_label = '';
 		private $opt_name = 'sucom_notices';
 		private $dis_name = 'sucom_dismissed';
 		private $hide_err = false;
@@ -28,42 +28,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public $enabled = true;
 
-		public function __construct( $plugin = null, $lca = null, $text_dom = null, $label = null ) {
+		public function __construct( $plugin = null, $lca = null, $text_domain = null, $notice_label = null ) {
 
-			if ( $plugin !== null ) {
-				$this->p =& $plugin;
-				if ( ! empty( $this->p->debug->enabled ) ) {
-					$this->p->debug->mark();
-				}
-			}
-
-			if ( $lca !== null ) {
-				$this->lca = $lca;
-			} elseif ( ! empty( $this->p->cf['lca'] ) ) {
-				$this->lca = $this->p->cf['lca'];
-			}
-
-			if ( $text_dom !== null ) {
-				$this->text_dom = $text_dom;
-			} elseif ( ! empty( $this->p->cf['plugin'][$this->lca]['text_domain'] ) ) {
-				$this->text_dom = $this->p->cf['plugin'][$this->lca]['text_domain'];
-			}
-
-			if ( $label !== null ) {
-				$this->label = $label;
-			} elseif ( ! empty( $this->p->cf['menu']['title'] ) ) {
-				$this->label = sprintf( __( '%s Notice', $this->text_dom ),
-					_x( $this->p->cf['menu']['title'], 'menu title', $this->text_dom ) );
-			} else {
-				$this->label = __( 'Notice', $this->text_dom );
-			}
-
-			$uca = strtoupper( $this->lca );
-
-			$this->opt_name = defined( $uca.'_NOTICE_NAME' ) ? constant( $uca.'_NOTICE_NAME' ) : $this->lca.'_notices';
-			$this->dis_name = defined( $uca.'_DISMISS_NAME' ) ? constant( $uca.'_DISMISS_NAME' ) : $this->lca.'_dismissed';
-			$this->hide_err = defined( $uca.'_HIDE_ALL_ERRORS' ) ? constant( $uca.'_HIDE_ALL_ERRORS' ) : false;
-			$this->hide_warn = defined( $uca.'_HIDE_ALL_WARNINGS' ) ? constant( $uca.'_HIDE_ALL_WARNINGS' ) : false;
+			$this->set_config( $plugin, $lca, $text_domain, $notice_label );
 
 			if ( is_admin() ) {
 				add_action( 'wp_ajax_'.$this->lca.'_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
@@ -72,10 +39,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			add_action( 'shutdown', array( &$this, 'save_user_notices' ) );
-		}
-
-		public function hook_admin_notices() {
-			add_action( 'all_admin_notices', array( &$this, 'show_admin_notices' ), -10 );
 		}
 
 		public function nag( $msg_txt, $user_id = true, $dis_key = false ) {
@@ -116,7 +79,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$is_p = substr( $msg_txt, -4 ) === '</p>' ? true : false;
 					$msg_txt .= $is_p ? '<p>' : ' ';
 					$msg_txt .= sprintf( __( 'This notice can be dismissed temporarily for a period of %s.',
-						$this->text_dom ), human_time_diff( 0, $payload['dis_time'] ) );
+						$this->text_domain ), human_time_diff( 0, $payload['dis_time'] ) );
 					$msg_txt .= $is_p ? '</p>' : '';
 				}
 			} else {
@@ -125,7 +88,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( $ref_url = $this->get_ref( 'url' ) ) {
 				$ref_context = $this->get_ref( 'context', ' (', ')' );
-				$msg_txt .= '<p class="ref_url">'.sprintf( __( 'Reference URL: %s', $this->text_dom ),
+				$msg_txt .= '<p class="ref_url">'.sprintf( __( 'Reference URL: %s', $this->text_domain ),
 					'<a href="'.$ref_url.'">'.$ref_url.'</a>'.$ref_context ).'</p>';
 			}
 
@@ -142,11 +105,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( ! isset( $user_notices[$msg_type][$msg_txt] ) ) {
 				$user_notices[$msg_type][$msg_txt] = $payload;
 			}
-		}
-
-		public function reload_user_notices( $user_id = true ) {
-			// returns reference to cache array
-			$user_notices =& $this->get_user_notices( $user_id, false );	// $use_cache = false
 		}
 
 		public function trunc_key( $dis_key, $user_id = true ) {
@@ -248,6 +206,143 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			}
 			return false;
+		}
+
+		public function can_dismiss() {
+			global $wp_version;
+			if ( version_compare( $wp_version, 4.2, '>=' ) ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		public function is_dismissed( $dis_key = false, $user_id = true ) {
+
+			if ( empty( $dis_key ) || ! $this->can_dismiss() ) {	// just in case
+				return false;
+			}
+
+			if ( $user_id === true ) {
+				$user_id = (int) get_current_user_id();
+			} else {
+				$user_id = (int) $user_id;	// false = 0
+			}
+
+			if ( empty( $user_id ) ) {
+				return false;
+			}
+
+			$user_dismissed = get_user_option( $this->dis_name, $user_id );
+
+			if ( ! is_array( $user_dismissed ) ) {
+				return false;
+			}
+
+			// notice has been dismissed
+			if ( isset( $user_dismissed[$dis_key] ) ) {
+
+				$now_time = time();
+				$dis_time = $user_dismissed[$dis_key];
+
+				if ( empty( $dis_time ) || $dis_time > $now_time ) {
+					return true;
+
+				// dismiss time has expired
+				} else {
+					unset( $user_dismissed[$dis_key] );
+					if ( empty( $user_dismissed ) ) {
+						delete_user_option( $user_id, $this->dis_name );
+					} else {
+						update_user_option( $user_id, $this->dis_name, $user_dismissed );
+					}
+				}
+			}
+
+			return false;
+		}
+
+		public function reload_user_notices( $user_id = true ) {
+			// returns reference to cache array
+			$user_notices =& $this->get_user_notices( $user_id, false );	// $use_cache = false
+		}
+
+		public function ajax_dismiss_notice() {
+
+			$dis_info = array();
+			$user_id = get_current_user_id();
+
+			if ( empty( $user_id ) || ! current_user_can( 'edit_user', $user_id ) ) {
+				die( '-1' );
+			}
+
+			check_ajax_referer( __FILE__, '_ajax_nonce', true );
+
+			// read arguments
+			foreach ( array( 'key', 'time' ) as $key ) {
+				$dis_info[$key] = sanitize_text_field( filter_input( INPUT_POST, $key ) );
+			}
+
+			if ( empty( $dis_info['key'] ) ) {
+				die( '-1' );
+			}
+
+			// site specific user options
+			$user_dismissed = get_user_option( $this->dis_name, $user_id );
+
+			if ( ! is_array( $user_dismissed ) ) {
+				$user_dismissed = array();
+			}
+
+			// save the message id and expiration time (0 = never)
+			$user_dismissed[$dis_info['key']] = empty( $dis_info['time'] ) ||
+				! is_numeric( $dis_info['time'] ) ? 0 : time() + $dis_info['time'];
+
+			update_user_option( $user_id, $this->dis_name, $user_dismissed );
+
+			die( '1' );
+		}
+
+		public function admin_footer_script() {
+			echo '
+<script type="text/javascript">
+	jQuery( document ).ready( function() {
+		jQuery("#'.$this->lca.'-unhide-notices").click( function() {
+			var notice = jQuery( this ).parents(".'.$this->lca.'-notice");
+			jQuery(".'.$this->lca.'-dismissible").show();
+			notice.hide();
+		});
+		jQuery("div.'.$this->lca.'-dismissible > div.notice-dismiss, div.'.$this->lca.'-dismissible .dismiss-on-click").click( function() {
+			var dismiss_msg = jQuery( this ).data( "dismiss-msg" );
+
+			var notice = jQuery( this ).closest(".'.$this->lca.'-dismissible");
+			var dismiss_nonce = notice.data( "dismiss-nonce" );
+			var dismiss_key = notice.data( "dismiss-key" );
+			var dismiss_time = notice.data( "dismiss-time" );
+
+			jQuery.post(
+				ajaxurl, {
+					action: "'.$this->lca.'_dismiss_notice",
+					_ajax_nonce: dismiss_nonce,
+					key: dismiss_key,
+					time: dismiss_time
+				}
+			);
+
+			if ( dismiss_msg ) {
+				notice.children("div.notice-dismiss").hide();
+				jQuery( this ).closest("div.notice-message").html( dismiss_msg );
+			} else {
+				notice.hide();
+			}
+		});
+	});
+</script>
+			';
+		}
+
+		public function hook_admin_notices() {
+			add_action( 'all_admin_notices', array( &$this, 'show_admin_notices' ), -10 );
 		}
 
 		public function show_admin_notices() {
@@ -358,15 +453,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			// remind the user that there are hidden error messages
 			foreach ( array(
-				'err' => _x( 'error', 'notification type', $this->text_dom ),
-				'warn' => _x( 'warning', 'notification type', $this->text_dom ),
+				'err' => _x( 'error', 'notification type', $this->text_domain ),
+				'warn' => _x( 'warning', 'notification type', $this->text_domain ),
 			) as $msg_type => $log_name ) {
 				if ( empty( $hidden[$msg_type] ) ) {
 					continue;
 				} elseif ( $hidden[$msg_type] > 1 ) {
-					$msg_text = __( '%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s messages</a>.', $this->text_dom );
+					$msg_text = __( '%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s messages</a>.', $this->text_domain );
 				} else {
-					$msg_text = __( '%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.', $this->text_dom );
+					$msg_text = __( '%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.', $this->text_domain );
 				}
 				echo $this->get_notice_html( $msg_type, sprintf( $msg_text, $hidden[$msg_type], $log_name, $this->lca.'-unhide-notices' ) );
 			}
@@ -375,132 +470,68 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			echo '<!-- '.$this->lca.' admin notices end -->'."\n";
 		}
 
-		public function ajax_dismiss_notice() {
+		/*
+		 * Called by the WordPress 'shutdown' action.
+		 */
+		public function save_user_notices() {
 
-			$dis_info = array();
-			$user_id = get_current_user_id();
+			$user_id = (int) get_current_user_id();
+			$have_notices = false;
 
-			if ( empty( $user_id ) || ! current_user_can( 'edit_user', $user_id ) ) {
-				die( '-1' );
-			}
-
-			check_ajax_referer( __FILE__, '_ajax_nonce', true );
-
-			// read arguments
-			foreach ( array( 'key', 'time' ) as $key ) {
-				$dis_info[$key] = sanitize_text_field( filter_input( INPUT_POST, $key ) );
-			}
-
-			if ( empty( $dis_info['key'] ) ) {
-				die( '-1' );
-			}
-
-			// site specific user options
-			$user_dismissed = get_user_option( $this->dis_name, $user_id );
-
-			if ( ! is_array( $user_dismissed ) ) {
-				$user_dismissed = array();
-			}
-
-			// save the message id and expiration time (0 = never)
-			$user_dismissed[$dis_info['key']] = empty( $dis_info['time'] ) ||
-				! is_numeric( $dis_info['time'] ) ? 0 : time() + $dis_info['time'];
-
-			update_user_option( $user_id, $this->dis_name, $user_dismissed );
-
-			die( '1' );
-		}
-
-		public function can_dismiss() {
-			global $wp_version;
-			if ( version_compare( $wp_version, 4.2, '>=' ) ) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-
-		public function is_dismissed( $dis_key = false, $user_id = true ) {
-
-			if ( empty( $dis_key ) || ! $this->can_dismiss() ) {	// just in case
-				return false;
-			}
-
-			if ( $user_id === true ) {
-				$user_id = (int) get_current_user_id();
-			} else {
-				$user_id = (int) $user_id;	// false = 0
-			}
-
-			if ( empty( $user_id ) ) {
-				return false;
-			}
-
-			$user_dismissed = get_user_option( $this->dis_name, $user_id );
-
-			if ( ! is_array( $user_dismissed ) ) {
-				return false;
-			}
-
-			// notice has been dismissed
-			if ( isset( $user_dismissed[$dis_key] ) ) {
-
-				$now_time = time();
-				$dis_time = $user_dismissed[$dis_key];
-
-				if ( empty( $dis_time ) || $dis_time > $now_time ) {
-					return true;
-
-				// dismiss time has expired
-				} else {
-					unset( $user_dismissed[$dis_key] );
-					if ( empty( $user_dismissed ) ) {
-						delete_user_option( $user_id, $this->dis_name );
-					} else {
-						update_user_option( $user_id, $this->dis_name, $user_dismissed );
+			if ( $user_id > 0 ) {
+				if ( isset( $this->notice_cache[$user_id]['have_notices'] ) ) {
+					$have_notices = $this->notice_cache[$user_id]['have_notices'];
+					unset( $this->notice_cache[$user_id]['have_notices'] );
+				}
+				if ( empty( $this->notice_cache[$user_id] ) ) {
+					if ( $have_notices ) {
+						delete_user_option( $user_id, $this->opt_name );
 					}
+				} else {
+					update_user_option( $user_id, $this->opt_name, $this->notice_cache[$user_id] );
 				}
 			}
-
-			return false;
 		}
 
-		public function admin_footer_script() {
-			echo '
-<script type="text/javascript">
-	jQuery( document ).ready( function() {
-		jQuery("#'.$this->lca.'-unhide-notices").click( function() {
-			var notice = jQuery( this ).parents(".'.$this->lca.'-notice");
-			jQuery(".'.$this->lca.'-dismissible").show();
-			notice.hide();
-		});
-		jQuery("div.'.$this->lca.'-dismissible > div.notice-dismiss, div.'.$this->lca.'-dismissible .dismiss-on-click").click( function() {
-			var dismiss_msg = jQuery( this ).data( "dismiss-msg" );
+		/*
+		 * Set property values for text domain, notice label, etc.
+		 */
+		private function set_config( $plugin = null, $lca = null, $text_domain = null, $notice_label = null ) {
 
-			var notice = jQuery( this ).closest(".'.$this->lca.'-dismissible");
-			var dismiss_nonce = notice.data( "dismiss-nonce" );
-			var dismiss_key = notice.data( "dismiss-key" );
-			var dismiss_time = notice.data( "dismiss-time" );
-
-			jQuery.post(
-				ajaxurl, {
-					action: "'.$this->lca.'_dismiss_notice",
-					_ajax_nonce: dismiss_nonce,
-					key: dismiss_key,
-					time: dismiss_time
+			if ( $plugin !== null ) {
+				$this->p =& $plugin;
+				if ( ! empty( $this->p->debug->enabled ) ) {
+					$this->p->debug->mark();
 				}
-			);
-
-			if ( dismiss_msg ) {
-				notice.children("div.notice-dismiss").hide();
-				jQuery( this ).closest("div.notice-message").html( dismiss_msg );
-			} else {
-				notice.hide();
 			}
-		});
-	});
-</script>
-			';
+
+			if ( $lca !== null ) {
+				$this->lca = $lca;
+			} elseif ( ! empty( $this->p->cf['lca'] ) ) {
+				$this->lca = $this->p->cf['lca'];
+			}
+
+			if ( $text_domain !== null ) {
+				$this->text_domain = $text_domain;
+			} elseif ( ! empty( $this->p->cf['plugin'][$this->lca]['text_domain'] ) ) {
+				$this->text_domain = $this->p->cf['plugin'][$this->lca]['text_domain'];
+			}
+
+			if ( $notice_label !== null ) {
+				$this->notice_label = $notice_label;	// label should already be translated
+			} elseif ( ! empty( $this->p->cf['menu']['title'] ) ) {
+				$this->notice_label = sprintf( __( '%s Notice', $this->text_domain ),
+					_x( $this->p->cf['menu']['title'], 'menu title', $this->text_domain ) );
+			} else {
+				$this->notice_label = __( 'Notice', $this->text_domain );
+			}
+
+			$uca = strtoupper( $this->lca );
+
+			$this->opt_name = defined( $uca.'_NOTICE_NAME' ) ? constant( $uca.'_NOTICE_NAME' ) : $this->lca.'_notices';
+			$this->dis_name = defined( $uca.'_DISMISS_NAME' ) ? constant( $uca.'_DISMISS_NAME' ) : $this->lca.'_dismissed';
+			$this->hide_err = defined( $uca.'_HIDE_ALL_ERRORS' ) ? constant( $uca.'_HIDE_ALL_ERRORS' ) : false;
+			$this->hide_warn = defined( $uca.'_HIDE_ALL_WARNINGS' ) ? constant( $uca.'_HIDE_ALL_WARNINGS' ) : false;
 		}
 
 		private function get_notice_html( $msg_type, $msg_txt, $payload = array() ) {
@@ -508,7 +539,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$charset = get_bloginfo( 'charset' );
 
 			if ( ! isset( $payload['label'] ) ) {
-				$payload['label'] = $this->label;
+				$payload['label'] = $this->notice_label;
 			}
 
 			switch ( $msg_type ) {
@@ -553,7 +584,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( ! empty( $payload['dis_time'] ) ) {
 				$msg_html .= '<div class="notice-dismiss"><div class="notice-dismiss-text">'.
-					__( 'Dismiss', $this->text_dom ).'</div></div>';
+					__( 'Dismiss', $this->text_domain ).'</div></div>';
 			}
 
 			if ( ! empty( $payload['label'] ) ) {
@@ -766,26 +797,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			return $this->notice_cache[$user_id];
-		}
-
-		public function save_user_notices() {
-
-			$user_id = (int) get_current_user_id();
-			$have_notices = false;
-
-			if ( $user_id > 0 ) {
-				if ( isset( $this->notice_cache[$user_id]['have_notices'] ) ) {
-					$have_notices = $this->notice_cache[$user_id]['have_notices'];
-					unset( $this->notice_cache[$user_id]['have_notices'] );
-				}
-				if ( empty( $this->notice_cache[$user_id] ) ) {
-					if ( $have_notices ) {
-						delete_user_option( $user_id, $this->opt_name );
-					}
-				} else {
-					update_user_option( $user_id, $this->opt_name, $this->notice_cache[$user_id] );
-				}
-			}
 		}
 	}
 }

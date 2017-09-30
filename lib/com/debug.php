@@ -13,8 +13,6 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 	class SucomDebug {
 
-		public $enabled = false;	// true if at least one subsys is true
-
 		private $p;
 		private $display_name = '';
 		private $log_prefix = '';
@@ -22,6 +20,8 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		private $subsys = array();	// associative array to enable various outputs
 		private $start_stats = null;
 		private $begin_marks = array();
+
+		public $enabled = false;	// true if at least one subsys is true
 
 		public function __construct( &$plugin, $subsys = array( 'html' => false, 'wp' => false ) ) {
 			$this->p =& $plugin;

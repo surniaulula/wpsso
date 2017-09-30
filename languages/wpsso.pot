@@ -589,152 +589,173 @@ msgstr ""
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
-#: lib/com/bfo.php:198
+#: lib/com/bfo.php:176 lib/com/cache.php:406 lib/com/notice.php:523
+#: lib/com-gettext-extract.php:23
+msgid "%s Notice"
+msgstr ""
+
+#: lib/com/bfo.php:179 lib/com/cache.php:409 lib/com/notice.php:526
+#: lib/com-gettext-extract.php:17
+msgid "Notice"
+msgstr ""
+
+#: lib/com/bfo.php:191 lib/com-gettext-extract.php:24
 msgid ""
 "The \"%1$s\" filter hook with priority %2$d in the \"%3$s\" filter has "
 "mistakenly provided some output."
 msgstr ""
 
-#: lib/com/bfo.php:200
+#: lib/com/bfo.php:193 lib/com-gettext-extract.php:5
 msgid ""
 "All WordPress filter hooks must return their data / text and not send it to "
 "the output."
 msgstr ""
 
-#: lib/com/bfo.php:202
+#: lib/com/bfo.php:195 lib/com-gettext-extract.php:20
 msgid ""
 "Please contact the author of that filter hook and report this as a coding "
 "error / bug."
 msgstr ""
 
-#: lib/com/cache.php:103
+#: lib/com/bfo.php:213 lib/com-gettext-extract.php:16
+msgid "Incorrect data / text output:"
+msgstr ""
+
+#: lib/com/bfo.php:214 lib/com-gettext-extract.php:6
+msgid "---BEGIN---"
+msgstr ""
+
+#: lib/com/bfo.php:216 lib/com-gettext-extract.php:10
+msgid "---END---"
+msgstr ""
+
+#: lib/com/cache.php:90 lib/com-gettext-extract.php:11
 msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
 msgstr ""
 
-#: lib/com/cache.php:108
+#: lib/com/cache.php:95 lib/com-gettext-extract.php:19
 msgid ""
 "PHP \"safe_mode\" or \"open_basedir\" is defined &mdash; the PHP cURL "
 "library cannot follow URL redirects."
 msgstr ""
 
-#: lib/com/cache.php:111
+#: lib/com/cache.php:98 lib/com-gettext-extract.php:25
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: lib/com/cache.php:116
+#: lib/com/cache.php:103 lib/com-gettext-extract.php:22
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
-#: lib/com/cache.php:192
+#: lib/com/cache.php:179 lib/com-gettext-extract.php:18
 msgid ""
 "PHP cURL library is missing &mdash; contact your hosting provider to have "
 "the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:269
+#: lib/com/cache.php:256 lib/com-gettext-extract.php:12
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/com/cache.php:433
+#: lib/com/cache.php:458 lib/com-gettext-extract.php:7
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:445
+#: lib/com/cache.php:470 lib/com-gettext-extract.php:14
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:531
+#: lib/com/cache.php:556 lib/com-gettext-extract.php:13
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: lib/com/cache.php:539
+#: lib/com/cache.php:564 lib/com-gettext-extract.php:8
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:547
+#: lib/com/cache.php:572 lib/com-gettext-extract.php:15
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:90 lib/config-gettext-extract.php:16
+#: lib/com/form.php:90 lib/com-gettext-extract.php:28
+#: lib/config-gettext-extract.php:16
 msgctxt "option value"
 msgid "default is %s"
 msgstr ""
 
-#: lib/com/form.php:92 lib/config-gettext-extract.php:13
+#: lib/com/form.php:92 lib/com-gettext-extract.php:27
+#: lib/config-gettext-extract.php:13
 msgctxt "option value"
 msgid "checked"
 msgstr ""
 
-#: lib/com/form.php:93 lib/config-gettext-extract.php:101
+#: lib/com/form.php:93 lib/com-gettext-extract.php:35
+#: lib/config-gettext-extract.php:101
 msgctxt "option value"
 msgid "unchecked"
 msgstr ""
 
-#: lib/com/form.php:94 lib/config-gettext-extract.php:61
+#: lib/com/form.php:94 lib/com-gettext-extract.php:34
+#: lib/config-gettext-extract.php:61
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: lib/com/form.php:259 lib/config-gettext-extract.php:56
+#: lib/com/form.php:259 lib/com-gettext-extract.php:31
+#: lib/config-gettext-extract.php:56
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/com/form.php:264 lib/config-gettext-extract.php:59
+#: lib/com/form.php:264 lib/com-gettext-extract.php:33
+#: lib/config-gettext-extract.php:59
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:269 lib/config-gettext-extract.php:57
+#: lib/com/form.php:269 lib/com-gettext-extract.php:32
+#: lib/config-gettext-extract.php:57
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
 #: lib/com/form.php:275 lib/com/form.php:390 lib/com/form.php:539
-#: lib/config-gettext-extract.php:17
+#: lib/com-gettext-extract.php:29 lib/config-gettext-extract.php:17
 msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:55
-msgid "%s Notice"
-msgstr ""
-
-#: lib/com/notice.php:58
-msgid "Notice"
-msgstr ""
-
-#: lib/com/notice.php:118
+#: lib/com/notice.php:81 lib/com-gettext-extract.php:26
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr ""
 
-#: lib/com/notice.php:128
+#: lib/com/notice.php:91 lib/com-gettext-extract.php:21
 msgid "Reference URL: %s"
 msgstr ""
 
-#: lib/com/notice.php:361
+#: lib/com/notice.php:456 lib/com-gettext-extract.php:30
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:362
+#: lib/com/notice.php:457 lib/com-gettext-extract.php:36
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:367
+#: lib/com/notice.php:462 lib/com-gettext-extract.php:4
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:369
+#: lib/com/notice.php:464 lib/com-gettext-extract.php:3
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:556
+#: lib/com/notice.php:587 lib/com-gettext-extract.php:9
 msgid "Dismiss"
 msgstr ""
 

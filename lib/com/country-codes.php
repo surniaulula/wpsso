@@ -1265,20 +1265,25 @@ if ( ! class_exists( 'SucomCountryCodes' ) ) {
 		private static $codes = array();
 
 		public function __construct() {
+			// nothing to do
 		}
 
 		public static function get( $key = '' ) {
-			if ( empty( $key ) )
+
+			if ( empty( $key ) ) {
 				return self::$codes;
+			}
 
 			// only create the code -> name array map once
 			if ( ! isset( self::$codes[$key] ) ) {
 				foreach ( self::$countries as $name => $arr ) {
-					if ( isset( $arr[$key] ) )
+					if ( isset( $arr[$key] ) ) {
 						self::$codes[$key][$arr[$key]] = $name;
+					}
 				}
-				if ( ! isset( self::$codes[$key] ) )	// just in case
+				if ( ! isset( self::$codes[$key] ) ) {	// just in case
 					self::$codes[$key] = false;
+				}
 			}
 
 			return self::$codes[$key];
