@@ -438,7 +438,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_p_strip':
-							$text = __( 'If a post / page does not have an excerpt, and this option is checked, the plugin will ignore all text before the first paragraph tag in the content.', 'wpsso' ).' '.__( 'If an excerpt is available, then this option is ignored and the complete text of the excerpt is used (excerpts have priority over the content text).', 'wpsso' );
+							$text = sprintf( __( 'If a post / page does not have an excerpt, and this option is checked, %s will ignore all text before the first paragraph tag in the content.', 'wpsso' ), $info['short'] ).' '.__( 'If an excerpt is available, then this option is ignored and the complete text of the excerpt is used (excerpts have priority over the content text).', 'wpsso' );
 							break;
 
 						case 'tooltip-plugin_use_img_alt':

@@ -2418,8 +2418,8 @@ msgstr ""
 
 #: lib/messages.php:441
 msgid ""
-"If a post / page does not have an excerpt, and this option is checked, the "
-"plugin will ignore all text before the first paragraph tag in the content."
+"If a post / page does not have an excerpt, and this option is checked, %s "
+"will ignore all text before the first paragraph tag in the content."
 msgstr ""
 
 #: lib/messages.php:441
@@ -4498,8 +4498,8 @@ msgstr ""
 #: lib/upgrade.php:239
 msgid ""
 "This latest version of %1$s includes a feature to monitor the WordPress "
-"content filter and fix incorrectly coded filter hooks that send text to the "
-"webpage output (instead of returning it, as all filters must)."
+"content filter and fix incorrectly coded filter hooks (that send text to the "
+"webpage output instead of returning it, as all filter hooks must)."
 msgstr ""
 
 #: lib/upgrade.php:241
