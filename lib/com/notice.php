@@ -29,16 +29,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public $enabled = true;
 
 		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
-
-			$this->set_config( $plugin, $lca, $text_domain, $label_transl );
-
-			if ( is_admin() ) {
-				add_action( 'wp_ajax_'.$this->lca.'_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
-				add_action( 'admin_footer', array( &$this, 'admin_footer_script' ) );
-				add_action( 'in_admin_header', array( &$this, 'hook_admin_notices' ), 300000 );
+			static $do_once = null;
+			if ( $do_once === null ) {
+				$do_once = true;
+				$this->set_config( $plugin, $lca, $text_domain, $label_transl );
+				$this->add_actions();
 			}
-
-			add_action( 'shutdown', array( &$this, 'save_user_notices' ) );
 		}
 
 		public function nag( $msg_txt, $user_id = true, $dis_key = false ) {
@@ -474,10 +470,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 * Called by the WordPress 'shutdown' action.
 		 */
 		public function save_user_notices() {
-
 			$user_id = (int) get_current_user_id();
 			$have_notices = false;
-
 			if ( $user_id > 0 ) {
 				if ( isset( $this->notice_cache[$user_id]['have_notices'] ) ) {
 					$have_notices = $this->notice_cache[$user_id]['have_notices'];
@@ -532,6 +526,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->dis_name = defined( $uca.'_DISMISS_NAME' ) ? constant( $uca.'_DISMISS_NAME' ) : $this->lca.'_dismissed';
 			$this->hide_err = defined( $uca.'_HIDE_ALL_ERRORS' ) ? constant( $uca.'_HIDE_ALL_ERRORS' ) : false;
 			$this->hide_warn = defined( $uca.'_HIDE_ALL_WARNINGS' ) ? constant( $uca.'_HIDE_ALL_WARNINGS' ) : false;
+		}
+
+		private function add_actions() {
+			if ( is_admin() ) {
+				add_action( 'wp_ajax_'.$this->lca.'_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
+				add_action( 'admin_footer', array( &$this, 'admin_footer_script' ) );
+				add_action( 'in_admin_header', array( &$this, 'hook_admin_notices' ), PHP_INT_MAX );
+			}
+			add_action( 'shutdown', array( &$this, 'save_user_notices' ), PHP_INT_MAX );
 		}
 
 		private function get_notice_html( $msg_type, $msg_txt, $payload = array() ) {

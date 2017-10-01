@@ -203,10 +203,18 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					 * notice. :)
 					 */
 					if ( is_admin() ) {
-						$lib_com_dir = trailingslashit( realpath( dirname( __FILE__ ) ) );
-						require_once $lib_com_dir.'notice.php';	// load the SucomNotice class
-						$notice = new SucomNotice( $this->p, $this->lca, $this->text_domain, $this->label_transl );
-						$notice->err( $error_msg );
+						if ( isset( $this->p ) ) {
+							if ( $this->p->notice->is_admin_pre_notices() ) {
+								$this->p->notice->err( $error_msg );
+							}
+						} else {
+							$lib_com_dir = trailingslashit( realpath( dirname( __FILE__ ) ) );
+							require_once $lib_com_dir.'notice.php';	// load the SucomNotice class
+							$notice = new SucomNotice( $this->p, $this->lca, $this->text_domain, $this->label_transl );
+							if ( $notice->is_admin_pre_notices() ) {
+								$notice->err( $error_msg );
+							}
+						}
 					}
 					error_log(
 						$this->label_transl.': '.$error_msg.' '.	// label_transl is already translated

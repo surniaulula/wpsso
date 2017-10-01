@@ -704,10 +704,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * Load the Block Filter Output (BFO) filters to block and show an error 
 				 * for incorrectly coded filters.
 				 */
-				$classname = apply_filters( 'wpsso_load_lib', false, 'com/bfo', 'SucomBFO' );
-				if ( is_string( $classname ) && class_exists( $classname ) ) {
-					$bfo = new $classname( $this->p );
-					$bfo->add_start_output_hooks( array( 'the_content' ) );
+				if ( WPSSO_CONTENT_BLOCK_FILTER_OUTPUT ) {
+					$classname = apply_filters( 'wpsso_load_lib', false, 'com/bfo', 'SucomBFO' );
+					if ( is_string( $classname ) && class_exists( $classname ) ) {
+						$bfo = new $classname( $this->p );
+						$bfo->add_start_output_hooks( array( 'the_content' ) );
+					}
 				}
 
 				/*

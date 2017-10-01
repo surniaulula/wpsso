@@ -589,12 +589,12 @@ msgstr ""
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
-#: lib/com/bfo.php:176 lib/com/cache.php:406 lib/com/notice.php:523
+#: lib/com/bfo.php:176 lib/com/cache.php:406 lib/com/notice.php:517
 #: lib/com-gettext-extract.php:23
 msgid "%s Notice"
 msgstr ""
 
-#: lib/com/bfo.php:179 lib/com/cache.php:409 lib/com/notice.php:526
+#: lib/com/bfo.php:179 lib/com/cache.php:409 lib/com/notice.php:520
 #: lib/com-gettext-extract.php:17
 msgid "Notice"
 msgstr ""
@@ -617,15 +617,15 @@ msgid ""
 "coding error / bug."
 msgstr ""
 
-#: lib/com/bfo.php:213 lib/com-gettext-extract.php:16
+#: lib/com/bfo.php:221 lib/com-gettext-extract.php:16
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: lib/com/bfo.php:214 lib/com-gettext-extract.php:6
+#: lib/com/bfo.php:222 lib/com-gettext-extract.php:6
 msgid "---BEGIN---"
 msgstr ""
 
-#: lib/com/bfo.php:216 lib/com-gettext-extract.php:10
+#: lib/com/bfo.php:224 lib/com-gettext-extract.php:10
 msgid "---END---"
 msgstr ""
 
@@ -725,37 +725,37 @@ msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/com/notice.php:81 lib/com-gettext-extract.php:26
+#: lib/com/notice.php:77 lib/com-gettext-extract.php:26
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr ""
 
-#: lib/com/notice.php:91 lib/com-gettext-extract.php:21
+#: lib/com/notice.php:87 lib/com-gettext-extract.php:21
 msgid "Reference URL: %s"
 msgstr ""
 
-#: lib/com/notice.php:456 lib/com-gettext-extract.php:30
+#: lib/com/notice.php:452 lib/com-gettext-extract.php:30
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:457 lib/com-gettext-extract.php:36
+#: lib/com/notice.php:453 lib/com-gettext-extract.php:36
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:462 lib/com-gettext-extract.php:4
+#: lib/com/notice.php:458 lib/com-gettext-extract.php:4
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:464 lib/com-gettext-extract.php:3
+#: lib/com/notice.php:460 lib/com-gettext-extract.php:3
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:587 lib/com-gettext-extract.php:9
+#: lib/com/notice.php:590 lib/com-gettext-extract.php:9
 msgid "Dismiss"
 msgstr ""
 
@@ -3717,7 +3717,7 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/page.php:738
+#: lib/page.php:740
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "
