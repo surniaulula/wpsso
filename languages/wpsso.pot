@@ -2431,7 +2431,7 @@ msgstr ""
 #: lib/messages.php:445
 msgid ""
 "If the content text is comprised entirely of HTML tags (which must be "
-"removed to create a text-only description), %s can extract and use image "
+"removed to create text-only descriptions), %s can extract and use image "
 "<em>alt</em> attributes instead of returning an empty description."
 msgstr ""
 

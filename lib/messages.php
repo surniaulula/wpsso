@@ -442,7 +442,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_use_img_alt':
-							$text = sprintf( __( 'If the content text is comprised entirely of HTML tags (which must be removed to create a text-only description), %s can extract and use image <em>alt</em> attributes instead of returning an empty description.', 'wpsso' ), $info['short'] );
+							$text = sprintf( __( 'If the content text is comprised entirely of HTML tags (which must be removed to create text-only descriptions), %s can extract and use image <em>alt</em> attributes instead of returning an empty description.', 'wpsso' ), $info['short'] );
 							break;
 
 						case 'tooltip-plugin_img_alt_prefix':
