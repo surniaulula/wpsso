@@ -378,12 +378,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a new Block Filter Output (BFO) feature when using "the_content" filter, to monitor and fix incorrectly coded filter hooks that send text to the webpage output instead of returning it - as all filters must.
+	* The "Apply Content Filters" option is now enabled by default.
 * *Bugfixes*
 	* None
 * *Developer Notes*
+	* Added a new Block Filter Output (BFO) common library class as lib/com/bfo.php.
 	* Minor code refactoring / standardizing.
-	* Added a new Block Filter Output (BFO) library class as lib/com/bfo.php.
 
 **Version 3.46.2 (2017/09/25)**
 
@@ -751,7 +752,7 @@ The last version of WPSSO (Core Plugin) that shared a common code-base with Next
 
 = 3.46.3-dev.2 =
 
-(2017/09/30) Minor code refactoring / standardizing.
+(2017/09/30) Added a new Block Filter Output (BFO) feature when using "the_content" filter, to monitor and fix incorrectly coded filter hooks. The "Apply Content Filters" option is now enabled by default. ;-)
 
 = 3.46.2 =
 
