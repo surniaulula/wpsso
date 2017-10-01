@@ -383,6 +383,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Developer Notes*
 	* Minor code refactoring / standardizing.
+	* Added a new Block Filter Output (BFO) library class as lib/com/bfo.php.
 
 **Version 3.46.2 (2017/09/25)**
 
