@@ -378,7 +378,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* Added a new Block Filter Output (BFO) feature to monitor the content filter and fix incorrectly coded filter hooks that send text to the webpage output (instead of returning it - as all filters must).
+	* Added a new Block Filter Output (BFO) feature to monitor the content filter and fix incorrectly coded filter hooks (that send text to the webpage output instead of returning it, as all filter hooks must).
 	* The "Apply Content Filters" option is now enabled by default, and if currently disabled, the option is enabled automatically and a notice message is displayed.
 * *Bugfixes*
 	* None
