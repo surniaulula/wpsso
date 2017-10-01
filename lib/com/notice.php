@@ -16,7 +16,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $p;
 		private $lca = 'sucom';
 		private $text_domain = 'sucom';
-		private $notice_label = '';
+		private $label_transl = '';
 		private $opt_name = 'sucom_notices';
 		private $dis_name = 'sucom_dismissed';
 		private $hide_err = false;
@@ -28,9 +28,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public $enabled = true;
 
-		public function __construct( $plugin = null, $lca = null, $text_domain = null, $notice_label = null ) {
+		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
 
-			$this->set_config( $plugin, $lca, $text_domain, $notice_label );
+			$this->set_config( $plugin, $lca, $text_domain, $label_transl );
 
 			if ( is_admin() ) {
 				add_action( 'wp_ajax_'.$this->lca.'_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
@@ -496,7 +496,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		/*
 		 * Set property values for text domain, notice label, etc.
 		 */
-		private function set_config( $plugin = null, $lca = null, $text_domain = null, $notice_label = null ) {
+		private function set_config( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
 
 			if ( $plugin !== null ) {
 				$this->p =& $plugin;
@@ -517,13 +517,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->text_domain = $this->p->cf['plugin'][$this->lca]['text_domain'];
 			}
 
-			if ( $notice_label !== null ) {
-				$this->notice_label = $notice_label;	// label should already be translated
+			if ( $label_transl !== null ) {
+				$this->label_transl = $label_transl;	// argument is already translated
 			} elseif ( ! empty( $this->p->cf['menu']['title'] ) ) {
-				$this->notice_label = sprintf( __( '%s Notice', $this->text_domain ),
+				$this->label_transl = sprintf( __( '%s Notice', $this->text_domain ),
 					_x( $this->p->cf['menu']['title'], 'menu title', $this->text_domain ) );
 			} else {
-				$this->notice_label = __( 'Notice', $this->text_domain );
+				$this->label_transl = __( 'Notice', $this->text_domain );
 			}
 
 			$uca = strtoupper( $this->lca );
@@ -539,7 +539,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$charset = get_bloginfo( 'charset' );
 
 			if ( ! isset( $payload['label'] ) ) {
-				$payload['label'] = $this->notice_label;
+				$payload['label'] = $this->label_transl;
 			}
 
 			switch ( $msg_type ) {

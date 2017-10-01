@@ -145,15 +145,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $menu_libs as $menu_lib ) {
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-					if ( ! isset( $info['lib'][$menu_lib] ) )	// not all extensions have submenus
+					if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all extensions have submenus
 						continue;
+					}
 					foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
 						$classname = apply_filters( $ext.'_load_lib', false, $menu_lib.'/'.$menu_id );
 						if ( is_string( $classname ) && class_exists( $classname ) ) {
-							if ( ! empty( $info['text_domain'] ) )
+							if ( ! empty( $info['text_domain'] ) ) {
 								$menu_name = _x( $menu_name, 'lib file description', $info['text_domain'] );
-							$this->submenu[$menu_id] = new $classname( $this->p,
-								$menu_id, $menu_name, $menu_lib, $ext );
+							}
+							$this->submenu[$menu_id] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib, $ext );
 						}
 					}
 				}

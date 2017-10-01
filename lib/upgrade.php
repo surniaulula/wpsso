@@ -167,8 +167,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 		}
 
 		// def_opts accepts output from functions, so don't force reference
@@ -227,6 +228,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				if ( $prev_version > 0 && $prev_version <= 453 ) {
 					$opts['add_meta_property_og:image:secure_url'] = 1;
 					$opts['add_meta_property_og:video:secure_url'] = 1;
+				}
+
+				if ( $prev_version > 0 && $prev_version <= 545 ) {
+					$opts['plugin_filter_content'] = 1;
 				}
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {

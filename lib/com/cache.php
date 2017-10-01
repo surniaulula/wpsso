@@ -16,7 +16,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		private $p;
 		private $lca = 'sucom';
 		private $text_domain = 'sucom';
-		private $notice_label = '';
+		private $label_transl = '';
 
 		public $base_dir = '';
 		public $base_url = '/cache/';
@@ -34,9 +34,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			'ignore_urls' => array(),
 		);
 
-		public function __construct( $plugin = null, $lca = null, $text_domain = null, $notice_label = null ) {
+		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
 
-			$this->set_config( $plugin, $lca, $text_domain, $notice_label );
+			$this->set_config( $plugin, $lca, $text_domain, $label_transl );
 
 			add_action( 'shutdown', array( &$this, 'save_transient' ) );
 		}
@@ -379,7 +379,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		/*
 		 * Set property values for text domain, notice label, etc.
 		 */
-		private function set_config( $plugin = null, $lca = null, $text_domain = null, $notice_label = null ) {
+		private function set_config( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
 
 			if ( $plugin !== null ) {
 				$this->p =& $plugin;
@@ -400,13 +400,13 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->text_domain = $this->p->cf['plugin'][$this->lca]['text_domain'];
 			}
 
-			if ( $notice_label !== null ) {
-				$this->notice_label = $notice_label;	// label should already be translated
+			if ( $label_transl !== null ) {
+				$this->label_transl = $label_transl;	// argument is already translated
 			} elseif ( ! empty( $this->p->cf['menu']['title'] ) ) {
-				$this->notice_label = sprintf( __( '%s Notice', $this->text_domain ),
+				$this->label_transl = sprintf( __( '%s Notice', $this->text_domain ),
 					_x( $this->p->cf['menu']['title'], 'menu title', $this->text_domain ) );
 			} else {
-				$this->notice_label = __( 'Notice', $this->text_domain );
+				$this->label_transl = __( 'Notice', $this->text_domain );
 			}
 
 			$uca = strtoupper( $this->lca );

@@ -594,9 +594,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'wp_cache salt = '.$cache_salt );
 			}
 
-			/*
-			 * Retrieve the content
-			 */
+			/************************
+			 * Retrieve the Content *
+			 ************************/
 
 			if ( $cache_exp > 0 && $use_cache ) {
 				$content_array = wp_cache_get( $cache_id, __METHOD__ );
@@ -632,9 +632,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/*
-			 * Modify the content
-			 */
+			/***********************
+			 * Modify The Content  *
+			 ***********************/
 
 			// save content length (for comparison) before making changes
 			$strlen_before_filters = strlen( $content_text );
@@ -649,9 +649,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( $filter_content ) {
+				/*
+				 * Hooked by some modules, like bbPress and social sharing buttons,
+				 * to perform actions before filtering the content.
+				 */
 				$filter_modified = apply_filters( $lca.'_text_filter_begin', false, 'the_content' );
 
-				// remove all of our shortcodes
+				/*
+				 * Remove all of our shortcodes (social sharing buttons, tweet a quote, etc.).
+				 */
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&
 					is_array( $this->p->cf['*']['lib']['shortcode'] ) ) {
 
@@ -664,14 +670,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					}
 				}
 
+				/*
+				 * Save the original post object, in case some filters modify the global $post.
+				 */
 				global $post;
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'saving the original $post object' );
 				}
 				$post_saved = $post;	// save the original global post object
 
-				// WordPress oEmbed needs a $post ID, so make sure we have one
-				// see shortcode() in WP_Embed class (wp-includes/class-wp-embed.php)
+				/*
+				 * WordPress oEmbed needs a $post ID, so make sure we have one.
+				 * See the shortcode() method in the WP_Embed class (wp-includes/class-wp-embed.php).
+				 */
 				if ( empty( $post->ID ) && $mod['is_post'] ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'post id property empty: re-setting post object from mod id '.$mod['id'] );
@@ -687,11 +698,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'setting global '.$lca.'_doing_the_content' );
 				}
-
 				$GLOBALS[$lca.'_doing_the_content'] = true;
 
+				/*
+				 * Load the Block Filter Output (BFO) filters to block and show an error 
+				 * for incorrectly coded filters.
+				 */
+				$classname = apply_filters( 'wpsso_load_lib', false, 'com/bfo', 'SucomBFO' );
+				if ( is_string( $classname ) && class_exists( $classname ) ) {
+					$bfo = new $classname( $this->p );
+					$bfo->add_start_output_hooks( array( 'the_content' ) );
+				}
+
+				/*
+				 * Execute "the_content" filter.
+				 */
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'applying wordpress the_content filters' );
+					$this->p->debug->mark( 'applying wordpress the_content filters' );	// being timer
 				}
 
 				$start_time = microtime( true );
@@ -699,9 +722,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$total_time = microtime( true ) - $start_time;
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'applying wordpress the_content filters' );
+					$this->p->debug->mark( 'applying wordpress the_content filters' );	// end timer
 				}
 
+				/*
+				 * Issue warning for slow filter performance.
+				 */
 				if ( $total_time > WPSSO_CONTENT_FILTERS_MAX_TIME ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'slow filter hooks detected - the_content filter took '.
@@ -721,7 +747,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$post = $post_saved;	// restore the original GLOBAL post object
 
-				// cleanup for NGG pre-v2 album shortcode
+				/*
+				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.
+				 */
 				unset ( $GLOBALS['subalbum'] );
 				unset ( $GLOBALS['nggShowGallery'] );
 
@@ -729,7 +757,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					apply_filters( $lca.'_text_filter_end', false, 'the_content' );
 				}
 
-				// add our shortcodes back
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&
 					is_array( $this->p->cf['*']['lib']['shortcode'] ) ) {
 					foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name ) {

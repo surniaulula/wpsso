@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.46.3-dev.2',		// plugin version
-					'opt_version' => '544',		// increment when changing default options
+					'opt_version' => '545',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
 					'desc' => 'Automatically create meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -853,7 +853,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
 					// Content and Filters Tab
 					'plugin_filter_title' => 0,			// Use Filtered (SEO) Title
-					'plugin_filter_content' => 0,			// Apply WordPress Content Filters
+					'plugin_filter_content' => 1,			// Apply WordPress Content Filters
 					'plugin_filter_excerpt' => 0,			// Apply WordPress Excerpt Filters
 					'plugin_p_strip' => 0,				// Content Starts at 1st Paragraph
 					'plugin_use_img_alt' => 1,			// Use Image Alt if No Content
