@@ -430,7 +430,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_filter_content':
-							$text = __( 'Apply the WordPress "the_content" filter to the content text (default is unchecked). The content filter renders all shortcodes, which may be required to detect images and videos added by shortcodes.', 'wpsso' ).' '.__( 'Some theme / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' );
+							$text = __( 'Apply the WordPress "the_content" filter to the content text (default is checked).', 'wpsso' ).' '.__( 'The WordPress content filter formats text and expands shortcodes, which may be required to include additional images and videos.', 'wpsso' );
 							break;
 
 						case 'tooltip-plugin_filter_excerpt':
@@ -438,15 +438,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_p_strip':
-							$text = 'If a post or page does <em>not</em> have an excerpt, and this option is checked, the plugin will ignore all text before the first HTML paragraph tag in the content. If an excerpt is found, then this option is ignored and the complete text of the excerpt is used (excerpts have priority over the content text).';
+							$text = __( 'If a post / page does not have an excerpt, and this option is checked, the plugin will ignore all text before the first paragraph tag in the content.', 'wpsso' ).' '.__( 'If an excerpt is available, then this option is ignored and the complete text of the excerpt is used (excerpts have priority over the content text).', 'wpsso' );
 							break;
 
 						case 'tooltip-plugin_use_img_alt':
-							$text = 'If the content text is empty, or comprised entirely of HTML tags (that must be stripped to create a description text), the plugin can extract and use text from the image <em>alt</em> attributes instead of returning an empty description.';
+							$text = sprintf( __( 'If the content text is comprised entirely of HTML tags (which must be removed to create a text-only description), %s can extract and use image <em>alt</em> attributes instead of returning an empty description.', 'wpsso' ), $info['short'] );
 							break;
 
 						case 'tooltip-plugin_img_alt_prefix':
-							$text = 'When use of the image <em>alt</em> attribute text is enabled, the plugin can prefix this text with an optional string. Leave this value empty to prevent the image alt text from being prefixed.';
+							$text = sprintf( __( 'When use of image <em>alt</em> attributes is enabled, %s can prefix the attribute text with an optional string.', 'wpsso' ), $info['short'] ).' '.__( 'Leave this value empty to prevent image alt attribute text from being prefixed.', 'wpsso' );
 							break;
 
 						case 'tooltip-plugin_p_cap_prefix':
@@ -1314,7 +1314,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
 							_x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) );
 
-						$text = '<p><b>'.sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions, and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['short'] ).'</p><p><b>'.__( 'Some theme / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> '.sprintf( __( '<a href="%s">If you use any shortcodes in your content text, this option should be enabled</a> &mdash; if you experience display issues after enabling this option, determine which theme / plugin content filter is at fault, and report the problem to its author(s).', 'wpsso' ), $settings_page_url ).'</p>';
+						$text = '<p><b>'.sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for description values and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'If you use any shortcodes in your content text, <a href="%s">this option should be enabled</a>.', 'wpsso' ), $settings_page_url ).'</p>';
 
 						break;
 
@@ -1441,10 +1441,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} else $text = apply_filters( $lca.'_messages', $text, $idx, $info );
 
 			if ( is_array( $info ) && ! empty( $info['is_locale'] ) ) {
+
 				$lang_plugins = '<a href="https://wordpress.org/plugins/wpsso-user-locale/">WPSSO User Locale Selector</a>, '.
-					'<a href="https://wordpress.org/plugins/polylang/">Polylang</a>, '.
-					'<a href="https://wordpress.org/plugins/wp-native-dashboard/">WP Native Dashboard</a>';
-				$text .= ' '.sprintf( __( 'This option is localized &mdash; you may change the WordPress locale with %s, etc., to define alternate option values for different languages.', 'wpsso' ), $lang_plugins );
+					'<a href="https://wordpress.org/plugins/polylang/">Polylang</a>';
+
+				$text .= ' '.sprintf( __( 'This option is localized &mdash; you may change the WordPress locale (see %s) to define alternate values for different languages.', 'wpsso' ), $lang_plugins );
 			}
 
 			if ( strpos( $idx, 'tooltip-' ) === 0 && ! empty( $text ) ) {

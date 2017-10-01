@@ -343,17 +343,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			} else {	// $opts is empty or not an array
 
 				if ( $opts === false ) {
-					$err_msg = sprintf( __( 'WordPress could not find an entry for %s in the options table.',
-						'wpsso' ), $options_name );
+					$err_msg = sprintf( __( 'WordPress could not find an entry for %s in the options table.', 'wpsso' ), $options_name );
 				} elseif ( ! is_array( $opts ) ) {
-					$err_msg = sprintf( __( 'WordPress returned a non-array value when reading %s from the options table.',
-						'wpsso' ), $options_name );
+					$err_msg = sprintf( __( 'WordPress returned a non-array value when reading %s from the options table.', 'wpsso' ), $options_name );
 				} elseif ( empty( $opts ) ) {
-					$err_msg = sprintf( __( 'WordPress returned an empty array when reading %s from the options table.',
-						'wpsso' ), $options_name );
+					$err_msg = sprintf( __( 'WordPress returned an empty array when reading %s from the options table.', 'wpsso' ), $options_name );
 				} else {
-					$err_msg = sprintf( __( 'WordPress returned an unknown condition when reading %s from the options table.',
-						'wpsso' ), $options_name );
+					$err_msg = sprintf( __( 'WordPress returned an unknown condition when reading %s from the options table.', 'wpsso' ), $options_name );
 				}
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $err_msg );
@@ -474,8 +470,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$opts['plugin_google_shorten:is'] = 'disabled';
 				}
 
-				if ( ! empty( $opts['fb_app_id'] ) && 
-					( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) ) {
+				if ( ! empty( $opts['fb_app_id'] ) && ( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) ) {
 					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ) );
 				}
 
@@ -535,9 +530,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->p->debug->log( $options_name.' settings have been updated and saved' );
 					}
 					if ( is_admin() ) {
+						$dis_key = $options_name.'_settings_updated_and_saved';
 						$this->p->notice->inf( sprintf( __( 'Plugin settings (%s) have been updated and saved.',	// blue status w pin
-							'wpsso' ), $options_name ), true,
-								$options_name.'_settings_updated_and_saved', true );	// can be dismissed
+							'wpsso' ), $options_name ), true, $dis_key, true );	// can be dismissed
 					}
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $options_name.' settings have been saved silently' );

@@ -203,7 +203,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					 * notice. :)
 					 */
 					if ( is_admin() ) {
-						if ( isset( $this->p ) ) {
+						if ( isset( $this->p->notice ) ) {
 							if ( $this->p->notice->is_admin_pre_notices() ) {
 								$this->p->notice->err( $error_msg );
 							}

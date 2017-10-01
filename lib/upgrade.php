@@ -176,6 +176,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 		public function options( $options_name, &$opts = array(), $def_opts = array(), $network = false ) {
 
 			$lca = $this->p->cf['lca'];
+			$short_name = $this->p->cf['plugin'][$lca]['short'];
 			$prev_version = empty( $opts['plugin_'.$lca.'_opt_version'] ) ?	// just in case
 				0 : $opts['plugin_'.$lca.'_opt_version'];
 
@@ -230,7 +231,16 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					$opts['add_meta_property_og:video:secure_url'] = 1;
 				}
 
-				if ( $prev_version > 0 && $prev_version <= 545 ) {
+				if ( $prev_version > 0 && $prev_version <= 548 ) {
+					if ( is_admin() ) {
+						$filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
+							_x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) );
+						$this->p->notice->upd(
+							sprintf( __( 'This latest version of %1$s includes a feature to monitor the WordPress content filter and fix incorrectly coded filter hooks that send text to the webpage output (instead of returning it, as all filters must).', 'wpsso' ), $short_name ).' '.
+							__( 'The WordPress content filter formats text and expands shortcodes, which may be required to include additional images and videos.', 'wpsso' ).' '.
+							sprintf( __( '<b>The %1$s advanced option has been enabled automatically</b> &mdash; if you experience any display issues / errors, you may disable this option once again.', 'wpsso' ), $filters_option_link )
+						);
+					}
 					$opts['plugin_filter_content'] = 1;
 				}
 
