@@ -394,8 +394,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
+	* Added a new WPSSO_CONTENT_BLOCK_FILTER_OUTPUT constant (default is false).
 	* Added a new Block Filter Output (BFO) common library class as lib/com/bfo.php.
-	* Added a new WPSSO_CONTENT_BLOCK_FILTER_OUTPUT constant (default is true).
 
 **Version 3.46.2 (2017/09/25)**
 
