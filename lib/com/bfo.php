@@ -113,7 +113,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 						$hook_name = self::get_hook_function_name( $hook_info );	// create a human readable class / method name
 						if ( $hook_name === '' ) {					// just in case
 							continue;
-						} elseif ( strpos( $hook_name, __CLASS__.'::' ) === 0 ) {	// exclude our own class / methods from being checked
+						} elseif ( strpos( $hook_name, __CLASS__.'::' ) === 0 ) {	// exclude our own class methods from being checked
 							continue;
 						}
 						$check_hook_ref = $hook_ref.'_'.$this->bfo_check_id;		// include the previous hook ref for visual clue

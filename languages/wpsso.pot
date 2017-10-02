@@ -3518,7 +3518,7 @@ msgid ""
 "immediate refresh of all %4$s update information."
 msgstr ""
 
-#: lib/messages.php:1400 lib/register.php:208
+#: lib/messages.php:1400 lib/register.php:204
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -4009,11 +4009,11 @@ msgstr ""
 msgid "Invalid user ID."
 msgstr ""
 
-#: lib/register.php:202 lib/register.php:210
+#: lib/register.php:198 lib/register.php:206
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:212
+#: lib/register.php:208
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 

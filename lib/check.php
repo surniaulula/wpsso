@@ -24,10 +24,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
 		}
 
 		public function get_avail() {
