@@ -651,12 +651,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( $filter_content ) {
 				/*
 				 * Hooked by some modules, like bbPress and social sharing buttons,
-				 * to perform actions before filtering the content.
+				 * to perform actions before / after filtering the content.
 				 */
 				$filter_modified = apply_filters( $lca.'_text_filter_begin', false, 'the_content' );
 
 				/*
-				 * Remove all of our shortcodes (social sharing buttons, tweet a quote, etc.).
+				 * Remove our shortcodes (social sharing buttons, tweet a quote, etc.).
 				 */
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&
 					is_array( $this->p->cf['*']['lib']['shortcode'] ) ) {
@@ -677,7 +677,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'saving the original $post object' );
 				}
-				$post_obj_saved = $post;	// save the original global post object
+				$post_obj_orig = $post;	// save the original global post object
 
 				/*
 				 * WordPress oEmbed needs a $post ID, so make sure we have one.
@@ -756,7 +756,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'restoring the original post object' );
 				}
-				$post = $post_obj_saved;	// restore the original GLOBAL post object
+				$post = $post_obj_orig;	// restore the original GLOBAL post object
 
 				/*
 				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.
@@ -764,10 +764,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				unset ( $GLOBALS['subalbum'] );
 				unset ( $GLOBALS['nggShowGallery'] );
 
+				/*
+				 * Hooked by some modules, like bbPress and social sharing buttons,
+				 * to perform actions before / after filtering the content.
+				 */
 				if ( $filter_modified ) {
 					apply_filters( $lca.'_text_filter_end', false, 'the_content' );
 				}
 
+				/*
+				 * Re-add our shortcodes (social sharing buttons, tweet a quote, etc.).
+				 */
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&
 					is_array( $this->p->cf['*']['lib']['shortcode'] ) ) {
 					foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name ) {
