@@ -53,7 +53,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		 * check hook after each callback, and adds a stop output
 		 * buffer hook at the end).
 		 */
-		public function add_start_output_hooks( array $filter_names = array( 'the_content' ) ) {
+		public function add_start_hooks( array $filter_names = array( 'the_content' ) ) {
 			global $wp_actions;
 			foreach ( $filter_names as $filter_name ) {
 				if ( empty( $wp_actions[$filter_name] ) ) {
@@ -61,6 +61,17 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 						self::$filter_hooked[$filter_name] = true;
 						add_filter( $filter_name, array( &$this, 'start_output_buffer' ), self::get_min_prio(), 1 );
 					}
+				}
+			}
+		}
+
+		public function remove_all_hooks( array $filter_names = array( 'the_content' ) ) {
+			global $wp_actions;
+			foreach ( $filter_names as $filter_name ) {
+				if ( empty( $wp_actions[$filter_name] ) ) {
+					remove_filter( $filter_name, array( &$this, 'start_output_buffer' ), self::get_min_prio(), 1 );
+					$this->remove_check_output_hooks( $filter_name );
+					remove_filter( $filter_name, array( &$this, 'stop_output_buffer' ), self::get_max_int(), 1 );
 				}
 			}
 		}
