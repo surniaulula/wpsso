@@ -589,43 +589,43 @@ msgstr ""
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
-#: lib/com/bfo.php:176 lib/com/cache.php:406 lib/com/notice.php:517
+#: lib/com/bfo.php:178 lib/com/cache.php:406 lib/com/notice.php:517
 #: lib/com-gettext-extract.php:23
 msgid "%s Notice"
 msgstr ""
 
-#: lib/com/bfo.php:179 lib/com/cache.php:409 lib/com/notice.php:520
+#: lib/com/bfo.php:181 lib/com/cache.php:409 lib/com/notice.php:520
 #: lib/com-gettext-extract.php:17
 msgid "Notice"
 msgstr ""
 
-#: lib/com/bfo.php:191 lib/com-gettext-extract.php:24
+#: lib/com/bfo.php:193 lib/com-gettext-extract.php:24
 msgid ""
 "The \"%1$s\" filter hook with priority %2$d in the \"%3$s\" filter has "
 "mistakenly provided some webpage output."
 msgstr ""
 
-#: lib/com/bfo.php:193 lib/com-gettext-extract.php:5
+#: lib/com/bfo.php:195 lib/com-gettext-extract.php:5
 msgid ""
 "All WordPress filter hooks must return their text - not send it to the "
 "webpage output."
 msgstr ""
 
-#: lib/com/bfo.php:195 lib/com-gettext-extract.php:20
+#: lib/com/bfo.php:197 lib/com-gettext-extract.php:20
 msgid ""
 "Please contact the author of that filter hook and report this issue as a "
 "coding error / bug."
 msgstr ""
 
-#: lib/com/bfo.php:221 lib/com-gettext-extract.php:16
+#: lib/com/bfo.php:223 lib/com-gettext-extract.php:16
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: lib/com/bfo.php:222 lib/com-gettext-extract.php:6
+#: lib/com/bfo.php:224 lib/com-gettext-extract.php:6
 msgid "---BEGIN---"
 msgstr ""
 
-#: lib/com/bfo.php:224 lib/com-gettext-extract.php:10
+#: lib/com/bfo.php:226 lib/com-gettext-extract.php:10
 msgid "---END---"
 msgstr ""
 

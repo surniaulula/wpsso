@@ -106,7 +106,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		private function add_check_output_hooks( $filter_name ) {
 			global $wp_filter;
 			if ( isset( $wp_filter[$filter_name]->callbacks ) ) {
-				foreach ( $wp_filter[$filter_name]->callbacks as $hook_prio => &$hook_group ) {
+				foreach ( $wp_filter[$filter_name]->callbacks as $hook_prio => &$hook_group ) {	// use reference to modify $hook_group
 					$new_hook_group = array();						// create a new group to insert a check after each hook
 					foreach ( $hook_group as $hook_ref => $hook_info ) {
 						$new_hook_group[$hook_ref] = $hook_info;			// add the original callback first, followed by the check
@@ -137,10 +137,12 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		 */
 		private function remove_check_output_hooks( $filter_name ) {
 			global $wp_filter;
-			foreach ( $wp_filter[$filter_name]->callbacks as $hook_prio => &$hook_group ) {
-				foreach ( $hook_group as $hook_ref => $hook_info ) {
-					if ( strpos( $hook_ref, '_'.$this->bfo_check_id ) !== false ) {
-						unset( $hook_group[$hook_ref] );
+			if ( isset( $wp_filter[$filter_name]->callbacks ) ) {
+				foreach ( $wp_filter[$filter_name]->callbacks as $hook_prio => &$hook_group ) {	// use reference to modify $hook_group
+					foreach ( $hook_group as $hook_ref => $hook_info ) {
+						if ( strpos( $hook_ref, '_'.$this->bfo_check_id ) !== false ) {
+							unset( $hook_group[$hook_ref] );
+						}
 					}
 				}
 			}
