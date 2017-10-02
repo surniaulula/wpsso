@@ -15,9 +15,11 @@ if ( ! class_exists( 'WpssoGplUtilTerm' ) && class_exists( 'WpssoTerm' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+
 			$this->add_actions();
 		}
 

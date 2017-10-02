@@ -15,8 +15,10 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'post_text_rows' => 4,	// $table_rows, $form, $head, $mod

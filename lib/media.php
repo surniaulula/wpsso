@@ -23,8 +23,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			add_action( 'init', array( &$this, 'allow_img_data_attributes' ) );
 

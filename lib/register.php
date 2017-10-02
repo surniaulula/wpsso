@@ -18,6 +18,10 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			register_activation_hook( WPSSO_FILEPATH, array( &$this, 'network_activate' ) );
 			register_deactivation_hook( WPSSO_FILEPATH, array( &$this, 'network_deactivate' ) );
 
