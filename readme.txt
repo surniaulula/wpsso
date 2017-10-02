@@ -373,14 +373,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.46.4-dev.1 (TBD)**
+**Version 3.46.4 (2017/10/02)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* If the "Apply Content Filters" option is currently disabled (previous default), the option is enabled and a notice message displayed about the change.
-* *Bugfixes*
 	* None
+* *Bugfixes*
+	* Removed the debug status check from the WpssoRegister and WpssoCheck class constructs (the WpssDebug is loaded later).
 * *Developer Notes*
 	* None
 
@@ -761,9 +761,9 @@ The last version of WPSSO (Core Plugin) that shared a common code-base with Next
 
 == Upgrade Notice ==
 
-= 3.46.4-dev.1 =
+= 3.46.4 =
 
-(TBD) If the "Apply Content Filters" option is currently disabled (previous default), the option is enabled and a notice message displayed about the change.
+(2017/10/02) Removed the debug status check from the WpssoRegister and WpssoCheck class constructs (the WpssoDebug is loaded later).
 
 = 3.46.3 =
 
