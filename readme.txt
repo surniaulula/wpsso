@@ -373,19 +373,29 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.46.3-rc.1 (2017/09/30)**
+**Version 3.46.4-dev.1 (TBD)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added a new Block Filter Output (BFO) feature to monitor the content filter and fix incorrectly coded filter hooks (that send text to the webpage output instead of returning it, as all filter hooks must).
-	* The "Apply Content Filters" option is now enabled by default, and if currently disabled, the option is enabled automatically and a notice message is displayed.
+	* If the "Apply Content Filters" option is currently disabled (previous default), the option is enabled and a notice message displayed about the change.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
+**Version 3.46.3 (2017/10/02)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a new Block Filter Output (BFO) feature to monitor the content filter and fix incorrectly coded filter hooks (that send text to the webpage instead of returning it, as all filter hooks must).
+	* The "Apply Content Filters" option is now enabled by default.
 * *Bugfixes*
 	* None
 * *Developer Notes*
 	* Added a new Block Filter Output (BFO) common library class as lib/com/bfo.php.
 	* Added a new WPSSO_CONTENT_BLOCK_FILTER_OUTPUT constant (default is true).
-	* Minor code refactoring / standardizing.
 
 **Version 3.46.2 (2017/09/25)**
 
@@ -751,9 +761,13 @@ The last version of WPSSO (Core Plugin) that shared a common code-base with Next
 
 == Upgrade Notice ==
 
-= 3.46.3-rc.1 =
+= 3.46.4-dev.1 =
 
-(2017/09/30) Added a new Block Filter Output (BFO) feature to monitor the content filter and fix incorrectly coded filter hooks. The "Apply Content Filters" option is now enabled by default, and if currently disabled, the option is enabled automatically and a notice message is displayed.
+(TBD) If the "Apply Content Filters" option is currently disabled (previous default), the option is enabled and a notice message displayed about the change.
+
+= 3.46.3 =
+
+(2017/10/02) Added a new Block Filter Output (BFO) feature to monitor the content filter and fix incorrectly coded filter hooks. The "Apply Content Filters" option is now enabled by default.
 
 = 3.46.2 =
 
