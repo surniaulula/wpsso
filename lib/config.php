@@ -25,8 +25,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.46.3-rc.1',		// plugin version
-					'opt_version' => '549',		// increment when changing default options
+					'version' => '3.46.3',		// plugin version
+					'opt_version' => '551',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
 					'desc' => 'Automatically create meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',

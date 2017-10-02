@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO (Core Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO (Core Plugin) 3.46.3-rc.1\n"
+"Project-Id-Version: WPSSO (Core Plugin) 3.46.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1359,7 +1359,7 @@ msgid "Use Filtered (SEO) Title"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:52 lib/messages.php:1315
-#: lib/pro/admin/advanced.php:56 lib/upgrade.php:237
+#: lib/pro/admin/advanced.php:56
 msgctxt "option label"
 msgid "Apply WordPress Content Filters"
 msgstr ""
@@ -2403,7 +2403,7 @@ msgid ""
 "checked)."
 msgstr ""
 
-#: lib/messages.php:433 lib/upgrade.php:240
+#: lib/messages.php:433
 msgid ""
 "The WordPress content filter formats text and expands shortcodes, which may "
 "be required to include additional images and videos."
@@ -4493,20 +4493,6 @@ msgstr ""
 #: lib/twittercard.php:40
 msgctxt "image size label"
 msgid "Twitter Large Image Card"
-msgstr ""
-
-#: lib/upgrade.php:239
-msgid ""
-"This latest version of %1$s includes a feature to monitor the WordPress "
-"content filter and fix incorrectly coded filter hooks (that send text to the "
-"webpage output instead of returning it, as all filter hooks must)."
-msgstr ""
-
-#: lib/upgrade.php:241
-msgid ""
-"<b>The %1$s advanced option has been enabled automatically</b> &mdash; if "
-"you experience any display issues / errors, you may disable this option once "
-"again."
 msgstr ""
 
 #: lib/user.php:467
