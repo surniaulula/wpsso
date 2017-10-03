@@ -649,6 +649,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( $filter_content ) {
+
 				/*
 				 * Hooked by some modules, like bbPress and social sharing buttons,
 				 * to perform actions before / after filtering the content.
@@ -667,6 +668,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 								$this->p->sc[$id]->remove();
 							}
 						}
+					}
+				}
+
+				/*
+				 * Load the Block Filter Output (BFO) filters to block and show an error 
+				 * for incorrectly coded filters.
+				 */
+				if ( WPSSO_CONTENT_BLOCK_FILTER_OUTPUT ) {
+					$classname = apply_filters( 'wpsso_load_lib', false, 'com/bfo', 'SucomBFO' );
+					if ( is_string( $classname ) && class_exists( $classname ) ) {
+						$bfo = new $classname( $this->p );
+						$bfo->add_start_hooks( array( 'the_content' ) );
 					}
 				}
 
@@ -701,18 +714,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$GLOBALS[$lca.'_doing_the_content'] = true;
 
 				/*
-				 * Load the Block Filter Output (BFO) filters to block and show an error 
-				 * for incorrectly coded filters.
-				 */
-				if ( WPSSO_CONTENT_BLOCK_FILTER_OUTPUT ) {
-					$classname = apply_filters( 'wpsso_load_lib', false, 'com/bfo', 'SucomBFO' );
-					if ( is_string( $classname ) && class_exists( $classname ) ) {
-						$bfo = new $classname( $this->p );
-						$bfo->add_start_hooks( array( 'the_content' ) );
-					}
-				}
-
-				/*
 				 * Execute "the_content" filter.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -741,14 +742,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					}
 				}
 
-				/*
-				 * Remove the Block Filter Output (BFO) filters.
-				 */
-				if ( WPSSO_CONTENT_BLOCK_FILTER_OUTPUT ) {
-					$bfo->remove_all_hooks( array( 'the_content' ) );
-				}
-
 				unset( $GLOBALS[$lca.'_doing_the_content'] );
+
+				/*
+				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.
+				 */
+				unset ( $GLOBALS['subalbum'] );
+				unset ( $GLOBALS['nggShowGallery'] );
 
 				/*
 				 * Restore the original post object.
@@ -759,17 +759,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$post = $post_pre_filter;	// restore the original GLOBAL post object
 
 				/*
-				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.
+				 * Remove the Block Filter Output (BFO) filters.
 				 */
-				unset ( $GLOBALS['subalbum'] );
-				unset ( $GLOBALS['nggShowGallery'] );
-
-				/*
-				 * Hooked by some modules, like bbPress and social sharing buttons,
-				 * to perform actions before / after filtering the content.
-				 */
-				if ( $filter_modified ) {
-					apply_filters( $lca.'_text_filter_end', false, 'the_content' );
+				if ( WPSSO_CONTENT_BLOCK_FILTER_OUTPUT ) {
+					$bfo->remove_all_hooks( array( 'the_content' ) );
 				}
 
 				/*
@@ -777,6 +770,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 */
 				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&
 					is_array( $this->p->cf['*']['lib']['shortcode'] ) ) {
+
 					foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name ) {
 						if ( isset( $this->p->sc[$id] ) && is_object( $this->p->sc[$id] ) ) {
 							if ( method_exists( $this->p->sc[$id], 'add' ) ) {
@@ -784,6 +778,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							}
 						}
 					}
+				}
+
+				/*
+				 * Hooked by some modules, like bbPress and social sharing buttons,
+				 * to perform actions before / after filtering the content.
+				 */
+				if ( $filter_modified ) {
+					apply_filters( $lca.'_text_filter_end', false, 'the_content' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
