@@ -20,12 +20,12 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		private $bfo_check_id = 'check_output_buffer';	// string id to detect our check callback using __call()
 
 		/*
-		 * This common library class may be called by more than one
-		 * plugin, so track which filters have been hooked using the
-		 * $filter_hooked static property, and only hook a filter once.
-		 * This allows different plugins to hook different filters, but
-		 * not the same filter - which would be redundant - we only
-		 * need to warn about filter output once. ;-)
+		 * The SucomBFO common library class may be called by more than
+		 * one plugin, so track which filters have been hooked using
+		 * the $filter_hooked static property, and only hook a filter
+		 * once. This allows different plugins to hook different
+		 * filters, but not the same filter - which would be redundant
+		 * - we only need to warn about filter output once. ;-)
 		 */
 		private static $filter_hooked = array();
 
@@ -41,8 +41,8 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		 * previous / reference hook prority and name.
 		 */
 		public function __call( $method_name, $args ) {
-			if ( strpos( $method_name, $this->bfo_check_id.'_' ) === 0 ) {
-				array_unshift( $args, $method_name );	// set $method_name as first element
+			if ( strpos( $method_name, $this->bfo_check_id.'_' ) === 0 ) {		// method name starts with 'check_output_buffer_'
+				array_unshift( $args, $method_name );				// set $method_name as first element
 				return call_user_func_array( array( &$this, '__check_output_buffer' ), $args );
 			}
 		}
@@ -125,6 +125,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		private function add_check_output_hooks( $filter_name ) {
 			global $wp_filter;
 			if ( isset( $wp_filter[$filter_name]->callbacks ) ) {
+				$bfo_check_str = '_'.__CLASS__.'::'.$this->bfo_check_id;			// '_SucomBFO::check_output_buffer'
 				foreach ( $wp_filter[$filter_name]->callbacks as $hook_prio => &$hook_group ) {	// use reference to modify $hook_group
 					$new_hook_group = array();						// create a new group to insert a check after each hook
 					foreach ( $hook_group as $hook_ref => $hook_info ) {
@@ -134,13 +135,15 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 							continue;
 						} elseif ( strpos( $hook_name, __CLASS__.'::' ) === 0 ) {	// exclude our own class methods from being checked
 							continue;
+						} elseif ( strpos( $hook_ref, $bfo_check_str ) !== false ) {	// just in case - don't check the check hooks
+							continue;
 						}
-						$check_hook_ref = $hook_ref.'_'.$this->bfo_check_id;		// include the previous hook ref for visual clue
-						$check_hook_arg = urlencode( '['.$hook_prio.']'.$hook_name );	// pass previous hook priority and name
-						$new_hook_group[$check_hook_ref] = array(
+						$check_ref = $hook_ref.$bfo_check_str;				// include the previous hook ref for visual clue
+						$check_arg = urlencode( '['.$hook_prio.']'.$hook_name );	// include previous hook priority and name
+						$new_hook_group[$check_ref] = array(
 							'function' => array(
 								&$this,
-								$this->bfo_check_id.'_'.$check_hook_arg		// hooks the __call() method
+								$this->bfo_check_id.'_'.$check_arg		// hooks the __call() method
 							),
 							'accepted_args' => 1,
 						);
@@ -157,9 +160,10 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		private function remove_check_output_hooks( $filter_name ) {
 			global $wp_filter;
 			if ( isset( $wp_filter[$filter_name]->callbacks ) ) {
+				$bfo_check_str = '_'.__CLASS__.'::'.$this->bfo_check_id;
 				foreach ( $wp_filter[$filter_name]->callbacks as $hook_prio => &$hook_group ) {	// use reference to modify $hook_group
 					foreach ( $hook_group as $hook_ref => $hook_info ) {
-						if ( strpos( $hook_ref, '_'.$this->bfo_check_id ) !== false ) {
+						if ( strpos( $hook_ref, $bfo_check_str ) !== false ) {
 							unset( $hook_group[$hook_ref] );
 						}
 					}

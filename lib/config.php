@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.46.4',		// plugin version
+					'version' => '3.47.0-rc.1',		// plugin version
 					'opt_version' => '551',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO (Core Plugin)',
@@ -2169,7 +2169,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;			// output pretty / human readable json
 			$var_const['WPSSO_UNDEF_INT'] = -1;				// undefined width / height value
 
-			$var_const['WPSSO_CONTENT_BLOCK_FILTER_OUTPUT'] = false;
+			$var_const['WPSSO_CONTENT_BLOCK_FILTER_OUTPUT'] = true;
 			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 1.00;
 			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT'] = 5;		// maximum number of images extracted from the content
 			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT'] = 5;		// maximum number of videos extracted from the content

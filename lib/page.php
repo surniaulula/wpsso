@@ -677,7 +677,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'saving the original $post object' );
 				}
-				$post_obj_orig = $post;	// save the original global post object
+				$post_pre_filter = $post;	// save the original global post object
 
 				/*
 				 * WordPress oEmbed needs a $post ID, so make sure we have one.
@@ -705,10 +705,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * for incorrectly coded filters.
 				 */
 				if ( WPSSO_CONTENT_BLOCK_FILTER_OUTPUT ) {
-					$bfo_classname = apply_filters( 'wpsso_load_lib', false, 'com/bfo', 'SucomBFO' );
-					if ( is_string( $bfo_classname ) && class_exists( $bfo_classname ) ) {
-						$bfo_obj = new $bfo_classname( $this->p );
-						$bfo_obj->add_start_hooks( array( 'the_content' ) );
+					$classname = apply_filters( 'wpsso_load_lib', false, 'com/bfo', 'SucomBFO' );
+					if ( is_string( $classname ) && class_exists( $classname ) ) {
+						$bfo = new $classname( $this->p );
+						$bfo->add_start_hooks( array( 'the_content' ) );
 					}
 				}
 
@@ -745,7 +745,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * Remove the Block Filter Output (BFO) filters.
 				 */
 				if ( WPSSO_CONTENT_BLOCK_FILTER_OUTPUT ) {
-					$bfo_obj->remove_all_hooks( array( 'the_content' ) );
+					$bfo->remove_all_hooks( array( 'the_content' ) );
 				}
 
 				unset( $GLOBALS[$lca.'_doing_the_content'] );
@@ -756,7 +756,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'restoring the original post object' );
 				}
-				$post = $post_obj_orig;	// restore the original GLOBAL post object
+				$post = $post_pre_filter;	// restore the original GLOBAL post object
 
 				/*
 				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.
