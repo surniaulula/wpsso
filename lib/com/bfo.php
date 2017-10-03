@@ -42,7 +42,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		 */
 		public function __call( $method_name, $args ) {
 			if ( strpos( $method_name, $this->bfo_check_id.'_' ) === 0 ) {
-				array_unshift( $args, $method_name );
+				array_unshift( $args, $method_name );	// set $method_name as first element
 				return call_user_func_array( array( &$this, '__check_output_buffer' ), $args );
 			}
 		}
@@ -55,23 +55,30 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		 */
 		public function add_start_hooks( array $filter_names = array( 'the_content' ) ) {
 			global $wp_actions;
+			$min_int = self::get_min_int();
 			foreach ( $filter_names as $filter_name ) {
 				if ( empty( $wp_actions[$filter_name] ) ) {
 					if ( ! isset( self::$filter_hooked[$filter_name] ) ) {	// only hook a filter once
 						self::$filter_hooked[$filter_name] = true;
-						add_filter( $filter_name, array( &$this, 'start_output_buffer' ), self::get_min_prio(), 1 );
+						add_filter( $filter_name, array( &$this, 'start_output_buffer' ), $min_int, 1 );
 					}
 				}
 			}
 		}
 
+		/*
+		 * Loop through each filter name in the $filter_names argument
+		 * and add remove the start, check, and stop output hooks.
+		 */
 		public function remove_all_hooks( array $filter_names = array( 'the_content' ) ) {
 			global $wp_actions;
+			$min_int = self::get_min_int();
+			$max_int = self::get_max_int();
 			foreach ( $filter_names as $filter_name ) {
 				if ( empty( $wp_actions[$filter_name] ) ) {
-					remove_filter( $filter_name, array( &$this, 'start_output_buffer' ), self::get_min_prio(), 1 );
+					remove_filter( $filter_name, array( &$this, 'start_output_buffer' ), $min_int, 1 );
 					$this->remove_check_output_hooks( $filter_name );
-					remove_filter( $filter_name, array( &$this, 'stop_output_buffer' ), self::get_max_int(), 1 );
+					remove_filter( $filter_name, array( &$this, 'stop_output_buffer' ), $max_int, 1 );
 				}
 			}
 		}
@@ -85,6 +92,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		 */
 		public function start_output_buffer( $value ) {
 			global $wp_actions;
+			$max_int = self::get_max_int();
 			$filter_name = current_filter();
 			if ( empty( $wp_actions[$filter_name] ) ) {				// only check filters, not actions 
 				static $filter_count = array();
@@ -95,7 +103,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					} elseif ( $filter_count[$filter_name] === 2 ) {	// remove check hooks on second run
 						$this->remove_check_output_hooks( $filter_name );
 					}
-					add_filter( $filter_name, array( &$this, 'stop_output_buffer' ), self::get_max_int(), 1 );
+					add_filter( $filter_name, array( &$this, 'stop_output_buffer' ), $max_int, 1 );
 				}
 			}
 			return $value;
