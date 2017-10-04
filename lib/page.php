@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						if ( ! empty( $this->p->options['plugin_filter_excerpt'] ) ) {
 
-							$filter_modified = apply_filters( $lca.'_text_filter_begin', false, 'get_the_excerpt' );
+							do_action( $lca.'_text_filter_before', 'get_the_excerpt' );
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'applying the WordPress get_the_excerpt filters' );
@@ -446,7 +446,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$desc = apply_filters( 'get_the_excerpt', $desc );
 
 							if ( $filter_modified ) {
-								apply_filters( $lca.'_text_filter_end', false, 'get_the_excerpt' );
+								apply_filters( $lca.'_text_filter_after', false, 'get_the_excerpt' );
 							}
 
 						} elseif ( $this->p->debug->enabled ) {
@@ -654,22 +654,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * Hooked by some modules, like bbPress and social sharing buttons,
 				 * to perform actions before / after filtering the content.
 				 */
-				$filter_modified = apply_filters( $lca.'_text_filter_begin', false, 'the_content' );
-
-				/*
-				 * Remove our shortcodes (social sharing buttons, tweet a quote, etc.).
-				 */
-				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&
-					is_array( $this->p->cf['*']['lib']['shortcode'] ) ) {
-
-					foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name ) {
-						if ( isset( $this->p->sc[$id] ) && is_object( $this->p->sc[$id] ) ) {
-							if ( method_exists( $this->p->sc[$id], 'remove_shortcode' ) ) {
-								$this->p->sc[$id]->remove_shortcode();
-							}
-						}
-					}
-				}
+				do_action( $lca.'_text_filter_before', 'the_content' );
 
 				/*
 				 * Load the Block Filter Output (BFO) filters to block and show an error 
@@ -766,26 +751,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 				/*
-				 * Re-add our shortcodes (social sharing buttons, tweet a quote, etc.).
-				 */
-				if ( isset( $this->p->cf['*']['lib']['shortcode'] ) &&
-					is_array( $this->p->cf['*']['lib']['shortcode'] ) ) {
-
-					foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name ) {
-						if ( isset( $this->p->sc[$id] ) && is_object( $this->p->sc[$id] ) ) {
-							if ( method_exists( $this->p->sc[$id], 'add_shortcode' ) ) {
-								$this->p->sc[$id]->add_shortcode();
-							}
-						}
-					}
-				}
-
-				/*
 				 * Hooked by some modules, like bbPress and social sharing buttons,
 				 * to perform actions before / after filtering the content.
 				 */
 				if ( $filter_modified ) {
-					apply_filters( $lca.'_text_filter_end', false, 'the_content' );
+					apply_filters( $lca.'_text_filter_after', false, 'the_content' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {

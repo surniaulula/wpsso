@@ -3745,7 +3745,7 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/page.php:741
+#: lib/page.php:726
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "
@@ -3892,32 +3892,32 @@ msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:86 lib/pro/forum/bbpress.php:147
+#: lib/pro/forum/bbpress.php:90 lib/pro/forum/bbpress.php:151
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:153
+#: lib/pro/forum/bbpress.php:157
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:157
+#: lib/pro/forum/bbpress.php:161
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:161
+#: lib/pro/forum/bbpress.php:165
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:165
+#: lib/pro/forum/bbpress.php:169
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:169
+#: lib/pro/forum/bbpress.php:173
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
