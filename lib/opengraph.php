@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( ! isset( $mt_og['og:locale'] ) ) {
-				$mt_og['og:locale'] = SucomUtil::get_fb_locale( $this->p->options, $mod );	// localized
+				$mt_og['og:locale'] = $this->get_fb_locale( $this->p->options, $mod );	// localized
 			}
 
 			if ( ! isset( $mt_og['og:site_name'] ) ) {
@@ -827,6 +827,51 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			return '';
 		}
+
+		// returns an optional and customized locale value for the og:locale meta tag
+		// $mixed = 'default' | 'current' | post ID | $mod array
+		public function get_fb_locale( array $opts, $mixed = 'current' ) {
+
+			// check for customized locale
+			if ( ! empty( $opts ) ) {
+				$fb_locale_key = SucomUtil::get_key_locale( 'fb_locale', $opts, $mixed );
+				if ( ! empty( $opts[$fb_locale_key] ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning '.$fb_locale_key.' value from options: '.$opts[$fb_locale_key] );
+					}
+					return $opts[$fb_locale_key];
+				}
+			}
+
+			$locale = SucomUtil::get_locale( $mixed );
+			$def_locale = SucomUtil::get_locale( 'default' );
+			$fb_pub_lang = SucomUtil::get_pub_lang( 'facebook' );
+
+			// exceptions
+			switch ( $locale ) {
+				case 'de_DE_formal':
+					$locale = 'de_DE';
+					break;
+			}
+
+			if ( ! empty( $fb_pub_lang[$locale] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returning valid facebook locale: '.$locale );
+				}
+				return $locale;
+			} elseif ( ! empty( $fb_pub_lang[$def_locale] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returning default locale: '.$def_locale );
+				}
+				return $def_locale;
+			} else {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returning fallback locale: en_US' );
+				}
+				return 'en_US';
+			}
+		}
+
 	}
 }
 

@@ -66,10 +66,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$defs['seo_author_field'] = $this->p->options['plugin_cm_gp_name'];	// reset to possible custom value
 				$defs['og_author_field'] = $this->p->options['plugin_cm_fb_name'];	// reset to possible custom value
-				$defs['fb_locale'] = SucomUtil::get_fb_locale( array(), 'default' );
+				$defs['fb_locale'] = $this->p->og->get_fb_locale( array(), 'default' );
 
 				if ( ( $fb_locale_key = SucomUtil::get_key_locale( 'fb_locale' ) ) !== 'fb_locale' ) {
-					$defs[$fb_locale_key] = SucomUtil::get_fb_locale( array(), 'current' );
+					$defs[$fb_locale_key] = $this->p->og->get_fb_locale( array(), 'current' );
 				}
 
 				// read Yoast SEO social meta if plugin is active or 'wpseo' settings found

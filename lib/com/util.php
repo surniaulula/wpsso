@@ -1797,38 +1797,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		// returns an optional and customized locale value for the og:locale meta tag
-		// $mixed = 'default' | 'current' | post ID | $mod array
-		public static function get_fb_locale( array $opts, $mixed = 'current' ) {
-
-			// check for customized locale
-			if ( ! empty( $opts ) ) {
-				$key_locale = self::get_key_locale( 'fb_locale', $opts, $mixed );
-				if ( ! empty( $opts[$key_locale] ) ) {
-					return $opts[$key_locale];
-				}
-			}
-
-			$locale = self::get_locale( $mixed );
-			$def_locale = self::get_locale( 'default' );
-			$fb_pub_lang = self::get_pub_lang( 'facebook' );
-
-			// exceptions
-			switch ( $locale ) {
-				case 'de_DE_formal':
-					$locale = 'de_DE';
-					break;
-			}
-
-			if ( ! empty( $fb_pub_lang[$locale] ) ) {
-				return $locale;
-			} elseif ( ! empty( $fb_pub_lang[$def_locale] ) ) {
-				return $def_locale;
-			} else {
-				return 'en_US';
-			}
-		}
-
 		// return a localize options value
 		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_locale_opt( $key, array $opts, $mixed = 'current' ) {
