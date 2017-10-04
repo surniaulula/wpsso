@@ -373,7 +373,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.0-rc.1 (2017/10/03)**
+**Version 3.47.0-rc.2 (2017/10/03)**
 
 * *New Features*
 	* None
@@ -772,7 +772,7 @@ The last version of WPSSO (Core Plugin) that shared a common code-base with Next
 
 == Upgrade Notice ==
 
-= 3.47.0-rc.1 =
+= 3.47.0-rc.2 =
 
 (2017/10/03) The Block Filter Output (BFO) feature is now enabled when WPSSO applies the content filter.
 
