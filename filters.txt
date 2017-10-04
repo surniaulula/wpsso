@@ -109,6 +109,9 @@
 'wpsso_rename_md_options_keys' ( $options_keys );
 'wpsso_save_options' ( $opts, $options_name, $network );
 'wpsso_save_site_options' ( $opts );
+'wpsso_save_post_options' ( $opts, $post_id, $rel_id, $mod );
+'wpsso_save_term_options' ( $opts, $term_id, $term_tax_id, $mod );
+'wpsso_save_user_options' ( $opts, $term_id, false, $mod );
 'wpsso_schema_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) );
 'wpsso_schema_meta_itemprop' ( $mt_schema, $mod, $mt_og, $page_type_id );
 'wpsso_schema_noscript_array' ( $ret, $mod, $mt_og, $page_type_id );
