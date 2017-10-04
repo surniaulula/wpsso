@@ -57,7 +57,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			global $wp_actions;
 			$min_int = self::get_min_int();
 			foreach ( $filter_names as $filter_name ) {
-				if ( empty( $wp_actions[$filter_name] ) ) {
+				if ( empty( $wp_actions[$filter_name] ) ) {			// just in case - skip actions
 					if ( ! isset( self::$filter_hooked[$filter_name] ) ) {	// only hook a filter once
 						self::$filter_hooked[$filter_name] = true;
 						add_filter( $filter_name, array( &$this, 'start_output_buffer' ), $min_int, 1 );
@@ -75,10 +75,13 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			$min_int = self::get_min_int();
 			$max_int = self::get_max_int();
 			foreach ( $filter_names as $filter_name ) {
-				if ( empty( $wp_actions[$filter_name] ) ) {
-					remove_filter( $filter_name, array( &$this, 'start_output_buffer' ), $min_int, 1 );
-					$this->remove_check_output_hooks( $filter_name );
-					remove_filter( $filter_name, array( &$this, 'stop_output_buffer' ), $max_int, 1 );
+				if ( empty( $wp_actions[$filter_name] ) ) {			// just in case - skip actions
+					if ( isset( self::$filter_hooked[$filter_name] ) ) {	// skip if not already hooked
+						unset( self::$filter_hooked[$filter_name] );
+						remove_filter( $filter_name, array( &$this, 'start_output_buffer' ), $min_int, 1 );
+						$this->remove_check_output_hooks( $filter_name );
+						remove_filter( $filter_name, array( &$this, 'stop_output_buffer' ), $max_int, 1 );
+					}
 				}
 			}
 		}
