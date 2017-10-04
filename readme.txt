@@ -378,7 +378,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* The Block Filter Output (BFO) feature is now enabled when WPSSO applies the content filter.
+	* The Block Filter Output (BFO) feature is now enabled (by default) when WPSSO applies the content filter.
 * *Bugfixes*
 	* None
 * *Developer Notes*
