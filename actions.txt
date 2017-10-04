@@ -1,0 +1,5 @@
+'wpsso_init_objects' ( $plugin_activate );
+'wpsso_init_plugin' ();
+'wpsso_init_textdomain' ( $debug_enabled );
+'wpsso_text_filter_before' ( $filter_name );
+'wpsso_text_filter_after' ( $filter_name );
