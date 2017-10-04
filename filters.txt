@@ -135,8 +135,6 @@
 'wpsso_tc' ( $tc, $mod );
 'wpsso_tc_seed' ( $tc, $mod );
 'wpsso_term_url' ( $url, $mod, $add_page, $src_id );
-'wpsso_text_filter_begin' ( false, $filter_name );
-'wpsso_text_filter_end' ( false, $filter_name );
 'wpsso_title' ( $title, $mod, $add_hashtags, $md_idx, $separator );
 'wpsso_title_pre_limit' ( $title );
 'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_idx, $separator );

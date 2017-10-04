@@ -383,6 +383,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Developer Notes*
 	* Changed the WPSSO_CONTENT_BLOCK_FILTER_OUTPUT constant default value from false to true.
+	* Removed the following filters:
+		* 'wpsso_text_filter_begin' ( $bool, $filter_name );
+		* 'wpsso_text_filter_end' ( $bool, $filter_name );
+	* Added the following actions:
+		* 'wpsso_text_filter_before' ( $filter_name );
+		* 'wpsso_text_filter_after' ( $filter_name );
 
 **Version 3.46.4 (2017/10/02)**
 
