@@ -664,8 +664,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name ) {
 						if ( isset( $this->p->sc[$id] ) && is_object( $this->p->sc[$id] ) ) {
-							if ( method_exists( $this->p->sc[$id], 'remove' ) ) {
-								$this->p->sc[$id]->remove();
+							if ( method_exists( $this->p->sc[$id], 'remove_shortcode' ) ) {
+								$this->p->sc[$id]->remove_shortcode();
 							}
 						}
 					}
@@ -773,8 +773,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					foreach ( $this->p->cf['*']['lib']['shortcode'] as $id => $name ) {
 						if ( isset( $this->p->sc[$id] ) && is_object( $this->p->sc[$id] ) ) {
-							if ( method_exists( $this->p->sc[$id], 'add' ) ) {
-								$this->p->sc[$id]->add();
+							if ( method_exists( $this->p->sc[$id], 'add_shortcode' ) ) {
+								$this->p->sc[$id]->add_shortcode();
 							}
 						}
 					}
