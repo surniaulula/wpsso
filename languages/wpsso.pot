@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:639 lib/post.php:392 lib/term.php:275 lib/user.php:256
+#: lib/admin.php:639 lib/post.php:392 lib/term.php:280 lib/user.php:260
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -4495,15 +4495,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:467
+#: lib/user.php:471
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:468
+#: lib/user.php:472
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:469
+#: lib/user.php:473
 msgid "Jabber / Google Talk"
 msgstr ""
 
