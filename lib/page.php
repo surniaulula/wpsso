@@ -445,7 +445,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							$desc = apply_filters( 'get_the_excerpt', $desc );
 
-							do_action( $lca.'_text_filter_after', false, 'get_the_excerpt' );
+							do_action( $lca.'_text_filter_after', 'get_the_excerpt' );
 
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'skipped the WordPress get_the_excerpt filters' );
@@ -752,7 +752,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * Hooked by some modules, like bbPress and social sharing buttons,
 				 * to perform actions before / after filtering the content.
 				 */
-				do_action( $lca.'_text_filter_after', false, 'the_content' );
+				do_action( $lca.'_text_filter_after', 'the_content' );
 
 
 			} elseif ( $this->p->debug->enabled ) {
