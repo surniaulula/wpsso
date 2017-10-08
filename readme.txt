@@ -373,21 +373,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.0-rc.5 (2017/10/07)**
+**Version 3.47.0-rc.5 (2017/10/08)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* The Block Filter Output (BFO) feature is now enabled (by default) when WPSSO applies the content filter.
+	* The Block Filter Output (BFO) feature is now enabled by default when WPSSO applies the content filter.
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added a new WPSSO_SCHEMA_POSTS_PER_PAGE_MAX constant (default is 20) for the WPSSO JSON extension.
 	* Changed the WPSSO_CONTENT_BLOCK_FILTER_OUTPUT constant default value from false to true.
-	* Removed the following filters:
+	* Added a new WPSSO_SCHEMA_POSTS_PER_PAGE_MAX constant (default is 20) for the WPSSO JSON extension.
+	* Removed the following filters (replaced by actions):
 		* 'wpsso_text_filter_begin' ( $bool, $filter_name );
 		* 'wpsso_text_filter_end' ( $bool, $filter_name );
-	* Added the following actions:
+	* Added the following actions (see actions.txt in the plugin folder):
 		* 'wpsso_text_filter_before' ( $filter_name );
 		* 'wpsso_text_filter_after' ( $filter_name );
 
@@ -781,7 +781,7 @@ The last version of WPSSO (Core Plugin) that shared a common code-base with Next
 
 = 3.47.0-rc.5 =
 
-(2017/10/07) The Block Filter Output (BFO) feature is now enabled when WPSSO applies the content filter.
+(2017/10/08) The Block Filter Output (BFO) feature is now enabled by default when WPSSO applies the content filter.
 
 = 3.46.4 =
 
