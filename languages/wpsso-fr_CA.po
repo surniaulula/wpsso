@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.47.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-10-07 07:49-0600\n"
-"PO-Revision-Date: 2017-10-07 07:49-0600\n"
+"POT-Creation-Date: 2017-10-08 08:06-0600\n"
+"PO-Revision-Date: 2017-10-08 08:06-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -84,7 +84,7 @@ msgstr "La validation du jeton nonce pour les options de réseau a échoué (mis
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:639 lib/post.php:392 lib/term.php:275 lib/user.php:256
+#: lib/admin.php:639 lib/post.php:392 lib/term.php:280 lib/user.php:260
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -542,39 +542,39 @@ msgstr "Retour à %s"
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
-#: lib/com/bfo.php:176 lib/com/cache.php:406 lib/com/notice.php:517
+#: lib/com/bfo.php:204 lib/com/cache.php:406 lib/com/notice.php:517
 #: lib/com-gettext-extract.php:23
 msgid "%s Notice"
 msgstr "Avis %s"
 
-#: lib/com/bfo.php:179 lib/com/cache.php:409 lib/com/notice.php:520
+#: lib/com/bfo.php:207 lib/com/cache.php:409 lib/com/notice.php:520
 #: lib/com-gettext-extract.php:17
 msgid "Notice"
 msgstr "Avis"
 
-#: lib/com/bfo.php:191 lib/com-gettext-extract.php:24
+#: lib/com/bfo.php:219 lib/com-gettext-extract.php:24
 msgid "The \"%1$s\" filter hook with priority %2$d in the \"%3$s\" filter has mistakenly provided some webpage output."
 msgstr "Le crochet de filtre \"%1$s\" avec la priorité %2$d dans le filtre \"%3$s\" a fourni une valeur à la sortie de la page Web."
 
-#: lib/com/bfo.php:193 lib/com-gettext-extract.php:5
+#: lib/com/bfo.php:221 lib/com-gettext-extract.php:5
 msgid "All WordPress filter hooks must return their text - not send it to the webpage output."
 msgstr "Tous les crochets de filtre WordPress doivent retourner leur texte - non pas l'envoyer à la sortie de la page Web."
 
-#: lib/com/bfo.php:195 lib/com-gettext-extract.php:20
+#: lib/com/bfo.php:223 lib/com-gettext-extract.php:20
 msgid "Please contact the author of that filter hook and report this issue as a coding error / bug."
 msgstr "Veuillez contacter l'auteur de ce filtre et signaler ce problème comme une erreur / bug dans leur code."
 
-#: lib/com/bfo.php:221 lib/com-gettext-extract.php:16
+#: lib/com/bfo.php:249 lib/com-gettext-extract.php:16
 msgid "Incorrect webpage output:"
 msgstr "Sortie incorrecte à la page Web:"
 
-#: lib/com/bfo.php:222 lib/com-gettext-extract.php:6
-msgid "---BEGIN---"
-msgstr "---DÉBUT---"
+#: lib/com/bfo.php:250 lib/com-gettext-extract.php:6
+msgid "BEGIN OUTPUT"
+msgstr "DÉBUT DE SORTIE"
 
-#: lib/com/bfo.php:224 lib/com-gettext-extract.php:10
-msgid "---END---"
-msgstr "---FIN---"
+#: lib/com/bfo.php:252 lib/com-gettext-extract.php:10
+msgid "END OUTPUT"
+msgstr "FIN DE SORTIE"
 
 #: lib/com/cache.php:90 lib/com-gettext-extract.php:11
 msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
@@ -2954,7 +2954,7 @@ msgstr "%1$s version %2$s requiert l'utilisation de %3$s version %4$s ou plus r�
 msgid "If an update for %1$s is not available under the WordPress Plugins page, please use the <em>%2$s</em> button on the %3$s settings page to force an immediate refresh of all %4$s update information."
 msgstr "Si une mise à jour pour %1$s n'est pas encore disponible dans la page d'Extensions WordPress, SVP utilisez le bouton <em>%2$s</em> sur la page de réglages %3$s pour forcer une actualisation immédiate de toutes les informations de mise à jour %4$s."
 
-#: lib/messages.php:1400 lib/register.php:208
+#: lib/messages.php:1400 lib/register.php:204
 msgid "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features."
 msgstr "Vous utilisez la version %2$s de %1$s &mdash; <a href=\"%3$s\">cette version de %1$s est obsolète, non supportée, peut-être insécure</a> et pourrait manquer certaines mises à jour et caractéristiques importantes."
 
@@ -3150,7 +3150,7 @@ msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou 
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/page.php:740
+#: lib/page.php:724
 msgid "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent possiblement détecté &mdash le filtre WordPress %1$s a pris %2$0.2f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.2f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
@@ -3270,32 +3270,32 @@ msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr "ID champ image d'article"
 
-#: lib/pro/forum/bbpress.php:86 lib/pro/forum/bbpress.php:147
+#: lib/pro/forum/bbpress.php:90 lib/pro/forum/bbpress.php:151
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr "Profil de %s"
 
-#: lib/pro/forum/bbpress.php:153
+#: lib/pro/forum/bbpress.php:157
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr "Sujets débutés par %s"
 
-#: lib/pro/forum/bbpress.php:157
+#: lib/pro/forum/bbpress.php:161
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr "Réponses crées de %s"
 
-#: lib/pro/forum/bbpress.php:161
+#: lib/pro/forum/bbpress.php:165
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr "Favoris de %s"
 
-#: lib/pro/forum/bbpress.php:165
+#: lib/pro/forum/bbpress.php:169
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr "Abonnements de %s"
 
-#: lib/pro/forum/bbpress.php:169
+#: lib/pro/forum/bbpress.php:173
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr "Modifier le profil de %s"
@@ -3373,11 +3373,11 @@ msgstr "Identifiants API incomplet ou manquant pour le service de raccourcisseme
 msgid "Invalid user ID."
 msgstr "ID d'utilisateur non valide"
 
-#: lib/register.php:202 lib/register.php:210
+#: lib/register.php:198 lib/register.php:206
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé."
 
-#: lib/register.php:212
+#: lib/register.php:208
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "Veuillez mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
@@ -3857,15 +3857,15 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr "Carte Twitter grande image"
 
-#: lib/user.php:467
+#: lib/user.php:471
 msgid "AIM"
 msgstr "AIM"
 
-#: lib/user.php:468
+#: lib/user.php:472
 msgid "Yahoo IM"
 msgstr "Yahoo IM"
 
-#: lib/user.php:469
+#: lib/user.php:473
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
@@ -4002,11 +4002,11 @@ msgid "JS Morisset"
 msgstr "JS Morisset"
 
 #. Author URI of the plugin/theme
-msgid "https://surniaulula.com/"
-msgstr "https://surniaulula.com/"
+msgid "https://wpsso.com/"
+msgstr "https://wpsso.com/"
 
-#~ msgid "This latest version of %1$s includes a feature to monitor the WordPress content filter and fix incorrectly coded filter hooks (that send text to the webpage output instead of returning it, as all filter hooks must)."
-#~ msgstr "Cette dernière version de %1$s comprend une fonctionnalité permettant de surveiller le filtre de contenu WordPress et de corriger les crochets de filtre codés incorrectement (qui envoient du texte à la sortie de la page Web au lieu de le retourner, comme tous crochets de filtre doivent)."
+#~ msgid "---BEGIN---"
+#~ msgstr "---DÉBUT---"
 
-#~ msgid "<b>The %1$s advanced option has been enabled automatically</b> &mdash; if you experience any display issues / errors, you may disable this option once again."
-#~ msgstr "<b>L'option avancée %1$s a été activée automatiquement</b> & mdash; si vous rencontrez des problèmes d'affichage, vous pouvez désactiver cette option une fois de plus."
+#~ msgid "---END---"
+#~ msgstr "---FIN---"
