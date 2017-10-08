@@ -247,9 +247,9 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					error_log(
 						$this->label_transl.': '.$error_msg.' '.	// label_transl is already translated
 						__( 'Incorrect webpage output:', $this->text_domain )."\n".
-						__( '---BEGIN---', $this->text_domain )."\n".
+						'-----'.__( 'BEGIN OUTPUT', $this->text_domain ).'-----'."\n".
 						print_r( $output, true )."\n".
-						__( '---END---', $this->text_domain )
+						'-----'.__( 'END OUTPUT', $this->text_domain ).'-----'
 					);
 				}
 

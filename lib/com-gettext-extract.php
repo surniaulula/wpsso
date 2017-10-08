@@ -3,11 +3,11 @@
 __( '%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.', wpsso );
 __( '%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s messages</a>.', wpsso );
 __( 'All WordPress filter hooks must return their text - not send it to the webpage output.', wpsso );
-__( '---BEGIN---', wpsso );
+__( 'BEGIN OUTPUT', wpsso );
 __( 'Cache file %s is not readable.', wpsso );
 __( 'Cache folder %s is not writable.', wpsso );
 __( 'Dismiss', wpsso );
-__( '---END---', wpsso );
+__( 'END OUTPUT', wpsso );
 __( 'Error connecting to %1$s for caching (HTTP code %2$d).', wpsso );
 __( 'Error removing cache file %s.', wpsso );
 __( 'Failed to create the %s cache folder.', wpsso );

@@ -622,11 +622,11 @@ msgid "Incorrect webpage output:"
 msgstr ""
 
 #: lib/com/bfo.php:250 lib/com-gettext-extract.php:6
-msgid "---BEGIN---"
+msgid "BEGIN OUTPUT"
 msgstr ""
 
 #: lib/com/bfo.php:252 lib/com-gettext-extract.php:10
-msgid "---END---"
+msgid "END OUTPUT"
 msgstr ""
 
 #: lib/com/cache.php:90 lib/com-gettext-extract.php:11
@@ -4674,5 +4674,5 @@ msgid "JS Morisset"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://surniaulula.com/"
+msgid "https://wpsso.com/"
 msgstr ""

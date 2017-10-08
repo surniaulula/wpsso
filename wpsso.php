@@ -7,7 +7,7 @@
  * Plugin URI: https://wpsso.com/extend/plugins/wpsso/
  * Assets URI: https://surniaulula.github.io/wpsso/assets/
  * Author: JS Morisset
- * Author URI: https://surniaulula.com/
+ * Author URI: https://wpsso.com/
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Description: Automatically create meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.
@@ -23,7 +23,7 @@
  *	{bugfix}	Backwards-compatible bug fixes or small improvements.
  *	{stage}.{level}	Pre-production release: dev < a (alpha) < b (beta) < rc (release candidate).
  * 
- * Copyright 2012-2017 Jean-Sebastien Morisset (https://surniaulula.com/)
+ * Copyright 2012-2017 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
