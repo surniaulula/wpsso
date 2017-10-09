@@ -1644,10 +1644,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) as $opt_key => $md_pre ) {
 
 				$event_date = $mod['obj']->get_options( $mod['id'], $md_pre.'_date' );
-				$event_time = $mod['obj']->get_options( $mod['id'], $md_pre.'_time' );
-
-				if ( ! $event_timezone = $mod['obj']->get_options( $mod['id'], $md_pre.'_timezone' ) ) {
-					$event_timezone = get_option( 'timezone_string' );
+				
+				if ( ( $event_time = $mod['obj']->get_options( $mod['id'], $md_pre.'_time' ) ) === 'none' ) {
+					$event_time = '';
 				}
 
 				if ( empty( $event_date ) && empty( $event_time ) ) {
@@ -1656,6 +1655,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$event_time = '00:00';
 				} elseif ( empty( $event_date ) && ! empty( $event_time ) ) {	// time with no date
 					$event_date = gmdate( 'Y-m-d', time() );
+				}
+
+				if ( ! $event_timezone = $mod['obj']->get_options( $mod['id'], $md_pre.'_timezone' ) ) {
+					$event_timezone = get_option( 'timezone_string' );
 				}
 
 				$event_opts[$opt_key] = date_format( date_create( $event_date.' '.$event_time.' '.$event_timezone ), 'c' );

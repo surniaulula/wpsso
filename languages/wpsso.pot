@@ -719,7 +719,7 @@ msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:275 lib/com/form.php:390 lib/com/form.php:539
+#: lib/com/form.php:275 lib/com/form.php:393 lib/com/form.php:542
 #: lib/com-gettext-extract.php:29 lib/config-gettext-extract.php:17
 msgctxt "option value"
 msgid "(default)"

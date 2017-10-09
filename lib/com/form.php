@@ -306,6 +306,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_select_timezone( $name, $class = '', $id = '', $disabled = false, $selected = false ) {
 			$class = trim( 'timezone '.$class );
 			$timezones = timezone_identifiers_list();
+			if ( empty( $this->defaults[$name] ) ) {
+				$this->defaults[$name] = get_option( 'timezone_string' );
+			}
 			return $this->get_select( $name, $timezones, $class, $id, $disabled, $selected );
 		}
 
