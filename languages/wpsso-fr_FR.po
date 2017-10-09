@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.47.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-10-08 08:06-0600\n"
-"PO-Revision-Date: 2017-10-08 08:06-0600\n"
+"POT-Creation-Date: 2017-10-09 07:54-0600\n"
+"PO-Revision-Date: 2017-10-09 07:54-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -662,7 +662,7 @@ msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
 
-#: lib/com/form.php:275 lib/com/form.php:390 lib/com/form.php:539
+#: lib/com/form.php:275 lib/com/form.php:393 lib/com/form.php:542
 #: lib/com-gettext-extract.php:29 lib/config-gettext-extract.php:17
 msgctxt "option value"
 msgid "(default)"
@@ -1240,8 +1240,8 @@ msgstr "Extension WPSSO pour fournir des balises méta Pinterest place, Facebook
 
 #: lib/config-gettext-extract.php:117
 msgctxt "plugin description"
-msgid "WPSSO extension to provide updates for the WPSSO Pro plugin and its Pro extensions."
-msgstr "Extension WPSSO pour fournir des mises à jour a WPSSO Pro et ses extensions Pro."
+msgid "WPSSO extension to provide updates for the WPSSO Pro (Core Plugin) and its Pro extensions."
+msgstr "Extension WPSSO pour fournir des mises à jour a WPSSO Pro (Core Plugin) et ses extensions Pro."
 
 #: lib/config-gettext-extract.php:118
 msgctxt "plugin description"
@@ -4004,9 +4004,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "---BEGIN---"
-#~ msgstr "---DÉBUT---"
-
-#~ msgid "---END---"
-#~ msgstr "---FIN---"
