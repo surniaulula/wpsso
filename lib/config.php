@@ -515,7 +515,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoum' => array(
 					'short' => 'WPSSO UM',		// short plugin name
 					'name' => 'WPSSO Update Manager',
-					'desc' => 'WPSSO extension to provide updates for the WPSSO Pro plugin and its Pro extensions.',
+					'desc' => 'WPSSO extension to provide updates for the WPSSO Pro (Core Plugin) and its Pro extensions.',
 					'slug' => 'wpsso-um',
 					'base' => 'wpsso-um/wpsso-um.php',
 					'update_auth' => '',

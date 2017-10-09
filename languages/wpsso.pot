@@ -1322,8 +1322,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:117
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to provide updates for the WPSSO Pro plugin and its Pro "
-"extensions."
+"WPSSO extension to provide updates for the WPSSO Pro (Core Plugin) and its "
+"Pro extensions."
 msgstr ""
 
 #: lib/config-gettext-extract.php:118
