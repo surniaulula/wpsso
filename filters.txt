@@ -38,6 +38,9 @@
 'wpsso_description' ( $desc, $mod, $add_hashtags, $md_idx );
 'wpsso_description_pre_limit' ( $desc );
 'wpsso_description_seed' ( '', $mod, $add_hashtags, $md_idx );
+'wpsso_filter_content' ( $bool, $mod );
+'wpsso_filter_excerpt' ( $bool, $mod );
+'wpsso_filter_title' ( $bool, $mod );
 'wpsso_get_avail' ( $ret );
 'wpsso_get_config' ( $cf, $plugin_version );
 'wpsso_get_defaults' ( $defaults );

@@ -1,5 +1,5 @@
-=== WPSSO (Core Plugin) - Advanced Meta Tags and Schema Markup for Social, Search / SEO, Rich Cards ===
-Plugin Name: WPSSO (Core Plugin)
+=== WPSSO Core - Advanced Meta Tags and Schema Markup for Social Sharing, Search / SEO, Rich Cards ===
+Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
@@ -214,7 +214,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 * [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) (Pro version)
 * [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/) (Pro version)
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; [Purchase WPSSO Pro (Core Plugin) here](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase) (all purchases include a <em>No Risk 30 Day Refund Policy</em>).
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; [Purchase the WPSSO Core Pro plugin here](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase) (all purchases include a <em>No Risk 30 Day Refund Policy</em>).
 
 <h3>3rd Party Integration (Pro version)</h3>
 
@@ -357,7 +357,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 <p>See <a href="https://en.wikipedia.org/wiki/Release_early,_release_often">release early, release often (RERO) software development philosophy</a> on Wikipedia for more information on the benefits of smaller / more frequent releases.</p>
 </blockquote>
 
-<h3>Free / Standard Version Repository</h3>
+<h3>Free / Standard Version Repositories</h3>
 
 * [GitHub](https://surniaulula.github.io/wpsso/)
 * [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
@@ -373,7 +373,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.0-rc.5 (2017/10/08)**
+**Version 3.47.0-rc.6 (2017/10/10)**
 
 * *New Features*
 	* None
@@ -429,7 +429,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 3.46.1 (2017/09/15)**
 
-The last version of WPSSO (Core Plugin) that shared a common code-base with NextGEN Facebook v8.46.1. New features and improvements in future versions of WPSSO (Core Plugin) will not be back-ported to NextGEN Facebook.
+The last version of WPSSO Core that shared a common code-base with NextGEN Facebook v8.46.1. New features and improvements in future versions of the WPSSO Core plugin will not be back-ported to the NextGEN Facebook plugin.
 
 * *New Features*
 	* None
@@ -779,9 +779,9 @@ The last version of WPSSO (Core Plugin) that shared a common code-base with Next
 
 == Upgrade Notice ==
 
-= 3.47.0-rc.5 =
+= 3.47.0-rc.6 =
 
-(2017/10/08) The Block Filter Output (BFO) feature is now enabled by default when WPSSO applies the content filter.
+(2017/10/10) The Block Filter Output (BFO) feature is now enabled by default when WPSSO applies the content filter.
 
 = 3.46.4 =
 

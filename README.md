@@ -1,7 +1,7 @@
-<h1>WPSSO (Core Plugin)</h1><h3>Advanced Meta Tags and Schema Markup for Social, Search / SEO, Rich Cards</h3>
+<h1>WPSSO Core</h1><h3>Advanced Meta Tags and Schema Markup for Social Sharing, Search / SEO, Rich Cards</h3>
 
 <table>
-<tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO (Core Plugin)</td></tr>
+<tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically create meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.46.4</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.7</td></tr>
@@ -230,7 +230,7 @@
 <li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Pro version)</li>
 </ul>
 
-<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase WPSSO Pro (Core Plugin) here</a> (all purchases include a <em>No Risk 30 Day Refund Policy</em>).</p>
+<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the WPSSO Core Pro plugin here</a> (all purchases include a <em>No Risk 30 Day Refund Policy</em>).</p>
 
 <h3>3rd Party Integration (Pro version)</h3>
 
