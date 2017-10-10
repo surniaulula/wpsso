@@ -194,11 +194,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$title = false;
 			$hashtags = '';
 			$paged_suffix = '';
-			$separator = html_entity_decode( $this->p->options['og_title_sep'],
-				ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$filter_title = apply_filters( $lca.'_filter_title', 
+				( empty( $this->p->options['plugin_filter_title'] ) ? false : true ), $mod );
 
 			// setup filters to save and restore original / pre-filtered title value
-			if ( empty( $this->p->options['plugin_filter_title'] ) ) {
+			if ( ! $filter_title ) {
 				SucomUtil::protect_filter_value( 'wp_title' );
 			}
 
@@ -434,8 +435,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						}
 
 						$desc = get_post_field( 'post_excerpt', $mod['id'] );
+						$filter_excerpt = apply_filters( $lca.'_filter_excerpt', 
+							( empty( $this->p->options['plugin_filter_excerpt'] ) ? false : true ), $mod );
 
-						if ( ! empty( $this->p->options['plugin_filter_excerpt'] ) ) {
+						if ( $filter_excerpt ) {
 
 							do_action( $lca.'_text_filter_before', 'get_the_excerpt' );
 
@@ -577,7 +580,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
-			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
+			$filter_content = apply_filters( $lca.'_filter_content', 
+				( empty( $this->p->options['plugin_filter_content'] ) ? false : true ), $mod );
 			$content_array = array();
 			$content_index = 'locale:'.SucomUtil::get_locale( $mod ).'_filter:'.( $filter_content ? 'true' : 'false' );
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
@@ -587,6 +591,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );
+				$this->p->debug->log( 'filter content = '.( $filter_content ? 'true' : 'false' ) );
 				$this->p->debug->log( 'content index = '.$content_index );
 				$this->p->debug->log( 'wp_cache expire = '.$cache_exp );
 				$this->p->debug->log( 'wp_cache salt = '.$cache_salt );

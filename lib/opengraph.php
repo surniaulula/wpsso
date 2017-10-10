@@ -180,6 +180,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			// define the type after the url
 			if ( ! isset( $mt_og['og:type'] ) ) {
 				$mt_og['og:type'] = $this->get_og_type( $mod );
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'og:type already defined = '.$mt_og['og:type'] );
 			}
 
 			if ( ! isset( $mt_og['og:locale'] ) ) {

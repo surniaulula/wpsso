@@ -25,10 +25,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.47.0-rc.5',		// plugin version
+					'version' => '3.47.0-rc.6',		// plugin version
 					'opt_version' => '551',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
-					'name' => 'WPSSO (Core Plugin)',
+					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
@@ -515,7 +515,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoum' => array(
 					'short' => 'WPSSO UM',		// short plugin name
 					'name' => 'WPSSO Update Manager',
-					'desc' => 'WPSSO extension to provide updates for the WPSSO Pro (Core Plugin) and its Pro extensions.',
+					'desc' => 'WPSSO extension to provide updates for the WPSSO Core Pro plugin and its Pro extensions.',
 					'slug' => 'wpsso-um',
 					'base' => 'wpsso-um/wpsso-um.php',
 					'update_auth' => '',

@@ -1383,6 +1383,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function licenses_metabox_content( $network = false ) {
+
 			$lca = $this->p->cf['lca'];
 			$tabindex = 0;
 			$ext_num = 0;
@@ -1441,11 +1442,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Plugin Name, Description, and Links
 				 */
 				$table_rows['plugin_name'] = '<td colspan="2" style="width:100%;">'.
-					'<p style="margin-top:10px;"><strong>'.$info['name'].'</strong></p>'.
-					( empty( $info['desc'] ) ? '' : '<p>'._x( $info['desc'],
-						'plugin description', 'wpsso' ).'</p>' ).
-					( empty( $ext_links ) ? '' : '<div class="row-actions visible">'.
-						implode( ' | ', $ext_links ).'</div>' ).'</td>';
+					'<p style="margin-top:10px;">'.
+					'<strong>'.$info['name'].'</strong>'.
+					( $ext === $lca ? ' ('.__( 'Main Plugin', 'wpsso' ).')' : '' ).
+					'</p>'.
+					( empty( $info['desc'] ) ? '' : '<p>'._x( $info['desc'], 'plugin description', 'wpsso' ).'</p>' ).
+					( empty( $ext_links ) ? '' : '<div class="row-actions visible">'.implode( ' | ', $ext_links ).'</div>' ).
+					'</td>';
 
 				/*
 				 * Plugin Authentication ID and License Information
