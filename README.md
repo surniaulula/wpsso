@@ -47,7 +47,7 @@
 
 <h3>Quick List of Features</h3>
 
-<h4>WPSSO Free / Standard Features</h4>
+<h4>WPSSO Core Free / Standard Features</h4>
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Automatically creates complete Open Graph meta tags for Facebook, Google Plus / SEO / Rich Card, Pinterest Rich Pin, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.</p>
 
@@ -132,7 +132,7 @@
 
 <h3>Quick List of Features (Continued)</h3>
 
-<h4>WPSSO Pro / Additional Features</h4>
+<h4>WPSSO Core Pro / Additional Features</h4>
 
 <p><img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png"></p>
 
@@ -219,7 +219,7 @@
 </ul></li>
 </ul>
 
-<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Pro extensions for WPSSO Pro:</p>
+<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Pro extensions for WPSSO Core Pro:</p>
 
 <ul>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (Pro version)</li>
@@ -242,15 +242,15 @@
 
 <h4>Enhanced SEO</h4>
 
-<p>WPSSO Pro integrates with <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>, <a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a>, <a href="https://wordpress.org/plugins/autodescription/">The SEO Framework</a>, and <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema Structured Data, and Twitter Card meta tags.</p>
+<p>WPSSO Core Pro integrates with <a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>, <a href="https://wordpress.org/plugins/headspace2/">HeadSpace2 SEO</a>, <a href="https://wordpress.org/plugins/autodescription/">The SEO Framework</a>, and <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a> (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema Structured Data, and Twitter Card meta tags.</p>
 
 <h4>eCommerce Products</h4>
 
-<p>WPSSO Pro also supports <a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a>, <a href="https://wordpress.org/plugins/wordpress-ecommerce/">MarketPress - WordPress eCommerce</a>, <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a> (versions 1, 2, and 3), and <a href="https://wordpress.org/plugins/wp-e-commerce/">WP e-Commerce</a> product pages, creating appropriate meta tags for <a href="https://developers.facebook.com/docs/payments/product/">Facebook Products</a> and <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, including product variations and additional / custom images.</p>
+<p>WPSSO Core Pro also supports <a href="https://wordpress.org/plugins/easy-digital-downloads/">Easy Digital Downloads</a>, <a href="https://wordpress.org/plugins/wordpress-ecommerce/">MarketPress - WordPress eCommerce</a>, <a href="https://wordpress.org/plugins/woocommerce/">WooCommerce</a> (versions 1, 2, and 3), and <a href="https://wordpress.org/plugins/wp-e-commerce/">WP e-Commerce</a> product pages, creating appropriate meta tags for <a href="https://developers.facebook.com/docs/payments/product/">Facebook Products</a> and <a href="http://developers.pinterest.com/rich_pins/">Pinterest Rich Pins</a>, including product variations and additional / custom images.</p>
 
 <h4>Forums and Social</h4>
 
-<p>WPSSO Pro supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a>, <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="https://wpsso.com/docs/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), and <a href="https://wordpress.org/plugins/buddypress-media/">rtMedia for WordPress, BuddyPress and bbPress</a>, making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.</p>
+<p>WPSSO Core Pro supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a>, <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="https://wpsso.com/docs/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), and <a href="https://wordpress.org/plugins/buddypress-media/">rtMedia for WordPress, BuddyPress and bbPress</a>, making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.</p>
 
 <h3>Professional Support</h3>
 
@@ -264,7 +264,7 @@
 <h3>Install and Uninstall</h3>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/">Install the WPSSO Plugin (Free and Pro version)</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/">Install the WPSSO Core Plugin (Free and Pro version)</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/">Integration Notes</a>
 
 <ul>
@@ -273,7 +273,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/">Uninstall the WPSSO Plugin</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/">Performance Tuning</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/">Debugging and Problem Solving</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/">How-To Migrate from NextGEN Facebook to WPSSO</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/">Migrate from NextGEN Facebook to WPSSO Core</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special - Buy one, Get one Free</a></li>
 </ul>
 
@@ -302,7 +302,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-share-a-single-nextgen-gallery-image/">How can I share a single NextGEN Gallery image?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-attach-an-image-without-showing-it-on-the-webpage/">How do I attach an image without showing it on the webpage?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-my-themes-front-page-pagination/">How do I fix my theme's front page pagination?</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/">How do I install the WPSSO Pro version?</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/">How do I install the WPSSO Core Pro version?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/">How do I remove duplicate meta tags?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/">How does WPSSO find / detect / select images?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/">How does WPSSO find / detect / select videos?</a></li>
@@ -315,10 +315,9 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-play-videos-instead-of-linking-them/">Why does Facebook play videos instead of linking them?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Why does Facebook show the wrong image / text?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/">Why does Google Structured Data Testing Tool show errors?</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-wpsso-ignore-some-img-html-tags/">Why does WPSSO ignore some &lt;img/&gt; HTML tags?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-dont-my-twitter-cards-show-on-twitter/">Why don't my Twitter Cards show on Twitter?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-open-graph-title-the-same-for-every-webpage/">Why is the Open Graph title the same for every webpage?</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-page-blank-or-its-components-misaligned/">Why is the page blank or its components misaligned?</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-page-blank-or-its-components-misaligned/">Why is the page blank or components missing / misaligned?</a></li>
 </ul>
 
 
@@ -328,7 +327,7 @@
 <h3>Additional Documentation</h3>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/">About WPSSO Pro Integration Modules</a>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/">About WPSSO Core Pro Integration Modules</a>
 
 <ul>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/author-gravatar/">Author Gravatar</a></li>
