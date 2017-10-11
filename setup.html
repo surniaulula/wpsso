@@ -1,10 +1,10 @@
-<p>WPSSO works great "<em>right out of the box</em>" &mdash; and you can keep the default plugin settings as-is &mdash; but taking a few minutes to review some basic options can help maximize your social presence and click-through rate. ;-)</p>
+<p>WPSSO Core works great "<em>right out of the box</em>" &mdash; and you can keep the default plugin settings as-is &mdash; but taking a few minutes to review some basic options can help maximize your social presence and click-through rate. ;-)</p>
 
 <dl>
 <dt><h3>Business Social Accounts (Optional)</h3></dt>
 
 <dd><img src="https://surniaulula.github.io/wpsso/assets/screenshot-05.png" style="max-width:50%;float:right;margin:0 0 30px 30px;">
-<p>If you haven't already done so, create a Facebook Page, Twitter account, and Google+ account (or Page) for your website / business. You can enter your website / business social account information on the <strong>WordPress Settings &gt; Website Social Pages and Accounts</strong> settings page. The social account URLs are used by WPSSO for Open Graph, Schema, and other meta tag values &mdash; including the Organization social profiles in Schema JSON-LD markup (which may appear in Google Search results to highlight your website / business social pages).<p>
+<p>If you haven't already done so, create a Facebook Page, Twitter account, and Google+ account (or Page) for your website / business. You can enter your website / business social account information on the <strong>WordPress Settings &gt; Website Social Pages and Accounts</strong> settings page. The social account URLs are used by WPSSO Core for Open Graph, Schema, and other meta tag values &mdash; including the Organization social profiles in Schema JSON-LD markup (which may appear in Google Search results to highlight your website / business social pages).<p>
 
 <p><strong>Related information:</strong></p>
 
@@ -32,9 +32,9 @@
 
 <dt><h3>Interface and General Usage</h3></dt>
 
-<dd><p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include/exclude certain WPSSO metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / view the "SSO Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <strong>SSO &gt; Advanced &gt; Custom Meta</strong> tab.</p>
+<dd><p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include/exclude certain WPSSO Core metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / view the "SSO Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <strong>SSO &gt; Advanced &gt; Custom Meta</strong> tab.</p>
 
-<p>When editing a Post, Page, category, tag, etc., you'll find a <em>Social and Search Optimization</em> metabox at the bottom of the page, where you can edit various social texts and image values. The "Preview" tab shows how this webpage might look like when shared on Facebook, the "Head Tags" tab shows a complete listing of meta tags created by WPSSO, including additional Schema markup and LD+JSON for Google, and the "Validate" tab allows you to submit the current webpage URL to a number of test and validation tools.</p>
+<p>When editing a Post, Page, category, tag, etc., you'll find a <em>Social and Search Optimization</em> metabox at the bottom of the page, where you can edit various social texts and image values. The "Preview" tab shows how this webpage might look like when shared on Facebook, the "Head Tags" tab shows a complete listing of meta tags created by WPSSO Core, including additional Schema markup and LD+JSON for Google, and the "Validate" tab allows you to submit the current webpage URL to a number of test and validation tools.</p>
 </dd>
 
 <dt><h3>Social Image Dimensions</h3></dt>
@@ -46,7 +46,9 @@
 <td style="vertical-align:top;width:33%;height:320px;">
 <div style="margin:5px;overflow-y:scroll;height:100%;border-bottom:1px solid #333;">
 <blockquote style="display:block;margin:0;">
+
 <h4>Cropped or Uncropped?</h4>
+
 <p><strong>The difference between cropped and uncropped image dimensions is important to understand</strong> &mdash; when resizing <em>and</em> cropping an image, it will be resized so that <em>both</em> sides meet or exceed the image dimensions required and <em>the excess width or height is trimmed</em>. The resulting image will match the required dimensions <em>exactly</em> (having sacrificed parts of the image). When resizing without cropping, <em>the original aspect ratio is preserved</em>, and no parts of the image are sacrificed. The image will be resized so both the width and height fit <em>within</em> the designed size &mdash; so only one side of the image has to match the required size.</p>
 </blockquote>
 </div>
@@ -55,8 +57,10 @@
 <td style="vertical-align:top;width:33%;height:320px;">
 <div style="margin:5px;overflow-y:scroll;height:100%;border-bottom:1px solid #333;">
 <blockquote style="display:block;margin:0;">
+
 <h4>Verify Dimensions?</h4>
-<p>WPSSO Pro can double-check that all images returned by WordPress match the dimensions it requested (as WordPress can return smaller and/or inaccurate images). This also insures that images which are too small and/or tall / wide for social sites are rejected in favour of other larger (and more suitable) images. You can enforce the image dimensions check by enabling the "Enforce Image Dimensions Check" option under the <strong>SSO &gt; Advanced &gt; Integration</strong> tab.</p>
+
+<p>WPSSO Core Pro can double-check that all images returned by WordPress match the dimensions it requested (as WordPress can return smaller and/or inaccurate images). This also insures that images which are too small and/or tall / wide for social sites are rejected in favour of other larger (and more suitable) images. You can enforce the image dimensions check by enabling the "Enforce Image Dimensions Check" option under the <strong>SSO &gt; Advanced &gt; Integration</strong> tab.</p>
 </blockquote>
 </div>
 </td>
@@ -64,8 +68,10 @@
 <td style="vertical-align:top;width:33%;height:320px;">
 <div style="margin:5px;overflow-y:scroll;height:100%;border-bottom:1px solid #333;">
 <blockquote style="display:block;margin:0;">
+
 <h4>Upscale / Enlarge Images?</h4>
-<p>WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites. WPSSO Pro includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable this feature under the <strong>SSO &gt; Advanced &gt; Integration</strong> tab.</p>
+
+<p>WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites. WPSSO Core Pro includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable this feature under the <strong>SSO &gt; Advanced &gt; Integration</strong> tab.</p>
 </blockquote>
 </div>
 </td>
@@ -75,7 +81,7 @@
 
 <dt><h3>Validation Tools</h3></dt>
 
-<dd><p>Submit a few sample Posts, Pages, etc. to the <a href="https://developers.facebook.com/tools/debug/">Facebook Debugger</a></strong> to verify your Open Graph meta tags. A link to the Facebook Debugger is available under the Validate tab in the <em>Social and Search Optimization</em> metabox (on post, term, and user editing pages). Submitting a URL to the Facebook Debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button a few times). If you're validating older posts / pages, pre-dating the activation of WPSSO, <a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a> even after fetching the new scrape information.</p>
+<dd><p>Submit a few sample Posts, Pages, etc. to the <a href="https://developers.facebook.com/tools/debug/">Facebook Debugger</a></strong> to verify your Open Graph meta tags. A link to the Facebook Debugger is available under the Validate tab in the <em>Social and Search Optimization</em> metabox (on post, term, and user editing pages). Submitting a URL to the Facebook Debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button a few times). If you're validating older posts / pages, pre-dating the activation of WPSSO Core, <a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a> even after fetching the new scrape information.</p>
 
 <p>Submit a Post / Page to the <a href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pin Validator</a> and request approval for Rich Pins. Pinterest Rich Pins are an extension of Open Graph (and Schema) meta tags, but the Rich Pin Validator can be a little buggy, so double check any errors with the Facebook Debugger to make sure they are actual / real errors.</p>
 
@@ -95,13 +101,14 @@
 
 <dt><h3>Documentation and Resources</h3></dt>
 
-<dd><p>WPSSO is a powerful tool and social framework that detects images and videos from a variety of sources (attached, featured, content, etc.), along with 3rd party plugins and e-commerce product information. It's worth noting some of the most common questions, to get an idea of what WPSSO can do, and some of the issues that may come up. Some of the most relevant / popular frequently asked questions are:</p>
+<dd><p>WPSSO Core is a powerful tool and social framework that detects images and videos from a variety of sources (attached, featured, content, etc.), along with 3rd party plugins and e-commerce product information. It's worth noting some of the most common questions, to get an idea of what WPSSO Core can do, and some of the issues that may come up. Some of the most relevant / popular frequently asked questions are:</p>
 
 <h4>Frequently Asked Questions</h4>
 
 <ul>
-	<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/">How does WPSSO find / detect / select images?</a></li>
+	<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/">How does WPSSO Core find / detect / select images?</a></li>
 	<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Why does Facebook show the wrong image / text?</a></li>
+	<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-page-blank-or-its-components-misaligned/">Why is the page blank or components missing / misaligned?</a></li>
 	<li>More <a href="https://wpsso.com/docs/plugins/wpsso/faqs/">frequently asked questions</a>...</li>
 </ul>
 
@@ -112,7 +119,7 @@
 <h4>Other Notes</h4>
 
 <ul>
-	<p><strong>WPSSO</strong></p>
+	<p><strong>WPSSO Core</strong></p>
 	<ul>
 		<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/">Installation and Setup</a></li>
 		<ul>
@@ -155,7 +162,7 @@
 <p>If your site uses shortcodes, you'll want to enable the "Apply WordPress Content Filters" option to expand shortcodes in the content for description text and/or image meta tags (the content can be searched for images).</p>
 
 <!-- WPSSO_HIDE_ALL_WARNINGS -->
-<p>WPSSO may display warning notices if images are too small for the dimensions required. If you are using WordPress v4.2 or better, these notices can be dismissed individually. You can also define the <code>WPSSO_HIDE_ALL_WARNINGS</code> constant as true to auto-hide all dismissable warnings.</p>
+<p>WPSSO Core may display warning notices if images are too small for the dimensions required. If you are using WordPress v4.2 or better, these notices can be dismissed individually. You can also define the <code>WPSSO_HIDE_ALL_WARNINGS</code> constant as true to auto-hide all dismissable warnings.</p>
 
 <!-- Show SSO Image / Desc Columns -->
 <p>Users can hide / unhide the "SSO Image" and "SSO Desc" columns using the <em>Screen Options</em> drop-down tab, but you can also enable / disable these columns globally under the <strong>SSO &gt; Advanced &gt; Custom Meta</strong> tab.</p>
@@ -167,13 +174,13 @@
 <p>If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the "Check for Duplicate Meta Tags" option.</p>
 
 <!-- head Attributes Filter Hook -->
-<p>WPSSO modifies the <code>&lt;head&gt;</code> element attributes to add a Schema item type for the <code>&lt;head&gt;</code> section only. To apply the Schema item type for the whole page instead, change the "&lt;head&gt; Attributes Filter Hook" value from 'head_attributes' to 'language_attributes'.</p>
+<p>WPSSO Core modifies the <code>&lt;head&gt;</code> element attributes to add a Schema item type for the <code>&lt;head&gt;</code> section only. To apply the Schema item type for the whole page instead, change the "&lt;head&gt; Attributes Filter Hook" value from 'head_attributes' to 'language_attributes'.</p>
 
 <!-- WPSSO_IMAGE_UPSCALE_TEST -->
-<p>You can <em>simulate</em> the WPSSO image upscaling feature, to generate all the necessary success / failure notice messages, without having WordPress actually save the resulting images &mdash; define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true, or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO image sizes) and adjust the maximum percentage.</p>
+<p>You can <em>simulate</em> the WPSSO Core image upscaling feature, to generate all the necessary success / failure notice messages, without having WordPress actually save the resulting images &mdash; define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true, or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO Core image sizes) and adjust the maximum percentage.</p>
 
-<!-- WPSSO Schema JSON-LD -->
-<p>WPSSO creates a few Schema <em>meta tags</em> (name, description, and image) for Google+, along with the WebSite, Organization, and Person social JSON-LD markup (on the front page) for Google Search. If your theme does not include proper Schema markup for your content (author, images, videos, etc.), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> extension, which can add complete Schema JSON-LD / SEO markup (BlogPosting, Article, Place, Product, etc.) to webpages for Google.</p>
+<!-- WPSSO Schema JSON-LD Markup -->
+<p>WPSSO Core creates a few Schema <em>meta tags</em> (name, description, and image) for Google+, along with the WebSite, Organization, and Person social JSON-LD markup (on the front page) for Google Search. If your theme does not include proper Schema markup for your content (author, images, videos, etc.), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> extension, which can add complete Schema JSON-LD / SEO markup (BlogPosting, Article, Place, Product, etc.) to webpages for Google.</p>
 
 </dd>
 
