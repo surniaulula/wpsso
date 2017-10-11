@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>Advanced Meta Tags and Schema Markup for Social Sharing, Search / SEO, Rich Cards</h3>
+<h1>WPSSO Core</h1><h3>Advanced Meta and Schema for Social Sharing, Rich Cards / SEO (Facebook, Open Graph, Google, Twitter, Pinterest, etc)</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
