@@ -2,7 +2,7 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically create complete meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and mor</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically create complete meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards + more.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.46.4</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.7</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.8.2</td></tr>
