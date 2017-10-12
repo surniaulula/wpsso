@@ -1,4 +1,4 @@
-=== WPSSO Core - Advanced Meta Tags and Schema for Social Sharing / SMO, Google Rich Cards / SEO (Facebook / Open Graph, Google+, Pinterest, Twitter, and More) ===
+=== WPSSO Core - Complete Meta Tags and Schema for Social Sharing / SMO, Google Rich Cards / SEO (Facebook / Open Graph, Google+, Pinterest, Twitter, and More) ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -13,7 +13,7 @@ Tested Up To: 4.8.2
 Requires PHP: 5.3
 Stable Tag: 3.46.4
 
-Automatically create meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.
+Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.
 
 == Description ==
 
