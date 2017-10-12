@@ -372,7 +372,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.0-rc.6 (2017/10/10)**
+**Version 3.47.0-rc.7 (2017/10/12)**
 
 * *New Features*
 	* None
@@ -778,9 +778,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.47.0-rc.6 =
+= 3.47.0-rc.7 =
 
-(2017/10/10) The Block Filter Output (BFO) feature is now enabled by default when WPSSO applies the content filter.
+(2017/10/12) The Block Filter Output (BFO) feature is now enabled by default when WPSSO applies the content filter.
 
 = 3.46.4 =
 
