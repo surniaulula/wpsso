@@ -794,8 +794,9 @@ msgstr ""
 #: lib/config-gettext-extract.php:7
 msgctxt "plugin description"
 msgid ""
-"Automatically create meta tags and Schema markup from your content for "
-"social sharing, social media / SMO, search / SEO / rich cards, and more."
+"Automatically create complete & accurate meta tags and Schema markup from "
+"your content for social sharing, social media / SMO, search / SEO / rich "
+"cards, and more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:8
@@ -4669,8 +4670,9 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Automatically create meta tags and Schema markup from your content for "
-"social sharing, social media / SMO, search / SEO / rich cards, and more."
+"Automatically create complete & accurate meta tags and Schema markup from "
+"your content for social sharing, social media / SMO, search / SEO / rich "
+"cards, and more."
 msgstr ""
 
 #. Author of the plugin/theme

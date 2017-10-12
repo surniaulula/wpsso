@@ -4,7 +4,7 @@ _x( 'Additional Type URLs Custom Field', 'option label', 'wpsso' );
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
 _x( 'Alpha and Up', 'option value', 'wpsso' );
-_x( 'Automatically create meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.', 'plugin description', 'wpsso' );
+_x( 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.', 'plugin description', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
 _x( 'Beta and Up', 'option value', 'wpsso' );
 _x( 'Bitly (suggested)', 'option value', 'wpsso' );
