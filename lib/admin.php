@@ -1388,6 +1388,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$tabindex = 0;
 			$ext_num = 0;
 			$ext_total = count( $this->p->cf['plugin'] );
+			$charset = get_bloginfo( 'charset' );
 
 			echo '<table class="sucom-settings '.$lca.' licenses-metabox"
 				style="padding-bottom:10px">'."\n";
@@ -1446,7 +1447,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'<strong>'.$info['name'].'</strong>'.
 					( $ext === $lca ? ' ('.__( 'Main Plugin', 'wpsso' ).')' : '' ).
 					'</p>'.
-					( empty( $info['desc'] ) ? '' : '<p>'._x( $info['desc'], 'plugin description', 'wpsso' ).'</p>' ).
+					( empty( $info['desc'] ) ? '' : '<p>'.htmlentities( _x( $info['desc'],
+						'plugin description', 'wpsso' ), ENT_QUOTES, $charset, false ).'</p>' ).
 					( empty( $ext_links ) ? '' : '<div class="row-actions visible">'.implode( ' | ', $ext_links ).'</div>' ).
 					'</td>';
 
