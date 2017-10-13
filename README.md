@@ -165,7 +165,7 @@
 <li>Soundcloud URL</li>
 <li>Tumblr URL</li>
 <li>Twitter @username</li>
-<li>Yahoo IM</li>
+<li>Yahoo Messenger</li>
 <li>YouTube Channel URL</li>
 </ul>
 

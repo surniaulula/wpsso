@@ -160,7 +160,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 * Soundcloud URL
 * Tumblr URL
 * Twitter @username
-* Yahoo IM
+* Yahoo Messenger
 * YouTube Channel URL
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
