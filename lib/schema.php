@@ -1368,7 +1368,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			foreach ( apply_filters( $wpsso->cf['lca'].'_social_accounts', 
 				$wpsso->cf['form']['social_accounts'] ) as $social_key => $social_label ) {
 
-				$url = SucomUtil::get_locale_opt( $social_key, $wpsso->options, $mixed );	// localized value
+				$url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// localized value
 
 				if ( empty( $url ) ) {
 					continue;
@@ -1386,8 +1386,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'org_name' => SucomUtil::get_site_name( $wpsso->options, $mixed ),		// localized value
 				'org_alt_name' => SucomUtil::get_site_alt_name( $wpsso->options, $mixed ),	// localized value
 				'org_desc' => SucomUtil::get_site_description( $wpsso->options, $mixed ),	// localized value
-				'org_logo_url' => SucomUtil::get_locale_opt( 'schema_logo_url', $wpsso->options, $mixed ),	// localized value
-				'org_banner_url' => SucomUtil::get_locale_opt( 'schema_banner_url', $wpsso->options, $mixed ),	// localized value
+				'org_logo_url' => SucomUtil::get_key_value( 'schema_logo_url', $wpsso->options, $mixed ),	// localized value
+				'org_banner_url' => SucomUtil::get_key_value( 'schema_banner_url', $wpsso->options, $mixed ),	// localized value
 				'org_place_id' => $wpsso->options['site_place_id'],
 				'org_sameas' => $org_sameas,							// localized value
 			);

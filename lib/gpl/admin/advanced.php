@@ -71,11 +71,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows['plugin_img_alt_prefix'] = $form->get_th_html( _x( 'Image Alt Text Prefix',
 				'option label', 'wpsso' ), '', 'plugin_img_alt_prefix', array( 'is_locale' => true ) ).
-			'<td class="blank">'.SucomUtil::get_locale_opt( 'plugin_img_alt_prefix', $this->p->options ).'</td>';
+			'<td class="blank">'.SucomUtil::get_key_value( 'plugin_img_alt_prefix', $this->p->options ).'</td>';
 
 			$table_rows['plugin_p_cap_prefix'] = $form->get_th_html( _x( 'WP Caption Prefix',
 				'option label', 'wpsso' ), '', 'plugin_p_cap_prefix', array( 'is_locale' => true ) ).
-			'<td class="blank">'.SucomUtil::get_locale_opt( 'plugin_p_cap_prefix', $this->p->options ).'</td>';
+			'<td class="blank">'.SucomUtil::get_key_value( 'plugin_p_cap_prefix', $this->p->options ).'</td>';
 
 			$table_rows['plugin_embedded_media'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Check for Embedded Media',
@@ -441,7 +441,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 				$cm_enabled_key = 'plugin_cm_'.$opt_pre.'_enabled';
 				$cm_name_key = 'plugin_cm_'.$opt_pre.'_name';
-				$cm_label_value = SucomUtil::get_locale_opt( 'plugin_cm_'.$opt_pre.'_label', $this->p->options );
+				$cm_label_value = SucomUtil::get_key_value( 'plugin_cm_'.$opt_pre.'_label', $this->p->options );
 
 				// not all social websites have a contact method field
 				if ( isset( $this->p->options[$cm_enabled_key] ) ) {
@@ -498,7 +498,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 				$cm_enabled_key = 'wp_cm_'.$id.'_enabled';
 				$cm_name_key = 'wp_cm_'.$id.'_name';
-				$cm_label_value = SucomUtil::get_locale_opt( 'wp_cm_'.$id.'_label', $this->p->options );
+				$cm_label_value = SucomUtil::get_key_value( 'wp_cm_'.$id.'_label', $this->p->options );
 
 				// not all social websites have a contact method field
 				if ( isset( $this->p->options[$cm_enabled_key] ) ) {

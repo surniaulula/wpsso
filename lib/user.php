@@ -393,7 +393,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					if ( isset( $this->p->options[$cm_enabled_key] ) ) {
 						if ( ! empty( $this->p->options[$cm_enabled_key] ) ) {
-							$cm_label_value = SucomUtil::get_locale_opt( $cm_label_key, $this->p->options );
+							$cm_label_value = SucomUtil::get_key_value( $cm_label_key, $this->p->options );
 							if ( ! empty( $cm_label_value ) ) {	// just in case
 								$fields[$id] = $cm_label_value;
 							}
@@ -416,7 +416,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					// not all social websites have a contact fields, so check
 					if ( isset( $this->p->options[$cm_name_key] ) ) {
 						if ( ! empty( $this->p->options[$cm_enabled_key] ) && ! empty( $this->p->options[$cm_name_key] ) ) {
-							$cm_label_value = SucomUtil::get_locale_opt( $cm_label_key, $this->p->options );
+							$cm_label_value = SucomUtil::get_key_value( $cm_label_key, $this->p->options );
 							if ( ! empty( $cm_label_value ) ) {	// just in case
 								$fields[$this->p->options[$cm_name_key]] = $cm_label_value;
 							}
@@ -487,8 +487,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				if ( get_site_option( 'initial_db_version' ) < 23588 ) {
 					$methods = array(
 						'aim'    => __( 'AIM' ),
-						'yim'    => __( 'Yahoo IM' ),
-						'jabber' => __( 'Jabber / Google Talk' )
+						'jabber' => __( 'Jabber / Google Talk' ),
+						'yim'    => __( 'Yahoo Messenger' )
 					); 
 				}
 				return apply_filters( 'user_contactmethods', $methods, $user );

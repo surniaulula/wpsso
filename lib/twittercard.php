@@ -76,12 +76,11 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			if ( ! isset( $mt_tc['twitter:site'] ) ) {
-				$mt_tc['twitter:site'] = SucomUtil::get_locale_opt( 'tc_site', $this->p->options, $mod );
+				$mt_tc['twitter:site'] = SucomUtil::get_key_value( 'tc_site', $this->p->options, $mod );
 			}
 
 			if ( ! isset( $mt_tc['twitter:title'] ) ) {
-				$mt_tc['twitter:title'] = $this->p->page->get_title( 70, 
-					'...', $mod, true, false, true, 'og_title' );
+				$mt_tc['twitter:title'] = $this->p->page->get_title( 70, '...', $mod, true, false, true, 'og_title' );
 			}
 
 			if ( ! isset( $mt_tc['twitter:description'] ) ) {

@@ -1759,7 +1759,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_site_url( array $opts, $mixed = 'current' ) {
-			$ret = self::get_locale_opt( 'site_url', $opts, $mixed );
+			$ret = self::get_key_value( 'site_url', $opts, $mixed );
 			if ( empty( $ret ) ) {
 				return get_bloginfo( 'url' );
 			} else {
@@ -1772,7 +1772,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_site_name( array $opts, $mixed = 'current' ) {
-			$ret = self::get_locale_opt( 'site_name', $opts, $mixed );
+			$ret = self::get_key_value( 'site_name', $opts, $mixed );
 			if ( empty( $ret ) ) {
 				return get_bloginfo( 'name', 'display' );
 			} else {
@@ -1781,7 +1781,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_site_alt_name( array $opts, $mixed = 'current' ) {
-			return self::get_locale_opt( 'site_alt_name', $opts, $mixed );
+			return self::get_key_value( 'site_alt_name', $opts, $mixed );
 		}
 
 		/*
@@ -1789,7 +1789,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_site_description( array $opts, $mixed = 'current' ) {
-			$ret = self::get_locale_opt( 'site_desc', $opts, $mixed );
+			$ret = self::get_key_value( 'site_desc', $opts, $mixed );
 			if ( empty( $ret ) ) {
 				return get_bloginfo( 'description', 'display' );
 			} else {
@@ -1797,19 +1797,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function transl_opt_values( $pattern, array &$opts, $text_domain = false ) {
+		public static function transl_key_values( $pattern, array &$opts, $text_domain = false ) {
 			foreach ( self::preg_grep_keys( $pattern, $opts ) as $key => $val ) {
-				if ( ( $locale_key = self::get_key_locale( $key ) ) !== $key && ! isset( $opts[$locale_key] ) ) {
-					if ( ( $val_transl = _x( $val, 'option value', $text_domain ) ) !== $val ) {
+				$locale_key = self::get_key_locale( $key );
+				if ( $locale_key !== $key && empty( $opts[$locale_key] ) ) {
+					$val_transl = _x( $val, 'option value', $text_domain );
+					if ( $val_transl !== $val ) {
 						$opts[$locale_key] = $val_transl;
 					}
 				}
 			}
 		}
 
+		// deprecated on 2017/10/13
+		public static function get_locale_opt( $key, array $opts, $mixed = 'current' ) {
+			return self::get_key_value( $key, $opts, $mixed );
+		}
+
 		// return a localize options value
 		// $mixed = 'default' | 'current' | post ID | $mod array
-		public static function get_locale_opt( $key, array $opts, $mixed = 'current' ) {
+		public static function get_key_value( $key, array $opts, $mixed = 'current' ) {
 
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
 			$val_locale = isset( $opts[$key_locale] ) ? $opts[$key_locale] : null;
@@ -1855,6 +1862,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_multi_key_locale( $prefix, array &$opts, $add_none = false ) {
+
 			$default = self::get_locale( 'default' );
 			$current = self::get_locale( 'current' );
 			$matches = self::preg_grep_keys( '/^'.$prefix.'_([0-9]+)(#.*)?$/', $opts );
@@ -1863,15 +1871,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			foreach ( $matches as $key => $value ) {
 				$num = preg_replace( '/^'.$prefix.'_([0-9]+)(#.*)?$/', '$1', $key );
 
-				if ( ! empty( $results[$num] ) )	// preserve the first non-blank value
+				if ( ! empty( $results[$num] ) ) {				// preserve the first non-blank value
 					continue;
-				elseif ( ! empty( $opts[$prefix.'_'.$num.'#'.$current] ) )	// current locale
+				} elseif ( ! empty( $opts[$prefix.'_'.$num.'#'.$current] ) ) {	// current locale
 					$results[$num] = $opts[$prefix.'_'.$num.'#'.$current];
-				elseif ( ! empty( $opts[$prefix.'_'.$num.'#'.$default] ) )	// default locale
+				} elseif ( ! empty( $opts[$prefix.'_'.$num.'#'.$default] ) ) {	// default locale
 					$results[$num] = $opts[$prefix.'_'.$num.'#'.$default];
-				elseif ( ! empty( $opts[$prefix.'_'.$num] ) )			// no locale
+				} elseif ( ! empty( $opts[$prefix.'_'.$num] ) ) {		// no locale
 					$results[$num] = $opts[$prefix.'_'.$num];
-				else $results[$num] = $value;					// use value (could be empty)
+				} else {							// use value (could be empty)
+					$results[$num] = $value;
+				}
 			}
 
 			asort( $results );	// sort values for display

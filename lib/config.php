@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.47.0-rc.8',		// plugin version
-					'opt_version' => '555',		// increment when changing default options
+					'opt_version' => '557',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -984,7 +984,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_jabber_label' => 'Google Talk',
 					'wp_cm_jabber_enabled' => 1,
 					'wp_cm_yim_name' => 'yim',
-					'wp_cm_yim_label' => 'Yahoo IM',
+					'wp_cm_yim_label' => 'Yahoo Messenger',
 					'wp_cm_yim_enabled' => 1,
 				),	// end of defaults
 				'site_defaults' => array(
@@ -1138,7 +1138,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'cm_names' => array(
 					'aim' => 'AIM',
 					'jabber' => 'Google Talk',
-					'yim' => 'Yahoo IM',
+					'yim' => 'Yahoo Messenger',
 				),
 				'admin' => array(
 					'users' => array(

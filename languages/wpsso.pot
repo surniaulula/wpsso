@@ -3758,114 +3758,114 @@ msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/options.php:270
+#: lib/options.php:268
 msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:347
+#: lib/options.php:345
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:349
+#: lib/options.php:347
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:351
+#: lib/options.php:349
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:353
+#: lib/options.php:351
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:364
+#: lib/options.php:362
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:429
+#: lib/options.php:427
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:475
+#: lib/options.php:473
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:513
+#: lib/options.php:511
 msgid ""
 "The value of option '%s' must be a URL - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:515
+#: lib/options.php:513
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:517
+#: lib/options.php:515
 msgid ""
 "The value of option '%s' must be numeric - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:519
+#: lib/options.php:517
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:521
+#: lib/options.php:519
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:523
+#: lib/options.php:521
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:525
+#: lib/options.php:523
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:527
+#: lib/options.php:525
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:529
+#: lib/options.php:527
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:531
+#: lib/options.php:529
 msgid ""
 "The value of option '%s' must be HTML code - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:533
+#: lib/options.php:531
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:783
+#: lib/options.php:781
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
@@ -4252,37 +4252,37 @@ msgctxt "metabox tab"
 msgid "Service APIs"
 msgstr ""
 
-#: lib/submenu/advanced.php:67
+#: lib/submenu/advanced.php:75
 msgctxt "metabox tab"
 msgid "Custom Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:68
+#: lib/submenu/advanced.php:76
 msgctxt "metabox tab"
 msgid "Built-In Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:84 lib/submenu/general.php:67
+#: lib/submenu/advanced.php:92 lib/submenu/general.php:67
 msgctxt "metabox tab"
 msgid "Facebook"
 msgstr ""
 
-#: lib/submenu/advanced.php:85
+#: lib/submenu/advanced.php:93
 msgctxt "metabox tab"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/submenu/advanced.php:86 lib/submenu/general.php:70
+#: lib/submenu/advanced.php:94 lib/submenu/general.php:70
 msgctxt "metabox tab"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/advanced.php:87
+#: lib/submenu/advanced.php:95
 msgctxt "metabox tab"
 msgid "Schema"
 msgstr ""
 
-#: lib/submenu/advanced.php:88
+#: lib/submenu/advanced.php:96
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
@@ -4628,11 +4628,11 @@ msgid "AIM"
 msgstr ""
 
 #: lib/user.php:490
-msgid "Yahoo IM"
+msgid "Jabber / Google Talk"
 msgstr ""
 
 #: lib/user.php:491
-msgid "Jabber / Google Talk"
+msgid "Yahoo Messenger"
 msgstr ""
 
 #: lib/util.php:379

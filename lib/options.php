@@ -68,8 +68,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$defs['og_author_field'] = $this->p->options['plugin_cm_fb_name'];	// reset to possible custom value
 				$defs['plugin_wpseo_social_meta'] = $this->p->avail['seo']['wpseo'] || get_option( 'wpseo' ) ? 1 : 0;
 
-				SucomUtil::transl_opt_values( '/^plugin_cm_.*_label$/', $defs, 'nextgen-facebook' );
-
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 					if ( ! empty( $info['update_auth'] ) && 
 						$info['update_auth']!== 'none' ) {	// just in case

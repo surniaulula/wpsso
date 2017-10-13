@@ -372,8 +372,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( ! isset( $mt_og['article:publisher'] ) ) {
-					$mt_og['article:publisher'] = SucomUtil::get_locale_opt( 'fb_publisher_url',
-						$this->p->options, $mod );
+					$mt_og['article:publisher'] = SucomUtil::get_key_value( 'fb_publisher_url', $this->p->options, $mod );
 				}
 
 				if ( ! isset( $mt_og['article:tag'] ) ) {
