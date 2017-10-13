@@ -233,13 +233,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
 
 				if ( isset( $this->p->cf['form']['cf_labels'][$cf_idx] ) &&	// just in case
-					$label = $this->p->cf['form']['cf_labels'][$cf_idx] ) {
+					$opt_label = $this->p->cf['form']['cf_labels'][$cf_idx] ) {
 
-					if ( empty( $md_idx ) )	// custom fields can be disabled by filters
+					if ( empty( $md_idx ) ) {	// custom fields can be disabled by filters
 						$this->p->options[$cf_idx] = '';
+					}
 
 					$table_rows[$cf_idx] = '<tr class="hide_in_basic">'.
-					$form->get_th_html( _x( $label, 'option label', 'wpsso' ), '', $cf_idx ).
+					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $cf_idx ).
 					'<td class="blank">'.$form->get_no_input( $cf_idx ).'</td>';
 				}
 			}
@@ -438,12 +439,12 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			foreach ( $sorted_opt_pre as $id => $opt_pre ) {
 
-				$cm_cb = 'plugin_cm_'.$opt_pre.'_enabled';
-				$cm_name = 'plugin_cm_'.$opt_pre.'_name';
-				$cm_label = 'plugin_cm_'.$opt_pre.'_label';
+				$cm_enabled_key = 'plugin_cm_'.$opt_pre.'_enabled';
+				$cm_name_key = 'plugin_cm_'.$opt_pre.'_name';
+				$cm_label_value = SucomUtil::get_locale_opt( 'plugin_cm_'.$opt_pre.'_label', $this->p->options );
 
 				// not all social websites have a contact method field
-				if ( isset( $this->p->options[$cm_cb] ) ) {
+				if ( isset( $this->p->options[$cm_enabled_key] ) ) {
 
 					switch ( $id ) {
 						case 'facebook':
@@ -456,19 +457,19 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 							break;
 					}
 
-					$label = empty( $this->p->cf['*']['lib']['website'][$id] ) ?
+					$opt_label = empty( $this->p->cf['*']['lib']['website'][$id] ) ?
 						ucfirst( $id ) : $this->p->cf['*']['lib']['website'][$id];
 
-					$label_lc = strtolower( $label );
+					$opt_label_lc = strtolower( $opt_label );
 
-					if  ( $label_lc === 'googleplus' || $label_lc === 'gplus' ) {
-						$label = 'Google+';
+					if  ( $opt_label_lc === 'googleplus' || $opt_label_lc === 'gplus' ) {
+						$opt_label = 'Google+';
 					}
 
-					$table_rows[] = $tr.$form->get_th_html( $label, 'medium' ).
-					$form->get_nocb_td( $cm_cb, '', true ).
-					'<td class="blank medium">'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
-					'<td class="blank wide">'.$form->get_no_input( $cm_label ).'</td>';
+					$table_rows[] = $tr.$form->get_th_html( $opt_label, 'medium' ).
+					$form->get_nocb_td( $cm_enabled_key, '', true ).
+					'<td class="blank medium">'.$form->get_no_input( $cm_name_key, 'medium' ).'</td>'.
+					'<td class="blank wide">'.$form->get_no_input_value( $cm_label_value ).'</td>';
 				}
 			}
 
@@ -493,17 +494,18 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$sorted_cm_names = $this->p->cf['wp']['cm_names'];
 			ksort( $sorted_cm_names );
 
-			foreach ( $sorted_cm_names as $id => $label ) {
+			foreach ( $sorted_cm_names as $id => $opt_label ) {
 
-				$cm_cb = 'wp_cm_'.$id.'_enabled';
-				$cm_name = 'wp_cm_'.$id.'_name';
-				$cm_label = 'wp_cm_'.$id.'_label';
+				$cm_enabled_key = 'wp_cm_'.$id.'_enabled';
+				$cm_name_key = 'wp_cm_'.$id.'_name';
+				$cm_label_value = SucomUtil::get_locale_opt( 'wp_cm_'.$id.'_label', $this->p->options );
 
-				if ( isset( $this->p->options[$cm_cb] ) ) {
-					$table_rows[] = $form->get_th_html( $label, 'medium' ).
-					'<td class="checkbox blank">'.$form->get_nocb_cmt( $cm_cb ).'</td>'.
-					'<td class="medium">'.$form->get_no_input( $cm_name, 'medium' ).'</td>'.
-					'<td class="blank wide">'.$form->get_no_input( $cm_label ).'</td>';
+				// not all social websites have a contact method field
+				if ( isset( $this->p->options[$cm_enabled_key] ) ) {
+					$table_rows[] = $form->get_th_html( $opt_label, 'medium' ).
+					'<td class="checkbox blank">'.$form->get_nocb_cmt( $cm_enabled_key ).'</td>'.
+					'<td class="medium">'.$form->get_no_input( $cm_name_key, 'medium' ).'</td>'.
+					'<td class="blank wide">'.$form->get_no_input( $cm_label_value ).'</td>';
 				}
 			}
 
