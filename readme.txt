@@ -372,12 +372,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.0-rc.7 (2017/10/12)**
+**Version 3.47.0-rc.8 (2017/10/13)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* The Block Filter Output (BFO) feature is now enabled by default when WPSSO applies the content filter.
+	* Added locale support to the Profile Contact Label options (Pro version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -778,9 +779,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.47.0-rc.7 =
+= 3.47.0-rc.8 =
 
-(2017/10/12) The Block Filter Output (BFO) feature is now enabled by default when WPSSO applies the content filter.
+(2017/10/13) The Block Filter Output (BFO) feature is now enabled by default when WPSSO applies the content filter. Added locale support to the Profile Contact Label options (Pro version).
 
 = 3.46.4 =
 
