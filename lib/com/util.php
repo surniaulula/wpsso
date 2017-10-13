@@ -1797,6 +1797,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		public static function transl_opt_values( $pattern, array &$opts, $text_domain = false ) {
+			foreach ( self::preg_grep_keys( $pattern, $opts ) as $key => $val ) {
+				if ( ( $locale_key = self::get_key_locale( $key ) ) !== $key && ! isset( $opts[$locale_key] ) ) {
+					if ( ( $val_transl = _x( $val, 'option value', $text_domain ) ) !== $val ) {
+						$opts[$locale_key] = $val_transl;
+					}
+				}
+			}
+		}
+
 		// return a localize options value
 		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_locale_opt( $key, array $opts, $mixed = 'current' ) {
@@ -1830,6 +1840,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		// $opts = false | array
 		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_key_locale( $key, $opts = false, $mixed = 'current' ) {
+
 			$default = self::get_locale( 'default' );
 			$locale = self::get_locale( $mixed );
 			$key_locale = $key.'#'.$locale;

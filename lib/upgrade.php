@@ -247,10 +247,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				}
 				*/
 
-				if ( $prev_version > 0 && $prev_version <= 551 ) {
+				if ( $prev_version > 0 && $prev_version <= 552 ) {
 					if ( $opts['plugin_cm_fb_label'] === 'Facebook URL' ) {
 						$opts['plugin_cm_fb_label'] = 'Facebook User URL';
 					}
+					SucomUtil::transl_opt_values( '/^plugin_cm_.*_label$/', $opts, 'wpsso' );
 				}
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
