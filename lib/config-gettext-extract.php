@@ -2,7 +2,6 @@
 // extract of translatable text strings from static config array
 _x( 'Additional Type URLs Custom Field', 'option label', 'wpsso' );
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
-_x( 'AIM', 'option value', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
 _x( 'Alpha and Up', 'option value', 'wpsso' );
 _x( 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.', 'plugin description', 'wpsso' );
@@ -41,7 +40,6 @@ _x( 'Friday', 'option value', 'wpsso' );
 _x( 'General Settings', 'lib file description', 'wpsso' );
 _x( 'Google+ Business Page URL', 'option value', 'wpsso' );
 _x( 'Google', 'option value', 'wpsso' );
-_x( 'Google Talk', 'option value', 'wpsso' );
 _x( 'Google+ URL', 'option value', 'wpsso' );
 _x( 'Header', 'option value', 'wpsso' );
 _x( 'If value is empty', 'option value', 'wpsso' );
@@ -128,7 +126,6 @@ _x( 'WPSSO extension to provide Apple Store / iTunes and Google Play App meta ta
 _x( 'WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business, and Local SEO meta tags.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to provide updates for the WPSSO Core Pro plugin and its Pro extensions.', 'plugin description', 'wpsso' );
 _x( 'WPSSO extension to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched.', 'plugin description', 'wpsso' );
-_x( 'Yahoo IM', 'option value', 'wpsso' );
 _x( 'Yes', 'option value', 'wpsso' );
 _x( 'YOURLS', 'option value', 'wpsso' );
 _x( 'Your SSO', 'lib file description', 'wpsso' );
