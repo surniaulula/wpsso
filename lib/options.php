@@ -73,8 +73,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				// read Yoast SEO social meta if plugin is active or 'wpseo' settings found
-				$defs['plugin_wpseo_social_meta'] = $this->p->avail['seo']['wpseo'] || 
-					get_option( 'wpseo' ) ? 1 : 0;
+				$defs['plugin_wpseo_social_meta'] = $this->p->avail['seo']['wpseo'] || get_option( 'wpseo' ) ? 1 : 0;
 
 				// check for default values from network admin settings
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {
