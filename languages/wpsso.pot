@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.47.0-rc.7\n"
+"Project-Id-Version: WPSSO Core 3.47.0-rc.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:639 lib/post.php:392 lib/term.php:280 lib/user.php:260
+#: lib/admin.php:639 lib/post.php:392 lib/term.php:280 lib/user.php:263
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1703,22 +1703,22 @@ msgctxt "option label"
 msgid "YOURLS Token"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:431 lib/gpl/admin/advanced.php:485
-#: lib/pro/admin/advanced.php:415 lib/pro/admin/advanced.php:466
+#: lib/gpl/admin/advanced.php:431 lib/gpl/admin/advanced.php:488
+#: lib/pro/admin/advanced.php:416 lib/pro/admin/advanced.php:470
 msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:432 lib/gpl/admin/advanced.php:486
-#: lib/messages.php:1155 lib/pro/admin/advanced.php:416
-#: lib/pro/admin/advanced.php:467
+#: lib/gpl/admin/advanced.php:432 lib/gpl/admin/advanced.php:489
+#: lib/messages.php:1155 lib/pro/admin/advanced.php:417
+#: lib/pro/admin/advanced.php:471
 msgctxt "column title"
 msgid "Contact Field Name"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:433 lib/gpl/admin/advanced.php:487
-#: lib/messages.php:1155 lib/pro/admin/advanced.php:417
-#: lib/pro/admin/advanced.php:468
+#: lib/gpl/admin/advanced.php:433 lib/gpl/admin/advanced.php:490
+#: lib/messages.php:1155 lib/pro/admin/advanced.php:418
+#: lib/pro/admin/advanced.php:472
 msgctxt "column title"
 msgid "Profile Contact Label"
 msgstr ""
@@ -2372,7 +2372,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:412 lib/util.php:1991
+#: lib/messages.php:412 lib/util.php:1997
 msgid "No options available."
 msgstr ""
 
@@ -3795,7 +3795,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:542 lib/util.php:876
+#: lib/post.php:542 lib/util.php:882
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -3942,12 +3942,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:147
-#: lib/pro/media/wistia.php:275 lib/util.php:941
+#: lib/pro/media/wistia.php:275 lib/util.php:947
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:150
-#: lib/pro/media/wistia.php:278 lib/util.php:944
+#: lib/pro/media/wistia.php:278 lib/util.php:950
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4500,15 +4500,19 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:471
+#: lib/user.php:435
+msgid "(not a Facebook Page URL)"
+msgstr ""
+
+#: lib/user.php:489
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:472
+#: lib/user.php:490
 msgid "Yahoo IM"
 msgstr ""
 
-#: lib/user.php:473
+#: lib/user.php:491
 msgid "Jabber / Google Talk"
 msgstr ""
 
@@ -4540,100 +4544,100 @@ msgstr ""
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:603
+#: lib/util.php:608
 msgid ""
 "The value of option '%s' must be a URL - resetting option to default value."
 msgstr ""
 
-#: lib/util.php:605
+#: lib/util.php:610
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/util.php:607
+#: lib/util.php:612
 msgid ""
 "The value of option '%s' must be numeric - resetting option to default value."
 msgstr ""
 
-#: lib/util.php:609
+#: lib/util.php:614
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/util.php:611
+#: lib/util.php:616
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:613
+#: lib/util.php:618
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/util.php:615
+#: lib/util.php:620
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:617
+#: lib/util.php:622
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:619
+#: lib/util.php:624
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/util.php:621
+#: lib/util.php:626
 msgid ""
 "The value of option '%s' must be HTML code - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/util.php:623
+#: lib/util.php:628
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/util.php:864
+#: lib/util.php:870
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:887
+#: lib/util.php:893
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:986
+#: lib/util.php:992
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:2018
+#: lib/util.php:2024
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2022
+#: lib/util.php:2028
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2025
+#: lib/util.php:2031
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2029
+#: lib/util.php:2035
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

@@ -25,8 +25,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.47.0-rc.7',		// plugin version
-					'opt_version' => '551',		// increment when changing default options
+					'version' => '3.47.0-rc.8',		// plugin version
+					'opt_version' => '552',		// increment when changing default options
 					'short' => 'WPSSO',		// short plugin name
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -945,7 +945,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_yourls_token' => '',
 					// Contact Field Names and Labels
 					'plugin_cm_fb_name' => 'facebook',
-					'plugin_cm_fb_label' => 'Facebook URL',
+					'plugin_cm_fb_label' => 'Facebook User URL',
 					'plugin_cm_fb_enabled' => 1,
 					'plugin_cm_gp_name' => 'gplus',
 					'plugin_cm_gp_label' => 'Google+ URL',

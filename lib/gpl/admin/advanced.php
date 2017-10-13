@@ -430,7 +430,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows[] = '<td></td>'.
 			$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), 'checkbox left', 'custom-cm-show-checkbox' ).
 			$form->get_th_html( _x( 'Contact Field Name', 'column title', 'wpsso' ), 'medium left', 'custom-cm-field-name' ).
-			$form->get_th_html( _x( 'Profile Contact Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-contact-label' );
+			$form->get_th_html( _x( 'Profile Contact Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-contact-label',
+				array( 'is_locale' => true ) );
 
 			$sorted_opt_pre = $this->p->cf['opt']['cm_prefix'];
 			ksort( $sorted_opt_pre );
@@ -475,8 +476,10 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		}
 
 		public function filter_cm_builtin_rows( $table_rows, $form ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$table_rows[] = '<td colspan="4" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
@@ -484,7 +487,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows[] = '<td></td>'.
 			$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), 'checkbox left', 'custom-cm-show-checkbox' ).
 			$form->get_th_html( _x( 'Contact Field Name', 'column title', 'wpsso' ), 'medium left', 'custom-cm-field-name' ).
-			$form->get_th_html( _x( 'Profile Contact Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-contact-label' );
+			$form->get_th_html( _x( 'Profile Contact Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-contact-label', 
+				array( 'is_locale' => true ) );
 
 			$sorted_cm_names = $this->p->cf['wp']['cm_names'];
 			ksort( $sorted_cm_names );

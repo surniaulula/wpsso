@@ -590,12 +590,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $val;	// stop here
 			}
 
+			if ( strpos( $key, '#' ) ) {
+				$is_locale = true;
+			} else {
+				$is_locale = false;
+			}
+
 			// remove multiples, localization, and status for more generic match
 			$option_key = preg_replace( '/(_[0-9]+)?(#.*|:[0-9]+)?$/', '', $key );
 
 			// hooked by several extensions
-			$option_type = apply_filters( $this->p->cf['lca'].'_option_type',
-				false, $option_key, $network, $mod );
+			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $option_key, $network, $mod );
 
 			// translate error messages only once
 			if ( $this->sanitize_error_msgs === null ) {
@@ -805,8 +810,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				// options that cannot be blank (aka empty string)
 				case 'code':
 				case 'not_blank':
-					if ( $val === '' ) {
+					if ( $val === '' && $def_val !== '' ) {
 						$this->p->notice->err( sprintf( $this->sanitize_error_msgs['not_blank'], $key ) );
+						error_log( $def_val );
 						$val = $def_val;
 					}
 					break;

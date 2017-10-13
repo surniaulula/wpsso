@@ -1800,6 +1800,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		// return a localize options value
 		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_locale_opt( $key, array $opts, $mixed = 'current' ) {
+
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
 			$val_locale = isset( $opts[$key_locale] ) ? $opts[$key_locale] : null;
 

@@ -24,7 +24,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		protected function add_actions() {
 
+			$fb_cm_name_value = $this->p->options['plugin_cm_fb_name'];
+
 			add_filter( 'user_contactmethods', array( &$this, 'add_contact_methods' ), 20, 2 );
+			add_filter( 'user_'.$fb_cm_name_value.'_label', array( &$this, 'fb_contact_label' ), 20, 1 );
 
 			if ( is_admin() ) {
 				/**
@@ -376,40 +379,47 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function add_contact_methods( $fields = array(), $user = null ) { 
+
 			$lca = $this->p->cf['lca'];
 			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
 
 			// unset built-in contact fields and/or update their labels
 			if ( ! empty( $this->p->cf['wp']['cm_names'] ) && is_array( $this->p->cf['wp']['cm_names'] ) && $aop ) {
-				foreach ( array_keys( $this->p->cf['wp']['cm_names'] ) as $id ) {
 
-					$cm_enabled = 'wp_cm_'.$id.'_enabled';
-					$cm_label = 'wp_cm_'.$id.'_label';
+				foreach ( $this->p->cf['wp']['cm_names'] as $id => $desc ) {
 
-					if ( isset( $this->p->options[$cm_enabled] ) ) {
-						if ( ! empty( $this->p->options[$cm_enabled] ) ) {
-							if ( ! empty( $this->p->options[$cm_label] ) )
-								$fields[$id] = $this->p->options[$cm_label];
-						} else unset( $fields[$id] );
+					$cm_enabled_key = 'wp_cm_'.$id.'_enabled';
+					$cm_label_key = 'wp_cm_'.$id.'_label';
+
+					if ( isset( $this->p->options[$cm_enabled_key] ) ) {
+						if ( ! empty( $this->p->options[$cm_enabled_key] ) ) {
+							$cm_label_value = SucomUtil::get_locale_opt( $cm_label_key, $this->p->options );
+							if ( ! empty( $cm_label_value ) ) {	// just in case
+								$fields[$id] = $cm_label_value;
+							}
+						} else {
+							unset( $fields[$id] );
+						}
 					}
 				}
 			}
 
 			// loop through each social website option prefix
 			if ( ! empty( $this->p->cf['opt']['cm_prefix'] ) && is_array( $this->p->cf['opt']['cm_prefix'] ) ) {
+
 				foreach ( $this->p->cf['opt']['cm_prefix'] as $id => $opt_pre ) {
 
-					$cm_enabled = 'plugin_cm_'.$opt_pre.'_enabled';
-					$cm_name = 'plugin_cm_'.$opt_pre.'_name';
-					$cm_label = 'plugin_cm_'.$opt_pre.'_label';
+					$cm_enabled_key = 'plugin_cm_'.$opt_pre.'_enabled';
+					$cm_name_key = 'plugin_cm_'.$opt_pre.'_name';
+					$cm_label_key = 'plugin_cm_'.$opt_pre.'_label';
 
 					// not all social websites have a contact fields, so check
-					if ( isset( $this->p->options[$cm_name] ) ) {
-						if ( ! empty( $this->p->options[$cm_enabled] ) && 
-							! empty( $this->p->options[$cm_name] ) && 
-							! empty( $this->p->options[$cm_label] ) ) {
-
-							$fields[$this->p->options[$cm_name]] = $this->p->options[$cm_label];
+					if ( isset( $this->p->options[$cm_name_key] ) ) {
+						if ( ! empty( $this->p->options[$cm_enabled_key] ) && ! empty( $this->p->options[$cm_name_key] ) ) {
+							$cm_label_value = SucomUtil::get_locale_opt( $cm_label_key, $this->p->options );
+							if ( ! empty( $cm_label_value ) ) {	// just in case
+								$fields[$this->p->options[$cm_name_key]] = $cm_label_value;
+							}
 						}
 					}
 				}
@@ -420,39 +430,47 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $fields;
 		}
 
+		public function fb_contact_label( $label ) { 
+			return $label.'<br/><span class="description">'.
+				__( '(not a Facebook Page URL)', 'wpsso' ).'</span>';
+		}
+
 		public function sanitize_submit_cm( $user_id ) {
 
-			if ( ! current_user_can( 'edit_user', $user_id ) )
+			if ( ! current_user_can( 'edit_user', $user_id ) ) {
 				return;
+			}
 
 			foreach ( $this->p->cf['opt']['cm_prefix'] as $id => $opt_pre ) {
+
 				// not all social websites have contact fields, so check
 				if ( isset( $this->p->options['plugin_cm_'.$opt_pre.'_name'] ) ) {
 
-					$cm_enabled = $this->p->options['plugin_cm_'.$opt_pre.'_enabled'];
-					$cm_name = $this->p->options['plugin_cm_'.$opt_pre.'_name'];
-					$cm_label = $this->p->options['plugin_cm_'.$opt_pre.'_label'];
+					$cm_enabled_value = $this->p->options['plugin_cm_'.$opt_pre.'_enabled'];
+					$cm_name_value = $this->p->options['plugin_cm_'.$opt_pre.'_name'];
 
 					// sanitize values only for those enabled contact methods
-					if ( isset( $_POST[$cm_name] ) && ! empty( $cm_enabled ) && ! empty( $cm_name ) && ! empty( $cm_label ) ) {
-						$val = wp_filter_nohtml_kses( $_POST[$cm_name] );
-						if ( ! empty( $val ) ) {
-							switch ( $cm_name ) {
+					if ( isset( $_POST[$cm_name_value] ) && ! empty( $cm_enabled_value ) && ! empty( $cm_name_value ) ) {
+
+						$value = wp_filter_nohtml_kses( $_POST[$cm_name_value] );
+
+						if ( ! empty( $value ) ) {
+							switch ( $cm_name_value ) {
 								case $this->p->options['plugin_cm_skype_name']:
 									// no change
 									break;
 								case $this->p->options['plugin_cm_twitter_name']:
-									$val = SucomUtil::get_at_name( $val );
+									$value = SucomUtil::get_at_name( $value );
 									break;
 								default:
 									// all other contact methods are assumed to be URLs
-									if ( strpos( $val, '://' ) === false ) {
-										$val = '';
+									if ( strpos( $value, '://' ) === false ) {
+										$value = '';
 									}
 									break;
 							}
 						}
-						$_POST[$cm_name] = $val;
+						$_POST[$cm_name_value] = $value;
 					}
 				}
 			}
@@ -499,13 +517,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				if ( $crawler_name === 'pinterest' ) {
-					$val = $this->get_author_meta( $user_id, $this->p->options['p_author_name'] );
+					$value = $this->get_author_meta( $user_id, $this->p->options['p_author_name'] );
 				} else {
-					$val = $this->get_author_website( $user_id, $this->p->options['og_author_field'] );
+					$value = $this->get_author_website( $user_id, $this->p->options['og_author_field'] );
 				}
 
-				if ( ! empty( $val ) ) {	// make sure we don't add empty values
-					$ret[] = $val;
+				if ( ! empty( $value ) ) {	// make sure we don't add empty values
+					$ret[] = $value;
 				}
 			}
 
