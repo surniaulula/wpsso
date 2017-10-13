@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.47.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-10-13 15:50-0600\n"
-"PO-Revision-Date: 2017-10-13 15:51-0600\n"
+"POT-Creation-Date: 2017-10-13 16:43-0600\n"
+"PO-Revision-Date: 2017-10-13 16:43-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3173,83 +3173,83 @@ msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr "Facebook / Open Graph"
 
-#: lib/options.php:276
+#: lib/options.php:268
 msgid "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr "Valeur non-standard trouvé pour l'option '%s' - remise à la valeur par défaut."
 
-#: lib/options.php:353
+#: lib/options.php:345
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr "WordPress n'a pas pu trouver une entrée pour %s dans sa table d'options."
 
-#: lib/options.php:355
+#: lib/options.php:347
 msgid "WordPress returned a non-array value when reading %s from the options table."
 msgstr "WordPress a retourné une valeur non-tableau lors de la lecture de %s dans sa table d'options."
 
-#: lib/options.php:357
+#: lib/options.php:349
 msgid "WordPress returned an empty array when reading %s from the options table."
 msgstr "WordPress a retourné un tableau vide lors de la lecture de %s dans sa table d'options."
 
-#: lib/options.php:359
+#: lib/options.php:351
 msgid "WordPress returned an unknown condition when reading %s from the options table."
 msgstr "WordPress a retourné un état inconnu lors de la lecture de %s dans sa table options."
 
-#: lib/options.php:370
+#: lib/options.php:362
 msgid "The plugin settings have been returned to their default values &mdash; <a href=\"%s\">please review and save the new settings</a>."
 msgstr "Les réglages de l'extension ont été retournée à leurs valeurs par défaut, <a href=\"%s\">s'il vous plaît examiner et sauvegarder les nouveaux réglages</a>."
 
-#: lib/options.php:435
+#: lib/options.php:427
 msgid "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr "Les valeurs d'options '%1$s' et  '%2$s' ont un rapport d'aspect égal à / ou supérieur à %3$s: 1 &mdash;  les options sont remises à leurs valeurs par défaut."
 
-#: lib/options.php:481
+#: lib/options.php:473
 msgid "The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of \"%s\" is not valid."
 msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou moins de longueur - la valeur \"%s\" n'est pas valide."
 
-#: lib/options.php:519
+#: lib/options.php:511
 msgid "The value of option '%s' must be a URL - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être un URL - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:521
+#: lib/options.php:513
 msgid "The value of option '%s' must be a comma-delimited list of URL(s) - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être une liste d'URLs délimitée par des virgules - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:523
+#: lib/options.php:515
 msgid "The value of option '%s' must be numeric - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:525
+#: lib/options.php:517
 msgid "The value of option '%1$s' must be equal to or greather than %2$s - resetting option to default value."
 msgstr "La valeur de l'option '%1$s' doit être égal ou supérieur à %2$s - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:527
+#: lib/options.php:519
 msgid "The value of option '%s' must be blank or numeric - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être vide ou numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:529
+#: lib/options.php:521
 msgid "The value of option '%s' must be alpha-numeric - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être alphanumérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:531
+#: lib/options.php:523
 msgid "The value of option '%s' must be a CSS color code - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être un code de couleur CSS - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:533
+#: lib/options.php:525
 msgid "The value of option '%s' must be a yyyy-mm-dd date - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être une date yyyy-mm-dd - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:535
+#: lib/options.php:527
 msgid "The value of option '%s' must be a hh:mm time - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être une heure hh:mm - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:537
+#: lib/options.php:529
 msgid "The value of option '%s' must be HTML code - resetting option to default value."
 msgstr "La valeur de l'option '%s' doit être du code HTML - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:539
+#: lib/options.php:531
 msgid "The value of option '%s' cannot be an empty string - resetting option to default value."
 msgstr "La valeur de l'option '%s' ne peut pas être un chaine de caractère vide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:789
+#: lib/options.php:781
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
@@ -3591,37 +3591,37 @@ msgctxt "metabox tab"
 msgid "Service APIs"
 msgstr "APIs de service"
 
-#: lib/submenu/advanced.php:67
+#: lib/submenu/advanced.php:75
 msgctxt "metabox tab"
 msgid "Custom Contacts"
 msgstr "Contacts personnalisés"
 
-#: lib/submenu/advanced.php:68
+#: lib/submenu/advanced.php:76
 msgctxt "metabox tab"
 msgid "Built-In Contacts"
 msgstr "Contacts intégrés"
 
-#: lib/submenu/advanced.php:84 lib/submenu/general.php:67
+#: lib/submenu/advanced.php:92 lib/submenu/general.php:67
 msgctxt "metabox tab"
 msgid "Facebook"
 msgstr "Facebook"
 
-#: lib/submenu/advanced.php:85
+#: lib/submenu/advanced.php:93
 msgctxt "metabox tab"
 msgid "Open Graph"
 msgstr "Open Graph"
 
-#: lib/submenu/advanced.php:86 lib/submenu/general.php:70
+#: lib/submenu/advanced.php:94 lib/submenu/general.php:70
 msgctxt "metabox tab"
 msgid "Twitter"
 msgstr "Twitter"
 
-#: lib/submenu/advanced.php:87
+#: lib/submenu/advanced.php:95
 msgctxt "metabox tab"
 msgid "Schema"
 msgstr "Schéma"
 
-#: lib/submenu/advanced.php:88
+#: lib/submenu/advanced.php:96
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr "SEO / autre"
@@ -3969,12 +3969,12 @@ msgid "AIM"
 msgstr "AIM"
 
 #: lib/user.php:490
-msgid "Yahoo IM"
-msgstr "Yahoo IM"
-
-#: lib/user.php:491
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
+
+#: lib/user.php:491
+msgid "Yahoo Messenger"
+msgstr "Yahoo Messenger"
 
 #: lib/util.php:379
 msgid "%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared."
