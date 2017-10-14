@@ -71,7 +71,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'translating plugin contact field labels' );
 				}
-				SucomUtil::transl_key_values( '/^plugin_cm_.*_label$/', $defs, 'wpsso' );
+				SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $defs, 'wpsso' );
 
 				/*
 				 * Define the default Facebook locale and current locale values.

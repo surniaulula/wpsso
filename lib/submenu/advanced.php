@@ -43,7 +43,14 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 		}
 
 		public function show_metabox_plugin() {
+			/*
+			 * Translate contact method field labels for current language.
+			 */
+			SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
+
 			$metabox_id = 'plugin';
+			$table_rows = array();
+
 			$tabs = apply_filters( $this->p->cf['lca'].'_advanced_'.$metabox_id.'_tabs', array(
 				'settings' => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Content and Filters', 'metabox tab', 'wpsso' ),
@@ -52,20 +59,17 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'cache' => _x( 'Cache Settings', 'metabox tab', 'wpsso' ),
 				'apikeys' => _x( 'Service APIs', 'metabox tab', 'wpsso' ),
 			) );
-			$table_rows = array();
+
 			foreach ( $tabs as $key => $title ) {
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key ),
 					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
 						array(), $this->form, false ) );	// $network = false
 			}
+
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_contact_fields() {
-			/*
-			 * Translate contact method field labels for current language.
-			 */
-			SucomUtil::transl_key_values( '/^plugin_cm_.*_label$/', $this->p->options, 'wpsso' );
 
 			$metabox_id = 'cm';
 			$table_rows = array();

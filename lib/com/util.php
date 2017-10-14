@@ -15,6 +15,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		protected $p;
 
+		protected static $cache_wp_plugins = null;
 		protected static $cache_crawler_name = null;		// saved crawler name from user-agent
 		protected static $cache_locale_names = array();		// saved get_locale() values
 		protected static $cache_user_exists = array();		// saved user_exists() values
@@ -793,12 +794,38 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function __construct() {
 		}
 
+		/*
+		 * The WordPress get_plugins() function is very slow, so call it only once and cache its result.
+		 */
+		public static function get_wp_plugins() {
+			if ( self::$cache_wp_plugins !== null ) {
+				return self::$cache_wp_plugins;
+			}
+			if ( ! function_exists( 'get_plugins' ) ) {
+				$plugin_lib = trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
+				if ( file_exists( $plugin_lib ) ) {
+					require_once $plugin_lib;
+				} else {
+					error_log( sprintf( '%1$s error: wordpress library file %2$s is missing and required', __METHOD__, $plugin_lib ) );
+				}
+			}
+			if ( function_exists( 'get_plugins' ) ) {
+				return self::$cache_wp_plugins = get_plugins();
+			} else {
+				error_log( sprintf( '%1$s error: wordpress function %2$s is missing and required', __METHOD__, 'get_plugins()' ) );
+			}
+			return self::$cache_wp_plugins = array();
+		}
+
+		public static function clear_wp_plugins() {
+			self::$cache_wp_plugins = null;
+		}
+
 		public static function get_wp_plugin_dir() {
 			if ( defined( 'WP_PLUGIN_DIR' ) && is_dir( WP_PLUGIN_DIR ) && is_writable( WP_PLUGIN_DIR ) ) {
 				return WP_PLUGIN_DIR;
-			} else {
-				return false;
 			}
+			return false;
 		}
 
 		private static function get_formatted_timezone( $tz_name, $format ) {
@@ -1121,10 +1148,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} elseif ( empty( $plugin_slug ) ) {	// just in case
 				return $cache[$plugin_slug] = false;
 			}
-			if ( ! function_exists( 'get_plugins' ) ) {
-				require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
-			}
-			foreach ( (array) get_plugins() as $plugin_base => $info ) {
+			foreach ( self::get_wp_plugins() as $plugin_base => $info ) {
 				if ( strpos( $plugin_base, $plugin_slug.'/' ) === 0 ) {
 					return $cache[$plugin_slug] = $plugin_base;	// stop here
 				}
@@ -1175,10 +1199,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} elseif ( ! is_file( WP_PLUGIN_DIR.'/'.$plugin_base ) ) {	// check existence of plugin folder
 				return $cache[$plugin_base] = false;
 			}
-			if ( ! function_exists( 'get_plugins' ) ) {
-				require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
-			}
-			$plugins = get_plugins();
+			$plugins = self::get_wp_plugins();
 			if ( ! isset( $plugins[$plugin_base] ) ) {	// check for a valid plugin header
 				return $cache[$plugin_base] = false;
 			}
@@ -1620,7 +1641,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function array_parent_index( array $array, $parent_key = '', $gparent_key = '', &$index = array() ) {
 		        foreach ( $array as $child_key => $value ) {
 				if ( isset( $index[$child_key] ) ) {
-					error_log( __METHOD__.' error: duplicate key '.$child_key.' = '.$index[$child_key] );
+					error_log( sprintf( '%1$s error: duplicate key %2$s = %3$s', __METHOD__, $child_key, $index[$child_key] ) );
 				} elseif ( is_array( $value ) ) {
 					self::array_parent_index( $value, $child_key, $parent_key, $index );
 				} elseif ( $parent_key && $child_key !== $parent_key ) {
