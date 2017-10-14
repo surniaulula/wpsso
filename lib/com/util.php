@@ -1124,7 +1124,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( ! function_exists( 'get_plugins' ) ) {
 				require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
 			}
-			foreach ( (array) get_plugins() as $plugin_base => $info ) {	// call with class to use common cache
+			foreach ( (array) get_plugins() as $plugin_base => $info ) {
 				if ( strpos( $plugin_base, $plugin_slug.'/' ) === 0 ) {
 					return $cache[$plugin_slug] = $plugin_base;	// stop here
 				}
