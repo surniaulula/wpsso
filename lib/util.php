@@ -314,7 +314,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public function add_ptns_to_opts( &$opts = array(), $mixed, $default = 1 ) {
+		/*
+		 * Add options using a key prefix string / array and post type names.
+		 */
+		public function add_ptns_to_opts( array &$opts, $mixed, $default = 1 ) {
 			if ( ! is_array( $mixed ) ) {
 				$mixed = array( $mixed => $default );
 			}

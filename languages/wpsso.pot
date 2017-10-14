@@ -2427,7 +2427,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:412 lib/util.php:1747
+#: lib/messages.php:412 lib/util.php:1750
 msgid "No options available."
 msgstr ""
 
@@ -3758,114 +3758,114 @@ msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/options.php:268
+#: lib/options.php:285
 msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:345
+#: lib/options.php:364
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:347
+#: lib/options.php:366
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:349
+#: lib/options.php:368
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:351
+#: lib/options.php:370
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:362
+#: lib/options.php:381
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:427
+#: lib/options.php:446
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:473
+#: lib/options.php:492
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:511
+#: lib/options.php:530
 msgid ""
 "The value of option '%s' must be a URL - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:513
+#: lib/options.php:532
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:515
+#: lib/options.php:534
 msgid ""
 "The value of option '%s' must be numeric - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:517
+#: lib/options.php:536
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:519
+#: lib/options.php:538
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:521
+#: lib/options.php:540
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:523
+#: lib/options.php:542
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:525
+#: lib/options.php:544
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:527
+#: lib/options.php:546
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:529
+#: lib/options.php:548
 msgid ""
 "The value of option '%s' must be HTML code - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:531
+#: lib/options.php:550
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:781
+#: lib/options.php:800
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
@@ -3914,7 +3914,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:542 lib/util.php:632
+#: lib/post.php:542 lib/util.php:635
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4061,12 +4061,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:147
-#: lib/pro/media/wistia.php:275 lib/util.php:697
+#: lib/pro/media/wistia.php:275 lib/util.php:700
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:150
-#: lib/pro/media/wistia.php:278 lib/util.php:700
+#: lib/pro/media/wistia.php:278 lib/util.php:703
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4635,64 +4635,64 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/util.php:379
+#: lib/util.php:382
 msgid ""
 "%s cached files, transient cache, sortable column meta, and the WordPress "
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:383
+#: lib/util.php:386
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:406
+#: lib/util.php:409
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:488
+#: lib/util.php:491
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:505
+#: lib/util.php:508
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:565
+#: lib/util.php:568
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:620
+#: lib/util.php:623
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:643
+#: lib/util.php:646
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:742
+#: lib/util.php:745
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1774
+#: lib/util.php:1777
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:1778
+#: lib/util.php:1781
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1781
+#: lib/util.php:1784
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:1785
+#: lib/util.php:1788
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

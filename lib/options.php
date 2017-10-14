@@ -54,11 +54,28 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->mark( 'get_defaults filter' );	// start timer
 				}
 
+				/*
+				 * Add options using a key prefix array and post type names.
+				 */
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding options derived from post type names' );
+				}
 				$defs = $this->p->util->add_ptns_to_opts( $defs, array(
 					'plugin_add_to' => 1,
 					'schema_type_for' => 'webpage',
 				) );
 
+				/*
+				 * Translate contact method field labels for current language.
+				 */
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'translating plugin contact field labels' );
+				}
+				SucomUtil::transl_key_values( '/^plugin_cm_.*_label$/', $defs, 'wpsso' );
+
+				/*
+				 * Define the default Facebook locale and current locale values.
+				 */
 				$defs['fb_locale'] = $this->p->og->get_fb_locale( array(), 'default' );
 				if ( ( $locale_key = SucomUtil::get_key_locale( 'fb_locale' ) ) !== 'fb_locale' ) {
 					$defs[$locale_key] = $this->p->og->get_fb_locale( array(), 'current' );
@@ -307,8 +324,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						}
 					}
 					/*
- 					 * Generator meta tags are required for plugin support. If you disable the
-					 * generator meta tags, but requests for plugin support will be denied.
+					 * Please note that generator meta tags are required for plugin support. If you 
+					 * disable the generator meta tags, requests for plugin support will be denied.
 					 */
 					$opts['add_meta_name_generator'] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
 				}
@@ -330,10 +347,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->save_options( $options_name, $opts, $network, $has_diff_options );
 				}
 
+				/*
+				 * Add options using a key prefix array and post type names.
+				 */
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'adding options derived from post type names' );
 				}
-
 				$opts = $this->p->util->add_ptns_to_opts( $opts, array(
 					'plugin_add_to' => 1,
 					'schema_type_for' => 'webpage',
