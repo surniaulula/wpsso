@@ -43,7 +43,7 @@
 
 <p><strong>Advanced meta tag / Schema JSON-LD filter hooks for developers:</strong></p>
 
-<p>WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the core plugin.</p>
+<p>WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the WPSSO Core plugin.</p>
 
 <h3>Quick List of Features</h3>
 
