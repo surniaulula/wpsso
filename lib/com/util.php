@@ -1830,7 +1830,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		// deprecated on 2017/10/13 - check use by extensions before removing
+		// deprecated on 2017/10/13
 		public static function get_locale_opt( $key, array $opts, $mixed = 'current' ) {
 			return self::get_key_value( $key, $opts, $mixed );
 		}
