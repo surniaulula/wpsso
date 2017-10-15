@@ -733,6 +733,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.'.$this->lca.'-notice.update-nag {
 					margin-top:0;
 				}
+				.toplevel_page_gutenberg .'.$this->lca.'-notice.update-nag {
+					box-sizing: border-box;
+					margin:50px 350px 0 70px;
+				}
 				.'.$this->lca.'-notice.update-nag > div {
 					display:block;
 					margin:0 auto;
