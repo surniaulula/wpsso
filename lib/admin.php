@@ -56,6 +56,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
+			add_action( 'activated_plugin', array( &$this, 'reset_check_head_count' ), 10 );
+			add_action( 'after_switch_theme', array( &$this, 'reset_check_head_count' ), 10 );
+			add_action( 'upgrader_process_complete', array( &$this, 'reset_check_head_count' ), 10 );
+
+			add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_attributes' ), 20 );
+			add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ), 20 );
+
 			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
 				// nothing to do
 			} else {
@@ -68,12 +75,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				// hook in_admin_header to allow for setting changes, plugin activation / loading, etc.
 				add_action( 'in_admin_header', array( &$this, 'conflict_warnings' ), 10 );
 				add_action( 'in_admin_header', array( &$this, 'required_notices' ), 20 );
-
-				add_action( 'after_switch_theme', array( &$this, 'reset_check_head_count' ), 10 );
-				add_action( 'upgrader_process_complete', array( &$this, 'reset_check_head_count' ), 10 );
-
-				add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_attributes' ), 20 );
-				add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ), 20 );
 
 				add_filter( 'current_screen', array( &$this, 'maybe_show_screen_notices' ) );
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
