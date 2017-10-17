@@ -1649,8 +1649,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			foreach ( array( 
-				'event_start_date_iso' => 'schema_event_start',
-				'event_end_date_iso' => 'schema_event_end',
+				'event_start_date_iso' => 'schema_event_start',	// date, time, timezone
+				'event_end_date_iso' => 'schema_event_end',	// date, time, timezone
 			) as $opt_key => $md_pre ) {
 
 				$event_date = $mod['obj']->get_options( $mod['id'], $md_pre.'_date' );
@@ -1688,12 +1688,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$have_offers = false;
+
 			foreach ( range( 0, WPSSO_SCHEMA_EVENT_OFFERS_MAX - 1, 1 ) as $key_num ) {
 
 				$offer_opts = apply_filters( $wpsso->cf['lca'].'_get_event_offer_options', false, $mod, $event_id, $key_num );
 
 				if ( ! is_array( $offer_opts ) ) {
+
 					$offer_opts = array();
+
 					foreach ( array( 
 						'offer_name' => 'schema_event_offer_name',
 						'offer_url' => 'schema_event_offer_url',
@@ -1705,6 +1708,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
+				// must have at least an offer name and price
 				if ( isset( $offer_opts['offer_name'] ) && isset( $offer_opts['offer_price'] ) ) {
 
 					if ( ! isset( $event_opts['offer_url'] ) ) {
