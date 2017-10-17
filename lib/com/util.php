@@ -896,7 +896,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::get_formatted_array( $cache, $idx, $add_none );
 		}
 
-		public static function get_currency_symbols( $idx = false, $add_none = false ) {
+		public static function get_currency_symbols( $idx = false, $add_none = false, $decode = false ) {
 			return self::get_formatted_array( self::$currency_symbols, $idx, $add_none );
 		}
 
