@@ -372,6 +372,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.47.1 (2017/10/17)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None 
+* *Bugfixes*
+	* Fixed The Events Calendar module to return a 0 for an empty price field (Pro version).
+* *Developer Notes*
+	* None
+
 **Version 3.47.0 (2017/10/15)**
 
 * *New Features*
@@ -779,6 +790,10 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 	* None
 
 == Upgrade Notice ==
+
+= 3.47.1 =
+
+(2017/10/17) Fixed The Events Calendar module to return a 0 for an empty price field (Pro version).
 
 = 3.47.0 =
 
