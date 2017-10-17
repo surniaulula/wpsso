@@ -875,8 +875,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( $format === '%2$s' ) {	// optimize and get existing format
 					$cache[$format] =& self::$currencies;
 				} else {
-					foreach ( self::$currencies as $key => $name ) {
-						$cache[$format][$key] = sprintf( $format, $key, $name );
+					foreach ( self::$currencies as $key => $value ) {
+						$cache[$format][$key] = sprintf( $format, $key, $value );
 					}
 				}
 				asort( $cache[$format] );
@@ -888,7 +888,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			static $cache = null;	// single dimension array
 			if ( ! isset( $cache ) ) {
 				$cache = array();
-				foreach ( self::$currencies as $key => $name ) {
+				foreach ( self::$currencies as $key => $value ) {
 					$cache[$key] = $key;
 				}
 				asort( $cache );
@@ -897,7 +897,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_currency_symbols( $idx = false, $add_none = false, $decode = false ) {
-			return self::get_formatted_array( self::$currency_symbols, $idx, $add_none );
+			if ( $decode ) {
+				$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
+				static $cache = null;	// single dimension array
+				if ( ! isset( $cache ) ) {
+					$cache = array();
+					foreach ( self::$currency_symbols as $key => $value ) {
+						$cache[$key] = html_entity_decode( self::decode_utf8( $value ), ENT_QUOTES, $charset );
+					}
+					asort( $cache );
+				}
+				return self::get_formatted_array( $cache, $idx, $add_none );
+			} else {
+				return self::get_formatted_array( self::$currency_symbols, $idx, $add_none );
+			}
 		}
 
 		public static function get_dashicons( $idx = false, $add_none = false ) {
