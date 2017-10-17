@@ -62,33 +62,39 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				return;
 
 			if ( is_int( $class_idx ) ) {
-				if ( $function_idx === false )
+				if ( $function_idx === false ) {
 					$function_idx = $class_idx;
+				}
 				$class_idx++;
 			}
 
-			if ( is_int( $function_idx ) )
+			if ( is_int( $function_idx ) ) {
 				$function_idx++;
-			elseif ( $function_idx === false )
+			} elseif ( $function_idx === false ) {
 				$function_idx = 2;
+			}
 
 			$this->log( 'args '.self::pretty_array( $arr, true ), $class_idx, $function_idx );
 		}
 
 		public function log_arr( $prefix, $mixed, $class_idx = 1, $function_idx = false ) {
-			if ( $this->enabled !== true )
+
+			if ( $this->enabled !== true ) {
 				return;
+			}
 
 			if ( is_int( $class_idx ) ) {
-				if ( $function_idx === false )
+				if ( $function_idx === false ) {
 					$function_idx = $class_idx;
+				}
 				$class_idx++;
 			}
 
-			if ( is_int( $function_idx ) )
+			if ( is_int( $function_idx ) ) {
 				$function_idx++;
-			elseif ( $function_idx === false )
+			} elseif ( $function_idx === false ) {
 				$function_idx = 2;
+			}
 
 			if ( is_object( $mixed ) ) {
 				$prefix = trim( $prefix.' '.get_class( $mixed ).' object vars' );

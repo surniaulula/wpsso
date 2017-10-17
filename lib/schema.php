@@ -1590,7 +1590,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;
 		}
 
-		public static function add_single_event_data( &$json_data, $mod, $event_id = false, $list_element = false ) {
+		public static function add_single_event_data( &$json_data, array $mod, $event_id = false, $list_element = false ) {
 
 			if ( $event_id === 'none' ) {
 				return 0;
@@ -1600,16 +1600,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$sharing_url = $wpsso->util->get_sharing_url( $mod );
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'adding single event data for '.$event_id );
+				$wpsso->debug->log( 'adding single event data for mod id '.$mod['id'].
+					( $event_id !== false ? ' / event id '.$event_id : '' ) );
 			}
 
 			static $cache = array();
 
 			if ( isset( $cache[$mod['name']][$mod['id']][$event_id] ) ) {
+
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'using static cache data for event id '.$event_id );
+					$wpsso->debug->log( 'using static cache data for mod id '.$mod['id'].
+						( $event_id !== false ? ' / event id '.$event_id : '' ) );
 				}
+
 				$ret =& $cache[$mod['name']][$mod['id']][$event_id];	// use shorter variable name
+
 				if ( $ret === false ) {
 					return 0;
 				} else {
@@ -1623,8 +1628,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'creating static cache data for event id '.$event_id );
+				$wpsso->debug->log( 'creating static cache data for mod id '.$mod['id'].
+					( $event_id !== false ? ' / event id '.$event_id : '' ) );
 			}
+
 			$cache[$mod['name']][$mod['id']][$event_id] = false;	// create the array element (false by default)
 			$ret =& $cache[$mod['name']][$mod['id']][$event_id];	// use shorter variable name
 
@@ -1637,10 +1644,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			// look for custom event date and time
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'checking for custom event date and time' );
+			}
+
 			foreach ( array( 
-				'event_start_date' => 'schema_event_start',
-				'event_end_date' => 'schema_event_end',
+				'event_start_date_iso' => 'schema_event_start',
+				'event_end_date_iso' => 'schema_event_end',
 			) as $opt_key => $md_pre ) {
 
 				$event_date = $mod['obj']->get_options( $mod['id'], $md_pre.'_date' );
@@ -1650,11 +1660,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				if ( empty( $event_date ) && empty( $event_time ) ) {
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'skipping event: event date and time are empty' );
+					}
 					continue;	// nothing to do
 				} elseif ( ! empty( $event_date ) && empty( $event_time ) ) {	// date with no time
 					$event_time = '00:00';
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'event time empty: using event time '.$event_time );
+					}
 				} elseif ( empty( $event_date ) && ! empty( $event_time ) ) {	// time with no date
 					$event_date = gmdate( 'Y-m-d', time() );
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'event date empty: using event date '.$event_date );
+					}
 				}
 
 				if ( ! $event_timezone = $mod['obj']->get_options( $mod['id'], $md_pre.'_timezone' ) ) {
@@ -1664,31 +1683,44 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$event_opts[$opt_key] = date_format( date_create( $event_date.' '.$event_time.' '.$event_timezone ), 'c' );
 			}
 
-			// look for custom event offers
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'checking for custom event offers' );
+			}
+
 			$have_offers = false;
 			foreach ( range( 0, WPSSO_SCHEMA_EVENT_OFFERS_MAX - 1, 1 ) as $key_num ) {
 
-				$offer_opts = array();
+				$offer_opts = apply_filters( $wpsso->cf['lca'].'_get_event_offer_options', false, $mod, $event_id, $key_num );
 
-				foreach ( array( 
-					'offer_name' => 'schema_event_offer_name',
-					'offer_price' => 'schema_event_offer_price',
-					'offer_price_currency' => 'schema_event_offer_currency',
-					'offer_availability' => 'schema_event_offer_avail',
-				) as $opt_key => $md_pre ) {
-					$offer_opts[$opt_key] = $mod['obj']->get_options( $mod['id'], $md_pre.'_'.$key_num );
+				if ( ! is_array( $offer_opts ) ) {
+					$offer_opts = array();
+					foreach ( array( 
+						'offer_name' => 'schema_event_offer_name',
+						'offer_url' => 'schema_event_offer_url',
+						'offer_price' => 'schema_event_offer_price',
+						'offer_price_currency' => 'schema_event_offer_currency',
+						'offer_availability' => 'schema_event_offer_avail',
+					) as $opt_key => $md_pre ) {
+						$offer_opts[$opt_key] = $mod['obj']->get_options( $mod['id'], $md_pre.'_'.$key_num );
+					}
 				}
 
 				if ( isset( $offer_opts['offer_name'] ) && isset( $offer_opts['offer_price'] ) ) {
 
-					$offer_opts['offer_url'] = $sharing_url;
-
-					if ( isset( $event_opts['event_start_date'] ) ) {
-						$offer_opts['offer_valid_from'] = $event_opts['event_start_date'];
+					if ( ! isset( $event_opts['offer_url'] ) ) {
+						$offer_opts['offer_url'] = $sharing_url;
 					}
 
-					if ( isset( $event_opts['event_start_date'] ) ) {
-						$offer_opts['offer_valid_through'] = $event_opts['event_end_date'];
+					if ( ! isset( $offer_opts['offer_valid_from'] ) ) {
+						if ( ! empty( $event_opts['event_start_date_iso'] ) ) {
+							$offer_opts['offer_valid_from'] = $event_opts['event_start_date_iso'];
+						}
+					}
+
+					if ( ! isset( $offer_opts['offer_valid_through'] ) ) {
+						if ( isset( $event_opts['event_end_date_iso'] ) ) {
+							$offer_opts['offer_valid_through'] = $event_opts['event_end_date_iso'];
+						}
 					}
 
 					if ( $have_offers === false ) {
@@ -1741,12 +1773,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			self::add_data_itemprop_from_assoc( $ret, $event_opts, array(
-				'startDate' => 'event_start_date',
-				'endDate' => 'event_end_date',
+				'startDate' => 'event_start_date_iso',
+				'endDate' => 'event_end_date_iso',
 			) );
 
-			if ( ! empty( $event_opts['event_offers'] ) &&
-				is_array( $event_opts['event_offers'] ) ) {
+			if ( ! empty( $event_opts['event_offers'] ) && is_array( $event_opts['event_offers'] ) ) {
 
 				foreach ( $event_opts['event_offers'] as $event_offer ) {
 

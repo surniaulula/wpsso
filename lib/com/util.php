@@ -2395,7 +2395,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function encode_utf8( $decoded ) {
-			if ( ! mb_detect_encoding( $decoded, 'UTF-8') == 'UTF-8' ) {
+			if ( mb_detect_encoding( $decoded, 'UTF-8') !== 'UTF-8' ) {
 				$encoded = utf8_encode( $decoded );
 			} else {
 				$encoded = $decoded;
