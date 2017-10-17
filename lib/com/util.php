@@ -854,7 +854,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				// nothing to do
 			} elseif ( $idx === false ) {
 				// nothing to do
-			} elseif ( $idx === true ) {	// sort by value
+			} elseif ( $idx === true ) {		// sort by value
 				asort( $array );
 			} elseif ( isset( $array[$idx] ) ) {	// return a specific dashicon label
 				return $array[$idx];
@@ -862,15 +862,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return null;
 			}
 
-			if ( $add_none === true ) {	// prefix arrau with 'none'
-				$array = array( 'none' => 'none' ) + $array;	// maintain numeric index
+			if ( $add_none === true ) {		// prefix arrau with 'none'
+				$array = array( 'none' => 'none' ) + $array;	// maintains numeric index
 			}
 
 			return $array;
 		}
 
 		public static function get_currencies( $idx = false, $add_none = false, $format = '%2$s (%1$s)' ) {
-			static $cache = array();	// array of arrays, indexed by $format
+			static $cache = array();		// array of arrays, indexed by $format
 			if ( ! isset( $cache[$format] ) ) {
 				if ( $format === '%2$s' ) {	// optimize and get existing format
 					$cache[$format] =& self::$currencies;
@@ -879,19 +879,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$cache[$format][$key] = sprintf( $format, $key, $value );
 					}
 				}
-				asort( $cache[$format] );
+				asort( $cache[$format] );	// sort by value
 			}
 			return self::get_formatted_array( $cache[$format], $idx, $add_none );
 		}
 
 		public static function get_currency_abbrev( $idx = false, $add_none = false ) {
-			static $cache = null;	// single dimension array
+			static $cache = null;
 			if ( ! isset( $cache ) ) {
 				$cache = array();
 				foreach ( self::$currencies as $key => $value ) {
 					$cache[$key] = $key;
 				}
-				asort( $cache );
+				ksort( $cache );		// sort by key (same as value)
 			}
 			return self::get_formatted_array( $cache, $idx, $add_none );
 		}
@@ -899,13 +899,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_currency_symbols( $idx = false, $add_none = false, $decode = false ) {
 			if ( $decode ) {
 				$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
-				static $cache = null;	// single dimension array
+				static $cache = null;
 				if ( ! isset( $cache ) ) {
 					$cache = array();
 					foreach ( self::$currency_symbols as $key => $value ) {
 						$cache[$key] = html_entity_decode( self::decode_utf8( $value ), ENT_QUOTES, $charset );
 					}
-					asort( $cache );
+					ksort( $cache );	// sort by key
 				}
 				return self::get_formatted_array( $cache, $idx, $add_none );
 			} else {
