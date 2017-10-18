@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_vid_title':
 						case 'tooltip-meta-og_vid_desc':
-							$text = sprintf( __( 'The %1$s video API modules include the video name / title and description <em>when available</em>.', 'wpsso' ), $info['short_pro'] ).' '.__( 'The video name / title and description text is used for Schema JSON-LD markup (extension plugin required), which can be read by both Google and Pinterest.', 'wpsso' );
+							$text = sprintf( __( 'The %1$s video API modules include the video name / title and description <em>when available</em>.', 'wpsso' ), $info['name_pro'] ).' '.__( 'The video name / title and description text is used for Schema JSON-LD markup (extension plugin required), which can be read by both Google and Pinterest.', 'wpsso' );
 							break;
 
 						case 'tooltip-meta-og_vid_max':
@@ -607,7 +607,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_filter_lang':
-							$text = $info['short_pro'].' can use the WordPress locale to select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags'.( empty( $this->p->avail['p_ext']['ssb'] ) ? '' : ', along with the Google, Facebook, and Twitter social sharing buttons' ).'. If your website is available in multiple languages, this can be a useful feature. Uncheck this option to ignore the WordPress locale and always use the configured language.'; 
+							$text = $info['name_pro'].' can use the WordPress locale to select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags'.( empty( $this->p->avail['p_ext']['ssb'] ) ? '' : ', along with the Google, Facebook, and Twitter social sharing buttons' ).'. If your website is available in multiple languages, this can be a useful feature. Uncheck this option to ignore the WordPress locale and always use the configured language.'; 
 							break;
 
 						case 'tooltip-plugin_create_wp_sizes':
@@ -625,7 +625,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_upscale_images':
 
-							$text = __( 'WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals.', 'wpsso' ).' '.__( 'Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites.', 'wpsso' ).' '.sprintf( __( '%1$s includes a feature that allows upscaling of WordPress Media Library images for %2$s image sizes (up to a maximum upscale percentage).', 'wpsso' ), $info['short_pro'], $info['short'] ).' <strong>'.__( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ).'</strong>';
+							$text = __( 'WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals.', 'wpsso' ).' '.__( 'Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites.', 'wpsso' ).' '.sprintf( __( '%1$s includes a feature that allows upscaling of WordPress Media Library images for %2$s image sizes (up to a maximum upscale percentage).', 'wpsso' ), $info['name_pro'], $info['short'] ).' <strong>'.__( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ).'</strong>';
 
 							break;
 
@@ -633,7 +633,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$upscale_max = WpssoConfig::$cf['opt']['defaults']['plugin_upscale_img_max'];	// use original un-filtered value
 
-							$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info['short'], $info['short_pro'], $upscale_max ).' '.__( 'If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled.', 'wpsso' );
+							$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info['short'], $info['name_pro'], $upscale_max ).' '.__( 'If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled.', 'wpsso' );
 
 							break;
 
@@ -1128,9 +1128,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$um_info = $this->p->cf['plugin']['wpssoum'];
 	
-							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['short_pro'] ).' ';
+							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['name_pro'] ).' ';
 	
-							$text .= __( 'Enter the Authentication ID(s) on this settings page to upgrade the Free version and enable Pro version updates.', 'wpsso' ).' '.sprintf( __( 'The %1$s Free extension must be installed and active in order to check for Pro version updates, and a licensed %2$s plugin is required to use any of its Pro extensions.', 'wpsso' ), $um_info['name'], $info['short_pro'] ).'</blockquote>';
+							$text .= __( 'Enter the Authentication ID(s) on this settings page to upgrade the Free version and enable Pro version updates.', 'wpsso' ).' '.sprintf( __( 'The %1$s Free extension must be installed and active in order to check for Pro version updates, and a licensed %2$s plugin is required to use any of its Pro extensions.', 'wpsso' ), $um_info['name'], $info['name_pro'] ).'</blockquote>';
 
 							break;
 	
@@ -1141,7 +1141,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
 								_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' ) );
 
-							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['short_pro'] ).' ';
+							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['name_pro'] ).' ';
 
 							$text .= sprintf( __( 'You may enter the Authentication IDs on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
 
@@ -1409,8 +1409,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 * Misc sidebox messages
 			 */
 			} elseif ( strpos( $idx, 'column-' ) === 0 ) {
+
 				switch ( $idx ) {
+
 					case 'column-purchase-pro':
+
 						$text = '<p>'.sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info['short_pro'] ).'</p>';
 						$text .= '<ul>';
 						$text .= '<li>'.sprintf( __( '%s options for posts, pages, custom post types, terms (categories, tags, and custom taxonomies), and user profiles.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) ).'</li>';
@@ -1427,14 +1430,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 
 					case 'column-help-support':
+
 						$text = '<p>'.sprintf( __( '<strong>The continued development of %1$s is driven by user requests</strong> &mdash; we welcome all your comments and suggestions!', 'wpsso' ), $info['short'] ).'</p>';
 						break;
 
 					case 'column-rate-review':
+
 						$text = '<p>'.__( '<strong>Great ratings are a terrific way to encourage plugin developers</strong> &mdash; and it only takes a minute (or less).', 'wpsso' ).' ;-)</p><p>'.__( 'Please encourage us by rating the plugins you use.', 'wpsso' ).'</p>';
 						break;
 
 					default:
+
 						$text = apply_filters( $lca.'_messages_side', $text, $idx, $info );
 						break;
 				}

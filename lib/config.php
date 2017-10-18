@@ -15,6 +15,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static $cf = array(
 			'lca' => 'wpsso',			// lowercase acronym
+			'pkg' => 'WPSSO',
 			'expire' => array(
 				'admin_css' => DAY_IN_SECONDS,	// 1 day
 				'readme_txt' => DAY_IN_SECONDS,	// 1 day
@@ -27,7 +28,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpsso' => array(
 					'version' => '3.47.1',		// plugin version
 					'opt_version' => '558',		// increment when changing default options
-					'short' => 'WPSSO',		// short plugin name
+					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
 					'slug' => 'wpsso',
