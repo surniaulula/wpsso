@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.47.1',		// plugin version
+					'version' => '3.47.2-dev.1',		// plugin version
 					'opt_version' => '558',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
@@ -1119,6 +1119,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'stable' => '/^[0-9][0-9\.\+\-]+$/',
 				),
 			),
+			'php' => array(				// php
+				'label' => 'PHP',
+				'min_version' => '5.3',		// hard limit - deactivate the plugin when activating
+				'rec_version' => '5.6',		// soft limit - issue warning if lower version found
+				'version_url' => 'http://php.net/supported-versions.php',
+				'extensions' => array(
+					'curl' => 'Client URL Library (cURL)',
+					'json' => 'JavaScript Object Notation (JSON)',
+					'mbstring' => 'Multibyte String',
+					'simplexml' => 'SimpleXML',
+				),
+			),
 			'wp' => array(				// wordpress
 				'label' => 'WordPress',
 				/*
@@ -1163,17 +1175,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 			),
-			'php' => array(				// php
-				'label' => 'PHP',
-				'min_version' => '5.3',		// hard limit - deactivate the plugin when activating
-				'rec_version' => '5.6',		// soft limit - issue warning if lower version found
-				'version_url' => 'http://php.net/supported-versions.php',
-				'extensions' => array(
-					'curl' => 'Client URL Library (cURL)',
-					'json' => 'JavaScript Object Notation (JSON)',
-					'mbstring' => 'Multibyte String',
-					'simplexml' => 'SimpleXML',
-				),
+			'jquery-qtip' => array(			// http://qtip2.com/download
+				'label' => 'jQuery qTip',
+				'version' => '3.0.3',
+			),
+			'jquery-ui' => array(			// https://developers.google.com/speed/libraries/
+				'label' => 'jQuery UI',
+				'version' => '1.12.1',
 			),
 			'menu' => array(
 				'title' => 'SSO',		// menu title

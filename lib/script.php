@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			// http://qtip2.com/download
 			wp_register_script( 'jquery-qtip', 
 				WPSSO_URLPATH.'js/ext/jquery-qtip.min.js', 
-					array( 'jquery' ), '3.0.3', true );
+					array( 'jquery' ), $this->p->cf['jquery-qtip']['version'], true );
 
 			wp_register_script( 'sucom-settings-page', 
 				WPSSO_URLPATH.'js/com/jquery-settings-page.min.js', 

@@ -39,13 +39,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			// https://developers.google.com/speed/libraries/
 			wp_register_style( 'jquery-ui.js',
-				'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css',
-					array(), '1.11.4' );
+				'https://ajax.googleapis.com/ajax/libs/jqueryui/'.
+					$this->p->cf['jquery-ui']['version'].'/themes/smoothness/jquery-ui.css',
+						array(), $this->p->cf['jquery-ui']['version'] );
 
 			// http://qtip2.com/download
 			wp_register_style( 'jquery-qtip.js',
 				WPSSO_URLPATH.'css/ext/jquery-qtip.min.css',
-					array(), '3.0.3' );
+					array(), $this->p->cf['jquery-qtip']['version'] );
 
 			wp_register_style( 'sucom-settings-table',
 				WPSSO_URLPATH.'css/com/settings-table.min.css',

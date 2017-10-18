@@ -14,8 +14,9 @@ class SuextParseReadme {
 
 	function __construct( &$debug = false ) {
 
-		if ( ! empty( $this->debug->enabled ) )
+		if ( ! empty( $this->debug->enabled ) ) {
 			$this->debug->mark();
+		}
 	}
 
 	function parse_readme( $file ) {
