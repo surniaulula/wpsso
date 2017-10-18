@@ -372,6 +372,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.47.2-dev.1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Updated the Google jQuery UI CSS to version 1.12.1.
+
 **Version 3.47.1 (2017/10/17)**
 
 * *New Features*
