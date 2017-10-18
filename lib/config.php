@@ -15,7 +15,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static $cf = array(
 			'lca' => 'wpsso',			// lowercase acronym
-			'pkg' => 'WPSSO',
 			'expire' => array(
 				'admin_css' => DAY_IN_SECONDS,	// 1 day
 				'readme_txt' => DAY_IN_SECONDS,	// 1 day

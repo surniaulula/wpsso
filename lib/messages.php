@@ -24,6 +24,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 
 		public function get( $idx = false, $info = array() ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
 					'idx' => $idx,
@@ -34,25 +35,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			if ( is_string( $info ) ) {
 				$text = $info;
 				$info = array( 'text' => $text );
-			} else $text = isset( $info['text'] ) ?
-				$info['text'] : '';
+			} else {
+				$text = isset( $info['text'] ) ? $info['text'] : '';
+			}
 
 			$idx = sanitize_title_with_dashes( $idx );
 
-			/*
-			 * Define some basic values that can be used in any message text.
-			 */
-			$info['lca'] = $lca = isset( $info['lca'] ) ?	// wpsso, wpssoum, etc.
-				$info['lca'] : $this->p->cf['lca'];
+			$info['lca'] = $lca = isset( $info['lca'] ) ? $info['lca'] : $this->p->cf['lca'];	// wpsso, wpssoum, etc.
 
-			// an array of plugin urls (download, purchase, etc.)
-			$url = isset( $this->p->cf['plugin'][$lca]['url'] ) ?
+			$url = isset( $this->p->cf['plugin'][$lca]['url'] ) ?	// an array of plugin urls (download, purchase, etc.)
 				$this->p->cf['plugin'][$lca]['url'] : array();
 
 			$url['purchase'] = empty( $url['purchase'] ) ?
 				'' : add_query_arg( 'utm_source', $idx, $url['purchase'] );
 
 			foreach ( array( 'short', 'name', 'version' ) as $key ) {
+
 				if ( ! isset( $info[$key] ) ) {
 					if ( ! isset( $this->p->cf['plugin'][$lca][$key] ) ) {	// just in case
 						$info[$key] = null;
@@ -66,7 +64,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$info[$key.'_pro_purchase'] = empty( $url['purchase'] ) ?
 					$info[$key.'_pro'] : '<a href="'.$url['purchase'].'">'.$info[$key.'_pro'].'</a>';
 			}
-
 
 			$fb_recommends = __( 'Facebook has published a preference for Open Graph image dimensions of 1200x630px cropped (for retina and high-PPI displays), 600x315px cropped as a minimum (the default settings value), and ignores images smaller than 200x200px.', 'wpsso' );
 
@@ -1130,7 +1127,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 	
 							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['name_pro'] ).' ';
 	
-							$text .= __( 'Enter the Authentication ID(s) on this settings page to upgrade the Free version and enable Pro version updates.', 'wpsso' ).' '.sprintf( __( 'The %1$s Free extension must be installed and active in order to check for Pro version updates, and a licensed %2$s plugin is required to use any of its Pro extensions.', 'wpsso' ), $um_info['name'], $info['name_pro'] ).'</blockquote>';
+							$text .= __( 'Enter each Authentication ID on this settings page to upgrade the Free version and enable Pro version updates.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'The %1$s Free extension must be installed and active in order to check for Pro version updates, and a licensed %2$s plugin is required to use any of its Pro extensions.', 'wpsso' ), $um_info['name'], $info['name_pro'] ).'</blockquote>';
 
 							break;
 	
