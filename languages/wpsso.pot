@@ -1324,78 +1324,78 @@ msgstr ""
 #: lib/config-gettext-extract.php:120
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add a user locale / language / region selector in the "
-"WordPress admin back-end and front-end toolbar menus."
+"WPSSO Core extension to add a user locale / language / region selector in "
+"the WordPress admin back-end and front-end toolbar menus."
 msgstr ""
 
 #: lib/config-gettext-extract.php:121
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add CSS Twitter-style quoted text with a Tweet share link "
-"to post and page content (uses easily customized CSS)."
+"WPSSO Core extension to add CSS Twitter-style quoted text with a Tweet share "
+"link to post and page content (uses easily customized CSS)."
 msgstr ""
 
 #: lib/config-gettext-extract.php:122
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add ratings and reviews for WordPress comments, with "
+"WPSSO Core extension to add ratings and reviews for WordPress comments, with "
 "Aggregate Rating meta tags and optional Schema Review markup."
 msgstr ""
 
 #: lib/config-gettext-extract.php:123
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add Ridiculously Responsive (SVG) Social Sharing Buttons "
-"in your content, excerpts, CSS sidebar, widget, shortcode, etc."
+"WPSSO Core extension to add Ridiculously Responsive (SVG) Social Sharing "
+"Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc."
 msgstr ""
 
 #: lib/config-gettext-extract.php:124
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add Schema JSON-LD / SEO markup for Articles, Events, "
-"Local Business, Products, Recipes, Reviews + many more."
+"WPSSO Core extension to add Schema JSON-LD / SEO markup for Articles, "
+"Events, Local Business, Products, Recipes, Reviews + many more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:125
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to add Social Sharing Buttons with support for hashtags, "
-"short URLs, bbPress, BuddyPress, WooCommerce, and much more."
+"WPSSO Core extension to add Social Sharing Buttons with support for "
+"hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:126
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to manage Organizations and additional Schema Article / "
+"WPSSO Core extension to manage Organizations and additional Schema Article / "
 "Event properties (Publisher, Organizer, Performer, etc.)."
 msgstr ""
 
 #: lib/config-gettext-extract.php:127
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to provide Apple Store / iTunes and Google Play App meta "
-"tags for Apple's mobile Safari and Twitter's App Card."
+"WPSSO Core extension to provide Apple Store / iTunes and Google Play App "
+"meta tags for Apple's mobile Safari and Twitter's App Card."
 msgstr ""
 
 #: lib/config-gettext-extract.php:128
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to provide Pinterest Place, Facebook / Open Graph Location, "
-"Schema Local Business, and Local SEO meta tags."
+"WPSSO Core extension to provide Pinterest Place, Facebook / Open Graph "
+"Location, Schema Local Business, and Local SEO meta tags."
 msgstr ""
 
 #: lib/config-gettext-extract.php:129
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to provide updates for the WPSSO Core Pro plugin and its Pro "
-"extensions."
+"WPSSO Core extension to provide updates for the WPSSO Core Pro plugin and "
+"its Pro extensions."
 msgstr ""
 
 #: lib/config-gettext-extract.php:130
 msgctxt "plugin description"
 msgid ""
-"WPSSO extension to remove outdated / incomplete Schema Microdata, leaving "
-"the Google recommended Schema JSON-LD markup untouched."
+"WPSSO Core extension to remove outdated / incomplete Schema Microdata, "
+"leaving the Google recommended Schema JSON-LD markup untouched."
 msgstr ""
 
 #: lib/config-gettext-extract.php:131
