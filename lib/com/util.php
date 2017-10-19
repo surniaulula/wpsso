@@ -2578,15 +2578,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *      'article#tech:no_load' => 'Item Type TechArticle',
 		 */
 		public static function get_lib_stub_action( $lib_id ) {
+
 			if ( ( $pos = strpos( $lib_id, ':' ) ) !== false ) {
 				$action = substr( $lib_id, $pos + 1 );
 				$lib_id = substr( $lib_id, 0, $pos );
-			} else $action = false;
+			} else {
+				$action = false;
+			}
 
 			if ( ( $pos = strpos( $lib_id, '#' ) ) !== false ) {
 				$stub = substr( $lib_id, $pos + 1 );
 				$lib_id = substr( $lib_id, 0, $pos );
-			} else $stub = false;
+			} else {
+				$stub = false;
+			}
 
 			return array( $lib_id, $stub, $action );
 		}

@@ -28,7 +28,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		public function get_avail() {
 
-error_log( 'RUNNING get_avail' );
 			$avail = array();
 			$is_admin = is_admin();
 
