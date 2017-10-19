@@ -4740,8 +4740,8 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "Automatically create complete & accurate meta tags and Schema markup from "
-"your content for social sharing, social media / SMO, search / SEO / rich "
-"cards, and more."
+"your content for social sharing, social media / SMO, Google Rich Cards / "
+"SEO, and more."
 msgstr ""
 
 #. Author of the plugin/theme
