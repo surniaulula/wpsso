@@ -17,7 +17,7 @@
 
 <p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup:</strong></p>
 
-<p>WPSSO includes Facebook / Open Graph / Twitter Cards / Pinterest Rich Pin / Google / SEO / Rich Card / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.</p>
+<p>WPSSO includes Facebook / Open Graph / Twitter Cards / Pinterest Rich Pins / Google Rich Cards / SEO / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.</p>
 
 <p><strong>WPSSO uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
@@ -35,11 +35,11 @@
 
 <p>WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
 
-<p><strong>WPSSO is <em>super fast</em> and coded for performance:</strong></p>
+<p><strong>WPSSO is <em>incredibly fast</em> and coded for performance:</strong></p>
 
-<p>WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light.</p>
+<p>WPSSO Core and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light.</p>
 
-<p>WPSSO and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3 or better required).</p>
+<p>WPSSO Core and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3 or better required).</p>
 
 <p><strong>Advanced meta tag / Schema JSON-LD filter hooks for developers:</strong></p>
 
@@ -136,7 +136,7 @@
 
 <p><img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png"></p>
 
-<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Includes a Social and Search Optimization metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social and Search Optimization metabox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google / SEO / Rich Card / Twitter Card descriptions, along with the shared image and/or video.</p>
+<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Includes a Social and Search Optimization metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social and Search Optimization metabox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pins / Google Rich Cards / SEO / Twitter Card descriptions, along with the shared image and/or video.</p>
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Fully renders content (including shortcodes) for accurate description texts and embedded video detection.</p>
 

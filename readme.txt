@@ -21,7 +21,7 @@ Automatically create complete meta tags and Schema markup from your content for 
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
-WPSSO includes Facebook / Open Graph / Twitter Cards / Pinterest Rich Pin / Google / SEO / Rich Card / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
+WPSSO includes Facebook / Open Graph / Twitter Cards / Pinterest Rich Pins / Google Rich Cards / SEO / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
 
 **WPSSO uses your *existing content* for meta tags and Schema markup:**
 
@@ -39,11 +39,11 @@ WPSSO provides a specific image for the Pinterest Pin It button, excludes non-re
 
 WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
 
-**WPSSO is *super fast* and coded for performance:**
+**WPSSO is *incredibly fast* and coded for performance:**
 
-WPSSO and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light.
+WPSSO Core and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light.
 
-WPSSO and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3 or better required).
+WPSSO Core and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3 or better required).
 
 **Advanced meta tag / Schema JSON-LD filter hooks for developers:**
 
@@ -132,7 +132,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png">
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Includes a Social and Search Optimization metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social and Search Optimization metabox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pin / Google / SEO / Rich Card / Twitter Card descriptions, along with the shared image and/or video.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Includes a Social and Search Optimization metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social and Search Optimization metabox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pins / Google Rich Cards / SEO / Twitter Card descriptions, along with the shared image and/or video.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Fully renders content (including shortcodes) for accurate description texts and embedded video detection.
 
@@ -372,16 +372,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.2-dev.1 (TBD)**
+**Version 3.47.2-dev.1 (2017/10/19)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Updated "WPSSO extension" description text to "WPSSO Core extension".
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Updated the Google jQuery UI CSS to version 1.12.1.
+	* Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1.
 
 **Version 3.47.1 (2017/10/17)**
 
@@ -801,6 +801,10 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 	* None
 
 == Upgrade Notice ==
+
+= 3.47.2-dev.1 =
+
+(2017/10/19) Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1. Updated "WPSSO extension" description text to "WPSSO Core extension".
 
 = 3.47.1 =
 
