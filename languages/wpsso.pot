@@ -1996,7 +1996,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:140 lib/meta.php:205 lib/post.php:713
+#: lib/gpl/admin/post.php:140 lib/meta.php:205 lib/post.php:709
 #: lib/pro/admin/post.php:170
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -3942,36 +3942,36 @@ msgid ""
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:587
+#: lib/post.php:583
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:601
+#: lib/post.php:597
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:601
+#: lib/post.php:597
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:601
+#: lib/post.php:597
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors (suggested), or disable "
 "the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:624 lib/post.php:626
+#: lib/post.php:620 lib/post.php:622
 msgid "Awesome! No duplicate meta tags found. :-)"
 msgstr ""
 
-#: lib/post.php:627
+#: lib/post.php:623
 msgid "%s more checks to go..."
 msgstr ""
 

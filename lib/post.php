@@ -575,13 +575,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'removing '.$lca.' meta tag section' );
 			}
 
-			$mark_prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="'.$lca.':mark:(begin|end)"[\s\n\r]+content=")';
-			$mark_suffix = '([\s\n\r]+--|"[\s\n\r]*\/?)>';	// space and slash are optional for html optimizers
+			$html = preg_replace( $this->p->head->get_mt_mark( 'preg' ), '', $html, -1, $mark_count );
 
-			$html = preg_replace( '/'.$mark_prefix.$lca.' meta tags begin'.$mark_suffix.'.*'.
-				$mark_prefix.$lca.' meta tags end'.$mark_suffix.'/ums', '', $html, -1, $mark_found );	// enable utf8 functionality
-
-			if ( ! $mark_found ) {
+			if ( ! $mark_count ) {
 				if ( is_admin() ) {
 					$short = $this->p->cf['plugin'][$lca]['short'];
 					$this->p->notice->err( sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP\'s PCRE library or a webpage filter corrupting the %1$s meta tags.', 'wpsso' ), $short ) );

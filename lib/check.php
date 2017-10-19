@@ -27,21 +27,26 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		}
 
 		public function get_avail() {
-			$ret = array();
+
+error_log( 'RUNNING get_avail' );
+			$avail = array();
 			$is_admin = is_admin();
 
 			foreach ( array( 'featured', 'amp', 'p_dir', 'head_html', 'vary_ua' ) as $key ) {
-				$ret['*'][$key] = $this->get_avail_check( $key );
+				$avail['*'][$key] = $this->is_avail( $key );
 			}
 
 			foreach ( SucomUtil::array_merge_recursive_distinct( $this->p->cf['*']['lib']['pro'],
 				self::$extend_lib_checks ) as $sub => $lib ) {
 
-				$ret[$sub] = array();
-				$ret[$sub]['*'] = false;
+				$avail[$sub] = array();
+				$avail[$sub]['*'] = false;
+
 				foreach ( $lib as $id => $name ) {
+
 					$chk = array();
-					$ret[$sub][$id] = false;	// default value
+					$avail[$sub][$id] = false;	// default value
+
 					switch ( $sub.'-'.$id ) {
 						/*
 						 * 3rd Party Plugins
@@ -51,26 +56,21 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						 */
 						case 'ecom-edd':
 							$chk['class'] = 'Easy_Digital_Downloads';
-							//$chk['plugin'] = 'easy-digital-downloads/easy-digital-downloads.php';
 							break;
 						case 'ecom-marketpress':
 							$chk['class'] = 'Marketpress';
-							//$chk['plugin'] = 'wordpress-ecommerce/marketpress.php';
 							break;
 						case 'ecom-woocommerce':
 							$chk['class'] = 'WooCommerce';
-							//$chk['plugin'] = 'woocommerce/woocommerce.php';
 							break;
 						case 'ecom-wpecommerce':
 							$chk['class'] = 'WP_eCommerce';
-							//$chk['plugin'] = 'wp-e-commerce/wp-shopping-cart.php';
 							break;
-						case 'ecom-yotpowc':	// yotpo-social-reviews-for-woocommerce
+						case 'ecom-yotpowc':				// yotpo-social-reviews-for-woocommerce
 							$chk['function'] = 'wc_yotpo_init';
 							break;
 						case 'event-tribe_events':
 							$chk['class'] = 'Tribe__Events__Main';
-							//$chk['plugin'] = 'the-events-calendar/the-events-calendar.php';
 							break;
 						case 'form-gravityforms':
 							$chk['class'] = 'GFForms';
@@ -91,18 +91,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'media-rtmedia':
 							$chk['plugin'] = 'buddypress-media/index.php';
 							break;
-						case 'recipe-wprecipemaker':
-							$chk['class'] = 'WP_Recipe_Maker';	// module in wpsso json pro
-							//$chk['plugin'] = 'wp-recipe-maker/wp-recipe-maker.php';
-							break;
-						case 'recipe-wpultimaterecipe':
-							$chk['class'] = 'WPUltimateRecipe';	// module in wpsso json pro
-							//$chk['plugin'] = 'wp-ultimate-recipe/wp-ultimate-recipe.php';
-							break;
-						case 'review-wpproductreview':
-							$chk['class'] = 'WPPR';	// module in wpsso json pro
-							//$chk['plugin'] = 'wp-product-review/wp-product-review.php';
-							break;
 						case 'seo-aioseop':
 							$chk['function'] = 'aioseop_init_class';	// free and pro versions
 							break;
@@ -111,7 +99,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							break;
 						case 'seo-headspace2':
 							$chk['class'] = 'HeadSpace_Plugin';
-							//$chk['plugin'] = 'headspace2/headspace.php';
 							break;
 						case 'seo-seou':
 							$chk['plugin'] = 'seo-ultimate/seo-ultimate.php';
@@ -146,14 +133,14 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							if ( $is_admin ) {
 								$page = basename( $_SERVER['PHP_SELF'] );
 								if ( $page === 'admin.php' || $page === 'options-general.php' ) {
-									$ret[$sub]['*'] = $ret[$sub][$id] = true;
+									$avail[$sub]['*'] = $avail[$sub][$id] = true;
 								}
 							}
 							break;
 						case 'admin-post':
 						case 'admin-meta':
 							if ( $is_admin ) {
-								$ret[$sub]['*'] = $ret[$sub][$id] = true;
+								$avail[$sub]['*'] = $avail[$sub][$id] = true;
 							}
 							break;
 						case 'util-checkimgdims':
@@ -165,7 +152,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'util-post':
 						case 'util-term':
 						case 'util-user':
-							$ret[$sub]['*'] = $ret[$sub][$id] = true;
+							$avail[$sub]['*'] = $avail[$sub][$id] = true;
 							break;
 						case 'util-language':
 							$chk['optval'] = 'plugin_filter_lang';
@@ -180,60 +167,68 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['optval'] = 'plugin_wpseo_social_meta';
 							break;
 					}
+
 					if ( ! empty( $chk ) ) {
-						if ( isset( $chk['plugin'] ) || isset( $chk['class'] ) || isset( $chk['function'] ) ) {
-							if ( ( ! empty( $chk['plugin'] ) && SucomUtil::active_plugins( $chk['plugin'] ) ) ||
-								( ! empty( $chk['class'] ) && class_exists( $chk['class'] ) ) ||
-								( ! empty( $chk['function'] ) && function_exists( $chk['function'] ) ) ) {
+						// check class / function first to include both free and pro / premium plugins
+						if ( isset( $chk['class'] ) || isset( $chk['function'] ) || isset( $chk['plugin'] ) ) {
+
+							if ( ( ! empty( $chk['class'] ) && class_exists( $chk['class'] ) ) ||
+								( ! empty( $chk['function'] ) && function_exists( $chk['function'] ) ) ||
+								( ! empty( $chk['plugin'] ) && SucomUtil::active_plugins( $chk['plugin'] ) ) ) {
 
 								// check if an option value is also required
 								if ( isset( $chk['optval'] ) ) {
-									if ( $this->has_optval( $chk['optval'] ) )
-										$ret[$sub]['*'] = $ret[$sub][$id] = true;
-								} else $ret[$sub]['*'] = $ret[$sub][$id] = true;
+									if ( $this->has_optval( $chk['optval'] ) ) {
+										$avail[$sub]['*'] = $avail[$sub][$id] = true;
+									}
+								} else {
+									$avail[$sub]['*'] = $avail[$sub][$id] = true;
+								}
 							}
 						} if ( isset( $chk['optval'] ) ) {
-							if ( $this->has_optval( $chk['optval'] ) )
-								$ret[$sub]['*'] = $ret[$sub][$id] = true;
+							if ( $this->has_optval( $chk['optval'] ) ) {
+								$avail[$sub]['*'] = $avail[$sub][$id] = true;
+							}
 						}
 					}
 				}
 			}
-			return apply_filters( $this->p->cf['lca'].'_get_avail', $ret );
+			return apply_filters( $this->p->cf['lca'].'_get_avail', $avail );
 		}
 
-		private function get_avail_check( $key ) {
-			$ret = false;
+		// private method to check for availability of specific features by keyword
+		private function is_avail( $key ) {
+			$is_avail = false;
 			switch ( $key ) {
 				case 'featured':
-					$ret = function_exists( 'has_post_thumbnail' ) ?
+					$is_avail = function_exists( 'has_post_thumbnail' ) ?
 						true : false;
 					break;
 				case 'amp':
-					$ret = function_exists( 'is_amp_endpoint' ) ?
+					$is_avail = function_exists( 'is_amp_endpoint' ) ?
 						true : false;
 					break;
 				case 'p_dir':
-					$ret = ! SucomUtil::get_const( 'WPSSO_PRO_MODULE_DISABLE' ) &&
+					$is_avail = ! SucomUtil::get_const( 'WPSSO_PRO_MODULE_DISABLE' ) &&
 						is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ?
 							true : false;
 					break;
 				case 'head_html':
-					$ret = ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
+					$is_avail = ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
 						empty( $_SERVER['WPSSO_HEAD_HTML_DISABLE'] ) &&
 							empty( $_GET['WPSSO_HEAD_HTML_DISABLE'] ) ?
 								true : false;
 					break;
 				case 'vary_ua':
-					$ret = ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ?
+					$is_avail = ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ?
 						true : false;
 					break;
 			}
-			return $ret;
+			return $is_avail;
 		}
 
 		public function is_aop( $lca = '' ) {
-			return $this->aop( $lca, true, $this->get_avail_check( 'p_dir' ) );
+			return $this->aop( $lca, true, $this->is_avail( 'p_dir' ) );
 		}
 
 		public function aop( $lca = '', $lic = true, $rv = true ) {

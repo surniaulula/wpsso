@@ -278,6 +278,44 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $head_info;
 		}
 
+		public function get_mt_mark( $type ) {
+
+			$lca = $this->p->cf['lca'];
+			$ret = '';
+
+			switch ( $type ) {
+				case 'begin':
+				case 'end':
+					$add_meta = apply_filters( $lca.'_add_meta_name_'.$lca.':mark',
+						( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
+
+					$comment = '<!-- '.$lca.' meta tags '.$type.' -->';
+					$mt_name = $add_meta ? '<meta name="'.$lca.':mark:'.$type.'" content="'.$lca.' meta tags '.$type.'"/>' : '';
+
+					if ( $type === 'begin' ) {
+						$ret = "\n\n".$comment."\n".$mt_name."\n";
+					} else {
+						$ret = $mt_name."\n".$comment."\n";
+					}
+
+					break;
+
+				case 'preg':
+					/*
+					 * Some HTML optimization plugins/services may remove the double-quotes from the name attribute, 
+					 * along with the trailing space and slash characters, so make these optional in the regex.
+					 */
+					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?'.$lca.':mark:(begin|end)"?[\s\n\r]+content=")';
+					$suffix = '([\s\n\r]+--|"[\s\n\r]*\/?)>';
+		
+					$ret = '/'.$prefix.$lca.' meta tags begin'.$suffix.'.*'.$prefix.$lca.' meta tags end'.$suffix.'/ums';	// enable utf8 support
+
+					break;
+			}
+
+			return $ret;
+		}
+
 		public function get_head_html( $use_post = false, &$mod = false, $read_cache = true, array &$mt_og ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -295,15 +333,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$start_time = microtime( true );
 			$crawler_name = SucomUtil::get_crawler_name();
 			$added_on_date = 'added on '.date( 'c' ).( $crawler_name !== 'none' ? ' for '.$crawler_name : '' );
-			$add_mt_mark = apply_filters( $lca.'_add_meta_name_'.$lca.':mark', 
-				( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
-
-			// extra begin/end meta tag for duplicate meta tags check
-			$html = "\n\n".'<!-- '.$lca.' meta tags begin -->'."\n";
-
-			if ( $add_mt_mark ) {
-				$html .= '<meta name="'.$lca.':mark:begin" content="'.$lca.' meta tags begin"/>'."\n";
-			}
+			$html = $this->get_mt_mark( 'begin' );
 
 			// first element of returned array is the html tag
 			$indent = 0;
@@ -319,13 +349,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			// extra begin / end meta tag for duplicate meta tags check
-			if ( $add_mt_mark ) {
-				$html .= '<meta name="'.$lca.':mark:end" content="'.$lca.' meta tags end"/>'."\n";
-			}
-
+			$html .= $this->get_mt_mark( 'end' );
 			$html .= '<!-- '.$added_on_date.' in '.sprintf( '%f secs', microtime( true ) - $start_time ).' -->'."\n";
-			$html .= '<!-- '.$lca.' meta tags end -->'."\n\n";
 
 			return $html;
 		}
