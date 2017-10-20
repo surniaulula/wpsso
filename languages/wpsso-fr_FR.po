@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.47.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-10-19 16:10-0600\n"
-"PO-Revision-Date: 2017-10-19 16:16-0600\n"
+"POT-Creation-Date: 2017-10-20 10:04-0600\n"
+"PO-Revision-Date: 2017-10-20 10:04-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3499,11 +3499,11 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:1289
+#: lib/schema.php:1292
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:1292
+#: lib/schema.php:1295
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
@@ -4041,6 +4041,11 @@ msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
+
+#: lib/util.php:1907
+msgctxt "option comment"
+msgid "%s extension required"
+msgstr "%s extension requise"
 
 #: wpsso.php:329
 msgid "WP debug log mode is active &mdash; debug messages are being sent to the WordPress debug log."
