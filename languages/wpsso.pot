@@ -1605,7 +1605,7 @@ msgstr ""
 
 #: lib/gpl/admin/advanced.php:227 lib/pro/admin/advanced.php:224
 msgctxt "option label"
-msgid "Default Product Currency"
+msgid "Default Currency"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:260 lib/pro/admin/advanced.php:252
@@ -2561,7 +2561,9 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:478
-msgid "The default currency used for product price options."
+msgid ""
+"The default currency used for money related options (product price, job "
+"salary, etc.)."
 msgstr ""
 
 #: lib/messages.php:484

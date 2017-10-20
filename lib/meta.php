@@ -511,7 +511,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'product_brand' => '',
 					'product_color' => '',
 					'product_condition' => 'none',
-					'product_currency' => empty( $opts['plugin_product_currency'] ) ? 'USD' : $opts['plugin_product_currency'],
+					'product_currency' => empty( $opts['plugin_def_currency'] ) ? 'USD' : $opts['plugin_def_currency'],
 					'product_price' => '0.00',
 					'product_size' => '',
 					'gv_id_title' => 0,

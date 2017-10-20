@@ -223,10 +223,10 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), '', 'plugin_wpseo_social_meta' ).
 			$form->get_nocb_td( 'plugin_wpseo_social_meta' );
 
-			$table_rows['plugin_product_currency'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Default Product Currency',
-				'option label', 'wpsso' ), '', 'plugin_product_currency' ).
-			'<td class="blank">'.$form->get_no_select( 'plugin_product_currency',
+			$table_rows['plugin_def_currency'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Default Currency',
+				'option label', 'wpsso' ), '', 'plugin_def_currency' ).
+			'<td class="blank">'.$form->get_no_select( 'plugin_def_currency',
 				SucomUtil::get_currencies() ).'</td>';
 
 			foreach ( (array) apply_filters( $this->p->cf['lca'].'_get_cf_md_idx',

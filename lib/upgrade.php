@@ -13,22 +13,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 	class WpssoOptionsUpgrade extends WpssoOptions {
 
-		private static $rename_site_options_keys = array(
-			'wpsso' => array(
-				500 => array(
-					'plugin_tid' => 'plugin_wpsso_tid',
-					'plugin_ignore_small_img' => 'plugin_check_img_dims',
-					'plugin_file_cache_exp' => 'plugin_social_file_cache_exp',
-					'plugin_object_cache_exp' => '',
-					'plugin_cache_info' => 'plugin_show_purge_count',
-					'plugin_verify_certs' => '',
-				),
-				539 => array(
-					'plugin_shorten_cache_exp' => 'plugin_short_url_cache_exp',
-				),
-			),
-		);
-
 		private static $rename_options_keys = array(
 			'wpsso' => array(	// WPSSO
 				500 => array(
@@ -148,6 +132,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'og_def_vid_on_index' => '',
 					'og_def_vid_on_search' => '',
 				),
+				559 => array(
+					'plugin_product_currency' => 'plugin_def_currency',
+				),
 			),
 			'wpssossb' => array(	// WPSSO SSB
 				14 => array(
@@ -159,6 +146,22 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'twitter_js_loc' => 'twitter_script_loc',
 					'buffer_js_loc' => 'buffer_script_loc',
 					'linkedin_js_loc' => 'linkedin_script_loc',
+				),
+			),
+		);
+
+		private static $rename_site_options_keys = array(
+			'wpsso' => array(
+				500 => array(
+					'plugin_tid' => 'plugin_wpsso_tid',
+					'plugin_ignore_small_img' => 'plugin_check_img_dims',
+					'plugin_file_cache_exp' => 'plugin_social_file_cache_exp',
+					'plugin_object_cache_exp' => '',
+					'plugin_cache_info' => 'plugin_show_purge_count',
+					'plugin_verify_certs' => '',
+				),
+				539 => array(
+					'plugin_shorten_cache_exp' => 'plugin_short_url_cache_exp',
 				),
 			),
 		);
