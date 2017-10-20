@@ -1896,6 +1896,24 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return trim( $text );
 		}
 
+		// $ext = 'org', 'plm', etc.
+		public function get_ext_req_msg( $ext ) {
+			$req_msg = '';
+			if ( empty( $this->p->avail['p_ext'][$ext] ) ) {
+				$req_msg .= ' <p style="display:inline;"><em>';
+				if ( ! empty( $this->p->cf['plugin']['wpsso'.$ext]['url']['home'] ) ) {
+					$req_msg .= '<a href="'.$this->p->cf['plugin']['wpsso'.$ext]['url']['home'].'">';
+				}
+				$req_msg .= sprintf( _x( '%s extension required', 'option comment', 'wpsso' ),
+					( ! empty( $this->p->cf['plugin']['wpsso'.$ext]['short'] ) ?	// just in case
+						$this->p->cf['plugin']['wpsso'.$ext]['short'] : 'WPSSO '.strtoupper( $ext ) ) );
+				if ( ! empty( $this->p->cf['plugin']['wpsso'.$ext]['url']['home'] ) ) {
+					$req_msg .= '</a>';
+				}
+				$req_msg .= '</em></p>';
+			}
+			return $req_msg;
+		}
 	}
 }
 

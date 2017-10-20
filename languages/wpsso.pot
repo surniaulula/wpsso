@@ -4707,6 +4707,11 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
+#: lib/util.php:1907
+msgctxt "option comment"
+msgid "%s extension required"
+msgstr ""
+
 #: wpsso.php:329
 msgid ""
 "WP debug log mode is active &mdash; debug messages are being sent to the "
