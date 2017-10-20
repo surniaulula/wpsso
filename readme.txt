@@ -379,6 +379,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Updated "WPSSO extension" description text to "WPSSO Core extension".
 	* The "Enable WP Excerpt for Pages" and "Enable WP Tags for Pages" options are now enabled by default.
+	* Renamed the "Default Product Currency" option to "Default Currency".
 * *Bugfixes*
 	* None
 * *Developer Notes*
