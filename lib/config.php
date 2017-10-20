@@ -25,8 +25,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.47.2-dev.1',		// plugin version
-					'opt_version' => '558',		// increment when changing default options
+					'version' => '3.47.2-dev.2',		// plugin version
+					'opt_version' => '559',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -587,8 +587,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_book' => 'book',
 					'schema_type_for_blog' => 'blog',
 					'schema_type_for_business' => 'local.business',
-					'schema_type_for_download' => 'product',
+					'schema_type_for_download' => 'product',	// for Easy Digital Downloads
 					'schema_type_for_event' => 'event',
+					'schema_type_for_job_listing' => 'job.posting',	// for WP Job Manager
 					'schema_type_for_organization' => 'organization',
 					'schema_type_for_other' => 'other',
 					'schema_type_for_person' => 'person',
@@ -878,8 +879,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_check_img_dims' => 0,			// Enforce Image Dimensions Check
 					'plugin_upscale_images' => 0,			// Allow Upscale of Smaller Images
 					'plugin_upscale_img_max' => 33,			// Maximum Image Upscale Percent
-					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
-					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
+					'plugin_page_excerpt' => 1,			// Enable WP Excerpt for Pages
+					'plugin_page_tags' => 1,			// Enable WP Tags for Pages
 					// Custom Meta Tab
 					'plugin_schema_type_col_media' => 0,
 					'plugin_schema_type_col_post' => 1,

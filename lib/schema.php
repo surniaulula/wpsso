@@ -227,18 +227,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$type_id = $mod['obj']->get_options( $mod['id'], 'schema_type' );
 
 					if ( empty( $type_id ) ) {	// must be a non-empty string
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'custom type_id from meta is empty' );
+						}
 					} elseif ( $type_id === 'none' ) {
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'custom type_id is disabled with value none' );
+						}
 					} elseif ( empty( $schema_types[$type_id] ) ) {
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'custom type_id '.$type_id.' not in schema types' );
+						}
 						$type_id = null;
-					} elseif ( $this->p->debug->enabled )
+					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'custom type_id '.$type_id.' from '.$mod['name'].' module' );
-
+					}
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'custom type_id module object is empty' );
 				}
@@ -247,9 +250,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( empty( $type_id ) ) {
-				$is_md_type = false;
+				$is_custom = false;
 			} else {
-				$is_md_type = true;
+				$is_custom = true;
 			}
 
 			if ( empty( $type_id ) ) {	// if no custom schema type, then use the default settings
@@ -324,7 +327,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'schema type id before filter is '.$type_id );
 			}
 
-			$type_id = apply_filters( $this->p->cf['lca'].'_schema_type_id', $type_id, $mod, $is_md_type );
+			$type_id = apply_filters( $this->p->cf['lca'].'_schema_type_id', $type_id, $mod, $is_custom );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'schema type id after filter is '.$type_id );
@@ -991,7 +994,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			if ( empty( $ret_data ) ) {
+			if ( empty( $ret_data ) ) {	// just in case
 				return $json_data;
 			} elseif ( $json_data === null ) {
 				return $ret_data;

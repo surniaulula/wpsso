@@ -237,21 +237,25 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					if ( is_admin() ) {
 						$filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
 							_x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) );
-						$this->p->notice->upd(
-							sprintf( __( 'This latest version of %1$s includes a feature to monitor the WordPress content filter and fix incorrectly coded filter hooks.', 'wpsso' ), $short_name ).' '.
-							__( 'The WordPress content filter formats text and expands shortcodes, which may be required to include additional images and videos.', 'wpsso' ).' '.
-							sprintf( __( '<b>The %1$s advanced option has been enabled automatically</b> &mdash; if you experience any display issues / errors, you may disable this option.', 'wpsso' ), $filters_option_link )
-						);
+						$this->p->notice->upd( sprintf( __( 'This latest version of %1$s includes a feature to monitor the WordPress content filter and fix incorrectly coded filter hooks.', 'wpsso' ), $short_name ).' '.__( 'The WordPress content filter formats text and expands shortcodes, which may be required to include additional images and videos.', 'wpsso' ).' '.sprintf( __( '<b>The %1$s advanced option has been enabled automatically</b> &mdash; if you experience any display issues / errors, you may disable this option.', 'wpsso' ), $filters_option_link ) );
 					}
 					$opts['plugin_filter_content'] = 1;
 				}
 				*/
 
 				if ( $prev_version > 0 && $prev_version <= 557 ) {
-					if ( $opts['plugin_cm_fb_label'] === 'Facebook URL' ) {
+					if ( isset( $opts['plugin_cm_fb_label'] ) && 
+						$opts['plugin_cm_fb_label'] === 'Facebook URL' ) {
 						$opts['plugin_cm_fb_label'] = 'Facebook User URL';
 					}
 					SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
+				}
+
+				if ( $prev_version > 0 && $prev_version <= 557 ) {
+					if ( isset( $opts['schema_type_for_job_listing'] ) && 
+						$opts['schema_type_for_job_listing'] === 'webpage' ) {
+						$opts['schema_type_for_job_listing'] = 'job.posting';
+					}
 				}
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
