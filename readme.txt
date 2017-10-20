@@ -384,6 +384,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1.
 	* Added a new WpssoHead get_mt_mark() method to return begin/end meta tags and regex.
+	* Added a new WpssoUtil get_ext_req_msg() method to get the required extension text message. 
 	* Moved the WP Recipe Maker, WP Ultimate Recipe, and WP Product Review plugin checks to the WPSSO JSON extension.
 
 **Version 3.47.1 (2017/10/17)**
