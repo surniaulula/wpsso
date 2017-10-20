@@ -372,12 +372,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.2-dev.1 (2017/10/19)**
+**Version 3.47.2-dev.2 (2017/10/20)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Updated "WPSSO extension" description text to "WPSSO Core extension".
+	* The "Enable WP Excerpt for Pages" and "Enable WP Tags for Pages" options are now enabled by default.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -804,9 +805,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.47.2-dev.1 =
+= 3.47.2-dev.2 =
 
-(2017/10/19) Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1. Updated "WPSSO extension" description text to "WPSSO Core extension".
+(2017/10/20) Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1. Updated "WPSSO extension" description text to "WPSSO Core extension".
 
 = 3.47.1 =
 
