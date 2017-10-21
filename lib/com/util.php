@@ -898,10 +898,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_currency_symbols( $idx = false, $add_none = false, $decode = false ) {
 			if ( $decode ) {
-				$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
 				static $cache = null;
 				if ( ! isset( $cache ) ) {
 					$cache = array();
+					$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
 					foreach ( self::$currency_symbols as $key => $value ) {
 						$cache[$key] = html_entity_decode( self::decode_utf8( $value ), ENT_QUOTES, $charset );
 					}
@@ -911,6 +911,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} else {
 				return self::get_formatted_array( self::$currency_symbols, $idx, $add_none );
 			}
+		}
+
+		public static function get_currency_symbol_abbrev( $idx = false, $default = 'USD', $decode = true ) {
+			if ( $decode ) {
+				$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
+				$idx = html_entity_decode( self::decode_utf8( $idx ), ENT_QUOTES, $charset );
+			}
+			static $cache = null;
+			if ( isset( $cache[$idx] ) ) {
+				return $cache[$idx];
+			} elseif ( $idx === '$' ) {	// match for USD first 
+				return $cache[$idx] = 'USD';
+			}
+			foreach ( self::get_currency_symbols( false, false, $decode ) as $abbrev => $symbol ) {
+				if ( $symbol === $idx ) {
+					return $cache[$idx] = $abbrev;	// stop here
+				}
+			}
+			return $cache[$idx] = $default;
 		}
 
 		public static function get_dashicons( $idx = false, $add_none = false ) {
