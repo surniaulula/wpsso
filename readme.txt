@@ -372,7 +372,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.2-dev.2 (2017/10/20)**
+**Version 3.47.2-dev.3 (2017/10/21)**
 
 * *New Features*
 	* None
@@ -381,12 +381,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* The "Enable WP Excerpt for Pages" and "Enable WP Tags for Pages" options are now enabled by default.
 	* Renamed the "Default Product Currency" option to "Default Currency".
 * *Bugfixes*
-	* None
+	* Fix to convert the currency symbol provided The Event Manager to a currency abbreviation (Pro version).
 * *Developer Notes*
 	* Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1.
 	* Added a new WpssoHead get_mt_mark() method to return begin/end meta tags and regex.
 	* Added a new WpssoUtil get_ext_req_msg() method to get the required extension text message. 
 	* Moved the WP Recipe Maker, WP Ultimate Recipe, and WP Product Review plugin checks to the WPSSO JSON extension.
+	* Added new WpssoSchema set_single_data_from_cache() and get_single_type_id_url() methods.
+	* Refactored the WpssoSchema add_single_*_data methods (organization, person, place, etc.).
 
 **Version 3.47.1 (2017/10/17)**
 
@@ -807,9 +809,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.47.2-dev.2 =
+= 3.47.2-dev.3 =
 
-(2017/10/20) Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1. Updated "WPSSO extension" description text to "WPSSO Core extension".
+(2017/10/21) Fix to convert the currency symbol provided The Event Manager to a currency abbreviation (Pro version). Refactored the WpssoSchema add_single_*_data methods (organization, person, place, etc.). Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1.
 
 = 3.47.1 =
 
