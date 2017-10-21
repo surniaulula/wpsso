@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.47.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-10-20 10:04-0600\n"
-"PO-Revision-Date: 2017-10-20 10:04-0600\n"
+"POT-Creation-Date: 2017-10-21 13:05-0600\n"
+"PO-Revision-Date: 2017-10-21 13:07-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -702,11 +702,11 @@ msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\
 msgid "Dismiss"
 msgstr "Masquer"
 
-#: lib/com/util.php:1304
+#: lib/com/util.php:1323
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr "Les informations pour l'extension \"%s\" contiennent un lien de téléchargement invalide."
 
-#: lib/com/util.php:1311
+#: lib/com/util.php:1330
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr "L'information pour l'extension \"%s\" ne contient pas de lien de téléchargement."
 
@@ -1519,8 +1519,8 @@ msgstr "Utiliser méta social Yoast SEO"
 
 #: lib/gpl/admin/advanced.php:227 lib/pro/admin/advanced.php:224
 msgctxt "option label"
-msgid "Default Product Currency"
-msgstr "Devise de produit par défaut"
+msgid "Default Currency"
+msgstr "Devise par défaut"
 
 #: lib/gpl/admin/advanced.php:260 lib/pro/admin/advanced.php:252
 msgctxt "option label"
@@ -2305,8 +2305,8 @@ msgid "This option is checked by default if the Yoast SEO plugin is active, or i
 msgstr "Cette option est cochée par défaut si l'extension Yoast SEO est active, ou ses réglages sont trouvés dans la base de données."
 
 #: lib/messages.php:478
-msgid "The default currency used for product price options."
-msgstr "La devise par défaut utilisée pour les options de prix des produits."
+msgid "The default currency used for money related options (product price, job salary, etc.)."
+msgstr "La devise par défaut utilisée pour les options liées à l'argent (prix des produits, salaires, etc.)."
 
 #: lib/messages.php:484
 msgctxt "tooltip fragment"
@@ -3499,11 +3499,11 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:1292
+#: lib/schema.php:1329
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:1295
+#: lib/schema.php:1332
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
