@@ -382,6 +382,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the "Default Product Currency" option to "Default Currency".
 * *Bugfixes*
 	* Fix to convert the currency symbol provided The Event Manager to a currency abbreviation (Pro version).
+	* Fix to limit mentions in a Schema CollectionPage for a post object to only its first level / direct children.
 * *Developer Notes*
 	* Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1.
 	* Added a new WpssoHead get_mt_mark() method to return begin/end meta tags and regex.
