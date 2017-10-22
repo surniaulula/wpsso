@@ -963,7 +963,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return false;
 			} elseif ( has_filter( $filter_name, array( __CLASS__, 'save_current_filter_value' ) ) ) {	// already protected
 				return false;
-			} else {	// hook save/restore filters
+			} else {	// hook protection save/restore filters
 				add_filter( $filter_name, array( __CLASS__, 'save_current_filter_value' ), self::get_min_int(), 1 );
 				add_filter( $filter_name, array( __CLASS__, 'restore_current_filter_value' ), self::get_max_int(), 1 );
 				return true;
