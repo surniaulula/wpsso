@@ -1271,16 +1271,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$wpsso =& Wpsso::get_instance();
-			$org_opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $org_id );	// returns localized values
+			$org_opts = (array) apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $org_id );
 
-			if ( empty( $org_opts ) ) {	// $org_opts can be false or empty array
+			if ( empty( $org_opts ) ) {
 				if ( $org_id === 'site' ) {
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'getting site organization options array' );
 					}
 					$org_opts = self::get_site_organization( $mod );	// returns localized values
 				} else {
-					return 0;	// leaves statis cache data as false
+					return 0;
 				}
 			} elseif ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'using custom organization options for '.$org_id );
@@ -1320,10 +1320,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'organization '.$logo_key.' image is missing and required' );
 					}
-
-					if ( $wpsso->notice->is_admin_pre_notices() && 
-						( ! $mod['is_post'] || $mod['post_status'] === 'publish' ) ) {
-
+					if ( $wpsso->notice->is_admin_pre_notices() && ( ! $mod['is_post'] || $mod['post_status'] === 'publish' ) ) {
 						switch ( $logo_key ) {
 							case 'org_logo_url':
 								$wpsso->notice->err( sprintf( __( 'The "%1$s" Organization Logo image is missing and required for the Schema %2$s markup.', 'wpsso' ), $ret['name'], $org_type_url ) );
@@ -1340,7 +1337,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Place / Location Properties
 			 */
 			if ( isset( $org_opts['org_place_id'] ) && $org_opts['org_place_id'] !== 'none' ) {
-
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding place / location properties' );
 				}
@@ -1444,13 +1440,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$wpsso =& Wpsso::get_instance();
 			$size_name = $wpsso->cf['lca'].'-schema';
 			$sharing_url = $wpsso->util->get_sharing_url( $mod );
-			$place_opts = apply_filters( $wpsso->cf['lca'].'_get_place_options', false, $mod, $place_id );
+			$place_opts = (array) apply_filters( $wpsso->cf['lca'].'_get_place_options', false, $mod, $place_id );
 
-			if ( empty( $place_opts ) ) {	// $place_opts can be false or empty array
+			if ( empty( $place_opts ) ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: empty place options' );
 				}
-				return 0;	// leaves statis cache data as false
+				return 0;
 			}
 
 			// if not adding a list element, inherit the existing schema type url (if one exists)
@@ -1602,9 +1598,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 			$sharing_url = $wpsso->util->get_sharing_url( $mod );
-			$event_opts = apply_filters( $wpsso->cf['lca'].'_get_event_options', false, $mod, $event_id );
+			$event_opts = (array) apply_filters( $wpsso->cf['lca'].'_get_event_options', false, $mod, $event_id );
 
-			if ( ! empty( $event_opts ) ) {	// $event_opts could be false or empty array
+			if ( ! empty( $event_opts ) ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'get_event_options filter returned options' );
 					$wpsso->debug->log_arr( 'event_opts', $event_opts );
@@ -1754,8 +1750,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							'price' => 'offer_price',
 							'priceCurrency' => 'offer_price_currency',
 							'availability' => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
-							'validFrom' => 'offer_valid_from',
-							'validThrough' => 'offer_valid_through',
+							'validFrom' => 'offer_valid_from_date',
+							'validThrough' => 'offer_valid_to_date',
 					) ) ) !== false ) {
 						// add the complete offer
 						$ret['offers'][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
@@ -1783,13 +1779,46 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$wpsso =& Wpsso::get_instance();
-			$job_opts = apply_filters( $wpsso->cf['lca'].'_get_job_options', false, $mod, $job_id );
+
+			/*
+			 * Get job options from Pro modules and/or custom filters.
+			 */
+			$job_opts = (array) apply_filters( $wpsso->cf['lca'].'_get_job_options', false, $mod, $job_id );
+
+			if ( ! empty( $job_opts ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'get_job_options filter returned options' );
+					$wpsso->debug->log_arr( 'job_opts', $job_opts );
+				}
+			}
+
+			/*
+			 * Override job options from filters with custom meta values.
+			 */
+			if ( is_object( $mod['obj'] ) ) {	// just in case
+				$md_opts = array_merge( 
+					(array) $mod['obj']->get_defaults( $mod['id'] ), 
+					(array) $mod['obj']->get_options( $mod['id'] )	// returns empty string if no meta found
+				);
+				$md_opts = SucomUtil::preg_grep_keys( '/^schema_job_/', $md_opts, false, 'job_' );
+				$job_opts = array_merge( $job_opts, $md_opts );
+			} else {
+				$md_opts = array();	// just in case
+			}
 
 			// if not adding a list element, inherit the existing schema type url (if one exists)
 			list( $job_type_id, $job_type_url ) = self::get_single_type_id_url( $json_data,
 				$job_opts, 'job_type', 'job.posting', $list_element );
 
 			$ret = self::get_schema_type_context( $job_type_url );
+
+			// add schema properties from the job options
+			self::add_data_itemprop_from_assoc( $ret, $job_opts, array(
+				'title' => 'job_title',
+				'baseSalary' => 'job_salary',
+				'salaryCurrency' => 'job_currency',
+				'validThrough' => 'job_expires_date',
+			) );
 
 			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_job', $ret, $mod, $job_id );
 
@@ -1853,10 +1882,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 			$size_name = $wpsso->cf['lca'].'-schema';
-			$person_opts = apply_filters( $wpsso->cf['lca'].'_get_person_options', false, $mod, $user_id );
+			$person_opts = (array) apply_filters( $wpsso->cf['lca'].'_get_person_options', false, $mod, $user_id );
 
-			if ( empty( $person_opts ) ) {	// $person_opts could be false or empty array
-
+			if ( empty( $person_opts ) ) {
 				if ( empty( $user_id ) ) {
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'exiting early: empty user_id' );
@@ -1874,8 +1902,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$user_mod = $wpsso->m['util']['user']->get_mod( $user_id );
 				}
 
-				$user_desc = $user_mod['obj']->get_options_multi( $user_id, 
-					array( 'schema_desc', 'og_desc' ) );
+				$user_desc = $user_mod['obj']->get_options_multi( $user_id, array( 'schema_desc', 'og_desc' ) );
 
 				if ( empty( $user_desc ) ) {
 					$user_desc = $user_mod['obj']->get_author_meta( $user_id, 'description' );

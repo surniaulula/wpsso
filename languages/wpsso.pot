@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.47.2-dev.3\n"
+"Project-Id-Version: WPSSO Core 3.47.2-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:640 lib/post.php:392 lib/term.php:280 lib/user.php:263
+#: lib/admin.php:640 lib/post.php:395 lib/term.php:282 lib/user.php:265
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1996,7 +1996,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:140 lib/meta.php:205 lib/post.php:709
+#: lib/gpl/admin/post.php:140 lib/meta.php:205 lib/post.php:712
 #: lib/pro/admin/post.php:170
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -3890,90 +3890,90 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/post.php:482
+#: lib/post.php:485
 msgid ""
 "The WordPress wp_get_shortlink() function returned an invalid URL (%1$s) for "
 "post ID %2$s."
 msgstr ""
 
-#: lib/post.php:490
+#: lib/post.php:493
 msgid ""
 "Possible conflict detected &mdash; your theme or another plugin is adding "
 "%1$s to the head section of this webpage."
 msgstr ""
 
-#: lib/post.php:494
+#: lib/post.php:497
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:525
+#: lib/post.php:528
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:527
+#: lib/post.php:530
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:529
+#: lib/post.php:532
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:531
+#: lib/post.php:534
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:542 lib/util.php:635
+#: lib/post.php:545 lib/util.php:635
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:551
+#: lib/post.php:554
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:560
+#: lib/post.php:563
 msgid "A &lt;meta /&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:570
+#: lib/post.php:573
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:583
+#: lib/post.php:586
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:597
+#: lib/post.php:600
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:597
+#: lib/post.php:600
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:597
+#: lib/post.php:600
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors (suggested), or disable "
 "the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:620 lib/post.php:622
+#: lib/post.php:623 lib/post.php:625
 msgid "Awesome! No duplicate meta tags found. :-)"
 msgstr ""
 
-#: lib/post.php:623
+#: lib/post.php:626
 msgid "%s more checks to go..."
 msgstr ""
 
@@ -4158,13 +4158,13 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:1329
+#: lib/schema.php:1326
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:1332
+#: lib/schema.php:1329
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
@@ -4631,19 +4631,19 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:435
+#: lib/user.php:437
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:489
+#: lib/user.php:491
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:490
+#: lib/user.php:492
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:491
+#: lib/user.php:493
 msgid "Yahoo Messenger"
 msgstr ""
 

@@ -109,8 +109,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$lca = $this->p->cf['lca'];
 
 			if ( $posts_per_page === false ) {
-				$posts_per_page = apply_filters( $lca.'_posts_per_page', 
-					get_option( 'posts_per_page' ), $mod );
+				$posts_per_page = apply_filters( $lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( $paged === false ) {
@@ -121,13 +120,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$paged = 1;
 			}
 
-			return get_posts( array(
+			$posts = get_posts( array(
 				'posts_per_page' => $posts_per_page,
 				'paged' => $paged,
 				'post_status' => 'publish',
+				'post_type' => 'any',
 				'has_password' => false,	// since wp 3.9
 				'author' => $mod['id'],
 			) );
+
+			return $posts;
 		}
 
 		public function add_column_headings( $columns ) { 
