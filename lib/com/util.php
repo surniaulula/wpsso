@@ -954,11 +954,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		// wrap a filter to return its original / unchanged value
+		/*
+		 * Wrap a filter to return its original / unchanged value.
+		 * Returns tru if protection filters were added, false if protection filters are not required.
+		 */
 		public static function protect_filter_value( $filter_name ) {
-			if ( has_filter( $filter_name, array( __CLASS__, 'save_current_filter_value' ) ) ) {
+			if ( ! has_filter( $filter_name ) ) {	// no protection required
 				return false;
-			} else {
+			} elseif ( has_filter( $filter_name, array( __CLASS__, 'save_current_filter_value' ) ) ) {	// already protected
+				return false;
+			} else {	// hook save/restore filters
 				add_filter( $filter_name, array( __CLASS__, 'save_current_filter_value' ), self::get_min_int(), 1 );
 				add_filter( $filter_name, array( __CLASS__, 'restore_current_filter_value' ), self::get_max_int(), 1 );
 				return true;

@@ -763,11 +763,11 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:1323
+#: lib/com/util.php:1328
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1330
+#: lib/com/util.php:1335
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
