@@ -372,7 +372,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.2-dev.3 (2017/10/21)**
+**Version 3.47.2-dev.4 (2017/10/22)**
 
 * *New Features*
 	* None
@@ -810,9 +810,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.47.2-dev.3 =
+= 3.47.2-dev.4 =
 
-(2017/10/21) Fix to convert the currency symbol provided The Event Manager to a currency abbreviation (Pro version). Refactored the WpssoSchema add_single_*_data methods (organization, person, place, etc.). Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1.
+(2017/10/22) Fix to convert the currency symbol provided The Event Manager to a currency abbreviation (Pro version). Refactored the WpssoSchema add_single_*_data methods (organization, person, place, etc.). Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1.
 
 = 3.47.1 =
 
