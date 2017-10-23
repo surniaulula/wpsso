@@ -374,7 +374,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.2-dev.4 (2017/10/22)**
+**Version 3.47.2-dev.5 (2017/10/23)**
 
 * *New Features*
 	* None
@@ -385,6 +385,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fix to convert the currency symbol provided The Event Manager to a currency abbreviation (Pro version).
 	* Fix to limit mentions in a Schema CollectionPage for a post object to only its first level / direct children.
+	* Fix to prefer getting the Yoast SEO post/term/user meta from the Yoast SEO plugin, instead of directly from the post/term/user meta (Pro version).
 * *Developer Notes*
 	* Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1.
 	* Added a new WpssoHead get_mt_mark() method to return begin/end meta tags and regex.
@@ -392,6 +393,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved the WP Recipe Maker, WP Ultimate Recipe, and WP Product Review plugin checks to the WPSSO JSON extension.
 	* Added new WpssoSchema set_single_data_from_cache() and get_single_type_id_url() methods.
 	* Refactored the WpssoSchema add_single_*_data methods (organization, person, place, etc.).
+	* Refactored the WpssoProUtilWpseoMeta class and all its methods.
 
 **Version 3.47.1 (2017/10/17)**
 
@@ -812,9 +814,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.47.2-dev.4 =
+= 3.47.2-dev.5 =
 
-(2017/10/22) Fix to convert the currency symbol provided The Event Manager to a currency abbreviation (Pro version). Refactored the WpssoSchema add_single_*_data methods (organization, person, place, etc.). Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1.
+(2017/10/23) Fix to convert the currency symbol provided The Event Manager to a currency abbreviation (Pro version). Refactored the WpssoSchema add_single_*_data methods (organization, person, place, etc.). Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1.
 
 = 3.47.1 =
 
