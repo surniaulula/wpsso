@@ -3877,7 +3877,7 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/options.php:800
+#: lib/options.php:804
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 

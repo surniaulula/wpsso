@@ -624,6 +624,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				// must be integer / numeric
+				case 'int':
 				case 'integer':
 					$cast_int = true;
 					// no break
@@ -667,6 +668,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						if ( ! is_numeric( $val ) ) {
 							$this->p->notice->err( sprintf( $error_messages['blank_num'], $key ) );
 							$val = $def_val;
+							if ( $val === '' ) {
+								$cast_int = false;
+							}
 						}
 					}
 					break;
@@ -694,10 +698,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$fmt = '/^#[a-fA-f0-9]{6,6}$/';	// color #000000
 					} elseif ( $option_type === 'date' ) {
 						$fmt = '/^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/';	// date yyyy-mm-dd
-					} else {
-						$fmt = '/^[0-9]{2,2}:[0-9]{2,2}$/';	// time hh:mm
+					} elseif ( $option_type === 'time' ) {
+						$fmt = '/^[0-9]{2,2}:[0-9]{2,2}(:[0-9]{2,2})?$/';	// time hh:mm or hh:mm:ss
 					}
-					if ( $val !== '' && ! preg_match( $fmt, $val ) ) {
+					if ( $val !== '' && $fmt && ! preg_match( $fmt, $val ) ) {
 						$this->p->notice->err( sprintf( $error_messages[$option_type], $key ) );
 						$val = $def_val;
 					}

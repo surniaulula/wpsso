@@ -1817,7 +1817,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'title' => 'job_title',
 				'baseSalary' => 'job_salary',
 				'salaryCurrency' => 'job_currency',
-				'validThrough' => 'job_expires_date',
+				'validThrough' => 'job_expire_iso',
 			) );
 
 			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_job', $ret, $mod, $job_id );
