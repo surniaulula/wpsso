@@ -1494,7 +1494,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'addressLocality' => 'place_city',
 				'addressRegion' => 'place_state',
 				'postalCode' => 'place_zipcode',
-				'addressCountry' => 'place_country',
+				'addressCountry' => 'place_country',	// alpha2 country code
 			) ) ) {
 				$ret['address'] = self::get_schema_type_context( 'https://schema.org/PostalAddress', $address );
 			}
@@ -1852,6 +1852,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			} elseif ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'job_org_id is empty or none' );
+			}
+
+			if ( isset( $job_opts['job_place_id'] ) && SucomUtil::is_opt_id( $job_opts['job_place_id'] ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'adding place data for job_place_id '.$job_opts['job_place_id'] );
+				}
+				if ( ! self::add_single_place_data( $ret['jobLocation'], $mod, $job_opts['job_place_id'], false ) ) {
+					unset( $ret['jobLocation'] );
+				}
+			} elseif ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'job_place_id is empty or none' );
 			}
 
 			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_job', $ret, $mod, $job_id );
