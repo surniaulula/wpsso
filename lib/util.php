@@ -929,11 +929,50 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $has_changed === false ? $all_times : get_option( WPSSO_TS_NAME, array() );
 		}
 
+		// allow the variables and values array to be extended
+		// $ext must be an associative array with key/value pairs to be replaced
+		public function replace_inline_vars( $content, $mod = false, $atts = array(), $extra = array() ) {
+
+			if ( strpos( $content, '%%' ) === false ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: no inline vars' );
+				}
+				return $content;
+			}
+
+			// $mod is preferred but not required
+			// $mod = true | false | post_id | $mod array
+			if ( ! is_array( $mod ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'optional call to get_page_mod()' );
+				}
+				$mod = $this->get_page_mod( $mod );
+			}
+
+			$replace_vars = $this->get_inline_vars();
+			$replace_vals = $this->get_inline_vals( $mod, $atts );
+
+			if ( ! empty( $extra ) && self::is_assoc( $extra ) ) {
+				foreach ( $extra as $match => $replace ) {
+					$replace_vars[] = '%%'.$match.'%%';
+					$replace_vals[] = $replace;
+				}
+			}
+
+			ksort( $replace_vars );
+			ksort( $replace_vals );
+
+			return str_replace( $replace_vars, $replace_vals, $content );
+		}
+
 		public function get_inline_vars() {
 			return array(
 				'%%request_url%%',
 				'%%sharing_url%%',
 				'%%short_url%%',
+				'%%sitename%%',
+				'%%sitealtname%%',
+				'%%sitedesc%%',
 			);
 		}
 
@@ -969,46 +1008,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$short_url = $atts['short_url'];
 			}
 
+			$sitename = SucomUtil::get_site_name( $this->p->options, $mod );
+			$sitealtname = SucomUtil::get_site_alt_name( $this->p->options, $mod );
+			$sitedesc = SucomUtil::get_site_description( $this->p->options, $mod );
+
 			return array(
 				$request_url,		// %%request_url%%
 				$sharing_url,		// %%sharing_url%%
 				$short_url,		// %%short_url%%
+				$sitename,		// %%sitename%%
+				$sitealtname,		// %%sitealtname%%
+				$sitedesc,		// %%sitedesc%%
 			);
-		}
-
-		// allow the variables and values array to be extended
-		// $ext must be an associative array with key/value pairs to be replaced
-		public function replace_inline_vars( $text, $mod = false, $atts = array(), $extra = array() ) {
-
-			if ( strpos( $text, '%%' ) === false ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'exiting early: no inline vars' );
-				return $text;
-			}
-
-			// $mod is preferred but not required
-			// $mod = true | false | post_id | $mod array
-			if ( ! is_array( $mod ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'optional call to get_page_mod()' );
-				}
-				$mod = $this->get_page_mod( $mod );
-			}
-
-			$vars = $this->get_inline_vars();
-			$vals = $this->get_inline_vals( $mod, $atts );
-
-			if ( ! empty( $extra ) && self::is_assoc( $extra ) ) {
-				foreach ( $extra as $match => $replace ) {
-					$vars[] = '%%'.$match.'%%';
-					$vals[] = $replace;
-				}
-			}
-
-			ksort( $vars );
-			ksort( $vals );
-
-			return str_replace( $vars, $vals, $text );
 		}
 
 		// use a reference to modify the $options array directly

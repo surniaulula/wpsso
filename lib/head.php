@@ -703,7 +703,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				return $ret;
 			}
 
-			if ( strpos( $value, '%%' ) ) {
+			if ( strpos( $value, '%%' ) !== false ) {
 				$value = $this->p->util->replace_inline_vars( $value, $mod );
 			}
 
