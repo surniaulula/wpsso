@@ -1371,24 +1371,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$url = apply_filters( $lca.'_archive_url', $url, $mod, $add_page, $src_id );
 				}
 
-				if ( ! empty( $url ) && $add_page && get_query_var( 'paged' ) > 1 ) {
-					global $wp_rewrite;
-					if ( ! $wp_rewrite->using_permalinks() ) {
-						$url = add_query_arg( 'paged', get_query_var( 'paged' ), $url );
-					} else {
-						if ( $mod['is_home_page'] ) {	// static home page (have post id)
-							$base = $GLOBALS['wp_rewrite']->using_index_permalinks() ? 'index.php/' : '/';
-							$url = home_url( $base );
-							if ( $this->p->debug->enabled )
-								$this->p->debug->log( 'home_url for '.$base.' = '.$url );
-						}
-						$url = user_trailingslashit( trailingslashit( $url ).
-							trailingslashit( $wp_rewrite->pagination_base ).get_query_var( 'paged' ) );
-					}
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'add paged query url = '.$url );
-					}
-				}
+				$url = $this->get_url_paged( $url, $mod, $add_page );
 			}
 
 			// fallback for themes and plugins that don't use the standard wordpress functions/variables
@@ -1414,17 +1397,55 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return apply_filters( $lca.'_'.$type.'_url', $url, $mod, $add_page, $src_id );
 		}
 
-		private function check_url_string( $url, $source ) {
+		private function get_url_paged( $url, $mod, $add_page ) {
+
+			if ( empty( $url ) || empty( $add_page ) ) {
+				return $url;
+			}
+
+			global $wpsso_paged;
+			if ( is_numeric( $add_page ) ) {
+				$paged = $add_page;
+			} elseif ( is_numeric( $wpsso_paged ) ) {
+				$paged = $wpsso_paged;
+			} else {
+				$paged = get_query_var( 'paged' );
+			}
+
+			if ( $paged > 1 ) {
+				global $wp_rewrite;
+				if ( ! $wp_rewrite->using_permalinks() ) {
+					$url = add_query_arg( 'paged', $paged, $url );
+				} else {
+					if ( $mod['is_home_page'] ) {	// static home page (have post id)
+						$base = $wp_rewrite->using_index_permalinks() ? 'index.php/' : '/';
+						$url = home_url( $base );
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'home_url for '.$base.' = '.$url );
+						}
+					}
+					$url = user_trailingslashit( trailingslashit( $url ).
+						trailingslashit( $wp_rewrite->pagination_base ).$paged );
+				}
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'get url paged = '.$url );
+				}
+			}
+
+			return $url;
+		}
+
+		private function check_url_string( $url, $context ) {
 			if ( is_string( $url ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $source.' url = '.$url );
+					$this->p->debug->log( $context.' url = '.$url );
 				}
 				return $url;	// stop here
 			}
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $source.' url is '.gettype( $url ) );
+				$this->p->debug->log( $context.' url is '.gettype( $url ) );
 				if ( is_wp_error( $url ) ) {
-					$this->p->debug->log( $source.' url error: '.$url->get_error_message() );
+					$this->p->debug->log( $context.' url error: '.$url->get_error_message() );
 				}
 			}
 			return false;

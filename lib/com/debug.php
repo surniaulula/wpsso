@@ -25,15 +25,26 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		public function __construct( &$plugin, $subsys = array( 'html' => false, 'wp' => false ) ) {
 			$this->p =& $plugin;
+
 			$this->start_stats = array(
 				'time' => microtime( true ),
 				'mem' => memory_get_usage( true ),
 			);
+
 			$this->display_name = $this->p->cf['lca'];
 			$this->log_prefix = strtoupper( $this->display_name );
 			$this->subsys = $subsys;
 			$this->is_enabled();	// sets $this->enabled value
-			$this->mark();
+
+			if ( $this->enabled ) {
+				$this->mark();
+			}
+
+			if ( ! empty( $subsys['wp'] ) ) {
+				if ( ! isset( $_SESSION ) ) {
+					session_start();
+				}
+			}
 		}
 
 		public function is_enabled( $name = '' ) {
@@ -49,6 +60,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		public function enable( $name, $state = true ) {
 			if ( ! empty( $name ) ) {
 				$this->subsys[$name] = $state;
+				if ( $name === 'wp' ) {
+					if ( ! isset( $_SESSION ) ) {
+						session_start();
+					}
+				}
 			}
 			$this->is_enabled();	// sets $this->enabled value
 		}
@@ -58,8 +74,10 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		}
 
 		public function log_args( array $arr, $class_idx = 1, $function_idx = false ) {
-			if ( $this->enabled !== true )
+
+			if ( $this->enabled !== true ) {
 				return;
+			}
 
 			if ( is_int( $class_idx ) ) {
 				if ( $function_idx === false ) {

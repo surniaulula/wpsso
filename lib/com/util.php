@@ -2925,6 +2925,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_max_int() {
 			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// available since PHP 5.0.2
 		}
+
+		public static function is_opt_id( $id ) {
+			if ( empty( $id ) && ! is_numeric( $id ) ) {	// null or false
+				return false;
+			} elseif ( $id === 'none' ) {
+				return false;
+			} else {
+				return true;
+			}
+		}
 	}
 }
 

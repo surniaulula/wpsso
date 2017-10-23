@@ -1236,28 +1236,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'saturday' => 'Saturday',
 					'publicholidays' => 'Public Holidays',
 				),
-				'time_by_name' => array(	// in seconds
+				'time_seconds' => array(	// in seconds
 					'hour' => HOUR_IN_SECONDS,
 					'day' => DAY_IN_SECONDS,
 					'week' => WEEK_IN_SECONDS,	// 7 days
 					'month' => MONTH_IN_SECONDS,	// 30 days
 					'year' => YEAR_IN_SECONDS,	// 365 days
 				),
-				'cache_hrs' => array(
-					0 => 0,
-					3600 => 1,	// 1 hour
-					7200 => 2,	// 2 hours
-					10800 => 3,	// 3 hours
-					21600 => 6,	// 6 hours
-					32400 => 9,	// 9 hours
-					43200 => 12,	// 12 hours
-					86400 => 24,	// 1 day
-					129600 => 36,	// 1.5 days
-					172800 => 48,	// 2 days
-					259200 => 72,	// 3 days
-					604800 => 168,	// 7 days
-					1209600 => 336,	// 14 days
-					2419200 => 672,	// 28 days
+				'time_text' => array(
+					'hour' => 'Hour',
+					'day' => 'Day',
+					'week' => 'Week',
+					'month' => 'Month',
+					'year' => 'Year',
 				),
 				'qualifiers' => array(
 					'default' => '(default)',

@@ -98,9 +98,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function get_posts_mods( array $mod, $posts_per_page = false, $paged = false ) {
 			$ret = array();
-			foreach ( $this->get_posts( $mod, $posts_per_page, $paged ) as $post ) {
-				if ( ! empty( $post->ID ) ) {	// just in case
-					$ret[] = $this->p->m['util']['post']->get_mod( $post->ID );
+			foreach ( $this->get_posts( $mod, $posts_per_page, $paged ) as $post_obj ) {
+				if ( ! empty( $post_obj->ID ) ) {	// just in case
+					$ret[] = $this->p->m['util']['post']->get_mod( $post_obj->ID );
 				}
 			}
 			return $ret;

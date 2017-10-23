@@ -1219,13 +1219,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $mod['is_home'] ) {	// static or index page
 				if ( empty( $this->p->options['schema_person_id'] ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: schema_person_id disabled for home page' );
+					}
 					return $json_data;	// exit early
 				} else {
 					$user_id = $this->p->options['schema_person_id'];
-					if ( $this->p->debug->enabled )
-						$this->p->debug->log( 'user_id for home page is '.$user_id );
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'person / user_id for home page is '.$user_id );
+					}
 				}
 			} elseif ( isset( $mod['is_user'] ) ) {
 				$user_id = $mod['id'];
@@ -1336,7 +1338,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * Place / Location Properties
 			 */
-			if ( isset( $org_opts['org_place_id'] ) && $org_opts['org_place_id'] !== 'none' ) {
+			if ( isset( $org_opts['org_place_id'] ) && SucomUtil::is_opt_id( $org_opts['org_place_id'] ) ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding place / location properties' );
 				}
@@ -1353,8 +1355,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$place_id = $org_opts['org_place_id'];
 				} else {
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'overriding org_place_id '.
-							$org_opts['org_place_id'].' with plm_addr_id '.$place_id );
+						$wpsso->debug->log( 'overriding org_place_id '.$org_opts['org_place_id'].' with plm_addr_id '.$place_id );
 					}
 				}
 
@@ -1715,21 +1716,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = self::get_schema_type_context( $event_type_url );
 
-			if ( ! empty( $event_opts['event_organizer_person_id'] ) &&
-				$event_opts['event_organizer_person_id'] !== 'none' ) {	// example: tribe_organizer-0
-
-				if ( ! self::add_single_person_data( $ret['organizer'],
-					$mod, $event_opts['event_organizer_person_id'], false ) ) { 	// $list_element = false
-					unset( $ret['organizer'] );	// prevent null assignment
+			if ( isset( $event_opts['event_organizer_person_id'] ) && SucomUtil::is_opt_id( $event_opts['event_organizer_person_id'] ) ) {
+				if ( ! self::add_single_person_data( $ret['organizer'], $mod, $event_opts['event_organizer_person_id'], false ) ) {
+					unset( $ret['organizer'] );
 				}
 			}
 
-			if ( ! empty( $event_opts['event_place_id'] ) &&
-				$event_opts['event_place_id'] !== 'none' ) {	// example: tribe_venue-0
-
-				if ( ! self::add_single_place_data( $ret['location'],
-					$mod, $event_opts['event_place_id'], false ) ) {	// $list_element = false
-					unset( $ret['location'] );	// prevent null assignment
+			if ( isset( $event_opts['event_place_id'] ) && SucomUtil::is_opt_id( $event_opts['event_place_id'] ) ) {
+				if ( ! self::add_single_place_data( $ret['location'], $mod, $event_opts['event_place_id'], false ) ) {
+					unset( $ret['location'] );
 				}
 			}
 
@@ -1815,10 +1810,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			// add schema properties from the job options
 			self::add_data_itemprop_from_assoc( $ret, $job_opts, array(
 				'title' => 'job_title',
-				'baseSalary' => 'job_salary',
-				'salaryCurrency' => 'job_currency',
 				'validThrough' => 'job_expire_iso',
 			) );
+
+			if ( isset( $job_opts['job_salary'] ) && is_numeric( $job_opts['job_salary'] ) ) {
+				$ret['baseSalary'] = self::get_schema_type_context( 'https://schema.org/MonetaryAmount' );
+				self::add_data_itemprop_from_assoc( $ret['baseSalary'], $job_opts, array(
+					'currency' => 'job_salary_currency',
+				) );
+				$ret['baseSalary']['value'] = self::get_schema_type_context( 'https://schema.org/QuantitativeValue' );
+				self::add_data_itemprop_from_assoc( $ret['baseSalary']['value'], $job_opts, array(
+					'value' => 'job_salary',
+					'unitText' => 'job_salary_period',
+				) );
+			}
+
+			if ( isset( $job_opts['job_org_id'] ) && SucomUtil::is_opt_id( $job_opts['job_org_id'] ) ) {
+				if ( ! self::add_single_organization_data( $ret['hiringOrganization'], $mod, $job_opts['job_org_id'], false ) ) {
+					unset( $ret['hiringOrganization'] );
+				}
+			}
 
 			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_job', $ret, $mod, $job_id );
 
@@ -1847,8 +1858,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$user_id = $mod['post_author'];
 
 			if ( empty( $user_id ) ) {
-				if ( $wpsso->debug->enabled )
+				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: empty user_id / post_author' );
+				}
 				return 0;
 			}
 
@@ -2435,8 +2447,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function get_author_list_noscript( array &$mod ) {
 
 			if ( empty( $mod['post_author'] ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty post_author' );
+				}
 				return array();
 			}
 

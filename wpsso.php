@@ -326,18 +326,17 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				if ( $this->debug->is_enabled( 'wp' ) ) {
 					$this->debug->log( 'WP debug log mode is active' );
 					if ( is_admin() ) {
-						$this->notice->warn( __( 'WP debug log mode is active &mdash; debug messages are being sent to the WordPress debug log.',
-							'wpsso' ).' '.sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
-							'wpsso' ), $info['short'] ).' '.__( 'Please disable debug mode when debugging is complete.',
-							'wpsso' ) );
+						$this->notice->warn( __( 'WP debug log mode is active &mdash; debug messages are being sent to the WordPress debug log.', 'wpsso' ).' '.sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.', 'wpsso' ), $info['short'] ).' '.__( 'Please disable debug mode when debugging is complete.', 'wpsso' ) );
 					}
-				} elseif ( $this->debug->is_enabled( 'html' ) ) {
-					$this->debug->log( 'HTML debug mode is active' );
-					if ( is_admin() ) {
-						$this->notice->warn( __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.',
-							'wpsso' ).' '.sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
-							'wpsso' ), $info['short'] ).' '.__( 'Please disable debug mode when debugging is complete.',
-							'wpsso' ) );
+				}
+				if ( $this->debug->is_enabled( 'html' ) ) {
+					if ( $crawler_name = SucomUtil::get_crawler_name() ) {
+						$this->debug->enable( 'html', false );
+					} else {
+						$this->debug->log( 'HTML debug mode is active' );
+						if ( is_admin() ) {
+							$this->notice->warn( __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.', 'wpsso' ).' '.sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.', 'wpsso' ), $info['short'] ).' '.__( 'Please disable debug mode when debugging is complete.', 'wpsso' ) );
+						}
 					}
 				}
 				$this->util->add_plugin_filters( $this, array( 
