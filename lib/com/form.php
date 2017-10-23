@@ -419,7 +419,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$len = array( 'max' => $len );
 			}
 
-			if ( ! empty( $len['max'] ) && ! empty( $id ) ) {
+			if ( ! empty( $len['max'] ) ) {
+				if ( empty( $id ) ) {
+					$id = $name;
+				}
 				$html .= $this->get_text_length_js( 'text_'.$id );
 			}
 
@@ -935,7 +938,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$len = array( 'max' => $len );
 			}
 
-			if ( ! empty( $len['max'] ) && ! empty( $id ) ) {
+			if ( ! empty( $len['max'] ) ) {
+				if ( empty( $id ) ) {
+					$id = $name;
+				}
 				$html .= $this->get_text_length_js( 'textarea_'.$id );
 			}
 

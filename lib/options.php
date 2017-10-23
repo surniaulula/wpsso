@@ -300,7 +300,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					/*
 					 * If an SEO plugin is detected, adjust some related SEO options.
 					 */
-					if ( $this->p->avail['seo']['*'] ) {
+					if ( ! empty( $this->p->avail['seo']['*'] ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'seo plugin found - checking meta tag options' );
 						}
@@ -461,6 +461,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( isset( $opts['og_desc_len'] ) && 
 				$opts['og_desc_len'] < $this->p->cf['head']['limit_min']['og_desc_len'] )  {
 				$opts['og_desc_len'] = $this->p->cf['head']['limit_min']['og_desc_len'];
+			}
+
+			// remove the SEO description if a known SEO plugin is active
+			if ( isset( $opts['seo_desc'] ) && ! empty( $this->p->avail['seo']['*'] ) ) {
+				unset( $opts['seo_desc'] );
 			}
 
 			if ( $mod === false ) {
