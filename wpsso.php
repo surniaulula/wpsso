@@ -330,7 +330,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					}
 				}
 				if ( $this->debug->is_enabled( 'html' ) ) {
-					if ( $crawler_name = SucomUtil::get_crawler_name() ) {
+					if ( SucomUtil::get_crawler_name() !== 'none' ) {
 						$this->debug->enable( 'html', false );
 					} else {
 						$this->debug->log( 'HTML debug mode is active' );
