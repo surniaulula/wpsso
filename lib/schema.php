@@ -1098,19 +1098,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$ret = self::get_schema_type_context( 'https://schema.org/WebSite',
-				array( 'url' => $mt_og['og:url'] ) );
+			$ret = self::get_schema_type_context( 'https://schema.org/WebSite', array( 'url' => $mt_og['og:url'] ) );
 
-			if ( $name = SucomUtil::get_site_name( $this->p->options, $mod ) ) {
-				$ret['name'] = $name;
-			}
-
-			if ( $alt_name = SucomUtil::get_site_alt_name( $this->p->options, $mod ) ) {
-				$ret['alternateName'] = $alt_name;
-			}
-
-			if ( $desc = SucomUtil::get_site_description( $this->p->options, $mod ) ) {
-				$ret['description'] = $desc;
+			foreach ( array(
+				'name' => SucomUtil::get_site_name( $this->p->options, $mod ),
+				'alternateName' => SucomUtil::get_site_alt_name( $this->p->options, $mod ),
+				'description' => SucomUtil::get_site_description( $this->p->options, $mod ),
+			) as $key => $value ) {
+				if ( ! empty( $value ) ) {
+					$ret[$key] = $value;
+				}
 			}
 
 			/*
@@ -1268,7 +1265,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'organization', $org_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1
+			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
 				return $ret;
 			}
 
@@ -1328,13 +1325,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$wpsso->debug->log( 'organization '.$logo_key.' image is missing and required' );
 					}
 					if ( $wpsso->notice->is_admin_pre_notices() && ( ! $mod['is_post'] || $mod['post_status'] === 'publish' ) ) {
-						switch ( $logo_key ) {
-							case 'org_logo_url':
-								$wpsso->notice->err( sprintf( __( 'The "%1$s" Organization Logo image is missing and required for the Schema %2$s markup.', 'wpsso' ), $ret['name'], $org_type_url ) );
-								break;
-							case 'org_banner_url':
-								$wpsso->notice->err( sprintf( __( 'The "%1$s" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup.', 'wpsso' ), $ret['name'], $org_type_url ) );
-								break;
+						if ( $logo_key === 'org_logo_url' ) {
+							$wpsso->notice->err( sprintf( __( 'The "%1$s" Organization Logo image is missing and required for the Schema %2$s markup.', 'wpsso' ), $ret['name'], $org_type_url ) );
+						} elseif ( $logo_key === 'org_banner_url' ) {
+							$wpsso->notice->err( sprintf( __( 'The "%1$s" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup.', 'wpsso' ), $ret['name'], $org_type_url ) );
 						}
 					}
 				}
@@ -1344,6 +1338,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Place / Location Properties
 			 */
 			if ( isset( $org_opts['org_place_id'] ) && SucomUtil::is_opt_id( $org_opts['org_place_id'] ) ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding place / location properties' );
 				}
@@ -1372,13 +1367,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * Google Knowledge Graph
 			 */
+			$org_opts['org_sameas'] = isset( $org_opts['org_sameas'] ) ? $org_opts['org_sameas'] : array();
 			$org_opts['org_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_organization_sameas',
-				( isset( $org_opts['org_sameas'] ) ? $org_opts['org_sameas'] : array() ), $mod, $org_id );
+				$org_opts['org_sameas'], $mod, $org_id );
 
 			if ( ! empty( $org_opts['org_sameas'] ) && is_array( $org_opts['org_sameas'] ) ) {	// just in case
-				foreach ( $org_opts['org_sameas'] as $url ) {
-					if ( ! empty( $url ) ) {	// just in case
-						$ret['sameAs'][] = esc_url( $url );
+				foreach ( $org_opts['org_sameas'] as $sameas_url ) {
+					if ( ! empty( $sameas_url ) ) {	// just in case
+						$ret['sameAs'][] = esc_url( $sameas_url );
 					}
 				}
 			}
@@ -1404,21 +1400,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public static function get_site_organization( $mixed = 'current' ) {
 
 			$wpsso =& Wpsso::get_instance();
-
+			$social_accounts = apply_filters( $wpsso->cf['lca'].'_social_accounts', $wpsso->cf['form']['social_accounts'] );
 			$org_sameas = array();
 
-			foreach ( apply_filters( $wpsso->cf['lca'].'_social_accounts', 
-				$wpsso->cf['form']['social_accounts'] ) as $social_key => $social_label ) {
-
-				$url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// localized value
-
-				if ( empty( $url ) ) {
+			foreach ( $social_accounts as $social_key => $social_label ) {
+				$sameas_url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// localized value
+				if ( empty( $sameas_url ) ) {
 					continue;
-				} elseif ( $social_key === 'tc_site' ) {
-					$org_sameas[] = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
-				// use filter_var() instead of strpos() to exclude (description) strings that contain urls
-				} elseif ( filter_var( $url, FILTER_VALIDATE_URL ) !== false ) {
-					$org_sameas[] = $url;
+				} elseif ( $social_key === 'tc_site' ) {	// convert twitter name to url
+					$sameas_url = 'https://twitter.com/'.preg_replace( '/^@/', '', $sameas_url );
+				}
+				if ( filter_var( $sameas_url, FILTER_VALIDATE_URL ) !== false ) {
+					$org_sameas[] = $sameas_url;
 				}
 			}
 
@@ -1439,7 +1432,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'place', $place_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1
+			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
 				return $ret;
 			}
 
@@ -1561,12 +1554,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! empty( $place_opts['place_order_urls'] ) ) {
-				foreach ( SucomUtil::explode_csv( $place_opts['place_order_urls'] ) as $url ) {
-					if ( ! empty( $url ) ) {	// just in case
+				foreach ( SucomUtil::explode_csv( $place_opts['place_order_urls'] ) as $order_url ) {
+					if ( ! empty( $order_url ) ) {	// just in case
 						$ret['potentialAction'][] = array(
 							'@context' => 'https://schema.org',
 							'@type' => 'OrderAction',
-							'target' => $url,
+							'target' => $order_url,
 						);
 					}
 				}
@@ -1602,7 +1595,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'event', $event_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1
+			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
 				return $ret;
 			}
 
@@ -1783,7 +1776,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'job', $job_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1
+			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
 				return $ret;
 			}
 
@@ -1832,11 +1825,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) );
 
 			if ( isset( $job_opts['job_salary'] ) && is_numeric( $job_opts['job_salary'] ) ) {
+
 				$ret['baseSalary'] = self::get_schema_type_context( 'https://schema.org/MonetaryAmount' );
+
 				self::add_data_itemprop_from_assoc( $ret['baseSalary'], $job_opts, array(
 					'currency' => 'job_salary_currency',
 				) );
+
 				$ret['baseSalary']['value'] = self::get_schema_type_context( 'https://schema.org/QuantitativeValue' );
+
 				self::add_data_itemprop_from_assoc( $ret['baseSalary']['value'], $job_opts, array(
 					'value' => 'job_salary',
 					'unitText' => 'job_salary_period',
@@ -1922,7 +1919,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'person', $user_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1
+			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
 				return $ret;
 			}
 
@@ -1963,15 +1960,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$user_sameas = array();
 				foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
-					$url = $user_mod['obj']->get_author_meta( $user_id, $cm_id );
-					if ( empty( $url ) ) {
+					$sameas_url = $user_mod['obj']->get_author_meta( $user_id, $cm_id );
+					if ( empty( $sameas_url ) ) {
 						continue;
+					} elseif ( $cm_id === $wpsso->options['plugin_cm_twitter_name'] ) {	// convert twitter name to url
+						$sameas_url = 'https://twitter.com/'.preg_replace( '/^@/', '', $sameas_url );
 					}
-					if ( $cm_id === $wpsso->options['plugin_cm_twitter_name'] ) {
-						$url = 'https://twitter.com/'.preg_replace( '/^@/', '', $url );
-					}
-					if ( filter_var( $url, FILTER_VALIDATE_URL ) !== false ) {
-						$user_sameas[] = $url;
+					if ( filter_var( $sameas_url, FILTER_VALIDATE_URL ) !== false ) {
+						$user_sameas[] = $sameas_url;
 					}
 				}
 
@@ -2018,11 +2014,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$person_opts['person_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_person_sameas',
 				( isset( $person_opts['person_sameas'] ) ? $person_opts['person_sameas'] : array() ), $mod, $user_id );
 
-			if ( ! empty( $person_opts['person_sameas'] ) &&
-				is_array( $person_opts['person_sameas'] ) ) {	// just in case
-				foreach ( $person_opts['person_sameas'] as $url ) {
-					if ( ! empty( $url ) ) {	// just in case
-						$ret['sameAs'][] = esc_url( $url );
+			if ( ! empty( $person_opts['person_sameas'] ) && is_array( $person_opts['person_sameas'] ) ) {	// just in case
+				foreach ( $person_opts['person_sameas'] as $sameas_url ) {
+					if ( ! empty( $sameas_url ) ) {	// just in case
+						$ret['sameAs'][] = esc_url( $sameas_url );
 					}
 				}
 			}
@@ -2092,8 +2087,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$post_id = $opts[$prefix.':id'];
 				$mod = $wpsso->m['util']['post']->get_mod( $post_id );
 
-				$ret['name'] = $wpsso->page->get_title( $wpsso->options['og_title_len'], '...', $mod, true,
-					false, true, 'schema_title' );	// $add_hashtags = false, $encode = true, $md_idx = schema_title
+				$ret['name'] = $wpsso->page->get_title( $wpsso->options['og_title_len'],
+					'...', $mod, true, false, true, 'schema_title' );
 
 				if ( empty( $ret['name'] ) ) {	// just in case
 					unset( $ret['name'] );
@@ -2410,7 +2405,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( empty( $media_url ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: '.$prefix.' URL values are empty' );
+						$this->p->debug->log( 'exiting early: '.$prefix.' url values are empty' );
 					}
 					return array();
 				}
@@ -2530,21 +2525,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$user_mod = $this->p->m['util']['user']->get_mod( $author_id );
 			}
 
-			$url = $user_mod['obj']->get_author_website( $author_id, 'url' );
-			$name = $user_mod['obj']->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
-			$desc = $user_mod['obj']->get_options_multi( $author_id, array( 'schema_desc', 'og_desc' ) );
+			$author_url = $user_mod['obj']->get_author_website( $author_id, 'url' );
+			$author_name = $user_mod['obj']->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
+			$author_desc = $user_mod['obj']->get_options_multi( $author_id, array( 'schema_desc', 'og_desc' ) );
 
-			if ( empty( $desc ) ) {
-				$desc = $user_mod['obj']->get_author_meta( $author_id, 'description' );
+			if ( empty( $author_desc ) ) {
+				$author_desc = $user_mod['obj']->get_author_meta( $author_id, 'description' );
 			}
 
 			$mt_author = array_merge(
-				( empty( $url ) ? array() : $this->p->head->get_single_mt( 'link',
-					'itemprop', $itemprop.'.url', $url, '', $user_mod ) ),
-				( empty( $name ) ? array() : $this->p->head->get_single_mt( 'meta',
-					'itemprop', $itemprop.'.name', $name, '', $user_mod ) ),
-				( empty( $desc ) ? array() : $this->p->head->get_single_mt( 'meta',
-					'itemprop', $itemprop.'.description', $desc, '', $user_mod ) )
+				( empty( $author_url ) ? array() : $this->p->head->get_single_mt( 'link', 'itemprop', $itemprop.'.url', $author_url, '', $user_mod ) ),
+				( empty( $author_name ) ? array() : $this->p->head->get_single_mt( 'meta', 'itemprop', $itemprop.'.name', $author_name, '', $user_mod ) ),
+				( empty( $author_desc ) ? array() : $this->p->head->get_single_mt( 'meta', 'itemprop', $itemprop.'.description', $author_desc, '', $user_mod ) )
 			);
 
 			// optimize by first checking if the meta tag is enabled
