@@ -1701,14 +1701,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_first_last_next_nums( array $input ) {
-			$count = count( $input );
 			$keys = array_keys( $input );
-			if ( $count && ! is_numeric( implode( $keys ) ) )	// array cannot be associative
-				return array( 0, 0, 0 );
-			sort( $keys );
-			$first = (int) reset( $keys );
-			$last = (int) end( $keys );
-			$next = $count ? $last + 1 : $last;	// next is 0 for an empty array
+			$count = count( $keys );
+			if ( $count && ! is_numeric( implode( $keys ) ) ) {	// check for non-numeric keys
+				$keys = array();
+				foreach ( $input as $key => $value ) {	// keep only the numeric keys
+					if ( is_numeric( $key ) ) {
+						$keys[] = $key;
+					}
+				}
+				$count = count( $keys );
+			}
+			sort( $keys );	// sort numerically
+			$first = (int) reset( $keys );	// get the first number
+			$last = (int) end( $keys );	// get the last number
+			$next = $count ? $last + 1 : $last;	// next is 0 (not 1) for an empty array
 			return array( $first, $last, $next );
 		}
 
@@ -2146,14 +2153,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			} elseif ( is_admin() ) {
 				$screen_base = self::get_screen_base();
-				if ( $screen_base === 'post' )
+				if ( $screen_base === 'post' ) {
 					$ret = true;
-				elseif ( $screen_base === false &&	// called too early for screen
+				} elseif ( $screen_base === false &&	// called too early for screen
 					( self::get_request_value( 'post_ID', 'POST' ) !== '' ||	// uses sanitize_text_field
-						self::get_request_value( 'post', 'GET' ) !== '' ) )
-							$ret = true;
-				elseif ( basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' )
+						self::get_request_value( 'post', 'GET' ) !== '' ) ) {
 					$ret = true;
+				} elseif ( basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' ) {
+					$ret = true;
+				}
 			}
 
 			return apply_filters( 'sucom_is_post_page', $ret, $use_post );
@@ -2180,8 +2188,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			} elseif ( is_admin() ) {
 				if ( ( $post_id = self::get_request_value( 'post_ID', 'POST' ) ) !== '' ||	// uses sanitize_text_field
-					( $post_id = self::get_request_value( 'post', 'GET' ) ) !== '' )
-						$post_obj = get_post( $post_id );
+					( $post_id = self::get_request_value( 'post', 'GET' ) ) !== '' ) {
+					$post_obj = get_post( $post_id );
+				}
 			}
 
 			$post_obj = apply_filters( 'sucom_get_post_object', $post_obj, $use_post );
@@ -2216,12 +2225,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$ret = true;
 			} elseif ( is_admin() ) {
 				$screen_base = self::get_screen_base();
-				if ( $screen_base === 'term' )	// since wp v4.5
+				if ( $screen_base === 'term' ) {	// since wp v4.5
 					$ret = true;
-				elseif ( ( $screen_base === false || $screen_base === 'edit-tags' ) &&	
+				} elseif ( ( $screen_base === false || $screen_base === 'edit-tags' ) &&	
 					( self::get_request_value( 'taxonomy' ) !== '' &&	// uses sanitize_text_field
-						self::get_request_value( 'tag_ID' ) !== '' ) )
-							$ret = true;
+						self::get_request_value( 'tag_ID' ) !== '' ) ) {
+					$ret = true;
+				}
 			}
 			return apply_filters( 'sucom_is_term_page', $ret );
 		}
@@ -2234,8 +2244,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$ret = true;
 			} elseif ( is_admin() ) {
 				if ( self::is_term_page() &&
-					self::get_request_value( 'taxonomy' ) === 'category' )	// uses sanitize_text_field
-						$ret = true;
+					self::get_request_value( 'taxonomy' ) === 'category' ) {	// uses sanitize_text_field
+					$ret = true;
+				}
 			}
 			return apply_filters( 'sucom_is_category_page', $ret );
 		}
@@ -2248,8 +2259,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$ret = true;
 			} elseif ( is_admin() ) {
 				if ( self::is_term_page() &&
-					self::get_request_value( 'taxonomy' ) === '_tag' )	// uses sanitize_text_field
-						$ret = true;
+					self::get_request_value( 'taxonomy' ) === '_tag' ) {	// uses sanitize_text_field
+					$ret = true;
+				}
 			}
 			return apply_filters( 'sucom_is_tag_page', $ret );
 		}
@@ -2265,8 +2277,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			} elseif ( is_admin() ) {
 				if ( ( $tax_slug = self::get_request_value( 'taxonomy' ) ) !== '' &&	// uses sanitize_text_field
-					( $term_id = self::get_request_value( 'tag_ID' ) ) !== '' )
-						$term_obj = get_term( (int) $term_id, (string) $tax_slug, OBJECT, 'raw' );
+					( $term_id = self::get_request_value( 'tag_ID' ) ) !== '' ) {
+					$term_obj = get_term( (int) $term_id, (string) $tax_slug, OBJECT, 'raw' );
+				}
 
 			}
 
@@ -2312,8 +2325,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 							break;
 					}
 				} elseif ( self::get_request_value( 'user_id' ) !== '' || 	// called too early for screen
-					basename( $_SERVER['PHP_SELF'] ) === 'profile.php' )
-						$ret = true;
+					basename( $_SERVER['PHP_SELF'] ) === 'profile.php' ) {
+					$ret = true;
+				}
 			}
 			return apply_filters( 'sucom_is_user_page', $ret );
 		}
@@ -2349,8 +2363,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					get_userdata( get_query_var( 'author' ) );
 
 			} elseif ( is_admin() ) {
-				if ( ( $user_id = self::get_request_value( 'user_id' ) ) === '' )	// uses sanitize_text_field
+				if ( ( $user_id = self::get_request_value( 'user_id' ) ) === '' ) {	// uses sanitize_text_field
 					$user_id = get_current_user_id();
+				}
 				$user_obj = get_userdata( $user_id );
 			}
 

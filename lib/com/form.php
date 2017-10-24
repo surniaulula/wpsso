@@ -35,6 +35,40 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->set_text_domain( $this->menu_ext );
 		}
 
+		public function get_prop( $name ) {
+			static $cache = array();
+			if ( ! isset( $cache[$name] ) ) {
+				switch ( $name ) {
+					case 'half_hours':
+						$cache[$name] = SucomUtil::get_hours_range( 0, DAY_IN_SECONDS, 60 * 30, '' );
+						break;
+					case 'all_types':
+						$cache[$name] = $this->p->schema->get_schema_types_array( false );
+						break;
+					case 'business_types':
+						$this->get_prop( 'all_types' );
+						$cache[$name] =& $cache['all_types']['thing']['place']['local.business'];
+						break;
+					case 'business_select':
+						$this->get_prop( 'business_types' );
+						$cache[$name] = $this->p->schema->get_schema_types_select( $cache['business_types'], false );
+						break;
+					case 'org_types':
+						$this->get_prop( 'all_types' );
+						$cache[$name] =& $cache['all_types']['thing']['organization'];
+						break;
+					case 'org_select':
+						$this->get_prop( 'org_types' );
+						$cache[$name] = $this->p->schema->get_schema_types_select( $cache['org_types'], false );
+						break;
+					default:
+						$cache[$name] = null;
+						break;
+				}
+			}
+			return $cache[$name];
+		}
+
 		public function get_options_name() {
 			return $this->options_name;
 		}

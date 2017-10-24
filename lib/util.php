@@ -987,12 +987,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = $this->get_page_mod( $mod );
 			}
 
-			if ( isset( $atts['url'] ) ) {
-				$sharing_url = $atts['url'];
+			$add_page = isset( $atts['add_page'] ) ? $atts['add_page'] : true;
+			$src_id = isset( $atts['src_id'] ) ? $atts['src_id'] : '';
+
+			if ( empty( $atts['url'] ) ) {
+				$sharing_url = $this->get_sharing_url( $mod, $add_page, $src_id );
 			} else {
-				$sharing_url = $this->get_sharing_url( $mod, 
-					( isset( $atts['add_page'] ) ? $atts['add_page'] : true ),
-					( isset( $atts['src_id'] ) ? $atts['src_id'] : '' ) );
+				$sharing_url = $atts['url'];
 			}
 
 			if ( is_admin() ) {
@@ -1002,8 +1003,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( empty( $atts['short_url'] ) ) {
-				$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',
-					$sharing_url, $this->p->options['plugin_shortener'] );
+				$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url', $sharing_url, $this->p->options['plugin_shortener'] );
 			} else {
 				$short_url = $atts['short_url'];
 			}
@@ -1932,7 +1932,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_ext_req_msg( $ext ) {
 			$req_msg = '';
 			if ( empty( $this->p->avail['p_ext'][$ext] ) ) {
-				$req_msg .= ' <p style="display:inline;"><em>';
+				$req_msg .= ' <p style="display:inline;" class="ext_req_msg"><em>';
 				if ( ! empty( $this->p->cf['plugin']['wpsso'.$ext]['url']['home'] ) ) {
 					$req_msg .= '<a href="'.$this->p->cf['plugin']['wpsso'.$ext]['url']['home'].'">';
 				}

@@ -681,49 +681,49 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:90 lib/com-gettext-extract.php:28
+#: lib/com/form.php:124 lib/com-gettext-extract.php:28
 #: lib/config-gettext-extract.php:18
 msgctxt "option value"
 msgid "default is %s"
 msgstr ""
 
-#: lib/com/form.php:92 lib/com-gettext-extract.php:27
+#: lib/com/form.php:126 lib/com-gettext-extract.php:27
 #: lib/config-gettext-extract.php:14
 msgctxt "option value"
 msgid "checked"
 msgstr ""
 
-#: lib/com/form.php:93 lib/com-gettext-extract.php:35
+#: lib/com/form.php:127 lib/com-gettext-extract.php:35
 #: lib/config-gettext-extract.php:116
 msgctxt "option value"
 msgid "unchecked"
 msgstr ""
 
-#: lib/com/form.php:94 lib/com-gettext-extract.php:34
+#: lib/com/form.php:128 lib/com-gettext-extract.php:34
 #: lib/config-gettext-extract.php:71
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: lib/com/form.php:259 lib/com-gettext-extract.php:31
+#: lib/com/form.php:293 lib/com-gettext-extract.php:31
 #: lib/config-gettext-extract.php:66
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/com/form.php:264 lib/com-gettext-extract.php:33
+#: lib/com/form.php:298 lib/com-gettext-extract.php:33
 #: lib/config-gettext-extract.php:69
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/com/form.php:269 lib/com-gettext-extract.php:32
+#: lib/com/form.php:303 lib/com-gettext-extract.php:32
 #: lib/config-gettext-extract.php:67
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/com/form.php:275 lib/com/form.php:393 lib/com/form.php:545
+#: lib/com/form.php:309 lib/com/form.php:427 lib/com/form.php:579
 #: lib/com-gettext-extract.php:29 lib/config-gettext-extract.php:19
 msgctxt "option value"
 msgid "(default)"
