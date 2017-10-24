@@ -394,6 +394,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new WpssoSchema set_single_data_from_cache() and get_single_type_id_url() methods.
 	* Refactored the WpssoSchema add_single_*_data methods (organization, person, place, etc.).
 	* Refactored the WpssoProUtilWpseoMeta class and all its methods.
+	* Added a new SucomForm get_cache() method to cache and return common arrays (schema types, organization names, etc.).
 
 **Version 3.47.1 (2017/10/17)**
 
