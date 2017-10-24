@@ -18,7 +18,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		private $text_domain = false;
 		private $options_name = null;
 
-		private static $instances = array();	// array of instances by options name and menu ext / text domain
 		private static $cache = array();
 
 		public $options = array();
@@ -38,15 +37,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->menu_ext = empty( $menu_ext ) ? $this->p->cf['lca'] : $menu_ext;	// required for text_domain
 			$this->set_text_domain( $this->menu_ext );
 		}
-
-		// save instances by options name and text domain
-		public static function &get_instance( &$plugin, $opts_name, &$opts, &$def_opts, $menu_ext = '' ) {
-			if ( ! isset( self::$instances[$opts_name][$menu_ext] ) ) {
-				self::$instances[$opts_name][$menu_ext] = new self( $plugin, $opts_name, $opts, $def_opts, $menu_ext );
-			}
-			return self::$instances[$opts_name][$menu_ext];
-		}
-
 
 		public function get_cache( $name, $add_none = false ) {
 

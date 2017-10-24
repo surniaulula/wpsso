@@ -687,7 +687,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$tabs = $this->get_custom_meta_tabs( $metabox_id, $mod );
 			$opts = $this->get_options( $post_obj->ID );
 			$def_opts = $this->get_defaults( $post_obj->ID );
-			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts );
+			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $lca );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 

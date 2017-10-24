@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->log( 'setting form object for '.$menu_ext );
 			}
 			$def_opts = $this->p->opt->get_defaults();
-			$this->form =& SucomForm::get_instance( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
+			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
 		}
 
 		protected function &get_form_object( $menu_ext ) {	// $menu_ext required for text_domain
@@ -281,8 +281,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function register_setting() {
-			register_setting( $this->p->cf['lca'].'_setting', WPSSO_OPTIONS_NAME,
-				array( &$this, 'registered_setting_sanitation' ) );
+			register_setting( $this->p->cf['lca'].'_setting', WPSSO_OPTIONS_NAME, array( &$this, 'registered_setting_sanitation' ) );
 		}
 
 		protected function add_menu_page( $menu_slug ) {
