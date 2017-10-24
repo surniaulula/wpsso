@@ -13,10 +13,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 	class SucomForm {
 
-		protected $p;
-		protected $menu_ext = null;	// lowercase acronyn for plugin or extension
-		protected $text_domain = false;
-		protected $options_name = null;
+		private $p;
+		private $menu_ext = null;	// lowercase acronyn for plugin or extension
+		private $text_domain = false;
+		private $options_name = null;
+
+		private static $instances = array();	// array of instances by options name and menu ext / text domain
+		private static $cache = array();
 
 		public $options = array();
 		public $defaults = array();
@@ -26,6 +29,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+				$this->p->debug->log( 'form options name is '.$opts_name );
 			}
 
 			$this->options_name =& $opts_name;
@@ -35,38 +39,80 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->set_text_domain( $this->menu_ext );
 		}
 
-		public function get_prop( $name ) {
-			static $cache = array();
-			if ( ! isset( $cache[$name] ) ) {
+		// save instances by options name and text domain
+		public static function &get_instance( &$plugin, $opts_name, &$opts, &$def_opts, $menu_ext = '' ) {
+			if ( ! isset( self::$instances[$opts_name][$menu_ext] ) ) {
+				self::$instances[$opts_name][$menu_ext] = new self( $plugin, $opts_name, $opts, $def_opts, $menu_ext );
+			}
+			return self::$instances[$opts_name][$menu_ext];
+		}
+
+
+		public function get_cache( $name, $add_none = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$name = SucomUtil::sanitize_key( $name );	// just in case
+
+			if ( ! isset( self::$cache[$name] ) ) {
+				self::$cache[$name] = null;
+			}
+
+			$cache_name_ref =& self::$cache[$name];
+
+			if ( $cache_name_ref === null ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding new form cache entry for '.$name );
+				}
+
 				switch ( $name ) {
 					case 'half_hours':
-						$cache[$name] = SucomUtil::get_hours_range( 0, DAY_IN_SECONDS, 60 * 30, '' );
+						$cache_name_ref = SucomUtil::get_hours_range( 0, DAY_IN_SECONDS, 60 * 30, '' );
 						break;
 					case 'all_types':
-						$cache[$name] = $this->p->schema->get_schema_types_array( false );
+						$cache_name_ref = $this->p->schema->get_schema_types_array( false );	// $flatten = false
 						break;
 					case 'business_types':
-						$this->get_prop( 'all_types' );
-						$cache[$name] =& $cache['all_types']['thing']['place']['local.business'];
+						$this->get_cache( 'all_types' );
+						$cache_name_ref =& self::$cache['all_types']['thing']['place']['local.business'];
 						break;
-					case 'business_select':
-						$this->get_prop( 'business_types' );
-						$cache[$name] = $this->p->schema->get_schema_types_select( $cache['business_types'], false );
+					case 'business_types_select':
+						$this->get_cache( 'business_types' );
+						$cache_name_ref = $this->p->schema->get_schema_types_select( self::$cache['business_types'], false );
 						break;
 					case 'org_types':
-						$this->get_prop( 'all_types' );
-						$cache[$name] =& $cache['all_types']['thing']['organization'];
+						$this->get_cache( 'all_types' );
+						$cache_name_ref =& self::$cache['all_types']['thing']['organization'];
 						break;
-					case 'org_select':
-						$this->get_prop( 'org_types' );
-						$cache[$name] = $this->p->schema->get_schema_types_select( $cache['org_types'], false );
+					case 'org_types_select':
+						$this->get_cache( 'org_types' );
+						$cache_name_ref = $this->p->schema->get_schema_types_select( self::$cache['org_types'], false );
+						break;
+					case 'org_site_names':
+						$cache_name_ref = apply_filters( $this->p->cf['lca'].'_form_cache_'.$name, array( 'site' => '[Website Organization]' ) );
 						break;
 					default:
-						$cache[$name] = null;
+						$cache_name_ref = apply_filters( $this->p->cf['lca'].'_form_cache_'.$name, null );
 						break;
 				}
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'returning existing form cache entry for '.$name );
 			}
-			return $cache[$name];
+
+			if ( $add_none ) {
+				$none = array( 'none' => '[None]' );
+				if ( is_array( $cache_name_ref ) ) {
+					return $none + $cache_name_ref;
+				} else {
+					return $none;
+				}
+			} else {
+				return $cache_name_ref;
+			}
 		}
 
 		public function get_options_name() {
@@ -81,9 +127,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->text_domain;
 		}
 
-		public function set_text_domain( $ext ) {
-			$this->text_domain = isset( $this->p->cf['plugin'][$ext]['text_domain'] ) ?
-				$this->p->cf['plugin'][$ext]['text_domain'] : false;
+		public function set_text_domain( $maybe_ext ) {
+			$this->text_domain = isset( $this->p->cf['plugin'][$maybe_ext]['text_domain'] ) ?
+				$this->p->cf['plugin'][$maybe_ext]['text_domain'] : $maybe_ext;
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'form text domain set to '.$this->text_domain );
+			}
 		}
 
 		public function get_hidden( $name, $value = '', $is_checkbox = false ) {

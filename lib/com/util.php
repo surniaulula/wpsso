@@ -1700,6 +1700,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
+		public static function get_first_num( array $input ) {
+			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+			return $first;
+		}
+
+		public static function get_last_num( array $input ) {
+			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+			return $last;
+		}
+
+		public static function get_next_num( array $input ) {
+			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+			return $next;
+		}
+
 		public static function get_first_last_next_nums( array $input ) {
 			$keys = array_keys( $input );
 			$count = count( $keys );

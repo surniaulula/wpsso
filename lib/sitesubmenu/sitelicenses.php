@@ -27,9 +27,12 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 		}
 
 		protected function set_form_object( $menu_ext ) {
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+				$this->p->debug->log( 'setting site form object for '.$menu_ext );
+			}
 			$def_site_opts = $this->p->opt->get_site_defaults();
-			$this->form = new SucomForm( $this->p, WPSSO_SITE_OPTIONS_NAME,
-				$this->p->site_options, $def_site_opts, $menu_ext );
+			$this->form = new SucomForm( $this->p, WPSSO_SITE_OPTIONS_NAME, $this->p->site_options, $def_site_opts, $menu_ext );
 		}
 
 		// called by the extended WpssoAdmin class

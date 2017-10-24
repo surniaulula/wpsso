@@ -251,19 +251,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Called by the show_setting_page() method, and extended by the 
-		 * sitesubmenu classes to load the site options instead.
+		 * Called by show_setting_page() and extended by the sitesubmenu classes to load site options instead.
 		 */
 		protected function set_form_object( $menu_ext ) {	// $menu_ext required for text_domain
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+				$this->p->debug->log( 'setting form object for '.$menu_ext );
+			}
 			$def_opts = $this->p->opt->get_defaults();
-			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME,
-				$this->p->options, $def_opts, $menu_ext );
+			$this->form =& SucomForm::get_instance( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
 		}
 
 		protected function &get_form_object( $menu_ext ) {	// $menu_ext required for text_domain
-			if ( ! isset( $this->form ) ||
-				$this->form->get_menu_ext() !== $menu_ext ) {	// just in case
-
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+			if ( ! isset( $this->form ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'form object not defined' );
+				}
+				$this->set_form_object( $menu_ext );
+			} elseif ( $this->form->get_menu_ext() !== $menu_ext ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'form object text domain does not match' );
+				}
 				$this->set_form_object( $menu_ext );
 			}
 			return $this->form;
@@ -777,8 +788,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$menu_ext = $this->p->cf['lca'];
 			}
 
-			// set the form for side boxes and show_form_content()
-			$this->set_form_object( $menu_ext );
+			$this->get_form_object( $menu_ext );
 
 			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
 			echo '<h1>';
@@ -1723,7 +1733,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$some_time_ago = time() - WEEK_IN_SECONDS;
 			$cache_salt = __METHOD__.'(user_id:'.$user_id.')';
 			$cache_id = $lca.'_'.md5( $cache_salt );
-			$this->set_form_object( $lca );
+			$this->get_form_object( $lca );
 
 			if ( get_transient( $cache_id ) ) {	// only show once every 24 hours for each user id
 				return;	// stop here

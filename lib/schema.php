@@ -437,8 +437,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'schema type arrays already filtered' );
 				}
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'using schema type arrays from class property cache' );
 			}
 
 			if ( $flatten ) {
@@ -514,6 +512,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function get_schema_types_select( $schema_types = null, $add_none = true ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			if ( ! is_array( $schema_types ) ) {
 				$schema_types = $this->get_schema_types_array( false );	// $flatten = false
 			}
@@ -542,6 +544,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// get the full schema type url from the array key
 		public function get_schema_type_url( $type_id, $default_id = false ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			$schema_types = $this->get_schema_types_array( true );	// $flatten = true
 
 			if ( isset( $schema_types[$type_id] ) ) {
@@ -555,6 +561,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		// returns an array of schema type ids with gparent, parent, child (in that order)
 		public function get_schema_type_parents( $child_id, &$parents = array(), $use_cache = true ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			if ( $use_cache ) {
 				$lca = $this->p->cf['lca'];
@@ -593,14 +603,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// returns an array of schema type ids with child, parent, gparent (in that order)
 		public function get_schema_type_children( $type_id, &$children = array(), $use_cache = true ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'getting children for type id '.$type_id );
+			}
+
 			if ( $use_cache ) {
 				$lca = $this->p->cf['lca'];
 				$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
 				if ( $this->types_exp > 0 ) {
 					$children = get_transient( $cache_id );	// returns false when not found
-					if ( ! empty( $children ) )
+					if ( ! empty( $children ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'returning children from transient cache' );
+						}
 						return $children;
+					}
 				}
 			}
 
@@ -615,6 +633,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $use_cache ) {
 				if ( $this->types_exp > 0 ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'saving children to transient cache for '.$this->types_exp.' secs' );
+					}
 					set_transient( $cache_id, $children, $this->types_exp );
 				}
 			}
@@ -692,8 +713,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function get_children_css_class( $type_id, $class_names = 'hide_schema_type' ) {
-			$class_prefix = empty( $class_names ) ?
-				'' : SucomUtil::sanitize_hookname( $class_names ).'_';
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+			$class_prefix = empty( $class_names ) ? '' : SucomUtil::sanitize_hookname( $class_names ).'_';
 			foreach ( $this->get_schema_type_children( $type_id ) as $child ) {
 				$class_names .= ' '.$class_prefix.SucomUtil::sanitize_hookname( $child );
 			}
@@ -1851,15 +1874,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'job_org_id is empty or none' );
 			}
 
-			if ( isset( $job_opts['job_place_id'] ) && SucomUtil::is_opt_id( $job_opts['job_place_id'] ) ) {
+			if ( isset( $job_opts['job_location_id'] ) && SucomUtil::is_opt_id( $job_opts['job_location_id'] ) ) {
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'adding place data for job_place_id '.$job_opts['job_place_id'] );
+					$wpsso->debug->log( 'adding place data for job_location_id '.$job_opts['job_location_id'] );
 				}
-				if ( ! self::add_single_place_data( $ret['jobLocation'], $mod, $job_opts['job_place_id'], false ) ) {
+				if ( ! self::add_single_place_data( $ret['jobLocation'], $mod, $job_opts['job_location_id'], false ) ) {
 					unset( $ret['jobLocation'] );
 				}
 			} elseif ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'job_place_id is empty or none' );
+				$wpsso->debug->log( 'job_location_id is empty or none' );
 			}
 
 			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_job', $ret, $mod, $job_id );
