@@ -818,7 +818,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.47.2-b.1 =
 
-(2017/10/25) Fix to convert the currency symbol provided The Event Manager to a currency abbreviation (Pro version). Refactored the WpssoSchema add_single_*_data methods (organization, person, place, etc.). Fix to limit mentions in a Schema CollectionPage for a post object. Fix to prefer getting the Yoast SEO post/term/user meta from the Yoast SEO plugin, instead of directly from the post/term/user meta (Pro version).
+(2017/10/25) Fix to convert currency symbol provided The Event Manager to currency abbreviation. Refactored WpssoSchema add_single_*_data methods. Fix to limit mentions in Schema CollectionPage for post objects. Fix to prefer getting the Yoast SEO meta from Yoast SEO plugin, instead of directly from the Yoast SEO meta options.
 
 = 3.47.1 =
 
