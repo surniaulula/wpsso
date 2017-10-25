@@ -656,31 +656,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'check_for_updates':
 
-							$info = $this->p->cf['plugin']['wpsso'];
-							$um_info = $this->p->cf['plugin']['wpssoum'];
-
-							if ( SucomUtil::active_plugins( $um_info['base'] ) ) {
-
-								// refresh the readme for all extensions
-								foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-									$this->get_readme_info( $ext, false );	// $use_cache = false
-								}
-
-								$wpssoum =& WpssoUm::get_instance();
-
-								if ( isset( $wpssoum->update ) ) {	// just in case
-									/*
-									 * Check for updates for all extensions, show a notice 
-									 * for success or failure, and don't use cached update 
-									 * data from the options table (fetch new update json).
-									 */
-									$wpssoum->update->check_for_updates( null, true, false );	// $use_cache = false
-								} else {
-									$this->p->notice->err( sprintf( __( 'The <b>%2$s</b> extension is not initialized properly. Please make sure you are using the latest versions of %1$s and %2$s.', 'wpsso' ), $info['name'], $um_info['name'] ) );
-								}
-							} else {
-								$this->p->notice->err( sprintf( __( 'The <b>%1$s</b> extension must be active in order to check for Pro version updates.', 'wpsso' ), $um_info['name'] ) );
-							}
+							$this->check_readme_and_updates();
 							break;
 
 						case 'clear_all_cache':
@@ -1829,10 +1805,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
-					// found at least one plugin with an auth id
-					$have_ext_tid = true;
-					// if the update manager is active, the version should be available
-					// skip individual warnings and show nag to install the update manager
+					$have_ext_tid = true;	// found at least one plugin with an auth id
+					/*
+					 * If the update manager is active, the version should be available.
+					 * Skip individual warnings and show nag to install the update manager.
+					 */
 					if ( empty( $um_info['version'] ) ) {
 						break;
 					} else {
@@ -2312,6 +2289,38 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 			return '<img '.$img_src.' width="128" height="128" />';
+		}
+
+		public function check_readme_and_updates() {
+
+			$info = $this->p->cf['plugin']['wpsso'];
+			$um_info = $this->p->cf['plugin']['wpssoum'];
+
+			if ( SucomUtil::active_plugins( $um_info['base'] ) ) {
+
+				// refresh the readme for all extensions
+				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+					$this->get_readme_info( $ext, false );	// $use_cache = false
+				}
+
+				$um_obj =& WpssoUm::get_instance();
+
+				if ( isset( $um_obj->update ) && method_exists( $um_obj->update, 'check_for_updates' ) ) {	// just in case
+					/*
+					 * Check for updates for all extensions, show a notice for success or failure, 
+					 * and don't use cached update data from the options table (fetch new update json).
+					 */
+					$um_obj->update->check_for_updates( null, true, false );	// $use_cache = false
+				} else {
+					$this->p->notice->err( sprintf( __( 'The <b>%1$s</b> extension is not initialized properly.',
+						'wpsso' ), $um_info['name'] ).' '.
+					sprintf( __( 'Please make sure you are using the latest versions of %1$s and %2$s.',
+						'wpsso' ), $info['name'], $um_info['name'] ) );
+				}
+			} else {
+				$this->p->notice->err( sprintf( __( 'The <b>%1$s</b> extension must be active to check for Pro version updates.',
+					'wpsso' ), $um_info['name'] ) );
+			}
 		}
 	}
 }
