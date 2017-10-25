@@ -374,14 +374,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.2-dev.6 (2017/10/24)**
+**Version 3.47.2-b.1 (2017/10/25)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Updated "WPSSO extension" description text to "WPSSO Core extension".
-	* The "Enable WP Excerpt for Pages" and "Enable WP Tags for Pages" options are now enabled by default.
 	* Renamed the "Default Product Currency" option to "Default Currency".
+	* The "Enable WP Excerpt for Pages" and "Enable WP Tags for Pages" options are now enabled by default.
+	* Updated "WPSSO extension" description text to "WPSSO Core extension".
 * *Bugfixes*
 	* Fix to convert the currency symbol provided The Event Manager to a currency abbreviation (Pro version).
 	* Fix to limit mentions in a Schema CollectionPage for a post object to only its first level / direct children.
@@ -395,6 +395,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the WpssoSchema add_single_*_data methods (organization, person, place, etc.).
 	* Refactored the WpssoProUtilWpseoMeta class and all its methods.
 	* Added a new SucomForm get_cache() method to cache and return common arrays (schema types, organization names, etc.).
+	* Added a fallback text domain when translating form option values for plugin extensions.
 
 **Version 3.47.1 (2017/10/17)**
 
@@ -815,9 +816,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.47.2-dev.6 =
+= 3.47.2-b.1 =
 
-(2017/10/24) Fix to convert the currency symbol provided The Event Manager to a currency abbreviation (Pro version). Refactored the WpssoSchema add_single_*_data methods (organization, person, place, etc.). Updated the Google jQuery UI CSS from v1.11.4 to v1.12.1.
+(2017/10/25) Fix to convert the currency symbol provided The Event Manager to a currency abbreviation (Pro version). Refactored the WpssoSchema add_single_*_data methods (organization, person, place, etc.). Fix to limit mentions in a Schema CollectionPage for a post object. Fix to prefer getting the Yoast SEO post/term/user meta from the Yoast SEO plugin, instead of directly from the post/term/user meta (Pro version).
 
 = 3.47.1 =
 
