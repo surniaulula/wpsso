@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.47.2-dev.6\n"
+"Project-Id-Version: WPSSO Core 3.47.2-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -681,54 +681,6 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/form.php:163 lib/com-gettext-extract.php:28
-#: lib/config-gettext-extract.php:19
-msgctxt "option value"
-msgid "default is %s"
-msgstr ""
-
-#: lib/com/form.php:165 lib/com-gettext-extract.php:27
-#: lib/config-gettext-extract.php:14
-msgctxt "option value"
-msgid "checked"
-msgstr ""
-
-#: lib/com/form.php:166 lib/com-gettext-extract.php:35
-#: lib/config-gettext-extract.php:119
-msgctxt "option value"
-msgid "unchecked"
-msgstr ""
-
-#: lib/com/form.php:167 lib/com-gettext-extract.php:34
-#: lib/config-gettext-extract.php:74
-msgctxt "option value"
-msgid "(option disabled)"
-msgstr ""
-
-#: lib/com/form.php:332 lib/com-gettext-extract.php:31
-#: lib/config-gettext-extract.php:69
-msgctxt "option value"
-msgid "(no images)"
-msgstr ""
-
-#: lib/com/form.php:337 lib/com-gettext-extract.php:33
-#: lib/config-gettext-extract.php:72
-msgctxt "option value"
-msgid "(no videos)"
-msgstr ""
-
-#: lib/com/form.php:342 lib/com-gettext-extract.php:32
-#: lib/config-gettext-extract.php:70
-msgctxt "option value"
-msgid "[None]"
-msgstr ""
-
-#: lib/com/form.php:348 lib/com/form.php:466 lib/com/form.php:618
-#: lib/com-gettext-extract.php:29 lib/config-gettext-extract.php:20
-msgctxt "option value"
-msgid "(default)"
-msgstr ""
-
 #: lib/com/notice.php:77 lib/com-gettext-extract.php:26
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr ""
@@ -737,12 +689,12 @@ msgstr ""
 msgid "Reference URL: %s"
 msgstr ""
 
-#: lib/com/notice.php:452 lib/com-gettext-extract.php:30
+#: lib/com/notice.php:452 lib/com-gettext-extract.php:27
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:453 lib/com-gettext-extract.php:36
+#: lib/com/notice.php:453 lib/com-gettext-extract.php:28
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
@@ -829,6 +781,11 @@ msgctxt "option value"
 msgid "Center"
 msgstr ""
 
+#: lib/config-gettext-extract.php:14
+msgctxt "option value"
+msgid "checked"
+msgstr ""
+
 #: lib/config-gettext-extract.php:15
 msgctxt "lib file description"
 msgid "<color>Plugin Setup Guide and Other Notes</color>"
@@ -847,6 +804,16 @@ msgstr ""
 #: lib/config-gettext-extract.php:18
 msgctxt "option value"
 msgid "Day"
+msgstr ""
+
+#: lib/config-gettext-extract.php:19
+msgctxt "option value"
+msgid "default is %s"
+msgstr ""
+
+#: lib/config-gettext-extract.php:20
+msgctxt "option value"
+msgid "(default)"
 msgstr ""
 
 #: lib/config-gettext-extract.php:21
@@ -1091,14 +1058,34 @@ msgctxt "option value"
 msgid "Nickname"
 msgstr ""
 
+#: lib/config-gettext-extract.php:69
+msgctxt "option value"
+msgid "(no images)"
+msgstr ""
+
+#: lib/config-gettext-extract.php:70
+msgctxt "option value"
+msgid "[None]"
+msgstr ""
+
 #: lib/config-gettext-extract.php:71
 msgctxt "option value"
 msgid "No"
 msgstr ""
 
+#: lib/config-gettext-extract.php:72
+msgctxt "option value"
+msgid "(no videos)"
+msgstr ""
+
 #: lib/config-gettext-extract.php:73
 msgctxt "option value"
 msgid "Online Only"
+msgstr ""
+
+#: lib/config-gettext-extract.php:74
+msgctxt "option value"
+msgid "(option disabled)"
 msgstr ""
 
 #: lib/config-gettext-extract.php:75
@@ -1319,6 +1306,11 @@ msgstr ""
 #: lib/config-gettext-extract.php:118
 msgctxt "option value"
 msgid "Twitter @username"
+msgstr ""
+
+#: lib/config-gettext-extract.php:119
+msgctxt "option value"
+msgid "unchecked"
 msgstr ""
 
 #: lib/config-gettext-extract.php:120

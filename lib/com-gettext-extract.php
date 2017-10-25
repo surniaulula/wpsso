@@ -24,14 +24,6 @@ __( '%s Notice', wpsso );
 __( 'The "%1$s" filter hook with priority %2$d in the "%3$s" filter has mistakenly provided some webpage output.', wpsso );
 __( 'The maximum number of URL redirects (%d) may have been exceeded.', wpsso );
 __( 'This notice can be dismissed temporarily for a period of %s.', wpsso );
-_x( 'checked', 'option value', wpsso );
-_x( 'default is %s', 'option value', wpsso );
-_x( '(default)', 'option value', wpsso );
 _x( 'error', 'notification type', wpsso );
-_x( '(no images)', 'option value', wpsso );
-_x( '[None]', 'option value', wpsso );
-_x( '(no videos)', 'option value', wpsso );
-_x( '(option disabled)', 'option value', wpsso );
-_x( 'unchecked', 'option value', wpsso );
 _x( 'warning', 'notification type', wpsso );
 ?>
