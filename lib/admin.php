@@ -76,6 +76,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'in_admin_header', array( &$this, 'conflict_warnings' ), 10 );
 				add_action( 'in_admin_header', array( &$this, 'required_notices' ), 20 );
 
+				// check for updates when the WordPress Site Address (URL) is changed.
+				if ( ! empty( $this->p->avail['p_ext']['um'] ) ) {	// since um v1.6.0
+					add_action( 'update_option_home', array( &$this, 'wp_home_option_updated' ), 100, 2 );
+				}
+
 				add_filter( 'current_screen', array( &$this, 'maybe_show_screen_notices' ) );
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 				add_filter( 'wp_redirect', array( &$this, 'profile_updated_redirect' ), -100, 2 );
@@ -90,7 +95,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 		/*
 				 * Provide plugin data from the readme for extensions not hosted on wordpress.org.
 				 * Skip if the update manager extension is active, since it provides more complete 
-				 * plugin data than what's available from the readme.
+				 * plugin data than what's available from the plugin readme.
 				 *
 				 * Note: Update manager versions before 1.6.0 hooked the 'plugins_api' filter,
 				 * which is fired before 'plugins_api_result'. external_plugin_data() returns
@@ -1019,6 +1024,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'wpsso' ), $info['short'] ).'</a></p></td></tr>';
 			}
 
+			// skip the "Check for Updates" button if the update manager is not active
 			if ( ! empty( $this->p->avail['p_ext']['um'] ) ) {	// since um v1.6.0
 				echo '<tr><td colspan="2">';
 				echo $this->form->get_button( _x( 'Check for Updates', 'submit button', 'wpsso' ), 'button-secondary',
@@ -1827,17 +1833,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( $have_ext_tid === true ) {
+
 				// if the update manager is active, the version should be available
 				if ( ! empty( $um_info['version'] ) ) {
+
 					// check for minimum update manager version required
 					$min_version = WpssoConfig::$cf['um']['min_version'];
+
 					if ( version_compare( $um_info['version'], $min_version, '<' ) ) {
 						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required',
 							array( 'min_version' => $min_version ) ) );
 					}
+
 				// if the update manager is not active, check if installed
 				} elseif ( SucomUtil::plugin_is_installed( $um_info['base'] ) ) {
+
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
+
 				// update manager is not active or installed
 				} else {
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
@@ -2291,33 +2303,57 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return '<img '.$img_src.' width="128" height="128" />';
 		}
 
-		public function check_readme_and_updates() {
+		// executed by the wordpress 'update_option_home' action.
+		public function wp_home_option_updated( $old_value, $new_value ) {
+			if ( ! empty( $this->p->avail['p_ext']['um'] ) ) {	// since um v1.6.0
+				$this->check_readme_and_updates( false, false );	// $refresh_readme = false, $show_notice = false
+			}
+		}
 
-			$info = $this->p->cf['plugin']['wpsso'];
-			$um_info = $this->p->cf['plugin']['wpssoum'];
+		public function check_readme_and_updates( $refresh_readme = true, $show_notice = true ) {
 
-			if ( SucomUtil::active_plugins( $um_info['base'] ) ) {
-
+			if ( $refresh_readme ) {
 				// refresh the readme for all extensions
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 					$this->get_readme_info( $ext, false );	// $use_cache = false
 				}
+			}
+
+			$lca = $this->p->cf['lca'];
+			$info = $this->p->cf['plugin'][$lca];
+			$um_info = $this->p->cf['plugin'][$lca.'um'];
+
+			if ( SucomUtil::active_plugins( $um_info['base'] ) ) {
 
 				$um_obj =& WpssoUm::get_instance();
 
+				/*
+				 * Check for updates for all extensions, show a notice for success or failure, 
+				 * and don't use cached update data from the options table (fetch new update json).
+				 */
 				if ( isset( $um_obj->update ) && method_exists( $um_obj->update, 'check_for_updates' ) ) {	// just in case
-					/*
-					 * Check for updates for all extensions, show a notice for success or failure, 
-					 * and don't use cached update data from the options table (fetch new update json).
-					 */
-					$um_obj->update->check_for_updates( null, true, false );	// $use_cache = false
-				} else {
+
+					$check_ext = null;	// update all extensions
+
+					if ( method_exists( $um_obj->update, 'get_config_keys' ) ) {	// since um v1.7.0
+
+						// check the main plugin first and maybe change states
+						$um_obj->update->check_for_updates( $lca, $show_notice, false );	// $use_cache = false
+
+						// include all extensions and exclude the main plugin lca
+						$check_ext = $um_obj->update->get_config_keys( $check_ext, $lca, true );	// $reset_config = true
+					}
+
+					$um_obj->update->check_for_updates( $check_ext, $show_notice, false );	// $use_cache = false
+
+				} elseif ( $show_notice ) {
 					$this->p->notice->err( sprintf( __( 'The <b>%1$s</b> extension is not initialized properly.',
 						'wpsso' ), $um_info['name'] ).' '.
 					sprintf( __( 'Please make sure you are using the latest versions of %1$s and %2$s.',
 						'wpsso' ), $info['name'], $um_info['name'] ) );
 				}
-			} else {
+
+			} elseif ( $show_notice ) {
 				$this->p->notice->err( sprintf( __( 'The <b>%1$s</b> extension must be active to check for Pro version updates.',
 					'wpsso' ), $um_info['name'] ) );
 			}

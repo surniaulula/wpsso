@@ -226,6 +226,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $is_avail;
 		}
 
+		public function rc() {
+			self::$c = array();
+		}
+
 		public function is_aop( $lca = '' ) {
 			return $this->aop( $lca, true, $this->is_avail( 'p_dir' ) );
 		}
