@@ -3343,9 +3343,9 @@ msgstr ""
 
 #: lib/messages.php:1158
 msgid ""
-"%s adds the following Google / SEO, Facebook, Open Graph, Rich Pin, Schema, "
-"and Twitter Card HTML tags to the <code>&lt;head&gt;</code> section of your "
-"webpages."
+"%s adds the following Google Rich Card / SEO, Facebook / Open Graph, "
+"Pinterest Rich Pin, Schema Markup, and Twitter Card HTML tags to the "
+"<code>&lt;head&gt;</code> section of your webpages."
 msgstr ""
 
 #: lib/messages.php:1158
