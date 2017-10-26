@@ -1,4 +1,4 @@
-=== WPSSO Core - Complete Meta Tags and Schema for Social Sharing / SMO, Google Rich Cards / SEO (Facebook, Open Graph, Google+, Pinterest, Twitter, LinkedIn, and Many More) ===
+=== WPSSO Core - Complete Meta Tags and Schema for Social Sharing / SMO, Google Rich Cards / SEO (Facebook / Open Graph, Google+, Pinterest, Twitter, LinkedIn, and Many More) ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
