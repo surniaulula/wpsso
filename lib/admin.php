@@ -125,6 +125,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
+			$pdir = $this->p->avail['*']['p_dir'];
+			$aop = $this->p->check->aop( $lca, true, $pdir );
 
 			if ( empty( $menu_libs ) ) {
 				// 'setting' must follow 'submenu' to extend submenu/advanced.php
@@ -132,11 +134,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $this->p->avail['*']['p_dir'] );
-				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) &&
-					$this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] ) &&
-						$this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ?
-							true : false;
+				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $pdir );
+				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) && $aop && 
+					$this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? true : false;
 				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ?
 					_x( 'Pro', 'package type', 'wpsso' ) :
 					_x( 'Free', 'package type', 'wpsso' );
@@ -944,9 +944,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_version_info() {
 
 			$lca = $this->p->cf['lca'];
+			$table_cols = 2;
+			$label_width = '70px';
 
 			echo '<table class="sucom-settings '.$lca.' column-metabox version-info" style="table-layout:fixed;">';
-			echo '<colgroup><col style="width:70px;"/><col/></colgroup>';	// required for chrome to display fixed table layout
+			echo '<colgroup><col style="width:'.$label_width.';"/><col/></colgroup>';	// required for chrome to display fixed table layout
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
@@ -995,7 +997,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 
-				echo '<tr><td colspan="2"><h4>'.self::$pkg[$ext]['short'].'</h4></td></tr>';
+				echo '<tr><td colspan="'.$table_cols.'"><h4>'.self::$pkg[$ext]['short'].'</h4></td></tr>';
 
 				echo '<tr><th class="version-label">'._x( 'Installed', 'option label', 'wpsso' ).':</th>
 					<td class="version-number" '.$installed_style.'>'.$installed_version.'</td></tr>';
@@ -1006,13 +1008,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<tr><th class="version-label">'._x( 'Latest', 'option label', 'wpsso' ).':</th>
 					<td class="version-number">'.$latest_version.'</td></tr>';
 
-				echo '<tr><td colspan="2" class="latest-notice">'.
+				echo '<tr><td colspan="'.$table_cols.'" class="latest-notice">'.
 					'<p><em><strong>Version '.$latest_version.'</strong> '.$latest_notice.'</em></p>'.
 					'<p><a href="'.$changelog_url.'">'.sprintf( __( 'View %s changelog...',
 						'wpsso' ), $info['short'] ).'</a></p></td></tr>';
 			}
 
-			do_action( $lca.'_column_metabox_version_info_rows', $this->form, $this->pagehook );
+			do_action( $lca.'_column_metabox_version_info_table_rows', $table_cols, $this->form );
 
 			echo '</table>';
 		}
@@ -1779,14 +1781,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function required_notices() {
 
 			$lca = $this->p->cf['lca'];
+			$pdir = $this->p->avail['*']['p_dir'];
 			$version = $this->p->cf['plugin'][$lca]['version'];
 			$um_info = $this->p->cf['plugin']['wpssoum'];
 			$have_ext_tid = false;
 
-			if ( $this->p->avail['*']['p_dir'] === true &&
-				empty( $this->p->options['plugin_'.$lca.'_tid'] ) &&
-					( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) ||
-						$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) ) {
+			if ( $pdir && empty( $this->p->options['plugin_'.$lca.'_tid'] ) &&
+				( empty( $this->p->options['plugin_'.$lca.'_tid:is'] ) ||
+					$this->p->options['plugin_'.$lca.'_tid:is'] !== 'disabled' ) ) {
 				$this->p->notice->nag( $this->p->msgs->get( 'notice-pro-tid-missing' ) );
 			}
 

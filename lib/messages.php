@@ -1181,8 +1181,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( strpos( $idx, 'pro-' ) === 0 ) {
 				switch ( $idx ) {
 					case 'pro-feature-msg':
-						if ( $lca !== $this->p->cf['lca'] &&
-							! $this->p->check->aop( $this->p->cf['lca'], true, $this->p->avail['*']['p_dir'] ) ) {
+						$pdir = $this->p->avail['*']['p_dir'];
+						if ( $lca !== $this->p->cf['lca'] && ! $this->p->check->aop( $this->p->cf['lca'], true, $pdir ) ) {
 							$req_short = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].' Pro';
 							$req_msg = '<br>'.sprintf( __( '(note that all %1$s extensions also require a licensed %1$s plugin)',
 								'wpsso' ), $req_short );

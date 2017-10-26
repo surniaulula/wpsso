@@ -52,8 +52,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $hook_list as $name => $val ) {
 				if ( ! is_string( $name ) ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $name.' => '.$val.' '.$type.' skipped: filter name must be a string' );
+					}
 					continue;
 				}
 
@@ -68,8 +69,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					call_user_func( 'add_'.$type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
 
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'added '.$method_name.' (method) '.$type, 3 );
+					}
 				/*
 				 * example:
 				 * 	'add_schema_meta_array' => '__return_false'
@@ -81,8 +83,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					call_user_func( 'add_'.$type, $hook_name, $function_name, $prio, $arg_nums );
 
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'added '.$function_name.' (function) '.$type, 3 );
+					}
 				/*
 				 * example:
 				 * 	'json_data_https_schema_org_article' => array(
@@ -98,8 +101,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 						call_user_func( 'add_'.$type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
 
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'added '.$method_name.' (method) '.$type.' to '.$hook_name, 3 );
+						}
 					}
 				}
 			}
@@ -141,12 +145,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 *		) 
 			 *	)
 			 */
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'define image sizes' );	// begin timer
+			}
 
-			$use_post = false;
 			$lca = $this->p->cf['lca'];
-			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
+			$pdir = $this->p->avail['*']['p_dir'];
+			$aop = $this->p->check->aop( $lca, true, $pdir );
+			$use_post = false;
 
 			// $mod is preferred but not required
 			// $mod = true | false | post_id | $mod array
@@ -165,11 +171,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( empty( $mod['id'] ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'module id is unknown' );
+				}
 			} elseif ( empty( $mod['name'] ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'module name is unknown' );
+				}
 			// custom filters may use image sizes, so don't filter/cache the meta options
 			} elseif ( ! empty( $mod['id'] ) && ! empty( $mod['obj'] ) && $aop ) {
 				// returns an empty string if no meta found
@@ -189,23 +197,24 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$opt_prefix = $size_info['prefix'];
 
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
-					if ( isset( $size_info[$key] ) )				// prefer existing info from filters
+					if ( isset( $size_info[$key] ) ) {					// prefer existing info from filters
 						continue;
-					elseif ( isset( $md_opts[$opt_prefix.'_'.$key] ) )		// use post meta if available
+					} elseif ( isset( $md_opts[$opt_prefix.'_'.$key] ) ) {			// use post meta if available
 						$size_info[$key] = $md_opts[$opt_prefix.'_'.$key];
-					elseif ( isset( $this->p->options[$opt_prefix.'_'.$key] ) )	// current plugin settings
+					} elseif ( isset( $this->p->options[$opt_prefix.'_'.$key] ) ) {		// current plugin settings
 						$size_info[$key] = $this->p->options[$opt_prefix.'_'.$key];
-					else {
-						if ( ! isset( $def_opts ) ) {				// only read once if necessary
-							if ( $this->p->debug->enabled )
+					} else {
+						if ( ! isset( $def_opts ) ) {					// only read once if necessary
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'getting default option values' );
+							}
 							$def_opts = $this->p->opt->get_defaults();
 						}
-						$size_info[$key] = $def_opts[$opt_prefix.'_'.$key];	// fallback to default value
+						$size_info[$key] = $def_opts[$opt_prefix.'_'.$key];		// fallback to default value
 					}
-					if ( $key === 'crop' )						// make sure crop is true or false
-						$size_info[$key] = empty( $size_info[$key] ) ?
-							false : true;
+					if ( $key === 'crop' ) {						// make sure crop is true or false
+						$size_info[$key] = empty( $size_info[$key] ) ? false : true;
+					}
 				}
 
 				if ( $size_info['width'] > 0 && $size_info['height'] > 0 ) {
@@ -231,11 +240,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					add_image_size( $this->p->cf['lca'].'-'.$size_info['name'], 
 						$size_info['width'], $size_info['height'], $size_info['crop'] );
 
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'image size '.$this->p->cf['lca'].'-'.$size_info['name'].' '.
 							$size_info['width'].'x'.$size_info['height'].
 							( empty( $size_info['crop'] ) ? '' : ' crop '.
 								$size_info['crop_x'].'/'.$size_info['crop_y'] ).' added' );
+					}
 				}
 			}
 			if ( $this->p->debug->enabled ) {
@@ -420,8 +430,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$cache_salt = $group.'('.$val.')';
 						$cache_id = $lca.'_'.md5( $cache_salt );
 						if ( delete_transient( $cache_id ) ) {
-							if ( $this->p->debug->enabled )
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'cleared cache transient '.$cache_salt );
+							}
 							$deleted++;
 						}
 					}
@@ -433,8 +444,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$cache_salt = $group.'('.$val.')';
 						$cache_id = $lca.'_'.md5( $cache_salt );
 						if ( wp_cache_delete( $cache_id, $group ) ) {
-							if ( $this->p->debug->enabled )
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'cleared cache object '.$cache_salt );
+							}
 							$deleted++;
 						}
 					}
@@ -537,8 +549,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function get_article_topics() {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$lca = $this->p->cf['lca'];
 			$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
@@ -1309,8 +1323,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 								$url = add_query_arg( 'page', get_query_var( 'page' ), $url );
 							else $url = user_trailingslashit( trailingslashit( $url ).get_query_var( 'page' ) );
 						}
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'add page query url = '.$url );
+						}
 					}
 				}
 				$url = apply_filters( $lca.'_post_url', $url, $mod, $add_page, $src_id );
@@ -1321,8 +1336,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$url = $this->check_url_string( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
 					} else {
 						$url = apply_filters( $lca.'_home_url', home_url( '/' ), $mod, $add_page, $src_id );
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'home url = '.$url );
+						}
 					}
 				} elseif ( $mod['is_term'] ) {
 					if ( ! empty( $mod['id'] ) ) {
@@ -1559,12 +1575,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $num > 0 ) {
 				if ( $has == $num ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'max values reached ('.$has.' == '.$num.')' );
+					}
 					return true;
 				} elseif ( $has > $num ) {
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'max values reached ('.$has.' > '.$num.') - slicing array' );
+					}
 					$arr = array_slice( $arr, 0, $num );
 					return true;
 				}
@@ -1916,8 +1934,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 									$alt.' ' : $alt.'. ';
 							}
 						}
-						if ( $this->p->debug->enabled )
+						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'img alt text: '.$alt_text );
+						}
 					}
 					$text = $alt_text;
 				} else $text = $text_stripped;

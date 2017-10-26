@@ -226,18 +226,14 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $is_avail;
 		}
 
-		public function rc() {
-			self::$c = array();
+		public function is_aop( $lca = '', $uc = true ) {
+			return $this->aop( $lca, true, $this->is_avail( 'p_dir' ), $uc );
 		}
 
-		public function is_aop( $lca = '' ) {
-			return $this->aop( $lca, true, $this->is_avail( 'p_dir' ) );
-		}
-
-		public function aop( $lca = '', $lic = true, $rv = true ) {
+		public function aop( $lca = '', $lic = true, $rv = true, $uc = true ) {
 			$lca = empty( $lca ) ? $this->p->cf['lca'] : $lca;
 			$kn = $lca.'-'.$lic.'-'.$rv;
-			if ( isset( self::$c[$kn] ) )
+			if ( $uc && isset( self::$c[$kn] ) )
 				return self::$c[$kn];
 			$uca = strtoupper( $lca );
 			if ( defined( $uca.'_PLUGINDIR' ) ) {
@@ -267,8 +263,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					continue;
 				$ins = $this->aop( $ext, false );
 				$ext_list[] = $info['short'].( $ins ? ' Pro' : '' ).' '.$info['version'].'/'.
-					( $this->aop( $ext, true, $this->p->avail['*']['p_dir'] ) ? 'L' :
-						( $ins ? 'U' : 'G' ) );
+					( $this->is_aop( $ext ) ? 'L' : ( $ins ? 'U' : 'G' ) );
 			}
 			return $ext_list;
 		}

@@ -149,8 +149,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
+			$pdir = $this->p->avail['*']['p_dir'];
+			$aop = $this->p->check->aop( $lca, true, $pdir );
 			$max = $this->p->util->get_max_nums( $mod );
-			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
 			$post_id = $mod['is_post'] ? $mod['id'] : false;
 			$check_dupes = true;
 			$preview_count = 0;
@@ -453,7 +454,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$og_ret = array();
 			$lca = $this->p->cf['lca'];
-			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
+			$pdir = $this->p->avail['*']['p_dir'];
+			$aop = $this->p->check->aop( $lca, true, $pdir );
 			$use_prev = $this->p->options['og_vid_prev_img'];		// default option value is true/false
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 			$this->p->util->clear_uniq_urls( 'video' );			// clear cache for 'video' context
@@ -697,7 +699,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$ret = array();
 			$lca = $this->p->cf['lca'];
-			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
+			$pdir = $this->p->avail['*']['p_dir'];
+			$aop = $this->p->check->aop( $lca, true, $pdir );
 			$og_images = null;
 			$og_videos = null;
 

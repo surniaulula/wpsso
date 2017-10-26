@@ -119,8 +119,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				}
 			}
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'load modules' );	// end timer
+			}
 		}
 	}
 }
