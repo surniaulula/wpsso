@@ -374,7 +374,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.2-b.3 (2017/10/26)**
+**Version 3.47.2-rc.1 (2017/10/26)**
 
 * *New Features*
 	* None
@@ -817,7 +817,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.47.2-b.3 =
+= 3.47.2-rc.1 =
 
 (2017/10/26) Fix to convert currency symbol provided The Event Manager to currency abbreviation. Refactored WpssoSchema add_single_*_data methods. Fix to limit mentions in Schema CollectionPage for post objects. Fix to prefer getting the Yoast SEO meta from Yoast SEO plugin, instead of directly from the Yoast SEO meta options.
 
