@@ -76,11 +76,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'in_admin_header', array( &$this, 'conflict_warnings' ), 10 );
 				add_action( 'in_admin_header', array( &$this, 'required_notices' ), 20 );
 
-				// check for updates when the WordPress Site Address (URL) is changed.
-				if ( ! empty( $this->p->avail['p_ext']['um'] ) ) {	// since um v1.6.0
-					add_action( 'update_option_home', array( &$this, 'wp_home_option_updated' ), 100, 2 );
-				}
-
 				add_filter( 'current_screen', array( &$this, 'maybe_show_screen_notices' ) );
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 				add_filter( 'wp_redirect', array( &$this, 'profile_updated_redirect' ), -100, 2 );
@@ -659,11 +654,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					switch ( $action_name ) {
 
-						case 'check_for_updates':
-
-							$this->check_readme_and_updates();
-							break;
-
 						case 'clear_all_cache':
 
 							$this->p->util->clear_all_cache( true );	// $clear_ext = true
@@ -683,7 +673,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$user_id = get_current_user_id();
 							$user = get_userdata( $user_id );
-							//$user_name = trim( $user->first_name.' '.$user->last_name );
 							$user_name = $user->display_name;
 							delete_user_option( $user_id, WPSSO_DISMISS_NAME );
 							$this->p->notice->upd( sprintf( __( 'Hidden notices for user ID #%d "%s" have been cleared.',
@@ -887,12 +876,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			do_meta_boxes( $this->pagehook, 'normal', null );
 
-			do_action( $this->p->cf['lca'].'_form_content_metaboxes_'.
-				SucomUtil::sanitize_hookname( $this->menu_id ), $this->pagehook );
+			do_action( $lca.'_form_content_metaboxes_'.SucomUtil::sanitize_hookname( $this->menu_id ), $this->pagehook );
 
 			if ( $this->menu_lib === 'profile' ) {
-				echo $this->get_submit_buttons( _x( 'Save All Profile Settings',
-					'submit button', 'wpsso' ) );
+				echo $this->get_submit_buttons( _x( 'Save All Profile Settings', 'submit button', 'wpsso' ) );
 			} else {
 				echo $this->get_submit_buttons();
 			}
@@ -978,12 +965,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $readme_info['stable_tag'] ) ) {
 
 					$stable_version = $readme_info['stable_tag'];
+					$newer_avail = version_compare( $installed_version, $stable_version, '<' );
 
 					if ( is_array( $readme_info['upgrade_notice'] ) ) {
 
 						// hooked by the update manager to apply the version filter
-						$upgrade_notice = apply_filters( $lca.'_readme_upgrade_notices',
-							$readme_info['upgrade_notice'], $ext );
+						$upgrade_notice = apply_filters( $lca.'_readme_upgrade_notices', $readme_info['upgrade_notice'], $ext );
 
 						reset( $upgrade_notice );
 
@@ -991,17 +978,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$latest_notice = $upgrade_notice[$latest_version];
 					}
 
-					// hooked by the update manager to check installed version against
-					// the latest version, if a non-stable filter is selected for that
-					// plugin / extension
+					/*
+					 * Hooked by the update manager to check installed version against the latest version, 
+					 * if a non-stable filter is selected for that plugin / extension.
+					 */
 					if ( apply_filters( $lca.'_newer_version_available',
-						version_compare( $installed_version, $stable_version, '<' ),
-							$ext, $installed_version, $stable_version, $latest_version ) ) {
+						$newer_avail, $ext, $installed_version, $stable_version, $latest_version ) ) {
+
 						$installed_style = 'style="background-color:#f00;"';	// red
-					// version is current but not stable (alpha characters found in version string)
-					} elseif ( preg_match( '/[a-z]/', $installed_version ) ) {
+
+					} elseif ( preg_match( '/[a-z]/', $installed_version ) ) {	// current but not stable (alpha chars in version)
+
 						$installed_style = 'style="background-color:#ff0;"';	// yellow
-					// version is current
 					} else {
 						$installed_style = 'style="background-color:#0f0;"';	// green
 					}
@@ -1024,14 +1012,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'wpsso' ), $info['short'] ).'</a></p></td></tr>';
 			}
 
-			// skip the "Check for Updates" button if the update manager is not active
-			if ( ! empty( $this->p->avail['p_ext']['um'] ) ) {	// since um v1.6.0
-				echo '<tr><td colspan="2">';
-				echo $this->form->get_button( _x( 'Check for Updates', 'submit button', 'wpsso' ), 'button-secondary',
-					'column-check-for-updates', wp_nonce_url( $this->p->util->get_admin_url( '?'.$lca.'-action=check_for_updates' ), 
-						WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ) );
-				echo '</td></tr>';
-			}
+			do_action( $lca.'_column_metabox_version_info_rows', $this->form, $this->pagehook );
 
 			echo '</table>';
 		}
@@ -1923,7 +1904,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$have_changes = false;
 			$header_files = SucomUtil::get_header_files();
-			$head_action_php = '<head <?php do_action( \'add_head_attributes\' ); ?'.'>>';	// breakup closing php for vim syntax highlighting
+			$head_action_php = '<head <?php do_action( \'add_head_attributes\' ); ?'.'>>';	// breakup closing php for vim
 
 			if ( empty( $header_files ) ) {
 				$this->p->notice->err( __( 'No header templates found in the parent or child theme directories.',
@@ -2301,62 +2282,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 			return '<img '.$img_src.' width="128" height="128" />';
-		}
-
-		// executed by the wordpress 'update_option_home' action.
-		public function wp_home_option_updated( $old_value, $new_value ) {
-			if ( ! empty( $this->p->avail['p_ext']['um'] ) ) {	// since um v1.6.0
-				$this->check_readme_and_updates( false, false );	// $refresh_readme = false, $show_notice = false
-			}
-		}
-
-		public function check_readme_and_updates( $refresh_readme = true, $show_notice = true ) {
-
-			if ( $refresh_readme ) {
-				// refresh the readme for all extensions
-				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-					$this->get_readme_info( $ext, false );	// $use_cache = false
-				}
-			}
-
-			$lca = $this->p->cf['lca'];
-			$info = $this->p->cf['plugin'][$lca];
-			$um_info = $this->p->cf['plugin'][$lca.'um'];
-
-			if ( SucomUtil::active_plugins( $um_info['base'] ) ) {
-
-				$um_obj =& WpssoUm::get_instance();
-
-				/*
-				 * Check for updates for all extensions, show a notice for success or failure, 
-				 * and don't use cached update data from the options table (fetch new update json).
-				 */
-				if ( isset( $um_obj->update ) && method_exists( $um_obj->update, 'check_for_updates' ) ) {	// just in case
-
-					$check_ext = null;	// update all extensions
-
-					if ( method_exists( $um_obj->update, 'get_config_keys' ) ) {	// since um v1.7.0
-
-						// check the main plugin first and maybe change states
-						$um_obj->update->check_for_updates( $lca, $show_notice, false );	// $use_cache = false
-
-						// include all extensions and exclude the main plugin lca
-						$check_ext = $um_obj->update->get_config_keys( $check_ext, $lca, true );	// $reset_config = true
-					}
-
-					$um_obj->update->check_for_updates( $check_ext, $show_notice, false );	// $use_cache = false
-
-				} elseif ( $show_notice ) {
-					$this->p->notice->err( sprintf( __( 'The <b>%1$s</b> extension is not initialized properly.',
-						'wpsso' ), $um_info['name'] ).' '.
-					sprintf( __( 'Please make sure you are using the latest versions of %1$s and %2$s.',
-						'wpsso' ), $info['name'], $um_info['name'] ) );
-				}
-
-			} elseif ( $show_notice ) {
-				$this->p->notice->err( sprintf( __( 'The <b>%1$s</b> extension must be active to check for Pro version updates.',
-					'wpsso' ), $um_info['name'] ) );
-			}
 		}
 	}
 }
