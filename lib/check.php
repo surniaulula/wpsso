@@ -227,7 +227,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		}
 
 		public function is_aop( $lca = '', $uc = true ) {
-			return $this->aop( $lca, true, $this->is_avail( 'p_dir' ), $uc );
+			return $this->aop( $lca, true, ( isset( $this->p->avail['*']['p_dir'] ) ?
+				$this->p->avail['*']['p_dir'] : $this->is_avail( 'p_dir' ) ), $uc );
 		}
 
 		public function aop( $lca = '', $lic = true, $rv = true, $uc = true ) {
