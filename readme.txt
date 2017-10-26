@@ -188,9 +188,9 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 	* WooCommerce (versions 1, 2, and 3)
 	* WordPress REST API (version 2)
 	* WP eCommerce
-	* WP Product Review (requires the WPSSO JSON Pro extension)
-	* WP Recipe Maker (requires the WPSSO JSON Pro extension)
-	* WP Ultimate Recipe (requires the WPSSO JSON Pro extension)
+	* WP Product Review ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) required)
+	* WP Recipe Maker ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) required)
+	* WP Ultimate Recipe ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) required)
 	* Yoast SEO (aka WordPress SEO)
 	* Yotpo Social Reviews for WooCommerce
 * **Integration with Service APIs**
