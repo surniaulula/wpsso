@@ -1092,8 +1092,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::sanitize_key( $name );
 		}
 
-		public static function sanitize_classname( $name, $underscore = true ) {
-			$name = preg_replace( '/[:\/\-\. '.( $underscore ? '' : '_' ).']+/', '', $name );
+		public static function sanitize_classname( $name, $allow_underscore = true ) {
+			$name = preg_replace( '/[:\/\-\. '.( $allow_underscore ? '' : '_' ).']+/', '', $name );
 			return self::sanitize_key( $name );
 		}
 

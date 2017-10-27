@@ -576,12 +576,12 @@ msgstr ""
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
-#: lib/com/bfo.php:204 lib/com/cache.php:406 lib/com/notice.php:517
+#: lib/com/bfo.php:204 lib/com/cache.php:406 lib/com/notice.php:518
 #: lib/com-gettext-extract.php:23
 msgid "%s Notice"
 msgstr ""
 
-#: lib/com/bfo.php:207 lib/com/cache.php:409 lib/com/notice.php:520
+#: lib/com/bfo.php:207 lib/com/cache.php:409 lib/com/notice.php:521
 #: lib/com-gettext-extract.php:17
 msgid "Notice"
 msgstr ""
@@ -672,29 +672,29 @@ msgstr ""
 msgid "Reference URL: %s"
 msgstr ""
 
-#: lib/com/notice.php:452 lib/com-gettext-extract.php:27
+#: lib/com/notice.php:453 lib/com-gettext-extract.php:27
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:453 lib/com-gettext-extract.php:28
+#: lib/com/notice.php:454 lib/com-gettext-extract.php:28
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:458 lib/com-gettext-extract.php:4
+#: lib/com/notice.php:459 lib/com-gettext-extract.php:4
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:460 lib/com-gettext-extract.php:3
+#: lib/com/notice.php:461 lib/com-gettext-extract.php:3
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:590 lib/com-gettext-extract.php:9
+#: lib/com/notice.php:591 lib/com-gettext-extract.php:9
 msgid "Dismiss"
 msgstr ""
 

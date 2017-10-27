@@ -440,6 +440,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			echo "\n";
 			echo '<!-- '.$this->lca.' admin notices begin -->'."\n";
+			echo '<div id="'.sanitize_html_class( $this->lca.'-admin-notices-begin' ).'"></div>'."\n";
 			echo $this->get_notice_style();
 
 			if ( ! empty( $nag_msgs ) ) {
@@ -604,6 +605,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function get_notice_style() {
 
 			$custom_style_css = '
+				.gutenberg-editor-page #'.$this->lca.'-admin-notices-begin {
+					height:70px;
+				}
+				.gutenberg-editor-page .'.$this->lca.'-notice {
+					margin:15px 340px 15px 30px;
+				}
 				.'.$this->lca.'-notice.notice {
 					padding:0;
 				}
@@ -716,7 +723,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$custom_style_css .= '
 					.'.$this->lca.'-notice.update-nag {
 						border:'.constant( $uca.'_UPDATE_NAG_BORDER' ).';
-						border-top:none;
 					}
 				';
 			}
@@ -732,10 +738,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$custom_style_css .= '
 				.'.$this->lca.'-notice.update-nag {
 					margin-top:0;
-				}
-				.toplevel_page_gutenberg .'.$this->lca.'-notice.update-nag {
-					box-sizing: border-box;
-					margin:50px 350px 0 70px;
 				}
 				.'.$this->lca.'-notice.update-nag > div {
 					display:block;
