@@ -1417,13 +1417,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				/*
 				 * Plugin Name, Description, and Links
 				 */
+				$plugin_name_html = '<strong>'.$info['name'].'</strong>'.( $ext === $lca ? ' ('.__( 'Main Plugin', 'wpsso' ).')' : '' );
+				$plugin_desc_html = empty( $info['desc'] ) ? '' : htmlentities( _x( $info['desc'], 'plugin description', 'wpsso' ),
+					ENT_QUOTES, $charset, false );
+
 				$table_rows['plugin_name'] = '<td colspan="2" style="width:100%;">'.
-					'<p style="margin-top:10px;">'.
-					'<strong>'.$info['name'].'</strong>'.
-					( $ext === $lca ? ' ('.__( 'Main Plugin', 'wpsso' ).')' : '' ).
-					'</p>'.
-					( empty( $info['desc'] ) ? '' : '<p>'.htmlentities( _x( $info['desc'],
-						'plugin description', 'wpsso' ), ENT_QUOTES, $charset, false ).'</p>' ).
+					'<p style="margin-top:10px;">'.$plugin_name_html.'</p>'.
+					( empty( $plugin_desc_html ) ? '' : '<p>'.$plugin_desc_html.'</p>' ).
 					( empty( $ext_links ) ? '' : '<div class="row-actions visible">'.implode( ' | ', $ext_links ).'</div>' ).
 					'</td>';
 
@@ -1820,12 +1820,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				// if the update manager is active, the version should be available
 				if ( ! empty( $um_info['version'] ) ) {
 
-					// check for minimum update manager version required
-					$min_version = WpssoConfig::$cf['um']['min_version'];
+					$um_rec_version = WpssoConfig::$cf['um']['rec_version'];
 
-					if ( version_compare( $um_info['version'], $min_version, '<' ) ) {
-						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-required',
-							array( 'min_version' => $min_version ) ) );
+					if ( version_compare( $um_info['version'], $um_rec_version, '<' ) ) {
+						$this->p->notice->err( $this->p->msgs->get( 'notice-um-version-recommended',
+							array( 'um_rec_version' => $um_rec_version ) ) );
 					}
 
 				// if the update manager is not active, check if installed

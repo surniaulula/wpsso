@@ -696,9 +696,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_topics_cache_exp':
 							$cache_exp = WpssoConfig::$cf['opt']['defaults']['plugin_topics_cache_exp'];	// use original un-filtered value
 							$cache_diff = $cache_exp ? human_time_diff( 0, $cache_exp ) : _x( 'disabled', 'option comment', 'wpsso' );
-							$text = __( 'The filtered article topics array is saved to the WordPress transient cache to optimize performance and disk access.',
-								'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).',
-									'wpsso' ), $cache_exp, $cache_diff );
+							$text = __( 'The filtered article topics array is saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp, $cache_diff );
 							break;
 
 						case 'tooltip-plugin_types_cache_exp':
@@ -1124,29 +1122,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'info-plugin-tid':	// displayed on the Pro Licenses settings page
 
 							$um_info = $this->p->cf['plugin']['wpssoum'];
+							$name_pro_main = $info['name_pro'].' ('.__( 'Main Plugin', 'wpsso' ).')';
 	
-							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['name_pro'] ).' ';
-	
-							$text .= __( 'Enter each Authentication ID on this settings page to upgrade the Free version and enable Pro version updates.', 'wpsso' ).' ';
-							
-							$text .= sprintf( __( 'The %1$s Free extension must be installed and active in order to check for Pro version updates, and a licensed %2$s plugin is required to use any of its Pro extensions.', 'wpsso' ), $um_info['name'], $info['name_pro'] ).'</blockquote>';
+							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $name_pro_main ).' '. __( 'Enter each unique Authentication ID on this settings page to enable Pro version updates for the Pro plugin / extension(s) you purchased.', 'wpsso' ).' '.sprintf( __( 'The %1$s Free extension must be installed and active in order to check for Pro version updates, and a licensed %2$s plugin required to use Pro extensions.', 'wpsso' ), $um_info['name'], $name_pro_main ).'</blockquote>';
 
 							break;
 	
 						case 'info-plugin-tid-network':	// displayed on the Network Pro Licenses settings page
 
 							$um_info = $this->p->cf['plugin']['wpssoum'];
-
+							$name_pro_main = $info['name_pro'].' ('.__( 'Main Plugin', 'wpsso' ).')';
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
 								_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' ) );
 
-							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['name_pro'] ).' ';
+							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $name_pro_main ).' '.sprintf( __( 'You may enter each unique Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
 
-							$text .= sprintf( __( 'You may enter the Authentication IDs on this page <em>to define a value for all sites within the network</em> &mdash; or enter the Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
+							$text.= '<p>'.__( 'If you enter Authentication IDs on this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; as an example, to license an individual plugin / extension for 10 sites, you would need an Authentication ID from a 10 license pack purchase of that plugin / extension.', 'wpsso' ).'</p>';
 
-							$text.= '<p>'.__( 'If you enter Authentication IDs on this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; as an example, to license a plugin for 10 sites, you would need an Authentication ID with a 10 license pack.', 'wpsso' ).'</p>';
-
-							$text .= '<p>'.sprintf( __( '<strong>WordPress uses the default site / blog ID to install and update plugins from the Network Admin interface</strong> &mdash; to install Pro version updates from the Network Admin interface, please make sure the %1$s extension is active for the default site and the default site is licensed.', 'wpsso' ), $um_info['short'] ).'</p></blockquote>';
+							$text .= '<p>'.sprintf( __( '<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its Pro extensions, please make sure the %2$s Free extension is active on the default site, and the default site is licensed.', 'wpsso' ), $name_pro_main, $um_info['name'] ).'</p></blockquote>';
 
 							break;
 	
@@ -1363,34 +1356,38 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-um-activate-extension':
 
 						$um_info = $this->p->cf['plugin']['wpssoum'];
+						$name_pro_main = $info['name_pro'].' ('.__( 'Main Plugin', 'wpsso' ).')';
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
 							_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' ) );
 						$plugins_page_link = '<a href="'.get_admin_url( null, 'plugins.php' ).'">'.__( 'Plugins' ).'</a>';
 
-						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the %1$s settings page,<br/>but the %2$s extension is not active.', 'wpsso' ), $settings_page_link, $um_info['name'] ).'</b> '.sprintf( __( 'This Free plugin is required to update and enable the %1$s plugin and its Pro extensions.', 'wpsso' ), $info['name_pro'] ).'</p><p><b>';
+						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the %1$s settings page,<br/>but the %2$s extension is not active.', 'wpsso' ), $settings_page_link, $um_info['name'] ).'</b> '.sprintf( __( 'This Free extension is required to update and enable the %1$s plugin and its Pro extensions.', 'wpsso' ), $name_pro_main ).'</p><p>';
 
 						if ( $idx === 'notice-um-extension-required' ) {
-							$text .= sprintf( __( 'Install and activate the %1$s extension from the %2$s settings page.',
-								'wpsso' ), $um_info['short'], $settings_page_link );
+							$text .= '<b>'.sprintf( __( 'Install and activate the %1$s extension from the %2$s settings page.', 'wpsso' ), $um_info['name'], $settings_page_link ).'</b>';
 						} else {
-							$text .= sprintf( __( 'The %1$s extension can be activated from the WordPress %2$s settings page.',
-								'wpsso' ), $um_info['short'], $plugins_page_link );
+							$text .= '<b>'.sprintf( __( 'The %1$s extension can be activated from the WordPress %2$s page.', 'wpsso' ), $um_info['name'], $plugins_page_link ).'</b> '.__( 'Please activate this Free extension now.', 'wpsso' );
 						}
 
-						$text .= '</b> '.sprintf( __( 'Once the %s extension is active, one or more Pro version updates may be available for your licensed plugin(s).', 'wpsso' ), $um_info['short'] ).'</p>';
+						$text .= ' '.sprintf( __( 'When the %1$s extension is active, one or more Pro version updates may be available for your licensed plugin / extension(s).', 'wpsso' ), $um_info['name'] ).'</p>';
 
 						break;
 
-					case 'notice-um-version-required':
+					case 'notice-um-version-recommended':
 
 						$um_info = $this->p->cf['plugin']['wpssoum'];
 						$um_version = isset( $um_info['version'] ) ? $um_info['version'] : 'unknown';
-						$settings_page_link = $this->p->util->get_admin_url( 'um-general',
+						$um_rec_version = isset( $info['um_rec_version'] ) ?
+							$info['um_rec_version'] : WpssoConfig::$cf['um']['rec_version'];
+						$um_check_updates_transl = _x( 'Check for Updates', 'submit button', 'wpsso' );
+						$um_settings_page_link = $this->p->util->get_admin_url( 'um-general',
 							_x( 'Update Manager', 'lib file description', 'wpsso' ) );
+						$wp_updates_page_link = '<a href="'.admin_url( 'update-core.php' ).'">'.
+							__( 'Dashboard' ).' &gt; '.__( 'Updates' ).'</a>';
 
-						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $info['version'], $um_info['short'], $info['min_version'], $um_version ).' ';
+						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $info['version'], $um_info['short'], $um_rec_version, $um_version ).' ';
 						
-						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress Plugins page, please use the <em>%2$s</em> button on the %3$s settings page to force an immediate refresh of all %4$s update information.', 'wpsso' ), $um_info['name'], _x( 'Check for Updates', 'submit button', 'wpsso' ), $settings_page_link, $info['short'] );
+						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button on the %4$s settings page to force an immediate refresh of all %5$s update information.', 'wpsso' ), $um_info['name'], $wp_updates_page_link, $um_check_updates_transl, $um_settings_page_link, $info['short'] );
 
 						break;
 
