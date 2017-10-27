@@ -1050,8 +1050,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$disabled = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_image_url_size',
-				$this->p->options['plugin_imgsize_cache_exp'] );
+			$cache_exp = isset( $this->p->options['plugin_imgsize_cache_exp'] ) ?	// just in case
+				$this->p->options['plugin_imgsize_cache_exp'] : DAY_IN_SECONDS;
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_image_url_size', $cache_exp );
 
 			foreach ( $opt_keys as $opt_prefix ) {
 
