@@ -374,7 +374,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.2-rc.1 (2017/10/26)**
+**Version 3.47.2-rc.2 (2017/10/27)**
 
 * *New Features*
 	* None
@@ -817,9 +817,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.47.2-rc.1 =
+= 3.47.2-rc.2 =
 
-(2017/10/26) Fix for The Event Manager currency symbol. Refactored NgfbSchema add_single_*_data methods. Fix to limit mentions in Schema CollectionPage. Fix to prefer getting the Yoast SEO meta from Yoast SEO plugin, instead of directly from the Yoast SEO meta options.
+(2017/10/27) Fix for The Event Manager currency symbol. Refactored NgfbSchema add_single_*_data methods. Fix to limit mentions in Schema CollectionPage. Fix to prefer getting the Yoast SEO meta from Yoast SEO plugin, instead of directly from the Yoast SEO meta options.
 
 = 3.47.1 =
 
