@@ -1124,7 +1124,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$um_info = $this->p->cf['plugin']['wpssoum'];
 							$name_pro_main = $info['name_pro'].' ('.__( 'Main Plugin', 'wpsso' ).')';
 	
-							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $name_pro_main ).' '. __( 'Enter each unique Authentication ID on this settings page to enable Pro version updates for the Pro plugin / extension(s) you purchased.', 'wpsso' ).' '.sprintf( __( 'The %1$s Free extension must be installed and active in order to check for Pro version updates, and a licensed %2$s plugin required to use Pro extensions.', 'wpsso' ), $um_info['name'], $name_pro_main ).'</blockquote>';
+							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $name_pro_main ).' '. __( 'Enter each unique Authentication ID on this settings page to enable Pro version updates for the Pro plugin / extension(s) you purchased.', 'wpsso' ).' '.sprintf( __( '%1$s and its %2$s Free extension must be installed and active to use Pro extensions and check for Pro version updates.', 'wpsso' ), $name_pro_main, $um_info['name'] ).'</blockquote>';
 
 							break;
 	
@@ -1361,7 +1361,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' ) );
 						$plugins_page_link = '<a href="'.get_admin_url( null, 'plugins.php' ).'">'.__( 'Plugins' ).'</a>';
 
-						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the %1$s settings page,<br/>but the %2$s extension is not active.', 'wpsso' ), $settings_page_link, $um_info['name'] ).'</b> '.sprintf( __( 'This Free extension is required to update and enable the %1$s plugin and its Pro extensions.', 'wpsso' ), $name_pro_main ).'</p><p>';
+						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the %1$s settings page,<br/>but the %2$s extension is not active.', 'wpsso' ), $settings_page_link, $um_info['name'] ).'</b> '.sprintf( __( 'This Free extension is required to update and enable the %1$s and its Pro extensions.', 'wpsso' ), $name_pro_main ).'</p><p>';
 
 						if ( $idx === 'notice-um-extension-required' ) {
 							$text .= '<b>'.sprintf( __( 'Install and activate the %1$s extension from the %2$s settings page.', 'wpsso' ), $um_info['name'], $settings_page_link ).'</b>';
@@ -1387,7 +1387,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $info['version'], $um_info['short'], $um_rec_version, $um_version ).' ';
 						
-						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button on the %4$s settings page to force an immediate refresh of all %5$s update information.', 'wpsso' ), $um_info['name'], $wp_updates_page_link, $um_check_updates_transl, $um_settings_page_link, $info['short'] );
+						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button on the %4$s settings page to force an immediate refresh of all Pro update information.', 'wpsso' ), $um_info['name'], $wp_updates_page_link, $um_check_updates_transl, $um_settings_page_link );
 
 						break;
 

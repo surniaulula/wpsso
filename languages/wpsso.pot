@@ -3269,9 +3269,8 @@ msgstr ""
 
 #: lib/messages.php:1127
 msgid ""
-"The %1$s Free extension must be installed and active in order to check for "
-"Pro version updates, and a licensed %2$s plugin required to use Pro "
-"extensions."
+"%1$s and its %2$s Free extension must be installed and active to use Pro "
+"extensions and check for Pro version updates."
 msgstr ""
 
 #: lib/messages.php:1138
@@ -3575,8 +3574,8 @@ msgstr ""
 
 #: lib/messages.php:1364
 msgid ""
-"This Free extension is required to update and enable the %1$s plugin and its "
-"Pro extensions."
+"This Free extension is required to update and enable the %1$s and its Pro "
+"extensions."
 msgstr ""
 
 #: lib/messages.php:1367
@@ -3625,7 +3624,7 @@ msgstr ""
 msgid ""
 "If an update for %1$s is not available under the WordPress %2$s page, use "
 "the <em>%3$s</em> button on the %4$s settings page to force an immediate "
-"refresh of all %5$s update information."
+"refresh of all Pro update information."
 msgstr ""
 
 #: lib/messages.php:1396 lib/register.php:204
