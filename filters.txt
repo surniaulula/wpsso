@@ -86,14 +86,14 @@
 'wpsso_og_default_img_url' ( $image_url );
 'wpsso_og_default_img_on_index' ( $bool );
 'wpsso_og_default_img_on_search' ( $bool );
-'wpsso_og_edd' ( $og_ecom, $mod );	// Pro version
+'wpsso_og_ecom_edd' ( $og_ecom, $mod );	// Pro version
+'wpsso_og_ecom_marketpress' ( $og_ecom, $mod );	// Pro version
+'wpsso_og_ecom_woocommerce' ( $og_ecom, $mod );	// Pro version
+'wpsso_og_ecom_wpecommerce' ( $og_ecom, $mod );	// Pro version
 'wpsso_og_featured' ( $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
-'wpsso_og_marketpress' ( $og_ecom, $mod );	// Pro version
 'wpsso_og_ns' ( $ns );
 'wpsso_og_seed' ( $og, $mod );
 'wpsso_og_type' ( $og_type, $mod );
-'wpsso_og_woocommerce' ( $og_ecom, $mod );	// Pro version
-'wpsso_og_wpecommerce' ( $og_ecom, $mod );	// Pro version
 'wpsso_opengraph_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) );
 'wpsso_option_type' ( false, $key, $network, $mod );
 'wpsso_plugin_image_sizes' ( $sizes, $mod, $crawler_name );
