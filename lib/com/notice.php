@@ -606,10 +606,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$custom_style_css = '
 				.gutenberg-editor-page #'.$this->lca.'-admin-notices-begin {
-					height:70px;
+					height:60px;
 				}
 				.gutenberg-editor-page .'.$this->lca.'-notice {
-					margin:15px 340px 15px 30px;
+					margin:15px 340px 15px 20px;
 				}
 				.'.$this->lca.'-notice.notice {
 					padding:0;

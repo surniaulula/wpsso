@@ -699,11 +699,11 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:1328
+#: lib/com/util.php:1330
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1335
+#: lib/com/util.php:1337
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -3918,7 +3918,7 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/page.php:729
+#: lib/page.php:722
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "

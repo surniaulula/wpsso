@@ -195,8 +195,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$hashtags = '';
 			$paged_suffix = '';
 			$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
-			$filter_title = apply_filters( $lca.'_filter_title', 
-				( empty( $this->p->options['plugin_filter_title'] ) ? false : true ), $mod );
+			$filter_title = empty( $this->p->options['plugin_filter_title'] ) ? false : true;
+			$filter_title = apply_filters( $lca.'_filter_title', $filter_title, $mod );
 
 			// setup filters to save and restore original / pre-filtered title value
 			if ( ! $filter_title ) {
@@ -248,11 +248,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod['is_post'] ) {
 
-					$title = apply_filters( 'wp_title',
-						get_the_title( $mod['id'] ).' '.$separator.' ', $separator, 'right' );
+					$title = get_the_title( $mod['id'] ).' '.$separator.' ';
+					$title = apply_filters( 'wp_title', $title, $separator, 'right' );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'post ID get_the_title() = "'.$title.'"' );
+						$this->p->debug->log( 'post ID '.$mod['id'].' get_the_title() = "'.$title.'"' );
 					}
 
 				} elseif ( $mod['is_term'] ) {
@@ -262,8 +262,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					if ( SucomUtil::is_category_page( $mod['id'] ) ) {
 						$title = $this->get_category_title( $term_obj, '', $separator );	// includes parents in title string
 					} elseif ( isset( $term_obj->name ) ) {
-						$title = apply_filters( 'wp_title',
-							$term_obj->name.' '.$separator.' ', $separator, 'right' );
+						$title = apply_filters( 'wp_title', $term_obj->name.' '.$separator.' ', $separator, 'right' );
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'name property missing in term object' );
 					}
@@ -272,14 +271,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$user_obj = SucomUtil::get_user_object( $mod['id'] );
 
-					$title = apply_filters( 'wp_title',
-						$user_obj->display_name.' '.$separator.' ', $separator, 'right' );
-
+					$title = apply_filters( 'wp_title', $user_obj->display_name.' '.$separator.' ', $separator, 'right' );
 					$title = apply_filters( $lca.'_user_object_title', $title, $user_obj );
 
 				} else {
 					$title = wp_title( $separator, false, 'right' );
-
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'default wp_title() = "'.$title.'"' );
 					}
@@ -287,11 +283,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				// just in case
 				if ( empty( $title ) ) {
-
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fallback get_bloginfo() = "'.$title.'"' );
 					}
-
 					if ( ! ( $title = get_bloginfo( 'name', 'display' ) ) ) {
 						$title = 'No Title';	// just in case
 					}
@@ -580,14 +574,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
-			$filter_content = apply_filters( $lca.'_filter_content', 
-				( empty( $this->p->options['plugin_filter_content'] ) ? false : true ), $mod );
+			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
+			$filter_content = apply_filters( $lca.'_filter_content', $filter_content, $mod );
 			$content_array = array();
 			$content_index = 'locale:'.SucomUtil::get_locale( $mod ).'_filter:'.( $filter_content ? 'true' : 'false' );
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
 			$cache_id = $lca.'_'.md5( $cache_salt );
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_content_text',
-				$this->p->options['plugin_content_cache_exp'] );
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_content_text', $this->p->options['plugin_content_cache_exp'] );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );
@@ -929,8 +922,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( $separator === false ) {
-				$separator = html_entity_decode( $this->p->options['og_title_sep'],
-					ENT_QUOTES, get_bloginfo( 'charset' ) );
+				$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
 			if ( isset( $term_obj->name ) ) {

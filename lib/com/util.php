@@ -972,14 +972,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function save_current_filter_value( $value ) {
 			$filter_name = current_filter();
-			self::$cache_filter_values[$filter_name] = trim( $value ) === '' ? null : $value;	// restoring an empty string breaks wp_title
+			self::$cache_filter_values[$filter_name] = $value;	// save value to static cache
 			remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), self::get_min_int() );	// remove ourselves
 			return $value;
 		}
 
 		public static function restore_current_filter_value( $value ) {
 			$filter_name = current_filter();
-			$value = self::$cache_filter_values[$filter_name] === null ? $value : self::$cache_filter_values[$filter_name];
+			if ( isset( self::$cache_filter_values[$filter_name] ) ) {	// just in case
+				$value = self::$cache_filter_values[$filter_name];	// restore value from static cache
+			}
 			remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), self::get_max_int() );	// remove ourselves
 			return $value;
 		}
