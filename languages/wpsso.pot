@@ -4025,7 +4025,7 @@ msgid ""
 "Activate the %s extension for additional Schema markup features and options."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:556
+#: lib/pro/ecom/woocommerce.php:521
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
