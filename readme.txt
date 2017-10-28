@@ -374,7 +374,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.3-dev.1 (2017/10/28)**
+**Version 3.47.3 (2017/10/28)**
 
 * *New Features*
 	* None
@@ -384,12 +384,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed the WooCommerce og:type value for product category and tag archive pages - should be 'website' instead of 'product' (Pro version).
 * *Developer Notes*
 	* Renamed the e-commerce filters (Pro version):
-		* 'ngfb_og_edd' to 'ngfb_og_ecom_edd'
-		* 'ngfb_og_marketpress' to 'ngfb_og_ecom_marketpress'
-		* 'ngfb_og_woocommerce' to 'ngfb_og_ecom_woocommerce'
-		* 'ngfb_og_wpecommerce' to 'ngfb_og_ecom_wpecommerce'
-	* Removed the 'ngfb_og_woocommerce_product_page' filter (Pro version).
-	* Refactored the NgfbProEcomWoocommerce 'filter_og_seed' method (Pro version).
+		* 'wpsso_og_edd' to 'wpsso_og_ecom_edd'
+		* 'wpsso_og_marketpress' to 'wpsso_og_ecom_marketpress'
+		* 'wpsso_og_woocommerce' to 'wpsso_og_ecom_woocommerce'
+		* 'wpsso_og_wpecommerce' to 'wpsso_og_ecom_wpecommerce'
+	* Removed the 'wpsso_og_woocommerce_product_page' filter (Pro version).
+	* Refactored the WpssoProEcomWoocommerce 'filter_og_seed' method (Pro version).
 
 **Version 3.47.2 (2017/10/28)**
 
@@ -835,13 +835,13 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.47.3-dev.1 =
+= 3.47.3 =
 
-(2017/10/28) Fixed the WooCommerce og:type value for product category and tag archive pages (Pro version). Renamed the e-commerce filters (Pro version). Refactored the NgfbProEcomWoocommerce 'filter_og_seed' method (Pro version).
+(2017/10/28) Fixed the WooCommerce og:type value for product category and tag archive pages (Pro version). Renamed the e-commerce filters (Pro version). Refactored the WpssoProEcomWoocommerce 'filter_og_seed' method (Pro version).
 
 = 3.47.2 =
 
-(2017/10/28) Fix for The Event Manager currency symbol. Refactored NgfbSchema add_single_*_data methods. Fix to limit mentions in Schema CollectionPage. Fix to prefer getting the Yoast SEO meta from Yoast SEO plugin, instead of directly from the Yoast SEO meta options.
+(2017/10/28) Fix for The Event Manager currency symbol. Refactored WpssoSchema add_single_*_data methods. Fix to limit mentions in Schema CollectionPage. Fix to prefer getting the Yoast SEO meta from Yoast SEO plugin, instead of directly from the Yoast SEO meta options.
 
 = 3.47.1 =
 
