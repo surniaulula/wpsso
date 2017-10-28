@@ -374,6 +374,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.47.3-dev.1 (2017/10/28)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fixed the WooCommerce og:type value for product category and tag archive pages - should be 'website' instead of 'product' (Pro version).
+* *Developer Notes*
+	* Renamed the e-commerce filters (Pro version):
+		* 'ngfb_og_edd' to 'ngfb_og_ecom_edd'
+		* 'ngfb_og_marketpress' to 'ngfb_og_ecom_marketpress'
+		* 'ngfb_og_woocommerce' to 'ngfb_og_ecom_woocommerce'
+		* 'ngfb_og_wpecommerce' to 'ngfb_og_ecom_wpecommerce'
+	* Removed the 'ngfb_og_woocommerce_product_page' filter (Pro version).
+	* Refactored the NgfbProEcomWoocommerce 'filter_og_seed' method (Pro version).
+
 **Version 3.47.2 (2017/10/28)**
 
 * *New Features*
@@ -817,6 +834,10 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 	* None
 
 == Upgrade Notice ==
+
+= 3.47.3-dev.1 =
+
+(2017/10/28) Fixed the WooCommerce og:type value for product category and tag archive pages (Pro version). Renamed the e-commerce filters (Pro version). Refactored the NgfbProEcomWoocommerce 'filter_og_seed' method (Pro version).
 
 = 3.47.2 =
 
