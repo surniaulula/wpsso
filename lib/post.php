@@ -504,7 +504,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags...', 'wpsso' ), 
 						'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ) );
 				} else {
-					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags (maybe from cache)...', 'wpsso' ), 
+					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags (webpage could be from cache)...', 'wpsso' ), 
 						'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ) );
 				}
 			}
@@ -627,11 +627,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 					if ( is_admin() ) {
 						if ( $conflicts_found ) {
-							$warn_msg = __( '%1$s duplicate meta tags found. Check %2$s of %3$s failed (will retry)...', 'wpsso' );
+							$warn_msg = __( '%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again later)...', 'wpsso' );
 							$this->p->notice->warn( sprintf( $warn_msg, $conflicts_found, $exec_count, $max_count ) );
 						} else {
 							if ( $this->p->debug->enabled ) {
-								$inf_msg = __( 'Awesome! No duplicate meta tags found. :-) Debug option is enabled (will retry)...', 'wpsso' );
+								$inf_msg = __( 'Awesome! No duplicate meta tags found. :-) Debug option is enabled (will repeat duplicate check)...', 'wpsso' );
 							} else {
 								$inf_msg = __( 'Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful...', 'wpsso' );
 							}

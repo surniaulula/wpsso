@@ -3938,7 +3938,7 @@ msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
 #: lib/post.php:507
-msgid "Checking %1$s for duplicate meta tags (maybe from cache)..."
+msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
 #: lib/post.php:531
@@ -4012,13 +4012,14 @@ msgstr ""
 
 #: lib/post.php:630
 msgid ""
-"%1$s duplicate meta tags found. Check %2$s of %3$s failed (will retry)..."
+"%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
+"later)..."
 msgstr ""
 
 #: lib/post.php:634
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled (will "
-"retry)..."
+"repeat duplicate check)..."
 msgstr ""
 
 #: lib/post.php:636
