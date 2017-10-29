@@ -2185,9 +2185,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT'] = 5;		// maximum number of videos extracted from the content
 
 			$var_const['WPSSO_DUPE_CHECK_HEADER_COUNT'] = 10;		// maximum number of times to check for duplicates
-			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = true;		// clear cache before fetching shortlink url
+			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = true;		// clear / remove cache file before fetching shortlink url
 			$var_const['WPSSO_DUPE_CHECK_WARNING_SECS'] = 2.5;		// issue a warning if getting shortlink took more than 2.5 seconds
-			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.0;		// crawlers often time-out after 3 seconds
+			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.0;		// hard-limit - most crawlers time-out after 3 seconds
 
 			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX'] = 10;
 			$var_const['WPSSO_SCHEMA_ADD_TYPE_URL_MAX'] = 5;
