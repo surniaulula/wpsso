@@ -374,6 +374,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.47.4-dev.1 (2017/10/29)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.47.3 (2017/10/28)**
 
 * *New Features*
@@ -834,6 +845,10 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 	* None
 
 == Upgrade Notice ==
+
+= 3.47.4-dev.1 =
+
+(2017/10/28) None.
 
 = 3.47.3 =
 
