@@ -412,6 +412,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
+			$short = $this->p->cf['plugin'][$lca]['short'];
 
 			if ( empty( $this->p->options['plugin_check_head'] ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -434,7 +435,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// stop here
 			}
 
-			// in case post_id is true/false
+			// just in case post_id is true/false
 			if ( ! is_numeric( $post_id ) ) {
 				$post_id = $post_obj->ID;
 				if ( ! is_numeric( $post_id ) ) {	// just in case
@@ -491,6 +492,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'checking '.$shortlink.' head meta for duplicates' );
 			}
+
 			if ( is_admin() ) {
 				$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags', 'wpsso' ), 
 					'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ).'...' );
@@ -563,7 +565,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'exiting early: '.$lca.' meta tag section not found in '.$shortlink );
 				}
 				if ( is_admin() ) {
-					$short = $this->p->cf['plugin'][$lca]['short'];
 					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $shortlink, $short ) );
 				}
 				return;	// stop here
@@ -580,7 +581,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'exiting early: preg_replace() function failed to remove the meta tag section' );
 				}
 				if ( is_admin() ) {
-					$short = $this->p->cf['plugin'][$lca]['short'];
 					$this->p->notice->err( sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP\'s PCRE library or a webpage filter corrupting the %1$s meta tags.', 'wpsso' ), $short ) );
 				}
 				return;	// stop here
@@ -588,7 +588,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$metas = $this->p->util->get_head_meta( $html, '/html/head/link|/html/head/meta', true );	// false on error
 			$check_opts = SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' );
-			$conflicts_msg = __( 'Possible conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage.', 'wpsso' );
+			$conflicts_msg = __( 'Conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage.', 'wpsso' );
 			$conflicts_found = 0;
 
 			if ( is_array( $metas ) ) {
@@ -598,7 +598,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 					if ( is_admin() ) {
 						$pinterest_tab_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' );
-						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'You may safely ignore any "nopin" attribute errors (suggested), or disable the "nopin" attribute under the <a href="%s">Pinterest settings tab</a>.', 'wpsso' ), $pinterest_tab_url ) );
+						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'You may safely ignore any "nopin" attribute errors, or disable the "nopin" attribute under the <a href="%s">Pinterest settings tab</a>.', 'wpsso' ), $pinterest_tab_url ) );
 					}
 				} else {
 					foreach( array(
@@ -611,20 +611,26 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 									if ( isset( $meta[$type] ) && $meta[$type] !== 'generator' && 
 										! empty( $check_opts[$tag.'_'.$type.'_'.$meta[$type]] ) ) {
 										$conflicts_found++;
-										$this->p->notice->err( sprintf( $conflicts_msg,
-											'<code>'.$tag.' '.$type.'="'.$meta[$type].'"</code>' ) );
+										$conflicts_tag = '<code>'.$tag.' '.$type.'="'.$meta[$type].'"</code>';
+										$this->p->notice->err( sprintf( $conflicts_msg, $conflicts_tag ) );
 									}
 								}
 							}
 						}
 					}
-					if ( ! $conflicts_found ) {
-						update_option( WPSSO_POST_CHECK_NAME, ++$exec_count, false );	// autoload = false
-						if ( $this->p->debug->enabled ) {
-							$this->p->notice->inf( __( 'Awesome! No duplicate meta tags found. :-)', 'wpsso' ) );
+					if ( is_admin() ) {
+						if ( $conflicts_found ) {
+							$warn_msg = __( '%1$s duplicate meta tags found. Check %2$s of %3$s failed (will retry)...', 'wpsso' );
+							$this->p->notice->warn( sprintf( $warn_msg, $conflicts_found, $exec_count, $max_count ) );
 						} else {
-							$this->p->notice->inf( __( 'Awesome! No duplicate meta tags found. :-)', 'wpsso' ).' '.
-								sprintf( __( '%s more checks to go...', 'wpsso' ), $max_count - $exec_count ) );
+							if ( $this->p->debug->enabled ) {
+								$inf_msg = __( 'Awesome! No duplicate meta tags found. :-) Debug option is enabled (will retry)...', 'wpsso' );
+							} else {
+								$inf_msg = __( 'Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful...', 'wpsso' );
+							}
+							$exec_count++;
+							update_option( WPSSO_POST_CHECK_NAME, $exec_count, false );	// autoload = false
+							$this->p->notice->inf( sprintf( $inf_msg, $conflicts_found, $exec_count, $max_count ) );
 						}
 					}
 				}

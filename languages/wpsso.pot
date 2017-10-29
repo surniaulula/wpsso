@@ -2017,7 +2017,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:140 lib/meta.php:205 lib/post.php:713
+#: lib/gpl/admin/post.php:140 lib/meta.php:205 lib/post.php:719
 #: lib/pro/admin/post.php:170
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -3927,49 +3927,49 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/post.php:485
+#: lib/post.php:486
 msgid ""
 "The WordPress wp_get_shortlink() function returned an invalid URL (%1$s) for "
 "post ID %2$s."
 msgstr ""
 
-#: lib/post.php:495
+#: lib/post.php:497
 msgid "Checking %1$s for duplicate meta tags"
 msgstr ""
 
-#: lib/post.php:522
+#: lib/post.php:524
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:524
+#: lib/post.php:526
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:526
+#: lib/post.php:528
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:528
+#: lib/post.php:530
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:539 lib/util.php:649
+#: lib/post.php:541 lib/util.php:649
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:548
+#: lib/post.php:550
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:557
+#: lib/post.php:559
 msgid "No &lt;meta/&gt; HTML tags were found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:567
+#: lib/post.php:568
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
@@ -3984,8 +3984,8 @@ msgstr ""
 
 #: lib/post.php:591
 msgid ""
-"Possible conflict detected &mdash; your theme or another plugin is adding "
-"%1$s to the head section of this webpage."
+"Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
+"head section of this webpage."
 msgstr ""
 
 #: lib/post.php:601
@@ -4002,16 +4002,24 @@ msgstr ""
 
 #: lib/post.php:601
 msgid ""
-"You may safely ignore any \"nopin\" attribute errors (suggested), or disable "
-"the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
+"You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
+"\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:624 lib/post.php:626
-msgid "Awesome! No duplicate meta tags found. :-)"
+#: lib/post.php:623
+msgid ""
+"%1$s duplicate meta tags found. Check %2$s of %3$s failed (will retry)..."
 msgstr ""
 
 #: lib/post.php:627
-msgid "%s more checks to go..."
+msgid ""
+"Awesome! No duplicate meta tags found. :-) Debug option is enabled (will "
+"retry)..."
+msgstr ""
+
+#: lib/post.php:629
+msgid ""
+"Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
 #: lib/pro/admin/meta.php:51 lib/pro/admin/post.php:46
