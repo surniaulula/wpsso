@@ -387,6 +387,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the WpssoUtil add_image_url_size() method.
 	* Refactored the WpssoMedia get_content_images() method to skip size limit checks for invalid sizes.
 	* Added a new WpssoUtil get_image_url_info() method to wrap / cache the PHP getimagesize() function.
+	* Changed the default value of WPSSO_DUPE_CHECK_CLEAR_SHORTLINK from false to true.
 
 **Version 3.47.3 (2017/10/28)**
 
