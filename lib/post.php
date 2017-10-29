@@ -440,7 +440,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$post_id = $post_obj->ID;
 				if ( ! is_numeric( $post_id ) ) {	// just in case
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: non-numeric post ID in post object');
+						$this->p->debug->log( 'exiting early: non-numeric post id in post object');
 					}
 					return;	// stop here
 				}
@@ -480,7 +480,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( filter_var( $shortlink, FILTER_VALIDATE_URL ) === false ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: wp_get_shortlink() returned an invalid URL ('.$shortlink.') for post ID '.$post_id );
+					$this->p->debug->log( 'exiting early: wp_get_shortlink() returned an invalid URL ('.$shortlink.') for post id '.$post_id );
 				}
 				if ( is_admin() ) {
 					$this->p->notice->err( sprintf( __( 'The WordPress wp_get_shortlink() function returned an invalid URL (%1$s) for post ID %2$s.',

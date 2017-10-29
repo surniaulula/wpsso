@@ -507,6 +507,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			// get / remove dimensions for remote image urls
 			// allow for multi-options like place_addr_img_url_1
 			$img_url_keys = preg_grep( '/_(img|logo|banner)_url(_[0-9]+)?$/', array_keys( $opts ) );
+
 			$this->p->util->add_image_url_size( $img_url_keys, $opts );
 
 			return $opts;

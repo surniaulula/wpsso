@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.47.3\n"
+"Project-Id-Version: WPSSO Core 3.47.4-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2036,42 +2036,42 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/media.php:351
+#: lib/media.php:350
 msgid ""
 "The NextGEN Gallery integration module provided by %1$s is required to read "
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:385
+#: lib/media.php:384
 msgid ""
 "Possible Media Library corruption detected &mdash; the full size image "
 "dimensions for image ID %1$s are missing from the image metadata returned by "
 "the WordPress wp_get_attachment_metadata() function."
 msgstr ""
 
-#: lib/media.php:393
+#: lib/media.php:392
 msgid ""
 "Possible Media Library corruption detected &mdash; the full size image file "
 "path for image ID %1$s is missing from the image metadata returned by the "
 "WordPress wp_get_attachment_metadata() function."
 msgstr ""
 
-#: lib/media.php:788
+#: lib/media.php:815
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1075 lib/pro/util/checkimgdims.php:71
+#: lib/media.php:1101 lib/pro/util/checkimgdims.php:71
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:1135
+#: lib/media.php:1170
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1153
+#: lib/media.php:1187
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -2458,7 +2458,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:409 lib/util.php:1801
+#: lib/messages.php:409 lib/util.php:1818
 msgid "No options available."
 msgstr ""
 
@@ -3850,71 +3850,71 @@ msgid ""
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:535
+#: lib/options.php:536
 msgid ""
 "The value of option '%s' must be a URL - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:537
+#: lib/options.php:538
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:539
+#: lib/options.php:540
 msgid ""
 "The value of option '%s' must be numeric - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:541
+#: lib/options.php:542
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:543
+#: lib/options.php:544
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:545
+#: lib/options.php:546
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:547
+#: lib/options.php:548
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:549
+#: lib/options.php:550
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:551
+#: lib/options.php:552
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:553
+#: lib/options.php:554
 msgid ""
 "The value of option '%s' must be HTML code - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:555
+#: lib/options.php:556
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:809
+#: lib/options.php:810
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
@@ -3957,7 +3957,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:541 lib/util.php:649
+#: lib/post.php:541 lib/util.php:763
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4118,12 +4118,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:147
-#: lib/pro/media/wistia.php:275 lib/util.php:714
+#: lib/pro/media/wistia.php:275 lib/util.php:828
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:150
-#: lib/pro/media/wistia.php:278 lib/util.php:717
+#: lib/pro/media/wistia.php:278 lib/util.php:831
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4692,69 +4692,69 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/util.php:392
+#: lib/util.php:506
 msgid ""
 "%s cached files, transient cache, sortable column meta, and the WordPress "
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:396
+#: lib/util.php:510
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:419
+#: lib/util.php:533
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:503
+#: lib/util.php:617
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:520
+#: lib/util.php:634
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:582
+#: lib/util.php:696
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:637
+#: lib/util.php:751
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:660
+#: lib/util.php:774
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:759
+#: lib/util.php:873
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1828
+#: lib/util.php:1845
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:1832
+#: lib/util.php:1849
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1835
+#: lib/util.php:1852
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:1839
+#: lib/util.php:1856
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:1959
+#: lib/util.php:1989
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr ""

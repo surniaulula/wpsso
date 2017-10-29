@@ -921,9 +921,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$mt_image[$mt_pre.':image:id']
 					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 
-					if ( ! empty( $mt_image[$mt_pre.':image'] ) &&
-						$this->p->util->push_max( $mt_ret, $mt_image, $num ) )
-							return $mt_ret;
+					if ( ! empty( $mt_image[$mt_pre.':image'] ) && $this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
+						return $mt_ret;
+					}
 				}
 			}
 
@@ -936,10 +936,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 					$mt_image = SucomUtil::get_mt_prop_image( $mt_pre );
 					$mt_image[$mt_pre.':image'] = $url;
+
 					$this->p->util->add_image_url_size( $mt_pre.':image', $mt_image );
 
-					if ( ! empty( $mt_image[$mt_pre.':image'] ) &&
-						$this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
+					if ( ! empty( $mt_image[$mt_pre.':image'] ) && $this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
 						return $mt_ret;
 					}
 				}

@@ -109,10 +109,124 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		// use a reference to modify the $options array directly
+		// $opt_keys can be a single key name or an array of key names
+		public function add_image_url_size( $opt_keys, array &$opts ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( ! is_array( $opt_keys ) ) {
+				$opt_keys = array( $opt_keys );
+			}
+
+			foreach ( $opt_keys as $opt_prefix ) {
+
+				$opt_suffix = '';
+
+				// example: place_addr_image_url_1
+				if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
+					$opt_prefix = $matches[1];
+					$opt_suffix = $matches[2];
+				}
+
+				$media_url = SucomUtil::get_mt_media_url( $opts, $opt_prefix.$opt_suffix );
+
+				list(
+					$opts[$opt_prefix.':width'.$opt_suffix],	// example: place_addr_img_url:width_1
+					$opts[$opt_prefix.':height'.$opt_suffix],	// example: place_addr_img_url:height_1
+					$image_type,
+					$image_attr
+				) = $this->get_image_url_info( $media_url );
+			}
+
+			return $opts;
+		}
+
+		public function get_image_url_info( $image_url ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$lca = $this->p->cf['lca'];
+			$image_info = false;
+			$def_image_info = array( WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, '', '' );
+			$disabled = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
+
+			if ( $disabled ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: use of getimagesize() is disabled' );
+				}
+				return $def_image_info;	// stop here
+
+			} elseif ( empty( $image_url ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: image url is empty' );
+				}
+				return $def_image_info;	// stop here
+
+			} elseif ( filter_var( $image_url, FILTER_VALIDATE_URL ) === false ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: invalid image url ('.$image_url.')' );
+				}
+				return $def_image_info;	// stop here
+			}
+
+			$cache_exp = isset( $this->p->options['plugin_imgsize_cache_exp'] ) ? $this->p->options['plugin_imgsize_cache_exp'] : DAY_IN_SECONDS;
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_image_url_size', $cache_exp );
+			$cache_salt = __METHOD__.'(url:'.$image_url.')';
+			$cache_id = $lca.'_'.md5( $cache_salt );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'transient cache salt '.$cache_salt );
+			}
+
+			if ( $cache_exp > 0 ) {
+				$image_info = get_transient( $cache_id );
+				if ( is_array( $image_info ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning image info from transient: '.
+							' '.$image_info[0].'x'.$image_info[1] );
+					}
+					return $image_info;
+				}
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'transient cache for image info is disabled' );
+			}
+
+			$image_info = @getimagesize( $image_url );
+
+			if ( is_array( $image_info ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'PHP getimagesize() image info: '.
+						' '.$image_info[0].'x'.$image_info[1] );
+				}
+			} else {
+				$image_info = $def_image_info;
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'PHP getimagesize() did not return an array - using defaults: '.
+						$image_info[0].'x'.$image_info[1] );
+				}
+			}
+
+			if ( $cache_exp > 0 ) {
+				set_transient( $cache_id, $image_info, $cache_exp );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'image info saved to transient '.$cache_id.' ('.$cache_exp.' seconds)');
+				}
+			}
+
+			return $image_info;
+		}
+
 		public function get_image_size_label( $size_name ) {	// wpsso-opengraph
-			if ( ! empty( $this->size_labels[$size_name] ) )
+			if ( ! empty( $this->size_labels[$size_name] ) ) {
 				return $this->size_labels[$size_name];
-			else return $size_name;
+			} else {
+				return $size_name;
+			}
 		}
 
 		public function image_editor_save_pre_image_sizes( $image, $post_id = false ) {
@@ -1036,103 +1150,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			);
 		}
 
-		// use a reference to modify the $options array directly
-		// $opt_keys can be a single key name or an array of key names
-		public function add_image_url_size( $opt_keys, array &$opts ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			if ( ! is_array( $opt_keys ) ) {
-				$opt_keys = array( $opt_keys );
-			}
-
-			$lca = $this->p->cf['lca'];
-			$disabled = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
-			$cache_exp = isset( $this->p->options['plugin_imgsize_cache_exp'] ) ?	// just in case
-				$this->p->options['plugin_imgsize_cache_exp'] : DAY_IN_SECONDS;
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_image_url_size', $cache_exp );
-
-			foreach ( $opt_keys as $opt_prefix ) {
-
-				$opt_suffix = '';
-
-				// example: place_addr_image_url_1
-				if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
-					$opt_prefix = $matches[1];
-					$opt_suffix = $matches[2];
-				}
-
-				$media_url = SucomUtil::get_mt_media_url( $opts, $opt_prefix.$opt_suffix );
-
-				if ( ! $disabled && ! empty( $media_url ) && 
-					filter_var( $media_url, FILTER_VALIDATE_URL ) !== false ) {
-
-					$cache_salt = __METHOD__.'(url:'.$media_url.')';
-					$cache_id = $lca.'_'.md5( $cache_salt );
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'transient cache salt '.$cache_salt );
-					}
-
-					if ( $cache_exp > 0 ) {
-						$image_info = get_transient( $cache_id );
-						if ( is_array( $image_info ) ) {
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'image info for '.$media_url.' retrieved from transient' );
-							}
-						} else {
-							$image_info = false;
-						}
-					} else {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'image info transient cache is disabled' );
-						}
-						$image_info = false;
-					}
-
-					if ( $image_info === false ) {
-
-						$image_info = @getimagesize( $media_url );
-
-						if ( is_array( $image_info ) ) {
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'PHP getimagesize() for '.$media_url.' returned '.
-									$image_info[0].'x'.$image_info[1] );
-							}
-							if ( $cache_exp > 0 ) {
-								set_transient( $cache_id, $image_info, $cache_exp );
-								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'image url size saved to transient '.
-										$cache_id.' ('.$cache_exp.' seconds)');
-								}
-							}
-						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'PHP getimagesize() did not return an array' );
-							$image_info = array( WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, '', '' );
-						}
-					}
-
-					list(
-						$opts[$opt_prefix.':width'.$opt_suffix],	// example: place_addr_img_url:width_1
-						$opts[$opt_prefix.':height'.$opt_suffix],	// example: place_addr_img_url:height_1
-						$image_type,
-						$image_attr
-					) = $image_info;
-
-				} else {
-					foreach ( array( 'width', 'height' ) as $attr ) {
-						if ( isset( $opts[$opt_prefix.':'.$attr.$opt_suffix] ) ) {
-							$opts[$opt_prefix.':'.$attr.$opt_suffix] = WPSSO_UNDEF_INT;
-						}
-					}
-				}
-			}
-
-			return $opts;
-		}
-
 		// accepts json script or json array
 		public function json_format( $json, $options = 0, $depth = 32 ) {
 
@@ -1950,20 +1967,33 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// $ext = 'org', 'plm', etc.
 		public function get_ext_req_msg( $ext ) {
+
+			$lca = $this->p->cf['lca'];
 			$req_msg = '';
-			if ( empty( $this->p->avail['p_ext'][$ext] ) ) {
-				$req_msg .= ' <p style="display:inline;" class="ext_req_msg"><em>';
-				if ( ! empty( $this->p->cf['plugin']['wpsso'.$ext]['url']['home'] ) ) {
-					$req_msg .= '<a href="'.$this->p->cf['plugin']['wpsso'.$ext]['url']['home'].'">';
-				}
-				$req_msg .= sprintf( _x( '%s extension required', 'option comment', 'wpsso' ),
-					( ! empty( $this->p->cf['plugin']['wpsso'.$ext]['short'] ) ?	// just in case
-						$this->p->cf['plugin']['wpsso'.$ext]['short'] : 'WPSSO '.strtoupper( $ext ) ) );
-				if ( ! empty( $this->p->cf['plugin']['wpsso'.$ext]['url']['home'] ) ) {
-					$req_msg .= '</a>';
-				}
-				$req_msg .= '</em></p>';
+
+			if ( $lca === $ext ) {
+				return $req_msg;
+			} elseif ( ! empty( $this->p->avail['p_ext'][$ext] ) ) {
+				return $req_msg;
 			}
+
+			$ext_short = empty( $this->p->cf['plugin'][$lca.$ext]['short'] ) ?	// just in case
+				strtoupper( $lca.' '.$ext ) : $this->p->cf['plugin'][$lca.$ext]['short'];
+
+			$req_msg .= ' <p style="display:inline;" class="ext_req_msg"><em>';
+
+			if ( ! empty( $this->p->cf['plugin'][$lca.$ext]['url']['home'] ) ) {
+				$req_msg .= '<a href="'.$this->p->cf['plugin'][$lca.$ext]['url']['home'].'">';
+			}
+
+			$req_msg .= sprintf( _x( '%s extension required', 'option comment', 'nextgen-facebook' ), $ext_short );
+
+			if ( ! empty( $this->p->cf['plugin'][$lca.$ext]['url']['home'] ) ) {
+				$req_msg .= '</a>';
+			}
+
+			$req_msg .= '</em></p>';
+
 			return $req_msg;
 		}
 	}
