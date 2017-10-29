@@ -465,7 +465,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$exec_count = $this->p->debug->enabled ? 0 : (int) get_option( WPSSO_POST_CHECK_NAME );		// cast to change false to 0
-			$max_count = (int) SucomUtil::get_const( 'WPSSO_CHECK_HEADER_COUNT', 10 );
+			$max_count = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 10 );
 
 			if ( $exec_count >= $max_count ) {
 				if ( $this->p->debug->enabled ) {
@@ -493,13 +493,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'checking '.$shortlink.' head meta for duplicates' );
 			}
 
-			if ( is_admin() ) {
-				$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags', 'wpsso' ), 
-					'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ).'...' );
+			$clear_shortlink = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_CLEAR_SHORTLINK', true );
+
+			if ( $clear_shortlink ) {
+				$this->p->cache->clear( $shortlink );	// clear cache before fetching shortlink url
 			}
 
-			if ( SucomUtil::get_const( 'WPSSO_DUPE_CHECK_CLEAR_SHORTLINK' ) ) {
-				$this->p->cache->clear( $shortlink );	// clear cache before fetching shortlink url
+			if ( is_admin() ) {
+				if ( $clear_shortlink ) {
+					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags...', 'wpsso' ), 
+						'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ) );
+				} else {
+					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags (maybe from cache)...', 'wpsso' ), 
+						'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ) );
+				}
 			}
 
 			$html = $this->p->cache->get( $shortlink, 'raw', 'transient' );

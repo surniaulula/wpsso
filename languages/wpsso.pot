@@ -2017,7 +2017,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:140 lib/meta.php:205 lib/post.php:719
+#: lib/gpl/admin/post.php:140 lib/meta.php:205 lib/post.php:726
 #: lib/pro/admin/post.php:170
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -3933,91 +3933,95 @@ msgid ""
 "post ID %2$s."
 msgstr ""
 
-#: lib/post.php:497
-msgid "Checking %1$s for duplicate meta tags"
+#: lib/post.php:504
+msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:524
+#: lib/post.php:507
+msgid "Checking %1$s for duplicate meta tags (maybe from cache)..."
+msgstr ""
+
+#: lib/post.php:531
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:526
+#: lib/post.php:533
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:528
+#: lib/post.php:535
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:530
+#: lib/post.php:537
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:541 lib/util.php:763
+#: lib/post.php:548 lib/util.php:763
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:550
+#: lib/post.php:557
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:559
+#: lib/post.php:566
 msgid "No &lt;meta/&gt; HTML tags were found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:568
+#: lib/post.php:575
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:584
+#: lib/post.php:591
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:591
+#: lib/post.php:598
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:601
+#: lib/post.php:608
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:601
+#: lib/post.php:608
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:601
+#: lib/post.php:608
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:623
+#: lib/post.php:630
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:627
+#: lib/post.php:634
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled (will "
 "retry)..."
 msgstr ""
 
-#: lib/post.php:629
+#: lib/post.php:636
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
