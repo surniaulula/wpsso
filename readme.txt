@@ -383,7 +383,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Refactored the WpssoUtil get_ext_req_msg() method.
+	* Refactored the WpssoUtil add_image_url_size() method.
+	* Refactored the WpssoMedia get_content_images() method to skip size limit checks for invalid sizes.
+	* Added a new WpssoUtil get_image_url_info() method to wrap / cache the PHP getimagesize() function.
 
 **Version 3.47.3 (2017/10/28)**
 
@@ -848,7 +851,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.47.4-dev.1 =
 
-(2017/10/28) None.
+(2017/10/29) Refactored the WpssoMedia get_content_images() method to skip size limit checks for invalid sizes.
 
 = 3.47.3 =
 
