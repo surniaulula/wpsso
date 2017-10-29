@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO (Core Plugin) 3.47.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-10-29 11:57-0600\n"
-"PO-Revision-Date: 2017-10-29 11:58-0600\n"
+"POT-Creation-Date: 2017-10-29 13:19-0600\n"
+"PO-Revision-Date: 2017-10-29 13:22-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2447,7 +2447,7 @@ msgstr "Si la constante FORCE_SSL est définie comme <em>true</em>, %s peut redi
 
 #: lib/messages.php:594
 msgid "When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed &mdash; until the theme and/or any plugin is updated, when another %2$d checks are performed."
-msgstr "Lorsque vous modifiez des Articles et Pages, %1$s peut verifier la section head des pages Web pour des balises HTML en conflit et/ou en double. Après %2$d vérifications <em>réussie</em>, aucune autre vérification sera effectuée — jusqu'à ce que le thème et/ou un plugin est mis à jour, lorsqu'un autre %2$d vérifications seront effectuées."
+msgstr "Lorsque vous modifiez des Articles et Pages, %1$s peut vérifier la section head des pages Web pour des balises HTML en conflit et/ou en double. Après %2$d vérifications <em>réussie</em>, aucune autre vérification sera effectuée &mdash; jusqu'à ce que le thème et/ou un plugin est mis à jour, lorsqu'un autre %2$d vérifications seront effectuées."
 
 #: lib/messages.php:611
 msgid "Automatically create missing and/or incorrect images in the WordPress Media Library (default is checked)."
@@ -3319,7 +3319,7 @@ msgstr "Vérification de balises méta en double pour %1$s..."
 
 #: lib/post.php:507
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
-msgstr "Vérification de balises méta en double pour %1$s (page Web pourrait être du cache)..."
+msgstr "Vérification de balises méta en double pour %1$s (page Web pourrait provenir du cache)..."
 
 #: lib/post.php:531
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
@@ -3375,7 +3375,7 @@ msgstr "Vous pouvez ignorer toutes les erreurs d'attribut \"nopin\" sans risque,
 
 #: lib/post.php:630
 msgid "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again later)..."
-msgstr "%1$s balises méta en double trouvées. Vérification %2$s sur %3$s a échoué (réessaie à suivre)..."
+msgstr "%1$s balises méta en double trouvées. Vérification %2$s de %3$s a échoué (réessaie à suivre)..."
 
 #: lib/post.php:634
 msgid "Awesome! No duplicate meta tags found. :-) Debug option is enabled (will repeat duplicate check)..."
