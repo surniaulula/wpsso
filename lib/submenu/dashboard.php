@@ -41,6 +41,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 		protected function add_meta_boxes() {
 
 			$col = 0;
+
 			$ids = array( 
 				// first row
 				'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),

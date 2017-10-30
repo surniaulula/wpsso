@@ -515,7 +515,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			wp_cache_flush();	// clear non-database transients as well
 
-			$this->delete_expired_db_transients( true );
+			$this->delete_expired_db_transients( true );	// $delete_all = true
 			$this->delete_all_cache_files();
 			$this->delete_all_column_meta();
 
@@ -587,40 +587,58 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $deleted;
 		}
 
-		public function delete_expired_db_transients( $all = false ) { 
-			global $wpdb;
+		public function delete_expired_db_transients( $delete_all = false ) { 
+
 			$lca = $this->p->cf['lca'];
-			$current_time = isset ( $_SERVER['REQUEST_TIME'] ) ?
-				(int) $_SERVER['REQUEST_TIME'] : time() ; 
-			if ( $all ) {
-				$prefix = '_transient_';	// clear all transients, even if no timeout value
-				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
-					' WHERE option_name LIKE \''.$prefix.$lca.'_%\';';
-			} else {
-				$prefix = '_transient_timeout_';
-				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
-					' WHERE option_name LIKE \''.$prefix.$lca.'_%\''.
-					' AND option_value < '.$current_time.';';	// expiration time older than current time
-			}
-			$expired = $wpdb->get_col( $dbquery ); 
+			$only_expired = $delete_all ? false : true;
+			$expired = $this->get_db_transient_names( $only_expired ); 
 			$deleted = 0;
-			foreach( $expired as $option_name ) { 
-				$transient_name = str_replace( $prefix, '', $option_name );
+
+			foreach( $expired as $transient_name ) { 
 				/*
 				 * If clearing all transients, skip the shortened URL transients 
 				 * unless the "Clear Short URLs on Clear All Cache" option is checked.
 				 */
-				if ( $all ) {
+				if ( $delete_all ) {
 					if ( empty( $this->p->cf['plugin_clear_short_urls'] ) && 
 						strpos( $transient_name, $lca.'_s_' ) === 0 ) {
 						continue;
 					}
 				}
+				error_log( $transient_name );	// TODO remove
 				if ( delete_transient( $transient_name ) ) {
 					$deleted++;
 				}
 			}
 			return $deleted;
+		}
+
+		public function get_db_transient_names( $only_expired = false ) { 
+
+			global $wpdb;
+			$lca = $this->p->cf['lca'];
+			$transient_names = array();
+			$name_prefix = '_transient_';
+
+			if ( $only_expired ) {
+				$current_time = isset ( $_SERVER['REQUEST_TIME'] ) ? (int) $_SERVER['REQUEST_TIME'] : time() ; 
+				$name_prefix = '_transient_timeout_';
+				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
+					' WHERE option_name LIKE \''.$name_prefix.$lca.'_%\''.
+					' AND option_value < '.$current_time.';';	// expiration time older than current time
+			} else {
+				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
+					' WHERE option_name LIKE \''.$name_prefix.$lca.'_%\';';
+			}
+
+			$transient_options = $wpdb->get_col( $dbquery ); 
+
+			foreach( $transient_options as $option_name ) { 
+				// remove '_transient_' or '_transient_timeout_' prefix from option name
+				$transient_names[] = str_replace( $name_prefix, '', $option_name );
+			}
+
+			return $transient_names;
 		}
 
 		public function delete_all_cache_files() {

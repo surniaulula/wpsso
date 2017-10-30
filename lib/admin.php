@@ -942,10 +942,35 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_cache_status() {
+
 			$lca = $this->p->cf['lca'];
-			$table_cols = 2;
+			$table_cols = 3;
+			$transient_names = $this->p->util->get_db_transient_names();
+
+			echo '<table class="sucom-settings '.$lca.' column-metabox cache-status">';
+			echo '<tr>';
+			echo '<th nowrap>Database Cache</th>';
+			echo '<th nowrap>Count</th>';
+			echo '<th nowrap>Exp. Seconds</th>';
+			echo '</tr>';
+
+			foreach ( $this->p->cf['wp']['transients'] as $name_prefix => $cache_info ) {
+
+				$cache_label = isset( $cache_info['label'] ) ? $cache_info['label'].':' : '';
+				$cache_count = count( preg_grep( '/^'.$name_prefix.'/', $transient_names ) );
+				$cache_exp = isset( $cache_info['opt_key'] ) &&
+					isset( $this->p->options[$cache_info['opt_key']] ) ?
+						 $this->p->options[$cache_info['opt_key']] : false;
+
+				echo '<th class="cache-label" nowrap>'.$cache_label.'</th>';
+				echo '<td class="cache-count" nowrap>'.number_format_i18n( $cache_count ).'</td>';
+				echo '<td class="cache-expiration" nowrap>'.( $cache_exp !== false ? number_format_i18n( $cache_exp ) : '' ).'</td>';
+				echo '</tr>';
+			}
 
 			do_action( $lca.'_column_metabox_cache_status_table_rows', $table_cols, $this->form );
+
+			echo '</table>';
 		}
 
 		public function show_metabox_version_info() {

@@ -1175,6 +1175,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'cap' => 'manage_options',
 					),
 				),
+				'transients' => array(
+					'wpsso_s_' => array(
+						'label' => 'Shortened URLs',
+						'opt_key' => 'plugin_short_url_cache_exp',
+					),
+					'wpsso_' => array(
+						'label' => 'All Transients',
+					),
+				),
 			),
 			'jquery-qtip' => array(			// http://qtip2.com/download
 				'label' => 'jQuery qTip',
