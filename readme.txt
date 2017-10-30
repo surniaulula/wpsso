@@ -385,8 +385,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Refactored the WpssoUtil get_ext_req_msg() method.
 	* Refactored the WpssoUtil add_image_url_size() method.
+	* Refactored the WpssoUtil delete_expired_db_transients() method.
 	* Refactored the WpssoMedia get_content_images() method to skip size limit checks for invalid sizes.
 	* Added a new WpssoUtil get_image_url_info() method to wrap / cache the PHP getimagesize() function.
+	* Added a new WpssoUtil get_db_transient_names() method to return all (or only expired) transients in the database.
 	* Changed the default value of WPSSO_DUPE_CHECK_CLEAR_SHORTLINK from false to true.
 
 **Version 3.47.3 (2017/10/28)**
