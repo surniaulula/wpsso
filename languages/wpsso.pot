@@ -4018,8 +4018,8 @@ msgstr ""
 
 #: lib/post.php:634
 msgid ""
-"Awesome! No duplicate meta tags found. :-) Debug option is enabled (will "
-"repeat duplicate check)..."
+"Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
+"keep repeating duplicate check..."
 msgstr ""
 
 #: lib/post.php:636

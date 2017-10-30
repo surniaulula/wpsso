@@ -558,7 +558,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						'wpsso' ), $shortlink ) );
 				}
 				return;	// stop here
-			} elseif ( stripos( $html, '<meta ' ) === false ) {	// webpage must have one or more <meta/> tags
+			} elseif ( ! preg_match( '/<meta[ \n]/i', $html ) ) {	// webpage must have one or more <meta/> tags
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: No <meta/> HTML tags were found in '.$shortlink );
 				}
@@ -631,7 +631,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							$this->p->notice->warn( sprintf( $warn_msg, $conflicts_found, $exec_count, $max_count ) );
 						} else {
 							if ( $this->p->debug->enabled ) {
-								$inf_msg = __( 'Awesome! No duplicate meta tags found. :-) Debug option is enabled (will repeat duplicate check)...', 'wpsso' );
+								$inf_msg = __( 'Awesome! No duplicate meta tags found. :-) Debug option is enabled - will keep repeating duplicate check...', 'wpsso' );
 							} else {
 								$inf_msg = __( 'Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful...', 'wpsso' );
 							}
