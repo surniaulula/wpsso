@@ -374,7 +374,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.4-dev.1 (2017/10/29)**
+**Version 3.47.4-dev.2 (2017/10/30)**
 
 * *New Features*
 	* None
@@ -850,9 +850,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.47.4-dev.1 =
+= 3.47.4-dev.2 =
 
-(2017/10/29) Refactored the WpssoMedia get_content_images() method to skip size limit checks for invalid sizes.
+(2017/10/30) Refactored the WpssoMedia get_content_images() method to skip size limit checks for invalid sizes.
 
 = 3.47.3 =
 
