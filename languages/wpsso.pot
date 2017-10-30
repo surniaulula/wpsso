@@ -4349,34 +4349,34 @@ msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
 
-#: lib/submenu/dashboard.php:45
+#: lib/submenu/dashboard.php:46
 msgctxt "metabox title"
 msgid "Help and Support"
 msgstr ""
 
-#: lib/submenu/dashboard.php:46
+#: lib/submenu/dashboard.php:47
 msgctxt "metabox title"
 msgid "Ratings are Awesome!"
 msgstr ""
 
-#: lib/submenu/dashboard.php:47
+#: lib/submenu/dashboard.php:48
 msgctxt "metabox title"
 msgid "Cache Status"
 msgstr ""
 
-#: lib/submenu/dashboard.php:48
-msgctxt "metabox title"
-msgid "Version Information"
-msgstr ""
-
-#: lib/submenu/dashboard.php:49
+#: lib/submenu/dashboard.php:50
 msgctxt "metabox title"
 msgid "Free / Standard Features"
 msgstr ""
 
-#: lib/submenu/dashboard.php:50
+#: lib/submenu/dashboard.php:51
 msgctxt "metabox title"
 msgid "Pro / Additional Features"
+msgstr ""
+
+#: lib/submenu/dashboard.php:52
+msgctxt "metabox title"
+msgid "Version Information"
 msgstr ""
 
 #: lib/submenu/essential.php:33
