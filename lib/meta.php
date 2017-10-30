@@ -886,7 +886,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$this->p->debug->log( 'using custom '.$prefix.' image url = "'.$url.'"',
 							get_class( $this ) );	// log extended class name
 					}
-
 					$width = $this->get_options( $mod['id'], $prefix.'_img_url:width' );
 					$height = $this->get_options( $mod['id'], $prefix.'_img_url:height' );
 
@@ -899,18 +898,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				if ( ! empty( $mt_image[$mt_pre.':image'] ) &&
 					$this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
-						return $mt_ret;
+					return $mt_ret;
 				}
 			}
 
 			foreach ( apply_filters( $lca.'_'.$mod['name'].'_image_ids', array(), $size_name, $mod['id'], $mod ) as $pid ) {
-
 				if ( $pid > 0 ) {	// quick sanity check
-
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'adding image pid: '.$pid );
 					}
-
 					$mt_image = SucomUtil::get_mt_prop_image( $mt_pre );
 
 					list( 
@@ -928,12 +924,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			foreach ( apply_filters( $lca.'_'.$mod['name'].'_image_urls', array(), $size_name, $mod['id'], $mod ) as $url ) {
-
 				if ( strpos( $url, '://' ) !== false ) {	// quick sanity check
-
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'adding image url: '.$url );
-
+					}
 					$mt_image = SucomUtil::get_mt_prop_image( $mt_pre );
 					$mt_image[$mt_pre.':image'] = $url;
 

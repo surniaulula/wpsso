@@ -1065,7 +1065,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->util->add_image_url_size( 'og:image', $og_video );
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'fetched video image url size: '.
+							$this->p->debug->log( 'returned / fetched video image url size: '.
 								$og_video['og:image:width'].'x'.$og_video['og:image:height'] );
 						}
 

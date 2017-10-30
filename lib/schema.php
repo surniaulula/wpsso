@@ -570,6 +570,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$lca = $this->p->cf['lca'];
 				$cache_salt = __METHOD__.'(child_id:'.$child_id.')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
+
 				if ( $this->types_exp > 0 ) {
 					$parents = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $parents ) ) {
@@ -611,6 +612,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$lca = $this->p->cf['lca'];
 				$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
 				$cache_id = $lca.'_'.md5( $cache_salt );
+
 				if ( $this->types_exp > 0 ) {
 					$children = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $children ) ) {

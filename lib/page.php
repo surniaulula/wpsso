@@ -578,9 +578,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$filter_content = apply_filters( $lca.'_filter_content', $filter_content, $mod );
 			$content_array = array();
 			$content_index = 'locale:'.SucomUtil::get_locale( $mod ).'_filter:'.( $filter_content ? 'true' : 'false' );
+
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_content_text', $this->p->options['plugin_content_cache_exp'] );
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
 			$cache_id = $lca.'_'.md5( $cache_salt );
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_content_text', $this->p->options['plugin_content_cache_exp'] );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );

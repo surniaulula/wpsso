@@ -377,10 +377,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$crawler_name = SucomUtil::get_crawler_name();
 			$head_array = array();
 			$head_index = $this->get_head_cache_index( $mod, $sharing_url );
+
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array', $this->p->options['plugin_head_cache_exp'] );
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
 			$cache_id = $lca.'_'.md5( $cache_salt );
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array',
-				$this->p->options['plugin_head_cache_exp'] );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );

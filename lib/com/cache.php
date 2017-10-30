@@ -44,7 +44,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function load_transient() {
 			if ( $this->transient['loaded'] !== true ) {
 				$cache_salt = __CLASS__.'::transient';
-				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+				$cache_id = $this->lca.'_'.md5( $cache_salt );
 				$ret = get_transient( $cache_id );
 				if ( $ret !== false ) {
 					$this->transient = $ret;
@@ -56,7 +56,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function save_transient() {
 			if ( $this->transient['loaded'] === true ) {
 				$cache_salt = __CLASS__.'::transient';
-				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+				$cache_id = $this->lca.'_'.md5( $cache_salt );
 				set_transient( $cache_id, $this->transient, $this->transient['expire'] );
 			}
 		}
@@ -117,7 +117,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$get_url = preg_replace( '/#.*$/', '', $url );	// remove the fragment
 			$cache_salt = __CLASS__.'::get(url:'.$get_url.')';
-			$cache_id = $this->p->cf['lca']. '_'.md5( $cache_salt );	// add a prefix to the object cache id
+			$cache_id = $this->lca. '_'.md5( $cache_salt );
 
 			if ( wp_cache_delete( $cache_id, __CLASS__ ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -167,7 +167,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$uca = strtoupper( $this->p->cf['lca'] );
+			$uca = strtoupper( $this->lca );
 			$failure = $format === 'url' ? $url : false;
 			$this->in_time[$url] = false;	// default value for failure
 
@@ -418,7 +418,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		private function get_cache_data( $cache_salt, $cache_type = 'file', $cache_exp = false, $file_ext = '' ) {
 
 			$cache_data = false;
-			$lca = $this->p->cf['lca'];
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $cache_type.' cache salt '.$cache_salt );
@@ -428,14 +427,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				case 'wp_cache':
 
-					$cache_id = $lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
+					$cache_id = $this->lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
 					$cache_data = wp_cache_get( $cache_id, __CLASS__ );
 
 					break;
 
 				case 'transient':
 
-					$cache_id = $lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
+					$cache_id = $this->lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
 					$cache_data = get_transient( $cache_id );
 
 					break;
@@ -496,7 +495,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		private function save_cache_data( $cache_salt, &$cache_data = '', $cache_type = 'file', $cache_exp = false, $file_ext = '' ) {
 
 			$data_saved = false;
-			$lca = $this->p->cf['lca'];
 
 			if ( empty( $cache_data ) ) {
 				return $data_saved;
@@ -513,7 +511,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				case 'wp_cache':
 
-					$cache_id = $lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
+					$cache_id = $this->lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
 					wp_cache_set( $cache_id, $cache_data, __CLASS__, $object_cache_exp );
 
 					if ( $this->p->debug->enabled ) {
@@ -527,7 +525,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				case 'transient':
 
-					$cache_id = $lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
+					$cache_id = $this->lca.'_'.md5( $cache_salt );	// add a prefix to the object cache id
 					set_transient( $cache_id, $cache_data, $object_cache_exp );
 
 					if ( $this->p->debug->enabled ) {

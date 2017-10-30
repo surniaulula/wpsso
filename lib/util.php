@@ -151,11 +151,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$image_info = false;
+			$is_disabled = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
 			$def_image_info = array( WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, '', '' );
-			$disabled = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
+			$image_info = false;
 
-			if ( $disabled ) {
+			if ( $is_disabled ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: use of getimagesize() is disabled' );
 				}
@@ -369,47 +369,65 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function set_force_regen( $mod, $md_pre = 'og', $value = true ) {
+
 			$regen_key = $this->get_force_regen_key( $mod, $md_pre );
+
 			if ( $regen_key !== false ) {
+
+				$cache_exp = 0;	// never expire
 				$cache_salt = __CLASS__.'::force_regen_transient';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+
 				if ( $this->force_regen['transient'] === null ) {
 					$this->force_regen['transient'] = get_transient( $cache_id );	// load transient if required
 				}
+
 				if ( $this->force_regen['transient'] === false ) {	// no transient in database
 					$this->force_regen['transient'] = array();
 				}
+
 				$this->force_regen['transient'][$regen_key] = $value;
-				set_transient( $cache_id, $this->force_regen['transient'], 0 );	// never expire
+
+				set_transient( $cache_id, $this->force_regen['transient'], $cache_exp );
 			}
 		}
 
 		public function is_force_regen( $mod, $md_pre = 'og' ) {
+
 			$regen_key = $this->get_force_regen_key( $mod, $md_pre );
+
 			if ( $regen_key !== false ) {
+
+				$cache_exp = 0;	// never expire
 				$cache_salt = __CLASS__.'::force_regen_transient';
 				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+
 				if ( $this->force_regen['transient'] === null ) {
 					$this->force_regen['transient'] = get_transient( $cache_id );	// load transient if required
 				}
+
 				if ( $this->force_regen['transient'] === false ) {	// no transient in database
 					return false;
 				}
+
 				if ( isset( $this->force_regen['cache'][$regen_key] ) )	{ // previously returned value
 					return $this->force_regen['cache'][$regen_key];
 				}
+
 				if ( isset( $this->force_regen['transient'][$regen_key] ) ) {
 					$this->force_regen['cache'][$regen_key] = $this->force_regen['transient'][$regen_key];	// save value
 					unset( $this->force_regen['transient'][$regen_key] );	// unset the regen key and save transient
 					if ( empty( $this->force_regen['transient'] ) ) {
 						delete_transient( $cache_id );
 					} else {
-						set_transient( $cache_id, $this->force_regen['transient'], 0 );	// never expire
+						set_transient( $cache_id, $this->force_regen['transient'], $cache_exp );
 					}
 					return $this->force_regen['cache'][$regen_key];	// return the cached value
 				}
+
 				return false;	// not in the cache or transient array
 			}
+
 			return false;
 		}
 
@@ -669,10 +687,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_article_topics', $this->p->options['plugin_topics_cache_exp'] );
 			$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
 			$cache_id = $lca.'_'.md5( $cache_salt );
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_article_topics',
-				$this->p->options['plugin_topics_cache_exp'] );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );

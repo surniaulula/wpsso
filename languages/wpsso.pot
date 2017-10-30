@@ -386,185 +386,185 @@ msgid ""
 "option in the <a href=\"%s\">Squirrly SEO</a> settings."
 msgstr ""
 
-#: lib/admin.php:1731
+#: lib/admin.php:1734
 msgid "Help us by rating the %s plugin 5 stars"
 msgstr ""
 
-#: lib/admin.php:1733
+#: lib/admin.php:1736
 msgid "Thank you for rating the %s plugin! You're awesome!"
 msgstr ""
 
-#: lib/admin.php:1737
+#: lib/admin.php:1740
 msgid "I've already rated the %s plugin 5 stars"
 msgstr ""
 
-#: lib/admin.php:1739
+#: lib/admin.php:1742
 msgid "Thank you for your earlier rating of %s! You're awesome!"
 msgstr ""
 
-#: lib/admin.php:1748
+#: lib/admin.php:1751
 msgid "Fantastic!"
 msgstr ""
 
-#: lib/admin.php:1749
+#: lib/admin.php:1752
 msgid "You've been using <b>%s</b> for a week or more."
 msgstr ""
 
-#: lib/admin.php:1751
+#: lib/admin.php:1754
 msgid "The %s plugin description page on WordPress.org"
 msgstr ""
 
-#: lib/admin.php:1753
+#: lib/admin.php:1756
 msgid "That's awesome!"
 msgstr ""
 
-#: lib/admin.php:1756
+#: lib/admin.php:1759
 msgid ""
 "Could I ask you for a small favor? Would you rate the %s plugin on WordPress."
 "org?"
 msgstr ""
 
-#: lib/admin.php:1759
+#: lib/admin.php:1762
 msgid ""
 "Your rating will encourage us to keep improving %s and help new WordPress "
 "users find the plugin as well."
 msgstr ""
 
-#: lib/admin.php:1766
+#: lib/admin.php:1769
 msgid ""
 "No thanks &mdash; I don't think %s is worth a 5 star rating and would like "
 "to offer a suggestion or report a problem."
 msgstr ""
 
-#: lib/admin.php:1911
+#: lib/admin.php:1914
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:1924
+#: lib/admin.php:1927
 msgid "No &lt;head&gt; HTML element found in the %s template."
 msgstr ""
 
-#: lib/admin.php:1931
+#: lib/admin.php:1934
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:1940
+#: lib/admin.php:1943
 msgid "Failed to open template file %s for writing."
 msgstr ""
 
-#: lib/admin.php:1946
+#: lib/admin.php:1949
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1949
+#: lib/admin.php:1952
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:1966 lib/submenu/essential.php:135
+#: lib/admin.php:1969 lib/submenu/essential.php:135
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:1970 lib/submenu/essential.php:139
+#: lib/admin.php:1973 lib/submenu/essential.php:139
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:1975 lib/submenu/general.php:171
+#: lib/admin.php:1978 lib/submenu/general.php:171
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:1980 lib/submenu/general.php:176
+#: lib/admin.php:1983 lib/submenu/general.php:176
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/admin.php:1983
+#: lib/admin.php:1986
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
 
-#: lib/admin.php:1988 lib/submenu/general.php:128 lib/submenu/general.php:345
+#: lib/admin.php:1991 lib/submenu/general.php:128 lib/submenu/general.php:345
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
 
-#: lib/admin.php:1991 lib/submenu/general.php:255 lib/submenu/general.php:348
+#: lib/admin.php:1994 lib/submenu/general.php:255 lib/submenu/general.php:348
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:1994
+#: lib/admin.php:1997
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2010
+#: lib/admin.php:2013
 msgctxt "option label"
 msgid "Item Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:2011
+#: lib/admin.php:2014
 msgctxt "option label"
 msgid "Item Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:2012
+#: lib/admin.php:2015
 msgctxt "option label"
 msgid "Item Type for Archive Page"
 msgstr ""
 
-#: lib/admin.php:2013
+#: lib/admin.php:2016
 msgctxt "option label"
 msgid "Item Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:2014
+#: lib/admin.php:2017
 msgctxt "option label"
 msgid "Item Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:2032
+#: lib/admin.php:2035
 msgctxt "option label"
 msgid "Item Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:2046
+#: lib/admin.php:2049
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2051
+#: lib/admin.php:2054
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2059
+#: lib/admin.php:2062
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:2067
+#: lib/admin.php:2070
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:2074
+#: lib/admin.php:2077
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/admin.php:2082
+#: lib/admin.php:2085
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/admin.php:2091
+#: lib/admin.php:2094
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
@@ -645,23 +645,23 @@ msgstr ""
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/com/cache.php:458 lib/com-gettext-extract.php:7
+#: lib/com/cache.php:457 lib/com-gettext-extract.php:7
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:470 lib/com-gettext-extract.php:14
+#: lib/com/cache.php:469 lib/com-gettext-extract.php:14
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:556 lib/com-gettext-extract.php:13
+#: lib/com/cache.php:554 lib/com-gettext-extract.php:13
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: lib/com/cache.php:564 lib/com-gettext-extract.php:8
+#: lib/com/cache.php:562 lib/com-gettext-extract.php:8
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:572 lib/com-gettext-extract.php:15
+#: lib/com/cache.php:570 lib/com-gettext-extract.php:15
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
@@ -2458,7 +2458,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:409 lib/util.php:1818
+#: lib/messages.php:409 lib/util.php:1835
 msgid "No options available."
 msgstr ""
 
@@ -3918,7 +3918,7 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/page.php:722
+#: lib/page.php:723
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "
@@ -3961,7 +3961,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:548 lib/util.php:763
+#: lib/post.php:548 lib/util.php:780
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4123,12 +4123,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:147
-#: lib/pro/media/wistia.php:275 lib/util.php:828
+#: lib/pro/media/wistia.php:275 lib/util.php:845
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:150
-#: lib/pro/media/wistia.php:278 lib/util.php:831
+#: lib/pro/media/wistia.php:278 lib/util.php:848
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4208,13 +4208,13 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:1352
+#: lib/schema.php:1354
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:1354
+#: lib/schema.php:1356
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
@@ -4697,69 +4697,69 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/util.php:506
+#: lib/util.php:524
 msgid ""
 "%s cached files, transient cache, sortable column meta, and the WordPress "
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:510
+#: lib/util.php:528
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:533
+#: lib/util.php:551
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:617
+#: lib/util.php:635
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:634
+#: lib/util.php:652
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:696
+#: lib/util.php:713
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:751
+#: lib/util.php:768
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:774
+#: lib/util.php:791
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:873
+#: lib/util.php:890
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1845
+#: lib/util.php:1862
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:1849
+#: lib/util.php:1866
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1852
+#: lib/util.php:1869
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:1856
+#: lib/util.php:1873
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:1989
+#: lib/util.php:2006
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr ""

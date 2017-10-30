@@ -1693,15 +1693,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$user_id = get_current_user_id();
-			$all_times = $this->p->util->get_all_times();
-			$some_time_ago = time() - WEEK_IN_SECONDS;
+
+			$cache_exp = DAY_IN_SECONDS;	// only show every 24 hours for each user id
 			$cache_salt = __METHOD__.'(user_id:'.$user_id.')';
 			$cache_id = $lca.'_'.md5( $cache_salt );
-			$this->get_form_object( $lca );
 
-			if ( get_transient( $cache_id ) ) {	// only show once every 24 hours for each user id
+			if ( get_transient( $cache_id ) ) {	// is transient value true (notice already shown)?
 				return;	// stop here
 			}
+
+			$all_times = $this->p->util->get_all_times();
+			$some_time_ago = time() - WEEK_IN_SECONDS;
+			$this->get_form_object( $lca );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
@@ -1775,7 +1778,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				break;	// show only one notice at a time
 			}
 
-			set_transient( $cache_id, true, DAY_IN_SECONDS );	// only show every 24 hours for each user id
+			set_transient( $cache_id, true, $cache_exp );
 		}
 
 		public function required_notices() {
@@ -2111,16 +2114,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$readme_info = array();
-			$readme_url = isset( $this->p->cf['plugin'][$ext]['url']['readme_txt'] ) ?
-				$this->p->cf['plugin'][$ext]['url']['readme_txt'] : '';
-			$readme_file = defined( strtoupper( $ext ).'_PLUGINDIR' ) ?
-				constant( strtoupper( $ext ).'_PLUGINDIR' ).'readme.txt' : '';
+			$readme_url = isset( $this->p->cf['plugin'][$ext]['url']['readme_txt'] ) ? $this->p->cf['plugin'][$ext]['url']['readme_txt'] : '';
+			$readme_file = SucomUtil::get_const( strtoupper( $ext ).'_PLUGINDIR', '' );
 			$use_remote = strpos( $readme_url, '://' ) ? true : false;
 
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_readme_txt', $this->p->cf['expire']['readme_txt'] );
 			$cache_salt = __METHOD__.'(url:'.$readme_url.'_file:'.$readme_file.')';
-			$cache_id = $ext.'_'.md5( $cache_salt );
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_readme_txt',
-				$this->p->cf['expire']['readme_txt'] );
+			$cache_id = $lca.'_'.md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );
