@@ -941,6 +941,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return '<div class="submit-buttons">'.$submit_buttons.'</div>';
 		}
 
+		public function show_metabox_cache_status() {
+			$lca = $this->p->cf['lca'];
+			$table_cols = 2;
+
+			do_action( $lca.'_column_metabox_cache_status_table_rows', $table_cols, $this->form );
+		}
+
 		public function show_metabox_version_info() {
 
 			$lca = $this->p->cf['lca'];
@@ -1023,6 +1030,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$ext_num = 0;
+			$table_cols = 3;
 
 			echo '<table class="sucom-settings '.$lca.' column-metabox module-status">';
 
@@ -1071,8 +1079,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$features = apply_filters( $ext.'_status_gpl_features', $features, $ext, $info, self::$pkg[$ext] );
 
 				if ( ! empty( $features ) ) {
-					echo '<tr><td colspan="3"><h4'.( $ext_num > 1 ? ' style="margin-top:10px;"' : '' ).'>'.
-						$info['short'].'</h4></td></tr>';
+					echo '<tr><td colspan="'.$table_cols.'">'.
+						'<h4'.( $ext_num > 1 ? ' style="margin-top:10px;"' : '' ).'>'.
+							$info['short'].'</h4></td></tr>';
 					$this->show_plugin_status( $ext, $info, $features );
 				}
 			}
