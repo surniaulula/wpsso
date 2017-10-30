@@ -612,7 +612,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				if ( $all ) {
 					if ( empty( $this->p->cf['plugin_clear_short_urls'] ) && 
-						strpos( $transient_name, $lca.'_sh' ) === 0 ) {
+						strpos( $transient_name, $lca.'_s_' ) === 0 ) {
 						continue;
 					}
 				}

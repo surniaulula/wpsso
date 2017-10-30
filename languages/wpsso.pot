@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.47.4-dev.1\n"
+"Project-Id-Version: WPSSO Core 3.47.4-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:650 lib/post.php:395 lib/term.php:282 lib/user.php:265
+#: lib/admin.php:650 lib/post.php:395 lib/term.php:282 lib/user.php:267
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -4681,19 +4681,19 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:437
+#: lib/user.php:439
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:491
+#: lib/user.php:493
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:492
+#: lib/user.php:494
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:493
+#: lib/user.php:495
 msgid "Yahoo Messenger"
 msgstr ""
 

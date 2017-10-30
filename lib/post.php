@@ -778,26 +778,39 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function clear_cache( $post_id, $rel_id = false ) {
+
 			switch ( get_post_status( $post_id ) ) {
 				case 'draft':
 				case 'pending':
 				case 'future':
 				case 'private':
 				case 'publish':
+
 					$lca = $this->p->cf['lca'];
 					$mod = $this->get_mod( $post_id );
-					$sharing_url = $this->p->util->get_sharing_url( $mod );
-					$cache_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 					$permalink = get_permalink( $post_id );
 					$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
+					$sharing_url = $this->p->util->get_sharing_url( $mod );
+					$cache_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 
 					$transients = array(
-						'WpssoHead::get_head_array' => array( $cache_salt ),
-						'SucomCache::get' => array( 'url:'.$permalink, 'url:'.$shortlink ),
+						'WpssoHead::get_head_array' => array(
+							$cache_salt,
+						),
+						'SucomCache::get' => array(
+							'url:'.$permalink,
+							'url:'.$shortlink,
+						),
 					);
+
 					$transients = apply_filters( $lca.'_post_cache_transients', $transients, $mod, $sharing_url );
 
-					$wp_objects = array( 'WpssoPage::get_content' => array( $cache_salt ) );
+					$wp_objects = array(
+						'WpssoPage::get_content' => array(
+							$cache_salt,
+						),
+					);
+
 					$wp_objects = apply_filters( $lca.'_post_cache_objects', $wp_objects, $mod, $sharing_url );
 
 					$deleted = $this->p->util->clear_cache_objects( $transients, $wp_objects );

@@ -256,11 +256,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$action_query = $lca.'-action';
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'found action query: '.$action_name );
+				}
 				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'nonce token query field missing' );
+					}
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
 					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
 						'wpsso' ), 'user', $action_name ) );
@@ -572,8 +574,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$value = apply_filters( $this->p->cf['lca'].'_get_author_meta', $value, $user_id, $field_id, $is_user );
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'user id '.$user_id.' '.$field_id.': '.$value );
+			}
 
 			return $value;
 		}
@@ -598,8 +601,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 								( $field_id === $this->p->options['og_author_field'] || 
 									$field_id === $this->p->options['seo_author_field'] ) ) {
 	
-								if ( $this->p->debug->enabled )
+								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'fetching the author index page url as fallback' );
+								}
 								$url = get_author_posts_url( $user_id );
 							}
 						}
@@ -722,15 +726,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public static function save_pref( $user_prefs, $user_id = false ) {
-			$user_id = $user_id === false ? 
-				get_current_user_id() : $user_id;
 
-			if ( ! current_user_can( 'edit_user', $user_id ) )
+			$user_id = $user_id === false ? get_current_user_id() : $user_id;
+
+			if ( ! current_user_can( 'edit_user', $user_id ) ) {
 				return false;
+			}
 
-			if ( ! is_array( $user_prefs ) || 
-				empty( $user_prefs ) )
-					return false;
+			if ( ! is_array( $user_prefs ) || empty( $user_prefs ) ) {
+				return false;
+			}
 
 			$old_prefs = self::get_pref( false, $user_id );	// get all prefs for user
 			$new_prefs = array_merge( $old_prefs, $user_prefs );
@@ -787,24 +792,32 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		// returns the value for show_opts, or return true/false if a value to compare is provided
 		public static function show_opts( $compare = false, $user_id = false ) {
-			$user_id = $user_id === false ? 
-				get_current_user_id() : $user_id;
+			$user_id = $user_id === false ? get_current_user_id() : $user_id;
 			$value = self::get_pref( 'show_opts' );
-			if ( $compare !== false )
+			if ( $compare !== false ) {
 				return $compare === $value ? true : false;
-			else return $value;
+			} else {
+				return $value;
+			}
 		}
 
 		public function clear_cache( $user_id, $rel_id = false ) {
+
 			$lca = $this->p->cf['lca'];
 			$mod = $this->get_mod( $user_id );
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$cache_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 
-			$transients = array( 'WpssoHead::get_head_array' => array( $cache_salt ) );
+			$transients = array(
+				'WpssoHead::get_head_array' => array(
+					$cache_salt,
+				),
+			);
+
 			$transients = apply_filters( $lca.'_user_cache_transients', $transients, $mod, $sharing_url );
 
 			$wp_objects = array();
+
 			$wp_objects = apply_filters( $lca.'_user_cache_objects', $wp_objects, $mod, $sharing_url );
 
 			$deleted = $this->p->util->clear_cache_objects( $transients, $wp_objects );

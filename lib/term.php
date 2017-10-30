@@ -367,16 +367,23 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function clear_cache( $term_id, $term_tax_id = false ) {
+
 			$lca = $this->p->cf['lca'];
 			$tax = get_term_by( 'term_taxonomy_id', $term_tax_id );
 			$mod = $this->get_mod( $term_id, $tax->slug );
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$cache_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 
-			$transients = array( 'WpssoHead::get_head_array' => array( $cache_salt ) );
+			$transients = array(
+				'WpssoHead::get_head_array' => array( 
+					$cache_salt,
+				),
+			);
+
 			$transients = apply_filters( $lca.'_term_cache_transients', $transients, $mod, $sharing_url );
 
 			$wp_objects = array();
+
 			$wp_objects = apply_filters( $lca.'_term_cache_objects', $wp_objects, $mod, $sharing_url );
 
 			$deleted = $this->p->util->clear_cache_objects( $transients, $wp_objects );
