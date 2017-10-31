@@ -857,7 +857,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.47.4-dev.3 =
 
-(2017/10/31) Refactored several methods to improve the clearing and counting of cache items.
+(2017/10/31) Added a new "Cache Status" metabox on the SSO &gt; Plugin Dashboard and Features Status page. Refactored several methods to improve the clearing and counting of cache items.
 
 = 3.47.3 =
 
