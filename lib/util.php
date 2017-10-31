@@ -559,48 +559,44 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function clear_cache_arrays( array $transient_array, array $wp_cache_array ) {
 
 			$lca = $this->p->cf['lca'];
+			$cache_array = array(
+				'transient' => &$transient_array,
+				'wp_cache' => &$wp_cache_array,
+			);
 			$deleted = 0;
 
-			$transient_prefixes = isset( $this->p->cf['wp']['transient'] ) ? 
-				array_keys( $this->p->cf['wp']['transient'] ) : array( $lca.'_' );
+			foreach ( array( 'transient', 'wp_cache' ) as $cache_type ) {
 
-			foreach ( $transient_array as $group => $arr ) {
-				if ( empty( $arr ) ) {
-					continue;
-				}
-				foreach ( $arr as $val ) {
-					if ( empty( $val ) ) {
+				$cache_prefixes = isset( $this->p->cf['wp'][$cache_type] ) ? 
+					array_keys( $this->p->cf['wp'][$cache_type] ) : array( $lca.'_' );
+	
+				foreach ( $cache_array[$cache_type] as $group => $values ) {
+					if ( empty( $values ) ) {
 						continue;
 					}
-					$cache_salt = $group.'('.$val.')';
-					$cache_id = $lca.'_'.md5( $cache_salt );
-					if ( delete_transient( $cache_id ) ) {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'cleared transient '.$cache_salt );
+					foreach ( $values as $val ) {
+						if ( empty( $val ) ) {
+							continue;
 						}
-						$deleted++;
-					}
-				}
-			}
-
-			$wp_cache_prefixes = isset( $this->p->cf['wp']['wp_cache'] ) ? 
-				array_keys( $this->p->cf['wp']['wp_cache'] ) : array( $lca.'_' );
-
-			foreach ( $wp_cache_array as $group => $arr ) {
-				if ( empty( $arr ) ) {
-					continue;
-				}
-				foreach ( $arr as $val ) {
-					if ( empty( $val ) ) {
-						continue;
-					}
-					$cache_salt = $group.'('.$val.')';
-					$cache_id = $lca.'_'.md5( $cache_salt );
-					if ( wp_cache_delete( $cache_id, $group ) ) {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'cleared wp cache '.$cache_salt );
+						$cache_salt = $group.'('.$val.')';
+						$cache_id = $lca.'_'.md5( $cache_salt );
+						switch ( $cache_type ) {
+							case 'transient':
+								$ret = delete_transient( $cache_id );
+								break;
+							case 'wp_cache':
+								$ret = wp_cache_delete( $cache_id );
+								break;
+							default:
+								$ret = false;
+								break;
 						}
-						$deleted++;
+						if ( $ret ) {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'cleared '.$cache_type.' '.$cache_salt );
+							}
+							$deleted++;
+						}
 					}
 				}
 			}
