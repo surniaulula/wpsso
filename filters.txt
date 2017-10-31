@@ -97,8 +97,8 @@
 'wpsso_opengraph_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) );
 'wpsso_option_type' ( false, $key, $network, $mod );
 'wpsso_plugin_image_sizes' ( $sizes, $mod, $crawler_name );
-'wpsso_post_cache_wp_cache_array' ( $wp_cache_array, $mod, $sharing_url );
-'wpsso_post_cache_transient_array' ( $transient_array, $mod, $sharing_url );
+'wpsso_post_cache_wp_cache_array' ( $wp_cache_array, $mod, $sharing_url, $mod_salt );
+'wpsso_post_cache_transient_array' ( $transient_array, $mod, $sharing_url, $mod_salt );
 'wpsso_post_image_ids' ( array $ids, $size_name, $post_id );
 'wpsso_post_image_urls' ( array $urls, $size_name, $post_id );
 'wpsso_post_custom_meta_tabs' ( $tabs, $mod, $metabox_id );
@@ -130,8 +130,8 @@
 'wpsso_size_info_'.$size_info['name'] ( $size_info, $post_id );
 'wpsso_social_accounts' ( (array) $social_accounts );
 'wpsso_tags' ( $tags, $post_id );
-'wpsso_term_cache_wp_cache_array' ( $wp_cache_array, $mod, $sharing_url );
-'wpsso_term_cache_transient_array' ( $transient_array, $mod, $sharing_url );
+'wpsso_term_cache_wp_cache_array' ( $wp_cache_array, $mod, $sharing_url, $mod_salt );
+'wpsso_term_cache_transient_array' ( $transient_array, $mod, $sharing_url, $mod_salt );
 'wpsso_term_image_ids' ( array $ids, $size_name, $term_id );
 'wpsso_term_image_urls' ( array $urls, $size_name, $term_id );
 'wpsso_term_custom_meta_tabs' ( $tabs, $mod, $metabox_id );
@@ -141,8 +141,8 @@
 'wpsso_title' ( $title, $mod, $add_hashtags, $md_idx, $separator );
 'wpsso_title_pre_limit' ( $title );
 'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_idx, $separator );
-'wpsso_user_cache_wp_cache_array' ( $wp_cache_array, $mod, $sharing_url );
-'wpsso_user_cache_transient_array' ( $transient_array, $mod, $sharing_url );
+'wpsso_user_cache_wp_cache_array' ( $wp_cache_array, $mod, $sharing_url, $mod_salt );
+'wpsso_user_cache_transient_array' ( $transient_array, $mod, $sharing_url, $mod_salt );
 'wpsso_user_image_ids' ( array $ids, $size_name, $user_id );
 'wpsso_user_image_urls' ( array $urls, $size_name, $user_id );
 'wpsso_user_object_description' ( $desc, $author_obj );
