@@ -793,25 +793,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod = $this->get_mod( $post_id );
 			$permalink = get_permalink( $post_id );
 			$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
-			$sharing_url = $this->p->util->get_sharing_url( $mod );
-			$mod_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 
-			$this->clear_mod_cache_arrays( $mod, array(
-				'transient' => array(
-					'WpssoHead::get_head_array' => array(
-						$mod_salt,
-					),
-					'SucomCache::get' => array(
-						'url:'.$permalink,
-						'url:'.$shortlink,
-					),
-				),
-				'wp_cache' => array(
-					'WpssoPage::get_content' => array(
-						$mod_salt,
-					),
-				),
-			), $sharing_url );
+			$cache_arrays = array();
+			$cache_arrays['transient']['SucomCache::get(url:'.$permalink.')'] = 'wpsso_';
+			$cache_arrays['transient']['SucomCache::get(url:'.$shortlink.')'] = 'wpsso_';
+
+			$this->clear_mod_cache_arrays( $mod, $cache_arrays );
 
 			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// w3 total cache
 				w3tc_pgcache_flush_post( $post_id );

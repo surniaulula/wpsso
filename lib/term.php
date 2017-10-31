@@ -367,19 +367,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function clear_cache( $term_id, $term_tax_id = false ) {
-
 			$tax = get_term_by( 'term_taxonomy_id', $term_tax_id );
 			$mod = $this->get_mod( $term_id, $tax->slug );
-			$sharing_url = $this->p->util->get_sharing_url( $mod );
-			$mod_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
-
-			$this->clear_mod_cache_arrays( $mod, array(
-				'transient' => array(
-					'WpssoHead::get_head_array' => array( 
-						$mod_salt,
-					),
-				),
-			), $sharing_url );
+			$this->clear_mod_cache_arrays( $mod );
 		}
 
 		// called by the WpssoRegister::uninstall_plugin() method

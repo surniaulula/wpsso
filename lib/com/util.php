@@ -2032,6 +2032,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		//	'term:123_tax:post_tag'
 		//	'post:0_url:https://example.com/a-subject/'
 		public static function get_mod_salt( array $mod, $sharing_url = false ) {
+
 			$mod_salt = '';
 
 			if ( ! empty( $mod['name'] ) ) {
@@ -2046,7 +2047,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mod_salt .= '_url:'.$sharing_url;
 			}
 
-			return ltrim( $mod_salt, '_' );
+			return ltrim( $mod_salt, '_' );	// remove leading underscore
 		}
 
 		// update the transient array and keep the original expiration time

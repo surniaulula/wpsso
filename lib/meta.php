@@ -556,74 +556,50 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $mod_id;
 		}
 
-		protected function clear_mod_cache_arrays( array $mod, array $cache_arrays, $sharing_url = false ) {
-
+		protected function clear_mod_cache_arrays( array $mod, array $cache_arrays = array(), $sharing_url = false ) {
 			$lca = $this->p->cf['lca'];
 
-			foreach ( array( 'transient', 'wp_cache' ) as $cache_type ) {
-				if ( ! isset( $cache_arrays[$cache_type] ) ) {
-					$cache_arrays[$cache_type] = array();	// empty array for filter
-				}
+			if ( $sharing_url === false ) {
+				$sharing_url = $this->p->util->get_sharing_url( $mod );
 			}
 
-			if ( $sharing_url === false ) {
-				$sharing_url = $this->p->util->get_sharing_url( $mod );	// get sharing url for filter
-			}
+			// standard cache item for all mods
+			$mod_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
+			$cache_arrays['transient']['WpssoHead::get_head_array('.$mod_salt.')'] = 'wpsso_h_';
+			$cache_arrays['wp_cache']['WpssoPage::get_content('.$mod_salt.')'] = 'wpsso_c_';
 
 			$deleted = 0;
-
-			foreach ( $cache_arrays as $cache_type => $cache_groups ) {
-
-				$cache_prefixes = isset( $this->p->cf['wp'][$cache_type] ) ?
-					array_keys( $this->p->cf['wp'][$cache_type] ) : array( $lca.'_' );
-
-				$cache_groups = apply_filters( $lca.'_'.$mod['name'].'_cache_'.$cache_type.'_array', $cache_groups, $mod, $sharing_url );
-
-				if ( empty( $cache_groups ) ) {
+			foreach ( $cache_arrays as $cache_type => $type_array ) {
+				$type_array = (array) apply_filters( $lca.'_'.$mod['name'].'_cache_'.$cache_type.'_array',
+					$type_array, $mod, $sharing_url, $mod_salt );
+				if ( empty( $type_array ) ) {
 					continue;
 				}
-
-				foreach ( $cache_groups as $group => $values ) {
-
-					if ( empty( $values ) ) {
-						continue;
+				foreach ( $type_array as $cache_salt => $cache_md5_pre ) {
+					if ( ! is_string( $cache_md5_pre ) ) {	// just in case
+						$cache_md5_pre = $lca.'_';
 					}
-
-					foreach ( $values as $val ) {
-
-						if ( empty( $val ) ) {
-							continue;
-						}
-
-						$cache_salt = $group.'('.$val.')';
-						$cache_id = $lca.'_'.md5( $cache_salt );
-
-						switch ( $cache_type ) {
-							case 'transient':
-								$ret = delete_transient( $cache_id );
-								break;
-							case 'wp_cache':
-								$ret = wp_cache_delete( $cache_id );
-								break;
-							default:
-								$ret = false;
-								break;
-						}
-						if ( $ret ) {
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'cleared '.$cache_type.' '.$cache_salt );
-							}
-							$deleted++;
-						}
+					$cache_id = $cache_md5_pre.md5( $cache_salt );
+					switch ( $cache_type ) {
+						case 'transient':
+							$ret = delete_transient( $cache_id );
+							break;
+						case 'wp_cache':
+							$ret = wp_cache_delete( $cache_id );
+							break;
+						default:
+							$ret = false;
+							break;
+					}
+					if ( $ret ) {
+						$deleted++;
 					}
 				}
 			}
-
 			if ( $deleted > 0 && ( $this->p->debug->enabled || ! empty( $this->p->options['plugin_show_purge_count'] ) ) ) {
 				$inf_msg = sprintf( __( '%s item(s) cleared from the cache.', 'wpsso' ), $deleted );
 				$this->p->notice->inf( $inf_msg, true, __FUNCTION__.'_show_purge_count_'.$mod['name'], true );	// can be dismissed
 			}
-
 			return $deleted;
 		}
 

@@ -802,18 +802,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function clear_cache( $user_id, $rel_id = false ) {
-
 			$mod = $this->get_mod( $user_id );
-			$sharing_url = $this->p->util->get_sharing_url( $mod );
-			$mod_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
-
-			$this->clear_mod_cache_arrays( $mod, array(
-				'transient' => array(
-					'WpssoHead::get_head_array' => array(
-						$mod_salt,
-					),
-				),
-			), $sharing_url );
+			$this->clear_mod_cache_arrays( $mod );
 		}
 	}
 }
