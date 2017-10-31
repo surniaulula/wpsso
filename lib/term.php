@@ -368,32 +368,18 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function clear_cache( $term_id, $term_tax_id = false ) {
 
-			$lca = $this->p->cf['lca'];
 			$tax = get_term_by( 'term_taxonomy_id', $term_tax_id );
 			$mod = $this->get_mod( $term_id, $tax->slug );
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
-			$cache_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
+			$mod_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 
-			$transient_array = array(
-				'WpssoHead::get_head_array' => array( 
-					$cache_salt,
+			$this->clear_mod_cache_arrays( $mod, array(
+				'transient' => array(
+					'WpssoHead::get_head_array' => array( 
+						$mod_salt,
+					),
 				),
-			);
-
-			$transient_array = apply_filters( $lca.'_term_cache_transient_array', $transient_array, $mod, $sharing_url );
-
-			$wp_cache_array = array();
-
-			$wp_cache_array = apply_filters( $lca.'_term_cache_wp_cache_array', $wp_cache_array, $mod, $sharing_url );
-
-			$deleted = $this->p->util->clear_cache_arrays( $transient_array, $wp_cache_array );
-
-			if ( ! empty( $this->p->options['plugin_show_purge_count'] ) && $deleted > 0 ) {
-				$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.',
-					true, __FUNCTION__.'_items_removed', true );	// can be dismissed
-			}
-
-			return $term_id;
+			), $sharing_url );
 		}
 
 		// called by the WpssoRegister::uninstall_plugin() method

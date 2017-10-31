@@ -139,6 +139,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$tabs = array();	// just in case
 					break;
 			}
+
 			return apply_filters( $this->p->cf['lca'].'_'.$mod['name'].'_custom_meta_tabs', $tabs, $mod, $metabox_id );
 		}
 
@@ -162,6 +163,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_rows_social_preview( $form, $head_info, $mod ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
@@ -552,6 +554,77 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function clear_cache( $mod_id, $rel_id = false ) {
 			// nothing to do
 			return $mod_id;
+		}
+
+		protected function clear_mod_cache_arrays( array $mod, array $cache_arrays, $sharing_url = false ) {
+
+			$lca = $this->p->cf['lca'];
+
+			foreach ( array( 'transient', 'wp_cache' ) as $cache_type ) {
+				if ( ! isset( $cache_arrays[$cache_type] ) ) {
+					$cache_arrays[$cache_type] = array();	// empty array for filter
+				}
+			}
+
+			if ( $sharing_url === false ) {
+				$sharing_url = $this->p->util->get_sharing_url( $mod );	// get sharing url for filter
+			}
+
+			$deleted = 0;
+
+			foreach ( $cache_arrays as $cache_type => $cache_groups ) {
+
+				$cache_prefixes = isset( $this->p->cf['wp'][$cache_type] ) ?
+					array_keys( $this->p->cf['wp'][$cache_type] ) : array( $lca.'_' );
+
+				$cache_groups = apply_filters( $lca.'_'.$mod['name'].'_cache_'.$cache_type.'_array', $cache_groups, $mod, $sharing_url );
+
+				if ( empty( $cache_groups ) ) {
+					continue;
+				}
+
+				foreach ( $cache_groups as $group => $values ) {
+
+					if ( empty( $values ) ) {
+						continue;
+					}
+
+					foreach ( $values as $val ) {
+
+						if ( empty( $val ) ) {
+							continue;
+						}
+
+						$cache_salt = $group.'('.$val.')';
+						$cache_id = $lca.'_'.md5( $cache_salt );
+
+						switch ( $cache_type ) {
+							case 'transient':
+								$ret = delete_transient( $cache_id );
+								break;
+							case 'wp_cache':
+								$ret = wp_cache_delete( $cache_id );
+								break;
+							default:
+								$ret = false;
+								break;
+						}
+						if ( $ret ) {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'cleared '.$cache_type.' '.$cache_salt );
+							}
+							$deleted++;
+						}
+					}
+				}
+			}
+
+			if ( $deleted > 0 && ( $this->p->debug->enabled || ! empty( $this->p->options['plugin_show_purge_count'] ) ) ) {
+				$inf_msg = sprintf( __( '%s item(s) cleared from the cache.', 'wpsso' ), $deleted );
+				$this->p->notice->inf( $inf_msg, true, __FUNCTION__.'_show_purge_count_'.$mod['name'], true );	// can be dismissed
+			}
+
+			return $deleted;
 		}
 
 		public function delete_options( $mod_id, $rel_id = false ) {
@@ -1068,8 +1141,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 *		'plugin_cf_product_size' => 'product_size',
 			 *	),
 			 */
-			foreach ( (array) apply_filters( $this->p->cf['lca'].'_get_cf_md_idx',
-				$this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
+			$cf_md_idx = (array) apply_filters( $this->p->cf['lca'].'_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] );
+
+			foreach ( $cf_md_idx as $cf_idx => $md_idx ) {
 
 				// custom fields can be disabled by filters
 				if ( empty( $md_idx ) ) {

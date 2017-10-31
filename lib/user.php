@@ -803,31 +803,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function clear_cache( $user_id, $rel_id = false ) {
 
-			$lca = $this->p->cf['lca'];
 			$mod = $this->get_mod( $user_id );
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
-			$cache_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
+			$mod_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 
-			$transient_array = array(
-				'WpssoHead::get_head_array' => array(
-					$cache_salt,
+			$this->clear_mod_cache_arrays( $mod, array(
+				'transient' => array(
+					'WpssoHead::get_head_array' => array(
+						$mod_salt,
+					),
 				),
-			);
-
-			$transient_array = apply_filters( $lca.'_user_cache_transient_array', $transient_array, $mod, $sharing_url );
-
-			$wp_cache_array = array();
-
-			$wp_cache_array = apply_filters( $lca.'_user_cache_wp_cache_array', $wp_cache_array, $mod, $sharing_url );
-
-			$deleted = $this->p->util->clear_cache_arrays( $transient_array, $wp_cache_array );
-
-			if ( ! empty( $this->p->options['plugin_show_purge_count'] ) && $deleted > 0 ) {
-				$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', 
-					true, __FUNCTION__.'_items_removed', true );	// can be dismissed
-			}
-
-			return $user_id;
+			), $sharing_url );
 		}
 	}
 }

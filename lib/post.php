@@ -785,53 +785,41 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				case 'future':
 				case 'private':
 				case 'publish':
-
-					$lca = $this->p->cf['lca'];
-					$mod = $this->get_mod( $post_id );
-					$permalink = get_permalink( $post_id );
-					$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
-					$sharing_url = $this->p->util->get_sharing_url( $mod );
-					$cache_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
-
-					$transient_array = array(
-						'WpssoHead::get_head_array' => array(
-							$cache_salt,
-						),
-						'SucomCache::get' => array(
-							'url:'.$permalink,
-							'url:'.$shortlink,
-						),
-					);
-
-					$transient_array = apply_filters( $lca.'_post_cache_transient_array', $transient_array, $mod, $sharing_url );
-
-					$wp_cache_array = array(
-						'WpssoPage::get_content' => array(
-							$cache_salt,
-						),
-					);
-
-					$wp_cache_array = apply_filters( $lca.'_post_cache_wp_cache_array', $wp_cache_array, $mod, $sharing_url );
-
-					$deleted = $this->p->util->clear_cache_arrays( $transient_array, $wp_cache_array );
-
-					if ( ! empty( $this->p->options['plugin_show_purge_count'] ) && $deleted > 0 ) {
-						$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', 
-							true, __FUNCTION__.'_show_purge_count', true );	// can be dismissed
-					}
-
-					if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// w3 total cache
-						w3tc_pgcache_flush_post( $post_id );
-					}
-
-					if ( function_exists( 'wp_cache_post_change' ) ) {	// wp super cache
-						wp_cache_post_change( $post_id );
-					}
-
-					break;
+					break;	// stop here
+				default:
+					return;
 			}
 
-			return $post_id;
+			$mod = $this->get_mod( $post_id );
+			$permalink = get_permalink( $post_id );
+			$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
+			$sharing_url = $this->p->util->get_sharing_url( $mod );
+			$mod_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
+
+			$this->clear_mod_cache_arrays( $mod, array(
+				'transient' => array(
+					'WpssoHead::get_head_array' => array(
+						$mod_salt,
+					),
+					'SucomCache::get' => array(
+						'url:'.$permalink,
+						'url:'.$shortlink,
+					),
+				),
+				'wp_cache' => array(
+					'WpssoPage::get_content' => array(
+						$mod_salt,
+					),
+				),
+			), $sharing_url );
+
+			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// w3 total cache
+				w3tc_pgcache_flush_post( $post_id );
+			}
+
+			if ( function_exists( 'wp_cache_post_change' ) ) {	// wp super cache
+				wp_cache_post_change( $post_id );
+			}
 		}
 
 		public function get_og_type_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating' ) {
