@@ -1092,7 +1092,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'um' => array(				// update manager
-				'rec_version' => '1.7.0',	// minimum update manager version (soft limit)
+				'rec_version' => '1.7.1',	// minimum update manager version (soft limit)
 				'check_hours' => array(
 					24 => 'Every day',
 					48 => 'Every two days',

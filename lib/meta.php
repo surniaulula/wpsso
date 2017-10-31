@@ -552,8 +552,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function clear_cache( $mod_id, $rel_id = false ) {
-			// nothing to do
-			return $mod_id;
+			$this->must_be_extended( __METHOD__ );
 		}
 
 		protected function clear_mod_cache_arrays( array $mod, array $cache_arrays = array(), $sharing_url = false ) {
