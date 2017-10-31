@@ -1175,12 +1175,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'cap' => 'manage_options',
 					),
 				),
-				'transients' => array(
+				'transient' => array(
 					'wpsso_h_' => array(
 						'label' => 'Head Markup Arrays',
 						'opt_key' => 'plugin_head_cache_exp',
 					),
-					'wpsso_c_' => array(),	// Filtered Content Text
 					'wpsso_s_' => array(
 						'label' => 'Get Shortened URLs',
 						'opt_key' => 'plugin_short_url_cache_exp',
@@ -1200,6 +1199,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wpsso_b_' => array(),	// Sharing Buttons HTML
 					'wpsso_' => array(
 						'label' => 'All Transients',
+					),
+				),
+				'wp_cache' => array(
+					'wpsso_c_' => array(),	// Filtered Content Text
+					'wpsso_' => array(
+						'label' => 'All WP Objects',
 					),
 				),
 			),

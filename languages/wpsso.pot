@@ -2462,7 +2462,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:409 lib/util.php:1851
+#: lib/messages.php:409 lib/util.php:1873
 msgid "No options available."
 msgstr ""
 
@@ -3965,7 +3965,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:548 lib/util.php:796
+#: lib/post.php:548 lib/util.php:818
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4131,12 +4131,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:147
-#: lib/pro/media/wistia.php:275 lib/util.php:861
+#: lib/pro/media/wistia.php:275 lib/util.php:883
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:150
-#: lib/pro/media/wistia.php:278 lib/util.php:864
+#: lib/pro/media/wistia.php:278 lib/util.php:886
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4710,69 +4710,69 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/util.php:523
+#: lib/util.php:524
 msgid ""
 "%s cached files, transient cache, sortable column meta, and the WordPress "
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:527
+#: lib/util.php:529
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:550
+#: lib/util.php:552
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:651
+#: lib/util.php:673
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:668
+#: lib/util.php:690
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:729
+#: lib/util.php:751
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:784
+#: lib/util.php:806
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:807
+#: lib/util.php:829
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:906
+#: lib/util.php:928
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1878
+#: lib/util.php:1900
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:1882
+#: lib/util.php:1904
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:1885
+#: lib/util.php:1907
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:1889
+#: lib/util.php:1911
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2022
+#: lib/util.php:2044
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr ""

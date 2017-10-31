@@ -889,17 +889,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</form>', "\n";
 		}
 
-		protected function get_submit_buttons( $submit_label = '' ) {
+		protected function get_submit_buttons( $submit_label_transl = '' ) {
 
 			$lca = $this->p->cf['lca'];
 
-			if ( empty( $submit_label ) ) {
-				$submit_label = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
+			if ( empty( $submit_label_transl ) ) {
+				$submit_label_transl = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 			}
 
-			$view_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
-			$view_name = _x( $this->p->cf['form']['show_options'][$view_next], 'option value', 'wpsso' );
-			$view_label_transl = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name );
+			$view_next_key = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
+			$view_name_transl = _x( $this->p->cf['form']['show_options'][$view_next_key], 'option value', 'wpsso' );
+			$view_label_transl = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name_transl );
 
 			if ( is_multisite() ) {
 				$clear_label_transl = sprintf( _x( 'Clear All Caches for Site %d',
@@ -910,8 +910,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$action_buttons = apply_filters( $lca.'_action_buttons', array(
 				array(
-					'submit' => $submit_label,
-					'change_show_options&show-opts='.$view_next => $view_label_transl,
+					'submit' => $submit_label_transl,
+					'change_show_options&show-opts='.$view_next_key => $view_label_transl,
 				),
 				array(
 					'clear_all_cache' => $clear_label_transl,
@@ -959,11 +959,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</tr>';
 
 			// make sure the "All Transients" count is last
-			if ( isset( $this->p->cf['wp']['transients']['wpsso_'] ) ) {	
-				SucomUtil::move_to_end( $this->p->cf['wp']['transients'], 'wpsso_' );
+			if ( isset( $this->p->cf['wp']['transient'][$lca.'_'] ) ) {	
+				SucomUtil::move_to_end( $this->p->cf['wp']['transient'], $lca.'_' );
 			}
 
-			foreach ( $this->p->cf['wp']['transients'] as $name_prefix => $cache_info ) {
+			foreach ( $this->p->cf['wp']['transient'] as $name_prefix => $cache_info ) {
 
 				if ( empty( $cache_info ) ) {
 					continue;

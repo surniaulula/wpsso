@@ -793,7 +793,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$sharing_url = $this->p->util->get_sharing_url( $mod );
 					$cache_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 
-					$transients = array(
+					$transient_array = array(
 						'WpssoHead::get_head_array' => array(
 							$cache_salt,
 						),
@@ -803,17 +803,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						),
 					);
 
-					$transients = apply_filters( $lca.'_post_cache_transients', $transients, $mod, $sharing_url );
+					$transient_array = apply_filters( $lca.'_post_cache_transient_array', $transient_array, $mod, $sharing_url );
 
-					$wp_objects = array(
+					$wp_cache_array = array(
 						'WpssoPage::get_content' => array(
 							$cache_salt,
 						),
 					);
 
-					$wp_objects = apply_filters( $lca.'_post_cache_objects', $wp_objects, $mod, $sharing_url );
+					$wp_cache_array = apply_filters( $lca.'_post_cache_wp_cache_array', $wp_cache_array, $mod, $sharing_url );
 
-					$deleted = $this->p->util->clear_cache_objects( $transients, $wp_objects );
+					$deleted = $this->p->util->clear_cache_arrays( $transient_array, $wp_cache_array );
 
 					if ( ! empty( $this->p->options['plugin_show_purge_count'] ) && $deleted > 0 ) {
 						$this->p->notice->inf( $deleted.' items removed from the WordPress object and transient caches.', 
