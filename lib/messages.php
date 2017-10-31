@@ -677,18 +677,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									'wpsso' ), $cache_exp, $cache_diff );
 							break;
 
-						case 'tooltip-plugin_imgsize_cache_exp':
-							$cache_exp = WpssoConfig::$cf['opt']['defaults']['plugin_imgsize_cache_exp'];	// use original un-filtered value
-							$cache_diff = $cache_exp ? human_time_diff( 0, $cache_exp ) : _x( 'disabled', 'option comment', 'wpsso' );
-							$text = __( 'The size for image URLs (not image IDs) is retrieved and saved to the WordPress transient cache to optimize performance and network bandwidth.',
-								'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).',
-									'wpsso' ), $cache_exp, $cache_diff );
-							break;
-
 						case 'tooltip-plugin_short_url_cache_exp':
 							$cache_exp = WpssoConfig::$cf['opt']['defaults']['plugin_short_url_cache_exp'];	// use original un-filtered value
 							$cache_diff = $cache_exp ? human_time_diff( 0, $cache_exp ) : _x( 'disabled', 'option comment', 'wpsso' );
 							$text = __( 'Shortened URLs are saved to the WordPress transient cache to optimize performance and API connections.',
+								'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).',
+									'wpsso' ), $cache_exp, $cache_diff );
+							break;
+
+						case 'tooltip-plugin_imgsize_cache_exp':
+							$cache_exp = WpssoConfig::$cf['opt']['defaults']['plugin_imgsize_cache_exp'];	// use original un-filtered value
+							$cache_diff = $cache_exp ? human_time_diff( 0, $cache_exp ) : _x( 'disabled', 'option comment', 'wpsso' );
+							$text = __( 'The size for image URLs (not image IDs) is retrieved and saved to the WordPress transient cache to optimize performance and network bandwidth.',
 								'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).',
 									'wpsso' ), $cache_exp, $cache_diff );
 							break;
@@ -711,7 +711,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'Report the number of objects removed from the WordPress cache when posts, terms, and users are updated.', 'wpsso' );
 							break;
 
-						case 'tooltip-plugin_clear_on_save':	// Clear All Cache on Save Settings
+						case 'tooltip-plugin_clear_on_save':	// Clear All Caches on Save Settings
 							$text = sprintf( __( 'Automatically clear all known plugin cache(s) when saving the %s settings (default is checked).', 'wpsso' ), $info['short'] );
 							break;
 

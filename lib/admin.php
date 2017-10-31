@@ -576,7 +576,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.', 'wpsso' ).'</strong> '.
 					sprintf( __( 'All caches have also been cleared (the %s option is enabled).', 'wpsso' ),
 						$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-							_x( 'Clear All Cache on Save Settings', 'option label', 'wpsso' ) ) ) );
+							_x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ) ) ) );
 			}
 
 			if ( empty( $opts['plugin_filter_content'] ) ) {
@@ -833,16 +833,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$user_id = get_current_user_id();
 				$profileuser = get_user_to_edit( $user_id );
 				$current_color = get_user_option( 'admin_color', $user_id );
-				if ( empty( $current_color ) )
+
+				if ( empty( $current_color ) ) {
 					$current_color = 'fresh';
+				}
 
 				// match wordpress behavior (users page for admins, profile page for everyone else)
-				$admin_url = current_user_can( 'list_users' ) ?
+				$referer_admin_url = current_user_can( 'list_users' ) ?
 					$this->p->util->get_admin_url( $this->menu_id, null, 'users' ) :
 					$this->p->util->get_admin_url( $this->menu_id, null, $this->menu_lib );
 
 				echo '<form name="'.$lca.'" id="'.$lca.'_setting_form" action="user-edit.php" method="post">'."\n";
-				echo '<input type="hidden" name="wp_http_referer" value="'.$admin_url.'" />'."\n";
+				echo '<input type="hidden" name="wp_http_referer" value="'.$referer_admin_url.'" />'."\n";
 				echo '<input type="hidden" name="action" value="update" />'."\n";
 				echo '<input type="hidden" name="user_id" value="'.$user_id.'" />'."\n";
 				echo '<input type="hidden" name="nickname" value="'.$profileuser->nickname.'" />'."\n";
@@ -897,23 +899,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$view_next = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
 			$view_name = _x( $this->p->cf['form']['show_options'][$view_next], 'option value', 'wpsso' );
-			$view_label = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name );
+			$view_label_transl = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name );
 
 			if ( is_multisite() ) {
-				$clear_label = sprintf( _x( 'Clear All Caches for Site %d',
+				$clear_label_transl = sprintf( _x( 'Clear All Caches for Site %d',
 					'submit button', 'wpsso' ), get_current_blog_id() );
 			} else {
-				$clear_label = _x( 'Clear All Caches',
-					'submit button', 'wpsso' );
+				$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
 			}
 
 			$action_buttons = apply_filters( $lca.'_action_buttons', array(
 				array(
 					'submit' => $submit_label,
-					'change_show_options&show-opts='.$view_next => $view_label,
+					'change_show_options&show-opts='.$view_next => $view_label_transl,
 				),
 				array(
-					'clear_all_cache' => $clear_label,
+					'clear_all_cache' => $clear_label_transl,
 					'clear_metabox_prefs' => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
 					'clear_hidden_notices' => _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ),
 				),
@@ -944,17 +945,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_cache_status() {
 
 			$lca = $this->p->cf['lca'];
+			$info = $this->p->cf['plugin'][$lca];
 			$table_cols = 3;
 			$transient_names = $this->p->util->get_db_transient_names();
 
 			echo '<table class="sucom-settings '.$lca.' column-metabox cache-status">';
+			echo '<tr><td colspan="'.$table_cols.'"><h4>'.sprintf( __( '%s Database Transients',
+				'wpsso' ), $info['short'] ).'</h4></td></tr>';
 			echo '<tr>';
-			echo '<th nowrap>Database Cache</th>';
-			echo '<th nowrap>Count</th>';
-			echo '<th nowrap>Exp. Seconds</th>';
+			echo '<th nowrap></th>';
+			echo '<th class="header-count" nowrap>Count</th>';
+			echo '<th class="header-expiration" nowrap>Exp. Seconds</th>';
 			echo '</tr>';
 
+			// make sure the "All Transients" count is last
+			if ( isset( $this->p->cf['wp']['transients']['wpsso_'] ) ) {	
+				SucomUtil::move_to_end( $this->p->cf['wp']['transients'], 'wpsso_' );
+			}
+
 			foreach ( $this->p->cf['wp']['transients'] as $name_prefix => $cache_info ) {
+
+				if ( empty( $cache_info ) ) {
+					continue;
+				}
 
 				$cache_label = isset( $cache_info['label'] ) ? $cache_info['label'].':' : '';
 				$cache_count = count( preg_grep( '/^'.$name_prefix.'/', $transient_names ) );
@@ -963,12 +976,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						 $this->p->options[$cache_info['opt_key']] : false;
 
 				echo '<th class="cache-label" nowrap>'.$cache_label.'</th>';
-				echo '<td class="cache-count" nowrap>'.number_format_i18n( $cache_count ).'</td>';
-				echo '<td class="cache-expiration" nowrap>'.( $cache_exp !== false ? number_format_i18n( $cache_exp ) : '' ).'</td>';
+				echo '<td class="cache-count" nowrap>'.$cache_count.'</td>';
+				echo '<td class="cache-expiration" nowrap>'.( $cache_exp !== false ? $cache_exp : '' ).'</td>';
 				echo '</tr>';
 			}
 
-			do_action( $lca.'_column_metabox_cache_status_table_rows', $table_cols, $this->form );
+			do_action( $lca.'_column_metabox_cache_status_table_rows', $table_cols, $this->form, $transient_names );
+
+			$clear_admin_url = $this->p->util->get_admin_url( '?'.$lca.'-action=clear_all_cache' );
+			$clear_admin_url = wp_nonce_url( $clear_admin_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
+			$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
+
+			echo '<tr><td colspan="'.$table_cols.'">';
+			echo $this->form->get_button( $clear_label_transl, 'button-secondary', '', $clear_admin_url );
+			echo '</td></tr>';
 
 			echo '</table>';
 		}

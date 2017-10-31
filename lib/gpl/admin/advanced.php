@@ -263,12 +263,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_head_cache_exp', $form, $network );
 
-			$table_rows['plugin_short_url_cache_exp'] = $form->get_th_html( _x( 'Shortened URL Cache Expiry',
-				'option label', 'wpsso' ), '', 'plugin_short_url_cache_exp' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_short_url_cache_exp'].' '.
-			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
-			WpssoAdmin::get_option_site_use( 'plugin_short_url_cache_exp', $form, $network );
-
 			$table_rows['plugin_content_cache_exp'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Filtered Content Text Cache Expiry',
 				'option label', 'wpsso' ), '', 'plugin_content_cache_exp' ).
@@ -276,8 +270,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_content_cache_exp', $form, $network );
 
+			$table_rows['plugin_short_url_cache_exp'] = $form->get_th_html( _x( 'Get Shortened URL Cache Expiry',
+				'option label', 'wpsso' ), '', 'plugin_short_url_cache_exp' ).
+			'<td nowrap class="blank">'.$this->p->options['plugin_short_url_cache_exp'].' '.
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
+			WpssoAdmin::get_option_site_use( 'plugin_short_url_cache_exp', $form, $network );
+
 			$table_rows['plugin_imgsize_cache_exp'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Get Image (URL) Size Cache Expiry',
+			$form->get_th_html( _x( 'Get Image URL Size Cache Expiry',
 				'option label', 'wpsso' ), '', 'plugin_imgsize_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_imgsize_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
@@ -303,13 +303,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_nocb_td( 'plugin_show_purge_count' ).
 			WpssoAdmin::get_option_site_use( 'plugin_show_purge_count', $form, $network );
 
-			$table_rows['plugin_clear_on_save'] = $form->get_th_html( _x( 'Clear All Cache on Save Settings',
+			$table_rows['plugin_clear_on_save'] = $form->get_th_html( _x( 'Clear All Caches on Save Settings',
 				'option label', 'wpsso' ), '', 'plugin_clear_on_save' ).
 			$form->get_nocb_td( 'plugin_clear_on_save' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_save', $form, $network );
 
 			$table_rows['plugin_clear_short_urls'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Clear Short URLs on Clear All Cache',
+			$form->get_th_html( _x( 'Clear Short URLs on Clear All Caches',
 				'option label', 'wpsso' ), '', 'plugin_clear_short_urls' ).
 			$form->get_nocb_td( 'plugin_clear_short_urls' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_short_urls', $form, $network );

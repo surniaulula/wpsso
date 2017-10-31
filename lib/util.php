@@ -174,10 +174,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $def_image_info;	// stop here
 			}
 
-			$cache_exp = isset( $this->p->options['plugin_imgsize_cache_exp'] ) ? $this->p->options['plugin_imgsize_cache_exp'] : DAY_IN_SECONDS;
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_image_url_size', $cache_exp );
+			$cache_exp = (int) apply_filters( $lca.'_cache_expire_image_url_size', $this->p->options['plugin_imgsize_cache_exp'] );
 			$cache_salt = __METHOD__.'(url:'.$image_url.')';
-			$cache_id = $lca.'_'.md5( $cache_salt );
+			$cache_id = $lca.'_i_'.md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );
@@ -597,7 +596,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			foreach( $expired as $transient_name ) { 
 				/*
 				 * If clearing all transients, skip the shortened URL transients 
-				 * unless the "Clear Short URLs on Clear All Cache" option is checked.
+				 * unless the "Clear Short URLs on Clear All Caches" option is checked.
 				 */
 				if ( $delete_all ) {
 					if ( empty( $this->p->cf['plugin_clear_short_urls'] ) && 
@@ -605,7 +604,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						continue;
 					}
 				}
-				error_log( $transient_name );	// TODO remove
 				if ( delete_transient( $transient_name ) ) {
 					$deleted++;
 				}
@@ -707,7 +705,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$lca = $this->p->cf['lca'];
 			$cache_exp = (int) apply_filters( $lca.'_cache_expire_article_topics', $this->p->options['plugin_topics_cache_exp'] );
 			$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
-			$cache_id = $lca.'_'.md5( $cache_salt );
+			$cache_id = $lca.'_a_'.md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );

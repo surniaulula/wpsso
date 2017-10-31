@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.47.4-dev.2',		// plugin version
+					'version' => '3.47.4-dev.3',		// plugin version
 					'opt_version' => '560',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
@@ -920,14 +920,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_size' => '',			// Product Size Custom Field
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
-					'plugin_short_url_cache_exp' => 7776000,	// Shortened URL Cache Expiry (90 days / 3 months)
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
-					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image (URL) Size Cache Expiry (1 day)
+					'plugin_short_url_cache_exp' => 7776000,	// Get Shortened URL Cache Expiry (90 days / 3 months)
+					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image URL Size Cache Expiry (1 day)
 					'plugin_topics_cache_exp' => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month)
 					'plugin_types_cache_exp' => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month)
 					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
-					'plugin_clear_on_save' => 1,			// Clear All Cache on Save Settings
-					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Cache
+					'plugin_clear_on_save' => 1,			// Clear All Caches on Save Settings
+					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Caches
 					'plugin_clear_for_comment' => 1,		// Clear Post Cache for New Comment
 					// Service APIs Tab
 					'plugin_shortener' => 'none',
@@ -1029,11 +1029,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
 					'plugin_head_cache_exp:use' => 'default',
-					'plugin_short_url_cache_exp' => 7776000,	// Shortened URL Cache Expiry (90 days / 3 months)
-					'plugin_short_url_cache_exp:use' => 'default',
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
 					'plugin_content_cache_exp:use' => 'default',
-					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image (URL) Size Cache Expiry (1 day)
+					'plugin_short_url_cache_exp' => 7776000,	// Get Shortened URL Cache Expiry (90 days / 3 months)
+					'plugin_short_url_cache_exp:use' => 'default',
+					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image URL Size Cache Expiry (1 day)
 					'plugin_imgsize_cache_exp:use' => 'default',
 					'plugin_topics_cache_exp' => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month)
 					'plugin_topics_cache_exp:use' => 'default',
@@ -1041,9 +1041,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_types_cache_exp:use' => 'default',
 					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
 					'plugin_show_purge_count:use' => 'default',
-					'plugin_clear_on_save' => 1,			// Clear All Cache on Save Settings
+					'plugin_clear_on_save' => 1,			// Clear All Caches on Save Settings
 					'plugin_clear_on_save:use' => 'default',
-					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Cache
+					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Caches
 					'plugin_clear_short_urls:use' => 'default',
 					'plugin_clear_for_comment' => 1,		// Clear Post Cache for New Comment
 					'plugin_clear_for_comment:use' => 'default',
@@ -1176,10 +1176,28 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'transients' => array(
+					'wpsso_h_' => array(
+						'label' => 'Head Markup Arrays',
+						'opt_key' => 'plugin_head_cache_exp',
+					),
+					'wpsso_c_' => array(),	// Filtered Content Text
 					'wpsso_s_' => array(
-						'label' => 'Shortened URLs',
+						'label' => 'Get Shortened URLs',
 						'opt_key' => 'plugin_short_url_cache_exp',
 					),
+					'wpsso_i_' => array(
+						'label' => 'Get Image URL Sizes',
+						'opt_key' => 'plugin_imgsize_cache_exp',
+					),
+					'wpsso_a_' => array(
+						'label' => 'Article Topics Arrays',
+						'opt_key' => 'plugin_topics_cache_exp',
+					),
+					'wpsso_t_' => array(
+						'label' => 'Schema Types Arrays',
+						'opt_key' => 'plugin_types_cache_exp',
+					),
+					'wpsso_b_' => array(),	// Sharing Buttons HTML
 					'wpsso_' => array(
 						'label' => 'All Transients',
 					),
