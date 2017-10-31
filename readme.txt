@@ -10,6 +10,8 @@ Tags: meta tags, open graph, share, social, schema, twitter card, seo, video seo
 Contributors: jsmoriss
 Requires At Least: 3.7
 Tested Up To: 4.8.2
+WC Requires At Least: 2.0.0
+WC Tested Up To: 3.2.2
 Requires PHP: 5.3
 Stable Tag: 3.47.3
 
