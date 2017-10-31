@@ -380,7 +380,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a new "Cache Status" metabox on the SSO &gt; Plugin Dashboard and Features Status page.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -388,6 +388,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the WpssoUtil add_image_url_size() method.
 	* Refactored the WpssoUtil delete_expired_db_transients() method.
 	* Refactored the WpssoMedia get_content_images() method to skip size limit checks for invalid sizes.
+	* Refactored the WpssoPost/Term/User clear_cache() methods.
+	* Moved and refactored the WpssoUtil clear_cache_objects() method to WpssoMeta clear_mod_cache_arrays().
 	* Added a new WpssoUtil get_image_url_info() method to wrap / cache the PHP getimagesize() function.
 	* Added a new WpssoUtil get_db_transient_names() method to return all (or only expired) transients in the database.
 	* Changed the default value of WPSSO_DUPE_CHECK_CLEAR_SHORTLINK from false to true.
@@ -855,7 +857,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.47.4-dev.3 =
 
-(2017/10/31) Refactored the WpssoMedia get_content_images() method to skip size limit checks for invalid sizes.
+(2017/10/31) Refactored several methods to improve the clearing and counting of cache items.
 
 = 3.47.3 =
 
