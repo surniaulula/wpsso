@@ -86,10 +86,11 @@ if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 }
 
 if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
-	function wpsso_clear_all_cache( $clear_ext = false ) {
+	function wpsso_clear_all_cache( $clear_external = false ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( is_object( $wpsso->util ) ) {
-			$wpsso->util->clear_all_cache( $clear_ext, __FUNCTION__.'_function', true );
+			$dismiss_key = __FUNCTION__.'_function';
+			$wpsso->util->clear_all_cache( $clear_external, null, $dismiss_key );
 		}
 	}
 }

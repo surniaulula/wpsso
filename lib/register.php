@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			// clear all cached objects, transients, and any external cache
 			if ( ! SucomUtil::get_const( 'WPSSO_REG_CLEAR_CACHE_DISABLE' ) ) {
-				$this->p->util->clear_all_cache( true );	// clear existing cache entries ( $clear_ext = true )
+				$this->p->util->clear_all_cache( true );	// clear existing cache entries ( $clear_external = true )
 			}
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
@@ -100,7 +100,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			// clear all cached objects and transients
 			if ( ! SucomUtil::get_const( 'WPSSO_REG_CLEAR_CACHE_DISABLE' ) ) {
-				$this->p->util->clear_all_cache( false );	// $clear_ext = false
+				$this->p->util->clear_all_cache( false );	// $clear_external = false
 			}
 
 			// trunc all stored notices for all users
