@@ -371,7 +371,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		public function clear_cache( $term_id, $term_tax_id = false ) {
 			$tax = get_term_by( 'term_taxonomy_id', $term_tax_id );
 			$mod = $this->get_mod( $term_id, $tax->slug );
-			$this->clear_mod_cache_arrays( $mod );
+			$this->clear_mod_cache_types( $mod );
 		}
 
 		// called by the WpssoRegister::uninstall_plugin() method

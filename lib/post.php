@@ -792,14 +792,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$mod = $this->get_mod( $post_id );
+			$lca = $this->p->cf['lca'];
+			$md5_pre = $lca.'_';
 			$permalink = get_permalink( $post_id );
 			$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
 
-			$cache_arrays = array();
-			$cache_arrays['transient']['SucomCache::get(url:'.$permalink.')'] = 'wpsso_';
-			$cache_arrays['transient']['SucomCache::get(url:'.$shortlink.')'] = 'wpsso_';
+			$cache_types = array();
+			$cache_types['transient'][] = $md5_pre.md5( 'SucomCache::get(url:'.$permalink.')' );
+			$cache_types['transient'][] = $md5_pre.md5( 'SucomCache::get(url:'.$shortlink.')' );
 
-			$this->clear_mod_cache_arrays( $mod, $cache_arrays );
+			$this->clear_mod_cache_types( $mod, $cache_types );
 
 			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// w3 total cache
 				w3tc_pgcache_flush_post( $post_id );

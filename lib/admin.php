@@ -571,8 +571,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					__( 'Please note that webpage content may take several days to reflect changes.', 'wpsso' ).' '.
 					sprintf( __( '%s now to force a refresh.', 'wpsso' ), $clear_cache_link ).'</em>' );
 			} else {
-				$this->p->util->clear_all_cache( true, __FUNCTION__.'_clear_all_cache', true );	// can be dismissed
-
+				$dismiss_key = __FUNCTION__.'_clear_all_cache';
+				$this->p->util->clear_all_cache( true, null, $dismiss_key );	// can be dismissed
 				$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.', 'wpsso' ).'</strong> '.
 					sprintf( __( 'All caches have also been cleared (the %s option is enabled).', 'wpsso' ),
 						$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
@@ -656,7 +656,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_all_cache':
 
-							$this->p->util->clear_all_cache( true );	// $clear_ext = true
+							$this->p->util->clear_all_cache( true );	// $clear_external = true
+							break;
+
+						case 'clear_all_cache_and_short_urls':
+
+							$this->p->util->clear_all_cache( true, true );	// $clear_external = true
 							break;
 
 						case 'clear_metabox_prefs':
@@ -906,9 +911,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'submit button', 'wpsso' ), get_current_blog_id() );
 			} else {
 				$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
-				if ( $this->p->options['plugin_shortener'] !== 'none' && empty( $this->p->options['plugin_clear_short_urls'] ) ) {
-					$clear_label_transl .= ' *';
-				}
+			}
+
+			if ( $this->p->options['plugin_shortener'] !== 'none' ) {
+				$clear_label_transl .= ' *';
 			}
 
 			$action_buttons = apply_filters( $lca.'_action_buttons', array(
@@ -940,13 +946,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$submit_buttons .= '<br/>';
 			}
 
-			$html = '<div class="submit-buttons">'.$submit_buttons.'</div>';
+			$html = '<div class="submit-buttons">'.$submit_buttons;
 
-			if ( $this->p->options['plugin_shortener'] !== 'none' && empty( $this->p->options['plugin_clear_short_urls'] ) ) {
+			if ( $this->p->options['plugin_shortener'] !== 'none' ) {
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 					_x( 'Clear Short URLs on Clear All Caches', 'option label', 'wpsso' ) );
-				$html .= '<p><small>* '.sprintf( __( '%s option is unchecked.', 'wpsso' ), $settings_page_link ).'</small></p>';
+
+				$html .= '<p><small>* ';
+				if ( empty( $this->p->options['plugin_clear_short_urls'] ) ) {
+					$html .= sprintf( __( '%1$s option is unchecked - shortened URL cache will be preserved.',
+						'wpsso' ), $settings_page_link );
+				} else {
+					$html .= sprintf( __( '%1$s option is checked - shortened URL cache will be refreshed.',
+						'wpsso' ), $settings_page_link );
+				}
+				$html .= '</small></p>';
 			}
+
+			$html .= '</div>';
 
 			return $html;
 		}
@@ -956,7 +973,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 			$info = $this->p->cf['plugin'][$lca];
 			$table_cols = 3;
-			$transient_names = $this->p->util->get_db_transient_names();
+			$transient_keys = $this->p->util->get_db_transient_keys();
 
 			echo '<table class="sucom-settings '.$lca.' column-metabox cache-status">';
 			echo '<tr><td colspan="'.$table_cols.'"><h4>'.sprintf( __( '%s Database Transients',
@@ -979,7 +996,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				$cache_label = isset( $cache_info['label'] ) ? $cache_info['label'].':' : '';
-				$cache_count = count( preg_grep( '/^'.$name_prefix.'/', $transient_names ) );
+				$cache_count = count( preg_grep( '/^'.$name_prefix.'/', $transient_keys ) );
 				$cache_exp = isset( $cache_info['opt_key'] ) &&
 					isset( $this->p->options[$cache_info['opt_key']] ) ?
 						 $this->p->options[$cache_info['opt_key']] : false;
@@ -990,7 +1007,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '</tr>';
 			}
 
-			do_action( $lca.'_column_metabox_cache_status_table_rows', $table_cols, $this->form, $transient_names );
+			do_action( $lca.'_column_metabox_cache_status_table_rows', $table_cols, $this->form, $transient_keys );
 
 			$clear_admin_url = $this->p->util->get_admin_url( '?'.$lca.'-action=clear_all_cache' );
 			$clear_admin_url = wp_nonce_url( $clear_admin_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
@@ -1605,9 +1622,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'blog_public option is disabled' );
 				}
-				$warn_dis_key = 'wordpress-search-engine-visibility-disabled';
-				if ( $this->p->notice->is_admin_pre_notices( $warn_dis_key ) ) {	// don't bother if already dismissed
-					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), true, $warn_dis_key, MONTH_IN_SECONDS * 3 );
+				$warn_dismiss_key = 'wordpress-search-engine-visibility-disabled';
+				if ( $this->p->notice->is_admin_pre_notices( $warn_dismiss_key ) ) {	// don't bother if already dismissed
+					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), true, $warn_dismiss_key, MONTH_IN_SECONDS * 3 );
 				}
 			}
 
@@ -1939,8 +1956,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'rec_version' => WpssoConfig::$cf[$key]['rec_version'],
 								'version_url' => WpssoConfig::$cf[$key]['version_url'],
 							) );
-							$warn_dis_key = 'notice-recommend-version-'.$lca.'-'.$version.'-'.$app_label.'-'.$app_version;
-							$this->p->notice->warn( $warn_msg, true, $warn_dis_key, MONTH_IN_SECONDS, true );	// $silent = true
+							$warn_dismiss_key = 'notice-recommend-version-'.$lca.'-'.$version.'-'.$app_label.'-'.$app_version;
+							$this->p->notice->warn( $warn_msg, true, $warn_dismiss_key, MONTH_IN_SECONDS, true );	// $silent = true
 						}
 					}
 				}
@@ -1971,9 +1988,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					// skip if notices already shown
 					if ( $this->p->notice->is_admin_pre_notices() ) {
 						// allow warning to be dismissed until the next theme update
-						$warn_dis_key = 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version();
+						$warn_dismiss_key = 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version();
 						$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
-							true, $warn_dis_key, true );	// can be dismissed
+							true, $warn_dismiss_key, true );	// can be dismissed
 					}
 					break;
 				}
@@ -2032,8 +2049,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( $have_changes ) {
-				$dis_key = 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version();
-				$this->p->notice->trunc_key( $dis_key, 'all' );	// just in case
+				$dismiss_key = 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version();
+				$this->p->notice->trunc_key( $dismiss_key, 'all' );	// just in case
 			}
 		}
 

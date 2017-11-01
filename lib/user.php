@@ -803,7 +803,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function clear_cache( $user_id, $rel_id = false ) {
 			$mod = $this->get_mod( $user_id );
-			$this->clear_mod_cache_arrays( $mod );
+			$this->clear_mod_cache_types( $mod );
 		}
 	}
 }

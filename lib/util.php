@@ -504,28 +504,31 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return apply_filters( $lca.'_get_post_types', $ret, $output );
 		}
 
-		public function clear_all_cache( $clear_ext = true, $dis_key = false, $dis_time = false ) {
+		public function clear_all_cache( $clear_external = true, $clear_short_urls = null, $dismiss_key = null ) {
 
 			if ( $this->cleared_all_cache ) {	// already run once
-				return 0;
-			} else {
-				$this->cleared_all_cache = true;
+				return;
+			}
+
+			$this->cleared_all_cache = true;	// prevent running a second time (by an external cache, for example)
+
+			if ( $clear_short_urls === null ) {
+				$clear_short_urls = isset( $this->p->options['plugin_clear_short_urls'] ) ?
+					$this->p->options['plugin_clear_short_urls'] : false;
 			}
 
 			wp_cache_flush();	// clear non-database transients as well
 
-			$this->delete_expired_db_transients( true );	// $delete_all = true
+			$this->delete_all_db_transients( $clear_short_urls );
 			$this->delete_all_cache_files();
 			$this->delete_all_column_meta();
 
 			$lca = $this->p->cf['lca'];
 			$short = $this->p->cf['plugin'][$lca]['short'];
-
 			$clear_all_msg = sprintf( __( '%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared.',
 				'wpsso' ), $short );
 
-			if ( $clear_ext ) {
-
+			if ( $clear_external ) {
 				$external_msg = __( 'The cache for %s has also been cleared.', 'wpsso' );
 
 				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
@@ -542,7 +545,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( isset( $GLOBALS['comet_cache'] ) ) {		// comet cache
 					$GLOBALS['comet_cache']->wipe_cache();
 					$clear_all_msg .= ' '.sprintf( $external_msg, 'Comet Cache' );
-
 				} elseif ( isset( $GLOBALS['zencache'] ) ) {		// zencache
 					$GLOBALS['zencache']->wipe_cache();
 					$clear_all_msg .= ' '.sprintf( $external_msg, 'ZenCache' );
@@ -550,64 +552,66 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$clear_all_msg .= ' '.__( 'Site performance may be impacted slightly while all cache objects are rebuilt.', 'wpsso' );
-
-			if ( is_admin() ) {
-				$this->p->notice->inf( $clear_all_msg, true, $dis_key, $dis_time );	// can be dismissed depending on args
-			}
+			$this->p->notice->inf( $clear_all_msg, true, $dismiss_key, true );	// can be dismissed depending on args
 		}
 
-		public function delete_expired_db_transients( $delete_all = false ) { 
+		public function delete_all_db_transients( $clear_short_urls = false ) { 
 
 			$lca = $this->p->cf['lca'];
-			$only_expired = $delete_all ? false : true;
-			$expired = $this->get_db_transient_names( $only_expired ); 
-			$deleted = 0;
+			$transient_keys = $this->get_db_transient_keys(); 
+			$deleted_count = 0;
 
-			foreach( $expired as $transient_name ) { 
-				/*
-				 * If clearing all transients, skip the shortened URL transients unless
-				 * the "Clear Short URLs on Clear All Caches" option is checked.
-				 */
-				if ( $delete_all ) {
-					if ( $this->p->options['plugin_shortener'] !== 'none' && 
-						empty( $this->p->options['plugin_clear_short_urls'] ) &&
-						strpos( $transient_name, $lca.'_s_' ) === 0 ) {
-						continue;
-					}
+			foreach( $transient_keys as $cache_id ) { 
+
+				// skip / preserve shortened urls by default
+				if ( ! $clear_short_urls && strpos( $cache_id, $lca.'_s_' ) === 0 ) {
+					continue;
 				}
-				if ( delete_transient( $transient_name ) ) {
-					$deleted++;
+
+				if ( delete_transient( $cache_id ) ) {
+					$deleted_count++;
 				}
 			}
-			return $deleted;
+			return $deleted_count;
 		}
 
-		public function get_db_transient_names( $only_expired = false ) { 
+		public function delete_expired_db_transients() { 
+
+			$only_expired = true;
+			$transient_keys = $this->get_db_transient_keys( $only_expired ); 
+			$deleted_count = 0;
+
+			foreach( $transient_keys as $cache_id ) { 
+				if ( delete_transient( $cache_id ) ) {
+					$deleted_count++;
+				}
+			}
+
+			return $deleted_count;
+		}
+
+		public function get_db_transient_keys( $only_expired = false ) { 
 
 			global $wpdb;
 			$lca = $this->p->cf['lca'];
-			$transient_names = array();
-			$name_prefix = '_transient_';
+			$transient_keys = array();
+			$transient_pre = $only_expired ? '_transient_timeout_' : '_transient_';
+			$db_query = 'SELECT option_name FROM '.$wpdb->options.
+				' WHERE option_name LIKE \''.$transient_pre.$lca.'_%\';';
 
 			if ( $only_expired ) {
 				$current_time = isset ( $_SERVER['REQUEST_TIME'] ) ? (int) $_SERVER['REQUEST_TIME'] : time() ; 
-				$name_prefix = '_transient_timeout_';
-				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
-					' WHERE option_name LIKE \''.$name_prefix.$lca.'_%\''.
-					' AND option_value < '.$current_time.';';	// expiration time older than current time
-			} else {
-				$dbquery = 'SELECT option_name FROM '.$wpdb->options.
-					' WHERE option_name LIKE \''.$name_prefix.$lca.'_%\';';
+				$db_query .= ' AND option_value < '.$current_time.';';	// expiration time older than current time
 			}
 
-			$transient_options = $wpdb->get_col( $dbquery ); 
+			$transient_names = $wpdb->get_col( $db_query ); 
 
-			foreach( $transient_options as $option_name ) { 
-				// remove '_transient_' or '_transient_timeout_' prefix from option name
-				$transient_names[] = str_replace( $name_prefix, '', $option_name );
+			// remove '_transient_' or '_transient_timeout_' prefix from option name
+			foreach( $transient_names as $option_name ) { 
+				$transient_keys[] = str_replace( $transient_pre, '', $option_name );
 			}
 
-			return $transient_names;
+			return $transient_keys;
 		}
 
 		public function delete_all_cache_files() {
