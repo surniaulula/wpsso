@@ -375,12 +375,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.47.4-dev.3 (2017/10/31)**
+**Version 3.48.0-dev.4 (2017/10/31)**
 
 * *New Features*
-	* None
+	* Added a new "Cache Status" metabox on the SSO &gt; Plugin Dashboard and Features Status page. The new "Cache Status" metabox is only shown if WordPress is using the database to store transients (the default for most WordPress sites).
 * *Improvements*
-	* Added a new "Cache Status" metabox on the SSO &gt; Plugin Dashboard and Features Status page.
+	* None
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -855,7 +855,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.47.4-dev.3 =
+= 3.48.0-dev.4 =
 
 (2017/10/31) Added a new "Cache Status" metabox on the SSO &gt; Plugin Dashboard and Features Status page. Refactored several methods to improve the clearing and counting of cache items.
 
