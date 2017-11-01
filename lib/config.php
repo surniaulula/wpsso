@@ -1177,23 +1177,23 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'transient' => array(
 					'wpsso_h_' => array(
-						'label' => 'Head Markup Arrays',
+						'label' => 'Head Markup',
 						'opt_key' => 'plugin_head_cache_exp',
 					),
 					'wpsso_s_' => array(
-						'label' => 'Get Shortened URLs',
+						'label' => 'Shortened URLs',
 						'opt_key' => 'plugin_short_url_cache_exp',
 					),
 					'wpsso_i_' => array(
-						'label' => 'Get Image URL Sizes',
+						'label' => 'Image URL Info',
 						'opt_key' => 'plugin_imgsize_cache_exp',
 					),
 					'wpsso_a_' => array(
-						'label' => 'Article Topics Arrays',
+						'label' => 'Article Topics',
 						'opt_key' => 'plugin_topics_cache_exp',
 					),
 					'wpsso_t_' => array(
-						'label' => 'Schema Types Arrays',
+						'label' => 'Schema Types',
 						'opt_key' => 'plugin_types_cache_exp',
 					),
 					'wpsso_b_' => array(),	// Sharing Buttons HTML

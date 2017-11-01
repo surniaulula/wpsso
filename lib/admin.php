@@ -979,9 +979,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<tr><td colspan="'.$table_cols.'"><h4>'.sprintf( __( '%s Database Transients',
 				'wpsso' ), $info['short'] ).'</h4></td></tr>';
 			echo '<tr>';
-			echo '<th nowrap></th>';
-			echo '<th class="header-count" nowrap>Count</th>';
-			echo '<th class="header-expiration" nowrap>Exp. Seconds</th>';
+			echo '<th class="cache-label" nowrap></th>';
+			echo '<th class="cache-count" nowrap>Count</th>';
+			echo '<th class="cache-expiration" nowrap>Expiration</th>';
 			echo '</tr>';
 
 			// make sure the "All Transients" count is last
