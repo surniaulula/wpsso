@@ -976,12 +976,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$transient_keys = $this->p->util->get_db_transient_keys();
 
 			echo '<table class="sucom-settings '.$lca.' column-metabox cache-status">';
-			echo '<tr><td colspan="'.$table_cols.'"><h4>'.sprintf( __( '%s Database Transients',
-				'wpsso' ), $info['short'] ).'</h4></td></tr>';
+			echo '<tr><td colspan="'.$table_cols.'"><h4>'.
+				sprintf( __( '%s Database Transients', 'wpsso' ), $info['short'] ).
+					'</h4></td></tr>';
 			echo '<tr>';
 			echo '<th class="cache-label" nowrap></th>';
-			echo '<th class="cache-count" nowrap>Count</th>';
-			echo '<th class="cache-expiration" nowrap>Expiration</th>';
+			echo '<th class="cache-count" nowrap>'.__( 'Count', 'wpsso' ).'</th>';
+			echo '<th class="cache-expiration" nowrap>'.__( 'Expiration', 'wpsso' ).'</th>';
 			echo '</tr>';
 
 			// make sure the "All Transients" count is last
@@ -989,19 +990,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				SucomUtil::move_to_end( $this->p->cf['wp']['transient'], $lca.'_' );
 			}
 
-			foreach ( $this->p->cf['wp']['transient'] as $name_prefix => $cache_info ) {
+			foreach ( $this->p->cf['wp']['transient'] as $md5_pre => $cache_info ) {
 
 				if ( empty( $cache_info ) ) {
 					continue;
 				}
 
-				$cache_label = isset( $cache_info['label'] ) ? $cache_info['label'].':' : '';
-				$cache_count = count( preg_grep( '/^'.$name_prefix.'/', $transient_keys ) );
+				$cache_label_transl = isset( $cache_info['label'] ) ? 
+					_x( $cache_info['label'], 'option label', 'wpsso' ).':' : '';
+
+				$cache_count = count( preg_grep( '/^'.$md5_pre.'/', $transient_keys ) );
+
 				$cache_exp = isset( $cache_info['opt_key'] ) &&
 					isset( $this->p->options[$cache_info['opt_key']] ) ?
 						 $this->p->options[$cache_info['opt_key']] : false;
 
-				echo '<th class="cache-label" nowrap>'.$cache_label.'</th>';
+				echo '<th class="cache-label" nowrap>'.$cache_label_transl.'</th>';
 				echo '<td class="cache-count" nowrap>'.$cache_count.'</td>';
 				echo '<td class="cache-expiration" nowrap>'.( $cache_exp !== false ? $cache_exp : '' ).'</td>';
 				echo '</tr>';

@@ -922,7 +922,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
 					'plugin_short_url_cache_exp' => 7776000,	// Get Shortened URL Cache Expiry (90 days / 3 months)
-					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image URL Size Cache Expiry (1 day)
+					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image URL Info Cache Expiry (1 day)
 					'plugin_topics_cache_exp' => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month)
 					'plugin_types_cache_exp' => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month)
 					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
@@ -1033,7 +1033,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_content_cache_exp:use' => 'default',
 					'plugin_short_url_cache_exp' => 7776000,	// Get Shortened URL Cache Expiry (90 days / 3 months)
 					'plugin_short_url_cache_exp:use' => 'default',
-					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image URL Size Cache Expiry (1 day)
+					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image URL Info Cache Expiry (1 day)
 					'plugin_imgsize_cache_exp:use' => 'default',
 					'plugin_topics_cache_exp' => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month)
 					'plugin_topics_cache_exp:use' => 'default',

@@ -277,7 +277,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			WpssoAdmin::get_option_site_use( 'plugin_short_url_cache_exp', $form, $network );
 
 			$table_rows['plugin_imgsize_cache_exp'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Get Image URL Size Cache Expiry',
+			$form->get_th_html( _x( 'Get Image URL Info Cache Expiry',
 				'option label', 'wpsso' ), '', 'plugin_imgsize_cache_exp' ).
 			'<td nowrap class="blank">'.$this->p->options['plugin_imgsize_cache_exp'].' '.
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
