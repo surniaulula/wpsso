@@ -37,39 +37,39 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		public function nag( $msg_txt, $user_id = true, $dis_key = false ) {
-			$this->log( 'nag', $msg_txt, $user_id, $dis_key, false );	// $dis_time = false
+		public function nag( $msg_txt, $user_id = true, $dismiss_key = false ) {
+			$this->log( 'nag', $msg_txt, $user_id, $dismiss_key, false );	// $dismiss_time = false
 		}
 
-		public function err( $msg_txt, $user_id = true, $dis_key = false, $dis_time = false ) {
-			$this->log( 'err', $msg_txt, $user_id, $dis_key, $dis_time );
+		public function err( $msg_txt, $user_id = true, $dismiss_key = false, $dismiss_time = false ) {
+			$this->log( 'err', $msg_txt, $user_id, $dismiss_key, $dismiss_time );
 		}
 
-		public function warn( $msg_txt, $user_id = true, $dis_key = false, $dis_time = false, $silent = false ) {
+		public function warn( $msg_txt, $user_id = true, $dismiss_key = false, $dismiss_time = false, $silent = false ) {
 			$payload = array( 'silent' => $silent ? true : false );
-			$this->log( 'warn', $msg_txt, $user_id, $dis_key, $dis_time, $payload );
+			$this->log( 'warn', $msg_txt, $user_id, $dismiss_key, $dismiss_time, $payload );
 		}
 
-		public function upd( $msg_txt, $user_id = true, $dis_key = false, $dis_time = false ) {
-			$this->log( 'upd', $msg_txt, $user_id, $dis_key, $dis_time );
+		public function upd( $msg_txt, $user_id = true, $dismiss_key = false, $dismiss_time = false ) {
+			$this->log( 'upd', $msg_txt, $user_id, $dismiss_key, $dismiss_time );
 		}
 
-		public function inf( $msg_txt, $user_id = true, $dis_key = false, $dis_time = false ) {
-			$this->log( 'inf', $msg_txt, $user_id, $dis_key, $dis_time );
+		public function inf( $msg_txt, $user_id = true, $dismiss_key = false, $dismiss_time = false ) {
+			$this->log( 'inf', $msg_txt, $user_id, $dismiss_key, $dismiss_time );
 		}
 
-		public function log( $msg_type, $msg_txt, $user_id = true, $dis_key = false, $dis_time = false, $payload = array() ) {
+		public function log( $msg_type, $msg_txt, $user_id = true, $dismiss_key = false, $dismiss_time = false, $payload = array() ) {
 
 			if ( empty( $msg_type ) || empty( $msg_txt ) ) {
 				return;
 			}
 
 			// dis_key is independant of the msg_type, so all can be hidden with one dis_key
-			$payload['dis_key'] = empty( $dis_key ) ? false : $dis_key;
+			$payload['dis_key'] = empty( $dismiss_key ) ? false : $dismiss_key;
 
 			// dis_key and dis_time (true or seconds) are required to dismiss a notice
-			if ( ! empty( $dis_key ) && ! empty( $dis_time ) && $this->can_dismiss() ) {
-				$payload['dis_time'] = $dis_time;
+			if ( ! empty( $dismiss_key ) && ! empty( $dismiss_time ) && $this->can_dismiss() ) {
+				$payload['dis_time'] = $dismiss_time;
 				if ( is_numeric( $payload['dis_time'] ) ) {
 					// if the message ends with a paragraph tag, add text as a paragraph
 					$is_p = substr( $msg_txt, -4 ) === '</p>' ? true : false;
@@ -103,15 +103,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		public function trunc_key( $dis_key, $user_id = true ) {
-			$this->trunc( '', '', $dis_key, $user_id );
+		public function trunc_key( $dismiss_key, $user_id = true ) {
+			$this->trunc( '', '', $dismiss_key, $user_id );
 		}
 
 		public function trunc_all() {
 			$this->trunc( '', '', false, 'all' );
 		}
 
-		public function trunc( $msg_type = '', $msg_txt = '', $dis_key = false, $user_id = true ) {
+		public function trunc( $msg_type = '', $msg_txt = '', $dismiss_key = false, $user_id = true ) {
 
 			if ( $user_id === true ) {
 				$user_ids = array( get_current_user_id() );
@@ -135,11 +135,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					if ( isset( $user_notices[$msg_type] ) ) {
 
 						// clear notice for a specific dis_key
-						if ( ! empty( $dis_key ) && is_array( $user_notices[$msg_type] ) ) {
+						if ( ! empty( $dismiss_key ) && is_array( $user_notices[$msg_type] ) ) {
 
 							// use a reference for the payload
 							foreach ( $user_notices[$msg_type] as $msg_txt => &$payload ) {
-								if ( ! empty( $payload['dis_key'] ) && $payload['dis_key'] === $dis_key ) {
+								if ( ! empty( $payload['dis_key'] ) && $payload['dis_key'] === $dismiss_key ) {
 									unset( $payload );	// unset by reference
 								}
 							}
@@ -189,11 +189,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		public function is_admin_pre_notices( $dis_key = false, $user_id = true ) {
+		public function is_admin_pre_notices( $dismiss_key = false, $user_id = true ) {
 			if ( is_admin() ) {
-				if ( ! empty( $dis_key ) ) {
+				if ( ! empty( $dismiss_key ) ) {
 					// if notice is dismissed, say we've already shown the notices
-					if ( $this->is_dismissed( $dis_key, $user_id ) ) {
+					if ( $this->is_dismissed( $dismiss_key, $user_id ) ) {
 						return false;
 					}
 				}
@@ -213,9 +213,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		public function is_dismissed( $dis_key = false, $user_id = true ) {
+		public function is_dismissed( $dismiss_key = false, $user_id = true ) {
 
-			if ( empty( $dis_key ) || ! $this->can_dismiss() ) {	// just in case
+			if ( empty( $dismiss_key ) || ! $this->can_dismiss() ) {	// just in case
 				return false;
 			}
 
@@ -236,17 +236,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			// notice has been dismissed
-			if ( isset( $user_dismissed[$dis_key] ) ) {
+			if ( isset( $user_dismissed[$dismiss_key] ) ) {
 
 				$now_time = time();
-				$dis_time = $user_dismissed[$dis_key];
+				$dismiss_time = $user_dismissed[$dismiss_key];
 
-				if ( empty( $dis_time ) || $dis_time > $now_time ) {
+				if ( empty( $dismiss_time ) || $dismiss_time > $now_time ) {
 					return true;
 
 				// dismiss time has expired
 				} else {
-					unset( $user_dismissed[$dis_key] );
+					unset( $user_dismissed[$dismiss_key] );
 					if ( empty( $user_dismissed ) ) {
 						delete_user_option( $user_id, $this->dis_name );
 					} else {
@@ -407,9 +407,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 									isset( $user_dismissed[$payload['dis_key']] ) ) {
 
 									$now_time = time();
-									$dis_time = $user_dismissed[$payload['dis_key']];
+									$dismiss_time = $user_dismissed[$payload['dis_key']];
 
-									if ( empty( $dis_time ) || $dis_time > $now_time ) {
+									if ( empty( $dismiss_time ) || $dismiss_time > $now_time ) {
 										$payload['hidden'] = true;
 										if ( empty( $payload['silent'] ) ) {
 											$hidden[$msg_type]++;

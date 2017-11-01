@@ -806,9 +806,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->p->debug->log( $options_name.' settings have been updated and saved' );
 					}
 					if ( is_admin() ) {
-						$dis_key = $options_name.'_settings_updated_and_saved';
+						$dismiss_key = $options_name.'_settings_updated_and_saved';
 						$this->p->notice->inf( sprintf( __( 'Plugin settings (%s) have been updated and saved.',	// blue status w pin
-							'wpsso' ), $options_name ), true, $dis_key, true );	// can be dismissed
+							'wpsso' ), $options_name ), true, $dismiss_key, true );	// can be dismissed
 					}
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $options_name.' settings have been saved silently' );
