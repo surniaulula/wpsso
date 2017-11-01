@@ -906,6 +906,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'submit button', 'wpsso' ), get_current_blog_id() );
 			} else {
 				$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
+				if ( $this->p->options['plugin_shortener'] !== 'none' && empty( $this->p->options['plugin_clear_short_urls'] ) ) {
+					$clear_label_transl .= ' *';
+				}
 			}
 
 			$action_buttons = apply_filters( $lca.'_action_buttons', array(
@@ -923,9 +926,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$submit_buttons = '';
 
 			foreach ( $action_buttons as $row => $row_buttons ) {
-				$css_class = $row ?
-					'button-secondary' :
-					'button-secondary button-highlight';	// highlight the first row
+				$css_class = $row ? 'button-secondary' : 'button-secondary button-highlight';	// highlight the first row
 
 				foreach ( $row_buttons as $action_arg => $button_label ) {
 					if ( $action_arg === 'submit' ) {
@@ -939,7 +940,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$submit_buttons .= '<br/>';
 			}
 
-			return '<div class="submit-buttons">'.$submit_buttons.'</div>';
+			$html = '<div class="submit-buttons">'.$submit_buttons.'</div>';
+
+			if ( $this->p->options['plugin_shortener'] !== 'none' && empty( $this->p->options['plugin_clear_short_urls'] ) ) {
+				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
+					_x( 'Clear Short URLs on Clear All Caches', 'option label', 'wpsso' ) );
+				$html .= '<p><small>* '.sprintf( __( '%s option is unchecked.', 'wpsso' ), $settings_page_link ).'</small></p>';
+			}
+
+			return $html;
 		}
 
 		public function show_metabox_cache_status() {
@@ -987,9 +996,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$clear_admin_url = wp_nonce_url( $clear_admin_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 			$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
 
+			if ( $this->p->options['plugin_shortener'] !== 'none' && empty( $this->p->options['plugin_clear_short_urls'] ) ) {
+				$clear_label_transl .= ' *';
+			}
+
 			echo '<tr><td colspan="'.$table_cols.'">';
 			echo $this->form->get_button( $clear_label_transl, 'button-secondary', '', $clear_admin_url );
 			echo '</td></tr>';
+
+			if ( $this->p->options['plugin_shortener'] !== 'none' && empty( $this->p->options['plugin_clear_short_urls'] ) ) {
+				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
+					_x( 'Clear Short URLs on Clear All Caches', 'option label', 'wpsso' ) );
+				echo '<tr><td colspan="'.$table_cols.'">';
+				echo '<p><small>* '.sprintf( __( '%s option is unchecked.', 'wpsso' ), $settings_page_link ).'</small></p>';
+				echo '</td></tr>';
+			}
 
 			echo '</table>';
 		}

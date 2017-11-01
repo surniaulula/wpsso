@@ -42,18 +42,30 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 			$col = 0;
 
-			$ids = array( 
-				// first row
-				'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),
-				'rate_review' => _x( 'Ratings are Awesome!', 'metabox title', 'wpsso' ),
-				'cache_status' => _x( 'Cache Status', 'metabox title', 'wpsso' ), 
-				// second row
-				'status_gpl' => _x( 'Free / Standard Features', 'metabox title', 'wpsso' ),
-				'status_pro' => _x( 'Pro / Additional Features', 'metabox title', 'wpsso' ),
-				'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ), 
-			);
+			if ( wp_using_ext_object_cache() ) {
+				$metabox_ids = array( 
+					// first row
+					'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),
+					'rate_review' => _x( 'Ratings are Awesome!', 'metabox title', 'wpsso' ),
+					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ), 
+					// second row
+					'status_gpl' => _x( 'Free / Standard Features', 'metabox title', 'wpsso' ),
+					'status_pro' => _x( 'Pro / Additional Features', 'metabox title', 'wpsso' ),
+				);
+			} else {
+				$metabox_ids = array( 
+					// first row
+					'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),
+					'rate_review' => _x( 'Ratings are Awesome!', 'metabox title', 'wpsso' ),
+					'cache_status' => _x( 'Cache Status', 'metabox title', 'wpsso' ), 
+					// second row
+					'status_gpl' => _x( 'Free / Standard Features', 'metabox title', 'wpsso' ),
+					'status_pro' => _x( 'Pro / Additional Features', 'metabox title', 'wpsso' ),
+					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ), 
+				);
+			}
 
-			foreach ( $ids as $id => $name ) {
+			foreach ( $metabox_ids as $id => $name ) {
 				$col = $col >= $this->max_cols ? 1 : $col + 1;
 				$pos_id = 'dashboard_col_'.$col;	// ids must use underscores instead of hyphens to order metaboxes
 				$prio = 'default';

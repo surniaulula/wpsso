@@ -565,11 +565,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			foreach( $expired as $transient_name ) { 
 				/*
-				 * If clearing all transients, skip the shortened URL transients 
-				 * unless the "Clear Short URLs on Clear All Caches" option is checked.
+				 * If clearing all transients, skip the shortened URL transients unless
+				 * the "Clear Short URLs on Clear All Caches" option is checked.
 				 */
 				if ( $delete_all ) {
-					if ( empty( $this->p->cf['plugin_clear_short_urls'] ) && 
+					if ( $this->p->options['plugin_shortener'] !== 'none' && 
+						empty( $this->p->options['plugin_clear_short_urls'] ) &&
 						strpos( $transient_name, $lca.'_s_' ) === 0 ) {
 						continue;
 					}
@@ -1134,7 +1135,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( empty( $atts['short_url'] ) ) {
-				$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url', $sharing_url, $this->p->options['plugin_shortener'] );
+				$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',
+					$sharing_url, $this->p->options['plugin_shortener'] );
 			} else {
 				$short_url = $atts['short_url'];
 			}
