@@ -558,7 +558,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function delete_all_db_transients( $clear_short_urls = false ) { 
 
 			$lca = $this->p->cf['lca'];
-			$transient_keys = $this->get_db_transient_keys(); 
+			$only_expired = false;
+			$transient_keys = $this->get_db_transient_keys( $only_expired ); 
 			$deleted_count = 0;
 
 			foreach( $transient_keys as $cache_id ) { 
@@ -572,6 +573,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$deleted_count++;
 				}
 			}
+
 			return $deleted_count;
 		}
 

@@ -42,6 +42,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 			$col = 0;
 
+			// don't include the 'cache_status' metabox if we're using an external object cache
 			if ( wp_using_ext_object_cache() ) {
 				$metabox_ids = array( 
 					// first row
