@@ -429,12 +429,25 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						}
 
 						$desc = get_post_field( 'post_excerpt', $mod['id'] );
-						$filter_excerpt = apply_filters( $lca.'_filter_excerpt', 
-							( empty( $this->p->options['plugin_filter_excerpt'] ) ? false : true ), $mod );
+						$filter_excerpt = empty( $this->p->options['plugin_filter_excerpt'] ) ? false : true;
+						$filter_excerpt = apply_filters( $lca.'_filter_excerpt', $filter_excerpt, $mod );
 
-						if ( $filter_excerpt ) {
+						// prevent recursive loops - check if the excerpt filter is being applied
+						if ( ! empty( $GLOBALS[$lca.'_doing_the_excerpt'] ) ) {
 
-							do_action( $lca.'_pre_apply_text_filter', 'get_the_excerpt' );
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'skipping excerpt filter - global variable '.$lca.'_doing_the_excerpt is true' );
+							}
+
+						} elseif ( $filter_excerpt ) {
+
+							do_action( $lca.'_pre_apply_filters_text', 'get_the_excerpt' );
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'setting global '.$lca.'_doing_the_excerpt' );
+							}
+
+							$GLOBALS[$lca.'_doing_the_excerpt'] = true;
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'applying the WordPress get_the_excerpt filters' );
@@ -442,7 +455,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							$desc = apply_filters( 'get_the_excerpt', $desc );
 
-							do_action( $lca.'_after_apply_text_filter', 'get_the_excerpt' );
+							unset( $GLOBALS[$lca.'_doing_the_excerpt'] );
+
+							do_action( $lca.'_after_apply_filters_text', 'get_the_excerpt' );
 
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'skipped the WordPress get_the_excerpt filters' );
@@ -658,7 +673,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * Hooked by some modules, like bbPress and social sharing buttons,
 				 * to perform actions before / after filtering the content.
 				 */
-				do_action( $lca.'_pre_apply_text_filter', 'the_content' );
+				do_action( $lca.'_pre_apply_filters_text', 'the_content' );
 
 				/*
 				 * Load the Block Filter Output (BFO) filters to block and show an error 
@@ -676,9 +691,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * Save the original post object, in case some filters modify the global $post.
 				 */
 				global $post;
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'saving the original $post object' );
 				}
+
 				$post_obj_pre_filter = $post;	// save the original global post object
 
 				/*
@@ -718,6 +735,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->mark( 'applying wordpress the_content filters' );	// end timer
 				}
 
+				unset( $GLOBALS[$lca.'_doing_the_content'] );
+
 				/*
 				 * Issue warning for slow filter performance.
 				 */
@@ -727,12 +746,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							sprintf( '%f secs', $total_time ).' secs to execute' );
 					}
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-						$warn_dis_key = 'slow-filter-hooks-detected-the_content';
-						$this->p->notice->warn( sprintf( __( 'Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/the_content">the_content</a>', $total_time, WPSSO_CONTENT_FILTERS_MAX_TIME ), true, $warn_dis_key, WEEK_IN_SECONDS );
+						$dismiss_key = 'slow-filter-hooks-detected-the_content';
+						$this->p->notice->warn( sprintf( __( 'Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/the_content">the_content</a>', $total_time, WPSSO_CONTENT_FILTERS_MAX_TIME ), true, $dismiss_key, WEEK_IN_SECONDS );
 					}
 				}
-
-				unset( $GLOBALS[$lca.'_doing_the_content'] );
 
 				/*
 				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.
@@ -759,7 +776,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * Hooked by some modules, like bbPress and social sharing buttons,
 				 * to perform actions before / after filtering the content.
 				 */
-				do_action( $lca.'_after_apply_text_filter', 'the_content' );
+				do_action( $lca.'_after_apply_filters_text', 'the_content' );
 
 
 			} elseif ( $this->p->debug->enabled ) {
