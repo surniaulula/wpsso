@@ -41,9 +41,10 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 		protected function add_meta_boxes() {
 
 			$col = 0;
+			$using_external_cache = wp_using_ext_object_cache();
 
 			// don't include the 'cache_status' metabox if we're using an external object cache
-			if ( wp_using_ext_object_cache() ) {
+			if ( $using_external_cache ) {
 				$metabox_ids = array( 
 					// first row
 					'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.48.0-rc.2\n"
+"Project-Id-Version: WPSSO Core 3.48.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr ""
 msgid "Submitted options are not an array."
 msgstr ""
 
-#: lib/admin.php:568 lib/admin.php:913 lib/admin.php:1018
+#: lib/admin.php:568 lib/admin.php:913 lib/admin.php:1020
 msgctxt "submit button"
 msgid "Clear All Caches"
 msgstr ""
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:650 lib/post.php:396 lib/term.php:284 lib/user.php:267
+#: lib/admin.php:650 lib/post.php:394 lib/term.php:284 lib/user.php:267
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -124,12 +124,12 @@ msgstr ""
 
 #: lib/admin.php:902
 msgctxt "submit button"
-msgid "Save All Plugin Settings"
+msgid "View %s by Default"
 msgstr ""
 
-#: lib/admin.php:907
+#: lib/admin.php:906
 msgctxt "submit button"
-msgid "View %s by Default"
+msgid "Save All Plugin Settings"
 msgstr ""
 
 #: lib/admin.php:910
@@ -147,29 +147,29 @@ msgctxt "submit button"
 msgid "Reset Hidden Notices"
 msgstr ""
 
-#: lib/admin.php:953 lib/gpl/admin/advanced.php:312
+#: lib/admin.php:954 lib/gpl/admin/advanced.php:312
 #: lib/pro/admin/advanced.php:304
 msgctxt "option label"
 msgid "Clear Short URLs on Clear All Caches"
 msgstr ""
 
-#: lib/admin.php:957
+#: lib/admin.php:958
 msgid "%1$s option is unchecked - shortened URL cache will be preserved."
 msgstr ""
 
-#: lib/admin.php:960
+#: lib/admin.php:961
 msgid "%1$s option is checked - shortened URL cache will be refreshed."
 msgstr ""
 
-#: lib/admin.php:980
+#: lib/admin.php:982
 msgid "%s Database Transients"
 msgstr ""
 
-#: lib/admin.php:984
+#: lib/admin.php:986
 msgid "Count"
 msgstr ""
 
-#: lib/admin.php:985
+#: lib/admin.php:987
 msgid "Expiration"
 msgstr ""
 
@@ -2079,7 +2079,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:140 lib/meta.php:207 lib/post.php:727
+#: lib/gpl/admin/post.php:140 lib/meta.php:207 lib/post.php:725
 #: lib/pro/admin/post.php:170
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -3993,102 +3993,102 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/post.php:487
+#: lib/post.php:485
 msgid ""
 "The WordPress wp_get_shortlink() function returned an invalid URL (%1$s) for "
 "post ID %2$s."
 msgstr ""
 
-#: lib/post.php:505
+#: lib/post.php:503
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:508
+#: lib/post.php:506
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:532
+#: lib/post.php:530
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:534
+#: lib/post.php:532
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:536
+#: lib/post.php:534
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:538
+#: lib/post.php:536
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:549 lib/util.php:773
+#: lib/post.php:547 lib/util.php:773
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:558
+#: lib/post.php:556
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:567
+#: lib/post.php:565
 msgid "No &lt;meta/&gt; HTML tags were found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:576
+#: lib/post.php:574
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:592
+#: lib/post.php:590
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:599
+#: lib/post.php:597
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:609
+#: lib/post.php:607
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:609
+#: lib/post.php:607
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:609
+#: lib/post.php:607
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:631
+#: lib/post.php:629
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:635
+#: lib/post.php:633
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:637
+#: lib/post.php:635
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
@@ -4419,32 +4419,32 @@ msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
 
-#: lib/submenu/dashboard.php:49 lib/submenu/dashboard.php:59
+#: lib/submenu/dashboard.php:50 lib/submenu/dashboard.php:60
 msgctxt "metabox title"
 msgid "Help and Support"
 msgstr ""
 
-#: lib/submenu/dashboard.php:50 lib/submenu/dashboard.php:60
+#: lib/submenu/dashboard.php:51 lib/submenu/dashboard.php:61
 msgctxt "metabox title"
 msgid "Ratings are Awesome!"
 msgstr ""
 
-#: lib/submenu/dashboard.php:51 lib/submenu/dashboard.php:65
+#: lib/submenu/dashboard.php:52 lib/submenu/dashboard.php:66
 msgctxt "metabox title"
 msgid "Version Information"
 msgstr ""
 
-#: lib/submenu/dashboard.php:53 lib/submenu/dashboard.php:63
+#: lib/submenu/dashboard.php:54 lib/submenu/dashboard.php:64
 msgctxt "metabox title"
 msgid "Free / Standard Features"
 msgstr ""
 
-#: lib/submenu/dashboard.php:54 lib/submenu/dashboard.php:64
+#: lib/submenu/dashboard.php:55 lib/submenu/dashboard.php:65
 msgctxt "metabox title"
 msgid "Pro / Additional Features"
 msgstr ""
 
-#: lib/submenu/dashboard.php:61
+#: lib/submenu/dashboard.php:62
 msgctxt "metabox title"
 msgid "Cache Status"
 msgstr ""

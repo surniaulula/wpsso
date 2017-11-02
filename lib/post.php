@@ -171,9 +171,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			// check if a shortening service has been defined
-			if ( empty( $this->p->options['plugin_shortener'] ) || 
-				$this->p->options['plugin_shortener'] === 'none' ) {
-
+			if ( empty( $this->p->options['plugin_shortener'] ) || $this->p->options['plugin_shortener'] === 'none' ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: no shortening service defined' );
 				}

@@ -897,14 +897,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function get_submit_buttons( $submit_label_transl = '' ) {
 
 			$lca = $this->p->cf['lca'];
+			$view_next_key = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
+			$view_name_transl = _x( $this->p->cf['form']['show_options'][$view_next_key], 'option value', 'wpsso' );
+			$view_label_transl = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name_transl );
+			$using_external_cache = wp_using_ext_object_cache();
 
 			if ( empty( $submit_label_transl ) ) {
 				$submit_label_transl = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 			}
-
-			$view_next_key = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
-			$view_name_transl = _x( $this->p->cf['form']['show_options'][$view_next_key], 'option value', 'wpsso' );
-			$view_label_transl = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name_transl );
 
 			if ( is_multisite() ) {
 				$clear_label_transl = sprintf( _x( 'Clear All Caches for Site %d',
@@ -913,7 +913,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
 			}
 
-			if ( $this->p->options['plugin_shortener'] !== 'none' ) {
+			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
 				$clear_label_transl .= ' *';
 			}
 
@@ -948,7 +948,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$html = '<div class="submit-buttons">'.$submit_buttons;
 
-			if ( $this->p->options['plugin_shortener'] !== 'none' ) {
+			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
+
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 					_x( 'Clear Short URLs on Clear All Caches', 'option label', 'wpsso' ) );
 
@@ -974,6 +975,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$info = $this->p->cf['plugin'][$lca];
 			$table_cols = 3;
 			$transient_keys = $this->p->util->get_db_transient_keys();
+			$using_external_cache = wp_using_ext_object_cache();
 
 			echo '<table class="sucom-settings '.$lca.' column-metabox cache-status">';
 			echo '<tr><td colspan="'.$table_cols.'"><h4>'.
@@ -1017,19 +1019,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$clear_admin_url = wp_nonce_url( $clear_admin_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 			$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
 
-			if ( $this->p->options['plugin_shortener'] !== 'none' ) {
+			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
 				$clear_label_transl .= ' *';
 			}
 
 			// add some extra space between the stats table and buttons
 			echo '<tr><td colspan="'.$table_cols.'">&nbsp;</td></tr>';
-
 			echo '<tr><td colspan="'.$table_cols.'">';
 			echo $this->form->get_button( $clear_label_transl, 'button-secondary', '', $clear_admin_url );
 
-			if ( $this->p->options['plugin_shortener'] !== 'none' ) {
-
-				// add an extra button to clear the cache and shortened urls
+			// add an extra button to clear the cache and shortened urls
+			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
 				if ( empty( $this->p->options['plugin_clear_short_urls'] ) ) {
 
 					$clear_admin_url = $this->p->util->get_admin_url( '?'.$lca.'-action=clear_all_cache_and_short_urls' );
