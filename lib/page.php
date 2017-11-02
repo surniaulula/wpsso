@@ -434,7 +434,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						if ( $filter_excerpt ) {
 
-							do_action( $lca.'_text_filter_before', 'get_the_excerpt' );
+							do_action( $lca.'_pre_apply_text_filter', 'get_the_excerpt' );
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'applying the WordPress get_the_excerpt filters' );
@@ -442,7 +442,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							$desc = apply_filters( 'get_the_excerpt', $desc );
 
-							do_action( $lca.'_text_filter_after', 'get_the_excerpt' );
+							do_action( $lca.'_after_apply_text_filter', 'get_the_excerpt' );
 
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'skipped the WordPress get_the_excerpt filters' );
@@ -658,7 +658,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * Hooked by some modules, like bbPress and social sharing buttons,
 				 * to perform actions before / after filtering the content.
 				 */
-				do_action( $lca.'_text_filter_before', 'the_content' );
+				do_action( $lca.'_pre_apply_text_filter', 'the_content' );
 
 				/*
 				 * Load the Block Filter Output (BFO) filters to block and show an error 
@@ -679,7 +679,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'saving the original $post object' );
 				}
-				$post_pre_filter = $post;	// save the original global post object
+				$post_obj_pre_filter = $post;	// save the original global post object
 
 				/*
 				 * WordPress oEmbed needs a $post ID, so make sure we have one.
@@ -746,7 +746,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'restoring the original post object' );
 				}
-				$post = $post_pre_filter;	// restore the original GLOBAL post object
+				$post = $post_obj_pre_filter;	// restore the original GLOBAL post object
 
 				/*
 				 * Remove the Block Filter Output (BFO) filters.
@@ -759,7 +759,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * Hooked by some modules, like bbPress and social sharing buttons,
 				 * to perform actions before / after filtering the content.
 				 */
-				do_action( $lca.'_text_filter_after', 'the_content' );
+				do_action( $lca.'_after_apply_text_filter', 'the_content' );
 
 
 			} elseif ( $this->p->debug->enabled ) {
