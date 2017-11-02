@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $GLOBALS[$lca.'_doing_the_content'] ) ) {
 				return $content;
 			}
-				
+
 			static $do_once = array();			// prevent recursion
 
 			$mod = $this->p->util->get_page_mod( true );	// $use_post = true

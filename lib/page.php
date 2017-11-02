@@ -645,7 +645,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			if ( $filter_content ) {
+			// prevent recursive loops - check if the content filter is being applied
+			if ( ! empty( $GLOBALS[$lca.'_doing_the_content'] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'skipping content filter - GLOBAL variable '.$lca.'_doing_the_content is true' );
+				}
+
+			} elseif ( $filter_content ) {
 
 				/*
 				 * Hooked by some modules, like bbPress and social sharing buttons,
@@ -693,6 +700,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'setting global '.$lca.'_doing_the_content' );
 				}
+
 				$GLOBALS[$lca.'_doing_the_content'] = true;
 
 				/*
