@@ -463,8 +463,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_text_filter_begin' ( $bool, $filter_name );
 		* 'wpsso_text_filter_end' ( $bool, $filter_name );
 	* Added the following actions (see actions.txt in the plugin folder):
-		* 'wpsso_text_filter_before' ( $filter_name );
-		* 'wpsso_text_filter_after' ( $filter_name );
+		* 'wpsso_pre_apply_text_filter' ( $filter_name );
+		* 'wpsso_after_apply_text_filter' ( $filter_name );
 	* Added a new SucomUtil::get_wp_plugins() method to minimize calls to the slower WordPress get_plugins() function.
 
 **Version 3.46.4 (2017/10/02)**
