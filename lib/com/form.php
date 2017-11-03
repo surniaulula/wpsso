@@ -124,9 +124,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$checked = '';
 			}
 
-			$def_is = $this->in_defaults( $name ) && ! empty( $this->defaults[$name] ) ? 'checked' : 'unchecked';
+			$default_is = $this->in_defaults( $name ) && ! empty( $this->defaults[$name] ) ? 'checked' : 'unchecked';
 
-			$title_transl = sprintf( $this->get_value_transl( 'default is %s' ), $this->get_value_transl( 'checked' ) ).
+			$title_transl = sprintf( $this->get_value_transl( 'default is %s' ), $this->get_value_transl( $default_is ) ).
 				( $disabled ? ' '.$this->get_value_transl( '(option disabled)' ) : '' );
 
 			$html = ( $disabled ? '' : $this->get_hidden( 'is_checkbox_'.$name, 1, false ) ).

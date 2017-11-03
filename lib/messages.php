@@ -584,7 +584,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Integration' settings
 						 */
 						case 'tooltip-plugin_honor_force_ssl':	// Honor the FORCE_SSL Constant
+
 							$text = sprintf( __( 'If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked).', 'wpsso' ), $info['short'] );
+							break;
+
+						case 'tooltip-plugin_html_attr_filter':
+
+							$function_name = 'language_attributes()';
+							$filter_name = 'language_attributes';
+							$html_tag = '<code>&amp;lt;html&amp;gt;</code>';
+							$php_code = '<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
+
+							$text = sprintf( __( '%1$s hooks the "%2$s" filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' '.sprintf( __( 'The WordPress %1$s function and "%2$s" filter are used by most themes &mdash; if the namespace prefix values are missing from your %3$s HTML tag attributes, make sure your header template(s) use the %1$s function.', 'wpsso' ), $function_name, $filter_name, $html_tag ).' '.sprintf( __( 'Leaving this option empty disables the addition of Open Graph namespace values. Example header template code: %1$s', 'wpsso' ), $php_code );
+
+							break;
+
+						case 'tooltip-plugin_head_attr_filter':
+
+							$filter_name = 'head_attributes';
+							$html_tag = '<code>&amp;lt;head&amp;gt;</code>';
+							$php_code = '<pre><code>&amp;lt;head &amp;lt;?php do_action( &#39;add_head_attributes&#39; ); ?&amp;gt;&amp;gt;</code></pre>';
+
+							$text = sprintf( __( '%1$s hooks the "%2$s" filter by default to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' '.sprintf( __( 'If your theme already offers a filter for the %1$s HTML tag attributes, enter its name here (most themes do not).', 'wpsso' ), $html_tag ).' '.sprintf( __( 'Alternatively, you can add an action in your header templates to call the "%1$s" filter. Example header template code: %2$s', 'wpsso' ), $filter_name, $php_code );
+
 							break;
 
 						case 'tooltip-plugin_check_head':
@@ -595,19 +617,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_html_attr_filter':
-							$text = $info['short'].' hooks the "language_attributes" filter by default to add / modify required Open Graph namespace prefix values. The "language_attributes" WordPress function and filter are used by most themes &mdash; if the namespace prefix values are missing from your &amp;lt;html&amp;gt; element, make sure your header template(s) use the language_attributes() function. Leaving this option blank disables the addition of Open Graph namespace values. Example template code: <pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
-							break;
-
-						case 'tooltip-plugin_head_attr_filter':
-							$text = $info['short'].' hooks the "head_attributes" filter by default to add / modify the <code>&amp;lt;head&amp;gt;</code> element attributes for the Schema itemscope / itemtype markup. If your theme offers a filter for <code>&amp;lt;head&amp;gt;</code> element attributes, enter its name here (most themes do not). Alternatively, you can add an action manually in your header templates to call the "head_attributes" filter. Example code: <pre><code>&amp;lt;head &amp;lt;?php do_action( \'add_head_attributes\' ); ?&amp;gt;&amp;gt;</code></pre>';
-							break;
-
 						case 'tooltip-plugin_filter_lang':
-							$text = $info['name_pro'].' can use the WordPress locale to select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags'.( empty( $this->p->avail['p_ext']['ssb'] ) ? '' : ', along with the Google, Facebook, and Twitter social sharing buttons' ).'. If your website is available in multiple languages, this can be a useful feature. Uncheck this option to ignore the WordPress locale and always use the configured language.'; 
+
+							$text = sprintf( __( '%1$s can use the WordPress locale to dynamically select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ), $info['short'] ).' '.__( 'If your website is available in multiple languages, this can be a useful feature.', 'wpsso' ).' '.__( 'Uncheck this option to ignore the WordPress locale and always use the configured language.', 'wpsso' ); 
+
 							break;
 
 						case 'tooltip-plugin_create_wp_sizes':
+
 							$text = __( 'Automatically create missing and/or incorrect images in the WordPress Media Library (default is checked).', 'wpsso' );
 							break;
 
