@@ -472,7 +472,7 @@ msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
 #: lib/admin.php:2036
-msgid "No &lt;head&gt; HTML tag found in the %s template."
+msgid "No %1$s HTML tag found in the %2$s template."
 msgstr ""
 
 #: lib/admin.php:2043
@@ -2787,8 +2787,8 @@ msgstr ""
 
 #: lib/messages.php:608
 msgid ""
-"%1$s hooks the \"%2$s\" filter by default to add / modify the %3$s HTML tag "
-"attributes for Schema itemscope / itemtype markup."
+"%1$s hooks the \"%2$s\" filter (by default) to add / modify the %3$s HTML "
+"tag attributes for Schema itemscope / itemtype markup."
 msgstr ""
 
 #: lib/messages.php:608
@@ -4096,7 +4096,7 @@ msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
 #: lib/post.php:565
-msgid "No &lt;meta/&gt; HTML tags were found in <a href=\"%1$s\">%1$s</a>."
+msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
 #: lib/post.php:574

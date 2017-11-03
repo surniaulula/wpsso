@@ -562,8 +562,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'exiting early: No <meta/> HTML tags were found in '.$shortlink );
 				}
 				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'No &lt;meta/&gt; HTML tags were found in <a href="%1$s">%1$s</a>.',
-						'wpsso' ), $shortlink ) );
+					$this->p->notice->err( sprintf( __( 'No %1$s HTML tags were found in <a href="%2$s">%2$s</a>.',
+						'wpsso' ), '&lt;meta/&gt;', $shortlink ) );
 				}
 				return;	// stop here
 			} elseif ( strpos( $html, $lca.' meta tags begin' ) === false ) {	// webpage should include our own meta tags

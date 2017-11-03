@@ -605,7 +605,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$html_tag = '<code>&amp;lt;head&amp;gt;</code>';
 							$php_code = '<pre><code>&amp;lt;head &amp;lt;?php do_action( &#39;add_head_attributes&#39; ); ?&amp;gt;&amp;gt;</code></pre>';
 
-							$text = sprintf( __( '%1$s hooks the "%2$s" filter by default to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' '.sprintf( __( 'If your theme already offers a filter for the %1$s HTML tag attributes, enter its name here (most themes do not).', 'wpsso' ), $html_tag ).' '.sprintf( __( 'Alternatively, you can add an action in your header templates to call the "%1$s" filter. Example header template code: %2$s', 'wpsso' ), $filter_name, $php_code );
+							$text = sprintf( __( '%1$s hooks the "%2$s" filter (by default) to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' '.sprintf( __( 'If your theme already offers a filter for the %1$s HTML tag attributes, enter its name here (most themes do not).', 'wpsso' ), $html_tag ).' '.sprintf( __( 'Alternatively, you can add an action in your header templates to call the "%1$s" filter. Example header template code: %2$s', 'wpsso' ), $filter_name, $php_code );
 
 							break;
 

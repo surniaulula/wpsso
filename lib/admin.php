@@ -2033,8 +2033,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 	
 				// double check in case of reloads etc.
 				if ( empty( $html_stripped ) || strpos( $html_stripped, '<head>' ) === false ) {
-					$this->p->notice->err( sprintf( __( 'No &lt;head&gt; HTML tag found in the %s template.',
-						'wpsso' ), $tmpl_file ) );
+					$this->p->notice->err( sprintf( __( 'No %1$s HTML tag found in the %2$s template.',
+						'wpsso' ), '&lt;head&gt;', $tmpl_file ) );
 					continue;
 				}
 
