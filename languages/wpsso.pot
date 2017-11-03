@@ -291,7 +291,7 @@ msgid "Plugin Description"
 msgstr ""
 
 #: lib/admin.php:1525 lib/messages.php:1142 lib/messages.php:1151
-#: lib/messages.php:1376
+#: lib/messages.php:1377
 msgid "Main Plugin"
 msgstr ""
 
@@ -472,7 +472,7 @@ msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
 #: lib/admin.php:2032
-msgid "No &lt;head&gt; HTML element found in the %s template."
+msgid "No &lt;head&gt; HTML tag found in the %s template."
 msgstr ""
 
 #: lib/admin.php:2039
@@ -818,339 +818,337 @@ msgstr ""
 
 #: lib/config-gettext-extract.php:18
 msgctxt "lib file description"
-msgid "<color>Plugin Setup Guide and Other Notes</color>"
+msgid "<color>Extension Plugins and Pro Licenses</color>"
 msgstr ""
 
 #: lib/config-gettext-extract.php:19
-msgctxt "option value"
-msgid "[Custom Address]"
+msgctxt "lib file description"
+msgid "<color>Plugin Dashboard and Features Status</color>"
 msgstr ""
 
 #: lib/config-gettext-extract.php:20
-msgctxt "option value"
-msgid "Damaged"
+msgctxt "lib file description"
+msgid "<color>Plugin Setup Guide and Other Notes</color>"
 msgstr ""
 
 #: lib/config-gettext-extract.php:21
 msgctxt "option value"
-msgid "Day"
+msgid "[Custom Address]"
 msgstr ""
 
 #: lib/config-gettext-extract.php:22
 msgctxt "option value"
-msgid "default is %s"
+msgid "Damaged"
 msgstr ""
 
 #: lib/config-gettext-extract.php:23
 msgctxt "option value"
-msgid "(default)"
+msgid "Day"
 msgstr ""
 
 #: lib/config-gettext-extract.php:24
 msgctxt "option value"
-msgid "Development and Up"
+msgid "default is %s"
 msgstr ""
 
 #: lib/config-gettext-extract.php:25
 msgctxt "option value"
-msgid "Discontinued"
+msgid "(default)"
 msgstr ""
 
 #: lib/config-gettext-extract.php:26
 msgctxt "option value"
-msgid "Display Name"
+msgid "Development and Up"
 msgstr ""
 
 #: lib/config-gettext-extract.php:27
-msgctxt "lib file description"
-msgid "Essential Settings"
+msgctxt "option value"
+msgid "Discontinued"
 msgstr ""
 
 #: lib/config-gettext-extract.php:28
 msgctxt "option value"
-msgid "Every day"
+msgid "Display Name"
 msgstr ""
 
 #: lib/config-gettext-extract.php:29
-msgctxt "option value"
-msgid "Every five days"
+msgctxt "lib file description"
+msgid "Essential Settings"
 msgstr ""
 
 #: lib/config-gettext-extract.php:30
 msgctxt "option value"
-msgid "Every four days"
+msgid "Every day"
 msgstr ""
 
 #: lib/config-gettext-extract.php:31
 msgctxt "option value"
-msgid "Every month"
+msgid "Every five days"
 msgstr ""
 
 #: lib/config-gettext-extract.php:32
 msgctxt "option value"
-msgid "Every six days"
+msgid "Every four days"
 msgstr ""
 
 #: lib/config-gettext-extract.php:33
 msgctxt "option value"
-msgid "Every three days"
+msgid "Every month"
 msgstr ""
 
 #: lib/config-gettext-extract.php:34
 msgctxt "option value"
-msgid "Every three weeks"
+msgid "Every six days"
 msgstr ""
 
 #: lib/config-gettext-extract.php:35
 msgctxt "option value"
-msgid "Every two days"
+msgid "Every three days"
 msgstr ""
 
 #: lib/config-gettext-extract.php:36
 msgctxt "option value"
-msgid "Every two weeks"
+msgid "Every three weeks"
 msgstr ""
 
 #: lib/config-gettext-extract.php:37
 msgctxt "option value"
-msgid "Every week"
+msgid "Every two days"
 msgstr ""
 
 #: lib/config-gettext-extract.php:38
 msgctxt "option value"
-msgid "Excerpt Only"
+msgid "Every two weeks"
 msgstr ""
 
-#: lib/config-gettext-extract.php:39 lib/messages.php:1153
-#: lib/messages.php:1347 lib/messages.php:1357 lib/messages.php:1366
-#: lib/messages.php:1378
-msgctxt "lib file description"
-msgid "Extension Plugins and Pro Licenses"
+#: lib/config-gettext-extract.php:39
+msgctxt "option value"
+msgid "Every week"
 msgstr ""
 
 #: lib/config-gettext-extract.php:40
 msgctxt "option value"
-msgid "Facebook Business Page URL"
+msgid "Excerpt Only"
 msgstr ""
 
 #: lib/config-gettext-extract.php:41
 msgctxt "option value"
-msgid "Facebook User URL"
+msgid "Facebook Business Page URL"
 msgstr ""
 
 #: lib/config-gettext-extract.php:42
 msgctxt "option value"
-msgid "First and Last Names"
+msgid "Facebook User URL"
 msgstr ""
 
 #: lib/config-gettext-extract.php:43
 msgctxt "option value"
-msgid "Footer"
+msgid "First and Last Names"
 msgstr ""
 
 #: lib/config-gettext-extract.php:44
 msgctxt "option value"
-msgid "Force this value"
+msgid "Footer"
 msgstr ""
 
 #: lib/config-gettext-extract.php:45
 msgctxt "option value"
+msgid "Force this value"
+msgstr ""
+
+#: lib/config-gettext-extract.php:46
+msgctxt "option value"
 msgid "Friday"
 msgstr ""
 
-#: lib/config-gettext-extract.php:46 lib/messages.php:1079
+#: lib/config-gettext-extract.php:47 lib/messages.php:1079
 msgctxt "lib file description"
 msgid "General Settings"
 msgstr ""
 
-#: lib/config-gettext-extract.php:47
+#: lib/config-gettext-extract.php:48
 msgctxt "option value"
 msgid "Google+ Business Page URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:48
+#: lib/config-gettext-extract.php:49
 msgctxt "option value"
 msgid "Google"
 msgstr ""
 
-#: lib/config-gettext-extract.php:49
+#: lib/config-gettext-extract.php:50
 msgctxt "option value"
 msgid "Google+ URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:50
+#: lib/config-gettext-extract.php:51
 msgctxt "option value"
 msgid "Header"
 msgstr ""
 
-#: lib/config-gettext-extract.php:51
+#: lib/config-gettext-extract.php:52
 msgctxt "option label"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/config-gettext-extract.php:52
+#: lib/config-gettext-extract.php:53
 msgctxt "option value"
 msgid "Hour"
 msgstr ""
 
-#: lib/config-gettext-extract.php:53
+#: lib/config-gettext-extract.php:54
 msgctxt "option value"
 msgid "If value is empty"
 msgstr ""
 
-#: lib/config-gettext-extract.php:54
+#: lib/config-gettext-extract.php:55
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/config-gettext-extract.php:55
+#: lib/config-gettext-extract.php:56
 msgctxt "option label"
 msgid "Image URL Custom Field"
 msgstr ""
 
-#: lib/config-gettext-extract.php:56
+#: lib/config-gettext-extract.php:57
 msgctxt "option label"
 msgid "Image URL Info"
 msgstr ""
 
-#: lib/config-gettext-extract.php:57
+#: lib/config-gettext-extract.php:58
 msgctxt "option value"
 msgid "Instagram Business Page URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:58
+#: lib/config-gettext-extract.php:59
 msgctxt "option value"
 msgid "Instagram URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:59
+#: lib/config-gettext-extract.php:60
 msgctxt "option value"
 msgid "In Stock"
 msgstr ""
 
-#: lib/config-gettext-extract.php:60
+#: lib/config-gettext-extract.php:61
 msgctxt "option value"
 msgid "In Store Only"
 msgstr ""
 
-#: lib/config-gettext-extract.php:61
+#: lib/config-gettext-extract.php:62
 msgctxt "option value"
 msgid "Left"
 msgstr ""
 
-#: lib/config-gettext-extract.php:62
+#: lib/config-gettext-extract.php:63
 msgctxt "option value"
 msgid "Limited Availability"
 msgstr ""
 
-#: lib/config-gettext-extract.php:63
+#: lib/config-gettext-extract.php:64
 msgctxt "option value"
 msgid "LinkedIn Company Page URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:64
+#: lib/config-gettext-extract.php:65
 msgctxt "option value"
 msgid "LinkedIn URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:65
+#: lib/config-gettext-extract.php:66
 msgctxt "option value"
 msgid "Monday"
 msgstr ""
 
-#: lib/config-gettext-extract.php:66
+#: lib/config-gettext-extract.php:67
 msgctxt "option value"
 msgid "Month"
 msgstr ""
 
-#: lib/config-gettext-extract.php:67
+#: lib/config-gettext-extract.php:68
 msgctxt "option value"
 msgid "Myspace Business Page URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:68
+#: lib/config-gettext-extract.php:69
 msgctxt "option value"
 msgid "Myspace URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:69
+#: lib/config-gettext-extract.php:70
 msgctxt "option value"
 msgid "New activation"
 msgstr ""
 
-#: lib/config-gettext-extract.php:70
+#: lib/config-gettext-extract.php:71
 msgctxt "option value"
 msgid "[New Address]"
 msgstr ""
 
-#: lib/config-gettext-extract.php:71
+#: lib/config-gettext-extract.php:72
 msgctxt "option value"
 msgid "New"
 msgstr ""
 
-#: lib/config-gettext-extract.php:72
+#: lib/config-gettext-extract.php:73
 msgctxt "option value"
 msgid "[New Organization]"
 msgstr ""
 
-#: lib/config-gettext-extract.php:73
+#: lib/config-gettext-extract.php:74
 msgctxt "option value"
 msgid "Nickname"
 msgstr ""
 
-#: lib/config-gettext-extract.php:74
+#: lib/config-gettext-extract.php:75
 msgctxt "option value"
 msgid "(no images)"
 msgstr ""
 
-#: lib/config-gettext-extract.php:75
+#: lib/config-gettext-extract.php:76
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
 
-#: lib/config-gettext-extract.php:76
+#: lib/config-gettext-extract.php:77
 msgctxt "option value"
 msgid "No"
 msgstr ""
 
-#: lib/config-gettext-extract.php:77
+#: lib/config-gettext-extract.php:78
 msgctxt "option value"
 msgid "(no videos)"
 msgstr ""
 
-#: lib/config-gettext-extract.php:78
+#: lib/config-gettext-extract.php:79
 msgctxt "option value"
 msgid "Online Only"
 msgstr ""
 
-#: lib/config-gettext-extract.php:79
+#: lib/config-gettext-extract.php:80
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr ""
 
-#: lib/config-gettext-extract.php:80
+#: lib/config-gettext-extract.php:81
 msgctxt "option value"
 msgid "Out of Stock"
 msgstr ""
 
-#: lib/config-gettext-extract.php:81
+#: lib/config-gettext-extract.php:82
 msgctxt "option value"
 msgid "Ow.ly"
 msgstr ""
 
-#: lib/config-gettext-extract.php:82
+#: lib/config-gettext-extract.php:83
 msgctxt "option value"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:83
+#: lib/config-gettext-extract.php:84
 msgctxt "option value"
 msgid "Pinterest URL"
-msgstr ""
-
-#: lib/config-gettext-extract.php:84
-msgctxt "lib file description"
-msgid "Plugin Dashboard and Features Status"
 msgstr ""
 
 #: lib/config-gettext-extract.php:85
@@ -1599,7 +1597,8 @@ msgctxt "option label"
 msgid "&lt;html&gt; Attributes Filter Hook"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:122 lib/pro/admin/advanced.php:123
+#: lib/gpl/admin/advanced.php:122 lib/messages.php:1336
+#: lib/pro/admin/advanced.php:123
 msgctxt "option label"
 msgid "&lt;head&gt; Attributes Filter Hook"
 msgstr ""
@@ -3390,6 +3389,12 @@ msgid ""
 "extensions and check for Pro version updates."
 msgstr ""
 
+#: lib/messages.php:1153 lib/messages.php:1348 lib/messages.php:1358
+#: lib/messages.php:1367 lib/messages.php:1379
+msgctxt "lib file description"
+msgid "Extension Plugins and Pro Licenses"
+msgstr ""
+
 #: lib/messages.php:1155
 msgid ""
 "You may enter each unique Authentication ID on this page <em>to define a "
@@ -3629,192 +3634,192 @@ msgid ""
 "should be enabled</a>."
 msgstr ""
 
-#: lib/messages.php:1335
+#: lib/messages.php:1340
 msgid ""
-"At least one of your theme header templates does not support Schema markup "
-"of the webpage head section &mdash; this is especially important for Google "
-"and Pinterest."
+"<b>At least one of your theme header templates does not support Schema "
+"markup of the webpage head section</b> &mdash; this is especially important "
+"for Google and Pinterest."
 msgstr ""
 
-#: lib/messages.php:1335
+#: lib/messages.php:1340
 msgid ""
-"The %s element in your header templates should include a function, action, "
-"or filter for its attributes."
+"The %1$s HTML tag in your header templates should include a function, "
+"action, or filter for its attributes."
 msgstr ""
 
-#: lib/messages.php:1335
+#: lib/messages.php:1340
 msgid ""
-"%1$s can update your header templates automatically to change the default "
-"%2$s element to:"
+"%1$s can update your header template(s) automatically and change the "
+"existing %2$s HTML tag to:"
 msgstr ""
 
-#: lib/messages.php:1339
+#: lib/messages.php:1340
 msgid ""
-"<b><a href=\"%1$s\">Click here to update header templates automatically</a></"
-"b> or update the templates yourself manually."
+"<b><a href=\"%1$s\">Click here to update header template(s) automatically</"
+"a></b> (recommended) or update the template(s) manually."
 msgstr ""
 
-#: lib/messages.php:1349
+#: lib/messages.php:1350
 msgid "The %1$s plugin Authentication ID option is empty."
 msgstr ""
 
-#: lib/messages.php:1349
+#: lib/messages.php:1350
 msgid ""
 "To enable Pro version features and allow the plugin to authenticate itself "
 "for updates, please enter the unique Authentication ID you received by email "
 "on the %s settings page."
 msgstr ""
 
-#: lib/messages.php:1359
+#: lib/messages.php:1360
 msgid ""
 "An Authentication ID has been provided for %1$s but the plugin has not been "
 "installed &mdash; you can install and activate the Pro version from the %2$s "
 "settings page."
 msgstr ""
 
-#: lib/messages.php:1368
+#: lib/messages.php:1369
 msgid ""
 "An Authentication ID has been provided for %1$s on the %2$s settings page "
 "but the Pro version has not been installed &mdash; don't forget to update "
 "the current plugin to install the latest Pro version."
 msgstr ""
 
-#: lib/messages.php:1379
+#: lib/messages.php:1380
 msgid "Plugins"
 msgstr ""
 
-#: lib/messages.php:1381
+#: lib/messages.php:1382
 msgid ""
 "At least one Authentication ID has been entered on the %1$s settings page,"
 "<br/>but the %2$s extension is not active."
 msgstr ""
 
-#: lib/messages.php:1381
+#: lib/messages.php:1382
 msgid ""
 "This Free extension is required to update and enable the %1$s and its Pro "
 "extensions."
 msgstr ""
 
-#: lib/messages.php:1384
+#: lib/messages.php:1385
 msgid "Install and activate the %1$s extension from the %2$s settings page."
 msgstr ""
 
-#: lib/messages.php:1386
+#: lib/messages.php:1387
 msgid "The %1$s extension can be activated from the WordPress %2$s page."
 msgstr ""
 
-#: lib/messages.php:1386
+#: lib/messages.php:1387
 msgid "Please activate this Free extension now."
 msgstr ""
 
-#: lib/messages.php:1389
+#: lib/messages.php:1390
 msgid ""
 "When the %1$s extension is active, one or more Pro version updates may be "
 "available for your licensed plugin / extension(s)."
 msgstr ""
 
-#: lib/messages.php:1399
+#: lib/messages.php:1400
 msgctxt "submit button"
 msgid "Check for Updates"
 msgstr ""
 
-#: lib/messages.php:1401
+#: lib/messages.php:1402
 msgctxt "lib file description"
 msgid "Update Manager"
 msgstr ""
 
-#: lib/messages.php:1403
+#: lib/messages.php:1404
 msgid "Dashboard"
 msgstr ""
 
-#: lib/messages.php:1403
+#: lib/messages.php:1404
 msgid "Updates"
 msgstr ""
 
-#: lib/messages.php:1405
+#: lib/messages.php:1406
 msgid ""
 "%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
 "%5$s is currently installed)."
 msgstr ""
 
-#: lib/messages.php:1407
+#: lib/messages.php:1408
 msgid ""
 "If an update for %1$s is not available under the WordPress %2$s page, use "
 "the <em>%3$s</em> button on the %4$s settings page to force an immediate "
 "refresh of all Pro update information."
 msgstr ""
 
-#: lib/messages.php:1413 lib/register.php:204
+#: lib/messages.php:1414 lib/register.php:204
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
 "updates and features."
 msgstr ""
 
-#: lib/messages.php:1413
+#: lib/messages.php:1414
 msgid ""
 "If possible, please update to the latest %1$s stable release (or at least "
 "version %2$s)."
 msgstr ""
 
-#: lib/messages.php:1430
+#: lib/messages.php:1431
 msgid "<strong>%s includes:</strong>"
 msgstr ""
 
-#: lib/messages.php:1432
+#: lib/messages.php:1433
 msgid ""
 "%s options for posts, pages, custom post types, terms (categories, tags, and "
 "custom taxonomies), and user profiles."
 msgstr ""
 
-#: lib/messages.php:1433
+#: lib/messages.php:1434
 msgid "Integration with numerous 3rd party plugins and external service APIs."
 msgstr ""
 
-#: lib/messages.php:1434
+#: lib/messages.php:1435
 msgid "Advanced plugin features and settings page."
 msgstr ""
 
-#: lib/messages.php:1436
+#: lib/messages.php:1437
 msgid ""
 "<strong>Nontransferable Pro licenses never expire</strong> &mdash; you may "
 "receive unlimited / lifetime updates and support for each licensed WordPress "
 "Site Address."
 msgstr ""
 
-#: lib/messages.php:1436
+#: lib/messages.php:1437
 msgid "How great is that!?"
 msgstr ""
 
-#: lib/messages.php:1439
+#: lib/messages.php:1440
 msgid ""
 "<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; license "
 "the Pro version immediately after your purchase!"
 msgstr ""
 
-#: lib/messages.php:1441
+#: lib/messages.php:1442
 msgid ""
 "<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; update "
 "the Free plugin to Pro immediately after your purchase!"
 msgstr ""
 
-#: lib/messages.php:1447
+#: lib/messages.php:1448
 msgid ""
 "<strong>The continued development of %1$s is driven by user requests</"
 "strong> &mdash; we welcome all your comments and suggestions!"
 msgstr ""
 
-#: lib/messages.php:1452
+#: lib/messages.php:1453
 msgid ""
 "<strong>Great ratings are a terrific way to encourage plugin developers</"
 "strong> &mdash; and it only takes a minute (or less)."
 msgstr ""
 
-#: lib/messages.php:1452
+#: lib/messages.php:1453
 msgid "Please encourage us by rating the plugins you use."
 msgstr ""
 
-#: lib/messages.php:1467
+#: lib/messages.php:1468
 msgid ""
 "This option is localized &mdash; you may change the WordPress locale (see "
 "%s) to define alternate values for different languages."

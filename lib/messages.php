@@ -1329,14 +1329,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-header-tmpl-no-head-attr':
 
+						$filter_name = 'head_attributes';
+						$html_tag = '<code>&lt;head&gt;</code>';
+						$php_code = '<pre><code>&lt;head &lt;?php do_action( &#39;add_head_attributes&#39; ); ?&gt;&gt;</code></pre>';
+						$option_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+							_x( '&lt;head&gt; Attributes Filter Hook', 'option label', 'wpsso' ) );
 						$action_url = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].'-action=modify_tmpl_head_attributes' ),
 							WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
-						$text = '<p><b>'.__( 'At least one of your theme header templates does not support Schema markup of the webpage head section &mdash; this is especially important for Google and Pinterest.', 'wpsso' ).'</b> '.sprintf( __( 'The %s element in your header templates should include a function, action, or filter for its attributes.', 'wpsso' ), '<code>&lt;head&gt;</code>' ).' '.sprintf( __( '%1$s can update your header templates automatically to change the default %2$s element to:', 'wpsso' ), $info['short'], '<code>&lt;head&gt;</code>' ).'</p>';
-
-						$text .= '<pre><code>&lt;head &lt;?php do_action( \'add_head_attributes\' ); ?&gt;&gt;</code></pre>';
-
-						$text .= '<p>'.sprintf( __( '<b><a href="%1$s">Click here to update header templates automatically</a></b> or update the templates yourself manually.', 'wpsso' ), $action_url ).'</p>';
+						$text = '<p>'.__( '<b>At least one of your theme header templates does not support Schema markup of the webpage head section</b> &mdash; this is especially important for Google and Pinterest.', 'wpsso' ).' '.sprintf( __( 'The %1$s HTML tag in your header templates should include a function, action, or filter for its attributes.', 'wpsso' ), $html_tag ).' '.sprintf( __( '%1$s can update your header template(s) automatically and change the existing %2$s HTML tag to:', 'wpsso' ), $info['short'], $html_tag ).'</p>'.$php_code.'<p>'.sprintf( __( '<b><a href="%1$s">Click here to update header template(s) automatically</a></b> (recommended) or update the template(s) manually.', 'wpsso' ), $action_url ).'</p>';
 
 						break;
 

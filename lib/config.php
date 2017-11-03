@@ -76,13 +76,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'essential' => 'Essential Settings',
 							'general' => 'General Settings',
 							'advanced' => 'Advanced Settings',
-							'dashboard' => 'Plugin Dashboard and Features Status',
-							'licenses' => 'Extension Plugins and Pro Licenses',
+							'dashboard' => '<color>Plugin Dashboard and Features Status</color>',
+							'licenses' => '<color>Extension Plugins and Pro Licenses</color>',
 							'setup' => '<color>Plugin Setup Guide and Other Notes</color>',
 						),
 						'sitesubmenu' => array(	// lib file descriptions will be translated
 							'siteadvanced' => 'Advanced Settings',
-							'sitelicenses' => 'Extension Plugins and Pro Licenses',
+							'sitelicenses' => '<color>Extension Plugins and Pro Licenses</color>',
 							'sitesetup' => '<color>Plugin Setup Guide and Other Notes</color>',
 						),
 						'gpl' => array(

@@ -2029,7 +2029,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				// double check in case of reloads etc.
 				if ( ( $html = SucomUtil::get_stripped_php( $tmpl_file ) ) === false ||
 					strpos( $html, '<head>' ) === false ) {
-					$this->p->notice->err( sprintf( __( 'No &lt;head&gt; HTML element found in the %s template.',
+					$this->p->notice->err( sprintf( __( 'No &lt;head&gt; HTML tag found in the %s template.',
 						'wpsso' ), $tmpl_file ) );
 					continue;
 				}
