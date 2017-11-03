@@ -1634,9 +1634,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'blog_public option is disabled' );
 				}
-				$warn_dismiss_key = 'wordpress-search-engine-visibility-disabled';
-				if ( $this->p->notice->is_admin_pre_notices( $warn_dismiss_key ) ) {	// don't bother if already dismissed
-					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), true, $warn_dismiss_key, MONTH_IN_SECONDS * 3 );
+				$dismiss_key = 'wordpress-search-engine-visibility-disabled';
+				if ( $this->p->notice->is_admin_pre_notices( $dismiss_key ) ) {	// don't bother if already dismissed
+					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), true, $dismiss_key, MONTH_IN_SECONDS * 3 );
 				}
 			}
 
@@ -1968,8 +1968,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'rec_version' => WpssoConfig::$cf[$key]['rec_version'],
 								'version_url' => WpssoConfig::$cf[$key]['version_url'],
 							) );
-							$warn_dismiss_key = 'notice-recommend-version-'.$lca.'-'.$version.'-'.$app_label.'-'.$app_version;
-							$this->p->notice->warn( $warn_msg, true, $warn_dismiss_key, MONTH_IN_SECONDS, true );	// $silent = true
+							$dismiss_key = 'notice-recommend-version-'.$lca.'-'.$version.'-'.$app_label.'-'.$app_version;
+							$this->p->notice->warn( $warn_msg, true, $dismiss_key, MONTH_IN_SECONDS, true );	// $silent = true
 						}
 					}
 				}
@@ -1994,15 +1994,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			foreach ( SucomUtil::get_header_files() as $tmpl_file ) {
-				if ( ( $html = SucomUtil::get_stripped_php( $tmpl_file ) ) === false ) {
+
+				$html_stripped = SucomUtil::get_stripped_php( $tmpl_file );
+
+				if ( empty( $html_stripped ) ) {	// empty string or false
 					continue;
-				} elseif ( strpos( $html, '<head>' ) !== false ) {
+				} elseif ( strpos( $html_stripped, '<head>' ) !== false ) {
 					// skip if notices already shown
 					if ( $this->p->notice->is_admin_pre_notices() ) {
 						// allow warning to be dismissed until the next theme update
-						$warn_dismiss_key = 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version();
+						$dismiss_key = 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version();
 						$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
-							true, $warn_dismiss_key, true );	// can be dismissed
+							true, $dismiss_key, true );	// can be dismissed
 					}
 					break;
 				}
@@ -2022,13 +2025,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			foreach ( $header_files as $tmpl_file ) {
+
 				$tmpl_base = basename( $tmpl_file );
 				$backup_file = $tmpl_file.'~backup-'.date( 'Ymd-His' );
 				$backup_base = basename( $backup_file );
+				$html_stripped = SucomUtil::get_stripped_php( $tmpl_file );
 	
 				// double check in case of reloads etc.
-				if ( ( $html = SucomUtil::get_stripped_php( $tmpl_file ) ) === false ||
-					strpos( $html, '<head>' ) === false ) {
+				if ( empty( $html_stripped ) || strpos( $html_stripped, '<head>' ) === false ) {
 					$this->p->notice->err( sprintf( __( 'No &lt;head&gt; HTML tag found in the %s template.',
 						'wpsso' ), $tmpl_file ) );
 					continue;

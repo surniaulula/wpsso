@@ -2853,18 +2853,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// glob() returns false on error
-		public static function get_header_files() {
+		public static function get_header_files( $skip_backups = true ) {
 			$ret_array = array();
 			$parent_dir = get_template_directory();
 			$child_dir = get_stylesheet_directory();
 			$header_files = (array) glob( $parent_dir.'/header*.php' );
 
 			if ( $parent_dir !== $child_dir ) {
-				$header_files = array_merge( $header_files,
-					(array) glob( $child_dir.'/header*.php' ) );
+				$header_files = array_merge( $header_files, (array) glob( $child_dir.'/header*.php' ) );
 			}
 
 			foreach ( $header_files as $tmpl_file ) {
+				if ( $skip_backups && preg_match( '/~backup-[0-9-]+$/', $tmpl_file ) ) {	// skip backups
+					continue;
+				}
 				$tmpl_base = basename( $tmpl_file );
 				$ret_array[$tmpl_base] = $tmpl_file;	// child tmpl overwrites parent
 			}
