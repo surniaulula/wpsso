@@ -278,6 +278,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [How can I see what the Facebook crawler sees?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/)
 * [How can I share a single NextGEN Gallery image?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-share-a-single-nextgen-gallery-image/)
 * [How do I attach an image without showing it on the webpage?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-attach-an-image-without-showing-it-on-the-webpage/)
+* [How do I fix Google Structured Data &gt; hatom errors?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/)
 * [How do I fix my theme's front page pagination?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-my-themes-front-page-pagination/)
 * [How do I install the WPSSO Core Pro version?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/)
 * [How do I remove duplicate meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/)
