@@ -387,6 +387,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Changed the user agent to the Facebook crawler when checking for duplicate meta tags, for edge cases where plugins / themes only add meta tags for the Facebook crawler.
 	* Added an action to remove the SNAP OG meta tags holder, to prevent incorrect / duplicate meta tags from being added to the webpage.
+	* Added a new WpssoSchema get_types_cache_exp() static method to apply the Schema types expiration filter once (and cache the result in a static variable).
 
 **Version 3.48.0 (2017/11/02)**
 
