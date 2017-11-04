@@ -376,18 +376,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.1-dev.1 (2017/11/04)**
+**Version 3.48.1-dev.2 (2017/11/04)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added &#91;F&#93; qualifiers in the Cache Status metabox for expiration values changed by a filter.
 * *Bugfixes*
 	* None
 * *Developer Notes*
 	* Changed the user agent to the Facebook crawler when checking for duplicate meta tags, for edge cases where plugins / themes only add meta tags for the Facebook crawler.
 	* Added an action to remove the SNAP OG meta tags holder, to prevent incorrect / duplicate meta tags from being added to the webpage.
-	* Added a new WpssoSchema get_types_cache_exp() static method to apply the Schema types expiration filter once (and cache the result in a static variable).
+	* Added a new WpssoSchema get_types_cache_exp() method to apply the Schema types expiration filter once (and cache the result in a static variable).
 
 **Version 3.48.0 (2017/11/02)**
 
@@ -869,7 +869,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.1-dev.1 =
+= 3.48.1-dev.2 =
 
 (2017/11/04) Changed the user agent to the Facebook crawler when checking for duplicate meta tags. Added an action to remove the SNAP OG meta tags holder.
 
