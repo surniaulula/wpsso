@@ -69,7 +69,7 @@
 'wpsso_json_data_single_person' ( $person_data, $mod, $user_id );
 'wpsso_json_data_single_person_sameas' ( $person_sameas, $mod, $user_id );
 'wpsso_json_data_single_place' ( $place_data, $mod, $place_id );
-'wpsso_json_ld_search_url' ( $url, $mod, $add_page, $src_id );
+'wpsso_json_ld_search_url' ( $search_url, $mod, $add_page, $src_id );
 'wpsso_json_prop_https_schema_org_aggregaterating' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main );
 'wpsso_json_prop_https_schema_org_potentialaction' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main );
 'wpsso_link_rel' ( $link_rel, $mod );
