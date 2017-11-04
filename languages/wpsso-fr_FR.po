@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.48.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-11-04 16:12-0600\n"
-"PO-Revision-Date: 2017-11-04 16:18-0600\n"
+"POT-Creation-Date: 2017-11-04 17:08-0600\n"
+"PO-Revision-Date: 2017-11-04 17:09-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2520,7 +2520,7 @@ msgid "%1$s hooks the \"%2$s\" filter (by default) to add / modify the %3$s HTML
 msgstr "Par défaut, %1$s accroche le filtre \"%2$s\" pour ajouter / modifier les valeurs d'attributs de balise HTML %3$s pour les noms de préfixe Open Graph."
 
 #: lib/messages.php:598
-msgid "The WordPress %1$s function and \"%2$s\" filter are used by most themes &mdash; if the namespace prefix values are missing from your %3$s HTML tag attributes, make sure your header template(s) use the %1$s function."
+msgid "The WordPress %1$s function and its \"%2$s\" filter are used by most themes &mdash; if the namespace prefix values are missing from your %3$s HTML tag attributes, make sure your header template(s) use the %1$s function."
 msgstr "La fonction WordPress %1$s et son filtre \"%2$s\" sont utilisés par la plupart des thèmes &mdash; si les noms de préfixe ne sont pas dans les attributs de votre balise HTML %3$s, assurez-vous que vos modèles d'en-tête utilisent la fonction %1$s."
 
 #: lib/messages.php:598
