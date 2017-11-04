@@ -509,7 +509,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/*
-			 * Fetch HTML using the Facebook agent to get Open Graph meta tags.
+			 * Fetch HTML using the Facebook user agent to get Open Graph meta tags.
 			 */
 			$curl_opts = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
 			$html = $this->p->cache->get( $shortlink, 'raw', 'transient', false, '', $curl_opts );

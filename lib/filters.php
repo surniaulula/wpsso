@@ -29,13 +29,13 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				}
 
 				if ( class_exists( 'GFForms' ) ) {
-					add_action( 'gform_noconflict_styles', array( $this, 'update_noconflict_styles' ) );
-					add_action( 'gform_noconflict_scripts', array( $this, 'update_noconflict_scripts' ) );
+					add_action( 'gform_noconflict_styles', array( $this, 'update_gform_noconflict_styles' ) );
+					add_action( 'gform_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
 				}
 
 				if ( class_exists( 'GravityView_Plugin' ) ) {
-					add_action( 'gravityview_noconflict_styles', array( $this, 'update_noconflict_styles' ) );
-					add_action( 'gravityview_noconflict_scripts', array( $this, 'update_noconflict_scripts' ) );
+					add_action( 'gravityview_noconflict_styles', array( $this, 'update_gform_noconflict_styles' ) );
+					add_action( 'gravityview_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
 				}
 
 			} else {
@@ -58,10 +58,15 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 						add_action( 'wp_loaded', array( __CLASS__, 'force_ssl_redirect' ), -1000 );
 					}
 				}
+
+				// prevent SNAP from adding meta tags for the Facebook user agent
+				if ( function_exists( 'nxs_initSNAP' ) ) {
+					add_action( 'wp_head', array( &$this, 'remove_snap_og_meta_tags_holder' ), -1000 );
+				}
 			}
 		}
 
-		public function update_noconflict_styles( $styles ) {
+		public function update_gform_noconflict_styles( $styles ) {
 			return array_merge( $styles, array(
 				'jquery-ui.js',
 				'jquery-qtip.js',
@@ -72,7 +77,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			) );
 		}
 
-		public function update_noconflict_scripts( $scripts ) {
+		public function update_gform_noconflict_scripts( $scripts ) {
 			return array_merge( $scripts, array(
 				'jquery-ui-datepicker',
 				'jquery-qtip',
@@ -87,8 +92,10 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		 * Cleanup incorrect Yoast SEO notifications.
 		 */
 		public function cleanup_wpseo_notifications() {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			if ( class_exists( 'Yoast_Notification_Center' ) ) {
 				$lca = $this->p->cf['lca'];
@@ -165,10 +172,9 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		}
 
 		/*
-		 * Redirect from HTTP to HTTPS if the current webpage URL is
-		 * not HTTPS. A 301 redirect is considered a best practice when
-		 * moving from HTTP to HTTPS. See
-		 * https://en.wikipedia.org/wiki/HTTP_301 for more info.
+		 * Redirect from HTTP to HTTPS if the current webpage URL is not HTTPS.
+		 * A 301 redirect is considered a best practice when moving from HTTP to
+		 * HTTPS. See https://en.wikipedia.org/wiki/HTTP_301 for more info.
 		 */
 		public static function force_ssl_redirect() {
 			// check for web server variables in case WP is being used from the command line
@@ -178,6 +184,10 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 					exit();
 				}
 			}
+		}
+
+		public function remove_snap_og_meta_tags_holder() {
+			remove_action( 'wp_head', 'nxs_addOGTagsPreHolder', 150 );
 		}
 	}
 }

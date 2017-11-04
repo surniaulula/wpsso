@@ -1242,7 +1242,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			/*
-			 * Fetch HTML using the Facebook agent to get Open Graph meta tags.
+			 * Fetch HTML using the Facebook user agent to get Open Graph meta tags.
 			 *
 			 * get_head_meta( $request, $query, $libxml_errors, $curl_opts );
 			 */
