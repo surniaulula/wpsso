@@ -508,7 +508,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			$html = $this->p->cache->get( $shortlink, 'raw', 'transient' );
+			/*
+			 * Fetch HTML using the Facebook agent to get Open Graph meta tags.
+			 */
+			$curl_opts = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
+			$html = $this->p->cache->get( $shortlink, 'raw', 'transient', false, '', $curl_opts );
 			$in_secs = $this->p->cache->in_secs( $shortlink );
 			$warning_secs = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_WARNING_SECS', 2.5 );
 			$timeout_secs = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_TIMEOUT_SECS', 3.0 );
@@ -592,6 +596,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// stop here
 			}
 
+			// providing html, so no need to specify a user agent
 			$metas = $this->p->util->get_head_meta( $html, '/html/head/link|/html/head/meta', true );	// false on error
 			$check_opts = SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' );
 			$conflicts_msg = __( 'Conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage.', 'wpsso' );

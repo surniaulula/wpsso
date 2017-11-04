@@ -1246,9 +1246,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 *
 			 * get_head_meta( $request, $query, $libxml_errors, $curl_opts );
 			 */
-			$metas = $this->p->util->get_head_meta( $url, '//meta', false, array(
-				'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK,
-			) );
+			$curl_opts = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
+			$metas = $this->p->util->get_head_meta( $url, '//meta', false, $curl_opts );
 
 			if ( isset( $metas['meta'] ) ) {
 
