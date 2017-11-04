@@ -384,7 +384,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$cache_salt = __METHOD__;
 				$cache_id = $cache_pre.md5( $cache_salt );
 
-				if ( $types_cache_exp > 0 ) {
+				if ( $cache_exp > 0 ) {
 					$this->types_cache = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $this->types_cache ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -427,11 +427,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$this->add_schema_type_xrefs( $this->types_cache['filtered'] );
 
-					if ( $types_cache_exp > 0 ) {
+					if ( $cache_exp > 0 ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'saving schema types array to transient cache for '.$types_cache_exp.' secs' );
+							$this->p->debug->log( 'saving schema types array to transient cache for '.$cache_exp.' seconds' );
 						}
-						set_transient( $cache_id, $this->types_cache, $types_cache_exp );
+						set_transient( $cache_id, $this->types_cache, $cache_exp );
 					}
 
 					if ( $this->p->debug->enabled ) {
@@ -577,7 +577,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$cache_salt = __METHOD__.'(child_id:'.$child_id.')';
 				$cache_id = $cache_pre.md5( $cache_salt );
 
-				if ( $types_cache_exp > 0 ) {
+				if ( $cache_exp > 0 ) {
 					$parents = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $parents ) ) {
 						return $parents;
@@ -599,8 +599,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$parents[] = $child_id;	// add children after parents
 
 			if ( $use_cache ) {
-				if ( $types_cache_exp > 0 ) {
-					set_transient( $cache_id, $parents, $types_cache_exp );
+				if ( $cache_exp > 0 ) {
+					set_transient( $cache_id, $parents, $cache_exp );
 				}
 			}
 
@@ -622,7 +622,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
 				$cache_id = $cache_pre.md5( $cache_salt );
 
-				if ( $types_cache_exp > 0 ) {
+				if ( $cache_exp > 0 ) {
 					$children = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $children ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -643,11 +643,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $use_cache ) {
-				if ( $types_cache_exp > 0 ) {
+				if ( $cache_exp > 0 ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'saving children to transient cache for '.$types_cache_exp.' secs' );
+						$this->p->debug->log( 'saving children to transient cache for '.$cache_exp.' seconds' );
 					}
-					set_transient( $cache_id, $children, $types_cache_exp );
+					set_transient( $cache_id, $children, $cache_exp );
 				}
 			}
 
