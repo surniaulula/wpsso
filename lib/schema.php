@@ -39,21 +39,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public static function get_types_cache_exp() {
-
 			static $cache_exp = null;
-
-			if ( isset( $cache_exp ) ) {
-				return $cache_exp;
+			if ( ! isset( $cache_exp ) ) {
+				$wpsso =& Wpsso::get_instance();
+				$lca = $wpsso->cf['lca'];
+				$cache_pre = $lca.'_t_';
+				$cache_filter = $wpsso->cf['wp']['transient'][$cache_pre]['filter'];
+				$cache_opt_key = $wpsso->cf['wp']['transient'][$cache_pre]['opt_key'];
+				$cache_exp = isset( $wpsso->options[$cache_opt_key] ) ? $wpsso->options[$cache_opt_key] : MONTH_IN_SECONDS;
+				$cache_exp = (int) apply_filters( $cache_filter, $cache_exp );
 			}
-
-			$wpsso =& Wpsso::get_instance();
-			$lca = $wpsso->cf['lca'];
-			$cache_pre = $lca.'_t_';
-			$cache_filter = $wpsso->cf['wp']['transient'][$cache_pre]['filter'];
-			$cache_opt_key = $wpsso->cf['wp']['transient'][$cache_pre]['opt_key'];
-			$cache_exp = isset( $wpsso->options[$cache_opt_key] ) ? $wpsso->options[$cache_opt_key] : MONTH_IN_SECONDS;
-			$cache_exp = (int) apply_filters( $cache_filter, $cache_exp );
-
 			return $cache_exp;
 		}
 

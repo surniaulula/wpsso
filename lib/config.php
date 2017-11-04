@@ -1198,6 +1198,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wpsso_t_' => array(
 						'label' => 'Schema Types',
 						'opt_key' => 'plugin_types_cache_exp',
+						'filter' => 'wpsso_cache_expire_schema_types',
 					),
 					'wpsso_b_' => array(),	// Sharing Buttons HTML
 					'wpsso_' => array(

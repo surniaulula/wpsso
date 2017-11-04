@@ -1055,7 +1055,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $have_filtered_cache_exp ) {
 				echo '<tr><td colspan="'.$table_cols.'"><small>[F] '.
-					__( 'Expiration value has been modified by a filter.',
+					__( 'Expiration option value has been modified by a filter.',
 						'wpsso' ).'</small></em></td></tr>';
 			}
 

@@ -378,10 +378,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$head_array = array();
 			$head_index = $this->get_head_cache_index( $mod, $sharing_url );
 
+			/*
+			 * Note that $cache_id is a unique identifier for the cached data and should be 45 characters or less in
+			 * length. If using a site transient, it should be 40 characters or less in length.
+			 */
+			static $cache_exp = null;	// filter the cache expiration value only once
 			$cache_pre = $lca.'_h_';
-			$cache_filter = $this->p->cf['wp']['transient'][$cache_pre]['filter'];
-			$cache_opt_key = $this->p->cf['wp']['transient'][$cache_pre]['opt_key'];
-			$cache_exp = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
+			if ( ! isset( $cache_exp ) ) {	// filter cache expiration if not already set
+				$cache_filter = $this->p->cf['wp']['transient'][$cache_pre]['filter'];
+				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_pre]['opt_key'];
+				$cache_exp = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
+			}
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
 			$cache_id = $cache_pre.md5( $cache_salt );
 
