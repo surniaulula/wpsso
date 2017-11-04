@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.0',		// plugin version
+					'version' => '3.48.1-dev.1',		// plugin version
 					'opt_version' => '560',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
