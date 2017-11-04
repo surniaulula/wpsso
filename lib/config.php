@@ -1184,10 +1184,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wpsso_s_' => array(
 						'label' => 'Shortened URLs',
 						'opt_key' => 'plugin_short_url_cache_exp',
+						'filter' => 'wpsso_cache_expire_short_url',
 					),
 					'wpsso_i_' => array(
 						'label' => 'Image URL Info',
 						'opt_key' => 'plugin_imgsize_cache_exp',
+						'filter' => 'wpsso_cache_expire_image_url_size',
 					),
 					'wpsso_a_' => array(
 						'label' => 'Article Topics',

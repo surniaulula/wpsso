@@ -174,9 +174,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $def_image_info;	// stop here
 			}
 
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_image_url_size', $this->p->options['plugin_imgsize_cache_exp'] );
+			$cache_pre = $lca.'_i_';
+			$cache_filter = $this->p->cf['wp']['transient'][$cache_pre]['filter'];
+			$cache_opt_key = $this->p->cf['wp']['transient'][$cache_pre]['opt_key'];
+			$cache_exp = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
 			$cache_salt = __METHOD__.'(url:'.$image_url.')';
-			$cache_id = $lca.'_i_'.md5( $cache_salt );
+			$cache_id = $cache_pre.md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );
@@ -565,8 +568,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			foreach( $transient_keys as $cache_id ) { 
 
 				// skip / preserve shortened urls by default
-				if ( ! $clear_short_urls && strpos( $cache_id, $lca.'_s_' ) === 0 ) {
-					continue;
+				if ( ! $clear_short_urls ) {
+					$cache_pre = $lca.'_s_';
+					if ( strpos( $cache_id, $cache_pre ) === 0 ) {
+						continue;
+					}
 				}
 
 				if ( delete_transient( $cache_id ) ) {

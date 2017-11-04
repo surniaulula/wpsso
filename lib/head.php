@@ -378,10 +378,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$head_array = array();
 			$head_index = $this->get_head_cache_index( $mod, $sharing_url );
 
-			$filter_name = $this->p->cf['wp']['transient'][$lca.'_h_']['filter'];
-			$cache_exp = (int) apply_filters( $filter_name, $this->p->options['plugin_head_cache_exp'] );
+			$cache_pre = $lca.'_h_';
+			$cache_filter = $this->p->cf['wp']['transient'][$cache_pre]['filter'];
+			$cache_opt_key = $this->p->cf['wp']['transient'][$cache_pre]['opt_key'];
+			$cache_exp = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
-			$cache_id = $lca.'_h_'.md5( $cache_salt );
+			$cache_id = $cache_pre.md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );

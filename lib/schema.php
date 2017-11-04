@@ -15,19 +15,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		protected $p;
 		protected $types_cache = null;			// schema types array cache
-		protected $types_exp = MONTH_IN_SECONDS;	// schema types array expiration
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
-			}
-
-			// options array may be empty on activation
-			if ( isset( $this->p->options['plugin_types_cache_exp'] ) ) {
-				$this->types_exp = (int) apply_filters( $this->p->cf['lca'].'_cache_expire_schema_types',
-					$this->p->options['plugin_types_cache_exp'] );
 			}
 
 			$this->p->util->add_plugin_filters( $this, array( 
@@ -43,6 +36,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $this->p->options['p_add_img_html'] ) && ! SucomUtil::is_amp() && ! is_feed() ) {
 				add_filter( 'the_content', array( &$this, 'get_pinterest_img_html' ) );
 			}
+		}
+
+		public static function get_types_cache_exp() {
+
+			static $cache_exp = null;
+
+			if ( isset( $cache_exp ) ) {
+				return $cache_exp;
+			}
+
+			$wpsso =& Wpsso::get_instance();
+			$lca = $wpsso->cf['lca'];
+			$cache_pre = $lca.'_t_';
+			$cache_filter = $wpsso->cf['wp']['transient'][$cache_pre]['filter'];
+			$cache_opt_key = $wpsso->cf['wp']['transient'][$cache_pre]['opt_key'];
+			$cache_exp = isset( $wpsso->options[$cache_opt_key] ) ? $wpsso->options[$cache_opt_key] : MONTH_IN_SECONDS;
+			$cache_exp = (int) apply_filters( $cache_filter, $cache_exp );
+
+			return $cache_exp;
 		}
 
 		public function get_pinterest_img_html( $content = '' ) {
@@ -373,18 +385,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! isset( $this->types_cache['filtered'] ) ) {	// check class property cache
 
 				$lca = $this->p->cf['lca'];
+				$cache_pre = $lca.'_t_';
+				$cache_exp = self::get_types_cache_exp();
 				$cache_salt = __METHOD__;
-				$cache_id = $lca.'_t_'.md5( $cache_salt );
+				$cache_id = $cache_pre.md5( $cache_salt );
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'transient cache salt '.$cache_salt );
-				}
-
-				if ( $this->types_exp > 0 ) {
+				if ( $types_cache_exp > 0 ) {
 					$this->types_cache = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $this->types_cache ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'using schema type arrays from transient '.$cache_id );
+							$this->p->debug->log( 'using schema types array from transient '.$cache_id );
 						}
 					}
 				}
@@ -392,7 +402,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( ! isset( $this->types_cache['filtered'] ) ) {	// from transient cache or not, check if filtered
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'create schema type arrays' );	// begin timer
+						$this->p->debug->mark( 'create schema types array' );	// begin timer
 					}
 
 					if ( $this->p->debug->enabled ) {
@@ -423,19 +433,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$this->add_schema_type_xrefs( $this->types_cache['filtered'] );
 
-					if ( $this->types_exp > 0 ) {
-						set_transient( $cache_id, $this->types_cache, $this->types_exp );
+					if ( $types_cache_exp > 0 ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'saving schema type arrays to transient '.
-								$cache_id.' ('.$this->types_exp.' seconds)');
+							$this->p->debug->log( 'saving schema types array to transient cache for '.$types_cache_exp.' secs' );
 						}
+						set_transient( $cache_id, $this->types_cache, $types_cache_exp );
 					}
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'create schema type arrays' );	// end timer
+						$this->p->debug->mark( 'create schema types array' );	// end timer
 					}
 				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'schema type arrays already filtered' );
+					$this->p->debug->log( 'schema types array already filtered' );
 				}
 			}
 
@@ -567,11 +576,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $use_cache ) {
-				$lca = $this->p->cf['lca'];
-				$cache_salt = __METHOD__.'(child_id:'.$child_id.')';
-				$cache_id = $lca.'_t_'.md5( $cache_salt );
 
-				if ( $this->types_exp > 0 ) {
+				$lca = $this->p->cf['lca'];
+				$cache_pre = $lca.'_t_';
+				$cache_exp = self::get_types_cache_exp();
+				$cache_salt = __METHOD__.'(child_id:'.$child_id.')';
+				$cache_id = $cache_pre.md5( $cache_salt );
+
+				if ( $types_cache_exp > 0 ) {
 					$parents = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $parents ) ) {
 						return $parents;
@@ -593,8 +605,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$parents[] = $child_id;	// add children after parents
 
 			if ( $use_cache ) {
-				if ( $this->types_exp > 0 ) {
-					set_transient( $cache_id, $parents, $this->types_exp );
+				if ( $types_cache_exp > 0 ) {
+					set_transient( $cache_id, $parents, $types_cache_exp );
 				}
 			}
 
@@ -609,11 +621,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $use_cache ) {
-				$lca = $this->p->cf['lca'];
-				$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
-				$cache_id = $lca.'_t_'.md5( $cache_salt );
 
-				if ( $this->types_exp > 0 ) {
+				$lca = $this->p->cf['lca'];
+				$cache_pre = $lca.'_t_';
+				$cache_exp = self::get_types_cache_exp();
+				$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
+				$cache_id = $cache_pre.md5( $cache_salt );
+
+				if ( $types_cache_exp > 0 ) {
 					$children = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $children ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -634,11 +649,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $use_cache ) {
-				if ( $this->types_exp > 0 ) {
+				if ( $types_cache_exp > 0 ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'saving children to transient cache for '.$this->types_exp.' secs' );
+						$this->p->debug->log( 'saving children to transient cache for '.$types_cache_exp.' secs' );
 					}
-					set_transient( $cache_id, $children, $this->types_exp );
+					set_transient( $cache_id, $children, $types_cache_exp );
 				}
 			}
 
