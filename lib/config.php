@@ -919,7 +919,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_price' => '',		// Product Price Custom Field
 					'plugin_cf_product_size' => '',			// Product Size Custom Field
 					// Cache Settings Tab
-					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
+					'plugin_head_cache_exp' => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week)
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
 					'plugin_short_url_cache_exp' => 7776000,	// Get Shortened URL Cache Expiry (90 days / 3 months)
 					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image URL Info Cache Expiry (1 day)
@@ -1027,7 +1027,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
 					'plugin_page_tags:use' => 'default',
 					// Cache Settings Tab
-					'plugin_head_cache_exp' => 259200,		// Head Markup Array Cache Expiry (3 days)
+					'plugin_head_cache_exp' => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week)
 					'plugin_head_cache_exp:use' => 'default',
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
 					'plugin_content_cache_exp:use' => 'default',
@@ -1179,6 +1179,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wpsso_h_' => array(
 						'label' => 'Head Markup',
 						'opt_key' => 'plugin_head_cache_exp',
+						'filter' => 'wpsso_cache_expire_head_array',
 					),
 					'wpsso_s_' => array(
 						'label' => 'Shortened URLs',

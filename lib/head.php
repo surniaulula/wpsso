@@ -378,7 +378,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$head_array = array();
 			$head_index = $this->get_head_cache_index( $mod, $sharing_url );
 
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_head_array', $this->p->options['plugin_head_cache_exp'] );
+			$filter_name = $this->p->cf['wp']['transient'][$lca.'_h_']['filter'];
+			$cache_exp = (int) apply_filters( $filter_name, $this->p->options['plugin_head_cache_exp'] );
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
 			$cache_id = $lca.'_h_'.md5( $cache_salt );
 
