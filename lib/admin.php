@@ -1817,9 +1817,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 			$user_id = get_current_user_id();
 
+			$cache_pre = $lca.'_';
 			$cache_exp = DAY_IN_SECONDS;	// only show every 24 hours for each user id
 			$cache_salt = __METHOD__.'(user_id:'.$user_id.')';
-			$cache_id = $lca.'_'.md5( $cache_salt );
+			$cache_id = $cache_pre.md5( $cache_salt );
 
 			if ( get_transient( $cache_id ) ) {	// is transient value true (notice already shown)?
 				return;	// stop here
@@ -2245,9 +2246,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$readme_file = SucomUtil::get_const( strtoupper( $ext ).'_PLUGINDIR', '' );
 			$use_remote = strpos( $readme_url, '://' ) ? true : false;
 
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_readme_txt', $this->p->cf['expire']['readme_txt'] );
+			/*
+			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
+			 * less in length. If using a site transient, it should be 40 characters or less in length.
+			 */
+			static $cache_exp = null;	// filter the cache expiration value only once
+			$cache_pre = $lca.'_';
+			if ( ! isset( $cache_exp ) ) {	// filter cache expiration if not already set
+				$cache_filter = $lca.'_cache_expire_readme_txt';
+				$cache_exp = (int) apply_filters( $cache_filter, $this->p->cf['expire']['readme_txt'] );
+			}
 			$cache_salt = __METHOD__.'(url:'.$readme_url.'_file:'.$readme_file.')';
-			$cache_id = $lca.'_'.md5( $cache_salt );
+			$cache_id = $cache_pre.md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );

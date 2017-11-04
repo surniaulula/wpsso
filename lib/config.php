@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.1-dev.1',		// plugin version
+					'version' => '3.48.1-dev.2',		// plugin version
 					'opt_version' => '560',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
@@ -1194,19 +1194,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wpsso_a_' => array(
 						'label' => 'Article Topics',
 						'opt_key' => 'plugin_topics_cache_exp',
+						'filter' => 'wpsso_cache_expire_article_topics',
 					),
 					'wpsso_t_' => array(
 						'label' => 'Schema Types',
 						'opt_key' => 'plugin_types_cache_exp',
 						'filter' => 'wpsso_cache_expire_schema_types',
 					),
-					'wpsso_b_' => array(),	// Sharing Buttons HTML
+					'wpsso_b_' => array(	// sharing buttons html cache
+					),
 					'wpsso_' => array(
 						'label' => 'All Transients',
 					),
 				),
 				'wp_cache' => array(
-					'wpsso_c_' => array(),	// Filtered Content Text
+					'wpsso_c_' => array(	// post object filtered content cache
+						'label' => 'Filtered Content',
+						'opt_key' => 'plugin_content_cache_exp',
+						'filter' => 'wpsso_cache_expire_content_text',
+					),
 					'wpsso_' => array(
 						'label' => 'All WP Objects',
 					),

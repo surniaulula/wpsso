@@ -563,10 +563,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$mod_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
-			$class_pre = 'Wpsso';
+			$classname_pre = 'Wpsso';
 
-			$cache_types['transient'][] = $lca.'_h_'.md5( $class_pre.'Head::get_head_array('.$mod_salt.')' );
-			$cache_types['wp_cache'][] = $lca.'_c_'.md5( $class_pre.'Page::get_content('.$mod_salt.')' );
+			$cache_types['transient'][] = $lca.'_h_'.md5( $classname_pre.'Head::get_head_array('.$mod_salt.')' );
+			$cache_types['wp_cache'][] = $lca.'_c_'.md5( $classname_pre.'Page::get_content('.$mod_salt.')' );
 
 			$checked = array();
 			$deleted_count = 0;

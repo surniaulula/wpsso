@@ -379,8 +379,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$head_index = $this->get_head_cache_index( $mod, $sharing_url );
 
 			/*
-			 * Note that $cache_id is a unique identifier for the cached data and should be 45 characters or less in
-			 * length. If using a site transient, it should be 40 characters or less in length.
+			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
+			 * less in length. If using a site transient, it should be 40 characters or less in length.
 			 */
 			static $cache_exp = null;	// filter the cache expiration value only once
 			$cache_pre = $lca.'_h_';

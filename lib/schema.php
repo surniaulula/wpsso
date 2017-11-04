@@ -38,20 +38,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public static function get_types_cache_exp() {
-			static $cache_exp = null;
-			if ( ! isset( $cache_exp ) ) {
-				$wpsso =& Wpsso::get_instance();
-				$lca = $wpsso->cf['lca'];
-				$cache_pre = $lca.'_t_';
-				$cache_filter = $wpsso->cf['wp']['transient'][$cache_pre]['filter'];
-				$cache_opt_key = $wpsso->cf['wp']['transient'][$cache_pre]['opt_key'];
-				$cache_exp = isset( $wpsso->options[$cache_opt_key] ) ? $wpsso->options[$cache_opt_key] : MONTH_IN_SECONDS;
-				$cache_exp = (int) apply_filters( $cache_filter, $cache_exp );
-			}
-			return $cache_exp;
-		}
-
 		public function get_pinterest_img_html( $content = '' ) {
 
 			$lca = $this->p->cf['lca'];
@@ -370,6 +356,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
+		public function get_types_cache_exp() {
+			static $cache_exp = null;
+			if ( ! isset( $cache_exp ) ) {
+				$lca = $this->p->cf['lca'];
+				$cache_pre = $lca.'_t_';
+				$cache_filter = $this->p->cf['wp']['transient'][$cache_pre]['filter'];
+				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_pre]['opt_key'];
+				$cache_exp = isset( $this->p->options[$cache_opt_key] ) ? $this->p->options[$cache_opt_key] : MONTH_IN_SECONDS;
+				$cache_exp = (int) apply_filters( $cache_filter, $cache_exp );
+			}
+			return $cache_exp;
+		}
+
 		/*
 		 * By default, returns a one-dimensional (flat) array of schema types, otherwise returns a 
 		 * multi-dimensional array of all schema types, including cross-references for sub-types with 
@@ -381,7 +380,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$lca = $this->p->cf['lca'];
 				$cache_pre = $lca.'_t_';
-				$cache_exp = self::get_types_cache_exp();
+				$cache_exp = $this->get_types_cache_exp();
 				$cache_salt = __METHOD__;
 				$cache_id = $cache_pre.md5( $cache_salt );
 
@@ -574,7 +573,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$lca = $this->p->cf['lca'];
 				$cache_pre = $lca.'_t_';
-				$cache_exp = self::get_types_cache_exp();
+				$cache_exp = $this->get_types_cache_exp();
 				$cache_salt = __METHOD__.'(child_id:'.$child_id.')';
 				$cache_id = $cache_pre.md5( $cache_salt );
 
@@ -619,7 +618,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$lca = $this->p->cf['lca'];
 				$cache_pre = $lca.'_t_';
-				$cache_exp = self::get_types_cache_exp();
+				$cache_exp = $this->get_types_cache_exp();
 				$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
 				$cache_id = $cache_pre.md5( $cache_salt );
 

@@ -589,14 +589,26 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
+
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
 			$filter_content = apply_filters( $lca.'_filter_content', $filter_content, $mod );
+
 			$content_array = array();
 			$content_index = 'locale:'.SucomUtil::get_locale( $mod ).'_filter:'.( $filter_content ? 'true' : 'false' );
 
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_content_text', $this->p->options['plugin_content_cache_exp'] );
+			/*
+			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
+			 * less in length. If using a site transient, it should be 40 characters or less in length.
+			 */
+			static $cache_exp = null;	// filter the cache expiration value only once
+			$cache_pre = $lca.'_c_';
+			if ( ! isset( $cache_exp ) ) {	// filter cache expiration if not already set
+				$cache_filter = $this->p->cf['wp']['wp_cache'][$cache_pre]['filter'];
+				$cache_opt_key = $this->p->cf['wp']['wp_cache'][$cache_pre]['opt_key'];
+				$cache_exp = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
+			}
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
-			$cache_id = $lca.'_c_'.md5( $cache_salt );
+			$cache_id = $cache_pre.md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );
@@ -816,7 +828,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );	// only some caching plugins support this feature
 				wp_cache_set( $cache_id, $content_array, __METHOD__, $cache_exp );
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'content array saved to wp_cache '.$cache_id.' ('.$cache_exp.' seconds)');
+					$this->p->debug->log( 'content array saved to wp_cache for '.$cache_exp.' seconds');
 				}
 			}
 

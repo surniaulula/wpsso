@@ -40,6 +40,7 @@ _x( 'Every week', 'option value', 'wpsso' );
 _x( 'Excerpt Only', 'option value', 'wpsso' );
 _x( 'Facebook Business Page URL', 'option value', 'wpsso' );
 _x( 'Facebook User URL', 'option value', 'wpsso' );
+_x( 'Filtered Content', 'option label', 'wpsso' );
 _x( 'First and Last Names', 'option value', 'wpsso' );
 _x( 'Footer', 'option value', 'wpsso' );
 _x( 'Force this value', 'option value', 'wpsso' );

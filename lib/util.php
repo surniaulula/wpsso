@@ -175,8 +175,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			/*
-			 * Note that $cache_id is a unique identifier for the cached data and should be 45 characters or less in
-			 * length. If using a site transient, it should be 40 characters or less in length.
+			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
+			 * less in length. If using a site transient, it should be 40 characters or less in length.
 			 */
 			static $cache_exp = null;	// filter the cache expiration value only once
 			$cache_pre = $lca.'_i_';
@@ -383,9 +383,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $regen_key !== false ) {
 
+				$lca = $this->p->cf['lca'];
+				$cache_pre = $lca.'_';
 				$cache_exp = 0;	// never expire
 				$cache_salt = __CLASS__.'::force_regen_transient';
-				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+				$cache_id = $cache_pre.md5( $cache_salt );
 
 				if ( $this->force_regen['transient'] === null ) {
 					$this->force_regen['transient'] = get_transient( $cache_id );	// load transient if required
@@ -407,9 +409,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $regen_key !== false ) {
 
+				$lca = $this->p->cf['lca'];
+				$cache_pre = $lca.'_';
 				$cache_exp = 0;	// never expire
 				$cache_salt = __CLASS__.'::force_regen_transient';
-				$cache_id = $this->p->cf['lca'].'_'.md5( $cache_salt );
+				$cache_id = $cache_pre.md5( $cache_salt );
 
 				if ( $this->force_regen['transient'] === null ) {
 					$this->force_regen['transient'] = get_transient( $cache_id );	// load transient if required
@@ -693,9 +697,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_article_topics', $this->p->options['plugin_topics_cache_exp'] );
+
+			/*
+			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
+			 * less in length. If using a site transient, it should be 40 characters or less in length.
+			 */
+			static $cache_exp = null;	// filter the cache expiration value only once
+			$cache_pre = $lca.'_a_';
+			if ( ! isset( $cache_exp ) ) {	// filter cache expiration if not already set
+				$cache_filter = $this->p->cf['wp']['transient'][$cache_pre]['filter'];
+				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_pre]['opt_key'];
+				$cache_exp = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
+			}
 			$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
-			$cache_id = $lca.'_a_'.md5( $cache_salt );
+			$cache_id = $cache_pre.md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );
