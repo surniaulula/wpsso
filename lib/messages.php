@@ -595,7 +595,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$html_tag = '<code>&amp;lt;html&amp;gt;</code>';
 							$php_code = '<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
 
-							$text = sprintf( __( '%1$s hooks the "%2$s" filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' '.sprintf( __( 'The WordPress %1$s function and "%2$s" filter are used by most themes &mdash; if the namespace prefix values are missing from your %3$s HTML tag attributes, make sure your header template(s) use the %1$s function.', 'wpsso' ), $function_name, $filter_name, $html_tag ).' '.sprintf( __( 'Leaving this option empty disables the addition of Open Graph namespace values. Example header template code: %1$s', 'wpsso' ), $php_code );
+							$text = sprintf( __( '%1$s hooks the "%2$s" filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' '.sprintf( __( 'The WordPress %1$s function and its "%2$s" filter are used by most themes &mdash; if the namespace prefix values are missing from your %3$s HTML tag attributes, make sure your header template(s) use the %1$s function.', 'wpsso' ), $function_name, $filter_name, $html_tag ).' '.__( 'Leaving this option empty disables the addition of Open Graph namespace values.', 'wpsso' ).' '.sprintf( __( 'Example code for header templates: %1$s', 'wpsso' ), $php_code );
 
 							break;
 
@@ -605,7 +605,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$html_tag = '<code>&amp;lt;head&amp;gt;</code>';
 							$php_code = '<pre><code>&amp;lt;head &amp;lt;?php do_action( &#39;add_head_attributes&#39; ); ?&amp;gt;&amp;gt;</code></pre>';
 
-							$text = sprintf( __( '%1$s hooks the "%2$s" filter (by default) to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' '.sprintf( __( 'If your theme already offers a filter for the %1$s HTML tag attributes, enter its name here (most themes do not).', 'wpsso' ), $html_tag ).' '.sprintf( __( 'Alternatively, you can add an action in your header templates to call the "%1$s" filter. Example header template code: %2$s', 'wpsso' ), $filter_name, $php_code );
+							$text = sprintf( __( '%1$s hooks the "%2$s" filter (by default) to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' '.sprintf( __( 'If your theme already offers a filter for the %1$s HTML tag attributes, enter its name here (most themes do not offer this filter).', 'wpsso' ), $html_tag ).' '.sprintf( __( 'Alternatively, you can edit your your theme header templates and add an action to call the "%1$s" filter.', 'wpsso' ), $filter_name ).' '.sprintf( __( 'Example code for header templates: %1$s', 'wpsso' ), $php_code );
 
 							break;
 

@@ -2783,7 +2783,7 @@ msgstr ""
 
 #: lib/messages.php:598
 msgid ""
-"The WordPress %1$s function and \"%2$s\" filter are used by most themes "
+"The WordPress %1$s function and its \"%2$s\" filter are used by most themes "
 "&mdash; if the namespace prefix values are missing from your %3$s HTML tag "
 "attributes, make sure your header template(s) use the %1$s function."
 msgstr ""
@@ -2791,7 +2791,11 @@ msgstr ""
 #: lib/messages.php:598
 msgid ""
 "Leaving this option empty disables the addition of Open Graph namespace "
-"values. Example header template code: %1$s"
+"values."
+msgstr ""
+
+#: lib/messages.php:598 lib/messages.php:608
+msgid "Example code for header templates: %1$s"
 msgstr ""
 
 #: lib/messages.php:608
@@ -2803,13 +2807,13 @@ msgstr ""
 #: lib/messages.php:608
 msgid ""
 "If your theme already offers a filter for the %1$s HTML tag attributes, "
-"enter its name here (most themes do not)."
+"enter its name here (most themes do not offer this filter)."
 msgstr ""
 
 #: lib/messages.php:608
 msgid ""
-"Alternatively, you can add an action in your header templates to call the "
-"\"%1$s\" filter. Example header template code: %2$s"
+"Alternatively, you can edit your your theme header templates and add an "
+"action to call the \"%1$s\" filter."
 msgstr ""
 
 #: lib/messages.php:616
