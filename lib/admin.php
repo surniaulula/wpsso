@@ -914,7 +914,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
-				$clear_label_transl .= ' *';
+				$clear_label_transl .= ' [*]';
 			}
 
 			$action_buttons = apply_filters( $lca.'_action_buttons', array(
@@ -953,7 +953,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 					_x( 'Clear Short URLs on Clear All Caches', 'option label', 'wpsso' ) );
 
-				$html .= '<p><small>* ';
+				$html .= '<p><small>[*] ';
 				if ( empty( $this->p->options['plugin_clear_short_urls'] ) ) {
 					$html .= sprintf( __( '%1$s option is unchecked - shortened URL cache will be preserved.',
 						'wpsso' ), $settings_page_link );
@@ -992,6 +992,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				SucomUtil::move_to_end( $this->p->cf['wp']['transient'], $lca.'_' );
 			}
 
+			$have_filtered_cache_exp = false;
+
 			foreach ( $this->p->cf['wp']['transient'] as $md5_pre => $cache_info ) {
 
 				if ( empty( $cache_info ) ) {
@@ -1003,13 +1005,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$cache_count = count( preg_grep( '/^'.$md5_pre.'/', $transient_keys ) );
 
-				$cache_exp = isset( $cache_info['opt_key'] ) &&
+				$cache_exp_html = $cache_exp = isset( $cache_info['opt_key'] ) &&
 					isset( $this->p->options[$cache_info['opt_key']] ) ?
 						 $this->p->options[$cache_info['opt_key']] : false;
 
+				if ( ! empty( $cache_info['filter'] ) ) {
+					$filter_name = $cache_info['filter'];
+					$cache_exp_filtered = (int) apply_filters( $filter_name, $cache_exp );
+					if ( $cache_exp !== $cache_exp_filtered ) {
+						$cache_exp_html = $cache_exp_filtered.' [F]';
+						$have_filtered_cache_exp = true;
+					}
+				}
+
 				echo '<th class="cache-label" nowrap>'.$cache_label_transl.'</th>';
 				echo '<td class="cache-count" nowrap>'.$cache_count.'</td>';
-				echo '<td class="cache-expiration" nowrap>'.( $cache_exp !== false ? $cache_exp : '' ).'</td>';
+				echo '<td class="cache-expiration" nowrap>'.$cache_exp_html.'</td>';
 				echo '</tr>';
 			}
 
@@ -1020,7 +1031,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
 
 			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
-				$clear_label_transl .= ' *';
+				$clear_label_transl .= ' [*]';
 			}
 
 			// add some extra space between the stats table and buttons
@@ -1041,6 +1052,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			echo '</td></tr>';
+
+			if ( $have_filtered_cache_exp ) {
+				echo '<tr><td colspan="'.$table_cols.'"><small>[F] '.
+					__( 'Cache expiration option value modified by filter.',
+						'wpsso' ).'</small></em></td></tr>';
+			}
+
 			echo '</table>';
 		}
 

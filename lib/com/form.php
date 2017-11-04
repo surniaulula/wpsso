@@ -1023,12 +1023,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
-			$html = '<input type="button"'.
+			$html = '<input type="button" '.
 				( $disabled ? ' disabled="disabled"' : '' ).
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
 				( empty( $id ) ? '' : ' id="button_'.esc_attr( $id ).'"' ).
 				( empty( $url ) || $disabled ? '' : $on_click ).
-				' value="'.esc_attr( $value ).'"'.$data_attr.' />';
+				' value="'.wp_kses( $value, array() ).'" '.$data_attr.'/>';
 
 			return $html;
 		}
