@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.3
 Requires At Least: 3.7
 Tested Up To: 4.8.3
-WC Tested Up To: 3.2.2
+WC Tested Up To: 3.2.3
 Stable Tag: 3.48.0
 
 Automatically create complete meta tags and Schema markup from your content for social sharing, social media / SMO, Google Rich Cards / SEO + more.
@@ -375,6 +375,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * {stage}.{level} = Pre-production release: dev < a (alpha) < b (beta) < rc (release candidate).
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 3.48.1-dev.1 (2017/11/04)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Changed the user agent to the Facebook crawler when checking for duplicate meta tags, for edge cases where plugins / themes only add meta tags for the Facebook crawler.
+	* Added an action to remove the SNAP OG meta tags holder, to prevent incorrect / duplicate meta tags from being added to the webpage.
 
 **Version 3.48.0 (2017/11/02)**
 
@@ -855,6 +867,10 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 	* None
 
 == Upgrade Notice ==
+
+= 3.48.1-dev.1 =
+
+(2017/11/04) Changed the user agent to the Facebook crawler when checking for duplicate meta tags. Added an action to remove the SNAP OG meta tags holder.
 
 = 3.48.0 =
 
