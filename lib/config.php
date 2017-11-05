@@ -16,9 +16,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static $cf = array(
 			'lca' => 'wpsso',			// lowercase acronym
 			'expire' => array(
-				'admin_css' => DAY_IN_SECONDS,	// 1 day
-				'readme_txt' => DAY_IN_SECONDS,	// 1 day
-				'setup_html' => DAY_IN_SECONDS,	// 1 day
+				'admin_css' => DAY_IN_SECONDS,
+				'readme_txt' => DAY_IN_SECONDS,
+				'setup_html' => WEEK_IN_SECONDS,
 			),
 			'install_hosts' => array(		// allow extensions to be installed from these hosts
 				'https://wpsso.com/extend/plugins/',

@@ -357,16 +357,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function get_types_cache_exp() {
-			static $cache_exp = null;
-			if ( ! isset( $cache_exp ) ) {
+			static $cache_exp_secs = null;
+			if ( ! isset( $cache_exp_secs ) ) {
 				$lca = $this->p->cf['lca'];
 				$cache_pre = $lca.'_t_';
 				$cache_filter = $this->p->cf['wp']['transient'][$cache_pre]['filter'];
 				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_pre]['opt_key'];
-				$cache_exp = isset( $this->p->options[$cache_opt_key] ) ? $this->p->options[$cache_opt_key] : MONTH_IN_SECONDS;
-				$cache_exp = (int) apply_filters( $cache_filter, $cache_exp );
+				$cache_exp_secs = isset( $this->p->options[$cache_opt_key] ) ? $this->p->options[$cache_opt_key] : MONTH_IN_SECONDS;
+				$cache_exp_secs = (int) apply_filters( $cache_filter, $cache_exp_secs );
 			}
-			return $cache_exp;
+			return $cache_exp_secs;
 		}
 
 		/*
@@ -380,11 +380,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$lca = $this->p->cf['lca'];
 				$cache_pre = $lca.'_t_';
-				$cache_exp = $this->get_types_cache_exp();
+				$cache_exp_secs = $this->get_types_cache_exp();
 				$cache_salt = __METHOD__;
 				$cache_id = $cache_pre.md5( $cache_salt );
 
-				if ( $cache_exp > 0 ) {
+				if ( $cache_exp_secs > 0 ) {
 					$this->types_cache = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $this->types_cache ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -427,11 +427,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$this->add_schema_type_xrefs( $this->types_cache['filtered'] );
 
-					if ( $cache_exp > 0 ) {
+					if ( $cache_exp_secs > 0 ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'saving schema types array to transient cache for '.$cache_exp.' seconds' );
+							$this->p->debug->log( 'saving schema types array to transient cache for '.$cache_exp_secs.' seconds' );
 						}
-						set_transient( $cache_id, $this->types_cache, $cache_exp );
+						set_transient( $cache_id, $this->types_cache, $cache_exp_secs );
 					}
 
 					if ( $this->p->debug->enabled ) {
@@ -573,11 +573,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$lca = $this->p->cf['lca'];
 				$cache_pre = $lca.'_t_';
-				$cache_exp = $this->get_types_cache_exp();
+				$cache_exp_secs = $this->get_types_cache_exp();
 				$cache_salt = __METHOD__.'(child_id:'.$child_id.')';
 				$cache_id = $cache_pre.md5( $cache_salt );
 
-				if ( $cache_exp > 0 ) {
+				if ( $cache_exp_secs > 0 ) {
 					$parents = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $parents ) ) {
 						return $parents;
@@ -599,8 +599,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$parents[] = $child_id;	// add children after parents
 
 			if ( $use_cache ) {
-				if ( $cache_exp > 0 ) {
-					set_transient( $cache_id, $parents, $cache_exp );
+				if ( $cache_exp_secs > 0 ) {
+					set_transient( $cache_id, $parents, $cache_exp_secs );
 				}
 			}
 
@@ -618,11 +618,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$lca = $this->p->cf['lca'];
 				$cache_pre = $lca.'_t_';
-				$cache_exp = $this->get_types_cache_exp();
+				$cache_exp_secs = $this->get_types_cache_exp();
 				$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
 				$cache_id = $cache_pre.md5( $cache_salt );
 
-				if ( $cache_exp > 0 ) {
+				if ( $cache_exp_secs > 0 ) {
 					$children = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $children ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -643,11 +643,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $use_cache ) {
-				if ( $cache_exp > 0 ) {
+				if ( $cache_exp_secs > 0 ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'saving children to transient cache for '.$cache_exp.' seconds' );
+						$this->p->debug->log( 'saving children to transient cache for '.$cache_exp_secs.' seconds' );
 					}
-					set_transient( $cache_id, $children, $cache_exp );
+					set_transient( $cache_id, $children, $cache_exp_secs );
 				}
 			}
 

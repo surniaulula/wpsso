@@ -119,7 +119,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$cache_pre = $lca.'_';
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_admin_css', $this->p->cf['expire']['admin_css'] );
+			$cache_filter = $lca.'_cache_expire_admin_css';
+			$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->cf['expire']['admin_css'] );
 			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.'_plugin_urlpath:'.$plugin_urlpath.'_plugin_version:'.$plugin_version.')';
 			$cache_id = $cache_pre.md5( $cache_salt );
 
@@ -165,7 +166,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 	
 			$custom_style_css = SucomUtil::minify_css( $custom_style_css, $lca );
 
-			set_transient( $cache_id, $custom_style_css, $cache_exp );
+			set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 
 			wp_add_inline_style( 'sucom-settings-page', $custom_style_css );
 
@@ -178,7 +179,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$cache_pre = $lca.'_';
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_admin_css', $this->p->cf['expire']['admin_css'] );
+			$cache_filter = $lca.'_cache_expire_admin_css';
+			$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->cf['expire']['admin_css'] );
 			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.'_plugin_urlpath:'.$plugin_urlpath.'_plugin_version:'.$plugin_version.')';
 			$cache_id = $cache_pre.md5( $cache_salt );
 
@@ -350,7 +352,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$custom_style_css = SucomUtil::minify_css( $custom_style_css, $lca );
 
-			set_transient( $cache_id, $custom_style_css, $cache_exp );
+			set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 
 			wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
 

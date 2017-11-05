@@ -178,12 +178,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 			 * less in length. If using a site transient, it should be 40 characters or less in length.
 			 */
-			static $cache_exp = null;	// filter the cache expiration value only once
+			static $cache_exp_secs = null;	// filter the cache expiration value only once
 			$cache_pre = $lca.'_i_';
-			if ( ! isset( $cache_exp ) ) {	// filter cache expiration if not already set
+			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_filter = $this->p->cf['wp']['transient'][$cache_pre]['filter'];
 				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_pre]['opt_key'];
-				$cache_exp = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
+				$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
 			}
 			$cache_salt = __METHOD__.'(url:'.$image_url.')';
 			$cache_id = $cache_pre.md5( $cache_salt );
@@ -192,7 +192,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );
 			}
 
-			if ( $cache_exp > 0 ) {
+			if ( $cache_exp_secs > 0 ) {
 				$image_info = get_transient( $cache_id );
 				if ( is_array( $image_info ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -220,10 +220,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			if ( $cache_exp > 0 ) {
-				set_transient( $cache_id, $image_info, $cache_exp );
+			if ( $cache_exp_secs > 0 ) {
+				set_transient( $cache_id, $image_info, $cache_exp_secs );
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'image info saved to transient '.$cache_id.' ('.$cache_exp.' seconds)');
+					$this->p->debug->log( 'image info saved to transient cache for '.$cache_exp_secs.' seconds' );
 				}
 			}
 
@@ -385,7 +385,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$lca = $this->p->cf['lca'];
 				$cache_pre = $lca.'_';
-				$cache_exp = 0;	// never expire
+				$cache_exp_secs = 0;	// never expire
 				$cache_salt = __CLASS__.'::force_regen_transient';
 				$cache_id = $cache_pre.md5( $cache_salt );
 
@@ -399,7 +399,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$this->force_regen['transient'][$regen_key] = $value;
 
-				set_transient( $cache_id, $this->force_regen['transient'], $cache_exp );
+				set_transient( $cache_id, $this->force_regen['transient'], $cache_exp_secs );
 			}
 		}
 
@@ -411,7 +411,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$lca = $this->p->cf['lca'];
 				$cache_pre = $lca.'_';
-				$cache_exp = 0;	// never expire
+				$cache_exp_secs = 0;	// never expire
 				$cache_salt = __CLASS__.'::force_regen_transient';
 				$cache_id = $cache_pre.md5( $cache_salt );
 
@@ -433,7 +433,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( empty( $this->force_regen['transient'] ) ) {
 						delete_transient( $cache_id );
 					} else {
-						set_transient( $cache_id, $this->force_regen['transient'], $cache_exp );
+						set_transient( $cache_id, $this->force_regen['transient'], $cache_exp_secs );
 					}
 					return $this->force_regen['cache'][$regen_key];	// return the cached value
 				}
@@ -702,12 +702,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 			 * less in length. If using a site transient, it should be 40 characters or less in length.
 			 */
-			static $cache_exp = null;	// filter the cache expiration value only once
+			static $cache_exp_secs = null;	// filter the cache expiration value only once
 			$cache_pre = $lca.'_a_';
-			if ( ! isset( $cache_exp ) ) {	// filter cache expiration if not already set
+			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_filter = $this->p->cf['wp']['transient'][$cache_pre]['filter'];
 				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_pre]['opt_key'];
-				$cache_exp = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
+				$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
 			}
 			$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
 			$cache_id = $cache_pre.md5( $cache_salt );
@@ -716,7 +716,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );
 			}
 
-			if ( $cache_exp > 0 ) {
+			if ( $cache_exp_secs > 0 ) {
 				$topics = get_transient( $cache_id );
 				if ( is_array( $topics ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -741,11 +741,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			natsort( $topics );
 			$topics = array_merge( array( 'none' ), $topics );	// after sorting the array, put 'none' first
 
-			if ( $cache_exp > 0 ) {
-				set_transient( $cache_id, $topics, $cache_exp );
+			if ( $cache_exp_secs > 0 ) {
+				set_transient( $cache_id, $topics, $cache_exp_secs );
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'article topics saved to transient '.
-						$cache_id.' ('.$cache_exp.' seconds)');
+					$this->p->debug->log( 'article topics saved to transient cache for '.$cache_exp_secs.' seconds' );
 				}
 			}
 
@@ -791,7 +790,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 				return false;
 
-			// get( $url, $format, $cache_type, $cache_exp, $file_ext, $curl_opts )
+			// get( $url, $format, $cache_type, $cache_exp_secs, $file_ext, $curl_opts )
 			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient', false, '', $curl_opts ) ) === false ) {
 
 				if ( $this->p->debug->enabled ) {

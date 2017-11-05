@@ -164,7 +164,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
-		public function get( $url, $format = 'url', $cache_type = 'file', $cache_exp = false, $file_ext = '', array $curl_opts = array() ) {
+		public function get( $url, $format = 'url', $cache_type = 'file', $cache_exp_secs = false, $file_ext = '', array $curl_opts = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -216,7 +216,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				case 'raw':
 
-					$cache_data = $this->get_cache_data( $cache_salt, $cache_type, $cache_exp, $file_ext );
+					$cache_data = $this->get_cache_data( $cache_salt, $cache_type, $cache_exp_secs, $file_ext );
 
 					if ( $cache_data !== false ) {
 						if ( $this->p->debug->enabled ) {
@@ -233,7 +233,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					if ( file_exists( $cache_file ) ) {
 
-						$file_cache_exp = $cache_exp === false ? $this->default_file_cache_exp : $cache_exp;
+						$file_cache_exp = $cache_exp_secs === false ? $this->default_file_cache_exp : $cache_exp_secs;
 
 						if ( filemtime( $cache_file ) > time() - $file_cache_exp ) {
 
@@ -352,7 +352,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'cache data returned is empty' );
 					}
-				} elseif ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type, $cache_exp, $file_ext ) ) {
+				} elseif ( $this->save_cache_data( $cache_salt, $cache_data, $cache_type, $cache_exp_secs, $file_ext ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'cache data sucessfully saved' );
 					}
@@ -418,7 +418,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$this->base_url = trailingslashit( constant( $uca.'_CACHEURL' ) );
 		}
 
-		private function get_cache_data( $cache_salt, $cache_type = 'file', $cache_exp = false, $file_ext = '' ) {
+		private function get_cache_data( $cache_salt, $cache_type = 'file', $cache_exp_secs = false, $file_ext = '' ) {
 
 			$cache_data = false;
 
@@ -446,7 +446,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					$cache_id = md5( $cache_salt );		// no lca prefix on filenames
 					$cache_file = $this->base_dir.$cache_id.$file_ext;
-					$file_cache_exp = $cache_exp === false ? $this->default_file_cache_exp : $cache_exp;
+					$file_cache_exp = $cache_exp_secs === false ? $this->default_file_cache_exp : $cache_exp_secs;
 
 					if ( ! file_exists( $cache_file ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -495,7 +495,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return $cache_data;	// return data or empty string
 		}
 
-		private function save_cache_data( $cache_salt, &$cache_data = '', $cache_type = 'file', $cache_exp = false, $file_ext = '' ) {
+		private function save_cache_data( $cache_salt, &$cache_data = '', $cache_type = 'file', $cache_exp_secs = false, $file_ext = '' ) {
 
 			$data_saved = false;
 
@@ -504,7 +504,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			// defining file_cache_exp is not required when saving files
-			$object_cache_exp = $cache_exp === false ? $this->default_object_cache_exp : $cache_exp;
+			$object_cache_exp = $cache_exp_secs === false ? $this->default_object_cache_exp : $cache_exp_secs;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $cache_type.' cache salt '.$cache_salt );

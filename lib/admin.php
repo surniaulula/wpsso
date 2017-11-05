@@ -998,27 +998,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( empty( $cache_info ) ) {
 					continue;
+				} elseif ( empty( $cache_info['label'] ) ) {	// skip cache info without labels
+					continue;
 				}
 
-				$cache_label_transl = isset( $cache_info['label'] ) ? 
-					_x( $cache_info['label'], 'option label', 'wpsso' ).':' : '';
-
+				$cache_label_transl = _x( $cache_info['label'], 'option label', 'wpsso' );
 				$cache_count = count( preg_grep( '/^'.$md5_pre.'/', $transient_keys ) );
-
-				$cache_exp_html = $cache_exp = isset( $cache_info['opt_key'] ) &&
+				$cache_exp_html = $cache_exp_secs = isset( $cache_info['opt_key'] ) &&
 					isset( $this->p->options[$cache_info['opt_key']] ) ?
-						 $this->p->options[$cache_info['opt_key']] : false;
+						 $this->p->options[$cache_info['opt_key']] : '';
 
 				if ( ! empty( $cache_info['filter'] ) ) {
 					$filter_name = $cache_info['filter'];
-					$cache_exp_filtered = (int) apply_filters( $filter_name, $cache_exp );
-					if ( $cache_exp !== $cache_exp_filtered ) {
-						$cache_exp_html = $cache_exp_filtered.' [F]';
+					$cache_exp_filtered = (int) apply_filters( $filter_name, $cache_exp_secs );
+					if ( $cache_exp_secs !== $cache_exp_filtered ) {
+						$cache_exp_html = $cache_exp_filtered.' [F]';	// show that values is changed
 						$have_filtered_cache_exp = true;
 					}
 				}
 
-				echo '<th class="cache-label" nowrap>'.$cache_label_transl.'</th>';
+				echo '<th class="cache-label" nowrap>'.$cache_label_transl.':</th>';
 				echo '<td class="cache-count" nowrap>'.$cache_count.'</td>';
 				echo '<td class="cache-expiration" nowrap>'.$cache_exp_html.'</td>';
 				echo '</tr>';
@@ -1818,7 +1817,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$user_id = get_current_user_id();
 
 			$cache_pre = $lca.'_';
-			$cache_exp = DAY_IN_SECONDS;	// only show every 24 hours for each user id
+			$cache_exp_secs = DAY_IN_SECONDS;	// only show every 24 hours for each user id
 			$cache_salt = __METHOD__.'(user_id:'.$user_id.')';
 			$cache_id = $cache_pre.md5( $cache_salt );
 
@@ -1902,7 +1901,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				break;	// show only one notice at a time
 			}
 
-			set_transient( $cache_id, true, $cache_exp );
+			set_transient( $cache_id, true, $cache_exp_secs );
 		}
 
 		public function required_notices() {
@@ -2250,11 +2249,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 			 * less in length. If using a site transient, it should be 40 characters or less in length.
 			 */
-			static $cache_exp = null;	// filter the cache expiration value only once
+			static $cache_exp_secs = null;	// filter the cache expiration value only once
 			$cache_pre = $lca.'_';
-			if ( ! isset( $cache_exp ) ) {	// filter cache expiration if not already set
+			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_filter = $lca.'_cache_expire_readme_txt';
-				$cache_exp = (int) apply_filters( $cache_filter, $this->p->cf['expire']['readme_txt'] );
+				$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->cf['expire']['readme_txt'] );
 			}
 			$cache_salt = __METHOD__.'(url:'.$readme_url.'_file:'.$readme_file.')';
 			$cache_id = $cache_pre.md5( $cache_salt );
@@ -2263,7 +2262,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );
 			}
 
-			if ( $cache_exp > 0 ) {
+			if ( $cache_exp_secs > 0 ) {
 				// check the transient cache, if reading the cache is allowed
 				$readme_info = $use_cache ? get_transient( $cache_id ) : false;
 
@@ -2281,7 +2280,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$this->p->cache->clear( $readme_url );
 					}
 					// get the readme and save it to the disk cache
-					$content = $this->p->cache->get( $readme_url, 'raw', 'file', $cache_exp );
+					$content = $this->p->cache->get( $readme_url, 'raw', 'file', $cache_exp_secs );
 					if ( empty( $content ) ) {
 						$use_remote = false;
 					}
@@ -2311,10 +2310,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			// save the parsed readme to the transient cache
-			if ( $cache_exp > 0 ) {
-				set_transient( $cache_id, $readme_info, $cache_exp );
+			if ( $cache_exp_secs > 0 ) {
+				set_transient( $cache_id, $readme_info, $cache_exp_secs );
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'readme_info saved to transient '.$cache_id.' ('.$cache_exp.' seconds)');
+					$this->p->debug->log( 'readme_info saved to transient cache for '.$cache_exp_secs.' seconds' );
 				}
 			}
 
@@ -2331,36 +2330,42 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( ! defined( strtoupper( $ext ).'_PLUGINDIR' ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( strtoupper( $ext ).'_PLUGINDIR is undefined and required' );
+				}
 				return false;
 			}
 
 			$lca = $this->p->cf['lca'];
-			$cache_exp = (int) apply_filters( $lca.'_cache_expire_setup_html',
-				$this->p->cf['expire']['setup_html'] );
-			$file_url = isset( $this->p->cf['plugin'][$ext]['url']['setup_html'] ) ?
-				$this->p->cf['plugin'][$ext]['url']['setup_html'] : '';
-			$file_path = constant( strtoupper( $ext ).'_PLUGINDIR' ).'setup.html';
-			$get_remote = strpos( $file_url, '://' ) ? true : false;
+
+			static $cache_exp_secs = null;	// filter the file expiration value only once
+			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
+				$cache_filter = $lca.'_cache_expire_setup_html';
+				$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->cf['expire']['setup_html'] );
+			}
+
+			$file_remote = isset( $this->p->cf['plugin'][$ext]['url']['setup_html'] ) ? $this->p->cf['plugin'][$ext]['url']['setup_html'] : '';
+			$file_local = constant( strtoupper( $ext ).'_PLUGINDIR' ).'setup.html';
+
+			$is_remote = strpos( $file_remote, '://' ) ? true : false;	// fallback to local setup file
 			$content = false;
 
 			// get remote setup.html file
-			if ( $cache_exp > 0 && $get_remote ) {
+			if ( $cache_exp_secs > 0 && $is_remote ) {
 				if ( ! $read_cache ) {
-					$this->p->cache->clear( $file_url );	// clear the wp object, transient, and file cache
+					$this->p->cache->clear( $file_remote );	// clear the wp object, transient, and file cache
 				}
-				$content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp );
+				$content = $this->p->cache->get( $file_remote, 'raw', 'file', $cache_exp_secs );
 				if ( empty( $content ) ) {
-					$get_remote = false;
+					$is_remote = false;	// fallback to local setup file
 				}
 			} else {
-				$get_remote = false;
+				$is_remote = false;	// fallback to local setup file
 			}
 
-			// fallback to local setup.html file
-			if ( $get_remote === false && ! empty( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
-				$content = fread( $fh, filesize( $file_path ) );
+			// get local setup.html file
+			if ( $is_remote === false && ! empty( $file_local ) && $fh = @fopen( $file_local, 'rb' ) ) {
+				$content = fread( $fh, filesize( $file_local ) );
 				fclose( $fh );
 			}
 

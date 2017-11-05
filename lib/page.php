@@ -600,12 +600,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 			 * less in length. If using a site transient, it should be 40 characters or less in length.
 			 */
-			static $cache_exp = null;	// filter the cache expiration value only once
+			static $cache_exp_secs = null;	// filter the cache expiration value only once
 			$cache_pre = $lca.'_c_';
-			if ( ! isset( $cache_exp ) ) {	// filter cache expiration if not already set
+			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_filter = $this->p->cf['wp']['wp_cache'][$cache_pre]['filter'];
 				$cache_opt_key = $this->p->cf['wp']['wp_cache'][$cache_pre]['opt_key'];
-				$cache_exp = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
+				$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
 			}
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
 			$cache_id = $cache_pre.md5( $cache_salt );
@@ -614,7 +614,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );
 				$this->p->debug->log( 'filter content = '.( $filter_content ? 'true' : 'false' ) );
 				$this->p->debug->log( 'content index = '.$content_index );
-				$this->p->debug->log( 'wp_cache expire = '.$cache_exp );
+				$this->p->debug->log( 'wp_cache expire = '.$cache_exp_secs );
 				$this->p->debug->log( 'wp_cache salt = '.$cache_salt );
 			}
 
@@ -622,7 +622,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Retrieve the Content *
 			 ************************/
 
-			if ( $cache_exp > 0 && $use_cache ) {
+			if ( $cache_exp_secs > 0 && $use_cache ) {
 				$content_array = wp_cache_get( $cache_id, __METHOD__ );
 				if ( isset( $content_array[$content_index] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -824,11 +824,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			// apply filters before caching
 			$content_array[$content_index] = apply_filters( $lca.'_content', $content_text, $mod, $use_cache, $md_idx );
 
-			if ( $cache_exp > 0 ) {
+			if ( $cache_exp_secs > 0 ) {
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );	// only some caching plugins support this feature
-				wp_cache_set( $cache_id, $content_array, __METHOD__, $cache_exp );
+				wp_cache_set( $cache_id, $content_array, __METHOD__, $cache_exp_secs );
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'content array saved to wp_cache for '.$cache_exp.' seconds');
+					$this->p->debug->log( 'content array saved to wp_cache for '.$cache_exp_secs.' seconds');
 				}
 			}
 

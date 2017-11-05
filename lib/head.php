@@ -382,12 +382,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 			 * less in length. If using a site transient, it should be 40 characters or less in length.
 			 */
-			static $cache_exp = null;	// filter the cache expiration value only once
+			static $cache_exp_secs = null;	// filter the cache expiration value only once
 			$cache_pre = $lca.'_h_';
-			if ( ! isset( $cache_exp ) ) {	// filter cache expiration if not already set
+			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_filter = $this->p->cf['wp']['transient'][$cache_pre]['filter'];
 				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_pre]['opt_key'];
-				$cache_exp = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
+				$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
 			}
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
 			$cache_id = $cache_pre.md5( $cache_salt );
@@ -396,11 +396,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );
 				$this->p->debug->log( 'crawler name = '.$crawler_name );
 				$this->p->debug->log( 'head index = '.$head_index );
-				$this->p->debug->log( 'transient expire = '.$cache_exp );
+				$this->p->debug->log( 'transient expire = '.$cache_exp_secs );
 				$this->p->debug->log( 'transient salt = '.$cache_salt );
 			}
 
-			if ( $cache_exp > 0 ) {
+			if ( $cache_exp_secs > 0 ) {
 				if ( $read_cache ) {	// false when called by post/term/user load_meta_page() method
 					$head_array = get_transient( $cache_id );
 					if ( isset( $head_array[$head_index] ) ) {
@@ -551,11 +551,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mt_json_array
 			);
 
-			if ( $cache_exp > 0 ) {
+			if ( $cache_exp_secs > 0 ) {
 				// update the transient array and keep the original expiration time
-				$cache_exp = SucomUtil::update_transient_array( $cache_id, $head_array, $cache_exp );
+				$cache_exp_secs = SucomUtil::update_transient_array( $cache_id, $head_array, $cache_exp_secs );
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'head array saved to transient '.$cache_id.' ('.$cache_exp.' seconds)' );
+					$this->p->debug->log( 'head array saved to transient '.$cache_id.' ('.$cache_exp_secs.' seconds)' );
 				}
 			}
 
