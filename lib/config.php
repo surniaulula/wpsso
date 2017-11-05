@@ -25,8 +25,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.1-dev.2',		// plugin version
-					'opt_version' => '560',		// increment when changing default options
+					'version' => '3.48.1-dev.3',		// plugin version
+					'opt_version' => '561',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -590,6 +590,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_download' => 'product',	// for Easy Digital Downloads
 					'schema_type_for_event' => 'event',
 					'schema_type_for_job_listing' => 'job.posting',	// for WP Job Manager
+					'schema_type_for_jobpost' => 'job.posting',	// for Simple Job Board
 					'schema_type_for_organization' => 'organization',
 					'schema_type_for_other' => 'other',
 					'schema_type_for_person' => 'person',
