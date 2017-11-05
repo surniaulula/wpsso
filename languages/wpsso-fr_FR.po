@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.48.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-11-04 17:08-0600\n"
-"PO-Revision-Date: 2017-11-04 17:09-0600\n"
+"POT-Creation-Date: 2017-11-04 17:14-0600\n"
+"PO-Revision-Date: 2017-11-04 21:15-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3097,11 +3097,11 @@ msgstr "Si vous utilisez des shortcodes dans votre texte de contenu, <a href=\"%
 
 #: lib/messages.php:1340
 msgid "<b>At least one of your theme header templates does not support Schema markup of the webpage head section</b> &mdash; this is especially important for Google and Pinterest."
-msgstr "<b>Au moins un modèle header de votre thème ne supporte pas les balises de Schéma d'entêtes de page Web</b> &mdash; ceci est particulièrement important pour Google et Pinterest."
+msgstr "<b>Au moins un modèle d'en-tête de votre thème ne supporte pas les balises de Schéma d'entêtes de page Web</b> &mdash; ceci est particulièrement important pour Google et Pinterest."
 
 #: lib/messages.php:1340
 msgid "The %1$s HTML tag in your header templates should include a function, action, or filter for its attributes."
-msgstr "La balise HTML %$1s dans vos modèles header devrait inclure un appel de fonction, d'action, ou de filtre pour leurs attributs."
+msgstr "La balise HTML %1$s dans vos modèles d'en-tête devrait inclure un appel de fonction, d'action, ou de filtre pour leurs attributs."
 
 #: lib/messages.php:1340
 msgid "%1$s can update your header template(s) automatically and change the existing %2$s HTML tag to:"

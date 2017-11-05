@@ -216,9 +216,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					$key = 'plugin_'.$ext.'_version';
 					if ( empty( $opts[$key] ) || version_compare( $opts[$key], $info['version'], '!=' ) ) {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $ext.' '.$opts[$key].' version update found' );
-						}
 						WpssoUtil::save_time( $ext, $info['version'], 'update' );
 						$opts[$key] = $info['version'];
 						$has_diff_version = true;
@@ -498,6 +495,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				if ( ! $network ) {
+					// if the plugin_check_head option is disabled, then delete the check counter
 					if ( empty( $this->p->options['plugin_check_head'] ) ) {
 						delete_option( WPSSO_POST_CHECK_NAME );
 					}
@@ -744,7 +742,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'not_blank':
 					if ( $val === '' && $def_val !== '' ) {
 						$this->p->notice->err( sprintf( $error_messages['not_blank'], $key ) );
-						error_log( $def_val );
 						$val = $def_val;
 					}
 					break;

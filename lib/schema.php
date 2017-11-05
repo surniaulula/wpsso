@@ -28,9 +28,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			), 5 );
 
 			add_action( 'add_head_attributes', array( &$this, 'add_head_attributes' ), -1000 );
-			add_filter( $this->p->options['plugin_head_attr_filter_name'], array( &$this, 'filter_head_attributes' ),
-				( empty( $this->p->options['plugin_head_attr_filter_prio'] ) ? 
-					100 : $this->p->options['plugin_head_attr_filter_prio'] ), 1 );
+
+			if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) ) {
+				$filter_name = $this->p->options['plugin_head_attr_filter_name'];
+				$filter_prio = empty( $this->p->options['plugin_head_attr_filter_prio'] ) ?
+					100 : $this->p->options['plugin_head_attr_filter_prio'];
+				add_filter( $filter_name, array( &$this, 'filter_head_attributes' ), $filter_prio, 1 );
+			}
 
 			// do not add the pinterest image if the current webpage is amp or rss feed
 			if ( ! empty( $this->p->options['p_add_img_html'] ) && ! SucomUtil::is_amp() && ! is_feed() ) {
