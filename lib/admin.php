@@ -994,7 +994,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$have_filtered_cache_exp = false;
 
-			foreach ( $this->p->cf['wp']['transient'] as $md5_pre => $cache_info ) {
+			foreach ( $this->p->cf['wp']['transient'] as $cache_md5_pre => $cache_info ) {
 
 				if ( empty( $cache_info ) ) {
 					continue;
@@ -1003,7 +1003,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				$cache_label_transl = _x( $cache_info['label'], 'option label', 'wpsso' );
-				$cache_count = count( preg_grep( '/^'.$md5_pre.'/', $transient_keys ) );
+				$cache_count = count( preg_grep( '/^'.$cache_md5_pre.'/', $transient_keys ) );
 				$cache_exp_html = $cache_exp_secs = isset( $cache_info['opt_key'] ) &&
 					isset( $this->p->options[$cache_info['opt_key']] ) ?
 						 $this->p->options[$cache_info['opt_key']] : '';
@@ -1816,10 +1816,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 			$user_id = get_current_user_id();
 
-			$cache_pre = $lca.'_';
+			$cache_md5_pre = $lca.'_';
 			$cache_exp_secs = DAY_IN_SECONDS;	// only show every 24 hours for each user id
 			$cache_salt = __METHOD__.'(user_id:'.$user_id.')';
-			$cache_id = $cache_pre.md5( $cache_salt );
+			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 			if ( get_transient( $cache_id ) ) {	// is transient value true (notice already shown)?
 				return;	// stop here
@@ -2250,13 +2250,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * less in length. If using a site transient, it should be 40 characters or less in length.
 			 */
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
-			$cache_pre = $lca.'_';
+			$cache_md5_pre = $lca.'_';
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
-				$cache_filter = $lca.'_cache_expire_readme_txt';
-				$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->cf['expire']['readme_txt'] );
+				$cache_exp_filter = $lca.'_cache_expire_readme_txt';
+				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->cf['expire']['readme_txt'] );
 			}
 			$cache_salt = __METHOD__.'(url:'.$readme_url.'_file:'.$readme_file.')';
-			$cache_id = $cache_pre.md5( $cache_salt );
+			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache salt '.$cache_salt );
@@ -2340,8 +2340,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			static $cache_exp_secs = null;	// filter the file expiration value only once
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
-				$cache_filter = $lca.'_cache_expire_setup_html';
-				$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->cf['expire']['setup_html'] );
+				$cache_exp_filter = $lca.'_cache_expire_setup_html';
+				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->cf['expire']['setup_html'] );
 			}
 
 			$file_remote = isset( $this->p->cf['plugin'][$ext]['url']['setup_html'] ) ? $this->p->cf['plugin'][$ext]['url']['setup_html'] : '';

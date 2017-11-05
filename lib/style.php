@@ -118,11 +118,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		private function add_settings_page_style( $hook_name, $plugin_urlpath, $plugin_version ) {
 
 			$lca = $this->p->cf['lca'];
-			$cache_pre = $lca.'_';
-			$cache_filter = $lca.'_cache_expire_admin_css';
-			$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->cf['expire']['admin_css'] );
+			$cache_md5_pre = $lca.'_';
+			$cache_exp_filter = $lca.'_cache_expire_admin_css';
+			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->cf['expire']['admin_css'] );
 			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.'_plugin_urlpath:'.$plugin_urlpath.'_plugin_version:'.$plugin_version.')';
-			$cache_id = $cache_pre.md5( $cache_salt );
+			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 			wp_enqueue_style( 'sucom-settings-page',
 				$plugin_urlpath.'css/com/settings-page.min.css',
@@ -178,11 +178,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		private function add_admin_page_style( $hook_name, $plugin_urlpath, $plugin_version ) {
 
 			$lca = $this->p->cf['lca'];
-			$cache_pre = $lca.'_';
-			$cache_filter = $lca.'_cache_expire_admin_css';
-			$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->cf['expire']['admin_css'] );
+			$cache_md5_pre = $lca.'_';
+			$cache_exp_filter = $lca.'_cache_expire_admin_css';
+			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->cf['expire']['admin_css'] );
 			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.'_plugin_urlpath:'.$plugin_urlpath.'_plugin_version:'.$plugin_version.')';
-			$cache_id = $cache_pre.md5( $cache_salt );
+			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 			wp_enqueue_style( 'sucom-admin-page',
 				$plugin_urlpath.'css/com/admin-page.min.css',

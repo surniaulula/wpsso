@@ -601,14 +601,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * less in length. If using a site transient, it should be 40 characters or less in length.
 			 */
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
-			$cache_pre = $lca.'_c_';
+			$cache_md5_pre = $lca.'_c_';
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
-				$cache_filter = $this->p->cf['wp']['wp_cache'][$cache_pre]['filter'];
-				$cache_opt_key = $this->p->cf['wp']['wp_cache'][$cache_pre]['opt_key'];
-				$cache_exp_secs = (int) apply_filters( $cache_filter, $this->p->options[$cache_opt_key] );
+				$cache_exp_filter = $this->p->cf['wp']['wp_cache'][$cache_md5_pre]['filter'];
+				$cache_opt_key = $this->p->cf['wp']['wp_cache'][$cache_md5_pre]['opt_key'];
+				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
 			}
 			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
-			$cache_id = $cache_pre.md5( $cache_salt );
+			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );

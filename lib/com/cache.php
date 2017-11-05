@@ -43,9 +43,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function load_transient() {
 			if ( $this->transient['loaded'] !== true ) {
-				$cache_pre = $this->lca.'_';
+				$cache_md5_pre = $this->lca.'_';
 				$cache_salt = __CLASS__.'::transient';
-				$cache_id = $cache_pre.md5( $cache_salt );
+				$cache_id = $cache_md5_pre.md5( $cache_salt );
 				$ret = get_transient( $cache_id );
 				if ( $ret !== false ) {
 					$this->transient = $ret;
@@ -56,9 +56,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function save_transient() {
 			if ( $this->transient['loaded'] === true ) {
-				$cache_pre = $this->lca.'_';
+				$cache_md5_pre = $this->lca.'_';
 				$cache_salt = __CLASS__.'::transient';
-				$cache_id = $cache_pre.md5( $cache_salt );
+				$cache_id = $cache_md5_pre.md5( $cache_salt );
 				set_transient( $cache_id, $this->transient, $this->transient['expire'] );
 			}
 		}
@@ -118,9 +118,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function clear( $url, $file_ext = '' ) {
 
 			$get_url = preg_replace( '/#.*$/', '', $url );	// remove the fragment
-			$cache_pre = $this->lca.'_';
+			$cache_md5_pre = $this->lca.'_';
 			$cache_salt = __CLASS__.'::get(url:'.$get_url.')';
-			$cache_id = $cache_pre.md5( $cache_salt );
+			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 			if ( wp_cache_delete( $cache_id, __CLASS__ ) ) {
 				if ( $this->p->debug->enabled ) {

@@ -360,11 +360,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			static $cache_exp_secs = null;
 			if ( ! isset( $cache_exp_secs ) ) {
 				$lca = $this->p->cf['lca'];
-				$cache_pre = $lca.'_t_';
-				$cache_filter = $this->p->cf['wp']['transient'][$cache_pre]['filter'];
-				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_pre]['opt_key'];
+				$cache_md5_pre = $lca.'_t_';
+				$cache_exp_filter = $this->p->cf['wp']['transient'][$cache_md5_pre]['filter'];
+				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
 				$cache_exp_secs = isset( $this->p->options[$cache_opt_key] ) ? $this->p->options[$cache_opt_key] : MONTH_IN_SECONDS;
-				$cache_exp_secs = (int) apply_filters( $cache_filter, $cache_exp_secs );
+				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
 			}
 			return $cache_exp_secs;
 		}
@@ -379,10 +379,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! isset( $this->types_cache['filtered'] ) ) {	// check class property cache
 
 				$lca = $this->p->cf['lca'];
-				$cache_pre = $lca.'_t_';
+				$cache_md5_pre = $lca.'_t_';
 				$cache_exp_secs = $this->get_types_cache_exp();
 				$cache_salt = __METHOD__;
-				$cache_id = $cache_pre.md5( $cache_salt );
+				$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 				if ( $cache_exp_secs > 0 ) {
 					$this->types_cache = get_transient( $cache_id );	// returns false when not found
@@ -572,10 +572,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $use_cache ) {
 
 				$lca = $this->p->cf['lca'];
-				$cache_pre = $lca.'_t_';
+				$cache_md5_pre = $lca.'_t_';
 				$cache_exp_secs = $this->get_types_cache_exp();
 				$cache_salt = __METHOD__.'(child_id:'.$child_id.')';
-				$cache_id = $cache_pre.md5( $cache_salt );
+				$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 				if ( $cache_exp_secs > 0 ) {
 					$parents = get_transient( $cache_id );	// returns false when not found
@@ -617,10 +617,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $use_cache ) {
 
 				$lca = $this->p->cf['lca'];
-				$cache_pre = $lca.'_t_';
+				$cache_md5_pre = $lca.'_t_';
 				$cache_exp_secs = $this->get_types_cache_exp();
 				$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
-				$cache_id = $cache_pre.md5( $cache_salt );
+				$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 				if ( $cache_exp_secs > 0 ) {
 					$children = get_transient( $cache_id );	// returns false when not found

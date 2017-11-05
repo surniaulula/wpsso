@@ -796,13 +796,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod = $this->get_mod( $post_id );
 			$lca = $this->p->cf['lca'];
-			$md5_pre = $lca.'_';
+			$cache_md5_pre = $lca.'_';
 			$permalink = get_permalink( $post_id );
 			$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
 
 			$cache_types = array();
-			$cache_types['transient'][] = $md5_pre.md5( 'SucomCache::get(url:'.$permalink.')' );
-			$cache_types['transient'][] = $md5_pre.md5( 'SucomCache::get(url:'.$shortlink.')' );
+			$cache_types['transient'][] = $cache_md5_pre.md5( 'SucomCache::get(url:'.$permalink.')' );
+			$cache_types['transient'][] = $cache_md5_pre.md5( 'SucomCache::get(url:'.$shortlink.')' );
 
 			$this->clear_mod_cache_types( $mod, $cache_types );
 
