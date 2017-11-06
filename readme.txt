@@ -383,7 +383,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Added &#91;F&#93; qualifiers in the Cache Status metabox for expiration values changed by a filter.
 * *Bugfixes*
-	* None
+	* Updated the "Google Project API Key" value check to allow hyphen characters.
 * *Developer Notes*
 	* Changed the user agent to the Facebook crawler when checking for duplicate meta tags, for edge cases where plugins / themes only add meta tags for the Facebook crawler.
 	* Added an action to remove the SNAP OG meta tags holder, to prevent incorrect / duplicate meta tags from being added to the webpage.
