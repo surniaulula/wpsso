@@ -376,7 +376,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.1-dev.3 (2017/11/05)**
+**Version 3.48.1-dev.4 (2017/11/06)**
 
 * *New Features*
 	* None
@@ -869,9 +869,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.1-dev.3 =
+= 3.48.1-dev.4 =
 
-(2017/11/05) Changed the user agent to the Facebook crawler when checking for duplicate meta tags. Added an action to remove the SNAP OG meta tags holder.
+(2017/11/06) Changed the user agent to the Facebook crawler when checking for duplicate meta tags. Added an action to remove the SNAP OG meta tags holder.
 
 = 3.48.0 =
 
