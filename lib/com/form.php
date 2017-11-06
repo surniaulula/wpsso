@@ -176,7 +176,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_assoc = SucomUtil::is_assoc( $values );
 			}
 
-			$html = '';
+			$input_id = empty( $id ) ? 'radio_'.$name : 'radio_'.$id;
+
+			// use the "input_vertical_list" class to align the radio input buttons vertically
+			$html = '<div '.( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).' id="'.esc_attr( $input_id ).'">'."\n";
 
 			foreach ( $values as $val => $label ) {
 
@@ -190,14 +193,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$label_transl = $this->get_value_transl( $label );
 				}
 
-				$html .= '<input type="radio"'.
+				$html .= '<span><input type="radio"'.
 					( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'" value="'.esc_attr( $val ).'"' ).
-					( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
-					( empty( $id ) ? '' : ' id="radio_'.esc_attr( $id ).'"' ).
 					( $this->in_options( $name ) ? checked( $this->options[$name], $val, false ) : '' ).
 					( $this->in_defaults( $name ) ? ' title="default is '.$values[$this->defaults[$name]].'"' : '' ).
-					'/> '.$label_transl.'&nbsp;&nbsp;';
+					'/>&nbsp;'.$label_transl.'&nbsp;&nbsp;</span>'."\n";
 			}
+
+			$html .= '</div>'."\n";
 
 			return $html;
 		}
@@ -229,7 +232,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$html = '';
-			$select_id = empty( $id ) ? 'select_'.$name : 'select_'.$id;
+			$input_id = empty( $id ) ? 'select_'.$name : 'select_'.$id;
 			$in_options = $this->in_options( $name );	// optimize and call only once
 			$in_defaults = $this->in_defaults( $name );	// optimize and call only once
 
@@ -239,14 +242,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						$redirect_url = add_query_arg( array( $name => '%%'.$name.'%%' ),
 							SucomUtil::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] );
 						$html .= '<script type="text/javascript">'.
-							'jQuery( function(){ jQuery("#'.esc_js( $select_id ).'").change( function(){ '.
+							'jQuery( function(){ jQuery("#'.esc_js( $input_id ).'").change( function(){ '.
 								'sucomSelectChangeRedirect("'.esc_js( $name ).'", '.
 									'this.value, "'.esc_url( $redirect_url ).'"); }); });</script>'."\n";
 						break;
 
 					case 'unhide_rows':
 						$html .= '<script type="text/javascript">'.
-							'jQuery( function(){ jQuery("#'.esc_js( $select_id ).'").change( function(){ '.
+							'jQuery( function(){ jQuery("#'.esc_js( $input_id ).'").change( function(){ '.
 								'sucomSelectChangeUnhideRows("hide_'.esc_js( $name ).'", '.
 									'"hide_'.esc_js( $name ).'_"+this.value); }); });</script>'."\n";
 
@@ -276,7 +279,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html .= '<select '.
 				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'"' ).
-				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).' id="'.esc_attr( $select_id ).'"'.'>'."\n";
+				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).' id="'.esc_attr( $input_id ).'">'."\n";
 
 			$select_options_count = 0;
 			$select_options_shown = 0;

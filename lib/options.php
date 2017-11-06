@@ -484,10 +484,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				// if there's no google api key, then disable the shortening service
-				if ( isset( $opts['plugin_google_api_key'] ) &&
-					empty( $opts['plugin_google_api_key'] ) ) {
+				if ( isset( $opts['plugin_google_api_key'] ) && empty( $opts['plugin_google_api_key'] ) ) {
 					$opts['plugin_google_shorten'] = 0;
-					$opts['plugin_google_shorten:is'] = 'disabled';
 				}
 
 				if ( ! empty( $opts['fb_app_id'] ) && ( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) ) {
@@ -688,7 +686,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// empty or alpha-numeric (upper or lower case), plus underscores
 				case 'api_key':
 					$val = trim( $val );
-					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_]/', $val ) ) {
+					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_\-]/', $val ) ) {
 						$this->p->notice->err( sprintf( $error_messages[$option_type], $key ) );
 						$val = $def_val;
 					}

@@ -805,11 +805,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_google_api_key':
-							$text = sprintf( __( 'The Google BrowserKey value for this website (project). If you don\'t already have a Google project, visit <a href="%s">Google\'s Cloud Console</a> and create a new project for your website (use the "Select a project" drop-down).', 'wpsso' ), 'https://console.developers.google.com/start' );
+							$text = sprintf( __( 'The Google Project API Key for this website / project. If you don\'t already have a Google project for your website, visit the <a href="%s">Google APIs developers console</a> and create a new project for your website.', 'wpsso' ), 'https://console.developers.google.com/apis/dashboard' );
 							break;
 
 						case 'tooltip-plugin_google_shorten':
-							$text = sprintf( __( 'In order to use Google\'s URL Shortener API service, you must <em>Enable</em> the URL Shortener API from <a href="%s">Google\'s Cloud Console</a> (under the project\'s <em>API &amp; auth / APIs / URL Shortener API</em> settings page).', 'wpsso' ), 'https://console.developers.google.com/start' ).' '.__( 'Confirm that you have enabled Google\'s URL Shortener API service by checking the "Yes" option value.', 'wpsso' );
+							$text = sprintf( __( 'In order to use Google\'s URL Shortener API service, you must <em>Enable</em> the URL Shortener API service from the <a href="%s">Google APIs developers console</a> (under the project\'s <em>Dashboard</em> settings page).', 'wpsso' ), 'https://console.developers.google.com/apis/dashboard' ).' '.__( 'Confirm that you have enabled Google\'s URL Shortener API service by checking the "Yes" option value.', 'wpsso' );
 							break;
 
 						case 'tooltip-plugin_owly_api_key':

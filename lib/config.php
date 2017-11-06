@@ -938,8 +938,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_bitly_access_token' => '',
 					'plugin_bitly_api_key' => '',
 					'plugin_bitly_domain' => '',
-					'plugin_google_api_key' => '',
-					'plugin_google_shorten' => 0,
+					'plugin_google_api_key' => '',			// Google Project API Key
+					'plugin_google_shorten' => 0,			// URL Shortener API is Enabled
 					'plugin_owly_api_key' => '',
 					'plugin_yourls_api_url' => '',
 					'plugin_yourls_username' => '',
@@ -1266,8 +1266,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'max_media_items' => 10,
 				'tooltip_class' => 'sucom_tooltip',
 				'yes_no' => array(
-					'1' => 'Yes',
-					'0' => 'No',
+					1 => 'Yes',
+					0 => 'No',
+				),
+				'true_false' => array(
+					1 => 'True',
+					0 => 'False',
+				),
+				'on_off' => array(
+					1 => 'On',
+					0 => 'Off',
 				),
 				'weekdays' => array(
 					'sunday' => 'Sunday',
@@ -1393,6 +1401,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'RefurbishedCondition' => 'Refurbished',
 					'UsedCondition' => 'Used',
 				),
+				// https://developers.google.com/search/docs/data-types/job-postings
+				// {schema_property_value} => {select_value_shown}
+				'employment_type' => array(
+					'FULL_TIME' => 'Full Time',
+					'PART_TIME' => 'Part Time',
+					'CONTRACTOR' => 'Contractor',
+					'TEMPORARY' => 'Temporary',
+					'INTERN' => 'Intern',
+					'VOLUNTEER' => 'Volunteer',
+					'PER_DIEM' => 'Per Diem',
+					'OTHER' => 'Other',
+				),
 				'cf_labels' => array(		// custom field option labels
 					'plugin_cf_img_url' => 'Image URL Custom Field',
 					'plugin_cf_vid_url' => 'Video URL Custom Field',
@@ -1415,15 +1435,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_desc_len' => 156,
 					'og_img_width' => 200,			// https://developers.facebook.com/docs/sharing/best-practices
 					'og_img_height' => 200,
-					'schema_img_width' => 400,		// https://developers.google.com/+/web/snippet/article-rendering
-					'schema_img_height' => 160,
 					'schema_article_img_width' => 696,	// https://developers.google.com/search/docs/data-types/articles
 					'schema_article_img_height' => 279,	// based on the max image ratio
+					'schema_img_width' => 400,		// https://developers.google.com/+/web/snippet/article-rendering
+					'schema_img_height' => 160,
 				),
 				'limit_max' => array(
 					'og_img_ratio' => 3,
-					'schema_img_ratio' => 2.5,		// https://developers.google.com/+/web/snippet/article-rendering
+					'schema_article_headline_len' => 110,
 					'schema_article_img_ratio' => 2.5,
+					'schema_img_ratio' => 2.5,		// https://developers.google.com/+/web/snippet/article-rendering
 				),
 				'og_type_ns' => array(		// http://ogp.me/#types
 					'article' => 'http://ogp.me/ns/article#',
