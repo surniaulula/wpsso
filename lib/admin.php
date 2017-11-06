@@ -64,8 +64,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ), 20 );
 
 			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'DOING_AJAX is true' );
+				}
 				// nothing to do
 			} else {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'DOING_AJAX is false' );
+				}
 				// admin_menu is run before admin_init
 				add_action( 'admin_menu', array( &$this, 'load_menu_objects' ), -1000 );
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );

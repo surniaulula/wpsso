@@ -35,8 +35,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				$avail['*'][$key] = $this->is_avail( $key );
 			}
 
-			foreach ( SucomUtil::array_merge_recursive_distinct( $this->p->cf['*']['lib']['pro'],
-				self::$extend_lib_checks ) as $sub => $lib ) {
+			$lib_checks = SucomUtil::array_merge_recursive_distinct( $this->p->cf['*']['lib']['pro'], self::$extend_lib_checks );
+
+			foreach ( $lib_checks as $sub => $lib ) {
 
 				$avail[$sub] = array();
 				$avail[$sub]['*'] = false;
