@@ -205,18 +205,16 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			/*
 			 * Include Custom Meta Metabox
 			 */
-			$add_to_checkboxes = $form->get_post_type_checkboxes( 'plugin_add_to', '', '', true );
-			$add_to_checkboxes .= '<p>'.$form->get_nocb_cmt( 'plugin_add_to_term' ).	// add term checbox
-				' '.__( 'Terms (Categories and Tags)', 'wpsso' ).'</p>';
-			$add_to_checkboxes .= '<p>'.$form->get_nocb_cmt( 'plugin_add_to_user' ).	// add user checkbox
-				' '.__( 'User Profile', 'wpsso' ).'</p>';
-
-			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' );
+			$add_to_menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' );
+			$add_to_checklist = $form->get_no_checklist_post_types( 'plugin_add_to', array(
+				'term' => 'Terms (Categories and Tags)',
+				'user' => 'User Profile',
+			) );
 
 			$table_rows['plugin_add_to'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( sprintf( _x( 'Add %s Metabox to',
-				'option label', 'wpsso' ), $menu_title ), '', 'plugin_add_to' ).
-			'<td class="blank">'.$add_to_checkboxes.'</td>';
+				'option label', 'wpsso' ), $add_to_menu_title ), '', 'plugin_add_to' ).
+			'<td class="blank">'.$add_to_checklist.'</td>';
 
 			$table_rows['plugin_wpseo_social_meta'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Read Yoast SEO Social Meta',

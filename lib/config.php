@@ -1404,14 +1404,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				// https://developers.google.com/search/docs/data-types/job-postings
 				// {schema_property_value} => {select_value_shown}
 				'employment_type' => array(
-					'FULL_TIME' => 'Full Time',
-					'PART_TIME' => 'Part Time',
-					'CONTRACTOR' => 'Contractor',
-					'TEMPORARY' => 'Temporary',
-					'INTERN' => 'Intern',
-					'VOLUNTEER' => 'Volunteer',
-					'PER_DIEM' => 'Per Diem',
-					'OTHER' => 'Other',
+					'full_time' => 'Full Time',
+					'part_time' => 'Part Time',
+					'contractor' => 'Contractor',
+					'temporary' => 'Temporary',
+					'intern' => 'Intern',
+					'volunteer' => 'Volunteer',
+					'per_diem' => 'Per Diem',
+					'other' => 'Other',
 				),
 				'cf_labels' => array(		// custom field option labels
 					'plugin_cf_img_url' => 'Image URL Custom Field',

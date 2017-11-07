@@ -115,13 +115,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( $force !== null ) {
-				$checked = checked( $force, 1, false );
+				$input_checked = checked( $force, 1, false );
 			} elseif ( $this->in_options( $name ) ) {
-				$checked = checked( $this->options[$name], 1, false );
+				$input_checked = checked( $this->options[$name], 1, false );
 			} elseif ( $this->in_defaults( $name ) ) {
-				$checked = checked( $this->defaults[$name], 1, false );
+				$input_checked = checked( $this->defaults[$name], 1, false );
 			} else {
-				$checked = '';
+				$input_checked = '';
 			}
 
 			$default_is = $this->in_defaults( $name ) && ! empty( $this->defaults[$name] ) ? 'checked' : 'unchecked';
@@ -129,12 +129,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$title_transl = sprintf( $this->get_value_transl( 'default is %s' ), $this->get_value_transl( $default_is ) ).
 				( $disabled ? ' '.$this->get_value_transl( '(option disabled)' ) : '' );
 
+			$input_id = empty( $id ) ? 'checkbox_'.$name : 'checkbox_'.$id;
+
 			$html = ( $disabled ? '' : $this->get_hidden( 'is_checkbox_'.$name, 1, false ) ).
 				'<input type="checkbox"'.
 				( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$name.']' ).'" value="1"' ).
 				( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).
-				( empty( $id ) ? '' : ' id="checkbox_'.esc_attr( $id ).'"' ).
-				$checked.' title="'.$title_transl.'" />';
+				' id="'.esc_attr( $input_id ).'"'.$input_checked.' title="'.$title_transl.'" />';
 
 			return $html;
 		}
@@ -153,13 +154,83 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $comment ) ? '' : ' '.$comment );
 		}
 
-		public function get_post_type_checkboxes( $name_pre, $class = '', $id = '', $disabled = false, $force = null ) {
-			$checkboxes = '';
+		// deprecated on 2017/11/07
+		public function get_post_type_checkboxes( $name_prefix, $class = '', $id = '', $disabled = false ) {
+			return $this->get_checklist_post_types( $name_prefix, array(), $class, $id, $disabled );
+		}
+
+		public function get_no_checklist_post_types( $name_prefix, $values = array(), $class = 'input_vertical_list', $id = '' ) {
+			return $this->get_checklist_post_types( $name_prefix, $values, $class, $id, true );
+		}
+
+		public function get_checklist_post_types( $name_prefix, $values = array(), $class = 'input_vertical_list', $id = '', $disabled = false ) {
 			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
-				$checkboxes .= '<p>'.$this->get_checkbox( $name_pre.'_'.$pt->name, $class, $id, $disabled, $force ).
-					' '.$pt->label.( empty( $pt->description ) ? '' : ' ('.$pt->description.')' ).'</p>';
+				$values[$pt->name] = $pt->label.( empty( $pt->description ) ? '' : ' ('.$pt->description.')' );
 			}
-			return $checkboxes;
+			asort( $values );
+			return $this->get_checklist( $name_prefix, $values, $class, $id, true, $disabled );
+		}
+
+		public function get_no_checklist( $name_prefix, $values = array(), $class = 'input_vertical_list', $id = '', $is_assoc = null ) {
+			return $this->get_checklist( $name_prefix, $values, $class, $id, $is_assoc, true );
+		}
+
+		public function get_checklist( $name_prefix, $values = array(), $class = 'input_vertical_list', $id = '', $is_assoc = null, $disabled = false ) {
+
+			if ( empty( $name_prefix ) || ! is_array( $values ) ) {
+				return;
+			}
+
+			if ( $this->get_options( $name_prefix.':is' ) === 'disabled' ) {
+				$disabled = true;
+			}
+
+			if ( $is_assoc === null ) {
+				$is_assoc = SucomUtil::is_assoc( $values );
+			}
+
+			$input_id = empty( $id ) ? 'checklist_'.$name_prefix : 'checklist_'.$id;
+
+			// use the "input_vertical_list" class to align the checbox input vertically
+			$html = '<div '.( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).' id="'.esc_attr( $input_id ).'">'."\n";
+
+			foreach ( $values as $name_suffix => $label ) {
+				/*
+				 * If the array is not associative (so a regular numbered array), 
+				 * then the label / description is used as the saved value.
+				 */
+				if ( $is_assoc === false ) {
+					$input_name = $name_prefix.'_'.$label;
+				} else {
+					$input_name = $name_prefix.'_'.$name_suffix;
+				}
+
+				if ( $this->text_domain ) {
+					$label_transl = $this->get_value_transl( $label );
+				}
+
+				if ( $this->in_options( $input_name ) ) {
+					$input_checked = checked( $this->options[$input_name], 1, false );
+				} elseif ( $this->in_defaults( $input_name ) ) {
+					$input_checked = checked( $this->defaults[$input_name], 1, false );
+				} else {
+					$input_checked = '';
+				}
+
+				$default_is = $this->in_defaults( $input_name ) && ! empty( $this->defaults[$input_name] ) ? 'checked' : 'unchecked';
+
+				$title_transl = sprintf( $this->get_value_transl( 'default is %s' ), $this->get_value_transl( $default_is ) ).
+					( $disabled ? ' '.$this->get_value_transl( '(option disabled)' ) : '' );
+
+				$html .= ( $disabled ? '' : $this->get_hidden( 'is_checkbox_'.$input_name, 1, false ) ).
+					'<span><input type="checkbox"'.
+					( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$input_name.']' ).'" value="1"' ).
+					$input_checked.' title="'.$title_transl.'"/>&nbsp;'.$label_transl.'&nbsp;&nbsp;</span>'."\n";
+			}
+
+			$html .= '</div>'."\n";
+
+			return $html;
 		}
 
 		public function get_radio( $name, $values = array(), $class = '', $id = '', $is_assoc = null, $disabled = false ) {
@@ -182,9 +253,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '<div '.( empty( $class ) ? '' : ' class="'.esc_attr( $class ).'"' ).' id="'.esc_attr( $input_id ).'">'."\n";
 
 			foreach ( $values as $val => $label ) {
-
-				// if the array is NOT associative (so regular numbered array),
-				// then the description is used as the saved value as well
+				/*
+				 * If the array is not associative (so a regular numbered array), 
+				 * then the label / description is used as the saved value.
+				 */
 				if ( $is_assoc === false ) {
 					$val = $label;
 				}
@@ -285,11 +357,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$select_options_shown = 0;
 
 			foreach ( $values as $val => $label ) {
-
-				$select_options_count++;
-
-				// if the array is NOT associative (so regular numered array),
-				// then the description is used as the saved value as well
+				/*
+				 * If the array is not associative (so a regular numbered array), 
+				 * then the label / description is used as the saved value.
+				 */
 				if ( $is_assoc === false ) {
 					$val = $label;
 				}
@@ -329,6 +400,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				} else {
 					$is_selected_html = '';
 				}
+
+				$select_options_count++;
 
 				// for disabled selects, only include the first and/or selected option
 				if ( ! $disabled || $select_options_count === 1 || $is_selected_html ) {
@@ -571,11 +644,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$select_options_shown = 0;
 
 								foreach ( $select_options as $val => $label ) {
-
-									$select_options_count++; 
-									
-									// if the array is NOT associative (so regular numered array),
-									// then the description is used as the saved value as well
+									/*
+									 * If the array is not associative (so a regular numbered array), 
+									 * then the label / description is used as the saved value.
+									 */
 									if ( $is_assoc === false ) {
 										$val = $label;
 									}
@@ -598,6 +670,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									} else {
 										$is_selected_html = '';
 									}
+
+									$select_options_count++; 
 
 									// for disabled selects, only include the first and/or selected option
 									if ( ! $opt_disabled || $select_options_count === 1 || $is_selected_html ) {
