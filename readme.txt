@@ -184,11 +184,13 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 	* NextGEN Gallery
 	* Polylang
 	* rtMedia for WordPress, BuddyPress and bbPress
+	* Simple Job Board ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) required)
 	* The Events Calendar
 	* The SEO Framework
 	* WooCommerce (versions 1, 2, and 3)
 	* WordPress REST API (version 2)
 	* WP eCommerce
+	* WP Job Manager ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) required)
 	* WP Product Review ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) required)
 	* WP Recipe Maker ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) required)
 	* WP Ultimate Recipe ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) required)

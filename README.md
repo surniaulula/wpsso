@@ -192,11 +192,13 @@
 <li>NextGEN Gallery</li>
 <li>Polylang</li>
 <li>rtMedia for WordPress, BuddyPress and bbPress</li>
+<li>Simple Job Board (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO JSON Pro extension</a> required)</li>
 <li>The Events Calendar</li>
 <li>The SEO Framework</li>
 <li>WooCommerce (versions 1, 2, and 3)</li>
 <li>WordPress REST API (version 2)</li>
 <li>WP eCommerce</li>
+<li>WP Job Manager (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO JSON Pro extension</a> required)</li>
 <li>WP Product Review (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO JSON Pro extension</a> required)</li>
 <li>WP Recipe Maker (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO JSON Pro extension</a> required)</li>
 <li>WP Ultimate Recipe (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO JSON Pro extension</a> required)</li>
