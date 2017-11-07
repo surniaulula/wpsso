@@ -1826,6 +1826,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$job_opts = apply_filters( $wpsso->cf['lca'].'_get_job_options', false, $mod, $job_id );
 
 			if ( ! empty( $job_opts ) ) {
+				if ( is_array( $job_opts ) ) {	// just in case
+					SucomUtil::unset_is_option_keys( $job_opts );	// remove disable option keys
+				}
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log_arr( 'get_job_options filters returned', $job_opts );
 				}
@@ -1855,6 +1858,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$job_opts, 'job_type', 'job.posting', $list_element );
 
 			$ret = self::get_schema_type_context( $job_type_url );
+
+			if ( empty( $job_opts['job_title'] ) ) {
+				$title_max_len = $wpsso->options['og_title_len'];
+				$job_opts['job_title'] = $wpsso->page->get_title( $title_max_len, '...', $mod );
+			}
 
 			// add schema properties from the job options
 			self::add_data_itemprop_from_assoc( $ret, $job_opts, array(

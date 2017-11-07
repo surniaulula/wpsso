@@ -1508,11 +1508,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $found;
 		}
 
+		public static function unset_is_option_keys( array &$opts ) {
+			foreach ( $opts as $key => $val ) {
+				if ( strpos( $key, ':is' ) !== false ) {
+					unset( $opts[$key] );
+				}
+			}
+		}
+
 		// use reference for $input argument to allow unset of keys if $remove is true.
 		public static function preg_grep_keys( $pattern, array &$input, $invert = false, $replace = false, $remove = false ) {
+
 			$invert = $invert == false ? null : PREG_GREP_INVERT;
 			$match = preg_grep( $pattern, array_keys( $input ), $invert );
 			$found = array();
+
 			foreach ( $match as $key ) {
 				if ( $replace !== false ) {
 					$fixed = preg_replace( $pattern, $replace, $key );
