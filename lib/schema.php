@@ -1862,7 +1862,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'validThrough' => 'job_expire_iso',
 			) );
 
-			if ( isset( $job_opts['job_salary'] ) && is_numeric( $job_opts['job_salary'] ) ) {
+			if ( isset( $job_opts['job_salary'] ) && is_numeric( $job_opts['job_salary'] ) ) {	// allow for 0
 
 				$ret['baseSalary'] = self::get_schema_type_context( 'https://schema.org/MonetaryAmount' );
 
@@ -1878,7 +1878,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				) );
 			}
 
-			if ( isset( $job_opts['job_org_id'] ) && SucomUtil::is_opt_id( $job_opts['job_org_id'] ) ) {
+			// allow for a preformatted employment types array
+			if ( ! empty( $job_opts['job_empl_types'] ) && is_array( $job_opts['job_empl_types'] ) ) {
+				$ret['employmentType'] = $job_opts['job_empl_types'];
+			}
+
+			// add single employment type options (value must be non-empty)
+			foreach ( SucomUtil::preg_grep_keys( '/^job_empl_type_/', $job_opts, false, '' ) as $empl_type => $checked ) {
+				if ( ! empty( $checked ) ) {
+					$ret['employmentType'][] = $empl_type;
+				}
+			}
+
+			if ( isset( $job_opts['job_org_id'] ) && SucomUtil::is_opt_id( $job_opts['job_org_id'] ) ) {	// allow for 0
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding organization data for job_org_id '.$job_opts['job_org_id'] );
 				}
@@ -1889,7 +1901,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'job_org_id is empty or none' );
 			}
 
-			if ( isset( $job_opts['job_location_id'] ) && SucomUtil::is_opt_id( $job_opts['job_location_id'] ) ) {
+			if ( isset( $job_opts['job_location_id'] ) && SucomUtil::is_opt_id( $job_opts['job_location_id'] ) ) {	// allow for 0
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding place data for job_location_id '.$job_opts['job_location_id'] );
 				}

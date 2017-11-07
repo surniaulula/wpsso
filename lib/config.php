@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.1-dev.4',		// plugin version
+					'version' => '3.48.1-dev.5',		// plugin version
 					'opt_version' => '561',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
@@ -1930,7 +1930,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'hospital' => 'https://schema.org/Hospital',
 									'police.station' => 'https://schema.org/PoliceStation',
 								),
-								'employement.agency' => 'https://schema.org/EmploymentAgency',
+								'employment.agency' => 'https://schema.org/EmploymentAgency',
 								'entertainment.business' => array(
 									'adult.entertainment' => 'https://schema.org/AdultEntertainment',
 									'amusement.park' => 'https://schema.org/AmusementPark',

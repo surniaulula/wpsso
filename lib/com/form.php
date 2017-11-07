@@ -205,6 +205,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$input_name = $name_prefix.'_'.$name_suffix;
 				}
 
+				if ( $this->get_options( $input_name.':is' ) === 'disabled' ) {
+					$input_disabled = true;
+				} else {
+					$input_disabled = $disabled;
+				}
+
 				if ( $this->text_domain ) {
 					$label_transl = $this->get_value_transl( $label );
 				}
@@ -220,11 +226,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$default_is = $this->in_defaults( $input_name ) && ! empty( $this->defaults[$input_name] ) ? 'checked' : 'unchecked';
 
 				$title_transl = sprintf( $this->get_value_transl( 'default is %s' ), $this->get_value_transl( $default_is ) ).
-					( $disabled ? ' '.$this->get_value_transl( '(option disabled)' ) : '' );
+					( $input_disabled ? ' '.$this->get_value_transl( '(option disabled)' ) : '' );
 
-				$html .= ( $disabled ? '' : $this->get_hidden( 'is_checkbox_'.$input_name, 1, false ) ).
+				$html .= ( $input_disabled ? '' : $this->get_hidden( 'is_checkbox_'.$input_name, 1, false ) ).
 					'<span><input type="checkbox"'.
-					( $disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$input_name.']' ).'" value="1"' ).
+					( $input_disabled ? ' disabled="disabled"' : ' name="'.esc_attr( $this->options_name.'['.$input_name.']' ).'" value="1"' ).
 					$input_checked.' title="'.$title_transl.'"/>&nbsp;'.$label_transl.'&nbsp;&nbsp;</span>'."\n";
 			}
 
