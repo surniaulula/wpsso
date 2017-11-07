@@ -1651,40 +1651,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'checking for custom event date and time' );
 			}
 
-			foreach ( array( 
-				'event_start_date_iso' => 'schema_event_start',	// date, time, timezone
-				'event_end_date_iso' => 'schema_event_end',	// date, time, timezone
-			) as $opt_key => $md_pre ) {
-
-				$event_date = $mod['obj']->get_options( $mod['id'], $md_pre.'_date' );
-				
-				if ( ( $event_time = $mod['obj']->get_options( $mod['id'], $md_pre.'_time' ) ) === 'none' ) {
-					$event_time = '';
-				}
-
-				if ( empty( $event_date ) && empty( $event_time ) ) {
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'skipping event: event date and time are empty' );
-					}
-					continue;	// nothing to do
-				} elseif ( ! empty( $event_date ) && empty( $event_time ) ) {	// date with no time
-					$event_time = '00:00';
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'event time empty: using event time '.$event_time );
-					}
-				} elseif ( empty( $event_date ) && ! empty( $event_time ) ) {	// time with no date
-					$event_date = gmdate( 'Y-m-d', time() );
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'event date empty: using event date '.$event_date );
-					}
-				}
-
-				if ( ! $event_timezone = $mod['obj']->get_options( $mod['id'], $md_pre.'_timezone' ) ) {
-					$event_timezone = get_option( 'timezone_string' );
-				}
-
-				$event_opts[$opt_key] = date_format( date_create( $event_date.' '.$event_time.' '.$event_timezone ), 'c' );
-			}
+			self::add_mod_opts_date_iso( $mod, $event_opts, array( 
+				'event_start_date_iso' => 'schema_event_start',	// prefix for date, time, timezone
+				'event_end_date_iso' => 'schema_event_end',	// prefix for date, time, timezone
+			) );
 
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'checking for custom event offers' );
@@ -1863,6 +1833,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$title_max_len = $wpsso->options['og_title_len'];
 				$job_opts['job_title'] = $wpsso->page->get_title( $title_max_len, '...', $mod );
 			}
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'checking for custom job date and time' );
+			}
+
+			self::add_mod_opts_date_iso( $mod, $job_opts, array( 
+				'job_expire_iso' => 'schema_job_expire',	// prefix for date, time, timezone
+			) );
 
 			// add schema properties from the job options
 			self::add_data_itemprop_from_assoc( $ret, $job_opts, array(
@@ -2246,6 +2224,48 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							break;
 					}
 				}
+			}
+		}
+
+		/*
+		 * $opts_md_pre = array( 
+		 * 	'event_start_date_iso' => 'schema_event_start',	// prefix for date, time, timezone
+		 * 	'event_end_date_iso' => 'schema_event_end',	// prefix for date, time, timezone
+		 * );
+		 */
+		public static function add_mod_opts_date_iso( array $mod, array &$opts, array $opts_md_pre ) {
+			$wpsso =& Wpsso::get_instance();
+			
+			foreach ( $opts_md_pre as $opt_key => $md_pre ) {
+
+				$md_date = $mod['obj']->get_options( $mod['id'], $md_pre.'_date' );
+				
+				if ( ( $md_time = $mod['obj']->get_options( $mod['id'], $md_pre.'_time' ) ) === 'none' ) {
+					$md_time = '';
+				}
+
+				if ( empty( $md_date ) && empty( $md_time ) ) {
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'skipping '.$md_pre.': date and time are empty' );
+					}
+					continue;	// nothing to do
+				} elseif ( ! empty( $md_date ) && empty( $md_time ) ) {	// date with no time
+					$md_time = '00:00';
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( $md_pre.' time is empty - using time '.$md_time );
+					}
+				} elseif ( empty( $md_date ) && ! empty( $md_time ) ) {	// time with no date
+					$md_date = gmdate( 'Y-m-d', time() );
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( $md_pre.' date is empty - using date '.$md_date );
+					}
+				}
+
+				if ( ! $md_timezone = $mod['obj']->get_options( $mod['id'], $md_pre.'_timezone' ) ) {
+					$md_timezone = get_option( 'timezone_string' );
+				}
+
+				$opts[$opt_key] = date_format( date_create( $md_date.' '.$md_time.' '.$md_timezone ), 'c' );
 			}
 		}
 
