@@ -1310,6 +1310,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'default_is' => 'default is %s',
 					'checked' => 'checked',
 					'unchecked' => 'unchecked',
+					'at' => 'at',
+					'tz' => 'tz',
 				),
 				'script_locations' => array(
 					'none' => '[None]',
