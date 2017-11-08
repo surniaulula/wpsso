@@ -76,7 +76,7 @@
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable title separator character (hyphen by default).</p>
 
-<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p>
+<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/?utm_source=wpsso-readme-docs">comprehensive online documentation</a>.</p>
 
 <p><img class="readme-example landscape" src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png"></p>
 
@@ -192,16 +192,16 @@
 <li>NextGEN Gallery</li>
 <li>Polylang</li>
 <li>rtMedia for WordPress, BuddyPress and bbPress</li>
-<li>Simple Job Board (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO JSON Pro extension</a> required)</li>
+<li>Simple Job Board (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro extension</a> required)</li>
 <li>The Events Calendar</li>
 <li>The SEO Framework</li>
 <li>WooCommerce (versions 1, 2, and 3)</li>
 <li>WordPress REST API (version 2)</li>
 <li>WP eCommerce</li>
-<li>WP Job Manager (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO JSON Pro extension</a> required)</li>
-<li>WP Product Review (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO JSON Pro extension</a> required)</li>
-<li>WP Recipe Maker (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO JSON Pro extension</a> required)</li>
-<li>WP Ultimate Recipe (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO JSON Pro extension</a> required)</li>
+<li>WP Job Manager (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro extension</a> required)</li>
+<li>WP Product Review (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro extension</a> required)</li>
+<li>WP Recipe Maker (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro extension</a> required)</li>
+<li>WP Ultimate Recipe (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro extension</a> required)</li>
 <li>Yoast SEO (aka WordPress SEO)</li>
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul></li>
@@ -226,12 +226,12 @@
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Pro extensions for WPSSO Core Pro:</p>
 
 <ul>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (Pro version)</li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-organization/">WPSSO Organization Markup</a> (Pro version)</li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> (Pro version)</li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> (Pro version)</li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> (Pro version)</li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a> (Pro version)</li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-am/?utm_source=wpsso-readme-am-pro">WPSSO Mobile App Meta</a> (Pro version)</li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-organization/?utm_source=wpsso-readme-org-pro">WPSSO Organization Markup</a> (Pro version)</li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-plm/?utm_source=wpsso-readme-plm-pro">WPSSO Place / Location and Local Business Meta</a> (Pro version)</li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-rrssb/?utm_source=wpsso-readme-rrssb-pro">WPSSO Ridiculously Responsive Social Sharing Buttons</a> (Pro version)</li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-pro">WPSSO Schema JSON-LD Markup</a> (Pro version)</li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/?utm_source=wpsso-readme-ssb-pro">WPSSO Social Sharing Buttons</a> (Pro version)</li>
 </ul>
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase">Purchase the WPSSO Core Pro plugin here</a> (all plugin purchases include a <em>No Risk 30 Day Refund Policy</em>).</p>
@@ -254,11 +254,11 @@
 
 <h4>Forums and Social</h4>
 
-<p>WPSSO Core Pro supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a>, <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="https://wpsso.com/docs/plugins/wpsso/notes/buddypress-integration/">BuddyPress Integration Notes</a>), and <a href="https://wordpress.org/plugins/buddypress-media/">rtMedia for WordPress, BuddyPress and bbPress</a>, making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.</p>
+<p>WPSSO Core Pro supports <a href="https://wordpress.org/plugins/bbpress/">bbPress</a>, <a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a> (see the <a href="https://wpsso.com/docs/plugins/wpsso/notes/buddypress-integration/?utm_source=wpsso-readme-bbp-notes">BuddyPress Integration Notes</a>), and <a href="https://wordpress.org/plugins/buddypress-media/">rtMedia for WordPress, BuddyPress and bbPress</a>, making sure your meta tags reflect the page content, including appropriate titles, descriptions, images, author information, etc.</p>
 
 <h3>Professional Support</h3>
 
-<p>WPSSO support and development is on-going. You can review the <a href="https://wpsso.com/docs/plugins/wpsso/faqs/">FAQ</a> and <a href="https://wpsso.com/docs/plugins/wpsso/notes/">Notes</a> pages for additional setup information. If you have any suggestions or comments, post them to the <a href="https://wordpress.org/support/plugin/wpsso">WordPress support forum</a> or the <a href="http://wpsso.support.wpsso.com">Pro version support website</a>.</p>
+<p>WPSSO support and development is on-going. You can review the <a href="https://wpsso.com/docs/plugins/wpsso/faqs/?utm_source=wpsso-readme-faqs">FAQ</a> and <a href="https://wpsso.com/docs/plugins/wpsso/notes/?utm_source=wpsso-readme-notes">Notes</a> pages for additional setup information. If you have any suggestions or comments, post them to the <a href="https://wordpress.org/support/plugin/wpsso">WordPress support forum</a> or the <a href="http://wpsso.support.wpsso.com/">Pro version support website</a>.</p>
 
 <p>Follow Surnia Ulula on <a href="https://plus.google.com/+SurniaUlula/?rel=author">Google+</a>, <a href="https://www.facebook.com/SurniaUlulaCom">Facebook</a>, and <a href="https://twitter.com/surniaululacom">Twitter</a>, and <a href="http://www.youtube.com/user/SurniaUlulaCom">YouTube</a>.</p>
 
@@ -268,23 +268,23 @@
 <h3>Install and Uninstall</h3>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/">Install the WPSSO Core Plugin (Free and Pro version)</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/">Integration Notes</a>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/?utm_source=wpsso-readme-install">Install the WPSSO Core Plugin (Free and Pro version)</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/?utm_source=wpsso-readme-integration">Integration Notes</a>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/?utm_source=wpsso-readme-bbp-notes">BuddyPress Integration</a></li>
 </ul></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/">Uninstall the WPSSO Plugin</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/">Performance Tuning</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/">Debugging and Problem Solving</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/">Migrate from NextGEN Facebook to WPSSO Core</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special - Buy one, Get one Free</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/?utm_source=wpsso-readme-uninstall">Uninstall the WPSSO Plugin</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/?utm_source=wpsso-readme-tuning">Performance Tuning</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/?utm_source=wpsso-readme-debug">Debugging and Problem Solving</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/?utm_source=wpsso-readme-migrate">Migrate from NextGEN Facebook to WPSSO Core</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/?utm_source=wpsso-readme-buy-one">Developer Special - Buy one, Get one Free</a></li>
 </ul>
 
 <h3>Plugin Setup</h3>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/">A Setup Guide for WPSSO</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/?utm_source=wpsso-readme-setup">A Setup Guide for WPSSO</a></li>
 </ul>
 
 
