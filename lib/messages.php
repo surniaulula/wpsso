@@ -41,13 +41,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$idx = sanitize_title_with_dashes( $idx );
 
-			$info['lca'] = $lca = isset( $info['lca'] ) ? $info['lca'] : $this->p->cf['lca'];	// wpsso, wpssoum, etc.
+			// wpsso, wpssoum, etc.
+			$info['lca'] = $lca = isset( $info['lca'] ) ? $info['lca'] : $this->p->cf['lca'];
 
-			$url = isset( $this->p->cf['plugin'][$lca]['url'] ) ?	// an array of plugin urls (download, purchase, etc.)
-				$this->p->cf['plugin'][$lca]['url'] : array();
+			// an array of plugin urls (download, purchase, etc.)
+			$url = isset( $this->p->cf['plugin'][$lca]['url'] ) ? $this->p->cf['plugin'][$lca]['url'] : array();
 
-			$url['purchase'] = empty( $url['purchase'] ) ?
-				'' : add_query_arg( 'utm_source', $idx, $url['purchase'] );
+			$url['purchase'] = empty( $url['purchase'] ) ? '' : add_query_arg( 'utm_source', $idx, $url['purchase'] );
 
 			foreach ( array( 'short', 'name', 'version' ) as $key ) {
 

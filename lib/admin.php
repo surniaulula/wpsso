@@ -397,12 +397,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $info['url']['purchase'] ) ) {
 				if ( ! empty( $utm_source ) ) {
-					$purchase_url = add_query_arg( 'utm_source',
-						$utm_source, $info['url']['purchase'] );
+					$purchase_url = add_query_arg( 'utm_source', $utm_source, $info['url']['purchase'] );
 				}
-				$links[] = $this->p->msgs->get( 'pro-purchase-text',
-					array( 'ext' => $ext, 'url' => $purchase_url, 
-						'tabindex' => ( $tabindex !== false ? ++$tabindex : false ) ) );
+				$links[] = $this->p->msgs->get( 'pro-purchase-text', array(
+					'ext' => $ext,
+					'url' => $purchase_url, 
+					'tabindex' => ( $tabindex !== false ? ++$tabindex : false )
+				) );
 			}
 
 			return $links;
@@ -1355,10 +1356,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_purchase_pro() {
+
 			$lca = $this->p->cf['lca'];
 			$info =& $this->p->cf['plugin'][$lca];
 			$purchase_url = empty( $info['url']['purchase'] ) ?
 				'' : add_query_arg( 'utm_source', 'column-purchase-pro', $info['url']['purchase'] );
+
 			echo '<table class="sucom-settings '.$lca.' column-metabox"><tr><td>';
 			echo '<div class="column-metabox-icon">';
 			echo $this->get_ext_img_icon( $lca );
