@@ -426,19 +426,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_select( $name, $values, $class, $id, $is_assoc, true, $selected, $on_change );
 		}
 
-		public function get_select_timezone( $name, $class = '', $id = '', $disabled = false, $selected = false ) {
-			$class = trim( 'timezone '.$class );
-			$timezones = timezone_identifiers_list();
-			if ( empty( $this->defaults[$name] ) ) {
-				$this->defaults[$name] = get_option( 'timezone_string' );
-			}
-			return $this->get_select( $name, $timezones, $class, $id, $disabled, $selected );
-		}
-
-		public function get_no_select_timezone( $name, $class = '', $id = '', $selected = false ) {
-			return $this->get_select_timezone( $name, $class, $id, true, $selected );
-		}
-
 		public function get_select_time( $name, $class = '', $id = '', $disabled = false, $selected = false, $step_mins = 30 ) {
 
 			if ( empty( $name ) || ! isset( $this->defaults[$name] ) ) {
@@ -457,8 +444,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$class, $id, true, $disabled, $selected );
 		}
 
-		public function get_no_select_time( $name, $class = '', $id = '', $selected = false ) {
-			return $this->get_select_time( $name, $class, $id, true, $selected );
+		public function get_no_select_time( $name, $class = '', $id = '', $selected = false, $step_mins = 30 ) {
+			return $this->get_select_time( $name, $class, $id, true, $selected, $step_mins );
+		}
+
+		public function get_select_timezone( $name, $class = '', $id = '', $disabled = false, $selected = false ) {
+			$class = trim( 'timezone '.$class );
+			$timezones = timezone_identifiers_list();
+			if ( empty( $this->defaults[$name] ) ) {
+				$this->defaults[$name] = get_option( 'timezone_string' );
+			}
+			return $this->get_select( $name, $timezones, $class, $id, false, $disabled, $selected, false );
+		}
+
+		public function get_no_select_timezone( $name, $class = '', $id = '', $selected = false ) {
+			return $this->get_select_timezone( $name, $class, $id, true, $selected );
 		}
 
 		public function get_select_country( $name, $class = '', $id = '', $disabled = false, $selected = false ) {
@@ -772,6 +772,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $class ) ? ' class="colorpicker"' : ' class="colorpicker '.esc_attr( $class ).'"' ).
 				( empty( $id ) ? ' id="text_'.esc_attr( $name ).'"' : ' id="text_'.esc_attr( $id ).'"' ).
 				' placeholder="#000000" value="'.esc_attr( $value ).'" />';
+		}
+
+		public function get_date_time_iso( $name_prefix = '', $disabled = false ) {
+			return $this->get_input_date( $name_prefix.'_date', '', '', '', '', $disabled ).' '.
+				$this->get_value_transl( 'at' ).' '.
+				$this->get_select_time( $name_prefix.'_time', '', '', $disabled, false, 30 ).' '.
+				$this->get_value_transl( 'tz' ).' '.
+				$this->get_select_timezone( $name_prefix.'_timezone', '', '', $disabled, false );
+		}
+
+		public function get_no_date_time_iso( $name_prefix = '' ) {
+			return $this->get_date_time_iso( $name_prefix, true );
 		}
 
 		public function get_input_date( $name = '', $class = '', $id = '', $min_date = '', $max_date = '', $disabled = false ) {
