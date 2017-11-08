@@ -1428,12 +1428,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$links = array();
 
 				if ( ! empty( $info['url']['review'] ) ) {
-
-					$rate_stars = '<span class="'.$lca.'-rate-stars"></span>';
 					$plugin_name = '<strong>'.$info['name'].'</strong>';
-
 					$links[] = '<a href="'.$info['url']['review'].'">'.
-						sprintf( __( 'Rate the %1$s plugin 5 stars.', 'wpsso' ), $plugin_name ).'</a>';
+						sprintf( __( 'Rate %s', 'wpsso' ),
+							$plugin_name ).'</a>';
 				}
 
 				if ( ! empty( $links ) ) {

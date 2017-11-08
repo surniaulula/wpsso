@@ -306,14 +306,15 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					margin:0 0 1.2em 0;
 				}
 				.'.$lca.'-rate-stars:before {
-					content:"\53\53\53\53\53";
+					content:"\53\53\53\53\53";	/* five stars */
+				}
+				.'.$lca.'-rate-heart {
+					color:red;
+					font-size:1.5em;
+					vertical-align:top;
 				}
 				.'.$lca.'-rate-heart:before {
-					color:red;
-					font-size:1.1em;
-					width:1.1em;
-					height:1.1em;
-					vertical-align:middle;
+					content:"\2665";	/* heart */
 				}
 			';
 
