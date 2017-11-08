@@ -3886,8 +3886,8 @@ msgstr ""
 
 #: lib/messages.php:1483
 msgid ""
-"<strong>Great reviews and ratings are a terrific way to encourage plugin "
-"developers</strong> &mdash; and it only takes a minute."
+"<strong>Great reviews and ratings are a terrific way to encourage your "
+"plugin developers</strong> &mdash; and it only takes a minute."
 msgstr ""
 
 #: lib/messages.php:1484

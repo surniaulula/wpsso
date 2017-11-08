@@ -1480,7 +1480,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'column-rate-review':
 
-						$text = '<p>'.__( '<strong>Great reviews and ratings are a terrific way to encourage plugin developers</strong> &mdash; and it only takes a minute.', 'wpsso' ).' ;-)</p>';
+						$text = '<p>'.__( '<strong>Great reviews and ratings are a terrific way to encourage your plugin developers</strong> &mdash; and it only takes a minute.', 'wpsso' ).' ;-)</p>';
 						$text .= '<p>'.sprintf( __( 'Please encourage us %s by rating these plugins:',
 							'wpsso' ), '<span class="'.$lca.'-rate-heart"></span>' ).'</p>';
 						break;
