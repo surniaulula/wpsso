@@ -1647,13 +1647,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
+			/*
+			 * Create and add ISO formatted date options.
+			 */
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'checking for custom event date and time' );
+				$wpsso->debug->log( 'checking for custom event start/end date and time' );
 			}
-
 			self::add_mod_opts_date_iso( $mod, $event_opts, array( 
-				'event_start_date_iso' => 'schema_event_start',	// prefix for date, time, timezone
-				'event_end_date_iso' => 'schema_event_end',	// prefix for date, time, timezone
+				'event_start_date' => 'schema_event_start',	// prefix for date, time, timezone, iso
+				'event_end_date' => 'schema_event_end',		// prefix for date, time, timezone, iso
 			) );
 
 			if ( $wpsso->debug->enabled ) {
@@ -1796,9 +1798,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$job_opts = apply_filters( $wpsso->cf['lca'].'_get_job_options', false, $mod, $job_id );
 
 			if ( ! empty( $job_opts ) ) {
-				if ( is_array( $job_opts ) ) {	// just in case
-					SucomUtil::unset_is_option_keys( $job_opts );	// remove disable option keys
-				}
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log_arr( 'get_job_options filters returned', $job_opts );
 				}
@@ -1807,21 +1806,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * Override job options from filters with custom meta values (if any).
 			 */
-			if ( is_object( $mod['obj'] ) ) {	// just in case
-
-				$md_defs = (array) $mod['obj']->get_defaults( $mod['id'] );
-				$md_opts = (array) $mod['obj']->get_options( $mod['id'] );
-
-				$md_defs = SucomUtil::preg_grep_keys( '/^schema_job_/', $md_defs, false, 'job_' );
-				$md_opts = SucomUtil::preg_grep_keys( '/^schema_job_/', $md_opts, false, 'job_' );
-
-				// merge defaults, values from filters, and custom values (in that order)
-				if ( is_array( $job_opts ) ) {
-					$job_opts = array_merge( $md_defs, $job_opts, $md_opts );
-				} else {
-					$job_opts = array_merge( $md_defs, $md_opts );
-				}
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'merging default, filter, and custom option values' );
 			}
+			self::merge_custom_mod_opts( $mod, $job_opts, array( 'job' => 'schema_job' ) );
 
 			// if not adding a list element, inherit the existing schema type url (if one exists)
 			list( $job_type_id, $job_type_url ) = self::get_single_type_id_url( $json_data,
@@ -1834,13 +1822,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$job_opts['job_title'] = $wpsso->page->get_title( $title_max_len, '...', $mod );
 			}
 
+			/*
+			 * Create and add ISO formatted date options.
+			 */
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'checking for custom job date and time' );
+				$wpsso->debug->log( 'checking for custom job expire date and time' );
 			}
-
-			self::add_mod_opts_date_iso( $mod, $job_opts, array( 
-				'job_expire_iso' => 'schema_job_expire',	// prefix for date, time, timezone
-			) );
+			self::add_mod_opts_date_iso( $mod, $job_opts, array( 'job_expire' => 'schema_job_expire' ) );
 
 			// add schema properties from the job options
 			self::add_data_itemprop_from_assoc( $ret, $job_opts, array(
@@ -2227,16 +2215,41 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
+		public static function merge_custom_mod_opts( array $mod, &$opts, array $opts_md_pre ) {
+
+			if ( is_object( $mod['obj'] ) ) {	// just in case
+
+				$md_defs = (array) $mod['obj']->get_defaults( $mod['id'] );
+				$md_opts = (array) $mod['obj']->get_options( $mod['id'] );
+
+				foreach ( $opts_md_pre as $opt_key => $md_pre ) {
+
+					$md_defs = SucomUtil::preg_grep_keys( '/^'.$md_pre.'_/', $md_defs, false, $opt_key.'_' );
+					$md_opts = SucomUtil::preg_grep_keys( '/^'.$md_pre.'_/', $md_opts, false, $opt_key.'_' );
+	
+					// merge defaults, values from filters, and custom values (in that order)
+					if ( is_array( $opts ) ) {
+						$opts = array_merge( $md_defs, $opts, $md_opts );
+					} else {
+						$opts = array_merge( $md_defs, $md_opts );
+					}
+				}
+			}
+		}
+
 		/*
+		 * Create and add ISO formatted date options.
+		 *
 		 * $opts_md_pre = array( 
-		 * 	'event_start_date_iso' => 'schema_event_start',	// prefix for date, time, timezone
-		 * 	'event_end_date_iso' => 'schema_event_end',	// prefix for date, time, timezone
+		 * 	'event_start_date' => 'schema_event_start',	// prefix for date, time, timezone
+		 * 	'event_end_date' => 'schema_event_end',		// prefix for date, time, timezone
 		 * );
 		 */
-		public static function add_mod_opts_date_iso( array $mod, array &$opts, array $opts_md_pre ) {
+		public static function add_mod_opts_date_iso( array $mod, &$opts, array $opts_md_pre ) {
+
 			$wpsso =& Wpsso::get_instance();
 			
-			foreach ( $opts_md_pre as $opt_key => $md_pre ) {
+			foreach ( $opts_md_pre as $opt_pre => $md_pre ) {
 
 				$md_date = $mod['obj']->get_options( $mod['id'], $md_pre.'_date' );
 				
@@ -2265,7 +2278,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$md_timezone = get_option( 'timezone_string' );
 				}
 
-				$opts[$opt_key] = date_format( date_create( $md_date.' '.$md_time.' '.$md_timezone ), 'c' );
+				if ( ! is_array( $opts ) ) {	// just in case
+					$opts = array();
+				}
+
+				$opts[$opt_pre.'_iso'] = date_format( date_create( $md_date.' '.$md_time.' '.$md_timezone ), 'c' );
 			}
 		}
 

@@ -1510,7 +1510,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function unset_is_option_keys( array &$opts ) {
 			foreach ( $opts as $key => $val ) {
-				if ( strpos( $key, ':is' ) !== false ) {
+				if ( preg_match( '/:is$/' ) ) {
 					unset( $opts[$key] );
 				}
 			}
