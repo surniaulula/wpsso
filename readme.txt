@@ -394,7 +394,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new WpssoSchema get_types_cache_exp() method to apply the Schema types expiration filter once (and cache the result in a static variable).
 	* Added a new WpssoSchema add_mod_opts_date_iso() method to add single event/job date/time in iso format.
 	* Refactored and renamed the SucomForm get_post_type_checkboxes() method to get_checklist_post_types().
-	* Added support for 'job_empl_type_*' values in the WpssoSchema add_single_job_data() method.
+	* Added support for employment type values in the WpssoSchema add_single_job_data() method.
 
 **Version 3.48.0 (2017/11/02)**
 
