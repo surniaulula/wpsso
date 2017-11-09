@@ -378,7 +378,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.1-a.1 (2017/11/08)**
+**Version 3.48.1-a.2 (2017/11/08)**
 
 * *New Features*
 	* None
@@ -395,6 +395,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new WpssoSchema add_mod_opts_date_iso() method to add single event/job date/time in iso format.
 	* Refactored and renamed the SucomForm get_post_type_checkboxes() method to get_checklist_post_types().
 	* Added support for employment type values in the WpssoSchema add_single_job_data() method.
+	* Moved the link rel HTML tags from WpssoHead to a new WpssoLinkRel class.
 
 **Version 3.48.0 (2017/11/02)**
 
@@ -876,7 +877,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.1-a.1 =
+= 3.48.1-a.2 =
 
 (2017/11/08) Changed the user agent to the Facebook crawler when checking for duplicate meta tags. Added an action to remove the SNAP OG meta tags holder. Updated the Google URL Shortener API service option labels and help text (Pro version).
 
