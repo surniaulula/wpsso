@@ -43,6 +43,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $check;			// WpssoCheck
 		public $debug;			// SucomDebug or SucomNoDebug
 		public $head;			// WpssoHead
+		public $link_rel;		// WpssoLinkRel (link relation tags)
 		public $loader;			// WpssoLoader
 		public $media;			// WpssoMedia (images, videos, etc.)
 		public $msgs;			// WpssoMessages (admin tooltip messages)
@@ -277,10 +278,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->head = new WpssoHead( $this );
 
 			// meta tags and json-ld markup
-			$this->og = new WpssoOpenGraph( $this );		// open graph
-			$this->weibo = new WpssoWeibo( $this );			// weibo
-			$this->tc = new WpssoTwitterCard( $this );		// twitter
-			$this->schema = new WpssoSchema( $this );		// schema
+			$this->link_rel = new WpssoLinkRel( $this );		// link relation tags
+			$this->og = new WpssoOpenGraph( $this );		// open graph meta tags
+			$this->weibo = new WpssoWeibo( $this );			// weibo meta tags
+			$this->tc = new WpssoTwitterCard( $this );		// twitter meta tags
+			$this->schema = new WpssoSchema( $this );		// schema meta tags and json markup
 
 			if ( is_admin() ) {
 				$this->msgs = new WpssoMessages( $this );	// admin tooltip messages

@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.48.1-a.1',		// plugin version
-					'opt_version' => '561',		// increment when changing default options
+					'opt_version' => '562',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -668,7 +668,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_link_rel_author' => 1,
 					'add_link_rel_canonical' => 0,
 					'add_link_rel_publisher' => 1,
-					'add_link_rel_shortlink' => 0,
+					'add_link_rel_shortlink' => 1,
 					// facebook
 					'add_meta_property_fb:admins' => 1,
 					'add_meta_property_fb:app_id' => 1,
@@ -931,9 +931,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Caches
 					'plugin_clear_for_comment' => 1,		// Clear Post Cache for New Comment
 					// Service APIs Tab
-					'plugin_shortener' => 'none',
-					'plugin_shortlink' => 1,			// Use Shortnened URL for WP Shortlink
+					'plugin_shortener' => 'none',			// Preferred URL Shortening Service
+					'plugin_wp_shortlink' => 1,			// Use Shortnened URL for WP Shortlink
 					'plugin_min_shorten' => 23,
+					'plugin_no_shortlink_preg' => '/\?/',
 					'plugin_bitly_login' => '',
 					'plugin_bitly_access_token' => '',
 					'plugin_bitly_api_key' => '',
@@ -2325,6 +2326,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR.'lib/filters.php';
 			require_once WPSSO_PLUGINDIR.'lib/functions.php';
 			require_once WPSSO_PLUGINDIR.'lib/head.php';
+			require_once WPSSO_PLUGINDIR.'lib/link_rel.php';
 			require_once WPSSO_PLUGINDIR.'lib/media.php';
 			require_once WPSSO_PLUGINDIR.'lib/meta.php';
 			require_once WPSSO_PLUGINDIR.'lib/opengraph.php';

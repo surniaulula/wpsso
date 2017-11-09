@@ -560,7 +560,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return $val;	// stop here
 					break;
 				case 'html':		// leave html, css, and javascript code blocks as-is
-				case 'code':
+				case 'code':		// code values cannot be blank
+				case 'preg':
 					break;
 				default:
 					$val = wp_filter_nohtml_kses( $val );	// strips all the HTML in the content
@@ -717,6 +718,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				// text strings that can be blank (line breaks are removed)
+				case 'preg':
 				case 'desc':
 				case 'one_line':
 					if ( $val !== '' ) {
@@ -836,7 +838,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_vid_embed':
 					return 'html';
 					break;
-				// js and css
+				// regular expression
+				case ( preg_match( '/_preg$/', $key ) ? true : false ):
+					return 'preg';
+					break;
+				// js and css (cannot be blank)
 				case ( strpos( $key, '_js_' ) !== false ? true : false ):
 				case ( strpos( $key, '_css_' ) !== false ? true : false ):
 				case ( preg_match( '/(_css|_js|_html)$/', $key ) ? true : false ):

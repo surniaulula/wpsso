@@ -784,12 +784,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'URLs shorter than this length will not be shortened (the default suggested by Twitter is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'plugin_min_shorten' ) );
 							break;
 
-						case 'tooltip-plugin_shortlink':
-							$text = __( 'The <em>Get Shortlink</em> button and the shortlink meta tag on Posts / Pages provides the shortened sharing URL instead of the default WordPress shortlink URL.', 'wpsso' );
+						case 'tooltip-plugin_wp_shortlink':
+							$text = __( 'Use the shortened sharing URL for the <em>Get Shortlink</em> button in admin editing pages and the "link rel shortlink" HTML tag value.', 'wpsso' );
 							break;
 
 						case 'tooltip-plugin_add_link_rel_shortlink':
 							$text = __( 'Add a "link rel shortlink" HTML tag for social crawlers to the head section of webpages.', 'wpsso' );
+							break;
+
+						case 'tooltip-plugin_no_shortlink_preg':
+							$text = __( 'Do not add a "link rel shortlink" HTML tag if the URL matches this regular expression.', 'wpsso' ).' '.sprintf( __( 'The default regular expression <code>%s</code> skips all URLs with one or more query arguments.', 'wpsso' ), '/\?/' ).' '.__( 'Leave this option empty to shorten all URLs, including those with query arguments (not suggested).', 'wpsso' );
 							break;
 
 						case 'tooltip-plugin_bitly_login':

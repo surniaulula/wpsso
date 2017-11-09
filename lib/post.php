@@ -79,13 +79,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'get_post_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
 			}
 
-
-			if ( ! empty( $this->p->options['plugin_shortlink'] ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'adding get_shortlink filter' );
+			if ( ! empty( $this->p->options['plugin_shortener'] ) && $this->p->options['plugin_shortener'] !== 'none' ) {
+				if ( ! empty( $this->p->options['plugin_wp_shortlink'] ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'adding get_shortlink filter for sharing url' );
+					}
+					// filters the wp shortlink for a post
+					add_filter( 'get_shortlink', array( &$this, 'get_sharing_shortlink' ), 9000, 4 );
 				}
-				// filters the shortlink for a post
-				add_filter( 'get_shortlink', array( &$this, 'get_shortlink' ), 9000, 4 );
 			}
 
 			if ( ! empty( $this->p->options['plugin_clear_for_comment'] ) ) {
@@ -159,9 +160,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/*
-		 * Filters the shortlink for a post - returns the shortened sharing URL.
+		 * Filters the wp shortlink for a post - returns the shortened sharing URL.
 		 */
-		public function get_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
+		public function get_sharing_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
@@ -172,7 +173,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				) );
 			}
 
-			// check if a shortening service has been defined
+			// just in case
 			if ( empty( $this->p->options['plugin_shortener'] ) || $this->p->options['plugin_shortener'] === 'none' ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: no shortening service defined' );

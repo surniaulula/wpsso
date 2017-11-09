@@ -350,13 +350,18 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td nowrap class="blank">'.$this->p->options['plugin_min_shorten'].' '.
 				_x( 'characters', 'option comment', 'wpsso' ).'</td>';
 
-			$table_rows['plugin_shortlink'] = $form->get_th_html( _x( 'Short Sharing URL for WP Shortlink',
-				'option label', 'wpsso' ), '', 'plugin_shortlink' ).
-			$form->get_nocb_td( 'plugin_shortlink' );
+			$table_rows['plugin_wp_shortlink'] = $form->get_th_html( _x( 'Short Sharing URL for WP Shortlink',
+				'option label', 'wpsso' ), '', 'plugin_wp_shortlink' ).
+			$form->get_nocb_td( 'plugin_wp_shortlink' );
 
 			$table_rows['plugin_add_link_rel_shortlink'] = $form->get_th_html( _x( 'Add "link rel shortlink" HTML Tag',
 				'option label', 'wpsso' ), '', 'plugin_add_link_rel_shortlink' ).
 			$form->get_nocb_td( 'add_link_rel_shortlink' );	// option name from the head tags list metabox
+
+			$table_rows['plugin_no_shortlink_preg'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'No "link rel shortlink" for RegEx',
+				'option label', 'wpsso' ), '', 'plugin_no_shortlink_preg' ).
+			'<td class="blank mono">'.$this->p->options['plugin_no_shortlink_preg'].'</td>';
 
 			$table_rows['subsection_plugin_bitly'] = '<td></td><td class="subsection"><h4>'.
 				_x( 'Bitly URL Shortener', 'metabox title', 'wpsso' ).'</h4></td>';

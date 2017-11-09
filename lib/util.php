@@ -1900,19 +1900,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public function shorten_html_href( $html ) {
-			return preg_replace_callback( '/(href=[\'"])([^\'"]+)([\'"])/', 
-				array( &$this, 'shorten_html_href_value' ), $html );
-		}
-
-		private function shorten_html_href_value( $matches ) {
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'shortening url '.$matches[2] );
-			}
-			$service_key = $this->p->options['plugin_shortener'];
-			return $matches[1].apply_filters( $this->p->cf['lca'].'_get_short_url', $matches[2], $service_key ).$matches[3];
-		}
-
 		public function rename_opts_by_ext( &$opts, $options_keys ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {

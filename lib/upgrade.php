@@ -135,6 +135,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				559 => array(
 					'plugin_product_currency' => 'plugin_def_currency',
 				),
+				561 => array(
+					'plugin_shortlink' => 'plugin_wp_shortlink',
+				),
 			),
 			'wpssossb' => array(	// WPSSO SSB
 				14 => array(

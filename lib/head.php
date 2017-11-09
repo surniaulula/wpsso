@@ -25,11 +25,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			add_action( 'wp_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 			add_action( 'amp_post_template_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
-			// remove the 'wp_shortlink_wp_head' hook so we can add our own shortlink meta tag
-			if ( ! empty( $this->p->options['add_link_rel_shortlink'] ) ) {
-				remove_action( 'wp_head', 'wp_shortlink_wp_head' );
-			}
-
 			// crawlers are only seen on the front-end, so skip if in back-end
 			if ( ! is_admin() && $this->p->avail['*']['vary_ua'] ) {
 				$this->vary_user_agent_check();
@@ -436,7 +431,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/*
-			 * Open Graph
+			 * Open Graph - define first to pass the mt_og array to other methods.
 			 */
 			$mt_og = $this->p->og->get_array( $mod, $mt_og, $crawler_name );
 
@@ -457,9 +452,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
 				// fallback for authors without a Facebook page URL in their user profile
-				if ( empty( $mt_og['article:author'] ) &&
-					is_object( $this->p->m['util']['user'] ) ) {	// just in case
-
+				if ( empty( $mt_og['article:author'] ) && is_object( $this->p->m['util']['user'] ) ) {	// just in case
 					$mt_name['author'] = $this->p->m['util']['user']->get_author_meta( $author_id,
 						$this->p->options['fb_author_name'] );
 				}
@@ -482,44 +475,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Link relation tags
 			 */
-			$link_rel = array();
-
-			$add_link_rel_author = empty( $this->p->options['add_link_rel_author'] ) ? false : true;
-
-			if ( apply_filters( $lca.'_add_link_rel_author', $add_link_rel_author, $mod ) ) {
-				if ( ! empty( $author_id ) && is_object( $this->p->m['util']['user'] ) ) {	// just in case
-					$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id,
-						$this->p->options['seo_author_field'] );
-				}
-			}
-
-			$add_link_rel_canonical = empty( $this->p->options['add_link_rel_canonical'] ) ? false : true;
-
-			if ( apply_filters( $lca.'_add_link_rel_canonical', $add_link_rel_canonical, $mod ) ) {
-				$link_rel['canonical'] = $this->p->util->get_canonical_url( $mod );
-			}
-
-			$add_link_rel_publisher = empty( $this->p->options['add_link_rel_publisher'] ) ? false : true;
-
-			if ( apply_filters( $lca.'_add_link_rel_publisher', $add_link_rel_publisher, $mod ) ) {
-				if ( ! empty( $this->p->options['seo_publisher_url'] ) ) {
-					$link_rel['publisher'] = $this->p->options['seo_publisher_url'];
-				}
-			}
-
-			$add_link_rel_shortlink = empty( $this->p->options['add_link_rel_shortlink'] ) || is_404() ? false : true;
-
-			if ( apply_filters( $lca.'_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
-				if ( $mod['is_post'] ) {
-					$link_rel['shortlink'] = wp_get_shortlink( $mod['id'], 'post' );	// $context = post
-				} elseif ( ! empty( $mt_og['og:url'] ) ) {	// just in case
-					$service_key = $this->p->options['plugin_shortener'];
-					$link_rel['shortlink'] = apply_filters( $lca.'_get_short_url',
-						$sharing_url, $service_key, $mod, $mod['name'] );
-				}
-			}
-
-			$link_rel = (array) apply_filters( $lca.'_link_rel', $link_rel, $mod );
+			$link_rel = $this->p->link_rel->get_array( $mod, $mt_og, $crawler_name, $author_id );
 
 			/*
 			 * Schema meta tags
