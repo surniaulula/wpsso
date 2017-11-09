@@ -216,18 +216,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
 			} else {
-				$long_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
+				$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 
 				if ( $mod['is_post'] ) {
 					$short_url = wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 				} else {
+					$service_key = $this->p->options['plugin_shortener'];
 					$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',
-						$long_url, $this->p->options['plugin_shortener'] );
+						$sharing_url, $service_key, $mod, $mod['name'] );
 				}
 
 				$table_rows[] = $form->get_th_html( _x( 'Sharing URL',
 					'option label', 'wpsso' ), 'medium' ).
-				'<td>'.$form->get_input_copy_clipboard( $long_url ).'</td>';
+				'<td>'.$form->get_input_copy_clipboard( $sharing_url ).'</td>';
 
 				$table_rows[] = $form->get_th_html( _x( 'Shortened URL',
 					'option label', 'wpsso' ), 'medium' ).

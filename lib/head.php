@@ -484,36 +484,38 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$link_rel = array();
 
-			if ( ! empty( $this->p->options['add_link_rel_author'] ) ) {
+			$add_link_rel_author = empty( $this->p->options['add_link_rel_author'] ) ? false : true;
+
+			if ( apply_filters( $lca.'_add_link_rel_author', $add_link_rel_author, $mod ) ) {
 				if ( ! empty( $author_id ) && is_object( $this->p->m['util']['user'] ) ) {	// just in case
 					$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id,
 						$this->p->options['seo_author_field'] );
 				}
 			}
 
-			if ( apply_filters( $lca.'_add_link_rel_canonical', 
-				( empty( $this->p->options['add_link_rel_canonical'] ) ? false : true ) ) ) {
+			$add_link_rel_canonical = empty( $this->p->options['add_link_rel_canonical'] ) ? false : true;
+
+			if ( apply_filters( $lca.'_add_link_rel_canonical', $add_link_rel_canonical, $mod ) ) {
 				$link_rel['canonical'] = $this->p->util->get_canonical_url( $mod );
 			}
 
-			if ( ! empty( $this->p->options['add_link_rel_publisher'] ) ) {
+			$add_link_rel_publisher = empty( $this->p->options['add_link_rel_publisher'] ) ? false : true;
+
+			if ( apply_filters( $lca.'_add_link_rel_publisher', $add_link_rel_publisher, $mod ) ) {
 				if ( ! empty( $this->p->options['seo_publisher_url'] ) ) {
 					$link_rel['publisher'] = $this->p->options['seo_publisher_url'];
 				}
 			}
 
-			if ( empty( $this->p->options['add_link_rel_shortlink'] ) || is_404() ) {
-				$add_shortlink = false;
-			} else {
-				$add_shortlink = true;
-			}
+			$add_link_rel_shortlink = empty( $this->p->options['add_link_rel_shortlink'] ) || is_404() ? false : true;
 
-			if ( $add_shortlink ) {
+			if ( apply_filters( $lca.'_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
 				if ( $mod['is_post'] ) {
 					$link_rel['shortlink'] = wp_get_shortlink( $mod['id'], 'post' );	// $context = post
-				} else {
+				} elseif ( ! empty( $mt_og['og:url'] ) ) {	// just in case
+					$service_key = $this->p->options['plugin_shortener'];
 					$link_rel['shortlink'] = apply_filters( $lca.'_get_short_url',
-						$mt_og['og:url'], $this->p->options['plugin_shortener'] );
+						$sharing_url, $service_key, $mod, $mod['name'] );
 				}
 			}
 

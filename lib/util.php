@@ -1168,8 +1168,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( empty( $atts['short_url'] ) ) {
-				$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',
-					$sharing_url, $this->p->options['plugin_shortener'] );
+				if ( $mod['is_post'] ) {
+					$short_url = wp_get_shortlink( $mod['id'], 'post' );	// $context = post
+				} else {
+					$service_key = $this->p->options['plugin_shortener'];
+					$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',
+						$sharing_url, $service_key, $mod, $mod['name'] );
+				}
 			} else {
 				$short_url = $atts['short_url'];
 			}
@@ -1904,8 +1909,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'shortening url '.$matches[2] );
 			}
-			return $matches[1].apply_filters( $this->p->cf['lca'].'_get_short_url',
-				$matches[2], $this->p->options['plugin_shortener'] ).$matches[3];
+			$service_key = $this->p->options['plugin_shortener'];
+			return $matches[1].apply_filters( $this->p->cf['lca'].'_get_short_url', $matches[2], $service_key ).$matches[3];
 		}
 
 		public function rename_opts_by_ext( &$opts, $options_keys ) {

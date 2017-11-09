@@ -158,7 +158,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $posts;
 		}
 
-		// filters the shortlink for a post
+		/*
+		 * Filters the shortlink for a post - returns the shortened sharing URL.
+		 */
 		public function get_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -178,6 +180,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $shortlink;	// return original shortlink
 			}
 
+			$lca = $this->p->cf['lca'];
 			$mod = $this->get_mod( $post_id );
 
 			if ( empty( $mod['post_type'] ) ) {
@@ -197,11 +200,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $shortlink;	// return original shortlink
 			}
 
-			$long_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
-			$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',
-				$long_url, $this->p->options['plugin_shortener'] );
+			$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
+			$service_key = $this->p->options['plugin_shortener'];
+			$short_url = apply_filters( $lca.'_get_short_url',
+				$sharing_url, $service_key, $mod, $context );
 
-			if ( $long_url === $short_url ) {	// shortened failed
+			if ( $sharing_url === $short_url ) {	// shortened failed
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: short URL ('.$short_url.') returned is identical to long URL.' );
 				}
