@@ -999,6 +999,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				SucomUtil::move_to_end( $this->p->cf['wp']['transient'], $lca.'_' );
 			}
 
+			$shortened_urls_count = 0;
 			$have_filtered_cache_exp = false;
 
 			foreach ( $this->p->cf['wp']['transient'] as $cache_md5_pre => $cache_info ) {
@@ -1014,6 +1015,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cache_exp_html = $cache_exp_secs = isset( $cache_info['opt_key'] ) &&
 					isset( $this->p->options[$cache_info['opt_key']] ) ?
 						 $this->p->options[$cache_info['opt_key']] : '';
+				
+				if ( $cache_md5_pre === $lca.'_s_' ) {
+					$shortened_urls_count = $cache_count;
+				}
 
 				if ( ! empty( $cache_info['filter'] ) ) {
 					$filter_name = $cache_info['filter'];
@@ -1046,16 +1051,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo $this->form->get_button( $clear_label_transl, 'button-secondary', '', $clear_admin_url );
 
 			// add an extra button to clear the cache and shortened urls
-			if ( ! $using_external_cache ) {
-				if ( ! empty( $this->p->options['plugin_shortener'] ) && $this->p->options['plugin_shortener'] !== 'none' ) {
-					if ( empty( $this->p->options['plugin_clear_short_urls'] ) ) {
-						$clear_admin_url = $this->p->util->get_admin_url( '?'.$lca.'-action=clear_all_cache_and_short_urls' );
-						$clear_admin_url = wp_nonce_url( $clear_admin_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
-						$clear_label_transl = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
-		
-						echo $this->form->get_button( $clear_label_transl, 'button-secondary', '', $clear_admin_url );
-					}
-				}
+			if ( $shortened_urls_count || ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' && 
+				empty( $this->p->options['plugin_clear_short_urls'] ) ) ) {
+
+				$clear_admin_url = $this->p->util->get_admin_url( '?'.$lca.'-action=clear_all_cache_and_short_urls' );
+				$clear_admin_url = wp_nonce_url( $clear_admin_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
+				$clear_label_transl = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
+
+				echo $this->form->get_button( $clear_label_transl, 'button-secondary', '', $clear_admin_url );
 			}
 
 			echo '</td></tr>';
