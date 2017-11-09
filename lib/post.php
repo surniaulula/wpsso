@@ -85,6 +85,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'adding get_shortlink filter for sharing url' );
 					}
 					// filters the wp shortlink for a post
+					// wp_shortlink_wp_head() function calls wp_get_shortlink( 0, 'query' );
 					add_filter( 'get_shortlink', array( &$this, 'get_sharing_shortlink' ), 9000, 4 );
 				}
 			}
@@ -161,7 +162,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/*
 		 * Filters the wp shortlink for a post - returns the shortened sharing URL.
-		 * $post_id is 0 when getting the shortlink for the current post.
+		 * $post_id is 0 when getting the shortlink for the current post (which is really stupid).
+		 * wp_shortlink_wp_head() function calls wp_get_shortlink( 0, 'query' );
 		 */
 		public function get_sharing_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
 
@@ -185,15 +187,28 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'provided post id is 0 (current post)' );
 				}
-				if ( preg_match( '/\?p=([0-9]+)/', $shortlink, $matches ) ) {
+				if ( $context === 'query' && is_singular() ) {	// wp_get_shortlink() uses the same logic
+					$post_id = get_queried_object_id();
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'setting post id '.$post_id.' from queried object' );
+					}
+				} elseif ( preg_match( '/\?p=([0-9]+)/', $shortlink, $matches ) ) {
 					$post_id = $matches[1];
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'using post id '.$post_id.' from shortlink URL' );
+						$this->p->debug->log( 'setting post id '.$post_id.' from shortlink url' );
 					}
-				} else {
-					$post_id = true; 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'setting post id to true' );
+				} else {	// fallback to the current post object
+					global $post;
+					if ( ! empty( $post->ID ) ) {
+						$post_id = $post->ID;
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'setting post id '.$post_id.' from post object' );
+						}
+					} else {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'exiting early: unable to define a post id' );
+						}
+						return $shortlink;	// return original shortlink
 					}
 				}
 			}
