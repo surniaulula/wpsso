@@ -329,12 +329,19 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$tr_hide_in_basic = array();
 
 			foreach ( array(
-				'bitly' => 'plugin_bitly_api_key',
+				'bitly' => 'plugin_bitly_login',
 				'google' => 'plugin_google_api_key',
 				'owly' => 'plugin_owly_api_key',
 				'yourls' => 'plugin_yourls_api_url',
 			) as $tr_idx => $opt_key ) {
 				$tr_hide_in_basic[$tr_idx] = empty( $this->p->options[$opt_key] ) ? '<tr class="hide_in_basic">' : '';
+			}
+
+			// show bitly shortener by default
+			if ( empty( $this->p->options['plugin_shortener'] ) || 
+				$this->p->options['plugin_shortener'] === 'none' || 
+				$this->p->options['plugin_shortener'] === 'bitly' ) {
+				$tr_hide_in_basic['bitly'] = '';
 			}
 
 			$table_rows[] = '<td colspan="2" align="center">'.
@@ -358,18 +365,21 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), '', 'plugin_add_link_rel_shortlink' ).
 			$form->get_nocb_td( 'add_link_rel_shortlink' );	// option name from the head tags list metabox
 
-			$table_rows['subsection_plugin_bitly'] = '<td></td><td class="subsection"><h4>'.
-				_x( 'Bitly URL Shortener', 'metabox title', 'wpsso' ).'</h4></td>';
+			$table_rows['subsection_plugin_bitly'] = $tr_hide_in_basic['bitly'].
+				'<td></td><td class="subsection"><h4>'.
+					_x( 'Bitly URL Shortener', 'metabox title', 'wpsso' ).'</h4></td>';
 
-			$table_rows['plugin_bitly_login'] = $form->get_th_html( _x( 'Bitly Username',
+			$table_rows['plugin_bitly_login'] = $tr_hide_in_basic['bitly'].
+			$form->get_th_html( _x( 'Bitly Username',
 				'option label', 'wpsso' ), '', 'plugin_bitly_login' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_login'].'</td>';
 
-			$table_rows['plugin_bitly_access_token'] = $form->get_th_html( '<a href="https://bitly.com/a/oauth_apps">'.
+			$table_rows['plugin_bitly_access_token'] = $tr_hide_in_basic['bitly'].
+			$form->get_th_html( '<a href="https://bitly.com/a/oauth_apps">'.
 				_x( 'Bitly Generic Access Token', 'option label', 'wpsso' ).'</a>', '', 'plugin_bitly_access_token' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_access_token'].'</td>';
 
-			$table_rows['plugin_bitly_api_key'] = '<tr class="hide_in_basic">'.
+			$table_rows['plugin_bitly_api_key'] = $tr_hide_in_basic['bitly'].
 			$form->get_th_html( '<a href="http://bitly.com/a/your_api_key">'.
 				_x( 'or Bitly API Key (deprecated)', 'option label', 'wpsso' ).'</a>', '', 'plugin_bitly_api_key' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_api_key'].' <em>'.
