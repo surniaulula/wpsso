@@ -173,8 +173,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				) );
 			}
 
-			// just in case
-			if ( empty( $this->p->options['plugin_shortener'] ) || $this->p->options['plugin_shortener'] === 'none' ) {
+			if ( empty( $shortlink ) && empty( $post_id ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: shortlink and post_id are empty' );
+				}
+				return $shortlink;	// return original shortlink
+			} elseif ( empty( $this->p->options['plugin_shortener'] ) || $this->p->options['plugin_shortener'] === 'none' ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: no shortening service defined' );
 				}
