@@ -85,7 +85,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'adding get_shortlink filter for sharing url' );
 					}
 					// filters the wp shortlink for a post
-					// wp_shortlink_wp_head() function calls wp_get_shortlink( 0, 'query' );
 					add_filter( 'get_shortlink', array( &$this, 'get_sharing_shortlink' ), 9000, 4 );
 				}
 			}
@@ -162,8 +161,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/*
 		 * Filters the wp shortlink for a post - returns the shortened sharing URL.
-		 * $post_id is 0 when getting the shortlink for the current post (which is really stupid).
-		 * wp_shortlink_wp_head() function calls wp_get_shortlink( 0, 'query' );
+		 * The wp_shortlink_wp_head() function calls wp_get_shortlink( 0, 'query' );
 		 */
 		public function get_sharing_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
 
@@ -183,32 +181,47 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $shortlink;	// return original shortlink
 			}
 
+			/*
+			 * The WordPress link-template.php functions call wp_get_shortlink() with a post ID of 0.
+			 * Recreate the same code here to get a real post ID and create a default shortlink (if required).
+			 */
 			if ( $post_id === 0 ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'provided post id is 0 (current post)' );
 				}
+
 				if ( $context === 'query' && is_singular() ) {	// wp_get_shortlink() uses the same logic
 					$post_id = get_queried_object_id();
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting post id '.$post_id.' from queried object' );
 					}
-				} elseif ( preg_match( '/\?p=([0-9]+)/', $shortlink, $matches ) ) {
-					$post_id = $matches[1];
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'setting post id '.$post_id.' from shortlink url' );
-					}
-				} else {	// fallback to the current post object
-					global $post;
-					if ( ! empty( $post->ID ) ) {
+				} elseif ( $context === 'post' ) {
+					$post = get_post();
+					if ( empty( $post->ID ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'exiting early: post object ID is empty' );
+						}
+						return $shortlink;	// return original shortlink
+					} else {
 						$post_id = $post->ID;
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'setting post id '.$post_id.' from post object' );
 						}
+					}
+				}
+
+				if ( empty( $post_id ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: unable to determine the post id' );
+					}
+					return $shortlink;	// return original shortlink
+				}
+
+				if ( empty( $shortlink ) ) {
+					if ( $post->post_type == 'page' && get_option( 'page_on_front' ) == $post_id && get_option( 'show_on_front' ) == 'page' ) {
+						$shortlink = home_url( '/' );
 					} else {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'exiting early: unable to define a post id' );
-						}
-						return $shortlink;	// return original shortlink
+						$shortlink = home_url( '?p='.$post_id );
 					}
 				}
 			}
