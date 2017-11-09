@@ -792,10 +792,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'Add a "link rel shortlink" HTML tag for social crawlers to the head section of webpages.', 'wpsso' );
 							break;
 
-						case 'tooltip-plugin_no_shortlink_preg':
-							$text = __( 'Do not add a "link rel shortlink" HTML tag if the URL matches this regular expression.', 'wpsso' ).' '.sprintf( __( 'The default regular expression <code>%s</code> skips all URLs with one or more query arguments.', 'wpsso' ), '/\?/' ).' '.__( 'Leave this option empty to shorten all URLs, including those with query arguments (not suggested).', 'wpsso' );
-							break;
-
 						case 'tooltip-plugin_bitly_login':
 							$text = __( 'The Bitly username to use with the Generic Access Token or API Key (deprecated).', 'wpsso' );
 							break;

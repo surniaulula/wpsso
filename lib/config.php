@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.1-a.2',		// plugin version
+					'version' => '3.48.1-a.3',		// plugin version
 					'opt_version' => '562',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
@@ -934,7 +934,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_shortener' => 'none',			// Preferred URL Shortening Service
 					'plugin_wp_shortlink' => 1,			// Use Shortnened URL for WP Shortlink
 					'plugin_min_shorten' => 23,
-					'plugin_no_shortlink_preg' => '/\?/',
 					'plugin_bitly_login' => '',
 					'plugin_bitly_access_token' => '',
 					'plugin_bitly_api_key' => '',
