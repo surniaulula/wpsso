@@ -1847,13 +1847,13 @@ msgid "Bitly URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:364 lib/pro/admin/advanced.php:353
-#: lib/pro/util/shorten.php:215
+#: lib/pro/util/shorten.php:217
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:369 lib/pro/admin/advanced.php:358
-#: lib/pro/util/shorten.php:223
+#: lib/pro/util/shorten.php:225
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
@@ -1879,13 +1879,13 @@ msgid "Google APIs"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:388 lib/pro/admin/advanced.php:377
-#: lib/pro/util/shorten.php:246
+#: lib/pro/util/shorten.php:248
 msgctxt "option label"
 msgid "Google Project API Key"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:393 lib/pro/admin/advanced.php:381
-#: lib/pro/util/shorten.php:254
+#: lib/pro/util/shorten.php:256
 msgctxt "option label"
 msgid "URL Shortener API is Enabled"
 msgstr ""
@@ -1896,7 +1896,7 @@ msgid "Ow.ly URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:401 lib/pro/admin/advanced.php:389
-#: lib/pro/util/shorten.php:271
+#: lib/pro/util/shorten.php:273
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
@@ -1907,7 +1907,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:410 lib/pro/admin/advanced.php:398
-#: lib/pro/util/shorten.php:304
+#: lib/pro/util/shorten.php:306
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
@@ -4377,26 +4377,26 @@ msgid ""
 "for the required %2$s image dimensions."
 msgstr ""
 
-#: lib/pro/util/shorten.php:214 lib/pro/util/shorten.php:245
-#: lib/pro/util/shorten.php:270 lib/pro/util/shorten.php:303
+#: lib/pro/util/shorten.php:216 lib/pro/util/shorten.php:247
+#: lib/pro/util/shorten.php:272 lib/pro/util/shorten.php:305
 msgid "The %s option is empty."
 msgstr ""
 
-#: lib/pro/util/shorten.php:222
+#: lib/pro/util/shorten.php:224
 msgid ""
 "The %1$s and %2$s options are empty &mdash; at least one option is required."
 msgstr ""
 
-#: lib/pro/util/shorten.php:224
+#: lib/pro/util/shorten.php:226
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr ""
 
-#: lib/pro/util/shorten.php:253
+#: lib/pro/util/shorten.php:255
 msgid "The %s option is not enabled."
 msgstr ""
 
-#: lib/pro/util/shorten.php:336
+#: lib/pro/util/shorten.php:338
 msgid ""
 "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr ""
