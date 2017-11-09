@@ -4129,7 +4129,7 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/page.php:762
+#: lib/page.php:766
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "

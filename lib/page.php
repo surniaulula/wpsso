@@ -305,7 +305,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( $textlen > 0 ) {
 				// seo-like title modifications
 				if ( $this->p->avail['seo']['*'] === false ) {
-					$paged = get_query_var( 'paged' );
+					global $wpsso_paged;
+					if ( is_numeric( $wpsso_paged ) ) {
+						$paged = $wpsso_paged;
+					} else {
+						$paged = get_query_var( 'paged' );
+					}
 					if ( $paged > 1 ) {
 						if ( ! empty( $separator ) ) {
 							$paged_suffix .= $separator.' ';
@@ -314,8 +319,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$textlen = $textlen - strlen( $paged_suffix ) - 1;
 					}
 				}
-				if ( ! empty( $add_hashtags ) &&
-					! empty( $hashtags ) ) {
+				if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
 					$textlen = $textlen - strlen( $hashtags ) - 1;
 				}
 
