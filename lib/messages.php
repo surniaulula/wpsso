@@ -785,11 +785,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_wp_shortlink':
-							$text = __( 'Use the shortened sharing URL for the <em>Get Shortlink</em> button in admin editing pages and the "link rel shortlink" HTML tag value.', 'wpsso' );
+							$text = sprintf( __( 'Use the shortened sharing URL for the <em>Get Shortlink</em> button in admin editing pages, along with the "%s" HTML tag value.', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' );
 							break;
 
 						case 'tooltip-plugin_add_link_rel_shortlink':
-							$text = __( 'Add a "link rel shortlink" HTML tag for social crawlers to the head section of webpages.', 'wpsso' );
+							$text = sprintf( __( 'Add a "%s" HTML tag for social crawlers and web browsers to the head section of webpages.', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' );
 							break;
 
 						case 'tooltip-plugin_bitly_login':

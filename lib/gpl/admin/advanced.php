@@ -361,8 +361,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), '', 'plugin_wp_shortlink' ).
 			$form->get_nocb_td( 'plugin_wp_shortlink' );
 
-			$table_rows['plugin_add_link_rel_shortlink'] = $form->get_th_html( _x( 'Add "link rel shortlink" HTML Tag',
-				'option label', 'wpsso' ), '', 'plugin_add_link_rel_shortlink' ).
+			$table_rows['plugin_add_link_rel_shortlink'] = $form->get_th_html( sprintf( _x( 'Add "%s" HTML Tag',
+				'option label', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' ), '', 'plugin_add_link_rel_shortlink' ).
 			$form->get_nocb_td( 'add_link_rel_shortlink' );	// option name from the head tags list metabox
 
 			$table_rows['subsection_plugin_bitly'] = $tr_hide_in_basic['bitly'].

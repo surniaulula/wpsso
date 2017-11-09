@@ -1838,7 +1838,7 @@ msgstr ""
 
 #: lib/gpl/admin/advanced.php:364 lib/pro/admin/advanced.php:353
 msgctxt "option label"
-msgid "Add \"link rel shortlink\" HTML Tag"
+msgid "Add \"%s\" HTML Tag"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:370 lib/pro/admin/advanced.php:359
@@ -3065,12 +3065,12 @@ msgstr ""
 #: lib/messages.php:788
 msgid ""
 "Use the shortened sharing URL for the <em>Get Shortlink</em> button in admin "
-"editing pages and the \"link rel shortlink\" HTML tag value."
+"editing pages, along with the \"%s\" HTML tag value."
 msgstr ""
 
 #: lib/messages.php:792
 msgid ""
-"Add a \"link rel shortlink\" HTML tag for social crawlers to the head "
+"Add a \"%s\" HTML tag for social crawlers and web browsers to the head "
 "section of webpages."
 msgstr ""
 
