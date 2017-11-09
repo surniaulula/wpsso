@@ -2260,7 +2260,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_SCHEMA_ADD_TYPE_URL_MAX'] = 5;
 			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX'] = 90;
 			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 90;
-			$var_const['WPSSO_SCHEMA_POSTS_PER_PAGE_MAX'] = 20;
+			$var_const['WPSSO_SCHEMA_POSTS_PER_PAGE_MAX'] = 5;
+			$var_const['WPSSO_SCHEMA_POSTS_IN_SEARCH_MAX'] = 3;
 
 			$var_const['WPSSO_UPDATE_NAG_BORDER'] = '1px solid #33cc33';	// notice nag border
 			$var_const['WPSSO_UPDATE_NAG_BGCOLOR'] = '#e0f7e0';		// notice nag background color

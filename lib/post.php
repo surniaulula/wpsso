@@ -161,6 +161,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/*
 		 * Filters the wp shortlink for a post - returns the shortened sharing URL.
+		 * $post_id is 0 when getting the shortlink for the current post.
 		 */
 		public function get_sharing_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
 
@@ -173,16 +174,28 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				) );
 			}
 
-			if ( empty( $shortlink ) && empty( $post_id ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: shortlink and post_id are empty' );
-				}
-				return $shortlink;	// return original shortlink
-			} elseif ( empty( $this->p->options['plugin_shortener'] ) || $this->p->options['plugin_shortener'] === 'none' ) {
+			if ( empty( $this->p->options['plugin_shortener'] ) || $this->p->options['plugin_shortener'] === 'none' ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: no shortening service defined' );
 				}
 				return $shortlink;	// return original shortlink
+			}
+
+			if ( $post_id === 0 ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'provided post id is 0 (current post)' );
+				}
+				if ( preg_match( '/\?p=([0-9]+)/', $shortlink, $matches ) ) {
+					$post_id = $matches[1];
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'using post id '.$post_id.' from shortlink URL' );
+					}
+				} else {
+					$post_id = true; 
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'setting post id to true' );
+					}
+				}
 			}
 
 			$lca = $this->p->cf['lca'];
