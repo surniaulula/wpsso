@@ -535,8 +535,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$select[$type_id] = $type_id.' | '.$type_url;
 			}
 
-			if ( defined( 'SORT_NATURAL' ) ) {
-				asort( $select, SORT_NATURAL );
+			if ( defined( 'SORT_STRING' ) ) {	// just in case
+				asort( $select, SORT_STRING );
 			} else {
 				asort( $select );
 			}

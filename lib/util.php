@@ -1901,7 +1901,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function rename_opts_by_ext( &$opts, $options_keys ) {
-
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
 				if ( ! isset( $options_keys[$ext] ) || ! is_array( $options_keys[$ext] ) ||

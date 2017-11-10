@@ -183,9 +183,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 		public function options( $options_name, &$opts = array(), $def_opts = array(), $network = false ) {
 
 			$lca = $this->p->cf['lca'];
-			$short_name = $this->p->cf['plugin'][$lca]['short'];
-			$prev_version = empty( $opts['plugin_'.$lca.'_opt_version'] ) ?	// just in case
-				0 : $opts['plugin_'.$lca.'_opt_version'];
+
+			// save the current wpsso options version number
+			$prev_version = empty( $opts['plugin_'.$lca.'_opt_version'] ) ?	0 : $opts['plugin_'.$lca.'_opt_version'];
 
 			// adjust before renaming the option key
 			if ( $prev_version > 0 && $prev_version <= 342 ) {
@@ -196,10 +196,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			}
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
-
-				$this->p->util->rename_opts_by_ext( $opts, 
-					apply_filters( $lca.'_rename_options_keys', 
-						self::$rename_options_keys ) );
+				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $lca.'_rename_options_keys', self::$rename_options_keys ) );
 
 				if ( $prev_version > 0 && $prev_version <= 270 ) {
 					foreach ( $opts as $key => $val ) {
@@ -238,17 +235,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					$opts['add_meta_property_og:video:secure_url'] = 1;
 				}
 
-				/*
-				if ( $prev_version > 0 && $prev_version <= 550 ) {
-					if ( is_admin() ) {
-						$filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
-							_x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) );
-						$this->p->notice->upd( sprintf( __( 'This latest version of %1$s includes a feature to monitor the WordPress content filter and fix incorrectly coded filter hooks.', 'wpsso' ), $short_name ).' '.__( 'The WordPress content filter formats text and expands shortcodes, which may be required to include additional images and videos.', 'wpsso' ).' '.sprintf( __( '<b>The %1$s advanced option has been enabled automatically</b> &mdash; if you experience any display issues / errors, you may disable this option.', 'wpsso' ), $filters_option_link ) );
-					}
-					$opts['plugin_filter_content'] = 1;
-				}
-				*/
-
 				if ( $prev_version > 0 && $prev_version <= 557 ) {
 					if ( isset( $opts['plugin_cm_fb_label'] ) && 
 						$opts['plugin_cm_fb_label'] === 'Facebook URL' ) {
@@ -257,17 +243,25 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
 				}
 
-				if ( $prev_version > 0 && $prev_version <= 557 ) {
+				if ( $prev_version > 0 && $prev_version <= 564 ) {
 					if ( isset( $opts['schema_type_for_job_listing'] ) && 
 						$opts['schema_type_for_job_listing'] === 'webpage' ) {
 						$opts['schema_type_for_job_listing'] = 'job.posting';
 					}
 				}
 
+				// look for schema type id values to be renamed
+				if ( $prev_version > 0 && $prev_version <= 566 ) {
+					$keys_preg = 'schema_type_.*|schema_review_item_type|site_org_type|org_type|plm_addr_business_type';
+					foreach ( SucomUtil::preg_grep_keys( '/^('.$keys_preg.')(_[0-9]+)?$/', $opts ) as $key => $val ) {
+						if ( ! empty( $this->p->cf['head']['schema_renamed'][$val] ) ) {
+							$opts[$key] = $this->p->cf['head']['schema_renamed'][$val];
+						}
+					}
+				}
+
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
-				$this->p->util->rename_opts_by_ext( $opts,
-					apply_filters( $lca.'_rename_site_options_keys',
-						self::$rename_site_options_keys ) );
+				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $lca.'_rename_site_options_keys', self::$rename_site_options_keys ) );
 			}
 
 			return $this->sanitize( $opts, $def_opts, $network );	// cleanup options and sanitize
