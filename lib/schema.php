@@ -815,7 +815,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// input must be an array
 		public static function get_context_extension_url( array $json_data ) {
 			$type_url = false;
-			$ext_data = array_reverse( $json_data['@context'] );	// read the array bottom-up
+			$ext_data = array_reverse( $json_data );	// read the array bottom-up
 			foreach ( $ext_data as $val ) {
 				if ( is_array( $val ) ) {
 					// if it's an extension array, drill down and return that value
