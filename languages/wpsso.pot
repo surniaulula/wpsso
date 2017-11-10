@@ -4268,7 +4268,7 @@ msgid "The WooCommerce <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/ecom/woocommerce.php:689
-msgid "Please update site to WooCommerce v3.0.0 or better."
+msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
 #: lib/pro/ecom/yotpowc.php:63 lib/pro/ecom/yotpowc.php:74
