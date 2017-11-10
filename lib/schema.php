@@ -800,7 +800,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$type_url = $json_data['@type'];
 			} elseif ( ! empty(  $json_data['@context'] ) ) {	// just in case
 				if ( is_array( $json_data['@context'] ) ) {	// get the extension url
-					$type_url = self::get_context_extension_url( $json_data['@context'] );
+					$context_url = self::get_context_extension_url( $json_data['@context'] );
+					if ( ! empty( $context_url ) ) {	// just in case
+						$type_url = trailingslashit( $context_url ).$json_data['@type'];
+					}
 				} elseif ( is_string( $json_data['@context'] ) ) {
 					$type_url = trailingslashit( $json_data['@context'] ).$json_data['@type'];
 				}
