@@ -378,7 +378,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.1-b.3 (2017/11/10)**
+**Version 3.48.1-b.4 (2017/11/10)**
 
 * *New Features*
 	* None
@@ -390,6 +390,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the "Google Project API Key" value check to allow for hyphen characters.
 	* Fixed a typo in the 'employment.agency' Schema type ID string.
 * *Developer Notes*
+	* Renamed the WPSSO_CHECK_PRODUCT_OBJECT constant (true by default) to WPSSO_PRODUCT_OBJ_CHECK_DISABLE (false by default).
 	* Changed the user agent to the Facebook crawler when checking for duplicate meta tags, for edge cases where plugins / themes only add meta tags for the Facebook crawler.
 	* Added an action to remove the SNAP OG meta tags holder, to prevent incorrect / duplicate meta tags from being added to the webpage.
 	* Added a new WpssoSchema get_types_cache_exp() method to apply the Schema types expiration filter once (and cache the result in a static variable).
@@ -878,7 +879,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.1-b.3 =
+= 3.48.1-b.4 =
 
 (2017/11/10) Changed the user agent to the Facebook crawler when checking for duplicate meta tags. Added an action to remove the SNAP OG meta tags holder. Updated the Google URL Shortener API service option labels and help text (Pro version).
 
