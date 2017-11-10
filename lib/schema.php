@@ -660,12 +660,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public static function get_schema_type_context( $type_url, array $json_data = array() ) {
 			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $type_url, $match ) ) {
-				$context_url = $match[1];
-				$type_name = $match[2];
-
-				// check for schema extension (example: https://auto.schema.org)
-				if ( preg_match( '/^(.+:\/\/)([^\.]+)\.([^\.]+\.[^\.]+)$/', $context_url, $ext ) ) {
-					$context_url = array( $ext[1].$ext[3], array( $ext[2] => $ext[0] ) );
+				$context_value = $match[1];
+				$type_value = $match[2];
+				/*
+				 * Check for schema extension (example: https://health-lifesci.schema.org).
+				 *
+				 * $context_value = array(
+				 *	"https://schema.org",
+				 *	array(
+				 *		"health-lifesci" => "https://health-lifesci.schema.org",
+				 *	)
+				 * )
+				 *
+				 */
+				if ( preg_match( '/^(.+:\/\/)([^\.]+)\.([^\.]+\.[^\.]+)$/', $context_value, $ext ) ) {
+					$context_value = array( $ext[1].$ext[3], array( $ext[2] => $ext[0] ) );
 				}
 
 				// keep the @id property top-most
@@ -676,7 +685,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				$json_data = array_merge( $json_head, $json_data, 
-					array( '@context' => $context_url, '@type' => $type_name ) );
+					array( '@context' => $context_value, '@type' => $type_value ) );
 			}
 			return $json_data;
 		}
@@ -768,19 +777,52 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return array();
 		}
 
-		// json_data can be a null schema property value, so don't cast an array on the input argument
+		/*
+		 * json_data can be null, so don't cast an array on the input argument. 
+		 *
+		 * The @context value can be an array if the schema type is an extension.
+		 *
+		 * @context = array(
+		 *	"https://schema.org",
+		 *	array(
+		 *		"health-lifesci" => "https://health-lifesci.schema.org",
+		 *	)
+		 * )
+		 */
 		public static function get_data_type_url( $json_data ) {
-			if ( ! empty( $json_data['@type'] ) ) {
-				if ( strpos( $json_data['@type'], '://' ) ) {
-					return $json_data['@type'];
-				} elseif ( ! empty( $json_data['@context'] ) ) {
-					return trailingslashit( $json_data['@context'] ).$json_data['@type'];
-				} else {
-					return false;
-				}
-			} else {
-				return false;
+			$type_url = false;
+
+			if ( empty( $json_data['@type'] ) ) {
+				return $type_url;	// stop here
 			}
+
+			if ( strpos( $json_data['@type'], '://' ) ) {	// @type is a complete url
+				$type_url = $json_data['@type'];
+			} elseif ( ! empty(  $json_data['@context'] ) ) {	// just in case
+				if ( is_array( $json_data['@context'] ) ) {	// get the extension url
+					$type_url = self::get_context_extension_url( $json_data['@context'] );
+				} elseif ( is_string( $json_data['@context'] ) ) {
+					$type_url = trailingslashit( $json_data['@context'] ).$json_data['@type'];
+				}
+			}
+
+			return $type_url;
+		}
+
+		// input must be an array
+		public static function get_context_extension_url( array $json_data ) {
+			$type_url = false;
+			$ext_array = array_reverse( $json_data['@context'] );	// read the array bottom-up
+			foreach ( $json_data['@context'] as $ext ) {
+				if ( is_array( $ext ) ) {
+					// if it's an extension array, drill down and return that value
+					return self::get_context_extension_url( $ext );
+				} elseif ( is_string( $ext ) ) {
+					// set a backup value in case there is no extension array
+					$type_url = $ext;
+				}
+			}
+			return false;
 		}
 
 		/*
