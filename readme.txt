@@ -378,7 +378,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.1-b.4 (2017/11/10)**
+**Version 3.48.1-b.5 (2017/11/10)**
 
 * *New Features*
 	* None
@@ -386,6 +386,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new optional WPSSO_PRODUCT_PRICE_INCLUDE_VAT constant (false by default) to include VAT in WooCommerce product prices (Pro version).
 	* Added &#91;F&#93; qualifiers in the Cache Status metabox for expiration values changed by a filter.
 	* Updated the Google URL Shortener API service option labels and help text (Pro version).
+	* Added a '.specialty' suffix to medical specialty Schema type ids - the value of existing options will be updated automatically.
 * *Bugfixes*
 	* Updated the "Google Project API Key" value check to allow for hyphen characters.
 	* Fixed a typo in the 'employment.agency' Schema type ID string.
@@ -398,6 +399,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored and renamed the SucomForm get_post_type_checkboxes() method to get_checklist_post_types().
 	* Added support for employment type values in the WpssoSchema add_single_job_data() method.
 	* Moved the link rel HTML tags from WpssoHead to a new WpssoLinkRel class.
+	* Changed the sorting of Schema Type selects from PHP_NATURAL to PHP_STRING.
 
 **Version 3.48.0 (2017/11/02)**
 
@@ -879,7 +881,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.1-b.4 =
+= 3.48.1-b.5 =
 
 (2017/11/10) Changed the user agent to the Facebook crawler when checking for duplicate meta tags. Added an action to remove the SNAP OG meta tags holder. Updated the Google URL Shortener API service option labels and help text (Pro version).
 
