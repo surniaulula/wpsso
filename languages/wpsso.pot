@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.48.1-a.3\n"
+"Project-Id-Version: WPSSO Core 3.48.1-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -471,144 +471,156 @@ msgid ""
 "to offer a suggestion or report a problem."
 msgstr ""
 
-#: lib/admin.php:2051
+#: lib/admin.php:2011
+msgid ""
+"Google has been selected as your preferred URL shortening service, but the "
+"%s option is not enabled."
+msgstr ""
+
+#: lib/admin.php:2013 lib/gpl/admin/advanced.php:403
+#: lib/pro/admin/advanced.php:391 lib/pro/util/shorten.php:256
+msgctxt "option label"
+msgid "URL Shortener API is Enabled"
+msgstr ""
+
+#: lib/admin.php:2060
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:2065
+#: lib/admin.php:2074
 msgid "No %1$s HTML tag found in the %2$s template."
 msgstr ""
 
-#: lib/admin.php:2072
+#: lib/admin.php:2081
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:2081
+#: lib/admin.php:2090
 msgid "Failed to open template file %s for writing."
 msgstr ""
 
-#: lib/admin.php:2087
+#: lib/admin.php:2096
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:2090
+#: lib/admin.php:2099
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:2107 lib/submenu/essential.php:135
+#: lib/admin.php:2116 lib/submenu/essential.php:135
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2111 lib/submenu/essential.php:139
+#: lib/admin.php:2120 lib/submenu/essential.php:139
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:2116 lib/submenu/general.php:171
+#: lib/admin.php:2125 lib/submenu/general.php:171
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:2121 lib/submenu/general.php:176
+#: lib/admin.php:2130 lib/submenu/general.php:176
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/admin.php:2124
+#: lib/admin.php:2133
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
 
-#: lib/admin.php:2129 lib/submenu/general.php:128 lib/submenu/general.php:345
+#: lib/admin.php:2138 lib/submenu/general.php:128 lib/submenu/general.php:345
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
 
-#: lib/admin.php:2132 lib/submenu/general.php:255 lib/submenu/general.php:348
+#: lib/admin.php:2141 lib/submenu/general.php:255 lib/submenu/general.php:348
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:2135
+#: lib/admin.php:2144
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2151
+#: lib/admin.php:2160
 msgctxt "option label"
 msgid "Item Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:2152
+#: lib/admin.php:2161
 msgctxt "option label"
 msgid "Item Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:2153
+#: lib/admin.php:2162
 msgctxt "option label"
 msgid "Item Type for Archive Page"
 msgstr ""
 
-#: lib/admin.php:2154
+#: lib/admin.php:2163
 msgctxt "option label"
 msgid "Item Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:2155
+#: lib/admin.php:2164
 msgctxt "option label"
 msgid "Item Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:2173
+#: lib/admin.php:2182
 msgctxt "option label"
 msgid "Item Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:2187
+#: lib/admin.php:2196
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2192
+#: lib/admin.php:2201
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2200
+#: lib/admin.php:2209
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:2208
+#: lib/admin.php:2217
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:2215
+#: lib/admin.php:2224
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/admin.php:2223
+#: lib/admin.php:2232
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/admin.php:2232
+#: lib/admin.php:2241
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2394
+#: lib/admin.php:2403
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2416
+#: lib/admin.php:2425
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
@@ -1882,12 +1894,6 @@ msgstr ""
 #: lib/pro/util/shorten.php:248
 msgctxt "option label"
 msgid "Google Project API Key"
-msgstr ""
-
-#: lib/gpl/admin/advanced.php:403 lib/pro/admin/advanced.php:391
-#: lib/pro/util/shorten.php:256
-msgctxt "option label"
-msgid "URL Shortener API is Enabled"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:408 lib/pro/admin/advanced.php:396

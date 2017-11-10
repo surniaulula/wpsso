@@ -330,7 +330,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			foreach ( array(
 				'bitly' => 'plugin_bitly_login',
-				'google' => 'plugin_google_api_key',
+				'googl' => 'plugin_google_api_key',
 				'owly' => 'plugin_owly_api_key',
 				'yourls' => 'plugin_yourls_api_url',
 			) as $tr_idx => $opt_key ) {
@@ -390,16 +390,16 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), '', 'plugin_bitly_domain' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_domain'].'</td>';
 
-			$table_rows['subsection_plugin_google'] = $tr_hide_in_basic['google'].
+			$table_rows['subsection_plugin_google'] = $tr_hide_in_basic['googl'].
 				'<td></td><td class="subsection"><h4>'.
 				_x( 'Google APIs', 'metabox title', 'wpsso' ).'</h4></td>';
 
-			$table_rows['plugin_google_api_key'] = $tr_hide_in_basic['google'].
+			$table_rows['plugin_google_api_key'] = $tr_hide_in_basic['googl'].
 			$form->get_th_html( _x( 'Google Project API Key', 'option label', 'wpsso' ), '', 'plugin_google_api_key' ).
 			'<td class="blank mono">'.$this->p->options['plugin_google_api_key'].'</td>';
 
 			$google_shorten = $this->p->options['plugin_google_shorten'];
-			$table_rows['plugin_google_shorten'] = $tr_hide_in_basic['google'].
+			$table_rows['plugin_google_shorten'] = $tr_hide_in_basic['googl'].
 			$form->get_th_html( _x( 'URL Shortener API is Enabled', 'option label', 'wpsso' ), '', 'plugin_google_shorten' ).
 			'<td class="blank">'._x( $this->p->cf['form']['yes_no'][$google_shorten], 'option value', 'wpsso' ).'</td>';
 
