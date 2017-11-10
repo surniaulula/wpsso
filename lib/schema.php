@@ -812,14 +812,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		// input must be an array
 		public static function get_context_extension_url( array $json_data ) {
 			$type_url = false;
-			$ext_array = array_reverse( $json_data['@context'] );	// read the array bottom-up
-			foreach ( $json_data['@context'] as $ext ) {
-				if ( is_array( $ext ) ) {
+			$ext_data = array_reverse( $json_data['@context'] );	// read the array bottom-up
+			foreach ( $ext_data as $val ) {
+				if ( is_array( $val ) ) {
 					// if it's an extension array, drill down and return that value
-					return self::get_context_extension_url( $ext );
-				} elseif ( is_string( $ext ) ) {
+					return self::get_context_extension_url( $val );
+				} elseif ( is_string( $val ) ) {
 					// set a backup value in case there is no extension array
-					$type_url = $ext;
+					$type_url = $val;
 				}
 			}
 			return false;
