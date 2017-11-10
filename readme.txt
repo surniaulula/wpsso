@@ -383,6 +383,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
+	* Added a new optional WPSSO_PRODUCT_PRICE_INCLUDE_VAT constant (false by default) to include VAT in WooCommerce product prices (Pro version).
 	* Added &#91;F&#93; qualifiers in the Cache Status metabox for expiration values changed by a filter.
 	* Updated the Google URL Shortener API service option labels and help text (Pro version).
 * *Bugfixes*
