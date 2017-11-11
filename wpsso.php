@@ -15,7 +15,7 @@
  * Requires At Least: 3.7
  * Tested Up To: 4.9
  * WC Tested Up To: 3.2.3
- * Version: 3.48.1-b.5
+ * Version: 3.48.1-b.6
  * 
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -346,6 +346,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					'cache_expire_head_array' => '__return_zero',
 					'cache_expire_setup_html' => '__return_zero',
 					'cache_expire_sharing_buttons' => '__return_zero',
+					'cache_expire_json_post_data' => '__return_zero',
 				) );
 			}
 		}

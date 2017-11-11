@@ -2039,7 +2039,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// examples:
-		//	'term:123_tax:post_tag'
+		//	'post:123'
+		//	'term:456_tax:post_tag'
 		//	'post:0_url:https://example.com/a-subject/'
 		public static function get_mod_salt( array $mod, $sharing_url = false ) {
 
@@ -2053,8 +2054,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mod_salt .= '_tax:'.$mod['tax_slug'];
 			}
 
-			if ( empty( $mod['id'] ) && ! empty( $sharing_url ) ) {
-				$mod_salt .= '_url:'.$sharing_url;
+			if ( empty( $mod['id'] ) ) {
+				if ( ! empty( $mod['is_home'] ) ) {
+					$mod_salt .= '_home';
+				}
+				if ( ! empty( $sharing_url ) ) {
+					$mod_salt .= '_url:'.$sharing_url;
+				}
 			}
 
 			return ltrim( $mod_salt, '_' );	// remove leading underscore

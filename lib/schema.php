@@ -1028,31 +1028,31 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_arr( 'schema page type id '.
-					$page_type_id.' parent_urls', $parent_urls );
+				$this->p->debug->log_arr( 'schema page type id '.$page_type_id.' parent_urls', $parent_urls );
 			}
 
 			foreach ( $parent_urls as $type_url ) {
+
 				$type_filter_name = SucomUtil::sanitize_hookname( $type_url );
 				$has_type_filter = has_filter( $lca.'_json_data_'.$type_filter_name );	// check only once
- 
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'type filter name is '.$type_filter_name.
 						' and has filter is '.( $has_type_filter ? 'true' : 'false' ) );
 				}
 
 				// add website, organization, and person markup to home page
-				if ( $mod['is_home'] && ! $has_type_filter && 
-					method_exists( __CLASS__, 'filter_json_data_'.$type_filter_name ) ) {
+				if ( $mod['is_home'] && ! $has_type_filter && method_exists( __CLASS__, 'filter_json_data_'.$type_filter_name ) ) {
 
 					$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$type_filter_name ),
 						$json_data, $mod, $mt_og, $page_type_id, false );	// $is_main = always false for method
 
 				} elseif ( $has_type_filter ) {
-					$json_data = apply_filters( $lca.'_json_data_'.$type_filter_name,
-						$json_data, $mod, $mt_og, $page_type_id, $is_main );
+
+					$json_data = apply_filters( $lca.'_json_data_'.$type_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
 				} elseif ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'no filters registered for '.$type_filter_name );
 				}
 			}

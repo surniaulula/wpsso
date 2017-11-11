@@ -681,56 +681,43 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_head_cache_exp':
 
 							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_head_cache_exp'];
-							$cache_exp_human = $cache_exp_secs ? 
-								human_time_diff( 0, $cache_exp_secs ) : 
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = __( 'Head meta tags and Schema markup are saved to the WordPress transient cache to optimize performance.',
-								'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).',
-									'wpsso' ), $cache_exp_secs, $cache_exp_human );
+							$text = __( 'Head meta tags and Schema markup are saved to the WordPress transient cache to optimize performance.', 'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 							break;
 
 						case 'tooltip-plugin_content_cache_exp':
 
 							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_content_cache_exp'];
-							$cache_exp_human = $cache_exp_secs ? 
-								human_time_diff( 0, $cache_exp_secs ) : 
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = __( 'Filtered post content is saved to the WordPress <em>non-persistent</em> object cache to optimize performance.',
-								'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).',
-									'wpsso' ), $cache_exp_secs, $cache_exp_human );
+							$text = __( 'Filtered post content is saved to the WordPress <em>non-persistent</em> object cache to optimize performance.', 'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 							break;
 
 						case 'tooltip-plugin_short_url_cache_exp':
 
 							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_short_url_cache_exp'];
-							$cache_exp_human = $cache_exp_secs ? 
-								human_time_diff( 0, $cache_exp_secs ) : 
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = __( 'Shortened URLs are saved to the WordPress transient cache to optimize performance and API connections.',
-								'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).',
-									'wpsso' ), $cache_exp_secs, $cache_exp_human );
+							$text = __( 'Shortened URLs are saved to the WordPress transient cache to optimize performance and API connections.', 'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 							break;
 
 						case 'tooltip-plugin_imgsize_cache_exp':
 
 							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_imgsize_cache_exp'];
-							$cache_exp_human = $cache_exp_secs ? 
-								human_time_diff( 0, $cache_exp_secs ) : 
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = __( 'The size for image URLs (not image IDs) is retrieved and saved to the WordPress transient cache to optimize performance and network bandwidth.',
-								'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).',
-									'wpsso' ), $cache_exp_secs, $cache_exp_human );
+							$text = __( 'The size for image URLs (not image IDs) is retrieved and saved to the WordPress transient cache to optimize performance and network bandwidth.', 'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 							break;
 
 						case 'tooltip-plugin_topics_cache_exp':
 
 							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_topics_cache_exp'];
-							$cache_exp_human = $cache_exp_secs ? 
-								human_time_diff( 0, $cache_exp_secs ) : 
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'The filtered article topics array is saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
@@ -739,13 +726,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_types_cache_exp':
 
 							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_types_cache_exp'];
-							$cache_exp_human = $cache_exp_secs ? 
-								human_time_diff( 0, $cache_exp_secs ) : 
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = __( 'The filtered Schema types array is saved to the WordPress transient cache to optimize performance.',
-								'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).',
-									'wpsso' ), $cache_exp_secs, $cache_exp_human );
+							$text = __( 'The filtered Schema types array is saved to the WordPress transient cache to optimize performance.', 'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 							break;
 
 						case 'tooltip-plugin_show_purge_count':
@@ -760,8 +744,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_secs = (int) apply_filters( $lca.'_cache_expire_short_url',
 								$this->p->options['plugin_short_url_cache_exp'] );
-							$cache_exp_human = $cache_exp_secs ? 
-								human_time_diff( 0, $cache_exp_secs ) : 
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = sprintf( __( 'Clear all shortened URLs when clearing all %s transients from the WordPress database (default is unchecked).', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls. Updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider.', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
