@@ -1010,7 +1010,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;
 				}
 
-				$cache_label_transl = _x( $cache_info['label'], 'option label', 'wpsso' );
+				$cache_text_dom = empty( $cache_info['text_domain'] ) ? $lca : $cache_info['text_domain'];
+				$cache_label_transl = _x( $cache_info['label'], 'option label', $cache_text_dom );
 				$cache_count = count( preg_grep( '/^'.$cache_md5_pre.'/', $transient_keys ) );
 				$cache_exp_html = $cache_exp_secs = isset( $cache_info['opt_key'] ) &&
 					isset( $this->p->options[$cache_info['opt_key']] ) ?
