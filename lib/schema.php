@@ -1005,6 +1005,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/*
 		 * JSON-LD Data Array
+		 *
+		 * The json data returned by this method is cached by WpssoJsonSchema::get_single_post_data().
 		 */
 		public function get_json_data( array &$mod, array &$mt_og, $page_type_id = false, $is_main = false ) {
 
@@ -1012,11 +1014,29 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$lca = $this->p->cf['lca'];
+
+			/*
+			 * $page_type_id is false when called by WpssoJsonSchema::get_single_post_data().
+			 * Optimize and use $page_type_id as a signal and (if not false) check if we have 
+			 * single post data in the cache.
+			 */
 			if ( $page_type_id === false ) {
+
 				$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
+
+			} elseif ( $mod['is_post'] && $mod['id'] && method_exists( 'WpssoJsonSchema', 'get_mod_cache_data' ) ) {	// since wpsso json v1.18.0
+
+				$cache_data = WpssoJsonSchema::get_mod_cache_data( $mod );
+
+				if ( is_array( $cache_data ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: returning single post cache data' );
+					}
+					return $cache_data;	// stop here
+				}
 			}
 
-			$lca = $this->p->cf['lca'];
 			$json_data = null;
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
 			$filter_name = SucomUtil::sanitize_hookname( $page_type_url );
@@ -1043,16 +1063,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				// add website, organization, and person markup to home page
 				if ( $mod['is_home'] && ! $has_type_filter && method_exists( __CLASS__, 'filter_json_data_'.$type_filter_name ) ) {
-
 					$json_data = call_user_func( array( __CLASS__, 'filter_json_data_'.$type_filter_name ),
 						$json_data, $mod, $mt_og, $page_type_id, false );	// $is_main = always false for method
-
 				} elseif ( $has_type_filter ) {
-
 					$json_data = apply_filters( $lca.'_json_data_'.$type_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
-
 				} elseif ( $this->p->debug->enabled ) {
-
 					$this->p->debug->log( 'no filters registered for '.$type_filter_name );
 				}
 			}

@@ -2068,17 +2068,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// update the transient array and keep the original expiration time
 		public static function update_transient_array( $cache_id, $data_array, $cache_exp_secs ) {
+
 			$now_time = time();
 
 			if ( isset( $data_array['__created_at'] ) ) {
-				$cache_exp_secs -= $now_time - $data_array['__created_at'];
+				$exp_in_secs -= $now_time - $data_array['__created_at'];
 			} else {
+				$exp_in_secs = $cache_exp_secs;
 				$data_array['__created_at'] = $now_time;
 			}
 
-			set_transient( $cache_id, $data_array, $cache_exp_secs );
+			set_transient( $cache_id, $data_array, $exp_in_secs );
 
-			return $cache_exp_secs;
+			return $exp_in_secs;
 		}
 
 		public static function restore_checkboxes( &$opts ) {
