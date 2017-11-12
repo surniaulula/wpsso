@@ -432,10 +432,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->add_schema_type_xrefs( $this->types_cache['filtered'] );
 
 					if ( $cache_exp_secs > 0 ) {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'saving schema types array to transient cache for '.$cache_exp_secs.' seconds' );
-						}
 						set_transient( $cache_id, $this->types_cache, $cache_exp_secs );
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'schema types array saved to transient cache for '.$cache_exp_secs.' seconds' );
+						}
 					}
 
 					if ( $this->p->debug->enabled ) {
@@ -648,10 +648,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $use_cache ) {
 				if ( $cache_exp_secs > 0 ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'saving children to transient cache for '.$cache_exp_secs.' seconds' );
-					}
 					set_transient( $cache_id, $children, $cache_exp_secs );
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'children saved to transient cache for '.$cache_exp_secs.' seconds' );
+					}
 				}
 			}
 
@@ -1006,7 +1006,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/*
 		 * JSON-LD Data Array
 		 *
-		 * The json data returned by this method is cached by WpssoJsonSchema::get_single_post_data().
 		 */
 		public function get_json_data( array &$mod, array &$mt_og, $page_type_id = false, $is_main = false ) {
 
@@ -1015,25 +1014,34 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
+			$cache_index = false;
+			$cache_data = false;
 
 			/*
 			 * $page_type_id is false when called by WpssoJsonSchema::get_single_post_data().
-			 * Optimize and use $page_type_id as a signal and (if not false) check if we have 
-			 * single post data in the cache.
+			 *
+			 * Optimize and use $page_type_id (when not false) as a signal to check if we 
+			 * have single post data in the transient cache.
+			 *
+			 * If we're called by WpssoJsonSchema::get_single_post_data() ($page_type_id is 
+			 * false), then don't bother checking because we wouldn't be called if the cached 
+			 * data existed. ;-)
 			 */
 			if ( $page_type_id === false ) {
 
 				$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
 
-			} elseif ( $mod['is_post'] && $mod['id'] && method_exists( 'WpssoJsonSchema', 'get_mod_cache_data' ) ) {	// since wpsso json v1.18.0
+			} elseif ( $mod['is_post'] && $mod['id'] && 
+				method_exists( 'WpssoJsonSchema', 'get_mod_cache_data' ) ) {	// since wpsso json v1.18.0
 
-				$cache_data = WpssoJsonSchema::get_mod_cache_data( $mod );
+				$cache_index = WpssoJsonSchema::get_mod_cache_index( $mod );
+				$cache_data = WpssoJsonSchema::get_mod_cache_data( $mod, $cache_index );
 
-				if ( is_array( $cache_data ) ) {
+				if ( isset( $cache_data[$cache_index] ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: returning single post cache data' );
 					}
-					return $cache_data;	// stop here
+					return $cache_data[$cache_index];	// stop here
 				}
 			}
 
@@ -1069,6 +1077,29 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$json_data = apply_filters( $lca.'_json_data_'.$type_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'no filters registered for '.$type_filter_name );
+				}
+			}
+
+			/*
+			 * If this is a single post, save the json data to the transient cache to optimize the 
+			 * creation of Schema JSON-LD for archive type pages like Blog, CollectionPage, ProfilePage,
+			 * and SearchResultsPage.
+			 *
+			 * If $cache_index is not set, then we were called by WpssoJsonSchema::get_single_post_data()
+			 * and the cache data will be saved by that method instead.
+			 */
+			if ( ! empty( $cache_index ) ) {	// WpssoJsonSchema::get_mod_cache_data() was called above
+
+				if ( $mod['is_post'] && $mod['id'] && 
+					method_exists( 'WpssoJsonSchema', 'save_mod_cache_data' ) ) {	// since wpsso json v1.18.0
+
+					if ( empty( $cache_data ) ) {	// just in case
+						$cache_data = array();
+					}
+
+					$cache_data[$cache_index] = $json_data;
+
+					WpssoJsonSchema::save_mod_cache_data( $mod, $cache_data );
 				}
 			}
 

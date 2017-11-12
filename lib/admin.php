@@ -1013,9 +1013,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cache_text_dom = empty( $cache_info['text_domain'] ) ? $lca : $cache_info['text_domain'];
 				$cache_label_transl = _x( $cache_info['label'], 'option label', $cache_text_dom );
 				$cache_count = count( preg_grep( '/^'.$cache_md5_pre.'/', $transient_keys ) );
-				$cache_exp_html = $cache_exp_secs = isset( $cache_info['opt_key'] ) &&
+				$cache_exp_secs = isset( $cache_info['opt_key'] ) &&
 					isset( $this->p->options[$cache_info['opt_key']] ) ?
 						 $this->p->options[$cache_info['opt_key']] : 0;
+				$cache_exp_html = isset( $cache_info['opt_key'] ) ? $cache_exp_secs : '';
 				
 				if ( $cache_md5_pre === $lca.'_s_' ) {
 					$shortened_urls_count = $cache_count;

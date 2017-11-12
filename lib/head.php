@@ -509,10 +509,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			);
 
 			if ( $cache_exp_secs > 0 ) {
-				// update the transient array and keep the original expiration time
-				SucomUtil::update_transient_array( $cache_id, $head_array, $cache_exp_secs );
+				// update the cached array and maintain the existing transient expiration time
+				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $head_array, $cache_exp_secs );
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'head array saved to transient cache for '.$cache_exp_secs.' seconds' );
+					$this->p->debug->log( 'head array saved to transient cache (expires in '.$expires_in_secs.' seconds)' );
 				}
 			}
 

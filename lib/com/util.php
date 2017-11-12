@@ -2066,7 +2066,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ltrim( $mod_salt, '_' );	// remove leading underscore
 		}
 
-		// update the transient array and keep the original expiration time
+		// update the cached array and maintain the existing transient expiration time
 		public static function update_transient_array( $cache_id, $data_array, $cache_exp_secs ) {
 
 			$now_time = time();
