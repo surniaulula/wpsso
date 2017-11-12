@@ -378,7 +378,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.1-b.7 (2017/11/11)**
+**Version 3.48.1-rc.1 (2017/11/12)**
 
 * *New Features*
 	* None
@@ -401,8 +401,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved the link rel HTML tags from WpssoHead to a new WpssoLinkRel class.
 	* Changed the sorting of Schema Type selects from PHP_NATURAL to PHP_STRING.
 	* Changed the WPSSO_SCHEMA_POSTS_PER_PAGE_MAX constant default value from 20 to 10.
-	* Added a new WPSSO_SCHEMA_POSTS_NO_CACHE_MAX constant with a default value of 5.
 	* Added a new WPSSO_SCHEMA_POSTS_PER_SEARCH constant with a default value of 3 to include only the top 3 search results in the Schema SearchResultsPage markup.
+	* Added calls to WpssoJsonSchema get_mod_cache_data() and save_mod_cache_data() when creating single post json data.
 
 **Version 3.48.0 (2017/11/02)**
 
@@ -884,9 +884,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.1-b.7 =
+= 3.48.1-rc.1 =
 
-(2017/11/11) Changed the user agent to the Facebook crawler when checking for duplicate meta tags. Added an action to remove the SNAP OG meta tags holder. Updated the Google URL Shortener API service option labels and help text (Pro version).
+(2017/11/12) Changed the user agent to the Facebook crawler when checking for duplicate meta tags. Added an action to remove the SNAP OG meta tags holder. Updated the Google URL Shortener API service option labels and help text (Pro version).
 
 = 3.48.0 =
 
