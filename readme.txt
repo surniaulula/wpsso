@@ -75,6 +75,8 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Finds images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
 
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Fully renders content (including shortcodes) for accurate description texts (and embedded video detection in Pro version).
+
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable title and description maximum lengths (Open Graph, Twitter Card, SEO), including both hard and soft limits.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable title separator character (hyphen by default).
@@ -137,9 +139,9 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Includes a Social and Search Optimization metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social and Search Optimization metabox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pins / Google Rich Cards / SEO / Twitter Card descriptions, along with the shared image and/or video.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Fully renders content (including shortcodes) for accurate description texts and embedded video detection.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Optionally validate all image minimum / maximum dimensions and aspect ratios.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Validates minimum / maximum image dimensions and aspect ratios.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Optionally upscale smaller images for social sharing and Schema markup - a maximum upscale percentage can also be selected.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Support for embedded videos in content text (iframe and object HTML markup).
 
