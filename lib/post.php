@@ -523,9 +523,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// stop here
 			}
 
-			$charset = get_bloginfo( 'charset' );
 			$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
-			$shortlink_encoded = SucomUtil::encode_emoji( htmlentities( urldecode( $shortlink ), ENT_QUOTES, $charset, false ) );	// double_encode = false
+			$shortlink_encoded = SucomUtil::encode_html_emoji( urldecode( $shortlink ) );
 
 			if ( filter_var( $shortlink, FILTER_VALIDATE_URL ) === false ) {
 				if ( $this->p->debug->enabled ) {

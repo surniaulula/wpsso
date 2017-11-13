@@ -1381,6 +1381,604 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
 
+		// get the site organization array
+		// $mixed = 'default' | 'current' | post ID | $mod array
+		public static function get_site_organization( $mixed = 'current' ) {
+
+			$wpsso =& Wpsso::get_instance();
+			$social_accounts = apply_filters( $wpsso->cf['lca'].'_social_accounts', $wpsso->cf['form']['social_accounts'] );
+			$org_sameas = array();
+
+			foreach ( $social_accounts as $social_key => $social_label ) {
+				$sameas_url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// localized value
+				if ( empty( $sameas_url ) ) {
+					continue;
+				} elseif ( $social_key === 'tc_site' ) {	// convert twitter name to url
+					$sameas_url = 'https://twitter.com/'.preg_replace( '/^@/', '', $sameas_url );
+				}
+				if ( filter_var( $sameas_url, FILTER_VALIDATE_URL ) !== false ) {
+					$org_sameas[] = $sameas_url;
+				}
+			}
+
+			return array(
+				'org_type' => $wpsso->options['site_org_type'],
+				'org_url' => SucomUtil::get_site_url( $wpsso->options, $mixed ),			// localized value
+				'org_name' => SucomUtil::get_site_name( $wpsso->options, $mixed ),		// localized value
+				'org_alt_name' => SucomUtil::get_site_alt_name( $wpsso->options, $mixed ),	// localized value
+				'org_desc' => SucomUtil::get_site_description( $wpsso->options, $mixed ),	// localized value
+				'org_logo_url' => SucomUtil::get_key_value( 'schema_logo_url', $wpsso->options, $mixed ),	// localized value
+				'org_banner_url' => SucomUtil::get_key_value( 'schema_banner_url', $wpsso->options, $mixed ),	// localized value
+				'org_place_id' => $wpsso->options['site_place_id'],
+				'org_sameas' => $org_sameas,							// localized value
+			);
+		}
+
+		// $user_id is optional and takes precedence over the $mod post_author value
+		public static function add_author_coauthor_data( &$json_data, $mod, $user_id = false ) {
+
+			$wpsso =& Wpsso::get_instance();
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
+			$authors_added = 0;
+			$coauthors_added = 0;
+
+			if ( empty( $user_id ) && 
+				isset( $mod['post_author'] ) )
+					$user_id = $mod['post_author'];
+
+			if ( empty( $user_id ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'exiting early: empty user_id / post_author' );
+				}
+				return 0;
+			}
+
+			// single author
+			$authors_added += self::add_single_person_data( $json_data['author'], $mod, $user_id, false );	// $list_element = false
+
+			// list of contributors / co-authors
+			if ( ! empty( $mod['post_coauthors'] ) ) {
+				foreach ( $mod['post_coauthors'] as $author_id ) {
+					$coauthors_added += self::add_single_person_data( $json_data['contributor'], $mod, $author_id, true );	// $list_element = true
+				}
+			}
+
+			foreach ( array( 'author', 'contributor' ) as $itemprop ) {
+				if ( empty( $json_data[$itemprop] ) ) {
+					unset( $json_data[$itemprop] );	// prevent null assignment
+				}
+			}
+
+			return $authors_added + $coauthors_added;	// return count of authors and coauthors added
+		}
+
+		// pass a single or two dimension image array in $og_images
+		public static function add_image_list_data( &$json_data, &$og_images, $prefix = 'og:image' ) {
+			$images_added = 0;
+
+			if ( isset( $og_images[0] ) && is_array( $og_images[0] ) ) {						// 2 dimensional array
+				foreach ( $og_images as $single_image ) {
+					$images_added += self::add_single_image_data( $json_data, $single_image, $prefix, true );	// $list_element = true
+				}
+			} elseif ( is_array( $og_images ) ) {
+				$images_added += self::add_single_image_data( $json_data, $og_images, $prefix, true );		// $list_element = true
+			}
+
+			return $images_added;	// return count of images added
+		}
+
+		// pass a single dimension image array in $opts
+		public static function add_single_image_data( &$json_data, $opts, $prefix = 'og:image', $list_element = true ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( empty( $opts ) || ! is_array( $opts ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'exiting early: options array is empty or not an array' );
+				}
+				return 0;	// return count of images added
+			}
+
+			$media_url = SucomUtil::get_mt_media_url( $opts, $prefix );
+
+			if ( empty( $media_url ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'exiting early: '.$prefix.' URL values are empty' );
+				}
+				return 0;	// return count of images added
+			}
+
+			// if not adding a list element, inherit the existing schema type url (if one exists)
+			list( $image_type_id, $image_type_url ) = self::get_single_type_id_url( $json_data,
+				false, 'image_type', 'image.object', $list_element );
+
+			$ret = self::get_schema_type_context( $image_type_url, array(
+				'url' => esc_url( $media_url ),
+			) );
+
+			/*
+			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), 
+			 * check the WordPress Media Library for a title and description.
+			 */
+			if ( ! empty( $opts[$prefix.':id'] ) && is_numeric( $opts[$prefix.':id'] ) ) {
+
+				$wpsso = Wpsso::get_instance();
+				$post_id = $opts[$prefix.':id'];
+				$mod = $wpsso->m['util']['post']->get_mod( $post_id );
+
+				$ret['name'] = $wpsso->page->get_title( $wpsso->options['og_title_len'],
+					'...', $mod, true, false, true, 'schema_title' );
+
+				if ( empty( $ret['name'] ) ) {	// just in case
+					unset( $ret['name'] );
+				}
+
+				$ret['description'] = $wpsso->page->get_description( $wpsso->options['schema_desc_len'],
+					'...', $mod, true, false, true, 'schema_desc' );
+
+				if ( empty( $ret['description'] ) ) {	// just in case
+					unset( $ret['description'] );
+				}
+			}
+
+			foreach ( array( 'width', 'height' ) as $prop ) {
+				if ( isset( $opts[$prefix.':'.$prop] ) && $opts[$prefix.':'.$prop] > 0 ) {	// just in case
+					$ret[$prop] = $opts[$prefix.':'.$prop];
+				}
+			}
+
+			if ( empty( $list_element ) ) {
+				$json_data = $ret;
+			} else {
+				$json_data[] = $ret;	// add an item to the list
+			}
+
+			return 1;	// return count of images added
+		}
+
+		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $names, $overwrite = true ) {
+			$wpsso =& Wpsso::get_instance();
+			$itemprop_added = 0;
+			$is_assoc = SucomUtil::is_assoc( $names );
+			foreach ( $names as $itemprop_name => $key_name ) {
+				if ( ! $is_assoc ) {
+					$itemprop_name = $key_name;
+				}
+				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
+					if ( isset( $json_data[$itemprop_name] ) && empty( $overwrite ) ) {
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'skipping '.$itemprop_name.': itemprop exists and overwrite is false' );
+						}
+					} else {
+						if ( is_string( $assoc[$key_name] ) && 
+							filter_var( $assoc[$key_name], FILTER_VALIDATE_URL ) !== false ) {
+							$json_data[$itemprop_name] = esc_url( $assoc[$key_name] );
+						} else {
+							$json_data[$itemprop_name] = $assoc[$key_name];
+						}
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'assigned '.$key_name.' value to itemprop '.$itemprop_name.' = '.
+								print_r( $json_data[$itemprop_name], true ) );
+						}
+						$itemprop_added++;
+					}
+				}
+			}
+			return $itemprop_added;
+		}
+
+		public static function get_data_itemprop_from_assoc( array $assoc, array $names, $exclude = array( '' ) ) {
+			$wpsso =& Wpsso::get_instance();
+			$json_data = array();
+			foreach ( $names as $itemprop_name => $key_name ) {
+				if ( isset( $assoc[$key_name] ) && ! in_array( $assoc[$key_name], $exclude, true ) ) {	// $strict = true
+					$json_data[$itemprop_name] = $assoc[$key_name];
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'assigned '.$key_name.' value to itemprop '.$itemprop_name.' = '.
+							print_r( $json_data[$itemprop_name], true ) );
+					}
+				}
+			}
+			return empty( $json_data ) ? false : $json_data;
+		}
+
+		// QuantitativeValue (width, height, length, depth, weight)
+		// unitCodes from http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes
+		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
+			foreach ( $names as $itemprop_name => $key_name ) {
+				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
+					switch ( $itemprop_name ) {
+						case 'length':	// QuantitativeValue does not have a length itemprop
+							$json_data['additionalProperty'][] = array(
+								'@context' => 'https://schema.org',
+								'@type' => 'PropertyValue',
+								'propertyID' => $itemprop_name,
+								'value' => $assoc[$key_name],
+								'unitCode' => 'CMT',
+							);
+							break;
+						default:
+							$json_data[$itemprop_name] = array(
+								'@context' => 'https://schema.org',
+								'@type' => 'QuantitativeValue',
+								'value' => $assoc[$key_name],
+								'unitCode' => ( $itemprop_name === 'weight' ? 'KGM' : 'CMT' ),
+							);
+							break;
+					}
+				}
+			}
+		}
+
+		/*
+		 * Return any 3rd party and custom options for a given option type.
+		 * 
+		 * function wpsso_get_post_event_options( $post_id, $event_id = false ) {
+		 * 	WpssoSchema::get_post_md_type_opts( $post_id, 'event', $event_id );
+		 * }
+		 */
+		public static function get_post_md_type_opts( $post_id, $md_type, $type_id = false ) {
+			$wpsso =& Wpsso::get_instance();
+			if ( empty( $md_type ) ) {
+				return false;
+			}
+			if ( isset( $wpsso->m['util']['post'] ) ) {
+				$mod = $wpsso->m['util']['post']->get_mod( $post_id );
+			} else {
+				return false;
+			}
+			$md_opts = apply_filters( $wpsso->cf['lca'].'_get_'.$md_type.'_options', false, $mod, $type_id );
+			WpssoSchema::merge_custom_mod_opts( $mod, $md_opts, array( $md_type => 'schema_'.$md_type ) );
+			return $md_opts;
+		}
+
+		public static function merge_custom_mod_opts( array $mod, &$opts, array $opts_md_pre ) {
+
+			if ( is_object( $mod['obj'] ) ) {	// just in case
+
+				$md_defs = (array) $mod['obj']->get_defaults( $mod['id'] );
+				$md_opts = (array) $mod['obj']->get_options( $mod['id'] );
+
+				foreach ( $opts_md_pre as $opt_key => $md_pre ) {
+
+					$md_defs = SucomUtil::preg_grep_keys( '/^'.$md_pre.'_/', $md_defs, false, $opt_key.'_' );
+					$md_opts = SucomUtil::preg_grep_keys( '/^'.$md_pre.'_/', $md_opts, false, $opt_key.'_' );
+	
+					// merge defaults, values from filters, and custom values (in that order)
+					if ( is_array( $opts ) ) {
+						$opts = array_merge( $md_defs, $opts, $md_opts );
+					} else {
+						$opts = array_merge( $md_defs, $md_opts );
+					}
+				}
+			}
+		}
+
+		/*
+		 * Create and add ISO formatted date options.
+		 *
+		 * $opts_md_pre = array( 
+		 * 	'event_start_date' => 'schema_event_start',	// prefix for date, time, timezone
+		 * 	'event_end_date' => 'schema_event_end',		// prefix for date, time, timezone
+		 * );
+		 */
+		public static function add_mod_opts_date_iso( array $mod, &$opts, array $opts_md_pre ) {
+
+			$wpsso =& Wpsso::get_instance();
+			
+			foreach ( $opts_md_pre as $opt_pre => $md_pre ) {
+
+				$md_date = $mod['obj']->get_options( $mod['id'], $md_pre.'_date' );
+				
+				if ( ( $md_time = $mod['obj']->get_options( $mod['id'], $md_pre.'_time' ) ) === 'none' ) {
+					$md_time = '';
+				}
+
+				if ( empty( $md_date ) && empty( $md_time ) ) {
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'skipping '.$md_pre.': date and time are empty' );
+					}
+					continue;	// nothing to do
+				} elseif ( ! empty( $md_date ) && empty( $md_time ) ) {	// date with no time
+					$md_time = '00:00';
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( $md_pre.' time is empty - using time '.$md_time );
+					}
+				} elseif ( empty( $md_date ) && ! empty( $md_time ) ) {	// time with no date
+					$md_date = gmdate( 'Y-m-d', time() );
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( $md_pre.' date is empty - using date '.$md_date );
+					}
+				}
+
+				if ( ! $md_timezone = $mod['obj']->get_options( $mod['id'], $md_pre.'_timezone' ) ) {
+					$md_timezone = get_option( 'timezone_string' );
+				}
+
+				if ( ! is_array( $opts ) ) {	// just in case
+					$opts = array();
+				}
+
+				$opts[$opt_pre.'_iso'] = date_format( date_create( $md_date.' '.$md_time.' '.$md_timezone ), 'c' );
+			}
+		}
+
+		/*
+		 * Add Single Methods
+		 */
+		public static function add_single_event_data( &$json_data, array $mod, $event_id = false, $list_element = false ) {
+
+			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'event', $event_id, $list_element );
+
+			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
+				return $ret;
+			}
+
+			$wpsso =& Wpsso::get_instance();
+			$sharing_url = $wpsso->util->get_sharing_url( $mod );
+			$event_opts = apply_filters( $wpsso->cf['lca'].'_get_event_options', false, $mod, $event_id );
+
+			if ( ! empty( $event_opts ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log_arr( 'get_event_options filters returned', $event_opts );
+				}
+			}
+
+			/*
+			 * Create and add ISO formatted date options.
+			 */
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'checking for custom event start/end date and time' );
+			}
+
+			self::add_mod_opts_date_iso( $mod, $event_opts, array( 
+				'event_start_date' => 'schema_event_start',	// prefix for date, time, timezone, iso
+				'event_end_date' => 'schema_event_end',		// prefix for date, time, timezone, iso
+			) );
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'checking for custom event offers' );
+			}
+
+			$have_offers = false;
+
+			foreach ( range( 0, WPSSO_SCHEMA_EVENT_OFFERS_MAX - 1, 1 ) as $key_num ) {
+
+				$offer_opts = apply_filters( $wpsso->cf['lca'].'_get_event_offer_options', false, $mod, $event_id, $key_num );
+
+				if ( ! empty( $offer_opts ) ) {
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log_arr( 'get_event_offer_options filters returned', $offer_opts );
+					}
+				}
+
+				if ( ! is_array( $offer_opts ) ) {
+
+					$offer_opts = array();
+
+					foreach ( array( 
+						'offer_name' => 'schema_event_offer_name',
+						'offer_url' => 'schema_event_offer_url',
+						'offer_price' => 'schema_event_offer_price',
+						'offer_price_currency' => 'schema_event_offer_currency',
+						'offer_availability' => 'schema_event_offer_avail',
+					) as $opt_key => $md_pre ) {
+						$offer_opts[$opt_key] = $mod['obj']->get_options( $mod['id'], $md_pre.'_'.$key_num );
+					}
+				}
+
+				// must have at least an offer name and price
+				if ( isset( $offer_opts['offer_name'] ) && isset( $offer_opts['offer_price'] ) ) {
+
+					if ( ! isset( $event_opts['offer_url'] ) ) {
+						$offer_opts['offer_url'] = $sharing_url;
+					}
+
+					if ( ! isset( $offer_opts['offer_valid_from'] ) ) {
+						if ( ! empty( $event_opts['event_start_date_iso'] ) ) {
+							$offer_opts['offer_valid_from'] = $event_opts['event_start_date_iso'];
+						}
+					}
+
+					if ( ! isset( $offer_opts['offer_valid_through'] ) ) {
+						if ( isset( $event_opts['event_end_date_iso'] ) ) {
+							$offer_opts['offer_valid_through'] = $event_opts['event_end_date_iso'];
+						}
+					}
+
+					if ( $have_offers === false ) {
+						$have_offers = true;
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'custom event offer found - creating new offers array' );
+						}
+						$event_opts['event_offers'] = array();	// clear offers returned by filter
+					}
+
+					$event_opts['event_offers'][] = $offer_opts;
+				}
+			}
+
+			if ( empty( $event_opts ) ) {	// $event_opts could be false or empty array
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'exiting early: empty event options' );
+				}
+				return 0;
+			}
+
+			// if not adding a list element, inherit the existing schema type url (if one exists)
+			list( $event_type_id, $event_type_url ) = self::get_single_type_id_url( $json_data,
+				$event_opts, 'event_type', 'event', $list_element );
+
+			$ret = self::get_schema_type_context( $event_type_url );
+
+			if ( isset( $event_opts['event_organizer_person_id'] ) && SucomUtil::is_opt_id( $event_opts['event_organizer_person_id'] ) ) {
+				if ( ! self::add_single_person_data( $ret['organizer'], $mod, $event_opts['event_organizer_person_id'], false ) ) {
+					unset( $ret['organizer'] );
+				}
+			}
+
+			if ( isset( $event_opts['event_place_id'] ) && SucomUtil::is_opt_id( $event_opts['event_place_id'] ) ) {
+				if ( ! self::add_single_place_data( $ret['location'], $mod, $event_opts['event_place_id'], false ) ) {
+					unset( $ret['location'] );
+				}
+			}
+
+			self::add_data_itemprop_from_assoc( $ret, $event_opts, array(
+				'startDate' => 'event_start_date_iso',
+				'endDate' => 'event_end_date_iso',
+			) );
+
+			if ( ! empty( $event_opts['event_offers'] ) && is_array( $event_opts['event_offers'] ) ) {
+
+				foreach ( $event_opts['event_offers'] as $event_offer ) {
+
+					// setup the offer with basic itemprops
+					if ( is_array( $event_offer ) &&	// just in case
+						( $offer = self::get_data_itemprop_from_assoc( $event_offer, array( 
+							'name' => 'offer_name',
+							'url' => 'offer_url',
+							'price' => 'offer_price',
+							'priceCurrency' => 'offer_price_currency',
+							'availability' => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
+							'validFrom' => 'offer_valid_from_date',
+							'validThrough' => 'offer_valid_to_date',
+					) ) ) !== false ) {
+						// add the complete offer
+						$ret['offers'][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
+					}
+				}
+			}
+
+			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_event', $ret, $mod, $event_id );
+
+			if ( empty( $list_element ) ) {
+				$json_data = $ret;
+			} else {
+				$json_data[] = $ret;
+			}
+
+			return 1;
+		}
+
+		public static function add_single_job_data( &$json_data, array $mod, $job_id = false, $list_element = false ) {
+
+			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'job', $job_id, $list_element );
+
+			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
+				return $ret;
+			}
+
+			$wpsso =& Wpsso::get_instance();
+
+			/*
+			 * Get job options from Pro modules and/or custom filters.
+			 */
+			$job_opts = apply_filters( $wpsso->cf['lca'].'_get_job_options', false, $mod, $job_id );
+
+			if ( ! empty( $job_opts ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log_arr( 'get_job_options filters returned', $job_opts );
+				}
+			}
+
+			/*
+			 * Override job options from filters with custom meta values (if any).
+			 */
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'merging default, filter, and custom option values' );
+			}
+
+			self::merge_custom_mod_opts( $mod, $job_opts, array( 'job' => 'schema_job' ) );
+
+			// if not adding a list element, inherit the existing schema type url (if one exists)
+			list( $job_type_id, $job_type_url ) = self::get_single_type_id_url( $json_data,
+				$job_opts, 'job_type', 'job.posting', $list_element );
+
+			$ret = self::get_schema_type_context( $job_type_url );
+
+			if ( empty( $job_opts['job_title'] ) ) {
+				$title_max_len = $wpsso->options['og_title_len'];
+				$job_opts['job_title'] = $wpsso->page->get_title( $title_max_len, '...', $mod );
+			}
+
+			/*
+			 * Create and add ISO formatted date options.
+			 */
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'checking for custom job expire date and time' );
+			}
+			self::add_mod_opts_date_iso( $mod, $job_opts, array( 'job_expire' => 'schema_job_expire' ) );
+
+			// add schema properties from the job options
+			self::add_data_itemprop_from_assoc( $ret, $job_opts, array(
+				'title' => 'job_title',
+				'validThrough' => 'job_expire_iso',
+			) );
+
+			if ( isset( $job_opts['job_salary'] ) && is_numeric( $job_opts['job_salary'] ) ) {	// allow for 0
+
+				$ret['baseSalary'] = self::get_schema_type_context( 'https://schema.org/MonetaryAmount' );
+
+				self::add_data_itemprop_from_assoc( $ret['baseSalary'], $job_opts, array(
+					'currency' => 'job_salary_currency',
+				) );
+
+				$ret['baseSalary']['value'] = self::get_schema_type_context( 'https://schema.org/QuantitativeValue' );
+
+				self::add_data_itemprop_from_assoc( $ret['baseSalary']['value'], $job_opts, array(
+					'value' => 'job_salary',
+					'unitText' => 'job_salary_period',
+				) );
+			}
+
+			// allow for a preformatted employment types array
+			if ( ! empty( $job_opts['job_empl_types'] ) && is_array( $job_opts['job_empl_types'] ) ) {
+				$ret['employmentType'] = $job_opts['job_empl_types'];
+			}
+
+			// add single employment type options (value must be non-empty)
+			foreach ( SucomUtil::preg_grep_keys( '/^job_empl_type_/', $job_opts, false, '' ) as $empl_type => $checked ) {
+				if ( ! empty( $checked ) ) {
+					$ret['employmentType'][] = $empl_type;
+				}
+			}
+
+			if ( isset( $job_opts['job_org_id'] ) && SucomUtil::is_opt_id( $job_opts['job_org_id'] ) ) {	// allow for 0
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'adding organization data for job_org_id '.$job_opts['job_org_id'] );
+				}
+				if ( ! self::add_single_organization_data( $ret['hiringOrganization'], $mod, $job_opts['job_org_id'], 'org_logo_url', false ) ) {
+					unset( $ret['hiringOrganization'] );
+				}
+			} elseif ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'job_org_id is empty or none' );
+			}
+
+			if ( isset( $job_opts['job_location_id'] ) && SucomUtil::is_opt_id( $job_opts['job_location_id'] ) ) {	// allow for 0
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'adding place data for job_location_id '.$job_opts['job_location_id'] );
+				}
+				if ( ! self::add_single_place_data( $ret['jobLocation'], $mod, $job_opts['job_location_id'], false ) ) {
+					unset( $ret['jobLocation'] );
+				}
+			} elseif ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'job_location_id is empty or none' );
+			}
+
+			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_job', $ret, $mod, $job_id );
+
+			if ( empty( $list_element ) ) {
+				$json_data = $ret;
+			} else {
+				$json_data[] = $ret;
+			}
+
+			return 1;
+		}
+
 		/*
 		 * $org_id can be 'none', 'site', or a number (including 0).
 		 * $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
@@ -1524,37 +2122,123 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;
 		}
 
-		// get the site organization array
-		// $mixed = 'default' | 'current' | post ID | $mod array
-		public static function get_site_organization( $mixed = 'current' ) {
+		// $user_id is required here
+		public static function add_single_person_data( &$json_data, $mod, $user_id, $list_element = true ) {
+
+			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'person', $user_id, $list_element );
+
+			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
+				return $ret;
+			}
 
 			$wpsso =& Wpsso::get_instance();
-			$social_accounts = apply_filters( $wpsso->cf['lca'].'_social_accounts', $wpsso->cf['form']['social_accounts'] );
-			$org_sameas = array();
+			$size_name = $wpsso->cf['lca'].'-schema';
+			$person_opts = apply_filters( $wpsso->cf['lca'].'_get_person_options', false, $mod, $user_id );
 
-			foreach ( $social_accounts as $social_key => $social_label ) {
-				$sameas_url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// localized value
-				if ( empty( $sameas_url ) ) {
-					continue;
-				} elseif ( $social_key === 'tc_site' ) {	// convert twitter name to url
-					$sameas_url = 'https://twitter.com/'.preg_replace( '/^@/', '', $sameas_url );
+			if ( ! empty( $person_opts ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log_arr( 'get_person_options filters returned', $person_opts );
 				}
-				if ( filter_var( $sameas_url, FILTER_VALIDATE_URL ) !== false ) {
-					$org_sameas[] = $sameas_url;
+			} else {
+				if ( empty( $user_id ) ) {
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'exiting early: empty user_id' );
+					}
+					return 0;
+				} elseif ( empty( $wpsso->m['util']['user'] ) ) {
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'exiting early: empty user module' );
+					}
+					return 0;
+				} else {
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( 'getting user module for user_id '.$user_id );
+					}
+					$user_mod = $wpsso->m['util']['user']->get_mod( $user_id );
+				}
+
+				$user_desc = $user_mod['obj']->get_options_multi( $user_id, array( 'schema_desc', 'og_desc' ) );
+
+				if ( empty( $user_desc ) ) {
+					$user_desc = $user_mod['obj']->get_author_meta( $user_id, 'description' );
+				}
+
+				// remove shortcodes, strip html, etc.
+				$user_desc = $wpsso->util->cleanup_html_tags( $user_desc );
+
+				$user_sameas = array();
+				foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
+					$sameas_url = $user_mod['obj']->get_author_meta( $user_id, $cm_id );
+					if ( empty( $sameas_url ) ) {
+						continue;
+					} elseif ( $cm_id === $wpsso->options['plugin_cm_twitter_name'] ) {	// convert twitter name to url
+						$sameas_url = 'https://twitter.com/'.preg_replace( '/^@/', '', $sameas_url );
+					}
+					if ( filter_var( $sameas_url, FILTER_VALIDATE_URL ) !== false ) {
+						$user_sameas[] = $sameas_url;
+					}
+				}
+
+				$person_opts = array(
+					'person_type' => 'person',
+					'person_url' => $user_mod['obj']->get_author_website( $user_id, 'url' ),
+					'person_name' => $user_mod['obj']->get_author_meta( $user_id, $wpsso->options['schema_author_name'] ),
+					'person_desc' => $user_desc,
+					'person_og_image' => $user_mod['obj']->get_og_images( 1, $size_name, $user_id, false ),
+					'person_sameas' => $user_sameas,
+				);
+			}
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log_arr( 'person options', $person_opts );
+			}
+
+			// if not adding a list element, inherit the existing schema type url (if one exists)
+			list( $person_type_id, $person_type_url ) = self::get_single_type_id_url( $json_data,
+				$person_opts, 'person_type', 'person', $list_element );
+
+			$ret = self::get_schema_type_context( $person_type_url );
+
+			self::add_data_itemprop_from_assoc( $ret, $person_opts, array(
+				'url' => 'person_url',
+				'name' => 'person_name',
+				'description' => 'person_desc',
+				'email' => 'person_email',
+				'telephone' => 'person_phone',
+			) );
+
+			/*
+			 * Images
+			 */
+			if ( ! empty( $person_opts['person_og_image'] ) ) {
+				if ( ! self::add_image_list_data( $ret['image'], $person_opts['person_og_image'], 'og:image' ) ) {
+					unset( $ret['image'] );	// prevent null assignment
 				}
 			}
 
-			return array(
-				'org_type' => $wpsso->options['site_org_type'],
-				'org_url' => SucomUtil::get_site_url( $wpsso->options, $mixed ),			// localized value
-				'org_name' => SucomUtil::get_site_name( $wpsso->options, $mixed ),		// localized value
-				'org_alt_name' => SucomUtil::get_site_alt_name( $wpsso->options, $mixed ),	// localized value
-				'org_desc' => SucomUtil::get_site_description( $wpsso->options, $mixed ),	// localized value
-				'org_logo_url' => SucomUtil::get_key_value( 'schema_logo_url', $wpsso->options, $mixed ),	// localized value
-				'org_banner_url' => SucomUtil::get_key_value( 'schema_banner_url', $wpsso->options, $mixed ),	// localized value
-				'org_place_id' => $wpsso->options['site_place_id'],
-				'org_sameas' => $org_sameas,							// localized value
-			);
+			/*
+			 * Google Knowledge Graph
+			 */
+			$person_opts['person_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_person_sameas',
+				( isset( $person_opts['person_sameas'] ) ? $person_opts['person_sameas'] : array() ), $mod, $user_id );
+
+			if ( ! empty( $person_opts['person_sameas'] ) && is_array( $person_opts['person_sameas'] ) ) {	// just in case
+				foreach ( $person_opts['person_sameas'] as $sameas_url ) {
+					if ( ! empty( $sameas_url ) ) {	// just in case
+						$ret['sameAs'][] = esc_url( $sameas_url );
+					}
+				}
+			}
+
+			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_person', $ret, $mod, $user_id );
+
+			if ( empty( $list_element ) ) {
+				$json_data = $ret;
+			} else {
+				$json_data[] = $ret;
+			}
+
+			return 1;
 		}
 
 		public static function add_single_place_data( &$json_data, $mod, $place_id = false, $list_element = false ) {
@@ -1718,663 +2402,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return 1;
-		}
-
-		public static function add_single_event_data( &$json_data, array $mod, $event_id = false, $list_element = false ) {
-
-			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'event', $event_id, $list_element );
-
-			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
-				return $ret;
-			}
-
-			$wpsso =& Wpsso::get_instance();
-			$sharing_url = $wpsso->util->get_sharing_url( $mod );
-			$event_opts = apply_filters( $wpsso->cf['lca'].'_get_event_options', false, $mod, $event_id );
-
-			if ( ! empty( $event_opts ) ) {
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log_arr( 'get_event_options filters returned', $event_opts );
-				}
-			}
-
-			/*
-			 * Create and add ISO formatted date options.
-			 */
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'checking for custom event start/end date and time' );
-			}
-			self::add_mod_opts_date_iso( $mod, $event_opts, array( 
-				'event_start_date' => 'schema_event_start',	// prefix for date, time, timezone, iso
-				'event_end_date' => 'schema_event_end',		// prefix for date, time, timezone, iso
-			) );
-
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'checking for custom event offers' );
-			}
-
-			$have_offers = false;
-
-			foreach ( range( 0, WPSSO_SCHEMA_EVENT_OFFERS_MAX - 1, 1 ) as $key_num ) {
-
-				$offer_opts = apply_filters( $wpsso->cf['lca'].'_get_event_offer_options', false, $mod, $event_id, $key_num );
-
-				if ( ! empty( $offer_opts ) ) {
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log_arr( 'get_event_offer_options filters returned', $offer_opts );
-					}
-				}
-
-				if ( ! is_array( $offer_opts ) ) {
-
-					$offer_opts = array();
-
-					foreach ( array( 
-						'offer_name' => 'schema_event_offer_name',
-						'offer_url' => 'schema_event_offer_url',
-						'offer_price' => 'schema_event_offer_price',
-						'offer_price_currency' => 'schema_event_offer_currency',
-						'offer_availability' => 'schema_event_offer_avail',
-					) as $opt_key => $md_pre ) {
-						$offer_opts[$opt_key] = $mod['obj']->get_options( $mod['id'], $md_pre.'_'.$key_num );
-					}
-				}
-
-				// must have at least an offer name and price
-				if ( isset( $offer_opts['offer_name'] ) && isset( $offer_opts['offer_price'] ) ) {
-
-					if ( ! isset( $event_opts['offer_url'] ) ) {
-						$offer_opts['offer_url'] = $sharing_url;
-					}
-
-					if ( ! isset( $offer_opts['offer_valid_from'] ) ) {
-						if ( ! empty( $event_opts['event_start_date_iso'] ) ) {
-							$offer_opts['offer_valid_from'] = $event_opts['event_start_date_iso'];
-						}
-					}
-
-					if ( ! isset( $offer_opts['offer_valid_through'] ) ) {
-						if ( isset( $event_opts['event_end_date_iso'] ) ) {
-							$offer_opts['offer_valid_through'] = $event_opts['event_end_date_iso'];
-						}
-					}
-
-					if ( $have_offers === false ) {
-						$have_offers = true;
-						if ( $wpsso->debug->enabled ) {
-							$wpsso->debug->log( 'custom event offer found - creating new offers array' );
-						}
-						$event_opts['event_offers'] = array();	// clear offers returned by filter
-					}
-
-					$event_opts['event_offers'][] = $offer_opts;
-				}
-			}
-
-			if ( empty( $event_opts ) ) {	// $event_opts could be false or empty array
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: empty event options' );
-				}
-				return 0;
-			}
-
-			// if not adding a list element, inherit the existing schema type url (if one exists)
-			list( $event_type_id, $event_type_url ) = self::get_single_type_id_url( $json_data,
-				$event_opts, 'event_type', 'event', $list_element );
-
-			$ret = self::get_schema_type_context( $event_type_url );
-
-			if ( isset( $event_opts['event_organizer_person_id'] ) && SucomUtil::is_opt_id( $event_opts['event_organizer_person_id'] ) ) {
-				if ( ! self::add_single_person_data( $ret['organizer'], $mod, $event_opts['event_organizer_person_id'], false ) ) {
-					unset( $ret['organizer'] );
-				}
-			}
-
-			if ( isset( $event_opts['event_place_id'] ) && SucomUtil::is_opt_id( $event_opts['event_place_id'] ) ) {
-				if ( ! self::add_single_place_data( $ret['location'], $mod, $event_opts['event_place_id'], false ) ) {
-					unset( $ret['location'] );
-				}
-			}
-
-			self::add_data_itemprop_from_assoc( $ret, $event_opts, array(
-				'startDate' => 'event_start_date_iso',
-				'endDate' => 'event_end_date_iso',
-			) );
-
-			if ( ! empty( $event_opts['event_offers'] ) && is_array( $event_opts['event_offers'] ) ) {
-
-				foreach ( $event_opts['event_offers'] as $event_offer ) {
-
-					// setup the offer with basic itemprops
-					if ( is_array( $event_offer ) &&	// just in case
-						( $offer = self::get_data_itemprop_from_assoc( $event_offer, array( 
-							'name' => 'offer_name',
-							'url' => 'offer_url',
-							'price' => 'offer_price',
-							'priceCurrency' => 'offer_price_currency',
-							'availability' => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
-							'validFrom' => 'offer_valid_from_date',
-							'validThrough' => 'offer_valid_to_date',
-					) ) ) !== false ) {
-						// add the complete offer
-						$ret['offers'][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
-					}
-				}
-			}
-
-			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_event', $ret, $mod, $event_id );
-
-			if ( empty( $list_element ) ) {
-				$json_data = $ret;
-			} else {
-				$json_data[] = $ret;
-			}
-
-			return 1;
-		}
-
-		public static function add_single_job_data( &$json_data, array $mod, $job_id = false, $list_element = false ) {
-
-			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'job', $job_id, $list_element );
-
-			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
-				return $ret;
-			}
-
-			$wpsso =& Wpsso::get_instance();
-
-			/*
-			 * Get job options from Pro modules and/or custom filters.
-			 */
-			$job_opts = apply_filters( $wpsso->cf['lca'].'_get_job_options', false, $mod, $job_id );
-
-			if ( ! empty( $job_opts ) ) {
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log_arr( 'get_job_options filters returned', $job_opts );
-				}
-			}
-
-			/*
-			 * Override job options from filters with custom meta values (if any).
-			 */
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'merging default, filter, and custom option values' );
-			}
-			self::merge_custom_mod_opts( $mod, $job_opts, array( 'job' => 'schema_job' ) );
-
-			// if not adding a list element, inherit the existing schema type url (if one exists)
-			list( $job_type_id, $job_type_url ) = self::get_single_type_id_url( $json_data,
-				$job_opts, 'job_type', 'job.posting', $list_element );
-
-			$ret = self::get_schema_type_context( $job_type_url );
-
-			if ( empty( $job_opts['job_title'] ) ) {
-				$title_max_len = $wpsso->options['og_title_len'];
-				$job_opts['job_title'] = $wpsso->page->get_title( $title_max_len, '...', $mod );
-			}
-
-			/*
-			 * Create and add ISO formatted date options.
-			 */
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'checking for custom job expire date and time' );
-			}
-			self::add_mod_opts_date_iso( $mod, $job_opts, array( 'job_expire' => 'schema_job_expire' ) );
-
-			// add schema properties from the job options
-			self::add_data_itemprop_from_assoc( $ret, $job_opts, array(
-				'title' => 'job_title',
-				'validThrough' => 'job_expire_iso',
-			) );
-
-			if ( isset( $job_opts['job_salary'] ) && is_numeric( $job_opts['job_salary'] ) ) {	// allow for 0
-
-				$ret['baseSalary'] = self::get_schema_type_context( 'https://schema.org/MonetaryAmount' );
-
-				self::add_data_itemprop_from_assoc( $ret['baseSalary'], $job_opts, array(
-					'currency' => 'job_salary_currency',
-				) );
-
-				$ret['baseSalary']['value'] = self::get_schema_type_context( 'https://schema.org/QuantitativeValue' );
-
-				self::add_data_itemprop_from_assoc( $ret['baseSalary']['value'], $job_opts, array(
-					'value' => 'job_salary',
-					'unitText' => 'job_salary_period',
-				) );
-			}
-
-			// allow for a preformatted employment types array
-			if ( ! empty( $job_opts['job_empl_types'] ) && is_array( $job_opts['job_empl_types'] ) ) {
-				$ret['employmentType'] = $job_opts['job_empl_types'];
-			}
-
-			// add single employment type options (value must be non-empty)
-			foreach ( SucomUtil::preg_grep_keys( '/^job_empl_type_/', $job_opts, false, '' ) as $empl_type => $checked ) {
-				if ( ! empty( $checked ) ) {
-					$ret['employmentType'][] = $empl_type;
-				}
-			}
-
-			if ( isset( $job_opts['job_org_id'] ) && SucomUtil::is_opt_id( $job_opts['job_org_id'] ) ) {	// allow for 0
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'adding organization data for job_org_id '.$job_opts['job_org_id'] );
-				}
-				if ( ! self::add_single_organization_data( $ret['hiringOrganization'], $mod, $job_opts['job_org_id'], 'org_logo_url', false ) ) {
-					unset( $ret['hiringOrganization'] );
-				}
-			} elseif ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'job_org_id is empty or none' );
-			}
-
-			if ( isset( $job_opts['job_location_id'] ) && SucomUtil::is_opt_id( $job_opts['job_location_id'] ) ) {	// allow for 0
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'adding place data for job_location_id '.$job_opts['job_location_id'] );
-				}
-				if ( ! self::add_single_place_data( $ret['jobLocation'], $mod, $job_opts['job_location_id'], false ) ) {
-					unset( $ret['jobLocation'] );
-				}
-			} elseif ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'job_location_id is empty or none' );
-			}
-
-			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_job', $ret, $mod, $job_id );
-
-			if ( empty( $list_element ) ) {
-				$json_data = $ret;
-			} else {
-				$json_data[] = $ret;
-			}
-
-			return 1;
-		}
-
-		// $user_id is optional and takes precedence over the $mod post_author value
-		public static function add_author_coauthor_data( &$json_data, $mod, $user_id = false ) {
-
-			$wpsso =& Wpsso::get_instance();
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->mark();
-			}
-
-			$authors_added = 0;
-			$coauthors_added = 0;
-
-			if ( empty( $user_id ) && 
-				isset( $mod['post_author'] ) )
-					$user_id = $mod['post_author'];
-
-			if ( empty( $user_id ) ) {
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: empty user_id / post_author' );
-				}
-				return 0;
-			}
-
-			// single author
-			$authors_added += self::add_single_person_data( $json_data['author'], $mod, $user_id, false );	// $list_element = false
-
-			// list of contributors / co-authors
-			if ( ! empty( $mod['post_coauthors'] ) ) {
-				foreach ( $mod['post_coauthors'] as $author_id ) {
-					$coauthors_added += self::add_single_person_data( $json_data['contributor'], $mod, $author_id, true );	// $list_element = true
-				}
-			}
-
-			foreach ( array( 'author', 'contributor' ) as $itemprop ) {
-				if ( empty( $json_data[$itemprop] ) ) {
-					unset( $json_data[$itemprop] );	// prevent null assignment
-				}
-			}
-
-			return $authors_added + $coauthors_added;	// return count of authors and coauthors added
-		}
-
-		// $user_id is required here
-		public static function add_single_person_data( &$json_data, $mod, $user_id, $list_element = true ) {
-
-			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'person', $user_id, $list_element );
-
-			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
-				return $ret;
-			}
-
-			$wpsso =& Wpsso::get_instance();
-			$size_name = $wpsso->cf['lca'].'-schema';
-			$person_opts = apply_filters( $wpsso->cf['lca'].'_get_person_options', false, $mod, $user_id );
-
-			if ( ! empty( $person_opts ) ) {
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log_arr( 'get_person_options filters returned', $person_opts );
-				}
-			} else {
-				if ( empty( $user_id ) ) {
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'exiting early: empty user_id' );
-					}
-					return 0;
-				} elseif ( empty( $wpsso->m['util']['user'] ) ) {
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'exiting early: empty user module' );
-					}
-					return 0;
-				} else {
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'getting user module for user_id '.$user_id );
-					}
-					$user_mod = $wpsso->m['util']['user']->get_mod( $user_id );
-				}
-
-				$user_desc = $user_mod['obj']->get_options_multi( $user_id, array( 'schema_desc', 'og_desc' ) );
-
-				if ( empty( $user_desc ) ) {
-					$user_desc = $user_mod['obj']->get_author_meta( $user_id, 'description' );
-				}
-
-				// remove shortcodes, strip html, etc.
-				$user_desc = $wpsso->util->cleanup_html_tags( $user_desc );
-
-				$user_sameas = array();
-				foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
-					$sameas_url = $user_mod['obj']->get_author_meta( $user_id, $cm_id );
-					if ( empty( $sameas_url ) ) {
-						continue;
-					} elseif ( $cm_id === $wpsso->options['plugin_cm_twitter_name'] ) {	// convert twitter name to url
-						$sameas_url = 'https://twitter.com/'.preg_replace( '/^@/', '', $sameas_url );
-					}
-					if ( filter_var( $sameas_url, FILTER_VALIDATE_URL ) !== false ) {
-						$user_sameas[] = $sameas_url;
-					}
-				}
-
-				$person_opts = array(
-					'person_type' => 'person',
-					'person_url' => $user_mod['obj']->get_author_website( $user_id, 'url' ),
-					'person_name' => $user_mod['obj']->get_author_meta( $user_id, $wpsso->options['schema_author_name'] ),
-					'person_desc' => $user_desc,
-					'person_og_image' => $user_mod['obj']->get_og_images( 1, $size_name, $user_id, false ),
-					'person_sameas' => $user_sameas,
-				);
-			}
-
-			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log_arr( 'person options', $person_opts );
-			}
-
-			// if not adding a list element, inherit the existing schema type url (if one exists)
-			list( $person_type_id, $person_type_url ) = self::get_single_type_id_url( $json_data,
-				$person_opts, 'person_type', 'person', $list_element );
-
-			$ret = self::get_schema_type_context( $person_type_url );
-
-			self::add_data_itemprop_from_assoc( $ret, $person_opts, array(
-				'url' => 'person_url',
-				'name' => 'person_name',
-				'description' => 'person_desc',
-				'email' => 'person_email',
-				'telephone' => 'person_phone',
-			) );
-
-			/*
-			 * Images
-			 */
-			if ( ! empty( $person_opts['person_og_image'] ) ) {
-				if ( ! self::add_image_list_data( $ret['image'], $person_opts['person_og_image'], 'og:image' ) ) {
-					unset( $ret['image'] );	// prevent null assignment
-				}
-			}
-
-			/*
-			 * Google Knowledge Graph
-			 */
-			$person_opts['person_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_person_sameas',
-				( isset( $person_opts['person_sameas'] ) ? $person_opts['person_sameas'] : array() ), $mod, $user_id );
-
-			if ( ! empty( $person_opts['person_sameas'] ) && is_array( $person_opts['person_sameas'] ) ) {	// just in case
-				foreach ( $person_opts['person_sameas'] as $sameas_url ) {
-					if ( ! empty( $sameas_url ) ) {	// just in case
-						$ret['sameAs'][] = esc_url( $sameas_url );
-					}
-				}
-			}
-
-			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_person', $ret, $mod, $user_id );
-
-			if ( empty( $list_element ) ) {
-				$json_data = $ret;
-			} else {
-				$json_data[] = $ret;
-			}
-
-			return 1;
-		}
-
-		// pass a single or two dimension image array in $og_images
-		public static function add_image_list_data( &$json_data, &$og_images, $prefix = 'og:image' ) {
-			$images_added = 0;
-
-			if ( isset( $og_images[0] ) && is_array( $og_images[0] ) ) {						// 2 dimensional array
-				foreach ( $og_images as $single_image ) {
-					$images_added += self::add_single_image_data( $json_data, $single_image, $prefix, true );	// $list_element = true
-				}
-			} elseif ( is_array( $og_images ) ) {
-				$images_added += self::add_single_image_data( $json_data, $og_images, $prefix, true );		// $list_element = true
-			}
-
-			return $images_added;	// return count of images added
-		}
-
-		// pass a single dimension image array in $opts
-		public static function add_single_image_data( &$json_data, $opts, $prefix = 'og:image', $list_element = true ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( empty( $opts ) || ! is_array( $opts ) ) {
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: options array is empty or not an array' );
-				}
-				return 0;	// return count of images added
-			}
-
-			$media_url = SucomUtil::get_mt_media_url( $opts, $prefix );
-
-			if ( empty( $media_url ) ) {
-				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: '.$prefix.' URL values are empty' );
-				}
-				return 0;	// return count of images added
-			}
-
-			// if not adding a list element, inherit the existing schema type url (if one exists)
-			list( $image_type_id, $image_type_url ) = self::get_single_type_id_url( $json_data,
-				false, 'image_type', 'image.object', $list_element );
-
-			$ret = self::get_schema_type_context( $image_type_url, array(
-				'url' => esc_url( $media_url ),
-			) );
-
-			/*
-			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), 
-			 * check the WordPress Media Library for a title and description.
-			 */
-			if ( ! empty( $opts[$prefix.':id'] ) && is_numeric( $opts[$prefix.':id'] ) ) {
-
-				$wpsso = Wpsso::get_instance();
-				$post_id = $opts[$prefix.':id'];
-				$mod = $wpsso->m['util']['post']->get_mod( $post_id );
-
-				$ret['name'] = $wpsso->page->get_title( $wpsso->options['og_title_len'],
-					'...', $mod, true, false, true, 'schema_title' );
-
-				if ( empty( $ret['name'] ) ) {	// just in case
-					unset( $ret['name'] );
-				}
-
-				$ret['description'] = $wpsso->page->get_description( $wpsso->options['schema_desc_len'],
-					'...', $mod, true, false, true, 'schema_desc' );
-
-				if ( empty( $ret['description'] ) ) {	// just in case
-					unset( $ret['description'] );
-				}
-			}
-
-			foreach ( array( 'width', 'height' ) as $prop ) {
-				if ( isset( $opts[$prefix.':'.$prop] ) && $opts[$prefix.':'.$prop] > 0 ) {	// just in case
-					$ret[$prop] = $opts[$prefix.':'.$prop];
-				}
-			}
-
-			if ( empty( $list_element ) ) {
-				$json_data = $ret;
-			} else {
-				$json_data[] = $ret;	// add an item to the list
-			}
-
-			return 1;	// return count of images added
-		}
-
-		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $names, $overwrite = true ) {
-			$wpsso =& Wpsso::get_instance();
-			$itemprop_added = 0;
-			$is_assoc = SucomUtil::is_assoc( $names );
-			foreach ( $names as $itemprop_name => $key_name ) {
-				if ( ! $is_assoc ) {
-					$itemprop_name = $key_name;
-				}
-				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
-					if ( isset( $json_data[$itemprop_name] ) && empty( $overwrite ) ) {
-						if ( $wpsso->debug->enabled ) {
-							$wpsso->debug->log( 'skipping '.$itemprop_name.': itemprop exists and overwrite is false' );
-						}
-					} else {
-						if ( is_string( $assoc[$key_name] ) && 
-							filter_var( $assoc[$key_name], FILTER_VALIDATE_URL ) !== false ) {
-							$json_data[$itemprop_name] = esc_url( $assoc[$key_name] );
-						} else {
-							$json_data[$itemprop_name] = $assoc[$key_name];
-						}
-						if ( $wpsso->debug->enabled ) {
-							$wpsso->debug->log( 'assigned '.$key_name.' value to itemprop '.$itemprop_name.' = '.
-								print_r( $json_data[$itemprop_name], true ) );
-						}
-						$itemprop_added++;
-					}
-				}
-			}
-			return $itemprop_added;
-		}
-
-		public static function get_data_itemprop_from_assoc( array $assoc, array $names, $exclude = array( '' ) ) {
-			$wpsso =& Wpsso::get_instance();
-			$json_data = array();
-			foreach ( $names as $itemprop_name => $key_name ) {
-				if ( isset( $assoc[$key_name] ) && ! in_array( $assoc[$key_name], $exclude, true ) ) {	// $strict = true
-					$json_data[$itemprop_name] = $assoc[$key_name];
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'assigned '.$key_name.' value to itemprop '.$itemprop_name.' = '.
-							print_r( $json_data[$itemprop_name], true ) );
-					}
-				}
-			}
-			return empty( $json_data ) ? false : $json_data;
-		}
-
-		// QuantitativeValue (width, height, length, depth, weight)
-		// unitCodes from http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes
-		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
-			foreach ( $names as $itemprop_name => $key_name ) {
-				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
-					switch ( $itemprop_name ) {
-						case 'length':	// QuantitativeValue does not have a length itemprop
-							$json_data['additionalProperty'][] = array(
-								'@context' => 'https://schema.org',
-								'@type' => 'PropertyValue',
-								'propertyID' => $itemprop_name,
-								'value' => $assoc[$key_name],
-								'unitCode' => 'CMT',
-							);
-							break;
-						default:
-							$json_data[$itemprop_name] = array(
-								'@context' => 'https://schema.org',
-								'@type' => 'QuantitativeValue',
-								'value' => $assoc[$key_name],
-								'unitCode' => ( $itemprop_name === 'weight' ? 'KGM' : 'CMT' ),
-							);
-							break;
-					}
-				}
-			}
-		}
-
-		public static function merge_custom_mod_opts( array $mod, &$opts, array $opts_md_pre ) {
-
-			if ( is_object( $mod['obj'] ) ) {	// just in case
-
-				$md_defs = (array) $mod['obj']->get_defaults( $mod['id'] );
-				$md_opts = (array) $mod['obj']->get_options( $mod['id'] );
-
-				foreach ( $opts_md_pre as $opt_key => $md_pre ) {
-
-					$md_defs = SucomUtil::preg_grep_keys( '/^'.$md_pre.'_/', $md_defs, false, $opt_key.'_' );
-					$md_opts = SucomUtil::preg_grep_keys( '/^'.$md_pre.'_/', $md_opts, false, $opt_key.'_' );
-	
-					// merge defaults, values from filters, and custom values (in that order)
-					if ( is_array( $opts ) ) {
-						$opts = array_merge( $md_defs, $opts, $md_opts );
-					} else {
-						$opts = array_merge( $md_defs, $md_opts );
-					}
-				}
-			}
-		}
-
-		/*
-		 * Create and add ISO formatted date options.
-		 *
-		 * $opts_md_pre = array( 
-		 * 	'event_start_date' => 'schema_event_start',	// prefix for date, time, timezone
-		 * 	'event_end_date' => 'schema_event_end',		// prefix for date, time, timezone
-		 * );
-		 */
-		public static function add_mod_opts_date_iso( array $mod, &$opts, array $opts_md_pre ) {
-
-			$wpsso =& Wpsso::get_instance();
-			
-			foreach ( $opts_md_pre as $opt_pre => $md_pre ) {
-
-				$md_date = $mod['obj']->get_options( $mod['id'], $md_pre.'_date' );
-				
-				if ( ( $md_time = $mod['obj']->get_options( $mod['id'], $md_pre.'_time' ) ) === 'none' ) {
-					$md_time = '';
-				}
-
-				if ( empty( $md_date ) && empty( $md_time ) ) {
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'skipping '.$md_pre.': date and time are empty' );
-					}
-					continue;	// nothing to do
-				} elseif ( ! empty( $md_date ) && empty( $md_time ) ) {	// date with no time
-					$md_time = '00:00';
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( $md_pre.' time is empty - using time '.$md_time );
-					}
-				} elseif ( empty( $md_date ) && ! empty( $md_time ) ) {	// time with no date
-					$md_date = gmdate( 'Y-m-d', time() );
-					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( $md_pre.' date is empty - using date '.$md_date );
-					}
-				}
-
-				if ( ! $md_timezone = $mod['obj']->get_options( $mod['id'], $md_pre.'_timezone' ) ) {
-					$md_timezone = get_option( 'timezone_string' );
-				}
-
-				if ( ! is_array( $opts ) ) {	// just in case
-					$opts = array();
-				}
-
-				$opts[$opt_pre.'_iso'] = date_format( date_create( $md_date.' '.$md_time.' '.$md_timezone ), 'c' );
-			}
 		}
 
 		/*

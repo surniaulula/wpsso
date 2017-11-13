@@ -284,12 +284,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
 
 					$comment = '<!-- '.$lca.' meta tags '.$type.' -->';
-					$mt_name = $add_meta ? '<meta name="'.$lca.':mark:'.$type.'" content="'.$lca.' meta tags '.$type.'"/>' : '';
+					$mt_name = $add_meta ? '<meta name="'.$lca.':mark:'.$type.'" content="'.$lca.' meta tags '.$type.'"/>'."\n" : '';
 
 					if ( $type === 'begin' ) {
-						$ret = "\n\n".$comment."\n".$mt_name."\n";
+						$ret = "\n\n".$comment."\n".$mt_name;
 					} else {
-						$ret = $mt_name."\n".$comment."\n";
+						$ret = $mt_name.$comment."\n";
 					}
 
 					break;
@@ -326,7 +326,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$lca = $this->p->cf['lca'];
 			$start_time = microtime( true );
 			$crawler_name = SucomUtil::get_crawler_name();
-			$added_on_date = 'added on '.date( 'c' ).( $crawler_name !== 'none' ? ' for '.$crawler_name : '' );
 			$html = $this->get_mt_mark( 'begin' );
 
 			// first element of returned array is the html tag
@@ -344,7 +343,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$html .= $this->get_mt_mark( 'end' );
-			$html .= '<!-- '.$added_on_date.' in '.sprintf( '%f secs', microtime( true ) - $start_time ).' -->'."\n";
+			$html .= '<!-- added on '.date( 'c' ).' in '.sprintf( '%f secs', microtime( true ) - $start_time ).
+				( $crawler_name !== 'none' ? ' for '.$crawler_name : '' ).' from '.SucomUtilWP::raw_home_url().' -->'."\n";
 
 			return $html;
 		}
@@ -656,7 +656,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$ret = array();
 			$log_prefix = $tag.' '.$type.' '.$name;
-			$charset = get_bloginfo( 'charset' );
+
+			static $charset = null;
+			if ( ! isset( $charset  ) ) {
+				$charset = get_bloginfo( 'charset' );
+			}
 
 			if ( is_array( $value ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -742,8 +746,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case 'twitter:description':
 						case 'description':
 						case 'name':
-							$parts[5] = SucomUtil::encode_emoji( htmlentities( $parts[5],
-								ENT_QUOTES, $charset, false ) );	// double_encode = false
+							$parts[5] = SucomUtil::encode_html_emoji( $parts[5] );
 							break;
 						// url values that must be url encoded
 						case 'og:url':
@@ -772,8 +775,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							break;
 						// encode html entities for everything else
 						default:
-							$parts[5] = htmlentities( $parts[5],
-								ENT_QUOTES, $charset, false );	// double_encode = false
+							$parts[5] = htmlentities( $parts[5], ENT_QUOTES, $charset, false );	// double_encode = false
 							break;
 					}
 

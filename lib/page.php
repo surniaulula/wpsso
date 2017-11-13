@@ -155,8 +155,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( $do_encode === true ) {
-				$caption = SucomUtil::encode_emoji( htmlentities( $caption,
-					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
+				$caption = SucomUtil::encode_html_emoji( $caption );
 			} else {	// just in case
 				$caption = html_entity_decode( SucomUtil::decode_utf8( $caption ),
 					ENT_QUOTES, get_bloginfo( 'charset' ) );
@@ -336,8 +335,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $do_encode === true ) {
 				foreach ( array( 'title', 'separator' ) as $var ) {
-					$$var = SucomUtil::encode_emoji( htmlentities( $$var,
-						ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
+					$$var = SucomUtil::encode_html_emoji( $$var );
 				}
 			}
 
@@ -570,8 +568,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( $do_encode === true ) {
-				$desc = SucomUtil::encode_emoji( htmlentities( $desc,
-					ENT_QUOTES, get_bloginfo( 'charset' ), false ) );	// double_encode = false
+				$desc = SucomUtil::encode_html_emoji( $desc );
 			}
 
 			if ( $this->p->debug->enabled ) {

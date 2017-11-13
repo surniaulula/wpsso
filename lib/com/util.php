@@ -1207,7 +1207,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 
 				$active_plugins[] = $plugin_base;
-				sort( $active_plugins );	// emulate wp function
+				sort( $active_plugins );	// emulate the WordPress function
 				$updated = update_option( 'active_plugins', $active_plugins );
 
 				if ( ! $silent ) {
@@ -1319,7 +1319,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_slug_download_url( $plugin_slug, $unfiltered = true ) {
 
-			$plugin_info = SucomUtil::get_slug_info( $plugin_slug, array( 'downloadlink' => true ), $unfiltered );
+			$plugin_info = SucomUtil::get_slug_info( $plugin_slug,
+				array( 'downloadlink' => true ), $unfiltered );
 
 			if ( is_wp_error( $plugin_info ) ) {
 				return $plugin_info;
@@ -2573,36 +2574,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return str_replace( $replace, $allowed, urlencode( esc_url( $url ) ) );
 		}
 
-		// wp_encode_emoji() is only available since v4.2
-		// use the wp function if available, otherwise provide the same functionality
-		public static function encode_emoji( $content ) {
-			if ( function_exists( 'wp_encode_emoji' ) ) {
-				return wp_encode_emoji( $content );		// since wp 4.2
-			} elseif ( function_exists( 'mb_convert_encoding' ) ) {
-				$regex = '/(
-				     \x23\xE2\x83\xA3               # Digits
-				     [\x30-\x39]\xE2\x83\xA3
-				   | \xF0\x9F[\x85-\x88][\xA6-\xBF] # Enclosed characters
-				   | \xF0\x9F[\x8C-\x97][\x80-\xBF] # Misc
-				   | \xF0\x9F\x98[\x80-\xBF]        # Smilies
-				   | \xF0\x9F\x99[\x80-\x8F]
-				   | \xF0\x9F\x9A[\x80-\xBF]        # Transport and map symbols
-				)/x';
-				if ( preg_match_all( $regex, $content, $all_matches ) ) {
-					if ( ! empty( $all_matches[1] ) ) {
-						foreach ( $all_matches[1] as $emoji ) {
-							$unpacked = unpack( 'H*', mb_convert_encoding( $emoji, 'UTF-32', 'UTF-8' ) );
-							if ( isset( $unpacked[1] ) ) {
-								$entity = '&#x' . ltrim( $unpacked[1], '0' ) . ';';
-								$content = str_replace( $emoji, $entity, $content );
-							}
-						}
-					}
-				}
-			}
-			return $content;
-		}
-
 		// used to decode facebook video urls
 		public static function replace_unicode_escape( $str ) {
 			return preg_replace_callback( '/\\\\u([0-9a-f]{4})/i',
@@ -2988,6 +2959,120 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} else {
 				return true;
 			}
+		}
+
+		public static function encode_html_emoji( $html ) {
+			static $charset = null;
+			if ( ! isset( $charset ) ) {
+				$charset = get_bloginfo( 'charset' );	// only get it once
+			}
+			return SucomUtilWP::encode_emoji( htmlentities( $html, ENT_QUOTES, $charset, false ) );	// double_encode = false
+		}
+	}
+}
+
+/*
+ * SucomUtilWP is available in the lib/com/util.php library since 2017/11/13.
+ */
+if ( ! class_exists( 'SucomUtilWP' ) ) {
+
+	class SucomUtilWP {
+
+		/*
+		 * wp_encode_emoji() is only available since WordPress v4.2.
+		 * Use the WordPress function if available, otherwise provide the same functionality.
+		 */
+		public static function encode_emoji( $content ) {
+			if ( function_exists( 'wp_encode_emoji' ) ) {
+				return wp_encode_emoji( $content );		// since wp 4.2
+			} elseif ( function_exists( 'mb_convert_encoding' ) ) {
+				$regex = '/(
+				     \x23\xE2\x83\xA3               # Digits
+				     [\x30-\x39]\xE2\x83\xA3
+				   | \xF0\x9F[\x85-\x88][\xA6-\xBF] # Enclosed characters
+				   | \xF0\x9F[\x8C-\x97][\x80-\xBF] # Misc
+				   | \xF0\x9F\x98[\x80-\xBF]        # Smilies
+				   | \xF0\x9F\x99[\x80-\x8F]
+				   | \xF0\x9F\x9A[\x80-\xBF]        # Transport and map symbols
+				)/x';
+				if ( preg_match_all( $regex, $content, $all_matches ) ) {
+					if ( ! empty( $all_matches[1] ) ) {
+						foreach ( $all_matches[1] as $emoji ) {
+							$unpacked = unpack( 'H*', mb_convert_encoding( $emoji, 'UTF-32', 'UTF-8' ) );
+							if ( isset( $unpacked[1] ) ) {
+								$entity = '&#x' . ltrim( $unpacked[1], '0' ) . ';';
+								$content = str_replace( $emoji, $entity, $content );
+							}
+						}
+					}
+				}
+			}
+			return $content;
+		}
+
+		/*
+		 * Unfiltered version of home_url() from wordpress/wp-includes/link-template.php
+		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
+		 */
+		public static function raw_home_url( $path = '', $scheme = null ) {
+			return self::get_raw_home_url( null, $path, $scheme );
+		}
+
+		/*
+		 * Unfiltered version of get_home_url() from wordpress/wp-includes/link-template.php
+		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
+		 */
+		public static function get_raw_home_url( $blog_id = null, $path = '', $scheme = null ) {
+			global $pagenow;
+			if ( method_exists( 'SucomUtil', 'protect_filter_value' ) ) {
+				SucomUtil::protect_filter_value( 'pre_option_home' );
+			}
+			if ( empty( $blog_id ) || ! is_multisite() ) {
+				$url = get_option( 'home' );
+			} else {
+				switch_to_blog( $blog_id );
+				$url = get_option( 'home' );
+				restore_current_blog();
+			}
+			if ( ! in_array( $scheme, array( 'http', 'https', 'relative' ) ) ) {
+				if ( is_ssl() && ! is_admin() && 'wp-login.php' !== $pagenow ) {
+					$scheme = 'https';
+				} else {
+					$scheme = parse_url( $url, PHP_URL_SCHEME );
+				}
+			}
+			$url = self::set_url_scheme( $url, $scheme );
+			if ( $path && is_string( $path ) ) {
+				$url .= '/'.ltrim( $path, '/' );
+			}
+			return $url;
+		}
+
+		/*
+		 * Unfiltered version of set_url_scheme() from wordpress/wp-includes/link-template.php
+		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
+		 */
+		private static function set_url_scheme( $url, $scheme = null ) {
+			if ( ! $scheme ) {
+				$scheme = is_ssl() ? 'https' : 'http';
+			} elseif ( $scheme === 'admin' || $scheme === 'login' || $scheme === 'login_post' || $scheme === 'rpc' ) {
+				$scheme = is_ssl() || force_ssl_admin() ? 'https' : 'http';
+			} elseif ( $scheme !== 'http' && $scheme !== 'https' && $scheme !== 'relative' ) {
+				$scheme = is_ssl() ? 'https' : 'http';
+			}
+			$url = trim( $url );
+			if ( substr( $url, 0, 2 ) === '//' ) {
+				$url = 'http:' . $url;
+			}
+			if ( 'relative' === $scheme ) {
+				$url = ltrim( preg_replace( '#^\w+://[^/]*#', '', $url ) );
+				if ( $url !== '' && $url[0] === '/' ) {
+					$url = '/'.ltrim( $url, "/ \t\n\r\0\x0B" );
+				}
+			} else {
+				$url = preg_replace( '#^\w+://#', $scheme . '://', $url );
+			}
+			return $url;
 		}
 	}
 }

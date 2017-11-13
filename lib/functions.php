@@ -120,4 +120,39 @@ if ( ! function_exists( 'wpsso_is_mobile' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpsso_get_post_event_options' ) ) {
+	function wpsso_get_post_event_options( $post_id, $type_id = false ) {
+		return WpssoSchema::get_post_md_type_opts( $post_id, 'event', $type_id );
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_post_job_options' ) ) {
+	function wpsso_get_post_job_options( $post_id, $type_id = false ) {
+		return WpssoSchema::get_post_md_type_opts( $post_id, 'job', $type_id );
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
+	function wpsso_get_post_organization_options( $post_id, $type_id = 'site' ) {
+		if ( ! SucomUtil::is_opt_id( $type_id ) ) {	// allow for 0 but not false or null
+			return array();
+		}
+		$org_opts = WpssoSchema::get_post_md_type_opts( $post_id, 'organization', $type_id );
+		if ( empty( $org_opts ) ) {
+			if ( $org_id === 'site' ) {
+				$org_opts = WpssoSchema::get_site_organization( $mod );	// returns localized values
+			} else {
+				$org_opts = array();
+			}
+		}
+		return $org_opts;
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
+	function wpsso_get_post_place_options( $post_id, $type_id = false ) {
+		return WpssoSchema::get_post_md_type_opts( $post_id, 'place', $type_id );
+	}
+}
+
 ?>
