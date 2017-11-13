@@ -1,14 +1,18 @@
+
 /*
  * Hard-coded / fixed constants (values cannot be modified).
  */
+
 WPSSO_FILEPATH
 WPSSO_PLUGINDIR
 WPSSO_PLUGINSLUG
 WPSSO_PLUGINBASE
 WPSSO_URLPATH
+
 /*
  * Variable constants (define in wp-config.php file to change default values).
  */
+
 WPSSO_NONCE_NAME			= // md5 string unique to each version
 WPSSO_TOPICS_LIST			= WPSSO_PLUGINDIR.'share/topics.txt'
 WPSSO_CACHEDIR				= WPSSO_PLUGINDIR.'cache/'
@@ -53,9 +57,11 @@ WPSSO_FOOTER_PRIORITY			= 10
 WPSSO_SEO_FILTERS_PRIORITY		= 100
 WPSSO_PHP_CURL_CAINFO			= ABSPATH.WPINC.'/certificates/ca-bundle.crt'
 WPSSO_PHP_CURL_USERAGENT		= 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0'
+
 /*
  * Undefined constants (can be defined to change specific plugin behaviors).
  */
+
 FORCE_SSL				= (not defined)
 WPSSO_HTML_DEBUG			= (not defined)
 WPSSO_WP_DEBUG				= (not defined)
@@ -72,3 +78,4 @@ WPSSO_PRODUCT_OBJ_CHECK_DISABLE		= (not defined)	// disable check of global $pro
 WPSSO_PRODUCT_PRICE_INCLUDE_VAT		= (not defined)	// false by default
 WPSSO_REG_CLEAR_CACHE_DISABLE		= (not defined)	// disable cache clearing on activate and deactivate
 WPSSO_VARY_USER_AGENT_DISABLE		= (not defined)
+
