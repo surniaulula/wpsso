@@ -1622,10 +1622,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function get_post_md_type_opts( $post_id, $md_type, $type_id = false ) {
 			$wpsso =& Wpsso::get_instance();
-			if ( empty( $md_type ) ) {
+			if ( empty( $post_id ) ) {	// just in case
 				return false;
-			}
-			if ( isset( $wpsso->m['util']['post'] ) ) {
+			} elseif ( empty( $md_type ) ) {	// just in case
+				return false;
+			} elseif ( isset( $wpsso->m['util']['post'] ) ) {
 				$mod = $wpsso->m['util']['post']->get_mod( $post_id );
 			} else {
 				return false;
