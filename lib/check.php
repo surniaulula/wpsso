@@ -261,8 +261,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		public function get_ext_list() {
 			$ext_list = array();
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				if ( empty( $info['version'] ) )	// only active extensions
+				if ( empty( $info['version'] ) ) {	// only active extensions
 					continue;
+				}
 				$ins = $this->aop( $ext, false );
 				$ext_list[] = $info['short'].( $ins ? ' Pro' : '' ).' '.$info['version'].'/'.
 					( $this->is_aop( $ext ) ? 'L' : ( $ins ? 'U' : 'G' ) );
