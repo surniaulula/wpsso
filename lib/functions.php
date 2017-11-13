@@ -145,7 +145,7 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 		} else {
 			return false;
 		}
-		// skip WpssoSchema::get_post_md_type_opts() since there are no "schema_organization" custom options
+		// skip WpssoSchema::get_post_md_type_opts() as there are no "schema_organization" custom options
 		$org_opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $type_id );
 		if ( empty( $org_opts ) ) {
 			if ( $org_id === 'site' ) {
@@ -157,7 +157,7 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 }
 
 if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
-	function wpsso_get_post_place_options( $post_id, $type_id = false ) {
+	function wpsso_get_post_place_options( $post_id, $type_id = 'custom' ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( empty( $post_id ) ) {	// just in case
 			return false;
@@ -166,7 +166,7 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 		} else {
 			return false;
 		}
-		// skip WpssoSchema::get_post_md_type_opts() since there are no "schema_place" custom options
+		// skip WpssoSchema::get_post_md_type_opts() as there are no "schema_place" custom options
 		return apply_filters( $wpsso->cf['lca'].'_get_place_options', false, $mod, $type_id );
 	}
 }
