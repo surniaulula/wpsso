@@ -140,7 +140,7 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( empty( $post_id ) ) {	// just in case
 			return false;
-		} elseif ( isset( $wpsso->m['util']['post'] ) ) {
+		} elseif ( isset( $wpsso->m['util']['post'] ) ) {	// just in case
 			$mod = $wpsso->m['util']['post']->get_mod( $post_id );
 		} else {
 			return false;
@@ -161,7 +161,7 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 		$wpsso =& Wpsso::get_instance();
 		if ( empty( $post_id ) ) {	// just in case
 			return false;
-		} elseif ( isset( $wpsso->m['util']['post'] ) ) {
+		} elseif ( isset( $wpsso->m['util']['post'] ) ) {	// just in case
 			$mod = $wpsso->m['util']['post']->get_mod( $post_id );
 		} else {
 			return false;
