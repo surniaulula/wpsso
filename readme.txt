@@ -406,7 +406,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new WPSSO_SCHEMA_POSTS_PER_SEARCH constant with a default value of 3 to include only the top 3 search results in the Schema SearchResultsPage markup.
 	* Added calls to WpssoJsonSchema get_mod_cache_data() and save_mod_cache_data() when creating single post json data.
 	* Added a new SucomUtilWP class for static methods derived from WordPress functions.
-	* Added new functions to retrieve custom type options:
+	* Added new functions to retrieve custom meta options:
 		* wpsso_get_post_event_options()
 		* wpsso_get_post_job_options()
 		* wpsso_get_post_organization_options()
