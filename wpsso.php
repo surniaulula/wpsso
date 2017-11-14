@@ -11,8 +11,8 @@
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Description: Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, Google Rich Cards / SEO, and more.
- * Requires PHP: 5.3
- * Requires At Least: 3.7
+ * Requires PHP: 5.4
+ * Requires At Least: 3.8
  * Tested Up To: 4.9
  * WC Tested Up To: 3.2.3
  * Version: 3.48.2
