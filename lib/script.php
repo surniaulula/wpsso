@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'enqueuing scripts for plugin install page' );
 							}
-							$this->add_plugin_install_script( $hook_name );
+							$this->add_iframe_inline_script( $hook_name );
 						}
 					}
 
@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		 * used by WpssoAdmin class filters to return the user back to the settings page after
 		 * installing / activating / updating the plugin.
 		 */
-		private function add_plugin_install_script( $hook_name ) {	// $hook_name = plugin-install.php
+		private function add_iframe_inline_script( $hook_name ) {	// $hook_name = plugin-install.php
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

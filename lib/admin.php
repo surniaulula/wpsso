@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$lca = $this->p->cf['lca'];
 
 			/*
-			 * The WpssoScript add_plugin_install_script() method includes jQuery in the thickbox iframe 
+			 * The WpssoScript add_iframe_inline_script() method includes jQuery in the thickbox iframe 
 			 * to add the iframe_parent arguments when the Install or Update button is clicked.
 			 *
 			 * These class properties are used by both the WpssoAdmin plugin_complete_actions() and 
@@ -94,25 +94,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 		 		/*
-				 * Provide plugin data from the readme for extensions not hosted on wordpress.org.
-				 * Skip if the update manager extension is active, since it provides more complete 
-				 * plugin data than what's available from the plugin readme.
-				 *
-				 * Note: Update manager versions before 1.6.0 hooked the 'plugins_api' filter,
-				 * which is fired before 'plugins_api_result'. external_plugin_data() returns
-				 * the plugin object as-is if the slug is defined properly, so it should work
-				 * fine with older versions (we require 1.6.0 anyway, just in case).
+				 * Provide plugin data / information from the readme.txt for additional extensions.
+				 * Don't hook the 'plugins_api_result' filter if the update manager is active as it
+				 * provides more complete plugin data than what's available from the readme.txt.
 				 */
 				if ( empty( $this->p->avail['p_ext']['um'] ) ) {	// since um v1.6.0
 					add_filter( 'plugins_api_result', array( &$this, 'external_plugin_data' ), 1000, 3 );	// since wp v2.7
 				}
 
 				add_filter( 'http_request_args', array( &$this, 'add_expect_header' ), 1000, 2 );
-				add_filter( 'http_request_host_is_external', array( &$this, 'allow_install_hosts' ), 1000, 3 );
-
+				add_filter( 'http_request_host_is_external', array( &$this, 'maybe_allow_hosts' ), 1000, 3 );
 				add_filter( 'install_plugin_complete_actions', array( &$this, 'plugin_complete_actions' ), 1000, 1 );
 				add_filter( 'update_plugin_complete_actions', array( &$this, 'plugin_complete_actions' ), 1000, 1 );
-
 				add_filter( 'wp_redirect', array( &$this, 'plugin_complete_redirect' ), 1000, 1 );
 			}
 		}
@@ -200,26 +193,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$sorted_menu = array();
 			$unsorted_menu = array();
+
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				if ( ! isset( $info['lib'][$menu_lib] ) )	// not all extensions have submenus
+				if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all extensions have submenus
 					continue;
+				}
 				foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
+					$ksort_key = $menu_name.'-'.$menu_id;
 					$parent_slug = $this->p->cf['lca'].'-'.$this->menu_id;
-					if ( $lca === $ext )
+					if ( $lca === $ext ) {
 						$unsorted_menu[] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
-					else {
-						$name_text = wp_strip_all_tags( $menu_name, true );	// just in case
-						$sorted_key = $name_text.'-'.$menu_id;
-						$sorted_menu[$sorted_key] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+					} else {
+						$sorted_menu[$ksort_key] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
 					}
 				}
 			}
+
 			ksort( $sorted_menu );
 
 			foreach ( array_merge( $unsorted_menu, $sorted_menu ) as $key => $arg ) {
-				if ( isset( $this->submenu[$arg[1]] ) )
+				if ( isset( $this->submenu[$arg[1]] ) ) {
 					$this->submenu[$arg[1]]->add_submenu_page( $arg[0] );
-				else $this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
+				} else {
+					$this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
+				}
 			}
 		}
 
@@ -235,15 +232,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				$sorted_menu = array();
+
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-					if ( ! isset( $info['lib'][$menu_lib] ) )	// not all extensions have submenus
+					if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all extensions have submenus
 						continue;
+					}
 					foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
-						$name_text = wp_strip_all_tags( $menu_name, true );	// just in case
-						$sorted_menu[$name_text.'-'.$menu_id] = array( $parent_slug,
-							$menu_id, $menu_name, $menu_lib, $ext );	// add_submenu_page() args
+						$ksort_key = $menu_name.'-'.$menu_id;
+						$sorted_menu[$ksort_key] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
 					}
 				}
+
 				ksort( $sorted_menu );
 
 				foreach ( $sorted_menu as $key => $arg ) {
@@ -295,10 +294,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$page_title = self::$pkg[$lca]['short'].' &mdash; '.$this->menu_name;
-			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' ).
-				' '.self::$pkg[$lca]['type'];	// package type is pre-translated
-			$cap_name = isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ?
-				$this->p->cf['wp']['admin'][$this->menu_lib]['cap'] : 'manage_options';
+			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' ).' '.self::$pkg[$lca]['type'];	// pkg type is pre-translated
+			$cap_name = isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ? $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] : 'manage_options';
 			$icon_url = version_compare( $wp_version, 3.8, '<' ) ? null : 'dashicons-share';
 			$function = array( &$this, 'show_setting_page' );
 
@@ -308,6 +305,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '', $menu_ext = '' ) {
+
+			$lca = $this->p->cf['lca'];
 
 			if ( empty( $menu_id ) ) {
 				$menu_id = $this->menu_id;
@@ -321,30 +320,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $menu_ext ) ) {
 				$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or extension
 				if ( empty( $menu_ext ) ) {
-					$menu_ext = $this->p->cf['lca'];
+					$menu_ext = $lca;
 				}
 			}
 
 			global $wp_version;
-			if ( $menu_ext === $this->p->cf['lca'] || version_compare( $wp_version, 3.8, '<' ) ) {	// wp v3.8 required for dashicons
-				$menu_title = $menu_name;
+
+			if ( version_compare( $wp_version, 3.8, '>=' ) ) {	// wp v3.8 required for dashicons
+				if ( empty( $this->p->cf['menu']['dashicons'][$menu_id] ) ) {
+					if ( $menu_ext === $lca ) {
+						$dashicon = 'admin-settings';	// use settings dashicon by default
+					} else {
+						$dashicon = 'admin-plugins';	// use plugin dashicon by default for extensions
+					}
+				} else {
+					$dashicon = $this->p->cf['menu']['dashicons'][$menu_id];
+				}
+				$menu_title = '<div class="'.$lca.'-menu-item dashicons-before dashicons-'.$dashicon.'"></div>'.
+					'<div class="'.$lca.'-menu-item">'.$menu_name.'</div>';
 			} else {
-				$menu_title = '<div class="extension-plugin'.	// add plugin icon for extensions
-					' dashicons-before dashicons-admin-plugins"></div>'.
-					'<div class="extension-plugin">'.$menu_name.'</div>';
+				$menu_title = $menu_name;
 			}
-
-			if ( strpos( $menu_title, '<color>' ) !== false ) {
-				$menu_title = preg_replace( 
-					array( '/<color>/', '/<\/color>/' ),
-					array( '<span style="color:#'.$this->p->cf['menu']['color'].';">', '</span>' ),
-					$menu_title
-				);
-			}
-
-			$page_title = self::$pkg[$menu_ext]['short'].' &mdash; '.$menu_title;
-			$cap_name = isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ?
-				$this->p->cf['wp']['admin'][$menu_lib]['cap'] : 'manage_options';
+	
+			$page_title = self::$pkg[$menu_ext]['short'].' &mdash; '.$menu_name;
+			$cap_name = isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ? $this->p->cf['wp']['admin'][$menu_lib]['cap'] : 'manage_options';
 			$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
 			$function = array( &$this, 'show_setting_page' );
 
@@ -422,13 +421,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $req;
 		}
 
-		public function allow_install_hosts( $is_allowed, $ip, $url ) {
-			if ( ! $is_allowed ) {	// don't bother if already allowed
-				if ( isset( $this->p->cf['install_hosts'] ) ) {
-					foreach ( $this->p->cf['install_hosts'] as $host ) {
-						if ( strpos( $url, $host ) === 0 ) {
-							return true;
-						}
+		public function maybe_allow_hosts( $is_allowed, $ip, $url ) {
+			if ( $is_allowed ) {	// already allowed
+				return $is_allowed;
+			}
+			if ( isset( $this->p->cf['hosts'] ) ) {
+				foreach ( $this->p->cf['hosts'] as $host ) {
+					if ( strpos( $url, $host ) === 0 ) {
+						return true;
 					}
 				}
 			}
@@ -436,7 +436,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/*
-		 * Provide plugin data from the readme for extensions not hosted on wordpress.org.
+		 * Provide plugin data / information from the readme.txt for additional extensions.
 		 */
 		public function external_plugin_data( $res, $action = null, $args = null ) {
 
@@ -773,11 +773,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
 			echo '<h1>';
-			echo self::$pkg[$this->menu_ext]['short'].' ';	// example: WPSSO Free
+			echo self::$pkg[$this->menu_ext]['short'].' ';
 			echo '<span class="qualifier">&ndash; ';
-			echo _x( $this->p->cf['meta']['title'],		// example: Social and Search Optimization
-				'metabox title', 'wpsso' ).' ';
-			echo '('.$this->menu_name.')';			// example: (General Settings)
+			echo _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ).' ('.$this->menu_name.')';
 			echo '</span></h1>'."\n";
 
 			if ( ! self::$pkg[$lca]['aop'] ) {
@@ -2368,7 +2366,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$file_remote = isset( $this->p->cf['plugin'][$ext]['url']['setup_html'] ) ? $this->p->cf['plugin'][$ext]['url']['setup_html'] : '';
 			$file_local = constant( strtoupper( $ext ).'_PLUGINDIR' ).'setup.html';
-
 			$is_remote = strpos( $file_remote, '://' ) ? true : false;	// fallback to local setup file
 			$content = false;
 
@@ -2421,22 +2418,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function plugin_complete_redirect( $url ) {
 			$lca = $this->p->cf['lca'];
-
 			if ( strpos( $url, '?activate=true' ) ) {
 				if ( ! empty( $this->pageref_url ) ) {
 					$this->p->notice->upd( __( 'Plugin <strong>activated</strong>.' ) );	// green status w check mark
 					$url = $this->pageref_url;
 				}
 			}
-
 			return $url;
 		}
 
 		public function get_ext_img_icon( $ext ) {
-
 			// default transparent 1px image
 			$img_src = 'src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="';
-
 			if ( ! empty( $this->p->cf['plugin'][$ext]['img']['icons'] ) ) {
 				$icons = $this->p->cf['plugin'][$ext]['img']['icons'];
 				if ( ! empty( $icons['low'] ) ) {

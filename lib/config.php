@@ -14,18 +14,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 	class WpssoConfig {
 
 		public static $cf = array(
-			'lca' => 'wpsso',			// lowercase acronym
+			'lca' => 'wpsso',	// plugin lowercase acronym
 			'expire' => array(
 				'admin_css' => DAY_IN_SECONDS,
 				'readme_txt' => DAY_IN_SECONDS,
 				'setup_html' => WEEK_IN_SECONDS,
 			),
-			'install_hosts' => array(		// allow extensions to be installed from these hosts
+			'hosts' => array(
 				'https://wpsso.com/extend/plugins/',
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.1-rc.3',		// plugin version
+					'version' => '3.48.1',		// plugin version
 					'opt_version' => '567',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
@@ -76,14 +76,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'essential' => 'Essential Settings',
 							'general' => 'General Settings',
 							'advanced' => 'Advanced Settings',
-							'dashboard' => '<color>Plugin Dashboard and Features Status</color>',
-							'licenses' => '<color>Extension Plugins and Pro Licenses</color>',
-							'setup' => '<color>Plugin Setup Guide and Other Notes</color>',
+							'licenses' => 'Extension Plugins and Pro Licenses',
+							'dashboard' => 'Dashboard and Features Status',
+							'setup' => 'Setup Guide and Other Notes',
 						),
 						'sitesubmenu' => array(	// lib file descriptions will be translated
 							'siteadvanced' => 'Advanced Settings',
-							'sitelicenses' => '<color>Extension Plugins and Pro Licenses</color>',
-							'sitesetup' => '<color>Plugin Setup Guide and Other Notes</color>',
+							'sitelicenses' => 'Extension Plugins and Pro Licenses',
+							'sitesetup' => 'Setup Guide and Other Notes',
 						),
 						'gpl' => array(
 							'admin' => array(
@@ -1233,6 +1233,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'title' => 'SSO',		// menu title
 				'color' => '33cc33',		// menu color (lime green)
 				'before' => '\0229b',		// circle asterix
+				'dashicons' => array(
+					'licenses' => 'editor-justify',
+					'sitelicenses' => 'editor-justify',
+					'dashboard' => 'dashboard',
+					'sitedashboard' => 'dashboard',
+					'setup' => 'info',
+					'sitesetup' => 'info',
+				),
 			),
 			'meta' => array(			// post, term, user add_meta_box() settings
 				'id' => 'sso',
@@ -1670,6 +1678,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'webpage.collection' => 'https://schema.org/CollectionPage',
 								'webpage.contact' => 'https://schema.org/ContactPage',
 								'webpage.item' => 'https://schema.org/ItemPage',
+								'webpage.medical' => 'https://health-lifesci.schema.org/MedicalWebPage',
 								'webpage.profile' => 'https://schema.org/ProfilePage',
 								'webpage.qa' => 'https://schema.org/QAPage',
 								'webpage.search.results' => 'https://schema.org/SearchResultsPage',

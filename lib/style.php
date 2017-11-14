@@ -242,6 +242,21 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$custom_style_css .= '
 				}
+				#adminmenu #toplevel_page_'.$menu.' ul > li > a,
+				#adminmenu #toplevel_page_'.$sitemenu.' ul > li > a {
+					padding-left:8px;
+				}
+				#adminmenu ul.wp-submenu div.'.$lca.'-menu-item {
+					display:table-cell;
+				}
+				#adminmenu ul.wp-submenu div.'.$lca.'-menu-item.dashicons-before {
+					max-width:1.1em;
+					padding-right:6px;
+				}
+				#adminmenu ul.wp-submenu div.'.$lca.'-menu-item.dashicons-before:before {
+					text-align:left;
+					font-size:1.1em;
+				}
 				#profile-page.wrap #your-profile #'.$lca.'_'.$metabox_id.'.postbox h3:first-of-type {
 					margin:0;
 				}

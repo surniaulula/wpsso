@@ -2972,7 +2972,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 }
 
 /*
- * SucomUtilWP is available in the lib/com/util.php library since 2017/11/13.
+ * SucomUtilWP is available in the lib/com/util.php library since 2017/11/14.
  */
 if ( ! class_exists( 'SucomUtilWP' ) ) {
 
