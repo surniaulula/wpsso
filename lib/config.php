@@ -1123,7 +1123,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'php' => array(				// php
 				'label' => 'PHP',
-				'min_version' => '5.3',		// hard limit - deactivate the plugin when activating
+				'min_version' => '5.4',		// hard limit - deactivate the plugin when activating
 				'rec_version' => '5.6',		// soft limit - issue warning if lower version found
 				'version_url' => 'http://php.net/supported-versions.php',
 				'extensions' => array(
@@ -1142,8 +1142,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * releases from 3.7 onwards may or may not get security updates as serious exploits
 				 * are discovered.
 				 */
-				'min_version' => '3.7',		// hard limit - deactivate the plugin when activating
-				'rec_version' => '4.7',		// soft limit - issue warning if lower version found
+				'min_version' => '3.8',		// hard limit - deactivate the plugin when activating
+				'rec_version' => '4.8',		// soft limit - issue warning if lower version found
 				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
 				'tb_iframe' => array(		// thickbox iframe
 					'width' => 772,		// url query argument
