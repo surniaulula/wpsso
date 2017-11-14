@@ -205,6 +205,18 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
 			$sitemenu = $lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
 
+			$highlight_color_css = empty( $this->p->cf['menu']['color'] ) || 
+				! SucomUtil::get_const( 'WPSSO_MENU_ICON_HIGHLIGHT' ) ?
+					'' : 'color:#'.$this->p->cf['menu']['color'].';';
+
+			$menu_before_css = empty( $this->p->cf['menu']['before'] ) ?
+				'' : 'content:"'.$this->p->cf['menu']['before'].'";
+					font-size:2.2em;
+					font-style:normal;
+					display:inline;
+					line-height:inherit;
+					vertical-align:middle;';
+
 			$custom_style_css = '
 				@font-face {
 					font-family:"Star";
@@ -220,42 +232,25 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before,
 				#adminmenu li.menu-top.toplevel_page_'.$menu.':hover div.wp-menu-image:before,
 				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.':hover div.wp-menu-image:before {
-			';
-
-			if ( ! empty( $this->p->cf['menu']['color'] ) &&
-				SucomUtil::get_const( 'WPSSO_MENU_ICON_HIGHLIGHT', true ) )  {
-				$custom_style_css .= '
-					color:#'.$this->p->cf['menu']['color'].';
-				';
-			}
-
-			if ( ! empty( $this->p->cf['menu']['before'] ) ) {
-				$custom_style_css .= '
-					content:"'.$this->p->cf['menu']['before'].'";
-					font-size:2.2em;
-					font-style:normal;
-					display:inline;
-					line-height:inherit;
-					vertical-align:middle;
-				';
-			}
-
-			$custom_style_css .= '
+					'.$highlight_color_css.'
+					'.$menu_before_css.'
 				}
 				#adminmenu #toplevel_page_'.$menu.' ul > li > a,
 				#adminmenu #toplevel_page_'.$sitemenu.' ul > li > a {
-					padding-left:8px;
+					padding:6px 8px;	/* default is 6px 12px */
 				}
 				#adminmenu ul.wp-submenu div.'.$lca.'-menu-item {
 					display:table-cell;
 				}
 				#adminmenu ul.wp-submenu div.'.$lca.'-menu-item.dashicons-before {
-					max-width:1.1em;
+					max-width:1.2em;
 					padding-right:6px;
 				}
 				#adminmenu ul.wp-submenu div.'.$lca.'-menu-item.dashicons-before:before {
+					font-size:1.2em;
 					text-align:left;
-					font-size:1.1em;
+					opacity:0.5;
+					filter:alpha(opacity=50);	/* ie8 and earlier */
 				}
 				#profile-page.wrap #your-profile #'.$lca.'_'.$metabox_id.'.postbox h3:first-of-type {
 					margin:0;
