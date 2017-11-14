@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: meta tags, open graph, share, social, schema, twitter card, seo, video seo, local seo, local business, twitter card, woocommerce
 Contributors: jsmoriss
 Requires PHP: 5.3
-Requires At Least: 3.7
+Requires At Least: 3.8
 Tested Up To: 4.9
 WC Tested Up To: 3.2.3
 Stable Tag: 3.48.2
@@ -386,6 +386,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
+	* Updated minimum/recommended versions for PHP 5.4/5.6 and WordPress 3.8/4.8.
 	* Added dashicons to all plugin menu items (settings, dashboard, info, etc.).
 	* Added &#91;F&#93; qualifiers in the Cache Status metabox for expiration values changed by a filter.
 	* Added a '.specialty' suffix to medical specialty Schema type ids - the value of existing options will be updated automatically.
