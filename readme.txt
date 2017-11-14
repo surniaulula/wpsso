@@ -381,15 +381,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.1-rc.3 (2017/11/13)**
+**Version 3.48.1 (2017/11/14)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added a new optional WPSSO_PRODUCT_PRICE_INCLUDE_VAT constant (false by default) to include VAT in WooCommerce product prices (Pro version).
+	* Added dashicons to all plugin menu items (settings, dashboard, info, etc.).
 	* Added &#91;F&#93; qualifiers in the Cache Status metabox for expiration values changed by a filter.
-	* Updated the Google URL Shortener API service option labels and help text (Pro version).
 	* Added a '.specialty' suffix to medical specialty Schema type ids - the value of existing options will be updated automatically.
+	* Added a new optional WPSSO_PRODUCT_PRICE_INCLUDE_VAT constant (false by default) to include VAT in WooCommerce product prices (Pro version).
+	* Updated the Google URL Shortener API service option labels and help text (Pro version).
 * *Bugfixes*
 	* Updated the "Google Project API Key" value check to allow for hyphen characters.
 	* Fixed a typo in the 'employment.agency' Schema type ID string.
@@ -893,9 +894,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.1-rc.3 =
+= 3.48.1 =
 
-(2017/11/13) Changed the user agent to the Facebook crawler when checking for duplicate meta tags. Added an action to remove the SNAP OG meta tags holder. Updated the Google URL Shortener API service option labels and help text (Pro version).
+(2017/11/14) Changed the user agent to the Facebook crawler when checking for duplicate meta tags. Added an action to remove the SNAP OG meta tags holder. Updated the Google URL Shortener API service option labels and help text (Pro version).
 
 = 3.48.0 =
 
