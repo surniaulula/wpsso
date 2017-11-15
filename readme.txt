@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.4-dev.1 (2017/11/15)**
+**Version 3.48.4-dev.2 (2017/11/16)**
 
 * *New Features*
 	* None
@@ -777,9 +777,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.4-dev.1 =
+= 3.48.4-dev.2 =
 
-(2017/11/15) Added a 'wpsso_get_event_place_id' filter for single event options.
+(2017/11/16) Added a 'wpsso_get_event_place_id' filter for single event options.
 
 = 3.48.3 =
 
