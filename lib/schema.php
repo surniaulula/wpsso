@@ -1090,7 +1090,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( ! empty( $cache_index ) ) {
 
-				if ( $is_maine && $mod['is_post'] && $mod['id'] && 
+				if ( $is_main && $mod['is_post'] && $mod['id'] && 
 					method_exists( 'WpssoJsonSchema', 'save_mod_cache_data' ) ) {	// since wpsso json v1.18.0
 
 					if ( empty( $cache_data ) ) {	// just in case
