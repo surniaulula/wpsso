@@ -2073,7 +2073,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$now_time = time();
 
 			if ( isset( $data_array['__created_at'] ) ) {
-				$exp_in_secs -= $now_time - $data_array['__created_at'];
+				// adjust the expiration time by removing the difference
+				$exp_in_secs = $cache_exp_secs - ( $now_time - $data_array['__created_at'] );
 			} else {
 				$exp_in_secs = $cache_exp_secs;
 				$data_array['__created_at'] = $now_time;
@@ -2666,8 +2667,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			// sort by the display name key value
-			if ( defined( 'SORT_NATURAL' ) ) {	// available since PHP 5.4
-				ksort( $ret, SORT_NATURAL );
+			if ( defined( 'SORT_STRING' ) ) {
+				ksort( $ret, SORT_STRING );
 			} else {
 				uksort( $ret, 'strcasecmp' );	// case-insensitive string comparison
 			}

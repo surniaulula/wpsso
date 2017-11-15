@@ -1034,7 +1034,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} elseif ( $mod['is_post'] && $mod['id'] && 
 				method_exists( 'WpssoJsonSchema', 'get_mod_cache_data' ) ) {	// since wpsso json v1.18.0
 
-				$cache_index = WpssoJsonSchema::get_mod_cache_index( $mod );
+				$cache_index = WpssoJsonSchema::get_mod_cache_index( $mod, $page_type_id );
 				$cache_data = WpssoJsonSchema::get_mod_cache_data( $mod, $cache_index );
 
 				if ( isset( $cache_data[$cache_index] ) ) {
