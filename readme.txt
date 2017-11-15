@@ -388,7 +388,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* None
 * *Bugfixes*
-	* Fixed the JSON data cache index key for singular pages with multiple JSON code blocks (like the home page).
+	* Fixed the JSON data cache index key for singular pages with multiple JSON-LD scripts (like the home page).
 * *Developer Notes*
 	* None
 
@@ -766,7 +766,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.48.3 =
 
-(2017/11/15) Fixed the JSON data cache index key for singular pages with multiple JSON code blocks (like the home page).
+(2017/11/15) Fixed the JSON data cache index key for singular pages with multiple JSON-LD scripts (like the home page).
 
 = 3.48.2 =
 
