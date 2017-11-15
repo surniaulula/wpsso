@@ -1031,7 +1031,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
 
-			} elseif ( $mod['is_post'] && $mod['id'] && 
+			} elseif ( $is_main && $mod['is_post'] && $mod['id'] && 
 				method_exists( 'WpssoJsonSchema', 'get_mod_cache_data' ) ) {	// since wpsso json v1.18.0
 
 				$cache_index = WpssoJsonSchema::get_mod_cache_index( $mod, $page_type_id );
@@ -1065,8 +1065,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$has_type_filter = has_filter( $lca.'_json_data_'.$type_filter_name );	// check only once
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'type filter name is '.$type_filter_name.
-						' and has filter is '.( $has_type_filter ? 'true' : 'false' ) );
+					$this->p->debug->log( 'type filter name is '.$type_filter_name.' and has filter is '.
+						( $has_type_filter ? 'true' : 'false' ) );
 				}
 
 				// add website, organization, and person markup to home page
@@ -1088,9 +1088,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * If $cache_index is not set, then we were called by WpssoJsonSchema::get_single_post_data()
 			 * and the cache data will be saved by that method instead.
 			 */
-			if ( ! empty( $cache_index ) ) {	// WpssoJsonSchema::get_mod_cache_data() was called above
+			if ( ! empty( $cache_index ) ) {
 
-				if ( $mod['is_post'] && $mod['id'] && 
+				if ( $is_maine && $mod['is_post'] && $mod['id'] && 
 					method_exists( 'WpssoJsonSchema', 'save_mod_cache_data' ) ) {	// since wpsso json v1.18.0
 
 					if ( empty( $cache_data ) ) {	// just in case
