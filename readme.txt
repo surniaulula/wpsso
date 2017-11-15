@@ -391,6 +391,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Developer Notes*
 	* Added a 'wpsso_get_event_place_id' filter for single event options.
+	* Renamed the WpssoSchema add_image_list_data() method to add_og_image_list_data().
+	* Renamed the WpssoSchema add_single_image_data() method to add_og_single_image_data().
 
 **Version 3.48.3 (2017/11/15)**
 
