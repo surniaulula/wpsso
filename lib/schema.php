@@ -758,9 +758,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function has_json_data_filter( array &$mod, $type_url = '' ) {
 			$filter_name = $this->get_json_data_filter( $mod, $type_url );
-			return ! empty( $filter_name ) && 
-				has_filter( $filter_name ) ? 
-					true : false;
+			return ! empty( $filter_name ) && has_filter( $filter_name ) ? true : false;
 		}
 
 		public function get_json_data_filter( array &$mod, $type_url = '' ) {
@@ -1621,7 +1619,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * }
 		 */
 		public static function get_post_md_type_opts( $post_id, $md_type, $type_id = false ) {
+
 			$wpsso =& Wpsso::get_instance();
+			$lca = $wpsso->cf['lca'];
+
 			if ( empty( $post_id ) ) {	// just in case
 				return false;
 			} elseif ( empty( $md_type ) ) {	// just in case
@@ -1631,8 +1632,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else {
 				return false;
 			}
-			$md_opts = apply_filters( $wpsso->cf['lca'].'_get_'.$md_type.'_options', false, $mod, $type_id );
+
+			$md_opts = apply_filters( $lca.'_get_'.$md_type.'_options', false, $mod, $type_id );
+
 			WpssoSchema::merge_custom_mod_opts( $mod, $md_opts, array( $md_type => 'schema_'.$md_type ) );
+
+			if ( has_filter( $lca.'_get_'.$md_type.'_place_id' ) ) {	// skip if no filters
+
+				if ( ! isset( $md_opts[$md_type.'_place_id'] ) ) {
+					$md_opts[$md_type.'_place_id'] = null;		// return null by default
+				}
+
+				$md_opts[$md_type.'_place_id'] = apply_filters( $lca.'_get_'.$md_type.'_place_id',
+					$md_opts[$md_type.'_place_id'], $mod, $type_id );
+
+				if ( $md_opts[$md_type.'_place_id'] === null ) {	// unset if still null
+					unset( $md_opts[$md_type.'_place_id'] );
+				}
+			}
+
 			return $md_opts;
 		}
 
@@ -1719,8 +1737,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$wpsso =& Wpsso::get_instance();
+			$lca = $wpsso->cf['lca'];
 			$sharing_url = $wpsso->util->get_sharing_url( $mod );
-			$event_opts = apply_filters( $wpsso->cf['lca'].'_get_event_options', false, $mod, $event_id );
+			$event_opts = apply_filters( $lca.'_get_event_options', false, $mod, $event_id );
 
 			if ( ! empty( $event_opts ) ) {
 				if ( $wpsso->debug->enabled ) {
@@ -1729,7 +1748,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/*
-			 * Create and add ISO formatted date options.
+			 * Add Optional Place ID
+			 */
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'checking for custom event place id (null by default)' );
+			}
+			if ( ! isset( $event_opts['event_place_id'] ) ) {
+				$event_opts['event_place_id'] = null;
+			}
+			$event_opts['event_place_id'] = apply_filters( $lca.'_get_event_place_id', $event_opts['event_place_id'], $mod, $event_id );
+
+			/*
+			 * Add ISO Date Options
 			 */
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'checking for custom event start/end date and time' );
@@ -1740,6 +1770,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'event_end_date' => 'schema_event_end',		// prefix for date, time, timezone, iso
 			) );
 
+			/*
+			 * Event Offers
+			 */
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'checking for custom event offers' );
 			}
@@ -1748,7 +1781,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( range( 0, WPSSO_SCHEMA_EVENT_OFFERS_MAX - 1, 1 ) as $key_num ) {
 
-				$offer_opts = apply_filters( $wpsso->cf['lca'].'_get_event_offer_options', false, $mod, $event_id, $key_num );
+				$offer_opts = apply_filters( $lca.'_get_event_offer_options', false, $mod, $event_id, $key_num );
 
 				if ( ! empty( $offer_opts ) ) {
 					if ( $wpsso->debug->enabled ) {
@@ -1853,7 +1886,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_event', $ret, $mod, $event_id );
+			$ret = apply_filters( $lca.'_json_data_single_event', $ret, $mod, $event_id );
 
 			if ( empty( $list_element ) ) {
 				$json_data = $ret;

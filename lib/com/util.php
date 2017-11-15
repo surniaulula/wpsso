@@ -2954,9 +2954,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// available since PHP 5.0.2
 		}
 
-		// allow for 0, but not false, null, or 'none'
+		// allow for 0, but not true, false, null, or 'none'
 		public static function is_opt_id( $id ) {
-			if ( empty( $id ) && ! is_numeric( $id ) ) {	// null or false
+			if ( $id === true ) {
+				return false;
+			} elseif ( empty( $id ) && ! is_numeric( $id ) ) {	// null or false
 				return false;
 			} elseif ( $id === 'none' ) {
 				return false;
