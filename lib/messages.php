@@ -1411,12 +1411,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-um-version-recommended':
 
 						$um_info = $this->p->cf['plugin']['wpssoum'];
+
 						$um_version = isset( $um_info['version'] ) ? $um_info['version'] : 'unknown';
+
 						$um_rec_version = isset( $info['um_rec_version'] ) ?
 							$info['um_rec_version'] : WpssoConfig::$cf['um']['rec_version'];
+
 						$um_check_updates_transl = _x( 'Check for Updates', 'submit button', 'wpsso' );
+
 						$um_settings_page_link = $this->p->util->get_admin_url( 'um-general',
 							_x( 'Update Manager', 'lib file description', 'wpsso' ) );
+
 						$wp_updates_page_link = '<a href="'.admin_url( 'update-core.php' ).'">'.
 							__( 'Dashboard' ).' &gt; '.__( 'Updates' ).'</a>';
 
