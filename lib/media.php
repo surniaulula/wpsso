@@ -1157,27 +1157,34 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			// check the maximum image aspect ratio
 			if ( $max_ratio > 0 && $img_ratio >= $max_ratio ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: '.strtolower( $src_name ).' image '.$img_name.' rejected - '.
 						$img_width.'x'.$img_height.' aspect ratio is equal to/or greater than '.$max_ratio.':1' );
 				}
+
 				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', array(
 						'size_label' => $size_label,
 						'allow_upscale' => false
 					) );
+
 					$this->p->notice->err( sprintf( __( '%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $src_name, $img_name, $img_width.'x'.$img_height, $max_ratio, $std_name ).' '.$reject_notice );
 				}
+
 				return false;	// image rejected
 			}
 
 			// check the minimum image width and/or height
 			if ( ( $min_width > 0 || $min_height > 0 ) && ( $img_width < $min_width || $img_height < $min_height ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: '.strtolower( $src_name ).' image '.$img_name.' rejected - '.
 						$img_width.'x'.$img_height.' smaller than minimum '.$min_width.'x'.$min_height.' for '.$size_name );
 				}
+
 				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 					$size_label = $this->p->util->get_image_size_label( $size_name );
 					$reject_notice = $this->p->msgs->get( 'notice-image-rejected', array(
@@ -1186,6 +1193,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					) );
 					$this->p->notice->err( sprintf( __( '%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $src_name, $img_name, $img_width.'x'.$img_height, $min_width.'x'.$min_height, $std_name ).' '.$reject_notice );
 				}
+
 				return false;	// image rejected
 			}
 

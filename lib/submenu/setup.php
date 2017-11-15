@@ -47,9 +47,9 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_setup_guide() {
 			$lca = $this->p->cf['lca'];
-			echo '<table class="sucom-settings '.$lca.' setup-metabox">';
+			echo '<table class="sucom-settings '.$lca.' html-content-metabox">';
 			echo '<tr><td>';
-			echo $this->get_setup_content( $lca );
+			echo $this->get_config_url_content( 'wpsso', 'setup.html' );
 			echo '</td></tr></table>';
 		}
 	}

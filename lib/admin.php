@@ -1141,7 +1141,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					<td class="version-number">'.$latest_version.'</td></tr>';
 
 				echo '<tr><td colspan="'.$table_cols.'" class="latest-notice">'.
-					'<p><em><strong>Version '.$latest_version.'</strong> '.$latest_notice.'</em></p>'.
+					( empty( $latest_notice ) ? '' : '<p><em><strong>Version '.
+						$latest_version.'</strong> '.$latest_notice.'</em></p>' ).
 					'<p><a href="'.$changelog_url.'">'.sprintf( __( 'View %s changelog...',
 						'wpsso' ), $info['short'] ).'</a></p></td></tr>';
 			}
@@ -2260,70 +2261,62 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				) );
 			}
 
-			$lca = $this->p->cf['lca'];
-			$readme_info = array();
-			$readme_url = isset( $this->p->cf['plugin'][$ext]['url']['readme_txt'] ) ? $this->p->cf['plugin'][$ext]['url']['readme_txt'] : '';
-			$readme_file = SucomUtil::get_const( strtoupper( $ext ).'_PLUGINDIR', '' );
-			$use_remote = strpos( $readme_url, '://' ) ? true : false;
+			$dir_const_name = strtoupper( $ext ).'_PLUGINDIR';
 
-			/*
-			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
-			 * less in length. If using a site transient, it should be 40 characters or less in length.
-			 */
-			static $cache_exp_secs = null;	// filter the cache expiration value only once
-			$cache_md5_pre = $lca.'_';
-			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
-				$cache_exp_filter = $lca.'_cache_expire_readme_txt';
-				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->cf['expire']['readme_txt'] );
+			if ( ! defined( $dir_const_name ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $dir_const_name.' is undefined and required' );
+				}
+				return array();
 			}
-			$cache_salt = __METHOD__.'(url:'.$readme_url.'_file:'.$readme_file.')';
+
+			$lca = $this->p->cf['lca'];
+			$file_name = 'readme.txt';
+			$file_key = SucomUtil::sanitize_hookname( $file_name );	// setup.html -> setup_html
+			$file_local = constant( $dir_const_name ).$file_name;
+			$file_remote = isset( $this->p->cf['plugin'][$ext]['url'][$file_key] ) ? 
+				$this->p->cf['plugin'][$ext]['url'][$file_key] : false;
+
+			static $cache_exp_secs = null;
+			$cache_md5_pre = $lca.'_';
+			if ( ! isset( $cache_exp_secs ) ) {
+				$cache_exp_filter = $lca.'_cache_expire_'.$file_key;
+				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->cf['expire'][$file_key] );
+			}
+			$cache_salt = __METHOD__.'(ext:'.$ext.')';
 			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'transient cache salt '.$cache_salt );
-			}
+			$readme_info = array();
+			$readme_content = false;
+			$readme_from_url = false;
 
 			if ( $cache_exp_secs > 0 ) {
-				// check the transient cache, if reading the cache is allowed
 				$readme_info = $use_cache ? get_transient( $cache_id ) : false;
-
 				if ( is_array( $readme_info ) ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'readme_info retrieved from transient '.$cache_id );
-					}
 					return $readme_info;	// stop here
 				}
-
-				// get the remote readme
-				if ( $use_remote ) {
-					// clear the cache first if reading the cache is disabled
-					if ( ! $use_cache ) {
-						$this->p->cache->clear( $readme_url );
-					}
-					// get the readme and save it to the disk cache
-					$content = $this->p->cache->get( $readme_url, 'raw', 'file', $cache_exp_secs );
-					if ( empty( $content ) ) {
-						$use_remote = false;
-					}
+				if ( $file_remote && strpos( $file_remote, '://' ) ) {
+					$readme_from_url = true;
+					$readme_content = $this->p->cache->get( $file_remote, 'raw', 'file', $cache_exp_secs );
 				}
-			} else {
-				$use_remote = false;
 			}
 
-			// fallback to reading the local readme.txt file
-			if ( $use_remote === false && ! empty( $readme_file ) && $fh = @fopen( $readme_file, 'rb' ) ) {
-				$content = fread( $fh, filesize( $readme_file ) );
-				fclose( $fh );
+			if ( empty( $readme_content ) ) {
+				if ( $file_local && file_exists( $file_local ) && $fh = @fopen( $file_local, 'rb' ) ) {
+					$readme_from_url = false;
+					$readme_content = fread( $fh, filesize( $file_local ) );
+					fclose( $fh );
+				}
 			}
 
-			if ( empty( $content ) ) {
+			if ( empty( $readme_content ) ) {
 				$readme_info = array();	// save an empty array
 			} else {
 				$parser = new SuextParseReadme( $this->p->debug );
-				$readme_info = $parser->parse_readme_contents( $content );
-
+				$readme_info = $parser->parse_readme_contents( $readme_content );
+	
 				// remove possibly inaccurate information from local file
-				if ( $use_remote === false && is_array( $readme_info ) ) {
+				if ( ! $readme_from_url && is_array( $readme_info ) ) {
 					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key ) {
 						unset ( $readme_info[$key] );
 					}
@@ -2338,58 +2331,57 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			return (array) $readme_info;	// just in case
+			return is_array( $readme_info ) ? $readme_info : array();	// just in case
 		}
 
-		public function get_setup_content( $ext, $read_cache = true ) {
+		public function get_config_url_content( $ext, $file_name, $cache_exp_secs = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'ext' => $ext,
-					'read_cache' => $read_cache,
+					'file_name' => $file_name,
+					'cache_exp_secs' => $cache_exp_secs,
 				) );
 			}
 
-			if ( ! defined( strtoupper( $ext ).'_PLUGINDIR' ) ) {
+			$dir_const_name = strtoupper( $ext ).'_PLUGINDIR';
+
+			if ( ! defined( $dir_const_name ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( strtoupper( $ext ).'_PLUGINDIR is undefined and required' );
+					$this->p->debug->log( $dir_const_name.' is undefined and required' );
 				}
 				return false;
 			}
 
 			$lca = $this->p->cf['lca'];
+			$file_name = sanitize_file_name( $file_name );	// just in case
+			$file_key = SucomUtil::sanitize_hookname( $file_name );	// setup.html -> setup_html
+			$file_local = constant( $dir_const_name ).$file_name;
+			$file_remote = isset( $this->p->cf['plugin'][$ext]['url'][$file_key] ) ? 
+				$this->p->cf['plugin'][$ext]['url'][$file_key] : false;
 
-			static $cache_exp_secs = null;	// filter the file expiration value only once
-			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
-				$cache_exp_filter = $lca.'_cache_expire_setup_html';
-				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->cf['expire']['setup_html'] );
+			if ( $cache_exp_secs === null ) {
+				$cache_exp_secs = WEEK_IN_SECONDS;
 			}
 
-			$file_remote = isset( $this->p->cf['plugin'][$ext]['url']['setup_html'] ) ? $this->p->cf['plugin'][$ext]['url']['setup_html'] : '';
-			$file_local = constant( strtoupper( $ext ).'_PLUGINDIR' ).'setup.html';
-			$is_remote = strpos( $file_remote, '://' ) ? true : false;	// fallback to local setup file
-			$content = false;
+			$cache_exp_filter = $lca.'_cache_expire_'.$file_key;
+			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
+			$cache_content = false;
 
-			// get remote setup.html file
-			if ( $cache_exp_secs > 0 && $is_remote ) {
-				if ( ! $read_cache ) {
-					$this->p->cache->clear( $file_remote );	// clear the wp object, transient, and file cache
+			if ( $cache_exp_secs > 0 ) {
+				if ( $file_remote && strpos( $file_remote, '://' ) ) {
+					$cache_content = $this->p->cache->get( $file_remote, 'raw', 'file', $cache_exp_secs );
 				}
-				$content = $this->p->cache->get( $file_remote, 'raw', 'file', $cache_exp_secs );
-				if ( empty( $content ) ) {
-					$is_remote = false;	// fallback to local setup file
+			}
+
+			if ( empty( $cache_content ) ) {
+				if ( $file_local && file_exists( $file_local ) && $fh = @fopen( $file_local, 'rb' ) ) {
+					$cache_content = fread( $fh, filesize( $file_local ) );
+					fclose( $fh );
 				}
-			} else {
-				$is_remote = false;	// fallback to local setup file
 			}
 
-			// get local setup.html file
-			if ( $is_remote === false && ! empty( $file_local ) && $fh = @fopen( $file_local, 'rb' ) ) {
-				$content = fread( $fh, filesize( $file_local ) );
-				fclose( $fh );
-			}
-
-			return $content;
+			return $cache_content;
 		}
 
 		public function plugin_complete_actions( $actions ) {

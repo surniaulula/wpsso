@@ -18,14 +18,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'expire' => array(
 				'admin_css' => DAY_IN_SECONDS,
 				'readme_txt' => DAY_IN_SECONDS,
-				'setup_html' => WEEK_IN_SECONDS,
 			),
 			'hosts' => array(
 				'https://wpsso.com/extend/plugins/',
 			),
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.4-dev.1',		// plugin version
+					'version' => '3.48.4-dev.2',		// plugin version
 					'opt_version' => '567',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
