@@ -387,13 +387,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* Updated minimum/recommended versions for PHP 5.4/5.6 and WordPress 3.8/4.8.
-	* Added dashicons to all plugin menu items (settings, dashboard, info, etc.).
+	* Added dashicons to all plugin menu items (plugin settings, dashboard, info, etc.).
 	* Added &#91;F&#93; qualifiers in the Cache Status metabox for expiration values changed by a filter.
 	* Added a '.specialty' suffix to medical specialty Schema type ids - the value of existing options will be updated automatically.
 	* Added a new optional WPSSO_PRODUCT_PRICE_INCLUDE_VAT constant (false by default) to include VAT in WooCommerce product prices (Pro version).
 	* Updated the Google URL Shortener API service option labels and help text (Pro version).
 * *Bugfixes*
-	* Updated the "Google Project API Key" value check to allow for hyphen characters.
+	* Updated the "Google Project API Key" value check to allow for hyphen characters (Pro version).
 	* Fixed a typo in the 'employment.agency' Schema type ID string.
 * *Developer Notes*
 	* Renamed the WPSSO_CHECK_PRODUCT_OBJECT constant (true by default) to WPSSO_PRODUCT_OBJ_CHECK_DISABLE (false by default).
