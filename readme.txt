@@ -393,6 +393,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a 'wpsso_get_event_place_id' filter for single event options.
 	* Renamed the WpssoSchema add_image_list_data() method to add_og_image_list_data().
 	* Renamed the WpssoSchema add_single_image_data() method to add_og_single_image_data().
+	* Refactored the WpssoAdmin methods that retrieve the readme.txt and setup.html file contents.
 
 **Version 3.48.3 (2017/11/15)**
 
@@ -779,7 +780,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.48.4-dev.2 =
 
-(2017/11/16) Added a 'wpsso_get_event_place_id' filter for single event options.
+(2017/11/16) Added a 'wpsso_get_event_place_id' filter for single event options. Refactored the WpssoAdmin methods that retrieve the readme.txt and setup.html file contents.
 
 = 3.48.3 =
 
