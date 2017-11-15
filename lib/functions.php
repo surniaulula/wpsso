@@ -111,8 +111,7 @@ if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 		} elseif ( is_object( $wpsso->util ) ) {	// just in case
 			$sharing_url = $wpsso->util->get_sharing_url( $mod, $add_page );
 			$service_key = $ngfb->options['plugin_shortener'];
-			return apply_filters( 'wpsso_get_short_url',
-				$sharing_url, $service_key, $mod, $mod['name'] );
+			return apply_filters( 'wpsso_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
 		} else {
 			return false;
 		}

@@ -1622,7 +1622,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/*
-		 * Return any 3rd party and custom options for a given option type.
+		 * Return any 3rd party and custom post options for a given option type.
 		 * 
 		 * function wpsso_get_post_event_options( $post_id, $event_id = false ) {
 		 * 	WpssoSchema::get_post_md_type_opts( $post_id, 'event', $event_id );
@@ -1649,6 +1649,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log_arr( 'get_'.$md_type.'_options filters returned', $md_opts );
 				}
+			}
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'merging default, filter, and custom option values' );
 			}
 
 			WpssoSchema::merge_custom_mod_opts( $mod, $md_opts, array( $md_type => 'schema_'.$md_type ) );
@@ -1787,7 +1791,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) );
 
 			/*
-			 * Event Offers
+			 * Add Event Offers
 			 */
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'checking for custom event offers' );
@@ -2650,7 +2654,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$is_enabled = empty( $this->p->options['schema_add_noscript'] ) ? false : true;
 
 			// returns false when the wpsso-schema-json-ld extension is active
-			if ( ! apply_filters( $lca.'_add_schema_noscript_array', $is_enabled, $crawler_name ) ) {
+			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', $is_enabled, $crawler_name ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'noscript disabled by option or filter for '.$crawler_name );
 				}
