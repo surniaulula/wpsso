@@ -2068,13 +2068,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		// update the cached array and maintain the existing transient expiration time
-		public static function update_transient_array( $cache_id, $data_array, $cache_exp_secs ) {
+		public static function update_transient_array( $cache_id, $data_array, $cache_exp_secs, $reset_less_than = 300 ) {
 
 			$now_time = time();
 
 			if ( isset( $data_array['__created_at'] ) ) {
 				// adjust the expiration time by removing the difference
 				$exp_in_secs = $cache_exp_secs - ( $now_time - $data_array['__created_at'] );
+				if ( $exp_in_secs < $reset_less_than ) {
+					$exp_in_secs = $cache_exp_secs;
+				}
 			} else {
 				$exp_in_secs = $cache_exp_secs;
 				$data_array['__created_at'] = $now_time;
