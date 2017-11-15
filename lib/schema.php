@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$do_once[$mod_salt] = true;
 			}
 
-			$size_name = $this->p->cf['lca'].'-schema';
+			$size_name = $lca.'-schema';
 			$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, 'schema' );	// $md_pre = 'schema'
 			$img_url = SucomUtil::get_mt_media_url( $og_images, 'og:image' );
 
@@ -324,7 +324,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'schema type id before filter is '.$type_id );
 			}
 
-			$type_id = apply_filters( $this->p->cf['lca'].'_schema_type_id', $type_id, $mod, $is_custom );
+			$type_id = apply_filters( $lca.'_schema_type_id', $type_id, $mod, $is_custom );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'schema type id after filter is '.$type_id );
@@ -1453,23 +1453,33 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $authors_added + $coauthors_added;	// return count of authors and coauthors added
 		}
 
-		// pass a single or two dimension image array in $og_images
+		// deprecated on 2017/11/15
 		public static function add_image_list_data( &$json_data, &$og_images, $prefix = 'og:image' ) {
+			return self::add_og_image_list_data( $json_data, $og_images, $prefix );
+		}
+
+		// pass a single or two dimension image array in $og_images
+		public static function add_og_image_list_data( &$json_data, &$og_images, $prefix = 'og:image' ) {
 			$images_added = 0;
 
 			if ( isset( $og_images[0] ) && is_array( $og_images[0] ) ) {						// 2 dimensional array
-				foreach ( $og_images as $single_image ) {
-					$images_added += self::add_single_image_data( $json_data, $single_image, $prefix, true );	// $list_element = true
+				foreach ( $og_images as $og_single_image ) {
+					$images_added += self::add_og_single_image_data( $json_data, $og_single_image, $prefix, true );	// $list_element = true
 				}
 			} elseif ( is_array( $og_images ) ) {
-				$images_added += self::add_single_image_data( $json_data, $og_images, $prefix, true );		// $list_element = true
+				$images_added += self::add_og_single_image_data( $json_data, $og_images, $prefix, true );		// $list_element = true
 			}
 
 			return $images_added;	// return count of images added
 		}
 
-		// pass a single dimension image array in $opts
+		// deprecated on 2017/11/15
 		public static function add_single_image_data( &$json_data, $opts, $prefix = 'og:image', $list_element = true ) {
+			return self::add_og_single_image_data( $json_data, $opts, $prefix, $list_element );
+		}
+
+		// pass a single dimension image array in $opts
+		public static function add_og_single_image_data( &$json_data, $opts, $prefix = 'og:image', $list_element = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1634,6 +1644,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$md_opts = apply_filters( $lca.'_get_'.$md_type.'_options', false, $mod, $type_id );
+
+			if ( ! empty( $md_opts ) ) {
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log_arr( 'get_'.$md_type.'_options filters returned', $md_opts );
+				}
+			}
 
 			WpssoSchema::merge_custom_mod_opts( $mod, $md_opts, array( $md_type => 'schema_'.$md_type ) );
 
@@ -1906,11 +1922,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$wpsso =& Wpsso::get_instance();
+			$lca = $wpsso->cf['lca'];
 
 			/*
 			 * Get job options from Pro modules and/or custom filters.
 			 */
-			$job_opts = apply_filters( $wpsso->cf['lca'].'_get_job_options', false, $mod, $job_id );
+			$job_opts = apply_filters( $lca.'_get_job_options', false, $mod, $job_id );
 
 			if ( ! empty( $job_opts ) ) {
 				if ( $wpsso->debug->enabled ) {
@@ -2002,7 +2019,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'job_location_id is empty or none' );
 			}
 
-			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_job', $ret, $mod, $job_id );
+			$ret = apply_filters( $lca.'_json_data_single_job', $ret, $mod, $job_id );
 
 			if ( empty( $list_element ) ) {
 				$json_data = $ret;
@@ -2031,7 +2048,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$wpsso =& Wpsso::get_instance();
-			$org_opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $org_id );
+			$lca = $wpsso->cf['lca'];
+			$org_opts = apply_filters( $lca.'_get_organization_options', false, $mod, $org_id );
 
 			if ( ! empty( $org_opts ) ) {
 				if ( $wpsso->debug->enabled ) {
@@ -2077,7 +2095,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'adding image from '.$logo_key.' option' );
 				}
 				if ( ! empty( $org_opts[$logo_key] ) ) {
-					if ( ! self::add_single_image_data( $ret['logo'], $org_opts, $logo_key, false ) ) {	// $list_element = false
+					if ( ! self::add_og_single_image_data( $ret['logo'], $org_opts, $logo_key, false ) ) {	// $list_element = false
 						unset( $ret['logo'] );	// prevent null assignment
 					}
 				}
@@ -2129,7 +2147,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Google Knowledge Graph
 			 */
 			$org_opts['org_sameas'] = isset( $org_opts['org_sameas'] ) ? $org_opts['org_sameas'] : array();
-			$org_opts['org_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_organization_sameas',
+			$org_opts['org_sameas'] = apply_filters( $lca.'_json_data_single_organization_sameas',
 				$org_opts['org_sameas'], $mod, $org_id );
 
 			if ( ! empty( $org_opts['org_sameas'] ) && is_array( $org_opts['org_sameas'] ) ) {	// just in case
@@ -2145,7 +2163,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->schema->organization_to_localbusiness( $ret );
 			}
 
-			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_organization', $ret, $mod, $org_id );
+			$ret = apply_filters( $lca.'_json_data_single_organization', $ret, $mod, $org_id );
 
 			if ( empty( $list_element ) ) {
 				$json_data = $ret;
@@ -2166,8 +2184,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$wpsso =& Wpsso::get_instance();
-			$size_name = $wpsso->cf['lca'].'-schema';
-			$person_opts = apply_filters( $wpsso->cf['lca'].'_get_person_options', false, $mod, $user_id );
+			$lca = $wpsso->cf['lca'];
+			$size_name = $lca.'-schema';
+			$person_opts = apply_filters( $lca.'_get_person_options', false, $mod, $user_id );
 
 			if ( ! empty( $person_opts ) ) {
 				if ( $wpsso->debug->enabled ) {
@@ -2245,7 +2264,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Images
 			 */
 			if ( ! empty( $person_opts['person_og_image'] ) ) {
-				if ( ! self::add_image_list_data( $ret['image'], $person_opts['person_og_image'], 'og:image' ) ) {
+				if ( ! self::add_og_image_list_data( $ret['image'], $person_opts['person_og_image'], 'og:image' ) ) {
 					unset( $ret['image'] );	// prevent null assignment
 				}
 			}
@@ -2253,7 +2272,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * Google Knowledge Graph
 			 */
-			$person_opts['person_sameas'] = apply_filters( $wpsso->cf['lca'].'_json_data_single_person_sameas',
+			$person_opts['person_sameas'] = apply_filters( $lca.'_json_data_single_person_sameas',
 				( isset( $person_opts['person_sameas'] ) ? $person_opts['person_sameas'] : array() ), $mod, $user_id );
 
 			if ( ! empty( $person_opts['person_sameas'] ) && is_array( $person_opts['person_sameas'] ) ) {	// just in case
@@ -2264,7 +2283,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_person', $ret, $mod, $user_id );
+			$ret = apply_filters( $lca.'_json_data_single_person', $ret, $mod, $user_id );
 
 			if ( empty( $list_element ) ) {
 				$json_data = $ret;
@@ -2284,9 +2303,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$wpsso =& Wpsso::get_instance();
-			$size_name = $wpsso->cf['lca'].'-schema';
+			$lca = $wpsso->cf['lca'];
+			$size_name = $lca.'-schema';
 			$sharing_url = $wpsso->util->get_sharing_url( $mod );
-			$place_opts = apply_filters( $wpsso->cf['lca'].'_get_place_options', false, $mod, $place_id );
+			$place_opts = apply_filters( $lca.'_get_place_options', false, $mod, $place_id );
 
 			if ( ! empty( $place_opts ) ) {
 				if ( $wpsso->debug->enabled ) {
@@ -2417,12 +2437,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( ! empty( $place_opts['place_img_id'] ) || ! empty( $place_opts['place_img_url'] ) ) {
 				$mt_image = $wpsso->media->get_opts_image( $place_opts, $size_name, true, false, 'place', 'og' );
-				if ( ! self::add_single_image_data( $ret['image'], $mt_image, 'og:image', true ) ) {	// $list_element = true
+				if ( ! self::add_og_single_image_data( $ret['image'], $mt_image, 'og:image', true ) ) {	// $list_element = true
 					unset( $ret['image'] );	// prevent null assignment
 				}
 			}
 
-			$ret = apply_filters( $wpsso->cf['lca'].'_json_data_single_place', $ret, $mod, $place_id );
+			$ret = apply_filters( $lca.'_json_data_single_place', $ret, $mod, $place_id );
 
 			// restore previous reference values for admin notices
 			if ( is_admin() ) {
@@ -2460,7 +2480,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$max = $this->p->util->get_max_nums( $mod, 'schema' );
 			$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
-			$size_name = $this->p->cf['lca'].'-schema';
+			$size_name = $lca.'-schema';
 
 			$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
 				'url' => 'og:url',
@@ -2474,7 +2494,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			switch ( $page_type_url ) {
 				case 'https://schema.org/BlogPosting':
-					$size_name = $this->p->cf['lca'].'-schema-article';
+					$size_name = $lca.'-schema-article';
 					// no break - add date published and modified
 
 				case 'https://schema.org/WebPage':
@@ -2504,8 +2524,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$og_images = $this->p->media->get_default_images( 1, $size_name, true );
 				}
 
-				foreach ( $og_images as $single_image ) {
-					$mt_schema['image'][] = SucomUtil::get_mt_media_url( $single_image, 'og:image' );
+				foreach ( $og_images as $og_single_image ) {
+					$mt_schema['image'][] = SucomUtil::get_mt_media_url( $og_single_image, 'og:image' );
 				}
 			}
 
@@ -2579,12 +2599,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$max = $this->p->util->get_max_nums( $mod, 'schema' );
 			$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
-			$size_name = $this->p->cf['lca'].'-schema';
+			$size_name = $lca.'-schema';
 			$og_type = $mt_og['og:type'];
 
 			switch ( $page_type_url ) {
 				case 'https://schema.org/BlogPosting':
-					$size_name = $this->p->cf['lca'].'-schema-article';
+					$size_name = $lca.'-schema-article';
 					// no break - get the webpage author list as well
 
 				case 'https://schema.org/WebPage':
@@ -2602,8 +2622,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$og_images = $this->p->media->get_default_images( 1, $size_name, true );
 			}
 
-			foreach ( $og_images as $single_image ) {
-				$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $single_image ) );
+			foreach ( $og_images as $og_single_image ) {
+				$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $og_single_image ) );
 			}
 
 			// example: product:rating:average
@@ -2611,7 +2631,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret = array_merge( $ret, $this->get_aggregate_rating_noscript( $mod, $og_type, $mt_og ) );
 			}
 
-			return (array) apply_filters( $this->p->cf['lca'].'_schema_noscript_array', $ret, $mod, $mt_og, $page_type_id );
+			return (array) apply_filters( $lca.'_schema_noscript_array', $ret, $mod, $mt_og, $page_type_id );
 		}
 
 		public function is_noscript_enabled( $crawler_name = false ) {
@@ -2630,7 +2650,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$is_enabled = empty( $this->p->options['schema_add_noscript'] ) ? false : true;
 
 			// returns false when the wpsso-schema-json-ld extension is active
-			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', $is_enabled, $crawler_name ) ) {
+			if ( ! apply_filters( $lca.'_add_schema_noscript_array', $is_enabled, $crawler_name ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'noscript disabled by option or filter for '.$crawler_name );
 				}
@@ -2793,8 +2813,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$size_name = $this->p->cf['lca'].'-schema';
 				$og_images = $user_mod['obj']->get_og_images( 1, $size_name, $author_id, false );	// $check_dupes = false
 	
-				foreach ( $og_images as $single_image ) {
-					$image_url = SucomUtil::get_mt_media_url( $single_image, 'og:image' );
+				foreach ( $og_images as $og_single_image ) {
+					$image_url = SucomUtil::get_mt_media_url( $og_single_image, 'og:image' );
 					if ( ! empty( $image_url ) ) {
 						$mt_author = array_merge( $mt_author, $this->p->head->get_single_mt( 'link',
 							'itemprop', $itemprop.'.image', $image_url, '', $user_mod ) );

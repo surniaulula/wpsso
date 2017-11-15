@@ -144,7 +144,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$single_image = SucomUtil::get_mt_prop_image();
+			$og_single_image = SucomUtil::get_mt_prop_image();
 
 			if ( ! empty( $post_id ) ) {
 				// check for an attachment page, just in case
@@ -164,15 +164,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( ! empty( $pid ) ) {
 					list(
-						$single_image['og:image'],
-						$single_image['og:image:width'],
-						$single_image['og:image:height'],
-						$single_image['og:image:cropped'],
-						$single_image['og:image:id']
+						$og_single_image['og:image'],
+						$og_single_image['og:image:width'],
+						$og_single_image['og:image:height'],
+						$og_single_image['og:image:cropped'],
+						$og_single_image['og:image:id']
 					) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 
-					if ( ! empty( $single_image['og:image'] ) ) {
-						$this->p->util->push_max( $og_ret, $single_image, $num );
+					if ( ! empty( $og_single_image['og:image'] ) ) {
+						$this->p->util->push_max( $og_ret, $og_single_image, $num );
 					}
 				}
 			}
@@ -211,20 +211,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$single_image = SucomUtil::get_mt_prop_image();
+			$og_single_image = SucomUtil::get_mt_prop_image();
 
 			if ( ! empty( $attach_id ) ) {
 				if ( wp_attachment_is_image( $attach_id ) ) {	// since wp 2.1.0
 					list(
-						$single_image['og:image'],
-						$single_image['og:image:width'],
-						$single_image['og:image:height'],
-						$single_image['og:image:cropped'],
-						$single_image['og:image:id']
+						$og_single_image['og:image'],
+						$og_single_image['og:image:width'],
+						$og_single_image['og:image:height'],
+						$og_single_image['og:image:cropped'],
+						$og_single_image['og:image:id']
 					) = $this->get_attachment_image_src( $attach_id, $size_name, $check_dupes, $force_regen );
 
-					if ( ! empty( $single_image['og:image'] ) &&
-						$this->p->util->push_max( $og_ret, $single_image, $num ) ) {
+					if ( ! empty( $og_single_image['og:image'] ) &&
+						$this->p->util->push_max( $og_ret, $og_single_image, $num ) ) {
 						return $og_ret;
 					}
 				} elseif ( $this->p->debug->enabled ) {
@@ -247,7 +247,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$single_image = SucomUtil::get_mt_prop_image();
+			$og_single_image = SucomUtil::get_mt_prop_image();
 
 			if ( ! empty( $post_id ) ) {
 
@@ -272,15 +272,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				foreach ( $attach_ids as $pid ) {
 					list(
-						$single_image['og:image'],
-						$single_image['og:image:width'],
-						$single_image['og:image:height'],
-						$single_image['og:image:cropped'],
-						$single_image['og:image:id']
+						$og_single_image['og:image'],
+						$og_single_image['og:image:width'],
+						$og_single_image['og:image:height'],
+						$og_single_image['og:image:cropped'],
+						$og_single_image['og:image:id']
 					) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 
-					if ( ! empty( $single_image['og:image'] ) &&
-						$this->p->util->push_max( $og_ret, $single_image, $num ) ) {
+					if ( ! empty( $og_single_image['og:image'] ) &&
+						$this->p->util->push_max( $og_ret, $og_single_image, $num ) ) {
 						break;	// stop here and apply the 'wpsso_attached_images' filter
 					}
 				}
@@ -539,7 +539,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_ret = array();
-			$single_image = SucomUtil::get_mt_prop_image();
+			$og_single_image = SucomUtil::get_mt_prop_image();
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
 				$img[$key] = empty( $this->p->options['og_def_img_'.$key] ) ?
@@ -563,29 +563,29 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				list(
-					$single_image['og:image'],
-					$single_image['og:image:width'],
-					$single_image['og:image:height'],
-					$single_image['og:image:cropped'],
-					$single_image['og:image:id']
+					$og_single_image['og:image'],
+					$og_single_image['og:image:width'],
+					$og_single_image['og:image:height'],
+					$og_single_image['og:image:cropped'],
+					$og_single_image['og:image:id']
 				) = $this->get_attachment_image_src( $img['id'], $size_name, $check_dupes, $force_regen );
 			}
 
-			if ( empty( $single_image['og:image'] ) && ! empty( $img['url'] ) ) {
+			if ( empty( $og_single_image['og:image'] ) && ! empty( $img['url'] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using default image url: '.$img['url'] );
 				}
 
-				$single_image = array(
+				$og_single_image = array(
 					'og:image' => $img['url'],
 					'og:image:width' => $img['url:width'],
 					'og:image:height' => $img['url:height'],
 				);
 			}
 
-			if ( ! empty( $single_image['og:image'] ) &&
-				$this->p->util->push_max( $og_ret, $single_image, $num ) ) {
+			if ( ! empty( $og_single_image['og:image'] ) &&
+				$this->p->util->push_max( $og_ret, $og_single_image, $num ) ) {
 				return $og_ret;
 			}
 
@@ -631,7 +631,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $og_ret;
 			}
 
-			$single_image = SucomUtil::get_mt_prop_image();
+			$og_single_image = SucomUtil::get_mt_prop_image();
 			$size_info = SucomUtil::get_size_info( $size_name );
 			$img_preg = $this->def_img_preg;
 
@@ -693,11 +693,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							}
 
 							list(
-								$single_image['og:image'],
-								$single_image['og:image:width'],
-								$single_image['og:image:height'],
-								$single_image['og:image:cropped'],
-								$single_image['og:image:id']
+								$og_single_image['og:image'],
+								$og_single_image['og:image:width'],
+								$og_single_image['og:image:height'],
+								$og_single_image['og:image:cropped'],
+								$og_single_image['og:image:id']
 							) = $this->get_attachment_image_src( $attr_value, $size_name, false, $force_regen );
 
 							break;
@@ -714,11 +714,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							}
 
 							list(
-								$single_image['og:image'],
-								$single_image['og:image:width'],
-								$single_image['og:image:height'],
-								$single_image['og:image:cropped'],
-								$single_image['og:image:id']
+								$og_single_image['og:image'],
+								$og_single_image['og:image:width'],
+								$og_single_image['og:image:height'],
+								$og_single_image['og:image:cropped'],
+								$og_single_image['og:image:id']
 							) = apply_filters( $filter_name, array( null, null, null, null, null ), $attr_value, $size_name, false );
 
 							break;
@@ -740,12 +740,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							// recognize gravatar images in the content
 							if ( preg_match( '/^(https?:)?(\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+)/', $attr_value, $match ) ) {
 
-								$single_image['og:image'] = SucomUtil::get_prot().':'.$match[2].'?s='.$size_info['width'].'&d=404&r=G';
-								$single_image['og:image:width'] = $size_info['width'];
-								$single_image['og:image:height'] = $size_info['width'];	// square image
+								$og_single_image['og:image'] = SucomUtil::get_prot().':'.$match[2].'?s='.$size_info['width'].'&d=404&r=G';
+								$og_single_image['og:image:width'] = $size_info['width'];
+								$og_single_image['og:image:height'] = $size_info['width'];	// square image
 
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'gravatar image found: '.$single_image['og:image'] );
+									$this->p->debug->log( 'gravatar image found: '.$og_single_image['og:image'] );
 								}
 
 								break;	// stop here
@@ -754,11 +754,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							// check for image ID in class for old content w/o the data-wp-pid attribute
 							if ( preg_match( '/class="[^"]+ wp-image-([0-9]+)/', $tag_value, $match ) ) {
 								list(
-									$single_image['og:image'],
-									$single_image['og:image:width'],
-									$single_image['og:image:height'],
-									$single_image['og:image:cropped'],
-									$single_image['og:image:id']
+									$og_single_image['og:image'],
+									$og_single_image['og:image:width'],
+									$og_single_image['og:image:height'],
+									$og_single_image['og:image:cropped'],
+									$og_single_image['og:image:id']
 								) = $this->get_attachment_image_src( $match[1], $size_name, false, $force_regen );
 								break;	// stop here
 							} else {
@@ -766,14 +766,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									$this->p->debug->log( 'using attribute value for og:image = '.$attr_value.
 										' ('.WPSSO_UNDEF_INT.'x'.WPSSO_UNDEF_INT.')' );
 								}
-								$single_image = array(
+								$og_single_image = array(
 									'og:image' => $attr_value,
 									'og:image:width' => WPSSO_UNDEF_INT,
 									'og:image:height' => WPSSO_UNDEF_INT,
 								);
 							}
 
-							if ( empty( $single_image['og:image'] ) ) {
+							if ( empty( $og_single_image['og:image'] ) ) {
 								$this->p->debug->log( 'single image og:image value is empty' );
 								break;	// stop here
 							}
@@ -782,58 +782,58 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$img_size_within_limits = true;
 
 							// get the actual width and height of the image using http / https
-							if ( empty( $single_image['og:image:width'] ) || $single_image['og:image:width'] < 0 ||
-								empty( $single_image['og:image:height'] ) || $single_image['og:image:height'] < 0 ) {
+							if ( empty( $og_single_image['og:image:width'] ) || $og_single_image['og:image:width'] < 0 ||
+								empty( $og_single_image['og:image:height'] ) || $og_single_image['og:image:height'] < 0 ) {
 
-								$this->p->util->add_image_url_size( 'og:image', $single_image );
+								$this->p->util->add_image_url_size( 'og:image', $og_single_image );
 
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'returned / fetched image url size: '.
-										$single_image['og:image:width'].'x'.$single_image['og:image:height'] );
+										$og_single_image['og:image:width'].'x'.$og_single_image['og:image:height'] );
 								}
 
 								// no use checking / retrieving the image size twice
-								if ( $single_image['og:image:width'] === WPSSO_UNDEF_INT &&
-									$single_image['og:image:height'] === WPSSO_UNDEF_INT ) {
+								if ( $og_single_image['og:image:width'] === WPSSO_UNDEF_INT &&
+									$og_single_image['og:image:height'] === WPSSO_UNDEF_INT ) {
 									$check_size_limits = false;
 									$img_size_within_limits = false;
 								}
 
 							} elseif ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'image width / height values: '.
-									$single_image['og:image:width'].'x'.$single_image['og:image:height'] );
+									$og_single_image['og:image:width'].'x'.$og_single_image['og:image:height'] );
 							}
 
 							if ( $check_size_limits ) {
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'checking image size limits for '.$single_image['og:image'].
-										' ('.$single_image['og:image:width'].'x'.$single_image['og:image:height'].')' );
+									$this->p->debug->log( 'checking image size limits for '.$og_single_image['og:image'].
+										' ('.$og_single_image['og:image:width'].'x'.$og_single_image['og:image:height'].')' );
 								}
 								// check if image exceeds hard-coded limits (dimensions, ratio, etc.)
-								$img_size_within_limits = $this->img_size_within_limits( $single_image['og:image'],
-									$size_name, $single_image['og:image:width'], $single_image['og:image:height'],
+								$img_size_within_limits = $this->img_size_within_limits( $og_single_image['og:image'],
+									$size_name, $og_single_image['og:image:width'], $og_single_image['og:image:height'],
 										__( 'Content', 'wpsso' ) );
 							} elseif ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'skipped image size limits for '.$single_image['og:image'].
-									' ('.$single_image['og:image:width'].'x'.$single_image['og:image:height'].')' );
+								$this->p->debug->log( 'skipped image size limits for '.$og_single_image['og:image'].
+									' ('.$og_single_image['og:image:width'].'x'.$og_single_image['og:image:height'].')' );
 							}
 
 							// 'wpsso_content_accept_img_dims' is hooked by the WpssoProCheckImgSize class / module.
 							if ( ! apply_filters( $this->p->cf['lca'].'_content_accept_img_dims',
-								$img_size_within_limits, $single_image, $size_name, $attr_name, $content_passed ) ) {
-								$single_image = array();
+								$img_size_within_limits, $og_single_image, $size_name, $attr_name, $content_passed ) ) {
+								$og_single_image = array();
 							}
 
 							break;
 					}
 
-					if ( ! empty( $single_image['og:image'] ) ) {
+					if ( ! empty( $og_single_image['og:image'] ) ) {
 
-						$single_image['og:image'] = apply_filters( $this->p->cf['lca'].'_rewrite_image_url',
-							$this->p->util->fix_relative_url( $single_image['og:image'] ) );
+						$og_single_image['og:image'] = apply_filters( $this->p->cf['lca'].'_rewrite_image_url',
+							$this->p->util->fix_relative_url( $og_single_image['og:image'] ) );
 
-						if ( $check_dupes === false || $this->p->util->is_uniq_url( $single_image['og:image'], $size_name ) ) {
-							if ( $this->p->util->push_max( $og_ret, $single_image, $num ) ) {
+						if ( $check_dupes === false || $this->p->util->is_uniq_url( $og_single_image['og:image'], $size_name ) ) {
+							if ( $this->p->util->push_max( $og_ret, $og_single_image, $num ) ) {
 								return $og_ret;
 							}
 						}

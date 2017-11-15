@@ -1065,9 +1065,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$og_videos = $this->p->og->get_all_videos( 1, $mod, $check_dupes, $md_pre );
 
 				if ( ! empty( $og_videos ) && is_array( $og_videos ) ) {
-					foreach ( $og_videos as $single_video ) {
-						if ( ! empty( $single_video['og:image'] ) ) {
-							$og_images[] = $single_video;
+					foreach ( $og_videos as $og_single_video ) {
+						if ( ! empty( $og_single_video['og:image'] ) ) {
+							$og_images[] = $og_single_video;
 							break;
 						}
 					}

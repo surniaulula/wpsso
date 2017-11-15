@@ -229,9 +229,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 					if ( ! empty( $mt_og['og:video'] ) && is_array( $mt_og['og:video'] ) ) {
 
-						foreach ( $mt_og['og:video'] as $num => $single_video ) {
+						foreach ( $mt_og['og:video'] as $num => $og_single_video ) {
 
-							$image_url = SucomUtil::get_mt_media_url( $single_video, 'og:image' );
+							$image_url = SucomUtil::get_mt_media_url( $og_single_video, 'og:image' );
 
 							/*
 							 * Check preview images for duplicates since the same videos may be available in
@@ -499,8 +499,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'use_prev and force_prev are false - removing video preview images' );
 				}
 
-				foreach ( $og_ret as $num => $single_video ) {
-					foreach ( SucomUtil::preg_grep_keys( '/^og:image(:.*)?$/', $single_video ) as $k => $v ) {
+				foreach ( $og_ret as $num => $og_single_video ) {
+					foreach ( SucomUtil::preg_grep_keys( '/^og:image(:.*)?$/', $og_single_video ) as $k => $v ) {
 						unset ( $og_ret[$num][$k] );
 					}
 					$og_ret[$num]['og:video:has_image'] = false;
@@ -524,7 +524,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$value = $mod['obj']->get_options( $mod['id'], $idx );
 
 					if ( ! empty( $value ) ) {	// must be a non-empty string
-						foreach ( $og_ret as $num => $single_video ) {
+						foreach ( $og_ret as $num => $og_single_video ) {
 							$og_ret[$num][$mt_name] = $value;
 							break;	// only do the first video
 						}
@@ -536,44 +536,44 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				$og_extend = array();
 
-				foreach ( $og_ret as $num => $single_video ) {
+				foreach ( $og_ret as $num => $og_single_video ) {
 
-					if ( ! empty( $single_video['og:video:embed_url'] ) ) {
+					if ( ! empty( $og_single_video['og:video:embed_url'] ) ) {
 
 						// start with a copy of all og meta tags
-						$single_embed = SucomUtil::get_mt_prop_video( 'og', $single_video, false );
+						$og_single_embed = SucomUtil::get_mt_prop_video( 'og', $og_single_video, false );
 
 						// exclude the facebook applink meta tags
-						$single_embed = SucomUtil::preg_grep_keys( '/^og:/', $single_embed );
+						$og_single_embed = SucomUtil::preg_grep_keys( '/^og:/', $og_single_embed );
 
-						if ( strpos( $single_video['og:video:embed_url'], 'https:' ) !== false ) {
+						if ( strpos( $og_single_video['og:video:embed_url'], 'https:' ) !== false ) {
 
 							if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
-								$single_embed['og:video:secure_url'] = $single_video['og:video:embed_url'];
+								$og_single_embed['og:video:secure_url'] = $og_single_video['og:video:embed_url'];
 							} else {
-								$single_embed['og:video:secure_url'] = '';	// just in case
+								$og_single_embed['og:video:secure_url'] = '';	// just in case
 							}
 						}
 
-						$single_embed['og:video:url'] = $single_video['og:video:embed_url'];
-						$single_embed['og:video:type'] = 'text/html';
+						$og_single_embed['og:video:url'] = $og_single_video['og:video:embed_url'];
+						$og_single_embed['og:video:type'] = 'text/html';
 
 						// embedded videos may not have width / height information
 						foreach ( array( 'og:video:width', 'og:video:height' ) as $mt_name ) {
-							if ( isset( $single_embed[$mt_name] ) && $single_embed[$mt_name] === '' ) {
-								unset( $single_embed[$mt_name] );
+							if ( isset( $og_single_embed[$mt_name] ) && $og_single_embed[$mt_name] === '' ) {
+								unset( $og_single_embed[$mt_name] );
 							}
 						}
 
 						// add application/x-shockwave-flash video first and the text/html video second
-						if ( SucomUtil::get_mt_media_url( $single_video, 'og:video', array( ':secure_url', ':url', '' ) ) ) {
-							$og_extend[] = $single_video;
+						if ( SucomUtil::get_mt_media_url( $og_single_video, 'og:video', array( ':secure_url', ':url', '' ) ) ) {
+							$og_extend[] = $og_single_video;
 						}
 
-						$og_extend[] = $single_embed;
+						$og_extend[] = $og_single_embed;
 
 					} else {
-						$og_extend[] = $single_video;
+						$og_extend[] = $og_single_video;
 					}
 				}
 				return $og_extend;
@@ -606,15 +606,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( ( is_attachment( $mod['id'] ) || get_post_type( $mod['id'] ) === 'attachment' ) &&
 					wp_attachment_is_image( $mod['id'] ) ) {
 
-					$single_image = $this->p->media->get_attachment_image( $num_diff,
+					$og_single_image = $this->p->media->get_attachment_image( $num_diff,
 						$size_name, $mod['id'], $check_dupes );
 
 					// exiting early
-					if ( empty( $single_image ) ) {
+					if ( empty( $og_single_image ) ) {
 						return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff,
 							$size_name, $check_dupes, $force_regen ) );
 					} else {
-						return array_merge( $og_ret, $single_image );
+						return array_merge( $og_ret, $og_single_image );
 					}
 				}
 

@@ -220,9 +220,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						$og_images = $this->p->media->get_default_images( 1, $size_name );
 
 						if ( count( $og_images ) > 0 ) {
-							$single_image = reset( $og_images );
+							$og_single_image = reset( $og_images );
 							$mt_tc['twitter:card'] = $card_type;
-							$mt_tc['twitter:image'] = $single_image['og:image'];
+							$mt_tc['twitter:image'] = $og_single_image['og:image'];
 						} elseif ( $this->p->debug->enabled )
 							$this->p->debug->log( 'no default image returned' );
 
@@ -246,9 +246,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						$og_images = $this->p->media->get_post_images( 1, $size_name, $post_id, false );
 
 						if ( count( $og_images ) > 0 ) {
-							$single_image = reset( $og_images );
+							$og_single_image = reset( $og_images );
 							$mt_tc['twitter:card'] = $card_type;
-							$mt_tc['twitter:image'] = $single_image['og:image'];
+							$mt_tc['twitter:image'] = $og_single_image['og:image'];
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'no post image returned' );
 						}
@@ -265,9 +265,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 								$og_images = $this->p->m['media']['ngg']->get_singlepic_images( 1, $size_name, $post_id, false );
 	
 								if ( count( $og_images ) > 0 ) {
-									$single_image = reset( $og_images );
+									$og_single_image = reset( $og_images );
 									$mt_tc['twitter:card'] = $card_type;
-									$mt_tc['twitter:image'] = $single_image['og:image'];
+									$mt_tc['twitter:image'] = $og_single_image['og:image'];
 								} elseif ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'no singlepic image returned' );
 								}
@@ -306,8 +306,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false );
 
 					if ( count( $og_images ) > 0 ) {
-						$single_image = reset( $og_images );
-						$mt_tc['twitter:image'] = $single_image['og:image'];
+						$og_single_image = reset( $og_images );
+						$mt_tc['twitter:image'] = $og_single_image['og:image'];
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'no content image returned' );
 					}
