@@ -616,11 +616,11 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2395
+#: lib/admin.php:2401
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2416
+#: lib/admin.php:2422
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
