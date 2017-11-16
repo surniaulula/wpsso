@@ -2354,17 +2354,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$lca = $this->p->cf['lca'];
-			$file_name = sanitize_file_name( $file_name );
+			$file_name = SucomUtil::sanitize_file_path( $file_name );
 			$file_key = SucomUtil::sanitize_hookname( basename( $file_name ) );	// html/setup.html -> setup_html
 			$file_local = constant( $dir_const_name ).$file_name;
 			$file_remote = isset( $this->p->cf['plugin'][$ext]['url'][$file_key] ) ? 
 				$this->p->cf['plugin'][$ext]['url'][$file_key] : false;
-
-// TODO REMOVE AFTER TESTING
-error_log( 'file_name '.$file_name );
-error_log( 'file_key '.$file_key );
-error_log( 'file_local '.$file_local );
-error_log( 'file_remote '.$file_remote );
 
 			if ( $cache_exp_secs === null ) {
 				$cache_exp_secs = WEEK_IN_SECONDS;

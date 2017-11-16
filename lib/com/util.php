@@ -1089,6 +1089,53 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		public static function sanitize_file_path( $file_path ) {
+			if ( empty( $file_path ) ) {
+				return false;
+			}
+			$file_path = implode( '/', array_map( array( __CLASS__, 'sanitize_file_name' ), explode( '/', $file_path ) ) );
+			return $file_path;
+		}
+
+		public static function sanitize_file_name( $file_name ) {
+			$special_chars = array(
+				'?',
+				'[',
+				']',
+				'/',
+				'\\',
+				'=',
+				'<',
+				'>',
+				':',
+				';',
+				',',
+				'\'',
+				'"',
+				'&',
+				'$',
+				'#',
+				'*',
+				'(',
+				')',
+				'|',
+				'~',
+				'`',
+				'!',
+				'{',
+				'}',
+				'%',
+				'+',
+				chr( 0 )
+			);
+			$file_name = preg_replace( '#\x{00a0}#siu', ' ', $file_name );
+			$file_name = str_replace( $special_chars, '', $file_name );
+			$file_name = str_replace( array( '%20', '+' ), '-', $file_name );
+			$file_name = preg_replace( '/[\r\n\t -]+/', '-', $file_name );
+			$file_name = trim( $file_name, '.-_' );
+			return $file_name;
+		}
+
 		public static function sanitize_hookname( $name ) {
 			$name = preg_replace( '/[:\/\-\. ]+/', '_', $name );
 			return self::sanitize_key( $name );

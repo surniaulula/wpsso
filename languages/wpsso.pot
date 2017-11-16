@@ -616,11 +616,11 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2401
+#: lib/admin.php:2395
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2422
+#: lib/admin.php:2416
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
@@ -746,11 +746,11 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:1331
+#: lib/com/util.php:1378
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1338
+#: lib/com/util.php:1385
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
