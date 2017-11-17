@@ -249,7 +249,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( isset( $this->submenu[$arg[1]] ) ) {
-					$this->submenu[$arg[1]]->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4], $css_class );
+					$this->submenu[$arg[1]]->add_submenu_page( $arg[0], '', '', '', '', $css_class );
 				} else {
 					$this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4], $css_class );
 				}
@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				foreach ( $sorted_menu as $key => $arg ) {
 					if ( isset( $this->submenu[$arg[1]] ) ) {
-						$this->submenu[$arg[1]]->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
+						$this->submenu[$arg[1]]->add_submenu_page( $arg[0] );
 					} else {
 						$this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
 					}
@@ -348,12 +348,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $menu_id ) ) {
 				$menu_id = $this->menu_id;
 			}
+
 			if ( empty( $menu_name ) ) {
 				$menu_name = $this->menu_name;
 			}
+
 			if ( empty( $menu_lib ) ) {
 				$menu_lib = $this->menu_lib;
 			}
+
 			if ( empty( $menu_ext ) ) {
 				$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or extension
 				if ( empty( $menu_ext ) ) {
@@ -362,6 +365,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			global $wp_version;
+
 			if ( ( $menu_lib === 'submenu' || $menu_lib === 'sitesubmenu' ) && 
 				version_compare( $wp_version, 3.8, '>=' ) ) {	// wp v3.8 required for dashicons
 
