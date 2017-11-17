@@ -15,7 +15,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 4.9
  * WC Tested Up To: 3.2.3
- * Version: 3.48.4-dev.3
+ * Version: 3.48.4-dev.4
  * 
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -345,6 +345,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->util->add_plugin_filters( $this, array( 
 					'cache_expire_head_array' => '__return_zero',
 					'cache_expire_setup_html' => '__return_zero',
+					'cache_expire_shortcode_html' => '__return_zero',
 					'cache_expire_sharing_buttons' => '__return_zero',
 					'cache_expire_json_post_data' => '__return_zero',
 				) );
