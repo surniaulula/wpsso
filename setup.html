@@ -115,9 +115,10 @@
 <h4>Frequently Asked Questions</h4>
 
 <ul>
+	<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/">How do I fix Google Structured Data &gt; hatom errors?</a></li>
 	<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/">How does WPSSO Core find / detect / select images?</a></li>
+	<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/">How does WPSSO Core find / detect / select videos?</a></li>
 	<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Why does Facebook show the wrong image / text?</a></li>
-	<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-page-blank-or-its-components-misaligned/">Why is the page blank or components missing / misaligned?</a></li>
 	<li>More <a href="https://wpsso.com/docs/plugins/wpsso/faqs/">frequently asked questions</a>...</li>
 </ul>
 
@@ -132,16 +133,15 @@
 	<ul>
 		<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/">Installation and Setup</a></li>
 		<ul>
-			<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/">Performance Tuning</a></li>
 			<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/">Debugging and Problem Solving</a></li>
 			<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/">Integration Notes</a></li>
 			<ul>
 				<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration</a></li>
+				<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/">WooCommerce Integration</a></li>
 			</ul>
 		</ul>
 		<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/">Documentation and Notes</a></li>
 		<ul>
-			<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/working-with-image-attachments/">Working with Image Attachments</a></li>
 			<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/">Developer Resources and Filter Examples</a></li>
 		</ul>
 	</ul>
@@ -149,7 +149,7 @@
 	<ul>
 		<li><a href="https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/">Documentation and Notes</a></li>
 		<ul>
-			<li><a href="https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/developer/">Developer Resources and Filter Examples</a>
+			<li><a href="https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/developer/">Developer Resources and Filter Examples</a></li>
 			<ul>
 				<li><a href="http://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/developer/filters/examples/assign-a-custom-field-value-to-a-schema-property/">Assign a Custom Field Value to a Schema Property</a></li>
 				<li><a href="http://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/developer/filters/examples/modify-the-aggregaterating-property/">Modify the aggregateRating Property</a></li>
@@ -167,26 +167,30 @@
 
 <dd><p>Website developers / designers will probably want to consider a few additional settings...</p>
 
+<ul>
+
 <!-- WPSSO_HIDE_ALL_WARNINGS -->
-<p>WPSSO Core may display warning notices if images are too small for the dimensions required. If you are using WordPress v4.2 or better, these notices can be dismissed individually. You can also define the <code>WPSSO_HIDE_ALL_WARNINGS</code> constant as true to auto-hide all dismissable warnings.</p>
+<li><p>WPSSO Core may display warning notices if images are too small for the dimensions required. If you are using WordPress v4.2 or better, these notices can be dismissed individually. You can also define the <code>WPSSO_HIDE_ALL_WARNINGS</code> constant as true to auto-hide all dismissable warnings.</p></li>
 
 <!-- Show SSO Image / Desc Columns -->
-<p>Users can hide / unhide the "SSO Image" and "SSO Desc" columns using the <em>Screen Options</em> drop-down tab, but you can also enable / disable these columns globally under the <strong>SSO &gt; Advanced &gt; Custom Meta</strong> tab.</p>
+<li><p>Users can hide / unhide the "SSO Image" and "SSO Desc" columns using the <em>Screen Options</em> drop-down tab, but you can also enable / disable these columns globally under the <strong>SSO &gt; Advanced &gt; Custom Meta</strong> tab.</p></li>
 
 <!-- Custom Field Names -->
-<p>If your theme uses custom fields to manage additional image and video URLs (and embed video HTML), you can enter those custom field (aka post meta) names under the <strong>SSO &gt; Advanced &gt; Custom Meta</strong> tab.</p>
+<li><p>If your theme uses custom fields to manage additional image and video URLs (and embed video HTML), you can enter those custom field (aka post meta) names under the <strong>SSO &gt; Advanced &gt; Custom Meta</strong> tab.</p></li>
 
 <!-- Check for Duplicate Meta Tags -->
-<p>If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the "Check for Duplicate Meta Tags" option.</p>
+<li><p>If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the "Check for Duplicate Meta Tags" option.</p></li>
 
 <!-- head Attributes Filter Hook -->
-<p>WPSSO Core modifies the <code>&lt;head&gt;</code> element attributes to add a Schema item type for the <code>&lt;head&gt;</code> section only. To apply the Schema item type for the whole page instead, change the "&lt;head&gt; Attributes Filter Hook" value from 'head_attributes' to 'language_attributes'.</p>
+<li><p>WPSSO Core modifies the <code>&lt;head&gt;</code> element attributes to add a Schema item type for the <code>&lt;head&gt;</code> section only. To apply the Schema item type for the whole page instead, change the "&lt;head&gt; Attributes Filter Hook" value from 'head_attributes' to 'language_attributes'.</p></li>
 
 <!-- WPSSO_IMAGE_UPSCALE_TEST -->
-<p>You can <em>simulate</em> the WPSSO Core image upscaling feature, to generate all the necessary success / failure notice messages, without having WordPress actually save the resulting images &mdash; define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true, or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO Core image sizes) and adjust the maximum percentage.</p>
+<li><p>You can <em>simulate</em> the WPSSO Core image upscaling feature, to generate all the necessary success / failure notice messages, without having WordPress actually save the resulting images &mdash; define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true, or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO Core image sizes) and adjust the maximum percentage.</p></li>
 
 <!-- WPSSO Schema JSON-LD Markup -->
-<p>WPSSO Core creates a few Schema <em>meta tags</em> (name, description, and image) for Google+, along with the WebSite, Organization, and Person social JSON-LD markup (on the front page) for Google Search. If your theme does not include proper Schema markup for your content (author, images, videos, etc.), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> extension, which can add complete Schema JSON-LD / SEO markup (BlogPosting, Article, Place, Product, etc.) to webpages for Google.</p>
+<li><p>WPSSO Core creates a few Schema <em>meta tags</em> (name, description, and image) for Google+, along with the WebSite, Organization, and Person social JSON-LD markup (on the front page) for Google Search. If your theme does not include proper Schema markup for your content (author, images, videos, etc.), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> extension, which can add complete Schema JSON-LD / SEO markup (BlogPosting, Article, Place, Product, etc.) to webpages for Google.</p></li>
+
+</ul>
 
 </dd>
 
