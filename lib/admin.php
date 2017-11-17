@@ -194,30 +194,35 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$sorted_menu = array();
 			$unsorted_menu = array();
-			$first_top_menu_id = false;
-			$last_top_menu_id = false;
-			$first_ext_menu_id = false;
-			$last_ext_menu_id = false;
+
+			$first_top_id = false;
+			$last_top_id = false;
+			$first_ext_id = false;
+			$last_ext_id = false;
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+
 				if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all extensions have submenus
 					continue;
 				}
+
 				foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
+
 					$ksort_key = $menu_name.'-'.$menu_id;
 					$parent_slug = $this->p->cf['lca'].'-'.$this->menu_id;
+
 					if ( $lca === $ext ) {
 						$unsorted_menu[] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
-						if ( $first_top_menu_id === false ) {
-							$first_top_menu_id = $menu_id;
+						if ( $first_top_id === false ) {
+							$first_top_id = $menu_id;
 						}
-						$last_top_menu_id = $menu_id;
+						$last_top_id = $menu_id;
 					} else {
 						$sorted_menu[$ksort_key] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
-						if ( $first_ext_menu_id === false ) {
-							$first_ext_menu_id = $menu_id;
+						if ( $first_ext_id === false ) {
+							$first_ext_id = $menu_id;
 						}
-						$last_ext_menu_id = $menu_id;
+						$last_ext_id = $menu_id;
 					}
 				}
 			}
@@ -225,22 +230,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			ksort( $sorted_menu );
 
 			foreach ( array_merge( $unsorted_menu, $sorted_menu ) as $key => $arg ) {
-				if ( $arg[1] === $first_top_menu_id ) {
+
+				if ( $arg[1] === $first_top_id ) {
 					$css_class = 'first-top-submenu-page';
-				} elseif ( $arg[1] === $last_top_menu_id ) {
+				} elseif ( $arg[1] === $last_top_id ) {
 					$css_class = 'last-top-submenu-page';
-					if ( empty( $first_ext_menu_id ) ) {
+					if ( empty( $first_ext_id ) ) {
 						$css_class .= ' no-extensions';
 					} else {
 						$css_class .= ' with-extensions';
 					}
-				} elseif ( $arg[1] === $first_ext_menu_id ) {
+				} elseif ( $arg[1] === $first_ext_id ) {
 					$css_class = 'first-ext-submenu-page';
-				} elseif ( $arg[1] === $last_ext_menu_id ) {
+				} elseif ( $arg[1] === $last_ext_id ) {
 					$css_class = 'last-ext-submenu-page';
 				} else {
 					$css_class = '';
 				}
+
 				if ( isset( $this->submenu[$arg[1]] ) ) {
 					$this->submenu[$arg[1]]->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4], $css_class );
 				} else {
