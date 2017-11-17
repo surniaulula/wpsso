@@ -252,6 +252,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					opacity:0.5;
 					filter:alpha(opacity=50);	/* ie8 and earlier */
 				}
+				#adminmenu ul.wp-submenu div.'.$lca.'-menu-item.last-top-submenu-page.with-extensions {
+					padding-bottom:12px;
+					border-bottom:1px solid;
+				}
 				#profile-page.wrap #your-profile #'.$lca.'_'.$metabox_id.'.postbox h3:first-of-type {
 					margin:0;
 				}

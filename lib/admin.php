@@ -170,6 +170,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		// add a new main menu, and its sub-menu items
 		public function add_admin_menus( $menu_lib = '' ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
@@ -193,6 +194,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$sorted_menu = array();
 			$unsorted_menu = array();
+			$first_top_menu_id = false;
+			$last_top_menu_id = false;
+			$first_ext_menu_id = false;
+			$last_ext_menu_id = false;
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all extensions have submenus
@@ -203,8 +208,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$parent_slug = $this->p->cf['lca'].'-'.$this->menu_id;
 					if ( $lca === $ext ) {
 						$unsorted_menu[] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+						if ( $first_top_menu_id === false ) {
+							$first_top_menu_id = $menu_id;
+						}
+						$last_top_menu_id = $menu_id;
 					} else {
 						$sorted_menu[$ksort_key] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+						if ( $first_ext_menu_id === false ) {
+							$first_ext_menu_id = $menu_id;
+						}
+						$last_ext_menu_id = $menu_id;
 					}
 				}
 			}
@@ -212,16 +225,33 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			ksort( $sorted_menu );
 
 			foreach ( array_merge( $unsorted_menu, $sorted_menu ) as $key => $arg ) {
-				if ( isset( $this->submenu[$arg[1]] ) ) {
-					$this->submenu[$arg[1]]->add_submenu_page( $arg[0] );
+				if ( $arg[1] === $first_top_menu_id ) {
+					$css_class = 'first-top-submenu-page';
+				} elseif ( $arg[1] === $last_top_menu_id ) {
+					$css_class = 'last-top-submenu-page';
+					if ( empty( $first_ext_menu_id ) ) {
+						$css_class .= ' no-extensions';
+					} else {
+						$css_class .= ' with-extensions';
+					}
+				} elseif ( $arg[1] === $first_ext_menu_id ) {
+					$css_class = 'first-ext-submenu-page';
+				} elseif ( $arg[1] === $last_ext_menu_id ) {
+					$css_class = 'last-ext-submenu-page';
 				} else {
-					$this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
+					$css_class = '';
+				}
+				if ( isset( $this->submenu[$arg[1]] ) ) {
+					$this->submenu[$arg[1]]->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4], $css_class );
+				} else {
+					$this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4], $css_class );
 				}
 			}
 		}
 
 		// add sub-menu items to existing menus (profile and setting)
 		public function add_admin_submenus() {
+
 			foreach ( array( 'profile', 'setting' ) as $menu_lib ) {
 
 				// match wordpress behavior (users page for admins, profile page for everyone else)
@@ -247,7 +277,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				foreach ( $sorted_menu as $key => $arg ) {
 					if ( isset( $this->submenu[$arg[1]] ) ) {
-						$this->submenu[$arg[1]]->add_submenu_page( $arg[0] );
+						$this->submenu[$arg[1]]->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
 					} else {
 						$this->add_submenu_page( $arg[0], $arg[1], $arg[2], $arg[3], $arg[4] );
 					}
@@ -304,7 +334,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'load-'.$this->pagehook, array( &$this, 'load_setting_page' ) );
 		}
 
-		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '', $menu_ext = '' ) {
+		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '', $menu_ext = '', $css_class = '' ) {
 
 			$lca = $this->p->cf['lca'];
 
@@ -337,8 +367,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				} else {
 					$dashicon = $this->p->cf['menu']['dashicons'][$menu_id];
 				}
-				$menu_title = '<div class="'.$lca.'-menu-item dashicons-before dashicons-'.$dashicon.'"></div>'.
-					'<div class="'.$lca.'-menu-item">'.$menu_name.'</div>';
+				$css_class = $lca.'-menu-item'.( $css_class ? ' '.$css_class : '' );
+				$menu_title = '<div class="'.$css_class.' dashicons-before dashicons-'.$dashicon.'"></div>'.
+					'<div class="'.$css_class.'">'.$menu_name.'</div>';
 			} else {
 				$menu_title = $menu_name;
 			}
