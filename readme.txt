@@ -381,19 +381,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.4-rc.1 (2017/11/18)**
+**Version 3.48.4-rc.2 (2017/11/18)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* None
 * *Bugfixes*
-	* None
+	* Fixed the description from Yoast SEO (in a post loop) by calling WPSEO_Frontend reset() before and after WPSEO_Frontend metadesc().
 * *Developer Notes*
 	* Added a 'wpsso_get_event_place_id' filter for single event options.
 	* Renamed the WpssoSchema add_image_list_data() method to add_og_image_list_data().
 	* Renamed the WpssoSchema add_single_image_data() method to add_og_single_image_data().
 	* Refactored the WpssoAdmin methods that retrieve the readme.txt and setup.html file contents.
+	* Added a new WpssoUtil safe_wp_apply_filters() method to apply the 'wp_title', 'the_content', and 'get_the_excerpt' filters. The safe_wp_apply_filters() method prevents recursive loops, save/restores the post object, and (optionally) shows a notice for long execution times.
 	* Started renaming lca references from `$this->p->cf['lca']` to `$this->p->lca`.
 
 **Version 3.48.3 (2017/11/15)**
@@ -779,9 +780,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.4-rc.1 =
+= 3.48.4-rc.2 =
 
-(2017/11/18) Added a 'wpsso_get_event_place_id' filter for single event options. Refactored the WpssoAdmin methods that retrieve the readme.txt and setup.html file contents.
+(2017/11/18) Fixed the description from Yoast SEO in a post loop. Added a 'wpsso_get_event_place_id' filter for single event place ids.
 
 = 3.48.3 =
 
