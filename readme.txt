@@ -394,7 +394,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the WpssoSchema add_image_list_data() method to add_og_image_list_data().
 	* Renamed the WpssoSchema add_single_image_data() method to add_og_single_image_data().
 	* Refactored the WpssoAdmin methods that retrieve the readme.txt and setup.html file contents.
-	* Started moving lca references in the code from `$this->p->cf['lca']` to `$this->p->lca`.
+	* Started renaming lca references from `$this->p->cf['lca']` to `$this->p->lca`.
 
 **Version 3.48.3 (2017/11/15)**
 
