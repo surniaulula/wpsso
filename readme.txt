@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.4-rc.2 (2017/11/18)**
+**Version 3.48.4-rc.3 (2017/11/18)**
 
 * *New Features*
 	* None
@@ -781,7 +781,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.4-rc.2 =
+= 3.48.4-rc.3 =
 
 (2017/11/18) Fixed an SQL syntax error when deleting expired transients. Fixed the description from Yoast SEO in a post loop. Added a 'wpsso_get_event_place_id' filter for single event place ids.
 
