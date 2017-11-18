@@ -120,7 +120,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$lca = $this->p->cf['lca'];
 			$cache_md5_pre = $lca.'_';
 			$cache_exp_filter = $lca.'_cache_expire_admin_css';
-			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->cf['expire']['admin_css'] );
+			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.'_plugin_urlpath:'.$plugin_urlpath.'_plugin_version:'.$plugin_version.')';
 			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
@@ -180,7 +180,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$lca = $this->p->cf['lca'];
 			$cache_md5_pre = $lca.'_';
 			$cache_exp_filter = $lca.'_cache_expire_admin_css';
-			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->cf['expire']['admin_css'] );
+			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.'_plugin_urlpath:'.$plugin_urlpath.'_plugin_version:'.$plugin_version.')';
 			$cache_id = $cache_md5_pre.md5( $cache_salt );
 

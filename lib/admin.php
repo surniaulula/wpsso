@@ -468,8 +468,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $is_allowed ) {	// already allowed
 				return $is_allowed;
 			}
-			if ( isset( $this->p->cf['hosts'] ) ) {
-				foreach ( $this->p->cf['hosts'] as $host ) {
+			if ( isset( $this->p->cf['extend'] ) ) {
+				foreach ( $this->p->cf['extend'] as $host ) {
 					if ( strpos( $url, $host ) === 0 ) {
 						return true;
 					}
@@ -522,11 +522,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/*
 		 * Get the plugin readme and convert array elements to a plugin data object.
 		 */
-		public function get_plugin_data( $ext, $use_cache = true ) {
+		public function get_plugin_data( $ext, $read_cache = true ) {
 
 			$data = new StdClass;
 			$info = $this->p->cf['plugin'][$ext];
-			$readme = $this->get_readme_info( $ext, $use_cache );
+			$readme = $this->get_readme_info( $ext, $read_cache );
 
 			// make sure we got something back
 			if ( empty( $readme ) ) {
@@ -562,7 +562,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$data->$prop_name = $info['url']['purchase'];
 							break;
 						}
-						// no break - override with home url (if one is defined)
+						// no break - override with 'home' url from config (if one is defined)
 					case 'latest':	// from plugin config
 						if ( ! empty( $info['url'][$key_name] ) ) {
 							$data->$prop_name = $info['url'][$key_name];
@@ -1136,7 +1136,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$latest_version = __( 'Not Available', 'wpsso' );	// default value
 				$latest_notice = '';
 				$changelog_url = $info['url']['changelog'];
-				$readme_info = $this->get_readme_info( $ext, true );	// $use_cache = true
+				$readme_info = $this->get_readme_info( $ext, true );	// $read_cache = true
 
 				if ( ! empty( $readme_info['stable_tag'] ) ) {
 
@@ -2294,12 +2294,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function get_readme_info( $ext, $use_cache = true ) {
+		public function get_readme_info( $ext, $read_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'ext' => $ext,
-					'use_cache' => $use_cache,
+					'read_cache' => $read_cache,
 				) );
 			}
 
@@ -2323,24 +2323,32 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cache_md5_pre = $lca.'_';
 			if ( ! isset( $cache_exp_secs ) ) {
 				$cache_exp_filter = $lca.'_cache_expire_'.$file_key;
-				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->cf['expire'][$file_key] );
+				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 			}
 			$cache_salt = __METHOD__.'(ext:'.$ext.')';
 			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
-			$readme_info = array();
+			$readme_info = false;
 			$readme_content = false;
 			$readme_from_url = false;
 
 			if ( $cache_exp_secs > 0 ) {
-				$readme_info = $use_cache ? get_transient( $cache_id ) : false;
-				if ( is_array( $readme_info ) ) {
-					return $readme_info;	// stop here
+				if ( $read_cache ) {
+					$readme_info = get_transient( $cache_id );
+					if ( is_array( $readme_info ) ) {
+						return $readme_info;	// stop here
+					}
 				}
 				if ( $file_remote && strpos( $file_remote, '://' ) ) {
+					// clear the cache first if reading the cache is disabled
+					if ( ! $read_cache ) {
+						$this->p->cache->clear( $file_remote );
+					}
 					$readme_from_url = true;
 					$readme_content = $this->p->cache->get( $file_remote, 'raw', 'file', $cache_exp_secs );
 				}
+			} else {
+				delete_transient( $cache_id );	// just in case
 			}
 
 			if ( empty( $readme_content ) ) {

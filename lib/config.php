@@ -14,17 +14,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 	class WpssoConfig {
 
 		public static $cf = array(
-			'lca' => 'wpsso',	// plugin lowercase acronym
-			'expire' => array(
-				'admin_css' => DAY_IN_SECONDS,
-				'readme_txt' => DAY_IN_SECONDS,
-			),
-			'hosts' => array(
-				'https://wpsso.com/extend/plugins/',
-			),
+			'lca' => 'wpsso',	// main plugin lowercase acronym
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.4-dev.4',		// plugin version
+					'version' => '3.48.4-rc.1',		// plugin version
 					'opt_version' => '567',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
@@ -2139,6 +2132,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'urologic' => 'urologic.specialty',
 				),
 			),
+			'extend' => array(
+				'https://wpsso.com/extend/plugins/',
+			),
 			'follow' => array(
 				'size' => 32,
 				'src' => array(
@@ -2305,7 +2301,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT'] = 5;		// maximum number of images extracted from the content
 			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT'] = 5;		// maximum number of videos extracted from the content
 
-			$var_const['WPSSO_DUPE_CHECK_HEADER_COUNT'] = 10;		// maximum number of times to check for duplicates
+			$var_const['WPSSO_DUPE_CHECK_HEADER_COUNT'] = 5;		// maximum number of times to check for duplicates
 			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = true;		// clear / remove cache file before fetching shortlink url
 			$var_const['WPSSO_DUPE_CHECK_WARNING_SECS'] = 2.5;		// issue a warning if getting shortlink took more than 2.5 seconds
 			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.0;		// hard-limit - most crawlers time-out after 3 seconds
