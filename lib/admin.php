@@ -36,8 +36,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
-
 			/*
 			 * The WpssoScript add_iframe_inline_script() method includes jQuery in the thickbox iframe 
 			 * to add the iframe_parent arguments when the Install or Update button is clicked.
@@ -50,9 +48,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'pageref_url' => 'esc_url',
 				'pageref_title' => 'esc_html',
 			) as $pageref => $esc_func ) {
-				if ( ! empty( $_GET[$lca.'_'.$pageref] ) ) {
+				if ( ! empty( $_GET[$this->p->lca.'_'.$pageref] ) ) {
 					$this->$pageref = call_user_func( $esc_func, 
-						urldecode( $_GET[$lca.'_'.$pageref] ) );
+						urldecode( $_GET[$this->p->lca.'_'.$pageref] ) );
 				}
 			}
 
@@ -123,9 +121,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
 			$pdir = $this->p->avail['*']['p_dir'];
-			$aop = $this->p->check->aop( $lca, true, $pdir );
+			$aop = $this->p->check->aop( $this->p->lca, true, $pdir );
 
 			if ( empty( $menu_libs ) ) {
 				// 'setting' must follow 'submenu' to extend submenu/advanced.php
@@ -175,8 +172,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
-
 			if ( empty( $menu_lib ) ) {
 				$menu_lib = 'submenu';
 			}
@@ -185,10 +180,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->menu_id = key( $libs );
 			$this->menu_name = $libs[$this->menu_id];
 			$this->menu_lib = $menu_lib;
-			$this->menu_ext = $lca;	// lowercase acronyn for plugin or extension
+			$this->menu_ext = $this->p->lca;
 
 			if ( isset( $this->submenu[$this->menu_id] ) ) {
-				$menu_slug = $lca.'-'.$this->menu_id;
+				$menu_slug = $this->p->lca.'-'.$this->menu_id;
 				$this->submenu[$this->menu_id]->add_menu_page( $menu_slug );
 			}
 
@@ -209,9 +204,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
 
 					$ksort_key = $menu_name.'-'.$menu_id;
-					$parent_slug = $this->p->cf['lca'].'-'.$this->menu_id;
+					$parent_slug = $this->p->lca.'-'.$this->menu_id;
 
-					if ( $lca === $ext ) {
+					if ( $ext === $this->p->lca ) {
 						$unsorted_menu[] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
 						if ( $first_top_id === false ) {
 							$first_top_id = $menu_id;
@@ -323,15 +318,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function register_setting() {
-			register_setting( $this->p->cf['lca'].'_setting', WPSSO_OPTIONS_NAME, array( &$this, 'registered_setting_sanitation' ) );
+			register_setting( $this->p->lca.'_setting', WPSSO_OPTIONS_NAME, array( &$this, 'registered_setting_sanitation' ) );
 		}
 
 		protected function add_menu_page( $menu_slug ) {
 			global $wp_version;
 
-			$lca = $this->p->cf['lca'];
-			$page_title = self::$pkg[$lca]['short'].' &mdash; '.$this->menu_name;
-			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' ).' '.self::$pkg[$lca]['type'];	// pkg type is pre-translated
+			$page_title = self::$pkg[$this->p->lca]['short'].' &mdash; '.$this->menu_name;
+			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' ).' '.self::$pkg[$this->p->lca]['type'];	// pre-translated
 			$cap_name = isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ? $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] : 'manage_options';
 			$icon_url = version_compare( $wp_version, 3.8, '>=' ) ? 'dashicons-share' : null;
 			$function = array( &$this, 'show_setting_page' );
@@ -342,8 +336,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '', $menu_ext = '', $css_class = '' ) {
-
-			$lca = $this->p->cf['lca'];
 
 			if ( empty( $menu_id ) ) {
 				$menu_id = $this->menu_id;
@@ -360,7 +352,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $menu_ext ) ) {
 				$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or extension
 				if ( empty( $menu_ext ) ) {
-					$menu_ext = $lca;
+					$menu_ext = $this->p->lca;
 				}
 			}
 
@@ -370,7 +362,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				version_compare( $wp_version, 3.8, '>=' ) ) {	// wp v3.8 required for dashicons
 
 				if ( empty( $this->p->cf['menu']['dashicons'][$menu_id] ) ) {
-					if ( $menu_ext === $lca ) {
+					if ( $menu_ext === $this->p->lca ) {
 						$dashicon = 'admin-settings';	// use settings dashicon by default
 					} else {
 						$dashicon = 'admin-plugins';	// use plugin dashicon by default for extensions
@@ -378,7 +370,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				} else {
 					$dashicon = $this->p->cf['menu']['dashicons'][$menu_id];
 				}
-				$css_class = $lca.'-menu-item'.( $css_class ? ' '.$css_class : '' );
+				$css_class = $this->p->lca.'-menu-item'.( $css_class ? ' '.$css_class : '' );
 				$menu_title = '<div class="'.$css_class.' dashicons-before dashicons-'.$dashicon.'"></div>'.
 					'<div class="'.$css_class.'">'.$menu_name.'</div>';
 			} else {
@@ -387,7 +379,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 	
 			$page_title = self::$pkg[$menu_ext]['short'].' &mdash; '.$menu_name;
 			$cap_name = isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ? $this->p->cf['wp']['admin'][$menu_lib]['cap'] : 'manage_options';
-			$menu_slug = $this->p->cf['lca'].'-'.$menu_id;
+			$menu_slug = $this->p->lca.'-'.$menu_id;
 			$function = array( &$this, 'show_setting_page' );
 
 			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title, $cap_name, $menu_slug, $function );
@@ -594,11 +586,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function registered_setting_sanitation( $opts ) {
 
-			$lca = $this->p->cf['lca'];
 			$network = false;
 
 			if ( ! is_array( $opts ) ) {
-				add_settings_error( WPSSO_OPTIONS_NAME, 'notarray', '<b>'.strtoupper( $lca ).' Error</b> : '.
+				add_settings_error( WPSSO_OPTIONS_NAME, 'notarray', '<b>'.strtoupper( $this->p->lca ).' Error</b> : '.
 					__( 'Submitted options are not an array.', 'wpsso' ), 'error' );
 				return $opts;
 			}
@@ -609,12 +600,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = array_merge( $this->p->options, $opts );
 			$this->p->notice->trunc();	// clear all messages before sanitation checks
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
-			$opts = apply_filters( $lca.'_save_options', $opts, WPSSO_OPTIONS_NAME, $network );
+			$opts = apply_filters( $this->p->lca.'_save_options', $opts, WPSSO_OPTIONS_NAME, $network );
 
 			if ( empty( $this->p->options['plugin_clear_on_save'] ) ) {
 
 				// admin url will redirect to the essential settings since we're not on a settings page
-				$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?'.$lca.'-action=clear_all_cache',
+				$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?'.$this->p->lca.'-action=clear_all_cache',
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
 	
 				$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.', 'wpsso' ).'</strong> <em>'.
@@ -670,7 +661,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = array_merge( $this->p->site_options, $opts );
 			$this->p->notice->trunc();	// clear all messages before sanitation checks
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
-			$opts = apply_filters( $this->p->cf['lca'].'_save_site_options', $opts, $def_opts, $network );
+			$opts = apply_filters( $this->p->lca.'_save_site_options', $opts, $def_opts, $network );
 			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
 			$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.',	// green status w check mark
 				'wpsso' ).'</strong>' );
@@ -680,8 +671,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function load_setting_page() {
 
-			$lca = $this->p->cf['lca'];
-			$action_query = $lca.'-action';
+			$action_query = $this->p->lca.'-action';
 			wp_enqueue_script( 'postbox' );
 
 			if ( ! empty( $_GET[$action_query] ) ) {
@@ -763,7 +753,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						default:
 
-							do_action( $lca.'_load_setting_page_'.$action_name,
+							do_action( $this->p->lca.'_load_setting_page_'.$action_name,
 								$this->pagehook, $this->menu_id, $this->menu_name, $this->menu_lib );
 							break;
 					}
@@ -776,17 +766,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_side_meta_boxes() {
-			$lca = $this->p->cf['lca'];
-			if ( ! self::$pkg[$lca]['aop'] ) {
-
+			if ( ! self::$pkg[$this->p->lca]['aop'] ) {
 				add_meta_box( $this->pagehook.'_purchase_pro',
 					_x( 'Pro Version Available', 'metabox title', 'wpsso' ),
 						array( &$this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side_fixed' );
-
 				add_meta_box( $this->pagehook.'_status_pro',
 					_x( 'Pro Version Features', 'metabox title', 'wpsso' ),
 						array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
-
 				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase_pro' ), '', '', true );
 			}
 		}

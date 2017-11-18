@@ -93,7 +93,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$this->text_domain ), '<a href="'.$url.'">'.$url.'</a>', $http_code );
 
 				if ( $http_code === 301 ) {
-					if ( ini_get('safe_mode') || ini_get('open_basedir') ) {
+					if ( ini_get( 'safe_mode' ) || ini_get( 'open_basedir' ) ) {
 						$errors[] = __( 'PHP "safe_mode" or "open_basedir" is defined &mdash; the PHP cURL library cannot follow URL redirects.',
 							$this->text_domain );
 					} else {

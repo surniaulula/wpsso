@@ -61,6 +61,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		/*
 		 * Reference Variables (config, options, modules, etc.)
 		 */
+		public $lca = 'wpsso';		// main plugin lowercase acronym
 		public $m = array();		// plugin modules
 		public $m_ext = array();	// plugin extension modules
 		public $cf = array();		// config array defined in construct method
