@@ -615,12 +615,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$lca = $this->p->cf['lca'];
 			$transient_keys = array();
 			$transient_pre = $only_expired ? '_transient_timeout_' : '_transient_';
-			$db_query = 'SELECT option_name FROM '.$wpdb->options.
-				' WHERE option_name LIKE \''.$transient_pre.$lca.'_%\';';
+			$db_query = 'SELECT option_name FROM '.$wpdb->options.' WHERE option_name LIKE \''.$transient_pre.$lca.'_%\'';
 
 			if ( $only_expired ) {
 				$current_time = isset ( $_SERVER['REQUEST_TIME'] ) ? (int) $_SERVER['REQUEST_TIME'] : time() ; 
 				$db_query .= ' AND option_value < '.$current_time.';';	// expiration time older than current time
+			} else {
+				$db_query .= ';';	// end of query
 			}
 
 			$transient_names = $wpdb->get_col( $db_query ); 
@@ -1679,6 +1680,153 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $max;
+		}
+
+		public function safe_wp_apply_filters( array $args, array $mod, $max_time = 0, $add_bfo = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			/*
+			 * Check for required apply_filters() arguments.
+			 */
+			if ( empty( $args[0] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: filter name missing from parameter array' );
+				}
+				return '';
+			} elseif ( ! isset( $args[1] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: filter value missing from parameter array' );
+				}
+				return '';
+			}
+
+			$filter_name = $args[0];
+			$filter_value = $args[1];
+
+			/*
+			 * Prevent recursive loops - the global variable is defined before applying the filters.
+			 */
+			if ( ! empty( $GLOBALS[$this->p->lca.'_doing_'.$filter_name] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: global variable '.$this->p->lca.'_doing_'.$filter_name.' is true' );
+				}
+				return $filter_value;
+			}
+
+			/*
+			 * Hooked by some modules, like bbPress and social sharing buttons,
+			 * to perform actions before / after filtering the content.
+			 */
+			do_action( $this->p->lca.'_pre_apply_filters_text', $filter_name );
+
+			/*
+			 * Load the Block Filter Output (BFO) filters to block and show an error 
+			 * for incorrectly coded filters.
+			 */
+			if ( $add_bfo ) {
+				$classname = apply_filters( $this->p->lca.'_load_lib', false, 'com/bfo', 'SucomBFO' );
+				if ( is_string( $classname ) && class_exists( $classname ) ) {
+					$bfo_obj = new $classname( $this->p );
+					$bfo_obj->add_start_hooks( array( $filter_name ) );
+				}
+			}
+
+			/*
+			 * Save the original post object, in case some filters modify the global $post.
+			 */
+			global $post;
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'saving the original post object id '.$post->ID );
+			}
+
+			$post_obj_pre_filter = $post;	// save the original global post object
+
+			/*
+			 * Make sure the $post object is correct before filtering.
+			 */
+			if ( $mod['is_post'] && $mod['id'] && ( ! isset( $post->ID ) || $mod['id'] !== $post->ID ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 're-setting post object from mod id '.$mod['id'] );
+				}
+				$post = SucomUtil::get_post_object( $mod['id'] );	// redefine $post global
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'post object id matches the post mod id' );
+			}
+
+			/*
+			 * Prevent recursive loops and signal to other methods that the content filter is being 
+			 * applied to create a description text - this avoids the addition of unnecessary HTML 
+			 * which will be removed anyway (social sharing buttons, for example).
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'setting global '.$this->p->lca.'_doing_'.$filter_name );
+			}
+
+			$GLOBALS[$this->p->lca.'_doing_'.$filter_name] = true;	// prevent recursive loops
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark( 'applying wordpress '.$filter_name.' filters' );	// being timer
+			}
+
+			$start_time = microtime( true );
+			$filter_value = call_user_func_array( 'apply_filters', $args );
+			$total_time = microtime( true ) - $start_time;
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark( 'applying wordpress '.$filter_name.' filters' );	// end timer
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'unsetting global '.$this->p->lca.'_doing_'.$filter_name );
+			}
+
+			unset( $GLOBALS[$this->p->lca.'_doing_'.$filter_name] );	// un-prevent recursive loops
+
+			/*
+			 * Issue warning for slow filter performance.
+			 */
+			if ( $max_time > 0 && $total_time > $max_time ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'slow filter hooks detected - '.$filter_name.' filter took '.
+						sprintf( '%0.2f secs', $total_time ).' seconds to execute' );
+				}
+				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+					$dismiss_key = 'slow-filter-hooks-detected-'.$filter_name;
+					$this->p->notice->warn( sprintf( __( 'Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/'.$filter_name.'">'.$filter_name.'</a>', $total_time, $max_time ), true, $dismiss_key, WEEK_IN_SECONDS );
+				}
+			}
+
+			/*
+			 * Restore the original post object.
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'restoring the original post object id '.$post_obj_pre_filter->ID );
+			}
+
+			$post = $post_obj_pre_filter;	// restore the original GLOBAL post object
+
+			/*
+			 * Remove the Block Filter Output (BFO) filters.
+			 */
+			if ( $add_bfo ) {
+				$bfo_obj->remove_all_hooks( array( $filter_name ) );
+			}
+
+			/*
+			 * Hooked by some modules, like bbPress and social sharing buttons,
+			 * to perform actions before / after filtering the content.
+			 */
+			do_action( $this->p->lca.'_after_apply_filters_text', $filter_name );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'returning filtered value' );
+			}
+
+			return $filter_value;
 		}
 
 		public function get_admin_url( $menu_id = '', $link_text = '', $menu_lib = '' ) {
