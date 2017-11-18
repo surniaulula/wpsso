@@ -1740,7 +1740,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			global $post;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'saving the original post object id '.$post->ID );
+				$this->p->debug->log( 'saving the original post object'.
+					( isset( $post->ID ) ? ' id '.$post->ID : '' ) );
 			}
 
 			$post_obj_pre_filter = $post;	// save the original global post object
@@ -1750,7 +1751,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 */
 			if ( $mod['is_post'] && $mod['id'] && ( ! isset( $post->ID ) || $mod['id'] !== $post->ID ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 're-setting post object from mod id '.$mod['id'] );
+					$this->p->debug->log( 'resetting post object from mod id '.$mod['id'] );
 				}
 				$post = SucomUtil::get_post_object( $mod['id'] );	// redefine $post global
 			} elseif ( $this->p->debug->enabled ) {
@@ -1804,10 +1805,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Restore the original post object.
 			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'restoring the original post object id '.$post_obj_pre_filter->ID );
+				$this->p->debug->log( 'restoring the original post object'.
+					( isset( $post_obj_pre_filter->ID ) ? ' id '.$post_obj_pre_filter->ID : '' ) );
 			}
 
-			$post = $post_obj_pre_filter;	// restore the original GLOBAL post object
+			$post = $post_obj_pre_filter;	// restore the original global post object
 
 			/*
 			 * Remove the Block Filter Output (BFO) filters.

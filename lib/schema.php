@@ -1955,8 +1955,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ret = self::get_schema_type_context( $job_type_url );
 
 			if ( empty( $job_opts['job_title'] ) ) {
-				$title_max_len = $wpsso->options['og_title_len'];
-				$job_opts['job_title'] = $wpsso->page->get_title( $title_max_len, '...', $mod );
+				$job_opts['job_title'] = $wpsso->page->get_title( $wpsso->options['og_title_len'],
+					'...', $mod, true, false, true, 'schema_title' );
 			}
 
 			/*
