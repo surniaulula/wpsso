@@ -1717,6 +1717,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$filter_name = $args[0];
 			$filter_value = $args[1];
 
+			if ( ! has_filter( $filter_name ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: '.$filter_name.' has no filter hooks' );
+				}
+				return $filter_value;
+			}
+
 			/*
 			 * Prevent recursive loops - the global variable is defined before applying the filters.
 			 */
