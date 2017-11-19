@@ -381,12 +381,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.4-rc.4 (2017/11/19)**
+**Version 3.48.4-rc.5 (2017/11/19)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added Schema ImageObject 'alternativeHeadline' and 'caption' properties with values from the WordPress Media Library.
 * *Bugfixes*
 	* Fixed an SQL syntax error when deleting expired transients.
 	* Fixed the description from Yoast SEO (in a post loop) by calling WPSEO_Frontend reset() before and after WPSEO_Frontend metadesc().
@@ -395,7 +395,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the WpssoSchema add_image_list_data() method to add_og_image_list_data().
 	* Renamed the WpssoSchema add_single_image_data() method to add_og_single_image_data().
 	* Refactored the WpssoAdmin methods that retrieve the readme.txt and setup.html file contents.
-	* Added a new WpssoUtil safe_wp_apply_filters() method to apply the 'wp_title', 'the_content', and 'get_the_excerpt' filters. The safe_wp_apply_filters() method prevents recursive loops, saves/restores the post object, and optionally shows a notice for long execution times.
+	* Added a new WpssoUtil safe_apply_filters() method to apply the 'wp_title', 'the_content', and 'get_the_excerpt' filters. The safe_apply_filters() method prevents recursive loops, saves/restores the post object, and optionally shows a notice for long execution times.
 	* Started renaming lca references from `$this->p->cf['lca']` to `$this->p->lca`.
 	* Refactored the Yoast SEO integration module to make it compatible with post loops.
 
@@ -782,7 +782,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.4-rc.4 =
+= 3.48.4-rc.5 =
 
 (2017/11/19) Fixed an SQL syntax error when deleting expired transients. Fixed the description from Yoast SEO in a post loop. Added a 'wpsso_get_event_place_id' filter for the single event place id.
 
