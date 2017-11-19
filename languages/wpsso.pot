@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.48.4-rc.3\n"
+"Project-Id-Version: WPSSO Core 3.48.4-rc.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2604,7 +2604,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:409 lib/util.php:2011
+#: lib/messages.php:409 lib/util.php:2051
 msgid "No options available."
 msgstr ""
 
@@ -4165,7 +4165,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:600 lib/util.php:801
+#: lib/post.php:600 lib/util.php:811
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4339,12 +4339,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:147
-#: lib/pro/media/wistia.php:275 lib/util.php:866
+#: lib/pro/media/wistia.php:275 lib/util.php:876
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:150
-#: lib/pro/media/wistia.php:278 lib/util.php:869
+#: lib/pro/media/wistia.php:278 lib/util.php:879
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4913,49 +4913,49 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/util.php:542
+#: lib/util.php:548
 msgid ""
 "%s cached files, transient cache, sortable column meta, and the WordPress "
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:546
+#: lib/util.php:552
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:568
+#: lib/util.php:574
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:646
+#: lib/util.php:654
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:663
+#: lib/util.php:671
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:735
+#: lib/util.php:745
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:789
+#: lib/util.php:799
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:812
+#: lib/util.php:822
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:911
+#: lib/util.php:921
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1800
+#: lib/util.php:1834
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "
@@ -4964,27 +4964,27 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2038
+#: lib/util.php:2078
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2042
+#: lib/util.php:2082
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2045
+#: lib/util.php:2085
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2049
+#: lib/util.php:2089
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2168
+#: lib/util.php:2208
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr ""

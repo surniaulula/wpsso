@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$lca = $this->p->cf['lca'];
 
 			// check if the content filter is being applied to create a description text
-			if ( ! empty( $GLOBALS[$lca.'_doing_the_content'] ) ) {
+			if ( ! empty( $GLOBALS[$lca.'_doing_filter_the_content'] ) ) {
 				return $content;
 			}
 

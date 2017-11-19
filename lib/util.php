@@ -47,10 +47,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$this->add_plugin_hooks( 'action', $class, $actions, $prio, $lca );
 		}
 
-		protected function add_plugin_hooks( $type, $class, $hook_list, $prio, $lca ) {
-			$lca = $lca === '' ? $this->p->cf['lca'] : $lca;	// default lca is ''
+		protected function add_plugin_hooks( $type, $class, $hook_list, $prio, $lca = '' ) {
+
+			$lca = $lca === '' ? $this->p->lca : $lca;
 
 			foreach ( $hook_list as $name => $val ) {
+
 				if ( ! is_string( $name ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $name.' => '.$val.' '.$type.' skipped: filter name must be a string' );
@@ -150,7 +152,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$is_disabled = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
 			$def_image_info = array( WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, '', '' );
 			$image_info = false;
@@ -272,7 +274,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark( 'define image sizes' );	// begin timer
 			}
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$pdir = $this->p->avail['*']['p_dir'];
 			$aop = $this->p->check->aop( $lca, true, $pdir );
 			$use_post = false;
@@ -289,8 +291,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$md_opts = array();
 
 			if ( $filter === true ) {
-				$sizes = apply_filters( $this->p->cf['lca'].'_plugin_image_sizes',
-					$sizes, $mod, SucomUtil::get_crawler_name() );
+				$sizes = apply_filters( $lca.'_plugin_image_sizes', $sizes, $mod, SucomUtil::get_crawler_name() );
 			}
 
 			if ( empty( $mod['id'] ) ) {
@@ -353,24 +354,24 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 
 					// allow custom function hooks to make changes
-					if ( $filter === true )
-						$size_info = apply_filters( $this->p->cf['lca'].'_size_info_'.$size_info['name'], 
-							$size_info, $mod['id'], $mod['name'] );
+					if ( $filter === true ) {
+						$size_info = apply_filters( $lca.'_size_info_'.$size_info['name'], $size_info, $mod['id'], $mod['name'] );
+					}
 
 					// a lookup array for image size labels, used in image size error messages
-					$this->size_labels[$this->p->cf['lca'].'-'.$size_info['name']] = $size_info['label'];
+					$this->size_labels[$lca.'-'.$size_info['name']] = $size_info['label'];
 
-					add_image_size( $this->p->cf['lca'].'-'.$size_info['name'], 
-						$size_info['width'], $size_info['height'], $size_info['crop'] );
+					add_image_size( $lca.'-'.$size_info['name'], $size_info['width'], $size_info['height'], $size_info['crop'] );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'image size '.$this->p->cf['lca'].'-'.$size_info['name'].' '.
+						$this->p->debug->log( 'image size '.$lca.'-'.$size_info['name'].' '.
 							$size_info['width'].'x'.$size_info['height'].
 							( empty( $size_info['crop'] ) ? '' : ' crop '.
 								$size_info['crop_x'].'/'.$size_info['crop_y'] ).' added' );
 					}
 				}
 			}
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'define image sizes' );	// end timer
 				$this->p->debug->log_arr( 'get_all_image_sizes', SucomUtil::get_image_sizes() );
@@ -383,7 +384,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $regen_key !== false ) {
 
-				$lca = $this->p->cf['lca'];
+				$lca = $this->p->lca;
 				$cache_md5_pre = $lca.'_';
 				$cache_exp_secs = 0;	// never expire
 				$cache_salt = __CLASS__.'::force_regen_transient';
@@ -409,7 +410,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $regen_key !== false ) {
 
-				$lca = $this->p->cf['lca'];
+				$lca = $this->p->lca;
 				$cache_md5_pre = $lca.'_';
 				$cache_exp_secs = 0;	// never expire
 				$cache_salt = __CLASS__.'::force_regen_transient';
@@ -447,7 +448,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// get the force regen transient id for set and get methods
 		// $mod = true | false | post_id | $mod array
 		public function get_force_regen_key( $mod, $md_pre ) {
-			$lca = $this->p->cf['lca'];
+
+			$lca = $this->p->lca;
 
 			if ( is_numeric( $mod ) && $mod > 0 ) {	// optimize by skipping get_page_mod()
 				return 'post_'.$mod.'_regen_'.$md_pre;
@@ -499,11 +501,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		// $output = objects | names
 		public function get_post_types( $output = 'objects' ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
-			$lca = $this->p->cf['lca'];
+
+			$lca = $this->p->lca;
 			$ret = array();
+
 			switch ( $output ) {
 				// make sure the output name is plural
 				case 'name':
@@ -515,6 +520,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$ret = get_post_types( array( 'public' => true ), $output );
 					break;
 			}
+
 			return apply_filters( $lca.'_get_post_types', $ret, $output );
 		}
 
@@ -537,7 +543,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$this->delete_all_cache_files();
 			$this->delete_all_column_meta();
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$short = $this->p->cf['plugin'][$lca]['short'];
 			$clear_all_msg = sprintf( __( '%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared.',
 				'wpsso' ), $short );
@@ -571,7 +577,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function delete_all_db_transients( $clear_short_urls = false ) { 
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$only_expired = false;
 			$transient_keys = $this->get_db_transient_keys( $only_expired ); 
 			$deleted_count = 0;
@@ -612,7 +618,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_db_transient_keys( $only_expired = false ) { 
 
 			global $wpdb;
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$transient_keys = array();
 			$transient_pre = $only_expired ? '_transient_timeout_' : '_transient_';
 			$db_query = 'SELECT option_name FROM '.$wpdb->options.' WHERE option_name LIKE \''.$transient_pre.$lca.'_%\'';
@@ -635,9 +641,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function delete_all_cache_files() {
-			$uca = strtoupper( $this->p->cf['lca'] );
+
+			$uca = strtoupper( $this->p->lca );
 			$cache_dir = constant( $uca.'_CACHEDIR' );
 			$deleted = 0;
+
 			if ( ! $dh = @opendir( $cache_dir ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'failed to open the cache folder '.$cache_dir.' for reading' );
@@ -668,10 +676,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 				closedir( $dh );
 			}
+
 			return $deleted;
 		}
 
 		public function delete_all_column_meta() {
+
 			$col_meta_keys = WpssoMeta::get_column_meta_keys();
 
 			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
@@ -697,7 +707,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 
 			/*
 			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
@@ -821,7 +831,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$ret = array();
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// convert to UTF8
 			$html = preg_replace( '/<!--.*-->/Uums', '', $html );	// remove all html comments
 			$doc = new DOMDocument();	// since PHP v4.1
@@ -994,7 +1004,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				'is_amp_endpoint',
 			);
-			$is_functions = apply_filters( $this->p->cf['lca'].'_is_functions', $is_functions );
+
+			$is_functions = apply_filters( $this->p->lca.'_is_functions', $is_functions );
+
 			foreach ( $is_functions as $function ) {
 				if ( function_exists( $function ) ) {
 					$start_time = microtime( true );
@@ -1015,7 +1027,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// $type = author | img | vid
 		public function force_default( $type, array &$mod, $opt_pre = 'og') {
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$def = array();
 
 			// setup default true / false values
@@ -1041,7 +1053,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			// 'wpsso_force_default_img' is hooked by the woocommerce module (false for product category and tag pages)
-			$ret = apply_filters( $this->p->cf['lca'].'_force_default_'.$type, $ret, $mod, $opt_pre );
+			$ret = apply_filters( $this->p->lca.'_force_default_'.$type, $ret, $mod, $opt_pre );
 
 			if ( $ret && $this->p->debug->enabled ) {
 				$this->p->debug->log( 'default '.$type.' is forced' );
@@ -1173,8 +1185,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$short_url = wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 				} else {
 					$service_key = $this->p->options['plugin_shortener'];
-					$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',
-						$sharing_url, $service_key, $mod, $mod['name'] );
+					$short_url = apply_filters( $this->p->lca.'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
 				}
 			} else {
 				$short_url = $atts['short_url'];
@@ -1347,7 +1358,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				) );
 			}
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$url = false;
 
 			// $mod is preferred but not required
@@ -1709,9 +1720,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/*
 			 * Prevent recursive loops - the global variable is defined before applying the filters.
 			 */
-			if ( ! empty( $GLOBALS[$this->p->lca.'_doing_'.$filter_name] ) ) {
+			if ( ! empty( $GLOBALS[$this->p->lca.'_doing_filter_'.$filter_name] ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: global variable '.$this->p->lca.'_doing_'.$filter_name.' is true' );
+					$this->p->debug->log( 'exiting early: global variable '.
+						$this->p->lca.'_doing_filter_'.$filter_name.' is true' );
 				}
 				return $filter_value;
 			}
@@ -1740,8 +1752,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			global $post;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'saving the original post object'.
-					( isset( $post->ID ) ? ' id '.$post->ID : '' ) );
+				$this->p->debug->log( 'saving the original post object '.
+					( isset( $post->ID ) ? 'id '.$post->ID : '(no post id)' ) );
 			}
 
 			$post_obj_pre_filter = $post;	// save the original global post object
@@ -1758,17 +1770,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'post object id matches the post mod id' );
 			}
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'setting post data for template functions' );
+			}
+
+			setup_postdata( $post );
+
 			/*
 			 * Prevent recursive loops and signal to other methods that the content filter is being 
 			 * applied to create a description text - this avoids the addition of unnecessary HTML 
 			 * which will be removed anyway (social sharing buttons, for example).
 			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'setting global '.$this->p->lca.'_doing_'.$filter_name );
+				$this->p->debug->log( 'setting global '.$this->p->lca.'_doing_filter_'.$filter_name );
 			}
 
-			$GLOBALS[$this->p->lca.'_doing_'.$filter_name] = true;	// prevent recursive loops
+			$GLOBALS[$this->p->lca.'_doing_filter_'.$filter_name] = true;	// prevent recursive loops
 
+			/*
+			 * Apply the filters.
+			 */
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'applying wordpress '.$filter_name.' filters' );	// being timer
 			}
@@ -1781,21 +1802,34 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark( 'applying wordpress '.$filter_name.' filters' );	// end timer
 			}
 
+			/*
+			 * Unset the recursive loop check.
+			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'unsetting global '.$this->p->lca.'_doing_'.$filter_name );
+				$this->p->debug->log( 'unsetting global '.$this->p->lca.'_doing_filter_'.$filter_name );
 			}
 
-			unset( $GLOBALS[$this->p->lca.'_doing_'.$filter_name] );	// un-prevent recursive loops
+			unset( $GLOBALS[$this->p->lca.'_doing_filter_'.$filter_name] );	// un-prevent recursive loops
 
 			/*
 			 * Issue warning for slow filter performance.
 			 */
 			if ( $max_time > 0 && $total_time > $max_time ) {
+				switch ( $filter_name ) {
+					case 'get_the_excerpt':
+					case 'the_content':
+					case 'wp_title':
+						$is_wp_filter = true;
+						break;
+					default:
+						$is_wp_filter = false;
+						break;
+				}
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'slow filter hooks detected - '.$filter_name.' filter took '.
+					$this->p->debug->log( 'slow filter hook(s) detected - '.$filter_name.' filters took '.
 						sprintf( '%0.2f secs', $total_time ).' seconds to execute' );
 				}
-				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+				if ( $is_wp_filter && $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 					$dismiss_key = 'slow-filter-hooks-detected-'.$filter_name;
 					$this->p->notice->warn( sprintf( __( 'Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/'.$filter_name.'">'.$filter_name.'</a>', $total_time, $max_time ), true, $dismiss_key, WEEK_IN_SECONDS );
 				}
@@ -1805,11 +1839,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Restore the original post object.
 			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'restoring the original post object'.
-					( isset( $post_obj_pre_filter->ID ) ? ' id '.$post_obj_pre_filter->ID : '' ) );
+				$this->p->debug->log( 'restoring the original post object '.
+					( isset( $post_obj_pre_filter->ID ) ? 'id '.$post_obj_pre_filter->ID : '(no post id)' ) );
 			}
 
 			$post = $post_obj_pre_filter;	// restore the original global post object
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'restoring post data for template functions' );
+			}
+
+			setup_postdata( $post );
 
 			/*
 			 * Remove the Block Filter Output (BFO) filters.
@@ -1836,7 +1876,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$hash = '';
 			$query = '';
 			$admin_url = '';
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 
 			// $menu_id may start with a hash or query, so parse before checking its value
 			if ( strpos( $menu_id, '#' ) !== false ) {
@@ -1939,11 +1979,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = '' ) {
 
-			if ( ! is_array( $table_rows ) )	// just in case
+			if ( ! is_array( $table_rows ) ) {	// just in case
 				return;
+			}
 
-			$lca = empty( $this->p->cf['lca'] ) ? 
-				'sucom' : $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$total_rows = count( $table_rows );
 			$count_rows = 0;
 			$hidden_opts = 0;
@@ -2108,8 +2148,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text);		// remove javascript
 			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text);		// remove inline stylesheets
 
-			$text = preg_replace( '/<!--'.$this->p->cf['lca'].'-ignore-->(.*?)<!--\/'.
-				$this->p->cf['lca'].'-ignore-->/Ui', ' ', $text);			// remove text between comment strings
+			$text = preg_replace( '/<!--'.$this->p->lca.'-ignore-->(.*?)<!--\/'.
+				$this->p->lca.'-ignore-->/Ui', ' ', $text);				// remove text between comment strings
 
 			if ( $strip_tags ) {
 				$text = preg_replace( '/<\/p>/i', ' ', $text);				// replace end of paragraph with a space
@@ -2147,7 +2187,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// $ext = 'org', 'plm', etc.
 		public function get_ext_req_msg( $ext ) {
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$req_msg = '';
 
 			if ( $lca === $ext ) {
