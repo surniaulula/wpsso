@@ -272,7 +272,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$this->p->debug->log( 'using schema type id '.$type_id.' for home index' );
 						}
 					}
-
 				} elseif ( $mod['is_post'] ) {
 					if ( ! empty( $mod['post_type'] ) ) {
 						if ( isset( $this->p->options['schema_type_for_'.$mod['post_type']] ) ) {
