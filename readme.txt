@@ -391,7 +391,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed an SQL syntax error when deleting expired transients.
 	* Fixed the description from Yoast SEO (in a post loop) by calling WPSEO_Frontend reset() before and after WPSEO_Frontend metadesc().
 * *Developer Notes*
-	* Added a 'wpsso_get_event_place_id' filter for single event options.
+	* Added a 'wpsso_get_event_place_id' filter for the single event place id.
 	* Renamed the WpssoSchema add_image_list_data() method to add_og_image_list_data().
 	* Renamed the WpssoSchema add_single_image_data() method to add_og_single_image_data().
 	* Refactored the WpssoAdmin methods that retrieve the readme.txt and setup.html file contents.
@@ -784,7 +784,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.48.4-rc.4 =
 
-(2017/11/19) Fixed an SQL syntax error when deleting expired transients. Fixed the description from Yoast SEO in a post loop. Added a 'wpsso_get_event_place_id' filter for single event place ids.
+(2017/11/19) Fixed an SQL syntax error when deleting expired transients. Fixed the description from Yoast SEO in a post loop. Added a 'wpsso_get_event_place_id' filter for the single event place id.
 
 = 3.48.3 =
 
