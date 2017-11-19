@@ -396,8 +396,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the WpssoSchema add_single_image_data() method to add_og_single_image_data().
 	* Refactored the WpssoAdmin methods that retrieve the readme.txt and setup.html file contents.
 	* Added a new WpssoUtil safe_apply_filters() method to apply the 'wp_title', 'the_content', and 'get_the_excerpt' filters. The safe_apply_filters() method prevents recursive loops, saves/restores the post object, and optionally shows a notice for long execution times.
-	* Started renaming lca references from `$this->p->cf['lca']` to `$this->p->lca`.
+	* Added a new WpssoPage get_the_excerpt() method, and renamed the get_content() method to get_the_content().
 	* Refactored the Yoast SEO integration module to make it compatible with post loops.
+	* Started renaming lca references from `$this->p->cf['lca']` to `$this->p->lca`.
 
 **Version 3.48.3 (2017/11/15)**
 
