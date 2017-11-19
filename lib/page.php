@@ -426,7 +426,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod['is_post'] ) {
 
-					$desc_text = $this->p->util->safe_get_the_excerpt( $mod );
+					$desc_text = $this->get_the_excerpt( $mod );
 
 					// if there's no excerpt, then fallback to the content
 					if ( empty( $desc_text ) ) {
@@ -546,6 +546,41 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			return apply_filters( $lca.'_description', $desc_text, $mod, $add_hashtags, $md_idx );
+		}
+
+		public function get_the_excerpt( array $mod ) {
+
+			$excerpt_text = '';
+
+			// use the excerpt, if we have one
+			if ( $mod['is_post'] && has_excerpt( $mod['id'] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'getting the excerpt for post id '.$mod['id'] );
+				}
+
+				$excerpt_text = get_post_field( 'post_excerpt', $mod['id'] );
+
+				static $filter_excerpt = null;
+
+				if ( $filter_excerpt === null ) {
+					$filter_excerpt = empty( $this->p->options['plugin_filter_excerpt'] ) ? false : true;
+					$filter_excerpt = apply_filters( $this->p->lca.'_filter_excerpt', $filter_excerpt, $mod );
+				}
+
+				if ( $filter_excerpt ) {
+					$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text ), $mod );
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'skipped the WordPress get_the_excerpt filters' );
+				}
+			}
+
+			return $excerpt_text;
+		}
+
+		// deprecated on 2017/11/19
+		public function get_content( array $mod, $use_cache = true, $md_idx = '' ) {
+			return $this->get_the_content( $mod, $use_cache, $md_idx );
 		}
 
 		public function get_the_content( array $mod, $use_cache = true, $md_idx = '' ) {

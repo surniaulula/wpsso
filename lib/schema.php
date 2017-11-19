@@ -1528,7 +1528,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					unset( $ret['alternativeHeadline'] );
 				}
 
-				$ret['caption'] = $wpsso->util->safe_get_the_excerpt( $mod );
+				$ret['caption'] = $wpsso->page->get_the_excerpt( $mod );
 				if ( empty( $ret['caption'] ) ) {
 					unset( $ret['caption'] );
 				}

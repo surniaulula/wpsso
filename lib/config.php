@@ -14,7 +14,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 	class WpssoConfig {
 
 		public static $cf = array(
-			'lca' => 'wpsso',	// main plugin lowercase acronym
+			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.48.4-rc.5',		// plugin version
