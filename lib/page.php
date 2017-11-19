@@ -23,26 +23,26 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 		}
 
-		public function get_quote( array &$mod ) {
+		public function get_quote( array $mod ) {
 
-			$quote = apply_filters( $this->p->cf['lca'].'_quote_seed', '', $mod );
+			$quote_text = apply_filters( $this->p->lca.'_quote_seed', '', $mod );
 
-			if ( $quote != '' ) {
+			if ( ! empty( $quote_text ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'quote seed = "'.$quote.'"' );
+					$this->p->debug->log( 'quote seed = "'.$quote_text.'"' );
 				}
 			} else {
 				if ( has_excerpt( $mod['id'] ) ) {
-					$quote = get_the_excerpt( $mod['id'] );
+					$quote_text = get_the_excerpt( $mod['id'] );
 				} else {
-					$quote = get_post_field( 'post_content', $mod['id'] );
+					$quote_text = get_post_field( 'post_content', $mod['id'] );
 				}
 			}
 
 			// remove shortcodes, etc., but don't strip html tags
-			$quote = $this->p->util->cleanup_html_tags( $quote, false );
+			$quote_text = $this->p->util->cleanup_html_tags( $quote_text, false );
 
-			return apply_filters( $this->p->cf['lca'].'_quote', $quote, $mod );
+			return apply_filters( $this->p->lca.'_quote', $quote_text, $mod );
 		}
 
 		// $type = title | excerpt | both
@@ -255,7 +255,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$this->p->debug->log( 'post id '.$mod['id'].' get_the_title() = "'.$title_text.'"' );
 					}
 
-					$title_text = $this->p->util->safe_wp_apply_filters( array( 'wp_title', $title_text, $separator, 'right' ), $mod );
+					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $separator, 'right' ), $mod );
 
 				} elseif ( $mod['is_term'] ) {
 
@@ -426,26 +426,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod['is_post'] ) {
 
-					// use the excerpt, if we have one
-					if ( has_excerpt( $mod['id'] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'getting the excerpt for post ID '.$mod['id'] );
-						}
-
-						$desc_text = get_post_field( 'post_excerpt', $mod['id'] );
-
-						$filter_excerpt = empty( $this->p->options['plugin_filter_excerpt'] ) ? false : true;
-						$filter_excerpt = apply_filters( $lca.'_filter_excerpt', $filter_excerpt, $mod );
-
-						if ( $filter_excerpt ) {
-
-							$desc_text = $this->p->util->safe_wp_apply_filters( array( 'get_the_excerpt', $desc_text ), $mod );
-
-						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'skipped the WordPress get_the_excerpt filters' );
-						}
-					}
+					$desc_text = $this->p->util->safe_get_the_excerpt( $mod );
 
 					// if there's no excerpt, then fallback to the content
 					if ( empty( $desc_text ) ) {
@@ -454,15 +435,22 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$this->p->debug->log( 'getting the content for post ID '.$mod['id'] );
 						}
 
-						$desc_text = $this->get_content( $mod, $use_cache, $md_idx );
+						$desc_text = $this->get_the_content( $mod, $use_cache, $md_idx );
+
+						// ignore everything before the first paragraph if true
+						if ( $this->p->options['plugin_p_strip'] ) {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'removing all text before the first paragraph' );
+							}
+							$desc_text = preg_replace( '/^.*?<p>/i', '', $desc_text );	// question mark makes regex un-greedy
+						}
 					}
 
-					// ignore everything before the first paragraph if true
-					if ( $this->p->options['plugin_p_strip'] ) {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'removing all text before the first paragraph' );
+					// fallback to the image alt value
+					if ( empty( $desc_text) ) {
+						if ( $mod['post_type'] === 'attachment' && strpos( $mod['post_mime'], 'image/' ) === 0 ) {
+							$desc_text = get_post_meta( $mod['id'], '_wp_attachment_image_alt', true );
 						}
-						$desc_text = preg_replace( '/^.*?<p>/i', '', $desc_text );	// question mark makes regex un-greedy
 					}
 
 				} elseif ( $mod['is_term'] ) {
@@ -521,6 +509,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$strlen_pre_cleanup = $this->p->debug->enabled ? strlen( $desc_text ) : 0;
 			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, true, $this->p->options['plugin_use_img_alt'] );
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'description strlen before html cleanup '.
 					$strlen_pre_cleanup.' and after '.strlen( $desc_text ) );
@@ -559,7 +548,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( $lca.'_description', $desc_text, $mod, $add_hashtags, $md_idx );
 		}
 
-		public function get_content( array $mod, $use_cache = true, $md_idx = '' ) {
+		public function get_the_content( array $mod, $use_cache = true, $md_idx = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -656,7 +645,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $filter_content ) {
 
-				$content_text = $this->p->util->safe_wp_apply_filters( array( 'the_content', $content_text ),
+				$content_text = $this->p->util->safe_apply_filters( array( 'the_content', $content_text ),
 					$mod, WPSSO_CONTENT_FILTERS_MAX_TIME, WPSSO_CONTENT_BLOCK_FILTER_OUTPUT );
 
 				/*
@@ -691,6 +680,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$strlen_after_filters = strlen( $content_text );
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'content strlen before '.$strlen_before_filters.' and after changes / filters '.$strlen_after_filters );
 			}

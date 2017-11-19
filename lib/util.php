@@ -1693,7 +1693,37 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $max;
 		}
 
-		public function safe_wp_apply_filters( array $args, array $mod, $max_time = 0, $add_bfo = false ) {
+		public function safe_get_the_excerpt( array $mod ) {
+
+			$excerpt_text = '';
+
+			// use the excerpt, if we have one
+			if ( $mod['is_post'] && has_excerpt( $mod['id'] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'getting the excerpt for post id '.$mod['id'] );
+				}
+
+				$excerpt_text = get_post_field( 'post_excerpt', $mod['id'] );
+
+				static $filter_excerpt = null;
+
+				if ( $filter_excerpt === null ) {
+					$filter_excerpt = empty( $this->p->options['plugin_filter_excerpt'] ) ? false : true;
+					$filter_excerpt = apply_filters( $this->p->lca.'_filter_excerpt', $filter_excerpt, $mod );
+				}
+
+				if ( $filter_excerpt ) {
+					$excerpt_text = $this->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text ), $mod );
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'skipped the WordPress get_the_excerpt filters' );
+				}
+			}
+
+			return $excerpt_text;
+		}
+
+		public function safe_apply_filters( array $args, array $mod, $max_time = 0, $add_bfo = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

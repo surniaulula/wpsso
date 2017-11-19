@@ -1516,18 +1516,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso = Wpsso::get_instance();
 				$post_id = $opts[$prefix.':id'];
 				$mod = $wpsso->m['util']['post']->get_mod( $post_id );
+				$title_len = $wpsso->options['og_title_len'];
+				$desc_len = $wpsso->options['schema_desc_len'];
 
-				$ret['name'] = $wpsso->page->get_title( $wpsso->options['og_title_len'],
-					'...', $mod, true, false, true, 'schema_title' );
-
-				if ( empty( $ret['name'] ) ) {	// just in case
+				$ret['name'] = $wpsso->page->get_title( $title_len, '...', $mod, true, false, true, 'schema_title' );
+				if ( empty( $ret['name'] ) ) {
 					unset( $ret['name'] );
 				}
 
-				$ret['description'] = $wpsso->page->get_description( $wpsso->options['schema_desc_len'],
-					'...', $mod, true, false, true, 'schema_desc' );
+				$ret['alternativeHeadline'] = get_post_meta( $mod['id'], '_wp_attachment_image_alt', true );
+				if ( empty( $ret['alternativeHeadline'] ) ) {
+					unset( $ret['alternativeHeadline'] );
+				}
 
-				if ( empty( $ret['description'] ) ) {	// just in case
+				$ret['caption'] = $wpsso->util->safe_get_the_excerpt( $mod );
+				if ( empty( $ret['caption'] ) ) {
+					unset( $ret['caption'] );
+				}
+
+				$ret['description'] = $wpsso->page->get_description( $desc_len, '...', $mod, true, false, true, 'schema_desc' );
+				if ( empty( $ret['description'] ) ) {
 					unset( $ret['description'] );
 				}
 			}
