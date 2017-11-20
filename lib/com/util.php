@@ -870,44 +870,44 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_currencies( $idx = false, $add_none = false, $format = '%2$s (%1$s)' ) {
-			static $cache = array();		// array of arrays, indexed by $format
-			if ( ! isset( $cache[$format] ) ) {
+			static $local_cache = array();		// array of arrays, indexed by $format
+			if ( ! isset( $local_cache[$format] ) ) {
 				if ( $format === '%2$s' ) {	// optimize and get existing format
-					$cache[$format] =& self::$currencies;
+					$local_cache[$format] =& self::$currencies;
 				} else {
 					foreach ( self::$currencies as $key => $value ) {
-						$cache[$format][$key] = sprintf( $format, $key, $value );
+						$local_cache[$format][$key] = sprintf( $format, $key, $value );
 					}
 				}
-				asort( $cache[$format] );	// sort by value
+				asort( $local_cache[$format] );	// sort by value
 			}
-			return self::get_formatted_array( $cache[$format], $idx, $add_none );
+			return self::get_formatted_array( $local_cache[$format], $idx, $add_none );
 		}
 
 		public static function get_currency_abbrev( $idx = false, $add_none = false ) {
-			static $cache = null;
-			if ( ! isset( $cache ) ) {
-				$cache = array();
+			static $local_cache = null;
+			if ( ! isset( $local_cache ) ) {
+				$local_cache = array();
 				foreach ( self::$currencies as $key => $value ) {
-					$cache[$key] = $key;
+					$local_cache[$key] = $key;
 				}
-				ksort( $cache );		// sort by key (same as value)
+				ksort( $local_cache );		// sort by key (same as value)
 			}
-			return self::get_formatted_array( $cache, $idx, $add_none );
+			return self::get_formatted_array( $local_cache, $idx, $add_none );
 		}
 
 		public static function get_currency_symbols( $idx = false, $add_none = false, $decode = false ) {
 			if ( $decode ) {
-				static $cache = null;
-				if ( ! isset( $cache ) ) {
-					$cache = array();
+				static $local_cache = null;
+				if ( ! isset( $local_cache ) ) {
+					$local_cache = array();
 					$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
 					foreach ( self::$currency_symbols as $key => $value ) {
-						$cache[$key] = html_entity_decode( self::decode_utf8( $value ), ENT_QUOTES, $charset );
+						$local_cache[$key] = html_entity_decode( self::decode_utf8( $value ), ENT_QUOTES, $charset );
 					}
-					ksort( $cache );	// sort by key
+					ksort( $local_cache );	// sort by key
 				}
-				return self::get_formatted_array( $cache, $idx, $add_none );
+				return self::get_formatted_array( $local_cache, $idx, $add_none );
 			} else {
 				return self::get_formatted_array( self::$currency_symbols, $idx, $add_none );
 			}
@@ -918,18 +918,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
 				$idx = html_entity_decode( self::decode_utf8( $idx ), ENT_QUOTES, $charset );
 			}
-			static $cache = null;
-			if ( isset( $cache[$idx] ) ) {
-				return $cache[$idx];
+			static $local_cache = null;
+			if ( isset( $local_cache[$idx] ) ) {
+				return $local_cache[$idx];
 			} elseif ( $idx === '$' ) {	// match for USD first 
-				return $cache[$idx] = 'USD';
+				return $local_cache[$idx] = 'USD';
 			}
 			foreach ( self::get_currency_symbols( false, false, $decode ) as $abbrev => $symbol ) {
 				if ( $symbol === $idx ) {
-					return $cache[$idx] = $abbrev;	// stop here
+					return $local_cache[$idx] = $abbrev;	// stop here
 				}
 			}
-			return $cache[$idx] = $default;
+			return $local_cache[$idx] = $default;
 		}
 
 		public static function get_dashicons( $idx = false, $add_none = false ) {
@@ -987,29 +987,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_https( $url = '' ) {
-			static $cache = array();
-			if ( isset( $cache[$url] ) ) {
-				return $cache[$url];
+			static $local_cache = array();
+			if ( isset( $local_cache[$url] ) ) {
+				return $local_cache[$url];
 			}
 			if ( ! empty( $url ) ) {
 				if ( strpos( $url, '://' ) && 
 					parse_url( $url, PHP_URL_SCHEME ) === 'https' ) {
-					return $cache[$url] = true;
+					return $local_cache[$url] = true;
 				} else {
-					return $cache[$url] = false;
+					return $local_cache[$url] = false;
 				}
 			} else {
 				if ( is_ssl() ) {
-					return $cache[$url] = true;
+					return $local_cache[$url] = true;
 				} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) &&
 					strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) === 'https' ) {
-					return $cache[$url] = true;
+					return $local_cache[$url] = true;
 				} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_SSL'] ) &&
 					strtolower( $_SERVER['HTTP_X_FORWARDED_SSL'] ) === 'on' ) {
-					return $cache[$url] = true;
+					return $local_cache[$url] = true;
 				}
 			}
-			return $cache[$url] = false;
+			return $local_cache[$url] = false;
 		}
 
 		public static function get_prot( $url = '' ) {
@@ -1188,9 +1188,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function active_plugins( $plugin_base = false, $use_cache = true ) {	// example: wpsso/wpsso.php
-			static $cache = null;
-			if ( ! $use_cache || ! isset( $cache ) ) {
-				$cache = array();
+			static $local_cache = null;
+			if ( ! $use_cache || ! isset( $local_cache ) ) {
+				$local_cache = array();
 				$active_plugins = get_option( 'active_plugins', array() );
 				if ( is_multisite() ) {
 					$active_network_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
@@ -1199,47 +1199,47 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 				}
 				foreach ( $active_plugins as $base ) {
-					$cache[$base] = true;
+					$local_cache[$base] = true;
 				}
 			}
 			if ( $plugin_base !== false ) {
-				if ( isset( $cache[$plugin_base] ) ) {
-					return $cache[$plugin_base];
+				if ( isset( $local_cache[$plugin_base] ) ) {
+					return $local_cache[$plugin_base];
 				}
-				return $cache[$plugin_base] = false;
+				return $local_cache[$plugin_base] = false;
 			}
-			return $cache;
+			return $local_cache;
 		}
 
 		public static function slug_is_active( $plugin_slug ) {	// example: wpsso
-			static $cache = array();
-			if ( isset( $cache[$plugin_slug] ) ) {
-				return $cache[$plugin_slug];
+			static $local_cache = array();
+			if ( isset( $local_cache[$plugin_slug] ) ) {
+				return $local_cache[$plugin_slug];
 			} elseif ( empty( $plugin_slug ) ) {	// just in case
-				return $cache[$plugin_slug] = false;
+				return $local_cache[$plugin_slug] = false;
 			}
 			foreach ( SucomUtil::active_plugins() as $plugin_base => $active ) {	// call with class to use common cache
 				if ( strpos( $plugin_base, $plugin_slug.'/' ) === 0 ) {
-					return $cache[$plugin_slug] = true;	// stop here
+					return $local_cache[$plugin_slug] = true;	// stop here
 				}
 			}
-			return $cache[$plugin_slug] = false;
+			return $local_cache[$plugin_slug] = false;
 		}
 
 		// call wp_clean_plugins_cache() beforehand if you need to clear the wordpress plugins cache
 		public static function get_installed_slug_base( $plugin_slug, $use_cache = true ) {	// example: wpsso
-			static $cache = array();
-			if ( $use_cache && isset( $cache[$plugin_slug] ) ) {
-				return $cache[$plugin_slug];
+			static $local_cache = array();
+			if ( $use_cache && isset( $local_cache[$plugin_slug] ) ) {
+				return $local_cache[$plugin_slug];
 			} elseif ( empty( $plugin_slug ) ) {	// just in case
-				return $cache[$plugin_slug] = false;
+				return $local_cache[$plugin_slug] = false;
 			}
 			foreach ( self::get_wp_plugins() as $plugin_base => $info ) {
 				if ( strpos( $plugin_base, $plugin_slug.'/' ) === 0 ) {
-					return $cache[$plugin_slug] = $plugin_base;	// stop here
+					return $local_cache[$plugin_slug] = $plugin_base;	// stop here
 				}
 			}
-			return $cache[$plugin_slug] = false;
+			return $local_cache[$plugin_slug] = false;
 		}
 
 		public static function activate_plugin( $plugin_base, $network_wide = false, $silent = true ) {
@@ -1275,44 +1275,44 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function plugin_is_installed( $plugin_base, $use_cache = true ) {
-			static $cache = array();
-			if ( $use_cache && isset( $cache[$plugin_base] ) ) {
-				return $cache[$plugin_base];
+			static $local_cache = array();
+			if ( $use_cache && isset( $local_cache[$plugin_base] ) ) {
+				return $local_cache[$plugin_base];
 			} elseif ( empty( $plugin_base ) ) {	// just in case
-				return $cache[$plugin_base] = false;
+				return $local_cache[$plugin_base] = false;
 			} elseif ( validate_file( $plugin_base ) > 0 ) {	// contains invalid characters
-				return $cache[$plugin_base] = false;
+				return $local_cache[$plugin_base] = false;
 			} elseif ( ! is_file( WP_PLUGIN_DIR.'/'.$plugin_base ) ) {	// check existence of plugin folder
-				return $cache[$plugin_base] = false;
+				return $local_cache[$plugin_base] = false;
 			}
 			$plugins = self::get_wp_plugins();
 			if ( ! isset( $plugins[$plugin_base] ) ) {	// check for a valid plugin header
-				return $cache[$plugin_base] = false;
+				return $local_cache[$plugin_base] = false;
 			}
-			return $cache[$plugin_base] = true;
+			return $local_cache[$plugin_base] = true;
 		}
 
 		public static function plugin_has_update( $plugin_base ) {
-			static $cache = array();
-			if ( isset( $cache[$plugin_base] ) ) {
-				return $cache[$plugin_base];
+			static $local_cache = array();
+			if ( isset( $local_cache[$plugin_base] ) ) {
+				return $local_cache[$plugin_base];
 			} elseif ( empty( $plugin_base ) ) {	// just in case
-				return $cache[$plugin_base] = false;
+				return $local_cache[$plugin_base] = false;
 			} elseif ( ! SucomUtil::plugin_is_installed( $plugin_base ) ) {	// call with class to use common cache
-				return $cache[$plugin_base] = false;
+				return $local_cache[$plugin_base] = false;
 			}
 			$update_plugins = get_site_transient( 'update_plugins' );
 			if ( isset( $update_plugins->response ) && is_array( $update_plugins->response ) ) {
 				if ( isset( $update_plugins->response[$plugin_base] ) ) {
-					return $cache[$plugin_base] = true;
+					return $local_cache[$plugin_base] = true;
 				}
 			}
-			return $cache[$plugin_base] = false;
+			return $local_cache[$plugin_base] = false;
 		}
 
 		public static function get_slug_info( $plugin_slug, $plugin_fields = array(), $unfiltered = true ) {
 
-			static $cache = array();
+			static $local_cache = array();
 
 			$plugin_fields = array_merge( array(
 				'active_installs' => true,	// get by default
@@ -1341,17 +1341,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$fields_key = json_encode( $plugin_fields );	// unique index based on selected fields
 
-			if ( isset( $cache[$plugin_slug][$fields_key] ) ) {
-				return $cache[$plugin_slug][$fields_key];
+			if ( isset( $local_cache[$plugin_slug][$fields_key] ) ) {
+				return $local_cache[$plugin_slug][$fields_key];
 			} elseif ( empty( $plugin_slug ) ) {	// just in case
-				return $cache[$plugin_slug][$fields_key] = false;
+				return $local_cache[$plugin_slug][$fields_key] = false;
 			}
 
 			if ( ! function_exists( 'plugins_api' ) ) {
 				require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin-install.php';
 			}
 
-			return $cache[$plugin_slug][$fields_key] = plugins_api( 'plugin_information', array(
+			return $local_cache[$plugin_slug][$fields_key] = plugins_api( 'plugin_information', array(
 				'slug' => $plugin_slug,
 				'fields' => $plugin_fields,
 				'unfiltered' => $unfiltered,	// true = skip the update manager filter
@@ -2648,21 +2648,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_mobile() {
 
-			static $cache = null;
-			static $mobile = null;
+			static $local_cache = null;
+			static $mobile_obj = null;
 
-			if ( ! isset( $cache ) ) {
+			if ( ! isset( $local_cache ) ) {
 				// load class object on first check
-				if ( ! isset( $mobile ) ) {
+				if ( ! isset( $mobile_obj ) ) {
 					if ( ! class_exists( 'SuextMobileDetect' ) ) {
 						require_once dirname( __FILE__ ).'/../ext/mobile-detect.php';
 					}
-					$mobile = new SuextMobileDetect();
+					$mobile_obj = new SuextMobileDetect();
 				}
-				$cache = $mobile->isMobile();
+				$local_cache = $mobile_obj->isMobile();
 			}
 
-			return $cache;
+			return $local_cache;
 		}
 
 		public static function is_desktop() {

@@ -209,6 +209,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
+			static $local_cache = array();
+
+			// optimize and cache post/term/user schema type values
+			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) && 
+				isset( $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returning cached value for '.
+						$mod['name'].'/'.$mod['id'].'/'.$get_id.'/'.$use_mod_opts );
+				}
+				return $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts];
+			}
+
 			$lca = $this->p->cf['lca'];
 			$default_key = apply_filters( $lca.'_schema_type_for_default', 'webpage' );
 			$schema_types = $this->get_schema_types_array( true );	// $flatten = true
@@ -329,34 +341,38 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'schema type id after filter is '.$type_id );
 			}
 
+			$ret_value = false;
+
 			if ( empty( $type_id ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: schema type id is empty' );
 				}
-				return false;
 			} elseif ( $type_id === 'none' ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: schema type id is disabled' );
 				}
-				return false;
 			} elseif ( ! isset( $schema_types[$type_id] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: schema type id '.$type_id.' is unknown' );
 				}
-				return false;
-			} else {
-				if ( $get_id ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning schema type id '.$type_id );
-					}
-					return $type_id;
-				} else {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning schema type value '.$schema_types[$type_id] );
-					}
-					return $schema_types[$type_id];
+			} elseif ( $get_id ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returning schema type id '.$type_id );
 				}
+				$ret_value = $type_id;
+			} else {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returning schema type value '.$schema_types[$type_id] );
+				}
+				$ret_value = $schema_types[$type_id];
 			}
+
+			// optimize and cache post/term/user schema type values
+			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) ) {
+				$local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts] = $ret_value;
+			}
+
+			return $ret_value;
 		}
 
 		public function get_types_cache_exp() {
@@ -747,8 +763,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function is_schema_type_child_of( $child_id, $parent_id ) {
-			$parents = $this->get_schema_type_parents( $child_id );
-			return in_array( $parent_id, $parents ) ? true : false;
+			static $local_cache = array();
+			if ( isset( $local_cache[$child_id][$parent_id] ) ) {
+				return $local_cache[$child_id][$parent_id];
+			}
+			if ( $child_id === $parent_id ) {	// optimize and check for obvious
+				$is_child = true;
+			} else {
+				$parents = $this->get_schema_type_parents( $child_id );
+				$is_child = in_array( $parent_id, $parents ) ? true : false;
+			}
+			return $local_cache[$child_id][$parent_id] = $is_child;
 		}
 
 		public function count_schema_type_children( $type_id ) {
@@ -936,8 +961,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'is_main entity is '.( $is_main ?
-						'true' : 'false' ).' for '.$type_id );
+					$this->p->debug->log( 'is_main entity is '.( $is_main ? 'true' : 'false' ).' for '.$type_id );
 				}
 
 				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
@@ -1120,12 +1144,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $single_added;
 			}
 
-			static $cache = array();
+			static $local_cache = array();
 
-			if ( isset( $cache[$mod['name']][$mod['id']][$single_name][$single_id] ) ) {
+			if ( isset( $local_cache[$mod['name']][$mod['id']][$single_name][$single_id] ) ) {
 
 				$action_name = 'using';
-				$single_data =& $cache[$mod['name']][$mod['id']][$single_name][$single_id];
+				$single_data =& $local_cache[$mod['name']][$mod['id']][$single_name][$single_id];
 
 				if ( $single_data === false ) {
 					$single_added = 0;
@@ -1139,8 +1163,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 			} else {
-				$cache[$mod['name']][$mod['id']][$single_name][$single_id] = false;
-				$single_added =& $cache[$mod['name']][$mod['id']][$single_name][$single_id];	// return reference to false
+				$local_cache[$mod['name']][$mod['id']][$single_name][$single_id] = false;
+				$single_added =& $local_cache[$mod['name']][$mod['id']][$single_name][$single_id];	// return reference to false
 			}
 
 			if ( $wpsso->debug->enabled ) {

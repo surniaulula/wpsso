@@ -441,19 +441,19 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public static function use_meta_table( $term_id = false ) {
-			static $cache = null;
-			if ( $cache === null )	{	// optimize and check only once
+			static $local_cache = null;
+			if ( $local_cache === null )	{	// optimize and check only once
 				if ( function_exists( 'get_term_meta' ) && get_option( 'db_version' ) >= 34370 ) {
 					if ( $term_id === false || ! wp_term_is_shared( $term_id ) ) {
-						$cache = true;
+						$local_cache = true;
 					} else {
-						$cache = false;
+						$local_cache = false;
 					}
 				} else {
-					$cache = false;
+					$local_cache = false;
 				}
 			}
-			return $cache;
+			return $local_cache;
 		}
 	}
 }

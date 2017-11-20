@@ -20,7 +20,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		private $text_domain = false;		// lca or ext text domain
 		private $default_text_domain = false;	// lca text domain (fallback)
 
-		private static $cache = array();
+		private static $class_cache = array();
 
 		public $options = array();
 		public $defaults = array();
@@ -1288,11 +1288,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$key = SucomUtil::sanitize_key( $name );	// just in case
 
-			if ( ! isset( self::$cache[$key] ) ) {
-				self::$cache[$key] = null;
+			if ( ! isset( self::$class_cache[$key] ) ) {
+				self::$class_cache[$key] = null;
 			}
 
-			if ( self::$cache[$key] === null ) {
+			if ( self::$class_cache[$key] === null ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'adding new form cache entry for '.$key );
@@ -1300,32 +1300,32 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				switch ( $key ) {
 					case 'half_hours':
-						self::$cache[$key] = SucomUtil::get_hours_range( 0, DAY_IN_SECONDS, 60 * 30, '' );
+						self::$class_cache[$key] = SucomUtil::get_hours_range( 0, DAY_IN_SECONDS, 60 * 30, '' );
 						break;
 					case 'all_types':
-						self::$cache[$key] = $this->p->schema->get_schema_types_array( false );	// $flatten = false
+						self::$class_cache[$key] = $this->p->schema->get_schema_types_array( false );	// $flatten = false
 						break;
 					case 'business_types':
 						$this->get_cache( 'all_types' );
-						self::$cache[$key] =& self::$cache['all_types']['thing']['place']['local.business'];
+						self::$class_cache[$key] =& self::$class_cache['all_types']['thing']['place']['local.business'];
 						break;
 					case 'business_types_select':
 						$this->get_cache( 'business_types' );
-						self::$cache[$key] = $this->p->schema->get_schema_types_select( self::$cache['business_types'], false );
+						self::$class_cache[$key] = $this->p->schema->get_schema_types_select( self::$class_cache['business_types'], false );
 						break;
 					case 'org_types':
 						$this->get_cache( 'all_types' );
-						self::$cache[$key] =& self::$cache['all_types']['thing']['organization'];
+						self::$class_cache[$key] =& self::$class_cache['all_types']['thing']['organization'];
 						break;
 					case 'org_types_select':
 						$this->get_cache( 'org_types' );
-						self::$cache[$key] = $this->p->schema->get_schema_types_select( self::$cache['org_types'], false );
+						self::$class_cache[$key] = $this->p->schema->get_schema_types_select( self::$class_cache['org_types'], false );
 						break;
 					case 'org_site_names':
-						self::$cache[$key] = array( 'site' => '[Website Organization]' );
+						self::$class_cache[$key] = array( 'site' => '[Website Organization]' );
 						// no break;
 					default:
-						self::$cache[$key] = apply_filters( $this->lca.'_form_cache_'.$key, self::$cache[$key] );
+						self::$class_cache[$key] = apply_filters( $this->lca.'_form_cache_'.$key, self::$class_cache[$key] );
 						break;
 				}
 
@@ -1333,19 +1333,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$this->p->debug->log( 'returning existing form cache entry for '.$key );
 			}
 
-			if ( isset( self::$cache[$key]['none'] ) ) {
-				unset( self::$cache[$key]['none'] );
+			if ( isset( self::$class_cache[$key]['none'] ) ) {
+				unset( self::$class_cache[$key]['none'] );
 			}
 
 			if ( $add_none ) {
 				$none = array( 'none' => '[None]' );
-				if ( is_array( self::$cache[$key] ) ) {
-					return $none + self::$cache[$key];
+				if ( is_array( self::$class_cache[$key] ) ) {
+					return $none + self::$class_cache[$key];
 				} else {
 					return $none;
 				}
 			} else {
-				return self::$cache[$key];
+				return self::$class_cache[$key];
 			}
 		}
 	}
