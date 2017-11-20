@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.48.4\n"
+"Project-Id-Version: WPSSO Core 3.48.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -616,11 +616,11 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2431
+#: lib/admin.php:2415
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2452
+#: lib/admin.php:2436
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 

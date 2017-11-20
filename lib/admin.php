@@ -2289,19 +2289,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				) );
 			}
 
-			$dir_const_name = strtoupper( $ext ).'_PLUGINDIR';
-
-			if ( ! defined( $dir_const_name ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $dir_const_name.' is undefined and required' );
-				}
-				return array();
-			}
-
 			$lca = $this->p->cf['lca'];
 			$file_name = 'readme.txt';
 			$file_key = SucomUtil::sanitize_hookname( $file_name );	// readme.txt -> readme_txt
-			$file_local = constant( $dir_const_name ).$file_name;
+			$file_dir = SucomUtil::get_const( strtoupper( $ext ).'_PLUGINDIR' );
+			$file_local = $file_dir ? trailingslashit( $file_dir ).$file_name : false;
 			$file_remote = isset( $this->p->cf['plugin'][$ext]['url'][$file_key] ) ? 
 				$this->p->cf['plugin'][$ext]['url'][$file_key] : false;
 
@@ -2380,19 +2372,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				) );
 			}
 
-			$dir_const_name = strtoupper( $ext ).'_PLUGINDIR';
-
-			if ( ! defined( $dir_const_name ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $dir_const_name.' is undefined and required' );
-				}
-				return false;
-			}
-
 			$lca = $this->p->cf['lca'];
 			$file_name = SucomUtil::sanitize_file_path( $file_name );
 			$file_key = SucomUtil::sanitize_hookname( basename( $file_name ) );	// html/setup.html -> setup_html
-			$file_local = constant( $dir_const_name ).$file_name;
+			$file_dir = SucomUtil::get_const( strtoupper( $ext ).'_PLUGINDIR' );
+			$file_local = $file_dir ? trailingslashit( $file_dir ).$file_name : false;
 			$file_remote = isset( $this->p->cf['plugin'][$ext]['url'][$file_key] ) ? 
 				$this->p->cf['plugin'][$ext]['url'][$file_key] : false;
 
