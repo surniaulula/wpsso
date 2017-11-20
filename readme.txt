@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.4-rc.7 (2017/11/20)**
+**Version 3.48.4 (2017/11/20)**
 
 * *New Features*
 	* None
@@ -783,7 +783,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.4-rc.7 =
+= 3.48.4 =
 
 (2017/11/20) Added Schema ImageObject 'alternativeHeadline' and 'caption' properties. Fixed an SQL syntax error when deleting expired transients. Fixed the description value from Yoast SEO in a post loop.
 
