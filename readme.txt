@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.4-rc.6 (2017/11/19)**
+**Version 3.48.4-rc.7 (2017/11/20)**
 
 * *New Features*
 	* None
@@ -389,7 +389,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added Schema ImageObject 'alternativeHeadline' and 'caption' properties with values from the WordPress Media Library.
 * *Bugfixes*
 	* Fixed an SQL syntax error when deleting expired transients.
-	* Fixed the description from Yoast SEO (in a post loop) by calling WPSEO_Frontend reset() before and after WPSEO_Frontend metadesc().
+	* Fixed the description value from Yoast SEO in a post loop (the Yoast SEO plugin is not compatible with post loops).
 * *Developer Notes*
 	* Added a 'wpsso_get_event_place_id' filter for the single event place id.
 	* Renamed the WpssoSchema add_image_list_data() method to add_og_image_list_data().
@@ -398,7 +398,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new WpssoUtil safe_apply_filters() method to apply the 'wp_title', 'the_content', and 'get_the_excerpt' filters. The safe_apply_filters() method prevents recursive loops, saves/restores the post object, and optionally shows a notice for long execution times.
 	* Added a new WpssoPage get_the_excerpt() method, and renamed the get_content() method to get_the_content().
 	* Refactored the Yoast SEO integration module to make it compatible with post loops.
-	* Started renaming lca references from `$this->p->cf['lca']` to `$this->p->lca`.
+	* Started renaming all references to the plugin lowercase acronym variable from `$this->p->cf['lca']` to `$this->p->lca`.
 
 **Version 3.48.3 (2017/11/15)**
 
@@ -783,9 +783,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.4-rc.6 =
+= 3.48.4-rc.7 =
 
-(2017/11/19) Fixed an SQL syntax error when deleting expired transients. Fixed the description from Yoast SEO in a post loop. Added a 'wpsso_get_event_place_id' filter for the single event place id.
+(2017/11/20) Added Schema ImageObject 'alternativeHeadline' and 'caption' properties. Fixed an SQL syntax error when deleting expired transients. Fixed the description value from Yoast SEO in a post loop.
 
 = 3.48.3 =
 
