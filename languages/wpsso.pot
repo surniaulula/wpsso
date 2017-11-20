@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.48.4-rc.6\n"
+"Project-Id-Version: WPSSO Core 3.48.4-rc.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -624,17 +624,17 @@ msgstr ""
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
-#: lib/com/bfo.php:204 lib/com/cache.php:409 lib/com/notice.php:518
-#: lib/com-gettext-extract.php:23
+#: lib/com/bfo.php:204 lib/com/cache.php:438 lib/com/notice.php:518
+#: lib/com-gettext-extract.php:24
 msgid "%s Notice"
 msgstr ""
 
-#: lib/com/bfo.php:207 lib/com/cache.php:412 lib/com/notice.php:521
+#: lib/com/bfo.php:207 lib/com/cache.php:441 lib/com/notice.php:521
 #: lib/com-gettext-extract.php:17
 msgid "Notice"
 msgstr ""
 
-#: lib/com/bfo.php:219 lib/com-gettext-extract.php:24
+#: lib/com/bfo.php:219 lib/com-gettext-extract.php:25
 msgid ""
 "The \"%1$s\" filter hook with priority %2$d in the \"%3$s\" filter has "
 "mistakenly provided some webpage output."
@@ -646,7 +646,7 @@ msgid ""
 "webpage output."
 msgstr ""
 
-#: lib/com/bfo.php:223 lib/com-gettext-extract.php:20
+#: lib/com/bfo.php:223 lib/com-gettext-extract.php:19
 msgid ""
 "Please contact the author of that filter hook and report this issue as a "
 "coding error / bug."
@@ -668,64 +668,86 @@ msgstr ""
 msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
 msgstr ""
 
-#: lib/com/cache.php:97 lib/com-gettext-extract.php:19
+#: lib/com/cache.php:105 lib/com-gettext-extract.php:27
 msgid ""
-"PHP \"safe_mode\" or \"open_basedir\" is defined &mdash; the PHP cURL "
-"library cannot follow URL redirects."
+"The PHP \"%s\" feature is enabled &mdash; the PHP cURL library cannot follow "
+"URL redirects."
 msgstr ""
 
-#: lib/com/cache.php:100 lib/com-gettext-extract.php:25
+#: lib/com/cache.php:108 lib/com-gettext-extract.php:29
+msgid ""
+"The \"%s\" feature is deprecated since PHP version 5.3 and removed from PHP "
+"since version 5.4."
+msgstr ""
+
+#: lib/com/cache.php:111 lib/com-gettext-extract.php:20
+msgid ""
+"Please contact your hosting provider to have this feature disabled or "
+"install a newer version of PHP."
+msgstr ""
+
+#: lib/com/cache.php:122 lib/com-gettext-extract.php:28
+msgid ""
+"The PHP \"%s\" setting is defined &mdash; the PHP cURL library cannot follow "
+"URL redirects."
+msgstr ""
+
+#: lib/com/cache.php:125 lib/com-gettext-extract.php:21
+msgid "Please contact your hosting provider to have this setting disabled."
+msgstr ""
+
+#: lib/com/cache.php:129 lib/com-gettext-extract.php:26
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: lib/com/cache.php:105 lib/com-gettext-extract.php:22
+#: lib/com/cache.php:134 lib/com-gettext-extract.php:23
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
-#: lib/com/cache.php:182 lib/com-gettext-extract.php:18
+#: lib/com/cache.php:211 lib/com-gettext-extract.php:18
 msgid ""
 "PHP cURL library is missing &mdash; contact your hosting provider to have "
 "the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:259 lib/com-gettext-extract.php:12
+#: lib/com/cache.php:288 lib/com-gettext-extract.php:12
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/com/cache.php:460 lib/com-gettext-extract.php:7
+#: lib/com/cache.php:489 lib/com-gettext-extract.php:7
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:472 lib/com-gettext-extract.php:14
+#: lib/com/cache.php:501 lib/com-gettext-extract.php:14
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:557 lib/com-gettext-extract.php:13
+#: lib/com/cache.php:586 lib/com-gettext-extract.php:13
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: lib/com/cache.php:565 lib/com-gettext-extract.php:8
+#: lib/com/cache.php:594 lib/com-gettext-extract.php:8
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:573 lib/com-gettext-extract.php:15
+#: lib/com/cache.php:602 lib/com-gettext-extract.php:15
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/notice.php:77 lib/com-gettext-extract.php:26
+#: lib/com/notice.php:77 lib/com-gettext-extract.php:30
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr ""
 
-#: lib/com/notice.php:87 lib/com-gettext-extract.php:21
+#: lib/com/notice.php:87 lib/com-gettext-extract.php:22
 msgid "Reference URL: %s"
 msgstr ""
 
-#: lib/com/notice.php:453 lib/com-gettext-extract.php:27
+#: lib/com/notice.php:453 lib/com-gettext-extract.php:31
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:454 lib/com-gettext-extract.php:28
+#: lib/com/notice.php:454 lib/com-gettext-extract.php:32
 msgctxt "notification type"
 msgid "warning"
 msgstr ""

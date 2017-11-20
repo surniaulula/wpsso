@@ -93,9 +93,38 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$this->text_domain ), '<a href="'.$url.'">'.$url.'</a>', $http_code );
 
 				if ( $http_code === 301 ) {
-					if ( ini_get( 'safe_mode' ) || ini_get( 'open_basedir' ) ) {
-						$errors[] = __( 'PHP "safe_mode" or "open_basedir" is defined &mdash; the PHP cURL library cannot follow URL redirects.',
+					/*
+					 * PHP safe mode is an attempt to solve the shared-server security problem. It is architecturally incorrect
+					 * to try to solve this problem at the PHP level, but since the alternatives at the web server and OS levels
+					 * aren't very realistic, many people, especially ISP's, use safe mode for now.
+					 *
+					 * This feature has been DEPRECATED as of PHP 5.3.0 and REMOVED as of PHP 5.4.0.
+					 */
+					if ( ini_get( 'safe_mode' ) ) {
+
+						$errors[] = sprintf( __( 'The PHP "%s" feature is enabled &mdash; the PHP cURL library cannot follow URL redirects.',
+							$this->text_domain ), 'safe_mode' );
+
+						$errors[] = sprintf( __( 'The "%s" feature is deprecated since PHP version 5.3 and removed from PHP since version 5.4.',
+							$this->text_domain ), 'safe_mode' );
+
+						$errors[] = __( 'Please contact your hosting provider to have this feature disabled or install a newer version of PHP.',
 							$this->text_domain );
+
+					/*
+					 * open_basedir can be used to limit the files that can be accessed by PHP to the specified directory-tree,
+					 * including the file itself. When a script tries to access the filesystem, for example using include, or
+					 * fopen(), the location of the file is checked. When the file is outside the specified directory-tree, PHP
+					 * will refuse to access it.
+					 */
+					} elseif ( ini_get( 'open_basedir' ) ) {
+
+						$errors[] = sprintf( __( 'The PHP "%s" setting is defined &mdash; the PHP cURL library cannot follow URL redirects.',
+							$this->text_domain ), 'open_basedir' );
+
+						$errors[] = __( 'Please contact your hosting provider to have this setting disabled.',
+							$this->text_domain );
+
 					} else {
 						$errors[] = sprintf( __( 'The maximum number of URL redirects (%d) may have been exceeded.',
 							$this->text_domain ), $this->curl_max_redirs );
