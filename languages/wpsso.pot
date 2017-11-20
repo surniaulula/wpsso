@@ -3925,7 +3925,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:1476
-msgid "Please encourage us %s by rating these plugins:"
+msgid "Please encourage us %s by rating the plugins you use:"
 msgstr ""
 
 #: lib/messages.php:1492

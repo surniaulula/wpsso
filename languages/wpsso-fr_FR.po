@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.48.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-11-20 07:39-0600\n"
-"PO-Revision-Date: 2017-11-20 07:51-0600\n"
+"POT-Creation-Date: 2017-11-20 08:47-0600\n"
+"PO-Revision-Date: 2017-11-20 08:47-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3319,8 +3319,8 @@ msgid "<strong>Great reviews and ratings are a terrific way to encourage your pl
 msgstr "<strong>Une bonne cote est une excellente façon d'encourager vos développeur d'extensions</strong> &mdash; et ça ne prend qu'une minute."
 
 #: lib/messages.php:1476
-msgid "Please encourage us %s by rating these plugins:"
-msgstr "Merci de nous encourager %s en évaluant ces extensions:"
+msgid "Please encourage us %s by rating the plugins you use:"
+msgstr "Merci de nous encourager %s en évaluant les extensions que vous utilisez:"
 
 #: lib/messages.php:1492
 msgid "This option is localized &mdash; you may change the WordPress locale (see %s) to define alternate values for different languages."
