@@ -161,7 +161,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$col_idx = str_replace( $this->p->lca.'_', '', $column_name );
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// just in case
-						$value = (string) self::get_term_meta( $term_id, $col_info['meta_key'], true );	// $single = true
+						// optimize and check wp_cache first
+						$meta_cache = wp_cache_get( $term_id, 'term_meta' );
+						if ( isset( $meta_cache[$col_info['meta_key']][0] ) ) {
+							$value = (string) maybe_unserialize( $meta_cache[$col_info['meta_key']][0] );
+						} else {
+							$value = (string) self::get_term_meta( $term_id, $col_info['meta_key'], true );	// $single = true
+						}
 						if ( $value === 'none' ) {
 							$value = '';
 						}

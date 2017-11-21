@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.48.6-dev.2\n"
+"Project-Id-Version: WPSSO Core 3.48.6-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:690 lib/post.php:444 lib/term.php:283 lib/user.php:266
+#: lib/admin.php:690 lib/post.php:450 lib/term.php:289 lib/user.php:272
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -511,12 +511,12 @@ msgid ""
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:2146 lib/submenu/essential.php:135
+#: lib/admin.php:2146 lib/submenu/essential.php:136
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2150 lib/submenu/essential.php:139
+#: lib/admin.php:2150 lib/submenu/essential.php:140
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -2185,7 +2185,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:140 lib/meta.php:208 lib/post.php:779
+#: lib/gpl/admin/post.php:140 lib/meta.php:208 lib/post.php:785
 #: lib/pro/admin/post.php:170
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -4153,102 +4153,102 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/post.php:534
+#: lib/post.php:540
 msgid ""
 "The WordPress wp_get_shortlink() function returned an invalid URL (%1$s) for "
 "post ID %2$s."
 msgstr ""
 
-#: lib/post.php:552
+#: lib/post.php:558
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:555
+#: lib/post.php:561
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:583
+#: lib/post.php:589
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:585
+#: lib/post.php:591
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:587
+#: lib/post.php:593
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:589
+#: lib/post.php:595
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:600 lib/util.php:811
+#: lib/post.php:606 lib/util.php:811
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:609
+#: lib/post.php:615
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:618
+#: lib/post.php:624
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:627
+#: lib/post.php:633
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:643
+#: lib/post.php:649
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:651
+#: lib/post.php:657
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:661
+#: lib/post.php:667
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:661
+#: lib/post.php:667
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:661
+#: lib/post.php:667
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:683
+#: lib/post.php:689
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:687
+#: lib/post.php:693
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:689
+#: lib/post.php:695
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
@@ -4699,27 +4699,27 @@ msgstr ""
 msgid "Include <a href=\"%s\">Person Social Profile</a> for the Site Owner"
 msgstr ""
 
-#: lib/submenu/essential.php:129 lib/submenu/general.php:290
+#: lib/submenu/essential.php:130 lib/submenu/general.php:290
 msgctxt "option label"
 msgid "Site Owner for Social Profile"
 msgstr ""
 
-#: lib/submenu/essential.php:144
+#: lib/submenu/essential.php:145
 msgctxt "metabox title"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:146 lib/submenu/general.php:302
+#: lib/submenu/essential.php:147 lib/submenu/general.php:302
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:151
+#: lib/submenu/essential.php:152
 msgctxt "metabox title"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/essential.php:153 lib/submenu/general.php:339
+#: lib/submenu/essential.php:154 lib/submenu/general.php:339
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -4919,19 +4919,19 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:438
+#: lib/user.php:444
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:492
+#: lib/user.php:498
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:493
+#: lib/user.php:499
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:494
+#: lib/user.php:500
 msgid "Yahoo Messenger"
 msgstr ""
 

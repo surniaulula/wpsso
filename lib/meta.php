@@ -791,6 +791,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_column_wp_cache( array $mod, $column_name ) {
+			$value = '';
 			if ( ! empty( $mod['id'] ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// just in case
 				$col_idx = str_replace( $this->p->lca.'_', '', $column_name );
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {

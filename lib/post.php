@@ -279,12 +279,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo $this->get_column_content( '', $column_name, $post_id );
 		}
 
-		public function get_column_content( $value, $column_name, $object_id ) {
-			if ( ! empty( $object_id ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// just in case
+		public function get_column_content( $value, $column_name, $post_id ) {
+			if ( ! empty( $post_id ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// just in case
 				$col_idx = str_replace( $this->p->lca.'_', '', $column_name );
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// just in case
-						$value = (string) get_post_meta( $object_id, $col_info['meta_key'], true );	// $single = true
+						// optimize and check wp_cache first
+						$meta_cache = wp_cache_get( $post_id, 'post_meta' );
+						if ( isset( $meta_cache[$col_info['meta_key']][0] ) ) {
+							$value = (string) maybe_unserialize( $meta_cache[$col_info['meta_key']][0] );
+						} else {
+							$value = (string) get_post_meta( $post_id, $col_info['meta_key'], true );	// $single = true
+						}
 						if ( $value === 'none' ) {
 							$value = '';
 						}

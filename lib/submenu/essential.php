@@ -126,9 +126,10 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
 					'</td>';
 
+					$editors_and_admins = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
 					$table_rows['schema_person_id'] = $this->form->get_th_html( _x( 'Site Owner for Social Profile',
 						'option label', 'wpsso' ), '', 'schema_person_id' ).
-					'<td>'.$this->form->get_select( 'schema_person_id', $users, '', '', true ).'</td>';
+					'<td>'.$this->form->get_select( 'schema_person_id', $editors_and_admins, '', '', true ).'</td>';
 
 					$table_rows['schema_logo_url'] = $this->form->get_th_html(
 						'<a href="https://developers.google.com/structured-data/customize/logos">'.
