@@ -44,10 +44,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function get_pinterest_img_html( $content = '' ) {
 
-			$lca = $this->p->cf['lca'];
-
 			// check if the content filter is being applied to create a description text
-			if ( ! empty( $GLOBALS[$lca.'_doing_filter_the_content'] ) ) {
+			if ( ! empty( $GLOBALS[$this->p->lca.'_doing_filter_the_content'] ) ) {
 				return $content;
 			}
 
@@ -62,7 +60,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$do_once[$mod_salt] = true;
 			}
 
-			$size_name = $lca.'-schema';
+			$size_name = $this->p->lca.'-schema';
 			$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, 'schema' );	// $md_pre = 'schema'
 			$img_url = SucomUtil::get_mt_media_url( $og_images, 'og:image' );
 
@@ -70,11 +68,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$desc = $this->p->page->get_description( $this->p->options['schema_desc_len'],
 					'...', $mod, true, false, true, 'schema_desc' );
 
-				$img_html = '<!-- '.$lca.' schema image for pinterest pin it button -->'."\n".
-					'<div class="'.$lca.'-schema-image-for-pinterest" style="display:none;">'."\n".
+				$img_html = '<!-- '.$this->p->lca.' schema image for pinterest pin it button -->'."\n".
+					'<div class="'.$this->p->lca.'-schema-image-for-pinterest" style="display:none;">'."\n".
 					'<img src="'.$img_url.'" width="0" height="0" style="width:0;height:0;" '.
 					'data-pin-description="'.$desc.'" alt=""/>'."\n".	// empty alt required for w3c validation
-					'</div><!-- .'.$lca.'-schema-image-for-pinterest -->'."\n";
+					'</div><!-- .'.$this->p->lca.'-schema-image-for-pinterest -->'."\n";
 
 				$content = $img_html.$content;
 			}
@@ -136,8 +134,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $head_attr;
 			}
 
-			$lca = $this->p->cf['lca'];
-			$use_post = apply_filters( $lca.'_use_post', false );	// used by woocommerce with is_shop()
+			$use_post = apply_filters( $this->p->lca.'_use_post', false );	// used by woocommerce with is_shop()
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
@@ -193,7 +190,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			// returns false when the wpsso-schema-json-ld extension is active
-			if ( ! apply_filters( $this->p->cf['lca'].'_add_schema_head_attributes', true ) ) {
+			if ( ! apply_filters( $this->p->lca.'_add_schema_head_attributes', true ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head attributes disabled by filter' );
 				}
@@ -212,13 +209,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			static $local_cache = array();
 
 			// optimize and cache post/term/user schema type values
-			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) && 
-				isset( $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts] ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'returning cached value for '.
-						$mod['name'].'/'.$mod['id'].'/'.$get_id.'/'.$use_mod_opts );
+			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) ) {
+
+				if ( isset( $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts] ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'returning local cache value for '.
+							$mod['name'].'/'.$mod['id'].'/'.$get_id.'/'.$use_mod_opts );
+					}
+					return $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts];
+
+				// check for a column schema_type value in wp_cache
+				} elseif ( $get_id && $use_mod_opts ) {
+					$value = $mod['obj']->get_column_wp_cache( $mod, $this->p->lca.'_schema_type' );
+					if ( ! empty( $value ) ) {	// returns an empty string if no value found
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'returning column wp_cache value for '.
+								$mod['name'].'/'.$mod['id'].'/'.$get_id.'/'.$use_mod_opts );
+						}
+						return $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts] = $value;
+					}
 				}
-				return $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts];
 			}
 
 			$lca = $this->p->cf['lca'];
@@ -582,7 +592,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		// returns an array of schema type ids with gparent, parent, child (in that order)
-		public function get_schema_type_parents( $child_id, &$parents = array(), $use_cache = true ) {
+		public function get_schema_type_child_family( $child_id, &$child_family = array(), $use_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -597,9 +607,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 				if ( $cache_exp_secs > 0 ) {
-					$parents = get_transient( $cache_id );	// returns false when not found
-					if ( ! empty( $parents ) ) {
-						return $parents;
+					$child_family = get_transient( $cache_id );	// returns false when not found
+					if ( ! empty( $child_family ) ) {
+						return $child_family;
 					}
 				}
 			}
@@ -610,20 +620,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$parent_id = $this->types_cache['parents'][$child_id];
 				if ( isset( $schema_types[$parent_id] ) ) {
 					if ( $parent_id !== $child_id )	{	// prevent infinite loops
-						$this->get_schema_type_parents( $parent_id, $parents, false );
+						$this->get_schema_type_child_family( $parent_id, $child_family, false );
 					}
 				}
 			}
 
-			$parents[] = $child_id;	// add children after parents
+			$child_family[] = $child_id;	// add child after parents
 
 			if ( $use_cache ) {
 				if ( $cache_exp_secs > 0 ) {
-					set_transient( $cache_id, $parents, $cache_exp_secs );
+					set_transient( $cache_id, $child_family, $cache_exp_secs );
 				}
 			}
 
-			return $parents;
+			return $child_family;
 		}
 
 		// returns an array of schema type ids with child, parent, gparent (in that order)
@@ -762,18 +772,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return trim( $class_names );
 		}
 
-		public function is_schema_type_child_of( $child_id, $parent_id ) {
+		// deprecated on 2017/11/20
+		public function is_schema_type_child_of( $child_id, $member_id ) {
+			return $this->is_schema_type_child( $child_id, $member_id );
+		}
+
+		public function is_schema_type_child( $child_id, $member_id ) {
 			static $local_cache = array();
-			if ( isset( $local_cache[$child_id][$parent_id] ) ) {
-				return $local_cache[$child_id][$parent_id];
+			if ( isset( $local_cache[$child_id][$member_id] ) ) {
+				return $local_cache[$child_id][$member_id];
 			}
-			if ( $child_id === $parent_id ) {	// optimize and check for obvious
+			if ( $child_id === $member_id ) {	// optimize and check for obvious
 				$is_child = true;
 			} else {
-				$parents = $this->get_schema_type_parents( $child_id );
-				$is_child = in_array( $parent_id, $parents ) ? true : false;
+				$child_family = $this->get_schema_type_child_family( $child_id );
+				$is_child = in_array( $member_id, $child_family ) ? true : false;
 			}
-			return $local_cache[$child_id][$parent_id] = $is_child;
+			return $local_cache[$child_id][$member_id] = $is_child;
 		}
 
 		public function count_schema_type_children( $type_id ) {
@@ -1069,18 +1084,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$json_data = null;
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
 			$filter_name = SucomUtil::sanitize_hookname( $page_type_url );
-			$parent_urls = array();
+			$child_family_urls = array();
 
 			// returns an array of type ids with gparents, parents, child (in that order)
-			foreach ( $this->get_schema_type_parents( $page_type_id ) as $type_id ) {
-				$parent_urls[] = $this->get_schema_type_url( $type_id );
+			foreach ( $this->get_schema_type_child_family( $page_type_id ) as $type_id ) {
+				$child_family_urls[] = $this->get_schema_type_url( $type_id );
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_arr( 'schema page type id '.$page_type_id.' parent_urls', $parent_urls );
+				$this->p->debug->log_arr( 'page_type_id '.$page_type_id.' child_family_urls', $child_family_urls );
 			}
 
-			foreach ( $parent_urls as $type_url ) {
+			foreach ( $child_family_urls as $type_url ) {
 
 				$type_filter_name = SucomUtil::sanitize_hookname( $type_url );
 				$has_type_filter = has_filter( $lca.'_json_data_'.$type_filter_name );	// check only once
@@ -2194,7 +2209,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! empty( $org_type_id ) && $org_type_id !== 'organization' && 
-				$wpsso->schema->is_schema_type_child_of( $org_type_id, 'local.business' ) ) {
+				$wpsso->schema->is_schema_type_child( $org_type_id, 'local.business' ) ) {
 				$wpsso->schema->organization_to_localbusiness( $ret );
 			}
 
@@ -2441,7 +2456,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * FoodEstablishment schema type properties
 			 */
 			if ( ! empty( $place_opts['place_business_type'] ) && $place_opts['place_business_type'] !== 'none' ) {
-				if ( $wpsso->schema->is_schema_type_child_of( $place_opts['place_business_type'], 'food.establishment' ) ) {
+				if ( $wpsso->schema->is_schema_type_child( $place_opts['place_business_type'], 'food.establishment' ) ) {
 					foreach ( array(
 						'acceptsReservations' => 'place_accept_res',
 						'menu' => 'place_menu_url',

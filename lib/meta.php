@@ -784,11 +784,32 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$sort_cols = self::get_sortable_columns();
 			foreach ( $sort_cols as $col_idx => $col_info ) {
 				if ( ! empty( $col_info['header'] ) ) {
-					$headers[$col_idx] = _x( $col_info['header'],
-						'column header', 'wpsso' );
+					$headers[$col_idx] = _x( $col_info['header'], 'column header', 'wpsso' );
 				}
 			}
 			return $headers;
+		}
+
+		public function get_column_wp_cache( array $mod, $column_name ) {
+			if ( ! empty( $mod['id'] ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// just in case
+				$col_idx = str_replace( $this->p->lca.'_', '', $column_name );
+				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
+					if ( isset( $col_info['meta_key'] ) ) {	// just in case
+						$meta_cache = wp_cache_get( $mod['id'], $mod['name'].'_meta' );
+						if ( ! $meta_cache ) {
+							$meta_cache = update_meta_cache( $mod['name'], array( $mod['id'] ) );
+							$meta_cache = $meta_cache[$mod['id']];
+						}
+						if ( isset( $meta_cache[$col_info['meta_key']] ) ) {
+							$value = (string) maybe_unserialize( $meta_cache[$col_info['meta_key']][0] );
+							if ( $value === 'none' ) {
+								$value = '';
+							}
+						}
+					}
+				}
+			}
+			return $value;
 		}
 
 		public function get_column_content( $value, $column_name, $id ) {
