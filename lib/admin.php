@@ -612,7 +612,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					__( 'Please note that webpage content may take several days to reflect changes.', 'wpsso' ).' '.
 					sprintf( __( '%s now to force a refresh.', 'wpsso' ), $clear_cache_link ).'</em>' );
 			} else {
-				$dismiss_key = __FUNCTION__.'_clear_all_cache';
+				$dismiss_key = 'settings-saved-cleared-all-cache';
 				$this->p->util->clear_all_cache( true, null, $dismiss_key );	// can be dismissed
 				$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.', 'wpsso' ).'</strong> '.
 					sprintf( __( 'All caches have also been cleared (the %s option is enabled).', 'wpsso' ),
@@ -763,6 +763,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->add_plugin_hooks();
 			$this->add_side_meta_boxes();	// add before main metaboxes
 			$this->add_meta_boxes();	// add last to move duplicate side metaboxes
+		}
+
+		// called from the add_meta_boxes() method in specific settings pages (essential, general, etc.).
+		protected function maybe_show_language_notice() {
+
+			$current_locale = SucomUtil::get_locale( 'current' );
+			$default_locale = SucomUtil::get_locale( 'default' );
+
+			if ( $current_locale && $default_locale && $current_locale !== $default_locale ) {
+				$dismiss_key = $this->menu_id.'-language-notice-current-'.$current_locale.'-default-'.$default_locale;
+				$this->p->notice->inf( sprintf( __( 'Please note that your current language is different from the default site language (%s).', 'wpsso' ), $default_locale ).' '.sprintf( __( 'Localized option values (%s) are used for webpages and content in that language only (not for the default language, or any other language).', 'wpsso' ), $current_locale ), true, $dismiss_key, true );
+			}
 		}
 
 		protected function add_side_meta_boxes() {

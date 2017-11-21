@@ -28,6 +28,8 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 
 		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
+			$this->maybe_show_language_notice();
+
 			add_meta_box( $this->pagehook.'_social_accounts',
 				_x( 'Social Pages and Accounts', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_social_accounts' ), $this->pagehook, 'normal' );
