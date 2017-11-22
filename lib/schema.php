@@ -210,25 +210,42 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			// optimize and cache post/term/user schema type values
 			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) ) {
-
 				if ( isset( $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts] ) ) {
+					$value =& $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts];
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning local cache value for '.
+						$this->p->debug->log( 'returning local cache value ('.$value.') for '.
 							$mod['name'].'/'.$mod['id'].'/'.$get_id.'/'.$use_mod_opts );
 					}
-					return $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts];
-
-				// check for a column schema_type value in wp_cache
-				} elseif ( $get_id && $use_mod_opts ) {
-					$value = $mod['obj']->get_column_wp_cache( $mod, $this->p->lca.'_schema_type' );
-					if ( ! empty( $value ) ) {	// returns an empty string if no value found
+					return $value;
+				} elseif ( $use_mod_opts ) {	// check for a column schema_type value in wp_cache
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'checking for value from column wp_cache' );
+					}
+					$value = $mod['obj']->get_column_wp_cache( $mod, $this->p->lca.'_schema_type' );	// returns empty string if no value found
+					if ( ! empty( $value ) ) {
+						if ( ! $get_id && $value !== 'none' ) {	// return the url value instead
+							$schema_types = $this->get_schema_types_array( true );	// $flatten = true
+							if ( ! empty( $schema_types[$value] ) ) {
+								$value = $schema_types[$value];
+							} else {
+								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( 'columns wp_cache value ('.$value.') not in schema types' );
+								}
+								$value = '';
+							}
+						}
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'returning column wp_cache value for '.
+							$this->p->debug->log( 'returning column wp_cache value ('.$value.') for '.
 								$mod['name'].'/'.$mod['id'].'/'.$get_id.'/'.$use_mod_opts );
 						}
 						return $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts] = $value;
 					}
 				}
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'no value found in local cache or column wp_cache' );
+				}
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'skipping cache check: mod name and/or id value is empty' );
 			}
 
 			$lca = $this->p->cf['lca'];
@@ -255,17 +272,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 					} elseif ( empty( $schema_types[$type_id] ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'custom type_id '.$type_id.' not in schema types' );
+							$this->p->debug->log( 'custom type_id ('.$type_id.') not in schema types' );
 						}
 						$type_id = null;
 					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'custom type_id '.$type_id.' from '.$mod['name'].' module' );
+						$this->p->debug->log( 'custom type_id ('.$type_id.') from '.$mod['name'].' module' );
 					}
 				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'custom type_id module object is empty' );
+					$this->p->debug->log( 'skipping custom type_id: mod object is empty' );
 				}
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'custom type_id use_mod_opts argument is false' );
+				$this->p->debug->log( 'skipping custom type_id: use_mod_opts is false' );
 			}
 
 			if ( empty( $type_id ) ) {
@@ -484,61 +501,61 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		protected function add_schema_type_xrefs( &$schema_types ) {
 
-			$t =& $schema_types['thing'];	// quick ref variable for the 'thing' array
+			$thing =& $schema_types['thing'];	// quick ref variable for the 'thing' array
 
 			/*
 			 * Intangible > Enumeration
 			 */
-			$t['intangible']['enumeration']['medical.enumeration']['medical.specialty'] =&
-				$t['intangible']['enumeration']['specialty']['medical.specialty'];
+			$thing['intangible']['enumeration']['medical.enumeration']['medical.specialty'] =&
+				$thing['intangible']['enumeration']['specialty']['medical.specialty'];
 
 			/*
 			 * Organization > Local Business
 			 */
-			$t['organization']['local.business'] =& 
-				$t['place']['local.business'];
+			$thing['organization']['local.business'] =& 
+				$thing['place']['local.business'];
 
 			/*
 			 * Organization > Medical Organization
 			 */
-			$t['organization']['medical.organization']['dentist'] =& 
-				$t['place']['local.business']['dentist'];
-
-			$t['organization']['medical.organization']['hospital'] =& 
-				$t['place']['local.business']['emergency.service']['hospital'];
+			$thing['organization']['medical.organization']['hospital'] =& 
+				$thing['place']['local.business']['emergency.service']['hospital'];
 
 			/*
 			 * Place > Accommodation
 			 */
-			$t['place']['accommodation']['house']['house.single.family'] =&
-				$t['place']['accommodation']['house']['residence.single.family'];
+			$thing['place']['accommodation']['house']['house.single.family'] =&
+				$thing['place']['accommodation']['house']['residence.single.family'];
 
 			/*
 			 * Place > Civic Structure
 			 */
-			$t['place']['civic.structure']['campground'] =&
-				$t['place']['local.business']['lodging.business']['campground'];
+			$thing['place']['civic.structure']['campground'] =&
+				$thing['place']['local.business']['lodging.business']['campground'];
 
-			$t['place']['civic.structure']['fire.station'] =&
-				$t['place']['local.business']['emergency.service']['fire.station'];
+			$thing['place']['civic.structure']['fire.station'] =&
+				$thing['place']['local.business']['emergency.service']['fire.station'];
 
-			$t['place']['civic.structure']['hospital'] =&
-				$t['place']['local.business']['emergency.service']['hospital'];
+			$thing['place']['civic.structure']['hospital'] =&
+				$thing['place']['local.business']['emergency.service']['hospital'];
 
-			$t['place']['civic.structure']['movie.theatre'] =&
-				$t['place']['local.business']['entertainment.business']['movie.theatre'];
+			$thing['place']['civic.structure']['movie.theatre'] =&
+				$thing['place']['local.business']['entertainment.business']['movie.theatre'];
 
-			$t['place']['civic.structure']['police.station'] =&
-				$t['place']['local.business']['emergency.service']['police.station'];
+			$thing['place']['civic.structure']['police.station'] =&
+				$thing['place']['local.business']['emergency.service']['police.station'];
 
-			$t['place']['civic.structure']['stadium.or.arena'] =&
-				$t['place']['local.business']['sports.activity.location']['stadium.or.arena'];
+			$thing['place']['civic.structure']['stadium.or.arena'] =&
+				$thing['place']['local.business']['sports.activity.location']['stadium.or.arena'];
 
 			/*
 			 * Place > Local Business
 			 */
-			$t['place']['local.business']['store']['auto.parts.store'] =& 
-				$t['place']['local.business']['automotive.business']['auto.parts.store'];
+			$thing['place']['local.business']['dentist.organization'] =&
+				$thing['organization']['medical.organization']['dentist.organization'];
+
+			$thing['place']['local.business']['store']['auto.parts.store'] =& 
+				$thing['place']['local.business']['automotive.business']['auto.parts.store'];
 
 		}
 
@@ -1242,9 +1259,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} elseif ( is_array( $json_data ) ) {
 				$json_head = array( '@id' => null, '@context' => null, '@type' => null, 'mainEntityOfPage' => null );
 				$json_data = array_merge( $json_head, $json_data, $ret_data );
-				foreach ( array( '@id', '@context', '@type', 'mainEntityOfPage' ) as $prop ) {
-					if ( empty( $json_data[$prop] ) ) {
-						unset( $json_data[$prop] );
+				foreach ( array( '@id', '@context', '@type', 'mainEntityOfPage' ) as $prop_name ) {
+					if ( empty( $json_data[$prop_name] ) ) {
+						unset( $json_data[$prop_name] );
 					}
 				}
 				return $json_data;
@@ -1578,9 +1595,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			foreach ( array( 'width', 'height' ) as $prop ) {
-				if ( isset( $opts[$prefix.':'.$prop] ) && $opts[$prefix.':'.$prop] > 0 ) {	// just in case
-					$ret[$prop] = $opts[$prefix.':'.$prop];
+			foreach ( array( 'width', 'height' ) as $prop_name ) {
+				if ( isset( $opts[$prefix.':'.$prop_name] ) && $opts[$prefix.':'.$prop_name] > 0 ) {	// just in case
+					$ret[$prop_name] = $opts[$prefix.':'.$prop_name];
 				}
 			}
 

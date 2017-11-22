@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.48.6-dev.4\n"
+"Project-Id-Version: WPSSO Core 3.48.6-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3940,10 +3940,10 @@ msgstr ""
 msgid "Please encourage us %s by rating the plugins you use:"
 msgstr ""
 
-#: lib/messages.php:1492
+#: lib/messages.php:1488
 msgid ""
-"This option is localized &mdash; you may change the WordPress locale (see "
-"%s) to define alternate values for different languages."
+"This option is localized &mdash; you may change the WordPress locale to "
+"define alternate values for different languages."
 msgstr ""
 
 #: lib/meta.php:126
@@ -4453,13 +4453,13 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2158
+#: lib/schema.php:2175
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2160
+#: lib/schema.php:2177
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."

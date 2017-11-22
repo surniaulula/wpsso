@@ -1485,11 +1485,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} else $text = apply_filters( $lca.'_messages', $text, $idx, $info );
 
 			if ( is_array( $info ) && ! empty( $info['is_locale'] ) ) {
-
-				$lang_plugins = '<a href="https://wordpress.org/plugins/wpsso-user-locale/">WPSSO User Locale Selector</a>, '.
-					'<a href="https://wordpress.org/plugins/polylang/">Polylang</a>';
-
-				$text .= ' '.sprintf( __( 'This option is localized &mdash; you may change the WordPress locale (see %s) to define alternate values for different languages.', 'wpsso' ), $lang_plugins );
+				$text .= ' '.__( 'This option is localized &mdash; you may change the WordPress locale to define alternate values for different languages.',
+					'wpsso' );
 			}
 
 			if ( strpos( $idx, 'tooltip-' ) === 0 && ! empty( $text ) ) {

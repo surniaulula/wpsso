@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.6-dev.4',		// plugin version
-					'opt_version' => '567',		// increment when changing default options
+					'version' => '3.48.6-dev.5',		// plugin version
+					'opt_version' => '568',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -1854,9 +1854,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'government.organization' => 'https://schema.org/GovernmentOrganization',
 							'medical.organization' => array(
+								'dentist.organization' => 'https://schema.org/Dentist',
+								// xref hospital -> place/local.business/emergency.service/hospital
 								'medical.organization' => 'https://schema.org/MedicalOrganization',
-								'pharmacy' => 'https://schema.org/Pharmacy',
-								'physician' => 'https://schema.org/Physician',
+								'pharmacy.organization' => 'https://schema.org/Pharmacy',
+								'physician.organization' => 'https://schema.org/Physician',
 							),
 							'non-governmental.organization' => 'https://schema.org/NGO',
 							'organization' => 'https://schema.org/Organization',
@@ -1931,7 +1933,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'motorcycle.repair' => 'https://schema.org/MotorcycleRepair ',
 								),
 								'child.care' => 'https://schema.org/ChildCare',
-								'dentist' => 'https://schema.org/Dentist',
 								'dry.cleaning.or.laundry' => 'https://schema.org/DryCleaningOrLaundry',
 								'emergency.service' => array(
 									'emergency.service' => 'https://schema.org/EmergencyService',
@@ -2094,6 +2095,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'anesthesia' => 'anesthesia.specialty',
 					'cardiovascular' => 'cardiovascular.specialty',
 					'community.health' => 'community.health.specialty',
+					'dentist' => 'dentist.organization',
 					'dentistry' => 'dentistry.specialty',
 					'dermatologic' => 'dermatologic.specialty',
 					'dermatology' => 'dermatology.specialty',
@@ -2118,6 +2120,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'otolaryngologic' => 'otolaryngologic.specialty',
 					'pathology' => 'pathology.specialty',
 					'pediatric' => 'pediatric.specialty',
+					'pharmacy' => 'pharmacy.organization',
+					'physician' => 'physician.organization',
 					'physiotherapy' => 'physiotherapy.specialty',
 					'plastic.surgery' => 'plastic.surgery.specialty',
 					'podiatric' => 'podiatric.specialty',

@@ -803,9 +803,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						}
 						if ( isset( $meta_cache[$col_info['meta_key']] ) ) {
 							$value = (string) maybe_unserialize( $meta_cache[$col_info['meta_key']][0] );
-							if ( $value === 'none' ) {
-								$value = '';
-							}
 						}
 					}
 				}
