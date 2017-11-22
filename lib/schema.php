@@ -701,9 +701,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public static function get_schema_type_context( $type_url, array $json_data = array() ) {
+
 			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $type_url, $match ) ) {
+
 				$context_value = $match[1];
 				$type_value = $match[2];
+
 				/*
 				 * Check for schema extension (example: https://health-lifesci.schema.org).
 				 *
@@ -726,9 +729,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$json_head = array( '@id' => null, '@context' => null, '@type' => null );
 				}
 
-				$json_data = array_merge( $json_head, $json_data, 
-					array( '@context' => $context_value, '@type' => $type_value ) );
+				$json_data = array_merge( $json_head, $json_data, array( '@context' => $context_value, '@type' => $type_value ) );
 			}
+
 			return $json_data;
 		}
 
