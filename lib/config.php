@@ -1991,7 +1991,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'library' => 'https://schema.org/Library',
 								'local.business' => 'https://schema.org/LocalBusiness',
 								'lodging.business' => array(
-									'bed.and.breakfast' => 'BedAndBreakfast',
+									'bed.and.breakfast' => 'https://schema.org/BedAndBreakfast',
 									'campground' => 'https://schema.org/Campground',
 									'lodging.business' => 'https://schema.org/LodgingBusiness',
 									'hostel' => 'https://schema.org/Hostel',
