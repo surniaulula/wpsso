@@ -31,11 +31,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->maybe_show_language_notice();
 
 			add_meta_box( $this->pagehook.'_opengraph',
-				_x( 'All Social Websites / Open Graph', 'metabox title', 'wpsso' ),
+				_x( 'All Social WebSites / Open Graph', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_opengraph' ), $this->pagehook, 'normal' );
 
 			add_meta_box( $this->pagehook.'_publishers',
-				_x( 'Specific Websites and Publishers', 'metabox title', 'wpsso' ),
+				_x( 'Specific WebSites and Publishers', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_publishers' ), $this->pagehook, 'normal' );
 
 			// issues a warning notice if the default image size is too small
@@ -88,12 +88,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-general':
 
-					$table_rows['site_name'] = $this->form->get_th_html( _x( 'Website Name',
+					$table_rows['site_name'] = $this->form->get_th_html( _x( 'WebSite Name',
 						'option label', 'wpsso' ), '', 'site_name', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'site_name', $this->p->options ),
 						'long_name', '', 0, get_bloginfo( 'name', 'display' ) ).'</td>';
 
-					$table_rows['site_desc'] = $this->form->get_th_html( _x( 'Website Description',
+					$table_rows['site_desc'] = $this->form->get_th_html( _x( 'WebSite Description',
 						'option label', 'wpsso' ), '', 'site_desc', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_textarea( SucomUtil::get_key_locale( 'site_desc', $this->p->options ),
 						'', '', 0, get_bloginfo( 'description', 'display' ) ).'</td>';
@@ -277,7 +277,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), '', 'schema_knowledge_graph' ).
 					'<td>'.
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
-						sprintf( __( 'Include <a href="%s">Website Information</a> for Google Search',
+						sprintf( __( 'Include <a href="%s">WebSite Information</a> for Google Search',
 							'wpsso' ), 'https://developers.google.com/structured-data/site-name' ).'</p>'.
 					'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).' '.
 						sprintf( __( 'Include <a href="%s">Organization Social Profile</a>',

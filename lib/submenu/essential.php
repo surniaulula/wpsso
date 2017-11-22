@@ -67,12 +67,12 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$table_rows['subsection_site_information'] = '<td></td><td class="subsection top"><h4>'.
 						_x( 'Site Information', 'metabox title', 'wpsso' ).'</h4></td>';
 
-					$table_rows['site_name'] = $this->form->get_th_html( _x( 'Website Name',
+					$table_rows['site_name'] = $this->form->get_th_html( _x( 'WebSite Name',
 						'option label', 'wpsso' ), null, 'site_name', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'site_name', $this->p->options ),
 						null, null, null, get_bloginfo( 'name', 'display' ) ).'</td>';
 
-					$table_rows['site_desc'] = $this->form->get_th_html( _x( 'Website Description',
+					$table_rows['site_desc'] = $this->form->get_th_html( _x( 'WebSite Description',
 						'option label', 'wpsso' ), null, 'site_desc', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_textarea( SucomUtil::get_key_locale( 'site_desc', $this->p->options ),
 						null, null, null, get_bloginfo( 'description', 'display' ) ).'</td>';
@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						'option label', 'wpsso' ), null, 'schema_knowledge_graph' ).
 					'<td>'.
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
-						sprintf( __( 'Include <a href="%s">Website Information</a> for Google Search',
+						sprintf( __( 'Include <a href="%s">WebSite Information</a> for Google Search',
 							'wpsso' ), 'https://developers.google.com/structured-data/site-name' ).'</p>'.
 					'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).' '.
 						sprintf( __( 'Include <a href="%s">Organization Social Profile</a>',

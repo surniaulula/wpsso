@@ -885,9 +885,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-schema_knowledge_graph':
 
 							$settings_page_link = $this->p->util->get_admin_url( 'social-accounts',
-								_x( 'Website Social Pages and Accounts', 'lib file description', 'wpsso' ) );
+								_x( 'WebSite Social Pages and Accounts', 'lib file description', 'wpsso' ) );
 
-							$text = __( 'Include Website, Organization, and/or Person Schema markup in the front page for Google\'s Knowledge Graph.', 'wpsso' ).' '.__( 'The Website markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' '.sprintf( __( 'Developers can hook the "%s" filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $lca.'_json_ld_search_url' ).' '.sprintf( __( 'The Organization markup includes all URLs entered on the %s settings page.', 'wpsso' ), $settings_page_link ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
+							$text = __( 'Include WebSite, Organization, and/or Person Schema markup in the front page for Google\'s Knowledge Graph.', 'wpsso' ).' '.__( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' '.sprintf( __( 'Developers can hook the "%s" filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $lca.'_json_ld_search_url' ).' '.sprintf( __( 'The Organization markup includes all URLs entered on the %s settings page.', 'wpsso' ), $settings_page_link ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
 							break;
 
 						case 'tooltip-schema_person_id':
@@ -895,7 +895,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-schema_alt_name':
-							$text = __( 'An alternate name for your Website that you want Google to consider (optional).', 'wpsso' );
+							$text = __( 'An alternate name for your WebSite that you want Google to consider (optional).', 'wpsso' );
 							break;
 
 						case 'tooltip-schema_logo_url':
@@ -1026,7 +1026,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-p_dom_verify':
-							$text = sprintf( __( 'To <a href="%s">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify Website" button.', 'wpsso' ), 'https://help.pinterest.com/en/articles/verify-your-website#meta_tag' ).' '.__( 'Enter the supplied "p:domain_verify" meta tag <em>content</em> value here.', 'wpsso' );
+							$text = sprintf( __( 'To <a href="%s">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the "Verify WebSite" button.', 'wpsso' ), 'https://help.pinterest.com/en/articles/verify-your-website#meta_tag' ).' '.__( 'Enter the supplied "p:domain_verify" meta tag <em>content</em> value here.', 'wpsso' );
 							break;
 
 						case 'tooltip-p_add_img_html':

@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			$form_rows['subsection_opengraph'] = array(
 				'tr_class' => 'hide_in_basic',
 				'td_class' => 'subsection top', 'header' => 'h4',
-				'label' => _x( 'All Social Websites / Open Graph', 'metabox title', 'wpsso' )
+				'label' => _x( 'All Social WebSites / Open Graph', 'metabox title', 'wpsso' )
 			);
 			$form_rows['subsection_priority_image'] = array(
 				'header' => 'h5',

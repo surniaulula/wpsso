@@ -1225,7 +1225,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'(code) Google Publisher / Organization Markup' => array(
 							'status' => $this->p->options['schema_organization_json'] ? 'on' : 'off',
 						),
-						'(code) Google Website Markup' => array(
+						'(code) Google WebSite Markup' => array(
 							'status' => $this->p->options['schema_website_json'] ? 'on' : 'rec',
 						),
 						'(code) Schema Meta Property Containers' => array(

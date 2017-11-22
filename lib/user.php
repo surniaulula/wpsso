@@ -382,7 +382,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				array( 'none' => '[None]' ), 	// make sure none is first
 				$this->add_contact_methods( array( 
 					'author' => 'Author Archive', 
-					'url' => 'Website'
+					'url' => 'WebSite'
 				) )
 			);
 		}

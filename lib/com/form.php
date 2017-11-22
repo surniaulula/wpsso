@@ -1322,7 +1322,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						self::$class_cache[$key] = $this->p->schema->get_schema_types_select( self::$class_cache['org_types'], false );
 						break;
 					case 'org_site_names':
-						self::$class_cache[$key] = array( 'site' => '[Website Organization]' );
+						self::$class_cache[$key] = array( 'site' => '[WebSite Organization]' );
 						// no break;
 					default:
 						self::$class_cache[$key] = apply_filters( $this->lca.'_form_cache_'.$key, self::$class_cache[$key] );

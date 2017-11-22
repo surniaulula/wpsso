@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'setting' => array (	// lib file descriptions will be translated
 							'image-dimensions' => 'Social and Search Image Dimensions',
-							'social-accounts' => 'Website Social Pages and Accounts',
+							'social-accounts' => 'WebSite Social Pages and Accounts',
 							'contact-fields' => 'User Profile Contact Methods',
 						),
 						'submenu' => array (	// lib file descriptions will be translated
@@ -1336,7 +1336,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'org_select' => array(
 					'none' => '[None]',
 					'new' => '[New Organization]',
-					'site' => '[Website Organization]',
+					'site' => '[WebSite Organization]',
 				),
 				'addr_select' => array(
 					'none' => '[None]',
@@ -1799,7 +1799,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'game.server' => 'https://schema.org/GameServer',
 							'intangible' => 'https://schema.org/Intangible',
 							'invoice' => 'https://schema.org/Invoice',
-							'item.list' => 'https://schema.org/ItemList',
+							'item.list' => array(
+								'breadcrumb.list' => 'https://schema.org/BreadcrumbList',
+								'how.to.section' => 'https://schema.org/HowToSection',
+								'how.to.step' => 'https://schema.org/HowToStep',
+								'item.list' => 'https://schema.org/ItemList',
+								'offer.catalog' => 'https://schema.org/OfferCatalog ',
+							),
 							'job.posting' => 'https://schema.org/JobPosting',
 							'language' => 'https://schema.org/Language',
 							'list.item' => 'https://schema.org/ListItem',

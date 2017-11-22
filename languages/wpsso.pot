@@ -1511,12 +1511,12 @@ msgstr ""
 
 #: lib/config-gettext-extract.php:146
 msgctxt "option value"
-msgid "[Website Organization]"
+msgid "[WebSite Organization]"
 msgstr ""
 
 #: lib/config-gettext-extract.php:147 lib/messages.php:888
 msgctxt "lib file description"
-msgid "Website Social Pages and Accounts"
+msgid "WebSite Social Pages and Accounts"
 msgstr ""
 
 #: lib/config-gettext-extract.php:148
@@ -2085,7 +2085,7 @@ msgstr ""
 #: lib/gpl/admin/meta.php:113 lib/pro/admin/meta.php:130
 #: lib/submenu/general.php:34
 msgctxt "metabox title"
-msgid "All Social Websites / Open Graph"
+msgid "All Social WebSites / Open Graph"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:117 lib/pro/admin/meta.php:134
@@ -3273,13 +3273,13 @@ msgstr ""
 
 #: lib/messages.php:890
 msgid ""
-"Include Website, Organization, and/or Person Schema markup in the front page "
+"Include WebSite, Organization, and/or Person Schema markup in the front page "
 "for Google's Knowledge Graph."
 msgstr ""
 
 #: lib/messages.php:890
 msgid ""
-"The Website markup includes the site name, alternate site name, site URL and "
+"The WebSite markup includes the site name, alternate site name, site URL and "
 "search query URL."
 msgstr ""
 
@@ -3308,7 +3308,7 @@ msgstr ""
 
 #: lib/messages.php:898
 msgid ""
-"An alternate name for your Website that you want Google to consider "
+"An alternate name for your WebSite that you want Google to consider "
 "(optional)."
 msgstr ""
 
@@ -3380,7 +3380,7 @@ msgstr ""
 #: lib/messages.php:1029
 msgid ""
 "To <a href=\"%s\">verify your website</a> with Pinterest, edit your business "
-"account profile on Pinterest and click the \"Verify Website\" button."
+"account profile on Pinterest and click the \"Verify WebSite\" button."
 msgstr ""
 
 #: lib/messages.php:1029
@@ -4453,13 +4453,13 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2178
+#: lib/schema.php:2188
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2180
+#: lib/schema.php:2190
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
@@ -4641,12 +4641,12 @@ msgstr ""
 
 #: lib/submenu/essential.php:70 lib/submenu/general.php:91
 msgctxt "option label"
-msgid "Website Name"
+msgid "WebSite Name"
 msgstr ""
 
 #: lib/submenu/essential.php:75 lib/submenu/general.php:96
 msgctxt "option label"
-msgid "Website Description"
+msgid "WebSite Description"
 msgstr ""
 
 #: lib/submenu/essential.php:80 lib/submenu/general.php:105
@@ -4700,7 +4700,7 @@ msgid "Google Knowledge Graph"
 msgstr ""
 
 #: lib/submenu/essential.php:120 lib/submenu/general.php:280
-msgid "Include <a href=\"%s\">Website Information</a> for Google Search"
+msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr ""
 
 #: lib/submenu/essential.php:123 lib/submenu/general.php:283
@@ -4738,7 +4738,7 @@ msgstr ""
 
 #: lib/submenu/general.php:38
 msgctxt "metabox title"
-msgid "Specific Websites and Publishers"
+msgid "Specific WebSites and Publishers"
 msgstr ""
 
 #: lib/submenu/general.php:51
