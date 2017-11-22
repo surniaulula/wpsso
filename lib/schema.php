@@ -1270,9 +1270,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			if ( empty( $ret_data ) ) {	// just in case
+			if ( empty( $ret_data ) ) {	// just in case - nothing to merge
 				return $json_data;
-			} elseif ( $json_data === null ) {
+			} elseif ( $json_data === null ) {	// just in case - nothing to merge
 				return $ret_data;
 			} elseif ( is_array( $json_data ) ) {
 				$json_head = array( '@id' => null, '@context' => null, '@type' => null, 'mainEntityOfPage' => null );

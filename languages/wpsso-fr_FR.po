@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.48.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-11-21 12:54-0600\n"
-"PO-Revision-Date: 2017-11-21 12:56-0600\n"
+"POT-Creation-Date: 2017-11-22 13:36-0600\n"
+"PO-Revision-Date: 2017-11-22 13:36-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1439,12 +1439,12 @@ msgstr "Volontaire"
 
 #: lib/config-gettext-extract.php:146
 msgctxt "option value"
-msgid "[Website Organization]"
+msgid "[WebSite Organization]"
 msgstr "[Organisation du site Web]"
 
 #: lib/config-gettext-extract.php:147 lib/messages.php:888
 msgctxt "lib file description"
-msgid "Website Social Pages and Accounts"
+msgid "WebSite Social Pages and Accounts"
 msgstr "Pages et comptes sociaux du site Web"
 
 #: lib/config-gettext-extract.php:148
@@ -1990,7 +1990,7 @@ msgstr "Enregistrer un brouillon ou publier pour activer ces options."
 #: lib/gpl/admin/meta.php:113 lib/pro/admin/meta.php:130
 #: lib/submenu/general.php:34
 msgctxt "metabox title"
-msgid "All Social Websites / Open Graph"
+msgid "All Social WebSites / Open Graph"
 msgstr "Tous les sites sociaux / Open Graph"
 
 #: lib/gpl/admin/meta.php:117 lib/pro/admin/meta.php:134
@@ -2863,11 +2863,11 @@ msgid "Facebook does not support all WordPress locale values. If the Facebook de
 msgstr "Facebook ne supporte pas toutes les valeurs de langues WordPress. Si le débogueur Facebook donne une erreur pour la la balise méta %1$s, vous pouvez choisir une langue Facebook différente pour cette langue WordPress."
 
 #: lib/messages.php:890
-msgid "Include Website, Organization, and/or Person Schema markup in the front page for Google's Knowledge Graph."
+msgid "Include WebSite, Organization, and/or Person Schema markup in the front page for Google's Knowledge Graph."
 msgstr "Inclure le balisage Schéma de site Web, d'Organisation, et/ou de Personne dans la page d'avant pour le Knowledge Graph de Google."
 
 #: lib/messages.php:890
-msgid "The Website markup includes the site name, alternate site name, site URL and search query URL."
+msgid "The WebSite markup includes the site name, alternate site name, site URL and search query URL."
 msgstr "Le balisage du site Web comprend le nom du site, le nom du site alternatif, l'URL du site et l'URL de la requête de recherche."
 
 #: lib/messages.php:890
@@ -2887,7 +2887,7 @@ msgid "Select a site owner for the optional Person markup included in the front 
 msgstr "Sélectionnez un propriétaire de site pour le balisage optionnel de Personne inclus dans la page d'accueil."
 
 #: lib/messages.php:898
-msgid "An alternate name for your Website that you want Google to consider (optional)."
+msgid "An alternate name for your WebSite that you want Google to consider (optional)."
 msgstr "Un autre nom pour votre site Web que vous souhaitez que Google considère (facultatif)."
 
 #: lib/messages.php:927
@@ -2935,7 +2935,7 @@ msgid "Select an <em>%1$s</em> for the %2$s meta tag or \"[None]\" to disable th
 msgstr "Sélectionnez un <em>%1$s</em> pour la balise méta %2$s ou \"[Aucun]\" pour désactiver cette fonctionnalité (la valeur recommandée est le \"Nom à afficher publiquement\")."
 
 #: lib/messages.php:1029
-msgid "To <a href=\"%s\">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the \"Verify Website\" button."
+msgid "To <a href=\"%s\">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the \"Verify WebSite\" button."
 msgstr "Pour <a href=\"%s\">vérifier votre site Web</a> avec Pinterest, modifiez votre profil de compte d'entreprise sur Pinterest et cliquez sur le bouton \"Vérifier le site\"."
 
 #: lib/messages.php:1029
@@ -3330,9 +3330,9 @@ msgstr "<strong>Une bonne cote est une excellente façon d'encourager vos dével
 msgid "Please encourage us %s by rating the plugins you use:"
 msgstr "Merci de nous encourager %s en évaluant les extensions que vous utilisez:"
 
-#: lib/messages.php:1492
-msgid "This option is localized &mdash; you may change the WordPress locale (see %s) to define alternate values for different languages."
-msgstr "Cette option est localisé &mdash; vous pouvez changer la langue WordPress (voir %s) pour définir des valeurs d'option pour d'autres langues."
+#: lib/messages.php:1488
+msgid "This option is localized &mdash; you may change the WordPress locale to define alternate values for different languages."
+msgstr "Cette option est localisé &mdash; vous pouvez changer la langue WordPress pour définir des valeurs d'option pour d'autres langues."
 
 #: lib/meta.php:126
 msgctxt "metabox tab"
@@ -3769,11 +3769,11 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:2158
+#: lib/schema.php:2188
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:2160
+#: lib/schema.php:2190
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
@@ -3953,12 +3953,12 @@ msgstr "Informations du site"
 
 #: lib/submenu/essential.php:70 lib/submenu/general.php:91
 msgctxt "option label"
-msgid "Website Name"
+msgid "WebSite Name"
 msgstr "Nom du site Web"
 
 #: lib/submenu/essential.php:75 lib/submenu/general.php:96
 msgctxt "option label"
-msgid "Website Description"
+msgid "WebSite Description"
 msgstr "Description du site Web"
 
 #: lib/submenu/essential.php:80 lib/submenu/general.php:105
@@ -4012,7 +4012,7 @@ msgid "Google Knowledge Graph"
 msgstr "Google Knowledge Graph"
 
 #: lib/submenu/essential.php:120 lib/submenu/general.php:280
-msgid "Include <a href=\"%s\">Website Information</a> for Google Search"
+msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr "Inclure les <a href=\"%s\">informations du site Web</a> pour Google Search"
 
 #: lib/submenu/essential.php:123 lib/submenu/general.php:283
@@ -4050,7 +4050,7 @@ msgstr "Le @nom d'affaires Twitter"
 
 #: lib/submenu/general.php:38
 msgctxt "metabox title"
-msgid "Specific Websites and Publishers"
+msgid "Specific WebSites and Publishers"
 msgstr "Éditeurs et sites Web spécifiques"
 
 #: lib/submenu/general.php:51
