@@ -392,6 +392,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Renamed the WpssoSchema is_schema_type_child_of() method to is_schema_type_child().
 	* Added static caching to the WpssoSchema get_mod_schema_type() and is_schema_type_child() methods.
+	* Renamed a few plugin setting option keys:
+		* 'plugin_cf_add_type_urls' to 'plugin_cf_addl_type_urls'
+		* 'schema_organization_json' to 'schema_add_home_organization',
+		* 'schema_person_json' to 'schema_add_home_person',
+		* 'schema_website_json' to 'schema_add_home_website',
+		* 'schema_person_id' to 'schema_home_person_id',
 
 **Version 3.48.5 (2017/11/20)**
 
