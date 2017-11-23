@@ -2097,18 +2097,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		/*
+		 * Rename settings array keys, preserving the option modifiers (:is|:use|#.*|_[0-9]+).
+		 */
 		public function rename_opts_by_ext( &$opts, $options_keys ) {
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-
 				if ( ! isset( $options_keys[$ext] ) || ! is_array( $options_keys[$ext] ) ||
 					! isset( $info['opt_version'] ) || empty( $opts['plugin_'.$ext.'_opt_version'] ) ) {
 					continue;
 				}
-				
 				foreach ( $options_keys[$ext] as $max_version => $keys ) {
-					if ( is_numeric( $max_version ) && is_array( $keys ) &&
-						$opts['plugin_'.$ext.'_opt_version'] <= $max_version ) {
-
+					if ( is_numeric( $max_version ) && is_array( $keys ) && $opts['plugin_'.$ext.'_opt_version'] <= $max_version ) {
 						SucomUtil::rename_keys( $opts, $keys, true );	// rename $modifiers = true
 						$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];	// mark as current
 					}

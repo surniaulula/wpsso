@@ -138,6 +138,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				561 => array(
 					'plugin_shortlink' => 'plugin_wp_shortlink',
 				),
+				568 => array(
+					'plugin_cf_add_type_urls' => 'plugin_cf_addl_type_urls',
+				),
 			),
 			'wpssossb' => array(	// WPSSO SSB
 				14 => array(

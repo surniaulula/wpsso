@@ -256,7 +256,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
 					$table_rows['seo_author_field'] = '<tr class="hide_in_basic">'.
-					$this->form->get_th_html( _x( 'Author Link URL Field',
+					$this->form->get_th_html( _x( 'Author Link URL Profile Contact',
 						'option label', 'wpsso' ), '', 'seo_author_field' ).
 					'<td>'.$this->form->get_select( 'seo_author_field', $user_contacts ).'</td>';
 
@@ -264,33 +264,17 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						_x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' ).'</h4></td>';
 
 					$noscript_disabled = apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', true ) ? false : true;
+					$noscript_comment_transl = _x( 'option disabled by extension plugin or custom filter', 'option comment', 'wpsso' );
 
-					$table_rows['schema_add_noscript'] = '<tr class="hide_in_basic">'.
-					$this->form->get_th_html( _x( 'Meta Property Containers',
-						'option label', 'wpsso' ), '', 'schema_add_noscript' ).
-					'<td>'.( $noscript_disabled ? $this->form->get_no_checkbox( 'schema_add_noscript', '', '', 0 ).
-							' <em>'._x( 'option disabled by extension plugin or custom filter',
-								'option comment', 'wpsso' ).'</em>' :
-							$this->form->get_checkbox( 'schema_add_noscript' ) ).'</td>';
+					if ( ! $noscript_disabled ) {
+						$table_rows['schema_add_noscript'] = '<tr class="hide_in_basic">'.
+						$this->form->get_th_html( _x( 'Meta Property Containers',
+							'option label', 'wpsso' ), '', 'schema_add_noscript' ).
+						'<td>'.( $noscript_disabled ? $this->form->get_no_checkbox( 'schema_add_noscript', '', '', 0 ).
+							' <em>'.$noscript_comment_transl.'</em>' : $this->form->get_checkbox( 'schema_add_noscript' ) ).'</td>';
+					}
 
-					$table_rows['schema_knowledge_graph'] = $this->form->get_th_html( _x( 'Google Knowledge Graph',
-						'option label', 'wpsso' ), '', 'schema_knowledge_graph' ).
-					'<td>'.
-					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
-						sprintf( __( 'Include <a href="%s">WebSite Information</a> for Google Search',
-							'wpsso' ), 'https://developers.google.com/structured-data/site-name' ).'</p>'.
-					'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).' '.
-						sprintf( __( 'Include <a href="%s">Organization Social Profile</a>',
-							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
-					'<p>'.$this->form->get_checkbox( 'schema_person_json' ).' '.
-						sprintf( __( 'Include <a href="%s">Person Social Profile</a> for the Site Owner',
-							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
-					'</td>';
-
-					$editors_and_admins = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
-					$table_rows['schema_person_id'] = $this->form->get_th_html( _x( 'Site Owner for Social Profile',
-						'option label', 'wpsso' ), '', 'schema_person_id' ).
-					'<td>'.$this->form->get_select( 'schema_person_id', $editors_and_admins, '', '', true ).'</td>';
+					$this->add_schema_knowledge_graph_table_rows( $table_rows );
 
 					$this->add_schema_item_props_table_rows( $table_rows );
 

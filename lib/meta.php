@@ -53,7 +53,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'p_img_url' => 'schema_img_url',
 				),
 				537 => array(
-					'schema_add_type_url' => 'schema_add_type_url_0',
+					'schema_add_type_url' => 'schema_addl_type_url_0',
+				),
+				568 => array(
+					'schema_add_type_url' => 'schema_addl_type_url',	// option modifiers are preserved
 				),
 			),
 		);
@@ -1125,11 +1128,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			/* Example config:
 			 *
-			 *	'cf_md_idx' => array(		// custom field to meta data index
+			 *	'cf_md_idx' => array(
 			 *		'plugin_cf_img_url' => 'og_img_url',
 			 *		'plugin_cf_vid_url' => 'og_vid_url',
 			 *		'plugin_cf_vid_embed' => 'og_vid_embed',
-			 *		'plugin_cf_add_type_urls' => 'schema_add_type_url',
+			 *		'plugin_cf_addl_type_urls' => 'schema_addl_type_url',
 			 *		'plugin_cf_recipe_ingredients' => 'schema_recipe_ingredient',
 			 *		'plugin_cf_recipe_instructions' => 'schema_recipe_instruction',
 			 *		'plugin_cf_product_avail' => 'product_avail',

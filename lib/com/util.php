@@ -1322,7 +1322,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				'contributors' => false,
 				'description' => false,
 				'donate_link' => false,
-				'downloaded' => false,
 				'downloadlink' => true,		// get by default
 				'group' => false,
 				'homepage' => false,

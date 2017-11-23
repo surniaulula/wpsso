@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.6-b.1',		// plugin version
-					'opt_version' => '568',		// increment when changing default options
+					'version' => '3.48.6-b.2',		// plugin version
+					'opt_version' => '569',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -901,7 +901,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url' => '_format_image_url',	// Image URL Custom Field
 					'plugin_cf_vid_url' => '_format_video_url',	// Video URL Custom Field
 					'plugin_cf_vid_embed' => '',			// Video Embed HTML Custom Field
-					'plugin_cf_add_type_urls' => '',		// Additional Type URLs Custom Field
+					'plugin_cf_addl_type_urls' => '',		// Additional Type URLs Custom Field
 					'plugin_cf_recipe_ingredients' => '',		// Recipe Ingredients Custom Field
 					'plugin_cf_recipe_instructions' => '',		// Recipe Instructions Custom Field
 					'plugin_cf_product_avail' => '',		// Product Availability Custom Field
@@ -1067,7 +1067,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url' => 'og_img_url',
 					'plugin_cf_vid_url' => 'og_vid_url',
 					'plugin_cf_vid_embed' => 'og_vid_embed',
-					'plugin_cf_add_type_urls' => 'schema_add_type_url',
+					'plugin_cf_addl_type_urls' => 'schema_addl_type_url',
 					'plugin_cf_recipe_ingredients' => 'schema_recipe_ingredient',
 					'plugin_cf_recipe_instructions' => 'schema_recipe_instruction',
 					'plugin_cf_product_avail' => 'product_avail',
@@ -1080,7 +1080,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_size' => 'product_size',
 				),
 				'cf_md_multi' => array(		// read values into numeric meta data index
-					'schema_add_type_url' => true,
+					'schema_addl_type_url' => true,
 					'schema_recipe_ingredient' => true,
 					'schema_recipe_instruction' => true,
 				),
@@ -1422,7 +1422,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url' => 'Image URL Custom Field',
 					'plugin_cf_vid_url' => 'Video URL Custom Field',
 					'plugin_cf_vid_embed' => 'Video Embed HTML Custom Field',
-					'plugin_cf_add_type_urls' => 'Additional Type URLs Custom Field',
+					'plugin_cf_addl_type_urls' => 'Additional Type URLs Custom Field',
 					'plugin_cf_recipe_ingredients' => 'Recipe Ingredients Custom Field',
 					'plugin_cf_recipe_instructions' => 'Recipe Instructions Custom Field',
 					'plugin_cf_product_avail' => 'Product Availability Custom Field',

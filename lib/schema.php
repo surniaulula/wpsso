@@ -946,11 +946,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/*
-			 * Add https://schema.org/BreadcrumbList to every webpage.
-			 *
 			 * See https://developers.google.com/search/docs/data-types/breadcrumbs for more info.
 			 */
-			//$page_type_ids['breadcrumb.list'] = true;
+			//$page_type_ids['breadcrumb.list'] = $this->p->options['schema_breadcrumb_json'];
 
 			/*
 			 * Array (
@@ -958,7 +956,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *	[website] => true
 			 *	[organization] => true
 			 *	[person] => false
-			 *	[breadcrumb.list] => false
+			 *	[breadcrumb.list] => true
 			 * )
 			 */
 			$page_type_ids = apply_filters( $this->p->lca.'_json_array_schema_page_type_ids', $page_type_ids, $mod );

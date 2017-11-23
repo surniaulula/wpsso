@@ -537,7 +537,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'latest' => 'download_link',
 				'author' => 'author',
 				'upgrade_notice' => 'upgrade_notice',
-				'downloaded' => 'downloaded',
 				'last_updated' => 'last_updated',
 				'sections' => 'sections',
 				'remaining_content' => 'other_notes',	// added to sections
@@ -2190,11 +2189,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		// called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes
-		protected function add_schema_item_types_table_rows( array &$table_rows, $tr_classes = array(), $schema_types = array() ) {
+		protected function add_schema_item_types_table_rows( array &$table_rows, $tr_classes = array(), $schema_types = false ) {
 
 			$tr_class_default = is_string( $tr_classes ) ? $tr_classes : '';
 
-			if ( empty( $schema_types ) ) {
+			if ( ! is_array( $schema_types ) ) {
 				$schema_types = $this->p->schema->get_schema_types_select( null, true );	// $add_none = true
 			}
 
@@ -2230,6 +2229,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->form->get_th_html( $type_label, '', $opt_key ).
 			'<td>'.$select_by_ptn.'</td>';
 
+		}
+
+		// called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes
+		protected function add_schema_knowledge_graph_table_rows( array &$table_rows ) {
+
+			$table_rows['schema_knowledge_graph'] = $this->form->get_th_html( _x( 'Knowledge Graph for Home Page',
+				'option label', 'wpsso' ), '', 'schema_knowledge_graph' ).
+			'<td>'.
+			'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
+				sprintf( __( 'Include <a href="%s">WebSite Information</a> for Google Search',
+					'wpsso' ), 'https://developers.google.com/structured-data/site-name' ).'</p>'.
+			'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).' '.
+				sprintf( __( 'Include <a href="%s">Organization Social Profile</a>',
+					'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
+			'<p>'.$this->form->get_checkbox( 'schema_person_json' ).' '.
+				sprintf( __( 'Include <a href="%s">Person Social Profile</a> for the Site Owner',
+					'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
+			'</td>';
+
+			$edit_admin_users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
+
+			$table_rows['schema_person_id'] = $this->form->get_th_html( _x( 'Site Owner for Person Social Profile',
+				'option label', 'wpsso' ), '', 'schema_person_id' ).
+			'<td>'.$this->form->get_select( 'schema_person_id', $edit_admin_users, '', '', true ).'</td>';
 		}
 
 		// called from the WpssoSubmenuEssential, WpssoSubmenuAdvanced, and WpssoSitesubmenuSiteadvanced classes

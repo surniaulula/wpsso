@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 					$users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
 
-					$table_rows['schema_knowledge_graph'] = $this->form->get_th_html( _x( 'Google Knowledge Graph',
+					$table_rows['schema_knowledge_graph'] = $this->form->get_th_html( _x( 'Knowledge Graph for Home Page',
 						'option label', 'wpsso' ), null, 'schema_knowledge_graph' ).
 					'<td>'.
 					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
@@ -128,7 +128,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					'</td>';
 
 					$editors_and_admins = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
-					$table_rows['schema_person_id'] = $this->form->get_th_html( _x( 'Site Owner for Social Profile',
+					$table_rows['schema_person_id'] = $this->form->get_th_html( _x( 'Site Owner for Person Social Profile',
 						'option label', 'wpsso' ), '', 'schema_person_id' ).
 					'<td>'.$this->form->get_select( 'schema_person_id', $editors_and_admins, '', '', true ).'</td>';
 

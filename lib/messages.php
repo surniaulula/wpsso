@@ -499,7 +499,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									_x( 'Video Embed HTML', 'option label', 'wpsso' ) );
 							}
 							// no break - fall through
-						case 'tooltip-plugin_cf_add_type_urls':
+						case 'tooltip-plugin_cf_addl_type_urls':
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'additional Schema type URLs', 'tooltip fragment', 'wpsso' ),
@@ -866,7 +866,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-seo_author_field':
-							$text = $info['short'].' can include an <em>author</em> and <em>publisher</em> links in the webpage head section. These are not Facebook / Open Graph and Pinterest Rich Pin meta property tags &mdash; they are used primarily by Google\'s search engine to associate Google+ profiles with search results. Select which field to use from the author\'s profile for the <em>author</em> link tag.';
+							$text = $info['short'].' can include an <em>author</em> link URLs in the webpage head section for Google. Select which user profile contact field to use for the <em>author</em> link value.';
 							break;
 
 						default:
@@ -1095,7 +1095,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'general',
 								_x( 'General Settings', 'lib file description', 'wpsso' ) );
 
-							$text = '<strong>You should not modify the contact field names unless you have a specific reason to do so.</strong> As an example, to match the contact field name of a theme or other plugin, you might change "gplus" to "googleplus". If you change the Facebook or Google+ field names, please make sure to update the Open Graph <em>Author Profile URL</em> and <em>Google Author Link URL</em> options in the '.$settings_page_link.' as well.';
+							$text = '<strong>You should not modify the contact field names unless you have a specific reason to do so.</strong> As an example, to match the contact field name of a theme or other plugin, you might change "gplus" to "googleplus". If you change the Facebook or Google+ field names, please make sure to update the Open Graph <em>Author Profile URL</em> and Google <em>Author Link URL Profile Contact</em> options in the '.$settings_page_link.' as well.';
 
 							break;
 
