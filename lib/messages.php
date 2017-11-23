@@ -862,11 +862,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-seo_desc_len':
-							$text = 'The maximum length of text used for the Google Search / SEO description meta tag. The length should be at least '.$this->p->cf['head']['limit_min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'seo_desc_len' ).' characters).';
+
+							$text = __( 'The maximum length of text used for the Google Search / SEO description meta tag.', 'wpsso' ).' '.sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).', 'wpsso' ), $this->p->cf['head']['limit_min']['og_desc_len'], $this->p->opt->get_defaults( 'seo_desc_len' ) );
 							break;
 
 						case 'tooltip-seo_author_field':
-							$text = $info['short'].' can include an <em>author</em> link URLs in the webpage head section for Google. Select which user profile contact field to use for the <em>author</em> link value.';
+
+							$text = sprintf( __( '%s can include an <em>author</em> link URL in the head section for Google.', 'wpsso' ), $info['short'] ).' '.__( 'Select the user profile contact field to use for the <em>author</em> link value.', 'wpsso' );
 							break;
 
 						default:
@@ -879,6 +881,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				} elseif ( strpos( $idx, 'tooltip-schema_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-schema_add_noscript':
+
 							$text = 'When additional schema properties are available (product ratings, recipe ingredients, etc.), one or more <code>noscript</code> containers may be included in the webpage head section. <code>noscript</code> containers are read correctly by Google and Pinterest, but the W3C Validator will show errors for the included meta tags (these errors can be safely ignored). The <code>noscript</code> containers are always disabled for AMP webpages, and always enabled for the Pinterest crawler.';
 							break;
 
@@ -890,7 +893,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'Include WebSite, Organization, and/or Person Schema markup in the front page for Google\'s Knowledge Graph.', 'wpsso' ).' '.__( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' '.sprintf( __( 'Developers can hook the "%s" filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $lca.'_json_ld_search_url' ).' '.sprintf( __( 'The Organization markup includes all URLs entered on the %s settings page.', 'wpsso' ), $settings_page_link ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
 							break;
 
-						case 'tooltip-schema_person_id':
+						case 'tooltip-schema_home_person_id':
 							$text = __( 'Select a site owner for the optional Person markup included in the front page.', 'wpsso' ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
 							break;
 

@@ -111,26 +111,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						'option label', 'wpsso' ), null, 'seo_publisher_url', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'seo_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
-					$users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
-
-					$table_rows['schema_knowledge_graph'] = $this->form->get_th_html( _x( 'Knowledge Graph for Home Page',
-						'option label', 'wpsso' ), null, 'schema_knowledge_graph' ).
-					'<td>'.
-					'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
-						sprintf( __( 'Include <a href="%s">WebSite Information</a> for Google Search',
-							'wpsso' ), 'https://developers.google.com/structured-data/site-name' ).'</p>'.
-					'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).' '.
-						sprintf( __( 'Include <a href="%s">Organization Social Profile</a>',
-							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
-					'<p>'.$this->form->get_checkbox( 'schema_person_json' ).' '.
-						sprintf( __( 'Include <a href="%s">Person Social Profile</a> for the Site Owner',
-							'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
-					'</td>';
-
-					$editors_and_admins = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
-					$table_rows['schema_person_id'] = $this->form->get_th_html( _x( 'Site Owner for Person Social Profile',
-						'option label', 'wpsso' ), '', 'schema_person_id' ).
-					'<td>'.$this->form->get_select( 'schema_person_id', $editors_and_admins, '', '', true ).'</td>';
+					$this->add_schema_knowledge_graph_table_rows( $table_rows );
 
 					$table_rows['schema_logo_url'] = $this->form->get_th_html(
 						'<a href="https://developers.google.com/structured-data/customize/logos">'.

@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				537 => array(
 					'schema_add_type_url' => 'schema_addl_type_url_0',
 				),
-				568 => array(
+				569 => array(
 					'schema_add_type_url' => 'schema_addl_type_url',	// option modifiers are preserved
 				),
 			),

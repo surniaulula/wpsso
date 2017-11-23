@@ -138,8 +138,12 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				561 => array(
 					'plugin_shortlink' => 'plugin_wp_shortlink',
 				),
-				568 => array(
+				569 => array(
 					'plugin_cf_add_type_urls' => 'plugin_cf_addl_type_urls',
+					'schema_organization_json' => 'schema_add_home_organization',
+					'schema_person_json' => 'schema_add_home_person',
+					'schema_website_json' => 'schema_add_home_website',
+					'schema_person_id' => 'schema_home_person_id',
 				),
 			),
 			'wpssossb' => array(	// WPSSO SSB

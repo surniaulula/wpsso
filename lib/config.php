@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.48.6-b.2',		// plugin version
-					'opt_version' => '569',		// increment when changing default options
+					'opt_version' => '570',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -551,10 +551,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'site_org_type' => 'organization',
 					'site_place_id' => 'none',
 					'schema_add_noscript' => 1,
-					'schema_website_json' => 1,
-					'schema_organization_json' => 1,
-					'schema_person_json' => 0,
-					'schema_person_id' => '',
+					'schema_add_home_organization' => 1,
+					'schema_add_home_person' => 0,
+					'schema_add_home_website' => 1,
+					'schema_home_person_id' => '',
 					'schema_alt_name' => '',
 					'schema_logo_url' => '',
 					'schema_banner_url' => '',

@@ -932,9 +932,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'organization schema type id is '.$site_org_type_id );
 				}
 
-				$page_type_ids['website'] = $this->p->options['schema_website_json'];
-				$page_type_ids[$site_org_type_id] = $this->p->options['schema_organization_json'];
-				$page_type_ids['person'] = $this->p->options['schema_person_json'];
+				$page_type_ids['website'] = $this->p->options['schema_add_home_website'];
+				$page_type_ids[$site_org_type_id] = $this->p->options['schema_add_home_organization'];
+				$page_type_ids['person'] = $this->p->options['schema_add_home_person'];
 			}
 
 			/*
@@ -948,7 +948,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/*
 			 * See https://developers.google.com/search/docs/data-types/breadcrumbs for more info.
 			 */
-			//$page_type_ids['breadcrumb.list'] = $this->p->options['schema_breadcrumb_json'];
+			//$page_type_ids['breadcrumb.list'] = $this->p->options['schema_add_breadcrumbs'];
 
 			/*
 			 * Array (
@@ -1412,13 +1412,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $mod['is_home'] ) {	// static or index page
-				if ( empty( $this->p->options['schema_person_id'] ) ) {
+				if ( empty( $this->p->options['schema_home_person_id'] ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: schema_person_id disabled for home page' );
+						$this->p->debug->log( 'exiting early: schema_home_person_id disabled for home page' );
 					}
 					return $json_data;	// exit early
 				} else {
-					$user_id = $this->p->options['schema_person_id'];
+					$user_id = $this->p->options['schema_home_person_id'];
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'person / user_id for home page is '.$user_id );
 					}

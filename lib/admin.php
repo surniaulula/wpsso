@@ -1218,14 +1218,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'(code) Facebook / Open Graph Meta Tags' => array(
 							'status' => class_exists( $lca.'opengraph' ) ? 'on' : 'rec',
 						),
-						'(code) Google Author / Person Markup' => array(
-							'status' => $this->p->options['schema_person_json'] ? 'on' : 'off',
+						'(code) Knowledge Graph Person Markup' => array(
+							'status' => $this->p->options['schema_add_home_person'] ? 'on' : 'off',
 						),
-						'(code) Google Publisher / Organization Markup' => array(
-							'status' => $this->p->options['schema_organization_json'] ? 'on' : 'off',
+						'(code) Knowledge Graph Organization Markup' => array(
+							'status' => $this->p->options['schema_add_home_organization'] ? 'on' : 'off',
 						),
-						'(code) Google WebSite Markup' => array(
-							'status' => $this->p->options['schema_website_json'] ? 'on' : 'rec',
+						'(code) Knowledge Graph WebSite Markup' => array(
+							'status' => $this->p->options['schema_add_home_website'] ? 'on' : 'rec',
 						),
 						'(code) Schema Meta Property Containers' => array(
 							'status' => apply_filters( $lca.'_add_schema_noscript_array',
@@ -2231,28 +2231,28 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		}
 
-		// called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes
+		// called from the WpssoSubmenuEssential, WpssoSubmenuGeneral, and WpssoJsonSubmenuSchemaJsonLd classes
 		protected function add_schema_knowledge_graph_table_rows( array &$table_rows ) {
 
 			$table_rows['schema_knowledge_graph'] = $this->form->get_th_html( _x( 'Knowledge Graph for Home Page',
 				'option label', 'wpsso' ), '', 'schema_knowledge_graph' ).
 			'<td>'.
-			'<p>'.$this->form->get_checkbox( 'schema_website_json' ).' '.
+			'<p>'.$this->form->get_checkbox( 'schema_add_home_website' ).' '.
 				sprintf( __( 'Include <a href="%s">WebSite Information</a> for Google Search',
 					'wpsso' ), 'https://developers.google.com/structured-data/site-name' ).'</p>'.
-			'<p>'.$this->form->get_checkbox( 'schema_organization_json' ).' '.
+			'<p>'.$this->form->get_checkbox( 'schema_add_home_organization' ).' '.
 				sprintf( __( 'Include <a href="%s">Organization Social Profile</a>',
 					'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
-			'<p>'.$this->form->get_checkbox( 'schema_person_json' ).' '.
+			'<p>'.$this->form->get_checkbox( 'schema_add_home_person' ).' '.
 				sprintf( __( 'Include <a href="%s">Person Social Profile</a> for the Site Owner',
 					'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ).'</p>'.
 			'</td>';
 
 			$edit_admin_users = SucomUtil::get_user_select( array( 'editor', 'administrator' ) );
 
-			$table_rows['schema_person_id'] = $this->form->get_th_html( _x( 'Site Owner for Person Social Profile',
-				'option label', 'wpsso' ), '', 'schema_person_id' ).
-			'<td>'.$this->form->get_select( 'schema_person_id', $edit_admin_users, '', '', true ).'</td>';
+			$table_rows['schema_home_person_id'] = $this->form->get_th_html( _x( 'User for Person Social Profile',
+				'option label', 'wpsso' ), '', 'schema_home_person_id' ).
+			'<td>'.$this->form->get_select( 'schema_home_person_id', $edit_admin_users, '', '', true ).'</td>';
 		}
 
 		// called from the WpssoSubmenuEssential, WpssoSubmenuAdvanced, and WpssoSitesubmenuSiteadvanced classes
