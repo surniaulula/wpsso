@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.6-b.2 (2017/11/22)**
+**Version 3.48.6-rc.1 (2017/11/23)**
 
 * *New Features*
 	* None
@@ -801,9 +801,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.6-b.2 =
+= 3.48.6-rc.1 =
 
-(2017/11/22) Added a notice on the settings page if the current language is different than the default site language. Added static caching to the WpssoSchema get_mod_schema_type() and is_schema_type_child_of() methods.
+(2017/11/23) Added a notice on the settings page if the current language is different than the default site language. Added static caching to the WpssoSchema get_mod_schema_type() and is_schema_type_child_of() methods.
 
 = 3.48.5 =
 
