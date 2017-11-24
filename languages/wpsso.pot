@@ -658,17 +658,17 @@ msgstr ""
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
-#: lib/com/bfo.php:204 lib/com/cache.php:438 lib/com/notice.php:518
-#: lib/com-gettext-extract.php:24
+#: lib/com/bfo.php:204 lib/com/cache.php:438 lib/com/notice.php:540
+#: lib/com-gettext-extract.php:25
 msgid "%s Notice"
 msgstr ""
 
-#: lib/com/bfo.php:207 lib/com/cache.php:441 lib/com/notice.php:521
-#: lib/com-gettext-extract.php:17
+#: lib/com/bfo.php:207 lib/com/cache.php:441 lib/com/notice.php:543
+#: lib/com-gettext-extract.php:18
 msgid "Notice"
 msgstr ""
 
-#: lib/com/bfo.php:219 lib/com-gettext-extract.php:25
+#: lib/com/bfo.php:219 lib/com-gettext-extract.php:26
 msgid ""
 "The \"%1$s\" filter hook with priority %2$d in the \"%3$s\" filter has "
 "mistakenly provided some webpage output."
@@ -680,13 +680,13 @@ msgid ""
 "webpage output."
 msgstr ""
 
-#: lib/com/bfo.php:223 lib/com-gettext-extract.php:19
+#: lib/com/bfo.php:223 lib/com-gettext-extract.php:20
 msgid ""
 "Please contact the author of that filter hook and report this issue as a "
 "coding error / bug."
 msgstr ""
 
-#: lib/com/bfo.php:249 lib/com-gettext-extract.php:16
+#: lib/com/bfo.php:249 lib/com-gettext-extract.php:17
 msgid "Incorrect webpage output:"
 msgstr ""
 
@@ -694,57 +694,57 @@ msgstr ""
 msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: lib/com/bfo.php:252 lib/com-gettext-extract.php:10
+#: lib/com/bfo.php:252 lib/com-gettext-extract.php:11
 msgid "END OUTPUT"
 msgstr ""
 
-#: lib/com/cache.php:92 lib/com-gettext-extract.php:11
+#: lib/com/cache.php:92 lib/com-gettext-extract.php:12
 msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
 msgstr ""
 
-#: lib/com/cache.php:105 lib/com-gettext-extract.php:27
+#: lib/com/cache.php:105 lib/com-gettext-extract.php:28
 msgid ""
 "The PHP \"%s\" feature is enabled &mdash; the PHP cURL library cannot follow "
 "URL redirects."
 msgstr ""
 
-#: lib/com/cache.php:108 lib/com-gettext-extract.php:29
+#: lib/com/cache.php:108 lib/com-gettext-extract.php:30
 msgid ""
 "The \"%s\" feature is deprecated since PHP version 5.3 and removed from PHP "
 "since version 5.4."
 msgstr ""
 
-#: lib/com/cache.php:111 lib/com-gettext-extract.php:20
+#: lib/com/cache.php:111 lib/com-gettext-extract.php:21
 msgid ""
 "Please contact your hosting provider to have this feature disabled or "
 "install a newer version of PHP."
 msgstr ""
 
-#: lib/com/cache.php:122 lib/com-gettext-extract.php:28
+#: lib/com/cache.php:122 lib/com-gettext-extract.php:29
 msgid ""
 "The PHP \"%s\" setting is defined &mdash; the PHP cURL library cannot follow "
 "URL redirects."
 msgstr ""
 
-#: lib/com/cache.php:125 lib/com-gettext-extract.php:21
+#: lib/com/cache.php:125 lib/com-gettext-extract.php:22
 msgid "Please contact your hosting provider to have this setting disabled."
 msgstr ""
 
-#: lib/com/cache.php:129 lib/com-gettext-extract.php:26
+#: lib/com/cache.php:129 lib/com-gettext-extract.php:27
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: lib/com/cache.php:134 lib/com-gettext-extract.php:23
+#: lib/com/cache.php:134 lib/com-gettext-extract.php:24
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
-#: lib/com/cache.php:211 lib/com-gettext-extract.php:18
+#: lib/com/cache.php:211 lib/com-gettext-extract.php:19
 msgid ""
 "PHP cURL library is missing &mdash; contact your hosting provider to have "
 "the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:288 lib/com-gettext-extract.php:12
+#: lib/com/cache.php:288 lib/com-gettext-extract.php:13
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -752,11 +752,11 @@ msgstr ""
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:501 lib/com-gettext-extract.php:14
+#: lib/com/cache.php:501 lib/com-gettext-extract.php:15
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:586 lib/com-gettext-extract.php:13
+#: lib/com/cache.php:586 lib/com-gettext-extract.php:14
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
@@ -764,41 +764,45 @@ msgstr ""
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:602 lib/com-gettext-extract.php:15
+#: lib/com/cache.php:602 lib/com-gettext-extract.php:16
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/notice.php:77 lib/com-gettext-extract.php:30
+#: lib/com/notice.php:77 lib/com-gettext-extract.php:31
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr ""
 
-#: lib/com/notice.php:87 lib/com-gettext-extract.php:22
-msgid "Reference URL: %s"
+#: lib/com/notice.php:199 lib/com-gettext-extract.php:10
+msgid "edit"
 msgstr ""
 
-#: lib/com/notice.php:453 lib/com-gettext-extract.php:31
+#: lib/com/notice.php:200 lib/com-gettext-extract.php:23
+msgid "Reference: %s"
+msgstr ""
+
+#: lib/com/notice.php:475 lib/com-gettext-extract.php:32
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:454 lib/com-gettext-extract.php:32
+#: lib/com/notice.php:476 lib/com-gettext-extract.php:33
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:459 lib/com-gettext-extract.php:4
+#: lib/com/notice.php:481 lib/com-gettext-extract.php:4
 msgid ""
 "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr ""
 
-#: lib/com/notice.php:461 lib/com-gettext-extract.php:3
+#: lib/com/notice.php:483 lib/com-gettext-extract.php:3
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
 msgstr ""
 
-#: lib/com/notice.php:591 lib/com-gettext-extract.php:9
+#: lib/com/notice.php:613 lib/com-gettext-extract.php:9
 msgid "Dismiss"
 msgstr ""
 
@@ -2236,6 +2240,22 @@ msgid ""
 "additional BuddyPress Profile Field for members to enter their profile "
 "description, enter the field name here (example: Biographical Info, About "
 "Me, etc.)."
+msgstr ""
+
+#: lib/head.php:429
+msgid "adding open graph meta tags"
+msgstr ""
+
+#: lib/head.php:441
+msgid "adding twitter card meta tags"
+msgstr ""
+
+#: lib/head.php:480
+msgid "adding schema meta tags"
+msgstr ""
+
+#: lib/head.php:487
+msgid "adding schema json-ld markup"
 msgstr ""
 
 #: lib/media.php:350
@@ -4498,16 +4518,24 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2186
+#: lib/schema.php:2159
+msgid "adding schema for organization"
+msgstr ""
+
+#: lib/schema.php:2192
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2188
+#: lib/schema.php:2194
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
+msgstr ""
+
+#: lib/schema.php:2417
+msgid "adding schema for place"
 msgstr ""
 
 #: lib/script.php:131

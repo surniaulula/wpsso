@@ -82,11 +82,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$payload['dis_time'] = false;
 			}
 
-			if ( $ref_url = $this->get_ref( 'url' ) ) {
-				$ref_context = $this->get_ref( 'context', ' (', ')' );
-				$msg_txt .= '<p class="ref_url">'.sprintf( __( 'Reference URL: %s', $this->text_domain ),
-					'<a href="'.$ref_url.'">'.$ref_url.'</a>'.$ref_context ).'</p>';
-			}
+			$msg_txt .= $this->get_ref_url_html();
 
 			if ( $user_id === true ) {
 				$user_id = (int) get_current_user_id();
@@ -158,8 +154,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		// set reference values for admin notices
-		public function set_ref( $url = null, $mod = null, $context = null ) {
-			$this->ref_cache[] = array( 'url' => $url, 'mod' => $mod, 'context' => $context );
+		public function set_ref( $url = null, $mod = null, $context_transl = null ) {
+			$this->ref_cache[] = array( 'url' => $url, 'mod' => $mod, 'context_transl' => $context_transl );
 		}
 
 		// restore previous reference values for admin notices
@@ -173,12 +169,38 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		public function get_ref( $idx = false, $prefix = '', $suffix = '' ) {
-			$refs = end( $this->ref_cache );
-			if ( $idx !== false ) {
-				return isset( $refs[$idx] ) ? $prefix.$refs[$idx].$suffix : null;
+			$refs = end( $this->ref_cache );	// get the last reference added
+			if ( $idx === 'edit' ) {
+				if ( isset( $refs['mod'] ) ) {
+					if ( $refs['mod']['is_post'] && $refs['mod']['id'] ) {
+						return $prefix.get_edit_post_link( $refs['mod']['id'], false ).$suffix;	// $display = false
+					} else {
+						return '';
+					}
+				} else {
+					return '';
+				}
+			} elseif ( $idx !== false ) {
+				if ( isset( $refs[$idx] ) ) {
+					return $prefix.$refs[$idx].$suffix;
+				} else {
+					null;
+				}
 			} else {
 				return $refs;
 			}
+		}
+
+		public function get_ref_url_html() {
+			$ref_html = '';
+			if ( $url = $this->get_ref( 'url' ) ) {
+				$context_transl = $this->get_ref( 'context_transl', '', ' ' );
+				$url_link = '<a href="'.$url.'">'.strtolower( $url ).'</a>';
+				$edit_link = $this->get_ref( 'edit', ' (<a href="', '">'.__( 'edit', $this->text_domain ).'</a>)' );
+				$ref_html .= '<p class="reference-message">'.sprintf( __( 'Reference: %s', $this->text_domain ),
+					$context_transl.$url_link.$edit_link ).'</p>';
+			}
+			return $ref_html;
 		}
 
 		public function is_ref_url( $url = null ) {
@@ -669,7 +691,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.'.$this->lca.'-notice .notice-message p {
 					margin:1em 0;
 				}
-				.'.$this->lca.'-notice .notice-message p.ref_url {
+				.'.$this->lca.'-notice .notice-message p.reference-message {
 					font-size:0.8em;
 					margin:10px 0 0 0;
 				}

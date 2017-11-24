@@ -86,7 +86,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
 			$cache_index = '';
 
 			if ( $mixed !== false ) {
@@ -112,8 +111,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$cache_index = trim( $cache_index, '_' );	// cleanup leading underscores
-
-			$cache_index = apply_filters( $lca.'_head_cache_index', $cache_index, $mixed, $sharing_url );
+			$cache_index = apply_filters( $this->p->lca.'_head_cache_index', $cache_index, $mixed, $sharing_url );
 
 			return $cache_index;
 		}
@@ -125,8 +123,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
-			$use_post = apply_filters( $lca.'_use_post', false );	// used by woocommerce with is_shop()
+			$use_post = apply_filters( $this->p->lca.'_use_post', false );	// used by woocommerce with is_shop()
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
@@ -142,7 +139,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->util->log_is_functions();
 			}
 
-			$add_head_html = apply_filters( $lca.'_add_head_html', $this->p->avail['*']['head_html'], $mod );
+			$add_head_html = apply_filters( $this->p->lca.'_add_head_html', $this->p->avail['*']['head_html'], $mod );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'avail head_html = '.( $this->p->avail['*']['head_html'] ? 'true' : 'false' ) );
@@ -152,7 +149,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $add_head_html ) {
 				echo $this->get_head_html( $use_post, $mod, $read_cache, $mt_og );
 			} else {
-				echo "\n<!-- ".$lca." head html is disabled -->\n";
+				echo "\n<!-- ".$this->p->lca." head html is disabled -->\n";
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -274,17 +271,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		public function get_mt_mark( $type ) {
 
-			$lca = $this->p->cf['lca'];
 			$ret = '';
 
 			switch ( $type ) {
 				case 'begin':
 				case 'end':
-					$add_meta = apply_filters( $lca.'_add_meta_name_'.$lca.':mark',
+					$add_meta = apply_filters( $this->p->lca.'_add_meta_name_'.$this->p->lca.':mark',
 						( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
 
-					$comment = '<!-- '.$lca.' meta tags '.$type.' -->';
-					$mt_name = $add_meta ? '<meta name="'.$lca.':mark:'.$type.'" content="'.$lca.' meta tags '.$type.'"/>'."\n" : '';
+					$comment = '<!-- '.$this->p->lca.' meta tags '.$type.' -->';
+					$mt_name = $add_meta ? '<meta name="'.$this->p->lca.':mark:'.$type.'" '.
+						'content="'.$this->p->lca.' meta tags '.$type.'"/>'."\n" : '';
 
 					if ( $type === 'begin' ) {
 						$ret = "\n\n".$comment."\n".$mt_name;
@@ -299,10 +296,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 * Some HTML optimization plugins/services may remove the double-quotes from the name attribute, 
 					 * along with the trailing space and slash characters, so make these optional in the regex.
 					 */
-					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?'.$lca.':mark:(begin|end)"?[\s\n\r]+content=")';
+					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?'.$this->p->lca.':mark:(begin|end)"?[\s\n\r]+content=")';
 					$suffix = '([\s\n\r]+--|"[\s\n\r]*\/?)>';
 		
-					$ret = '/'.$prefix.$lca.' meta tags begin'.$suffix.'.*'.$prefix.$lca.' meta tags end'.$suffix.'/ums';	// enable utf8 support
+					$ret = '/'.$prefix.$this->p->lca.' meta tags begin'.$suffix.'.*'.
+						$prefix.$this->p->lca.' meta tags end'.$suffix.'/ums';	// enable utf8 support
 
 					break;
 			}
@@ -323,7 +321,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			}
 
-			$lca = $this->p->cf['lca'];
 			$start_time = microtime( true );
 			$crawler_name = SucomUtil::get_crawler_name();
 			$html = $this->get_mt_mark( 'begin' );
@@ -344,7 +341,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$html .= $this->get_mt_mark( 'end' );
 			$html .= '<!-- added on '.date( 'c' ).' in '.sprintf( '%f secs', microtime( true ) - $start_time ).
-				( $crawler_name !== 'none' ? ' for '.$crawler_name : '' ).' from '.SucomUtilWP::raw_home_url().' -->'."\n";
+				( $crawler_name !== 'none' ? ' for '.$crawler_name : '' ).' from '.SucomUtilWP::raw_home_url().' -->'."\n\n";
 
 			return $html;
 		}
@@ -356,8 +353,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark( 'build head array' );	// begin timer
 			}
 
-			$lca = $this->p->cf['lca'];
-
 			// $mod is preferred but not required
 			// $mod = true | false | post_id | $mod array
 			if ( ! is_array( $mod ) ) {
@@ -367,6 +362,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			}
 
+			$is_admin = is_admin();	// call the function only once
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$crawler_name = SucomUtil::get_crawler_name();
 			$head_array = array();
@@ -376,7 +372,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * less in length. If using a site transient, it should be 40 characters or less in length.
 			 */
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
-			$cache_md5_pre = $lca.'_h_';
+			$cache_md5_pre = $this->p->lca.'_h_';
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_exp_filter = $this->p->cf['wp']['transient'][$cache_md5_pre]['filter'];
 				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
@@ -417,10 +413,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'head array transient cache is disabled' );
 			}
 
-			// set reference values for admin notices
-			if ( is_admin() ) {
-				$this->p->notice->set_ref( $sharing_url, $mod );
-			}
+			// set a general reference value for admin notices
+			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod ) : false;
 
 			// define the author_id (if one is available)
 			$author_id = WpssoUser::get_author_id( $mod );
@@ -432,7 +426,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Open Graph - define first to pass the mt_og array to other methods.
 			 */
+			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding open graph meta tags', 'wpsso' ) ) : false;
 			$mt_og = $this->p->og->get_array( $mod, $mt_og, $crawler_name );
+			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/*
 			 * Weibo
@@ -442,7 +438,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Twitter Cards
 			 */
+			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) ) : false;
 			$mt_tc = $this->p->tc->get_array( $mod, $mt_og, $crawler_name );
+			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/*
 			 * Name / SEO meta tags
@@ -457,7 +455,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			if ( apply_filters( $lca.'_add_meta_name_description',
+			if ( apply_filters( $this->p->lca.'_add_meta_name_description',
 				( empty( $this->p->options['add_meta_name_description'] ) ? false : true ) ) ) {
 				$mt_name['description'] = $this->p->page->get_description( $this->p->options['seo_desc_len'],
 					'...', $mod, true, false, true, 'seo_desc' );	// add_hashtags = false
@@ -469,7 +467,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			$mt_name = (array) apply_filters( $lca.'_meta_name', $mt_name, $mod );
+			$mt_name = (array) apply_filters( $this->p->lca.'_meta_name', $mt_name, $mod );
 
 			/*
 			 * Link relation tags
@@ -479,12 +477,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/*
 			 * Schema meta tags
 			 */
+			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding schema meta tags', 'wpsso' ) ) : false;
 			$mt_schema = $this->p->schema->get_meta_array( $mod, $mt_og, $crawler_name );
+			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/*
 			 * JSON-LD script
 			 */
+			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) ) : false;
 			$mt_json_array = $this->p->schema->get_json_array( $mod, $mt_og, $crawler_name );
+			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/*
 			 * Generator meta tags
@@ -516,10 +518,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			// restore previous reference values for admin notices
-			if ( is_admin() ) {
-				$this->p->notice->unset_ref( $sharing_url );
-			}
+			// unset the general reference value for admin notices
+			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build head array' );	// end timer
@@ -801,7 +801,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		private function apply_filters_single_mt( array &$parts, array &$mod ) {
 
 			$log_prefix = $parts[1].' '.$parts[2].' '.$parts[3];
-			$filter_name = $this->p->cf['lca'].'_'.$parts[1].'_'.$parts[2].'_'.$parts[3].'_'.$parts[4];
+			$filter_name = $this->p->lca.'_'.$parts[1].'_'.$parts[2].'_'.$parts[3].'_'.$parts[4];
 			$new_value = apply_filters( $filter_name, $parts[5], $parts[6], $mod );
 
 			if ( $parts[5] !== $new_value ) {

@@ -68,11 +68,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$desc = $this->p->page->get_description( $this->p->options['schema_desc_len'],
 					'...', $mod, true, false, true, 'schema_desc' );
 
-				$img_html = '<!-- '.$this->p->lca.' schema image for pinterest pin it button -->'."\n".
+				$img_html = "\n".'<!-- '.$this->p->lca.' schema image for pinterest pin it button -->'."\n".
 					'<div class="'.$this->p->lca.'-schema-image-for-pinterest" style="display:none;">'."\n".
 					'<img src="'.$img_url.'" width="0" height="0" style="width:0;height:0;" '.
 					'data-pin-description="'.$desc.'" alt=""/>'."\n".	// empty alt required for w3c validation
-					'</div><!-- .'.$this->p->lca.'-schema-image-for-pinterest -->'."\n";
+					'</div><!-- .'.$this->p->lca.'-schema-image-for-pinterest -->'."\n\n";
 
 				$content = $img_html.$content;
 			}
@@ -2153,6 +2153,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = self::get_schema_type_context( $org_type_url );
 
+			// set reference values for admin notices
+			if ( is_admin() ) {
+				$sharing_url = $wpsso->util->get_sharing_url( $mod );
+				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema for organization', 'wpsso' ) );
+			}
+
 			// add schema properties from the organization options
 			self::add_data_itemprop_from_assoc( $ret, $org_opts, array(
 				'url' => 'org_url',
@@ -2242,6 +2248,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$ret = apply_filters( $wpsso->lca.'_json_data_single_organization', $ret, $mod, $org_id );
+
+			// restore previous reference values for admin notices
+			if ( is_admin() ) {
+				$wpsso->notice->unset_ref( $sharing_url );
+			}
 
 			if ( empty( $list_element ) ) {
 				$json_data = $ret;
@@ -2381,7 +2392,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 			$size_name = $wpsso->lca.'-schema';
-			$sharing_url = $wpsso->util->get_sharing_url( $mod );
 			$place_opts = apply_filters( $wpsso->lca.'_get_place_options', false, $mod, $place_id );
 
 			if ( ! empty( $place_opts ) ) {
@@ -2403,7 +2413,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			// set reference values for admin notices
 			if ( is_admin() ) {
-				$wpsso->notice->set_ref( $sharing_url, $mod, $place_type_url );
+				$sharing_url = $wpsso->util->get_sharing_url( $mod );
+				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema for place', 'wpsso' ) );
 			}
 
 			// add schema properties from the place options

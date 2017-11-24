@@ -309,19 +309,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						display:none;
 					}
 				}
-				.'.$lca.'-rate-stars {
-					font-family:"Star";
-					font-size:0.9em;
-					width:5.4em;
-					height:1em;
-					line-height:1;
-					position:relative;
-					overflow:hidden;
-					margin:0 0 1.2em 0;
-				}
-				.'.$lca.'-rate-stars:before {
-					content:"\53\53\53\53\53";	/* five stars */
-				}
 				.'.$lca.'-rate-heart {
 					color:red;
 					font-size:1.5em;
