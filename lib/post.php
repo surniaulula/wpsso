@@ -197,14 +197,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'setting post id '.$post_id.' from queried object' );
 					}
 				} elseif ( $context === 'post' ) {
-					$post = get_post();
-					if ( empty( $post->ID ) ) {
+					$post_obj = get_post();
+					if ( empty( $post_obj->ID ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'exiting early: post object ID is empty' );
 						}
 						return $shortlink;	// return original shortlink
 					} else {
-						$post_id = $post->ID;
+						$post_id = $post_obj->ID;
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'setting post id '.$post_id.' from post object' );
 						}
@@ -219,7 +219,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( empty( $shortlink ) ) {
-					if ( $post->post_type == 'page' && get_option( 'page_on_front' ) == $post_id && get_option( 'show_on_front' ) == 'page' ) {
+					if ( get_post_type( $post_id ) == 'page' && get_option( 'page_on_front' ) == $post_id && get_option( 'show_on_front' ) == 'page' ) {
 						$shortlink = home_url( '/' );
 					} else {
 						$shortlink = home_url( '?p='.$post_id );
