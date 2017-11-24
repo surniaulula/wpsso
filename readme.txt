@@ -386,6 +386,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
+	* Added more context to the reference URL in some notification messages.
 	* Added a notice on the settings page if the current language is different than the default site language. Localized option values are used for webpages and content in that language only (not for the default language, or any other language).
 * *Bugfixes*
 	* None
@@ -803,7 +804,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.48.6-rc.1 =
 
-(2017/11/23) Added a notice on the settings page if the current language is different than the default site language. Added static caching to the WpssoSchema get_mod_schema_type() and is_schema_type_child_of() methods.
+(2017/11/23) Added more context to the reference URL in some notification messages. Added a notice on the settings page if the current language is different than the default site language. Added more static caching in the WpssoSchema class.
 
 = 3.48.5 =
 
