@@ -49,7 +49,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				'cache_expire_setup_html' => '__return_zero',
 				'cache_expire_shortcode_html' => '__return_zero',
 				'cache_expire_sharing_buttons' => '__return_zero',
-				'cache_expire_json_post_data' => '__return_zero',
 			);
 			$disable_filters = array();
 			foreach ( array_merge( $default_filters, $add_filters ) as $filter_name => $callback ) {
