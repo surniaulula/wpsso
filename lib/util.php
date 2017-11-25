@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					call_user_func( 'add_'.$type, $hook_name, $function_name, $prio, $arg_nums );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'added '.$function_name.' (function) '.$type, 3 );
+						$this->p->debug->log( 'added '.$function_name.' (function) '.$type.' for '.$hook_name, 3 );
 					}
 				/*
 				 * example:
