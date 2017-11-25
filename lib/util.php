@@ -1478,8 +1478,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( empty ( $url ) ) {
 				// strip out tracking query arguments by facebook, google, etc.
 				$url = preg_replace( '/([\?&])(fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|'.
-					'utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd)=[^&]*&?/i',
+					'utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd|srk)=[^&]*&?/i',
 						'$1', self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] );
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'server request url = '.$url );
 				}

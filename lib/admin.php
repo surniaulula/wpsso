@@ -661,10 +661,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->notice->trunc();	// clear all messages before sanitation checks
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
 			$opts = apply_filters( $this->p->lca.'_save_site_options', $opts, $def_opts, $network );
+
 			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
+
 			$this->p->notice->upd( '<strong>'.__( 'Plugin settings have been saved.',	// green status w check mark
 				'wpsso' ).'</strong>' );
+
 			wp_redirect( $this->p->util->get_admin_url( $page ).'&settings-updated=true' );
+
 			exit;	// stop after redirect
 		}
 
