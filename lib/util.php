@@ -38,6 +38,31 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			add_filter( 'image_editor_save_pre', array( &$this, 'image_editor_save_pre_image_sizes' ), -100, 2 );
 		}
 
+		/*
+		 * Disable transient cache for debug mode. This method is also called for non-WordPress 
+		 * sharing / canonical URLs with query arguments.
+		 */
+		public function disable_cache_filters( array $add_filters = array() ) {
+			static $do_once = array();
+			$default_filters = array(
+				'cache_expire_head_array' => '__return_zero',
+				'cache_expire_setup_html' => '__return_zero',
+				'cache_expire_shortcode_html' => '__return_zero',
+				'cache_expire_sharing_buttons' => '__return_zero',
+				'cache_expire_json_post_data' => '__return_zero',
+			);
+			$disable_filters = array();
+			foreach ( array_merge( $default_filters, $add_filters ) as $filter_name => $callback ) {
+				if ( ! isset( $do_once[$filter_name] ) ) {
+					$do_once[$filter_name] = true;
+					$disable_filters[$filter_name] = $callback;
+				}
+			}
+			if ( ! empty( $disable_filters ) ) {
+				$this->add_plugin_filters( $this, $disable_filters );
+			}
+		}
+
 		// called from several class __construct() methods to hook their filters
 		public function add_plugin_filters( $class, $filters, $prio = 10, $lca = '' ) {
 			$this->add_plugin_hooks( 'filter', $class, $filters, $prio, $lca );
@@ -1474,15 +1499,36 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$url = $this->get_url_paged( $url, $mod, $add_page );
 			}
 
-			// fallback for themes and plugins that don't use the standard wordpress functions/variables
+			/*
+			 * Use the current URL as a fallback for themes and plugins that create public content and
+			 * don't use the standard WordPress functions / variables and/or are not properly integrated 
+			 * with WordPress (don't use custom post types, taxonomies, terms, etc.).
+			 */
 			if ( empty ( $url ) ) {
-				// strip out tracking query arguments by facebook, google, etc.
-				$url = preg_replace( '/([\?&])(fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|'.
-					'utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd|srk)=[^&]*&?/i',
-						'$1', self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] );
+
+				$url = self::get_prot().'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'server request url = '.$url );
+				}
+
+				// strip out tracking query arguments by facebook, google, etc.
+				$url = preg_replace( '/([\?&])(fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|'.
+					'utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd)=[^&]*&?/i', '$1', $url );
+
+				$url = apply_filters( $lca.'_server_request_url', $url, $mod, $add_page, $src_id );
+
+				// maybe disable transient cache and URL shortening
+				if ( $src_id === 'head_sharing_url' && strpos( $url, '?' ) !== false ) {
+					$disable_cache = true;
+				} else {
+					$disable_cache = false;
+				}
+
+				if ( apply_filters( $lca.'_server_request_url_disable_cache', $disable_cache, $url, $mod, $add_page, $src_id ) ) {
+					$this->disable_cache_filters( array(
+						'shorten_url' => '__return_false',
+					) );
 				}
 			}
 

@@ -2339,7 +2339,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			static $cache_exp_secs = null;
 			$cache_md5_pre = $lca.'_';
 			if ( ! isset( $cache_exp_secs ) ) {
-				$cache_exp_filter = $lca.'_cache_expire_'.$file_key;
+				$cache_exp_filter = $lca.'_cache_expire_'.$file_key;	// 'wpsso_cache_expire_readme_txt'
 				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 			}
 			$cache_salt = __METHOD__.'(ext:'.$ext.')';
@@ -2423,7 +2423,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cache_exp_secs = WEEK_IN_SECONDS;
 			}
 
-			$cache_exp_filter = $lca.'_cache_expire_'.$file_key;
+			$cache_exp_filter = $lca.'_cache_expire_'.$file_key;	// 'wpsso_cache_expire_setup_html'
 			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
 			$cache_content = false;
 

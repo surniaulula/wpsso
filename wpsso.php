@@ -15,7 +15,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 4.9
  * WC Tested Up To: 3.2.4
- * Version: 3.48.6
+ * Version: 3.48.7-dev.1
  * 
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -326,30 +326,40 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * Issue reminder notices and disable some caching when the plugin's debug mode is enabled.
 			 */
 			if ( $this->debug->enabled ) {
+
+				$warn_msg = '';
 				$info = $this->cf['plugin']['wpsso'];
+
 				if ( $this->debug->is_enabled( 'wp' ) ) {
 					$this->debug->log( 'WP debug log mode is active' );
 					if ( is_admin() ) {
-						$this->notice->warn( __( 'WP debug log mode is active &mdash; debug messages are being sent to the WordPress debug log.', 'wpsso' ).' '.sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.', 'wpsso' ), $info['short'] ).' '.__( 'Please disable debug mode when debugging is complete.', 'wpsso' ) );
+						$warn_msg .= __( 'WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log.',
+							'wpsso' ).' ';
 					}
 				}
+
 				if ( $this->debug->is_enabled( 'html' ) ) {
 					if ( SucomUtil::get_crawler_name() !== 'none' ) {
-						$this->debug->enable( 'html', false );
-					} else {
-						$this->debug->log( 'HTML debug mode is active' );
-						if ( is_admin() ) {
-							$this->notice->warn( __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.', 'wpsso' ).' '.sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.', 'wpsso' ), $info['short'] ).' '.__( 'Please disable debug mode when debugging is complete.', 'wpsso' ) );
-						}
+						$this->debug->enable( 'html', false );	// disable HTML debug messages for crawlers
 					}
 				}
-				$this->util->add_plugin_filters( $this, array( 
-					'cache_expire_head_array' => '__return_zero',
-					'cache_expire_setup_html' => '__return_zero',
-					'cache_expire_shortcode_html' => '__return_zero',
-					'cache_expire_sharing_buttons' => '__return_zero',
-					'cache_expire_json_post_data' => '__return_zero',
-				) );
+
+				if ( $this->debug->is_enabled( 'html' ) ) {
+					$this->debug->log( 'HTML debug mode is active' );
+					if ( is_admin() ) {
+						$warn_msg .=  __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.',
+							'wpsso' ).' ';
+					}
+				}
+
+				if ( $this->debug->enabled ) {
+					if ( ! empty( $warn_msg ) ) {
+						$warn_msg .= sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
+							'wpsso' ), $info['short'] ).' '.__( 'Please disable debug mode when debugging is complete.', 'wpsso' );
+						$this->notice->warn( $warn_msg );
+					}
+					$this->util->disable_cache_filters();
+				}
 			}
 		}
 

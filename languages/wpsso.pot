@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.48.6\n"
+"Project-Id-Version: WPSSO Core 3.48.7-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2680,7 +2680,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:409 lib/util.php:2059
+#: lib/messages.php:409 lib/util.php:2105
 msgid "No options available."
 msgstr ""
 
@@ -4264,7 +4264,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:606 lib/util.php:811
+#: lib/post.php:606 lib/util.php:836
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4438,12 +4438,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:147
-#: lib/pro/media/wistia.php:275 lib/util.php:876
+#: lib/pro/media/wistia.php:275 lib/util.php:901
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:150
-#: lib/pro/media/wistia.php:278 lib/util.php:879
+#: lib/pro/media/wistia.php:278 lib/util.php:904
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4998,49 +4998,49 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/util.php:548
+#: lib/util.php:573
 msgid ""
 "%s cached files, transient cache, sortable column meta, and the WordPress "
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:552
+#: lib/util.php:577
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:574
+#: lib/util.php:599
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:654
+#: lib/util.php:679
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:671
+#: lib/util.php:696
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:745
+#: lib/util.php:770
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:799
+#: lib/util.php:824
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:822
+#: lib/util.php:847
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:921
+#: lib/util.php:946
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1842
+#: lib/util.php:1888
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "
@@ -5049,51 +5049,51 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2086
+#: lib/util.php:2132
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2090
+#: lib/util.php:2136
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2093
+#: lib/util.php:2139
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2097
+#: lib/util.php:2143
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2215
+#: lib/util.php:2261
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr ""
 
-#: wpsso.php:333
+#: wpsso.php:336
 msgid ""
-"WP debug log mode is active &mdash; debug messages are being sent to the "
+"WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:333 wpsso.php:342
+#: wpsso.php:350
+msgid ""
+"HTML debug mode is active &mdash; debug messages are being added to webpages "
+"as hidden HTML comments."
+msgstr ""
+
+#: wpsso.php:357
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:333 wpsso.php:342
+#: wpsso.php:358
 msgid "Please disable debug mode when debugging is complete."
-msgstr ""
-
-#: wpsso.php:342
-msgid ""
-"HTML debug mode is active &mdash; debug messages are being added to webpages "
-"as hidden HTML comments."
 msgstr ""
 
 #. Plugin Name of the plugin/theme

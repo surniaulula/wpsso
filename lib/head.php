@@ -363,7 +363,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$is_admin = is_admin();	// call the function only once
-			$sharing_url = $this->p->util->get_sharing_url( $mod );
+			$sharing_url = $this->p->util->get_sharing_url( $mod, true, 'head_sharing_url' );	// $add_page = true
 			$crawler_name = SucomUtil::get_crawler_name();
 			$head_array = array();
 
