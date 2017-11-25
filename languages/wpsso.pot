@@ -2242,19 +2242,19 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/head.php:429
+#: lib/head.php:439
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:441
+#: lib/head.php:451
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:480
+#: lib/head.php:490
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:487
+#: lib/head.php:497
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -2680,7 +2680,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:409 lib/util.php:2105
+#: lib/messages.php:409 lib/util.php:2108
 msgid "No options available."
 msgstr ""
 
@@ -5040,7 +5040,7 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1888
+#: lib/util.php:1891
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "
@@ -5049,27 +5049,27 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2132
+#: lib/util.php:2135
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2136
+#: lib/util.php:2139
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2139
+#: lib/util.php:2142
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2143
+#: lib/util.php:2146
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2261
+#: lib/util.php:2264
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr ""

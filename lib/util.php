@@ -1532,6 +1532,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
+			/*
+			 * Check and possibly enforce the FORCE_SSL constant.
+			 */
 			if ( ! empty( $this->p->options['plugin_honor_force_ssl'] ) ) {
 				if ( SucomUtil::get_const( 'FORCE_SSL' ) && strpos( $url, 'http:' ) === 0 ) {
 					if ( $this->p->debug->enabled ) {
