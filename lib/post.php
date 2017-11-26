@@ -124,7 +124,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod['post_author'] = (int) get_post_field( 'post_author', $mod_id );		// post author id
 
 			// hooked by the 'coauthors' pro module
-			return apply_filters( $this->p->cf['lca'].'_get_post_mod', $mod, $mod_id );
+			return apply_filters( $this->p->lca.'_get_post_mod', $mod, $mod_id );
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
@@ -133,10 +133,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
-
 			if ( $posts_per_page === false ) {
-				$posts_per_page = apply_filters( $lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
+				$posts_per_page = apply_filters( $this->p->lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( $paged === false ) {
@@ -227,7 +225,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			$lca = $this->p->cf['lca'];
 			$mod = $this->get_mod( $post_id );
 
 			if ( empty( $mod['post_type'] ) ) {
@@ -249,8 +246,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 			$service_key = $this->p->options['plugin_shortener'];
-			$short_url = apply_filters( $lca.'_get_short_url',
-				$sharing_url, $service_key, $mod, $context );
+			$short_url = apply_filters( $this->p->lca.'_get_short_url', $sharing_url, $service_key, $mod, $context );
 
 			if ( $sharing_url === $short_url ) {	// shortened failed
 				if ( $this->p->debug->enabled ) {
@@ -312,10 +308,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function check_sortable_metadata( $value, $post_id, $meta_key, $single ) {
 
-			$lca = $this->p->cf['lca'];
 			static $do_once = array();
 
-			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
+			if ( strpos( $meta_key, '_'.$this->p->lca.'_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
 				return $value;	// return null
 			}
 
@@ -378,7 +373,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			$lca = $this->p->cf['lca'];
 			$mod = $this->get_mod( $post_id );
 
 			if ( $this->p->debug->enabled ) {
@@ -397,10 +391,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			} else {
 				$add_metabox = empty( $this->p->options['plugin_add_to_'.$post_obj->post_type] ) ? false : true;
 
-				if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type ) ) {
+				if ( apply_filters( $this->p->lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type ) ) {
 
 					// hooked by woocommerce module to load front-end libraries and start a session
-					do_action( $lca.'_admin_post_head', $mod, $screen->id );
+					do_action( $this->p->lca.'_admin_post_head', $mod, $screen->id );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting head_meta_info static property' );
@@ -426,7 +420,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						// check duplicates only when the post is available publicly and we have a valid permalink
 						if ( current_user_can( 'manage_options' ) ) {
-							if ( apply_filters( $lca.'_check_post_head', $this->p->options['plugin_check_head'], $post_id, $post_obj ) ) {
+							if ( apply_filters( $this->p->lca.'_check_post_head', $this->p->options['plugin_check_head'], $post_id, $post_obj ) ) {
 								$this->check_post_head_duplicates( $post_id, $post_obj );
 							}
 						}
@@ -434,7 +428,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			} 
 
-			$action_query = $lca.'-action';
+			$action_query = $this->p->lca.'-action';
+
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
 				if ( $this->p->debug->enabled ) {
@@ -451,7 +446,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 					switch ( $action_name ) {
 						default: 
-							do_action( $lca.'_load_meta_page_post_'.$action_name, $post_id, $post_obj );
+							do_action( $this->p->lca.'_load_meta_page_post_'.$action_name, $post_id, $post_obj );
 							break;
 					}
 				}
@@ -464,8 +459,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
-			$short = $this->p->cf['plugin'][$lca]['short'];
+			$short = $this->p->cf['plugin'][$this->p->lca]['short'];
 
 			if ( empty( $this->p->options['plugin_check_head'] ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -474,9 +468,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// stop here
 			}
 
-			if ( ! apply_filters( $lca.'_add_meta_name_'.$lca.':mark', true ) ) {
+			if ( ! apply_filters( $this->p->lca.'_add_meta_name_'.$this->p->lca.':mark', true ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: '.$lca.':mark meta tags are disabled');
+					$this->p->debug->log( 'exiting early: '.$this->p->lca.':mark meta tags are disabled');
 				}
 				return;	// stop here
 			}
@@ -630,9 +624,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						'wpsso' ), '&lt;meta/&gt;', $shortlink ) );
 				}
 				return;	// stop here
-			} elseif ( strpos( $html, $lca.' meta tags begin' ) === false ) {	// webpage should include our own meta tags
+			} elseif ( strpos( $html, $this->p->lca.' meta tags begin' ) === false ) {	// webpage should include our own meta tags
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: '.$lca.' meta tag section not found in '.$shortlink );
+					$this->p->debug->log( 'exiting early: '.$this->p->lca.' meta tag section not found in '.$shortlink );
 				}
 				if ( is_admin() ) {
 					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $shortlink, $short ) );
@@ -641,7 +635,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'removing '.$lca.' meta tag section' );
+				$this->p->debug->log( 'removing '.$this->p->lca.' meta tag section' );
 			}
 
 			$html = preg_replace( $this->p->head->get_mt_mark( 'preg' ), '', $html, -1, $mark_count );
@@ -732,16 +726,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			$lca = $this->p->cf['lca'];
 			$metabox_id = $this->p->cf['meta']['id'];
 			$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_obj->post_type ] ) ? false : true;
 
-			if ( apply_filters( $lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type ) ) {
+			if ( apply_filters( $this->p->lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'adding metabox '.$metabox_id );
 				}
-				add_meta_box( $lca.'_'.$metabox_id, $metabox_title,
+				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
 					array( &$this, 'show_metabox_custom_meta' ),
 						$post_obj->post_type, 'normal', 'low' );
 
@@ -759,13 +752,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'post status = '.( empty( $post_obj->post_status ) ? 'empty' : $post_obj->post_status ) );
 			}
 
-			$lca = $this->p->cf['lca'];
 			$metabox_id = $this->p->cf['meta']['id'];
 			$mod = $this->get_mod( $post_obj->ID );
 			$tabs = $this->get_custom_meta_tabs( $metabox_id, $mod );
 			$opts = $this->get_options( $post_obj->ID );
 			$def_opts = $this->get_defaults( $post_obj->ID );
-			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $lca );
+			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->lca );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
@@ -775,7 +767,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$table_rows = array();
 			foreach ( $tabs as $key => $title ) {
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ), 
-					apply_filters( $lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 
@@ -855,8 +847,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$mod = $this->get_mod( $post_id );
-			$lca = $this->p->cf['lca'];
-			$cache_md5_pre = $lca.'_';
+			$cache_md5_pre = $this->p->lca.'_';
 			$permalink = get_permalink( $post_id );
 			$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
 

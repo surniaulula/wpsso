@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:693 lib/post.php:448 lib/term.php:289 lib/user.php:272
+#: lib/admin.php:693 lib/post.php:443 lib/term.php:289 lib/user.php:272
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2223,7 +2223,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:140 lib/meta.php:211 lib/post.php:790
+#: lib/gpl/admin/post.php:140 lib/meta.php:211 lib/post.php:782
 #: lib/pro/admin/post.php:170
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2680,7 +2680,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:409 lib/util.php:2115
+#: lib/messages.php:409 lib/util.php:2114
 msgid "No options available."
 msgstr ""
 
@@ -4230,102 +4230,102 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/post.php:545
+#: lib/post.php:539
 msgid ""
 "The WordPress wp_get_shortlink() function returned an invalid URL (%1$s) for "
 "post ID %2$s."
 msgstr ""
 
-#: lib/post.php:563
+#: lib/post.php:557
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:566
+#: lib/post.php:560
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:594
+#: lib/post.php:588
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:596
+#: lib/post.php:590
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:598
+#: lib/post.php:592
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:600
+#: lib/post.php:594
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:611 lib/util.php:839
+#: lib/post.php:605 lib/util.php:839
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:620
+#: lib/post.php:614
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:629
+#: lib/post.php:623
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:638
+#: lib/post.php:632
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:654
+#: lib/post.php:648
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:662
+#: lib/post.php:656
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:672
+#: lib/post.php:666
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:672
+#: lib/post.php:666
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:672
+#: lib/post.php:666
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:694
+#: lib/post.php:688
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:698
+#: lib/post.php:692
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:700
+#: lib/post.php:694
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
@@ -5040,7 +5040,7 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1898
+#: lib/util.php:1897
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "
@@ -5049,27 +5049,27 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2142
+#: lib/util.php:2141
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2146
+#: lib/util.php:2145
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2149
+#: lib/util.php:2148
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2153
+#: lib/util.php:2152
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2271
+#: lib/util.php:2270
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr ""
