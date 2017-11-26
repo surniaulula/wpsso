@@ -381,16 +381,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.7-dev.1 (2017/11/25)**
+**Version 3.48.7-dev.2 (2017/11/25)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Transient cache is now automatically disabled when using the fallback server request URL, for themes and plugins that create public content and don't use the standard WordPress functions / variables and/or are not properly integrated with WordPress (don't use custom post types, taxonomies, terms, etc.).
+	* Optimized the definition of cache ids when the transient cache is disabled.
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added new filters for the fallback server request URL:
+		* 'wpsso_server_request_url'
+		* 'wpsso_server_request_url_disable_cache'
 
 **Version 3.48.6 (2017/11/24)**
 
@@ -645,9 +648,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.7-dev.1 =
+= 3.48.7-dev.2 =
 
-(2017/11/25) Transient cache is now automatically disabled when using the fallback server request URL.
+(2017/11/25) Transient cache is now automatically disabled when using the fallback server request URL. Optimized the definition of cache ids when the transient cache is disabled.
 
 = 3.48.6 =
 
