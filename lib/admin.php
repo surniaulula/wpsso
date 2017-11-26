@@ -49,8 +49,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'pageref_title' => 'esc_html',
 			) as $pageref => $esc_func ) {
 				if ( ! empty( $_GET[$this->p->lca.'_'.$pageref] ) ) {
-					$this->$pageref = call_user_func( $esc_func, 
-						urldecode( $_GET[$this->p->lca.'_'.$pageref] ) );
+					$this->$pageref = call_user_func( $esc_func, urldecode( $_GET[$this->p->lca.'_'.$pageref] ) );
 				}
 			}
 

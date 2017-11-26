@@ -65,13 +65,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$img_url = SucomUtil::get_mt_media_url( $og_images, 'og:image' );
 
 			if ( ! empty( $img_url ) ) {
-				$desc = $this->p->page->get_description( $this->p->options['schema_desc_len'],
+				$desc_text = $this->p->page->get_description( $this->p->options['schema_desc_len'],
 					'...', $mod, true, false, true, 'schema_desc' );
 
 				$img_html = "\n".'<!-- '.$this->p->lca.' schema image for pinterest pin it button -->'."\n".
 					'<div class="'.$this->p->lca.'-schema-image-for-pinterest" style="display:none;">'."\n".
 					'<img src="'.$img_url.'" width="0" height="0" style="width:0;height:0;" '.
-					'data-pin-description="'.$desc.'" alt=""/>'."\n".	// empty alt required for w3c validation
+					'data-pin-description="'.$desc_text.'" alt=""/>'."\n".	// empty alt required for w3c validation
 					'</div><!-- .'.$this->p->lca.'-schema-image-for-pinterest -->'."\n\n";
 
 				$content = $img_html.$content;
