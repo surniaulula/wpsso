@@ -532,7 +532,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->lca;
 			$ret = array();
 
 			switch ( $output ) {
@@ -547,7 +546,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					break;
 			}
 
-			return apply_filters( $lca.'_get_post_types', $ret, $output );
+			return apply_filters( $this->p->lca.'_get_post_types', $ret, $output );
 		}
 
 		public function clear_all_cache( $clear_external = true, $clear_short_urls = null, $dismiss_key = null ) {
@@ -569,8 +568,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$this->delete_all_cache_files();
 			$this->delete_all_column_meta();
 
-			$lca = $this->p->lca;
-			$short = $this->p->cf['plugin'][$lca]['short'];
+			$short = $this->p->cf['plugin'][$this->p->lca]['short'];
 			$clear_all_msg = sprintf( __( '%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared.',
 				'wpsso' ), $short );
 
@@ -603,7 +601,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function delete_all_db_transients( $clear_short_urls = false ) { 
 
-			$lca = $this->p->lca;
 			$only_expired = false;
 			$transient_keys = $this->get_db_transient_keys( $only_expired ); 
 			$deleted_count = 0;
@@ -612,7 +609,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				// skip / preserve shortened urls by default
 				if ( ! $clear_short_urls ) {
-					$cache_md5_pre = $lca.'_s_';
+					$cache_md5_pre = $this->p->lca.'_s_';
 					if ( strpos( $cache_id, $cache_md5_pre ) === 0 ) {
 						continue;
 					}
@@ -644,10 +641,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_db_transient_keys( $only_expired = false ) { 
 
 			global $wpdb;
-			$lca = $this->p->lca;
 			$transient_keys = array();
 			$transient_pre = $only_expired ? '_transient_timeout_' : '_transient_';
-			$db_query = 'SELECT option_name FROM '.$wpdb->options.' WHERE option_name LIKE \''.$transient_pre.$lca.'_%\'';
+			$db_query = 'SELECT option_name FROM '.$wpdb->options.' WHERE option_name LIKE \''.$transient_pre.$this->p->lca.'_%\'';
 
 			if ( $only_expired ) {
 				$current_time = isset ( $_SERVER['REQUEST_TIME'] ) ? (int) $_SERVER['REQUEST_TIME'] : time() ; 
@@ -733,10 +729,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->lca;
-
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
-			$cache_md5_pre = $lca.'_a_';
+			$cache_md5_pre = $this->p->lca.'_a_';
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_exp_filter = $this->p->cf['wp']['transient'][$cache_md5_pre]['filter'];
 				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
@@ -776,7 +770,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $topics;
 			}
 
-			$topics = apply_filters( $lca.'_article_topics', $topics );
+			$topics = apply_filters( $this->p->lca.'_article_topics', $topics );
 			natsort( $topics );
 			$topics = array_merge( array( 'none' ), $topics );	// after sorting the array, put 'none' first
 
@@ -859,7 +853,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$ret = array();
-			$lca = $this->p->lca;
 			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// convert to UTF8
 			$html = preg_replace( '/<!--.*-->/Uums', '', $html );	// remove all html comments
 			$doc = new DOMDocument();	// since PHP v4.1
@@ -1055,7 +1048,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// $type = author | img | vid
 		public function force_default( $type, array &$mod, $opt_pre = 'og') {
 
-			$lca = $this->p->lca;
 			$def = array();
 
 			// setup default true / false values
@@ -1063,7 +1055,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$opt_key = $opt_pre.'_def_'.$type.'_'.$key;
 				$def_val = isset( $this->p->options[$opt_key] ) ? $this->p->options[$opt_key] : null;
-				$def[$key] = apply_filters( $lca.'_'.$opt_pre.'_default_'.$type.'_'.$key, $def_val );
+				$def[$key] = apply_filters( $this->p->lca.'_'.$opt_pre.'_default_'.$type.'_'.$key, $def_val );
 			}
 
 			if ( empty( $def['id'] ) && empty( $def['url'] ) ) {	// save time - if no default media, then return false
@@ -1090,17 +1082,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $ret;
 		}
 
-		public static function save_all_times( $lca, $version ) {
-			self::save_time( $lca, $version, 'update', $version );	// $protect only if same version
-			self::save_time( $lca, $version, 'install', true );	// $protect = true
-			self::save_time( $lca, $version, 'activate' );		// always update timestamp
+		public static function save_all_times( $ext, $version ) {
+			self::save_time( $ext, $version, 'update', $version );	// $protect only if same version
+			self::save_time( $ext, $version, 'install', true );	// $protect = true
+			self::save_time( $ext, $version, 'activate' );		// always update timestamp
 		}
 
 		// $protect = true/false/version
-		public static function save_time( $lca, $version, $type, $protect = false ) {
+		public static function save_time( $ext, $version, $type, $protect = false ) {
 			if ( ! is_bool( $protect ) ) {
 				if ( ! empty( $protect ) ) {
-					if ( ( $ts_version = self::get_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version' ) ) !== null &&
+					if ( ( $ts_version = self::get_option_key( WPSSO_TS_NAME, $ext.'_'.$type.'_version' ) ) !== null &&
 						version_compare( $ts_version, $protect, '==' ) ) {
 						$protect = true;
 					} else {
@@ -1111,24 +1103,24 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 			if ( ! empty( $version ) ) {
-				self::update_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_version', $version, $protect );
+				self::update_option_key( WPSSO_TS_NAME, $ext.'_'.$type.'_version', $version, $protect );
 			}
-			self::update_option_key( WPSSO_TS_NAME, $lca.'_'.$type.'_time', time(), $protect );
+			self::update_option_key( WPSSO_TS_NAME, $ext.'_'.$type.'_time', time(), $protect );
 		}
 
 		// get the timestamp array and perform a quick sanity check
 		public function get_all_times() {
 			$has_changed = false;
 			$all_times = get_option( WPSSO_TS_NAME, array() );
-			foreach ( $this->p->cf['plugin'] as $lca => $info ) {
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( empty( $info['version'] ) ) {
 					continue;
 				}
 				foreach ( array( 'update', 'install', 'activate' ) as $type ) {
-					if ( empty( $all_times[$lca.'_'.$type.'_time'] ) ||
-						( $type === 'update' && ( empty( $all_times[$lca.'_'.$type.'_version'] ) || 
-							version_compare( $all_times[$lca.'_'.$type.'_version'], $info['version'], '!=' ) ) ) ) {
-						$has_changed = self::save_time( $lca, $info['version'], $type );
+					if ( empty( $all_times[$ext.'_'.$type.'_time'] ) ||
+						( $type === 'update' && ( empty( $all_times[$ext.'_'.$type.'_version'] ) || 
+							version_compare( $all_times[$ext.'_'.$type.'_version'], $info['version'], '!=' ) ) ) ) {
+						$has_changed = self::save_time( $ext, $info['version'], $type );
 					}
 				}
 			}
