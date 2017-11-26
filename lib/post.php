@@ -426,9 +426,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						// check duplicates only when the post is available publicly and we have a valid permalink
 						if ( current_user_can( 'manage_options' ) ) {
-							if ( apply_filters( $lca.'_check_post_head', 
-								$this->p->options['plugin_check_head'], $post_id, $post_obj ) ) {
-
+							if ( apply_filters( $lca.'_check_post_head', $this->p->options['plugin_check_head'], $post_id, $post_obj ) ) {
 								$this->check_post_head_duplicates( $post_id, $post_obj );
 							}
 						}
@@ -483,22 +481,29 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// stop here
 			}
 
-			if ( ! is_object( $post_obj ) && ( $post_obj = SucomUtil::get_post_object( $post_id ) ) === false ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: unable to get the post object');
+			if ( empty( $post_id ) ) {
+				$post_id = true;
+			}
+
+			if ( ! is_object( $post_obj ) ) {
+				$post_obj = SucomUtil::get_post_object( $post_id );
+				if ( empty( $post_obj ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'exiting early: unable to get the post object');
+					}
+					return;	// stop here
 				}
-				return;	// stop here
 			}
 
 			// just in case post_id is true/false
 			if ( ! is_numeric( $post_id ) ) {
-				$post_id = $post_obj->ID;
-				if ( ! is_numeric( $post_id ) ) {	// just in case
+				if ( empty( $post_obj->ID ) ) {	// just in case
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: non-numeric post id in post object');
+						$this->p->debug->log( 'exiting early: post id in post object is empty');
 					}
 					return;	// stop here
 				}
+				$post_id = $post_obj->ID;
 			}
 
 			// only check publicly available posts
