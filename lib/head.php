@@ -397,7 +397,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 				if ( $read_cache ) {	// false when called by post/term/user load_meta_page() method
+
 					$head_array = get_transient( $cache_id );
+
 					if ( isset( $head_array[$cache_index] ) ) {
 						if ( is_array( $head_array[$cache_index] ) ) {	// just in case
 							if ( $this->p->debug->enabled ) {

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.48.7-dev.1\n"
+"Project-Id-Version: WPSSO Core 3.48.7-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2017-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -490,7 +490,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:2058 lib/gpl/admin/advanced.php:403
-#: lib/pro/admin/advanced.php:393 lib/pro/util/shorten.php:256
+#: lib/pro/admin/advanced.php:393 lib/pro/util/shorten.php:258
 msgctxt "option label"
 msgid "URL Shortener API is Enabled"
 msgstr ""
@@ -1921,13 +1921,13 @@ msgid "Bitly URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:373 lib/pro/admin/advanced.php:364
-#: lib/pro/util/shorten.php:217
+#: lib/pro/util/shorten.php:219
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:379 lib/pro/admin/advanced.php:370
-#: lib/pro/util/shorten.php:225
+#: lib/pro/util/shorten.php:227
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
@@ -1953,7 +1953,7 @@ msgid "Google APIs"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:398 lib/pro/admin/advanced.php:389
-#: lib/pro/util/shorten.php:248
+#: lib/pro/util/shorten.php:250
 msgctxt "option label"
 msgid "Google Project API Key"
 msgstr ""
@@ -1964,7 +1964,7 @@ msgid "Ow.ly URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:411 lib/pro/admin/advanced.php:401
-#: lib/pro/util/shorten.php:273
+#: lib/pro/util/shorten.php:275
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
@@ -1975,7 +1975,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:420 lib/pro/admin/advanced.php:410
-#: lib/pro/util/shorten.php:306
+#: lib/pro/util/shorten.php:308
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
@@ -2242,19 +2242,19 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/head.php:439
+#: lib/head.php:441
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:451
+#: lib/head.php:453
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:490
+#: lib/head.php:492
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:497
+#: lib/head.php:499
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -2680,7 +2680,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:409 lib/util.php:2107
+#: lib/messages.php:409 lib/util.php:2115
 msgid "No options available."
 msgstr ""
 
@@ -4264,7 +4264,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:606 lib/util.php:835
+#: lib/post.php:606 lib/util.php:839
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4438,12 +4438,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:147
-#: lib/pro/media/wistia.php:275 lib/util.php:900
+#: lib/pro/media/wistia.php:275 lib/util.php:904
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:150
-#: lib/pro/media/wistia.php:278 lib/util.php:903
+#: lib/pro/media/wistia.php:278 lib/util.php:907
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4477,26 +4477,26 @@ msgid ""
 "for the required %2$s image dimensions."
 msgstr ""
 
-#: lib/pro/util/shorten.php:216 lib/pro/util/shorten.php:247
-#: lib/pro/util/shorten.php:272 lib/pro/util/shorten.php:305
+#: lib/pro/util/shorten.php:218 lib/pro/util/shorten.php:249
+#: lib/pro/util/shorten.php:274 lib/pro/util/shorten.php:307
 msgid "The %s option is empty."
 msgstr ""
 
-#: lib/pro/util/shorten.php:224
+#: lib/pro/util/shorten.php:226
 msgid ""
 "The %1$s and %2$s options are empty &mdash; at least one option is required."
 msgstr ""
 
-#: lib/pro/util/shorten.php:226
+#: lib/pro/util/shorten.php:228
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr ""
 
-#: lib/pro/util/shorten.php:255
+#: lib/pro/util/shorten.php:257
 msgid "The %s option is not enabled."
 msgstr ""
 
-#: lib/pro/util/shorten.php:338
+#: lib/pro/util/shorten.php:340
 msgid ""
 "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr ""
@@ -4518,23 +4518,23 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2159
+#: lib/schema.php:2155
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2192
+#: lib/schema.php:2188
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2194
+#: lib/schema.php:2190
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2417
+#: lib/schema.php:2413
 msgid "adding schema for place"
 msgstr ""
 
@@ -4998,49 +4998,49 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/util.php:572
+#: lib/util.php:574
 msgid ""
 "%s cached files, transient cache, sortable column meta, and the WordPress "
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:576
+#: lib/util.php:578
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:598
+#: lib/util.php:600
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:678
+#: lib/util.php:680
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:695
+#: lib/util.php:697
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:769
+#: lib/util.php:773
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:823
+#: lib/util.php:827
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:846
+#: lib/util.php:850
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:945
+#: lib/util.php:949
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1890
+#: lib/util.php:1898
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "
@@ -5049,27 +5049,27 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2134
+#: lib/util.php:2142
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2138
+#: lib/util.php:2146
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2141
+#: lib/util.php:2149
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2145
+#: lib/util.php:2153
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2263
+#: lib/util.php:2271
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr ""

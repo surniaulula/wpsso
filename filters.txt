@@ -131,6 +131,8 @@
 'wpsso_schema_type_id' ( $type_id, $mod, $is_custom );
 'wpsso_schema_types' ( (array) $schema_types );
 'wpsso_search_url' ( $url, $mod, $add_page, $src_id );
+'wpsso_server_request_url' ( $url, $mod, $add_page, $src_id );
+'wpsso_server_request_url_disable_cache' ( $bool, $url, $mod, $add_page, $src_id );
 'wpsso_sharing_url' ( $url, $mod, $add_page, $src_id );
 'wpsso_shorten_url' ( true, $long_url, $service_key );
 'wpsso_size_info_'.$size_info['name'] ( $size_info, $post_id );

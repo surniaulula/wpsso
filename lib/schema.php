@@ -426,10 +426,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$cache_md5_pre = $this->p->lca.'_t_';
 				$cache_exp_secs = $this->get_types_cache_exp();
-				$cache_salt = __METHOD__;
-				$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 				if ( $cache_exp_secs > 0 ) {
+					$cache_salt = __METHOD__;
+					$cache_id = $cache_md5_pre.md5( $cache_salt );
 					$this->types_cache = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $this->types_cache ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -615,13 +615,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $use_cache ) {
-
 				$cache_md5_pre = $this->p->lca.'_t_';
 				$cache_exp_secs = $this->get_types_cache_exp();
-				$cache_salt = __METHOD__.'(child_id:'.$child_id.')';
-				$cache_id = $cache_md5_pre.md5( $cache_salt );
-
 				if ( $cache_exp_secs > 0 ) {
+					$cache_salt = __METHOD__.'(child_id:'.$child_id.')';
+					$cache_id = $cache_md5_pre.md5( $cache_salt );
 					$child_family = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $child_family ) ) {
 						return $child_family;
@@ -659,13 +657,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $use_cache ) {
-
 				$cache_md5_pre = $this->p->lca.'_t_';
 				$cache_exp_secs = $this->get_types_cache_exp();
-				$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
-				$cache_id = $cache_md5_pre.md5( $cache_salt );
-
 				if ( $cache_exp_secs > 0 ) {
+					$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
+					$cache_id = $cache_md5_pre.md5( $cache_salt );
 					$children = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $children ) ) {
 						if ( $this->p->debug->enabled ) {

@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		// $type = title | excerpt | both
 		// $mod = true | false | post_id | $mod array
-		public function get_caption( $type = 'title', $textlen = 200, $mod = true, $use_cache = true,
+		public function get_caption( $type = 'title', $textlen = 200, $mod = true, $read_cache = true,
 			$add_hashtags = true, $do_encode = true, $md_idx = '' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'type' => $type,
 					'textlen' => $textlen,
 					'mod' => $mod,
-					'use_cache' => $use_cache,
+					'read_cache' => $read_cache,
 					'add_hashtags' => $add_hashtags,	// true/false/numeric
 					'do_encode' => $do_encode,
 					'md_idx' => $md_idx,
@@ -129,18 +129,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				switch ( $type ) {
 					case 'title':
 						$caption = $this->get_title( $textlen,
-							'...', $mod, $use_cache, $add_hashtags, false, $md_title );
+							'...', $mod, $read_cache, $add_hashtags, false, $md_title );
 						break;
 
 					case 'excerpt':
 						$caption = $this->get_description( $textlen,
-							'...', $mod, $use_cache, $add_hashtags, false, $md_desc );
+							'...', $mod, $read_cache, $add_hashtags, false, $md_desc );
 						break;
 
 					case 'both':
 						// get the title first
 						$caption = $this->get_title( 0,
-							'', $mod, $use_cache, false, false, $md_title );	// $add_hashtags = false
+							'', $mod, $read_cache, false, false, $md_title );	// $add_hashtags = false
 
 						// add a separator between title and description
 						if ( ! empty( $caption ) ) {
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						// reduce the requested $textlen by the title text length we already have
 						$caption .= $this->get_description( $textlen - strlen( $caption ),
-							'...', $mod, $use_cache, $add_hashtags, false, $md_desc );
+							'...', $mod, $read_cache, $add_hashtags, false, $md_desc );
 						break;
 				}
 			}
@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		// $mod = true | false | post_id | $mod array
-		public function get_title( $textlen = 70, $trailing = '', $mod = false, $use_cache = true,
+		public function get_title( $textlen = 70, $trailing = '', $mod = false, $read_cache = true,
 			$add_hashtags = false, $do_encode = true, $md_idx = 'og_title' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'textlen' => $textlen,
 					'trailing' => $trailing,
 					'mod' => $mod,
-					'use_cache' => $use_cache,
+					'read_cache' => $read_cache,
 					'add_hashtags' => $add_hashtags,	// true/false/numeric
 					'do_encode' => $do_encode,
 					'md_idx' => $md_idx,
@@ -346,7 +346,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		// $mod = true | false | post_id | $mod array
-		public function get_description( $textlen = 156, $trailing = '...', $mod = false, $use_cache = true,
+		public function get_description( $textlen = 156, $trailing = '...', $mod = false, $read_cache = true,
 			$add_hashtags = true, $do_encode = true, $md_idx = 'og_desc' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -356,7 +356,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'textlen' => $textlen,
 					'trailing' => $trailing,
 					'mod' => $mod,
-					'use_cache' => $use_cache,
+					'read_cache' => $read_cache,
 					'add_hashtags' => $add_hashtags, 	// true | false | numeric
 					'do_encode' => $do_encode,
 					'md_idx' => $md_idx,
@@ -435,7 +435,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$this->p->debug->log( 'getting the content for post ID '.$mod['id'] );
 						}
 
-						$desc_text = $this->get_the_content( $mod, $use_cache, $md_idx );
+						$desc_text = $this->get_the_content( $mod, $read_cache, $md_idx );
 
 						// ignore everything before the first paragraph if true
 						if ( $this->p->options['plugin_p_strip'] ) {
@@ -579,28 +579,27 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		// deprecated on 2017/11/19
-		public function get_content( array $mod, $use_cache = true, $md_idx = '' ) {
-			return $this->get_the_content( $mod, $use_cache, $md_idx );
+		public function get_content( array $mod, $read_cache = true, $md_idx = '' ) {
+			return $this->get_the_content( $mod, $read_cache, $md_idx );
 		}
 
-		public function get_the_content( array $mod, $use_cache = true, $md_idx = '' ) {
+		public function get_the_content( array $mod, $read_cache = true, $md_idx = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
 					'mod' => $mod,
-					'use_cache' => $use_cache,
+					'read_cache' => $read_cache,
 					'md_idx' => $md_idx,
 				) );
 			}
 
 			$lca = $this->p->cf['lca'];
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
+			$content_array = array();
+			$cache_index = 0;	// redefined if $cache_exp_secs > 0
 
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
 			$filter_content = apply_filters( $lca.'_filter_content', $filter_content, $mod );
-
-			$content_array = array();
-			$content_index = 'locale:'.SucomUtil::get_locale( $mod ).'_filter:'.( $filter_content ? 'true' : 'false' );
 
 			/*
 			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
@@ -613,38 +612,53 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$cache_opt_key = $this->p->cf['wp']['wp_cache'][$cache_md5_pre]['opt_key'];
 				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
 			}
-			$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
-			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );
 				$this->p->debug->log( 'filter content = '.( $filter_content ? 'true' : 'false' ) );
-				$this->p->debug->log( 'content index = '.$content_index );
 				$this->p->debug->log( 'wp_cache expire = '.$cache_exp_secs );
-				$this->p->debug->log( 'wp_cache salt = '.$cache_salt );
 			}
 
 			/************************
 			 * Retrieve the Content *
 			 ************************/
 
-			if ( $cache_exp_secs > 0 && $use_cache ) {
-				$content_array = wp_cache_get( $cache_id, __METHOD__ );
-				if ( isset( $content_array[$content_index] ) ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'content index found in array from wp_cache '.$cache_id );
+			if ( $cache_exp_secs > 0 ) {
+
+				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
+				$cache_id = $cache_md5_pre.md5( $cache_salt );
+				$cache_index = 'locale:'.SucomUtil::get_locale( $mod ).'_filter:'.( $filter_content ? 'true' : 'false' );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'wp_cache salt = '.$cache_salt );
+					$this->p->debug->log( 'wp_cache index = '.$cache_index );
+				}
+
+				if ( $read_cache ) {
+					$content_array = wp_cache_get( $cache_id, __METHOD__ );
+					if ( isset( $content_array[$cache_index] ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'content index found in array from wp_cache '.$cache_id );
+						}
+						return $content_array[$cache_index];
+					} else {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'content index not in array from wp_cache '.$cache_id );
+						}
+						if ( ! is_array( $content_array ) ) {	// just in case
+							$content_array = array();
+						}
 					}
-					return $content_array[$content_index];
 				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'content index not in array from wp_cache '.$cache_id );
+					$this->p->debug->log( 'read cache for content is false' );
 				}
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'content array wp_cache is disabled' );
 			}
 
-			$content_array[$content_index] = false;
-			$content_text =& $content_array[$content_index];
-			$content_text = apply_filters( $lca.'_content_seed', '', $mod, $use_cache, $md_idx );
+			$content_array[$cache_index] = false;
+			$content_text =& $content_array[$cache_index];
+			$content_text = apply_filters( $lca.'_content_seed', '', $mod, $read_cache, $md_idx );
 
 			if ( ! empty( $content_text ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -721,7 +735,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			// apply filters before caching
-			$content_array[$content_index] = apply_filters( $lca.'_content', $content_text, $mod, $use_cache, $md_idx );
+			$content_array[$cache_index] = apply_filters( $lca.'_content', $content_text, $mod, $read_cache, $md_idx );
 
 			if ( $cache_exp_secs > 0 ) {
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );	// only some caching plugins support this feature
@@ -731,7 +745,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			return $content_array[$content_index];
+			return $content_array[$cache_index];
 		}
 
 		public function get_article_section( $post_id ) {

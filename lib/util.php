@@ -200,10 +200,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $def_image_info;	// stop here
 			}
 
-			/*
-			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
-			 * less in length. If using a site transient, it should be 40 characters or less in length.
-			 */
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
 			$cache_md5_pre = $lca.'_i_';
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
@@ -211,15 +207,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
 				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
 			}
-			$cache_salt = __METHOD__.'(url:'.$image_url.')';
-			$cache_id = $cache_md5_pre.md5( $cache_salt );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'transient cache salt '.$cache_salt );
-			}
 
 			if ( $cache_exp_secs > 0 ) {
+				/*
+				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
+				 * less in length. If using a site transient, it should be 40 characters or less in length.
+				 */
+				$cache_salt = __METHOD__.'(url:'.$image_url.')';
+				$cache_id = $cache_md5_pre.md5( $cache_salt );
+	
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'transient cache salt '.$cache_salt );
+				}
+
 				$image_info = get_transient( $cache_id );
+
 				if ( is_array( $image_info ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'returning image info from transient: '.
@@ -733,10 +735,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$lca = $this->p->lca;
 
-			/*
-			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
-			 * less in length. If using a site transient, it should be 40 characters or less in length.
-			 */
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
 			$cache_md5_pre = $lca.'_a_';
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
@@ -744,15 +742,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
 				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
 			}
-			$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
-			$cache_id = $cache_md5_pre.md5( $cache_salt );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'transient cache salt '.$cache_salt );
-			}
 
 			if ( $cache_exp_secs > 0 ) {
+				/*
+				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
+				 * less in length. If using a site transient, it should be 40 characters or less in length.
+				 */
+				$cache_salt = __METHOD__.'('.WPSSO_TOPICS_LIST.')';
+				$cache_id = $cache_md5_pre.md5( $cache_salt );
+	
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'transient cache salt '.$cache_salt );
+				}
+
 				$topics = get_transient( $cache_id );
+
 				if ( is_array( $topics ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'article topics retrieved from transient '.$cache_id );
@@ -1516,6 +1520,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					'utm_source|utm_medium|utm_campaign|utm_term|gclid|pk_campaign|pk_kwd)=[^&]*&?/i', '$1', $url );
 
 				$url = apply_filters( $lca.'_server_request_url', $url, $mod, $add_page, $src_id );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'server request url (filtered) = '.$url );
+				}
 
 				// maybe disable transient cache and URL shortening
 				if ( $src_id === 'head_sharing_url' && strpos( $url, '?' ) !== false ) {
