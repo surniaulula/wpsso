@@ -391,9 +391,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added new filters for the fallback server request URL:
+	* Added new filters in WpssoUtil::get_page_url() for the fallback server request URL:
 		* 'wpsso_server_request_url'
 		* 'wpsso_server_request_url_disable_cache'
+	* Minor refactoring / code improvements of the following methods:
+		* WpssoUtil::get_page_url()
+		* WpssoPost::check_post_head_duplicates()
+		* WpssoProUtilShorten::get_short_url()
 
 **Version 3.48.6 (2017/11/24)**
 
