@@ -362,8 +362,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			}
 
-			$is_admin = is_admin();	// call the function only once
 			$sharing_url = $this->p->util->get_sharing_url( $mod, true, 'head_sharing_url' );	// $add_page = true
+
+			if ( empty( $sharing_url ) ) {	// just in case
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: get_sharing_url() returned an empty string' );
+				}
+				return array();
+			}
+
+			$is_admin = is_admin();	// call the function only once
 			$crawler_name = SucomUtil::get_crawler_name();
 			$head_array = array();
 			$cache_index = 0;	// redefined if $cache_exp_secs > 0
