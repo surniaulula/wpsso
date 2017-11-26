@@ -2223,7 +2223,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:140 lib/meta.php:211 lib/post.php:804
+#: lib/gpl/admin/post.php:140 lib/meta.php:211 lib/post.php:779
 #: lib/pro/admin/post.php:170
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2680,7 +2680,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:409 lib/util.php:2147
+#: lib/messages.php:409 lib/util.php:2187
 msgid "No options available."
 msgstr ""
 
@@ -4230,122 +4230,96 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/post.php:547
-msgid "The WordPress %1$s function returned an empty URL for post ID %2$s."
-msgstr ""
-
-#: lib/post.php:547
-msgid ""
-"Some theme and plugin developers have been known to hook the WordPress %1$s "
-"filter and return an empty URL to disable the WordPress %2$s meta tag."
-msgstr ""
-
-#: lib/post.php:547
-msgid ""
-"This breaks the WordPress %1$s function and is a violation of the WordPress "
-"theme guidelines."
-msgstr ""
-
-#: lib/post.php:547
-msgid ""
-"Please identify the cause of this issue and fix your site's %1$s function."
-msgstr ""
-
-#: lib/post.php:560
-msgid ""
-"The WordPress %1$s function returned an invalid URL (%2$s) for post ID %3$s."
-msgstr ""
-
-#: lib/post.php:579
+#: lib/post.php:554
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:582
+#: lib/post.php:557
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:610
+#: lib/post.php:585
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:612
+#: lib/post.php:587
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:614
+#: lib/post.php:589
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:616
+#: lib/post.php:591
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:627 lib/util.php:833
+#: lib/post.php:602 lib/util.php:833
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:636
+#: lib/post.php:611
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:645
+#: lib/post.php:620
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:654
+#: lib/post.php:629
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:670
+#: lib/post.php:645
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:678
+#: lib/post.php:653
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:688
+#: lib/post.php:663
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:688
+#: lib/post.php:663
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:688
+#: lib/post.php:663
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:710
+#: lib/post.php:685
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:714
+#: lib/post.php:689
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:716
+#: lib/post.php:691
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
@@ -5060,7 +5034,33 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1930
+#: lib/util.php:1767
+msgid "The WordPress %1$s function returned an empty URL for post ID %2$s."
+msgstr ""
+
+#: lib/util.php:1767
+msgid ""
+"Some theme and plugin developers have been known to hook the WordPress %1$s "
+"filter and return an empty URL to disable the WordPress %2$s meta tag."
+msgstr ""
+
+#: lib/util.php:1767
+msgid ""
+"This breaks the WordPress %1$s function and is a violation of the WordPress "
+"theme guidelines."
+msgstr ""
+
+#: lib/util.php:1767
+msgid ""
+"Please identify the cause of this issue and fix your site's %1$s function."
+msgstr ""
+
+#: lib/util.php:1774
+msgid ""
+"The WordPress %1$s function returned an invalid URL (%2$s) for post ID %3$s."
+msgstr ""
+
+#: lib/util.php:1970
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "
@@ -5069,27 +5069,27 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2174
+#: lib/util.php:2214
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2178
+#: lib/util.php:2218
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2181
+#: lib/util.php:2221
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2185
+#: lib/util.php:2225
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2303
+#: lib/util.php:2343
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr ""

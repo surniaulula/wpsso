@@ -223,7 +223,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 
 				if ( $mod['is_post'] ) {
-					$short_url = wp_get_shortlink( $mod['id'], 'post' );	// $context = post
+					$short_url = $this->p->util->safe_wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 				} else {
 					$service_key = $this->p->options['plugin_shortener'];
 					$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',

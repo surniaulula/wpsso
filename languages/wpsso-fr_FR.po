@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.48.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2017-11-26 04:44-0600\n"
-"PO-Revision-Date: 2017-11-26 04:44-0600\n"
+"POT-Creation-Date: 2017-11-26 13:17-0600\n"
+"PO-Revision-Date: 2017-11-26 13:23-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -84,7 +84,7 @@ msgstr "La validation du jeton nonce pour les options de réseau a échoué (mis
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:693 lib/post.php:450 lib/term.php:289 lib/user.php:272
+#: lib/admin.php:693 lib/post.php:444 lib/term.php:289 lib/user.php:272
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -445,7 +445,7 @@ msgid "Google has been selected as your preferred URL shortening service, but th
 msgstr "Google a été sélectionné comme service de raccourcissement d'URL préféré, mais l'option %s n'est pas activée."
 
 #: lib/admin.php:2058 lib/gpl/admin/advanced.php:403
-#: lib/pro/admin/advanced.php:393 lib/pro/util/shorten.php:258
+#: lib/pro/admin/advanced.php:393 lib/pro/util/shorten.php:263
 msgctxt "option label"
 msgid "URL Shortener API is Enabled"
 msgstr "API de raccourcissement d'URL Google est actif"
@@ -631,15 +631,15 @@ msgstr "Tous les crochets de filtre WordPress doivent retourner leur texte - non
 msgid "Please contact the author of that filter hook and report this issue as a coding error / bug."
 msgstr "SVP contacter l'auteur de ce filtre et signaler ce problème comme une erreur / bug dans leur code."
 
-#: lib/com/bfo.php:249 lib/com-gettext-extract.php:17
+#: lib/com/bfo.php:248 lib/com-gettext-extract.php:17
 msgid "Incorrect webpage output:"
 msgstr "Sortie incorrecte à la page Web:"
 
-#: lib/com/bfo.php:250 lib/com-gettext-extract.php:6
+#: lib/com/bfo.php:249 lib/com-gettext-extract.php:6
 msgid "BEGIN OUTPUT"
 msgstr "DÉBUT DE SORTIE"
 
-#: lib/com/bfo.php:252 lib/com-gettext-extract.php:11
+#: lib/com/bfo.php:250 lib/com-gettext-extract.php:11
 msgid "END OUTPUT"
 msgstr "FIN DE SORTIE"
 
@@ -1827,13 +1827,13 @@ msgid "Bitly URL Shortener"
 msgstr "Raccourcisseur de lien Bitly"
 
 #: lib/gpl/admin/advanced.php:373 lib/pro/admin/advanced.php:364
-#: lib/pro/util/shorten.php:219
+#: lib/pro/util/shorten.php:224
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr "Nom d'utilisateur Bitly"
 
 #: lib/gpl/admin/advanced.php:379 lib/pro/admin/advanced.php:370
-#: lib/pro/util/shorten.php:227
+#: lib/pro/util/shorten.php:232
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr "Jeton d'accès générique Bitly"
@@ -1859,7 +1859,7 @@ msgid "Google APIs"
 msgstr "APIs Google"
 
 #: lib/gpl/admin/advanced.php:398 lib/pro/admin/advanced.php:389
-#: lib/pro/util/shorten.php:250
+#: lib/pro/util/shorten.php:255
 msgctxt "option label"
 msgid "Google Project API Key"
 msgstr "Clé d'API du projet Google"
@@ -1870,7 +1870,7 @@ msgid "Ow.ly URL Shortener"
 msgstr "Raccourcisseur de lien Ow.ly"
 
 #: lib/gpl/admin/advanced.php:411 lib/pro/admin/advanced.php:401
-#: lib/pro/util/shorten.php:275
+#: lib/pro/util/shorten.php:280
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr "Clé d'API pour Ow.ly"
@@ -1881,7 +1881,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr "Your Own URL Shortener (YOURLS)"
 
 #: lib/gpl/admin/advanced.php:420 lib/pro/admin/advanced.php:410
-#: lib/pro/util/shorten.php:308
+#: lib/pro/util/shorten.php:314
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr "URL de l'API YOURLS"
@@ -2129,7 +2129,7 @@ msgid "Product Size"
 msgstr "Taille du produit"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/gpl/admin/post.php:140 lib/meta.php:211 lib/post.php:785
+#: lib/gpl/admin/post.php:140 lib/meta.php:211 lib/post.php:804
 #: lib/pro/admin/post.php:170
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -2143,19 +2143,19 @@ msgstr "Nom du champ biographique de membre BuddyPress"
 msgid "The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you've created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.)."
 msgstr "La page de profil du membre BuddyPress n'inclut pas le texte <em>À propos de vous</em> du profil utilisateur WordPress. Si vous avez créé un champ de profil BuddyPress supplémentaire pour que les membres puissent entrer leur description de profil, entrez le nom du champ ici (exemple: Informations biographiques, À propos de moi, etc.)."
 
-#: lib/head.php:441
+#: lib/head.php:449
 msgid "adding open graph meta tags"
 msgstr "ajout de balises méta open graph"
 
-#: lib/head.php:453
+#: lib/head.php:461
 msgid "adding twitter card meta tags"
 msgstr "ajout de balises méta carte twitter"
 
-#: lib/head.php:492
+#: lib/head.php:500
 msgid "adding schema meta tags"
 msgstr "ajout de balises méta schéma"
 
-#: lib/head.php:499
+#: lib/head.php:507
 msgid "adding schema json-ld markup"
 msgstr "ajout de balisage schéma json-ld"
 
@@ -2459,7 +2459,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "SVP prendre note que certains metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:409 lib/util.php:2115
+#: lib/messages.php:409 lib/util.php:2147
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -3580,79 +3580,95 @@ msgstr "La valeur de l'option '%s' ne peut pas être un chaine de caractère vid
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/post.php:540
-msgid "The WordPress wp_get_shortlink() function returned an invalid URL (%1$s) for post ID %2$s."
-msgstr "La fonction wp_get_shortlink() de WordPress a retourné un URL non valide (%1$s) pour l'ID d'article %2$s."
+#: lib/post.php:547
+msgid "The WordPress %1$s function returned an empty URL for post ID %2$s."
+msgstr "La fonction %1$s de WordPress a retourné un URL vide pour l'ID d'article %2$s."
 
-#: lib/post.php:558
+#: lib/post.php:547
+msgid "Some theme and plugin developers have been known to hook the WordPress %1$s filter and return an empty URL to disable the WordPress %2$s meta tag."
+msgstr "Certains développeurs de thèmes et d'extensions pourraient avoir accroché le filtre %1$s de WordPress et retourner une URL vide pour désactiver la balise méta %2$s de WordPress."
+
+#: lib/post.php:547
+msgid "This breaks the WordPress %1$s function and is a violation of the WordPress theme guidelines."
+msgstr "Cela casse la fonction %1$s de WordPress et constitue une violation des directives de thème WordPress."
+
+#: lib/post.php:547
+msgid "Please identify the cause of this issue and fix your site's %1$s function."
+msgstr "Veuillez identifier la cause de ce problème et corriger la fonction %1$s de votre site."
+
+#: lib/post.php:560
+msgid "The WordPress %1$s function returned an invalid URL (%2$s) for post ID %3$s."
+msgstr "La fonction %1$s de WordPress a retourné un URL non valide (%2$s) pour l'ID d'article %3$s."
+
+#: lib/post.php:579
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr "Vérification de balises méta en double pour %1$s..."
 
-#: lib/post.php:561
+#: lib/post.php:582
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr "Vérification de balises méta en double pour %1$s (page Web pourrait provenir du cache)..."
 
-#: lib/post.php:589
+#: lib/post.php:610
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr "Récupérer le document HTML pour %1$s a pris %2$s secondes."
 
-#: lib/post.php:591
+#: lib/post.php:612
 msgid "This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds)."
 msgstr "Cela dépasse le délai recommandé de %1$s secondes (plusieurs crawlers déconnectent après %2$s secondes)."
 
-#: lib/post.php:593
+#: lib/post.php:614
 msgid "Please consider improving the speed of your site."
 msgstr "SVP envisager d'améliorer la vitesse de votre site."
 
-#: lib/post.php:595
+#: lib/post.php:616
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:606 lib/util.php:839
+#: lib/post.php:627 lib/util.php:833
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:615
+#: lib/post.php:636
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr "Une balise &lt;html&gt; n'a pas été trouvée dans <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:624
+#: lib/post.php:645
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Aucune balises HTML %1$s ont été trouvées dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:633
+#: lib/post.php:654
 msgid "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr "Une section de balises méta %2$s n'a pas été trouvée dans <a href=\"%1$s\">%1$s</a> &mdash; peut-être qu'une extension ou service de mise en cache de page Web doit être actualisé?"
 
-#: lib/post.php:649
+#: lib/post.php:670
 msgid "The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP's PCRE library or a webpage filter corrupting the %1$s meta tags."
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer la section de balises méta %1$s &mdash; ceci pourrait être une indication d'un problème avec la bibliothèque PHP PCRE ou un filtre de page Web qui corrompt les balises méta de %1$s."
 
-#: lib/post.php:657
+#: lib/post.php:678
 msgid "Conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage."
 msgstr "Conflit détecté &mdash; votre thème ou une autre extension ajoute une balise %1$s à l'entête de cette page Web."
 
-#: lib/post.php:667
+#: lib/post.php:688
 msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:667
+#: lib/post.php:688
 msgid "The webpage may contain serious HTML syntax errors &mdash; please review the <a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any errors."
 msgstr "La page Web pourrait contenir de graves erreurs de syntaxe HTML &mdash; SVP consulter les résultats du <a href=\"%1$s\">W3C Markup Validation Service</a> et corrigez toutes les erreurs."
 
-#: lib/post.php:667
+#: lib/post.php:688
 msgid "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr "Vous pouvez ignorer toutes les erreurs d'attribut \"nopin\" sans risque, ou désactiver l'attribut \"nopin\" sous l'<a href=\"%s\">onglet de réglages Pinterest</a>."
 
-#: lib/post.php:689
+#: lib/post.php:710
 msgid "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again later)..."
 msgstr "%1$s balises méta en double trouvées. Vérification %2$s de %3$s a échoué (réessaie à suivre)..."
 
-#: lib/post.php:693
+#: lib/post.php:714
 msgid "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will keep repeating duplicate check..."
 msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) L'option de débogage est active - cette vérification sera répétée..."
 
-#: lib/post.php:695
+#: lib/post.php:716
 msgid "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) Vérification %2$s de %3$s réussi..."
 
@@ -3759,12 +3775,12 @@ msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too sma
 msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
 #: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:147
-#: lib/pro/media/wistia.php:275 lib/util.php:904
+#: lib/pro/media/wistia.php:275 lib/util.php:897
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr "<a href=\"%1$s\">La fonction PHP %2$s</a> n'est pas disponible."
 
 #: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:150
-#: lib/pro/media/wistia.php:278 lib/util.php:907
+#: lib/pro/media/wistia.php:278 lib/util.php:900
 msgid "Please contact your hosting provider to have the missing function installed."
 msgstr "SVP contacter votre hébergeur pour installer la fonction manquante."
 
@@ -3788,25 +3804,25 @@ msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de
 msgid "Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions."
 msgstr "L'image %1$s du contenu a été ignoré &mdash; la largeur / hauteur est insuffisante pour les dimensions requis par %2$s."
 
-#: lib/pro/util/shorten.php:218 lib/pro/util/shorten.php:249
-#: lib/pro/util/shorten.php:274 lib/pro/util/shorten.php:307
+#: lib/pro/util/shorten.php:223 lib/pro/util/shorten.php:254
+#: lib/pro/util/shorten.php:279 lib/pro/util/shorten.php:313
 msgid "The %s option is empty."
 msgstr "L'option %s est vide."
 
-#: lib/pro/util/shorten.php:226
+#: lib/pro/util/shorten.php:231
 msgid "The %1$s and %2$s options are empty &mdash; at least one option is required."
 msgstr "Les options %1$s et %2$s sont vides &mdash; au moins une option est nécessaire."
 
-#: lib/pro/util/shorten.php:228
+#: lib/pro/util/shorten.php:233
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr "Clé d'API pour Bitly"
 
-#: lib/pro/util/shorten.php:257
+#: lib/pro/util/shorten.php:262
 msgid "The %s option is not enabled."
 msgstr "L'option %s n'est pas activée."
 
-#: lib/pro/util/shorten.php:340
+#: lib/pro/util/shorten.php:346
 msgid "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr "Identifiants API incomplet ou manquant pour le service de raccourcissement d'URL %s."
 
@@ -4305,67 +4321,67 @@ msgstr "Jabber / Google Talk"
 msgid "Yahoo Messenger"
 msgstr "Yahoo Messenger"
 
-#: lib/util.php:574
+#: lib/util.php:572
 msgid "%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared."
 msgstr "Les fichiers en cache, le cache transitoire, et le méta de colonnes %s, ainsi que le cache d'objets de WordPress ont été vidés."
 
-#: lib/util.php:578
+#: lib/util.php:576
 msgid "The cache for %s has also been cleared."
 msgstr "Le cache pour %s a été vidé aussi."
 
-#: lib/util.php:600
+#: lib/util.php:598
 msgid "Site performance may be impacted slightly while all cache objects are rebuilt."
 msgstr "La performance du site peut être affectées légèrement le temps que tous les objets du cache sont reconstruits."
 
-#: lib/util.php:680
+#: lib/util.php:676
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
-#: lib/util.php:697
+#: lib/util.php:693
 msgid "Failed to remove the cache file %s."
 msgstr "Impossible de supprimer le dossier de cache %s."
 
-#: lib/util.php:773
+#: lib/util.php:767
 msgid "Error reading %s article topic list file."
 msgstr "Erreur de lecture du fichier de la liste des rubriques d'article %s."
 
-#: lib/util.php:827
+#: lib/util.php:821
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:850
+#: lib/util.php:844
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
-#: lib/util.php:949
+#: lib/util.php:942
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1898
+#: lib/util.php:1930
 msgid "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent possiblement détecté &mdash le filtre WordPress %1$s a pris %2$0.2f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.2f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:2142
+#: lib/util.php:2174
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2146
+#: lib/util.php:2178
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:2149
+#: lib/util.php:2181
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2153
+#: lib/util.php:2185
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: lib/util.php:2271
+#: lib/util.php:2303
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr "%s extension requise"
