@@ -4253,7 +4253,7 @@ msgstr ""
 
 #: lib/post.php:560
 msgid ""
-"The WordPress %1$s function returned an invalid URL (21$s) for post ID %3$s."
+"The WordPress %1$s function returned an invalid URL (%2$s) for post ID %3$s."
 msgstr ""
 
 #: lib/post.php:579

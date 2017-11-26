@@ -557,7 +557,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( is_admin() ) {
-					$this->p->notice->err( '<strong>'.sprintf( __( 'The WordPress %1$s function returned an invalid URL (21$s) for post ID %3$s.',
+					$this->p->notice->err( '<strong>'.sprintf( __( 'The WordPress %1$s function returned an invalid URL (%2$s) for post ID %3$s.',
 						'wpsso' ), $wp_get_shortlink_link, $shortlink_link, $post_id ).'</strong>' );
 				}
 
