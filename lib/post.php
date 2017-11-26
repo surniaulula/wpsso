@@ -173,6 +173,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				) );
 			}
 
+			// just in case, check to make sure we have a plugin shortener selected
 			if ( empty( $this->p->options['plugin_shortener'] ) || $this->p->options['plugin_shortener'] === 'none' ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: no shortening service defined' );
@@ -528,17 +529,38 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// stop here
 			}
 
-			$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
+			$shortlink = wp_get_shortlink( $post_id, 'post' );
 			$shortlink_encoded = SucomUtil::encode_html_emoji( urldecode( $shortlink ) );
 
+			$shortlink_link = '<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>';
+			$get_shortlink_link = '<a href="https://developer.wordpress.org/reference/hooks/get_shortlink/">get_shortlink</a>';
+			$wp_get_shortlink_link = '<a href="https://developer.wordpress.org/reference/functions/wp_get_shortlink/">wp_get_shortlink()</a>';
+			$wp_shortlink_wp_head_link = '<a href="https://developer.wordpress.org/reference/functions/wp_shortlink_wp_head/">wp_shortlink_wp_head</a>';
+
+			if ( empty( $shortlink ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: wp_get_shortlink() returned an empty URL for post id '.$post_id );
+				}
+
+				if ( is_admin() ) {
+					$this->p->notice->err( '<strong>'.sprintf( __( 'The WordPress %1$s function returned an empty URL for post ID %2$s.', 'wpsso' ), $wp_get_shortlink_link, $post_id ).'</strong> '.sprintf( __( 'Some theme and plugin developers have been known to hook the WordPress %1$s filter and return an empty URL to disable the WordPress %2$s meta tag.', 'wpsso' ), $get_shortlink_link, '<code>shortlink</code>' ).' '.sprintf( __( 'This breaks the WordPress %1$s function and is a violation of the WordPress theme guidelines.', 'wpsso' ), $wp_get_shortlink_link ).' '.sprintf( __( 'Please identify the cause of this issue and fix your site\'s %1$s function.', 'wpsso' ), $wp_get_shortlink_link ) );
+				}
+
+				return;	// stop here
+			}
+
 			if ( filter_var( $shortlink, FILTER_VALIDATE_URL ) === false ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: wp_get_shortlink() returned an invalid URL ('.$shortlink.') for post id '.$post_id );
 				}
+
 				if ( is_admin() ) {
-					$this->p->notice->err( sprintf( __( 'The WordPress wp_get_shortlink() function returned an invalid URL (%1$s) for post ID %2$s.',
-						'wpsso' ), '<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>', $post_id ) );
+					$this->p->notice->err( '<strong>'.sprintf( __( 'The WordPress %1$s function returned an invalid URL (21$s) for post ID %3$s.',
+						'wpsso' ), $wp_get_shortlink_link, $shortlink_link, $post_id ).'</strong>' );
 				}
+
 				return;	// stop here
 			}
 

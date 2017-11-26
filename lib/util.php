@@ -1749,6 +1749,47 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $max;
 		}
 
+		public function safe_function_filter( array $args, array $filter_names, $add_bfo = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			/*
+			 * Check for required call_user_func_array() arguments.
+			 */
+			if ( empty( $args[0] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: function name missing from parameter array' );
+				}
+				return '';
+			}
+
+			/*
+			 * Load the Block Filter Output (BFO) filters to block and show an error 
+			 * for incorrectly coded filters.
+			 */
+			if ( $add_bfo ) {
+				$classname = apply_filters( $this->p->lca.'_load_lib', false, 'com/bfo', 'SucomBFO' );
+				if ( is_string( $classname ) && class_exists( $classname ) ) {
+					$bfo_obj = new $classname( $this->p );
+					$bfo_obj->add_start_hooks( $filter_names );
+				}
+			}
+
+			$function_name = array_shift( $args );
+			$return_value = call_user_func_array( $function_name, $args );
+
+			/*
+			 * Remove the Block Filter Output (BFO) filters.
+			 */
+			if ( $add_bfo ) {
+				$bfo_obj->remove_all_hooks( $filter_names );
+			}
+
+			return $return_value;
+		}
+
 		public function safe_apply_filters( array $args, array $mod, $max_time = 0, $add_bfo = false ) {
 
 			if ( $this->p->debug->enabled ) {

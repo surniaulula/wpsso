@@ -224,11 +224,11 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					$this->text_domain );
 
 				if ( preg_match( '/^'.$this->bfo_check_id.'_\[([0-9]+)\](.+)$/', urldecode( $method_name ), $matches ) ) {
+
 					$error_msg = sprintf( $error_text, $matches[2], $matches[1], current_filter() );
 					/*
-					 * Filters are rarely applied on the admin / back-end side, 
-					 * but if they are, then take advantage of this and show a 
-					 * notice. :)
+					 * Filters are rarely applied on the admin / back-end side, but if they are,
+					 * then take advantage of this and show a notice. :)
 					 */
 					if ( is_admin() ) {
 						if ( isset( $this->p->notice ) ) {
@@ -244,15 +244,11 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 							}
 						}
 					}
-					error_log(
-						$this->label_transl.': '.$error_msg.' '.	// label_transl is already translated
-						__( 'Incorrect webpage output:', $this->text_domain )."\n".
-						'-----'.__( 'BEGIN OUTPUT', $this->text_domain ).'-----'."\n".
-						print_r( $output, true )."\n".
-						'-----'.__( 'END OUTPUT', $this->text_domain ).'-----'
-					);
-				}
 
+					error_log( $this->label_transl.': '.$error_msg.' '.__( 'Incorrect webpage output:', $this->text_domain )."\n".
+						'-----'.__( 'BEGIN OUTPUT', $this->text_domain ).'-----'."\n".print_r( $output, true )."\n".
+						'-----'.__( 'END OUTPUT', $this->text_domain ).'-----' );
+				}
 				ob_clean();	// clean the output buffer for the next hook check
 			}
 			return $value;
