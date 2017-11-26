@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.7-dev.2 (2017/11/25)**
+**Version 3.48.7-dev.2 (2017/11/26)**
 
 * *New Features*
 	* None
@@ -650,7 +650,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.48.7-dev.2 =
 
-(2017/11/25) Transient cache is now automatically disabled when using the fallback server request URL. Optimized the definition of cache ids when the transient cache is disabled.
+(2017/11/26) Transient cache is now automatically disabled when using the fallback server request URL. Optimized the definition of cache ids when the transient cache is disabled.
 
 = 3.48.6 =
 
