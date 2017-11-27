@@ -93,18 +93,18 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			}
 
 			if ( apply_filters( $lca.'_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
+				$short_url = '';
 				if ( $mod['is_post'] ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'using wp_get_shortlink() function to get shortlink' );
+						$this->p->debug->log( 'using SucomUtilWP::wp_get_shortlink() to get shortlink' );
 					}
-					$short_url = wp_get_shortlink( $mod['id'], 'post' );	// $context = post
+					$short_url = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 				} elseif ( ! empty( $mt_og['og:url'] ) ) {	// just in case
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'using '.$lca.'_get_short_url filters to get shortlink' );
 					}
 					$service_key = $this->p->options['plugin_shortener'];
-					$short_url = apply_filters( $lca.'_get_short_url',
-						$sharing_url, $service_key, $mod, $mod['name'] );
+					$short_url = apply_filters( $lca.'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
 				}
 				if ( empty( $short_url ) ) {
 					if ( $this->p->debug->enabled ) {

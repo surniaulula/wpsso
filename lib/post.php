@@ -82,10 +82,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( ! empty( $this->p->options['plugin_shortener'] ) && $this->p->options['plugin_shortener'] !== 'none' ) {
 				if ( ! empty( $this->p->options['plugin_wp_shortlink'] ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'adding get_shortlink filter for sharing url' );
+						$this->p->debug->log( 'adding pre_get_shortlink filter for shortened sharing url' );
 					}
-					// filters the wp shortlink for a post
-					add_filter( 'get_shortlink', array( &$this, 'get_sharing_shortlink' ), 9000, 4 );
+					add_filter( 'pre_get_shortlink', array( &$this, 'get_sharing_shortlink' ), -1000, 4 );
 				}
 			}
 
@@ -218,7 +217,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( empty( $shortlink ) ) {
-					if ( get_post_type( $post_id ) == 'page' && get_option( 'page_on_front' ) == $post_id && get_option( 'show_on_front' ) == 'page' ) {
+					if ( get_post_type( $post_id ) === 'page' && get_option( 'page_on_front' ) == $post_id && get_option( 'show_on_front' ) == 'page' ) {
 						$shortlink = home_url( '/' );
 					} else {
 						$shortlink = home_url( '?p='.$post_id );
@@ -529,7 +528,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// stop here
 			}
 
-			$shortlink = $this->p->util->safe_wp_get_shortlink( $post_id, 'post' );	// $context = post
+			$shortlink = SucomUtilWP::wp_get_shortlink( $post_id, 'post' );	// $context = post
 			$shortlink_encoded = SucomUtil::encode_html_emoji( urldecode( $shortlink ) );
 
 			if ( empty( $shortlink ) ) {

@@ -205,37 +205,31 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			} else $image_preview_html = '<div class="preview_img"><p>'.
 				_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ).'</p></div>';
 
-			if ( isset( $mod['post_status'] ) &&
-				$mod['post_status'] === 'auto-draft' ) {
+			if ( isset( $mod['post_status'] ) && $mod['post_status'] === 'auto-draft' ) {
 
 				$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
 					'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );
 
-				$table_rows[] = $form->get_th_html( _x( 'Sharing URL',
-					'option label', 'wpsso' ), 'medium' ).
+				$table_rows[] = $form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
-				$table_rows[] = $form->get_th_html( _x( 'Shortened URL',
-					'option label', 'wpsso' ), 'medium' ).
+				$table_rows[] = $form->get_th_html( _x( 'Shortened URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
 			} else {
 				$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 
 				if ( $mod['is_post'] ) {
-					$short_url = $this->p->util->safe_wp_get_shortlink( $mod['id'], 'post' );	// $context = post
+					$short_url = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 				} else {
 					$service_key = $this->p->options['plugin_shortener'];
-					$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url',
-						$sharing_url, $service_key, $mod, $mod['name'] );
+					$short_url = apply_filters( $this->p->cf['lca'].'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
 				}
 
-				$table_rows[] = $form->get_th_html( _x( 'Sharing URL',
-					'option label', 'wpsso' ), 'medium' ).
+				$table_rows[] = $form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td>'.$form->get_input_copy_clipboard( $sharing_url ).'</td>';
 
-				$table_rows[] = $form->get_th_html( _x( 'Shortened URL',
-					'option label', 'wpsso' ), 'medium' ).
+				$table_rows[] = $form->get_th_html( _x( 'Shortened URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td>'.$form->get_input_copy_clipboard( $short_url ).'</td>';
 			}
 

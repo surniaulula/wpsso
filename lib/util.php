@@ -1202,7 +1202,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( empty( $atts['short_url'] ) ) {
 				if ( $mod['is_post'] ) {
-					$short_url = wp_get_shortlink( $mod['id'], 'post' );	// $context = post
+					$short_url = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 				} else {
 					$service_key = $this->p->options['plugin_shortener'];
 					$short_url = apply_filters( $this->p->lca.'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
@@ -1739,87 +1739,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $max;
-		}
-
-		// $context = 'blog', 'post' (default), 'media', or 'query'
-		public function safe_wp_get_shortlink( $post_id, $context = 'post' ) {
-
-			$shortlink = wp_get_shortlink( $post_id, 'post' );
-
-			if ( ! empty( $shortlink ) && filter_var( $shortlink, FILTER_VALIDATE_URL ) !== false ) {
-				return $shortlink;
-			}
-
-			static $show_once = null;
-
-			$is_pre_notices = $this->p->notice->is_admin_pre_notices();
-			$shortlink_encoded = SucomUtil::encode_html_emoji( urldecode( $shortlink ) );
-			$shortlink_link = '<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>';
-			$get_shortlink_link = '<a href="https://developer.wordpress.org/reference/hooks/get_shortlink/">get_shortlink</a>';
-			$wp_get_shortlink_link = '<a href="https://developer.wordpress.org/reference/functions/wp_get_shortlink/">wp_get_shortlink()</a>';
-			$wp_shortlink_wp_head_link = '<a href="https://developer.wordpress.org/reference/functions/wp_shortlink_wp_head/">wp_shortlink_wp_head</a>';
-
-			if ( empty( $shortlink ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'wp_get_shortlink() returned an empty URL for post id '.$post_id );
-				}
-				if ( $show_once === null && $is_pre_notices ) {
-					$this->p->notice->err( '<strong>'.sprintf( __( 'The WordPress %1$s function returned an empty URL for post ID %2$s.', 'wpsso' ), $wp_get_shortlink_link, $post_id ).'</strong> '.sprintf( __( 'Some theme and plugin developers have been known to hook the WordPress %1$s filter and return an empty URL to disable the WordPress %2$s meta tag.', 'wpsso' ), $get_shortlink_link, '<code>shortlink</code>' ).' '.sprintf( __( 'This breaks the WordPress %1$s function and is a violation of the WordPress theme guidelines.', 'wpsso' ), $wp_get_shortlink_link ).' '.sprintf( __( 'Please identify the cause of this issue and fix your site\'s %1$s function.', 'wpsso' ), $wp_get_shortlink_link ) );
-				}
-			} else {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'wp_get_shortlink() returned an invalid URL ('.$shortlink.') for post id '.$post_id );
-				}
-				if ( $show_once === null && $is_pre_notices ) {
-					$this->p->notice->err( '<strong>'.sprintf( __( 'The WordPress %1$s function returned an invalid URL (%2$s) for post ID %3$s.',
-						'wpsso' ), $wp_get_shortlink_link, $shortlink_link, $post_id ).'</strong>' );
-				}
-			}
-
-			$show_once = true;
-
-			return false;	// stop here
-		}
-
-		public function safe_function_filter( array $args, array $filter_names, $add_bfo = false ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			/*
-			 * Check for required call_user_func_array() arguments.
-			 */
-			if ( empty( $args[0] ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: function name missing from parameter array' );
-				}
-				return '';
-			}
-
-			/*
-			 * Load the Block Filter Output (BFO) filters to block and show an error 
-			 * for incorrectly coded filters.
-			 */
-			if ( $add_bfo ) {
-				$classname = apply_filters( $this->p->lca.'_load_lib', false, 'com/bfo', 'SucomBFO' );
-				if ( is_string( $classname ) && class_exists( $classname ) ) {
-					$bfo_obj = new $classname( $this->p );
-					$bfo_obj->add_start_hooks( $filter_names );
-				}
-			}
-
-			$function_name = array_shift( $args );
-			$return_value = call_user_func_array( $function_name, $args );
-
-			/*
-			 * Remove the Block Filter Output (BFO) filters.
-			 */
-			if ( $add_bfo ) {
-				$bfo_obj->remove_all_hooks( $filter_names );
-			}
-
-			return $return_value;
 		}
 
 		public function safe_apply_filters( array $args, array $mod, $max_time = 0, $add_bfo = false ) {

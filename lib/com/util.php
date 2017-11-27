@@ -3019,7 +3019,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( ! isset( $charset ) ) {
 				$charset = get_bloginfo( 'charset' );	// only get it once
 			}
-			return SucomUtilWP::encode_emoji( htmlentities( $html, ENT_QUOTES, $charset, false ) );	// double_encode = false
+			return SucomUtilWP::wp_encode_emoji( htmlentities( $html, ENT_QUOTES, $charset, false ) );	// double_encode = false
 		}
 	}
 }
@@ -3031,11 +3031,16 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 	class SucomUtilWP {
 
+		// deprecated on 2017/11/27
+		public static function encode_emoji( $content ) {
+			return self::wp_encode_emoji( $content );
+		}
+
 		/*
 		 * wp_encode_emoji() is only available since WordPress v4.2.
 		 * Use the WordPress function if available, otherwise provide the same functionality.
 		 */
-		public static function encode_emoji( $content ) {
+		public static function wp_encode_emoji( $content ) {
 			if ( function_exists( 'wp_encode_emoji' ) ) {
 				return wp_encode_emoji( $content );		// since wp 4.2
 			} elseif ( function_exists( 'mb_convert_encoding' ) ) {
@@ -3064,18 +3069,76 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		/*
+		 * Some themes and plugins have been known to hook the WordPress 'get_shortlink' filter 
+		 * and return an empty URL to disable the WordPress shortlink meta tag. This breaks the 
+		 * WordPress wp_get_shortlink() function and is a violation of the WordPress theme 
+		 * guidelines.
+		 *
+		 * This method calls the WordPress wp_get_shortlink() function, and if an empty string 
+		 * is returned, calls an unfiltered version of the same function.
+		 *
+		 * $context = 'blog', 'post' (default), 'media', or 'query'
+		 */
+		public static function wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
+
+			$shortlink = '';
+
+			if ( function_exists( 'wp_get_shortlink' ) ) {
+				$shortlink = wp_get_shortlink( $id, $context, $allow_slugs );		// since wp 3.0
+			}
+
+			if ( empty( $shortlink ) || ! is_string( $shortlink) || filter_var( $shortlink, FILTER_VALIDATE_URL ) === false ) {
+				$shortlink = self::raw_wp_get_shortlink( $id, $context, $allow_slugs );
+			}
+
+			return $shortlink;
+		}
+
+		/*
+		 * Unfiltered version of wp_get_shortlink() from wordpress/wp-includes/link-template.php
+		 * Last synchronized with WordPress v4.9 on 2017/11/27.
+		 */
+		public static function raw_wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
+		
+			$post_id = 0;
+			
+			if ( 'query' === $context && is_singular() ) {
+				$post_id = get_queried_object_id();
+				$post = get_post( $post_id );
+			} elseif ( 'post' === $context ) {
+				$post = get_post( $id );
+				if ( ! empty( $post->ID ) ) {
+					$post_id = $post->ID;
+				}
+			}
+
+			$shortlink = '';
+
+			if ( ! empty( $post_id ) ) {
+				$post_type = get_post_type_object( $post->post_type ); 
+				if ( 'page' === $post->post_type && $post->ID == get_option( 'page_on_front' ) && 'page' == get_option( 'show_on_front' ) ) {
+					$shortlink = home_url( '/' );
+				} elseif ( $post_type->public ) {
+					$shortlink = home_url( '?p=' . $post_id );
+				}
+			} 
+			
+			return $shortlink;
+		}
+
+		/*
 		 * Unfiltered version of home_url() from wordpress/wp-includes/link-template.php
 		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
 		 */
 		public static function raw_home_url( $path = '', $scheme = null ) {
-			return self::get_raw_home_url( null, $path, $scheme );
+			return self::raw_get_home_url( null, $path, $scheme );
 		}
 
 		/*
 		 * Unfiltered version of get_home_url() from wordpress/wp-includes/link-template.php
 		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
 		 */
-		public static function get_raw_home_url( $blog_id = null, $path = '', $scheme = null ) {
+		public static function raw_get_home_url( $blog_id = null, $path = '', $scheme = null ) {
 			global $pagenow;
 			if ( method_exists( 'SucomUtil', 'protect_filter_value' ) ) {
 				SucomUtil::protect_filter_value( 'pre_option_home' );
