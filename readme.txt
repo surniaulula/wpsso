@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.7-dev.3 (2017/11/26)**
+**Version 3.48.7-dev.4 (2017/11/27)**
 
 * *New Features*
 	* None
@@ -391,7 +391,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added a new WpssoUtil::safe_function_filter() method to report issues with the 'wp_get_shortlink' function output.
+	* Added a new SucomUtilWP::wp_get_shortlink() method to handle themes / plugins (like JetPack) which purposefully break the wp_get_shortlink() function.
+	* Replaced all calls to wp_get_shortlink() by SucomUtilWP::wp_get_shortlink().
 	* Added new filters in WpssoUtil::get_page_url() for the fallback server request URL:
 		* 'wpsso_server_request_url'
 		* 'wpsso_server_request_url_disable_cache'
@@ -653,9 +654,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.7-dev.3 =
+= 3.48.7-dev.4 =
 
-(2017/11/26) Transient cache is now automatically disabled when using the fallback server request URL. Optimized the definition of cache ids when the transient cache is disabled.
+(2017/11/27) Transient cache is now automatically disabled when using the fallback server request URL. Optimized the definition of cache ids when the transient cache is disabled.
 
 = 3.48.6 =
 
