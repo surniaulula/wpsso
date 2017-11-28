@@ -1497,6 +1497,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					// "Pinterest/0.2 (+http://www.pinterest.com/bot.html)"
 					case ( strpos( $ua, 'pinterest/' ) === 0 ):
+					case ( strpos( $ua, 'pinterestbot/' ) === 0 ):
 						self::$cache_crawler_name = 'pinterest';
 						break;
 
