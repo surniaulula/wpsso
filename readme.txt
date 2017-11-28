@@ -386,6 +386,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
+	* Updated the Pinterest crawler detection code to include the latest "Pinterestbot/" user agent string.
 	* Transient cache is now automatically disabled when using the fallback server request URL, for themes and plugins that create public content and don't use the standard WordPress functions / variables and/or are not properly integrated with WordPress (don't use custom post types, taxonomies, terms, etc.).
 	* Optimized the definition of cache ids when the transient cache is disabled.
 * *Bugfixes*
