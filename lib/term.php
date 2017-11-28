@@ -96,6 +96,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function get_mod( $mod_id, $tax_slug = '' ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}

@@ -84,6 +84,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function get_mod( $mod_id ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}

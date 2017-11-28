@@ -17,6 +17,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 	 */
 	class WpssoPost extends WpssoMeta {
 
+		protected static $cache_short_url = null;
+		protected static $cache_shortlinks = array();
+
 		public function __construct() {
 		}
 
@@ -82,9 +85,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( ! empty( $this->p->options['plugin_shortener'] ) && $this->p->options['plugin_shortener'] !== 'none' ) {
 				if ( ! empty( $this->p->options['plugin_wp_shortlink'] ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'adding pre_get_shortlink filter for shortened sharing url' );
+						$this->p->debug->log( 'adding pre_get_shortlink filters to shorten the sharing url' );
 					}
-					add_filter( 'pre_get_shortlink', array( &$this, 'get_sharing_shortlink' ), -1000, 4 );
+					add_filter( 'pre_get_shortlink', array( &$this, 'get_sharing_shortlink' ), SucomUtil::get_min_int(), 4 );
+					add_filter( 'pre_get_shortlink', array( &$this, 'restore_sharing_shortlink' ), SucomUtil::get_max_int(), 4 );
+
+					if ( function_exists( 'wpme_get_shortlink_handler' ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'removing the jetpack pre_get_shortlink filter hook' );
+						}
+						remove_filter( 'pre_get_shortlink', 'wpme_get_shortlink_handler', 1 );
+					}
 				}
 			}
 
@@ -161,7 +172,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 * Filters the wp shortlink for a post - returns the shortened sharing URL.
 		 * The wp_shortlink_wp_head() function calls wp_get_shortlink( 0, 'query' );
 		 */
-		public function get_sharing_shortlink( $shortlink, $post_id, $context, $allow_slugs ) {
+		public function get_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
@@ -170,6 +181,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					'context' => $context, 
 					'allow_slugs' => $allow_slugs, 
 				) );
+			}
+
+			self::$cache_short_url = null;	// just in case
+
+			if ( isset( self::$cache_shortlinks[$post_id][$context][$allow_slugs] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returning shortlink / short_url (from static cache) = '.
+						self::$cache_shortlinks[$post_id][$context][$allow_slugs] );
+				}
+				return self::$cache_short_url = self::$cache_shortlinks[$post_id][$context][$allow_slugs];
 			}
 
 			// just in case, check to make sure we have a plugin shortener selected
@@ -223,6 +244,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$shortlink = home_url( '?p='.$post_id );
 					}
 				}
+			} elseif ( ! is_numeric( $post_id ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: post_id argument is not numeric' );
+				}
+				return $shortlink;	// return original shortlink
 			}
 
 			$mod = $this->get_mod( $post_id );
@@ -260,7 +286,34 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $shortlink;	// return original shortlink
 			}
 
-			return $short_url;	// success - return short url
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'returning shortlink / short_url = '.$short_url );
+			}
+
+			return self::$cache_short_url = self::$cache_shortlinks[$post_id][$context][$allow_slugs] = $short_url;	// success - return short url
+		}
+
+		public function restore_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
+
+			if ( self::$cache_short_url === $shortlink ) {	// shortlink value has not changed
+				self::$cache_short_url = null;	// just in case
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: shortlink / short_url value has not changed' );
+				}
+				return $shortlink;
+			}
+
+			self::$cache_short_url = null;	// just in case
+
+			if ( isset( self::$cache_shortlinks[$post_id][$context][$allow_slugs] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'restoring shortlink / short_url '.$shortlink.' to '.
+						self::$cache_shortlinks[$post_id][$context][$allow_slugs] );
+				}
+				return self::$cache_shortlinks[$post_id][$context][$allow_slugs];
+			}
+
+			return $shortlink;
 		}
 
 		public function add_post_column_headings( $columns ) { 
@@ -459,6 +512,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$is_admin = is_admin();	// check once
 			$short = $this->p->cf['plugin'][$this->p->lca]['short'];
 
 			if ( empty( $this->p->options['plugin_check_head'] ) ) {
@@ -548,7 +602,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->cache->clear( $shortlink );	// clear cache before fetching shortlink url
 			}
 
-			if ( is_admin() ) {
+			if ( $is_admin ) {
 				if ( $clear_shortlink ) {
 					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags...', 'wpsso' ), 
 						'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ) );
@@ -579,7 +633,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'fetched '.$shortlink.' in '.$in_secs.' secs' );
 				}
-				if ( $in_secs > $warning_secs ) {
+				if ( is_admin() && $in_secs > $warning_secs ) {
 					$this->p->notice->warn(
 						sprintf( __( 'Retrieving the HTML document for %1$s took %2$s seconds.',
 							'wpsso' ), '<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>', $in_secs ).' '.
@@ -597,7 +651,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: error retrieving webpage from '.$shortlink );
 				}
-				if ( is_admin() ) {
+				if ( $is_admin ) {
 					$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
 						'wpsso' ), $shortlink ) );
 				}
@@ -606,7 +660,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: <html> tag not found in '.$shortlink );
 				}
-				if ( is_admin() ) {
+				if ( $is_admin ) {
 					$this->p->notice->err( sprintf( __( 'An &lt;html&gt; tag was not found in <a href="%1$s">%1$s</a>.',
 						'wpsso' ), $shortlink ) );
 				}
@@ -615,7 +669,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: No <meta/> HTML tags were found in '.$shortlink );
 				}
-				if ( is_admin() ) {
+				if ( $is_admin ) {
 					$this->p->notice->err( sprintf( __( 'No %1$s HTML tags were found in <a href="%2$s">%2$s</a>.',
 						'wpsso' ), '&lt;meta/&gt;', $shortlink ) );
 				}
@@ -624,7 +678,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: '.$this->p->lca.' meta tag section not found in '.$shortlink );
 				}
-				if ( is_admin() ) {
+				if ( $is_admin ) {
 					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $shortlink, $short ) );
 				}
 				return;	// stop here
@@ -640,7 +694,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: preg_replace() function failed to remove the meta tag section' );
 				}
-				if ( is_admin() ) {
+				if ( $is_admin ) {
 					$this->p->notice->err( sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP\'s PCRE library or a webpage filter corrupting the %1$s meta tags.', 'wpsso' ), $short ) );
 				}
 				return;	// stop here
@@ -657,7 +711,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'error parsing head meta for '.$shortlink );
 					}
-					if ( is_admin() ) {
+					if ( $is_admin ) {
 						$pinterest_tab_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' );
 						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'You may safely ignore any "nopin" attribute errors, or disable the "nopin" attribute under the <a href="%s">Pinterest settings tab</a>.', 'wpsso' ), $pinterest_tab_url ) );
 					}
@@ -679,7 +733,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							}
 						}
 					}
-					if ( is_admin() ) {
+					if ( $is_admin ) {
 						if ( $conflicts_found ) {
 							$warn_msg = __( '%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again later)...', 'wpsso' );
 							$this->p->notice->warn( sprintf( $warn_msg, $conflicts_found, $exec_count, $max_count ) );
