@@ -1201,12 +1201,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( empty( $atts['short_url'] ) ) {
-				if ( $mod['is_post'] ) {
-					$short_url = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
-				} else {
-					$service_key = $this->p->options['plugin_shortener'];
-					$short_url = apply_filters( $this->p->lca.'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
-				}
+				$service_key = $this->p->options['plugin_shortener'];
+				$short_url = apply_filters( $this->p->lca.'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
 			} else {
 				$short_url = $atts['short_url'];
 			}

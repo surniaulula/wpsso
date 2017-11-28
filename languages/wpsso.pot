@@ -2680,7 +2680,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:409 lib/util.php:2106
+#: lib/messages.php:409 lib/util.php:2102
 msgid "No options available."
 msgstr ""
 
@@ -5034,7 +5034,7 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1889
+#: lib/util.php:1885
 msgid ""
 "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took "
 "%2$0.2f seconds to execute. This is longer than the recommended maximum of "
@@ -5043,27 +5043,27 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2133
+#: lib/util.php:2129
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2137
+#: lib/util.php:2133
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2140
+#: lib/util.php:2136
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2144
+#: lib/util.php:2140
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2262
+#: lib/util.php:2258
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr ""
