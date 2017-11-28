@@ -391,15 +391,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added a new SucomUtilWP::wp_get_shortlink() method to handle themes / plugins (like JetPack) which purposefully break the wp_get_shortlink() function.
-	* Replaced all calls to wp_get_shortlink() by SucomUtilWP::wp_get_shortlink().
-	* Added new filters in WpssoUtil::get_page_url() for the fallback server request URL:
+	* Added a new SucomUtilWP wp_get_shortlink() method to handle themes / plugins (like JetPack) that purposefully break the wp_get_shortlink() function.
+	* Replaced all calls to wp_get_shortlink() by SucomUtilWP wp_get_shortlink().
+	* Added new filters in the WpssoUtil get_page_url() method for the fallback server request URL:
 		* 'wpsso_server_request_url'
 		* 'wpsso_server_request_url_disable_cache'
 	* Minor refactoring / code improvements of the following methods:
-		* WpssoUtil::get_page_url()
-		* WpssoPost::check_post_head_duplicates()
-		* WpssoProUtilShorten::get_short_url()
+		* WpssoUtil get_page_url()
+		* WpssoPost get_sharing_shortlink()
+		* WpssoPost check_post_head_duplicates()
+		* WpssoProUtilShorten get_short_url()
 
 **Version 3.48.6 (2017/11/24)**
 
@@ -574,7 +575,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added the following actions (see actions.txt in the plugin folder):
 		* 'wpsso_pre_apply_filters_text' ( $filter_name );
 		* 'wpsso_after_apply_filters_text' ( $filter_name );
-	* Added a new SucomUtil::get_wp_plugins() method to minimize calls to the slower WordPress get_plugins() function.
+	* Added a new SucomUtil get_wp_plugins() method to minimize calls to the slower WordPress get_plugins() function.
 
 **Version 3.46.4 (2017/10/02)**
 
