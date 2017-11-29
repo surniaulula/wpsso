@@ -95,10 +95,10 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			if ( apply_filters( $lca.'_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
 				$shortlink = '';
 				if ( $mod['is_post'] ) {
-					$wp_shortlink_ret = wp_get_shortlink( $mod['id'], 'post' );
+					$wp_shortlink_value = wp_get_shortlink( $mod['id'], 'post' );
 					$shortlink = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'wp_get_shortlink() for post id '.$mod['id'].' = '.$wp_shortlink_ret );
+						$this->p->debug->log( 'wp_get_shortlink() for post id '.$mod['id'].' = '.$wp_shortlink_value );
 						$this->p->debug->log( 'SucomUtilWP::wp_get_shortlink() = '.$shortlink );
 					}
 				} elseif ( ! empty( $mt_og['og:url'] ) ) {	// just in case
