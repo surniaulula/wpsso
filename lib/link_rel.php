@@ -93,31 +93,31 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			}
 
 			if ( apply_filters( $lca.'_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
-				$short_url = '';
+				$shortlink = '';
 				if ( $mod['is_post'] ) {
-					$wp_shortlink = wp_get_shortlink( $mod['id'], 'post' );
-					$short_url = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
+					$wp_shortlink_ret = wp_get_shortlink( $mod['id'], 'post' );
+					$shortlink = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'wp_get_shortlink() for post id '.$mod['id'].' = '.$wp_shortlink );
-						$this->p->debug->log( 'SucomUtilWP::wp_get_shortlink() = '.$short_url );
+						$this->p->debug->log( 'wp_get_shortlink() for post id '.$mod['id'].' = '.$wp_shortlink_ret );
+						$this->p->debug->log( 'SucomUtilWP::wp_get_shortlink() = '.$shortlink );
 					}
 				} elseif ( ! empty( $mt_og['og:url'] ) ) {	// just in case
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'using '.$lca.'_get_short_url filters to get shortlink' );
 					}
 					$service_key = $this->p->options['plugin_shortener'];
-					$short_url = apply_filters( $lca.'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
+					$shortlink = apply_filters( $lca.'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
 				}
-				if ( empty( $short_url ) ) {
+				if ( empty( $shortlink ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'skipping shortlink: short url is empty' );
 					}
-				} elseif ( $short_url === $sharing_url ) {
+				} elseif ( $shortlink === $sharing_url ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'skipping shortlink: short url is same as sharing url' );
 					}
 				} else {
-					$link_rel['shortlink'] = $short_url;
+					$link_rel['shortlink'] = $shortlink;
 				}
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'skipping shortlink: add_link_rel_shortlink filter returned false' );

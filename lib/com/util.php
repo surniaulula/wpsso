@@ -3020,7 +3020,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( ! isset( $charset ) ) {
 				$charset = get_bloginfo( 'charset' );	// only get it once
 			}
-			return SucomUtilWP::wp_encode_emoji( htmlentities( $html, ENT_QUOTES, $charset, false ) );	// double_encode = false
+			$html = htmlentities( $html, ENT_QUOTES, $charset, false );	// double_encode = false
+			if ( function_exists( 'wp_encode_emoji' ) ) {
+				$html = wp_encode_emoji( $html );
+			} elseif ( method_exists( 'SucomUtilWP', 'wp_encode_emoji' ) ) {	// just in case
+				$html = SucomUtilWP::wp_encode_emoji( $html );
+			}
+			return $html;
 		}
 	}
 }

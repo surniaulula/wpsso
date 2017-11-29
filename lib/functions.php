@@ -106,15 +106,9 @@ if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 	function wpsso_get_short_url( $mod = false, $add_page = true ) {
 		$wpsso =& Wpsso::get_instance();
-		if ( $mod['is_post'] ) {
-			return SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
-		} elseif ( is_object( $wpsso->util ) ) {	// just in case
-			$sharing_url = $wpsso->util->get_sharing_url( $mod, $add_page );
-			$service_key = $ngfb->options['plugin_shortener'];
-			return apply_filters( 'wpsso_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
-		} else {
-			return false;
-		}
+		$sharing_url = $wpsso->util->get_sharing_url( $mod, $add_page );
+		$service_key = $ngfb->options['plugin_shortener'];
+		return apply_filters( 'wpsso_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
 	}
 }
 
