@@ -582,10 +582,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// stop here
 			}
 
-			$shortlink = SucomUtilWP::wp_get_shortlink( $post_id, 'post' );	// $context = post
-			$shortlink_encoded = SucomUtil::encode_html_emoji( urldecode( $shortlink ) );
+			if ( ini_get( 'open_basedir' ) ) {	// cannot follow redirects
+				$mod = $this->get_mod( $mod );
+				$check_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
+			} else {
+				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, 'post' );	// $context = post
+			}
 
-			if ( empty( $shortlink ) ) {
+			$check_url_htmlenc = SucomUtil::encode_html_emoji( urldecode( $check_url ) );
+
+			if ( empty( $check_url ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: invalid shortlink' );
 				}
@@ -593,22 +599,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'checking '.$shortlink.' head meta for duplicates' );
+				$this->p->debug->log( 'checking '.$check_url.' head meta for duplicates' );
 			}
 
 			$clear_shortlink = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_CLEAR_SHORTLINK', true );
 
 			if ( $clear_shortlink ) {
-				$this->p->cache->clear( $shortlink );	// clear cache before fetching shortlink url
+				$this->p->cache->clear( $check_url );	// clear cache before fetching shortlink url
 			}
 
 			if ( $is_admin ) {
 				if ( $clear_shortlink ) {
 					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags...', 'wpsso' ), 
-						'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ) );
+						'<a href="'.$check_url.'">'.$check_url_htmlenc.'</a>' ) );
 				} else {
 					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags (webpage could be from cache)...', 'wpsso' ), 
-						'<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>' ) );
+						'<a href="'.$check_url.'">'.$check_url_htmlenc.'</a>' ) );
 				}
 			}
 
@@ -616,27 +622,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Fetch HTML using the Facebook user agent to get Open Graph meta tags.
 			 */
 			$curl_opts = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
-			$html = $this->p->cache->get( $shortlink, 'raw', 'transient', false, '', $curl_opts );
-			$in_secs = $this->p->cache->in_secs( $shortlink );
+			$html = $this->p->cache->get( $check_url, 'raw', 'transient', false, '', $curl_opts );
+			$in_secs = $this->p->cache->in_secs( $check_url );
 			$warning_secs = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_WARNING_SECS', 2.5 );
 			$timeout_secs = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_TIMEOUT_SECS', 3.0 );
 
 			if ( $in_secs === true ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'fetched '.$shortlink.' from transient cache' );
+					$this->p->debug->log( 'fetched '.$check_url.' from transient cache' );
 				}
 			} elseif ( $in_secs === false ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'fetched '.$shortlink.' returned a failure' );
+					$this->p->debug->log( 'fetched '.$check_url.' returned a failure' );
 				}
 			} else {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'fetched '.$shortlink.' in '.$in_secs.' secs' );
+					$this->p->debug->log( 'fetched '.$check_url.' in '.$in_secs.' secs' );
 				}
 				if ( is_admin() && $in_secs > $warning_secs ) {
 					$this->p->notice->warn(
 						sprintf( __( 'Retrieving the HTML document for %1$s took %2$s seconds.',
-							'wpsso' ), '<a href="'.$shortlink.'">'.$shortlink_encoded.'</a>', $in_secs ).' '.
+							'wpsso' ), '<a href="'.$check_url.'">'.$check_url_htmlenc.'</a>', $in_secs ).' '.
 						sprintf( __( 'This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds).',
 							'wpsso' ), $warning_secs, $timeout_secs ).' '.
 						__( 'Please consider improving the speed of your site.',
@@ -649,37 +655,37 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( empty( $html ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: error retrieving webpage from '.$shortlink );
+					$this->p->debug->log( 'exiting early: error retrieving webpage from '.$check_url );
 				}
 				if ( $is_admin ) {
 					$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
-						'wpsso' ), $shortlink ) );
+						'wpsso' ), $check_url ) );
 				}
 				return;	// stop here
 			} elseif ( stripos( $html, '<html' ) === false ) {	// webpage must have an <html> tag
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: <html> tag not found in '.$shortlink );
+					$this->p->debug->log( 'exiting early: <html> tag not found in '.$check_url );
 				}
 				if ( $is_admin ) {
 					$this->p->notice->err( sprintf( __( 'An &lt;html&gt; tag was not found in <a href="%1$s">%1$s</a>.',
-						'wpsso' ), $shortlink ) );
+						'wpsso' ), $check_url ) );
 				}
 				return;	// stop here
 			} elseif ( ! preg_match( '/<meta[ \n]/i', $html ) ) {	// webpage must have one or more <meta/> tags
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: No <meta/> HTML tags were found in '.$shortlink );
+					$this->p->debug->log( 'exiting early: No <meta/> HTML tags were found in '.$check_url );
 				}
 				if ( $is_admin ) {
 					$this->p->notice->err( sprintf( __( 'No %1$s HTML tags were found in <a href="%2$s">%2$s</a>.',
-						'wpsso' ), '&lt;meta/&gt;', $shortlink ) );
+						'wpsso' ), '&lt;meta/&gt;', $check_url ) );
 				}
 				return;	// stop here
 			} elseif ( strpos( $html, $this->p->lca.' meta tags begin' ) === false ) {	// webpage should include our own meta tags
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: '.$this->p->lca.' meta tag section not found in '.$shortlink );
+					$this->p->debug->log( 'exiting early: '.$this->p->lca.' meta tag section not found in '.$check_url );
 				}
 				if ( $is_admin ) {
-					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $shortlink, $short ) );
+					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $check_url, $short ) );
 				}
 				return;	// stop here
 			}
@@ -709,11 +715,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( is_array( $metas ) ) {
 				if ( empty( $metas ) ) {	// no link or meta tags found
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'error parsing head meta for '.$shortlink );
+						$this->p->debug->log( 'error parsing head meta for '.$check_url );
 					}
 					if ( $is_admin ) {
+						$w3c_html_check_url = 'https://validator.w3.org/nu/?doc='.urlencode( $check_url );
 						$pinterest_tab_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' );
-						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $shortlink ).' '.sprintf( __( 'You may safely ignore any "nopin" attribute errors, or disable the "nopin" attribute under the <a href="%s">Pinterest settings tab</a>.', 'wpsso' ), $pinterest_tab_url ) );
+						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $check_url ).' '.sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $w3c_html_check_url ).' '.sprintf( __( 'You may safely ignore any "nopin" attribute errors, or disable the "nopin" attribute under the <a href="%s">Pinterest settings tab</a>.', 'wpsso' ), $pinterest_tab_url ) );
 					}
 				} else {
 					foreach( array(
@@ -899,11 +906,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod = $this->get_mod( $post_id );
 			$cache_md5_pre = $this->p->lca.'_';
 			$permalink = get_permalink( $post_id );
-			$shortlink = wp_get_shortlink( $post_id, 'post' );	// $context = post
+
+			if ( ini_get( 'open_basedir' ) ) {
+				$check_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
+			} else {
+				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, 'post' );	// $context = post
+			}
 
 			$cache_types = array();
 			$cache_types['transient'][] = $cache_md5_pre.md5( 'SucomCache::get(url:'.$permalink.')' );
-			$cache_types['transient'][] = $cache_md5_pre.md5( 'SucomCache::get(url:'.$shortlink.')' );
+
+			if ( $permalink !== $check_url ) {
+				$cache_types['transient'][] = $cache_md5_pre.md5( 'SucomCache::get(url:'.$check_url.')' );
+			}
 
 			$this->clear_mod_cache_types( $mod, $cache_types );
 
