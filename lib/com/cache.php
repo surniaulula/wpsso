@@ -92,7 +92,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$errors[] = sprintf( __( 'Error connecting to %1$s for caching (HTTP code %2$d).',
 					$this->text_domain ), '<a href="'.$url.'">'.$url.'</a>', $http_code );
 
-				if ( $http_code === 301 ) {
+				if ( $http_code === 301 || $http_code === 302 ) {
 					/*
 					 * PHP safe mode is an attempt to solve the shared-server security problem. It is architecturally incorrect
 					 * to try to solve this problem at the PHP level, but since the alternatives at the web server and OS levels
