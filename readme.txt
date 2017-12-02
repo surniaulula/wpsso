@@ -381,6 +381,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.48.8-dev.1 (2017/12/02)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fixed the return value from WpssoProUtilUser get_options() for an invalid user id (should be an empty array, not false).
+* *Developer Notes*
+	* None
+
 **Version 3.48.7 (2017/11/29)**
 
 * *New Features*
@@ -655,6 +666,10 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 		* 'wpsso_user_social_settings_tabs' to 'wpsso_user_custom_meta_tabs'.
 
 == Upgrade Notice ==
+
+= 3.48.8-dev.1 =
+
+(2017/12/02) Fixed the return value from WpssoProUtilUser get_options() for an invalid user id (should be an empty array, not false).
 
 = 3.48.7 =
 
