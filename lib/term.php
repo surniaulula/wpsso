@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$mod['is_term'] = true;
 			$mod['tax_slug'] = SucomUtil::get_term_object( $mod['id'], (string) $tax_slug, 'taxonomy' );
 
-			return apply_filters( $this->p->cf['lca'].'_get_term_mod', $mod, $mod_id, $tax_slug );
+			return apply_filters( $this->p->lca.'_get_term_mod', $mod, $mod_id, $tax_slug );
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
@@ -120,7 +120,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 
 			if ( $posts_per_page === false ) {
 				$posts_per_page = apply_filters( $lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function check_sortable_metadata( $value, $term_id, $meta_key, $single ) {
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			static $do_once = array();
 
 			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
@@ -241,7 +241,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					break;
 			}
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$mod = $this->get_mod( $this->query_term_id, $this->query_tax_slug );
 
 			if ( $this->p->debug->enabled ) {
@@ -308,12 +308,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$metabox_id = $this->p->cf['meta']['id'];
 			$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
 
-			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_term', $add_metabox, $this->query_term_id ) ) {
+			if ( apply_filters( $lca.'_add_metabox_term', $add_metabox, $this->query_term_id ) ) {
 				add_meta_box( $lca.'_'.$metabox_id, $metabox_title,
 					array( &$this, 'show_metabox_custom_meta' ),
 						$lca.'-term', 'normal', 'low' );
@@ -330,7 +330,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 
 			echo "\n".'<!-- '.$lca.' term metabox section begin -->'."\n";
 			echo '<h3 id="'.$lca.'-metaboxes">'.WpssoAdmin::$pkg[$lca]['short'].'</h3>'."\n";
@@ -348,7 +348,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$metabox_id = $this->p->cf['meta']['id'];
 			$mod = $this->get_mod( $term_obj->term_id, $this->query_tax_slug );
 			$tabs = $this->get_custom_meta_tabs( $metabox_id, $mod );
