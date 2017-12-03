@@ -163,4 +163,3 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 	}
 }
 
-?>

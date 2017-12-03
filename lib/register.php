@@ -213,4 +213,3 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 	}
 }
 
-?>

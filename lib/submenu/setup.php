@@ -55,4 +55,3 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 	}
 }
 
-?>

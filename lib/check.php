@@ -280,4 +280,3 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 	}
 }
 
-?>

@@ -79,4 +79,3 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 	}
 }
 
-?>

@@ -276,4 +276,3 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 	}
 }
 
-?>

@@ -1230,4 +1230,3 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 	}
 }
 
-?>

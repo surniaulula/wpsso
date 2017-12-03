@@ -57,4 +57,3 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 	}
 }
 
-?>

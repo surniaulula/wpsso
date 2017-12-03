@@ -32,8 +32,6 @@ if ( ! class_exists( 'WpssoSettingContactfields' ) && class_exists( 'WpssoSubmen
 				_x( 'Contact Field Names and Labels', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_contact_fields' ), $this->pagehook, 'normal' );
 		}
-
 	}
 }
 
-?>

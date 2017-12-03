@@ -164,4 +164,3 @@ jQuery(document).ready(function(){
 	}
 }
 
-?>

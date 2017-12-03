@@ -101,4 +101,3 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 	}
 }
 
-?>

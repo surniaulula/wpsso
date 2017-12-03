@@ -27,4 +27,3 @@ if ( ! class_exists( 'SucomNoDebug' ) ) {
 	}
 }
 
-?>

@@ -626,4 +626,3 @@ if ( ! class_exists( 'SucomCache' ) ) {
 	}
 }
 
-?>

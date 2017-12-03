@@ -164,4 +164,3 @@ _x( 'YOURLS', 'option value', 'wpsso' );
 _x( 'Your SSO', 'lib file description', 'wpsso' );
 _x( 'YouTube Business Channel URL', 'option value', 'wpsso' );
 _x( 'YouTube Channel URL', 'option value', 'wpsso' );
-?>

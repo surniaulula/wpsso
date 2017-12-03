@@ -93,4 +93,3 @@ if ( ! class_exists( 'WpssoException' ) ) {
 	}
 }
 
-?>

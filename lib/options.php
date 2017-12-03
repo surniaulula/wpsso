@@ -995,4 +995,3 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 	}
 }
 
-?>

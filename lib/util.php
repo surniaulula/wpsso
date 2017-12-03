@@ -2268,4 +2268,3 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 	}
 }
 
-?>

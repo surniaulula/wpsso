@@ -145,4 +145,3 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 	}
 }
 
-?>

@@ -31,4 +31,3 @@ __( 'The "%s" feature is deprecated since PHP version 5.3 and removed from PHP s
 __( 'This notice can be dismissed temporarily for a period of %s.', 'wpsso' );
 _x( 'error', 'notification type', 'wpsso' );
 _x( 'warning', 'notification type', 'wpsso' );
-?>

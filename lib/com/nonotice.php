@@ -40,4 +40,3 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 	}
 }
 
-?>

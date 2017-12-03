@@ -224,4 +224,3 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 	}
 }
 
-?>

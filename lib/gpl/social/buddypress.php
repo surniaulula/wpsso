@@ -65,4 +65,3 @@ if ( ! class_exists( 'WpssoGplSocialBuddypress' ) ) {
 	}
 }
 
-?>

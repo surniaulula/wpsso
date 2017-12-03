@@ -879,4 +879,3 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 	}
 }
 
-?>

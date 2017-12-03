@@ -1370,4 +1370,3 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 	}
 }
 
-?>

@@ -15,4 +15,3 @@ if ( ! class_exists( 'WpssoSitesubmenuSitesetup' ) && class_exists( 'WpssoSubmen
 	}
 }
 
-?>

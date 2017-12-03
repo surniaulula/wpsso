@@ -604,4 +604,3 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 	}
 }
 
-?>

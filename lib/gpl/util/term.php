@@ -46,4 +46,3 @@ if ( ! class_exists( 'WpssoGplUtilTerm' ) && class_exists( 'WpssoTerm' ) ) {
 	}
 }
 
-?>

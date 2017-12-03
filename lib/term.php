@@ -464,4 +464,3 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 	}
 }
 
-?>

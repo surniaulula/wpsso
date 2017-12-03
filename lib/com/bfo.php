@@ -291,4 +291,3 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 	}
 }
 
-?>

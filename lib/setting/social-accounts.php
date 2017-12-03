@@ -76,4 +76,3 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 	}
 }
 
-?>
