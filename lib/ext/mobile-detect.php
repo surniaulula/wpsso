@@ -35,22 +35,16 @@ if ( ! class_exists( 'SuextMobileDetect' ) ) {
 
 		/**
 		 * Mobile detection type.
-		 *
-		 * @deprecated since version 2.6.9
 		 */
 		const DETECTION_TYPE_MOBILE = 'mobile';
 
 		/**
 		 * Extended detection type.
-		 *
-		 * @deprecated since version 2.6.9
 		 */
 		const DETECTION_TYPE_EXTENDED = 'extended';
 
 		/**
 		 * A frequently used regular expression to extract version #s.
-		 *
-		 * @deprecated since version 2.6.9
 		 */
 		const VER = '([\w._\+]+)';
 
@@ -110,61 +104,55 @@ if ( ! class_exists( 'SuextMobileDetect' ) ) {
 
 		/**
 		 * The matching Regex.
-		 * This is good for debug.
 		 * @var string
 		 */
 		protected $matchingRegex = null;
 
 		/**
 		 * The matches extracted from the regex expression.
-		 * This is good for debug.
 		 * @var string
 		 */
 		protected $matchesArray = null;
 
 		/**
 		 * The detection type, using self::DETECTION_TYPE_MOBILE or self::DETECTION_TYPE_EXTENDED.
-		 *
-		 * @deprecated since version 2.6.9
-		 *
 		 * @var string
 		 */
 		protected $detectionType = self::DETECTION_TYPE_MOBILE;
 
 		/**
-		 * HTTP headers that trigger the 'isMobile' detection
-		 * to be true.
-		 *
+		 * HTTP headers that trigger the 'isMobile' detection to be true.
 		 * @var array
 		 */
 		protected static $mobileHeaders = array(
-
-				'HTTP_ACCEPT' => array('matches' => array(
+			'HTTP_ACCEPT' => array(
+				'matches' => array(
 					 // Opera Mini; @reference: http://dev.opera.com/articles/view/opera-binary-markup-language/
 					 'application/x-obml2d',
 					 // BlackBerry devices.
 					 'application/vnd.rim.html',
 					 'text/vnd.wap.wml',
-					 'application/vnd.wap.xhtml+xml'
-					 )),
-				'HTTP_X_WAP_PROFILE' => null,
-				'HTTP_X_WAP_CLIENTID' => null,
-				'HTTP_WAP_CONNECTION' => null,
-				'HTTP_PROFILE' => null,
-				// Reported by Opera on Nokia devices (eg. C3).
-				'HTTP_X_OPERAMINI_PHONE_UA' => null,
-				'HTTP_X_NOKIA_GATEWAY_ID' => null,
-				'HTTP_X_ORANGE_ID' => null,
-				'HTTP_X_VODAFONE_3GPDPCONTEXT' => null,
-				'HTTP_X_HUAWEI_USERID' => null,
-				// Reported by Windows Smartphones.
-				'HTTP_UA_OS' => null,
-				// Reported by Verizon, Vodafone proxy system.
-				'HTTP_X_MOBILE_GATEWAY' => null,
-				// Seen this on HTC Sensation. SensationXE_Beats_Z715e.
-				'HTTP_X_ATT_DEVICEID' => null,
-				// Seen this on a HTC.
-				'HTTP_UA_CPU' => array('matches' => array('ARM')),
+					 'application/vnd.wap.xhtml+xml',
+				 ),
+			 ),
+			'HTTP_X_WAP_PROFILE' => null,
+			'HTTP_X_WAP_CLIENTID' => null,
+			'HTTP_WAP_CONNECTION' => null,
+			'HTTP_PROFILE' => null,
+			// Reported by Opera on Nokia devices (eg. C3).
+			'HTTP_X_OPERAMINI_PHONE_UA' => null,
+			'HTTP_X_NOKIA_GATEWAY_ID' => null,
+			'HTTP_X_ORANGE_ID' => null,
+			'HTTP_X_VODAFONE_3GPDPCONTEXT' => null,
+			'HTTP_X_HUAWEI_USERID' => null,
+			// Reported by Windows Smartphones.
+			'HTTP_UA_OS' => null,
+			// Reported by Verizon, Vodafone proxy system.
+			'HTTP_X_MOBILE_GATEWAY' => null,
+			// Seen this on HTC Sensation. SensationXE_Beats_Z715e.
+			'HTTP_X_ATT_DEVICEID' => null,
+			// Seen this on a HTC.
+			'HTTP_UA_CPU' => array('matches' => array('ARM')),
 		);
 
 		/**
