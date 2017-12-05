@@ -381,16 +381,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.8-dev.2 (2017/12/03)**
+**Version 3.48.8-b.1 (2017/12/05)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Use the sharing URL instead of the shortlink when checking for duplicate meta tags if PHP "open_basedir" is defined (PHP cURL cannot follow redirects when "open_basedir" is defined).
+	* Use the sharing URL instead of the shortlink when checking for duplicate meta tags if PHP "open_basedir" is defined (PHP's cURL cannot follow redirects when "open_basedir" is defined).
 * *Bugfixes*
 	* Fixed the return value from WpssoProUtilUser get_options() for an invalid user id (should be an empty array, not false).
 * *Developer Notes*
-	* None
+	* Updated the MobileDetect library from version 2.8.19 to 2.8.28.
 
 **Version 3.48.7 (2017/11/29)**
 
@@ -667,9 +667,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.8-dev.2 =
+= 3.48.8-b.1 =
 
-(2017/12/03) Fixed the return value from WpssoProUtilUser get_options() for an invalid user id (should be an empty array, not false).
+(2017/12/05) Use sharing URL instead of shortlink when checking for duplicate meta tags if PHP "open_basedir" is defined. Fixed the return value from WpssoProUtilUser get_options() for an invalid user id. Updated the MobileDetect library.
 
 = 3.48.7 =
 
