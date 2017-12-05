@@ -31,8 +31,9 @@ if ( ! defined( 'SUEXT_MARKDOWN_FN_BACKLINK_CLASS' ) ) {
 if ( ! function_exists( 'suext_markdown' ) ) {
 	function suext_markdown( $text, &$debug = false ) {
 		static $parser;
-		if ( ! isset( $parser ) )
+		if ( ! isset( $parser ) ) {
 			$parser = new SuextMarkdownParserExtra( $debug );
+		}
 		return $parser->transform( $text );
 	}
 }
@@ -67,8 +68,9 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 	
 		function __construct( &$debug = false ) {
 	
-			if ( ! empty( $this->debug->enabled ) )
+			if ( ! empty( $this->debug->enabled ) ) {
 				$this->debug->mark();
+			}
 	
 			$this->_initDetab();
 			$this->prepareItalicsAndBold();

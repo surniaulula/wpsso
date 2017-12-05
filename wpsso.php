@@ -15,7 +15,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 4.9.1
  * WC Tested Up To: 3.2.4
- * Version: 3.48.8-dev.2
+ * Version: 3.48.8-b.1
  * 
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -339,7 +339,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				}
 
 				if ( $this->debug->is_enabled( 'html' ) ) {
-					if ( SucomUtil::get_crawler_name() !== 'none' ) {
+					if ( 'none' !== SucomUtil::get_crawler_name() ) {
 						$this->debug->enable( 'html', false );	// disable HTML debug messages for crawlers
 					}
 				}
