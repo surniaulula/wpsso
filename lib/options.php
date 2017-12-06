@@ -454,9 +454,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opts['og_def_img_url'] = '';
 			}
 
-			// og_desc_len must be at least 156 chars (defined in config)
-			if ( isset( $opts['og_desc_len'] ) && 
-				$opts['og_desc_len'] < $this->p->cf['head']['limit_min']['og_desc_len'] )  {
+			// og_desc_len must be at least 160 chars (defined in config)
+			if ( isset( $opts['og_desc_len'] ) && $opts['og_desc_len'] < $this->p->cf['head']['limit_min']['og_desc_len'] )  {
 				$opts['og_desc_len'] = $this->p->cf['head']['limit_min']['og_desc_len'];
 			}
 

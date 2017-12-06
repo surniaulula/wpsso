@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					}
 				}
 			}
-			return apply_filters( $this->p->cf['lca'].'_get_avail', $avail );
+			return apply_filters( $this->p->lca.'_get_avail', $avail );
 		}
 
 		// private method to check for availability of specific features by keyword
@@ -233,7 +233,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		}
 
 		public function aop( $lca = '', $lic = true, $rv = true, $uc = true ) {
-			$lca = empty( $lca ) ? $this->p->cf['lca'] : $lca;
+			$lca = empty( $lca ) ? $this->p->lca : $lca;
 			$kn = $lca.'-'.$lic.'-'.$rv;
 			if ( $uc && isset( self::$c[$kn] ) )
 				return self::$c[$kn];

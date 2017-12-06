@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.8-b.1',		// plugin version
+					'version' => '3.48.8-rc.1',		// plugin version
 					'opt_version' => '570',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
@@ -595,7 +595,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_webpage' => 'webpage',
 					'schema_type_for_website' => 'website',
 					'schema_review_item_type' => 'none',	// Default Reviewed Item Type
-					'seo_desc_len' => 156,			// meta name="description" maximum text length (hard limit)
+					'seo_desc_len' => 160,			// meta name="description" maximum text length (hard limit)
 					'seo_author_field' => 'gplus',
 					'seo_publisher_url' => '',		// (localized)
 					'fb_publisher_url' => '',		// (localized)
@@ -1437,7 +1437,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'head' => array(
 				'limit_min' => array(
-					'og_desc_len' => 156,
+					'og_desc_len' => 160,
 					'og_img_width' => 200,			// https://developers.facebook.com/docs/sharing/best-practices
 					'og_img_height' => 200,
 					'schema_article_img_width' => 696,	// https://developers.google.com/search/docs/data-types/articles

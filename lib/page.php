@@ -346,7 +346,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		// $mod = true | false | post_id | $mod array
-		public function get_description( $textlen = 156, $trailing = '...', $mod = false, $read_cache = true,
+		public function get_description( $textlen = 160, $trailing = '...', $mod = false, $read_cache = true,
 			$add_hashtags = true, $do_encode = true, $md_idx = 'og_desc' ) {
 
 			if ( $this->p->debug->enabled ) {

@@ -98,16 +98,14 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			}
 
 			if ( class_exists( 'Yoast_Notification_Center' ) ) {
-				$lca = $this->p->cf['lca'];
-				$info = $this->p->cf['plugin'][$lca];
-				$name = $this->p->cf['plugin'][$lca]['name'];
+				$info = $this->p->cf['plugin'][$this->p->lca];
+				$name = $this->p->cf['plugin'][$this->p->lca]['name'];
 
 				// wordpress SEO v4
 				if ( method_exists( 'Yoast_Notification_Center', 'get_notification_by_id' ) ) {
 					$id = 'wpseo-conflict-'.md5( $info['base'] );
 					$msg = '<style>#'.$id.'{display:none;}</style>';
 					$notif_center = Yoast_Notification_Center::get();
-	
 					if ( ( $notif_obj = $notif_center->get_notification_by_id( $id ) ) && $notif_obj->message !== $msg ) {
 						update_user_meta( get_current_user_id(), $notif_obj->get_dismissal_key(), 'seen' );
 						$notif_obj = new Yoast_Notification( $msg, array( 'id' => $id ) );
