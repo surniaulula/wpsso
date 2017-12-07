@@ -620,8 +620,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( empty( $opts['plugin_filter_content'] ) ) {
-				// dismiss until next version update
-				$dismiss_key = 'notice-content-filters-disabled-'.WpssoConfig::get_version( true );	// $add_slug = true
+				$dismiss_key = 'notice-content-filters-disabled';
 				$this->p->notice->warn( $this->p->msgs->get( 'notice-content-filters-disabled' ), true, $dismiss_key, true );	// can be dismissed
 			}
 
