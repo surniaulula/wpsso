@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.8-rc.1 (2017/12/06)**
+**Version 3.48.8-rc.2 (2017/12/07)**
 
 * *New Features*
 	* None
@@ -667,9 +667,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.8-rc.1 =
+= 3.48.8-rc.2 =
 
-(2017/12/06) Use sharing URL instead of shortlink when checking for duplicate meta tags if PHP "open_basedir" is defined. Fixed the return value from WpssoProUtilUser get_options() for an invalid user id. Updated the MobileDetect library.
+(2017/12/07) Use sharing URL instead of shortlink when checking for duplicate meta tags if PHP "open_basedir" is defined. Fixed the return value from WpssoProUtilUser get_options() for an invalid user id. Updated the MobileDetect library.
 
 = 3.48.7 =
 
