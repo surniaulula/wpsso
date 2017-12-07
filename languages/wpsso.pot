@@ -2725,10 +2725,10 @@ msgstr ""
 
 #: lib/messages.php:433
 msgid ""
-"If you use any shortcodes in your content text, this option should be "
-"enabled &mdash; if you experience display issues after enabling this option, "
-"determine which theme / plugin is at fault and report the problem to its "
-"author(s)."
+"If you use shortcodes in your content text, this option should be enabled "
+"&mdash; if you experience display issues after enabling this option, "
+"determine which theme / plugin is filtering the content incorrectly and "
+"report the problem to its author(s)."
 msgstr ""
 
 #: lib/messages.php:438
@@ -3825,10 +3825,10 @@ msgstr ""
 
 #: lib/messages.php:1352
 msgid ""
-"<a href=\"%s\">If you use any shortcodes in your content text, this option "
+"<a href=\"%s\">If you use shortcodes in your content text, this option "
 "should be enabled</a> &mdash; if you experience display issues after "
-"enabling this option, determine which theme / plugin is at fault and report "
-"the problem to its author(s)."
+"enabling this option, determine which theme / plugin is filtering the "
+"content incorrectly and report the problem to its author(s)."
 msgstr ""
 
 #: lib/messages.php:1366
