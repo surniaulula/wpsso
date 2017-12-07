@@ -423,19 +423,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Content and Filters' settings
 						 */
 						case 'tooltip-plugin_filter_title':
-							$text = __( 'The title values provided by WordPress may include modifications by themes and/or SEO plugins (appending the site name, for example, is common practice). Uncheck this option to use the original title value without modifications (default is unchecked).', 'wpsso' );
+
+							$text = __( 'The title values provided by WordPress may include modifications by themes and/or SEO plugins (appending the site name, for example, is common practice). Disable this option to use the original title value without modifications (default is unchecked).', 'wpsso' ).' '.sprintf( __( 'You can also enable / disable this option by hooking the \'%s\' filter and returning true / false.', 'wpsso' ), $this->p->lca.'_filter_title' );
+
 							break;
 
 						case 'tooltip-plugin_filter_content':
 
-							//$text = __( 'Apply the WordPress "the_content" filter to the content text (default is checked).', 'wpsso' ).' '.__( 'The WordPress content filter formats text and expands shortcodes, which may be required to include additional images and videos.', 'wpsso' );
-
-							$text = __( 'Apply the WordPress "the_content" filter to the content text (default is unchecked). The content filter renders all shortcodes, which may be required to detect images and videos added by shortcodes.', 'wpsso' ).' '.__( 'Some themes / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).' '.__( 'If you use shortcodes in your content text, this option should be enabled &mdash; if you experience display issues after enabling this option, determine which theme / plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
+							$text = __( 'Apply the WordPress "the_content" filter to the content text (default is unchecked). The content filter renders all shortcodes, which may be required to detect images and videos added by shortcodes.', 'wpsso' ).' '.__( 'Some themes / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).' '.__( 'If you use shortcodes in your content text, this option should be enabled &mdash; if you experience display issues after enabling this option, determine which theme / plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ).' '.sprintf( __( 'You can also enable / disable this option by hooking the \'%s\' filter and returning true / false.', 'wpsso' ), $this->p->lca.'_filter_content' );
 
 							break;
 
 						case 'tooltip-plugin_filter_excerpt':
-							$text = __( 'Apply the WordPress "get_the_excerpt" filter to the excerpt text (default is unchecked). Check this option if you use shortcodes in your excerpts, for example.', 'wpsso' );
+
+							$text = __( 'Apply the WordPress "get_the_excerpt" filter to the excerpt text (default is unchecked). Enable this option if you use shortcodes in your excerpts, for example.', 'wpsso' ).' '.sprintf( __( 'You can also enable / disable this option by hooking the \'%s\' filter and returning true / false.', 'wpsso' ), $this->p->lca.'_filter_excerpt' );
+
 							break;
 
 						case 'tooltip-plugin_p_strip':
@@ -894,7 +896,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'social-accounts',
 								_x( 'WebSite Social Pages and Accounts', 'lib file description', 'wpsso' ) );
 
-							$text = __( 'Include WebSite, Organization, and/or Person Schema markup in the front page for Google\'s Knowledge Graph.', 'wpsso' ).' '.__( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' '.sprintf( __( 'Developers can hook the "%s" filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $lca.'_json_ld_search_url' ).' '.sprintf( __( 'The Organization markup includes all URLs entered on the %s settings page.', 'wpsso' ), $settings_page_link ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
+							$text = __( 'Include WebSite, Organization, and/or Person Schema markup in the front page for Google\'s Knowledge Graph.', 'wpsso' ).' '.__( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' '.sprintf( __( 'Developers can hook the \'%s\' filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca.'_json_ld_search_url' ).' '.sprintf( __( 'The Organization markup includes all URLs entered on the %s settings page.', 'wpsso' ), $settings_page_link ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
 							break;
 
 						case 'tooltip-schema_home_person_id':
@@ -1347,9 +1349,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
 							_x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) );
 
-						//$text = '<p><b>'.sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for description values and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'If you use any shortcodes in your content text, <a href="%s">this option should be enabled</a>.', 'wpsso' ), $settings_page_url ).'</p>';
-
-						$text = '<p><b>'.sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions, and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['short'] ).'</p><p><b>'.__( 'Some themes / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> '.sprintf( __( '<a href="%s">If you use shortcodes in your content text, this option should be enabled</a> &mdash; if you experience display issues after enabling this option, determine which theme / plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ), $settings_page_url ).'</p>';
+						$text = '<p><b>'.sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['name'] ).' '.__( 'Some themes / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).' '.sprintf( __( '<a href="%s">If you use shortcodes in your content text, this option should be enabled</a> &mdash; if you experience display issues after enabling this option, determine which theme / plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ), $settings_page_url ).' '.sprintf( __( 'You can also enable / disable this option by hooking the \'%s\' filter and returning true / false.', 'wpsso' ), $this->p->lca.'_filter_content' ).'</p>';
 
 						break;
 
