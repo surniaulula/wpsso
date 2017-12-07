@@ -848,7 +848,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
 					// Content and Filters Tab
 					'plugin_filter_title' => 0,			// Use Filtered (SEO) Title
-					'plugin_filter_content' => 1,			// Apply WordPress Content Filters
+					'plugin_filter_content' => 0,			// Apply WordPress Content Filters
 					'plugin_filter_excerpt' => 0,			// Apply WordPress Excerpt Filters
 					'plugin_p_strip' => 0,				// Content Starts at 1st Paragraph
 					'plugin_use_img_alt' => 1,			// Use Image Alt if No Content

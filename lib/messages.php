@@ -427,7 +427,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_filter_content':
-							$text = __( 'Apply the WordPress "the_content" filter to the content text (default is checked).', 'wpsso' ).' '.__( 'The WordPress content filter formats text and expands shortcodes, which may be required to include additional images and videos.', 'wpsso' );
+
+							//$text = __( 'Apply the WordPress "the_content" filter to the content text (default is checked).', 'wpsso' ).' '.__( 'The WordPress content filter formats text and expands shortcodes, which may be required to include additional images and videos.', 'wpsso' );
+
+							$text = __( 'Apply the WordPress "the_content" filter to the content text (default is unchecked). The content filter renders all shortcodes, which may be required to detect images and videos added by shortcodes.', 'wpsso' ).' '.__( 'Some themes / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).' '.__( 'If you use any shortcodes in your content text, this option should be enabled &mdash; if you experience display issues after enabling this option, determine which theme / plugin is at fault and report the problem to its author(s).', 'wpsso' );
+
 							break;
 
 						case 'tooltip-plugin_filter_excerpt':
@@ -1345,7 +1349,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						//$text = '<p><b>'.sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for description values and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'If you use any shortcodes in your content text, <a href="%s">this option should be enabled</a>.', 'wpsso' ), $settings_page_url ).'</p>';
 
-						$text = '<p><b>'.sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions, and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['short'] ).'</p><p><b>'.__( 'Some theme / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> '.sprintf( __( '<a href="%s">If you use any shortcodes in your content text, this option should be enabled</a> &mdash; if you experience display issues after enabling this option, determine which theme / plugin is at fault and report the problem to its author(s).', 'wpsso' ), $settings_page_url ).'</p>';
+						$text = '<p><b>'.sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions, and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['short'] ).'</p><p><b>'.__( 'Some themes / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> '.sprintf( __( '<a href="%s">If you use any shortcodes in your content text, this option should be enabled</a> &mdash; if you experience display issues after enabling this option, determine which theme / plugin is at fault and report the problem to its author(s).', 'wpsso' ), $settings_page_url ).'</p>';
 
 						break;
 
