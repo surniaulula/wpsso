@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.8-rc.1',		// plugin version
+					'version' => '3.48.8-rc.2',		// plugin version
 					'opt_version' => '570',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
@@ -2161,9 +2161,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 		);
 
-		public static function get_version( $slug = false ) {
-			$info =& self::$cf['plugin'][self::$cf['lca']];
-			if ( $slug ) {
+		public static function get_version( $add_slug = false ) {
+			$info =& self::$cf['plugin']['wpsso'];
+			if ( $add_slug ) {
 				return $info['slug'].'-'.$info['version'];
 			} else {
 				return $info['version'];
@@ -2189,7 +2189,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				if ( $filter_cf ) {
 
 					self::$cf['config_filtered'] = true;	// set before calling filter to prevent recursion
-					self::$cf = apply_filters( self::$cf['lca'].'_get_config', self::$cf, self::get_version() );
+					self::$cf = apply_filters( 'wpsso_get_config', self::$cf, self::get_version() );
 
 					foreach ( self::$cf['plugin'] as $ext => $info ) {
 

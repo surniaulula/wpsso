@@ -32,8 +32,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
 			}
 
-			$lca = $this->p->cf['lca'];
-			$plugin_version = $this->p->cf['plugin'][$lca]['version'];
+			$plugin_version = WpssoConfig::get_version();
 
 			// http://qtip2.com/download
 			wp_register_script( 'jquery-qtip', 
@@ -59,7 +58,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			// don't load our javascript where we don't need it
 			switch ( $hook_name ) {
 
-				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook_name ) ? true : false ) :
+				case ( preg_match( '/_page_'.$this->p->lca.'-(site)?licenses/', $hook_name ) ? true : false ) :
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for licenses page' );
 					}
@@ -70,7 +69,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					// no break
 
 				// includes the profile_page and users_page hooks (profile submenu items)
-				case ( strpos( $hook_name, '_page_'.$lca.'-' ) !== false ? true : false ):
+				case ( strpos( $hook_name, '_page_'.$this->p->lca.'-' ) !== false ? true : false ):
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for settings page' );
 					}
@@ -143,7 +142,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
-			$lca = $this->p->cf['lca'];
 
 			wp_enqueue_script( 'plugin-install' );	// required for the plugin details box
 
@@ -151,10 +149,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$custom_script_js = '
 jQuery(document).ready(function(){
 	jQuery("body#plugin-information.iframe a[id$=_from_iframe]").on("click", function(){
-		if ( window.top.location.href.indexOf( "page='.$lca.'-" ) ) {
+		if ( window.top.location.href.indexOf( "page='.$this->p->lca.'-" ) ) {
 			var plugin_url = jQuery( this ).attr( "href" );
-			var pageref_url_arg = "&'.$lca.'_pageref_url=" + encodeURIComponent( window.top.location.href );
-			var pageref_title_arg = "&'.$lca.'_pageref_title=" + encodeURIComponent( jQuery("h1", window.parent.document).text() );
+			var pageref_url_arg = "&'.$this->p->lca.'_pageref_url=" + encodeURIComponent( window.top.location.href );
+			var pageref_title_arg = "&'.$this->p->lca.'_pageref_title=" + encodeURIComponent( jQuery("h1", window.parent.document).text() );
 			window.top.location.href = plugin_url + pageref_url_arg + pageref_title_arg;
 		}
 	});

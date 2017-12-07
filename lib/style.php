@@ -34,7 +34,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
 			}
 
-			$lca = $this->p->cf['lca'];
 			$plugin_version = WpssoConfig::get_version();
 
 			// https://developers.google.com/speed/libraries/
@@ -58,7 +57,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			switch ( $hook_name ) {
 
-				case ( preg_match( '/_page_'.$lca.'-(site)?licenses/', $hook_name ) ? true : false ):
+				case ( preg_match( '/_page_'.$this->p->lca.'-(site)?licenses/', $hook_name ) ? true : false ):
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for licenses page' );
 					}
@@ -67,7 +66,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					// no break
 
 				// includes the profile_page and users_page hooks (profile submenu items)
-				case ( strpos( $hook_name, '_page_'.$lca.'-' ) !== false ? true : false ):
+				case ( strpos( $hook_name, '_page_'.$this->p->lca.'-' ) !== false ? true : false ):
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for settings page' );
 					}
@@ -117,9 +116,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 		private function add_settings_page_style( $hook_name, $plugin_urlpath, $plugin_version ) {
 
-			$lca = $this->p->cf['lca'];
-			$cache_md5_pre = $lca.'_';
-			$cache_exp_filter = $lca.'_cache_expire_admin_css';
+			$cache_md5_pre = $this->p->lca.'_';
+			$cache_exp_filter = $this->p->lca.'_cache_expire_admin_css';
 			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.'_plugin_urlpath:'.$plugin_urlpath.'_plugin_version:'.$plugin_version.')';
 			$cache_id = $cache_md5_pre.md5( $cache_salt );
@@ -157,14 +155,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				';
 			}
 
-			if ( strpos( $hook_name, '_page_'.$lca.'-dashboard' ) ) {
+			if ( strpos( $hook_name, '_page_'.$this->p->lca.'-dashboard' ) ) {
 				$custom_style_css .= 'div#'.$hook_name.' div#normal-sortables { min-height:0; }';
 			}
 
-			$custom_style_css = apply_filters( $lca.'_settings_page_custom_style_css',
+			$custom_style_css = apply_filters( $this->p->lca.'_settings_page_custom_style_css',
 				$custom_style_css, $hook_name, $plugin_urlpath, $plugin_version );
 	
-			$custom_style_css = SucomUtil::minify_css( $custom_style_css, $lca );
+			$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
 
 			set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 
@@ -177,9 +175,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 		private function add_admin_page_style( $hook_name, $plugin_urlpath, $plugin_version ) {
 
-			$lca = $this->p->cf['lca'];
-			$cache_md5_pre = $lca.'_';
-			$cache_exp_filter = $lca.'_cache_expire_admin_css';
+			$cache_md5_pre = $this->p->lca.'_';
+			$cache_exp_filter = $this->p->lca.'_cache_expire_admin_css';
 			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.'_plugin_urlpath:'.$plugin_urlpath.'_plugin_version:'.$plugin_version.')';
 			$cache_id = $cache_md5_pre.md5( $cache_salt );
@@ -202,8 +199,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$sort_cols = WpssoMeta::get_sortable_columns();
 			$metabox_id = $this->p->cf['meta']['id'];
-			$menu = $lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
-			$sitemenu = $lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
+			$menu = $this->p->lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
+			$sitemenu = $this->p->lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
 
 			$highlight_color_css = empty( $this->p->cf['menu']['color'] ) || 
 				! SucomUtil::get_const( 'WPSSO_MENU_ICON_HIGHLIGHT' ) ?
@@ -239,39 +236,39 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu #toplevel_page_'.$sitemenu.' ul > li > a {
 					padding:6px 8px;	/* default is 6px 12px */
 				}
-				#adminmenu ul.wp-submenu div.'.$lca.'-menu-item {
+				#adminmenu ul.wp-submenu div.'.$this->p->lca.'-menu-item {
 					display:table-cell;
 				}
-				#adminmenu ul.wp-submenu div.'.$lca.'-menu-item.dashicons-before {
+				#adminmenu ul.wp-submenu div.'.$this->p->lca.'-menu-item.dashicons-before {
 					max-width:1.2em;
 					padding-right:6px;
 				}
-				#adminmenu ul.wp-submenu div.'.$lca.'-menu-item.dashicons-before:before {
+				#adminmenu ul.wp-submenu div.'.$this->p->lca.'-menu-item.dashicons-before:before {
 					font-size:1.2em;
 					text-align:left;
 					opacity:0.5;
 					filter:alpha(opacity=50);	/* ie8 and earlier */
 				}
-				#adminmenu ul.wp-submenu div.'.$lca.'-menu-item.last-top-submenu-page.with-extensions {
+				#adminmenu ul.wp-submenu div.'.$this->p->lca.'-menu-item.last-top-submenu-page.with-extensions {
 					padding-bottom:12px;
 					border-bottom:1px solid;
 				}
-				#profile-page.wrap #your-profile #'.$lca.'_'.$metabox_id.'.postbox h3:first-of-type {
+				#profile-page.wrap #your-profile #'.$this->p->lca.'_'.$metabox_id.'.postbox h3:first-of-type {
 					margin:0;
 				}
-				#'.$lca.'_'.$metabox_id.'.postbox { 
+				#'.$this->p->lca.'_'.$metabox_id.'.postbox { 
 					min-width:760px;
 				}
-				#'.$lca.'_'.$metabox_id.' .inside {
+				#'.$this->p->lca.'_'.$metabox_id.' .inside {
 					padding:0;
 					margin:0;
 				}
-				.column-'.$lca.'_og_img { 
+				.column-'.$this->p->lca.'_og_img { 
 					width:'.$sort_cols['og_img']['width'].' !important;
 					min-width:'.$sort_cols['og_img']['width'].' !important;
 					max-width:'.$sort_cols['og_img']['width'].' !important;
 				}
-				.column-'.$lca.'_og_img .preview_img { 
+				.column-'.$this->p->lca.'_og_img .preview_img { 
 					width:'.$sort_cols['og_img']['width'].';
 					min-width:'.$sort_cols['og_img']['width'].';
 					max-width:'.$sort_cols['og_img']['width'].';
@@ -284,37 +281,37 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					margin:0;
 					padding:0;
 				}
-				.column-'.$lca.'_schema_type {
+				.column-'.$this->p->lca.'_schema_type {
 					width:'.$sort_cols['schema_type']['width'].' !important;
 					min-width:'.$sort_cols['schema_type']['width'].' !important;
 					max-width:'.$sort_cols['schema_type']['width'].' !important;
 					white-space:nowrap;
 					overflow:hidden;
 				}
-				.column-'.$lca.'_og_desc {
+				.column-'.$this->p->lca.'_og_desc {
 					width:'.$sort_cols['og_desc']['width'].';
 					min-width:'.$sort_cols['og_desc']['width'].';
 					overflow:hidden;
 				}
-				td.column-'.$lca.'_og_desc,
-				td.column-'.$lca.'_schema_type {
+				td.column-'.$this->p->lca.'_og_desc,
+				td.column-'.$this->p->lca.'_schema_type {
 					direction:ltr;
 					font-family:Helvetica;
 					text-align:left;
 					word-wrap:break-word;
 				}
 				@media ( max-width:1295px ) {
-					th.column-'.$lca.'_og_desc,
-					td.column-'.$lca.'_og_desc {
+					th.column-'.$this->p->lca.'_og_desc,
+					td.column-'.$this->p->lca.'_og_desc {
 						display:none;
 					}
 				}
-				.'.$lca.'-rate-heart {
+				.'.$this->p->lca.'-rate-heart {
 					color:red;
 					font-size:1.5em;
 					vertical-align:top;
 				}
-				.'.$lca.'-rate-heart:before {
+				.'.$this->p->lca.'-rate-heart:before {
 					content:"\2665";	/* heart */
 				}
 			';
@@ -352,7 +349,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				';
 			}
 
-			$custom_style_css = SucomUtil::minify_css( $custom_style_css, $lca );
+			$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
 
 			set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 

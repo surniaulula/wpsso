@@ -633,7 +633,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'image-dimensions',
 								_x( 'Social and Search Image Dimensions', 'lib file description', 'wpsso' ) );
 
-							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'nextgen-faceboook' ), $settings_page_link ).' '.__( '<strong>Enabling this option is highly recommended</strong> &mdash; the option is disabled by default to avoid excessive warnings on sites with small / thumbnail images in their media library.', 'wpsso' );
+							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'wpsso' ), $settings_page_link ).' '.__( '<strong>Enabling this option is highly recommended</strong> &mdash; the option is disabled by default to avoid excessive warnings on sites with small / thumbnail images in their media library.', 'wpsso' );
 
 							break;
 
@@ -1343,7 +1343,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
 							_x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) );
 
-						$text = '<p><b>'.sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for description values and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'If you use any shortcodes in your content text, <a href="%s">this option should be enabled</a>.', 'wpsso' ), $settings_page_url ).'</p>';
+						//$text = '<p><b>'.sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for description values and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'If you use any shortcodes in your content text, <a href="%s">this option should be enabled</a>.', 'wpsso' ), $settings_page_url ).'</p>';
+
+						$text = '<p><b>'.sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ).'</b> '.sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions, and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['short'] ).'</p><p><b>'.__( 'Some theme / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> '.sprintf( __( '<a href="%s">If you use any shortcodes in your content text, this option should be enabled</a> &mdash; if you experience display issues after enabling this option, determine which theme / plugin is at fault and report the problem to its author(s).', 'wpsso' ), $settings_page_url ).'</p>';
 
 						break;
 
