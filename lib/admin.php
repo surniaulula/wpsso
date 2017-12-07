@@ -620,8 +620,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( empty( $opts['plugin_filter_content'] ) ) {
-				$dismiss_key = 'notice-content-filters-disabled';
-				$this->p->notice->warn( $this->p->msgs->get( 'notice-content-filters-disabled' ), true, $dismiss_key, true );	// can be dismissed
+				$message_key = 'notice-content-filters-disabled';
+				$dismiss_key = $message_key.'-reminder';
+				$this->p->notice->warn( $this->p->msgs->get( $message_key ), true, $dismiss_key, true );	// can be dismissed
 			}
 
 			$this->check_tmpl_head_attributes();
