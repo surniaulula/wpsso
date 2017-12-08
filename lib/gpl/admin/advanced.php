@@ -53,7 +53,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows[] = $form->get_th_html( _x( 'Apply WordPress Content Filters',
 				'option label', 'wpsso' ), '', 'plugin_filter_content' ).
-			$form->get_nocb_td( 'plugin_filter_content' );
+			$form->get_nocb_td( 'plugin_filter_content',
+				'<em>'._x( 'recommended', 'option comment', 'wpsso' ).'</em>' );
 
 			$table_rows[] = $form->get_th_html( _x( 'Apply WordPress Excerpt Filters',
 				'option label', 'wpsso' ), '', 'plugin_filter_excerpt' ).
