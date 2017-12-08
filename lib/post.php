@@ -437,14 +437,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( $post_obj->post_status === 'auto-draft' ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head meta skipped: post_status is auto-draft' );
 				}
-				WpssoMeta::$head_meta_tags = array();
-			} else {
-				$add_metabox = empty( $this->p->options['plugin_add_to_'.$post_obj->post_type] ) ? false : true;
 
-				if ( apply_filters( $this->p->lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type ) ) {
+				WpssoMeta::$head_meta_tags = array();
+
+			} else {
+
+				$add_metabox = empty( $this->p->options['plugin_add_to_'.$post_obj->post_type] ) ? false : true;
+				$add_metabox = apply_filters( $this->p->lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'add metabox for post ID '.$post_id.' of type '.$post_obj->post_type.' is '.
+						( $add_metabox ? 'true' : 'false' ) );
+				}
+
+				if ( $add_metabox ) {
 
 					// hooked by woocommerce module to load front-end libraries and start a session
 					do_action( $this->p->lca.'_admin_post_head', $mod, $screen->id );
@@ -478,6 +488,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							}
 						}
 					}
+
+				} else {
+					WpssoMeta::$head_meta_tags = array();
 				}
 			} 
 
@@ -774,9 +787,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 			}
 
-			if ( ( $post_obj->post_type === 'page' && ! current_user_can( 'edit_page', $post_id ) ) || 
-				! current_user_can( 'edit_post', $post_id ) ) {
-
+			if ( ( $post_obj->post_type === 'page' && ! current_user_can( 'edit_page', $post_id ) ) || ! current_user_can( 'edit_post', $post_id ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'insufficient privileges to add metabox for '.$post_obj->post_type.' ID '.$post_id );
 				}
@@ -786,17 +797,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$metabox_id = $this->p->cf['meta']['id'];
 			$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_obj->post_type ] ) ? false : true;
+			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
 
-			if ( apply_filters( $this->p->lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'adding metabox '.$metabox_id );
-				}
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'add metabox for post ID '.$post_id.' of type '.$post_obj->post_type.' is '.
+					( $add_metabox ? 'true' : 'false' ) );
+			}
+
+			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
 					array( &$this, 'show_metabox_custom_meta' ),
 						$post_obj->post_type, 'normal', 'low' );
-
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'skipped metabox '.$metabox_id.' for post type '.$post_obj->post_type );
 			}
 		}
 

@@ -120,10 +120,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->lca;
-
 			if ( $posts_per_page === false ) {
-				$posts_per_page = apply_filters( $lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
+				$posts_per_page = apply_filters( $this->p->lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( $paged === false ) {
@@ -190,10 +188,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function check_sortable_metadata( $value, $term_id, $meta_key, $single ) {
 
-			$lca = $this->p->lca;
 			static $do_once = array();
 
-			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
+			if ( strpos( $meta_key, '_'.$this->p->lca.'_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
 				return $value;	// return null
 			}
 
@@ -241,7 +238,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					break;
 			}
 
-			$lca = $this->p->lca;
 			$mod = $this->get_mod( $this->query_term_id, $this->query_tax_slug );
 
 			if ( $this->p->debug->enabled ) {
@@ -253,9 +249,16 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
-			if ( apply_filters( $lca.'_add_metabox_term', $add_metabox, $this->query_term_id ) ) {
+			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_term', $add_metabox, $this->query_term_id );
 
-				do_action( $lca.'_admin_term_head', $mod, $screen->id );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'add metabox for term ID '.$this->query_term_id.' is '.
+					( $add_metabox ? 'true' : 'false' ) );
+			}
+
+			if ( $add_metabox ) {
+
+				do_action( $this->p->lca.'_admin_term_head', $mod, $screen->id );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'setting head_meta_info static property' );
@@ -276,16 +279,22 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						}
 					}
 				}
+
+			} else {
+				WpssoMeta::$head_meta_tags = array();
 			}
 
-			$action_query = $lca.'-action';
+			$action_query = $this->p->lca.'-action';
+
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'found action query: '.$action_name );
+				}
 				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
-					if ( $this->p->debug->enabled )
+					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'nonce token query field missing' );
+					}
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
 					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
 						'wpsso' ), 'term', $action_name ) );
@@ -293,7 +302,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 					switch ( $action_name ) {
 						default: 
-							do_action( $lca.'_load_meta_page_term_'.$action_name, $this->query_term_id );
+							do_action( $this->p->lca.'_load_meta_page_term_'.$action_name, $this->query_term_id );
 							break;
 					}
 				}
@@ -308,15 +317,20 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			$lca = $this->p->lca;
 			$metabox_id = $this->p->cf['meta']['id'];
 			$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
+			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_term', $add_metabox, $this->query_term_id );
 
-			if ( apply_filters( $lca.'_add_metabox_term', $add_metabox, $this->query_term_id ) ) {
-				add_meta_box( $lca.'_'.$metabox_id, $metabox_title,
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'add metabox for term ID '.$this->query_term_id.' is '.
+					( $add_metabox ? 'true' : 'false' ) );
+			}
+
+			if ( $add_metabox ) {
+				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
 					array( &$this, 'show_metabox_custom_meta' ),
-						$lca.'-term', 'normal', 'low' );
+						$this->p->lca.'-term', 'normal', 'low' );
 			}
 		}
 
@@ -330,16 +344,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			$lca = $this->p->lca;
-
-			echo "\n".'<!-- '.$lca.' term metabox section begin -->'."\n";
-			echo '<h3 id="'.$lca.'-metaboxes">'.WpssoAdmin::$pkg[$lca]['short'].'</h3>'."\n";
+			echo "\n".'<!-- '.$this->p->lca.' term metabox section begin -->'."\n";
+			echo '<h3 id="'.$this->p->lca.'-metaboxes">'.WpssoAdmin::$pkg[$this->p->lca]['short'].'</h3>'."\n";
 			echo '<div id="poststuff">'."\n";
 
-			do_meta_boxes( $lca.'-term', 'normal', $term );
+			do_meta_boxes( $this->p->lca.'-term', 'normal', $term );
 
 			echo "\n".'</div><!-- .poststuff -->'."\n";
-			echo '<!-- '.$lca.' term metabox section end -->'."\n";
+			echo '<!-- '.$this->p->lca.' term metabox section end -->'."\n";
 		}
 
 		public function show_metabox_custom_meta( $term_obj ) {
@@ -348,13 +360,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->lca;
 			$metabox_id = $this->p->cf['meta']['id'];
 			$mod = $this->get_mod( $term_obj->term_id, $this->query_tax_slug );
 			$tabs = $this->get_custom_meta_tabs( $metabox_id, $mod );
 			$opts = $this->get_options( $term_obj->term_id );
 			$def_opts = $this->get_defaults( $term_obj->term_id );
-			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $lca );
+			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->lca );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
@@ -365,7 +376,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$table_rows = array();
 			foreach ( $tabs as $key => $title ) {
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ), 
-					apply_filters( $lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 

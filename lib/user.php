@@ -107,10 +107,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
-
 			if ( $posts_per_page === false ) {
-				$posts_per_page = apply_filters( $lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
+				$posts_per_page = apply_filters( $this->p->lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( $paged === false ) {
@@ -170,10 +168,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function check_sortable_metadata( $value, $user_id, $meta_key, $single ) {
 
-			$lca = $this->p->cf['lca'];
 			static $do_once = array();
 
-			if ( strpos( $meta_key, '_'.$lca.'_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
+			if ( strpos( $meta_key, '_'.$this->p->lca.'_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
 				return $value;	// return null
 			}
 
@@ -209,13 +206,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( 'screen id: '.$screen->id );
 			}
 
-			$lca = $this->p->cf['lca'];
-
 			switch ( $screen->id ) {
 				case 'profile':		// user profile page
 				case 'user-edit':	// user editing page
 				case ( strpos( $screen->id, 'profile_page_' ) === 0 ? true : false ):		// your profile page
-				case ( strpos( $screen->id, 'users_page_'.$lca ) === 0 ? true : false ):	// custom social settings page
+				case ( strpos( $screen->id, 'users_page_'.$this->p->lca ) === 0 ? true : false ):	// custom social settings page
 					break;
 				default:
 					return;
@@ -234,9 +229,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
-			if ( apply_filters( $lca.'_add_metabox_user', $add_metabox, $user_id ) ) {
+			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_user', $add_metabox, $user_id );
 
-				do_action( $lca.'_admin_user_head', $mod, $screen->id );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'add metabox for user ID '.$user_id.' is '.
+					( $add_metabox ? 'true' : 'false' ) );
+			}
+
+			if ( $add_metabox ) {
+
+				do_action( $this->p->lca.'_admin_user_head', $mod, $screen->id );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'setting head_meta_info static property' );
@@ -257,9 +259,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						}
 					}
 				}
+
+			} else {
+				WpssoMeta::$head_meta_tags = array();
 			}
 
-			$action_query = $lca.'-action';
+			$action_query = $this->p->lca.'-action';
+
 			if ( ! empty( $_GET[$action_query] ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
 				if ( $this->p->debug->enabled ) {
@@ -276,7 +282,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 					switch ( $action_name ) {
 						default: 
-							do_action( $lca.'_load_meta_page_user_'.$action_name, $user_id, $screen->id );
+							do_action( $this->p->lca.'_load_meta_page_user_'.$action_name, $user_id, $screen->id );
 							break;
 					}
 				}
@@ -284,6 +290,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function add_meta_boxes() {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
@@ -297,19 +304,25 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			$lca = $this->p->cf['lca'];
 			$metabox_id = $this->p->cf['meta']['id'];
 			$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
+			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_user', $add_metabox, $user_id );
 
-			if ( apply_filters( $this->p->cf['lca'].'_add_metabox_user', $add_metabox, $user_id ) ) {
-				add_meta_box( $lca.'_'.$metabox_id, $metabox_title,
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'add metabox for user ID '.$user_id.' is '.
+					( $add_metabox ? 'true' : 'false' ) );
+			}
+
+			if ( $add_metabox ) {
+				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
 					array( &$this, 'show_metabox_custom_meta' ),
-						$lca.'-user', 'normal', 'low' );
+						$this->p->lca.'-user', 'normal', 'low' );
 			}
 		}
 
 		public function show_metabox_section( $user ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
@@ -321,16 +334,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			$lca = $this->p->cf['lca'];
-
-			echo "\n".'<!-- '.$lca.' user metabox section begin -->'."\n";
-			echo '<h3 id="'.$lca.'-metaboxes">'.WpssoAdmin::$pkg[$lca]['short'].'</h3>'."\n";
+			echo "\n".'<!-- '.$this->p->lca.' user metabox section begin -->'."\n";
+			echo '<h3 id="'.$this->p->lca.'-metaboxes">'.WpssoAdmin::$pkg[$this->p->lca]['short'].'</h3>'."\n";
 			echo '<div id="poststuff">'."\n";
 
-			do_meta_boxes( $lca.'-user', 'normal', $user );
+			do_meta_boxes( $this->p->lca.'-user', 'normal', $user );
 
 			echo "\n".'</div><!-- .poststuff -->'."\n";
-			echo '<!-- '.$lca.' user metabox section end -->'."\n";
+			echo '<!-- '.$this->p->lca.' user metabox section end -->'."\n";
 		}
 
 		public function show_metabox_custom_meta( $user_obj ) {
@@ -339,13 +350,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
 			$metabox_id = $this->p->cf['meta']['id'];
 			$mod = $this->get_mod( $user_obj->ID );
 			$tabs = $this->get_custom_meta_tabs( $metabox_id, $mod );
 			$opts = $this->get_options( $user_obj->ID );
 			$def_opts = $this->get_defaults( $user_obj->ID );
-			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $lca );
+			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->lca );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
@@ -356,7 +366,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$table_rows = array();
 			foreach ( $tabs as $key => $title ) {
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ), 
-					apply_filters( $lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 
@@ -390,8 +400,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function add_contact_methods( $fields = array(), $user = null ) { 
 
-			$lca = $this->p->cf['lca'];
-			$aop = $this->p->check->aop( $lca, true, $this->p->avail['*']['p_dir'] );
+			$aop = $this->p->check->aop( $this->p->lca, true, $this->p->avail['*']['p_dir'] );
 
 			// unset built-in contact fields and/or update their labels
 			if ( ! empty( $this->p->cf['wp']['cm_names'] ) && is_array( $this->p->cf['wp']['cm_names'] ) && $aop ) {
