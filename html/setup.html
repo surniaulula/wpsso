@@ -37,7 +37,7 @@
 
 <dt><h3>Interface and General Usage</h3></dt>
 
-<dd><p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include/exclude certain WPSSO Core metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / view the "SSO Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <strong>SSO &gt; Advanced &gt; Custom Meta</strong> tab.</p>
+<dd><p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include/exclude certain WPSSO Core metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / view the "SSO Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <strong>SSO &gt; Advanced Settings &gt; Custom Meta</strong> tab.</p>
 
 <p>When editing a Post, Page, category, tag, etc., you'll find a <em>Social and Search Optimization</em> metabox at the bottom of the page, where you can edit various social texts and image values. The "Preview" tab shows how this webpage might look like when shared on Facebook, the "Head Tags" tab shows a complete listing of meta tags created by WPSSO Core, including additional Schema markup and LD+JSON for Google, and the "Validate" tab allows you to submit the current webpage URL to a number of test and validation tools.</p>
 </dd>
@@ -65,7 +65,7 @@
 
 <h4>Verify Dimensions?</h4>
 
-<p>WPSSO Core Pro can double-check that all images returned by WordPress match the dimensions it requested (as WordPress can return smaller and/or inaccurate images). This also insures that images which are too small and/or tall / wide for social sites are rejected in favour of other larger (and more suitable) images. You can enforce the image dimensions check by enabling the "Enforce Image Dimensions Check" option under the <strong>SSO &gt; Advanced &gt; Integration</strong> tab.</p>
+<p>WPSSO Core Pro can double-check that all images returned by WordPress match the dimensions it requested (as WordPress can return smaller and/or inaccurate images). This also insures that images which are too small and/or tall / wide for social sites are rejected in favour of other larger (and more suitable) images. You can enforce the image dimensions check by enabling the "Enforce Image Dimensions Check" option under the <strong>SSO &gt; Advanced Settings &gt; Integration</strong> tab.</p>
 </blockquote>
 </div>
 </td>
@@ -76,7 +76,7 @@
 
 <h4>Upscale / Enlarge Images?</h4>
 
-<p>WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites. WPSSO Core Pro includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable this feature under the <strong>SSO &gt; Advanced &gt; Integration</strong> tab.</p>
+<p>WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites. WPSSO Core Pro includes an optional module that allows upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum of 50%, but resizing any larger would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable this feature under the <strong>SSO &gt; Advanced Settings &gt; Integration</strong> tab.</p>
 </blockquote>
 </div>
 </td>
@@ -175,10 +175,10 @@
 <li><p>WPSSO Core may display warning notices if images are too small for the dimensions required. If you are using WordPress v4.2 or better, these notices can be dismissed individually. You can also define the <code>WPSSO_HIDE_ALL_WARNINGS</code> constant as true to auto-hide all dismissable warnings.</p></li>
 
 <!-- Show SSO Image / Desc Columns -->
-<li><p>Users can hide / unhide the "SSO Image" and "SSO Desc" columns using the <em>Screen Options</em> drop-down tab, but you can also enable / disable these columns globally under the <strong>SSO &gt; Advanced &gt; Custom Meta</strong> tab.</p></li>
+<li><p>Users can hide / unhide the "SSO Image" and "SSO Desc" columns using the <em>Screen Options</em> drop-down tab, but you can also enable / disable these columns globally under the <strong>SSO &gt; Advanced Settings &gt; Custom Meta</strong> tab.</p></li>
 
 <!-- Custom Field Names -->
-<li><p>If your theme uses custom fields to manage additional image and video URLs (and embed video HTML), you can enter those custom field (aka post meta) names under the <strong>SSO &gt; Advanced &gt; Custom Meta</strong> tab.</p></li>
+<li><p>If your theme uses custom fields to manage additional image and video URLs (and embed video HTML), you can enter those custom field (aka post meta) names under the <strong>SSO &gt; Advanced Settings &gt; Custom Meta</strong> tab.</p></li>
 
 <!-- Check for Duplicate Meta Tags -->
 <li><p>If you know that your theme header templates do not include any social meta tags, and no other plugin is adding social meta tags to your webpages, then you could disable the "Check for Duplicate Meta Tags" option.</p></li>
@@ -191,6 +191,8 @@
 
 <!-- WPSSO Schema JSON-LD Markup -->
 <li><p>WPSSO Core creates a few Schema <em>meta tags</em> (name, description, and image) for Google+, along with the WebSite, Organization, and Person social JSON-LD markup (on the front page) for Google Search. If your theme does not include proper Schema markup for your content (author, images, videos, etc.), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> extension, which can add complete Schema JSON-LD / SEO markup (BlogPosting, Article, Place, Product, etc.) to webpages for Google.</p></li>
+
+<li><p>WPSSO Core will auto-detect two known Custom Post Type (CPT) values as an Open Graph (and Schema) "product" by default: The "product" and "download" Custom Post Types. You can have WPSSO Core detect additional Custom Post Type (CPT) values as an Open Graph (and Schema) "product" by <a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/define-a-custom-post-type-cpt-as-a-product/">using this example filter</a>.</p></li>
 
 </ul>
 
