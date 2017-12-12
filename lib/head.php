@@ -240,8 +240,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Save meta tag values for later sorting in list tables.
 			 */
 			foreach ( WpssoMeta::get_sortable_columns() as $col_idx => $col_info ) {
-				if ( empty( $col_info['meta_key'] ) )	// just in case
+				if ( empty( $col_info['meta_key'] ) || strpos( $col_info['meta_key'], '_'.$this->p->lca.'_head_info_' ) !== 0 ) {
 					continue;
+				}
 				$meta_value = 'none';
 				switch ( $col_idx ) {
 		 			case 'schema_type':

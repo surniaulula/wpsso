@@ -145,13 +145,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_nocb_td( $name, $comment = '', $narrow = false ) {
-			return '<td class="'.( $narrow ? 'checkbox ' : '' ).'blank">'.
-				$this->get_nocb_cmt( $name, $comment ).'</td>';
+			return '<td class="'.( $narrow ? 'checkbox ' : '' ).'blank">'.$this->get_nocb_cmt( $name, $comment ).'</td>';
 		}
 
 		public function get_nocb_cmt( $name, $comment = '' ) {
-			return $this->get_checkbox( $name, '', '', true, null ).
-				( empty( $comment ) ? '' : ' '.$comment );
+			return $this->get_checkbox( $name, '', '', true, null ).( empty( $comment ) ? '' : ' '.$comment );
 		}
 
 		// deprecated on 2017/11/07

@@ -1667,16 +1667,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( array_key_exists( $match_key, $array ) ) {
 				$new_array = array();
 				foreach ( $array as $key => $value ) {
-					if ( $rel_pos === 'after' )
+					if ( $rel_pos === 'after' ) {
 						$new_array[$key] = $value;
+					}
 					// add new value before / after matched key
 					// replace matched key by default (no test required)
 					if ( $key === $match_key ) {
-						if ( is_array( $mixed ) )
+						if ( is_array( $mixed ) ) {
 							$new_array = array_merge( $new_array, $mixed );
-						elseif ( is_string( $mixed ) )
+						} elseif ( is_string( $mixed ) ) {
 							$new_array[$mixed] = $add_value;
-						else $new_array[] = $add_value;
+						} else {
+							$new_array[] = $add_value;
+						}
 						$matched = true;
 					}
 					if ( $rel_pos === 'before' )

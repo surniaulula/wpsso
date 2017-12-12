@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.8',		// plugin version
+					'version' => '3.48.9-dev.1',		// plugin version
 					'opt_version' => '570',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
@@ -2162,7 +2162,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		);
 
 		public static function get_version( $add_slug = false ) {
-			$info =& self::$cf['plugin']['wpsso'];
+			$ext = 'wpsso';
+			$info =& self::$cf['plugin'][$ext];
 			if ( $add_slug ) {
 				return $info['slug'].'-'.$info['version'];
 			} else {

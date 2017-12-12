@@ -264,14 +264,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					margin:0;
 				}
 				.column-'.$this->p->lca.'_og_img { 
-					width:'.$sort_cols['og_img']['width'].' !important;
-					min-width:'.$sort_cols['og_img']['width'].' !important;
 					max-width:'.$sort_cols['og_img']['width'].' !important;
 				}
 				.column-'.$this->p->lca.'_og_img .preview_img { 
-					width:'.$sort_cols['og_img']['width'].';
-					min-width:'.$sort_cols['og_img']['width'].';
-					max-width:'.$sort_cols['og_img']['width'].';
+					max-width:'.$sort_cols['og_img']['width'].' !important;
 					height:'.$sort_cols['og_img']['height'].';
 					min-height:'.$sort_cols['og_img']['height'].';
 					background-size:'.$sort_cols['og_img']['width'].' auto;
@@ -282,15 +278,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					padding:0;
 				}
 				.column-'.$this->p->lca.'_schema_type {
-					width:'.$sort_cols['schema_type']['width'].' !important;
-					min-width:'.$sort_cols['schema_type']['width'].' !important;
 					max-width:'.$sort_cols['schema_type']['width'].' !important;
 					white-space:nowrap;
 					overflow:hidden;
 				}
 				.column-'.$this->p->lca.'_og_desc {
-					width:'.$sort_cols['og_desc']['width'].';
-					min-width:'.$sort_cols['og_desc']['width'].';
 					overflow:hidden;
 				}
 				td.column-'.$this->p->lca.'_og_desc,
@@ -315,6 +307,17 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					content:"\2665";	/* heart */
 				}
 			';
+
+			foreach ( $sort_cols as $col_name => $col_info ) {
+				if ( isset( $col_info['width'] ) ) {
+					$custom_style_css .= '
+						.column-'.$this->p->lca.'_'.$col_name.' {
+							width:'.$col_info['width'].' !important;
+							min-width:'.$col_info['width'].' !important;
+						}
+					';
+				}
+			}
 
 			if ( ! empty( $this->p->avail['seo']['wpseo'] ) ) {
 				$custom_style_css .= '

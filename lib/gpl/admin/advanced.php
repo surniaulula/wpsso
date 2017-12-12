@@ -192,7 +192,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			) as $mod_name => $mod_label ) {
 				$cols .= '<tr>';
 				foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
-					$cols .= $form->get_nocb_td( 'plugin_'.$col_idx.'_col_'.$mod_name, '', true );
+					if ( $form->in_defaults( 'plugin_'.$col_idx.'_col_'.$mod_name ) ) {	// just in case
+						$cols .= $form->get_nocb_td( 'plugin_'.$col_idx.'_col_'.$mod_name, '', true );	// $narrow = true
+					} else {
+						$cols .= '<td class="checkbox"></td>';
+					}
 				}
 				$cols .= '<td><p>'.$mod_label.'</p></td></tr>'."\n";
 			}

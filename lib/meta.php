@@ -144,7 +144,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					break;
 			}
 
-			return apply_filters( $this->p->cf['lca'].'_'.$mod['name'].'_custom_meta_tabs', $tabs, $mod, $metabox_id );
+			return apply_filters( $this->p->lca.'_'.$mod['name'].'_custom_meta_tabs', $tabs, $mod, $metabox_id );
 		}
 
 		protected function get_table_rows( &$metabox_id, &$key, &$head_info, &$mod ) {
@@ -223,7 +223,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$shortlink = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 				} else {
 					$service_key = $this->p->options['plugin_shortener'];
-					$shortlink = apply_filters( $this->p->cf['lca'].'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
+					$shortlink = apply_filters( $this->p->lca.'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
 				}
 
 				$table_rows[] = $form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ).
@@ -529,7 +529,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
 				}
 
-				$md_defs = apply_filters( $this->p->cf['lca'].'_get_md_defaults', $md_defs, $this->get_mod( $mod_id ) );
+				$md_defs = apply_filters( $this->p->lca.'_get_md_defaults', $md_defs, $this->get_mod( $mod_id ) );
 
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'get_defaults filter skipped' );
@@ -752,7 +752,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		// return sortable column keys and their query sort info
 		public static function get_sortable_columns( $col_idx = false ) { 
-			$sort_cols = WpssoConfig::$cf['edit']['columns'];
+			static $sort_cols = null;
+			if ( $sort_cols === null ) {
+				$wpsso =& Wpsso::get_instance();
+				$sort_cols = (array) apply_filters( $wpsso->lca.'_get_sortable_columns', $wpsso->cf['edit']['columns'] );
+			}
 			if ( $col_idx !== false ) {
 				if ( isset( $sort_cols[$col_idx] ) ) {
 					return $sort_cols[$col_idx];
@@ -1138,7 +1142,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 *		'plugin_cf_product_size' => 'product_size',
 			 *	),
 			 */
-			$cf_md_idx = (array) apply_filters( $this->p->cf['lca'].'_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] );
+			$cf_md_idx = (array) apply_filters( $this->p->lca.'_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] );
 
 			foreach ( $cf_md_idx as $cf_idx => $md_idx ) {
 
