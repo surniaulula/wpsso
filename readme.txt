@@ -388,7 +388,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* None
 * *Bugfixes*
-	* Fixed an incorrect variable name to clear the shortened URL transient cache when saving a post.
+	* Fixed an incorrect URL variable name to clear the shortened URL cache when saving a post.
 * *Developer Notes*
 	* None
 
@@ -680,7 +680,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.48.9-dev.1 =
 
-(2017/12/12) Fixed an incorrect variable name to clear the shortened URL transient cache when saving a post.
+(2017/12/12) Fixed an incorrect URL variable name to clear the shortened URL cache when saving a post.
 
 = 3.48.8 =
 
