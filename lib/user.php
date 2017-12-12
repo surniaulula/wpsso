@@ -798,11 +798,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public static function is_show_all( $user_id = false ) {
-			return $this->show_opts( 'all', $user_id );
+			return self::show_opts( 'all', $user_id );
 		}
 
 		public static function get_show_val( $user_id = false ) {
-			return $this->show_opts( false, $user_id );
+			return self::show_opts( false, $user_id );
 		}
 
 		// returns the value for show_opts, or return true/false if a value to compare is provided
