@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.9-rc.1 (2017/12/12)**
+**Version 3.48.9 (2017/12/13)**
 
 * *New Features*
 	* None
@@ -678,9 +678,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.9-rc.1 =
+= 3.48.9 =
 
-(2017/12/12) Fixed an incorrect URL variable name to clear the shortened URL cache when saving a post.
+(2017/12/13) Fixed an incorrect URL variable name to clear the shortened URL cache when saving a post.
 
 = 3.48.8 =
 
