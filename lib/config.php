@@ -2164,11 +2164,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function get_version( $add_slug = false ) {
 			$ext = 'wpsso';
 			$info =& self::$cf['plugin'][$ext];
-			if ( $add_slug ) {
-				return $info['slug'].'-'.$info['version'];
-			} else {
-				return $info['version'];
-			}
+			return $add_slug ? $info['slug'].'-'.$info['version'] : $info['version'];
 		}
 
 		// get_config is called very early, so don't apply filters unless instructed
