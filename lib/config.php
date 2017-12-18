@@ -595,9 +595,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_webpage' => 'webpage',
 					'schema_type_for_website' => 'website',
 					'schema_review_item_type' => 'none',	// Default Reviewed Item Type
-					'seo_desc_len' => 160,			// meta name="description" maximum text length (hard limit)
-					'seo_author_field' => 'gplus',
-					'seo_publisher_url' => '',		// (localized)
 					'fb_publisher_url' => '',		// (localized)
 					'fb_app_id' => '',
 					'fb_admins' => '',
@@ -641,17 +638,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'p_add_img_html' => 1,
 					'p_add_nopin_media_img_tag' => 1,
 					'p_add_nopin_header_img_tag' => 1,
+					'sc_publisher_url' => '',
+					'seo_desc_len' => 160,			// meta name="description" maximum text length (hard limit)
+					'seo_author_field' => 'gplus',
+					'seo_publisher_url' => '',		// (localized)
+					'tumblr_publisher_url' => '',
+					'yt_publisher_url' => '',
+					// twitter card options
 					'tc_site' => '',			// Twitter Business @username (localized)
 					'tc_desc_len' => 200,			// Maximum Description Length (hard limit)
 					'tc_type_post' => 'summary_large_image',
 					'tc_type_default' => 'summary',
-					// summary card
+					// twitter summary card
 					'tc_sum_img_width' => 600,		// Summary Card Image Dimensions
 					'tc_sum_img_height' => 600,
 					'tc_sum_img_crop' => 1,
 					'tc_sum_img_crop_x' => 'center',
 					'tc_sum_img_crop_y' => 'center',
-					// large image summary card
+					// twitter large image summary card
 					'tc_lrg_img_width' => 600,		// Large Image Card Img Dimensions
 					'tc_lrg_img_height' => 315,
 					'tc_lrg_img_crop' => 1,
