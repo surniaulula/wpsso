@@ -857,11 +857,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		// deprecated on 2017/09/03
-		public function get_image_upload_input( $opt_prefix, $placeholder = '', $disabled = false ) {
-			return $this->get_input_image_upload( $opt_prefix, $placeholder, $disabled );
-		}
-
 		public function get_input_image_upload( $opt_prefix, $placeholder = '', $disabled = false ) {
 			$opt_suffix = '';
 			$select_lib = 'wp';
@@ -900,18 +895,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'</div>';
 		}
 
-		// deprecated on 2017/09/03
-		public function get_no_image_upload_input( $opt_prefix, $placeholder = '' ) {
-			return $this->get_input_image_upload( $opt_prefix, $placeholder, true );
-		}
-
 		public function get_no_input_image_upload( $opt_prefix, $placeholder = '' ) {
 			return $this->get_input_image_upload( $opt_prefix, $placeholder, true );
-		}
-
-		// deprecated on 2017/09/03
-		public function get_image_url_input( $opt_prefix, $url = '' ) {
-			return $this->get_input_image_url( $opt_prefix, $url );
 		}
 
 		public function get_input_image_url( $opt_prefix, $url = '' ) {
@@ -925,26 +910,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			// disable if we have a custom image id
 			$disabled = empty( $this->options[$opt_prefix.'_id'.$opt_suffix] ) ? false : true;
 
-			return $this->get_input( $opt_prefix.'_url'.$opt_suffix,
-				'wide', '', 0, SucomUtil::esc_url_encode( $url ), $disabled );
-		}
-
-		// deprecated on 2017/09/03
-		public function get_video_url_input( $opt_prefix, $url = '' ) {
-			return $this->get_input_video_url( $opt_prefix, $url );
+			return $this->get_input( $opt_prefix.'_url'.$opt_suffix, 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $disabled );
 		}
 
 		public function get_input_video_url( $opt_prefix, $url = '' ) {
 			// disable if we have a custom video embed
 			$disabled = empty( $this->options[$opt_prefix.'_embed'] ) ? false : true;
 
-			return $this->get_input( $opt_prefix.'_url', 'wide', '', 0,
-				SucomUtil::esc_url_encode( $url ), $disabled );
-		}
-
-		// deprecated on 2017/09/03
-		public function get_image_dimensions_input( $name, $use_opts = false, $narrow = false, $disabled = false ) {
-			return $this->get_input_image_dimensions( $name, $use_opts, $narrow, $disabled );
+			return $this->get_input( $opt_prefix.'_url', 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $disabled );
 		}
 
 		public function get_input_image_dimensions( $name, $use_opts = false, $narrow = false, $disabled = false ) {
@@ -990,11 +963,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'px crop '.$this->get_checkbox( $name.'_crop', '', '', $disabled ).$crop_area_select;
 		}
 
-		// deprecated on 2017/09/03
-		public function get_no_image_dimensions_input( $name, $use_opts = false, $narrow = false ) {
-			return $this->get_input_image_dimensions( $name, $use_opts, $narrow, true );
-		}
-
 		public function get_no_input_image_dimensions( $name, $use_opts = false, $narrow = false ) {
 			return $this->get_input_image_dimensions( $name, $use_opts, $narrow, true );
 		}
@@ -1018,11 +986,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			return;
-		}
-
-		// deprecated on 2017/09/03
-		public function get_copy_input( $value, $class = 'wide', $id = '' ) {
-			$this->get_input_copy_clipboard( $value, $class, $id );
 		}
 
 		public function get_input_copy_clipboard( $value, $class = 'wide', $id = '' ) {

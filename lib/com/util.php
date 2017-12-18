@@ -2622,17 +2622,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function esc_url_encode( $url ) {
-			$allowed = array( '!', '*', '\'', '(', ')', ';', ':', '@', '&', '=',
-				'+', '$', ',', '/', '?', '%', '#', '[', ']' );
-			$replace = array( '%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D',
-				'%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D' );
+
+			static $charset = null;
+			if ( ! isset( $charset  ) ) {
+				$charset = get_bloginfo( 'charset' );
+			}
+
+			$url = html_entity_decode( $url, ENT_QUOTES, $charset );	// just in case
+
+			$replace = array( '%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D' );
+			$allowed = array( '!', '*', '\'', '(', ')', ';', ':', '@', '&', '=', '+', '$', ',', '/', '?', '%', '#', '[', ']' );
+
 			return str_replace( $replace, $allowed, urlencode( esc_url( $url ) ) );
 		}
 
 		// used to decode facebook video urls
 		public static function replace_unicode_escape( $str ) {
-			return preg_replace_callback( '/\\\\u([0-9a-f]{4})/i',
-				array( __CLASS__, 'replace_unicode_escape_callback' ), $str );
+			return preg_replace_callback( '/\\\\u([0-9a-f]{4})/i', array( __CLASS__, 'replace_unicode_escape_callback' ), $str );
 		}
 
 		private static function replace_unicode_escape_callback( $match ) {
