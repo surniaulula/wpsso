@@ -390,7 +390,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added a call to `html_entity_decode()` in the SucomUtil `esc_url_encode()` method to decode any invalid HTML entities found in the URL.
+	* Refactored the `esc_url_encode()` method to decode invalid HTML entities found in the URL.
+	* Added an SucomUtil `decode_html()` method to decode HTML entities and UTF8 encoding.
 
 **Version 3.48.9 (2017/12/13)**
 
@@ -691,7 +692,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.48.10-dev.1 =
 
-(2017/12/18) Added a call to html_entity_decode() in the SucomUtil esc_url_encode() method.
+(2017/12/18) Refactored the esc_url_encode() method to decode invalid HTML entities found in the URL.
 
 = 3.48.9 =
 
