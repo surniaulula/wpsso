@@ -901,9 +901,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				static $local_cache = null;
 				if ( ! isset( $local_cache ) ) {
 					$local_cache = array();
-					$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
 					foreach ( self::$currency_symbols as $key => $value ) {
-						$local_cache[$key] = html_entity_decode( self::decode_utf8( $value ), ENT_QUOTES, $charset );
+						$local_cache[$key] = self::decode_html( $value );
 					}
 					ksort( $local_cache );	// sort by key
 				}
@@ -914,21 +913,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_currency_symbol_abbrev( $idx = false, $default = 'USD', $decode = true ) {
+
 			if ( $decode ) {
-				$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
-				$idx = html_entity_decode( self::decode_utf8( $idx ), ENT_QUOTES, $charset );
+				$idx = self::decode_html( $idx );
 			}
+
 			static $local_cache = null;
+
 			if ( isset( $local_cache[$idx] ) ) {
 				return $local_cache[$idx];
 			} elseif ( $idx === '$' ) {	// match for USD first 
 				return $local_cache[$idx] = 'USD';
 			}
+
 			foreach ( self::get_currency_symbols( false, false, $decode ) as $abbrev => $symbol ) {
 				if ( $symbol === $idx ) {
 					return $local_cache[$idx] = $abbrev;	// stop here
 				}
 			}
+
 			return $local_cache[$idx] = $default;
 		}
 
@@ -2547,11 +2550,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $encoded;
 		}
 
+		public static function decode_html( $encoded ) {
+
+			// if we don't have something to decode, return immediately
+			if ( strpos( $encoded, '&' ) === false ) {
+				return $encoded;
+			}
+
+			static $charset = null;
+
+			if ( ! isset( $charset  ) ) {
+				$charset = get_bloginfo( 'charset' );
+			}
+
+			return html_entity_decode( self::decode_utf8( $encoded ), ENT_QUOTES, $charset );
+		}
+
 		public static function decode_utf8( $encoded ) {
+
 			// if we don't have something to decode, return immediately
 			if ( strpos( $encoded, '&#' ) === false ) {
 				return $encoded;
 			}
+
 			// convert certain entities manually to something non-standard
 			$encoded = preg_replace( '/&#8230;/', '...', $encoded );
 
@@ -2559,8 +2580,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( ! function_exists( 'mb_decode_numericentity' ) ) {
 				return $encoded;
 			}
-			$decoded = preg_replace_callback( '/&#\d{2,5};/u',
-				array( __CLASS__, 'decode_utf8_entity' ), $encoded );
+
+			$decoded = preg_replace_callback( '/&#\d{2,5};/u', array( __CLASS__, 'decode_utf8_entity' ), $encoded );
 
 			return $decoded;
 		}
@@ -2623,12 +2644,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function esc_url_encode( $url ) {
 
-			static $charset = null;
-			if ( ! isset( $charset  ) ) {
-				$charset = get_bloginfo( 'charset' );
-			}
-
-			$url = html_entity_decode( $url, ENT_QUOTES, $charset );	// just in case
+			$url = self::decode_html( $url );	// just in case
 
 			$replace = array( '%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D' );
 			$allowed = array( '!', '*', '\'', '(', ')', ';', ':', '@', '&', '=', '+', '$', ',', '/', '?', '%', '#', '[', ']' );

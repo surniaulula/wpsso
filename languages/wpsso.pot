@@ -806,11 +806,11 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:1377
+#: lib/com/util.php:1380
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1384
+#: lib/com/util.php:1387
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -4245,7 +4245,7 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/options.php:806
+#: lib/options.php:808
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 

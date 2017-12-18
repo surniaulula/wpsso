@@ -582,6 +582,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// must be empty or a url
 				case 'url':
 					if ( $val !== '' ) {
+						$val = SucomUtil::decode_html( $val );	// just in case
 						if ( filter_var( $val, FILTER_VALIDATE_URL ) === false ) {
 							$this->p->notice->err( sprintf( $error_messages[$option_type], $key ) );
 							$val = $def_val;
@@ -606,6 +607,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( $val !== '' ) {
 						$parts = array();
 						foreach ( SucomUtil::explode_csv( $val ) as $part ) {
+							$part = SucomUtil::decode_html( $part );	// just in case
 							if ( filter_var( $part, FILTER_VALIDATE_URL ) === false ) {
 								$this->p->notice->err( sprintf( $error_messages[$option_type], $key ) );
 								$val = $def_val;
