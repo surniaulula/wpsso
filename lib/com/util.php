@@ -2550,6 +2550,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $encoded;
 		}
 
+		// decode HTML entities and UTF8 encoding
 		public static function decode_html( $encoded ) {
 
 			// if we don't have something to decode, return immediately
