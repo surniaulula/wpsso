@@ -75,8 +75,6 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Finds images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Fully renders content (including shortcodes) for accurate description texts (and embedded video detection in Pro version).
-
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable title and description maximum lengths (Open Graph, Twitter Card, SEO), including both hard and soft limits.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable title separator character (hyphen by default).
@@ -144,6 +142,8 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Optionally upscale smaller images for social sharing and Schema markup - a maximum upscale percentage can also be selected.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Support for embedded videos in content text (iframe and object HTML markup).
+
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Fully renders content (including shortcodes) for accurate description texts and embedded video detection.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and eCommerce products.
 
