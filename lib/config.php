@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(
 					'version' => '3.48.10-rc.1',		// plugin version
-					'opt_version' => '570',		// increment when changing default options
+					'opt_version' => '571',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -639,7 +639,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'p_add_nopin_media_img_tag' => 1,
 					'p_add_nopin_header_img_tag' => 1,
 					'sc_publisher_url' => '',
-					'seo_desc_len' => 160,			// meta name="description" maximum text length (hard limit)
+					'seo_desc_len' => 320,			// meta name="description" maximum text length (hard limit)
 					'seo_author_field' => 'gplus',
 					'seo_publisher_url' => '',		// (localized)
 					'tumblr_publisher_url' => '',

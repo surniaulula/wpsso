@@ -2507,7 +2507,8 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 				}
 				$num = 0;
 				
-				while (!empty($this->footnotes_ordered)) {
+				while ( ! empty( $this->footnotes_ordered ) ) {
+
 					$footnote = reset($this->footnotes_ordered);
 					$note_id = key($this->footnotes_ordered);
 					unset($this->footnotes_ordered[$note_id]);
@@ -2522,7 +2523,8 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 					
 					# Add backlink to last paragraph; create new paragraph if needed.
 					$backlink = "<a href=\"#fnref:$note_id\"$attr>&#8617;</a>";
-					if (preg_match('{</p>$}', $footnote)) {
+
+					if ( preg_match( '{</p>$}', $footnote ) ) {
 						$footnote = substr($footnote, 0, -4) . "&#160;$backlink</p>";
 					} else {
 						$footnote .= "\n\n<p>$backlink</p>";
