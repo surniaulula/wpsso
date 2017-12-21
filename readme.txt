@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.10-rc.1 (2017/12/20)**
+**Version 3.48.10 (2017/12/21)**
 
 * *New Features*
 	* None
@@ -691,9 +691,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.10-rc.1 =
+= 3.48.10 =
 
-(2017/12/20) Changed the maximum "Google Search / SEO Description" length from 160 to 320 characters. Refactored the esc_url_encode() method to decode any HTML entities found in the URL.
+(2017/12/21) Changed the maximum "Google Search / SEO Description" length from 160 to 320 characters. Refactored the esc_url_encode() method to decode any HTML entities found in the URL.
 
 = 3.48.9 =
 
