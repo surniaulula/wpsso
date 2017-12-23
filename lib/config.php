@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.10',		// plugin version
+					'version' => '3.48.11-dev.1',		// plugin version
 					'opt_version' => '572',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',

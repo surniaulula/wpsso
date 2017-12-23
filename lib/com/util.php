@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2017 Jean-Sebastien Morisset (https://wpsso.com/)
@@ -2666,7 +2666,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( function_exists( 'wp_json_encode' ) ) {
 				return wp_json_encode( $data, $options, $depth );
 			} elseif ( function_exists( 'json_encode' ) ) {
-				return json_encode( $data, $options, $depth );
+				$php_version = phpversion();
+				if ( version_compare( $php_version, '5.5.0', '>=' ) ) {
+					return json_encode( $data, $options, $depth );	// $depth since PHP v5.5.0
+				} elseif ( version_compare( $php_version, '5.3.0', '>=' ) ) {
+					return json_encode( $data, $options );	// $options since PHP v5.3.0
+				} else {
+					return json_encode( $data );
+				}
 			} else {
 				return '{}';	// empty string
 			}
@@ -3057,7 +3064,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 	}
 }
 
-/*
+/**
  * SucomUtilWP is available in the lib/com/util.php library since 2017/11/14.
  */
 if ( ! class_exists( 'SucomUtilWP' ) ) {

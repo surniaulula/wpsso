@@ -1,5 +1,6 @@
 <?php
-/*
+
+/**
  * Plugin Name: WPSSO Core
  * Plugin Slug: wpsso
  * Text Domain: wpsso
@@ -15,7 +16,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 4.9.1
  * WC Tested Up To: 3.2.6
- * Version: 3.48.10
+ * Version: 3.48.11-dev.1
  * 
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *

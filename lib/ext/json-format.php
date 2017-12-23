@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-/*
+/**
  * From http://www.daveperrett.com/articles/2008/03/11/format-json-with-php/
  * Modified to allow native functionality in php version >= 5.4.0.
  */
@@ -24,10 +24,14 @@ if ( ! class_exists( 'SuextJsonFormat' ) ) {
 		public static function get( $json, $options = 0, $depth = 512 ) {
 
 			if ( ! is_string( $json ) ) {
-				if ( version_compare( phpversion(), 5.4,  '>=' ) ) {
+				$php_version = phpversion();
+				if ( version_compare( $php_version, '5.5.0',  '>=' ) ) {
 					return json_encode( $json, $options|JSON_PRETTY_PRINT, $depth );
+				} elseif ( version_compare( $php_version, '5.3.0',  '>=' ) ) {
+					return json_encode( $json, $options|JSON_PRETTY_PRINT );
+				} else {
+					$json = json_encode( $json );
 				}
-				$json = json_encode( $json );
 			}
 
 			$result	= '';
