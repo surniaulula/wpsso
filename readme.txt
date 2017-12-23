@@ -381,6 +381,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.48.11-dev.1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Minor refactoring for PHPCS compatibility checks.
+
 **Version 3.48.10 (2017/12/21)**
 
 * *New Features*
@@ -690,6 +701,10 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 		* 'wpsso_user_social_settings_tabs' to 'wpsso_user_custom_meta_tabs'.
 
 == Upgrade Notice ==
+
+= 3.48.11-dev.1 =
+
+(TBD) Minor refactoring for PHPCS compatibility checks.
 
 = 3.48.10 =
 
