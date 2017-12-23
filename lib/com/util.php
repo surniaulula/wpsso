@@ -1,4 +1,5 @@
 <?php
+
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -3067,6 +3068,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 /**
  * SucomUtilWP is available in the lib/com/util.php library since 2017/11/14.
  */
+
 if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 	class SucomUtilWP {
