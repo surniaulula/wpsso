@@ -93,7 +93,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$function_idx = 2;
 			}
 
-			$this->log( 'args '.self::pretty_array( $arr, true ), $class_idx, $function_idx );
+			$this->log( 'args ' . self::pretty_array( $arr, true ), $class_idx, $function_idx );
 		}
 
 		public function log_arr( $prefix, $mixed, $class_idx = 1, $function_idx = false ) {
@@ -116,14 +116,14 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_object( $mixed ) ) {
-				$prefix = trim( $prefix.' '.get_class( $mixed ).' object vars' );
+				$prefix = trim( $prefix . ' ' . get_class( $mixed ) . ' object vars' );
 				$mixed = get_object_vars( $mixed );
 			}
 
 			if ( is_array( $mixed ) ) {
-				$this->log( $prefix.' '.trim( print_r( self::pretty_array( $mixed, false ), true ) ), $class_idx, $function_idx );
+				$this->log( $prefix . ' ' . trim( print_r( self::pretty_array( $mixed, false ), true ) ), $class_idx, $function_idx );
 			} else {
-				$this->log( $prefix.' '.$mixed, $class_idx, $function_idx );
+				$this->log( $prefix . ' ' . $mixed, $class_idx, $function_idx );
 			}
 		}
 
@@ -162,13 +162,13 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( is_multisite() ) {
 				global $blog_id;
-				$log_msg .= '[blog '.$blog_id.'] ';
+				$log_msg .= '[blog ' . $blog_id . '] ';
 			}
 
 			if ( is_array( $input ) ) {
 				$log_msg .= trim( print_r( $input, true ) );
 			} elseif ( is_object( $input ) ) {
-				$log_msg .= print_r( 'object '.get_class( $input ), true );
+				$log_msg .= print_r( 'object ' . get_class( $input ), true );
 			} else {
 				$log_msg .= $input;
 			}
@@ -179,7 +179,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( $this->subsys['wp'] == true ) {
 				$sid = session_id();
-				error_log( ( $sid ? $sid : $_SERVER['REMOTE_ADDR'] ).' '.$this->log_prefix.' '.$log_msg );
+				error_log( ( $sid ? $sid : $_SERVER['REMOTE_ADDR'] ) . ' ' . $this->log_prefix . ' ' . $log_msg );
 			}
 		}
 
@@ -195,11 +195,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$this->start_stats = $cur_stats;
 
 			if ( $id !== false ) {
-				$id_text = '- - - - - - '.$id;
+				$id_text = '- - - - - - ' . $id;
 				if ( isset( $this->begin_marks[$id] ) ) {
 					$id_text .= ' end + ('.
-						$this->get_time_text( $cur_stats['time'] - $this->begin_marks[$id]['time'] ).' / '.
-						$this->get_mem_text( $cur_stats['mem'] - $this->begin_marks[$id]['mem'] ).')';
+						$this->get_time_text( $cur_stats['time'] - $this->begin_marks[$id]['time'] ) . ' / ' . 
+						$this->get_mem_text( $cur_stats['mem'] - $this->begin_marks[$id]['mem'] ) . ')';
 					unset( $this->begin_marks[$id] );
 				} else {
 					$id_text .= ' begin';
@@ -210,10 +210,10 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				}
 			}
 			$this->log( 'mark ('.
-				$this->get_time_text( $cur_stats['time'] - $this->start_stats['time'] ).' / '.
-				$this->get_mem_text( $cur_stats['mem'] - $this->start_stats['mem'] ).')'.
-				( $comment ? ' '.$comment : '' ).
-				( $id !== false ? "\n\t".$id_text : '' ), 2 );
+				$this->get_time_text( $cur_stats['time'] - $this->start_stats['time'] ) . ' / ' . 
+				$this->get_mem_text( $cur_stats['mem'] - $this->start_stats['mem'] ) . ')' . 
+				( $comment ? ' ' . $comment : '' ).
+				( $id !== false ? "\n\t" . $id_text : '' ), 2 );
 		}
 
 		private function get_time_text( $time ) {
@@ -222,11 +222,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		private function get_mem_text( $mem ) {
 			if ( $mem < 1024 ) {
-				return $mem.' bytes';
+				return $mem . ' bytes';
 			} elseif ( $mem < 1048576 ) {
-				return round( $mem / 1024, 2).' kb';
+				return round( $mem / 1024, 2) . ' kb';
 			} else {
-				return round( $mem / 1048576, 2).' mb';
+				return round( $mem / 1048576, 2) . ' mb';
 			}
 		}
 
@@ -242,10 +242,10 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			if ( $function_idx === false )
 				$function_idx = $class_idx;
 			$from = '';
-			$html = '<!-- '.$this->display_name.' debug';
+			$html = '<!-- ' . $this->display_name . ' debug';
 			$stack = debug_backtrace();
 			if ( ! empty( $stack[$class_idx]['class'] ) )
-				$from .= $stack[$class_idx]['class'].'::';
+				$from .= $stack[$class_idx]['class'] . '::';
 			if ( ! empty( $stack[$function_idx]['function'] ) )
 				$from .= $stack[$function_idx]['function'];
 			if ( $data === null ) {
@@ -253,9 +253,9 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$this->buffer = array();
 			}
 			if ( ! empty( $from ) )
-				$html .= ' from '.$from.'()';
+				$html .= ' from ' . $from . '()';
 			if ( ! empty( $title ) )
-				$html .= ' '.$title;
+				$html .= ' ' . $title;
 			if ( ! empty( $data ) ) {
 				$html .= ' : ';
 				if ( is_array( $data ) ) {
@@ -283,7 +283,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				foreach ( $mixed as $key => $val ) {
 					$val = self::pretty_array( $val, $flatten );
 					if ( $flatten ) {
-						$ret .= $key.'='.$val.', ';
+						$ret .= $key.'=' . $val.', ';
 					} else {
 						if ( is_object( $mixed[$key] ) )
 							unset ( $mixed[$key] );	// dereference the object first
@@ -291,7 +291,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 					}
 				}
 				if ( $flatten ) {
-					$ret = '('.trim( $ret, ', ' ).')';
+					$ret = '(' . trim( $ret, ', ' ) . ')';
 				} else {
 					$ret = $mixed;
 				}
@@ -304,7 +304,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			} elseif ( $mixed === '' ) {
 				$ret = '\'\'';
 			} elseif ( is_object( $mixed ) ) {
-				$ret = 'object '.get_class( $mixed );
+				$ret = 'object ' . get_class( $mixed );
 			} else {
 				$ret = $mixed;
 			}

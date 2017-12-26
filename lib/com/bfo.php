@@ -42,7 +42,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		 * previous / reference hook prority and name.
 		 */
 		public function __call( $method_name, $args ) {
-			if ( strpos( $method_name, $this->bfo_check_id.'_' ) === 0 ) {		// method name starts with 'check_output_buffer_'
+			if ( strpos( $method_name, $this->bfo_check_id . '_' ) === 0 ) {	// method name starts with 'check_output_buffer_'
 				array_unshift( $args, $method_name );				// set $method_name as first element
 				return call_user_func_array( array( &$this, '__check_output_buffer' ), $args );
 			}
@@ -129,7 +129,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		private function add_check_output_hooks( $filter_name ) {
 			global $wp_filter;
 			if ( isset( $wp_filter[$filter_name]->callbacks ) ) {
-				$bfo_check_str = '_'.__CLASS__.'::'.$this->bfo_check_id;			// '_SucomBFO::check_output_buffer'
+				$bfo_check_str = '_' . __CLASS__ . '::' . $this->bfo_check_id;			// '_SucomBFO::check_output_buffer'
 				foreach ( $wp_filter[$filter_name]->callbacks as $hook_prio => &$hook_group ) {	// use reference to modify $hook_group
 					$new_hook_group = array();						// create a new group to insert a check after each hook
 					foreach ( $hook_group as $hook_ref => $hook_info ) {
@@ -137,17 +137,17 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 						$hook_name = self::get_hook_function_name( $hook_info );	// create a human readable class / method name
 						if ( $hook_name === '' ) {					// just in case
 							continue;
-						} elseif ( strpos( $hook_name, __CLASS__.'::' ) === 0 ) {	// exclude our own class methods from being checked
+						} elseif ( strpos( $hook_name, __CLASS__ . '::' ) === 0 ) {	// exclude our own class methods from being checked
 							continue;
 						} elseif ( strpos( $hook_ref, $bfo_check_str ) !== false ) {	// just in case - don't check the check hooks
 							continue;
 						}
-						$check_ref = $hook_ref.$bfo_check_str;				// include the previous hook ref for visual clue
-						$check_arg = urlencode( '['.$hook_prio.']'.$hook_name );	// include previous hook priority and name
+						$check_ref = $hook_ref . $bfo_check_str;			// include the previous hook ref for visual clue
+						$check_arg = urlencode( '[' . $hook_prio.']' . $hook_name );	// include previous hook priority and name
 						$new_hook_group[$check_ref] = array(
 							'function' => array(
 								&$this,
-								$this->bfo_check_id.'_'.$check_arg		// hooks the __call() method
+								$this->bfo_check_id . '_' . $check_arg		// hooks the __call() method
 							),
 							'accepted_args' => 1,
 						);
@@ -164,7 +164,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		private function remove_check_output_hooks( $filter_name ) {
 			global $wp_filter;
 			if ( isset( $wp_filter[$filter_name]->callbacks ) ) {
-				$bfo_check_str = '_'.__CLASS__.'::'.$this->bfo_check_id;
+				$bfo_check_str = '_' . __CLASS__ . '::' . $this->bfo_check_id;
 				foreach ( $wp_filter[$filter_name]->callbacks as $hook_prio => &$hook_group ) {	// use reference to modify $hook_group
 					foreach ( $hook_group as $hook_ref => $hook_info ) {
 						if ( strpos( $hook_ref, $bfo_check_str ) !== false ) {
@@ -218,13 +218,13 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			if ( $output !== '' ) {	// the previous hook has contributed some output
 
 				$error_text = __( 'The "%1$s" filter hook with priority %2$d in the "%3$s" filter has mistakenly provided some webpage output.',
-					$this->text_domain ).' '.
+					$this->text_domain ) . ' ' .
 				__( 'All WordPress filter hooks must return their text - not send it to the webpage output.',
-					$this->text_domain ).' '.
+					$this->text_domain ) . ' ' .
 				__( 'Please contact the author of that filter hook and report this issue as a coding error / bug.',
 					$this->text_domain );
 
-				if ( preg_match( '/^'.$this->bfo_check_id.'_\[([0-9]+)\](.+)$/', urldecode( $method_name ), $matches ) ) {
+				if ( preg_match( '/^' . $this->bfo_check_id . '_\[([0-9]+)\](.+)$/', urldecode( $method_name ), $matches ) ) {
 
 					$error_msg = sprintf( $error_text, $matches[2], $matches[1], current_filter() );
 					/*
@@ -238,7 +238,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 							}
 						} else {
 							$lib_com_dir = trailingslashit( realpath( dirname( __FILE__ ) ) );
-							require_once $lib_com_dir.'notice.php';	// load the SucomNotice class
+							require_once $lib_com_dir . 'notice.php';	// load the SucomNotice class
 							$notice = new SucomNotice( $this->p, $this->lca, $this->text_domain, $this->label_transl );
 							if ( $notice->is_admin_pre_notices() ) {
 								$notice->err( $error_msg );
@@ -246,9 +246,9 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 						}
 					}
 
-					error_log( $this->label_transl.': '.$error_msg.' '.__( 'Incorrect webpage output:', $this->text_domain )."\n".
-						'-----'.__( 'BEGIN OUTPUT', $this->text_domain ).'-----'."\n".print_r( $output, true )."\n".
-						'-----'.__( 'END OUTPUT', $this->text_domain ).'-----' );
+					error_log( $this->label_transl . ': ' . $error_msg . ' ' . __( 'Incorrect webpage output:', $this->text_domain ) . "\n".
+						'-----' . __( 'BEGIN OUTPUT', $this->text_domain ) . '-----'."\n" . print_r( $output, true ) . "\n".
+						'-----' . __( 'END OUTPUT', $this->text_domain ) . '-----' );
 				}
 				ob_clean();	// clean the output buffer for the next hook check
 			}
@@ -275,7 +275,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					$function_name = $hook_info['function'][1];
 
 				}
-				return $class_name.'::'.$function_name;
+				return $class_name . '::' . $function_name;
 			} elseif ( is_string ( $hook_info['function'] ) ) {	// hook is a function
 				return $hook_info['function'];
 			}

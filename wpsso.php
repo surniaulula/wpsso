@@ -80,7 +80,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$plugin_dir = trailingslashit( dirname( __FILE__ ) );
 
-			require_once $plugin_dir.'lib/config.php';
+			require_once $plugin_dir . 'lib/config.php';
 			$this->cf = WpssoConfig::get_config( false, false );	// unfiltered - $cf['*'] array is not available yet
 			WpssoConfig::set_constants( __FILE__ );
 			WpssoConfig::require_libs( __FILE__ );			// includes the register.php class library
@@ -123,7 +123,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				foreach ( $this->cf['plugin'] as $ext => $info ) {
 					if ( isset( $info['lib']['widget'] ) && is_array( $info['lib']['widget'] ) ) {
 						foreach ( $info['lib']['widget'] as $id => $name ) {
-							$classname = apply_filters( $ext.'_load_lib', false, 'widget/'.$id );
+							$classname = apply_filters( $ext . '_load_lib', false, 'widget/' . $id );
 							if ( $classname !== false && class_exists( $classname ) ) {
 								register_widget( $classname );	// name of a class that extends WP_Widget
 							}
@@ -200,10 +200,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						if ( strpos( $key, ':use' ) !== false ) {
 							continue;
 						}
-						if ( isset( $this->site_options[$key.':use'] ) ) {
-							switch ( $this->site_options[$key.':use'] ) {
+						if ( isset( $this->site_options[$key . ':use'] ) ) {
+							switch ( $this->site_options[$key . ':use'] ) {
 								case'force':
-									$this->options[$key.':is'] = 'disabled';
+									$this->options[$key . ':is'] = 'disabled';
 									$this->options[$key] = $this->site_options[$key];
 									break;
 								case 'empty':	// blank string, null, false, or 0
@@ -213,7 +213,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 									break;
 							}
 						}
-						$constant_name = 'WPSSO_ID_'.$blog_id.'_OPT_'.strtoupper( $key );
+						$constant_name = 'WPSSO_ID_' . $blog_id . '_OPT_' . strtoupper( $key );
 						if ( isset( $defined_constants['user'][$constant_name] ) ) {
 							$this->options[$key] = $defined_constants['user'][$constant_name];
 						}
@@ -247,13 +247,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			if ( $html_debug || $wp_debug ) {
-				require_once WPSSO_PLUGINDIR.'lib/com/debug.php';
+				require_once WPSSO_PLUGINDIR . 'lib/com/debug.php';
 				$this->debug = new SucomDebug( $this, array( 'html' => $html_debug, 'wp' => $wp_debug ) );
 				if ( $this->debug->enabled ) {
 					global $wp_version;
-					$this->debug->log( 'debug enabled on '.date( 'c' ) );
-					$this->debug->log( 'WP version '.$wp_version );
-					$this->debug->log( 'PHP version '.phpversion() );
+					$this->debug->log( 'debug enabled on ' . date( 'c' ) );
+					$this->debug->log( 'WP version ' . $wp_version );
+					$this->debug->log( 'PHP version ' . phpversion() );
 					$this->debug->log( $this->check->get_ext_list() );
 				}
 			} else {
@@ -263,7 +263,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			do_action( 'wpsso_init_textdomain', $this->debug->enabled );
 
 			if ( is_admin() ) {
-				require_once WPSSO_PLUGINDIR.'lib/com/notice.php';
+				require_once WPSSO_PLUGINDIR . 'lib/com/notice.php';
 				$this->notice = new SucomNotice( $this );
 			} else {
 				$this->notice = new SucomNoNotice();	// make sure the notice property is always available
@@ -335,7 +335,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug->log( 'WP debug log mode is active' );
 					if ( is_admin() ) {
 						$warn_msg .= __( 'WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log.',
-							'wpsso' ).' ';
+							'wpsso' ) . ' ';
 					}
 				}
 
@@ -349,14 +349,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug->log( 'HTML debug mode is active' );
 					if ( is_admin() ) {
 						$warn_msg .=  __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.',
-							'wpsso' ).' ';
+							'wpsso' ) . ' ';
 					}
 				}
 
 				if ( $this->debug->enabled ) {
 					if ( ! empty( $warn_msg ) ) {
 						$warn_msg .= sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
-							'wpsso' ), $info['short'] ).' '.__( 'Please disable debug mode when debugging is complete.', 'wpsso' );
+							'wpsso' ), $info['short'] ) . ' ' . __( 'Please disable debug mode when debugging is complete.', 'wpsso' );
 						$this->notice->warn( $warn_msg );
 					}
 					$this->util->disable_cache_filters();
@@ -370,7 +370,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				foreach ( $this->cf['plugin'] as $ext => $info ) {
 					if ( isset( $info['lib']['shortcode'] ) && is_array( $info['lib']['shortcode'] ) ) {
 						foreach ( $info['lib']['shortcode'] as $id => $name ) {
-							$classname = apply_filters( $ext.'_load_lib', false, 'shortcode/'.$id );
+							$classname = apply_filters( $ext . '_load_lib', false, 'shortcode/' . $id );
 							if ( $classname !== false && class_exists( $classname ) ) {
 								$this->sc[$id] = new $classname( $this );
 							}
@@ -391,7 +391,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
 					foreach ( array( -9000, 9000 ) as $prio ) {
 						add_action( $action, create_function( '',
-							'echo "<!-- wpsso '.$action.' action hook priority '.$prio.' mark -->\n";' ), $prio );
+							'echo "<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->\n";' ), $prio );
 						add_action( $action, array( &$this, 'show_debug' ), $prio + 1 );
 					}
 				}
@@ -427,9 +427,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			if ( strpos( $domain, 'wpsso' ) === 0 ) {	// optimize
 				foreach ( $this->cf['plugin'] as $ext => $info ) {
 					if ( $info['slug'] === $domain ) {
-						$constant_name = strtoupper( $ext ).'_PLUGINDIR';
+						$constant_name = strtoupper( $ext ) . '_PLUGINDIR';
 						if ( defined( $constant_name ) && $plugin_dir = constant( $constant_name ) ) {
-							$plugin_mofile = $plugin_dir.'languages/'.basename( $wp_mofile );
+							$plugin_mofile = $plugin_dir . 'languages/' . basename( $wp_mofile );
 							if ( $plugin_mofile !== $wp_mofile && is_readable( $plugin_mofile ) ) {
 								global $l10n;
 								unset( $l10n[$domain] );	// prevent merging

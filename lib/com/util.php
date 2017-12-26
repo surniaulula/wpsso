@@ -795,7 +795,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function __construct() {
 		}
 
-		/*
+		/**
 		 * The WordPress get_plugins() function is very slow, so call it only once and cache its result.
 		 */
 		public static function get_wp_plugins() {
@@ -803,7 +803,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return self::$cache_wp_plugins;
 			}
 			if ( ! function_exists( 'get_plugins' ) ) {
-				$plugin_lib = trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
+				$plugin_lib = trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin.php';
 				if ( file_exists( $plugin_lib ) ) {
 					require_once $plugin_lib;
 				} else {
@@ -958,7 +958,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Wrap a filter to return its original / unchanged value.
 		 * Returns tru if protection filters were added, false if protection filters are not required.
 		 */
@@ -1035,7 +1035,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( strpos( $url, '/' ) === 0 ) {	// skip relative urls
 				return $url;
 			}
-			$prot_slash = self::get_prot().'://';
+			$prot_slash = self::get_prot() . '://';
 			if ( strpos( $url, $prot_slash ) === 0 ) {	// skip correct urls
 				return $url;
 			}
@@ -1146,7 +1146,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function sanitize_classname( $name, $allow_underscore = true ) {
-			$name = preg_replace( '/[:\/\-\. '.( $allow_underscore ? '' : '_' ).']+/', '', $name );
+			$name = preg_replace( '/[:\/\-\. ' . ( $allow_underscore ? '' : '_' ) . ']+/', '', $name );
 			return self::sanitize_key( $name );
 		}
 
@@ -1223,7 +1223,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $local_cache[$plugin_slug] = false;
 			}
 			foreach ( SucomUtil::active_plugins() as $plugin_base => $active ) {	// call with class to use common cache
-				if ( strpos( $plugin_base, $plugin_slug.'/' ) === 0 ) {
+				if ( strpos( $plugin_base, $plugin_slug . '/' ) === 0 ) {
 					return $local_cache[$plugin_slug] = true;	// stop here
 				}
 			}
@@ -1239,7 +1239,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $local_cache[$plugin_slug] = false;
 			}
 			foreach ( self::get_wp_plugins() as $plugin_base => $info ) {
-				if ( strpos( $plugin_base, $plugin_slug.'/' ) === 0 ) {
+				if ( strpos( $plugin_base, $plugin_slug . '/' ) === 0 ) {
 					return $local_cache[$plugin_slug] = $plugin_base;	// stop here
 				}
 			}
@@ -1254,7 +1254,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( ! $silent ) {
 					do_action( 'activate_plugin', $plugin_base );
-					do_action( 'activate_'.$plugin_base );
+					do_action( 'activate_' . $plugin_base );
 				}
 
 				$active_plugins[] = $plugin_base;
@@ -1286,7 +1286,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $local_cache[$plugin_base] = false;
 			} elseif ( validate_file( $plugin_base ) > 0 ) {	// contains invalid characters
 				return $local_cache[$plugin_base] = false;
-			} elseif ( ! is_file( WP_PLUGIN_DIR.'/'.$plugin_base ) ) {	// check existence of plugin folder
+			} elseif ( ! is_file( WP_PLUGIN_DIR . '/' . $plugin_base ) ) {	// check existence of plugin folder
 				return $local_cache[$plugin_base] = false;
 			}
 			$plugins = self::get_wp_plugins();
@@ -1351,7 +1351,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( ! function_exists( 'plugins_api' ) ) {
-				require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin-install.php';
+				require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin-install.php';
 			}
 
 			return $local_cache[$plugin_slug][$fields_key] = plugins_api( 'plugin_information', array(
@@ -1400,7 +1400,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( ! function_exists( 'download_url' ) ) {
-				require_once trailingslashit( ABSPATH ).'wp-admin/includes/file.php';
+				require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/file.php';
 			}
 
 			$plugin_zip = download_url( $plugin_url );
@@ -1594,11 +1594,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( empty( $old_name ) ) {	// just in case
 					continue;
 				}
-				$old_name_preg = $modifiers ? '/^'.$old_name.'(:is|:use|#.*|_[0-9]+)?$/' : '/^'.$old_name.'$/';
+				$old_name_preg = $modifiers ? '/^' . $old_name . '(:is|:use|#.*|_[0-9]+)?$/' : '/^' . $old_name . '$/';
 
 				foreach ( preg_grep( $old_name_preg, array_keys ( $opts ) ) as $old_name_local ) {
 					if ( ! empty( $new_name ) ) {	// can be empty to remove option
-						$new_name_local = preg_replace( $old_name_preg, $new_name.'$1', $old_name_local );
+						$new_name_local = preg_replace( $old_name_preg, $new_name . '$1', $old_name_local );
 						$opts[$new_name_local] = $opts[$old_name_local];
 					}
 					unset( $opts[$old_name_local] );
@@ -1695,7 +1695,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $ret_matched ? $matched : $array;	// return true/false or the array (default)
 		}
 
-		/*
+		/**
 		 * PHP's array_merge_recursive() merges arrays, but it converts
 		 * values with duplicate keys to arrays rather than overwriting
 		 * the value in the first array with the duplicate value in the
@@ -1732,13 +1732,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$return = '';
 		        foreach ( $array as $value ) {
 			        if ( is_array( $value ) ) {
-					$return .= self::array_implode( $value, $glue ).$glue;
+					$return .= self::array_implode( $value, $glue ) . $glue;
 				} else {
-					$return .= $value.$glue;
+					$return .= $value . $glue;
 				}
 			}
-			return strlen( $glue ) ?
-				rtrim( $return, $glue ) : $glue;
+			return strlen( $glue ) ? rtrim( $return, $glue ) : $glue;
 		}
 
 		// array must use unique associative / string keys
@@ -1805,7 +1804,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_media_url( array $assoc, $mt_prefix = 'og:image', 
 			array $mt_suffixes = array( ':secure_url', ':url', '', ':embed_url' ) ) {
 
-			/*
+			/**
 			 * Check for two dimensional arrays and keep following the first array element.
 			 * Prefer the $mt_prefix array key (if it's available).
 			 */
@@ -1819,12 +1818,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return self::get_mt_media_url( $first_element, $mt_prefix );
 			}
 
-			/*
+			/**
 			 * First element is a text string, so check the array keys.
 			 */
 			foreach ( $mt_suffixes as $mt_suffix ) {
-				if ( ! empty( $assoc[$mt_prefix.$mt_suffix] ) ) {
-					return $assoc[$mt_prefix.$mt_suffix];	// return first match
+				if ( ! empty( $assoc[$mt_prefix . $mt_suffix] ) ) {
+					return $assoc[$mt_prefix . $mt_suffix];	// return first match
 				}
 			}
 
@@ -1834,32 +1833,32 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_prop_video( $mt_pre = 'og', array $og_partial = array() ) {
 
 			$og_complete = array(
-				$mt_pre.':video:secure_url' => '',
-				$mt_pre.':video:url' => '',
-				//$mt_pre.':video' => '',			// do not include - use og:video:url instead
-				$mt_pre.':video:type' => 'application/x-shockwave-flash',
-				$mt_pre.':video:width' => '',
-				$mt_pre.':video:height' => '',
-				$mt_pre.':video:tag' => array(),
+				$mt_pre . ':video:secure_url' => '',
+				$mt_pre . ':video:url' => '',
+				//$mt_pre . ':video' => '',			// do not include - use og:video:url instead
+				$mt_pre . ':video:type' => 'application/x-shockwave-flash',
+				$mt_pre . ':video:width' => '',
+				$mt_pre . ':video:height' => '',
+				$mt_pre . ':video:tag' => array(),
 
-				$mt_pre.':video:duration' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:upload_date' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:thumbnail_url' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:embed_url' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:has_image' => false,		// non-standard / internal meta tag
-				$mt_pre.':video:title' => '',			// non-standard / internal meta tag
-				$mt_pre.':video:description' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:duration' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:upload_date' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:thumbnail_url' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:embed_url' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:has_image' => false,		// non-standard / internal meta tag
+				$mt_pre . ':video:title' => '',			// non-standard / internal meta tag
+				$mt_pre . ':video:description' => '',		// non-standard / internal meta tag
 
 				// used for twitter player card meta tags
-				$mt_pre.':video:iphone_name' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:iphone_id' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:iphone_url' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:ipad_name' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:ipad_id' => '',			// non-standard / internal meta tag
-				$mt_pre.':video:ipad_url' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:googleplay_name' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:googleplay_id' => '',		// non-standard / internal meta tag
-				$mt_pre.':video:googleplay_url' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:iphone_name' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:iphone_id' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:iphone_url' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:ipad_name' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:ipad_id' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:ipad_url' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:googleplay_name' => '',	// non-standard / internal meta tag
+				$mt_pre . ':video:googleplay_id' => '',		// non-standard / internal meta tag
+				$mt_pre . ':video:googleplay_url' => '',	// non-standard / internal meta tag
 			);
 
 			$og_complete += self::get_mt_prop_image( $mt_pre );
@@ -1889,13 +1888,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_prop_image( $mt_pre = 'og', array $og_partial = array() ) {
 
 			$og_complete = array(
-				$mt_pre.':image:secure_url' => '',
-				//$mt_pre.':image:url' => '',		// not used - do not include
-				$mt_pre.':image' => '',
-				$mt_pre.':image:width' => '',
-				$mt_pre.':image:height' => '',
-				$mt_pre.':image:cropped' => '',		// non-standard / internal meta tag
-				$mt_pre.':image:id' => '',		// non-standard / internal meta tag
+				$mt_pre . ':image:secure_url' => '',
+				//$mt_pre . ':image:url' => '',			// not used - do not include
+				$mt_pre . ':image' => '',
+				$mt_pre . ':image:width' => '',
+				$mt_pre . ':image:height' => '',
+				$mt_pre . ':image:cropped' => '',		// non-standard / internal meta tag
+				$mt_pre . ':image:id' => '',			// non-standard / internal meta tag
 			);
 
 			if ( ! empty( $og_partial ) ) {
@@ -1914,7 +1913,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Returns a custom site name or the default WordPress site name.
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
@@ -1931,7 +1930,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::get_key_value( 'site_alt_name', $opts, $mixed );
 		}
 
-		/*
+		/**
 		 * Returns a custom site description or the default WordPress site description / tagline.
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
@@ -1997,7 +1996,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$default = self::get_locale( 'default' );
 			$locale = self::get_locale( $mixed );
-			$key_locale = $key.'#'.$locale;
+			$key_locale = $key . '#' . $locale;
 
 			// the default language may have changed, so if we're using the default,
 			// check for a locale version for the default language
@@ -2012,20 +2011,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$default = self::get_locale( 'default' );
 			$current = self::get_locale( 'current' );
-			$matches = self::preg_grep_keys( '/^'.$prefix.'_([0-9]+)(#.*)?$/', $opts );
+			$matches = self::preg_grep_keys( '/^' . $prefix . '_([0-9]+)(#.*)?$/', $opts );
 			$results = array();
 
 			foreach ( $matches as $key => $value ) {
-				$num = preg_replace( '/^'.$prefix.'_([0-9]+)(#.*)?$/', '$1', $key );
+				$num = preg_replace( '/^' . $prefix . '_([0-9]+)(#.*)?$/', '$1', $key );
 
 				if ( ! empty( $results[$num] ) ) {				// preserve the first non-blank value
 					continue;
-				} elseif ( ! empty( $opts[$prefix.'_'.$num.'#'.$current] ) ) {	// current locale
-					$results[$num] = $opts[$prefix.'_'.$num.'#'.$current];
-				} elseif ( ! empty( $opts[$prefix.'_'.$num.'#'.$default] ) ) {	// default locale
-					$results[$num] = $opts[$prefix.'_'.$num.'#'.$default];
-				} elseif ( ! empty( $opts[$prefix.'_'.$num] ) ) {		// no locale
-					$results[$num] = $opts[$prefix.'_'.$num];
+				} elseif ( ! empty( $opts[$prefix . '_' . $num . '#' . $current] ) ) {	// current locale
+					$results[$num] = $opts[$prefix . '_' . $num . '#' . $current];
+				} elseif ( ! empty( $opts[$prefix . '_' . $num . '#' . $default] ) ) {	// default locale
+					$results[$num] = $opts[$prefix . '_' . $num . '#' . $default];
+				} elseif ( ! empty( $opts[$prefix . '_' . $num] ) ) {		// no locale
+					$results[$num] = $opts[$prefix . '_' . $num];
 				} else {							// use value (could be empty)
 					$results[$num] = $value;
 				}
@@ -2042,12 +2041,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// $mixed = 'default' | 'current' | post ID | $mod array
 		public static function get_locale( $mixed = 'current' ) {
-			/*
+
+			/**
 			 * We use a class static variable (instead of a method static variable)
 			 * to cache both self::get_locale() and SucomUtil::get_locale() in the
 			 * same variable.
 			 */
-			$idx = is_array( $mixed ) ? $mixed['name'].'_'.$mixed['id'] : $mixed;
+			$idx = is_array( $mixed ) ? $mixed['name'] . '_' . $mixed['id'] : $mixed;
 
 			if ( isset( self::$cache_locale_names[$idx] ) ) {
 				return self::$cache_locale_names[$idx];
@@ -2102,11 +2102,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$mod_salt = '';
 
 			if ( ! empty( $mod['name'] ) ) {
-				$mod_salt .= '_'.$mod['name'].':'.(int) $mod['id'];	// convert false to 0
+				$mod_salt .= '_' . $mod['name'] . ':' . (int) $mod['id'];	// convert false to 0
 			}
 
 			if ( ! empty( $mod['tax_slug'] ) ) {
-				$mod_salt .= '_tax:'.$mod['tax_slug'];
+				$mod_salt .= '_tax:' . $mod['tax_slug'];
 			}
 
 			if ( empty( $mod['id'] ) ) {
@@ -2114,7 +2114,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$mod_salt .= '_home';
 				}
 				if ( ! empty( $sharing_url ) ) {
-					$mod_salt .= '_url:'.$sharing_url;
+					$mod_salt .= '_url:' . $sharing_url;
 				}
 			}
 
@@ -2150,7 +2150,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( ! array_key_exists( $key, $opts ) ) {
 					$opts[$key] = 0;	// add missing checkbox as empty
 				}
-				unset ( $opts['is_checkbox_'.$key] );
+				unset ( $opts['is_checkbox_' . $key] );
 			}
 			return $opts;
 		}
@@ -2435,7 +2435,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					return self::$cache_user_exists[$user_id];
 				} else {
 					global $wpdb;
-					$select_sql = 'SELECT COUNT(ID) FROM '.$wpdb->users.' WHERE ID = %d';
+					$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->users . ' WHERE ID = %d';
 					return self::$cache_user_exists[$user_id] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
 				}
 			} else {
@@ -2596,7 +2596,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function strip_html( $text ) {
 			$text = self::strip_shortcodes( $text );					// remove any remaining shortcodes
 			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// put everything on one line
-			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text);				// remove php
+			$text = preg_replace( '/<\?.*\?' . '>/U', ' ', $text);				// remove php
 			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text);		// remove javascript
 			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text);		// remove inline stylesheets
 			$text = preg_replace( '/<\/p>/i', ' ', $text);					// replace end of paragraph with a space
@@ -2689,7 +2689,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				// load class object on first check
 				if ( ! isset( $mobile_obj ) ) {
 					if ( ! class_exists( 'SuextMobileDetect' ) ) {
-						require_once dirname( __FILE__ ).'/../ext/mobile-detect.php';
+						require_once dirname( __FILE__ ) . '/../ext/mobile-detect.php';
 					}
 					$mobile_obj = new SuextMobileDetect();
 				}
@@ -2776,7 +2776,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_alpha2_countries() {
 			if ( ! class_exists( 'SucomCountryCodes' ) ) {
-				require_once dirname( __FILE__ ).'/country-codes.php';
+				require_once dirname( __FILE__ ) . '/country-codes.php';
 			}
 			return SucomCountryCodes::get( 'alpha2' );
 		}
@@ -2788,7 +2788,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( ! class_exists( 'SucomCountryCodes' ) ) {
-				require_once dirname( __FILE__ ).'/country-codes.php';
+				require_once dirname( __FILE__ ) . '/country-codes.php';
 			}
 
 			$countries = SucomCountryCodes::get( 'alpha2' );
@@ -2832,7 +2832,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_theme_slug_version( $stylesheet = null, $theme_root = null ) {
 			$theme = wp_get_theme( $stylesheet, $theme_root );
-			return $theme->get_template().'-'.$theme->Version;
+			return $theme->get_template() . '-' . $theme->Version;
 		}
 
 		public static function get_image_sizes() {
@@ -2856,19 +2856,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( isset( $_wp_additional_image_sizes[$size_name]['width'] ) ) {
 				$width = intval( $_wp_additional_image_sizes[$size_name]['width'] );
 			} else {
-				$width = get_option( $size_name.'_size_w' );
+				$width = get_option( $size_name . '_size_w' );
 			}
 
 			if ( isset( $_wp_additional_image_sizes[$size_name]['height'] ) ) {
 				$height = intval( $_wp_additional_image_sizes[$size_name]['height'] );
 			} else {
-				$height = get_option( $size_name.'_size_h' );
+				$height = get_option( $size_name . '_size_h' );
 			}
 
 			if ( isset( $_wp_additional_image_sizes[$size_name]['crop'] ) ) {
 				$crop = $_wp_additional_image_sizes[$size_name]['crop'];
 			} else {
-				$crop = get_option( $size_name.'_crop' );
+				$crop = get_option( $size_name . '_crop' );
 			}
 
 			if ( ! is_array( $crop ) ) {
@@ -2880,25 +2880,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// returns the class and id attributes
 		public static function get_atts_css_attr( array $atts, $css_name, $css_extra = '' ) {
-			$css_class = $css_name.'-'.
-				( empty( $atts['css_class'] ) ?
-					'button' : $atts['css_class'] );
 
-			if ( ! empty( $css_extra ) )
-				$css_class = $css_extra.' '.$css_class;
+			$css_class = $css_name . '-' . ( empty( $atts['css_class'] ) ? 'button' : $atts['css_class'] );
 
-			return 'class="'.$css_class.'" id="'.self::get_atts_src_id( $atts, $css_name ).'"';
+			if ( ! empty( $css_extra ) ) {
+				$css_class = $css_extra . ' ' . $css_class;
+			}
+
+			return 'class="' . $css_class . '" id="' . self::get_atts_src_id( $atts, $css_name ) . '"';
 		}
 
 		public static function get_atts_src_id( array $atts, $src_name ) {
-			$src_id = $src_name.'-'.
-				( empty( $atts['css_id'] ) ?
-					'button' : $atts['css_id'] );
+
+			$src_id = $src_name . '-' . ( empty( $atts['css_id'] ) ? 'button' : $atts['css_id'] );
 
 			if ( ! empty( $atts['use_post'] ) || is_singular() || in_the_loop() ) {
 				global $post;
 				if ( ! empty( $post->ID ) ) {
-					$src_id .= '-post-'.$post->ID;
+					$src_id .= '-post-' . $post->ID;
 				}
 			}
 
@@ -2932,10 +2931,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$ret_array = array();
 			$parent_dir = get_template_directory();
 			$child_dir = get_stylesheet_directory();
-			$header_files = (array) glob( $parent_dir.'/header*.php' );
+			$header_files = (array) glob( $parent_dir . '/header*.php' );
 
 			if ( $parent_dir !== $child_dir ) {
-				$header_files = array_merge( $header_files, (array) glob( $child_dir.'/header*.php' ) );
+				$header_files = array_merge( $header_files, (array) glob( $child_dir . '/header*.php' ) );
 			}
 
 			foreach ( $header_files as $tmpl_file ) {
@@ -2954,7 +2953,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$val = substr( preg_replace( array( '/^.*\//',
 					'/[^a-zA-Z0-9_]/' ), '', $val ), 0, 15 );
 				if ( ! empty( $val ) )  {
-					$val = '@'.$val;
+					$val = '@' . $val;
 				}
 			}
 			return $val;
@@ -2971,7 +2970,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function minify_css( $css_data, $lca ) {
 			if ( ! empty( $css_data ) ) {
-				$classname = apply_filters( $lca.'_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
+				$classname = apply_filters( $lca . '_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
 				if ( $classname !== false && class_exists( $classname ) ) {
 					$css_data = call_user_func( array( $classname, 'process' ), $css_data );
 				}
@@ -2985,9 +2984,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_pkg_name( $name, $type ) {
 			if ( strpos( $name, $type ) !== false ) {
-				$name = preg_replace( '/^(.*) '.$type.'( \(.+\))?$/U', '$1$2', $name );
+				$name = preg_replace( '/^(.*) ' . $type . '( \(.+\))?$/U', '$1$2', $name );
 			}
-			return preg_replace( '/^(.*)( \(.+\))?$/U', '$1 '.$type.'$2', $name );
+			return preg_replace( '/^(.*)( \(.+\))?$/U', '$1 ' . $type . '$2', $name );
 		}
 
 		public static function get_wp_hook_names( $filter_name ) {
@@ -3021,7 +3020,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$function_name = $hook_info['function'][1];
 
 				}
-				return $class_name.'::'.$function_name;
+				return $class_name . '::' . $function_name;
 			} elseif ( is_string ( $hook_info['function'] ) ) {	// hook is a function
 				return $hook_info['function'];
 			}
@@ -3078,7 +3077,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return self::wp_encode_emoji( $content );
 		}
 
-		/*
+		/**
 		 * wp_encode_emoji() is only available since WordPress v4.2.
 		 * Use the WordPress function if available, otherwise provide the same functionality.
 		 */
@@ -3110,7 +3109,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $content;
 		}
 
-		/*
+		/**
 		 * Some themes and plugins have been known to hook the WordPress 'get_shortlink' filter 
 		 * and return an empty URL to disable the WordPress shortlink meta tag. This breaks the 
 		 * WordPress wp_get_shortlink() function and is a violation of the WordPress theme 
@@ -3136,7 +3135,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $shortlink;
 		}
 
-		/*
+		/**
 		 * Unfiltered version of wp_get_shortlink() from wordpress/wp-includes/link-template.php
 		 * Last synchronized with WordPress v4.9 on 2017/11/27.
 		 */
@@ -3168,7 +3167,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $shortlink;
 		}
 
-		/*
+		/**
 		 * Unfiltered version of home_url() from wordpress/wp-includes/link-template.php
 		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
 		 */
@@ -3176,7 +3175,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return self::raw_get_home_url( null, $path, $scheme );
 		}
 
-		/*
+		/**
 		 * Unfiltered version of get_home_url() from wordpress/wp-includes/link-template.php
 		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
 		 */
@@ -3206,7 +3205,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $url;
 		}
 
-		/*
+		/**
 		 * Unfiltered version of set_url_scheme() from wordpress/wp-includes/link-template.php
 		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
 		 */
