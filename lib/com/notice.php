@@ -174,7 +174,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( $idx === 'edit' ) {
 				if ( isset( $refs['mod'] ) ) {
 					if ( $refs['mod']['is_post'] && $refs['mod']['id'] ) {
-						return $prefix.get_edit_post_link( $refs['mod']['id'], false ).$suffix;	// $display = false
+						return $prefix.get_edit_post_link( $refs['mod']['id'], false ) . $suffix;	// $display = false
 					} else {
 						return '';
 					}
@@ -183,7 +183,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			} elseif ( $idx !== false ) {
 				if ( isset( $refs[$idx] ) ) {
-					return $prefix.$refs[$idx].$suffix;
+					return $prefix . $refs[$idx] . $suffix;
 				} else {
 					null;
 				}
@@ -196,10 +196,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$ref_html = '';
 			if ( $url = $this->get_ref( 'url' ) ) {
 				$context_transl = $this->get_ref( 'context_transl', '', ' ' );
-				$url_link = '<a href="'.$url.'">'.strtolower( $url ).'</a>';
-				$edit_link = $this->get_ref( 'edit', ' (<a href="', '">'.__( 'edit', $this->text_domain ).'</a>)' );
-				$ref_html .= '<p class="reference-message">'.sprintf( __( 'Reference: %s', $this->text_domain ),
-					$context_transl.$url_link.$edit_link ).'</p>';
+				$url_link = '<a href="' . $url . '">' . strtolower( $url ) . '</a>';
+				$edit_link = $this->get_ref( 'edit', ' (<a href="', '">' . __( 'edit', $this->text_domain ) . '</a>)' );
+				$ref_html .= '<p class="reference-message">' . sprintf( __( 'Reference: %s', $this->text_domain ),
+					$context_transl . $url_link . $edit_link ) . '</p>';
 			}
 			return $ref_html;
 		}
@@ -326,22 +326,22 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			echo '
 <script type="text/javascript">
 	jQuery( document ).ready( function() {
-		jQuery("#'.$this->lca.'-unhide-notices").click( function() {
-			var notice = jQuery( this ).parents(".'.$this->lca.'-notice");
-			jQuery(".'.$this->lca.'-dismissible").show();
+		jQuery("#' . $this->lca . '-unhide-notices").click( function() {
+			var notice = jQuery( this ).parents(".' . $this->lca . '-notice");
+			jQuery(".' . $this->lca . '-dismissible").show();
 			notice.hide();
 		});
-		jQuery("div.'.$this->lca.'-dismissible > div.notice-dismiss, div.'.$this->lca.'-dismissible .dismiss-on-click").click( function() {
+		jQuery("div.' . $this->lca . '-dismissible > div.notice-dismiss, div.' . $this->lca . '-dismissible .dismiss-on-click").click( function() {
 			var dismiss_msg = jQuery( this ).data( "dismiss-msg" );
 
-			var notice = jQuery( this ).closest(".'.$this->lca.'-dismissible");
+			var notice = jQuery( this ).closest(".' . $this->lca . '-dismissible");
 			var dismiss_nonce = notice.data( "dismiss-nonce" );
 			var dismiss_key = notice.data( "dismiss-key" );
 			var dismiss_time = notice.data( "dismiss-time" );
 
 			jQuery.post(
 				ajaxurl, {
-					action: "'.$this->lca.'_dismiss_notice",
+					action: "' . $this->lca . '_dismiss_notice",
 					_ajax_nonce: dismiss_nonce,
 					key: dismiss_key,
 					time: dismiss_time
@@ -379,7 +379,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
 				foreach ( array_keys( $this->p->cf['plugin'] ) as $ext ) {
-					if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
+					if ( ! empty( $this->p->options['plugin_' . $ext.'_tid'] ) ) {
 						$uerr = SucomUpdate::get_umsg( $ext );
 						if ( ! empty( $uerr ) ) {
 							$user_notices['err'][$uerr] = array();
@@ -462,8 +462,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			echo "\n";
-			echo '<!-- '.$this->lca.' admin notices begin -->'."\n";
-			echo '<div id="'.sanitize_html_class( $this->lca.'-admin-notices-begin' ).'"></div>'."\n";
+			echo '<!-- ' . $this->lca . ' admin notices begin -->' . "\n";
+			echo '<div id="' . sanitize_html_class( $this->lca . '-admin-notices-begin' ).'"></div>' . "\n";
 			echo $this->get_notice_style();
 
 			if ( ! empty( $nag_msgs ) ) {
@@ -483,11 +483,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				} else {
 					$msg_text = __( '%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.', $this->text_domain );
 				}
-				echo $this->get_notice_html( $msg_type, sprintf( $msg_text, $hidden[$msg_type], $log_name, $this->lca.'-unhide-notices' ) );
+				echo $this->get_notice_html( $msg_type, sprintf( $msg_text, $hidden[$msg_type], $log_name, $this->lca . '-unhide-notices' ) );
 			}
 
 			echo $msg_html;
-			echo '<!-- '.$this->lca.' admin notices end -->'."\n";
+			echo '<!-- ' . $this->lca . ' admin notices end -->' . "\n";
 		}
 
 		/*
@@ -546,15 +546,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$uca = strtoupper( $this->lca );
 
-			$this->opt_name = defined( $uca.'_NOTICE_NAME' ) ? constant( $uca.'_NOTICE_NAME' ) : $this->lca.'_notices';
-			$this->dis_name = defined( $uca.'_DISMISS_NAME' ) ? constant( $uca.'_DISMISS_NAME' ) : $this->lca.'_dismissed';
+			$this->opt_name = defined( $uca.'_NOTICE_NAME' ) ? constant( $uca.'_NOTICE_NAME' ) : $this->lca . '_notices';
+			$this->dis_name = defined( $uca.'_DISMISS_NAME' ) ? constant( $uca.'_DISMISS_NAME' ) : $this->lca . '_dismissed';
 			$this->hide_err = defined( $uca.'_HIDE_ALL_ERRORS' ) ? constant( $uca.'_HIDE_ALL_ERRORS' ) : false;
 			$this->hide_warn = defined( $uca.'_HIDE_ALL_WARNINGS' ) ? constant( $uca.'_HIDE_ALL_WARNINGS' ) : false;
 		}
 
 		private function add_actions() {
 			if ( is_admin() ) {
-				add_action( 'wp_ajax_'.$this->lca.'_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
+				add_action( 'wp_ajax_' . $this->lca . '_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
 				add_action( 'admin_footer', array( &$this, 'admin_footer_script' ) );
 				add_action( 'in_admin_header', array( &$this, 'hook_admin_notices' ), PHP_INT_MAX );
 			}
@@ -593,34 +593,34 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			// dis_key and dis_time must have values to create a dismissible notice
 			$is_dismissible = empty( $payload['dis_key'] ) || empty( $payload['dis_time'] ) ? false : true;
 
-			$css_id_attr = empty( $payload['dis_key'] ) ? '' : ' id="'.$msg_type.'_'.$payload['dis_key'].'"';
+			$css_id_attr = empty( $payload['dis_key'] ) ? '' : ' id="' . $msg_type.'_' . $payload['dis_key'].'"';
 
 			$data_attr = $is_dismissible ?
-				' data-dismiss-nonce="'.wp_create_nonce( __FILE__ ).'"'.
-				' data-dismiss-key="'.esc_attr( $payload['dis_key'] ).'"'.
-				' data-dismiss-time="'.( is_numeric( $payload['dis_time'] ) ? esc_attr( $payload['dis_time'] ) : 0 ).'"' : '';
+				' data-dismiss-nonce="' . wp_create_nonce( __FILE__ ).'"' . 
+				' data-dismiss-key="' . esc_attr( $payload['dis_key'] ).'"' . 
+				' data-dismiss-time="' . ( is_numeric( $payload['dis_time'] ) ? esc_attr( $payload['dis_time'] ) : 0 ).'"' : '';
 
 			// optionally hide notices if required
-			$style_attr = ' style="'.
+			$style_attr = ' style="' . 
 				( empty( $payload['style'] ) ? '' : $payload['style'] ).
 				( empty( $payload['hidden'] ) ? 'display:block !important; visibility:visible !important;' : 'display:none;' ).'"';
 
-			$msg_html = '<div class="'.$this->lca.'-notice '.
-				( ! $is_dismissible ? '' : $this->lca.'-dismissible ' ).
-					$msg_class.'"'.$css_id_attr.$style_attr.$data_attr.'>';	// display block or none
+			$msg_html = '<div class="' . $this->lca . '-notice ' . 
+				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ).
+					$msg_class.'"' . $css_id_attr . $style_attr . $data_attr.'>';	// display block or none
 
 			if ( ! empty( $payload['dis_time'] ) ) {
-				$msg_html .= '<div class="notice-dismiss"><div class="notice-dismiss-text">'.
+				$msg_html .= '<div class="notice-dismiss"><div class="notice-dismiss-text">' . 
 					__( 'Dismiss', $this->text_domain ).'</div></div>';
 			}
 
 			if ( ! empty( $payload['label'] ) ) {
-				$msg_html .= '<div class="notice-label">'.
+				$msg_html .= '<div class="notice-label">' . 
 					$payload['label'].'</div>';
 			}
 
-			$msg_html .= '<div class="notice-message">'.$msg_txt.'</div>';
-			$msg_html .= '</div>'."\n";
+			$msg_html .= '<div class="notice-message">' . $msg_txt.'</div>';
+			$msg_html .= '</div>' . "\n";
 
 			return $msg_html;
 		}
@@ -628,41 +628,41 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function get_notice_style() {
 
 			$custom_style_css = '
-				.gutenberg-editor-page #'.$this->lca.'-admin-notices-begin {
+				.gutenberg-editor-page #' . $this->lca . '-admin-notices-begin {
 					height:60px;
 				}
-				.gutenberg-editor-page .'.$this->lca.'-notice {
+				.gutenberg-editor-page .' . $this->lca . '-notice {
 					margin:15px 340px 15px 20px;
 				}
-				.'.$this->lca.'-notice.notice {
+				.' . $this->lca . '-notice.notice {
 					padding:0;
 				}
-				.'.$this->lca.'-notice ul {
+				.' . $this->lca . '-notice ul {
 					margin:5px 0 5px 40px;
 					list-style:disc outside none;
 				}
-				.'.$this->lca.'-notice.notice-success .notice-label:before,
-				.'.$this->lca.'-notice.notice-info .notice-label:before,
-				.'.$this->lca.'-notice.notice-warning .notice-label:before,
-				.'.$this->lca.'-notice.notice-error .notice-label:before {
+				.' . $this->lca . '-notice.notice-success .notice-label:before,
+				.' . $this->lca . '-notice.notice-info .notice-label:before,
+				.' . $this->lca . '-notice.notice-warning .notice-label:before,
+				.' . $this->lca . '-notice.notice-error .notice-label:before {
 					vertical-align:bottom;
 					font-family:dashicons;
 					font-size:1.2em;
 					margin-right:6px;
 				}
-				.'.$this->lca.'-notice.notice-success .notice-label:before {
+				.' . $this->lca . '-notice.notice-success .notice-label:before {
 					content:"\f147";	/* yes */
 				}
-				.'.$this->lca.'-notice.notice-info .notice-label:before {
+				.' . $this->lca . '-notice.notice-info .notice-label:before {
 					content:"\f537";	/* sticky */
 				}
-				.'.$this->lca.'-notice.notice-warning .notice-label:before {
+				.' . $this->lca . '-notice.notice-warning .notice-label:before {
 					content:"\f227";	/* flag */
 				}
-				.'.$this->lca.'-notice.notice-error .notice-label:before {
+				.' . $this->lca . '-notice.notice-error .notice-label:before {
 					content:"\f488";	/* megaphone */
 				}
-				.'.$this->lca.'-notice .notice-label {
+				.' . $this->lca . '-notice .notice-label {
 					display:table-cell;
 					vertical-align:top;
 					padding:10px;
@@ -672,50 +672,50 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					background:#fcfcfc;
 					border-right:1px solid #ddd;
 				}
-				.'.$this->lca.'-notice .notice-message {
+				.' . $this->lca . '-notice .notice-message {
 					display:table-cell;
 					vertical-align:top;
 					padding:10px 20px;
 					margin:0;
 					line-height:1.5em;
 				}
-				.'.$this->lca.'-notice .notice-message h2 {
+				.' . $this->lca . '-notice .notice-message h2 {
 					font-size:1.2em;
 				}
-				.'.$this->lca.'-notice .notice-message h3 {
+				.' . $this->lca . '-notice .notice-message h3 {
 					font-size:1.1em;
 					margin-top:1.2em;
 					margin-bottom:0.8em;
 				}
-				.'.$this->lca.'-notice .notice-message a {
+				.' . $this->lca . '-notice .notice-message a {
 				}
-				.'.$this->lca.'-notice .notice-message p {
+				.' . $this->lca . '-notice .notice-message p {
 					margin:1em 0;
 				}
-				.'.$this->lca.'-notice .notice-message p.reference-message {
+				.' . $this->lca . '-notice .notice-message p.reference-message {
 					font-size:0.8em;
 					margin:10px 0 0 0;
 				}
-				.'.$this->lca.'-notice .notice-message ul {
+				.' . $this->lca . '-notice .notice-message ul {
 					margin-top:0.8em;
 					margin-bottom:1.2em;
 				}
-				.'.$this->lca.'-notice .notice-message ul li {
+				.' . $this->lca . '-notice .notice-message ul li {
 					margin-top:3px;
 					margin-bottom:3px;
 				}
-				.'.$this->lca.'-notice .notice-message .button-highlight {
+				.' . $this->lca . '-notice .notice-message .button-highlight {
 					border-color:#0074a2;
 					background-color:#daeefc;
 				}
-				.'.$this->lca.'-notice .notice-message .button-highlight:hover {
+				.' . $this->lca . '-notice .notice-message .button-highlight:hover {
 					background-color:#c8e6fb;
 				}
-				.'.$this->lca.'-dismissible div.notice-dismiss:before {
+				.' . $this->lca . '-dismissible div.notice-dismiss:before {
 					display:inline-block;
 					margin-right:2px;
 				}
-				.'.$this->lca.'-dismissible div.notice-dismiss {
+				.' . $this->lca . '-dismissible div.notice-dismiss {
 					float:right;
 					position:relative;
 					padding:10px;
@@ -723,7 +723,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					top:0;
 					right:0;
 				}
-				.'.$this->lca.'-dismissible div.notice-dismiss-text {
+				.' . $this->lca . '-dismissible div.notice-dismiss-text {
 					display:inline-block;
 					font-size:12px;
 					vertical-align:top;
@@ -734,7 +734,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
 			}
 
-			return '<style type="text/css">'.$custom_style_css.'</style>';
+			return '<style type="text/css">' . $custom_style_css.'</style>';
 		}
 
 		private function get_nag_style() {
@@ -744,43 +744,43 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( defined( $uca.'_UPDATE_NAG_BORDER' ) ) {
 				$custom_style_css .= '
-					.'.$this->lca.'-notice.update-nag {
-						border:'.constant( $uca.'_UPDATE_NAG_BORDER' ).';
+					.' . $this->lca . '-notice.update-nag {
+						border:' . constant( $uca.'_UPDATE_NAG_BORDER' ).';
 					}
 				';
 			}
 
 			if ( defined( $uca.'_UPDATE_NAG_BGCOLOR' ) ) {
 				$custom_style_css .= '
-					.'.$this->lca.'-notice.update-nag {
-						background-color:'.constant( $uca.'_UPDATE_NAG_BGCOLOR' ).';
+					.' . $this->lca . '-notice.update-nag {
+						background-color:' . constant( $uca.'_UPDATE_NAG_BGCOLOR' ).';
 					}
 				';
 			}
 
 			$custom_style_css .= '
-				.'.$this->lca.'-notice.update-nag {
+				.' . $this->lca . '-notice.update-nag {
 					margin-top:0;
 				}
-				.'.$this->lca.'-notice.update-nag > div {
+				.' . $this->lca . '-notice.update-nag > div {
 					display:block;
 					margin:0 auto;
 					max-width:800px;
 				}
-				.'.$this->lca.'-notice.update-nag p,
-				.'.$this->lca.'-notice.update-nag ul,
-				.'.$this->lca.'-notice.update-nag ol {
+				.' . $this->lca . '-notice.update-nag p,
+				.' . $this->lca . '-notice.update-nag ul,
+				.' . $this->lca . '-notice.update-nag ol {
 					font-size:1em;
 					text-align:center;
 					margin:15px auto 15px auto;
 				}
-				.'.$this->lca.'-notice.update-nag ul li {
+				.' . $this->lca . '-notice.update-nag ul li {
 					list-style-type:square;
 				}
-				.'.$this->lca.'-notice.update-nag ol li {
+				.' . $this->lca . '-notice.update-nag ol li {
 					list-style-type:decimal;
 				}
-				.'.$this->lca.'-notice.update-nag li {
+				.' . $this->lca . '-notice.update-nag li {
 					text-align:left;
 					margin:5px 0 5px 60px;
 				}
@@ -790,7 +790,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
 			}
 
-			return '<style type="text/css">'.$custom_style_css.'</style>';
+			return '<style type="text/css">' . $custom_style_css.'</style>';
 		}
 
 		private function &get_user_ids() {

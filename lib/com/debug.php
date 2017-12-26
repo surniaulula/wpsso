@@ -272,7 +272,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 					}
 				} else $html .= $data;
 			}
-			$html .= ' -->'."\n";
+			$html .= ' -->' . "\n";
 			return $html;
 		}
 

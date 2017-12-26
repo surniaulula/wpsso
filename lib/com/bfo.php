@@ -247,7 +247,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					}
 
 					error_log( $this->label_transl . ': ' . $error_msg . ' ' . __( 'Incorrect webpage output:', $this->text_domain ) . "\n".
-						'-----' . __( 'BEGIN OUTPUT', $this->text_domain ) . '-----'."\n" . print_r( $output, true ) . "\n".
+						'-----' . __( 'BEGIN OUTPUT', $this->text_domain ) . '-----' . "\n" . print_r( $output, true ) . "\n".
 						'-----' . __( 'END OUTPUT', $this->text_domain ) . '-----' );
 				}
 				ob_clean();	// clean the output buffer for the next hook check
