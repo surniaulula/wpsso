@@ -379,7 +379,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
 				foreach ( array_keys( $this->p->cf['plugin'] ) as $ext ) {
-					if ( ! empty( $this->p->options['plugin_' . $ext.'_tid'] ) ) {
+					if ( ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) ) {
 						$uerr = SucomUpdate::get_umsg( $ext );
 						if ( ! empty( $uerr ) ) {
 							$user_notices['err'][$uerr] = array();
@@ -463,7 +463,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			echo "\n";
 			echo '<!-- ' . $this->lca . ' admin notices begin -->' . "\n";
-			echo '<div id="' . sanitize_html_class( $this->lca . '-admin-notices-begin' ).'"></div>' . "\n";
+			echo '<div id="' . sanitize_html_class( $this->lca . '-admin-notices-begin' ) . '"></div>' . "\n";
 			echo $this->get_notice_style();
 
 			if ( ! empty( $nag_msgs ) ) {
@@ -546,10 +546,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$uca = strtoupper( $this->lca );
 
-			$this->opt_name = defined( $uca.'_NOTICE_NAME' ) ? constant( $uca.'_NOTICE_NAME' ) : $this->lca . '_notices';
-			$this->dis_name = defined( $uca.'_DISMISS_NAME' ) ? constant( $uca.'_DISMISS_NAME' ) : $this->lca . '_dismissed';
-			$this->hide_err = defined( $uca.'_HIDE_ALL_ERRORS' ) ? constant( $uca.'_HIDE_ALL_ERRORS' ) : false;
-			$this->hide_warn = defined( $uca.'_HIDE_ALL_WARNINGS' ) ? constant( $uca.'_HIDE_ALL_WARNINGS' ) : false;
+			$this->opt_name = defined( $uca . '_NOTICE_NAME' ) ? constant( $uca . '_NOTICE_NAME' ) : $this->lca . '_notices';
+			$this->dis_name = defined( $uca . '_DISMISS_NAME' ) ? constant( $uca . '_DISMISS_NAME' ) : $this->lca . '_dismissed';
+			$this->hide_err = defined( $uca . '_HIDE_ALL_ERRORS' ) ? constant( $uca . '_HIDE_ALL_ERRORS' ) : false;
+			$this->hide_warn = defined( $uca . '_HIDE_ALL_WARNINGS' ) ? constant( $uca . '_HIDE_ALL_WARNINGS' ) : false;
 		}
 
 		private function add_actions() {
@@ -593,33 +593,33 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			// dis_key and dis_time must have values to create a dismissible notice
 			$is_dismissible = empty( $payload['dis_key'] ) || empty( $payload['dis_time'] ) ? false : true;
 
-			$css_id_attr = empty( $payload['dis_key'] ) ? '' : ' id="' . $msg_type.'_' . $payload['dis_key'].'"';
+			$css_id_attr = empty( $payload['dis_key'] ) ? '' : ' id="' . $msg_type . '_' . $payload['dis_key'] . '"';
 
 			$data_attr = $is_dismissible ?
-				' data-dismiss-nonce="' . wp_create_nonce( __FILE__ ).'"' . 
-				' data-dismiss-key="' . esc_attr( $payload['dis_key'] ).'"' . 
-				' data-dismiss-time="' . ( is_numeric( $payload['dis_time'] ) ? esc_attr( $payload['dis_time'] ) : 0 ).'"' : '';
+				' data-dismiss-nonce="' . wp_create_nonce( __FILE__ ) . '"' . 
+				' data-dismiss-key="' . esc_attr( $payload['dis_key'] ) . '"' . 
+				' data-dismiss-time="' . ( is_numeric( $payload['dis_time'] ) ? esc_attr( $payload['dis_time'] ) : 0 ) . '"' : '';
 
 			// optionally hide notices if required
 			$style_attr = ' style="' . 
 				( empty( $payload['style'] ) ? '' : $payload['style'] ).
-				( empty( $payload['hidden'] ) ? 'display:block !important; visibility:visible !important;' : 'display:none;' ).'"';
+				( empty( $payload['hidden'] ) ? 'display:block !important; visibility:visible !important;' : 'display:none;' ) . '"';
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ).
-					$msg_class.'"' . $css_id_attr . $style_attr . $data_attr.'>';	// display block or none
+					$msg_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// display block or none
 
 			if ( ! empty( $payload['dis_time'] ) ) {
 				$msg_html .= '<div class="notice-dismiss"><div class="notice-dismiss-text">' . 
-					__( 'Dismiss', $this->text_domain ).'</div></div>';
+					__( 'Dismiss', $this->text_domain ) . '</div></div>';
 			}
 
 			if ( ! empty( $payload['label'] ) ) {
 				$msg_html .= '<div class="notice-label">' . 
-					$payload['label'].'</div>';
+					$payload['label'] . '</div>';
 			}
 
-			$msg_html .= '<div class="notice-message">' . $msg_txt.'</div>';
+			$msg_html .= '<div class="notice-message">' . $msg_txt . '</div>';
 			$msg_html .= '</div>' . "\n";
 
 			return $msg_html;
@@ -734,7 +734,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
 			}
 
-			return '<style type="text/css">' . $custom_style_css.'</style>';
+			return '<style type="text/css">' . $custom_style_css . '</style>';
 		}
 
 		private function get_nag_style() {
@@ -742,18 +742,18 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$custom_style_css = '';
 			$uca = strtoupper( $this->lca );
 
-			if ( defined( $uca.'_UPDATE_NAG_BORDER' ) ) {
+			if ( defined( $uca . '_UPDATE_NAG_BORDER' ) ) {
 				$custom_style_css .= '
 					.' . $this->lca . '-notice.update-nag {
-						border:' . constant( $uca.'_UPDATE_NAG_BORDER' ).';
+						border:' . constant( $uca . '_UPDATE_NAG_BORDER' ) . ';
 					}
 				';
 			}
 
-			if ( defined( $uca.'_UPDATE_NAG_BGCOLOR' ) ) {
+			if ( defined( $uca . '_UPDATE_NAG_BGCOLOR' ) ) {
 				$custom_style_css .= '
 					.' . $this->lca . '-notice.update-nag {
-						background-color:' . constant( $uca.'_UPDATE_NAG_BGCOLOR' ).';
+						background-color:' . constant( $uca . '_UPDATE_NAG_BGCOLOR' ) . ';
 					}
 				';
 			}
@@ -790,7 +790,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
 			}
 
-			return '<style type="text/css">' . $custom_style_css.'</style>';
+			return '<style type="text/css">' . $custom_style_css . '</style>';
 		}
 
 		private function &get_user_ids() {
