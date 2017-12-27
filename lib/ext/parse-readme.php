@@ -354,8 +354,8 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 	
 		function indent( $matches ) {
 			$text = $matches[3];
-			$text = preg_replace( '|^|m', $matches[2]."\t", $text );
-			return $matches[1]."\n`".$text."`\n";
+			$text = preg_replace( '|^|m', $matches[2] . "\t", $text );
+			return $matches[1] . "\n`" . $text . "`\n";
 		}
 	
 		function encodeit( $matches ) {

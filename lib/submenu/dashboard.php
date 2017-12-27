@@ -99,9 +99,9 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 				// ids must use underscores instead of hyphens to order metaboxes
 				echo '<div id="dashboard_col_'.$col.'" class="max_cols_'.$this->max_cols.' dashboard_col">';
 				do_meta_boxes( $pagehook, 'dashboard_col_'.$col, null );
-				echo '</div><!-- #dashboard_col_'.$col.' -->'."\n";
+				echo '</div><!-- #dashboard_col_'.$col.' -->' . "\n";
 			}
-			echo '<div style="clear:both;"></div>'."\n";
+			echo '<div style="clear:both;"></div>' . "\n";
 		}
 	}
 }

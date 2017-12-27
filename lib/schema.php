@@ -69,11 +69,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$desc_text = $this->p->page->get_description( $this->p->options['schema_desc_len'],
 					'...', $mod, true, false, true, 'schema_desc' );
 
-				$img_html = "\n".'<!-- '.$this->p->lca.' schema image for pinterest pin it button -->'."\n".
-					'<div class="'.$this->p->lca.'-schema-image-for-pinterest" style="display:none;">'."\n".
+				$img_html = "\n" . '<!-- '.$this->p->lca.' schema image for pinterest pin it button -->' . "\n" . 
+					'<div class="'.$this->p->lca.'-schema-image-for-pinterest" style="display:none;">' . "\n" . 
 					'<img src="'.$img_url.'" width="0" height="0" style="width:0;height:0;" '.
-					'data-pin-description="'.$desc_text.'" alt=""/>'."\n".	// empty alt required for w3c validation
-					'</div><!-- .'.$this->p->lca.'-schema-image-for-pinterest -->'."\n\n";
+					'data-pin-description="'.$desc_text.'" alt=""/>' . "\n" . 	// empty alt required for w3c validation
+					'</div><!-- .'.$this->p->lca.'-schema-image-for-pinterest -->' . "\n\n";
 
 				$content = $img_html.$content;
 			}
@@ -1055,7 +1055,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					// encode the json data in an HTML script block
-					$ret[] = '<script type="application/ld+json">'.$this->p->util->json_format( $json_data ).'</script>'."\n";
+					$ret[] = '<script type="application/ld+json">'.$this->p->util->json_format( $json_data ).'</script>' . "\n";
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -2784,9 +2784,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $have_image_html ) {
 				return array_merge(
-					array( array( '<noscript itemprop="image" itemscope itemtype="https://schema.org/ImageObject">'."\n" ) ),
+					array( array( '<noscript itemprop="image" itemscope itemtype="https://schema.org/ImageObject">' . "\n" ) ),
 					$mt_image,
-					array( array( '</noscript>'."\n" ) )
+					array( array( '</noscript>' . "\n" ) )
 				);
 			} else {
 				return array();
@@ -2806,7 +2806,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return array_merge(
-				array( array( '<noscript itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">'."\n" ) ),
+				array( array( '<noscript itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">' . "\n" ) ),
 				( empty( $mt_og[$og_type.':rating:average'] ) ? 
 					array() : $this->p->head->get_single_mt( 'meta', 'itemprop',
 						'aggregaterating.ratingValue', $mt_og[$og_type.':rating:average'], '', $mod ) ),
@@ -2822,7 +2822,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				( empty( $mt_og[$og_type.':review:count'] ) ? 
 					array() : $this->p->head->get_single_mt( 'meta', 'itemprop', 
 						'aggregaterating.reviewCount', $mt_og[$og_type.':review:count'], '', $mod ) ),
-				array( array( '</noscript>'."\n" ) )
+				array( array( '</noscript>' . "\n" ) )
 			);
 		}
 
@@ -2915,9 +2915,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $have_author_html ) {
 				return array_merge(
-					array( array( '<noscript itemprop="'.$itemprop.'" itemscope itemtype="https://schema.org/Person">'."\n" ) ),
+					array( array( '<noscript itemprop="'.$itemprop.'" itemscope itemtype="https://schema.org/Person">' . "\n" ) ),
 					$mt_author,
-					array( array( '</noscript>'."\n" ) )
+					array( array( '</noscript>' . "\n" ) )
 				);
 			} else {
 				return array();

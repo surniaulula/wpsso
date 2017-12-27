@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			sort( $table_rows );
 
 			foreach ( $table_rows as $num => $row ) {
-				echo '<tr>'.$row.'</tr>'."\n";
+				echo '<tr>'.$row.'</tr>' . "\n";
 			}
 			echo '</table>';
 		}

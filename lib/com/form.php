@@ -1207,7 +1207,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				} else {
 					$table_rows[$key] = ( ! empty( $val['tr_class'] ) ? '<tr class="' . $val['tr_class'] . '">' . "\n" : '' ).
 						$this->get_th_html( $val['label'], ( ! empty( $val['th_class'] ) ? $val['th_class'] : '' ),
-							( ! empty( $val['tooltip'] ) ? $val['tooltip'] : '' ) ) . "\n".
+							( ! empty( $val['tooltip'] ) ? $val['tooltip'] : '' ) ) . "\n" . 
 						'<td'.( ! empty( $val['td_class'] ) ? ' class="' . $val['td_class'] . '"' : '' ).'>'.
 						( $is_auto_draft ? '<em>' . $auto_draft_msg . '</em>' : ( ! empty( $val['content'] ) ? 
 							$val['content'] : '' ) ) . '</td>' . "\n";

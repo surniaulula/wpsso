@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( $add_head_html ) {
 				echo $this->get_head_html( $use_post, $mod, $read_cache, $mt_og );
 			} else {
-				echo "\n<!-- ".$this->p->lca." head html is disabled -->\n";
+				echo "\n<!-- " . $this->p->lca . " head html is disabled -->\n";
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -283,12 +283,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					$comment = '<!-- '.$this->p->lca.' meta tags '.$type.' -->';
 					$mt_name = $add_meta ? '<meta name="'.$this->p->lca.':mark:'.$type.'" '.
-						'content="'.$this->p->lca.' meta tags '.$type.'"/>'."\n" : '';
+						'content="'.$this->p->lca.' meta tags '.$type.'"/>' . "\n" : '';
 
 					if ( $type === 'begin' ) {
-						$ret = "\n\n".$comment."\n".$mt_name;
+						$ret = "\n\n" . $comment . "\n" . $mt_name;
 					} else {
-						$ret = $mt_name.$comment."\n";
+						$ret = $mt_name.$comment . "\n";
 					}
 
 					break;
@@ -343,7 +343,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$html .= $this->get_mt_mark( 'end' );
 			$html .= '<!-- added on '.date( 'c' ).' in '.sprintf( '%f secs', microtime( true ) - $start_time ).
-				( $crawler_name !== 'none' ? ' for '.$crawler_name : '' ).' from '.SucomUtilWP::raw_home_url().' -->'."\n\n";
+				( $crawler_name !== 'none' ? ' for '.$crawler_name : '' ).' from '.SucomUtilWP::raw_home_url().' -->' . "\n\n";
 
 			return $html;
 		}
@@ -806,7 +806,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					if ( ! empty( $this->p->options[$opt_name] ) ) {
 						$parts[0] = ( empty( $parts[6] ) ? '' : '<!-- '.$parts[6].' -->' ).
-							'<'.$parts[1].' '.$parts[2].'="'.$match_name.'" '.$parts[4].'="'.$parts[5].'"/>'."\n";
+							'<'.$parts[1].' '.$parts[2].'="'.$match_name.'" '.$parts[4].'="'.$parts[5].'"/>' . "\n";
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_prefix.' is disabled (skipped)' );
 					}

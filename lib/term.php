@@ -345,14 +345,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			echo "\n".'<!-- '.$this->p->lca.' term metabox section begin -->'."\n";
-			echo '<h3 id="'.$this->p->lca.'-metaboxes">'.WpssoAdmin::$pkg[$this->p->lca]['short'].'</h3>'."\n";
-			echo '<div id="poststuff">'."\n";
+			echo "\n" . '<!-- '.$this->p->lca.' term metabox section begin -->' . "\n";
+			echo '<h3 id="'.$this->p->lca.'-metaboxes">'.WpssoAdmin::$pkg[$this->p->lca]['short'].'</h3>' . "\n";
+			echo '<div id="poststuff">' . "\n";
 
 			do_meta_boxes( $this->p->lca.'-term', 'normal', $term );
 
-			echo "\n".'</div><!-- .poststuff -->'."\n";
-			echo '<!-- '.$this->p->lca.' term metabox section end -->'."\n";
+			echo "\n" . '</div><!-- .poststuff -->' . "\n";
+			echo '<!-- '.$this->p->lca.' term metabox section end -->' . "\n";
 		}
 
 		public function show_metabox_custom_meta( $term_obj ) {

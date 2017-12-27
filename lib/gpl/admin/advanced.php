@@ -177,13 +177,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			/*
 			 * Include Columns in Admin Lists
 			 */
-			$cols = '<table class="plugin-list-columns">'."\n".'<tr>';
+			$cols = '<table class="plugin-list-columns">' . "\n" . '<tr>';
 
 			foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
 				$cols .= '<th>'.$col_header.'</th>';
 			}
 
-			$cols .= '<td class="underline"></td></tr>'."\n";
+			$cols .= '<td class="underline"></td></tr>' . "\n";
 
 			foreach ( array(
 				'post' => __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ),
@@ -199,10 +199,10 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 						$cols .= '<td class="checkbox"></td>';
 					}
 				}
-				$cols .= '<td><p>'.$mod_label.'</p></td></tr>'."\n";
+				$cols .= '<td><p>'.$mod_label.'</p></td></tr>' . "\n";
 			}
 
-			$cols .= '</table>'."\n";
+			$cols .= '</table>' . "\n";
 
 			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Show Columns in Admin Lists',
 				'option label', 'wpsso' ), '', 'plugin_show_columns' ).

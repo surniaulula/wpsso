@@ -444,7 +444,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 					[ ]*		# Tailing spaces
 					$			# End of line.
 				}mx',
-				"\n".$this->hashBlock("<hr$this->empty_element_suffix")."\n",
+				"\n" . $this->hashBlock( "<hr$this->empty_element_suffix" ) . "\n",
 				$text);
 		}
 	
@@ -758,12 +758,12 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 				return $matches[0];
 			
 			$level = $matches[2]{0} == '=' ? 1 : 2;
-			$block = "<h$level>".$this->runSpanGamut($matches[1])."</h$level>";
+			$block = "<h$level>" . $this->runSpanGamut( $matches[1] ) . "</h$level>";
 			return "\n" . $this->hashBlock($block) . "\n\n";
 		}
 		function _doHeaders_callback_atx($matches) {
 			$level = strlen($matches[1]);
-			$block = "<h$level>".$this->runSpanGamut($matches[2])."</h$level>";
+			$block = "<h$level>" . $this->runSpanGamut( $matches[2] ) . "</h$level>";
 			return "\n" . $this->hashBlock($block) . "\n\n";
 		}
 	
@@ -849,7 +849,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 			$result = $this->processListItems($list, $marker_any_re);
 			
 			$result = $this->hashBlock("<$list_type>\n" . $result . "</$list_type>");
-			return "\n". $result ."\n\n";
+			return "\n" . $result . "\n\n";
 		}
 	
 		var $list_level = 0;
@@ -912,7 +912,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 			{
 				# Replace marker with the appropriate whitespace indentation
 				$item = $leading_space . str_repeat(' ', strlen($marker_space)) . $item;
-				$item = $this->runBlockGamut($this->outdent($item)."\n");
+				$item = $this->runBlockGamut( $this->outdent( $item ) . "\n" );
 			}
 			else {
 				# Recursion for sub-lists:
@@ -953,7 +953,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 			$codeblock = preg_replace('/\A\n+|\n+\z/', '', $codeblock);
 	
 			$codeblock = "<pre><code>$codeblock\n</code></pre>";
-			return "\n\n".$this->hashBlock($codeblock)."\n\n";
+			return "\n\n" . $this->hashBlock($codeblock) . "\n\n";
 		}
 	
 	
@@ -1155,7 +1155,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 			$bq = preg_replace_callback('{(\s*<pre>.+?</pre>)}sx',
 				array(&$this, '_doBlockQuotes_callback2'), $bq);
 	
-			return "\n". $this->hashBlock("<blockquote>\n$bq\n</blockquote>")."\n\n";
+			return "\n" . $this->hashBlock( "<blockquote>\n$bq\n</blockquote>" ) . "\n\n";
 		}
 		function _doBlockQuotes_callback2($matches) {
 			$pre = $matches[1];
@@ -1374,7 +1374,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 		#
 			switch ($token{0}) {
 				case "\\":
-					return $this->hashPart("&#". ord($token{1}). ";");
+					return $this->hashPart( "&#" . ord($token{1}) . ";" );
 				case "`":
 					# Search for end marker in remaining text.
 					if (preg_match('/^(.*?[^`])'.preg_quote($token).'(?!`)(.*)$/sm',
@@ -2053,23 +2053,26 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 	
 			return $text;
 		}
-		function _doHeaders_attr(&$attr) {
-			if (empty($attr))  return "";
+		function _doHeaders_attr( &$attr ) {
+			if ( empty( $attr ) ) {
+				return '';
+			}
 			return " id=\"$attr\"";
 		}
-		function _doHeaders_callback_setext($matches) {
-			if ($matches[3] == '-' && preg_match('{^- }', $matches[1]))
+		function _doHeaders_callback_setext( $matches ) {
+			if ( $matches[3] == '-' && preg_match( '{^- }', $matches[1] ) ) {
 				return $matches[0];
+			}
 			$level = $matches[3]{0} == '=' ? 1 : 2;
 			$attr  = $this->_doHeaders_attr($matches[2]);
-			$block = "<h$level$attr>".$this->runSpanGamut($matches[1])."</h$level>";
-			return "\n" . $this->hashBlock($block) . "\n\n";
+			$block = "<h$level$attr>" . $this->runSpanGamut( $matches[1] ) . "</h$level>";
+			return "\n" . $this->hashBlock( $block ) . "\n\n";
 		}
-		function _doHeaders_callback_atx($matches) {
-			$level = strlen($matches[1]);
-			$attr  = $this->_doHeaders_attr($matches[3]);
-			$block = "<h$level$attr>".$this->runSpanGamut($matches[2])."</h$level>";
-			return "\n" . $this->hashBlock($block) . "\n\n";
+		function _doHeaders_callback_atx( $matches ) {
+			$level = strlen( $matches[1] );
+			$attr  = $this->_doHeaders_attr( $matches[3] );
+			$block = "<h$level$attr>" . $this->runSpanGamut( $matches[2] ) . "</h$level>";
+			return "\n" . $this->hashBlock( $block ) . "\n\n";
 		}
 	
 	
@@ -2174,7 +2177,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 			$text .= "<thead>\n";
 			$text .= "<tr>\n";
 			foreach ($headers as $n => $header)
-				$text .= "  <th$attr[$n]>".$this->runSpanGamut(trim($header))."</th>\n";
+				$text .= "  <th$attr[$n]>" . $this->runSpanGamut( trim( $header ) ) . "</th>\n";
 			$text .= "</tr>\n";
 			$text .= "</thead>\n";
 			
@@ -2193,7 +2196,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 				
 				$text .= "<tr>\n";
 				foreach ($row_cells as $n => $cell)
-					$text .= "  <td$attr[$n]>".$this->runSpanGamut(trim($cell))."</td>\n";
+					$text .= "  <td$attr[$n]>" . $this->runSpanGamut( trim( $cell ) ) . "</td>\n";
 				$text .= "</tr>\n";
 			}
 			$text .= "</tbody>\n";
@@ -2318,7 +2321,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 				# Replace marker with the appropriate whitespace indentation
 				$def = str_repeat(' ', strlen($marker_space)) . $def;
 				$def = $this->runBlockGamut($this->outdent($def . "\n\n"));
-				$def = "\n". $def ."\n";
+				$def = "\n" . $def . "\n";
 			}
 			else {
 				$def = rtrim($def);
@@ -2365,14 +2368,12 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 		function _doFencedCodeBlocks_callback($matches) {
 			$codeblock = $matches[2];
 			$codeblock = htmlspecialchars($codeblock, ENT_NOQUOTES);
-			$codeblock = preg_replace_callback('/^\n+/',
-				array(&$this, '_doFencedCodeBlocks_newlines'), $codeblock);
+			$codeblock = preg_replace_callback('/^\n+/', array( &$this, '_doFencedCodeBlocks_newlines' ), $codeblock);
 			$codeblock = "<pre><code>$codeblock</code></pre>";
-			return "\n\n".$this->hashBlock($codeblock)."\n\n";
+			return "\n\n" . $this->hashBlock( $codeblock ) . "\n\n";
 		}
 		function _doFencedCodeBlocks_newlines($matches) {
-			return str_repeat("<br$this->empty_element_suffix",
-				strlen($matches[0]));
+			return str_repeat("<br$this->empty_element_suffix", strlen( $matches[0] ) );
 		}
 	
 	
@@ -2491,7 +2492,7 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 			if (!empty($this->footnotes_ordered)) {
 				$text .= "\n\n";
 				$text .= "<div class=\"footnotes\">\n";
-				$text .= "<hr". $this->empty_element_suffix ."\n";
+				$text .= "<hr" . $this->empty_element_suffix . "\n";
 				$text .= "<ol>\n\n";
 				
 				$attr = " rev=\"footnote\"";
@@ -2567,12 +2568,12 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 				$node_id = $this->encodeAttribute($node_id);
 				
 				return
-					"<sup id=\"fnref:$node_id\">".
-					"<a href=\"#fn:$node_id\"$attr>$num</a>".
+					"<sup id=\"fnref:$node_id\">" . 
+					"<a href=\"#fn:$node_id\"$attr>$num</a>" . 
 					"</sup>";
 			}
 			
-			return "[^".$matches[1]."]";
+			return "[^" . $matches[1] . "]";
 		}
 			
 		

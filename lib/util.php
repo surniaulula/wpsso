@@ -2009,24 +2009,24 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					'#'.self::sanitize_key( $_GET['scroll_to'] ) : '',
 			), $args ) );
 
-			echo "\n".'<script type="text/javascript">jQuery(document).ready(function(){ '.
-				'sucomTabs(\''.$metabox_id.'\', \''.$default_tab.'\', \''.$scroll_to.'\'); });</script>'."\n";
-			echo '<div class="'.$class_metabox_tabs.'">'."\n";
-			echo '<ul class="'.$class_metabox_tabs.'">'."\n";
+			echo "\n" . '<script type="text/javascript">jQuery(document).ready(function(){ '.
+				'sucomTabs(\''.$metabox_id.'\', \''.$default_tab.'\', \''.$scroll_to.'\'); });</script>' . "\n";
+			echo '<div class="'.$class_metabox_tabs.'">' . "\n";
+			echo '<ul class="'.$class_metabox_tabs.'">' . "\n";
 			foreach ( $tabs as $tab => $title ) {
 				$class_href_key = $class_tabset.$metabox_id.'-tab_'.$tab;
 				echo '<div class="tab_left">&nbsp;</div><li class="'.
 					$class_href_key.'"><a class="'.$class_link.'" href="#'.
-					$class_href_key.'">'.$title.'</a></li>'."\n";
+					$class_href_key.'">'.$title.'</a></li>' . "\n";
 			}
-			echo '</ul><!-- .'.$class_metabox_tabs.' -->'."\n";
+			echo '</ul><!-- .'.$class_metabox_tabs.' -->' . "\n";
 
 			foreach ( $tabs as $tab => $title ) {
 				$class_href_key = $class_tabset.$metabox_id.'-tab_'.$tab;
 				$this->do_table_rows( $table_rows[$tab], $class_href_key, ( empty( $metabox_id ) ?
 					'' : $class_tabset.$metabox_id ), $class_tabset );
 			}
-			echo '</div><!-- .'.$class_metabox_tabs.' -->'."\n\n";
+			echo '</div><!-- .'.$class_metabox_tabs.' -->' . "\n\n";
 		}
 
 		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = '' ) {
@@ -2089,8 +2089,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 
 				// add a closing table row tag if we don't already have one
-				if ( strpos( $row, '</tr>' ) === false )
-					$row .= '</tr>'."\n";
+				if ( strpos( $row, '</tr>' ) === false ) {
+					$row .= '</tr>' . "\n";
+				}
 
 				// update the table row array element with the new value
 				$table_rows[$key] = $row;
@@ -2110,18 +2111,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				( empty( $class_tabset ) ? '' : ' '.$class_tabset ).
 				( empty( $class_tabset_mb ) ? '' : ' '.$class_tabset_mb ).
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
-			'">'."\n";
+			'">' . "\n";
 
 			echo '<table class="sucom-settings '.$lca.
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
 				( $hidden_rows > 0 && $hidden_rows === $count_rows ?	// if all rows hidden, then hide the whole table
-					' hide_in_'.$show_opts : '' ).'">'."\n";
+					' hide_in_'.$show_opts : '' ).'">' . "\n";
 
 			foreach ( $table_rows as $row )
 				echo $row;
 
-			echo '</table>'."\n";
-			echo '</div>'."\n";
+			echo '</table>' . "\n";
+			echo '</div>' . "\n";
 
 			$show_opts_label = $this->p->cf['form']['show_options'][$show_opts];
 
@@ -2131,14 +2132,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$hidden_opts, _x( $show_opts_label, 'option value', 'wpsso' ) ).
 					' (<a href="javascript:void(0);"'.
 					' onClick="sucomViewUnhideRows( \''.$class_href_key.'\', \''.$show_opts.'\' );">'.
-					_x( 'unhide these options', 'option comment', 'wpsso' ).'</a>)</div>'."\n";
+					_x( 'unhide these options', 'option comment', 'wpsso' ).'</a>)</div>' . "\n";
 			} elseif ( $hidden_rows > 0 ) {
 				echo '<div class="hidden_opts_msg '.$class_tabset.'-msg '.$class_tabset_mb.'-msg '.$class_href_key.'-msg">'.
 					sprintf( _x( '%1$d additional rows not shown in "%2$s" view', 'option comment', 'wpsso' ), 
 						$hidden_rows, _x( $show_opts_label, 'option value', 'wpsso' ) ).
 					' (<a href="javascript:void(0);"'.
 					' onClick="sucomViewUnhideRows( \''.$class_href_key.'\', \''.$show_opts.'\', \'hide_row_in\' );">'.
-					_x( 'unhide these rows', 'option comment', 'wpsso' ).'</a>)</div>'."\n";
+					_x( 'unhide these rows', 'option comment', 'wpsso' ).'</a>)</div>' . "\n";
 			}
 		}
 

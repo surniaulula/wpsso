@@ -2681,7 +2681,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:410 lib/util.php:2103
+#: lib/messages.php:410 lib/util.php:2104
 msgid "No options available."
 msgstr ""
 
@@ -5062,27 +5062,27 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2130
+#: lib/util.php:2131
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2134
+#: lib/util.php:2135
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2137
+#: lib/util.php:2138
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2141
+#: lib/util.php:2142
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2259
+#: lib/util.php:2260
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr ""

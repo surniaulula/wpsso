@@ -811,28 +811,28 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->get_form_object( $menu_ext );
 
-			echo '<div class="wrap" id="'.$this->pagehook.'">'."\n";
+			echo '<div class="wrap" id="'.$this->pagehook.'">' . "\n";
 			echo '<h1>';
 			echo self::$pkg[$this->menu_ext]['short'].' ';
 			echo '<span class="qualifier">&ndash; ';
 			echo _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ).' ('.$this->menu_name.')';
-			echo '</span></h1>'."\n";
+			echo '</span></h1>' . "\n";
 
 			if ( ! self::$pkg[$this->p->lca]['aop'] ) {
-				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">'."\n";
-				echo '<div id="side-info-column" class="inner-sidebar">'."\n";
+				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">' . "\n";
+				echo '<div id="side-info-column" class="inner-sidebar">' . "\n";
 
 				do_meta_boxes( $this->pagehook, 'side_top', null );
 				do_meta_boxes( $this->pagehook, 'side_fixed', null );
 				do_meta_boxes( $this->pagehook, 'side', null );
 
-				echo '</div><!-- #side-info-column -->'."\n";
-				echo '<div id="post-body" class="has-sidebar">'."\n";
-				echo '<div id="post-body-content" class="has-sidebar-content">'."\n";
+				echo '</div><!-- #side-info-column -->' . "\n";
+				echo '<div id="post-body" class="has-sidebar">' . "\n";
+				echo '<div id="post-body-content" class="has-sidebar-content">' . "\n";
 			} else {
-				echo '<div id="poststuff" class="metabox-holder no-right-sidebar">'."\n";
-				echo '<div id="post-body" class="no-sidebar">'."\n";
-				echo '<div id="post-body-content" class="no-sidebar-content">'."\n";
+				echo '<div id="poststuff" class="metabox-holder no-right-sidebar">' . "\n";
+				echo '<div id="post-body" class="no-sidebar">' . "\n";
+				echo '<div id="post-body-content" class="no-sidebar-content">' . "\n";
 			}
 
 			$this->show_form_content(); ?>
@@ -891,29 +891,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->util->get_admin_url( $this->menu_id, null, 'users' ) :
 					$this->p->util->get_admin_url( $this->menu_id, null, $this->menu_lib );
 
-				echo '<form name="'.$this->p->lca.'" id="'.$this->p->lca.'_setting_form" action="user-edit.php" method="post">'."\n";
-				echo '<input type="hidden" name="wp_http_referer" value="'.$referer_admin_url.'" />'."\n";
-				echo '<input type="hidden" name="action" value="update" />'."\n";
-				echo '<input type="hidden" name="user_id" value="'.$user_id.'" />'."\n";
-				echo '<input type="hidden" name="nickname" value="'.$profileuser->nickname.'" />'."\n";
-				echo '<input type="hidden" name="email" value="'.$profileuser->user_email.'" />'."\n";
-				echo '<input type="hidden" name="admin_color" value="'.$current_color.'" />'."\n";
-				echo '<input type="hidden" name="rich_editing" value="'.$profileuser->rich_editing.'" />'."\n";
-				echo '<input type="hidden" name="comment_shortcuts" value="'.$profileuser->comment_shortcuts.'" />'."\n";
-				echo '<input type="hidden" name="admin_bar_front" value="'._get_admin_bar_pref( 'front', $user_id ).'" />'."\n";
+				echo '<form name="'.$this->p->lca.'" id="'.$this->p->lca.'_setting_form" action="user-edit.php" method="post">' . "\n";
+				echo '<input type="hidden" name="wp_http_referer" value="'.$referer_admin_url.'" />' . "\n";
+				echo '<input type="hidden" name="action" value="update" />' . "\n";
+				echo '<input type="hidden" name="user_id" value="'.$user_id.'" />' . "\n";
+				echo '<input type="hidden" name="nickname" value="'.$profileuser->nickname.'" />' . "\n";
+				echo '<input type="hidden" name="email" value="'.$profileuser->user_email.'" />' . "\n";
+				echo '<input type="hidden" name="admin_color" value="'.$current_color.'" />' . "\n";
+				echo '<input type="hidden" name="rich_editing" value="'.$profileuser->rich_editing.'" />' . "\n";
+				echo '<input type="hidden" name="comment_shortcuts" value="'.$profileuser->comment_shortcuts.'" />' . "\n";
+				echo '<input type="hidden" name="admin_bar_front" value="'._get_admin_bar_pref( 'front', $user_id ).'" />' . "\n";
 
 				wp_nonce_field( 'update-user_'.$user_id );
 
 			} elseif ( $this->menu_lib === 'setting' || $this->menu_lib === 'submenu' ) {
 
-				echo '<form name="'.$this->p->lca.'" id="'.$this->p->lca.'_setting_form" action="options.php" method="post">'."\n";
+				echo '<form name="'.$this->p->lca.'" id="'.$this->p->lca.'_setting_form" action="options.php" method="post">' . "\n";
 
 				settings_fields( $this->p->lca.'_setting' );
 
 			} elseif ( $this->menu_lib === 'sitesubmenu' ) {
 
 				echo '<form name="'.$this->p->lca.'" id="'.$this->p->lca.'_setting_form" action="edit.php?action='.
-					WPSSO_SITE_OPTIONS_NAME.'" method="post">'."\n";
+					WPSSO_SITE_OPTIONS_NAME.'" method="post">' . "\n";
 				echo '<input type="hidden" name="page" value="'.$this->menu_id.'" />';
 
 			} else {
@@ -1375,7 +1375,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$status_info[$status_key]['title'].'"/>'.
 						( $purchase_url ? '</a>' : '' ).
 					'</td>'.
-					'</tr>'."\n";
+					'</tr>' . "\n";
 				}
 			}
 		}
@@ -1443,8 +1443,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( ! empty( $links ) ) {
-					echo '<h4>'.$info['short'].'</h4>'."\n";
-					echo '<ul><li>'.implode( '</li><li>', $links ).'</li></ul>'."\n";
+					echo '<h4>'.$info['short'].'</h4>' . "\n";
+					echo '<ul><li>'.implode( '</li><li>', $links ).'</li></ul>' . "\n";
 				}
 			}
 
@@ -1472,7 +1472,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( ! empty( $links ) ) {
-					echo '<ul><li>'.implode( '</li><li>', $links ).'</li></ul>'."\n";
+					echo '<ul><li>'.implode( '</li><li>', $links ).'</li></ul>' . "\n";
 				}
 			}
 
@@ -1528,11 +1528,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$charset = get_bloginfo( 'charset' );
 
 			echo '<table class="sucom-settings '.$this->p->lca.' licenses-metabox"
-				style="padding-bottom:10px">'."\n";
+				style="padding-bottom:10px">' . "\n";
 
 			echo '<tr><td colspan="3">'.
 				$this->p->msgs->get( 'info-plugin-tid'.( $network ? '-network' : '' ) ).
-					'</td></tr>'."\n";
+					'</td></tr>' . "\n";
 
 			foreach ( WpssoConfig::get_ext_sorted( true ) as $ext => $info ) {
 
@@ -1652,7 +1652,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					echo '<tr>';
 					if ( $key === 'plugin_name' ) {
 						echo '<td style="width:168px; padding:10px 30px 10px 10px; vertical-align:top;"'.
-							' width="168" rowspan="'.count( $table_rows ).'" valign="top" align="left">'."\n";
+							' width="168" rowspan="'.count( $table_rows ).'" valign="top" align="left">' . "\n";
 						echo $this->get_ext_img_icon( $ext );
 						echo '</td>';
 					}
@@ -1660,7 +1660,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					echo '</tr>';
 				}
 			}
-			echo '</table>'."\n";
+			echo '</table>' . "\n";
 		}
 
 		public function conflict_warnings() {
@@ -1900,7 +1900,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'wpsso' ), $info['short'] ) ) ).'</div>';
 
 				$notice_msg = '<div style="display:table-cell;"><p style="margin-right:20px;">'.
-					$this->get_ext_img_icon( $ext ).'</p></div>'."\n";
+					$this->get_ext_img_icon( $ext ).'</p></div>' . "\n";
 
 				$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
 
@@ -1928,7 +1928,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					( empty( $support_url ) ? '' : '</a>' ).
 					'</p>';
 
-				$notice_msg .= '</div>'."\n";
+				$notice_msg .= '</div>' . "\n";
 
 				$this->p->notice->log( 'inf', $notice_msg, $user_id, $msg_id_review, true, array( 'label' => false ) );
 
@@ -2196,7 +2196,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$select_by_ptn = '';
 			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
 				$select_by_ptn .= '<p>'.$this->form->get_select( 'schema_type_for_'.$pt->name,
-					$schema_types, 'schema_type' ).' for '.$pt->label.'</p>'."\n";
+					$schema_types, 'schema_type' ).' for '.$pt->label.'</p>' . "\n";
 			}
 
 			$type_label = _x( 'Item Type by Post Type', 'option label', 'wpsso' );
