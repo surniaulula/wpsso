@@ -597,8 +597,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ini_get( 'open_basedir' ) ) {	// cannot follow redirects
-				$mod = $this->get_mod( $mod );
-				$check_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
+				$check_url = $this->p->util->get_sharing_url( $post_id, false );	// $add_page = false
 			} else {
 				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, 'post' );	// $context = post
 			}
@@ -920,7 +919,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$permalink = get_permalink( $post_id );
 
 			if ( ini_get( 'open_basedir' ) ) {
-				$check_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
+				$check_url = $this->p->util->get_sharing_url( $post_id, false );	// $add_page = false
 			} else {
 				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, 'post' );	// $context = post
 			}
