@@ -381,14 +381,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.11-dev.1 (TBD)**
+**Version 3.48.11-rc.1 (2017/12/28)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* None
 * *Bugfixes*
-	* None
+	* Fixed getting the sharing URL when 'open_basedir' is defined.
 * *Developer Notes*
 	* Minor refactoring for PHPCS compatibility checks.
 
@@ -702,9 +702,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.11-dev.1 =
+= 3.48.11-rc.1 =
 
-(TBD) Minor refactoring for PHPCS compatibility checks.
+(2017/12/28) Minor refactoring for PHPCS compatibility checks. Fixed getting the sharing URL when 'open_basedir' is defined.
 
 = 3.48.10 =
 
