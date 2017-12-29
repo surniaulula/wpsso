@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'SUEXT_README_MARKDOWN' ) ) {
-	define( 'SUEXT_README_MARKDOWN', dirname(__FILE__).'/markdown.php' );
+	define( 'SUEXT_README_MARKDOWN', dirname(__FILE__) . '/markdown.php' );
 }
 
 if ( ! class_exists( 'SuextParseReadme' ) ) {
@@ -130,7 +130,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				'stable_tag',
 			) as $chop ) {
 				if ( $$chop ) {
-					$_chop = '_'.$chop;
+					$_chop = '_' . $chop;
 					$file_contents = $this->chop_string( $file_contents, ${$_chop}[0] );
 				}
 			}
