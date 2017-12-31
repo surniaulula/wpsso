@@ -69,6 +69,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'DOING_AJAX is false' );
 				}
+
 				// admin_menu is run before admin_init
 				add_action( 'admin_menu', array( &$this, 'load_menu_objects' ), -1000 );
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
@@ -131,13 +132,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $pdir );
-				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) && $aop && 
-					$this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? true : false;
-				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ?
-					_x( 'Pro', 'package type', 'wpsso' ) :
-					_x( 'Free', 'package type', 'wpsso' );
+				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) && 
+					$aop && $this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? true : false;
+				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ? _x( 'Pro', 'package type', 'wpsso' ) : _x( 'Free', 'package type', 'wpsso' );
 				self::$pkg[$ext]['short'] = $info['short'].' '.self::$pkg[$ext]['type'];
 				self::$pkg[$ext]['name'] = SucomUtil::get_pkg_name( $info['name'], self::$pkg[$ext]['type'] );
+				self::$pkg[$ext]['gen'] = self::$pkg[$ext]['short'].' '.( isset( $info['version'] ) ? $info['version'].'/'.
+					( self::$pkg[$ext]['aop'] ? 'L' : ( self::$pkg[$ext]['pdir'] ? 'U' : 'G' ) ) : '' );
 			}
 
 			foreach ( $menu_libs as $menu_lib ) {
@@ -761,21 +762,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
+			$this->add_footer_hooks();	// add extension name and version to settings page footer
 			$this->add_plugin_hooks();
 			$this->add_side_meta_boxes();	// add before main metaboxes
 			$this->add_meta_boxes();	// add last to move duplicate side metaboxes
 		}
 
-		// called from the add_meta_boxes() method in specific settings pages (essential, general, etc.).
-		protected function maybe_show_language_notice() {
+		protected function add_footer_hooks() {
+			add_filter( 'admin_footer_text', array( &$this, 'admin_footer_ext_name' ) );
+			add_filter( 'update_footer', array( &$this, 'admin_footer_ext_gen' ) );
+		}
 
-			$current_locale = SucomUtil::get_locale( 'current' );
-			$default_locale = SucomUtil::get_locale( 'default' );
-
-			if ( $current_locale && $default_locale && $current_locale !== $default_locale ) {
-				$dismiss_key = $this->menu_id.'-language-notice-current-'.$current_locale.'-default-'.$default_locale;
-				$this->p->notice->inf( sprintf( __( 'Please note that your current language is different from the default site language (%s).', 'wpsso' ), $default_locale ).' '.sprintf( __( 'Localized option values (%s) are used for webpages and content in that language only (not for the default language, or any other language).', 'wpsso' ), $current_locale ), true, $dismiss_key, true );
-			}
+		protected function add_plugin_hooks() {
+			// method is extended by each submenu page
 		}
 
 		protected function add_side_meta_boxes() {
@@ -788,12 +787,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		protected function add_plugin_hooks() {
+		protected function add_meta_boxes() {
 			// method is extended by each submenu page
 		}
 
-		protected function add_meta_boxes() {
-			// method is extended by each submenu page
+		// called from the add_meta_boxes() method in specific settings pages (essential, general, etc.).
+		protected function maybe_show_language_notice() {
+
+			$current_locale = SucomUtil::get_locale( 'current' );
+			$default_locale = SucomUtil::get_locale( 'default' );
+
+			if ( $current_locale && $default_locale && $current_locale !== $default_locale ) {
+				$dismiss_key = $this->menu_id.'-language-notice-current-'.$current_locale.'-default-'.$default_locale;
+				$this->p->notice->inf( sprintf( __( 'Please note that your current language is different from the default site language (%s).', 'wpsso' ), $default_locale ).' '.sprintf( __( 'Localized option values (%s) are used for webpages and content in that language only (not for the default language, or any other language).', 'wpsso' ), $current_locale ), true, $dismiss_key, true );
+			}
 		}
 
 		public function show_setting_page() {
@@ -1826,6 +1833,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> option in the <a href="%s">Squirrly SEO</a> settings.', 'wpsso' ), get_admin_url( null, 'admin.php?page=sq_seo' ) ) );
 				}
 			}
+		}
+
+		public function admin_footer_ext_name( $text ) {
+			if ( isset( self::$pkg[$this->menu_ext]['name'] ) ) {
+				$text = '<span class="admin-footer-ext-name">'.self::$pkg[$this->menu_ext]['name'].'</span>';
+			}
+			return $text;
+		}
+
+		public function admin_footer_ext_gen( $text ) {
+			if ( isset( self::$pkg[$this->menu_ext]['gen'] ) ) {
+				$text = '<span class="admin-footer-ext-gen">'.self::$pkg[$this->menu_ext]['gen'].'</span>';
+			}
+			return $text;
 		}
 
 		// only show notices on the dashboard and the settings pages
