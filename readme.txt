@@ -381,6 +381,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.48.12-dev.1 (2017/12/30)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fixed HTML entity encoding in Twitter player card URL values for YouTube videos.
+* *Developer Notes*
+	* Minor refactoring for PHPCS compatibility checks.
+
 **Version 3.48.11 (2017/12/29)**
 
 * *New Features*
@@ -701,6 +712,10 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 		* 'wpsso_user_social_settings_tabs' to 'wpsso_user_custom_meta_tabs'.
 
 == Upgrade Notice ==
+
+= 3.48.12-dev.1 =
+
+(2017/12/30) Fixed HTML entity encoding in Twitter player card URL values for YouTube videos.
 
 = 3.48.11 =
 
