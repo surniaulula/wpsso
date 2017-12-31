@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * (aka the plugin licenses settings page) after plugin installation / activation / update.
 			 */
 			foreach ( array(
-				'pageref_url' => 'esc_url',
+				'pageref_url' => 'esc_url_raw',
 				'pageref_title' => 'esc_html',
 			) as $pageref => $esc_func ) {
 				if ( ! empty( $_GET[$this->p->lca.'_'.$pageref] ) ) {

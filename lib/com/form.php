@@ -321,7 +321,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						$html .= '<script type="text/javascript">'.
 							'jQuery( function(){ jQuery("#' . esc_js( $input_id ).'").change( function(){ ' . 
 								'sucomSelectChangeRedirect("' . esc_js( $name ) . '",' . 
-									'this.value,"' . esc_url( $redirect_url ).'"); }); });</script>' . "\n";
+									'this.value,"' . esc_url_raw( $redirect_url ).'"); }); });</script>' . "\n";
 						break;
 
 					case 'unhide_rows':
@@ -1070,8 +1070,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_button( $value, $class = '', $id = '', $url = '', $newtab = false, $disabled = false, $data = array() ) {
 
 			$on_click = true === $newtab ?
-				' onClick="window.open(\'' . esc_url( $url ) . '\', \'_blank\');"' :
-				' onClick="location.href=\'' . esc_url( $url ) . '\';"';
+				' onClick="window.open(\'' . esc_url_raw( $url ) . '\', \'_blank\');"' :
+				' onClick="location.href=\'' . esc_url_raw( $url ) . '\';"';
 
 			$data_attr = '';
 			if ( is_array( $data ) ) {

@@ -60,19 +60,19 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			}
 	
 			if ( preg_match( '|License URI: *(.*)|i', $file_contents, $_license_uri ) ) {
-				$license_uri = esc_url( $_license_uri[1] );
+				$license_uri = esc_url_raw( $_license_uri[1] );
 			} else {
 				$license_uri = null;
 			}
 	
 			if ( preg_match( '|Donate Link: *(.*)|i', $file_contents, $_donate_link ) ) {
-				$donate_link = esc_url( $_donate_link[1] );
+				$donate_link = esc_url_raw( $_donate_link[1] );
 			} else {
 				$donate_link = null;
 			}
 	
 			if ( preg_match( '|Assets URI: *(.*)|i', $file_contents, $_assets_uri ) ) {
-				$assets_uri = esc_url( $_assets_uri[1] );
+				$assets_uri = esc_url_raw( $_assets_uri[1] );
 			} else {
 				$assets_uri = null;
 			}

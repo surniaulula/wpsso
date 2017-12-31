@@ -1570,7 +1570,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				false, 'image_type', 'image.object', $list_element );
 
 			$ret = self::get_schema_type_context( $image_type_url, array(
-				'url' => esc_url( $media_url ),
+				'url' => esc_url_raw( $media_url ),
 			) );
 
 			/**
@@ -1637,7 +1637,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					} else {
 						if ( is_string( $assoc[$key_name] ) && 
 							filter_var( $assoc[$key_name], FILTER_VALIDATE_URL ) !== false ) {
-							$json_data[$itemprop_name] = esc_url( $assoc[$key_name] );
+							$json_data[$itemprop_name] = esc_url_raw( $assoc[$key_name] );
 						} else {
 							$json_data[$itemprop_name] = $assoc[$key_name];
 						}
@@ -2233,7 +2233,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $org_opts['org_sameas'] ) && is_array( $org_opts['org_sameas'] ) ) {	// just in case
 				foreach ( $org_opts['org_sameas'] as $sameas_url ) {
 					if ( ! empty( $sameas_url ) ) {	// just in case
-						$ret['sameAs'][] = esc_url( $sameas_url );
+						$ret['sameAs'][] = esc_url_raw( $sameas_url );
 					}
 				}
 			}
@@ -2362,7 +2362,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $person_opts['person_sameas'] ) && is_array( $person_opts['person_sameas'] ) ) {	// just in case
 				foreach ( $person_opts['person_sameas'] as $sameas_url ) {
 					if ( ! empty( $sameas_url ) ) {	// just in case
-						$ret['sameAs'][] = esc_url( $sameas_url );
+						$ret['sameAs'][] = esc_url_raw( $sameas_url );
 					}
 				}
 			}
