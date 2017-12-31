@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -56,7 +55,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		}
 
 		public function save_transient() {
-			if ( $this->transient['loaded'] === true ) {
+			if ( true === $this->transient['loaded'] ) {
 				$cache_md5_pre = $this->lca . '_';
 				$cache_salt = __CLASS__ . '::transient';
 				$cache_id = $cache_md5_pre . md5( $cache_salt );
@@ -94,7 +93,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$this->text_domain ), '<a href="' . $url.'">' . $url.'</a>', $http_code );
 
 				if ( $http_code === 301 || $http_code === 302 ) {
-					/*
+					/**
 					 * PHP safe mode is an attempt to solve the shared-server security problem. It is architecturally incorrect
 					 * to try to solve this problem at the PHP level, but since the alternatives at the web server and OS levels
 					 * aren't very realistic, many people, especially ISP's, use safe mode for now.
@@ -112,7 +111,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$errors[] = __( 'Please contact your hosting provider to have this feature disabled or install a newer version of PHP.',
 							$this->text_domain );
 
-					/*
+					/**
 					 * open_basedir can be used to limit the files that can be accessed by PHP to the specified directory-tree,
 					 * including the file itself. When a script tries to access the filesystem, for example using include, or
 					 * fopen(), the location of the file is checked. When the file is outside the specified directory-tree, PHP
@@ -263,7 +262,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					if ( file_exists( $cache_file ) ) {
 
-						$file_cache_exp = $cache_exp_secs === false ? $this->default_file_cache_exp : $cache_exp_secs;
+						$file_cache_exp = false === $cache_exp_secs ? $this->default_file_cache_exp : $cache_exp_secs;
 
 						if ( filemtime( $cache_file ) > time() - $file_cache_exp ) {
 
@@ -330,7 +329,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				curl_setopt( $ch, CURLOPT_MAXREDIRS, $this->curl_max_redirs );
 			}
 
-			/*
+			/**
 			 * Define cURL options from values defined as constants. Example: WPSSO_PHP_CURL_USERAGENT
 			 */
 			foreach ( array( 'USERAGENT', 'PROXY', 'PROXYUSERPWD', 'CAINFO' ) as $const_suffix ) {
@@ -340,7 +339,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Define cURL options provided by the $curl_opts method arguent (empty by default). Example:
 			 *
 			 *	$curl_opts = array(
@@ -409,7 +408,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return $failure;
 		}
 
-		/*
+		/**
 		 * Set property values for text domain, notice label, etc.
 		 */
 		private function set_config( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
@@ -476,7 +475,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					$cache_id = md5( $cache_salt );		// no lca prefix on filenames
 					$cache_file = $this->base_dir . $cache_id . $file_ext;
-					$file_cache_exp = $cache_exp_secs === false ? $this->default_file_cache_exp : $cache_exp_secs;
+					$file_cache_exp = false === $cache_exp_secs ? $this->default_file_cache_exp : $cache_exp_secs;
 
 					if ( ! file_exists( $cache_file ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -534,7 +533,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			// defining file_cache_exp is not required when saving files
-			$object_cache_exp = $cache_exp_secs === false ? $this->default_object_cache_exp : $cache_exp_secs;
+			$object_cache_exp = false === $cache_exp_secs ? $this->default_object_cache_exp : $cache_exp_secs;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $cache_type . ' cache salt ' . $cache_salt );

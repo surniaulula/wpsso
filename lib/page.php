@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -76,7 +75,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$separator = html_entity_decode( $this->p->options['og_title_sep'],
 				ENT_QUOTES, get_bloginfo( 'charset' ) );
 
-			if ( $md_idx === true ) {
+			if ( true === $md_idx ) {
 				switch ( $type ) {
 					case 'title':
 						$md_idx = 'og_title';
@@ -155,7 +154,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			if ( $do_encode === true ) {
+			if ( true === $do_encode ) {
 				$caption = SucomUtil::encode_html_emoji( $caption );
 			} else {	// just in case
 				$caption = html_entity_decode( SucomUtil::decode_utf8( $caption ),
@@ -337,7 +336,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title_text .= ' '.$hashtags;
 			}
 
-			if ( $do_encode === true ) {
+			if ( true === $do_encode ) {
 				foreach ( array( 'title_text', 'separator' ) as $var ) {	// loop through variables
 					$$var = SucomUtil::encode_html_emoji( $$var );
 				}
@@ -538,7 +537,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$desc_text .= ' '.$hashtags;
 			}
 
-			if ( $do_encode === true ) {
+			if ( true === $do_encode ) {
 				$desc_text = SucomUtil::encode_html_emoji( $desc_text );
 			}
 
@@ -602,7 +601,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
 			$filter_content = apply_filters( $lca.'_filter_content', $filter_content, $mod );
 
-			/*
+			/**
 			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 			 * less in length. If using a site transient, it should be 40 characters or less in length.
 			 */
@@ -698,7 +697,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$content_text = $this->p->util->safe_apply_filters( array( 'the_content', $content_text ),
 					$mod, WPSSO_CONTENT_FILTERS_MAX_TIME, WPSSO_CONTENT_BLOCK_FILTER_OUTPUT );
 
-				/*
+				/**
 				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.
 				 */
 				unset ( $GLOBALS['subalbum'] );
@@ -875,7 +874,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$term_obj = SucomUtil::get_term_object( $term_id, $tax_slug );
 			}
 
-			if ( $separator === false ) {
+			if ( false === $separator ) {
 				$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 

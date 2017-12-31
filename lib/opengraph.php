@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -145,7 +144,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $crawler_name === false ) {
+			if ( false === $crawler_name ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 			}
 
@@ -209,7 +208,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					'...', $mod, true, $this->p->options['og_desc_hashtags'], true, 'og_desc' );
 			}
 
-			/*
+			/**
 			 * Get all videos.
 			 *
 			 * Call before getting all images to find / use preview images.
@@ -234,7 +233,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 							$image_url = SucomUtil::get_mt_media_url( $og_single_video, 'og:image' );
 
-							/*
+							/**
 							 * Check preview images for duplicates since the same videos may be available in
 							 * different formats (application/x-shockwave-flash and text/html for example).
 							 */
@@ -259,7 +258,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Get all images.
 			 */
 			if ( ! isset( $mt_og['og:image'] ) ) {
@@ -289,7 +288,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Pre-define some basic open graph meta tags for this og:type. If the meta tag
 			 * has an associated meta option name, then read it's value from the meta options.
 			 */
@@ -336,7 +335,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * If the module is a post object, define the author, publishing date, etc.
 			 * These values may still be used by other filters, and if the og:type is
 			 * not an article, the meta tags will be sanitized at the end of
@@ -397,7 +396,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return (array) apply_filters( $lca.'_og', $mt_og, $mod );
 		}
 
-		/*
+		/**
 		 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference.
 		 * For example, remove all 'article' meta tags if the og_type is 'website'. Removing
 		 * only known meta tags (using the 'og_type_mt' array as a reference) protects
@@ -461,7 +460,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 			$this->p->util->clear_uniq_urls( 'video' );			// clear cache for 'video' context
 
-			/*
+			/**
 			 * Get video and preview enable/disable option from the post/term/user meta.
 			 */
 			if ( $aop && ! empty( $mod['obj'] ) ) {
@@ -482,7 +481,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
-			/*
+			/**
 			 * Optionally get more videos from the post content.
 			 */
 			if ( $mod['is_post'] && ! $this->p->util->is_maxed( $og_ret, $num ) ) {
@@ -491,7 +490,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$this->p->util->slice_max( $og_ret, $num );
 
-			/*
+			/**
 			 * Optionally remove the image meta tags (aka video preview).
 			 */
 			if ( empty( $use_prev ) && empty( $force_prev ) ) {
@@ -508,7 +507,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * If $md_pre is 'none' (special index keyword), then don't load custom video
 			 * title / description. Only the first video is given the custom title and
 			 * description (if one was entered). The og:video:title and og:video:description
@@ -689,7 +688,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $og_ret;
 		}
 
-		/*
+		/**
 		 * The returned array can include a varying number of elements, depending on the $request value.
 		 */
 		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og', $head = array() ) {

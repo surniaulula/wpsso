@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -76,7 +75,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 				'option label', 'wpsso' ), null, 'og_vid_autoplay' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
-			/*
+			/**
 			 * Include option from the advanced settings page.
 			 */
 			$table_rows['plugin_embedded_media'] = '<tr class="hide_in_basic">'.

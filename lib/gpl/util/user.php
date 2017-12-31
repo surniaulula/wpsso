@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -24,13 +23,13 @@ if ( ! class_exists( 'WpssoGplUtilUser' ) && class_exists( 'WpssoUser' ) ) {
 			$this->add_actions();
 		}
 
-		/*
+		/**
 		 * The Free version does not have any code to get / save meta data, nor
 		 * does it have any video API modules, so optimize and disable some methods
 		 * that wouldn't return anything anyway. ;-)
 		 */
 		public function get_options_multi( $mod_id, $idx = false, $filter_opts = true ) {
-			return $this->not_implemented( __METHOD__, ( $idx === false ? false : null ) );
+			return $this->not_implemented( __METHOD__, ( false === $idx ? false : null ) );
 		}
 
 		public function get_md_images( $num, $size_name, array $mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {

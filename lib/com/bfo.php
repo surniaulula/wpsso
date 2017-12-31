@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -20,7 +19,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		private $label_transl = '';
 		private $bfo_check_id = 'check_output_buffer';	// string id to detect our check callback using __call()
 
-		/*
+		/**
 		 * The SucomBFO common library class may be called by more than
 		 * one plugin, so track which filters have been hooked using
 		 * the $filter_hooked static property, and only hook a filter
@@ -34,7 +33,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			$this->set_config( $plugin, $lca, $text_domain, $label_transl );
 		}
 
-		/*
+		/**
 		 * Wildcard method callbacks are added after each filter hook
 		 * to check the output buffer for a non-empty string.
 		 *
@@ -48,7 +47,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Loop through each filter name in the $filter_names argument
 		 * and add a start hook (which starts the output buffer, adds a
 		 * check hook after each callback, and adds a stop output
@@ -67,7 +66,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Loop through each filter name in the $filter_names argument
 		 * and add remove the start, check, and stop output hooks.
 		 */
@@ -87,7 +86,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Runs at the beginning of a filter to start the PHP output
 		 * buffer, add a check hook after each callback, and add a stop
 		 * hook at the end. When the special 'all' filter is hooked,
@@ -113,7 +112,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			return $value;
 		}
 
-		/*
+		/**
 		 * Runs at the end of a filter to clean (truncate) and end
 		 * (terminate) the output buffer.
 		 */
@@ -122,7 +121,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			return $value;
 		}
 
-		/*
+		/**
 		 * Called once by start_output_buffer() at the beginning of a
 		 * filter to add a check hook after each callback.
 		 */
@@ -157,7 +156,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Remove the output check hooks if/when a filter is applied a
 		 * second time.
 		 */
@@ -175,7 +174,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Set property values for text domain, notice label, etc.
 		 */
 		private function set_config( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
@@ -209,7 +208,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Called by the __call() method after each filter hook.
 		 * Checks the output buffer for any non-empty string.
 		 */
@@ -227,7 +226,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 				if ( preg_match( '/^' . $this->bfo_check_id . '_\[([0-9]+)\](.+)$/', urldecode( $method_name ), $matches ) ) {
 
 					$error_msg = sprintf( $error_text, $matches[2], $matches[1], current_filter() );
-					/*
+					/**
 					 * Filters are rarely applied on the admin / back-end side, but if they are,
 					 * then take advantage of this and show a notice. :)
 					 */
@@ -255,7 +254,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			return $value;
 		}
 
-		/*
+		/**
 		 * Get a human readable class/method/function name from the
 		 * callback array. 
 		 */

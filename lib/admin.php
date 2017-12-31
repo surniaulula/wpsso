@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -37,7 +36,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/*
+			/**
 			 * The WpssoScript add_iframe_inline_script() method includes jQuery in the thickbox iframe 
 			 * to add the iframe_parent arguments when the Install or Update button is clicked.
 			 *
@@ -91,7 +90,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_filter( 'network_admin_plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
 				}
 
-		 		/*
+		 		/**
 				 * Provide plugin data / information from the readme.txt for additional extensions.
 				 * Don't hook the 'plugins_api_result' filter if the update manager is active as it
 				 * provides more complete plugin data than what's available from the readme.txt.
@@ -209,13 +208,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					if ( $ext === $this->p->lca ) {
 						$unsorted_menu[] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
-						if ( $first_top_id === false ) {
+						if ( false === $first_top_id ) {
 							$first_top_id = $menu_id;
 						}
 						$last_top_id = $menu_id;
 					} else {
 						$sorted_menu[$ksort_key] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
-						if ( $first_ext_id === false ) {
+						if ( false === $first_ext_id ) {
 							$first_ext_id = $menu_id;
 						}
 						$last_ext_id = $menu_id;
@@ -288,7 +287,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Called by show_setting_page() and extended by the sitesubmenu classes to load site options instead.
 		 */
 		protected function set_form_object( $menu_ext ) {	// $menu_ext required for text_domain
@@ -471,7 +470,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $is_allowed;
 		}
 
-		/*
+		/**
 		 * Provide plugin data / information from the readme.txt for additional extensions.
 		 */
 		public function external_plugin_data( $res, $action = null, $args = null ) {
@@ -512,7 +511,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $plugin_data;
 		}
 
-		/*
+		/**
 		 * Get the plugin readme and convert array elements to a plugin data object.
 		 */
 		public function get_plugin_data( $ext, $read_cache = true ) {
@@ -580,7 +579,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $data;
 		}
 
-		/*
+		/**
 		 * This method receives only a partial options array, so re-create a full one.
 		 * WordPress handles the actual saving of the options to the database table.
 		 */
@@ -1146,7 +1145,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$latest_notice = $upgrade_notice[$latest_version];
 					}
 
-					/*
+					/**
 					 * Hooked by the update manager to check installed version against the latest version, 
 					 * if a non-stable filter is selected for that plugin / extension.
 					 */
@@ -1193,7 +1192,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<table class="sucom-settings '.$this->p->lca.' column-metabox module-status">';
 
-			/*
+			/**
 			 * GPL version features
 			 */
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
@@ -1253,7 +1252,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<table class="sucom-settings '.$this->p->lca.' column-metabox module-status">';
 
-			/*
+			/**
 			 * Pro version features
 			 */
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
@@ -1272,7 +1271,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $sub === 'admin' )	// skip status for admin menus and tabs
 						continue;
 					foreach ( $libs as $id_key => $label ) {
-						/*
+						/**
 						 * Example:
 						 *	'article' => 'Item Type Article',
 						 *	'article#news:no_load' => 'Item Type NewsArticle',
@@ -1514,7 +1513,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		private function is_lib( $lib_name, $menu_id = false ) {
-			if ( $menu_id === false ) {
+			if ( false === $menu_id ) {
 				$menu_id = $this->menu_id;
 			}
 			return isset( $this->p->cf['*']['lib'][$lib_name][$menu_id] ) ? true : false;
@@ -1576,7 +1575,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$ext_links = $this->add_plugin_action_links( $ext_links, $info['base'], 'license-action-links', $tabindex );
 				}
 
-				/*
+				/**
 				 * Plugin Name, Description, and Links
 				 */
 				$plugin_name_html = '<strong>'.$info['name'].'</strong>'.( $ext === $this->p->lca ? ' ('.__( 'Main Plugin', 'wpsso' ).')' : '' );
@@ -1589,7 +1588,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					( empty( $ext_links ) ? '' : '<div class="row-actions visible">'.implode( ' | ', $ext_links ).'</div>' ).
 					'</td>';
 
-				/*
+				/**
 				 * Plugin Authentication ID and License Information
 				 */
 				if ( ! empty( $info['update_auth'] ) || ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
@@ -1638,14 +1637,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$table_rows['plugin_tid'] = '<td>&nbsp;</td><td width="100%">&nbsp;</td>';
 				}
 
-				/*
+				/**
 				 * Dotted Line
 				 */
 				if ( $ext_num < $ext_total ) {
 					$table_rows['dotted_line'] = '<td style="border-bottom:1px dotted #ddd; height:5px;" colspan="2"></td>';
 				}
 
-				/*
+				/**
 				 * Show the Table Rows
 				 */
 				foreach ( $table_rows as $key => $row ) {
@@ -1954,7 +1953,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) ) {
 					$have_ext_tid = true;	// found at least one plugin with an auth id
-					/*
+					/**
 					 * If the update manager is active, the version should be available.
 					 * Skip individual warnings and show nag to install the update manager.
 					 */
@@ -1972,7 +1971,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			if ( $have_ext_tid === true ) {
+			if ( true === $have_ext_tid ) {
 
 				// if the update manager is active, the version should be available
 				if ( ! empty( $um_info['version'] ) ) {

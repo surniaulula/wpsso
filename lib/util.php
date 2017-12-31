@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -39,7 +38,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			add_filter( 'image_editor_save_pre', array( &$this, 'image_editor_save_pre_image_sizes' ), -100, 2 );
 		}
 
-		/*
+		/**
 		 * Disable transient cache for debug mode. This method is also called for non-WordPress 
 		 * sharing / canonical URLs with query arguments.
 		 */
@@ -85,7 +84,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					continue;
 				}
 
-				/*
+				/**
 				 * example:
 				 * 	'json_data_https_schema_org_website' => 5
 				 */
@@ -99,7 +98,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'added '.$method_name.' (method) '.$type, 3 );
 					}
-				/*
+				/**
 				 * example:
 				 * 	'add_schema_meta_array' => '__return_false'
 				 */
@@ -113,7 +112,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'added '.$function_name.' (function) '.$type.' for '.$hook_name, 3 );
 					}
-				/*
+				/**
 				 * example:
 				 * 	'json_data_https_schema_org_article' => array(
 				 *		'json_data_https_schema_org_article' => 5,
@@ -210,7 +209,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $cache_exp_secs > 0 ) {
-				/*
+				/**
 				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 				 * less in length. If using a site transient, it should be 40 characters or less in length.
 				 */
@@ -281,7 +280,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// can be called directly and from the "wp" and "current_screen" actions
 		// this method does not return a value, so do not use as a filter
 		public function add_plugin_image_sizes( $wp_obj = false, $sizes = array(), &$mod = false, $filter = true ) {
-			/*
+			/**
 			 * Allow various plugin extensions to provide their image names, labels, etc.
 			 * The first dimension array key is the option name prefix by default.
 			 * You can also include the width, height, crop, crop_x, and crop_y values.
@@ -317,7 +316,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$md_opts = array();
 
-			if ( $filter === true ) {
+			if ( true === $filter ) {
 				$sizes = apply_filters( $lca.'_plugin_image_sizes', $sizes, $mod, SucomUtil::get_crawler_name() );
 			}
 
@@ -371,9 +370,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $size_info['width'] > 0 && $size_info['height'] > 0 ) {
 
 					// preserve compatibility with older wordpress versions, use true or false when possible
-					if ( $size_info['crop'] === true && 
-						( $size_info['crop_x'] !== 'center' || $size_info['crop_y'] !== 'center' ) ) {
-
+					if ( true === $size_info['crop'] && ( $size_info['crop_x'] !== 'center' || $size_info['crop_y'] !== 'center' ) ) {
 						global $wp_version;
 						if ( version_compare( $wp_version, 3.9, '>=' ) ) {
 							$size_info['crop'] = array( $size_info['crop_x'], $size_info['crop_y'] );
@@ -381,7 +378,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 
 					// allow custom function hooks to make changes
-					if ( $filter === true ) {
+					if ( true === $filter ) {
 						$size_info = apply_filters( $lca.'_size_info_'.$size_info['name'], $size_info, $mod['id'], $mod['name'] );
 					}
 
@@ -498,7 +495,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Add options using a key prefix string / array and post type names.
 		 */
 		public function add_ptns_to_opts( array &$opts, $mixed, $default = 1 ) {
@@ -739,7 +736,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $cache_exp_secs > 0 ) {
-				/*
+				/**
 				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 				 * less in length. If using a site transient, it should be 40 characters or less in length.
 				 */
@@ -868,7 +865,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$this->p->debug->log( 'loadHTML returned error(s)' );
 						}
 						foreach ( libxml_get_errors() as $error ) {
-							/*
+							/**
 							 *	libXMLError {
 							 *		public int $level;
 							 *		public int $code;
@@ -922,7 +919,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				if ( empty( $ret ) ) {	// empty array
-					if ( $request === false ) {	// $request argument is html
+					if ( false === $request ) {	// $request argument is html
 						$this->p->debug->log( 'meta tags found in submitted html' );
 					} else {
 						$this->p->debug->log( 'no meta tags found in '.$request );
@@ -1010,7 +1007,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				'is_ssl',
 				'is_tag',
 				'is_tax',
-				/*
+				/**
 				 * common e-commerce / woocommerce functions
 				 */
 				'is_account_page',
@@ -1021,7 +1018,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				'is_product_category',
 				'is_product_tag',
 				'is_shop',
-				/*
+				/**
 				 * other functions
 				 */
 				'is_amp_endpoint',
@@ -1125,7 +1122,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 				}
 			}
-			return $has_changed === false ? $all_times : get_option( WPSSO_TS_NAME, array() );
+			return false === $has_changed ? $all_times : get_option( WPSSO_TS_NAME, array() );
 		}
 
 		// allow the variables and values array to be extended
@@ -1259,7 +1256,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $json;
 		}
 
-		/*
+		/**
 		 * Determine and return the post/user/term module array.
 		 */
 		public function get_page_mod( $use_post = false, $mod = false, $wp_obj = false ) {
@@ -1331,7 +1328,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$mod['use_post'] = $use_post;
 
-			/*
+			/**
 			 * The post module defines is_home_page, is_home_index, and is_home.
 			 * If we don't have a module, then check if we're on the home index page.
 			 */
@@ -1346,7 +1343,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $mod;
 		}
 
-		/*
+		/**
 		 * $mod is false when used for open graph meta tags and buttons in widget.
 		 * $mod is true when buttons are added to individual posts on an index webpage.
 		 */
@@ -1490,7 +1487,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$url = $this->get_url_paged( $url, $mod, $add_page );
 			}
 
-			/*
+			/**
 			 * Use the current URL as a fallback for themes and plugins that create public content and
 			 * don't use the standard WordPress functions / variables and/or are not properly integrated 
 			 * with WordPress (don't use custom post types, taxonomies, terms, etc.).
@@ -1527,7 +1524,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Check and possibly enforce the FORCE_SSL constant.
 			 */
 			if ( ! empty( $this->p->options['plugin_honor_force_ssl'] ) ) {
@@ -1744,7 +1741,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/*
+			/**
 			 * Check for required apply_filters() arguments.
 			 */
 			if ( empty( $args[0] ) ) {
@@ -1769,7 +1766,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $filter_value;
 			}
 
-			/*
+			/**
 			 * Prevent recursive loops - the global variable is defined before applying the filters.
 			 */
 			if ( ! empty( $GLOBALS[$this->p->lca.'_doing_filter_'.$filter_name] ) ) {
@@ -1780,13 +1777,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $filter_value;
 			}
 
-			/*
+			/**
 			 * Hooked by some modules, like bbPress and social sharing buttons,
 			 * to perform actions before / after filtering the content.
 			 */
 			do_action( $this->p->lca.'_pre_apply_filters_text', $filter_name );
 
-			/*
+			/**
 			 * Load the Block Filter Output (BFO) filters to block and show an error 
 			 * for incorrectly coded filters.
 			 */
@@ -1798,7 +1795,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Save the original post object, in case some filters modify the global $post.
 			 */
 			global $post;
@@ -1810,7 +1807,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$post_obj_pre_filter = $post;	// save the original global post object
 
-			/*
+			/**
 			 * Make sure the $post object is correct before filtering.
 			 */
 			if ( $mod['is_post'] && $mod['id'] && ( ! isset( $post->ID ) || $mod['id'] !== $post->ID ) ) {
@@ -1828,7 +1825,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			setup_postdata( $post );
 
-			/*
+			/**
 			 * Prevent recursive loops and signal to other methods that the content filter is being 
 			 * applied to create a description text - this avoids the addition of unnecessary HTML 
 			 * which will be removed anyway (social sharing buttons, for example).
@@ -1839,7 +1836,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$GLOBALS[$this->p->lca.'_doing_filter_'.$filter_name] = true;	// prevent recursive loops
 
-			/*
+			/**
 			 * Apply the filters.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -1854,7 +1851,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark( 'applying wordpress '.$filter_name.' filters' );	// end timer
 			}
 
-			/*
+			/**
 			 * Unset the recursive loop check.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -1863,7 +1860,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			unset( $GLOBALS[$this->p->lca.'_doing_filter_'.$filter_name] );	// un-prevent recursive loops
 
-			/*
+			/**
 			 * Issue warning for slow filter performance.
 			 */
 			if ( $max_time > 0 && $total_time > $max_time ) {
@@ -1887,7 +1884,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Restore the original post object.
 			 */
 			if ( $this->p->debug->enabled ) {
@@ -1903,14 +1900,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			setup_postdata( $post );
 
-			/*
+			/**
 			 * Remove the Block Filter Output (BFO) filters.
 			 */
 			if ( $add_bfo ) {
 				$bfo_obj->remove_all_hooks( array( $filter_name ) );
 			}
 
-			/*
+			/**
 			 * Hooked by some modules, like bbPress and social sharing buttons,
 			 * to perform actions before / after filtering the content.
 			 */
@@ -2143,7 +2140,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Rename settings array keys, preserving the option modifiers (:is|:use|#.*|_[0-9]+).
 		 */
 		public function rename_opts_by_ext( &$opts, $options_keys ) {
@@ -2165,7 +2162,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// limit_text_length() uses PHP's multibyte functions (mb_strlen and mb_substr) for UTF8
 		public function limit_text_length( $text, $maxlen = 300, $trailing = '', $cleanup_html = true ) {
 
-			if ( $cleanup_html === true ) {
+			if ( true === $cleanup_html ) {
 				$text = $this->cleanup_html_tags( $text );				// remove any remaining html tags
 			}
 

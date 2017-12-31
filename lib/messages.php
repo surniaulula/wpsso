@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -68,7 +67,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$fb_recommends = __( 'Facebook has published a preference for Open Graph image dimensions of 1200x630px cropped (for retina and high-PPI displays), 600x315px cropped as a minimum (the default settings value), and ignores images smaller than 200x200px.', 'wpsso' );
 
-			/*
+			/**
 			 * All tooltips
 			 */
 			if ( strpos( $idx, 'tooltip-' ) === 0 ) {
@@ -216,7 +215,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = apply_filters( $lca.'_messages_tooltip_meta', $text, $idx, $info );
 							break;
 					}	// end of tooltip-user switch
-				/*
+				/**
 				 * Post Meta settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-post-' ) === 0 ) {
@@ -233,7 +232,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = apply_filters( $lca.'_messages_tooltip_post', $text, $idx, $info );
 							break;
 					}	// end of tooltip-post switch
-				/*
+				/**
 				 * Site settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-site_' ) === 0 ) {
@@ -265,12 +264,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							}
 							break;
 					}
-				/*
+				/**
 				 * Open Graph settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-og_' ) === 0 ) {
 					switch ( $idx ) {
-						/*
+						/**
 						 * 'Priority Media' settings
 						 */
 						case 'tooltip-og_img_dimensions':
@@ -328,7 +327,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'Include additional Open Graph meta tags for the embed video URL as a text/html video type (default is checked).';
 							break;
 
-						/*
+						/**
 						 * 'Description' settings
 						 */
 						case 'tooltip-og_post_type':
@@ -363,7 +362,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph and Pinterest Rich Pin description, tweet text, and social captions. Each tag name is converted to lowercase with whitespaces removed.  Select "0" to disable the addition of hashtags.';
 							break;
 
-						/*
+						/**
 						 * 'Authorship' settings
 						 */
 						case 'tooltip-og_author_field':
@@ -382,12 +381,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = apply_filters( $lca.'_messages_tooltip_og', $text, $idx, $info );
 							break;
 					}	// end of tooltip-og switch
-				/*
+				/**
 				 * Advanced plugin settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-plugin_' ) === 0 ) {
 					switch ( $idx ) {
-						/*
+						/**
 						 * 'Plugin Settings' settings
 						 */
 						case 'tooltip-plugin_preserve':	// Preserve Settings on Uninstall
@@ -420,7 +419,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								'wpsso' );
 							break;
 
-						/*
+						/**
 						 * 'Content and Filters' settings
 						 */
 						case 'tooltip-plugin_filter_title':
@@ -464,7 +463,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.).', 'wpsso' );
 							break;
 
-						/*
+						/**
 						 * 'Custom Meta' settings
 						 */
 						case 'tooltip-plugin_show_columns':
@@ -587,7 +586,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[0] ).' '.sprintf( __( 'If a custom field matching that name is found, its value may be used for the %1$s option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[1], _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 							break;	// stop here
 
-						/*
+						/**
 						 * 'Integration' settings
 						 */
 						case 'tooltip-plugin_honor_force_ssl':	// Honor the FORCE_SSL Constant
@@ -682,7 +681,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						/*
+						/**
 						 * 'Cache Settings' settings
 						 */
 						case 'tooltip-plugin_head_cache_exp':
@@ -763,7 +762,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						/*
+						/**
 						 * 'Service APIs' (URL Shortening) settings
 						 */
 						case 'tooltip-plugin_shortener':
@@ -830,7 +829,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = apply_filters( $lca.'_messages_tooltip_plugin', $text, $idx, $info );
 							break;
 					}	// end of tooltip-plugin switch
-				/*
+				/**
 				 * Publisher 'Facebook' settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-fb_' ) === 0 ) {
@@ -859,7 +858,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = apply_filters( $lca.'_messages_tooltip_fb', $text, $idx, $info );
 							break;
 					}	// end of tooltip-fb switch
-				/*
+				/**
 				 * Publisher 'Google' / SEO settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-seo_' ) === 0 ) {
@@ -882,7 +881,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = apply_filters( $lca.'_messages_tooltip_seo', $text, $idx, $info );
 							break;
 					}	// end of tooltip-google switch
-				/*
+				/**
 				 * Publisher 'Schema' settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-schema_' ) === 0 ) {
@@ -974,7 +973,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = apply_filters( $lca.'_messages_tooltip_schema', $text, $idx, $info );
 							break;
 					}	// end of tooltip-google switch
-				/*
+				/**
 				 * Publisher 'Twitter Card' settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-tc_' ) === 0 ) {
@@ -1019,7 +1018,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = apply_filters( $lca.'_messages_tooltip_tc', $text, $idx, $info );
 							break;
 					}	// end of tooltip-tc switch
-				/*
+				/**
 				 * Publisher 'Pinterest' (Rich Pin) settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-p_' ) === 0 ) {
@@ -1055,7 +1054,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = apply_filters( $lca.'_messages_tooltip_p', $text, $idx, $info );
 							break;
 					}	// end of tooltip-p switch
-				/*
+				/**
 				 * Publisher 'Instagram' settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-instgram_' ) === 0 ) {
@@ -1069,7 +1068,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 					}	// end of tooltip-instgram switch
 
-				/*
+				/**
 				 * Publisher 'LinkedIn' settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-linkedin_' ) === 0 ) {
@@ -1082,7 +1081,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = apply_filters( $lca.'_messages_tooltip_linkedin', $text, $idx, $info );
 							break;
 					}	// end of tooltip-linkedin switch
-				/*
+				/**
 				 * Publisher 'Myspace' settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-myspace_' ) === 0 ) {
@@ -1095,7 +1094,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = apply_filters( $lca.'_messages_tooltip_myspace', $text, $idx, $info );
 							break;
 						}	// end of tooltip-myspace switch
-				/*
+				/**
 				 * All other settings
 				 */
 				} else {
@@ -1122,7 +1121,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 					} 	// end of all other settings switch
 				}	// end of tooltips
-			/*
+			/**
 			 * Misc informational messages
 			 */
 			} elseif ( strpos( $idx, 'info-' ) === 0 ) {
@@ -1212,7 +1211,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 					}	// end of info switch
 				}
-			/*
+			/**
 			 * Misc pro messages
 			 */
 			} elseif ( strpos( $idx, 'pro-' ) === 0 ) {
@@ -1272,7 +1271,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = apply_filters( $lca.'_messages_pro', $text, $idx, $info );
 						break;
 				}
-			/*
+			/**
 			 * Misc notice messages
 			 */
 			} elseif ( strpos( $idx, 'notice-' ) === 0 ) {
@@ -1284,7 +1283,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$is_settings_page = strpos( SucomUtil::get_screen_id(), '_page_'.$lca = $this->p->cf['lca'].'-' );
 
 						// do not add this text if hidding pro options or on a settings page
-						if ( empty( $this->p->options['plugin_hide_pro'] ) && $is_settings_page === false ) {
+						if ( empty( $this->p->options['plugin_hide_pro'] ) && false === $is_settings_page ) {
 							$text = sprintf( __( 'A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %s metabox under the <em>Select Media</em> tab.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 						} else {
 							$text = '';
@@ -1451,7 +1450,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = apply_filters( $lca.'_messages_notice', $text, $idx, $info );
 						break;
 			}
-			/*
+			/**
 			 * Misc sidebox messages
 			 */
 			} elseif ( strpos( $idx, 'column-' ) === 0 ) {

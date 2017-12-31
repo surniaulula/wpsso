@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -73,7 +72,7 @@ if ( ! class_exists( 'WpssoException' ) ) {
 		}
 
 		public function errorMessage( $ret = false ) {
-			/*
+			/**
 			 * getMessage();        // message of exception
 			 * getCode();           // code of exception
 			 * getFile();           // source filename

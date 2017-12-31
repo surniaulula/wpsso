@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -851,11 +850,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		private static function get_formatted_array( $array, $idx = false, $add_none = false ) {
 
-			if ( $idx === null ) {
+			if ( null === $idx ) {
 				// nothing to do
-			} elseif ( $idx === false ) {
+			} elseif ( false === $idx ) {
 				// nothing to do
-			} elseif ( $idx === true ) {		// sort by value
+			} elseif ( true === $idx ) {		// sort by value
 				asort( $array );
 			} elseif ( isset( $array[$idx] ) ) {	// return a specific dashicon label
 				return $array[$idx];
@@ -863,7 +862,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return null;
 			}
 
-			if ( $add_none === true ) {		// prefix arrau with 'none'
+			if ( true === $add_none ) {		// prefix arrau with 'none'
 				$array = array( 'none' => 'none' ) + $array;	// maintains numeric index
 			}
 
@@ -1052,7 +1051,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// returns false or the admin screen id text string
 		public static function get_screen_id( $screen = false ) {
-			if ( $screen === false && function_exists( 'get_current_screen' ) ) {
+			if ( false === $screen && function_exists( 'get_current_screen' ) ) {
 				$screen = get_current_screen();
 			}
 			if ( isset( $screen->id ) ) {
@@ -1064,12 +1063,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// returns false or the admin screen base text string
 		public static function get_screen_base( $screen = false ) {
-			if ( $screen === false &&
-				function_exists( 'get_current_screen' ) )
-					$screen = get_current_screen();
-			if ( isset( $screen->base ) )
+			if ( false === $screen && function_exists( 'get_current_screen' ) ) {
+				$screen = get_current_screen();
+			}
+			if ( isset( $screen->base ) ) {
 				return $screen->base;
-			else return false;
+			} else {
+				return false;
+			}
 		}
 
 		// note that an empty string or a null is sanitized as false
@@ -1434,20 +1435,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function update_option_key( $name, $key, $value, $protect = false, $site = false ) {
-			if ( $site === true ) {
+			if ( true === $site ) {
 				$opts = get_site_option( $name, array() );
-			}
-			else {
+			} else {
 				$opts = get_option( $name, array() );
 			}
 
-			if ( $protect === true && isset( $opts[$key] ) ) {
+			if ( true === $protect && isset( $opts[$key] ) ) {
 				return false;
 			}
 
 			$opts[$key] = $value;
 
-			if ( $site === true ) {
+			if ( true === $site ) {
 				return update_site_option( $name, $opts );
 			} else {
 				return update_option( $name, $opts );
@@ -1455,7 +1455,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_option_key( $name, $key, $site = false ) {
-			if ( $site === true ) {
+			if ( true === $site ) {
 				$opts = get_site_option( $name, array() );
 			} else {
 				$opts = get_option( $name, array() );
@@ -1610,10 +1610,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$keys = array_keys( $input );
 			$pos = array_search( $needle, $keys );
 			if ( $pos !== false ) {
-				if ( isset( $keys[ $pos + 1 ] ) )
+				if ( isset( $keys[ $pos + 1 ] ) ) {
 					return $keys[ $pos + 1 ];
-				elseif ( $loop === true )
+				} elseif ( true === $loop ) {
 					return $keys[0];
+				}
 			}
 			return false;
 		}
@@ -2218,7 +2219,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} elseif ( $post_id > 0 && self::get_post_object( $use_post, 'id' ) === $post_id ) {	// static posts page
 				$ret = true;
 
-			} elseif ( $use_post === false && is_home() && is_front_page() ) {			// standard index page
+			} elseif ( false === $use_post && is_home() && is_front_page() ) {			// standard index page
 				$ret = true;
 			}
 
@@ -2235,10 +2236,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( is_numeric( $use_post ) && $use_post > 0 ) {
 				$ret = self::is_post_exists( $use_post );
 
-			} elseif ( $use_post === true && ! empty( $GLOBALS['post']->ID ) ) {
+			} elseif ( true === $use_post && ! empty( $GLOBALS['post']->ID ) ) {
 				$ret = true;
 			
-			} elseif ( $use_post === false && is_singular() ) {
+			} elseif ( false === $use_post && is_singular() ) {
 				$ret = true;
 
 			} elseif ( ! is_home() && is_front_page() && get_option( 'show_on_front' ) === 'page' ) {	// static front page
@@ -2251,7 +2252,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$screen_base = self::get_screen_base();
 				if ( $screen_base === 'post' ) {
 					$ret = true;
-				} elseif ( $screen_base === false &&	// called too early for screen
+				} elseif ( false === $screen_base &&	// called too early for screen
 					( self::get_request_value( 'post_ID', 'POST' ) !== '' ||	// uses sanitize_text_field
 						self::get_request_value( 'post', 'GET' ) !== '' ) ) {
 					$ret = true;
@@ -2269,11 +2270,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( is_numeric( $use_post ) && $use_post > 0 ) {
 				$post_obj = get_post( $use_post );
 
-			} elseif ( $use_post === true && ! empty( $GLOBALS['post']->ID ) ) {
+			} elseif ( true === $use_post && ! empty( $GLOBALS['post']->ID ) ) {
 				$post_obj = $GLOBALS['post'];
 
 			// used by the buddypress module
-			} elseif ( $use_post === false && apply_filters( 'sucom_is_post_page', ( is_singular() ? true : false ), $use_post ) ) {
+			} elseif ( false === $use_post && apply_filters( 'sucom_is_post_page', ( is_singular() ? true : false ), $use_post ) ) {
 				$post_obj = get_queried_object();
 
 			} elseif ( ! is_home() && is_front_page() && get_option( 'show_on_front' ) === 'page' ) {	// static front page
@@ -2323,7 +2324,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$screen_base = self::get_screen_base();
 				if ( $screen_base === 'term' ) {	// since wp v4.5
 					$ret = true;
-				} elseif ( ( $screen_base === false || $screen_base === 'edit-tags' ) &&	
+				} elseif ( ( false === $screen_base || $screen_base === 'edit-tags' ) &&	
 					( self::get_request_value( 'taxonomy' ) !== '' &&	// uses sanitize_text_field
 						self::get_request_value( 'tag_ID' ) !== '' ) ) {
 					$ret = true;
@@ -2703,7 +2704,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::is_mobile() ? false : true;
 		}
 
-		/*
+		/**
 		 * Example:
 		 *      'article' => 'Item Type Article',
 		 *      'article#news:no_load' => 'Item Type NewsArticle',
@@ -2794,7 +2795,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$countries = SucomCountryCodes::get( 'alpha2' );
 
 			if ( ! isset( $countries[$country_code] ) ) {
-				if ( $default_code === false || ! isset( $countries[$default_code] ) ) {
+				if ( false === $default_code || ! isset( $countries[$default_code] ) ) {
 					return false;
 				} else {
 					return $countries[$default_code];
@@ -3037,7 +3038,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		// allow for 0, but not true, false, null, or 'none'
 		public static function is_opt_id( $id ) {
-			if ( $id === true ) {
+			if ( true === $id ) {
 				return false;
 			} elseif ( empty( $id ) && ! is_numeric( $id ) ) {	// null or false
 				return false;

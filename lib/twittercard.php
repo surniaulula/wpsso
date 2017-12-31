@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -48,7 +47,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		// use reference for $mt_og argument to allow unset of existing twitter meta tags.
 		public function get_array( array &$mod, array &$mt_og, $crawler_name = false ) {
 
-			if ( $crawler_name === false ) {
+			if ( false === $crawler_name ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 			}
 
@@ -102,7 +101,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Player Card
 			 *
 			 * The twitter:player:stream meta tags are used for self-hosted MP4 videos. The videos provided by
@@ -199,7 +198,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * All Image Cards
 			 */
 			if ( ! empty( $max['og_img_max'] ) ) {
@@ -286,7 +285,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$this->p->debug->log( 'images disabled: maximum images = 0' );
 			}
 
-			/*
+			/**
 			 * Summary Card (default)
 			 */
 			if ( ! isset( $mt_tc['twitter:card'] ) ) {

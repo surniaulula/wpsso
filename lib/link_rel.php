@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -44,7 +43,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			$sharing_url = empty( $mt_og['og:url'] ) ? $this->p->util->get_sharing_url( $mod ) : $mt_og['og:url'];
 			$link_rel = apply_filters( $lca.'_link_rel_seed', array(), $mod );
 
-			/*
+			/**
 			 * link rel author
 			 */
 			if ( ! empty( $author_id ) ) {
@@ -59,7 +58,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$this->p->debug->log( 'skipping author: author id is empty' );
 			}
 
-			/*
+			/**
 			 * link rel canonical
 			 */
 			$add_link_rel_canonical = empty( $this->p->options['add_link_rel_canonical'] ) ? false : true;
@@ -68,7 +67,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$link_rel['canonical'] = $this->p->util->get_canonical_url( $mod );
 			}
 
-			/*
+			/**
 			 * link rel publisher
 			 */
 			if ( ! empty( $this->p->options['seo_publisher_url'] ) ) {
@@ -80,7 +79,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$this->p->debug->log( 'skipping publisher: seo publisher url is empty' );
 			}
 
-			/*
+			/**
 			 * link rel shortlink
 			 */
 			$add_link_rel_shortlink = empty( $this->p->options['add_link_rel_shortlink'] ) || is_404() || is_search() ? false : true;

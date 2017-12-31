@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Mobile Detect Library
  * =====================

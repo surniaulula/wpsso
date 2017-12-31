@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -174,7 +173,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2" align="center">'.
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			/*
+			/**
 			 * Include Columns in Admin Lists
 			 */
 			$cols = '<table class="plugin-list-columns">' . "\n" . '<tr>';
@@ -208,7 +207,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), '', 'plugin_show_columns' ).
 					'<td>'.$cols.'</td>';
 
-			/*
+			/**
 			 * Include Custom Meta Metabox
 			 */
 			$add_to_menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' );

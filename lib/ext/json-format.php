@@ -1,26 +1,25 @@
 <?php
+/**
+ * From http://www.daveperrett.com/articles/2008/03/11/format-json-with-php/
+ * Modified to allow native functionality in php version >= 5.4.0.
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-/**
- * From http://www.daveperrett.com/articles/2008/03/11/format-json-with-php/
- * Modified to allow native functionality in php version >= 5.4.0.
- */
-		
 if ( ! class_exists( 'SuextJsonFormat' ) ) {
 
 	class SuextJsonFormat {
 
 		/**
-		* Format a flat JSON string to make it more human-readable
-		*
-		* @param string $json The original JSON string to process
-		*	When the input is not a string it is assumed the input is RAW
-		*	and should be converted to JSON first of all.
-		* @return string Indented version of the original JSON string
-		*/
+		 * Format a flat JSON string to make it more human-readable
+		 *
+		 * @param string $json The original JSON string to process
+		 *	When the input is not a string it is assumed the input is RAW
+		 *	and should be converted to JSON first of all.
+		 * @return string Indented version of the original JSON string
+		 */
 		public static function get( $json, $options = 0, $depth = 512 ) {
 
 			if ( ! is_string( $json ) ) {

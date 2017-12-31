@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -194,11 +193,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '<div '.( empty( $class ) ? '' : ' class="' . esc_attr( $class ) . '"' ) . ' id="' . esc_attr( $input_id ) . '">' . "\n";
 
 			foreach ( $values as $name_suffix => $label ) {
-				/*
+				/**
 				 * If the array is not associative (so a regular numbered array), 
 				 * then the label / description is used as the saved value.
 				 */
-				if ( $is_assoc === false ) {
+				if ( false === $is_assoc ) {
 					$input_name = $name_prefix . '_' . $label;
 				} else {
 					$input_name = $name_prefix . '_' . $name_suffix;
@@ -258,11 +257,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html = '<div '.( empty( $class ) ? '' : ' class="' . esc_attr( $class ) . '"' ) . ' id="' . esc_attr( $input_id ) . '">' . "\n";
 
 			foreach ( $values as $val => $label ) {
-				/*
+				/**
 				 * If the array is not associative (so a regular numbered array), 
 				 * then the label / description is used as the saved value.
 				 */
-				if ( $is_assoc === false ) {
+				if ( false === $is_assoc ) {
 					$val = $label;
 				}
 
@@ -333,7 +332,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						// if we have an option selected, unhide those rows
 						if ( $selected !== false ) {
-							if ( $selected === true ) {
+							if ( true === $selected ) {
 								if ( $in_options ) {
 									$unhide = $this->options[$name];
 								} elseif ( $in_defaults ) {
@@ -363,11 +362,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$select_options_shown = 0;
 
 			foreach ( $values as $val => $label ) {
-				/*
+				/**
 				 * If the array is not associative (so a regular numbered array), 
 				 * then the label / description is used as the saved value.
 				 */
-				if ( $is_assoc === false ) {
+				if ( false === $is_assoc ) {
 					$val = $label;
 				}
 
@@ -468,7 +467,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			// sanity check for possibly older input field values
-			if ( $selected === false ) {
+			if ( false === $selected ) {
 				if ( empty( $this->options[$name] ) ||
 					( $this->options[$name] !== 'none' && strlen( $this->options[$name] ) !== 2 ) ) {
 					$selected = $this->defaults[$name];
@@ -650,11 +649,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$select_options_shown = 0;
 
 								foreach ( $select_options as $val => $label ) {
-									/*
+									/**
 									 * If the array is not associative (so a regular numbered array), 
 									 * then the label / description is used as the saved value.
 									 */
-									if ( $is_assoc === false ) {
+									if ( false === $is_assoc ) {
 										$val = $label;
 									}
 
@@ -869,7 +868,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$opt_suffix = $matches[2];
 			}
 
-			if ( $this->p->avail['media']['ngg'] === true ) {
+			if ( true === $this->p->avail['media']['ngg'] ) {
 				$media_libs['ngg'] = 'NextGEN Gallery';
 			}
 
@@ -929,7 +928,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$crop_area_select = '';
 
 			// $use_opts = true when used for post / user meta forms (to show default values)
-			if ( $use_opts === true ) {
+			if ( true === $use_opts ) {
 
 				$def_width = empty( $this->p->options[$name . '_width'] ) ?
 					'' : $this->p->options[$name . '_width'];
@@ -948,7 +947,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			global $wp_version;
 			if ( version_compare( $wp_version, 3.9, '>=' ) ) {
 
-				$crop_area_select .= $narrow === true ?
+				$crop_area_select .= true === $narrow ?
 					' <div class="img_crop_from is_narrow">' :
 					' <div class="img_crop_from">from';
 
@@ -977,7 +976,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return $this->options[$name . '_width'] . ' x ' . $this->options[$name . '_height'].
 					( $this->options[$name . '_crop'] ? ', cropped' : '' );
 
-			} elseif ( $use_opts === true ) {
+			} elseif ( true === $use_opts ) {
 
 				if ( ! empty( $this->p->options[$name . '_width'] ) &&
 					! empty( $this->p->options[$name . '_height'] ) ) {
@@ -1070,7 +1069,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_button( $value, $class = '', $id = '', $url = '', $newtab = false, $disabled = false, $data = array() ) {
 
-			$on_click = $newtab === true ?
+			$on_click = true === $newtab ?
 				' onClick="window.open(\'' . esc_url( $url ) . '\', \'_blank\');"' :
 				' onClick="location.href=\'' . esc_url( $url ) . '\';"';
 
@@ -1134,26 +1133,26 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return $placeholder;	// just in case
 			}
 
-			if ( $placeholder === true ) {	// use default value
+			if ( true === $placeholder ) {	// use default value
 				if ( isset( $this->defaults[$name] ) ) {
 					$placeholder = $this->defaults[$name];
 				}
 			}
 
-			if ( $placeholder === true || $placeholder === '' ) {
+			if ( true === $placeholder || '' === $placeholder ) {
 				if ( ( $pos = strpos( $name, '#' ) ) > 0 ) {
 					$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
 					if ( $name !== $key_default ) {
 						if ( isset( $this->options[$key_default] ) ) {
 							$placeholder = $this->options[$key_default];
-						} elseif ( $placeholder === true && isset( $this->defaults[$key_default] ) ) {
+						} elseif ( true === $placeholder && isset( $this->defaults[$key_default] ) ) {
 							$placeholder = $this->defaults[$key_default];
 						}
 					}
 				}
 			}
 
-			if ( $placeholder === true ) {
+			if ( true === $placeholder ) {
 				$placeholder = '';	// must be a string
 			}
 

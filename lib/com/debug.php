@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -81,7 +80,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_int( $class_idx ) ) {
-				if ( $function_idx === false ) {
+				if ( false === $function_idx ) {
 					$function_idx = $class_idx;
 				}
 				$class_idx++;
@@ -89,7 +88,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( is_int( $function_idx ) ) {
 				$function_idx++;
-			} elseif ( $function_idx === false ) {
+			} elseif ( false === $function_idx ) {
 				$function_idx = 2;
 			}
 
@@ -103,7 +102,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_int( $class_idx ) ) {
-				if ( $function_idx === false ) {
+				if ( false === $function_idx ) {
 					$function_idx = $class_idx;
 				}
 				$class_idx++;
@@ -111,7 +110,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( is_int( $function_idx ) ) {
 				$function_idx++;
-			} elseif ( $function_idx === false ) {
+			} elseif ( false === $function_idx ) {
 				$function_idx = 2;
 			}
 
@@ -139,14 +138,14 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$log_msg = '';
 
 			if ( is_int( $class_idx ) ) {
-				if ( $function_idx === false ) {
+				if ( false === $function_idx ) {
 					$function_idx = $class_idx;
 				}
 				$log_msg .= sprintf( $first_col,
 					( empty( $stack[$class_idx]['class'] ) ?
 						'' : $stack[$class_idx]['class'] ) );
 			} else {
-				if ( $function_idx === false ) {
+				if ( false === $function_idx ) {
 					$function_idx = 1;
 				}
 				$log_msg .= sprintf( $first_col, $class_idx );
@@ -184,15 +183,19 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		}
 
 		public function mark( $id = false, $comment = '' ) {
-			if ( $this->enabled !== true )
+
+			if ( $this->enabled !== true ) {
 				return;
+			}
 
 			$cur_stats = array(
 				'time' => microtime( true ),
 				'mem' => memory_get_usage( true ),
 			);
-			if ( $this->start_stats === null )
+
+			if ( $this->start_stats === null ) {
 				$this->start_stats = $cur_stats;
+			}
 
 			if ( $id !== false ) {
 				$id_text = '- - - - - - ' . $id;
@@ -231,48 +234,69 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		}
 
 		public function show_html( $data = null, $title = null ) {
-			if ( $this->is_enabled( 'html' ) !== true )
+			if ( $this->is_enabled( 'html' ) !== true ) {
 				return;
+			}
 			echo $this->get_html( $data, $title, 2 );
 		}
 
 		public function get_html( $data = null, $title = null, $class_idx = 1, $function_idx = false ) {
-			if ( $this->is_enabled( 'html' ) !== true )
+
+			if ( $this->is_enabled( 'html' ) !== true ) {
 				return;
-			if ( $function_idx === false )
+			}
+
+			if ( false === $function_idx ) {
 				$function_idx = $class_idx;
+			}
+
 			$from = '';
 			$html = '<!-- ' . $this->display_name . ' debug';
 			$stack = debug_backtrace();
-			if ( ! empty( $stack[$class_idx]['class'] ) )
+
+			if ( ! empty( $stack[$class_idx]['class'] ) ) {
 				$from .= $stack[$class_idx]['class'] . '::';
-			if ( ! empty( $stack[$function_idx]['function'] ) )
+			}
+
+			if ( ! empty( $stack[$function_idx]['function'] ) ) {
 				$from .= $stack[$function_idx]['function'];
+			}
+
 			if ( $data === null ) {
 				$data = $this->buffer;
 				$this->buffer = array();
 			}
-			if ( ! empty( $from ) )
+
+			if ( ! empty( $from ) ) {
 				$html .= ' from ' . $from . '()';
-			if ( ! empty( $title ) )
+			}
+
+			if ( ! empty( $title ) ) {
 				$html .= ' ' . $title;
+			}
+
 			if ( ! empty( $data ) ) {
 				$html .= ' : ';
 				if ( is_array( $data ) ) {
 					$html .= "\n";
 					$is_assoc = SucomUtil::is_assoc( $data );
-					if ( $is_assoc )
+					if ( $is_assoc ) {
 						ksort( $data );
+					}
 					foreach ( $data as $key => $val ) {
 						// remove comments
-						if ( strpos( $val, '<!--' ) !== false )
+						if ( strpos( $val, '<!--' ) !== false ) {
 							$val = preg_replace( '/<!--.*-->/Ums', '', $val );
-						$html .= $is_assoc ?
-							"\t$key = $val\n" : "\t$val\n";
+						}
+						$html .= $is_assoc ? "\t$key = $val\n" : "\t$val\n";
 					}
-				} else $html .= $data;
+				} else {
+					$html .= $data;
+				}
 			}
+
 			$html .= ' -->' . "\n";
+
 			return $html;
 		}
 
@@ -295,13 +319,13 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				} else {
 					$ret = $mixed;
 				}
-			} elseif ( $mixed === false ) {
+			} elseif ( false === $mixed ) {
 				$ret = 'false';
-			} elseif ( $mixed === true ) {
+			} elseif ( true === $mixed ) {
 				$ret = 'true';
-			} elseif ( $mixed === null ) {
+			} elseif ( null === $mixed ) {
 				$ret = 'null';
-			} elseif ( $mixed === '' ) {
+			} elseif ( '' === $mixed ) {
 				$ret = '\'\'';
 			} elseif ( is_object( $mixed ) ) {
 				$ret = 'object ' . get_class( $mixed );

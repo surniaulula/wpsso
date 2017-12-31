@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -75,7 +74,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 						}
 					}
 					foreach ( $libs as $id_key => $label ) {
-						/*
+						/**
 						 * Example:
 						 *	'article' => 'Item Type Article',
 						 *	'article#news:no_load' => 'Item Type NewsArticle',

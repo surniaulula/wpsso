@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -55,7 +54,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->mark( 'get_defaults filter' );	// start timer
 				}
 
-				/*
+				/**
 				 * Add options using a key prefix array and post type names.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -66,7 +65,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					'schema_type_for' => 'webpage',
 				) );
 
-				/*
+				/**
 				 * Translate contact method field labels for current language.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -74,7 +73,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 				SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $defs, 'wpsso' );
 
-				/*
+				/**
 				 * Define the default Facebook locale and current locale values.
 				 */
 				$defs['fb_locale'] = $this->p->og->get_fb_locale( array(), 'default' );
@@ -208,7 +207,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$has_new_options = empty( $opts['options_version'] ) ? true : false;
 				$def_opts = null;	// optimize and only get array when needed
 
-				/*
+				/**
 				 * Check for a new plugin and/or extension versions.
 				 */
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
@@ -224,7 +223,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					unset( $key );
 				}
 
-				/*
+				/**
 				 * Upgrade the options array if necessary (renamed or remove keys).
 				 */
 				if ( ! $has_new_options && $opts['options_version'] !== $this->p->cf['opt']['version'] ) {
@@ -253,7 +252,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$opts = $this->upg->options( $options_name, $opts, $def_opts, $network );
 				}
 
-				/*
+				/**
 				 * Adjust / cleanup site options.
 				 */
 				if ( ! $network ) {
@@ -295,7 +294,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$has_diff_options = true;	// save the options
 						}
 					}
-					/*
+					/**
 					 * If an SEO plugin is detected, adjust some related SEO options.
 					 */
 					if ( ! empty( $this->p->avail['seo']['*'] ) ) {
@@ -321,14 +320,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$has_diff_options = true;	// save the options
 						}
 					}
-					/*
+					/**
 					 * Please note that generator meta tags are required for plugin support. If you 
 					 * disable the generator meta tags, requests for plugin support will be denied.
 					 */
 					$opts['add_meta_name_generator'] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
 				}
 
-				/*
+				/**
 				 * Save options and show reminders.
 				 */
 				if ( $has_diff_version || $has_diff_options ) {
@@ -345,7 +344,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->save_options( $options_name, $opts, $network, $has_diff_options );
 				}
 
-				/*
+				/**
 				 * Add options using a key prefix array and post type names.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -358,7 +357,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			} else {	// $opts is empty or not an array
 
-				if ( $opts === false ) {
+				if ( false === $opts ) {
 					$err_msg = sprintf( __( 'WordPress could not find an entry for %s in the options table.', 'wpsso' ), $options_name );
 				} elseif ( ! is_array( $opts ) ) {
 					$err_msg = sprintf( __( 'WordPress returned a non-array value when reading %s from the options table.', 'wpsso' ), $options_name );
@@ -399,7 +398,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			// add any missing options from the defaults, unless sanitizing for a module 
 			// (default values will be removed anyway)
-			if ( $mod === false ) {
+			if ( false === $mod ) {
 				foreach ( $def_opts as $key => $def_val ) {
 					if ( ! empty( $key ) && ! isset( $opts[$key] ) ) {
 						$opts[$key] = $def_val;
@@ -417,7 +416,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Adjust Dependent Options
 			 *
 			 * All options (site and meta as well) are sanitized here, so always use 
@@ -465,7 +464,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				unset( $opts['seo_desc'] );
 			}
 
-			if ( $mod === false ) {
+			if ( false === $mod ) {
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 					if ( empty( $info['update_auth'] ) ) {
 						continue;
@@ -798,7 +797,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$saved = update_option( $options_name, $opts );		// auto-creates options with autoload = yes
 			}
 
-			if ( $saved === true ) {
+			if ( true === $saved ) {
 				// silently save options on activate
 				if ( ! $has_new_options && ( $has_diff_options || $prev_version !== $opts['options_version'] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -950,7 +949,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'fb_admins':
 					return 'url_base';
 					break;
-				/*
+				/**
 				 * Must be a URL.
 				 *
 				 * Exceptions:

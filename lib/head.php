@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -188,7 +187,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Save the first image and video information found. Assumes array key order
 			 * defined by SucomUtil::get_mt_prop_image() and SucomUtil::get_mt_prop_video().
 			 */
@@ -237,7 +236,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Save meta tag values for later sorting in list tables.
 			 */
 			foreach ( WpssoMeta::get_sortable_columns() as $col_idx => $col_info ) {
@@ -294,7 +293,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					break;
 
 				case 'preg':
-					/*
+					/**
 					 * Some HTML optimization plugins/services may remove the double-quotes from the name attribute, 
 					 * along with the trailing space and slash characters, so make these optional in the regex.
 					 */
@@ -393,7 +392,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( $cache_exp_secs > 0 ) {
-				/*
+				/**
 				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 				 * less in length. If using a site transient, it should be 40 characters or less in length.
 				 */
@@ -442,29 +441,29 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$author_id = WpssoUser::get_author_id( $mod );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'author_id = '.( $author_id === false ? 'false' : $author_id ) );
+				$this->p->debug->log( 'author_id = '.( false === $author_id ? 'false' : $author_id ) );
 			}
 
-			/*
+			/**
 			 * Open Graph - define first to pass the mt_og array to other methods.
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding open graph meta tags', 'wpsso' ) ) : false;
 			$mt_og = $this->p->og->get_array( $mod, $mt_og, $crawler_name );
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
-			/*
+			/**
 			 * Weibo
 			 */
 			$mt_weibo = $this->p->weibo->get_array( $mod, $mt_og, $crawler_name );
 
-			/*
+			/**
 			 * Twitter Cards
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) ) : false;
 			$mt_tc = $this->p->tc->get_array( $mod, $mt_og, $crawler_name );
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
-			/*
+			/**
 			 * Name / SEO meta tags
 			 */
 			$mt_name = array();
@@ -491,31 +490,31 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$mt_name = (array) apply_filters( $this->p->lca.'_meta_name', $mt_name, $mod );
 
-			/*
+			/**
 			 * Link relation tags
 			 */
 			$link_rel = $this->p->link_rel->get_array( $mod, $mt_og, $crawler_name, $author_id );
 
-			/*
+			/**
 			 * Schema meta tags
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding schema meta tags', 'wpsso' ) ) : false;
 			$mt_schema = $this->p->schema->get_meta_array( $mod, $mt_og, $crawler_name );
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
-			/*
+			/**
 			 * JSON-LD script
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) ) : false;
 			$mt_json_array = $this->p->schema->get_json_array( $mod, $mt_og, $crawler_name );
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
-			/*
+			/**
 			 * Generator meta tags
 			 */
 			$mt_generators['generator'] = $this->p->check->get_ext_list();
 
-			/*
+			/**
 			 * Combine and return all meta tags
 			 */
 			$mt_og = $this->p->og->sanitize_array( $mod, $mt_og );	// unset mis-matched og_type meta tags
@@ -550,7 +549,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $head_array[$cache_index];
 		}
 
-		/*
+		/**
 		 * Loops through the arrays and calls get_single_mt() for each
 		 */
 		private function get_mt_array( $tag, $type, array &$mt_array, array &$mod ) {
@@ -587,7 +586,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$use_video_image = true;
 
 							if ( isset( $dd_val['og:video:type'] ) ) {
-								/*
+								/**
 								 * og:video:has_image will be false if ithere is no preview 
 								 * image, or the preview image is a duplicate.
 								 */
@@ -745,7 +744,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$this->p->debug->log( $log_prefix.' value is '.WPSSO_UNDEF_INT.' (skipped)' );
 					}
 				} else {
-					/*
+					/**
 					 * Encode and escape all values, regardless if the meta tag is enabled or not.
 					 * If the meta tag is enabled, HTML will be created and saved in $parts[0].
 					 */

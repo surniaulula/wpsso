@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class Minify_CSS_Compressor
  * @package Minify

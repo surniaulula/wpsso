@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -48,7 +47,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				add_filter( 'manage_'.$this->query_tax_slug.'_custom_column', 
 					array( &$this, 'get_column_content' ), 10, 3 );
 
-				/*
+				/**
 				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
 				 * to set the column orderby for post, term, and user edit tables.
 				 *
@@ -106,7 +105,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$mod['id'] = (int) $mod_id;
 			$mod['name'] = 'term';
 			$mod['obj'] =& $this;
-			/*
+			/**
 			 * Term
 			 */
 			$mod['is_term'] = true;
@@ -121,11 +120,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $posts_per_page === false ) {
+			if ( false === $posts_per_page ) {
 				$posts_per_page = apply_filters( $this->p->lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
-			if ( $paged === false ) {
+			if ( false === $paged ) {
 				$paged = get_query_var( 'paged' );
 			}
 
@@ -411,7 +410,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public static function get_term_meta( $term_id, $key_name, $single = false ) {
-			$term_meta = $single === false ? array() : '';
+
+			$term_meta = false === $single ? array() : '';
 
 			if ( self::use_meta_table( $term_id ) ) {
 				$term_meta = get_term_meta( $term_id, $key_name, $single );	// since wp v4.4
@@ -428,14 +428,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 							delete_option( $key_name.'_term_'.$term_id );
 							$term_meta = get_term_meta( $term_id, $key_name, $single );
 						} else {
-							$term_meta = $single === false ? 
-								array( $opt_term_meta ) : $opt_term_meta;
+							$term_meta = false === $single ? array( $opt_term_meta ) : $opt_term_meta;
 						}
 					}
 				}
 			} elseif ( ( $opt_term_meta = get_option( $key_name.'_term_'.$term_id, null ) ) !== null ) {
-				$term_meta = $single === false ? 
-					array( $opt_term_meta ) : $opt_term_meta;
+				$term_meta = false === $single ? array( $opt_term_meta ) : $opt_term_meta;
 			}
 
 			return $term_meta;
@@ -462,7 +460,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			static $local_cache = null;
 			if ( $local_cache === null )	{	// optimize and check only once
 				if ( function_exists( 'get_term_meta' ) && get_option( 'db_version' ) >= 34370 ) {
-					if ( $term_id === false || ! wp_term_is_shared( $term_id ) ) {
+					if ( false === $term_id || ! wp_term_is_shared( $term_id ) ) {
 						$local_cache = true;
 					} else {
 						$local_cache = false;

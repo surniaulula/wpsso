@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -18,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.11',		// plugin version
+					'version' => '3.48.12-dev.1',		// plugin version
 					'opt_version' => '572',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
@@ -841,7 +840,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_recipeyield' => 1,		// Schema Recipe
 					'add_meta_itemprop_recipeingredient' => 1,	// Schema Recipe (supersedes ingredients)
 					'add_meta_itemprop_recipeinstructions' => 1,	// Schema Recipe
-					/*
+					/**
 					 * Advanced Settings
 					 */
 					// Plugin Settings Tab
@@ -990,7 +989,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'site_defaults' => array(
 					'options_version' => '',		// example: -wpsso512pro-wpssoum3gpl
 					'options_filtered' => false,
-					/*
+					/**
 					 * Advanced Settings
 					 */
 					// Plugin Settings Tab
@@ -1133,7 +1132,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'wp' => array(				// wordpress
 				'label' => 'WordPress',
-				/*
+				/**
 				 * https://codex.wordpress.org/Supported_Versions
 				 *
 				 * The only current officially supported version is WordPress 4.7.1. Previous major
@@ -1599,7 +1598,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'UsedCondition' => 'used',
 					),
 				),
-				/*
+				/**
 				 * WpssoSchema::get_schema_types_array() flattens the array, so AVOID DUPLICATE KEY NAMES.
 				 *
 				 * https URLs are preferred - for more info, see https://schema.org/docs/faq.html#19:
@@ -2248,7 +2247,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Sort the 'plugin' array by each extension's 'name' value.
 		 */
 		public static function get_ext_sorted( $filter_cf = false ) {
@@ -2331,7 +2330,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_UPDATE_NAG_BORDER'] = '1px solid #33cc33';	// notice nag border
 			$var_const['WPSSO_UPDATE_NAG_BGCOLOR'] = '#e0f7e0';		// notice nag background color
 
-			/*
+			/**
 			 * WPSSO option and meta array names
 			 */
 			$var_const['WPSSO_TS_NAME'] = 'wpsso_timestamps';
@@ -2343,7 +2342,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_PREF_NAME'] = '_wpsso_pref';			// user meta
 			$var_const['WPSSO_POST_CHECK_NAME'] = 'wpsso_post_head_count';	// duplicate check counter
 
-			/*
+			/**
 			 * WPSSO option and meta array alternate names
 			 */
 			$var_const['WPSSO_OPTIONS_NAME_ALT'] = 'ngfb_options';			// fallback name
@@ -2351,7 +2350,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_META_NAME_ALT'] = '_ngfb_meta';			// fallback name
 			$var_const['WPSSO_PREF_NAME_ALT'] = '_ngfb_pref';			// fallback name
 
-			/*
+			/**
 			 * WPSSO hook priorities
 			 */
 			$var_const['WPSSO_ADD_MENU_PRIORITY'] = -20;
@@ -2364,7 +2363,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_FOOTER_PRIORITY'] = 100;
 			$var_const['WPSSO_SEO_FILTERS_PRIORITY'] = 100;
 
-			/*
+			/**
 			 * WPSSO cURL settings
 			 */
 			$var_const['WPSSO_PHP_CURL_CAINFO'] = ABSPATH.WPINC.'/certificates/ca-bundle.crt';
@@ -2425,7 +2424,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		public static function load_lib( $ret = false, $filespec = '', $classname = '' ) {
-			if ( $ret === false && ! empty( $filespec ) ) {
+			if ( false === $ret && ! empty( $filespec ) ) {
 				$filepath = WPSSO_PLUGINDIR.'lib/'.$filespec.'.php';
 				if ( file_exists( $filepath ) ) {
 					require_once $filepath;

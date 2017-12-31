@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -49,7 +48,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					$avail[$sub][$id] = false;	// default value
 
 					switch ( $sub.'-'.$id ) {
-						/*
+						/**
 						 * 3rd Party Plugins
 						 *
 						 * Prefer to check for class names than plugin slugs for 
@@ -113,7 +112,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'social-buddypress':
 							$chk['plugin'] = 'buddypress/bp-loader.php';
 							break;
-						/*
+						/**
 						 * Pro Version Features / Options
 						 */
 						case 'media-facebook':
@@ -252,7 +251,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			} else return self::$c[$kn] = false;
 			$on = 'plugin_'.$lca.'_tid';
 			$ins = is_dir( $pdir.'lib/pro/' ) ? $rv : false;
-			return self::$c[$kn] = $lic === true ?
+			return self::$c[$kn] = true === $lic ?
 				( ( ! empty( $this->p->options[$on] ) &&
 					$ins && class_exists( 'SucomUpdate' ) &&
 						( $uerr = SucomUpdate::get_umsg( $lca ) ?

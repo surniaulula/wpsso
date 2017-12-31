@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -255,7 +254,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$schema_types = $this->get_schema_types_array( true );	// $flatten = true
 			$type_id = null;
 
-			/*
+			/**
 			 * Custom Schema Type from Post, Term, or User Meta
 			 */
 			if ( $use_mod_opts ) {
@@ -416,7 +415,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $cache_exp_secs;
 		}
 
-		/*
+		/**
 		 * By default, returns a one-dimensional (flat) array of schema types, otherwise returns a 
 		 * multi-dimensional array of all schema types, including cross-references for sub-types with 
 		 * multiple parent types.
@@ -495,7 +494,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Add array cross-references for schema sub-types that exist under more than one type.
 		 * For example, Thing > Place > LocalBusiness also exists under Thing > Organization > LocalBusiness.
 		 */
@@ -503,31 +502,31 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$thing =& $schema_types['thing'];	// quick ref variable for the 'thing' array
 
-			/*
+			/**
 			 * Intangible > Enumeration
 			 */
 			$thing['intangible']['enumeration']['medical.enumeration']['medical.specialty'] =&
 				$thing['intangible']['enumeration']['specialty']['medical.specialty'];
 
-			/*
+			/**
 			 * Organization > Local Business
 			 */
 			$thing['organization']['local.business'] =& 
 				$thing['place']['local.business'];
 
-			/*
+			/**
 			 * Organization > Medical Organization
 			 */
 			$thing['organization']['medical.organization']['hospital'] =& 
 				$thing['place']['local.business']['emergency.service']['hospital'];
 
-			/*
+			/**
 			 * Place > Accommodation
 			 */
 			$thing['place']['accommodation']['house']['house.single.family'] =&
 				$thing['place']['accommodation']['house']['residence.single.family'];
 
-			/*
+			/**
 			 * Place > Civic Structure
 			 */
 			$thing['place']['civic.structure']['campground'] =&
@@ -548,7 +547,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$thing['place']['civic.structure']['stadium.or.arena'] =&
 				$thing['place']['local.business']['sports.activity.location']['stadium.or.arena'];
 
-			/*
+			/**
 			 * Place > Local Business
 			 */
 			$thing['place']['local.business']['dentist.organization'] =&
@@ -701,7 +700,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$context_value = $match[1];
 				$type_value = $match[2];
 
-				/*
+				/**
 				 * Check for schema extension (example: https://health-lifesci.schema.org).
 				 *
 				 * $context_value = array(
@@ -828,7 +827,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return array();
 		}
 
-		/*
+		/**
 		 * json_data can be null, so don't cast an array on the input argument. 
 		 *
 		 * The @context value can be an array if the schema type is an extension.
@@ -879,7 +878,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return false;
 		}
 
-		/*
+		/**
 		 * JSON-LD Script Array
 		 *
 		 * $mt_og must be passed by reference to assign the schema:type internal meta tags.
@@ -916,7 +915,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'head schema type id is '.$page_type_id.' ('.$page_type_url.')' );
 			}
 
-			/*
+			/**
 			 * Include WebSite, Organization, and/or Person markup on the home page.
 			 * Note that the custom 'site_org_type' may be a sub-type of organization, 
 			 * and may be filtered as a local.business.
@@ -934,7 +933,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$page_type_ids['person'] = $this->p->options['schema_add_home_person'];
 			}
 
-			/*
+			/**
 			 * Could be an organization, website, or person, so include last to 
 			 * re-enable (if disabled by default).
 			 */
@@ -942,12 +941,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$page_type_ids[$page_type_id] = true;
 			}
 
-			/*
+			/**
 			 * See https://developers.google.com/search/docs/data-types/breadcrumbs for more info.
 			 */
 			//$page_type_ids['breadcrumb.list'] = $this->p->options['schema_add_breadcrumbs'];
 
-			/*
+			/**
 			 * Array (
 			 *	[product] => true
 			 *	[website] => true
@@ -1003,7 +1002,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
 
-				/*
+				/**
 				 * Sanitize the @id and @type properties and encode the json data in an HTML script block.
 				 */
 				if ( ! empty( $json_data ) && is_array( $json_data ) ) {
@@ -1073,7 +1072,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $ret;
 		}
 
-		/*
+		/**
 		 * JSON-LD Data Array
 		 *
 		 */
@@ -1086,7 +1085,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$cache_index = false;
 			$cache_data = false;
 
-			/*
+			/**
 			 * $page_type_id is false when called by WpssoJsonSchema::get_single_post_data().
 			 *
 			 * Optimize and use $page_type_id (when not false) as a signal to check if we 
@@ -1096,7 +1095,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * false), then don't bother checking because we wouldn't be called if the cached 
 			 * data existed. ;-)
 			 */
-			if ( $page_type_id === false ) {
+			if ( false === $page_type_id ) {
 				$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
 
 			} elseif ( $is_main && $mod['is_post'] && $mod['id'] && method_exists( 'WpssoJsonSchema', 'get_mod_cache_data' ) ) {	// since wpsso json v1.18.0
@@ -1146,7 +1145,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * If this is a single post, save the json data to the transient cache to optimize the 
 			 * creation of Schema JSON-LD for archive type pages like Blog, CollectionPage, ProfilePage,
 			 * and SearchResultsPage.
@@ -1172,7 +1171,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $json_data;
 		}
 
-		/*
+		/**
 		 * Adds a $json_data array element and returns a reference to 0 or 1. If the cache does not contain an existing entry,
 		 * a new cache entry is created (as false) and a reference to that cache entry is returned.
 		 */
@@ -1196,7 +1195,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$action_name = 'using';
 				$single_data =& $local_cache[$mod['name']][$mod['id']][$single_name][$single_id];
 
-				if ( $single_data === false ) {
+				if ( false === $single_data ) {
 					$single_added = 0;
 				} else {
 					if ( empty( $list_element ) ) {
@@ -1214,7 +1213,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( $action_name.' '.$single_name.' cache data for mod id '.$mod['id'].
-					' / '.$single_name.' id '.( $single_id === false ? 'is false' : $single_id ) );
+					' / '.$single_name.' id '.( false === $single_id ? 'is false' : $single_id ) );
 			}
 
 			return $single_added;	// 0, 1, or false
@@ -1228,7 +1227,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$single_type_url = $list_element ? false : self::get_data_type_url( $json_data );
 			$single_type_from = 'inherited';
 
-			if ( $single_type_url === false ) {
+			if ( false === $single_type_url ) {
 				if ( empty( $opts[$key] ) || $opts[$key] === 'none' ) {
 					$single_type_id = $default_id;
 					$single_type_url = $wpsso->schema->get_schema_type_url( $default_id );
@@ -1247,11 +1246,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return array( $single_type_id, $single_type_url );
 		}
 
-		/*
+		/**
 		 * Sanitation used by filters to return their data.
 		 */
 		public static function return_data_from_filter( $json_data, $ret_data, $is_main = false ) {
-			/*
+			/**
 			 * Property:
 			 *	mainEntityOfPage as https://schema.org/WebPage
 			 *
@@ -1283,7 +1282,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * https://schema.org/WebSite for Google
 		 */
 		public function filter_json_data_https_schema_org_website( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
@@ -1304,7 +1303,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Potential Action (SearchAction, OrderAction, etc.)
 			 */
 			$action_data = array();
@@ -1332,7 +1331,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
 
-		/*
+		/**
 		 * https://schema.org/Organization social markup for Google
 		 */
 		public function filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
@@ -1366,7 +1365,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			// possibly inherit the schema type
 			$ret = self::get_data_context( $json_data );	// returns array() if no schema type found
 
-		 	/*
+		 	/**
 			 * $org_id can be 'none', 'site', or a number (including 0).
 		 	 * $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
 			 * do not provide localized option names - the method will fetch the localized values.
@@ -1376,7 +1375,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
 
-		/*
+		/**
 		 * https://schema.org/LocalBusiness social markup for Google
 		 */
 		public function filter_json_data_https_schema_org_localbusiness( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
@@ -1399,7 +1398,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
 		}
 
-		/*
+		/**
 		 * https://schema.org/Person social markup for Google
 		 */
 		public function filter_json_data_https_schema_org_person( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
@@ -1574,7 +1573,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'url' => esc_url( $media_url ),
 			) );
 
-			/*
+			/**
 			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), 
 			 * check the WordPress Media Library for a title and description.
 			 */
@@ -1696,7 +1695,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Return any 3rd party and custom post options for a given option type.
 		 * 
 		 * function wpsso_get_post_event_options( $post_id, $event_id = false ) {
@@ -1770,7 +1769,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Create and add ISO formatted date options.
 		 *
 		 * $opts_md_pre = array( 
@@ -1819,7 +1818,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Add Single Methods
 		 */
 		public static function add_single_event_data( &$json_data, array $mod, $event_id = false, $list_element = false ) {
@@ -1840,7 +1839,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Add Optional Place ID
 			 */
 			if ( $wpsso->debug->enabled ) {
@@ -1851,7 +1850,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 			$event_opts['event_place_id'] = apply_filters( $wpsso->lca.'_get_event_place_id', $event_opts['event_place_id'], $mod, $event_id );
 
-			/*
+			/**
 			 * Add ISO Date Options
 			 */
 			if ( $wpsso->debug->enabled ) {
@@ -1863,7 +1862,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'event_end_date' => 'schema_event_end',		// prefix for date, time, timezone, iso
 			) );
 
-			/*
+			/**
 			 * Add Event Offers
 			 */
 			if ( $wpsso->debug->enabled ) {
@@ -1916,7 +1915,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 					}
 
-					if ( $have_offers === false ) {
+					if ( false === $have_offers ) {
 						$have_offers = true;
 						if ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'custom event offer found - creating new offers array' );
@@ -2000,7 +1999,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 
-			/*
+			/**
 			 * Get job options from Pro modules and/or custom filters.
 			 */
 			$job_opts = apply_filters( $wpsso->lca.'_get_job_options', false, $mod, $job_id );
@@ -2011,7 +2010,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Override job options from filters with custom meta values (if any).
 			 */
 			if ( $wpsso->debug->enabled ) {
@@ -2031,7 +2030,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'...', $mod, true, false, true, 'schema_title' );
 			}
 
-			/*
+			/**
 			 * Create and add ISO formatted date options.
 			 */
 			if ( $wpsso->debug->enabled ) {
@@ -2106,7 +2105,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;
 		}
 
-		/*
+		/**
 		 * $org_id can be 'none', 'site', or a number (including 0).
 		 * $logo_key can be 'org_logo_url' or 'org_banner_url' (600x60px image) for Articles.
 		 * Do not provide localized option names - the method will fetch the localized values.
@@ -2166,7 +2165,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'telephone' => 'org_phone',
 			) );
 
-			/*
+			/**
 			 * Organization Logo
 			 *
 			 * $logo_key can be false, 'org_logo_url' (default), or 'org_banner_url' (600x60px image) for Articles
@@ -2194,7 +2193,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Place / Location Properties
 			 */
 			if ( isset( $org_opts['org_place_id'] ) && SucomUtil::is_opt_id( $org_opts['org_place_id'] ) ) {
@@ -2224,7 +2223,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Google Knowledge Graph
 			 */
 			$org_opts['org_sameas'] = isset( $org_opts['org_sameas'] ) ? $org_opts['org_sameas'] : array();
@@ -2345,7 +2344,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'telephone' => 'person_phone',
 			) );
 
-			/*
+			/**
 			 * Images
 			 */
 			if ( ! empty( $person_opts['person_og_image'] ) ) {
@@ -2354,7 +2353,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Google Knowledge Graph
 			 */
 			$person_opts['person_sameas'] = apply_filters( $wpsso->lca.'_json_data_single_person_sameas',
@@ -2426,7 +2425,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'priceRange' => 'place_price_range',
 			) );
 
-			/*
+			/**
 			 * Property:
 			 *	address as https://schema.org/PostalAddress
 			 */
@@ -2443,7 +2442,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret['address'] = self::get_schema_type_context( 'https://schema.org/PostalAddress', $address );
 			}
 
-			/*
+			/**
 			 * Property:
 			 *	geo as https://schema.org/GeoCoordinates
 			 */
@@ -2456,7 +2455,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret['geo'] = self::get_schema_type_context( 'https://schema.org/GeoCoordinates', $geo );
 			}
 
-			/*
+			/**
 			 * Property:
 			 *	openingHoursSpecification as https://schema.org/OpeningHoursSpecification
 			 */
@@ -2486,7 +2485,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret['openingHoursSpecification'] = $opening_hours;
 			}
 
-			/*
+			/**
 			 * FoodEstablishment schema type properties
 			 */
 			if ( ! empty( $place_opts['place_business_type'] ) && $place_opts['place_business_type'] !== 'none' ) {
@@ -2516,7 +2515,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Image
 			 */
 			if ( ! empty( $place_opts['place_img_id'] ) || ! empty( $place_opts['place_img_url'] ) ) {
@@ -2542,7 +2541,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;
 		}
 
-		/*
+		/**
 		 * Meta Name Array
 		 */
 		public function get_meta_array( array &$mod, array &$mt_og, $crawler_name ) {
@@ -2623,7 +2622,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * LocalBusiness markup requires an image, and the address, priceRange, 
 		 * and telephone properties are recommended.
 		 */
@@ -2664,7 +2663,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * NoScript Meta Name Array
 		 */
 		public function get_noscript_array( array &$mod, array &$mt_og, $crawler_name ) {
@@ -2725,7 +2724,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			}
 
-			if ( $crawler_name === false ) {
+			if ( false === $crawler_name ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 			}
 

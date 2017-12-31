@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -12,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WpssoPost' ) ) {
 
-	/*
+	/**
 	 * This class is extended by gpl/util/post.php or pro/util/post.php
 	 * and the class object is created as $this->p->m['util']['post'].
 	 */
@@ -75,7 +74,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_filter( 'manage_upload_sortable_columns', array( &$this, 'add_sortable_columns' ), 10, 1 );
 				add_action( 'manage_media_custom_column', array( &$this, 'show_column_content' ), 10, 2 );
 
-				/*
+				/**
 				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
 				 * to set the column orderby for post, term, and user edit tables.
 				 */
@@ -122,7 +121,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod['id'] = (int) $mod_id;
 			$mod['name'] = 'post';
 			$mod['obj'] =& $this;
-			/*
+			/**
 			 * Post
 			 */
 			$mod['is_post'] = true;
@@ -144,11 +143,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $posts_per_page === false ) {
+			if ( false === $posts_per_page ) {
 				$posts_per_page = apply_filters( $this->p->lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
-			if ( $paged === false ) {
+			if ( false === $paged ) {
 				$paged = get_query_var( 'paged' );
 			}
 
@@ -169,7 +168,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $posts;
 		}
 
-		/*
+		/**
 		 * Filters the wp shortlink for a post - returns the shortened sharing URL.
 		 * The wp_shortlink_wp_head() function calls wp_get_shortlink( 0, 'query' );
 		 */
@@ -202,7 +201,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $shortlink;	// return original shortlink
 			}
 
-			/*
+			/**
 			 * The WordPress link-template.php functions call wp_get_shortlink() with a post ID of 0.
 			 * Recreate the same code here to get a real post ID and create a default shortlink (if required).
 			 */
@@ -631,7 +630,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Fetch HTML using the Facebook user agent to get Open Graph meta tags.
 			 */
 			$curl_opts = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
@@ -640,11 +639,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$warning_secs = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_WARNING_SECS', 2.5 );
 			$timeout_secs = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_TIMEOUT_SECS', 3.0 );
 
-			if ( $in_secs === true ) {
+			if ( true === $in_secs ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'fetched '.$check_url.' from transient cache' );
 				}
-			} elseif ( $in_secs === false ) {
+			} elseif ( false === $in_secs ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'fetched '.$check_url.' returned a failure' );
 				}

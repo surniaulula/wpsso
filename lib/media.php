@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -395,7 +394,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			if ( $use_full === true ) {
+			if ( true === $use_full ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'requesting full size instead - image dimensions same as '.
 						$size_name.' ('.$size_info['width'].'x'.$size_info['height'].')' );
@@ -474,7 +473,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 	
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'WordPress image_make_intermediate_size() reported '.
-									( $resized === false ? 'failure' : 'success' ) );
+									( false === $resized ? 'failure' : 'success' ) );
 							}
 	
 							if ( $resized !== false ) {
@@ -493,7 +492,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			// some image_downsize hooks may return only 3 elements, use array_pad to sanitize the returned array
 			list( $img_url, $img_width, $img_height, $img_intermediate ) = apply_filters( $lca.'_image_downsize',
-				array_pad( image_downsize( $pid, ( $use_full === true ? 'full' : $size_name ) ), 4, null ), $pid, $size_name );
+				array_pad( image_downsize( $pid, ( true === $use_full ? 'full' : $size_name ) ), 4, null ), $pid, $size_name );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'image_downsize returned '.$img_url.' ('.$img_width.'x'.$img_height.')' );
@@ -728,10 +727,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						default:
 
 							// prevent duplicates by silently ignoring ngg images (already processed by the ngg module)
-							if ( $this->p->avail['media']['ngg'] === true &&
-								! empty( $this->p->m['media']['ngg'] ) &&
-									( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) ||
-										preg_match( '/^('.$img_preg['ngg_src'].')$/', $attr_value ) ) ) {
+							if ( true === $this->p->avail['media']['ngg'] && ! empty( $this->p->m['media']['ngg'] ) &&
+								( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) ||
+									preg_match( '/^('.$img_preg['ngg_src'].')$/', $attr_value ) ) ) {
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'silently ignoring ngg image for '.$attr_name );
 								}
@@ -833,7 +831,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$og_single_image['og:image'] = apply_filters( $this->p->cf['lca'].'_rewrite_image_url',
 							$this->p->util->fix_relative_url( $og_single_image['og:image'] ) );
 
-						if ( $check_dupes === false || $this->p->util->is_uniq_url( $og_single_image['og:image'], $size_name ) ) {
+						if ( false === $check_dupes || $this->p->util->is_uniq_url( $og_single_image['og:image'], $size_name ) ) {
 							if ( $this->p->util->push_max( $og_ret, $og_single_image, $num ) ) {
 								return $og_ret;
 							}
@@ -1250,7 +1248,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/*
+			/**
 			 * Fetch HTML using the Facebook user agent to get Open Graph meta tags.
 			 *
 			 * get_head_meta( $request, $query, $libxml_errors, $curl_opts );
@@ -1339,7 +1337,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							case ( strpos( $meta_match, 'name-twitter:app:' ) === 0 ? true : false ):	// Twitter Apps
 								if ( ! empty( $a['content'] ) ) {
 									if ( preg_match( '/^twitter:app:([a-z]+):([a-z]+)$/', $meta_name, $matches ) ) {
-										$og_video['og:video:'.$matches[2].'_'.$matches[1]] = $a['content'];
+										$og_video['og:video:'.$matches[2].'_'.$matches[1]] = SucomUtil::decode_html( $a['content'] );
 									}
 								}
 								break;
@@ -1353,7 +1351,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							case 'itemprop-embedUrl':
 							case 'itemprop-embedURL':
 								if ( ! empty( $a['content'] ) ) {
-									$og_video['og:video:embed_url'] = $a['content'];
+									$og_video['og:video:embed_url'] = SucomUtil::decode_html( $a['content'] );
 								}
 								break;
 						}

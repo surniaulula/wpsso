@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -67,7 +66,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			'name' => false,
 			'obj' => false,
 			'use_post' => false,
-			/*
+			/**
 			 * Post
 			 */
 			'is_post' => false,		// is post module
@@ -79,12 +78,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			'post_status' => false,
 			'post_author' => false,
 			'post_coauthors' => array(),
-			/*
+			/**
 			 * Term
 			 */
 			'is_term' => false,		// is term module
 			'tax_slug' => '',		// empty string by default
-			/*
+			/**
 			 * User
 			 */
 			'is_user' => false,		// is user module
@@ -183,17 +182,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				! empty( $head_info['og:image:height'] ) && $head_info['og:image:height'] > 0 ) ?
 					true : false;
 
-			$is_sufficient = ( $have_sizes === true && 
+			$is_sufficient = true === $have_sizes && 
 				$head_info['og:image:width'] >= $prev_width && 
-					$head_info['og:image:height'] >= $prev_height ) ?
+					$head_info['og:image:height'] >= $prev_height ?
 						true : false;
 
 			if ( ! empty( $media_url ) ) {
-				if ( $have_sizes === true ) {
+				if ( true === $have_sizes ) {
 					$image_preview_html = '<div class="preview_img" style="
-					background-size:'.( $is_sufficient === true ?
+					background-size:'.( true === $is_sufficient ?
 						'cover' : $head_info['og:image:width'].' '.$head_info['og:image:height'] ).'; 
-					background-image:url('.$media_url.');" />'.( $is_sufficient === true ? 
+					background-image:url('.$media_url.');" />'.( true === $is_sufficient ? 
 						'' : '<p>'.sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
 							'preview image error', 'wpsso' ),
 								$prev_width.'x'.$prev_height.'px' ).'</p>' ).'</div>';
@@ -203,8 +202,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					_x( 'Image Dimensions Unknown<br/>or Not Available',
 						'preview image error', 'wpsso' ).'</p></div>';
 				}
-			} else $image_preview_html = '<div class="preview_img"><p>'.
-				_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ).'</p></div>';
+			} else {
+				$image_preview_html = '<div class="preview_img"><p>'.
+					_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ).'</p></div>';
+			}
 
 			if ( isset( $mod['post_status'] ) && $mod['post_status'] === 'auto-draft' ) {
 
@@ -388,7 +389,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $table_rows;
 		}
 
-		/*
+		/**
 		 * Return a specific option from the custom social settings meta with fallback for 
 		 * multiple option keys. If $md_idx is an array, then get the first non-empty option 
 		 * from the options array. This is an easy way to provide a fallback value for the 
@@ -411,7 +412,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			// return the whole options array
-			if ( $mixed === false ) {
+			if ( false === $mixed ) {
 				$md_val = $this->get_options( $mod_id, $mixed, $filter_opts );
 			// return the first matching index value
 			} else {
@@ -421,7 +422,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$mixed = array_unique( $mixed );	// prevent duplicate idx values
 				}
 				foreach ( $mixed as $md_idx ) {
-					if ( $md_idx === 'none' ) {	// special index keyword
+					if ( 'none' === $md_idx ) {	// special index keyword
 						return null;
 					} elseif ( empty( $md_idx ) ) {	// just in case
 						continue;
@@ -442,7 +443,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			if ( $md_val !== null ) {
 				if ( $this->p->debug->enabled ) {
 					$mod = $this->get_mod( $mod_id );
-					$this->p->debug->log( 'custom '.$mod['name'].' '.( $mixed === false ? 'options' : 
+					$this->p->debug->log( 'custom '.$mod['name'].' '.( false === $mixed ? 'options' : 
 						( is_array( $mixed ) ? implode( ', ', $mixed ) : $mixed ) ).' = '.
 						( is_array( $md_val ) ? print_r( $md_val, true ) : '"'.$md_val.'"' ) );
 				}
@@ -557,7 +558,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		protected function clear_mod_cache_types( array $mod, array $cache_types = array(), $sharing_url = false ) {
 
-			if ( $sharing_url === false ) {
+			if ( false === $sharing_url ) {
 				$sharing_url = $this->p->util->get_sharing_url( $mod );
 			}
 
@@ -657,7 +658,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$md_defs = $this->get_defaults( $mod['id'] );
 			$md_prev = $this->get_options( $mod['id'] );
 
-			/*
+			/**
 			 * Remove plugin / extension version strings.
 			 */
 			$unset_idx = array( 'options_filtered', 'options_version' );
@@ -672,7 +673,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				unset( $md_defs[$md_idx], $md_prev[$md_idx] );
 			}
 
-			/*
+			/**
 			 * Merge and sanitize the new options.
 			 */
 			$md_opts = empty( $_POST[ WPSSO_META_NAME ] ) ?			// make sure we have an array
@@ -681,7 +682,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$md_opts = array_merge( $md_prev, $md_opts );				// update the previous options array
 			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, false, $mod );	// $network = false
 
-			/*
+			/**
 			 * Check image size options (id, prefix, width, height, crop, etc.).
 			 */
 			foreach ( array( 'og', 'schema' ) as $md_pre ) {
@@ -709,7 +710,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Remove "use plugin settings", or "same as default" option values, or empty strings.
 			 */
 			foreach ( $md_opts as $md_idx => $md_val ) {
@@ -720,7 +721,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Re-number multi options (example: schema type url, recipe ingredient, recipe instruction, etc.).
 			 */
 			foreach ( $this->p->cf['opt']['cf_md_multi'] as $md_multi => $is_multi ) {
@@ -736,7 +737,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 
-			/*
+			/**
 			 * Mark the new options as current.
 			 */
 			if ( ! empty( $md_opts ) ) {

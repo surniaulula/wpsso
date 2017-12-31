@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -12,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'WpssoUser' ) ) {
 
-	/*
+	/**
 	 * This class is extended by gpl/util/user.php or pro/util/user.php
 	 * and the class object is created as $this->p->m['util']['user'].
 	 */
@@ -54,7 +53,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_filter( 'manage_users_custom_column', 
 					array( &$this, 'get_column_content',), 10, 3 );
 
-				/*
+				/**
 				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
 				 * to set the column orderby for post, term, and user edit tables.
 				 *
@@ -94,7 +93,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mod['id'] = (int) $mod_id;
 			$mod['name'] = 'user';
 			$mod['obj'] =& $this;
-			/*
+			/**
 			 * User
 			 */
 			$mod['is_user'] = true;
@@ -108,11 +107,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $posts_per_page === false ) {
+			if ( false === $posts_per_page ) {
 				$posts_per_page = apply_filters( $this->p->lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
-			if ( $paged === false ) {
+			if ( false === $paged ) {
 				$paged = get_query_var( 'paged' );
 			}
 
@@ -523,7 +522,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return $ret;
 			}
 
-			if ( $crawler_name === false ) {
+			if ( false === $crawler_name ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 			}
 
@@ -693,7 +692,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 								unset( $user_opts[$key] );
 								$is_changed = true;
 							// otherwise if we want a state, add if it's missing
-							} elseif ( ! empty( $meta_name ) && $key === false ) {
+							} elseif ( ! empty( $meta_name ) && false === $key ) {
 								$user_opts[] = $pagehook.'_'.$box_id;
 								$is_changed = true;
 							}
@@ -709,8 +708,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		// called by the WpssoRegister::uninstall_plugin() method
 		public static function delete_metabox_prefs( $user_id = false ) {
 
-			$user_id = $user_id === false ? 
-				get_current_user_id() : $user_id;
+			$user_id = false === $user_id ? get_current_user_id() : $user_id;
 
 			$cf = WpssoConfig::get_config( false, true );
 
@@ -731,7 +729,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$pagehook = get_plugin_page_hookname( $menu_slug, $parent_slug);
 			foreach ( array( 'meta-box-order', 'metaboxhidden', 'closedpostboxes' ) as $state ) {
 				$meta_key = $state.'_'.$pagehook;
-				if ( $user_id === false ) {
+				if ( false === $user_id ) {
 					foreach ( get_users( array( 'meta_key' => $meta_key ) ) as $user ) {
 						delete_user_option( $user->ID, $meta_key, true );
 					}
@@ -743,7 +741,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public static function save_pref( $user_prefs, $user_id = false ) {
 
-			$user_id = $user_id === false ? get_current_user_id() : $user_id;
+			$user_id = false === $user_id ? get_current_user_id() : $user_id;
 
 			if ( ! current_user_can( 'edit_user', $user_id ) ) {
 				return false;
@@ -766,8 +764,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public static function get_pref( $idx = false, $user_id = false ) {
-			$user_id = $user_id === false ? 
-				get_current_user_id() : $user_id;
+
+			$user_id = false === $user_id ? get_current_user_id() : $user_id;
 
 			if ( ! isset( self::$pref[$user_id]['prefs_filtered'] ) || self::$pref[$user_id]['prefs_filtered'] !== true ) {
 
@@ -808,7 +806,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		// returns the value for show_opts, or return true/false if a value to compare is provided
 		public static function show_opts( $compare = false, $user_id = false ) {
-			$user_id = $user_id === false ? get_current_user_id() : $user_id;
+			$user_id = false === $user_id ? get_current_user_id() : $user_id;
 			$value = self::get_pref( 'show_opts' );
 			if ( $compare !== false ) {
 				return $compare === $value ? true : false;

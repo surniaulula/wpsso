@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -89,7 +88,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			) );
 		}
 
-		/*
+		/**
 		 * Cleanup incorrect Yoast SEO notifications.
 		 */
 		public function cleanup_wpseo_notifications() {
@@ -131,7 +130,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Disable Yoast SEO social meta tags.
 		 */
 		public function cleanup_wpseo_filters() {
@@ -170,7 +169,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			add_filter( 'wpseo_json_ld_output', '__return_empty_array', 9000 );
 		}
 
-		/*
+		/**
 		 * Redirect from HTTP to HTTPS if the current webpage URL is not HTTPS.
 		 * A 301 redirect is considered a best practice when moving from HTTP to
 		 * HTTPS. See https://en.wikipedia.org/wiki/HTTP_301 for more info.

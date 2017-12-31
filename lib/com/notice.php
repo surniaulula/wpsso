@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -85,7 +84,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$msg_txt .= $this->get_ref_url_html();
 
-			if ( $user_id === true ) {
+			if ( true === $user_id ) {
 				$user_id = (int) get_current_user_id();
 			} else {
 				$user_id = (int) $user_id;	// false = 0
@@ -110,7 +109,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function trunc( $msg_type = '', $msg_txt = '', $dismiss_key = false, $user_id = true ) {
 
-			if ( $user_id === true ) {
+			if ( true === $user_id ) {
 				$user_ids = array( get_current_user_id() );
 			} elseif ( $user_id === 'all' ) {
 				$user_ids =& $this->get_user_ids();	// returns reference
@@ -242,7 +241,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return false;
 			}
 
-			if ( $user_id === true ) {
+			if ( true === $user_id ) {
 				$user_id = (int) get_current_user_id();
 			} else {
 				$user_id = (int) $user_id;	// false = 0
@@ -453,7 +452,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->trunc();
 
 			// don't save unless we've changed something
-			if ( $dismissed_updated === true && ! empty( $user_id ) ) {
+			if ( true === $dismissed_updated && ! empty( $user_id ) ) {
 				if ( empty( $user_dismissed ) ) {
 					delete_user_option( $user_id, $this->dis_name );
 				} else {
@@ -490,7 +489,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			echo '<!-- ' . $this->lca . ' admin notices end -->' . "\n";
 		}
 
-		/*
+		/**
 		 * Called by the WordPress 'shutdown' action.
 		 */
 		public function save_user_notices() {
@@ -511,7 +510,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		/*
+		/**
 		 * Set property values for text domain, notice label, etc.
 		 */
 		private function set_config( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
@@ -803,7 +802,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function &get_user_notices( $user_id = true, $use_cache = true ) {
 
-			if ( $user_id === true ) {
+			if ( true === $user_id ) {
 				$user_id = (int) get_current_user_id();
 			} else {
 				$user_id = (int) $user_id;	// false = 0

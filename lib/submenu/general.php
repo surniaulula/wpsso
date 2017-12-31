@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -200,7 +199,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), '', 'og_def_img_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_search' ).'</td>';
 
-					if ( $this->p->avail['media']['ngg'] === true ) {
+					if ( true === $this->p->avail['media']['ngg'] ) {
 						$table_rows['og_ngg_tags'] = '<tr class="hide_in_basic">'.
 						$this->form->get_th_html( _x( 'Add Tags from NGG Featured Image',
 							'option label', 'wpsso' ), '', 'og_ngg_tags' ).

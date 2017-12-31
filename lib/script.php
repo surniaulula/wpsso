@@ -1,5 +1,4 @@
 <?php
-
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
@@ -132,7 +131,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			);
 		}
 
-		/*
+		/**
 		 * Add jQuery to correctly follow the Install / Update link when clicked (WordPress bug).
 		 * Also adds the parent URL and settings page title as query arguments, which are then
 		 * used by WpssoAdmin class filters to return the user back to the settings page after
