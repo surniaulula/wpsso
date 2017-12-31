@@ -779,6 +779,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case 'og:video:url':
 						case 'og:video:secure_url':
 						case 'og:video:embed_url':
+						case 'al:android:url':
+						case 'al:ios:url':
+						case 'al:web:url':
 						case 'place:business:menu_url':
 						case 'place:business:order_url':
 						case 'twitter:image':
@@ -793,6 +796,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								$parts[1] = 'link';
 								$parts[4] = 'href';
 							}
+							break;
+						case 'twitter:app:url:iphone':
+						case 'twitter:app:url:ipad':
+						case 'twitter:app:url:googleplay':
+							$parts[5] = SucomUtil::esc_url_encode( $parts[5], false );	// $wp_esc_url = false
 							break;
 						// encode html entities for everything else
 						default:
