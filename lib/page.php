@@ -563,7 +563,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				static $filter_excerpt = null;
 
-				if ( $filter_excerpt === null ) {
+				if ( null === $filter_excerpt ) {
 					$filter_excerpt = empty( $this->p->options['plugin_filter_excerpt'] ) ? false : true;
 					$filter_excerpt = apply_filters( $this->p->lca.'_filter_excerpt', $filter_excerpt, $mod );
 				}

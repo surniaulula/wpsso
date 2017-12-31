@@ -2391,7 +2391,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$file_remote = isset( $this->p->cf['plugin'][$ext]['url'][$file_key] ) ? 
 				$this->p->cf['plugin'][$ext]['url'][$file_key] : false;
 
-			if ( $cache_exp_secs === null ) {
+			if ( null === $cache_exp_secs ) {
 				$cache_exp_secs = WEEK_IN_SECONDS;
 			}
 

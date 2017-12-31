@@ -241,7 +241,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->upg = new WpssoOptionsUpgrade( $this->p );
 					}
 
-					if ( $def_opts === null ) {	// only get default options once
+					if ( null === $def_opts ) {	// only get default options once
 						if ( $network ) {
 							$def_opts = $this->get_site_defaults();
 						} else {
@@ -265,7 +265,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$has_diff_options = true;	// save the options
 						}
 					} elseif ( ! $has_new_options && $has_diff_version && empty( $opts['plugin_'.$lca.'_tid'] ) ) {
-						if ( $def_opts === null ) {	// only get default options once
+						if ( null === $def_opts ) {	// only get default options once
 							$def_opts = $this->get_defaults();
 						}
 						$adv_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
@@ -332,7 +332,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				if ( $has_diff_version || $has_diff_options ) {
 					if ( ! $has_new_options ) {
-						if ( $def_opts === null ) {	// only get default options once
+						if ( null === $def_opts ) {	// only get default options once
 							if ( $network ) {
 								$def_opts = $this->get_site_defaults();
 							} else {
@@ -523,7 +523,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $option_key, $network, $mod );
 
 			// translate error messages only once
-			if ( $error_messages === null ) {
+			if ( null === $error_messages ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'translating error messages' );
 				}

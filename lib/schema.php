@@ -988,7 +988,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$is_main = null;
 				}
 
-				if ( $is_main === null ) {
+				if ( null === $is_main ) {
 					if ( $type_id === $page_type_id ) {	// this is the main entity
 						$is_main = true;
 					} else {
@@ -1266,7 +1266,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( empty( $ret_data ) ) {	// just in case - nothing to merge
 				return $json_data;
-			} elseif ( $json_data === null ) {	// just in case - nothing to merge
+			} elseif ( null === $json_data ) {	// just in case - nothing to merge
 				return $ret_data;
 			} elseif ( is_array( $json_data ) ) {
 				$json_head = array( '@id' => null, '@context' => null, '@type' => null, 'mainEntityOfPage' => null );
@@ -1349,7 +1349,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$org_id = null;
 			}
 
-			if ( $org_id === null ) {
+			if ( null === $org_id ) {
 				if ( $mod['is_home'] ) {	// static or index page
 					$org_id = 'site';
 				} else {
@@ -2210,7 +2210,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$place_id = null;
 				}
 
-				if ( $place_id === null ) {
+				if ( null === $place_id ) {
 					$place_id = $org_opts['org_place_id'];
 				} else {
 					if ( $wpsso->debug->enabled ) {

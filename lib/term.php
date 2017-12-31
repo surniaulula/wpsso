@@ -458,7 +458,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public static function use_meta_table( $term_id = false ) {
 			static $local_cache = null;
-			if ( $local_cache === null )	{	// optimize and check only once
+			if ( null === $local_cache )	{	// optimize and check only once
 				if ( function_exists( 'get_term_meta' ) && get_option( 'db_version' ) >= 34370 ) {
 					if ( false === $term_id || ! wp_term_is_shared( $term_id ) ) {
 						$local_cache = true;

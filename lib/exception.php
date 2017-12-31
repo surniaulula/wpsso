@@ -62,10 +62,11 @@ if ( ! class_exists( 'WpssoException' ) ) {
 
 			$this->p =& Wpsso::get_instance();
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
-			if ( $message === null && isset( $this->httpResultCodes[(int) $code] ) )
+			if ( null === $message && isset( $this->httpResultCodes[(int) $code] ) )
 				$message .= ' HTTP '.$code.' '.$this->httpResultCodes[(int) $code].'.';
 
 			parent::__construct( trim( $message ), $code, $previous );

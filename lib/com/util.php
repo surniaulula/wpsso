@@ -2915,16 +2915,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_true( $mixed, $allow_null = false ) {
-			$ret_bool = is_string( $mixed ) ?
-				filter_var( $mixed, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE ) : (bool) $mixed;
-		        return $ret_bool === null && ! $allow_null ?
-				false : $ret_bool;
+			$ret_bool = is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE ) : (bool) $mixed;
+		        return null === $ret_bool && ! $allow_null ? false : $ret_bool;
 		}
 
 		// converts string to boolean
 		public static function get_bool( $mixed ) {
-			return is_string( $mixed ) ?
-				filter_var( $mixed, FILTER_VALIDATE_BOOLEAN ) : (bool) $mixed;
+			return is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN ) : (bool) $mixed;
 		}
 
 		// glob() returns false on error

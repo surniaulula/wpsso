@@ -872,7 +872,7 @@ if ( ! class_exists( 'SuextMobileDetect' ) ) {
 		 * parameter is null which will default to self::DETECTION_TYPE_MOBILE.
 		 */
 		public function setDetectionType($type = null) {
-			if ($type === null) {
+			if ( null === $type ) {
 				$type = self::DETECTION_TYPE_MOBILE;
 			}
 

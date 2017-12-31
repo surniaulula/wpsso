@@ -555,7 +555,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$this->cleared_all_cache = true;	// prevent running a second time (by an external cache, for example)
 
-			if ( $clear_short_urls === null ) {
+			if ( null === $clear_short_urls ) {
 				$clear_short_urls = isset( $this->p->options['plugin_clear_short_urls'] ) ?
 					$this->p->options['plugin_clear_short_urls'] : false;
 			}

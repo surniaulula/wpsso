@@ -193,7 +193,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				'mem' => memory_get_usage( true ),
 			);
 
-			if ( $this->start_stats === null ) {
+			if ( null === $this->start_stats ) {
 				$this->start_stats = $cur_stats;
 			}
 
@@ -262,7 +262,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$from .= $stack[$function_idx]['function'];
 			}
 
-			if ( $data === null ) {
+			if ( null === $data ) {
 				$data = $this->buffer;
 				$this->buffer = array();
 			}

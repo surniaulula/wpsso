@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(
-					'version' => '3.48.12-dev.1',		// plugin version
+					'version' => '3.48.12-b.1',		// plugin version
 					'opt_version' => '572',		// increment when changing default options
 					'short' => 'WPSSO Core',	// short plugin name
 					'name' => 'WPSSO Core',
@@ -2277,7 +2277,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		public static function set_variable_constants( $var_const = null ) {
-			if ( $var_const === null ) {
+			if ( null === $var_const ) {
 				$var_const = self::get_variable_constants();
 			}
 			foreach ( $var_const as $name => $value ) {

@@ -183,7 +183,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$disabled = true;
 			}
 
-			if ( $is_assoc === null ) {
+			if ( null === $is_assoc ) {
 				$is_assoc = SucomUtil::is_assoc( $values );
 			}
 
@@ -247,7 +247,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$disabled = true;
 			}
 
-			if ( $is_assoc === null ) {
+			if ( null === $is_assoc ) {
 				$is_assoc = SucomUtil::is_assoc( $values );
 			}
 
@@ -304,7 +304,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$disabled = true;
 			}
 
-			if ( $is_assoc === null ) {
+			if ( null === $is_assoc ) {
 				$is_assoc = SucomUtil::is_assoc( $values );
 			}
 

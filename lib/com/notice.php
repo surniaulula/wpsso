@@ -30,7 +30,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
 			static $do_once = null;
-			if ( $do_once === null ) {
+			if ( null === $do_once ) {
 				$do_once = true;
 				$this->set_config( $plugin, $lca, $text_domain, $label_transl );
 				$this->add_actions();
@@ -160,7 +160,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		// restore previous reference values for admin notices
 		public function unset_ref( $url = null ) {
-			if ( $url === null || $this->is_ref_url( $url ) ) {
+			if ( null === $url || $this->is_ref_url( $url ) ) {
 				array_pop( $this->ref_cache );
 				return true;
 			} else {
@@ -204,7 +204,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		public function is_ref_url( $url = null ) {
-			if ( $url === null || $url === $this->get_ref( 'url' ) ) {
+			if ( null === $url || $url === $this->get_ref( 'url' ) ) {
 				return true;
 			} else {
 				return false;

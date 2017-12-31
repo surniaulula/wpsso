@@ -755,7 +755,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		// return sortable column keys and their query sort info
 		public static function get_sortable_columns( $col_idx = false ) { 
 			static $sort_cols = null;
-			if ( $sort_cols === null ) {
+			if ( null === $sort_cols ) {
 				$wpsso =& Wpsso::get_instance();
 				$sort_cols = (array) apply_filters( $wpsso->lca.'_get_sortable_columns', $wpsso->cf['edit']['columns'] );
 			}

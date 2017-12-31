@@ -709,12 +709,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					switch ( $key ) {
 						case 'pid':
 						case ( preg_match( '/^(image|img)/', $key ) ? true : false ):
-							if ( $og_images === null ) {	// get images only once
+							if ( null === $og_images ) {	// get images only once
 								$og_images = $this->get_all_images( 1, $size_name, $mod, false, $md_pre );
 							}
 							break;
 						case ( preg_match( '/^(vid|prev)/', $key ) ? true : false ):
-							if ( $og_videos === null && $aop ) {	// get videos only once
+							if ( null === $og_videos && $aop ) {	// get videos only once
 								$og_videos = $this->get_all_videos( 1, $mod, false, $md_pre );	// $check_dupes = false
 							}
 							break;
