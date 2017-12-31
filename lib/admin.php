@@ -134,11 +134,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $pdir );
 				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) && 
 					$aop && $this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? true : false;
-				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ? _x( 'Pro', 'package type', 'wpsso' ) : _x( 'Free', 'package type', 'wpsso' );
+				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ?
+					_x( 'Pro', 'package type', 'wpsso' ) :
+					_x( 'Free', 'package type', 'wpsso' );
 				self::$pkg[$ext]['short'] = $info['short'].' '.self::$pkg[$ext]['type'];
 				self::$pkg[$ext]['name'] = SucomUtil::get_pkg_name( $info['name'], self::$pkg[$ext]['type'] );
-				self::$pkg[$ext]['gen'] = self::$pkg[$ext]['short'].' '.( isset( $info['version'] ) ? $info['version'].'/'.
-					( self::$pkg[$ext]['aop'] ? 'L' : ( self::$pkg[$ext]['pdir'] ? 'U' : 'G' ) ) : '' );
+				self::$pkg[$ext]['gen'] = $info['short'].' '.( isset( $info['version'] ) ? $info['version'].'/'.
+					( self::$pkg[$ext]['aop'] ? 'L' : ( self::$pkg[$ext]['pdir'] ? 'U' : 'F' ) ) : '' );
 			}
 
 			foreach ( $menu_libs as $menu_lib ) {

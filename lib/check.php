@@ -265,8 +265,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					continue;
 				}
 				$ins = $this->aop( $ext, false );
-				$ext_list[] = $info['short'].( $ins ? ' Pro' : '' ).' '.
-					$info['version'].'/'.( $this->is_aop( $ext ) ? 'L' : ( $ins ? 'U' : 'G' ) );
+				$ext_list[] = $info['short'].' '.$info['version'].'/'.( $this->is_aop( $ext ) ? 'L' : ( $ins ? 'U' : 'F' ) );
 			}
 			return $ext_list;
 		}
