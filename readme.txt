@@ -390,6 +390,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed HTML entity encoding in Twitter player card URL values for YouTube videos.
 * *Developer Notes*
+	* Replaced esc_url() by esc_url_raw() to avoid HTML encoding the URLs.
 	* Minor refactoring for PHPCS compatibility checks.
 
 **Version 3.48.11 (2017/12/29)**
