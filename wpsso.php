@@ -15,14 +15,14 @@
  * Requires At Least: 3.8
  * Tested Up To: 4.9.1
  * WC Tested Up To: 3.2.6
- * Version: 3.48.12-rc.1
+ * Version: 3.48.12
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
  *      {major}         Major structural code changes / re-writes or incompatible API changes.
- *      {minor}		New functionality was added or improved in a backwards-compatible manner.
- *      {bugfix}	Backwards-compatible bug fixes or small improvements.
- *      {stage}.{level}	Pre-production release: dev < a (alpha) < b (beta) < rc (release candidate).
+ *      {minor}         New functionality was added or improved in a backwards-compatible manner.
+ *      {bugfix}        Backwards-compatible bug fixes or small improvements.
+ *      {stage}.{level} Pre-production release: dev < a (alpha) < b (beta) < rc (release candidate).
  *
  * Copyright 2012-2018 Jean-Sebastien Morisset (https://wpsso.com/)
  */
