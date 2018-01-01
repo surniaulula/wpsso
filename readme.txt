@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.12-b.2 (2017/12/31)**
+**Version 3.48.12-rc.1 (2018/01/01)**
 
 * *New Features*
 	* None
@@ -714,9 +714,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.12-b.2 =
+= 3.48.12-rc.1 =
 
-(2017/12/31) Added plugin / extension name and version to the bottom of settings pages. Fixed HTML entity encoding in Twitter player card URL values for YouTube videos.
+(2018/01/01) Added plugin / extension name and version to the bottom of settings pages. Fixed HTML entity encoding in Twitter player card URL values for YouTube videos.
 
 = 3.48.11 =
 
