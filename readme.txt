@@ -368,7 +368,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 <h3>Free / Standard Version Repositories</h3>
 
 * [GitHub](https://surniaulula.github.io/wpsso/)
-* [WordPress.org](https://wordpress.org/plugins/wpsso/developers/)
+* [WordPress.org](https://plugins.trac.wordpress.org/browser/wpsso/)
 
 <h3>Version Numbering</h3>
 
