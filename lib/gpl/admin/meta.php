@@ -22,24 +22,25 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'meta_text_rows' => array(
-					'user_text_rows' => 4,	// $table_rows, $form, $head, $mod
-					'term_text_rows' => 4,	// $table_rows, $form, $head, $mod
+					'user_text_rows' => 4,
+					'term_text_rows' => 4,
 				),
 				'meta_media_rows' => array(
-					'post_media_rows' => 4,	// $table_rows, $form, $head, $mod
-					'user_media_rows' => 4,	// $table_rows, $form, $head, $mod
-					'term_media_rows' => 4,	// $table_rows, $form, $head, $mod
+					'post_media_rows' => 4,
+					'user_media_rows' => 4,
+					'term_media_rows' => 4,
 				),
 			) );
 		}
 
 		public function filter_meta_text_rows( $table_rows, $form, $head, $mod ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$table_rows[] = '<td colspan="2" align="center">'.
-				$this->p->msgs->get( 'pro-feature-msg' ).
-				'</td>';
+				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$form_rows = array(
 				'og_title' => array(

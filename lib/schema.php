@@ -30,9 +30,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			add_action( 'add_head_attributes', array( &$this, 'add_head_attributes' ), -1000 );
 
 			if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) ) {
+
 				$filter_name = $this->p->options['plugin_head_attr_filter_name'];
-				$filter_prio = empty( $this->p->options['plugin_head_attr_filter_prio'] ) ?
-					100 : $this->p->options['plugin_head_attr_filter_prio'];
+				$filter_prio = $this->p->options['plugin_head_attr_filter_prio'];
+
 				add_filter( $filter_name, array( &$this, 'filter_head_attributes' ), $filter_prio, 1 );
 			}
 

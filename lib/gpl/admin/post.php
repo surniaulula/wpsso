@@ -21,13 +21,15 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'post_text_rows' => 4,	// $table_rows, $form, $head, $mod
+				'post_text_rows' => 4,
 			) );
 		}
 
 		public function filter_post_text_rows( $table_rows, $form, $head, $mod ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			$og_type = isset( $head['og:type'] ) ?	// just in case
 				$head['og:type'] : 'website';
