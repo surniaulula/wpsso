@@ -87,8 +87,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						$this->p->debug->log( 'enqueuing scripts for editing page' );
 					}
 
-					wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery' ) );
-					wp_enqueue_script( 'jquery-qtip', array( 'jquery' ) );
+					wp_enqueue_script( 'jquery-ui-datepicker' );
+					wp_enqueue_script( 'jquery-qtip' );
 					wp_enqueue_script( 'sucom-metabox' );
 					wp_enqueue_script( 'sucom-tooltips' );
 					wp_enqueue_script( 'wp-color-picker' );
@@ -102,6 +102,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						}
 
 						wp_enqueue_script( 'sucom-admin-media' );
+
 						wp_localize_script( 'sucom-admin-media', 'sucomMediaL10n',
 							$this->get_admin_media_script_data() );
 					}

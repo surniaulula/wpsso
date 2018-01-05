@@ -2039,12 +2039,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$hidden_rows = 0;
 
 			// use call_user_func() instead of $classname::show_opts() for PHP 5.2
-			$show_opts = class_exists( $lca.'user' ) ? 
-				call_user_func( array( $lca.'user', 'show_opts' ) ) : 'basic';
+			$show_opts = class_exists( $lca.'user' ) ? call_user_func( array( $lca.'user', 'show_opts' ) ) : 'basic';
 
 			foreach ( $table_rows as $key => $row ) {
-				if ( empty( $row ) )	// just in case
+
+				if ( empty( $row ) ) {	// just in case
 					continue;
+				}
 
 				// default row class and id attribute values
 				$tr = array(
@@ -2056,12 +2057,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				// if we don't already have a table row tag, then add one
 				if ( strpos( $row, '<tr ' ) === false ) {
-					$row = '<tr class="'.$tr['class'].'"'.
-						( empty( $tr['id'] ) ? '' : ' id="'.$tr['id'].'"' ).'>'.$row;
+					$row = '<tr class="'.$tr['class'].'"'.( empty( $tr['id'] ) ? '' : ' id="'.$tr['id'].'"' ).'>'.$row;
 				} else {
 					foreach ( $tr as $att => $val ) {
-						if ( empty( $tr[$att] ) )
+
+						if ( empty( $tr[$att] ) ) {
 							continue;
+						}
 
 						// if we're here, then we have a table row tag already
 						// count the number of rows and options that are hidden

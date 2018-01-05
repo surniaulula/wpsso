@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.48.12\n"
+"Project-Id-Version: WPSSO Core 3.48.13-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:694 lib/post.php:509 lib/term.php:299 lib/user.php:279
+#: lib/admin.php:694 lib/post.php:527 lib/term.php:303 lib/user.php:283
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2224,7 +2224,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:142 lib/meta.php:212 lib/post.php:849
+#: lib/gpl/admin/post.php:142 lib/meta.php:212 lib/post.php:867
 #: lib/pro/admin/post.php:172
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2681,7 +2681,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:409 lib/util.php:2101
+#: lib/messages.php:409 lib/util.php:2103
 msgid "No options available."
 msgstr ""
 
@@ -4249,96 +4249,96 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/post.php:625
+#: lib/post.php:643
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:628
+#: lib/post.php:646
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:656
+#: lib/post.php:674
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:658
+#: lib/post.php:676
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:660
+#: lib/post.php:678
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:662
+#: lib/post.php:680
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:673 lib/util.php:831
+#: lib/post.php:691 lib/util.php:831
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:682
+#: lib/post.php:700
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:691
+#: lib/post.php:709
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:700
+#: lib/post.php:718
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:716
+#: lib/post.php:734
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:724
+#: lib/post.php:742
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:735
+#: lib/post.php:753
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:735
+#: lib/post.php:753
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:735
+#: lib/post.php:753
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:757
+#: lib/post.php:775
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:761
+#: lib/post.php:779
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:763
+#: lib/post.php:781
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
@@ -4551,7 +4551,7 @@ msgstr ""
 msgid "adding schema for place"
 msgstr ""
 
-#: lib/script.php:130
+#: lib/script.php:131
 msgid "Use Image"
 msgstr ""
 
@@ -4995,19 +4995,19 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:454
+#: lib/user.php:458
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:508
+#: lib/user.php:512
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:509
+#: lib/user.php:513
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:510
+#: lib/user.php:514
 msgid "Yahoo Messenger"
 msgstr ""
 
@@ -5062,27 +5062,27 @@ msgid ""
 "slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2128
+#: lib/util.php:2130
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2132
+#: lib/util.php:2134
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2135
+#: lib/util.php:2137
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2139
+#: lib/util.php:2141
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2257
+#: lib/util.php:2259
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr ""
