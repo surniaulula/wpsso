@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.13-dev.2 (TBD)**
+**Version 3.48.13-dev.2 (2018/01/06)**
 
 * *New Features*
 	* None
@@ -390,7 +390,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added support for hidden input values in sortable columns for the Quick Edit form.
 
 **Version 3.48.12 (2018/01/01)**
 
@@ -727,7 +727,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.48.13-dev.2 =
 
-(TBD) None.
+(2018/01/06) Added support for hidden input values in sortable columns for the Quick Edit form.
 
 = 3.48.12 =
 
