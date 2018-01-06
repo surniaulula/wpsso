@@ -335,16 +335,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// just in case
 						$value = $this->get_meta_cache_value( $post_id, $col_info['meta_key'] );
 					}
-					if ( isset( $col_info['hidden_meta_keys'] ) && is_array( $col_info['hidden_meta_keys'] ) ) {
-						foreach( $col_info['hidden_meta_keys'] as $meta_key ) {
-							$value .= '<input name="'.$meta_key.'" type="hidden" value="'.
-								$this->get_meta_cache_value( $post_id, $meta_key ).'" readonly="readonly" />';
-						}
-					}
-					if ( isset( $col_info['hidden_meta_callbacks'] ) && is_array( $col_info['hidden_meta_callbacks'] ) ) {
-						foreach( $col_info['hidden_meta_callbacks'] as $meta_key => $meta_callback ) {
+					if ( isset( $col_info['hidden_input_callbacks'] ) && is_array( $col_info['hidden_input_callbacks'] ) ) {
+						foreach( $col_info['hidden_input_callbacks'] as $meta_key => $meta_callback ) {
 							if ( ! empty( $meta_callback ) ) {
-								$value .= '<input name="'.$meta_key.'" type="hidden" value="'.
+								$value .= "\n".'<input name="'.$meta_key.'" type="hidden" value="'.
 									call_user_func( $meta_callback, $post_id, $meta_key ).'" readonly="readonly" />';
 							}
 						}
@@ -354,7 +348,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $value;
 		}
 
-		public function get_meta_cache_value( $post_id, $meta_key ) {
+		public function get_meta_cache_value( $post_id, $meta_key, $none = '' ) {
 			$meta_cache = wp_cache_get( $post_id, 'post_meta' );	// optimize and check wp_cache first
 			if ( isset( $meta_cache[$meta_key][0] ) ) {
 				$value = (string) maybe_unserialize( $meta_cache[$meta_key][0] );
@@ -362,7 +356,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$value = (string) get_post_meta( $post_id, $meta_key, true );	// $single = true
 			}
 			if ( $value === 'none' ) {
-				$value = '';
+				$value = $none;
 			}
 			return $value;
 		}

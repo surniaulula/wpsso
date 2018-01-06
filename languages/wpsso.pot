@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:694 lib/post.php:527 lib/term.php:303 lib/user.php:283
+#: lib/admin.php:694 lib/post.php:521 lib/term.php:303 lib/user.php:283
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2224,7 +2224,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:142 lib/meta.php:212 lib/post.php:867
+#: lib/gpl/admin/post.php:142 lib/meta.php:212 lib/post.php:861
 #: lib/pro/admin/post.php:172
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2243,19 +2243,19 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/head.php:450
+#: lib/head.php:455
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:462
+#: lib/head.php:467
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:501
+#: lib/head.php:506
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:508
+#: lib/head.php:513
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -4249,96 +4249,96 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/post.php:643
+#: lib/post.php:637
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:646
+#: lib/post.php:640
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:674
+#: lib/post.php:668
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:676
+#: lib/post.php:670
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:678
+#: lib/post.php:672
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:680
+#: lib/post.php:674
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:691 lib/util.php:831
+#: lib/post.php:685 lib/util.php:831
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:700
+#: lib/post.php:694
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:709
+#: lib/post.php:703
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:718
+#: lib/post.php:712
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:734
+#: lib/post.php:728
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:742
+#: lib/post.php:736
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:753
+#: lib/post.php:747
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:753
+#: lib/post.php:747
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:753
+#: lib/post.php:747
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:775
+#: lib/post.php:769
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:779
+#: lib/post.php:773
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:781
+#: lib/post.php:775
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""

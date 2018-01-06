@@ -167,7 +167,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $value;
 		}
 
-		public function get_meta_cache_value( $term_id, $meta_key ) {
+		public function get_meta_cache_value( $term_id, $meta_key, $none = '' ) {
 			$meta_cache = wp_cache_get( $term_id, 'term_meta' );	// optimize and check wp_cache first
 			if ( isset( $meta_cache[$meta_key][0] ) ) {
 				$value = (string) maybe_unserialize( $meta_cache[$meta_key][0] );
@@ -175,7 +175,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$value = (string) self::get_term_meta( $term_id, $meta_key, true );	// $single = true
 			}
 			if ( $value === 'none' ) {
-				$value = '';
+				$value = $none;
 			}
 			return $value;
 		}
