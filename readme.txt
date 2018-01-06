@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.13-dev.2 (2018/01/06)**
+**Version 3.48.13-rc.1 (2018/01/06)**
 
 * *New Features*
 	* None
@@ -725,7 +725,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.13-dev.2 =
+= 3.48.13-rc.1 =
 
 (2018/01/06) Added support for hidden input values in sortable columns for the Quick Edit form.
 
