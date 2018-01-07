@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.48.13-rc.1\n"
+"Project-Id-Version: WPSSO Core 3.49.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2714,8 +2714,8 @@ msgstr ""
 #: lib/messages.php:427 lib/messages.php:433 lib/messages.php:439
 #: lib/messages.php:1352
 msgid ""
-"You can also enable / disable this option by hooking the '%s' filter and "
-"return true / false."
+"Advanced users can also enable / disable this option by hooking the '%s' "
+"filter and returning true or false."
 msgstr ""
 
 #: lib/messages.php:433

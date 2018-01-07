@@ -335,11 +335,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// just in case
 						$value = $this->get_meta_cache_value( $post_id, $col_info['meta_key'] );
 					}
-					if ( isset( $col_info['hidden_input_callbacks'] ) && is_array( $col_info['hidden_input_callbacks'] ) ) {
-						foreach( $col_info['hidden_input_callbacks'] as $meta_key => $meta_callback ) {
-							if ( ! empty( $meta_callback ) ) {
-								$value .= "\n".'<input name="'.$meta_key.'" type="hidden" value="'.
-									call_user_func( $meta_callback, $post_id, $meta_key ).'" readonly="readonly" />';
+					if ( isset( $col_info['post_callbacks'] ) && is_array( $col_info['post_callbacks'] ) ) {
+						foreach( $col_info['post_callbacks'] as $input_name => $input_callback ) {
+							if ( ! empty( $input_callback ) ) {
+								$value .= "\n".'<input name="'.$input_name.'" type="hidden" value="'.
+									call_user_func( $input_callback, $post_id ).'" readonly="readonly" />';
 							}
 						}
 					}
