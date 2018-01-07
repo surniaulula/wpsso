@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.48.12\n"
+"Project-Id-Version: WPSSO Core 3.49.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-01-03 07:15-0600\n"
-"PO-Revision-Date: 2018-01-03 07:15-0600\n"
+"POT-Creation-Date: 2018-01-07 08:52-0600\n"
+"PO-Revision-Date: 2018-01-07 08:52-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -84,7 +84,7 @@ msgstr "La validation du jeton nonce pour les options de réseau a échoué (mis
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:694 lib/post.php:509 lib/term.php:299 lib/user.php:279
+#: lib/admin.php:694 lib/post.php:521 lib/term.php:303 lib/user.php:283
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -2130,7 +2130,7 @@ msgid "Product Size"
 msgstr "Taille du produit"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/gpl/admin/post.php:142 lib/meta.php:212 lib/post.php:849
+#: lib/gpl/admin/post.php:142 lib/meta.php:212 lib/post.php:861
 #: lib/pro/admin/post.php:172
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -2144,19 +2144,19 @@ msgstr "Nom du champ biographique de membre BuddyPress"
 msgid "The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you've created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.)."
 msgstr "La page de profil du membre BuddyPress n'inclut pas le texte <em>À propos de vous</em> du profil utilisateur WordPress. Si vous avez créé un champ de profil BuddyPress supplémentaire pour que les membres puissent entrer leur description de profil, entrez le nom du champ ici (exemple: Informations biographiques, À propos de moi, etc.)."
 
-#: lib/head.php:450
+#: lib/head.php:455
 msgid "adding open graph meta tags"
 msgstr "ajout de balises méta open graph"
 
-#: lib/head.php:462
+#: lib/head.php:467
 msgid "adding twitter card meta tags"
 msgstr "ajout de balises méta carte twitter"
 
-#: lib/head.php:501
+#: lib/head.php:506
 msgid "adding schema meta tags"
 msgstr "ajout de balises méta schéma"
 
-#: lib/head.php:508
+#: lib/head.php:513
 msgid "adding schema json-ld markup"
 msgstr "ajout de balisage schéma json-ld"
 
@@ -2460,7 +2460,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "SVP prendre note que certains metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:409 lib/util.php:2101
+#: lib/messages.php:409 lib/util.php:2103
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -2477,17 +2477,17 @@ msgid "Showing all available options by default could prove to be overwhelming f
 msgstr "Montrer toutes les options disponibles par défaut pourrait s'avérer accablant pour les nouveaux utilisateurs."
 
 #: lib/messages.php:427
-msgid "The title values provided by WordPress may include modifications by themes and/or SEO plugins (appending the site name, for example, is common practice). Disable this option to use the original title value without modifications (default is unchecked)."
-msgstr "Les valeurs des titres fournies par WordPress peuvent inclure des modifications par des thèmes et/ou extensions SEO (ajouter le nom du site, par exemple, est une pratique courante). Désactivez cette option pour utiliser la valeur d'origine du titre sans modifications (décochée par défaut)."
+msgid "The title values provided by WordPress may include modifications by themes and/or SEO plugins (appending the site name, for example, is a common practice). Uncheck this option to always use the original unmodified title value (default is unchecked)."
+msgstr "Les valeurs des titres fournies par WordPress peuvent inclure des modifications par des thèmes et/ou extensions SEO (ajouter le nom du site, par exemple, est une pratique courante). Décochez cette option pour utiliser la valeur d'origine du titre sans modifications (décochée par défaut)."
 
 #: lib/messages.php:427 lib/messages.php:433 lib/messages.php:439
 #: lib/messages.php:1352
-msgid "You can also enable / disable this option by hooking the '%s' filter and return true / false."
-msgstr "Vous pouvez également activer / désactiver cette option en accrochant le filtre '%s' et retourner true / false."
+msgid "Advanced users can also hook the '%s' filter and return true / false to enable / disable this feature."
+msgstr "Les utilisateurs avancés peuvent également accrocher le filtre '%s' et retourner true / false pour activer / désactiver cette fonctionnalité."
 
 #: lib/messages.php:433
-msgid "Apply the WordPress 'the_content' filter to the content text (default is unchecked). The content filter renders all shortcodes, which may be required to detect images and videos added by shortcodes."
-msgstr "Appliquer le filtre WordPress 'the_content' au texte de contenu (décochée par défaut). Le filtre de contenu développe tous les shortcodes, qui peuvent être nécessaires pour détecter les images et les vidéos ajoutées par des shortcodes."
+msgid "Apply the WordPress 'the_content' filter to the content text (default is unchecked). The content filter renders all registered shortcodes, which may be required to detect images and videos added by these shortcodes."
+msgstr "Appliquer le filtre WordPress 'the_content' au texte de contenu (décochée par défaut). Le filtre de contenu développe tous les shortcodes enregistrés, qui peuvent être nécessaires pour détecter les images et les vidéos ajoutées par ces shortcodes."
 
 #: lib/messages.php:433 lib/messages.php:1352
 msgid "Some themes / plugins have badly coded content filters, so this option is disabled by default."
@@ -3590,75 +3590,75 @@ msgstr "La valeur de l'option '%s' ne peut pas être un chaine de caractère vid
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/post.php:625
+#: lib/post.php:637
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr "Vérification de balises méta en double pour %1$s..."
 
-#: lib/post.php:628
+#: lib/post.php:640
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr "Vérification de balises méta en double pour %1$s (page Web pourrait provenir du cache)..."
 
-#: lib/post.php:656
+#: lib/post.php:668
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr "Récupérer le document HTML pour %1$s a pris %2$s secondes."
 
-#: lib/post.php:658
+#: lib/post.php:670
 msgid "This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds)."
 msgstr "Cela dépasse le délai recommandé de %1$s secondes (plusieurs crawlers déconnectent après %2$s secondes)."
 
-#: lib/post.php:660
+#: lib/post.php:672
 msgid "Please consider improving the speed of your site."
 msgstr "SVP envisager d'améliorer la vitesse de votre site."
 
-#: lib/post.php:662
+#: lib/post.php:674
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:673 lib/util.php:831
+#: lib/post.php:685 lib/util.php:831
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:682
+#: lib/post.php:694
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr "Une balise &lt;html&gt; n'a pas été trouvée dans <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:691
+#: lib/post.php:703
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Aucune balises HTML %1$s ont été trouvées dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:700
+#: lib/post.php:712
 msgid "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr "Une section de balises méta %2$s n'a pas été trouvée dans <a href=\"%1$s\">%1$s</a> &mdash; peut-être qu'une extension ou service de mise en cache de page Web doit être actualisé?"
 
-#: lib/post.php:716
+#: lib/post.php:728
 msgid "The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP's PCRE library or a webpage filter corrupting the %1$s meta tags."
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer la section de balises méta %1$s &mdash; ceci pourrait être une indication d'un problème avec la bibliothèque PHP PCRE ou un filtre de page Web qui corrompt les balises méta de %1$s."
 
-#: lib/post.php:724
+#: lib/post.php:736
 msgid "Conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage."
 msgstr "Conflit détecté &mdash; votre thème ou une autre extension ajoute une balise %1$s à l'entête de cette page Web."
 
-#: lib/post.php:735
+#: lib/post.php:747
 msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:735
+#: lib/post.php:747
 msgid "The webpage may contain serious HTML syntax errors &mdash; please review the <a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any errors."
 msgstr "La page Web pourrait contenir de graves erreurs de syntaxe HTML &mdash; SVP consulter les résultats du <a href=\"%1$s\">W3C Markup Validation Service</a> et corrigez toutes les erreurs."
 
-#: lib/post.php:735
+#: lib/post.php:747
 msgid "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr "Vous pouvez ignorer toutes les erreurs d'attribut \"nopin\" sans risque, ou désactiver l'attribut \"nopin\" sous l'<a href=\"%s\">onglet de réglages Pinterest</a>."
 
-#: lib/post.php:757
+#: lib/post.php:769
 msgid "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again later)..."
 msgstr "%1$s balises méta en double trouvées. Vérification %2$s de %3$s a échoué (réessaie à suivre)..."
 
-#: lib/post.php:761
+#: lib/post.php:773
 msgid "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will keep repeating duplicate check..."
 msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) L'option de débogage est active - cette vérification sera répétée..."
 
-#: lib/post.php:763
+#: lib/post.php:775
 msgid "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) Vérification %2$s de %3$s réussi..."
 
@@ -3849,7 +3849,7 @@ msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et
 msgid "adding schema for place"
 msgstr "ajout de schéma de place"
 
-#: lib/script.php:130
+#: lib/script.php:131
 msgid "Use Image"
 msgstr "Utiliser l'image"
 
@@ -4295,19 +4295,19 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr "Carte Twitter grande image"
 
-#: lib/user.php:454
+#: lib/user.php:458
 msgid "(not a Facebook Page URL)"
 msgstr "(pas un URL de Page Facebook)"
 
-#: lib/user.php:508
+#: lib/user.php:512
 msgid "AIM"
 msgstr "AIM"
 
-#: lib/user.php:509
+#: lib/user.php:513
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/user.php:510
+#: lib/user.php:514
 msgid "Yahoo Messenger"
 msgstr "Yahoo Messenger"
 
@@ -4351,27 +4351,27 @@ msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fourn
 msgid "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent possiblement détecté &mdash le filtre WordPress %1$s a pris %2$0.2f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.2f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:2128
+#: lib/util.php:2130
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2132
+#: lib/util.php:2134
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:2135
+#: lib/util.php:2137
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2139
+#: lib/util.php:2141
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: lib/util.php:2257
+#: lib/util.php:2259
 msgctxt "option comment"
 msgid "%s extension required"
 msgstr "%s extension requise"

@@ -2706,23 +2706,23 @@ msgstr ""
 #: lib/messages.php:427
 msgid ""
 "The title values provided by WordPress may include modifications by themes "
-"and/or SEO plugins (appending the site name, for example, is common "
-"practice). Disable this option to use the original title value without "
-"modifications (default is unchecked)."
+"and/or SEO plugins (appending the site name, for example, is a common "
+"practice). Uncheck this option to always use the original unmodified title "
+"value (default is unchecked)."
 msgstr ""
 
 #: lib/messages.php:427 lib/messages.php:433 lib/messages.php:439
 #: lib/messages.php:1352
 msgid ""
-"Advanced users can also enable / disable this option by hooking the '%s' "
-"filter and returning true or false."
+"Advanced users can also hook the '%s' filter and return true / false to "
+"enable / disable this feature."
 msgstr ""
 
 #: lib/messages.php:433
 msgid ""
 "Apply the WordPress 'the_content' filter to the content text (default is "
-"unchecked). The content filter renders all shortcodes, which may be required "
-"to detect images and videos added by shortcodes."
+"unchecked). The content filter renders all registered shortcodes, which may "
+"be required to detect images and videos added by these shortcodes."
 msgstr ""
 
 #: lib/messages.php:433 lib/messages.php:1352
