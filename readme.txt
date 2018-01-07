@@ -381,16 +381,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.48.13-rc.1 (2018/01/06)**
+**Version 3.49.0 (2018/01/07)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added support for hidden input values in sortable columns for Quick Edit form options.
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added support for hidden input values in sortable columns for the Quick Edit form.
+	* Added a get_meta_cache_value() method in the WpssoPost, WpssoTerm and WpssoUser classes.
+	* Added support for a new 'post_callbacks' array when getting post column content.
 
 **Version 3.48.12 (2018/01/01)**
 
@@ -725,9 +726,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.48.13-rc.1 =
+= 3.49.0 =
 
-(2018/01/06) Added support for hidden input values in sortable columns for the Quick Edit form.
+(2018/01/07) Added support for hidden input values in sortable columns for the Quick Edit form.
 
 = 3.48.12 =
 
