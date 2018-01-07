@@ -387,6 +387,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* Added support for hidden input values in sortable columns for Quick Edit form options.
+	* Minor updates for some help and notification text, along with their French translations.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -728,7 +729,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.49.0 =
 
-(2018/01/07) Added support for hidden input values in sortable columns for the Quick Edit form.
+(2018/01/07) Added support for hidden input values in sortable columns for Quick Edit form options.
 
 = 3.48.12 =
 
