@@ -388,7 +388,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* None
 * *Bugfixes*
-	* Fixed non-static calls to the show_opts() method in WpssoUser.
+	* Fixed non-static calls to the show_opts() method in WpssoUser (props @legacycode).
 * *Developer Notes*
 	* None
 
@@ -740,7 +740,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.49.1-dev.1 =
 
-(2018/01/09) Fixed non-static calls to the show_opts() method in WpssoUser.
+(2018/01/09) Fixed non-static calls to the show_opts() method in WpssoUser (props @legacycode).
 
 = 3.49.0 =
 
