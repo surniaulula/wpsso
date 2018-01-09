@@ -381,6 +381,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.49.1-dev.1 (2018/01/09)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fixed non-static calls to the show_opts() method in WpssoUser.
+* *Developer Notes*
+	* None
+
 **Version 3.49.0 (2018/01/07)**
 
 * *New Features*
@@ -726,6 +737,10 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 		* 'wpsso_user_social_settings_tabs' to 'wpsso_user_custom_meta_tabs'.
 
 == Upgrade Notice ==
+
+= 3.49.1-dev.1 =
+
+(2018/01/09) Fixed non-static calls to the show_opts() method in WpssoUser.
 
 = 3.49.0 =
 
