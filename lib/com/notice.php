@@ -216,14 +216,25 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				if ( ! empty( $dismiss_key ) ) {
 					// if notice is dismissed, say we've already shown the notices
 					if ( $this->is_dismissed( $dismiss_key, $user_id ) ) {
+						if ( ! empty( $this->p->debug->enabled ) ) {
+							$this->p->debug->log( 'returning false: '.$dismiss_key.' is dismissed' );
+						}
 						return false;
 					}
 				}
-				if ( ! $this->has_shown ) {
-					return true;
+				if ( $this->has_shown ) {
+					if ( ! empty( $this->p->debug->enabled ) ) {
+						$this->p->debug->log( 'returning false: notices have been shown' );
+					}
+					return false;
 				}
+			} else {
+				if ( ! empty( $this->p->debug->enabled ) ) {
+					$this->p->debug->log( 'returning false: is not admin' );
+				}
+				return false;
 			}
-			return false;
+			return true;
 		}
 
 		public function can_dismiss() {
@@ -524,8 +535,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( $lca !== null ) {
 				$this->lca = $lca;
-			} elseif ( ! empty( $this->p->cf['lca'] ) ) {
-				$this->lca = $this->p->cf['lca'];
+			} elseif ( ! empty( $this->p->lca ) ) {
+				$this->lca = $this->p->lca;
 			}
 
 			if ( $text_domain !== null ) {
