@@ -841,10 +841,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * )
 		 */
 		public static function get_data_type_url( $json_data ) {
+
 			$type_url = false;
 
 			if ( empty( $json_data['@type'] ) ) {
 				return $type_url;	// stop here
+			}
+
+			if ( is_array( $json_data['@type'] ) ) {
+				$json_data['@type'] = reset( $json_data['@type'] );	// use first @type element
+				return self::get_data_type_url( $json_data );
 			}
 
 			if ( strpos( $json_data['@type'], '://' ) ) {	// @type is a complete url
@@ -963,6 +969,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			foreach ( $page_type_ids as $type_id => $is_enabled ) {
+
 				if ( ! $is_enabled ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'skipping schema type id '.$type_id.' (disabled)' );
@@ -1051,7 +1058,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$this->p->debug->log( 'added @type property is '.$json_data['@type'] );
 						}
 					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'existing @type property is '.$json_data['@type'] );
+						$this->p->debug->log( 'existing @type property is '.print_r( $json_data['@type'], true ) );	// @type can be an array.
 					}
 
 					// encode the json data in an HTML script block
