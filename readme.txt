@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.49.1-rc.1 (2018/01/10)**
+**Version 3.49.1-rc.1 (2018/01/12)**
 
 * *New Features*
 	* None
@@ -740,7 +740,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.49.1-rc.1 =
 
-(2018/01/10) Fixed non-static calls to the show_opts() method in WpssoUser (props @legacycode).
+(2018/01/12) Fixed non-static calls to the show_opts() method in WpssoUser (props @legacycode).
 
 = 3.49.0 =
 
