@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.49.1',		// Plugin version.
+					'version' => '3.50.0-dev.1',		// Plugin version.
 					'opt_version' => '572',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core',
@@ -135,6 +135,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'aioseop' => '(plugin) All in One SEO Pack',
 								'autodescription' => '(plugin) The SEO Framework',
 								'headspace2' => '(plugin) HeadSpace2 SEO',
+								'wpmetaseo' => '(plugin) WP Meta SEO',
 								'wpseo' => '(plugin) Yoast SEO',
 							),
 							'social' => array(

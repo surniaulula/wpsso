@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							$chk['plugin'] = 'buddypress-media/index.php';
 							break;
 						case 'seo-aioseop':
-							$chk['function'] = 'aioseop_init_class';	// free and pro versions
+							$chk['function'] = 'aioseop_init_class'; // Free and pro versions.
 							break;
 						case 'seo-autodescription':
 							$chk['plugin'] = 'autodescription/autodescription.php';
@@ -106,8 +106,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'seo-sq':
 							$chk['plugin'] = 'squirrly-seo/squirrly.php';
 							break;
+						case 'seo-wpmetaseo':
+							$chk['class'] = 'WpMetaSeo';
+							break;
 						case 'seo-wpseo':
-							$chk['function'] = 'wpseo_init';	// free and premium versions
+							$chk['function'] = 'wpseo_init'; // Free and premium versions.
 							break;
 						case 'social-buddypress':
 							$chk['plugin'] = 'buddypress/bp-loader.php';
@@ -169,9 +172,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					}
 
 					if ( ! empty( $chk ) ) {
-						// check class / function first to include both free and pro / premium plugins
+						/**
+						 * Check classes / functions first to include both free and pro / premium plugins,
+						 * which have different plugin slugs, but use the same class / function names.
+						 */
 						if ( isset( $chk['class'] ) || isset( $chk['function'] ) || isset( $chk['plugin'] ) ) {
-
 							if ( ( ! empty( $chk['class'] ) && class_exists( $chk['class'] ) ) ||
 								( ! empty( $chk['function'] ) && function_exists( $chk['function'] ) ) ||
 								( ! empty( $chk['plugin'] ) && SucomUtil::active_plugins( $chk['plugin'] ) ) ) {
