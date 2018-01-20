@@ -381,12 +381,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.50.0-dev.1 (TBD)**
+**Version 3.50.0-dev.1 (2018/01/20)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a check for the WP Meta SEO plugin, and a warning if its "Social sharing block" option is enabled. 
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -751,7 +751,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.50.0-dev.1 =
 
-(TBD) None.
+(2018/01/20) Added a check for the WP Meta SEO plugin, and a warning if its "Social sharing block" option is enabled. 
 
 = 3.49.1 =
 
