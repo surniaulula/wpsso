@@ -765,6 +765,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						}
 					}
 					if ( $is_admin ) {
+						$exec_count++;
 						if ( $conflicts_found ) {
 							$warn_msg = __( '%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again later)...', 'wpsso' );
 							$this->p->notice->warn( sprintf( $warn_msg, $conflicts_found, $exec_count, $max_count ) );
@@ -774,7 +775,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							} else {
 								$inf_msg = __( 'Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful...', 'wpsso' );
 							}
-							$exec_count++;
 							update_option( WPSSO_POST_CHECK_NAME, $exec_count, false );	// autoload = false
 							$this->p->notice->inf( sprintf( $inf_msg, $conflicts_found, $exec_count, $max_count ) );
 						}
