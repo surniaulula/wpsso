@@ -381,12 +381,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.50.0-dev.1 (2018/01/20)**
+**Version 3.50.0-dev.2 (2018/01/21)**
 
 * *New Features*
-	* None
+	* Added an integration module for WP Meta SEO (Pro version).
 * *Improvements*
-	* Added a check for the WP Meta SEO plugin, and a warning if its "Social sharing block" option is enabled. 
+	* Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. 
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -749,9 +749,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.50.0-dev.1 =
+= 3.50.0-dev.2 =
 
-(2018/01/20) Added a check for the WP Meta SEO plugin, and a warning if its "Social sharing block" option is enabled. 
+(2018/01/21) Added an integration module for WP Meta SEO (Pro version). Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. 
 
 = 3.49.1 =
 
