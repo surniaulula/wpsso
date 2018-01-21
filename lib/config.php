@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.50.0-dev.2',		// Plugin version.
+					'version' => '3.50.0-b.1',		// Plugin version.
 					'opt_version' => '572',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core',
@@ -2328,8 +2328,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_SCHEMA_POSTS_PER_PAGE_MAX'] = 10;
 			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH'] = 3;
 
-			$var_const['WPSSO_UPDATE_NAG_BORDER'] = '1px solid #33cc33';	// notice nag border
 			$var_const['WPSSO_UPDATE_NAG_BGCOLOR'] = '#e0f7e0';		// notice nag background color
+			$var_const['WPSSO_UPDATE_NAG_BORDER'] = '1px solid #33cc33';	// notice nag border
+			$var_const['WPSSO_UPDATE_NAG_COLOR'] = '#0f533d';		// notice nag text color
 
 			/**
 			 * WPSSO option and meta array names

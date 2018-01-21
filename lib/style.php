@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			if ( is_admin() ) {
-				add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_styles' ) );
+				add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_styles' ), -1000 );
 			}
 		}
 

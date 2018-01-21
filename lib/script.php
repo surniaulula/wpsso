@@ -22,7 +22,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ) );
+			if ( is_admin() ) {
+				add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ), -1000 );
+			}
 		}
 
 		public function admin_enqueue_scripts( $hook_name ) {

@@ -86,7 +86,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 	break;
 
 						case 'tooltip-meta-og_title':
-							$text = __( 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' );
+
+							$option_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
+								_x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' ) );
+
+							$text = __( 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' ) . ' ' . sprintf( __( 'If the %s option is enabled, the default title value may be provided by your theme or another SEO plugin.', 'wpsso' ), $option_page_link );
 						 	break;
 
 						case 'tooltip-meta-og_desc':
