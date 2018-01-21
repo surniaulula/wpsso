@@ -387,6 +387,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added an integration module for WP Meta SEO (Pro version).
 * *Improvements*
 	* Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. 
+	* Changed the tooltip colors from qTip blue to a custom green palette.
 * *Bugfixes*
 	* None
 * *Developer Notes*
