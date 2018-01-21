@@ -1240,6 +1240,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'sitesetup' => 'info',
 				),
 			),
+			'nag_colors' => array(
+				'update-nag' => array(
+					'border' => '1px solid #33cc33',
+					'background-color' => '#e0f7e0',
+					'color' => '#144e14',
+				),
+				'update-nag a' => array(
+					'color' => '#1f7e1f',
+				),
+				'update-nag a:active' => array(
+					'color' => '#279d27',
+				),
+				'update-nag a:hover' => array(
+					'color' => '#279d27',
+				),
+			),
 			'meta' => array(			// post, term, user add_meta_box() settings
 				'id' => 'sso',
 				'title' => 'Social and Search Optimization',
@@ -2327,10 +2343,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 90;
 			$var_const['WPSSO_SCHEMA_POSTS_PER_PAGE_MAX'] = 10;
 			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH'] = 3;
-
-			$var_const['WPSSO_UPDATE_NAG_BGCOLOR'] = '#e0f7e0';		// notice nag background color
-			$var_const['WPSSO_UPDATE_NAG_BORDER'] = '1px solid #33cc33';	// notice nag border
-			$var_const['WPSSO_UPDATE_NAG_COLOR'] = '#0f533d';		// notice nag text color
 
 			/**
 			 * WPSSO option and meta array names

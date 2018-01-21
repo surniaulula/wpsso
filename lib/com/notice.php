@@ -752,14 +752,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$custom_style_css = '';
 			$uca = strtoupper( $this->lca );
 
-			foreach ( array(
-				'background-color' => 'BGCOLOR',
-				'border' => 'BORDER',
-				'color' => 'COLOR',
-			) as $css_prop_name => $const_suffix ) {
-				if ( defined( $uca . '_UPDATE_NAG_' . $const_suffix ) ) {
-					$custom_style_css .= '.' . $this->lca . '-notice.update-nag { ' .
-						$css_prop_name . ':' . constant( $uca . '_UPDATE_NAG_' . $const_suffix ) . '; }' . "\n";
+			if ( isset( $this->p->cf['nag_colors'] ) ) {
+				foreach ( $this->p->cf['nag_colors'] as $css_class => $nag_colors ) {
+					foreach ( $nag_colors as $prop_name => $prop_value ) {
+						$custom_style_css .= '.' . $this->lca . '-notice.' . $css_class . '{' . $prop_name . ':' . $prop_value . ';}' . "\n";
+					}
 				}
 			}
 
