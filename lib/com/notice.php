@@ -756,10 +756,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				'background-color' => 'BGCOLOR',
 				'border' => 'BORDER',
 				'color' => 'COLOR',
-			) as $css_prop => $const_suffix ) {
+			) as $css_prop_name => $const_suffix ) {
 				if ( defined( $uca . '_UPDATE_NAG_' . $const_suffix ) ) {
 					$custom_style_css .= '.' . $this->lca . '-notice.update-nag { ' .
-						$css_prop . ':' . constant( $uca . '_UPDATE_NAG_' . $const_suffix ) . '; }' . "\n";
+						$css_prop_name . ':' . constant( $uca . '_UPDATE_NAG_' . $const_suffix ) . '; }' . "\n";
 				}
 			}
 
