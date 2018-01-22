@@ -4037,10 +4037,11 @@ msgstr ""
 msgid "Please encourage us %s by rating the plugins you use:"
 msgstr ""
 
-#: lib/messages.php:1501
+#. translators: %s is a url to the user locale extension
+#: lib/messages.php:1504
 msgid ""
-"This option is localized &mdash; you may change the WordPress locale to "
-"define alternate values for different languages."
+"This option is localized &mdash; <a href=\"%s\">you may change the WordPress "
+"locale</a> to define alternate values for different languages."
 msgstr ""
 
 #: lib/meta.php:129

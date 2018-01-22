@@ -1495,17 +1495,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = apply_filters( $lca.'_messages_side', $text, $idx, $info );
 						break;
 				}
-			} else $text = apply_filters( $lca.'_messages', $text, $idx, $info );
+			} else {
+				$text = apply_filters( $lca.'_messages', $text, $idx, $info );
+			}
 
 			if ( is_array( $info ) && ! empty( $info['is_locale'] ) ) {
-				$text .= ' '.__( 'This option is localized &mdash; you may change the WordPress locale to define alternate values for different languages.',
-					'wpsso' );
+				// translators: %s is a url to the user locale extension
+				$text .= ' ' . sprintf( __( 'This option is localized &mdash; <a href="%s">you may change the WordPress locale</a> to define alternate values for different languages.', 'wpsso' ), 'https://wordpress.org/plugins/wpsso-user-locale/' );
 			}
 
 			if ( strpos( $idx, 'tooltip-' ) === 0 && ! empty( $text ) ) {
-				$text = '<img src="'.WPSSO_URLPATH.'images/question-mark.png" width="14" height="14" class="'.
-					( isset( $info['class'] ) ? $info['class'] : $this->p->cf['form']['tooltip_class'] ).
-						'" alt="'.esc_attr( $text ).'" />';
+				$text = '<img src="' . WPSSO_URLPATH . 'images/question-mark.png" width="14" height="14" class="' .
+					( isset( $info['class'] ) ? $info['class'] : $this->p->cf['form']['tooltip_class'] ) .
+						'" alt="' . esc_attr( $text ) . '" />';
 			}
 
 			return $text;
