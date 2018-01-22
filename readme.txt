@@ -381,13 +381,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.50.0-b.1 (2018/01/21)**
+**Version 3.50.0-b.1 (2018/01/22)**
 
 * *New Features*
 	* Added an integration module for WP Meta SEO (Pro version).
 * *Improvements*
 	* Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. 
-	* Changed the tooltip colors from qTip blue to a custom green palette.
+	* Updated the tooltip colors from blue to a custom green palette.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -752,7 +752,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.50.0-b.1 =
 
-(2018/01/21) Added an integration module for WP Meta SEO (Pro version). Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. 
+(2018/01/22) Added an integration module for WP Meta SEO (Pro version). Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. Updated the tooltip colors from blue to a custom green palette.
 
 = 3.49.1 =
 
