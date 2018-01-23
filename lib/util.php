@@ -2193,20 +2193,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$alt_prefix = isset( $this->p->options['plugin_img_alt_prefix'] ) ?
 				$this->p->options['plugin_img_alt_prefix'] : 'Image:';
 
-			$text = SucomUtil::strip_shortcodes( $text );					// remove any remaining shortcodes
-			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// put everything on one line
-			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text);				// remove php
-			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text);		// remove javascript
-			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text);		// remove inline stylesheets
+			$text = SucomUtil::strip_shortcodes( $text );					// Remove any remaining shortcodes.
+			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// Put everything on one line.
+			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text);				// Remove php.
+			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text);		// Remove javascript.
+			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text);		// Remove inline stylesheets.
 
 			$text = preg_replace( '/<!--'.$this->p->lca.'-ignore-->(.*?)<!--\/'.
-				$this->p->lca.'-ignore-->/Ui', ' ', $text);				// remove text between comment strings
+				$this->p->lca.'-ignore-->/Ui', ' ', $text);				// Remove text between comment strings.
 
 			if ( $strip_tags ) {
-				$text = preg_replace( '/<\/p>/i', ' ', $text);				// replace end of paragraph with a space
-				$text_stripped = trim( strip_tags( $text ) );				// remove remaining html tags
+				$text = preg_replace( '/<\/p>/i', ' ', $text);				// Replace end of paragraph with a space.
+				$text_stripped = trim( strip_tags( $text ) );				// Remove remaining html tags.
 
-				if ( $text_stripped === '' && $use_img_alt ) {				// possibly use img alt strings if no text
+				if ( $text_stripped === '' && $use_img_alt ) {				// Possibly use img alt strings if no text.
 					if ( strpos( $text, '<img ' ) !== false &&
 						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/Ui', 
 							$text, $all_matches, PREG_PATTERN_ORDER ) ) {
