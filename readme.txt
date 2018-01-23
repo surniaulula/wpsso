@@ -387,8 +387,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* Added an integration module for WP Meta SEO (Pro version).
 * *Improvements*
-	* Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. 
 	* Updated the tooltip colors from blue to a custom green palette.
+	* Added a link to the Media Library image editing page for some image related warning notices.
+	* Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. 
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -753,7 +754,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.50.0-rc.2 =
 
-(2018/01/23) Added an integration module for WP Meta SEO (Pro version). Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. Updated the tooltip colors from blue to a custom green palette.
+(2018/01/23) Added an integration module for WP Meta SEO (Pro version). Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. Added a link to the Media Library image editing page for some image related warning notices.
 
 = 3.49.1 =
 
