@@ -290,7 +290,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_attached_images', $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
 		}
 
-		/* Use these static methods in get_attachment_image_src() to set/reset information about
+		/**
+		 * Use these static methods in get_attachment_image_src() to set/reset information about
 		 * the image being processed for down-stream filters / methods lacking this information.
 		 * They can call WpssoMedia::get_image_src_info() to retrieve the image information.
 		 */
@@ -366,46 +367,67 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			if ( isset( $img_meta['width'] ) && isset( $img_meta['height'] ) ) {
-				if ( $img_meta['width'] === $size_info['width'] &&
-					$img_meta['height'] === $size_info['height'] ) {
+
+				/**
+				 * Image dimensions are present.
+				 */
+				if ( $img_meta['width'] === $size_info['width'] && $img_meta['height'] === $size_info['height'] ) {
 					$use_full = true;
 				}
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions '.
-						$img_meta['width'].'x'.$img_meta['height'] );
+					$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions '.$img_meta['width'].'x'.$img_meta['height'] );
 				}
-			} elseif ( $this->p->debug->enabled ) {
+
+			} else {
+
+				$media_lib = __( 'Media Library', 'wpsso' );
+				$edit_url  = get_edit_post_link( $pid );
+				$func_name = 'wp_get_attachment_metadata()';
+				$regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
+
 				if ( isset( $img_meta['file'] ) ) {
+
+					/**
+					 * Image dimensions are missing, but full size image path is present.
+					 */
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions missing from image metadata' );
 					}
-					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 						$dismiss_key = 'full-size-image-'.$pid.'-dimensions-missing';
-						$this->p->notice->err( sprintf( __( 'Possible Media Library corruption detected &mdash; the full size image dimensions for image ID %1$s are missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function.', 'wpsso' ), $pid ).' '.sprintf( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins on WordPress.org</a>.', 'https://wordpress.org/plugins/search/regenerate+thumbnails/' ), true, $dismiss_key, WEEK_IN_SECONDS );
+						// translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress function name.
+						$this->p->notice->err( sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the WordPress %4$s function.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_name ).' '.$regen_msg, true, $dismiss_key, WEEK_IN_SECONDS );
 					}
+
 				} else {
+
+					/**
+					 * Both the image dimensions and full size image path are missing.
+					 */
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'full size image file path meta for '.$pid.' missing from image metadata' );
 					}
-					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 						$dismiss_key = 'full-size-image-'.$pid.'-file-path-missing';
-						$this->p->notice->err( sprintf( __( 'Possible Media Library corruption detected &mdash; the full size image file path for image ID %1$s is missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function.', 'wpsso' ), $pid ).' '.sprintf( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins on WordPress.org</a>.', 'https://wordpress.org/plugins/search/regenerate+thumbnails/' ), true, $dismiss_key, WEEK_IN_SECONDS );
+						// translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress function name.
+						$this->p->notice->err( sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the WordPress %4$s function.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_name ).' '.$regen_msg, true, $dismiss_key, WEEK_IN_SECONDS );
 					}
 				}
 			}
 
 			if ( true === $use_full ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'requesting full size instead - image dimensions same as '.
 						$size_name.' ('.$size_info['width'].'x'.$size_info['height'].')' );
 				}
-			} elseif ( strpos( $size_name, $lca.'-' ) === 0 ) {	// only resize our own custom image sizes
+
+			} elseif ( strpos( $size_name, $lca.'-' ) === 0 ) { // Only resize our own custom image sizes.
 
 				if ( $force_regen || ! empty( $this->p->options['plugin_create_wp_sizes'] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'checking image metadata for inconsistencies' );
-
 						if ( $force_regen ) {
 							$this->p->debug->log( 'force regen is true' );
 						} elseif ( empty( $img_meta['sizes'][$size_name] ) ) {
@@ -415,9 +437,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					// does the image metadata contain our image sizes?
 					if ( $force_regen || empty( $img_meta['sizes'][$size_name] ) ) {
+
 						$is_accurate_width = false;
 						$is_accurate_height = false;
+
 					} else {
+
 						// is the width and height in the image metadata accurate?
 						$is_accurate_width = ! empty( $img_meta['sizes'][$size_name]['width'] ) &&
 							$img_meta['sizes'][$size_name]['width'] == $size_info['width'] ? true : false;
@@ -467,17 +492,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 
 						if ( $this->can_make_size( $img_meta, $size_info ) ) {
+
 							$fullsizepath = get_attached_file( $pid );
-							$resized = image_make_intermediate_size( $fullsizepath,
+							$resized_meta = image_make_intermediate_size( $fullsizepath,
 								$size_info['width'], $size_info['height'], $size_info['crop'] );
 	
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'WordPress image_make_intermediate_size() reported '.
-									( false === $resized ? 'failure' : 'success' ) );
+									( false === $resized_meta ? 'failure' : 'success' ) );
 							}
 	
-							if ( $resized !== false ) {
-								$img_meta['sizes'][$size_name] = $resized;
+							if ( $resized_meta !== false ) {
+								$img_meta['sizes'][$size_name] = $resized_meta;
 								wp_update_attachment_metadata( $pid, $img_meta );
 							}
 
@@ -509,8 +535,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_size_within_limits = $this->img_size_within_limits( $pid, $size_name, $img_width, $img_height );
 
 			// 'wpsso_attached_accept_img_dims' is hooked by the WpssoProCheckImgSize class / module.
-			if ( apply_filters( $lca.'_attached_accept_img_dims', $img_size_within_limits,
-				$img_url, $img_width, $img_height, $size_name, $pid ) ) {
+			if ( apply_filters( $lca.'_attached_accept_img_dims', $img_size_within_limits, $img_url, $img_width, $img_height, $size_name, $pid ) ) {
 
 				if ( ! $check_dupes || $this->p->util->is_uniq_url( $img_url, $size_name ) ) {
 
@@ -1083,8 +1108,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 		}
 
-		// $img_name cam be an image ID or URL
-		// $src_name can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
+		/**
+		 * $img_name can be an image ID or URL.
+		 * $src_name can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
+		 */
 		public function img_size_within_limits( $img_name, $size_name, $img_width, $img_height, $src_name = '' ) {
 
 			$lca = $this->p->cf['lca'];
