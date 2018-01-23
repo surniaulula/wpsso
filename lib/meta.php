@@ -1022,16 +1022,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'num' => $num,
-					'mod_id' => $mod_id,
+					'num'         => $num,
+					'mod_id'      => $mod_id,
 					'check_dupes' => $check_dupes,
-					'md_pre' => $md_pre,
-					'mt_pre' => $mt_pre,
+					'md_pre'      => $md_pre,
+					'mt_pre'      => $mt_pre,
 				), get_class( $this ) );
 			}
 
-			$mod = $this->get_mod( $mod_id );	// required for get_content_videos()
-			$og_ret = array();
+			$mod       = $this->get_mod( $mod_id );	// required for get_content_videos()
+			$og_ret    = array();
 			$og_videos = array();
 
 			if ( empty( $mod_id ) ) {
@@ -1039,8 +1039,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
+
 				$html = $this->get_options( $mod_id, $prefix.'_vid_embed' );
-				$url = $this->get_options( $mod_id, $prefix.'_vid_url' );
+				$url  = $this->get_options( $mod_id, $prefix.'_vid_url' );
 
 				if ( ! empty( $html ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -1051,17 +1052,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 
 				if ( ! empty( $url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $url ) ) ) {
+
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$url,
-							get_class( $this ) );	// log extended class name
+						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$url, get_class( $this ) ); // Log extended class name.
 					}
-					$og_videos = $this->p->media->get_video_info( $url, 
-						WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, $check_dupes, true );	// $fallback = true
+
+					$og_videos = $this->p->media->get_video_info( $url, WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, $check_dupes, true ); // $fallback = true.
+
 					if ( $this->p->util->push_max( $og_ret, $og_videos, $num ) )  {
 						return $og_ret;
 					}
 				}
 			}
+
 			return $og_ret;
 		}
 

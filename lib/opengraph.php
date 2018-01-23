@@ -471,8 +471,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$use_prev = $mod_prev;	// use true/false/1/0 value from the custom option
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'setting use_prev to '.( empty( $use_prev ) ?
-							'false' : 'true' ).' from meta data' );
+						$this->p->debug->log( 'setting use_prev to '.( empty( $use_prev ) ? 'false' : 'true' ).' from meta data' );
 					}
 				}
 

@@ -2266,17 +2266,17 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/media.php:351
+#: lib/media.php:350
 msgid ""
 "The NextGEN Gallery integration module provided by %1$s is required to read "
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:383 lib/media.php:1127 lib/pro/util/checkimgdims.php:82
+#: lib/media.php:382 lib/media.php:1126 lib/pro/util/checkimgdims.php:82
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:386
+#: lib/media.php:385
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
@@ -2285,7 +2285,7 @@ msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
 #. function name.
-#: lib/media.php:399
+#: lib/media.php:398
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
@@ -2294,25 +2294,25 @@ msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
 #. function name.
-#: lib/media.php:413
+#: lib/media.php:412
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the WordPress %4$s function."
 msgstr ""
 
-#: lib/media.php:839
+#: lib/media.php:837
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1200
+#: lib/media.php:1199
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1220
+#: lib/media.php:1219
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -4476,12 +4476,12 @@ msgid ""
 "for the required %4$s image dimensions."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:147
+#: lib/pro/media/slideshare.php:168 lib/pro/media/vimeo.php:147
 #: lib/pro/media/wistia.php:275 lib/util.php:895
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:150
+#: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:150
 #: lib/pro/media/wistia.php:278 lib/util.php:898
 msgid ""
 "Please contact your hosting provider to have the missing function installed."

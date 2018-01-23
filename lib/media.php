@@ -51,9 +51,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		// note that $size_name can be a string or an array()
 		public function editor_max_image_size( $max_sizes = array(), $size_name = '', $context = '' ) {
 			// allow only our sizes to exceed the editor width
-			if ( is_string( $size_name ) &&
-				strpos( $size_name, $this->p->cf['lca'].'-' ) === 0 ) {
-					$max_sizes = array( 0, 0 );
+			if ( is_string( $size_name ) && strpos( $size_name, $this->p->lca . '-' ) === 0 ) {
+				$max_sizes = array( 0, 0 );
 			}
 			return $max_sizes;
 		}
@@ -176,8 +175,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 				}
 			}
-			return apply_filters( $this->p->cf['lca'].'_og_featured', $og_ret, $num,
-				$size_name, $post_id, $check_dupes, $force_regen );
+			return apply_filters( $this->p->lca . '_og_featured', $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
 		}
 
 		public function get_first_attached_image_id( $post_id ) {
@@ -265,7 +263,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 				rsort( $attach_ids, SORT_NUMERIC );
 
-				$attach_ids = array_unique( apply_filters( $this->p->cf['lca'].'_attached_image_ids', $attach_ids, $post_id ) );
+				$attach_ids = array_unique( apply_filters( $this->p->lca . '_attached_image_ids', $attach_ids, $post_id ) );
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'found '.count( $attach_ids ).' attached images for post_id '.$post_id );
 				}
@@ -287,7 +286,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			// 'wpsso_attached_images' filter is used by the buddypress module
-			return apply_filters( $this->p->cf['lca'].'_attached_images', $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
+			return apply_filters( $this->p->lca . '_attached_images', $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
 		}
 
 		/**
@@ -332,7 +331,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log_args( $args );
 			}
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$size_info = SucomUtil::get_size_info( $size_name );
 			$img_url = '';
 			$img_width = WPSSO_UNDEF_INT;
@@ -662,7 +661,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			// allow the html_tag and pid_attr regex to be modified
 			foreach( array( 'html_tag', 'pid_attr' ) as $type ) {
-				$filter_name = $this->p->cf['lca'].'_content_image_preg_'.$type;
+				$filter_name = $this->p->lca . '_content_image_preg_' . $type;
 				if ( has_filter( $filter_name ) ) {
 					$img_preg[$type] = apply_filters( $filter_name, $this->def_img_preg[$type] );
 					if ( $this->p->debug->enabled ) {
@@ -731,8 +730,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						case ( preg_match( '/^'.$img_preg['pid_attr'].'$/', $attr_name ) ? true : false ):
 
 							// build a filter hook for 3rd party modules to return image information
-							$filter_name = $this->p->cf['lca'].'_get_content_'.
-								$tag_name.'_'.( preg_replace( '/-/', '_', $attr_name ) );
+							$filter_name = $this->p->lca . '_get_content_' . $tag_name . '_' . ( preg_replace( '/-/', '_', $attr_name ) );
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'applying filter '.$filter_name );
@@ -837,13 +835,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$img_size_within_limits = $this->img_size_within_limits( $og_single_image['og:image'],
 									$size_name, $og_single_image['og:image:width'], $og_single_image['og:image:height'],
 										__( 'Content', 'wpsso' ) );
+
 							} elseif ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'skipped image size limits for '.$og_single_image['og:image'].
 									' ('.$og_single_image['og:image:width'].'x'.$og_single_image['og:image:height'].')' );
 							}
 
 							// 'wpsso_content_accept_img_dims' is hooked by the WpssoProCheckImgSize class / module.
-							if ( ! apply_filters( $this->p->cf['lca'].'_content_accept_img_dims',
+							if ( ! apply_filters( $this->p->lca . '_content_accept_img_dims',
 								$img_size_within_limits, $og_single_image, $size_name, $attr_name, $content_passed ) ) {
 								$og_single_image = array();
 							}
@@ -853,7 +852,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( ! empty( $og_single_image['og:image'] ) ) {
 
-						$og_single_image['og:image'] = apply_filters( $this->p->cf['lca'].'_rewrite_image_url',
+						$og_single_image['og:image'] = apply_filters( $this->p->lca . '_rewrite_image_url',
 							$this->p->util->fix_relative_url( $og_single_image['og:image'] ) );
 
 						if ( false === $check_dupes || $this->p->util->is_uniq_url( $og_single_image['og:image'], $size_name ) ) {
@@ -909,10 +908,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'num' => $num,
-					'mod' => $mod,
+					'num'         => $num,
+					'mod'         => $mod,
 					'check_dupes' => $check_dupes,
-					'content' => strlen( $content ).' chars',
+					'content'     => strlen( $content ).' chars',
 				) );
 			}
 
@@ -951,8 +950,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( count( $all_matches ) > $content_vid_max ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'limiting matches returned from '.
-							count( $all_matches ).' to '.$content_vid_max );
+						$this->p->debug->log( 'limiting matches returned from '.count( $all_matches ).' to '.$content_vid_max );
 					}
 					$all_matches = array_splice( $all_matches, 0, $content_vid_max );
 				}
@@ -968,21 +966,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$embed_url = $media[3];
 					if ( ! empty( $embed_url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $embed_url, 'video' ) ) ) {
 
-						$embed_width = preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match) ? $match[1] : WPSSO_UNDEF_INT;
+						$embed_width  = preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match) ? $match[1] : WPSSO_UNDEF_INT;
 						$embed_height = preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match) ? $match[1] : WPSSO_UNDEF_INT;
-						$og_video = $this->get_video_info( $embed_url, $embed_width, $embed_height, $check_dupes );
+						$og_video     = $this->get_video_info( $embed_url, $embed_width, $embed_height, $check_dupes );
 
 						if ( ! empty( $og_video ) && $this->p->util->push_max( $og_ret, $og_video, $num ) ) {
 							return $og_ret;
 						}
 					}
 				}
+
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'no <iframe|embed/> html tag(s) found' );
 			}
 
 			// additional filters / Pro modules may detect other embedded video markup
-			$filter_name = $this->p->cf['lca'].'_content_videos';
+			$filter_name = $this->p->lca . '_content_videos';
 
 			if ( has_filter( $filter_name ) ) {
 
@@ -1020,13 +1019,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		public function get_video_info( $embed_url, $embed_width, $embed_height, $check_dupes, $fallback = false ) {
+		public function get_video_info( $embed_url, $embed_width = -1, $embed_height = -1, $check_dupes = true, $fallback = false ) {
 
 			if ( empty( $embed_url ) ) {
 				return array();
 			}
 
-			$filter_name = $this->p->cf['lca'].'_video_info';
+			$filter_name = $this->p->lca . '_video_info';
 
 			$og_video = array_merge(
 				SucomUtil::get_mt_prop_video(),			// includes og:image meta tags for the preview image
@@ -1114,7 +1113,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function img_size_within_limits( $img_name, $size_name, $img_width, $img_height, $src_name = '' ) {
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$cf_min = $this->p->cf['head']['limit_min'];
 			$cf_max = $this->p->cf['head']['limit_max'];
 			$img_ratio = 0;
@@ -1242,15 +1241,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$upscale_multiplier = 1;
 
 			if ( $this->p->options['plugin_upscale_images'] ) {
-				$img_info = (array) self::get_image_src_info();
-				$upscale_multiplier = 1 + ( apply_filters( $this->p->cf['lca'].'_image_upscale_max',
-					$this->p->options['plugin_upscale_img_max'], $img_info ) / 100 );
-				$upscale_full_width = round( $full_width * $upscale_multiplier );
+				$img_info            = (array) self::get_image_src_info();
+				$upscale_img_max     = apply_filters( $this->p->lca . '_image_upscale_max', $this->p->options['plugin_upscale_img_max'], $img_info );
+				$upscale_multiplier  = 1 + ( $upscale_max / 100 );
+				$upscale_full_width  = round( $full_width * $upscale_multiplier );
 				$upscale_full_height = round( $full_height * $upscale_multiplier );
-				$is_sufficient_w = $upscale_full_width >= $size_info['width'] ? true : false;
-				$is_sufficient_h = $upscale_full_height >= $size_info['height'] ? true : false;
+				$is_sufficient_w     = $upscale_full_width >= $size_info['width'] ? true : false;
+				$is_sufficient_h     = $upscale_full_height >= $size_info['height'] ? true : false;
 			}
-
 
 			if ( ( ! $img_cropped && ( ! $is_sufficient_w && ! $is_sufficient_h ) ) ||
 				( $img_cropped && ( ! $is_sufficient_w || ! $is_sufficient_h ) ) ) {
