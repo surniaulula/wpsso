@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.50.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-01-22 10:01-0600\n"
-"PO-Revision-Date: 2018-01-22 10:01-0600\n"
+"POT-Creation-Date: 2018-01-23 17:17-0600\n"
+"PO-Revision-Date: 2018-01-23 17:17-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -741,11 +741,11 @@ msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\
 msgid "Dismiss"
 msgstr "Masquer"
 
-#: lib/com/util.php:1382
+#: lib/com/util.php:1416
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr "Les informations pour l'extension \"%s\" contiennent un lien de téléchargement invalide."
 
-#: lib/com/util.php:1389
+#: lib/com/util.php:1423
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr "L'information pour l'extension \"%s\" ne contient pas de lien de téléchargement."
 
@@ -2169,27 +2169,35 @@ msgstr "ajout de balisage schéma json-ld"
 msgid "The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s."
 msgstr "Le module d'intégration de NextGEN Gallery fourni par %1$s est requis pour lire les informations sur l'image d'ID %2$s."
 
-#: lib/media.php:384
-msgid "Possible Media Library corruption detected &mdash; the full size image dimensions for image ID %1$s are missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function."
-msgstr "Corruption possible de la bibliothèque de médias détecté &mdash; les dimensions de l'image pleine grandeur pour l'ID d'image %1$s sont manquantes dans les métadonnées d'image retourné par la fonction wp_get_attachment_metadata() de WordPress."
-
-#: lib/media.php:392
-msgid "Possible Media Library corruption detected &mdash; the full size image file path for image ID %1$s is missing from the image metadata returned by the WordPress wp_get_attachment_metadata() function."
-msgstr "Corruption possible de la bibliothèque de médias détecté &mdash; le chemin du fichier d'image pleine grandeur pour l'ID d'image %1$s est manquant dans les métadonnées d'image retourné par la fonction wp_get_attachment_metadata() de WordPress."
-
-#: lib/media.php:814
-msgid "Content"
-msgstr "Contenu"
-
-#: lib/media.php:1100 lib/pro/util/checkimgdims.php:82
+#: lib/media.php:382 lib/media.php:1126 lib/pro/util/checkimgdims.php:82
 msgid "Media Library"
 msgstr "la bibliothèque de médias"
 
-#: lib/media.php:1173
+#: lib/media.php:385
+msgid "You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href=\"%s\">several available plugins from WordPress.org</a>."
+msgstr "Vous pouvez régénérer les vignettes de toutes les images WordPress Media Library en utilisant l'une <a href=\"%s\">des extensions disponibles sur WordPress.org</a>."
+
+#. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
+#. function name.
+#: lib/media.php:398
+msgid "Possible %1$s corruption detected &mdash; the full size image dimensions for <a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned by the WordPress %4$s function."
+msgstr "Corruption possible de %1$s détecté &mdash; les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la fonction %4$s de WordPress."
+
+#. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
+#. function name.
+#: lib/media.php:412
+msgid "Possible %1$s corruption detected &mdash; the full size image file path for <a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned by the WordPress %4$s function."
+msgstr "Corruption possible de %1$s détecté &mdash; le chemin du fichier d'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> est manquant dans les métadonnées d'image retourné par la fonction %4$s de WordPress."
+
+#: lib/media.php:837
+msgid "Content"
+msgstr "Contenu"
+
+#: lib/media.php:1199
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:1193
+#: lib/media.php:1219
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -3771,16 +3779,16 @@ msgstr "NextGEN Gallery"
 msgid "cropped"
 msgstr "recadrée"
 
-#: lib/pro/media/ngg.php:237 lib/pro/util/checkimgdims.php:87
+#: lib/pro/media/ngg.php:237
 msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
 msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
-#: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:147
+#: lib/pro/media/slideshare.php:168 lib/pro/media/vimeo.php:147
 #: lib/pro/media/wistia.php:275 lib/util.php:895
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr "<a href=\"%1$s\">La fonction PHP %2$s</a> n'est pas disponible."
 
-#: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:150
+#: lib/pro/media/slideshare.php:171 lib/pro/media/vimeo.php:150
 #: lib/pro/media/wistia.php:278 lib/util.php:898
 msgid "Please contact your hosting provider to have the missing function installed."
 msgstr "SVP contacter votre hébergeur pour installer la fonction manquante."
@@ -3797,11 +3805,17 @@ msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#: lib/pro/util/checkimgdims.php:141
+#. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is the image
+#. dimension, and %5$s is the required size name and its dimension.
+#: lib/pro/util/checkimgdims.php:87
+msgid "%1$s <a href=\"%2$s\">image ID %3$s</a> ignored &mdash; the resulting image of %4$s is too small for the required %5$s image dimensions."
+msgstr "<a href=\"%2$s\">L'ID d'image %3$s</a> de %1$s a été ignoré &mdash; l'image résultante de %4$s est trop petite pour les dimensions requis par %5$s."
+
+#: lib/pro/util/checkimgdims.php:140
 msgid "%1$s includes an additional 'data-wp-pid' attribute for Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content."
 msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de la bibliothèque de médias &mdash; si cette image provient de la bibliothèque de médias, et quelle a été inséré au contenu avant que %1$s soit activé, essayez de supprimer et ré-ajouter à nouveau l'image au contenu."
 
-#: lib/pro/util/checkimgdims.php:143
+#: lib/pro/util/checkimgdims.php:142
 msgid "Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions."
 msgstr "L'image %1$s du contenu a été ignoré &mdash; la largeur / hauteur est insuffisante pour les dimensions requis par %2$s."
 
