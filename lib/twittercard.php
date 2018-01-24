@@ -345,4 +345,3 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		}
 	}
 }
-

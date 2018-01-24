@@ -79,21 +79,15 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td class="blank">'.SucomUtil::get_key_value( 'plugin_p_cap_prefix', $this->p->options ).'</td>';
 
 			$table_rows['plugin_embedded_media'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Check for Embedded Media',
-				'option label', 'wpsso' ), '', 'plugin_embedded_media' ).
+			$form->get_th_html( _x( 'Check for Embedded Media', 'option label', 'wpsso' ), '', 'plugin_embedded_media' ).
 			'<td class="blank">'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_facebook_api' ).' '.
-				_x( 'Facebook Videos', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_slideshare_api' ).' '.
-				_x( 'Slideshare Presentations', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_soundcloud_api' ).' '.
-				_x( 'Soundcloud Tracks', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_vimeo_api' ).' '.
-				_x( 'Vimeo Videos', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_wistia_api' ).' '.
-				_x( 'Wistia Videos', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_youtube_api' ).' '.
-				_x( 'YouTube Videos and Playlists', 'option value', 'wpsso' ).'</p>'.
+			'<p>'.$form->get_nocb_cmt( 'plugin_facebook_api' ).' '._x( 'Facebook Videos', 'option value', 'wpsso' ).'</p>'.
+			'<p>'.$form->get_nocb_cmt( 'plugin_slideshare_api' ).' '._x( 'Slideshare Presentations', 'option value', 'wpsso' ).'</p>'.
+			'<p>'.$form->get_nocb_cmt( 'plugin_soundcloud_api' ).' '._x( 'Soundcloud Tracks', 'option value', 'wpsso' ).'</p>'.
+			'<p>'.$form->get_nocb_cmt( 'plugin_vimeo_api' ).' '._x( 'Vimeo Videos', 'option value', 'wpsso' ).'</p>'.
+			'<p>'.$form->get_nocb_cmt( 'plugin_wistia_api' ).' '._x( 'Wistia Videos', 'option value', 'wpsso' ).'</p>'.
+			'<p>'.$form->get_nocb_cmt( 'plugin_wpvideo_api' ).' '._x( 'WordPress Video Shortcode', 'option value', 'wpsso' ).'</p>'.
+			'<p>'.$form->get_nocb_cmt( 'plugin_youtube_api' ).' '._x( 'YouTube Videos and Playlists', 'option value', 'wpsso' ).'</p>'.
 			'</td>';
 
 			return $table_rows;

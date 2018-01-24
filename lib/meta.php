@@ -863,7 +863,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function get_og_img_column_html( $head_info, $mod ) {
 
-			$html = false;
+			$media_html  = false;
 			$force_regen = $this->p->util->is_force_regen( $mod, 'og' );	// false by default
 
 			if ( ! empty( $head_info['og:image:id'] ) ) {
@@ -885,14 +885,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 
-			$refresh_cache = $force_regen ? '?force_regen='.time() : '';
-			$media_url = SucomUtil::get_mt_media_url( $head_info, 'og:image' ).$refresh_cache;
-
-			if ( ! empty( $media_url ) ) {
-				$html = '<div class="preview_img" style="background-image:url('.$media_url.');"></div>';
+			$media_url = SucomUtil::get_mt_media_url( $head_info, 'og:image' );
+			
+			if ( $force_regen ) {
+				$media_url = add_query_arg( 'force_regen', time(), $media_url );
 			}
 
-			return $html;
+			if ( ! empty( $media_url ) ) {
+				$media_html = '<div class="preview_img" style="background-image:url('.$media_url.');"></div>';
+			}
+
+			return $media_html;
 		}
 
 		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
@@ -1040,25 +1043,23 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
-				$html = $this->get_options( $mod_id, $prefix.'_vid_embed' );
-				$url  = $this->get_options( $mod_id, $prefix.'_vid_url' );
+				$embed_html = $this->get_options( $mod_id, $prefix.'_vid_embed' );
+				$video_url  = $this->get_options( $mod_id, $prefix.'_vid_url' );
+				$prev_url   = null;
 
-				if ( ! empty( $html ) ) {
+				if ( ! empty( $embed_html ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fetching video(s) from custom '.$prefix.' embed code',
 							get_class( $this ) );	// log extended class name
 					}
-					$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num, $mod, $check_dupes, $html ) );
+					$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num, $mod, $check_dupes, $embed_html ) );
 				}
 
-				if ( ! empty( $url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $url ) ) ) {
-
+				if ( ! empty( $video_url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $video_url ) ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$url, get_class( $this ) ); // Log extended class name.
+						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$video_url, get_class( $this ) );
 					}
-
-					$og_videos = $this->p->media->get_video_info( $url, WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, $check_dupes, true ); // $fallback = true.
-
+					$og_videos = $this->p->media->get_video_info( $video_url, WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, $prev_url, $check_dupes, true );
 					if ( $this->p->util->push_max( $og_ret, $og_videos, $num ) )  {
 						return $og_ret;
 					}
@@ -1238,4 +1239,3 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 	}
 }
-

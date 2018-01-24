@@ -825,4 +825,3 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 	}
 }
-

@@ -397,4 +397,3 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		}
 	}
 }
-

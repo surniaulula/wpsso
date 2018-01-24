@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.50.0',		// Plugin version.
+					'version' => '3.51.0-dev.1',		// Plugin version.
 					'opt_version' => '572',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core',
@@ -129,6 +129,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'upscale' => '(tool) WP Media Library Image Upscaling',
 								'vimeo' => '(api) Vimeo Video API',
 								'wistia' => '(api) Wistia Video API',
+								'wpvideo' => '(api) WordPress Video Shortcode',
 								'youtube' => '(api) YouTube Video / Playlist API',
 							),
 							'seo' => array(
@@ -860,12 +861,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_img_alt_prefix' => 'Image:',		// Image Alt Text Prefix
 					'plugin_p_cap_prefix' => 'Caption:',		// WP Caption Prefix
 					'plugin_gravatar_api' => 1,			// Include Author Gravatar Image
-					'plugin_facebook_api' => 1,			// Check for Videos in Content: Facebook
-					'plugin_slideshare_api' => 1,			// Check for Videos in Content: Slideshare
-					'plugin_soundcloud_api' => 1,			// Check for Videos in Content: Soundcloud
-					'plugin_vimeo_api' => 1,			// Check for Videos in Content: Vimeo
-					'plugin_wistia_api' => 1,			// Check for Videos in Content: Wistia
-					'plugin_youtube_api' => 1,			// Check for Videos in Content: Youtube
+					'plugin_facebook_api' => 1,			// Check for Embedded Media: Facebook Videos
+					'plugin_slideshare_api' => 1,			// Check for Embedded Media: Slideshare Presentations
+					'plugin_soundcloud_api' => 1,			// Check for Embedded Media: Soundcloud Tracks
+					'plugin_vimeo_api' => 1,			// Check for Embedded Media: Vimeo Videos
+					'plugin_wistia_api' => 1,			// Check for Embedded Media: Wistia Videos
+					'plugin_wpvideo_api' => 1,			// Check for Embedded Media: WordPress Video Shortcode
+					'plugin_youtube_api' => 1,			// Check for Embedded Media: Youtube Videos and Playlists
 					// Integration Tab
 					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
 					'plugin_html_attr_filter_name' => 'language_attributes',
@@ -2453,4 +2455,3 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 	}
 }
-

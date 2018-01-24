@@ -221,8 +221,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$og_single_image['og:image:id']
 					) = $this->get_attachment_image_src( $attach_id, $size_name, $check_dupes, $force_regen );
 
-					if ( ! empty( $og_single_image['og:image'] ) &&
-						$this->p->util->push_max( $og_ret, $og_single_image, $num ) ) {
+					if ( ! empty( $og_single_image['og:image'] ) && $this->p->util->push_max( $og_ret, $og_single_image, $num ) ) {
 						return $og_ret;
 					}
 				} elseif ( $this->p->debug->enabled ) {
@@ -278,8 +277,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$og_single_image['og:image:id']
 					) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 
-					if ( ! empty( $og_single_image['og:image'] ) &&
-						$this->p->util->push_max( $og_ret, $og_single_image, $num ) ) {
+					if ( ! empty( $og_single_image['og:image'] ) && $this->p->util->push_max( $og_ret, $og_single_image, $num ) ) {
 						break;	// stop here and apply the 'wpsso_attached_images' filter
 					}
 				}
@@ -608,8 +606,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				);
 			}
 
-			if ( ! empty( $og_single_image['og:image'] ) &&
-				$this->p->util->push_max( $og_ret, $og_single_image, $num ) ) {
+			if ( ! empty( $og_single_image['og:image'] ) && $this->p->util->push_max( $og_ret, $og_single_image, $num ) ) {
 				return $og_ret;
 			}
 
@@ -796,7 +793,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							}
 
 							if ( empty( $og_single_image['og:image'] ) ) {
-								$this->p->debug->log( 'single image og:image value is empty' );
+								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( 'single image og:image value is empty' );
+								}
 								break;	// stop here
 							}
 
@@ -873,16 +872,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_opts_image( $opts, $size_name, $check_dupes = true, $force_regen = false, $opt_pre = 'og', $mt_pre = 'og' ) {
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
-				$img[$key] = empty( $opts[$opt_pre.'_img_'.$key] ) ?
-					'' : $opts[$opt_pre.'_img_'.$key];
+				$img[$key] = empty( $opts[$opt_pre.'_img_'.$key] ) ? '' : $opts[$opt_pre.'_img_'.$key];
 			}
 
 			$mt_image = array();
 
 			if ( ! empty( $img['id'] ) ) {
 
-				$img['id'] = $img['id_pre'] === 'ngg' ?
-					'ngg-'.$img['id'] : $img['id'];
+				$img['id'] = $img['id_pre'] === 'ngg' ? 'ngg-'.$img['id'] : $img['id'];
 
 				list( 
 					$mt_image[$mt_pre.':image'],
@@ -965,11 +962,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 					$embed_url = $media[3];
 					if ( ! empty( $embed_url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $embed_url, 'video' ) ) ) {
-
-						$embed_width  = preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match) ? $match[1] : WPSSO_UNDEF_INT;
-						$embed_height = preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match) ? $match[1] : WPSSO_UNDEF_INT;
-						$og_video     = $this->get_video_info( $embed_url, $embed_width, $embed_height, $check_dupes );
-
+						$embed_width  = preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF_INT;
+						$embed_height = preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF_INT;
+						$prev_url     = null;
+						$og_video     = $this->get_video_info( $embed_url, $embed_width, $embed_height, $prev_url, $check_dupes );
 						if ( ! empty( $og_video ) && $this->p->util->push_max( $og_ret, $og_video, $num ) ) {
 							return $og_ret;
 						}
@@ -980,7 +976,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log( 'no <iframe|embed/> html tag(s) found' );
 			}
 
-			// additional filters / Pro modules may detect other embedded video markup
+			/**
+			 * Additional filters / Pro modules may detect other embedded video markup.
+			 */
 			$filter_name = $this->p->lca . '_content_videos';
 
 			if ( has_filter( $filter_name ) ) {
@@ -989,7 +987,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'applying filter '.$filter_name );
 				}
 
-				// should return an array of arrays
+				/**
+				 * Must return false or an array of arrays.
+				 */
 				if ( ( $all_matches = apply_filters( $filter_name, false, $content ) ) !== false ) {
 
 					if ( is_array( $all_matches ) ) {
@@ -998,15 +998,25 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$this->p->debug->log( count( $all_matches ).' x videos returned by '.$filter_name.' filter' );
 						}
 
-						foreach ( $all_matches as $media ) {
+						foreach ( $all_matches as $i => $media ) {
 
-							if ( ! empty( $media[0] ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $media[0], 'video' ) ) ) {
+							if ( is_array( $media ) ) { // Just in case.
 
-								$og_video = $this->get_video_info( $media[0], $media[1], $media[2], $check_dupes );
+								/**
+								 * Some filters may return only 3 elements - use array_merge() to make sure
+								 * the $media array contains at least 4 elements.
+								 */
+								$media = array_merge( array( '', -1, -1, null ), $media );
 
-								if ( ! empty( $og_video ) && $this->p->util->push_max( $og_ret, $og_video, $num ) ) {
-									return $og_ret;
+								if ( ! empty( $media[0] ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $media[0], 'video' ) ) ) {
+									$og_video = $this->get_video_info( $media[0], $media[1], $media[2], $media[3], $check_dupes );
+									if ( ! empty( $og_video ) && $this->p->util->push_max( $og_ret, $og_video, $num ) ) {
+										return $og_ret;
+									}
 								}
+
+							} elseif ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'videos array element #' . $i . ' is not a media array' );
 							}
 						}
 
@@ -1019,23 +1029,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		public function get_video_info( $embed_url, $embed_width = -1, $embed_height = -1, $check_dupes = true, $fallback = false ) {
+		public function get_video_info( $embed_url, $embed_width = -1, $embed_height = -1, $prev_url = null, $check_dupes = true, $fallback = false ) {
 
 			if ( empty( $embed_url ) ) {
 				return array();
 			}
 
 			$filter_name = $this->p->lca . '_video_info';
-
-			$og_video = array_merge(
-				SucomUtil::get_mt_prop_video(),			// includes og:image meta tags for the preview image
+			$og_video    = array_merge(
+				SucomUtil::get_mt_prop_video(),			// Includes og:image meta tags for the preview image.
 				array(
-					'og:video:width' => $embed_width,	// default width
-					'og:video:height' => $embed_height,	// default height
+					'og:video:width'  => $embed_width,	// Default width.
+					'og:video:height' => $embed_height,	// Default height.
 				)
 			);
 
-			$og_video = apply_filters( $filter_name, $og_video, $embed_url, $embed_width, $embed_height );
+			$og_video = apply_filters( $filter_name, $og_video, $embed_url, $embed_width, $embed_height, $prev_url );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_arr( 'og_video after filters', $og_video );
@@ -1393,4 +1402,3 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 	}
 }
-

@@ -857,4 +857,3 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 	}
 }
-

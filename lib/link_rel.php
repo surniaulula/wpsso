@@ -127,4 +127,3 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 		}
 	}
 }
-

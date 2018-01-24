@@ -908,4 +908,3 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 	}
 }
-

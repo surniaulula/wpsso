@@ -125,4 +125,3 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 		}
 	}
 }
-

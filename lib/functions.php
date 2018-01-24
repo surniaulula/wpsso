@@ -162,4 +162,3 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 		return apply_filters( $wpsso->cf['lca'].'_get_place_options', false, $mod, $type_id );
 	}
 }
-

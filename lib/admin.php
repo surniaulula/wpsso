@@ -2519,4 +2519,3 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 	}
 }
-

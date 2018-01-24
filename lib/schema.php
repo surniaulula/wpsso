@@ -2932,4 +2932,3 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 	}
 }
-

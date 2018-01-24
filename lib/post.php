@@ -1004,4 +1004,3 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 	}
 }
-

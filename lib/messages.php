@@ -1516,4 +1516,3 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 	}
 }
-

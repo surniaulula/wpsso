@@ -189,4 +189,3 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		}
 	}
 }
-

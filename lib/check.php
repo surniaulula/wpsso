@@ -124,6 +124,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'media-soundcloud':
 						case 'media-vimeo':
 						case 'media-wistia':
+						case 'media-wpvideo':
 						case 'media-youtube':
 							$chk['optval'] = 'plugin_'.$id.'_api';
 							break;
@@ -283,4 +284,3 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		}
 	}
 }
-
