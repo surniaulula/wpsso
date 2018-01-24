@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.2
 WC Tested Up To: 3.2.6
-Stable Tag: 3.49.1
+Stable Tag: 3.50.0
 
 Automatically create complete meta tags and Schema markup from your content for social sharing, social media / SMO, Google Rich Cards / SEO + more.
 
@@ -382,13 +382,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.50.0 (2018/01/23)**
+**Version 3.50.0 (2018/01/24)**
 
 * *New Features*
-	* Added an integration module for WP Meta SEO (Pro version).
+	* Added an integration module for the WP Meta SEO plugin (Pro version).
 * *Improvements*
 	* Updated the tooltip colors from blue to a custom green palette.
-	* Added a link to the Media Library image editing page for some image related warning notices.
+	* Added a link to the Media Library image editing page in some image related warning notices.
 	* Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. 
 * *Bugfixes*
 	* None
@@ -754,7 +754,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.50.0 =
 
-(2018/01/23) Added an integration module for WP Meta SEO (Pro version). Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. Added a link to the Media Library image editing page for some image related warning notices.
+(2018/01/24) Added an integration module for WP Meta SEO (Pro version). Added a check for WP Meta SEO and a warning if its "Social sharing block" option is enabled. Added a link to the image editing page in some image related warning notices.
 
 = 3.49.1 =
 
