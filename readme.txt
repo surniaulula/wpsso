@@ -210,6 +210,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 	* TinyURL
 	* Vimeo Videos
 	* Wistia Videos
+	* WordPress Video Shortcode (and Self-Hosted Videos)
 	* Your Own URL Shortener (YOURLS)
 	* YouTube Videos and Playlists
 
@@ -385,7 +386,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 3.51.0-dev.2 (2018/01/25)**
 
 * *New Features*
-	* Added an integration module for the WordPress Video Shortcode (Pro version).
+	* Added an integration module for the WordPress video shortcode and self-hosted videos (Pro version).
 * *Improvements*
 	* None
 * *Bugfixes*
@@ -766,7 +767,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.51.0-dev.2 =
 
-(2018/01/25) Added an integration module for the WordPress Video Shortcode (Pro version).
+(2018/01/25) Added an integration module for the WordPress video shortcode and self-hosted videos (Pro version).
 
 = 3.50.0 =
 
