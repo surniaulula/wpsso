@@ -382,7 +382,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.51.0-dev.1 (TBD)**
+**Version 3.51.0-dev.1 (2018/01/25)**
 
 * *New Features*
 	* None
@@ -391,7 +391,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Refactored the WpssoMedia::get_video_info() method, replacing the media url, width, and height arguments by a single associative array.
+	* Moved testing of AMP_QUERY_VAR in the WpssoSchema class construct to the get_pinterest_img_html() content filter.
 
 **Version 3.50.0 (2018/01/24)**
 
@@ -765,7 +766,7 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 = 3.51.0-dev.1 =
 
-(TBD) None.
+(2018/01/25) None.
 
 = 3.50.0 =
 
