@@ -1045,7 +1045,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				$embed_html = $this->get_options( $mod_id, $prefix.'_vid_embed' );
 				$video_url  = $this->get_options( $mod_id, $prefix.'_vid_url' );
-				$prev_url   = null;
 
 				if ( ! empty( $embed_html ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -1059,7 +1058,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$video_url, get_class( $this ) );
 					}
-					$og_videos = $this->p->media->get_video_info( $video_url, WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, $prev_url, $check_dupes, true );
+					$og_videos = $this->p->media->get_video_info( array(
+						'url'    => $video_url,
+						'width'  => WPSSO_UNDEF_INT,
+						'height' => WPSSO_UNDEF_INT,
+					), $check_dupes, true );
 					if ( $this->p->util->push_max( $og_ret, $og_videos, $num ) )  {
 						return $og_ret;
 					}

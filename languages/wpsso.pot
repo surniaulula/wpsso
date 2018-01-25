@@ -2278,7 +2278,7 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:380 lib/media.php:1135 lib/pro/util/checkimgdims.php:82
+#: lib/media.php:380 lib/media.php:1140 lib/pro/util/checkimgdims.php:82
 msgid "Media Library"
 msgstr ""
 
@@ -2311,14 +2311,14 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1208
+#: lib/media.php:1213
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1228
+#: lib/media.php:1233
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -4468,38 +4468,38 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:186 lib/pro/media/ngg.php:232
+#: lib/pro/media/ngg.php:191 lib/pro/media/ngg.php:240
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/pro/media/ngg.php:235 lib/pro/util/checkimgdims.php:85
+#: lib/pro/media/ngg.php:243 lib/pro/util/checkimgdims.php:85
 msgid "cropped"
 msgstr ""
 
-#: lib/pro/media/ngg.php:237
+#: lib/pro/media/ngg.php:245
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
 "for the required %4$s image dimensions."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:167 lib/pro/media/vimeo.php:147
-#: lib/pro/media/wistia.php:274 lib/util.php:895
+#: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:146
+#: lib/pro/media/wistia.php:276 lib/util.php:895
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:170 lib/pro/media/vimeo.php:150
-#: lib/pro/media/wistia.php:277 lib/util.php:898
+#: lib/pro/media/slideshare.php:177 lib/pro/media/vimeo.php:149
+#: lib/pro/media/wistia.php:279 lib/util.php:898
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
 
-#: lib/pro/media/upscale.php:200
+#: lib/pro/media/upscale.php:212
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: lib/pro/media/upscale.php:205
+#: lib/pro/media/upscale.php:217
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
@@ -4566,28 +4566,28 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema.php:88 lib/schema.php:94
+#: lib/schema.php:92 lib/schema.php:98
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2163
+#: lib/schema.php:2167
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2196
+#: lib/schema.php:2200
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2198
+#: lib/schema.php:2202
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2421
+#: lib/schema.php:2425
 msgid "adding schema for place"
 msgstr ""
 

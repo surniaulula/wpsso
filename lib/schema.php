@@ -37,13 +37,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				add_filter( $filter_name, array( &$this, 'filter_head_attributes' ), $filter_prio, 1 );
 			}
 
-			// do not add the pinterest image if the current webpage is amp or rss feed
-			if ( ! empty( $this->p->options['p_add_img_html'] ) && ! SucomUtil::is_amp() && ! is_feed() ) {
+			if ( ! empty( $this->p->options['p_add_img_html'] ) ) {
 				add_filter( 'the_content', array( &$this, 'get_pinterest_img_html' ) );
 			}
 		}
 
 		public function get_pinterest_img_html( $content = '' ) {
+
+			// do not add the pinterest image if the current webpage is amp or rss feed
+			if ( SucomUtil::is_amp() || is_feed() ) {
+				return $content;
+			}
 
 			// check if the content filter is being applied to create a description text
 			if ( ! empty( $GLOBALS[$this->p->lca.'_doing_filter_the_content'] ) ) {
