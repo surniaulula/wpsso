@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.51.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 3.51.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2278,7 +2278,7 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:380 lib/media.php:1140 lib/pro/util/checkimgdims.php:82
+#: lib/media.php:380 lib/media.php:1148 lib/pro/util/checkimgdims.php:82
 msgid "Media Library"
 msgstr ""
 
@@ -2311,14 +2311,14 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1213
+#: lib/media.php:1221
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1233
+#: lib/media.php:1241
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -4482,13 +4482,13 @@ msgid ""
 "for the required %4$s image dimensions."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:146
-#: lib/pro/media/wistia.php:276 lib/util.php:895
+#: lib/pro/media/slideshare.php:173 lib/pro/media/vimeo.php:146
+#: lib/pro/media/wistia.php:274 lib/util.php:895
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:177 lib/pro/media/vimeo.php:149
-#: lib/pro/media/wistia.php:279 lib/util.php:898
+#: lib/pro/media/slideshare.php:175 lib/pro/media/vimeo.php:149
+#: lib/pro/media/wistia.php:277 lib/util.php:898
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""

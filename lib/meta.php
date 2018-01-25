@@ -1058,11 +1058,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$video_url, get_class( $this ) );
 					}
-					$og_videos = $this->p->media->get_video_info( array(
+					$args = array(
 						'url'    => $video_url,
 						'width'  => WPSSO_UNDEF_INT,
 						'height' => WPSSO_UNDEF_INT,
-					), $check_dupes, true );
+					);
+					$og_videos = $this->p->media->get_video_info( $args, $check_dupes, true );
 					if ( $this->p->util->push_max( $og_ret, $og_videos, $num ) )  {
 						return $og_ret;
 					}

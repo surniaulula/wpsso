@@ -960,14 +960,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( '<'.$media[1].'/> html tag found '.$media[2].' = '.$media[3] );
 					}
-					if ( ! empty( $media[3] ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $media[3], 'video' ) ) ) {
-						$og_video  = $this->get_video_info( array(
-							'url'    => $media[3],
-							'width'  => preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF_INT,
-							'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF_INT,
-						), $check_dupes );
-						if ( ! empty( $og_video ) && $this->p->util->push_max( $og_ret, $og_video, $num ) ) {
-							return $og_ret;
+					if ( ! empty( $media[3] ) ) {
+						if ( $check_dupes == false || $this->p->util->is_uniq_url( $media[3], 'content_video' ) ) {
+							$args = array(
+								'url'    => $media[3],
+								'width'  => preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF_INT,
+								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF_INT,
+							);
+							$og_video  = $this->get_video_info( $args, $check_dupes );
+							if ( ! empty( $og_video ) && $this->p->util->push_max( $og_ret, $og_video, $num ) ) {
+								return $og_ret;
+							}
 						}
 					}
 				}
@@ -995,20 +998,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( count( $all_matches ).' x videos returned by '.$filter_name.' filter' );
 						}
-						foreach ( $all_matches as $i => $media ) {
-							if ( is_array( $media ) ) { // Just in case.
-								if ( ! empty( $media['url'] ) ) {
-									if ( $check_dupes == false || $this->p->util->is_uniq_url( $media[0], 'video' ) ) {
-										$og_video = $this->get_video_info( $media, $check_dupes );
+						foreach ( $all_matches as $match_num => $args ) {
+							if ( is_array( $args ) ) { // Just in case.
+								if ( ! empty( $args['url'] ) ) {
+									if ( $check_dupes == false || $this->p->util->is_uniq_url( $args['url'], 'content_video' ) ) {
+										$og_video = $this->get_video_info( $args, $check_dupes );
 										if ( ! empty( $og_video ) && $this->p->util->push_max( $og_ret, $og_video, $num ) ) {
 											return $og_ret;
 										}
 									}
 								} elseif ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'media url missing from videos array element #' . $i );
+									$this->p->debug->log( 'args url missing from videos array element #' . $match_num );
 								}
 							} elseif ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'videos array element #' . $i . ' is not a media array' );
+								$this->p->debug->log( 'videos array element #' . $match_num . ' is not a media array' );
 							}
 						}
 					} elseif ( $this->p->debug->enabled ) {
@@ -1020,39 +1023,44 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		public function get_video_info( array $media, $check_dupes = true, $fallback = false ) {
+		public function get_video_info( array $args, $check_dupes = true, $fallback = false ) {
 
 			/**
 			 * Make sure we have all array keys defined.
 			 */
-			$media = array_merge( array(
+			$args = array_merge( array(
 				'url' => '',
 				'width' => -1,
 				'height' => -1,
 				'mime_type' => '',
 				'prev_url' => null,
+				'post_id' => null,
 				'api' => '',
-			), $media );
+			), $args );
 
-			if ( empty( $media['url'] ) ) {
+			if ( empty( $args['url'] ) ) {
 				return array();
 			}
 
 			$filter_name = $this->p->lca . '_video_info';
 
-			if ( ! empty( $media['api'] ) ) {	// filter using a specific api library hook
-				$filter_name .= '_' . SucomUtil::sanitize_hookname( $media['api'] );
+			if ( ! empty( $args['api'] ) ) {	// filter using a specific api library hook
+				$filter_name .= '_' . SucomUtil::sanitize_hookname( $args['api'] );
 			}
 
 			$og_video = array_merge( SucomUtil::get_mt_prop_video(), array(
-				'og:video:width'  => $media['width'],	// Default width.
-				'og:video:height' => $media['height'],	// Default height.
+				'og:video:width'  => $args['width'],	// Default width.
+				'og:video:height' => $args['height'],	// Default height.
 			) );
 
-			$og_video = apply_filters( $filter_name, $og_video, $media );
+			$og_video = apply_filters( $filter_name, $og_video, $args );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_arr( 'og_video after filters', $og_video );
+			}
+
+			if ( $og_video['al:web:url'] === '' ) {
+				$og_video['al:web:should_fallback'] = '';	// false by default
 			}
 
 			// sanitation of media
@@ -1065,15 +1073,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'no video returned by filters' );
-						$this->p->debug->log( 'falling back to media url: '.$media['url'] );
+						$this->p->debug->log( 'falling back to media url: '.$args['url'] );
 					}
 
 					// define the og:video:secure_url meta tag if possible
 					if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
-						$og_video['og:video:secure_url'] = strpos( $media['url'], 'https:' ) === 0 ? $media['url'] : '';
+						$og_video['og:video:secure_url'] = strpos( $args['url'], 'https:' ) === 0 ? $args['url'] : '';
 					}
 
-					$have_url = $og_video['og:video:url'] = $media['url'];
+					$have_url = $og_video['og:video:url'] = $args['url'];
 
 					if ( preg_match( '/\.mp4(\?.*)?$/', $have_url ) ) {	// check for video/mp4
 						if ( $this->p->debug->enabled ) {
@@ -1086,7 +1094,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$have_media[$prefix] = empty( $have_url ) ? false : true;
 
 				// remove all meta tags if there's no media URL or media is a duplicate
-				if ( ! $have_media[$prefix] || ( $check_dupes && ! $this->p->util->is_uniq_url( $have_url, 'video' ) ) ) {
+				if ( ! $have_media[$prefix] || ( $check_dupes && ! $this->p->util->is_uniq_url( $have_url, 'video_info' ) ) ) {
 
 					foreach( SucomUtil::preg_grep_keys( '/^'.$prefix.'(:.*)?$/', $og_video ) as $k => $v ) {
 						unset ( $og_video[$k] );
