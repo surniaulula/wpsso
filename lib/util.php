@@ -1624,12 +1624,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $url;
 		}
 
-		public function clear_uniq_urls( $context = 'default' ) {
-			$cleared = isset( $this->uniq_urls[$context] ) ?
-				count( $this->uniq_urls[$context] ) : 0;
-			$this->uniq_urls[$context] = array();
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'cleared uniq url cache for context '.$context ); 
+		public function clear_uniq_urls( $mixed = 'default' ) {
+			if ( ! is_array( $mixed ) ) {
+				$mixed = array( $mixed );
+			}
+			$cleared = 0;
+			foreach ( $mixed as $context ) {
+				if ( isset( $this->uniq_urls[$context] ) ) {
+					$cleared += count( $this->uniq_urls[$context] );
+				}
+				$this->uniq_urls[$context] = array();
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'cleared uniq url cache for context '.$context ); 
+				}
 			}
 			return $cleared;
 		}
