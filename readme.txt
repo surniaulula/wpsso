@@ -383,7 +383,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.51.0-dev.3 (2018/01/25)**
+**Version 3.51.0-b.1 (2018/01/26)**
 
 * *New Features*
 	* Added an integration module for the WordPress video shortcode and self-hosted videos (Pro version).
@@ -765,9 +765,9 @@ The last version of WPSSO Core that shared a common code-base with NextGEN Faceb
 
 == Upgrade Notice ==
 
-= 3.51.0-dev.3 =
+= 3.51.0-b.1 =
 
-(2018/01/25) Added an integration module for the WordPress video shortcode and self-hosted videos (Pro version).
+(2018/01/26) Added an integration module for the WordPress video shortcode and self-hosted videos (Pro version).
 
 = 3.50.0 =
 
