@@ -5122,9 +5122,9 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2266
+#: lib/util.php:2268
 msgctxt "option comment"
-msgid "%s extension required"
+msgid "%s ext. required"
 msgstr ""
 
 #: wpsso.php:339

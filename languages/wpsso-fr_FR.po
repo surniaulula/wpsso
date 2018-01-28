@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.51.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-01-25 14:34-0600\n"
-"PO-Revision-Date: 2018-01-25 14:35-0600\n"
+"POT-Creation-Date: 2018-01-28 14:28-0600\n"
+"PO-Revision-Date: 2018-01-28 14:28-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4402,10 +4402,10 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: lib/util.php:2266
+#: lib/util.php:2268
 msgctxt "option comment"
-msgid "%s extension required"
-msgstr "%s extension requise"
+msgid "%s ext. required"
+msgstr "%s ext. requise"
 
 #: wpsso.php:339
 msgid "WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log."

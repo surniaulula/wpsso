@@ -2242,7 +2242,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return trim( $text );
 		}
 
-		// $ext = 'org', 'plm', etc.
+		/**
+		 * $ext = org, plm, etc.
+		 */
 		public function get_ext_req_msg( $ext ) {
 
 			$lca = $this->p->lca;
@@ -2263,7 +2265,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$req_msg .= '<a href="'.$this->p->cf['plugin'][$lca.$ext]['url']['home'].'">';
 			}
 
-			$req_msg .= sprintf( _x( '%s extension required', 'option comment', 'nextgen-facebook' ), $ext_short );
+			$req_msg .= sprintf( _x( '%s ext. required', 'option comment', 'wpsso' ), $ext_short );
 
 			if ( ! empty( $this->p->cf['plugin'][$lca.$ext]['url']['home'] ) ) {
 				$req_msg .= '</a>';
