@@ -1871,6 +1871,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Issue warning for slow filter performance.
 			 */
 			if ( $max_time > 0 && $total_time > $max_time ) {
+
 				switch ( $filter_name ) {
 					case 'get_the_excerpt':
 					case 'the_content':
@@ -1881,13 +1882,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$is_wp_filter = false;
 						break;
 				}
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'slow filter hook(s) detected - '.$filter_name.' filters took '.
 						sprintf( '%0.2f secs', $total_time ).' seconds to execute' );
 				}
+
 				if ( $is_wp_filter && $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-					$dismiss_key = 'slow-filter-hooks-detected-'.$filter_name;
-					$this->p->notice->warn( sprintf( __( 'Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/'.$filter_name.'">'.$filter_name.'</a>', $total_time, $max_time ), true, $dismiss_key, WEEK_IN_SECONDS );
+
+					$info               = $this->p->cf['plugin'][$this->p->lca];
+					$filter_api_link    = '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/'.$filter_name.'">'.$filter_name.'</a>';
+					$query_monitor_link = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
+					$dismiss_key        = 'slow-filter-hooks-detected-'.$filter_name;
+
+					$this->p->notice->warn( sprintf( __( 'Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $total_time, $max_time ) . ' ' . sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info['short'] ), true, $dismiss_key, WEEK_IN_SECONDS );
 				}
 			}
 
