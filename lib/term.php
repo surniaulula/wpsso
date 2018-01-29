@@ -132,6 +132,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$paged = 1;
 			}
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'calling get_posts() for '.$mod['name'].' id '.$mod['id'].
+					' in taxonomy '.$mod['tax_slug'].' (posts_per_page is '.$posts_per_page.')' );
+			}
+
+			$start_time = microtime( true );
 			$posts = get_posts( array(
 				'posts_per_page' => $posts_per_page,
 				'paged' => $paged,
@@ -147,6 +153,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					)
 				)
 			) );
+			$total_time = microtime( true ) - $start_time;
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( count( $posts ).' post objects returned in '.sprintf( '%0.4f secs', $total_time ) );
+			}
 
 			return $posts;
 		}

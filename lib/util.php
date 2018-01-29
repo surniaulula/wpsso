@@ -1885,7 +1885,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'slow filter hook(s) detected - '.$filter_name.' filters took '.
-						sprintf( '%0.2f secs', $total_time ).' seconds to execute' );
+						sprintf( '%0.2f secs', $total_time ).' to execute' );
 				}
 
 				if ( $is_wp_filter && $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown

@@ -155,6 +155,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$paged = 1;
 			}
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'calling get_posts() for direct children of '.
+					$mod['name'].' id '.$mod['id'].' (posts_per_page is '.$posts_per_page.')' );
+			}
+
+			$start_time = microtime( true );
 			$posts = get_posts( array(
 				'posts_per_page' => $posts_per_page,
 				'paged' => $paged,
@@ -164,6 +170,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'child_of' => $mod['id'],	// only include direct children
 				'has_password' => false,	// since wp 3.9
 			) );
+			$total_time = microtime( true ) - $start_time;
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( count( $posts ).' post objects returned in '.sprintf( '%0.4f secs', $total_time ) );
+			}
 
 			return $posts;
 		}

@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:694 lib/post.php:521 lib/term.php:303 lib/user.php:283
+#: lib/admin.php:694 lib/post.php:532 lib/term.php:314 lib/user.php:294
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2237,7 +2237,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:142 lib/meta.php:212 lib/post.php:861
+#: lib/gpl/admin/post.php:142 lib/meta.php:212 lib/post.php:872
 #: lib/pro/admin/post.php:172
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -4281,96 +4281,96 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/post.php:637
+#: lib/post.php:648
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:640
+#: lib/post.php:651
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:668
+#: lib/post.php:679
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:670
+#: lib/post.php:681
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:672
+#: lib/post.php:683
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:674
+#: lib/post.php:685
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:685 lib/util.php:831
+#: lib/post.php:696 lib/util.php:831
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:694
+#: lib/post.php:705
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:703
+#: lib/post.php:714
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:712
+#: lib/post.php:723
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:728
+#: lib/post.php:739
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:736
+#: lib/post.php:747
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:747
+#: lib/post.php:758
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:747
+#: lib/post.php:758
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:747
+#: lib/post.php:758
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:770
+#: lib/post.php:781
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:774
+#: lib/post.php:785
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:776
+#: lib/post.php:787
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
@@ -5035,19 +5035,19 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:458
+#: lib/user.php:469
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:512
+#: lib/user.php:523
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:513
+#: lib/user.php:524
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:514
+#: lib/user.php:525
 msgid "Yahoo Messenger"
 msgstr ""
 
