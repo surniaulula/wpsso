@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.51.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-01-28 14:28-0600\n"
-"PO-Revision-Date: 2018-01-28 14:28-0600\n"
+"POT-Creation-Date: 2018-01-29 09:13-0600\n"
+"PO-Revision-Date: 2018-01-29 09:13-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2484,7 +2484,7 @@ msgstr "Validations"
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
 msgstr "SVP prendre note que certains metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
-#: lib/messages.php:415 lib/util.php:2110
+#: lib/messages.php:415 lib/util.php:2118
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -4378,31 +4378,35 @@ msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
-#: lib/util.php:1890
+#: lib/util.php:1898
 msgid "Possible slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent possiblement détecté &mdash le filtre WordPress %1$s a pris %2$0.2f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.2f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:2137
+#: lib/util.php:1898
+msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
+msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les hooks spécifiques ou le code PHP affectant les performances."
+
+#: lib/util.php:2145
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2141
+#: lib/util.php:2149
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:2144
+#: lib/util.php:2152
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2148
+#: lib/util.php:2156
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: lib/util.php:2268
+#: lib/util.php:2276
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr "%s ext. requise"
