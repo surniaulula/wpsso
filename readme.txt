@@ -44,7 +44,7 @@ WPSSO specializes in providing all the meta tags and Schema markup social sites 
 
 WPSSO Core and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light.
 
-WPSSO Core and its extensions are fully tested and compatible with PHP v7.x (PHP v5.3 or better required).
+WPSSO Core and its extensions are fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
 
 **Advanced meta tag / Schema JSON-LD filter hooks for developers:**
 
