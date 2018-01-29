@@ -137,7 +137,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					' in taxonomy '.$mod['tax_slug'].' (posts_per_page is '.$posts_per_page.')' );
 			}
 
+			$max_time   = WPSSO_GET_POSTS_MAX_TIME;	// 0.1 seconds by default
 			$start_time = microtime( true );
+
 			$posts = get_posts( array(
 				'posts_per_page' => $posts_per_page,
 				'paged' => $paged,
@@ -153,7 +155,21 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					)
 				)
 			) );
+
 			$total_time = microtime( true ) - $start_time;
+
+			if ( $max_time > 0 && $total_time > $max_time ) {
+
+				$info      = $this->p->cf['plugin'][$this->p->lca];
+				$error_msg = sprintf( 'slow query detected - get_posts() for %s id %d in taxonomy %s took %0.4f secs'.
+					' (longer than recommended max of %0.4f secs)', $mod['name'], $mod['id'], $mod['tax_slug'], $total_time, $max_time );
+
+				error_log( $info['short'].' error: '.$error_msg );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $error_msg );
+				}
+			}
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( count( $posts ).' post objects returned in '.sprintf( '%0.4f secs', $total_time ) );

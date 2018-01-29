@@ -2329,6 +2329,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;			// output pretty / human readable json
 			$var_const['WPSSO_UNDEF_INT'] = -1;				// undefined width / height value
 
+			$var_const['WPSSO_GET_POSTS_MAX_TIME'] = 0.1;
+
 			$var_const['WPSSO_CONTENT_BLOCK_FILTER_OUTPUT'] = true;
 			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 0.75;
 			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT'] = 5;		// maximum number of images extracted from the content
