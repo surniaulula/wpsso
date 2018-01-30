@@ -386,7 +386,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 3.51.1-dev.1 (2018/01/30)**
 
 * *New Features*
-	* None
+	* Added a 'Person' role for users.
 * *Improvements*
 	* Added a "SameAs Webpage URLs Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
 * *Bugfixes*
