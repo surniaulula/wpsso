@@ -970,6 +970,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'schema_logo_url':
 				case 'schema_banner_url':
 				case 'schema_addl_type_url':
+				case 'schema_sameas_url':
 				case 'plugin_yourls_api_url':
 				case ( strpos( $key, '_url' ) && isset( $this->p->cf['form']['social_accounts'][$key] ) ? true : false ):
 					return 'url';

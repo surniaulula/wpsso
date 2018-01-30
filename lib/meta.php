@@ -1150,6 +1150,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 *		'plugin_cf_product_currency' => 'product_currency',
 			 *		'plugin_cf_product_price' => 'product_price',
 			 *		'plugin_cf_product_size' => 'product_size',
+			 *		'plugin_cf_sameas_urls' => 'schema_sameas_url',
 			 *	),
 			 */
 			$cf_md_idx = (array) apply_filters( $this->p->lca.'_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] );

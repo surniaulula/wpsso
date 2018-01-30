@@ -588,8 +588,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									_x( 'Product Size', 'option label', 'wpsso' ) );
 							}
 							// no break - fall through
+						case 'tooltip-plugin_cf_sameas_urls':
+							if ( ! isset( $plugin_cf_info ) ) {
+								$plugin_cf_info = array(
+									_x( 'additional SameAs webpage URLs', 'tooltip fragment', 'wpsso' ),
+									_x( 'SameAs Webpage URLs', 'option label', 'wpsso' ) );
+							}
+							// no break - fall through
 
-							$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[0] ).' '.sprintf( __( 'If a custom field matching that name is found, its value may be used for the %1$s option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[1], _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+							$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[0] ).' '.sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[1], _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 							break;	// stop here
 
 						/**

@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.51.0',		// Plugin version.
+					'version' => '3.51.1-dev.1',		// Plugin version.
 					'opt_version' => '572',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core',
@@ -919,6 +919,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_material' => '',		// Product Material Custom Field
 					'plugin_cf_product_price' => '',		// Product Price Custom Field
 					'plugin_cf_product_size' => '',			// Product Size Custom Field
+					'plugin_cf_sameas_urls' => '',			// SameAs Webpage URLs Custom Field
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week)
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
@@ -1085,11 +1086,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_material' => 'product_material',
 					'plugin_cf_product_price' => 'product_price',
 					'plugin_cf_product_size' => 'product_size',
+					'plugin_cf_sameas_urls' => 'schema_sameas_url',
 				),
 				'cf_md_multi' => array(		// read values into numeric meta data index
 					'schema_addl_type_url' => true,
 					'schema_recipe_ingredient' => true,
 					'schema_recipe_instruction' => true,
+					'schema_sameas_url' => true,
 				),
 			),
 			'um' => array(				// update manager
@@ -1456,6 +1459,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_material' => 'Product Material Custom Field',
 					'plugin_cf_product_price' => 'Product Price Custom Field',
 					'plugin_cf_product_size' => 'Product Size Custom Field',
+					'plugin_cf_sameas_urls' => 'SameAs Webpage URLs Custom Field',
 				),
 			),
 			'head' => array(
@@ -2342,11 +2346,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.0;		// hard-limit - most crawlers time-out after 3 seconds
 
 			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX'] = 10;
-			$var_const['WPSSO_SCHEMA_ADD_TYPE_URL_MAX'] = 5;
+			$var_const['WPSSO_SCHEMA_ADDL_TYPE_URL_MAX'] = 5;
 			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX'] = 90;
 			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 90;
 			$var_const['WPSSO_SCHEMA_POSTS_PER_PAGE_MAX'] = 10;
 			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH'] = 3;
+			$var_const['WPSSO_SCHEMA_SAMEAS_URL_MAX'] = 5;
 
 			/**
 			 * WPSSO option and meta array names
