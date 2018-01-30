@@ -383,6 +383,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.51.1-dev.1 (2018/01/30)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a "SameAs Webpage URLs Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.51.0 (2018/01/27)**
 
 * *New Features*
@@ -408,6 +419,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 
 == Upgrade Notice ==
+
+= 3.51.1-dev.1 =
+
+(2018/01/30) Added a "SameAs Webpage URLs Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
 
 = 3.51.0 =
 
