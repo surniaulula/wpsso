@@ -392,7 +392,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added error messages using PHP's `trigger_error()` function for slow filters and `get_posts()` queries.
 
 **Version 3.51.0 (2018/01/27)**
 
