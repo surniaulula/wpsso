@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.2
-WC Tested Up To: 3.2.6
+WC Tested Up To: 3.3.0
 Stable Tag: 3.51.0
 
 Automatically create complete meta tags and Schema markup from your content for social sharing, social media / SMO, Google Rich Cards / SEO + more.
@@ -383,11 +383,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.51.1-dev.1 (2018/01/30)**
+**Version 3.52.0-dev.1 (2018/01/30)**
 
 * *New Features*
-	* Added a 'Person' role for users.
+	* Added a 'Person' role for WordPress users.
 * *Improvements*
+	* Added a "Add Person Role for New Users" option under the SSO &gt; Advanced &gt; Integration tab.
 	* Added a "SameAs Webpage URLs Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
 * *Bugfixes*
 	* None
@@ -420,9 +421,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.51.1-dev.1 =
+= 3.52.0-dev.1 =
 
-(2018/01/30) Added a "SameAs Webpage URLs Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
+(2018/01/30) Added a 'Person' role for WordPress users. Added a "Add Person Role for New Users" and "SameAs Webpage URLs Custom Field" option.
 
 = 3.51.0 =
 
