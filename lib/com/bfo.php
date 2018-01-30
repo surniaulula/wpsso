@@ -216,16 +216,17 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			$output = ob_get_contents();
 			if ( $output !== '' ) {	// the previous hook has contributed some output
 
-				$error_text = __( 'The "%1$s" filter hook with priority %2$d in the "%3$s" filter has mistakenly provided some webpage output.',
+				$error_text = __( 'The "%1$s" hook with priority %2$d in the "%3$s" filter has incorrectly sent output to the webpage.',
 					$this->text_domain ) . ' ' .
-				__( 'All WordPress filter hooks must return their text - not send it to the webpage output.',
+				__( 'All WordPress filter hooks must return their text, not send it to the webpage output.',
 					$this->text_domain ) . ' ' .
-				__( 'Please contact the author of that filter hook and report this issue as a coding error / bug.',
+				__( 'Please contact the author of that filter hook and report this issue as a coding error.',
 					$this->text_domain );
 
 				if ( preg_match( '/^' . $this->bfo_check_id . '_\[([0-9]+)\](.+)$/', urldecode( $method_name ), $matches ) ) {
 
 					$error_msg = sprintf( $error_text, $matches[2], $matches[1], current_filter() );
+
 					/**
 					 * Filters are rarely applied on the admin / back-end side, but if they are,
 					 * then take advantage of this and show a notice. :)
@@ -245,9 +246,9 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 						}
 					}
 
-					error_log( $this->label_transl . ': ' . $error_msg . ' ' . __( 'Incorrect webpage output:', $this->text_domain ) . "\n" . 
+					trigger_error( $this->label_transl . ': ' . $error_msg . "\n" . __( 'Incorrect webpage output:', $this->text_domain ) . "\n" . 
 						'-----' . __( 'BEGIN OUTPUT', $this->text_domain ) . '-----' . "\n" . print_r( $output, true ) . "\n" . 
-						'-----' . __( 'END OUTPUT', $this->text_domain ) . '-----' );
+						'-----' . __( 'END OUTPUT', $this->text_domain ) . '-----' . "\n", E_USER_WARNING );
 				}
 				ob_clean();	// clean the output buffer for the next hook check
 			}

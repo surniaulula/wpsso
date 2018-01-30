@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:694 lib/post.php:548 lib/term.php:330 lib/user.php:310
+#: lib/admin.php:694 lib/post.php:549 lib/term.php:331 lib/user.php:311
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -676,31 +676,31 @@ msgstr ""
 
 #: lib/com/bfo.php:219 lib/com-gettext-extract.php:26
 msgid ""
-"The \"%1$s\" filter hook with priority %2$d in the \"%3$s\" filter has "
-"mistakenly provided some webpage output."
+"The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
+"sent output to the webpage."
 msgstr ""
 
 #: lib/com/bfo.php:221 lib/com-gettext-extract.php:5
 msgid ""
-"All WordPress filter hooks must return their text - not send it to the "
+"All WordPress filter hooks must return their text, not send it to the "
 "webpage output."
 msgstr ""
 
 #: lib/com/bfo.php:223 lib/com-gettext-extract.php:20
 msgid ""
 "Please contact the author of that filter hook and report this issue as a "
-"coding error / bug."
+"coding error."
 msgstr ""
 
-#: lib/com/bfo.php:248 lib/com-gettext-extract.php:17
+#: lib/com/bfo.php:249 lib/com-gettext-extract.php:17
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: lib/com/bfo.php:249 lib/com-gettext-extract.php:6
+#: lib/com/bfo.php:250 lib/com-gettext-extract.php:6
 msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: lib/com/bfo.php:250 lib/com-gettext-extract.php:11
+#: lib/com/bfo.php:251 lib/com-gettext-extract.php:11
 msgid "END OUTPUT"
 msgstr ""
 
@@ -812,11 +812,11 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:1416
+#: lib/com/util.php:1418
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1423
+#: lib/com/util.php:1425
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -2237,7 +2237,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:142 lib/meta.php:212 lib/post.php:888
+#: lib/gpl/admin/post.php:142 lib/meta.php:212 lib/post.php:889
 #: lib/pro/admin/post.php:172
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2712,7 +2712,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:415 lib/util.php:2122
+#: lib/messages.php:415 lib/util.php:2123
 msgid "No options available."
 msgstr ""
 
@@ -4281,96 +4281,96 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/post.php:664
+#: lib/post.php:665
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:667
+#: lib/post.php:668
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:695
+#: lib/post.php:696
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:697
+#: lib/post.php:698
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:699
+#: lib/post.php:700
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:701
+#: lib/post.php:702
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:712 lib/util.php:831
+#: lib/post.php:713 lib/util.php:831
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:721
+#: lib/post.php:722
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:730
+#: lib/post.php:731
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:739
+#: lib/post.php:740
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:755
+#: lib/post.php:756
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:763
+#: lib/post.php:764
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:774
+#: lib/post.php:775
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:774
+#: lib/post.php:775
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:774
+#: lib/post.php:775
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:797
+#: lib/post.php:798
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:801
+#: lib/post.php:802
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:803
+#: lib/post.php:804
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
@@ -5035,19 +5035,19 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:485
+#: lib/user.php:486
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:539
+#: lib/user.php:540
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:540
+#: lib/user.php:541
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:541
+#: lib/user.php:542
 msgid "Yahoo Messenger"
 msgstr ""
 
@@ -5093,7 +5093,7 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1902
+#: lib/util.php:1903
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.2f "
@@ -5102,34 +5102,34 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:1902
+#: lib/util.php:1903
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2149
+#: lib/util.php:2150
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2153
+#: lib/util.php:2154
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2156
+#: lib/util.php:2157
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2160
+#: lib/util.php:2161
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2280
+#: lib/util.php:2281
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""

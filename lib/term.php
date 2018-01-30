@@ -160,11 +160,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $max_time > 0 && $total_time > $max_time ) {
 
-				$info      = $this->p->cf['plugin'][$this->p->lca];
+				$info = $this->p->cf['plugin'][$this->p->lca];
+
 				$error_msg = sprintf( 'slow query detected - get_posts() for %s id %d in taxonomy %s took %0.4f secs'.
 					' (longer than recommended max of %0.4f secs)', $mod['name'], $mod['id'], $mod['tax_slug'], $total_time, $max_time );
 
-				error_log( $info['short'].' error: '.$error_msg );
+				trigger_error( $info['short'].' error: '.$error_msg, E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );

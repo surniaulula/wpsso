@@ -1883,11 +1883,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						break;
 				}
 
-				$info      = $this->p->cf['plugin'][$this->p->lca];
+				$info = $this->p->cf['plugin'][$this->p->lca];
+
 				$error_msg = sprintf( 'slow filter hook(s) detected - %s filter took %0.4f secs'.
 					' (longer than recommended max of %0.4f secs)', $filter_name, $total_time, $max_time );
 
-				error_log( $info['short'].' error: '.$error_msg );
+				trigger_error( $info['short'].' error: '.$error_msg, E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );

@@ -814,13 +814,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( file_exists( $plugin_lib ) ) {
 					require_once $plugin_lib;
 				} else {
-					error_log( sprintf( '%1$s error: wordpress library file %2$s is missing and required', __METHOD__, $plugin_lib ) );
+					trigger_error( sprintf( '%1$s error: wordpress library file %2$s is missing and required',
+						__METHOD__, $plugin_lib ), E_USER_WARNING );
 				}
 			}
 			if ( function_exists( 'get_plugins' ) ) {
 				return self::$cache_wp_plugins = get_plugins();
 			} else {
-				error_log( sprintf( '%1$s error: wordpress function %2$s is missing and required', __METHOD__, 'get_plugins()' ) );
+				trigger_error( sprintf( '%1$s error: wordpress function %2$s is missing and required',
+					__METHOD__, 'get_plugins()' ), E_USER_WARNING );
 			}
 			return self::$cache_wp_plugins = array();
 		}
