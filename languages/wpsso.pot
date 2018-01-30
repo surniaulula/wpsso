@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:694 lib/post.php:549 lib/term.php:331 lib/user.php:311
+#: lib/admin.php:694 lib/post.php:549 lib/term.php:331 lib/user.php:329
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -3402,7 +3402,7 @@ msgstr ""
 #: lib/messages.php:912
 msgid ""
 "Include WebSite, Organization, and/or Person Schema markup in the front page "
-"for Google's Knowledge Graph."
+"for Google's <em>Knowledge Graph</em>."
 msgstr ""
 
 #: lib/messages.php:912
@@ -3430,8 +3430,23 @@ msgstr ""
 
 #: lib/messages.php:916
 msgid ""
-"Select a site owner for the optional Person markup included in the front "
-"page."
+"Select a site owner for the (optional) <em>Knowledge Graph</em> Person "
+"markup included in the front page."
+msgstr ""
+
+#: lib/messages.php:916
+msgid ""
+"The available Person list includes users with '%1$s' and/or '%2$s' roles."
+msgstr ""
+
+#: lib/messages.php:916
+msgctxt "User role"
+msgid "Administrator"
+msgstr ""
+
+#: lib/messages.php:916
+msgctxt "User role"
+msgid "Editor"
 msgstr ""
 
 #: lib/messages.php:920
@@ -5050,19 +5065,23 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:486
+#: lib/user.php:29 lib/user.php:167
+msgid "Person"
+msgstr ""
+
+#: lib/user.php:505
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:540
+#: lib/user.php:559
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:541
+#: lib/user.php:560
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:542
+#: lib/user.php:561
 msgid "Yahoo Messenger"
 msgstr ""
 

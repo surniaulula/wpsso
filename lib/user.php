@@ -26,6 +26,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$fb_cm_name_value = $this->p->options['plugin_cm_fb_name'];
 
+			add_role( 'person', __( 'Person', 'wpsso' ), array() );
+
 			add_filter( 'user_contactmethods', array( &$this, 'add_contact_methods' ), 20, 2 );
 			add_filter( 'user_'.$fb_cm_name_value.'_label', array( &$this, 'fb_contact_label' ), 20, 1 );
 
@@ -44,14 +46,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 200, 1 );
 				}
 
-				add_filter( 'manage_users_columns', 
-					array( &$this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
-
-				add_filter( 'manage_users_sortable_columns', 
-					array( &$this, 'add_sortable_columns' ), 10, 1 );
-
-				add_filter( 'manage_users_custom_column', 
-					array( &$this, 'get_column_content',), 10, 3 );
+				add_filter( 'views_users', array( &$this, 'add_person_view' ) );
+				add_filter( 'manage_users_columns', array( &$this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+				add_filter( 'manage_users_sortable_columns', array( &$this, 'add_sortable_columns' ), 10, 1 );
+				add_filter( 'manage_users_custom_column', array( &$this, 'get_column_content',), 10, 3 );
 
 				/**
 				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
@@ -157,6 +155,26 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			return $posts;
+		}
+
+		public function add_person_view( $views ) { 
+
+			$views = array_reverse( $views );
+			$all_view = $views['all'];
+			unset( $views['all'] );
+
+			$role_name  = 'person';
+			$role_label = __( 'Person', 'wpsso' );
+			$role_view   = add_query_arg( 'role', $role_name, admin_url( 'users.php' ) );
+			$user_query = new WP_User_Query( array( 'role' => $role_name ) );
+			$user_count = $user_query->get_total();
+
+			$views[$role_name] = '<a href="' . $role_view . '">' .  $role_label . '</a> (' . $user_count . ')';
+
+			$views['all'] = $all_view;
+			$views = array_reverse( $views );
+
+			return $views;
 		}
 
 		public function add_column_headings( $columns ) { 
@@ -407,14 +425,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public function get_form_display_names( $roles = array( 'author', 'editor', 'administrator' ) ) {
-			foreach ( $roles as $role ) {
+		public function get_form_display_names( $roles = array( 'administrator', 'author', 'editor', 'person' ) ) {
+			foreach ( $roles as $role_name ) {
 				$query_args = array( 
-					'role' => $role,
+					'role' => $role_name,
 					'fields' => array( 'ID', 'display_name' ),
 				);
-				foreach ( get_users( $query_args ) as $user ) 
+				foreach ( get_users( $query_args ) as $user ) {
 					$user_ids[$user->ID] = $user->display_name;
+				}
 			}
 			asort( $user_ids );
 			return array_merge( array( 0 => 'none' ), $user_ids );
