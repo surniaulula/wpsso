@@ -155,6 +155,10 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'option label', 'wpsso' ), '', 'plugin_page_tags' ).
 			$form->get_nocb_td( 'plugin_page_tags' );
 
+			$table_rows[] = $form->get_th_html( _x( 'Add Person Role for New Users',
+				'option label', 'wpsso' ), '', 'plugin_add_person_role' ).
+			$form->get_nocb_td( 'plugin_add_person_role' );
+
 			return $table_rows;
 		}
 

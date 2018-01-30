@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.51.1-dev.1',		// Plugin version.
-					'opt_version' => '572',		// Increment when changing default option values.
+					'version' => '3.52.0-dev.1',		// Plugin version.
+					'opt_version' => '573',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -882,6 +882,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_upscale_img_max' => 33,			// Maximum Image Upscale Percent
 					'plugin_page_excerpt' => 1,			// Enable WP Excerpt for Pages
 					'plugin_page_tags' => 1,			// Enable WP Tags for Pages
+					'plugin_add_person_role' => 1,			// Add Person Role for New Users
 					// Custom Meta Tab
 					'plugin_schema_type_col_media' => 0,
 					'plugin_schema_type_col_post' => 1,
@@ -1008,6 +1009,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// Integration Tab
 					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
 					'plugin_honor_force_ssl:use' => 'default',
+					'plugin_html_attr_filter_name' => 'language_attributes',
+					'plugin_html_attr_filter_name:use' => 'default',
+					'plugin_html_attr_filter_prio' => 100,
+					'plugin_html_attr_filter_prio:use' => 'default',
+					'plugin_head_attr_filter_name' => 'head_attributes',
+					'plugin_head_attr_filter_name:use' => 'default',
+					'plugin_head_attr_filter_prio' => 100,
+					'plugin_head_attr_filter_prio:use' => 'default',
 					'plugin_check_head' => 1,			// Check for Duplicate Meta Tags
 					'plugin_check_head:use' => 'default',
 					'plugin_filter_lang' => 1,			// Use WP Locale for Language
@@ -1024,10 +1033,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_shortcodes:use' => 'default',
 					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
 					'plugin_widgets:use' => 'default',
-					'plugin_page_excerpt' => 0,			// Enable WP Excerpt for Pages
+					'plugin_page_excerpt' => 1,			// Enable WP Excerpt for Pages
 					'plugin_page_excerpt:use' => 'default',
-					'plugin_page_tags' => 0,			// Enable WP Tags for Pages
+					'plugin_page_tags' => 1,			// Enable WP Tags for Pages
 					'plugin_page_tags:use' => 'default',
+					'plugin_add_person_role' => 1,			// Add Person Role for New Users
+					'plugin_add_person_role:use' => 'default',
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week)
 					'plugin_head_cache_exp:use' => 'default',

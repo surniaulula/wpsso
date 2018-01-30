@@ -83,17 +83,47 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$this->check_required( WpssoConfig::$cf );
 
-			$this->p->set_config( true );			// apply filters and define $cf['*'] array ( $activate = true )
-			$this->p->set_options( true );			// read / create options and site_options ( $activate = true )
-			$this->p->set_objects( true );			// load all the class objects ( $activate = true )
+			$this->p->set_config( true );  // apply filters and define $cf['*'] array ( $activate = true )
+			$this->p->set_options( true ); // read / create options and site_options ( $activate = true )
+			$this->p->set_objects( true ); // load all the class objects ( $activate = true )
 
-			// clear all cached objects, transients, and any external cache
+			/**
+			 * Clear all cached objects, transients, and any external cache.
+			 */
 			if ( ! SucomUtil::get_const( 'WPSSO_REG_CLEAR_CACHE_DISABLE' ) ) {
-				$this->p->util->clear_all_cache( true );	// clear existing cache entries ( $clear_external = true )
+				$this->p->util->clear_all_cache( true ); // clear existing cache entries ( $clear_external = true )
 			}
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
+
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
+
+			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
+
+				$roles = array( 'administrator', 'author', 'editor', 'subscriber' ); // default WP roles
+
+			 	/**
+				 * Avoid using the 'role__in' argument because it's only available since WP v4.4.
+				 */
+				foreach ( $roles as $role ) {
+					foreach ( get_users( array(
+						'role' => $role,
+						'fields' => array(
+							'id',
+							'display_name'
+						)
+					) ) as $user ) {
+						$users[$user->id] = $user->display_name;
+					}
+				}
+
+				$role_name  = 'person';
+
+				foreach ( $users as $user_id => $display_name ) {
+					$user = get_user_by( 'id', $user_id );
+					$user->add_role( $role_name );
+				}
+			}
 		}
 
 		private function deactivate_plugin() {

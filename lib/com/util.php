@@ -2861,8 +2861,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			/**
-			 * Assign array elements by display name to ensure unique key values,
-			 * then sort and flip the array key / value pairs before returning.
+			 * Assign array elements by display name to ensure unique key values, then sort and flip 
+			 * the array key / value pairs before returning. Avoid using the 'role__in' argument because
+			 * it's only available since WP v4.4.
 			 */
 			foreach ( $roles as $role ) {
 				foreach ( get_users( array(

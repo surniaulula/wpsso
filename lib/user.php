@@ -26,7 +26,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$fb_cm_name_value = $this->p->options['plugin_cm_fb_name'];
 
-			add_role( 'person', __( 'Person', 'wpsso' ), array() );
+			add_role( 'person', _x( 'Person', 'User role', 'wpsso' ), array() );	// same $context as WP
+
+			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
+				if ( is_multisite() ) {
+					add_action( 'wpmu_new_user', array( &$this, 'add_person_role' ), 20, 1 );
+				} else {
+					add_action( 'user_register', array( &$this, 'add_person_role' ), 20, 1 );
+				}
+			}
 
 			add_filter( 'user_contactmethods', array( &$this, 'add_contact_methods' ), 20, 2 );
 			add_filter( 'user_'.$fb_cm_name_value.'_label', array( &$this, 'fb_contact_label' ), 20, 1 );
@@ -157,6 +165,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $posts;
 		}
 
+		public function add_person_role( $user_id ) {
+			$role_name  = 'person';
+			$user = get_user_by( 'id', $user_id );
+			$user->add_role( $role_name );
+		}
+
 		public function add_person_view( $views ) { 
 
 			$views = array_reverse( $views );
@@ -164,7 +178,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			unset( $views['all'] );
 
 			$role_name  = 'person';
-			$role_label = __( 'Person', 'wpsso' );
+			$role_label = _x( 'Person', 'User role', 'wpsso' );	// same $context as WP
 			$role_view   = add_query_arg( 'role', $role_name, admin_url( 'users.php' ) );
 			$user_query = new WP_User_Query( array( 'role' => $role_name ) );
 			$user_count = $user_query->get_total();
