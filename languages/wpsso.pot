@@ -3127,7 +3127,7 @@ msgid "Automatically add the '%s' role when new users are created."
 msgstr ""
 
 #: lib/messages.php:700 lib/user.php:29 lib/user.php:181
-msgctxt "User role"
+msgctxt "user role"
 msgid "Person"
 msgstr ""
 
@@ -3454,12 +3454,12 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:923
-msgctxt "User role"
+msgctxt "user role"
 msgid "Administrator"
 msgstr ""
 
 #: lib/messages.php:923
-msgctxt "User role"
+msgctxt "user role"
 msgid "Editor"
 msgstr ""
 

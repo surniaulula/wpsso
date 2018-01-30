@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.52.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-01-30 16:05-0600\n"
-"PO-Revision-Date: 2018-01-30 16:08-0600\n"
+"POT-Creation-Date: 2018-01-30 16:23-0600\n"
+"PO-Revision-Date: 2018-01-30 16:23-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2794,7 +2794,7 @@ msgid "Automatically add the '%s' role when new users are created."
 msgstr "Ajouter automatiquement le rôle '%s' lorsque de nouveaux utilisateurs sont créés."
 
 #: lib/messages.php:700 lib/user.php:29 lib/user.php:181
-msgctxt "User role"
+msgctxt "user role"
 msgid "Person"
 msgstr "Personne"
 
@@ -3012,12 +3012,12 @@ msgid "The available Person list includes users with '%1$s' and/or '%2$s' roles.
 msgstr "La liste des personnes disponibles inclut les utilisateurs avec les rôles '%1$s' et / ou '%2$s'."
 
 #: lib/messages.php:923
-msgctxt "User role"
+msgctxt "user role"
 msgid "Administrator"
 msgstr "Administrateur"
 
 #: lib/messages.php:923
-msgctxt "User role"
+msgctxt "user role"
 msgid "Editor"
 msgstr "Éditeur"
 

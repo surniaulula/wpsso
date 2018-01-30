@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$fb_cm_name_value = $this->p->options['plugin_cm_fb_name'];
 
-			add_role( 'person', _x( 'Person', 'User role', 'wpsso' ), array() );	// same $context as WP
+			add_role( 'person', _x( 'Person', 'user role', 'wpsso' ), array() );
 
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
 				if ( is_multisite() ) {
@@ -178,7 +178,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			unset( $views['all'] );
 
 			$role_name  = 'person';
-			$role_label = _x( 'Person', 'User role', 'wpsso' );	// same $context as WP
+			$role_label = _x( 'Person', 'user role', 'wpsso' );
 			$role_view   = add_query_arg( 'role', $role_name, admin_url( 'users.php' ) );
 			$user_query = new WP_User_Query( array( 'role' => $role_name ) );
 			$user_count = $user_query->get_total();

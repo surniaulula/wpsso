@@ -697,7 +697,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_add_person_role':
 
 							$text = sprintf( __( 'Automatically add the \'%s\' role when new users are created.', 'wpsso' ), 
-								_x( 'Person', 'User role', 'wpsso' ) );	// same $context as WP
+								_x( 'Person', 'user role', 'wpsso' ) );
 
 							break;
 
@@ -920,7 +920,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-schema_home_person_id':
-							$text = __( 'Select a site owner for the (optional) <em>Knowledge Graph</em> Person markup included in the front page.', 'wpsso' ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' ).' '.sprintf( __( 'The available Person list includes users with \'%1$s\' and/or \'%2$s\' roles.', 'wpsso' ), _x( 'Administrator', 'User role' ), _x( 'Editor', 'User role' ) );
+							$text = __( 'Select a site owner for the (optional) <em>Knowledge Graph</em> Person markup included in the front page.', 'wpsso' ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' ).' '.sprintf( __( 'The available Person list includes users with \'%1$s\' and/or \'%2$s\' roles.', 'wpsso' ), _x( 'Administrator', 'user role' ), _x( 'Editor', 'user role' ) );
 							break;
 
 						case 'tooltip-schema_alt_name':
