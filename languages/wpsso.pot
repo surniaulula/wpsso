@@ -3122,6 +3122,40 @@ msgid ""
 "height, the image will not be upscaled."
 msgstr ""
 
+#: lib/messages.php:675
+msgid "Enable the %s shortcode features (default is checked)."
+msgstr ""
+
+#: lib/messages.php:681
+msgid "Enable the %s widget features (default is checked)."
+msgstr ""
+
+#: lib/messages.php:687
+msgid "Enable the excerpt metabox for Pages."
+msgstr ""
+
+#: lib/messages.php:687
+msgid ""
+"An excerpts is an optional hand-crafted summary of your content, that %s can "
+"also use as a default description value."
+msgstr ""
+
+#: lib/messages.php:693
+msgid "Enable the WordPress tags metabox for Pages."
+msgstr ""
+
+#: lib/messages.php:693
+msgid ""
+"WordPress tags are optional keywords about the content subject, often used "
+"for searches and \"tag clouds\"."
+msgstr ""
+
+#: lib/messages.php:693
+msgid ""
+"%s converts WordPress tags into hashtags for some social sites (Twitter, "
+"Facebook, Google+, etc.)."
+msgstr ""
+
 #: lib/messages.php:699
 msgid "Automatically add the '%s' role when new users are created."
 msgstr ""

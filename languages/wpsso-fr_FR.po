@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.52.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-01-30 16:23-0600\n"
-"PO-Revision-Date: 2018-01-30 16:23-0600\n"
+"POT-Creation-Date: 2018-01-30 16:32-0600\n"
+"PO-Revision-Date: 2018-01-30 16:38-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2788,6 +2788,34 @@ msgstr "Lorsque l'agrandissement des image pour %1$s est autorisé, %2$s peut s'
 #: lib/messages.php:669
 msgid "If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled."
 msgstr "Si une image doit être agrandie au-delà de ce maximum, en largeur ou en hauteur, l'image ne sera pas agrandie."
+
+#: lib/messages.php:675
+msgid "Enable the %s shortcode features (default is checked)."
+msgstr "Activer les fonctions de shortcode %s (la valeur par défaut est cochée)."
+
+#: lib/messages.php:681
+msgid "Enable the %s widget features (default is checked)."
+msgstr "Activer les fonctions de widget %s (la valeur par défaut est cochée)."
+
+#: lib/messages.php:687
+msgid "Enable the excerpt metabox for Pages."
+msgstr "Activer le metabox d'extrait pour les Pages."
+
+#: lib/messages.php:687
+msgid "An excerpts is an optional hand-crafted summary of your content, that %s can also use as a default description value."
+msgstr "Un extrait est un résumé facultatif de votre contenu, que %s peut également utiliser comme valeur de description par défaut."
+
+#: lib/messages.php:693
+msgid "Enable the WordPress tags metabox for Pages."
+msgstr "Activer le metabox d'étiquettes WordPress pour les Pages."
+
+#: lib/messages.php:693
+msgid "WordPress tags are optional keywords about the content subject, often used for searches and \"tag clouds\"."
+msgstr "Les tags WordPress sont des mots-clés optionnels sur le sujet du contenu, souvent utilisés pour les recherches et les \"tags clouds\"."
+
+#: lib/messages.php:693
+msgid "%s converts WordPress tags into hashtags for some social sites (Twitter, Facebook, Google+, etc.)."
+msgstr "%s convertit les tags WordPress en hashtags pour certains sites sociaux (Twitter, Facebook, Google+, etc.)."
 
 #: lib/messages.php:699
 msgid "Automatically add the '%s' role when new users are created."

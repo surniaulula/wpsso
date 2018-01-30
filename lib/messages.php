@@ -672,25 +672,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_shortcodes':
 
-							$text = 'Enable the '.$info['short'].' shortcode features (default is checked).';
+							$text = sprintf( __( 'Enable the %s shortcode features (default is checked).', 'wpsso' ), $info['short'] );
 
 							break;
 
 						case 'tooltip-plugin_widgets':
 
-							$text = 'Enable the '.$info['short'].' widget features (default is checked).';
+							$text = sprintf( __( 'Enable the %s widget features (default is checked).', 'wpsso' ), $info['short'] );
 
 							break;
 
 						case 'tooltip-plugin_page_excerpt':
 
-							$text = 'Enable the excerpt editing metabox for Pages. Excerpts are optional hand-crafted summaries of your content that '.$info['short'].' can use as a default description value.';
+							$text = __( 'Enable the excerpt metabox for Pages.', 'wpsso' ).' '.sprintf( __( 'An excerpts is an optional hand-crafted summary of your content, that %s can also use as a default description value.', 'wpsso' ), $info['short'] );
 
 							break;
 
 						case 'tooltip-plugin_page_tags':
 
-							$text = 'Enable the tags editing metabox for Pages. Tags are optional keywords that highlight the content subject(s), often used for searches and "tag clouds". '.$info['short'].' converts tags into hashtags for some social websites (Twitter, Facebook, Google+, etc.).';
+							$text = __( 'Enable the WordPress tags metabox for Pages.', 'wpsso' ).' '.__( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ).' '.sprintf( __( '%s converts WordPress tags into hashtags for some social sites (Twitter, Facebook, Google+, etc.).', 'wpsso' ), $info['short'] );
 
 							break;
 
