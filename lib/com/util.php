@@ -2860,6 +2860,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$blog_id = get_current_blog_id(); // Since WP 3.1.
 			}
 
+			/**
+			 * Assign array elements by display name to ensure unique key values,
+			 * then sort and flip the array key / value pairs before returning.
+			 */
 			foreach ( $roles as $role ) {
 				foreach ( get_users( array(
 					'blog_id' => $blog_id,
@@ -2873,7 +2877,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			// sort by the display name key value
 			if ( defined( 'SORT_STRING' ) ) {
 				ksort( $ret, SORT_STRING );
 			} else {

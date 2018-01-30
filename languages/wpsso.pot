@@ -5069,19 +5069,19 @@ msgstr ""
 msgid "Person"
 msgstr ""
 
-#: lib/user.php:505
+#: lib/user.php:491
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:559
+#: lib/user.php:545
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:560
+#: lib/user.php:546
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:561
+#: lib/user.php:547
 msgid "Yahoo Messenger"
 msgstr ""
 

@@ -425,20 +425,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public function get_form_display_names( $roles = array( 'administrator', 'author', 'editor', 'person' ) ) {
-			foreach ( $roles as $role_name ) {
-				$query_args = array( 
-					'role' => $role_name,
-					'fields' => array( 'ID', 'display_name' ),
-				);
-				foreach ( get_users( $query_args ) as $user ) {
-					$user_ids[$user->ID] = $user->display_name;
-				}
-			}
-			asort( $user_ids );
-			return array_merge( array( 0 => 'none' ), $user_ids );
-		}
-
 		public function get_form_contact_fields( $fields = array() ) { 
 			return array_merge( 
 				array( 'none' => '[None]' ), 	// make sure none is first
