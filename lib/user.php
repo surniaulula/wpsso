@@ -18,6 +18,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 	class WpssoUser extends WpssoMeta {
 
 		protected static $pref = array();
+		protected static $wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // default WP roles
+		protected static $person_role_name = 'person';
 
 		public function __construct() {
 		}
@@ -26,7 +28,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$fb_cm_name_value = $this->p->options['plugin_cm_fb_name'];
 
-			add_role( 'person', _x( 'Person', 'user role', 'wpsso' ), array() );
+			add_role( self::$person_role_name, _x( 'Person', 'user role', 'wpsso' ), array() );
 
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
 				if ( is_multisite() ) {
@@ -164,9 +166,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function add_person_role( $user_id ) {
-			$role_name  = 'person';
 			$user = get_user_by( 'id', $user_id );
-			$user->add_role( $role_name );
+			$user->add_role( self::$person_role_name );
 		}
 
 		public function add_person_view( $views ) { 
@@ -175,13 +176,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$all_view = $views['all'];
 			unset( $views['all'] );
 
-			$role_name  = 'person';
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
-			$role_view   = add_query_arg( 'role', $role_name, admin_url( 'users.php' ) );
-			$user_query = new WP_User_Query( array( 'role' => $role_name ) );
+			$role_view  = add_query_arg( 'role', self::$person_role_name, admin_url( 'users.php' ) );
+			$user_query = new WP_User_Query( array( 'role' => self::$person_role_name ) );
 			$user_count = $user_query->get_total();
 
-			$views[$role_name] = '<a href="' . $role_view . '">' .  $role_label . '</a> (' . $user_count . ')';
+			$views[self::$person_role_name] = '<a href="' . $role_view . '">' .  $role_label . '</a> (' . $user_count . ')';
 
 			$views['all'] = $all_view;
 			$views = array_reverse( $views );

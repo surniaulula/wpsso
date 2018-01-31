@@ -3160,7 +3160,7 @@ msgstr ""
 msgid "Automatically add the '%s' role when new users are created."
 msgstr ""
 
-#: lib/messages.php:700 lib/user.php:29 lib/user.php:179
+#: lib/messages.php:700 lib/user.php:31 lib/user.php:179
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -4063,7 +4063,7 @@ msgid ""
 "refresh of all Pro update information."
 msgstr ""
 
-#: lib/messages.php:1465 lib/register.php:217
+#: lib/messages.php:1465 lib/register.php:218
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -4636,11 +4636,11 @@ msgstr ""
 msgid "Invalid user ID."
 msgstr ""
 
-#: lib/register.php:211 lib/register.php:219
+#: lib/register.php:212 lib/register.php:220
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:221
+#: lib/register.php:222
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 

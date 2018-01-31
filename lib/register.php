@@ -14,6 +14,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 	class WpssoRegister {
 
 		protected $p;
+		protected static $wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // default WP roles
+		protected static $person_role_name = 'person';
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -99,12 +101,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
 
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
-
-				$roles = array( 'administrator', 'author', 'editor', 'subscriber' ); // default WP roles
-				$users = SucomUtil::get_users_by_roles( $roles );
-
-				foreach ( $users as $user ) {
-					$user->add_role( $role_name );
+				foreach ( SucomUtil::get_users_by_roles( self::$wp_persons ) as $user ) {
+					$user->add_role( self::$person_role_name );
 				}
 			}
 		}
@@ -138,7 +136,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				delete_post_meta_by_key( WPSSO_META_NAME );	// since wp v2.3
 
 				foreach ( get_users() as $user ) {
-					if ( empty( $user-> ID ) ) {	// just in case
+					if ( ! empty( $user-> ID ) ) {	// just in case
 						// site specific user options
 						delete_user_option( $user->ID, WPSSO_NOTICE_NAME );
 						delete_user_option( $user->ID, WPSSO_DISMISS_NAME );
@@ -148,8 +146,12 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 						delete_user_meta( $user->ID, WPSSO_PREF_NAME );
 	
 						WpssoUser::delete_metabox_prefs( $user->ID );
+
+						$user->remove_role( self::$person_role_name );
 					}
 				}
+
+				remove_role( self::$person_role_name );
 
 				foreach ( WpssoTerm::get_public_terms() as $term_id ) {
 					if ( ! empty( $term_id ) ) {	// just in case
@@ -163,8 +165,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 */
 			global $wpdb;
 			$prefix = '_transient_';	// clear all transients, even if no timeout value
-			$dbquery = 'SELECT option_name FROM '.$wpdb->options.
-				' WHERE option_name LIKE \''.$prefix.'wpsso_%\';';
+			$dbquery = 'SELECT option_name FROM '.$wpdb->options.' WHERE option_name LIKE \''.$prefix.'wpsso_%\';';
 			$expired = $wpdb->get_col( $dbquery ); 
 
 			foreach( $expired as $option_name ) { 
