@@ -170,23 +170,23 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user->add_role( self::$person_role_name );
 		}
 
-		public function add_person_view( $views ) { 
+		public function add_person_view( $user_views ) { 
 
-			$views = array_reverse( $views );
-			$all_view = $views['all'];
-			unset( $views['all'] );
+			$user_views = array_reverse( $user_views );
+			$all_view_link = $user_views['all'];
+			unset( $user_views['all'], $user_views[self::$person_role_name] );
 
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
 			$role_view  = add_query_arg( 'role', self::$person_role_name, admin_url( 'users.php' ) );
 			$user_query = new WP_User_Query( array( 'role' => self::$person_role_name ) );
 			$user_count = $user_query->get_total();
 
-			$views[self::$person_role_name] = '<a href="' . $role_view . '">' .  $role_label . '</a> (' . $user_count . ')';
+			$user_views[self::$person_role_name] = '<a href="' . $role_view . '">' .  $role_label . '</a> (' . $user_count . ')';
 
-			$views['all'] = $all_view;
-			$views = array_reverse( $views );
+			$user_views['all'] = $all_view_link;
+			$user_views = array_reverse( $user_views );
 
-			return $views;
+			return $user_views;
 		}
 
 		public function add_column_headings( $columns ) { 
