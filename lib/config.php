@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.52.0-b.1',		// Plugin version.
-					'opt_version' => '573',		// Increment when changing default option values.
+					'version' => '3.52.0-b.2',		// Plugin version.
+					'opt_version' => '574',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -765,6 +765,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_author' => 1,
 					'add_meta_name_description' => 1,
 					'add_meta_name_generator' => 1,
+					'add_meta_name_robots' => 1,
 					// pinterest
 					'add_meta_name_p:domain_verify' => 1,
 					// weibo

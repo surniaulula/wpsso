@@ -304,6 +304,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						foreach ( array(
 							'add_link_rel_canonical' => 0,
 							'add_meta_name_description' => 0,
+							'add_meta_name_robots' => 0,
 						) as $idx => $def_val ) {
 							$def_val = (int) apply_filters( $lca.'_'.$idx, $def_val );
 							$opts[$idx.':is'] = 'disabled';

@@ -38,6 +38,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+
+				add_action( 'post_submitbox_misc_actions', array( &$this, 'show_publish_options' ) );
+				add_action( 'save_post', array( &$this, 'save_publish_options' ) );
 			}
 
 			// add the columns when doing AJAX as well to allow Quick Edit to add the required columns
@@ -977,6 +980,99 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( function_exists( 'wp_cache_post_change' ) ) {	// wp super cache
 				wp_cache_post_change( $post_id );
 			}
+		}
+
+		public function get_publish_options() {
+
+			$meta_options = array();
+
+			if ( ! empty( $this->p->options['add_meta_name_robots'] ) ) {
+				$meta_options['noindex'] = __( 'No Index', 'wpsso' );
+				$meta_options['nofollow'] =  __( 'No Follow', 'wpsso' );
+			}
+			
+			return empty( $meta_options ) ? false : $meta_options;
+		}
+
+		public function show_publish_options( $post ) {
+
+			if ( ( $meta_options = $this->get_publish_options() ) === false ) {
+				return;	// nothing to do
+			}
+
+			echo "\n";
+			echo '<!-- '. $this->p->lca . ' nonce fields -->'."\n";
+			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );	// WPSSO_NONCE_NAME is an md5() string
+			echo "\n";
+
+			foreach ( $meta_options as $meta_name => $meta_label ) {
+
+				$meta_key = '_' . $this->p->lca . '_' . $meta_name;
+				$meta_value = $this->get_meta_cache_value( $post->ID, $meta_key );
+
+				echo '<div class="misc-pub-section sucom-sidebox ' . $this->p->lca . '-publish-options">'."\n";
+				echo '<span class="misc-pub-option" id="' . $this->p->lca . '-' . $meta_name . '">'."\n";
+				echo $meta_label."\n";
+				echo $this->p->msgs->get( 'tooltip-post-'.$meta_name )."\n";
+				echo '<input type="hidden" name="is_checkbox' . $meta_key . '" value="1">';
+				echo '<input type="checkbox" name="' . $meta_key . '" '.checked( $meta_value, 1, false ).'>'."\n";
+				echo '</span>'."\n";
+				echo '</div>'."\n";
+			}
+		}
+
+		public function save_publish_options( $post_id, $rel_id = false ) {
+
+			if ( ( $meta_options = $this->get_publish_options() ) === false ) {
+				return;	// nothing to do
+			}
+
+			$user_can_edit = false;
+
+			if ( ! $post_type = SucomUtil::get_request_value( 'post_type', 'POST' ) ) {	// uses sanitize_text_field
+				$post_type = 'post';
+			}
+
+			if ( ! $this->verify_submit_nonce() ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
+				}
+				return false;
+			}
+
+			switch ( $post_type ) {
+				case 'page' :
+					if ( current_user_can( 'edit_page', $post_id ) ) {
+						$user_can_edit = true;
+					}
+					break;
+				default :
+					if ( current_user_can( 'edit_post', $post_id ) ) {
+						$user_can_edit = true;
+					}
+					break;
+			}
+
+			if ( false === $user_can_edit ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'insufficient privileges to save publish options for '.$post_type.' ID '.$post_id );
+				}
+				$this->p->notice->err( 'You have insufficient privileges to save publish options for '.$post_type.' ID '.$post_id.'.' );
+				return false;
+			}
+
+			foreach ( $meta_options as $meta_name => $meta_label ) {
+				$meta_key = '_' . $this->p->lca . '_' . $meta_name;
+				if ( isset( $_POST['is_checkbox' . $meta_key] ) ) {
+					if ( empty( $_POST[$meta_key] ) ) {
+						delete_post_meta( $post_id, $meta_key );
+					} else {
+						update_post_meta( $post_id, $meta_key, 1 );
+					}
+				}
+			}
+
+			return $post_id;
 		}
 
 		public function get_og_type_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating' ) {

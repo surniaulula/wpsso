@@ -928,9 +928,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;
 			}
 
+			echo "\n";
+			echo '<!-- '. $this->p->lca . ' nonce fields -->'."\n";
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );	// WPSSO_NONCE_NAME is an md5() string
+			echo "\n";
 			wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
+			echo "\n";
 			wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
+			echo "\n";
 
 			do_meta_boxes( $this->pagehook, 'normal', null );
 

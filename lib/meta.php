@@ -817,6 +817,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, $value );
 		}
 
+		public function get_meta_cache_value( $id, $meta_key, $none = '' ) {
+			return $this->must_be_extended( __METHOD__, $none );
+		}
+
 		public function update_sortable_meta( $obj_id, $col_idx, $content ) { 
 			return $this->must_be_extended( __METHOD__ );
 		}
