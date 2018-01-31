@@ -987,8 +987,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$meta_options = array();
 
 			if ( ! empty( $this->p->options['add_meta_name_robots'] ) ) {
-				$meta_options['noindex'] = __( 'No Index', 'wpsso' );
-				$meta_options['nofollow'] =  __( 'No Follow', 'wpsso' );
+				$meta_options['noindex'] = __( 'Robots no index', 'wpsso' );
+				$meta_options['nofollow'] =  __( 'Robots no follow', 'wpsso' );
 			}
 			
 			return empty( $meta_options ) ? false : $meta_options;

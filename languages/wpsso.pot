@@ -4462,11 +4462,11 @@ msgid ""
 msgstr ""
 
 #: lib/post.php:990
-msgid "No Index"
+msgid "Robots no index"
 msgstr ""
 
 #: lib/post.php:991
-msgid "No Follow"
+msgid "Robots no follow"
 msgstr ""
 
 #: lib/pro/admin/meta.php:53 lib/pro/admin/post.php:48
