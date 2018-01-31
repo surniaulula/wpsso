@@ -101,26 +101,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
 
 				$roles = array( 'administrator', 'author', 'editor', 'subscriber' ); // default WP roles
+				$users = SucomUtil::get_users_by_roles( $roles );
 
-			 	/**
-				 * Avoid using the 'role__in' argument because it's only available since WP v4.4.
-				 */
-				foreach ( $roles as $role ) {
-					foreach ( get_users( array(
-						'role' => $role,
-						'fields' => array(
-							'id',
-							'display_name'
-						)
-					) ) as $user ) {
-						$users[$user->id] = $user->display_name;
-					}
-				}
-
-				$role_name  = 'person';
-
-				foreach ( $users as $user_id => $display_name ) {
-					$user = get_user_by( 'id', $user_id );
+				foreach ( $users as $user ) {
 					$user->add_role( $role_name );
 				}
 			}

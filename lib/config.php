@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.52.0-dev.1',		// Plugin version.
+					'version' => '3.52.0-b.1',		// Plugin version.
 					'opt_version' => '573',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core',
@@ -2344,10 +2344,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;			// output pretty / human readable json
 			$var_const['WPSSO_UNDEF_INT'] = -1;				// undefined width / height value
 
-			$var_const['WPSSO_GET_POSTS_MAX_TIME'] = 0.1;
-
 			$var_const['WPSSO_CONTENT_BLOCK_FILTER_OUTPUT'] = true;
-			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 0.75;
+			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 0.50;
 			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT'] = 5;		// maximum number of images extracted from the content
 			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT'] = 5;		// maximum number of videos extracted from the content
 
@@ -2355,6 +2353,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = true;		// clear / remove cache file before fetching shortlink url
 			$var_const['WPSSO_DUPE_CHECK_WARNING_SECS'] = 2.5;		// issue a warning if getting shortlink took more than 2.5 seconds
 			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.0;		// hard-limit - most crawlers time-out after 3 seconds
+
+			$var_const['WPSSO_GET_POSTS_MAX_TIME'] = 0.10;			// send an error to trigger_error() if get_posts() takes longer
+			$var_const['WPSSO_PHP_GETIMGSIZE_MAX_TIME'] = 1.00;		// send an error to trigger_error() if getimagesize() takes longer
 
 			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX'] = 10;
 			$var_const['WPSSO_SCHEMA_ADDL_TYPE_URL_MAX'] = 5;
@@ -2398,7 +2399,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_SEO_FILTERS_PRIORITY'] = 100;
 
 			/**
-			 * WPSSO cURL settings
+			 * WPSSO PHP cURL library settings.
 			 */
 			$var_const['WPSSO_PHP_CURL_CAINFO'] = ABSPATH.WPINC.'/certificates/ca-bundle.crt';
 			$var_const['WPSSO_PHP_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0';

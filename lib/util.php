@@ -224,27 +224,41 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				if ( is_array( $image_info ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning image info from transient: '.
-							' '.$image_info[0].'x'.$image_info[1] );
+						$this->p->debug->log( 'returning image info from transient: '.$image_info[0].'x'.$image_info[1] );
 					}
 					return $image_info;
 				}
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache for image info is disabled' );
 			}
-
+ 
+			$max_time   = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.00 );
+			$start_time = microtime( true );
 			$image_info = @getimagesize( $image_url );
+			$total_time = microtime( true ) - $start_time;
+
+			if ( $max_time > 0 && $total_time > $max_time ) {
+
+				$info = $this->p->cf['plugin'][$this->p->lca];
+
+				$error_msg = sprintf( 'slow PHP function detected - getimagesize() for %s took %0.4f secs'.
+					' (longer than recommended max of %0.4f secs)', $image_url, $total_time, $max_time );
+
+				trigger_error( $info['short'].' error: '.$error_msg, E_USER_WARNING );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $error_msg );
+				}
+			}
 
 			if ( is_array( $image_info ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'PHP getimagesize() image info: '.
-						' '.$image_info[0].'x'.$image_info[1] );
+					$this->p->debug->log( 'PHP getimagesize() image info: '.$image_info[0].'x'.$image_info[1] );
 				}
 			} else {
 				$image_info = $def_image_info;
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'PHP getimagesize() did not return an array - using defaults: '.
-						$image_info[0].'x'.$image_info[1] );
+					$this->p->debug->log( 'PHP getimagesize() did not return an array - using defaults: '.$image_info[0].'x'.$image_info[1] );
 				}
 			}
 

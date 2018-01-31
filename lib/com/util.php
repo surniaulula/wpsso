@@ -1825,7 +1825,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function array_parent_index( array $array, $parent_key = '', $gparent_key = '', &$index = array() ) {
 		        foreach ( $array as $child_key => $value ) {
 				if ( isset( $index[$child_key] ) ) {
-					error_log( sprintf( '%1$s error: duplicate key %2$s = %3$s', __METHOD__, $child_key, $index[$child_key] ) );
+					trigger_error( sprintf( '%1$s error: duplicate key %2$s = %3$s',
+						__METHOD__, $child_key, $index[$child_key] ), E_USER_WARNING );
 				} elseif ( is_array( $value ) ) {
 					self::array_parent_index( $value, $child_key, $parent_key, $index );
 				} elseif ( $parent_key && $child_key !== $parent_key ) {
@@ -2850,45 +2851,56 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array( $lib_id, $stub, $action );
 		}
 
-		public static function get_user_select( $roles = array( 'administrator' ), $blog_id = false ) {
+		public static function get_users_by_roles( array $roles = array( 'administrator' ), $blog_id = false ) {
 
-			if ( ! is_array( $roles ) ) {
-				$roles = array( $roles );
-			}
-
-			if ( ! $blog_id ) {
+			if ( empty( $blog_id ) ) {
 				$blog_id = get_current_blog_id(); // Since WP 3.1.
 			}
 
-			/**
-			 * Assign array elements by display name to ensure unique key values, then sort and flip 
-			 * the array key / value pairs before returning. Avoid using the 'role__in' argument because
-			 * it's only available since WP v4.4.
+			$ids = array();
+			$users = array();
+
+		 	/**
+			 * Avoid using the 'role__in' argument because it's only available since WP v4.4.
 			 */
 			foreach ( $roles as $role ) {
 				foreach ( get_users( array(
-					'blog_id' => $blog_id,
 					'role' => $role,
 					'fields' => array(
-						'id',
+						'ID',
 						'display_name'
 					)
 				) ) as $user ) {
-					$ret[$user->display_name] = $user->id;
+					$ids[$user->ID] = $user->display_name;
 				}
 			}
 
+			/**
+			 * Use asort() or uasort() to maintain the ID => display_name association.
+			 */
 			if ( defined( 'SORT_STRING' ) ) {
-				ksort( $ret, SORT_STRING );
+				asort( $ids, SORT_STRING );
 			} else {
-				uksort( $ret, 'strcasecmp' ); // Case-insensitive string comparison.
+				uasort( $ids, 'strcasecmp' ); // Case-insensitive string comparison.
 			}
 
-			/**
-			 * Add 'none' to create an associative array *before* flipping the array in 
-			 * order to preserve the user id => display name association.
-			 */
-			return array_flip( array_merge( array( 'none' => 'none' ), $ret ) );
+			foreach ( $ids as $user_id => $display_name ) {
+				$users[] = get_user_by( 'ID', $user_id );
+			}
+
+			return $users;
+		}
+
+		public static function get_user_select( array $roles = array( 'administrator' ), $blog_id = false ) {
+
+			$select = array();
+			$users = self::get_users_by_roles( $roles, $blog_id );
+
+			foreach ( $users as $user ) {
+				$select[$user->ID] = $user->display_name;
+			}
+
+			return array( 'none' => 'none' ) + $select;
 		}
 
 		public static function count_diff( &$arr, $max = 0 ) {

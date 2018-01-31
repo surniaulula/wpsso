@@ -178,7 +178,8 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( $this->subsys['wp'] == true ) {
 				$sid = session_id();
-				error_log( ( $sid ? $sid : $_SERVER['REMOTE_ADDR'] ) . ' ' . $this->log_prefix . ' ' . $log_msg );
+				$connection_id = $sid ? $sid : $_SERVER['REMOTE_ADDR'];
+				error_log( $connection_id . ' ' . $this->log_prefix . ' ' . $log_msg );
 			}
 		}
 

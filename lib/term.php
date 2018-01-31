@@ -137,10 +137,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					' in taxonomy '.$mod['tax_slug'].' (posts_per_page is '.$posts_per_page.')' );
 			}
 
-			$max_time   = WPSSO_GET_POSTS_MAX_TIME;	// 0.1 seconds by default
+			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
 			$start_time = microtime( true );
-
-			$posts = get_posts( array(
+			$term_posts = get_posts( array(
 				'posts_per_page' => $posts_per_page,
 				'paged' => $paged,
 				'post_status' => 'publish',
@@ -155,7 +154,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					)
 				)
 			) );
-
 			$total_time = microtime( true ) - $start_time;
 
 			if ( $max_time > 0 && $total_time > $max_time ) {
@@ -173,10 +171,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $posts ).' post objects returned in '.sprintf( '%0.4f secs', $total_time ) );
+				$this->p->debug->log( count( $term_posts ).' post objects returned in '.sprintf( '%0.4f secs', $total_time ) );
 			}
 
-			return $posts;
+			return $term_posts;
 		}
 
 		public function add_column_headings( $columns ) { 
