@@ -393,7 +393,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added error messages using PHP's `trigger_error()` function for slow filters and `get_posts()` queries.
+	* Added error messages using PHP's `trigger_error()` function for slow filters, `get_posts()` queries, and `getimagesize()` calls.
+	* Added a new SucomUtil::get_users_by_roles() method and refactored the SucomUtil::get_user_select() method.
 
 **Version 3.51.0 (2018/01/27)**
 
