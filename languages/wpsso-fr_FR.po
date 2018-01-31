@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.52.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-01-31 17:34-0600\n"
-"PO-Revision-Date: 2018-01-31 17:38-0600\n"
+"POT-Creation-Date: 2018-01-31 17:46-0600\n"
+"PO-Revision-Date: 2018-01-31 17:46-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3767,10 +3767,12 @@ msgid "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful.
 msgstr "Génial! Aucune balise méta dupliquée trouvée. :-) Vérification %2$s de %3$s réussi..."
 
 #: lib/post.php:990
+msgctxt "option label"
 msgid "Robots no index"
 msgstr "Robots n'index pas"
 
 #: lib/post.php:991
+msgctxt "option label"
 msgid "Robots no follow"
 msgstr "Robots ne suive pas"
 

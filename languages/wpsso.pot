@@ -4462,10 +4462,12 @@ msgid ""
 msgstr ""
 
 #: lib/post.php:990
+msgctxt "option label"
 msgid "Robots no index"
 msgstr ""
 
 #: lib/post.php:991
+msgctxt "option label"
 msgid "Robots no follow"
 msgstr ""
 
