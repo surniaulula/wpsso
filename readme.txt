@@ -390,11 +390,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Added a "Add Person Role for New Users" option under the SSO &gt; Advanced &gt; Integration tab (enabled by default).
 	* Added a "SameAs Webpage URLs Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
+	* Adds the new 'person' role to existing 'administrator', 'author', 'editor', and 'subscriber' users on plugin activation (and removes it on plugin uninstall).
 * *Bugfixes*
 	* None
 * *Developer Notes*
 	* Added error messages using PHP's `trigger_error()` function for slow filters, `get_posts()` queries, and `getimagesize()` calls.
-	* Added a new SucomUtil::get_users_by_roles() method and refactored the SucomUtil::get_user_select() method.
+	* Added a new SucomUtil `get_users_by_roles()` method and refactored the `get_user_select()` method.
+	* Removed the WpssoUser `get_form_display_names()` method (unused).
 
 **Version 3.51.0 (2018/01/27)**
 
