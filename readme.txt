@@ -386,9 +386,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 3.52.0-dev.1 (2018/01/30)**
 
 * *New Features*
-	* Added a 'Person' role for WordPress users.
+	* Added a 'Person' role for WordPress users, that will be used by the WPSSO JSON extension for Schema Person selects.
 * *Improvements*
-	* Added a "Add Person Role for New Users" option under the SSO &gt; Advanced &gt; Integration tab.
+	* Added a "Add Person Role for New Users" option under the SSO &gt; Advanced &gt; Integration tab (enabled by default).
 	* Added a "SameAs Webpage URLs Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
 * *Bugfixes*
 	* None
