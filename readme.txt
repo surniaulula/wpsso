@@ -383,7 +383,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.52.0-b.2 (2018/01/31)**
+**Version 3.52.0-b.3 (2018/02/01)**
 
 * *New Features*
 	* Added a 'Person' role for WordPress users, that will be used by the WPSSO JSON extension for Schema Person selects.
@@ -426,9 +426,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.52.0-b.2 =
+= 3.52.0-b.3 =
 
-(2018/01/31) Added a 'Person' role for WordPress users. Added a "Add Person Role for New Users" and "SameAs Webpage URLs Custom Field" option.
+(2018/02/01) Added a 'Person' role for WordPress users. Added a "Add Person Role for New Users" and "SameAs Webpage URLs Custom Field" option.
 
 = 3.51.0 =
 
