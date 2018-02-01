@@ -61,6 +61,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			switch ( $hook_name ) {
 
 				case ( preg_match( '/_page_'.$this->p->lca.'-(site)?licenses/', $hook_name ) ? true : false ) :
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for licenses page' );
 					}
@@ -72,6 +73,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 				// includes the profile_page and users_page hooks (profile submenu items)
 				case ( strpos( $hook_name, '_page_'.$this->p->lca.'-' ) !== false ? true : false ):
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for settings page' );
 					}
@@ -85,6 +87,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				case 'user-edit.php':	// user edit
 				case 'profile.php':	// user edit
 				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// required for event espresso plugin
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for editing page' );
 					}
@@ -112,6 +115,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					break;	// stop here
 
 				case 'plugin-install.php':
+
 					if ( isset( $_GET['plugin'] ) ) {
 						$plugin_slug = $_GET['plugin'];
 						if ( isset( $this->p->cf['*']['slug'][$plugin_slug] ) ) {

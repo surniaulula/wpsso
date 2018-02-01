@@ -2302,5 +2302,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			return $req_msg;
 		}
+
+		public function get_meta_name_robots_content( array $mod ) {
+			$content = '';
+			if ( $mod['id'] && is_object( $mod['obj'] ) ) {
+				foreach ( array(
+					'noindex' => 'index',
+					'nofollow' => 'follow',
+					'noarchive' => '',
+					'nosnippet' => '',
+				) as $meta_name => $inverse_name ) {
+					$meta_key = '_' . $this->p->lca . '_' . $meta_name;
+					$meta_value = $mod['obj']->get_meta_cache_value( $mod['id'], $meta_key );
+					if ( ! empty( $meta_value ) ) {
+						$content .= $meta_name . ', ';
+					} elseif ( ! empty( $inverse_name ) ) {
+						$content .= $inverse_name . ', ';
+					}
+				}
+			}
+			return rtrim( $content, ', ' );
+		}
 	}
 }

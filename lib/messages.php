@@ -234,14 +234,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %1$s meta tag and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ).' '.__( 'The default description value is based on the excerpt (if one is available) or content.', 'wpsso' ).' '.__( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
 						 	break;
 
-						case 'tooltip-post-noindex':
-							$text = __( 'Tell search engines not to show this webpage in search results.', 'wpsso' );
-						 	break;
-
-						case 'tooltip-post-nofollow':
-							$text = __( 'Tell search engines not to follow any links in this webpage.', 'wpsso' );
-						 	break;
-
 						default:
 							$text = apply_filters( $lca.'_messages_tooltip_post', $text, $idx, $info );
 							break;

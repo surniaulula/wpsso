@@ -39,8 +39,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
-				add_action( 'post_submitbox_misc_actions', array( &$this, 'show_publish_options' ) );
-				add_action( 'save_post', array( &$this, 'save_publish_options' ) );
+				add_action( 'post_submitbox_misc_actions', array( &$this, 'show_robots_options' ) );
+				add_action( 'save_post', array( &$this, 'save_robots_options' ) );
 			}
 
 			// add the columns when doing AJAX as well to allow Quick Edit to add the required columns
@@ -982,87 +982,75 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
-		public function get_publish_options() {
+		public function show_robots_options( $post ) {
 
-			$meta_options = array();
-
-			if ( ! empty( $this->p->options['add_meta_name_robots'] ) ) {
-				$meta_options['noindex']  = _x( 'Robots no index', 'option label', 'wpsso' );
-				$meta_options['nofollow'] = _x( 'Robots no follow', 'option label', 'wpsso' );
+			if ( empty( $post->ID ) ) {	// just in case
+				return;
 			}
-			
-			return empty( $meta_options ) ? false : $meta_options;
-		}
 
-		public function show_publish_options( $post ) {
+			$post_type = $post->post_type;
+			$post_type_object = get_post_type_object( $post_type );
+			$can_publish = current_user_can( $post_type_object->cap->publish_posts );
 
-			if ( ( $meta_options = $this->get_publish_options() ) === false ) {
-				return;	// nothing to do
-			}
+			$mod = $this->get_mod( $post->ID );
+			$content = $this->p->util->get_meta_name_robots_content( $mod );
+			$robots_css_id = $this->p->lca . '-robots';
 
 			echo "\n";
 			echo '<!-- '. $this->p->lca . ' nonce fields -->'."\n";
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );	// WPSSO_NONCE_NAME is an md5() string
 			echo "\n";
+			echo '<div class="misc-pub-section misc-pub-robots sucom-sidebox ' . $robots_css_id . '-options" id="' . $robots_css_id . '">'."\n";
+			echo '<span id="post-' . $robots_css_id . '-label">';
+			echo _x( 'Robots:', 'option label', 'wpsso' );
+			echo '</span>' . "\n";
 
-			foreach ( $meta_options as $meta_name => $meta_label ) {
+			if ( ! $can_publish ) {
 
-				$meta_key = '_' . $this->p->lca . '_' . $meta_name;
-				$meta_value = $this->get_meta_cache_value( $post->ID, $meta_key );
+				echo '<span id="post-' . $robots_css_id . '-display">' . $content . '</span>' . "\n";
 
-				echo '<div class="misc-pub-section sucom-sidebox ' . $this->p->lca . '-publish-options">'."\n";
-				echo '<span class="misc-pub-option" id="' . $this->p->lca . '-' . $meta_name . '">'."\n";
-				echo $meta_label."\n";
-				echo $this->p->msgs->get( 'tooltip-post-'.$meta_name )."\n";
-				echo '<input type="hidden" name="is_checkbox' . $meta_key . '" value="1">';
-				echo '<input type="checkbox" name="' . $meta_key . '" '.checked( $meta_value, 1, false ).'>'."\n";
-				echo '</span>'."\n";
-				echo '</div>'."\n";
+			} else {
+
+				echo '<div id="post-' . $robots_css_id . '-select">' . "\n";
+
+				foreach ( array(
+					'noindex'  => _x( 'No index', 'option label', 'wpsso' ),
+					'nofollow' => _x( 'No follow', 'option label', 'wpsso' ),
+					'noarchive' => _x( 'No archive', 'option label', 'wpsso' ),
+					'nosnippet' => _x( 'No snippet', 'option label', 'wpsso' ),
+				) as $meta_name => $meta_label ) {
+
+					$meta_css_id = $this->p->lca . '_' . $meta_name;
+					$meta_key = '_' . $meta_css_id;
+					$meta_value = $this->get_meta_cache_value( $post->ID, $meta_key );
+
+					echo '<input type="hidden" name="is_checkbox' . $meta_key . '" value="1"/>' . "\n";
+					echo '<input type="checkbox" name="' . $meta_key . '" id="' . $meta_css_id . '"' .
+						checked( $meta_value, 1, false ) . '/>' . "\n";
+					echo '<label for="' . $meta_css_id . '" class="selectit">' . $meta_label . '</label>' . "\n";
+					echo '<br />' . "\n";
+				}
+
+			  	echo '</div><!-- #post-' . $robots_css_id . '-select -->' . "\n";
 			}
+
+			echo '</div><!-- .misc-pub-section -->' . "\n";
 		}
 
-		public function save_publish_options( $post_id, $rel_id = false ) {
+		public function save_robots_options( $post_id, $rel_id = false ) {
 
-			if ( ( $meta_options = $this->get_publish_options() ) === false ) {
-				return;	// nothing to do
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
 			}
 
-			$user_can_edit = false;
-
-			if ( ! $post_type = SucomUtil::get_request_value( 'post_type', 'POST' ) ) {	// uses sanitize_text_field
-				$post_type = 'post';
+			if ( ! $this->user_can_edit( $post_id, $rel_id ) ) {
+				return;
 			}
 
-			if ( ! $this->verify_submit_nonce() ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
-				}
-				return false;
-			}
+			foreach ( array( 'noindex', 'nofollow', 'noarchive', 'nosnippet' ) as $meta_name ) {
 
-			switch ( $post_type ) {
-				case 'page' :
-					if ( current_user_can( 'edit_page', $post_id ) ) {
-						$user_can_edit = true;
-					}
-					break;
-				default :
-					if ( current_user_can( 'edit_post', $post_id ) ) {
-						$user_can_edit = true;
-					}
-					break;
-			}
-
-			if ( false === $user_can_edit ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'insufficient privileges to save publish options for '.$post_type.' ID '.$post_id );
-				}
-				$this->p->notice->err( 'You have insufficient privileges to save publish options for '.$post_type.' ID '.$post_id.'.' );
-				return false;
-			}
-
-			foreach ( $meta_options as $meta_name => $meta_label ) {
 				$meta_key = '_' . $this->p->lca . '_' . $meta_name;
+
 				if ( isset( $_POST['is_checkbox' . $meta_key] ) ) {
 					if ( empty( $_POST[$meta_key] ) ) {
 						delete_post_meta( $post_id, $meta_key );
@@ -1071,8 +1059,43 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 			}
+		}
 
-			return $post_id;
+		public function user_can_edit( $post_id, $rel_id = false ) {
+
+			$user_can_edit = false;
+
+			if ( ! $this->verify_submit_nonce() ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
+				}
+				return $user_can_edit;
+			}
+
+			if ( ! $post_type = SucomUtil::get_request_value( 'post_type', 'POST' ) ) {	// uses sanitize_text_field
+				$post_type = 'post';
+			}
+
+			switch ( $post_type ) {
+				case 'page' :
+					$user_can_edit = current_user_can( 'edit_'.$post_type, $post_id );
+					break;
+				default :
+					$user_can_edit = current_user_can( 'edit_post', $post_id );
+					break;
+			}
+
+			if ( ! $user_can_edit ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'insufficient privileges to save settings for '.$post_type.' ID '.$post_id );
+				}
+				if ( $this->p->notice->is_admin_pre_notices() ) {
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for %1$s ID %2$s.',
+						'wpsso' ), $post_type, $post_id ) );
+				}
+			}
+
+			return $user_can_edit;
 		}
 
 		public function get_og_type_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating' ) {

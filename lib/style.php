@@ -306,26 +306,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				.'.$this->p->lca.'-rate-heart:before {
 					content:"\2665";	/* heart */
 				}
-				.'.$this->p->lca.'-publish-options .misc-pub-option:before {
-					font:400 20px/1 dashicons;
-					speak:none;
+				#post-'.$this->p->lca.'-robots-label {
 					display:inline-block;
-					margin-left:-1px;
-					padding-right:3px;
 					vertical-align:top;
-					color:#82878c;
-					-webkit-font-smoothing:antialiased;
-					-moz-osx-font-smoothing:grayscale;
 				}
-				.'.$this->p->lca.'-publish-options .misc-pub-option#'.$this->p->lca.'-noindex:before {
-					content:"\f179";
-					position:relative;
-					top:-1px;
-				}
-				.'.$this->p->lca.'-publish-options .misc-pub-option#'.$this->p->lca.'-nofollow:before {
-					content:"\f332";
-					position:relative;
-					top:-1px;
+				#post-'.$this->p->lca.'-robots-select {
+					display:inline-block;
+					vertical-align:top;
 				}
 			';
 

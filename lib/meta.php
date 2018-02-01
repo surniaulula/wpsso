@@ -549,7 +549,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function save_options( $mod_id, $rel_id = false ) {
-			return $this->must_be_extended( __METHOD__, $mod_id );
+			return $this->must_be_extended( __METHOD__ );
+		}
+
+		public function user_can_edit( $mod_id, $rel_id = false ) {
+			$this->must_be_extended( __METHOD__, false );
 		}
 
 		public function clear_cache( $mod_id, $rel_id = false ) {

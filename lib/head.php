@@ -494,19 +494,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( ! empty( $this->p->options['add_meta_name_robots'] ) ) {
-				if ( $mod['id'] && is_object( $mod['obj'] ) ) {
-					$content = '';
-					foreach ( array(
-						'noindex' => 'index',
-						'nofollow' => 'follow',
-					) as $meta_name => $alt_name ) {
-						$meta_key = '_' . $this->p->lca . '_' . $meta_name;
-						$content .= ( $mod['obj']->get_meta_cache_value( $mod['id'], $meta_key ) ? $meta_name : $alt_name ).', ';
-					}
-					if ( ! empty( $content ) ) {
-						$mt_name['robots'] = rtrim( $content, ', ' );
-					}
-				}
+				$mt_name['robots'] = $this->p->util->get_meta_name_robots_content( $mod );
 			}
 
 			$mt_name = (array) apply_filters( $this->p->lca.'_meta_name', $mt_name, $mod );

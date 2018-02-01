@@ -868,5 +868,29 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mod = $this->get_mod( $user_id );
 			$this->clear_mod_cache_types( $mod );
 		}
+
+		public function user_can_edit( $term_id, $term_tax_id = false ) {
+
+			$user_can_edit = false;
+
+			if ( ! $this->verify_submit_nonce() ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
+				}
+				return $user_can_edit;
+			}
+
+			if ( ! $user_can_edit = current_user_can( 'edit_user', $user_id ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'insufficient privileges to save settings for user ID '.$user_id );
+				}
+				if ( $this->p->notice->is_admin_pre_notices() ) {
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for user ID %2$s.',
+						'wpsso' ), $user_id ) );
+				}
+			}
+
+			return $user_can_edit;
+		}
 	}
 }

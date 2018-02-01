@@ -421,6 +421,30 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$this->clear_mod_cache_types( $mod );
 		}
 
+		public function user_can_edit( $term_id, $term_tax_id = false ) {
+
+			$user_can_edit = false;
+
+			if ( ! $this->verify_submit_nonce() ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
+				}
+				return $user_can_edit;
+			}
+
+			if ( ! $user_can_edit = current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'insufficient privileges to save settings for term ID '.$term_id );
+				}
+				if ( $this->p->notice->is_admin_pre_notices() ) {
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for term ID %2$s.',
+						'wpsso' ), $term_id ) );
+				}
+			}
+
+			return $user_can_edit;
+		}
+
 		// called by the WpssoRegister::uninstall_plugin() method
 		public static function get_public_terms( $tax_name = false, $term_fields = 'ids' ) {
 			$ret = array();
