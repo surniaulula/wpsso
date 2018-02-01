@@ -70,6 +70,8 @@
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Support for <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> and <a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP - Accelerated Mobile Pages</a> plugins.</p>
 
+<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Manage robots noindex, nofollow, noarchive, and nosnippet for each post / page.</p>
+
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Finds images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.</p>
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable title and description maximum lengths (Open Graph, Twitter Card, SEO), including both hard and soft limits.</p>

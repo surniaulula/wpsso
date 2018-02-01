@@ -73,6 +73,8 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Support for [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) and [AMP for WP - Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
 
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Manage robots noindex, nofollow, noarchive, and nosnippet for each post / page.
+
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Finds images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable title and description maximum lengths (Open Graph, Twitter Card, SEO), including both hard and soft limits.
@@ -389,7 +391,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a 'Person' role for WordPress users, that will be used by the WPSSO JSON extension for Schema Person selects.
 	* Added a "Add Person Role for New Users" option under the SSO &gt; Advanced &gt; Integration tab (enabled by default).
 	* Added a "meta name robots" checkbox under the SSO &gt; Advanced &gt; Head Tags List &gt; SEO / Other tab (enabled by default if no SEO plugin is detected).
-	* Added a 'Robots no index' and 'Robots no follow' option in the post Publish side metabox (if the "meta name robots" meta tag option is enabled).
+	* Added a 'Robots' (noindex, nofollow, noarchive, nosnippet) option in the post Publish side metabox (if the "meta name robots" meta tag option is enabled).
 	* Added a "SameAs Webpage URLs Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
 * *Improvements*
 	* Added error messages using PHP's `trigger_error()` function for slow filters, slow `get_posts()` queries, and slow `getimagesize()` calls (error messages can be captured by the Query Monitor plugin).
