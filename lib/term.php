@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$this->p->debug->log( 'insufficient privileges to save settings for term ID '.$term_id );
 				}
 				if ( $this->p->notice->is_admin_pre_notices() ) {
-					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for term ID %2$s.',
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for term ID %1$s.',
 						'wpsso' ), $term_id ) );
 				}
 			}

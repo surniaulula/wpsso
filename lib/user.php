@@ -885,7 +885,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$this->p->debug->log( 'insufficient privileges to save settings for user ID '.$user_id );
 				}
 				if ( $this->p->notice->is_admin_pre_notices() ) {
-					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for user ID %2$s.',
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for user ID %1$s.',
 						'wpsso' ), $user_id ) );
 				}
 			}

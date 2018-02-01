@@ -5133,7 +5133,7 @@ msgid "Setup Guide"
 msgstr ""
 
 #: lib/term.php:440
-msgid "Insufficient privileges to save settings for term ID %2$s."
+msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
 #: lib/twittercard.php:34
@@ -5163,7 +5163,7 @@ msgid "Yahoo Messenger"
 msgstr ""
 
 #: lib/user.php:888
-msgid "Insufficient privileges to save settings for user ID %2$s."
+msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
 #: lib/util.php:584
