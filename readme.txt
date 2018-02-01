@@ -369,11 +369,6 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 <p>See <a href="https://en.wikipedia.org/wiki/Release_early,_release_often">release early, release often (RERO) software development philosophy</a> on Wikipedia for more information on the benefits of smaller / more frequent releases.</p>
 
-<h3>Free / Standard Version Repositories</h3>
-
-* [GitHub](https://surniaulula.github.io/wpsso/)
-* [WordPress.org](https://plugins.trac.wordpress.org/browser/wpsso/)
-
 <h3>Version Numbering</h3>
 
 Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
@@ -382,6 +377,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * {minor} = New functionality was added or improved in a backwards-compatible manner.
 * {bugfix} = Backwards-compatible bug fixes or small improvements.
 * {stage}.{level} = Pre-production release: dev < a (alpha) < b (beta) < rc (release candidate).
+
+<h3>Free / Standard Version Repositories</h3>
+
+* [GitHub](https://surniaulula.github.io/wpsso/)
+* [WordPress.org](https://plugins.trac.wordpress.org/browser/wpsso/)
+
+<h3>Development Updates for Pro Users</h3>
+
+<p>Development versions are available to WPSSO Core Pro users. Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they can be installed under the Dashboard &gt; Updates page (like any other plugin update). You can also re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
 
