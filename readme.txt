@@ -389,7 +389,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.52.0-rc.1 (2018/02/02)**
+**Version 3.52.0-rc.2 (2018/02/02)**
 
 * *New Features*
 	* Added a 'Person' role for WordPress users, that will be used by the WPSSO JSON extension for Schema Person selects.
@@ -400,7 +400,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Added error messages using PHP's `trigger_error()` function for slow filters, slow `get_posts()` queries, and slow `getimagesize()` calls (error messages can be captured by the Query Monitor plugin).
 * *Bugfixes*
-	* None
+	* Fixed an incorrectly named variable used to calculate the maximum image upscale size.
 * *Developer Notes*
 	* Adds a new 'Person' role to existing 'Administrator', 'Author', 'Editor', and 'Subscriber' users on plugin activation (and removes it on plugin uninstall).
 	* Added a new SucomUtil `get_users_by_roles()` method and refactored the `get_user_select()` method.
@@ -432,7 +432,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.52.0-rc.1 =
+= 3.52.0-rc.2 =
 
 (2018/02/02) Added a 'Person' role for WordPress users. Added a "Add Person Role for New Users" and "SameAs Webpage URLs Custom Field" option.
 
