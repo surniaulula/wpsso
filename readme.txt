@@ -385,7 +385,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Development Updates for Pro Version</h3>
 
-<p>Development, alpha, beta, and release candidate updates are available to WPSSO Core Pro version users. Under the SSO &gt; Update Manager settings page, you can select the "Development and Up" version filter (for example) for the WPSSO Core plugin and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO version information. When new development versions are available, they can be installed under the Dashboard &gt; Updates page (like any other plugin update). You can also re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
+<p>Development, alpha, beta, and release candidate updates are available to WPSSO Core Pro version customers. Under the SSO &gt; Update Manager settings page, you can select the "Development and Up" version filter (for example) for the WPSSO Core plugin and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO version information. When new development versions are available, they can be installed under the Dashboard &gt; Updates page (like any other plugin update). You can also re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
 
@@ -394,7 +394,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* Added an "Edit" link to the "Robots" option in the post Publish metabox.
+	* Added an "Edit" link to the "Robots" option in the post Publish metabox to show the checkboxes only when required.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -445,7 +445,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.52.1-dev.1 =
 
-(2018/02/03) Added an "Edit" link to the "Robots" option in the post Publish metabox.
+(2018/02/03) Added an "Edit" link to the "Robots" option in the post Publish metabox to show the checkboxes only when required.
 
 = 3.52.0 =
 
