@@ -4458,27 +4458,35 @@ msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1024
-msgctxt "option label"
-msgid "No index"
+#: lib/post.php:1014
+msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1025
-msgctxt "option label"
-msgid "No follow"
+#: lib/post.php:1015
+msgid "Edit visibility"
 msgstr ""
 
 #: lib/post.php:1026
 msgctxt "option label"
-msgid "No archive"
+msgid "No index"
 msgstr ""
 
 #: lib/post.php:1027
 msgctxt "option label"
+msgid "No follow"
+msgstr ""
+
+#: lib/post.php:1028
+msgctxt "option label"
+msgid "No archive"
+msgstr ""
+
+#: lib/post.php:1029
+msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1101
+#: lib/post.php:1103
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
