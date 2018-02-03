@@ -4463,7 +4463,7 @@ msgid "Edit"
 msgstr ""
 
 #: lib/post.php:1015
-msgid "Edit visibility"
+msgid "Edit robots"
 msgstr ""
 
 #: lib/post.php:1026

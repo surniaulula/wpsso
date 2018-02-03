@@ -1012,7 +1012,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					'jQuery(\'div#post-' . $robots_css_id . '-content\').hide();' .
 					'jQuery(\'div#post-' . $robots_css_id . '-select\').show();">';
 				echo '<span aria-hidden="true">' . __( 'Edit', 'wpsso' ) . '</span>'."\n";
-				echo '<span class="screen-reader-text">' . __( 'Edit visibility' ) . '</span>';
+				echo '<span class="screen-reader-text">' . __( 'Edit robots' ) . '</span>';
 				echo '</a>'."\n";
 			}
 

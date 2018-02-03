@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.52.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-02-03 11:21-0600\n"
-"PO-Revision-Date: 2018-02-03 11:21-0600\n"
+"POT-Creation-Date: 2018-02-03 11:55-0600\n"
+"PO-Revision-Date: 2018-02-03 11:56-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3763,27 +3763,35 @@ msgctxt "option label"
 msgid "Robots:"
 msgstr "Robots:"
 
-#: lib/post.php:1024
+#: lib/post.php:1014
+msgid "Edit"
+msgstr "Modifier"
+
+#: lib/post.php:1015
+msgid "Edit robots"
+msgstr "Modifier robots"
+
+#: lib/post.php:1026
 msgctxt "option label"
 msgid "No index"
 msgstr "Pas d'indexation"
 
-#: lib/post.php:1025
+#: lib/post.php:1027
 msgctxt "option label"
 msgid "No follow"
 msgstr "Pas de suivi"
 
-#: lib/post.php:1026
+#: lib/post.php:1028
 msgctxt "option label"
 msgid "No archive"
 msgstr "Pas d'archivage"
 
-#: lib/post.php:1027
+#: lib/post.php:1029
 msgctxt "option label"
 msgid "No snippet"
 msgstr "Pas d'extrait"
 
-#: lib/post.php:1101
+#: lib/post.php:1103
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour %1$s ID %2$s."
 
@@ -4555,3 +4563,7 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#, fuzzy
+#~ msgid "Edit visibility"
+#~ msgstr "Disponibilité limitée"
