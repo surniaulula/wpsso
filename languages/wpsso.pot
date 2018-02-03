@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.52.0\n"
+"Project-Id-Version: WPSSO Core 3.52.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4458,27 +4458,27 @@ msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1017
+#: lib/post.php:1024
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1018
+#: lib/post.php:1025
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1019
+#: lib/post.php:1026
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1020
+#: lib/post.php:1027
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1093
+#: lib/post.php:1101
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

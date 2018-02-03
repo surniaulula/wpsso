@@ -1000,16 +1000,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo '<!-- '. $this->p->lca . ' nonce fields -->'."\n";
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );	// WPSSO_NONCE_NAME is an md5() string
 			echo "\n";
-			echo '<div class="misc-pub-section misc-pub-robots sucom-sidebox ' . $robots_css_id . '-options" id="' . $robots_css_id . '">'."\n";
-			echo '<span id="post-' . $robots_css_id . '-label">';
+			echo '<div class="misc-pub-section misc-pub-robots sucom-sidebox ' . $robots_css_id . '-options" id="post-' . $robots_css_id . '">'."\n";
+			echo '<div id="post-' . $robots_css_id . '-label">';
 			echo _x( 'Robots:', 'option label', 'wpsso' );
-			echo '</span>' . "\n";
+			echo '</div>' . "\n";
+			echo '<div id="post-' . $robots_css_id . '-display">' . "\n";
+			echo '<div id="post-' . $robots_css_id . '-content">' . $content;
+			
+			if ( $can_publish ) {
+				echo ' <a href="#" class="hide-if-no-js" onClick="' .
+					'jQuery(\'div#post-' . $robots_css_id . '-content\').hide();' .
+					'jQuery(\'div#post-' . $robots_css_id . '-select\').show();' .
+					'">Edit</a>';
+			}
 
-			if ( ! $can_publish ) {
+			echo '</div><!-- #post-' . $robots_css_id . '-content -->' . "\n";
 
-				echo '<span id="post-' . $robots_css_id . '-display">' . $content . '</span>' . "\n";
-
-			} else {
+			if ( $can_publish ) {
 
 				echo '<div id="post-' . $robots_css_id . '-select">' . "\n";
 
@@ -1034,7 +1041,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			  	echo '</div><!-- #post-' . $robots_css_id . '-select -->' . "\n";
 			}
 
-			echo '</div><!-- .misc-pub-section -->' . "\n";
+			echo '</div><!-- #post-' . $robots_css_id . '-display -->' . "\n";
+			echo '</div><!-- #post-' . $robots_css_id . ' -->' . "\n";
 		}
 
 		public function save_robots_options( $post_id, $rel_id = false ) {

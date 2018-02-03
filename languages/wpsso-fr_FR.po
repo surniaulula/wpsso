@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 3.52.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-02-01 11:46-0600\n"
-"PO-Revision-Date: 2018-02-01 11:46-0600\n"
+"PO-Revision-Date: 2018-02-01 11:48-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4555,9 +4555,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "Tell search engines not to show this webpage in search results."
-#~ msgstr "Indiquez aux moteurs de recherche de ne pas afficher cette page Web dans les résultats de recherche."
-
-#~ msgid "Tell search engines not to follow any links in this webpage."
-#~ msgstr "Indiquez aux moteurs de recherche de ne suivre aucun lien dans cette page Web."

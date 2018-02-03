@@ -306,13 +306,29 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				.'.$this->p->lca.'-rate-heart:before {
 					content:"\2665";	/* heart */
 				}
+				#post-'.$this->p->lca.'-robots {
+					display:table;
+				}
 				#post-'.$this->p->lca.'-robots-label {
-					display:inline-block;
+					display:table-cell;
+					padding-left:3px;
 					vertical-align:top;
 				}
-				#post-'.$this->p->lca.'-robots-select {
-					display:inline-block;
+				#post-'.$this->p->lca.'-robots-display {
+					display:table-cell;
+					padding-left:3px;
 					vertical-align:top;
+				}
+				#post-'.$this->p->lca.'-robots-content {
+					display:block;
+					word-wrap:normal;
+					font-weight:bold;
+				}
+				#post-'.$this->p->lca.'-robots-content a {
+					font-weight:normal;
+				}
+				#post-'.$this->p->lca.'-robots-select {
+					display:none;
 				}
 			';
 
