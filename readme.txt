@@ -389,7 +389,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.52.0-rc.2 (2018/02/02)**
+**Version 3.52.0 (2018/02/03)**
 
 * *New Features*
 	* Added a 'Person' role for WordPress users, that will be used by the WPSSO JSON extension for Schema Person selects.
@@ -432,9 +432,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.52.0-rc.2 =
+= 3.52.0 =
 
-(2018/02/02) Added a 'Person' role for WordPress users. Added a "Add Person Role for New Users" and "SameAs Webpage URLs Custom Field" option.
+(2018/02/03) Added a 'Person' role for WordPress users. Added a "Add Person Role for New Users" and "SameAs Webpage URLs Custom Field" option. Fixed an incorrectly named variable used to calculate the maximum image upscale size.
 
 = 3.51.0 =
 
