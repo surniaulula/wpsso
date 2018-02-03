@@ -1265,7 +1265,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( $this->p->options['plugin_upscale_images'] ) {
 				$img_info            = (array) self::get_image_src_info();
 				$upscale_img_max     = apply_filters( $this->p->lca . '_image_upscale_max', $this->p->options['plugin_upscale_img_max'], $img_info );
-				$upscale_multiplier  = 1 + ( $upscale_max / 100 );
+				$upscale_multiplier  = 1 + ( $upscale_img_max / 100 );
 				$upscale_full_width  = round( $full_width * $upscale_multiplier );
 				$upscale_full_height = round( $full_height * $upscale_multiplier );
 				$is_sufficient_w     = $upscale_full_width >= $size_info['width'] ? true : false;
