@@ -389,6 +389,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.52.1-dev.1 (2018/02/03)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added an "Edit" link to the "Robots" option in the post Publish metabox.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.52.0 (2018/02/03)**
 
 * *New Features*
@@ -431,6 +442,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 
 == Upgrade Notice ==
+
+= 3.52.1-dev.1 =
+
+(2018/02/03) Added an "Edit" link to the "Robots" option in the post Publish metabox.
 
 = 3.52.0 =
 
