@@ -13,7 +13,7 @@
  * Description: Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, Google Rich Cards / SEO, and more.
  * Requires PHP: 5.4
  * Requires At Least: 3.8
- * Tested Up To: 4.9.2
+ * Tested Up To: 4.9.3
  * WC Tested Up To: 3.3.0
  * Version: 3.52.0-rc.2
  *
