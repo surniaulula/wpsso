@@ -451,7 +451,3 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 (2018/02/03) Added a 'Person' role for WordPress users. Added a "Add Person Role for New Users" and "SameAs Webpage URLs Custom Field" option. Fixed an incorrectly named variable used to calculate the maximum image upscale size.
 
-= 3.51.0 =
-
-(2018/01/27) Added an integration module for the WordPress video shortcode and self-hosted videos (Pro version).
-
