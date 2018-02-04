@@ -82,12 +82,13 @@ if ( ! class_exists( 'WpssoException' ) ) {
 			 * getPrevious();       // previous exception
 			 * getTraceAsString();  // formatted string of trace
 			 */
-			$err_msg = $this->getMessage();
+			$error_msg = $this->getMessage();
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->log( $err_msg );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( $error_msg );
+			}
 
-			$this->p->notice->err( $err_msg );
+			$this->p->notice->err( $error_msg );
 
 			return  $ret;
 		}

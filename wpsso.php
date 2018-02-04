@@ -34,6 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Wpsso' ) ) {
 
 	class Wpsso {
+
 		/**
 		 * Class Object Variables
 		 */

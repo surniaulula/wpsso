@@ -4686,23 +4686,23 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2167
+#: lib/schema.php:2166
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2200
+#: lib/schema.php:2199
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2202
+#: lib/schema.php:2201
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2425
+#: lib/schema.php:2424
 msgid "adding schema for place"
 msgstr ""
 
@@ -5257,26 +5257,26 @@ msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""
 
-#: wpsso.php:339
+#: wpsso.php:340
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:353
+#: wpsso.php:354
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:361
+#: wpsso.php:362
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:362
+#: wpsso.php:363
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

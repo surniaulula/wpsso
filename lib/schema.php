@@ -955,7 +955,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * See https://developers.google.com/search/docs/data-types/breadcrumbs for more info.
 			 */
-			//$page_type_ids['breadcrumb.list'] = $this->p->options['schema_add_breadcrumbs'];
+			//$page_type_ids['breadcrumb.list'] = false;
 
 			/**
 			 * Array (
@@ -963,7 +963,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *	[website] => true
 			 *	[organization] => true
 			 *	[person] => false
-			 *	[breadcrumb.list] => true
 			 * )
 			 */
 			$page_type_ids = apply_filters( $this->p->lca.'_json_array_schema_page_type_ids', $page_type_ids, $mod );

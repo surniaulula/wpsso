@@ -359,16 +359,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			} else {	// $opts is empty or not an array
 
 				if ( false === $opts ) {
-					$err_msg = sprintf( __( 'WordPress could not find an entry for %s in the options table.', 'wpsso' ), $options_name );
+					$error_msg = sprintf( __( 'WordPress could not find an entry for %s in the options table.', 'wpsso' ), $options_name );
 				} elseif ( ! is_array( $opts ) ) {
-					$err_msg = sprintf( __( 'WordPress returned a non-array value when reading %s from the options table.', 'wpsso' ), $options_name );
+					$error_msg = sprintf( __( 'WordPress returned a non-array value when reading %s from the options table.', 'wpsso' ), $options_name );
 				} elseif ( empty( $opts ) ) {
-					$err_msg = sprintf( __( 'WordPress returned an empty array when reading %s from the options table.', 'wpsso' ), $options_name );
+					$error_msg = sprintf( __( 'WordPress returned an empty array when reading %s from the options table.', 'wpsso' ), $options_name );
 				} else {
-					$err_msg = sprintf( __( 'WordPress returned an unknown condition when reading %s from the options table.', 'wpsso' ), $options_name );
+					$error_msg = sprintf( __( 'WordPress returned an unknown condition when reading %s from the options table.', 'wpsso' ), $options_name );
 				}
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $err_msg );
+					$this->p->debug->log( $error_msg );
 				}
 				if ( is_admin() ) {
 					if ( $network ) {
@@ -376,7 +376,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					} else {
 						$admin_url = $this->p->util->get_admin_url( 'general' );
 					}
-					$this->p->notice->err( $err_msg.' '.sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $admin_url ) );
+					$this->p->notice->err( $error_msg.' '.sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $admin_url ) );
 				}
 
 				$opts = $network ? $this->get_site_defaults() : $this->get_defaults();
