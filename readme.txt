@@ -389,12 +389,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.52.1-dev.1 (2018/02/03)**
+**Version 3.52.1-dev.2 (2018/02/04)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added an "Edit" link to the "Robots" option in the post Publish metabox to show the checkboxes only when required.
+	* Added an "Edit" link to the "Robots" option in the post Publish metabox to show the checkboxes only when desired.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -443,9 +443,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.52.1-dev.1 =
+= 3.52.1-dev.2 =
 
-(2018/02/03) Added an "Edit" link to the "Robots" option in the post Publish metabox to show the checkboxes only when required.
+(2018/02/04) Added an "Edit" link to the "Robots" option in the post Publish metabox to show the checkboxes only when desired.
 
 = 3.52.0 =
 
