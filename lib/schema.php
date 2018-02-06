@@ -953,11 +953,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * See https://developers.google.com/search/docs/data-types/breadcrumbs for more info.
-			 */
-			//$page_type_ids['breadcrumb.list'] = false;
-
-			/**
 			 * Array (
 			 *	[product] => true
 			 *	[website] => true
