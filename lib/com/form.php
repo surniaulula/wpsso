@@ -152,11 +152,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_checkbox( $name, '', '', true, null ).( empty( $comment ) ? '' : ' ' . $comment );
 		}
 
-		// deprecated on 2017/11/07
-		public function get_post_type_checkboxes( $name_prefix, $class = '', $id = '', $disabled = false ) {
-			return $this->get_checklist_post_types( $name_prefix, array(), $class, $id, $disabled );
-		}
-
 		public function get_no_checklist_post_types( $name_prefix, $values = array(), $class = 'input_vertical_list', $id = '' ) {
 			return $this->get_checklist_post_types( $name_prefix, $values, $class, $id, true );
 		}
@@ -314,8 +309,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$in_defaults = $this->in_defaults( $name );	// optimize and call only once
 
 			if ( is_string( $on_change ) ) {
+
 				switch ( $on_change ) {
+
 					case 'redirect':
+
 						$redirect_url = add_query_arg( array( $name => '%%' . $name.'%%' ),
 							SucomUtil::get_prot() . '://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] );
 						$html .= '<script type="text/javascript">'.
@@ -325,6 +323,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						break;
 
 					case 'unhide_rows':
+
 						$html .= '<script type="text/javascript">'.
 							'jQuery( function(){ jQuery("#' . esc_js( $input_id ).'").change( function(){ ' . 
 								'sucomSelectChangeUnhideRows("hide_' . esc_js( $name ) . '",' .

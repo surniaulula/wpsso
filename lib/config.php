@@ -1400,6 +1400,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'center' => 'Center',
 					'bottom' => 'Bottom',
 				),
+				'post_bc_list' => array(
+					'none' => '[None]',
+					'ancestors' => 'Ancestors',
+					'categories' => 'Categories',
+				),
 				// shortener key is also its filename under lib/pro/ext/
 				'shorteners' => array(
 					'none' => '[None]',

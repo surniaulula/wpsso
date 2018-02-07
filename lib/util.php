@@ -538,7 +538,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		// $output = objects | names
-		public function get_post_types( $output = 'objects' ) {
+		public function get_post_types( $output = 'objects', $sorted = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -556,6 +556,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				case 'objects':
 					$ret = get_post_types( array( 'public' => true ), $output );
 					break;
+			}
+
+			if ( $output === 'objects' ) {
+				$unsorted = $ret;
+				$names = array();
+				$ret = array();
+				foreach ( $unsorted as $num => $pt ) {
+					$ptn = empty( $pt->label ) ? $pt->name : $pt->label;
+					$names[$ptn] = $num;
+				}
+				ksort( $names );
+				foreach ( $names as $ptn => $num ) {
+					$ret[] = $unsorted[$num];
+				}
+				unset( $unsorted, $names );
 			}
 
 			return apply_filters( $this->p->lca.'_get_post_types', $ret, $output );
