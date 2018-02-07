@@ -844,6 +844,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		public function get_wp_tags( $post_id ) {
 
 			$tags = apply_filters( $this->p->cf['lca'].'_wp_tags_seed', array(), $post_id );
+
 			if ( ! empty( $tags ) ) {
 				$this->p->debug->log( 'wp tags seed = "'.implode( ',', $tags ).'"' );
 			} else {
@@ -853,6 +854,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( $this->p->options['og_page_parent_tags'] && is_page( $post_id ) ) {
 					$post_ids = array_merge( $post_ids, get_post_ancestors( $post_id ) );
 				}
+
 				foreach ( $post_ids as $id ) {
 					if ( $this->p->options['og_page_title_tag'] && is_page( $id ) ) {
 						$tags[] = SucomUtil::sanitize_tag( get_the_title( $id ) );
@@ -862,6 +864,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					}
 				}
 			}
+
 			return apply_filters( $this->p->cf['lca'].'_wp_tags', $tags, $post_id );
 		}
 
