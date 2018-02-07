@@ -4511,19 +4511,19 @@ msgid ""
 "Activate the %s extension for additional Schema markup features and options."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:544
+#: lib/pro/ecom/woocommerce.php:550
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:546
+#: lib/pro/ecom/woocommerce.php:552
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:712
+#: lib/pro/ecom/woocommerce.php:718
 msgid "The WooCommerce <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:715
+#: lib/pro/ecom/woocommerce.php:721
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
