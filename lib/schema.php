@@ -1846,7 +1846,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			// set reference values for admin notices
 			if ( is_admin() ) {
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
-				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema for post object', 'wpsso-schema-json-ld' ) );
+				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema for post object', 'wpsso' ) );
 			}
 
 			if ( ! is_array( $mt_og ) ) {
