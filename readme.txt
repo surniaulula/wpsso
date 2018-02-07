@@ -399,7 +399,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Moved the following methods from the (WPSSO JSON extension) WpssoJsonSchema class to the main (WPSSO Core plugin) WpssoSchema class:
+		* get_single_post_data()
+		* get_mod_cache_index()
+		* get_mod_cache_data()
+		* save_mod_cache_data()
 
 **Version 3.52.0 (2018/02/03)**
 
