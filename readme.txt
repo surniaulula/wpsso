@@ -395,7 +395,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* Added an "Edit" link to the "Robots" option in the post Publish metabox to show the checkboxes only when desired.
-	* Added a fallback to custom product attributes for WooCommerce when the main product attribute is an empty string (Pro version).
+	* Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -446,7 +446,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.52.1-dev.3 =
 
-(2018/02/07) Added an "Edit" link to the "Robots" option in the post Publish metabox. Added a fallback to custom product attributes for WooCommerce (Pro version).
+(2018/02/07) Added an "Edit" link to the "Robots" option in the post Publish metabox. Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version).
 
 = 3.52.0 =
 
