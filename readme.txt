@@ -389,12 +389,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.52.1-dev.2 (2018/02/04)**
+**Version 3.52.1-dev.3 (2018/02/07)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added an "Edit" link to the "Robots" option in the post Publish metabox to show the checkboxes only when desired.
+	* Added a fallback to custom product attributes for WooCommerce when the main product attribute is an empty string (Pro version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -443,9 +444,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.52.1-dev.2 =
+= 3.52.1-dev.3 =
 
-(2018/02/04) Added an "Edit" link to the "Robots" option in the post Publish metabox to show the checkboxes only when desired.
+(2018/02/07) Added an "Edit" link to the "Robots" option in the post Publish metabox. Added a fallback to custom product attributes for WooCommerce (Pro version).
 
 = 3.52.0 =
 
