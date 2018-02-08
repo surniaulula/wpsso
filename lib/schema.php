@@ -15,6 +15,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		protected $p;
 		protected $types_cache = null;			// schema types array cache
+		protected static $mod_cache_exp_secs = null;
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -1898,17 +1899,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$cache_md5_pre = $wpsso->lca.'_j_';
 
-			if ( ! isset( self::$cache_exp_secs ) ) {	// filter cache expiration if not already set
+			if ( ! isset( self::$mod_cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_exp_filter = $wpsso->cf['wp']['transient'][$cache_md5_pre]['filter'];
 				$cache_opt_key = $wpsso->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
-				self::$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $wpsso->options[$cache_opt_key] );
+				self::$mod_cache_exp_secs = (int) apply_filters( $cache_exp_filter, $wpsso->options[$cache_opt_key] );
 			}
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'cache expire = '.self::$cache_exp_secs );
+				$wpsso->debug->log( 'cache expire = '.self::$mod_cache_exp_secs );
 			}
 
-			if ( self::$cache_exp_secs > 0 ) {
+			if ( self::$mod_cache_exp_secs > 0 ) {
 
 				$cache_salt = 'WpssoJsonSchema::get_mod_cache_data('.SucomUtil::get_mod_salt( $mod ).')';
 				$cache_id = $cache_md5_pre.md5( $cache_salt );
@@ -1957,17 +1958,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$cache_md5_pre = $wpsso->lca.'_j_';
 
-			if ( ! isset( self::$cache_exp_secs ) ) {	// filter cache expiration if not already set
+			if ( ! isset( self::$mod_cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_exp_filter = $wpsso->cf['wp']['transient'][$cache_md5_pre]['filter'];
 				$cache_opt_key = $wpsso->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
-				self::$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $wpsso->options[$cache_opt_key] );
+				self::$mod_cache_exp_secs = (int) apply_filters( $cache_exp_filter, $wpsso->options[$cache_opt_key] );
 			}
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'cache expire = '.self::$cache_exp_secs );
+				$wpsso->debug->log( 'cache expire = '.self::$mod_cache_exp_secs );
 			}
 
-			if ( self::$cache_exp_secs > 0 ) {
+			if ( self::$mod_cache_exp_secs > 0 ) {
 
 				$cache_salt = 'WpssoJsonSchema::get_mod_cache_data('.SucomUtil::get_mod_salt( $mod ).')';
 				$cache_id = $cache_md5_pre.md5( $cache_salt );
@@ -1978,7 +1979,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				// update the cached array and maintain the existing transient expiration time
-				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $cache_data, self::$cache_exp_secs );
+				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $cache_data, self::$mod_cache_exp_secs );
 
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'cache data saved to transient cache (expires in '.$expires_in_secs.' seconds)' );
