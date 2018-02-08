@@ -389,7 +389,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.52.1-b.2 (2018/02/08)**
+**Version 3.52.1-b.3 (2018/02/08)**
 
 * *New Features*
 	* None
@@ -400,6 +400,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed the assignment of Schema Event offers validFrom and validThrough property values.
 * *Developer Notes*
 	* Added a new WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX constant (default value is 30).
+	* Added the plugin upgrade notice to the plugins page for WPSSO Core and its extensions.
 	* Moved the following methods from the (WPSSO JSON extension) WpssoJsonSchema class to the main (WPSSO Core plugin) WpssoSchema class:
 		* get_single_mod_data()
 		* get_mod_cache_index()
@@ -449,9 +450,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.52.1-b.2 =
+= 3.52.1-b.3 =
 
-(2018/02/08) Added an "Edit" link to the "Robots" option in the post Publish metabox. Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version).
+(2018/02/08) Added an "Edit" link to the "Robots" option in the post Publish metabox. Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version). Fixed the assignment of Schema Event offers validFrom and validThrough property values.
 
 = 3.52.0 =
 
