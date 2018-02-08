@@ -1763,8 +1763,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Create and add ISO formatted date options.
 		 *
 		 * $opts_md_pre = array( 
-		 * 	'event_start_date' => 'schema_event_start',	// prefix for date, time, timezone
-		 * 	'event_end_date' => 'schema_event_end',		// prefix for date, time, timezone
+		 *	'event_start_date'        => 'schema_event_start',        // Prefix for date, time, timezone, iso.
+		 *	'event_end_date'          => 'schema_event_end',          // Prefix for date, time, timezone, iso.
+		 *	'event_offers_start_date' => 'schema_event_offers_start', // Prefix for date, time, timezone, iso.
+		 *	'event_offers_end_date'   => 'schema_event_offers_end',   // Prefix for date, time, timezone, iso.
 		 * );
 		 */
 		public static function add_mod_opts_date_iso( array $mod, &$opts, array $opts_md_pre ) {
@@ -2037,8 +2039,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			self::add_mod_opts_date_iso( $mod, $event_opts, array( 
-				'event_start_date' => 'schema_event_start',	// prefix for date, time, timezone, iso
-				'event_end_date' => 'schema_event_end',		// prefix for date, time, timezone, iso
+				'event_start_date'        => 'schema_event_start',        // Prefix for date, time, timezone, iso.
+				'event_end_date'          => 'schema_event_end',          // Prefix for date, time, timezone, iso.
+				'event_offers_start_date' => 'schema_event_offers_start', // Prefix for date, time, timezone, iso.
+				'event_offers_end_date'   => 'schema_event_offers_end',   // Prefix for date, time, timezone, iso.
 			) );
 
 			/**
@@ -2083,14 +2087,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					if ( ! isset( $offer_opts['offer_valid_from_date'] ) ) {
-						if ( ! empty( $event_opts['event_start_date_iso'] ) ) {
-							$offer_opts['offer_valid_from_date'] = $event_opts['event_start_date_iso'];
+						if ( ! empty( $event_opts['event_offers_start_date_iso'] ) ) {
+							if ( $wpsso->debug->enabled ) {
+								$wpsso->debug->log( 'setting offer_valid_from_date to '.$event_opts['event_offers_start_date_iso'] );
+							}
+							$offer_opts['offer_valid_from_date'] = $event_opts['event_offers_start_date_iso'];
 						}
 					}
 
-					if ( ! isset( $offer_opts['offer_valid_through_date'] ) ) {
-						if ( isset( $event_opts['event_end_date_iso'] ) ) {
-							$offer_opts['offer_valid_through_date'] = $event_opts['event_end_date_iso'];
+					if ( ! isset( $offer_opts['offer_valid_to_date'] ) ) {
+						if ( isset( $event_opts['event_offers_end_date_iso'] ) ) {
+							if ( $wpsso->debug->enabled ) {
+								$wpsso->debug->log( 'setting offer_valid_to_date to '.$event_opts['event_offers_end_date_iso'] );
+							}
+							$offer_opts['offer_valid_to_date'] = $event_opts['event_offers_end_date_iso'];
 						}
 					}
 
