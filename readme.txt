@@ -389,7 +389,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.52.1-dev.5 (2018/02/08)**
+**Version 3.52.1-dev.6 (2018/02/08)**
 
 * *New Features*
 	* None
@@ -448,7 +448,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.52.1-dev.5 =
+= 3.52.1-dev.6 =
 
 (2018/02/08) Added an "Edit" link to the "Robots" option in the post Publish metabox. Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version).
 
