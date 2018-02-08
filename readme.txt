@@ -389,7 +389,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.52.1-dev.4 (2018/02/07)**
+**Version 3.52.1-dev.5 (2018/02/08)**
 
 * *New Features*
 	* None
@@ -397,7 +397,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added an "Edit" link to the "Robots" option in the post Publish metabox to show the checkboxes only when desired.
 	* Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version).
 * *Bugfixes*
-	* None
+	* Fixed the assignment of Schema Event offers validFrom and validThrough property values.
 * *Developer Notes*
 	* Moved the following methods from the (WPSSO JSON extension) WpssoJsonSchema class to the main (WPSSO Core plugin) WpssoSchema class:
 		* get_single_post_data()
@@ -448,9 +448,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.52.1-dev.4 =
+= 3.52.1-dev.5 =
 
-(2018/02/07) Added an "Edit" link to the "Robots" option in the post Publish metabox. Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version).
+(2018/02/08) Added an "Edit" link to the "Robots" option in the post Publish metabox. Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version).
 
 = 3.52.0 =
 
