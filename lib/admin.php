@@ -401,7 +401,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$ext = $this->p->cf['*']['base'][$plugin_base];
 			$info = $this->p->cf['plugin'][$ext];
-			$tabindex = is_integer( $tabindex ) ? $tabindex : false;	// just in case
+			$tabindex = is_integer( $tabindex ) ? $tabindex : false;	// Just in case.
 
 			foreach ( $links as $num => $val ) {
 				if ( strpos( $val, '>Edit<' ) !== false ) {
@@ -1678,7 +1678,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function conflict_warnings() {
 
-			if ( ! is_admin() ) { 	// just in case
+			if ( ! is_admin() ) { 	// Just in case.
 				return;
 			}
 
@@ -2183,7 +2183,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $have_changes ) {
 				$dismiss_key = 'notice-header-tmpl-no-head-attr-'.SucomUtil::get_theme_slug_version();
-				$this->p->notice->trunc_key( $dismiss_key, 'all' );	// just in case
+				$this->p->notice->trunc_key( $dismiss_key, 'all' );	// Just in case.
 			}
 		}
 
@@ -2398,7 +2398,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$readme_content = $this->p->cache->get( $file_remote, 'raw', 'file', $cache_exp_secs );
 				}
 			} else {
-				delete_transient( $cache_id );	// just in case
+				delete_transient( $cache_id );	// Just in case.
 			}
 
 			if ( empty( $readme_content ) ) {
@@ -2431,7 +2431,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			return is_array( $readme_info ) ? $readme_info : array();	// just in case
+			return is_array( $readme_info ) ? $readme_info : array();	// Just in case.
 		}
 
 		public function get_config_url_content( $ext, $file_name, $cache_exp_secs = null ) {

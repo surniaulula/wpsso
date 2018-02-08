@@ -398,7 +398,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						return $cache_file;
 						break;
 					default:
-						return $failure;	// just in case
+						return $failure;	// Just in case.
 						break;
 				}
 			} else {

@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			if ( ! empty( $author_id ) ) {
 				$add_link_rel_author = empty( $this->p->options['add_link_rel_author'] ) ? false : true;
 				if ( apply_filters( $lca.'_add_link_rel_author', $add_link_rel_author, $mod ) ) {
-					if ( is_object( $this->p->m['util']['user'] ) ) {	// just in case
+					if ( is_object( $this->p->m['util']['user'] ) ) {	// Just in case.
 						$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id,
 							$this->p->options['seo_author_field'] );
 					}
@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 						$this->p->debug->log( 'wp_get_shortlink() for post id '.$mod['id'].' = '.$wp_shortlink_value );
 						$this->p->debug->log( 'SucomUtilWP::wp_get_shortlink() = '.$shortlink );
 					}
-				} elseif ( ! empty( $mt_og['og:url'] ) ) {	// just in case
+				} elseif ( ! empty( $mt_og['og:url'] ) ) {	// Just in case.
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'using '.$lca.'_get_short_url filters to get shortlink' );
 					}

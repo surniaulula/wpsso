@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, true, 'head_sharing_url' );	// $add_page = true
 
-			if ( empty( $sharing_url ) ) {	// just in case
+			if ( empty( $sharing_url ) ) {	// Just in case.
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: get_sharing_url() returned an empty string' );
 				}
@@ -415,7 +415,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$head_array = get_transient( $cache_id );
 
 					if ( isset( $head_array[$cache_index] ) ) {
-						if ( is_array( $head_array[$cache_index] ) ) {	// just in case
+						if ( is_array( $head_array[$cache_index] ) ) {	// Just in case.
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'cache index found in transient '.$cache_id );
 								$this->p->debug->mark( 'build head array' );	// end timer
@@ -428,7 +428,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'cache index not in transient '.$cache_id );
 						}
-						if ( ! is_array( $head_array ) ) {	// just in case
+						if ( ! is_array( $head_array ) ) {	// Just in case.
 							$head_array = array();
 						}
 					}
@@ -475,7 +475,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
 				// fallback for authors without a Facebook page URL in their user profile
-				if ( empty( $mt_og['article:author'] ) && is_object( $this->p->m['util']['user'] ) ) {	// just in case
+				if ( empty( $mt_og['article:author'] ) && is_object( $this->p->m['util']['user'] ) ) {	// Just in case.
 					$mt_name['author'] = $this->p->m['util']['user']->get_author_meta( $author_id,
 						$this->p->options['fb_author_name'] );
 				}
@@ -711,7 +711,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			switch ( $name ) {
 				case 'og:image:secure_url':
 				case 'og:video:secure_url':
-					if ( strpos( $value, 'https:' ) !== 0 ) {	// just in case
+					if ( strpos( $value, 'https:' ) !== 0 ) {	// Just in case.
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_prefix.' is not https (skipped)' );
 						}

@@ -57,7 +57,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			global $wp_actions;
 			$min_int = self::get_min_int();
 			foreach ( $filter_names as $filter_name ) {
-				if ( empty( $wp_actions[$filter_name] ) ) {			// just in case - skip actions
+				if ( empty( $wp_actions[$filter_name] ) ) {			// Just in case - skip actions.
 					if ( ! isset( self::$filter_hooked[$filter_name] ) ) {	// only hook a filter once
 						self::$filter_hooked[$filter_name] = true;
 						add_filter( $filter_name, array( &$this, 'start_output_buffer' ), $min_int, 1 );
@@ -75,7 +75,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			$min_int = self::get_min_int();
 			$max_int = self::get_max_int();
 			foreach ( $filter_names as $filter_name ) {
-				if ( empty( $wp_actions[$filter_name] ) ) {			// just in case - skip actions
+				if ( empty( $wp_actions[$filter_name] ) ) {			// Just in case - skip actions.
 					if ( isset( self::$filter_hooked[$filter_name] ) ) {	// skip if not already hooked
 						unset( self::$filter_hooked[$filter_name] );
 						remove_filter( $filter_name, array( &$this, 'start_output_buffer' ), $min_int, 1 );
@@ -134,11 +134,11 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					foreach ( $hook_group as $hook_ref => $hook_info ) {
 						$new_hook_group[$hook_ref] = $hook_info;			// add the original callback first, followed by the check
 						$hook_name = self::get_hook_function_name( $hook_info );	// create a human readable class / method name
-						if ( $hook_name === '' ) {					// just in case
+						if ( $hook_name === '' ) {					// Just in case.
 							continue;
 						} elseif ( strpos( $hook_name, __CLASS__ . '::' ) === 0 ) {	// exclude our own class methods from being checked
 							continue;
-						} elseif ( strpos( $hook_ref, $bfo_check_str ) !== false ) {	// just in case - don't check the check hooks
+						} elseif ( strpos( $hook_ref, $bfo_check_str ) !== false ) {	// Just in case - don't check the check hooks.
 							continue;
 						}
 						$check_ref = $hook_ref . $bfo_check_str;			// include the previous hook ref for visual clue
@@ -261,7 +261,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		 */
 		private static function get_hook_function_name( array $hook_info ) {
 			$hook_name = '';
-			if ( ! isset( $hook_info['function'] ) ) {		// just in case
+			if ( ! isset( $hook_info['function'] ) ) {		// Just in case.
 				return $hook_name;				// stop here - return an empty string
 			} elseif ( is_array( $hook_info['function'] ) ) {	// hook is a class / method
 				$class_name = '';

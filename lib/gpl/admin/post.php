@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$og_type = isset( $head['og:type'] ) ?	// just in case
+			$og_type = isset( $head['og:type'] ) ?	// Just in case.
 				$head['og:type'] : 'website';
 
 			$table_rows[] = '<td colspan="2" align="center">'.

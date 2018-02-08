@@ -78,7 +78,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_value_transl( $value ) {
-			if ( $this->text_domain ) {	// just in case
+			if ( $this->text_domain ) {	// Just in case.
 				$value_transl = _x( $value, 'option value', $this->text_domain );	// lca or ext text domain
 				if ( $value === $value_transl && $this->text_domain !== $this->default_text_domain ) {
 					$value_transl = _x( $value, 'option value', $this->default_text_domain );	// lca text domain
@@ -92,7 +92,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_hidden( $name, $value = '', $is_checkbox = false ) {
 			if ( empty( $name ) ) {
-				return;	// just in case
+				return;	// Just in case.
 			}
 
 			// hide the current options value, unless one is given as an argument to the method
@@ -107,7 +107,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_checkbox( $name, $class = '', $id = '', $disabled = false, $force = null ) {
 
 			if ( empty( $name ) ) {
-				return;	// just in case
+				return;	// Just in case.
 			}
 
 			if ( $this->get_options( $name . ':is' ) === 'disabled' ) {
@@ -288,7 +288,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return;
 			}
 
-			$key = SucomUtil::sanitize_key( $name );	// just in case
+			$key = SucomUtil::sanitize_key( $name );	// Just in case.
 			$values = apply_filters( $this->lca . '_form_select_' . $key, $values );
 
 			if ( ! is_array( $values ) ) {
@@ -342,7 +342,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							} else {
 								$unhide = $selected;
 							}
-							if ( $unhide !== true ) {	// just in case
+							if ( $unhide !== true ) {	// Just in case.
 								$html .= '<script type="text/javascript">' . 
 									'jQuery(document).ready( function(){ ' . 
 										'sucomSelectChangeUnhideRows("hide_' . esc_js( $name ) . '",' .
@@ -385,7 +385,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						}
 						break;
 					default:
-						if ( $label === '' || $label === 'none' ) {	// just in case
+						if ( $label === '' || $label === 'none' ) {	// Just in case.
 							$label_transl = $this->get_value_transl( '[None]' );
 						}
 						break;
@@ -484,7 +484,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_select_img_size( $name, $name_preg = '//', $invert = false ) {
 
 			if ( empty( $name ) ) {
-				return;	// just in case
+				return;	// Just in case.
 			}
 
 			$invert = $invert == false ? null : PREG_GREP_INVERT;
@@ -525,7 +525,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_input( $name, $class = '', $id = '', $len = 0, $placeholder = '', $disabled = false, $tabindex = 0 ) {
 
 			if ( empty( $name ) ) {
-				return;	// just in case
+				return;	// Just in case.
 			}
 
 			if ( $disabled || $this->get_options( $name . ':is' ) === 'disabled' ) {
@@ -562,7 +562,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_mixed_multi( $mixed, $class, $id, $start_num = 0, $max_input = 10, $show_first = 2, $disabled = false ) {
 
 			if ( empty( $mixed ) ) {
-				return;	// just in case
+				return;	// Just in case.
 			}
 
 			$html = '';
@@ -706,7 +706,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_input_multi( $name, $class = '', $id = '', $start_num = 0, $max_input = 90, $show_first = 5, $disabled = false ) {
 
 			if ( empty( $name ) ) {
-				return;	// just in case
+				return;	// Just in case.
 			}
 
 			$html = '';
@@ -1018,7 +1018,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_textarea( $name, $class = '', $id = '', $len = 0, $placeholder = '', $disabled = false ) {
 
 			if ( empty( $name ) ) {
-				return;	// just in case
+				return;	// Just in case.
 			}
 
 			if ( $this->get_options( $name . ':is' ) === 'disabled' ) {
@@ -1129,7 +1129,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		private function get_placeholder_sanitized( $name, $placeholder ) {
 
 			if ( empty( $name ) ) {
-				return $placeholder;	// just in case
+				return $placeholder;	// Just in case.
 			}
 
 			if ( true === $placeholder ) {	// use default value
@@ -1246,7 +1246,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$key = SucomUtil::sanitize_key( $name );	// just in case
+			$key = SucomUtil::sanitize_key( $name );	// Just in case.
 
 			if ( ! isset( self::$class_cache[$key] ) ) {
 				self::$class_cache[$key] = null;

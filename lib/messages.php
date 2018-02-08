@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			foreach ( array( 'short', 'name', 'version' ) as $key ) {
 
 				if ( ! isset( $info[$key] ) ) {
-					if ( ! isset( $this->p->cf['plugin'][$lca][$key] ) ) {	// just in case
+					if ( ! isset( $this->p->cf['plugin'][$lca][$key] ) ) {	// Just in case.
 						$info[$key] = null;
 					} else {
 						$info[$key] = $this->p->cf['plugin'][$lca][$key];

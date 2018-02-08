@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( true === $do_encode ) {
 				$caption = SucomUtil::encode_html_emoji( $caption );
-			} else {	// just in case
+			} else {	// Just in case.
 				$caption = html_entity_decode( SucomUtil::decode_utf8( $caption ),
 					ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
@@ -283,13 +283,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					}
 				}
 
-				// just in case
+				// Just in case.
 				if ( empty( $title_text ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fallback get_bloginfo() = "'.$title_text.'"' );
 					}
 					if ( ! ( $title_text = get_bloginfo( 'name', 'display' ) ) ) {
-						$title_text = 'No Title';	// just in case
+						$title_text = 'No Title';	// Just in case.
 					}
 				}
 			}
@@ -491,7 +491,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$desc_text = sprintf( 'Monthly Archives for %s', get_the_date('F Y') );
 				} elseif ( is_year() ) {
 					$desc_text = sprintf( 'Yearly Archives for %s', get_the_date('Y') );
-				} elseif ( SucomUtil::is_archive_page() ) {	// just in case
+				} elseif ( SucomUtil::is_archive_page() ) {	// Just in case.
 					$desc_text = sprintf( 'Archive Page' );
 				}
 			}
@@ -503,7 +503,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$this->p->debug->log( 'post_status is auto-draft: using empty description' );
 					}
 				} elseif ( ! ( $desc_text = SucomUtil::get_site_description( $this->p->options, $mod ) ) ) {
-					$desc_text = 'No Description';	// just in case
+					$desc_text = 'No Description';	// Just in case.
 				}
 			}
 
@@ -645,7 +645,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'content index not in array from wp_cache '.$cache_id );
 						}
-						if ( ! is_array( $content_array ) ) {	// just in case
+						if ( ! is_array( $content_array ) ) {	// Just in case.
 							$content_array = array();
 						}
 					}

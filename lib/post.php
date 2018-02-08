@@ -212,7 +212,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				) );
 			}
 
-			self::$cache_short_url = null;	// just in case
+			self::$cache_short_url = null;	// Just in case.
 
 			if ( isset( self::$cache_shortlinks[$post_id][$context][$allow_slugs] ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -222,7 +222,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return self::$cache_short_url = self::$cache_shortlinks[$post_id][$context][$allow_slugs];
 			}
 
-			// just in case, check to make sure we have a plugin shortener selected
+			// Just in case, check to make sure we have a plugin shortener selected
 			if ( empty( $this->p->options['plugin_shortener'] ) || $this->p->options['plugin_shortener'] === 'none' ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: no shortening service defined' );
@@ -325,14 +325,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		public function restore_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
 
 			if ( self::$cache_short_url === $shortlink ) {	// shortlink value has not changed
-				self::$cache_short_url = null;	// just in case
+				self::$cache_short_url = null;	// Just in case.
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: shortlink / short_url value has not changed' );
 				}
 				return $shortlink;
 			}
 
-			self::$cache_short_url = null;	// just in case
+			self::$cache_short_url = null;	// Just in case.
 
 			if ( isset( self::$cache_shortlinks[$post_id][$context][$allow_slugs] ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -358,10 +358,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function get_column_content( $value, $column_name, $post_id ) {
-			if ( ! empty( $post_id ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// just in case
+			if ( ! empty( $post_id ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// Just in case.
 				$col_idx = str_replace( $this->p->lca.'_', '', $column_name );
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
-					if ( isset( $col_info['meta_key'] ) ) {	// just in case
+					if ( isset( $col_info['meta_key'] ) ) {	// Just in case.
 						$value = $this->get_meta_cache_value( $post_id, $col_info['meta_key'] );
 					}
 					if ( isset( $col_info['post_callbacks'] ) && is_array( $col_info['post_callbacks'] ) ) {
@@ -391,9 +391,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function update_sortable_meta( $post_id, $col_idx, $content ) { 
-			if ( ! empty( $post_id ) ) {	// just in case
+			if ( ! empty( $post_id ) ) {	// Just in case.
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
-					if ( isset( $col_info['meta_key'] ) ) {	// just in case
+					if ( isset( $col_info['meta_key'] ) ) {	// Just in case.
 						update_post_meta( $post_id, $col_info['meta_key'], $content );
 					}
 				}
@@ -597,9 +597,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			// just in case post_id is true/false
+			// Just in case post_id is true/false
 			if ( ! is_numeric( $post_id ) ) {
-				if ( empty( $post_obj->ID ) ) {	// just in case
+				if ( empty( $post_obj->ID ) ) {	// Just in case.
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: post id in post object is empty');
 					}
@@ -930,7 +930,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function clear_cache_for_comment_status( $comment_id, $comment_status ) {
-			if ( $comment_id ) {	// just in case
+			if ( $comment_id ) {	// Just in case.
 				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
 					$post_id = $comment->comment_post_ID;
 					if ( $this->p->debug->enabled ) {
@@ -984,7 +984,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function show_robots_options( $post ) {
 
-			if ( empty( $post->ID ) ) {	// just in case
+			if ( empty( $post->ID ) ) {	// Just in case.
 				return;
 			}
 
@@ -1127,7 +1127,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( is_array( $comments ) ) {
 				foreach( $comments as $num => $comment_obj ) {
 					$og_review = $this->get_og_review_mt( $comment_obj, $og_type, $rating_meta );
-					if ( ! empty( $og_review ) ) {	// just in case
+					if ( ! empty( $og_review ) ) {	// Just in case.
 						$ret[] = $og_review;
 					}
 				}

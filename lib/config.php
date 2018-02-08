@@ -2301,7 +2301,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		private static function sort_ext_by_name( $a, $b ) {
-			if ( isset( $a['name'] ) && isset( $b['name'] ) )	// just in case
+			if ( isset( $a['name'] ) && isset( $b['name'] ) )	// Just in case.
 				return strcasecmp( $a['name'], $b['name'] );	// case-insensitive string comparison
 			else return 0;						// no change
 		}

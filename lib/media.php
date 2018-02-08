@@ -541,7 +541,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 
 					return self::reset_image_src_info( array( apply_filters( $lca.'_rewrite_image_url',
-						$this->p->util->fix_relative_url( $img_url ) ),	// just in case
+						$this->p->util->fix_relative_url( $img_url ) ),	// Just in case.
 							$img_width, $img_height, $img_cropped, $pid ) );
 				}
 			}

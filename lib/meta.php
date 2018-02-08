@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		public function get_posts_mods( array $mod, $posts_per_page = false, $paged = false ) {
 			$ret = array();
 			foreach ( $this->get_posts( $mod, $posts_per_page, $paged ) as $post_obj ) {
-				if ( ! empty( $post_obj->ID ) ) {	// just in case
+				if ( ! empty( $post_obj->ID ) ) {	// Just in case.
 					$ret[] = $this->p->m['util']['post']->get_mod( $post_obj->ID );
 				}
 			}
@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					}
 					break;
 				default:
-					$tabs = array();	// just in case
+					$tabs = array();	// Just in case.
 					break;
 			}
 
@@ -269,7 +269,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$table_rows = array();
 			$script_class = '';
 
-			if ( ! is_array( WpssoMeta::$head_meta_tags ) ) {	// just in case
+			if ( ! is_array( WpssoMeta::$head_meta_tags ) ) {	// Just in case.
 				return $table_rows;
 			}
 
@@ -424,7 +424,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				foreach ( $mixed as $md_idx ) {
 					if ( 'none' === $md_idx ) {	// special index keyword
 						return null;
-					} elseif ( empty( $md_idx ) ) {	// just in case
+					} elseif ( empty( $md_idx ) ) {	// Just in case.
 						continue;
 					} else {
 						if ( $this->p->debug->enabled ) {
@@ -799,10 +799,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function get_column_wp_cache( array $mod, $column_name ) {
 			$value = '';
-			if ( ! empty( $mod['id'] ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// just in case
+			if ( ! empty( $mod['id'] ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// Just in case.
 				$col_idx = str_replace( $this->p->lca.'_', '', $column_name );
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
-					if ( isset( $col_info['meta_key'] ) ) {	// just in case
+					if ( isset( $col_info['meta_key'] ) ) {	// Just in case.
 						$meta_cache = wp_cache_get( $mod['id'], $mod['name'].'_meta' );
 						if ( ! $meta_cache ) {
 							$meta_cache = update_meta_cache( $mod['name'], array( $mod['id'] ) );
@@ -888,7 +888,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$og_img_thumb['og:image:id']
 				) = $this->p->media->get_attachment_image_src( $head_info['og:image:id'], 'thumbnail', false, $force_regen );
 
-				if ( ! empty( $og_img_thumb['og:image'] ) ) {	// just in case
+				if ( ! empty( $og_img_thumb['og:image'] ) ) {	// Just in case.
 					$head_info =& $og_img_thumb;
 				}
 			}

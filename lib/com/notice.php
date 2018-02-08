@@ -248,7 +248,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function is_dismissed( $dismiss_key = false, $user_id = true ) {
 
-			if ( empty( $dismiss_key ) || ! $this->can_dismiss() ) {	// just in case
+			if ( empty( $dismiss_key ) || ! $this->can_dismiss() ) {	// Just in case.
 				return false;
 			}
 
@@ -383,7 +383,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$dismissed_updated = false;
 			$user_id = (int) get_current_user_id();
 			$user_notices =& $this->get_user_notices( $user_id );	// returns reference
-			$user_dismissed = empty( $user_id ) ? false : 		// just in case
+			$user_dismissed = empty( $user_id ) ? false : 		// Just in case.
 				get_user_option( $this->dis_name, $user_id );	// get dismissed message ids
 			$this->has_shown = true;
 
@@ -401,7 +401,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			// loop through all the msg types and show them all
 			foreach ( $this->all_types as $msg_type ) {
 
-				if ( ! isset( $user_notices[$msg_type] ) ) {	// just in case
+				if ( ! isset( $user_notices[$msg_type] ) ) {	// Just in case.
 					continue;
 				}
 
@@ -595,7 +595,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					break;
 				case 'inf':
 				default:
-					$msg_type = 'inf';	// just in case
+					$msg_type = 'inf';	// Just in case.
 					$msg_class = 'notice notice-info';
 					break;
 			}

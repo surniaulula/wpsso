@@ -42,7 +42,7 @@ if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 	function wpsso_clear_post_cache( $post_id ) {
 		$wpsso =& Wpsso::get_instance();
-		if ( isset( $wpsso->m['util']['post'] ) ) {	// just in case
+		if ( isset( $wpsso->m['util']['post'] ) ) {	// Just in case.
 			$wpsso->m['util']['post']->clear_cache( $post_id );
 		}
 	}
@@ -130,9 +130,9 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 			return array();
 		}
 		$wpsso =& Wpsso::get_instance();
-		if ( empty( $post_id ) ) {	// just in case
+		if ( empty( $post_id ) ) {	// Just in case.
 			return false;
-		} elseif ( isset( $wpsso->m['util']['post'] ) ) {	// just in case
+		} elseif ( isset( $wpsso->m['util']['post'] ) ) {	// Just in case.
 			$mod = $wpsso->m['util']['post']->get_mod( $post_id );
 		} else {
 			return false;
@@ -151,9 +151,9 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 	function wpsso_get_post_place_options( $post_id, $type_id = 'custom' ) {
 		$wpsso =& Wpsso::get_instance();
-		if ( empty( $post_id ) ) {	// just in case
+		if ( empty( $post_id ) ) {	// Just in case.
 			return false;
-		} elseif ( isset( $wpsso->m['util']['post'] ) ) {	// just in case
+		} elseif ( isset( $wpsso->m['util']['post'] ) ) {	// Just in case.
 			$mod = $wpsso->m['util']['post']->get_mod( $post_id );
 		} else {
 			return false;

@@ -87,7 +87,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 					if ( ! empty( $info['update_auth'] ) && 
-						$info['update_auth']!== 'none' ) {	// just in case
+						$info['update_auth']!== 'none' ) {	// Just in case.
 						$defs['plugin_'.$ext.'_'.$info['update_auth']] = '';
 					}
 				}
@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 					if ( ! empty( $info['update_auth'] ) && 
-						$info['update_auth']!== 'none' ) {	// just in case
+						$info['update_auth']!== 'none' ) {	// Just in case.
 						$defs['plugin_'.$ext.'_'.$info['update_auth']] = '';
 						$defs['plugin_'.$ext.'_'.$info['update_auth'].':use'] = 'default';
 					}
@@ -195,7 +195,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->mark( 'checking options' );	// begin timer
 			}
 
-			if ( is_array( $opts ) && ! empty( $opts ) ) {	// just in case
+			if ( is_array( $opts ) && ! empty( $opts ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'options are a valid array' );
@@ -412,7 +412,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( preg_match( '/:is$/', $key ) ) {	// don't save option states
 					unset( $opts[$key] );
 				} elseif ( ! empty( $key ) ) {
-					$def_val = isset( $def_opts[$key] ) ? $def_opts[$key] : '';	// just in case
+					$def_val = isset( $def_opts[$key] ) ? $def_opts[$key] : '';	// Just in case.
 					$opts[$key] = $this->check_value( $key, $val, $def_val, $network, $mod );
 				}
 			}
@@ -513,7 +513,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			static $error_messages = null;
 
-			if ( is_array( $val ) ) {	// just in case
+			if ( is_array( $val ) ) {	// Just in case.
 				return $val;	// stop here
 			}
 
@@ -583,7 +583,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// must be empty or a url
 				case 'url':
 					if ( $val !== '' ) {
-						$val = SucomUtil::decode_html( $val );	// just in case
+						$val = SucomUtil::decode_html( $val );	// Just in case.
 						if ( filter_var( $val, FILTER_VALIDATE_URL ) === false ) {
 							$this->p->notice->err( sprintf( $error_messages[$option_type], $key ) );
 							$val = $def_val;
@@ -608,7 +608,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( $val !== '' ) {
 						$parts = array();
 						foreach ( SucomUtil::explode_csv( $val ) as $part ) {
-							$part = SucomUtil::decode_html( $part );	// just in case
+							$part = SucomUtil::decode_html( $part );	// Just in case.
 							if ( filter_var( $part, FILTER_VALIDATE_URL ) === false ) {
 								$this->p->notice->err( sprintf( $error_messages[$option_type], $key ) );
 								$val = $def_val;

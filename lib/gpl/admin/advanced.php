@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			) as $mod_name => $mod_label ) {
 				$cols .= '<tr>';
 				foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
-					if ( $form->in_defaults( 'plugin_'.$col_idx.'_col_'.$mod_name ) ) {	// just in case
+					if ( $form->in_defaults( 'plugin_'.$col_idx.'_col_'.$mod_name ) ) {	// Just in case.
 						$cols .= $form->get_nocb_td( 'plugin_'.$col_idx.'_col_'.$mod_name, '', true );	// $narrow = true
 					} else {
 						$cols .= '<td class="checkbox"></td>';
@@ -233,7 +233,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			foreach ( (array) apply_filters( $this->p->cf['lca'].'_get_cf_md_idx',
 				$this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
 
-				if ( isset( $this->p->cf['form']['cf_labels'][$cf_idx] ) &&	// just in case
+				if ( isset( $this->p->cf['form']['cf_labels'][$cf_idx] ) &&	// Just in case.
 					$opt_label = $this->p->cf['form']['cf_labels'][$cf_idx] ) {
 
 					if ( empty( $md_idx ) ) {	// custom fields can be disabled by filters

@@ -1281,7 +1281,7 @@ if ( ! class_exists( 'SucomCountryCodes' ) ) {
 						self::$codes[$key][$arr[$key]] = $name;
 					}
 				}
-				if ( ! isset( self::$codes[$key] ) ) {	// just in case
+				if ( ! isset( self::$codes[$key] ) ) {	// Just in case.
 					self::$codes[$key] = false;
 				}
 			}

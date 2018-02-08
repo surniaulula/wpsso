@@ -1005,58 +1005,77 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
 
 				/**
+				 * The $json_data array will almost always be a single associative array,
+				 * but the breadcrumblist filter may return an array of $json_data arrays.
+				 */
+				if ( isset( $json_data[0] ) && ! SucomUtil::is_assoc( $json_data ) ) {	// multiple json scripts returned
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'multiple json data arrays returned' );
+					}
+					$json_scripts = $json_data;
+				} else {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'single json data array returned' );
+					}
+					$json_scripts = array( $json_data );	// single json script returned
+				}
+
+				/**
 				 * Sanitize the @id and @type properties and encode the json data in an HTML script block.
 				 */
-				if ( ! empty( $json_data ) && is_array( $json_data ) ) {
+				foreach ( $json_scripts as $json_data ) {
 
-					// the url and schema type id create a unique @id string
-					if ( empty( $json_data['@id'] ) ) {
-						if ( ! empty( $json_data['url'] ) ) {
-							$json_data = array( '@id' => rtrim( $json_data['url'], '/' ).'#id/'.$type_id ) + $json_data;
+					if ( ! empty( $json_data ) && is_array( $json_data ) ) {
+	
+						// the url and schema type id create a unique @id string
+						if ( empty( $json_data['@id'] ) ) {
+							if ( ! empty( $json_data['url'] ) ) {
+								$json_data = array( '@id' => rtrim( $json_data['url'], '/' ).'#id/'.$type_id ) + $json_data;
+								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( 'added @id property is '.$json_data['@id'] );
+								}
+							} elseif ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'missing url property to add an @id property' );
+							}
+						// filters may return an @id as a way to signal a change to the schema type
+						} else {
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'added @id property is '.$json_data['@id'] );
+								$this->p->debug->log( 'existing @id property is '.$json_data['@id'] );
+							}
+							if ( ( $id_pos = strpos( $json_data['@id'], '#id/' ) ) !== false ) {
+								$id_str = substr( $json_data['@id'], $id_pos + 4 );	// add strlen of #id/
+								if ( preg_match_all( '/([^\/]+)/', $id_str, $all_matches, PREG_SET_ORDER ) ) {
+									$has_type_id = false;
+									foreach ( $all_matches as $match ) {
+										if ( $match[1] === $type_id ) {
+											$has_type_id = true;		// found the original type id
+										}
+										$page_type_added[$match[1]] = true;	// prevent duplicate schema types
+									}
+									if ( ! $has_type_id ) {
+										$json_data['@id'] .= '/'.$type_id;	// append the original type id
+										if ( $this->p->debug->enabled ) {
+											$this->p->debug->log( 'modified @id is '.$json_data['@id'] );
+										}
+									}
+								}
+							}
+						}
+	
+						// check for missing @context / @type and add if required
+						if ( empty( $json_data['@type'] ) ) {
+							$type_url = $this->get_schema_type_url( $type_id );
+							$json_data = self::get_schema_type_context( $type_url, $json_data );
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'added @type property is '.$json_data['@type'] );
 							}
 						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'missing url property to add an @id property' );
+							$this->p->debug->log( 'existing @type property is '.print_r( $json_data['@type'], true ) );	// @type can be an array.
 						}
-					// filters may return an @id as a way to signal a change to the schema type
-					} else {
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'existing @id property is '.$json_data['@id'] );
-						}
-						if ( ( $id_pos = strpos( $json_data['@id'], '#id/' ) ) !== false ) {
-							$id_str = substr( $json_data['@id'], $id_pos + 4 );	// add strlen of #id/
-							if ( preg_match_all( '/([^\/]+)/', $id_str, $all_matches, PREG_SET_ORDER ) ) {
-								$has_type_id = false;
-								foreach ( $all_matches as $match ) {
-									if ( $match[1] === $type_id ) {
-										$has_type_id = true;		// found the original type id
-									}
-									$page_type_added[$match[1]] = true;	// prevent duplicate schema types
-								}
-								if ( ! $has_type_id ) {
-									$json_data['@id'] .= '/'.$type_id;	// append the original type id
-									if ( $this->p->debug->enabled ) {
-										$this->p->debug->log( 'modified @id is '.$json_data['@id'] );
-									}
-								}
-							}
-						}
+	
+						// encode the json data in an HTML script block
+						$ret[] = '<script type="application/ld+json">'.$this->p->util->json_format( $json_data ).'</script>' . "\n";
 					}
-
-					// check for missing @context / @type and add if required
-					if ( empty( $json_data['@type'] ) ) {
-						$type_url = $this->get_schema_type_url( $type_id );
-						$json_data = self::get_schema_type_context( $type_url, $json_data );
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'added @type property is '.$json_data['@type'] );
-						}
-					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'existing @type property is '.print_r( $json_data['@type'], true ) );	// @type can be an array.
-					}
-
-					// encode the json data in an HTML script block
-					$ret[] = '<script type="application/ld+json">'.$this->p->util->json_format( $json_data ).'</script>' . "\n";
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -2083,6 +2102,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( isset( $offer_opts['offer_name'] ) && isset( $offer_opts['offer_price'] ) ) {
 
 					if ( ! isset( $event_opts['offer_url'] ) ) {
+						if ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'setting offer_url to '.$sharing_url );
+						}
 						$offer_opts['offer_url'] = $sharing_url;
 					}
 
@@ -2092,15 +2114,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								$wpsso->debug->log( 'setting offer_valid_from_date to '.$event_opts['event_offers_start_date_iso'] );
 							}
 							$offer_opts['offer_valid_from_date'] = $event_opts['event_offers_start_date_iso'];
+						} elseif ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'event option event_offers_start_date_iso is empty' );
 						}
 					}
 
 					if ( ! isset( $offer_opts['offer_valid_to_date'] ) ) {
-						if ( isset( $event_opts['event_offers_end_date_iso'] ) ) {
+						if ( ! empty( $event_opts['event_offers_end_date_iso'] ) ) {
 							if ( $wpsso->debug->enabled ) {
 								$wpsso->debug->log( 'setting offer_valid_to_date to '.$event_opts['event_offers_end_date_iso'] );
 							}
 							$offer_opts['offer_valid_to_date'] = $event_opts['event_offers_end_date_iso'];
+						} elseif ( $wpsso->debug->enabled ) {
+							$wpsso->debug->log( 'event option event_offers_end_date_iso is empty' );
 						}
 					}
 
