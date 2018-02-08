@@ -29,6 +29,7 @@
 'wpsso_cache_expire_content_text' ( $secs );
 'wpsso_cache_expire_head_array' ( $secs );
 'wpsso_cache_expire_image_url_size' ( $secs );
+'wpsso_cache_expire_schema_json_data' ( $secs );
 'wpsso_cache_expire_schema_types' ( $secs );
 'wpsso_cache_expire_short_url' ( $secs );	// Pro version
 'wpsso_canonical_url' ( $url, $mod, $add_page, $src_id );

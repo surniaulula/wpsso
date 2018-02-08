@@ -74,6 +74,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_menu', array( &$this, 'load_menu_objects' ), -1000 );
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 				add_action( 'admin_menu', array( &$this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
+				add_action( 'admin_init', array( &$this, 'add_plugins_upgrade_notice' ) );
 				add_action( 'admin_init', array( &$this, 'register_setting' ) );
 
 				// hook in_admin_header to allow for setting changes, plugin activation / loading, etc.
@@ -321,7 +322,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function register_setting() {
-			register_setting( $this->p->lca.'_setting', WPSSO_OPTIONS_NAME, array( &$this, 'registered_setting_sanitation' ) );
+			register_setting( $this->p->lca.'_setting', WPSSO_OPTIONS_NAME, 
+				array( &$this, 'registered_setting_sanitation' ) );
+		}
+
+		public function add_plugins_upgrade_notice() {
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				if ( ! empty( $info['base'] ) ) {
+					add_action( 'in_plugin_update_message-' . $info['base'], 
+						array( &$this, 'show_upgrade_notice' ), 10, 2 );
+				}
+			}
+		}
+
+		public function show_upgrade_notice( $data, $response ) {
+			if ( isset( $data['upgrade_notice'] ) ) {	// Just in case.
+				echo '<span style="display:table;border-collapse:collapse;margin-left:22px;">';
+				echo '<span style="display:table-cell;white-space:nowrap;padding:5px"><b>' .
+					__( 'Version', 'wpsso' ) . ' ' . $data['new_version'] . '</b></span>';
+				echo '<span style="display:table-cell;padding:5px;">' . strip_tags( $data['upgrade_notice'] ) . '</span>';
+				echo '</span>';
+			}
 		}
 
 		protected function add_menu_page( $menu_slug ) {
