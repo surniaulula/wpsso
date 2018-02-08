@@ -971,7 +971,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$cache_types['transient'][] = $cache_md5_pre.md5( 'SucomCache::get(url:'.$check_url.')' );
 			}
 
-			$this->clear_mod_cache_types( $mod, $cache_types );
+			$this->clear_mod_cache_types( $mod, $cache_types, $sharing_url );
 
 			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// w3 total cache
 				w3tc_pgcache_flush_post( $post_id );
@@ -1110,6 +1110,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_og_type_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating' ) {
 
+			static $reviews_per_page_max = null;
+
 			$ret = array();
 
 			if ( empty( $post_id ) ) {
@@ -1132,7 +1134,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 
-				// TODO add a check for WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX
+				if ( ! isset( $reviews_per_page_max ) ) {	// only set the value once
+					$reviews_per_page_max = SucomUtil::get_const( 'WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX', 30 );
+				}
+
+				if ( count( $ret ) > $reviews_per_page_max ) {
+					if ( $wpsso->debug->enabled ) {
+						$wpsso->debug->log( count( $ret ).' reviews found (adjusted to '.$reviews_per_page_max.')' );
+					}
+					$ret = array_slice( $ret, 0, $reviews_per_page_max );
+				}
 			}
 
 			return $ret;

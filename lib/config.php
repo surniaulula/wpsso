@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.52.1-b.1',		// Plugin version.
-					'opt_version' => '574',		// Increment when changing default option values.
+					'version' => '3.52.1-b.2',		// Plugin version.
+					'opt_version' => '575',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core',
 					'desc' => 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.',
@@ -925,8 +925,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week)
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
-					'plugin_short_url_cache_exp' => 7776000,	// Get Shortened URL Cache Expiry (90 days / 3 months)
+					'plugin_json_data_cache_exp' => 1209600,	// Schema JSON Data Cache Expiry (2 weeks)
 					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image URL Info Cache Expiry (1 day)
+					'plugin_short_url_cache_exp' => 7776000,	// Get Shortened URL Cache Expiry (90 days / 3 months)
 					'plugin_topics_cache_exp' => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month)
 					'plugin_types_cache_exp' => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month)
 					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
@@ -1045,10 +1046,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_head_cache_exp:use' => 'default',
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
 					'plugin_content_cache_exp:use' => 'default',
-					'plugin_short_url_cache_exp' => 7776000,	// Get Shortened URL Cache Expiry (90 days / 3 months)
-					'plugin_short_url_cache_exp:use' => 'default',
+					'plugin_json_data_cache_exp' => 1209600,	// Schema JSON Data Cache Expiry (2 weeks)
+					'plugin_json_data_cache_exp:use' => 'default',
 					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image URL Info Cache Expiry (1 day)
 					'plugin_imgsize_cache_exp:use' => 'default',
+					'plugin_short_url_cache_exp' => 7776000,	// Get Shortened URL Cache Expiry (90 days / 3 months)
+					'plugin_short_url_cache_exp:use' => 'default',
 					'plugin_topics_cache_exp' => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month)
 					'plugin_topics_cache_exp:use' => 'default',
 					'plugin_types_cache_exp' => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month)
@@ -1209,17 +1212,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'opt_key' => 'plugin_imgsize_cache_exp',
 						'filter' => 'wpsso_cache_expire_image_url_size',
 					),
-					'wpsso_j_' => array(	// schema json-ld mentions
-					),
-					'wpsso_s_' => array(
-						'label' => 'Shortened URLs',
-						'opt_key' => 'plugin_short_url_cache_exp',
-						'filter' => 'wpsso_cache_expire_short_url',
+					'wpsso_j_' => array(
+						'label' => 'Schema Data',
+						'opt_key' => 'plugin_json_data_cache_exp',
+						'filter' => 'wpsso_cache_expire_schema_json_data',
 					),
 					'wpsso_t_' => array(
 						'label' => 'Schema Types',
 						'opt_key' => 'plugin_types_cache_exp',
 						'filter' => 'wpsso_cache_expire_schema_types',
+					),
+					'wpsso_s_' => array(
+						'label' => 'Shortened URLs',
+						'opt_key' => 'plugin_short_url_cache_exp',
+						'filter' => 'wpsso_cache_expire_short_url',
 					),
 					'wpsso_' => array(
 						'label' => 'All Transients',
@@ -2372,7 +2378,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX'] = 90;
 			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 90;
 			$var_const['WPSSO_SCHEMA_POSTS_PER_PAGE_MAX'] = 10;
-			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH'] = 3;
+			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH_MAX'] = 3;
 			$var_const['WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX'] = 30;
 			$var_const['WPSSO_SCHEMA_SAMEAS_URL_MAX'] = 5;
 

@@ -145,6 +145,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'schema_website_json' => 'schema_add_home_website',
 					'schema_person_id' => 'schema_home_person_id',
 				),
+				574 => array(
+					'plugin_json_post_data_cache_exp' => 'plugin_json_data_cache_exp',
+				),
 			),
 			'wpssossb' => array(	// WPSSO SSB
 				14 => array(

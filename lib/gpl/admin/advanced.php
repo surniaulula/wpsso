@@ -291,6 +291,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_topics_cache_exp', $form, $network );
 
+			$table_rows['plugin_json_data_cache_exp'] = '<tr class="hide_in_basic">'.
+			$form->get_th_html( _x( 'Schema JSON Data Cache Expiry',
+				'option label', 'wpsso' ), '', 'plugin_json_data_cache_exp' ).
+			'<td nowrap class="blank">'.$this->p->options['plugin_json_data_cache_exp'].' '.
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
+			WpssoAdmin::get_option_site_use( 'plugin_json_data_cache_exp', $form, $network );
+
 			$table_rows['plugin_types_cache_exp'] = '<tr class="hide_in_basic">'.
 			$form->get_th_html( _x( 'Schema Types Array Cache Expiry',
 				'option label', 'wpsso' ), '', 'plugin_types_cache_exp' ).

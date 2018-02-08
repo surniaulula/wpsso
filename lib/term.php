@@ -21,19 +21,24 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		protected function add_actions() {
+
 			if ( is_admin() ) {
+
 				/**
 				 * Hook a minimum number of admin actions to maximize performance.
 				 * The taxonomy and tag_ID arguments are always present when we're
 				 * editing a category and/or tag page, so return immediately if
 				 * they're not present.
 				 */
-				if ( ( $this->query_tax_slug = SucomUtil::get_request_value( 'taxonomy' ) ) === '' )	// uses sanitize_text_field
+				if ( ( $this->query_tax_slug = SucomUtil::get_request_value( 'taxonomy' ) ) === '' ) {	// uses sanitize_text_field
 					return;
+				}
 
 				$this->query_tax_obj = get_taxonomy( $this->query_tax_slug );
-				if ( empty( $this->query_tax_obj->public ) )
+
+				if ( empty( $this->query_tax_obj->public ) ) {
 					return;
+				}
 
 				add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns', 
 					array( &$this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );

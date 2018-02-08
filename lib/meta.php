@@ -566,19 +566,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$sharing_url = $this->p->util->get_sharing_url( $mod );
 			}
 
-			$lca = $this->p->cf['lca'];
 			$mod_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
-			$classname_pre = 'Wpsso';
 
-			$cache_types['transient'][] = $lca.'_h_'.md5( $classname_pre.'Head::get_head_array('.$mod_salt.')' );
-			$cache_types['wp_cache'][] = $lca.'_c_'.md5( $classname_pre.'Page::get_content('.$mod_salt.')' );
+			$cache_types['transient'][] = $this->p->lca.'_h_'.md5( 'WpssoHead::get_head_array('.$mod_salt.')' );
+			$cache_types['transient'][] = $this->p->lca.'_j_'.md5( 'WpssoSchema::get_mod_cache_data('.$mod_salt.')' );
+
+			$cache_types['wp_cache'][] = $this->p->lca.'_c_'.md5( 'WpssoPage::get_content('.$mod_salt.')' );
 
 			$checked = array();
 			$deleted_count = 0;
 
 			foreach ( $cache_types as $type_name => $type_keys ) {
 
-				$type_keys = (array) apply_filters( $lca.'_'.$mod['name'].'_cache_'.$type_name.'_keys',
+				$type_keys = (array) apply_filters( $this->p->lca.'_'.$mod['name'].'_cache_'.$type_name.'_keys',
 					$type_keys, $mod, $sharing_url, $mod_salt );
 
 				foreach ( $type_keys as $cache_id ) {
@@ -830,20 +830,18 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function add_sortable_columns( $columns ) { 
-			$lca = $this->p->cf['lca'];
 			foreach ( self::get_sortable_columns() as $col_idx => $col_info ) {
 				if ( ! empty( $col_info['orderby'] ) ) {
-					$columns[$lca.'_'.$col_idx] = $lca.'_'.$col_idx;
+					$columns[$this->p->lca.'_'.$col_idx] = $this->p->lca.'_'.$col_idx;
 				}
 			}
 			return $columns;
 		}
 
 		public function set_column_orderby( $query ) { 
-			$lca = $this->p->cf['lca'];
 			$col_name = $query->get( 'orderby' );
-			if ( is_string( $col_name ) && strpos( $col_name, $lca.'_' ) === 0 ) {
-				$col_idx = str_replace( $lca.'_', '', $col_name );
+			if ( is_string( $col_name ) && strpos( $col_name, $this->p->lca.'_' ) === 0 ) {
+				$col_idx = str_replace( $this->p->lca.'_', '', $col_name );
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {
 						if ( ! empty( $col_info[$set_name] ) ) {
@@ -856,12 +854,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function add_mod_column_headings( $columns, $mod_name = '' ) { 
 			if ( ! empty( $mod_name ) ) {
-				$lca = $this->p->cf['lca'];
 				foreach ( self::get_column_headers() as $col_idx => $col_header ) {
 					if ( ! empty( $this->p->options['plugin_'.$col_idx.'_col_'.$mod_name] ) ) {
-						$columns[$lca.'_'.$col_idx] = $col_header;
+						$columns[$this->p->lca.'_'.$col_idx] = $col_header;
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'adding '.$lca.'_'.$col_idx.' column' );
+							$this->p->debug->log( 'adding '.$this->p->lca.'_'.$col_idx.' column' );
 						}
 					}
 				}
@@ -924,7 +921,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				), get_class( $this ) );
 			}
 
-			$lca = $this->p->cf['lca'];
 			$mt_ret = array();
 
 			if ( empty( $mod['id'] ) ) {
@@ -989,7 +985,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 
-			foreach ( apply_filters( $lca.'_'.$mod['name'].'_image_ids', array(), $size_name, $mod['id'], $mod ) as $pid ) {
+			foreach ( apply_filters( $this->p->lca.'_'.$mod['name'].'_image_ids', array(), $size_name, $mod['id'], $mod ) as $pid ) {
 				if ( $pid > 0 ) {	// quick sanity check
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'adding image pid: '.$pid );
@@ -1010,7 +1006,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 
-			foreach ( apply_filters( $lca.'_'.$mod['name'].'_image_urls', array(), $size_name, $mod['id'], $mod ) as $url ) {
+			foreach ( apply_filters( $this->p->lca.'_'.$mod['name'].'_image_urls', array(), $size_name, $mod['id'], $mod ) as $url ) {
 				if ( strpos( $url, '://' ) !== false ) {	// quick sanity check
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'adding image url: '.$url );

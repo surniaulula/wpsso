@@ -749,6 +749,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'The filtered article topics array is saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 							break;
 
+						case 'tooltip-plugin_json_data_cache_exp':
+
+							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_json_data_cache_exp'];
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
+								_x( 'disabled', 'option comment', 'wpsso' );
+
+							$text = sprintf( __( 'When %s creates Schema markup for the Blog, CollectionPage ProfilePage, and SearchResultsPage types, the JSON-LD of each individual post is saved to the WordPress transient cache to optimize performance.', 'wpsso' ), $info['short'] ).' '.sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
+				 			break;
+
 						case 'tooltip-plugin_types_cache_exp':
 
 							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_types_cache_exp'];
@@ -759,10 +768,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_show_purge_count':
+
 							$text = __( 'Report the number of objects removed from the WordPress cache when posts, terms, and users are updated.', 'wpsso' );
 							break;
 
 						case 'tooltip-plugin_clear_on_save':	// Clear All Caches on Save Settings
+
 							$text = sprintf( __( 'Automatically clear all known plugin cache(s) when saving the %s settings (default is checked).', 'wpsso' ), $info['short'] );
 							break;
 

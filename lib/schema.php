@@ -1106,20 +1106,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$cache_data = false;
 
 			/**
-			 * $page_type_id is false when called by get_single_post_data().
+			 * $page_type_id is false when called by get_single_mod_data().
 			 *
 			 * Optimize and use $page_type_id (when not false) as a signal to check if we 
-			 * have single post data in the transient cache.
+			 * have single mod data in the transient cache.
 			 *
-			 * If we're called by get_single_post_data() ($page_type_id is false), then don't
+			 * If we're called by get_single_mod_data() ($page_type_id is false), then don't
 			 * bother checking because we wouldn't be called if the cached data existed. ;-)
 			 */
 			if ( false === $page_type_id ) {
+
 				$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
 
-			} elseif ( $is_main && $mod['is_post'] && $mod['id'] && method_exists( 'WpssoJsonSchema', 'get_mod_cache_data' ) ) {	// since wpsso json v1.18.0
-				$cache_index = WpssoJsonSchema::get_mod_cache_index( $mod, $page_type_id );
-				$cache_data = WpssoJsonSchema::get_mod_cache_data( $mod, $cache_index );
+			} elseif ( $is_main && $mod['is_post'] && $mod['id'] ) {
+
+				$cache_index = self::get_mod_cache_index( $mod, $page_type_id );
+				$cache_data = self::get_mod_cache_data( $mod, $cache_index );
 
 				if ( isset( $cache_data[$cache_index] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -1169,13 +1171,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * creation of Schema JSON-LD for archive type pages like Blog, CollectionPage, ProfilePage,
 			 * and SearchResultsPage.
 			 *
-			 * If $cache_index is not set, then we were called by get_single_post_data() and the cache 
+			 * If $cache_index is not set, then we were called by get_single_mod_data() and the cache 
 			 * data will be saved by that method instead.
 			 */
 			if ( ! empty( $cache_index ) ) {
 
-				if ( $is_main && $mod['is_post'] && $mod['id'] && 
-					method_exists( 'WpssoJsonSchema', 'save_mod_cache_data' ) ) {	// since wpsso json v1.18.0
+				if ( $is_main && $mod['is_post'] && $mod['id'] ) {
 
 					if ( empty( $cache_data ) ) {	// just in case
 						$cache_data = array();
@@ -1183,7 +1184,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$cache_data[$cache_index] = $json_data;
 
-					WpssoJsonSchema::save_mod_cache_data( $mod, $cache_data );
+					self::save_mod_cache_data( $mod, $cache_data );
 				}
 			}
 
@@ -1830,13 +1831,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Get Single Post Data and Related Methods:
+		 * Get single mod data and its related methods:
 		 *
 		 * 	get_mod_cache_index()
 		 *	get_mod_cache_data()
 		 *	save_mod_cache_data()
 		 */
-		public static function get_single_post_data( array $mod, $mt_og, $page_type_id ) {
+		public static function get_single_mod_data( array $mod, $mt_og, $page_type_id ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1844,9 +1845,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			if ( ! $mod['is_post'] || ! $mod['id'] ) {
+			if ( ! is_object( $mod['obj'] ) || ! $mod['id'] ) {
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: not a post $mod or post id is empty' );
+					$wpsso->debug->log( 'exiting early: $mod has no object or id is empty' );
 				}
 				return false;
 			}
@@ -1856,19 +1857,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( isset( $cache_data[$cache_index] ) ) {
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: returning single post cache data' );
+					$wpsso->debug->log( 'exiting early: returning single '.$mod['name'].' cache data' );
 				}
 				return $cache_data[$cache_index];	// stop here
 			}
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->mark( 'get single post id '.$mod['id'].' data' );	// begin timer
+				$wpsso->debug->mark( 'get single '.$mod['name'].' id '.$mod['id'].' data' );	// end timer
 			}
 
 			// set reference values for admin notices
 			if ( is_admin() ) {
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
-				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema for post object', 'wpsso' ) );
+				$wpsso->notice->set_ref( $sharing_url, $mod, sprintf( __( 'adding schema for %s object', 'wpsso' ), $mod['name'] ) );
 			}
 
 			if ( ! is_array( $mt_og ) ) {
@@ -1885,7 +1886,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			self::save_mod_cache_data( $mod, $cache_data );
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->mark( 'get single post id '.$mod['id'].' data' );	// end timer
+				$wpsso->debug->mark( 'get single '.$mod['name'].' id '.$mod['id'].' data' );	// end timer
 			}
 
 			return $cache_data[$cache_index];
@@ -1932,7 +1933,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( self::$mod_cache_exp_secs > 0 ) {
 
-				$cache_salt = 'WpssoJsonSchema::get_mod_cache_data('.SucomUtil::get_mod_salt( $mod ).')';
+				$cache_salt = 'WpssoSchema::get_mod_cache_data('.SucomUtil::get_mod_salt( $mod ).')';
 				$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 				if ( $wpsso->debug->enabled ) {
@@ -1991,7 +1992,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( self::$mod_cache_exp_secs > 0 ) {
 
-				$cache_salt = 'WpssoJsonSchema::get_mod_cache_data('.SucomUtil::get_mod_salt( $mod ).')';
+				$cache_salt = 'WpssoSchema::get_mod_cache_data('.SucomUtil::get_mod_salt( $mod ).')';
 				$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 				if ( $wpsso->debug->enabled ) {
