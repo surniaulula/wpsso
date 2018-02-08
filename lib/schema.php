@@ -1012,18 +1012,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'multiple json data arrays returned' );
 					}
-					$json_scripts = $json_data;
+					$scripts_data = $json_data;
 				} else {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'single json data array returned' );
 					}
-					$json_scripts = array( $json_data );	// single json script returned
+					$scripts_data = array( $json_data );	// single json script returned
 				}
 
 				/**
 				 * Sanitize the @id and @type properties and encode the json data in an HTML script block.
 				 */
-				foreach ( $json_scripts as $json_data ) {
+				foreach ( $scripts_data as $json_data ) {
 
 					if ( ! empty( $json_data ) && is_array( $json_data ) ) {
 	
