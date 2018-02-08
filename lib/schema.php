@@ -2081,15 +2081,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$offer_opts['offer_url'] = $sharing_url;
 					}
 
-					if ( ! isset( $offer_opts['offer_valid_from'] ) ) {
+					if ( ! isset( $offer_opts['offer_valid_from_date'] ) ) {
 						if ( ! empty( $event_opts['event_start_date_iso'] ) ) {
-							$offer_opts['offer_valid_from'] = $event_opts['event_start_date_iso'];
+							$offer_opts['offer_valid_from_date'] = $event_opts['event_start_date_iso'];
 						}
 					}
 
-					if ( ! isset( $offer_opts['offer_valid_through'] ) ) {
+					if ( ! isset( $offer_opts['offer_valid_through_date'] ) ) {
 						if ( isset( $event_opts['event_end_date_iso'] ) ) {
-							$offer_opts['offer_valid_through'] = $event_opts['event_end_date_iso'];
+							$offer_opts['offer_valid_through_date'] = $event_opts['event_end_date_iso'];
 						}
 					}
 

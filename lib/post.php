@@ -1119,9 +1119,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$comments = get_comments( array(
 				'post_id' => $post_id,
 				'status' => 'approve',
-				'parent' => 0,	// don't get replies
+				'parent' => 0,					// Parent ID of comment to retrieve children of (0 = don't get replies).
 				'order' => 'DESC',
-				'number' => get_option( 'page_comments' ),	// limit number of comments
+				'number' => get_option( 'comments_per_page' ),	// Maximum number of comments to retrieve.
 			) );
 
 			if ( is_array( $comments ) ) {
@@ -1131,6 +1131,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$ret[] = $og_review;
 					}
 				}
+
+				// TODO add a check for WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX
 			}
 
 			return $ret;

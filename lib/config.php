@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.52.1-dev.4',		// Plugin version.
+					'version' => '3.52.1-dev.5',		// Plugin version.
 					'opt_version' => '574',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core',
@@ -1405,6 +1405,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'categories' => 'Categories',
 					'ancestors' => 'Parents',
 				),
+				'breadcrumbs_for_terms' => array(
+					'none' => '[None]',
+					'ancestors' => 'Parents',
+				),
 				// shortener key is also its filename under lib/pro/ext/
 				'shorteners' => array(
 					'none' => '[None]',
@@ -2363,12 +2367,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_GET_POSTS_MAX_TIME'] = 0.10;			// send an error to trigger_error() if get_posts() takes longer
 			$var_const['WPSSO_PHP_GETIMGSIZE_MAX_TIME'] = 1.00;		// send an error to trigger_error() if getimagesize() takes longer
 
-			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX'] = 10;
 			$var_const['WPSSO_SCHEMA_ADDL_TYPE_URL_MAX'] = 5;
+			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX'] = 10;
 			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX'] = 90;
 			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 90;
 			$var_const['WPSSO_SCHEMA_POSTS_PER_PAGE_MAX'] = 10;
 			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH'] = 3;
+			$var_const['WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX'] = 30;
 			$var_const['WPSSO_SCHEMA_SAMEAS_URL_MAX'] = 5;
 
 			/**

@@ -1094,8 +1094,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$og_images = array();
 
 			// fallback to value from general plugin settings
-			if ( ( $use_prev_img = $this->get_options( $mod['id'], 'og_vid_prev_img' ) ) === null )
+			if ( ( $use_prev_img = $this->get_options( $mod['id'], 'og_vid_prev_img' ) ) === null ) {
 				$use_prev_img = $this->p->options['og_vid_prev_img'];
+			}
 
 			// get video preview images if allowed
 			if ( ! empty( $use_prev_img ) ) {
