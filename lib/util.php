@@ -1239,7 +1239,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$sitename = SucomUtil::get_site_name( $this->p->options, $mod );
-			$sitealtname = SucomUtil::get_site_alt_name( $this->p->options, $mod );
+			$sitealtname = SucomUtil::get_site_name_alt( $this->p->options, $mod );
 			$sitedesc = SucomUtil::get_site_description( $this->p->options, $mod );
 
 			return array(

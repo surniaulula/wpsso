@@ -583,6 +583,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'options_version' => '',		// example: -wpsso512pro-wpssoum3gpl
 					'options_filtered' => false,
 					'site_name' => '',			// (localized)
+					'site_name_alt' => '',			// (localized)
 					'site_desc' => '',			// (localized)
 					'site_url' => '',
 					'site_org_type' => 'organization',
@@ -592,7 +593,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_add_home_person' => 0,
 					'schema_add_home_website' => 1,
 					'schema_home_person_id' => '',
-					'schema_alt_name' => '',
 					'schema_logo_url' => '',
 					'schema_banner_url' => '',
 					'schema_img_max' => 1,

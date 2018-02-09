@@ -148,6 +148,20 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				574 => array(
 					'plugin_json_post_data_cache_exp' => 'plugin_json_data_cache_exp',
 				),
+				575 => array(
+					'site_alt_name' => 'site_name_alt',
+					'schema_alt_name' => 'site_name_alt',
+				),
+			),
+			'wpssoorg' => array(	// WPSSO ORG
+				2 => array(
+					'org_alt_name' => 'org_name_alt',
+				),
+			),
+			'wpssoplm' => array(	// WPSSO PLM
+				16 => array(
+					'plm_addr_alt_name' => 'plm_addr_name_alt',
+				),
 			),
 			'wpssossb' => array(	// WPSSO SSB
 				14 => array(
@@ -206,6 +220,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			}
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
+
 				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $lca.'_rename_options_keys', self::$rename_options_keys ) );
 
 				if ( $prev_version > 0 && $prev_version <= 270 ) {

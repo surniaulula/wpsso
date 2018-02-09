@@ -74,11 +74,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				if ( strpos( $idx, 'tooltip-meta-' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-meta-sharing_url':
-							$text = __( 'A custom sharing URL used for the Facebook / Open Graph / Pinterest Rich Pin meta tags, Schema markup, and (optional) social sharing buttons.', 'wpsso' ).' '.__( 'Please make sure any custom URL you enter here is functional and redirects correctly.', 'wpsso' );
+							$text = __( 'A custom sharing URL used for the Facebook / Open Graph / Pinterest Rich Pin meta tags, Schema markup, and optional social sharing buttons.', 'wpsso' ).' '.__( 'Please make sure any custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 						 	break;
 
 						case 'tooltip-meta-schema_title':
 							$text = __( 'A custom name / title for the Schema item type\'s name property.', 'wpsso' );
+						 	break;
+
+						case 'tooltip-meta-schema_title_alt':
+							$text = __( 'An optional alternate custom name / title for the Schema item type\'s alternateName property.', 'wpsso' );
 						 	break;
 
 						case 'tooltip-meta-schema_desc':
@@ -246,15 +250,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-site_name':
 
 							$settings_url = get_admin_url( null, 'options-general.php' );
-
 							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', $settings_url );
+
+							break;
+
+						case 'tooltip-site_name_alt':
+
+							$text = __( 'An optional alternate name for your WebSite that you want Google to consider.', 'wpsso' );
 
 							break;
 
 						case 'tooltip-site_desc':
 
 							$settings_url = get_admin_url( null, 'options-general.php' );
-
 							$text = sprintf( __( 'The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ).' '.sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), $settings_url );
 
 							break;
@@ -931,11 +939,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-schema_home_person_id':
-							$text = __( 'Select a site owner for the (optional) <em>Knowledge Graph</em> Person markup included in the front page.', 'wpsso' ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' ).' '.sprintf( __( 'The available Person list includes users with \'%1$s\' and/or \'%2$s\' roles.', 'wpsso' ), _x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
-							break;
-
-						case 'tooltip-schema_alt_name':
-							$text = __( 'An alternate name for your WebSite that you want Google to consider (optional).', 'wpsso' );
+							$text = __( 'Select an optional site owner for the <em>Knowledge Graph</em> Person markup included in the front page.', 'wpsso' ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' ).' '.sprintf( __( 'The available Person list includes users with \'%1$s\' and/or \'%2$s\' roles.', 'wpsso' ), _x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
 							break;
 
 						case 'tooltip-schema_logo_url':

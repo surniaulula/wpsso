@@ -1317,7 +1317,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( array(
 				'name' => SucomUtil::get_site_name( $this->p->options, $mod ),
-				'alternateName' => SucomUtil::get_site_alt_name( $this->p->options, $mod ),
+				'alternateName' => SucomUtil::get_site_name_alt( $this->p->options, $mod ),
 				'description' => SucomUtil::get_site_description( $this->p->options, $mod ),
 			) as $key => $value ) {
 				if ( ! empty( $value ) ) {
@@ -1491,7 +1491,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'org_type' => $wpsso->options['site_org_type'],
 				'org_url' => SucomUtil::get_site_url( $wpsso->options, $mixed ),			// localized value
 				'org_name' => SucomUtil::get_site_name( $wpsso->options, $mixed ),		// localized value
-				'org_alt_name' => SucomUtil::get_site_alt_name( $wpsso->options, $mixed ),	// localized value
+				'org_name_alt' => SucomUtil::get_site_name_alt( $wpsso->options, $mixed ),	// localized value
 				'org_desc' => SucomUtil::get_site_description( $wpsso->options, $mixed ),	// localized value
 				'org_logo_url' => SucomUtil::get_key_value( 'schema_logo_url', $wpsso->options, $mixed ),	// localized value
 				'org_banner_url' => SucomUtil::get_key_value( 'schema_banner_url', $wpsso->options, $mixed ),	// localized value
@@ -1597,9 +1597,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$title_len = $wpsso->options['og_title_len'];
 				$desc_len = $wpsso->options['schema_desc_len'];
 
-				$ret['name'] = $wpsso->page->get_title( $title_len, '...', $mod, true, false, true, 'schema_title' );
+				$ret['name'] = $this->p->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
 				if ( empty( $ret['name'] ) ) {
 					unset( $ret['name'] );
+				}
+
+				$ret['alternateName'] = $this->p->page->get_title( $title_len, '...', $mod, true, false, true, 'schema_title_alt' );
+				if ( empty( $ret['alternateName'] ) ) {
+					unset( $ret['alternateName'] );
 				}
 
 				$ret['alternativeHeadline'] = get_post_meta( $mod['id'], '_wp_attachment_image_alt', true );
@@ -2244,8 +2249,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ret = self::get_schema_type_context( $job_type_url );
 
 			if ( empty( $job_opts['job_title'] ) ) {
-				$job_opts['job_title'] = $wpsso->page->get_title( $wpsso->options['og_title_len'],
-					'...', $mod, true, false, true, 'schema_title' );
+				$job_opts['job_title'] = $wpsso->page->get_title( $wpsso->options['og_title_len'], '...', $mod, true, false, true, 'schema_title' );
 			}
 
 			/**
@@ -2377,7 +2381,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			self::add_data_itemprop_from_assoc( $ret, $org_opts, array(
 				'url' => 'org_url',
 				'name' => 'org_name',
-				'alternateName' => 'org_alt_name',
+				'alternateName' => 'org_name_alt',
 				'description' => 'org_desc',
 				'email' => 'org_email',
 				'telephone' => 'org_phone',
@@ -2635,7 +2639,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			self::add_data_itemprop_from_assoc( $ret, $place_opts, array(
 				'url' => 'place_url',
 				'name' => 'place_name',
-				'alternateName' => 'place_alt_name',
+				'alternateName' => 'place_name_alt',
 				'description' => 'place_desc',
 				'telephone' => 'place_phone',
 				'currenciesAccepted' => 'place_currencies_accepted',

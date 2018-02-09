@@ -2021,8 +2021,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function get_site_alt_name( array $opts, $mixed = 'current' ) {
-			return self::get_key_value( 'site_alt_name', $opts, $mixed );
+		public static function get_site_name_alt( array $opts, $mixed = 'current' ) {
+			return self::get_key_value( 'site_name_alt', $opts, $mixed );
 		}
 
 		/**

@@ -903,6 +903,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 				// text strings that can be blank (line breaks are removed)
 				case 'site_name':
+				case 'site_name_alt':
 				case 'site_desc':
 				case 'og_art_section':
 				case 'og_title':
