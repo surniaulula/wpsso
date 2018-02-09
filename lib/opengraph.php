@@ -190,6 +190,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( ! isset( $mt_og['og:site_name'] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'getting site name for og:site_name meta tag' );
+				}
 				$mt_og['og:site_name'] = SucomUtil::get_site_name( $this->p->options, $mod );	// localized
 			}
 
