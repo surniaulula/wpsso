@@ -1597,12 +1597,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$title_len = $wpsso->options['og_title_len'];
 				$desc_len = $wpsso->options['schema_desc_len'];
 
-				$ret['name'] = $this->p->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
+				$ret['name'] = $wpsso->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
 				if ( empty( $ret['name'] ) ) {
 					unset( $ret['name'] );
 				}
 
-				$ret['alternateName'] = $this->p->page->get_title( $title_len, '...', $mod, true, false, true, 'schema_title_alt' );
+				$ret['alternateName'] = $wpsso->page->get_title( $title_len, '...', $mod, true, false, true, 'schema_title_alt' );
 				if ( empty( $ret['alternateName'] ) ) {
 					unset( $ret['alternateName'] );
 				}
