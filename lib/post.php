@@ -971,7 +971,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$cache_types['transient'][] = $cache_md5_pre.md5( 'SucomCache::get(url:'.$check_url.')' );
 			}
 
-			$this->clear_mod_cache_types( $mod, $cache_types, $sharing_url );
+			$this->clear_mod_cache_types( $mod, $cache_types );
 
 			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// w3 total cache
 				w3tc_pgcache_flush_post( $post_id );
