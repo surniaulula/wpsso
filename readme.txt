@@ -389,7 +389,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.52.1-b.3 (2018/02/08)**
+**Version 3.52.1-rc.1 (2018/02/09)**
 
 * *New Features*
 	* None
@@ -450,9 +450,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.52.1-b.3 =
+= 3.52.1-rc.1 =
 
-(2018/02/08) Added an "Edit" link to the "Robots" option in the post Publish metabox. Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version). Fixed the assignment of Schema Event offers validFrom and validThrough property values.
+(2018/02/09) Added an "Edit" link to the "Robots" option in the post Publish metabox. Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version). Fixed the assignment of Schema Event offers validFrom and validThrough property values.
 
 = 3.52.0 =
 
