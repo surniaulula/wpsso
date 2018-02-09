@@ -1251,20 +1251,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// accepts json script or json array
 		public function json_format( $json, $options = 0, $depth = 32 ) {
 
-			$do_pretty_print = self::get_const( 'WPSSO_JSON_PRETTY_PRINT' );
-			$ext_json_disable = self::get_const( 'WPSSO_EXT_JSON_DISABLE', false );
-			$do_ext_pretty = false;
+			$pretty_print = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', false );
+			$ext_json_lib = self::get_const( 'WPSSO_EXT_JSON_DISABLE', false ) ? false : true;
+			$ext_json_format = false;
 
 			if ( $options === 0 && defined( 'JSON_UNESCAPED_SLASHES' ) ) {
 				$options = JSON_UNESCAPED_SLASHES;	// since PHP v5.4
 			}
 
 			// decide if the encoded json will be minimized or not
-			if ( is_admin() || $this->p->debug->enabled || $do_pretty_print ) {
+			if ( is_admin() || $this->p->debug->enabled || $pretty_print ) {
 				if ( defined( 'JSON_PRETTY_PRINT' ) ) {	// since PHP v5.4
 					$options = $options|JSON_PRETTY_PRINT;
 				} else {
-					$do_ext_pretty = true;	// use the SuextJsonFormat lib
+					$ext_json_format = true;	// use SuextJsonFormat for older PHP
 				}
 			}
 
@@ -1275,7 +1275,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			// use the pretty print external library for older PHP versions
 			// define WPSSO_EXT_JSON_DISABLE as true to prevent external json formatting 
-			if ( ! $ext_json_disable && $do_ext_pretty ) {
+			if ( $ext_json_lib && $ext_json_format ) {
 				$classname = WpssoConfig::load_lib( false, 'ext/json-format', 'suextjsonformat' );
 				if ( $classname !== false && class_exists( $classname ) ) {
 					$json = SuextJsonFormat::get( $json, $options, $depth );

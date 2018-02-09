@@ -2357,7 +2357,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;			// highlight the SSO menu icon
 			$var_const['WPSSO_HIDE_ALL_ERRORS'] = false;			// auto-hide all error notices
 			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;			// auto-hide all warning notices
-			$var_const['WPSSO_JSON_PRETTY_PRINT'] = true;			// output pretty / human readable json
+			$var_const['WPSSO_JSON_PRETTY_PRINT'] = false;			// output pretty / human readable json
 			$var_const['WPSSO_UNDEF_INT'] = -1;				// undefined width / height value
 
 			$var_const['WPSSO_CONTENT_BLOCK_FILTER_OUTPUT'] = true;
