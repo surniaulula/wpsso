@@ -58,18 +58,22 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			switch ( $hook_name ) {
 
 				case ( preg_match( '/_page_'.$this->p->lca.'-(site)?licenses/', $hook_name ) ? true : false ):
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for licenses page' );
 					}
+
 					add_filter( 'admin_body_class', array( &$this, 'add_plugins_body_class' ) );
 
 					// no break
 
 				// includes the profile_page and users_page hooks (profile submenu items)
 				case ( strpos( $hook_name, '_page_'.$this->p->lca.'-' ) !== false ? true : false ):
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for settings page' );
 					}
+
 					$this->add_settings_page_style( $hook_name, WPSSO_URLPATH, $plugin_version );
 
 					// no break
@@ -81,9 +85,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				case 'user-edit.php':	// user edit
 				case 'profile.php':	// user edit
 				case ( SucomUtil::is_toplevel_edit( $hook_name ) ):	// required for event espresso plugin
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for editing page' );
 					}
+
 					wp_enqueue_style( 'jquery-ui.js' );
 					wp_enqueue_style( 'jquery-qtip.js' );
 					wp_enqueue_style( 'sucom-settings-table' );
@@ -93,6 +99,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					break;	// stop here
 
 				case 'plugin-install.php':
+
 					if ( isset( $_GET['plugin'] ) ) {
 						$plugin_slug = $_GET['plugin'];
 						if ( isset( $this->p->cf['*']['slug'][$plugin_slug] ) ) {

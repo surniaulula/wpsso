@@ -176,7 +176,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->lca;
+			static $local_cache = array(); // Get image size for a given URL only once.
+
+			if ( isset( $local_cache[$image_url] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: returning image info from static cache' );
+				}
+				return $local_cache[$image_url];
+			}
+
 			$is_disabled = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
 			$def_image_info = array( WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, '', '' );
 			$image_info = false;
@@ -185,23 +193,23 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: use of getimagesize() is disabled' );
 				}
-				return $def_image_info;	// stop here
+				return $local_cache[$image_url] = $def_image_info;	// stop here
 
 			} elseif ( empty( $image_url ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: image url is empty' );
 				}
-				return $def_image_info;	// stop here
+				return $local_cache[$image_url] = $def_image_info;	// stop here
 
 			} elseif ( filter_var( $image_url, FILTER_VALIDATE_URL ) === false ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: invalid image url ('.$image_url.')' );
 				}
-				return $def_image_info;	// stop here
+				return $local_cache[$image_url] = $def_image_info;	// stop here
 			}
 
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
-			$cache_md5_pre = $lca.'_i_';
+			$cache_md5_pre = $this->p->lca.'_i_';
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_exp_filter = $this->p->cf['wp']['transient'][$cache_md5_pre]['filter'];
 				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
@@ -226,7 +234,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'returning image info from transient: '.$image_info[0].'x'.$image_info[1] );
 					}
-					return $image_info;
+					return $local_cache[$image_url] = $image_info;
 				}
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache for image info is disabled' );
@@ -269,7 +277,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			return $image_info;
+			return $local_cache[$image_url] = $image_info;
 		}
 
 		public function get_image_size_label( $size_name ) {	// wpsso-opengraph
@@ -422,8 +430,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $regen_key !== false ) {
 
-				$lca = $this->p->lca;
-				$cache_md5_pre = $lca.'_';
+				$cache_md5_pre = $this->p->lca.'_';
 				$cache_exp_secs = 0;	// never expire
 				$cache_salt = __CLASS__.'::force_regen_transient';
 				$cache_id = $cache_md5_pre.md5( $cache_salt );
@@ -448,8 +455,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $regen_key !== false ) {
 
-				$lca = $this->p->lca;
-				$cache_md5_pre = $lca.'_';
+				$cache_md5_pre = $this->p->lca.'_';
 				$cache_exp_secs = 0;	// never expire
 				$cache_salt = __CLASS__.'::force_regen_transient';
 				$cache_id = $cache_md5_pre.md5( $cache_salt );
@@ -486,8 +492,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// get the force regen transient id for set and get methods
 		// $mod = true | false | post_id | $mod array
 		public function get_force_regen_key( $mod, $md_pre ) {
-
-			$lca = $this->p->lca;
 
 			if ( is_numeric( $mod ) && $mod > 0 ) {	// optimize by skipping get_page_mod()
 				return 'post_'.$mod.'_regen_'.$md_pre;
@@ -1974,7 +1978,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$hash = '';
 			$query = '';
 			$admin_url = '';
-			$lca = $this->p->lca;
 
 			// $menu_id may start with a hash or query, so parse before checking its value
 			if ( strpos( $menu_id, '#' ) !== false ) {
@@ -1987,7 +1990,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( empty( $menu_id ) ) {
 				$current = $_SERVER['REQUEST_URI'];
-				if ( preg_match( '/^.*\?page='.$lca.'-([^&]*).*$/', $current, $match ) ) {
+				if ( preg_match( '/^.*\?page='.$this->p->lca.'-([^&]*).*$/', $current, $match ) ) {
 					$menu_id = $match[1];
 				} else {
 					$menu_id = key( $this->p->cf['*']['lib']['submenu'] );	// default to first submenu
@@ -2009,7 +2012,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return;
 			}
 
-			$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'].'?page='.$lca.'-'.$menu_id;
+			$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'].'?page='.$this->p->lca.'-'.$menu_id;
 
 			switch ( $menu_lib ) {
 				case 'sitesubmenu':
@@ -2081,14 +2084,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return;
 			}
 
-			$lca = $this->p->lca;
 			$total_rows = count( $table_rows );
 			$count_rows = 0;
 			$hidden_opts = 0;
 			$hidden_rows = 0;
 
 			// use call_user_func() instead of $classname::show_opts() for PHP 5.2
-			$show_opts = class_exists( $lca.'user' ) ? call_user_func( array( $lca.'user', 'show_opts' ) ) : 'basic';
+			$show_opts = class_exists( $this->p->lca.'user' ) ? 
+				call_user_func( array( $this->p->lca.'user', 'show_opts' ) ) : 'basic';
 
 			foreach ( $table_rows as $key => $row ) {
 
@@ -2161,7 +2164,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
 			'">' . "\n";
 
-			echo '<table class="sucom-settings '.$lca.
+			echo '<table class="sucom-settings '.$this->p->lca.
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
 				( $hidden_rows > 0 && $hidden_rows === $count_rows ?	// if all rows hidden, then hide the whole table
 					' hide_in_'.$show_opts : '' ).'">' . "\n";
@@ -2289,27 +2292,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 */
 		public function get_ext_req_msg( $ext ) {
 
-			$lca = $this->p->lca;
 			$req_msg = '';
 
-			if ( $lca === $ext ) {
+			if ( $this->p->lca === $ext ) {
 				return $req_msg;
 			} elseif ( ! empty( $this->p->avail['p_ext'][$ext] ) ) {
 				return $req_msg;
 			}
 
-			$ext_short = empty( $this->p->cf['plugin'][$lca.$ext]['short'] ) ?	// just in case
-				strtoupper( $lca.' '.$ext ) : $this->p->cf['plugin'][$lca.$ext]['short'];
+			$ext_short = empty( $this->p->cf['plugin'][$this->p->lca.$ext]['short'] ) ?	// just in case
+				strtoupper( $this->p->lca.' '.$ext ) : $this->p->cf['plugin'][$this->p->lca.$ext]['short'];
 
 			$req_msg .= ' <p style="display:inline;" class="ext_req_msg"><em>';
 
-			if ( ! empty( $this->p->cf['plugin'][$lca.$ext]['url']['home'] ) ) {
-				$req_msg .= '<a href="'.$this->p->cf['plugin'][$lca.$ext]['url']['home'].'">';
+			if ( ! empty( $this->p->cf['plugin'][$this->p->lca.$ext]['url']['home'] ) ) {
+				$req_msg .= '<a href="'.$this->p->cf['plugin'][$this->p->lca.$ext]['url']['home'].'">';
 			}
 
 			$req_msg .= sprintf( _x( '%s ext. required', 'option comment', 'wpsso' ), $ext_short );
 
-			if ( ! empty( $this->p->cf['plugin'][$lca.$ext]['url']['home'] ) ) {
+			if ( ! empty( $this->p->cf['plugin'][$this->p->lca.$ext]['url']['home'] ) ) {
 				$req_msg .= '</a>';
 			}
 

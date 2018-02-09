@@ -816,11 +816,11 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:1418
+#: lib/com/util.php:1421
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1425
+#: lib/com/util.php:1428
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -2754,7 +2754,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:415 lib/util.php:2152
+#: lib/messages.php:415 lib/util.php:2155
 msgid "No options available."
 msgstr ""
 
@@ -4427,7 +4427,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:714 lib/util.php:860
+#: lib/post.php:714 lib/util.php:864
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4638,12 +4638,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:173 lib/pro/media/vimeo.php:146
-#: lib/pro/media/wistia.php:274 lib/util.php:924
+#: lib/pro/media/wistia.php:274 lib/util.php:928
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:175 lib/pro/media/vimeo.php:149
-#: lib/pro/media/wistia.php:277 lib/util.php:927
+#: lib/pro/media/wistia.php:277 lib/util.php:931
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -4726,31 +4726,31 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:1872
+#: lib/schema.php:1874
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2371
+#: lib/schema.php:2373
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2404
+#: lib/schema.php:2406
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2406
+#: lib/schema.php:2408
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2629
+#: lib/schema.php:2631
 msgid "adding schema for place"
 msgstr ""
 
-#: lib/script.php:137
+#: lib/script.php:138
 msgid "Use Image"
 msgstr ""
 
@@ -5218,49 +5218,49 @@ msgstr ""
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/util.php:599
+#: lib/util.php:603
 msgid ""
 "%s cached files, transient cache, sortable column meta, and the WordPress "
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:603
+#: lib/util.php:607
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:625
+#: lib/util.php:629
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:703
+#: lib/util.php:707
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:720
+#: lib/util.php:724
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:794
+#: lib/util.php:798
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:848
+#: lib/util.php:852
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:871
+#: lib/util.php:875
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:969
+#: lib/util.php:973
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1932
+#: lib/util.php:1936
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.2f "
@@ -5269,34 +5269,34 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:1932
+#: lib/util.php:1936
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2179
+#: lib/util.php:2182
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2183
+#: lib/util.php:2186
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2186
+#: lib/util.php:2189
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2190
+#: lib/util.php:2193
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2310
+#: lib/util.php:2312
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""

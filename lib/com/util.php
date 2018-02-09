@@ -888,7 +888,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_currencies( $idx = false, $add_none = false, $format = '%2$s (%1$s)' ) {
+
 			static $local_cache = array();          // Array of arrays, indexed by $format.
+
 			if ( ! isset( $local_cache[$format] ) ) {
 				if ( $format === '%2$s' ) {     // Optimize and get existing format.
 					$local_cache[$format] =& self::$currencies;
@@ -899,6 +901,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 				asort( $local_cache[$format] ); // Sort by value.
 			}
+
 			return self::get_formatted_array( $local_cache[$format], $idx, $add_none );
 		}
 
@@ -936,7 +939,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$idx = self::decode_html( $idx );
 			}
 
-			static $local_cache = null;
+			static $local_cache = array();
 
 			if ( isset( $local_cache[$idx] ) ) {
 				return $local_cache[$idx];

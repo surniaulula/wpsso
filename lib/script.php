@@ -65,6 +65,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for licenses page' );
 					}
+
 					add_thickbox();	// required for the plugin details box
 
 					wp_enqueue_script( 'plugin-install' );	// required for the plugin details box

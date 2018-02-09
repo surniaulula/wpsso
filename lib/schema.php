@@ -892,7 +892,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function get_json_array( array &$mod, array &$mt_og, $crawler_name ) {
 
-			// pinterest does not (currently) read json markup
+			/**
+			 * Optimize - Pinterest does not (currently) read json markup.
+			 */
 			switch ( $crawler_name ) {
 				case 'pinterest':
 					if ( $this->p->debug->enabled ) {
