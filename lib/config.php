@@ -191,6 +191,41 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'latest' => '',
 					),
 				),
+				'wpssobc' => array(			// Plugin acronym.
+					'short' => 'WPSSO BC',		// Short plugin name.
+					'name' => 'WPSSO Breadcrumbs Markup',
+					'desc' => 'WPSSO Core extension to add JSON-LD formatted Schema BreadcrumbList markup for Google / SEO.',
+					'slug' => 'wpsso-breadcrumbs',
+					'base' => 'wpsso-breadcrumbs/wpsso-breadcrumbs.php',
+					'update_auth' => '',
+					'img' => array(
+						'banners' => array(
+							'low' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-1544x500.jpg',
+						),
+						'icons' => array(
+							'low' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-256x256.png',
+						),
+					),
+					'url' => array(
+						// wordpress
+						'home' => 'https://wordpress.org/plugins/wpsso-breadcrumbs/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs/reviews/?rate=5#new-post',
+						// github
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-breadcrumbs/master/readme.txt',
+						// wpsso
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/changelog/',
+						'docs' => 'https://wpsso.com/docs/plugins/wpsso-breadcrumbs/',
+						'faqs' => '',
+						'notes' => '',
+						'support' => '',
+						'purchase' => '',
+						'update' => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/update/',
+						'latest' => '',
+					),
+				),
 				'wpssojson' => array(			// Plugin acronym.
 					'short' => 'WPSSO JSON',	// Short plugin name.
 					'name' => 'WPSSO Schema JSON-LD Markup',
