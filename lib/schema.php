@@ -1489,14 +1489,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			return array(
 				'org_type' => $wpsso->options['site_org_type'],
-				'org_url' => SucomUtil::get_site_url( $wpsso->options, $mixed ),			// localized value
-				'org_name' => SucomUtil::get_site_name( $wpsso->options, $mixed ),		// localized value
-				'org_name_alt' => SucomUtil::get_site_name_alt( $wpsso->options, $mixed ),	// localized value
-				'org_desc' => SucomUtil::get_site_description( $wpsso->options, $mixed ),	// localized value
-				'org_logo_url' => SucomUtil::get_key_value( 'schema_logo_url', $wpsso->options, $mixed ),	// localized value
-				'org_banner_url' => SucomUtil::get_key_value( 'schema_banner_url', $wpsso->options, $mixed ),	// localized value
+				'org_url' => SucomUtil::get_site_url( $wpsso->options, $mixed ),
+				'org_name' => SucomUtil::get_site_name( $wpsso->options, $mixed ),
+				'org_name_alt' => SucomUtil::get_site_name_alt( $wpsso->options, $mixed ),
+				'org_desc' => SucomUtil::get_site_description( $wpsso->options, $mixed ),
+				'org_logo_url' => SucomUtil::get_key_value( 'schema_logo_url', $wpsso->options, $mixed ),
+				'org_banner_url' => SucomUtil::get_key_value( 'schema_banner_url', $wpsso->options, $mixed ),
 				'org_place_id' => $wpsso->options['site_place_id'],
-				'org_sameas' => $org_sameas,							// localized value
+				'org_sameas' => $org_sameas,
 			);
 		}
 
@@ -2249,7 +2249,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ret = self::get_schema_type_context( $job_type_url );
 
 			if ( empty( $job_opts['job_title'] ) ) {
-				$job_opts['job_title'] = $wpsso->page->get_title( $wpsso->options['og_title_len'], '...', $mod, true, false, true, 'schema_title' );
+				$job_opts['job_title'] = $wpsso->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
 			}
 
 			/**
