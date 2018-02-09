@@ -452,7 +452,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.52.1 =
 
-(2018/02/09) Added the new WPSSO Breadcrumbs Markup extension. Added an "Edit" link to the "Robots" option in the Publish metabox. Added a fallback to custom product attributes for WooCommerce (Pro version). Fixed the assignment of Schema Event offers validFrom and validThrough property values.
+(2018/02/09) Added the new WPSSO Breadcrumbs Markup extension. Added an "Edit" link to the "Robots" option in the Publish metabox. Added a fallback to custom product attributes for WooCommerce (Pro version). Fixed the assignment of Schema Event offers validFrom and validThrough.
 
 = 3.52.0 =
 
