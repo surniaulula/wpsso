@@ -72,8 +72,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$caption = false;
-			$separator = html_entity_decode( $this->p->options['og_title_sep'],
-				ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
 
 			if ( true === $md_idx ) {
 				switch ( $type ) {
@@ -139,12 +138,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					case 'both':
 						// get the title first
-						$caption = $this->get_title( 0,
-							'', $mod, $read_cache, false, false, $md_title );	// $add_hashtags = false
+						$caption = $this->get_title( 0, '', $mod, $read_cache, false, false, $md_title );	// $add_hashtags = false
 
 						// add a separator between title and description
 						if ( ! empty( $caption ) ) {
-							$caption .= ' '.$separator.' ';
+							$caption .= ' ';
+						}
+
+						if ( ! empty( $separator ) ) {
+							$caption .= $separator.' ';
 						}
 
 						// reduce the requested $textlen by the title text length we already have
@@ -166,7 +168,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		// $mod = true | false | post_id | $mod array
 		public function get_title( $textlen = 70, $trailing = '', $mod = false, $read_cache = true,
-			$add_hashtags = false, $do_encode = true, $md_idx = 'og_title' ) {
+			$add_hashtags = false, $do_encode = true, $md_idx = 'og_title', $separator = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -177,6 +179,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'add_hashtags' => $add_hashtags,	// true/false/numeric
 					'do_encode' => $do_encode,
 					'md_idx' => $md_idx,
+					'separator' => $separator,
 				) );
 			}
 
@@ -193,9 +196,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$title_text = false;
 			$hashtags = '';
 			$paged_suffix = '';
-			$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			$filter_title = empty( $this->p->options['plugin_filter_title'] ) ? false : true;
 			$filter_title = apply_filters( $lca.'_filter_title', $filter_title, $mod );
+
+			if ( null === $separator ) {
+				$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			}
 
 			// setup filters to save and restore original / pre-filtered title value
 			if ( ! $filter_title ) {
@@ -231,10 +237,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			// check for hashtags in meta or seed title, remove and then add again after shorten
 			if ( preg_match( '/(.*)(( #[a-z0-9\-]+)+)$/U', $title_text, $match ) ) {
+
 				$title_text = $match[1];
 				$hashtags = trim( $match[2] );
 
 			} elseif ( $mod['is_post'] ) {
+
 				if ( ! empty( $add_hashtags ) && ! empty( $this->p->options['og_desc_hashtags'] ) ) {
 					$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );	// $add_hashtags = true | false | numeric
 				}
@@ -249,10 +257,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod['is_post'] ) {
 
-					$title_text = get_the_title( $mod['id'] ).' '.$separator.' ';
+					$title_text = html_entity_decode( get_the_title( $mod['id'] ) ).' ';
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'post id '.$mod['id'].' get_the_title() = "'.$title_text.'"' );
+						$this->p->debug->log( $mod['name'].' id '.$mod['id'].' get_the_title() = "'.$title_text.'"' );
+					}
+
+					if ( ! empty( $separator ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'adding separator "'.$separator.'" to title string' );
+						}
+						$title_text .= $separator.' ';
 					}
 
 					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $separator, 'right' ), $mod );
@@ -262,7 +277,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
 
 					if ( SucomUtil::is_category_page( $mod['id'] ) ) {
-						$title_text = $this->get_category_title( $term_obj, '', $separator );	// includes parents in title string
+						/**
+						 * Includes parent names in title string if the $separator is not empty.
+						 */
+						$title_text = $this->get_category_title( $term_obj, '', $separator );
 					} elseif ( isset( $term_obj->name ) ) {
 						$title_text = apply_filters( 'wp_title', $term_obj->name.' '.$separator.' ', $separator, 'right' );
 					} elseif ( $this->p->debug->enabled ) {
@@ -868,7 +886,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_wp_tags', $tags, $post_id );
 		}
 
-		public function get_category_title( $term_id = 0, $tax_slug = '', $separator = false ) {
+		public function get_category_title( $term_id = 0, $tax_slug = '', $separator = null ) {
 
 			$title_text = '';
 
@@ -878,32 +896,36 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$term_obj = SucomUtil::get_term_object( $term_id, $tax_slug );
 			}
 
-			if ( false === $separator ) {
+			if ( null === $separator ) {
 				$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
 			if ( isset( $term_obj->name ) ) {
-				$title_text = $term_obj->name.' Archives '.$separator.' ';	// default value
+				$title_text = $term_obj->name.' ';
+				if ( ! empty( $separator ) ) {
+					$title_text .= $separator.' ';	// default value
+				}
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'name property missing in term object' );
 			}
 
-			$cat = get_category( $term_obj->term_id );
+			if ( ! empty( $separator ) ) {
+				$cat = get_category( $term_obj->term_id );
 
-			if ( ! empty( $cat->category_parent ) ) {
-
-				$cat_parents = get_category_parents( $term_obj->term_id, false, ' '.$separator.' ', false );
-
-				if ( is_wp_error( $cat_parents ) ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'get_category_parents error: '.$cat_parents->get_error_message() );
-					}
-				} else {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'get_category_parents() = "'.$cat_parents.'"' );
-					}
-					if ( ! empty( $cat_parents ) ) {
-						$title_text = $cat_parents;
+				if ( ! empty( $cat->category_parent ) ) {
+					$cat_parents = get_category_parents( $term_obj->term_id, false, ' '.$separator.' ', false );
+	
+					if ( is_wp_error( $cat_parents ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'get_category_parents error: '.$cat_parents->get_error_message() );
+						}
+					} else {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'get_category_parents() = "'.$cat_parents.'"' );
+						}
+						if ( ! empty( $cat_parents ) ) {
+							$title_text = $cat_parents;
+						}
 					}
 				}
 			}
