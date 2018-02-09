@@ -389,10 +389,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.52.1-rc.1 (2018/02/09)**
+**Version 3.52.1 (2018/02/09)**
 
 * *New Features*
-	* None
+	* Added the new WPSSO Breadcrumbs Markup extension to the SSO &gt; Extension Plugins settings page.
 * *Improvements*
 	* Added an "Edit" link to the "Robots" option in the post Publish metabox to show the checkboxes only when desired.
 	* Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version).
@@ -450,9 +450,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.52.1-rc.1 =
+= 3.52.1 =
 
-(2018/02/09) Added an "Edit" link to the "Robots" option in the post Publish metabox. Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version). Fixed the assignment of Schema Event offers validFrom and validThrough property values.
+(2018/02/09) Added the new WPSSO Breadcrumbs Markup extension. Added an "Edit" link to the "Robots" option in the Publish metabox. Added a fallback to custom product attributes for WooCommerce (Pro version). Fixed the assignment of Schema Event offers validFrom and validThrough property values.
 
 = 3.52.0 =
 
