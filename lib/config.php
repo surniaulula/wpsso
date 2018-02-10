@@ -2408,6 +2408,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_GET_POSTS_MAX_TIME'] = 0.10;			// send an error to trigger_error() if get_posts() takes longer
 			$var_const['WPSSO_PHP_GETIMGSIZE_MAX_TIME'] = 1.00;		// send an error to trigger_error() if getimagesize() takes longer
 
+			/**
+			 * Limit for some multi-options and Schema property arrays.
+			 */
 			$var_const['WPSSO_SCHEMA_ADDL_TYPE_URL_MAX'] = 5;
 			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX'] = 10;
 			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX'] = 90;
@@ -2416,6 +2419,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH_MAX'] = 3;
 			$var_const['WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX'] = 30;
 			$var_const['WPSSO_SCHEMA_SAMEAS_URL_MAX'] = 5;
+			$var_const['WPSSO_SCHEMA_BREADCRUMB_SCRIPTS_MAX'] = 5;
 
 			/**
 			 * WPSSO option and meta array names
