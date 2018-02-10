@@ -2409,7 +2409,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_PHP_GETIMGSIZE_MAX_TIME'] = 1.00;		// send an error to trigger_error() if getimagesize() takes longer
 
 			/**
-			 * Limit for some multi-options and Schema property arrays.
+			 * Limits for some multi-options and Schema property arrays.
 			 */
 			$var_const['WPSSO_SCHEMA_ADDL_TYPE_URL_MAX'] = 5;
 			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX'] = 10;
