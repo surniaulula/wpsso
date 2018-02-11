@@ -390,6 +390,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.52.2-dev.1 (2018/02/11)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Options normally hidden in the "Basic Options" view that have a different value than their default will no longer be hidden.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.52.1 (2018/02/09)**
 
 * *New Features*
@@ -450,6 +461,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 
 == Upgrade Notice ==
+
+= 3.52.2-dev.1 =
+
+(2018/02/11) Options normally hidden in the "Basic Options" view that have a different value than their default will no longer be hidden.
 
 = 3.52.1 =
 
