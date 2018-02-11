@@ -390,12 +390,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.52.2-dev.1 (2018/02/11)**
+**Version 3.53.0-dev.2 (2018/02/11)**
 
 * *New Features*
-	* None
+	* Added a new "Canonical URL" option (hidden by default) in the Social and Search Optimization metabox (Pro version).
 * *Improvements*
 	* Options normally hidden in the "Basic Options" view that have a different value than their default will no longer be hidden.
+	* When the "link rel canonical" head tag is enabled, the WordPress 'rel_canonical' hook is now removed to avoid duplicates.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -462,9 +463,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.52.2-dev.1 =
+= 3.53.0-dev.2 =
 
-(2018/02/11) Options normally hidden in the "Basic Options" view that have a different value than their default will no longer be hidden.
+(2018/02/11) Added a new "Canonical URL" option in the Social and Search Optimization metabox. Options normally hidden in the "Basic Options" view that have a different value than their default will no longer be hidden.
 
 = 3.52.1 =
 
