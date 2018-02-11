@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.52.2-dev.1\n"
+"Project-Id-Version: WPSSO Core 3.53.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1039,8 +1039,7 @@ msgctxt "option value"
 msgid "Facebook User URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:45 lib/gpl/admin/general.php:84
-#: lib/pro/admin/general.php:86
+#: lib/config-gettext-extract.php:45
 msgctxt "option value"
 msgid "Facebook Videos"
 msgstr ""
@@ -1420,8 +1419,7 @@ msgctxt "option value"
 msgid "Skype Username"
 msgstr ""
 
-#: lib/config-gettext-extract.php:121 lib/gpl/admin/general.php:85
-#: lib/pro/admin/general.php:87
+#: lib/config-gettext-extract.php:121
 msgctxt "option value"
 msgid "Slideshare Presentations"
 msgstr ""
@@ -1447,8 +1445,7 @@ msgctxt "option value"
 msgid "Soundcloud Business Page URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:126 lib/gpl/admin/general.php:86
-#: lib/pro/admin/general.php:88
+#: lib/config-gettext-extract.php:126
 msgctxt "option value"
 msgid "Soundcloud Tracks"
 msgstr ""
@@ -1578,8 +1575,7 @@ msgctxt "option label"
 msgid "Video URL Custom Field"
 msgstr ""
 
-#: lib/config-gettext-extract.php:152 lib/gpl/admin/general.php:87
-#: lib/pro/admin/general.php:89
+#: lib/config-gettext-extract.php:152
 msgctxt "option value"
 msgid "Vimeo Videos"
 msgstr ""
@@ -1609,14 +1605,12 @@ msgctxt "option value"
 msgid "Week"
 msgstr ""
 
-#: lib/config-gettext-extract.php:158 lib/gpl/admin/general.php:88
-#: lib/pro/admin/general.php:90
+#: lib/config-gettext-extract.php:158
 msgctxt "option value"
 msgid "Wistia Videos"
 msgstr ""
 
-#: lib/config-gettext-extract.php:159 lib/gpl/admin/general.php:89
-#: lib/pro/admin/general.php:91
+#: lib/config-gettext-extract.php:159
 msgctxt "option value"
 msgid "WordPress Video Shortcode"
 msgstr ""
@@ -1735,8 +1729,7 @@ msgctxt "option value"
 msgid "YouTube Channel URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:178 lib/gpl/admin/general.php:90
-#: lib/pro/admin/general.php:92
+#: lib/config-gettext-extract.php:178
 msgctxt "option value"
 msgid "YouTube Videos and Playlists"
 msgstr ""
@@ -1785,7 +1778,7 @@ msgid "WP Caption Prefix"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:83 lib/gpl/admin/general.php:82
-#: lib/pro/admin/advanced.php:89 lib/pro/admin/general.php:84
+#: lib/pro/admin/advanced.php:89 lib/pro/admin/general.php:85
 msgctxt "option label"
 msgid "Check for Embedded Media"
 msgstr ""
@@ -2071,47 +2064,47 @@ msgctxt "column title"
 msgid "Profile Contact Label"
 msgstr ""
 
-#: lib/gpl/admin/general.php:36 lib/pro/admin/general.php:42
+#: lib/gpl/admin/general.php:38 lib/pro/admin/general.php:45
 msgctxt "option label"
 msgid "Include Author Gravatar Image"
 msgstr ""
 
-#: lib/gpl/admin/general.php:48
+#: lib/gpl/admin/general.php:51
 msgid ""
 "Video discovery and integration modules are provided with the Pro version."
 msgstr ""
 
-#: lib/gpl/admin/general.php:53 lib/pro/admin/general.php:54
+#: lib/gpl/admin/general.php:55 lib/pro/admin/general.php:58
 msgctxt "option label"
 msgid "Maximum Videos to Include"
 msgstr ""
 
-#: lib/gpl/admin/general.php:58 lib/pro/admin/general.php:60
+#: lib/gpl/admin/general.php:59 lib/pro/admin/general.php:62
 msgctxt "option label"
 msgid "Use HTTPS for Video API Requests"
 msgstr ""
 
-#: lib/gpl/admin/general.php:61 lib/pro/admin/general.php:63
+#: lib/gpl/admin/general.php:60 lib/pro/admin/general.php:63
 msgctxt "option comment"
 msgid "uses %s"
 msgstr ""
 
-#: lib/gpl/admin/general.php:64 lib/pro/admin/general.php:66
+#: lib/gpl/admin/general.php:64 lib/pro/admin/general.php:67
 msgctxt "option label"
 msgid "Include Video Preview Images"
 msgstr ""
 
-#: lib/gpl/admin/general.php:67 lib/pro/admin/general.php:69
+#: lib/gpl/admin/general.php:65 lib/pro/admin/general.php:68
 msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr ""
 
-#: lib/gpl/admin/general.php:70 lib/pro/admin/general.php:72
+#: lib/gpl/admin/general.php:69 lib/pro/admin/general.php:72
 msgctxt "option label"
 msgid "Include text/html Type Meta Tags"
 msgstr ""
 
-#: lib/gpl/admin/general.php:74 lib/pro/admin/general.php:76
+#: lib/gpl/admin/general.php:73 lib/pro/admin/general.php:76
 msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
