@@ -2159,41 +2159,41 @@ msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:113 lib/pro/admin/meta.php:134
+#: lib/gpl/admin/meta.php:115 lib/pro/admin/meta.php:136
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
-#: lib/gpl/admin/meta.php:129 lib/pro/admin/meta.php:146
+#: lib/gpl/admin/meta.php:130 lib/pro/admin/meta.php:147
 #: lib/submenu/general.php:34
 msgctxt "metabox title"
 msgid "All Social WebSites / Open Graph"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:133 lib/pro/admin/meta.php:150
+#: lib/gpl/admin/meta.php:134 lib/pro/admin/meta.php:151
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:137 lib/gpl/admin/meta.php:212
-#: lib/pro/admin/meta.php:154 lib/pro/admin/meta.php:234
+#: lib/gpl/admin/meta.php:138 lib/gpl/admin/meta.php:210
+#: lib/pro/admin/meta.php:155 lib/pro/admin/meta.php:230
 msgctxt "option label"
 msgid "Image Dimensions"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:142 lib/gpl/admin/meta.php:218
-#: lib/pro/admin/meta.php:159 lib/pro/admin/meta.php:240
+#: lib/gpl/admin/meta.php:143 lib/gpl/admin/meta.php:216
+#: lib/pro/admin/meta.php:160 lib/pro/admin/meta.php:236
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:147 lib/gpl/admin/meta.php:224
-#: lib/pro/admin/meta.php:164 lib/pro/admin/meta.php:246
+#: lib/gpl/admin/meta.php:148 lib/gpl/admin/meta.php:222
+#: lib/pro/admin/meta.php:165 lib/pro/admin/meta.php:242
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:154 lib/gpl/admin/meta.php:231
-#: lib/pro/admin/meta.php:171 lib/pro/admin/meta.php:253
+#: lib/gpl/admin/meta.php:155 lib/gpl/admin/meta.php:229
+#: lib/pro/admin/meta.php:172 lib/pro/admin/meta.php:249
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
@@ -2218,22 +2218,22 @@ msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:182 lib/pro/admin/meta.php:200
+#: lib/gpl/admin/meta.php:182 lib/pro/admin/meta.php:199
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:189 lib/pro/admin/meta.php:208
+#: lib/gpl/admin/meta.php:189 lib/pro/admin/meta.php:206
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:197 lib/pro/admin/meta.php:216
+#: lib/gpl/admin/meta.php:196 lib/pro/admin/meta.php:213
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:208 lib/pro/admin/meta.php:230
+#: lib/gpl/admin/meta.php:206 lib/pro/admin/meta.php:226
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
@@ -4543,17 +4543,11 @@ msgstr ""
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
-#: lib/pro/admin/meta.php:87
-msgid ""
-"This SEO option is disabled (the \"%1$s\" head tag is disabled, or an SEO "
-"plugin is/was detected)."
-msgstr ""
-
-#: lib/pro/admin/meta.php:111 lib/pro/admin/post.php:98
-#: lib/pro/admin/post.php:125
+#: lib/pro/admin/meta.php:87 lib/pro/admin/meta.php:111
+#: lib/pro/admin/post.php:98 lib/pro/admin/post.php:125
 msgid ""
 "This SEO option is disabled (the \"%1$s\" head tag is disabled or an SEO "
-"plugin is/was detected)."
+"plugin was detected)."
 msgstr ""
 
 #: lib/pro/ecom/woocommerce.php:550

@@ -105,8 +105,10 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 		}
 
 		public function filter_meta_media_rows( $table_rows, $form, $head, $mod ) {
-			if ( $this->p->debug->enabled )
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
 
 			if ( $mod['is_post'] && ( empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ) ) {
 				$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
@@ -120,8 +122,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
 			$table_rows[] = '<td colspan="2" align="center">'.
 				( $mod['is_post'] ? $this->p->msgs->get( 'pro-about-msg-post-media' ) : '' ).
-				$this->p->msgs->get( 'pro-feature-msg' ).
-				'</td>';
+				$this->p->msgs->get( 'pro-feature-msg' ). '</td>';
 
 			$form_rows['subsection_opengraph'] = array(
 				'tr_class' => 'hide_in_basic',
@@ -153,8 +154,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'tr_class' => 'hide_in_basic',
 					'label' => _x( 'Maximum Images', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-og_img_max', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'og_img_max',
-						range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
+					'content' => $form->get_no_select( 'og_img_max', range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
 				);
 			}
 			$form_rows['subsection_priority_video'] = array(
@@ -188,19 +188,17 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'tr_class' => 'hide_in_basic',
 					'label' => _x( 'Maximum Videos', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-og_vid_max', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'og_vid_max', 
-						range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
+					'content' => $form->get_no_select( 'og_vid_max', range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
 				);
 			}
 			$form_rows['og_vid_prev_img'] = array(
 				'tr_class' => 'hide_in_basic',
 				'label' => _x( 'Include Preview Images', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-og_vid_prev_img', 'td_class' => 'blank',
-					'content' => $form->get_no_checkbox( 'og_vid_prev_img' ),
+				'content' => $form->get_no_checkbox( 'og_vid_prev_img' ),
 			);
 
-			$media_info = $this->p->og->get_media_info( $this->p->cf['lca'].'-schema',
-				array( 'pid', 'img_url' ), $mod, 'og', 'og', $head );
+			$media_info = $this->p->og->get_media_info( $this->p->cf['lca'].'-schema', array( 'pid', 'img_url' ), $mod, 'og', 'og', $head );
 	
 			$form_rows['subsection_schema'] = array(
 				'tr_class' => 'hide_in_basic',
@@ -230,8 +228,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'tr_class' => 'hide_in_basic',
 					'label' => _x( 'Maximum Images', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-schema_img_max', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'schema_img_max', 
-						range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
+					'content' => $form->get_no_select( 'schema_img_max', range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
 				);
 			}
 
