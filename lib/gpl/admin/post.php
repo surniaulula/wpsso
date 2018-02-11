@@ -21,11 +21,11 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'post_text_rows' => 4,
+				'post_edit_rows' => 4,
 			) );
 		}
 
-		public function filter_post_text_rows( $table_rows, $form, $head, $mod ) {
+		public function filter_post_edit_rows( $table_rows, $form, $head, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -47,8 +47,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
 				$json_info = $this->p->cf['plugin']['wpssojson'];
 				$schema_desc_msg = '<p class="status-msg smaller">'.
-					sprintf( __( 'Activate the %s extension for additional Schema markup features and options.', 'wpsso' ),
-					'<a href="'.$json_info['url']['home'].'">'.$json_info['short'].'</a>' ).'</p>';
+					sprintf( __( 'Activate the %s extension for additional Schema markup features and options.',
+						'wpsso' ), '<a href="'.$json_info['url']['home'].'">'.$json_info['short'].'</a>' ).'</p>';
 			} else {
 				$schema_desc_msg = '';
 			}
@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 
 			$form_rows = array(
 				'og_art_section' => array(
-					'tr_class' => ( $og_type === 'article' ? '' : 'hide_in_basic' ),	// hide if not an article
+					'tr_class' => ( $og_type === 'article' ? '' : 'hide_in_basic' ), // always hide if og:type is not an article
 					'label' => _x( 'Article Topic', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'post-og_art_section', 'td_class' => 'blank',
 					'content' => $form->get_no_select( 'og_art_section', $this->p->util->get_article_topics(), '', '', false ),
@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'content' => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
 				),
 				'seo_desc' => array(
-					'tr_class' => ( $this->p->options['add_meta_name_description'] ? '' : 'hide_in_basic' ),
+					'tr_class' => ( $this->p->options['add_meta_name_description'] ? '' : 'hide_in_basic' ), // always hide if head tag is disabled
 					'label' => _x( 'Google Search / SEO Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
 					'no_auto_draft' => true,
@@ -89,11 +89,19 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'content' => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),
 				),
 				'sharing_url' => array(
-					'tr_class' => 'hide_in_basic',
+					'tr_class' => $form->get_css_class_hide( 'basic', 'sharing_url' ),
 					'label' => _x( 'Sharing URL', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-sharing_url', 'td_class' => 'blank',
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
 					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod, false ), 'wide' ), // $add_page = false
+				),
+				'canonical_url' => array(
+					'tr_class' => ( $this->p->options['add_link_rel_canonical'] ?                      // maybe hide if head tag is enabled
+						$form->get_css_class_hide( 'basic', 'canonical_url' ) : 'hide_in_basic' ), // always hide if head tag is disabled
+					'label' => _x( 'Canonical URL', 'option label', 'wpsso' ),
+					'th_class' => 'medium', 'tooltip' => 'meta-canonical_url', 'td_class' => 'blank',
+					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
+					'content' => $form->get_no_input_value( $this->p->util->get_canonical_url( $mod, false ), 'wide' ), // $add_page = false
 				),
 			);
 

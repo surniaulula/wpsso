@@ -625,8 +625,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			if ( ! empty( $payload['label'] ) ) {
-				$msg_html .= '<div class="notice-label">' . 
-					$payload['label'] . '</div>';
+				$msg_html .= '<div class="notice-label">' . $payload['label'] . '</div>';
 			}
 
 			$msg_html .= '<div class="notice-message">' . $msg_txt . '</div>';

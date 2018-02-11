@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			switch ( $metabox_id ) {
 				case $this->p->cf['meta']['id']:
 					$tabs = array(
-						'text' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
+						'edit' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
 						'media' => _x( 'Select Media', 'metabox tab', 'wpsso' ),
 						'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
 						'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
@@ -134,7 +134,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					);
 					// if pro options are hidden, move the (empty) text and media tabs to the end
 					if ( ! empty( $this->p->options['plugin_hide_pro'] ) ) {
-						foreach ( array( 'text', 'media' ) as $key ) {
+						foreach ( array( 'edit', 'media' ) as $key ) {
 							SucomUtil::move_to_end( $tabs, $key );
 						}
 					}
@@ -215,11 +215,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$table_rows[] = $form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
+				$table_rows[] = $form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ).
+				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
+	
 				$table_rows[] = $form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
 			} else {
-				$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
+
+				$sharing_url = $this->p->util->get_sharing_url( $mod, false );     // $add_page = false
+				$canonical_url = $this->p->util->get_canonical_url( $mod, false ); // $add_page = false
 
 				if ( $mod['is_post'] ) {
 					$shortlink = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
@@ -230,6 +235,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				$table_rows[] = $form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td>'.$form->get_input_copy_clipboard( $sharing_url ).'</td>';
+
+				$table_rows[] = $form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ).
+				'<td>'.$form->get_input_copy_clipboard( $canonical_url ).'</td>';
 
 				$table_rows[] = $form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td>'.$form->get_input_copy_clipboard( $shortlink ).'</td>';

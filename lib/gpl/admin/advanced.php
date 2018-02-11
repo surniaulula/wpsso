@@ -46,46 +46,42 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
-			$table_rows[] = ''.
+			$table_rows['plugin_filter_title'] = ''.
 			$form->get_th_html( _x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' ), '', 'plugin_filter_title' ).
 			$form->get_nocb_td( 'plugin_filter_title' );
 
-			$table_rows[] = ''.
+			$table_rows['plugin_filter_content'] = ''.
 			$form->get_th_html( _x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ), '', 'plugin_filter_content' ).
 			$form->get_nocb_td( 'plugin_filter_content', '<em>'._x( 'recommended', 'option comment', 'wpsso' ).'</em>' );
 
-			$table_rows[] = ''.
+			$table_rows['plugin_filter_excerpt'] = ''.
 			$form->get_th_html( _x( 'Apply WordPress Excerpt Filters', 'option label', 'wpsso' ), '', 'plugin_filter_excerpt' ).
 			$form->get_nocb_td( 'plugin_filter_excerpt' );
 
-			$table_rows[] = $form->get_tr_hide( 'basic', 'plugin_p_strip' ).
+			$table_rows['plugin_p_strip'] = $form->get_tr_hide( 'basic', 'plugin_p_strip' ).
 			$form->get_th_html( _x( 'Content Starts at 1st Paragraph', 'option label', 'wpsso' ), '', 'plugin_p_strip' ).
 			$form->get_nocb_td( 'plugin_p_strip' );
 
-			$table_rows[] = $form->get_tr_hide( 'basic', 'plugin_use_img_alt' ).
-			$form->get_th_html( _x( 'Use Image Alt if No Content',
-				'option label', 'wpsso' ), '', 'plugin_use_img_alt' ).
+			$table_rows['plugin_use_img_alt'] = $form->get_tr_hide( 'basic', 'plugin_use_img_alt' ).
+			$form->get_th_html( _x( 'Use Image Alt if No Content', 'option label', 'wpsso' ), '', 'plugin_use_img_alt' ).
 			$form->get_nocb_td( 'plugin_use_img_alt' );
 
-			$table_rows['plugin_img_alt_prefix'] = $form->get_th_html( _x( 'Image Alt Text Prefix',
-				'option label', 'wpsso' ), '', 'plugin_img_alt_prefix', array( 'is_locale' => true ) ).
+			$table_rows['plugin_img_alt_prefix'] = ''.
+			$form->get_th_html( _x( 'Image Alt Text Prefix', 'option label', 'wpsso' ), '', 'plugin_img_alt_prefix', array( 'is_locale' => true ) ).
 			'<td class="blank">'.SucomUtil::get_key_value( 'plugin_img_alt_prefix', $this->p->options ).'</td>';
 
-			$table_rows['plugin_p_cap_prefix'] = $form->get_th_html( _x( 'WP Caption Prefix',
-				'option label', 'wpsso' ), '', 'plugin_p_cap_prefix', array( 'is_locale' => true ) ).
+			$table_rows['plugin_p_cap_prefix'] = ''.
+			$form->get_th_html( _x( 'WP Caption Prefix', 'option label', 'wpsso' ), '', 'plugin_p_cap_prefix', array( 'is_locale' => true ) ).
 			'<td class="blank">'.SucomUtil::get_key_value( 'plugin_p_cap_prefix', $this->p->options ).'</td>';
 
-			$table_rows['plugin_embedded_media'] = '<tr class="hide_in_basic">'.
-			$form->get_th_html( _x( 'Check for Embedded Media', 'option label', 'wpsso' ), '', 'plugin_embedded_media' ).
-			'<td class="blank">'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_facebook_api' ).' '._x( 'Facebook Videos', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_slideshare_api' ).' '._x( 'Slideshare Presentations', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_soundcloud_api' ).' '._x( 'Soundcloud Tracks', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_vimeo_api' ).' '._x( 'Vimeo Videos', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_wistia_api' ).' '._x( 'Wistia Videos', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_wpvideo_api' ).' '._x( 'WordPress Video Shortcode', 'option value', 'wpsso' ).'</p>'.
-			'<p>'.$form->get_nocb_cmt( 'plugin_youtube_api' ).' '._x( 'YouTube Videos and Playlists', 'option value', 'wpsso' ).'</p>'.
-			'</td>';
+			$check_embed_html = '';
+			foreach ( $this->p->cf['form']['embed_media_apis'] as $opt_key => $opt_label ) {
+				$check_embed_html .= '<p>'.$form->get_nocb_cmt( $opt_key ).' '._x( $opt_label, 'option value', 'wpsso' ).'</p>';
+			}
+
+			$table_rows['plugin_embed_media_apis'] = $form->get_tr_hide( 'basic', $this->p->cf['form']['embed_media_apis'] ).
+			$form->get_th_html( _x( 'Check for Embedded Media', 'option label', 'wpsso' ), '', 'plugin_embed_media_apis' ).
+			'<td class="blank">'.$check_embed_html.'</td>';
 
 			return $table_rows;
 		}
@@ -96,21 +92,23 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="3" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$table_rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$table_rows['plugin_honor_force_ssl'] = $form->get_tr_hide( 'basic', 'plugin_honor_force_ssl' ).
 			$form->get_th_html( _x( 'Honor the FORCE_SSL Constant', 'option label', 'wpsso' ), '', 'plugin_honor_force_ssl' ).
 			$form->get_nocb_td( 'plugin_honor_force_ssl' );
 
-			$table_rows['plugin_html_attr_filter'] = '<tr class="hide_in_basic">'.
+			$table_rows['plugin_html_attr_filter'] = $form->get_tr_hide( 'basic', 
+				array( 'plugin_html_attr_filter_name', 'plugin_html_attr_filter_prio' ) ).
 			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook', 'option label', 'wpsso' ), '', 'plugin_html_attr_filter' ).
-			'<td class="blank field_name">Name:&nbsp;'.$this->p->options['plugin_html_attr_filter_name'].'</td>'.
-			'<td class="blank">Priority:&nbsp;'.$this->p->options['plugin_html_attr_filter_prio'].'</td>';
+			'<td class="blank">Name: '.$this->p->options['plugin_html_attr_filter_name'].', '.
+			'Priority: '.$this->p->options['plugin_html_attr_filter_prio'].'</td>';
 
-			$table_rows['plugin_head_attr_filter'] = '<tr class="hide_in_basic">'.
+			$table_rows['plugin_head_attr_filter'] = $form->get_tr_hide( 'basic', 
+				array( 'plugin_head_attr_filter_name', 'plugin_head_attr_filter_prio' ) ).
 			$form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook', 'option label', 'wpsso' ), '', 'plugin_head_attr_filter' ).
-			'<td class="blank field_name">Name:&nbsp;'.$this->p->options['plugin_head_attr_filter_name'].'</td>'.
-			'<td class="blank">Priority:&nbsp;'.$this->p->options['plugin_head_attr_filter_prio'].'</td>';
+			'<td class="blank">Name: '.$this->p->options['plugin_head_attr_filter_name'].', '.
+			'Priority: '.$this->p->options['plugin_head_attr_filter_prio'].'</td>';
 
 			$table_rows['plugin_check_head'] = ''.
 			$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ), '', 'plugin_check_head' ).
@@ -203,7 +201,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'user' => 'User Profile',
 			) );
 
-			$table_rows['plugin_add_to'] = '<tr class="hide_in_basic">'.
+			$table_rows['plugin_add_to'] = $form->get_tr_hide( 'basic', SucomUtil::get_opts_begin( 'plugin_add_to_', $form->options ) ).
 			$form->get_th_html( sprintf( _x( 'Add %s Metabox to', 'option label', 'wpsso' ), $add_to_menu_title ), '', 'plugin_add_to' ).
 			'<td class="blank">'.$add_to_checklist.'</td>';
 

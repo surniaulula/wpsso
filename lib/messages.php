@@ -73,19 +73,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			if ( strpos( $idx, 'tooltip-' ) === 0 ) {
 				if ( strpos( $idx, 'tooltip-meta-' ) === 0 ) {
 					switch ( $idx ) {
+
 						case 'tooltip-meta-sharing_url':
-							$text = __( 'A custom sharing URL used for the Facebook / Open Graph / Pinterest Rich Pin meta tags, Schema markup, and optional social sharing buttons.', 'wpsso' ).' '.__( 'Please make sure any custom URL you enter here is functional and redirects correctly.', 'wpsso' );
+
+							$text = __( 'A custom sharing URL used for the Facebook / Open Graph and Pinterest Rich Pin meta tags, Schema markup, and any social sharing extensions.', 'wpsso' ).' '.__( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
+						 	break;
+
+						case 'tooltip-meta-canonical_url':
+
+							$text = sprintf( __( 'A custom URL used for the "%1$s" head tag.', 'wpsso' ), "link rel canonical" ).' '.__( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 						 	break;
 
 						case 'tooltip-meta-schema_title':
+
 							$text = __( 'A custom name / title for the Schema item type\'s name property.', 'wpsso' );
 						 	break;
 
 						case 'tooltip-meta-schema_title_alt':
+
 							$text = __( 'An optional alternate custom name / title for the Schema item type\'s alternateName property.', 'wpsso' );
 						 	break;
 
 						case 'tooltip-meta-schema_desc':
+
 							$text = __( 'A custom description for the Schema item type\'s description property.', 'wpsso' );
 						 	break;
 
@@ -93,60 +103,77 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$option_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
 								_x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' ) );
-
 							$text = __( 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' ) . ' ';
 							// translators: %s is a link to the (translated) "Use Filtered (SEO) Title" option settings page
 							$text .= sprintf( __( 'If the %s option is enabled, the default title value may be provided by your theme or another SEO plugin.', 'wpsso' ), $option_page_link );
 						 	break;
 
 						case 'tooltip-meta-og_desc':
+
 							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %1$s meta tag and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ).' '.__( 'The default description value is based on the category / tag description or biographical info for users.', 'wpsso' ).' '.__( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
 						 	break;
 
 						case 'tooltip-meta-seo_desc':
+
 							$text = __( 'A custom description for the Google Search / SEO description meta tag.', 'wpsso' );
 						 	break;
 
 						case 'tooltip-meta-tc_desc':
+
 							$text = __( 'A custom description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' );
 						 	break;
 
 						case 'tooltip-meta-product_avail':
+
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'availability', 'product meta name', 'wpsso' );
 							}
 							// no break - fall through
+
 						case 'tooltip-meta-product_brand':
+
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'brand', 'product meta name', 'wpsso' );
 							}
 							// no break - fall through
+
 						case 'tooltip-meta-product_color':
+
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'color', 'product meta name', 'wpsso' );
 							}
 							// no break - fall through
+
 						case 'tooltip-meta-product_condition':
+
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'condition', 'product meta name', 'wpsso' );
 							}
 							// no break - fall through
+
 						case 'tooltip-meta-product_currency':
+
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'currency', 'product meta name', 'wpsso' );
 							}
 							// no break - fall through
+
 						case 'tooltip-meta-product_material':
+
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'material', 'product meta name', 'wpsso' );
 							}
 							// no break - fall through
+
 						case 'tooltip-meta-product_price':
+
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'price', 'product meta name', 'wpsso' );
 							}
 							// no break - fall through
+
 						case 'tooltip-meta-product_size':
+
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'size', 'product meta name', 'wpsso' );
 							}
@@ -159,14 +186,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 	break;	// stop here
 
 						case 'tooltip-meta-og_img_id':
+
 							$text = __( 'A custom image ID to include first, before any featured, attached, or content images.', 'wpsso' );
 						 	break;
 
 						case 'tooltip-meta-og_img_url':
+
 							$text = __( 'A custom image URL (instead of an image ID) to include first, before any featured, attached, or content images.', 'wpsso' ).' '.__( 'Please make sure your custom image is large enough, or it may be ignored by social website(s).', 'wpsso' ).' '.$fb_recommends.' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
 							break;
 
 						case 'tooltip-meta-og_img_max':
+
 							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags.', 'wpsso' ).' '.__( 'There is no advantage in selecting a maximum value greater than 1.', 'wpsso' );
 						 	break;
 
@@ -190,40 +220,50 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_vid_title':
 						case 'tooltip-meta-og_vid_desc':
+
 							$text = sprintf( __( 'The %1$s video API modules include the video name / title and description <em>when available</em>.', 'wpsso' ), $info['name_pro'] ).' '.__( 'The video name / title and description text is used for Schema JSON-LD markup (extension plugin required), which can be read by both Google and Pinterest.', 'wpsso' );
 							break;
 
 						case 'tooltip-meta-og_vid_max':
+
 							$text = __( 'The maximum number of embedded videos to include in the Facebook / Open Graph meta tags.', 'wpsso' ).' '.__( 'There is no advantage in selecting a maximum value greater than 1.', 'wpsso' );
 						 	break;
 
 						case 'tooltip-meta-og_vid_prev_img':
+
 							$text = 'When video preview images are enabled and available, they are included in webpage meta tags before any custom, featured, attached, etc. images.';
 						 	break;
 
 						case 'tooltip-meta-p_img_id':
+
 							$text = __( 'A custom image ID to include first when the Pinterest crawler is detected, before any featured, attached, or content images.', 'wpsso' );
 						 	break;
 
 						case 'tooltip-meta-p_img_url':
+
 							$text = __( 'A custom image URL (instead of an image ID) to include first when the Pinterest crawler is detected.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
 						 	break;
 
 						case 'tooltip-meta-schema_img_id':
+
 							$text = __( 'A custom image ID to include first in the Google / Schema meta tags and JSON-LD markup, before any featured, attached, or content images.', 'wpsso' );
 						 	break;
 
 						case 'tooltip-meta-schema_img_url':
+
 							$text = __( 'A custom image URL (instead of an image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
 						 	break;
 
 						case 'tooltip-meta-schema_img_max':
+
 							$text = __( 'The maximum number of images to include in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' );
 						 	break;
 
 						default:
+
 							$text = apply_filters( $lca.'_messages_tooltip_meta', $text, $idx, $info );
 							break;
+
 					}	// end of tooltip-user switch
 				/**
 				 * Post Meta settings
@@ -467,13 +507,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_p_cap_prefix':
-							$text = sprintf( __( '%s can add a prefix to paragraphs found with the "wp-caption-text" class.',
-								'wpsso' ), $info['short'] ).' '.
-							__( 'Leave this value empty to prevent caption paragraphs from being prefixed.',
-								'wpsso' );
+							$text = sprintf( __( '%s can add a prefix to paragraphs found with the "wp-caption-text" class.', 'wpsso' ), $info['short'] ).' '.__( 'Leave this value empty to prevent caption paragraphs from being prefixed.', 'wpsso' );
 							break;
 
-						case 'tooltip-plugin_embedded_media':
+						case 'tooltip-plugin_embed_media_apis':
 							$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.).', 'wpsso' );
 							break;
 

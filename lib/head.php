@@ -22,6 +22,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
+			add_action( 'wp_head', array( &$this, 'maybe_disable_rel_canonical' ), -1000 );
 			add_action( 'wp_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 			add_action( 'amp_post_template_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
@@ -114,6 +115,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cache_index = apply_filters( $this->p->lca.'_head_cache_index', $cache_index, $mixed, $sharing_url );
 
 			return $cache_index;
+		}
+
+		// called by wp_head action
+		public function maybe_disable_rel_canonical() {
+			if ( ! empty( $this->p->options['add_link_rel_canonical'] ) ) {
+				remove_filter( 'wp_head', 'rel_canonical' );
+			}
 		}
 
 		// called by wp_head action
@@ -754,8 +762,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					}
 				} else {
 					/**
-					 * Encode and escape all values, regardless if the meta tag is enabled or not.
-					 * If the meta tag is enabled, HTML will be created and saved in $parts[0].
+					 * Encode and escape all values, regardless if the head tag is enabled or not.
+					 * If the head tag is enabled, HTML will be created and saved in $parts[0].
 					 */
 					if ( $parts[2] === 'itemprop' && strpos( $parts[3], '.' ) !== 0 ) {
 						$match_name = preg_replace( '/^.*\./', '', $parts[3] );

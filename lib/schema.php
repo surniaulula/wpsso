@@ -3109,7 +3109,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				( empty( $author_desc ) ? array() : $this->p->head->get_single_mt( 'meta', 'itemprop', $itemprop.'.description', $author_desc, '', $user_mod ) )
 			);
 
-			// optimize by first checking if the meta tag is enabled
+			// optimize by first checking if the head tag is enabled
 			if ( ! empty( $this->p->options['add_link_itemprop_author.image'] ) ) {
 
 				// get_og_images() also provides filter hooks for additional image ids and urls

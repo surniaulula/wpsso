@@ -1185,8 +1185,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Note that sanitize_hashtags() truncates tags that start with a number - 
-		 * hashtags cannot start with a number.
+		 * Note that sanitize_hashtags() truncates tags that begin with a number - 
+		 * hashtags cannot begin with a number.
 		 */
 		public static function sanitize_hashtags( $tags = array() ) {
 			return preg_replace( array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ), array( '', '', '#$0' ), $tags );
@@ -1613,22 +1613,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function keys_start_with( $str, array $arr ) {
+		// deprecated 2018/02/11
+		public static function keys_start_with( $str, array $opts ) {
+			return self::get_opts_begin( $str, $opts );
+		}
+
+		public static function get_opts_begin( $str, array $opts ) {
 			$found = array();
-			foreach ( $arr as $key => $value ) {
+			foreach ( $opts as $key => $value ) {
 				if ( strpos( $key, $str ) === 0 ) {
 					$found[$key] = $value;
 				}
 			}
 			return $found;
-		}
-
-		public static function unset_is_option_keys( array &$opts ) {
-			foreach ( $opts as $key => $val ) {
-				if ( preg_match( '/:is$/' ) ) {
-					unset( $opts[$key] );
-				}
-			}
 		}
 
 		/**

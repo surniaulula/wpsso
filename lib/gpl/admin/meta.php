@@ -21,9 +21,9 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'meta_text_rows' => array(
-					'user_text_rows' => 4,
-					'term_text_rows' => 4,
+				'meta_edit_rows' => array(
+					'user_edit_rows' => 4,
+					'term_edit_rows' => 4,
 				),
 				'meta_media_rows' => array(
 					'post_media_rows' => 4,
@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			) );
 		}
 
-		public function filter_meta_text_rows( $table_rows, $form, $head, $mod ) {
+		public function filter_meta_edit_rows( $table_rows, $form, $head, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -78,10 +78,17 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'content' => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),
 				),
 				'sharing_url' => array(
-					'tr_class' => 'hide_in_basic',
+					'tr_class' => $form->get_css_class_hide( 'basic', 'sharing_url' ),
 					'label' => _x( 'Sharing URL', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-sharing_url', 'td_class' => 'blank',
 					'content' => $form->get_no_input_value( $this->p->util->get_sharing_url( $mod, false ), 'wide' ), // $add_page = false
+				),
+				'canonical_url' => array(
+					'tr_class' => ( $this->p->options['add_link_rel_canonical'] ?                      // maybe hide if head tag is enabled
+						$form->get_css_class_hide( 'basic', 'canonical_url' ) : 'hide_in_basic' ), // always hide if head tag is disabled
+					'label' => _x( 'Canonical URL', 'option label', 'wpsso' ),
+					'th_class' => 'medium', 'tooltip' => 'meta-canonical_url', 'td_class' => 'blank',
+					'content' => $form->get_no_input_value( $this->p->util->get_canonical_url( $mod, false ), 'wide' ), // $add_page = false
 				),
 				'subsection_schema' => array(
 					'td_class' => 'subsection', 'header' => 'h4',
