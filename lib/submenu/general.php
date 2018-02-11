@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), '', 'og_title_sep' ).
 					'<td>'.$this->form->get_input( 'og_title_sep', 'short' ).'</td>';
 
-					$table_rows['og_title_len'] = '<tr class="hide_in_basic">'.
+					$table_rows['og_title_len'] = $this->form->get_tr_hide( 'basic', 'og_title_len' ).
 					$this->form->get_th_html( _x( 'Maximum Title Length',
 						'option label', 'wpsso' ), '', 'og_title_len' ).
 					'<td>'.
@@ -125,7 +125,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'</td>';
 
 
-					$table_rows['og_desc_len'] = '<tr class="hide_in_basic">'.
+					$table_rows['og_desc_len'] = $this->form->get_tr_hide( 'basic', 'og_desc_len' ).
 					$this->form->get_th_html( _x( 'Maximum Description Length',
 						'option label', 'wpsso' ), '', 'og_desc_len' ).
 					'<td>'.
@@ -141,12 +141,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						range( 0, $this->p->cf['form']['max_hashtags'] ), 'short', '', true ).' '.
 							_x( 'tag names', 'option comment', 'wpsso' ).'</td>';
 
-					$table_rows['og_page_title_tag'] = '<tr class="hide_in_basic">'.
+					$table_rows['og_page_title_tag'] = $this->form->get_tr_hide( 'basic', 'og_page_title_tag' ).
 					$this->form->get_th_html( _x( 'Add Page Title in Tags / Hashtags',
 						'option label', 'wpsso' ), '', 'og_page_title_tag' ).
 					'<td>'.$this->form->get_checkbox( 'og_page_title_tag' ).'</td>';
 
-					$table_rows['og_page_parent_tags'] = '<tr class="hide_in_basic">'.
+					$table_rows['og_page_parent_tags'] = $this->form->get_tr_hide( 'basic', 'og_page_parent_tags' ).
 					$this->form->get_th_html( _x( 'Add Parent Page Tags / Hashtags',
 						'option label', 'wpsso' ), '', 'og_page_parent_tags' ).
 					'<td>'.$this->form->get_checkbox( 'og_page_parent_tags' ).'</td>';
@@ -159,7 +159,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), '', 'og_author_field' ).
 					'<td>'.$this->form->get_select( 'og_author_field', $user_contacts ).'</td>';
 
-					$table_rows['og_author_fallback'] = '<tr class="hide_in_basic">'.
+					$table_rows['og_author_fallback'] = $this->form->get_tr_hide( 'basic', 'og_author_fallback' ).
 					$this->form->get_th_html( _x( 'Fallback to Author\'s Archive Page',
 						'option label', 'wpsso' ), '', 'og_author_fallback' ).
 					'<td>'.$this->form->get_checkbox( 'og_author_fallback' ).'</td>';
@@ -168,14 +168,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-images':
 
-					$table_rows['og_img_max'] = '<tr class="hide_in_basic">'.
+					$table_rows['og_img_max'] = $this->form->get_tr_hide( 'basic', 'og_img_max' ).
 					$this->form->get_th_html( _x( 'Maximum Images to Include',
 						'option label', 'wpsso' ), '', 'og_img_max' ).
-					'<td>'.$this->form->get_select( 'og_img_max',
-						range( 0, $this->p->cf['form']['max_media_items'] ), 'short', '', true ).
-					( empty( $this->form->options['og_vid_prev_img'] ) ?
-						'' : ' <em>'._x( 'video preview images are enabled (and included first)',
-							'option comment', 'wpsso' ).'</em>' ).'</td>';
+					'<td>'.$this->form->get_select( 'og_img_max', range( 0, $this->p->cf['form']['max_media_items'] ), 'short', '', true ).(
+						empty( $this->form->options['og_vid_prev_img'] ) ?
+							'' : ' <em>'._x( 'video preview images are enabled (and included first)', 'option comment', 'wpsso' ).'</em>' 
+					).'</td>';
 
 					$table_rows['og_img'] = $this->form->get_th_html( _x( 'Open Graph Image Dimensions',
 						'option label', 'wpsso' ), '', 'og_img_dimensions' ).
@@ -189,18 +188,18 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), '', 'og_def_img_url' ).
 					'<td>'.$this->form->get_input_image_url( 'og_def_img' ).'</td>';
 
-					$table_rows['og_def_img_on_index'] = '<tr class="hide_in_basic">'.
+					$table_rows['og_def_img_on_index'] = $this->form->get_tr_hide( 'basic', 'og_def_img_on_index' ).
 					$this->form->get_th_html( _x( 'Use Default Image on Archive',
 						'option label', 'wpsso' ), '', 'og_def_img_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_index' ).'</td>';
 
-					$table_rows['og_def_img_on_search'] = '<tr class="hide_in_basic">'.
+					$table_rows['og_def_img_on_search'] = $this->form->get_tr_hide( 'basic', 'og_def_img_on_search' ).
 					$this->form->get_th_html( _x( 'Use Default Image on Search Results',
 						'option label', 'wpsso' ), '', 'og_def_img_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_search' ).'</td>';
 
 					if ( true === $this->p->avail['media']['ngg'] ) {
-						$table_rows['og_ngg_tags'] = '<tr class="hide_in_basic">'.
+						$table_rows['og_ngg_tags'] = $this->form->get_tr_hide( 'basic', 'og_ngg_tags' ).
 						$this->form->get_th_html( _x( 'Add Tags from NGG Featured Image',
 							'option label', 'wpsso' ), '', 'og_ngg_tags' ).
 						'<td>'.$this->form->get_checkbox( 'og_ngg_tags' ).'</td>';
@@ -227,15 +226,16 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'option label', 'wpsso' ), '', 'fb_admins' ).
 					'<td>'.$this->form->get_input( 'fb_admins' ).'</td>';
 
-					$table_rows['fb_author_name'] = '<tr class="hide_in_basic">'.
+					$table_rows['fb_author_name'] = $this->form->get_tr_hide( 'basic', 'fb_author_name' ).
 					$this->form->get_th_html( _x( 'Author Name Format',
 						'option label', 'wpsso' ), '', 'fb_author_name' ).
 					'<td>'.$this->form->get_select( 'fb_author_name',
 						$this->p->cf['form']['user_name_fields'] ).'</td>';
 
-					$fb_pub_lang = SucomUtil::get_pub_lang( 'facebook' );
+					$fb_pub_lang   = SucomUtil::get_pub_lang( 'facebook' );
 					$fb_locale_key = SucomUtil::get_key_locale( 'fb_locale', $this->p->options );
-					$table_rows['fb_locale'] = '<tr class="hide_in_basic">'.
+
+					$table_rows['fb_locale'] = $this->form->get_tr_hide( 'basic', $fb_locale_key ).
 					$this->form->get_th_html( _x( 'Custom Facebook Locale',
 						'option label', 'wpsso' ), '', 'fb_locale', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_select( $fb_locale_key, $fb_pub_lang ).'</td>';
@@ -249,13 +249,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'seo_publisher_url',
 						$this->p->options ), 'wide' ).'</td>';
 
-					$table_rows['seo_desc_len'] = '<tr class="hide_in_basic">'.
+					$table_rows['seo_desc_len'] = $this->form->get_tr_hide( 'basic', 'seo_desc_len' ).
 					$this->form->get_th_html( _x( 'Search / SEO Description Length',
 						'option label', 'wpsso' ), '', 'seo_desc_len' ).
 					'<td>'.$this->form->get_input( 'seo_desc_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
-					$table_rows['seo_author_field'] = '<tr class="hide_in_basic">'.
+					$table_rows['seo_author_field'] = $this->form->get_tr_hide( 'basic', 'seo_author_field' ).
 					$this->form->get_th_html( _x( 'Author Link URL Profile Contact',
 						'option label', 'wpsso' ), '', 'seo_author_field' ).
 					'<td>'.$this->form->get_select( 'seo_author_field', $user_contacts ).'</td>';
@@ -267,7 +267,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$noscript_comment_transl = _x( 'option disabled by extension plugin or custom filter', 'option comment', 'wpsso' );
 
 					if ( ! $noscript_disabled ) {
-						$table_rows['schema_add_noscript'] = '<tr class="hide_in_basic">'.
+						$table_rows['schema_add_noscript'] = $this->form->get_tr_hide( 'basic', 'schema_add_noscript' ).
 						$this->form->get_th_html( _x( 'Meta Property Containers',
 							'option label', 'wpsso' ), '', 'schema_add_noscript' ).
 						'<td>'.( $noscript_disabled ? $this->form->get_no_checkbox( 'schema_add_noscript', '', '', 0 ).
@@ -289,12 +289,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'p_publisher_url',
 						$this->p->options ), 'wide' ).'</td>';
 
-					$table_rows['p_dom_verify'] = '<tr class="hide_in_basic">'.
+					$table_rows['p_dom_verify'] = $this->form->get_tr_hide( 'basic', 'p_dom_verify' ).
 					$this->form->get_th_html( _x( 'Pinterest Verification ID',
 						'option label', 'wpsso' ), '', 'p_dom_verify' ).
 					'<td>'.$this->form->get_input( 'p_dom_verify', 'api_key' ).'</td>';
 
-					$table_rows['p_author_name'] = '<tr class="hide_in_basic">'.
+					$table_rows['p_author_name'] = $this->form->get_tr_hide( 'basic', 'p_author_name' ).
 					$this->form->get_th_html( _x( 'Author Name Format',
 						'option label', 'wpsso' ), '', 'p_author_name' ).
 					'<td>'.$this->form->get_select( 'p_author_name',
@@ -326,18 +326,18 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'tc_site',
 						$this->p->options ) ).'</td>';
 
-					$table_rows['tc_desc_len'] = '<tr class="hide_in_basic">'.
+					$table_rows['tc_desc_len'] = $this->form->get_tr_hide( 'basic', 'tc_desc_len' ).
 					$this->form->get_th_html( _x( 'Maximum Description Length',
 						'option label', 'wpsso' ), '', 'tc_desc_len' ).
 					'<td>'.$this->form->get_input( 'tc_desc_len', 'short' ).' '.
 						_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
-					$table_rows['tc_type_singular'] = '<tr class="hide_in_basic">'.
+					$table_rows['tc_type_singular'] = $this->form->get_tr_hide( 'basic', 'tc_type_post' ).
 					$this->form->get_th_html( _x( 'Twitter Card for Post / Page Image',
 						'option label', 'wpsso' ), '', 'tc_type_post' ).
 					'<td>'.$this->form->get_select( 'tc_type_post', $tc_types ).'</td>';
 
-					$table_rows['tc_type_default'] = '<tr class="hide_in_basic">'.
+					$table_rows['tc_type_default'] = $this->form->get_tr_hide( 'basic', 'tc_type_default' ).
 					$this->form->get_th_html( _x( 'Twitter Card Type by Default',
 						'option label', 'wpsso' ), '', 'tc_type_default' ).
 					'<td>'.$this->form->get_select( 'tc_type_default', $tc_types ).'</td>';

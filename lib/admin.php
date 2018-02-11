@@ -2221,11 +2221,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'option label', 'wpsso' ), '', 'schema_banner_url', array( 'is_locale' => true ) ).
 			'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ).'</td>';
 
-			$table_rows['schema_img_max'] = '<tr class="hide_in_basic">'.
-				$this->form->get_th_html( _x( 'Maximum Images to Include',
-				'option label', 'wpsso' ), '', 'schema_img_max' ).
-			'<td>'.$this->form->get_select( 'schema_img_max', 
-				range( 0, $this->p->cf['form']['max_media_items'] ), 'short', '', true ).
+			$table_rows['schema_img_max'] = $this->form->get_tr_hide( 'basic', 'schema_img_max' ).
+			$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ).
+			'<td>'.$this->form->get_select( 'schema_img_max', range( 0, $this->p->cf['form']['max_media_items'] ), 'short', '', true ).
 			( empty( $this->form->options['og_vid_prev_img'] ) ?
 				'' : ' <em>'._x( 'video preview images are enabled (and included first)',
 					'option comment', 'wpsso' ).'</em>' ).'</td>';
@@ -2234,17 +2232,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'option label', 'wpsso' ), '', 'schema_img_dimensions' ).
 			'<td>'.$this->form->get_input_image_dimensions( 'schema_img' ).'</td>';	// $use_opts = false
 
-			$table_rows['schema_desc_len'] = '<tr class="hide_in_basic">'.
-			$this->form->get_th_html( _x( 'Maximum Description Length',
-				'option label', 'wpsso' ), '', 'schema_desc_len' ).
-			'<td>'.$this->form->get_input( 'schema_desc_len', 'short' ).' '.
-				_x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
+			$table_rows['schema_desc_len'] = $this->form->get_tr_hide( 'basic', 'schema_desc_len' ).
+			$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_len' ).
+			'<td>'.$this->form->get_input( 'schema_desc_len', 'short' ).' '._x( 'characters or less', 'option comment', 'wpsso' ).'</td>';
 
-			$table_rows['schema_author_name'] = '<tr class="hide_in_basic">'.
-			$this->form->get_th_html( _x( 'Author / Person Name Format',
-				'option label', 'wpsso' ), '', 'schema_author_name' ).
-			'<td>'.$this->form->get_select( 'schema_author_name', 
-				$this->p->cf['form']['user_name_fields'] ).'</td>';
+			$table_rows['schema_author_name'] = $this->form->get_tr_hide( 'basic', 'schema_author_name' ).
+			$this->form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), '', 'schema_author_name' ).
+			'<td>'.$this->form->get_select( 'schema_author_name', $this->p->cf['form']['user_name_fields'] ).'</td>';
 		}
 
 		// called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes
@@ -2287,7 +2281,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows[$opt_key] = '<tr'.( empty( $tr_class ) ? '' : ' class="'.$tr_class.'"' ).'>'.
 			$this->form->get_th_html( $type_label, '', $opt_key ).
 			'<td>'.$select_by_ptn.'</td>';
-
 		}
 
 		// called from the WpssoSubmenuEssential, WpssoSubmenuGeneral, and WpssoJsonSubmenuSchemaJsonLd classes
@@ -2344,17 +2337,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			self::get_option_site_use( 'plugin_show_opts', $this->form, $network, true );
 
 			if ( ! empty( $this->p->cf['*']['lib']['shortcode'] ) ) {
-				$table_rows['plugin_shortcodes'] = '<tr class="hide_in_basic">'.
-				$this->form->get_th_html( _x( 'Enable Plugin Shortcode(s)',
-					'option label', 'wpsso' ), '', 'plugin_shortcodes' ).
+				$table_rows['plugin_shortcodes'] = $this->form->get_tr_hide( 'basic', 'plugin_shortcodes' ).
+				$this->form->get_th_html( _x( 'Enable Plugin Shortcode(s)', 'option label', 'wpsso' ), '', 'plugin_shortcodes' ).
 				'<td>'.$this->form->get_checkbox( 'plugin_shortcodes' ).'</td>'.
 				self::get_option_site_use( 'plugin_shortcodes', $this->form, $network, true );
 			}
 
 			if ( ! empty( $this->p->cf['*']['lib']['widget'] ) ) {
-				$table_rows['plugin_widgets'] = '<tr class="hide_in_basic">'.
-				$this->form->get_th_html( _x( 'Enable Plugin Widget(s)',
-					'option label', 'wpsso' ), '', 'plugin_widgets' ).
+				$table_rows['plugin_widgets'] = $this->form->get_tr_hide( 'basic', 'plugin_widgets' ).
+				$this->form->get_th_html( _x( 'Enable Plugin Widget(s)', 'option label', 'wpsso' ), '', 'plugin_widgets' ).
 				'<td>'.$this->form->get_checkbox( 'plugin_widgets' ).'</td>'.
 				self::get_option_site_use( 'plugin_widgets', $this->form, $network, true );
 			}

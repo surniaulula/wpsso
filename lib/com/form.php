@@ -1308,6 +1308,39 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return self::$class_cache[$key];
 			}
 		}
+
+		public function get_tr_hide( $in_view = 'basic', $opt_key = '' ) {
+
+			$tr_hide_opt = '<tr class="hide_in_' . $in_view . '">';
+
+			if ( empty( $opt_key ) ) {
+
+				return $tr_hide_opt;
+
+			} elseif ( ! isset( $this->options[$opt_key] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'missing options key for ' . $opt_key );
+				}
+
+				return $tr_hide_opt;
+
+			} elseif ( ! isset( $this->defaults[$opt_key] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'missing defaults key for ' . $opt_key );
+				}
+
+				return $tr_hide_opt;
+
+			} elseif ( $this->options[$opt_key] === $this->defaults[$opt_key] ) {
+
+				return $tr_hide_opt;
+
+			} else {
+				return '';
+			}
+		}
 	}
 }
 

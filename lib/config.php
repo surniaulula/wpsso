@@ -592,7 +592,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_add_home_organization' => 1,
 					'schema_add_home_person' => 0,
 					'schema_add_home_website' => 1,
-					'schema_home_person_id' => '',
+					'schema_home_person_id' => 'none',
 					'schema_logo_url' => '',
 					'schema_banner_url' => '',
 					'schema_img_max' => 1,
