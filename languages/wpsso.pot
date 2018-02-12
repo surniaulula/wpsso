@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.53.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 3.53.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -558,12 +558,12 @@ msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
 
-#: lib/admin.php:2236 lib/submenu/general.php:128 lib/submenu/general.php:311
+#: lib/admin.php:2236 lib/submenu/general.php:128 lib/submenu/general.php:317
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
 
-#: lib/admin.php:2237 lib/submenu/general.php:242 lib/submenu/general.php:313
+#: lib/admin.php:2237 lib/submenu/general.php:242 lib/submenu/general.php:319
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
@@ -573,98 +573,98 @@ msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2254
+#: lib/admin.php:2252
 msgctxt "option label"
 msgid "Item Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:2255
+#: lib/admin.php:2253
 msgctxt "option label"
 msgid "Item Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:2256
+#: lib/admin.php:2254
 msgctxt "option label"
 msgid "Item Type for Archive Page"
 msgstr ""
 
-#: lib/admin.php:2257
+#: lib/admin.php:2255
 msgctxt "option label"
 msgid "Item Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:2258
+#: lib/admin.php:2256
 msgctxt "option label"
 msgid "Item Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:2276
+#: lib/admin.php:2280
 msgctxt "option label"
 msgid "Item Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:2289
+#: lib/admin.php:2293
 msgctxt "option label"
 msgid "Knowledge Graph for Home Page"
 msgstr ""
 
-#: lib/admin.php:2293
+#: lib/admin.php:2297
 msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr ""
 
-#: lib/admin.php:2296
+#: lib/admin.php:2300
 msgid "Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr ""
 
-#: lib/admin.php:2299
+#: lib/admin.php:2303
 msgid "Include <a href=\"%s\">Person Social Profile</a> for the Site Owner"
 msgstr ""
 
-#: lib/admin.php:2305
+#: lib/admin.php:2309
 msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:2313
+#: lib/admin.php:2317
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2318
+#: lib/admin.php:2322
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2326
+#: lib/admin.php:2330
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:2334
+#: lib/admin.php:2338
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:2341
+#: lib/admin.php:2345
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/admin.php:2348
+#: lib/admin.php:2352
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/admin.php:2356
+#: lib/admin.php:2360
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2496
+#: lib/admin.php:2500
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2516
+#: lib/admin.php:2520
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
@@ -3471,7 +3471,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:926 lib/messages.php:1008 lib/messages.php:1106
-#: lib/submenu/general.php:220 lib/submenu/general.php:281
+#: lib/submenu/general.php:220 lib/submenu/general.php:287
 msgctxt "option label"
 msgid "Author Name Format"
 msgstr ""
@@ -4993,7 +4993,7 @@ msgctxt "metabox title"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:129 lib/submenu/general.php:272
+#: lib/submenu/essential.php:129 lib/submenu/general.php:278
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
@@ -5003,7 +5003,7 @@ msgctxt "metabox title"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/essential.php:136 lib/submenu/general.php:306
+#: lib/submenu/essential.php:136 lib/submenu/general.php:312
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -5138,52 +5138,52 @@ msgctxt "option comment"
 msgid "option disabled by extension plugin or custom filter"
 msgstr ""
 
-#: lib/submenu/general.php:277
+#: lib/submenu/general.php:283
 msgctxt "option label"
 msgid "Pinterest Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:285
+#: lib/submenu/general.php:291
 msgctxt "option label"
 msgid "Add Hidden Image for Pin It Button"
 msgstr ""
 
-#: lib/submenu/general.php:289
+#: lib/submenu/general.php:295
 msgctxt "option label"
 msgid "Add \"nopin\" to Header Image Tag"
 msgstr ""
 
-#: lib/submenu/general.php:293
+#: lib/submenu/general.php:299
 msgctxt "option label"
 msgid "Add \"nopin\" to Media Lib Images"
 msgstr ""
 
-#: lib/submenu/general.php:301
+#: lib/submenu/general.php:307
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:302
+#: lib/submenu/general.php:308
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:316
+#: lib/submenu/general.php:322
 msgctxt "option label"
 msgid "Twitter Card for Post / Page Image"
 msgstr ""
 
-#: lib/submenu/general.php:320
+#: lib/submenu/general.php:326
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:324
+#: lib/submenu/general.php:330
 msgctxt "option label"
 msgid "<em>Summary</em> Card Image Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:328
+#: lib/submenu/general.php:334
 msgctxt "option label"
 msgid "<em>Large Image</em> Card Img Dimensions"
 msgstr ""

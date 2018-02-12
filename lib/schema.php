@@ -231,7 +231,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					return $value;
 
-				} elseif ( $use_mod_opts ) {	// check for a column schema_type value in wp_cache
+				} elseif ( is_object( $mod['obj'] ) && $use_mod_opts ) {	// check for a column schema_type value in wp_cache
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'checking for value from column wp_cache' );

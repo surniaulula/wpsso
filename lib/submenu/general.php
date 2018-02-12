@@ -262,7 +262,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$this->add_schema_item_props_table_rows( $table_rows );
 
-					$this->add_schema_item_types_table_rows( $table_rows, 'hide_in_basic' );	// hide all in basic view
+					// hide all options in basic view by default
+					$this->add_schema_item_types_table_rows( $table_rows, array(
+						'schema_type_for_archive_page' => 'basic',
+						'schema_type_for_user_page' => 'basic',
+						'schema_type_for_search_page' => 'basic',
+						'schema_type_for_ptn' => 'basic',
+					) );
 
 					break;
 

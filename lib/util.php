@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			static $local_cache = array(); // Get image size for a given URL only once.
+			static $local_cache = array(); // Optimize and get image size for a given URL only once.
 
 			if ( isset( $local_cache[$image_url] ) ) {
 				if ( $this->p->debug->enabled ) {

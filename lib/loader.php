@@ -46,74 +46,107 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$this->p->debug->mark( 'load modules' );	// begin timer
 				if ( $has_action ) {
 					$this->p->debug->log( 'loading modules for action '.$has_action );
+				} else {
+					$this->p->debug->log( 'no action provided to filter module keys' );
 				}
 			}
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+
 				$type = $this->p->check->aop( $this->p->cf['lca'], true, $this->p->avail['*']['p_dir'] ) &&
 					$this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? 'pro' : 'gpl';
+
 				if ( ! isset( $info['lib'][$type] ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $ext.' lib/'.$type.' not defined' );
 					}
 					continue;
 				}
+
 				foreach ( $info['lib'][$type] as $sub => $libs ) {
-					$log_pre = 'loading '.$ext.' '.$type.'/'.$sub.': ';
+
+					$log_prefix = 'loading '.$ext.' '.$type.'/'.$sub.': ';
+
 					if ( $sub === 'admin' ) {
 						if ( ! is_admin() ) {	// load admin sub-folder only in back-end
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $log_pre.'ignored - not in admin back-end' );
+								$this->p->debug->log( $log_prefix.'ignored - not in admin back-end' );
 							}
 							continue;
 						} elseif ( $type === 'gpl' && ! empty( $this->p->options['plugin_hide_pro'] ) ) {
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $log_pre.'ignored - pro features hidden' );
+								$this->p->debug->log( $log_prefix.'ignored - pro features hidden' );
 							}
 							continue;
 						}
 					}
-					foreach ( $libs as $id_key => $label ) {
+
+					foreach ( $libs as $lib_name => $lib_label ) {
+
 						/**
 						 * Example:
 						 *	'article' => 'Item Type Article',
 						 *	'article#news:no_load' => 'Item Type NewsArticle',
 						 *	'article#tech:no_load' => 'Item Type TechArticle',
 						 */
-						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
-						$log_pre = 'loading '.$ext.' '.$type.'/'.$sub.'/'.$id.': ';
+						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $lib_name );
+
+						$log_prefix = 'loading '.$ext.' '.$type.'/'.$sub.'/'.$id.': ';
+
 						if ( $this->p->avail[$sub][$id] ) {
-							// compare $action from lib id with $has_action method argument
-							// this is usually / almost always a false === false comparison
+
+							/**
+							 * Compare $action from library id with $has_action method argument.
+							 * This is usually / almost always a false === false comparison.
+							 */
 							if ( $action !== $has_action ) {
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( $log_pre.'ignored for action '.$has_action );
+									$this->p->debug->log( $log_prefix.'ignored for action '.$has_action );
 								}
 								continue;
 							}
-							$classname = apply_filters( $ext.'_load_lib', false, "$type/$sub/$id" );
+
+							$lib_path = $type.'/'.$sub.'/'.$id;
+							$classname = apply_filters( $ext.'_load_lib', false, $lib_path );
+
 							if ( is_string( $classname ) ) {
+
 								if ( class_exists( $classname ) ) {
-									if ( $this->p->debug->enabled )
-										$this->p->debug->log( $log_pre.'class '.$classname.' for '.$label );
+
 									if ( $ext === $this->p->cf['lca'] ) {
+										if ( $this->p->debug->enabled ) {
+											$this->p->debug->log( $log_prefix.'new library module for '.$classname );
+										}
 										if ( ! isset( $this->p->m[$sub][$id] ) ) {
 											$this->p->m[$sub][$id] = new $classname( $this->p );
 										} elseif ( $this->p->debug->enabled ) {
-											$this->p->debug->log( $log_pre.'module already defined' );
+											$this->p->debug->log( $log_prefix.'library module already defined' );
 										}
 									} elseif ( ! isset( $this->p->m_ext[$ext][$sub][$id] ) ) {
 										$this->p->m_ext[$ext][$sub][$id] = new $classname( $this->p );
-									} elseif ( $this->p->debug->enabled )
-										$this->p->debug->log( $log_pre.'extension module already defined' );
-								} elseif ( $this->p->debug->enabled ) {
-									$this->p->debug->log( $log_pre.'class '.$classname.' does not exist' );
+									} elseif ( $this->p->debug->enabled ) {
+										$this->p->debug->log( $log_prefix.'library ext module already defined' );
+									}
+
+								} else {
+
+									trigger_error( $info['short'].' error: library class '.$classname.' is missing.', E_USER_ERROR );
+
+									if ( $this->p->debug->enabled ) {
+										$this->p->debug->log( $log_prefix.'library class '.$classname.' is missing' );
+									}
 								}
-							} elseif ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $log_pre.'lib file not found' );
+							} else {
+
+								trigger_error( $info['short'].' error: '.$lib_path.' library file not found.', E_USER_ERROR );
+
+								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( $log_prefix.$lib_path.' library file not found' );
+								}
 							}
+
 						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $log_pre.'avail is false' );
+							$this->p->debug->log( $log_prefix.'avail is false' );
 						}
 					}
 				}

@@ -1330,20 +1330,24 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$opt_keys = array_keys( $opt_keys );
 			}
 
-			foreach ( $opt_keys as $idx ) {
-				if ( empty( $idx ) ) {
+			foreach ( $opt_keys as $idx_locale ) {
+
+				$idx_default = strpos( $idx_locale, '#' ) !== false ? 
+					preg_replace( '/#.*$/', '', $idx_locale ) : $idx_locale;
+
+				if ( empty( $idx_default ) ) {
 					continue;
-				} elseif ( ! isset( $this->options[$idx] ) ) {
+				} elseif ( ! isset( $this->options[$idx_locale] ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'missing options key for ' . $idx );
+						$this->p->debug->log( 'missing options key for ' . $idx_locale );
 					}
 					continue;
-				} elseif ( ! isset( $this->defaults[$idx] ) ) {
+				} elseif ( ! isset( $this->defaults[$idx_default] ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'missing defaults key for ' . $idx );
+						$this->p->debug->log( 'missing defaults key for ' . $idx_default );
 					}
 					continue;
-				} elseif ( $this->options[$idx] !== $this->defaults[$idx] ) {
+				} elseif ( $this->options[$idx_locale] !== $this->defaults[$idx_default] ) {
 					return '';
 				}
 			}
