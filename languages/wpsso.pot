@@ -2773,7 +2773,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:463 lib/util.php:2155
+#: lib/messages.php:463 lib/util.php:2169
 msgid "No options available."
 msgstr ""
 
@@ -4735,27 +4735,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:1879
+#: lib/schema.php:1895
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2377
+#: lib/schema.php:2393
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2410
+#: lib/schema.php:2426
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2412
+#: lib/schema.php:2428
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2635
+#: lib/schema.php:2651
 msgid "adding schema for place"
 msgstr ""
 
@@ -5269,7 +5269,7 @@ msgid ""
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1936
+#: lib/util.php:1950
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.2f "
@@ -5278,34 +5278,34 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:1936
+#: lib/util.php:1950
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2182
+#: lib/util.php:2196
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2186
+#: lib/util.php:2200
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2189
+#: lib/util.php:2203
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2193
+#: lib/util.php:2207
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2312
+#: lib/util.php:2326
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""

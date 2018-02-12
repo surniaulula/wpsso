@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									$this->p->debug->log( $log_pre.'class '.$classname.' does not exist' );
 								}
 							} elseif ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $log_pre.'invalid classname from filter' );
+								$this->p->debug->log( $log_pre.'lib file not found' );
 							}
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre.'avail is false' );

@@ -1310,7 +1310,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			// check for a recognized object
 			if ( is_object( $wp_obj ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'wp_obj is '.get_class( $wp_obj ) );
+					$this->p->debug->log( 'wp_obj argument is '.get_class( $wp_obj ).' object' );
 				}
 				switch ( get_class( $wp_obj ) ) {
 					case 'WP_Post':
@@ -1331,10 +1331,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			// we need a module name to get the id and object
 			if ( empty( $mod['name'] ) ) {
 				if ( self::is_post_page( $use_post ) ) {	// $use_post = true | false | post_id 
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'is_post_page is true' );
+					}
 					$mod['name'] = 'post';
 				} elseif ( self::is_term_page() ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'is_term_page is true' );
+					}
 					$mod['name'] = 'term';
 				} elseif ( self::is_user_page() ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'is_user_page is true' );
+					}
 					$mod['name'] = 'user';
 				} else {
 					$mod['name'] = false;
@@ -1354,8 +1363,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( isset( $this->p->m['util'][$mod['name']] ) ) {	// make sure we have a complete $mod array
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'getting $mod array from '.$mod['name'].' module object' );
+				}
 				$mod = $this->p->m['util'][$mod['name']]->get_mod( $mod['id'] );
 			} else {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $mod['name'].' object is unknown - merging $mod defaults' );
+				}
 				$mod = array_merge( WpssoMeta::$mod_defaults, $mod );
 			}
 
@@ -1841,8 +1856,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			global $post;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'saving the original post object '.
-					( isset( $post->ID ) ? 'id '.$post->ID : '(no post id)' ) );
+				$this->p->debug->log( 'saving the original post object '.( isset( $post->ID ) ? 'id '.$post->ID : '(no post id)' ) );
 			}
 
 			$post_obj_pre_filter = $post;	// save the original global post object

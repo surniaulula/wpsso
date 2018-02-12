@@ -145,6 +145,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
+
 			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 
 			$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
@@ -218,21 +219,32 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			// optimize and cache post/term/user schema type values
 			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) ) {
+
 				if ( isset( $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts] ) ) {
+
 					$value =& $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts];
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'returning local cache value ('.$value.') for '.
 							$mod['name'].'/'.$mod['id'].'/'.$get_id.'/'.$use_mod_opts );
 					}
+
 					return $value;
+
 				} elseif ( $use_mod_opts ) {	// check for a column schema_type value in wp_cache
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'checking for value from column wp_cache' );
 					}
+
 					$value = $mod['obj']->get_column_wp_cache( $mod, $this->p->lca.'_schema_type' );	// returns empty string if no value found
+
 					if ( ! empty( $value ) ) {
+
 						if ( ! $get_id && $value !== 'none' ) {	// return the url value instead
+
 							$schema_types = $this->get_schema_types_array( true );	// $flatten = true
+
 							if ( ! empty( $schema_types[$value] ) ) {
 								$value = $schema_types[$value];
 							} else {
@@ -242,16 +254,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								$value = '';
 							}
 						}
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'returning column wp_cache value ('.$value.') for '.
 								$mod['name'].'/'.$mod['id'].'/'.$get_id.'/'.$use_mod_opts );
 						}
+
 						return $local_cache[$mod['name']][$mod['id']][$get_id][$use_mod_opts] = $value;
 					}
 				}
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'no value found in local cache or column wp_cache' );
 				}
+
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'skipping cache check: mod name and/or id value is empty' );
 			}
