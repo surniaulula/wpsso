@@ -953,9 +953,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'organization schema type id is '.$site_org_type_id );
 				}
 
-				$page_type_ids['website'] = $this->p->options['schema_add_home_website'];
-				$page_type_ids[$site_org_type_id] = $this->p->options['schema_add_home_organization'];
-				$page_type_ids['person'] = $this->p->options['schema_add_home_person'];
+				$page_type_ids['website'] = isset( $this->p->options['schema_add_home_website'] ) ?
+					$this->p->options['schema_add_home_website'] : 1;
+
+				$page_type_ids[$site_org_type_id] = isset( $this->p->options['schema_add_home_organization'] ) ?
+					$this->p->options['schema_add_home_organization'] : 1;
+
+				$page_type_ids['person'] = isset( $this->p->options['schema_add_home_person'] ) ?
+					$this->p->options['schema_add_home_person'] : 0;
 			}
 
 			/**

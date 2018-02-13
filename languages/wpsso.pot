@@ -4735,27 +4735,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:1895
+#: lib/schema.php:1900
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2393
+#: lib/schema.php:2398
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2426
+#: lib/schema.php:2431
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2428
+#: lib/schema.php:2433
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2651
+#: lib/schema.php:2656
 msgid "adding schema for place"
 msgstr ""
 
