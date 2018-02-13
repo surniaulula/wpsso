@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'content' => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
 				),
 				'seo_desc' => array(
-					'tr_class' => ( $this->p->options['add_meta_name_description'] ? '' : 'hide_in_basic' ),
+					'tr_class' => ( $this->p->options['add_meta_name_description'] ? '' : 'hide_in_basic' ), // always hide if head tag is disabled
 					'label' => _x( 'Google Search / SEO Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ),
@@ -129,103 +129,123 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'td_class' => 'subsection top', 'header' => 'h4',
 				'label' => _x( 'All Social WebSites / Open Graph', 'metabox title', 'wpsso' )
 			);
+
 			$form_rows['subsection_priority_image'] = array(
 				'header' => 'h5',
 				'label' => _x( 'Priority Image Information', 'metabox title', 'wpsso' )
 			);
+
 			$form_rows['og_img_dimensions'] = array(
-				'tr_class' => 'hide_in_basic',
+				'tr_class' => $form->get_css_class_hide_img_dim( 'basic', 'og_img' ),
 				'label' => _x( 'Image Dimensions', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'og_img_dimensions', 'td_class' => 'blank',
 				'content' => $form->get_no_input_image_dimensions( 'og_img', true ),	// $use_opts = true
 			);
+
 			$form_rows['og_img_id'] = array(
 				'label' => _x( 'Image ID', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-og_img_id', 'td_class' => 'blank',
 				'content' => $form->get_no_input_image_upload( 'og_img', $media_info['pid'], true ),
 			);
+
 			$form_rows['og_img_url'] = array(
 				'label' => _x( 'or an Image URL', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-og_img_url', 'td_class' => 'blank',
 				'content' => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
 			);
+
 			if ( $mod['is_post'] ) {
 				$form_rows['og_img_max'] = array(
-					'tr_class' => 'hide_in_basic',
+					'tr_class' => $form->get_css_class_hide( 'basic', 'og_img_max' ),
 					'label' => _x( 'Maximum Images', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-og_img_max', 'td_class' => 'blank',
 					'content' => $form->get_no_select( 'og_img_max', range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
 				);
 			}
+
 			$form_rows['subsection_priority_video'] = array(
 				'header' => 'h5',
 				'label' => _x( 'Priority Video Information', 'metabox title', 'wpsso' )
 			);
+
 			$form_rows['og_vid_embed'] = array(
 				'label' => _x( 'Video Embed HTML', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-og_vid_embed', 'td_class' => 'blank',
 				'content' => $form->get_no_textarea_value( '' ),
 			);
+
 			$form_rows['og_vid_url'] = array(
 				'label' => _x( 'or a Video URL', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-og_vid_url', 'td_class' => 'blank',
 				'content' => $form->get_no_input_value( '', 'wide' ),
 			);
+
 			$form_rows['og_vid_title'] = array(
-				'tr_class' => 'hide_in_basic',
+				'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_title' ),
 				'label' => _x( 'Video Name / Title', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-og_vid_title', 'td_class' => 'blank',
 				'content' => $form->get_no_input_value( '', 'wide' ),
 			);
+
 			$form_rows['og_vid_desc'] = array(
-				'tr_class' => 'hide_in_basic',
+				'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_desc' ),
 				'label' => _x( 'Video Description', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-og_vid_desc', 'td_class' => 'blank',
 				'content' => $form->get_no_input_value( '', 'wide' ),
 			);
+
 			if ( $mod['is_post'] ) {
 				$form_rows['og_vid_max'] = array(
-					'tr_class' => 'hide_in_basic',
+					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_max' ),
 					'label' => _x( 'Maximum Videos', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-og_vid_max', 'td_class' => 'blank',
 					'content' => $form->get_no_select( 'og_vid_max', range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
 				);
 			}
+
 			$form_rows['og_vid_prev_img'] = array(
-				'tr_class' => 'hide_in_basic',
+				'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_prev_img' ),
 				'label' => _x( 'Include Preview Images', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-og_vid_prev_img', 'td_class' => 'blank',
 				'content' => $form->get_no_checkbox( 'og_vid_prev_img' ),
 			);
 
-			$media_info = $this->p->og->get_media_info( $this->p->cf['lca'].'-schema', array( 'pid', 'img_url' ), $mod, 'og', 'og', $head );
+			$media_info = $this->p->og->get_media_info( $this->p->cf['lca'].'-schema', 
+				array( 'pid', 'img_url' ), $mod, 'og', 'og', $head );
 	
+			// hide by default unless a schema image has been defined
+			$schema_tr_class = $form->in_options( '/^schema_img_/', true ) ? '' : 'hide_in_basic';
+
 			$form_rows['subsection_schema'] = array(
-				'tr_class' => 'hide_in_basic',
+				'tr_class' => $schema_tr_class,
 				'td_class' => 'subsection', 'header' => 'h4',
 				'label' => _x( 'Structured Data / Schema Markup / Pinterest', 'metabox title', 'wpsso' )
 			);
+
 			$form_rows['schema_img_dimensions'] = array(
-				'tr_class' => 'hide_in_basic',
+				'tr_class' => $form->get_css_class_hide_img_dim( 'basic', 'schema_img' ),
 				'label' => _x( 'Image Dimensions', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'schema_img_dimensions', 'td_class' => 'blank',
 				'content' => $form->get_no_input_image_dimensions( 'schema_img', true ),	// $use_opts = true
 			);
+
 			$form_rows['schema_img_id'] = array(
-				'tr_class' => 'hide_in_basic',
+				'tr_class' => $schema_tr_class,
 				'label' => _x( 'Image ID', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-schema_img_id', 'td_class' => 'blank',
 				'content' => $form->get_no_input_image_upload( 'schema_img', $media_info['pid'], true ),
 			);
+
 			$form_rows['schema_img_url'] = array(
-				'tr_class' => 'hide_in_basic',
+				'tr_class' => $schema_tr_class,
 				'label' => _x( 'or an Image URL', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-schema_img_url', 'td_class' => 'blank',
 				'content' => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
 			);
+
 			if ( $mod['is_post'] ) {
 				$form_rows['schema_img_max'] = array(
-					'tr_class' => 'hide_in_basic',
+					'tr_class' => $form->get_css_class_hide( 'basic', 'schema_img_max' ),
 					'label' => _x( 'Maximum Images', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-schema_img_max', 'td_class' => 'blank',
 					'content' => $form->get_no_select( 'schema_img_max', range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),

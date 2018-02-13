@@ -1318,6 +1318,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
 
+		public function get_css_class_hide_img_dim( $in_view = 'basic', $opt_prefix ) {
+			foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $opt_key ) {
+				$opt_keys[] = $opt_prefix . '_' . $opt_key;
+			}
+			return self::get_css_class_hide( $in_view, $opt_keys );
+		}
+
+		public function get_css_class_hide_prefix( $in_view = 'basic', $opt_prefix ) {
+			$opt_keys = SucomUtil::get_opts_begin( $opt_prefix, $this->options );
+			return self::get_css_class_hide( $in_view, $opt_keys );
+		}
+
 		public function get_css_class_hide( $in_view = 'basic', $opt_keys = array() ) {
 
 			$css_class = 'hide_in_' . $in_view;

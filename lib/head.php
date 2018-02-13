@@ -24,6 +24,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			add_action( 'wp_head', array( &$this, 'maybe_disable_rel_canonical' ), -1000 );
 			add_action( 'wp_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
+
+			/**
+			 * AMP
+			 */
 			add_action( 'amp_post_template_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
 			// crawlers are only seen on the front-end, so skip if in back-end
@@ -97,6 +101,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$cache_index .= '_url:'.$sharing_url;
 			}
 
+			/**
+			 * AMP
+			 */
 			if ( SucomUtil::is_amp() ) {
 				$cache_index .= '_amp:true';
 			}
@@ -119,8 +126,20 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		// called by wp_head action
 		public function maybe_disable_rel_canonical() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			if ( ! empty( $this->p->options['add_link_rel_canonical'] ) ) {
+
 				remove_filter( 'wp_head', 'rel_canonical' );
+
+				/**
+				 * AMP
+				 */
+				remove_action( 'wp_head', 'amp_frontend_add_canonical' );
+				remove_action( 'amp_post_template_head', 'amp_post_template_add_canonical' );
 			}
 		}
 
