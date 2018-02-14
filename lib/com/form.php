@@ -1344,6 +1344,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( $opt_keys as $idx_locale ) {
 
+				if ( strpos( $idx_locale, ':is' ) ) {	// skip option flags
+					continue;
+				}
+
 				$idx_default = strpos( $idx_locale, '#' ) !== false ? 
 					preg_replace( '/#.*$/', '', $idx_locale ) : $idx_locale;
 
