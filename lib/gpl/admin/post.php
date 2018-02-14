@@ -106,33 +106,39 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			);
 
 			if ( $og_type === 'product' ) {
+
 				$form_rows['product_avail'] = array(
 					'label' => _x( 'Product Availability', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_avail', 'td_class' => 'blank',
 					'content' => $form->get_no_select( 'product_avail',
 						$this->p->cf['form']['item_availability'] ),
 				);
+
 				$form_rows['product_brand'] = array(
 					'label' => _x( 'Product Brand', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_brand', 'td_class' => 'blank',
 					'content' => $form->get_no_input( 'product_brand', '', '', true ),	// $placeholder = true for default value
 				);
+
 				$form_rows['product_color'] = array(
 					'label' => _x( 'Product Color', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_color', 'td_class' => 'blank',
 					'content' => $form->get_no_input( 'product_color', '', '', true ),	// $placeholder = true for default value
 				);
+
 				$form_rows['product_condition'] = array(
 					'label' => _x( 'Product Condition', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_condition', 'td_class' => 'blank',
 					'content' => $form->get_no_select( 'product_condition',
 						$this->p->cf['form']['item_condition'] ),
 				);
+
 				$form_rows['product_material'] = array(
 					'label' => _x( 'Product Material', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_material', 'td_class' => 'blank',
 					'content' => $form->get_no_input( 'product_material', '', '', true ),	// $placeholder = true for default value
 				);
+
 				// product price and currency
 				$form_rows['product_price'] = array(
 					'label' => _x( 'Product Price', 'option label', 'wpsso' ),
@@ -140,6 +146,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'content' => $form->get_no_input( 'product_price', '', '', true ).' '.	// $placeholder = true for default value
 						$form->get_no_select( 'product_currency', SucomUtil::get_currency_abbrev(), 'currency' ),
 				);
+
 				$form_rows['product_size'] = array(
 					'label' => _x( 'Product Size', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_size', 'td_class' => 'blank',
@@ -151,6 +158,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				'td_class' => 'subsection', 'header' => 'h4',
 				'label' => _x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' )
 			);
+
 			$form_rows['schema_desc'] = array(
 				'label' => _x( 'Schema Description', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',

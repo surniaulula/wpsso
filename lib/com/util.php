@@ -2957,13 +2957,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $times;
 		}
 
-		public static function get_column_rows( array $table_cells, $row_cols = 2, $hide_in_basic = false ) {
+		public static function get_column_rows( array $table_cells, $row_cols = 2 ) {
 			sort( $table_cells );
 			$table_rows = array();
 			$per_col = ceil( count( $table_cells ) / $row_cols );
 			foreach ( $table_cells as $num => $cell ) {
 				if ( empty( $table_rows[ $num % $per_col ] ) ) { // Initialize the array element.
-					$table_rows[ $num % $per_col ] = $hide_in_basic ? '<tr class="hide_in_basic">' : '';
+					$table_rows[ $num % $per_col ] = '';
 				}
 				$table_rows[ $num % $per_col ] .= $cell; // Create the html for each row.
 			}

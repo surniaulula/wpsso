@@ -44,6 +44,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$atts_locale = array( 'is_locale' => true );
+
 			$table_rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$table_rows['plugin_filter_title'] = ''.
@@ -67,14 +69,15 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_nocb_td( 'plugin_use_img_alt' );
 
 			$table_rows['plugin_img_alt_prefix'] = ''.
-			$form->get_th_html( _x( 'Image Alt Text Prefix', 'option label', 'wpsso' ), '', 'plugin_img_alt_prefix', array( 'is_locale' => true ) ).
+			$form->get_th_html( _x( 'Image Alt Text Prefix', 'option label', 'wpsso' ), '', 'plugin_img_alt_prefix', $atts_locale ).
 			'<td class="blank">'.SucomUtil::get_key_value( 'plugin_img_alt_prefix', $this->p->options ).'</td>';
 
 			$table_rows['plugin_p_cap_prefix'] = ''.
-			$form->get_th_html( _x( 'WP Caption Prefix', 'option label', 'wpsso' ), '', 'plugin_p_cap_prefix', array( 'is_locale' => true ) ).
+			$form->get_th_html( _x( 'WP Caption Prefix', 'option label', 'wpsso' ), '', 'plugin_p_cap_prefix', $atts_locale ).
 			'<td class="blank">'.SucomUtil::get_key_value( 'plugin_p_cap_prefix', $this->p->options ).'</td>';
 
 			$check_embed_html = '';
+
 			foreach ( $this->p->cf['form']['embed_media_apis'] as $opt_key => $opt_label ) {
 				$check_embed_html .= '<p>'.$form->get_nocb_cmt( $opt_key ).' '._x( $opt_label, 'option value', 'wpsso' ).'</p>';
 			}
@@ -315,11 +318,10 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'owly' => 'plugin_owly_api_key',	// Ow.ly API Key
 				'yourls' => 'plugin_yourls_api_url',	// YOURLS API URL
 			) as $tr_key => $opt_key ) {
-				$tr_html[$tr_key] = empty( $this->p->options[$opt_key] ) ?
-					'<tr class="hide_in_basic">' : '';	// show / hide all shortener options
+				$tr_html[$tr_key] = empty( $this->p->options[$opt_key] ) ? $form->get_tr_hide( 'basic' ) : '';
 			}
 
-			// show bitly shortener by default
+			// show bitly shortener if none has been selected
 			if ( empty( $this->p->options['plugin_shortener'] ) || 
 				$this->p->options['plugin_shortener'] === 'none' || 
 				$this->p->options['plugin_shortener'] === 'bitly' ) {
@@ -360,7 +362,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'Bitly Generic Access Token', 'option label', 'wpsso' ).'</a>', '', 'plugin_bitly_access_token' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_access_token'].'</td>';
 
-			$table_rows['plugin_bitly_api_key'] = $tr_html['bitly'].
+			$table_rows['plugin_bitly_api_key'] = empty( $tr_html['bitly'] ) ? 
+				$form->get_tr_hide( 'basic', 'plugin_bitly_api_key' ) : $tr_html['bitly'].
 			$form->get_th_html( '<a href="http://bitly.com/a/your_api_key">'.
 			_x( 'or Bitly API Key (deprecated)', 'option label', 'wpsso' ).'</a>', '', 'plugin_bitly_api_key' ).
 			'<td class="blank mono">'.$this->p->options['plugin_bitly_api_key'].' <em>'.
@@ -418,52 +421,64 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="4" align="center">'.
-				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$atts_locale = array( 'is_locale' => true );
+
+			$table_rows[] = '<td colspan="4" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$table_rows[] = '<td></td>'.
 			$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), 'checkbox left', 'custom-cm-show-checkbox' ).
 			$form->get_th_html( _x( 'Contact Field Name', 'column title', 'wpsso' ), 'medium left', 'custom-cm-field-name' ).
-			$form->get_th_html( _x( 'Profile Contact Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-contact-label',
-				array( 'is_locale' => true ) );
+			$form->get_th_html( _x( 'Profile Contact Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-contact-label', $atts_locale );
 
 			$sorted_opt_pre = $this->p->cf['opt']['cm_prefix'];
+
 			ksort( $sorted_opt_pre );
 
-			foreach ( $sorted_opt_pre as $id => $opt_pre ) {
+			foreach ( $sorted_opt_pre as $cm_id => $opt_pre ) {
 
 				$cm_enabled_key = 'plugin_cm_'.$opt_pre.'_enabled';
 				$cm_name_key = 'plugin_cm_'.$opt_pre.'_name';
 				$cm_label_value = SucomUtil::get_key_value( 'plugin_cm_'.$opt_pre.'_label', $this->p->options );
 
 				// not all social websites have a contact method field
-				if ( isset( $this->p->options[$cm_enabled_key] ) ) {
-
-					switch ( $id ) {
-						case 'facebook':
-						case 'gplus':
-						case 'twitter':
-							$tr = '';
-							break;
-						default:
-							$tr = '<tr class="hide_in_basic">';
-							break;
-					}
-
-					$opt_label = empty( $this->p->cf['*']['lib']['website'][$id] ) ?
-						ucfirst( $id ) : $this->p->cf['*']['lib']['website'][$id];
-
-					$opt_label_lc = strtolower( $opt_label );
-
-					if  ( $opt_label_lc === 'googleplus' || $opt_label_lc === 'gplus' ) {
-						$opt_label = 'Google+';
-					}
-
-					$table_rows[] = $tr.$form->get_th_html( $opt_label, 'medium' ).
-					$form->get_nocb_td( $cm_enabled_key, '', true ).
-					'<td class="blank medium">'.$form->get_no_input( $cm_name_key, 'medium' ).'</td>'.
-					'<td class="blank wide">'.$form->get_no_input_value( $cm_label_value ).'</td>';
+				if ( ! isset( $this->p->options[$cm_enabled_key] ) ) {
+					continue;
 				}
+
+				$opt_label = empty( $this->p->cf['*']['lib']['website'][$cm_id] ) ?	// defined by sharing buttons
+					ucfirst( $cm_id ) : $this->p->cf['*']['lib']['website'][$cm_id];
+
+				switch ( strtolower( $opt_label ) ) {
+					case 'gp':
+					case 'gplus':
+					case 'googleplus':
+						$opt_label = 'Google+';
+						break;
+				}
+
+				switch ( $cm_id ) {
+					case 'facebook':
+					case 'gplus':
+					case 'twitter':
+
+						$tr_html = '';
+
+						break;
+
+					default:
+
+						/**
+						 * Hide all other contact methods if their values have not been customized.
+						 */
+						$tr_html = $form->get_tr_hide( 'basic', array( $cm_enabled_key, $cm_name_key, $cm_label_value ) );
+
+						break;
+				}
+
+				$table_rows[] = $tr_html.$form->get_th_html( $opt_label, 'medium' ).
+				$form->get_nocb_td( $cm_enabled_key, '', true ).
+				'<td class="blank medium">'.$form->get_no_input( $cm_name_key, 'medium' ).'</td>'.
+				'<td class="blank wide">'.$form->get_no_input_value( $cm_label_value ).'</td>';
 			}
 
 			return $table_rows;
@@ -475,31 +490,34 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="4" align="center">'.
-				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$atts_locale = array( 'is_locale' => true );
+
+			$table_rows[] = '<td colspan="4" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$table_rows[] = '<td></td>'.
 			$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), 'checkbox left', 'custom-cm-show-checkbox' ).
 			$form->get_th_html( _x( 'Contact Field Name', 'column title', 'wpsso' ), 'medium left', 'custom-cm-field-name' ).
-			$form->get_th_html( _x( 'Profile Contact Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-contact-label', 
-				array( 'is_locale' => true ) );
+			$form->get_th_html( _x( 'Profile Contact Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-contact-label', $atts_locale );
 
 			$sorted_cm_names = $this->p->cf['wp']['cm_names'];
+
 			ksort( $sorted_cm_names );
 
-			foreach ( $sorted_cm_names as $id => $opt_label ) {
+			foreach ( $sorted_cm_names as $cm_id => $opt_label ) {
 
-				$cm_enabled_key = 'wp_cm_'.$id.'_enabled';
-				$cm_name_key = 'wp_cm_'.$id.'_name';
-				$cm_label_value = SucomUtil::get_key_value( 'wp_cm_'.$id.'_label', $this->p->options );
+				$cm_enabled_key = 'wp_cm_'.$cm_id.'_enabled';
+				$cm_name_key = 'wp_cm_'.$cm_id.'_name';
+				$cm_label_value = SucomUtil::get_key_value( 'wp_cm_'.$cm_id.'_label', $this->p->options );
 
 				// not all social websites have a contact method field
-				if ( isset( $this->p->options[$cm_enabled_key] ) ) {
-					$table_rows[] = $form->get_th_html( $opt_label, 'medium' ).
-					'<td class="checkbox blank">'.$form->get_nocb_cmt( $cm_enabled_key ).'</td>'.
-					'<td class="medium">'.$form->get_no_input( $cm_name_key, 'medium' ).'</td>'.
-					'<td class="blank wide">'.$form->get_no_input( $cm_label_value ).'</td>';
+				if ( ! isset( $this->p->options[$cm_enabled_key] ) ) {
+					continue;
 				}
+
+				$table_rows[] = $form->get_th_html( $opt_label, 'medium' ).
+				'<td class="checkbox blank">'.$form->get_nocb_cmt( $cm_enabled_key ).'</td>'.
+				'<td class="medium">'.$form->get_no_input( $cm_name_key, 'medium' ).'</td>'.
+				'<td class="blank wide">'.$form->get_no_input( $cm_label_value ).'</td>';
 			}
 
 			return $table_rows;
