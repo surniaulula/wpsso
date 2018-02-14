@@ -390,7 +390,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.53.0-b.1 (2018/02/13)**
+**Version 3.53.0-rc.1 (2018/02/14)**
 
 * *New Features*
 	* Added a new custom "Canonical URL" option (hidden by default) in the Social and Search Optimization metabox (Pro version).
@@ -463,9 +463,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.53.0-b.1 =
+= 3.53.0-rc.1 =
 
-(2018/02/13) Added a new custom "Canonical URL" option in the Social and Search Optimization metabox. Options hidden in the "Basic Options" view that have a different value than their default will no longer be hidden.
+(2018/02/14) Added a new custom "Canonical URL" option in the Social and Search Optimization metabox. Options hidden in the "Basic Options" view that have a different value than their default will no longer be hidden.
 
 = 3.52.1 =
 
