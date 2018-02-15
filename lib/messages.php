@@ -435,42 +435,38 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = apply_filters( $lca.'_messages_tooltip_og', $text, $idx, $info );
 							break;
 					}	// end of tooltip-og switch
+
 				/**
 				 * Advanced plugin settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-plugin_' ) === 0 ) {
 					switch ( $idx ) {
+
 						/**
 						 * 'Plugin Settings' settings
 						 */
-						case 'tooltip-plugin_preserve':	// Preserve Settings on Uninstall
+						case 'tooltip-plugin_preserve': // Preserve Settings on Uninstall
+
 							$text = sprintf( __( 'Check this option if you would like to preserve the %s settings when you <em>uninstall</em> the plugin (default is unchecked).', 'wpsso' ), $info['short'] );
+
 							break;
 
-						case 'tooltip-plugin_debug':	// Add Hidden Debug Messages
+						case 'tooltip-plugin_debug': // Add Hidden Debug Messages
+
 							$text = __( 'Add debugging messages as hidden HTML comments to back-end and front-end webpages (default is unchecked).', 'wpsso' );
+
 							break;
 
-						case 'tooltip-plugin_hide_pro':	// Hide All Pro Settings
-							$text = __( 'Remove Pro version preview options from settings pages and metaboxes (default is unchecked).',
-								'wpsso' ).' '.
-							sprintf( __( 'Enabling this option also re-orders the %1$s metabox tabs for your convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost.',
-								'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ),
-									_x( 'Preview', 'metabox tab', 'wpsso' ),
-									_x( 'Head Tags', 'metabox tab', 'wpsso' ),
-									_x( 'Validate', 'metabox tab', 'wpsso' ) ).' '.
-							sprintf( __( 'Please note that some metaboxes and tabs may be empty, showing only a "<em>%s</em>" message, after enabling this option.',
-								'wpsso' ), __( 'No options available.', 'wpsso' ) );
+						case 'tooltip-plugin_hide_pro': // Hide All Pro Settings
+
+							$text = __( 'Remove Pro version preview options from settings pages and metaboxes (default is unchecked).', 'wpsso' ).' '.sprintf( __( 'Enabling this option also re-orders the %1$s metabox tabs for your convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ), _x( 'Preview', 'metabox tab', 'wpsso' ), _x( 'Head Tags', 'metabox tab', 'wpsso' ), _x( 'Validate', 'metabox tab', 'wpsso' ) ).' '.sprintf( __( 'Please note that some metaboxes and tabs may be empty, showing only a "<em>%s</em>" message, after enabling this option.', 'wpsso' ), __( 'No options available.', 'wpsso' ) );
+
 							break;
 
-						case 'tooltip-plugin_show_opts':	// Options to Show by Default
-							$text = sprintf( __( 'Select the set of options to display by default in %1$s settings pages and %2$s metabox.',
-								'wpsso' ), $info['short'], _x( $this->p->cf['meta']['title'], 'metabox title',
-									'wpsso' ) ).' '.
-							__( 'The basic view shows only the most commonly used options, and includes a link to temporarily unhide all options.',
-								'wpsso' ).' '.
-							__( 'Showing all available options by default could prove to be overwhelming for new users.',
-								'wpsso' );
+						case 'tooltip-plugin_show_opts': // Options to Show by Default
+
+							$text = sprintf( __( 'Select the set of options to display by default in %1$s settings pages and %2$s metabox.', 'wpsso' ), $info['short'], _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) ).' '.__( 'The basic view shows only the most commonly used options, and includes a link to temporarily unhide all options.', 'wpsso' ).' '.__( 'Showing all available options by default could prove to be overwhelming for new users.', 'wpsso' );
+
 							break;
 
 						/**
@@ -518,11 +514,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Custom Meta' settings
 						 */
 						case 'tooltip-plugin_show_columns':
+
 							$text = __( 'Additional columns can be included in admin list pages to show the Schema type ID, Open Graph image, etc. When a column is enabled, <strong>individual users can also hide that column</strong> by using the <em>Screen Options</em> tab on each admin list page.', 'wpsso' );
+
 							break;
 
 						case 'tooltip-plugin_add_to':
+
 							$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+
 							break;
 
 						case 'tooltip-plugin_wpseo_social_meta':
@@ -532,116 +532,176 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_def_currency':
+
 							$text = __( 'The default currency used for money related options (product price, job salary, etc.).', 'wpsso' );
+
 							break;
 
 						case 'tooltip-plugin_cf_img_url':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'an image URL', 'tooltip fragment', 'wpsso' ),
-									_x( 'Image URL', 'option label', 'wpsso' ) );
+									_x( 'Image URL', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_vid_url':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'a video URL (not HTML code)', 'tooltip fragment', 'wpsso' ),
-									_x( 'Video URL', 'option label', 'wpsso' ) );
+									_x( 'Video URL', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_vid_embed':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'video embed HTML code (not a URL)', 'tooltip fragment', 'wpsso' ),
-									_x( 'Video Embed HTML', 'option label', 'wpsso' ) );
+									_x( 'Video Embed HTML', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_addl_type_urls':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'additional Schema type URLs', 'tooltip fragment', 'wpsso' ),
-									_x( 'Additional Type URLs', 'option label', 'wpsso' ) );
+									_x( 'Additional Type URLs', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_recipe_ingredients':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'recipe ingredients', 'tooltip fragment', 'wpsso' ),
-									_x( 'Recipe Ingredients', 'option label', 'wpsso' ) );
+									_x( 'Recipe Ingredients', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_recipe_instructions':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'recipe instructions', 'tooltip fragment', 'wpsso' ),
-									_x( 'Recipe Instructions', 'option label', 'wpsso' ) );
+									_x( 'Recipe Instructions', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_product_avail':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product availability', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Availability', 'option label', 'wpsso' ) );
+									_x( 'Product Availability', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_product_brand':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product brand', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Brand', 'option label', 'wpsso' ) );
+									_x( 'Product Brand', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_product_color':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product color', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Color', 'option label', 'wpsso' ) );
+									_x( 'Product Color', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_product_condition':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product condition', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Condition', 'option label', 'wpsso' ) );
+									_x( 'Product Condition', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_product_currency':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product currency', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Currency', 'option label', 'wpsso' ) );
+									_x( 'Product Currency', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_product_material':
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product material', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Material', 'option label', 'wpsso' ) );
+									_x( 'Product Material', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_product_price':
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product price', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Price', 'option label', 'wpsso' ) );
+									_x( 'Product Price', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_product_size':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product size', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Size', 'option label', 'wpsso' ) );
+									_x( 'Product Size', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
+
 						case 'tooltip-plugin_cf_sameas_urls':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'additional SameAs webpage URLs', 'tooltip fragment', 'wpsso' ),
-									_x( 'SameAs Webpage URLs', 'option label', 'wpsso' ) );
+									_x( 'SameAs Webpage URLs', 'option label', 'wpsso' ),
+								);
 							}
+
 							// no break - fall through
 
 							$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[0] ).' '.sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[1], _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+
 							break;	// stop here
 
 						/**

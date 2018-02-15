@@ -1646,6 +1646,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
+			if ( ! empty( $opts[$prefix.':tag'] ) ) {
+				if ( is_array( $opts[$prefix.':tag'] ) ) {
+					$ret['keywords'] = implode( ', ', $opts[$prefix.':tag'] );
+				} else {
+					$ret['keywords'] = $opts[$prefix.':tag'];
+				}
+			}
+
 			if ( empty( $list_element ) ) {
 				$json_data = $ret;
 			} else {
