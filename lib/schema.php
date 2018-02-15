@@ -1005,24 +1005,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->mark( 'schema type id '.$type_id );	// begin timer
 				}
 
-				// get the main entity checkbox value from custom post/term/user meta
-				if ( ! empty( $mod['obj'] ) ) {
-					// get_options() returns null if an index key is not found
-					$is_main = $mod['obj']->get_options( $mod['id'], 'schema_is_main' );
+				if ( $type_id === $page_type_id ) {	// this is the main entity
+					$is_main = true;
 				} else {
-					$is_main = null;
-				}
-
-				if ( null === $is_main ) {
-					if ( $type_id === $page_type_id ) {	// this is the main entity
-						$is_main = true;
-					} else {
-						$is_main = false;	// default for all other types
-					}
+					$is_main = false;	// default for all other types
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'is_main entity is '.( $is_main ? 'true' : 'false' ).' for '.$type_id );
+					$this->p->debug->log( 'schema main entity is '.( $is_main ? 'true' : 'false' ).' for '.$type_id );
 				}
 
 				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
@@ -1263,21 +1253,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $single_added;	// 0, 1, or false
 		}
 
-		public static function get_single_type_id_url( $json_data, $opts, $key, $default_id, $list_element = false ) {
+		public static function get_single_type_id_url( $json_data, $type_opts, $opt_key, $default_id, $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 			$single_type_id = false;
-			// if not adding a list element, inherit existing schema type url (if one exists)
+			// if not adding a list element, inherit the existing schema type url (if one exists)
 			$single_type_url = $list_element ? false : self::get_data_type_url( $json_data );
 			$single_type_from = 'inherited';
 
 			if ( false === $single_type_url ) {
-				if ( empty( $opts[$key] ) || $opts[$key] === 'none' ) {
+				// $type_opts may be false, null, or an array
+				if ( empty( $type_opts[$opt_key] ) || $type_opts[$opt_key] === 'none' ) {
 					$single_type_id = $default_id;
 					$single_type_url = $wpsso->schema->get_schema_type_url( $default_id );
 					$single_type_from = 'default';
 				} else {
-					$single_type_id = $opts[$key];
+					$single_type_id = $type_opts[$opt_key];
 					$single_type_url = $wpsso->schema->get_schema_type_url( $single_type_id, $default_id );
 					$single_type_from = 'options';
 				}
@@ -1602,7 +1593,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			// if not adding a list element, inherit the existing schema type url (if one exists)
 			list( $image_type_id, $image_type_url ) = self::get_single_type_id_url( $json_data, false, 'image_type', 'image.object', $list_element );
 
-			$ret = self::get_schema_type_context( $image_type_url, array( 'url' => esc_url_raw( $media_url ) ) );
+			$ret = self::get_schema_type_context( $image_type_url, array(
+				'url' => esc_url_raw( $media_url ),
+			) );
 
 			/**
 			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), 
@@ -2182,8 +2175,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			// if not adding a list element, inherit the existing schema type url (if one exists)
-			list( $event_type_id, $event_type_url ) = self::get_single_type_id_url( $json_data,
-				$event_opts, 'event_type', 'event', $list_element );
+			list( $event_type_id, $event_type_url ) = self::get_single_type_id_url( $json_data, $event_opts, 'event_type', 'event', $list_element );
 
 			$ret = self::get_schema_type_context( $event_type_url );
 
@@ -2267,8 +2259,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			self::merge_custom_mod_opts( $mod, $job_opts, array( 'job' => 'schema_job' ) );
 
 			// if not adding a list element, inherit the existing schema type url (if one exists)
-			list( $job_type_id, $job_type_url ) = self::get_single_type_id_url( $json_data,
-				$job_opts, 'job_type', 'job.posting', $list_element );
+			list( $job_type_id, $job_type_url ) = self::get_single_type_id_url( $json_data, $job_opts, 'job_type', 'job.posting', $list_element );
 
 			$ret = self::get_schema_type_context( $job_type_url );
 
@@ -2390,8 +2381,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			// if not adding a list element, inherit the existing schema type url (if one exists)
-			list( $org_type_id, $org_type_url ) = self::get_single_type_id_url( $json_data,
-				$org_opts, 'org_type', 'organization', $list_element );
+			list( $org_type_id, $org_type_url ) = self::get_single_type_id_url( $json_data, $org_opts, 'org_type', 'organization', $list_element );
 
 			$ret = self::get_schema_type_context( $org_type_url );
 
@@ -2577,8 +2567,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			// if not adding a list element, inherit the existing schema type url (if one exists)
-			list( $person_type_id, $person_type_url ) = self::get_single_type_id_url( $json_data,
-				$person_opts, 'person_type', 'person', $list_element );
+			list( $person_type_id, $person_type_url ) = self::get_single_type_id_url( $json_data, $person_opts, 'person_type', 'person', $list_element );
 
 			$ret = self::get_schema_type_context( $person_type_url );
 
@@ -2648,8 +2637,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			// if not adding a list element, inherit the existing schema type url (if one exists)
-			list( $place_type_id, $place_type_url ) = self::get_single_type_id_url( $json_data,
-				$place_opts, 'place_business_type', 'place', $list_element );
+			list( $place_type_id, $place_type_url ) = self::get_single_type_id_url( $json_data, $place_opts, 'place_business_type', 'place', $list_element );
 
 			$ret = self::get_schema_type_context( $place_type_url );
 
