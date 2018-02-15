@@ -13,13 +13,46 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
 
+		protected $cleared_all_cache = false;
 		protected $uniq_urls = array();			// array to detect duplicate images, etc.
 		protected $size_labels = array();		// reference array for image size labels
 		protected $force_regen = array(
 			'cache' => null,			// cache for returned values
 			'transient' => null,			// transient array from/to database
 		);
-		protected $cleared_all_cache = false;
+
+		protected $is_functions = array( 
+			'is_ajax',
+			'is_archive',
+			'is_attachment',
+			'is_author',
+			'is_category',
+			'is_front_page',
+			'is_home',
+			'is_multisite',
+			'is_page',
+			'is_search',
+			'is_single',
+			'is_singular',
+			'is_ssl',
+			'is_tag',
+			'is_tax',
+			/**
+			 * common e-commerce / woocommerce functions
+			 */
+			'is_account_page',
+			'is_cart',
+			'is_checkout',
+			'is_checkout_pay_page',
+			'is_product',
+			'is_product_category',
+			'is_product_tag',
+			'is_shop',
+			/**
+			 * other functions
+			 */
+			'is_amp_endpoint',
+		);
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -1024,51 +1057,32 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function log_is_functions() {
-			$is_functions = array( 
-				'is_ajax',
-				'is_archive',
-				'is_attachment',
-				'is_author',
-				'is_category',
-				'is_front_page',
-				'is_home',
-				'is_multisite',
-				'is_page',
-				'is_search',
-				'is_single',
-				'is_singular',
-				'is_ssl',
-				'is_tag',
-				'is_tax',
-				/**
-				 * common e-commerce / woocommerce functions
-				 */
-				'is_account_page',
-				'is_cart',
-				'is_checkout',
-				'is_checkout_pay_page',
-				'is_product',
-				'is_product_category',
-				'is_product_tag',
-				'is_shop',
-				/**
-				 * other functions
-				 */
-				'is_amp_endpoint',
-			);
+			if ( ! $this->p->debug->enabled ) {	// nothing to do
+				return;
+			}
+			$function_info = $this->get_is_functions();
+			foreach ( $function_info as $function => $info ) {
+				$this->p->debug->log( $info[0] );
+			}
+		}
 
-			$is_functions = apply_filters( $this->p->lca.'_is_functions', $is_functions );
-
-			foreach ( $is_functions as $function ) {
+		public function get_is_functions() {
+			$function_info = array();
+			foreach ( apply_filters( $this->p->lca.'_is_functions', $this->is_functions )  as $function ) {
 				if ( function_exists( $function ) ) {
 					$start_time = microtime( true );
-					$ret = $function() ? 'true' : 'false';
+					$function_ret = $function();
 					$total_time = microtime( true ) - $start_time;
-					$this->p->debug->log( $function.'() = '.$ret.' ('.sprintf( '%f secs', $total_time ).')' );
+					$function_info[$function] = array(
+						$function.'() = '.sprintf( '%s (%f secs)', $function_ret ? 'true' : 'false', $total_time ),
+						$function_ret,
+						$total_time,
+					);
 				} else {
-					$this->p->debug->log( $function.'() not found' );
+					$function_info[$function] = array( $function.'() not found', null, 0 );
 				}
 			}
+			return $function_info;
 		}
 
 		// returns true if the default image is forced

@@ -121,13 +121,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			// singular posts / pages are articles by default
 			} elseif ( $mod['is_post'] ) {
 
-				// check the post_type for a match with a known open graph type
-				if ( ! empty( $mod['post_type'] ) &&
-					isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) ) {
-						$og_type = $mod['post_type'];
+				// check that the post_type is a known open graph type
+				if ( ! empty( $mod['post_type'] ) && isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) ) {
+					$og_type = $mod['post_type'];
 				} else {
-					$og_type = empty( $this->p->options['og_post_type'] ) ?	// Just in case.
-						'article' : $this->p->options['og_post_type'];
+					$og_type = empty( $this->p->options['og_post_type'] ) ?	'article' : $this->p->options['og_post_type'];
 				}
 
 			// default for everything else is 'website'
@@ -605,9 +603,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $mod['is_post'] ) {
 
-				// is_attachment() only works on the front-end, so check the post_type as well
-				if ( ( is_attachment( $mod['id'] ) || get_post_type( $mod['id'] ) === 'attachment' ) &&
-					wp_attachment_is_image( $mod['id'] ) ) {
+				if ( $mod['post_type'] === 'attachment' && wp_attachment_is_image( $mod['id'] ) ) {
 
 					$og_single_image = $this->p->media->get_attachment_image( $num_diff,
 						$size_name, $mod['id'], $check_dupes );

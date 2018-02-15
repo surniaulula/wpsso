@@ -20,6 +20,15 @@ if ( ! function_exists( 'wpsso_is_mobile' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpsso_get_is_functions' ) ) {
+	function wpsso_get_is_functions() {
+		$wpsso =& Wpsso::get_instance();
+		if ( is_object( $wpsso->util ) ) {
+			return $wpsso->util->get_is_functions();
+		}
+	}
+}
+
 if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 	function wpsso_schema_attributes( $attr = '' ) {
 		$wpsso =& Wpsso::get_instance();

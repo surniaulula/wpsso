@@ -1048,57 +1048,58 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				foreach ( $scripts_data as $json_data ) {
 
-					if ( ! empty( $json_data ) && is_array( $json_data ) ) {
+					if ( empty( $json_data ) || ! is_array( $json_data ) ) {
+						continue;
+					}
 	
-						// the url and schema type id create a unique @id string
-						if ( empty( $json_data['@id'] ) ) {
-							if ( ! empty( $json_data['url'] ) ) {
-								$json_data = array( '@id' => rtrim( $json_data['url'], '/' ).'#id/'.$type_id ) + $json_data;
-								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'added @id property is '.$json_data['@id'] );
-								}
-							} elseif ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'missing url property to add an @id property' );
-							}
-						// filters may return an @id as a way to signal a change to the schema type
-						} else {
+					// the url and schema type id create a unique @id string
+					if ( empty( $json_data['@id'] ) ) {
+						if ( ! empty( $json_data['url'] ) ) {
+							$json_data = array( '@id' => rtrim( $json_data['url'], '/' ).'#id/'.$type_id ) + $json_data;
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'existing @id property is '.$json_data['@id'] );
-							}
-							if ( ( $id_pos = strpos( $json_data['@id'], '#id/' ) ) !== false ) {
-								$id_str = substr( $json_data['@id'], $id_pos + 4 );	// add strlen of #id/
-								if ( preg_match_all( '/([^\/]+)/', $id_str, $all_matches, PREG_SET_ORDER ) ) {
-									$has_type_id = false;
-									foreach ( $all_matches as $match ) {
-										if ( $match[1] === $type_id ) {
-											$has_type_id = true;		// found the original type id
-										}
-										$page_type_added[$match[1]] = true;	// prevent duplicate schema types
-									}
-									if ( ! $has_type_id ) {
-										$json_data['@id'] .= '/'.$type_id;	// append the original type id
-										if ( $this->p->debug->enabled ) {
-											$this->p->debug->log( 'modified @id is '.$json_data['@id'] );
-										}
-									}
-								}
-							}
-						}
-	
-						// check for missing @context / @type and add if required
-						if ( empty( $json_data['@type'] ) ) {
-							$type_url = $this->get_schema_type_url( $type_id );
-							$json_data = self::get_schema_type_context( $type_url, $json_data );
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'added @type property is '.$json_data['@type'] );
+								$this->p->debug->log( 'added @id property is '.$json_data['@id'] );
 							}
 						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'existing @type property is '.print_r( $json_data['@type'], true ) );	// @type can be an array.
+							$this->p->debug->log( 'missing url property to add an @id property' );
 						}
-	
-						// encode the json data in an HTML script block
-						$ret[] = '<script type="application/ld+json">'.$this->p->util->json_format( $json_data ).'</script>' . "\n";
+					// filters may return an @id as a way to signal a change to the schema type
+					} else {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'existing @id property is '.$json_data['@id'] );
+						}
+						if ( ( $id_pos = strpos( $json_data['@id'], '#id/' ) ) !== false ) {
+							$id_str = substr( $json_data['@id'], $id_pos + 4 );	// add strlen of #id/
+							if ( preg_match_all( '/([^\/]+)/', $id_str, $all_matches, PREG_SET_ORDER ) ) {
+								$has_type_id = false;
+								foreach ( $all_matches as $match ) {
+									if ( $match[1] === $type_id ) {
+										$has_type_id = true;		// found the original type id
+									}
+									$page_type_added[$match[1]] = true;	// prevent duplicate schema types
+								}
+								if ( ! $has_type_id ) {
+									$json_data['@id'] .= '/'.$type_id;	// append the original type id
+									if ( $this->p->debug->enabled ) {
+										$this->p->debug->log( 'modified @id is '.$json_data['@id'] );
+									}
+								}
+							}
+						}
 					}
+
+					// check for missing @context / @type and add if required
+					if ( empty( $json_data['@type'] ) ) {
+						$type_url = $this->get_schema_type_url( $type_id );
+						$json_data = self::get_schema_type_context( $type_url, $json_data );
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'added @type property is '.$json_data['@type'] );
+						}
+					} elseif ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'existing @type property is '.print_r( $json_data['@type'], true ) );	// @type can be an array.
+					}
+	
+					// encode the json data in an HTML script block
+					$ret[] = '<script type="application/ld+json">'.$this->p->util->json_format( $json_data ).'</script>' . "\n";
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -1293,14 +1294,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Sanitation used by filters to return their data.
 		 */
 		public static function return_data_from_filter( $json_data, $ret_data, $is_main = false ) {
-			/**
-			 * Property:
-			 *	mainEntityOfPage as https://schema.org/WebPage
-			 *
-			 * The value of mainEntityOfPage is expected to be one of these types:
-			 *	CreativeWork
-			 * 	URL 
-			 */
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
 			if ( ! isset( $ret_data['mainEntityOfPage'] ) ) {	// don't redefine
 				if ( $is_main && ! empty( $ret_data['url'] ) ) {
 					$ret_data['mainEntityOfPage'] = $ret_data['url'];
@@ -1564,6 +1564,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		// pass a single or two dimension image array in $og_images
 		public static function add_og_image_list_data( &$json_data, &$og_images, $prefix = 'og:image' ) {
+
 			$images_added = 0;
 
 			if ( isset( $og_images[0] ) && is_array( $og_images[0] ) ) {						// 2 dimensional array
@@ -1599,12 +1600,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			// if not adding a list element, inherit the existing schema type url (if one exists)
-			list( $image_type_id, $image_type_url ) = self::get_single_type_id_url( $json_data,
-				false, 'image_type', 'image.object', $list_element );
+			list( $image_type_id, $image_type_url ) = self::get_single_type_id_url( $json_data, false, 'image_type', 'image.object', $list_element );
 
-			$ret = self::get_schema_type_context( $image_type_url, array(
-				'url' => esc_url_raw( $media_url ),
-			) );
+			$ret = self::get_schema_type_context( $image_type_url, array( 'url' => esc_url_raw( $media_url ) ) );
 
 			/**
 			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), 
@@ -1641,6 +1639,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret['description'] = $wpsso->page->get_description( $desc_len, '...', $mod, true, false, true, 'schema_desc' );
 				if ( empty( $ret['description'] ) ) {
 					unset( $ret['description'] );
+				}
+
+				$ret['fileFormat'] = get_post_mime_type( $mod['id'] );	// mime type
+				if ( empty( $ret['fileFormat'] ) ) {
+					unset( $ret['fileFormat'] );
 				}
 			}
 
