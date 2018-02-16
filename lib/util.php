@@ -1804,7 +1804,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $max;
 		}
 
-		public function safe_apply_filters( array $args, array $mod, $max_time = 0, $add_bfo = false ) {
+		public function safe_apply_filters( array $args, array $mod, $max_time = 0, $hook_bfo = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1856,7 +1856,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Load the Block Filter Output (BFO) filters to block and show an error 
 			 * for incorrectly coded filters.
 			 */
-			if ( $add_bfo ) {
+			if ( $hook_bfo ) {
 				$classname = apply_filters( $this->p->lca.'_load_lib', false, 'com/bfo', 'SucomBFO' );
 				if ( is_string( $classname ) && class_exists( $classname ) ) {
 					$bfo_obj = new $classname( $this->p );
@@ -1984,7 +1984,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Remove the Block Filter Output (BFO) filters.
 			 */
-			if ( $add_bfo ) {
+			if ( $hook_bfo ) {
 				$bfo_obj->remove_all_hooks( array( $filter_name ) );
 			}
 

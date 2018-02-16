@@ -2734,7 +2734,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $wpsso->schema->is_schema_type_child( $place_opts['place_business_type'], 'food.establishment' ) ) {
 					foreach ( array(
 						'acceptsReservations' => 'place_accept_res',
-						'menu' => 'place_menu_url',
+						'hasMenu' => 'place_menu_url',
+						'servesCuisine' => 'place_cuisine',
 					) as $prop_name => $opt_key ) {
 						if ( $opt_key === 'place_accept_res' ) {
 							$ret[$prop_name] = empty( $place_opts[$opt_key] ) ? 'false' : 'true';

@@ -834,7 +834,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case 'canonical':
 						case 'shortlink':
 						case 'image':
-						case 'menu':	// place restaurant menu url
+						case 'hasmenu':	// place restaurant menu url
 						case 'url':
 							$parts[5] = SucomUtil::esc_url_encode( $parts[5] );
 							if ( $parts[2] === 'itemprop' ) {	// itemprop urls must be links
