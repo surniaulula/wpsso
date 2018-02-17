@@ -390,7 +390,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.53.0-rc.4 (2018/02/16)**
+**Version 3.53.0 (2018/02/17)**
 
 * *New Features*
 	* Added a new custom "Canonical URL" option (hidden by default) in the Social and Search Optimization metabox (Pro version).
@@ -463,15 +463,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.53.0-rc.4 =
+= 3.53.0 =
 
-(2018/02/16) Added a new custom "Canonical URL" option in the Social and Search Optimization metabox. Options hidden in the "Basic Options" view that have a different value than their default will no longer be hidden.
-
-= 3.52.1 =
-
-(2018/02/09) Added the new WPSSO Breadcrumbs Markup extension. Added an "Edit" link to the "Robots" option in the Publish metabox. Added a fallback to custom product attributes for WooCommerce (Pro version). Fixed the assignment of Schema Event offers validFrom and validThrough.
-
-= 3.52.0 =
-
-(2018/02/03) Added a 'Person' role for WordPress users. Added a "Add Person Role for New Users" and "SameAs Webpage URLs Custom Field" option. Fixed an incorrectly named variable used to calculate the maximum image upscale size.
+(2018/02/17) Added a new custom "Canonical URL" option in the Social and Search Optimization metabox. Options hidden in the "Basic Options" view that have a different value than their default will no longer be hidden.
 
