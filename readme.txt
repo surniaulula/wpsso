@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.4
 WC Tested Up To: 3.3.1
-Stable Tag: 3.52.1
+Stable Tag: 3.53.0
 
 Automatically create complete meta tags and Schema markup from your content for social sharing, social media / SMO, Google Rich Cards / SEO + more.
 
