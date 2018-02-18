@@ -123,25 +123,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$pdir = $this->p->avail['*']['p_dir'];
-			$aop = $this->p->check->aop( $this->p->lca, true, $pdir );
+			$this->set_plugin_pkg_info();
 
 			if ( empty( $menu_libs ) ) {
-				// 'setting' must follow 'submenu' to extend submenu/advanced.php
+				// 'setting' array element must follow 'submenu' to extend submenu/advanced.php
 				$menu_libs = array( 'submenu', 'setting', 'profile' );
-			}
-
-			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $pdir );
-				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) && 
-					$aop && $this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? true : false;
-				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ?
-					_x( 'Pro', 'package type', 'wpsso' ) :
-					_x( 'Free', 'package type', 'wpsso' );
-				self::$pkg[$ext]['short'] = $info['short'].' '.self::$pkg[$ext]['type'];
-				self::$pkg[$ext]['name'] = SucomUtil::get_pkg_name( $info['name'], self::$pkg[$ext]['type'] );
-				self::$pkg[$ext]['gen'] = $info['short'].' '.( isset( $info['version'] ) ? $info['version'].'/'.
-					( self::$pkg[$ext]['aop'] ? 'L' : ( self::$pkg[$ext]['pdir'] ? 'U' : 'F' ) ) : '' );
 			}
 
 			foreach ( $menu_libs as $menu_lib ) {
@@ -159,6 +145,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						}
 					}
 				}
+			}
+		}
+
+		public function set_plugin_pkg_info() {
+
+			if ( ! empty( self::$pkg ) ) {
+				return;
+			}
+
+			$has_pdir = $this->p->avail['*']['p_dir'];
+			$has_aop = $this->p->check->aop( $this->p->lca, true, $has_pdir );
+
+			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $has_pdir );
+				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_'.$ext.'_tid'] ) && $has_aop &&
+					$this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? true : false;
+				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ?
+					_x( 'Pro', 'package type', 'wpsso' ) :
+					_x( 'Free', 'package type', 'wpsso' );
+				self::$pkg[$ext]['short'] = $info['short'].' '.self::$pkg[$ext]['type'];
+				self::$pkg[$ext]['name'] = SucomUtil::get_pkg_name( $info['name'], self::$pkg[$ext]['type'] );
+				self::$pkg[$ext]['gen'] = $info['short'].' '.( isset( $info['version'] ) ? $info['version'].'/'.
+					( self::$pkg[$ext]['aop'] ? 'L' : ( self::$pkg[$ext]['pdir'] ? 'U' : 'F' ) ) : '' );
 			}
 		}
 
@@ -1523,6 +1532,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</div>';
 		}
 
+		/**
+		 * Call as WpssoAdmin::get_nonce_action() to have a reliable __METHOD__ value.
+		 */
 		public static function get_nonce_action() {
 			$salt = __FILE__.__METHOD__.__LINE__;
 			foreach ( array( 'AUTH_SALT', 'NONCE_SALT' ) as $const ) {
@@ -2020,12 +2032,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function required_notices() {
 
-			$pdir = $this->p->avail['*']['p_dir'];
+			$has_pdir = $this->p->avail['*']['p_dir'];
 			$version = $this->p->cf['plugin'][$this->p->lca]['version'];
 			$um_info = $this->p->cf['plugin']['wpssoum'];
 			$have_ext_tid = false;
 
-			if ( $pdir && empty( $this->p->options['plugin_'.$this->p->lca.'_tid'] ) &&
+			if ( $has_pdir && empty( $this->p->options['plugin_'.$this->p->lca.'_tid'] ) &&
 				( empty( $this->p->options['plugin_'.$this->p->lca.'_tid:is'] ) ||
 					$this->p->options['plugin_'.$this->p->lca.'_tid:is'] !== 'disabled' ) ) {
 				$this->p->notice->nag( $this->p->msgs->get( 'notice-pro-tid-missing' ) );
@@ -2522,6 +2534,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 			return $url;
+		}
+
+		public function get_check_for_updates_link() {
+
+			$link_html = '';
+
+			if ( class_exists( 'WpssoUm' ) ) {
+
+				$this->set_plugin_pkg_info();
+
+				// translators: %s is the short plugin name
+				$link_text = __( 'Refresh the update information for %s and its extensions', 'wpsso' );
+
+				$link_url = wp_nonce_url( $this->p->util->get_admin_url( 'um-general?'.$this->p->lca.'-action=check_for_updates' ),
+					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
+
+				$link_html = '<a href="'.$link_url.'">'.sprintf( $link_text, self::$pkg[$this->p->lca]['short'] ).'.</a>';
+			}
+
+			return $link_html;
 		}
 
 		public function get_ext_img_icon( $ext ) {

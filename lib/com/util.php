@@ -1825,7 +1825,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function array_parent_index( array $array, $parent_key = '', $gparent_key = '', &$index = array() ) {
 		        foreach ( $array as $child_key => $value ) {
 				if ( isset( $index[$child_key] ) ) {
-					trigger_error( sprintf( '%1$s error: duplicate key %2$s = %3$s',
+					trigger_error( sprintf( '%1$s warning: duplicate key %2$s = %3$s',
 						__METHOD__, $child_key, $index[$child_key] ), E_USER_WARNING );
 				} elseif ( is_array( $value ) ) {
 					self::array_parent_index( $value, $child_key, $parent_key, $index );

@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$error_msg = sprintf( 'slow query detected - get_posts() for direct children of %s id %d took %0.4f secs'.
 					' (longer than recommended max of %0.4f secs)', $mod['name'], $mod['id'], $total_time, $max_time );
 
-				trigger_error( $info['short'].' error: '.$error_msg, E_USER_WARNING );
+				trigger_error( $info['short'].' warning: '.$error_msg, E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );

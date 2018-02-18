@@ -285,7 +285,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$error_msg = sprintf( 'slow PHP function detected - getimagesize() for %s took %0.4f secs'.
 					' (longer than recommended max of %0.4f secs)', $image_url, $total_time, $max_time );
 
-				trigger_error( $info['short'].' error: '.$error_msg, E_USER_WARNING );
+				trigger_error( $info['short'].' warning: '.$error_msg, E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );
@@ -1949,7 +1949,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$error_msg = sprintf( 'slow filter hook(s) detected - %s filter took %0.4f secs'.
 					' (longer than recommended max of %0.4f secs)', $filter_name, $total_time, $max_time );
 
-				trigger_error( $info['short'].' error: '.$error_msg, E_USER_WARNING );
+				trigger_error( $info['short'].' warning: '.$error_msg, E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );
