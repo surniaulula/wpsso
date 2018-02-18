@@ -66,7 +66,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 * [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 * [Summary Card](https://dev.twitter.com/cards/types/summary)
-* [Player Card](https://dev.twitter.com/cards/types/player) is available in the Pro version (requires the video discovery modules in the Pro version).
+* [Player Card](https://dev.twitter.com/cards/types/player) (Pro version required for video discovery modules).
 * [App Card](https://dev.twitter.com/cards/types/app) ([WPSSO AM extension](https://wordpress.org/plugins/wpsso-am/) required)
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Features customizable image dimensions for Facebook / Open Graph, Google / SEO / Schema / Pinterest and all Twitter Card types.

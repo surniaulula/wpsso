@@ -62,7 +62,7 @@
 <ul>
 <li><a href="https://dev.twitter.com/cards/types/summary-large-image">Summary Card with Large Image</a></li>
 <li><a href="https://dev.twitter.com/cards/types/summary">Summary Card</a></li>
-<li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> is available in the Pro version (requires the video discovery modules in the Pro version).</li>
+<li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> (Pro version required for video discovery modules).</li>
 <li><a href="https://dev.twitter.com/cards/types/app">App Card</a> (<a href="https://wordpress.org/plugins/wpsso-am/">WPSSO AM extension</a> required)</li>
 </ul>
 
