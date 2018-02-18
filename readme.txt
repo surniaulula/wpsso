@@ -118,13 +118,13 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional (and optional) Free extension for WPSSO:
 
-* [WPSSO Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) (Free version)
+* [WPSSO Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) &ndash; recommended for best SEO (Free version)
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) (Free version)
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (Free version)
 * [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) (Free version)
 * [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) (Free version)
 * [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) (Free version)
-* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) (Free version)
+* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) &ndash; recommended for best SEO (Free version)
 * [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) (Free version)
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) (Free version)
 * [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) (Free version)
@@ -223,7 +223,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 * [WPSSO Mobile App Meta](https://wpsso.com/extend/plugins/wpsso-am/?utm_source=wpsso-readme-am-pro) (Pro version)
 * [WPSSO Place / Location and Local Business Meta](https://wpsso.com/extend/plugins/wpsso-plm/?utm_source=wpsso-readme-plm-pro) (Pro version)
 * [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-rrssb/?utm_source=wpsso-readme-rrssb-pro) (Pro version)
-* [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-pro) (Pro version)
+* [WPSSO Schema JSON-LD Markup](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-pro) &ndash; recommended for best SEO (Pro version)
 * [WPSSO Social Sharing Buttons](https://wpsso.com/extend/plugins/wpsso-ssb/?utm_source=wpsso-readme-ssb-pro) (Pro version)
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; [Purchase the WPSSO Core Pro plugin here](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme-purchase) (all plugin purchases include a <em>No Risk 30 Day Refund Policy</em>).
