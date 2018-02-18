@@ -246,10 +246,13 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 						}
 					}
 
-					trigger_error( $this->label_transl . ': ' . $error_msg . "\n" . __( 'Incorrect webpage output:', $this->text_domain ) . "\n" . 
-						'-----' . __( 'BEGIN OUTPUT', $this->text_domain ) . '-----' . "\n" . print_r( $output, true ) . "\n" . 
-						'-----' . __( 'END OUTPUT', $this->text_domain ) . '-----' . "\n", E_USER_WARNING );
+					$incorrect_msg = __( 'Incorrect webpage output:', $this->text_domain ) . "\n" .
+						'-----' . __( 'BEGIN OUTPUT', $this->text_domain ) . '-----' . "\n" . print_r( $output, true ) . "\n" .
+						'-----' . __( 'END OUTPUT', $this->text_domain ) . '-----' . "\n";
+
+					trigger_error( $this->label_transl . ': ' . $error_msg . "\n" . $incorrect_msg, E_USER_WARNING );
 				}
+
 				ob_clean();	// clean the output buffer for the next hook check
 			}
 			return $value;

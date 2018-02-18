@@ -2323,6 +2323,16 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
+#. translators: %s is the short plugin name, %2$s is the PHP class name
+#: lib/loader.php:134
+msgid "%1$s error: library class \"%2$s\" is missing."
+msgstr ""
+
+#. translators: %s is the short plugin name, %2$s is the PHP library file path
+#: lib/loader.php:144
+msgid "%1$s error: \"%2$s\" library file not found."
+msgstr ""
+
 #: lib/media.php:348
 msgid ""
 "The NextGEN Gallery integration module provided by %1$s is required to read "
@@ -2341,7 +2351,7 @@ msgid ""
 msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
-#. function name.
+#. function name
 #: lib/media.php:396
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
@@ -2350,7 +2360,7 @@ msgid ""
 msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
-#. function name.
+#. function name
 #: lib/media.php:410
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
@@ -4121,7 +4131,7 @@ msgid ""
 "refresh of all Pro update information."
 msgstr ""
 
-#: lib/messages.php:1577 lib/register.php:218
+#: lib/messages.php:1577 lib/register.php:219
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -4191,7 +4201,7 @@ msgstr ""
 msgid "Please encourage us %s by rating the plugins you use:"
 msgstr ""
 
-#. translators: %s is a url to the user locale extension
+#. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector extension
 #: lib/messages.php:1632
 msgid ""
 "This option is localized &mdash; <a href=\"%s\">you may change the WordPress "
@@ -4679,7 +4689,7 @@ msgid "full size original"
 msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is the image
-#. dimension, and %5$s is the required size name and its dimension.
+#. dimension, %5$s is the required size name and its dimension
 #: lib/pro/util/checkimgdims.php:87
 msgid ""
 "%1$s <a href=\"%2$s\">image ID %3$s</a> ignored &mdash; the resulting image "
@@ -4727,11 +4737,12 @@ msgstr ""
 msgid "Invalid user ID."
 msgstr ""
 
-#: lib/register.php:212 lib/register.php:220
+#. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
+#: lib/register.php:213 lib/register.php:221
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:222
+#: lib/register.php:223
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 

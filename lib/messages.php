@@ -1628,7 +1628,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			}
 
 			if ( is_array( $info ) && ! empty( $info['is_locale'] ) ) {
-				// translators: %s is a url to the user locale extension
+				// translators: %s is the wordpress.org URL for the WPSSO User Locale Selector extension
 				$text .= ' ' . sprintf( __( 'This option is localized &mdash; <a href="%s">you may change the WordPress locale</a> to define alternate values for different languages.', 'wpsso' ), 'https://wordpress.org/plugins/wpsso-user-locale/' );
 			}
 

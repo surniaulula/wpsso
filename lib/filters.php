@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				$info = $this->p->cf['plugin'][$this->p->lca];
 				$name = $this->p->cf['plugin'][$this->p->lca]['name'];
 
-				// wordpress SEO v4
+				// WordPress SEO v4
 				if ( method_exists( 'Yoast_Notification_Center', 'get_notification_by_id' ) ) {
 					$id = 'wpseo-conflict-'.md5( $info['base'] );
 					$msg = '<style>#'.$id.'{display:none;}</style>';

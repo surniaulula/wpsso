@@ -165,10 +165,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
-				$error_msg = sprintf( 'slow query detected - get_posts() for %s id %d in taxonomy %s took %0.4f secs'.
-					' (longer than recommended max of %0.4f secs)', $mod['name'], $mod['id'], $mod['tax_slug'], $total_time, $max_time );
+				$error_msg = sprintf( 'slow query detected - WordPress get_posts() took %0.4f secs to get posts for %s id %d in taxonomy %s'.
+					' (longer than recommended max of %0.4f secs)', $total_time, $mod['name'], $mod['id'], $mod['tax_slug'], $max_time );
 
-				trigger_error( $info['short'].' warning: '.$error_msg, E_USER_WARNING );
+				trigger_error( sprintf( '%s warning: %s', $info['short'], $error_msg ), E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );

@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress
+						// WordPress
 						'home' => 'https://wordpress.org/plugins/wpsso/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso',
 						'review' => 'https://wordpress.org/support/plugin/wpsso/reviews/?rate=5#new-post',
@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress
+						// WordPress
 						'home' => 'https://wordpress.org/plugins/wpsso-am/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-am',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-am/reviews/?rate=5#new-post',
@@ -209,7 +209,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress
+						// WordPress
 						'home' => 'https://wordpress.org/plugins/wpsso-breadcrumbs/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs/reviews/?rate=5#new-post',
@@ -244,7 +244,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress
+						// WordPress
 						'home' => 'https://wordpress.org/plugins/wpsso-schema-json-ld/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld/reviews/?rate=5#new-post',
@@ -280,7 +280,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress
+						// WordPress
 						'home' => 'https://wordpress.org/plugins/wpsso-organization/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-organization',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-organization/reviews/?rate=5#new-post',
@@ -315,7 +315,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress
+						// WordPress
 						'home' => 'https://wordpress.org/plugins/wpsso-plm/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-plm',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-plm/reviews/?rate=5#new-post',
@@ -350,7 +350,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress.org
+						// WordPress
 						'home' => 'https://wordpress.org/plugins/wpsso-ratings-and-reviews/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews/reviews/?rate=5#new-post',
@@ -385,7 +385,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress.org
+						// WordPress
 						'home' => 'https://wordpress.org/plugins/wpsso-rrssb/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-rrssb',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-rrssb/reviews/?rate=5#new-post',
@@ -420,7 +420,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress
+						// WordPress
 						'home' => 'https://wordpress.org/plugins/wpsso-ssb/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-ssb',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-ssb/reviews/?rate=5#new-post',
@@ -455,7 +455,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress
+						// WordPress
 						'home' => 'https://wordpress.org/plugins/wpsso-strip-schema-microdata/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata/reviews/?rate=5#new-post',
@@ -490,7 +490,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress
+						// WordPress
 						'home' => 'https://wordpress.org/plugins/wpsso-tweet-a-quote/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote/reviews/?rate=5#new-post',
@@ -525,7 +525,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress
+						// WordPress
 						'home' => 'https://wordpress.org/plugins/wpsso-user-locale/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-user-locale',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-user-locale/reviews/?rate=5#new-post',
@@ -560,7 +560,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'url' => array(
-						// wordpress
+						// WordPress
 						'forum' => '',
 						'review' => '',
 						// github
@@ -1186,7 +1186,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'simplexml' => 'SimpleXML',
 				),
 			),
-			'wp' => array(				// wordpress
+			'wp' => array(				// WordPress
 				'label' => 'WordPress',
 				/**
 				 * https://codex.wordpress.org/Supported_Versions

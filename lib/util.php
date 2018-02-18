@@ -282,10 +282,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
-				$error_msg = sprintf( 'slow PHP function detected - getimagesize() for %s took %0.4f secs'.
-					' (longer than recommended max of %0.4f secs)', $image_url, $total_time, $max_time );
+				$error_msg = sprintf( 'slow PHP function detected - getimagesize() took %0.4f secs for %s'.
+					' (longer than recommended max of %0.4f secs)', $total_time, $image_url, $max_time );
 
-				trigger_error( $info['short'].' warning: '.$error_msg, E_USER_WARNING );
+				trigger_error( sprintf( '%s warning: %s', $info['short'], $error_msg ), E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );
@@ -424,7 +424,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				if ( $size_info['width'] > 0 && $size_info['height'] > 0 ) {
 
-					// preserve compatibility with older wordpress versions, use true or false when possible
+					// preserve compatibility with older WordPress versions, use true or false when possible
 					if ( true === $size_info['crop'] && ( $size_info['crop_x'] !== 'center' || $size_info['crop_y'] !== 'center' ) ) {
 						global $wp_version;
 						if ( version_compare( $wp_version, 3.9, '>=' ) ) {
@@ -1908,7 +1908,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Apply the filters.
 			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'applying wordpress '.$filter_name.' filters' );	// being timer
+				$this->p->debug->mark( 'applying WordPress '.$filter_name.' filters' );	// being timer
 			}
 
 			$start_time   = microtime( true );
@@ -1916,7 +1916,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$total_time   = microtime( true ) - $start_time;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'applying wordpress '.$filter_name.' filters' );	// end timer
+				$this->p->debug->mark( 'applying WordPress '.$filter_name.' filters' );	// end timer
 			}
 
 			/**
@@ -1946,10 +1946,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
-				$error_msg = sprintf( 'slow filter hook(s) detected - %s filter took %0.4f secs'.
-					' (longer than recommended max of %0.4f secs)', $filter_name, $total_time, $max_time );
+				$error_msg = sprintf( 'slow filter hook(s) detected - WordPress took %0.4f secs to execute the "%s" filter'.
+					' (longer than recommended max of %0.4f secs)', $total_time, $filter_name, $max_time );
 
-				trigger_error( $info['short'].' warning: '.$error_msg, E_USER_WARNING );
+				trigger_error( sprintf( '%s warning: %s', $info['short'], $error_msg ), E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );

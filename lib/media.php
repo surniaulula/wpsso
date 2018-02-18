@@ -392,7 +392,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 						$dismiss_key = 'full-size-image-'.$pid.'-dimensions-missing';
-						// translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress function name.
+						// translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress function name
 						$this->p->notice->err( sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the WordPress %4$s function.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_name ).' '.$regen_msg, true, $dismiss_key, WEEK_IN_SECONDS );
 					}
 
@@ -406,7 +406,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 						$dismiss_key = 'full-size-image-'.$pid.'-file-path-missing';
-						// translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress function name.
+						// translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress function name
 						$this->p->notice->err( sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the WordPress %4$s function.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_name ).' '.$regen_msg, true, $dismiss_key, WEEK_IN_SECONDS );
 					}
 				}
@@ -706,7 +706,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					switch ( $attr_name ) {
 
-						// wordpress media library image id
+						// WordPress media library image id
 						case 'data-wp-pid':
 
 							if ( $this->p->debug->enabled ) {

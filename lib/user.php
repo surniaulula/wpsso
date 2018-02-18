@@ -148,10 +148,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
-				$error_msg = sprintf( 'slow query detected - get_posts() for posts authored by %s id %d took %0.4f secs'.
-					' (longer than recommended max of %0.4f secs)', $mod['name'], $mod['id'], $total_time, $max_time );
+				$error_msg = sprintf( 'slow query detected - WordPress get_posts() took %0.4f secs to get posts authored by %s id %d'.
+					' (longer than recommended max of %0.4f secs)', $total_time, $mod['name'], $mod['id'], $max_time );
 
-				trigger_error( $info['short'].' warning: '.$error_msg, E_USER_WARNING );
+				trigger_error( sprintf( '%s warning: %s', $info['short'], $error_msg ), E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );
@@ -633,7 +633,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 				$value = trim( $value );	// just in case
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'user id '.$user_id.' is not a wordpress user' );
+				$this->p->debug->log( 'user id '.$user_id.' is not a WordPress user' );
 			}
 
 			$value = apply_filters( $this->p->cf['lca'].'_get_author_meta', $value, $user_id, $field_id, $is_user );
@@ -675,7 +675,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 				$url = trim( $url );	// just in case
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'user id '.$user_id.' is not a wordpress user' );
+				$this->p->debug->log( 'user id '.$user_id.' is not a WordPress user' );
 			}
 			$url = apply_filters( $this->p->cf['lca'].'_get_author_website', $url, $user_id, $field_id, $is_user );
 			if ( $this->p->debug->enabled ) {

@@ -814,14 +814,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( file_exists( $plugin_lib ) ) {
 					require_once $plugin_lib;
 				} else {
-					trigger_error( sprintf( '%1$s error: wordpress library file %2$s is missing and required',
+					trigger_error( sprintf( '%s error: WordPress library file %s is missing and required',
 						__METHOD__, $plugin_lib ), E_USER_ERROR );
 				}
 			}
 			if ( function_exists( 'get_plugins' ) ) {
 				return self::$cache_wp_plugins = get_plugins();
 			} else {
-				trigger_error( sprintf( '%1$s error: wordpress function %2$s is missing and required',
+				trigger_error( sprintf( '%s error: WordPress function %s is missing and required',
 					__METHOD__, 'get_plugins()' ), E_USER_ERROR );
 			}
 			return self::$cache_wp_plugins = array();
@@ -1260,7 +1260,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * If you need to clear the wordpress plugins cache, call wp_clean_plugins_cache() beforehand.
+		 * If you need to clear the WordPress plugins cache, call wp_clean_plugins_cache() beforehand.
 		 */
 		public static function get_installed_slug_base( $plugin_slug, $use_cache = true ) { // Example: $plugin_slug = wpsso
 			static $local_cache = array();
@@ -1825,7 +1825,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function array_parent_index( array $array, $parent_key = '', $gparent_key = '', &$index = array() ) {
 		        foreach ( $array as $child_key => $value ) {
 				if ( isset( $index[$child_key] ) ) {
-					trigger_error( sprintf( '%1$s warning: duplicate key %2$s = %3$s',
+					trigger_error( sprintf( '%s warning: duplicate key "%s" = "%s"',
 						__METHOD__, $child_key, $index[$child_key] ), E_USER_WARNING );
 				} elseif ( is_array( $value ) ) {
 					self::array_parent_index( $value, $child_key, $parent_key, $index );

@@ -269,7 +269,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( array( 'profile', 'setting' ) as $menu_lib ) {
 
-				// match wordpress behavior (users page for admins, profile page for everyone else)
+				// match WordPress behavior (users page for admins, profile page for everyone else)
 				if ( $menu_lib === 'profile' && current_user_can( 'list_users' ) ) {
 					$parent_slug = $this->p->cf['wp']['admin']['users']['page'];
 				} else {
@@ -517,7 +517,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			// make sure the plugin slug is one of ours
 			} elseif ( empty( $this->p->cf['*']['slug'][$args->slug] ) ) {
 				return $res;
-			// if the object from wordpress looks complete, return it as-is
+			// if the object from WordPress looks complete, return it as-is
 			} elseif ( isset( $res->slug ) && $res->slug === $args->slug ) {
 				return $res;
 			}
@@ -538,7 +538,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $res;
 			}
 
-			// let wordpress known that this is not a wordpress.org plugin
+			// let WordPress known that this is not a wordpress.org plugin
 			$plugin_data->external = true;
 
 			return $plugin_data;
@@ -897,7 +897,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function profile_updated_redirect( $url, $status ) {
 			if ( strpos( $url, 'updated=' ) !== false && strpos( $url, 'wp_http_referer=' ) ) {
 
-				// match wordpress behavior (users page for admins, profile page for everyone else)
+				// match WordPress behavior (users page for admins, profile page for everyone else)
 				$menu_lib = current_user_can( 'list_users' ) ? 'users' : 'profile';
 				$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'];
 				$referer_match = '/'.$parent_slug.'?page='.$this->p->lca.'-';
@@ -924,7 +924,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$current_color = 'fresh';
 				}
 
-				// match wordpress behavior (users page for admins, profile page for everyone else)
+				// match WordPress behavior (users page for admins, profile page for everyone else)
 				$referer_admin_url = current_user_can( 'list_users' ) ?
 					$this->p->util->get_admin_url( $this->menu_id, null, 'users' ) :
 					$this->p->util->get_admin_url( $this->menu_id, null, $this->menu_lib );
