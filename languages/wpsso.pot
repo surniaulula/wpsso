@@ -2323,14 +2323,14 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#. translators: %s is the short plugin name, %2$s is the PHP class name
+#. translators: %1$s is the short plugin name, %2$s is the PHP class name
 #: lib/loader.php:134
 msgid "%1$s error: library class \"%2$s\" is missing."
 msgstr ""
 
-#. translators: %s is the short plugin name, %2$s is the PHP library file path
+#. translators: %1$s is the short plugin name, %2$s is the PHP library file path
 #: lib/loader.php:144
-msgid "%1$s error: \"%2$s\" library file not found."
+msgid "%1$s error: library file \"%2$s\" not found."
 msgstr ""
 
 #: lib/media.php:348
@@ -4581,20 +4581,25 @@ msgstr ""
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
-#: lib/pro/ecom/yotpowc.php:63 lib/pro/ecom/yotpowc.php:74
+#. translators: %s is "App Key"
+#. translators: %s is "Secret Key"
+#: lib/pro/ecom/yotpowc.php:64 lib/pro/ecom/yotpowc.php:76
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
-#: lib/pro/ecom/yotpowc.php:85
+#. translators: %s is "wc_yotpo_compatible()"
+#: lib/pro/ecom/yotpowc.php:88
 msgid "Yotpo for WooCommerce %s function returned an error."
 msgstr ""
 
-#: lib/pro/ecom/yotpowc.php:100
-msgid "%s was not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
+#. translators: %s is "yotpo-social-reviews-for-woocommerce"
+#: lib/pro/ecom/yotpowc.php:104
+msgid "\"%s\" not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
-#: lib/pro/ecom/yotpowc.php:118
-msgid "Yotpo for WooCommerce %s API library file not found."
+#. translators: %s is the API library file path
+#: lib/pro/ecom/yotpowc.php:123
+msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
 #: lib/pro/form/gravityview.php:53
