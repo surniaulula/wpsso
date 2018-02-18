@@ -390,7 +390,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.53.1-dev.1 (TBD)**
+**Version 3.53.1-dev.1 (2018/02/18)**
 
 * *New Features*
 	* None
@@ -476,7 +476,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.53.1-dev.1 =
 
-(TBD) Improved trigger_error() error messages and their translations.
+(2018/02/18) Improved trigger_error() error messages and their translations.
 
 = 3.53.0 =
 
