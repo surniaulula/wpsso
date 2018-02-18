@@ -399,7 +399,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Improved `trigger_error()` error messages and their translations.
 
 **Version 3.53.0 (2018/02/17)**
 
@@ -476,7 +476,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.53.1-dev.1 =
 
-(TBD) None.
+(TBD) Improved trigger_error() error messages and their translations.
 
 = 3.53.0 =
 
