@@ -684,16 +684,16 @@ msgstr ""
 #. translators: %1$s is the URL, %2$s is the short plugin name
 #: lib/admin.php:2560
 msgid ""
-"You may optionally <a href=\"%1$s\">refresh the update information for %2$s "
-"and its extensions</a> to check if newer versions are available."
+"You may <a href=\"%1$s\">refresh the update information for %2$s and its "
+"extensions</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL
 #: lib/admin.php:2567
 msgid ""
-"You may optionally <a href=\"%1$s\">refresh the update information for "
-"WordPress (plugins, themes, and translations)</a> to check if newer versions "
-"are available."
+"You may <a href=\"%1$s\">refresh the update information for WordPress "
+"(plugins, themes, and translations)</a> to check if newer versions are "
+"available."
 msgstr ""
 
 #: lib/com/bfo.php:204 lib/com/cache.php:438 lib/com/notice.php:551
