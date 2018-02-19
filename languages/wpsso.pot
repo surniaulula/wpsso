@@ -685,15 +685,15 @@ msgstr ""
 #: lib/admin.php:2560
 msgid ""
 "You may optionally <a href=\"%1$s\">refresh the update information for %2$s "
-"and its extensions</a> to check for newer plugin updates."
+"and its extensions</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL
 #: lib/admin.php:2567
 msgid ""
 "You may optionally <a href=\"%1$s\">refresh the update information for "
-"WordPress (plugins, themes, and translations)</a> to check for newer plugin "
-"updates."
+"WordPress (plugins, themes, and translations)</a> to check if newer versions "
+"are available."
 msgstr ""
 
 #: lib/com/bfo.php:204 lib/com/cache.php:438 lib/com/notice.php:551
@@ -4455,11 +4455,11 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#. translators: %1$0.3f is a number of seconds, %2$s is the sub-system name, %3$d is an ID number, %5$0.3f is a number of seconds
+#. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$0.3f is a number of seconds
 #: lib/post.php:184
 msgid ""
 "slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
-"children of %2$s id %3$d (longer than recommended max of %4$0.3f secs)"
+"children of post ID %2$d (longer than recommended max of %3$0.3f secs)"
 msgstr ""
 
 #. translators: %s is the short plugin name
@@ -5255,12 +5255,11 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
-#. translators: %1$0.3f is a number of seconds, %2$s is the sub-system name, %3$d is an ID number, %4$s is a taxonomy name, %5$0.3f
-#. is a number of seconds
+#. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$0.3f is a number of seconds
 #: lib/term.php:169
 msgid ""
 "slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
-"for %2$s id %3$d in taxonomy %4$s (longer than recommended max of %5$0.3f "
+"for term ID %2$d in taxonomy %3$s (longer than recommended max of %4$0.3f "
 "secs)"
 msgstr ""
 
@@ -5278,11 +5277,11 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#. translators: %1$0.3f is a number of seconds, %2$s is the sub-system name, %3$d is an ID number, %4$0.3f is a number of seconds
+#. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$0.3f is a number of seconds
 #: lib/user.php:152
 msgid ""
 "slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
-"authored by %2$s id %3$d (longer than recommended max of %4$0.3f secs)"
+"authored by user ID %2$d (longer than recommended max of %3$0.3f secs)"
 msgstr ""
 
 #: lib/user.php:504

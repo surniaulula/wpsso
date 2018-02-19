@@ -2557,14 +2557,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 				// translators: %1$s is the URL, %2$s is the short plugin name
-				$link_html = sprintf( __( 'You may optionally <a href="%1$s">refresh the update information for %2$s and its extensions</a> to check for newer plugin updates.', 'wpsso' ), $link_url, self::$pkg[$this->p->lca]['short'] );
+				$link_html = sprintf( __( 'You may optionally <a href="%1$s">refresh the update information for %2$s and its extensions</a> to check if newer versions are available.', 'wpsso' ), $link_url, self::$pkg[$this->p->lca]['short'] );
 
 			} elseif ( empty( $_GET['force-check'] ) ) {
 
 				$link_url = self_admin_url( 'update-core.php?force-check=1' );
 
 				// translators: %1$s is the URL
-				$link_html = sprintf( __( 'You may optionally <a href="%1$s">refresh the update information for WordPress (plugins, themes, and translations)</a> to check for newer plugin updates.', 'wpsso' ), $link_url );
+				$link_html = sprintf( __( 'You may optionally <a href="%1$s">refresh the update information for WordPress (plugins, themes, and translations)</a> to check if newer versions are available.', 'wpsso' ), $link_url );
 
 			}
 
