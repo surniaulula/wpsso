@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.53.1-dev.1',		// Plugin version.
+					'version' => '3.53.1-dev.2',		// Plugin version.
 					'opt_version' => '576',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core',
@@ -1196,7 +1196,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * are discovered.
 				 */
 				'min_version' => '3.8',		// hard limit - deactivate the plugin when activating
-				'rec_version' => '4.8',		// soft limit - issue warning if lower version found
+				'rec_version' => '4.9.2',	// soft limit - issue warning if lower version found
 				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
 				'tb_iframe' => array(		// thickbox iframe
 					'width' => 772,		// url query argument

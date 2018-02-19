@@ -74,12 +74,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_menu', array( &$this, 'load_menu_objects' ), -1000 );
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 				add_action( 'admin_menu', array( &$this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
-				add_action( 'admin_init', array( &$this, 'add_plugins_upgrade_notice' ) );
+				add_action( 'admin_init', array( &$this, 'add_plugins_page_upgrade_notice' ) );
 				add_action( 'admin_init', array( &$this, 'register_setting' ) );
 
 				// hook in_admin_header to allow for setting changes, plugin activation / loading, etc.
 				add_action( 'in_admin_header', array( &$this, 'conflict_warnings' ), 10 );
 				add_action( 'in_admin_header', array( &$this, 'required_notices' ), 20 );
+				add_action( 'in_admin_header', array( &$this, 'update_count_notice' ), 30 );
 
 				add_filter( 'current_screen', array( &$this, 'maybe_show_screen_notices' ) );
 				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
@@ -335,21 +336,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				array( &$this, 'registered_setting_sanitation' ) );
 		}
 
-		public function add_plugins_upgrade_notice() {
+		public function add_plugins_page_upgrade_notice() {
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! empty( $info['base'] ) ) {
-					add_action( 'in_plugin_update_message-' . $info['base'], 
-						array( &$this, 'show_upgrade_notice' ), 10, 2 );
+					add_action( 'in_plugin_update_message-' . $info['base'], array( &$this, 'show_upgrade_notice' ), 10, 2 );
 				}
 			}
 		}
 
 		public function show_upgrade_notice( $data, $response ) {
 			if ( isset( $data['upgrade_notice'] ) ) {	// Just in case.
-				echo '<span style="display:table;border-collapse:collapse;margin-left:22px;">';
-				echo '<span style="display:table-cell;white-space:nowrap;padding:5px"><b>' .
-					__( 'Version', 'wpsso' ) . ' ' . $data['new_version'] . '</b></span>';
-				echo '<span style="display:table-cell;padding:5px;">' . strip_tags( $data['upgrade_notice'] ) . '</span>';
+				echo '<span style="display:table;border-collapse:collapse;margin-left:26px;">';
+				echo '<span style="display:table-cell;">' . strip_tags( $data['upgrade_notice'] ) . '</span>';
 				echo '</span>';
 			}
 		}
@@ -2126,6 +2124,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
+		public function update_count_notice() {
+			$count = SucomUtil::get_plugin_updates_count( $this->p->lca );
+			if ( $count > 0 ) {
+				$info = $this->p->cf['plugin'][$this->p->lca];
+				$link_url = self_admin_url( 'update-core.php' );
+				$dismiss_key = 'have-updates-for-'.$this->p->lca;
+				$this->p->notice->inf( sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and/or its extensions</a>.', 'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and/or its extensions</a>.', $count, 'wpsso' ), $link_url, $count, $info['name'] ).' '._n( 'Please install this plugin update at your earliest convenience.', 'Please install these plugin updates at your earliest convenience.', $count, 'wpsso' ), true, $dismiss_key, DAY_IN_SECONDS * 3 );
+			}
+		}
+
 		public function reset_check_head_count() {
 			delete_option( WPSSO_POST_CHECK_NAME );
 		}
@@ -2536,24 +2544,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $url;
 		}
 
-		public function get_check_for_updates_link() {
+		public function get_check_for_updates_link( $only_url = false ) {
 
+			$link_url = '';
 			$link_html = '';
 
 			if ( class_exists( 'WpssoUm' ) ) {
 
 				$this->set_plugin_pkg_info();
 
-				// translators: %s is the short plugin name
-				$link_text = __( 'Refresh the update information for %s and its extensions', 'wpsso' );
-
 				$link_url = wp_nonce_url( $this->p->util->get_admin_url( 'um-general?'.$this->p->lca.'-action=check_for_updates' ),
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
-				$link_html = '<a href="'.$link_url.'">'.sprintf( $link_text, self::$pkg[$this->p->lca]['short'] ).'.</a>';
+				// translators: %1$s is the URL, %2$s is the short plugin name
+				$link_html = sprintf( __( 'You may optionally <a href="%1$s">refresh the update information for %2$s and its extensions</a> to check for newer plugin updates.', 'wpsso' ), $link_url, self::$pkg[$this->p->lca]['short'] );
+
+			} elseif ( empty( $_GET['force-check'] ) ) {
+
+				$link_url = self_admin_url( 'update-core.php?force-check=1' );
+
+				// translators: %1$s is the URL
+				$link_html = sprintf( __( 'You may optionally <a href="%1$s">refresh the update information for WordPress (plugins, themes, and translations)</a> to check for newer plugin updates.', 'wpsso' ), $link_url );
+
 			}
 
-			return $link_html;
+			return $only_url ? $link_url : $link_html;
 		}
 
 		public function get_ext_img_icon( $ext ) {

@@ -3207,6 +3207,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 			return $html;
 		}
+
+		public static function get_plugin_updates_count( $slug_begin = '' ) {
+			$count = 0;
+			if ( $plugins = current_user_can( 'update_plugins' ) ) {
+				$update_plugins = get_site_transient( 'update_plugins' );
+				if ( ! empty( $update_plugins->response ) ) {
+					if ( ! empty( $slug_begin ) ) {
+						foreach ( $update_plugins->response as $base => $data ) {
+							if ( isset( $data->slug ) && strpos( $data->slug, $slug_begin ) === 0 ) {
+								$count++;
+							}
+						}
+					} else {
+						$count = count( $update_plugins->response );
+					}
+				}
+			}
+			return $count;
+		}
 	}
 }
 
