@@ -282,10 +282,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
-				$error_msg = sprintf( 'slow PHP function detected - getimagesize() took %0.4f secs for %s'.
-					' (longer than recommended max of %0.4f secs)', $total_time, $image_url, $max_time );
+				$error_msg = sprintf( __( 'slow PHP function detected - getimagesize() took %0.4f secs for %s (longer than recommended max of %0.4f secs)', 'wpsso' ), $total_time, $image_url, $max_time );
 
-				trigger_error( sprintf( '%s warning: %s', $info['short'], $error_msg ), E_USER_WARNING );
+				trigger_error( sprintf( __( '%s warning: %s', 'wpsso' ), $info['short'], $error_msg ), E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );
@@ -1946,10 +1945,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
-				$error_msg = sprintf( 'slow filter hook(s) detected - WordPress took %0.4f secs to execute the "%s" filter'.
-					' (longer than recommended max of %0.4f secs)', $total_time, $filter_name, $max_time );
+				$error_msg = sprintf( __( 'slow filter hook(s) detected - WordPress took %0.4f secs to execute the "%s" filter (longer than recommended max of %0.4f secs)', 'wpsso' ), $total_time, $filter_name, $max_time );
 
-				trigger_error( sprintf( '%s warning: %s', $info['short'], $error_msg ), E_USER_WARNING );
+				trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );

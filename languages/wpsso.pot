@@ -2346,14 +2346,19 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#. translators: %1$s is the short plugin name, %2$s is the PHP class name
+#. translators: %s is the PHP library class name
 #: lib/loader.php:134
-msgid "%1$s error: library class \"%2$s\" is missing."
+msgid "library class \"%s\" is missing."
 msgstr ""
 
-#. translators: %1$s is the short plugin name, %2$s is the PHP library file path
-#: lib/loader.php:144
-msgid "%1$s error: library file \"%2$s\" not found."
+#. translators: %s is the short plugin name
+#: lib/loader.php:137 lib/loader.php:149
+msgid "%s error:"
+msgstr ""
+
+#. translators: %s is the PHP library file path
+#: lib/loader.php:146
+msgid "library file \"%s\" is missing."
 msgstr ""
 
 #: lib/media.php:348
@@ -2811,7 +2816,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:462 lib/util.php:2183
+#: lib/messages.php:462 lib/util.php:2181
 msgid "No options available."
 msgstr ""
 
@@ -4450,6 +4455,17 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
+#: lib/post.php:183
+msgid ""
+"slow query detected - WordPress get_posts() took %0.4f secs to get the "
+"children of %s id %d (longer than recommended max of %0.4f secs)"
+msgstr ""
+
+#. translators: %s is the short plugin name
+#: lib/post.php:186 lib/term.php:171 lib/user.php:154 lib/util.php:1950
+msgid "%s warning:"
+msgstr ""
+
 #: lib/post.php:666
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
@@ -4478,7 +4494,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:714 lib/util.php:897
+#: lib/post.php:714 lib/util.php:896
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -4690,12 +4706,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:173 lib/pro/media/vimeo.php:146
-#: lib/pro/media/wistia.php:274 lib/util.php:961
+#: lib/pro/media/wistia.php:274 lib/util.php:960
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:175 lib/pro/media/vimeo.php:149
-#: lib/pro/media/wistia.php:277 lib/util.php:964
+#: lib/pro/media/wistia.php:277 lib/util.php:963
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -5237,6 +5253,12 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
+#: lib/term.php:168
+msgid ""
+"slow query detected - WordPress get_posts() took %0.4f secs to get posts for "
+"%s id %d in taxonomy %s (longer than recommended max of %0.4f secs)"
+msgstr ""
+
 #: lib/term.php:445
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
@@ -5249,6 +5271,12 @@ msgstr ""
 #: lib/twittercard.php:40
 msgctxt "image size label"
 msgid "Twitter Large Image Card"
+msgstr ""
+
+#: lib/user.php:151
+msgid ""
+"slow query detected - WordPress get_posts() took %0.4f secs to get posts "
+"authored by %s id %d (longer than recommended max of %0.4f secs)"
 msgstr ""
 
 #: lib/user.php:503
@@ -5271,49 +5299,65 @@ msgstr ""
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/util.php:636
+#: lib/util.php:285
+msgid ""
+"slow PHP function detected - getimagesize() took %0.4f secs for %s (longer "
+"than recommended max of %0.4f secs)"
+msgstr ""
+
+#: lib/util.php:287
+msgid "%s warning: %s"
+msgstr ""
+
+#: lib/util.php:635
 msgid ""
 "%s cached files, transient cache, sortable column meta, and the WordPress "
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:640
+#: lib/util.php:639
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:662
+#: lib/util.php:661
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:740
+#: lib/util.php:739
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:757
+#: lib/util.php:756
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:831
+#: lib/util.php:830
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:885
+#: lib/util.php:884
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:908
+#: lib/util.php:907
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1006
+#: lib/util.php:1005
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1964
+#: lib/util.php:1948
+msgid ""
+"slow filter hook(s) detected - WordPress took %0.4f secs to execute the \"%s"
+"\" filter (longer than recommended max of %0.4f secs)"
+msgstr ""
+
+#: lib/util.php:1962
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.2f "
@@ -5322,34 +5366,34 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:1964
+#: lib/util.php:1962
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2210
+#: lib/util.php:2208
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2214
+#: lib/util.php:2212
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2217
+#: lib/util.php:2215
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2221
+#: lib/util.php:2219
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2340
+#: lib/util.php:2338
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""
