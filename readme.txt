@@ -390,12 +390,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.53.1-dev.1 (2018/02/18)**
+**Version 3.53.1-dev.2 (2018/02/19)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a new informational notice when there are pending updates for the WPSSO Core plugin and/or its extensions.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -474,9 +474,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.53.1-dev.1 =
+= 3.53.1-dev.2 =
 
-(2018/02/18) Improved trigger_error() error messages and their translations.
+(2018/02/19) Added a new informational notice when there are pending updates for the WPSSO Core plugin and/or its extensions. Improved trigger_error() error messages and their translations.
 
 = 3.53.0 =
 
