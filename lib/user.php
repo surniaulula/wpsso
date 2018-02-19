@@ -148,7 +148,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
-				$error_msg = sprintf( __( 'slow query detected - WordPress get_posts() took %0.4f secs to get posts authored by %s id %d (longer than recommended max of %0.4f secs)', 'wpsso' ), $total_time, $mod['name'], $mod['id'], $max_time );
+				// translators: %1$0.3f is a number of seconds, %2$s is the sub-system name, %3$d is an ID number, %4$0.3f is a number of seconds
+				$error_msg = sprintf( __( 'slow query detected - WordPress get_posts() took %1$0.3f secs to get posts authored by %2$s id %3$d (longer than recommended max of %4$0.3f secs)', 'wpsso' ), $total_time, $mod['name'], $mod['id'], $max_time );
 
 				// translators: %s is the short plugin name
 				trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_WARNING );
@@ -159,7 +160,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $user_posts ).' post objects returned in '.sprintf( '%0.4f secs', $total_time ) );
+				$this->p->debug->log( count( $user_posts ).' post objects returned in '.sprintf( '%0.3f secs', $total_time ) );
 			}
 
 			return $user_posts;

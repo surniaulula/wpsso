@@ -282,9 +282,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
-				$error_msg = sprintf( __( 'slow PHP function detected - getimagesize() took %0.4f secs for %s (longer than recommended max of %0.4f secs)', 'wpsso' ), $total_time, $image_url, $max_time );
+				// translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$0.3f is a number of seconds
+				$error_msg = sprintf( __( 'slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (longer than recommended max of %3$0.3f secs)', 'wpsso' ), $total_time, $image_url, $max_time );
 
-				trigger_error( sprintf( __( '%s warning: %s', 'wpsso' ), $info['short'], $error_msg ), E_USER_WARNING );
+				// translators: %s is the short plugin name
+				trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );
@@ -1945,8 +1947,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
-				$error_msg = sprintf( __( 'slow filter hook(s) detected - WordPress took %0.4f secs to execute the "%s" filter (longer than recommended max of %0.4f secs)', 'wpsso' ), $total_time, $filter_name, $max_time );
+				// translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
+				$error_msg = sprintf( __( 'slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter (longer than recommended max of %3$0.3f secs)', 'wpsso' ), $total_time, $filter_name, $max_time );
 
+				// translators: %s is the short plugin name
 				trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_WARNING );
 
 				if ( $this->p->debug->enabled ) {
@@ -1959,7 +1963,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$query_monitor_link = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
 					$dismiss_key        = 'slow-filter-hooks-detected-'.$filter_name;
 
-					$this->p->notice->warn( sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f seconds to execute. This is longer than the recommended maximum of %3$0.2f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $total_time, $max_time ) . ' ' . sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info['short'] ), true, $dismiss_key, WEEK_IN_SECONDS );
+					$this->p->notice->warn( sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $total_time, $max_time ) . ' ' . sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info['short'] ), true, $dismiss_key, WEEK_IN_SECONDS );
 				}
 			}
 

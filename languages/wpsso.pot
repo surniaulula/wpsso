@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:722 lib/post.php:550 lib/term.php:334 lib/user.php:341
+#: lib/admin.php:722 lib/post.php:551 lib/term.php:335 lib/user.php:342
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2311,7 +2311,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:169 lib/meta.php:212 lib/post.php:890
+#: lib/gpl/admin/post.php:169 lib/meta.php:212 lib/post.php:891
 #: lib/pro/admin/post.php:191
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2816,7 +2816,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:462 lib/util.php:2181
+#: lib/messages.php:462 lib/util.php:2185
 msgid "No options available."
 msgstr ""
 
@@ -3254,7 +3254,7 @@ msgstr ""
 msgid "Automatically add the '%s' role when new users are created."
 msgstr ""
 
-#: lib/messages.php:805 lib/user.php:31 lib/user.php:179
+#: lib/messages.php:805 lib/user.php:31 lib/user.php:180
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -4455,145 +4455,147 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/post.php:183
+#. translators: %1$0.3f is a number of seconds, %2$s is the sub-system name, %3$d is an ID number, %5$0.3f is a number of seconds
+#: lib/post.php:184
 msgid ""
-"slow query detected - WordPress get_posts() took %0.4f secs to get the "
-"children of %s id %d (longer than recommended max of %0.4f secs)"
+"slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
+"children of %2$s id %3$d (longer than recommended max of %4$0.3f secs)"
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/post.php:186 lib/term.php:171 lib/user.php:154 lib/util.php:1950
+#: lib/post.php:187 lib/term.php:172 lib/user.php:155 lib/util.php:289
+#: lib/util.php:1954
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:666
+#: lib/post.php:667
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:669
+#: lib/post.php:670
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:697
+#: lib/post.php:698
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:699
+#: lib/post.php:700
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:701
+#: lib/post.php:702
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:703
+#: lib/post.php:704
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:714 lib/util.php:896
+#: lib/post.php:715 lib/util.php:898
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:723
+#: lib/post.php:724
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:732
+#: lib/post.php:733
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:741
+#: lib/post.php:742
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:757
+#: lib/post.php:758
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:765
+#: lib/post.php:766
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:776
+#: lib/post.php:777
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:776
+#: lib/post.php:777
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:776
+#: lib/post.php:777
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:799
+#: lib/post.php:800
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:803
+#: lib/post.php:804
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:805
+#: lib/post.php:806
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
-#: lib/post.php:1005
+#: lib/post.php:1006
 msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1014
+#: lib/post.php:1015
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1015
+#: lib/post.php:1016
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1026
-msgctxt "option label"
-msgid "No index"
 msgstr ""
 
 #: lib/post.php:1027
 msgctxt "option label"
-msgid "No follow"
+msgid "No index"
 msgstr ""
 
 #: lib/post.php:1028
 msgctxt "option label"
-msgid "No archive"
+msgid "No follow"
 msgstr ""
 
 #: lib/post.php:1029
 msgctxt "option label"
+msgid "No archive"
+msgstr ""
+
+#: lib/post.php:1030
+msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1103
+#: lib/post.php:1104
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -4706,12 +4708,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:173 lib/pro/media/vimeo.php:146
-#: lib/pro/media/wistia.php:274 lib/util.php:960
+#: lib/pro/media/wistia.php:274 lib/util.php:962
 msgid "The PHP <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:175 lib/pro/media/vimeo.php:149
-#: lib/pro/media/wistia.php:277 lib/util.php:963
+#: lib/pro/media/wistia.php:277 lib/util.php:965
 msgid ""
 "Please contact your hosting provider to have the missing function installed."
 msgstr ""
@@ -5253,13 +5255,16 @@ msgctxt "metabox title"
 msgid "Setup Guide"
 msgstr ""
 
-#: lib/term.php:168
+#. translators: %1$0.3f is a number of seconds, %2$s is the sub-system name, %3$d is an ID number, %4$s is a taxonomy name, %5$0.3f
+#. is a number of seconds
+#: lib/term.php:169
 msgid ""
-"slow query detected - WordPress get_posts() took %0.4f secs to get posts for "
-"%s id %d in taxonomy %s (longer than recommended max of %0.4f secs)"
+"slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
+"for %2$s id %3$d in taxonomy %4$s (longer than recommended max of %5$0.3f "
+"secs)"
 msgstr ""
 
-#: lib/term.php:445
+#: lib/term.php:446
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -5273,127 +5278,126 @@ msgctxt "image size label"
 msgid "Twitter Large Image Card"
 msgstr ""
 
-#: lib/user.php:151
+#. translators: %1$0.3f is a number of seconds, %2$s is the sub-system name, %3$d is an ID number, %4$0.3f is a number of seconds
+#: lib/user.php:152
 msgid ""
-"slow query detected - WordPress get_posts() took %0.4f secs to get posts "
-"authored by %s id %d (longer than recommended max of %0.4f secs)"
+"slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
+"authored by %2$s id %3$d (longer than recommended max of %4$0.3f secs)"
 msgstr ""
 
-#: lib/user.php:503
+#: lib/user.php:504
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:557
+#: lib/user.php:558
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:558
+#: lib/user.php:559
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:559
+#: lib/user.php:560
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:888
+#: lib/user.php:889
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/util.php:285
+#. translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$0.3f is a number of seconds
+#: lib/util.php:286
 msgid ""
-"slow PHP function detected - getimagesize() took %0.4f secs for %s (longer "
-"than recommended max of %0.4f secs)"
+"slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
+"(longer than recommended max of %3$0.3f secs)"
 msgstr ""
 
-#: lib/util.php:287
-msgid "%s warning: %s"
-msgstr ""
-
-#: lib/util.php:635
+#: lib/util.php:637
 msgid ""
 "%s cached files, transient cache, sortable column meta, and the WordPress "
 "object cache have all been cleared."
 msgstr ""
 
-#: lib/util.php:639
+#: lib/util.php:641
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:661
+#: lib/util.php:663
 msgid ""
 "Site performance may be impacted slightly while all cache objects are "
 "rebuilt."
 msgstr ""
 
-#: lib/util.php:739
+#: lib/util.php:741
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:756
+#: lib/util.php:758
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:830
+#: lib/util.php:832
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:884
+#: lib/util.php:886
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:907
+#: lib/util.php:909
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1005
+#: lib/util.php:1007
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#: lib/util.php:1948
+#. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
+#: lib/util.php:1951
 msgid ""
-"slow filter hook(s) detected - WordPress took %0.4f secs to execute the \"%s"
-"\" filter (longer than recommended max of %0.4f secs)"
+"slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
+"\"%2$s\" filter (longer than recommended max of %3$0.3f secs)"
 msgstr ""
 
-#: lib/util.php:1962
+#: lib/util.php:1966
 msgid ""
-"Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.2f "
-"seconds to execute. This is longer than the recommended maximum of %3$0.2f "
+"Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
+"seconds to execute. This is longer than the recommended maximum of %3$0.3f "
 "seconds and may affect page load time. Please consider reviewing 3rd party "
 "plugin and theme functions hooked into the WordPress %1$s filter for slow "
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:1962
+#: lib/util.php:1966
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2208
+#: lib/util.php:2212
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2212
+#: lib/util.php:2216
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2215
+#: lib/util.php:2219
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2219
+#: lib/util.php:2223
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2338
+#: lib/util.php:2342
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""

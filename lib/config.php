@@ -2411,8 +2411,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			$var_const['WPSSO_DUPE_CHECK_HEADER_COUNT'] = 5;		// maximum number of times to check for duplicates
 			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = true;		// clear / remove cache file before fetching shortlink url
-			$var_const['WPSSO_DUPE_CHECK_WARNING_SECS'] = 2.5;		// issue a warning if getting shortlink took more than 2.5 seconds
-			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.0;		// hard-limit - most crawlers time-out after 3 seconds
+			$var_const['WPSSO_DUPE_CHECK_WARNING_SECS'] = 2.50;		// issue a warning if getting shortlink took more than 2.5 seconds
+			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.00;		// hard-limit - most crawlers time-out after 3 seconds
 
 			$var_const['WPSSO_GET_POSTS_MAX_TIME'] = 0.10;			// send an error to trigger_error() if get_posts() takes longer
 			$var_const['WPSSO_PHP_GETIMGSIZE_MAX_TIME'] = 1.00;		// send an error to trigger_error() if getimagesize() takes longer
