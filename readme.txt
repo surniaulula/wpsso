@@ -390,16 +390,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.53.1-dev.2 (2018/02/19)**
+**Version 3.54.0-dev.3 (2018/02/20)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added a new informational notice when there are pending updates for the WPSSO Core plugin and/or its extensions.
+	* Added a wrapper method / function around `getimagesize()` to manage connection timeouts using PHP's cURL library.
 * *Bugfixes*
 	* None
 * *Developer Notes*
 	* Improved `trigger_error()` error messages and their translations.
+	* Added a new WpssoAdmin `get_check_for_updates_link()` method for use by extensions in their notification messages.
+	* Added a new SucomCache `get_image_size()` method to fetch an image URL and run `getimagesize()` on the local image file instead.
+	* Replaced `getimagesize()` in WpssoUtil by SucomCache `get_image_size()` which has shorter / better connection timeouts.
+	* Renamed the following constants for better name consistency:
+		* WPSSO_DUPE_CHECK_WARNING_SECS to WPSSO_DUPE_CHECK_WARNING_TIME
+		* WPSSO_DUPE_CHECK_TIMEOUT_SECS to WPSSO_DUPE_CHECK_TIMEOUT_TIME
 
 **Version 3.53.0 (2018/02/17)**
 
@@ -474,9 +481,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.53.1-dev.2 =
+= 3.54.0-dev.3 =
 
-(2018/02/19) Added a new informational notice when there are pending updates for the WPSSO Core plugin and/or its extensions. Improved trigger_error() error messages and their translations.
+(2018/02/20) Added a new informational notice when there are pending updates for the WPSSO Core plugin and/or its extensions. Added a wrapper method / function around getimagesize() to manage connection timeouts using PHP's cURL library.
 
 = 3.53.0 =
 
