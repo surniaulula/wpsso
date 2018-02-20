@@ -199,7 +199,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$media_url = SucomUtil::get_mt_media_url( $opts, $opt_prefix.$opt_suffix );
 
 				if ( ! empty( $media_url ) ) {
+
 					$image_info = $this->get_image_url_info( $media_url );
+
 					list(
 						$opts[$opt_prefix.':width'.$opt_suffix],	// example: place_addr_img_url:width_1
 						$opts[$opt_prefix.':height'.$opt_suffix],	// example: place_addr_img_url:height_1
@@ -245,7 +247,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			} elseif ( filter_var( $image_url, FILTER_VALIDATE_URL ) === false ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: invalid image url ('.$image_url.')' );
+					$this->p->debug->log( 'exiting early: invalid image url = '.$image_url );
 				}
 				return $local_cache[$image_url] = $def_image_info;	// stop here
 			}
@@ -309,10 +311,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'PHP getimagesize() image info: '.$image_info[0].'x'.$image_info[1] );
 				}
 			} else {
-				$image_info = $def_image_info;
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'PHP getimagesize() did not return an array - using defaults: '.$image_info[0].'x'.$image_info[1] );
+					$this->p->debug->log( 'PHP getimagesize() did not return an array - using defaults for cache' );
 				}
+				$image_info = $def_image_info;
 			}
 
 			if ( $cache_exp_secs > 0 ) {
