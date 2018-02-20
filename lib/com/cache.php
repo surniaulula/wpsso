@@ -196,13 +196,29 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 * Get image size for remote URL and cache for 300 seconds (5 minutes) by default.
 		 */
 		public function get_image_size( $url, $cache_exp_secs = 300, array $curl_opts = array() ) {
-			$filepath = $this->get( $url, 'filepath', 'file', $cache_exp_secs, '', $curl_opts );
-			if ( file_exists( $filepath ) ) {
-				$filetype = wp_check_filetype( $filepath );
-				if ( strpos( $filetype['type'], 'image/' ) === 0 ) {
-					return @getimagesize( $filetype );
-				}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
 			}
+
+			$filepath = $this->get( $url, 'filepath', 'file', $cache_exp_secs, '', $curl_opts );
+
+			if ( ! empty( $filepath ) ) {	// false on error
+
+				if ( file_exists( $filepath ) ) {
+					$image_size = @getimagesize( $filepath );
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log_arr( 'getimagesize', $image_size );
+					}
+					return $image_size;
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $filepath.' does not exist' );
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'returned image filepath is empty' );
+			}
+
 			return false;
 		}
 

@@ -2368,6 +2368,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$wpsso =& Wpsso::get_instance();
+
+			/**
+			 * Returned organization option values can change depending on the locale, but the option key names should NOT be localized.
+			 *
+			 * Example: 'org_banner_url' is a valid option key, but 'org_banner_url#fr_FR' is not.
+			 */
 			$org_opts = apply_filters( $wpsso->lca.'_get_organization_options', false, $mod, $org_id );
 
 			if ( ! empty( $org_opts ) ) {
@@ -2379,7 +2385,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'getting site organization options array' );
 					}
-					$org_opts = self::get_site_organization( $mod );	// returns localized values
+					$org_opts = self::get_site_organization( $mod ); // returns localized values (not the key names)
 				} else {
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'exiting early: unknown org_id '.$org_id );

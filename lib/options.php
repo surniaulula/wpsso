@@ -409,7 +409,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			// sanitize values
 			foreach ( $opts as $key => $val ) {
-				if ( preg_match( '/:is$/', $key ) ) {	// don't save option states
+				if ( preg_match( '/:(is|width|height)$/', $key ) ) {	// don't save option states
 					unset( $opts[$key] );
 				} elseif ( ! empty( $key ) ) {
 					$def_val = isset( $def_opts[$key] ) ? $def_opts[$key] : '';	// Just in case.
@@ -425,17 +425,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * unnecessary options are not created in post meta.
 			 */
 			foreach ( array( 'og', 'schema' ) as $md_pre ) {
-				if ( ! empty( $opts[$md_pre.'_img_width'] ) &&
-					! empty( $opts[$md_pre.'_img_height'] ) &&
-					! empty( $opts[$md_pre.'_img_crop'] ) ) {	// check cropped image ratio
+
+				if ( ! empty( $opts[$md_pre.'_img_width'] ) && ! empty( $opts[$md_pre.'_img_height'] ) && ! empty( $opts[$md_pre.'_img_crop'] ) ) {
 
 					$img_width = $opts[$md_pre.'_img_width'];
 					$img_height = $opts[$md_pre.'_img_height'];
-
-					$img_ratio = $img_width >= $img_height ?
-						$img_width / $img_height :
-						$img_height / $img_width;
-
+					$img_ratio = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
 					$max_ratio = isset( $this->p->cf['head']['limit_max'][$md_pre.'_img_ratio'] ) ?
 						$this->p->cf['head']['limit_max'][$md_pre.'_img_ratio'] :
 						$this->p->cf['head']['limit_max']['og_img_ratio'];
@@ -500,9 +495,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			// get / remove dimensions for remote image urls
-			// allow for multi-options like place_addr_img_url_1
-			$img_url_keys = preg_grep( '/_(img|logo|banner)_url(_[0-9]+)?$/', array_keys( $opts ) );
+			/**
+			 * Update the width / height of remote image urls. Allow for multi-option keys, like 'place_addr_img_url_1'.
+			 * Remove all custom field names first, to exclude 'plugin_cf_img_url' and 'plugin_cf_vid_url'.
+			 */
+			$img_url_keys = preg_grep( '/_(img|logo|banner)_url(_[0-9]+)?(#[a-zA-Z_]+)?$/', 
+				preg_grep( '/^plugin_cf_/', array_keys( $opts ), PREG_GREP_INVERT ) );
 
 			$this->p->util->add_image_url_size( $img_url_keys, $opts );
 
@@ -823,9 +821,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		public function filter_option_type( $type, $key ) {
+
 			if ( ! empty( $type ) ) {
 				return $type;
 			}
+
 			switch ( $key ) {
 				// use value should be default / empty / force
 				case ( preg_match( '/:use$/', $key ) ? true : false ):

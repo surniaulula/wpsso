@@ -168,8 +168,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		// use a reference to modify the $options array directly
-		// $opt_keys can be a single key name or an array of key names
+		/**
+		 * Uses a reference variable to modify the $opts array directly.
+		 * $opt_keys can be a single key name or an array of key names.
+		 */
 		public function add_image_url_size( $opt_keys, array &$opts ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -184,20 +186,27 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$opt_suffix = '';
 
-				// example: place_addr_image_url_1
-				if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
+				if ( preg_match( '/^(.*)(#.*)$/', $opt_prefix, $matches ) ) {	// language
 					$opt_prefix = $matches[1];
-					$opt_suffix = $matches[2];
+					$opt_suffix = $matches[2].$opt_suffix;
+				}
+
+				if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {	// multi-option
+					$opt_prefix = $matches[1];
+					$opt_suffix = $matches[2].$opt_suffix;
 				}
 
 				$media_url = SucomUtil::get_mt_media_url( $opts, $opt_prefix.$opt_suffix );
 
-				list(
-					$opts[$opt_prefix.':width'.$opt_suffix],	// example: place_addr_img_url:width_1
-					$opts[$opt_prefix.':height'.$opt_suffix],	// example: place_addr_img_url:height_1
-					$image_type,
-					$image_attr
-				) = $this->get_image_url_info( $media_url );
+				if ( ! empty( $media_url ) ) {
+					$image_info = $this->get_image_url_info( $media_url );
+					list(
+						$opts[$opt_prefix.':width'.$opt_suffix],	// example: place_addr_img_url:width_1
+						$opts[$opt_prefix.':height'.$opt_suffix],	// example: place_addr_img_url:height_1
+						$image_type,
+						$image_attr
+					) = $image_info;
+				}
 			}
 
 			return $opts;
@@ -1402,7 +1411,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_arr( '$mod', $mod );
+				$this->p->debug->log_arr( 'mod', $mod );
 			}
 
 			return $mod;
