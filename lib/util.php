@@ -246,10 +246,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_exp_filter = $this->p->cf['wp']['transient'][$cache_md5_pre]['filter'];
 				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
-				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
+				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );	// 1 * DAY_IN_SECONDS by default
 			}
 
 			if ( $cache_exp_secs > 0 ) {
+
 				/**
 				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 				 * less in length. If using a site transient, it should be 40 characters or less in length.
@@ -269,13 +270,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 					return $local_cache[$image_url] = $image_info;
 				}
+
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'transient cache for image info is disabled' );
 			}
  
-			$max_time   = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.00 );
+			$max_time   = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
 			$start_time = microtime( true );
-			$image_info = @getimagesize( $image_url );
+			$image_info = $this->p->cache->get_image_size( $image_url );	// wrapper for PHP's getimagesize()
 			$total_time = microtime( true ) - $start_time;
 
 			if ( $max_time > 0 && $total_time > $max_time ) {

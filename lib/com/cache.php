@@ -26,7 +26,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $curl_timeout = 20;
 		public $curl_max_redirs = 10;
 
-		private $in_time = array();
+		private $url_time = array();
 		private $transient = array(		// saved on wp shutdown action
 			'loaded' => false,
 			'expire' => HOUR_IN_SECONDS,
@@ -146,9 +146,19 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function clear( $url, $file_ext = '' ) {
 
-			$get_url = preg_replace( '/#.*$/', '', $url );	// remove the fragment
+			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// remove the fragment
+			$url_path = parse_url( $url_nofrag, PHP_URL_PATH );
+
+			if ( $file_ext === '' ) {
+				$file_ext = pathinfo( $url_path, PATHINFO_EXTENSION );
+				if ( ! empty( $file_ext ) ) {
+					$file_ext = '.' . $file_ext;
+				}
+			}
+
 			$cache_md5_pre = $this->lca . '_';
-			$cache_salt = __CLASS__ . '::get(url:' . $get_url . ')';
+			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';
+			$cache_file = $this->base_dir . md5( $cache_salt ) . $file_ext;
 			$cache_id = $cache_md5_pre . md5( $cache_salt );
 
 			if ( wp_cache_delete( $cache_id, __CLASS__ ) ) {
@@ -163,34 +173,37 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				}
 			}
 
-			$url_path = parse_url( $get_url, PHP_URL_PATH );
-
-			if ( $file_ext === '' ) {
-				$file_ext = pathinfo( $url_path, PATHINFO_EXTENSION );
-				if ( ! empty( $file_ext ) ) {
-					$file_ext = '.' . $file_ext;
-				}
-			}
-
-			$cache_file = $this->base_dir.md5( $cache_salt ) . $file_ext;
-
 			if ( file_exists( $cache_file ) && @unlink( $cache_file ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'clear file cache: ' . $cache_file );
+					$this->p->debug->log( 'cleared local cache file: ' . $cache_file );
 				}
 			}
 		}
 
-		public function in_secs( $url, $dec = 2 ) {
-			if ( isset( $this->in_time[$url] ) ) {
-				if ( is_bool( $this->in_time[$url] ) ) {
-					return $this->in_time[$url];
+		public function get_url_time( $url, $precision = 3 ) {
+			if ( isset( $this->url_time[$url] ) ) {
+				if ( is_bool( $this->url_time[$url] ) ) {
+					return $this->url_time[$url];
 				} else {
-					return sprintf( '%.0' . $dec . 'f', $this->in_time[$url] );
+					return sprintf( '%.0' . $precision . 'f', $this->url_time[$url] );
 				}
 			} else {
 				return false;
 			}
+		}
+
+		/**
+		 * Get image size for remote URL and cache for 300 seconds (5 minutes) by default.
+		 */
+		public function get_image_size( $url, $cache_exp_secs = 300, array $curl_opts = array() ) {
+			$filepath = $this->get( $url, 'filepath', 'file', $cache_exp_secs, '', $curl_opts );
+			if ( file_exists( $filepath ) ) {
+				$filetype = wp_check_filetype( $filepath );
+				if ( strpos( $filetype['type'], 'image/' ) === 0 ) {
+					return @getimagesize( $filetype );
+				}
+			}
+			return false;
 		}
 
 		public function get( $url, $format = 'url', $cache_type = 'file', $cache_exp_secs = false, $file_ext = '', array $curl_opts = array() ) {
@@ -201,7 +214,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$uca = strtoupper( $this->lca );
 			$failure = $format === 'url' ? $url : false;
-			$this->in_time[$url] = false;	// default value for failure
+			$this->url_time[$url] = false;	// default value for failure
 
 			if ( ! extension_loaded( 'curl' ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -219,8 +232,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				return $failure;
 			}
 
-			$get_url = preg_replace( '/#.*$/', '', $url );	// remove the fragment
-			$url_path = parse_url( $get_url, PHP_URL_PATH );
+			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// remove the fragment
+			$url_path = parse_url( $url_nofrag, PHP_URL_PATH );
 
 			if ( $file_ext === '' ) {
 				$file_ext = pathinfo( $url_path, PATHINFO_EXTENSION );
@@ -229,15 +242,15 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				}
 			}
 
-			$url_frag = parse_url( $url, PHP_URL_FRAGMENT );
+			$url_fragment = parse_url( $url, PHP_URL_FRAGMENT );
 
-			if ( ! empty( $url_frag ) ) {
-				$url_frag = '#' . $url_frag;
+			if ( ! empty( $url_fragment ) ) {
+				$url_fragment = '#' . $url_fragment;
 			}
 
-			$cache_salt = __CLASS__ . '::get(url:' . $get_url . ')';	// SucomCache::get()
-			$cache_file = $this->base_dir.md5( $cache_salt ) . $file_ext;
-			$cache_url = $this->base_url.md5( $cache_salt ) . $file_ext . $url_frag;
+			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';	// SucomCache::get()
+			$cache_file = $this->base_dir . md5( $cache_salt ) . $file_ext;
+			$cache_url = $this->base_url . md5( $cache_salt ) . $file_ext . $url_fragment;
 			$cache_data = false;
 
 			// return immediately if the cache contains what we need
@@ -251,7 +264,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'cached data found: returning '.strlen( $cache_data ) . ' chars' );
 						}
-						$this->in_time[$url] = true;	// signal return is from cache
+						$this->url_time[$url] = true;	// signal return is from cache
 						return $cache_data;
 					}
 
@@ -270,7 +283,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 								$this->p->debug->log( 'cached file found: returning ' . $format . ' '.
 									( $format === 'url' ? $cache_url : $cache_file ) );
 							}
-							$this->in_time[$url] = true;	// signal return is from cache
+
+							$this->url_time[$url] = true;	// signal return is from cache
+
 							return $format === 'url' ? $cache_url : $cache_file;
 
 						} elseif ( @unlink( $cache_file ) ) {	// remove expired file
@@ -284,6 +299,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'error removing cache file ' . $cache_file );
 							}
+
 							if ( is_admin() ) {
 								$this->p->notice->err( sprintf( __( 'Error removing cache file %s.',
 									$this->text_domain ), $cache_file ) );
@@ -304,13 +320,13 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					break;
 			}
 
-			if ( $this->is_ignored_url( $get_url ) ) {
+			if ( $this->is_ignored_url( $url_nofrag ) ) {
 				return $failure;
 			}
 
 			$ch = curl_init();
 
-			curl_setopt( $ch, CURLOPT_URL, $get_url );
+			curl_setopt( $ch, CURLOPT_URL, $url_nofrag );
 			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
 			curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, $this->curl_connect_timeout );
 			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->curl_timeout );
@@ -357,7 +373,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'curl: fetching ' . $get_url );
+				$this->p->debug->log( 'curl: fetching ' . $url_nofrag );
 			}
 
 			$start_time = microtime( true );
@@ -375,7 +391,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $http_code == 200 ) {
 
-				$this->in_time[$url] = $total_time;
+				$this->url_time[$url] = $total_time;
 
 				if ( empty( $cache_data ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -402,7 +418,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						break;
 				}
 			} else {
-				$this->add_ignored_url( $get_url, $http_code );
+				$this->add_ignored_url( $url_nofrag, $http_code );
 			}
 
 			return $failure;
@@ -459,7 +475,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				case 'wp_cache':
 
-					$cache_id = $this->lca . '_'.md5( $cache_salt );	// add a prefix to the object cache id
+					$cache_id = $this->lca . '_' . md5( $cache_salt );	// add a prefix to the object cache id
 					$cache_data = wp_cache_get( $cache_id, __CLASS__ );
 
 					break;
@@ -475,6 +491,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					$cache_id = md5( $cache_salt );		// no lca prefix on filenames
 					$cache_file = $this->base_dir . $cache_id . $file_ext;
+
 					$file_cache_exp = false === $cache_exp_secs ? $this->default_file_cache_exp : $cache_exp_secs;
 
 					if ( ! file_exists( $cache_file ) ) {

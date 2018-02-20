@@ -677,32 +677,30 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			$curl_opts = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
 			$html = $this->p->cache->get( $check_url, 'raw', 'transient', false, '', $curl_opts );
-			$in_secs = $this->p->cache->in_secs( $check_url );
-			$warning_secs = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_WARNING_SECS', 2.5 );
-			$timeout_secs = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_TIMEOUT_SECS', 3.0 );
+			$url_time = $this->p->cache->get_url_time( $check_url );
+			$warning_time = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_WARNING_TIME', 2.5 );
+			$timeout_time = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_TIMEOUT_TIME', 3.0 );
 
-			if ( true === $in_secs ) {
+			if ( true === $url_time ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'fetched '.$check_url.' from transient cache' );
 				}
-			} elseif ( false === $in_secs ) {
+			} elseif ( false === $url_time ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'fetched '.$check_url.' returned a failure' );
 				}
 			} else {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'fetched '.$check_url.' in '.$in_secs.' secs' );
+					$this->p->debug->log( 'fetched '.$check_url.' in '.$url_time.' secs' );
 				}
-				if ( is_admin() && $in_secs > $warning_secs ) {
+				if ( is_admin() && $url_time > $warning_time ) {
 					$this->p->notice->warn(
-						sprintf( __( 'Retrieving the HTML document for %1$s took %2$s seconds.',
-							'wpsso' ), '<a href="'.$check_url.'">'.$check_url_htmlenc.'</a>', $in_secs ).' '.
+						sprintf( __( 'Retrieving the HTML document for %1$s took %2$s seconds.', 'wpsso' ),
+							'<a href="'.$check_url.'">'.$check_url_htmlenc.'</a>', $url_time ).' '.
 						sprintf( __( 'This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds).',
-							'wpsso' ), $warning_secs, $timeout_secs ).' '.
-						__( 'Please consider improving the speed of your site.',
-							'wpsso' ).' '.
-						__( 'As an added benefit, a faster site will also improve ranking in search results.',
-							'wpsso' ).' ;-)'
+							'wpsso' ), $warning_time, $timeout_time ).' '.
+						__( 'Please consider improving the speed of your site.', 'wpsso' ).' '.
+						__( 'As an added benefit, a faster site will also improve ranking in search results.', 'wpsso' ).' ;-)'
 					);
 				}
 			}

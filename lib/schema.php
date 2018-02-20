@@ -2036,7 +2036,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $cache_data, self::$mod_cache_exp_secs );
 
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'cache data saved to transient cache (expires in '.$expires_in_secs.' seconds)' );
+					$wpsso->debug->log( 'cache data saved to transient cache (expires in '.$expires_in_secs.' secs)' );
 				}
 			} elseif ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'transient cache is disabled' );

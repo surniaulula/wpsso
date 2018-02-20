@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.53.1-dev.2',		// Plugin version.
+					'version' => '3.54.0-dev.3',		// Plugin version.
 					'opt_version' => '576',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core',
@@ -2411,11 +2411,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			$var_const['WPSSO_DUPE_CHECK_HEADER_COUNT'] = 5;		// maximum number of times to check for duplicates
 			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = true;		// clear / remove cache file before fetching shortlink url
-			$var_const['WPSSO_DUPE_CHECK_WARNING_SECS'] = 2.50;		// issue a warning if getting shortlink took more than 2.5 seconds
-			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_SECS'] = 3.00;		// hard-limit - most crawlers time-out after 3 seconds
+			$var_const['WPSSO_DUPE_CHECK_WARNING_TIME'] = 2.50;		// issue a warning if getting shortlink took more than 2.5 seconds
+			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_TIME'] = 3.00;		// hard-limit - most crawlers time-out after 3 seconds
 
 			$var_const['WPSSO_GET_POSTS_MAX_TIME'] = 0.10;			// send an error to trigger_error() if get_posts() takes longer
-			$var_const['WPSSO_PHP_GETIMGSIZE_MAX_TIME'] = 1.00;		// send an error to trigger_error() if getimagesize() takes longer
+			$var_const['WPSSO_PHP_GETIMGSIZE_MAX_TIME'] = 1.50;		// send an error to trigger_error() if getimagesize() takes longer
 
 			/**
 			 * Limits for some multi-options and Schema property arrays.
