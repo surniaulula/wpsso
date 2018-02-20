@@ -403,7 +403,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Improved `trigger_error()` error messages and their translations.
 	* Added a new WpssoAdmin `get_check_for_updates_link()` method for use by extensions in their notification messages.
 	* Added a new SucomCache `get_image_size()` method to fetch an image URL and run `getimagesize()` on the local image file instead.
-	* Replaced `getimagesize()` in WpssoUtil by SucomCache `get_image_size()` which has shorter / better connection timeouts.
+	* Replaced `getimagesize()` in WpssoUtil by SucomCache `get_image_size()` which has better connection timeouts.
 	* Renamed the following constants for better name consistency:
 		* WPSSO_DUPE_CHECK_WARNING_SECS to WPSSO_DUPE_CHECK_WARNING_TIME
 		* WPSSO_DUPE_CHECK_TIMEOUT_SECS to WPSSO_DUPE_CHECK_TIMEOUT_TIME
