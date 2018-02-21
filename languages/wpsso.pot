@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.54.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 3.54.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2816,7 +2816,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:462 lib/util.php:2198
+#: lib/messages.php:462 lib/util.php:2199
 msgid "No options available."
 msgstr ""
 
@@ -4464,7 +4464,7 @@ msgstr ""
 
 #. translators: %s is the short plugin name
 #: lib/post.php:187 lib/term.php:172 lib/user.php:155 lib/util.php:302
-#: lib/util.php:1967
+#: lib/util.php:1968
 msgid "%s warning:"
 msgstr ""
 
@@ -5354,13 +5354,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
-#: lib/util.php:1964
+#: lib/util.php:1965
 msgid ""
 "slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (longer than recommended max of %3$0.3f secs)"
 msgstr ""
 
-#: lib/util.php:1979
+#: lib/util.php:1980
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -5369,34 +5369,34 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:1979
+#: lib/util.php:1980
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2225
+#: lib/util.php:2226
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2229
+#: lib/util.php:2230
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2232
+#: lib/util.php:2233
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2236
+#: lib/util.php:2237
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2355
+#: lib/util.php:2356
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""

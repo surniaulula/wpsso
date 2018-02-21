@@ -1950,6 +1950,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				switch ( $filter_name ) {
 					case 'get_the_excerpt':
 					case 'the_content':
+					case 'the_excerpt':
 					case 'wp_title':
 						$is_wp_filter = true;
 						break;
