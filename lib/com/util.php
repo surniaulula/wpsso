@@ -3316,10 +3316,12 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$shortlink = '';
 
 			if ( ! empty( $post_id ) ) {
+
 				$post_type = get_post_type_object( $post->post_type ); 
+
 				if ( 'page' === $post->post_type && $post->ID == get_option( 'page_on_front' ) && 'page' == get_option( 'show_on_front' ) ) {
 					$shortlink = home_url( '/' );
-				} elseif ( $post_type->public ) {
+				} elseif ( ! empty( $post_type->public ) ) {
 					$shortlink = home_url( '?p=' . $post_id );
 				}
 			} 

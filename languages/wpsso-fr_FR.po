@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 3.53.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-02-19 09:22-0600\n"
-"PO-Revision-Date: 2018-02-19 09:28-0600\n"
+"PO-Revision-Date: 2018-02-19 18:05-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4524,7 +4524,7 @@ msgstr "Guide de configuration"
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$0.3f is a number of seconds
 #: lib/term.php:169
 msgid "slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (longer than recommended max of %4$0.3f secs)"
-msgstr "requête lente détectée - WordPress get_posts() a pris %1$0.3f secondes pour obtenir les articles de taxonomie %3$d du terme ID %2$d (supérieur au max recommandé de %4$0.3f secondes)"
+msgstr "requête lente détectée - WordPress get_posts() a pris %1$0.3f secondes pour obtenir les articles de taxonomie %3$s du terme ID %2$d (supérieur au max recommandé de %4$0.3f secondes)"
 
 #: lib/term.php:446
 msgid "Insufficient privileges to save settings for term ID %1$s."
