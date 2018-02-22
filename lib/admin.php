@@ -1571,12 +1571,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$ext_total = count( $this->p->cf['plugin'] );
 			$charset = get_bloginfo( 'charset' );
 
-			echo '<table class="sucom-settings '.$this->p->lca.' licenses-metabox"
-				style="padding-bottom:10px">' . "\n";
-
-			echo '<tr><td colspan="3">'.
-				$this->p->msgs->get( 'info-plugin-tid'.( $network ? '-network' : '' ) ).
-					'</td></tr>' . "\n";
+			echo '<table class="sucom-settings '.$this->p->lca.' licenses-metabox" style="padding-bottom:10px">' . "\n";
+			echo '<tr><td colspan="3">'.$this->p->msgs->get( 'info-plugin-tid'.( $network ? '-network' : '' ) ).'</td></tr>' . "\n";
 
 			foreach ( WpssoConfig::get_ext_sorted( true ) as $ext => $info ) {
 
@@ -1606,6 +1602,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$ext_links[] = '<a href="'.$details_url.'" class="thickbox" tabindex="'.++$tabindex.'">'.
 								_x( 'Plugin Details', 'plugin action link', 'wpsso' ).'</a>';
 						}
+
 					} else {
 						$ext_links[] = '<a href="'.$details_url.'" class="thickbox" tabindex="'.++$tabindex.'">'.
 							_x( 'Plugin Details and Install', 'plugin action link', 'wpsso' ).'</a>';
@@ -1627,7 +1624,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$plugin_desc_html = empty( $info['desc'] ) ? '' : htmlentities( _x( $info['desc'], 'plugin description', 'wpsso' ),
 					ENT_QUOTES, $charset, false );
 
-				$table_rows['plugin_name'] = '<td colspan="2" style="width:100%;">'.
+				$table_rows['plugin_name'] = '<td colspan="2" class="licenses-data-plugin_name" id="licenses-data-plugin_name-'.$ext.'">'.
 					'<p style="margin-top:10px;">'.$plugin_name_html.'</p>'.
 					( empty( $plugin_desc_html ) ? '' : '<p>'.$plugin_desc_html.'</p>' ).
 					( empty( $ext_links ) ? '' : '<div class="row-actions visible">'.implode( ' | ', $ext_links ).'</div>' ).
@@ -1648,12 +1645,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'tid mono', '', 0, '', false, ++$tabindex ).'</td>';
 
 						if ( $network ) {
-
 							$table_rows['site_use'] = self::get_option_site_use( 'plugin_'.$ext.'_tid', 
 								$this->form, $network, true );	// th and td
 
 						} elseif ( class_exists( 'SucomUpdate' ) ) {
-
 							foreach ( array(
 								'exp_date' => _x( 'Updates and Support Expire', 'option label', 'wpsso' ),
 								'qty_used' => _x( 'Site Licenses Assigned', 'option label', 'wpsso' ),
@@ -1695,7 +1690,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( $table_rows as $key => $row ) {
 					echo '<tr>';
 					if ( $key === 'plugin_name' ) {
-						echo '<td style="width:168px; padding:10px 30px 10px 10px; vertical-align:top;"'.
+						echo '<td class="licenses-data-plugin_icon" id="licenses-data-plugin_icon-'.$ext.'"'.
 							' width="168" rowspan="'.count( $table_rows ).'" valign="top" align="left">' . "\n";
 						echo $this->get_ext_img_icon( $ext );
 						echo '</td>';

@@ -2262,7 +2262,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $add_slug ? $info['slug'].'-'.$info['version'] : $info['version'];
 		}
 
-		// get_config is called very early, so don't apply filters unless instructed
+		/**
+		 * get_config() is called very early, so don't apply filters unless instructed ($filter_cf = true).
+		 */
 		public static function get_config( $idx = false, $filter_cf = false ) {
 
 			if ( ! isset( self::$cf['config_filtered'] ) || self::$cf['config_filtered'] !== true ) {
@@ -2340,17 +2342,29 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		/**
 		 * Sort the 'plugin' array by each extension's 'name' value.
+		 * Use the same $filter_cf default value as self::get_config().
+		 * By default, set the core plugin as the first array element. 
 		 */
-		public static function get_ext_sorted( $filter_cf = false ) {
+		public static function get_ext_sorted( $filter_cf = false, $lca_top = true ) {
+
+			$idx = 'plugin';
 			$ext = self::get_config( 'plugin', $filter_cf );
+
 			uasort( $ext, array( 'self', 'sort_ext_by_name' ) );	// sort array and maintain index association
+
+			if ( $lca_top && isset( $ext['wpsso'] ) ) {
+				SucomUtil::move_to_front( $ext, 'wpsso' );
+			}
+
 			return $ext;
 		}
 
 		private static function sort_ext_by_name( $a, $b ) {
-			if ( isset( $a['name'] ) && isset( $b['name'] ) )	// Just in case.
+			if ( isset( $a['name'] ) && isset( $b['name'] ) ) {	// Just in case.
 				return strcasecmp( $a['name'], $b['name'] );	// case-insensitive string comparison
-			else return 0;						// no change
+			} else {
+				return 0;					// no change
+			}
 		}
 
 		public static function set_constants( $plugin_filepath ) {
