@@ -208,7 +208,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 			$lca = $this->p->cf['lca'];
 
-			// save the current wpsso options version number
+			// save the current extension options version number
 			$prev_version = empty( $opts['plugin_'.$lca.'_opt_version'] ) ?	0 : $opts['plugin_'.$lca.'_opt_version'];
 
 			// adjust before renaming the option key
