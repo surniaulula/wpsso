@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.54.0-b.1',		// Plugin version.
+					'version' => '3.54.0-rc.1',		// Plugin version.
 					'opt_version' => '576',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core',
@@ -1155,9 +1155,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					120 => 'Every five days',
 					144 => 'Every six days',
 					168 => 'Every week',
-					336 => 'Every two weeks',
-					504 => 'Every three weeks',
-					720 => 'Every month',
 				),
 				'version_filter' => array(
 					'dev' => 'Development and Up',
