@@ -390,7 +390,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.54.0-b.1 (2018/02/21)**
+**Version 3.54.0-rc.1 (2018/02/22)**
 
 * *New Features*
 	* None
@@ -481,9 +481,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.54.0-b.1 =
+= 3.54.0-rc.1 =
 
-(2018/02/21) Added a new informational notice when there are pending updates for the WPSSO Core plugin and/or its extensions. Added a wrapper method / function around getimagesize() to manage connection timeouts using PHP's cURL library.
+(2018/02/22) Added a new informational notice when there are pending updates for the WPSSO Core plugin and/or its extensions. Added a wrapper method / function around getimagesize() to manage connection timeouts using PHP's cURL library.
 
 = 3.53.0 =
 
