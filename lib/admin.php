@@ -1666,7 +1666,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 											}
 											break;
 									}
-									$table_rows[$key] = '<th>'.$label.'</th>'.
+									$table_rows[$key] = '<th class="medium nowrap">'.$label.'</th>'.
 										'<td width="100%">'.$val.'</td>';
 								}
 							}
