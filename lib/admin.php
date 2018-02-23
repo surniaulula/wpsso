@@ -1620,9 +1620,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * Plugin Name, Description, and Links
 				 */
-				$plugin_name_html = '<strong>'.$info['name'].'</strong>'.( $ext === $this->p->lca ? ' ('.__( 'Main Plugin', 'wpsso' ).')' : '' );
-				$plugin_desc_html = empty( $info['desc'] ) ? '' : htmlentities( _x( $info['desc'], 'plugin description', 'wpsso' ),
-					ENT_QUOTES, $charset, false );
+				$plugin_name_html = '<strong>'.$info['name'].'</strong>'.
+					( $ext === $this->p->lca && strpos( $info['name'], '(Main Plugin)' ) === false ?
+						' ('.__( 'Main Plugin', 'wpsso' ).')' : '' );
+
+				$plugin_desc_html = empty( $info['desc'] ) ?
+					'' : htmlentities( _x( $info['desc'], 'plugin description', 'wpsso' ),
+						ENT_QUOTES, $charset, false );
 
 				$table_rows['plugin_name'] = '<td colspan="2" class="licenses-data-plugin_name" id="licenses-data-plugin_name-'.$ext.'">'.
 					'<p style="margin-top:10px;">'.$plugin_name_html.'</p>'.

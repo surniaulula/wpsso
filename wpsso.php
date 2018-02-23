@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WPSSO Core
+ * Plugin Name: WPSSO Core (Main Plugin)
  * Plugin Slug: wpsso
  * Text Domain: wpsso
  * Domain Path: /languages
@@ -15,7 +15,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 4.9.4
  * WC Tested Up To: 3.3.3
- * Version: 3.54.0-rc.1
+ * Version: 3.54.0-rc.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
