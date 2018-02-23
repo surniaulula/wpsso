@@ -156,7 +156,7 @@ _x( 'Wistia Videos', 'option value', 'wpsso' );
 _x( 'WordPress Video Shortcode', 'option value', 'wpsso' );
 _x( 'WPSSO Core extension to add a user locale / language / region selector in the WordPress admin back-end and front-end toolbar menus.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to add CSS Twitter-style quoted text with a Tweet share link to post and page content (uses easily customized CSS).', 'plugin description', 'wpsso' );
-_x( 'WPSSO Core extension to add JSON-LD formatted Schema BreadcrumbList markup for Google / SEO.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core extension to add JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO).', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to add ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to add Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews + many more.', 'plugin description', 'wpsso' );

@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssobc' => array(			// Plugin acronym.
 					'short' => 'WPSSO BC',		// Short plugin name.
 					'name' => 'WPSSO Breadcrumbs Markup',
-					'desc' => 'WPSSO Core extension to add JSON-LD formatted Schema BreadcrumbList markup for Google / SEO.',
+					'desc' => 'WPSSO Core extension to add JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO).',
 					'slug' => 'wpsso-breadcrumbs',
 					'base' => 'wpsso-breadcrumbs/wpsso-breadcrumbs.php',
 					'update_auth' => '',

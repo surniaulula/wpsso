@@ -1646,7 +1646,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core extension to add JSON-LD formatted Schema BreadcrumbList markup "
-"for Google / SEO."
+"for Google and Search Engine Optimization (SEO)."
 msgstr ""
 
 #: lib/config-gettext-extract.php:160
