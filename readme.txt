@@ -1,5 +1,5 @@
 === WPSSO Core - Complete Meta Tags and Schema for Social Sharing / SMO, Google Rich Cards / SEO (Facebook / Open Graph, Google+, Pinterest, Twitter, LinkedIn, and Many More) ===
-Plugin Name: WPSSO Core
+Plugin Name: WPSSO Core (Main Plugin)
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
@@ -390,7 +390,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.54.0-rc.1 (2018/02/22)**
+**Version 3.54.0-rc.2 (2018/02/23)**
 
 * *New Features*
 	* None
@@ -481,9 +481,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.54.0-rc.1 =
+= 3.54.0-rc.2 =
 
-(2018/02/22) Added a new informational notice when there are pending updates for the WPSSO Core plugin and/or its extensions. Added a wrapper method / function around getimagesize() to manage connection timeouts using PHP's cURL library.
+(2018/02/23) Added a new informational notice when there are pending updates for the WPSSO Core plugin and/or its extensions. Added a wrapper method / function around getimagesize() to manage connection timeouts using PHP's cURL library.
 
 = 3.53.0 =
 
