@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.54.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-02-23 11:55-0600\n"
-"PO-Revision-Date: 2018-02-23 11:55-0600\n"
+"POT-Creation-Date: 2018-02-23 14:00-0600\n"
+"PO-Revision-Date: 2018-02-23 14:00-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1556,8 +1556,8 @@ msgstr "Extension WPSSO Core pour ajouter des citations de style Twitter à votr
 
 #: lib/config-gettext-extract.php:159
 msgctxt "plugin description"
-msgid "WPSSO Core extension to add JSON-LD formatted Schema BreadcrumbList markup for Google / SEO."
-msgstr "Extension WPSSO Core pour ajouter le balisage Schema BreadcrumbList en format JSON-LD pour Google / SEO."
+msgid "WPSSO Core extension to add JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO)."
+msgstr "Extension WPSSO Core pour ajouter le balisage Schema BreadcrumbList en format JSON-LD pour Google l'optimisation des moteurs de recherche (SEO)."
 
 #: lib/config-gettext-extract.php:160
 msgctxt "plugin description"
