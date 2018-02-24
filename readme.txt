@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.4
 WC Tested Up To: 3.3.3
-Stable Tag: 3.53.0
+Stable Tag: 3.54.0
 
 Automatically create complete meta tags and Schema markup from your content for social sharing, social media / SMO, Google Rich Cards / SEO + more.
 
@@ -484,8 +484,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 3.54.0 =
 
 (2018/02/24) Added a new informational notice when there are pending updates for the WPSSO Core plugin and/or its extensions. Added a wrapper method / function around getimagesize() to manage connection timeouts using PHP's cURL library.
-
-= 3.53.0 =
-
-(2018/02/17) Added a new custom "Canonical URL" option in the Social and Search Optimization metabox. Options hidden in the "Basic Options" view that have a different value than their default will no longer be hidden.
 
