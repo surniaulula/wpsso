@@ -2331,20 +2331,28 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
+#: lib/loader.php:138
+msgid "Error loading %1$s: Library class \"%2$s\" is missing."
+msgstr ""
+
 #. translators: %s is the PHP library class name
-#: lib/loader.php:134
+#: lib/loader.php:143
 msgid "library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:137 lib/loader.php:149 lib/post.php:187 lib/term.php:172
-#: lib/user.php:155 lib/util.php:305 lib/util.php:1971
+#: lib/loader.php:146 lib/loader.php:163 lib/post.php:191 lib/term.php:176
+#: lib/user.php:159 lib/util.php:309 lib/util.php:1984
 msgid "%s warning:"
 msgstr ""
 
+#: lib/loader.php:155
+msgid "Error loading %1$s: Library file \"%2$s\" not found."
+msgstr ""
+
 #. translators: %s is the PHP library file path
-#: lib/loader.php:146
-msgid "library file \"%s\" is missing."
+#: lib/loader.php:160
+msgid "library file \"%s\" not found."
 msgstr ""
 
 #: lib/media.php:348
@@ -4764,7 +4772,7 @@ msgid "Invalid user ID."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
-#: lib/register.php:213 lib/register.php:221
+#: lib/register.php:215 lib/register.php:221
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
@@ -5340,7 +5348,7 @@ msgid ""
 "\"%2$s\" filter (longer than recommended max of %3$0.3f secs)"
 msgstr ""
 
-#: lib/util.php:1983
+#: lib/util.php:1980
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -5349,7 +5357,7 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:1983
+#: lib/util.php:1980
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
