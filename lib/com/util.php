@@ -802,6 +802,40 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function __construct() {
 		}
 
+		public static function safe_trigger_error( $error_msg, $error_type = E_USER_NOTICE ) {
+
+			// show errors only if in back-end, and always the log errors
+			$ini_set = array(
+				'display_errors' => is_admin() ? 1 : 0,
+				'log_errors' => 1,
+				'error_log' => WP_CONTENT_DIR . '/debug.log',
+			);
+
+			$ini_saved = array();
+
+			// save old option values and define new option values
+			foreach ( $ini_set as $name => $value ) {
+
+				// returns false if option does not exist
+				$ini_saved[$name] = ini_get( $name );
+
+				// only set the option the existing value is different
+				if ( $ini_saved[$name] !== false && $ini_saved[$name] !== $value ) {
+					ini_set( $name, $value );
+				// unset the array element to avoid restoring it
+				} else {
+					unset( $ini_saved[$name] );
+				}
+			}
+
+			trigger_error( $error_msg, $error_type );
+
+			// restore old option values that were changed
+			foreach ( $ini_saved as $name => $value ) {
+				ini_set( $name, $value );
+			}
+		}
+
 		/**
 		 * The WordPress get_plugins() function is very slow, so call it only once and cache its result.
 		 */
