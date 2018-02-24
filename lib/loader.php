@@ -135,6 +135,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									}
 
 									if ( is_admin() && is_object( $this->p->notice ) ) {
+										// translators: %1$s is the PHP library path, %2$s is the PHP library class name
 										$this->p->notice->err( sprintf( __( 'Error loading %1$s: Library class "%2$s" is missing.',
 											'wpsso' ), $lib_path, $classname ) );
 									}
@@ -152,11 +153,12 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 								}
 
 								if ( is_admin() && is_object( $this->p->notice ) ) {
-									$this->p->notice->err( sprintf( __( 'Error loading %1$s: Library file "%2$s" not found.',
+									// translators: %1$s is the PHP library path
+									$this->p->notice->err( sprintf( __( 'Error loading %1$s: Library file "%1$s" not found.',
 										'wpsso' ), $lib_path, $lib_path ) );
 								}
 
-								// translators: %s is the PHP library file path
+								// translators: %s is the PHP library path
 								$error_msg = sprintf( __( 'library file "%s" not found', 'wpsso' ), $lib_path );
 
 								// translators: %s is the short plugin name

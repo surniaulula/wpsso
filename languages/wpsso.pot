@@ -2331,27 +2331,29 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/loader.php:138
+#. translators: %1$s is the PHP library path, %2$s is the PHP library class name
+#: lib/loader.php:139
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr ""
 
 #. translators: %s is the PHP library class name
-#: lib/loader.php:143
+#: lib/loader.php:144
 msgid "library class \"%s\" is missing"
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:146 lib/loader.php:163 lib/post.php:193 lib/term.php:178
+#: lib/loader.php:147 lib/loader.php:165 lib/post.php:193 lib/term.php:178
 #: lib/user.php:161 lib/util.php:315 lib/util.php:1995
 msgid "%s warning:"
 msgstr ""
 
-#: lib/loader.php:155
-msgid "Error loading %1$s: Library file \"%2$s\" not found."
+#. translators: %1$s is the PHP library path
+#: lib/loader.php:157
+msgid "Error loading %1$s: Library file \"%1$s\" not found."
 msgstr ""
 
-#. translators: %s is the PHP library file path
-#: lib/loader.php:160
+#. translators: %s is the PHP library path
+#: lib/loader.php:162
 msgid "library file \"%s\" not found"
 msgstr ""
 
