@@ -165,12 +165,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
-				// translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$0.3f is a number of seconds
-				$error_msg = sprintf( __( 'slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (longer than recommended max of %4$0.3f secs)', 'wpsso' ), $total_time, $mod['id'], $mod['tax_slug'], $max_time );
-
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $error_msg );
+					// do not translate the debug log message
+					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs'.
+						' to get posts for term ID %2$d in taxonomy %3$s', $total_time, $mod['id'], $mod['tax_slug'] ) );
 				}
+
+				// translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$0.3f is a number of seconds
+				$error_msg = sprintf( __( 'Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (longer than recommended max of %4$0.3f secs)', 'wpsso' ), $total_time, $mod['id'], $mod['tax_slug'], $max_time );
 
 				// translators: %s is the short plugin name
 				trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_WARNING );

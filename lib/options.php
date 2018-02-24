@@ -367,9 +367,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				} else {
 					$error_msg = sprintf( __( 'WordPress returned an unknown condition when reading %s from the options table.', 'wpsso' ), $options_name );
 				}
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $error_msg );
 				}
+
 				if ( is_admin() ) {
 					if ( $network ) {
 						$admin_url = $this->p->util->get_admin_url( 'network' );

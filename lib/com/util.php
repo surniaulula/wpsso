@@ -806,9 +806,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * The WordPress get_plugins() function is very slow, so call it only once and cache its result.
 		 */
 		public static function get_wp_plugins() {
+
 			if ( self::$cache_wp_plugins !== null ) {
 				return self::$cache_wp_plugins;
 			}
+
 			if ( ! function_exists( 'get_plugins' ) ) {
 				$plugin_lib = trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin.php';
 				if ( file_exists( $plugin_lib ) ) {
@@ -818,12 +820,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					trigger_error( sprintf( '%s error:', __METHOD__ ).' '.$error_msg, E_USER_ERROR );
 				}
 			}
+
 			if ( function_exists( 'get_plugins' ) ) {
 				return self::$cache_wp_plugins = get_plugins();
 			} else {
 				$error_msg = sprintf( 'WordPress function %s is missing and required', 'get_plugins()' );
 				trigger_error( sprintf( '%s error:', __METHOD__ ).' '.$error_msg, E_USER_ERROR );
 			}
+
 			return self::$cache_wp_plugins = array();
 		}
 
