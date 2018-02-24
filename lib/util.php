@@ -308,7 +308,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$error_msg = sprintf( __( 'Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (longer than recommended max of %3$0.3f secs)', 'wpsso' ), $total_time, $image_url, $max_time );
 
 				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-					$this->p->notice->warn( $error_msg );
+					$this->p->notice->warn( $error_msg . '.' );	// add trailing period
 				}
 
 				// translators: %s is the short plugin name
