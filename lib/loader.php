@@ -141,10 +141,11 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									}
 
 									// translators: %s is the PHP library class name
-									$error_msg = sprintf( __( 'library class "%s" is missing', 'wpsso' ), $classname );
+									$error_msg = sprintf( __( 'Library class "%s" is missing.', 'wpsso' ), $classname );
 
 									// translators: %s is the short plugin name
-									trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_WARNING );
+									trigger_error( sprintf( __( '%s warning:', 'wpsso' ),
+										$info['short'] ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
 								}
 							} else {
 
@@ -159,10 +160,11 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 								}
 
 								// translators: %s is the PHP library path
-								$error_msg = sprintf( __( 'library file "%s" not found', 'wpsso' ), $lib_path );
+								$error_msg = sprintf( __( 'Library file "%s" not found.', 'wpsso' ), $lib_path );
 
 								// translators: %s is the short plugin name
-								trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_WARNING );
+								trigger_error( sprintf( __( '%s warning:', 'wpsso' ),
+									$info['short'] ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
 							}
 
 						} elseif ( $this->p->debug->enabled ) {

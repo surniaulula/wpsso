@@ -816,16 +816,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( file_exists( $plugin_lib ) ) {
 					require_once $plugin_lib;
 				} else {
-					$error_msg = sprintf( 'WordPress library file %s is missing and required', $plugin_lib );
-					trigger_error( sprintf( '%s error:', __METHOD__ ).' '.$error_msg, E_USER_ERROR );
+					$error_msg = sprintf( 'WordPress library file %s is missing and required.', $plugin_lib );
+					trigger_error( sprintf( '%s error:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_ERROR );
 				}
 			}
 
 			if ( function_exists( 'get_plugins' ) ) {
 				return self::$cache_wp_plugins = get_plugins();
 			} else {
-				$error_msg = sprintf( 'WordPress function %s is missing and required', 'get_plugins()' );
-				trigger_error( sprintf( '%s error:', __METHOD__ ).' '.$error_msg, E_USER_ERROR );
+				$error_msg = sprintf( 'WordPress function %s is missing and required.', 'get_plugins()' );
+				trigger_error( sprintf( '%s error:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_ERROR );
 			}
 
 			return self::$cache_wp_plugins = array();
@@ -1829,8 +1829,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function array_parent_index( array $array, $parent_key = '', $gparent_key = '', &$index = array() ) {
 		        foreach ( $array as $child_key => $value ) {
 				if ( isset( $index[$child_key] ) ) {
-					$error_msg = sprintf( 'duplicate key "%s" = "%s"', $child_key, $index[$child_key] );
-					trigger_error( sprintf( '%s warning:', __METHOD__ ).' '.$error_msg, E_USER_WARNING );
+					$error_msg = sprintf( 'Duplicate child key "%s" = "%s".', $child_key, $index[$child_key] );
+					trigger_error( sprintf( '%s warning:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
 				} elseif ( is_array( $value ) ) {
 					self::array_parent_index( $value, $child_key, $parent_key, $index );
 				} elseif ( $parent_key && $child_key !== $parent_key ) {

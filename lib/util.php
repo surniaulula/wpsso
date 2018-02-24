@@ -305,14 +305,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 
 				// translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$0.3f is a number of seconds
-				$error_msg = sprintf( __( 'Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (longer than recommended max of %3$0.3f secs)', 'wpsso' ), $total_time, $image_url, $max_time );
+				$error_msg = sprintf( __( 'Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (longer than recommended max of %3$0.3f secs).', 'wpsso' ), $total_time, $image_url, $max_time );
 
 				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-					$this->p->notice->warn( $error_msg . '.' );	// add trailing period
+					$this->p->notice->warn( $error_msg );
 				}
 
 				// translators: %s is the short plugin name
-				trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_WARNING );
+				trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
 			}
 
 			if ( is_array( $image_info ) ) {
@@ -1977,7 +1977,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 
 				// translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
-				$error_msg = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter (longer than recommended max of %3$0.3f secs)', 'wpsso' ), $total_time, $filter_name, $max_time );
+				$error_msg = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter (longer than recommended max of %3$0.3f secs).', 'wpsso' ), $total_time, $filter_name, $max_time );
 
 				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 					if ( $is_wp_filter ) {
@@ -1992,7 +1992,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 
 				// translators: %s is the short plugin name
-				trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_WARNING );
+				trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
 			}
 
 			/**

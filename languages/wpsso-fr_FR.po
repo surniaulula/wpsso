@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.54.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-02-24 13:03-0600\n"
-"PO-Revision-Date: 2018-02-24 13:03-0600\n"
+"POT-Creation-Date: 2018-02-24 13:48-0600\n"
+"PO-Revision-Date: 2018-02-24 13:49-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2224,24 +2224,24 @@ msgstr "Erreur lors du chargement de %1$s: La classe de bibliothèque \"%2$s\" e
 
 #. translators: %s is the PHP library class name
 #: lib/loader.php:144
-msgid "library class \"%s\" is missing"
-msgstr "classe de bibliothèque \"%s\" est manquante"
+msgid "Library class \"%s\" is missing."
+msgstr "Classe de  bibliothèque \"%s\" manquante."
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:147 lib/loader.php:165 lib/post.php:193 lib/term.php:178
-#: lib/user.php:161 lib/util.php:315 lib/util.php:1995
+#: lib/loader.php:147 lib/loader.php:166 lib/post.php:193 lib/register.php:220
+#: lib/term.php:178 lib/user.php:161 lib/util.php:315 lib/util.php:1995
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
 #. translators: %1$s is the PHP library path
-#: lib/loader.php:157
+#: lib/loader.php:158
 msgid "Error loading %1$s: Library file \"%1$s\" not found."
 msgstr "Erreur lors du chargement de %1$s: Le fichier de bibliothèque \"%1$s\" est introuvable."
 
 #. translators: %s is the PHP library path
-#: lib/loader.php:162
-msgid "library file \"%s\" not found"
-msgstr "fichier de bibliothèque \"%s\" est introuvable"
+#: lib/loader.php:163
+msgid "Library file \"%s\" not found."
+msgstr "Fichier de bibliothèque \"%s\" introuvable"
 
 #: lib/media.php:348
 msgid "The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s."
@@ -3516,7 +3516,7 @@ msgstr "%1$s version %2$s requiert l'utilisation de %3$s version %4$s ou plus r�
 msgid "If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button on the %4$s settings page to force an immediate refresh of all Pro update information."
 msgstr "Si une mise à jour pour %1$s n'est pas disponible dans la page %2$s WordPress, utilisez le bouton <em>%3$s</em> sur la page de réglages %4$s pour forcer une actualisation immédiate de toutes les informations de mise à jour Pro."
 
-#: lib/messages.php:1595 lib/register.php:219
+#: lib/messages.php:1595 lib/register.php:223
 msgid "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features."
 msgstr "Vous utilisez la version %2$s de %1$s &mdash; <a href=\"%3$s\">cette version de %1$s est obsolète, non supportée, peut-être insécure</a> et pourrait manquer certaines mises à jour et caractéristiques importantes."
 
@@ -3763,8 +3763,8 @@ msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$0.3f is a number of seconds
 #: lib/post.php:190
-msgid "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the children of post ID %2$d (longer than recommended max of %3$0.3f secs)"
-msgstr "Requête lente détectée - WordPress get_posts() a pris %1$0.3f secs pour obtenir les enfants de l'article ID %2$d (supérieur au max recommandé de %3$0.3f secs)"
+msgid "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the children of post ID %2$d (longer than recommended max of %3$0.3f secs)."
+msgstr "Requête lente détectée - WordPress get_posts() a pris %1$0.3f secs pour obtenir les enfants de l'article ID %2$d (supérieur au max recommandé de %3$0.3f secs)."
 
 #: lib/post.php:669
 msgid "Checking %1$s for duplicate meta tags..."
@@ -4042,11 +4042,11 @@ msgid "Invalid user ID."
 msgstr "ID d'utilisateur non valide"
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
-#: lib/register.php:215 lib/register.php:221
+#: lib/register.php:216 lib/register.php:225
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé."
 
-#: lib/register.php:223
+#: lib/register.php:227
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
@@ -4513,8 +4513,8 @@ msgstr "Guide de configuration"
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$0.3f is a number of seconds
 #: lib/term.php:175
-msgid "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (longer than recommended max of %4$0.3f secs)"
-msgstr "Requête lente détectée - WordPress get_posts() a pris %1$0.3f secs pour obtenir les articles de taxonomie %3$s du terme ID %2$d (supérieur au max recommandé de %4$0.3f secs)"
+msgid "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (longer than recommended max of %4$0.3f secs)."
+msgstr "Requête lente détectée - WordPress get_posts() a pris %1$0.3f secs pour obtenir les articles de taxonomie %3$s du terme ID %2$d (supérieur au max recommandé de %4$0.3f secs)."
 
 #: lib/term.php:448
 msgid "Insufficient privileges to save settings for term ID %1$s."
@@ -4532,8 +4532,8 @@ msgstr "Carte Twitter grande image"
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$0.3f is a number of seconds
 #: lib/user.php:158
-msgid "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts authored by user ID %2$d (longer than recommended max of %3$0.3f secs)"
-msgstr "Requête lente détectée - WordPress get_posts() a pris %1$0.3f secs pour obtenir les articles d'auteur pour l'utilisateur ID %2$d (supérieur au max recommandé de %3$0.3f secs)"
+msgid "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts authored by user ID %2$d (longer than recommended max of %3$0.3f secs)."
+msgstr "Requête lente détectée - WordPress get_posts() a pris %1$0.3f secs pour obtenir les articles d'auteur pour l'utilisateur ID %2$d (supérieur au max recommandé de %3$0.3f secs)."
 
 #: lib/user.php:506
 msgid "(not a Facebook Page URL)"
@@ -4557,8 +4557,8 @@ msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'usager ID
 
 #. translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$0.3f is a number of seconds
 #: lib/util.php:308
-msgid "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (longer than recommended max of %3$0.3f secs)"
-msgstr "Fonction PHP lente détectée - getimagesize() a pris %1$0.3f secs pour %2$s (supérieur au maximum recommandé de %3$0.3f secs)"
+msgid "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (longer than recommended max of %3$0.3f secs)."
+msgstr "Fonction PHP lente détectée - getimagesize() a pris %1$0.3f secs pour %2$s (supérieur au maximum recommandé de %3$0.3f secs)."
 
 #: lib/util.php:659
 msgid "%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared."
@@ -4598,8 +4598,8 @@ msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fourn
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
 #: lib/util.php:1980
-msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (longer than recommended max of %3$0.3f secs)"
-msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (supérieur au maximum recommandé de %3$0.3f secs)"
+msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (longer than recommended max of %3$0.3f secs)."
+msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (supérieur au maximum recommandé de %3$0.3f secs)."
 
 #: lib/util.php:1988
 msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."

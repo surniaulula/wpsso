@@ -179,6 +179,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private static function check_required( $cf ) {
 
 			$plugin_name = $cf['plugin']['wpsso']['name'];
+			$plugin_short = $cf['plugin']['wpsso']['short'];
 			$plugin_version = $cf['plugin']['wpsso']['version'];
 
 			foreach ( array( 'wp', 'php' ) as $key ) {
@@ -212,8 +213,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent = true
 
 				// translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
-				trigger_error( sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
-					'wpsso' ), $plugin_name, $app_label, $min_version ), E_USER_WARNING );
+				$error_msg = sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
+					'wpsso' ), $plugin_name, $app_label, $min_version );
+
+				// translators: %s is the short plugin name
+				trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $plugin_short ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
 
 				wp_die( 
 					'<p>'.sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.',

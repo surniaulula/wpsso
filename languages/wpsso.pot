@@ -2338,23 +2338,23 @@ msgstr ""
 
 #. translators: %s is the PHP library class name
 #: lib/loader.php:144
-msgid "library class \"%s\" is missing"
+msgid "Library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:147 lib/loader.php:165 lib/post.php:193 lib/term.php:178
-#: lib/user.php:161 lib/util.php:315 lib/util.php:1995
+#: lib/loader.php:147 lib/loader.php:166 lib/post.php:193 lib/register.php:220
+#: lib/term.php:178 lib/user.php:161 lib/util.php:315 lib/util.php:1995
 msgid "%s warning:"
 msgstr ""
 
 #. translators: %1$s is the PHP library path
-#: lib/loader.php:157
+#: lib/loader.php:158
 msgid "Error loading %1$s: Library file \"%1$s\" not found."
 msgstr ""
 
 #. translators: %s is the PHP library path
-#: lib/loader.php:162
-msgid "library file \"%s\" not found"
+#: lib/loader.php:163
+msgid "Library file \"%s\" not found."
 msgstr ""
 
 #: lib/media.php:348
@@ -4155,7 +4155,7 @@ msgid ""
 "refresh of all Pro update information."
 msgstr ""
 
-#: lib/messages.php:1595 lib/register.php:219
+#: lib/messages.php:1595 lib/register.php:223
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -4455,7 +4455,7 @@ msgstr ""
 #: lib/post.php:190
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
-"children of post ID %2$d (longer than recommended max of %3$0.3f secs)"
+"children of post ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
 #: lib/post.php:669
@@ -4774,11 +4774,11 @@ msgid "Invalid user ID."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
-#: lib/register.php:215 lib/register.php:221
+#: lib/register.php:216 lib/register.php:225
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:223
+#: lib/register.php:227
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
@@ -5250,7 +5250,7 @@ msgstr ""
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "for term ID %2$d in taxonomy %3$s (longer than recommended max of %4$0.3f "
-"secs)"
+"secs)."
 msgstr ""
 
 #: lib/term.php:448
@@ -5271,7 +5271,7 @@ msgstr ""
 #: lib/user.php:158
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
-"authored by user ID %2$d (longer than recommended max of %3$0.3f secs)"
+"authored by user ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
 #: lib/user.php:506
@@ -5298,7 +5298,7 @@ msgstr ""
 #: lib/util.php:308
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
-"(longer than recommended max of %3$0.3f secs)"
+"(longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
 #: lib/util.php:659
@@ -5347,7 +5347,7 @@ msgstr ""
 #: lib/util.php:1980
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
-"\"%2$s\" filter (longer than recommended max of %3$0.3f secs)"
+"\"%2$s\" filter (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
 #: lib/util.php:1988
