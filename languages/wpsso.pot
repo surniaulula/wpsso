@@ -2337,8 +2337,9 @@ msgid "library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:137 lib/loader.php:149
-msgid "%s error:"
+#: lib/loader.php:137 lib/loader.php:149 lib/post.php:187 lib/term.php:172
+#: lib/user.php:155 lib/util.php:305 lib/util.php:1971
+msgid "%s warning:"
 msgstr ""
 
 #. translators: %s is the PHP library file path
@@ -4445,12 +4446,6 @@ msgstr ""
 msgid ""
 "slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
 "children of post ID %2$d (longer than recommended max of %3$0.3f secs)"
-msgstr ""
-
-#. translators: %s is the short plugin name
-#: lib/post.php:187 lib/term.php:172 lib/user.php:155 lib/util.php:305
-#: lib/util.php:1971
-msgid "%s warning:"
 msgstr ""
 
 #: lib/post.php:667

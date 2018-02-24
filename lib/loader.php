@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				$type = $this->p->check->aop( $this->p->cf['lca'], true, $this->p->avail['*']['p_dir'] ) &&
+				$type = $this->p->check->aop( $this->p->lca, true, $this->p->avail['*']['p_dir'] ) &&
 					$this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? 'pro' : 'gpl';
 
 				if ( ! isset( $info['lib'][$type] ) ) {
@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 								if ( class_exists( $classname ) ) {
 
-									if ( $ext === $this->p->cf['lca'] ) {
+									if ( $ext === $this->p->lca ) {
 										if ( $this->p->debug->enabled ) {
 											$this->p->debug->log( $log_prefix.'new library module for '.$classname );
 										}
@@ -134,7 +134,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									$error_msg = sprintf( __( 'library class "%s" is missing.', 'wpsso' ), $classname );
 
 									// translators: %s is the short plugin name
-									trigger_error( sprintf( __( '%s error:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_ERROR );
+									trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_WARNING );
 
 									if ( $this->p->debug->enabled ) {
 										$this->p->debug->log( $log_prefix.'library class "'.$classname.'" is missing' );
@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 								$error_msg = sprintf( __( 'library file "%s" is missing.', 'wpsso' ), $lib_path );
 
 								// translators: %s is the short plugin name
-								trigger_error( sprintf( __( '%s error:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_ERROR );
+								trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.$error_msg, E_USER_WARNING );
 
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( $log_prefix.'library file "'.$lib_path.'" not found' );
