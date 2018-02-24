@@ -291,6 +291,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$image_info = $this->p->cache->get_image_size( $image_url );	// wrapper for PHP's getimagesize()
 			$total_time = microtime( true ) - $start_time;
 
+			/**
+			 * Issue warning for slow getimagesize() request.
+			 */
 			if ( $max_time > 0 && $total_time > $max_time ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];

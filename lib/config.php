@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.54.0-rc.2',		// Plugin version.
+					'version' => '3.54.0-rc.3',		// Plugin version.
 					'opt_version' => '576',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core (Main Plugin)',
@@ -1146,7 +1146,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'um' => array(				// update manager
-				'rec_version' => '1.9.0-rc.2',	// minimum update manager version (soft limit)
+				'rec_version' => '1.9.0-rc.3',	// minimum update manager version (soft limit)
 				'check_hours' => array(
 					24 => 'Every day',
 					48 => 'Every two days',
@@ -2416,7 +2416,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_UNDEF_INT'] = -1;				// undefined width / height value
 
 			$var_const['WPSSO_CONTENT_BLOCK_FILTER_OUTPUT'] = true;
-			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 0.75;
+			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 1.00;
 			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT'] = 5;		// maximum number of images extracted from the content
 			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT'] = 5;		// maximum number of videos extracted from the content
 
