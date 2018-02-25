@@ -688,14 +688,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_type_default' => 'summary',
 					// twitter summary card
 					'tc_sum_img_width' => 600,		// Summary Card Image Dimensions
-					'tc_sum_img_height' => 600,
+					'tc_sum_img_height' => 315,
 					'tc_sum_img_crop' => 1,
 					'tc_sum_img_crop_x' => 'center',
 					'tc_sum_img_crop_y' => 'center',
 					// twitter large image summary card
 					'tc_lrg_img_width' => 600,		// Large Image Card Img Dimensions
-					'tc_lrg_img_height' => 315,
-					'tc_lrg_img_crop' => 1,
+					'tc_lrg_img_height' => 1600,
+					'tc_lrg_img_crop' => 0,
 					'tc_lrg_img_crop_x' => 'center',
 					'tc_lrg_img_crop_y' => 'center',
 					// enable/disable head html tags
