@@ -2,7 +2,7 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core (Main Plugin)</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically create complete meta tags + Schema markup from your content for social sharing, social media, Google Rich Cards / SEO, Pinterest Rich Pi</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically create complete meta tags + Schema markup from your content for social sharing / social media, Google / SEO, Pinterest Rich Pins + more.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.54.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.4</td></tr>
@@ -17,7 +17,7 @@
 
 <p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup:</strong></p>
 
-<p>WPSSO creates complete meta tags and Schema markup for Facebook / Open Graph, Twitter Cards, Pinterest Rich Pins, Google Rich Cards / SEO, and more, including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.</p>
+<p>WPSSO creates complete meta tags and Schema markup for Facebook / Open Graph, Twitter Cards, Google Rich Cards / SEO, Pinterest Rich Pins, and more, including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.</p>
 
 <p><strong>WPSSO uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
