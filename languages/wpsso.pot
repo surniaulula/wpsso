@@ -546,12 +546,12 @@ msgid ""
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:2235 lib/submenu/essential.php:118
+#: lib/admin.php:2235 lib/submenu/essential.php:114
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2239 lib/submenu/essential.php:122
+#: lib/admin.php:2239 lib/submenu/essential.php:118
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -5015,47 +5015,42 @@ msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/essential.php:95 lib/submenu/general.php:216
-msgctxt "option label"
-msgid "or Facebook Admin Username(s)"
-msgstr ""
-
-#: lib/submenu/essential.php:99 lib/submenu/general.php:177
+#: lib/submenu/essential.php:95 lib/submenu/general.php:177
 msgctxt "option label"
 msgid "Default / Fallback Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:103 lib/submenu/general.php:181
+#: lib/submenu/essential.php:99 lib/submenu/general.php:181
 msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:108
+#: lib/submenu/essential.php:104
 msgctxt "metabox title"
 msgid "Google / Schema"
 msgstr ""
 
-#: lib/submenu/essential.php:110 lib/submenu/general.php:236
+#: lib/submenu/essential.php:106 lib/submenu/general.php:236
 msgctxt "option label"
 msgid "Google+ Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:127
+#: lib/submenu/essential.php:123
 msgctxt "metabox title"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:129 lib/submenu/general.php:278
+#: lib/submenu/essential.php:125 lib/submenu/general.php:278
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:134
+#: lib/submenu/essential.php:130
 msgctxt "metabox title"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/essential.php:136 lib/submenu/general.php:312
+#: lib/submenu/essential.php:132 lib/submenu/general.php:312
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -5168,6 +5163,11 @@ msgstr ""
 #: lib/submenu/general.php:194
 msgctxt "option label"
 msgid "Add Tags from NGG Featured Image"
+msgstr ""
+
+#: lib/submenu/general.php:216
+msgctxt "option label"
+msgid "or Facebook Admin Username(s)"
 msgstr ""
 
 #: lib/submenu/general.php:227

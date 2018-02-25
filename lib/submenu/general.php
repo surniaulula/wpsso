@@ -212,7 +212,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Facebook Application ID', 'option label', 'wpsso' ), '', 'fb_app_id' ).
 					'<td>'.$this->form->get_input( 'fb_app_id' ).'</td>';
 
-					$table_rows['fb_admins'] = ''.
+					$table_rows['fb_admins'] = $this->form->get_tr_hide( 'basic', 'fb_admins' ).
 					$this->form->get_th_html( _x( 'or Facebook Admin Username(s)', 'option label', 'wpsso' ), '', 'fb_admins' ).
 					'<td>'.$this->form->get_input( 'fb_admins' ).'</td>';
 

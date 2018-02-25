@@ -92,10 +92,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						'option label', 'wpsso' ), null, 'fb_app_id' ).
 					'<td>'.$this->form->get_input( 'fb_app_id' ).'</td>';
 
-					$table_rows['fb_admins'] = $this->form->get_th_html( _x( 'or Facebook Admin Username(s)',
-						'option label', 'wpsso' ), null, 'fb_admins' ).
-					'<td>'.$this->form->get_input( 'fb_admins' ).'</td>';
-
 					$table_rows['og_def_img_id'] = $this->form->get_th_html( _x( 'Default / Fallback Image ID',
 						'option label', 'wpsso' ), null, 'og_def_img_id' ).
 					'<td>'.$this->form->get_input_image_upload( 'og_def_img' ).'</td>';
