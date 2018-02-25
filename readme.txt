@@ -14,7 +14,7 @@ Tested Up To: 4.9.4
 WC Tested Up To: 3.3.3
 Stable Tag: 3.54.0
 
-Automatically create complete meta tags and Schema markup from your content for social sharing, social media / SMO, Google Rich Cards / SEO + more.
+Automatically create complete meta tags and Schema markup from your content for social sharing, social media / SMO, Google Rich Cards / WordPress SEO + more.
 
 == Description ==
 
