@@ -34,11 +34,12 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
+
 			$metabox_id = $this->p->cf['meta']['id'];
 			$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+
 			add_meta_box( $this->pagehook.'_'.$metabox_id, $metabox_title, 
-				array( &$this, 'show_metabox_custom_meta' ),
-					$this->pagehook, 'normal' );
+				array( &$this, 'show_metabox_custom_meta' ), $this->pagehook, 'normal' );
 
 		}
 

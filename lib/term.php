@@ -350,8 +350,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		public function add_meta_boxes() {
 
 			if ( ! current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
-				if ( $this->p->debug->enabled )
+				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'insufficient privileges to add metabox for term '.$this->query_term_id );
+				}
 				return;
 			}
 
@@ -367,8 +368,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
-					array( &$this, 'show_metabox_custom_meta' ),
-						$this->p->lca.'-term', 'normal', 'low' );
+					array( &$this, 'show_metabox_custom_meta' ), $this->p->lca.'-term', 'normal', 'low' );
 			}
 		}
 

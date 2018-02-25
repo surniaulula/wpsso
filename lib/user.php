@@ -381,8 +381,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
-					array( &$this, 'show_metabox_custom_meta' ),
-						$this->p->lca.'-user', 'normal', 'low' );
+					array( &$this, 'show_metabox_custom_meta' ), $this->p->lca.'-user', 'normal', 'low' );
 			}
 		}
 

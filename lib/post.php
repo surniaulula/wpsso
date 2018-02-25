@@ -847,8 +847,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
-					array( &$this, 'show_metabox_custom_meta' ),
-						$post_obj->post_type, 'normal', 'low' );
+					array( &$this, 'show_metabox_custom_meta' ), $post_obj->post_type, 'normal', 'low' );
 			}
 		}
 

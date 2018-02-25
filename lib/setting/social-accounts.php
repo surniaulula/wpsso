@@ -28,6 +28,7 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 
 		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
+
 			$this->maybe_show_language_notice();
 
 			add_meta_box( $this->pagehook.'_social_accounts',
@@ -36,7 +37,9 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 		}
 
 		public function show_metabox_social_accounts() {
+
 			$metabox_id = $this->menu_id;
+
 			echo '<table class="sucom-settings '.$this->p->cf['lca'].'">';
 			echo '<tr><td colspan="2">'.$this->p->msgs->get( 'info-'.$metabox_id ).'</td></tr>';
 
@@ -47,6 +50,7 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 			foreach ( $table_rows as $num => $row ) {
 				echo '<tr>'.$row.'</tr>';
 			}
+
 			echo '</table>';
 		}
 

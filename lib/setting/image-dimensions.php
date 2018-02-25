@@ -40,13 +40,14 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 		}
 
 		public function filter_action_buttons( $action_buttons ) {
-			$action_buttons[0]['reload_default_sizes'] = _x( 'Reload Default Sizes',
-				'submit button', 'wpsso' );
+			$action_buttons[0]['reload_default_sizes'] = _x( 'Reload Default Sizes', 'submit button', 'wpsso' );
 			return $action_buttons;
 		}
 
 		public function show_metabox_image_dimensions() {
+
 			$metabox_id = $this->menu_id;
+
 			echo '<table class="sucom-settings '.$this->p->cf['lca'].'">';
 
 			$table_rows = array_merge( $this->get_table_rows( $metabox_id, 'general' ),
@@ -58,10 +59,12 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			foreach ( $table_rows as $num => $row ) {
 				echo '<tr>'.$row.'</tr>' . "\n";
 			}
+
 			echo '</table>';
 		}
 
 		protected function get_table_rows( $metabox_id, $key ) {
+
 			$table_rows = array();
 
 			switch ( $metabox_id.'-'.$key ) {

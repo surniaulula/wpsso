@@ -37,6 +37,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 
 		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
+
 			add_meta_box( $this->pagehook.'_plugin',
 				_x( 'Network Advanced Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
