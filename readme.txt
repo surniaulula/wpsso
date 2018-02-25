@@ -186,6 +186,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 	* Gravity Forms + GravityView
 	* HeadSpace2 SEO
 	* MarketPress - WordPress eCommerce
+	* NextCellent Gallery - NextGEN Legacy
 	* NextGEN Gallery
 	* Polylang
 	* rtMedia for WordPress, BuddyPress and bbPress
@@ -234,7 +235,7 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png">
 
-WPSSO detects and uses all images, associated or included in your content, including the WordPress image gallery shortcode and the [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) shortcode. WordPress Media Library images (and NextGEN Gallery images in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, Google / SEO, etc). The Pro version also detects embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube and includes their preview image, video title, and video description in meta tags and Schema markup. The Pro version includes complete support for [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries, and images (shortcodes, image tags, album / gallery preview images, and more).
+WPSSO detects and uses all images, associated or included in your content, including the WordPress image gallery shortcode and the [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) shortcode. WordPress Media Library images (and NextGEN Gallery images in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, Google / SEO, etc). The Pro version also detects embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube and includes their preview image, video title, and video description in meta tags and Schema markup. The Pro version includes complete support for [NextCellent Gallery – NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/) and [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries, and images (shortcodes, image tags, album / gallery preview images, and more).
 
 <h4>Enhanced SEO</h4>
 
@@ -390,6 +391,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.54.1-dev.1 (2018/02/25)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Updated the NGG module to add support for NextCellent Gallery image permalinks.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.54.0 (2018/02/24)**
 
 * *New Features*
@@ -480,6 +492,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 
 == Upgrade Notice ==
+
+= 3.54.1-dev.1 =
+
+(2018/02/25) Updated the NGG module to add support for NextCellent Gallery image permalinks.
 
 = 3.54.0 =
 
