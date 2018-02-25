@@ -14,7 +14,7 @@ Tested Up To: 4.9.4
 WC Tested Up To: 3.3.3
 Stable Tag: 3.54.0
 
-Automatically create complete meta tags and Schema markup from your content for social sharing, social media / SMO, Google Rich Cards / WordPress SEO + more.
+Automatically create complete meta tags + Schema markup from your content for social sharing, social media, Google Rich Cards / SEO, Pinterest Rich Pins + more.
 
 == Description ==
 
@@ -22,7 +22,7 @@ Automatically create complete meta tags and Schema markup from your content for 
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
-WPSSO includes Facebook / Open Graph / Twitter Cards / Pinterest Rich Pins / Google Rich Cards / SEO / Schema descriptions, titles, hashtags, complete image markup, complete video markup, complete and very extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
+WPSSO creates complete meta tags and Schema markup for Facebook / Open Graph, Twitter Cards, Pinterest Rich Pins, Google Rich Cards / SEO, and more, including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
 
 **WPSSO uses your *existing content* for meta tags and Schema markup:**
 
