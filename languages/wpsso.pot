@@ -895,8 +895,9 @@ msgstr ""
 #: lib/config-gettext-extract.php:11
 msgctxt "plugin description"
 msgid ""
-"Automatically create complete meta tags + Schema markup from your content "
-"for Social Sharing / Social Media, Google / SEO, Pinterest Rich Pins + more."
+"Automatically create complete meta tags + Schema markup from your existing "
+"content for Social Sharing / Social Media, Google / SEO, Pinterest Rich Pins "
+"+ more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:12
@@ -5423,8 +5424,9 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Automatically create complete meta tags + Schema markup from your content "
-"for Social Sharing / Social Media, Google / SEO, Pinterest Rich Pins + more."
+"Automatically create complete meta tags + Schema markup from your existing "
+"content for Social Sharing / Social Media, Google / SEO, Pinterest Rich Pins "
+"+ more."
 msgstr ""
 
 #. Author of the plugin/theme

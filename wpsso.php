@@ -10,7 +10,7 @@
  * Author URI: https://wpsso.com/
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
- * Description: Automatically create complete meta tags + Schema markup from your content for Social Sharing / Social Media, Google / SEO, Pinterest Rich Pins + more.
+ * Description: Automatically create complete meta tags + Schema markup from your existing content for Social Sharing / Social Media, Google / SEO, Pinterest Rich Pins + more.
  * Requires PHP: 5.4
  * Requires At Least: 3.8
  * Tested Up To: 4.9.4
