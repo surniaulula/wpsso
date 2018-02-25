@@ -8,7 +8,7 @@ _x( 'All WP Objects', 'option label', 'wpsso' );
 _x( 'Alpha and Up', 'option value', 'wpsso' );
 _x( 'Article Topics', 'option label', 'wpsso' );
 _x( 'at', 'option value', 'wpsso' );
-_x( 'Automatically create complete & accurate meta tags and Schema markup from your content for social sharing, social media / SMO, search / SEO / rich cards, and more.', 'plugin description', 'wpsso' );
+_x( 'Automatically create complete meta tags + Schema markup from your content for Social Sharing / Social Media, Google / SEO, Pinterest Rich Pins + more.', 'plugin description', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
 _x( 'Beta and Up', 'option value', 'wpsso' );
 _x( 'Bitly (suggested)', 'option value', 'wpsso' );
