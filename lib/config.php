@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'media' => array(
 								'facebook' => '(api) Facebook Video API',
 								'gravatar' => '(api) Author Gravatar Image',
-								'ngg' => '(plugin) NextGEN Gallery',
+								'ngg' => '(plugin) NGG version 1-2: NextGEN Gallery, NextCellent Gallery',
 								'rtmedia' => '(plugin) rtMedia for WordPress, BuddyPress and bbPress',
 								'slideshare' => '(api) Slideshare API',
 								'soundcloud' => '(api) Soundcloud API',

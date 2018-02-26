@@ -4683,15 +4683,15 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:106 lib/pro/media/ngg.php:420
+#: lib/pro/media/ngg.php:117 lib/pro/media/ngg.php:431
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/pro/media/ngg.php:109 lib/pro/util/checkimgdims.php:85
+#: lib/pro/media/ngg.php:120 lib/pro/util/checkimgdims.php:85
 msgid "cropped"
 msgstr ""
 
-#: lib/pro/media/ngg.php:111
+#: lib/pro/media/ngg.php:122
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
 "for the required %4$s image dimensions."
