@@ -86,10 +86,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ! empty( $this->p->options['plugin_shortener'] ) && $this->p->options['plugin_shortener'] !== 'none' ) {
+
 				if ( ! empty( $this->p->options['plugin_wp_shortlink'] ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'adding pre_get_shortlink filters to shorten the sharing url' );
 					}
+
 					add_filter( 'pre_get_shortlink', array( &$this, 'get_sharing_shortlink' ), SucomUtil::get_min_int(), 4 );
 					add_filter( 'pre_get_shortlink', array( &$this, 'restore_sharing_shortlink' ), SucomUtil::get_max_int(), 4 );
 
@@ -238,6 +241,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Recreate the same code here to get a real post ID and create a default shortlink (if required).
 			 */
 			if ( $post_id === 0 ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'provided post id is 0 (current post)' );
 				}
@@ -276,6 +280,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$shortlink = home_url( '?p='.$post_id );
 					}
 				}
+
 			} elseif ( ! is_numeric( $post_id ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_id argument is not numeric' );

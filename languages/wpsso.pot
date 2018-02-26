@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core (Main Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core (Main Plugin) 3.54.1-dev.2\n"
+"Project-Id-Version: WPSSO Core (Main Plugin) 3.54.1-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:722 lib/post.php:553 lib/term.php:337 lib/user.php:344
+#: lib/admin.php:722 lib/post.php:558 lib/term.php:337 lib/user.php:344
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2296,7 +2296,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:169 lib/meta.php:212 lib/post.php:890
+#: lib/gpl/admin/post.php:169 lib/meta.php:212 lib/post.php:895
 #: lib/pro/admin/post.php:191
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2342,7 +2342,7 @@ msgid "Library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:147 lib/loader.php:166 lib/post.php:193 lib/register.php:220
+#: lib/loader.php:147 lib/loader.php:166 lib/post.php:196 lib/register.php:220
 #: lib/term.php:178 lib/user.php:161 lib/util.php:315 lib/util.php:1997
 msgid "%s warning:"
 msgstr ""
@@ -4452,140 +4452,140 @@ msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$0.3f is a number of seconds
-#: lib/post.php:190
+#: lib/post.php:193
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
 "children of post ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/post.php:669
+#: lib/post.php:674
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:672
+#: lib/post.php:677
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:700
+#: lib/post.php:705
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:702
+#: lib/post.php:707
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:704
+#: lib/post.php:709
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:705
+#: lib/post.php:710
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:715 lib/util.php:920
+#: lib/post.php:720 lib/util.php:920
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:724
+#: lib/post.php:729
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:733
+#: lib/post.php:738
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:742
+#: lib/post.php:747
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:758
+#: lib/post.php:763
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:766
+#: lib/post.php:771
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:777
+#: lib/post.php:782
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:777
+#: lib/post.php:782
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:777
+#: lib/post.php:782
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:800
+#: lib/post.php:805
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:804
+#: lib/post.php:809
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:806
+#: lib/post.php:811
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
-#: lib/post.php:1005
+#: lib/post.php:1010
 msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1014
+#: lib/post.php:1019
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1015
+#: lib/post.php:1020
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1026
+#: lib/post.php:1031
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1027
+#: lib/post.php:1032
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1028
+#: lib/post.php:1033
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1029
+#: lib/post.php:1034
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1103
+#: lib/post.php:1108
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -4683,15 +4683,15 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:125 lib/pro/media/ngg.php:442
+#: lib/pro/media/ngg.php:128 lib/pro/media/ngg.php:1179
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/pro/media/ngg.php:128 lib/pro/util/checkimgdims.php:85
+#: lib/pro/media/ngg.php:131 lib/pro/util/checkimgdims.php:85
 msgid "cropped"
 msgstr ""
 
-#: lib/pro/media/ngg.php:130
+#: lib/pro/media/ngg.php:133
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
 "for the required %4$s image dimensions."
