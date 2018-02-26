@@ -397,6 +397,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* Refactored the NextGEN Gallery module to add support for [NextCellent Gallery – NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/) image slugs in the WP_Query pid value (Pro version).
+	* Updated the NextGEN Gallery plugin module name from "NextGEN Gallery" to "NGG version 1-2: NextGEN Gallery, NextCellent Gallery"
 * *Bugfixes*
 	* Fixed the missing 'og:image:width' and 'og:image:height' meta tags.
 * *Developer Notes*
