@@ -396,7 +396,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* Refactored the NGG module to add support for NextCellent Gallery image slugs in the query pid value.
+	* Refactored the NGG module to add support for [NextCellent Gallery – NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/) image slugs in the query pid value (Pro version).
 * *Bugfixes*
 	* Fixed the missing 'og:image:width' and 'og:image:height' meta tags.
 * *Developer Notes*
@@ -495,7 +495,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.54.1-dev.2 =
 
-(2018/02/26) Refactored the NGG module to add support for NextCellent Gallery image slugs in the query pid value.
+(2018/02/26) Fixed the missing 'og:image:width' and 'og:image:height' meta tags. Refactored the NGG module to add support for NextCellent Gallery image slugs in the query pid value (Pro version).
 
 = 3.54.0 =
 
