@@ -86,7 +86,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							break;
 						case 'media-ngg':
 							$chk['class'] = 'nggdb';
-							$chk['plugin'] = 'nextgen-gallery/nggallery.php';
 							break;
 						case 'media-rtmedia':
 							$chk['plugin'] = 'buddypress-media/index.php';
