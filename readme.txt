@@ -391,14 +391,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.54.1-dev.1 (2018/02/25)**
+**Version 3.54.1-dev.2 (2018/02/26)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Updated the NGG module to add support for NextCellent Gallery image permalinks.
+	* Refactored the NGG module to add support for NextCellent Gallery image slugs in the query pid value.
 * *Bugfixes*
-	* None
+	* Fixed the missing 'og:image:width' and 'og:image:height' meta tags.
 * *Developer Notes*
 	* None
 
@@ -493,9 +493,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.54.1-dev.1 =
+= 3.54.1-dev.2 =
 
-(2018/02/25) Updated the NGG module to add support for NextCellent Gallery image permalinks.
+(2018/02/26) Refactored the NGG module to add support for NextCellent Gallery image slugs in the query pid value.
 
 = 3.54.0 =
 
