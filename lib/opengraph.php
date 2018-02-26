@@ -638,25 +638,20 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					/**
 					 * NGG pre-v2 used query arguments.
 					 */
-					if ( version_compare( $ngg_obj->ngg_version, '2.0.0', '<' ) ) {
-						$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod['id'], $check_dupes );
-					} else {
-						$query_images = array();
-					}
+					$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod['id'], $check_dupes );
 
-					/**
-					 * If we found images in the query, skip content shortcodes.
-					 * If no query images were found, continue checking for NGG shortcodes in the content.
-					 */
 					if ( count( $query_images ) > 0 ) {
+
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'skipping additional shortcode images: '.count( $query_images ).' image(s) returned' );
+							$this->p->debug->log( 'skipping shortcode: '.count( $query_images ).' query image(s) returned' );
 						}
 						$og_ret = array_merge( $og_ret, $query_images );
 
 					} elseif ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
+
 						$num_diff = SucomUtil::count_diff( $og_ret, $num );
 						$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod['id'], $check_dupes );
+
 						if ( ! empty( $shortcode_images ) ) {
 							$og_ret = array_merge( $og_ret, $shortcode_images );
 						}
