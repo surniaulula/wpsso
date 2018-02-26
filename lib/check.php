@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'lang-polylang':
 							$chk['class'] = 'Polylang';
 							break;
-						case 'media-ngg':
+						case 'media-ngg':	// NextGEN Gallery and NextCellent Gallery
 							$chk['class'] = 'nggdb';
 							break;
 						case 'media-rtmedia':

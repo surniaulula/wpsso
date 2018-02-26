@@ -624,32 +624,30 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				/**
-				 * Check for NGG query vars and shortcodes.
+				 * Check for NGG query variables and shortcodes.
 				 */
 				if ( ! empty( $this->p->m['media']['ngg'] ) && ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'checking for NGG query vars and shortcodes' );
+						$this->p->debug->log( 'checking for NGG query variables and shortcodes' );
 					}
 
 					$num_diff = SucomUtil::count_diff( $og_ret, $num );
 					$ngg_obj =& $this->p->m['media']['ngg'];
 
-					/**
-					 * NGG pre-v2 used query arguments.
-					 */
 					$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod['id'], $check_dupes );
 
 					if ( count( $query_images ) > 0 ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'skipping shortcode: '.count( $query_images ).' query image(s) returned' );
+							$this->p->debug->log( 'skipping NGG shortcode check - '.count( $query_images ).' query image(s) returned' );
 						}
 						$og_ret = array_merge( $og_ret, $query_images );
 
 					} elseif ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 
 						$num_diff = SucomUtil::count_diff( $og_ret, $num );
+
 						$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod['id'], $check_dupes );
 
 						if ( ! empty( $shortcode_images ) ) {

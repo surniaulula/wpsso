@@ -267,6 +267,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 	
 								$num_diff = 1;
 								$ngg_obj =& $this->p->m['media']['ngg'];
+
 								$og_images = $ngg_obj->get_singlepic_og_images( $num_diff, $size_name, $post_id, false );
 	
 								if ( ! empty( $og_images ) ) {
