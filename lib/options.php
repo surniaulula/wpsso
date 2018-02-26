@@ -94,10 +94,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				// check for default values from network admin settings
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {
-					foreach ( $this->p->site_options as $key => $val ) {
-						if ( isset( $defs[$key] ) && isset( $this->p->site_options[$key.':use'] ) ) {
-							if ( $this->p->site_options[$key.':use'] === 'default' ) {
-								$defs[$key] = $this->p->site_options[$key];
+					foreach ( $this->p->site_options as $opt_key => $opt_val ) {
+						if ( isset( $defs[$opt_key] ) && isset( $this->p->site_options[$opt_key.':use'] ) ) {
+							if ( $this->p->site_options[$opt_key.':use'] === 'default' ) {
+								$defs[$opt_key] = $this->p->site_options[$opt_key];
 							}
 						}
 					}
@@ -402,21 +402,32 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			// add any missing options from the defaults, unless sanitizing for a module 
 			// (default values will be removed anyway)
 			if ( false === $mod ) {
-				foreach ( $def_opts as $key => $def_val ) {
-					if ( ! empty( $key ) && ! isset( $opts[$key] ) ) {
-						$opts[$key] = $def_val;
+				foreach ( $def_opts as $opt_key => $def_val ) {
+					if ( ! empty( $opt_key ) && ! isset( $opts[$opt_key] ) ) {
+						$opts[$opt_key] = $def_val;
 					}
 				}
 			}
 
 			// sanitize values
-			foreach ( $opts as $key => $val ) {
-				if ( preg_match( '/:(is|width|height)$/', $key ) ) {	// don't save option states
-					unset( $opts[$key] );
-				} elseif ( ! empty( $key ) ) {
-					$def_val = isset( $def_opts[$key] ) ? $def_opts[$key] : '';	// Just in case.
-					$opts[$key] = $this->check_value( $key, $val, $def_val, $network, $mod );
+			foreach ( $opts as $opt_key => $opt_val ) {
+
+				if ( empty( $opt_key ) ) {
+					continue;
 				}
+
+				// remove multiples, localization, and status for more generic match
+				$base_key = preg_replace( '/(_[0-9]+)?(#.*|:[0-9]+)?$/', '', $opt_key );
+
+				if ( preg_match( '/:is$/', $base_key ) ) {
+					unset( $opts[$opt_key] );
+					continue;
+				}
+
+				// multi-options and localized options will default to an empty string
+				$def_val = isset( $def_opts[$opt_key] ) ? $def_opts[$opt_key] : '';
+
+				$opts[$opt_key] = $this->check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod );
 			}
 
 			/**
@@ -501,71 +512,59 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Update the width / height of remote image urls. Allow for multi-option keys, like 'place_addr_img_url_1'.
 			 * Remove all custom field names first, to exclude 'plugin_cf_img_url' and 'plugin_cf_vid_url'.
 			 */
-			$img_url_keys = preg_grep( '/_(img|logo|banner)_url(_[0-9]+)?(#[a-zA-Z_]+)?$/', 
-				preg_grep( '/^plugin_cf_/', array_keys( $opts ), PREG_GREP_INVERT ) );
+			$img_url_keys = preg_grep( '/^plugin_cf_/', array_keys( $opts ), PREG_GREP_INVERT );
+			$img_url_keys = preg_grep( '/_(img|logo|banner)_url(_[0-9]+)?(#[a-zA-Z_]+)?$/', $img_url_keys );
 
 			$this->p->util->add_image_url_size( $img_url_keys, $opts );
 
 			return $opts;
 		}
 
-		public function check_value( $key, $val, $def_val, $network = false, &$mod = false ) {
+		private function check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod ) {
 
 			static $error_messages = null;
 
-			if ( is_array( $val ) ) {	// Just in case.
-				return $val;	// stop here
+			if ( is_array( $opt_val ) ) {	// Just in case.
+				return $opt_val;	// stop here
 			}
 
-			// remove multiples, localization, and status for more generic match
-			$option_key = preg_replace( '/(_[0-9]+)?(#.*|:[0-9]+)?$/', '', $key );
-
 			// hooked by several extensions
-			$option_type = apply_filters( $this->p->cf['lca'].'_option_type', false, $option_key, $network, $mod );
+			$option_type = apply_filters( $this->p->lca.'_option_type', false, $base_key, $network, $mod );
 
 			// translate error messages only once
 			if ( null === $error_messages ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'translating error messages' );
 				}
+
 				$error_messages = array(
-					'url' => __( 'The value of option \'%s\' must be a URL - resetting option to default value.',
-						'wpsso' ),
-					'csv_urls' => __( 'The value of option \'%s\' must be a comma-delimited list of URL(s) - resetting option to default value.',
-						'wpsso' ),
-					'numeric' => __( 'The value of option \'%s\' must be numeric - resetting option to default value.',
-						'wpsso' ),
-					'pos_num' => __( 'The value of option \'%1$s\' must be equal to or greather than %2$s - resetting option to default value.',
-						'wpsso' ),
-					'blank_num' => __( 'The value of option \'%s\' must be blank or numeric - resetting option to default value.',
-						'wpsso' ),
-					'api_key' => __( 'The value of option \'%s\' must be alpha-numeric - resetting option to default value.',
-						'wpsso' ),
-					'color' => __( 'The value of option \'%s\' must be a CSS color code - resetting option to default value.',
-						'wpsso' ),
-					'date' => __( 'The value of option \'%s\' must be a yyyy-mm-dd date - resetting option to default value.',
-						'wpsso' ),
-					'time' => __( 'The value of option \'%s\' must be a hh:mm time - resetting option to default value.',
-						'wpsso' ),
-					'html' => __( 'The value of option \'%s\' must be HTML code - resetting option to default value.',
-						'wpsso' ),
-					'not_blank' => __( 'The value of option \'%s\' cannot be an empty string - resetting option to default value.',
-						'wpsso' ),
+					'url' => __( 'The value of option \'%s\' must be a URL - resetting option to default value.', 'wpsso' ),
+					'csv_urls' => __( 'The value of option \'%s\' must be a comma-delimited list of URL(s) - resetting option to default value.', 'wpsso' ),
+					'numeric' => __( 'The value of option \'%s\' must be numeric - resetting option to default value.', 'wpsso' ),
+					'pos_num' => __( 'The value of option \'%1$s\' must be equal to or greather than %2$s - resetting option to default value.', 'wpsso' ),
+					'blank_num' => __( 'The value of option \'%s\' must be blank or numeric - resetting option to default value.', 'wpsso' ),
+					'api_key' => __( 'The value of option \'%s\' must be alpha-numeric - resetting option to default value.', 'wpsso' ),
+					'color' => __( 'The value of option \'%s\' must be a CSS color code - resetting option to default value.', 'wpsso' ),
+					'date' => __( 'The value of option \'%s\' must be a yyyy-mm-dd date - resetting option to default value.', 'wpsso' ),
+					'time' => __( 'The value of option \'%s\' must be a hh:mm time - resetting option to default value.', 'wpsso' ),
+					'html' => __( 'The value of option \'%s\' must be HTML code - resetting option to default value.', 'wpsso' ),
+					'not_blank' => __( 'The value of option \'%s\' cannot be an empty string - resetting option to default value.', 'wpsso' ),
 				);
 			}
 
 			// pre-filter most values to remove html
 			switch ( $option_type ) {
 				case 'ignore':
-					return $val;	// stop here
+					return $opt_val;	// stop here
 					break;
 				case 'html':		// leave html, css, and javascript code blocks as-is
 				case 'code':		// code values cannot be blank
 				case 'preg':
 					break;
 				default:
-					$val = wp_filter_nohtml_kses( $val );	// strips all the HTML in the content
-					$val = stripslashes( $val );	// strip slashes added by wp_filter_nohtml_kses()
+					$opt_val = wp_filter_nohtml_kses( $opt_val );	// strips all the HTML in the content
+					$opt_val = stripslashes( $opt_val );	// strip slashes added by wp_filter_nohtml_kses()
 					break;
 			}
 
@@ -575,56 +574,56 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			switch ( $option_type ) {
 				// must be empty or texturized 
 				case 'textured':
-					if ( $val !== '' ) {
-						$val = trim( wptexturize( ' '.$val.' ' ) );
+					if ( $opt_val !== '' ) {
+						$opt_val = trim( wptexturize( ' '.$opt_val.' ' ) );
 					}
 					break;
 
 				// must be empty or a url
 				case 'url':
-					if ( $val !== '' ) {
-						$val = SucomUtil::decode_html( $val );	// Just in case.
-						if ( filter_var( $val, FILTER_VALIDATE_URL ) === false ) {
-							$this->p->notice->err( sprintf( $error_messages[$option_type], $key ) );
-							$val = $def_val;
+					if ( $opt_val !== '' ) {
+						$opt_val = SucomUtil::decode_html( $opt_val );	// Just in case.
+						if ( filter_var( $opt_val, FILTER_VALIDATE_URL ) === false ) {
+							$this->p->notice->err( sprintf( $error_messages[$option_type], $opt_key ) );
+							$opt_val = $def_val;
 						}
 					}
 					break;
 
 				// strip leading urls off facebook usernames
 				case 'url_base':
-					if ( $val !== '' ) {
-						$val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $val );
+					if ( $opt_val !== '' ) {
+						$opt_val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $opt_val );
 					}
 					break;
 
 				case 'csv_blank':
-					if ( $val !== '' ) {
-						$val = implode( ', ', SucomUtil::explode_csv( $val ) );
+					if ( $opt_val !== '' ) {
+						$opt_val = implode( ', ', SucomUtil::explode_csv( $opt_val ) );
 					}
 					break;
 
 				case 'csv_urls':
-					if ( $val !== '' ) {
+					if ( $opt_val !== '' ) {
 						$parts = array();
-						foreach ( SucomUtil::explode_csv( $val ) as $part ) {
+						foreach ( SucomUtil::explode_csv( $opt_val ) as $part ) {
 							$part = SucomUtil::decode_html( $part );	// Just in case.
 							if ( filter_var( $part, FILTER_VALIDATE_URL ) === false ) {
-								$this->p->notice->err( sprintf( $error_messages[$option_type], $key ) );
-								$val = $def_val;
+								$this->p->notice->err( sprintf( $error_messages[$option_type], $opt_key ) );
+								$opt_val = $def_val;
 								break;
 							} else {
 								$parts[] = $part;
 							}
 						}
-						$val = implode( ', ', $parts );
+						$opt_val = implode( ', ', $parts );
 					}
 					break;
 
 				// twitter-style usernames (prepend with an @ character)
 				case 'at_name':
-					if ( $val !== '' ) {
-						$val = SucomUtil::get_at_name( $val );
+					if ( $opt_val !== '' ) {
+						$opt_val = SucomUtil::get_at_name( $opt_val );
 					}
 					break;
 
@@ -634,9 +633,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$cast_int = true;
 					// no break
 				case 'numeric':
-					if ( ! is_numeric( $val ) ) {
-						$this->p->notice->err( sprintf( $error_messages['numeric'], $key ) );
-						$val = $def_val;
+					if ( ! is_numeric( $opt_val ) ) {
+						$this->p->notice->err( sprintf( $error_messages['numeric'], $opt_key ) );
+						$opt_val = $def_val;
 					}
 					break;
 
@@ -654,11 +653,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					} else {
 						$min_int = 1;
 					}
-					if ( ! empty( $mod['name'] ) && $val === '' ) {	// custom meta options can be empty
+					if ( ! empty( $mod['name'] ) && $opt_val === '' ) {	// custom meta options can be empty
 						$cast_int = false;
-					} elseif ( ! is_numeric( $val ) || $val < $min_int ) {
-						$this->p->notice->err( sprintf( $error_messages['pos_num'], $key, $min_int ) );
-						$val = $def_val;
+					} elseif ( ! is_numeric( $opt_val ) || $opt_val < $min_int ) {
+						$this->p->notice->err( sprintf( $error_messages['pos_num'], $opt_key, $min_int ) );
+						$opt_val = $def_val;
 					}
 					break;
 
@@ -667,13 +666,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$cast_int = true;
 					// no break
 				case 'blank_num':
-					if ( $val === '' ) {
+					if ( $opt_val === '' ) {
 						$cast_int = false;
 					} else {
-						if ( ! is_numeric( $val ) ) {
-							$this->p->notice->err( sprintf( $error_messages['blank_num'], $key ) );
-							$val = $def_val;
-							if ( $val === '' ) {
+						if ( ! is_numeric( $opt_val ) ) {
+							$this->p->notice->err( sprintf( $error_messages['blank_num'], $opt_key ) );
+							$opt_val = $def_val;
+							if ( $opt_val === '' ) {
 								$cast_int = false;
 							}
 						}
@@ -683,22 +682,22 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// empty or alpha-numeric uppercase (hyphens are allowed as well)
 				case 'auth_id':
 					// silently convert illegal characters to single hyphens and trim excess
-					$val = trim( preg_replace( '/[^A-Z0-9\-]+/', '-', $val ), '-' );
+					$opt_val = trim( preg_replace( '/[^A-Z0-9\-]+/', '-', $opt_val ), '-' );
 					break;
 
 				// empty or alpha-numeric (upper or lower case), plus underscores
 				case 'api_key':
-					$val = trim( $val );
-					if ( $val !== '' && preg_match( '/[^a-zA-Z0-9_\-]/', $val ) ) {
-						$this->p->notice->err( sprintf( $error_messages[$option_type], $key ) );
-						$val = $def_val;
+					$opt_val = trim( $opt_val );
+					if ( $opt_val !== '' && preg_match( '/[^a-zA-Z0-9_\-]/', $opt_val ) ) {
+						$this->p->notice->err( sprintf( $error_messages[$option_type], $opt_key ) );
+						$opt_val = $def_val;
 					}
 					break;
 
 				case 'color':
 				case 'date':
 				case 'time':
-					$val = trim( $val );
+					$opt_val = trim( $opt_val );
 					if ( $option_type === 'color' ) {
 						$fmt = '/^#[a-fA-f0-9]{6,6}$/';	// color #000000
 					} elseif ( $option_type === 'date' ) {
@@ -706,16 +705,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					} elseif ( $option_type === 'time' ) {
 						$fmt = '/^[0-9]{2,2}:[0-9]{2,2}(:[0-9]{2,2})?$/';	// time hh:mm or hh:mm:ss
 					}
-					if ( $val !== '' && $fmt && ! preg_match( $fmt, $val ) ) {
-						$this->p->notice->err( sprintf( $error_messages[$option_type], $key ) );
-						$val = $def_val;
+					if ( $opt_val !== '' && $fmt && ! preg_match( $fmt, $opt_val ) ) {
+						$this->p->notice->err( sprintf( $error_messages[$option_type], $opt_key ) );
+						$opt_val = $def_val;
 					}
 					break;
 
 				// text strings that can be blank
 				case 'ok_blank':
-					if ( $val !== '' ) {
-						$val = trim( $val );
+					if ( $opt_val !== '' ) {
+						$opt_val = trim( $opt_val );
 					}
 					break;
 
@@ -723,18 +722,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'preg':
 				case 'desc':
 				case 'one_line':
-					if ( $val !== '' ) {
-						$val = trim( preg_replace( '/[\s\n\r]+/s', ' ', $val ) );
+					if ( $opt_val !== '' ) {
+						$opt_val = trim( preg_replace( '/[\s\n\r]+/s', ' ', $opt_val ) );
 					}
 					break;
 
 				// empty string or must include at least one HTML tag
 				case 'html':
-					if ( $val !== '' ) {
-						$val = trim( $val );
-						if ( ! preg_match( '/<.*>/', $val ) ) {
-							$this->p->notice->err( sprintf( $error_messages['html'], $key ) );
-							$val = $def_val;
+					if ( $opt_val !== '' ) {
+						$opt_val = trim( $opt_val );
+						if ( ! preg_match( '/<.*>/', $opt_val ) ) {
+							$this->p->notice->err( sprintf( $error_messages['html'], $opt_key ) );
+							$opt_val = $def_val;
 						}
 					}
 					break;
@@ -742,9 +741,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// options that cannot be blank (aka empty string)
 				case 'code':
 				case 'not_blank':
-					if ( $val === '' && $def_val !== '' ) {
-						$this->p->notice->err( sprintf( $error_messages['not_blank'], $key ) );
-						$val = $def_val;
+					if ( $opt_val === '' && $def_val !== '' ) {
+						$this->p->notice->err( sprintf( $error_messages['not_blank'], $opt_key ) );
+						$opt_val = $def_val;
 					}
 					break;
 
@@ -752,15 +751,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'checkbox':
 				default:
 					if ( $def_val === 0 || $def_val === 1 ) {	// make sure the default option is also a 1 or 0, just in case
-						$val = empty( $val ) ? 0 : 1;
+						$opt_val = empty( $opt_val ) ? 0 : 1;
 					}
 					break;
 			}
 
 			if ( $cast_int ) {
-				return (int) $val;
+				return (int) $opt_val;
 			} else {
-				return $val;
+				return $opt_val;
 			}
 		}
 
@@ -822,20 +821,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return true;
 		}
 
-		public function filter_option_type( $type, $key ) {
+		public function filter_option_type( $type, $base_key ) {
 
 			if ( ! empty( $type ) ) {
 				return $type;
 			}
 
-			switch ( $key ) {
+			switch ( $base_key ) {
 				// use value should be default / empty / force
-				case ( preg_match( '/:use$/', $key ) ? true : false ):
+				case ( preg_match( '/:use$/', $base_key ) ? true : false ):
 					return 'not_blank';
 					break;
 				// optimize and check for add meta tags options first
-				case ( strpos( $key, 'add_' ) === 0 ? true : false ):
-				case ( strpos( $key, 'plugin_filter_' ) === 0 ? true : false ):
+				case ( strpos( $base_key, 'add_' ) === 0 ? true : false ):
+				case ( strpos( $base_key, 'plugin_filter_' ) === 0 ? true : false ):
 					return 'checkbox';
 					break;
 				// empty string or must include at least one HTML tag
@@ -843,13 +842,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'html';
 					break;
 				// regular expression
-				case ( preg_match( '/_preg$/', $key ) ? true : false ):
+				case ( preg_match( '/_preg$/', $base_key ) ? true : false ):
 					return 'preg';
 					break;
 				// js and css (cannot be blank)
-				case ( strpos( $key, '_js_' ) !== false ? true : false ):
-				case ( strpos( $key, '_css_' ) !== false ? true : false ):
-				case ( preg_match( '/(_css|_js|_html)$/', $key ) ? true : false ):
+				case ( strpos( $base_key, '_js_' ) !== false ? true : false ):
+				case ( strpos( $base_key, '_css_' ) !== false ? true : false ):
+				case ( preg_match( '/(_css|_js|_html)$/', $base_key ) ? true : false ):
 					return 'code';
 					break;
 				case 'gv_id_title':
@@ -862,13 +861,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_img_max':
 				case 'og_vid_max':
 				case 'og_desc_hashtags': 
-				case ( preg_match( '/_(cache_exp|filter_prio)$/', $key ) ? true : false ):
+				case ( preg_match( '/_(cache_exp|filter_prio)$/', $base_key ) ? true : false ):
+				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
 					return 'integer';
 					break;
 				// numeric options that must be positive (1 or more)
 				case 'plugin_upscale_img_max':
 				case 'plugin_min_shorten':
-				case ( preg_match( '/_(len|warn)$/', $key ) ? true : false ):
+				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
 					return 'pos_int';
 					break;
 				// must be numeric (blank and zero are ok)
@@ -879,13 +879,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'blank_num';
 					break;
 				// image width, subject to minimum value (typically, at least 200px)
-				case ( preg_match( '/_img_width$/', $key ) ? true : false ):
-				case ( preg_match( '/^tc_[a-z]+_width$/', $key ) ? true : false ):
+				case ( preg_match( '/_img_width$/', $base_key ) ? true : false ):
+				case ( preg_match( '/^tc_[a-z]+_width$/', $base_key ) ? true : false ):
 					return 'img_width';
 					break;
 				// image height, subject to minimum value (typically, at least 200px)
-				case ( preg_match( '/_img_height$/', $key ) ? true : false ):
-				case ( preg_match( '/^tc_[a-z]+_height$/', $key ) ? true : false ):
+				case ( preg_match( '/_img_height$/', $base_key ) ? true : false ):
+				case ( preg_match( '/^tc_[a-z]+_height$/', $base_key ) ? true : false ):
 					return 'img_height';
 					break;
 				// must be texturized 
@@ -893,14 +893,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'textured';
 					break;
 				// empty of alpha-numeric uppercase (hyphens are allowed as well)
-				case ( preg_match( '/_tid$/', $key ) ? true : false ):
+				case ( preg_match( '/_tid$/', $base_key ) ? true : false ):
 					return 'auth_id';
 					break;
 				// empty or alpha-numeric (upper or lower case), plus underscores
 				case 'fb_app_id':
 				case 'fb_app_secret':
 				case 'p_dom_verify':
-				case ( preg_match( '/_api_key$/', $key ) ? true : false ):
+				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
 					return 'api_key';
 					break;
 				// text strings that can be blank (line breaks are removed)
@@ -924,8 +924,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_yourls_username':
 				case 'plugin_yourls_password':
 				case 'plugin_yourls_token':
-				case ( strpos( $key, 'plugin_cf_' ) === 0 ? true : false ):	// value is name of meta key
-				case ( strpos( $key, '_filter_name' ) !== false ? true : false ):
+				case ( strpos( $base_key, 'plugin_cf_' ) === 0 ? true : false ):	// value is name of meta key
+				case ( strpos( $base_key, '_filter_name' ) !== false ? true : false ):
 					return 'one_line';
 					break;
 				// options that cannot be blank
@@ -940,9 +940,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_shortener':		// none or name of shortener
 				case 'product_avail':
 				case 'product_condition':
-				case ( strpos( $key, '_crop_x' ) !== false ? true : false ):
-				case ( strpos( $key, '_crop_y' ) !== false ? true : false ):
-				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $key ) ? true : false ):
+				case ( strpos( $base_key, '_crop_x' ) !== false ? true : false ):
+				case ( strpos( $base_key, '_crop_y' ) !== false ? true : false ):
+				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $base_key ) ? true : false ):
 					return 'not_blank';
 					break;
 				// twitter-style usernames (prepend with an at)
@@ -976,11 +976,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'schema_addl_type_url':
 				case 'schema_sameas_url':
 				case 'plugin_yourls_api_url':
-				case ( strpos( $key, '_url' ) && isset( $this->p->cf['form']['social_accounts'][$key] ) ? true : false ):
+				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf['form']['social_accounts'][$base_key] ) ? true : false ):
 					return 'url';
 					break;
 				// css color code
-				case ( strpos( $key, '_color_' ) !== false ? true : false ):
+				case ( strpos( $base_key, '_color_' ) !== false ? true : false ):
 					return 'color';
 					break;
 			}

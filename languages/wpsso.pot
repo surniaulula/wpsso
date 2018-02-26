@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core (Main Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core (Main Plugin) 3.54.1-dev.1\n"
+"Project-Id-Version: WPSSO Core (Main Plugin) 3.54.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2343,7 +2343,7 @@ msgstr ""
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:147 lib/loader.php:166 lib/post.php:193 lib/register.php:220
-#: lib/term.php:178 lib/user.php:161 lib/util.php:315 lib/util.php:1995
+#: lib/term.php:178 lib/user.php:161 lib/util.php:315 lib/util.php:1997
 msgid "%s warning:"
 msgstr ""
 
@@ -2357,17 +2357,17 @@ msgstr ""
 msgid "Library file \"%s\" not found."
 msgstr ""
 
-#: lib/media.php:348
+#: lib/media.php:345
 msgid ""
 "The NextGEN Gallery integration module provided by %1$s is required to read "
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:380 lib/media.php:1148 lib/pro/util/checkimgdims.php:82
+#: lib/media.php:377 lib/media.php:1145 lib/pro/util/checkimgdims.php:82
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:383
+#: lib/media.php:380
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
@@ -2376,7 +2376,7 @@ msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
 #. function name
-#: lib/media.php:396
+#: lib/media.php:393
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
@@ -2385,25 +2385,25 @@ msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
 #. function name
-#: lib/media.php:410
+#: lib/media.php:407
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the WordPress %4$s function."
 msgstr ""
 
-#: lib/media.php:836
+#: lib/media.php:833
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1221
+#: lib/media.php:1218
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1241
+#: lib/media.php:1238
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -2812,7 +2812,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:468 lib/util.php:2213
+#: lib/messages.php:468 lib/util.php:2215
 msgid "No options available."
 msgstr ""
 
@@ -4371,71 +4371,71 @@ msgid ""
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:441
+#: lib/options.php:452
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:489
+#: lib/options.php:500
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:532
+#: lib/options.php:542
 msgid ""
 "The value of option '%s' must be a URL - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:534
+#: lib/options.php:543
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:536
+#: lib/options.php:544
 msgid ""
 "The value of option '%s' must be numeric - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:538
+#: lib/options.php:545
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:540
+#: lib/options.php:546
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:542
+#: lib/options.php:547
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:544
+#: lib/options.php:548
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:546
+#: lib/options.php:549
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:548
+#: lib/options.php:550
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:550
+#: lib/options.php:551
 msgid ""
 "The value of option '%s' must be HTML code - resetting option to default "
 "value."
@@ -4447,7 +4447,7 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/options.php:809
+#: lib/options.php:808
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
@@ -4683,15 +4683,15 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:242 lib/pro/media/ngg.php:291
+#: lib/pro/media/ngg.php:101 lib/pro/media/ngg.php:414
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/pro/media/ngg.php:294 lib/pro/util/checkimgdims.php:85
+#: lib/pro/media/ngg.php:104 lib/pro/util/checkimgdims.php:85
 msgid "cropped"
 msgstr ""
 
-#: lib/pro/media/ngg.php:296
+#: lib/pro/media/ngg.php:106
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
 "for the required %4$s image dimensions."
@@ -5344,13 +5344,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
-#: lib/util.php:1980
+#: lib/util.php:1982
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/util.php:1988
+#: lib/util.php:1990
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -5359,34 +5359,34 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:1988
+#: lib/util.php:1990
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2240
+#: lib/util.php:2242
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2244
+#: lib/util.php:2246
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2247
+#: lib/util.php:2249
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2251
+#: lib/util.php:2253
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2370
+#: lib/util.php:2372
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""

@@ -277,13 +277,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 
 						// the size_name is used as a context for duplicate checks
-						$mt_og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'],
-							$size_name, $mod, $check_dupes, $md_pre );
+						$mt_og[$md_pre.':image'] = $this->get_all_images( $max['og_img_max'], $size_name, $mod, $check_dupes, $md_pre );
 
 						// if there's no image, and no video preview, then add the default image for singular (aka post) webpages
 						if ( empty( $mt_og[$md_pre.':image'] ) && ! $preview_count && $mod['is_post'] ) {
-							$mt_og[$md_pre.':image'] = $this->p->media->get_default_images( $max['og_img_max'],
-								$size_name, $check_dupes );
+							$mt_og[$md_pre.':image'] = $this->p->media->get_default_images( $max['og_img_max'], $size_name, $check_dupes );
 						}
 					}
 				}
@@ -605,80 +603,95 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( $mod['post_type'] === 'attachment' && wp_attachment_is_image( $mod['id'] ) ) {
 
-					$og_single_image = $this->p->media->get_attachment_image( $num_diff,
-						$size_name, $mod['id'], $check_dupes );
+					$og_single_image = $this->p->media->get_attachment_image( $num_diff, $size_name, $mod['id'], $check_dupes );
 
-					// exiting early
 					if ( empty( $og_single_image ) ) {
-						return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff,
-							$size_name, $check_dupes, $force_regen ) );
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'exiting early: no attachment image - returning default image' );
+						}
+						return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff, $size_name, $check_dupes, $force_regen ) );
 					} else {
 						return array_merge( $og_ret, $og_single_image );
 					}
 				}
 
-				// check for custom meta, featured, or attached image(s)
-				// allow for empty post ID in order to execute featured / attached image filters for modules
+				/**
+				 * Check for custom meta, featured, or attached image(s).
+				 * Allow for empty post id in order to execute featured / attached image filters for modules.
+				 */
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
-					$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_diff,
-						$size_name, $mod['id'], $check_dupes, $md_pre ) );
+					$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_diff, $size_name, $mod['id'], $check_dupes, $md_pre ) );
 				}
 
-				// check for ngg shortcodes and query vars
-				if ( ! $this->p->util->is_maxed( $og_ret, $num ) &&
-					$this->p->avail['media']['ngg'] &&
-						! empty( $this->p->m['media']['ngg'] ) ) {
+				/**
+				 * Check for NGG query vars and shortcodes.
+				 */
+				if ( ! empty( $this->p->m['media']['ngg'] ) && ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'checking for ngg shortcodes and query vars' );
+						$this->p->debug->log( 'checking for NGG query vars and shortcodes' );
 					}
 
-					// ngg pre-v2 used query arguments
-					$ngg_query_og_ret = array();
 					$num_diff = SucomUtil::count_diff( $og_ret, $num );
+					$ngg_obj =& $this->p->m['media']['ngg'];
 
-					if ( version_compare( $this->p->m['media']['ngg']->ngg_version, '2.0.0', '<' ) ) {
-						$ngg_query_og_ret = $this->p->m['media']['ngg']->get_query_images( $num_diff,
-							$size_name, $mod['id'], $check_dupes );
+					/**
+					 * NGG pre-v2 used query arguments.
+					 */
+					if ( version_compare( $ngg_obj->ngg_version, '2.0.0', '<' ) ) {
+						$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod['id'], $check_dupes );
+					} else {
+						$query_images = array();
 					}
 
-					// if we found images in the query, skip content shortcodes
-					if ( count( $ngg_query_og_ret ) > 0 ) {
+					/**
+					 * If we found images in the query, skip content shortcodes.
+					 * If no query images were found, continue checking for NGG shortcodes in the content.
+					 */
+					if ( count( $query_images ) > 0 ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'skipping additional shortcode images: '.
-								count( $ngg_query_og_ret ).' image(s) returned' );
+							$this->p->debug->log( 'skipping additional shortcode images: '.count( $query_images ).' image(s) returned' );
 						}
-						$og_ret = array_merge( $og_ret, $ngg_query_og_ret );
+						$og_ret = array_merge( $og_ret, $query_images );
 
-					// if no query images were found, continue with ngg shortcodes in content
 					} elseif ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 						$num_diff = SucomUtil::count_diff( $og_ret, $num );
-						$og_ret = array_merge( $og_ret,
-							$this->p->m['media']['ngg']->get_shortcode_images( $num_diff,
-								$size_name, $mod['id'], $check_dupes ) );
+						$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod['id'], $check_dupes );
+						if ( ! empty( $shortcode_images ) ) {
+							$og_ret = array_merge( $og_ret, $shortcode_images );
+						}
 					}
-				} // end of check for ngg shortcodes and query vars
 
-				// if we haven't reached the limit of images yet, keep going and check the content text
+				}
+
+				/**
+				 * If we haven't reached the limit of images yet, keep going and check the content text.
+				 */
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'checking the content text for images' );
 					}
 					$num_diff = SucomUtil::count_diff( $og_ret, $num );
-					$og_ret = array_merge( $og_ret, $this->p->media->get_content_images( $num_diff,
-						$size_name, $mod, $check_dupes, $force_regen ) );
+					$content_images = $this->p->media->get_content_images( $num_diff, $size_name, $mod, $check_dupes, $force_regen );
+					if ( ! empty( $content_images ) ) {
+						$og_ret = array_merge( $og_ret, $content_images );
+					}
 				}
 
 			} else {
-				// get_og_images() also provides filter hooks for additional image ids and urls
+
+				/**
+				 * get_og_images() also provides filter hooks for additional image ids and urls.
+				 */
 				if ( ! empty( $mod['obj'] ) ) {	// term or user
-					$og_ret = array_merge( $og_ret, $mod['obj']->get_og_images( $num_diff,
-						$size_name, $mod['id'], $check_dupes, $force_regen, $md_pre ) );
+					$og_images = $mod['obj']->get_og_images( $num_diff, $size_name, $mod['id'], $check_dupes, $force_regen, $md_pre );
+					if ( ! empty( $og_images ) ) {
+						$og_ret = array_merge( $og_ret, $og_images );
+					}
 				}
 
 				if ( count( $og_ret ) < 1 && $this->p->util->force_default_image( $mod, 'og' ) ) {
-					return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff,
-						$size_name, $check_dupes, $force_regen ) );
+					return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff, $size_name, $check_dupes, $force_regen ) );
 				}
 			}
 

@@ -256,26 +256,33 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 					// singlepic shortcode image
 					if ( ! isset( $mt_tc['twitter:card'] ) ) {
+
 						if ( ! empty( $this->p->avail['media']['ngg'] ) ) {
+
 							if ( ! empty( $this->p->m['media']['ngg'] ) ) {
+
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( $card_type.' card: checking for singlepic image' );
 								}
 	
-								$og_images = $this->p->m['media']['ngg']->get_singlepic_images( 1, $size_name, $post_id, false );
+								$num_diff = 1;
+								$ngg_obj =& $this->p->m['media']['ngg'];
+								$og_images = $ngg_obj->get_singlepic_og_images( $num_diff, $size_name, $post_id, false );
 	
-								if ( count( $og_images ) > 0 ) {
+								if ( ! empty( $og_images ) ) {
+
 									$og_single_image = reset( $og_images );
 									$mt_tc['twitter:card'] = $card_type;
 									$mt_tc['twitter:image'] = $og_single_image['og:image'];
+
 								} elseif ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'no singlepic image returned' );
+									$this->p->debug->log( $card_type.' card: NGG singlepic image not found' );
 								}
 							} elseif ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $card_type.' card: ngg plugin module is not defined' );
+								$this->p->debug->log( $card_type.' card: NGG not defined - singlepic image skipped' );
 							}
 						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $card_type.' card: skipped singlepic check (ngg not available)' );
+							$this->p->debug->log( $card_type.' card: NGG not available - singlepic image skipped' );
 						}
 					}
 				} elseif ( $this->p->debug->enabled ) {

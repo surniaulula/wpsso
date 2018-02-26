@@ -1490,9 +1490,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$numpages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
 
 						if ( $numpages && get_query_var( 'page' ) <= $numpages ) {
-							if ( ! $wp_rewrite->using_permalinks() || strpos( $url, '?' ) !== false )
+							if ( ! $wp_rewrite->using_permalinks() || strpos( $url, '?' ) !== false ) {
 								$url = add_query_arg( 'page', get_query_var( 'page' ), $url );
-							else $url = user_trailingslashit( trailingslashit( $url ).get_query_var( 'page' ) );
+							} else {
+								$url = user_trailingslashit( trailingslashit( $url ).get_query_var( 'page' ) );
+							}
 						}
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'add page query url = '.$url );
