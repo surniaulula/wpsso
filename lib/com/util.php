@@ -2230,6 +2230,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_available_locales', $available_locales );
 		}
 
+		public static function get_implode_assoc( $val_glue, $key_glue, array $arr, $salt = '' ) {
+			foreach ( $arr as $key => $val ) {
+				$salt .= $val_glue;
+				if ( is_array( $val ) ) {
+					$salt .= self::get_implode_assoc( $val_glue, $key_glue, $val, $salt );
+				} else {
+					$salt .= (string) $key . $key_glue . $val;
+				}
+			}
+			return ltrim( $salt, $val_glue ); // Remove leading underscore.
+		}
+
 		/**
 		 * Examples:
 		 * 	'post:123'
@@ -2238,26 +2250,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_mod_salt( array $mod, $sharing_url = false ) {
 
-			$mod_salt = '';
+			$salt = '';
 
 			if ( ! empty( $mod['name'] ) ) {
-				$mod_salt .= '_' . $mod['name'] . ':' . (int) $mod['id']; // Convert false to 0.
+				$salt .= '_' . $mod['name'] . ':' . (int) $mod['id']; // Convert false to 0.
 			}
 
 			if ( ! empty( $mod['tax_slug'] ) ) {
-				$mod_salt .= '_tax:' . $mod['tax_slug'];
+				$salt .= '_tax:' . $mod['tax_slug'];
 			}
 
 			if ( empty( $mod['id'] ) ) {
 				if ( ! empty( $mod['is_home'] ) ) {
-					$mod_salt .= '_home';
+					$salt .= '_home';
 				}
 				if ( ! empty( $sharing_url ) ) {
-					$mod_salt .= '_url:' . $sharing_url;
+					$salt .= '_url:' . $sharing_url;
 				}
 			}
 
-			return ltrim( $mod_salt, '_' ); // Remove leading underscore.
+			return ltrim( $salt, '_' ); // Remove leading underscore.
 		}
 
 		/**

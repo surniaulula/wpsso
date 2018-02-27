@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core (Main Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core (Main Plugin) 3.54.1-dev.3\n"
+"Project-Id-Version: WPSSO Core (Main Plugin) 3.54.1-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4683,15 +4683,15 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:128 lib/pro/media/ngg.php:1192
+#: lib/pro/media/ngg.php:130 lib/pro/media/ngg.php:1237
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/pro/media/ngg.php:131 lib/pro/util/checkimgdims.php:85
+#: lib/pro/media/ngg.php:135 lib/pro/util/checkimgdims.php:85
 msgid "cropped"
 msgstr ""
 
-#: lib/pro/media/ngg.php:133
+#: lib/pro/media/ngg.php:139
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
 "for the required %4$s image dimensions."
