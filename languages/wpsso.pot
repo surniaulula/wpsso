@@ -4683,7 +4683,7 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:128 lib/pro/media/ngg.php:1179
+#: lib/pro/media/ngg.php:128 lib/pro/media/ngg.php:1192
 msgid "NextGEN Gallery"
 msgstr ""
 
