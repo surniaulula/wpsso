@@ -2085,8 +2085,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( current_user_can( 'manage_options' ) ) {
+
 				foreach ( array( 'wp', 'php' ) as $key ) {
+
 					if ( isset( WpssoConfig::$cf[$key]['rec_version'] ) ) {
+
 						switch ( $key ) {
 							case 'wp':
 								global $wp_version;
@@ -2095,18 +2098,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							case 'php':
 								$app_version = phpversion();
 								break;
+							default:
+								continue 2;
 						}
+
 						$app_label = WpssoConfig::$cf[$key]['label'];
 						$rec_version = WpssoConfig::$cf[$key]['rec_version'];
 
 						if ( version_compare( $app_version, $rec_version, '<' ) ) {
+
 							$warn_msg = $this->p->msgs->get( 'notice-recommend-version', array(
 								'app_label' => $app_label,
 								'app_version' => $app_version,
 								'rec_version' => WpssoConfig::$cf[$key]['rec_version'],
 								'version_url' => WpssoConfig::$cf[$key]['version_url'],
 							) );
+
 							$dismiss_key = 'notice-recommend-version-'.$this->p->lca.'-'.$version.'-'.$app_label.'-'.$app_version;
+
 							$this->p->notice->warn( $warn_msg, true, $dismiss_key, MONTH_IN_SECONDS, true );	// $silent = true
 						}
 					}
