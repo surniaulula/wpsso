@@ -391,7 +391,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.54.1-dev.4 (2018/02/27)**
+**Version 3.54.1-b.1 (2018/02/28)**
 
 * *New Features*
 	* None
@@ -494,9 +494,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.54.1-dev.4 =
+= 3.54.1-b.1 =
 
-(2018/02/27) Fixed the missing 'og:image:width' and 'og:image:height' meta tags. Refactored the NextGEN Gallery module to add support for NextCellent Gallery image slugs in the WP_Query pid value (Pro version).
+(2018/02/28) Fixed the missing 'og:image:width' and 'og:image:height' meta tags. Refactored the NextGEN Gallery module to add support for NextCellent Gallery image slugs in the WP_Query pid value (Pro version).
 
 = 3.54.0 =
 
