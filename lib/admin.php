@@ -1181,10 +1181,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						// hooked by the update manager to apply the version filter
 						$upgrade_notice = apply_filters( $this->p->lca.'_readme_upgrade_notices', $readme_info['upgrade_notice'], $ext );
 
-						reset( $upgrade_notice );
-
-						$latest_version = key( $upgrade_notice );
-						$latest_notice = $upgrade_notice[$latest_version];
+						if ( ! empty( $upgrade_notice ) ) {
+							reset( $upgrade_notice );
+							$latest_version = key( $upgrade_notice );
+							$latest_notice = $upgrade_notice[$latest_version];
+						}
 					}
 
 					/**
