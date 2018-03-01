@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core (Main Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core (Main Plugin) 3.54.1-b.1\n"
+"Project-Id-Version: WPSSO Core (Main Plugin) 3.54.1-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2315,19 +2315,19 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/head.php:494
+#: lib/head.php:504
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:506
+#: lib/head.php:516
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:549
+#: lib/head.php:559
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:556
+#: lib/head.php:566
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -4683,7 +4683,7 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:117 lib/pro/media/ngg.php:1275
+#: lib/pro/media/ngg.php:117 lib/pro/media/ngg.php:1284
 msgid "NextGEN Gallery"
 msgstr ""
 
@@ -4782,32 +4782,32 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema.php:93 lib/schema.php:99
+#: lib/schema.php:94 lib/schema.php:100
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:1904
+#: lib/schema.php:1905
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2405
+#: lib/schema.php:2410
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2438
+#: lib/schema.php:2443
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2440
+#: lib/schema.php:2445
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2661
+#: lib/schema.php:2666
 msgid "adding schema for place"
 msgstr ""
 

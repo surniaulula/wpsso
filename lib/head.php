@@ -33,6 +33,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			// crawlers are only seen on the front-end, so skip if in back-end
 			if ( ! is_admin() && $this->p->avail['*']['vary_ua'] ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'maybe add/remove query argument for custom crawler' );
+				}
 				$this->vary_user_agent_check();
 			}
 		}
@@ -111,7 +114,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			// crawlers are only seen on the front-end, so skip if in back-end
 			if ( ! is_admin() && $this->p->avail['*']['vary_ua'] ) {
+
 				$crawler_name = SucomUtil::get_crawler_name();
+
 				switch ( $crawler_name ) {
 					case 'pinterest':
 						$cache_index .= '_uaid:'.$crawler_name;
@@ -120,7 +125,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$cache_index = trim( $cache_index, '_' );	// cleanup leading underscores
+
+			$cache_index = SucomUtil::get_query_salt( $cache_index );	// add $wp_query args
+
 			$cache_index = apply_filters( $this->p->lca.'_head_cache_index', $cache_index, $mixed, $sharing_url );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'returning head cache index: '.$cache_index );
+			}
 
 			return $cache_index;
 		}
@@ -418,8 +430,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$is_admin = is_admin();	// call the function only once
 			$crawler_name = SucomUtil::get_crawler_name();
-			$head_array = array();
-			$cache_index = 0;	// redefined if $cache_exp_secs > 0
 
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
 			$cache_md5_pre = $this->p->lca.'_h_';
@@ -429,46 +439,46 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
 			}
 
+			/**
+			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
+			 * less in length. If using a site transient, it should be 40 characters or less in length.
+			 */
+			$cache_salt  = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
+			$cache_id    = $cache_md5_pre.md5( $cache_salt );
+			$cache_index = $this->get_head_cache_index( $mod, $sharing_url );	// includes locale, url, $wp_query args, etc.
+			$cache_array = array();
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );
 				$this->p->debug->log( 'crawler name = '.$crawler_name );
 				$this->p->debug->log( 'cache expire = '.$cache_exp_secs );
+				$this->p->debug->log( 'cache salt = '.$cache_salt );
+				$this->p->debug->log( 'cache id = '.$cache_id );
+				$this->p->debug->log( 'cache index = '.$cache_index );
 			}
 
 			if ( $cache_exp_secs > 0 ) {
-				/**
-				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
-				 * less in length. If using a site transient, it should be 40 characters or less in length.
-				 */
-				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
-				$cache_id = $cache_md5_pre.md5( $cache_salt );
-				$cache_index = $this->get_head_cache_index( $mod, $sharing_url );
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'cache salt = '.$cache_salt );
-					$this->p->debug->log( 'cache index = '.$cache_index );
-				}
 
 				if ( $read_cache ) {	// false when called by post/term/user load_meta_page() method
 
-					$head_array = get_transient( $cache_id );
+					$cache_array = get_transient( $cache_id );
 
-					if ( isset( $head_array[$cache_index] ) ) {
-						if ( is_array( $head_array[$cache_index] ) ) {	// Just in case.
+					if ( isset( $cache_array[$cache_index] ) ) {
+						if ( is_array( $cache_array[$cache_index] ) ) {	// Just in case.
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'cache index found in transient '.$cache_id );
+								$this->p->debug->log( 'exiting early: cache index found in transient cache' );
 								$this->p->debug->mark( 'build head array' );	// end timer
 							}
-							return $head_array[$cache_index];	// stop here
+							return $cache_array[$cache_index];	// stop here
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'cache index is not an array' );
 						}
 					} else {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'cache index not in transient '.$cache_id );
+							$this->p->debug->log( 'cache index not in transient cache' );
 						}
-						if ( ! is_array( $head_array ) ) {	// Just in case.
-							$head_array = array();
+						if ( ! is_array( $cache_array ) ) {
+							$cache_array = array();
 						}
 					}
 				} elseif ( $this->p->debug->enabled ) {
@@ -567,7 +577,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$mt_og = $this->p->og->sanitize_array( $mod, $mt_og );	// unset mis-matched og_type meta tags
 
-			$head_array[$cache_index] = array_merge(
+			$cache_array[$cache_index] = array_merge(
 				$this->get_mt_array( 'meta', 'name', $mt_generators, $mod ),
 				$this->get_mt_array( 'link', 'rel', $link_rel, $mod ),
 				$this->get_mt_array( 'meta', 'property', $mt_og, $mod ),
@@ -581,7 +591,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $cache_exp_secs > 0 ) {
 				// update the cached array and maintain the existing transient expiration time
-				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $head_array, $cache_exp_secs );
+				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $cache_array, $cache_exp_secs );
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head array saved to transient cache (expires in '.$expires_in_secs.' secs)' );
 				}
@@ -594,7 +604,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark( 'build head array' );	// end timer
 			}
 
-			return $head_array[$cache_index];
+			return $cache_array[$cache_index];
 		}
 
 		/**

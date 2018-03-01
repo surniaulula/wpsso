@@ -2230,18 +2230,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_available_locales', $available_locales );
 		}
 
-		public static function get_implode_assoc( $val_glue, $key_glue, array $arr, $salt = '' ) {
-			foreach ( $arr as $key => $val ) {
-				$salt .= $val_glue;
-				if ( is_array( $val ) ) {
-					$salt .= self::get_implode_assoc( $val_glue, $key_glue, $val, $salt );
-				} else {
-					$salt .= (string) $key . $key_glue . $val;
-				}
-			}
-			return ltrim( $salt, $val_glue ); // Remove leading underscore.
-		}
-
 		/**
 		 * Examples:
 		 * 	'post:123'
@@ -2253,7 +2241,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$salt = '';
 
 			if ( ! empty( $mod['name'] ) ) {
-				$salt .= '_' . $mod['name'] . ':' . (int) $mod['id']; // Convert false to 0.
+				$salt .= '_' . $mod['name'] . ':';
+				if ( $mod['id'] === false ) {
+					$salt .= 'false';
+				} elseif ( $mod['id'] === true ) {
+					$salt .= 'true';
+				} elseif ( empty( $mod['id'] ) ) {
+					$salt .= '0';
+				} else {
+					$salt .= $mod['id'];
+				}
 			}
 
 			if ( ! empty( $mod['tax_slug'] ) ) {
@@ -2270,6 +2267,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return ltrim( $salt, '_' ); // Remove leading underscore.
+		}
+
+		public static function get_query_salt( $salt = '' ) {
+			global $wp_query;
+			if ( isset( $wp_query->query ) ) {
+				$salt = self::get_implode_assoc( '_', ':', $wp_query->query, $salt );
+			}
+			return $salt;
+		}
+
+		public static function get_implode_assoc( $val_glue, $key_glue, array $arr, $salt = '' ) {
+			foreach ( $arr as $key => $val ) {
+				$salt .= $val_glue;
+				if ( is_array( $val ) ) {
+					$salt .= self::get_implode_assoc( $val_glue, $key_glue, $val, $salt );
+				} else {
+					$salt .= (string) $key . $key_glue . $val;
+				}
+			}
+			return ltrim( $salt, $val_glue );
 		}
 
 		/**

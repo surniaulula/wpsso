@@ -58,12 +58,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			static $do_once = array();			// prevent recursion
 
 			$mod = $this->p->util->get_page_mod( true );	// $use_post = true
-			$mod_salt = SucomUtil::get_mod_salt( $mod );
+			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
-			if ( ! empty( $do_once[$mod_salt] ) ) {	// check for recursion
+			if ( ! empty( $do_once[$cache_salt] ) ) {	// check for recursion
 				return $content;
 			} else {
-				$do_once[$mod_salt] = true;
+				$do_once[$cache_salt] = true;
 			}
 
 			$size_name = $this->p->lca.'-schema';
@@ -71,8 +71,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$img_url = SucomUtil::get_mt_media_url( $og_images, 'og:image' );
 
 			if ( ! empty( $img_url ) ) {
-				$desc_text = $this->p->page->get_description( $this->p->options['schema_desc_len'],
-					'...', $mod, true, false, true, 'schema_desc' );
+
+				$desc_len = $this->p->options['schema_desc_len'];
+				$desc_text = $this->p->page->get_description( $desc_len, '...', $mod, true, false, true, 'schema_desc' );
 
 				$img_html = "\n" . '<!-- '.$this->p->lca.' schema image for pinterest pin it button -->' . "\n" . 
 					'<div class="'.$this->p->lca.'-schema-image-for-pinterest" style="display:none;">' . "\n" . 
@@ -1995,6 +1996,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 					return $cache_data;	// stop here
 				}
+
 			} elseif ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'transient cache is disabled' );
 			}
@@ -2032,12 +2034,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'cache id = '.$cache_id );
 				}
 
-				// update the cached array and maintain the existing transient expiration time
+				/**
+				 * Update the cached array and maintain the existing transient expiration time.
+				 */
 				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $cache_data, self::$mod_cache_exp_secs );
 
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'cache data saved to transient cache (expires in '.$expires_in_secs.' secs)' );
 				}
+
 			} elseif ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'transient cache is disabled' );
 			}

@@ -613,9 +613,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$lca = $this->p->cf['lca'];
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
-			$content_array = array();
-			$cache_index = 0;	// redefined if $cache_exp_secs > 0
-
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
 			$filter_content = apply_filters( $lca.'_filter_content', $filter_content, $mod );
 
@@ -631,40 +628,42 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
 			}
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'sharing url = '.$sharing_url );
-				$this->p->debug->log( 'filter content = '.( $filter_content ? 'true' : 'false' ) );
-				$this->p->debug->log( 'wp_cache expire = '.$cache_exp_secs );
-			}
-
 			/************************
 			 * Retrieve the Content *
 			 ************************/
 
+			$cache_salt  = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
+			$cache_id    = $cache_md5_pre.md5( $cache_salt );
+			$cache_index = 'locale:'.SucomUtil::get_locale( $mod ).'_filter:'.( $filter_content ? 'true' : 'false' );
+			$cache_index = SucomUtil::get_query_salt( $cache_index );	// add $wp_query args
+			$cache_array = array();
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'sharing url = '.$sharing_url );
+				$this->p->debug->log( 'filter content = '.( $filter_content ? 'true' : 'false' ) );
+				$this->p->debug->log( 'cache expire = '.$cache_exp_secs );
+				$this->p->debug->log( 'cache salt = '.$cache_salt );
+				$this->p->debug->log( 'cache id = '.$cache_id );
+				$this->p->debug->log( 'cache index = '.$cache_index );
+			}
+
 			if ( $cache_exp_secs > 0 ) {
 
-				$cache_salt = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
-				$cache_id = $cache_md5_pre.md5( $cache_salt );
-				$cache_index = 'locale:'.SucomUtil::get_locale( $mod ).'_filter:'.( $filter_content ? 'true' : 'false' );
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'wp_cache salt = '.$cache_salt );
-					$this->p->debug->log( 'wp_cache index = '.$cache_index );
-				}
-
 				if ( $read_cache ) {
-					$content_array = wp_cache_get( $cache_id, __METHOD__ );
-					if ( isset( $content_array[$cache_index] ) ) {
+
+					$cache_array = wp_cache_get( $cache_id, __METHOD__ );
+
+					if ( isset( $cache_array[$cache_index] ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'content index found in array from wp_cache '.$cache_id );
+							$this->p->debug->log( 'exiting early: cache index found in wp_cache' );
 						}
-						return $content_array[$cache_index];
+						return $cache_array[$cache_index];
 					} else {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'content index not in array from wp_cache '.$cache_id );
+							$this->p->debug->log( 'cache index not in wp_cache' );
 						}
-						if ( ! is_array( $content_array ) ) {	// Just in case.
-							$content_array = array();
+						if ( ! is_array( $cache_array ) ) {
+							$cache_array = array();
 						}
 					}
 				} elseif ( $this->p->debug->enabled ) {
@@ -674,8 +673,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'content array wp_cache is disabled' );
 			}
 
-			$content_array[$cache_index] = false;
-			$content_text =& $content_array[$cache_index];
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'initializing new transient cache element' );
+			}
+
+			$cache_array[$cache_index] = false;		// initialize the cache element
+			$content_text =& $cache_array[$cache_index];	// reference the cache element
 			$content_text = apply_filters( $lca.'_content_seed', '', $mod, $read_cache, $md_idx );
 
 			if ( ! empty( $content_text ) ) {
@@ -755,17 +758,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			// apply filters before caching
-			$content_array[$cache_index] = apply_filters( $lca.'_content', $content_text, $mod, $read_cache, $md_idx );
+			$content_text = apply_filters( $lca.'_content', $content_text, $mod, $read_cache, $md_idx );
 
 			if ( $cache_exp_secs > 0 ) {
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );	// only some caching plugins support this feature
-				wp_cache_set( $cache_id, $content_array, __METHOD__, $cache_exp_secs );
+				wp_cache_set( $cache_id, $cache_array, __METHOD__, $cache_exp_secs );
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'content array saved to wp_cache for '.$cache_exp_secs.' seconds');
 				}
 			}
 
-			return $content_array[$cache_index];
+			return $content_text;
 		}
 
 		public function get_article_section( $post_id ) {
