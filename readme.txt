@@ -401,7 +401,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed the missing 'og:image:width' and 'og:image:height' meta tags.
 * *Developer Notes*
-	* None
+	* Refactored transient / WP Object cache index values to include WP query variables for extra uniqueness.
 
 **Version 3.54.0 (2018/02/24)**
 
