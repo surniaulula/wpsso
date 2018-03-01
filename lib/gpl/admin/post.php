@@ -31,6 +31,9 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$add_meta_name_description = empty( $this->p->options['add_meta_name_description'] ) ? false : true;
+			$add_meta_name_description = apply_filters( $this->p->lca.'_add_meta_name_description', $add_meta_name_description, $mod );
+
 			$og_type = isset( $head['og:type'] ) ? $head['og:type'] : 'website';
 
 			$og_title_max_len    = $this->p->options['og_title_len'];
@@ -41,7 +44,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$def_og_title    = $this->p->page->get_title( $og_title_max_len, '...', $mod, true, false, true, 'none' );
 			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, '...', $mod, true, true, true, 'none' );
 			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, '...', $mod );
-			$def_seo_desc    = $this->p->page->get_description( $seo_desc_max_len, '...', $mod, true, false );
+			$def_seo_desc    = $add_meta_name_description ? $this->p->page->get_description( $seo_desc_max_len, '...', $mod, true, false ) : '';
 			$def_tc_desc     = $this->p->page->get_description( $tc_desc_max_len, '...', $mod );
 
 			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
@@ -76,7 +79,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'content' => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
 				),
 				'seo_desc' => array(
-					'tr_class' => ( $this->p->options['add_meta_name_description'] ? '' : 'hide_in_basic' ), // always hide if head tag is disabled
+					'tr_class' => ( $add_meta_name_description ? '' : 'hide_in_basic' ), // always hide if head tag is disabled
 					'label' => _x( 'Google Search / SEO Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
 					'no_auto_draft' => true,

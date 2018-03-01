@@ -2122,52 +2122,52 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:60 lib/gpl/admin/post.php:67
-#: lib/pro/admin/meta.php:69 lib/pro/admin/post.php:77
+#: lib/gpl/admin/meta.php:60 lib/gpl/admin/post.php:70
+#: lib/pro/admin/meta.php:69 lib/pro/admin/post.php:80
 msgctxt "option label"
 msgid "Default Title"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:65 lib/gpl/admin/post.php:73
-#: lib/pro/admin/meta.php:75 lib/pro/admin/post.php:84
+#: lib/gpl/admin/meta.php:65 lib/gpl/admin/post.php:76
+#: lib/pro/admin/meta.php:75 lib/pro/admin/post.php:87
 msgctxt "option label"
 msgid ""
 "Default Description (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin)"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:71 lib/gpl/admin/post.php:80
-#: lib/pro/admin/meta.php:82 lib/pro/admin/post.php:92
+#: lib/gpl/admin/meta.php:71 lib/gpl/admin/post.php:83
+#: lib/pro/admin/meta.php:82 lib/pro/admin/post.php:95
 msgctxt "option label"
 msgid "Google Search / SEO Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:76 lib/gpl/admin/post.php:86
-#: lib/pro/admin/meta.php:91 lib/pro/admin/post.php:102
+#: lib/gpl/admin/meta.php:76 lib/gpl/admin/post.php:89
+#: lib/pro/admin/meta.php:91 lib/pro/admin/post.php:105
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:82 lib/gpl/admin/post.php:93 lib/meta.php:215
-#: lib/meta.php:236 lib/pro/admin/meta.php:97 lib/pro/admin/post.php:109
+#: lib/gpl/admin/meta.php:82 lib/gpl/admin/post.php:96 lib/meta.php:215
+#: lib/meta.php:236 lib/pro/admin/meta.php:97 lib/pro/admin/post.php:112
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:89 lib/gpl/admin/post.php:101 lib/meta.php:218
-#: lib/meta.php:239 lib/pro/admin/meta.php:105 lib/pro/admin/post.php:118
+#: lib/gpl/admin/meta.php:89 lib/gpl/admin/post.php:104 lib/meta.php:218
+#: lib/meta.php:239 lib/pro/admin/meta.php:105 lib/pro/admin/post.php:121
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:95 lib/gpl/admin/post.php:159
-#: lib/pro/admin/meta.php:116 lib/pro/admin/post.php:181
+#: lib/gpl/admin/meta.php:95 lib/gpl/admin/post.php:162
+#: lib/pro/admin/meta.php:116 lib/pro/admin/post.php:184
 #: lib/submenu/general.php:250
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:98 lib/gpl/admin/post.php:163
-#: lib/pro/admin/meta.php:119 lib/pro/admin/post.php:185
+#: lib/gpl/admin/meta.php:98 lib/gpl/admin/post.php:166
+#: lib/pro/admin/meta.php:119 lib/pro/admin/post.php:188
 msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
@@ -2251,53 +2251,53 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gpl/admin/post.php:50 lib/pro/admin/post.php:62
+#: lib/gpl/admin/post.php:53 lib/pro/admin/post.php:65
 msgid ""
 "Activate the %s extension for additional Schema markup features and options."
 msgstr ""
 
-#: lib/gpl/admin/post.php:62 lib/pro/admin/post.php:71
+#: lib/gpl/admin/post.php:65 lib/pro/admin/post.php:74
 msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:111 lib/messages.php:617 lib/pro/admin/post.php:133
+#: lib/gpl/admin/post.php:114 lib/messages.php:617 lib/pro/admin/post.php:136
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gpl/admin/post.php:118 lib/messages.php:628 lib/pro/admin/post.php:140
+#: lib/gpl/admin/post.php:121 lib/messages.php:628 lib/pro/admin/post.php:143
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/gpl/admin/post.php:124 lib/messages.php:639 lib/pro/admin/post.php:146
+#: lib/gpl/admin/post.php:127 lib/messages.php:639 lib/pro/admin/post.php:149
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gpl/admin/post.php:130 lib/messages.php:650 lib/pro/admin/post.php:152
+#: lib/gpl/admin/post.php:133 lib/messages.php:650 lib/pro/admin/post.php:155
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gpl/admin/post.php:137 lib/messages.php:671 lib/pro/admin/post.php:159
+#: lib/gpl/admin/post.php:140 lib/messages.php:671 lib/pro/admin/post.php:162
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gpl/admin/post.php:144 lib/messages.php:681 lib/pro/admin/post.php:166
+#: lib/gpl/admin/post.php:147 lib/messages.php:681 lib/pro/admin/post.php:169
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gpl/admin/post.php:151 lib/messages.php:692 lib/pro/admin/post.php:173
+#: lib/gpl/admin/post.php:154 lib/messages.php:692 lib/pro/admin/post.php:176
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:169 lib/meta.php:212 lib/post.php:895
-#: lib/pro/admin/post.php:191
+#: lib/gpl/admin/post.php:172 lib/meta.php:212 lib/post.php:895
+#: lib/pro/admin/post.php:194
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -2323,11 +2323,11 @@ msgstr ""
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:565
+#: lib/head.php:567
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:572
+#: lib/head.php:574
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -4590,7 +4590,7 @@ msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
 #: lib/pro/admin/meta.php:87 lib/pro/admin/meta.php:111
-#: lib/pro/admin/post.php:98 lib/pro/admin/post.php:125
+#: lib/pro/admin/post.php:101 lib/pro/admin/post.php:128
 msgid ""
 "This SEO option is disabled (the \"%1$s\" head tag is disabled or an SEO "
 "plugin was detected)."

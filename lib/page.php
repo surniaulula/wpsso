@@ -398,9 +398,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( ! empty( $md_idx ) ) {
 
 				// fallback to og_desc value
-				$desc_text = is_object( $mod['obj'] ) ?
-					$mod['obj']->get_options_multi( $mod['id'], 
-						array( $md_idx, 'og_desc' ) ) : null;
+				$desc_text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], array( $md_idx, 'og_desc' ) ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $desc_text ) ) {
