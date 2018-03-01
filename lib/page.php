@@ -616,10 +616,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
 			$filter_content = apply_filters( $lca.'_filter_content', $filter_content, $mod );
 
-			/**
-			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
-			 * less in length. If using a site transient, it should be 40 characters or less in length.
-			 */
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
 			$cache_md5_pre = $lca.'_c_';
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
@@ -641,10 +637,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'sharing url = '.$sharing_url );
 				$this->p->debug->log( 'filter content = '.( $filter_content ? 'true' : 'false' ) );
-				$this->p->debug->log( 'cache expire = '.$cache_exp_secs );
-				$this->p->debug->log( 'cache salt = '.$cache_salt );
-				$this->p->debug->log( 'cache id = '.$cache_id );
-				$this->p->debug->log( 'cache index = '.$cache_index );
+				$this->p->debug->log( 'wp cache expire = '.$cache_exp_secs );
+				$this->p->debug->log( 'wp cache salt = '.$cache_salt );
+				$this->p->debug->log( 'wp cache id = '.$cache_id );
+				$this->p->debug->log( 'wp cache index = '.$cache_index );
 			}
 
 			if ( $cache_exp_secs > 0 ) {
@@ -674,7 +670,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'initializing new transient cache element' );
+				$this->p->debug->log( 'initializing new wp cache element' );
 			}
 
 			$cache_array[$cache_index] = false;		// initialize the cache element

@@ -2315,19 +2315,19 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/head.php:504
+#: lib/head.php:510
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:516
+#: lib/head.php:522
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:559
+#: lib/head.php:565
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:566
+#: lib/head.php:572
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -4683,15 +4683,15 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:117 lib/pro/media/ngg.php:1284
+#: lib/pro/media/ngg.php:125 lib/pro/media/ngg.php:1231
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/pro/media/ngg.php:122 lib/pro/util/checkimgdims.php:85
+#: lib/pro/media/ngg.php:130 lib/pro/util/checkimgdims.php:85
 msgid "cropped"
 msgstr ""
 
-#: lib/pro/media/ngg.php:126
+#: lib/pro/media/ngg.php:134
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
 "for the required %4$s image dimensions."
@@ -5391,26 +5391,26 @@ msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""
 
-#: wpsso.php:340
+#: wpsso.php:343
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:354
+#: wpsso.php:357
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:362
+#: wpsso.php:365
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:363
+#: wpsso.php:366
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

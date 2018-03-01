@@ -88,7 +88,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $headers;
 		}
 
-		// $mixed = 'default' | 'current' | post ID | $mod array
+		/**
+		 * Can return an empty string if $mixed and $sharing_rul are false.
+		 *
+		 * $mixed and $sharing_url are false when called by the vary_user_agent_check() method.
+		 *
+		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 */
 		public function get_head_cache_index( $mixed = 'current', $sharing_url = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -131,7 +137,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cache_index = apply_filters( $this->p->lca.'_head_cache_index', $cache_index, $mixed, $sharing_url );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'returning head cache index: '.$cache_index );
+				$this->p->debug->log( 'returned cache index is "'.$cache_index.'"' );
 			}
 
 			return $cache_index;
