@@ -1833,6 +1833,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'seo ultimate opengraph module is enabled' );
 						}
+						// translators: seo-ultimate text domain
 						$label_transl = '<strong>' . __( 'Open Graph Integrator', 'seo-ultimate' ) . '</strong>';
 						$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s module in the %2$s settings page.',
 							'wpsso' ), $label_transl, $settings_link ) );
@@ -1991,7 +1992,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( array(
 					// translators: wp-meta-seo text domain
 					'metaseo_showfacebook' => '<strong>' . __( 'Facebook profile URL', 'wp-meta-seo' ) . '</strong>',
-					// translators: wp-meta-seo text domain
+					// translators: wp-meta-seo or wordpress-seo text domains
 					'metaseo_showfbappid'  => '<strong>' . __( 'Facebook App ID', 'wp-meta-seo' ) . '</strong>',
 					// translators: wp-meta-seo text domain
 					'metaseo_showtwitter'  => '<strong>' . __( 'Twitter Username', 'wp-meta-seo' ) . '</strong>',
@@ -2089,7 +2090,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $opts['fbadminapp'] ) ) {
 
-					// translators: wordpress-seo text domain
+					// translators: wp-meta-seo or wordpress-seo text domains
 					$label_transl = '<strong>' . __( 'Facebook App ID', 'wordpress-seo' ) . '</strong>';
 					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' );
 					$settings_link = '<a href="' . $settings_url . '">' .
