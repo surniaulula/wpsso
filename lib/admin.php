@@ -1865,11 +1865,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			if ( $this->p->avail['seo']['wpmetaseo'] ) {
 				$opts = get_option( '_metaseo_settings' );
+				$settings_url = get_admin_url( null, 'admin.php?page=metaseo_settings' );
+				if ( ! empty( $opts['metaseo_showfacebook'] ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $log_pre.'wpmetaseo facebook profile url option is not empty' );
+					}
+					$this->p->notice->err( $err_pre.sprintf( __( 'please remove the <strong>%1$s</strong> option value under the <a href="%2$s">WP Meta SEO &gt; Settings &gt; Global</a> settings tab.', 'wpsso' ), __( 'Facebook profile URL', 'wpsso' ), $settings_url ) );
+				}
+				if ( ! empty( $opts['metaseo_showfbappid'] ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $log_pre.'wpmetaseo facebook app id option is not empty' );
+					}
+					$this->p->notice->err( $err_pre.sprintf( __( 'please remove the <strong>%1$s</strong> option value under the <a href="%2$s">WP Meta SEO &gt; Settings &gt; Global</a> settings tab.', 'wpsso' ), __( 'Facebook App ID', 'wpsso' ), $settings_url ) );
+				}
+				if ( ! empty( $opts['metaseo_showtwitter'] ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $log_pre.'wpmetaseo twitter username option is not empty' );
+					}
+					$this->p->notice->err( $err_pre.sprintf( __( 'please remove the <strong>%1$s</strong> option value under the <a href="%2$s">WP Meta SEO &gt; Settings &gt; Global</a> settings tab.', 'wpsso' ), __( 'Twitter Username', 'wpsso' ), $settings_url ) );
+				}
 				if ( ! empty( $opts['metaseo_showsocial'] ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre.'wpmetaseo social sharing block option is enabled' );
 					}
-					$this->p->notice->err( $err_pre.sprintf( __( 'please disable the <strong>Social sharing block</strong> option under the <a href="%s">WP Meta SEO &gt; Settings &gt; Global</a> settings tab.', 'wpsso' ), get_admin_url( null, 'admin.php?page=metaseo_settings' ) ) );
+					$this->p->notice->err( $err_pre.sprintf( __( 'please disable the <strong>%1$s</strong> option under the <a href="%2$s">WP Meta SEO &gt; Settings &gt; Global</a> settings tab.', 'wpsso' ), __( 'Social sharing block', 'wpsso' ), $settings_url ) );
 				}
 			}
 
