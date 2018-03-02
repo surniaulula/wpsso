@@ -375,7 +375,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( true === $do_encode ) {
-				foreach ( array( 'title_text', 'separator' ) as $var ) {	// loop through variables
+				foreach ( array( 'title_text', 'sep' ) as $var ) {	// loop through variables
 					$$var = SucomUtil::encode_html_emoji( $$var );
 				}
 			}
