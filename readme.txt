@@ -391,7 +391,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.54.1-b.2 (2018/03/01)**
+**Version 3.54.1-rc.1 (2018/03/02)**
 
 * *New Features*
 	* None
@@ -402,6 +402,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed the missing 'og:image:width' and 'og:image:height' meta tags.
 * *Developer Notes*
 	* Refactored transient / WP Object cache index values to include WP query variables for extra uniqueness.
+	* Refactored the WpssoPage get_title() and get_description() methods to handle boolean, array, or string as the $md_idx argument value.
 
 **Version 3.54.0 (2018/02/24)**
 
@@ -494,9 +495,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.54.1-b.2 =
+= 3.54.1-rc.1 =
 
-(2018/03/01) Fixed the missing 'og:image:width' and 'og:image:height' meta tags. Refactored the NextGEN Gallery module to add support for NextCellent Gallery image slugs in the WP_Query pid value (Pro version).
+(2018/03/02) Fixed the missing 'og:image:width' and 'og:image:height' meta tags. Refactored the NextGEN Gallery module to add support for NextCellent Gallery image slugs in the WP_Query pid value (Pro version).
 
 = 3.54.0 =
 
