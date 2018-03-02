@@ -41,11 +41,15 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$schema_desc_max_len = $this->p->options['schema_desc_len'];
 			$tc_desc_max_len     = $this->p->options['tc_desc_len'];
 
-			$def_og_title    = $this->p->page->get_title( $og_title_max_len, '...', $mod, true, false, true, 'none' );
-			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, '...', $mod, true, true, true, 'none' );
-			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, '...', $mod );
-			$def_seo_desc    = $add_meta_name_description ? $this->p->page->get_description( $seo_desc_max_len, '...', $mod, true, false ) : '';
-			$def_tc_desc     = $this->p->page->get_description( $tc_desc_max_len, '...', $mod );
+			$dots = '...';
+			$r_cache = true;
+			$do_encode = true;
+
+			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $r_cache, false, $do_encode, 'none' );
+			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $r_cache, true, $do_encode, 'none' );
+			$def_seo_desc    = $add_meta_name_description ? $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $r_cache, false ) : '';
+			$def_tc_desc     = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $r_cache );
+			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $r_cache, false, $do_encode, array( 'seo_desc', 'og_desc' ) );
 
 			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
 				$json_info = $this->p->cf['plugin']['wpssojson'];

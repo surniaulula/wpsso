@@ -50,15 +50,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * $mod = true | false | post_id | array
 		 * $md_idx = true | false | string | array
 		 */
-		public function get_caption( $type = 'title', $textlen = 200, $mod = true, $read_cache = true,
-			$add_htags = true, $do_encode = true, $md_idx = '' ) {
+		public function get_caption( $type = 'title', $max_len = 200, $mod = true, $r_cache = true, $add_htags = true, $do_encode = true, $md_idx = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
 					'type' => $type,
-					'textlen' => $textlen,
+					'max_len' => $max_len,
 					'mod' => $mod,
-					'read_cache' => $read_cache,
+					'r_cache' => $r_cache,
 					'add_htags' => $add_htags,	// true/false/numeric
 					'do_encode' => $do_encode,
 					'md_idx' => $md_idx,
@@ -74,8 +73,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
-			$caption = false;
-			$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$cap_text = false;
+			$sep = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
 
 			if ( false === $md_idx ) {	// false would return the complete meta array
 
@@ -112,89 +111,88 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			// skip if no metadata index / key name
 			if ( ! empty( $md_idx ) ) {
 
-				$caption = $mod['obj'] ? $mod['obj']->get_options_multi( $mod['id'], $md_idx ) : null;
+				$cap_text = $mod['obj'] ? $mod['obj']->get_options_multi( $mod['id'], $md_idx ) : null;
 
 				// maybe add hashtags to a post caption
 				if ( $mod['is_post'] ) {
-					if ( ! empty( $caption ) && ! empty( $add_htags ) && ! preg_match( '/( #[a-z0-9\-]+)+$/U', $caption ) ) {
+					if ( ! empty( $cap_text ) && ! empty( $add_htags ) && ! preg_match( '/( #[a-z0-9\-]+)+$/U', $cap_text ) ) {
 						$hashtags = $this->get_hashtags( $mod['id'], $add_htags );
 						if ( ! empty( $hashtags ) ) {
-							$adj_textlen = $textlen - strlen( $hashtags ) - 1;
-							$caption = $this->p->util->limit_text_length( $caption, $adj_textlen, '...', false ).' '.$hashtags;
+							$adj_max_len = $max_len - strlen( $hashtags ) - 1;
+							$cap_text = $this->p->util->limit_text_length( $cap_text, $adj_max_len, '...', false ).' '.$hashtags;
 						}
 					}
 				}
 				if ( $this->p->debug->enabled ) {
-					if ( empty( $caption ) ) {
+					if ( empty( $cap_text ) ) {
 						$this->p->debug->log( 'no custom caption found for md_idx' );
 					} else {
-						$this->p->debug->log( 'custom caption = "'.$caption.'"' );
+						$this->p->debug->log( 'custom caption = "'.$cap_text.'"' );
 					}
 				}
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'custom caption skipped: no md_idx value' );
 			}
 
-			if ( empty( $caption ) ) {
+			if ( empty( $cap_text ) ) {
 
 				// request all values un-encoded, then encode once we have the complete caption text
 				switch ( $type ) {
 					case 'title':
-						$caption = $this->get_title( $textlen, '...', $mod, $read_cache, $add_htags, false, $md_idx_title );
+						$cap_text = $this->get_title( $max_len, '...', $mod, $r_cache, $add_htags, false, $md_idx_title );
 						break;
 
 					case 'excerpt':
-						$caption = $this->get_description( $textlen, '...', $mod, $read_cache, $add_htags, false, $md_idx_desc );
+						$cap_text = $this->get_description( $max_len, '...', $mod, $r_cache, $add_htags, false, $md_idx_desc );
 						break;
 
 					case 'both':
 						// get the title first
-						$caption = $this->get_title( 0, '', $mod, $read_cache, false, false, $md_idx_title );	// $add_htags = false
+						$cap_text = $this->get_title( 0, '', $mod, $r_cache, false, false, $md_idx_title );	// $add_htags = false
 
 						// add a separator between title and description
-						if ( ! empty( $caption ) ) {
-							$caption .= ' ';
+						if ( ! empty( $cap_text ) ) {
+							$cap_text .= ' ';
 						}
 
-						if ( ! empty( $separator ) ) {
-							$caption .= $separator.' ';
+						if ( ! empty( $sep ) ) {
+							$cap_text .= $sep.' ';
 						}
 
-						// reduce the requested $textlen by the title text length we already have
-						$adj_textlen = $textlen - strlen( $caption );
+						// reduce the requested $max_len by the title text length we already have
+						$adj_max_len = $max_len - strlen( $cap_text );
 
-						$caption .= $this->get_description( $adj_textlen, '...', $mod, $read_cache, $add_htags, false, $md_idx_desc );
+						$cap_text .= $this->get_description( $adj_max_len, '...', $mod, $r_cache, $add_htags, false, $md_idx_desc );
 
 						break;
 				}
 			}
 
 			if ( true === $do_encode ) {
-				$caption = SucomUtil::encode_html_emoji( $caption );
+				$cap_text = SucomUtil::encode_html_emoji( $cap_text );
 			} else {	// Just in case.
-				$caption = html_entity_decode( SucomUtil::decode_utf8( $caption ), ENT_QUOTES, get_bloginfo( 'charset' ) );
+				$cap_text = html_entity_decode( SucomUtil::decode_utf8( $cap_text ), ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
-			return apply_filters( $this->p->lca.'_caption', $caption, $mod, $add_htags, $md_idx );
+			return apply_filters( $this->p->lca.'_caption', $cap_text, $mod, $add_htags, $md_idx );
 		}
 
 		/**
 		 * $mod = true | false | post_id | array
 		 * $md_idx = true | false | string | array
 		 */
-		public function get_title( $textlen = 70, $trailing = '', $mod = false, $read_cache = true,
-			$add_htags = false, $do_encode = true, $md_idx = 'og_title', $separator = null ) {
+		public function get_title( $max_len = 70, $dots = '', $mod = false, $r_cache = true, $add_htags = false, $do_encode = true, $md_idx = 'og_title', $sep = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'textlen' => $textlen,
-					'trailing' => $trailing,
+					'max_len' => $max_len,
+					'dots' => $dots,
 					'mod' => $mod,
-					'read_cache' => $read_cache,
+					'r_cache' => $r_cache,
 					'add_htags' => $add_htags,	// true/false/numeric
 					'do_encode' => $do_encode,
 					'md_idx' => $md_idx,
-					'separator' => $separator,
+					'sep' => $sep,
 				) );
 			}
 
@@ -222,8 +220,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$filter_title = empty( $this->p->options['plugin_filter_title'] ) ? false : true;
 			$filter_title = apply_filters( $lca.'_filter_title', $filter_title, $mod );
 
-			if ( null === $separator ) {
-				$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			if ( null === $sep ) {
+				$sep = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
 			// setup filters to save and restore original / pre-filtered title value
@@ -249,7 +247,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			// get seed if no custom meta title
 			if ( empty( $title_text ) ) {
-				$title_text = apply_filters( $lca.'_title_seed', '', $mod, $add_htags, $md_idx, $separator );
+				$title_text = apply_filters( $lca.'_title_seed', '', $mod, $add_htags, $md_idx, $sep );
 				if ( ! empty( $title_text ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'title seed = "'.$title_text.'"' );
@@ -285,14 +283,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$this->p->debug->log( $mod['name'].' id '.$mod['id'].' get_the_title() = "'.$title_text.'"' );
 					}
 
-					if ( ! empty( $separator ) ) {
+					if ( ! empty( $sep ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'adding separator "'.$separator.'" to title string' );
+							$this->p->debug->log( 'adding separator "'.$sep.'" to title string' );
 						}
-						$title_text .= $separator.' ';
+						$title_text .= $sep.' ';
 					}
 
-					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $separator, 'right' ), $mod );
+					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
 
 				} elseif ( $mod['is_term'] ) {
 
@@ -300,11 +298,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( SucomUtil::is_category_page( $mod['id'] ) ) {
 						/**
-						 * Includes parent names in title string if the $separator is not empty.
+						 * Includes parent names in title string if the $sep is not empty.
 						 */
-						$title_text = $this->get_category_title( $term_obj, '', $separator );
+						$title_text = $this->get_category_title( $term_obj, '', $sep );
 					} elseif ( isset( $term_obj->name ) ) {
-						$title_text = apply_filters( 'wp_title', $term_obj->name.' '.$separator.' ', $separator, 'right' );
+						$title_text = apply_filters( 'wp_title', $term_obj->name.' '.$sep.' ', $sep, 'right' );
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'name property missing in term object' );
 					}
@@ -313,11 +311,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$user_obj = SucomUtil::get_user_object( $mod['id'] );
 
-					$title_text = apply_filters( 'wp_title', $user_obj->display_name.' '.$separator.' ', $separator, 'right' );
+					$title_text = apply_filters( 'wp_title', $user_obj->display_name.' '.$sep.' ', $sep, 'right' );
 					$title_text = apply_filters( $lca.'_user_object_title', $title_text, $user_obj );
 
 				} else {
-					$title_text = wp_title( $separator, false, 'right' );
+					$title_text = wp_title( $sep, false, 'right' );
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'default wp_title() = "'.$title_text.'"' );
 					}
@@ -336,15 +334,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$title_text = $this->p->util->cleanup_html_tags( $title_text );	// strip html tags before removing separator
 
-			if ( ! empty( $separator ) ) {
-				$title_text = preg_replace( '/ *'.preg_quote( $separator, '/' ).' *$/', '', $title_text );	// trim excess separator
+			if ( ! empty( $sep ) ) {
+				$title_text = preg_replace( '/ *'.preg_quote( $sep, '/' ).' *$/', '', $title_text );	// trim excess separator
 			}
 
 			// apply title filter before adjusting it's length
 			$title_text = apply_filters( $lca.'_title_pre_limit', $title_text );
 
 			// check title against string length limits
-			if ( $textlen > 0 ) {
+			if ( $max_len > 0 ) {
 				// seo-like title modifications
 				if ( $this->p->avail['seo']['*'] === false ) {
 					global $wpsso_paged;
@@ -354,18 +352,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$paged = get_query_var( 'paged' );
 					}
 					if ( $paged > 1 ) {
-						if ( ! empty( $separator ) ) {
-							$paged_suffix .= $separator.' ';
+						if ( ! empty( $sep ) ) {
+							$paged_suffix .= $sep.' ';
 						}
 						$paged_suffix .= sprintf( 'Page %s', $paged );
-						$textlen = $textlen - strlen( $paged_suffix ) - 1;
+						$max_len = $max_len - strlen( $paged_suffix ) - 1;
 					}
 				}
 				if ( ! empty( $add_htags ) && ! empty( $hashtags ) ) {
-					$textlen = $textlen - strlen( $hashtags ) - 1;
+					$max_len = $max_len - strlen( $hashtags ) - 1;
 				}
 
-				$title_text = $this->p->util->limit_text_length( $title_text, $textlen, $trailing, false );	// $cleanup_html = false
+				$title_text = $this->p->util->limit_text_length( $title_text, $max_len, $dots, false );	// $cleanup_html = false
 			}
 
 			if ( ! empty( $paged_suffix ) ) {
@@ -382,24 +380,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			return apply_filters( $lca.'_title', $title_text, $mod, $add_htags, $md_idx, $separator );
+			return apply_filters( $lca.'_title', $title_text, $mod, $add_htags, $md_idx, $sep );
 		}
 
 		/**
 		 * $mod = true | false | post_id | array
 		 * $md_idx = true | false | string | array
 		 */
-		public function get_description( $textlen = 160, $trailing = '...', $mod = false, $read_cache = true,
-			$add_htags = true, $do_encode = true, $md_idx = 'og_desc' ) {
+		public function get_description( $max_len = 160, $dots = '...', $mod = false, $r_cache = true, $add_htags = true, $do_encode = true, $md_idx = 'og_desc' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'render description' );	// begin timer
 
 				$this->p->debug->log_args( array(
-					'textlen' => $textlen,
-					'trailing' => $trailing,
+					'max_len' => $max_len,
+					'dots' => $dots,
 					'mod' => $mod,
-					'read_cache' => $read_cache,
+					'r_cache' => $r_cache,
 					'add_htags' => $add_htags, 	// true | false | numeric
 					'do_encode' => $do_encode,
 					'md_idx' => $md_idx,
@@ -483,7 +480,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$this->p->debug->log( 'getting the content for post ID '.$mod['id'] );
 						}
 
-						$desc_text = $this->get_the_content( $mod, $read_cache, $md_idx );
+						$desc_text = $this->get_the_content( $mod, $r_cache, $md_idx );
 
 						// ignore everything before the first paragraph if true
 						if ( $this->p->options['plugin_p_strip'] ) {
@@ -563,19 +560,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$strlen_pre_cleanup.' and after '.strlen( $desc_text ) );
 			}
 
-			if ( $textlen > 0 ) {
+			if ( $max_len > 0 ) {
 				$desc_text = apply_filters( $this->p->cf['lca'].'_description_pre_limit', $desc_text );
 
 				if ( ! empty( $add_htags ) && ! empty( $hashtags ) ) {
-					$textlen = $textlen - strlen( $hashtags ) - 1;
+					$max_len = $max_len - strlen( $hashtags ) - 1;
 				}
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'description strlen before limit length '.
-						strlen( $desc_text ).' (limiting to '.$textlen.' chars)' );
+						strlen( $desc_text ).' (limiting to '.$max_len.' chars)' );
 				}
 
-				$desc_text = $this->p->util->limit_text_length( $desc_text, $textlen, $trailing, false );	// $cleanup_html = false
+				$desc_text = $this->p->util->limit_text_length( $desc_text, $max_len, $dots, false );	// $cleanup_html = false
 
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'description limit text length skipped' );
@@ -626,12 +623,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $excerpt_text;
 		}
 
-		public function get_the_content( array $mod, $read_cache = true, $md_idx = '' ) {
+		public function get_the_content( array $mod, $r_cache = true, $md_idx = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
 					'mod' => $mod,
-					'read_cache' => $read_cache,
+					'r_cache' => $r_cache,
 					'md_idx' => $md_idx,
 				) );
 			}
@@ -670,7 +667,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $cache_exp_secs > 0 ) {
 
-				if ( $read_cache ) {
+				if ( $r_cache ) {
 
 					$cache_array = wp_cache_get( $cache_id, __METHOD__ );
 
@@ -700,7 +697,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$cache_array[$cache_index] = false;		// initialize the cache element
 			$content_text =& $cache_array[$cache_index];	// reference the cache element
-			$content_text = apply_filters( $lca.'_content_seed', '', $mod, $read_cache, $md_idx );
+			$content_text = apply_filters( $lca.'_content_seed', '', $mod, $r_cache, $md_idx );
 
 			if ( ! empty( $content_text ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -779,7 +776,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			// apply filters before caching
-			$content_text = apply_filters( $lca.'_content', $content_text, $mod, $read_cache, $md_idx );
+			$content_text = apply_filters( $lca.'_content', $content_text, $mod, $r_cache, $md_idx );
 
 			if ( $cache_exp_secs > 0 ) {
 				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );	// only some caching plugins support this feature
@@ -915,7 +912,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( $this->p->lca.'_wp_tags', $tags, $post_id );
 		}
 
-		public function get_category_title( $term_id = 0, $tax_slug = '', $separator = null ) {
+		public function get_category_title( $term_id = 0, $tax_slug = '', $sep = null ) {
 
 			$title_text = '';
 
@@ -925,24 +922,24 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$term_obj = SucomUtil::get_term_object( $term_id, $tax_slug );
 			}
 
-			if ( null === $separator ) {
-				$separator = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			if ( null === $sep ) {
+				$sep = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
 			if ( isset( $term_obj->name ) ) {
 				$title_text = $term_obj->name.' ';
-				if ( ! empty( $separator ) ) {
-					$title_text .= $separator.' ';	// default value
+				if ( ! empty( $sep ) ) {
+					$title_text .= $sep.' ';	// default value
 				}
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'name property missing in term object' );
 			}
 
-			if ( ! empty( $separator ) ) {
+			if ( ! empty( $sep ) ) {
 				$cat = get_category( $term_obj->term_id );
 
 				if ( ! empty( $cat->category_parent ) ) {
-					$cat_parents = get_category_parents( $term_obj->term_id, false, ' '.$separator.' ', false );
+					$cat_parents = get_category_parents( $term_obj->term_id, false, ' '.$sep.' ', false );
 	
 					if ( is_wp_error( $cat_parents ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -959,7 +956,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			return apply_filters( 'wp_title', $title_text, $separator, 'right' );
+			return apply_filters( 'wp_title', $title_text, $sep, 'right' );
 		}
 	}
 }

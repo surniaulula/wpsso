@@ -147,9 +147,9 @@
 'wpsso_tc' ( $tc, $mod );
 'wpsso_tc_seed' ( $tc, $mod );
 'wpsso_term_url' ( $url, $mod, $add_page, $src_id );
-'wpsso_title' ( $title, $mod, $add_hashtags, $md_idx, $separator );
+'wpsso_title' ( $title, $mod, $add_hashtags, $md_idx, $sep );
 'wpsso_title_pre_limit' ( $title );
-'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_idx, $separator );
+'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_idx, $sep );
 'wpsso_user_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt );
 'wpsso_user_cache_transient_keys' ( $transient_keys, $mod, $sharing_url, $mod_salt );
 'wpsso_user_image_ids' ( array $ids, $size_name, $user_id );
