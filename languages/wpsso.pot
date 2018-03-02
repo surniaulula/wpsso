@@ -4327,11 +4327,11 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:615
+#: lib/meta.php:623
 msgid "%s key(s) cleared from the cache."
 msgstr ""
 
-#: lib/meta.php:658
+#: lib/meta.php:666
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

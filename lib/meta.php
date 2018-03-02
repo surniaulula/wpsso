@@ -405,12 +405,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		 *
 		 * Example: get_options_multi( $id, array( 'p_desc', 'og_desc' ) );
 		 */
-		public function get_options_multi( $mod_id, $mixed = false, $filter_opts = true ) {
+		public function get_options_multi( $mod_id, $md_idx = false, $filter_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'mod_id' => $mod_id, 
-					'mixed' => $mixed, 
+					'md_idx' => $md_idx, 
 					'filter_opts' => $filter_opts, 
 				) );
 			}
@@ -419,20 +419,28 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				return null;
 			}
 
-			// return the whole options array
-			if ( false === $mixed ) {
-				$md_val = $this->get_options( $mod_id, $mixed, $filter_opts );
-			// return the first matching index value
-			} else {
-				if ( ! is_array( $mixed ) ) {		// convert a string to an array
-					$mixed = array( $mixed );
+			if ( false === $md_idx ) {	// return the whole options array
+
+				$md_val = $this->get_options( $mod_id, $md_idx, $filter_opts );
+
+			} elseif ( true === $md_idx ) {	// true is not valid for a custom meta key
+
+				$md_val = null;
+
+			} else {	// return the first matching index value
+
+				if ( ! is_array( $md_idx ) ) {		// convert a string to an array
+					$md_idx = array( $md_idx );
 				} else {
-					$mixed = array_unique( $mixed );	// prevent duplicate idx values
+					$md_idx = array_unique( $md_idx );	// prevent duplicate idx values
 				}
-				foreach ( $mixed as $md_idx ) {
-					if ( 'none' === $md_idx ) {	// special index keyword
+
+				foreach ( $md_idx as $md_idx ) {
+					if ( 'none' === $md_idx ) {		// special index keyword
 						return null;
-					} elseif ( empty( $md_idx ) ) {	// Just in case.
+					} elseif ( empty( $md_idx ) ) {		// skip empty array keys
+						continue;
+					} elseif ( is_array( $md_idx ) ) {	// an array of arrays is not valid
 						continue;
 					} else {
 						if ( $this->p->debug->enabled ) {
@@ -451,8 +459,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			if ( $md_val !== null ) {
 				if ( $this->p->debug->enabled ) {
 					$mod = $this->get_mod( $mod_id );
-					$this->p->debug->log( 'custom '.$mod['name'].' '.( false === $mixed ? 'options' : 
-						( is_array( $mixed ) ? implode( ', ', $mixed ) : $mixed ) ).' = '.
+					$this->p->debug->log( 'custom '.$mod['name'].' '.( false === $md_idx ? 'options' : 
+						( is_array( $md_idx ) ? implode( ', ', $md_idx ) : $md_idx ) ).' = '.
 						( is_array( $md_val ) ? print_r( $md_val, true ) : '"'.$md_val.'"' ) );
 				}
 			}
