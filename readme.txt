@@ -391,13 +391,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.54.1-rc.1 (2018/03/02)**
+**Version 3.54.1-rc.2 (2018/03/02)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Refactored the NextGEN Gallery module to add support for [NextCellent Gallery – NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/) image slugs in the WP_Query pid value (Pro version).
 	* Updated the NextGEN Gallery plugin module name from "NextGEN Gallery" to "NGG version 1-2: NextGEN Gallery, NextCellent Gallery"
+	* Updated the notice messages for conflicting options in known SEO plugins.
+	* Added more conflict checks for the WP Meta SEO and Yoast SEO plugins.
 * *Bugfixes*
 	* Fixed the missing 'og:image:width' and 'og:image:height' meta tags.
 * *Developer Notes*
@@ -495,7 +497,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.54.1-rc.1 =
+= 3.54.1-rc.2 =
 
 (2018/03/02) Fixed the missing 'og:image:width' and 'og:image:height' meta tags. Refactored the NextGEN Gallery module to add support for NextCellent Gallery image slugs in the WP_Query pid value (Pro version).
 
