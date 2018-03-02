@@ -39,6 +39,9 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$add_meta_name_description = empty( $this->p->options['add_meta_name_description'] ) ? false : true;
+			$add_meta_name_description = apply_filters( $this->p->lca.'_add_meta_name_description', $add_meta_name_description, $mod );
+
 			$og_type = isset( $head['og:type'] ) ? $head['og:type'] : 'website';
 
 			$og_title_max_len    = $this->p->options['og_title_len'];
@@ -67,7 +70,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'content' => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
 				),
 				'seo_desc' => array(
-					'tr_class' => ( $this->p->options['add_meta_name_description'] ? '' : 'hide_in_basic' ), // always hide if head tag is disabled
+					'tr_class' => ( $add_meta_name_description ? '' : 'hide_in_basic' ), // always hide if head tag is disabled
 					'label' => _x( 'Google Search / SEO Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ),
