@@ -1757,22 +1757,61 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$opts = get_option( 'aioseop_options' );
 
 				if ( ! empty( $opts['modules']['aiosp_feature_manager_options']['aiosp_feature_manager_enable_opengraph'] ) ) {
+
+					// translators: all-in-one-seo-pack text domain
+					$label_transl = '<strong>' . __( 'Social Meta', 'all-in-one-seo-pack' ) . '</strong>';
+					$settings_url = get_admin_url( null, 'admin.php?page=all-in-one-seo-pack%2Fmodules%2Faioseop_feature_manager.php' );
+					$settings_link = '<a href="' . $settings_url . '">' .
+						// translators: all-in-one-seo-pack text domain
+						__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
+						// translators: all-in-one-seo-pack text domain
+						__( 'Feature Manager', 'all-in-one-seo-pack' ) . '</a>';
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre . 'aioseop social meta feature is enabled' );
 					}
-					$this->p->notice->err( $err_pre.sprintf( __( 'please deactivate the <strong>Social Meta</strong> feature in the <a href="%s">All in One SEO Pack Feature Manager</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/modules/aioseop_feature_manager.php' ) ) );
+					$this->p->notice->err( $err_pre . sprintf( __( 'please deactivate the %1$s feature in the %2$s settings page.',
+						'wpsso' ), $label_transl, $settings_link ) );
 				}
+
 				if ( isset( $opts['aiosp_google_disable_profile'] ) && empty( $opts['aiosp_google_disable_profile'] ) ) {
+
+					// translators: all-in-one-seo-pack text domain
+					$label_transl = '<strong>' . __( 'Disable Google Plus Profile', 'all-in-one-seo-pack' ) . '</strong>';
+					$settings_url = get_admin_url( null, 'admin.php?page=all-in-one-seo-pack%2Faioseop_class.php' );
+					$settings_link = '<a href="' . $settings_url . '">' .
+						// translators: all-in-one-seo-pack text domain
+						__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
+						// translators: all-in-one-seo-pack text domain
+						__( 'General Settings', 'all-in-one-seo-pack' ) . ' &gt; ' .
+						// translators: all-in-one-seo-pack text domain
+						__( 'Google Settings', 'all-in-one-seo-pack' ) . '</a>';
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre . 'aioseop google plus profile is enabled' );
 					}
-					$this->p->notice->err( $err_pre.sprintf( __( 'please check the <strong>Disable Google Plus Profile</strong> option in the <a href="%s">All in One SEO Pack General Settings</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/aioseop_class.php' ) ) );
+					$this->p->notice->err( $err_pre . sprintf( __( 'please check the %1$s option in the %2$s metabox.',
+						'wpsso' ), $label_transl, $settings_link ) );
 				}
-				if ( isset( $opts['aiosp_schema_markup'] ) && ! empty( $opts['aiosp_schema_markup'] ) ) {
+
+				if ( ! empty( $opts['aiosp_schema_markup'] ) ) {
+
+					// translators: all-in-one-seo-pack text domain
+					$label_transl = '<strong>' . __( 'Use Schema.org Markup', 'all-in-one-seo-pack' ) . '</strong>';
+					$settings_url = get_admin_url( null, 'admin.php?page=all-in-one-seo-pack%2Faioseop_class.php' );
+					$settings_link = '<a href="' . $settings_url . '">' .
+						// translators: all-in-one-seo-pack text domain
+						__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
+						// translators: all-in-one-seo-pack text domain
+						__( 'General Settings', 'all-in-one-seo-pack' ) . ' &gt; ' .
+						// translators: all-in-one-seo-pack text domain
+						__( 'General Settings', 'all-in-one-seo-pack' ) . '</a>';
+
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_pre . 'aioseop schema markup is enabled' );
+						$this->p->debug->log( $log_pre . 'aioseop schema markup option is checked' );
 					}
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the <strong>Use Schema.org Markup</strong> option in the <a href="%s">All in One SEO Pack General Settings</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=all-in-one-seo-pack/aioseop_class.php' ) ) );
+					$this->p->notice->err( $err_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
+						'wpsso' ), $label_transl, $settings_link ) );
 				}
 			}
 
@@ -1782,13 +1821,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $this->p->avail['seo']['seou'] ) {
 
 				$opts = get_option( 'seo_ultimate' );
+				$settings_url = get_admin_url( null, 'admin.php?page=seo' );
+				$settings_link = '<a href="' . $settings_url . '">' .
+					// translators: seo-ultimate text domain
+					__( 'SEO Ultimate', 'seo-ultimate' ) . ' &gt; ' .
+					// translators: seo-ultimate text domain
+					__( 'Modules', 'seo-ultimate' ) . '</a>';
 
 				if ( ! empty( $opts['modules'] ) && is_array( $opts['modules'] ) ) {
 					if ( array_key_exists( 'opengraph', $opts['modules'] ) && $opts['modules']['opengraph'] !== -10 ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'seo ultimate opengraph module is enabled' );
 						}
-						$this->p->notice->err( $err_pre.sprintf( __( 'please disable the <strong>Open Graph Integrator</strong> module in the <a href="%s">SEO Ultimate Module Manager</a>.', 'wpsso' ), get_admin_url( null, 'admin.php?page=seo' ) ) );
+						$label_transl = '<strong>' . __( 'Open Graph Integrator', 'seo-ultimate' ) . '</strong>';
+						$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s module in the %2$s settings page.',
+							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
 			}
@@ -1824,7 +1871,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
 						}
-						$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
+						$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s metabox.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -1844,14 +1891,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					__( 'Let Squirrly SEO Optimize This Blog', 'squirrly-seo' ) . '</a>';
 
 				foreach ( array(
-					'sq_auto_jsonld' => '"<strong>' . __( 'adds the Json-LD metas for Semantic SEO',
-						'wpsso' ) . '</strong>"',
+					'sq_auto_jsonld' => '"<strong>' . __( 'adds the Json-LD metas for Semantic SEO', 'wpsso' ) . '</strong>"',
 				) as $opt_key => $label_transl ) {
 					if ( ! empty( $opts[$opt_key] ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
 						}
-						$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
+						$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s metabox.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -1893,9 +1939,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				) as $opt_key => $label_transl ) {
 					if ( $the_seo_framework->is_option_checked( $opt_key ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $log_pre . 'autodescription ' . $opt_key . ' meta tags are enabled' );
+							$this->p->debug->log( $log_pre . 'autodescription ' . $opt_key . ' option is checked' );
 						}
-						$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
+						$this->p->notice->err( $err_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -1911,14 +1957,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( $the_seo_framework->is_option_checked( 'knowledge_output' ) ) {
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_pre . 'autodescription knowledge graph is enabled' );
-					}
-
 					// translators: autodescription text domain
 					$label_transl = '<strong>' . __( 'Output Authorized Presence?', 'autodescription' ) . '</strong>';
 
-					$this->p->notice->err( $err_pre.sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $log_pre . 'autodescription knowledge_output option is checked' );
+					}
+					$this->p->notice->err( $err_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
@@ -1943,55 +1988,32 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					// translators: wp-meta-seo text domain
 					__( 'Global', 'wp-meta-seo' ) . '</a>';
 
-				if ( ! empty( $opts['metaseo_showfacebook'] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_pre . 'wpmetaseo facebook profile url option is not empty' );
-					}
-
+				foreach ( array(
 					// translators: wp-meta-seo text domain
-					$label_transl = '<strong>' . __( 'Facebook profile URL', 'wp-meta-seo' ) . '</strong>';
-
-					$this->p->notice->err( $err_pre.sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
-						'wpsso' ), $label_transl, $settings_link ) );
-				}
-
-				if ( ! empty( $opts['metaseo_showfbappid'] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_pre . 'wpmetaseo facebook app id option is not empty' );
-					}
-
+					'metaseo_showfacebook' => '<strong>' . __( 'Facebook profile URL', 'wp-meta-seo' ) . '</strong>',
 					// translators: wp-meta-seo text domain
-					$label_transl = '<strong>' . __( 'Facebook App ID', 'wp-meta-seo' ) . '</strong>';
-
-					$this->p->notice->err( $err_pre.sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
-						'wpsso' ), $label_transl, $settings_link ) );
-				}
-
-				if ( ! empty( $opts['metaseo_showtwitter'] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_pre . 'wpmetaseo twitter username option is not empty' );
-					}
-
+					'metaseo_showfbappid'  => '<strong>' . __( 'Facebook App ID', 'wp-meta-seo' ) . '</strong>',
 					// translators: wp-meta-seo text domain
-					$label_transl = '<strong>' . __( 'Twitter Username', 'wp-meta-seo' ) . '</strong>';
-
-					$this->p->notice->err( $err_pre.sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
-						'wpsso' ), $label_transl, $settings_link ) );
+					'metaseo_showtwitter'  => '<strong>' . __( 'Twitter Username', 'wp-meta-seo' ) . '</strong>',
+				) as $opt_key => $label_transl ) {
+					if ( ! empty( $opts[$opt_key] ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $log_pre . 'wpmetaseo ' . $opt_key . ' option is not empty' );
+						}
+						$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
+							'wpsso' ), $label_transl, $settings_link ) );
+					}
 				}
 
 				if ( ! empty( $opts['metaseo_showsocial'] ) ) {
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_pre . 'wpmetaseo social sharing block option is enabled' );
-					}
-
 					// translators: wp-meta-seo text domain
 					$label_transl = '<strong>' . __( 'Social sharing block', 'wp-meta-seo' ) . '</strong>';
 
-					$this->p->notice->err( $err_pre.sprintf( __( 'please disable the %1$s option under the %2$s settings tab.',
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $log_pre . 'wpmetaseo metaseo_showsocial option is enabled' );
+					}
+					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option under the %2$s settings tab.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 			}
@@ -2035,9 +2057,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				) as $opt_key => $label_transl ) {
 					if ( ! empty( $opts[$opt_key] ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $log_pre . 'wpseo ' . $opt_key . ' social profile option is not empty' );
+							$this->p->debug->log( $log_pre . 'wpseo ' . $opt_key . ' option is not empty' );
 						}
-						$this->p->notice->err( $err_pre.sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
+						$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -2046,10 +2068,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Yoast SEO > Social > Faceboook Tab
 				 */
 				if ( ! empty( $opts['opengraph'] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_pre . 'wpseo opengraph meta data option is enabled' );
-					}
 
 					// translators: wordpress-seo text domain
 					$label_transl = '<strong>' . __( 'Add Open Graph meta data', 'wordpress-seo' ) . '</strong>';
@@ -2062,15 +2080,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						// translators: wp-meta-seo text domain
 						__( 'Facebook', 'wordpress-seo' ) . '</a>';
 
-					$this->p->notice->err( $err_pre.sprintf( __( 'please disable the %1$s option under the %2$s settings tab.',
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $log_pre . 'wpseo opengraph option is enabled' );
+					}
+					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option under the %2$s settings tab.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
 				if ( ! empty( $opts['fbadminapp'] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_pre . 'wpseo facebook admin id option is not empty' );
-					}
 
 					// translators: wordpress-seo text domain
 					$label_transl = '<strong>' . __( 'Facebook App ID', 'wordpress-seo' ) . '</strong>';
@@ -2083,7 +2100,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						// translators: wp-meta-seo text domain
 						__( 'Facebook', 'wordpress-seo' ) . '</a>';
 
-					$this->p->notice->err( $err_pre.sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $log_pre . 'wpseo fbadminapp option is not empty' );
+					}
+					$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
@@ -2091,10 +2111,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Yoast SEO > Social > Twitter Tab
 				 */
 				if ( ! empty( $opts['twitter'] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_pre . 'wpseo twitter meta data option is enabled' );
-					}
 
 					// translators: wordpress-seo text domain
 					$label_transl = '<strong>' . __( 'Add Twitter Card meta data', 'wordpress-seo' ) . '</strong>';
@@ -2107,7 +2123,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						// translators: wp-meta-seo text domain
 						__( 'Twitter', 'wordpress-seo' ) . '</a>';
 
-					$this->p->notice->err( $err_pre.sprintf( __( 'please disable the %1$s option under the %2$s settings tab.',
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $log_pre . 'wpseo twitter option is enabled' );
+					}
+					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option under the %2$s settings tab.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
@@ -2115,10 +2134,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Yoast SEO > Social > Google+ Tab
 				 */
 				if ( ! empty( $opts['plus-publisher'] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_pre . 'wpseo google plus publisher option is defined' );
-					}
 
 					// translators: wordpress-seo text domain
 					$label_transl = '<strong>' . __( 'Google Publisher Page', 'wordpress-seo' ) . '</strong>';
@@ -2131,7 +2146,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						// translators: wp-meta-seo text domain
 						__( 'Google+', 'wordpress-seo' ) . '</a>';
 
-					$this->p->notice->err( $err_pre.sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $log_pre . 'wpseo plus-publisher option is not empty' );
+					}
+					$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 			}
@@ -2151,8 +2169,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $text;
 		}
 
-		// only show notices on the dashboard and the settings pages
-		// hooked to 'current_screen' filter, so return the $screen object
+		/**
+		 * Only show notices on the dashboard and the settings pages.
+		 * Hooked to 'current_screen' filter, so return the $screen object.
+		 */
 		public function maybe_show_screen_notices( $screen ) {
 			$screen_id = SucomUtil::get_screen_id( $screen );
 			switch ( $screen_id ) {

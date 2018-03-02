@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.54.1-rc.1',		// Plugin version.
+					'version' => '3.54.1-rc.2',		// Plugin version.
 					'opt_version' => '576',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core (Main Plugin)',
@@ -1185,15 +1185,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'wp' => array(				// WordPress
 				'label' => 'WordPress',
-				/**
-				 * https://codex.wordpress.org/Supported_Versions
-				 *
-				 * The only current officially supported version is WordPress 4.7.1. Previous major
-				 * releases from 3.7 onwards may or may not get security updates as serious exploits
-				 * are discovered.
-				 */
 				'min_version' => '3.8',		// hard limit - deactivate the plugin when activating
-				'rec_version' => '4.9.2',	// soft limit - issue warning if lower version found
+				'rec_version' => '4.9.4',	// soft limit - issue warning if lower version found
 				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
 				'tb_iframe' => array(		// thickbox iframe
 					'width' => 772,		// url query argument
