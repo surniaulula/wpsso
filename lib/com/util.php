@@ -3262,16 +3262,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function encode_html_emoji( $html ) {
+
 			static $charset = null;
+
 			if ( ! isset( $charset ) ) {
 				$charset = get_bloginfo( 'charset' ); // Only get it once.
 			}
+
 			$html = htmlentities( $html, ENT_QUOTES, $charset, false ); // double_encode = false.
+
 			if ( function_exists( 'wp_encode_emoji' ) ) {
 				$html = wp_encode_emoji( $html );
 			} elseif ( method_exists( 'SucomUtilWP', 'wp_encode_emoji' ) ) { // Just in case.
 				$html = SucomUtilWP::wp_encode_emoji( $html );
 			}
+
 			return $html;
 		}
 

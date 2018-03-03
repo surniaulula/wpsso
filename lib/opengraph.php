@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 			}
 
-			$lca = $this->p->cf['lca'];
+			$lca = $this->p->lca;
 			$pdir = $this->p->avail['*']['p_dir'];
 			$aop = $this->p->check->aop( $lca, true, $pdir );
 			$max = $this->p->util->get_max_nums( $mod );
@@ -156,15 +156,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$mt_og = apply_filters( $lca.'_og_seed', $mt_og, $mod );
 
-			if ( ! empty( $mt_og ) &&
-				$this->p->debug->enabled ) {
-				$this->p->debug->log( $lca.'_og_seed filter returned:' );
-				$this->p->debug->log( $mt_og );
+			if ( ! empty( $mt_og ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $lca.'_og_seed filter returned:' );
+					$this->p->debug->log( $mt_og );
+				}
 			}
 
-			if ( ! isset( $mt_og['fb:admins'] ) && ! empty( $this->p->options['fb_admins'] ) ) {
-				foreach ( explode( ',', $this->p->options['fb_admins'] ) as $fb_admin ) {
-					$mt_og['fb:admins'][] = trim( $fb_admin );
+			if ( ! isset( $mt_og['fb:admins'] ) ) {
+				if ( ! empty( $this->p->options['fb_admins'] ) ) {
+					foreach ( explode( ',', $this->p->options['fb_admins'] ) as $fb_admin ) {
+						$mt_og['fb:admins'][] = trim( $fb_admin );
+					}
 				}
 			}
 
@@ -174,6 +177,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( ! isset( $mt_og['og:url'] ) ) {
 				$mt_og['og:url'] = $this->p->util->get_sharing_url( $mod );
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'og:url already defined = '.$mt_og['og:url'] );
 			}
 
 			// define the type after the url
@@ -185,6 +190,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( ! isset( $mt_og['og:locale'] ) ) {
 				$mt_og['og:locale'] = $this->get_fb_locale( $this->p->options, $mod );	// localized
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'og:locale already defined = '.$mt_og['og:locale'] );
 			}
 
 			if ( ! isset( $mt_og['og:site_name'] ) ) {
@@ -192,21 +199,29 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting site name for og:site_name meta tag' );
 				}
 				$mt_og['og:site_name'] = SucomUtil::get_site_name( $this->p->options, $mod );	// localized
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'og:site_name already defined = '.$mt_og['og:site_name'] );
 			}
 
 			if ( ! isset( $mt_og['og:title'] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting title for og:title meta tag' );
 				}
-				$mt_og['og:title'] = $this->p->page->get_title( $this->p->options['og_title_len'], '...', $mod );
+				$max_len = $this->p->options['og_title_len'];
+				$mt_og['og:title'] = $this->p->page->get_title( $max_len, '...', $mod );
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'og:title already defined = '.$mt_og['og:title'] );
 			}
 
 			if ( ! isset( $mt_og['og:description'] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting description for og:description meta tag' );
 				}
-				$mt_og['og:description'] = $this->p->page->get_description( $this->p->options['og_desc_len'],
-					'...', $mod, true, $this->p->options['og_desc_hashtags'], true, 'og_desc' );
+				$max_len = $this->p->options['og_desc_len'];
+				$add_htags = $this->p->options['og_desc_hashtags'];
+				$mt_og['og:description'] = $this->p->page->get_description( $max_len, '...', $mod, true, $add_htags );
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'og:description already defined = '.$mt_og['og:description'] );
 			}
 
 			/**
@@ -215,6 +230,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Call before getting all images to find / use preview images.
 			 */
 			if ( ! isset( $mt_og['og:video'] ) && $aop ) {
+
 				if ( empty( $max['og_vid_max'] ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'videos disabled: maximum videos = 0' );
