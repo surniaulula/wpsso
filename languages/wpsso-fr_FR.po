@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 3.54.1\n"
+"Project-Id-Version: WPSSO Core 3.55.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-03-03 08:14-0600\n"
-"PO-Revision-Date: 2018-03-03 08:26-0600\n"
+"POT-Creation-Date: 2018-03-03 08:30-0600\n"
+"PO-Revision-Date: 2018-03-03 08:42-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -90,7 +90,7 @@ msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
 #: lib/admin.php:745
 msgid "Metabox layout preferences for user ID #%d \"%s\" have been reset."
-msgstr "Préférences de positionnement des metabox pour ID d'utilisateur #%d \"%s\" ont été réinitialisés."
+msgstr "Préférences de positionnement des métabox pour ID d'utilisateur #%d \"%s\" ont été réinitialisés."
 
 #: lib/admin.php:755
 msgid "Hidden notices for user ID #%d \"%s\" have been cleared."
@@ -149,7 +149,7 @@ msgstr "Vider tout les caches pour site %d"
 #: lib/admin.php:1010
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
-msgstr "Réinit. disposition metabox"
+msgstr "Réinit. disposition métabox"
 
 #: lib/admin.php:1011
 msgctxt "submit button"
@@ -344,88 +344,88 @@ msgstr "L'option de WordPress <a href=\"%s\">Visibilité pour les moteurs de rec
 msgid "Plugin conflict detected"
 msgstr "Conflit détecté"
 
-#. translators: uses all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1762
 msgid "Social Meta"
 msgstr "Métas sociaux"
 
-#. translators: uses all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1766 lib/admin.php:1784 lib/admin.php:1804
 msgid "All in One SEO"
 msgstr "All in One SEO"
 
-#. translators: uses all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1768
 msgid "Feature Manager"
 msgstr "Gestion de modules"
 
 #: lib/admin.php:1773
 msgid "please deactivate the %1$s feature in the %2$s settings page."
-msgstr ""
+msgstr "s'il vous plaît désactiver la fonction %1$s dans la page de réglages %2$s."
 
-#. translators: uses all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1780
 msgid "Disable Google Plus Profile"
 msgstr "Désactiver le profil Google Plus"
 
-#. translators: uses all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1786 lib/admin.php:1806 lib/admin.php:1808
 msgid "General Settings"
 msgstr "Réglages généraux"
 
-#. translators: uses all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1788
 msgid "Google Settings"
 msgstr "Réglages Google"
 
 #: lib/admin.php:1793
 msgid "please check the %1$s option in the %2$s metabox."
-msgstr ""
+msgstr "s'il vous plaît cocher l'option %1$s dans le métabox %2$s."
 
-#. translators: uses all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1800
 msgid "Use Schema.org Markup"
 msgstr "Utiliser le balisage Schema.org"
 
 #: lib/admin.php:1813 lib/admin.php:1945 lib/admin.php:1967
 msgid "please uncheck the %1$s option in the %2$s metabox."
-msgstr ""
+msgstr "s'il vous plaît décocher l'option %1$s dans le métabox %2$s."
 
-#. translators: uses seo-ultimate text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1827
 msgid "SEO Ultimate"
 msgstr "SEO Ultimate"
 
-#. translators: uses seo-ultimate text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1829
 msgid "Modules"
 msgstr "Modules"
 
-#. translators: uses seo-ultimate text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1837
 msgid "Open Graph Integrator"
 msgstr "Intégrateur Open Graph"
 
 #: lib/admin.php:1838
 msgid "please disable the %1$s module in the %2$s settings page."
-msgstr ""
+msgstr "s'il vous plaît désactiver le module %1$s dans la page de réglages %2$s."
 
-#. translators: uses squirrly-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1857 lib/admin.php:1886
 msgid "Squirrly"
 msgstr "Squirrly"
 
-#. translators: uses squirrly-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1859 lib/admin.php:1888 lib/admin.php:1890
 msgid "SEO Settings"
 msgstr "Réglages SEO"
 
-#. translators: uses squirrly-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1861
 msgid "Social Media"
 msgstr "Médias sociaux"
 
-#. translators: uses squirrly-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1863
 msgid "Social Media Options"
 msgstr "Options médias sociaux"
@@ -440,9 +440,9 @@ msgstr "Ajoutez la carte Twitter dans vos tweets."
 
 #: lib/admin.php:1875 lib/admin.php:1901
 msgid "please disable the %1$s option in the %2$s metabox."
-msgstr ""
+msgstr "s'il vous plaît désactiver l'option %1$s dans le métabox %2$s."
 
-#. translators: uses squirrly-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1892
 msgid "Let Squirrly SEO Optimize This Blog"
 msgstr "Laissez Squirrly SEO optimiser ce Blog"
@@ -451,173 +451,172 @@ msgstr "Laissez Squirrly SEO optimiser ce Blog"
 msgid "adds the Json-LD metas for Semantic SEO"
 msgstr "ajoute les metas Json-LD pour SEO sémantique"
 
-#. translators: uses autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1920 lib/admin.php:1955
 msgid "The SEO Framework"
 msgstr "The SEO Framework"
 
-#. translators: uses autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1922
 msgid "Social Meta Settings"
 msgstr "Réglages métas sociaux"
 
-#. translators: uses autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1925
 msgid "Posts"
 msgstr "Articles"
 
-#. translators: uses autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1929
 msgid "Output Open Graph meta tags?"
 msgstr "Sortie des méta tags Open Graph?"
 
-#. translators: uses autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1931
 msgid "Output Facebook meta tags?"
 msgstr "Sortie des méta tags Facebook?"
 
-#. translators: uses autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1933
 msgid "Output Twitter meta tags?"
 msgstr "Sortie des méta tags Twitter?"
 
-#. translators: uses autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1935 lib/admin.php:1938
 msgid "Add %1$s to %2$s?"
 msgstr "Ajouter %1$s à %2$s"
 
-#. translators: uses autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1957
 msgid "Schema Settings"
 msgstr "Réglages Schéma"
 
-#. translators: uses autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1962
 msgid "Output Authorized Presence?"
 msgstr "Sortie de présence autorisée?"
 
-#. translators: uses wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1986
 msgid "WP Meta SEO"
 msgstr "WP Meta SEO"
 
-#. translators: uses wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1988
 msgid "Settings"
 msgstr "Réglages"
 
-#. translators: uses wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1990
 msgid "Global"
 msgstr "Global"
 
-#. translators: uses wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1994
 msgid "Facebook profile URL"
 msgstr "URL du profil Facebook"
 
-#. translators: uses wp-meta-seo or wordpress-seo text domains
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1996 lib/admin.php:2094
 msgid "Facebook App ID"
 msgstr "ID d'App Facebook"
 
-#. translators: uses wp-meta-seo text domain
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1998 lib/admin.php:2045
 msgid "Twitter Username"
 msgstr "Nom d'utilisateur Twitter"
 
 #: lib/admin.php:2004 lib/admin.php:2063 lib/admin.php:2107 lib/admin.php:2153
 msgid "please remove the %1$s option value under the %2$s settings tab."
-msgstr ""
+msgstr "s'il vous plaît supprimez la valeur de l'option %1$s sous l'onglet de réglages %2$s."
 
-#. translators: uses wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2012
 msgid "Social sharing block"
 msgstr "Bloc de partage social"
 
 #: lib/admin.php:2017 lib/admin.php:2087 lib/admin.php:2130
 msgid "please disable the %1$s option under the %2$s settings tab."
-msgstr ""
+msgstr "s'il vous plaît désactiver l'option %1$s sous l'onglet de réglages %2$s."
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2035 lib/admin.php:2078 lib/admin.php:2098 lib/admin.php:2121
 #: lib/admin.php:2144
 msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2037 lib/admin.php:2080 lib/admin.php:2100 lib/admin.php:2123
 #: lib/admin.php:2146
 msgid "Social"
 msgstr "Social"
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2039
 msgid "Accounts"
 msgstr "Comptes"
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2043
 msgid "Facebook Page URL"
 msgstr "URL de la page Facebook"
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2047
 msgid "Instagram URL"
 msgstr "URL Instagram"
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2049
 msgid "LinkedIn URL"
 msgstr "URL LinkedIn"
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2051
 msgid "MySpace URL"
 msgstr "URL MySpace"
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2053
 msgid "Pinterest URL"
 msgstr "URL Pinterest"
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2055
 msgid "YouTube URL"
 msgstr "URL YouTube"
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2057
 msgid "Google+ URL"
 msgstr "URL Google+"
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2074
 msgid "Add Open Graph meta data"
 msgstr "Ajouter méta-données Open Graph"
 
-#. translators: uses wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2082 lib/admin.php:2102
 msgid "Facebook"
 msgstr "Facebook"
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2117
 msgid "Add Twitter Card meta data"
 msgstr "Ajouter méta-données Twitter Card"
 
-#. translators: uses wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2125
 msgid "Twitter"
 msgstr "Twitter"
 
-#. translators: uses wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2140
 msgid "Google Publisher Page"
 msgstr "Page Google Publisher"
 
-#. translators: uses wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2148
 msgid "Google+"
 msgstr "Google+"
@@ -1998,7 +1997,7 @@ msgstr "Ajout colonnes dans listes admin"
 #: lib/gpl/admin/advanced.php:208 lib/pro/admin/advanced.php:208
 msgctxt "option label"
 msgid "Add %s Metabox to"
-msgstr "Ajout metabox %s à"
+msgstr "Ajout métabox %s à"
 
 #: lib/gpl/admin/advanced.php:212 lib/pro/admin/advanced.php:212
 msgctxt "option label"
@@ -2765,11 +2764,11 @@ msgstr "Ajouter des messages de débogage en commentaires HTML cachés dans les 
 
 #: lib/messages.php:468
 msgid "Remove Pro version preview options from settings pages and metaboxes (default is unchecked)."
-msgstr "Masquer la pré-visualisation des réglages de la version Pro dans les pages de paramètres et metabox (décochée par défaut)."
+msgstr "Masquer la pré-visualisation des réglages de la version Pro dans les pages de paramètres et métabox (décochée par défaut)."
 
 #: lib/messages.php:468
 msgid "Enabling this option also re-orders the %1$s metabox tabs for your convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost."
-msgstr "L'activation de cette option re-ordonne également les onglets metabox %1$s pour votre commodité &ndash; déplaçant les onglets %2$s, %3$s et %4$s au premier plan."
+msgstr "L'activation de cette option re-ordonne également les onglets métabox %1$s pour votre commodité &ndash; déplaçant les onglets %2$s, %3$s et %4$s au premier plan."
 
 #: lib/messages.php:468 lib/meta.php:131
 msgctxt "metabox tab"
@@ -2788,7 +2787,7 @@ msgstr "Validations"
 
 #: lib/messages.php:468
 msgid "Please note that some metaboxes and tabs may be empty, showing only a \"<em>%s</em>\" message, after enabling this option."
-msgstr "SVP prendre note que certains metabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
+msgstr "SVP prendre note que certains métabox et onglets peuvent être vides, ne montrant qu'un message \"<em>%s</em>\", après avoir activé cette option."
 
 #: lib/messages.php:468 lib/util.php:2221
 msgid "No options available."
@@ -2796,7 +2795,7 @@ msgstr "Aucune options disponibles."
 
 #: lib/messages.php:474
 msgid "Select the set of options to display by default in %1$s settings pages and %2$s metabox."
-msgstr "Sélectionnez les options à afficher par défaut dans les pages de réglages %1$s et metabox %2$s."
+msgstr "Sélectionnez les options à afficher par défaut dans les pages de réglages %1$s et métabox %2$s."
 
 #: lib/messages.php:474
 msgid "The basic view shows only the most commonly used options, and includes a link to temporarily unhide all options."
@@ -2869,7 +2868,7 @@ msgstr "Des colonnes supplémentaires peuvent être ajouté dans les page admin 
 
 #: lib/messages.php:530
 msgid "Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages."
-msgstr "Ajouter ou supprimer le metabox d'%s pour les articles, pages, types de contenus personnalisés, termes (catégories, étiquettes, et taxonomie personnalisés), et profil d'utilisateurs."
+msgstr "Ajouter ou supprimer le métabox d'%s pour les articles, pages, types de contenus personnalisés, termes (catégories, étiquettes, et taxonomie personnalisés), et profil d'utilisateurs."
 
 #: lib/messages.php:536
 msgid "Read the Yoast SEO custom social meta text for Posts, Terms, and Users."
@@ -2999,7 +2998,7 @@ msgstr "Si votre thème ou une autre extension fournit un champ personnalisé po
 
 #: lib/messages.php:709
 msgid "If a custom field matching that name is found, its value may be used for the \"%1$s\" option in the %2$s metabox."
-msgstr "Si un champ personnalisé correspondant à ce nom est trouvé, sa valeur peut être utilisée pour l'option \"%1$s\" dans le metabox %2$s."
+msgstr "Si un champ personnalisé correspondant à ce nom est trouvé, sa valeur peut être utilisée pour l'option \"%1$s\" dans le métabox %2$s."
 
 #: lib/messages.php:718
 msgid "If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked)."
@@ -3095,7 +3094,7 @@ msgstr "Activer les fonctions de widget %s (la valeur par défaut est cochée)."
 
 #: lib/messages.php:798
 msgid "Enable the excerpt metabox for Pages."
-msgstr "Activer le metabox d'extrait pour les Pages."
+msgstr "Activer le métabox d'extrait pour les Pages."
 
 #: lib/messages.php:798
 msgid "An excerpts is an optional hand-crafted summary of your content, that %s can also use as a default description value."
@@ -3103,7 +3102,7 @@ msgstr "Un extrait est un résumé facultatif de votre contenu, que %s peut éga
 
 #: lib/messages.php:804
 msgid "Enable the WordPress tags metabox for Pages."
-msgstr "Activer le metabox d'étiquettes WordPress pour les Pages."
+msgstr "Activer le métabox d'étiquettes WordPress pour les Pages."
 
 #: lib/messages.php:804
 msgid "WordPress tags are optional keywords about the content subject, often used for searches and \"tag clouds\"."
@@ -3602,7 +3601,7 @@ msgstr "Les modules d'API de services vidéo &mdash; nécessaires pour détecter
 
 #: lib/messages.php:1432
 msgid "A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %s metabox under the <em>Select Media</em> tab."
-msgstr "Une image personnalisée plus grande et/ou différente, précisément pour les balises méta et balisage de Schéma, peut être sélectionné dans le metabox %s sous l'onglet <em>Choisir média</em>."
+msgstr "Une image personnalisée plus grande et/ou différente, précisément pour les balises méta et balisage de Schéma, peut être sélectionné dans le métabox %s sous l'onglet <em>Choisir média</em>."
 
 #: lib/messages.php:1457
 msgid "Additional information shown only to users with Administrative privileges:"
