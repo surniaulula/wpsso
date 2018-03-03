@@ -354,17 +354,17 @@ msgstr ""
 msgid "Plugin conflict detected"
 msgstr ""
 
-#. translators: all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1762
 msgid "Social Meta"
 msgstr ""
 
-#. translators: all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1766 lib/admin.php:1784 lib/admin.php:1804
 msgid "All in One SEO"
 msgstr ""
 
-#. translators: all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1768
 msgid "Feature Manager"
 msgstr ""
@@ -373,17 +373,17 @@ msgstr ""
 msgid "please deactivate the %1$s feature in the %2$s settings page."
 msgstr ""
 
-#. translators: all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1780
 msgid "Disable Google Plus Profile"
 msgstr ""
 
-#. translators: all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1786 lib/admin.php:1806 lib/admin.php:1808
 msgid "General Settings"
 msgstr ""
 
-#. translators: all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1788
 msgid "Google Settings"
 msgstr ""
@@ -392,7 +392,7 @@ msgstr ""
 msgid "please check the %1$s option in the %2$s metabox."
 msgstr ""
 
-#. translators: all-in-one-seo-pack text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1800
 msgid "Use Schema.org Markup"
 msgstr ""
@@ -401,17 +401,17 @@ msgstr ""
 msgid "please uncheck the %1$s option in the %2$s metabox."
 msgstr ""
 
-#. translators: seo-ultimate text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1827
 msgid "SEO Ultimate"
 msgstr ""
 
-#. translators: seo-ultimate text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1829
 msgid "Modules"
 msgstr ""
 
-#. translators: seo-ultimate text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1837
 msgid "Open Graph Integrator"
 msgstr ""
@@ -420,22 +420,22 @@ msgstr ""
 msgid "please disable the %1$s module in the %2$s settings page."
 msgstr ""
 
-#. translators: squirrly-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1857 lib/admin.php:1886
 msgid "Squirrly"
 msgstr ""
 
-#. translators: squirrly-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1859 lib/admin.php:1888 lib/admin.php:1890
 msgid "SEO Settings"
 msgstr ""
 
-#. translators: squirrly-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1861
 msgid "Social Media"
 msgstr ""
 
-#. translators: squirrly-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1863
 msgid "Social Media Options"
 msgstr ""
@@ -453,7 +453,7 @@ msgstr ""
 msgid "please disable the %1$s option in the %2$s metabox."
 msgstr ""
 
-#. translators: squirrly-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1892
 msgid "Let Squirrly SEO Optimize This Blog"
 msgstr ""
@@ -462,78 +462,77 @@ msgstr ""
 msgid "adds the Json-LD metas for Semantic SEO"
 msgstr ""
 
-#. translators: autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1920 lib/admin.php:1955
 msgid "The SEO Framework"
 msgstr ""
 
-#. translators: autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1922
 msgid "Social Meta Settings"
 msgstr ""
 
-#. translators: autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1925
 msgid "Posts"
 msgstr ""
 
-#. translators: autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1929
 msgid "Output Open Graph meta tags?"
 msgstr ""
 
-#. translators: autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1931
 msgid "Output Facebook meta tags?"
 msgstr ""
 
-#. translators: autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1933
 msgid "Output Twitter meta tags?"
 msgstr ""
 
-#. translators: autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1935 lib/admin.php:1938
 msgid "Add %1$s to %2$s?"
 msgstr ""
 
-#. translators: autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1957
 msgid "Schema Settings"
 msgstr ""
 
-#. translators: autodescription text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1962
 msgid "Output Authorized Presence?"
 msgstr ""
 
-#. translators: wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1986
 msgid "WP Meta SEO"
 msgstr ""
 
-#. translators: wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1988
 msgid "Settings"
 msgstr ""
 
-#. translators: wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1990
 msgid "Global"
 msgstr ""
 
-#. translators: wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1994
 msgid "Facebook profile URL"
 msgstr ""
 
-#. translators: wp-meta-seo or wordpress-seo text domains
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1996 lib/admin.php:2094
 msgid "Facebook App ID"
 msgstr ""
 
-#. translators: wp-meta-seo text domain
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:1998 lib/admin.php:2045
 msgid "Twitter Username"
 msgstr ""
@@ -542,7 +541,7 @@ msgstr ""
 msgid "please remove the %1$s option value under the %2$s settings tab."
 msgstr ""
 
-#. translators: wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2012
 msgid "Social sharing block"
 msgstr ""
@@ -551,84 +550,84 @@ msgstr ""
 msgid "please disable the %1$s option under the %2$s settings tab."
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2035 lib/admin.php:2078 lib/admin.php:2098 lib/admin.php:2121
 #: lib/admin.php:2144
 msgid "Yoast SEO"
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2037 lib/admin.php:2080 lib/admin.php:2100 lib/admin.php:2123
 #: lib/admin.php:2146
 msgid "Social"
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2039
 msgid "Accounts"
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2043
 msgid "Facebook Page URL"
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2047
 msgid "Instagram URL"
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2049
 msgid "LinkedIn URL"
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2051
 msgid "MySpace URL"
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2053
 msgid "Pinterest URL"
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2055
 msgid "YouTube URL"
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2057
 msgid "Google+ URL"
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2074
 msgid "Add Open Graph meta data"
 msgstr ""
 
-#. translators: wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2082 lib/admin.php:2102
 msgid "Facebook"
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2117
 msgid "Add Twitter Card meta data"
 msgstr ""
 
-#. translators: wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2125
 msgid "Twitter"
 msgstr ""
 
-#. translators: wordpress-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2140
 msgid "Google Publisher Page"
 msgstr ""
 
-#. translators: wp-meta-seo text domain
+#. translators: please ignore - translation uses a 3rd party text domain
 #: lib/admin.php:2148
 msgid "Google+"
 msgstr ""
