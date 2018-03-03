@@ -209,6 +209,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 				$max_len = $this->p->options['og_title_len'];
 				$mt_og['og:title'] = $this->p->page->get_title( $max_len, '...', $mod );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'og:title value = '.$mt_og['og:title'] );
+				}
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'og:title already defined = '.$mt_og['og:title'] );
 			}
@@ -220,6 +223,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$max_len = $this->p->options['og_desc_len'];
 				$add_htags = $this->p->options['og_desc_hashtags'];
 				$mt_og['og:description'] = $this->p->page->get_description( $max_len, '...', $mod, true, $add_htags );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'og:description value = '.$mt_og['og:description'] );
+				}
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'og:description already defined = '.$mt_og['og:description'] );
 			}

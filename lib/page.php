@@ -541,8 +541,27 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			// if there's still no description, then fallback to a generic version
+			/**
+			 * Descriptions comprised entirely of html content will be empty after running cleanup_html_tags(),
+			 * so remove the html before falling back to a generic description.
+			 */
+			$strlen_pre_cleanup = $this->p->debug->enabled ? strlen( $desc_text ) : 0;
+
+			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, true, $this->p->options['plugin_use_img_alt'] );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'description strlen before html cleanup '.$strlen_pre_cleanup.' and after '.strlen( $desc_text ) );
+			}
+
+			/**
+			 * If there's still no description, then fallback to a generic version.
+			 */
 			if ( empty( $desc_text ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'description is empty - falling back to generic description' );
+				}
+
 				if ( $mod['post_status'] === 'auto-draft' ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'post_status is auto-draft: using empty description' );
@@ -552,15 +571,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			$strlen_pre_cleanup = $this->p->debug->enabled ? strlen( $desc_text ) : 0;
-			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, true, $this->p->options['plugin_use_img_alt'] );
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'description strlen before html cleanup '.
-					$strlen_pre_cleanup.' and after '.strlen( $desc_text ) );
-			}
-
 			if ( $max_len > 0 ) {
+
 				$desc_text = apply_filters( $this->p->cf['lca'].'_description_pre_limit', $desc_text );
 
 				if ( ! empty( $add_htags ) && ! empty( $hashtags ) ) {
@@ -568,14 +580,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'description strlen before limit length '.
-						strlen( $desc_text ).' (limiting to '.$max_len.' chars)' );
+					$this->p->debug->log( 'description strlen before limit length '.strlen( $desc_text ).' (limiting to '.$max_len.' chars)' );
 				}
 
 				$desc_text = $this->p->util->limit_text_length( $desc_text, $max_len, $dots, false );	// $cleanup_html = false
 
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'description limit text length skipped' );
+				$this->p->debug->log( 'skipped the description text length limit' );
 			}
 
 			if ( ! empty( $add_htags ) && ! empty( $hashtags ) ) {
