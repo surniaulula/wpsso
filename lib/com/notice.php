@@ -336,15 +336,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			echo '
 <script type="text/javascript">
 	jQuery( document ).ready( function() {
+
 		jQuery("#' . $this->lca . '-unhide-notices").click( function() {
 			var notice = jQuery( this ).parents(".' . $this->lca . '-notice");
 			jQuery(".' . $this->lca . '-dismissible").show();
 			notice.hide();
 		});
+
 		jQuery("div.' . $this->lca . '-dismissible > div.notice-dismiss, div.' . $this->lca . '-dismissible .dismiss-on-click").click( function() {
-			var dismiss_msg = jQuery( this ).data( "dismiss-msg" );
 
 			var notice = jQuery( this ).closest(".' . $this->lca . '-dismissible");
+			var dismiss_msg = jQuery( this ).data( "dismiss-msg" );
 			var dismiss_nonce = notice.data( "dismiss-nonce" );
 			var dismiss_key = notice.data( "dismiss-key" );
 			var dismiss_time = notice.data( "dismiss-time" );
@@ -383,8 +385,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$dismissed_updated = false;
 			$user_id = (int) get_current_user_id();
 			$user_notices =& $this->get_user_notices( $user_id );	// returns reference
-			$user_dismissed = empty( $user_id ) ? false : 		// Just in case.
-				get_user_option( $this->dis_name, $user_id );	// get dismissed message ids
+			$user_dismissed = empty( $user_id ) ? false : get_user_option( $this->dis_name, $user_id );	// get dismissed message ids
 			$this->has_shown = true;
 
 			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
