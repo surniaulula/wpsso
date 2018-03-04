@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.55.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-03-03 08:30-0600\n"
-"PO-Revision-Date: 2018-03-03 08:42-0600\n"
+"POT-Creation-Date: 2018-03-04 07:53-0600\n"
+"PO-Revision-Date: 2018-03-04 07:54-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -856,12 +856,12 @@ msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes, and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/com/bfo.php:204 lib/com/cache.php:470 lib/com/notice.php:551
+#: lib/com/bfo.php:204 lib/com/cache.php:470 lib/com/notice.php:552
 #: lib/com-gettext-extract.php:25
 msgid "%s Notice"
 msgstr "Avis %s"
 
-#: lib/com/bfo.php:207 lib/com/cache.php:473 lib/com/notice.php:554
+#: lib/com/bfo.php:207 lib/com/cache.php:473 lib/com/notice.php:555
 #: lib/com-gettext-extract.php:18
 msgid "Notice"
 msgstr "Avis"
@@ -962,25 +962,25 @@ msgstr "modifier"
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#: lib/com/notice.php:486 lib/com-gettext-extract.php:32
+#: lib/com/notice.php:487 lib/com-gettext-extract.php:32
 msgctxt "notification type"
 msgid "error"
 msgstr "erreur"
 
-#: lib/com/notice.php:487 lib/com-gettext-extract.php:33
+#: lib/com/notice.php:488 lib/com-gettext-extract.php:33
 msgctxt "notification type"
 msgid "warning"
 msgstr "alerte"
 
-#: lib/com/notice.php:492 lib/com-gettext-extract.php:4
+#: lib/com/notice.php:493 lib/com-gettext-extract.php:4
 msgid "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
 
-#: lib/com/notice.php:494 lib/com-gettext-extract.php:3
+#: lib/com/notice.php:495 lib/com-gettext-extract.php:3
 msgid "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s message</a>."
 msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
 
-#: lib/com/notice.php:624 lib/com-gettext-extract.php:9
+#: lib/com/notice.php:625 lib/com-gettext-extract.php:9
 msgid "Dismiss"
 msgstr "Masquer"
 
@@ -4891,45 +4891,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "please deactivate the <strong>Social Meta</strong> feature in the <a href=\"%s\">All in One SEO Pack Feature Manager</a>."
-#~ msgstr "SVP désactiver la fonctionnalité <strong>Social Meta</strong> dans le <a href=\"%s\">All in One SEO Pack Feature Manager</a>."
-
-#~ msgid "please check the <strong>Disable Google Plus Profile</strong> option in the <a href=\"%s\">All in One SEO Pack General Settings</a>."
-#~ msgstr "SVP cocher l'option <strong>Disable Google Plus Profile</strong> dans les réglages généraux de l'extension <a href=\"%s\">All in One SEO Pack</a>."
-
-#~ msgid "please uncheck the <strong>Use Schema.org Markup</strong> option in the <a href=\"%s\">All in One SEO Pack General Settings</a>."
-#~ msgstr "SVP cocher l'option <strong>Use Schema.org Markup</strong> dans les réglages généraux de l'extension <a href=\"%s\">All in One SEO Pack</a>."
-
-#~ msgid "please disable the <strong>Open Graph Integrator</strong> module in the <a href=\"%s\">SEO Ultimate Module Manager</a>."
-#~ msgstr "SVP désactiver le module <strong>Open Graph Integrator</strong> dans <a href=\"%s\">SEO Ultimate Module Manager</a>."
-
-#~ msgid "please uncheck <strong>Add the Social Open Graph objects</strong> in the <a href=\"%s\">Squirrly SEO</a> Social Media Options."
-#~ msgstr "SVP décocher l'option <strong>Add the Social Open Graph objects</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
-
-#~ msgid "please uncheck <strong>Add the Twitter card in your tweets</strong> in the <a href=\"%s\">Squirrly SEO</a> Social Media Options."
-#~ msgstr "SVP décocher l'option <strong>Add the Twitter card in your tweets</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
-
-#~ msgid "please uncheck the <strong>adds the JSON-LD metas for Semantic SEO</strong> option in the <a href=\"%s\">Squirrly SEO</a> settings."
-#~ msgstr "SVP décocher l'option <strong>adds the JSON-LD metas for Semantic SEO</strong> dans les réglages de l'extension <a href=\"%s\">Squirrly SEO</a>."
-
-#~ msgid "please uncheck the <strong>%1$s</strong> option in <a href=\"%2$s\">The SEO Framework</a> Social Meta Settings."
-#~ msgstr "SVP décocher l'option <strong>%1$s</strong> dans les réglages sociaux de l'extension <a href=\"%2$s\">The SEO Framework</a>."
-
-#~ msgid "please uncheck the <strong>Output Authorized Presence?</strong> option in <a href=\"%s\">The SEO Framework</a> Schema Settings."
-#~ msgstr "SVP décocher l'option <strong>Output Authorized Presence?</strong> dans les réglages de l'extension <a href=\"%s\">The SEO Framework</a>."
-
-#~ msgid "please disable the <strong>Social sharing block</strong> option under the <a href=\"%s\">WP Meta SEO &gt; Settings &gt; Global</a> settings tab."
-#~ msgstr "SVP décocher l'option <strong>Ajouter des méta données spécifiques à Google+</strong> sous l'onglet de réglages <a href=\"%s\">Yoast SEO &gt; Social &gt; Google+</a>."
-
-#~ msgid "please uncheck the <strong>Add Open Graph meta data</strong> option under the <a href=\"%s\">Yoast SEO &gt; Social &gt; Facebook</a> settings tab."
-#~ msgstr "SVP décocher l'option <strong>Ajouter les métadonnées OpenGraph</strong> sous l'onglet de réglages <a href=\"%s\">Yoast SEO &gt; Social &gt; Facebook</a>."
-
-#~ msgid "please uncheck the <strong>Add Twitter card meta data</strong> option under the <a href=\"%s\">Yoast SEO &gt; Social &gt; Twitter</a> settings tab."
-#~ msgstr "SVP décocher l'option <strong>Ajoute les métadonnées de carte Twitter</strong> sous l'onglet de réglages <a href=\"%s\">Yoast SEO &gt; Social &gt; Twitter</a>."
-
-#~ msgid "please uncheck the <strong>Add Google+ specific post meta data</strong> option under the <a href=\"%s\">Yoast SEO &gt; Social &gt; Google+</a> settings tab."
-#~ msgstr "SVP décocher l'option <strong>Ajouter des méta données spécifiques à Google+</strong> sous l'onglet de réglages <a href=\"%s\">Yoast SEO &gt; Social &gt; Google+</a>."
-
-#~ msgid "please remove the <strong>Google Publisher Page</strong> value entered under the <a href=\"%s\">Yoast SEO &gt; Social &gt; Google+</a> settings tab."
-#~ msgstr "SVP supprimer la valeur de <strong>Page Google Publisher</strong> entrée sous l'onglet de réglages <a href=\"%s\">Yoast SEO &gt; Social &gt; Google +</a>."
