@@ -391,7 +391,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.55.0-rc.3 (2018/03/03)**
+**Version 3.55.0 (2018/03/04)**
 
 * *New Features*
 	* None
@@ -497,11 +497,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.55.0-rc.3 =
+= 3.55.0 =
 
-(2018/03/03) Fixed the missing 'og:image:width' and 'og:image:height' meta tags. Refactored the NextGEN Gallery module to add support for NextCellent Gallery image slugs in the WP_Query pid value (Pro version).
-
-= 3.54.0 =
-
-(2018/02/24) Added a new informational notice when there are pending updates for the WPSSO Core plugin and/or its extensions. Added a wrapper method / function around getimagesize() to manage connection timeouts using PHP's cURL library.
+(2018/03/04) Fixed the missing 'og:image:width' and 'og:image:height' meta tags. Refactored the NextGEN Gallery module to add support for NextCellent Gallery image slugs in the WP_Query pid value (Pro version).
 
