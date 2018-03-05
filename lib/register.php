@@ -216,8 +216,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				$error_msg = sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
 					'wpsso' ), $plugin_name, $app_label, $min_version );
 
-				// translators: %s is the short plugin name
-				trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $plugin_short ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
+				if ( method_exists( 'SucomUtil', 'safe_trigger_error' ) ) {
+					// translators: %s is the short plugin name
+					$error_prefix = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
+					SucomUtil::safe_trigger_error( $error_prefix.' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
+				}
 
 				wp_die( 
 					'<p>'.sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.',

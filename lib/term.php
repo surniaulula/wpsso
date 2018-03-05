@@ -174,8 +174,16 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				// translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$0.3f is a number of seconds
 				$error_msg = sprintf( __( 'Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (longer than recommended max of %4$0.3f secs).', 'wpsso' ), $total_time, $mod['id'], $mod['tax_slug'], $max_time );
 
+				/**
+				 * Show an admin warning notice, if notices not already shown.
+				 */
+				if ( $this->p->notice->is_admin_pre_notices() ) {
+					$this->p->notice->warn( $error_msg );
+				}
+
 				// translators: %s is the short plugin name
-				trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
+				$error_prefix = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
+				SucomUtil::safe_trigger_error( $error_prefix.' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
 			}
 
 			if ( $this->p->debug->enabled ) {

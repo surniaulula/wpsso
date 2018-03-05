@@ -802,11 +802,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function __construct() {
 		}
 
+		/**
+		 * Sets 'display_errors' to false to prevent PHP errors from being displayed.
+		 * Restores previous PHP settings after logging the error.
+		 */
 		public static function safe_trigger_error( $error_msg, $error_type = E_USER_NOTICE ) {
 
 			// show errors only if in back-end, and always the log errors
 			$ini_set = array(
-				'display_errors' => is_admin() ? 1 : 0,
+				'display_errors' => 0,
 				'log_errors' => 1,
 				'error_log' => WP_CONTENT_DIR . '/debug.log',
 			);
@@ -851,7 +855,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					require_once $plugin_lib;
 				} else {
 					$error_msg = sprintf( 'WordPress library file %s is missing and required.', $plugin_lib );
-					trigger_error( sprintf( '%s error:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_ERROR );
+					self::safe_trigger_error( sprintf( '%s error:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_ERROR );
 				}
 			}
 
@@ -859,7 +863,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return self::$cache_wp_plugins = get_plugins();
 			} else {
 				$error_msg = sprintf( 'WordPress function %s is missing and required.', 'get_plugins()' );
-				trigger_error( sprintf( '%s error:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_ERROR );
+				self::safe_trigger_error( sprintf( '%s error:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_ERROR );
 			}
 
 			return self::$cache_wp_plugins = array();
@@ -1864,7 +1868,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		        foreach ( $array as $child_key => $value ) {
 				if ( isset( $index[$child_key] ) ) {
 					$error_msg = sprintf( 'Duplicate child key "%s" = "%s".', $child_key, $index[$child_key] );
-					trigger_error( sprintf( '%s warning:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
+					self::safe_trigger_error( sprintf( '%s warning:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
 				} elseif ( is_array( $value ) ) {
 					self::array_parent_index( $value, $child_key, $parent_key, $index );
 				} elseif ( $parent_key && $child_key !== $parent_key ) {
