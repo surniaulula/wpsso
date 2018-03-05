@@ -251,8 +251,9 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 						'-----' . __( 'END OUTPUT', $this->text_domain ) . '-----' . "\n";
 
 					/**
-					 * Use SucomUtil::safe_trigger_error() if available, which defines the WordPress debug.log path, 
-					 * and prevents the error from being displayed in the webpage.
+					 * Use SucomUtil::safe_trigger_error() if available, which defines the WordPress 
+					 * debug.log path and prevents the error from being displayed in the webpage.
+					 * Previous PHP settings are also restored after logging the error.
 					 */
 					if ( method_exists( 'SucomUtil', 'safe_trigger_error' ) ) {
 						SucomUtil::safe_trigger_error( $this->label_transl . ': ' . $error_msg . "\n" . $incorrect_msg, E_USER_WARNING );
