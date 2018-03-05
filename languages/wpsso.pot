@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core (Main Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core (Main Plugin) 3.55.0\n"
+"Project-Id-Version: WPSSO Core (Main Plugin) 3.55.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:722 lib/post.php:566 lib/term.php:345 lib/user.php:352
+#: lib/admin.php:722 lib/post.php:568 lib/term.php:345 lib/user.php:352
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2489,7 +2489,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:176 lib/meta.php:212 lib/post.php:903
+#: lib/gpl/admin/post.php:176 lib/meta.php:212 lib/post.php:905
 #: lib/pro/admin/post.php:198
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2535,7 +2535,7 @@ msgid "Library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:147 lib/loader.php:166 lib/post.php:203 lib/register.php:221
+#: lib/loader.php:147 lib/loader.php:166 lib/post.php:205 lib/register.php:221
 #: lib/term.php:185 lib/user.php:168 lib/util.php:318 lib/util.php:2010
 msgid "%s warning:"
 msgstr ""
@@ -4533,252 +4533,252 @@ msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/options.php:282
+#: lib/options.php:283
 msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:362
+#: lib/options.php:365
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:364
+#: lib/options.php:367
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:366
+#: lib/options.php:369
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:368
+#: lib/options.php:371
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:381
+#: lib/options.php:384
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:452
+#: lib/options.php:455
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:500
+#: lib/options.php:503
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:542
+#: lib/options.php:545
 msgid ""
 "The value of option '%s' must be a URL - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:543
+#: lib/options.php:546
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:544
+#: lib/options.php:547
 msgid ""
 "The value of option '%s' must be numeric - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:545
+#: lib/options.php:548
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:546
+#: lib/options.php:549
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:547
+#: lib/options.php:550
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:548
+#: lib/options.php:551
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:549
+#: lib/options.php:552
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:550
+#: lib/options.php:553
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:551
+#: lib/options.php:554
 msgid ""
 "The value of option '%s' must be HTML code - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:552
+#: lib/options.php:555
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:808
+#: lib/options.php:811
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$0.3f is a number of seconds
-#: lib/post.php:193
+#: lib/post.php:195
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
 "children of post ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/post.php:682
+#: lib/post.php:684
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:685
+#: lib/post.php:687
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:713
+#: lib/post.php:715
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:715
+#: lib/post.php:717
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:717
+#: lib/post.php:719
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:718
+#: lib/post.php:720
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:728 lib/util.php:924
+#: lib/post.php:730 lib/util.php:924
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:737
+#: lib/post.php:739
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:746
+#: lib/post.php:748
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:755
+#: lib/post.php:757
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:771
+#: lib/post.php:773
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:779
+#: lib/post.php:781
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:790
+#: lib/post.php:792
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:790
+#: lib/post.php:792
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:790
+#: lib/post.php:792
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:813
+#: lib/post.php:815
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:817
+#: lib/post.php:819
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:819
+#: lib/post.php:821
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
-#: lib/post.php:1018
+#: lib/post.php:1020
 msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1027
+#: lib/post.php:1029
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1028
+#: lib/post.php:1030
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1039
-msgctxt "option label"
-msgid "No index"
-msgstr ""
-
-#: lib/post.php:1040
-msgctxt "option label"
-msgid "No follow"
 msgstr ""
 
 #: lib/post.php:1041
 msgctxt "option label"
-msgid "No archive"
+msgid "No index"
 msgstr ""
 
 #: lib/post.php:1042
 msgctxt "option label"
+msgid "No follow"
+msgstr ""
+
+#: lib/post.php:1043
+msgctxt "option label"
+msgid "No archive"
+msgstr ""
+
+#: lib/post.php:1044
+msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1116
+#: lib/post.php:1118
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

@@ -256,6 +256,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Adjust / cleanup site options.
 				 */
 				if ( ! $network ) {
+
 					if ( $this->p->check->aop( $lca, false, $this->p->avail['*']['p_dir'] ) ) {
 						foreach ( array( 'plugin_hide_pro' => 0 ) as $idx => $def_val ) {
 							if ( $opts[$idx] === $def_val ) {
@@ -294,6 +295,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$has_diff_options = true;	// save the options
 						}
 					}
+
 					/**
 					 * If an SEO plugin is detected, adjust some related SEO options.
 					 */
@@ -321,6 +323,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$has_diff_options = true;	// save the options
 						}
 					}
+
 					/**
 					 * Please note that generator meta tags are required for plugin support. If you 
 					 * disable the generator meta tags, requests for plugin support will be denied.

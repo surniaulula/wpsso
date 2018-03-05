@@ -39,8 +39,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
-				add_action( 'post_submitbox_misc_actions', array( &$this, 'show_robots_options' ) );
-				add_action( 'save_post', array( &$this, 'save_robots_options' ) );
+				if ( ! empty( $this->p->options['add_meta_name_robots'] ) ) {
+					add_action( 'post_submitbox_misc_actions', array( &$this, 'show_robots_options' ) );
+					add_action( 'save_post', array( &$this, 'save_robots_options' ) );
+				}
 			}
 
 			// add the columns when doing AJAX as well to allow Quick Edit to add the required columns
