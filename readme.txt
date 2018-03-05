@@ -400,7 +400,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Added a check to show the "Robots" option in the post Publish metabox only if the "meta name robots" meta tag is enabled.
+	* Added a check to show the "Robots" option in the post Publish metabox only if the "meta name robots" meta tag is enabled (note that the "meta name robots" meta tag is disabled automatically if a known SEO plugin is detected).
 
 **Version 3.55.0 (2018/03/04)**
 
