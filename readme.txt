@@ -391,6 +391,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.55.1-dev.1 (2018/03/05)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added a check to show the "Robots" option in the post Publish metabox only if the "meta name robots" meta tag is enabled.
+
 **Version 3.55.0 (2018/03/04)**
 
 * *New Features*
@@ -496,6 +507,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 
 == Upgrade Notice ==
+
+= 3.55.1-dev.1 =
+
+(2018/03/05) Added a check to show the "Robots" option in the post Publish metabox only if the "meta name robots" meta tag is enabled.
 
 = 3.55.0 =
 
