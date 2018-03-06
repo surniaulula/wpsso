@@ -4524,7 +4524,23 @@ msgstr ""
 msgid "%s key(s) cleared from the cache."
 msgstr ""
 
-#: lib/meta.php:720
+#: lib/meta.php:665
+msgid ""
+"WP_DEBUG constant is enabled &ndash; showing a list of all checked cache "
+"object names:"
+msgstr ""
+
+#: lib/meta.php:673
+msgctxt "clear cache status"
+msgid "cached and cleared successfully"
+msgstr ""
+
+#: lib/meta.php:676
+msgctxt "clear cache status"
+msgid "not cached"
+msgstr ""
+
+#: lib/meta.php:727
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

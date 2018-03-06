@@ -662,12 +662,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				 */
 				if ( ! empty( $deleted_ids ) && SucomUtil::get_const( 'WP_DEBUG' ) ) {
 
+					$inf_msg .= ' ' . __( 'WP_DEBUG constant is enabled &ndash; showing a list of all checked cache object names:', 'wpsso' ) . "\n";
+
 					$inf_msg .= '<ol>' . "\n";
 
 					foreach ( $deleted_ids as $type_name => $cache_keys ) {
 						foreach ( $cache_keys as $key => $ret ) {
 							$inf_msg .= '<li>' . $type_name . ' ' . $key . ' &mdash; ';
-							$inf_msg .= $ret ? '<strong>' . 'cached and cleared successfully' . '</strong>' : 'not cached';
+							if ( $ret ) {
+								$inf_msg .= '<strong>' . _x( 'cached and cleared successfully',
+									'clear cache status', 'wpsso' ) . '</strong>';
+							} else {
+								$inf_msg .= _x( 'not cached', 'clear cache status', 'wpsso' );
+							}
 							$inf_msg .= '</li>' . "\n";
 						}
 					}
