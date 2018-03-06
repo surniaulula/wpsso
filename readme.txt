@@ -391,7 +391,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.55.1-dev.1 (2018/03/06)**
+**Version 3.55.1-dev.2 (2018/03/06)**
 
 * *New Features*
 	* None
@@ -508,7 +508,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.55.1-dev.1 =
+= 3.55.1-dev.2 =
 
 (2018/03/06) Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`. Added a list of human-readable checked IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
 
