@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
-			return $this->must_be_extended( __METHOD__, $array() );	// return an empty array
+			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
 		}
 
 		public function get_posts_mods( array $mod, $posts_per_page = false, $paged = false ) {
@@ -662,8 +662,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				 */
 				if ( ! empty( $deleted_ids ) && SucomUtil::get_const( 'WP_DEBUG' ) ) {
 
-					$inf_msg .= ' ' . __( 'WP_DEBUG constant is enabled &ndash; showing a list of all checked cache object names:', 'wpsso' ) . "\n";
-
+					$inf_msg .= ' ';
+					$inf_msg .= __( 'WP_DEBUG constant is enabled &ndash; the list of possible cache object names is included:', 'wpsso' ) . "\n";
 					$inf_msg .= '<ol>' . "\n";
 
 					foreach ( $deleted_ids as $type_name => $cache_keys ) {
@@ -1193,11 +1193,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_og_type_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating' ) {
-			return $this->must_be_extended( __METHOD__, $array() );	// return an empty array
+			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
 		}
 
 		public function get_og_review_mt( $comment_obj, $og_type = 'product', $rating_meta = 'rating' ) {
-			return $this->must_be_extended( __METHOD__, $array() );	// return an empty array
+			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
 		}
 
 		// $wp_meta can be a post/term/user meta array or empty / false

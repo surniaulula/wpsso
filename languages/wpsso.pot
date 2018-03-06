@@ -4524,10 +4524,10 @@ msgstr ""
 msgid "%s key(s) cleared from the cache."
 msgstr ""
 
-#: lib/meta.php:665
+#: lib/meta.php:666
 msgid ""
-"WP_DEBUG constant is enabled &ndash; showing a list of all checked cache "
-"object names:"
+"WP_DEBUG constant is enabled &ndash; the list of possible cache object names "
+"is included:"
 msgstr ""
 
 #: lib/meta.php:673

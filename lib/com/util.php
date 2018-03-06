@@ -904,7 +904,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::get_formatted_timezone( $tz_name, 'Z' );
 		}
 
-		private static function get_formatted_array( $array, $idx = false, $add_none = false ) {
+		private static function get_formatted_array( $arr, $idx = false, $add_none = false ) {
 
 			if ( null === $idx ) {
 				/**
@@ -915,18 +915,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				 * Nothing to do.
 				 */
 			} elseif ( true === $idx ) { // Sort by value.
-				asort( $array );
-			} elseif ( isset( $array[$idx] ) ) { // Return a specific dashicon label.
-				return $array[$idx];
+				asort( $arr );
+			} elseif ( isset( $arr[$idx] ) ) { // Return a specific dashicon label.
+				return $arr[$idx];
 			} else {
 				return null;
 			}
 
 			if ( true === $add_none ) {                             // Prefix array with 'none'.
-				$array = array( 'none' => 'none' ) + $array;    // Maintains numeric index.
+				$arr = array( 'none' => 'none' ) + $arr;    // Maintains numeric index.
 			}
 
-			return $array;
+			return $arr;
 		}
 
 		public static function get_currencies( $idx = false, $add_none = false, $format = '%2$s (%1$s)' ) {
@@ -1726,70 +1726,70 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Move an associative array element to the end.
 		 */
-		public static function move_to_end( array &$array, $key ) {
-			if ( array_key_exists( $key, $array ) ) {
-				$val = $array[$key];
-				unset( $array[$key] );
-				$array[$key] = $val;
+		public static function move_to_end( array &$arr, $key ) {
+			if ( array_key_exists( $key, $arr ) ) {
+				$val = $arr[$key];
+				unset( $arr[$key] );
+				$arr[$key] = $val;
 			}
-			return $array;
+			return $arr;
 		}
 
-		public static function move_to_front( array &$array, $key ) {
-			if ( array_key_exists( $key, $array ) ) {
-				$val = $array[$key];
-				$array = array_merge( array( $key => $val ), $array );
+		public static function move_to_front( array &$arr, $key ) {
+			if ( array_key_exists( $key, $arr ) ) {
+				$val = $arr[$key];
+				$arr = array_merge( array( $key => $val ), $arr );
 			}
-			return $array;
+			return $arr;
 		}
 
 		/**
 		 * Returns the modified array.
 		 */
-		public static function get_before_key( array $array, $match_key, $mixed, $add_value = '' ) {
-			return self::insert_in_array( 'before', $array, $match_key, $mixed, $add_value );
+		public static function get_before_key( array $arr, $match_key, $mixed, $add_value = '' ) {
+			return self::insert_in_array( 'before', $arr, $match_key, $mixed, $add_value );
 		}
 
 		/**
 		 * Returns the modified array.
 		 */
-		public static function get_after_key( array $array, $match_key, $mixed, $add_value = '' ) {
-			return self::insert_in_array( 'after', $array, $match_key, $mixed, $add_value );
+		public static function get_after_key( array $arr, $match_key, $mixed, $add_value = '' ) {
+			return self::insert_in_array( 'after', $arr, $match_key, $mixed, $add_value );
 		}
 
 		/**
 		 * returns the modified array.
 		 */
-		public static function get_replace_key( array $array, $match_key, $mixed, $add_value = '' ) {
-			return self::insert_in_array( 'replace', $array, $match_key, $mixed, $add_value );
+		public static function get_replace_key( array $arr, $match_key, $mixed, $add_value = '' ) {
+			return self::insert_in_array( 'replace', $arr, $match_key, $mixed, $add_value );
 		}
 
 		/**
 		 * Modifies the referenced array directly, and returns true or false.
 		 */
-		public static function add_before_key( array &$array, $match_key, $mixed, $add_value = '' ) {
-			return self::insert_in_array( 'before', $array, $match_key, $mixed, $add_value, true ); // $ret_matched = true.
+		public static function add_before_key( array &$arr, $match_key, $mixed, $add_value = '' ) {
+			return self::insert_in_array( 'before', $arr, $match_key, $mixed, $add_value, true ); // $ret_matched = true.
 		}
 
 		/**
 		 * Modifies the referenced array directly, and returns true or false.
 		 */
-		public static function add_after_key( array &$array, $match_key, $mixed, $add_value = '' ) {
-			return self::insert_in_array( 'after', $array, $match_key, $mixed, $add_value, true ); // $ret_matched = true.
+		public static function add_after_key( array &$arr, $match_key, $mixed, $add_value = '' ) {
+			return self::insert_in_array( 'after', $arr, $match_key, $mixed, $add_value, true ); // $ret_matched = true.
 		}
 
 		/**
 		 * Modifies the referenced array directly, and returns true or false.
 		 */
-		public static function do_replace_key( array &$array, $match_key, $mixed, $add_value = '' ) {
-			return self::insert_in_array( 'replace', $array, $match_key, $mixed, $add_value, true ); // $ret_matched = true.
+		public static function do_replace_key( array &$arr, $match_key, $mixed, $add_value = '' ) {
+			return self::insert_in_array( 'replace', $arr, $match_key, $mixed, $add_value, true ); // $ret_matched = true.
 		}
 
-		private static function insert_in_array( $rel_pos, array &$array, $match_key, $mixed, $add_value, $ret_matched = false ) {
+		private static function insert_in_array( $rel_pos, array &$arr, $match_key, $mixed, $add_value, $ret_matched = false ) {
 			$matched = false;
-			if ( array_key_exists( $match_key, $array ) ) {
+			if ( array_key_exists( $match_key, $arr ) ) {
 				$new_array = array();
-				foreach ( $array as $key => $value ) {
+				foreach ( $arr as $key => $value ) {
 					if ( $rel_pos === 'after' ) {
 						$new_array[$key] = $value;
 					}
@@ -1810,10 +1810,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					if ( $rel_pos === 'before' )
 						$new_array[$key] = $value;
 				}
-				$array = $new_array;
+				$arr = $new_array;
 				unset( $new_array );
 			}
-			return $ret_matched ? $matched : $array; // Return true/false or the array (default).
+			return $ret_matched ? $matched : $arr; // Return true/false or the array (default).
 		}
 
 		/**
@@ -1825,9 +1825,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Matching key values in the second array overwrite those in
 		 * the first array, as is the case with array_merge().
 		 */
-		public static function array_merge_recursive_distinct( array &$array1, array &$array2 ) {
-			$merged = $array1;
-			foreach ( $array2 as $key => &$value ) {
+		public static function array_merge_recursive_distinct( array &$arr1, array &$arr2 ) {
+			$merged = $arr1;
+			foreach ( $arr2 as $key => &$value ) {
 				if ( is_array( $value ) && isset( $merged[$key] ) && is_array( $merged[$key] ) ) {
 					$merged[$key] = self::array_merge_recursive_distinct( $merged[$key], $value );
 				} else {
@@ -1837,9 +1837,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $merged;
 		}
 
-		public static function array_flatten( array $array ) {
+		public static function array_flatten( array $arr ) {
 			$return = array();
-		        foreach ( $array as $key => $value ) {
+		        foreach ( $arr as $key => $value ) {
 				if ( is_array( $value ) ) {
 					$return = array_merge( $return, self::array_flatten( $value ) );
 				} else {
@@ -1849,9 +1849,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $return;
 		}
 
-		public static function array_implode( array $array, $glue = ' ' ) {
+		public static function array_implode( array $arr, $glue = ' ' ) {
 			$return = '';
-		        foreach ( $array as $value ) {
+		        foreach ( $arr as $value ) {
 			        if ( is_array( $value ) ) {
 					$return .= self::array_implode( $value, $glue ) . $glue;
 				} else {
@@ -1864,8 +1864,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Array must use unique associative / string keys.
 		 */
-		public static function array_parent_index( array $array, $parent_key = '', $gparent_key = '', &$index = array() ) {
-		        foreach ( $array as $child_key => $value ) {
+		public static function array_parent_index( array $arr, $parent_key = '', $gparent_key = '', &$index = array() ) {
+		        foreach ( $arr as $child_key => $value ) {
 				if ( isset( $index[$child_key] ) ) {
 					$error_msg = sprintf( 'Duplicate child key "%s" = "%s".', $child_key, $index[$child_key] );
 					self::safe_trigger_error( sprintf( '%s warning:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
@@ -1880,8 +1880,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $index;
 		}
 
-		public static function has_array_element( $needle, array $array, $strict = false ) {
-			foreach ( $array as $key => $element ) {
+		public static function has_array_element( $needle, array $arr, $strict = false ) {
+			foreach ( $arr as $key => $element ) {
 				if ( ( $strict ? $element === $needle : $element == $needle ) ||
 					( is_array( $element ) && self::has_array_element( $needle, $element, $strict ) ) ) {
 					return true;
