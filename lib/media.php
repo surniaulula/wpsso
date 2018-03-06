@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( ( is_attachment( $post_id ) || get_post_type( $post_id ) === 'attachment' ) && wp_attachment_is_image( $post_id ) ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'post_type is an attachment - using post_id '.$post_id. ' as the image ID' );
+						$this->p->debug->log( 'post_type is an attachment - using post_id '.$post_id. ' as the image id' );
 					}
 					$pid = $post_id;
 
@@ -339,7 +339,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					return self::reset_image_src_info( $this->p->m['media']['ngg']->get_image_src( $pid, $size_name, $check_dupes ) );
 				} else {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'ngg module is not available: image ID '.$attr_value.' ignored' );
+						$this->p->debug->log( 'ngg module is not available: image id '.$attr_value.' ignored' );
 					}
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 						$this->p->notice->err( sprintf( __( 'The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s.', 'wpsso' ), $this->p->cf['plugin'][$lca]['short'].' Pro', $pid ) );
@@ -387,10 +387,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions missing from image metadata' );
 					}
+
+					$dismiss_key = 'full-size-image-'.$pid.'-dimensions-missing';
+
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
-						$dismiss_key = 'full-size-image-'.$pid.'-dimensions-missing';
+
 						// translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress function name
 						$this->p->notice->err( sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the WordPress %4$s function.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_name ).' '.$regen_msg, true, $dismiss_key, WEEK_IN_SECONDS );
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'admin error notice for missing full size image id '.$pid.' dimensions metadata is ' .
+							( $this->p->notice->is_dismissed( $dismiss_key ) ? 'dismissed' : 'shown (not dismissed)' ) );
 					}
 
 				} else {
@@ -401,10 +409,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'full size image file path meta for '.$pid.' missing from image metadata' );
 					}
+
+					$dismiss_key = 'full-size-image-'.$pid.'-file-path-missing';
+
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
-						$dismiss_key = 'full-size-image-'.$pid.'-file-path-missing';
+
 						// translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress function name
 						$this->p->notice->err( sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the WordPress %4$s function.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_name ).' '.$regen_msg, true, $dismiss_key, WEEK_IN_SECONDS );
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'admin error notice for missing full size image id '.$pid.' file path metadata is ' .
+							( $this->p->notice->is_dismissed( $dismiss_key ) ? 'dismissed' : 'shown (not dismissed)' ) );
 					}
 				}
 			}
@@ -468,8 +484,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 					}
 
-					// depending on cropping, one or both sides of the image must be accurate
-					// if not, attempt to create a resized image by calling image_make_intermediate_size()
+					/**
+					 * Depending on cropping, one or both sides of the image must be accurate.
+					 * If not, attempt to create a resized image by calling image_make_intermediate_size().
+					 */
 					if ( ( ! $img_cropped && ( ! $is_accurate_width && ! $is_accurate_height ) ) ||
 						( $img_cropped && ( ! $is_accurate_width || ! $is_accurate_height ) ) ) {
 
@@ -496,11 +514,28 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									( false === $resized_meta ? 'failure' : 'success' ) );
 							}
 	
-							if ( $resized_meta !== false ) {
+							if ( $resized_meta == false ) {
+
+								$dismiss_key = 'image-make-intermediate-size-'.$filesizepath.'-failure';
+
+								if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
+
+									$media_lib = __( 'Media Library', 'wpsso' );
+									$func_name = 'image_make_intermediate_size()';
+
+									// translators: %1$s is "Media Library" (translated), %2$s is a WordPress function name, %3$s is an image file path
+									$this->p->notice->err( sprintf( __( 'Possible %1$s corruption detected &mdash; the WordPress %2$s function reported an error when trying to create an image size from %3$s.', 'wpsso' ), $media_lib, $func_name, $fullsizepath ), true, $dismiss_key, WEEK_IN_SECONDS );
+
+								} elseif ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'admin error notice for image_make_intermediate_size() from '.$filesizepath.' is ' .
+										( $this->p->notice->is_dismissed( $dismiss_key ) ? 'dismissed' : 'shown (not dismissed)' ) );
+								}
+
+							} else {
 								$img_meta['sizes'][$size_name] = $resized_meta;
 								wp_update_attachment_metadata( $pid, $img_meta );
 							}
-
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'skipped image_make_intermediate_size()' );
 						}
@@ -767,7 +802,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								break;	// stop here
 							}
 
-							// check for image ID in class for old content w/o the data-wp-pid attribute
+							// check for image id in class for old content w/o the data-wp-pid attribute
 							if ( preg_match( '/class="[^"]+ wp-image-([0-9]+)/', $tag_value, $match ) ) {
 								list(
 									$og_single_image['og:image'],
@@ -1127,7 +1162,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/**
-		 * $img_name can be an image ID or URL.
+		 * $img_name can be an image id or URL.
 		 * $src_name can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 		 */
 		public function img_size_within_limits( $img_name, $size_name, $img_width, $img_height, $src_name = '' ) {

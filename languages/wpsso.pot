@@ -2556,7 +2556,8 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:377 lib/media.php:1145 lib/pro/util/checkimgdims.php:85
+#: lib/media.php:377 lib/media.php:523 lib/media.php:1180
+#: lib/pro/util/checkimgdims.php:85
 msgid "Media Library"
 msgstr ""
 
@@ -2569,7 +2570,7 @@ msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
 #. function name
-#: lib/media.php:393
+#: lib/media.php:396
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
@@ -2578,25 +2579,32 @@ msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
 #. function name
-#: lib/media.php:407
+#: lib/media.php:418
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the WordPress %4$s function."
 msgstr ""
 
-#: lib/media.php:833
+#. translators: %1$s is "Media Library" (translated), %2$s is a WordPress function name, %3$s is an image file path
+#: lib/media.php:527
+msgid ""
+"Possible %1$s corruption detected &mdash; the WordPress %2$s function "
+"reported an error when trying to create an image size from %3$s."
+msgstr ""
+
+#: lib/media.php:868
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1218
+#: lib/media.php:1253
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1238
+#: lib/media.php:1273
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -4943,14 +4951,14 @@ msgid ""
 "of %4$s is too small for the required %5$s image dimensions."
 msgstr ""
 
-#: lib/pro/util/checkimgdims.php:156
+#: lib/pro/util/checkimgdims.php:158
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for Media Library images "
 "&mdash; if this image was selected from the Media Library before %1$s was "
 "activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/pro/util/checkimgdims.php:158
+#: lib/pro/util/checkimgdims.php:160
 msgid ""
 "Image %1$s in content ignored &mdash; the image width / height is too small "
 "for the required %2$s image dimensions."
