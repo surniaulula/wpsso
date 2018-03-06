@@ -445,10 +445,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
 			}
 
-			/**
-			 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
-			 * less in length. If using a site transient, it should be 40 characters or less in length.
-			 */
 			$cache_salt  = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
 			$cache_id    = $cache_md5_pre.md5( $cache_salt );
 			$cache_index = $this->get_head_cache_index( $mod, $sharing_url );	// includes locale, url, $wp_query args, etc.

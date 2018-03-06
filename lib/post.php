@@ -980,10 +980,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$cache_types = array();
-			$cache_types['transient'][] = $cache_md5_pre.md5( 'SucomCache::get(url:'.$permalink.')' );
+			$cache_types['transient'][] = array(
+				'id' => $cache_md5_pre.md5( 'SucomCache::get(url:'.$permalink.')' ),
+				'pre' => $cache_md5_pre,
+				'salt' => 'SucomCache::get(url:'.$permalink.')',
+			);
 
 			if ( $permalink !== $check_url ) {
-				$cache_types['transient'][] = $cache_md5_pre.md5( 'SucomCache::get(url:'.$check_url.')' );
+				$cache_types['transient'][] = array(
+					'id' => $cache_md5_pre.md5( 'SucomCache::get(url:'.$check_url.')' ),
+					'pre' => $cache_md5_pre,
+					'salt' => 'SucomCache::get(url:'.$check_url.')',
+				);
 			}
 
 			$this->clear_mod_cache_types( $mod, $cache_types );

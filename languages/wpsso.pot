@@ -2508,19 +2508,19 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/head.php:510
+#: lib/head.php:506
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:522
+#: lib/head.php:518
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:567
+#: lib/head.php:563
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:574
+#: lib/head.php:570
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -4520,11 +4520,11 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:623
+#: lib/meta.php:658
 msgid "%s key(s) cleared from the cache."
 msgstr ""
 
-#: lib/meta.php:666
+#: lib/meta.php:720
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -4745,40 +4745,40 @@ msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
-#: lib/post.php:1020
+#: lib/post.php:1028
 msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1029
+#: lib/post.php:1037
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1030
+#: lib/post.php:1038
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1041
+#: lib/post.php:1049
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1042
+#: lib/post.php:1050
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1043
+#: lib/post.php:1051
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1044
+#: lib/post.php:1052
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1118
+#: lib/post.php:1126
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
