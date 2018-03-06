@@ -2556,7 +2556,7 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:377 lib/media.php:523 lib/media.php:1180
+#: lib/media.php:377 lib/media.php:529 lib/media.php:1189
 #: lib/pro/util/checkimgdims.php:85
 msgid "Media Library"
 msgstr ""
@@ -2579,7 +2579,7 @@ msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
 #. function name
-#: lib/media.php:418
+#: lib/media.php:421
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
@@ -2587,24 +2587,24 @@ msgid ""
 msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is a WordPress function name, %3$s is an image file path
-#: lib/media.php:527
+#: lib/media.php:533
 msgid ""
 "Possible %1$s corruption detected &mdash; the WordPress %2$s function "
 "reported an error when trying to create an image size from %3$s."
 msgstr ""
 
-#: lib/media.php:868
+#: lib/media.php:877
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1253
+#: lib/media.php:1262
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:1273
+#: lib/media.php:1282
 msgid ""
 "%1$s image %2$s ignored &mdash; the resulting image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"

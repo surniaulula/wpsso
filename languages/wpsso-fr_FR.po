@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.55.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-03-06 09:48-0600\n"
-"PO-Revision-Date: 2018-03-06 09:49-0600\n"
+"POT-Creation-Date: 2018-03-06 12:16-0600\n"
+"PO-Revision-Date: 2018-03-06 12:21-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2468,7 +2468,8 @@ msgstr "Fichier de bibliothèque \"%s\" introuvable"
 msgid "The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s."
 msgstr "Le module d'intégration de NextGEN Gallery fourni par %1$s est requis pour lire les informations sur l'image d'ID %2$s."
 
-#: lib/media.php:377 lib/media.php:1145 lib/pro/util/checkimgdims.php:82
+#: lib/media.php:377 lib/media.php:523 lib/media.php:1180
+#: lib/pro/util/checkimgdims.php:85
 msgid "Media Library"
 msgstr "la bibliothèque de médias"
 
@@ -2478,25 +2479,30 @@ msgstr "Vous pouvez régénérer les vignettes de toutes les images WordPress Me
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
 #. function name
-#: lib/media.php:393
+#: lib/media.php:396
 msgid "Possible %1$s corruption detected &mdash; the full size image dimensions for <a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned by the WordPress %4$s function."
 msgstr "Corruption possible de %1$s détecté &mdash; les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la fonction %4$s de WordPress."
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
 #. function name
-#: lib/media.php:407
+#: lib/media.php:418
 msgid "Possible %1$s corruption detected &mdash; the full size image file path for <a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned by the WordPress %4$s function."
 msgstr "Corruption possible de %1$s détecté &mdash; le chemin du fichier d'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> est manquant dans les métadonnées d'image retourné par la fonction %4$s de WordPress."
 
-#: lib/media.php:833
+#. translators: %1$s is "Media Library" (translated), %2$s is a WordPress function name, %3$s is an image file path
+#: lib/media.php:527
+msgid "Possible %1$s corruption detected &mdash; the WordPress %2$s function reported an error when trying to create an image size from %3$s."
+msgstr "Corruption possible de %1$s détecté &mdash; la fonction WordPress %2$s a signalé une erreur lors de la tentative de création d'une taille d'image à partir de %3$s."
+
+#: lib/media.php:868
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1218
+#: lib/media.php:1253
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:1238
+#: lib/media.php:1273
 msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -4202,15 +4208,17 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr "Modifier le profil de %s"
 
-#: lib/pro/media/ngg.php:125 lib/pro/media/ngg.php:1231
+#: lib/pro/media/ngg.php:127 lib/pro/media/ngg.php:1238
 msgid "NextGEN Gallery"
 msgstr "NextGEN Gallery"
 
-#: lib/pro/media/ngg.php:130 lib/pro/util/checkimgdims.php:85
+#: lib/pro/media/ngg.php:132 lib/pro/util/checkimgdims.php:92
 msgid "cropped"
 msgstr "recadrée"
 
-#: lib/pro/media/ngg.php:134
+#. translators: %1$s is "NextGEN Gallery" (translated), %2$s is the image ID, %3$s is the image dimension, %4$s is the required
+#. size name and its dimension
+#: lib/pro/media/ngg.php:135
 msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
 msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
@@ -4232,21 +4240,21 @@ msgstr "L'image avec l'ID %1$s de %2$s ne peut pas être agrandie par %3$s de %4
 msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size."
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
-#: lib/pro/util/checkimgdims.php:66
+#: lib/pro/util/checkimgdims.php:67
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is the image
 #. dimension, %5$s is the required size name and its dimension
-#: lib/pro/util/checkimgdims.php:87
+#: lib/pro/util/checkimgdims.php:95
 msgid "%1$s <a href=\"%2$s\">image ID %3$s</a> ignored &mdash; the resulting image of %4$s is too small for the required %5$s image dimensions."
 msgstr "<a href=\"%2$s\">L'ID d'image %3$s</a> de %1$s a été ignoré &mdash; l'image résultante de %4$s est trop petite pour les dimensions requis par %5$s."
 
-#: lib/pro/util/checkimgdims.php:140
+#: lib/pro/util/checkimgdims.php:158
 msgid "%1$s includes an additional 'data-wp-pid' attribute for Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content."
 msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de la bibliothèque de médias &mdash; si cette image provient de la bibliothèque de médias, et quelle a été inséré au contenu avant que %1$s soit activé, essayez de supprimer et ré-ajouter à nouveau l'image au contenu."
 
-#: lib/pro/util/checkimgdims.php:142
+#: lib/pro/util/checkimgdims.php:160
 msgid "Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions."
 msgstr "L'image %1$s du contenu a été ignoré &mdash; la largeur / hauteur est insuffisante pour les dimensions requis par %2$s."
 
