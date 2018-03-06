@@ -398,7 +398,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Added a list of human-readable checked IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
 * *Bugfixes*
-	* None
+	* Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`.
 * *Developer Notes*
 	* Added a check to show the "Robots" option in the post Publish metabox only if the "meta name robots" meta tag is enabled (note that the "meta name robots" meta tag is disabled automatically if a known SEO plugin is detected).
 
@@ -510,7 +510,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.55.1-dev.1 =
 
-(2018/03/06) Added a list of human-readable checked IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
+(2018/03/06) Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`. Added a list of human-readable checked IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
 
 = 3.55.0 =
 
