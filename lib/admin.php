@@ -389,8 +389,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			global $wp_version;
 
-			if ( ( $menu_lib === 'submenu' || $menu_lib === 'sitesubmenu' ) && 
-				version_compare( $wp_version, 3.8, '>=' ) ) {	// wp v3.8 required for dashicons
+			/**
+			 * WordPress version 3.8 is required for dashicons.
+			 */
+			if ( ( $menu_lib === 'submenu' || $menu_lib === 'sitesubmenu' ) && version_compare( $wp_version, 3.8, '>=' ) ) {
 
 				if ( empty( $this->p->cf['menu']['dashicons'][$menu_id] ) ) {
 					if ( $menu_ext === $this->p->lca ) {
@@ -401,9 +403,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				} else {
 					$dashicon = $this->p->cf['menu']['dashicons'][$menu_id];
 				}
+
 				$css_class = $this->p->lca . '-menu-item' . ( $css_class ? ' ' . $css_class : '' );
 				$menu_title = '<div class="' . $css_class . ' dashicons-before dashicons-' . $dashicon . '"></div>' .
 					'<div class="' . $css_class . '">' . $menu_name . '</div>';
+
 			} else {
 				$menu_title = $menu_name;
 			}
@@ -1724,10 +1728,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'php ' . $php_ext . ' extension is not loaded' );
 					}
-					$this->p->notice->err( sprintf( __( 'The PHP <a href="%1$s">%2$s extension</a> is not loaded.',
-						'wpsso' ), 'https://secure.php.net/manual/en/book.' . $php_ext . '.php', $php_label ) . ' ' .
-					__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.',
-						'wpsso' ) );
+					$this->p->notice->err( sprintf( __( 'The PHP <a href="%1$s">%2$s extension</a> is not loaded.', 'wpsso' ),
+						'https://secure.php.net/manual/en/book.' . $php_ext . '.php', $php_label ) . ' ' .
+					__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
 				}
 			}
 		}
@@ -2295,8 +2298,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+
 				if ( ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) ) {
+
 					$have_ext_tid = true;	// found at least one plugin with an auth id
+
 					/**
 					 * If the update manager is active, the version should be available.
 					 * Skip individual warnings and show nag to install the update manager.

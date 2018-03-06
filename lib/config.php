@@ -1178,6 +1178,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'version_url' => 'http://php.net/supported-versions.php',
 				'extensions' => array(
 					'curl' => 'Client URL Library (cURL)',
+					'imagick' => 'Image Processing (ImageMagick)',
 					'json' => 'JavaScript Object Notation (JSON)',
 					'mbstring' => 'Multibyte String',
 					'simplexml' => 'SimpleXML',
