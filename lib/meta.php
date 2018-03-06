@@ -469,8 +469,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_options( $mod_id, $idx = false, $filter_opts = true ) {
-			return $this->must_be_extended( __METHOD__, 
-				( $idx !== false ? null : array() ) );	// return an empty array or null
+			return $this->must_be_extended( __METHOD__, ( $idx !== false ? null : array() ) );	// return an empty array or null
 		}
 
 		public function get_defaults( $mod_id, $idx = false ) {
@@ -569,11 +568,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function user_can_edit( $mod_id, $rel_id = false ) {
-			$this->must_be_extended( __METHOD__, false );
+			return $this->must_be_extended( __METHOD__, false );	// return false by default
 		}
 
 		public function clear_cache( $mod_id, $rel_id = false ) {
-			$this->must_be_extended( __METHOD__ );
+			return $this->must_be_extended( __METHOD__ );
 		}
 
 		protected function clear_mod_cache_types( array $mod, array $cache_types = array(), $sharing_url = false ) {
@@ -694,16 +693,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		protected function not_implemented( $method, $ret = true ) {
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $method.' not implemented in this version',
-					get_class( $this ) );	// log the extended class name
+				$this->p->debug->log( $method.' not implemented in this version', get_class( $this ) );	// log the extended class name
 			}
 			return $ret;
 		}
 
 		protected function must_be_extended( $method, $ret = true ) {
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $method.' must be extended',
-					get_class( $this ) );	// log the extended class name
+				$this->p->debug->log( $method.' must be extended', get_class( $this ) );	// log the extended class name
 			}
 			return $ret;
 		}

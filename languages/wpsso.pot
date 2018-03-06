@@ -4520,27 +4520,27 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:658
+#: lib/meta.php:657
 msgid "%s key(s) cleared from the cache."
 msgstr ""
 
-#: lib/meta.php:666
+#: lib/meta.php:665
 msgid ""
 "WP_DEBUG constant is enabled &ndash; the list of possible cache object names "
 "is included:"
 msgstr ""
 
-#: lib/meta.php:673
+#: lib/meta.php:672
 msgctxt "clear cache status"
 msgid "cached and cleared successfully"
 msgstr ""
 
-#: lib/meta.php:676
+#: lib/meta.php:675
 msgctxt "clear cache status"
 msgid "not cached"
 msgstr ""
 
-#: lib/meta.php:727
+#: lib/meta.php:724
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
