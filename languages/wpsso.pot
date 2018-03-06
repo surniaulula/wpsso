@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core (Main Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core (Main Plugin) 3.55.1-dev.1\n"
+"Project-Id-Version: WPSSO Core (Main Plugin) 3.55.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2556,7 +2556,7 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:377 lib/media.php:1145 lib/pro/util/checkimgdims.php:82
+#: lib/media.php:377 lib/media.php:1145 lib/pro/util/checkimgdims.php:85
 msgid "Media Library"
 msgstr ""
 
@@ -4532,15 +4532,15 @@ msgstr ""
 
 #: lib/meta.php:672
 msgctxt "clear cache status"
-msgid "cached and cleared successfully"
+msgid "cleared successfully"
 msgstr ""
 
-#: lib/meta.php:675
+#: lib/meta.php:674
 msgctxt "clear cache status"
 msgid "not cached"
 msgstr ""
 
-#: lib/meta.php:724
+#: lib/meta.php:723
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -4892,15 +4892,17 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:125 lib/pro/media/ngg.php:1231
+#: lib/pro/media/ngg.php:127 lib/pro/media/ngg.php:1238
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/pro/media/ngg.php:130 lib/pro/util/checkimgdims.php:85
+#: lib/pro/media/ngg.php:132 lib/pro/util/checkimgdims.php:92
 msgid "cropped"
 msgstr ""
 
-#: lib/pro/media/ngg.php:134
+#. translators: %1$s is "NextGEN Gallery" (translated), %2$s is the image ID, %3$s is the image dimension, %4$s is the required
+#. size name and its dimension
+#: lib/pro/media/ngg.php:135
 msgid ""
 "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small "
 "for the required %4$s image dimensions."
@@ -4929,26 +4931,26 @@ msgid ""
 "%6$s image size."
 msgstr ""
 
-#: lib/pro/util/checkimgdims.php:66
+#: lib/pro/util/checkimgdims.php:67
 msgid "full size original"
 msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is the image
 #. dimension, %5$s is the required size name and its dimension
-#: lib/pro/util/checkimgdims.php:87
+#: lib/pro/util/checkimgdims.php:95
 msgid ""
 "%1$s <a href=\"%2$s\">image ID %3$s</a> ignored &mdash; the resulting image "
 "of %4$s is too small for the required %5$s image dimensions."
 msgstr ""
 
-#: lib/pro/util/checkimgdims.php:140
+#: lib/pro/util/checkimgdims.php:156
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for Media Library images "
 "&mdash; if this image was selected from the Media Library before %1$s was "
 "activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/pro/util/checkimgdims.php:142
+#: lib/pro/util/checkimgdims.php:158
 msgid ""
 "Image %1$s in content ignored &mdash; the image width / height is too small "
 "for the required %2$s image dimensions."

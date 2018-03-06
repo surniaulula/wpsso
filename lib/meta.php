@@ -669,8 +669,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						foreach ( $cache_keys as $key => $ret ) {
 							$inf_msg .= '<li>' . $type_name . ' ' . $key . ' &mdash; ';
 							if ( $ret ) {
-								$inf_msg .= '<strong>' . _x( 'cached and cleared successfully',
-									'clear cache status', 'wpsso' ) . '</strong>';
+								$inf_msg .= '<strong>' . _x( 'cleared successfully', 'clear cache status', 'wpsso' ) . '</strong>';
 							} else {
 								$inf_msg .= _x( 'not cached', 'clear cache status', 'wpsso' );
 							}

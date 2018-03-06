@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.55.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-03-06 08:37-0600\n"
-"PO-Revision-Date: 2018-03-06 08:38-0600\n"
+"POT-Creation-Date: 2018-03-06 09:48-0600\n"
+"PO-Revision-Date: 2018-03-06 09:49-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3889,26 +3889,25 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr "Valider le balisage AMP"
 
-#: lib/meta.php:658
+#: lib/meta.php:657
 msgid "%s key(s) cleared from the cache."
 msgstr "%s clé(s) effacée du cache."
 
-#: lib/meta.php:666
-#, fuzzy
+#: lib/meta.php:665
 msgid "WP_DEBUG constant is enabled &ndash; the list of possible cache object names is included:"
 msgstr "La constante WP_DEBUG est active &ndash; la liste des noms d'objets de cache possibles est incluse:"
 
-#: lib/meta.php:673
+#: lib/meta.php:672
 msgctxt "clear cache status"
-msgid "cached and cleared successfully"
-msgstr "en cache et effacé avec succès"
+msgid "cleared successfully"
+msgstr "effacé avec succès"
 
-#: lib/meta.php:676
+#: lib/meta.php:674
 msgctxt "clear cache status"
 msgid "not cached"
 msgstr "pas en cache"
 
-#: lib/meta.php:727
+#: lib/meta.php:723
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
