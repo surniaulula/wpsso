@@ -391,12 +391,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.55.1-dev.1 (2018/03/05)**
+**Version 3.55.1-dev.1 (2018/03/06)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a list of human-readable checked IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -510,7 +510,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.55.1-dev.1 =
 
-(2018/03/05) Added a check to show the "Robots" option in the post Publish metabox only if the "meta name robots" meta tag is enabled.
+(2018/03/06) Added a list of human-readable checked IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
 
 = 3.55.0 =
 
