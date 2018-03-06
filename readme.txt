@@ -397,10 +397,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* Added a list of human-readable checked IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
+	* Added an error notification when the WordPress `image_make_intermediate_size()` function fails to create an image from the full size image path.
 * *Bugfixes*
 	* Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`.
 * *Developer Notes*
 	* Added a check to show the "Robots" option in the post Publish metabox only if the "meta name robots" meta tag is enabled (note that the "meta name robots" meta tag is disabled automatically if a known SEO plugin is detected).
+	* Added a check for the 'imagick' PHP extension to make sure it's installed and available.
 
 **Version 3.55.0 (2018/03/04)**
 
