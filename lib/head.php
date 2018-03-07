@@ -216,7 +216,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 		}
 
-		// extract certain key fields for display and sanity checks
+		/**
+		 * Extract certain key fields for display and sanity checks.
+		 */
 		public function extract_head_info( array $mod, array $head_mt ) {
 
 			$head_info = array();

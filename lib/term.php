@@ -432,8 +432,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function clear_cache( $term_id, $term_tax_id = false ) {
+
 			$tax = get_term_by( 'term_taxonomy_id', $term_tax_id );
 			$mod = $this->get_mod( $term_id, $tax->slug );
+			$col_meta_keys = WpssoMeta::get_column_meta_keys();
+
+			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+				self::delete_term_meta( $term_id, $meta_key );
+			}
+
 			$this->clear_mod_cache_types( $mod );
 		}
 
@@ -517,7 +524,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 		}
 
-		// called by the WpssoRegister::uninstall_plugin() method
 		public static function delete_term_meta( $term_id, $key_name ) {
 			if ( self::use_meta_table( $term_id ) ) {
 				return delete_term_meta( $term_id, $key_name );	// since wp v4.4

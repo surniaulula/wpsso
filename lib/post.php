@@ -973,6 +973,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$cache_types = array();
 			$cache_md5_pre = $this->p->lca.'_';
 			$permalink = get_permalink( $post_id );
+			$col_meta_keys = WpssoMeta::get_column_meta_keys();
+
+			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+				delete_post_meta( $post_id, $meta_key );
+			}
 
 			if ( ini_get( 'open_basedir' ) ) {
 				$check_url = $this->p->util->get_sharing_url( $post_id, false );	// $add_page = false

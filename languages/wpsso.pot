@@ -2508,19 +2508,19 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/head.php:508
+#: lib/head.php:510
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:520
+#: lib/head.php:522
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:565
+#: lib/head.php:567
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:572
+#: lib/head.php:574
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -4769,40 +4769,40 @@ msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
-#: lib/post.php:1028
+#: lib/post.php:1033
 msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1037
+#: lib/post.php:1042
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1038
+#: lib/post.php:1043
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1049
+#: lib/post.php:1054
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1050
+#: lib/post.php:1055
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1051
+#: lib/post.php:1056
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1052
+#: lib/post.php:1057
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1126
+#: lib/post.php:1131
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -5472,7 +5472,7 @@ msgid ""
 "secs)."
 msgstr ""
 
-#: lib/term.php:456
+#: lib/term.php:463
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -5509,7 +5509,7 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:909
+#: lib/user.php:916
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
