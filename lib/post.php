@@ -970,6 +970,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$mod = $this->get_mod( $post_id );
+			$cache_types = array();
 			$cache_md5_pre = $this->p->lca.'_';
 			$permalink = get_permalink( $post_id );
 
@@ -979,7 +980,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, 'post' );	// $context = post
 			}
 
-			$cache_types = array();
 			$cache_types['transient'][] = array(
 				'id' => $cache_md5_pre.md5( 'SucomCache::get(url:'.$permalink.')' ),
 				'pre' => $cache_md5_pre,
