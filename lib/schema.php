@@ -910,15 +910,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function get_json_array( array &$mod, array &$mt_og, $crawler_name ) {
 
-			/**
-			 * Optimize - Pinterest does not (currently) read json markup.
-			 */
-			switch ( $crawler_name ) {
-				case 'pinterest':
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: '.$crawler_name.' crawler detected' );
-					}
-					return array();
+			if ( ! empty( $this->p->avail['*']['vary_ua'] ) ) {
+				switch ( $crawler_name ) {
+					case 'pinterest':
+						return array();
+				}
 			}
 
 			if ( $this->p->debug->enabled ) {

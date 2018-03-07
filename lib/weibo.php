@@ -25,12 +25,11 @@ if ( ! class_exists( 'WpssoWeibo' ) ) {
 
 		public function get_array( array &$mod, array &$mt_og, $crawler_name ) {
 
-			// pinterest does not read weibo meta tags
-			if ( $crawler_name === 'pinterest' ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: '.$crawler_name.' crawler detected' );
+			if ( ! empty( $this->p->avail['*']['vary_ua'] ) ) {
+				switch ( $crawler_name ) {
+					case 'pinterest':
+						return array();
 				}
-				return array();
 			}
 
 			if ( $this->p->debug->enabled )

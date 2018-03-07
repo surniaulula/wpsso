@@ -660,10 +660,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$this->delete_all_column_meta();
 
 			$short = $this->p->cf['plugin'][$this->p->lca]['short'];
+
 			$clear_all_msg = sprintf( __( '%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared.',
 				'wpsso' ), $short );
 
 			if ( $clear_external ) {
+
 				$external_msg = __( 'The cache for %s has also been cleared.', 'wpsso' );
 
 				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
@@ -687,6 +689,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$clear_all_msg .= ' '.__( 'Site performance may be impacted slightly while all cache objects are rebuilt.', 'wpsso' );
+
 			$this->p->notice->inf( $clear_all_msg, true, $dismiss_key, true );	// can be dismissed depending on args
 		}
 

@@ -573,8 +573,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		// returns an array of urls (or author names for the pinterest crawler)
+		/**
+		 * Returns an array of author website URLs, or author names for the pinterest crawler.
+		 */
 		public function get_og_profile_urls( $user_ids, $crawler_name = false ) {
+
 			$ret = array();
 
 			if ( empty( $user_ids ) ) {
@@ -590,12 +593,20 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			foreach ( $user_ids as $user_id ) {
+
 				if ( empty( $user_id ) ) {
 					continue;
 				}
 
-				if ( $crawler_name === 'pinterest' ) {
-					$value = $this->get_author_meta( $user_id, $this->p->options['p_author_name'] );
+				if ( ! empty( $this->p->avail['*']['vary_ua'] ) ) {
+					switch ( $crawler_name ) {
+						case 'pinterest':
+							$value = $this->get_author_meta( $user_id, $this->p->options['p_author_name'] );
+							break;
+						default:
+							$value = $this->get_author_website( $user_id, $this->p->options['og_author_field'] );
+							break;
+					}
 				} else {
 					$value = $this->get_author_website( $user_id, $this->p->options['og_author_field'] );
 				}

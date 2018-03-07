@@ -206,17 +206,14 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$is_avail = false;
 			switch ( $key ) {
 				case 'featured':
-					$is_avail = function_exists( 'has_post_thumbnail' ) ?
-						true : false;
+					$is_avail = function_exists( 'has_post_thumbnail' ) ? true : false;
 					break;
 				case 'amp':
-					$is_avail = function_exists( 'is_amp_endpoint' ) ?
-						true : false;
+					$is_avail = function_exists( 'is_amp_endpoint' ) ? true : false;
 					break;
 				case 'p_dir':
 					$is_avail = ! SucomUtil::get_const( 'WPSSO_PRO_MODULE_DISABLE' ) &&
-						is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ?
-							true : false;
+						is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ? true : false;
 					break;
 				case 'head_html':
 					$is_avail = ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
@@ -225,8 +222,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								true : false;
 					break;
 				case 'vary_ua':
-					$is_avail = ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ?
-						true : false;
+					$is_avail = ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ? true : false;
 					break;
 			}
 			return $is_avail;
