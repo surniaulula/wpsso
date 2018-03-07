@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>Advanced Meta Tags and Schema Markup for Social Sharing, Google Rich Cards / SEO, Pinterest Rich Pins + More</h3>
+<h1>WPSSO Core</h1><h3>Advanced Meta Tags + Schema Markup for Social Sharing, Google Rich Cards, Pinterest Rich Pins + More</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core (Main Plugin)</td></tr>
