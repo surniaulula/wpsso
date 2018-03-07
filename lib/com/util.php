@@ -1568,7 +1568,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					/**
 					 * "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"
 					 */
-					case ( strpos( $ua, 'facebookexternalhit/' ) === 0 ):
+					case ( strpos( $ua, 'facebookexternalhit/' ) !== false ):
 						self::$cache_crawler_name = 'facebook';
 						break;
 
@@ -1596,36 +1596,36 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					/**
 					 * "Pinterest/0.2 (+http://www.pinterest.com/bot.html)"
 					 */
-					case ( strpos( $ua, 'pinterest/' ) === 0 ):
-					case ( strpos( $ua, 'pinterestbot/' ) === 0 ):
+					case ( strpos( $ua, 'pinterest/' ) !== false ):
+					case ( strpos( $ua, 'pinterestbot/' ) !== false ):
 						self::$cache_crawler_name = 'pinterest';
 						break;
 
 					/**
 					 * "Twitterbot/1.0"
 					 */
-					case ( strpos( $ua, 'twitterbot/' ) === 0 ):
+					case ( strpos( $ua, 'twitterbot/' ) !== false ):
 						self::$cache_crawler_name = 'twitter';
 						break;
 
 					/**
 					 * "W3C_Validator/1.3 http://validator.w3.org/services"
 					 */
-					case ( strpos( $ua, 'w3c_validator/' ) === 0 ):
+					case ( strpos( $ua, 'w3c_validator/' ) !== false ):
 						self::$cache_crawler_name = 'w3c';
 						break;
 
 					/**
 					 * "Validator.nu/LV http://validator.w3.org/services"
 					 */
-					case ( strpos( $ua, 'validator.nu/' ) === 0 ):
+					case ( strpos( $ua, 'validator.nu/' ) !== false ):
 						self::$cache_crawler_name = 'w3c';
 						break;
 
 					/**
 					 * "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MTC19V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.81 Mobile Safari/537.36 (compatible; validator.ampproject.org) AppEngine-Google; (+http://code.google.com/appengine; appid: s~amp-validator)"
 					 */
-					case ( strpos( $ua, 'validator.ampproject.org' ) === 0 ):
+					case ( strpos( $ua, 'validator.ampproject.org' ) !== false ):
 						self::$cache_crawler_name = 'amp';
 						break;
 

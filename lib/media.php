@@ -326,7 +326,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log_args( $args );
 			}
 
-			$lca = $this->p->lca;
 			$size_info = SucomUtil::get_size_info( $size_name );
 			$img_url = '';
 			$img_width = WPSSO_UNDEF_INT;
@@ -342,11 +341,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'ngg module is not available: image id '.$attr_value.' ignored' );
 					}
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-						$this->p->notice->err( sprintf( __( 'The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s.', 'wpsso' ), $this->p->cf['plugin'][$lca]['short'].' Pro', $pid ) );
+						$this->p->notice->err( sprintf( __( 'The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s.', 'wpsso' ), $this->p->cf['plugin'][$this->p->lca]['short'].' Pro', $pid ) );
 					}
 					return self::reset_image_src_info();
 				}
+
 			} elseif ( ! wp_attachment_is_image( $pid ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: attachment '.$pid.' is not an image' );
 				}
@@ -438,7 +439,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$size_name.' ('.$size_info['width'].'x'.$size_info['height'].')' );
 				}
 
-			} elseif ( strpos( $size_name, $lca.'-' ) === 0 ) { // Only resize our own custom image sizes.
+			} elseif ( strpos( $size_name, $this->p->lca.'-' ) === 0 ) { // Only resize our own custom image sizes.
 
 				if ( $force_regen || ! empty( $this->p->options['plugin_create_wp_sizes'] ) ) {
 
@@ -555,7 +556,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			// some image_downsize hooks may return only 3 elements, use array_pad to sanitize the returned array
-			list( $img_url, $img_width, $img_height, $img_intermediate ) = apply_filters( $lca.'_image_downsize',
+			list( $img_url, $img_width, $img_height, $img_intermediate ) = apply_filters( $this->p->lca.'_image_downsize',
 				array_pad( image_downsize( $pid, ( true === $use_full ? 'full' : $size_name ) ), 4, null ), $pid, $size_name );
 
 			if ( $this->p->debug->enabled ) {
@@ -573,7 +574,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_size_within_limits = $this->img_size_within_limits( $pid, $size_name, $img_width, $img_height );
 
 			// 'wpsso_attached_accept_img_dims' is hooked by the WpssoProCheckImgSize class / module.
-			if ( apply_filters( $lca.'_attached_accept_img_dims', $img_size_within_limits, $img_url, $img_width, $img_height, $size_name, $pid ) ) {
+			if ( apply_filters( $this->p->lca.'_attached_accept_img_dims', $img_size_within_limits, $img_url, $img_width, $img_height, $size_name, $pid ) ) {
 
 				if ( ! $check_dupes || $this->p->util->is_uniq_url( $img_url, $size_name ) ) {
 
@@ -581,7 +582,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'applying rewrite_image_url filter for '.$img_url );
 					}
 
-					return self::reset_image_src_info( array( apply_filters( $lca.'_rewrite_image_url',
+					return self::reset_image_src_info( array( apply_filters( $this->p->lca.'_rewrite_image_url',
 						$this->p->util->fix_relative_url( $img_url ) ),	// Just in case.
 							$img_width, $img_height, $img_cropped, $pid ) );
 				}
@@ -1176,12 +1177,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function img_size_within_limits( $img_name, $size_name, $img_width, $img_height, $src_name = '' ) {
 
-			$lca = $this->p->lca;
 			$cf_min = $this->p->cf['head']['limit_min'];
 			$cf_max = $this->p->cf['head']['limit_max'];
 			$img_ratio = 0;
 
-			if ( strpos( $size_name, $lca.'-' ) !== 0 ) {	// only check our own sizes
+			if ( strpos( $size_name, $this->p->lca.'-' ) !== 0 ) {	// only check our own sizes
 				return true;
 			}
 
@@ -1211,21 +1211,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			switch ( $size_name ) {
-				case $lca.'-opengraph':
+				case $this->p->lca.'-opengraph':
 					$std_name = 'Facebook / Open Graph';
 					$min_width = $cf_min['og_img_width'];
 					$min_height = $cf_min['og_img_height'];
 					$max_ratio = $cf_max['og_img_ratio'];
 					break;
 
-				case $lca.'-schema':
+				case $this->p->lca.'-schema':
 					$std_name = 'Google / Schema';
 					$min_width = $cf_min['schema_img_width'];
 					$min_height = $cf_min['schema_img_height'];
 					$max_ratio = $cf_max['schema_img_ratio'];
 					break;
 
-				case $lca.'-schema-article':
+				case $this->p->lca.'-schema-article':
 					$std_name = 'Google / Schema Article';
 					$min_width = $cf_min['schema_article_img_width'];
 					$min_height = $cf_min['schema_article_img_height'];

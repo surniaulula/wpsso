@@ -72,8 +72,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $img_url ) ) {
 
-				$desc_len = $this->p->options['schema_desc_len'];
-				$desc_text = $this->p->page->get_description( $desc_len, '...', $mod, true, false, true, 'schema_desc' );
+				$desc_len  = $this->p->options['schema_desc_len'];
+				$desc_idx  = array( 'schema_desc', 'seo_desc', 'og_desc' );
+				$desc_text = $this->p->page->get_description( $desc_len, '...', $mod, true, false, true, $desc_idx );
 
 				$img_html = "\n" . '<!-- '.$this->p->lca.' schema image for pinterest pin it button -->' . "\n" . 
 					'<div class="'.$this->p->lca.'-schema-image-for-pinterest" style="display:none;">' . "\n" . 
@@ -186,6 +187,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) ||
 				$this->p->options['plugin_head_attr_filter_name'] === 'none' ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head attributes disabled for empty option name' );
 				}
@@ -199,7 +201,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			}
 
-			// returns false when the wpsso-schema-json-ld extension is active
 			if ( ! apply_filters( $this->p->lca.'_add_schema_head_attributes', true ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head attributes disabled by filter' );
@@ -1607,14 +1608,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso = Wpsso::get_instance();
 				$post_id = $opts[$prefix.':id'];
 				$mod = $wpsso->m['util']['post']->get_mod( $post_id );
-				$title_len = $wpsso->options['og_title_len'];
-				$desc_len = $wpsso->options['schema_desc_len'];
 
 				$ret['name'] = $wpsso->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
 				if ( empty( $ret['name'] ) ) {
 					unset( $ret['name'] );
 				}
 
+				$title_len = $wpsso->options['og_title_len'];
 				$ret['alternateName'] = $wpsso->page->get_title( $title_len, '...', $mod, true, false, true, 'schema_title_alt' );
 				if ( empty( $ret['alternateName'] ) ) {
 					unset( $ret['alternateName'] );
@@ -1630,7 +1630,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					unset( $ret['caption'] );
 				}
 
-				$ret['description'] = $wpsso->page->get_description( $desc_len, '...', $mod, true, false, true, 'schema_desc' );
+				$desc_len = $wpsso->options['schema_desc_len'];
+				$desc_idx = array( 'schema_desc', 'seo_desc', 'og_desc' );
+				$ret['description'] = $wpsso->page->get_description( $desc_len, '...', $mod, true, false, true, $desc_idx );
 				if ( empty( $ret['description'] ) ) {
 					unset( $ret['description'] );
 				}
@@ -2549,7 +2551,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$user_mod = $wpsso->m['util']['user']->get_mod( $user_id );
 				}
 
-				$user_desc = $user_mod['obj']->get_options_multi( $user_id, array( 'schema_desc', 'og_desc' ) );
+				$md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' );
+				$user_desc = $user_mod['obj']->get_options_multi( $user_id, $md_idx );
 
 				if ( empty( $user_desc ) ) {
 					$user_desc = $user_mod['obj']->get_author_meta( $user_id, 'description' );
@@ -2824,8 +2827,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) );
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) ) {
-				$mt_schema['description'] = $this->p->page->get_description( $this->p->options['schema_desc_len'],
-					'...', $mod, true, false, true, 'schema_desc' );
+				$desc_len = $this->p->options['schema_desc_len'];
+				$desc_idx = array( 'schema_desc', 'seo_desc', 'og_desc' );
+				$mt_schema['description'] = $this->p->page->get_description( $desc_len, '...', $mod, true, false, true, $desc_idx );
 			}
 
 			switch ( $page_type_url ) {
@@ -3129,7 +3133,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$author_url = $user_mod['obj']->get_author_website( $author_id, 'url' );
 			$author_name = $user_mod['obj']->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
-			$author_desc = $user_mod['obj']->get_options_multi( $author_id, array( 'schema_desc', 'og_desc' ) );
+
+			$desc_idx = array( 'schema_desc', 'seo_desc', 'og_desc' );
+			$author_desc = $user_mod['obj']->get_options_multi( $author_id, $desc_idx );
 
 			if ( empty( $author_desc ) ) {
 				$author_desc = $user_mod['obj']->get_author_meta( $author_id, 'description' );

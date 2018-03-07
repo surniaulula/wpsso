@@ -2412,10 +2412,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			// only check if using the default filter name
+			/**
+			 * Only check if using the default filter name.
+			 */
 			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) ||
-				$this->p->options['plugin_head_attr_filter_name'] !== 'head_attributes' ||
-					! apply_filters( $this->p->lca . '_add_schema_head_attributes', true ) ) {
+				$this->p->options['plugin_head_attr_filter_name'] !== 'head_attributes' ) {
 				return;	// exit early
 			}
 
@@ -2424,15 +2425,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$html_stripped = SucomUtil::get_stripped_php( $tmpl_file );
 
 				if ( empty( $html_stripped ) ) {	// empty string or false
+
 					continue;
+
 				} elseif ( strpos( $html_stripped, '<head>' ) !== false ) {
-					// skip if notices already shown
+
 					if ( $this->p->notice->is_admin_pre_notices() ) {
-						// allow warning to be dismissed until the next theme update
+						$error_msg = $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' );
 						$dismiss_key = 'notice-header-tmpl-no-head-attr-' . SucomUtil::get_theme_slug_version();
-						$this->p->notice->warn( $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' ),
-							true, $dismiss_key, true );	// can be dismissed
+						$this->p->notice->warn( $error_msg, true, $dismiss_key, true );
 					}
+
 					break;
 				}
 			}
@@ -2445,8 +2448,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$head_action_php = '<head <?php do_action( \'add_head_attributes\' ); ?' . '>>';	// breakup closing php for vim
 
 			if ( empty( $header_files ) ) {
-				$this->p->notice->err( __( 'No header templates found in the parent or child theme directories.',
-					'wpsso' ) );
+				$this->p->notice->err( __( 'No header templates found in the parent or child theme directories.', 'wpsso' ) );
 				return;	// exit early
 			}
 
@@ -2459,15 +2461,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 	
 				// double check in case of reloads etc.
 				if ( empty( $html_stripped ) || strpos( $html_stripped, '<head>' ) === false ) {
-					$this->p->notice->err( sprintf( __( 'No %1$s HTML tag found in the %2$s template.',
-						'wpsso' ), '&lt;head&gt;', $tmpl_file ) );
+					$this->p->notice->err( sprintf( __( 'No %1$s HTML tag found in the %2$s template.', 'wpsso' ), '&lt;head&gt;', $tmpl_file ) );
 					continue;
 				}
 
 				// make a backup of the original
 				if ( ! copy( $tmpl_file, $backup_file ) ) {
-					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ),
-						$tmpl_file, $backup_base ) );
+					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ), $tmpl_file, $backup_base ) );
 					continue;
 				}
 
@@ -2475,8 +2475,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$tmpl_contents = str_replace( '<head>', $head_action_php, $tmpl_contents );
 
 				if ( ! $tmpl_fh = @fopen( $tmpl_file, 'wb' ) ) {
-					$this->p->notice->err( sprintf( __( 'Failed to open template file %s for writing.',
-						'wpsso' ), $tmpl_file ) );
+					$this->p->notice->err( sprintf( __( 'Failed to open template file %s for writing.', 'wpsso' ), $tmpl_file ) );
 					continue;
 				}
 

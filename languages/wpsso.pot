@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core (Main Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core (Main Plugin) 3.55.1-dev.2\n"
+"Project-Id-Version: WPSSO Core (Main Plugin) 3.55.1-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -711,15 +711,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin.php:2448
+#: lib/admin.php:2451
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:2462
+#: lib/admin.php:2464
 msgid "No %1$s HTML tag found in the %2$s template."
 msgstr ""
 
-#: lib/admin.php:2469
+#: lib/admin.php:2470
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
@@ -727,162 +727,162 @@ msgstr ""
 msgid "Failed to open template file %s for writing."
 msgstr ""
 
-#: lib/admin.php:2484
+#: lib/admin.php:2483
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:2487
+#: lib/admin.php:2486
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:2504 lib/submenu/essential.php:115
+#: lib/admin.php:2503 lib/submenu/essential.php:115
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2508 lib/submenu/essential.php:119
+#: lib/admin.php:2507 lib/submenu/essential.php:119
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:2513 lib/submenu/general.php:168
+#: lib/admin.php:2512 lib/submenu/general.php:168
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:2516 lib/submenu/general.php:171
+#: lib/admin.php:2515 lib/submenu/general.php:171
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/admin.php:2519
+#: lib/admin.php:2518
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
 
-#: lib/admin.php:2524 lib/submenu/general.php:129 lib/submenu/general.php:318
+#: lib/admin.php:2523 lib/submenu/general.php:129 lib/submenu/general.php:318
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
 
-#: lib/admin.php:2525 lib/submenu/general.php:243 lib/submenu/general.php:320
+#: lib/admin.php:2524 lib/submenu/general.php:243 lib/submenu/general.php:320
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:2528
+#: lib/admin.php:2527
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2540
+#: lib/admin.php:2539
 msgctxt "option label"
 msgid "Item Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:2541
+#: lib/admin.php:2540
 msgctxt "option label"
 msgid "Item Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:2542
+#: lib/admin.php:2541
 msgctxt "option label"
 msgid "Item Type for Archive Page"
 msgstr ""
 
-#: lib/admin.php:2543
+#: lib/admin.php:2542
 msgctxt "option label"
 msgid "Item Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:2544
+#: lib/admin.php:2543
 msgctxt "option label"
 msgid "Item Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:2568
+#: lib/admin.php:2567
 msgctxt "option label"
 msgid "Item Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:2581
+#: lib/admin.php:2580
 msgctxt "option label"
 msgid "Knowledge Graph for Home Page"
 msgstr ""
 
-#: lib/admin.php:2585
+#: lib/admin.php:2584
 msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr ""
 
-#: lib/admin.php:2588
+#: lib/admin.php:2587
 msgid "Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr ""
 
-#: lib/admin.php:2591
+#: lib/admin.php:2590
 msgid "Include <a href=\"%s\">Person Social Profile</a> for the Site Owner"
 msgstr ""
 
-#: lib/admin.php:2597
+#: lib/admin.php:2596
 msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:2605
+#: lib/admin.php:2604
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2610
+#: lib/admin.php:2609
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2618
+#: lib/admin.php:2617
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:2626
+#: lib/admin.php:2625
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:2633
+#: lib/admin.php:2632
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/admin.php:2640
+#: lib/admin.php:2639
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/admin.php:2648
+#: lib/admin.php:2647
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2788
+#: lib/admin.php:2787
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2808
+#: lib/admin.php:2807
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name
-#: lib/admin.php:2828
+#: lib/admin.php:2827
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its "
 "extensions</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL
-#: lib/admin.php:2835
+#: lib/admin.php:2834
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
@@ -2550,18 +2550,18 @@ msgstr ""
 msgid "Library file \"%s\" not found."
 msgstr ""
 
-#: lib/media.php:345
+#: lib/media.php:344
 msgid ""
 "The NextGEN Gallery integration module provided by %1$s is required to read "
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:377 lib/media.php:529 lib/media.php:1189
+#: lib/media.php:378 lib/media.php:530 lib/media.php:1189
 #: lib/pro/util/checkimgdims.php:85
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:380
+#: lib/media.php:381
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
@@ -2570,7 +2570,7 @@ msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
 #. function name
-#: lib/media.php:396
+#: lib/media.php:397
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
@@ -2579,7 +2579,7 @@ msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress
 #. function name
-#: lib/media.php:421
+#: lib/media.php:422
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
@@ -2587,13 +2587,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$s is "Media Library" (translated), %2$s is a WordPress function name, %3$s is an image file path
-#: lib/media.php:533
+#: lib/media.php:534
 msgid ""
 "Possible %1$s corruption detected &mdash; the WordPress %2$s function "
 "reported an error when trying to create an image size from %3$s."
 msgstr ""
 
-#: lib/media.php:877
+#: lib/media.php:878
 msgid "Content"
 msgstr ""
 
@@ -4245,7 +4245,7 @@ msgstr ""
 msgid ""
 "<b>At least one of your theme header templates does not support Schema "
 "markup of the webpage head section</b> &mdash; this is especially important "
-"for Google and Pinterest."
+"for Pinterest (and Google if not using the JSON-LD extension)."
 msgstr ""
 
 #: lib/messages.php:1511
@@ -5001,32 +5001,32 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema.php:94 lib/schema.php:100
+#: lib/schema.php:95 lib/schema.php:101
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:1905
+#: lib/schema.php:1907
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2410
+#: lib/schema.php:2412
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2443
+#: lib/schema.php:2445
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2445
+#: lib/schema.php:2447
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2666
+#: lib/schema.php:2669
 msgid "adding schema for place"
 msgstr ""
 
