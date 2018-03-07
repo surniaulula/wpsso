@@ -391,13 +391,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.55.1-dev.2 (2018/03/06)**
+**Version 3.55.1-b.1 (2018/03/07)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added a list of human-readable checked IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
-	* Added an error notification when the WordPress `image_make_intermediate_size()` function fails to create an image from the full size image path.
+	* Added a list of human-readable checked cache IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
+	* Added an error notification when the WordPress `image_make_intermediate_size()` function fails.
 * *Bugfixes*
 	* Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`.
 * *Developer Notes*
@@ -510,9 +510,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.55.1-dev.2 =
+= 3.55.1-b.1 =
 
-(2018/03/06) Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`. Added a list of human-readable checked IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
+(2018/03/07) Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`. Added a list of human-readable checked IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
 
 = 3.55.0 =
 
