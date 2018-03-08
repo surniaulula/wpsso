@@ -1,4 +1,4 @@
-=== WPSSO Core [Main Plugin] -- Advanced Social and Search Optimization (SMO and SEO) ===
+=== WPSSO Core -- Advanced Social and Search Optimization (SMO and SEO) ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -22,7 +22,7 @@ Automatically create complete meta tags & Schema markup from your content for So
 
 **Automatically create complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and many more.**
 
-WPSSO creates complete and accurate meta tags and Schema markup for Facebook / Open Graph, Twitter Cards, Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and more, including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
+WPSSO creates complete and accurate meta tags and Schema markup for Facebook / Open Graph, Twitter Cards, Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and more &mdash; including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
 
 **WPSSO uses your *existing content* for meta tags and Schema markup** &mdash; there's no need to manually re-enter descriptions, titles, select images / videos, etc. WPSSO reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about everything. ;-)
 
