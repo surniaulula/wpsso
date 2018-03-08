@@ -245,7 +245,10 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				'is_excerpt' => $excerpt,
 				'is_truncated' => $truncated,
 			);
-	
+
+error_log( __METHOD__ );
+error_log( print_r( $r['title'], true ) );
+
 			return $r;
 		}
 	
