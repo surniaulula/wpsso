@@ -1,4 +1,4 @@
-=== WPSSO Core (Main Plugin) -- Social (SMO) and Search (SEO) Optimization ==
+=== WPSSO Core (Main Plugin) -- SMO / SEO / Social and Search Optimization ==
 Plugin Name: WPSSO Core (Main Plugin)
 Plugin Slug: wpsso
 Text Domain: wpsso
