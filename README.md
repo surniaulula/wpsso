@@ -1,8 +1,8 @@
-<h1>WPSSO Core</h1><h3>Advanced Meta Tags + Schema Markup for Social Sharing, Google / SEO, Pinterest Rich Pins + More</h3>
+<h1>WPSSO Core</h1><h3>Social and Search Optimization / SMO / SEO</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core (Main Plugin)</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically create complete meta tags + Schema markup from your content for Social Sharing / Social Media, Google / SEO, Pinterest Rich Pins + more.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically create complete meta tags + Schema markup from your content for Social Sharing / SMO, Google Rich Cards / SEO, Pinterest Rich Pins + mor</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.55.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.4</td></tr>
@@ -15,35 +15,21 @@
 
 <p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-<p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup:</strong></p>
+<p><strong>Automatically create complete meta tags + Schema markup from your content for Social Sharing / SMO, Google Rich Cards / SEO, Pinterest Rich Pins + more.</strong></p>
 
 <p>WPSSO creates complete meta tags and Schema markup for Facebook / Open Graph, Twitter Cards, Google Rich Cards / SEO, Pinterest Rich Pins, and more, including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.</p>
 
-<p><strong>WPSSO uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
+<p>WPSSO uses your <em>existing content</em> for meta tags and Schema markup &mdash; there's no need to manually re-enter descriptions, titles, select images / video URLs, etc. WPSSO reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about everything. ;-)</p>
 
-<p>There's no need to manually re-enter descriptions, titles, select image / video URLs, etc. &mdash; WPSSO reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about everything. ;-)</p>
+<p>WPSSO includes advanced <em>quality control</em> features and options &mdash; WPSSO checks minimum / maximum image dimensions and aspect ratios, verifies the front-end webpage for duplicate meta tags, shows notices for missing and required images, and validates the theme header template.</p>
 
-<p><strong>WPSSO includes advanced <em>quality control</em> features and options:</strong></p>
+<p>WPSSO offers special meta tags and features for Pinterest &mdash; WPSSO provides a specific image for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook Open Graph meta tag values.</p>
 
-<p>WPSSO checks minimum / maximum image dimensions and aspect ratios, verifies the front-end webpage for duplicate meta tags, shows notices for missing and required images, along with validating the theme header template.</p>
+<p>WPSSO can enhance and integrate with your favorite SEO plugin &mdash; WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
 
-<p><strong>WPSSO offers special meta tags and features for Pinterest:</strong></p>
+<p>WPSSO is <em>incredibly fast</em> and coded for performance &mdash; WPSSO Core and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light. WPSSO Core and its extensions are also fully tested and compatible with PHP v7.x (PHP v5.4 or better required).</p>
 
-<p>WPSSO provides a specific image for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook Open Graph meta tag values.</p>
-
-<p><strong>WPSSO can enhance and integrate with your favorite SEO plugin!</strong></p>
-
-<p>WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
-
-<p><strong>WPSSO is <em>incredibly fast</em> and coded for performance:</strong></p>
-
-<p>WPSSO Core and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light.</p>
-
-<p>WPSSO Core and its extensions are fully tested and compatible with PHP v7.x (PHP v5.4 or better required).</p>
-
-<p><strong>Advanced meta tag / Schema JSON-LD filter hooks for developers:</strong></p>
-
-<p>WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the WPSSO Core plugin.</p>
+<p>Advanced meta tag / Schema JSON-LD filter hooks for developers &mdash; WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the WPSSO Core plugin.</p>
 
 <h3>Quick List of Features</h3>
 
