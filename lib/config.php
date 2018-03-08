@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssobc' => array(			// Plugin acronym.
 					'short' => 'WPSSO BC',		// Short plugin name.
-					'name' => 'WPSSO Breadcrumbs Markup',
+					'name' => 'WPSSO Schema Breadcrumbs Markup',
 					'desc' => 'WPSSO Core extension to add JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO).',
 					'slug' => 'wpsso-breadcrumbs',
 					'base' => 'wpsso-breadcrumbs/wpsso-breadcrumbs.php',
@@ -265,7 +265,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoorg' => array(			// Plugin acronym.
 					'short' => 'WPSSO ORG',		// Short plugin name.
 					'name' => 'WPSSO Organization Markup',
-					'desc' => 'WPSSO Core extension to manage Organizations and additional Schema Article / Event properties (Publisher, Organizer, Performer, etc.).',
+					'desc' => 'WPSSO Core extension to manage Organizations and additional Schema markup properties (Organizer, Performer, Publisher, etc.) for Google Rich Cards / Knowledge Graph.',
 					'slug' => 'wpsso-organization',
 					'base' => 'wpsso-organization/wpsso-organization.php',
 					'update_auth' => 'tid',
@@ -475,7 +475,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssotaq' => array(			// Plugin acronym.
 					'short' => 'WPSSO TAQ',		// Short plugin name.
 					'name' => 'WPSSO Tweet a Quote',
-					'desc' => 'WPSSO Core extension to add CSS Twitter-style quoted text with a Tweet share link to post and page content (uses easily customized CSS).',
+					'desc' => 'WPSSO Core extension to add Twitter-style quoted text to your content, with a Tweet link and customizable CSS.',
 					'slug' => 'wpsso-tweet-a-quote',
 					'base' => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
 					'update_auth' => '',
@@ -510,7 +510,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoul' => array(			// Plugin acronym.
 					'short' => 'WPSSO UL',		// Short plugin name.
 					'name' => 'WPSSO User Locale Selector',
-					'desc' => 'WPSSO Core extension to add a user locale / language / region selector in the WordPress admin back-end and front-end toolbar menus.',
+					'desc' => 'WPSSO Core extension to add a user locale (language / region) drop-down menu in the WordPress admin back-end and front-end toolbar.',
 					'slug' => 'wpsso-user-locale',
 					'base' => 'wpsso-user-locale/wpsso-user-locale.php',
 					'update_auth' => '',
