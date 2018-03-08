@@ -1,4 +1,4 @@
-=== WPSSO Core -- Advanced Social and Search Optimization (SMO and SEO) ===
+=== WPSSO Core [Main Plugin] -- Advanced Social and Search Optimization (SMO and SEO) ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -34,7 +34,7 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 
 **WPSSO Core is *incredibly fast* and coded for performance** &mdash; WPSSO Core and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light. WPSSO Core and its extensions are also fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
 
-**Advanced meta tag / Schema JSON-LD markup filter hooks for developers** &mdash; WPSSO Core offers hundreds of filter hooks to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the WPSSO Core plugin.
+**Advanced meta tag / Schema JSON-LD markup filter hooks for developers** &mdash; WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the WPSSO Core plugin.
 
 <h3>Quick List of Features</h3>
 
