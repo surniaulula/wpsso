@@ -4818,11 +4818,11 @@ msgstr ""
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:724
+#: lib/pro/ecom/woocommerce.php:730
 msgid "The WooCommerce <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:727
+#: lib/pro/ecom/woocommerce.php:730
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
