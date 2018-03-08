@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core (Main Plugin) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core (Main Plugin) 3.55.1-b.1\n"
+"Project-Id-Version: WPSSO Core (Main Plugin) 3.55.1-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2508,19 +2508,19 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/head.php:510
+#: lib/head.php:516
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:522
+#: lib/head.php:528
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:567
+#: lib/head.php:573
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:574
+#: lib/head.php:580
 msgid "adding schema json-ld markup"
 msgstr ""
 

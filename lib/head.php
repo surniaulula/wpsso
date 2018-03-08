@@ -187,7 +187,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
-			$read_cache = true;
+			$r_cache = true;
 			$mt_og = array();
 
 			if ( $this->p->debug->enabled ) {
@@ -206,7 +206,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( $add_head_html ) {
-				echo $this->get_head_html( $use_post, $mod, $read_cache, $mt_og );
+				echo $this->get_head_html( $use_post, $mod, $r_cache, $mt_og );
 			} else {
 				echo "\n<!-- " . $this->p->lca . " head html is disabled -->\n";
 			}
@@ -375,7 +375,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $ret;
 		}
 
-		public function get_head_html( $use_post = false, &$mod = false, $read_cache = true, array &$mt_og ) {
+		public function get_head_html( $use_post = false, &$mod = false, $r_cache = true, array &$mt_og ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -394,7 +394,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			// first element of returned array is the html tag
 			$indent = 0;
-			foreach ( $this->get_head_array( $use_post, $mod, $read_cache, $mt_og ) as $mt ) {
+			foreach ( $this->get_head_array( $use_post, $mod, $r_cache, $mt_og ) as $mt ) {
 				if ( ! empty( $mt[0] ) ) {
 					if ( $indent && strpos( $mt[0], '</noscript' ) === 0 ) {
 						$indent = 0;
@@ -413,8 +413,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $html;
 		}
 
-		// $read_cache is false when called by post/term/user load_meta_page() method
-		public function get_head_array( $use_post = false, &$mod = false, $read_cache = true, &$mt_og = array() ) {
+		// $r_cache is false when called by post/term/user load_meta_page() method
+		public function get_head_array( $use_post = false, &$mod = false, $r_cache = true, &$mt_og = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'build head array' );	// begin timer
@@ -465,7 +465,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $cache_exp_secs > 0 ) {
 
-				if ( $read_cache ) {	// false when called by post/term/user load_meta_page() method
+				if ( $r_cache ) {	// false when called by post/term/user load_meta_page() method
 
 					$cache_array = get_transient( $cache_id );
 
@@ -476,8 +476,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								$this->p->debug->mark( 'build head array' );	// end timer
 							}
 							return $cache_array[$cache_index];	// stop here
-						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'cache index is not an array' );
+						} else {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'cache index is not an array' );
+							}
 						}
 					} else {
 						if ( $this->p->debug->enabled ) {
@@ -487,11 +489,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$cache_array = array();
 						}
 					}
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'read cache for head is disabled' );
+				} else {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'read cache for head is disabled' );
+					}
 				}
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'head array transient cache is disabled' );
+			} else {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'head array transient cache is disabled' );
+				}
 			}
 
 			// set a general reference value for admin notices

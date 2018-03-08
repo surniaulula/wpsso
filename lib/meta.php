@@ -847,7 +847,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 		}
 
-		// called from the uninstall static method
 		public static function get_column_meta_keys() { 
 			$meta_keys = array();
 			$sort_cols = self::get_sortable_columns();
@@ -887,6 +886,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					}
 				}
 			}
+
 			return $value;
 		}
 
