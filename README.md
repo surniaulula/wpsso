@@ -120,12 +120,12 @@
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional (and optional) Free extension for WPSSO:</p>
 
 <ul>
-<li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Breadcrumbs Markup</a> &mdash; <em>recommended for best SEO</em></li>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a> &mdash; <em>recommended for best SEO</em></li>
 <li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> &mdash; <em>recommended for best SEO</em></li>
 <li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a></li>

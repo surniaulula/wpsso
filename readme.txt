@@ -118,12 +118,12 @@ WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and o
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional (and optional) Free extension for WPSSO:
 
-* [WPSSO Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) &mdash; *recommended for best SEO*
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/)
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/)
 * [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/)
 * [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/)
 * [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/)
+* [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) &mdash; *recommended for best SEO*
 * [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) &mdash; *recommended for best SEO*
 * [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/)
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata)
