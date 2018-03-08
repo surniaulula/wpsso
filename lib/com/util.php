@@ -3199,9 +3199,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_pkg_name( $name, $type ) {
 			if ( strpos( $name, $type ) !== false ) {
-				$name = preg_replace( '/^(.*) ' . $type . '( \(.+\))?$/U', '$1$2', $name );
+				$name = preg_replace( '/^(.*) ' . $type . '( [\[\(].+[\)\]])?$/U', '$1$2', $name );
 			}
-			return preg_replace( '/^(.*)( \(.+\))?$/U', '$1 ' . $type . '$2', $name );
+			return preg_replace( '/^(.*)( [\[\(].+[\)\]])?$/U', '$1 ' . $type . '$2', $name );
 		}
 
 		public static function get_wp_hook_names( $filter_name ) {

@@ -1625,9 +1625,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * Plugin Name, Description, and Links
 				 */
-				$plugin_name_html = '<strong>' . $info['name'] . '</strong>' .
-					( $ext === $this->p->lca && strpos( $info['name'], '(Main Plugin)' ) === false ?
-						' (' . __( 'Main Plugin', 'wpsso' ) . ')' : '' );
+				$plugin_name_html = '<strong>' . $info['name'] . '</strong>';
 
 				$plugin_desc_html = empty( $info['desc'] ) ?
 					'' : htmlentities( _x( $info['desc'], 'plugin description', 'wpsso' ),
