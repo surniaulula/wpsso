@@ -22,19 +22,19 @@ Automatically create complete meta tags & Schema markup from your content for So
 
 **Automatically create complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and many more.**
 
-WPSSO creates complete and accurate meta tags and Schema markup for Facebook / Open Graph, Twitter Cards, Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and more &mdash; including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
+WPSSO Core creates complete and accurate meta tags and Schema markup for Facebook / Open Graph, Twitter Cards, Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and more &mdash; including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
 
-**WPSSO uses your *existing content* for meta tags and Schema markup** &mdash; there's no need to manually re-enter descriptions, titles, select images / videos, etc. WPSSO reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about everything. ;-)
+**WPSSO Core uses your *existing content* for meta tags and Schema markup** &mdash; there's no need to manually re-enter descriptions, titles, select images / videos, etc. WPSSO Core reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about everything. ;-)
 
-**WPSSO includes advanced *quality control* features and options** &mdash; WPSSO checks minimum / maximum image dimensions and aspect ratios, verifies the front-end webpage for duplicate meta tags, shows notices for missing and required images, and validates theme header templates.
+**WPSSO Core includes advanced *quality control* features and options** &mdash; WPSSO Core checks minimum / maximum image dimensions and aspect ratios, verifies the front-end webpage for duplicate meta tags, shows notices for missing and required images, and validates theme header templates.
 
-**WPSSO offers special meta tags and features for Pinterest** &mdash; WPSSO provides a specific image for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook Open Graph meta tag values.
+**WPSSO Core offers special meta tags and features for Pinterest** &mdash; WPSSO Core provides a specific image for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook Open Graph meta tag values.
 
-**WPSSO can enhance and integrate with your favorite SEO plugin** &mdash; WPSSO specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
+**WPSSO Core can enhance and integrate with your favorite SEO plugin** &mdash; WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
 
-**WPSSO is *incredibly fast* and coded for performance** &mdash; WPSSO Core and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light. WPSSO Core and its extensions are also fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
+**WPSSO Core is *incredibly fast* and coded for performance** &mdash; WPSSO Core and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light. WPSSO Core and its extensions are also fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
 
-**Advanced meta tag / Schema JSON-LD markup filter hooks for developers** &mdash; WPSSO offers hundreds of filter hooks to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the WPSSO Core plugin.
+**Advanced meta tag / Schema JSON-LD markup filter hooks for developers** &mdash; WPSSO Core offers hundreds of filter hooks to easily customize WPSSO's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the WPSSO Core plugin.
 
 <h3>Quick List of Features</h3>
 
@@ -221,7 +221,7 @@ WPSSO creates complete and accurate meta tags and Schema markup for Facebook / O
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-large-image-summary-single.png">
 
-WPSSO detects and uses all images, associated or included in your content, including the WordPress image gallery shortcode and the [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) shortcode. WordPress Media Library images (and NextGEN Gallery images in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, Google / SEO, etc). The Pro version also detects embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube and includes their preview image, video title, and video description in meta tags and Schema markup. The Pro version includes complete support for [NextCellent Gallery – NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/) and [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries, and images (shortcodes, image tags, album / gallery preview images, and more).
+WPSSO Core detects and uses all images, associated or included in your content, including the WordPress image gallery shortcode and the [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) shortcode. WordPress Media Library images (and NextGEN Gallery images in the Pro version) are resized according to their intended consumer (Facebook, Twitter, Pinterest, Google / SEO, etc). The Pro version also detects embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube and includes their preview image, video title, and video description in meta tags and Schema markup. The Pro version includes complete support for [NextCellent Gallery – NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/) and [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/) albums, galleries, and images (shortcodes, image tags, album / gallery preview images, and more).
 
 <h4>Enhanced SEO</h4>
 
@@ -237,7 +237,7 @@ WPSSO Core Pro supports [bbPress](https://wordpress.org/plugins/bbpress/), [Budd
 
 <h3>Professional Support</h3>
 
-WPSSO support and development is on-going. You can review the [FAQ](https://wpsso.com/docs/plugins/wpsso/faqs/?utm_source=wpsso-readme-faqs) and [Notes](https://wpsso.com/docs/plugins/wpsso/notes/?utm_source=wpsso-readme-notes) pages for additional setup information. If you have any suggestions or comments, post them to the [WordPress support forum](https://wordpress.org/support/plugin/wpsso) or the [Pro version support website](http://wpsso.support.wpsso.com/).
+WPSSO Core support and development is on-going. You can review the [FAQ](https://wpsso.com/docs/plugins/wpsso/faqs/?utm_source=wpsso-readme-faqs) and [Notes](https://wpsso.com/docs/plugins/wpsso/notes/?utm_source=wpsso-readme-notes) pages for additional setup information. If you have any suggestions or comments, post them to the [WordPress support forum](https://wordpress.org/support/plugin/wpsso) or the [Pro version support website](http://wpsso.support.wpsso.com/).
 
 Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=author), [Facebook](https://www.facebook.com/SurniaUlulaCom), and [Twitter](https://twitter.com/surniaululacom), and [YouTube](http://www.youtube.com/user/SurniaUlulaCom).
 
@@ -278,8 +278,8 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [How do I fix my theme's front page pagination?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-my-themes-front-page-pagination/)
 * [How do I install the WPSSO Core Pro version?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/)
 * [How do I remove duplicate meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/)
-* [How does WPSSO find / detect / select images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/)
-* [How does WPSSO find / detect / select videos?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/)
+* [How does WPSSO Core find / detect / select images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/)
+* [How does WPSSO Core find / detect / select videos?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/)
 * [W3C says "there is no attribute 'property'"](https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
 * [What about Google Search and Google Plus?](https://wpsso.com/docs/plugins/wpsso/faqs/what-about-google-search-and-google-plus/)
 * [What features of NextGEN Gallery are supported?](https://wpsso.com/docs/plugins/wpsso/faqs/what-features-of-nextgen-gallery-are-supported/)
@@ -341,13 +341,13 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 == Screenshots ==
 
-01. WPSSO can check the front-end webpage for duplicate meta tags, and includes a handy preview feature.
-02. WPSSO also includes a detailed list of the generated meta tags, for the more advanced or curious users.
-03. WPSSO adds optional Schema type and preview columns to the post, page, and custom post type lists (can be hidden/shown globally or per user).
-04. WPSSO provides an Essential settings page for a quick and easy setup, along with more detailed and advanced settings pages.
-05. WPSSO includes Author and Publisher social profile markup in your home page for Google Search and their Knowledge Graph.
-06. WPSSO detects embedded videos in your content and creates video meta tags for Twitter, Facebook, and Google (Pro version required).
-07. WPSSO integrates with several e-Commerce plugins to provide product details for Pinterest, Google, and others (Pro version required).
+01. WPSSO Core can check the front-end webpage for duplicate meta tags, and includes a handy preview feature.
+02. WPSSO Core also includes a detailed list of the generated meta tags, for the more advanced or curious users.
+03. WPSSO Core adds optional Schema type and preview columns to the post, page, and custom post type lists (can be hidden/shown globally or per user).
+04. WPSSO Core provides an Essential settings page for a quick and easy setup, along with more detailed and advanced settings pages.
+05. WPSSO Core includes Author and Publisher social profile markup in your home page for Google Search and their Knowledge Graph.
+06. WPSSO Core detects embedded videos in your content and creates video meta tags for Twitter, Facebook, and Google (Pro version required).
+07. WPSSO Core integrates with several e-Commerce plugins to provide product details for Pinterest, Google, and others (Pro version required).
 
 == Changelog ==
 
@@ -373,7 +373,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Development Updates for Pro Version</h3>
 
-<p>Development, alpha, beta, and release candidate updates are available to WPSSO Core Pro version customers. Under the SSO &gt; Update Manager settings page, you can select the "Development and Up" version filter (for example) for the WPSSO Core plugin and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO version information. When new development versions are available, they can be installed under the Dashboard &gt; Updates page (like any other plugin update). You can also re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
+<p>Development, alpha, beta, and release candidate updates are available to WPSSO Core Pro version customers. Under the SSO &gt; Update Manager settings page, you can select the "Development and Up" version filter (for example) for the WPSSO Core plugin and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO Core version information. When new development versions are available, they can be installed under the Dashboard &gt; Updates page (like any other plugin update). You can also re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
 
