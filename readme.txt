@@ -391,15 +391,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.55.1-b.1 (2018/03/07)**
+**Version 3.55.1-b.2 (2018/03/08)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* Added a list of human-readable checked cache IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
 	* Added an error notification when the WordPress `image_make_intermediate_size()` function fails.
+	* Added a list of human-readable checked cache IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
 * *Bugfixes*
 	* Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`.
+	* Fixed the admin edit page 'SSO Schema' column value not getting refreshed on update.
 * *Developer Notes*
 	* Added a check to show the "Robots" option in the post Publish metabox only if the "meta name robots" meta tag is enabled (note that the "meta name robots" meta tag is disabled automatically if a known SEO plugin is detected).
 	* Added a check for the 'imagick' PHP extension to make sure it's installed and available.
@@ -510,9 +511,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.55.1-b.1 =
+= 3.55.1-b.2 =
 
-(2018/03/07) Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`. Added a list of human-readable checked IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
+(2018/03/08) Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`. Fixed the admin edit page 'SSO Schema' column value not getting refreshed on update.
 
 = 3.55.0 =
 
