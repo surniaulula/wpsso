@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssorrssb' => array(			// Plugin acronym.
 					'short' => 'WPSSO RRSSB',	// Short plugin name.
 					'name' => 'WPSSO Ridiculously Responsive Social Sharing Buttons',
-					'desc' => 'WPSSO Core extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc.',
+					'desc' => 'WPSSO Core extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, post edit pages, etc.',
 					'slug' => 'wpsso-rrssb',
 					'base' => 'wpsso-rrssb/wpsso-rrssb.php',
 					'update_auth' => 'tid',

@@ -157,7 +157,7 @@ _x( 'WordPress Video Shortcode', 'option value', 'wpsso' );
 _x( 'WPSSO Core extension to add a user locale (language / region) drop-down menu in the WordPress admin back-end and front-end toolbar.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to add JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO).', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to add ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Core extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, post edit pages, etc.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to add Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews + many more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to add Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to add Twitter-style quoted text to your content, with a Tweet link and customizable CSS.', 'plugin description', 'wpsso' );

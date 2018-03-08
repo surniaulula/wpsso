@@ -1846,7 +1846,8 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core extension to add Ridiculously Responsive (SVG) Social Sharing "
-"Buttons in your content, excerpts, CSS sidebar, widget, shortcode, etc."
+"Buttons in your content, excerpts, CSS sidebar, widget, shortcode, post edit "
+"pages, etc."
 msgstr ""
 
 #: lib/config-gettext-extract.php:161
