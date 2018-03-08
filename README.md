@@ -1,7 +1,7 @@
 <h1>WPSSO Core [Main Plugin] -- Advanced Social and Search Optimization (SMO and SEO)</h1>
 
 <table>
-<tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core (Main Plugin)</td></tr>
+<tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Automatically create complete meta tags &amp; Schema markup from your content for Social Sharing, Google Rich Cards (SEO), Pinterest Rich Pins + more.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>3.55.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>

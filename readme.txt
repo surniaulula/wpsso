@@ -1,5 +1,5 @@
 === WPSSO Core [Main Plugin] -- Advanced Social and Search Optimization (SMO and SEO) ===
-Plugin Name: WPSSO Core (Main Plugin)
+Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
@@ -377,7 +377,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.55.1-b.2 (2018/03/08)**
+**Version 3.55.1-b.3 (2018/03/08)**
 
 * *New Features*
 	* None
@@ -387,6 +387,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`.
 	* Fixed the admin edit page 'SSO Schema' column value not getting refreshed on update.
+	* Fixed the WooCommerce wc_format_decimal() call to use the default number of decimals.
 * *Developer Notes*
 	* Added a check to show the "Robots" option in the post Publish metabox only if the "meta name robots" meta tag is enabled (note that the "meta name robots" meta tag is disabled automatically if a known SEO plugin is detected).
 	* Added a check for the 'imagick' PHP extension to make sure it's installed and available.
@@ -497,7 +498,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.55.1-b.2 =
+= 3.55.1-b.3 =
 
 (2018/03/08) Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`. Fixed the admin edit page 'SSO Schema' column value not getting refreshed on update.
 
