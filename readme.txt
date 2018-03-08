@@ -1,4 +1,4 @@
-=== WPSSO Core (Main Plugin) -- Social and Search Optimization ==
+=== WPSSO Core (Main Plugin) -- Social (SMO) and Search (SEO) Optimization ==
 Plugin Name: WPSSO Core (Main Plugin)
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -22,11 +22,11 @@ Automatically create complete meta tags & Schema markup from your content for So
 
 **Automatically create complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards (SEO), Pinterest Rich Pins, and many more.**
 
-WPSSO creates complete meta tags and Schema markup for Facebook / Open Graph, Twitter Cards, Google Rich Cards / SEO, Pinterest Rich Pins, and more, including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
+WPSSO creates complete and accurate meta tags and Schema markup for Facebook / Open Graph, Twitter Cards, Google Rich Cards / SEO, Pinterest Rich Pins, and more, including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
 
-**WPSSO uses your *existing content* for meta tags and Schema markup** &mdash; there's no need to manually re-enter descriptions, titles, select images / video URLs, etc. WPSSO reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about everything. ;-)
+**WPSSO uses your *existing content* for meta tags and Schema markup** &mdash; there's no need to manually re-enter descriptions, titles, select images / videos, etc. WPSSO reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about everything. ;-)
 
-**WPSSO includes advanced *quality control* features and options** &mdash; WPSSO checks minimum / maximum image dimensions and aspect ratios, verifies the front-end webpage for duplicate meta tags, shows notices for missing and required images, and validates the theme header template.
+**WPSSO includes advanced *quality control* features and options** &mdash; WPSSO checks minimum / maximum image dimensions and aspect ratios, verifies the front-end webpage for duplicate meta tags, shows notices for missing and required images, and validates theme header templates.
 
 **WPSSO offers special meta tags and features for Pinterest** &mdash; WPSSO provides a specific image for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook Open Graph meta tag values.
 
