@@ -1084,8 +1084,8 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "Automatically create complete meta tags and Schema markup from your content "
-"for Social Sharing (SMO), Google Rich Cards (SEO), Pinterest Rich Pins, and "
-"many more."
+"for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), "
+"Pinterest Rich Pins, and many more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:12
@@ -1862,8 +1862,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:163
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core extension to add Twitter-style quoted text to your content, with "
-"a Tweet link and customizable CSS."
+"WPSSO Core extension to add Twitter-style quoted text to your content with a "
+"Tweet share link and customizable CSS."
 msgstr ""
 
 #: lib/config-gettext-extract.php:164
@@ -5640,9 +5640,9 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Automatically create complete meta tags + Schema markup from your existing "
-"content for Social Sharing / Social Media, Google / SEO, Pinterest Rich Pins "
-"+ more."
+"Automatically create complete meta tags and Schema markup from your content "
+"for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), "
+"Pinterest Rich Pins, and many more."
 msgstr ""
 
 #. Author of the plugin/theme

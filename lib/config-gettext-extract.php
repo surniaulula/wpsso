@@ -8,7 +8,7 @@ _x( 'All WP Objects', 'option label', 'wpsso' );
 _x( 'Alpha and Up', 'option value', 'wpsso' );
 _x( 'Article Topics', 'option label', 'wpsso' );
 _x( 'at', 'option value', 'wpsso' );
-_x( 'Automatically create complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards (SEO), Pinterest Rich Pins, and many more.', 'plugin description', 'wpsso' );
+_x( 'Automatically create complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and many more.', 'plugin description', 'wpsso' );
 _x( 'Basic Options', 'option value', 'wpsso' );
 _x( 'Beta and Up', 'option value', 'wpsso' );
 _x( 'Bitly (suggested)', 'option value', 'wpsso' );
@@ -160,7 +160,7 @@ _x( 'WPSSO Core extension to add ratings and reviews for WordPress comments, wit
 _x( 'WPSSO Core extension to add Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, post edit pages, etc.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to add Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews + many more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to add Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Core extension to add Twitter-style quoted text to your content, with a Tweet link and customizable CSS.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core extension to add Twitter-style quoted text to your content with a Tweet share link and customizable CSS.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to manage Organizations and additional Schema markup properties (Organizer, Performer, Publisher, etc.) for Google Rich Cards / Knowledge Graph.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to provide Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core extension to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business, and Local SEO meta tags.', 'plugin description', 'wpsso' );

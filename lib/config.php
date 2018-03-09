@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'opt_version' => '576',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
-					'desc' => 'Automatically create complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards (SEO), Pinterest Rich Pins, and many more.',
+					'desc' => 'Automatically create complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and many more.',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
@@ -475,7 +475,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssotaq' => array(			// Plugin acronym.
 					'short' => 'WPSSO TAQ',		// Short plugin name.
 					'name' => 'WPSSO Tweet a Quote',
-					'desc' => 'WPSSO Core extension to add Twitter-style quoted text to your content, with a Tweet link and customizable CSS.',
+					'desc' => 'WPSSO Core extension to add Twitter-style quoted text to your content with a Tweet share link and customizable CSS.',
 					'slug' => 'wpsso-tweet-a-quote',
 					'base' => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
 					'update_auth' => '',
