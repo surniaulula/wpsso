@@ -1,4 +1,4 @@
-<h1>WPSSO Core [Main Plugin] -- Advanced Meta Tags and Schema (SEO) Markup</h1>
+<h1>WPSSO Core [Main Plugin] -- Advanced Social Meta Tags and Schema (SEO) Markup</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
