@@ -1,4 +1,4 @@
-=== WPSSO Core [Main Plugin] -- Advanced Social and Search Optimization (SMO and SEO) ===
+=== WPSSO Core [Main Plugin] -- Advanced Meta Tags and Schema Markup for Social and Search (SEO) Optimization ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -28,7 +28,7 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 
 **WPSSO Core includes advanced *quality control* features and options** &mdash; WPSSO Core checks minimum / maximum image dimensions and aspect ratios, verifies the front-end webpage for duplicate meta tags, shows notices for missing and required images, and validates theme header templates.
 
-**WPSSO Core offers special meta tags and features for Pinterest** &mdash; WPSSO Core provides a specific image for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook Open Graph meta tag values.
+**WPSSO Core offers special meta tags and features for Pinterest** &mdash; WPSSO Core provides a specific image for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook / Open Graph meta tag values.
 
 **WPSSO Core can enhance and integrate with your favorite SEO plugin** &mdash; WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
 
@@ -40,7 +40,7 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 
 <h4>WPSSO Core Free / Standard Features</h4>
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Automatically creates complete Open Graph meta tags for Facebook, Google Plus / SEO / Rich Card, Pinterest Rich Pin, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Automatically creates complete meta tags for Facebook / Open Graph, Google Plus / SEO / Rich Card, Pinterest Rich Pin, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search / SEO.
 
@@ -63,7 +63,7 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Finds images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable title and description maximum lengths (Open Graph, Twitter Card, SEO), including both hard and soft limits.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable title and description maximum lengths (Facebook / Open Graph, Twitter Card, SEO), including both hard and soft limits.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable title separator character (hyphen by default).
 
@@ -84,7 +84,7 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 * Twitter Business @username
 * YouTube Business Channel URL
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; User profile contact fields for Open Graph, Twitter Card, Schema markup, and Google's Knowledge Graph:
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; User profile contact fields for Facebook / Open Graph, Twitter Card, Schema markup, and Google's Knowledge Graph:
 
 * Facebook URL
 * Google+ URL
@@ -102,7 +102,7 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Supports WordPress Network / Multisite installations and WordPress MU Domain Mapping.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional (and optional) Free extension for WPSSO:
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional (and optional) Free extension for WPSSO Core:
 
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/)
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/)
@@ -124,7 +124,7 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 
 <img class="readme-example" src="https://surniaulula.github.io/wpsso/images/social/twitter-player-card-single.png">
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Includes a Social and Search Optimization metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social and Search Optimization metabox allows you to customize the article topic, the shared title, the Open Graph / Facebook / Rich Pins / Google Rich Cards / SEO / Twitter Card descriptions, along with the shared image and/or video.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Includes a Social and Search Optimization metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages &mdash; the Social and Search Optimization metabox allows you to customize the article topic, the shared title, the Facebook / Open Graph / Rich Pins / Google Rich Cards / SEO / Twitter Card descriptions, along with the shared image and/or video.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Optionally validate all image minimum / maximum dimensions and aspect ratios.
 
@@ -225,7 +225,7 @@ WPSSO Core detects and uses all images, associated or included in your content, 
 
 <h4>Enhanced SEO</h4>
 
-WPSSO Core Pro integrates with [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/), [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/), [The SEO Framework](https://wordpress.org/plugins/autodescription/), [WP Meta SEO](https://wordpress.org/plugins/wp-meta-seo/), and [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Open Graph, Rich Pin, Schema Structured Data, and Twitter Card meta tags.
+WPSSO Core Pro integrates with [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/), [HeadSpace2 SEO](https://wordpress.org/plugins/headspace2/), [The SEO Framework](https://wordpress.org/plugins/autodescription/), [WP Meta SEO](https://wordpress.org/plugins/wp-meta-seo/), and [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO) &mdash; making sure your custom SEO settings are reflected in the Facebook / Open Graph, Rich Pin, Schema Structured Data, and Twitter Card meta tags.
 
 <h4>eCommerce Products</h4>
 
@@ -283,7 +283,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [W3C says "there is no attribute 'property'"](https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
 * [What about Google Search and Google Plus?](https://wpsso.com/docs/plugins/wpsso/faqs/what-about-google-search-and-google-plus/)
 * [What features of NextGEN Gallery are supported?](https://wpsso.com/docs/plugins/wpsso/faqs/what-features-of-nextgen-gallery-are-supported/)
-* [What is the difference between NextGEN Facebook and WPSSO?](https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-ngfb-and-wpsso/)
+* [What is the difference between NextGEN Facebook and WPSSO Core?](https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-ngfb-and-wpsso/)
 * [What is the difference between the Free and Pro versions?](https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-the-free-and-pro-versions/)
 * [Why are some HTML elements missing / misaligned / different?](https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/)
 * [Why does Facebook play videos instead of linking them?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-play-videos-instead-of-linking-them/)
@@ -330,7 +330,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 		* [Filters by Category](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/)
 			* [Head Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/head/)
 			* [Media Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/media/)
-			* [Open Graph Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/open-graph/)
+			* [Facebook / Open Graph Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/open-graph/)
 			* [Twitter Card Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/twitter-card/)
 			* [Webpage Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/webpage/)
 		* [Other Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/other/)
@@ -377,7 +377,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.55.1-b.3 (2018/03/08)**
+**Version 3.55.1-rc.1 (2018/03/09)**
 
 * *New Features*
 	* None
@@ -387,7 +387,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`.
 	* Fixed the admin edit page 'SSO Schema' column value not getting refreshed on update.
-	* Fixed the WooCommerce wc_format_decimal() call to use the default number of decimals.
+	* Fixed the WooCommerce `wc_format_decimal()` call to use the default number of decimals (Pro version).
 * *Developer Notes*
 	* Added a check to show the "Robots" option in the post Publish metabox only if the "meta name robots" meta tag is enabled (note that the "meta name robots" meta tag is disabled automatically if a known SEO plugin is detected).
 	* Added a check for the 'imagick' PHP extension to make sure it's installed and available.
@@ -498,9 +498,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.55.1-b.3 =
+= 3.55.1-rc.1 =
 
-(2018/03/08) Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`. Fixed the admin edit page 'SSO Schema' column value not getting refreshed on update.
+(2018/03/09) Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`. Fixed the admin edit page 'SSO Schema' column value not getting refreshed on update. Fixed the WooCommerce `wc_format_decimal()` call to use the default number of decimals (Pro version).
 
 = 3.55.0 =
 
