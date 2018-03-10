@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.55.1-rc.1',		// Plugin version.
+					'version' => '3.55.1-rc.2',		// Plugin version.
 					'opt_version' => '576',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -1177,11 +1177,30 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'rec_version' => '5.6',		// soft limit - issue warning if lower version found
 				'version_url' => 'http://php.net/supported-versions.php',
 				'extensions' => array(
-					'curl' => 'Client URL Library (cURL)',
-					'imagick' => 'Image Processing (ImageMagick)',
-					'json' => 'JavaScript Object Notation (JSON)',
-					'mbstring' => 'Multibyte String',
-					'simplexml' => 'SimpleXML',
+					'curl' => array(
+						'label' => 'Client URL Library (cURL)',
+						'url' => 'https://secure.php.net/manual/en/book.curl.php',
+					),
+					'gd' => array(
+						'label' => 'Image Processing (GD)',
+						'url' => 'https://secure.php.net/manual/en/book.image.php',
+					),
+					'imagick' => array(
+						'label' => 'Image Processing (ImageMagick)',
+						'url' => 'https://secure.php.net/manual/en/book.imagick.php',
+					),
+					'json' => array(
+						'label' => 'JavaScript Object Notation (JSON)',
+						'url' => 'https://secure.php.net/manual/en/book.json.php',
+					),
+					'mbstring' => array(
+						'label' => 'Multibyte String',
+						'url' => 'https://secure.php.net/manual/en/book.mbstring.php',
+					),
+					'simplexml' => array(
+						'label' => 'SimpleXML',
+						'url' => 'https://secure.php.net/manual/en/book.simplexml.php',
+					),
 				),
 			),
 			'wp' => array(				// WordPress

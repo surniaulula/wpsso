@@ -1721,13 +1721,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		private function conflict_check_php() {
-			foreach ( $this->p->cf['php']['extensions'] as $php_ext => $php_label ) {
+
+			$editors = array( 'WP_Image_Editor_Imagick', 'WP_Image_Editor_GD' );
+			$implementations = apply_filters( 'wp_image_editors', $editors );
+			$extensions = $this->p->cf['php']['extensions'];
+
+			foreach ( $editors as $class_name ) {
+				if ( ! in_array( $class_name, $implementations ) ) {
+					switch ( $class_name ) {
+						case 'WP_Image_Editor_Imagick':
+							unset ( $extensions['imagick'] );
+							break;
+						case 'WP_Image_Editor_GD':
+							unset ( $extensions['gd'] );
+							break;
+					}
+				}
+			}
+
+			foreach ( $extensions as $php_ext => $php_info ) {
 				if ( ! extension_loaded( $php_ext ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'php ' . $php_ext . ' extension is not loaded' );
 					}
 					$this->p->notice->err( sprintf( __( 'The PHP <a href="%1$s">%2$s extension</a> is not loaded.', 'wpsso' ),
-						'https://secure.php.net/manual/en/book.' . $php_ext . '.php', $php_label ) . ' ' .
+						$php_info['url'], $php_info['label'] ) . ' ' .
 					__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
 				}
 			}
