@@ -2078,7 +2078,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'winery' => 'https://schema.org/Winery',
 								),
 								'government.office' => 'https://schema.org/GovernmentOffice',
-								'health.and.beauty.business' => 'https://schema.org/HealthAndBeautyBusiness',
+								'health.and.beauty.business' => array(
+									'beauty.salon' => 'https://schema.org/BeautySalon',
+									'day.spa' => 'https://schema.org/DaySpa',
+									'health.and.beauty.business' => 'https://schema.org/HealthAndBeautyBusiness',
+									'hair.salon' => 'https://schema.org/HairSalon',
+									'health.club' => 'https://schema.org/HealthClub',
+									'nail.salon' => 'https://schema.org/NailSalon',
+									'tattoo.parlor' => 'https://schema.org/TattooParlor',
+								),
 								'home.and.construction.business' => array(
 									'electrician' => 'https://schema.org/Electrician',
 									'general.contractor' => 'https://schema.org/GeneralContractor',
