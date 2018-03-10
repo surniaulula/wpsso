@@ -333,7 +333,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( $md_opts[$md_idx] === 'none' ) {
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $md_idx.' option value is "none" - unsetting the '.$mt_name.' meta tag' );
+								$this->p->debug->log( $md_idx.' option is "none" - unsetting '.$mt_name.' meta tag' );
 							}
 							unset( $mt_og[$mt_name] );
 						} else {
