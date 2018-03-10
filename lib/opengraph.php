@@ -316,27 +316,38 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'checking og_type_mt array for known meta tags and md options' );
 			}
+
 			if ( isset( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] ) ) {	// check if og:type is in config
 
-				// optimize and call get_options() only once
-				// returns an empty string if no meta found
+				/**
+				 * Optimize and call get_options() only once. Returns an empty string if no meta found.
+				 */
 				$md_opts = empty( $mod['obj'] ) ? array() : (array) $mod['obj']->get_options( $mod['id'] );
 
 				foreach( $this->p->cf['head']['og_type_mt'][$mt_og['og:type']] as $mt_name => $md_idx ) {
 
-					if ( $md_idx && isset( $md_opts[$md_idx] ) && $md_opts[$md_idx] !== '' ) {	// use custom value if available
+					/**
+					 * Use a custom value if one is available - ignore empty strings and 'none'.
+					 */
+					if ( $md_idx && isset( $md_opts[$md_idx] ) && $md_opts[$md_idx] !== '' && $md_opts[$md_idx] !== 'none' ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' value from option = '.$md_opts[$md_idx] );
 						}
+
 						$mt_og[$mt_name] = $md_opts[$md_idx];
+
 					} elseif ( isset( $mt_og[$mt_name] ) ) {	// if the meta tag has not already been set
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' original value kept = '.$mt_og[$mt_name] );
 						}
+
 					} else {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' pre-defined as null' );
 						}
+
 						$mt_og[$mt_name] = null;	// use null so isset() returns false
 					}
 				}
