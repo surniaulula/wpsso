@@ -2349,15 +2349,15 @@ msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:102 lib/gpl/admin/post.php:166
-#: lib/pro/admin/meta.php:123 lib/pro/admin/post.php:188
+#: lib/gpl/admin/meta.php:102 lib/gpl/admin/post.php:165
+#: lib/pro/admin/meta.php:123 lib/pro/admin/post.php:187
 #: lib/submenu/general.php:250
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:105 lib/gpl/admin/post.php:170
-#: lib/pro/admin/meta.php:126 lib/pro/admin/post.php:192
+#: lib/gpl/admin/meta.php:105 lib/gpl/admin/post.php:169
+#: lib/pro/admin/meta.php:126 lib/pro/admin/post.php:191
 msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
@@ -2471,23 +2471,23 @@ msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gpl/admin/post.php:144 lib/messages.php:671 lib/pro/admin/post.php:166
+#: lib/gpl/admin/post.php:143 lib/messages.php:671 lib/pro/admin/post.php:165
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gpl/admin/post.php:151 lib/messages.php:681 lib/pro/admin/post.php:173
+#: lib/gpl/admin/post.php:150 lib/messages.php:681 lib/pro/admin/post.php:172
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gpl/admin/post.php:158 lib/messages.php:692 lib/pro/admin/post.php:180
+#: lib/gpl/admin/post.php:157 lib/messages.php:692 lib/pro/admin/post.php:179
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:176 lib/meta.php:212 lib/post.php:905
-#: lib/pro/admin/post.php:198
+#: lib/gpl/admin/post.php:175 lib/meta.php:212 lib/post.php:905
+#: lib/pro/admin/post.php:197
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -4810,19 +4810,19 @@ msgid ""
 "plugin was detected)."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:551
+#: lib/pro/ecom/woocommerce.php:558
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:553
+#: lib/pro/ecom/woocommerce.php:560
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:731
+#: lib/pro/ecom/woocommerce.php:737
 msgid "The WooCommerce <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:731
+#: lib/pro/ecom/woocommerce.php:737
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 

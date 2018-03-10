@@ -136,8 +136,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				$form_rows['product_condition'] = array(
 					'label' => _x( 'Product Condition', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_condition', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'product_condition',
-						$this->p->cf['form']['item_condition'] ),
+					'content' => $form->get_no_select( 'product_condition', $this->p->cf['form']['item_condition'] ),
 				);
 
 				$form_rows['product_material'] = array(
