@@ -377,7 +377,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.55.1-rc.1 (2018/03/09)**
+**Version 3.55.1-rc.2 (2018/03/09)**
 
 * *New Features*
 	* None
@@ -498,7 +498,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.55.1-rc.1 =
+= 3.55.1-rc.2 =
 
 (2018/03/09) Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`. Fixed the admin edit page 'SSO Schema' column value not getting refreshed on update. Fixed the WooCommerce `wc_format_decimal()` call to use the default number of decimals (Pro version).
 
