@@ -1726,6 +1726,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$implementations = apply_filters( 'wp_image_editors', $editors );
 			$extensions = $this->p->cf['php']['extensions'];
 
+			/**
+			 * Only check for PHP image extensions that WordPress is actually using. :)
+			 */
 			foreach ( $editors as $class_name ) {
 				if ( ! in_array( $class_name, $implementations ) ) {
 					switch ( $class_name ) {
