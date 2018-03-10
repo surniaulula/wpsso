@@ -329,13 +329,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					/**
 					 * Use a custom value if one is available - ignore empty strings and 'none'.
 					 */
-					if ( $md_idx && isset( $md_opts[$md_idx] ) && $md_opts[$md_idx] !== '' && $md_opts[$md_idx] !== 'none' ) {
+					if ( $md_idx && isset( $md_opts[$md_idx] ) && $md_opts[$md_idx] !== '' ) {
 
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' value from option = '.$md_opts[$md_idx] );
+						if ( $md_opts[$md_idx] === 'none' ) {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( $md_idx.' option value is "none" - unsetting the '.$mt_name.' meta tag' );
+							}
+							unset( $mt_og[$mt_name] );
+						} else {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' value from option = '.$md_opts[$md_idx] );
+							}
+							$mt_og[$mt_name] = $md_opts[$md_idx];
 						}
-
-						$mt_og[$mt_name] = $md_opts[$md_idx];
 
 					} elseif ( isset( $mt_og[$mt_name] ) ) {	// if the meta tag has not already been set
 
@@ -345,7 +351,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					} else {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' pre-defined as null' );
+							$this->p->debug->log( $mt_og['og:type'].' meta tag '.$mt_name.' missing and defined as null' );
 						}
 
 						$mt_og[$mt_name] = null;	// use null so isset() returns false

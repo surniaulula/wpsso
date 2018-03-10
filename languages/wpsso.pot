@@ -4810,19 +4810,19 @@ msgid ""
 "plugin was detected)."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:571
+#: lib/pro/ecom/woocommerce.php:584
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:573
+#: lib/pro/ecom/woocommerce.php:586
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:753
+#: lib/pro/ecom/woocommerce.php:765
 msgid "The WooCommerce <a href=\"%1$s\">%2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:753
+#: lib/pro/ecom/woocommerce.php:765
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
