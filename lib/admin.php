@@ -1752,7 +1752,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $extensions as $php_ext => $php_info ) {
 				if ( ! extension_loaded( $php_ext ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'php ' . $php_ext . ' extension is not loaded' );
+						$this->p->debug->log( 'php ' . $php_ext . ' extension module is not loaded' );
 					}
 					$func_name = 'extension_loaded()';
 					// translators: %1$s is a URL, %2$s is the extension name, $3%s is a function name, %4$s is a PHP module name
