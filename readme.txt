@@ -377,6 +377,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.55.2 (2018/03/11)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fix to prevent triggering a bug in the EWWW plugin, which requires the WordPress image library files to be loaded before using the 'wp_image_editors' filter.
+* *Developer Notes*
+	* None
+
 **Version 3.55.1 (2018/03/10)**
 
 * *New Features*
@@ -497,6 +508,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 
 == Upgrade Notice ==
+
+= 3.55.2 =
+
+(2018/03/11) Fix to prevent triggering a bug in the EWWW plugin, which requires the WordPress image library files to be loaded before using the 'wp_image_editors' filter.
 
 = 3.55.1 =
 
