@@ -1723,7 +1723,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private function conflict_check_php() {
 
 			/**
-			 * Load the WP class libraries to avoid triggering a known bug in EWWW.
+			 * Load the WP class libraries to avoid triggering a known bug in EWWW
+			 * when applying the 'wp_image_editors' filter.
 			 */
 			require_once ABSPATH . WPINC . '/class-wp-image-editor.php';
 			require_once ABSPATH . WPINC . '/class-wp-image-editor-gd.php';
