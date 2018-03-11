@@ -1747,8 +1747,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'php ' . $php_ext . ' extension is not loaded' );
 					}
-					$this->p->notice->err( sprintf( __( 'The PHP <a href="%1$s">%2$s extension</a> is not loaded.', 'wpsso' ),
-						$php_info['url'], $php_info['label'] ) . ' ' .
+					// translators: %1$s is a URL, %2$s is the extension name, $3%s is a function name, %4$s is a PHP module name
+					$error_msg = __( 'The PHP <a href="%1$s">%2$s extension</a> is not loaded (%3$s for \'%4$s\' is false).', 'wpsso' );
+					$this->p->notice->err( sprintf( $error_msg, $php_info['url'], $php_info['label'], 'extension_loaded()', $php_ext ) . ' ' .
 					__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
 				}
 			}
