@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
-			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+			$mod = $this->p->util->get_page_mod( $use_post );
 			$og_type = $this->get_og_type( $mod );
 
 			$og_ns = array(

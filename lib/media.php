@@ -667,8 +667,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			// $mod is preferred but not required
-			// $mod = true | false | post_id | $mod array
+			/**
+			 * The $mod array argument is preferred but not required.
+			 * $mod = true | false | post_id | $mod array
+			 */
 			if ( ! is_array( $mod ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
@@ -678,8 +680,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$og_ret = array();
 
-			// allow custom content to be passed as an argument in $content
-			// allow empty post IDs to get additional content from filter hooks
+			/**
+			 * Allow custom content to be passed as an argument in $content.
+			 * Allow empty post IDs to get additional content from filter hooks.
+			 */
 			if ( empty( $content ) ) {
 				$content = $this->p->page->get_the_content( $mod );
 				$content_passed = false;
@@ -954,7 +958,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			// $mod = true | false | post_id | $mod array
+			/**
+			 * The $mod array argument is preferred but not required.
+			 * $mod = true | false | post_id | $mod array
+			 */
 			if ( ! is_array( $mod ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
@@ -964,8 +971,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$og_ret = array();
 
-			// allow custom content to be passed as an argument in $content
-			// allow empty post IDs to get additional content from filter hooks
+			/**
+			 * Allow custom content to be passed as an argument in $content.
+			 * Allow empty post IDs to get additional content from filter hooks.
+			 */
 			if ( empty( $content ) ) {
 				$content = $this->p->page->get_the_content( $mod );
 				$content_passed = false;

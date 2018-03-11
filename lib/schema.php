@@ -148,7 +148,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 
-			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+			$mod = $this->p->util->get_page_mod( $use_post );
 
 			$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_id = true
 			$page_type_url = $this->get_schema_type_url( $page_type_id );

@@ -1722,6 +1722,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		private function conflict_check_php() {
 
+			/**
+			 * Load the WP class libraries to avoid triggering a known bug in EWWW.
+			 */
+			require_once ABSPATH . WPINC . '/class-wp-image-editor.php';
+			require_once ABSPATH . WPINC . '/class-wp-image-editor-gd.php';
+			require_once ABSPATH . WPINC . '/class-wp-image-editor-imagick.php';
+
 			$editors = array( 'WP_Image_Editor_Imagick', 'WP_Image_Editor_GD' );
 			$implementations = apply_filters( 'wp_image_editors', $editors );
 			$extensions = $this->p->cf['php']['extensions'];
@@ -1747,9 +1754,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'php ' . $php_ext . ' extension is not loaded' );
 					}
+					$func_name = 'extension_loaded()';
 					// translators: %1$s is a URL, %2$s is the extension name, $3%s is a function name, %4$s is a PHP module name
-					$error_msg = __( 'The PHP <a href="%1$s">%2$s extension</a> is not loaded (%3$s for \'%4$s\' is false).', 'wpsso' );
-					$this->p->notice->err( sprintf( $error_msg, $php_info['url'], $php_info['label'], 'extension_loaded()', $php_ext ) . ' ' .
+					$error_msg = __( 'The PHP <a href="%1$s">%2$s extension module</a> is not loaded (%3$s for "%4$s" is false).', 'wpsso' );
+					$this->p->notice->err( sprintf( $error_msg, $php_info['url'], $php_info['label'], $func_name, $php_ext ) . ' ' .
 					__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
 				}
 			}

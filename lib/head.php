@@ -183,9 +183,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$use_post = apply_filters( $this->p->lca.'_use_post', false );	// used by woocommerce with is_shop()
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
+
 			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
 			$r_cache = true;
 			$mt_og = array();
@@ -381,11 +383,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * The $mod array argument is preferred but not required.
+			 * $mod = true | false | post_id | $mod array
+			 */
 			if ( ! is_array( $mod ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
-				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+				$mod = $this->p->util->get_page_mod( $use_post );
 			}
 
 			$start_time = microtime( true );
@@ -420,13 +426,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark( 'build head array' );	// begin timer
 			}
 
-			// $mod is preferred but not required
-			// $mod = true | false | post_id | $mod array
+			/**
+			 * The $mod array argument is preferred but not required.
+			 * $mod = true | false | post_id | $mod array
+			 */
 			if ( ! is_array( $mod ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
-				$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+				$mod = $this->p->util->get_page_mod( $use_post );
 			}
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, true, 'head_sharing_url' );	// $add_page = true
