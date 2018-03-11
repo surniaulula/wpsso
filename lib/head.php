@@ -345,10 +345,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			switch ( $type ) {
 				case 'begin':
 				case 'end':
+
 					$add_meta = apply_filters( $this->p->lca.'_add_meta_name_'.$this->p->lca.':mark',
 						( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
 
 					$comment = '<!-- '.$this->p->lca.' meta tags '.$type.' -->';
+
 					$mt_name = $add_meta ? '<meta name="'.$this->p->lca.':mark:'.$type.'" '.
 						'content="'.$this->p->lca.' meta tags '.$type.'"/>' . "\n" : '';
 
@@ -361,6 +363,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					break;
 
 				case 'preg':
+
 					/**
 					 * Some HTML optimization plugins/services may remove the double-quotes from the name attribute, 
 					 * along with the trailing space and slash characters, so make these optional in the regex.

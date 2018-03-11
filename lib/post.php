@@ -26,9 +26,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		protected function add_actions() {
 
 			if ( is_admin() ) {
+
 				if ( ! empty( $_GET ) || basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' ) {
-					// load_meta_page() priorities: 100 post, 200 user, 300 term
-					// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
+
+					/**
+					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
+					 * Sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties.
+					 */
 					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
 					add_action( 'add_meta_boxes', array( &$this, 'add_meta_boxes' ) );
 				}
@@ -441,8 +445,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $value;	// return null
 		}
 
-		// hooked into the current_screen action
-		// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
+		/**
+		 * Hooked into the current_screen action.
+		 * Sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties.
+		 */
 		public function load_meta_page( $screen = false ) {
 
 			if ( $this->p->debug->enabled ) {
