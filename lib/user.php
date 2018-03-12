@@ -109,14 +109,18 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_get_user_mod', $mod, $mod_id );
 		}
 
-		public static function get_public_users() {
+		public static function get_public_user_ids() {
+
 			$ret = array();
+
 			foreach ( get_users() as $user ) {
 				if ( ! empty( $user-> ID ) ) {	// just in case
 					$ret[] = $user->ID;
 				}
 			}
-			sort( $ret );
+
+			rsort( $ret );	// newest id first
+
 			return $ret;
 		}
 

@@ -649,15 +649,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$mods = array();
 
-			foreach ( WpssoPost::get_public_posts() as $post_id ) {
+			foreach ( WpssoPost::get_public_post_ids() as $post_id ) {
 				$mods[] = $this->p->m['util']['post']->get_mod( $post_id );
 			}
 
-			foreach ( WpssoTerm::get_public_terms() as $term_id ) {
+			foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
 				$mods[] = $this->p->m['util']['term']->get_mod( $term_id );
 			}
 
-			foreach ( WpssoUser::get_public_users() as $user_id ) {
+			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
 				$mods[] = $this->p->m['util']['user']->get_mod( $user_id );
 			}
 
@@ -836,15 +836,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				delete_post_meta_by_key( $meta_key );
 			}
 
-			foreach ( get_users() as $user ) {
+			foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
 				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
-					delete_user_meta( $user->ID, $meta_key );
+					WpssoTerm::delete_term_meta( $term_id, $meta_key );
 				}
 			}
 
-			foreach ( WpssoTerm::get_public_terms() as $term_id ) {
+			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
 				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
-					WpssoTerm::delete_term_meta( $term_id, $meta_key );
+					delete_user_meta( $user_id, $meta_key );
 				}
 			}
 		}

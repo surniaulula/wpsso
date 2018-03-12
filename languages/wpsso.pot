@@ -82,7 +82,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:726 lib/post.php:592 lib/term.php:362 lib/user.php:363
+#: lib/admin.php:726 lib/post.php:597 lib/term.php:367 lib/user.php:367
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2494,7 +2494,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:175 lib/meta.php:212 lib/post.php:929
+#: lib/gpl/admin/post.php:175 lib/meta.php:212 lib/post.php:934
 #: lib/pro/admin/post.php:197
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2540,8 +2540,8 @@ msgid "Library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:147 lib/loader.php:166 lib/post.php:227 lib/register.php:221
-#: lib/term.php:202 lib/user.php:179 lib/util.php:319 lib/util.php:2053
+#: lib/loader.php:147 lib/loader.php:166 lib/post.php:232 lib/register.php:221
+#: lib/term.php:207 lib/user.php:183 lib/util.php:319 lib/util.php:2053
 msgid "%s warning:"
 msgstr ""
 
@@ -3456,7 +3456,7 @@ msgstr ""
 msgid "Automatically add the '%s' role when new users are created."
 msgstr ""
 
-#: lib/messages.php:811 lib/user.php:31 lib/user.php:201
+#: lib/messages.php:811 lib/user.php:31 lib/user.php:205
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -4681,140 +4681,140 @@ msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$0.3f is a number of seconds
-#: lib/post.php:217
+#: lib/post.php:222
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
 "children of post ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/post.php:708
+#: lib/post.php:713
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:711
+#: lib/post.php:716
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:739
+#: lib/post.php:744
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:741
+#: lib/post.php:746
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:743
+#: lib/post.php:748
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:744
+#: lib/post.php:749
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:754 lib/util.php:962
+#: lib/post.php:759 lib/util.php:962
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:763
+#: lib/post.php:768
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:772
+#: lib/post.php:777
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:781
+#: lib/post.php:786
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:797
+#: lib/post.php:802
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:805
+#: lib/post.php:810
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:816
+#: lib/post.php:821
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:816
+#: lib/post.php:821
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:816
+#: lib/post.php:821
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:839
+#: lib/post.php:844
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:843
+#: lib/post.php:848
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:845
+#: lib/post.php:850
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
-#: lib/post.php:1057
+#: lib/post.php:1062
 msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1066
+#: lib/post.php:1071
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1067
+#: lib/post.php:1072
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1078
+#: lib/post.php:1083
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1079
+#: lib/post.php:1084
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1080
+#: lib/post.php:1085
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1081
+#: lib/post.php:1086
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1155
+#: lib/post.php:1160
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -5477,14 +5477,14 @@ msgid "Setup Guide"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$0.3f is a number of seconds
-#: lib/term.php:192
+#: lib/term.php:197
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "for term ID %2$d in taxonomy %3$s (longer than recommended max of %4$0.3f "
 "secs)."
 msgstr ""
 
-#: lib/term.php:480
+#: lib/term.php:485
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -5499,29 +5499,29 @@ msgid "Twitter Large Image Card"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$0.3f is a number of seconds
-#: lib/user.php:169
+#: lib/user.php:173
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "authored by user ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/user.php:524
+#: lib/user.php:528
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:578
+#: lib/user.php:582
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:579
+#: lib/user.php:583
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:580
+#: lib/user.php:584
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:927
+#: lib/user.php:931
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 

@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				remove_role( self::$person_role_name );
 
-				foreach ( WpssoTerm::get_public_terms() as $term_id ) {
+				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
 					if ( ! empty( $term_id ) ) {	// just in case
 						WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
 					}

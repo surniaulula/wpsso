@@ -149,8 +149,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return apply_filters( $this->p->lca.'_get_post_mod', $mod, $mod_id );
 		}
 
-		public static function get_public_posts() {
+		public static function get_public_post_ids() {
+
 			$ret = array();
+
 			$post_posts = get_posts( array(
 				'posts_per_page' => -1,
 				'paged' => false,
@@ -158,12 +160,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'post_type' => 'any',
 				'has_password' => false,	// since wp 3.9
 			) );
+
 			foreach ( $post_posts as $post ) {
 				if ( ! empty( $post-> ID ) ) {	// just in case
 					$ret[] = $post-> ID;
 				}
 			}
-			sort( $ret );
+
+			rsort( $ret );	// newest id first
+
 			return $ret;
 		}
 
