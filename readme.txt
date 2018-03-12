@@ -281,8 +281,6 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 * [How does WPSSO Core find / detect / select images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/)
 * [How does WPSSO Core find / detect / select videos?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/)
 * [W3C says "there is no attribute 'property'"](https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
-* [What about Google Search and Google Plus?](https://wpsso.com/docs/plugins/wpsso/faqs/what-about-google-search-and-google-plus/)
-* [What features of NextGEN Gallery are supported?](https://wpsso.com/docs/plugins/wpsso/faqs/what-features-of-nextgen-gallery-are-supported/)
 * [What is the difference between NextGEN Facebook and WPSSO Core?](https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-ngfb-and-wpsso/)
 * [What is the difference between the Free and Pro versions?](https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-the-free-and-pro-versions/)
 * [Why are some HTML elements missing / misaligned / different?](https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/)
@@ -303,6 +301,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 	* [Easy Digital Downloads](https://wpsso.com/docs/plugins/wpsso/notes/modules/easy-digital-downloads/)
 	* [Facebook, Slideshare, Vimeo, Wistia, Youtube Video APIs](https://wpsso.com/docs/plugins/wpsso/notes/modules/facebook-slideshare-vimeo-wistia-youtube-video-apis/)
 	* [HeadSpace2 SEO](https://wpsso.com/docs/plugins/wpsso/notes/modules/headspace2-seo/)
+	* [NextCellent Gallery and NextGEN Gallery](https://wpsso.com/docs/plugins/wpsso/notes/modules/nextcellent-gallery-and-nextgen-gallery/)
 	* [Polylang](https://wpsso.com/docs/plugins/wpsso/notes/modules/polylang/)
 	* [The Events Calendar](https://wpsso.com/docs/plugins/wpsso/notes/modules/the-events-calendar/)
 	* [WooCommerce](https://wpsso.com/docs/plugins/wpsso/notes/modules/woocommerce/)
@@ -337,7 +336,6 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 	* [The $mod Variable](https://wpsso.com/docs/plugins/wpsso/notes/developer/the-mod-variable/)
 * [Inline Variables](https://wpsso.com/docs/plugins/wpsso/notes/inline-variables/)
 * [Multisite / Network Support](https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/)
-* [Working with Image Attachments](https://wpsso.com/docs/plugins/wpsso/notes/working-with-image-attachments/)
 
 == Screenshots ==
 
