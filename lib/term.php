@@ -119,6 +119,23 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return apply_filters( $this->p->lca.'_get_term_mod', $mod, $mod_id, $tax_slug );
 		}
 
+		public static function get_public_terms( $tax_name = false, $term_fields = 'ids' ) {
+			$ret = array();
+			$tax_filter = array( 'public' => 1, 'show_ui' => 1 );
+			if ( $tax_name !== false ) {
+				$tax_filter['name'] = $tax_name;
+			}
+			$term_args = array( 'fields' => $term_fields );
+			$term_oper = 'and';
+			foreach ( get_taxonomies( $tax_filter, 'names' ) as $tax_name ) {
+				foreach ( get_terms( $tax_name, $term_args, $term_oper ) as $term_val ) {
+					$ret[] = $term_val;
+				}
+			}
+			sort( $ret );
+			return $ret;
+		}
+
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -466,24 +483,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			return $user_can_edit;
-		}
-
-		// called by the WpssoRegister::uninstall_plugin() method
-		public static function get_public_terms( $tax_name = false, $term_fields = 'ids' ) {
-			$ret = array();
-			$tax_filter = array( 'public' => 1, 'show_ui' => 1 );
-			if ( $tax_name !== false ) {
-				$tax_filter['name'] = $tax_name;
-			}
-			$term_args = array( 'fields' => $term_fields );
-			$term_oper = 'and';
-			foreach ( get_taxonomies( $tax_filter, 'names' ) as $tax_name ) {
-				foreach ( get_terms( $tax_name, $term_args, $term_oper ) as $term_val ) {
-					$ret[] = $term_val;
-				}
-			}
-			sort( $ret );
-			return $ret;
 		}
 
 		public static function get_term_meta( $term_id, $key_name, $single = false ) {

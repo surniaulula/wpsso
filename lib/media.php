@@ -523,7 +523,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 	
 							if ( $resized_meta == false ) {
 
-								$dismiss_key = 'image-make-intermediate-size-'.$filesizepath.'-failure';
+								$dismiss_key = 'image-make-intermediate-size-'.$fullsizepath.'-failure';
 
 								if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
@@ -538,7 +538,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								} elseif ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( 'admin error notice for image_make_intermediate_size() from '.$filesizepath.' is ' .
+									$this->p->debug->log( 'admin error notice for image_make_intermediate_size() from '.$fullsizepath.' is ' .
 										( $this->p->notice->is_dismissed( $dismiss_key ) ? 'dismissed' : 'shown (not dismissed)' ) );
 								}
 

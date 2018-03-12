@@ -2486,7 +2486,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( empty( $post ) || $force ) {
 				$post = self::get_post_object( $id, 'object' );
 				return true;
-			} else return false;
+			} else {
+				return false;
+			}
 		}
 
 		public static function is_term_page( $term_id = 0, $tax_slug = '' ) {
@@ -2667,7 +2669,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 				if ( isset( $product_obj->post_type ) &&
 					$product_obj->post_type === 'product' ) {
-						$ret = true;
+					$ret = true;
 				}
 			}
 			return apply_filters( 'sucom_is_product_page', $ret, $use_post, $product_obj );

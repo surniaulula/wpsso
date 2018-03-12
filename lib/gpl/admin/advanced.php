@@ -291,6 +291,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_nocb_td( 'plugin_clear_on_save' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_save', $form, $network );
 
+			$table_rows['plugin_clear_all_refresh'] = ''.
+			$form->get_th_html( _x( 'Auto-Refresh Cache After Clear All', 'option label', 'wpsso' ), '', 'plugin_clear_all_refresh' ).
+			$form->get_nocb_td( 'plugin_clear_all_refresh' ).
+			WpssoAdmin::get_option_site_use( 'plugin_clear_all_refresh', $form, $network );
+
 			$table_rows['plugin_clear_short_urls'] = $form->get_tr_hide( 'basic', 'plugin_clear_short_urls' ).
 			$form->get_th_html( _x( 'Clear Short URLs on Clear All Caches', 'option label', 'wpsso' ), '', 'plugin_clear_short_urls' ).
 			$form->get_nocb_td( 'plugin_clear_short_urls' ).

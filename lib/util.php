@@ -64,6 +64,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			add_action( 'wp', array( &$this, 'add_plugin_image_sizes' ), -100 );	// runs everytime a posts query is triggered from a url
 			add_action( 'current_screen', array( &$this, 'add_plugin_image_sizes' ), -100 );
 			add_action( 'wp_scheduled_delete', array( &$this, 'delete_expired_db_transients' ) );
+			add_action( $this->p->lca . '_refresh_all_cache', array( &$this, 'refresh_all_cache' ) );
 
 			// the "current_screen" action hook is not called when editing / saving an image
 			// hook the "image_editor_save_pre" filter as to add image sizes for that attachment / post
@@ -644,6 +645,28 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return apply_filters( $this->p->lca.'_get_post_types', $ret, $output );
 		}
 
+		public function refresh_all_cache() {
+
+			$mods = array();
+
+			foreach ( WpssoPost::get_public_posts() as $post_id ) {
+				$mods[] = $this->p->m['util']['post']->get_mod( $post_id );
+			}
+
+			foreach ( WpssoTerm::get_public_terms() as $term_id ) {
+				$mods[] = $this->p->m['util']['term']->get_mod( $term_id );
+			}
+
+			foreach ( WpssoUser::get_public_users() as $user_id ) {
+				$mods[] = $this->p->m['util']['user']->get_mod( $user_id );
+			}
+
+			foreach ( $mods as $mod ) {
+				$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );
+				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
+			}
+		}
+
 		public function clear_all_cache( $clear_external = true, $clear_short_urls = null, $dismiss_key = null ) {
 
 			if ( $this->cleared_all_cache ) {	// already run once
@@ -695,6 +718,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$clear_all_msg .= ' '.__( 'Site performance may be impacted slightly while all cache objects are rebuilt.', 'wpsso' );
 
 			$this->p->notice->inf( $clear_all_msg, true, $dismiss_key, true );	// can be dismissed depending on args
+
+			wp_clear_scheduled_hook( $this->p->lca . '_refresh_all_cache' );
+
+			// will run within the next minute
+			wp_schedule_single_event( time(), $this->p->lca . '_refresh_all_cache' );
 		}
 
 		public function delete_all_db_transients( $clear_short_urls = false ) { 
@@ -882,10 +910,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $topics;
 		}
 
-		// query examples:
-		//	/html/head/link|/html/head/meta
-		//	/html/head/link[@rel="canonical"]
-		//	/html/head/meta[starts-with(@property, "og:video:")]
+		/**
+		 * Query argument examples:
+		 *
+		 * 	/html/head/link|/html/head/meta
+		 * 	/html/head/link[@rel="canonical"]
+		 * 	/html/head/meta[starts-with(@property, "og:video:")]
+		 */
 		public function get_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false, array $curl_opts = array() ) {
 
 			if ( empty( $request ) ) {	// just in case

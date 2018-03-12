@@ -149,6 +149,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return apply_filters( $this->p->lca.'_get_post_mod', $mod, $mod_id );
 		}
 
+		public static function get_public_posts() {
+			$ret = array();
+			$post_posts = get_posts( array(
+				'posts_per_page' => -1,
+				'paged' => false,
+				'post_status' => 'publish',
+				'post_type' => 'any',
+				'has_password' => false,	// since wp 3.9
+			) );
+			foreach ( $post_posts as $post ) {
+				if ( ! empty( $post-> ID ) ) {	// just in case
+					$ret[] = $post-> ID;
+				}
+			}
+			sort( $ret );
+			return $ret;
+		}
+
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
 
 			if ( $this->p->debug->enabled ) {

@@ -888,6 +888,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'Automatically clear all known plugin cache(s) when saving the %s settings (default is checked).', 'wpsso' ), $info['short'] );
 							break;
 
+						case 'tooltip-plugin_clear_all_refresh':	// Auto-Refresh Cache After Clear All
+
+							$text = sprintf( __( 'After clearing all %1$s cache objects, automatically re-create the post, term, and user cache objects from a background task (does not affect page load time).', 'wpsso' ), $info['short'] );
+							break;
+
 						case 'tooltip-plugin_clear_short_urls':
 
 							$cache_exp_secs = (int) apply_filters( $lca.'_cache_expire_short_url',

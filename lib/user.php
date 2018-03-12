@@ -109,6 +109,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return apply_filters( $this->p->cf['lca'].'_get_user_mod', $mod, $mod_id );
 		}
 
+		public static function get_public_users() {
+			$ret = array();
+			foreach ( get_users() as $user ) {
+				if ( ! empty( $user-> ID ) ) {	// just in case
+					$ret[] = $user->ID;
+				}
+			}
+			sort( $ret );
+			return $ret;
+		}
+
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
 
 			if ( $this->p->debug->enabled ) {
