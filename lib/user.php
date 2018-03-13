@@ -111,17 +111,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public static function get_public_user_ids() {
 
-			$ret = array();
+			$user_ids = array();
 
 			foreach ( get_users() as $user ) {
 				if ( ! empty( $user-> ID ) ) {	// just in case
-					$ret[] = $user->ID;
+					$user_ids[] = $user->ID;
 				}
 			}
 
-			rsort( $ret );	// newest id first
+			rsort( $user_ids );	// newest id first
 
-			return $ret;
+			return $user_ids;
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {

@@ -83,14 +83,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'in_admin_header', array( &$this, 'update_count_notice' ), 30 );
 
 				add_filter( 'current_screen', array( &$this, 'maybe_show_screen_notices' ) );
-				add_filter( 'plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
+				add_filter( 'plugin_action_links', array( &$this, 'append_plugins_action_links' ), 10, 2 );
 				add_filter( 'wp_redirect', array( &$this, 'profile_updated_redirect' ), -100, 2 );
 
 				if ( is_multisite() ) {
 					add_action( 'network_admin_menu', array( &$this, 'load_network_menu_objects' ), -1000 );
 					add_action( 'network_admin_menu', array( &$this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 					add_action( 'network_admin_edit_' . WPSSO_SITE_OPTIONS_NAME, array( &$this, 'save_site_options' ) );
-					add_filter( 'network_admin_plugin_action_links', array( &$this, 'add_plugin_action_links' ), 10, 2 );
+					add_filter( 'network_admin_plugin_action_links', array( &$this, 'append_site_plugins_action_links' ), 10, 2 );
 				}
 
 		 		/**
@@ -424,8 +424,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		// add links on the main plugins page
-		public function add_plugin_action_links( $links, $plugin_base, $utm_source = 'plugin-action-links', &$tabindex = false ) {
+		public function append_site_plugins_action_links( $links, $plugin_base, $settings_page = 'sitelicenses' ) {
+
+			return $this->append_plugins_action_links( $links, $plugin_base, $settings_page );
+		}
+
+		public function append_plugins_action_links( $links, $plugin_base, $settings_page = 'licenses'  ) {
+
+			if ( ! isset( $this->p->cf['*']['base'][$plugin_base] ) ) {
+				return $links;
+			}
+
+			foreach ( $links as $num => $val ) {
+				if ( strpos( $val, '>Edit<' ) !== false ) {
+					unset ( $links[$num] );
+				}
+			}
+
+			$links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' .
+				_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' ) . '</a>';
+
+			return $links;
+		}
+
+		public function append_licenses_action_links( $links, $plugin_base, &$tabindex = false ) {
 
 			if ( ! isset( $this->p->cf['*']['base'][$plugin_base] ) ) {
 				return $links;
@@ -465,10 +487,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( ! empty( $info['url']['purchase'] ) ) {
-				if ( ! empty( $utm_source ) ) {
-					$purchase_url = add_query_arg( 'utm_source', $utm_source, $info['url']['purchase'] );
-				}
-				$links[] = $this->p->msgs->get( 'pro-purchase-text', array(
+				$purchase_url = add_query_arg( 'utm_source', 'licenses-action-links', $info['url']['purchase'] );
+				$links[] = $this->p->msgs->get( 'pro-purchase-link', array(
 					'ext' => $ext,
 					'url' => $purchase_url, 
 					'tabindex' => ( $tabindex !== false ? ++$tabindex : false )
@@ -644,12 +664,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 	
 				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> <em>' .
 					__( 'Please note that webpage content may take several days to reflect changes.', 'wpsso' ) . ' ' .
-					sprintf( __( '%s now to force a refresh.', 'wpsso' ), $clear_cache_link ) . '</em>' );
+						sprintf( __( '%s now to force a refresh.', 'wpsso' ), $clear_cache_link ) . '</em>' );
+
 			} else {
-				$dismiss_key = 'settings-saved-cleared-all-cache';
-				$this->p->util->clear_all_cache( true, null, $dismiss_key );	// can be dismissed
+
+				$dismiss_key = 'settings-saved-clear-all-cache-true-null-null';
+
+				$this->p->util->clear_all_cache( true, null, null, $dismiss_key );
+
 				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
-					sprintf( __( 'All caches have also been cleared (the %s option is enabled).', 'wpsso' ),
+					sprintf( __( 'All caches have been cleared (the %s option is enabled).', 'wpsso' ),
 						$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 							_x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ) ) ) );
 			}
@@ -1619,7 +1643,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( ! empty( $info['base'] ) ) {
-					$ext_links = $this->add_plugin_action_links( $ext_links, $info['base'], 'license-action-links', $tabindex );
+					$ext_links = $this->append_licenses_action_links( $ext_links, $info['base'], $tabindex );
 				}
 
 				/**
@@ -1648,8 +1672,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->lca === $ext || self::$pkg[$this->p->lca]['aop'] ) {
 
 						$table_rows['plugin_tid'] .= '<td width="100%">' .
-							$this->form->get_input( 'plugin_' . $ext . '_tid',
-								'tid mono', '', 0, '', false, ++$tabindex ) . '</td>';
+							$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono', '', 0, 
+								'', false, ++$tabindex ) . '</td>';
 
 						if ( $network ) {
 							$table_rows['site_use'] = self::get_option_site_use( 'plugin_' . $ext . '_tid', 
@@ -1673,13 +1697,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								}
 							}
 						}
+
 					} else {
 						$table_rows['plugin_tid'] .= '<td class="blank">' .
 							( empty( $this->p->options['plugin_' . $ext . '_tid'] ) ?
 								$this->form->get_no_input( 'plugin_' . $ext . '_tid', 'tid mono' ) :
-								$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono',
-									'', 0, '', false, ++$tabindex ) ) . '</td>';
+								$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono', '', 0,
+									'', false, ++$tabindex ) ) . '</td>';
 					}
+
 				} else {
 					$table_rows['plugin_tid'] = '<td>&nbsp;</td><td width="100%">&nbsp;</td>';
 				}

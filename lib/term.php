@@ -121,10 +121,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public static function get_public_term_ids( $tax_name = false ) {
 
-			$ret = array();
 			$tax_filter = array( 'public' => 1, 'show_ui' => 1 );
 			$term_args = array( 'fields' => 'ids' );
 			$term_oper = 'and';
+			$term_ids = array();
 
 			if ( $tax_name !== false ) {
 				$tax_filter['name'] = $tax_name;
@@ -132,13 +132,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			foreach ( get_taxonomies( $tax_filter, 'names' ) as $tax_name ) {
 				foreach ( get_terms( $tax_name, $term_args, $term_oper ) as $term_val ) {
-					$ret[] = $term_val;
+					$term_ids[] = $term_val;
 				}
 			}
 
-			rsort( $ret );	// newest id first
+			rsort( $term_ids );	// newest id first
 
-			return $ret;
+			return $term_ids;
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {

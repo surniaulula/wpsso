@@ -1268,22 +1268,33 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 * Misc informational messages
 			 */
 			} elseif ( strpos( $idx, 'info-' ) === 0 ) {
+
 				if ( strpos( $idx, 'info-meta-' ) === 0 ) {
+
 					switch ( $idx ) {
+
 						case 'info-meta-validate-facebook':
+
 							$text = '<p>'.__( 'Facebook and most social websites read Open Graph meta tags.', 'wpsso' ).' '.__( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating the Open Graph meta tag values.', 'wpsso' ).' '.__( 'The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' ).'</p><p><i>'.__( 'You may have to click the "Fetch new scrape information" button a few times to refresh Facebook\'s cache.', 'wpsso' ).'</i></p>';
+
 						 	break;
 	
 						case 'info-meta-validate-google':
+
 							$text = '<p>'.__( 'Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+.', 'wpsso' ).'</p>';
+
 						 	break;
 	
 						case 'info-meta-validate-pinterest':
+
 							$text = '<p>'.__( 'Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' ).'</p>';
+
 						 	break;
 	
 						case 'info-meta-validate-twitter':
+
 							$text = '<p><i>'.__( 'The Twitter Card Validator does not accept query arguments &mdash; paste the following URL in the Twitter Card Validator "Card URL" input field (copy the URL using the clipboard icon):', 'wpsso' ).'</i></p>';
+
 						 	break;
 	
 						case 'info-meta-validate-w3c':
@@ -1296,20 +1307,40 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 	break;
 	
 						case 'info-meta-validate-amp':
+
 							$text = '<p>'.__( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ).'</p>'.( $this->p->avail['*']['amp'] ? '' : '<p><i>'.sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' ).'</i></p>' );
+
 						 	break;
 	
 						case 'info-meta-social-preview':
+
 						 	$text = '<p style="text-align:right;">'.__( 'An <em>example</em> link share on Facebook. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
+
 						 	break;
+
 					}	// end of info-meta switch
+
 				} else {
+
 					switch ( $idx ) {
+
 						case 'info-plugin-tid':	// displayed on the Pro Licenses settings page
 
 							$um_info = $this->p->cf['plugin']['wpssoum'];
 
-							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['name_pro'] ).' '. __( 'Enter each unique Authentication ID on this settings page to enable Pro version updates for the Pro plugin / extension(s) you purchased.', 'wpsso' ).' '.sprintf( __( '%1$s and its %2$s Free extension must be installed and active to use Pro extensions and check for Pro version updates.', 'wpsso' ), $info['name_pro'], $um_info['name'] ).'</blockquote>';
+							$text = '<blockquote class="top-info">';
+							
+							$text .= '<p>'.sprintf( __( 'After purchasing the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID for the plugin / extension your purchased.', 'wpsso' ), $info['short_pro'] ).' ';
+
+							$text .=  __( 'Enter the Authentication ID in the field corresponding to the plugin / extension you purchased.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'Don\'t forget that the %1$s Free extension must also be installed and active to check for Pro version updates.', 'wpsso' ), $um_info['name'] ).' ;-)</p>';
+
+							if ( ! WpssoAdmin::$pkg[$lca]['aop'] ) {
+								$text .= '<p>'.sprintf( __( 'Please note that Pro extensions use several %1$s features, which means that Pro extensions require an active and licensed %1$s plugin &mdash; don\'t forget to purchase %1$s before purchasing Pro extensions.', 'wpsso' ), $info['short_pro'] ).' ;-)</p>';
+							}
+
+							$text .= '</blockquote>';
 
 							break;
 	
@@ -1320,20 +1351,30 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
 								_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' ) );
 
-							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'After purchasing license(s) for the %1$s, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID and installation instructions.', 'wpsso' ), $info['name_pro'] ).' '.sprintf( __( 'You may enter each unique Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
+							$text = '<blockquote class="top-info">';
+							
+							$text .= '<p>'.sprintf( __( 'After purchasing the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID for the plugin / extension your purchased.', 'wpsso' ), $info['short_pro'] ).' ';
+
+							$text .= sprintf( __( 'You may enter each Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
 
 							$text.= '<p>'.__( 'If you enter Authentication IDs on this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; as an example, to license an individual plugin / extension for 10 sites, you would need an Authentication ID from a 10 license pack purchase of that plugin / extension.', 'wpsso' ).'</p>';
 
-							$text .= '<p>'.sprintf( __( '<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its Pro extensions, please make sure the %2$s Free extension is active on the default site, and the default site is licensed.', 'wpsso' ), $info['name_pro'], $um_info['name'] ).'</p></blockquote>';
+							$text .= '<p>'.sprintf( __( '<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its Pro extensions, please make sure the %2$s Free extension is active on the default site, and the default site is licensed.', 'wpsso' ), $info['name_pro'], $um_info['name'] ).'</p>';
+							
+							$text .= '</blockquote>';
 
 							break;
 	
 						case 'info-cm':
+
 							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'The following options allow you to customize the contact fields shown in <a href="%s">the user profile page</a> in the <strong>Contact Info</strong> section.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).' '.sprintf( __( '%s uses the Facebook, Google+, and Twitter contact values for Facebook / Open Graph, Google / Schema, and Twitter Card meta tags.', 'wpsso' ), $info['short'] ).'</p><p><strong>'.sprintf( __( 'You should not modify the <em>%s</em> unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field Name', 'column title', 'wpsso' ) ).'</strong> '.sprintf( __( 'The <em>%s</em> on the other hand is for display purposes only and it can be changed as you wish.', 'wpsso' ), _x( 'Profile Contact Label', 'column title', 'wpsso' ) ).' ;-)</p><p>'.sprintf( __( 'Enabled contact methods are included on user profile editing pages automatically. Your theme is responsible for using their values in its templates (see the WordPress <a href="%s">get_the_author_meta()</a> documentation for examples).', 'wpsso' ), 'https://codex.wordpress.org/Function_Reference/get_the_author_meta' ).'</p><p><center><strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>'.sprintf( __( 'Enter your personal contact information on <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).'</center></p></blockquote>';
+
 							break;
 
 						case 'info-taglist':
+
 							$text = '<blockquote class="top-info"><p>'.sprintf( __( '%s adds the following Google Rich Card / SEO, Facebook / Open Graph, Pinterest Rich Pin, Schema Markup, and Twitter Card HTML tags to the <code>&lt;head&gt;</code> section of your webpages.', 'wpsso' ), $info['short'] ).' '.__( 'If your theme or another plugin already creates one or more of these HTML tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ).' '.__( 'As an example, the "meta name description" HTML tag is automatically unchecked if a <em>known</em> SEO plugin is detected.', 'wpsso' ).' '.__( 'The "meta name canonical" HTML tag is unchecked by default since themes often include this meta tag in their header template(s).', 'wpsso' ).'</p></blockquote>';
+
 							break;
 	
 						case 'info-social-accounts':
@@ -1342,24 +1383,33 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'Google / Schema', 'metabox tab', 'wpsso' ) );
 
 							$text = '<blockquote class="top-info"><p>';
+
 							$text .= sprintf( __( 'The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) <a href="%s">social markup for Google Search</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/social-profile-links' ).' ';
 							$text .= sprintf( __( 'See the %s settings tab to define an organization logo for Google Search results and enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup.', 'wpsso' ), $settings_page_link );
+
 							$text .= '</p></blockquote>';
 
 							break;
 	
 						default:
+
 							$text = apply_filters( $lca.'_messages_info', $text, $idx, $info );
+
 							break;
+
 					}	// end of info switch
 				}
 			/**
 			 * Misc pro messages
 			 */
 			} elseif ( strpos( $idx, 'pro-' ) === 0 ) {
+
 				switch ( $idx ) {
+
 					case 'pro-feature-msg':
+
 						$pdir = $this->p->avail['*']['p_dir'];
+
 						if ( $lca !== $this->p->cf['lca'] && ! $this->p->check->aop( $this->p->cf['lca'], true, $pdir ) ) {
 							$req_short = $this->p->cf['plugin'][$this->p->cf['lca']]['short'].' Pro';
 							$req_msg = '<br>'.sprintf( __( '(note that all %1$s extensions also require a licensed %1$s plugin)',
@@ -1367,6 +1417,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						} else {
 							$req_msg = '';
 						}
+
 						if ( $this->p->check->aop( $lca, false ) ) {
 							$text = '<p class="pro-feature-msg"><a href="'.$url['purchase'].'">'.
 								sprintf( __( 'Purchase %s licence(s) to install its Pro modules and use the following features / options.',
@@ -1376,48 +1427,63 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								sprintf( __( 'Purchase the %s plugin to install its Pro modules and use the following features / options.',
 									'wpsso' ), $info['short_pro'] ).'</a>'.$req_msg.'</p>';
 						}
+
 						break;
 
 					case 'pro-option-msg':
+
 						$text = '<p class="pro-option-msg"><a href="'.$url['purchase'].'">'.
 							sprintf( _x( 'option requires %s', 'option comment', 'wpsso' ),
 								$info['short_pro'] ).'</a></p>';
+
 						break;
 
-					case 'pro-purchase-text':
+					case 'pro-purchase-link':
+
 						if ( ! empty( $info['ext'] ) && WpssoAdmin::$pkg[$info['ext']]['aop'] ) {
 							$text = _x( 'More Licenses', 'plugin action link', 'wpsso' );
 						} else {
 							$text = _x( 'Purchase Pro', 'plugin action link', 'wpsso' );
 						}
+
 						if ( ! empty( $info['url'] ) ) {
-							$text = '<a href="'.$info['url'].'"'.
-								( empty( $info['tabindex'] ) ? '' : ' tabindex="'.$info['tabindex'].'"' ).'>'.
-									$text.'</a>';
+							if ( ! empty( $info['ext'] ) && $info['ext'] !== $lca && ! WpssoAdmin::$pkg[$lca]['aop'] ) {
+								$text .= ' <em>' . sprintf( _x( '(%s required)', 'plugin action link',
+									'wpsso' ), $info['short_pro'] ) . '</em>';
+							} else {
+								$text = '<a href="' . $info['url'] . '"' . ( empty( $info['tabindex'] ) ?
+									'' : ' tabindex="' . $info['tabindex'] . '"' ) . '>' .  $text . '</a>';
+							}
 						}
-						if ( ! empty( $info['ext'] ) && ! WpssoAdmin::$pkg[$lca]['aop'] && $info['ext'] !== $lca ) {
-							$text .= ' <em>'.sprintf( _x( '(%s required)', 'plugin action link',
-								'wpsso' ), $info['short_pro'] ).'</em>';
-						}
+
 						break;
 
 					case 'pro-about-msg-post-text':
+
 						$text = '<p>'.__( 'You can update the excerpt or content text to change the default description values.', 'wpsso' ).'</p>';
+
 						break;
 
 					case 'pro-about-msg-post-media':
-						$text = '<p>'.__( 'You can change the social image by selecting a featured image, attaching image(s) or including images in the content.', 'wpsso' ).'<br/>'.sprintf( __( 'Video service API modules &mdash; required to detect embedded videos &mdash; are available in the %s version.', 'wpsso' ),  $info['name_pro'] ).'</p>';
+
+						$text = '<p>'.__( 'You can change the social image by selecting a featured image, attaching image(s) or including images in the content.', 'wpsso' ).'<br/>';
+						$text .= sprintf( __( 'Video service API modules &mdash; required to detect embedded videos &mdash; are available in the %s version.', 'wpsso' ),  $info['name_pro'] ).'</p>';
+
 						break;
 
 					default:
+
 						$text = apply_filters( $lca.'_messages_pro', $text, $idx, $info );
+
 						break;
 				}
 			/**
 			 * Misc notice messages
 			 */
 			} elseif ( strpos( $idx, 'notice-' ) === 0 ) {
+
 				switch ( $idx ) {
+
 					case 'notice-image-rejected':
 
 						$hide_const_name = strtoupper( $lca ).'_HIDE_ALL_WARNINGS';
@@ -1473,15 +1539,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 
 					case 'notice-missing-og-image':
+
 						$text = sprintf( __( 'An Open Graph image meta tag could not be generated from this webpage content or its custom %s settings. Facebook <em>requires at least one image meta tag</em> to render shared content correctly.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+
 						break;
 
 					case 'notice-missing-og-description':
+
 						$text = sprintf( __( 'An Open Graph description meta tag could not be generated from this webpage content or its custom %s settings. Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+
 						break;
 
 					case 'notice-missing-schema-image':
+
 						$text = sprintf( __( 'A Schema image property could not be generated from this webpage content or its custom %s settings. Google <em>requires at least one image property</em> for this Schema item type.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+
 						break;
 
 					case 'notice-content-filters-disabled':
@@ -1590,7 +1662,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 
 					default:
+
 						$text = apply_filters( $lca.'_messages_notice', $text, $idx, $info );
+
 						break;
 			}
 			/**
@@ -1632,6 +1706,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					default:
 
 						$text = apply_filters( $lca.'_messages_side', $text, $idx, $info );
+
 						break;
 				}
 			} else {

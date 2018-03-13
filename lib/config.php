@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.56.0-dev.1',		// Plugin version.
-					'opt_version' => '577',		// Increment when changing default option values.
+					'version' => '3.56.0-b.1',		// Plugin version.
+					'opt_version' => '578',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
 					'desc' => 'Automatically create complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and many more.',
@@ -1096,6 +1096,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_show_purge_count:use' => 'default',
 					'plugin_clear_on_save' => 1,			// Clear All Caches on Save Settings
 					'plugin_clear_on_save:use' => 'default',
+					'plugin_clear_all_refresh' => 1,		// Auto-Refresh Cache After Clear All
+					'plugin_clear_all_refresh:use' => 'default',
 					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Caches
 					'plugin_clear_short_urls:use' => 'default',
 					'plugin_clear_for_comment' => 1,		// Clear Post Cache for New Comment

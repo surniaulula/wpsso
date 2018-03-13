@@ -667,7 +667,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public function clear_all_cache( $clear_external = true, $clear_short_urls = null, $dismiss_key = null ) {
+		public function clear_all_cache( $clear_external = true, $clear_short_urls = null, $refresh_cache = null, $dismiss_key = null ) {
 
 			if ( $this->cleared_all_cache ) {	// already run once
 				return;
@@ -680,6 +680,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->options['plugin_clear_short_urls'] : false;
 			}
 
+			if ( null === $refresh_cache ) {
+				$refresh_cache = isset( $this->p->options['plugin_clear_all_refresh'] ) ?
+					$this->p->options['plugin_clear_all_refresh'] : false;
+			}
+
 			wp_cache_flush();	// clear non-database transients as well
 
 			$this->delete_all_db_transients( $clear_short_urls );
@@ -688,41 +693,42 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$short = $this->p->cf['plugin'][$this->p->lca]['short'];
 
-			$clear_all_msg = sprintf( __( '%s cached files, transient cache, sortable column meta, and the WordPress object cache have all been cleared.',
+			$cleared_msg = sprintf( __( '%s cached files, transient cache, column meta, and WordPress object cache have been cleared.',
 				'wpsso' ), $short );
 
 			if ( $clear_external ) {
 
-				$external_msg = __( 'The cache for %s has also been cleared.', 'wpsso' );
+				$external_msg = ' ' . __( 'The cache for %s has also been cleared.', 'wpsso' );
 
 				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
 					w3tc_pgcache_flush();
 					w3tc_objectcache_flush();
-					$clear_all_msg .= ' '.sprintf( $external_msg, 'W3 Total Cache' );
+					$cleared_msg .= sprintf( $external_msg, 'W3 Total Cache' );
 				}
 
 				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// wp super cache
 					wp_cache_clear_cache();
-					$clear_all_msg .= ' '.sprintf( $external_msg, 'WP Super Cache' );
+					$cleared_msg .= sprintf( $external_msg, 'WP Super Cache' );
 				}
 
 				if ( isset( $GLOBALS['comet_cache'] ) ) {		// comet cache
 					$GLOBALS['comet_cache']->wipe_cache();
-					$clear_all_msg .= ' '.sprintf( $external_msg, 'Comet Cache' );
-				} elseif ( isset( $GLOBALS['zencache'] ) ) {		// zencache
-					$GLOBALS['zencache']->wipe_cache();
-					$clear_all_msg .= ' '.sprintf( $external_msg, 'ZenCache' );
+					$cleared_msg .= sprintf( $external_msg, 'Comet Cache' );
 				}
 			}
 
-			$clear_all_msg .= ' '.__( 'Site performance may be impacted slightly while all cache objects are rebuilt.', 'wpsso' );
+			if ( $refresh_cache ) {
 
-			$this->p->notice->inf( $clear_all_msg, true, $dismiss_key, true );	// can be dismissed depending on args
+				wp_clear_scheduled_hook( $this->p->lca . '_refresh_all_cache' );
 
-			wp_clear_scheduled_hook( $this->p->lca . '_refresh_all_cache' );
+				// will run within the next minute
+				wp_schedule_single_event( time(), $this->p->lca . '_refresh_all_cache' );
 
-			// will run within the next minute
-			wp_schedule_single_event( time(), $this->p->lca . '_refresh_all_cache' );
+				$cleared_msg .= ' ' . sprintf( __( 'A background task will begin shortly to re-create the %s post, term, and user transient cache objects.',
+					'wpsso' ), $short );
+			}
+
+			$this->p->notice->inf( $cleared_msg, true, $dismiss_key, true );	// can be dismissed depending on args
 		}
 
 		public function delete_all_db_transients( $clear_short_urls = false ) { 

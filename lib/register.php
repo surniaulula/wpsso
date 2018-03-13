@@ -83,17 +83,24 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		private function activate_plugin() {
 
+			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
+
 			$this->check_required( WpssoConfig::$cf );
 
-			$this->p->set_config( true );  // apply filters and define $cf['*'] array ( $activate = true )
-			$this->p->set_options( true ); // read / create options and site_options ( $activate = true )
-			$this->p->set_objects( true ); // load all the class objects ( $activate = true )
+			$this->p->set_config( true );  // Apply filters and define $cf['*'] array ( $activate = true ).
+			$this->p->set_options( true ); // Read / create options and site_options ( $activate = true ).
+			$this->p->set_objects( true ); // Load all the class objects ( $activate = true ).
 
 			/**
 			 * Clear all cached objects, transients, and any external cache.
 			 */
 			if ( ! SucomUtil::get_const( 'WPSSO_REG_CLEAR_CACHE_DISABLE' ) ) {
-				$this->p->util->clear_all_cache( true ); // clear existing cache entries ( $clear_external = true )
+
+				$clear_external   = true;
+				$clear_short_urls = true;
+				$refresh_cache    = true;
+
+				$this->p->util->clear_all_cache( $clear_external, $clear_short_urls, $refresh_cache );
 			}
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
@@ -109,9 +116,16 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		private function deactivate_plugin() {
 
-			// clear all cached objects and transients
+			/**
+			 * Clear all cached objects, transients (preserve external cache).
+			 */
 			if ( ! SucomUtil::get_const( 'WPSSO_REG_CLEAR_CACHE_DISABLE' ) ) {
-				$this->p->util->clear_all_cache( false );	// $clear_external = false
+
+				$clear_external   = true;
+				$clear_short_urls = true;
+				$refresh_cache    = false;
+
+				$this->p->util->clear_all_cache( $clear_external, $clear_short_urls, $refresh_cache );
 			}
 
 			// trunc all stored notices for all users
@@ -203,8 +217,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				if ( version_compare( $app_version, $min_version, '>=' ) ) {
 					continue;
 				}
-
-				load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
 
 				if ( ! function_exists( 'deactivate_plugins' ) ) {
 					require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';

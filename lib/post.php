@@ -151,7 +151,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public static function get_public_post_ids() {
 
-			$ret = array();
+			$post_ids = array();
 
 			$post_posts = get_posts( array(
 				'posts_per_page' => -1,
@@ -163,13 +163,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			foreach ( $post_posts as $post ) {
 				if ( ! empty( $post-> ID ) ) {	// just in case
-					$ret[] = $post-> ID;
+					$post_ids[] = $post-> ID;
 				}
 			}
 
-			rsort( $ret );	// newest id first
+			rsort( $post_ids );	// newest id first
 
-			return $ret;
+			return $post_ids;
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {

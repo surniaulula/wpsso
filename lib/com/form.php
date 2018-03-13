@@ -862,6 +862,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_input_image_upload( $opt_prefix, $placeholder = '', $disabled = false ) {
+
 			$opt_suffix = '';
 			$select_lib = 'wp';
 			$media_libs = array( 'wp' => 'Media Library' );
@@ -880,8 +881,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$placeholder = preg_replace( '/^ngg-/', '', $placeholder );
 			}
 
-			$input_id = $this->get_input( $opt_prefix . '_id' . $opt_suffix,
-				'short', '', 0, $placeholder, $disabled );
+			$input_id = $this->get_input( $opt_prefix . '_id' . $opt_suffix, 'short', '', 0, $placeholder, $disabled );
 
 			$select_lib = $this->get_select( $opt_prefix . '_id_pre' . $opt_suffix,
 				$media_libs, '', '', true, ( count( $media_libs ) <= 1 ? true : $disabled ),	// disable if only 1 media lib
@@ -1219,11 +1219,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $table_rows;
 		}
 
-		public function get_th_html( $title = '', $class = '', $css_id = '', $atts = array() ) {
+		public function get_th_html( $label = '', $class = '', $css_id = '', $atts = array() ) {
 
 			if ( isset( $this->p->msgs ) ) {
 				if ( empty( $css_id ) ) {
-					$tooltip_index = 'tooltip-' . $title;
+					$tooltip_index = 'tooltip-' . $label;
 				} else {
 					$tooltip_index = 'tooltip-' . $css_id;
 				}
@@ -1233,14 +1233,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( isset( $atts['is_locale'] ) ) {
-				$title .= ' <span style="font-weight:normal;">(' . SucomUtil::get_locale() . ')</span>';
+				$label .= ' <span style="font-weight:normal;">(' . SucomUtil::get_locale() . ')</span>';
 			}
 
 			return '<th' .
 				( empty( $atts['th_colspan'] ) ? '' : ' colspan="' . $atts['th_colspan'] . '"' ) .
 				( empty( $atts['th_rowspan'] ) ? '' : ' rowspan="' . $atts['th_rowspan'] . '"' ) .
 				( empty( $class ) ? '' : ' class="' . $class . '"' ) .
-				( empty( $css_id ) ? '' : ' id="th_' . $css_id . '"' ) . '><p>' . $title .
+				( empty( $css_id ) ? '' : ' id="th_' . $css_id . '"' ) . '><p>' . $label .
 				( empty( $tooltip_text ) ? '' : $tooltip_text ) . '</p></th>';
 		}
 
