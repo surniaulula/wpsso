@@ -1092,9 +1092,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				sprintf( __( '%s Database Transients', 'wpsso' ), $info['short'] ).
 					'</h4></td></tr>';
 			echo '<tr>';
-			echo '<th class="cache-label" nowrap></th>';
-			echo '<th class="cache-count" nowrap>' . __( 'Count', 'wpsso' ) . '</th>';
-			echo '<th class="cache-expiration" nowrap>' . __( 'Expiration', 'wpsso' ) . '</th>';
+			echo '<th class="cache-label"></th>';
+			echo '<th class="cache-count">' . __( 'Count', 'wpsso' ) . '</th>';
+			if ( self::$pkg[$this->p->lca]['aop'] ) {
+				echo '<th class="cache-expiration">' . __( 'Expiration', 'wpsso' ) . '</th>';
+			}
 			echo '</tr>';
 
 			// make sure the "All Transients" count is last
@@ -1134,9 +1136,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 
-				echo '<th class="cache-label" nowrap>' . $cache_label_transl . ':</th>';
-				echo '<td class="cache-count" nowrap>' . $cache_count . '</td>';
-				echo '<td class="cache-expiration" nowrap>' . $cache_exp_html . '</td>';
+				echo '<th class="cache-label">' . $cache_label_transl . ':</th>';
+				echo '<td class="cache-count">' . $cache_count . '</td>';
+				if ( self::$pkg[$this->p->lca]['aop'] ) {
+					echo '<td class="cache-expiration">' . $cache_exp_html . '</td>';
+				}
 				echo '</tr>';
 			}
 
@@ -1169,9 +1173,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</td></tr>';
 
 			if ( $have_filtered_cache_exp ) {
-				echo '<tr><td colspan="' . $table_cols . '"><small>[F] ' .
-					__( 'Expiration option value has been modified by a filter.',
-						'wpsso' ) . '</small></em></td></tr>';
+				if ( self::$pkg[$this->p->lca]['aop'] ) {
+					echo '<tr><td colspan="' . $table_cols . '"><small>[F] ' .
+						__( 'Expiration option value has been modified by a filter.',
+							'wpsso' ) . '</small></em></td></tr>';
+				}
 			}
 
 			echo '</table>';

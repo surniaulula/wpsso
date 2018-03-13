@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 3.56.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-03-13 08:56-0600\n"
-"PO-Revision-Date: 2018-03-13 09:09-0600\n"
+"PO-Revision-Date: 2018-03-13 09:43-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -179,7 +179,7 @@ msgstr "L'option %1$s est cochée - le cache d'URL raccourci sera actualisé."
 
 #: lib/admin.php:1092
 msgid "%s Database Transients"
-msgstr "Objets transitoires %s de la BdD"
+msgstr "Objets transitoires %s de la base de données"
 
 #: lib/admin.php:1096
 msgid "Count"
@@ -192,7 +192,7 @@ msgstr "Expiration"
 #: lib/admin.php:1164
 msgctxt "submit button"
 msgid "Clear All Caches and Short URLs"
-msgstr "Vider tout les caches et URLs raccourcies"
+msgstr "Vider tout et URLs raccourcies"
 
 #: lib/admin.php:1173
 msgid "Expiration option value has been modified by a filter."
