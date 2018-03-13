@@ -4105,8 +4105,8 @@ msgstr ""
 msgid ""
 "For example, the \"%1$s\" SEO meta tag is automatically unchecked if a "
 "<em>known</em> SEO plugin is detected, and the \"%2$s\" meta tag is "
-"unchecked by default (since themes often include this meta tag in their "
-"header template)."
+"unchecked by default (themes often include this meta tag in their header "
+"template)."
 msgstr ""
 
 #: lib/messages.php:1391 lib/submenu/general.php:70
