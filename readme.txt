@@ -381,6 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* Added a new "Auto-Refresh Cache After Clear All" option under the Advanced &gt; Cache Settings tab (Pro version).
+	* Replaced plugin action links in the WordPress Plugins page by a single link to the "Extension Plugins and Pro Licenses" settings page.
 * *Bugfixes*
 	* None
 * *Developer Notes*
