@@ -375,11 +375,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.56.0-b.1 (2018/03/13)**
+**Version 3.56.0-b.2 (2018/03/13)**
 
 * *New Features*
 	* None
 * *Improvements*
+	* Added a check for JetPack SEO Tools to disable some basic SEO meta tags (canonical, description, and robots).
 	* Added a new "Auto-Refresh Cache After Clear All" option under the Advanced &gt; Cache Settings tab (Pro version).
 	* Replaced plugin action links in the WordPress Plugins page by a single link to the "Extension Plugins and Pro Licenses" settings page.
 * *Bugfixes*
@@ -519,9 +520,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.56.0-b.1 =
+= 3.56.0-b.2 =
 
-(2018/03/13) Added a new "Auto-Refresh Cache After Clear All" option under the Advanced &gt; Cache Settings tab (Pro version).
+(2018/03/13) Added a check for JetPack SEO Tools to disable some basic SEO meta tags. Added a new "Auto-Refresh Cache After Clear All" option under the Advanced &gt; Cache Settings tab (Pro version).
 
 = 3.55.2 =
 
