@@ -717,9 +717,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			if ( $refresh_cache ) {
+			wp_clear_scheduled_hook( $this->p->lca . '_refresh_all_cache' );
 
-				wp_clear_scheduled_hook( $this->p->lca . '_refresh_all_cache' );
+			if ( $refresh_cache ) {
 
 				// will run within the next minute
 				wp_schedule_single_event( time(), $this->p->lca . '_refresh_all_cache' );
@@ -2195,8 +2195,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $tabs as $tab => $title ) {
 				$class_href_key = $class_tabset.$metabox_id.'-tab_'.$tab;
-				$this->do_table_rows( $table_rows[$tab], $class_href_key, ( empty( $metabox_id ) ?
-					'' : $class_tabset.$metabox_id ), $class_tabset );
+				$this->do_table_rows( $table_rows[$tab], $class_href_key, 
+					( empty( $metabox_id ) ? '' : $class_tabset.$metabox_id ), $class_tabset );
 			}
 			echo '</div><!-- .'.$class_metabox_tabs.' -->' . "\n\n";
 		}

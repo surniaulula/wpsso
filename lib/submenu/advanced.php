@@ -105,8 +105,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
 						array(), $this->form, false ) );	// $network = false
 			}
-			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox_id ).'</td>' ),
-				'metabox-'.$metabox_id.'-info' );
+			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox_id ).'</td>' ), 'metabox-'.$metabox_id.'-info' );
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 		}
 

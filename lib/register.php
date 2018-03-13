@@ -147,6 +147,10 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			if ( empty( $opts['plugin_preserve'] ) ) {
 
 				delete_option( WPSSO_OPTIONS_NAME );
+
+				/**
+				 * Delete all post meta.
+				 */
 				delete_post_meta_by_key( WPSSO_META_NAME );	// since wp v2.3
 
 				foreach ( get_users() as $user ) {

@@ -17,6 +17,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		private static $c = array();
 		private static $extend_lib_checks = array(
 			'seo' => array(
+				'jetpack' => 'Jetpack SEO Tools',
 				'seou' => 'SEO Ultimate',
 				'sq' => 'Squirrly SEO',
 			),
@@ -30,6 +31,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			$avail = array();
 			$is_admin = is_admin();
+			$jetpack_modules = method_exists( 'Jetpack', 'get_active_modules' ) ? Jetpack::get_active_modules() : array();
 
 			foreach ( array( 'featured', 'amp', 'p_dir', 'head_html', 'vary_ua' ) as $key ) {
 				$avail['*'][$key] = $this->is_avail( $key );
@@ -98,6 +100,13 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							break;
 						case 'seo-headspace2':
 							$chk['class'] = 'HeadSpace_Plugin';
+							break;
+						case 'seo-jetpack':
+							if ( ! empty( $jetpack_modules ) ) {
+								if ( in_array( 'seo-tools', $jetpack_modules ) ) {
+									$avail[$sub]['*'] = $avail[$sub][$id] = true;
+								}
+							}
 							break;
 						case 'seo-seou':
 							$chk['plugin'] = 'seo-ultimate/seo-ultimate.php';
