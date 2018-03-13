@@ -375,7 +375,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.56.0-dev.1 (2018/03/12)**
+**Version 3.56.0-b.1 (2018/03/13)**
 
 * *New Features*
 	* None
@@ -519,9 +519,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.56.0-dev.1 =
+= 3.56.0-b.1 =
 
-(2018/03/12) Added a new "Auto-Refresh Cache After Clear All" option under the Advanced &gt; Cache Settings tab (Pro version).
+(2018/03/13) Added a new "Auto-Refresh Cache After Clear All" option under the Advanced &gt; Cache Settings tab (Pro version).
 
 = 3.55.2 =
 
