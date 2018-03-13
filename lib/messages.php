@@ -890,7 +890,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_clear_all_refresh':	// Auto-Refresh Cache After Clear All
 
-							$text = sprintf( __( 'After clearing all %1$s cache objects, automatically re-create the post, term, and user cache objects from a background task (does not affect page load time).', 'wpsso' ), $info['short'] );
+							$text = sprintf( __( 'After clearing all %1$s cache objects, %1$s can automatically re-create the post, term, and user cache objects from a background task (does not affect page load time).', 'wpsso' ), $info['short'] );
 							break;
 
 						case 'tooltip-plugin_clear_short_urls':
@@ -1337,7 +1337,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= sprintf( __( 'Don\'t forget that the %1$s Free extension must also be installed and active to check for Pro version updates.', 'wpsso' ), $um_info['name'] ).' ;-)</p>';
 
 							if ( ! WpssoAdmin::$pkg[$lca]['aop'] ) {
-								$text .= '<p>'.sprintf( __( 'Please note that Pro extensions use several %1$s features, which means that Pro extensions require an active and licensed %1$s plugin &mdash; don\'t forget to purchase %1$s before purchasing Pro extensions.', 'wpsso' ), $info['short_pro'] ).' ;-)</p>';
+								$text .= '<p>'.sprintf( __( 'Please note that Pro extensions use several %1$s features. This means that all Pro extensions require an active and licensed %1$s plugin &mdash; don\'t forget to purchase %1$s before purchasing any of its Pro extensions.', 'wpsso' ), $info['short_pro'] ).' ;-)</p>';
 							}
 
 							$text .= '</blockquote>';
