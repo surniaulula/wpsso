@@ -1807,7 +1807,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			foreach ( $extensions as $php_ext => $php_info ) {
-				if ( ! extension_loaded( $php_ext.'x' ) ) {
+				if ( ! extension_loaded( $php_ext ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'php ' . $php_ext . ' extension module is not loaded' );
 					}
