@@ -445,23 +445,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			$settings_page = empty( $this->p->cf['*']['lib'][$menu_lib] ) ? '' : key( $this->p->cf['*']['lib'][$menu_lib] );
-			$licenses_page = 'sitesubmenu' === $menu_lib ? 'sitelicenses' : 'licenses';
+			$ext = $this->p->cf['*']['base'][$plugin_base];
+
+			$settings_page  = empty( $this->p->cf['plugin'][$ext]['lib'][$menu_lib] ) ? '' : key( $this->p->cf['plugin'][$ext]['lib'][$menu_lib] );
+			$licenses_page  = 'sitesubmenu' === $menu_lib ? 'sitelicenses' : 'licenses';
 			$dashboard_page = 'sitesubmenu' === $menu_lib ? '' : 'dashboard';
 
 			if ( ! empty( $settings_page ) ) {
-				$links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' .
-					_x( 'Settings', 'lib file description', 'wpsso' ) . '</a>';
+
+				$settings_label = $ext === $this->p->lca ? 
+					_x( $this->p->cf['plugin'][$ext]['lib'][$menu_lib][$settings_page], 'lib file description', 'wpsso' ) : 
+					__( 'Extension Settings', 'wpsso' );
+
+				$links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' . $settings_label . '</a>';
 			}
 
 			if ( ! empty( $licenses_page ) ) {
-				$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' .
-					_x( 'Extensions', 'lib file description', 'wpsso' ) . '</a>';
+				$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' . __( 'Extension Plugins', 'wpsso' ) . '</a>';
 			}
 
 			if ( ! empty( $dashboard_page ) ) {
-				$links[] = '<a href="' . $this->p->util->get_admin_url( $dashboard_page ) . '">' .
-					_x( 'Dashboard', 'lib file description', 'wpsso' ) . '</a>';
+				$links[] = '<a href="' . $this->p->util->get_admin_url( $dashboard_page ) . '">' . __( 'Dashboard', 'wpsso' ) . '</a>';
 			}
 
 			return $links;
