@@ -341,8 +341,8 @@ msgstr ""
 #. translators: %1$s is a URL, %2$s is the extension name, $3%s is a function name, %4$s is a PHP module name
 #: lib/admin.php:1820
 msgid ""
-"The PHP <a href=\"%1$s\">%2$s extension module</a> is not loaded (%3$s for "
-"\"%4$s\" is false)."
+"The PHP <a href=\"%1$s\">%2$s extension module</a> is not loaded (PHP's %3$s "
+"for \"%4$s\" is false)."
 msgstr ""
 
 #: lib/admin.php:1822

@@ -1817,7 +1817,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$func_link = '<a href="'.$func_url.'">'.$func_name.'</a>';
 
 					// translators: %1$s is a URL, %2$s is the extension name, $3%s is a function name, %4$s is a PHP module name
-					$error_msg = __( 'The PHP <a href="%1$s">%2$s extension module</a> is not loaded (%3$s for "%4$s" is false).', 'wpsso' );
+					$error_msg = __( 'The PHP <a href="%1$s">%2$s extension module</a> is not loaded (PHP\'s %3$s for "%4$s" is false).', 'wpsso' );
 					$this->p->notice->err( sprintf( $error_msg, $php_info['url'], $php_info['label'], $func_link, $php_ext ) . ' ' .
 					__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
 				}
