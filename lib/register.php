@@ -29,15 +29,18 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			}
 		}
 
-		// fires immediately after a new site is created
+		/**
+		 * Fires immediately after a new site is created.
+		 */
 		public function wpmu_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 			switch_to_blog( $blog_id );
 			$this->activate_plugin();
 			restore_current_blog();
 		}
 
-		// fires immediately after a site is activated
-		// (not called when users and sites are created by a Super Admin)
+		/**
+		 * Fires immediately after a site is activated (not called when users and sites are created by a Super Admin).
+		 */
 		public function wpmu_activate_blog( $blog_id, $user_id, $password, $signup_title, $meta ) {
 			switch_to_blog( $blog_id );
 			$this->activate_plugin();
@@ -52,11 +55,15 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			self::do_multisite( $sitewide, array( &$this, 'deactivate_plugin' ) );
 		}
 
-		// uninstall.php defines constants before calling network_uninstall()
+		/**
+		 * uninstall.php defines constants before calling network_uninstall().
+		 */
 		public static function network_uninstall() {
 			$sitewide = true;
 
-			// uninstall from the individual blogs first
+			/**
+			 * Uninstall from the individual blogs first.
+			 */
 			self::do_multisite( $sitewide, array( __CLASS__, 'uninstall_plugin' ) );
 
 			$opts = get_site_option( WPSSO_SITE_OPTIONS_NAME, array() );
@@ -91,16 +98,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p->set_options( true ); // Read / create options and site_options ( $activate = true ).
 			$this->p->set_objects( true ); // Load all the class objects ( $activate = true ).
 
-			/**
-			 * Clear all cached objects, transients, and any external cache.
-			 */
 			if ( ! SucomUtil::get_const( 'WPSSO_REG_CLEAR_CACHE_DISABLE' ) ) {
-
-				$clear_external   = true;
-				$clear_short_urls = true;
-				$refresh_cache    = true;
-
-				$this->p->util->clear_all_cache( $clear_external, $clear_short_urls, $refresh_cache );
+				$this->p->util->clear_all_cache( false );
 			}
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
@@ -116,27 +115,23 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		private function deactivate_plugin() {
 
-			/**
-			 * Clear all cached objects, transients (preserve external cache).
-			 */
 			if ( ! SucomUtil::get_const( 'WPSSO_REG_CLEAR_CACHE_DISABLE' ) ) {
-
-				$clear_external   = true;
-				$clear_short_urls = true;
-				$refresh_cache    = false;
-
-				$this->p->util->clear_all_cache( $clear_external, $clear_short_urls, $refresh_cache );
+				$this->p->util->clear_all_cache( false, true, false );
 			}
 
-			// trunc all stored notices for all users
+			/**
+			 * Delete all stored notices for all users.
+			 */
 			$this->p->notice->trunc_all();
 
-			if ( is_object( $this->p->admin ) ) {		// just in case
+			if ( is_object( $this->p->admin ) ) {
 				$this->p->admin->reset_check_head_count();
 			}
 		}
 
-		// uninstall.php defines constants before calling network_uninstall()
+		/**
+		 * uninstall.php defines constants before calling network_uninstall().
+		 */
 		private static function uninstall_plugin() {
 
 			$opts = get_option( WPSSO_OPTIONS_NAME, array() );
