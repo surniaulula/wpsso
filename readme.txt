@@ -382,6 +382,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Added a check for JetPack SEO Tools to disable some basic SEO meta tags (canonical, description, and robots).
 	* Added a new "Auto-Refresh Cache After Clear All" option under the Advanced &gt; Cache Settings tab (Pro version).
+	* Renamed the "Extension Plugins and Pro Licenses" settings page to "Core Extensions and Pro Licenses".
 	* Replaced plugin action links in the WordPress Plugins page by links to the settings, licenses, and dashboard pages.
 * *Bugfixes*
 	* None
