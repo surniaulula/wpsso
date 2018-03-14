@@ -854,7 +854,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( file_exists( $plugin_lib ) ) {
 					require_once $plugin_lib;
 				} else {
-					$error_msg = sprintf( 'WordPress library file %s is missing and required.', $plugin_lib );
+					$error_msg = sprintf( 'The WordPress %s library file is missing and required.', $plugin_lib );
 					self::safe_trigger_error( sprintf( '%s error:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_ERROR );
 				}
 			}
@@ -862,7 +862,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( function_exists( 'get_plugins' ) ) {
 				return self::$cache_wp_plugins = get_plugins();
 			} else {
-				$error_msg = sprintf( 'WordPress function %s is missing and required.', 'get_plugins()' );
+				$error_msg = sprintf( 'The WordPress %s function is missing and required.', 'get_plugins()' );
 				self::safe_trigger_error( sprintf( '%s error:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_ERROR );
 			}
 

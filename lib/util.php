@@ -1033,9 +1033,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$this->p->debug->log( 'libxml_use_internal_errors() function is missing' );
 					}
 					if ( is_admin() ) {
-						$this->p->notice->err( sprintf( __( 'The PHP <a href="%1$s">%2$s function</a> is not available.', 'wpsso' ),
-							'https://secure.php.net/manual/en/function.libxml-use-internal-errors.php', 'libxml_use_internal_errors()' ).' '.
-							__( 'Please contact your hosting provider to have the missing function installed.', 'wpsso' ) );
+						$func_name = 'simplexml_load_string()';
+						$func_url  = 'https://secure.php.net/manual/en/function.simplexml-load-string.php';
+
+						$this->p->notice->err( sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> is not available.', 'wpsso' ),
+							$func_url, $func_name ).' '.__( 'Please contact your hosting provider to have the missing function installed.',
+								'wpsso' ) );
 					}
 					@$doc->loadHTML( $html );
 				}

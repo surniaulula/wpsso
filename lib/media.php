@@ -378,6 +378,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$media_lib = __( 'Media Library', 'wpsso' );
 				$edit_url  = get_edit_post_link( $pid );
 				$func_name = 'wp_get_attachment_metadata()';
+				$func_url  = 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/';
 				$regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
 
 				if ( isset( $img_meta['file'] ) ) {
@@ -393,10 +394,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
-						// translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress function name
-						$error_msg = __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the WordPress %4$s function.', 'wpsso' );
+						$error_msg = __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' );
 
-						$this->p->notice->err( sprintf( $error_msg, $media_lib, $edit_url, $pid, $func_name ).' '.$regen_msg,
+						$this->p->notice->err( sprintf( $error_msg, $media_lib, $edit_url, $pid, $func_url, $func_name ).' '.$regen_msg,
 							true, $dismiss_key, WEEK_IN_SECONDS );
 
 					} elseif ( $this->p->debug->enabled ) {
@@ -418,10 +418,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
-						// translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is a WordPress function name
-						$error_msg = __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the WordPress %4$s function.', 'wpsso' );
+						$error_msg = __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' );
 
-						$this->p->notice->err( sprintf( $error_msg, $media_lib, $edit_url, $pid, $func_name ).' '.$regen_msg,
+						$this->p->notice->err( sprintf( $error_msg, $media_lib, $edit_url, $pid, $func_url, $func_name ).' '.$regen_msg,
 							true, $dismiss_key, WEEK_IN_SECONDS );
 
 					} elseif ( $this->p->debug->enabled ) {
@@ -529,11 +528,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 									$media_lib = __( 'Media Library', 'wpsso' );
 									$func_name = 'image_make_intermediate_size()';
+									$func_url  = 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/';
 
-									// translators: %1$s is "Media Library" (translated), %2$s is a WordPress function name, %3$s is an image file path
-									$error_msg = __( 'Possible %1$s corruption detected &mdash; the WordPress %2$s function reported an error when trying to create an image size from %3$s.', 'wpsso' );
+									$error_msg = __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> reported an error when trying to create an image size from %4$s.', 'wpsso' );
 
-									$this->p->notice->err( sprintf( $error_msg, $media_lib, $func_name, $fullsizepath ),
+									$this->p->notice->err( sprintf( $error_msg, $media_lib, $func_url, $func_name, $fullsizepath ),
 										true, $dismiss_key, WEEK_IN_SECONDS );
 
 								} elseif ( $this->p->debug->enabled ) {

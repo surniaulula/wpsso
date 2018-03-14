@@ -93,6 +93,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$this->text_domain ), '<a href="' . $url.'">' . $url.'</a>', $http_code );
 
 				if ( $http_code === 301 || $http_code === 302 ) {
+
 					/**
 					 * PHP safe mode is an attempt to solve the shared-server security problem. It is architecturally incorrect
 					 * to try to solve this problem at the PHP level, but since the alternatives at the web server and OS levels
@@ -102,13 +103,13 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					 */
 					if ( ini_get( 'safe_mode' ) ) {
 
-						$errors[] = sprintf( __( 'The PHP "%s" feature is enabled &mdash; the PHP cURL library cannot follow URL redirects.',
+						$errors[] = sprintf( __( 'The PHP "%s" setting is enabled &mdash; the PHP cURL library cannot follow URL redirects.',
 							$this->text_domain ), 'safe_mode' );
 
-						$errors[] = sprintf( __( 'The "%s" feature is deprecated since PHP version 5.3 and removed from PHP since version 5.4.',
+						$errors[] = sprintf( __( 'The "%s" setting is deprecated since PHP version 5.3 and removed from PHP since version 5.4.',
 							$this->text_domain ), 'safe_mode' );
 
-						$errors[] = __( 'Please contact your hosting provider to have this feature disabled or install a newer version of PHP.',
+						$errors[] = __( 'Please contact your hosting provider to have this setting disabled or install a newer version of PHP.',
 							$this->text_domain );
 
 					/**
@@ -119,7 +120,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					 */
 					} elseif ( ini_get( 'open_basedir' ) ) {
 
-						$errors[] = sprintf( __( 'The PHP "%s" setting is defined &mdash; the PHP cURL library cannot follow URL redirects.',
+						$errors[] = sprintf( __( 'The PHP "%s" setting is enabled &mdash; the PHP cURL library cannot follow URL redirects.',
 							$this->text_domain ), 'open_basedir' );
 
 						$errors[] = __( 'Please contact your hosting provider to have this setting disabled.',
