@@ -1807,19 +1807,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			foreach ( $extensions as $php_ext => $php_info ) {
-				if ( ! extension_loaded( $php_ext ) ) {
+				if ( ! extension_loaded( $php_ext.'x' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'php ' . $php_ext . ' extension module is not loaded' );
 					}
 
 					$func_name = 'extension_loaded()';
-					$func_url = 'http://php.net/manual/en/function.extension-loaded.php';
+					$func_url  = 'http://php.net/manual/en/function.extension-loaded.php';
 					$func_link = '<a href="'.$func_url.'">'.$func_name.'</a>';
+					$error_msg = __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded (the <a href="%3$s">PHP %4$s function</a> for "%5$s" returned false).', 'wpsso' );
 
-					// translators: %1$s is a URL, %2$s is the extension name, $3%s is a function name, %4$s is a PHP module name
-					$error_msg = __( 'The PHP <a href="%1$s">%2$s extension module</a> is not loaded (PHP\'s %3$s for "%4$s" is false).', 'wpsso' );
-					$this->p->notice->err( sprintf( $error_msg, $php_info['url'], $php_info['label'], $func_link, $php_ext ) . ' ' .
-					__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
+					$this->p->notice->err( sprintf( $error_msg, $php_info['url'], $php_info['label'], $func_url, $func_name, $php_ext ) . ' ' .
+						__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
 				}
 			}
 		}
