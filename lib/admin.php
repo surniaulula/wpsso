@@ -461,7 +461,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( ! empty( $licenses_page ) ) {
-				$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' . __( 'Extension Plugins', 'wpsso' ) . '</a>';
+				$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' . __( 'Core Extensions', 'wpsso' ) . '</a>';
 			}
 
 			if ( ! empty( $dashboard_page ) ) {

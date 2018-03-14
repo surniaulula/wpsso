@@ -27,7 +27,7 @@ msgid "Extension Settings"
 msgstr ""
 
 #: lib/admin.php:464
-msgid "Extension Plugins"
+msgid "Core Extensions"
 msgstr ""
 
 #: lib/admin.php:468 lib/messages.php:1658
@@ -1148,101 +1148,101 @@ msgctxt "option value"
 msgid "Contractor"
 msgstr ""
 
-#: lib/config-gettext-extract.php:21
-msgctxt "option value"
-msgid "[Custom Address]"
+#: lib/config-gettext-extract.php:21 lib/messages.php:1352
+#: lib/messages.php:1596 lib/messages.php:1606 lib/messages.php:1615
+#: lib/messages.php:1627
+msgctxt "lib file description"
+msgid "Core Extensions and Pro Licenses"
 msgstr ""
 
 #: lib/config-gettext-extract.php:22
 msgctxt "option value"
-msgid "Damaged"
+msgid "[Custom Address]"
 msgstr ""
 
 #: lib/config-gettext-extract.php:23
+msgctxt "option value"
+msgid "Damaged"
+msgstr ""
+
+#: lib/config-gettext-extract.php:24
 msgctxt "lib file description"
 msgid "Dashboard and Features Status"
 msgstr ""
 
-#: lib/config-gettext-extract.php:24
+#: lib/config-gettext-extract.php:25
 msgctxt "option value"
 msgid "Day"
 msgstr ""
 
-#: lib/config-gettext-extract.php:25
+#: lib/config-gettext-extract.php:26
 msgctxt "option value"
 msgid "default is %s"
 msgstr ""
 
-#: lib/config-gettext-extract.php:26
+#: lib/config-gettext-extract.php:27
 msgctxt "option value"
 msgid "(default)"
 msgstr ""
 
-#: lib/config-gettext-extract.php:27
+#: lib/config-gettext-extract.php:28
 msgctxt "option value"
 msgid "Development and Up"
 msgstr ""
 
-#: lib/config-gettext-extract.php:28
+#: lib/config-gettext-extract.php:29
 msgctxt "option value"
 msgid "Discontinued"
 msgstr ""
 
-#: lib/config-gettext-extract.php:29
+#: lib/config-gettext-extract.php:30
 msgctxt "option value"
 msgid "Display Name"
 msgstr ""
 
-#: lib/config-gettext-extract.php:30
+#: lib/config-gettext-extract.php:31
 msgctxt "lib file description"
 msgid "Essential Settings"
 msgstr ""
 
-#: lib/config-gettext-extract.php:31
+#: lib/config-gettext-extract.php:32
 msgctxt "option value"
 msgid "Every day"
 msgstr ""
 
-#: lib/config-gettext-extract.php:32
+#: lib/config-gettext-extract.php:33
 msgctxt "option value"
 msgid "Every five days"
 msgstr ""
 
-#: lib/config-gettext-extract.php:33
+#: lib/config-gettext-extract.php:34
 msgctxt "option value"
 msgid "Every four days"
 msgstr ""
 
-#: lib/config-gettext-extract.php:34
+#: lib/config-gettext-extract.php:35
 msgctxt "option value"
 msgid "Every six days"
 msgstr ""
 
-#: lib/config-gettext-extract.php:35
+#: lib/config-gettext-extract.php:36
 msgctxt "option value"
 msgid "Every three days"
 msgstr ""
 
-#: lib/config-gettext-extract.php:36
+#: lib/config-gettext-extract.php:37
 msgctxt "option value"
 msgid "Every two days"
 msgstr ""
 
-#: lib/config-gettext-extract.php:37
+#: lib/config-gettext-extract.php:38
 msgctxt "option value"
 msgid "Every week"
 msgstr ""
 
-#: lib/config-gettext-extract.php:38
+#: lib/config-gettext-extract.php:39
 msgctxt "option value"
 msgid "Excerpt Only"
-msgstr ""
-
-#: lib/config-gettext-extract.php:39 lib/messages.php:1352
-#: lib/messages.php:1596 lib/messages.php:1606 lib/messages.php:1615
-#: lib/messages.php:1627
-msgctxt "lib file description"
-msgid "Extension Plugins and Pro Licenses"
 msgstr ""
 
 #: lib/config-gettext-extract.php:40
@@ -5120,7 +5120,7 @@ msgstr ""
 
 #: lib/sitesubmenu/sitelicenses.php:42 lib/submenu/licenses.php:32
 msgctxt "metabox title"
-msgid "Extension Plugins and Pro Licenses"
+msgid "Core Extensions and Pro Licenses"
 msgstr ""
 
 #: lib/submenu/advanced.php:33

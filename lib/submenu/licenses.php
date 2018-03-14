@@ -29,7 +29,7 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
 			add_meta_box( $this->pagehook.'_licenses',
-				_x( 'Extension Plugins and Pro Licenses', 'metabox title', 'wpsso' ),
+				_x( 'Core Extensions and Pro Licenses', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_licenses' ), $this->pagehook, 'normal' );
 		}
 

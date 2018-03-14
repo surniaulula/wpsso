@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.56.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-03-14 10:58-0600\n"
-"PO-Revision-Date: 2018-03-14 10:59-0600\n"
+"POT-Creation-Date: 2018-03-14 12:39-0600\n"
+"PO-Revision-Date: 2018-03-14 12:50-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -30,8 +30,8 @@ msgid "Extension Settings"
 msgstr "Réglages de l'extension"
 
 #: lib/admin.php:464
-msgid "Extension Plugins"
-msgstr "Autres extensions"
+msgid "Core Extensions"
+msgstr "Extensions Core"
 
 #: lib/admin.php:468 lib/messages.php:1658
 msgid "Dashboard"
@@ -1090,102 +1090,102 @@ msgctxt "option value"
 msgid "Contractor"
 msgstr "Sous-traitant"
 
-#: lib/config-gettext-extract.php:21
+#: lib/config-gettext-extract.php:21 lib/messages.php:1352
+#: lib/messages.php:1596 lib/messages.php:1606 lib/messages.php:1615
+#: lib/messages.php:1627
+msgctxt "lib file description"
+msgid "Core Extensions and Pro Licenses"
+msgstr "Extensions Core et licences Pro"
+
+#: lib/config-gettext-extract.php:22
 msgctxt "option value"
 msgid "[Custom Address]"
 msgstr "[Adresse personnalisée]"
 
-#: lib/config-gettext-extract.php:22
+#: lib/config-gettext-extract.php:23
 msgctxt "option value"
 msgid "Damaged"
 msgstr "Endommagé"
 
-#: lib/config-gettext-extract.php:23
+#: lib/config-gettext-extract.php:24
 msgctxt "lib file description"
 msgid "Dashboard and Features Status"
 msgstr "Tableau de bord et statut des fonctions"
 
-#: lib/config-gettext-extract.php:24
+#: lib/config-gettext-extract.php:25
 msgctxt "option value"
 msgid "Day"
 msgstr "Jour"
 
-#: lib/config-gettext-extract.php:25
+#: lib/config-gettext-extract.php:26
 msgctxt "option value"
 msgid "default is %s"
 msgstr "%s par défaut"
 
-#: lib/config-gettext-extract.php:26
+#: lib/config-gettext-extract.php:27
 msgctxt "option value"
 msgid "(default)"
 msgstr "(défaut)"
 
-#: lib/config-gettext-extract.php:27
+#: lib/config-gettext-extract.php:28
 msgctxt "option value"
 msgid "Development and Up"
 msgstr "Développement et plus"
 
-#: lib/config-gettext-extract.php:28
+#: lib/config-gettext-extract.php:29
 msgctxt "option value"
 msgid "Discontinued"
 msgstr "Discontinué"
 
-#: lib/config-gettext-extract.php:29
+#: lib/config-gettext-extract.php:30
 msgctxt "option value"
 msgid "Display Name"
 msgstr "Nom d'affichage publique"
 
-#: lib/config-gettext-extract.php:30
+#: lib/config-gettext-extract.php:31
 msgctxt "lib file description"
 msgid "Essential Settings"
 msgstr "Réglages essentiels"
 
-#: lib/config-gettext-extract.php:31
+#: lib/config-gettext-extract.php:32
 msgctxt "option value"
 msgid "Every day"
 msgstr "Chaque jour"
 
-#: lib/config-gettext-extract.php:32
+#: lib/config-gettext-extract.php:33
 msgctxt "option value"
 msgid "Every five days"
 msgstr "Aux cinq jours"
 
-#: lib/config-gettext-extract.php:33
+#: lib/config-gettext-extract.php:34
 msgctxt "option value"
 msgid "Every four days"
 msgstr "Aux quatre jours"
 
-#: lib/config-gettext-extract.php:34
+#: lib/config-gettext-extract.php:35
 msgctxt "option value"
 msgid "Every six days"
 msgstr "Aux six jours"
 
-#: lib/config-gettext-extract.php:35
+#: lib/config-gettext-extract.php:36
 msgctxt "option value"
 msgid "Every three days"
 msgstr "Aux trois jours"
 
-#: lib/config-gettext-extract.php:36
+#: lib/config-gettext-extract.php:37
 msgctxt "option value"
 msgid "Every two days"
 msgstr "Aux deux jours"
 
-#: lib/config-gettext-extract.php:37
+#: lib/config-gettext-extract.php:38
 msgctxt "option value"
 msgid "Every week"
 msgstr "Chaque semaine"
 
-#: lib/config-gettext-extract.php:38
+#: lib/config-gettext-extract.php:39
 msgctxt "option value"
 msgid "Excerpt Only"
 msgstr "Extrait seulement"
-
-#: lib/config-gettext-extract.php:39 lib/messages.php:1352
-#: lib/messages.php:1596 lib/messages.php:1606 lib/messages.php:1615
-#: lib/messages.php:1627
-msgctxt "lib file description"
-msgid "Extension Plugins and Pro Licenses"
-msgstr "Autres extensions et licences Pro"
 
 #: lib/config-gettext-extract.php:40
 msgctxt "option value"
@@ -1776,7 +1776,7 @@ msgstr "Shortcode Vidéo de WordPress"
 #: lib/config-gettext-extract.php:157
 msgctxt "plugin description"
 msgid "WPSSO Core extension to add a user locale (language / region) drop-down menu in the WordPress admin back-end and front-end toolbar."
-msgstr "Extension WPSSO Core pour ajouté un sélecteur de langue / région pour les utilisateurs dans la barre d'outils WordPress d'avant et arrière."
+msgstr "Extension WPSSO Core pour ajouter un sélecteur de langue / région pour les utilisateurs dans la barre d'outils WordPress d'avant et arrière."
 
 #: lib/config-gettext-extract.php:158
 msgctxt "plugin description"
@@ -4396,8 +4396,8 @@ msgstr "Réglages de cache"
 
 #: lib/sitesubmenu/sitelicenses.php:42 lib/submenu/licenses.php:32
 msgctxt "metabox title"
-msgid "Extension Plugins and Pro Licenses"
-msgstr "Autres extensions et licences Pro"
+msgid "Core Extensions and Pro Licenses"
+msgstr "Extensions Core et licences Pro"
 
 #: lib/submenu/advanced.php:33
 msgctxt "metabox title"
