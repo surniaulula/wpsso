@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $p;
 		protected $menu_id;
 		protected $menu_name;
-		protected $menu_lib;
+		protected $menu_lib;	// example: profile, setting, submenu, or sitesubmenu
 		protected $menu_ext;	// lowercase acronyn for plugin or extension
 		protected $pagehook;
 		protected $pageref_url;
@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$menu_libs = array( 'submenu', 'setting', 'profile' );
 			}
 
-			foreach ( $menu_libs as $menu_lib ) {
+			foreach ( $menu_libs as $menu_lib ) {	// profile, setting, submenu, or sitesubmenu
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 					if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all extensions have submenus
 						continue;
@@ -179,7 +179,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->add_admin_menus( 'sitesubmenu' );
 		}
 
-		// add a new main menu, and its sub-menu items
+		/**
+		 * Add a new main menu, and its sub-menu items.
+		 *
+		 * $menu_lib = profile | setting | submenu | sitesubmenu
+		 */
 		public function add_admin_menus( $menu_lib = '' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -424,12 +428,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function append_site_plugins_action_links( $links, $plugin_base, $settings_page = 'sitelicenses' ) {
+		public function append_site_plugins_action_links( $links, $plugin_base, $menu_lib = 'sitesubmenu' ) {
 
-			return $this->append_plugins_action_links( $links, $plugin_base, $settings_page );
+			return $this->append_plugins_action_links( $links, $plugin_base, $menu_lib );
 		}
 
-		public function append_plugins_action_links( $links, $plugin_base, $settings_page = 'licenses'  ) {
+		public function append_plugins_action_links( $links, $plugin_base, $menu_lib = 'submenu'  ) {
 
 			if ( ! isset( $this->p->cf['*']['base'][$plugin_base] ) ) {
 				return $links;
@@ -441,8 +445,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			$links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' .
-				_x( 'Extension Plugins and Pro Licenses', 'lib file description', 'wpsso' ) . '</a>';
+			$settings_page = empty( $this->p->cf['*']['lib'][$menu_lib] ) ? '' : key( $this->p->cf['*']['lib'][$menu_lib] );
+			$licenses_page = 'sitesubmenu' === $menu_lib ? 'sitelicenses' : 'licenses';
+			$dashboard_page = 'sitesubmenu' === $menu_lib ? '' : 'dashboard';
+
+			if ( ! empty( $settings_page ) ) {
+				$links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' .
+					_x( 'Settings', 'lib file description', 'wpsso' ) . '</a>';
+			}
+
+			if ( ! empty( $licenses_page ) ) {
+				$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' .
+					_x( 'Extensions', 'lib file description', 'wpsso' ) . '</a>';
+			}
+
+			if ( ! empty( $dashboard_page ) ) {
+				$links[] = '<a href="' . $this->p->util->get_admin_url( $dashboard_page ) . '">' .
+					_x( 'Dashboard', 'lib file description', 'wpsso' ) . '</a>';
+			}
 
 			return $links;
 		}

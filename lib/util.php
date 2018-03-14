@@ -687,8 +687,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			wp_cache_flush();	// clear non-database transients as well
 
-			$this->delete_all_db_transients( $clear_short_urls );
-			$this->delete_all_cache_files();
+			$deleted_count = 0;
+
+			$deleted_count += $this->delete_all_db_transients( $clear_short_urls );
+			$deleted_count += $this->delete_all_cache_files();
 			$this->delete_all_column_meta();
 
 			$short = $this->p->cf['plugin'][$this->p->lca]['short'];
@@ -729,6 +731,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$this->p->notice->inf( $cleared_msg, true, $dismiss_key, true );	// can be dismissed depending on args
+
+			return $deleted_count;
 		}
 
 		public function delete_all_db_transients( $clear_short_urls = false ) { 
@@ -798,7 +802,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$uca = strtoupper( $this->p->lca );
 			$cache_dir = constant( $uca.'_CACHEDIR' );
-			$deleted = 0;
+			$deleted_count = 0;
 
 			if ( ! $dh = @opendir( $cache_dir ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -816,7 +820,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'removed the cache file '.$cache_file );
 							}
-							$deleted++;
+							$deleted_count++;
 						} else {	
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'failed to remove the cache file '.$cache_file );
@@ -831,7 +835,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				closedir( $dh );
 			}
 
-			return $deleted;
+			return $deleted_count;
 		}
 
 		public function delete_all_column_meta() {
