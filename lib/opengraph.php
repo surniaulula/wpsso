@@ -112,11 +112,22 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		public function get_og_type( array $mod ) {
 
-			$lca = $this->p->cf['lca'];
-
-			// an index or static home page should always be 'website'
+			// an index or static home page is 'website'
 			if ( $mod['is_home'] ) {
+
 				$og_type = 'website';
+
+				if ( $mod['is_home_page'] ) {
+					$og_type = apply_filters( $this->p->lca.'_og_type_for_home_page', $og_type, $mod );
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'using og:type '.$og_type.' for home page' );
+					}
+				} else {
+					$og_type = apply_filters( $this->p->lca.'_og_type_for_home_index', $og_type, $mod );
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'using og:type '.$og_type.' for home index' );
+					}
+				}
 
 			// singular posts / pages are articles by default
 			} elseif ( $mod['is_post'] ) {
@@ -133,7 +144,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$og_type = 'website';
 			}
 
-			return apply_filters( $lca.'_og_type', $og_type, $mod );
+			return apply_filters( $this->p->lca.'_og_type', $og_type, $mod );
 		}
 
 		public function get_array( array $mod, array $mt_og, $crawler_name = false ) {

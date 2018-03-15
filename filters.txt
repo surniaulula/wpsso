@@ -100,6 +100,8 @@
 'wpsso_og_ns' ( $ns );
 'wpsso_og_seed' ( $og, $mod );
 'wpsso_og_type' ( $og_type, $mod );
+'wpsso_og_type_for_home_index' ( $og_type, $mod );
+'wpsso_og_type_for_home_page' ( $og_type, $mod );
 'wpsso_opengraph_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) );
 'wpsso_option_type' ( false, $key, $network, $mod );
 'wpsso_plugin_image_sizes' ( $sizes, $mod, $crawler_name );
