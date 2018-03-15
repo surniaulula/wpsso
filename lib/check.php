@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		private static $c = array();
 		private static $extend_lib_checks = array(
 			'seo' => array(
-				'jetpack' => 'Jetpack SEO Tools',
+				'jetpack-seo' => 'Jetpack SEO Tools',
 				'seou' => 'SEO Ultimate',
 				'sq' => 'Squirrly SEO',
 			),
@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'seo-headspace2':
 							$chk['class'] = 'HeadSpace_Plugin';
 							break;
-						case 'seo-jetpack':
+						case 'seo-jetpack-seo':
 							if ( ! empty( $jetpack_modules ) ) {
 								if ( in_array( 'seo-tools', $jetpack_modules ) ) {
 									$avail[$sub]['*'] = $avail[$sub][$id] = true;
