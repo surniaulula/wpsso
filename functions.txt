@@ -1,14 +1,29 @@
+
 wpsso_clear_all_cache( $clear_external = false );
+
 wpsso_clear_post_cache( $post_id );
-wpsso_get_page_mod( $use_post = false );	// get $mod for the current webpage
+
+wpsso_get_page_mod( $use_post = false );
+
 wpsso_get_post_event_options( $post_id, $type_id = false );
+
 wpsso_get_post_job_options( $post_id, $type_id = false );
+
 wpsso_get_post_mod( $post_id );
+
 wpsso_get_post_organization_options( $post_id, $type_id = 'site' );
+
 wpsso_get_post_place_options( $post_id, $type_id = 'custom' );
+
 wpsso_get_sharing_url( $mod = false, $add_page = true );
+
 wpsso_get_short_url( $mod = false, $add_page = true );
+
 wpsso_get_term_mod( $term_id );
+
 wpsso_get_user_mod( $user_id );
-wpsso_is_mobile();	// returns true or false
-wpsso_schema_attributes( $attr = '' );	// echoes the head HTML tag attributes
+
+wpsso_is_mobile();
+
+wpsso_schema_attributes( $attr = '' );
+

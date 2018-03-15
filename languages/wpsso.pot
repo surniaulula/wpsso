@@ -5667,26 +5667,26 @@ msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""
 
-#: wpsso.php:343
+#: wpsso.php:344
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:357
+#: wpsso.php:358
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:365
+#: wpsso.php:366
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:366
+#: wpsso.php:367
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

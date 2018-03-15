@@ -1,163 +1,327 @@
+
 'sucom_get_post_object' ( $post_obj, $use_post );
+
 'sucom_get_term_object' ( $term_obj, $term_id, $tax_slug );
+
 'sucom_get_user_object' ( $user_obj, $user_id );
+
 'sucom_is_home_index' ( $ret, $use_post );
+
 'sucom_is_home_page' ( $ret, $use_post );
+
 'sucom_is_post_page' ( $ret, $use_post );
+
 'sucom_is_term_page' ( $ret );
+
 'sucom_is_user_page' ( $ret );
+
 'sucom_strip_shortcodes' ( $preg_array );
+
 'wpsso_add_head_html' ( $bool, $mod );
+
 'wpsso_add_link_rel_author' ( $bool, $mod );
+
 'wpsso_add_link_rel_canonical' ( $bool, $mod );
+
 'wpsso_add_link_rel_publisher' ( $bool, $mod );
+
 'wpsso_add_link_rel_shortlink' ( $bool, $mod );
+
 'wpsso_add_meta_name_description' ( $bool );
+
 'wpsso_add_meta_name_wpsso:mark' ( $bool );
+
 'wpsso_add_metabox_post' ( $bool, $post_id, $post_type );
+
 'wpsso_add_metabox_term' ( $bool, $term_id );
+
 'wpsso_add_metabox_user' ( $bool, $user_id );
+
 'wpsso_add_schema_head_attributes' ( $bool );
+
 'wpsso_add_schema_meta_array' ( $bool );
+
 'wpsso_archive_url' ( $url, $mod, $add_page, $src_id );
+
 'wpsso_article_section' ( $section, $post_id );
+
 'wpsso_article_topics' ( $topics );
+
 'wpsso_attached_image_ids' ( $attach_ids, $post_id );
+
 'wpsso_attached_images' ( $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
+
 'wpsso_attached_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid );
+
 'wpsso_cache_expire_article_topics' ( $secs );
+
 'wpsso_cache_expire_content_text' ( $secs );
+
 'wpsso_cache_expire_head_array' ( $secs );
+
 'wpsso_cache_expire_image_url_size' ( $secs );
+
 'wpsso_cache_expire_schema_json_data' ( $secs );
+
 'wpsso_cache_expire_schema_types' ( $secs );
+
 'wpsso_cache_expire_short_url' ( $secs );	// Pro version
+
 'wpsso_canonical_url' ( $url, $mod, $add_page, $src_id );
+
 'wpsso_caption' ( $caption, $mod, $add_hashtags, $md_idx );
+
 'wpsso_check_post_head' ( $bool, $post_id, $post_obj );
+
 'wpsso_columns_post_{post_type_name}' ( true );
+
 'wpsso_content' ( $content, $mod, $md_idx );
+
 'wpsso_content_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $mod );
+
 'wpsso_content_image_preg_html_tag' ( $default = 'img' );
+
 'wpsso_content_image_preg_pid_attr' ( $default = 'data-[a-z]+-pid' );
+
 'wpsso_content_seed' ( '', $mod, $use_cache, $md_idx );
+
 'wpsso_description' ( $desc, $mod, $add_hashtags, $md_idx );
+
 'wpsso_description_pre_limit' ( $desc );
+
 'wpsso_description_seed' ( '', $mod, $add_hashtags, $md_idx );
+
 'wpsso_filter_content' ( $bool, $mod );
+
 'wpsso_filter_excerpt' ( $bool, $mod );
+
 'wpsso_filter_title' ( $bool, $mod );
+
 'wpsso_get_avail' ( $ret );
+
 'wpsso_get_config' ( $cf, $plugin_version );
+
 'wpsso_get_defaults' ( $defaults );
+
 'wpsso_get_post_options' ( $options, $post_id );	// Pro version
+
 'wpsso_get_short_url' ( $long_url, $service_key, $mod, $context );
+
 'wpsso_get_site_defaults' ( $defaults );
+
 'wpsso_get_term_options' ( $options, $term_id );	// Pro version
+
 'wpsso_get_user_options' ( $options, $user_id );	// Pro version
+
 'wpsso_hashtags' ( $hashtags, $post_id );
+
 'wpsso_hashtags_seed' ( '', $post_id );
+
 'wpsso_home_url' ( $url, $mod, $add_page, $src_id );
+
 'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false );	// Pro version
+
 'wpsso_image_upscale_max' ( $max_diff = 50, $img_info );	// Pro version
+
 'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $img_info );	// Pro version
+
 'wpsso_is_functions' ( $is_functions );
+
 'wpsso_js_url_facebook' ( $url, $pos );
+
 'wpsso_json_add_https_schema_org_collectionpage_mentions' ( $bool );
+
 'wpsso_json_add_https_schema_org_searchresultspage_mentions' ( $bool );
+
 'wpsso_json_add_https_schema_org_profilepage_mentions' ( $bool );
+
 'wpsso_json_add_https_schema_org_blog_blogpost' ( $bool );
+
 'wpsso_json_array_schema_page_type_ids' ( $page_type_ids, $mod );
+
 'wpsso_json_data_https_schema_org_{item_type}' ( $json_data, $mod, $mt_og, $page_type_id, $is_main );
+
 'wpsso_json_data_single_event' ( $event_data, $mod, $event_id );
+
 'wpsso_json_data_single_organization' ( $org_data, $mod, $org_id );
+
 'wpsso_json_data_single_organization_sameas' ( $org_sameas, $mod, $org_id );
+
 'wpsso_json_data_single_person' ( $person_data, $mod, $user_id );
+
 'wpsso_json_data_single_person_sameas' ( $person_sameas, $mod, $user_id );
+
 'wpsso_json_data_single_place' ( $place_data, $mod, $place_id );
+
 'wpsso_json_ld_search_url' ( $search_url, $mod, $add_page, $src_id );
+
 'wpsso_json_prop_https_schema_org_aggregaterating' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main );
+
 'wpsso_json_prop_https_schema_org_potentialaction' ( $prop_data, $mod, $mt_og, $page_type_id, $is_main );
+
 'wpsso_link_rel' ( $link_rel, $mod );
+
 'wpsso_load_lib' ( false, "$type/$sub/$id" );
+
 'wpsso_meta_name' ( $mt_name, $mod );
+
 'wpsso_ngg_tags' ( $tags, $pid );	// Pro version
+
 'wpsso_ngg_tags_seed' ( $tags, $pid );	// Pro version
+
 'wpsso_ngg_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid );
+
 'wpsso_og' ( $og, $mod );
+
 'wpsso_og_add_mt_offers' ( $bool, $mod );
+
 'wpsso_og_add_mt_rating' ( $bool, $mod );
+
 'wpsso_og_add_mt_reviews' ( $bool, $mod );
+
 'wpsso_og_default_img_id' ( $image_id );
+
 'wpsso_og_default_img_url' ( $image_url );
+
 'wpsso_og_default_img_on_index' ( $bool );
+
 'wpsso_og_default_img_on_search' ( $bool );
+
 'wpsso_og_ecom_edd' ( $og_ecom, $mod );	// Pro version
+
 'wpsso_og_ecom_marketpress' ( $og_ecom, $mod );	// Pro version
+
 'wpsso_og_ecom_woocommerce' ( $og_ecom, $mod );	// Pro version
+
 'wpsso_og_ecom_wpecommerce' ( $og_ecom, $mod );	// Pro version
+
 'wpsso_og_featured' ( $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
+
 'wpsso_og_ns' ( $ns );
+
 'wpsso_og_seed' ( $og, $mod );
+
 'wpsso_og_type' ( $og_type, $mod );
+
 'wpsso_og_type_for_home_index' ( $og_type, $mod );
+
 'wpsso_og_type_for_home_page' ( $og_type, $mod );
+
 'wpsso_opengraph_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) );
+
 'wpsso_option_type' ( false, $key, $network, $mod );
+
 'wpsso_plugin_image_sizes' ( $sizes, $mod, $crawler_name );
+
 'wpsso_post_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt );
+
 'wpsso_post_cache_transient_keys' ( $transient_keys, $mod, $sharing_url, $mod_salt );
+
 'wpsso_post_image_ids' ( array $ids, $size_name, $post_id );
+
 'wpsso_post_image_urls' ( array $urls, $size_name, $post_id );
+
 'wpsso_post_custom_meta_tabs' ( $tabs, $mod, $metabox_id );
+
 'wpsso_post_types' ( $post_types, $output );
+
 'wpsso_post_url' ( $url, $mod, $add_page, $src_id );
+
 'wpsso_posts_per_page' ( $num, $mod );
+
 'wpsso_quote' ( $quote, $mod );
+
 'wpsso_quote_seed' ( '', $mod );
+
 'wpsso_rename_options_keys' ( $options_keys );
+
 'wpsso_rename_site_options_keys' ( $options_keys );
+
 'wpsso_rename_md_options_keys' ( $options_keys );
+
 'wpsso_save_options' ( $opts, $options_name, $network );
+
 'wpsso_save_site_options' ( $opts );
+
 'wpsso_save_post_options' ( $opts, $post_id, $rel_id, $mod );
+
 'wpsso_save_term_options' ( $opts, $term_id, $term_tax_id, $mod );
+
 'wpsso_save_user_options' ( $opts, $term_id, false, $mod );
+
 'wpsso_schema_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) );
+
 'wpsso_schema_meta_itemprop' ( $mt_schema, $mod, $mt_og, $page_type_id );
+
 'wpsso_schema_noscript_array' ( $ret, $mod, $mt_og, $page_type_id );
+
 'wpsso_schema_type_for_default' ( 'webpage' );
+
 'wpsso_schema_type_for_home_index' ( $type_id );
+
 'wpsso_schema_type_for_home_page' ( $type_id );
+
 'wpsso_schema_type_for_post_type_empty' ( $type_id );
+
 'wpsso_schema_type_for_post_type_unknown' ( $type_id );
+
 'wpsso_schema_type_id' ( $type_id, $mod, $is_custom );
+
 'wpsso_schema_types' ( (array) $schema_types );
+
 'wpsso_search_url' ( $url, $mod, $add_page, $src_id );
+
 'wpsso_server_request_url' ( $url, $mod, $add_page, $src_id );
+
 'wpsso_server_request_url_disable_cache' ( $bool, $url, $mod, $add_page, $src_id );
+
 'wpsso_sharing_url' ( $url, $mod, $add_page, $src_id );
+
 'wpsso_shorten_url' ( true, $long_url, $service_key );
+
 'wpsso_size_info_'.$size_info['name'] ( $size_info, $post_id );
+
 'wpsso_social_accounts' ( (array) $social_accounts );
+
 'wpsso_tags' ( $tags, $post_id );
+
 'wpsso_term_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt );
+
 'wpsso_term_cache_transient_keys' ( $transient_keys, $mod, $sharing_url, $mod_salt );
+
 'wpsso_term_image_ids' ( array $ids, $size_name, $term_id );
+
 'wpsso_term_image_urls' ( array $urls, $size_name, $term_id );
+
 'wpsso_term_custom_meta_tabs' ( $tabs, $mod, $metabox_id );
+
 'wpsso_tc' ( $tc, $mod );
+
 'wpsso_tc_seed' ( $tc, $mod );
+
 'wpsso_term_url' ( $url, $mod, $add_page, $src_id );
+
 'wpsso_title' ( $title, $mod, $add_hashtags, $md_idx, $sep );
+
 'wpsso_title_pre_limit' ( $title );
+
 'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_idx, $sep );
+
 'wpsso_user_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt );
+
 'wpsso_user_cache_transient_keys' ( $transient_keys, $mod, $sharing_url, $mod_salt );
+
 'wpsso_user_image_ids' ( array $ids, $size_name, $user_id );
+
 'wpsso_user_image_urls' ( array $urls, $size_name, $user_id );
+
 'wpsso_user_object_description' ( $desc, $author_obj );
+
 'wpsso_user_object_title' ( $title, $author_obj );
+
 'wpsso_user_custom_meta_tabs' ( $tabs, $mod, $metabox_id );
+
 'wpsso_user_url' ( $url, $mod, $add_page, $src_id );
+
 'wpsso_wp_tags' ( $tags, $post_id );
+

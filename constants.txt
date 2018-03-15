@@ -2,7 +2,6 @@
 /**
  * Hard-coded / fixed constants (values cannot be modified).
  */
-
 WPSSO_FILEPATH
 WPSSO_PLUGINDIR
 WPSSO_PLUGINSLUG
@@ -12,7 +11,6 @@ WPSSO_URLPATH
 /**
  * Variable constants (define in wp-config.php file to change default values).
  */
-
 WPSSO_NONCE_NAME			= // md5 string unique to each version
 WPSSO_TOPICS_LIST			= WPSSO_PLUGINDIR.'share/topics.txt'
 WPSSO_CACHEDIR				= WPSSO_PLUGINDIR.'cache/'
@@ -66,7 +64,6 @@ WPSSO_PHP_CURL_USERAGENT		= 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47
 /**
  * Undefined constants (can be defined to change specific plugin behaviors).
  */
-
 FORCE_SSL				= (not defined)
 WPSSO_HTML_DEBUG			= (not defined)
 WPSSO_WP_DEBUG				= (not defined)

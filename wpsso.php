@@ -304,6 +304,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			if ( $this->debug->enabled ) {
 				$this->debug->mark( 'init objects action' );	// begin timer
 			}
+
 			do_action( 'wpsso_init_objects', $activate );
 
 			if ( $this->debug->enabled ) {

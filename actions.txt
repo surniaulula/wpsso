@@ -1,5 +1,15 @@
+
 'wpsso_init_objects' ( $plugin_activate );
+
 'wpsso_init_plugin' ();
+
 'wpsso_init_textdomain' ( $debug_enabled );
+
+/**
+ * Hooked by some modules, like bbPress and social sharing buttons,
+ * to perform actions before / after filtering the content.
+ */
 'wpsso_pre_apply_filters_text' ( $filter_name );
+
 'wpsso_after_apply_filters_text' ( $filter_name );
+
