@@ -1034,11 +1034,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 					if ( is_admin() ) {
 						$func_name = 'simplexml_load_string()';
-						$func_url  = 'https://secure.php.net/manual/en/function.simplexml-load-string.php';
+						$func_url  = __( 'https://secure.php.net/manual/en/function.simplexml-load-string.php', 'wpsso' );
 
-						$this->p->notice->err( sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> is not available.', 'wpsso' ),
-							$func_url, $func_name ).' '.__( 'Please contact your hosting provider to have the missing function installed.',
-								'wpsso' ) );
+						$error_msg = sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> is not available.', 'wpsso' ),
+							$func_url, '<code>'.$func_name.'</code>' ).' ';
+
+						$error_msg .= __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
+
+						$this->p->notice->err( $error_msg );
 					}
 					@$doc->loadHTML( $html );
 				}

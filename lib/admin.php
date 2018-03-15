@@ -1813,12 +1813,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					$func_name = 'extension_loaded()';
-					$func_url  = 'http://php.net/manual/en/function.extension-loaded.php';
-					$func_link = '<a href="'.$func_url.'">'.$func_name.'</a>';
-					$error_msg = __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded (the <a href="%3$s">PHP %4$s function</a> for "%5$s" returned false).', 'wpsso' );
+					$func_url  = __( 'https://secure.php.net/manual/en/function.extension-loaded.php', 'wpsso' );
 
-					$this->p->notice->err( sprintf( $error_msg, $php_info['url'], $php_info['label'], $func_url, $func_name, $php_ext ) . ' ' .
-						__( 'Please contact your hosting provider to have the missing PHP extension installed and/or enabled.', 'wpsso' ) );
+					$error_msg = sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded (the <a href="%3$s">PHP %4$s function</a> for "%5$s" is false).', 'wpsso' ), $php_info['url'], $php_info['label'], $func_url, '<code>'.$func_name.'</code>', $php_ext );
+
+					if ( $php_ext === 'imagick' ) {
+						$error_msg .= ' '.sprintf( __( 'Note that the PHP "%1$s" extension and the ImageMagick application are two different products &mdash; this error is for the PHP "%1$s" extension.', 'wpsso' ), $php_ext );
+					}
+
+					$error_msg .= ' '.sprintf( __( 'Please contact your hosting provider to have the missing PHP "%1$s" extension installed and/or enabled.', 'wpsso' ), $php_ext );
+
+					$this->p->notice->err( $error_msg );
 				}
 			}
 		}

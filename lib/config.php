@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// main plugin lowercase acronym (deprecated on 2017/11/18)
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.56.0-rc.2',		// Plugin version.
+					'version' => '3.56.0-rc.3',		// Plugin version.
 					'opt_version' => '578',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -1178,7 +1178,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'label' => 'PHP',
 				'min_version' => '5.4',		// hard limit - deactivate the plugin when activating
 				'rec_version' => '5.6',		// soft limit - issue warning if lower version found
-				'version_url' => 'http://php.net/supported-versions.php',
+				'version_url' => 'https://secure.php.net/supported-versions.php',
 				'extensions' => array(
 					'curl' => array(
 						'label' => 'Client URL Library (cURL)',

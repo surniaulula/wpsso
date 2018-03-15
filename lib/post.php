@@ -816,9 +816,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'error parsing head meta for '.$check_url );
 					}
 					if ( $is_admin ) {
-						$w3c_html_check_url = 'https://validator.w3.org/nu/?doc='.urlencode( $check_url );
-						$pinterest_tab_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' );
-						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $check_url ).' '.sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $w3c_html_check_url ).' '.sprintf( __( 'You may safely ignore any "nopin" attribute errors, or disable the "nopin" attribute under the <a href="%s">Pinterest settings tab</a>.', 'wpsso' ), $pinterest_tab_url ) );
+						$validator_url = 'https://validator.w3.org/nu/?doc='.urlencode( $check_url );
+						$settings_page_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' );
+
+						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $check_url ).' '.sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $validator_url ).' '.sprintf( __( 'You may safely ignore any "nopin" attribute errors, or disable the "nopin" attribute under the <a href="%s">Pinterest settings tab</a>.', 'wpsso' ), $settings_page_url ) );
 					}
 				} else {
 					foreach( array(

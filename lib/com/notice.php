@@ -697,7 +697,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					margin-top:1.2em;
 					margin-bottom:0.8em;
 				}
-				.' . $this->lca . '-notice .notice-message a {
+				.' . $this->lca . '-notice .notice-message code {
+					font-family:"Courier", monospace;
+					font-size:0.95em;
+					padding:0 2px;
+					margin:0;
+				}
+				.' . $this->lca . '-notice .notice-message a code {
+					vertical-align:middle;
+					padding:0;
 				}
 				.' . $this->lca . '-notice .notice-message p {
 					margin:1em 0;

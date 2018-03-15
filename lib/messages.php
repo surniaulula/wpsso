@@ -101,11 +101,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_title':
 
-							$option_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
+							$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
 								_x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' ) );
+
 							$text = __( 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' ) . ' ';
 							// translators: %s is a link to the (translated) "Use Filtered (SEO) Title" option settings page
-							$text .= sprintf( __( 'If the %s option is enabled, the default title value may be provided by your theme or another SEO plugin.', 'wpsso' ), $option_page_link );
+							$text .= sprintf( __( 'If the %s option is enabled, the default title value may be provided by your theme or another SEO plugin.', 'wpsso' ), $settings_page_link );
 						 	break;
 
 						case 'tooltip-meta-og_desc':
@@ -202,19 +203,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_vid_embed':
 
-							$option_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_custom_meta',
+							$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_custom_meta',
 								_x( 'Video Embed HTML Custom Field', 'option label', 'wpsso' ) );
 
-							$text = 'Custom Video Embed HTML to use for the first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$option_page_link.' advanced option also allows a 3rd-party theme or plugin to provide custom Video Embed HTML for this option.';
+							$text = 'Custom Video Embed HTML to use for the first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$settings_page_link.' advanced option also allows a 3rd-party theme or plugin to provide custom Video Embed HTML for this option.';
 
 						 	break;
 
 						case 'tooltip-meta-og_vid_url':
 
-							$option_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_custom_meta',
+							$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_custom_meta',
 								_x( 'Video URL Custom Field', 'option label', 'wpsso' ) );
 
-							$text = 'A custom Video URL to include first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$option_page_link.' advanced option allows a 3rd-party theme or plugin to provide a custom Video URL value for this option.';
+							$text = 'A custom Video URL to include first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$settings_page_link.' advanced option allows a 3rd-party theme or plugin to provide a custom Video URL value for this option.';
 
 						 	break;
 
@@ -289,8 +290,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					switch ( $idx ) {
 						case 'tooltip-site_name':
 
-							$settings_url = get_admin_url( null, 'options-general.php' );
-							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', $settings_url );
+							$settings_page_url = get_admin_url( null, 'options-general.php' );
+
+							$text = sprintf( __( 'The WordPress Site Name is used for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag. You may override <a href="%2$s">the default WordPress Site Title value</a>.', 'wpsso' ), '<code>og:site_name</code>', $settings_page_url );
 
 							break;
 
@@ -302,9 +304,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-site_desc':
 
-							$settings_url = get_admin_url( null, 'options-general.php' );
+							$settings_page_url = get_admin_url( null, 'options-general.php' );
 
-							$text = sprintf( __( 'The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ).' '.sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), $settings_url );
+							$text = sprintf( __( 'The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag.', 'wpsso' ), '<code>og:description</code>' ).' '.sprintf( __( 'You may override <a href="%1$s">the default WordPress Tagline value</a> here, to provide a longer and more complete description of your website.', 'wpsso' ), $settings_page_url );
 
 							break;
 
@@ -721,14 +723,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_html_attr_filter':
 
 							$func_name   = 'language_attributes()';
-							$func_url    = 'https://developer.wordpress.org/reference/functions/language_attributes/';
+							$func_url    = __( 'https://developer.wordpress.org/reference/functions/language_attributes/', 'wpsso' );
 							$filter_name = 'language_attributes';
 							$html_tag    = '<code>&amp;lt;html&amp;gt;</code>';
 							$php_code    = '<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
 
 							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' ';
 							
-							$text .= sprintf( __( 'The <a href="%1$s">WordPress %2$s function</a> and its \'%3$s\' filter are used by most themes &mdash; if the namespace prefix values are missing from your %4$s HTML tag attributes, make sure your header template(s) use the %1$s function.', 'wpsso' ), $func_url, $func_name, $filter_name, $html_tag ).' ';
+							$text .= sprintf( __( 'The <a href="%1$s">WordPress %2$s function</a> and its \'%3$s\' filter are used by most themes &mdash; if the namespace prefix values are missing from your %4$s HTML tag attributes, make sure your header template(s) use the %2$s function.', 'wpsso' ), $func_url, '<code>'.$func_name.'</code>', $filter_name, $html_tag ).' ';
 							
 							$text .= __( 'Leaving this option empty disables the addition of Open Graph namespace values.', 'wpsso' ).' ';
 							
@@ -1591,14 +1593,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-header-tmpl-no-head-attr':
 
 						$filter_name = 'head_attributes';
-						$html_tag = '<code>&lt;head&gt;</code>';
-						$php_code = '<pre><code>&lt;head &lt;?php do_action( &#39;add_head_attributes&#39; ); ?&gt;&gt;</code></pre>';
-						$option_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-							_x( '&lt;head&gt; Attributes Filter Hook', 'option label', 'wpsso' ) );
-						$action_url = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].'-action=modify_tmpl_head_attributes' ),
+						$html_tag    = '<code>&lt;head&gt;</code>';
+						$php_code    = '<pre><code>&lt;head &lt;?php do_action( &#39;add_head_attributes&#39; ); ?&gt;&gt;</code></pre>';
+						$action_url  = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf['lca'].'-action=modify_tmpl_head_attributes' ),
 							WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
-						$text = '<p>'.__( '<b>At least one of your theme header templates does not support Schema markup of the webpage head section</b> &mdash; this is especially important for Pinterest (and Google if not using the JSON-LD extension).', 'wpsso' ).' '.sprintf( __( 'The %1$s HTML tag in your header templates should include a function, action, or filter for its attributes.', 'wpsso' ), $html_tag ).' '.sprintf( __( '%1$s can update your header template(s) automatically and change the existing %2$s HTML tag to:', 'wpsso' ), $info['short'], $html_tag ).'</p>'.$php_code.'<p>'.sprintf( __( '<b><a href="%1$s">Click here to update header template(s) automatically</a></b> (recommended) or update the template(s) manually.', 'wpsso' ), $action_url ).'</p>';
+						$text = '<p>';
+						
+						$text .= __( '<b>At least one of your theme header templates does not support Schema markup of the webpage head section</b> &mdash; this is especially important for Pinterest (and Google if not using the JSON-LD extension).', 'wpsso' ).' ';
+
+						$text .= sprintf( __( 'The %1$s HTML tag in your header template(s) should include a function, action, or filter for its attributes.', 'wpsso' ), $html_tag ).' ';
+
+						$text .= sprintf( __( '%1$s can update your header template(s) automatically and change the existing %2$s HTML tag to:', 'wpsso' ), $info['short'], $html_tag );
+						
+						$text .= '</p>'.$php_code.'<p>';
+
+						$text .= sprintf( __( '<b><a href="%1$s">Click here to update header template(s) automatically</a></b> (recommended) or update the template(s) manually.', 'wpsso' ), $action_url );
+						
+						$text .= '</p>';
 
 						break;
 

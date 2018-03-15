@@ -378,7 +378,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$media_lib = __( 'Media Library', 'wpsso' );
 				$edit_url  = get_edit_post_link( $pid );
 				$func_name = 'wp_get_attachment_metadata()';
-				$func_url  = 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/';
+				$func_url  = __( 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/', 'wpsso' );
 				$regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
 
 				if ( isset( $img_meta['file'] ) ) {
@@ -394,10 +394,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
-						$error_msg = __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' );
+						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_url, '<code>'.$func_name.'</code>' );
 
-						$this->p->notice->err( sprintf( $error_msg, $media_lib, $edit_url, $pid, $func_url, $func_name ).' '.$regen_msg,
-							true, $dismiss_key, WEEK_IN_SECONDS );
+						$this->p->notice->err( $error_msg.' '.$regen_msg, true, $dismiss_key, WEEK_IN_SECONDS );
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -418,10 +417,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
-						$error_msg = __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' );
+						$error_msg = printf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_url, '<code>'.$func_name.'</code>' );
 
-						$this->p->notice->err( sprintf( $error_msg, $media_lib, $edit_url, $pid, $func_url, $func_name ).' '.$regen_msg,
-							true, $dismiss_key, WEEK_IN_SECONDS );
+						$this->p->notice->err( $error_msg.' '.$regen_msg, true, $dismiss_key, WEEK_IN_SECONDS );
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -528,12 +526,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 									$media_lib = __( 'Media Library', 'wpsso' );
 									$func_name = 'image_make_intermediate_size()';
-									$func_url  = 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/';
+									$func_url  = __( 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/', 'wpsso' );
+									$regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
 
-									$error_msg = __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> reported an error when trying to create an image size from %4$s.', 'wpsso' );
+									$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> reported an error when trying to create an image size from %4$s.', 'wpsso' ), $media_lib, $func_url, '<code>'.$func_name.'</code>', $fullsizepath );
 
-									$this->p->notice->err( sprintf( $error_msg, $media_lib, $func_url, $func_name, $fullsizepath ),
-										true, $dismiss_key, WEEK_IN_SECONDS );
+									$this->p->notice->err( $error_msg.' '.$regen_msg, true, $dismiss_key, WEEK_IN_SECONDS );
 
 								} elseif ( $this->p->debug->enabled ) {
 
