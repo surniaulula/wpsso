@@ -375,7 +375,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.56.0-rc.3 (2018/03/15)**
+**Version 3.56.0 (2018/03/15)**
 
 * *New Features*
 	* None
@@ -521,7 +521,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.56.0-rc.3 =
+= 3.56.0 =
 
 (2018/03/15) Added a check for JetPack SEO Tools to disable some basic SEO meta tags. Added a new "Auto-Refresh Cache After Clear All" option under the Advanced &gt; Cache Settings tab (Pro version).
 
