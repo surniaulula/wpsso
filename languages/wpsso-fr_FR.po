@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 3.56.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-03-15 04:53-0600\n"
-"PO-Revision-Date: 2018-03-15 04:58-0600\n"
+"PO-Revision-Date: 2018-03-15 06:04-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2498,7 +2498,7 @@ msgstr "Vous pouvez régénérer les vignettes de toutes les images WordPress Me
 
 #: lib/media.php:397
 msgid "Possible %1$s corruption detected &mdash; the full size image dimensions for <a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
-msgstr "Corruption possible de %1$s détecté &mdash; les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la <a href=\"%5$s\">fonction WordPress %5$s</a>."
+msgstr "Corruption possible de %1$s détecté &mdash; les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
 #: lib/media.php:420
 msgid "Possible %1$s corruption detected &mdash; the full size image file path for <a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
