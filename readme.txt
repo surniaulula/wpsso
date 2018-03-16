@@ -380,7 +380,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* Added dismiss links for images exceeding an aspect ratio and images smaller than a standard requires.
+	* Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
 * *Bugfixes*
 	* Fixed the unhide link when notices are dismissed, to unhide error and warning notices separately.
 * *Developer Notes*
@@ -534,7 +534,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.56.1-dev.1 =
 
-(2018/03/16) Fixed the unhide link when notices are dismissed, to unhide error and warning notices separately. Added dismiss links for images exceeding an aspect ratio and images smaller than a standard requires.
+(2018/03/16) Fixed the unhide link when notices are dismissed, to unhide error and warning notices separately. Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
 
 = 3.56.0 =
 
