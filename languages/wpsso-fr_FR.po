@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.56.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-03-15 04:53-0600\n"
-"PO-Revision-Date: 2018-03-15 06:04-0600\n"
+"POT-Creation-Date: 2018-03-16 09:25-0600\n"
+"PO-Revision-Date: 2018-03-16 09:25-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -871,12 +871,12 @@ msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes, and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/com/bfo.php:204 lib/com/cache.php:471 lib/com/notice.php:552
+#: lib/com/bfo.php:204 lib/com/cache.php:471 lib/com/notice.php:74
 #: lib/com-gettext-extract.php:25
 msgid "%s Notice"
 msgstr "Avis %s"
 
-#: lib/com/bfo.php:207 lib/com/cache.php:474 lib/com/notice.php:555
+#: lib/com/bfo.php:207 lib/com/cache.php:474 lib/com/notice.php:77
 #: lib/com-gettext-extract.php:18
 msgid "Notice"
 msgstr "Avis"
@@ -961,37 +961,37 @@ msgstr "Le dossier de cache %s n'est pas accessible en écriture."
 msgid "Failed to open the cache file %s for writing."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 
-#: lib/com/notice.php:77 lib/com-gettext-extract.php:30
+#: lib/com/notice.php:143 lib/com-gettext-extract.php:30
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr "Cet avis peut être masqué temporairement pour une période de %s."
 
-#: lib/com/notice.php:199 lib/com-gettext-extract.php:10
+#: lib/com/notice.php:275 lib/com-gettext-extract.php:10
 msgid "edit"
 msgstr "modifier"
 
-#: lib/com/notice.php:200 lib/com-gettext-extract.php:23
+#: lib/com/notice.php:276 lib/com-gettext-extract.php:23
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#: lib/com/notice.php:487 lib/com-gettext-extract.php:31
+#: lib/com/notice.php:496 lib/com-gettext-extract.php:31
 msgctxt "notification type"
 msgid "error"
 msgstr "erreur"
 
-#: lib/com/notice.php:488 lib/com-gettext-extract.php:32
+#: lib/com/notice.php:497 lib/com-gettext-extract.php:32
 msgctxt "notification type"
 msgid "warning"
 msgstr "alerte"
 
-#: lib/com/notice.php:493 lib/com-gettext-extract.php:4
+#: lib/com/notice.php:502 lib/com-gettext-extract.php:4
 msgid "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
 
-#: lib/com/notice.php:495 lib/com-gettext-extract.php:3
+#: lib/com/notice.php:504 lib/com-gettext-extract.php:3
 msgid "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s message</a>."
 msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
 
-#: lib/com/notice.php:625 lib/com-gettext-extract.php:9
+#: lib/com/notice.php:584 lib/com-gettext-extract.php:9
 msgid "Dismiss"
 msgstr "Masquer"
 
@@ -2483,8 +2483,8 @@ msgstr "Fichier de bibliothèque \"%s\" introuvable"
 msgid "The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s."
 msgstr "Le module d'intégration de NextGEN Gallery fourni par %1$s est requis pour lire les informations sur l'image d'ID %2$s."
 
-#: lib/media.php:378 lib/media.php:527 lib/media.php:1195
-#: lib/pro/util/checkimgdims.php:85
+#: lib/media.php:378 lib/media.php:527 lib/media.php:1213
+#: lib/pro/util/checkimgdims.php:89
 msgid "Media Library"
 msgstr "la bibliothèque de médias"
 
@@ -2512,17 +2512,26 @@ msgstr "https://developer.wordpress.org/reference/functions/image_make_intermedi
 msgid "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress %3$s function</a> reported an error when trying to create an image size from %4$s."
 msgstr "Corruption possible de %1$s détecté &mdash; la <a href=\"%2$s\">fonction WordPress %3$s</a> a signalé une erreur lors de la tentative de création d'une taille d'image à partir de %4$s."
 
-#: lib/media.php:879
+#: lib/media.php:893
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1268
-msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
-msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
+#: lib/media.php:1219 lib/pro/media/ngg.php:129
+#: lib/pro/util/checkimgdims.php:91
+msgid "image ID %s"
+msgstr "ID d'image %s"
 
-#: lib/media.php:1288
-msgid "%1$s image %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
-msgstr "L'image %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
+#: lib/media.php:1229
+msgid "image URL %s"
+msgstr "URL d'image %s"
+
+#: lib/media.php:1297
+msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
+msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
+
+#: lib/media.php:1324
+msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
+msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
 #: lib/messages.php:68
 msgid "Facebook has published a preference for Open Graph image dimensions of 1200x630px cropped (for retina and high-PPI displays), 600x315px cropped as a minimum (the default settings value), and ignores images smaller than 200x200px."
@@ -4238,19 +4247,17 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr "Modifier le profil de %s"
 
-#: lib/pro/media/ngg.php:127 lib/pro/media/ngg.php:1238
+#: lib/pro/media/ngg.php:128 lib/pro/media/ngg.php:1234
 msgid "NextGEN Gallery"
 msgstr "NextGEN Gallery"
 
-#: lib/pro/media/ngg.php:132 lib/pro/util/checkimgdims.php:92
+#: lib/pro/media/ngg.php:132 lib/pro/util/checkimgdims.php:95
 msgid "cropped"
 msgstr "recadrée"
 
-#. translators: %1$s is "NextGEN Gallery" (translated), %2$s is the image ID, %3$s is the image dimension, %4$s is the required
-#. size name and its dimension
-#: lib/pro/media/ngg.php:135
-msgid "%1$s image ID %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
-msgstr "L'image avec l'ID %2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
+#: lib/pro/media/ngg.php:133 lib/pro/util/checkimgdims.php:96
+msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
+msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
 #: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:147
 #: lib/pro/media/wistia.php:275 lib/util.php:1037
@@ -4275,23 +4282,17 @@ msgstr "L'image avec l'ID %1$s de %2$s ne peut pas être agrandie par %3$s de %4
 msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size."
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
-#: lib/pro/util/checkimgdims.php:67
+#: lib/pro/util/checkimgdims.php:71
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#. translators: %1$s is "Media Library" (translated), %2$s is the image editing URL, %3$s is the image ID, %4$s is the image
-#. dimension, %5$s is the required size name and its dimension
-#: lib/pro/util/checkimgdims.php:95
-msgid "%1$s <a href=\"%2$s\">image ID %3$s</a> ignored &mdash; the resulting image of %4$s is too small for the required %5$s image dimensions."
-msgstr "<a href=\"%2$s\">L'ID d'image %3$s</a> de %1$s a été ignoré &mdash; l'image résultante de %4$s est trop petite pour les dimensions requis par %5$s."
-
-#: lib/pro/util/checkimgdims.php:158
-msgid "%1$s includes an additional 'data-wp-pid' attribute for Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content."
-msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de la bibliothèque de médias &mdash; si cette image provient de la bibliothèque de médias, et quelle a été inséré au contenu avant que %1$s soit activé, essayez de supprimer et ré-ajouter à nouveau l'image au contenu."
-
-#: lib/pro/util/checkimgdims.php:160
+#: lib/pro/util/checkimgdims.php:162
 msgid "Image %1$s in content ignored &mdash; the image width / height is too small for the required %2$s image dimensions."
 msgstr "L'image %1$s du contenu a été ignoré &mdash; la largeur / hauteur est insuffisante pour les dimensions requis par %2$s."
+
+#: lib/pro/util/checkimgdims.php:163
+msgid "%1$s includes an additional 'data-wp-pid' attribute for Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content."
+msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de la bibliothèque de médias &mdash; si cette image provient de la bibliothèque de médias, et quelle a été inséré au contenu avant que %1$s soit activé, essayez de supprimer et ré-ajouter à nouveau l'image au contenu."
 
 #: lib/pro/util/shorten.php:228 lib/pro/util/shorten.php:259
 #: lib/pro/util/shorten.php:284 lib/pro/util/shorten.php:318
@@ -4912,20 +4913,20 @@ msgctxt "option comment"
 msgid "%s ext. required"
 msgstr "%s ext. requise"
 
-#: wpsso.php:343
+#: wpsso.php:344
 msgid "WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif &mdash; des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:357
+#: wpsso.php:358
 msgid "HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif &mdash; des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
 #. translators: %s is the short plugin name
-#: wpsso.php:365
+#: wpsso.php:366
 msgid "Debug mode disables some %s caching features, which degrades performance slightly."
 msgstr "Le mode de débogage désactive certaines fonctionnalités de mise en cache de %s, ce qui dégrade la performance légèrement."
 
-#: wpsso.php:366
+#: wpsso.php:367
 msgid "Please disable debug mode when debugging is complete."
 msgstr "SVP désactiver le mode de débogage lorsque le débogage est terminé."
 

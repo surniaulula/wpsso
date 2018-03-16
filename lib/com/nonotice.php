@@ -29,11 +29,9 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public function get_ref_url_html() {}
 		public function is_ref_url() {}
 		public function is_admin_pre_notices() { return false; }
-		public function can_dismiss() {}
 		public function is_dismissed() {}
+		public function can_dismiss() {}
 		public function reload_user_notices() {}
-		public function ajax_dismiss_notice() {}
-		public function admin_footer_script() {}
 		public function hook_admin_notices() {}
 		public function show_admin_notices() {}
 		public function save_user_notices() {}
