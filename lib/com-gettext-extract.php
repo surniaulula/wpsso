@@ -1,7 +1,5 @@
 <?php die( 'These aren\'t the droids you\'re looking for...' );
 // extract of translatable text strings from common library classes
-__( '%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.', 'wpsso' );
-__( '%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s messages</a>.', 'wpsso' );
 __( 'All WordPress filter hooks must return their text, not send it to the webpage output.', 'wpsso' );
 __( 'BEGIN OUTPUT', 'wpsso' );
 __( 'Cache file %s is not readable.', 'wpsso' );

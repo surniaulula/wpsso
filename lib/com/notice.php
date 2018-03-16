@@ -498,12 +498,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			) as $msg_type => $log_name ) {
 				if ( empty( $hidden[$msg_type] ) ) {
 					continue;
-				} elseif ( $hidden[$msg_type] > 1 ) {
-					$msg_text = __( '%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s messages</a>.', $this->text_domain );
-				} else {
-					$msg_text = __( '%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.', $this->text_domain );
 				}
-				echo $this->get_notice_html( $msg_type, sprintf( $msg_text, $hidden[$msg_type], $log_name, $this->lca . '-unhide-notices' ) );
+				
+				$msg_text = _n(
+					'%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.',
+					'%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s messages</a>.',
+					$hidden[$msg_type], $this->text_domain
+				);
+
+				$msg_text = sprintf( $msg_text, $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
+
+				echo $this->get_notice_html( $msg_type, $msg_text );
 			}
 
 			echo $msg_html;
@@ -807,9 +812,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 <script type="text/javascript">
 	jQuery( document ).ready( function() {
 
-		jQuery("#' . $this->lca . '-unhide-notices").click( function() {
-			var notice = jQuery( this ).parents(".' . $this->lca . '-notice");
-			jQuery(".' . $this->lca . '-dismissible").show();
+		jQuery("#' . $this->lca . '-unhide-notice-err").click( function() {
+			var notice = jQuery( this ).parents(".' . $this->lca . '-notice.notice-error");
+			jQuery(".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-error").show();
+			notice.hide();
+		});
+
+		jQuery("#' . $this->lca . '-unhide-notice-warn").click( function() {
+			var notice = jQuery( this ).parents(".' . $this->lca . '-notice.notice-warning");
+			jQuery(".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-warning").show();
 			notice.hide();
 		});
 
