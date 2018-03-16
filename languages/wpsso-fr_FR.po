@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.56.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-03-16 09:25-0600\n"
-"PO-Revision-Date: 2018-03-16 09:25-0600\n"
+"POT-Creation-Date: 2018-03-16 09:46-0600\n"
+"PO-Revision-Date: 2018-03-16 09:49-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -872,126 +872,124 @@ msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (pl
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #: lib/com/bfo.php:204 lib/com/cache.php:471 lib/com/notice.php:74
-#: lib/com-gettext-extract.php:25
+#: lib/com-gettext-extract.php:23
 msgid "%s Notice"
 msgstr "Avis %s"
 
 #: lib/com/bfo.php:207 lib/com/cache.php:474 lib/com/notice.php:77
-#: lib/com-gettext-extract.php:18
+#: lib/com-gettext-extract.php:16
 msgid "Notice"
 msgstr "Avis"
 
-#: lib/com/bfo.php:219 lib/com-gettext-extract.php:26
+#: lib/com/bfo.php:219 lib/com-gettext-extract.php:24
 msgid "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly sent output to the webpage."
 msgstr "Le crochet de filtre \"%1$s\" avec la priorité %2$d dans le filtre \"%3$s\" a envoyé une valeur à la sortie de page Web incorrectement."
 
-#: lib/com/bfo.php:221 lib/com-gettext-extract.php:5
+#: lib/com/bfo.php:221 lib/com-gettext-extract.php:3
 msgid "All WordPress filter hooks must return their text, not send it to the webpage output."
 msgstr "Tous les crochets de filtre WordPress doivent retourner leur texte, pas l'envoyer à la sortie de la page Web."
 
-#: lib/com/bfo.php:223 lib/com-gettext-extract.php:20
+#: lib/com/bfo.php:223 lib/com-gettext-extract.php:18
 msgid "Please contact the author of that filter hook and report this issue as a coding error."
 msgstr "SVP contacter l'auteur de ce filtre et signaler ce problème comme une erreur de codage."
 
-#: lib/com/bfo.php:249 lib/com-gettext-extract.php:17
+#: lib/com/bfo.php:249 lib/com-gettext-extract.php:15
 msgid "Incorrect webpage output:"
 msgstr "Sortie incorrecte à la page Web:"
 
-#: lib/com/bfo.php:250 lib/com-gettext-extract.php:6
+#: lib/com/bfo.php:250 lib/com-gettext-extract.php:4
 msgid "BEGIN OUTPUT"
 msgstr "DÉBUT DE SORTIE"
 
-#: lib/com/bfo.php:251 lib/com-gettext-extract.php:11
+#: lib/com/bfo.php:251 lib/com-gettext-extract.php:9
 msgid "END OUTPUT"
 msgstr "FIN DE SORTIE"
 
-#: lib/com/cache.php:92 lib/com-gettext-extract.php:12
+#: lib/com/cache.php:92 lib/com-gettext-extract.php:10
 msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
 msgstr "Erreur de connexion à %1$s pour la mise en cache (code HTTP %2$d)."
 
-#: lib/com/cache.php:106 lib/com/cache.php:123 lib/com-gettext-extract.php:28
+#: lib/com/cache.php:106 lib/com/cache.php:123 lib/com-gettext-extract.php:26
 msgid "The PHP \"%s\" setting is enabled &mdash; the PHP cURL library cannot follow URL redirects."
 msgstr "Le paramètre PHP \"%s\" est activé &mdash; la bibliothèque PHP cURL ne peut pas suivre les re-directions d'URL."
 
-#: lib/com/cache.php:109 lib/com-gettext-extract.php:29
+#: lib/com/cache.php:109 lib/com-gettext-extract.php:27
 msgid "The \"%s\" setting is deprecated since PHP version 5.3 and removed from PHP since version 5.4."
 msgstr "Le paramètre \"%s\" est obsolète depuis la version 5.3 de PHP et supprimée de PHP depuis la version 5.4."
 
-#: lib/com/cache.php:112 lib/com-gettext-extract.php:21
+#: lib/com/cache.php:112 lib/com-gettext-extract.php:19
 msgid "Please contact your hosting provider to have this setting disabled or install a newer version of PHP."
 msgstr "SVP contacter votre fournisseur d'hébergement pour désactiver ce paramètre ou installer une version plus récente de PHP."
 
-#: lib/com/cache.php:126 lib/com-gettext-extract.php:22
+#: lib/com/cache.php:126 lib/com-gettext-extract.php:20
 msgid "Please contact your hosting provider to have this setting disabled."
 msgstr "SVP contacter votre fournisseur d'hébergement pour désactiver ce paramètre."
 
-#: lib/com/cache.php:130 lib/com-gettext-extract.php:27
+#: lib/com/cache.php:130 lib/com-gettext-extract.php:25
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr "Le nombre maximal de redirections d'URL (%d) peut avoir été dépassé."
 
-#: lib/com/cache.php:135 lib/com-gettext-extract.php:24
+#: lib/com/cache.php:135 lib/com-gettext-extract.php:22
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr "Les demandes de mise en cache de cette URL seront ignorées pour %d seconde(s)."
 
-#: lib/com/cache.php:241 lib/com-gettext-extract.php:19
+#: lib/com/cache.php:241 lib/com-gettext-extract.php:17
 msgid "PHP cURL library is missing &mdash; contact your hosting provider to have the cURL library installed."
 msgstr "La bibliothèque cURL de PHP est manquante &mdash; contactez votre hébergeur pour faire installer la bibliothèque cURL."
 
-#: lib/com/cache.php:321 lib/com-gettext-extract.php:13
+#: lib/com/cache.php:321 lib/com-gettext-extract.php:11
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
-#: lib/com/cache.php:523 lib/com-gettext-extract.php:7
+#: lib/com/cache.php:523 lib/com-gettext-extract.php:5
 msgid "Cache file %s is not readable."
 msgstr "Le fichier de cache %s n'est pas lisible."
 
-#: lib/com/cache.php:535 lib/com-gettext-extract.php:15
+#: lib/com/cache.php:535 lib/com-gettext-extract.php:13
 msgid "Failed to open the cache file %s for reading."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour lecture."
 
-#: lib/com/cache.php:620 lib/com-gettext-extract.php:14
+#: lib/com/cache.php:620 lib/com-gettext-extract.php:12
 msgid "Failed to create the %s cache folder."
 msgstr "Impossible de créer le dossier de cache %s."
 
-#: lib/com/cache.php:628 lib/com-gettext-extract.php:8
+#: lib/com/cache.php:628 lib/com-gettext-extract.php:6
 msgid "Cache folder %s is not writable."
 msgstr "Le dossier de cache %s n'est pas accessible en écriture."
 
-#: lib/com/cache.php:636 lib/com-gettext-extract.php:16
+#: lib/com/cache.php:636 lib/com-gettext-extract.php:14
 msgid "Failed to open the cache file %s for writing."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 
-#: lib/com/notice.php:143 lib/com-gettext-extract.php:30
+#: lib/com/notice.php:143 lib/com-gettext-extract.php:28
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr "Cet avis peut être masqué temporairement pour une période de %s."
 
-#: lib/com/notice.php:275 lib/com-gettext-extract.php:10
+#: lib/com/notice.php:275 lib/com-gettext-extract.php:8
 msgid "edit"
 msgstr "modifier"
 
-#: lib/com/notice.php:276 lib/com-gettext-extract.php:23
+#: lib/com/notice.php:276 lib/com-gettext-extract.php:21
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#: lib/com/notice.php:496 lib/com-gettext-extract.php:31
+#: lib/com/notice.php:496 lib/com-gettext-extract.php:29
 msgctxt "notification type"
 msgid "error"
 msgstr "erreur"
 
-#: lib/com/notice.php:497 lib/com-gettext-extract.php:32
+#: lib/com/notice.php:497 lib/com-gettext-extract.php:30
 msgctxt "notification type"
 msgid "warning"
 msgstr "alerte"
 
-#: lib/com/notice.php:502 lib/com-gettext-extract.php:4
-msgid "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
-msgstr "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
-
-#: lib/com/notice.php:504 lib/com-gettext-extract.php:3
+#: lib/com/notice.php:503
 msgid "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s message</a>."
-msgstr "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
+msgid_plural "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
+msgstr[0] "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
+msgstr[1] "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
 
-#: lib/com/notice.php:584 lib/com-gettext-extract.php:9
+#: lib/com/notice.php:589 lib/com-gettext-extract.php:7
 msgid "Dismiss"
 msgstr "Masquer"
 
@@ -4949,3 +4947,6 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#~ msgid "%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id=\"%3$s\">unhide and view the %2$s messages</a>."
+#~ msgstr "%1$d avis d'%2$ss importants on été masqués et/ou ignorés &mdash; <a id=\"%3$s\">démasquer et afficher les message d'%2$ss</a>."
