@@ -863,13 +863,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		public function get_tags( $post_id ) {
 
-			$tags = apply_filters( $this->p->cf['lca'].'_tags_seed', array(), $post_id );
+			$tags = apply_filters( $this->p->lca.'_tags_seed', array(), $post_id );
 
 			if ( ! empty( $tags ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'tags seed = "'.implode( ',', $tags ).'"' );
 				}
+
 			} else {
+
 				if ( is_singular() || ! empty( $post_id ) ) {
 
 					$tags = $this->get_wp_tags( $post_id );
@@ -884,6 +887,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$tags = array_merge( $tags, $this->p->m['media']['ngg']->get_tags( $pid ) );
 						}
 					}
+
 				} elseif ( is_search() ) {
 					$tags = preg_split( '/ *, */', get_search_query( false ) );
 				}
@@ -904,22 +908,35 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		public function get_wp_tags( $post_id ) {
 
-			$tags = apply_filters( $this->p->cf['lca'].'_wp_tags_seed', array(), $post_id );
+			$tags = apply_filters( $this->p->lca.'_wp_tags_seed', array(), $post_id );
 
 			if ( ! empty( $tags ) ) {
-				$this->p->debug->log( 'wp tags seed = "'.implode( ',', $tags ).'"' );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'wp tags seed = "'.implode( ',', $tags ).'"' );
+				}
+
 			} else {
+
 				$post_ids = array ( $post_id );	// array of one
 
-				// add the parent tags if option is enabled
+				/**
+				 * Add all post parent IDs to the array if 'og_page_parent_tags' option is true.
+				 */
 				if ( $this->p->options['og_page_parent_tags'] && is_page( $post_id ) ) {
 					$post_ids = array_merge( $post_ids, get_post_ancestors( $post_id ) );
 				}
 
 				foreach ( $post_ids as $id ) {
+
+					/**
+					 * Add the post title to the tag array. This includes the post parent title 
+					 * as well if the 'og_page_parent_tags' option is true.
+					 */
 					if ( $this->p->options['og_page_title_tag'] && is_page( $id ) ) {
 						$tags[] = SucomUtil::sanitize_tag( get_the_title( $id ) );
 					}
+
 					foreach ( wp_get_post_tags( $id, array( 'fields' => 'names') ) as $tag_name ) {
 						$tags[] = $tag_name;
 					}
@@ -944,18 +961,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( isset( $term_obj->name ) ) {
+
 				$title_text = $term_obj->name.' ';
+
 				if ( ! empty( $sep ) ) {
 					$title_text .= $sep.' ';	// default value
 				}
+
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'name property missing in term object' );
 			}
 
 			if ( ! empty( $sep ) ) {
+
 				$cat = get_category( $term_obj->term_id );
 
 				if ( ! empty( $cat->category_parent ) ) {
+
 					$cat_parents = get_category_parents( $term_obj->term_id, false, ' '.$sep.' ', false );
 	
 					if ( is_wp_error( $cat_parents ) ) {

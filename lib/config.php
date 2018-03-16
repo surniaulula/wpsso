@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version' => '3.56.1-dev.1',		// Plugin version.
-					'opt_version' => '578',		// Increment when changing default option values.
+					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
 					'desc' => 'Automatically create complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and many more.',
@@ -668,7 +668,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_title_warn' => 40,
 					'og_desc_len' => 300,			// maximum length in characters (hard limit)
 					'og_desc_warn' => 200,			// recommended maximum length in characters for Facebook (soft limit)
-					'og_desc_hashtags' => 3,
+					'og_desc_hashtags' => 0,
 					'p_publisher_url' => '',		// (localized)
 					'p_author_name' => 'display_name',	// rich-pin specific article:author
 					'p_dom_verify' => '',
@@ -1187,10 +1187,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'gd' => array(
 						'label' => 'Image Processing (GD)',
 						'url' => 'https://secure.php.net/manual/en/book.image.php',
+						'wp_editor' => 'WP_Image_Editor_GD',
+						'wp_url' => 'https://developer.wordpress.org/reference/classes/wp_image_editor_gd/',
 					),
 					'imagick' => array(
 						'label' => 'Image Processing (ImageMagick)',
 						'url' => 'https://secure.php.net/manual/en/book.imagick.php',
+						'wp_editor' => 'WP_Image_Editor_Imagick',
+						'wp_url' => 'https://developer.wordpress.org/reference/classes/wp_image_editor_imagick/',
 					),
 					'json' => array(
 						'label' => 'JavaScript Object Notation (JSON)',

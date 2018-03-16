@@ -1786,44 +1786,42 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			require_once ABSPATH . WPINC . '/class-wp-image-editor-gd.php';
 			require_once ABSPATH . WPINC . '/class-wp-image-editor-imagick.php';
 
-			$editors = array( 'WP_Image_Editor_Imagick', 'WP_Image_Editor_GD' );
-			$implementations = apply_filters( 'wp_image_editors', $editors );
-			$extensions = $this->p->cf['php']['extensions'];
+			$default_editors = array( 'WP_Image_Editor_Imagick', 'WP_Image_Editor_GD' );
+			$implementations = apply_filters( 'wp_image_editors', $default_editors );
+			$php_extensions  = $this->p->cf['php']['extensions'];
 
-			/**
-			 * Only check for PHP image extensions that WordPress is actually using. :)
-			 */
-			foreach ( $editors as $class_name ) {
-				if ( ! in_array( $class_name, $implementations ) ) {
-					switch ( $class_name ) {
-						case 'WP_Image_Editor_Imagick':
-							unset ( $extensions['imagick'] );
-							break;
-						case 'WP_Image_Editor_GD':
-							unset ( $extensions['gd'] );
-							break;
+			foreach ( $php_extensions as $php_ext => $php_info ) {
+
+				if ( ! empty( $php_info['wp_editor'] ) ) {
+					if ( ! in_array( $php_info['wp_editor'], $implementations ) ) {
+						continue;
 					}
 				}
-			}
 
-			foreach ( $extensions as $php_ext => $php_info ) {
 				if ( ! extension_loaded( $php_ext ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'php ' . $php_ext . ' extension module is not loaded' );
 					}
 
+					$error_msg = '';
 					$func_name = 'extension_loaded()';
 					$func_url  = __( 'https://secure.php.net/manual/en/function.extension-loaded.php', 'wpsso' );
 
-					$error_msg = sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded (the <a href="%3$s">PHP %4$s function</a> for "%5$s" is false).', 'wpsso' ), $php_info['url'], $php_info['label'], $func_url, '<code>'.$func_name.'</code>', $php_ext );
-
-					if ( $php_ext === 'imagick' ) {
-						$error_msg .= ' '.sprintf( __( 'Note that the PHP "%1$s" extension and the ImageMagick application are two different products &mdash; this error is for the PHP "%1$s" extension.', 'wpsso' ), $php_ext );
+					if ( ! empty( $php_info['wp_editor'] ) ) {
+						$editor_label = '<a href="'.$php_info['wp_url'].'">'.$php_info['wp_editor'].'</a>';
+						$error_msg .= sprintf( __( 'WordPress is configured to use the %1$s image editing class but the <a href="%2$s">PHP %3$s extension module</a> is not loaded: The <a href="%4$s">PHP %5$s function</a> for "%6$s" is false.', 'wpsso' ), $editor_label, $php_info['url'], $php_info['label'], $func_url, '<code>'.$func_name.'</code>', $php_ext ).' ';
+					} else {
+						$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded: The <a href="%3$s">PHP %4$s function</a> for "%5$s" is false.', 'wpsso' ), $php_info['url'], $php_info['label'], $func_url, '<code>'.$func_name.'</code>', $php_ext ).' ';
 					}
 
-					$error_msg .= ' '.sprintf( __( 'Please contact your hosting provider to have the missing PHP "%1$s" extension installed and/or enabled.', 'wpsso' ), $php_ext );
+					if ( $php_ext === 'imagick' ) {
+						$error_msg .= sprintf( __( 'Note that the ImageMagick application and the PHP "%1$s" extension are two different products &mdash; this error is for the PHP "%1$s" extension, not the ImageMagick application.', 'wpsso' ), $php_ext ).' ';
+					}
 
-					$this->p->notice->err( $error_msg );
+					$error_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP "%1$s" extension installed and enabled.', 'wpsso' ), $php_ext ).' ';
+
+					$this->p->notice->err( trim( $error_msg ) );
 				}
 			}
 		}
