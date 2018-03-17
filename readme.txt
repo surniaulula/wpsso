@@ -375,12 +375,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.56.1-dev.1 (2018/03/16)**
+**Version 3.56.1-b.1 (2018/03/16)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
+	* Updated the Open Graph Example in the Social and Search Optimization metabox (under the Preview tab) to take both columns.
+	* Minor CSS updates for the Gutenberg editor page.
 * *Bugfixes*
 	* Fixed the unhide link when notices are dismissed, to unhide error and warning notices separately.
 * *Developer Notes*
@@ -532,7 +534,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.56.1-dev.1 =
+= 3.56.1-b.1 =
 
 (2018/03/16) Fixed the unhide link when notices are dismissed, to unhide error and warning notices separately. Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
 
