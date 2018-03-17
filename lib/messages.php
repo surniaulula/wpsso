@@ -1329,7 +1329,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 	
 						case 'info-meta-social-preview':
 
-						 	$text = '<p style="text-align:right;">'.__( 'An <em>example</em> link share on Facebook. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
+						 	$text = '<p>'.__( 'An <em>example</em> link share on Facebook. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
 
 						 	break;
 

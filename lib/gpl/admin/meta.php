@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'content' => $form->get_no_input_value( $def_og_title, 'wide' ),
 				),
 				'og_desc' => array(
-					'label' => _x( 'Default Description (Facebook / Open Graph, LinkedIn, Pinterest Rich Pin)', 'option label', 'wpsso' ),
+					'label' => _x( 'Default Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-og_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
 				),
@@ -80,6 +80,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'content' => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ),
 				),
 				'tc_desc' => array(
+					'tr_class' => $form->get_css_class_hide( 'basic', 'tc_desc' ),
 					'label' => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-tc_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),

@@ -176,32 +176,29 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$prev_width = 600;
 			$prev_height = 315;
 			$refresh_cache = $this->p->util->is_force_regen( $mod, 'og' ) ? '?force_regen='.time() : '';
-			$media_url = SucomUtil::get_mt_media_url( $head_info, 'og:image' ).$refresh_cache;
+			$media_url = SucomUtil::get_mt_media_url( $head_info, 'og:image' ) . $refresh_cache;
 
-			$have_sizes = ( ! empty( $head_info['og:image:width'] ) && $head_info['og:image:width'] > 0 && 
-				! empty( $head_info['og:image:height'] ) && $head_info['og:image:height'] > 0 ) ?
-					true : false;
+			$have_sizes = ( isset( $head_info['og:image:width'] ) && $head_info['og:image:width'] > 0 && 
+				isset( $head_info['og:image:height'] ) && $head_info['og:image:height'] > 0 ) ? true : false;
 
-			$is_sufficient = true === $have_sizes && 
-				$head_info['og:image:width'] >= $prev_width && 
-					$head_info['og:image:height'] >= $prev_height ?
-						true : false;
+			$is_sufficient = true === $have_sizes && $head_info['og:image:width'] >= $prev_width && 
+				$head_info['og:image:height'] >= $prev_height ? true : false;
 
 			if ( ! empty( $media_url ) ) {
+
 				if ( true === $have_sizes ) {
-					$image_preview_html = '<div class="preview_img" style="
-					background-size:'.( true === $is_sufficient ?
-						'cover' : $head_info['og:image:width'].' '.$head_info['og:image:height'] ).'; 
-					background-image:url('.$media_url.');" />'.( true === $is_sufficient ? 
-						'' : '<p>'.sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
-							'preview image error', 'wpsso' ),
-								$prev_width.'x'.$prev_height.'px' ).'</p>' ).'</div>';
+
+					$image_preview_html = '<div class="preview_img" style=" background-size:'.
+						( true === $is_sufficient ? 'cover' : $head_info['og:image:width'].' '.$head_info['og:image:height'] ).
+							'; background-image:url('.$media_url.');" />'.
+						( true === $is_sufficient ? '' : '<p>'.sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
+							'preview image error', 'wpsso' ), $prev_width.'x'.$prev_height.'px' ).'</p>' ).'</div>';
 				} else {
-					$image_preview_html = '<div class="preview_img" style="
-					background-image:url('.$media_url.');" /><p>'.
-					_x( 'Image Dimensions Unknown<br/>or Not Available',
-						'preview image error', 'wpsso' ).'</p></div>';
+
+					$image_preview_html = '<div class="preview_img" style="background-image:url('.$media_url.');" /><p>'.
+						_x( 'Image Dimensions Unknown<br/>or Not Available', 'preview image error', 'wpsso' ).'</p></div>';
 				}
+				
 			} else {
 				$image_preview_html = '<div class="preview_img"><p>'.
 					_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ).'</p></div>';
@@ -213,13 +210,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );
 
 				$table_rows[] = $form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ).
-				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
+					'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
 				$table_rows[] = $form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ).
-				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
+					'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
 				$table_rows[] = $form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ).
-				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
+					'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
 			} else {
 
@@ -243,27 +240,32 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				'<td>'.$form->get_input_copy_clipboard( $shortlink ).'</td>';
 			}
 
-			$table_rows[] = $form->get_th_html( _x( 'Open Graph Example',
-				'option label', 'wpsso' ), 'medium' ).
-			'<td rowspan="2" style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
-			<div class="preview_box_border">
-				<div class="preview_box">
-					'.$image_preview_html.'
-					<div class="preview_txt">
-						<div class="preview_title">'.( empty( $head_info['og:title'] ) ?
-							'No Title' : $head_info['og:title'] ).'</div>
-						<div class="preview_desc">'.( empty( $head_info['og:description'] ) ?
-							'No Description' : $head_info['og:description'] ).'</div>
-						<div class="preview_by">'.( $_SERVER['SERVER_NAME'].
-							( empty( $this->p->options['add_meta_property_article:author'] ) ||
-								empty( $head_info['article:author:name'] ) ?
-									'' : ' | By '.$head_info['article:author:name'] ) ).'</div>
-					</div>
-				</div>
-			</div></td>';
+			$table_rows['subsection_og_example'] = '<td colspan="2" class="subsection"><h4>'.
+				_x( 'Open Graph Example', 'option label', 'wpsso' ).'</h4></td>';
 
-			$table_rows[] = '<th class="medium textinfo" id="info-meta-social-preview">'.
-				$this->p->msgs->get( 'info-meta-social-preview' ).'</th>';
+			$table_rows[] = '<td colspan="2">'.$this->p->msgs->get( 'info-meta-social-preview' ).'</td>';
+
+			$table_rows[] = '<td colspan="2" style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
+				<div class="preview_box_border">
+					<div class="preview_box">
+						'.$image_preview_html.'
+						<div class="preview_txt">
+							<div class="preview_title">'.
+								( empty( $head_info['og:title'] ) ? 'No Title' : $head_info['og:title'] ).
+							'</div><!-- .preview_title -->
+							<div class="preview_desc">'.
+								( empty( $head_info['og:description'] ) ? 'No Description' : $head_info['og:description'] ).
+							'</div><!-- .preview_desc -->
+							<div class="preview_by">'.
+								$_SERVER['SERVER_NAME'].
+								( empty( $this->p->options['add_meta_property_article:author'] ) ||
+									empty( $head_info['article:author:name'] ) ?
+										'' : ' | By '.$head_info['article:author:name'] ).
+							'</div><!-- .preview_by -->
+						</div><!-- .preview_txt -->
+					</div><!-- .preview_box -->
+				</div><!-- .preview_box_border -->
+			</td>';
 
 			return $table_rows;
 		}
