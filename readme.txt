@@ -375,7 +375,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.56.1-b.1 (2018/03/16)**
+**Version 3.56.1-b.1 (2018/03/17)**
 
 * *New Features*
 	* None
@@ -384,7 +384,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the Open Graph Example in the Social and Search Optimization metabox (under the Preview tab) to take both columns.
 	* Minor CSS updates for the Gutenberg editor page.
 * *Bugfixes*
-	* Fixed the unhide link when notices are dismissed, to unhide error and warning notices separately.
+	* Fixed the unhide link when notices are dismissed to unhide error and warning notices separately.
 * *Developer Notes*
 	* None
 
@@ -536,21 +536,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.56.1-b.1 =
 
-(2018/03/16) Fixed the unhide link when notices are dismissed, to unhide error and warning notices separately. Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
+(2018/03/17) Fixed the unhide link when notices are dismissed to unhide error and warning notices separately. Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
 
 = 3.56.0 =
 
 (2018/03/15) Added a check for JetPack SEO Tools to disable some basic SEO meta tags. Added a new "Auto-Refresh Cache After Clear All" option under the Advanced &gt; Cache Settings tab (Pro version).
-
-= 3.55.2 =
-
-(2018/03/11) Fix to prevent triggering a bug in the EWWW plugin, which requires the WordPress image library files to be loaded before using the 'wp_image_editors' filter.
-
-= 3.55.1 =
-
-(2018/03/10) Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`. Fixed the admin edit page 'SSO Schema' column value not getting refreshed on update. Fixed the WooCommerce `wc_format_decimal()` call to use the default number of decimals (Pro version).
-
-= 3.55.0 =
-
-(2018/03/04) Fixed the missing 'og:image:width' and 'og:image:height' meta tags. Refactored the NextGEN Gallery module to add support for NextCellent Gallery image slugs in the WP_Query pid value (Pro version).
 
