@@ -89,7 +89,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( is_admin() ) {
 				add_action( 'in_admin_header', array( &$this, 'hook_admin_notices' ), PHP_INT_MAX );
 				add_action( 'admin_footer', array( &$this, 'admin_footer_script' ) );
-				add_action( 'wp_ajax_' . $this->lca . '_dismiss_notice', array( &$this, 'dismiss_notice' ) );
+				add_action( 'wp_ajax_' . $this->lca . '_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
 			}
 			add_action( 'shutdown', array( &$this, 'save_user_notices' ), PHP_INT_MAX );
 		}
@@ -853,7 +853,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			';
 		}
 
-		public function dismiss_notice() {
+		public function ajax_dismiss_notice() {
 
 			$dis_info = array();
 			$user_id  = get_current_user_id();
