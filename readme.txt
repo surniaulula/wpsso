@@ -6,13 +6,13 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: meta tags, open graph, facebook, share, sharing, schema, twitter cards, seo, local business, woocommerce, product
+Tags: meta tags, open graph, facebook, sharing, schema, share, twitter cards, seo, local business, woocommerce, product, knowledge graph
 Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.4
 WC Tested Up To: 3.3.3
-Stable Tag: 3.56.0
+Stable Tag: 3.56.1
 
 Automatically create complete meta tags & Schema markup from your content for Social Sharing, Google Rich Cards (SEO), Pinterest Rich Pins + more.
 
