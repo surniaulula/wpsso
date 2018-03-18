@@ -245,7 +245,7 @@ Follow Surnia Ulula on [Google+](https://plus.google.com/+SurniaUlula/?rel=autho
 
 <h3>Install and Uninstall</h3>
 
-* [Install the WPSSO Core Plugin (Free and Pro version)](https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/?utm_source=wpsso-readme-install)
+* [Install the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/?utm_source=wpsso-readme-install)
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/?utm_source=wpsso-readme-integration)
 	* [BuddyPress Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/?utm_source=wpsso-readme-bbp-notes)
 * [Uninstall the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/?utm_source=wpsso-readme-uninstall)
