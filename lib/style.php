@@ -148,16 +148,21 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( ! empty( $this->p->cf['menu']['color'] ) ) {
 				$custom_style_css .= '
 					#poststuff #side-info-column .postbox {
-						border:1px solid #'.$this->p->cf['menu']['color'].';
+						border:1px solid '.$this->p->cf['menu']['color'].';
 					}
 					#poststuff #side-info-column .postbox h2 {
-						border-bottom:1px dotted #'.$this->p->cf['menu']['color'].';
+						border-bottom:1px dotted '.$this->p->cf['menu']['color'].';
 					}
 					#poststuff #side-info-column .postbox.closed h2 {
-						border-bottom:1px solid #'.$this->p->cf['menu']['color'].';
+						border-bottom:1px solid '.$this->p->cf['menu']['color'].';
 					}
 					#poststuff #side-info-column .postbox.closed {
 						border-bottom:none;
+					}
+					#poststuff .dashboard_col .postbox .inside td.blank {
+						border-color:'.$this->p->cf['menu']['color'].';
+						background-color:'.$this->p->cf['nag_colors']['update-nag']['background-color'].';
+						color:'.$this->p->cf['nag_colors']['update-nag']['color'].';
 					}
 				';
 			}
@@ -211,7 +216,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$highlight_color_css = empty( $this->p->cf['menu']['color'] ) || 
 				! SucomUtil::get_const( 'WPSSO_MENU_ICON_HIGHLIGHT' ) ?
-					'' : 'color:#'.$this->p->cf['menu']['color'].';';
+					'' : 'color:'.$this->p->cf['menu']['color'].';';
 
 			$menu_before_css = empty( $this->p->cf['menu']['before'] ) ?
 				'' : 'content:"'.$this->p->cf['menu']['before'].'";

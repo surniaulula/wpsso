@@ -1304,7 +1304,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'menu' => array(
 				'title' => 'SSO',		// menu title
-				'color' => '33cc33',		// menu color (lime green)
+				'color' => '#33cc33',		// menu color (lime green)
 				'before' => '\0229b',		// circle asterix
 				'dashicons' => array(
 					'licenses' => 'editor-justify',
