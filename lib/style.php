@@ -159,6 +159,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					#poststuff #side-info-column .postbox.closed {
 						border-bottom:none;
 					}
+					#poststuff #side-info-column .postbox .inside td.blank,
 					#poststuff .dashboard_col .postbox .inside td.blank {
 						border-color:'.$this->p->cf['menu']['color'].';
 						background-color:'.$this->p->cf['nag_colors']['update-nag']['background-color'].';
