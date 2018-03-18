@@ -1,11 +1,8 @@
 
 <p>WPSSO Core works great "<em>right out of the box</em>" &mdash; and you can keep the default plugin settings as-is &mdash; but taking a few minutes to review some basic options can help maximize your social presence, Google ranking, and click-through rate. ;-)</p>
 
-<blockquote style="width:100%">
-<p>We're always looking for ways to improve the plugin and its documentation &mdash; if you have a suggestion to improve this guide, please let us know. ;-)</p>
-</blockquote>
-
 <dl>
+
 <dt><h3>Business Social Accounts (Optional)</h3></dt>
 
 <dd><img src="https://surniaulula.github.io/wpsso/assets/screenshot-05.png" style="max-width:50%;float:right;margin:0 0 30px 60px;">
@@ -178,9 +175,6 @@
 
 <ul>
 
-<!-- WPSSO_HIDE_ALL_WARNINGS -->
-<li><p>WPSSO Core may display warning notices if images are too small for the dimensions required. If you are using WordPress v4.2 or better, these notices can be dismissed individually. You can also define the <code>WPSSO_HIDE_ALL_WARNINGS</code> constant as true to auto-hide all dismissable warnings.</p></li>
-
 <!-- Show SSO Image / Desc Columns -->
 <li><p>Users can hide / unhide the "SSO Image" and "SSO Desc" columns using the <em>Screen Options</em> drop-down tab, but you can also enable / disable these columns globally under the <strong>SSO &gt; Advanced Settings &gt; Custom Meta</strong> tab.</p></li>
 
@@ -193,15 +187,20 @@
 <!-- head Attributes Filter Hook -->
 <li><p>WPSSO Core modifies the <code>&lt;head&gt;</code> element attributes to add a Schema item type for the <code>&lt;head&gt;</code> section only. To apply the Schema item type for the whole page instead, change the "&lt;head&gt; Attributes Filter Hook" value from 'head_attributes' to 'language_attributes'.</p></li>
 
-<!-- WPSSO_IMAGE_UPSCALE_TEST -->
-<li><p>You can <em>simulate</em> the WPSSO Core image upscaling feature, to generate all the necessary success / failure notice messages, without having WordPress actually save the resulting images &mdash; define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true, or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO Core image sizes) and adjust the maximum percentage.</p></li>
+<!-- "product" custom post type -->
+<li><p>WPSSO Core will auto-detect two known custom post types (CPTs) as an Open Graph and Schema "product" by default &mdash; the "product" and "download" custom post types. You can have WPSSO Core detect additional custom post types values as an Open Graph and Schema "product" by <a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/define-a-custom-post-type-cpt-as-a-product/">using this example filter</a>.</p></li>
+
+<!-- SEO plugins and meta tags -->
+<li><p>WPSSO Core adds the "link rel canonical", "meta name description", and "meta name robots" meta tags to webpage headers by default (enabled / disabled under the SSO &gt; Advanced &gt; Head Tags List &gt; SEO / Other tab). <em>All three of these meta tags are disabled automatically if an SEO plugin is detected.</em> The "meta name robots" checkbox also controls the addition of a Robots (noindex, nofollow, noarchive, nosnippet) option on post editing pages &mdash; disable the meta tag to exclude the Robots option.</p></li>
 
 <!-- WPSSO Schema JSON-LD Markup -->
 <li><p>WPSSO Core creates a few Schema <em>meta tags</em> (name, description, and image) for Google+, along with the WebSite, Organization, and Person social JSON-LD markup (on the front page) for Google Search. If your theme does not include proper Schema markup for your content (author, images, videos, etc.), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> extension, which can add complete Schema JSON-LD / SEO markup (BlogPosting, Article, Place, Product, etc.) to webpages for Google.</p></li>
 
-<li><p>WPSSO Core will auto-detect two known Custom Post Type (CPT) values as an Open Graph (and Schema) "product" by default - the "product" and "download" Custom Post Types. You can have WPSSO Core detect additional Custom Post Type (CPT) values as an Open Graph (and Schema) "product" by <a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/define-a-custom-post-type-cpt-as-a-product/">using this example filter</a>.</p></li>
+<!-- WPSSO_IMAGE_UPSCALE_TEST -->
+<li><p>You can <em>simulate</em> the WPSSO Core image upscaling feature, to generate all the necessary success / failure notice messages, without having WordPress actually save the resulting images &mdash; define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true, or hook the 'wpsso_image_upscale_test' filter and return true. Other constants and filters are also available to upscale all images (not just the WPSSO Core image sizes) and adjust the maximum percentage.</p></li>
 
-<li><p>WPSSO Core adds the "meta name description" and "meta name robots" meta tags to webpage headers by default, and (optionally) the "link rel canonical" meta tag if enabled under the SSO &gt; Advanced &gt; Head Tags List &gt; SEO / Other tab. <em>All three of these meta tags are disabled automatically if an SEO plugin is detected.</em> The "meta name robots" checkbox also controls the addition of a Robots (noindex, nofollow, noarchive, nosnippet) option on post editing pages - disable the meta tag to exclude the Robots option.</p></li>
+<!-- WPSSO_HIDE_ALL_ERRORS and WPSSO_HIDE_ALL_WARNINGS -->
+<li><p>WPSSO Core may display error and warning notices if images are too small for the dimensions required. If you are using WordPress v4.2 or better, these notices can be dismissed individually. You can also define the <code>WPSSO_HIDE_ALL_ERRORS</code> and <code>WPSSO_HIDE_ALL_WARNINGS</code> constants as true to auto-hide all dismissable errors and warnings.</p></li>
 
 </ul>
 
