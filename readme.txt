@@ -1,4 +1,4 @@
-=== WPSSO Core [Main Plugin] -- Advanced Social Meta Tags and SEO Schema Markup ===
+=== WPSSO Core [Main Plugin] -- Advanced Social Sharing Meta Tags and SEO Schema Markup ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: meta tags, open graph, share, social, schema, twitter card, seo, video seo, local seo, local business, twitter card, woocommerce, nextgen gallery
+Tags: meta tags, open graph, facebook, share, sharing, schema, twitter cards, seo, local business, woocommerce, product
 Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
@@ -34,7 +34,7 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 
 **WPSSO Core is *incredibly fast* and coded for performance** &mdash; WPSSO Core and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and load only the PHP library files and object classes they need, keeping their code small, fast, and light. WPSSO Core and its extensions are also fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
 
-**Advanced meta tag / Schema JSON-LD markup filter hooks for developers** &mdash; WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the WPSSO Core plugin.
+**Advanced meta tag / JSON-LD markup filter hooks for developers** &mdash; WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the WPSSO Core plugin.
 
 <h3>Quick List of Features</h3>
 
@@ -42,7 +42,7 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Automatically creates complete meta tags for Facebook / Open Graph, Google Plus / SEO / Rich Card, Pinterest Rich Pin, LinkedIn, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google Search / SEO.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google / SEO.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search / SEO and its Knowledge Graph, including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
 
@@ -375,14 +375,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.56.1-b.1 (2018/03/17)**
+**Version 3.56.1 (2018/03/18)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
 	* Updated the Open Graph Example in the Social and Search Optimization metabox (under the Preview tab) to take both columns.
-	* Minor CSS updates for the Gutenberg editor page.
+	* Minor CSS updates for the Gutenberg editor page to center the Social and Search Optimization metabox.
 * *Bugfixes*
 	* Fixed the unhide link when notices are dismissed to unhide error and warning notices separately.
 * *Developer Notes*
@@ -534,9 +534,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.56.1-b.1 =
+= 3.56.1 =
 
-(2018/03/17) Fixed the unhide link when notices are dismissed to unhide error and warning notices separately. Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
+(2018/03/18) Fixed the unhide link when notices are dismissed to unhide error and warning notices separately. Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
 
 = 3.56.0 =
 
