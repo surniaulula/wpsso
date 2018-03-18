@@ -1294,7 +1294,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$dismiss_key   = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_ratio_greater_than_allowed';
 					$size_label    = $this->p->util->get_image_size_label( $size_name );
-					$error_msg     = _( '%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' );
+					$error_msg     = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' );
 					$rejected_msg  = $this->p->msgs->get( 'notice-image-rejected', array( 'size_label' => $size_label, 'allow_upscale' => false ) );
 
 		 			/**
