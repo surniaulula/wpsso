@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.56.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-03-18 17:33-0600\n"
-"PO-Revision-Date: 2018-03-18 17:33-0600\n"
+"POT-Creation-Date: 2018-03-19 08:44-0600\n"
+"PO-Revision-Date: 2018-03-19 08:45-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2251,50 +2251,50 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr "Forcer a jouer lorsque possible"
 
-#: lib/gpl/admin/meta.php:67 lib/gpl/admin/post.php:74
+#: lib/gpl/admin/meta.php:67 lib/gpl/admin/post.php:75
 #: lib/pro/admin/meta.php:76 lib/pro/admin/post.php:84
 msgctxt "option label"
 msgid "Default Title"
 msgstr "Titre par défaut"
 
-#: lib/gpl/admin/meta.php:72 lib/gpl/admin/post.php:80
+#: lib/gpl/admin/meta.php:72 lib/gpl/admin/post.php:81
 #: lib/pro/admin/meta.php:82 lib/pro/admin/post.php:91
 msgctxt "option label"
 msgid "Default Description"
 msgstr "Description par défaut"
 
-#: lib/gpl/admin/meta.php:78 lib/gpl/admin/post.php:87
+#: lib/gpl/admin/meta.php:78 lib/gpl/admin/post.php:88
 #: lib/pro/admin/meta.php:89 lib/pro/admin/post.php:99
 msgctxt "option label"
 msgid "Google Search / SEO Description"
 msgstr "Description pour Google Search / SEO"
 
-#: lib/gpl/admin/meta.php:84 lib/gpl/admin/post.php:94
+#: lib/gpl/admin/meta.php:84 lib/gpl/admin/post.php:95
 #: lib/pro/admin/meta.php:99 lib/pro/admin/post.php:110
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr "Description pour la carte Twitter"
 
-#: lib/gpl/admin/meta.php:90 lib/gpl/admin/post.php:101 lib/meta.php:212
+#: lib/gpl/admin/meta.php:90 lib/gpl/admin/post.php:102 lib/meta.php:212
 #: lib/meta.php:233 lib/pro/admin/meta.php:105 lib/pro/admin/post.php:117
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr "URL de partage"
 
-#: lib/gpl/admin/meta.php:97 lib/gpl/admin/post.php:109 lib/meta.php:215
+#: lib/gpl/admin/meta.php:97 lib/gpl/admin/post.php:110 lib/meta.php:215
 #: lib/meta.php:236 lib/pro/admin/meta.php:113 lib/pro/admin/post.php:126
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr "URL canonique"
 
-#: lib/gpl/admin/meta.php:103 lib/gpl/admin/post.php:166
+#: lib/gpl/admin/meta.php:103 lib/gpl/admin/post.php:167
 #: lib/pro/admin/meta.php:124 lib/pro/admin/post.php:188
 #: lib/submenu/general.php:250
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr "Données structurées / balises de Schéma"
 
-#: lib/gpl/admin/meta.php:106 lib/gpl/admin/post.php:170
+#: lib/gpl/admin/meta.php:106 lib/gpl/admin/post.php:171
 #: lib/pro/admin/meta.php:127 lib/pro/admin/post.php:192
 msgctxt "option label"
 msgid "Schema Description"
@@ -2380,52 +2380,52 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr "Données structurées / balises de Schéma / Pinterest"
 
-#: lib/gpl/admin/post.php:57 lib/pro/admin/post.php:69
+#: lib/gpl/admin/post.php:58 lib/pro/admin/post.php:69
 msgid "Activate the %s extension for additional Schema markup features and options."
 msgstr "Activer l'extension %s pour plus de fonctions et options de balisage Schéma."
 
-#: lib/gpl/admin/post.php:69 lib/pro/admin/post.php:78
+#: lib/gpl/admin/post.php:70 lib/pro/admin/post.php:78
 msgctxt "option label"
 msgid "Article Topic"
 msgstr "Rubrique d'article"
 
-#: lib/gpl/admin/post.php:119 lib/messages.php:619 lib/pro/admin/post.php:141
+#: lib/gpl/admin/post.php:120 lib/messages.php:619 lib/pro/admin/post.php:141
 msgctxt "option label"
 msgid "Product Availability"
 msgstr "Disponibilité du produit"
 
-#: lib/gpl/admin/post.php:126 lib/messages.php:630 lib/pro/admin/post.php:148
+#: lib/gpl/admin/post.php:127 lib/messages.php:630 lib/pro/admin/post.php:148
 msgctxt "option label"
 msgid "Product Brand"
 msgstr "Marque du produit"
 
-#: lib/gpl/admin/post.php:132 lib/messages.php:641 lib/pro/admin/post.php:154
+#: lib/gpl/admin/post.php:133 lib/messages.php:641 lib/pro/admin/post.php:154
 msgctxt "option label"
 msgid "Product Color"
 msgstr "Couleur du produit"
 
-#: lib/gpl/admin/post.php:138 lib/messages.php:652 lib/pro/admin/post.php:160
+#: lib/gpl/admin/post.php:139 lib/messages.php:652 lib/pro/admin/post.php:160
 msgctxt "option label"
 msgid "Product Condition"
 msgstr "Condition du produit"
 
-#: lib/gpl/admin/post.php:144 lib/messages.php:673 lib/pro/admin/post.php:166
+#: lib/gpl/admin/post.php:145 lib/messages.php:673 lib/pro/admin/post.php:166
 msgctxt "option label"
 msgid "Product Material"
 msgstr "Matériel du produit"
 
-#: lib/gpl/admin/post.php:151 lib/messages.php:683 lib/pro/admin/post.php:173
+#: lib/gpl/admin/post.php:152 lib/messages.php:683 lib/pro/admin/post.php:173
 msgctxt "option label"
 msgid "Product Price"
 msgstr "Prix du produit"
 
-#: lib/gpl/admin/post.php:158 lib/messages.php:694 lib/pro/admin/post.php:180
+#: lib/gpl/admin/post.php:159 lib/messages.php:694 lib/pro/admin/post.php:180
 msgctxt "option label"
 msgid "Product Size"
 msgstr "Taille du produit"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/gpl/admin/post.php:176 lib/meta.php:209 lib/post.php:935
+#: lib/gpl/admin/post.php:177 lib/meta.php:209 lib/post.php:935
 #: lib/pro/admin/post.php:198
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
@@ -3639,8 +3639,8 @@ msgid "You can change the social image by selecting a featured image, attaching 
 msgstr "Vous pouvez changer l'image sociale en sélectionnant une image à la Une, attacher une / plusieurs image(s), ou ajouter des images aux contenu."
 
 #: lib/messages.php:1493
-msgid "Video service API modules &mdash; required to detect embedded videos &mdash; are available in the %s version."
-msgstr "Les modules d'API de services vidéo &mdash; nécessaires pour détecter des vidéos intégrées &mdash; sont disponibles dans la version %s."
+msgid "Video service API modules, required to detect embedded videos, are provided by the %s plugin."
+msgstr "Les modules d'API de services vidéo, nécessaires pour détecter des vidéos intégrées, sont fournis par l'extension %s."
 
 #: lib/messages.php:1518
 msgid "A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %s metabox under the <em>Select Media</em> tab."
@@ -3865,8 +3865,8 @@ msgstr "URL lien court"
 
 #: lib/meta.php:244
 msgctxt "option label"
-msgid "Open Graph Example"
-msgstr "Example Open Graph"
+msgid "Facebook / Open Graph Example"
+msgstr "Example Facebook / Open Graph"
 
 #: lib/meta.php:362
 msgctxt "option label"
@@ -4951,3 +4951,7 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#~ msgctxt "option label"
+#~ msgid "Open Graph Example"
+#~ msgstr "Example Open Graph"

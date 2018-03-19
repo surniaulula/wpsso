@@ -4218,8 +4218,8 @@ msgstr ""
 
 #: lib/messages.php:1493
 msgid ""
-"Video service API modules &mdash; required to detect embedded videos &mdash; "
-"are available in the %s version."
+"Video service API modules, required to detect embedded videos, are provided "
+"by the %s plugin."
 msgstr ""
 
 #: lib/messages.php:1518

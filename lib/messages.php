@@ -1490,7 +1490,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'pro-about-msg-post-media':
 
 						$text = '<p>'.__( 'You can change the social image by selecting a featured image, attaching image(s) or including images in the content.', 'wpsso' ).'<br/>';
-						$text .= sprintf( __( 'Video service API modules &mdash; required to detect embedded videos &mdash; are available in the %s version.', 'wpsso' ),  $info['name_pro'] ).'</p>';
+						$text .= sprintf( __( 'Video service API modules, required to detect embedded videos, are provided by the %s plugin.', 'wpsso' ),  $info['short_pro'] ).'</p>';
 
 						break;
 
