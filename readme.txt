@@ -381,7 +381,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
-	* Updated the Open Graph Example in the Social and Search Optimization metabox (under the Preview tab) to take both columns.
+	* Updated the Facebook / Open Graph Example in the Social and Search Optimization metabox (under the Preview tab) to take both columns.
 	* Minor CSS updates for the Gutenberg editor page to center the Social and Search Optimization metabox.
 * *Bugfixes*
 	* Fixed the unhide link when notices are dismissed to unhide error and warning notices separately.
