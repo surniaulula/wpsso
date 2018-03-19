@@ -1715,9 +1715,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<li>'.sprintf( __( '%s options for posts, pages, custom post types, terms (categories, tags, custom taxonomies), and user profiles.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) ).'</li>';
 
-						$text .= '<li>'.__( 'Integration with 3rd party plugins and service APIs.', 'wpsso' ).'</li>';
-
 						$text .= '<li>'.__( 'Advanced features and settings page.', 'wpsso' ).'</li>';
+
+						$text .= '<li>'.__( 'Integration with 3rd party plugins and service APIs.', 'wpsso' ).'</li>';
 
 						$text .= '<li>'.__( 'Ability to purchase Pro extensions.', 'wpsso' ).'</li>';
 

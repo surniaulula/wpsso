@@ -4431,11 +4431,11 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:1718
-msgid "Integration with 3rd party plugins and service APIs."
+msgid "Advanced features and settings page."
 msgstr ""
 
 #: lib/messages.php:1720
-msgid "Advanced features and settings page."
+msgid "Integration with 3rd party plugins and service APIs."
 msgstr ""
 
 #: lib/messages.php:1722
