@@ -729,11 +729,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$php_code    = '<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
 
 							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' ';
-							
+
 							$text .= sprintf( __( 'The <a href="%1$s">WordPress %2$s function</a> and its \'%3$s\' filter are used by most themes &mdash; if the namespace prefix values are missing from your %4$s HTML tag attributes, make sure your header template(s) use the %2$s function.', 'wpsso' ), $func_url, '<code>'.$func_name.'</code>', $filter_name, $html_tag ).' ';
-							
+
 							$text .= __( 'Leaving this option empty disables the addition of Open Graph namespace values.', 'wpsso' ).' ';
-							
+
 							$text .= sprintf( __( 'Example code for header templates: %1$s', 'wpsso' ), $php_code );
 
 							break;
@@ -745,11 +745,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$php_code    = '<pre><code>&amp;lt;head &amp;lt;?php do_action( &#39;add_head_attributes&#39; ); ?&amp;gt;&amp;gt;</code></pre>';
 
 							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' ';
-							
+
 							$text .= sprintf( __( 'If your theme already offers a filter for the %1$s HTML tag attributes, enter its name here (most themes do not offer this filter).', 'wpsso' ), $html_tag ).' ';
-							
+
 							$text .= sprintf( __( 'Alternatively, you can edit your your theme header templates and add an action to call the \'%1$s\' filter.', 'wpsso' ), $filter_name ).' ';
-							
+
 							$text .= sprintf( __( 'Example code for header templates: %1$s', 'wpsso' ), $php_code );
 
 							break;
@@ -1000,21 +1000,37 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-fb_publisher_url':
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook Business Page for your website / business</a>, you may enter its URL here (for example, the Facebook Business Page URL for %2$s is <a href="%3$s">%4$s</a>).', 'wpsso' ), 'https://www.facebook.com/business', 'Surnia Ulula', 'https://www.facebook.com/SurniaUlulaCom', 'https://www.facebook.com/SurniaUlulaCom' ).' '.__( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> webpages and in the site\'s Schema Organization markup.', 'wpsso' ).' '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$fb_business_url = __( 'https://www.facebook.com/business', 'wpsso' );
+							$fb_sucom_url    = __( 'https://www.facebook.com/SurniaUlulaCom', 'wpsso' );
+
+							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook Business Page for your website / business</a>, you may enter its URL here (for example, the Facebook Business Page URL for %2$s is <a href="%3$s">%4$s</a>).', 'wpsso' ), $fb_business_url, 'Surnia Ulula', $fb_sucom_url, $fb_sucom_url ).' ';
+
+							$text .= __( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> webpages and in the site\'s Schema Organization markup.', 'wpsso' ).' ';
+
+							$text .= __( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
 
 							break;
 
 						case 'tooltip-fb_admins':
 
-							$text = sprintf( __( 'The %1$s are used by Facebook to allow access to <a href="%2$s">Facebook Insight</a> data for your website. Note that these are <strong>user account names, not Facebook Page names</strong>. Enter one or more Facebook user names, separated with commas. When viewing your own Facebook wall, your user name is located in the URL (for example, https://www.facebook.com/<strong>user_name</strong>). Enter only the user names, not the URLs.', 'wpsso' ), _x( 'Facebook Admin Username(s)', 'option label', 'wpsso' ), 'https://developers.facebook.com/docs/insights/' ).' '.sprintf( __( 'You may update your Facebook user name in the <a href="%1$s">Facebook General Account Settings</a>.', 'wpsso' ), 'https://www.facebook.com/settings?tab=account&section=username&view' );
+							$fb_insights_url = __( 'https://developers.facebook.com/docs/insights/', 'wpsso' );
+							$fb_username_url = __( 'https://www.facebook.com/settings?tab=account&section=username&view', 'wpsso' );
+
+							$text = sprintf( __( 'The %1$s are used by Facebook to allow access to <a href="%2$s">Facebook Insight</a> data for your website. Note that these are <strong>user account names, not Facebook Page names</strong>. Enter one or more Facebook user names, separated with commas. When viewing your own Facebook wall, your user name is located in the URL (for example, https://www.facebook.com/<strong>user_name</strong>). Enter only the user names, not the URLs.', 'wpsso' ), _x( 'Facebook Admin Username(s)', 'option label', 'wpsso' ), $fb_insights_url ).' ';
+
+							$text .= sprintf( __( 'You may update your Facebook user name in the <a href="%1$s">Facebook General Account Settings</a>.', 'wpsso' ), $fb_username_url );
 
 							break;
 
 						case 'tooltip-fb_app_id':
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook App ID for your website</a>, enter it here (see <a href="%2$s">Register and Configure an App</a> for help on creating a Facebook App ID).', 'wpsso' ), __( 'https://developers.facebook.com/apps', 'wpsso' ), __( 'https://developers.facebook.com/docs/apps/register', 'wpsso' ) ).' ';
-							
-							$text .= sprintf( __( 'The Facebook App ID will appear in webpage meta tags and is used by Facebook to allow access to <a href="%1$s">Facebook Insight</a> data for accounts associated with that App ID.', 'wpsso' ), __( 'https://developers.facebook.com/docs/insights/', 'wpsso' ) );
+							$fb_apps_url     = __( 'https://developers.facebook.com/apps', 'wpsso' );
+							$fb_docs_reg_url = __( 'https://developers.facebook.com/docs/apps/register', 'wpsso' );
+							$fb_insights_url = __( 'https://developers.facebook.com/docs/insights/', 'wpsso' );
+
+							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook App ID for your website</a>, enter it here (see <a href="%2$s">Register and Configure an App</a> for help on creating a Facebook App ID).', 'wpsso' ), $fb_apps_url, $fb_docs_reg_url ).' ';
+
+							$text .= sprintf( __( 'The Facebook App ID will appear in webpage meta tags and is used by Facebook to allow access to <a href="%1$s">Facebook Insight</a> data for accounts associated with that App ID.', 'wpsso' ), $fb_insights_url );
 
 							break;
 
@@ -1348,25 +1364,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = '<p>'.__( 'Facebook and most social websites read Open Graph meta tags.', 'wpsso' ).' '.__( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating the Open Graph meta tag values.', 'wpsso' ).' '.__( 'The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' ).'</p><p><i>'.__( 'You may have to click the "Fetch new scrape information" button a few times to refresh Facebook\'s cache.', 'wpsso' ).'</i></p>';
 
 						 	break;
-	
+
 						case 'info-meta-validate-google':
 
 							$text = '<p>'.__( 'Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+.', 'wpsso' ).'</p>';
 
 						 	break;
-	
+
 						case 'info-meta-validate-pinterest':
 
 							$text = '<p>'.__( 'Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' ).'</p>';
 
 						 	break;
-	
+
 						case 'info-meta-validate-twitter':
 
 							$text = '<p><i>'.__( 'The Twitter Card Validator does not accept query arguments &mdash; paste the following URL in the Twitter Card Validator "Card URL" input field (copy the URL using the clipboard icon):', 'wpsso' ).'</i></p>';
 
 						 	break;
-	
+
 						case 'info-meta-validate-w3c':
 
 							$settings_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google',
@@ -1375,13 +1391,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = '<p>'.__( 'Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates markup.', 'wpsso' ).'</p>'.( empty( $this->p->options['schema_add_noscript'] ) ? '' : '<p><i>'.sprintf( __( 'When the %1$s option is enabled, the W3C validator will show errors for itemprop attributes in meta elements &mdash; you may ignore these errors or disable the %1$s option.', 'wpsso' ), $settings_page_link ).'</i></p>' );
 
 						 	break;
-	
+
 						case 'info-meta-validate-amp':
 
 							$text = '<p>'.__( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ).'</p>'.( $this->p->avail['*']['amp'] ? '' : '<p><i>'.sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' ).'</i></p>' );
 
 						 	break;
-	
+
 						case 'info-meta-social-preview':
 
 						 	$text = '<p>'.__( 'An <em>example</em> link share on Facebook. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
@@ -1399,11 +1415,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$um_info = $this->p->cf['plugin']['wpssoum'];
 
 							$text = '<blockquote class="top-info">';
-							
+
 							$text .= '<p>'.sprintf( __( 'After purchasing the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID for the plugin / extension your purchased.', 'wpsso' ), $info['short_pro'] ).' ';
 
 							$text .=  __( 'Enter the Authentication ID in the field corresponding to the plugin / extension you purchased.', 'wpsso' ).' ';
-							
+
 							$text .= sprintf( __( 'Don\'t forget that the %1$s Free extension must also be installed and active to check for Pro version updates.', 'wpsso' ), $um_info['name'] ).' ;-)</p>';
 
 							if ( ! WpssoAdmin::$pkg[$lca]['aop'] ) {
@@ -1413,7 +1429,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= '</blockquote>';
 
 							break;
-	
+
 						case 'info-plugin-tid-network':	// displayed on the Network Pro Licenses settings page
 
 							$um_info = $this->p->cf['plugin']['wpssoum'];
@@ -1422,7 +1438,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'Core Extensions and Pro Licenses', 'lib file description', 'wpsso' ) );
 
 							$text = '<blockquote class="top-info">';
-							
+
 							$text .= '<p>'.sprintf( __( 'After purchasing the %1$s plugin, or any of its Pro extensions, you\'ll receive an email with a unique Authentication ID for the plugin / extension your purchased.', 'wpsso' ), $info['short_pro'] ).' ';
 
 							$text .= sprintf( __( 'You may enter each Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
@@ -1430,11 +1446,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text.= '<p>'.__( 'If you enter Authentication IDs on this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; as an example, to license an individual plugin / extension for 10 sites, you would need an Authentication ID from a 10 license pack purchase of that plugin / extension.', 'wpsso' ).'</p>';
 
 							$text .= '<p>'.sprintf( __( '<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its Pro extensions, please make sure the %2$s Free extension is active on the default site, and the default site is licensed.', 'wpsso' ), $info['name_pro'], $um_info['name'] ).'</p>';
-							
+
 							$text .= '</blockquote>';
 
 							break;
-	
+
 						case 'info-cm':
 
 							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'The following options allow you to customize the contact fields shown in <a href="%s">the user profile page</a> in the <strong>Contact Info</strong> section.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).' '.sprintf( __( '%s uses the Facebook, Google+, and Twitter contact values for Facebook / Open Graph, Google / Schema, and Twitter Card meta tags.', 'wpsso' ), $info['short'] ).'</p><p><strong>'.sprintf( __( 'You should not modify the <em>%s</em> unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field Name', 'column title', 'wpsso' ) ).'</strong> '.sprintf( __( 'The <em>%s</em> on the other hand is for display purposes only and it can be changed as you wish.', 'wpsso' ), _x( 'Profile Contact Label', 'column title', 'wpsso' ) ).' ;-)</p><p>'.sprintf( __( 'Enabled contact methods are included on user profile editing pages automatically. Your theme is responsible for using their values in its templates (see the WordPress <a href="%s">get_the_author_meta()</a> documentation for examples).', 'wpsso' ), 'https://codex.wordpress.org/Function_Reference/get_the_author_meta' ).'</p><p><center><strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>'.sprintf( __( 'Enter your personal contact information on <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).'</center></p></blockquote>';
@@ -1444,19 +1460,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'info-taglist':
 
 							$text = '<blockquote class="top-info"><p>';
-							
+
 							$text .= sprintf( __( '%s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, Google Rich Card / SEO meta tags to the <code>&lt;head&gt;</code> section of your webpages.', 'wpsso' ), $info['short'] ).' ';
-							
+
 							$text .= __( 'If your theme or another plugin already creates one or more of these meta tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ).' ';
-							
+
 							$text .= sprintf( __( 'For example, the "%1$s" SEO meta tag is automatically unchecked if a <em>known</em> SEO plugin is detected, and the "%2$s" meta tag is unchecked by default (themes often include this meta tag in their header template).', 'wpsso' ), 'meta name description', 'link rel canonical' );
-							
+
 							$text .= '</p></blockquote>';
 
 							break;
-	
+
 						case 'info-social-accounts':
-							
+
 							$settings_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google',
 								_x( 'Google / Schema', 'metabox tab', 'wpsso' ) );
 
@@ -1468,7 +1484,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= '</p></blockquote>';
 
 							break;
-	
+
 						default:
 
 							$text = apply_filters( $lca.'_messages_info', $text, $idx, $info );
@@ -1637,7 +1653,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-content-filters-disabled':
 
 						$settings_page_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' );
-						
+
 						$filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
 							_x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) );
 
@@ -1654,17 +1670,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 						$text = '<p>';
-						
+
 						$text .= __( '<b>At least one of your theme header templates does not support Schema markup of the webpage head section</b> &mdash; this is especially important for Pinterest (and Google if not using the JSON-LD extension).', 'wpsso' ).' ';
 
 						$text .= sprintf( __( 'The %1$s HTML tag in your header template(s) should include a function, action, or filter for its attributes.', 'wpsso' ), $html_tag ).' ';
 
 						$text .= sprintf( __( '%1$s can update your header template(s) automatically and change the existing %2$s HTML tag to:', 'wpsso' ), $info['short'], $html_tag );
-						
+
 						$text .= '</p>'.$php_code.'<p>';
 
 						$text .= sprintf( __( '<b><a href="%1$s">Click here to update header template(s) automatically</a></b> (recommended) or update the template(s) manually.', 'wpsso' ), $action_url );
-						
+
 						$text .= '</p>';
 
 						break;
@@ -1738,7 +1754,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							__( 'Dashboard' ).' &gt; '.__( 'Updates' ).'</a>';
 
 						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $info['version'], $um_info['short'], $um_rec_version, $um_version ).' ';
-						
+
 						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button on the %4$s settings page to force an immediate refresh of all Pro update information.', 'wpsso' ), $um_info['name'], $wp_updates_page_link, $um_check_updates_transl, $um_settings_page_link );
 
 						break;
