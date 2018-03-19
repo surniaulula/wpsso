@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.56.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-03-19 09:08-0600\n"
-"PO-Revision-Date: 2018-03-19 09:08-0600\n"
+"POT-Creation-Date: 2018-03-19 09:15-0600\n"
+"PO-Revision-Date: 2018-03-19 09:17-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3788,48 +3788,52 @@ msgstr "Si possible, mettre à jour %1$s à la dernière version stable de produ
 msgid "<strong>%s includes:</strong>"
 msgstr "<strong>%s comprend:</strong>"
 
-#: lib/messages.php:1714
-msgid "%s options for posts, pages, custom post types, terms (categories, tags, and custom taxonomies), and user profiles."
-msgstr "Réglages d'%s pour les articles, pages, types de contenus personnalisés, termes (catégories, étiquettes, et taxonomie personnalisés), et profil d'utilisateurs."
-
-#: lib/messages.php:1715
-msgid "Integration with numerous 3rd party plugins and external service APIs."
-msgstr "Intégration avec de nombreux extensions tierces et API de services externes."
-
 #: lib/messages.php:1716
-msgid "Advanced plugin features and settings page."
-msgstr "Fonctions et page de réglages et avancées."
+msgid "%s options for posts, pages, custom post types, terms (categories, tags, custom taxonomies), and user profiles."
+msgstr "Réglages d'%s pour les articles, pages, types de contenus personnalisés, termes (catégories, étiquettes, taxonomie personnalisés), et profil d'utilisateurs."
 
 #: lib/messages.php:1718
+msgid "Integration with 3rd party plugins and service APIs."
+msgstr "Modules d'intégration pour extensions tierces et APIs de services."
+
+#: lib/messages.php:1720
+msgid "Advanced features and settings page."
+msgstr "Fonctions et page de réglages et avancées."
+
+#: lib/messages.php:1722
+msgid "Ability to purchase Pro extensions."
+msgstr "Possibilité d’acheter les extensions Pro."
+
+#: lib/messages.php:1726
 msgid "<strong>Nontransferable Pro licenses never expire</strong> &mdash; you may receive unlimited / lifetime updates and support for each licensed WordPress Site Address."
 msgstr "<strong>Les licences Pro non-transférables n'expirent jamais</strong> &mdash; vous pouvez recevoir des mises à jour et un soutien illimités / à vie pour chaque adresse de site WordPress autorisée."
 
-#: lib/messages.php:1718
+#: lib/messages.php:1726
 msgid "How great is that!?"
 msgstr "C'est génial!"
 
-#: lib/messages.php:1721
+#: lib/messages.php:1729
 msgid "<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; license the Pro version immediately after your purchase!"
 msgstr "<strong>C'est facile et rapide d'acheter %s avec Paypal</strong> &mdash; autorisez la version Pro immédiatement après votre achat!"
 
-#: lib/messages.php:1723
+#: lib/messages.php:1731
 msgid "<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; update the Free plugin to Pro immediately after your purchase!"
 msgstr "<strong>C'est facile et rapide d'acheter %s avec Paypal</strong> &mdash; mettez à jour l'extension gratuite à Pro immédiatement après votre achat!"
 
-#: lib/messages.php:1729
+#: lib/messages.php:1738
 msgid "<strong>The continued development of %1$s is driven by user requests</strong> &mdash; we welcome all your comments and suggestions!"
 msgstr "<strong>Le développement continu de %1$s est motivé par les demandes de nos clients</strong> &mdash; nous accueillons tous vos commentaires et suggestions!"
 
-#: lib/messages.php:1734
+#: lib/messages.php:1744
 msgid "<strong>Great reviews and ratings are a terrific way to encourage your plugin developers</strong> &mdash; and it only takes a minute."
 msgstr "<strong>Une bonne cote est une excellente façon d'encourager vos développeur d'extensions</strong> &mdash; et ça ne prend qu'une minute."
 
-#: lib/messages.php:1735
+#: lib/messages.php:1746
 msgid "Please encourage us %s by rating the plugins you use:"
 msgstr "Merci de nous encourager %s en évaluant les extensions que vous utilisez:"
 
 #. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector extension
-#: lib/messages.php:1751
+#: lib/messages.php:1762
 msgid "This option is localized &mdash; <a href=\"%s\">you may change the WordPress locale</a> to define alternate values for different languages."
 msgstr "Cette option est localisé &mdash; v<a href=\"%s\">ous pouvez changer la langue WordPress</a> pour définir des valeurs d'option pour d'autres langues."
 
