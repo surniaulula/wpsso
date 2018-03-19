@@ -995,38 +995,58 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				 * Publisher 'Facebook' settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-fb_' ) === 0 ) {
+
 					switch ( $idx ) {
+
 						case 'tooltip-fb_publisher_url':
+
 							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook Business Page for your website / business</a>, you may enter its URL here (for example, the Facebook Business Page URL for %2$s is <a href="%3$s">%4$s</a>).', 'wpsso' ), 'https://www.facebook.com/business', 'Surnia Ulula', 'https://www.facebook.com/SurniaUlulaCom', 'https://www.facebook.com/SurniaUlulaCom' ).' '.__( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> webpages and in the site\'s Schema Organization markup.', 'wpsso' ).' '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+
 							break;
 
 						case 'tooltip-fb_admins':
+
 							$text = sprintf( __( 'The %1$s are used by Facebook to allow access to <a href="%2$s">Facebook Insight</a> data for your website. Note that these are <strong>user account names, not Facebook Page names</strong>. Enter one or more Facebook user names, separated with commas. When viewing your own Facebook wall, your user name is located in the URL (for example, https://www.facebook.com/<strong>user_name</strong>). Enter only the user names, not the URLs.', 'wpsso' ), _x( 'Facebook Admin Username(s)', 'option label', 'wpsso' ), 'https://developers.facebook.com/docs/insights/' ).' '.sprintf( __( 'You may update your Facebook user name in the <a href="%1$s">Facebook General Account Settings</a>.', 'wpsso' ), 'https://www.facebook.com/settings?tab=account&section=username&view' );
+
 							break;
 
 						case 'tooltip-fb_app_id':
-							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook Application ID for your website</a>, enter it here. The Facebook Application ID will appear in webpage meta tags and is used by Facebook to allow access to <a href="%2$s">Facebook Insight</a> data for accounts associated with that Application ID.', 'wpsso' ), 'https://developers.facebook.com/apps', 'https://developers.facebook.com/docs/insights/' );
+
+							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook App ID for your website</a>, enter it here (see <a href="%2$s">Register and Configure an App</a> for help on creating a Facebook App ID).', 'wpsso' ), __( 'https://developers.facebook.com/apps', 'wpsso' ), __( 'https://developers.facebook.com/docs/apps/register', 'wpsso' ) ).' ';
+							
+							$text .= sprintf( __( 'The Facebook App ID will appear in webpage meta tags and is used by Facebook to allow access to <a href="%1$s">Facebook Insight</a> data for accounts associated with that App ID.', 'wpsso' ), __( 'https://developers.facebook.com/docs/insights/', 'wpsso' ) );
+
 							break;
 
 						case 'tooltip-fb_author_name':
+
 							$text = sprintf( __( '%1$s uses the Facebook contact field value in the author\'s WordPress profile for %2$s Open Graph meta tags. This allows Facebook to credit an author on shares, and link their Facebook page URL.', 'wpsso' ), $info['short'], '<code>article:author</code>' ).' '.sprintf( __( 'If an author does not have a Facebook page URL, %1$s can fallback and use the <em>%2$s</em> instead (the recommended value is "Display Name").', 'wpsso' ), $info['short'], _x( 'Author Name Format', 'option label', 'wpsso' ) );
+
 							break;
 
 						case 'tooltip-fb_locale':
+
 							$text = sprintf( __( 'Facebook does not support all WordPress locale values. If the Facebook debugger returns an error parsing the %1$s meta tag, you may have to choose an alternate Facebook language for that WordPress locale.', 'wpsso' ), '<code>og:locale</code>' );
+
 							break;
 
 						default:
+
 							$text = apply_filters( $lca.'_messages_tooltip_fb', $text, $idx, $info );
+
 							break;
+
 					}	// end of tooltip-fb switch
+
 				/**
 				 * Publisher 'Google' / SEO settings
 				 */
 				} elseif ( strpos( $idx, 'tooltip-seo_' ) === 0 ) {
 					switch ( $idx ) {
 						case 'tooltip-seo_publisher_url':
+
 							$text = 'If you have a <a href="http://www.google.com/+/business/">Google+ Business Page for your website / business</a>, you may enter its URL here (for example, the Google+ Business Page URL for Surnia Ulula is <a href="https://plus.google.com/+SurniaUlula/">https://plus.google.com/+SurniaUlula/</a>). The Google+ Business Page URL will be used in a link relation head tag, and the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+
 							break;
 
 						case 'tooltip-seo_desc_len':
@@ -1062,75 +1082,110 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-schema_home_person_id':
+
 							$text = __( 'Select an optional site owner for the <em>Knowledge Graph</em> Person markup included in the front page.', 'wpsso' ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' ).' '.sprintf( __( 'The available Person list includes users with \'%1$s\' and/or \'%2$s\' roles.', 'wpsso' ), _x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
+
 							break;
 
 						case 'tooltip-schema_logo_url':
+
 							$text = 'A URL for the website / organization\'s logo image that Google can use in search results and its <em>Knowledge Graph</em>.';
+
 							break;
 
 						case 'tooltip-schema_banner_url':
+
 							$text = 'A URL for the website / organization\'s banner image &mdash; <strong>measuring exactly 600x60px</strong> &mdash; that Google / Google News can use to display content from Schema Article webpages.';
+
 							break;
 
 						case 'tooltip-schema_img_max':
+
 							$text = 'The maximum number of images to include in the Google / Schema markup -- this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content. If you select "0", then no images will be listed in the Google / Schema meta tags (<strong>not recommended</strong>).';
+
 							break;
 
 						case 'tooltip-schema_img_dimensions':
-							if ( $this->p->debug->enabled )
+
+							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'getting defaults for schema_img (width, height, crop)' );
+							}
+
 							$def_dimensions = $this->p->opt->get_defaults( 'schema_img_width' ).'x'.
 								$this->p->opt->get_defaults( 'schema_img_height' ).' '.
 								( $this->p->opt->get_defaults( 'schema_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
+
 							$text = 'The image dimensions used in the Google / Schema meta tags and JSON-LD markup (the default dimensions are '.$def_dimensions.'). The minimum image width required by Google is 696px for the resulting resized image. If you do not choose to crop this image size, make sure the height value is large enough for portrait / vertical images.';
+
 							break;
 
 						case 'tooltip-schema_desc_len':
+
 							$text = 'The maximum length of text used for the Google+ / Schema description meta tag. The length should be at least '.$this->p->cf['head']['limit_min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'schema_desc_len' ).' characters).';
+
 							break;
 
 						case 'tooltip-schema_author_name':
+
 							$text = sprintf( __( 'Select an <em>%1$s</em> for the author / Person markup, or "[None]" to disable this feature (the recommended value is "Display Name").', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
+
 							break;
 
 						case 'tooltip-schema_type_for_home_index':
+
 							$text = sprintf( __( 'Select the Schema type for a blog (non-static) front page. The default Schema type is %s.',
 								'wpsso' ), 'https://schema.org/CollectionPage' );
+
 							break;
 
 						case 'tooltip-schema_type_for_home_page':
+
 							$text = sprintf( __( 'Select the Schema type for a static front page. The default Schema type is %s.',
 								'wpsso' ), 'https://schema.org/WebSite' );
+
 							break;
 
 						case 'tooltip-schema_type_for_archive_page':
+
 							$text = sprintf( __( 'Select the Schema type for archive pages (Category, Tags, etc.). The default Schema type is %s.',
 								'wpsso' ), 'https://schema.org/CollectionPage' );
+
 							break;
 
 						case 'tooltip-schema_type_for_user_page':
+
 							$text = sprintf( __( 'Select the Schema type for user / author pages. The default Schema type is %s.',
 								'wpsso' ), 'https://schema.org/ProfilePage' );
+
 							break;
 
 						case 'tooltip-schema_type_for_search_page':
+
 							$text = sprintf( __( 'Select the Schema type for search results pages. The default Schema type is %s.',
 								'wpsso' ), 'https://schema.org/SearchResultsPage' );
+
 							break;
 
 						case 'tooltip-schema_type_for_ptn':
+
 							$text = __( 'Select the Schema type for each WordPress post type. The Schema type defines the item type for Schema JSON-LD markup and/or meta tags in the webpage head section.', 'wpsso' );
+
 							break;
 
 						case 'tooltip-schema_review_item_type':
+
 							$text = __( 'The default Schema Item Type for reviewed items.', 'wpsso' );
+
 							break;
 
 						default:
+
 							$text = apply_filters( $lca.'_messages_tooltip_schema', $text, $idx, $info );
+
 							break;
+
 					}	// end of tooltip-google switch
+
 				/**
 				 * Publisher 'Twitter Card' settings
 				 */
