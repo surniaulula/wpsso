@@ -269,6 +269,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#profile-page.wrap #your-profile #'.$this->p->lca.'_'.$metabox_id.'.postbox h3:first-of-type {
 					margin:0;
 				}
+				.gutenberg .edit-post-meta-boxes-area #'.$this->p->lca.'_'.$metabox_id.'.postbox { 
+					border-left:1px solid #e2e4e7;
+					border-right:1px solid #e2e4e7;
+				}
+				.gutenberg .edit-post-meta-boxes-area #'.$this->p->lca.'_'.$metabox_id.'.postbox .inside { 
+					border-bottom:1px solid #e2e4e7;
+				}
 				#'.$this->p->lca.'_'.$metabox_id.'.postbox { 
 					min-width:760px;
 				}
