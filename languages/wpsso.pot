@@ -2340,50 +2340,50 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:67 lib/gpl/admin/post.php:74
+#: lib/gpl/admin/meta.php:67 lib/gpl/admin/post.php:75
 #: lib/pro/admin/meta.php:76 lib/pro/admin/post.php:84
 msgctxt "option label"
 msgid "Default Title"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:72 lib/gpl/admin/post.php:80
+#: lib/gpl/admin/meta.php:72 lib/gpl/admin/post.php:81
 #: lib/pro/admin/meta.php:82 lib/pro/admin/post.php:91
 msgctxt "option label"
 msgid "Default Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:78 lib/gpl/admin/post.php:87
+#: lib/gpl/admin/meta.php:78 lib/gpl/admin/post.php:88
 #: lib/pro/admin/meta.php:89 lib/pro/admin/post.php:99
 msgctxt "option label"
 msgid "Google Search / SEO Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:84 lib/gpl/admin/post.php:94
+#: lib/gpl/admin/meta.php:84 lib/gpl/admin/post.php:95
 #: lib/pro/admin/meta.php:99 lib/pro/admin/post.php:110
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:90 lib/gpl/admin/post.php:101 lib/meta.php:212
+#: lib/gpl/admin/meta.php:90 lib/gpl/admin/post.php:102 lib/meta.php:212
 #: lib/meta.php:233 lib/pro/admin/meta.php:105 lib/pro/admin/post.php:117
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:97 lib/gpl/admin/post.php:109 lib/meta.php:215
+#: lib/gpl/admin/meta.php:97 lib/gpl/admin/post.php:110 lib/meta.php:215
 #: lib/meta.php:236 lib/pro/admin/meta.php:113 lib/pro/admin/post.php:126
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:103 lib/gpl/admin/post.php:166
+#: lib/gpl/admin/meta.php:103 lib/gpl/admin/post.php:167
 #: lib/pro/admin/meta.php:124 lib/pro/admin/post.php:188
 #: lib/submenu/general.php:250
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:106 lib/gpl/admin/post.php:170
+#: lib/gpl/admin/meta.php:106 lib/gpl/admin/post.php:171
 #: lib/pro/admin/meta.php:127 lib/pro/admin/post.php:192
 msgctxt "option label"
 msgid "Schema Description"
@@ -2468,52 +2468,52 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gpl/admin/post.php:57 lib/pro/admin/post.php:69
+#: lib/gpl/admin/post.php:58 lib/pro/admin/post.php:69
 msgid ""
 "Activate the %s extension for additional Schema markup features and options."
 msgstr ""
 
-#: lib/gpl/admin/post.php:69 lib/pro/admin/post.php:78
+#: lib/gpl/admin/post.php:70 lib/pro/admin/post.php:78
 msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:119 lib/messages.php:619 lib/pro/admin/post.php:141
+#: lib/gpl/admin/post.php:120 lib/messages.php:619 lib/pro/admin/post.php:141
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gpl/admin/post.php:126 lib/messages.php:630 lib/pro/admin/post.php:148
+#: lib/gpl/admin/post.php:127 lib/messages.php:630 lib/pro/admin/post.php:148
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/gpl/admin/post.php:132 lib/messages.php:641 lib/pro/admin/post.php:154
+#: lib/gpl/admin/post.php:133 lib/messages.php:641 lib/pro/admin/post.php:154
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gpl/admin/post.php:138 lib/messages.php:652 lib/pro/admin/post.php:160
+#: lib/gpl/admin/post.php:139 lib/messages.php:652 lib/pro/admin/post.php:160
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gpl/admin/post.php:144 lib/messages.php:673 lib/pro/admin/post.php:166
+#: lib/gpl/admin/post.php:145 lib/messages.php:673 lib/pro/admin/post.php:166
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gpl/admin/post.php:151 lib/messages.php:683 lib/pro/admin/post.php:173
+#: lib/gpl/admin/post.php:152 lib/messages.php:683 lib/pro/admin/post.php:173
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gpl/admin/post.php:158 lib/messages.php:694 lib/pro/admin/post.php:180
+#: lib/gpl/admin/post.php:159 lib/messages.php:694 lib/pro/admin/post.php:180
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:176 lib/meta.php:209 lib/post.php:935
+#: lib/gpl/admin/post.php:177 lib/meta.php:209 lib/post.php:935
 #: lib/pro/admin/post.php:198
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -4516,7 +4516,7 @@ msgstr ""
 
 #: lib/meta.php:244
 msgctxt "option label"
-msgid "Open Graph Example"
+msgid "Facebook / Open Graph Example"
 msgstr ""
 
 #: lib/meta.php:362

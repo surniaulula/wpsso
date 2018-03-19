@@ -241,7 +241,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			$table_rows['subsection_og_example'] = '<td colspan="2" class="subsection"><h4>'.
-				_x( 'Open Graph Example', 'option label', 'wpsso' ).'</h4></td>';
+				_x( 'Facebook / Open Graph Example', 'option label', 'wpsso' ).'</h4></td>';
 
 			$table_rows[] = '<td colspan="2">'.$this->p->msgs->get( 'info-meta-social-preview' ).'</td>';
 

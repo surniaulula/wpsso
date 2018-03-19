@@ -39,6 +39,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$og_title_max_len    = $this->p->options['og_title_len'];
 			$og_desc_max_len     = $this->p->options['og_desc_len'];
 			$schema_desc_max_len = $this->p->options['schema_desc_len'];
+			$seo_desc_max_len    = $this->p->options['seo_desc_len'];
 			$tc_desc_max_len     = $this->p->options['tc_desc_len'];
 
 			$dots = '...';
