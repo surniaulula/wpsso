@@ -375,6 +375,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.56.2-dev.1 (2018/03/19)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* Fixed a function call in an error message for images that exceed an allowed aspect ratio.
+* *Developer Notes*
+	* None
+
 **Version 3.56.1 (2018/03/18)**
 
 * *New Features*
@@ -533,6 +544,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 
 == Upgrade Notice ==
+
+= 3.56.2-dev.1 =
+
+(2018/03/19) Fixed a function call in an error message for images that exceed an allowed aspect ratio.
 
 = 3.56.1 =
 
