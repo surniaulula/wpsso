@@ -32,9 +32,9 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 
 **WPSSO Core can enhance and integrate with your favorite SEO plugin** &mdash; WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
 
-**WPSSO Core is *incredibly fast* and coded for performance** &mdash; WPSSO Core and its optional add-ons make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its optional add-ons use only the PHP library files and object classes they need, keeping their code small, fast, and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
+**WPSSO Core is *incredibly fast* and coded for performance** &mdash; WPSSO Core and its add-ons make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its add-ons use only the PHP library files and object classes they need, keeping their code small, fast, and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
 
-**Advanced meta tag / JSON-LD markup filter hooks for developers** &mdash; WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro optional add-ons to extend WPSSO Core features.
+**Advanced meta tag / JSON-LD markup filter hooks for developers** &mdash; WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several optional Free and Pro add-ons to extend WPSSO Core features.
 
 <h3>Quick List of Features</h3>
 
@@ -206,8 +206,8 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Ability to purchase Pro add-ons for WPSSO Core Pro:
 
-* [WPSSO Organization Markup Pro](https://wpsso.com/extend/plugins/wpsso-organization/?utm_source=wpsso-readme-org-pro)
 * [WPSSO Mobile App Meta Pro](https://wpsso.com/extend/plugins/wpsso-am/?utm_source=wpsso-readme-am-pro)
+* [WPSSO Organization Markup Pro](https://wpsso.com/extend/plugins/wpsso-organization/?utm_source=wpsso-readme-org-pro)
 * [WPSSO Place / Location and Local Business Meta Pro](https://wpsso.com/extend/plugins/wpsso-plm/?utm_source=wpsso-readme-plm-pro)
 * [WPSSO Ridiculously Responsive Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-rrssb/?utm_source=wpsso-readme-rrssb-pro)
 * [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-pro) &mdash; *recommended for best SEO*
