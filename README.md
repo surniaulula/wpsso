@@ -1,4 +1,4 @@
-<h1>WPSSO Core [Main Plugin] -- Advanced Meta Tags and Schema Markup for Social Sharing and SEO</h1>
+<h1>WPSSO Core</h1><h3>Advanced Meta Tags and Schema Markup for Social Sharing and SEO</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
@@ -27,9 +27,9 @@
 
 <p><strong>WPSSO Core can enhance and integrate with your favorite SEO plugin</strong> &mdash; WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
 
-<p><strong>WPSSO Core is <em>incredibly fast</em> and coded for performance</strong> &mdash; WPSSO Core and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its extensions use only the PHP library files and object classes they need, keeping their code small, fast, and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).</p>
+<p><strong>WPSSO Core is <em>incredibly fast</em> and coded for performance</strong> &mdash; WPSSO Core and its optional add-ons make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its optional add-ons use only the PHP library files and object classes they need, keeping their code small, fast, and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).</p>
 
-<p><strong>Advanced meta tag / JSON-LD markup filter hooks for developers</strong> &mdash; WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the WPSSO Core plugin.</p>
+<p><strong>Advanced meta tag / JSON-LD markup filter hooks for developers</strong> &mdash; WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro optional add-ons to extend WPSSO Core features.</p>
 
 <h3>Quick List of Features</h3>
 
@@ -49,7 +49,7 @@
 <li><a href="https://dev.twitter.com/cards/types/summary-large-image">Summary Card with Large Image</a></li>
 <li><a href="https://dev.twitter.com/cards/types/summary">Summary Card</a></li>
 <li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> (Pro version required for video discovery modules).</li>
-<li><a href="https://dev.twitter.com/cards/types/app">App Card</a> (<a href="https://wordpress.org/plugins/wpsso-am/">WPSSO AM extension</a> required)</li>
+<li><a href="https://dev.twitter.com/cards/types/app">App Card</a> (<a href="https://wordpress.org/plugins/wpsso-am/">WPSSO AM add-on</a> required)</li>
 </ul>
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards, Pinterest Rich Pins, and all Twitter Card types.</p>
@@ -103,7 +103,7 @@
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Supports WordPress Network / Multisite installations and WordPress MU Domain Mapping.</p>
 
-<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional (and optional) Free extension for WPSSO Core:</p>
+<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Optional Free add-ons for WPSSO Core:</p>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a></li>
@@ -184,17 +184,17 @@
 <li>NextGEN Gallery</li>
 <li>Polylang</li>
 <li>rtMedia for WordPress, BuddyPress and bbPress</li>
-<li>Simple Job Board (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro extension</a> required)</li>
+<li>Simple Job Board (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro add-on</a> required)</li>
 <li>The Events Calendar</li>
 <li>The SEO Framework</li>
 <li>WooCommerce (versions 1, 2, and 3)</li>
 <li>WordPress REST API (version 2)</li>
 <li>WP eCommerce</li>
-<li>WP Job Manager (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro extension</a> required)</li>
+<li>WP Job Manager (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro add-on</a> required)</li>
 <li>WP Meta SEO</li>
-<li>WP Product Review (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro extension</a> required)</li>
-<li>WP Recipe Maker (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro extension</a> required)</li>
-<li>WP Ultimate Recipe (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro extension</a> required)</li>
+<li>WP Product Review (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro add-on</a> required)</li>
+<li>WP Recipe Maker (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro add-on</a> required)</li>
+<li>WP Ultimate Recipe (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req">WPSSO JSON Pro add-on</a> required)</li>
 <li>Yoast SEO (aka WordPress SEO)</li>
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul></li>
@@ -217,7 +217,7 @@
 </ul></li>
 </ul>
 
-<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Pro extensions for WPSSO Core Pro:</p>
+<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Ability to purchase Pro add-ons for WPSSO Core Pro:</p>
 
 <ul>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-organization/?utm_source=wpsso-readme-org-pro">WPSSO Organization Markup Pro</a></li>

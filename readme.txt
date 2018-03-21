@@ -32,9 +32,9 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 
 **WPSSO Core can enhance and integrate with your favorite SEO plugin** &mdash; WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
 
-**WPSSO Core is *incredibly fast* and coded for performance** &mdash; WPSSO Core and its extensions make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its extensions use only the PHP library files and object classes they need, keeping their code small, fast, and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
+**WPSSO Core is *incredibly fast* and coded for performance** &mdash; WPSSO Core and its optional add-ons make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its optional add-ons use only the PHP library files and object classes they need, keeping their code small, fast, and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
 
-**Advanced meta tag / JSON-LD markup filter hooks for developers** &mdash; WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro extensions to extend the WPSSO Core plugin.
+**Advanced meta tag / JSON-LD markup filter hooks for developers** &mdash; WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several Free and Pro optional add-ons to extend WPSSO Core features.
 
 <h3>Quick List of Features</h3>
 
@@ -53,7 +53,7 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 * [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 * [Summary Card](https://dev.twitter.com/cards/types/summary)
 * [Player Card](https://dev.twitter.com/cards/types/player) (Pro version required for video discovery modules).
-* [App Card](https://dev.twitter.com/cards/types/app) ([WPSSO AM extension](https://wordpress.org/plugins/wpsso-am/) required)
+* [App Card](https://dev.twitter.com/cards/types/app) ([WPSSO AM add-on](https://wordpress.org/plugins/wpsso-am/) required)
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards, Pinterest Rich Pins, and all Twitter Card types.
 
@@ -102,7 +102,7 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Supports WordPress Network / Multisite installations and WordPress MU Domain Mapping.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional (and optional) Free extension for WPSSO Core:
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Optional Free add-ons for WPSSO Core:
 
 * [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/)
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/)
@@ -176,17 +176,17 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 	* NextGEN Gallery
 	* Polylang
 	* rtMedia for WordPress, BuddyPress and bbPress
-	* Simple Job Board ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req) required)
+	* Simple Job Board ([WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req) required)
 	* The Events Calendar
 	* The SEO Framework
 	* WooCommerce (versions 1, 2, and 3)
 	* WordPress REST API (version 2)
 	* WP eCommerce
-	* WP Job Manager ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req) required)
+	* WP Job Manager ([WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req) required)
 	* WP Meta SEO
-	* WP Product Review ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req) required)
-	* WP Recipe Maker ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req) required)
-	* WP Ultimate Recipe ([WPSSO JSON Pro extension](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req) required)
+	* WP Product Review ([WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req) required)
+	* WP Recipe Maker ([WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req) required)
+	* WP Ultimate Recipe ([WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme-json-req) required)
 	* Yoast SEO (aka WordPress SEO)
 	* Yotpo Social Reviews for WooCommerce
 * **Integration with Service APIs**
@@ -204,7 +204,7 @@ WPSSO Core creates complete and accurate meta tags and Schema markup for Faceboo
 	* Your Own URL Shortener (YOURLS)
 	* YouTube Videos and Playlists
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Pro extensions for WPSSO Core Pro:
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Ability to purchase Pro add-ons for WPSSO Core Pro:
 
 * [WPSSO Organization Markup Pro](https://wpsso.com/extend/plugins/wpsso-organization/?utm_source=wpsso-readme-org-pro)
 * [WPSSO Mobile App Meta Pro](https://wpsso.com/extend/plugins/wpsso-am/?utm_source=wpsso-readme-am-pro)
@@ -371,16 +371,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Development Updates for Pro Version</h3>
 
-<p>Development, alpha, beta, and release candidate updates are available to WPSSO Core Pro version customers. Under the SSO &gt; Update Manager settings page, you can select the "Development and Up" version filter (for example) for the WPSSO Core plugin and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO Core version information. When new development versions are available, they can be installed under the Dashboard &gt; Updates page (like any other plugin update). You can also re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
+<p>Development, alpha, beta, and release candidate updates are available to WPSSO Core Pro version customers. Under the SSO &gt; Update Manager settings page, you can select the "Development and Up" version filter (for example) for the WPSSO Core plugin and all its add-ons (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Updates" button to fetch the latest / current WPSSO Core version information. When new development versions are available, they can be installed under the Dashboard &gt; Updates page (like any other plugin update). You can also re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.56.2-dev.1 (2018/03/19)**
+**Version 3.56.2-dev.2 (2018/03/21)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Minor updates to some help messages and fr_FR translations.
+	* Renamed plugin "Extensions" to "Add-ons" to avoid confusion and improve / simplify translations.
 * *Bugfixes*
 	* Fixed a function call in an error message for images that exceed an allowed aspect ratio.
 * *Developer Notes*
@@ -406,138 +407,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Added a check for JetPack SEO Tools to disable some basic SEO meta tags (canonical, description, and robots).
 	* Added a new "Auto-Refresh Cache After Clear All" option under the Advanced &gt; Cache Settings tab (Pro version).
-	* Renamed the "Extension Plugins and Pro Licenses" settings page to "Core Extensions and Pro Licenses".
 	* Replaced plugin action links in the WordPress Plugins page by links to the settings, licenses, and dashboard pages.
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* None
-
-**Version 3.55.2 (2018/03/11)**
-
-* *New Features*
-	* None
-* *Improvements*
-	* None
-* *Bugfixes*
-	* Fix to prevent triggering a bug in the EWWW plugin, which requires the WordPress image library files to be loaded before using the 'wp_image_editors' filter.
-* *Developer Notes*
-	* None
-
-**Version 3.55.1 (2018/03/10)**
-
-* *New Features*
-	* None
-* *Improvements*
-	* Added an error notification when the WordPress `image_make_intermediate_size()` function fails.
-	* Added a list of human-readable checked cache IDs when the "Show Cache Purge Count on Update" option is checked *and* the WP_DEBUG contant is true.
-* *Bugfixes*
-	* Fixed a variable name typo in a call to `WpssoMeta::must_be_extended()`.
-	* Fixed the admin edit page 'SSO Schema' column value not getting refreshed on update.
-	* Fixed the WooCommerce `wc_format_decimal()` call to use the default number of decimals (Pro version).
-* *Developer Notes*
-	* Added a check to show the "Robots" option in the post Publish metabox only if the "meta name robots" meta tag is enabled (note that the "meta name robots" meta tag is disabled automatically if a known SEO plugin is detected).
-	* Added a check for the 'imagick' PHP extension to make sure it's installed and available.
-
-**Version 3.55.0 (2018/03/04)**
-
-* *New Features*
-	* None
-* *Improvements*
-	* Refactored the NextGEN Gallery module to add support for [NextCellent Gallery – NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/) image slugs in the WP_Query pid value (Pro version).
-	* Updated the NextGEN Gallery plugin module name from "NextGEN Gallery" to "NGG version 1-2: NextGEN Gallery, NextCellent Gallery"
-	* Updated the notice messages for conflicting options in known SEO plugins.
-	* Added more conflict checks for the WP Meta SEO and Yoast SEO plugins.
-* *Bugfixes*
-	* Fixed the missing 'og:image:width' and 'og:image:height' meta tags.
-* *Developer Notes*
-	* Refactored transient / WP Object cache index values to include WP query variables for extra uniqueness.
-	* Refactored the WpssoPage get_title() and get_description() methods to handle boolean, array, or string as the $md_idx argument value.
-
-**Version 3.54.0 (2018/02/24)**
-
-* *New Features*
-	* None
-* *Improvements*
-	* Added a new informational notice when there are pending updates for the WPSSO Core plugin and/or its extensions.
-	* Added a wrapper method / function around `getimagesize()` to manage connection timeouts using PHP's cURL library.
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* Improved `trigger_error()` error messages and their translations.
-	* Added a new WpssoAdmin `get_check_for_updates_link()` method for use by extensions in their notification messages.
-	* Added a new SucomCache `get_image_size()` method to fetch an image URL and run `getimagesize()` on the local image file instead.
-	* Replaced `getimagesize()` in WpssoUtil by SucomCache `get_image_size()` which has better connection timeouts.
-	* Renamed the following constants for better name consistency:
-		* WPSSO_DUPE_CHECK_WARNING_SECS to WPSSO_DUPE_CHECK_WARNING_TIME
-		* WPSSO_DUPE_CHECK_TIMEOUT_SECS to WPSSO_DUPE_CHECK_TIMEOUT_TIME
-
-**Version 3.53.0 (2018/02/17)**
-
-* *New Features*
-	* Added a new custom "Canonical URL" option (hidden by default) in the Social and Search Optimization metabox (Pro version).
-* *Improvements*
-	* Options hidden in the "Basic Options" view that have a different value than their default will no longer be hidden.
-	* When the "link rel canonical" head tag is enabled, the WordPress and AMP plugin 'rel_canonical' hooks are now removed to avoid duplicates.
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* None
-
-**Version 3.52.1 (2018/02/09)**
-
-* *New Features*
-	* Added the new WPSSO Breadcrumbs Markup extension to the SSO &gt; Extension Plugins settings page.
-* *Improvements*
-	* Added an "Edit" link to the "Robots" option in the post Publish metabox to show the checkboxes only when desired.
-	* Added a fallback to custom product attributes when the main WooCommerce product attribute is an empty string (Pro version).
-* *Bugfixes*
-	* Fixed the assignment of Schema Event offers validFrom and validThrough property values.
-* *Developer Notes*
-	* Added a new WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX constant (default value is 30).
-	* Added the plugin upgrade notice to the plugins page for WPSSO Core and its extensions.
-	* Moved the following methods from the (WPSSO JSON extension) WpssoJsonSchema class to the main (WPSSO Core plugin) WpssoSchema class:
-		* get_single_mod_data()
-		* get_mod_cache_index()
-		* get_mod_cache_data()
-		* save_mod_cache_data()
-
-**Version 3.52.0 (2018/02/03)**
-
-* *New Features*
-	* Added a 'Person' role for WordPress users, that will be used by the WPSSO JSON extension for Schema Person selects.
-	* Added a "Add Person Role for New Users" option under the SSO &gt; Advanced &gt; Integration tab (enabled by default).
-	* Added a "meta name robots" checkbox under the SSO &gt; Advanced &gt; Head Tags List &gt; SEO / Other tab (enabled by default if no SEO plugin is detected).
-	* Added a 'Robots' (noindex, nofollow, noarchive, nosnippet) option in the post Publish side metabox (if the "meta name robots" meta tag option is enabled).
-	* Added a "SameAs Webpage URLs Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
-* *Improvements*
-	* Added error messages using PHP's `trigger_error()` function for slow filters, slow `get_posts()` queries, and slow `getimagesize()` calls (error messages can be captured by the Query Monitor plugin).
-* *Bugfixes*
-	* Fixed an incorrectly named variable used to calculate the maximum image upscale size.
-* *Developer Notes*
-	* Adds a new 'Person' role to existing 'Administrator', 'Author', 'Editor', and 'Subscriber' users on plugin activation (and removes it on plugin uninstall).
-	* Added a new SucomUtil `get_users_by_roles()` method and refactored the `get_user_select()` method.
-	* Removed the WpssoUser `get_form_display_names()` method (unused).
-
-**Version 3.51.0 (2018/01/27)**
-
-* *New Features*
-	* Added an integration module for the WordPress video shortcode and self-hosted videos (Pro version).
-* *Improvements*
-	* None
-* *Bugfixes*
-	* Fix for AMP v0.6.0 - Moved testing of the AMP_QUERY_VAR constant to the NgfbSchema::get_pinterest_img_html() filter.
-* *Developer Notes*
-	* Refactored the WpssoMedia::get_video_info() method, replacing the media url, width, and height arguments by a single associative array.
-
-**Version 3.50.0 (2018/01/24)**
-
-* *New Features*
-	* Added an integration module for the WP Meta SEO plugin (Pro version).
-* *Improvements*
-	* Updated the tooltip colors from blue to a custom green palette.
-	* Added a link to the Media Library image editing page in some image related warning notices.
-	* Added a check for the WP Meta SEO plugin and a warning if its "Social sharing block" option is enabled. 
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -545,15 +415,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.56.2-dev.1 =
+= 3.56.2-dev.2 =
 
-(2018/03/19) Fixed a function call in an error message for images that exceed an allowed aspect ratio.
+(2018/03/21) Fixed a function call in an error message for images that exceed an allowed aspect ratio. Renamed plugin "Extensions" to "Add-ons" to avoid confusion and improve / simplify translations.
 
 = 3.56.1 =
 
 (2018/03/18) Fixed the unhide link when notices are dismissed to unhide error and warning notices separately. Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
-
-= 3.56.0 =
-
-(2018/03/15) Added a check for JetPack SEO Tools to disable some basic SEO meta tags. Added a new "Auto-Refresh Cache After Clear All" option under the Advanced &gt; Cache Settings tab (Pro version).
 
