@@ -364,7 +364,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		// this method does not return a value, so do not use as a filter
 		public function add_plugin_image_sizes( $wp_obj = false, $sizes = array(), &$mod = false, $filter = true ) {
 			/**
-			 * Allow various plugin extensions to provide their image names, labels, etc.
+			 * Allow various plugin add-ons to provide their image names, labels, etc.
 			 * The first dimension array key is the option name prefix by default.
 			 * You can also include the width, height, crop, crop_x, and crop_y values.
 			 *

@@ -208,7 +208,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$def_opts = null;	// optimize and only get array when needed
 
 				/**
-				 * Check for a new plugin and/or extension versions.
+				 * Check for a new plugin versions.
 				 */
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 					if ( empty( $info['version'] ) ) {
@@ -354,6 +354,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'adding options derived from post type names' );
 				}
+
 				$opts = $this->p->util->add_ptns_to_opts( $opts, array(
 					'plugin_add_to' => 1,
 					'schema_type_for' => 'webpage',
@@ -394,16 +395,21 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return $opts;
 		}
 
-		// sanitize and validate options
+		/**
+		 * Sanitize and validate options.
+		 */
 		public function sanitize( $opts = array(), $def_opts = array(), $network = false, $mod = false ) {
 
-			// make sure we have something to work with
+			/**
+			 * Make sure we have something to work with.
+			 */
 			if ( empty( $def_opts ) || ! is_array( $def_opts ) ) {
 				return $opts;
 			}
 
-			// add any missing options from the defaults, unless sanitizing for a module 
-			// (default values will be removed anyway)
+			/**
+			 * Add any missing options from the defaults, unless sanitizing for a module.
+			 */
 			if ( false === $mod ) {
 				foreach ( $def_opts as $opt_key => $def_val ) {
 					if ( ! empty( $opt_key ) && ! isset( $opts[$opt_key] ) ) {
@@ -412,14 +418,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			// sanitize values
+			/**
+			 * Sanitize values.
+			 */
 			foreach ( $opts as $opt_key => $opt_val ) {
 
 				if ( empty( $opt_key ) ) {
 					continue;
 				}
 
-				// remove multiples, localization, and status for more generic match
+				/**
+				 * Remove multiples, localization, and status for more generic match.
+				 */
 				$base_key = preg_replace( '/(_[0-9]+)?(#.*|:[0-9]+)?$/', '', $opt_key );
 
 				if ( preg_match( '/:is$/', $base_key ) ) {
@@ -427,7 +437,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					continue;
 				}
 
-				// multi-options and localized options will default to an empty string
+				/**
+				 * Multi-options and localized options will default to an empty string.
+				 */
 				$def_val = isset( $def_opts[$opt_key] ) ? $def_opts[$opt_key] : '';
 
 				$opts[$opt_key] = $this->check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod );
@@ -461,17 +473,23 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			// if an image id is being used, remove the image url (only one can be defined)
+			/**
+			 * If an image id is being used, remove the image url (only one can be defined).
+			 */
 			if ( ! empty( $opts['og_def_img_id'] ) && ! empty( $opts['og_def_img_url'] ) ) {
 				$opts['og_def_img_url'] = '';
 			}
 
-			// og_desc_len must be at least 160 chars (defined in config)
+			/**
+			 * og_desc_len must be at least 160 chars (defined in config).
+			 */
 			if ( isset( $opts['og_desc_len'] ) && $opts['og_desc_len'] < $this->p->cf['head']['limit_min']['og_desc_len'] )  {
 				$opts['og_desc_len'] = $this->p->cf['head']['limit_min']['og_desc_len'];
 			}
 
-			// remove the SEO description if a known SEO plugin is active
+			/**
+			 * Remove the SEO description if a known SEO plugin is active.
+			 */
 			if ( isset( $opts['seo_desc'] ) && ! empty( $this->p->avail['seo']['*'] ) ) {
 				unset( $opts['seo_desc'] );
 			}
@@ -494,7 +512,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
-				// if there's no google api key, then disable the shortening service
+				/**
+				 * If there's no google api key, then disable the shortening service.
+				 */
 				if ( isset( $opts['plugin_google_api_key'] ) && empty( $opts['plugin_google_api_key'] ) ) {
 					$opts['plugin_google_shorten'] = 0;
 				}
@@ -503,8 +523,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ) );
 				}
 
+				/**
+				 * If the plugin_check_head option is disabled, then delete the check counter.
+				 */
 				if ( ! $network ) {
-					// if the plugin_check_head option is disabled, then delete the check counter
 					if ( empty( $this->p->options['plugin_check_head'] ) ) {
 						delete_option( WPSSO_POST_CHECK_NAME );
 					}
@@ -531,10 +553,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return $opt_val;	// stop here
 			}
 
-			// hooked by several extensions
+			/**
+			 * Hooked by several add-ons.
+			 */
 			$option_type = apply_filters( $this->p->lca.'_option_type', false, $base_key, $network, $mod );
 
-			// translate error messages only once
+			/**
+			 * Translate error messages only once.
+			 */
 			if ( null === $error_messages ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -780,7 +806,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$has_new_options = empty( $opts['options_version'] ) ? true : false;
 			$prev_version = $has_new_options ? '' : $opts['options_version'];	// save the old version string to compare
 
-			// save the plugin version and options version for each extension
+			// save the plugin version and options version
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( isset( $info['version'] ) ) {
 					$opts['plugin_'.$ext.'_version'] = $info['version'];

@@ -15,7 +15,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 4.9.4
  * WC Tested Up To: 3.3.3
- * Version: 3.56.2-dev.1
+ * Version: 3.56.2-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -64,7 +64,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public $lca = 'wpsso';		// main plugin lowercase acronym
 		public $m = array();		// plugin modules
-		public $m_ext = array();	// plugin extension modules
+		public $m_ext = array();	// plugin add-on modules
 		public $cf = array();		// config array defined in construct method
 		public $avail = array();	// assoc array for other plugin checks
 		public $options = array();	// individual blog/site options

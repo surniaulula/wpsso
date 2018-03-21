@@ -38,29 +38,31 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			// http://qtip2.com/download
 			wp_register_script( 'jquery-qtip', 
-				WPSSO_URLPATH.'js/ext/jquery-qtip.min.js', 
+				WPSSO_URLPATH . 'js/ext/jquery-qtip.min.js', 
 					array( 'jquery' ), $this->p->cf['jquery-qtip']['version'], true );
 
 			wp_register_script( 'sucom-settings-page', 
-				WPSSO_URLPATH.'js/com/jquery-settings-page.min.js', 
+				WPSSO_URLPATH . 'js/com/jquery-settings-page.min.js', 
 					array( 'jquery' ), $plugin_version, true );
 
 			wp_register_script( 'sucom-metabox', 
-				WPSSO_URLPATH.'js/com/jquery-metabox.min.js', 
+				WPSSO_URLPATH . 'js/com/jquery-metabox.min.js', 
 					array( 'jquery' ), $plugin_version, true );
 
 			wp_register_script( 'sucom-tooltips', 
-				WPSSO_URLPATH.'js/com/jquery-tooltips.min.js', 
+				WPSSO_URLPATH . 'js/com/jquery-tooltips.min.js', 
 					array( 'jquery' ), $plugin_version, true );
 
 			wp_register_script( 'sucom-admin-media', 
-				WPSSO_URLPATH.'js/com/jquery-admin-media.min.js', 
+				WPSSO_URLPATH . 'js/com/jquery-admin-media.min.js', 
 					array( 'jquery', 'jquery-ui-core' ), $plugin_version, true );
 
-			// don't load our javascript where we don't need it
+			/**
+			 * Only load JavaScript where we need it.
+			 */
 			switch ( $hook_name ) {
 
-				case ( preg_match( '/_page_'.$this->p->lca.'-(site)?licenses/', $hook_name ) ? true : false ) :
+				case ( preg_match( '/_page_' . $this->p->lca . '-(site)?licenses/', $hook_name ) ? true : false ) :
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for licenses page' );
@@ -72,8 +74,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 					// no break
 
-				// includes the profile_page and users_page hooks (profile submenu items)
-				case ( strpos( $hook_name, '_page_'.$this->p->lca.'-' ) !== false ? true : false ):
+				/**
+				 * Matches the profile_page and users_page hooks (profile submenu items).
+				 */
+				case ( strpos( $hook_name, '_page_' . $this->p->lca . '-' ) !== false ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for settings page' );
@@ -157,10 +161,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$custom_script_js = '
 jQuery(document).ready(function(){
 	jQuery("body#plugin-information.iframe a[id$=_from_iframe]").on("click", function(){
-		if ( window.top.location.href.indexOf( "page='.$this->p->lca.'-" ) ) {
+		if ( window.top.location.href.indexOf( "page=' . $this->p->lca . '-" ) ) {
 			var plugin_url = jQuery( this ).attr( "href" );
-			var pageref_url_arg = "&'.$this->p->lca.'_pageref_url=" + encodeURIComponent( window.top.location.href );
-			var pageref_title_arg = "&'.$this->p->lca.'_pageref_title=" + encodeURIComponent( jQuery("h1", window.parent.document).text() );
+			var pageref_url_arg = "&' . $this->p->lca . '_pageref_url=" + encodeURIComponent( window.top.location.href );
+			var pageref_title_arg = "&' . $this->p->lca . '_pageref_title=" + encodeURIComponent( jQuery("h1", window.parent.document).text() );
 			window.top.location.href = plugin_url + pageref_url_arg + pageref_title_arg;
 		}
 	});

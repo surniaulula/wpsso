@@ -67,7 +67,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 					// no break
 
-				// includes the profile_page and users_page hooks (profile submenu items)
+				/**
+				 * Matches the profile_page and users_page hooks (profile submenu items).
+				 */
 				case ( strpos( $hook_name, '_page_'.$this->p->lca.'-' ) !== false ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
@@ -262,7 +264,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					opacity:0.5;
 					filter:alpha(opacity=50);	/* ie8 and earlier */
 				}
-				#adminmenu ul.wp-submenu div.'.$this->p->lca.'-menu-item.last-top-submenu-page.with-extensions {
+				#adminmenu ul.wp-submenu div.'.$this->p->lca.'-menu-item.last-top-submenu-page.with-add-ons {
 					padding-bottom:12px;
 					border-bottom:1px solid;
 				}
@@ -369,6 +371,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					.wp-list-table td.column-title {
 					        width:25%;
 					}
+					.wp-list-table th.column-date,
+					.wp-list-table td.column-date {
+					        width:15%;
+					}
 					.wp-list-table th#wpseo-score,
 					.wp-list-table th#wpseo-score-readability,
 					.wp-list-table th#wpseo_score,
@@ -387,11 +393,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					.wp-list-table td.column-wpseo-title,
 					.wp-list-table th.column-wpseo-metadesc,
 					.wp-list-table td.column-wpseo-metadesc {
-						width:9%;
+						width:12%;
 					}
 					.wp-list-table th.column-wpseo-focuskw,
 					.wp-list-table td.column-wpseo-focuskw {
-						width:6%;
+						width:7%;
 					}
 				';
 			}

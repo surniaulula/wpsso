@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 			$this->menu_id = $id;
 			$this->menu_name = $name;
 			$this->menu_lib = $lib;
-			$this->menu_ext = $ext;	// lowercase acronyn for plugin or extension
+			$this->menu_ext = $ext;
 		}
 
 		// called by the extended WpssoAdmin class

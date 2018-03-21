@@ -18,8 +18,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		private static $extend_lib_checks = array(
 			'seo' => array(
 				'jetpack-seo' => 'Jetpack SEO Tools',
-				'seou' => 'SEO Ultimate',
-				'sq' => 'Squirrly SEO',
+				'seou'        => 'SEO Ultimate',
+				'sq'          => 'Squirrly SEO',
 			),
 		);
 
@@ -271,7 +271,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		public function get_ext_list() {
 			$ext_list = array();
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				if ( empty( $info['version'] ) ) {	// only active extensions
+				if ( empty( $info['version'] ) ) {	// only active add-ons
 					continue;
 				}
 				$ins = $this->aop( $ext, false );

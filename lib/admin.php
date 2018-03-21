@@ -16,14 +16,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $p;
 		protected $menu_id;
 		protected $menu_name;
-		protected $menu_lib;	// example: profile, setting, submenu, or sitesubmenu
-		protected $menu_ext;	// lowercase acronyn for plugin or extension
+		protected $menu_lib;
+		protected $menu_ext;
 		protected $pagehook;
 		protected $pageref_url;
 		protected $pageref_title;
 
 		public static $pkg = array();
-		public static $readme = array();	// array for the readme of each extension
+		public static $readme = array();
 
 		public $form = null;
 		public $lang = array();
@@ -94,7 +94,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 		 		/**
-				 * Provide plugin data / information from the readme.txt for additional extensions.
+				 * Provide plugin data / information from the readme.txt for additional add-ons.
 				 * Don't hook the 'plugins_api_result' filter if the update manager is active as it
 				 * provides more complete plugin data than what's available from the readme.txt.
 				 */
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $menu_libs as $menu_lib ) {	// profile, setting, submenu, or sitesubmenu
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-					if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all extensions have submenus
+					if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all add-ons have submenus
 						continue;
 					}
 					foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
@@ -215,7 +215,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all extensions have submenus
+				if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all add-ons have submenus
 					continue;
 				}
 
@@ -249,9 +249,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				} elseif ( $arg[1] === $last_top_id ) {
 					$css_class = 'last-top-submenu-page';
 					if ( empty( $first_ext_id ) ) {
-						$css_class .= ' no-extensions';
+						$css_class .= ' no-add-ons';
 					} else {
-						$css_class .= ' with-extensions';
+						$css_class .= ' with-add-ons';
 					}
 				} elseif ( $arg[1] === $first_ext_id ) {
 					$css_class = 'first-ext-submenu-page';
@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$sorted_menu = array();
 
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-					if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all extensions have submenus
+					if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all add-ons have submenus
 						continue;
 					}
 					foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
@@ -385,7 +385,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( empty( $menu_ext ) ) {
-				$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or extension
+				$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or add-on
 				if ( empty( $menu_ext ) ) {
 					$menu_ext = $this->p->lca;
 				}
@@ -402,7 +402,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $menu_ext === $this->p->lca ) {
 						$dashicon = 'admin-settings';	// use settings dashicon by default
 					} else {
-						$dashicon = 'admin-plugins';	// use plugin dashicon by default for extensions
+						$dashicon = 'admin-plugins';	// use plugin dashicon by default for add-ons
 					}
 				} else {
 					$dashicon = $this->p->cf['menu']['dashicons'][$menu_id];
@@ -455,13 +455,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$settings_label = $ext === $this->p->lca ? 
 					_x( $this->p->cf['plugin'][$ext]['lib'][$menu_lib][$settings_page], 'lib file description', 'wpsso' ) : 
-					__( 'Extension Settings', 'wpsso' );
+					__( 'Add-on Settings', 'wpsso' );
 
 				$links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' . $settings_label . '</a>';
 			}
 
 			if ( ! empty( $licenses_page ) ) {
-				$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' . __( 'Core Extensions', 'wpsso' ) . '</a>';
+				$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' . __( 'Core Add-ons', 'wpsso' ) . '</a>';
 			}
 
 			if ( ! empty( $dashboard_page ) ) {
@@ -550,7 +550,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Provide plugin data / information from the readme.txt for additional extensions.
+		 * Provide plugin data / information from the readme.txt for additional add-ons.
 		 */
 		public function external_plugin_data( $res, $action = null, $args = null ) {
 
@@ -568,7 +568,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $res;
 			}
 
-			// get the extension acronym for the config
+			// get the add-on acronym for the config
 			$ext = $this->p->cf['*']['slug'][$args->slug];
 
 			// make sure we have a config for that slug
@@ -844,7 +844,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			$this->add_footer_hooks();	// add extension name and version to settings page footer
+			$this->add_footer_hooks();	// add add-on name and version to settings page footer
 			$this->add_plugin_hooks();
 			$this->add_side_meta_boxes();	// add before main metaboxes
 			$this->add_meta_boxes();	// add last to move duplicate side metaboxes
@@ -891,7 +891,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				settings_errors( WPSSO_OPTIONS_NAME );
 			}
 
-			$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or extension
+			$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or add-on
 
 			if ( empty( $menu_ext ) ) {
 				$menu_ext = $this->p->lca;
@@ -1217,7 +1217,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				if ( empty( $info['version'] ) ) {	// only active extensions
+				if ( empty( $info['version'] ) ) {	// only active add-ons
 					continue;
 				}
 
@@ -1248,7 +1248,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					/**
 					 * Hooked by the update manager to check installed version against the latest version, 
-					 * if a non-stable filter is selected for that plugin / extension.
+					 * if a non-stable filter is selected for that plugin / add-on.
 					 */
 					if ( apply_filters( $this->p->lca . '_newer_version_available',
 						$newer_avail, $ext, $installed_version, $stable_version, $latest_version ) ) {
@@ -1521,7 +1521,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				if ( empty( $info['version'] ) ) {	// filter out extensions that are not installed
+				if ( empty( $info['version'] ) ) {	// filter out add-ons that are not installed
 					continue;
 				}
 
@@ -1558,7 +1558,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				if ( empty( $info['version'] ) ) {	// filter out extensions that are not installed
+				if ( empty( $info['version'] ) ) {	// filter out add-ons that are not installed
 					continue;
 				}
 
@@ -1809,7 +1809,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$func_url  = __( 'https://secure.php.net/manual/en/function.extension-loaded.php', 'wpsso' );
 
 					if ( ! empty( $php_info['wp_editor'] ) ) {
-						$editor_label = '<a href="'.$php_info['wp_url'].'">'.$php_info['wp_editor'].'</a>';
+						$editor_label = '<a href="'.$php_info['wp_ref_url'].'">'.$php_info['wp_editor'].'</a>';
 						$error_msg .= sprintf( __( 'WordPress is configured to use the %1$s image editing class but the <a href="%2$s">PHP %3$s extension module</a> is not loaded: The <a href="%4$s">PHP %5$s function</a> for "%6$s" is false.', 'wpsso' ), $editor_label, $php_info['url'], $php_info['label'], $func_url, '<code>'.$func_name.'</code>', $php_ext ).' ';
 					} else {
 						$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded: The <a href="%3$s">PHP %4$s function</a> for "%5$s" is false.', 'wpsso' ), $php_info['url'], $php_info['label'], $func_url, '<code>'.$func_name.'</code>', $php_ext ).' ';
@@ -2427,11 +2427,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				// if the update manager is not active, check if installed
 				} elseif ( SucomUtil::plugin_is_installed( $um_info['base'] ) ) {
 
-					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-extension' ) );
+					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
 
 				// update manager is not active or installed
 				} else {
-					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-extension-required' ) );
+					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-add-on-required' ) );
 				}
 			}
 
@@ -2484,12 +2484,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function update_count_notice() {
-			$count = SucomUtil::get_plugin_updates_count( $this->p->lca );
-			if ( $count > 0 ) {
+			$update_count = SucomUtil::get_plugin_updates_count( $this->p->lca );
+			if ( $update_count > 0 ) {
 				$info = $this->p->cf['plugin'][$this->p->lca];
 				$link_url = self_admin_url( 'update-core.php' );
 				$dismiss_key = 'have-updates-for-' . $this->p->lca;
-				$this->p->notice->inf( sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and/or its extensions</a>.', 'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and/or its extensions</a>.', $count, 'wpsso' ), $link_url, $count, $info['name'] ) . ' ' . _n( 'Please install this plugin update at your earliest convenience.', 'Please install these plugin updates at your earliest convenience.', $count, 'wpsso' ), true, $dismiss_key, DAY_IN_SECONDS * 3 );
+				$this->p->notice->inf( sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and/or add-on(s)</a>.', 'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and/or add-on(s)</a>.', $update_count, 'wpsso' ), $link_url, $update_count, $info['name'] ) . ' ' . _n( 'Please install this plugin update at your earliest convenience.', 'Please install these plugin updates at your earliest convenience.', $update_count, 'wpsso' ), true, $dismiss_key, DAY_IN_SECONDS * 3 );
 			}
 		}
 
@@ -2915,7 +2915,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 				// translators: %1$s is the URL, %2$s is the short plugin name
-				$link_html = sprintf( __( 'You may <a href="%1$s">refresh the update information for %2$s and its extensions</a> to check if newer versions are available.', 'wpsso' ), $link_url, self::$pkg[$this->p->lca]['short'] );
+				$link_html = sprintf( __( 'You may <a href="%1$s">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available.', 'wpsso' ), $link_url, self::$pkg[$this->p->lca]['short'] );
 
 			} elseif ( empty( $_GET['force-check'] ) ) {
 

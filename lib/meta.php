@@ -738,7 +738,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$md_prev = $this->get_options( $mod['id'] );
 
 			/**
-			 * Remove plugin / extension version strings.
+			 * Remove plugin version strings.
 			 */
 			$unset_idx = array( 'options_filtered', 'options_version' );
 

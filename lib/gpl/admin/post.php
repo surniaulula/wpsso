@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
 				$json_info = $this->p->cf['plugin']['wpssojson'];
 				$schema_desc_msg = '<p class="status-msg smaller">'.
-					sprintf( __( 'Activate the %s extension for additional Schema markup features and options.',
+					sprintf( __( 'Activate the %s add-on for additional Schema markup features and options.',
 						'wpsso' ), '<a href="'.$json_info['url']['home'].'">'.$json_info['short'].'</a>' ).'</p>';
 			} else {
 				$schema_desc_msg = '';

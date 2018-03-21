@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 			$this->menu_id = $id;
 			$this->menu_name = $name;
 			$this->menu_lib = $lib;
-			$this->menu_ext = $ext;	// lowercase acronyn for plugin or extension
+			$this->menu_ext = $ext;
 		}
 
 		protected function set_form_object( $menu_ext ) {
@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 		protected function add_meta_boxes() {
 
 			add_meta_box( $this->pagehook.'_licenses',
-				_x( 'Core Extensions and Pro Licenses', 'metabox title', 'wpsso' ),
+				_x( 'Core Add-ons and Pro Licenses', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_licenses' ), $this->pagehook, 'normal' );
 
 			// add a class to set a minimum width for the network postboxes

@@ -892,11 +892,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$type_url = false;
 			$ext_data = array_reverse( $json_data );	// read the array bottom-up
 			foreach ( $ext_data as $val ) {
-				if ( is_array( $val ) ) {
-					// if it's an extension array, drill down and return that value
+				if ( is_array( $val ) ) {		// if it's an extension array, drill down and return that value
 					return self::get_context_extension_url( $val );
-				} elseif ( is_string( $val ) ) {
-					// set a backup value in case there is no extension array
+				} elseif ( is_string( $val ) ) {	// set a backup value in case there is no extension array
 					$type_url = $val;
 				}
 			}
@@ -2803,7 +2801,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			// returns false when the wpsso-schema-json-ld extension is active
+			// returns false when the wpsso-schema-json-ld add-on is active
 			if ( ! apply_filters( $this->p->lca.'_add_schema_meta_array', true ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: schema meta array disabled' );
@@ -2984,7 +2982,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$is_enabled = empty( $this->p->options['schema_add_noscript'] ) ? false : true;
 
-			// returns false when the wpsso-schema-json-ld extension is active
+			// returns false when the wpsso-schema-json-ld add-on is active
 			if ( ! apply_filters( $this->p->lca.'_add_schema_noscript_array', $is_enabled, $crawler_name ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'noscript disabled by option or filter for '.$crawler_name );
