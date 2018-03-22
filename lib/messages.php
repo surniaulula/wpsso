@@ -1211,7 +1211,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'social-accounts',
 								_x( 'WebSite Social Pages and Accounts', 'lib file description', 'wpsso' ) );
 
-							$text = __( 'Include WebSite, Organization, and/or Person Schema markup in the front page for Google\'s <em>Knowledge Graph</em>.', 'wpsso' ).' '.__( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' '.sprintf( __( 'Developers can hook the \'%s\' filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca.'_json_ld_search_url' ).' '.sprintf( __( 'The Organization markup includes all URLs entered on the %s settings page.', 'wpsso' ), $settings_page_link ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
+							$text = __( 'Include WebSite, Organization, and/or Person Schema markup in the front page for Google\'s <em>Knowledge Graph</em>.', 'wpsso' ).' '.__( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' '.sprintf( __( 'Developers can hook the \'%s\' filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca.'_json_ld_search_url' ).' '.sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $settings_page_link ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
 
 							break;
 
@@ -1587,27 +1587,27 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $idx ) {
 
-						case 'info-plugin-tid':	// displayed on the Pro Licenses settings page
+						case 'info-plugin-tid':	// displayed in the Pro Licenses settings page
 
 							$um_info = $this->p->cf['plugin']['wpssoum'];
 
 							$text = '<blockquote class="top-info">';
 
-							$text .= '<p>'.sprintf( __( 'After purchasing the %1$s plugin, or any of its Pro add-ons, you\'ll receive an email with a unique Authentication ID for the plugin / add-on your purchased.', 'wpsso' ), $info['short_pro'] ).' ';
+							$text .= '<p>' . sprintf( __( 'After purchasing the %1$s plugin &mdash; or any of its Pro add-ons &mdash; you\'ll receive an email with a unique Authentication ID for the plugin you purchased.', 'wpsso' ), $info['short_pro'] ) . ' ';
 
-							$text .=  __( 'Enter the Authentication ID in the field corresponding to the plugin / add-on you purchased.', 'wpsso' ).' ';
+							$text .=  __( 'Enter the Authentication ID in the option field corresponding to the plugin you purchased.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Don\'t forget that the %1$s Free add-on must also be installed and active to check for Pro version updates.', 'wpsso' ), $um_info['name'] ).' ;-)</p>';
+							$text .= sprintf( __( 'Don\'t forget that the %1$s Free add-on must also be installed and active to check for Pro version updates.', 'wpsso' ), $um_info['name'] ) . ' ;-)</p>';
 
 							if ( ! WpssoAdmin::$pkg[$lca]['aop'] ) {
-								$text .= '<p>'.sprintf( __( 'Please note that Pro add-ons use several %1$s features. This means that all Pro add-ons require an active and licensed %1$s plugin &mdash; don\'t forget to purchase %1$s before purchasing any of its Pro add-ons.', 'wpsso' ), $info['short_pro'] ).' ;-)</p>';
+								$text .= '<p>' . sprintf( __( 'Please note that Pro add-ons use several %1$s features. This means that all Pro add-ons require an active and licensed %1$s plugin &mdash; don\'t forget to purchase %1$s before purchasing any of its Pro add-ons.', 'wpsso' ), $info['short_pro'] ) . ' ;-)</p>';
 							}
 
 							$text .= '</blockquote>';
 
 							break;
 
-						case 'info-plugin-tid-network':	// displayed on the Network Pro Licenses settings page
+						case 'info-plugin-tid-network':	// displayed in the Network Pro Licenses settings page
 
 							$um_info = $this->p->cf['plugin']['wpssoum'];
 
@@ -1616,13 +1616,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<blockquote class="top-info">';
 
-							$text .= '<p>'.sprintf( __( 'After purchasing the %1$s plugin, or any of its Pro add-ons, you\'ll receive an email with a unique Authentication ID for the plugin / add-on your purchased.', 'wpsso' ), $info['short_pro'] ).' ';
+							$text .= '<p>' . sprintf( __( 'After purchasing the %1$s plugin &mdash; or any of its Pro add-ons &mdash; you\'ll receive an email with a unique Authentication ID for the plugin you purchased.', 'wpsso' ), $info['short_pro'] ) . ' ';
 
-							$text .= sprintf( __( 'You may enter each Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
+							$text .= sprintf( __( 'You may enter each Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $settings_page_link ) . '</p>';
 
-							$text.= '<p>'.__( 'If you enter Authentication IDs on this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; as an example, to license an individual plugin / add-on for 10 sites, you would need an Authentication ID from a 10 license pack purchase of that plugin / add-on.', 'wpsso' ).'</p>';
+							$text.= '<p>' . __( 'If you enter Authentication IDs on this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; for example, to license a Pro add-on for 10 sites, you would need an Authentication ID from a 10 license pack purchase of that Pro add-on.', 'wpsso' ) . '</p>';
 
-							$text .= '<p>'.sprintf( __( '<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its Pro add-ons, please make sure the %2$s Free add-on is active on the default site, and the default site is licensed.', 'wpsso' ), $info['name_pro'], $um_info['name'] ).'</p>';
+							$text .= '<p>' . sprintf( __( '<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its Pro add-ons, please make sure the %2$s Free add-on is active on the default site, and the default site is licensed.', 'wpsso' ), $info['name_pro'], $um_info['name'] ) . '</p>';
 
 							$text .= '</blockquote>';
 
@@ -1868,7 +1868,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
 								_x( 'Core Add-ons and Pro Licenses', 'lib file description', 'wpsso' ) );
 
-							$text = '<p><b>'.sprintf( __( 'The %1$s plugin Authentication ID option is empty.', 'wpsso' ), $info['name'] ).'</b><br/>'.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email on the %s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
+							$text = '<p><b>'.sprintf( __( 'The %1$s plugin Authentication ID option is empty.', 'wpsso' ), $info['name'] ).'</b><br/>'.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email in the %s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
 						}
 
 						break;
@@ -1878,7 +1878,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
 							_x( 'Core Add-ons and Pro Licenses', 'lib file description', 'wpsso' ) );
 
-						$text = sprintf( __( 'An Authentication ID has been provided for %1$s but the plugin has not been installed &mdash; you can install and activate the Pro version from the %2$s settings page.', 'wpsso' ), '<b>'.$info['name'].'</b>', $settings_page_link ).' ;-)';
+						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin has not been installed &mdash; you can install and activate the Pro version from the %2$s settings page.', 'wpsso' ), '<b>'.$info['name'].'</b>', $settings_page_link ).' ;-)';
 
 						break;
 
@@ -1887,7 +1887,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
 							_x( 'Core Add-ons and Pro Licenses', 'lib file description', 'wpsso' ) );
 
-						$text = sprintf( __( 'An Authentication ID has been provided for %1$s on the %2$s settings page but the Pro version has not been installed &mdash; don\'t forget to update the current plugin to install the latest Pro version.', 'wpsso' ), '<b>'.$info['name'].'</b>', $settings_page_link ).' ;-)';
+						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the Pro version has not been installed &mdash; don\'t forget to update the plugin to install the latest Pro version.', 'wpsso' ), '<b>'.$info['name'].'</b>', $settings_page_link ).' ;-)';
 
 						break;
 
@@ -1901,7 +1901,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$plugins_page_link = '<a href="'.get_admin_url( null, 'plugins.php' ).'">'.__( 'Plugins' ).'</a>';
 
-						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered on the %1$s settings page,<br/>but the %2$s add-on is not active.', 'wpsso' ), $settings_page_link, $um_info['name'] ).'</b> '.sprintf( __( 'This Free add-on is required to update and enable the %1$s and its Pro add-ons.', 'wpsso' ), $info['name_pro'] ).'</p><p>';
+						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered in the %1$s settings page,<br/>but the %2$s add-on is not active.', 'wpsso' ), $settings_page_link, $um_info['name'] ).'</b> '.sprintf( __( 'This Free add-on is required to update and enable the %1$s and its Pro add-ons.', 'wpsso' ), $info['name_pro'] ).'</p><p>';
 
 						if ( $idx === 'notice-um-add-on-required' ) {
 							$text .= '<b>'.sprintf( __( 'Install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ), $um_info['name'], $settings_page_link ).'</b>';
@@ -1932,7 +1932,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info['name_pro'], $info['version'], $um_info['short'], $um_rec_version, $um_version ).' ';
 
-						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button on the %4$s settings page to force an immediate refresh of all Pro update information.', 'wpsso' ), $um_info['name'], $wp_updates_page_link, $um_check_updates_transl, $um_settings_page_link );
+						$text .= sprintf( __( 'If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button in the %4$s settings page to force an immediate refresh of all Pro update information.', 'wpsso' ), $um_info['name'], $wp_updates_page_link, $um_check_updates_transl, $um_settings_page_link );
 
 						break;
 

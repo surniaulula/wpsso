@@ -723,18 +723,17 @@ msgstr ""
 
 #: lib/admin.php:2492
 msgid ""
-"There is <a href=\"%1$s\">%2$d pending update for the %3$s plugin and/or add-"
-"on(s)</a>."
+"There is <a href=\"%1$s\">%2$d pending update for the %3$s plugin and/or its "
+"add-on(s)</a>."
 msgid_plural ""
 "There are <a href=\"%1$s\">%2$d pending updates for the %3$s plugin and/or "
-"add-on(s)</a>."
+"its add-on(s)</a>."
 msgstr[0] ""
 msgstr[1] ""
 
 #: lib/admin.php:2492
-msgid "Please install this plugin update at your earliest convenience."
-msgid_plural ""
-"Please install these plugin updates at your earliest convenience."
+msgid "Please install this update at your earliest convenience."
+msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -3856,7 +3855,7 @@ msgstr ""
 
 #: lib/messages.php:1214
 msgid ""
-"The Organization markup includes all URLs entered on the %s settings page."
+"The Organization markup includes all URLs entered in the %s settings page."
 msgstr ""
 
 #: lib/messages.php:1214 lib/messages.php:1220
@@ -4073,15 +4072,15 @@ msgstr ""
 
 #: lib/messages.php:1596 lib/messages.php:1619
 msgid ""
-"After purchasing the %1$s plugin, or any of its Pro add-ons, you'll receive "
-"an email with a unique Authentication ID for the plugin / add-on your "
+"After purchasing the %1$s plugin &mdash; or any of its Pro add-ons &mdash; "
+"you'll receive an email with a unique Authentication ID for the plugin you "
 "purchased."
 msgstr ""
 
 #: lib/messages.php:1598
 msgid ""
-"Enter the Authentication ID in the field corresponding to the plugin / add-"
-"on you purchased."
+"Enter the Authentication ID in the option field corresponding to the plugin "
+"you purchased."
 msgstr ""
 
 #: lib/messages.php:1600
@@ -4108,9 +4107,9 @@ msgstr ""
 msgid ""
 "If you enter Authentication IDs on this network settings page, <em>please "
 "make sure you have purchased enough licenses for all sites within the "
-"network</em> &mdash; as an example, to license an individual plugin / add-on "
-"for 10 sites, you would need an Authentication ID from a 10 license pack "
-"purchase of that plugin / add-on."
+"network</em> &mdash; for example, to license a Pro add-on for 10 sites, you "
+"would need an Authentication ID from a 10 license pack purchase of that Pro "
+"add-on."
 msgstr ""
 
 #: lib/messages.php:1625
@@ -4367,21 +4366,21 @@ msgstr ""
 msgid ""
 "To enable Pro version features and allow the plugin to authenticate itself "
 "for updates, please enter the unique Authentication ID you received by email "
-"on the %s settings page."
+"in the %s settings page."
 msgstr ""
 
 #: lib/messages.php:1881
 msgid ""
-"An Authentication ID has been provided for %1$s but the plugin has not been "
+"An Authentication ID has been entered for %1$s but the plugin has not been "
 "installed &mdash; you can install and activate the Pro version from the %2$s "
 "settings page."
 msgstr ""
 
 #: lib/messages.php:1890
 msgid ""
-"An Authentication ID has been provided for %1$s on the %2$s settings page "
-"but the Pro version has not been installed &mdash; don't forget to update "
-"the current plugin to install the latest Pro version."
+"An Authentication ID has been entered for %1$s in the %2$s settings page but "
+"the Pro version has not been installed &mdash; don't forget to update the "
+"plugin to install the latest Pro version."
 msgstr ""
 
 #: lib/messages.php:1902
@@ -4390,7 +4389,7 @@ msgstr ""
 
 #: lib/messages.php:1904
 msgid ""
-"At least one Authentication ID has been entered on the %1$s settings page,"
+"At least one Authentication ID has been entered in the %1$s settings page,"
 "<br/>but the %2$s add-on is not active."
 msgstr ""
 
@@ -4441,7 +4440,7 @@ msgstr ""
 #: lib/messages.php:1935
 msgid ""
 "If an update for %1$s is not available under the WordPress %2$s page, use "
-"the <em>%3$s</em> button on the %4$s settings page to force an immediate "
+"the <em>%3$s</em> button in the %4$s settings page to force an immediate "
 "refresh of all Pro update information."
 msgstr ""
 
