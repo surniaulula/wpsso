@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 3.56.2-b.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 3.56.2-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1842,73 +1842,73 @@ msgstr ""
 #: lib/config-gettext-extract.php:157
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on to add a user locale (language / region) drop-down menu in "
-"the WordPress admin back-end and front-end toolbar."
-msgstr ""
-
-#: lib/config-gettext-extract.php:158
-msgctxt "plugin description"
-msgid ""
-"WPSSO Core add-on to add JSON-LD formatted Schema BreadcrumbList markup for "
-"Google and Search Engine Optimization (SEO)."
-msgstr ""
-
-#: lib/config-gettext-extract.php:159
-msgctxt "plugin description"
-msgid ""
-"WPSSO Core add-on to add ratings and reviews for WordPress comments, with "
-"Aggregate Rating meta tags and optional Schema Review markup."
-msgstr ""
-
-#: lib/config-gettext-extract.php:160
-msgctxt "plugin description"
-msgid ""
-"WPSSO Core add-on to add Ridiculously Responsive (SVG) Social Sharing "
-"Buttons in your content, excerpts, CSS sidebar, widget, shortcode, post edit "
-"pages, etc."
-msgstr ""
-
-#: lib/config-gettext-extract.php:161
-msgctxt "plugin description"
-msgid ""
-"WPSSO Core add-on to add Schema JSON-LD / SEO markup for Articles, Events, "
-"Local Business, Products, Recipes, Reviews + many more."
-msgstr ""
-
-#: lib/config-gettext-extract.php:162
-msgctxt "plugin description"
-msgid ""
-"WPSSO Core add-on to add Social Sharing Buttons with support for hashtags, "
-"short URLs, bbPress, BuddyPress, WooCommerce, and much more."
-msgstr ""
-
-#: lib/config-gettext-extract.php:163
-msgctxt "plugin description"
-msgid ""
-"WPSSO Core add-on to add Twitter-style quoted text to your content with a "
-"Tweet share link and customizable CSS."
-msgstr ""
-
-#: lib/config-gettext-extract.php:164
-msgctxt "plugin description"
-msgid ""
 "WPSSO Core add-on to manage Organizations and additional Schema markup "
 "properties (Organizer, Performer, Publisher, etc.) for Google Rich Cards / "
 "Knowledge Graph."
 msgstr ""
 
-#: lib/config-gettext-extract.php:165
+#: lib/config-gettext-extract.php:158
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Apple Store / iTunes and Google Play App meta "
 "tags for Apple's mobile Safari and Twitter's App Card."
 msgstr ""
 
-#: lib/config-gettext-extract.php:166
+#: lib/config-gettext-extract.php:159
+msgctxt "plugin description"
+msgid ""
+"WPSSO Core add-on to provide a user locale (language / region) drop-down "
+"menu in the WordPress admin back-end and front-end toolbar."
+msgstr ""
+
+#: lib/config-gettext-extract.php:160
+msgctxt "plugin description"
+msgid ""
+"WPSSO Core add-on to provide JSON-LD formatted Schema BreadcrumbList markup "
+"for Google and Search Engine Optimization (SEO)."
+msgstr ""
+
+#: lib/config-gettext-extract.php:161
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Pinterest Place, Facebook / Open Graph "
 "Location, Schema Local Business, and Local SEO meta tags."
+msgstr ""
+
+#: lib/config-gettext-extract.php:162
+msgctxt "plugin description"
+msgid ""
+"WPSSO Core add-on to provide ratings and reviews for WordPress comments, "
+"with Aggregate Rating meta tags and optional Schema Review markup."
+msgstr ""
+
+#: lib/config-gettext-extract.php:163
+msgctxt "plugin description"
+msgid ""
+"WPSSO Core add-on to provide Ridiculously Responsive (SVG) Social Sharing "
+"Buttons in your content, excerpts, CSS sidebar, widget, shortcode, post edit "
+"pages, etc."
+msgstr ""
+
+#: lib/config-gettext-extract.php:164
+msgctxt "plugin description"
+msgid ""
+"WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, "
+"Events, Local Business, Products, Recipes, Reviews + many more."
+msgstr ""
+
+#: lib/config-gettext-extract.php:165
+msgctxt "plugin description"
+msgid ""
+"WPSSO Core add-on to provide Social Sharing Buttons with support for "
+"hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
+msgstr ""
+
+#: lib/config-gettext-extract.php:166
+msgctxt "plugin description"
+msgid ""
+"WPSSO Core add-on to provide Twitter-style quoted text to your content with "
+"a Tweet share link and customizable CSS."
 msgstr ""
 
 #: lib/config-gettext-extract.php:167
