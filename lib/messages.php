@@ -1909,7 +1909,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= '<b>'.sprintf( __( 'The %1$s add-on can be activated from the WordPress %2$s page.', 'wpsso' ), $um_info['name'], $plugins_page_link ).'</b> '.__( 'Please activate this Free add-on now.', 'wpsso' );
 						}
 
-						$text .= ' '.sprintf( __( 'When the %1$s add-on is active, one or more Pro version updates may be available for your licensed plugin / add-on(s).', 'wpsso' ), $um_info['name'] ).'</p>';
+						$text .= ' '.sprintf( __( 'When the %1$s add-on is active, one or more Pro version updates may be available for your licensed plugin and/or its add-on(s).', 'wpsso' ), $um_info['name'] ).'</p>';
 
 						break;
 

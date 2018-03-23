@@ -4414,7 +4414,7 @@ msgstr ""
 #: lib/messages.php:1912
 msgid ""
 "When the %1$s add-on is active, one or more Pro version updates may be "
-"available for your licensed plugin / add-on(s)."
+"available for your licensed plugin and/or its add-on(s)."
 msgstr ""
 
 #: lib/messages.php:1925
