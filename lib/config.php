@@ -1190,12 +1190,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wp_editor' => 'WP_Image_Editor_GD',
 						'wp_ref_url' => 'https://developer.wordpress.org/reference/classes/wp_image_editor_gd/',
 					),
+					/*
 					'imagick' => array(
 						'label' => 'Image Processing (ImageMagick)',
 						'url' => 'https://secure.php.net/manual/en/book.imagick.php',
 						'wp_editor' => 'WP_Image_Editor_Imagick',
 						'wp_ref_url' => 'https://developer.wordpress.org/reference/classes/wp_image_editor_imagick/',
 					),
+					*/
 					'json' => array(
 						'label' => 'JavaScript Object Notation (JSON)',
 						'url' => 'https://secure.php.net/manual/en/book.json.php',
