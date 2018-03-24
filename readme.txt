@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.4
 WC Tested Up To: 3.3.4
-Stable Tag: 3.56.1
+Stable Tag: 3.56.2
 
 Automatically create complete meta tags & Schema markup from your content for Social Sharing, Google Rich Cards (SEO), Pinterest Rich Pins + more.
 
@@ -418,8 +418,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 3.56.2 =
 
 (2018/03/24) Fixed a function call in an error message for images that exceed an allowed aspect ratio. Renamed plugin "Extensions" to "Add-ons" to avoid confusion and improve / simplify translations.
-
-= 3.56.1 =
-
-(2018/03/18) Fixed the unhide link when notices are dismissed to unhide error and warning notices separately. Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
 
