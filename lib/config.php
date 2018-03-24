@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.56.2-rc.1',		// Plugin version.
+					'version' => '3.56.2',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -475,7 +475,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssotaq' => array(			// Plugin acronym.
 					'short' => 'WPSSO TAQ',		// Short plugin name.
 					'name' => 'WPSSO Tweet a Quote',
-					'desc' => 'WPSSO Core add-on to provide Twitter-style quoted text to your content with a Tweet share link and customizable CSS.',
+					'desc' => 'WPSSO Core add-on to provide Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS.',
 					'slug' => 'wpsso-tweet-a-quote',
 					'base' => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
 					'update_auth' => '',

@@ -1593,7 +1593,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<blockquote class="top-info">';
 
-							$text .= '<p>' . sprintf( __( 'After purchasing the %1$s plugin &mdash; or any of its Pro add-ons &mdash; you\'ll receive an email with a unique Authentication ID for the plugin you purchased.', 'wpsso' ), $info['short_pro'] ) . ' ';
+							$text .= '<p>' . sprintf( __( 'After purchasing the %1$s plugin &mdash; or any of its Pro add-ons &mdash; you\'ll receive an email with a unique Authentication ID for the plugin / add-on you purchased.', 'wpsso' ), $info['short_pro'] ) . ' ';
 
 							$text .=  __( 'Enter the Authentication ID in the option field corresponding to the plugin you purchased.', 'wpsso' ) . ' ';
 
@@ -1620,7 +1620,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'You may enter each Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $settings_page_link ) . '</p>';
 
-							$text.= '<p>' . __( 'If you enter Authentication IDs on this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; for example, to license a Pro add-on for 10 sites, you would need an Authentication ID from a 10 license pack purchase of that Pro add-on.', 'wpsso' ) . '</p>';
+							$text.= '<p>' . __( 'If you enter Authentication IDs in this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; for example, to license a Pro add-on for 10 sites, you would need an Authentication ID from a 10 license pack purchase (or more) of that Pro add-on.', 'wpsso' ) . '</p>';
 
 							$text .= '<p>' . sprintf( __( '<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its Pro add-ons, please make sure the %2$s Free add-on is active on the default site, and the default site is licensed.', 'wpsso' ), $info['name_pro'], $um_info['name'] ) . '</p>';
 
@@ -1901,7 +1901,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$plugins_page_link = '<a href="'.get_admin_url( null, 'plugins.php' ).'">'.__( 'Plugins' ).'</a>';
 
-						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered in the %1$s settings page,<br/>but the %2$s add-on is not active.', 'wpsso' ), $settings_page_link, $um_info['name'] ).'</b> '.sprintf( __( 'This Free add-on is required to update and enable the %1$s and its Pro add-ons.', 'wpsso' ), $info['name_pro'] ).'</p><p>';
+						$text = '<p><b>'.sprintf( __( 'At least one Authentication ID has been entered in the %1$s settings page,<br/>but the %2$s add-on is not active.', 'wpsso' ), $settings_page_link, $um_info['name'] ).'</b> '.sprintf( __( 'This Free add-on is required to update and enable the %1$s plugin and its Pro add-ons.', 'wpsso' ), $info['name_pro'] ).'</p><p>';
 
 						if ( $idx === 'notice-um-add-on-required' ) {
 							$text .= '<b>'.sprintf( __( 'Install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ), $um_info['name'], $settings_page_link ).'</b>';

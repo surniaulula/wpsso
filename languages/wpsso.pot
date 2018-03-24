@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 3.56.2-rc.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 3.56.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1907,8 +1907,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:166
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on to provide Twitter-style quoted text to your content with "
-"a Tweet share link and customizable CSS."
+"WPSSO Core add-on to provide Twitter-style quoted text for your content, "
+"with a convenient Tweet share link and customizable CSS."
 msgstr ""
 
 #: lib/config-gettext-extract.php:167
@@ -4070,11 +4070,11 @@ msgid ""
 "etc.)."
 msgstr ""
 
-#: lib/messages.php:1596 lib/messages.php:1619
+#: lib/messages.php:1596
 msgid ""
 "After purchasing the %1$s plugin &mdash; or any of its Pro add-ons &mdash; "
-"you'll receive an email with a unique Authentication ID for the plugin you "
-"purchased."
+"you'll receive an email with a unique Authentication ID for the plugin / add-"
+"on you purchased."
 msgstr ""
 
 #: lib/messages.php:1598
@@ -4096,6 +4096,13 @@ msgid ""
 "to purchase %1$s before purchasing any of its Pro add-ons."
 msgstr ""
 
+#: lib/messages.php:1619
+msgid ""
+"After purchasing the %1$s plugin &mdash; or any of its Pro add-ons &mdash; "
+"you'll receive an email with a unique Authentication ID for the plugin you "
+"purchased."
+msgstr ""
+
 #: lib/messages.php:1621
 msgid ""
 "You may enter each Authentication ID on this page <em>to define a value for "
@@ -4105,11 +4112,11 @@ msgstr ""
 
 #: lib/messages.php:1623
 msgid ""
-"If you enter Authentication IDs on this network settings page, <em>please "
+"If you enter Authentication IDs in this network settings page, <em>please "
 "make sure you have purchased enough licenses for all sites within the "
 "network</em> &mdash; for example, to license a Pro add-on for 10 sites, you "
-"would need an Authentication ID from a 10 license pack purchase of that Pro "
-"add-on."
+"would need an Authentication ID from a 10 license pack purchase (or more) of "
+"that Pro add-on."
 msgstr ""
 
 #: lib/messages.php:1625
@@ -4395,8 +4402,8 @@ msgstr ""
 
 #: lib/messages.php:1904
 msgid ""
-"This Free add-on is required to update and enable the %1$s and its Pro add-"
-"ons."
+"This Free add-on is required to update and enable the %1$s plugin and its "
+"Pro add-ons."
 msgstr ""
 
 #: lib/messages.php:1907
@@ -4649,114 +4656,114 @@ msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/options.php:283
+#: lib/options.php:279
 msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:366
+#: lib/options.php:361
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:368
+#: lib/options.php:363
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:370
+#: lib/options.php:365
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:372
+#: lib/options.php:367
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:385
+#: lib/options.php:380
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:467
+#: lib/options.php:462
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:523
+#: lib/options.php:518
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:571
+#: lib/options.php:566
 msgid ""
 "The value of option '%s' must be a URL - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:572
+#: lib/options.php:567
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:573
+#: lib/options.php:568
 msgid ""
 "The value of option '%s' must be numeric - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:574
+#: lib/options.php:569
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:575
+#: lib/options.php:570
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:576
+#: lib/options.php:571
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:577
+#: lib/options.php:572
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:578
+#: lib/options.php:573
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:579
+#: lib/options.php:574
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:580
+#: lib/options.php:575
 msgid ""
 "The value of option '%s' must be HTML code - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:581
+#: lib/options.php:576
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:837
+#: lib/options.php:865
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 

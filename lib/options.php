@@ -17,7 +17,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		protected $upg;				// WpssoOptionsUpgrade class object
 
 		protected static $allow_cache = false;
-		protected static $error_messages = null;
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -33,7 +32,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->log( 'running init_options action' );
 			}
 
-			do_action( $this->p->cf['lca'].'_init_options' );
+			do_action( $this->p->lca.'_init_options' );
 		}
 
 		public function get_defaults( $idx = false, $force_filter = false ) {
@@ -45,7 +44,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 			}
 
-			$lca = $this->p->cf['lca'];
 			$defs =& $this->p->cf['opt']['defaults'];	// shortcut
 
 			if ( $force_filter || ! self::$allow_cache || empty( $defs['options_filtered'] ) ) {
@@ -116,7 +114,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
 				}
 
-				$defs = apply_filters( $lca.'_get_defaults', $defs );
+				$defs = apply_filters( $this->p->lca.'_get_defaults', $defs );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_defaults filter' );	// end timer
@@ -143,7 +141,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 			}
 
-			$lca = $this->p->cf['lca'];
 			$defs =& $this->p->cf['opt']['site_defaults'];	// shortcut
 
 			if ( $force_filter || ! self::$allow_cache || empty( $defs['options_filtered'] ) ) {
@@ -173,7 +170,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
 				}
 
-				$defs = apply_filters( $lca.'_get_site_defaults', $defs );
+				$defs = apply_filters( $this->p->lca.'_get_site_defaults', $defs );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_site_defaults filter' );	// end timer
@@ -201,7 +198,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'options are a valid array' );
 				}
 
-				$lca = $this->p->cf['lca'];
 				$has_diff_version = false;
 				$has_diff_options = false;
 				$has_new_options = empty( $opts['options_version'] ) ? true : false;
@@ -257,7 +253,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				if ( ! $network ) {
 
-					if ( $this->p->check->aop( $lca, false, $this->p->avail['*']['p_dir'] ) ) {
+					if ( $this->p->check->aop( $this->p->lca, false, $this->p->avail['*']['p_dir'] ) ) {
 						foreach ( array( 'plugin_hide_pro' => 0 ) as $idx => $def_val ) {
 							if ( $opts[$idx] === $def_val ) {
 								continue;
@@ -265,7 +261,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$opts[$idx] = $def_val;
 							$has_diff_options = true;	// save the options
 						}
-					} elseif ( ! $has_new_options && $has_diff_version && empty( $opts['plugin_'.$lca.'_tid'] ) ) {
+					} elseif ( ! $has_new_options && $has_diff_version && empty( $opts['plugin_'.$this->p->lca.'_tid'] ) ) {
 						if ( null === $def_opts ) {	// only get default options once
 							$def_opts = $this->get_defaults();
 						}
@@ -280,8 +276,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						) as $free_opt_key ) {
 							unset( $adv_opts[$free_opt_key] );
 						}
-						$warn_msg = __( 'Non-standard value found for "%s" option - resetting to default value.',
-							'wpsso' );
+						$warn_msg = __( 'Non-standard value found for "%s" option - resetting to default value.', 'wpsso' );
 						foreach ( $adv_opts as $idx => $def_val ) {
 							if ( isset( $opts[$idx] ) ) {
 								if ( $opts[$idx] === $def_val ) {
@@ -308,7 +303,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'add_meta_name_description' => 0,
 							'add_meta_name_robots' => 0,
 						) as $idx => $def_val ) {
-							$def_val = (int) apply_filters( $lca.'_'.$idx, $def_val );
+							$def_val = (int) apply_filters( $this->p->lca.'_'.$idx, $def_val );
 							$opts[$idx.':is'] = 'disabled';
 							if ( $opts[$idx] === $def_val ) {
 								if ( $this->p->debug->enabled ) {
@@ -456,10 +451,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( ! empty( $opts[$md_pre.'_img_width'] ) && ! empty( $opts[$md_pre.'_img_height'] ) && ! empty( $opts[$md_pre.'_img_crop'] ) ) {
 
-					$img_width = $opts[$md_pre.'_img_width'];
+					$img_width  = $opts[$md_pre.'_img_width'];
 					$img_height = $opts[$md_pre.'_img_height'];
-					$img_ratio = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
-					$max_ratio = isset( $this->p->cf['head']['limit_max'][$md_pre.'_img_ratio'] ) ?
+					$img_ratio  = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
+					$max_ratio  = isset( $this->p->cf['head']['limit_max'][$md_pre.'_img_ratio'] ) ?
 						$this->p->cf['head']['limit_max'][$md_pre.'_img_ratio'] :
 						$this->p->cf['head']['limit_max']['og_img_ratio'];
 
@@ -547,10 +542,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		private function check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod ) {
 
-			static $error_messages = null;
-
-			if ( is_array( $opt_val ) ) {	// Just in case.
-				return $opt_val;	// stop here
+			if ( is_array( $opt_val ) ) {
+				return $opt_val;
 			}
 
 			/**
@@ -561,6 +554,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Translate error messages only once.
 			 */
+			static $error_messages = null;
+
 			if ( null === $error_messages ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -582,7 +577,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				);
 			}
 
-			// pre-filter most values to remove html
+			/**
+			 * Pre-filter most values to remove html.
+			 */
 			switch ( $option_type ) {
 				case 'ignore':
 					return $opt_val;	// stop here
@@ -597,18 +594,25 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 			}
 
-			// optional cast on return
+			/**
+			 * Optional cast on return.
+			 */
 			$cast_int = false;
 
 			switch ( $option_type ) {
-				// must be empty or texturized 
+
+				/**
+				 * must be empty or texturized.
+				 */
 				case 'textured':
 					if ( $opt_val !== '' ) {
 						$opt_val = trim( wptexturize( ' '.$opt_val.' ' ) );
 					}
 					break;
 
-				// must be empty or a url
+				/**
+				 * Must be empty or a url.
+				 */
 				case 'url':
 					if ( $opt_val !== '' ) {
 						$opt_val = SucomUtil::decode_html( $opt_val );	// Just in case.
@@ -619,7 +623,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					break;
 
-				// strip leading urls off facebook usernames
+				/**
+				 * Strip leading urls off facebook usernames.
+				 */
 				case 'url_base':
 					if ( $opt_val !== '' ) {
 						$opt_val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $opt_val );
@@ -649,18 +655,22 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					break;
 
-				// twitter-style usernames (prepend with an @ character)
+				/**
+				 * Twitter-style usernames (prepend with an @ character).
+				 */
 				case 'at_name':
 					if ( $opt_val !== '' ) {
 						$opt_val = SucomUtil::get_at_name( $opt_val );
 					}
 					break;
 
-				// must be integer / numeric
+				/**
+				 * Must be integer / numeric.
+				 */
 				case 'int':
 				case 'integer':
 					$cast_int = true;
-					// no break
+					// No break.
 				case 'numeric':
 					if ( ! is_numeric( $opt_val ) ) {
 						$this->p->notice->err( sprintf( $error_messages['numeric'], $opt_key ) );
@@ -668,12 +678,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					break;
 
-				// integer / numeric options that must be 1 or more (not zero)
+				/**
+				 * Integer / numeric options that must be 1 or more (not zero).
+				 */
 				case 'pos_int':
 				case 'img_width':	// image height, subject to minimum value (typically, at least 200px)
 				case 'img_height':	// image height, subject to minimum value (typically, at least 200px)
 					$cast_int = true;
-					// no break
+					// No break.
 				case 'pos_num':
 					if ( $option_type === 'img_width' ) {
 						$min_int = $this->p->cf['head']['limit_min']['og_img_width'];
@@ -690,10 +702,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					break;
 
-				// must be blank or integer / numeric
+				/**
+				 * Must be blank or integer / numeric.
+				 */
 				case 'blank_int':
 					$cast_int = true;
-					// no break
+					// No break.
 				case 'blank_num':
 					if ( $opt_val === '' ) {
 						$cast_int = false;
@@ -708,13 +722,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					break;
 
-				// empty or alpha-numeric uppercase (hyphens are allowed as well)
+				/**
+				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
+				 */
 				case 'auth_id':
 					// silently convert illegal characters to single hyphens and trim excess
 					$opt_val = trim( preg_replace( '/[^A-Z0-9\-]+/', '-', $opt_val ), '-' );
 					break;
 
-				// empty or alpha-numeric (upper or lower case), plus underscores
+				/**
+				 * Empty or alpha-numeric (upper or lower case), plus underscores.
+				 */
 				case 'api_key':
 					$opt_val = trim( $opt_val );
 					if ( $opt_val !== '' && preg_match( '/[^a-zA-Z0-9_\-]/', $opt_val ) ) {
@@ -740,14 +758,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					break;
 
-				// text strings that can be blank
+				/**
+				 * Text strings that can be blank.
+				 */
 				case 'ok_blank':
 					if ( $opt_val !== '' ) {
 						$opt_val = trim( $opt_val );
 					}
 					break;
 
-				// text strings that can be blank (line breaks are removed)
+				/**
+				 * Text strings that can be blank (line breaks are removed).
+				 */
 				case 'preg':
 				case 'desc':
 				case 'one_line':
@@ -756,7 +778,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					break;
 
-				// empty string or must include at least one HTML tag
+				/**
+				 * Empty string or must include at least one HTML tag.
+				 */
 				case 'html':
 					if ( $opt_val !== '' ) {
 						$opt_val = trim( $opt_val );
@@ -767,7 +791,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					break;
 
-				// options that cannot be blank (aka empty string)
+				/**
+				 * Options that cannot be blank (aka empty string).
+				 */
 				case 'code':
 				case 'not_blank':
 					if ( $opt_val === '' && $def_val !== '' ) {
@@ -776,10 +802,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 					break;
 
-				// everything else is a 1 or 0 checkbox option 
+				/**
+				 * Everything else is a 1 or 0 checkbox option.
+				 */
 				case 'checkbox':
 				default:
-					if ( $def_val === 0 || $def_val === 1 ) {	// make sure the default option is also a 1 or 0, just in case
+					if ( $def_val === 0 || $def_val === 1 ) {	// Make sure the default option is also a 1 or 0, just in case.
 						$opt_val = empty( $opt_val ) ? 0 : 1;
 					}
 					break;
@@ -818,7 +846,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$opts['options_version'] = $this->p->cf['opt']['version'];	// mark the new options array as current
 
-			$opts = apply_filters( $this->p->cf['lca'].'_save_options', $opts, $options_name, $network );
+			$opts = apply_filters( $this->p->lca.'_save_options', $opts, $options_name, $network );
 
 			if ( $network ) {
 				$saved = update_site_option( $options_name, $opts );	// auto-creates options with autoload = no
