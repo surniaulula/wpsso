@@ -1171,8 +1171,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$json_data, $mod, $mt_og, $page_type_id, false );	// $is_main = always false for method
 				} elseif ( $has_type_filter ) {
 					$json_data = apply_filters( $this->p->lca.'_json_data_'.$type_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'no filters registered for '.$type_filter_name );
+				} else {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'no filters registered for '.$type_filter_name );
+					}
 				}
 			}
 

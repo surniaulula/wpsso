@@ -65,10 +65,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			'id' => 0,
 			'name' => false,
 			'obj' => false,
-			'use_post' => false,
 			/**
 			 * Post
 			 */
+			'use_post' => false,
 			'is_post' => false,		// is post module
 			'is_home' => false,		// home page (index or static)
 			'is_home_page' => false,	// static front page

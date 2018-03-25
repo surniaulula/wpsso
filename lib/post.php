@@ -130,12 +130,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$mod = WpssoMeta::$mod_defaults;
+
 			$mod['id'] = (int) $mod_id;
 			$mod['name'] = 'post';
 			$mod['obj'] =& $this;
+
 			/**
 			 * Post
 			 */
+			$post_obj = SucomUtil::get_post_object( $mod['id'] );
+
 			$mod['is_post'] = true;
 			$mod['is_home_page'] = SucomUtil::is_home_page( $mod_id );
 			$mod['is_home_index'] = $mod['is_home_page'] ? false : SucomUtil::is_home_index( $mod_id );

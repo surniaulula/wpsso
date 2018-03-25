@@ -107,9 +107,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			$mod = WpssoMeta::$mod_defaults;
+
 			$mod['id'] = (int) $mod_id;
 			$mod['name'] = 'term';
 			$mod['obj'] =& $this;
+
 			/**
 			 * Term
 			 */

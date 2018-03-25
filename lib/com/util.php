@@ -2541,6 +2541,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_term_object( $term_id = 0, $tax_slug = '', $output = 'object' ) {
+
 			$term_obj = false; // Return false by default.
 
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
@@ -2563,16 +2564,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				case 'id':
 				case 'ID':
 				case 'term_id':
-					return isset( $term_obj->term_id ) ?
-						(int) $term_obj->term_id : 0; // Cast as integer.
+					return isset( $term_obj->term_id ) ? (int) $term_obj->term_id : 0; // Cast as integer.
 					break;
 				case 'taxonomy':
-					return isset( $term_obj->taxonomy ) ?
-						(string) $term_obj->taxonomy : ''; // Cast as string.
+					return isset( $term_obj->taxonomy ) ? (string) $term_obj->taxonomy : ''; // Cast as string.
 					break;
 				default:
-					return is_object( $term_obj ) ?
-						$term_obj : false;
+					return is_object( $term_obj ) ? $term_obj : false;
 					break;
 			}
 		}
