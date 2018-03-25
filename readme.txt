@@ -24,17 +24,29 @@ Automatically create complete meta tags & Schema markup from your content for So
 
 WPSSO Core creates complete and accurate meta tags and Schema markup for Facebook / Open Graph, Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, Twitter Cards, and more &mdash; including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
 
-**WPSSO Core uses your *existing content* for meta tags and Schema markup** &mdash; there's no need to manually re-enter descriptions, titles, select images / videos, etc. WPSSO Core reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about everything. ;-)
+**WPSSO Core uses your *existing content* for meta tags and Schema markup:**
 
-**WPSSO Core includes advanced *quality control* features and options** &mdash; WPSSO Core checks for minimum / maximum image dimensions and aspect ratios, shows notices for missing and required images, verifies front-end webpages for duplicate meta tags, validates theme header templates for correct HTML markup, warns of any missing PHP modules, and inspects 3rd party plugin settings for possible conflicts.
+There's no need to manually re-enter descriptions, titles, select images / videos, etc. WPSSO Core reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about everything. ;-)
 
-**WPSSO Core offers special meta tags and features for Pinterest** &mdash; WPSSO Core provides a specific image for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook meta tag values.
+**WPSSO Core includes advanced *quality control* features and options:**
 
-**WPSSO Core can enhance and integrate with your favorite SEO plugin** &mdash; WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
+WPSSO Core checks for minimum / maximum image dimensions and aspect ratios, shows notices for missing and required images, verifies front-end webpages for duplicate meta tags, validates theme header templates for correct HTML markup, warns of any missing PHP modules, and inspects 3rd party plugin settings for possible conflicts.
 
-**WPSSO Core is *incredibly fast* and coded for performance** &mdash; WPSSO Core and its add-ons make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its add-ons use only the PHP library files and object classes they need, keeping their code small, fast, and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
+**WPSSO Core offers special meta tags and features for Pinterest:**
 
-**Advanced meta tag / JSON-LD markup filter hooks for developers** &mdash; WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several optional Free and Pro add-ons to extend WPSSO Core features.
+WPSSO Core provides a specific image for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook meta tag values.
+
+**WPSSO Core can enhance and integrate with your favorite SEO plugin:**
+
+WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!
+
+**WPSSO Core is *incredibly fast* and coded for performance:**
+
+WPSSO Core and its add-ons make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its add-ons use only the PHP library files and object classes they need, keeping their code small, fast, and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
+
+**Advanced meta tag / JSON-LD markup filter hooks for developers:**
+
+WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several optional Free and Pro add-ons to extend WPSSO Core features.
 
 <h3>Quick List of Features</h3>
 
