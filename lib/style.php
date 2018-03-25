@@ -240,10 +240,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					font-weight:normal;
 					font-style:normal;
 				}
-				#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image:before,
-				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image:before,
-				#adminmenu li.menu-top.toplevel_page_'.$menu.':hover div.wp-menu-image:before,
-				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.':hover div.wp-menu-image:before {
+				#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image::before,
+				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image::before,
+				#adminmenu li.menu-top.toplevel_page_'.$menu.':hover div.wp-menu-image::before,
+				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.':hover div.wp-menu-image::before {
 					'.$highlight_color_css.'
 					'.$menu_before_css.'
 				}
@@ -258,7 +258,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					max-width:1.2em;
 					padding-right:6px;
 				}
-				#adminmenu ul.wp-submenu div.'.$this->p->lca.'-menu-item.dashicons-before:before {
+				#adminmenu ul.wp-submenu div.'.$this->p->lca.'-menu-item.dashicons-before::before {
 					font-size:1.2em;
 					text-align:left;
 					opacity:0.5;
@@ -325,7 +325,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					font-size:1.5em;
 					vertical-align:top;
 				}
-				.'.$this->p->lca.'-rate-heart:before {
+				.'.$this->p->lca.'-rate-heart::before {
 					content:"\2665";	/* heart */
 				}
 				#post-'.$this->p->lca.'-robots {

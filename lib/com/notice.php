@@ -609,25 +609,25 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					margin:5px 0 5px 40px;
 					list-style:disc outside none;
 				}
-				.' . $this->lca . '-notice.notice-success .notice-label:before,
-				.' . $this->lca . '-notice.notice-info .notice-label:before,
-				.' . $this->lca . '-notice.notice-warning .notice-label:before,
-				.' . $this->lca . '-notice.notice-error .notice-label:before {
+				.' . $this->lca . '-notice.notice-success .notice-label::before,
+				.' . $this->lca . '-notice.notice-info .notice-label::before,
+				.' . $this->lca . '-notice.notice-warning .notice-label::before,
+				.' . $this->lca . '-notice.notice-error .notice-label::before {
 					vertical-align:bottom;
 					font-family:dashicons;
 					font-size:1.2em;
 					margin-right:6px;
 				}
-				.' . $this->lca . '-notice.notice-success .notice-label:before {
+				.' . $this->lca . '-notice.notice-success .notice-label::before {
 					content:"\f147";	/* yes */
 				}
-				.' . $this->lca . '-notice.notice-info .notice-label:before {
+				.' . $this->lca . '-notice.notice-info .notice-label::before {
 					content:"\f537";	/* sticky */
 				}
-				.' . $this->lca . '-notice.notice-warning .notice-label:before {
+				.' . $this->lca . '-notice.notice-warning .notice-label::before {
 					content:"\f227";	/* flag */
 				}
-				.' . $this->lca . '-notice.notice-error .notice-label:before {
+				.' . $this->lca . '-notice.notice-error .notice-label::before {
 					content:"\f488";	/* megaphone */
 				}
 				.' . $this->lca . '-notice .notice-label {
@@ -690,7 +690,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.' . $this->lca . '-notice .notice-message .button-highlight:hover {
 					background-color:#c8e6fb;
 				}
-				.' . $this->lca . '-dismissible div.notice-dismiss:before {
+				.' . $this->lca . '-dismissible div.notice-dismiss::before {
 					display:inline-block;
 					margin-right:2px;
 				}
