@@ -402,8 +402,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			if ( $this->debug->enabled ) {
 				foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
 					foreach ( array( -9000, 9000 ) as $prio ) {
-						add_action( $action, create_function( '',
-							'echo "<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->\n";' ), $prio );
+						if ( version_compare( phpversion(), 5.3, '>=' ) ) {	// just in case
+							$show_action_prio_func = function() use ( $action, $prio ) {
+								echo '<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->' . "\n";
+							};
+							add_action( $action, $show_action_prio_func, $prio );
+						} else {
+							add_action( $action, create_function( '', 'echo "<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->\n";' ), $prio );
+						}
 						add_action( $action, array( &$this, 'show_debug' ), $prio + 1 );
 					}
 				}
