@@ -387,6 +387,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.56.3-dev.1 (2018/03/26)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 3.56.2 (2018/03/24)**
 
 * *New Features*
@@ -426,6 +437,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 
 == Upgrade Notice ==
+
+= 3.56.3-dev.1 =
+
+(2018/03/26) None.
 
 = 3.56.2 =
 
