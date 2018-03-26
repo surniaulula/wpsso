@@ -2560,7 +2560,7 @@ msgstr ""
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:147 lib/loader.php:166 lib/post.php:236 lib/register.php:232
-#: lib/term.php:209 lib/user.php:185 lib/util.php:319 lib/util.php:2069
+#: lib/term.php:209 lib/user.php:185 lib/util.php:319 lib/util.php:2078
 msgid "%s warning:"
 msgstr ""
 
@@ -3059,7 +3059,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:560 lib/util.php:2288
+#: lib/messages.php:560 lib/util.php:2297
 msgid "No options available."
 msgstr ""
 
@@ -5670,13 +5670,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
-#: lib/util.php:2051
+#: lib/util.php:2060
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/util.php:2062
+#: lib/util.php:2071
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -5685,34 +5685,34 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2062
+#: lib/util.php:2071
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2315
+#: lib/util.php:2325
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2319
+#: lib/util.php:2328
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2322
+#: lib/util.php:2333
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2326
+#: lib/util.php:2336
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2445
+#: lib/util.php:2458
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""
