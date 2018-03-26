@@ -40,16 +40,16 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					return;
 				}
 
-				add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns', 
+				add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns',
 					array( &$this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
 				// enable orderby meta_key only if we have a meta table
 				if ( self::use_meta_table() ) {
-					add_filter( 'manage_edit-'.$this->query_tax_slug.'_sortable_columns', 
+					add_filter( 'manage_edit-'.$this->query_tax_slug.'_sortable_columns',
 						array( &$this, 'add_sortable_columns' ), 10, 1 );
 				}
 
-				add_filter( 'manage_'.$this->query_tax_slug.'_custom_column', 
+				add_filter( 'manage_'.$this->query_tax_slug.'_custom_column',
 					array( &$this, 'get_column_content' ), 10, 3 );
 
 				/**
@@ -217,7 +217,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $term_posts;
 		}
 
-		public function add_column_headings( $columns ) { 
+		public function add_column_headings( $columns ) {
 			return $this->add_mod_column_headings( $columns, 'term' );
 		}
 
@@ -246,7 +246,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $value;
 		}
 
-		public function update_sortable_meta( $term_id, $col_idx, $content ) { 
+		public function update_sortable_meta( $term_id, $col_idx, $content ) {
 			if ( ! empty( $term_id ) ) {	// just in case
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// just in case
@@ -371,7 +371,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				} else {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 					switch ( $action_name ) {
-						default: 
+						default:
 							do_action( $this->p->lca.'_load_meta_page_term_'.$action_name, $this->query_term_id );
 							break;
 					}
@@ -445,7 +445,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$table_rows = array();
 			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ), 
+				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ),
 					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );

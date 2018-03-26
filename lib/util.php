@@ -31,6 +31,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			'is_home',
 			'is_multisite',
 			'is_page',
+			'is_post_type_archive',
 			'is_search',
 			'is_single',
 			'is_singular',
@@ -1403,6 +1404,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+				$this->p->debug->log( 'use_post is '.self::get_use_post_string( $use_post ) );
 			}
 
 			// check for a recognized object
@@ -1467,7 +1469,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = $this->p->m['util'][$mod['name']]->get_mod( $mod['id'] );
 			} else {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $mod['name'].' object is unknown - merging $mod defaults' );
+					$this->p->debug->log( 'object is unknown - merging $mod defaults' );
 				}
 				$mod = array_merge( WpssoMeta::$mod_defaults, $mod );
 			}

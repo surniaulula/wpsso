@@ -1140,16 +1140,28 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		public static function get_use_post_string( $use_post ) {
+
+			$use_post = self::sanitize_use_post( $use_post );
+
+			if ( $use_post === false ) {
+				return 'false';
+			} elseif ( $use_post === true ) {
+				return 'true';
+			} else {
+				return (string) $use_post;
+			}
+		}
+
 		/**
 		 * Note that an empty string or a null is sanitized as false.
 		 */
 		public static function sanitize_use_post( $mixed, $default = false ) {
+
 			if ( is_array( $mixed ) ) {
-				$use_post = isset( $mixed['use_post'] ) ?
-					$mixed['use_post'] : $default;
+				$use_post = isset( $mixed['use_post'] ) ? $mixed['use_post'] : $default;
 			} elseif ( is_object( $mixed ) ) {
-				$use_post = isset( $mixed->use_post ) ?
-					$mixed->use_post : $default;
+				$use_post = isset( $mixed->use_post ) ? $mixed->use_post : $default;
 			} else {
 				$use_post = $mixed;
 			}
@@ -2368,13 +2380,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function is_home_page( $use_post = false ) {
 			$ret = false;
 
-			$post_id = get_option( 'show_on_front' ) === 'page' ?
-				(int) get_option( 'page_on_front' ) : 0;
+			// fallback to null so $use_post = 0 does not match
+			$front_post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_on_front' ) : null;
 
-			if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) { // Optimize.
+			if ( is_numeric( $use_post ) && (int) $use_post === $front_post_id ) {
 				$ret = true;
 
-			} elseif ( $post_id > 0 && self::get_post_object( $use_post, 'id' ) === $post_id ) {
+			} elseif ( $front_post_id > 0 && self::get_post_object( $use_post, 'id' ) === $front_post_id ) {
 				$ret = true;
 			}
 
@@ -2384,15 +2396,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function is_home_index( $use_post = false ) {
 			$ret = false;
 
-			$post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_for_posts' ) : 0;
+			// fallback to null so $use_post = 0 does not match
+			$front_post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_for_posts' ) : null;
 
-			if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) { // Optimize.
+			if ( is_numeric( $use_post ) && (int) $use_post === $front_post_id ) {
 				$ret = true;
 
-			} elseif ( $post_id > 0 && self::get_post_object( $use_post, 'id' ) === $post_id ) { // Static posts page.
+			} elseif ( $front_post_id > 0 && self::get_post_object( $use_post, 'id' ) === $front_post_id ) {
 				$ret = true;
 
-			} elseif ( false === $use_post && is_home() && is_front_page() ) { // Standard index page.
+			} elseif ( false === $use_post && is_home() && is_front_page() ) {
 				$ret = true;
 			}
 
@@ -2411,7 +2424,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			} elseif ( true === $use_post && ! empty( $GLOBALS['post']->ID ) ) {
 				$ret = true;
-			
+
+			} elseif ( false === $use_post && is_archive() && is_post_type_archive() ) {
+				$ret = true;
+
 			} elseif ( false === $use_post && is_singular() ) {
 				$ret = true;
 

@@ -15,7 +15,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 4.9.4
  * WC Tested Up To: 3.3.4
- * Version: 3.56.2
+ * Version: 3.56.3-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -406,10 +406,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 							$show_action_prio_func = function() use ( $action, $prio ) {
 								echo '<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->' . "\n";
 							};
-							add_action( $action, $show_action_prio_func, $prio );
 						} else {
-							add_action( $action, create_function( '', 'echo "<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->\n";' ), $prio );
+							$show_action_prio_func = create_function( '', 'echo "<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->\n";' );
 						}
+						add_action( $action, $show_action_prio_func, $prio );
 						add_action( $action, array( &$this, 'show_debug' ), $prio + 1 );
 					}
 				}

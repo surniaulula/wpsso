@@ -85,9 +85,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'edit_user_profile_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'edit_user_profile_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
-				add_action( 'personal_options_update', array( &$this, 'sanitize_submit_cm' ), 5 ); 
-				add_action( 'personal_options_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY ); 
-				add_action( 'personal_options_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY ); 
+				add_action( 'personal_options_update', array( &$this, 'sanitize_submit_cm' ), 5 );
+				add_action( 'personal_options_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+				add_action( 'personal_options_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 			}
 		}
 
@@ -198,7 +198,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user->add_role( self::$person_role_name );
 		}
 
-		public function add_person_view( $user_views ) { 
+		public function add_person_view( $user_views ) {
 
 			$user_views = array_reverse( $user_views );
 			$all_view_link = $user_views['all'];
@@ -217,7 +217,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $user_views;
 		}
 
-		public function add_column_headings( $columns ) { 
+		public function add_column_headings( $columns ) {
 			return $this->add_mod_column_headings( $columns, 'user' );
 		}
 
@@ -246,7 +246,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $value;
 		}
 
-		public function update_sortable_meta( $user_id, $col_idx, $content ) { 
+		public function update_sortable_meta( $user_id, $col_idx, $content ) {
 			if ( ! empty( $user_id ) ) {	// just in case
 				if ( ( $sort_cols = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $sort_cols['meta_key'] ) ) {	// just in case
@@ -371,7 +371,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				} else {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 					switch ( $action_name ) {
-						default: 
+						default:
 							do_action( $this->p->lca.'_load_meta_page_user_'.$action_name, $user_id, $screen->id );
 							break;
 					}
@@ -454,7 +454,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$table_rows = array();
 			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ), 
+				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ),
 					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
@@ -464,17 +464,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public function get_form_contact_fields( $fields = array() ) { 
-			return array_merge( 
+		public function get_form_contact_fields( $fields = array() ) {
+			return array_merge(
 				array( 'none' => '[None]' ), 	// make sure none is first
-				$this->add_contact_methods( array( 
-					'author' => 'Author Archive', 
+				$this->add_contact_methods( array(
+					'author' => 'Author Archive',
 					'url' => 'WebSite'
 				) )
 			);
 		}
 
-		public function add_contact_methods( $fields = array(), $user = null ) { 
+		public function add_contact_methods( $fields = array(), $user = null ) {
 
 			$aop = $this->p->check->aop( $this->p->lca, true, $this->p->avail['*']['p_dir'] );
 
@@ -525,7 +525,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $fields;
 		}
 
-		public function fb_contact_label( $label ) { 
+		public function fb_contact_label( $label ) {
 			return $label.'<br/><span class="description">'.
 				__( '(not a Facebook Page URL)', 'wpsso' ).'</span>';
 		}
@@ -584,7 +584,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						'aim'    => __( 'AIM' ),
 						'jabber' => __( 'Jabber / Google Talk' ),
 						'yim'    => __( 'Yahoo Messenger' )
-					); 
+					);
 				}
 				return apply_filters( 'user_contactmethods', $methods, $user );
 			}
@@ -662,7 +662,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 							get_the_author_meta( 'last_name', $user_id );
 						break;
 					case 'description':
-						$value = preg_replace( '/[\s\n\r]+/s', ' ', 
+						$value = preg_replace( '/[\s\n\r]+/s', ' ',
 							get_the_author_meta( $field_id, $user_id ) );
 						break;
 					default:
@@ -695,14 +695,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						break;
 					default:
 						$url = get_the_author_meta( $field_id, $user_id );
-	
+
 						// if empty or not a url, then fallback to the author index page,
 						// if the requested field is the opengraph or link author field
 						if ( empty( $url ) || ! preg_match( '/:\/\//', $url ) ) {
-							if ( $this->p->options['og_author_fallback'] && 
-								( $field_id === $this->p->options['og_author_field'] || 
+							if ( $this->p->options['og_author_fallback'] &&
+								( $field_id === $this->p->options['og_author_field'] ||
 									$field_id === $this->p->options['seo_author_field'] ) ) {
-	
+
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'fetching the author index page url as fallback' );
 								}
@@ -742,7 +742,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					break;
 			}
 			foreach ( $meta_states as $state ) {
-				$meta_key = $state.'_'.$pagehook; 
+				$meta_key = $state.'_'.$pagehook;
 				if ( $force && empty( $box_ids ) ) {
 					delete_user_option( $user_id, $meta_key, true );
 				}

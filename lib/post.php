@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 				// fires when a comment is inserted into the database
 				add_action ( 'comment_post', array( &$this, 'clear_cache_for_new_comment' ), 10, 2 );
-	
+
 				// fires before transitioning a comment's status from one to another
 				add_action ( 'wp_set_comment_status', array( &$this, 'clear_cache_for_comment_status' ), 10, 2 );
 			}
@@ -138,19 +138,25 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Post
 			 */
-			$post_obj = SucomUtil::get_post_object( $mod['id'] );
-
 			$mod['is_post'] = true;
 			$mod['is_home_page'] = SucomUtil::is_home_page( $mod_id );
 			$mod['is_home_index'] = $mod['is_home_page'] ? false : SucomUtil::is_home_index( $mod_id );
 			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;
+			$mod['is_post_archive'] = false;
 			$mod['post_type'] = get_post_type( $mod_id );					// post type name
 			$mod['post_mime'] = get_post_mime_type( $mod_id );				// post mime type (ie. image/jpg)
 			$mod['post_status'] = get_post_status( $mod_id );				// post status name
 			$mod['post_author'] = (int) get_post_field( 'post_author', $mod_id );		// post author id
 
+			if ( $mod['post_type'] ) {
+				$post_type_obj = get_post_type_object( $mod['post_type'] );
+				if ( ! empty( $post_type_obj->has_archive ) ) {
+					$mod['is_post_archive'] = true;					// the post type is an archive page
+				}
+			}
+
 			// hooked by the 'coauthors' pro module
-			return apply_filters( $this->p->lca.'_get_post_mod', $mod, $mod_id );
+			return apply_filters( $this->p->lca . '_get_post_mod', $mod, $mod_id );
 		}
 
 		public static function get_public_post_ids() {
@@ -183,7 +189,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( false === $posts_per_page ) {
-				$posts_per_page = apply_filters( $this->p->lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
+				$posts_per_page = apply_filters( $this->p->lca . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( false === $paged ) {
@@ -195,8 +201,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'calling get_posts() for direct children of '.
-					$mod['name'].' id '.$mod['id'].' (posts_per_page is '.$posts_per_page.')' );
+				$this->p->debug->log( 'calling get_posts() for direct children of ' . 
+					$mod['name'] . ' id ' . $mod['id'] . ' (posts_per_page is ' . $posts_per_page . ')' );
 			}
 
 			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
@@ -218,7 +224,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					// do not translate the debug log message
-					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs'.
+					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs' . 
 						' to get the children of post ID %2$d', $total_time, $mod['id'] ) );
 				}
 
@@ -234,11 +240,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				// translators: %s is the short plugin name
 				$error_prefix = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
-				SucomUtil::safe_trigger_error( $error_prefix.' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
+				SucomUtil::safe_trigger_error( $error_prefix . ' ' . rtrim( $error_msg, '.' ), E_USER_WARNING );
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $post_posts ).' post objects returned in '.sprintf( '%0.3f secs', $total_time ) );
+				$this->p->debug->log( count( $post_posts ) . ' post objects returned in ' . sprintf( '%0.3f secs', $total_time ) );
 			}
 
 			return $post_posts;
@@ -251,11 +257,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		public function get_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_args( array( 
-					'shortlink' => $shortlink, 
-					'post_id' => $post_id, 
-					'context' => $context, 
-					'allow_slugs' => $allow_slugs, 
+				$this->p->debug->log_args( array(
+					'shortlink' => $shortlink,
+					'post_id' => $post_id,
+					'context' => $context,
+					'allow_slugs' => $allow_slugs,
 				) );
 			}
 
@@ -263,7 +269,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( isset( self::$cache_shortlinks[$post_id][$context][$allow_slugs] ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'returning shortlink / short_url (from static cache) = '.
+					$this->p->debug->log( 'returning shortlink / short_url (from static cache) = ' . 
 						self::$cache_shortlinks[$post_id][$context][$allow_slugs] );
 				}
 				return self::$cache_short_url = self::$cache_shortlinks[$post_id][$context][$allow_slugs];
@@ -290,7 +296,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $context === 'query' && is_singular() ) {	// wp_get_shortlink() uses the same logic
 					$post_id = get_queried_object_id();
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'setting post id '.$post_id.' from queried object' );
+						$this->p->debug->log( 'setting post id ' . $post_id . ' from queried object' );
 					}
 				} elseif ( $context === 'post' ) {
 					$post_obj = get_post();
@@ -302,7 +308,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					} else {
 						$post_id = $post_obj->ID;
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'setting post id '.$post_id.' from post object' );
+							$this->p->debug->log( 'setting post id ' . $post_id . ' from post object' );
 						}
 					}
 				}
@@ -318,7 +324,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					if ( get_post_type( $post_id ) === 'page' && get_option( 'page_on_front' ) == $post_id && get_option( 'show_on_front' ) == 'page' ) {
 						$shortlink = home_url( '/' );
 					} else {
-						$shortlink = home_url( '?p='.$post_id );
+						$shortlink = home_url( '?p=' . $post_id );
 					}
 				}
 
@@ -350,22 +356,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 			$service_key = $this->p->options['plugin_shortener'];
-			$short_url = apply_filters( $this->p->lca.'_get_short_url', $sharing_url, $service_key, $mod, $context );
+			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $service_key, $mod, $context );
 
 			if ( $sharing_url === $short_url ) {	// shortened failed
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: short URL ('.$short_url.') returned is identical to long URL.' );
+					$this->p->debug->log( 'exiting early: short URL (' . $short_url . ') returned is identical to long URL.' );
 				}
 				return $shortlink;	// return original shortlink
 			} elseif ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// invalid url
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: invalid short URL ('.$short_url.') returned by filter' );
+					$this->p->debug->log( 'exiting early: invalid short URL (' . $short_url . ') returned by filter' );
 				}
 				return $shortlink;	// return original shortlink
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'returning shortlink / short_url = '.$short_url );
+				$this->p->debug->log( 'returning shortlink / short_url = ' . $short_url );
 			}
 
 			return self::$cache_short_url = self::$cache_shortlinks[$post_id][$context][$allow_slugs] = $short_url;	// success - return short url
@@ -385,7 +391,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( isset( self::$cache_shortlinks[$post_id][$context][$allow_slugs] ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'restoring shortlink / short_url '.$shortlink.' to '.
+					$this->p->debug->log( 'restoring shortlink / short_url ' . $shortlink . ' to ' . 
 						self::$cache_shortlinks[$post_id][$context][$allow_slugs] );
 				}
 				return self::$cache_shortlinks[$post_id][$context][$allow_slugs];
@@ -394,11 +400,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $shortlink;
 		}
 
-		public function add_post_column_headings( $columns ) { 
+		public function add_post_column_headings( $columns ) {
 			return $this->add_mod_column_headings( $columns, 'post' );
 		}
 
-		public function add_media_column_headings( $columns ) { 
+		public function add_media_column_headings( $columns ) {
 			return $this->add_mod_column_headings( $columns, 'media' );
 		}
 
@@ -439,7 +445,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $value;
 		}
 
-		public function update_sortable_meta( $post_id, $col_idx, $content ) { 
+		public function update_sortable_meta( $post_id, $col_idx, $content ) {
 			if ( ! empty( $post_id ) ) {	// Just in case.
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// Just in case.
@@ -584,7 +590,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				} else {
 					WpssoMeta::$head_meta_tags = array();
 				}
-			} 
+			}
 
 			$action_query = $this->p->lca.'-action';
 
@@ -603,7 +609,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				} else {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 					switch ( $action_name ) {
-						default: 
+						default:
 							do_action( $this->p->lca.'_load_meta_page_post_'.$action_name, $post_id, $post_obj );
 							break;
 					}
@@ -714,10 +720,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $is_admin ) {
 				if ( $clear_shortlink ) {
-					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags...', 'wpsso' ), 
+					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags...', 'wpsso' ),
 						'<a href="'.$check_url.'">'.$check_url_htmlenc.'</a>' ) );
 				} else {
-					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags (webpage could be from cache)...', 'wpsso' ), 
+					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags (webpage could be from cache)...', 'wpsso' ),
 						'<a href="'.$check_url.'">'.$check_url_htmlenc.'</a>' ) );
 				}
 			}
@@ -833,7 +839,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						if ( isset( $metas[$tag] ) ) {
 							foreach( $metas[$tag] as $meta ) {
 								foreach( $types as $type ) {
-									if ( isset( $meta[$type] ) && $meta[$type] !== 'generator' && 
+									if ( isset( $meta[$type] ) && $meta[$type] !== 'generator' &&
 										! empty( $check_opts[$tag.'_'.$type.'_'.$meta[$type]] ) ) {
 										$conflicts_found++;
 										$conflicts_tag = '<code>'.$tag.' '.$type.'="'.$meta[$type].'"</code>';
@@ -923,7 +929,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$table_rows = array();
 			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ), 
+				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ),
 					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
@@ -934,7 +940,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		protected function get_table_rows( &$metabox_id, &$key, &$head, &$mod ) {
 
-			$is_auto_draft = empty( $mod['post_status'] ) || 
+			$is_auto_draft = empty( $mod['post_status'] ) ||
 				$mod['post_status'] === 'auto-draft' ? true : false;
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
 				'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );
@@ -945,14 +951,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$table_rows = $this->get_rows_social_preview( $this->form, $head, $mod );
 					break;
 
-				case 'tags':	
+				case 'tags':
 					if ( $is_auto_draft ) {
 						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
 							$auto_draft_msg.'</p></blockquote></td>';
 					} else {
 						$table_rows = $this->get_rows_head_tags( $this->form, $head, $mod );
 					}
-					break; 
+					break;
 
 				case 'validate':
 					if ( $is_auto_draft ) {
@@ -961,7 +967,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					} else {
 						$table_rows = $this->get_rows_validate( $this->form, $head, $mod );
 					}
-					break; 
+					break;
 			}
 			return $table_rows;
 		}
@@ -1068,7 +1074,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo '</div>' . "\n";
 			echo '<div id="post-' . $robots_css_id . '-display">' . "\n";
 			echo '<div id="post-' . $robots_css_id . '-content">' . $content;
-			
+
 			if ( $can_publish ) {
 				echo ' <a href="#" class="hide-if-no-js" role="button" onClick="' .
 					'jQuery(\'div#post-' . $robots_css_id . '-content\').hide();' .

@@ -259,7 +259,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			// check for hashtags in meta or seed title, remove and then add again after shorten
+			/**
+			 * Check for hashtags in meta or seed title, remove and then add again after shorten.
+			 */
 			if ( preg_match( '/(.*)(( #[a-z0-9\-]+)+)$/U', $title_text, $match ) ) {
 
 				$title_text = $match[1];
@@ -276,15 +278,30 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'hashtags found = "'.$hashtags.'"' );
 			}
 
-			// construct a title of our own
+			/**
+			 * Construct a title of our own.
+			 */
 			if ( empty( $title_text ) ) {
 
 				if ( $mod['is_post'] ) {
 
-					$title_text = html_entity_decode( get_the_title( $mod['id'] ) ).' ';
+					if ( $mod['is_post_archive'] ) {
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $mod['name'].' id '.$mod['id'].' get_the_title() = "'.$title_text.'"' );
+						$post_type_obj = get_post_type_object( $mod['post_type'] );
+
+						if ( ! empty( $post_type_obj->labels->menu_name ) ) {
+							$title_text = sprintf( __( '%s Archive', 'wpsso' ), $post_type_obj->labels->menu_name );
+						} elseif ( ! empty( $post_type_obj->name ) ) {
+							$title_text = sprintf( __( '%s Archive', 'wpsso' ), $post_type_obj->name );
+						}
+
+						$title_text = apply_filters( $lca.'_post_archive_title', $title_text, $mod );
+
+					} else {
+						$title_text = html_entity_decode( get_the_title( $mod['id'] ) ).' ';
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $mod['name'].' id '.$mod['id'].' get_the_title() = "'.$title_text.'"' );
+						}
 					}
 
 					if ( ! empty( $sep ) ) {
@@ -301,12 +318,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
 
 					if ( SucomUtil::is_category_page( $mod['id'] ) ) {
+
 						/**
 						 * Includes parent names in title string if the $sep is not empty.
 						 */
 						$title_text = $this->get_category_title( $term_obj, '', $sep );
+
 					} elseif ( isset( $term_obj->name ) ) {
+
 						$title_text = apply_filters( 'wp_title', $term_obj->name.' '.$sep.' ', $sep, 'right' );
+
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'name property missing in term object' );
 					}
@@ -323,15 +344,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'default wp_title() = "'.$title_text.'"' );
 					}
+					$title_text = apply_filters( $lca.'_wp_title', $title_text, $mod );
 				}
 
-				// Just in case.
 				if ( empty( $title_text ) ) {
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'fallback get_bloginfo() = "'.$title_text.'"' );
-					}
-					if ( ! ( $title_text = get_bloginfo( 'name', 'display' ) ) ) {
-						$title_text = 'No Title';	// Just in case.
+					if ( $title_text = get_bloginfo( 'name', 'display' ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'fallback get_bloginfo() = "'.$title_text.'"' );
+						}
+					} else {
+						$title_text = __( 'No Title', 'wpsso' );	// just in case
 					}
 				}
 			}
@@ -471,79 +493,111 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'hashtags found = "'.$hashtags.'"' );
 			}
 
-			// if there's no custom description, and no pre-seed,
-			// then go ahead and generate the description value
+			/**
+			 * If there's no custom description, and no pre-seed, then go ahead and generate the description value.
+			 */
 			if ( empty( $desc_text ) ) {
 
 				if ( $mod['is_post'] ) {
 
-					$desc_text = $this->get_the_excerpt( $mod );
-
-					// if there's no excerpt, then fallback to the content
-					if ( empty( $desc_text ) ) {
+					if ( $mod['is_post_archive'] ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'getting the content for post ID '.$mod['id'] );
+							$this->p->debug->log( 'getting the description for post type '.$mod['post_type'] );
 						}
 
-						$desc_text = $this->get_the_content( $mod, $r_cache, $md_idx );
+						$post_type_obj = get_post_type_object( $mod['post_type'] );
 
-						// ignore everything before the first paragraph if true
-						if ( $this->p->options['plugin_p_strip'] ) {
+						if ( ! empty( $post_type_obj->description ) ) {
+							$desc_text = $post_type_obj->description;
+						} else {
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'removing all text before the first paragraph' );
+								$this->p->debug->log( 'post type '.$mod['post_type'].' description is empty - using title value' );
 							}
-							$desc_text = preg_replace( '/^.*?<p>/i', '', $desc_text );	// question mark makes regex un-greedy
+							if ( ! empty( $post_type_obj->labels->menu_name ) ) {
+								$desc_text = sprintf( __( '%s Archive', 'wpsso' ), $post_type_obj->labels->menu_name );
+							} elseif ( ! empty( $post_type_obj->name ) ) {
+								$desc_text = sprintf( __( '%s Archive', 'wpsso' ), $post_type_obj->name );
+							}
 						}
-					}
 
-					// fallback to the image alt value
-					if ( empty( $desc_text) ) {
-						if ( $mod['post_type'] === 'attachment' && strpos( $mod['post_mime'], 'image/' ) === 0 ) {
-							$desc_text = get_post_meta( $mod['id'], '_wp_attachment_image_alt', true );
+						$desc_text = apply_filters( $lca.'_post_archive_description', $desc_text, $mod );
+
+					} else {
+
+						$desc_text = $this->get_the_excerpt( $mod );
+
+						// if there's no excerpt, then fallback to the content
+						if ( empty( $desc_text ) ) {
+	
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'getting the content for post ID '.$mod['id'] );
+							}
+	
+							$desc_text = $this->get_the_content( $mod, $r_cache, $md_idx );
+	
+							// ignore everything before the first paragraph if true
+							if ( $this->p->options['plugin_p_strip'] ) {
+								if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( 'removing all text before the first paragraph' );
+								}
+								$desc_text = preg_replace( '/^.*?<p>/i', '', $desc_text );	// question mark makes regex un-greedy
+							}
+						}
+
+						// fallback to the image alt value
+						if ( empty( $desc_text ) ) {
+							if ( $mod['post_type'] === 'attachment' && strpos( $mod['post_mime'], 'image/' ) === 0 ) {
+								$desc_text = get_post_meta( $mod['id'], '_wp_attachment_image_alt', true );
+							}
 						}
 					}
 
 				} elseif ( $mod['is_term'] ) {
+
 					if ( SucomUtil::is_tag_page( $mod['id'] ) ) {
 						if ( ! $desc_text = tag_description( $mod['id'] ) ) {
 							$term_obj = get_tag( $mod['id'] );
 							if ( ! empty( $term_obj->name ) ) {
-								$desc_text = sprintf( 'Tagged with %s', $term_obj->name );
+								$desc_text = sprintf( __( 'Tagged with %s', 'wpsso' ), $term_obj->name );
 							}
 						}
 					} elseif ( SucomUtil::is_category_page( $mod['id'] ) ) {
 						if ( ! $desc_text = category_description( $mod['id'] ) ) {
-							$desc_text = sprintf( '%s Category', get_cat_name( $mod['id'] ) );
+							$desc_text = sprintf( __( '%s Category', 'wpsso' ), get_cat_name( $mod['id'] ) );
 						}
 					} else { 	// other taxonomies
+
 						$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
 
 						if ( ! empty( $term_obj->description ) ) {
 							$desc_text = $term_obj->description;
 						} elseif ( ! empty( $term_obj->name ) ) {
-							$desc_text = $term_obj->name.' Archives';
+							$desc_text = sprintf( __( '%s Archive', 'wpsso' ), $term_obj->name );
 						}
 					}
+
 				} elseif ( $mod['is_user'] ) {
+
 					$user_obj = SucomUtil::get_user_object( $mod['id'] );
 
 					if ( ! empty( $user_obj->description ) ) {
 						$desc_text = $user_obj->description;
 					} elseif ( ! empty( $user_obj->display_name ) ) {
-						$desc_text = sprintf( 'Authored by %s', $user_obj->display_name );
+						$desc_text = sprintf( __( 'Authored by %s', 'wpsso' ), $user_obj->display_name );
 					}
 
 					$desc_text = apply_filters( $lca.'_user_object_description', $desc_text, $user_obj );
 
 				} elseif ( is_day() ) {
-					$desc_text = sprintf( 'Daily Archives for %s', get_the_date() );
+					$desc_text = sprintf( __( 'Daily Archive for %s', 'wpsso' ), get_the_date() );
 				} elseif ( is_month() ) {
-					$desc_text = sprintf( 'Monthly Archives for %s', get_the_date('F Y') );
+					$desc_text = sprintf( __( 'Monthly Archive for %s', 'wpsso' ), get_the_date('F Y') );
 				} elseif ( is_year() ) {
-					$desc_text = sprintf( 'Yearly Archives for %s', get_the_date('Y') );
+					$desc_text = sprintf( __( 'Yearly Archive for %s', 'wpsso' ), get_the_date('Y') );
 				} elseif ( SucomUtil::is_archive_page() ) {	// Just in case.
-					$desc_text = sprintf( 'Archive Page' );
+					$desc_text = sprintf( __( 'Archive Page', 'wpsso' ) );
+					$desc_text = apply_filters( $lca.'_archive_page_description', $desc_text, $mod );
 				}
 			}
 
@@ -572,8 +626,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'post_status is auto-draft: using empty description' );
 					}
-				} elseif ( ! ( $desc_text = SucomUtil::get_site_description( $this->p->options, $mod ) ) ) {
-					$desc_text = 'No Description';	// Just in case.
+				} elseif ( $desc_text = SucomUtil::get_site_description( $this->p->options, $mod ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'fallback SucomUtil::get_site_description() = "'.$desc_text.'"' );
+					}
+				} else {
+					$desc_text = __( 'No Description', 'wpsso' );	// just in case
 				}
 			}
 
