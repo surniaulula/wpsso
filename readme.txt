@@ -392,11 +392,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added translation strings for default / fallback archive titles and descriptions.
+	* Added support for post type archive titles and descriptions.
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added a new 'is_post_archive' array elements in the `$mod` variable.
+	* Refactored the SucomUtil `is_home_index()` and `is_home_page()` methods to ignore a post ID of 0.
 
 **Version 3.56.2 (2018/03/24)**
 
@@ -440,7 +442,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.56.3-dev.1 =
 
-(2018/03/26) None.
+(2018/03/26) Added translation strings for default / fallback archive titles and descriptions. Added support for post type archive titles and descriptions.
 
 = 3.56.2 =
 
