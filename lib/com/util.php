@@ -922,8 +922,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return null;
 			}
 
-			if ( true === $add_none ) {                             // Prefix array with 'none'.
-				$arr = array( 'none' => 'none' ) + $arr;    // Maintains numeric index.
+			if ( true === $add_none ) { // Prefix array with 'none'.
+				$arr = array( 'none' => 'none' ) + $arr; // Maintains numeric index.
 			}
 
 			return $arr;
@@ -931,10 +931,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_currencies( $idx = false, $add_none = false, $format = '%2$s (%1$s)' ) {
 
-			static $local_cache = array();          // Array of arrays, indexed by $format.
+			static $local_cache = array(); // Array of arrays, indexed by $format.
 
 			if ( ! isset( $local_cache[$format] ) ) {
-				if ( $format === '%2$s' ) {     // Optimize and get existing format.
+				if ( $format === '%2$s' ) { // Optimize and get existing format.
 					$local_cache[$format] =& self::$currencies;
 				} else {
 					foreach ( self::$currencies as $key => $value ) {
@@ -1387,6 +1387,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function plugin_has_update( $plugin_base ) {
+
 			static $local_cache = array();
 
 			if ( isset( $local_cache[$plugin_base] ) ) {

@@ -209,7 +209,7 @@
 
 'wpsso_opengraph_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) );
 
-'wpsso_option_type' ( false, $key, $network, $mod );
+'wpsso_option_type' ( false, $base_key, $network, $mod );
 
 'wpsso_plugin_image_sizes' ( $sizes, $mod, $crawler_name );
 

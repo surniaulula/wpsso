@@ -62,14 +62,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		/**
 		 * Reference Variables (config, options, modules, etc.).
 		 */
-		public $lca = 'wpsso';		// main plugin lowercase acronym
-		public $m = array();		// plugin modules
-		public $m_ext = array();	// plugin add-on modules
-		public $cf = array();		// config array defined in construct method
-		public $avail = array();	// assoc array for other plugin checks
-		public $options = array();	// individual blog/site options
-		public $site_options = array();	// multisite options
-		public $sc = array();		// shortcodes
+		public $lca = 'wpsso';		// Main plugin lowercase acronym.
+		public $m = array();		// Loaded module objects from core plugin.
+		public $m_ext = array();	// Loaded module objects from extensions / add-ons.
+		public $cf = array();		// Config array defined in construct method.
+		public $avail = array();	// Assoc array for other plugin checks.
+		public $options = array();	// Individual blog/site options.
+		public $site_options = array();	// Multisite options.
+		public $sc = array();		// Shortcodes.
 
 		private static $instance;
 
@@ -82,28 +82,26 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			require_once $plugin_dir . 'lib/config.php';
 
-			$this->cf = WpssoConfig::get_config( false, false );	// unfiltered - $cf['*'] array is not available yet
+			$this->cf = WpssoConfig::get_config( false, false );	// Unfiltered - the $cf['*'] array is not available yet.
 
 			WpssoConfig::set_constants( __FILE__ );
-			WpssoConfig::require_libs( __FILE__ );			// includes the register.php class library
+			WpssoConfig::require_libs( __FILE__ );			// Includes the register.php class library.
 
-			$this->reg = new WpssoRegister( $this );		// activate, deactivate, uninstall hooks
+			$this->reg = new WpssoRegister( $this );		// Activate, deactivate, uninstall hooks.
 
-			add_action( 'init', array( &$this, 'set_config' ), -10 );				// runs at init -10 (before widgets_init)
-			add_action( 'widgets_init', array( &$this, 'init_widgets' ), 10 );			// runs at init 1
-			add_action( 'init', array( &$this, 'set_options' ), WPSSO_INIT_PRIORITY - 3 );		// runs at init 9 by default
-			add_action( 'init', array( &$this, 'set_objects' ), WPSSO_INIT_PRIORITY - 2 );		// runs at init 10 by default
-			add_action( 'init', array( &$this, 'init_shortcodes' ), WPSSO_INIT_PRIORITY - 1 );	// runs at init 11 by default
-			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );		// runs at init 12 by default
+			add_action( 'init', array( &$this, 'set_config' ), -10 );				// Runs at init -10 (before widgets_init).
+			add_action( 'widgets_init', array( &$this, 'init_widgets' ), 10 );			// Runs at init 1.
+			add_action( 'init', array( &$this, 'set_options' ), WPSSO_INIT_PRIORITY - 3 );		// Runs at init 9 by default.
+			add_action( 'init', array( &$this, 'set_objects' ), WPSSO_INIT_PRIORITY - 2 );		// Runs at init 10 by default.
+			add_action( 'init', array( &$this, 'init_shortcodes' ), WPSSO_INIT_PRIORITY - 1 );	// Runs at init 11 by default.
+			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );		// Runs at init 12 by default.
 
-			if ( is_admin() ) {
-				/**
-				 * The 'wpsso_init_textdomain' action is run after the debug property is defined.
-				 * Hooks the 'override_textdomain_mofile' filter (if debug is enabled) to use
-				 * local translation files instead.
-				 */
-				add_action( 'wpsso_init_textdomain', array( __CLASS__, 'init_textdomain' ), -10, 1 );
-			}
+			/**
+			 * The 'wpsso_init_textdomain' action is run after the debug property is defined.
+			 * Hooks the 'override_textdomain_mofile' filter (if debug is enabled) to use
+			 * local translation files instead of those from wordpress.org.
+			 */
+			add_action( 'wpsso_init_textdomain', array( __CLASS__, 'init_textdomain' ), -10, 1 );
 		}
 
 		public static function &get_instance() {

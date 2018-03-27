@@ -210,13 +210,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( empty( $info['version'] ) ) {
 						continue;
 					}
-					$key = 'plugin_'.$ext.'_version';
-					if ( empty( $opts[$key] ) || version_compare( $opts[$key], $info['version'], '!=' ) ) {
+					$version_key = 'plugin_'.$ext.'_version';
+					if ( empty( $opts[$version_key] ) || version_compare( $opts[$version_key], $info['version'], '!=' ) ) {
 						WpssoUtil::save_time( $ext, $info['version'], 'update' );
-						$opts[$key] = $info['version'];
+						$opts[$version_key] = $info['version'];
 						$has_diff_version = true;
 					}
-					unset( $key );
+					unset( $version_key );
 				}
 
 				/**
@@ -416,6 +416,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Sanitize values.
 			 */
+			ksort( $opts );
+
 			foreach ( $opts as $opt_key => $opt_val ) {
 
 				if ( empty( $opt_key ) ) {
@@ -495,10 +497,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						continue;
 					}
 					$opt_name = 'plugin_'.$ext.'_'.$info['update_auth'];
-					if ( isset( $opts[$opt_name] ) &&
-						isset( $this->p->options[$opt_name] ) &&
-							$opts[$opt_name] !== $this->p->options[$opt_name] ) {
-						// auth id has changed
+					if ( isset( $opts[$opt_name] ) && isset( $this->p->options[$opt_name] ) && $opts[$opt_name] !== $this->p->options[$opt_name] ) {
 						$this->p->options[$opt_name] = $opts[$opt_name];
 						foreach ( array( 'err', 'inf', 'time' ) as $key ) {
 							delete_option( $ext.'_u'.$key );
@@ -597,7 +596,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Optional cast on return.
 			 */
-			$cast_int = false;
+			$ret_int = false;
+			$ret_float = false;
+			$precision = 0;
+
+			if ( strpos( $option_type, 'dec' ) === 0 ) {
+				$ret_float = true;
+				$precision = substr( $option_type, 5 );
+				$option_type = 'float';	// re-define as generic 'float' type
+			}
 
 			switch ( $option_type ) {
 
@@ -669,8 +676,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'int':
 				case 'integer':
-					$cast_int = true;
+					$ret_int = true;
 					// No break.
+				case 'dec':	// Decimal precision defined before switch().
 				case 'numeric':
 					if ( ! is_numeric( $opt_val ) ) {
 						$this->p->notice->err( sprintf( $error_messages['numeric'], $opt_key ) );
@@ -684,7 +692,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'pos_int':
 				case 'img_width':	// image height, subject to minimum value (typically, at least 200px)
 				case 'img_height':	// image height, subject to minimum value (typically, at least 200px)
-					$cast_int = true;
+					$ret_int = true;
 					// No break.
 				case 'pos_num':
 					if ( $option_type === 'img_width' ) {
@@ -695,7 +703,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$min_int = 1;
 					}
 					if ( ! empty( $mod['name'] ) && $opt_val === '' ) {	// custom meta options can be empty
-						$cast_int = false;
+						$ret_int = false;
 					} elseif ( ! is_numeric( $opt_val ) || $opt_val < $min_int ) {
 						$this->p->notice->err( sprintf( $error_messages['pos_num'], $opt_key, $min_int ) );
 						$opt_val = $def_val;
@@ -706,17 +714,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Must be blank or integer / numeric.
 				 */
 				case 'blank_int':
-					$cast_int = true;
+					$ret_int = true;
 					// No break.
 				case 'blank_num':
 					if ( $opt_val === '' ) {
-						$cast_int = false;
+						$ret_int = false;
 					} else {
 						if ( ! is_numeric( $opt_val ) ) {
 							$this->p->notice->err( sprintf( $error_messages['blank_num'], $opt_key ) );
 							$opt_val = $def_val;
 							if ( $opt_val === '' ) {
-								$cast_int = false;
+								$ret_int = false;
 							}
 						}
 					}
@@ -813,8 +821,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 			}
 
-			if ( $cast_int ) {
-				return (int) $opt_val;
+			if ( $ret_int ) {
+				return intval( $opt_val );
+			} elseif ( $ret_float ) {
+				return floatval( sprintf( '%.'.$precision.'f', $opt_val ) );	// Returns 0 for 0.00.
 			} else {
 				return $opt_val;
 			}
@@ -1041,6 +1051,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'color';
 					break;
 			}
+
 			return $type;
 		}
 

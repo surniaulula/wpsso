@@ -721,7 +721,7 @@ msgctxt "option label"
 msgid "URL Shortener API is Enabled"
 msgstr ""
 
-#: lib/admin.php:2492
+#: lib/admin.php:2496
 msgid ""
 "There is <a href=\"%1$s\">%2$d pending update for the %3$s plugin and/or its "
 "add-on(s)</a>."
@@ -731,184 +731,184 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin.php:2492
+#: lib/admin.php:2496
 msgid "Please install this update at your earliest convenience."
 msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin.php:2542
+#: lib/admin.php:2546
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:2555
+#: lib/admin.php:2559
 msgid "No %1$s HTML tag found in the %2$s template."
 msgstr ""
 
-#: lib/admin.php:2561
+#: lib/admin.php:2565
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:2569
+#: lib/admin.php:2573
 msgid "Failed to open template file %s for writing."
 msgstr ""
 
-#: lib/admin.php:2574
+#: lib/admin.php:2578
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:2577
+#: lib/admin.php:2581
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:2594 lib/submenu/essential.php:115
+#: lib/admin.php:2598 lib/submenu/essential.php:115
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2598 lib/submenu/essential.php:119
+#: lib/admin.php:2602 lib/submenu/essential.php:119
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:2603 lib/submenu/general.php:168
+#: lib/admin.php:2607 lib/submenu/general.php:168
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:2606 lib/submenu/general.php:171
+#: lib/admin.php:2610 lib/submenu/general.php:171
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/admin.php:2609
+#: lib/admin.php:2613
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
 
-#: lib/admin.php:2614 lib/submenu/general.php:129 lib/submenu/general.php:318
+#: lib/admin.php:2618 lib/submenu/general.php:129 lib/submenu/general.php:318
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
 
-#: lib/admin.php:2615 lib/submenu/general.php:243 lib/submenu/general.php:320
+#: lib/admin.php:2619 lib/submenu/general.php:243 lib/submenu/general.php:320
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:2618
+#: lib/admin.php:2622
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2630
+#: lib/admin.php:2634
 msgctxt "option label"
 msgid "Item Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:2631
+#: lib/admin.php:2635
 msgctxt "option label"
 msgid "Item Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:2632
+#: lib/admin.php:2636
 msgctxt "option label"
 msgid "Item Type for Archive Page"
 msgstr ""
 
-#: lib/admin.php:2633
+#: lib/admin.php:2637
 msgctxt "option label"
 msgid "Item Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:2634
+#: lib/admin.php:2638
 msgctxt "option label"
 msgid "Item Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:2658
+#: lib/admin.php:2662
 msgctxt "option label"
 msgid "Item Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:2671
+#: lib/admin.php:2675
 msgctxt "option label"
 msgid "Knowledge Graph for Home Page"
 msgstr ""
 
-#: lib/admin.php:2675
+#: lib/admin.php:2679
 msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr ""
 
-#: lib/admin.php:2678
+#: lib/admin.php:2682
 msgid "Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr ""
 
-#: lib/admin.php:2681
+#: lib/admin.php:2685
 msgid "Include <a href=\"%s\">Person Social Profile</a> for the Site Owner"
 msgstr ""
 
-#: lib/admin.php:2687
+#: lib/admin.php:2691
 msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:2695
+#: lib/admin.php:2699
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2700
+#: lib/admin.php:2704
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2708
+#: lib/admin.php:2712
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:2716
+#: lib/admin.php:2720
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:2723
+#: lib/admin.php:2727
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/admin.php:2730
+#: lib/admin.php:2734
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/admin.php:2738
+#: lib/admin.php:2742
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2878
+#: lib/admin.php:2882
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2898
+#: lib/admin.php:2902
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name
-#: lib/admin.php:2918
+#: lib/admin.php:2922
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL
-#: lib/admin.php:2925
+#: lib/admin.php:2929
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
@@ -1055,11 +1055,11 @@ msgstr[1] ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/util.php:1475
+#: lib/com/util.php:1476
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1482
+#: lib/com/util.php:1483
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -2549,28 +2549,28 @@ msgid "adding schema json-ld markup"
 msgstr ""
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
-#: lib/loader.php:139
+#: lib/loader.php:151
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr ""
 
 #. translators: %s is the PHP library class name
-#: lib/loader.php:144
+#: lib/loader.php:156
 msgid "Library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:147 lib/loader.php:166 lib/post.php:242 lib/register.php:232
+#: lib/loader.php:159 lib/loader.php:178 lib/post.php:242 lib/register.php:232
 #: lib/term.php:209 lib/user.php:185 lib/util.php:320 lib/util.php:2080
 msgid "%s warning:"
 msgstr ""
 
 #. translators: %1$s is the PHP library path
-#: lib/loader.php:158
+#: lib/loader.php:170
 msgid "Error loading %1$s: Library file \"%1$s\" not found."
 msgstr ""
 
 #. translators: %s is the PHP library path
-#: lib/loader.php:163
+#: lib/loader.php:175
 msgid "Library file \"%s\" not found."
 msgstr ""
 
@@ -3059,7 +3059,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:560 lib/util.php:2299
+#: lib/messages.php:560 lib/util.php:2298
 msgid "No options available."
 msgstr ""
 
@@ -4687,83 +4687,83 @@ msgid ""
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:462
+#: lib/options.php:464
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:518
+#: lib/options.php:517
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:566
+#: lib/options.php:565
 msgid ""
 "The value of option '%s' must be a URL - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:567
+#: lib/options.php:566
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:568
+#: lib/options.php:567
 msgid ""
 "The value of option '%s' must be numeric - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:569
+#: lib/options.php:568
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:570
+#: lib/options.php:569
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:571
+#: lib/options.php:570
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:572
+#: lib/options.php:571
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:573
+#: lib/options.php:572
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:574
+#: lib/options.php:573
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:575
+#: lib/options.php:574
 msgid ""
 "The value of option '%s' must be HTML code - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:576
+#: lib/options.php:575
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:865
+#: lib/options.php:875
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
@@ -5733,51 +5733,51 @@ msgid ""
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2327
+#: lib/util.php:2326
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2330
+#: lib/util.php:2329
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2335
+#: lib/util.php:2334
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2338
+#: lib/util.php:2337
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2460
+#: lib/util.php:2459
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""
 
-#: wpsso.php:344
+#: wpsso.php:342
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:358
+#: wpsso.php:356
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:366
+#: wpsso.php:364
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:367
+#: wpsso.php:365
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

@@ -2484,11 +2484,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function update_count_notice() {
+
 			$update_count = SucomUtil::get_plugin_updates_count( $this->p->lca );
+
 			if ( $update_count > 0 ) {
+
 				$info = $this->p->cf['plugin'][$this->p->lca];
 				$link_url = self_admin_url( 'update-core.php' );
 				$dismiss_key = 'have-updates-for-' . $this->p->lca;
+
 				$this->p->notice->inf( sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and/or its add-on(s)</a>.', 'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and/or its add-on(s)</a>.', $update_count, 'wpsso' ), $link_url, $update_count, $info['short'] ) . ' ' . _n( 'Please install this update at your earliest convenience.', 'Please install these updates at your earliest convenience.', $update_count, 'wpsso' ), true, $dismiss_key, DAY_IN_SECONDS * 3 );
 			}
 		}

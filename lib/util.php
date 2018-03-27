@@ -2185,44 +2185,43 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function do_metabox_tabs( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 
 			$tab_keys = array_keys( $tabs );
-			$default_tab = '_'.reset( $tab_keys );		// must start with an underscore
+			$default_tab = '_' . reset( $tab_keys );		// must start with an underscore
 			$class_metabox_tabs = 'sucom-metabox-tabs';
 			$class_link = 'sucom-tablink';
 			$class_tabset = 'sucom-tabset';
 
 			if ( ! empty( $metabox_id ) ) {
-				$metabox_id = '_'.$metabox_id;		// must start with an underscore
-				$class_metabox_tabs .= ' '.$class_metabox_tabs.$metabox_id;
-				$class_link .= ' '.$class_link.$metabox_id;
+				$metabox_id = '_' . $metabox_id;		// must start with an underscore
+				$class_metabox_tabs .= ' ' . $class_metabox_tabs . $metabox_id;
+				$class_link .= ' ' . $class_link . $metabox_id;
 			}
 
 			// allow a css ID to be passed as a query argument
-			extract( array_merge( array( 'scroll_to' => isset( $_GET['scroll_to'] ) ? '#'.self::sanitize_key( $_GET['scroll_to'] ) : '' ), $args ) );
+			extract( array_merge( array( 'scroll_to' => isset( $_GET['scroll_to'] ) ? '#' . self::sanitize_key( $_GET['scroll_to'] ) : '' ), $args ) );
 
-			echo "\n" . '<script type="text/javascript">jQuery(document).ready(function(){ '.
-				'sucomTabs(\''.$metabox_id.'\', \''.$default_tab.'\', \''.$scroll_to.'\'); });</script>' . "\n";
-			echo '<div class="'.$class_metabox_tabs.'">' . "\n";
-			echo '<ul class="'.$class_metabox_tabs.'">' . "\n";
-
-			foreach ( $tabs as $tab => $title ) {
-				$class_href_key = $class_tabset.$metabox_id.'-tab_'.$tab;
-				echo '<div class="tab_left">&nbsp;</div><li class="'.
-					$class_href_key.'"><a class="'.$class_link.'" href="#'.
-					$class_href_key.'">'.$title.'</a></li>' . "\n";
-			}
-
-			echo '</ul><!-- .'.$class_metabox_tabs.' -->' . "\n";
+			echo "\n" . '<script type="text/javascript">jQuery(document).ready(function(){ ' . 
+				'sucomTabs(\'' . $metabox_id . '\', \'' . $default_tab . '\', \'' . $scroll_to . '\'); });</script>' . "\n";
+			echo '<div class="' . $class_metabox_tabs . '">' . "\n";
+			echo '<ul class="' . $class_metabox_tabs . '">' . "\n";
 
 			foreach ( $tabs as $tab => $title ) {
-				$class_href_key = $class_tabset.$metabox_id.'-tab_'.$tab;
-				$this->do_table_rows( $table_rows[$tab], $class_href_key,
-					( empty( $metabox_id ) ? '' : $class_tabset.$metabox_id ), $class_tabset );
+				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
+				echo '<div class="tab_left">&nbsp;</div><li class="' . 
+					$class_href_key . '"><a class="' . $class_link . '" href="#' . 
+					$class_href_key . '">' . $title . '</a></li>' . "\n";
 			}
 
-			echo '</div><!-- .'.$class_metabox_tabs.' -->' . "\n\n";
+			echo '</ul><!-- .' . $class_metabox_tabs . ' -->' . "\n";
+
+			foreach ( $tabs as $tab => $title ) {
+				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
+				$this->do_table_rows( $table_rows[$tab], $class_href_key, ( empty( $metabox_id ) ? '' : $class_tabset . $metabox_id ), $class_tabset );
+			}
+
+			echo '</div><!-- .' . $class_metabox_tabs . ' -->' . "\n\n";
 		}
 
-		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = '' ) {
+		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset' ) {
 
 			if ( ! is_array( $table_rows ) ) {	// just in case
 				return;

@@ -113,7 +113,11 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 								if ( class_exists( $classname ) ) {
 
+									/**
+									 * Loaded module objects from core plugin.
+									 */
 									if ( $ext === $this->p->lca ) {
+
 										if ( $this->p->debug->enabled ) {
 											$this->p->debug->log( $log_prefix.'new library module for '.$classname );
 										}
@@ -122,10 +126,18 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 										} elseif ( $this->p->debug->enabled ) {
 											$this->p->debug->log( $log_prefix.'library module already defined' );
 										}
+
+									/**
+									 * Loaded module objects from extensions / add-ons.
+									 */
 									} elseif ( ! isset( $this->p->m_ext[$ext][$sub][$id] ) ) {
+
 										$this->p->m_ext[$ext][$sub][$id] = new $classname( $this->p );
+
 									} elseif ( $this->p->debug->enabled ) {
+
 										$this->p->debug->log( $log_prefix.'library ext module already defined' );
+
 									}
 
 								} else {

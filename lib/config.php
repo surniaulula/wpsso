@@ -2313,6 +2313,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				if ( $filter_cf ) {
 
 					self::$cf['config_filtered'] = true;	// set before calling filter to prevent recursion
+
 					self::$cf = apply_filters( 'wpsso_get_config', self::$cf, self::get_version() );
 
 					foreach ( self::$cf['plugin'] as $ext => $info ) {

@@ -285,8 +285,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_radio( $name, $values, $class, $id, $is_assoc, true );
 		}
 
-		public function get_select( $name, $values = array(), $class = '', $id = '',
-			$is_assoc = null, $disabled = false, $selected = false, $on_change = false ) {
+		public function get_select( $name, $values = array(), $class = '', $id = '', $is_assoc = null, $disabled = false, $selected = false, $on_change = false ) {
 
 			if ( empty( $name ) ) {
 				return;
@@ -364,13 +363,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$select_options_count = 0;
 			$select_options_shown = 0;
 
-			foreach ( $values as $val => $label ) {
+			foreach ( $values as $option_val => $label ) {
+
+				if ( is_array( $label ) ) {
+					$label = implode( ', ', $label );
+				}
+
 				/**
 				 * If the array is not associative (so a regular numbered array), 
 				 * then the label / description is used as the saved value.
 				 */
 				if ( false === $is_assoc ) {
-					$val = $label;
+					$option_val = $label;
 				}
 
 				if ( $this->text_domain ) {
@@ -395,16 +399,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						break;
 				}
 
-				if ( $in_defaults && $val === $this->defaults[$name] ) {
+				if ( $in_defaults && $option_val === $this->defaults[$name] ) {
 					$label_transl .= ' ' . $this->get_value_transl( '(default)' );
 				}
 
 				if ( ! is_bool( $selected ) ) {
-					$is_selected_html = selected( $selected, $val, false );
+					$is_selected_html = selected( $selected, $option_val, false );
 				} elseif ( $in_options ) {
-					$is_selected_html = selected( $this->options[$name], $val, false );
+					$is_selected_html = selected( $this->options[$name], $option_val, false );
 				} elseif ( $in_defaults ) {
-					$is_selected_html = selected( $this->defaults[$name], $val, false );
+					$is_selected_html = selected( $this->defaults[$name], $option_val, false );
 				} else {
 					$is_selected_html = '';
 				}
@@ -413,7 +417,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				// for disabled selects, only include the first and/or selected option
 				if ( ! $disabled || $select_options_count === 1 || $is_selected_html ) {
-					$html .= '<option value="' . esc_attr( $val ) . '"' . $is_selected_html . '>' . $label_transl . '</option>' . "\n";
+					$html .= '<option value="' . esc_attr( $option_val ) . '"' . $is_selected_html . '>' . $label_transl . '</option>' . "\n";
 					$select_options_shown++; 
 				}
 			}
