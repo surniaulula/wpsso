@@ -519,8 +519,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 * Called by the WordPress 'shutdown' action.
 		 */
 		public function save_user_notices() {
+
 			$user_id = (int) get_current_user_id();
+
 			$have_notices = false;
+
 			if ( $user_id > 0 ) {
 				if ( isset( $this->notice_cache[$user_id]['have_notices'] ) ) {
 					$have_notices = $this->notice_cache[$user_id]['have_notices'];
@@ -765,12 +768,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		protected function get_all_user_ids() {
+
 			$user_ids = array();
+
 			foreach ( get_users() as $user ) {
 				if ( ! empty( $user->ID ) ) {
 					$user_ids[] = $user->ID;
 				}
 			}
+
 			return $user_ids;
 		}
 
