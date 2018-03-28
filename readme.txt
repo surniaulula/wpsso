@@ -387,7 +387,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.56.3-dev.1 (2018/03/26)**
+**Version 3.56.3-dev.2 (2018/03/28)**
 
 * *New Features*
 	* None
@@ -440,9 +440,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.56.3-dev.1 =
+= 3.56.3-dev.2 =
 
-(2018/03/26) Added translation strings for default / fallback archive titles and descriptions. Added support for post type archive titles and descriptions.
+(2018/03/28) Added translation strings for default / fallback archive titles and descriptions. Added support for post type archive titles and descriptions.
 
 = 3.56.2 =
 
