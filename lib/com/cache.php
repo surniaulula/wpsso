@@ -207,11 +207,15 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( ! empty( $filepath ) ) {	// false on error
 
 				if ( file_exists( $filepath ) ) {
+
 					$image_size = @getimagesize( $filepath );
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log_arr( 'getimagesize', $image_size );
 					}
+
 					return $image_size;
+
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $filepath.' does not exist' );
 				}

@@ -507,6 +507,41 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'latest' => '',
 					),
 				),
+				'wpssotie' => array(			// Plugin acronym.
+					'short' => 'WPSSO TIE',		// Short plugin name.
+					'name' => 'WPSSO Tune WP Image Extensions',
+					'desc' => 'WPSSO Core add-on to provide tuning options for the WordPress and PHP image extensions.',
+					'slug' => 'wpsso-tune-image-extension',
+					'base' => 'wpsso-tune-image-extension/wpsso-tune-image-extension.php',
+					'update_auth' => 'tid',
+					'img' => array(
+						'banners' => array(
+							'low' => 'https://surniaulula.github.io/wpsso-tune-image-extension/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-tune-image-extension/assets/banner-1544x500.jpg',
+						),
+						'icons' => array(
+							'low' => 'https://surniaulula.github.io/wpsso-tune-image-extension/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-tune-image-extension/assets/icon-256x256.png',
+						),
+					),
+					'url' => array(
+						// WordPress
+						'home' => 'https://wordpress.org/plugins/wpsso-tune-image-extension/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-tune-image-extension',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-tune-image-extension/reviews/?rate=5#new-post',
+						// github
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tune-image-extension/master/readme.txt',
+						// wpsso
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-extension/changelog/',
+						'docs' => 'https://wpsso.com/docs/plugins/wpsso-tune-image-extension/',
+						'faqs' => '',
+						'notes' => '',
+						'support' => 'http://wpsso-tune-image-extension.support.wpsso.com/support/tickets/new',
+						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-extension/',
+						'update' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-extension/update/',
+						'latest' => '',
+					),
+				),
 				'wpssoul' => array(			// Plugin acronym.
 					'short' => 'WPSSO UL',		// Short plugin name.
 					'name' => 'WPSSO User Locale Selector',

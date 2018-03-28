@@ -81,6 +81,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			static $do_once = array();
 			$default_filters = array(
 				'cache_expire_head_array' => '__return_zero',
+				'cache_expire_schema_json_data' => '__return_zero',
 				'cache_expire_setup_html' => '__return_zero',
 				'cache_expire_shortcode_html' => '__return_zero',
 				'cache_expire_sharing_buttons' => '__return_zero',
