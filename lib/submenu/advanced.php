@@ -60,9 +60,9 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'apikeys' => _x( 'Service APIs', 'metabox tab', 'wpsso' ),
 			) );
 
-			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key ),
-					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
+			foreach ( $tabs as $tab_key => $title ) {
+				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
+					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$tab_key.'_rows',
 						array(), $this->form, false ) );	// $network = false
 			}
 
@@ -80,9 +80,9 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'builtin' => _x( 'Built-In Contacts', 'metabox tab', 'wpsso' ),
 			) );
 
-			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key ),
-					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
+			foreach ( $tabs as $tab_key => $title ) {
+				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
+					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$tab_key.'_rows',
 						array(), $this->form, false ) );	// $network = false
 			}
 
@@ -100,26 +100,29 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'other' => _x( 'SEO / Other', 'metabox tab', 'wpsso' ),
 			) );
 			$table_rows = array();
-			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key ),
-					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
+			foreach ( $tabs as $tab_key => $title ) {
+				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
+					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$tab_key.'_rows',
 						array(), $this->form, false ) );	// $network = false
 			}
 			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox_id ).'</td>' ), 'metabox-'.$metabox_id.'-info' );
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 		}
 
-		protected function get_table_rows( $metabox_id, $key ) {
+		protected function get_table_rows( $metabox_id, $tab_key ) {
+
 			$table_rows = array();
-			switch ( $metabox_id.'-'.$key ) {
+
+			switch ( $metabox_id.'-'.$tab_key ) {
+
 				case 'plugin-settings':
 
 					$this->add_essential_advanced_table_rows( $table_rows );
 
 					break;
 			}
+
 			return $table_rows;
 		}
 	}
 }
-

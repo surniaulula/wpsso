@@ -1221,13 +1221,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;
 				}
 
-				$installed_version = $info['version'];	// static value from config
-				$installed_style = '';
-				$stable_version = __( 'Not Available', 'wpsso' );	// default value
-				$latest_version = __( 'Not Available', 'wpsso' );	// default value
-				$latest_notice = '';
-				$changelog_url = $info['url']['changelog'];
-				$readme_info = $this->get_readme_info( $ext, true );	// $read_cache = true
+				$installed_version = isset( $info['version'] ) ? $info['version'] : ''; // static value from config
+				$installed_style   = '';
+				$stable_version    = __( 'Not Available', 'wpsso' ); // default value
+				$latest_version    = __( 'Not Available', 'wpsso' ); // default value
+				$latest_notice     = '';
+				$changelog_url     = isset( $info['url']['changelog'] ) ? $info['url']['changelog'] : '';
+				$readme_info       = $this->get_readme_info( $ext, true ); // $read_cache = true
 
 				if ( ! empty( $readme_info['stable_tag'] ) ) {
 
@@ -1236,13 +1236,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					if ( is_array( $readme_info['upgrade_notice'] ) ) {
 
-						// hooked by the update manager to apply the version filter
+						/**
+						 * Hooked by the update manager to apply the version filter.
+						 */
 						$upgrade_notice = apply_filters( $this->p->lca . '_readme_upgrade_notices', $readme_info['upgrade_notice'], $ext );
 
 						if ( ! empty( $upgrade_notice ) ) {
+
 							reset( $upgrade_notice );
+
 							$latest_version = key( $upgrade_notice );
-							$latest_notice = $upgrade_notice[$latest_version];
+							$latest_notice  = $upgrade_notice[$latest_version];
 						}
 					}
 
@@ -1786,8 +1790,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			require_once ABSPATH . WPINC . '/class-wp-image-editor-gd.php';
 			require_once ABSPATH . WPINC . '/class-wp-image-editor-imagick.php';
 
-			$default_editors = array( 'WP_Image_Editor_Imagick', 'WP_Image_Editor_GD' );
-			$implementations = apply_filters( 'wp_image_editors', $default_editors );
+			$implementations = apply_filters( 'wp_image_editors', array( 'WP_Image_Editor_Imagick', 'WP_Image_Editor_GD' ) );
 			$php_extensions  = $this->p->cf['php']['extensions'];
 
 			foreach ( $php_extensions as $php_ext => $php_info ) {

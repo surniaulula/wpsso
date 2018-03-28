@@ -54,10 +54,11 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 			echo '</table>';
 		}
 
-		protected function get_table_rows( $metabox_id, $key ) {
+		protected function get_table_rows( $metabox_id, $tab_key ) {
+
 			$table_rows = array();
 
-			switch ( $metabox_id.'-'.$key ) {
+			switch ( $metabox_id.'-'.$tab_key ) {
 
 				case 'social-accounts-general':
 
@@ -65,17 +66,17 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 
 					asort( $social_accounts );	// sort by label (after translation) and maintain key association
 
-					foreach ( $social_accounts as $key => $label ) {
-						$table_rows[$key] = ''.
-						$this->form->get_th_html( _x( $label, 'option value', 'wpsso' ), 'nowrap', $key, array( 'is_locale' => true ) ).
-						'<td>'.$this->form->get_input( SucomUtil::get_key_locale( $key, $this->p->options ),
-							( strpos( $key, '_url' ) ? 'wide' : '' ) ).'</td>';
+					foreach ( $social_accounts as $social_key => $label ) {
+						$table_rows[$social_key] = ''.
+						$this->form->get_th_html( _x( $label, 'option value', 'wpsso' ), 'nowrap', $social_key, array( 'is_locale' => true ) ).
+						'<td>'.$this->form->get_input( SucomUtil::get_key_locale( $social_key, $this->p->options ),
+							( strpos( $social_key, '_url' ) ? 'wide' : '' ) ).'</td>';
 					}
 
 					break;
 			}
+
 			return $table_rows;
 		}
 	}
 }
-

@@ -63,11 +63,11 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			echo '</table>';
 		}
 
-		protected function get_table_rows( $metabox_id, $key ) {
+		protected function get_table_rows( $metabox_id, $tab_key ) {
 
 			$table_rows = array();
 
-			switch ( $metabox_id.'-'.$key ) {
+			switch ( $metabox_id.'-'.$tab_key ) {
 
 				case 'image-dimensions-general':
 
@@ -89,8 +89,8 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 					break;
 			}
+
 			return $table_rows;
 		}
 	}
 }
-

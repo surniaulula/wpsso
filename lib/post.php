@@ -928,9 +928,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark( $metabox_id.' table rows' );	// start timer
 
 			$table_rows = array();
-			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ),
-					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+			foreach ( $tabs as $tab_key => $title ) {
+				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key, WpssoMeta::$head_meta_info, $mod ),
+					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$tab_key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 
@@ -938,37 +938,41 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark( $metabox_id.' table rows' );	// end timer
 		}
 
-		protected function get_table_rows( &$metabox_id, &$key, &$head, &$mod ) {
+		protected function get_table_rows( $metabox_id, $tab_key, $head, $mod ) {
 
-			$is_auto_draft = empty( $mod['post_status'] ) ||
-				$mod['post_status'] === 'auto-draft' ? true : false;
-			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
-				'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );
+			$is_auto_draft  = empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ? true : false;
+			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.', 'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );
+			$table_rows     = array();
 
-			$table_rows = array();
-			switch ( $key ) {
+			switch ( $tab_key ) {
+
 				case 'preview':
+
 					$table_rows = $this->get_rows_social_preview( $this->form, $head, $mod );
+
 					break;
 
 				case 'tags':
+
 					if ( $is_auto_draft ) {
-						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
-							$auto_draft_msg.'</p></blockquote></td>';
+						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.$auto_draft_msg.'</p></blockquote></td>';
 					} else {
 						$table_rows = $this->get_rows_head_tags( $this->form, $head, $mod );
 					}
+
 					break;
 
 				case 'validate':
+
 					if ( $is_auto_draft ) {
-						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
-							$auto_draft_msg.'</p></blockquote></td>';
+						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.$auto_draft_msg.'</p></blockquote></td>';
 					} else {
 						$table_rows = $this->get_rows_validate( $this->form, $head, $mod );
 					}
+
 					break;
 			}
+
 			return $table_rows;
 		}
 

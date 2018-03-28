@@ -39,16 +39,18 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				_x( 'Specific WebSites and Publishers', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_publishers' ), $this->pagehook, 'normal' );
 
-			// issues a warning notice if the default image size is too small
-			// unless the WPSSO_CHECK_DEFAULT_IMAGE constant has been defined as false
+			/**
+			 * Issues a warning notice if the default image size is too small,
+			 * unless the WPSSO_CHECK_DEFAULT_IMAGE constant has been defined as false.
+			 */
 			if ( SucomUtil::get_const( 'WPSSO_CHECK_DEFAULT_IMAGE' ) !== false ) {
-				$this->p->media->get_default_images( 1, $this->p->cf['lca'].'-opengraph', false );
+				$this->p->media->get_default_images( 1, $this->p->lca.'-opengraph', false );
 			}
 		}
 
 		public function show_metabox_opengraph() {
 			$metabox_id = 'og';
-			$tabs = apply_filters( $this->p->cf['lca'].'_general_og_tabs', array(
+			$tabs = apply_filters( $this->p->lca.'_general_og_tabs', array(
 				'general' => _x( 'Site Information', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Titles / Descriptions', 'metabox tab', 'wpsso' ),
 				'author' => _x( 'Authorship', 'metabox tab', 'wpsso' ),
@@ -56,16 +58,16 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				'videos' => _x( 'Videos', 'metabox tab', 'wpsso' ),
 			) );
 			$table_rows = array();
-			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
-					$this->get_table_rows( $metabox_id, $key ), $this->form );
+			foreach ( $tabs as $tab_key => $title ) {
+				$table_rows[$tab_key] = apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows',
+					$this->get_table_rows( $metabox_id, $tab_key ), $this->form );
 			}
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_publishers() {
 			$metabox_id = 'pub';
-			$tabs = apply_filters( $this->p->cf['lca'].'_general_pub_tabs', array(
+			$tabs = apply_filters( $this->p->lca.'_general_pub_tabs', array(
 				'facebook' => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'google' => _x( 'Google / Schema', 'metabox tab', 'wpsso' ),
 				'pinterest' => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
@@ -73,19 +75,19 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				'other' => _x( 'Other', 'metabox tab', 'wpsso' ),
 			) );
 			$table_rows = array();
-			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
-					$this->get_table_rows( $metabox_id, $key ), $this->form );
+			foreach ( $tabs as $tab_key => $title ) {
+				$table_rows[$tab_key] = apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows',
+					$this->get_table_rows( $metabox_id, $tab_key ), $this->form );
 			}
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 		}
 
-		protected function get_table_rows( $metabox_id, $key ) {
+		protected function get_table_rows( $metabox_id, $tab_key ) {
 
 			$table_rows = array();
 			$user_contacts = $this->p->m['util']['user']->get_form_contact_fields();
 
-			switch ( $metabox_id.'-'.$key ) {
+			switch ( $metabox_id.'-'.$tab_key ) {
 
 				case 'og-general':
 
@@ -249,7 +251,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' ).'</h4></td>';
 
-					$noscript_disabled = apply_filters( $this->p->cf['lca'].'_add_schema_noscript_array', true ) ? false : true;
+					$noscript_disabled = apply_filters( $this->p->lca.'_add_schema_noscript_array', true ) ? false : true;
 					$noscript_comment_transl = _x( 'option disabled by extension plugin or custom filter', 'option comment', 'wpsso' );
 
 					if ( ! $noscript_disabled ) {
@@ -339,12 +341,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-other':
 
-					$social_accounts = apply_filters( $this->p->cf['lca'].'_social_accounts', $this->p->cf['form']['social_accounts'] );
+					$social_accounts = apply_filters( $this->p->lca.'_social_accounts', $this->p->cf['form']['social_accounts'] );
 					asort( $social_accounts );	// sort by translated label and maintain key association
 
-					foreach ( $social_accounts as $key => $label ) {
+					foreach ( $social_accounts as $social_key => $label ) {
 						// skip options shown in previous tabs
-						switch ( $key ) {
+						switch ( $social_key ) {
 							case 'fb_publisher_url':
 							case 'seo_publisher_url':
 							case 'p_publisher_url':
@@ -352,16 +354,16 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 								continue 2;
 						}
 
-						$table_rows[$key] = ''.
-						$this->form->get_th_html( _x( $label, 'option value', 'wpsso' ), 'nowrap', $key, array( 'is_locale' => true ) ).
-						'<td>'.$this->form->get_input( SucomUtil::get_key_locale( $key, $this->p->options ),
-							( strpos( $key, '_url' ) ? 'wide' : '' ) ).'</td>';
+						$table_rows[$social_key] = ''.
+						$this->form->get_th_html( _x( $label, 'option value', 'wpsso' ), 'nowrap', $social_key, array( 'is_locale' => true ) ).
+						'<td>'.$this->form->get_input( SucomUtil::get_key_locale( $social_key, $this->p->options ),
+							( strpos( $social_key, '_url' ) ? 'wide' : '' ) ).'</td>';
 					}
 
 					break;
 			}
+
 			return $table_rows;
 		}
 	}
 }
-

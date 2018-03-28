@@ -124,8 +124,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 * 	'json_data_https_schema_org_website' => 5
 				 */
 				if ( is_int( $val ) ) {
-					$arg_nums = $val;
-					$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$name );
+
+					$arg_nums    = $val;
+					$hook_name   = SucomUtil::sanitize_hookname( $lca.'_'.$name );
 					$method_name = SucomUtil::sanitize_hookname( $type.'_'.$name );
 
 					call_user_func( 'add_'.$type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
@@ -138,8 +139,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 * 	'add_schema_meta_array' => '__return_false'
 				 */
 				} elseif ( is_string( $val ) ) {
-					$arg_nums = 1;
-					$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$name );
+
+					$arg_nums      = 1;
+					$hook_name     = SucomUtil::sanitize_hookname( $lca.'_'.$name );
 					$function_name = SucomUtil::sanitize_hookname( $val );
 
 					call_user_func( 'add_'.$type, $hook_name, $function_name, $prio, $arg_nums );
@@ -156,8 +158,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 *	)
 				 */
 				} elseif ( is_array( $val ) ) {
+
 					$method_name = SucomUtil::sanitize_hookname( $type.'_'.$name );
+
 					foreach ( $val as $hook_name => $arg_nums ) {
+
 						$hook_name = SucomUtil::sanitize_hookname( $lca.'_'.$hook_name );
 
 						call_user_func( 'add_'.$type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );

@@ -59,24 +59,27 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 				'cache' => _x( 'Cache Settings', 'metabox tab', 'wpsso' ),
 			) );
 			$table_rows = array();
-			foreach ( $tabs as $key => $title )
-				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key ),
-					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$key.'_rows',
+			foreach ( $tabs as $tab_key => $title )
+				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
+					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$tab_key.'_rows',
 						array(), $this->form, true ) );	// $network = true
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 		}
 
-		protected function get_table_rows( $metabox_id, $key ) {
+		protected function get_table_rows( $metabox_id, $tab_key ) {
+
 			$table_rows = array();
-			switch ( $metabox_id.'-'.$key ) {
+
+			switch ( $metabox_id.'-'.$tab_key ) {
+
 				case 'plugin-settings':
 
 					$this->add_essential_advanced_table_rows( $table_rows, true );	// $network = true
 
 					break;
 			}
+
 			return $table_rows;
 		}
 	}
 }
-
