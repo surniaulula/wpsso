@@ -163,7 +163,7 @@ _x( 'WPSSO Core add-on to provide ratings and reviews for WordPress comments, wi
 _x( 'WPSSO Core add-on to provide Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, post edit pages, etc.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews + many more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Core add-on to provide tuning options for the WordPress and PHP image extensions.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core add-on to provide tuning options for the WordPress image editors and PHP image extensions.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide updates for the WPSSO Core Pro plugin and its Pro add-ons.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched.', 'plugin description', 'wpsso' );

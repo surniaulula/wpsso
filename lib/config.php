@@ -509,36 +509,36 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssotie' => array(			// Plugin acronym.
 					'short' => 'WPSSO TIE',		// Short plugin name.
-					'name' => 'WPSSO Tune WP Image Extensions',
-					'desc' => 'WPSSO Core add-on to provide tuning options for the WordPress and PHP image extensions.',
-					'slug' => 'wpsso-tune-image-extension',
-					'base' => 'wpsso-tune-image-extension/wpsso-tune-image-extension.php',
+					'name' => 'WPSSO Tune Image Editors',
+					'desc' => 'WPSSO Core add-on to provide tuning options for the WordPress image editors and PHP image extensions.',
+					'slug' => 'wpsso-tune-image-editors',
+					'base' => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-tune-image-extension/assets/banner-772x250.jpg',
-							'high' => 'https://surniaulula.github.io/wpsso-tune-image-extension/assets/banner-1544x500.jpg',
+							'low' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-tune-image-extension/assets/icon-128x128.png',
-							'high' => 'https://surniaulula.github.io/wpsso-tune-image-extension/assets/icon-256x256.png',
+							'low' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-256x256.png',
 						),
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-tune-image-extension/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-tune-image-extension',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-tune-image-extension/reviews/?rate=5#new-post',
+						'home' => 'https://wordpress.org/plugins/wpsso-tune-image-editors/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-tune-image-editors',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-tune-image-editors/reviews/?rate=5#new-post',
 						// github
-						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tune-image-extension/master/readme.txt',
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tune-image-editors/master/readme.txt',
 						// wpsso
-						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-extension/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-tune-image-extension/',
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/changelog/',
+						'docs' => 'https://wpsso.com/docs/plugins/wpsso-tune-image-editors/',
 						'faqs' => '',
 						'notes' => '',
-						'support' => 'http://wpsso-tune-image-extension.support.wpsso.com/support/tickets/new',
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-extension/',
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-extension/update/',
+						'support' => 'http://wpsso-tune-image-editors.support.wpsso.com/support/tickets/new',
+						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/',
+						'update' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/update/',
 						'latest' => '',
 					),
 				),

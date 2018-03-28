@@ -1907,8 +1907,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:166
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on to provide tuning options for the WordPress and PHP image "
-"extensions."
+"WPSSO Core add-on to provide tuning options for the WordPress image editors "
+"and PHP image extensions."
 msgstr ""
 
 #: lib/config-gettext-extract.php:167
