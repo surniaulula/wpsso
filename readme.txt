@@ -387,18 +387,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.56.3-dev.2 (2018/03/28)**
+**Version 3.56.3-dev.3 (2018/03/29)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added translation strings for default / fallback archive titles and descriptions.
-	* Added support for post type archive titles and descriptions.
+	* Added support for "archive" post type titles and descriptions.
+	* Added the WPSSO Tune WP Image Editors add-on to the SSO &gt; Core Add-ons settings page.
 * *Bugfixes*
-	* None
+	* Fixed the SucomUtil `is_home_index()` and `is_home_page()` methods to ignore a post ID of 0.
 * *Developer Notes*
 	* Added a new 'is_post_archive' array elements in the `$mod` variable.
-	* Refactored the SucomUtil `is_home_index()` and `is_home_page()` methods to ignore a post ID of 0.
 
 **Version 3.56.2 (2018/03/24)**
 
@@ -440,9 +440,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.56.3-dev.2 =
+= 3.56.3-dev.3 =
 
-(2018/03/28) Added translation strings for default / fallback archive titles and descriptions. Added support for post type archive titles and descriptions.
+(2018/03/29) Added translation strings for default / fallback archive titles and descriptions. Added support for "archive" post type titles and descriptions. Added the WPSSO Tune WP Image Editors add-on to the SSO &gt; Core Add-ons settings page.
 
 = 3.56.2 =
 
