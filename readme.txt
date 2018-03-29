@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.4
 WC Tested Up To: 3.3.4
-Stable Tag: 3.56.2
+Stable Tag: 3.56.3
 
 Automatically create complete meta tags & Schema markup from your content for Social Sharing, Google Rich Cards (SEO), Pinterest Rich Pins + more.
 
@@ -445,8 +445,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 3.56.3 =
 
 (2018/03/29) Added translation strings for default / fallback archive titles and descriptions. Added support for "archive" post type titles and descriptions. Added the WPSSO Tune WP Image Editors add-on to the SSO &gt; Core Add-ons settings page.
-
-= 3.56.2 =
-
-(2018/03/24) Fixed a function call in an error message for images that exceed an allowed aspect ratio. Renamed plugin "Extensions" to "Add-ons" to avoid confusion and improve / simplify translations.
 
