@@ -572,7 +572,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-plugin_filter_title':
 
-							$text = __( 'The title values provided by WordPress may include modifications by themes and/or SEO plugins (appending the site name, for example, is a common practice). Uncheck this option to always use the original unmodified title value (default is unchecked).', 'wpsso' ).' '.sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca.'_filter_title' );
+							$def_checked = $this->p->opt->get_defaults( 'plugin_filter_title' ) ? 'checked' : 'unchecked';
+
+							$text = __( 'The title values provided by WordPress may include modifications by themes and/or SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'Uncheck this option to always use the original unmodified title value from WordPress (default is %s).', 'wpsso' ), $def_checked ).' ';
+							
+							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca.'_filter_title' );
 
 							break;
 

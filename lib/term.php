@@ -170,15 +170,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$start_time = microtime( true );
 			$term_posts = get_posts( array(
 				'posts_per_page' => $posts_per_page,
-				'paged' => $paged,
-				'post_status' => 'publish',
-				'post_type' => 'any',
-				'has_password' => false,	// since wp 3.9
-				'tax_query' => array(
+				'paged'          => $paged,
+				'post_status'    => 'publish',
+				'post_type'      => 'any',
+				'has_password'   => false,	// since wp 3.9
+				'tax_query'      => array(
 				        array(
-						'taxonomy' => $mod['tax_slug'],
-						'field' => 'term_id',
-						'terms' => $mod['id'],
+						'taxonomy'         => $mod['tax_slug'],
+						'field'            => 'term_id',
+						'terms'            => $mod['id'],
 						'include_children' => false
 					)
 				)

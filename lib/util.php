@@ -1161,7 +1161,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$function_ret = $function();
 					$total_time = microtime( true ) - $start_time;
 					$function_info[$function] = array(
-						$function.'() = '.sprintf( '%s (%f secs)', $function_ret ? 'true' : 'false', $total_time ),
+						sprintf( '%-40s (%f secs)', $function.'() = ' . ( $function_ret ? 'TRUE' : 'false' ), $total_time ),
 						$function_ret,
 						$total_time,
 					);

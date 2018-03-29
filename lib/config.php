@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '3.56.3-dev.2',		// Plugin version.
+					'version' => '3.56.3-dev.3',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -509,7 +509,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssotie' => array(			// Plugin acronym.
 					'short' => 'WPSSO TIE',		// Short plugin name.
-					'name' => 'WPSSO Tune Image Editors',
+					'name' => 'WPSSO Tune WP Image Editors',
 					'desc' => 'WPSSO Core add-on to provide tuning options for the WordPress image editors and PHP image extensions.',
 					'slug' => 'wpsso-tune-image-editors',
 					'base' => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',
@@ -924,7 +924,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s)
 					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
 					// Content and Filters Tab
-					'plugin_filter_title' => 0,			// Use Filtered (SEO) Title
+					'plugin_filter_title' => 1,			// Use Filtered (SEO) Title
 					'plugin_filter_content' => 0,			// Apply WordPress Content Filters
 					'plugin_filter_excerpt' => 0,			// Apply WordPress Excerpt Filters
 					'plugin_p_strip' => 0,				// Content Starts at 1st Paragraph

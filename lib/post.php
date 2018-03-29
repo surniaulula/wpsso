@@ -165,10 +165,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$post_posts = get_posts( array(
 				'posts_per_page' => -1,
-				'paged' => false,
-				'post_status' => 'publish',
-				'post_type' => 'any',
-				'has_password' => false,	// since wp 3.9
+				'paged'          => false,
+				'post_status'    => 'publish',
+				'post_type'      => 'any',
+				'has_password'   => false,	// since wp 3.9
 			) );
 
 			foreach ( $post_posts as $post ) {
@@ -209,12 +209,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$start_time = microtime( true );
 			$post_posts = get_posts( array(
 				'posts_per_page' => $posts_per_page,
-				'paged' => $paged,
-				'post_status' => 'publish',
-				'post_type' => 'any',
-				'post_parent' => $mod['id'],
-				'child_of' => $mod['id'],	// only include direct children
-				'has_password' => false,	// since wp 3.9
+				'paged'          => $paged,
+				'post_status'    => 'publish',
+				'post_type'      => 'any',
+				'post_parent'    => $mod['id'],
+				'child_of'       => $mod['id'],	// only include direct children
+				'has_password'   => false,	// since wp 3.9
 			) );
 			$total_time = microtime( true ) - $start_time;
 

@@ -153,11 +153,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$start_time = microtime( true );
 			$user_posts = get_posts( array(
 				'posts_per_page' => $posts_per_page,
-				'paged' => $paged,
-				'post_status' => 'publish',
-				'post_type' => 'any',
-				'has_password' => false,	// since wp 3.9
-				'author' => $mod['id'],
+				'paged'          => $paged,
+				'post_status'    => 'publish',
+				'post_type'      => 'any',
+				'has_password'   => false,	// since wp 3.9
+				'author'         => $mod['id'],
 			) );
 			$total_time = microtime( true ) - $start_time;
 
