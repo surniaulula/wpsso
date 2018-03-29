@@ -597,12 +597,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Optional cast on return.
 			 */
 			$ret_int = false;
-			$fmt_float = false;
-			$precision = 0;
+			$ret_fnum = false;
+			$num_prec = 0;
 
-			if ( strpos( $option_type, 'float' ) === 0 ) {
-				$precision = substr( $option_type, 5 );
-				$option_type = 'float';
+			if ( strpos( $option_type, 'fnum' ) === 0 ) {
+				$num_prec = substr( $option_type, 4 );
+				$option_type = 'fnum';
 			}
 
 			switch ( $option_type ) {
@@ -671,10 +671,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/**
-				 * Must be float / numeric.
+				 * Must be a floating-point number.
+				 * The decimal precision defined before the switch() statement.
 				 */
-				case 'float':	// Decimal precision defined before switch().
-					$fmt_float = true;
+				case 'fnum':
+					$ret_fnum = true;
 					if ( ! is_numeric( $opt_val ) ) {
 						$this->p->notice->err( sprintf( $error_messages['numeric'], $opt_key ) );
 						$opt_val = $def_val;
@@ -833,8 +834,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( $ret_int ) {
 				$opt_val = intval( $opt_val );
-			} elseif ( $fmt_float ) {
-				$opt_val = sprintf( '%.'.$precision.'f', $opt_val );
+			} elseif ( $ret_fnum ) {
+				$opt_val = sprintf( '%.'.$num_prec.'f', $opt_val );
 			}
 
 			return $opt_val;
