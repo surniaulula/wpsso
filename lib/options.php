@@ -597,12 +597,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Optional cast on return.
 			 */
 			$ret_int = false;
-			$ret_float = false;
+			$fmt_float = false;
 			$precision = 0;
 
 			if ( strpos( $option_type, 'float' ) === 0 ) {
 				$precision = substr( $option_type, 5 );
-				$option_type = 'float';	// re-define as generic 'float' type
+				$option_type = 'float';
 			}
 
 			switch ( $option_type ) {
@@ -674,7 +674,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Must be float / numeric.
 				 */
 				case 'float':	// Decimal precision defined before switch().
-					$ret_float = true;
+					$fmt_float = true;
 					if ( ! is_numeric( $opt_val ) ) {
 						$this->p->notice->err( sprintf( $error_messages['numeric'], $opt_key ) );
 						$opt_val = $def_val;
@@ -832,12 +832,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			if ( $ret_int ) {
-				return intval( $opt_val );
-			} elseif ( $ret_float ) {
-				return floatval( sprintf( '%.'.$precision.'f', $opt_val ) );	// Returns 0 for 0.00.
-			} else {
-				return $opt_val;
+				$opt_val = intval( $opt_val );
+			} elseif ( $fmt_float ) {
+				$opt_val = sprintf( '%.'.$precision.'f', $opt_val );
 			}
+
+			return $opt_val;
 		}
 
 		// save both options and site options
