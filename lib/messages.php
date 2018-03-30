@@ -572,7 +572,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-plugin_filter_title':
 
-							$def_checked = $this->p->opt->get_defaults( 'plugin_filter_title' ) ? 'checked' : 'unchecked';
+							$def_checked = $this->p->opt->get_defaults( 'plugin_filter_title' ) ?
+								_x( 'checked', 'option value', 'wpsso' ) : _x( 'unchecked', 'option value', 'wpsso' );
 
 							$text = __( 'The title values provided by WordPress may include modifications by themes and/or SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ).' ';
 							
