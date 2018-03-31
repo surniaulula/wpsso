@@ -36,13 +36,17 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$plugin_version = WpssoConfig::get_version();
 
-			// https://developers.google.com/speed/libraries/
+			/**
+			 * See https://developers.google.com/speed/libraries/.
+			 */
 			wp_register_style( 'jquery-ui.js',
 				'https://ajax.googleapis.com/ajax/libs/jqueryui/'.
 					$this->p->cf['jquery-ui']['version'].'/themes/smoothness/jquery-ui.css',
 						array(), $this->p->cf['jquery-ui']['version'] );
 
-			// http://qtip2.com/download
+			/**
+			 * See http://qtip2.com/download.
+			 */
 			wp_register_style( 'jquery-qtip.js',
 				WPSSO_URLPATH.'css/ext/jquery-qtip.min.css',
 					array(), $this->p->cf['jquery-qtip']['version'] );
@@ -55,8 +59,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				WPSSO_URLPATH.'css/com/metabox-tabs.min.css',
 					array(), $plugin_version );
 
+			/**
+			 * Only load stylesheets where we need them.
+			 */
 			switch ( $hook_name ) {
 
+				/**
+				 * License settings page.
+				 */
 				case ( preg_match( '/_page_'.$this->p->lca.'-(site)?licenses/', $hook_name ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
@@ -68,7 +78,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					// no break
 
 				/**
-				 * Matches the profile_page and users_page hooks (profile submenu items).
+				 * Any settings page. Also matches the profile_page and users_page hooks.
 				 */
 				case ( strpos( $hook_name, '_page_'.$this->p->lca.'-' ) !== false ? true : false ):
 
@@ -80,6 +90,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 					// no break
 
+				/**
+				 * Editing page.
+				 */
 				case 'post.php':	// post edit
 				case 'post-new.php':	// post edit
 				case 'term.php':	// term edit

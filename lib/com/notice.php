@@ -581,7 +581,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			// optionally hide notices if required
 			$style_attr = ' style="' . 
 				( empty( $payload['style'] ) ? '' : $payload['style'] ).
-				( empty( $payload['hidden'] ) ? 'display:block !important; visibility:visible !important;' : 'display:none;' ) . '"';
+				( empty( $payload['hidden'] ) ? 'display:block!important;visibility:visible!important;' : 'display:none;' ) . '"';
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ).

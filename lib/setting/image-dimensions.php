@@ -32,7 +32,9 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			) );
 		}
 
-		// called by the extended WpssoAdmin class
+		/**
+		 * Called by the extended WpssoAdmin class.
+		 */
 		protected function add_meta_boxes() {
 			add_meta_box( $this->pagehook.'_image_dimensions',
 				_x( 'Image Dimensions', 'metabox title', 'wpsso' ),

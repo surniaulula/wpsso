@@ -49,10 +49,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			// add the columns when doing AJAX as well to allow Quick Edit to add the required columns
+			/**
+			 * Add the columns when doing AJAX as well to allow Quick Edit to add the required columns.
+			 */
 			if ( is_admin() || SucomUtil::get_const( 'DOING_AJAX' ) ) {
 
-				// only use public post types (to avoid menu items, product variations, etc.)
+				/**
+				 * Only use public post types (to avoid menu items, product variations, etc.).
+				 */
 				$ptns = $this->p->util->get_post_types( 'names' );
 
 				if ( is_array( $ptns ) ) {
@@ -62,16 +66,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							$this->p->debug->log( 'adding column filters for post type '.$ptn );
 						}
 
-						// https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns
-						add_filter( 'manage_'.$ptn.'_posts_columns',
-							array( &$this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+						/**
+						 * See https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns.
+						 */
+						add_filter( 'manage_'.$ptn.'_posts_columns', array( &$this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+						add_filter( 'manage_edit-'.$ptn.'_sortable_columns', array( &$this, 'add_sortable_columns' ), 10, 1 );
 
-						add_filter( 'manage_edit-'.$ptn.'_sortable_columns',
-							array( &$this, 'add_sortable_columns' ), 10, 1 );
-
-						// https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column
-						add_action( 'manage_'.$ptn.'_posts_custom_column',
-							array( &$this, 'show_column_content' ), 10, 2 );
+						/**
+						 * See https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column.
+						 */
+						add_action( 'manage_'.$ptn.'_posts_custom_column', array( &$this, 'show_column_content' ), 10, 2 );
 					}
 				}
 
@@ -112,13 +116,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ! empty( $this->p->options['plugin_clear_for_comment'] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'adding clear cache for comment actions' );
 				}
-				// fires when a comment is inserted into the database
+
+				/**
+				 * Fires when a comment is inserted into the database.
+				 */
 				add_action ( 'comment_post', array( &$this, 'clear_cache_for_new_comment' ), 10, 2 );
 
-				// fires before transitioning a comment's status from one to another
+				/**
+				 * Fires before transitioning a comment's status.
+				 */
 				add_action ( 'wp_set_comment_status', array( &$this, 'clear_cache_for_comment_status' ), 10, 2 );
 			}
 		}
@@ -155,7 +165,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			// hooked by the 'coauthors' pro module
+			/**
+			 * Hooked by the 'coauthors' pro module.
+			 */
 			return apply_filters( $this->p->lca . '_get_post_mod', $mod, $mod_id );
 		}
 
@@ -223,7 +235,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
 				if ( $this->p->debug->enabled ) {
-					// do not translate the debug log message
 					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs' . 
 						' to get the children of post ID %2$d', $total_time, $mod['id'] ) );
 				}
@@ -275,7 +286,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return self::$cache_short_url = self::$cache_shortlinks[$post_id][$context][$allow_slugs];
 			}
 
-			// Just in case, check to make sure we have a plugin shortener selected
+			/**
+			 * Check to make sure we have a plugin shortener selected.
+			 */
 			if ( empty( $this->p->options['plugin_shortener'] ) || $this->p->options['plugin_shortener'] === 'none' ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: no shortening service defined' );
@@ -488,7 +501,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			// all meta modules set this property, so use it to optimize code execution
+			/**
+			 * All meta modules set this property, so use it to optimize code execution.
+			 */
 			if ( WpssoMeta::$head_meta_tags !== false || ! isset( $screen->id ) ) {
 				return;
 			}
@@ -506,7 +521,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$post_obj = SucomUtil::get_post_object( true );
 			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
-			// make sure we have at least a post type and status
+			/**
+			 * Make sure we have at least a post type and status.
+			 */
 			if ( ! is_object( $post_obj ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_obj is not an object' );
@@ -554,20 +571,26 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $add_metabox ) {
 
-					// hooked by woocommerce module to load front-end libraries and start a session
+					/**
+					 * Hooked by woocommerce module to load front-end libraries and start a session.
+					 */
 					do_action( $this->p->lca.'_admin_post_head', $mod, $screen->id );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting head_meta_info static property' );
 					}
 
-					// $read_cache is false to generate notices etc.
+					/**
+					 * $read_cache is false to generate notices etc.
+					 */
 					WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
 					WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
 
 					if ( $post_obj->post_status === 'publish' ) {
 
-						// check for missing open graph image and description values
+						/**
+						 * Check for missing open graph image and description values.
+						 */
 						foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 							if ( empty( WpssoMeta::$head_meta_info['og:'.$mt_suffix] ) ) {
 								if ( $this->p->debug->enabled ) {
@@ -579,7 +602,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							}
 						}
 
-						// check duplicates only when the post is available publicly and we have a valid permalink
+						/**
+						 * Check duplicates only when the post is available publicly and we have a valid permalink.
+						 */
 						if ( current_user_can( 'manage_options' ) ) {
 							if ( apply_filters( $this->p->lca.'_check_post_head', $this->p->options['plugin_check_head'], $post_id, $post_obj ) ) {
 								$this->check_post_head_duplicates( $post_id, $post_obj );
@@ -654,9 +679,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			// Just in case post_id is true/false
-			if ( ! is_numeric( $post_id ) ) {
-				if ( empty( $post_obj->ID ) ) {	// Just in case.
+			if ( ! is_numeric( $post_id ) ) {	// Just in case post_id is true/false
+				if ( empty( $post_obj->ID ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: post id in post object is empty');
 					}
@@ -665,7 +689,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$post_id = $post_obj->ID;
 			}
 
-			// only check publicly available posts
+			/**
+			 * Only check publicly available posts.
+			 */
 			if ( ! isset( $post_obj->post_status ) || $post_obj->post_status !== 'publish' ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_status \''.$post_obj->post_status.'\' not published');
@@ -673,7 +699,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// stop here
 			}
 
-			// only check public post types (to avoid menu items, product variations, etc.)
+			/**
+			 * Only check public post types (to avoid menu items, product variations, etc.).
+			 */
 			$ptns = $this->p->util->get_post_types( 'names' );
 
 			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $ptns ) ) {
@@ -814,7 +842,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// stop here
 			}
 
-			// providing html, so no need to specify a user agent
+			/**
+			 * Providing html, so no need to specify a user agent.
+			 */
 			$metas = $this->p->util->get_head_meta( $html, '/html/head/link|/html/head/meta', true );	// false on error
 			$check_opts = SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' );
 			$conflicts_msg = __( 'Conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage.', 'wpsso' );
@@ -1233,7 +1263,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$ret[$og_type.':review:created_time'] = mysql2date( 'c', $comment_obj->comment_date_gmt );
 			$ret[$og_type.':review:excerpt'] = get_comment_excerpt( $comment_obj->comment_ID );
 
-			// rating values must be larger than 0 to include rating info
+			/**
+			 * Rating values must be larger than 0 to include rating info.
+			 */
 			if ( $rating_value > 0 ) {
 				$ret[$og_type.':review:rating:value'] = $rating_value;
 				$ret[$og_type.':review:rating:worst'] = 1;

@@ -23,8 +23,19 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			}
 
 			if ( is_admin() ) {
+				add_action( 'enqueue_block_editor_assets', array( &$this, 'enqueue_block_editor_assets' ), -1000 );
 				add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ), -1000 );
 			}
+		}
+
+		public function enqueue_block_editor_assets() {
+
+			$plugin_version = WpssoConfig::get_version();
+
+			wp_enqueue_script( 'sucom-gutenberg-admin', 
+				WPSSO_URLPATH . 'js/gutenberg-admin.js', 
+					array( 'wp-data' ), $plugin_version, true );
+
 		}
 
 		public function admin_enqueue_scripts( $hook_name ) {
@@ -36,7 +47,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			$plugin_version = WpssoConfig::get_version();
 
-			// http://qtip2.com/download
+			/**
+			 * See http://qtip2.com/download.
+			 */
 			wp_register_script( 'jquery-qtip', 
 				WPSSO_URLPATH . 'js/ext/jquery-qtip.min.js', 
 					array( 'jquery' ), $this->p->cf['jquery-qtip']['version'], true );
@@ -58,10 +71,13 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					array( 'jquery', 'jquery-ui-core' ), $plugin_version, true );
 
 			/**
-			 * Only load JavaScript where we need it.
+			 * Only load scripts where we need them.
 			 */
 			switch ( $hook_name ) {
 
+				/**
+				 * License settings page.
+				 */
 				case ( preg_match( '/_page_' . $this->p->lca . '-(site)?licenses/', $hook_name ) ? true : false ) :
 
 					if ( $this->p->debug->enabled ) {
@@ -75,7 +91,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					// no break
 
 				/**
-				 * Matches the profile_page and users_page hooks (profile submenu items).
+				 * Any settings page. Also matches the profile_page and users_page hooks.
 				 */
 				case ( strpos( $hook_name, '_page_' . $this->p->lca . '-' ) !== false ? true : false ):
 
@@ -85,6 +101,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 					wp_enqueue_script( 'sucom-settings-page' );
 
+					// no break
+
+				/**
+				 * Editing page.
+				 */
 				case 'post.php':	// post edit
 				case 'post-new.php':	// post edit
 				case 'term.php':	// term edit

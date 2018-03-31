@@ -2259,7 +2259,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function do_metabox_tabs( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
+			echo $this->get_metabox_tabs( $metabox_id, $tabs, $table_rows, $args );
+		}
 
+		public function get_metabox_tabs( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
+
+			$ret_html = '';
 			$tab_keys = array_keys( $tabs );
 			$default_tab = '_' . reset( $tab_keys );		// must start with an underscore
 			$class_metabox_tabs = 'sucom-metabox-tabs';
@@ -2277,32 +2282,48 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 */
 			extract( array_merge( array( 'scroll_to' => isset( $_GET['scroll_to'] ) ? '#' . self::sanitize_key( $_GET['scroll_to'] ) : '' ), $args ) );
 
-			echo "\n" . '<script type="text/javascript">jQuery(document).ready(function(){ ' . 
+			$ret_html .= "\n" . '<script type="text/javascript">jQuery(document).ready(function(){ ' . 
 				'sucomTabs(\'' . $metabox_id . '\', \'' . $default_tab . '\', \'' . $scroll_to . '\'); });</script>' . "\n";
-			echo '<div class="' . $class_metabox_tabs . '">' . "\n";
-			echo '<ul class="' . $class_metabox_tabs . '">' . "\n";
+
+			$ret_html .= '<div class="' . $class_metabox_tabs . '">' . "\n";
+
+			$ret_html .= '<ul class="' . $class_metabox_tabs . '">' . "\n";
 
 			foreach ( $tabs as $tab => $title ) {
 				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
-				echo '<div class="tab_left">&nbsp;</div><li class="' . 
+				$ret_html .= '<div class="tab_left">&nbsp;</div><li class="' . 
 					$class_href_key . '"><a class="' . $class_link . '" href="#' . 
 					$class_href_key . '">' . $title . '</a></li>' . "\n";
 			}
 
-			echo '</ul><!-- .' . $class_metabox_tabs . ' -->' . "\n";
+			$ret_html .= '</ul><!-- .' . $class_metabox_tabs . ' -->' . "\n";
 
 			foreach ( $tabs as $tab => $title ) {
 				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
-				$this->do_table_rows( $table_rows[$tab], $class_href_key, ( empty( $metabox_id ) ? '' : $class_tabset . $metabox_id ), $class_tabset );
+				$ret_html .= $this->get_metabox_table( $table_rows[$tab], $class_href_key, 
+					( empty( $metabox_id ) ? '' : $class_tabset . $metabox_id ), $class_tabset );
 			}
 
-			echo '</div><!-- .' . $class_metabox_tabs . ' -->' . "\n\n";
+			$ret_html .= '</div><!-- .' . $class_metabox_tabs . ' -->' . "\n\n";
+
+			return $ret_html;
 		}
 
+		// deprecated on 2018/03/31
 		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset' ) {
+			echo $this->get_metabox_table( $table_rows, $class_href_key, $class_tabset_mb, $class_tabset );
+		}
+
+		public function do_metabox_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset' ) {
+			echo $this->get_metabox_table( $table_rows, $class_href_key, $class_tabset_mb, $class_tabset );
+		}
+
+		public function get_metabox_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset' ) {
+
+			$ret_html = '';
 
 			if ( ! is_array( $table_rows ) ) {	// just in case
-				return;
+				return $ret_html;
 			}
 
 			$total_rows = count( $table_rows );
@@ -2387,35 +2408,33 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $count_rows === 0 ) {
-				$table_rows[] = '<tr><td align="center"><p><em>'.
-					__( 'No options available.', 'wpsso' ).
-						'</em></p></td></tr>';
+				$table_rows[] = '<tr><td align="center"><p><em>' . __( 'No options available.', 'wpsso' ) . '</em></p></td></tr>';
 				$count_rows++;
 			}
 
-			echo '<div class="'.
+			$ret_html .= '<div class="'.
 				( empty( $show_opts ) ? '' : 'sucom-show_'.$show_opts ).
 				( empty( $class_tabset ) ? '' : ' '.$class_tabset ).
 				( empty( $class_tabset_mb ) ? '' : ' '.$class_tabset_mb ).
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).'">' . "\n";
 
-			echo '<table class="sucom-settings '.$this->p->lca.
+			$ret_html .= '<table class="sucom-settings '.$this->p->lca.
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
 				( $hidden_rows > 0 && $hidden_rows === $count_rows ?	// if all rows hidden, then hide the whole table
 					' hide_in_'.$show_opts : '' ).'">' . "\n";
 
 			foreach ( $table_rows as $row ) {
-				echo $row;
+				$ret_html .= $row;
 			}
 
-			echo '</table>' . "\n";
-			echo '</div>' . "\n";
+			$ret_html .= '</table>' . "\n";
+			$ret_html .= '</div>' . "\n";
 
 			$show_opts_label = $this->p->cf['form']['show_options'][$show_opts];
 
 			if ( $hidden_opts > 0 ) {
 
-				echo '<div class="hidden_opts_msg ' . $class_tabset . '-msg ' . $class_tabset_mb . '-msg ' . $class_href_key . '-msg">' .
+				$ret_html .= '<div class="hidden_opts_msg ' . $class_tabset . '-msg ' . $class_tabset_mb . '-msg ' . $class_href_key . '-msg">' .
 					sprintf( _x( '%1$d additional options not shown in "%2$s" view', 'option comment', 'wpsso' ), $hidden_opts,
 						_x( $show_opts_label, 'option value', 'wpsso' ) ) .
 					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $show_opts . '\' );">' .
@@ -2423,12 +2442,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			} elseif ( $hidden_rows > 0 ) {
 
-				echo '<div class="hidden_opts_msg ' . $class_tabset . '-msg ' . $class_tabset_mb . '-msg ' . $class_href_key . '-msg">' .
+				$ret_html .= '<div class="hidden_opts_msg ' . $class_tabset . '-msg ' . $class_tabset_mb . '-msg ' . $class_href_key . '-msg">' .
 					sprintf( _x( '%1$d additional rows not shown in "%2$s" view', 'option comment', 'wpsso' ), $hidden_rows,
 						_x( $show_opts_label, 'option value', 'wpsso' ) ) .
 					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $show_opts . '\', \'hide_row_in\' );">' .
 						_x( 'unhide these rows', 'option comment', 'wpsso' ) . '</a>)</div>' . "\n";
 			}
+
+			return $ret_html;
 		}
 
 		/**

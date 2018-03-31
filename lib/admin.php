@@ -70,14 +70,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->debug->log( 'DOING_AJAX is false' );
 				}
 
-				// admin_menu is run before admin_init
+				/**
+				 * The admin_menu action is run before admin_init.
+				 */
 				add_action( 'admin_menu', array( &$this, 'load_menu_objects' ), -1000 );
 				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 				add_action( 'admin_menu', array( &$this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
 				add_action( 'admin_init', array( &$this, 'add_plugins_page_upgrade_notice' ) );
 				add_action( 'admin_init', array( &$this, 'register_setting' ) );
 
-				// hook in_admin_header to allow for setting changes, plugin activation / loading, etc.
+				/**
+				 * Hook in_admin_header to allow for setting changes, plugin activation / loading, etc.
+				 */
 				add_action( 'in_admin_header', array( &$this, 'conflict_warnings' ), 10 );
 				add_action( 'in_admin_header', array( &$this, 'required_notices' ), 20 );
 				add_action( 'in_admin_header', array( &$this, 'update_count_notice' ), 30 );
@@ -876,6 +880,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_meta_boxes() {
+			// method is extended by each submenu page
+		}
+
+		protected function get_table_rows( $metabox_id, $tab_key ) {
 			// method is extended by each submenu page
 		}
 

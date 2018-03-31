@@ -43,7 +43,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns',
 					array( &$this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
-				// enable orderby meta_key only if we have a meta table
+				/**
+				 * Enable orderby meta_key only if we have a meta table.
+				 */
 				if ( self::use_meta_table() ) {
 					add_filter( 'manage_edit-'.$this->query_tax_slug.'_sortable_columns',
 						array( &$this, 'add_sortable_columns' ), 10, 1 );
@@ -80,11 +82,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 * do_action( "edited_term",       $term_id, $tt_id, $taxonomy );
 				 * do_action( 'delete_term',       $term_id, $tt_id, $taxonomy, $deleted_term );
 				 */
-
 				if ( ! empty( $_GET ) ) {
+
 					add_action( 'admin_init', array( &$this, 'add_meta_boxes' ) );
-					// load_meta_page() priorities: 100 post, 200 user, 300 term
-					// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
+
+					/**
+					 * Sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties.
+					 * load_meta_page() priorities: 100 post, 200 user, 300 term
+					 */
 					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 300, 1 );
 					add_action( $this->query_tax_slug.'_edit_form', array( &$this, 'show_metaboxes' ), 100, 1 );
 				}
@@ -190,7 +195,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
 				if ( $this->p->debug->enabled ) {
-					// do not translate the debug log message
 					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs'.
 						' to get posts for term ID %2$d in taxonomy %3$s', $total_time, $mod['id'], $mod['tax_slug'] ) );
 				}
@@ -283,15 +287,19 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $value;	// return null
 		}
 
-		// hooked into the current_screen action
-		// sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties
+		/**
+		 * Hooked into the current_screen action.
+		 * Sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties.
+		 */
 		public function load_meta_page( $screen = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			// all meta modules set this property, so use it to optimize code execution
+			/**
+			 * All meta modules set this property, so use it to optimize code execution.
+			 */
 			if ( WpssoMeta::$head_meta_tags !== false || ! isset( $screen->id ) ) {
 				return;
 			}
@@ -334,11 +342,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$this->p->debug->log( 'setting head_meta_info static property' );
 				}
 
-				// $read_cache is false to generate notices etc.
+				/**
+				 * $read_cache is false to generate notices etc.
+				 */
 				WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( false, $mod, false );
 				WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
 
-				// check for missing open graph image and description values
+				/**
+				 * Check for missing open graph image and description values.
+				 */
 				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 					if ( empty( WpssoMeta::$head_meta_info['og:'.$mt_suffix] ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -499,10 +511,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			if ( self::use_meta_table( $term_id ) ) {
 				$term_meta = get_term_meta( $term_id, $key_name, $single );	// since wp v4.4
 
-				// fallback to checking for deprecated term meta in the options table
+				/**
+				 * Fallback to checking for deprecated term meta in the options table.
+				 */
 				if ( ( $single && $term_meta === '' ) || ( ! $single && $term_meta === array() ) ) {
 
-					// if deprecated meta is found, update the meta table and delete the deprecated meta
+					/**
+					 * If deprecated meta is found, update the meta table and delete the deprecated meta.
+					 */
 					if ( ( $opt_term_meta = get_option( $key_name.'_term_'.$term_id, null ) ) !== null ) {
 
 						$updated = update_term_meta( $term_id, $key_name, $opt_term_meta );	// since wpv4.4
