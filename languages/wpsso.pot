@@ -2567,7 +2567,7 @@ msgstr ""
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:159 lib/loader.php:178 lib/post.php:242 lib/register.php:232
-#: lib/term.php:209 lib/user.php:185 lib/util.php:326 lib/util.php:2086
+#: lib/term.php:209 lib/user.php:185 lib/util.php:333 lib/util.php:2152
 msgid "%s warning:"
 msgstr ""
 
@@ -3066,7 +3066,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:560 lib/util.php:2304
+#: lib/messages.php:560 lib/util.php:2391
 msgid "No options available."
 msgstr ""
 
@@ -4863,7 +4863,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:769 lib/util.php:979
+#: lib/post.php:769 lib/util.php:1011
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -5087,17 +5087,17 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:147
-#: lib/pro/media/wistia.php:275 lib/util.php:1044
+#: lib/pro/media/wistia.php:275 lib/util.php:1076
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/pro/media/slideshare.php:176 lib/pro/media/vimeo.php:149
-#: lib/pro/media/wistia.php:277 lib/util.php:1046
+#: lib/pro/media/wistia.php:277 lib/util.php:1078
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:179 lib/pro/media/vimeo.php:152
-#: lib/pro/media/wistia.php:280 lib/util.php:1049
+#: lib/pro/media/wistia.php:280 lib/util.php:1081
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -5682,62 +5682,62 @@ msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$0.3f is a number of seconds
-#: lib/util.php:316
+#: lib/util.php:322
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
 "(longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/util.php:705
+#: lib/util.php:732
 msgid ""
 "%s cached files, transient cache, column meta, and WordPress object cache "
 "have been cleared."
 msgstr ""
 
-#: lib/util.php:710
+#: lib/util.php:737
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:736
+#: lib/util.php:765
 msgid ""
 "A background task will begin shortly to re-create the %s post, term, and "
 "user transient cache objects."
 msgstr ""
 
-#: lib/util.php:819
+#: lib/util.php:852
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:836
+#: lib/util.php:869
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:910
+#: lib/util.php:943
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:967
+#: lib/util.php:1000
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:990
+#: lib/util.php:1022
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1093
+#: lib/util.php:1125
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
-#: lib/util.php:2068
+#: lib/util.php:2134
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/util.php:2079
+#: lib/util.php:2145
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -5746,34 +5746,34 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2079
+#: lib/util.php:2145
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2332
+#: lib/util.php:2419
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2335
+#: lib/util.php:2422
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2340
+#: lib/util.php:2427
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2343
+#: lib/util.php:2430
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2465
+#: lib/util.php:2556
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""
