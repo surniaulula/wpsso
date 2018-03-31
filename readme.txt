@@ -389,6 +389,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.57.0-dev.1 (2018/03/29)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Start of code changes for Gutenberg:
+		* Deprecated WpssoUtil do_table_rows().
+		* Added new WpssoUtil get_metabox_tabs() and get_metabox_table() methods.
+
 **Version 3.56.3 (2018/03/29)**
 
 * *New Features*
@@ -441,6 +454,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 
 == Upgrade Notice ==
+
+= 3.57.0-dev.1 =
+
+(2018/03/31) Start of code changes for Gutenberg.
 
 = 3.56.3 =
 
