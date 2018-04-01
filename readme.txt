@@ -56,32 +56,26 @@ WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's beha
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search / Knowledge Graph (SEO), including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
-
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds Weibo meta tags for article creation and update dates.
-
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds all available Twitter Card meta tags:
 
 * [Summary Card with Large Image](https://dev.twitter.com/cards/types/summary-large-image)
 * [Summary Card](https://dev.twitter.com/cards/types/summary)
 * [Player Card](https://dev.twitter.com/cards/types/player) (Pro version required for video discovery modules).
-* [App Card](https://dev.twitter.com/cards/types/app) ([WPSSO AM add-on](https://wordpress.org/plugins/wpsso-am/) required)
-
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards, Pinterest Rich Pins, and all Twitter Card types.
-
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Support for [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) and [AMP for WP - Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
+* [App Card](https://dev.twitter.com/cards/types/app) ([WPSSO Mobile App Meta add-on](https://wordpress.org/plugins/wpsso-am/) required)
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Manage robots noindex, nofollow, noarchive, and nosnippet for each post / page.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Finds images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable title and description maximum lengths (Facebook / Open Graph, Twitter Card, SEO), including both hard and soft limits.
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards, Pinterest Rich Pins, and all Twitter Card types.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable title separator character (hyphen by default).
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable maximum title and description lengths (Facebook / Open Graph, Twitter Card, SEO), including both hard and soft limits.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/?utm_source=wpsso-readme).
 
 <img class="readme-example landscape" src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png">
+
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds author (aka Person), publisher (aka Organization), and WebSite markup using Schema JSON-LD for Google Search / Knowledge Graph (SEO), including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable website / business social accounts for Schema markup and Google's Knowledge Graph:
 
@@ -113,6 +107,8 @@ WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's beha
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Provides an option to hide the preview of all Pro settings and features.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Supports WordPress Network / Multisite installations and WordPress MU Domain Mapping.
+
+<span style="color:#33cc33">&#x0229b;</span> &nbsp; Support for [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) and [AMP for WP - Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Optional Free add-ons for WPSSO Core:
 
