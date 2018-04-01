@@ -26,7 +26,9 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->menu_ext = $ext;
 		}
 
-		// called by the extended WpssoAdmin class
+		/**
+		 * Called by the extended WpssoAdmin class.
+		 */
 		protected function add_meta_boxes() {
 
 			add_meta_box( $this->pagehook.'_plugin',
@@ -43,6 +45,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 		}
 
 		public function show_metabox_plugin() {
+
 			/**
 			 * Translate contact method field labels for current language.
 			 */
@@ -65,7 +68,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows', array(), $this->form, false ) );	// $network = false
 			}
 
-			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
+			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_contact_fields() {
@@ -85,11 +88,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			}
 
 			$this->p->util->do_metabox_table( array( '<td>'.$info_msg.'</td>' ), 'metabox-'.$metabox_id.'-info' );
-			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
+			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_taglist() {
+
 			$metabox_id = 'taglist';
+
 			$tabs = apply_filters( $this->p->lca.'_advanced_'.$metabox_id.'_tabs', array(
 				'fb' => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'og' => _x( 'Open Graph', 'metabox tab', 'wpsso' ),
@@ -97,13 +102,16 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'schema' => _x( 'Schema', 'metabox tab', 'wpsso' ),
 				'other' => _x( 'SEO / Other', 'metabox tab', 'wpsso' ),
 			) );
+
 			$table_rows = array();
+
 			foreach ( $tabs as $tab_key => $title ) {
 				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
 					apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows', array(), $this->form, false ) );	// $network = false
 			}
+
 			$this->p->util->do_metabox_table( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox_id ).'</td>' ), 'metabox-'.$metabox_id.'-info' );
-			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
+			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {

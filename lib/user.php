@@ -476,7 +476,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 
-			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
+			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id.' table rows' );	// end timer

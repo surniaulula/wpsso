@@ -958,14 +958,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark( $metabox_id.' table rows' );	// start timer
 
 			$table_rows = array();
+
 			foreach ( $tabs as $tab_key => $title ) {
 				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key, WpssoMeta::$head_meta_info, $mod ),
 					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$tab_key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
-			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 
-			if ( $this->p->debug->enabled )
+			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
+
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id.' table rows' );	// end timer
+			}
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key, $head, $mod ) {

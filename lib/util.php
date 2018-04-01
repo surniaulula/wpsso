@@ -2258,11 +2258,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		// deprecated on 2018/03/31
 		public function do_metabox_tabs( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
-			echo $this->get_metabox_tabs( $metabox_id, $tabs, $table_rows, $args );
+			echo $this->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $args );
 		}
 
-		public function get_metabox_tabs( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
+		public function do_metabox_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
+			echo $this->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $args );
+		}
+
+		public function get_metabox_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 
 			$ret_html = '';
 			$tab_keys = array_keys( $tabs );
@@ -2278,7 +2283,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			/**
-			 * Allow a css ID to be passed as a query argument.
+			 * Allow a css id to be passed as a query argument.
 			 */
 			extract( array_merge( array( 'scroll_to' => isset( $_GET['scroll_to'] ) ? '#' . self::sanitize_key( $_GET['scroll_to'] ) : '' ), $args ) );
 
@@ -2289,6 +2294,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$ret_html .= '<ul class="' . $class_metabox_tabs . '">' . "\n";
 
+			/**
+			 * Add the settings tab list.
+			 */
 			foreach ( $tabs as $tab => $title ) {
 				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
 				$ret_html .= '<div class="tab_left">&nbsp;</div><li class="' . 
@@ -2298,6 +2306,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$ret_html .= '</ul><!-- .' . $class_metabox_tabs . ' -->' . "\n";
 
+			/**
+			 * Add the settings table for each tab.
+			 */
 			foreach ( $tabs as $tab => $title ) {
 				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
 				$ret_html .= $this->get_metabox_table( $table_rows[$tab], $class_href_key, 

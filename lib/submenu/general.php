@@ -26,7 +26,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->menu_ext = $ext;
 		}
 
-		// called by the extended WpssoAdmin class
+		/**
+		 * Called by the extended WpssoAdmin class.
+		 */
 		protected function add_meta_boxes() {
 
 			$this->maybe_show_language_notice();
@@ -49,7 +51,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_opengraph() {
+
 			$metabox_id = 'og';
+
 			$tabs = apply_filters( $this->p->lca.'_general_og_tabs', array(
 				'general' => _x( 'Site Information', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Titles / Descriptions', 'metabox tab', 'wpsso' ),
@@ -57,16 +61,21 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				'images' => _x( 'Images', 'metabox tab', 'wpsso' ),
 				'videos' => _x( 'Videos', 'metabox tab', 'wpsso' ),
 			) );
+
 			$table_rows = array();
+
 			foreach ( $tabs as $tab_key => $title ) {
 				$table_rows[$tab_key] = apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows',
 					$this->get_table_rows( $metabox_id, $tab_key ), $this->form );
 			}
-			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
+
+			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_publishers() {
+
 			$metabox_id = 'pub';
+
 			$tabs = apply_filters( $this->p->lca.'_general_pub_tabs', array(
 				'facebook' => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'google' => _x( 'Google / Schema', 'metabox tab', 'wpsso' ),
@@ -74,12 +83,15 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				'twitter' => _x( 'Twitter', 'metabox tab', 'wpsso' ),
 				'other' => _x( 'Other', 'metabox tab', 'wpsso' ),
 			) );
+
 			$table_rows = array();
+
 			foreach ( $tabs as $tab_key => $title ) {
 				$table_rows[$tab_key] = apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows',
 					$this->get_table_rows( $metabox_id, $tab_key ), $this->form );
 			}
-			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
+
+			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {

@@ -53,17 +53,23 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 		}
 
 		public function show_metabox_plugin() {
+
 			$metabox_id = 'plugin';
+
 			$tabs = apply_filters( $this->p->cf['lca'].'_siteadvanced_plugin_tabs', array(
 				'settings' => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
 				'cache' => _x( 'Cache Settings', 'metabox tab', 'wpsso' ),
 			) );
+
 			$table_rows = array();
-			foreach ( $tabs as $tab_key => $title )
+
+			foreach ( $tabs as $tab_key => $title ) {
 				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
 					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$tab_key.'_rows',
 						array(), $this->form, true ) );	// $network = true
-			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
+			}
+
+			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {
