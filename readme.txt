@@ -398,9 +398,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* Start of code changes for Gutenberg:
+	* Changes for Gutenberg:
 		* Renamed the WpssoUtil do_table_rows() method to do_metabox_table().
-		* Added new WpssoUtil get_metabox_tabs() and get_metabox_table() methods.
+		* Renamed the WpssoUtil do_metabox_tabs() method to do_metabox_tabbed().
+		* Added new WpssoUtil get_metabox_table() and get_metabox_tabbed() methods.
 
 **Version 3.56.3 (2018/03/29)**
 
@@ -457,7 +458,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.57.0-dev.1 =
 
-(2018/04/01) Start of code changes for Gutenberg.
+(2018/04/01) Changes for Gutenberg.
 
 = 3.56.3 =
 
