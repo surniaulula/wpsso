@@ -2425,9 +2425,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		public static function set_constants( $plugin_filepath ) {
+
 			if ( defined( 'WPSSO_VERSION' ) ) {			// execute and define constants only once
 				return;
 			}
+
 			define( 'WPSSO_VERSION', self::$cf['plugin']['wpsso']['version'] );						
 			define( 'WPSSO_FILEPATH', $plugin_filepath );						
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
@@ -2439,9 +2441,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		public static function set_variable_constants( $var_const = null ) {
+
 			if ( null === $var_const ) {
 				$var_const = self::get_variable_constants();
 			}
+
 			foreach ( $var_const as $name => $value ) {
 				if ( ! defined( $name ) ) {
 					define( $name, $value );
@@ -2450,6 +2454,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		public static function get_variable_constants() {
+
 			$var_const = array();
 
 			// create a unique md5 query name from the config array and the local wp nonce key
@@ -2575,7 +2580,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR.'lib/user.php';		// extends meta.php
 			require_once WPSSO_PLUGINDIR.'lib/util.php';
 			require_once WPSSO_PLUGINDIR.'lib/weibo.php';
-
 
 			if ( is_admin() ) {
 				require_once WPSSO_PLUGINDIR.'lib/messages.php';

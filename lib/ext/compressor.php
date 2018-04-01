@@ -1,8 +1,4 @@
 <?php
-/**
- * Class Minify_CSS_Compressor
- * @package Minify
- */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
@@ -253,4 +249,3 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 		}
 	}
 }
-
