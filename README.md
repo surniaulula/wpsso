@@ -49,16 +49,16 @@
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Automatically creates complete meta tags for Facebook / Open Graph, Google Plus / Rich Cards (SEO), LinkedIn, Pinterest Rich Pin, Twitter Cards, etc. in the head section of all webpages, including all custom post types, custom taxonomy / terms, user profile pages, attachment pages, and more.</p>
 
-<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds Pinterest-specific Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</p>
-
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds all available Twitter Card meta tags:</p>
 
 <ul>
 <li><a href="https://dev.twitter.com/cards/types/summary-large-image">Summary Card with Large Image</a></li>
 <li><a href="https://dev.twitter.com/cards/types/summary">Summary Card</a></li>
 <li><a href="https://dev.twitter.com/cards/types/player">Player Card</a> (Pro version required for video discovery modules).</li>
-<li><a href="https://dev.twitter.com/cards/types/app">App Card</a> (<a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta add-on</a> required)</li>
+<li><a href="https://dev.twitter.com/cards/types/app">App Card</a> (uses optional <a href="https://wordpress.org/plugins/wpsso-am/">WPSSO AM add-on</a>)</li>
 </ul>
+
+<p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds Pinterest-specific Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</p>
 
 <p><span style="color:#33cc33">&#x0229b;</span> &nbsp; Manage robots noindex, nofollow, noarchive, and nosnippet for each post / page.</p>
 
@@ -193,17 +193,17 @@
 <li>NextGEN Gallery</li>
 <li>Polylang</li>
 <li>rtMedia for WordPress, BuddyPress and bbPress</li>
-<li>Simple Job Board (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a> required)</li>
+<li>Simple Job Board (provided by optional <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a>)</li>
 <li>The Events Calendar</li>
 <li>The SEO Framework</li>
 <li>WooCommerce (versions 1, 2, and 3)</li>
 <li>WordPress REST API (version 2)</li>
 <li>WP eCommerce</li>
-<li>WP Job Manager (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a> required)</li>
+<li>WP Job Manager (provided by optional <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a>)</li>
 <li>WP Meta SEO</li>
-<li>WP Product Review (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a> required)</li>
-<li>WP Recipe Maker (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a> required)</li>
-<li>WP Ultimate Recipe (<a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a> required)</li>
+<li>WP Product Review (provided by optional <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a>)</li>
+<li>WP Recipe Maker (provided by optional <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a>)</li>
+<li>WP Ultimate Recipe (provided by optional <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a>)</li>
 <li>Yoast SEO (aka WordPress SEO)</li>
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul></li>
