@@ -5198,7 +5198,7 @@ msgstr ""
 msgid "adding schema for place"
 msgstr ""
 
-#: lib/script.php:163
+#: lib/script.php:167
 msgid "Use Image"
 msgstr ""
 

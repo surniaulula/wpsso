@@ -23,17 +23,20 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			}
 
 			if ( is_admin() ) {
-				add_action( 'enqueue_block_editor_assets', array( &$this, 'enqueue_block_editor_assets' ), -1000 );
+				if ( SucomUtil::get_const( 'WPSSO_DEV' ) ) {
+					add_action( 'enqueue_block_editor_assets', array( &$this, 'enqueue_block_editor_assets' ), -1000 );
+				}
 				add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ), -1000 );
 			}
 		}
 
 		public function enqueue_block_editor_assets() {
 
+			$js_file_ext = SucomUtil::get_const( 'WPSSO_DEV' ) ? 'js' : 'min.js';
 			$plugin_version = WpssoConfig::get_version();
 
 			wp_enqueue_script( 'sucom-gutenberg-admin', 
-				WPSSO_URLPATH . 'js/gutenberg-admin.js', 
+				WPSSO_URLPATH . 'js/gutenberg-admin.' . $js_file_ext, 
 					array( 'wp-data' ), $plugin_version, true );
 
 		}
@@ -45,29 +48,30 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
 			}
 
+			$js_file_ext = SucomUtil::get_const( 'WPSSO_DEV' ) ? 'js' : 'min.js';
 			$plugin_version = WpssoConfig::get_version();
 
 			/**
 			 * See http://qtip2.com/download.
 			 */
 			wp_register_script( 'jquery-qtip', 
-				WPSSO_URLPATH . 'js/ext/jquery-qtip.min.js', 
+				WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $js_file_ext, 
 					array( 'jquery' ), $this->p->cf['jquery-qtip']['version'], true );
 
 			wp_register_script( 'sucom-settings-page', 
-				WPSSO_URLPATH . 'js/com/jquery-settings-page.min.js', 
+				WPSSO_URLPATH . 'js/com/jquery-settings-page.' . $js_file_ext, 
 					array( 'jquery' ), $plugin_version, true );
 
 			wp_register_script( 'sucom-metabox', 
-				WPSSO_URLPATH . 'js/com/jquery-metabox.min.js', 
+				WPSSO_URLPATH . 'js/com/jquery-metabox.' . $js_file_ext, 
 					array( 'jquery' ), $plugin_version, true );
 
 			wp_register_script( 'sucom-tooltips', 
-				WPSSO_URLPATH . 'js/com/jquery-tooltips.min.js', 
+				WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $js_file_ext, 
 					array( 'jquery' ), $plugin_version, true );
 
 			wp_register_script( 'sucom-admin-media', 
-				WPSSO_URLPATH . 'js/com/jquery-admin-media.min.js', 
+				WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $js_file_ext, 
 					array( 'jquery', 'jquery-ui-core' ), $plugin_version, true );
 
 			/**

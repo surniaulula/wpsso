@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows', array(), $this->form, false ) );	// $network = false
 			}
 
-			$this->p->util->do_table_rows( array( '<td>'.$info_msg.'</td>' ), 'metabox-'.$metabox_id.'-info' );
+			$this->p->util->do_metabox_table( array( '<td>'.$info_msg.'</td>' ), 'metabox-'.$metabox_id.'-info' );
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 		}
 
@@ -102,7 +102,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
 					apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows', array(), $this->form, false ) );	// $network = false
 			}
-			$this->p->util->do_table_rows( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox_id ).'</td>' ), 'metabox-'.$metabox_id.'-info' );
+			$this->p->util->do_metabox_table( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox_id ).'</td>' ), 'metabox-'.$metabox_id.'-info' );
 			$this->p->util->do_metabox_tabs( $metabox_id, $tabs, $table_rows );
 		}
 
