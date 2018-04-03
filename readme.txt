@@ -1,4 +1,4 @@
-=== WPSSO Core - Advanced + Complete Meta Tags and Schema Markup for Social Shares and SEO ===
+=== WPSSO Core - Complete and Accurate Meta Tags and Schema Markup for Social Shares and SEO ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -14,7 +14,7 @@ Tested Up To: 4.9.4
 WC Tested Up To: 3.3.4
 Stable Tag: 3.56.3
 
-Automatically create complete meta tags & Schema markup from your content for Social Sharing, Google Rich Cards (SEO), Pinterest Rich Pins + more.
+Automatically create complete meta tags + Schema markup from your content for Social Sharing, Google Rich Cards (SEO), Pinterest Rich Pins & more.
 
 == Description ==
 
