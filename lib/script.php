@@ -22,15 +22,21 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( is_admin() ) {
-				if ( SucomUtil::get_const( 'WPSSO_DEV' ) ) {
-					add_action( 'enqueue_block_editor_assets', array( &$this, 'enqueue_block_editor_assets' ), -1000 );
+			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
+				if ( is_admin() ) {
+					if ( SucomUtil::get_const( 'WPSSO_DEV' ) ) {
+						add_action( 'enqueue_block_editor_assets', array( &$this, 'enqueue_block_editor_assets' ), -1000 );
+					}
+					add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ), -1000 );
 				}
-				add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ), -1000 );
 			}
 		}
 
 		public function enqueue_block_editor_assets() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			$js_file_ext = SucomUtil::get_const( 'WPSSO_DEV' ) ? 'js' : 'min.js';
 			$plugin_version = WpssoConfig::get_version();
