@@ -1,4 +1,4 @@
-=== WPSSO Core - Complete and Accurate Meta Tags and Schema Markup for Social Shares and SEO ===
+=== WPSSO Core - Complete and Accurate Meta Tags + Schema Markup for Social Shares and SEO ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
