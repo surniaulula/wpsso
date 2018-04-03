@@ -1597,6 +1597,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $mod['is_post'] ) {
+
 				if ( ! empty( $mod['id'] ) ) {
 
 					if ( ! empty( $mod['obj'] ) ) {
@@ -1628,10 +1629,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						}
 					}
 				}
+
 				$url = apply_filters( $this->p->lca.'_post_url', $url, $mod, $add_page, $src_id );
 
 			} else {
+
 				if ( $mod['is_home'] ) {
+
 					if ( get_option( 'show_on_front' ) === 'page' ) {	// show_on_front = posts | page
 						$url = $this->check_url_string( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
 					} else {
@@ -1640,7 +1644,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$this->p->debug->log( 'home url = '.$url );
 						}
 					}
+
 				} elseif ( $mod['is_term'] ) {
+
 					if ( ! empty( $mod['id'] ) ) {
 
 						if ( ! empty( $mod['obj'] ) ) {
@@ -1655,9 +1661,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$url = $this->check_url_string( get_term_link( $mod['id'], $mod['tax_slug'] ), 'term link' );
 						}
 					}
+
 					$url = apply_filters( $this->p->lca.'_term_url', $url, $mod, $add_page, $src_id );
 
 				} elseif ( $mod['is_user'] ) {
+
 					if ( ! empty( $mod['id'] ) ) {
 
 						if ( ! empty( $mod['obj'] ) ) {
@@ -1672,17 +1680,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$url = $this->check_url_string( get_author_posts_url( $mod['id'] ), 'author posts' );
 						}
 					}
+
 					$url = apply_filters( $this->p->lca.'_user_url', $url, $mod, $add_page, $src_id );
 
 				} elseif ( is_search() ) {
+
 					$url = $this->check_url_string( get_search_link(), 'search link' );
 					$url = apply_filters( $this->p->lca.'_search_url', $url, $mod, $add_page, $src_id );
 
 				} elseif ( function_exists( 'get_post_type_archive_link' ) && is_post_type_archive() ) {
+
 					$url = $this->check_url_string( get_post_type_archive_link( get_query_var( 'post_type' ) ), 'post type archive' );
 
 				} elseif ( SucomUtil::is_archive_page() ) {
+
 					if ( is_date() ) {
+
 						if ( is_day() ) {
 							$url = $this->check_url_string( get_day_link( get_query_var( 'year' ), get_query_var( 'monthnum' ), get_query_var( 'day' ) ), 'day link' );
 						} elseif ( is_month() ) {
@@ -1691,7 +1704,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$url = $this->check_url_string( get_year_link( get_query_var( 'year' ) ), 'year link' );
 						}
 					}
-					$url = apply_filters( $this->p->lca.'_archive_url', $url, $mod, $add_page, $src_id );
+
+					$url = apply_filters( $this->p->lca.'_archive_page_url', $url, $mod, $add_page, $src_id );
 				}
 
 				$url = $this->get_url_paged( $url, $mod, $add_page );

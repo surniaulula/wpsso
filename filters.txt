@@ -41,7 +41,9 @@
 
 'wpsso_add_schema_meta_array' ( $bool );
 
-'wpsso_archive_url' ( $url, $mod, $add_page, $src_id );
+'wpsso_archive_page_description' ( $desc, $mod );
+
+'wpsso_archive_page_url' ( $url, $mod, $add_page, $src_id );
 
 'wpsso_article_section' ( $section, $post_id );
 
@@ -212,6 +214,10 @@
 'wpsso_option_type' ( false, $base_key, $network, $mod );
 
 'wpsso_plugin_image_sizes' ( $sizes, $mod, $crawler_name );
+
+'wpsso_post_archive_description' ( $title, $mod );
+
+'wpsso_post_archive_title' ( $title, $mod );
 
 'wpsso_post_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt );
 
