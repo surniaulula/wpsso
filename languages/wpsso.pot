@@ -1051,7 +1051,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/com/notice.php:592 lib/com-gettext-extract.php:7
+#: lib/com/notice.php:596 lib/com-gettext-extract.php:7
 msgid "Dismiss"
 msgstr ""
 

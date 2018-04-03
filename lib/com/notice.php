@@ -562,13 +562,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$msg_class = 'notice notice-success updated';
 					break;
 				case 'inf':
-				default:
-					$msg_type = 'inf';	// Just in case.
+				default:	// Fallback.
+					$msg_type = 'inf';
 					$msg_class = 'notice notice-info';
 					break;
 			}
 
-			// dis_key and dis_time must have values to create a dismissible notice
+			/**
+			 * 'dis_key' and 'dis_time' must have a value to create a dismissible notice.
+			 */
 			$is_dismissible = empty( $payload['dis_key'] ) || empty( $payload['dis_time'] ) ? false : true;
 
 			$css_id_attr = empty( $payload['dis_key'] ) ? '' : ' id="' . $msg_type . '_' . $payload['dis_key'] . '"';
@@ -578,10 +580,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				' data-dismiss-key="' . esc_attr( $payload['dis_key'] ) . '"' . 
 				' data-dismiss-time="' . ( is_numeric( $payload['dis_time'] ) ? esc_attr( $payload['dis_time'] ) : 0 ) . '"' : '';
 
-			// optionally hide notices if required
+			/**
+			 * Optionally hide / show notices by default.
+			 */
 			$style_attr = ' style="' . 
 				( empty( $payload['style'] ) ? '' : $payload['style'] ).
-				( empty( $payload['hidden'] ) ? 'display:block!important;visibility:visible!important;' : 'display:none;' ) . '"';
+				( empty( $payload['hidden'] ) ? 'display:block;visibility:visible;' : 'display:none;' ) . '"';
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ).
