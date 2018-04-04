@@ -392,7 +392,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* None
 * *Bugfixes*
-	* None
+	* Fixed the EDD integration module to override the EDD definition of the 'download' post type as an archive page.
 * *Developer Notes*
 	* Changes for Gutenberg:
 		* Renamed the WpssoUtil do_table_rows() method to do_metabox_table().
@@ -454,7 +454,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 3.57.0-dev.1 =
 
-(2018/04/01) Changes for Gutenberg.
+(2018/04/01) Fixed the EDD integration module to override the EDD definition of the 'download' post type as an archive page.
 
 = 3.56.3 =
 
