@@ -287,6 +287,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $mod['is_post_archive'] ) {
 
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'getting the title for post type '.$mod['post_type'] );
+						}
+
 						$post_type_obj = get_post_type_object( $mod['post_type'] );
 
 						if ( ! empty( $post_type_obj->labels->menu_name ) ) {
@@ -298,16 +302,20 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$title_text = apply_filters( $lca.'_post_archive_title', $title_text, $mod );
 
 					} else {
+
 						$title_text = html_entity_decode( get_the_title( $mod['id'] ) ).' ';
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $mod['name'].' id '.$mod['id'].' get_the_title() = "'.$title_text.'"' );
 						}
 					}
 
 					if ( ! empty( $sep ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'adding separator "'.$sep.'" to title string' );
 						}
+
 						$title_text .= $sep.' ';
 					}
 
@@ -404,6 +412,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				foreach ( array( 'title_text', 'sep' ) as $var ) {	// loop through variables
 					$$var = SucomUtil::encode_html_emoji( $$var );
 				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'pre-filter title = "'.$title_text.'"' );
 			}
 
 			return apply_filters( $lca.'_title', $title_text, $mod, $add_htags, $md_idx, $sep );

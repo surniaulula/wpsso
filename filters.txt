@@ -129,6 +129,8 @@
 
 'wpsso_is_functions' ( $is_functions );
 
+'wpsso_post_type_has_archive' ( $is_functions );
+
 'wpsso_js_url_facebook' ( $url, $pos );
 
 'wpsso_json_add_https_schema_org_collectionpage_mentions' ( $bool );
@@ -230,6 +232,8 @@
 'wpsso_post_custom_meta_tabs' ( $tabs, $mod, $metabox_id );
 
 'wpsso_post_types' ( $post_types, $output );
+
+'wpsso_post_type_has_archive' ( $bool, $mod );
 
 'wpsso_post_url' ( $url, $mod, $add_page, $src_id );
 

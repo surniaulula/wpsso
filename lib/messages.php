@@ -1218,7 +1218,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'social-accounts',
 								_x( 'WebSite Social Pages and Accounts', 'lib file description', 'wpsso' ) );
 
-							$text = __( 'Include WebSite, Organization, and/or Person Schema markup in the front page for Google\'s <em>Knowledge Graph</em>.', 'wpsso' ).' '.__( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' '.sprintf( __( 'Developers can hook the \'%s\' filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca.'_json_ld_search_url' ).' '.sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $settings_page_link ).' '.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
+							$text = __( 'Include WebSite, Organization, and/or Person Schema markup in the front page for Google\'s <em>Knowledge Graph</em>.', 'wpsso' ).'<br/><br/>'.__( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' '.sprintf( __( 'Developers can hook the \'%s\' filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca.'_json_ld_search_url' ).'<br/><br/>'.sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $settings_page_link ).'<br/><br/>'.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
 
 							break;
 

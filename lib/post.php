@@ -158,12 +158,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod['post_status'] = get_post_status( $mod_id );				// post status name
 			$mod['post_author'] = (int) get_post_field( 'post_author', $mod_id );		// post author id
 
+			/*
 			if ( $mod['post_type'] ) {
 				$post_type_obj = get_post_type_object( $mod['post_type'] );
 				if ( ! empty( $post_type_obj->has_archive ) ) {
-					$mod['is_post_archive'] = true;					// the post type is an archive page
+					$mod['is_post_archive'] = true;
 				}
 			}
+			*/
 
 			/**
 			 * Hooked by the 'coauthors' pro module.

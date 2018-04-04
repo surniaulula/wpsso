@@ -94,7 +94,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:784 lib/post.php:632 lib/term.php:381 lib/user.php:386
+#: lib/admin.php:784 lib/post.php:634 lib/term.php:381 lib/user.php:386
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2520,7 +2520,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:177 lib/meta.php:228 lib/post.php:977
+#: lib/gpl/admin/post.php:177 lib/meta.php:228 lib/post.php:979
 #: lib/pro/admin/post.php:198
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2566,7 +2566,7 @@ msgid "Library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:159 lib/loader.php:178 lib/post.php:253 lib/register.php:232
+#: lib/loader.php:159 lib/loader.php:178 lib/post.php:255 lib/register.php:232
 #: lib/term.php:213 lib/user.php:194 lib/util.php:333 lib/util.php:2166
 msgid "%s warning:"
 msgstr ""
@@ -4787,182 +4787,182 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/page.php:293 lib/page.php:295 lib/page.php:518 lib/page.php:520
-#: lib/page.php:576
+#: lib/page.php:297 lib/page.php:299 lib/page.php:530 lib/page.php:532
+#: lib/page.php:588
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:356
+#: lib/page.php:364
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:562
+#: lib/page.php:574
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:567
+#: lib/page.php:579
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:587
+#: lib/page.php:599
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:593
+#: lib/page.php:605
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:595
+#: lib/page.php:607
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:597
+#: lib/page.php:609
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:599
+#: lib/page.php:611
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:634
+#: lib/page.php:646
 msgid "No Description"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$0.3f is a number of seconds
-#: lib/post.php:243
+#: lib/post.php:245
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
 "children of post ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/post.php:751
+#: lib/post.php:753
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:754
+#: lib/post.php:756
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:782
+#: lib/post.php:784
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:784
+#: lib/post.php:786
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:786
+#: lib/post.php:788
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:787
+#: lib/post.php:789
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:797 lib/util.php:1011
+#: lib/post.php:799 lib/util.php:1011
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:806
+#: lib/post.php:808
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:815
+#: lib/post.php:817
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:824
+#: lib/post.php:826
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:840
+#: lib/post.php:842
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:850
+#: lib/post.php:852
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:862
+#: lib/post.php:864
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:862
+#: lib/post.php:864
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:862
+#: lib/post.php:864
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:885
+#: lib/post.php:887
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:889
+#: lib/post.php:891
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:891
+#: lib/post.php:893
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
-#: lib/post.php:1110
+#: lib/post.php:1112
 msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1119
+#: lib/post.php:1121
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1120
+#: lib/post.php:1122
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1131
-msgctxt "option label"
-msgid "No index"
-msgstr ""
-
-#: lib/post.php:1132
-msgctxt "option label"
-msgid "No follow"
 msgstr ""
 
 #: lib/post.php:1133
 msgctxt "option label"
-msgid "No archive"
+msgid "No index"
 msgstr ""
 
 #: lib/post.php:1134
 msgctxt "option label"
+msgid "No follow"
+msgstr ""
+
+#: lib/post.php:1135
+msgctxt "option label"
+msgid "No archive"
+msgstr ""
+
+#: lib/post.php:1136
+msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1208
+#: lib/post.php:1210
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

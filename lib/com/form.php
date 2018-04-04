@@ -91,11 +91,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_hidden( $name, $value = '', $is_checkbox = false ) {
+
 			if ( empty( $name ) ) {
 				return;	// Just in case.
 			}
 
-			// hide the current options value, unless one is given as an argument to the method
+			/**
+			 * Hide the current options value, unless one is given as an argument to the method.
+			 */
 			if ( empty( $value ) && $value !== 0 && $this->in_options( $name ) ) {
 				$value = $this->options[$name];
 			}
@@ -188,10 +191,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$input_id = empty( $id ) ? 'checklist_' . $name_prefix : 'checklist_' . $id;
 
-			// use the "input_vertical_list" class to align the checbox input vertically
+			/**
+			 * Use the "input_vertical_list" class to align the checbox input vertically.
+			 */
 			$html = '<div '.( empty( $class ) ? '' : ' class="' . esc_attr( $class ) . '"' ) . ' id="' . esc_attr( $input_id ) . '">' . "\n";
 
 			foreach ( $values as $name_suffix => $label ) {
+
 				/**
 				 * If the array is not associative (so a regular numbered array), 
 				 * then the label / description is used as the saved value.
@@ -252,10 +258,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$input_id = empty( $id ) ? 'radio_' . $name : 'radio_' . $id;
 
-			// use the "input_vertical_list" class to align the radio input buttons vertically
+			/**
+			 * Use the "input_vertical_list" class to align the radio input buttons vertically.
+			 */
 			$html = '<div '.( empty( $class ) ? '' : ' class="' . esc_attr( $class ) . '"' ) . ' id="' . esc_attr( $input_id ) . '">' . "\n";
 
 			foreach ( $values as $val => $label ) {
+
 				/**
 				 * If the array is not associative (so a regular numbered array), 
 				 * then the label / description is used as the saved value.
@@ -268,9 +277,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$label_transl = $this->get_value_transl( $label );
 				}
 
+				$attr_name_value = ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '" value="' . esc_attr( $val ) . '"';
+
 				$html .= '<span><input type="radio"' .
-					( $disabled ? ' disabled="disabled"' : 
-						' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '" value="' . esc_attr( $val ) . '"' ) .
+					( $disabled ? ' disabled="disabled"' : $attr_name_value ) .
 					( $this->in_options( $name ) ? checked( $this->options[$name], $val, false ) : '' ) .
 					( $this->in_defaults( $name ) ? ' title="default is ' . $values[$this->defaults[$name]] . '"' : '' ) .
 					'/>&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>' . "\n";
@@ -332,7 +342,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								'sucomSelectChangeUnhideRows("hide_' . esc_js( $name ) . '",' .
 									'"hide_' . esc_js( $name ) . '_"+this.value); }); });</script>' . "\n";
 
-						// if we have an option selected, unhide those rows
+						/**
+						 * If we have an option selected, unhide those rows.
+						 */
 						if ( $selected !== false ) {
 							if ( true === $selected ) {
 								if ( $in_options ) {
@@ -415,7 +427,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$select_options_count++;
 
-				// for disabled selects, only include the first and/or selected option
+				/**
+				 * For disabled selects, only include the first and/or selected option.
+				 */
 				if ( ! $disabled || $select_options_count === 1 || $is_selected_html ) {
 					$html .= '<option value="' . esc_attr( $option_val ) . '"' . $is_selected_html . '>' . $label_transl . '</option>' . "\n";
 					$select_options_shown++; 
@@ -473,7 +487,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$this->defaults[$name] = 'none';
 			}
 
-			// sanity check for possibly older input field values
+			/**
+			 * Sanity check for possibly older input field values.
+			 */
 			if ( false === $selected ) {
 				if ( empty( $this->options[$name] ) ||
 					( $this->options[$name] !== 'none' && strlen( $this->options[$name] ) !== 2 ) ) {
@@ -685,7 +701,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 									$select_options_count++; 
 
-									// for disabled selects, only include the first and/or selected option
+									/**
+									 * For disabled selects, only include the first and/or selected option.
+									 */
 									if ( ! $opt_disabled || $select_options_count === 1 || $is_selected_html ) {
 										$html .= '<option value="' . esc_attr( $val ) . '"' .
 											$is_selected_html . '>' . $label_transl . '</option>' . "\n";
@@ -908,6 +926,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_input_image_url( $opt_prefix, $url = '' ) {
+
 			$opt_suffix = '';
 
 			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
@@ -915,14 +934,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$opt_suffix = $matches[2];
 			}
 
-			// disable if we have a custom image id
+			/**
+			 * Disable if we have a custom image id.
+			 */
 			$disabled = empty( $this->options[$opt_prefix . '_id' . $opt_suffix] ) ? false : true;
 
 			return $this->get_input( $opt_prefix . '_url' . $opt_suffix, 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $disabled );
 		}
 
 		public function get_input_video_url( $opt_prefix, $url = '' ) {
-			// disable if we have a custom video embed
+
+			/**
+			 * Disable if we have a custom video embed.
+			 */
 			$disabled = empty( $this->options[$opt_prefix . '_embed'] ) ? false : true;
 
 			return $this->get_input( $opt_prefix . '_url', 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $disabled );
@@ -934,7 +958,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$def_height = '';
 			$crop_area_select = '';
 
-			// $use_opts = true when used for post / user meta forms (to show default values)
+			/**
+			 * $use_opts is true when used for post / user meta forms (to show default values).
+			 */
 			if ( true === $use_opts ) {
 
 				$def_width = empty( $this->p->options[$name . '_width'] ) ?
@@ -950,8 +976,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
-			// crop area selection is only available since wp v3.9
+			/**
+			 * Crop area selection is only available since wp v3.9.
+			 */
 			global $wp_version;
+
 			if ( version_compare( $wp_version, 3.9, '>=' ) ) {
 
 				$crop_area_select .= true === $narrow ?
@@ -1008,8 +1037,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				' onMouseUp="return false;">';
 
 			if ( ! empty( $id ) ) {
+
+				/**
+				 * dashicons are only available since wp v3.8
+				 */
 				global $wp_version;
-				// dashicons are only available since wp v3.8
+
 				if ( version_compare( $wp_version, 3.8, '>=' ) ) {
 					$html = '<div class="clipboard"><div class="copy_button">' .
 						'<a class="outline" href="" title="Copy to clipboard"' .
@@ -1017,6 +1050,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						'<span class="dashicons dashicons-clipboard"></span></a>' .
 						'</div><div class="copy_text">' . $input . '</div></div>';
 				}
+
 			} else {
 				$html = $input;
 			}
@@ -1267,33 +1301,61 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				switch ( $key ) {
+
 					case 'half_hours':
+
 						self::$class_cache[$key] = SucomUtil::get_hours_range( 0, DAY_IN_SECONDS, 60 * 30, '' );
+
 						break;
+
 					case 'all_types':
+
 						self::$class_cache[$key] = $this->p->schema->get_schema_types_array( false );	// $flatten = false
+
 						break;
+
 					case 'business_types':
+
 						$this->get_cache( 'all_types' );
+
 						self::$class_cache[$key] =& self::$class_cache['all_types']['thing']['place']['local.business'];
+
 						break;
+
 					case 'business_types_select':
+
 						$this->get_cache( 'business_types' );
+
 						self::$class_cache[$key] = $this->p->schema->get_schema_types_select( self::$class_cache['business_types'], false );
+
 						break;
+
 					case 'org_types':
+
 						$this->get_cache( 'all_types' );
+
 						self::$class_cache[$key] =& self::$class_cache['all_types']['thing']['organization'];
+
 						break;
+
 					case 'org_types_select':
+
 						$this->get_cache( 'org_types' );
+
 						self::$class_cache[$key] = $this->p->schema->get_schema_types_select( self::$class_cache['org_types'], false );
+
 						break;
+
 					case 'org_site_names':
+
 						self::$class_cache[$key] = array( 'site' => '[WebSite Organization]' );
-						// no break;
+
+						// No break.
+
 					default:
+
 						self::$class_cache[$key] = apply_filters( $this->lca . '_form_cache_' . $key, self::$class_cache[$key] );
+
 						break;
 				}
 
