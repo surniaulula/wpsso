@@ -73,7 +73,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			'is_home' => false,		// home page (index or static)
 			'is_home_page' => false,	// static front page
 			'is_home_index' => false,	// static posts page or home index
-			'is_post_archive' => false,	// is the post type an archive page
 			'post_type' => false,
 			'post_mime' => false,
 			'post_status' => false,

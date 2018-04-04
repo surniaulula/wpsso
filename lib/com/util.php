@@ -2360,11 +2360,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_archive_page() {
+
 			$ret = false;
+
 			if ( is_archive() ) {
+
 				$ret = true;
+
 			} elseif ( is_admin() ) {
+
 				$screen_base = self::get_screen_base();
+
 				if ( $screen_base !== false ) {
 					switch ( $screen_base ) {
 						case 'edit':		// post/page list
@@ -2375,20 +2381,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 				}
 			}
+
 			return apply_filters( 'sucom_is_archive_page', $ret );
 		}
 
 		public static function is_home_page( $use_post = false ) {
+
 			$ret = false;
 
-			// fallback to null so $use_post = 0 does not match
+			/**
+			 * Fallback to null so $use_post = 0 does not match.
+			 */
 			$front_post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_on_front' ) : null;
 
-			if ( is_numeric( $use_post ) && (int) $use_post === $front_post_id ) {
-				$ret = true;
-
-			} elseif ( $front_post_id > 0 && self::get_post_object( $use_post, 'id' ) === $front_post_id ) {
-				$ret = true;
+			if ( $front_post_id > 0 ) {
+				if ( is_numeric( $use_post ) && (int) $use_post === $front_post_id ) {
+					$ret = true;
+				} elseif ( self::get_post_object( $use_post, 'id' ) === $front_post_id ) {
+					$ret = true;
+				}
 			}
 
 			return apply_filters( 'sucom_is_home_page', $ret, $use_post );
@@ -2418,6 +2429,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_post_page( $use_post = false ) {
+
 			$ret = false;
 
 			if ( is_numeric( $use_post ) && $use_post > 0 ) {

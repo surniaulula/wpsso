@@ -285,7 +285,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod['is_post'] ) {
 
-					if ( $mod['is_post_archive'] ) {
+					if ( empty( $mod['id'] ) && ! empty( $mod['post_type'] ) && is_archive() && is_post_type_archive() ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'getting the title for post type '.$mod['post_type'] );
@@ -299,6 +299,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$title_text = sprintf( __( '%s Archive', 'wpsso' ), $post_type_obj->name );
 						}
 
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'before post_archive_title filter = '.$title_text );
+						}
+	
 						$title_text = apply_filters( $lca.'_post_archive_title', $title_text, $mod );
 
 					} else {
@@ -512,7 +516,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod['is_post'] ) {
 
-					if ( $mod['is_post_archive'] ) {
+					if ( empty( $mod['id'] ) && ! empty( $mod['post_type'] ) && is_archive() && is_post_type_archive() ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'getting the description for post type '.$mod['post_type'] );
@@ -533,6 +537,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							}
 						}
 
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'before post_archive_description filter = '.$desc_text );
+						}
+	
 						$desc_text = apply_filters( $lca.'_post_archive_description', $desc_text, $mod );
 
 					} else {
