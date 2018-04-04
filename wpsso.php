@@ -13,7 +13,7 @@
  * Description: Automatically create complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and many more.
  * Requires PHP: 5.4
  * Requires At Least: 3.8
- * Tested Up To: 4.9.4
+ * Tested Up To: 4.9.5
  * WC Tested Up To: 3.3.4
  * Version: 3.57.0-dev.1
  *
