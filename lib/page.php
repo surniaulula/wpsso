@@ -228,12 +228,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$sep = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
-			// setup filters to save and restore original / pre-filtered title value
+			/**
+			 * Setup filters to save and restore original / pre-filtered title value.
+			 */
 			if ( ! $filter_title ) {
 				SucomUtil::protect_filter_value( 'wp_title' );
 			}
 
-			// skip if no metadata index / key name
+			/**
+			 * Skip if no metadata index / key name.
+			 */
 			if ( ! empty( $md_idx ) ) {
 
 				$title_text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], $md_idx ) : null;
@@ -249,7 +253,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'custom title skipped: no md_idx value' );
 			}
 
-			// get seed if no custom meta title
+			/**
+			 * Get seed if no custom meta title.
+			 */
 			if ( empty( $title_text ) ) {
 				$title_text = apply_filters( $lca.'_title_seed', '', $mod, $add_htags, $md_idx, $sep );
 				if ( ! empty( $title_text ) ) {
@@ -419,7 +425,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'pre-filter title = "'.$title_text.'"' );
+				$this->p->debug->log( 'before title filter = "'.$title_text.'"' );
 			}
 
 			return apply_filters( $lca.'_title', $title_text, $mod, $add_htags, $md_idx, $sep );
@@ -683,6 +689,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'render description' );	// end timer
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'before description filter = "'.$desc_text.'"' );
 			}
 
 			return apply_filters( $lca.'_description', $desc_text, $mod, $add_htags, $md_idx );

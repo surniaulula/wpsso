@@ -4787,44 +4787,44 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/page.php:297 lib/page.php:299 lib/page.php:534 lib/page.php:536
-#: lib/page.php:596
+#: lib/page.php:303 lib/page.php:305 lib/page.php:540 lib/page.php:542
+#: lib/page.php:602
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:368
+#: lib/page.php:374
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:582
+#: lib/page.php:588
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:587
+#: lib/page.php:593
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:607
+#: lib/page.php:613
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:613
+#: lib/page.php:619
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:615
+#: lib/page.php:621
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:617
+#: lib/page.php:623
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:619
+#: lib/page.php:625
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:654
+#: lib/page.php:660
 msgid "No Description"
 msgstr ""
 
