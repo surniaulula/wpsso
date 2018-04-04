@@ -385,15 +385,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.57.0-dev.1 (2018/04/01)**
+**Version 3.57.0-b.1 (2018/04/04)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* None
 * *Bugfixes*
-	* Fixed the EDD integration module to override the EDD definition of the 'download' post type as an archive page.
+	* Fixed the post type "archive" page detection for post title and description.
 * *Developer Notes*
+	* Removed the 'is_post_archive' array element in the `$mod` variable.
 	* Changes for Gutenberg:
 		* Renamed the WpssoUtil do_table_rows() method to do_metabox_table().
 		* Renamed the WpssoUtil do_metabox_tabs() method to do_metabox_tabbed().
@@ -410,7 +411,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed the SucomUtil `is_home_index()` and `is_home_page()` methods to ignore a post ID of 0.
 * *Developer Notes*
-	* Added a new 'is_post_archive' array elements in the `$mod` variable.
+	* Added a new 'is_post_archive' array element in the `$mod` variable.
 
 **Version 3.56.2 (2018/03/24)**
 
@@ -452,9 +453,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.57.0-dev.1 =
+= 3.57.0-b.1 =
 
-(2018/04/01) Fixed the EDD integration module to override the EDD definition of the 'download' post type as an archive page.
+(2018/04/04) Fixed the EDD integration module to override the EDD definition of the 'download' post type as an archive page.
 
 = 3.56.3 =
 
