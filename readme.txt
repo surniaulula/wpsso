@@ -385,7 +385,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.57.0-b.1 (2018/04/04)**
+**Version 3.57.0 (2018/04/05)**
 
 * *New Features*
 	* None
@@ -453,9 +453,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.57.0-b.1 =
+= 3.57.0 =
 
-(2018/04/04) Fixed the EDD integration module to override the EDD definition of the 'download' post type as an archive page.
+(2018/04/05) Fixed the EDD integration module to override the EDD definition of the 'download' post type as an archive page.
 
 = 3.56.3 =
 
