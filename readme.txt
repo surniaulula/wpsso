@@ -457,7 +457,3 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 (2018/04/05) Fixed the EDD integration module to override the EDD definition of the 'download' post type as an archive page.
 
-= 3.56.3 =
-
-(2018/03/29) Added translation strings for default / fallback archive titles and descriptions. Added support for "archive" post type titles and descriptions. Added the WPSSO Tune WP Image Editors add-on to the SSO &gt; Core Add-ons settings page.
-
