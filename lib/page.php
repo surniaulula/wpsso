@@ -616,12 +616,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$desc_text = apply_filters( $lca.'_user_object_description', $desc_text, $user_obj );
 
 				} elseif ( is_day() ) {
+
 					$desc_text = sprintf( __( 'Daily Archive for %s', 'wpsso' ), get_the_date() );
+
 				} elseif ( is_month() ) {
+
 					$desc_text = sprintf( __( 'Monthly Archive for %s', 'wpsso' ), get_the_date('F Y') );
+
 				} elseif ( is_year() ) {
+
 					$desc_text = sprintf( __( 'Yearly Archive for %s', 'wpsso' ), get_the_date('Y') );
+
 				} elseif ( SucomUtil::is_archive_page() ) {	// Just in case.
+
 					$desc_text = sprintf( __( 'Archive Page', 'wpsso' ) );
 					$desc_text = apply_filters( $lca.'_archive_page_description', $desc_text, $mod );
 				}

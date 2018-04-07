@@ -388,19 +388,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 				} elseif ( $mod['is_term'] ) {
+
 					$type_id = $this->get_schema_type_id_for_name( 'archive_page' );	// uses archive page schema
 
 				} elseif ( $mod['is_user'] ) {
+
 					$type_id = $this->get_schema_type_id_for_name( 'user_page' );
 
 				} elseif ( SucomUtil::is_archive_page() ) {				// just in case
+
 					$type_id = $this->get_schema_type_id_for_name( 'archive_page' );
 
 				} elseif ( is_search() ) {
+
 					$type_id = $this->get_schema_type_id_for_name( 'search_page' );
 
 				} else {	// everything else
+
 					$type_id = $default_key;
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'using default schema type id '.$default_key );
 					}

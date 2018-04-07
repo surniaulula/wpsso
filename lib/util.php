@@ -1697,9 +1697,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( is_date() ) {
 
 						if ( is_day() ) {
-							$url = $this->check_url_string( get_day_link( get_query_var( 'year' ), get_query_var( 'monthnum' ), get_query_var( 'day' ) ), 'day link' );
+							$url = $this->check_url_string( get_day_link( get_query_var( 'year' ),
+								get_query_var( 'monthnum' ), get_query_var( 'day' ) ), 'day link' );
 						} elseif ( is_month() ) {
-							$url = $this->check_url_string( get_month_link( get_query_var( 'year' ), get_query_var( 'monthnum' ) ), 'month link' );
+							$url = $this->check_url_string( get_month_link( get_query_var( 'year' ),
+								get_query_var( 'monthnum' ) ), 'month link' );
 						} elseif ( is_year() ) {
 							$url = $this->check_url_string( get_year_link( get_query_var( 'year' ) ), 'year link' );
 						}

@@ -2567,7 +2567,7 @@ msgstr ""
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:159 lib/loader.php:178 lib/post.php:245 lib/register.php:232
-#: lib/term.php:213 lib/user.php:194 lib/util.php:333 lib/util.php:2166
+#: lib/term.php:213 lib/user.php:194 lib/util.php:333 lib/util.php:2168
 msgid "%s warning:"
 msgstr ""
 
@@ -3066,7 +3066,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:560 lib/util.php:2436
+#: lib/messages.php:560 lib/util.php:2438
 msgid "No options available."
 msgstr ""
 
@@ -4808,23 +4808,23 @@ msgstr ""
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:619
+#: lib/page.php:620
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:621
+#: lib/page.php:624
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:623
+#: lib/page.php:628
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:625
+#: lib/page.php:632
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:660
+#: lib/page.php:667
 msgid "No Description"
 msgstr ""
 
@@ -5174,27 +5174,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:1927
+#: lib/schema.php:1933
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2432
+#: lib/schema.php:2438
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2465
+#: lib/schema.php:2471
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2467
+#: lib/schema.php:2473
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2689
+#: lib/schema.php:2695
 msgid "adding schema for place"
 msgstr ""
 
@@ -5731,13 +5731,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
-#: lib/util.php:2148
+#: lib/util.php:2150
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/util.php:2159
+#: lib/util.php:2161
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -5746,34 +5746,34 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2159
+#: lib/util.php:2161
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2463
+#: lib/util.php:2465
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2466
+#: lib/util.php:2468
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2471
+#: lib/util.php:2473
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2474
+#: lib/util.php:2476
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2602
+#: lib/util.php:2604
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""
