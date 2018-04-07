@@ -344,7 +344,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( empty( $mod['id'] ) && ! empty( $mod['post_type'] ) && is_post_type_archive() ) {
 
-							$type_id = $this->get_schema_type_id_for_name( 'archive_page' );
+							$type_id = apply_filters( $this->p->lca.'_schema_type_for_post_type_archive_page',
+								$this->get_schema_type_id_for_name( 'archive_page' ) );
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'using schema type id '.$type_id.' for post type archive page' );
@@ -368,7 +369,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						} else {	// unknown post type
 
-							$type_id = apply_filters( $this->p->lca.'_schema_type_for_post_type_unknown', 
+							$type_id = apply_filters( $this->p->lca.'_schema_type_for_post_type_unknown_type', 
 								$this->get_schema_type_id_for_name( 'page' ) );
 
 							if ( $this->p->debug->enabled ) {
@@ -378,7 +379,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					} else {	// post objects without a post_type property
 
-						$type_id = apply_filters( $this->p->lca.'_schema_type_for_post_type_empty', 
+						$type_id = apply_filters( $this->p->lca.'_schema_type_for_post_type_empty_type', 
 							$this->get_schema_type_id_for_name( 'page' ) );
 
 						if ( $this->p->debug->enabled ) {

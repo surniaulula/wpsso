@@ -271,9 +271,11 @@
 
 'wpsso_schema_type_for_home_page' ( $type_id );
 
-'wpsso_schema_type_for_post_type_empty' ( $type_id );
+'wpsso_schema_type_for_post_type_archive_page' ( $type_id );
 
-'wpsso_schema_type_for_post_type_unknown' ( $type_id );
+'wpsso_schema_type_for_post_type_empty_type' ( $type_id );
+
+'wpsso_schema_type_for_post_type_unknown_type' ( $type_id );
 
 'wpsso_schema_type_id' ( $type_id, $mod, $is_custom );
 
