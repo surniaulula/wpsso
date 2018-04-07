@@ -385,6 +385,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.57.1-dev.1 (2018/04/07)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a check to set the Schema type as CollectionPage for post type archive pages.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Added a new 'wpsso_schema_type_for_post_type_archive_page' filter.
+
 **Version 3.57.0 (2018/04/05)**
 
 * *New Features*
@@ -452,6 +463,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 
 == Upgrade Notice ==
+
+= 3.57.1-dev.1 =
+
+(2018/04/07) Added a check to set the Schema type as CollectionPage for post type archive pages.
 
 = 3.57.0 =
 
