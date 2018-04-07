@@ -2438,7 +2438,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} elseif ( true === $use_post && ! empty( $GLOBALS['post']->ID ) ) {
 				$ret = true;
 
-			} elseif ( false === $use_post && is_archive() && is_post_type_archive() ) {
+			} elseif ( false === $use_post && is_post_type_archive() ) {
 				$ret = true;
 
 			} elseif ( false === $use_post && is_singular() ) {
