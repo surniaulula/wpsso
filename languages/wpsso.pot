@@ -2539,19 +2539,19 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/head.php:527
+#: lib/head.php:533
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:539
+#: lib/head.php:545
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:584
+#: lib/head.php:590
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:591
+#: lib/head.php:597
 msgid "adding schema json-ld markup"
 msgstr ""
 

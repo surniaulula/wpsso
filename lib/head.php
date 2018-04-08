@@ -42,6 +42,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		public function vary_user_agent_check() {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			// query argument used to bust external caches
 			$crawler_arg = 'uaid';
 
@@ -122,7 +126,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$cache_index .= '_amp:true';
 			}
 
-			// crawlers are only seen on the front-end, so skip if in back-end
+			/**
+			 * Crawlers are only seen on the front-end, so skip if in back-end.
+			 */
 			if ( ! is_admin() && ! empty( $this->p->avail['*']['vary_ua'] ) ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 				switch ( $crawler_name ) {
