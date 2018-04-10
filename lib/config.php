@@ -1800,7 +1800,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'message' => 'https://schema.org/Message',
 							'movie' => 'https://schema.org/Movie',
 							'music.composition' => 'https://schema.org/MusicComposition',
-							'music.playlist' => 'https://schema.org/MusicPlaylist',
+							'music.playlist' => array(
+								'music.album' => 'https://schema.org/MusicAlbum',
+								'music.playlist' => 'https://schema.org/MusicPlaylist',
+								'music.release' => 'https://schema.org/MusicRelease',
+							),
 							'music.recording' => 'https://schema.org/MusicRecording ',
 							'painting' => 'https://schema.org/Painting',
 							'photograph' => 'https://schema.org/Photograph',

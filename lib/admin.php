@@ -2276,7 +2276,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function admin_footer_ext_gen( $text ) {
 			if ( isset( self::$pkg[$this->menu_ext]['gen'] ) ) {
-				$text = '<span class="admin-footer-ext-gen">' . self::$pkg[$this->menu_ext]['gen'] . '</span>';
+				$host = '<br/>' . preg_replace( '/^[^:]*:\/\//', '', strtolower( SucomUtilWP::raw_get_home_url() ) );
+				$text = '<span class="admin-footer-ext-gen">' . self::$pkg[$this->menu_ext]['gen'] . $host. '</span>';
 			}
 			return $text;
 		}
