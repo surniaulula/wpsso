@@ -385,7 +385,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.57.1-dev.1 (2018/04/07)**
+**Version 3.57.1-b.1 (2018/04/07)**
 
 * *New Features*
 	* None
@@ -464,7 +464,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.57.1-dev.1 =
+= 3.57.1-b.1 =
 
 (2018/04/07) Added a check to set the Schema type as CollectionPage for post type archive pages.
 
