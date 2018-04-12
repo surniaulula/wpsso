@@ -52,7 +52,7 @@ If you're overlooking these not-so-minor details, you could be missing out on va
 
 We all know the benefits of publishing and scheduling content. But if your titles are boring, descriptions dull, and images too small or non-existent, users will simply scroll past and click through to your competitor.
 
-**WPSSO is the only plugin for WordPress that offers quality control features for meta tags and schema, checking for:**
+**WPSSO is the only plugin that offers quality control features for meta tags and schema, checking for:**
 
 * Minimum and maximum image dimensions and aspect ratios.
 * Shows notices for missing and required images.
@@ -61,13 +61,13 @@ We all know the benefits of publishing and scheduling content. But if your title
 * Warns of any missing PHP modules essential for proper markup.
 * Inspects third party plugins settings for possible conflicts.
 
-<h3>Users Love WPSSO</h3>
+<h3>Users Love WPSSO Core</h3>
 
-&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; "Yoast on steroids! As an SEO marketer, I love using Yoast for my basic on-page SEO. But Yoast only allows you to enter basic Open Graph social settings. This plugin gives you SO many more options on completing the Open Graph for Facebook, Twitter cards, Pinterest etc. If you use WordPress, I totally recommend using this SEO plugin to help with better rankings in the SERPS!" - [gregmontag](https://wordpress.org/support/topic/yoast-on-steroids/)
+&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "Yoast on steroids! As an SEO marketer, I love using Yoast for my basic on-page SEO. But Yoast only allows you to enter basic Open Graph social settings. This plugin gives you SO many more options on completing the Open Graph for Facebook, Twitter cards, Pinterest etc. If you use WordPress, I totally recommend using this SEO plugin to help with better rankings in the SERPS!" - [gregmontag](https://wordpress.org/support/topic/yoast-on-steroids/)
 
-&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; "The plugin is indispensable to me when it comes to posting on social media... it makes it so that your posts look the best that they possible can every time when posting on Facebook, Twitter, or any other site." - [monsuirette](https://wordpress.org/support/topic/this-is-probably-the-best-plugin-of-its-kind/)
+&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "The plugin is indispensable to me when it comes to posting on social media... it makes it so that your posts look the best that they possible can every time when posting on Facebook, Twitter, or any other site." - [monsuirette](https://wordpress.org/support/topic/this-is-probably-the-best-plugin-of-its-kind/)
 
-&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; "I've tried a number of WP SEO platforms and find this to be the most relevant and most completely thought-out platform for maximising web and social search results and presentation. Really impressed. Great support too!" - [pixmoto](https://wordpress.org/support/topic/best-seo-platform-on-the-market/)
+&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "I've tried a number of WP SEO platforms and find this to be the most relevant and most completely thought-out platform for maximising web and social search results and presentation. Really impressed. Great support too!" - [pixmoto](https://wordpress.org/support/topic/best-seo-platform-on-the-market/)
 
 <h3>WPSSO Core Features</h3>
 
