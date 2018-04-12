@@ -2684,18 +2684,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return 0;
 			}
 
-			// if not adding a list element, inherit the existing schema type url (if one exists)
+			/**
+			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 */
 			list( $place_type_id, $place_type_url ) = self::get_single_type_id_url( $json_data, $place_opts, 'place_business_type', 'place', $list_element );
 
 			$ret = self::get_schema_type_context( $place_type_url );
 
-			// set reference values for admin notices
+			/**
+			 * Set reference values for admin notices.
+			 */
 			if ( is_admin() ) {
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
 				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema for place', 'wpsso' ) );
 			}
 
-			// add schema properties from the place options
+			/**
+			 * Add schema properties from the place options.
+			 */
 			self::add_data_itemprop_from_assoc( $ret, $place_opts, array(
 				'url' => 'place_url',
 				'name' => 'place_name',
@@ -2742,6 +2748,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *	openingHoursSpecification as https://schema.org/OpeningHoursSpecification
 			 */
 			$opening_hours = array();
+
 			foreach ( $wpsso->cf['form']['weekdays'] as $day => $label ) {
 				if ( ! empty( $place_opts['place_day_'.$day] ) ) {
 					$dayofweek = array(
@@ -2810,7 +2817,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = apply_filters( $wpsso->lca.'_json_data_single_place', $ret, $mod, $place_id );
 
-			// restore previous reference values for admin notices
+			/**
+			 * Restore previous reference values for admin notices.
+			 */
 			if ( is_admin() ) {
 				$wpsso->notice->unset_ref( $sharing_url );
 			}
