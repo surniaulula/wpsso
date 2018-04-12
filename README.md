@@ -13,6 +13,8 @@
 
 <h2>Description</h2>
 
+<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
+
 <p><strong>Stop messing around with Schema markup and manually updating social meta data. Save time and boost your social shares and SEO with WPSSO, the only WordPress solution to automatically generate meta tags <em>and</em> Schema markup.</strong></p>
 
 <p>WPSSO analyzes your existing site content to create complete and accurate meta tags for all the popular social media platforms, as well as <a href="https://schema.org/">Schema.org</a> markup for Pinterest and search engines.</p>
@@ -85,7 +87,7 @@
 <li>Weekly updates.</li>
 </ul>
 
-<h4>Upgrade to Pro for Premium Features</h4>
+<h3>Upgrade to Pro for Premium Features</h3>
 
 <p>WPSSO Core Pro gives you the power to further integrate and customize your meta tags and Schema markup with third party plugins and APIs.</p>
 
@@ -115,9 +117,9 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/?utm_source=wpsso-readme">Developer Resources</a></li>
 </ul>
 
-<p>WPSSO also features contextual in-plugin help.</p>
+<p>And WPSSO also includes extensive contextual in-plugin help.</p>
 
-<p>We're also here to help and answer any questions you may have:</p>
+<p>We're here to help and answer any questions you may have:</p>
 
 <ul>
 <li><a href="https://wordpress.org/support/plugin/wpsso">WordPress.org Support</a></li>
