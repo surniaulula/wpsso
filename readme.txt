@@ -114,7 +114,7 @@ We provide extensive documentation to help you get started and make the most of 
 * [Frequently Asked Questions](https://wpsso.com/docs/plugins/wpsso/faqs/?utm_source=wpsso-readme)
 * [Developer Resources](https://wpsso.com/docs/plugins/wpsso/notes/developer/?utm_source=wpsso-readme)
 
-And WPSSO also includes extensive contextual in-plugin help.
+**WPSSO also includes extensive contextual in-plugin help.**
 
 We're here to help and answer any questions you may have:
 
