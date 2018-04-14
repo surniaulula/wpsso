@@ -21,7 +21,11 @@
 
 <p>Not only will using WPSSO significantly improve how your content is displayed in search results and on social platforms, but it will make it easier for people to find you.</p>
 
+<!--smp-ignore-->
+
 <p><strong>We've got all your bases covered with WPSSO. Want more? <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme">Upgrade to WPSSO Core Pro</a> for even more advanced features.</strong></p>
+
+<!--/smp-ignore-->
 
 <h3>Why Use WPSSO?</h3>
 

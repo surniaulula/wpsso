@@ -26,7 +26,11 @@ WPSSO analyzes your existing site content to create complete and accurate meta t
 
 Not only will using WPSSO significantly improve how your content is displayed in search results and on social platforms, but it will make it easier for people to find you.
 
+<!--smp-ignore-->
+
 **We've got all your bases covered with WPSSO. Want more? [Upgrade to WPSSO Core Pro](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme) for even more advanced features.**
+
+<!--/smp-ignore-->
 
 <h3>Why Use WPSSO?</h3>
 
