@@ -2537,12 +2537,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$text = SucomUtil::strip_shortcodes( $text );					// Remove any remaining shortcodes.
 			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// Put everything on one line.
-			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text);				// Remove php.
-			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text);		// Remove javascript.
-			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text);		// Remove inline stylesheets.
+			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text );				// Remove php.
+			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text );	// Remove javascript.
+			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text );		// Remove inline stylesheets.
 
-			$text = preg_replace( '/<!--'.$this->p->lca.'-ignore-->(.*?)<!--\/'.
-				$this->p->lca.'-ignore-->/Ui', ' ', $text);				// Remove text between comment strings.
+			$text = preg_replace( '/<!--'.$this->p->lca.'-ignore-->(.*?)' .
+				'<!--\/'.$this->p->lca.'-ignore-->/Ui', ' ', $text );			// Remove text between comment strings.
 
 			if ( $strip_tags ) {
 				$text = preg_replace( '/<\/p>/i', ' ', $text);				// Replace end of paragraph with a space.
