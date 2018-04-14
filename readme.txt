@@ -161,12 +161,6 @@ We're here to help and answer any questions you may have:
 * [WPSSO Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-ssb/?utm_source=wpsso-readme)
 * [WPSSO Tune WP Image Editors Pro](https://wpsso.com/extend/plugins/wpsso-tune-image-editors/?utm_source=wpsso-readme) &mdash; *recommended for best social images*
 
-<h3>Further Reading</h3>
-
-* [WPSSO home page](https://wpsso.com/?utm_source=wpsso-readme)
-* [Upgrade to WPSSO Core Pro](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme)
-* Follow us on [Facebook](https://www.facebook.com/SurniaUlulaCom) and [Twitter](https://twitter.com/surniaululacom)
-
 == Installation ==
 
 <h3>Install and Uninstall</h3>

@@ -172,14 +172,6 @@
 <li><a href="https://wpsso.com/extend/plugins/wpsso-tune-image-editors/?utm_source=wpsso-readme">WPSSO Tune WP Image Editors Pro</a> &mdash; <em>recommended for best social images</em></li>
 </ul>
 
-<h3>Further Reading</h3>
-
-<ul>
-<li><a href="https://wpsso.com/?utm_source=wpsso-readme">WPSSO home page</a></li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme">Upgrade to WPSSO Core Pro</a></li>
-<li>Follow us on <a href="https://www.facebook.com/SurniaUlulaCom">Facebook</a> and <a href="https://twitter.com/surniaululacom">Twitter</a></li>
-</ul>
-
 
 <h2>Installation</h2>
 
