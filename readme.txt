@@ -295,7 +295,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.57.1-rc.1 (2018/04/13)**
+**Version 3.57.1 (2018/04/14)**
 
 * *New Features*
 	* None
@@ -321,64 +321,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Renamed the WpssoUtil do_metabox_tabs() method to do_metabox_tabbed().
 		* Added new WpssoUtil get_metabox_table() and get_metabox_tabbed() methods.
 
-**Version 3.56.3 (2018/03/29)**
-
-* *New Features*
-	* None
-* *Improvements*
-	* Added translation strings for default / fallback archive titles and descriptions.
-	* Added support for "archive" post type titles and descriptions.
-	* Added the WPSSO Tune WP Image Editors add-on to the SSO &gt; Core Add-ons settings page.
-* *Bugfixes*
-	* Fixed the SucomUtil `is_home_index()` and `is_home_page()` methods to ignore a post ID of 0.
-* *Developer Notes*
-	* Added a new 'is_post_archive' array element in the `$mod` variable.
-
-**Version 3.56.2 (2018/03/24)**
-
-* *New Features*
-	* None
-* *Improvements*
-	* Minor updates to some help messages and fr_FR translations.
-	* Renamed plugin "Extensions" to "Add-ons" to avoid confusion and improve / simplify translations.
-* *Bugfixes*
-	* Fixed a function call in an error message for images that exceed an allowed aspect ratio.
-* *Developer Notes*
-	* None
-
-**Version 3.56.1 (2018/03/18)**
-
-* *New Features*
-	* None
-* *Improvements*
-	* Added dismiss links in notices for images exceeding an aspect ratio and images smaller than a standard requires.
-	* Updated the Facebook / Open Graph Example in the Social and Search Optimization metabox (under the Preview tab) to take both columns.
-	* Minor CSS updates for the Gutenberg editor page to center the Social and Search Optimization metabox.
-* *Bugfixes*
-	* Fixed the unhide link when notices are dismissed to unhide error and warning notices separately.
-* *Developer Notes*
-	* None
-
-**Version 3.56.0 (2018/03/15)**
-
-* *New Features*
-	* None
-* *Improvements*
-	* Added a check for JetPack SEO Tools to disable some basic SEO meta tags (canonical, description, and robots).
-	* Added a new "Auto-Refresh Cache After Clear All" option under the Advanced &gt; Cache Settings tab (Pro version).
-	* Replaced plugin action links in the WordPress Plugins page by links to the settings, licenses, and dashboard pages.
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* None
-
 == Upgrade Notice ==
 
-= 3.57.1-rc.1 =
+= 3.57.1 =
 
-(2018/04/13) Added a check to set the Schema type as CollectionPage for post type archive pages.
-
-= 3.57.0 =
-
-(2018/04/05) Fixed the EDD integration module to override the EDD definition of the 'download' post type as an archive page.
+(2018/04/14) Added a check to set the Schema type as CollectionPage for post type archive pages.
 
