@@ -295,6 +295,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 3.57.2-dev.1 (2018/04/15)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Excluded post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
+
 **Version 3.57.1 (2018/04/14)**
 
 * *New Features*
@@ -322,6 +333,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Added new WpssoUtil get_metabox_table() and get_metabox_tabbed() methods.
 
 == Upgrade Notice ==
+
+= 3.57.2-dev.1 =
+
+(2018/04/15) Excluded post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
 
 = 3.57.1 =
 
