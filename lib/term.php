@@ -251,6 +251,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function update_sortable_meta( $term_id, $col_idx, $content ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			if ( ! empty( $term_id ) ) {	// just in case
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// just in case

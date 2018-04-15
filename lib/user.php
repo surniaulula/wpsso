@@ -256,6 +256,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function update_sortable_meta( $user_id, $col_idx, $content ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			if ( ! empty( $user_id ) ) {	// just in case
 				if ( ( $sort_cols = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $sort_cols['meta_key'] ) ) {	// just in case

@@ -451,6 +451,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function update_sortable_meta( $post_id, $col_idx, $content ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			if ( ! empty( $post_id ) ) {	// Just in case.
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// Just in case.

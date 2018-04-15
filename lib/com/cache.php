@@ -582,6 +582,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				case 'wp_cache':
 
 					$cache_id = $this->lca . '_' . md5( $cache_salt );	// add a prefix to the object cache id
+
 					wp_cache_set( $cache_id, $cache_data, __CLASS__, $object_cache_exp );
 
 					if ( $this->p->debug->enabled ) {
@@ -596,6 +597,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				case 'transient':
 
 					$cache_id = $this->lca . '_' . md5( $cache_salt );	// add a prefix to the object cache id
+
 					set_transient( $cache_id, $cache_data, $object_cache_exp );
 
 					if ( $this->p->debug->enabled ) {

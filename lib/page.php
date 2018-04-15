@@ -811,10 +811,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$content_text =& $cache_array[$cache_index];	// reference the cache element
 			$content_text = apply_filters( $lca.'_content_seed', '', $mod, $r_cache, $md_idx );
 
-			if ( ! empty( $content_text ) ) {
+			if ( $content_text === false ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'content seed is false' );
+				}
+
+			} elseif ( ! empty( $content_text ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'content seed is "'.$content_text.'"' );
 				}
+
 			} elseif ( $mod['is_post'] ) {
 
 				$content_text = get_post_field( 'post_content', $mod['id'] );

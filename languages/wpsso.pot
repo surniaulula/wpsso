@@ -94,7 +94,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:784 lib/post.php:624 lib/term.php:381 lib/user.php:386
+#: lib/admin.php:784 lib/post.php:629 lib/term.php:386 lib/user.php:391
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1007,15 +1007,15 @@ msgstr ""
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:624 lib/com-gettext-extract.php:12
+#: lib/com/cache.php:626 lib/com-gettext-extract.php:12
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: lib/com/cache.php:632 lib/com-gettext-extract.php:6
+#: lib/com/cache.php:634 lib/com-gettext-extract.php:6
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:640 lib/com-gettext-extract.php:14
+#: lib/com/cache.php:642 lib/com-gettext-extract.php:14
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
@@ -2520,7 +2520,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:177 lib/meta.php:227 lib/post.php:969
+#: lib/gpl/admin/post.php:177 lib/meta.php:227 lib/post.php:974
 #: lib/pro/admin/post.php:198
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -4835,134 +4835,134 @@ msgid ""
 "children of post ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/post.php:743
+#: lib/post.php:748
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:746
+#: lib/post.php:751
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:774
+#: lib/post.php:779
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:776
+#: lib/post.php:781
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:778
+#: lib/post.php:783
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:779
+#: lib/post.php:784
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:789 lib/util.php:1011
+#: lib/post.php:794 lib/util.php:1011
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:798
+#: lib/post.php:803
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:807
+#: lib/post.php:812
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:816
+#: lib/post.php:821
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:832
+#: lib/post.php:837
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:842
+#: lib/post.php:847
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:854
+#: lib/post.php:859
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:854
+#: lib/post.php:859
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:854
+#: lib/post.php:859
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:877
+#: lib/post.php:882
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:881
+#: lib/post.php:886
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:883
+#: lib/post.php:888
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
-#: lib/post.php:1102
+#: lib/post.php:1107
 msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1111
+#: lib/post.php:1116
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1112
+#: lib/post.php:1117
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1123
+#: lib/post.php:1128
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1124
+#: lib/post.php:1129
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1125
+#: lib/post.php:1130
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1126
+#: lib/post.php:1131
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1200
+#: lib/post.php:1205
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -4979,25 +4979,25 @@ msgid ""
 "was detected)."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:586
+#: lib/pro/ecom/woocommerce.php:669
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:588
+#: lib/pro/ecom/woocommerce.php:671
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:767
+#: lib/pro/ecom/woocommerce.php:850
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:769
+#: lib/pro/ecom/woocommerce.php:852
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:772
+#: lib/pro/ecom/woocommerce.php:855
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -5640,7 +5640,7 @@ msgid ""
 "secs)."
 msgstr ""
 
-#: lib/term.php:501
+#: lib/term.php:506
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -5661,23 +5661,23 @@ msgid ""
 "authored by user ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/user.php:552
+#: lib/user.php:557
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:625
+#: lib/user.php:630
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:626
+#: lib/user.php:631
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:627
+#: lib/user.php:632
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1012
+#: lib/user.php:1017
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
