@@ -27,6 +27,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( is_admin() ) {
 
+				add_action( 'wp_ajax_' . $this->p->lca . '_get_metabox_post', array( &$this, 'ajax_get_metabox_post' ) );
+
 				if ( ! empty( $_GET ) || basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' ) {
 
 					/**
@@ -488,6 +490,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $value;	// return null
 		}
 
+		public function ajax_get_metabox_post() {
+
+			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
+
+			if ( ! $doing_ajax ) {	// Just in case.
+				return;
+			}
+
+			die( '1' );
+		}
+
 		/**
 		 * Hooked into the current_screen action.
 		 * Sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties.
@@ -617,10 +630,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$action_query = $this->p->lca.'-action';
 
 			if ( ! empty( $_GET[$action_query] ) ) {
+
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'found action query: '.$action_name );
 				}
+
 				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'nonce token query field missing' );

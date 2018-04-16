@@ -374,10 +374,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$action_query = $this->p->lca.'-action';
 
 			if ( ! empty( $_GET[$action_query] ) ) {
+
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'found action query: '.$action_name );
 				}
+
 				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'nonce token query field missing' );

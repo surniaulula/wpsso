@@ -865,6 +865,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function ajax_dismiss_notice() {
 
+			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
+
+			if ( ! $doing_ajax ) {	// Just in case.
+				return;
+			}
+
 			$dis_info = array();
 			$user_id  = get_current_user_id();
 
