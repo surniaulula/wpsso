@@ -492,13 +492,51 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function ajax_get_metabox_post() {
 
-			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
+			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
 
 			if ( ! $doing_ajax ) {	// Just in case.
 				return;
 			}
 
-			die( '1' );
+			check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true );
+
+			if ( empty( $_POST['post_id'] ) ) {
+				die( '-1' );
+			}
+
+			$post_id = $_POST['post_id'];
+			$post_obj = SucomUtil::get_post_object( $post_id );
+
+			if ( ! is_object( $post_obj ) ) {
+				die( '-1' );
+			} elseif ( empty( $post_obj->post_type ) ) {
+				die( '-1' );
+			} elseif ( empty( $post_obj->post_status ) ) {
+				die( '-1' );
+			} elseif ( $post_obj->post_status === 'auto-draft' ) {
+				die( '-1' );
+			}
+
+			$mod = $this->get_mod( $post_id );
+
+			WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
+			WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
+
+			if ( $post_obj->post_status === 'publish' ) {
+
+				/**
+				 * Check for missing open graph image and description values.
+				 */
+				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
+					if ( empty( WpssoMeta::$head_meta_info['og:'.$mt_suffix] ) ) {
+						$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-'.$mt_suffix ) );
+					}
+				}
+			}
+
+			$metabox_html = $this->get_metabox_custom_meta( $post_obj );
+
+			die( $metabox_html );
 		}
 
 		/**
@@ -950,25 +988,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function show_metabox_custom_meta( $post_obj ) {
+			echo $this->get_metabox_custom_meta( $post_obj );
+		}
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-				$this->p->debug->log( 'post id = '.( empty( $post_obj->ID ) ? 0 : $post_obj->ID ) );
-				$this->p->debug->log( 'post type = '.( empty( $post_obj->post_type ) ? 'empty' : $post_obj->post_type ) );
-				$this->p->debug->log( 'post status = '.( empty( $post_obj->post_status ) ? 'empty' : $post_obj->post_status ) );
-			}
+		public function get_metabox_custom_meta( $post_obj ) {
 
 			$metabox_id = $this->p->cf['meta']['id'];
-			$mod = $this->get_mod( $post_obj->ID );
-			$tabs = $this->get_custom_meta_tabs( $metabox_id, $mod );
-			$opts = $this->get_options( $post_obj->ID );
-			$def_opts = $this->get_defaults( $post_obj->ID );
+			$mod        = $this->get_mod( $post_obj->ID );
+			$tabs       = $this->get_custom_meta_tabs( $metabox_id, $mod );
+			$opts       = $this->get_options( $post_obj->ID );
+			$def_opts   = $this->get_defaults( $post_obj->ID );
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->lca );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
-			if ( $this->p->debug->enabled )
+			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id.' table rows' );	// start timer
+			}
 
 			$table_rows = array();
 
@@ -977,11 +1013,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$tab_key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 
-			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
+			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id.' table rows' );	// end timer
 			}
+
+			return "\n" . '<div id="' . $this->p->lca . '_metabox_' . $metabox_id . '">' . $metabox_html . '</div>' . "\n";
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key, $head, $mod ) {

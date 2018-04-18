@@ -45,6 +45,16 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				WPSSO_URLPATH . 'js/gutenberg-admin.' . $js_file_ext, 
 					array( 'wp-data' ), $plugin_version, true );
 
+			wp_localize_script( 'sucom-gutenberg-admin', 'sucomGutenbergL10n',
+				$this->get_admin_gutenberg_script_data() );
+
+		}
+
+		public function get_admin_gutenberg_script_data() {
+			return array(
+				'_ajax_nonce' => wp_create_nonce( WPSSO_NONCE_NAME ),
+				'_metabox_id' => $this->p->lca . '_metabox_' . $this->p->cf['meta']['id'],
+			);
 		}
 
 		public function admin_enqueue_scripts( $hook_name ) {

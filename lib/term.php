@@ -444,17 +444,17 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			echo '<!-- '.$this->p->lca.' term metabox section end -->' . "\n";
 		}
 
-		public function show_metabox_custom_meta( $term_obj ) {
+		public function show_metabox_custom_meta( $post_obj ) {
+			echo $this->get_metabox_custom_meta( $post_obj );
+		}
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
+		public function get_metabox_custom_meta( $term_obj ) {
 
 			$metabox_id = $this->p->cf['meta']['id'];
-			$mod = $this->get_mod( $term_obj->term_id, $this->query_tax_slug );
-			$tabs = $this->get_custom_meta_tabs( $metabox_id, $mod );
-			$opts = $this->get_options( $term_obj->term_id );
-			$def_opts = $this->get_defaults( $term_obj->term_id );
+			$mod        = $this->get_mod( $term_obj->term_id, $this->query_tax_slug );
+			$tabs       = $this->get_custom_meta_tabs( $metabox_id, $mod );
+			$opts       = $this->get_options( $term_obj->term_id );
+			$def_opts   = $this->get_defaults( $term_obj->term_id );
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->lca );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
@@ -470,11 +470,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 
-			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
+			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id.' table rows' );	// end timer
 			}
+
+			return "\n" . '<div id="' . $this->p->lca . '_metabox_' . $metabox_id . '">' . $metabox_html . '</div>' . "\n";
 		}
 
 		public function clear_cache( $term_id, $term_tax_id = false ) {

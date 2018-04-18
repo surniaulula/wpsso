@@ -2117,7 +2117,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'applying the \'get_event_place_id\' filter to event place id '.( $place_id === null ? '(null)' : $place_id ) );
+				$wpsso->debug->log( 'applying the \'get_event_place_id\' filter to event place id '.
+					( $event_opts['event_place_id'] === null ? '(null)' : $event_opts['event_place_id'] ) );
 			}
 
 			$event_opts['event_place_id'] = apply_filters( $wpsso->lca.'_get_event_place_id', $event_opts['event_place_id'], $mod, $event_id );

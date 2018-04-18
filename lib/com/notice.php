@@ -381,14 +381,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function show_admin_notices() {
 
-			$hidden = array();
-			$msg_html = '';
-			$nag_msgs = '';
-			$seen_msgs = array();	// duplicate check
-			$dismissed_updated = false;
-			$user_id = (int) get_current_user_id();
-			$user_notices =& $this->get_user_notices( $user_id );
-			$user_dismissed = empty( $user_id ) ? false : get_user_option( $this->dis_name, $user_id );	// get dismissed message ids
+			$hidden          = array();
+			$msg_html        = '';
+			$nag_msgs        = '';
+			$shown_msgs      = array();	// duplicate check
+			$dismissed_upd   = false;
+			$user_id         = (int) get_current_user_id();
+			$user_notices    =& $this->get_user_notices( $user_id );
+			$user_dismissed  = empty( $user_id ) ? false : get_user_option( $this->dis_name, $user_id );	// get dismissed message ids
 			$this->has_shown = true;
 
 			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
@@ -411,11 +411,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				foreach ( $user_notices[$msg_type] as $msg_txt => $payload ) {
 
-					if ( empty( $msg_txt ) || isset( $seen_msgs[$msg_txt] ) ) {	// skip duplicates
+					if ( empty( $msg_txt ) || isset( $shown_msgs[$msg_txt] ) ) {	// skip duplicates
 						continue;
 					}
 
-					$seen_msgs[$msg_txt] = true;	// avoid duplicates
+					$shown_msgs[$msg_txt] = true;	// avoid duplicates
 
 					switch ( $msg_type ) {
 						case 'nag':
@@ -452,7 +452,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 											$hidden[$msg_type]++;
 										}
 									} else {	// dismiss has expired
-										$dismissed_updated = true;	// update the array when done
+										$dismissed_upd = true;	// update the array when done
 										unset( $user_dismissed[$payload['dis_key']] );
 									}
 								}
@@ -464,14 +464,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			/**
-			 * Delete all notices for the current user id.
-			 */
-			$this->trunc();
-
-			/**
 			 * Don't save unless we've changed something.
 			 */
-			if ( true === $dismissed_updated && ! empty( $user_id ) ) {
+			if ( true === $dismissed_upd && ! empty( $user_id ) ) {
 				if ( empty( $user_dismissed ) ) {
 					delete_user_option( $user_id, $this->dis_name );
 				} else {
@@ -522,20 +517,27 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$user_id = (int) get_current_user_id();
 
+			if ( empty( $user_id ) ) {
+				return;
+			}
+
+			if ( $this->has_shown ) {
+				$this->trunc( '', '', false, $user_id );
+			}
+
 			$have_notices = false;
 
-			if ( $user_id > 0 ) {
-				if ( isset( $this->notice_cache[$user_id]['have_notices'] ) ) {
-					$have_notices = $this->notice_cache[$user_id]['have_notices'];
-					unset( $this->notice_cache[$user_id]['have_notices'] );
+			if ( isset( $this->notice_cache[$user_id]['have_notices'] ) ) {
+				$have_notices = $this->notice_cache[$user_id]['have_notices'];
+				unset( $this->notice_cache[$user_id]['have_notices'] );
+			}
+
+			if ( empty( $this->notice_cache[$user_id] ) ) {
+				if ( $have_notices ) {
+					delete_user_option( $user_id, $this->opt_name );
 				}
-				if ( empty( $this->notice_cache[$user_id] ) ) {
-					if ( $have_notices ) {
-						delete_user_option( $user_id, $this->opt_name );
-					}
-				} else {
-					update_user_option( $user_id, $this->opt_name, $this->notice_cache[$user_id] );
-				}
+			} else {
+				update_user_option( $user_id, $this->opt_name, $this->notice_cache[$user_id] );
 			}
 		}
 
@@ -585,7 +587,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 */
 			$style_attr = ' style="' . 
 				( empty( $payload['style'] ) ? '' : $payload['style'] ).
-				( empty( $payload['hidden'] ) ? 'display:block;visibility:visible;' : 'display:none;' ) . '"';
+				( empty( $payload['hidden'] ) ? 'display:block;' : 'display:none;' ) . '"';
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ).
@@ -609,6 +611,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		protected function get_notice_style() {
 
 			$custom_style_css = '
+				body.gutenberg-editor-page #wpbody-content .' . $this->lca . '-notice {
+					display:none !important;
+				}
 				.' . $this->lca . '-notice.notice {
 					padding:0;
 				}
@@ -865,7 +870,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function ajax_dismiss_notice() {
 
-			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
+			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
 
 			if ( ! $doing_ajax ) {	// Just in case.
 				return;

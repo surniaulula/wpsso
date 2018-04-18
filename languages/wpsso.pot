@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 3.57.2-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 3.58.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:784 lib/post.php:645 lib/term.php:389 lib/user.php:394
+#: lib/admin.php:784 lib/post.php:683 lib/term.php:389 lib/user.php:394
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1031,17 +1031,17 @@ msgstr ""
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/notice.php:496 lib/com-gettext-extract.php:29
+#: lib/com/notice.php:491 lib/com-gettext-extract.php:29
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:497 lib/com-gettext-extract.php:30
+#: lib/com/notice.php:492 lib/com-gettext-extract.php:30
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:503
+#: lib/com/notice.php:498
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
@@ -1051,7 +1051,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/com/notice.php:596 lib/com-gettext-extract.php:7
+#: lib/com/notice.php:598 lib/com-gettext-extract.php:7
 msgid "Dismiss"
 msgstr ""
 
@@ -2520,7 +2520,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:177 lib/meta.php:227 lib/post.php:990
+#: lib/gpl/admin/post.php:177 lib/meta.php:227 lib/post.php:1028
 #: lib/pro/admin/post.php:198
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -4835,134 +4835,134 @@ msgid ""
 "children of post ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/post.php:764
+#: lib/post.php:802
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:767
+#: lib/post.php:805
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:795
+#: lib/post.php:833
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:797
+#: lib/post.php:835
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:799
+#: lib/post.php:837
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:800
+#: lib/post.php:838
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:810 lib/util.php:1011
+#: lib/post.php:848 lib/util.php:1011
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:819
+#: lib/post.php:857
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:828
+#: lib/post.php:866
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:837
+#: lib/post.php:875
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:853
+#: lib/post.php:891
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:863
+#: lib/post.php:901
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:875
+#: lib/post.php:913
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:875
+#: lib/post.php:913
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:875
+#: lib/post.php:913
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:898
+#: lib/post.php:936
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:902
+#: lib/post.php:940
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:904
+#: lib/post.php:942
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
-#: lib/post.php:1123
+#: lib/post.php:1161
 msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1132
+#: lib/post.php:1170
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1133
+#: lib/post.php:1171
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1144
+#: lib/post.php:1182
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1145
+#: lib/post.php:1183
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1146
+#: lib/post.php:1184
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1147
+#: lib/post.php:1185
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1221
+#: lib/post.php:1259
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -5178,27 +5178,27 @@ msgstr ""
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2444
+#: lib/schema.php:2445
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2477
+#: lib/schema.php:2478
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2479
+#: lib/schema.php:2480
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2705
+#: lib/schema.php:2706
 msgid "adding schema for place"
 msgstr ""
 
-#: lib/script.php:173
+#: lib/script.php:183
 msgid "Use Image"
 msgstr ""
 
@@ -5640,7 +5640,7 @@ msgid ""
 "secs)."
 msgstr ""
 
-#: lib/term.php:509
+#: lib/term.php:511
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -5661,23 +5661,23 @@ msgid ""
 "authored by user ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/user.php:560
+#: lib/user.php:562
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:633
+#: lib/user.php:635
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:634
+#: lib/user.php:636
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:635
+#: lib/user.php:637
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1020
+#: lib/user.php:1022
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
