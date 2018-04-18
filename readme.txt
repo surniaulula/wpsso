@@ -295,11 +295,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.57.2-dev.1 (2018/04/15)**
+**Version 3.58.0-dev.2 (2018/04/18)**
 
 * *New Features*
 	* None
 * *Improvements*
+	* Added a refresh for the Social and Search Optimization metabox when saving a Gutenberg post.
 	* Excluded post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
 * *Bugfixes*
 	* None
@@ -334,9 +335,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.57.2-dev.1 =
+= 3.58.0-dev.2 =
 
-(2018/04/15) Excluded post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
+(2018/04/18) Added a refresh for the Social and Search Optimization metabox when saving a Gutenberg post. Excluded post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
 
 = 3.57.1 =
 
