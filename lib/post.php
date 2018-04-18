@@ -51,10 +51,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
+			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+
 			/**
 			 * Add the columns when doing AJAX as well to allow Quick Edit to add the required columns.
 			 */
-			if ( is_admin() || SucomUtil::get_const( 'DOING_AJAX' ) ) {
+			if ( is_admin() || $doing_ajax ) {
 
 				/**
 				 * Only use public post types (to avoid menu items, product variations, etc.).

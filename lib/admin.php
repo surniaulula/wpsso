@@ -61,10 +61,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ), 20 );
 
 			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'DOING_AJAX is true' );
 				}
-				// nothing to do
+
+				/**
+				 * Nothing to do.
+				 */
+
 			} else {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'DOING_AJAX is false' );
