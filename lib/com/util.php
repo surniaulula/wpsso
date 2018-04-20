@@ -2806,7 +2806,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$text = preg_replace( '/<\?.*\?' . '>/U', ' ', $text);                  // Remove php.
 			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text); // Remove javascript.
 			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text);   // Remove inline stylesheets.
-			$text = preg_replace( '/<\/p>/i', ' ', $text);                          // Replace end of paragraph with a space.
+			$text = preg_replace( '/(<p>|<p[^>]+>|<\/p>)/i', ' ', $text);           // Replace paragraph tags with a space.
 			$text = trim( strip_tags( $text ) );                                    // Remove remaining html tags.
 			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );                // Replace 1+ spaces to a single space.
 			return trim( $text );

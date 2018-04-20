@@ -495,9 +495,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		public function ajax_get_metabox_post() {
 
 			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+			$doing_autosave = defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ? true : false;
 
-			if ( ! $doing_ajax ) {	// Just in case.
+			if ( ! $doing_ajax ) {
 				return;
+			} elseif ( $doing_autosave ) {
+				die( -1 );
 			}
 
 			check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true );
@@ -531,7 +534,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 					if ( empty( WpssoMeta::$head_meta_info['og:'.$mt_suffix] ) ) {
-						$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-'.$mt_suffix ) );
+						$error_msg = $this->p->msgs->get( 'notice-missing-og-'.$mt_suffix );
+						$this->p->notice->err( $error_msg );
 					}
 				}
 			}

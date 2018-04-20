@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 3.58.0-dev.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 3.58.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:789 lib/post.php:685 lib/term.php:389 lib/user.php:394
+#: lib/admin.php:789 lib/post.php:689 lib/term.php:389 lib/user.php:394
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -915,12 +915,12 @@ msgid ""
 "available."
 msgstr ""
 
-#: lib/com/bfo.php:204 lib/com/cache.php:475 lib/com/notice.php:74
+#: lib/com/bfo.php:204 lib/com/cache.php:475 lib/com/notice.php:71
 #: lib/com-gettext-extract.php:23
 msgid "%s Notice"
 msgstr ""
 
-#: lib/com/bfo.php:207 lib/com/cache.php:478 lib/com/notice.php:77
+#: lib/com/bfo.php:207 lib/com/cache.php:478 lib/com/notice.php:74
 #: lib/com-gettext-extract.php:16
 msgid "Notice"
 msgstr ""
@@ -1019,29 +1019,29 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/notice.php:143 lib/com-gettext-extract.php:28
+#: lib/com/notice.php:145 lib/com-gettext-extract.php:28
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr ""
 
-#: lib/com/notice.php:275 lib/com-gettext-extract.php:8
+#: lib/com/notice.php:292 lib/com-gettext-extract.php:8
 msgid "edit"
 msgstr ""
 
-#: lib/com/notice.php:276 lib/com-gettext-extract.php:21
+#: lib/com/notice.php:293 lib/com-gettext-extract.php:21
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/notice.php:491 lib/com-gettext-extract.php:29
+#: lib/com/notice.php:519 lib/com-gettext-extract.php:29
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:492 lib/com-gettext-extract.php:30
+#: lib/com/notice.php:520 lib/com-gettext-extract.php:30
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:498
+#: lib/com/notice.php:527
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
@@ -1051,7 +1051,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/com/notice.php:598 lib/com-gettext-extract.php:7
+#: lib/com/notice.php:596 lib/com-gettext-extract.php:7
 msgid "Dismiss"
 msgstr ""
 
@@ -2520,7 +2520,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:177 lib/meta.php:227 lib/post.php:1030
+#: lib/gpl/admin/post.php:177 lib/meta.php:227 lib/post.php:1034
 #: lib/pro/admin/post.php:198
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -4835,134 +4835,134 @@ msgid ""
 "children of post ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/post.php:804
+#: lib/post.php:808
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:807
+#: lib/post.php:811
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:835
+#: lib/post.php:839
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:837
+#: lib/post.php:841
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:839
+#: lib/post.php:843
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:840
+#: lib/post.php:844
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:850 lib/util.php:1011
+#: lib/post.php:854 lib/util.php:1011
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:859
+#: lib/post.php:863
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:868
+#: lib/post.php:872
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:877
+#: lib/post.php:881
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:893
+#: lib/post.php:897
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:903
+#: lib/post.php:907
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:915
+#: lib/post.php:919
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:915
+#: lib/post.php:919
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:915
+#: lib/post.php:919
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:938
+#: lib/post.php:942
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:942
+#: lib/post.php:946
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:944
+#: lib/post.php:948
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
-#: lib/post.php:1163
+#: lib/post.php:1167
 msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1172
+#: lib/post.php:1176
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1173
+#: lib/post.php:1177
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1184
+#: lib/post.php:1188
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1185
+#: lib/post.php:1189
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1186
+#: lib/post.php:1190
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1187
+#: lib/post.php:1191
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1261
+#: lib/post.php:1265
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

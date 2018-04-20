@@ -15,10 +15,10 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public $enabled = false;
 		public function __construct() {}
 		public function nag() {}
-		public function err() {}
-		public function warn() {}
 		public function upd() {}
 		public function inf() {}
+		public function err() {}
+		public function warn() {}
 		public function log() {}
 		public function trunc_key() {}
 		public function trunc_all() {}
@@ -31,10 +31,13 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public function is_admin_pre_notices() { return false; }
 		public function is_dismissed() {}
 		public function can_dismiss() {}
-		public function reload_user_notices() {}
 		public function hook_admin_notices() {}
 		public function show_admin_notices() {}
+		public function get_notice_style() {}
+		public function get_naf_style() {}
+		public function admin_footer_script() {}
+		public function ajax_dismiss_notice() { die( -1 ); }
+		public function ajax_get_notices_json() { die( -1 ); }
 		public function save_user_notices() {}
 	}
 }
-
