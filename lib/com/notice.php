@@ -142,6 +142,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					 * If the message ends with a paragraph tag, add text as a paragraph
 					 */
 					$has_p = substr( $msg_text, -4 ) === '</p>' ? true : false;
+
 					$dismiss_transl = __( 'This notice can be dismissed temporarily for a period of %s.', $this->text_domain );
 
 					$msg_text .= $has_p ? '<p>' : ' ';
@@ -152,15 +153,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$payload['dis_time'] = false;
 			}
 
+			/**
+			 * Maybe add a reference URL at the end.
+			 */
 			$msg_text .= $this->get_ref_url_html();
 
-			$msg_spoken = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $msg_text );
-			$msg_spoken = SucomUtil::decode_html( SucomUtil::strip_html( $msg_spoken ) );
-
-			$msg_key = sanitize_key( $msg_spoken );
-
-			$payload['msg_text'] = $msg_text;
-			$payload['msg_spoken'] = $msg_spoken;
+			$payload['msg_text'] = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $msg_text );
+			$payload['msg_spoken'] = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $msg_text );
+			$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_spoken'] ) );
+			$msg_key = sanitize_key( $payload['msg_spoken'] );
 
 			/**
 			 * Returns a reference to the cache array.
@@ -394,24 +395,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$hidden          = array();
 			$msg_html        = '';
-			$nag_msgs        = '';
+			$nag_text        = '';
 			$shown_msgs      = array();	// duplicate check
 			$dismissed_upd   = false;
 			$user_id         = get_current_user_id();
 			$user_notices    =& $this->get_notice_cache( $user_id );
+			$user_notices    = $this->add_update_errors( $user_notices );
 			$user_dismissed  = empty( $user_id ) ? false : get_user_meta( $user_id, $this->dis_name, true );
 			$this->has_shown = true;
-
-			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
-				foreach ( array_keys( $this->p->cf['plugin'] ) as $ext ) {
-					if ( ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) ) {
-						$uerr = SucomUpdate::get_umsg( $ext );
-						if ( ! empty( $uerr ) ) {
-							$user_notices['err'][$uerr] = array();
-						}
-					}
-				}
-			}
 
 			/**
 			 * Loop through all the msg types and show them all.
@@ -434,7 +425,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 						case 'nag':
 
-							$nag_msgs .= $payload['msg_text'];	// append to echo a single msg block
+							$nag_text .= $payload['msg_text'];	// append to echo a single msg block
 
 							continue;
 
@@ -507,9 +498,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			echo '<div id="' . sanitize_html_class( $this->lca . '-admin-notices-begin' ) . '"></div>' . "\n";
 			echo $this->get_notice_style();
 
-			if ( ! empty( $nag_msgs ) ) {
+			if ( ! empty( $nag_text ) ) {
+				$payload = array();
+				$payload['msg_text'] = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $nag_text );
+				$payload['msg_spoken'] = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $nag_text );
+				$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_spoken'] ) );
 				echo $this->get_nag_style();
-				echo $this->get_notice_html( 'nag', $nag_msgs );
+				echo $this->get_notice_html( 'nag', $payload );
 			}
 
 			/**
@@ -524,19 +519,39 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					continue;
 				}
 				
-				$hidden_transl = _n(
+				$payload = array();
+				$payload['msg_text'] = _n(
 					'%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.',
 					'%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s messages</a>.',
 					$hidden[$msg_type], $this->text_domain
 				);
+				$payload['msg_text'] = sprintf( $payload['msg_text'], $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
+				$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_spoken'] ) );
 
-				$hidden_transl = sprintf( $hidden_transl, $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
-
-				echo $this->get_notice_html( $msg_type, $hidden_transl );
+				echo $this->get_notice_html( $msg_type, $payload );
 			}
 
 			echo $msg_html;
 			echo '<!-- ' . $this->lca . ' admin notices end -->' . "\n";
+		}
+
+		private function add_update_errors( $user_notices ) {
+			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
+				foreach ( array_keys( $this->p->cf['plugin'] ) as $ext ) {
+					if ( ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) ) {
+						$uerr = SucomUpdate::get_umsg( $ext );
+						if ( ! empty( $uerr ) ) {
+							$payload = array();
+							$payload['msg_text'] = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $uerr );
+							$payload['msg_spoken'] = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $uerr );
+							$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_spoken'] ) );
+							$msg_key = sanitize_key( $payload['msg_spoken'] );
+							$user_notices['err'][$msg_key] = $payload;
+						}
+					}
+				}
+			}
+			return $user_notices;
 		}
 
 		private function get_notice_html( $msg_type, array $payload ) {
@@ -898,6 +913,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$shown_msgs      = array();	// duplicate check
 			$user_id         = get_current_user_id();
 			$user_notices    =& $this->get_notice_cache( $user_id );
+			$user_notices    = $this->add_update_errors( $user_notices );
 			$json_notices    = array();
 			$this->has_shown = true;
 
@@ -919,10 +935,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						$payload['msg_text'] = '<p>' . $payload['msg_text'] . '</p>';
 					}
 					
-					$json_notices[$msg_type][$msg_key] = array(
-						'msg_text' => $payload['msg_text'],
-						'msg_spoken' => isset( $payload['msg_spoken'] ) ? $payload['msg_spoken'] : '',
-					);
+					$json_notices[$msg_type][$msg_key] = $payload;
 				}
 			}
 
