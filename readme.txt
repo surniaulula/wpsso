@@ -295,17 +295,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.58.0-dev.2 (2018/04/18)**
+**Version 3.58.0-dev.3 (2018/04/20)**
 
 * *New Features*
 	* None
 * *Improvements*
+	* Added support for Gutenberg notices.
 	* Added a refresh for the Social and Search Optimization metabox when saving a Gutenberg post.
-	* Excluded post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
+	* Exclude post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
 	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
+	* Moved clearing of saved user notifications to the WordPress 'shutdown' action hook.
+	* Refactored SucomNotice class methods to allow fetching notices using a jQuery ajax call.
 
 **Version 3.57.1 (2018/04/14)**
 
@@ -335,9 +338,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.58.0-dev.2 =
+= 3.58.0-dev.3 =
 
-(2018/04/18) Added a refresh for the Social and Search Optimization metabox when saving a Gutenberg post. Excluded post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
+(2018/04/20) Added support for Gutenberg notices. Added a refresh for the SSO metabox when saving a Gutenberg post. Exclude post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
 
 = 3.57.1 =
 
