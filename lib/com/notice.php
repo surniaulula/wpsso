@@ -393,6 +393,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function show_admin_notices() {
 
+			$doing_gutenberg = defined( 'DOING_GUTENBERG' ) && DOING_GUTENBERG ? true : false;
+
+			if ( $doing_gutenberg ) {
+				return;
+			}
+
 			$hidden          = array();
 			$msg_html        = '';
 			$nag_text        = '';
