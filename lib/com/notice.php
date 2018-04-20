@@ -792,19 +792,19 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 <script type="text/javascript">
 	jQuery( document ).ready( function() {
 
-		jQuery("#' . $this->lca . '-unhide-notice-err").click( function() {
+		jQuery( "#' . $this->lca . '-unhide-notice-err" ).click( function() {
 			var notice = jQuery( this ).parents(".' . $this->lca . '-notice.notice-error");
 			jQuery(".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-error").show();
 			notice.hide();
-		});
+		} );
 
-		jQuery("#' . $this->lca . '-unhide-notice-warn").click( function() {
+		jQuery( "#' . $this->lca . '-unhide-notice-warn" ).click( function() {
 			var notice = jQuery( this ).parents(".' . $this->lca . '-notice.notice-warning");
 			jQuery(".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-warning").show();
 			notice.hide();
-		});
+		} );
 
-		jQuery("div.' . $this->lca . '-dismissible > div.notice-dismiss, div.' . $this->lca . '-dismissible .dismiss-on-click").click( function() {
+		jQuery( "div.' . $this->lca . '-dismissible > div.notice-dismiss, div.' . $this->lca . '-dismissible .dismiss-on-click" ).click( function() {
 
 			var notice        = jQuery( this ).closest(".' . $this->lca . '-dismissible");
 			var dismiss_msg   = jQuery( this ).data( "dismiss-msg" );
@@ -827,8 +827,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			} else {
 				notice.hide();
 			}
-		});
-	});
+		} );
+	} );
 </script>
 			';
 		}
