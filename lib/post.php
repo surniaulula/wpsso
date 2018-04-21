@@ -596,14 +596,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * Signal that Gutenberg editor is being used, so the display of notices can be skipped.
+			 * Signal that the block editor is being used, so the display of notices can be skipped.
 			 */
 			if ( function_exists( 'gutenberg_can_edit_post_type' ) && 
 				gutenberg_can_edit_post_type( $post_obj->post_type ) &&
 					! isset( $_REQUEST['classic-editor'] ) ) {
 
-				if ( ! defined( 'DOING_GUTENBERG' ) ) {
-					define( 'DOING_GUTENBERG', true );
+				if ( ! defined( 'DOING_BLOCK_EDITOR' ) ) {
+					define( 'DOING_BLOCK_EDITOR', true );
 				}
 			}
 

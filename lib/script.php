@@ -24,9 +24,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
 				if ( is_admin() ) {
-					if ( SucomUtil::get_const( 'WPSSO_DEV' ) ) {
-						add_action( 'enqueue_block_editor_assets', array( &$this, 'enqueue_block_editor_assets' ), -1000 );
-					}
+					add_action( 'enqueue_block_editor_assets', array( &$this, 'enqueue_block_editor_assets' ), -1000 );
 					add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ), -1000 );
 				}
 			}
@@ -47,7 +45,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			wp_localize_script( 'sucom-gutenberg-admin', 'sucomGutenbergL10n',
 				$this->get_admin_gutenberg_script_data() );
-
 		}
 
 		public function get_admin_gutenberg_script_data() {

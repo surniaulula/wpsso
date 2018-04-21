@@ -335,10 +335,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				$warn_msg = '';
 				$info = $this->cf['plugin']['wpsso'];
+				$dismiss_key = 'debug-mode-is-active';
 
 				if ( $this->debug->is_enabled( 'wp' ) ) {
 					$this->debug->log( 'WP debug log mode is active' );
 					if ( is_admin() ) {
+						$dismiss_key .= '-with-debug-log';
 						$warn_msg .= __( 'WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log.',
 							'wpsso' ) . ' ';
 					}
@@ -353,6 +355,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				if ( $this->debug->is_enabled( 'html' ) ) {
 					$this->debug->log( 'HTML debug mode is active' );
 					if ( is_admin() ) {
+						$dismiss_key .= '-with-html-comments';
 						$warn_msg .= __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.',
 							'wpsso' ) . ' ';
 					}
@@ -363,7 +366,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						// translators: %s is the short plugin name
 						$warn_msg .= sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
 							'wpsso' ), $info['short'] ) . ' ' . __( 'Please disable debug mode when debugging is complete.', 'wpsso' );
-						$this->notice->warn( $warn_msg );
+						$this->notice->warn( $warn_msg, true, $dismiss_key, HOUR_IN_SECONDS );
 					}
 					$this->util->disable_cache_filters();
 				}

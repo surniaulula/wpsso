@@ -42,7 +42,6 @@ WPSSO_SCHEMA_BREADCRUMB_SCRIPTS_MAX	= 5
 WPSSO_TS_NAME				= 'wpsso_timestamps'
 WPSSO_OPTIONS_NAME			= 'wpsso_options'
 WPSSO_SITE_OPTIONS_NAME			= 'wpsso_site_options'
-WPSSO_NOTICE_NAME			= 'wpsso_notices'
 WPSSO_DISMISS_NAME			= 'wpsso_dismissed'
 WPSSO_META_NAME				= '_wpsso_meta'
 WPSSO_PREF_NAME				= '_wpsso_pref'

@@ -1031,17 +1031,17 @@ msgstr ""
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/notice.php:520 lib/com-gettext-extract.php:29
+#: lib/com/notice.php:504 lib/com-gettext-extract.php:29
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:521 lib/com-gettext-extract.php:30
+#: lib/com/notice.php:505 lib/com-gettext-extract.php:30
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:529
+#: lib/com/notice.php:513
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
@@ -1051,7 +1051,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/com/notice.php:617 lib/com-gettext-extract.php:7
+#: lib/com/notice.php:602 lib/com-gettext-extract.php:7
 msgid "Dismiss"
 msgstr ""
 
@@ -2566,7 +2566,7 @@ msgid "Library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:159 lib/loader.php:178 lib/post.php:249 lib/register.php:232
+#: lib/loader.php:159 lib/loader.php:178 lib/post.php:249 lib/register.php:229
 #: lib/term.php:213 lib/user.php:194 lib/util.php:333 lib/util.php:2168
 msgid "%s warning:"
 msgstr ""
@@ -4471,7 +4471,7 @@ msgid ""
 "refresh of all Pro update information."
 msgstr ""
 
-#: lib/messages.php:1960 lib/register.php:237
+#: lib/messages.php:1960 lib/register.php:234
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -5161,11 +5161,11 @@ msgid "Invalid user ID."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
-#: lib/register.php:227 lib/register.php:239
+#: lib/register.php:224 lib/register.php:236
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:241
+#: lib/register.php:238
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
@@ -5198,7 +5198,7 @@ msgstr ""
 msgid "adding schema for place"
 msgstr ""
 
-#: lib/script.php:183
+#: lib/script.php:180
 msgid "Use Image"
 msgstr ""
 
@@ -5778,26 +5778,26 @@ msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""
 
-#: wpsso.php:342
+#: wpsso.php:344
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:356
+#: wpsso.php:359
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:364
+#: wpsso.php:367
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:365
+#: wpsso.php:368
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

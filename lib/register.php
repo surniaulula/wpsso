@@ -137,7 +137,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$opts = get_option( WPSSO_OPTIONS_NAME, array() );
 
 			delete_option( WPSSO_TS_NAME );
-			delete_option( WPSSO_NOTICE_NAME );
 
 			if ( empty( $opts['plugin_preserve'] ) ) {
 
@@ -150,11 +149,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				foreach ( get_users() as $user ) {
 					if ( ! empty( $user-> ID ) ) {	// just in case
-						// site specific user options
-						delete_user_option( $user->ID, WPSSO_NOTICE_NAME );
-						delete_user_option( $user->ID, WPSSO_DISMISS_NAME );
+
+						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, true );
 	
-						// global / network user options
 						delete_user_meta( $user->ID, WPSSO_META_NAME );
 						delete_user_meta( $user->ID, WPSSO_PREF_NAME );
 	

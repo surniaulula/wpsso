@@ -368,7 +368,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				} else {
 					unset( $user_dismissed[$dismiss_key] );
 					if ( empty( $user_dismissed ) ) {
-						delete_user_meta( $user_id, $this->dis_name );
+						delete_user_option( $user_id, $this->dis_name, true );
 					} else {
 						update_user_meta( $user_id, $this->dis_name, $user_dismissed );
 					}
@@ -393,9 +393,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function show_admin_notices() {
 
-			$doing_gutenberg = defined( 'DOING_GUTENBERG' ) && DOING_GUTENBERG ? true : false;
+			$doing_block_editor = defined( 'DOING_BLOCK_EDITOR' ) && DOING_BLOCK_EDITOR ? true : false;
 
-			if ( $doing_gutenberg ) {
+			echo "\n";
+			echo '<!-- ' . $this->lca . ' admin notices begin -->' . "\n";
+			echo '<div id="' . sanitize_html_class( $this->lca . '-admin-notices-begin' ) . '"></div>' . "\n";
+			echo $this->get_notice_style();
+
+			if ( $doing_block_editor ) {
 				return;
 			}
 
@@ -427,64 +432,48 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					$shown_msgs[$msg_key] = true;	// avoid duplicates
 
-					switch ( $msg_type ) {
+					if ( $msg_type === 'nag' ) {
+						$nag_text .= $payload['msg_text'];	// append to echo a single msg block
+						continue;
+					}
 
-						case 'nag':
+					if ( ! empty( $payload['dis_time'] ) ) {
 
-							$nag_text .= $payload['msg_text'];	// append to echo a single msg block
+						if ( ! isset( $hidden[$msg_type] ) ) {
+							$hidden[$msg_type] = 0;
+						}
 
-							continue;
+						/**
+						 * Check for automatically hidden errors and/or warnings.
+						 */
+						if ( ( $msg_type === 'err' && $this->hide_err ) || ( $msg_type === 'warn' && $this->hide_warn ) ) {
 
-						default:
-
-							/**
-							 * 'dis_time' will be false if there's no 'dis_key'.
-							 */
-							if ( ! empty( $payload['dis_time'] ) ) {
-
-								/**
-								 * Initialize the counter.
-								 */
-								if ( ! isset( $hidden[$msg_type] ) ) {
-									$hidden[$msg_type] = 0;
-								}
-
-								/**
-								 * Check for automatically hidden errors and/or warnings.
-								 */
-								if ( ( $msg_type === 'err' && $this->hide_err ) ||
-									( $msg_type === 'warn' && $this->hide_warn ) ) {
-
-									$payload['hidden'] = true;
-									if ( empty( $payload['silent'] ) ) {
-										$hidden[$msg_type]++;
-									}
-
-								/**
-								 * 'dis_key' has been dismissed.
-								 */
-								} elseif ( ! empty( $payload['dis_key'] ) &&
-									isset( $user_dismissed[$payload['dis_key']] ) ) {
-
-									$now_time = time();
-									$dismiss_time = $user_dismissed[$payload['dis_key']];
-
-									if ( empty( $dismiss_time ) || $dismiss_time > $now_time ) {
-										$payload['hidden'] = true;
-										if ( empty( $payload['silent'] ) ) {
-											$hidden[$msg_type]++;
-										}
-									} else {	// dismiss has expired
-										$dismissed_upd = true;	// update the array when done
-										unset( $user_dismissed[$payload['dis_key']] );
-									}
-								}
+							$payload['hidden'] = true;
+							if ( empty( $payload['silent'] ) ) {
+								$hidden[$msg_type]++;
 							}
 
-							$msg_html .= $this->get_notice_html( $msg_type, $payload );
+						} elseif ( ! empty( $payload['dis_key'] ) && isset( $user_dismissed[$payload['dis_key']] ) ) {
 
-							break;
+							$now_time = time();
+							$dismiss_time = $user_dismissed[$payload['dis_key']];
+
+							if ( empty( $dismiss_time ) || $dismiss_time > $now_time ) {
+
+								$payload['hidden'] = true;
+								if ( empty( $payload['silent'] ) ) {
+									$hidden[$msg_type]++;
+								}
+
+							} else {	// dismiss has expired
+
+								$dismissed_upd = true;	// update the user meta when done
+								unset( $user_dismissed[$payload['dis_key']] );
+							}
+						}
 					}
+
+					$msg_html .= $this->get_notice_html( $msg_type, $payload );
 				}
 			}
 
@@ -493,16 +482,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 */
 			if ( true === $dismissed_upd && ! empty( $user_id ) ) {
 				if ( empty( $user_dismissed ) ) {
-					delete_user_meta( $user_id, $this->dis_name );
+					delete_user_option( $user_id, $this->dis_name, true );
 				} else {
-					update_user_meta( $user_id, $this->dis_name, $user_dismissed );
+					update_user_option( $user_id, $this->dis_name, $user_dismissed );
 				}
 			}
-
-			echo "\n";
-			echo '<!-- ' . $this->lca . ' admin notices begin -->' . "\n";
-			echo '<div id="' . sanitize_html_class( $this->lca . '-admin-notices-begin' ) . '"></div>' . "\n";
-			echo $this->get_notice_style();
 
 			if ( ! empty( $nag_text ) ) {
 				$payload = array();
@@ -532,7 +516,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$hidden[$msg_type], $this->text_domain
 				);
 				$payload['msg_text'] = sprintf( $payload['msg_text'], $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
-				$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_spoken'] ) );
+				$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_text'] ) );
 
 				echo $this->get_notice_html( $msg_type, $payload );
 			}
@@ -583,7 +567,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$msg_class = 'notice notice-success updated';
 					break;
 				case 'inf':
-				default:	// Fallback.
+				default:
 					$msg_type = 'inf';
 					$msg_class = 'notice notice-info';
 					break;
@@ -599,30 +583,32 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$data_attr = $is_dismissible ?
 				' data-dismiss-nonce="' . wp_create_nonce( __FILE__ ) . '"' . 
 				' data-dismiss-key="' . esc_attr( $payload['dis_key'] ) . '"' . 
-				' data-dismiss-time="' . ( is_numeric( $payload['dis_time'] ) ? esc_attr( $payload['dis_time'] ) : 0 ) . '"' : '';
+				' data-dismiss-time="' . ( is_numeric( $payload['dis_time'] ) ?
+					esc_attr( $payload['dis_time'] ) : 0 ) . '"' : '';
 
 			/**
 			 * Optionally hide / show notices by default.
 			 */
 			$style_attr = ' style="' . 
 				( empty( $payload['style'] ) ? '' : $payload['style'] ).
-				( empty( $payload['hidden'] ) ? 'display:block;' : 'display:none;' ) . '"';
+				( empty( $payload['hidden'] ) ? 'display:block !important;' : 'display:none;' ) . '"';
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ).
-					$msg_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// display block or none
+				$msg_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// display block or none
 
 			if ( ! empty( $payload['dis_time'] ) ) {
 				$msg_html .= '<div class="notice-dismiss"><div class="notice-dismiss-text">' . 
-					__( 'Dismiss', $this->text_domain ) . '</div></div>';
+					__( 'Dismiss', $this->text_domain ) . '</div></div><!-- .notice-dismiss -->';
 			}
 
 			if ( ! empty( $payload['label'] ) ) {
-				$msg_html .= '<div class="notice-label">' . $payload['label'] . '</div>';
+				$msg_html .= '<div class="notice-label">' . $payload['label'] . '</div><!-- .notice-label -->';
 			}
 
-			$msg_html .= '<div class="notice-message">' . $payload['msg_text'] . '</div>';
-			$msg_html .= '</div>' . "\n";
+			$msg_html .= '<div class="notice-message">' . $payload['msg_text'] . '</div><!-- .notice-message -->';
+
+			$msg_html .= '</div><!-- .' . $this->lca . '-notice -->' . "\n";
 
 			return $msg_html;
 		}
@@ -630,8 +616,20 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function get_notice_style() {
 
 			$custom_style_css = '
-				body.gutenberg-editor-page #wpbody-content .' . $this->lca . '-notice {
-					display:none !important;
+				body.gutenberg-editor-page .components-notice-list .notice.notice-alt {
+					border:0;
+					padding:0;
+					min-height:0;
+				}
+				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice {
+					padding:0;
+					min-height:0;
+					background-color:inherit;
+					box-shadow:none;
+				}
+				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice .notice-label,
+				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice .notice-message {
+					padding:15px;
 				}
 				.' . $this->lca . '-notice.notice {
 					padding:0;
@@ -664,7 +662,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.' . $this->lca . '-notice .notice-label {
 					display:table-cell;
 					vertical-align:top;
-					padding:10px;
+					padding:12px;
 					margin:0;
 					white-space:nowrap;
 					font-weight:bold;
@@ -674,7 +672,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.' . $this->lca . '-notice .notice-message {
 					display:table-cell;
 					vertical-align:top;
-					padding:10px 20px;
+					padding:12px;
 					margin:0;
 					line-height:1.5em;
 				}
@@ -811,47 +809,42 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function admin_footer_script() {
 			echo '
 <script type="text/javascript">
-	jQuery( document ).ready( function() {
 
-		jQuery( "#' . $this->lca . '-unhide-notice-err" ).click( function() {
-			var notice = jQuery( this ).parents(".' . $this->lca . '-notice.notice-error");
-			jQuery(".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-error").show();
-			notice.hide();
-		} );
-
-		jQuery( "#' . $this->lca . '-unhide-notice-warn" ).click( function() {
-			var notice = jQuery( this ).parents(".' . $this->lca . '-notice.notice-warning");
-			jQuery(".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-warning").show();
-			notice.hide();
-		} );
-
-		jQuery( "div.' . $this->lca . '-dismissible > div.notice-dismiss, div.' . $this->lca . '-dismissible .dismiss-on-click" ).click( function() {
-
-			var notice        = jQuery( this ).closest(".' . $this->lca . '-dismissible");
-			var dismiss_msg   = jQuery( this ).data( "dismiss-msg" );
-			var dismiss_nonce = notice.data( "dismiss-nonce" );
-			var dismiss_key   = notice.data( "dismiss-key" );
-			var dismiss_time  = notice.data( "dismiss-time" );
-
-			jQuery.post(
-				ajaxurl, {
-					action: "' . $this->lca . '_dismiss_notice",
-					_ajax_nonce: dismiss_nonce,
-					key: dismiss_key,
-					time: dismiss_time
-				}
-			);
-
-			if ( dismiss_msg ) {
-				notice.children("div.notice-dismiss").hide();
-				jQuery( this ).closest("div.notice-message").html( dismiss_msg );
-			} else {
-				notice.hide();
-			}
-		} );
+	jQuery( document ).on( "click", "#' . $this->lca . '-unhide-notice-err", function() {
+		var notice = jQuery( this ).parents(".' . $this->lca . '-notice.notice-error");
+		jQuery(".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-error").show();
+		notice.hide();
 	} );
-</script>
-			';
+
+	jQuery( document ).on( "click", "#' . $this->lca . '-unhide-notice-warn", function() {
+		var notice = jQuery( this ).parents( ".' . $this->lca . '-notice.notice-warning" );
+		jQuery( ".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-warning" ).show();
+		notice.hide();
+	} );
+
+	jQuery( document ).on( "click", "div.' . $this->lca . '-dismissible > div.notice-dismiss, div.' . $this->lca . '-dismissible .dismiss-on-click", function() {
+
+		var notice        = jQuery( this ).closest( ".' . $this->lca . '-dismissible" );
+		var dismiss_msg   = jQuery( this ).data( "dismiss-msg" );
+		var dismiss_nonce = notice.data( "dismiss-nonce" );
+		var dismiss_key   = notice.data( "dismiss-key" );
+		var dismiss_time  = notice.data( "dismiss-time" );
+
+		jQuery.post( ajaxurl, {
+			action: "' . $this->lca . '_dismiss_notice",
+			_ajax_nonce: dismiss_nonce,
+			dismiss_key: dismiss_key,
+			dismiss_time: dismiss_time
+		} );
+
+		if ( dismiss_msg ) {
+			notice.children( "div.notice-dismiss" ).hide();
+			jQuery( this ).closest( "div.notice-message" ).html( dismiss_msg );
+		} else {
+			notice.hide();
+		}
+	} ); 
+</script>' . "\n";
 		}
 
 		public function ajax_dismiss_notice() {
@@ -871,30 +864,22 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			check_ajax_referer( __FILE__, '_ajax_nonce', true );
 
-			/**
-			 * Read arguments.
-			 */
-			foreach ( array( 'key', 'time' ) as $key ) {
+			foreach ( array( 'dismiss_key', 'dismiss_time' ) as $key ) {
 				$dis_info[$key] = sanitize_text_field( filter_input( INPUT_POST, $key ) );
 			}
 
-			if ( empty( $dis_info['key'] ) ) {
+			if ( empty( $dis_info['dismiss_key'] ) ) {
 				die( '-1' );
 			}
 
-			/**
-			 * Site specific user options.
-			 */
-			$user_dismissed = get_user_meta( $user_id, $this->dis_name, true );
+			$user_dismissed = get_user_option( $this->dis_name, $user_id );
 
 			if ( ! is_array( $user_dismissed ) ) {
 				$user_dismissed = array();
 			}
 
-			/**
-			 * Save the message id and expiration time (0 = never).
-			 */
-			$user_dismissed[$dis_info['key']] = empty( $dis_info['time'] ) || ! is_numeric( $dis_info['time'] ) ? 0 : time() + $dis_info['time'];
+			$user_dismissed[$dis_info['dismiss_key']] = empty( $dis_info['dismiss_time'] ) ||
+				! is_numeric( $dis_info['dismiss_time'] ) ? 0 : time() + $dis_info['dismiss_time'];
 
 			update_user_meta( $user_id, $this->dis_name, $user_dismissed );
 
@@ -920,6 +905,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$user_id         = get_current_user_id();
 			$user_notices    =& $this->get_notice_cache( $user_id );
 			$user_notices    = $this->add_update_errors( $user_notices );
+			$user_dismissed  = empty( $user_id ) ? false : get_user_meta( $user_id, $this->dis_name, true );
 			$json_notices    = array();
 			$this->has_shown = true;
 
@@ -937,6 +923,47 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					$shown_msgs[$msg_key] = true;	// avoid duplicates
 
+					if ( ! empty( $payload['dis_time'] ) ) {
+
+						if ( ! isset( $hidden[$msg_type] ) ) {
+							$hidden[$msg_type] = 0;
+						}
+
+						/**
+						 * Check for automatically hidden errors and/or warnings.
+						 */
+						if ( ( $msg_type === 'err' && $this->hide_err ) || ( $msg_type === 'warn' && $this->hide_warn ) ) {
+
+							$payload['hidden'] = true;
+							if ( empty( $payload['silent'] ) ) {
+								$hidden[$msg_type]++;
+							}
+
+						} elseif ( ! empty( $payload['dis_key'] ) && isset( $user_dismissed[$payload['dis_key']] ) ) {
+
+							$now_time = time();
+							$dismiss_time = $user_dismissed[$payload['dis_key']];
+
+							if ( empty( $dismiss_time ) || $dismiss_time > $now_time ) {
+
+								$payload['hidden'] = true;
+								if ( empty( $payload['silent'] ) ) {
+									$hidden[$msg_type]++;
+								}
+
+							} else {	// dismiss has expired
+
+								$dismissed_upd = true;	// update the user meta when done
+								unset( $user_dismissed[$payload['dis_key']] );
+							}
+						}
+					}
+
+					$payload['msg_html'] = $this->get_notice_html( $msg_type, $payload );
+
+					/**
+					 * Add paragraph tags for Gutenberg in case we want to use the 'msg_text' instead of 'msg_html'.
+					 */
 					if ( stripos( $payload['msg_text'], '<p>' ) === false ) {
 						$payload['msg_text'] = '<p>' . $payload['msg_text'] . '</p>';
 					}
