@@ -295,7 +295,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.58.0-dev.4 (2018/04/21)**
+**Version 3.58.0-b.1 (2018/04/22)**
 
 * *New Features*
 	* None
@@ -338,9 +338,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.58.0-dev.4 =
+= 3.58.0-b.1 =
 
-(2018/04/21) Added support for Gutenberg notices. Added a refresh for the SSO metabox when saving a Gutenberg post. Exclude post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
+(2018/04/22) Added support for Gutenberg notices. Added a refresh for the SSO metabox when saving a Gutenberg post. Exclude post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
 
 = 3.57.1 =
 
