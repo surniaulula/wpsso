@@ -598,8 +598,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$msg_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// display block or none
 
 			if ( ! empty( $payload['dis_time'] ) ) {
-				$msg_html .= '<div class="notice-dismiss"><div class="notice-dismiss-text">' . 
-					__( 'Dismiss', $this->text_domain ) . '</div></div><!-- .notice-dismiss -->';
+				$msg_html .= '<button class="notice-dismiss" type="button">' .
+					'<div class="notice-dismiss-text">' . __( 'Dismiss', $this->text_domain ) . '</div>' .
+					'</button><!-- .notice-dismiss -->';
 			}
 
 			if ( ! empty( $payload['label'] ) ) {
@@ -719,14 +720,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.' . $this->lca . '-notice .notice-message .button-highlight:hover {
 					background-color:#c8e6fb;
 				}
-				.' . $this->lca . '-dismissible div.notice-dismiss::before {
+				.' . $this->lca . '-dismissible button.notice-dismiss::before {
 					display:inline-block;
-					margin-right:2px;
 				}
-				.' . $this->lca . '-dismissible div.notice-dismiss {
+				.' . $this->lca . '-dismissible button.notice-dismiss {
 					float:right;
 					position:relative;
-					padding:10px;
+					padding:12px;
 					margin:0;
 					top:0;
 					right:0;
@@ -734,6 +734,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.' . $this->lca . '-dismissible div.notice-dismiss-text {
 					display:inline-block;
 					font-size:12px;
+					margin:2px;
 					vertical-align:top;
 				}
 			';
