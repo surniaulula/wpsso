@@ -303,12 +303,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Added a refresh for the SSO metabox when saving a Gutenberg post.
 * *Improvements*
 	* Changed the "Dismiss" button text in notices with informative label: "Hide", "Always", "1 hour", "1 month", etc.
+	* Added dismiss information to the notification message. Example:
+		* This notice can be dismissed permanently.
+		* This notice can be dismissed for 1 hour.
 * *Bugfixes*
 	* Exclude the complete post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
 * *Developer Notes*
-	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
 	* Refactored SucomNotice class methods to allow fetching notices using a jQuery ajax call.
 	* Moved clearing of saved user notifications to the WordPress 'shutdown' action hook.
+	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
 
 **Version 3.57.1 (2018/04/14)**
 
