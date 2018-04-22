@@ -150,7 +150,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				foreach ( get_users() as $user ) {
 					if ( ! empty( $user-> ID ) ) {	// just in case
 
-						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, true );
+						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, false );	// $global = false
+						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, true );	// $global = true
 	
 						delete_user_meta( $user->ID, WPSSO_META_NAME );
 						delete_user_meta( $user->ID, WPSSO_PREF_NAME );

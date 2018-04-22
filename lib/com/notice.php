@@ -21,7 +21,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $hide_err = false;
 		private $hide_warn = false;
 		private $has_shown = false;
-		private $all_types = array( 'nag', 'err', 'warn', 'upd', 'inf' );
+		private $all_types = array( 'nag', 'err', 'warn', 'upd', 'inf' );	// sort by importance
 		private $ref_cache = array();
 		private $notice_cache = array();
 
@@ -145,7 +145,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					 */
 					$has_p = substr( $msg_text, -4 ) === '</p>' ? true : false;
 
-					$dismiss_transl = __( 'This notice can be dismissed temporarily for a period of %s.', $this->text_domain );
+					$dismiss_transl = __( 'This notice can be dismissed temporarily for %s.', $this->text_domain );
 
 					$msg_text .= $has_p ? '<p>' : ' ';
 					$msg_text .= sprintf( $dismiss_transl, $payload['dismiss_diff'] );
@@ -372,9 +372,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					unset( $user_dismissed[$dismiss_key] );
 
 					if ( empty( $user_dismissed ) ) {
-						delete_user_option( $user_id, $this->dis_name, true );
+						delete_user_option( $user_id, $this->dis_name, false );	// $global = false
+						delete_user_option( $user_id, $this->dis_name, true );	// $global = true
 					} else {
-						update_user_option( $user_id, $this->dis_name, $user_dismissed );
+						update_user_option( $user_id, $this->dis_name, $user_dismissed, false );	// $global = false
 					}
 				}
 			}
@@ -489,9 +490,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 */
 			if ( true === $dismissed_upd && ! empty( $user_id ) ) {
 				if ( empty( $user_dismissed ) ) {
-					delete_user_option( $user_id, $this->dis_name, true );
+					delete_user_option( $user_id, $this->dis_name, false );	// $global = false
+					delete_user_option( $user_id, $this->dis_name, true );	// $global = true
 				} else {
-					update_user_option( $user_id, $this->dis_name, $user_dismissed );
+					update_user_option( $user_id, $this->dis_name, $user_dismissed, false );	// $global = false
 				}
 			}
 
@@ -517,12 +519,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				
 				$payload = array();
+
 				$payload['msg_text'] = _n(
-					'%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s message</a>.',
-					'%1$d important %2$s notices have been hidden and/or dismissed &mdash; <a id="%3$s">unhide and view the %2$s messages</a>.',
+					'%1$d important %2$s notice has been dismissed &mdash; <a id="%3$s">show the %2$s message</a>.',
+					'%1$d important %2$s notices have been dismissed &mdash; <a id="%3$s">show the %2$s messages</a>.',
 					$hidden[$msg_type], $this->text_domain
 				);
+
 				$payload['msg_text'] = sprintf( $payload['msg_text'], $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
+
 				$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_text'] ) );
 
 				echo $this->get_notice_html( $msg_type, $payload );
@@ -570,7 +575,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$user_dismissed[$dismiss_info['dismiss_key']] = empty( $dismiss_info['dismiss_time'] ) ||
 				! is_numeric( $dismiss_info['dismiss_time'] ) ? 0 : time() + $dismiss_info['dismiss_time'];
 
-			update_user_option( $user_id, $this->dis_name, $user_dismissed );
+			update_user_option( $user_id, $this->dis_name, $user_dismissed, false );	// global = false
 
 			die( '1' );
 		}
@@ -856,17 +861,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$custom_style_css = '
 				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice {
-					padding:0;
 					min-height:0;
 					background-color:inherit;
 					box-shadow:none;
 				}
 				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice .notice-label,
-				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice .notice-message {
-					padding:15px;
-				}
-				.' . $this->lca . '-notice.notice {
-					padding:0;
+				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice .notice-message
+				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice .notice-dismiss {
+					margin:0;
+					border:0;
+					background-color:inherit;
 				}
 				.' . $this->lca . '-notice ul {
 					margin:5px 0 5px 40px;
@@ -953,18 +957,20 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.' . $this->lca . '-notice .notice-message .button-highlight:hover {
 					background-color:#c8e6fb;
 				}
-				.' . $this->lca . '-dismissible button.notice-dismiss::before {
+				.' . $this->lca . '-notice .notice-dismiss::before {
 					display:inline-block;
 				}
-				.' . $this->lca . '-dismissible button.notice-dismiss {
+				.' . $this->lca . '-notice .notice-dismiss {
 					float:right;
 					position:relative;
 					padding:12px;
-					margin:0;
+					margin:0 !important;
 					top:0;
 					right:0;
+					min-width:8em;
+					text-align:left;
 				}
-				.' . $this->lca . '-dismissible button.notice-dismiss div.notice-dismiss-text {
+				.' . $this->lca . '-notice .notice-dismiss .notice-dismiss-text {
 					display:inline-block;
 					font-size:12px;
 					margin:2px;

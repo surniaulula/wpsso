@@ -818,7 +818,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$user_id = get_current_user_id();
 							$user = get_userdata( $user_id );
 							$user_name = $user->display_name;
-							delete_user_option( $user_id, WPSSO_DISMISS_NAME, true );
+							delete_user_option( $user_id, WPSSO_DISMISS_NAME, false );	// $global = false
+							delete_user_option( $user_id, WPSSO_DISMISS_NAME, true );	// $global = true
 							$this->p->notice->upd( sprintf( __( 'Hidden notices for user ID #%d "%s" have been cleared.',
 								'wpsso' ), $user_id, $user_name ) );
 							break;

@@ -26,6 +26,6 @@ __( 'The "%1$s" hook with priority %2$d in the "%3$s" filter has incorrectly sen
 __( 'The maximum number of URL redirects (%d) may have been exceeded.', 'wpsso' );
 __( 'The PHP "%s" setting is enabled &mdash; the PHP cURL library cannot follow URL redirects.', 'wpsso' );
 __( 'The "%s" setting is deprecated since PHP version 5.3 and removed from PHP since version 5.4.', 'wpsso' );
-__( 'This notice can be dismissed temporarily for a period of %s.', 'wpsso' );
+__( 'This notice can be dismissed temporarily for %s.', 'wpsso' );
 _x( 'error', 'notification type', 'wpsso' );
 _x( 'warning', 'notification type', 'wpsso' );

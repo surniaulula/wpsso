@@ -802,7 +802,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$meta_key = $state.'_'.$pagehook;
 
 				if ( $force && empty( $box_ids ) ) {
-					delete_user_option( $user_id, $meta_key, true );
+					delete_user_option( $user_id, $meta_key, false );	// $global = false
+					delete_user_option( $user_id, $meta_key, true );	// $global = true
 				}
 
 				$is_changed = false;
@@ -868,7 +869,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				if ( $is_default || $is_changed ) {
-					update_user_option( $user_id, $meta_key, array_unique( $user_opts ), true );
+					update_user_option( $user_id, $meta_key, array_unique( $user_opts ), true );	// $global = true
 				}
 			}
 		}
@@ -901,10 +902,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$meta_key = $state.'_'.$pagehook;
 				if ( false === $user_id ) {
 					foreach ( get_users( array( 'meta_key' => $meta_key ) ) as $user ) {
-						delete_user_option( $user->ID, $meta_key, true );
+						delete_user_option( $user->ID, $meta_key, false );	// $global = false
+						delete_user_option( $user->ID, $meta_key, true );	// $global = true
 					}
 				} elseif ( is_numeric( $user_id ) ) {
-					delete_user_option( $user_id, $meta_key, true );
+					delete_user_option( $user_id, $meta_key, false );	// $global = false
+					delete_user_option( $user_id, $meta_key, true );	// $global = true
 				}
 			}
 		}
