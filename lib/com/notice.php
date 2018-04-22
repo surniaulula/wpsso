@@ -859,11 +859,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function get_notice_style() {
 
-			$plugin_version = WpssoConfig::get_version();
-
 			$cache_md5_pre = $this->p->lca.'_';
 			$cache_exp_secs = DAY_IN_SECONDS;
-			$cache_salt = __METHOD__.'(plugin_version:'.$plugin_version.')';
+			$cache_salt = __METHOD__.'()';
 			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
@@ -1002,11 +1000,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function get_nag_style() {
 
-			$plugin_version = WpssoConfig::get_version();
-
 			$cache_md5_pre = $this->p->lca.'_';
 			$cache_exp_secs = DAY_IN_SECONDS;
-			$cache_salt = __METHOD__.'(plugin_version:'.$plugin_version.')';
+			$cache_salt = __METHOD__.'()';
 			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
 			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
