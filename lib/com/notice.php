@@ -128,12 +128,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$payload['dismiss_diff'] = false;
 			$payload['dismiss_time'] = false;
 
-			/**
-			 * 'dismiss_key' and 'dismiss_time' (true or seconds) are both required to dismiss a notice.
-			 */
-			if ( ! empty( $dismiss_key ) && ! empty( $dismiss_time ) && $this->can_dismiss() ) {
+			if ( $this->can_dismiss() ) {
 
-				$payload['dismiss_time'] = $dismiss_time;
+				$payload['dismiss_time'] = $dismiss_time;	// Maybe false.
 
 				if ( $payload['dismiss_time'] === true ) {
 
@@ -153,6 +150,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$msg_text .= $has_p ? '<p>' : ' ';
 					$msg_text .= sprintf( $dismiss_transl, $payload['dismiss_diff'] );
 					$msg_text .= $has_p ? '</p>' : '';
+
+				} else {
+
+					$payload['dismiss_diff'] = __( 'Hide', $this->text_domain );
 				}
 			}
 
@@ -358,18 +359,18 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return false;
 			}
 
-			// notice has been dismissed
-			if ( isset( $user_dismissed[$dismiss_key] ) ) {
+			if ( isset( $user_dismissed[$dismiss_key] ) ) {	// Notice has been dismissed.
 
 				$now_time = time();
 				$dismiss_time = $user_dismissed[$dismiss_key];
 
 				if ( empty( $dismiss_time ) || $dismiss_time > $now_time ) {
+
 					return true;
 
-				// dismiss time has expired
-				} else {
+				} else {	// Dismiss time has expired.
 					unset( $user_dismissed[$dismiss_key] );
+
 					if ( empty( $user_dismissed ) ) {
 						delete_user_option( $user_id, $this->dis_name, true );
 					} else {
@@ -452,6 +453,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						if ( ( $msg_type === 'err' && $this->hide_err ) || ( $msg_type === 'warn' && $this->hide_warn ) ) {
 
 							$payload['hidden'] = true;
+
 							if ( empty( $payload['silent'] ) ) {
 								$hidden[$msg_type]++;
 							}
@@ -464,13 +466,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 							if ( empty( $dismiss_time ) || $dismiss_time > $now_time ) {
 
 								$payload['hidden'] = true;
+
 								if ( empty( $payload['silent'] ) ) {
 									$hidden[$msg_type]++;
 								}
 
-							} else {	// dismiss has expired
+							} else {	// Dismiss has expired.
 
-								$dismissed_upd = true;	// update the user meta when done
+								$dismissed_upd = true;	// Update the user meta when done.
+
 								unset( $user_dismissed[$payload['dismiss_key']] );
 							}
 						}
@@ -547,7 +551,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				die( '-1' );
 			}
 
-			check_ajax_referer( __FILE__, '_ajax_nonce', true );
+			check_ajax_referer( __FILE__, 'dismiss_nonce', true );
 
 			foreach ( array( 'dismiss_key', 'dismiss_time' ) as $key ) {
 				$dismiss_info[$key] = sanitize_text_field( filter_input( INPUT_POST, $key ) );
@@ -620,6 +624,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						if ( ( $msg_type === 'err' && $this->hide_err ) || ( $msg_type === 'warn' && $this->hide_warn ) ) {
 
 							$payload['hidden'] = true;
+
 							if ( empty( $payload['silent'] ) ) {
 								$hidden[$msg_type]++;
 							}
@@ -632,13 +637,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 							if ( empty( $dismiss_time ) || $dismiss_time > $now_time ) {
 
 								$payload['hidden'] = true;
+
 								if ( empty( $payload['silent'] ) ) {
 									$hidden[$msg_type]++;
 								}
 
-							} else {	// dismiss has expired
+							} else {	// Dismiss has expired.
 
-								$dismissed_upd = true;	// update the user meta when done
+								$dismissed_upd = true;	// Update the user meta when done.
+
 								unset( $user_dismissed[$payload['dismiss_key']] );
 							}
 						}
@@ -710,10 +717,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					break;
 			}
 
-			/**
-			 * 'dismiss_key' and 'dismiss_time' must have a value to create a dismissible notice.
-			 */
-			$is_dismissible = empty( $payload['dismiss_key'] ) || empty( $payload['dismiss_time'] ) ? false : true;
+			$is_dismissible = empty( $payload['dismiss_diff'] ) ? false : true;
 
 			$css_id_attr = empty( $payload['dismiss_key'] ) ? '' : ' id="' . $msg_type . '_' . $payload['dismiss_key'] . '"';
 
@@ -728,13 +732,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 */
 			$style_attr = ' style="' . 
 				( empty( $payload['style'] ) ? '' : $payload['style'] ).
-				( empty( $payload['hidden'] ) ? 'display:block !important;' : 'display:none;' ) . '"';
+				( empty( $payload['hidden'] ) ? 'display:block;' : 'display:none;' ) . '"';
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ).
 				$msg_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// display block or none
 
-			if ( ! empty( $payload['dismiss_time'] ) ) {
+			if ( $is_dismissible ) {
 				$msg_html .= '<button class="notice-dismiss" type="button">' .
 					'<div class="notice-dismiss-text">' . $payload['dismiss_diff'] . '</div>' .
 					'</button><!-- .notice-dismiss -->';
@@ -848,56 +852,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return delete_transient( $cache_id );
 		}
 
-		private function get_notice_script() {
-			return '
-<script type="text/javascript">
-
-	jQuery( document ).on( "click", "#' . $this->lca . '-unhide-notice-err", function() {
-		var notice = jQuery( this ).parents(".' . $this->lca . '-notice.notice-error");
-		jQuery(".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-error").show();
-		notice.hide();
-	} );
-
-	jQuery( document ).on( "click", "#' . $this->lca . '-unhide-notice-warn", function() {
-		var notice = jQuery( this ).parents( ".' . $this->lca . '-notice.notice-warning" );
-		jQuery( ".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-warning" ).show();
-		notice.hide();
-	} );
-
-	jQuery( document ).on( "click", "div.' . $this->lca . '-dismissible > div.notice-dismiss, div.' . $this->lca . '-dismissible .dismiss-on-click", function() {
-
-		var notice        = jQuery( this ).closest( ".' . $this->lca . '-dismissible" );
-		var dismiss_msg   = jQuery( this ).data( "dismiss-msg" );
-		var dismiss_nonce = notice.data( "dismiss-nonce" );
-		var dismiss_key   = notice.data( "dismiss-key" );
-		var dismiss_time  = notice.data( "dismiss-time" );
-
-		jQuery.post( ajaxurl, {
-			action: "' . $this->lca . '_dismiss_notice",
-			_ajax_nonce: dismiss_nonce,
-			dismiss_key: dismiss_key,
-			dismiss_time: dismiss_time
-		} );
-
-		if ( dismiss_msg ) {
-			notice.children( "div.notice-dismiss" ).hide();
-			jQuery( this ).closest( "div.notice-message" ).html( dismiss_msg );
-		} else {
-			notice.hide();
-		}
-	} ); 
-
-</script>' . "\n";
-		}
-
 		private function get_notice_style() {
 
 			$custom_style_css = '
-				body.gutenberg-editor-page .components-notice-list .notice.notice-alt {
-					border:0;
-					padding:0;
-					min-height:0;
-				}
 				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice {
 					padding:0;
 					min-height:0;
@@ -1007,7 +964,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					top:0;
 					right:0;
 				}
-				.' . $this->lca . '-dismissible div.notice-dismiss-text {
+				.' . $this->lca . '-dismissible button.notice-dismiss div.notice-dismiss-text {
 					display:inline-block;
 					font-size:12px;
 					margin:2px;
@@ -1068,6 +1025,50 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			return '<style type="text/css">' . $custom_style_css . '</style>';
+		}
+
+		private function get_notice_script() {
+			return '
+<script type="text/javascript">
+
+	jQuery( document ).on( "click", "#' . $this->lca . '-unhide-notice-err", function() {
+		var notice = jQuery( this ).parents(".' . $this->lca . '-notice.notice-error");
+		jQuery(".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-error").show();
+		notice.hide();
+	} );
+
+	jQuery( document ).on( "click", "#' . $this->lca . '-unhide-notice-warn", function() {
+		var notice = jQuery( this ).parents( ".' . $this->lca . '-notice.notice-warning" );
+		jQuery( ".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-warning" ).show();
+		notice.hide();
+	} );
+
+	jQuery( document ).on( "click", "div.' . $this->lca . '-dismissible > button.notice-dismiss, div.' . $this->lca . '-dismissible .dismiss-on-click", function() {
+
+		var notice        = jQuery( this ).closest( ".' . $this->lca . '-dismissible" );
+		var dismiss_msg   = jQuery( this ).data( "dismiss-msg" );
+		var dismiss_nonce = notice.data( "dismiss-nonce" );
+		var dismiss_key   = notice.data( "dismiss-key" );
+		var dismiss_time  = notice.data( "dismiss-time" );
+
+		if ( dismiss_key ) {
+			jQuery.post( ajaxurl, {
+				action: "' . $this->lca . '_dismiss_notice",
+				dismiss_nonce: dismiss_nonce,
+				dismiss_key: dismiss_key,
+				dismiss_time: dismiss_time
+			} );
+		}
+
+		if ( dismiss_msg ) {
+			notice.children( "button.notice-dismiss" ).hide();
+			jQuery( this ).closest( "div.notice-message" ).html( dismiss_msg );
+		} else {
+			notice.hide();
+		}
+	} ); 
+
+</script>' . "\n";
 		}
 	}
 }

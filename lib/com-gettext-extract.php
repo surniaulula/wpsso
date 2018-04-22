@@ -12,6 +12,7 @@ __( 'Error removing cache file %s.', 'wpsso' );
 __( 'Failed to create the %s cache folder.', 'wpsso' );
 __( 'Failed to open the cache file %s for reading.', 'wpsso' );
 __( 'Failed to open the cache file %s for writing.', 'wpsso' );
+__( 'Hide', 'wpsso' );
 __( 'Incorrect webpage output:', 'wpsso' );
 __( 'Notice', 'wpsso' );
 __( 'PHP cURL library is missing &mdash; contact your hosting provider to have the cURL library installed.', 'wpsso' );
