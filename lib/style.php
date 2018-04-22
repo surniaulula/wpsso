@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$plugin_urlpath.'css/com/settings-page.' . $css_file_ext,
 					array(), $plugin_version );
 
-			if ( $custom_style_css = get_transient( $cache_id ) ) {	// not empty
+			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'settings page style retrieved from cache' );
 				}
@@ -191,7 +191,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$custom_style_css = apply_filters( $this->p->lca.'_settings_page_custom_style_css',
 				$custom_style_css, $hook_name, $plugin_urlpath, $plugin_version );
 	
-			$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
+			if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
+				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
+			}
 
 			set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 

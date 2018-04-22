@@ -21,7 +21,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $hide_err = false;
 		private $hide_warn = false;
 		private $has_shown = false;
-		private $all_types = array( 'nag', 'err', 'warn', 'upd', 'inf' );	// sort by importance
+		private $all_types = array( 'nag', 'err', 'warn', 'upd', 'inf' );	// Sort by importance.
 		private $ref_cache = array();
 		private $notice_cache = array();
 
@@ -29,7 +29,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
 
-			static $do_once = null;	// just in case
+			static $do_once = null;	// Just in case.
 
 			if ( null === $do_once ) {
 
@@ -859,6 +859,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function get_notice_style() {
 
+			$plugin_version = WpssoConfig::get_version();
+
+			$cache_md5_pre = $this->p->lca.'_';
+			$cache_exp_secs = DAY_IN_SECONDS;
+			$cache_salt = __METHOD__.'(plugin_version:'.$plugin_version.')';
+			$cache_id = $cache_md5_pre.md5( $cache_salt );
+
+			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
+				return '<style type="text/css">' . $custom_style_css . '</style>';
+			}
+
 			$custom_style_css = '
 				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice {
 					min-height:0;
@@ -967,8 +978,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					margin:0 !important;
 					top:0;
 					right:0;
+					/*
 					min-width:8em;
 					text-align:left;
+					*/
 				}
 				.' . $this->lca . '-notice .notice-dismiss .notice-dismiss-text {
 					display:inline-block;
@@ -982,13 +995,26 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
 			}
 
+			set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
+
 			return '<style type="text/css">' . $custom_style_css . '</style>';
 		}
 
 		private function get_nag_style() {
 
-			$custom_style_css = '';
+			$plugin_version = WpssoConfig::get_version();
+
+			$cache_md5_pre = $this->p->lca.'_';
+			$cache_exp_secs = DAY_IN_SECONDS;
+			$cache_salt = __METHOD__.'(plugin_version:'.$plugin_version.')';
+			$cache_id = $cache_md5_pre.md5( $cache_salt );
+
+			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
+				return '<style type="text/css">' . $custom_style_css . '</style>';
+			}
+
 			$uca = strtoupper( $this->lca );
+			$custom_style_css = '';
 
 			if ( isset( $this->p->cf['nag_colors'] ) ) {
 				foreach ( $this->p->cf['nag_colors'] as $css_class => $nag_colors ) {
@@ -1029,6 +1055,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
 				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
 			}
+
+			set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 
 			return '<style type="text/css">' . $custom_style_css . '</style>';
 		}
