@@ -1,10 +1,10 @@
 <?php die( 'These aren\'t the droids you\'re looking for...' );
 // extract of translatable text strings from common library classes
 __( 'All WordPress filter hooks must return their text, not send it to the webpage output.', 'wpsso' );
+__( 'Always', 'wpsso' );
 __( 'BEGIN OUTPUT', 'wpsso' );
 __( 'Cache file %s is not readable.', 'wpsso' );
 __( 'Cache folder %s is not writable.', 'wpsso' );
-__( 'Dismiss', 'wpsso' );
 __( 'edit', 'wpsso' );
 __( 'END OUTPUT', 'wpsso' );
 __( 'Error connecting to %1$s for caching (HTTP code %2$d).', 'wpsso' );

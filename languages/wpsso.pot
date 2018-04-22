@@ -947,7 +947,7 @@ msgstr ""
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: lib/com/bfo.php:250 lib/com-gettext-extract.php:4
+#: lib/com/bfo.php:250 lib/com-gettext-extract.php:5
 msgid "BEGIN OUTPUT"
 msgstr ""
 
@@ -999,7 +999,7 @@ msgstr ""
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/com/cache.php:527 lib/com-gettext-extract.php:5
+#: lib/com/cache.php:527 lib/com-gettext-extract.php:6
 msgid "Cache file %s is not readable."
 msgstr ""
 
@@ -1011,7 +1011,7 @@ msgstr ""
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: lib/com/cache.php:634 lib/com-gettext-extract.php:6
+#: lib/com/cache.php:634 lib/com-gettext-extract.php:7
 msgid "Cache folder %s is not writable."
 msgstr ""
 
@@ -1019,29 +1019,33 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/notice.php:146 lib/com-gettext-extract.php:28
+#: lib/com/notice.php:140 lib/com-gettext-extract.php:4
+msgid "Always"
+msgstr ""
+
+#: lib/com/notice.php:151 lib/com-gettext-extract.php:28
 msgid "This notice can be dismissed temporarily for a period of %s."
 msgstr ""
 
-#: lib/com/notice.php:293 lib/com-gettext-extract.php:8
+#: lib/com/notice.php:296 lib/com-gettext-extract.php:8
 msgid "edit"
 msgstr ""
 
-#: lib/com/notice.php:294 lib/com-gettext-extract.php:21
+#: lib/com/notice.php:297 lib/com-gettext-extract.php:21
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/notice.php:504 lib/com-gettext-extract.php:29
+#: lib/com/notice.php:507 lib/com-gettext-extract.php:29
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:505 lib/com-gettext-extract.php:30
+#: lib/com/notice.php:508 lib/com-gettext-extract.php:30
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:513
+#: lib/com/notice.php:516
 msgid ""
 "%1$d important %2$s notice has been hidden and/or dismissed &mdash; <a id="
 "\"%3$s\">unhide and view the %2$s message</a>."
@@ -1050,10 +1054,6 @@ msgid_plural ""
 "\"%3$s\">unhide and view the %2$s messages</a>."
 msgstr[0] ""
 msgstr[1] ""
-
-#: lib/com/notice.php:602 lib/com-gettext-extract.php:7
-msgid "Dismiss"
-msgstr ""
 
 #: lib/com/util.php:1476
 msgid "The plugin information for \"%s\" contains an invalid download link."

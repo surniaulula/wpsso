@@ -237,8 +237,8 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 								$this->p->notice->err( $error_msg );
 							}
 						} else {
-							$lib_com_dir = trailingslashit( realpath( dirname( __FILE__ ) ) );
-							require_once $lib_com_dir . 'notice.php';	// load the SucomNotice class
+							$lib_dir = trailingslashit( realpath( dirname( __FILE__ ) ) );
+							require_once $lib_dir . 'com/notice.php';	// load the SucomNotice class
 							$notice = new SucomNotice( $this->p, $this->lca, $this->text_domain, $this->label_transl );
 							if ( $notice->is_admin_pre_notices() ) {
 								$notice->err( $error_msg );
