@@ -860,10 +860,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			$this->add_footer_hooks();	// add add-on name and version to settings page footer
+			$this->add_footer_hooks();	// Include add-on name and version to settings page footer.
 			$this->add_plugin_hooks();
-			$this->add_side_meta_boxes();	// add before main metaboxes
-			$this->add_meta_boxes();	// add last to move duplicate side metaboxes
+			$this->add_side_meta_boxes();	// Add side metaboxes before main metaboxes.
+			$this->add_meta_boxes();	// Add last to move any duplicate side metaboxes.
 		}
 
 		protected function add_footer_hooks() {

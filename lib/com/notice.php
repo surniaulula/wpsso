@@ -128,32 +128,37 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$payload['dismiss_diff'] = false;
 			$payload['dismiss_time'] = false;
 
-			if ( $this->can_dismiss() ) {
+			/**
+			 * Add dismiss text for dismiss button and notice message.
+			 */
+			if ( $msg_type !== 'nag' && $this->can_dismiss() ) {	// Do not allow dismiss of nag messages.
 
 				$payload['dismiss_time'] = $dismiss_time;	// Maybe false.
+
+				$msg_dismiss_transl = false;
 
 				if ( $payload['dismiss_time'] === true ) {
 
 					$payload['dismiss_diff'] = __( 'Always', $this->text_domain );
 
+					$msg_dismiss_transl = __( 'This notice can be dismissed permanently.', $this->text_domain );
+
 				} elseif ( is_numeric( $payload['dismiss_time'] ) ) {
 
 					$payload['dismiss_diff'] = human_time_diff( 0, $payload['dismiss_time'] );
 
-					/**
-					 * If the message ends with a paragraph tag, add text as a paragraph
-					 */
-					$has_p = substr( $msg_text, -4 ) === '</p>' ? true : false;
-
-					$dismiss_transl = __( 'This notice can be dismissed temporarily for %s.', $this->text_domain );
-
-					$msg_text .= $has_p ? '<p>' : ' ';
-					$msg_text .= sprintf( $dismiss_transl, $payload['dismiss_diff'] );
-					$msg_text .= $has_p ? '</p>' : '';
+					$msg_dismiss_transl = __( 'This notice can be dismissed for %s.', $this->text_domain );
 
 				} else {
 
 					$payload['dismiss_diff'] = __( 'Hide', $this->text_domain );
+				}
+
+				if ( $msg_dismiss_transl ) {
+					$msg_end_p = substr( $msg_text, -4 ) === '</p>' ? true : false;
+					$msg_text .= $msg_end_p ? '<p>' : ' ';
+					$msg_text .= sprintf( $msg_dismiss_transl, $payload['dismiss_diff'] );
+					$msg_text .= $msg_end_p ? '</p>' : '';
 				}
 			}
 
