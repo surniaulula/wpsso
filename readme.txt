@@ -295,20 +295,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 3.58.0-b.1 (2018/04/22)**
+**Version 4.0.0-b.1 (2018/04/22)**
 
 * *New Features*
-	* None
+	* Gutenberg support added:
+		* Added support for jQuery based Gutenberg notices.
+		* Added a refresh for the SSO metabox when saving a Gutenberg post.
 * *Improvements*
-	* Added support for Gutenberg notices.
-	* Added a refresh for the Social and Search Optimization metabox when saving a Gutenberg post.
-	* Exclude post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
+	* Changed the "Dismiss" button text in notices with informative label: "Hide", "Always", "1 hour", "1 month", etc.
 * *Bugfixes*
-	* None
+	* Exclude the complete post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
 * *Developer Notes*
 	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
-	* Moved clearing of saved user notifications to the WordPress 'shutdown' action hook.
 	* Refactored SucomNotice class methods to allow fetching notices using a jQuery ajax call.
+	* Moved clearing of saved user notifications to the WordPress 'shutdown' action hook.
 
 **Version 3.57.1 (2018/04/14)**
 
@@ -338,9 +338,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 3.58.0-b.1 =
+= 4.0.0-b.1 =
 
-(2018/04/22) Added support for Gutenberg notices. Added a refresh for the SSO metabox when saving a Gutenberg post. Exclude post content from Schema markup for WooCommerce cart, checkout, and account pages (Pro version).
+(2018/04/22) Gutenberg support added: Added support for jQuery based Gutenberg notices. Added a refresh for the SSO metabox when saving a Gutenberg post.
 
 = 3.57.1 =
 
