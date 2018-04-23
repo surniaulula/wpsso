@@ -1052,6 +1052,28 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $value;
 		}
 
+		public static function is_doing_block_editor( $post_type ) {
+
+			$doing_block_editor = false;
+
+			if ( function_exists( 'gutenberg_can_edit_post_type' ) && gutenberg_can_edit_post_type( $post_type ) ) {
+
+				if ( ! empty( $_REQUEST['gutenberg_meta_boxes'] ) ) {
+					$doing_block_editor = true;
+				} elseif ( ! empty( $_REQUEST['meta_box'] ) ) {
+					$doing_block_editor = true;
+				} elseif ( ! isset( $_REQUEST['classic-editor'] ) ) {
+					$doing_block_editor = true;
+				}
+			}
+
+			if ( ! defined( 'DOING_BLOCK_EDITOR' ) ) {
+				define( 'DOING_BLOCK_EDITOR', $doing_block_editor );
+			}
+
+			return $doing_block_editor;
+		}
+
 		public static function is_https( $url = '' ) {
 			static $local_cache = array();
 			if ( isset( $local_cache[$url] ) ) {

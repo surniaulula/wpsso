@@ -524,6 +524,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod = $this->get_mod( $post_id );
 
+			/**
+			 * $read_cache is false to generate notices etc.
+			 */
 			WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
 			WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
 
@@ -596,16 +599,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * Signal that the block editor is being used, so the display of notices can be skipped.
+			 * Define the DOING_BLOCK_EDITOR constant.
 			 */
-			if ( function_exists( 'gutenberg_can_edit_post_type' ) && 
-				gutenberg_can_edit_post_type( $post_obj->post_type ) &&
-					! isset( $_REQUEST['classic-editor'] ) ) {
-
-				if ( ! defined( 'DOING_BLOCK_EDITOR' ) ) {
-					define( 'DOING_BLOCK_EDITOR', true );
-				}
-			}
+			SucomUtil::is_doing_block_editor( $post_obj->post_type );
 
 			$mod = $this->get_mod( $post_id );
 
