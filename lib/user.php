@@ -336,6 +336,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 			}
 
+			WpssoMeta::$head_meta_tags = array();
+
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
 			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_user', $add_metabox, $user_id );
 
@@ -371,9 +373,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						}
 					}
 				}
-
-			} else {
-				WpssoMeta::$head_meta_tags = array();
 			}
 
 			$action_query = $this->p->lca.'-action';

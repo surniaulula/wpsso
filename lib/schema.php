@@ -2078,6 +2078,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return false;
 		}
 
+		public static function delete_mod_cache_data( $mod ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+				$wpsso->debug->mark();
+			}
+
+			$cache_md5_pre = $wpsso->lca.'_j_';
+			$cache_salt = 'WpssoSchema::get_mod_cache_data('.SucomUtil::get_mod_salt( $mod ).')';
+			$cache_id = $cache_md5_pre.md5( $cache_salt );
+
+			return delete_transient( $cache_id );
+		}
+
 		/**
 		 * Add Single Methods:
 		 *

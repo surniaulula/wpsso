@@ -601,7 +601,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Define the DOING_BLOCK_EDITOR constant.
 			 */
-			SucomUtil::is_doing_block_editor( $post_obj->post_type );
+			$doing_block_editor = SucomUtil::is_doing_block_editor( $post_obj->post_type );
 
 			$mod = $this->get_mod( $post_id );
 
@@ -613,13 +613,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 			}
 
+			WpssoMeta::$head_meta_tags = array();
+
 			if ( $post_obj->post_status === 'auto-draft' ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head meta skipped: post_status is auto-draft' );
 				}
 
-				WpssoMeta::$head_meta_tags = array();
+			} elseif ( $doing_block_editor && ! empty( $_REQUEST['meta_box'] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'head meta skipped: doing block editor for meta box' );
+				}
 
 			} else {
 
@@ -673,9 +679,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							}
 						}
 					}
-
-				} else {
-					WpssoMeta::$head_meta_tags = array();
 				}
 			}
 

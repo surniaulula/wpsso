@@ -428,7 +428,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $html;
 		}
 
-		// $r_cache is false when called by post/term/user load_meta_page() method
+		/**
+		 * $r_cache is false when called by the post/term/user load_meta_page() method.
+		 */
 		public function get_head_array( $use_post = false, &$mod = false, $r_cache = true, &$mt_og = array() ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -482,7 +484,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $cache_exp_secs > 0 ) {
 
-				if ( $r_cache ) {	// false when called by post/term/user load_meta_page() method
+				if ( $r_cache ) {	// False when called by the post/term/user load_meta_page() method.
 
 					$cache_array = get_transient( $cache_id );
 
@@ -507,9 +509,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						}
 					}
 				} else {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'read cache for head is disabled' );
 					}
+
+					/**
+					 * Force a refresh of the schema json data cache.
+					 */
+					WpssoSchema::delete_mod_cache_data( $mod );
 				}
 			} else {
 				if ( $this->p->debug->enabled ) {
@@ -517,10 +525,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			// set a general reference value for admin notices
+			/**
+			 * Set a general reference value for admin notices.
+			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod ) : false;
 
-			// define the author_id (if one is available)
+			/**
+			 * Define the author_id (if one is available).
+			 */
 			$author_id = WpssoUser::get_author_id( $mod );
 
 			if ( $this->p->debug->enabled ) {
@@ -628,7 +640,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			// unset the general reference value for admin notices
+			/**
+			 * Unset the general reference value for admin notices.
+			 */
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			if ( $this->p->debug->enabled ) {

@@ -331,6 +331,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 			}
 
+			WpssoMeta::$head_meta_tags = array();
+
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
 			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_term', $add_metabox, $this->query_term_id );
 
@@ -366,9 +368,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						}
 					}
 				}
-
-			} else {
-				WpssoMeta::$head_meta_tags = array();
 			}
 
 			$action_query = $this->p->lca.'-action';
