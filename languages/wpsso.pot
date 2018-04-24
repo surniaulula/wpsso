@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.0.0-b.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.0.0-b.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1027,33 +1027,34 @@ msgstr ""
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:150 lib/com-gettext-extract.php:29
-msgid "This notice can be dismissed for %s."
-msgstr ""
-
-#: lib/com/notice.php:154 lib/com-gettext-extract.php:15
+#: lib/com/notice.php:148 lib/com/notice.php:158 lib/com/notice.php:534
+#: lib/com/notice.php:723 lib/com-gettext-extract.php:15
 msgid "Hide"
 msgstr ""
 
-#: lib/com/notice.php:302 lib/com-gettext-extract.php:8
+#: lib/com/notice.php:154 lib/com-gettext-extract.php:29
+msgid "This notice can be dismissed for %s."
+msgstr ""
+
+#: lib/com/notice.php:306 lib/com-gettext-extract.php:8
 msgid "edit"
 msgstr ""
 
-#: lib/com/notice.php:303 lib/com-gettext-extract.php:22
+#: lib/com/notice.php:307 lib/com-gettext-extract.php:22
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/notice.php:518 lib/com-gettext-extract.php:31
+#: lib/com/notice.php:524 lib/com/notice.php:713 lib/com-gettext-extract.php:31
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:519 lib/com-gettext-extract.php:32
+#: lib/com/notice.php:525 lib/com/notice.php:714 lib/com-gettext-extract.php:32
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:528
+#: lib/com/notice.php:536 lib/com/notice.php:725
 msgid ""
 "%1$d important %2$s notice has been dismissed &mdash; <a id=\"%3$s\">show "
 "the %2$s message</a>."
@@ -2595,7 +2596,7 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:378 lib/media.php:527 lib/media.php:1213
+#: lib/media.php:378 lib/media.php:530 lib/media.php:1216
 #: lib/pro/util/checkimgdims.php:89
 msgid "Media Library"
 msgstr ""
@@ -2606,60 +2607,60 @@ msgid ""
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:382 lib/media.php:530
+#: lib/media.php:382 lib/media.php:533
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:397
+#: lib/media.php:398
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:420
+#: lib/media.php:422
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:529
+#: lib/media.php:532
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:532
+#: lib/media.php:535
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:893
+#: lib/media.php:896
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1219 lib/pro/media/ngg.php:129
+#: lib/media.php:1222 lib/pro/media/ngg.php:130
 #: lib/pro/util/checkimgdims.php:91
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1229
+#: lib/media.php:1232
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1297
+#: lib/media.php:1301
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1324
+#: lib/media.php:1329
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -5080,15 +5081,15 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:128 lib/pro/media/ngg.php:1234
+#: lib/pro/media/ngg.php:129 lib/pro/media/ngg.php:1235
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/pro/media/ngg.php:132 lib/pro/util/checkimgdims.php:95
+#: lib/pro/media/ngg.php:133 lib/pro/util/checkimgdims.php:95
 msgid "cropped"
 msgstr ""
 
-#: lib/pro/media/ngg.php:133 lib/pro/util/checkimgdims.php:96
+#: lib/pro/media/ngg.php:134 lib/pro/util/checkimgdims.php:96
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the "
 "required %4$s image dimensions."
