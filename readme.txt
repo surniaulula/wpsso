@@ -292,7 +292,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.0.0-b.3 (2018/04/24)**
+**Version 4.0.0-rc.1 (2018/04/25)**
 
 * *New Features*
 	* Gutenberg support added:
@@ -338,9 +338,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.0.0-b.3 =
+= 4.0.0-rc.1 =
 
-(2018/04/24) Gutenberg support added: Added support for jQuery based Gutenberg notices. Added a refresh for the SSO metabox when saving a Gutenberg post.
+(2018/04/25) Gutenberg support added: Added support for jQuery based Gutenberg notices. Added a refresh for the SSO metabox when saving a Gutenberg post.
 
 = 3.57.1 =
 
