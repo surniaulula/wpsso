@@ -171,7 +171,6 @@ We're here to help and answer any questions you may have:
 * [Uninstall the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/?utm_source=wpsso-readme)
 * [Performance Tuning](https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/?utm_source=wpsso-readme)
 * [Debugging and Problem Solving](https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/?utm_source=wpsso-readme)
-* [Migrate from NextGEN Facebook to WPSSO Core](https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/?utm_source=wpsso-readme)
 * [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/?utm_source=wpsso-readme)
 
 <h3>Plugin Setup</h3>
@@ -190,7 +189,6 @@ We're here to help and answer any questions you may have:
 * [How can I fix a PHP fatal "out of memory" error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/)
 * [How can I fix an "HTTP error" when uploading images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/)
 * [How can I have smaller dimensions for the default image?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-have-smaller-dimensions-for-the-default-image/)
-* [How can I migrate from NextGEN Facebook to WPSSO?](https://wpsso.com/docs/plugins/wpsso/installation/migrate-from-ngfb/)
 * [How can I see what the Facebook crawler sees?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/)
 * [How can I share a single NextGEN Gallery image?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-share-a-single-nextgen-gallery-image/)
 * [How do I attach an image without showing it on the webpage?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-attach-an-image-without-showing-it-on-the-webpage/)
@@ -201,7 +199,6 @@ We're here to help and answer any questions you may have:
 * [How does WPSSO Core find / detect / select images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/)
 * [How does WPSSO Core find / detect / select videos?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/)
 * [W3C says "there is no attribute 'property'"](https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
-* [What is the difference between NextGEN Facebook and WPSSO Core?](https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-ngfb-and-wpsso/)
 * [What is the difference between the Free and Pro versions?](https://wpsso.com/docs/plugins/wpsso/faqs/what-is-the-difference-between-the-free-and-pro-versions/)
 * [Why are some HTML elements missing / misaligned / different?](https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/)
 * [Why does Facebook play videos instead of linking them?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-play-videos-instead-of-linking-them/)
