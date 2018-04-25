@@ -1027,8 +1027,8 @@ msgstr ""
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:148 lib/com/notice.php:158 lib/com/notice.php:534
-#: lib/com/notice.php:723 lib/com-gettext-extract.php:15
+#: lib/com/notice.php:148 lib/com/notice.php:158 lib/com/notice.php:536
+#: lib/com/notice.php:725 lib/com-gettext-extract.php:15
 msgid "Hide"
 msgstr ""
 
@@ -1036,25 +1036,25 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:306 lib/com-gettext-extract.php:8
+#: lib/com/notice.php:308 lib/com-gettext-extract.php:8
 msgid "edit"
 msgstr ""
 
-#: lib/com/notice.php:307 lib/com-gettext-extract.php:22
+#: lib/com/notice.php:309 lib/com-gettext-extract.php:22
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/notice.php:524 lib/com/notice.php:713 lib/com-gettext-extract.php:31
+#: lib/com/notice.php:526 lib/com/notice.php:715 lib/com-gettext-extract.php:31
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:525 lib/com/notice.php:714 lib/com-gettext-extract.php:32
+#: lib/com/notice.php:527 lib/com/notice.php:716 lib/com-gettext-extract.php:32
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:536 lib/com/notice.php:725
+#: lib/com/notice.php:538 lib/com/notice.php:727
 msgid ""
 "%1$d important %2$s notice has been dismissed &mdash; <a id=\"%3$s\">show "
 "the %2$s message</a>."
@@ -5787,26 +5787,26 @@ msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""
 
-#: wpsso.php:344
+#: wpsso.php:345
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:359
+#: wpsso.php:360
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:367
+#: wpsso.php:368
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:368
+#: wpsso.php:369
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

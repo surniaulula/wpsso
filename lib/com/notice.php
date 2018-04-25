@@ -275,12 +275,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		public function get_ref( $idx = false, $prefix = '', $suffix = '' ) {
-			$refs = end( $this->ref_cache );	// get the last reference added
+		public function get_ref( $idx = false, $text_prefix = '', $text_suffix = '' ) {
+
+			$refs = end( $this->ref_cache );	// Get the last reference added.
+
 			if ( $idx === 'edit' ) {
 				if ( isset( $refs['mod'] ) ) {
 					if ( $refs['mod']['is_post'] && $refs['mod']['id'] ) {
-						return $prefix.get_edit_post_link( $refs['mod']['id'], false ) . $suffix;	// $display is false
+						return $text_prefix . get_edit_post_link( $refs['mod']['id'], false ) . $text_suffix;	// $display is false.
 					} else {
 						return '';
 					}
@@ -289,7 +291,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			} elseif ( $idx !== false ) {
 				if ( isset( $refs[$idx] ) ) {
-					return $prefix . $refs[$idx] . $suffix;
+					return $text_prefix . $refs[$idx] . $text_suffix;
 				} else {
 					null;
 				}

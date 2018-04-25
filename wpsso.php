@@ -336,6 +336,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$warn_msg = '';
 				$info = $this->cf['plugin']['wpsso'];
 				$dismiss_key = 'debug-mode-is-active';
+				$dismiss_time = HOUR_IN_SECONDS;
 
 				if ( $this->debug->is_enabled( 'wp' ) ) {
 					$this->debug->log( 'WP debug log mode is active' );
@@ -366,7 +367,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						// translators: %s is the short plugin name
 						$warn_msg .= sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
 							'wpsso' ), $info['short'] ) . ' ' . __( 'Please disable debug mode when debugging is complete.', 'wpsso' );
-						$this->notice->warn( $warn_msg, true, $dismiss_key, HOUR_IN_SECONDS );
+						$this->notice->warn( $warn_msg, true, $dismiss_key, $dismiss_time );
 					}
 					$this->util->disable_cache_filters();
 				}
