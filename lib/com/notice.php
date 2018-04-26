@@ -818,6 +818,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ).
+				( empty( $payload['silent'] ) ? '' : $this->lca . '-silent ' ).
 				$msg_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// display block or none
 
 			if ( $is_dismissible ) {
@@ -1139,15 +1140,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 <script type="text/javascript">
 
 	jQuery( document ).on( "click", "#' . $this->lca . '-unhide-notice-err", function() {
-		var notice = jQuery( this ).parents(".' . $this->lca . '-notice.notice-error");
-		jQuery(".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-error").show();
-		notice.hide();
+		jQuery( ".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-error" ).not( ".' . $this->lca . '-silent" ).show();
+		jQuery( this ).parents(".' . $this->lca . '-notice.notice-error").hide();
 	} );
 
 	jQuery( document ).on( "click", "#' . $this->lca . '-unhide-notice-warn", function() {
-		var notice = jQuery( this ).parents( ".' . $this->lca . '-notice.notice-warning" );
-		jQuery( ".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-warning" ).show();
-		notice.hide();
+		jQuery( ".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-warning" ).not( ".' . $this->lca . '-silent" ).show();
+		jQuery( this ).parents( ".' . $this->lca . '-notice.notice-warning" ).hide();
 	} );
 
 	jQuery( document ).on( "click", "div.' . $this->lca . '-dismissible > button.notice-dismiss, div.' . $this->lca . '-dismissible .dismiss-on-click", function() {
