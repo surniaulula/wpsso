@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 3.56.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-04-25 09:29-0600\n"
-"PO-Revision-Date: 2018-04-25 09:30-0600\n"
+"PO-Revision-Date: 2018-04-25 09:41-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -674,7 +674,7 @@ msgstr "C'est génial!"
 
 #: lib/admin.php:2377
 msgid "Could I ask you for a small favor? Would you rate the %s plugin on WordPress.org?"
-msgstr "Puis-je demander une petite faveur? Pouvez vous noter l'extension %s sur WordPress.org ?"
+msgstr "Puis-je demander une petite faveur? Pouvez vous noter l'extension %s sur WordPress.org?"
 
 #: lib/admin.php:2380
 msgid "Your rating will encourage us to keep improving %s and help new WordPress users find the plugin as well."
