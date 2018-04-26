@@ -367,7 +367,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						// translators: %s is the short plugin name
 						$warn_msg .= sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
 							'wpsso' ), $info['short'] ) . ' ' . __( 'Please disable debug mode when debugging is complete.', 'wpsso' );
-						$this->notice->warn( $warn_msg, true, $dismiss_key, $dismiss_time );
+						$this->notice->warn( $warn_msg, true, $dismiss_key, $dismiss_time, true );	// $no_unhide is true
 					}
 					$this->util->disable_cache_filters();
 				}

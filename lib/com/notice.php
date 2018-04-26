@@ -107,8 +107,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->log( 'err', $msg_text, $user_id, $dismiss_key, $dismiss_time );
 		}
 
-		public function warn( $msg_text, $user_id = true, $dismiss_key = false, $dismiss_time = false, $silent = false ) {
-			$payload = array( 'silent' => $silent ? true : false );
+		public function warn( $msg_text, $user_id = true, $dismiss_key = false, $dismiss_time = false, $no_unhide = false ) {
+			$payload = array( 'no-unhide' => $no_unhide ? true : false );
 			$this->log( 'warn', $msg_text, $user_id, $dismiss_key, $dismiss_time, $payload );
 		}
 
@@ -466,7 +466,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 							$payload['hidden'] = true;
 
-							if ( empty( $payload['silent'] ) ) {
+							if ( empty( $payload['no-unhide'] ) ) {
 								$hidden[$msg_type]++;
 							}
 
@@ -479,7 +479,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 								$payload['hidden'] = true;
 
-								if ( empty( $payload['silent'] ) ) {
+								if ( empty( $payload['no-unhide'] ) ) {
 									$hidden[$msg_type]++;
 								}
 
@@ -655,7 +655,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 							$payload['hidden'] = true;
 
-							if ( empty( $payload['silent'] ) ) {
+							if ( empty( $payload['no-unhide'] ) ) {
 								$hidden[$msg_type]++;
 							}
 
@@ -668,7 +668,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 								$payload['hidden'] = true;
 
-								if ( empty( $payload['silent'] ) ) {
+								if ( empty( $payload['no-unhide'] ) ) {
 									$hidden[$msg_type]++;
 								}
 
@@ -818,7 +818,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ).
-				( empty( $payload['silent'] ) ? '' : $this->lca . '-silent ' ).
+				( empty( $payload['no-unhide'] ) ? '' : $this->lca . '-no-unhide ' ).
 				$wp_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// display block or none
 
 			if ( $is_dismissible ) {
@@ -1140,12 +1140,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 <script type="text/javascript">
 
 	jQuery( document ).on( "click", "#' . $this->lca . '-unhide-notice-err", function() {
-		jQuery( ".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-error" ).not( ".' . $this->lca . '-silent" ).show();
+		jQuery( ".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-error" ).not( ".' . $this->lca . '-no-unhide" ).show();
 		jQuery( this ).parents(".' . $this->lca . '-notice.notice-error").hide();
 	} );
 
 	jQuery( document ).on( "click", "#' . $this->lca . '-unhide-notice-warn", function() {
-		jQuery( ".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-warning" ).not( ".' . $this->lca . '-silent" ).show();
+		jQuery( ".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-warning" ).not( ".' . $this->lca . '-no-unhide" ).show();
 		jQuery( this ).parents( ".' . $this->lca . '-notice.notice-warning" ).hide();
 	} );
 

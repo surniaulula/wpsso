@@ -2489,9 +2489,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'version_url' => WpssoConfig::$cf[$key]['version_url'],
 							) );
 
-							$dismiss_key = 'notice-recommend-version-' . $this->p->lca . '-' . $version . '-' . $app_label . '-' . $app_version;
+							$dismiss_key  = 'notice-recommend-version-' . $this->p->lca . '-' . $version . '-' . $app_label . '-' . $app_version;
+							$dismiss_time = MONTH_IN_SECONDS;
 
-							$this->p->notice->warn( $warn_msg, true, $dismiss_key, MONTH_IN_SECONDS, true );	// $silent = true
+							$this->p->notice->warn( $warn_msg, true, $dismiss_key, $dismiss_time, true );	// $no_unhide is true
 						}
 					}
 				}

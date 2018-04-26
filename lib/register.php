@@ -219,7 +219,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
 				}
 
-				deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent = true
+				deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent is true
 
 				// translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
 				$error_msg = sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',

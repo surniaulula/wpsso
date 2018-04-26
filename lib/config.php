@@ -1785,7 +1785,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'data.set' => 'https://schema.org/DataSet',
 							'digital.document' => 'https://schema.org/DigitalDocument',
 							'episode' => 'https://schema.org/Episode',
-							'game' => 'https://schema.org/Game',
+							'game' => array(
+								'game' => 'https://schema.org/Game',
+								'video.game' => 'https://schema.org/VideoGame',
+							),
+							'howto' => array(
+								'howto' => 'https://schema.org/HowTo',
+								'recipe' => 'https://schema.org/Recipe',
+							),
 							'map' => 'https://schema.org/Map',
 							'media.object' => array(
 								'audio.object' => 'https://schema.org/AudioObject',
@@ -1811,7 +1818,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'publication.issue' => 'https://schema.org/PublicationIssue',
 							'publication.volume' => 'https://schema.org/PublicationVolume',
 							'question' => 'https://schema.org/Question',
-							'recipe' => 'https://schema.org/Recipe',
 							'review' => array(
 								'review' => 'https://schema.org/Review',
 								'review.claim' => 'https://schema.org/ClaimReview',
