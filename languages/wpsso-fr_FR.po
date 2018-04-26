@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 3.56.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-04-25 09:29-0600\n"
-"PO-Revision-Date: 2018-04-25 09:41-0600\n"
+"POT-Creation-Date: 2018-04-26 09:20-0600\n"
+"PO-Revision-Date: 2018-04-26 09:20-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -973,8 +973,8 @@ msgstr "Toujours"
 msgid "This notice can be dismissed permanently."
 msgstr "Cet avis peut être masqué définitivement."
 
-#: lib/com/notice.php:148 lib/com/notice.php:158 lib/com/notice.php:534
-#: lib/com/notice.php:723 lib/com-gettext-extract.php:15
+#: lib/com/notice.php:148 lib/com/notice.php:158 lib/com/notice.php:536
+#: lib/com/notice.php:725 lib/com-gettext-extract.php:15
 msgid "Hide"
 msgstr "Cacher"
 
@@ -982,25 +982,25 @@ msgstr "Cacher"
 msgid "This notice can be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
-#: lib/com/notice.php:306 lib/com-gettext-extract.php:8
+#: lib/com/notice.php:308 lib/com-gettext-extract.php:8
 msgid "edit"
 msgstr "modifier"
 
-#: lib/com/notice.php:307 lib/com-gettext-extract.php:22
+#: lib/com/notice.php:309 lib/com-gettext-extract.php:22
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#: lib/com/notice.php:524 lib/com/notice.php:713 lib/com-gettext-extract.php:31
+#: lib/com/notice.php:526 lib/com/notice.php:715 lib/com-gettext-extract.php:31
 msgctxt "notification type"
 msgid "error"
 msgstr "erreur"
 
-#: lib/com/notice.php:525 lib/com/notice.php:714 lib/com-gettext-extract.php:32
+#: lib/com/notice.php:527 lib/com/notice.php:716 lib/com-gettext-extract.php:32
 msgctxt "notification type"
 msgid "warning"
 msgstr "alerte"
 
-#: lib/com/notice.php:536 lib/com/notice.php:725
+#: lib/com/notice.php:538 lib/com/notice.php:727
 msgid "%1$d important %2$s notice has been dismissed &mdash; <a id=\"%3$s\">show the %2$s message</a>."
 msgid_plural "%1$d important %2$s notices have been dismissed &mdash; <a id=\"%3$s\">show the %2$s messages</a>."
 msgstr[0] "%1$d avis d'%2$s important a été masqué et/ou ignoré &mdash; <a id=\"%3$s\">démasquer et afficher le message d'%2$s</a>."
@@ -5058,6 +5058,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "Dismiss"
-#~ msgstr "Masquer"
