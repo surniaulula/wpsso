@@ -781,21 +781,21 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			switch ( $msg_type ) {
 				case 'nag':
 					$payload['label'] = '';
-					$msg_class = 'update-nag';
+					$wp_class = 'update-nag';
 					break;
 				case 'warn':
-					$msg_class = 'notice notice-warning';
+					$wp_class = 'notice notice-warning';
 					break;
 				case 'err':
-					$msg_class = 'notice notice-error error';
+					$wp_class = 'notice notice-error error';
 					break;
 				case 'upd':
-					$msg_class = 'notice notice-success updated';
+					$wp_class = 'notice notice-success updated';
 					break;
 				case 'inf':
 				default:
 					$msg_type = 'inf';
-					$msg_class = 'notice notice-info';
+					$wp_class = 'notice notice-info';
 					break;
 			}
 
@@ -819,7 +819,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ).
 				( empty( $payload['silent'] ) ? '' : $this->lca . '-silent ' ).
-				$msg_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// display block or none
+				$wp_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// display block or none
 
 			if ( $is_dismissible ) {
 				$msg_html .= '<button class="notice-dismiss" type="button">' .
