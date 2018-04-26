@@ -292,7 +292,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.0.0-rc.1 (2018/04/25)**
+**Version 4.0.0 (2018/04/26)**
 
 * *New Features*
 	* Gutenberg support added:
@@ -338,11 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.0.0-rc.1 =
+= 4.0.0 =
 
-(2018/04/25) Gutenberg support added: Added support for jQuery based Gutenberg notices. Added a refresh for the SSO metabox when saving a Gutenberg post.
-
-= 3.57.1 =
-
-(2018/04/14) Added a check to set the Schema type as CollectionPage for post type archive pages.
+(2018/04/26) Gutenberg support added: Added support for jQuery based Gutenberg notices. Added a refresh for the SSO metabox when saving a Gutenberg post.
 
