@@ -292,6 +292,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.1.0-dev.1 (2018/04/29)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a new "Item Type by Term Taxonomy" option.
+* *Bugfixes*
+	* Fixed an undefined $mod variable warning when saving term meta.
+* *Developer Notes*
+	* None
+
 **Version 4.0.0 (2018/04/26)**
 
 * *New Features*
@@ -337,6 +348,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Added new WpssoUtil get_metabox_table() and get_metabox_tabbed() methods.
 
 == Upgrade Notice ==
+
+= 4.1.0-dev.1 =
+
+(2018/04/29) Added a new "Item Type by Term Taxonomy" option.
 
 = 4.0.0 =
 
