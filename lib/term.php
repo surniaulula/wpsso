@@ -128,16 +128,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public static function get_public_term_ids( $tax_name = false ) {
 
-			$tax_filter = array( 'public' => 1, 'show_ui' => 1 );
 			$term_args = array( 'fields' => 'ids' );
 			$term_oper = 'and';
 			$term_ids = array();
 
-			if ( $tax_name !== false ) {
-				$tax_filter['name'] = $tax_name;
-			}
-
-			foreach ( get_taxonomies( $tax_filter, 'names' ) as $tax_name ) {
+			foreach ( self::get_public_tax_names( $tax_name ) as $tax_name ) {
 				foreach ( get_terms( $tax_name, $term_args, $term_oper ) as $term_val ) {
 					$term_ids[] = $term_val;
 				}
@@ -146,6 +141,23 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			rsort( $term_ids );	// newest id first
 
 			return $term_ids;
+		}
+
+		public static function get_public_tax_names( $tax_name = false ) {
+
+			$obj_filter = array( 'public' => 1, 'show_ui' => 1 );
+
+			if ( $tax_name !== false ) {
+				$tax_filter['name'] = $tax_name;
+			}
+
+			$tax_names = array();
+
+			foreach ( get_taxonomies( $obj_filter, 'names' ) as $tax_name ) {
+				$tax_names[] = $tax_name;
+			}
+
+			return $tax_names;
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {

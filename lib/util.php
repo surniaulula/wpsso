@@ -610,20 +610,29 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 * Add options using a key prefix string / array and post type names.
 		 */
 		public function add_ptns_to_opts( array &$opts, $mixed, $default = 1 ) {
+
 			if ( ! is_array( $mixed ) ) {
 				$mixed = array( $mixed => $default );
 			}
+
 			foreach ( $mixed as $opt_pre => $def_val ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'checking options for prefix '.$opt_pre );
 				}
+
 				foreach ( $this->get_post_types( 'names' ) as $ptn ) {
+
 					$opt_key = $opt_pre.'_'.$ptn;
+
 					if ( ! isset( $opts[$opt_key] ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'adding '.$opt_key.' = '.$def_val );
 						}
+
 						$opts[$opt_key] = $def_val;
+
 					} else {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'skipped '.$opt_key.' - already set' );
@@ -631,6 +640,45 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 				}
 			}
+
+			return $opts;
+		}
+
+		/**
+		 * Add options using a key prefix string / array and term taxonomy names.
+		 */
+		public function add_ttns_to_opts( array &$opts, $mixed, $default = 1 ) {
+
+			if ( ! is_array( $mixed ) ) {
+				$mixed = array( $mixed => $default );
+			}
+
+			foreach ( $mixed as $opt_pre => $def_val ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'checking options for prefix '.$opt_pre );
+				}
+
+				foreach ( $this->get_taxonomies( 'names' ) as $ttn ) {
+
+					$opt_key = $opt_pre.'_'.$ttn;
+
+					if ( ! isset( $opts[$opt_key] ) ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'adding '.$opt_key.' = '.$def_val );
+						}
+
+						$opts[$opt_key] = $def_val;
+
+					} else {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'skipped '.$opt_key.' - already set' );
+						}
+					}
+				}
+			}
+
 			return $opts;
 		}
 
@@ -643,6 +691,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$obj_filter = array( 'public' => 1, 'show_ui' => 1 );
 			$ret = array();
 
 			switch ( $output ) {
@@ -657,26 +706,82 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				case 'names':
 				case 'objects':
-					$ret = get_post_types( array( 'public' => true ), $output );
+					$ret = get_post_types( $obj_filter, $output );
 					break;
 			}
 
 			if ( $output === 'objects' ) {
+
 				$unsorted = $ret;
 				$names = array();
 				$ret = array();
+
 				foreach ( $unsorted as $num => $pt ) {
 					$ptn = empty( $pt->label ) ? $pt->name : $pt->label;
 					$names[$ptn] = $num;
 				}
+
 				ksort( $names );
+
 				foreach ( $names as $ptn => $num ) {
 					$ret[] = $unsorted[$num];
 				}
+
 				unset( $unsorted, $names );
 			}
 
 			return apply_filters( $this->p->lca.'_get_post_types', $ret, $output );
+		}
+
+		/**
+		 * $output = objects | names
+		 */
+		public function get_taxonomies( $output = 'objects', $sorted = true ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$obj_filter = array( 'public' => 1, 'show_ui' => 1 );
+			$ret = array();
+
+			switch ( $output ) {
+
+				/**
+				 * Make sure the output name is plural
+				 */
+				case 'name':
+				case 'object':
+					$output = $output.'s';
+					// no break
+
+				case 'names':
+				case 'objects':
+					$ret = get_taxonomies( $obj_filter, $output );
+					break;
+			}
+
+			if ( $output === 'objects' ) {
+
+				$unsorted = $ret;
+				$names = array();
+				$ret = array();
+
+				foreach ( $unsorted as $num => $tax ) {
+					$ttn = empty( $tax->label ) ? $tax->name : $tax->label;
+					$names[$ttn] = $num;
+				}
+
+				ksort( $names );
+
+				foreach ( $names as $ttn => $num ) {
+					$ret[] = $unsorted[$num];
+				}
+
+				unset( $unsorted, $names );
+			}
+
+			return apply_filters( $this->p->lca.'_get_taxonomies', $ret, $output );
 		}
 
 		public function refresh_all_cache() {

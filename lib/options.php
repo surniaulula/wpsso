@@ -53,14 +53,26 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/**
-				 * Add options using a key prefix array and post type names.
+				 * Add defaults using a key prefix array and post type names.
 				 */
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'adding options derived from post type names' );
+					$this->p->debug->log( 'adding defaults derived from post type names' );
 				}
+
 				$defs = $this->p->util->add_ptns_to_opts( $defs, array(
 					'plugin_add_to' => 1,
 					'schema_type_for' => 'webpage',
+				) );
+
+				/**
+				 * Add defaults using a key prefix array and term taxonomy names.
+				 */
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding defaults derived from term taxonomy names' );
+				}
+
+				$defs = $this->p->util->add_ttns_to_opts( $defs, array(
+					'schema_type_for_tax' => 'item.list',
 				) );
 
 				/**
@@ -69,6 +81,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'translating plugin contact field labels' );
 				}
+
 				SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $defs, 'wpsso' );
 
 				/**
@@ -353,6 +366,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opts = $this->p->util->add_ptns_to_opts( $opts, array(
 					'plugin_add_to' => 1,
 					'schema_type_for' => 'webpage',
+				) );
+
+				/**
+				 * Add options using a key prefix array and term taxonomy names.
+				 */
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding options derived from term taxonomy names' );
+				}
+
+				$opts = $this->p->util->add_ttns_to_opts( $opts, array(
+					'schema_type_for_tax' => 'item.list',
 				) );
 
 			} else {	// $opts is empty or not an array

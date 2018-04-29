@@ -289,19 +289,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( empty( $type_id ) ) {	// must be a non-empty string
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'custom type_id from meta is empty' );
+							$this->p->debug->log( 'custom type id from meta is empty' );
 						}
 					} elseif ( $type_id === 'none' ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'custom type_id is disabled with value none' );
+							$this->p->debug->log( 'custom type id is disabled with value none' );
 						}
 					} elseif ( empty( $schema_types[$type_id] ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'custom type_id ('.$type_id.') not in schema types' );
+							$this->p->debug->log( 'custom type id "' . $type_id . '" not in schema types' );
 						}
 						$type_id = null;
 					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'custom type_id ('.$type_id.') from '.$mod['name'].' module' );
+						$this->p->debug->log( 'custom type id "' . $type_id . '" from '.$mod['name'].' module' );
 					}
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipping custom type_id: mod object is empty' );
@@ -328,13 +328,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$type_id = apply_filters( $this->p->lca.'_schema_type_for_home_page',
 							$this->get_schema_type_id_for_name( 'home_page' ) );
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'using schema type id '.$type_id.' for home page' );
+							$this->p->debug->log( 'using schema type id "' . $type_id . '" for home page' );
 						}
 					} else {
 						$type_id = apply_filters( $this->p->lca.'_schema_type_for_home_index',
 							$this->get_schema_type_id_for_name( 'home_index' ) );
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'using schema type id '.$type_id.' for home index' );
+							$this->p->debug->log( 'using schema type id "' . $type_id . '" for home index' );
 						}
 					}
 
@@ -345,10 +345,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						if ( empty( $mod['id'] ) && ! empty( $mod['post_type'] ) && is_post_type_archive() ) {
 
 							$type_id = apply_filters( $this->p->lca.'_schema_type_for_post_type_archive_page',
-								$this->get_schema_type_id_for_name( 'archive_page' ) );
+								$this->get_schema_type_id_for_name( 'post_archive' ) );
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'using schema type id '.$type_id.' for post type archive page' );
+								$this->p->debug->log( 'using schema type id "' . $type_id . '" for post type archive page' );
 							}
 
 						} elseif ( isset( $this->p->options['schema_type_for_'.$mod['post_type']] ) ) {
@@ -356,7 +356,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$type_id = $this->get_schema_type_id_for_name( $mod['post_type'] );
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'using schema type id '.$type_id.' from option value' );
+								$this->p->debug->log( 'using schema type id "' . $type_id . '" from post type option value' );
 							}
 
 						} elseif ( ! empty( $schema_types[$mod['post_type']] ) ) {
@@ -364,7 +364,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$type_id = $mod['post_type'];
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'using schema type id '.$type_id.' from post type name' );
+								$this->p->debug->log( 'using schema type id "' . $type_id . '" from post type name' );
 							}
 
 						} else {	// unknown post type
@@ -389,13 +389,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				} elseif ( $mod['is_term'] ) {
 
-					$type_id = $this->get_schema_type_id_for_name( 'archive_page' );	// uses archive page schema
+					if ( ! empty( $mod['tax_slug'] ) ) {
+						$type_id = $this->get_schema_type_id_for_name( 'tax_' . $mod['tax_slug'] );
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'using schema type id "' . $type_id . '" from term taxonomy option value' );
+						}
+					}
+
+					if ( empty( $type_id ) ) {	// Just in case.
+						$type_id = $this->get_schema_type_id_for_name( 'archive_page' );
+					}
 
 				} elseif ( $mod['is_user'] ) {
 
 					$type_id = $this->get_schema_type_id_for_name( 'user_page' );
 
-				} elseif ( SucomUtil::is_archive_page() ) {				// just in case
+				} elseif ( SucomUtil::is_archive_page() ) {	// Just in case.
 
 					$type_id = $this->get_schema_type_id_for_name( 'archive_page' );
 
@@ -435,7 +445,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			} elseif ( ! isset( $schema_types[$type_id] ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'returning false: schema type id '.$type_id.' is unknown' );
+					$this->p->debug->log( 'returning false: schema type id "' . $type_id . '" is unknown' );
 				}
 			} elseif ( $get_id ) {
 				if ( $this->p->debug->enabled ) {
@@ -714,7 +724,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$cache_md5_pre = $this->p->lca.'_t_';
 				$cache_exp_secs = $this->get_types_cache_exp();
 				if ( $cache_exp_secs > 0 ) {
-					$cache_salt = __METHOD__.'(type_id:'.$type_id.')';
+					$cache_salt = __METHOD__.'(type_id:' . $type_id . ')';
 					$cache_id = $cache_md5_pre.md5( $cache_salt );
 					$children = get_transient( $cache_id );	// returns false when not found
 					if ( ! empty( $children ) ) {
@@ -818,7 +828,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$type_id = $default_id;
 			} elseif ( empty( $schema_types[$type_id] ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'schema type id '.$type_id.' for '.$type_name.' not in schema types' );
+					$this->p->debug->log( 'schema type id "' . $type_id . '" for '.$type_name.' not in schema types' );
 				}
 				$type_id = $default_id;
 			} elseif ( $this->p->debug->enabled ) {
@@ -1015,12 +1025,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( ! $is_enabled ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'skipping schema type id '.$type_id.' (disabled)' );
+						$this->p->debug->log( 'skipping schema type id "' . $type_id . '" (disabled)' );
 					}
 					continue;
 				} elseif ( ! empty( $page_type_added[$type_id] ) ) {	// prevent duplicate schema types
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'skipping schema type id '.$type_id.' (previously added)' );
+						$this->p->debug->log( 'skipping schema type id "' . $type_id . '" (previously added)' );
 					}
 					continue;
 				} else {

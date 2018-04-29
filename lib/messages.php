@@ -1284,7 +1284,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_type_for_archive_page':
 
-							$text = sprintf( __( 'Select the Schema type for archive pages (Category, Tags, etc.). The default Schema type is %s.',
+							$text = sprintf( __( 'Select the Schema type for other archive pages (example: date-based archive pages). The default Schema type is %s.',
 								'wpsso' ), 'https://schema.org/CollectionPage' );
 
 							break;
@@ -1305,13 +1305,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_type_for_ptn':
 
-							$text = __( 'Select the Schema type for each WordPress post type. The Schema type defines the item type for Schema JSON-LD markup and/or meta tags in the webpage head section.', 'wpsso' );
+							$text = __( 'Select the Schema type for each WordPress post type.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-schema_type_for_ttn':
+
+							$text = __( 'Select the Schema type for each WordPress term taxonomy.', 'wpsso' );
 
 							break;
 
 						case 'tooltip-schema_review_item_type':
 
-							$text = __( 'The default Schema Item Type for reviewed items.', 'wpsso' );
+							$text = sprintf( __( 'Select the default Schema type for reviewed items (used when the content Schema type is a %s).',
+								'wpsso' ), 'https://schema.org/Review' );
 
 							break;
 

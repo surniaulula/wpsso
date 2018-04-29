@@ -2658,9 +2658,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( array( 
 				'home_index' => _x( 'Item Type for Blog Front Page', 'option label', 'wpsso' ),
 				'home_page' => _x( 'Item Type for Static Front Page', 'option label', 'wpsso' ),
-				'archive_page' => _x( 'Item Type for Archive Page', 'option label', 'wpsso' ),
 				'user_page' => _x( 'Item Type for User / Author Page', 'option label', 'wpsso' ),
 				'search_page' => _x( 'Item Type for Search Results Page', 'option label', 'wpsso' ),
+				'archive_page' => _x( 'Item Type for Other Archive Page', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
 
 				$tr_html = '';
@@ -2674,24 +2674,59 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'<td>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . '</td>';
 			}
 
-			$ptn_type_select = '';
-			$ptn_type_keys = array();
+			/**
+			 * Item Type by Post Type
+			 */
+			$type_select = '';
+			$type_opt_keys = array();
 
 			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
-				$ptn_type_keys[] = $opt_key = 'schema_type_for_' . $pt->name;
-				$ptn_type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' for ' . $pt->label . '</p>' . "\n";
+				$type_opt_keys[] = $opt_key = 'schema_type_for_' . $pt->name;
+				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) .
+					' for ' . $pt->label . '</p>' . "\n";
 			}
+
+			$type_opt_keys[] = $opt_key = 'schema_type_for_post_archive';
+			$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) .
+				' for ' . _x( '(Post Type) Archive Page', 'option comment', 'wpsso' ). '</p>' . "\n";
 
 			$tr_html = '';
 			$tr_key = 'schema_type_for_ptn';
 			$th_label = _x( 'Item Type by Post Type', 'option label', 'wpsso' );
 
 			if ( ! empty( $hide_in_view[$tr_key] ) ) {
-				$tr_html = $this->form->get_tr_hide( $hide_in_view[$tr_key], $ptn_type_keys );
+				$tr_html = $this->form->get_tr_hide( $hide_in_view[$tr_key], $type_opt_keys );
 			}
 
 			$table_rows[$tr_key] = $tr_html.$this->form->get_th_html( $th_label, '', $tr_key ).
-			'<td>' . $ptn_type_select . '</td>';
+			'<td>' . $type_select . '</td>';
+
+			unset( $type_select, $type_opt_keys );	// Just in case.
+
+			/**
+			 * Item Type by Term Taxonomy
+			 */
+			$type_select = '';
+			$type_opt_keys = array();
+
+			foreach ( $this->p->util->get_taxonomies( 'objects' ) as $tax ) {
+				$type_opt_keys[] = $opt_key = 'schema_type_for_tax_' . $tax->name;
+				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) .
+					' for ' . $tax->label . '</p>' . "\n";
+			}
+
+			$tr_html = '';
+			$tr_key = 'schema_type_for_ttn';
+			$th_label = _x( 'Item Type by Term Taxonomy', 'option label', 'wpsso' );
+
+			if ( ! empty( $hide_in_view[$tr_key] ) ) {
+				$tr_html = $this->form->get_tr_hide( $hide_in_view[$tr_key], $type_opt_keys );
+			}
+
+			$table_rows[$tr_key] = $tr_html.$this->form->get_th_html( $th_label, '', $tr_key ).
+			'<td>' . $type_select . '</td>';
+
+			unset( $type_select, $type_opt_keys );	// Just in case.
 		}
 
 		// called from the WpssoSubmenuEssential, WpssoSubmenuGeneral, and WpssoJsonSubmenuSchemaJsonLd classes
