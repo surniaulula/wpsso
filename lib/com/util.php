@@ -2606,7 +2606,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					( $term_id = self::get_request_value( 'tag_ID' ) ) !== '' ) {
 					$term_obj = get_term( (int) $term_id, (string) $tax_slug, OBJECT, 'raw' );
 				}
-
 			}
 
 			$term_obj = apply_filters( 'sucom_get_term_object', $term_obj, $term_id, $tax_slug );

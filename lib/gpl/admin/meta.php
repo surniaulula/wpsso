@@ -60,6 +60,15 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			$def_tc_desc     = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $r_cache );
 			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $r_cache, false, $do_encode, array( 'seo_desc', 'og_desc' ) );
 
+			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
+				$json_info = $this->p->cf['plugin']['wpssojson'];
+				$schema_desc_msg = '<p class="status-msg smaller">'.
+					sprintf( __( 'Activate the %s add-on for additional Schema markup features and options.',
+						'wpsso' ), '<a href="'.$json_info['url']['home'].'">'.$json_info['short'].'</a>' ).'</p>';
+			} else {
+				$schema_desc_msg = '';
+			}
+
 			$table_rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$form_rows = array(
@@ -105,7 +114,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'schema_desc' => array(
 					'label' => _x( 'Schema Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
-					'content' => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ),
+					'content' => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ).$schema_desc_msg,
 				),
 			);
 

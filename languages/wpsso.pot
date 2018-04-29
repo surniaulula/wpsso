@@ -2356,137 +2356,138 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:67 lib/gpl/admin/post.php:75
-#: lib/pro/admin/meta.php:76 lib/pro/admin/post.php:84
+#: lib/gpl/admin/meta.php:66 lib/gpl/admin/post.php:58
+#: lib/pro/admin/meta.php:77 lib/pro/admin/post.php:69
+msgid ""
+"Activate the %s add-on for additional Schema markup features and options."
+msgstr ""
+
+#: lib/gpl/admin/meta.php:76 lib/gpl/admin/post.php:75
+#: lib/pro/admin/meta.php:85 lib/pro/admin/post.php:84
 msgctxt "option label"
 msgid "Default Title"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:72 lib/gpl/admin/post.php:81
-#: lib/pro/admin/meta.php:82 lib/pro/admin/post.php:91
+#: lib/gpl/admin/meta.php:81 lib/gpl/admin/post.php:81
+#: lib/pro/admin/meta.php:91 lib/pro/admin/post.php:91
 msgctxt "option label"
 msgid "Default Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:78 lib/gpl/admin/post.php:88
-#: lib/pro/admin/meta.php:89 lib/pro/admin/post.php:99
+#: lib/gpl/admin/meta.php:87 lib/gpl/admin/post.php:88
+#: lib/pro/admin/meta.php:98 lib/pro/admin/post.php:99
 msgctxt "option label"
 msgid "Google Search / SEO Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:84 lib/gpl/admin/post.php:95
-#: lib/pro/admin/meta.php:99 lib/pro/admin/post.php:110
+#: lib/gpl/admin/meta.php:93 lib/gpl/admin/post.php:95
+#: lib/pro/admin/meta.php:108 lib/pro/admin/post.php:110
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:90 lib/gpl/admin/post.php:102 lib/meta.php:230
-#: lib/meta.php:251 lib/pro/admin/meta.php:105 lib/pro/admin/post.php:117
+#: lib/gpl/admin/meta.php:99 lib/gpl/admin/post.php:102 lib/meta.php:230
+#: lib/meta.php:251 lib/pro/admin/meta.php:114 lib/pro/admin/post.php:117
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:97 lib/gpl/admin/post.php:110 lib/meta.php:233
-#: lib/meta.php:254 lib/pro/admin/meta.php:113 lib/pro/admin/post.php:126
+#: lib/gpl/admin/meta.php:106 lib/gpl/admin/post.php:110 lib/meta.php:233
+#: lib/meta.php:254 lib/pro/admin/meta.php:122 lib/pro/admin/post.php:126
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:103 lib/gpl/admin/post.php:167
-#: lib/pro/admin/meta.php:124 lib/pro/admin/post.php:188
+#: lib/gpl/admin/meta.php:112 lib/gpl/admin/post.php:167
+#: lib/pro/admin/meta.php:133 lib/pro/admin/post.php:188
 #: lib/submenu/general.php:264
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:106 lib/gpl/admin/post.php:171
-#: lib/pro/admin/meta.php:127 lib/pro/admin/post.php:192
+#: lib/gpl/admin/meta.php:115 lib/gpl/admin/post.php:171
+#: lib/pro/admin/meta.php:136 lib/pro/admin/post.php:192
 msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:123 lib/pro/admin/meta.php:144
+#: lib/gpl/admin/meta.php:132 lib/pro/admin/meta.php:153
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
-#: lib/gpl/admin/meta.php:137 lib/pro/admin/meta.php:154
+#: lib/gpl/admin/meta.php:146 lib/pro/admin/meta.php:163
 #: lib/submenu/general.php:37
 msgctxt "metabox title"
 msgid "All Social WebSites / Open Graph"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:142 lib/pro/admin/meta.php:159
+#: lib/gpl/admin/meta.php:151 lib/pro/admin/meta.php:168
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:147 lib/gpl/admin/meta.php:234
-#: lib/pro/admin/meta.php:164 lib/pro/admin/meta.php:251
+#: lib/gpl/admin/meta.php:156 lib/gpl/admin/meta.php:243
+#: lib/pro/admin/meta.php:173 lib/pro/admin/meta.php:260
 msgctxt "option label"
 msgid "Image Dimensions"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:153 lib/gpl/admin/meta.php:241
-#: lib/pro/admin/meta.php:170 lib/pro/admin/meta.php:258
+#: lib/gpl/admin/meta.php:162 lib/gpl/admin/meta.php:250
+#: lib/pro/admin/meta.php:179 lib/pro/admin/meta.php:267
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:159 lib/gpl/admin/meta.php:248
-#: lib/pro/admin/meta.php:176 lib/pro/admin/meta.php:265
+#: lib/gpl/admin/meta.php:168 lib/gpl/admin/meta.php:257
+#: lib/pro/admin/meta.php:185 lib/pro/admin/meta.php:274
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:167 lib/gpl/admin/meta.php:256
-#: lib/pro/admin/meta.php:184 lib/pro/admin/meta.php:273
+#: lib/gpl/admin/meta.php:176 lib/gpl/admin/meta.php:265
+#: lib/pro/admin/meta.php:193 lib/pro/admin/meta.php:282
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:175 lib/pro/admin/meta.php:192
+#: lib/gpl/admin/meta.php:184 lib/pro/admin/meta.php:201
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:179 lib/messages.php:682 lib/pro/admin/meta.php:196
+#: lib/gpl/admin/meta.php:188 lib/messages.php:682 lib/pro/admin/meta.php:205
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:185 lib/pro/admin/meta.php:202
+#: lib/gpl/admin/meta.php:194 lib/pro/admin/meta.php:211
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:192 lib/pro/admin/meta.php:209
+#: lib/gpl/admin/meta.php:201 lib/pro/admin/meta.php:218
 msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:199 lib/pro/admin/meta.php:216
+#: lib/gpl/admin/meta.php:208 lib/pro/admin/meta.php:225
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:207 lib/pro/admin/meta.php:224
+#: lib/gpl/admin/meta.php:216 lib/pro/admin/meta.php:233
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:215 lib/pro/admin/meta.php:232
+#: lib/gpl/admin/meta.php:224 lib/pro/admin/meta.php:241
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:229 lib/pro/admin/meta.php:246
+#: lib/gpl/admin/meta.php:238 lib/pro/admin/meta.php:255
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
-msgstr ""
-
-#: lib/gpl/admin/post.php:58 lib/pro/admin/post.php:69
-msgid ""
-"Activate the %s add-on for additional Schema markup features and options."
 msgstr ""
 
 #: lib/gpl/admin/post.php:70 lib/pro/admin/post.php:78
@@ -4981,7 +4982,7 @@ msgid ""
 "been unchecked and disabled automatically."
 msgstr ""
 
-#: lib/pro/admin/meta.php:94 lib/pro/admin/meta.php:119
+#: lib/pro/admin/meta.php:103 lib/pro/admin/meta.php:128
 #: lib/pro/admin/post.php:105 lib/pro/admin/post.php:133
 msgid ""
 "This option is disabled (the \"%1$s\" head tag is disabled or an SEO plugin "

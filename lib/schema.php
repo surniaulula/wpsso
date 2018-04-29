@@ -619,7 +619,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! is_array( $schema_types ) ) {
-				$schema_types = $this->get_schema_types_array( false );	// $flatten = false
+				$schema_types = $this->get_schema_types_array( false );	// $flatten is false.
 			}
 
 			$schema_types = SucomUtil::array_flatten( $schema_types );
@@ -630,7 +630,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$select[$type_id] = $type_id.' | '.$type_url;
 			}
 
-			if ( defined( 'SORT_STRING' ) ) {	// just in case
+			if ( defined( 'SORT_STRING' ) ) {	// Just in case.
 				asort( $select, SORT_STRING );
 			} else {
 				asort( $select );
