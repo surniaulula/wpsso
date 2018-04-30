@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.1.0-dev.1',		// Plugin version.
+					'version' => '4.1.0-dev.2',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -641,13 +641,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					// standard types
 					'schema_type_for_tax_category' => 'item.list',
 					'schema_type_for_tax_post_tag' => 'item.list',
-					'schema_type_for_archive_page' => 'webpage.collection',
+					'schema_type_for_archive_page' => 'webpage.collection',	// date-based archives
 					'schema_type_for_attachment' => 'webpage',
 					'schema_type_for_home_index' => 'blog',
 					'schema_type_for_home_page' => 'website',
 					'schema_type_for_page' => 'webpage',
 					'schema_type_for_post' => 'blog.posting',
-					'schema_type_for_post_archive' => 'item.list',
+					'schema_type_for_post_archive' => 'item.list',	// post type archive page
 					'schema_type_for_search_page' => 'webpage.search.results',
 					'schema_type_for_user_page' => 'webpage.profile',
 					// custom post types

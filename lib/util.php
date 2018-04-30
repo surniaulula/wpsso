@@ -55,6 +55,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			'is_amp_endpoint',
 		);
 
+		protected static $form_cache = array();
+
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
 
@@ -782,6 +784,111 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			return apply_filters( $this->p->lca.'_get_taxonomies', $ret, $output );
+		}
+
+		public function get_form_cache( $name, $add_none = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$key = SucomUtil::sanitize_key( $name );	// Just in case.
+
+			if ( ! isset( self::$form_cache[$key] ) ) {
+				self::$form_cache[$key] = null;		// Create key for default filter.
+			}
+
+			if ( self::$form_cache[$key] === null ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding new form cache entry for ' . $key );
+				}
+
+				switch ( $key ) {
+
+					case 'half_hours':
+
+						self::$form_cache[$key] = SucomUtil::get_hours_range( 0, DAY_IN_SECONDS, 60 * 30, '' );
+
+						break;
+
+					case 'all_types':
+
+						self::$form_cache[$key] = $this->p->schema->get_schema_types_array( false );	// $flatten = false
+
+						break;
+
+					case 'business_types':
+
+						$this->get_form_cache( 'all_types' );
+
+						self::$form_cache[$key] =& self::$form_cache['all_types']['thing']['place']['local.business'];
+
+						break;
+
+					case 'business_types_select':
+
+						$this->get_form_cache( 'business_types' );
+
+						self::$form_cache[$key] = $this->p->schema->get_schema_types_select( self::$form_cache['business_types'], false );
+
+						break;
+
+					case 'org_types':
+
+						$this->get_form_cache( 'all_types' );
+
+						self::$form_cache[$key] =& self::$form_cache['all_types']['thing']['organization'];
+
+						break;
+
+					case 'org_types_select':
+
+						$this->get_form_cache( 'org_types' );
+
+						self::$form_cache[$key] = $this->p->schema->get_schema_types_select( self::$form_cache['org_types'], false );
+
+						break;
+
+					case 'org_site_names':
+
+						self::$form_cache[$key] = array( 'site' => '[WebSite Organization]' );
+
+						self::$form_cache[$key] = apply_filters( $this->p->lca . '_form_cache_' . $key, self::$form_cache[$key] );
+
+						break;
+
+					case 'person_names':
+
+						self::$form_cache[$key] = WpssoUser::get_person_names();
+
+						break;
+
+					default:
+
+						self::$form_cache[$key] = apply_filters( $this->p->lca . '_form_cache_' . $key, self::$form_cache[$key] );
+
+						break;
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'returning existing form cache entry for ' . $key );
+			}
+
+			if ( isset( self::$form_cache[$key]['none'] ) ) {
+				unset( self::$form_cache[$key]['none'] );
+			}
+
+			if ( $add_none ) {
+				$none = array( 'none' => '[None]' );
+				if ( is_array( self::$form_cache[$key] ) ) {
+					return $none + self::$form_cache[$key];
+				} else {
+					return $none;
+				}
+			} else {
+				return self::$form_cache[$key];
+			}
 		}
 
 		public function refresh_all_cache() {

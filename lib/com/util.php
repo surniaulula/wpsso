@@ -3012,7 +3012,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $users;
 		}
 
-		public static function get_user_select( array $roles = array( 'administrator' ), $blog_id = false ) {
+		public static function get_user_select( array $roles = array( 'administrator' ), $blog_id = false, $add_none = true ) {
 
 			$select = array();
 			$users = self::get_users_by_roles( $roles, $blog_id );
@@ -3021,7 +3021,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$select[$user->ID] = $user->display_name;
 			}
 
-			return array( 'none' => 'none' ) + $select;
+			if ( $add_none ) {
+				return array( 'none' => 'none' ) + $select;
+			} else {
+				return $select;
+			}
 		}
 
 		public static function count_diff( &$arr, $max = 0 ) {

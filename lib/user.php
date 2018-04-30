@@ -226,6 +226,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $user_views;
 		}
 
+		public static function get_person_names( $add_none = true ) {
+
+			$roles = array( self::$person_role_name );
+
+			$persons = SucomUtil::get_user_select( $roles, false, $add_none );
+
+			return $persons;
+		}
+
 		public function add_column_headings( $columns ) {
 			return $this->add_mod_column_headings( $columns, 'user' );
 		}
