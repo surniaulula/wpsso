@@ -292,7 +292,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.1.0-dev.1 (2018/04/29)**
+**Version 4.1.0-dev.2 (2018/04/29)**
 
 * *New Features*
 	* None
@@ -349,7 +349,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.1.0-dev.1 =
+= 4.1.0-dev.2 =
 
 (2018/04/29) Added a new "Item Type by Term Taxonomy" option.
 
