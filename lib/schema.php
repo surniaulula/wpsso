@@ -1430,8 +1430,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $json_data;
 			}
 
-			// possibly inherit the schema type
-			$ret = self::get_data_context( $json_data );	// returns array() if no schema type found
+			/**
+			 * Possibly inherit the schema type.
+			 */
+			$ret = self::get_data_context( $json_data );	// Returns array() if no schema type found.
 
 		 	/**
 			 * $org_id can be 'none', 'site', or a number (including 0).
@@ -1494,26 +1496,34 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$this->p->debug->log( 'person / user_id for home page is '.$user_id );
 						}
 					}
-				} elseif ( isset( $mod['is_user'] ) ) {
+				} elseif ( $mod['is_user'] ) {
 					$user_id = $mod['id'];
 				} else {
 					$user_id = false;
 				}
 			}
 
-			if ( empty( $user_id ) ) {
+			if ( empty( $user_id ) || $user_id === 'none' ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty user_id' );
 				}
 				return $json_data;
+			} else {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'user id is "' . $user_id . '"' );
+				}
 			}
 
-			// possibly inherit the schema type
-			$ret = self::get_data_context( $json_data );	// returns array() if no schema type found
+			/**
+			 * Possibly inherit the schema type.
+			 */
+			$ret = self::get_data_context( $json_data );	// Returns array() if no schema type found.
 
-			self::add_single_person_data( $ret, $mod, $user_id, false );	// $list_element = false
+			self::add_single_person_data( $ret, $mod, $user_id, false );	// $list_element is false.
 
-			// override author's website url and use the open graph url instead
+			/**
+			 * Override author's website url and use the open graph url instead.
+			 */
 			if ( $mod['is_home'] ) {
 				$ret['url'] = $mt_og['og:url'];
 			}
@@ -1570,11 +1580,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$authors_added = 0;
 			$coauthors_added = 0;
 
-			if ( empty( $user_id ) && 
-				isset( $mod['post_author'] ) )
-					$user_id = $mod['post_author'];
+			if ( empty( $user_id ) && isset( $mod['post_author'] ) ) {
+				$user_id = $mod['post_author'];
+			}
 
-			if ( empty( $user_id ) ) {
+			if ( empty( $user_id ) || $user_id === 'none' ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: empty user_id / post_author' );
 				}
@@ -2607,7 +2617,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log_arr( 'get_person_options filters returned', $person_opts );
 				}
 			} else {
-				if ( empty( $user_id ) ) {
+				if ( empty( $user_id ) || $user_id === 'none' ) {
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'exiting early: empty user_id' );
 					}
@@ -3070,7 +3080,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$is_enabled = empty( $this->p->options['schema_add_noscript'] ) ? false : true;
 
-			// returns false when the wpsso-schema-json-ld add-on is active
+			/**
+			 * Returns false when the wpsso-schema-json-ld add-on is active.
+			 */
 			if ( ! apply_filters( $this->p->lca.'_add_schema_noscript_array', $is_enabled, $crawler_name ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'noscript disabled by option or filter for '.$crawler_name );
@@ -3201,7 +3213,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$og_ret = array();
 
-			if ( empty( $author_id ) ) {
+			if ( empty( $author_id ) || $author_id === 'none' ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty author_id' );
 				}
