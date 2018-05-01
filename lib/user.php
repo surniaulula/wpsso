@@ -320,14 +320,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'screen id: '.$screen->id );
+				$this->p->debug->log( 'screen id is '.$screen->id );
 			}
 
 			switch ( $screen->id ) {
-				case 'profile':		// user profile page
-				case 'user-edit':	// user editing page
-				case ( strpos( $screen->id, 'profile_page_' ) === 0 ? true : false ):		// your profile page
-				case ( strpos( $screen->id, 'users_page_'.$this->p->lca ) === 0 ? true : false ):	// custom social settings page
+				case 'profile':		// User profile page.
+				case 'user-edit':	// User editing page.
+				case ( strpos( $screen->id, 'profile_page_' ) === 0 ? true : false ):		// Your profile page.
+				case ( strpos( $screen->id, 'users_page_'.$this->p->lca ) === 0 ? true : false ):	// Custom social settings page.
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'screen id can show metabox' );
+					}
 					break;
 				default:
 					return;
@@ -443,34 +446,47 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public function show_metabox_section( $user ) {
+		public function show_metabox_section( $user_obj ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! current_user_can( 'edit_user', $user->ID ) ) {
+			if ( ! current_user_can( 'edit_user', $user_obj->ID ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: current user does not have edit privileges for user ID '.$user->ID );
+					$this->p->debug->log( 'exiting early: current user does not have edit privileges for user ID '.$user_obj->ID );
 				}
 				return;
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'doing metabox for '.$this->p->lca.'-user' );
 			}
 
 			echo "\n" . '<!-- '.$this->p->lca.' user metabox section begin -->' . "\n";
 			echo '<h3 id="'.$this->p->lca.'-metaboxes">'.WpssoAdmin::$pkg[$this->p->lca]['short'].'</h3>' . "\n";
 			echo '<div id="poststuff">' . "\n";
 
-			do_meta_boxes( $this->p->lca.'-user', 'normal', $user );
+			do_meta_boxes( $this->p->lca.'-user', 'normal', $user_obj );
 
 			echo "\n" . '</div><!-- .poststuff -->' . "\n";
 			echo '<!-- '.$this->p->lca.' user metabox section end -->' . "\n";
 		}
 
-		public function show_metabox_custom_meta( $post_obj ) {
-			echo $this->get_metabox_custom_meta( $post_obj );
+		public function show_metabox_custom_meta( $user_obj ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			echo $this->get_metabox_custom_meta( $user_obj );
 		}
 
 		public function get_metabox_custom_meta( $user_obj ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			$metabox_id = $this->p->cf['meta']['id'];
 			$mod        = $this->get_mod( $user_obj->ID );
@@ -1014,7 +1030,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$this->clear_mod_cache_types( $mod );
 		}
 
-		public function user_can_edit( $term_id, $term_tax_id = false ) {
+		public function user_can_edit( $user_id, $rel_id = false ) {
 
 			$user_can_edit = false;
 

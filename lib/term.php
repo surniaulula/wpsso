@@ -435,7 +435,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 		}
 
-		public function show_metaboxes( $term ) {
+		public function show_metaboxes( $term_obj ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -449,14 +449,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			echo '<h3 id="'.$this->p->lca.'-metaboxes">'.WpssoAdmin::$pkg[$this->p->lca]['short'].'</h3>' . "\n";
 			echo '<div id="poststuff">' . "\n";
 
-			do_meta_boxes( $this->p->lca.'-term', 'normal', $term );
+			do_meta_boxes( $this->p->lca.'-term', 'normal', $term_obj );
 
 			echo "\n" . '</div><!-- .poststuff -->' . "\n";
 			echo '<!-- '.$this->p->lca.' term metabox section end -->' . "\n";
 		}
 
-		public function show_metabox_custom_meta( $post_obj ) {
-			echo $this->get_metabox_custom_meta( $post_obj );
+		public function show_metabox_custom_meta( $term_obj ) {
+			echo $this->get_metabox_custom_meta( $term_obj );
 		}
 
 		public function get_metabox_custom_meta( $term_obj ) {
