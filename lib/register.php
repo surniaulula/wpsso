@@ -15,7 +15,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		protected $p;
 		protected static $wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // default WP roles
-		protected static $person_role_name = 'person';
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -108,7 +107,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
 				foreach ( SucomUtil::get_users_by_roles( self::$wp_persons ) as $user ) {
-					$user->add_role( self::$person_role_name );
+					$user->add_role( 'person' );
 				}
 			}
 		}
@@ -158,11 +157,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 	
 						WpssoUser::delete_metabox_prefs( $user->ID );
 
-						$user->remove_role( self::$person_role_name );
+						$user->remove_role( 'person' );
 					}
 				}
 
-				remove_role( self::$person_role_name );
+				remove_role( 'person' );
 
 				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
 					if ( ! empty( $term_id ) ) {	// just in case

@@ -2678,10 +2678,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'person_url' => $user_mod['obj']->get_author_website( $user_id, 'url' ),
 					'person_name' => $user_mod['obj']->get_author_meta( $user_id, $wpsso->options['schema_author_name'] ),
 					'person_desc' => $user_desc,
-					'person_job_title' => $user_mod['obj']->get_options( $mod['id'], 'schema_person_job_title' ),
+					'person_job_title' => $user_mod['obj']->get_options( $user_id, 'schema_person_job_title' ),
 					'person_og_image' => $user_mod['obj']->get_og_images( 1, $size_name, $user_id, false ),
 					'person_sameas' => $user_sameas,
 				);
+				error_log( print_r( $person_opts, true ) );
 			}
 
 			if ( $wpsso->debug->enabled ) {

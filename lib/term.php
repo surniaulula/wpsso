@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 * Enable orderby meta_key only if we have a meta table.
 				 */
 				if ( self::use_meta_table() ) {
-					add_filter( 'manage_edit-'.$this->query_tax_slug.'_sortable_columns',
+					add_filter( 'manage_edit-'.$this->query_tax_slug.'_sortable_columns', 
 						array( &$this, 'add_sortable_columns' ), 10, 1 );
 				}
 
@@ -62,12 +62,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 				add_action( 'get_term_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
 
-				if ( ( $this->query_term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' )	// uses sanitize_text_field
+				if ( ( $this->query_term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' ) {	// uses sanitize_text_field
 					return;
+				}
 
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( 'tax_slug / term_id = '.
-						$this->query_tax_slug.' / '.$this->query_term_id );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'tax_slug / term_id = '.$this->query_tax_slug.' / '.$this->query_term_id );
+				}
 
 				/**
 				 * Available taxonomy and term actions:

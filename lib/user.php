@@ -19,7 +19,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		protected static $pref = array();
 		protected static $wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // default WP roles
-		protected static $person_role_name = 'person';
 
 		public function __construct() {
 		}
@@ -28,7 +27,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$fb_cm_name_value = $this->p->options['plugin_cm_fb_name'];
 
-			add_role( self::$person_role_name, _x( 'Person', 'user role', 'wpsso' ), array() );
+			add_role( 'person', _x( 'Person', 'user role', 'wpsso' ), array() );
 
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
 				if ( is_multisite() ) {
@@ -47,7 +46,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			if ( is_admin() ) {
 
-				if ( ! empty( $_GET ) && ! isset( $_GET['updated'] ) ) {
+				if ( ! empty( $_GET ) ) {
 
 					/**
 					 * Common to both profile and user editing pages.
@@ -204,21 +203,21 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function add_person_role( $user_id ) {
 			$user = get_user_by( 'id', $user_id );
-			$user->add_role( self::$person_role_name );
+			$user->add_role( 'person' );
 		}
 
 		public function add_person_view( $user_views ) {
 
 			$user_views = array_reverse( $user_views );
 			$all_view_link = $user_views['all'];
-			unset( $user_views['all'], $user_views[self::$person_role_name] );
+			unset( $user_views['all'], $user_views['person'] );
 
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
-			$role_view  = add_query_arg( 'role', self::$person_role_name, admin_url( 'users.php' ) );
-			$user_query = new WP_User_Query( array( 'role' => self::$person_role_name ) );
+			$role_view  = add_query_arg( 'role', 'person', admin_url( 'users.php' ) );
+			$user_query = new WP_User_Query( array( 'role' => 'person' ) );
 			$user_count = $user_query->get_total();
 
-			$user_views[self::$person_role_name] = '<a href="' . $role_view . '">' .  $role_label . '</a> (' . $user_count . ')';
+			$user_views['person'] = '<a href="' . $role_view . '">' .  $role_label . '</a> (' . $user_count . ')';
 
 			$user_views['all'] = $all_view_link;
 			$user_views = array_reverse( $user_views );
@@ -228,7 +227,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public static function get_person_names( $add_none = true ) {
 
-			$roles = array( self::$person_role_name );
+			$roles = array( 'person' );
 
 			$persons = SucomUtil::get_user_select( $roles, false, $add_none );
 
@@ -436,8 +435,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_user', $add_metabox, $user_id );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'add metabox for user ID '.$user_id.' is '.
-					( $add_metabox ? 'true' : 'false' ) );
+				$this->p->debug->log( 'add metabox for user ID '.$user_id.' is '.( $add_metabox ? 'true' : 'false' ) );
 			}
 
 			if ( $add_metabox ) {
@@ -450,6 +448,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
+			}
+
+			if ( ! isset( $user_obj->ID ) ) {	// Just in case.
+				return;
 			}
 
 			if ( ! current_user_can( 'edit_user', $user_obj->ID ) ) {

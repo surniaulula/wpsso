@@ -94,7 +94,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:789 lib/post.php:700 lib/term.php:400 lib/user.php:405
+#: lib/admin.php:789 lib/post.php:700 lib/term.php:401 lib/user.php:404
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2586,8 +2586,8 @@ msgid "Library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:159 lib/loader.php:178 lib/post.php:249 lib/register.php:230
-#: lib/term.php:225 lib/user.php:194 lib/util.php:335 lib/util.php:2380
+#: lib/loader.php:159 lib/loader.php:178 lib/post.php:249 lib/register.php:229
+#: lib/term.php:226 lib/user.php:193 lib/util.php:335 lib/util.php:2380
 msgid "%s warning:"
 msgstr ""
 
@@ -3535,7 +3535,7 @@ msgstr ""
 msgid "Automatically add the '%s' role when new users are created."
 msgstr ""
 
-#: lib/messages.php:933 lib/user.php:31 lib/user.php:216
+#: lib/messages.php:933 lib/user.php:30 lib/user.php:215
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -4494,7 +4494,7 @@ msgid ""
 "refresh of all Pro update information."
 msgstr ""
 
-#: lib/messages.php:1967 lib/register.php:235
+#: lib/messages.php:1967 lib/register.php:234
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -5184,11 +5184,11 @@ msgid "Invalid user ID."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
-#: lib/register.php:225 lib/register.php:237
+#: lib/register.php:224 lib/register.php:236
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:239
+#: lib/register.php:238
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
@@ -5217,7 +5217,7 @@ msgid ""
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2774
+#: lib/schema.php:2775
 msgid "adding schema for place"
 msgstr ""
 
@@ -5656,14 +5656,14 @@ msgid "Setup Guide"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$0.3f is a number of seconds
-#: lib/term.php:215
+#: lib/term.php:216
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "for term ID %2$d in taxonomy %3$s (longer than recommended max of %4$0.3f "
 "secs)."
 msgstr ""
 
-#: lib/term.php:522
+#: lib/term.php:523
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -5678,29 +5678,29 @@ msgid "Twitter Large Image Card"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$0.3f is a number of seconds
-#: lib/user.php:184
+#: lib/user.php:183
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "authored by user ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/user.php:586
+#: lib/user.php:588
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:659
+#: lib/user.php:661
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:660
+#: lib/user.php:662
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:661
+#: lib/user.php:663
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1049
+#: lib/user.php:1051
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
