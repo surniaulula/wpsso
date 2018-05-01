@@ -301,7 +301,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed an undefined $mod variable warning when saving term meta.
 * *Developer Notes*
-	* None
+	* Deprecated SucomForm::get_cache().
+	* Moved SucomForm::get_cache() to WpssoUtil::get_form_cache().
+	* Added a new WpssoUtil::get_taxonomies() method to return public taxonomy names or objects.
+	* Added a new WpssoUtil::add_ttns_to_opts() method to add taxonomy names to option keys.
 
 **Version 4.0.0 (2018/04/26)**
 
