@@ -217,12 +217,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$md_idx = array( $md_idx, 'og_title' );
 			}
 
-			$lca = $this->p->lca;
 			$title_text = false;
 			$hashtags = '';
 			$paged_suffix = '';
 			$filter_title = empty( $this->p->options['plugin_filter_title'] ) ? false : true;
-			$filter_title = apply_filters( $lca.'_filter_title', $filter_title, $mod );
+			$filter_title = apply_filters( $this->p->lca.'_filter_title', $filter_title, $mod );
 
 			if ( null === $sep ) {
 				$sep = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
@@ -232,6 +231,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Setup filters to save and restore original / pre-filtered title value.
 			 */
 			if ( ! $filter_title ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'protecting filter value for wp_title' );
+				}
 				SucomUtil::protect_filter_value( 'wp_title' );
 			}
 
@@ -257,7 +259,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Get seed if no custom meta title.
 			 */
 			if ( empty( $title_text ) ) {
-				$title_text = apply_filters( $lca.'_title_seed', '', $mod, $add_htags, $md_idx, $sep );
+
+				$title_text = apply_filters( $this->p->lca.'_title_seed', '', $mod, $add_htags, $md_idx, $sep );
+
 				if ( ! empty( $title_text ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'title seed = "'.$title_text.'"' );
@@ -309,7 +313,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$this->p->debug->log( 'before post_archive_title filter = '.$title_text );
 						}
 	
-						$title_text = apply_filters( $lca.'_post_archive_title', $title_text, $mod );
+						$title_text = apply_filters( $this->p->lca.'_post_archive_title', $title_text, $mod );
 
 					} else {
 
@@ -355,14 +359,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$user_obj = SucomUtil::get_user_object( $mod['id'] );
 
 					$title_text = apply_filters( 'wp_title', $user_obj->display_name.' '.$sep.' ', $sep, 'right' );
-					$title_text = apply_filters( $lca.'_user_object_title', $title_text, $user_obj );
+					$title_text = apply_filters( $this->p->lca.'_user_object_title', $title_text, $user_obj );
 
 				} else {
+
 					$title_text = wp_title( $sep, false, 'right' );
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'default wp_title() = "'.$title_text.'"' );
 					}
-					$title_text = apply_filters( $lca.'_wp_title', $title_text, $mod );
+
+					$title_text = apply_filters( $this->p->lca.'_wp_title', $title_text, $mod );
 				}
 
 				if ( empty( $title_text ) ) {
@@ -376,19 +383,29 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
+			if ( ! $filter_title ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'modified / ignored wp_title value: ' . SucomUtil::get_modified_filter_value( 'wp_title' ) );
+				}
+			}
+
 			$title_text = $this->p->util->cleanup_html_tags( $title_text );	// strip html tags before removing separator
 
 			if ( ! empty( $sep ) ) {
 				$title_text = preg_replace( '/ *'.preg_quote( $sep, '/' ).' *$/', '', $title_text );	// trim excess separator
 			}
 
-			// apply title filter before adjusting it's length
-			$title_text = apply_filters( $lca.'_title_pre_limit', $title_text );
+			/**
+			 * Apply title filter before adjusting it's length.
+			 */
+			$title_text = apply_filters( $this->p->lca.'_title_pre_limit', $title_text );
 
-			// check title against string length limits
+			/**
+			 * Check title against string length limits.
+			 */
 			if ( $max_len > 0 ) {
-				// seo-like title modifications
-				if ( $this->p->avail['seo']['*'] === false ) {
+
+				if ( $this->p->avail['seo']['*'] === false ) {	// apply seo-like title modifications
 					global $wpsso_paged;
 					if ( is_numeric( $wpsso_paged ) ) {
 						$paged = $wpsso_paged;
@@ -403,6 +420,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$max_len = $max_len - strlen( $paged_suffix ) - 1;
 					}
 				}
+
 				if ( ! empty( $add_htags ) && ! empty( $hashtags ) ) {
 					$max_len = $max_len - strlen( $hashtags ) - 1;
 				}
@@ -428,7 +446,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'before title filter = "'.$title_text.'"' );
 			}
 
-			return apply_filters( $lca.'_title', $title_text, $mod, $add_htags, $md_idx, $sep );
+			return apply_filters( $this->p->lca.'_title', $title_text, $mod, $add_htags, $md_idx, $sep );
 		}
 
 		/**

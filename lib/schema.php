@@ -1671,34 +1671,42 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$mod = $wpsso->m['util']['post']->get_mod( $post_id );
 
 				$ret['name'] = $wpsso->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
+
 				if ( empty( $ret['name'] ) ) {
 					unset( $ret['name'] );
 				}
 
 				$title_len = $wpsso->options['og_title_len'];
+
 				$ret['alternateName'] = $wpsso->page->get_title( $title_len, '...', $mod, true, false, true, 'schema_title_alt' );
+
 				if ( empty( $ret['alternateName'] ) ) {
 					unset( $ret['alternateName'] );
 				}
 
 				$ret['alternativeHeadline'] = get_post_meta( $mod['id'], '_wp_attachment_image_alt', true );
+
 				if ( empty( $ret['alternativeHeadline'] ) ) {
 					unset( $ret['alternativeHeadline'] );
 				}
 
 				$ret['caption'] = $wpsso->page->get_the_excerpt( $mod );
+
 				if ( empty( $ret['caption'] ) ) {
 					unset( $ret['caption'] );
 				}
 
 				$desc_len = $wpsso->options['schema_desc_len'];
 				$desc_idx = array( 'schema_desc', 'seo_desc', 'og_desc' );
+
 				$ret['description'] = $wpsso->page->get_description( $desc_len, '...', $mod, true, false, true, $desc_idx );
+
 				if ( empty( $ret['description'] ) ) {
 					unset( $ret['description'] );
 				}
 
 				$ret['fileFormat'] = get_post_mime_type( $mod['id'] );	// mime type
+
 				if ( empty( $ret['fileFormat'] ) ) {
 					unset( $ret['fileFormat'] );
 				}
@@ -2356,7 +2364,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			self::merge_custom_mod_opts( $mod, $job_opts, array( 'job' => 'schema_job' ) );
 
-			// if not adding a list element, inherit the existing schema type url (if one exists)
+			/**
+			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 */
 			list( $job_type_id, $job_type_url ) = self::get_single_type_id_url( $json_data, $job_opts, 'job_type', 'job.posting', $list_element );
 
 			$ret = self::get_schema_type_context( $job_type_url );
@@ -2599,7 +2609,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;
 		}
 
-		// $user_id is required here
+		/**
+		 * A $user_id argument is required.
+		 */
 		public static function add_single_person_data( &$json_data, $mod, $user_id, $list_element = true ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'person', $user_id, $list_element );
@@ -2635,16 +2647,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				$md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' );
+
 				$user_desc = $user_mod['obj']->get_options_multi( $user_id, $md_idx );
 
 				if ( empty( $user_desc ) ) {
 					$user_desc = $user_mod['obj']->get_author_meta( $user_id, 'description' );
 				}
 
-				// remove shortcodes, strip html, etc.
+				/**
+				 * Remove shortcodes, strip html, etc.
+				 */
 				$user_desc = $wpsso->util->cleanup_html_tags( $user_desc );
 
 				$user_sameas = array();
+
 				foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
 					$sameas_url = $user_mod['obj']->get_author_meta( $user_id, $cm_id );
 					if ( empty( $sameas_url ) ) {
@@ -2662,6 +2678,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'person_url' => $user_mod['obj']->get_author_website( $user_id, 'url' ),
 					'person_name' => $user_mod['obj']->get_author_meta( $user_id, $wpsso->options['schema_author_name'] ),
 					'person_desc' => $user_desc,
+					'person_job_title' => $user_mod['obj']->get_options( $mod['id'], 'schema_person_job_title' ),
 					'person_og_image' => $user_mod['obj']->get_og_images( 1, $size_name, $user_id, false ),
 					'person_sameas' => $user_sameas,
 				);
@@ -2680,6 +2697,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'url' => 'person_url',
 				'name' => 'person_name',
 				'description' => 'person_desc',
+				'jobTitle' => 'person_job_title',
 				'email' => 'person_email',
 				'telephone' => 'person_phone',
 			) );

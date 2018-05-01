@@ -1038,18 +1038,30 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function save_current_filter_value( $value ) {
 			$filter_name = current_filter();
-			self::$cache_filter_values[$filter_name] = $value; // Save value to static cache.
+			self::$cache_filter_values['original'][$filter_name] = $value; // Save value to static cache.
 			remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), self::get_min_int() ); // Remove ourselves.
 			return $value;
 		}
 
 		public static function restore_current_filter_value( $value ) {
 			$filter_name = current_filter();
-			if ( isset( self::$cache_filter_values[$filter_name] ) ) {      // Just in case.
-				$value = self::$cache_filter_values[$filter_name];      // Restore value from static cache.
+			unset( self::$cache_filter_values['modified'][$filter_name] );	// Just in case.
+			if ( isset( self::$cache_filter_values['original'][$filter_name] ) ) {      // Just in case.
+				if ( $value !== self::$cache_filter_values['original'][$filter_name] ) {
+					self::$cache_filter_values['modified'][$filter_name] = $value;
+					$value = self::$cache_filter_values['original'][$filter_name];      // Restore value from static cache.
+				}
 			}
 			remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), self::get_max_int() ); // Remove ourselves.
 			return $value;
+		}
+
+		public static function get_modified_filter_value( $filter_name ) {
+			if ( isset( self::$cache_filter_values['modified'][$filter_name] ) ) {
+				return self::$cache_filter_values['modified'][$filter_name];
+			} else {
+				return false;
+			}
 		}
 
 		public static function is_doing_block_editor( $post_type ) {

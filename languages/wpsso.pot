@@ -1074,11 +1074,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/com/util.php:1498
+#: lib/com/util.php:1510
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1505
+#: lib/com/util.php:1517
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -4810,44 +4810,44 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/page.php:303 lib/page.php:305 lib/page.php:540 lib/page.php:542
-#: lib/page.php:602
+#: lib/page.php:307 lib/page.php:309 lib/page.php:558 lib/page.php:560
+#: lib/page.php:620
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:374
+#: lib/page.php:381
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:588
+#: lib/page.php:606
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:593
+#: lib/page.php:611
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:613
+#: lib/page.php:631
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:620
+#: lib/page.php:638
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:624
+#: lib/page.php:642
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:628
+#: lib/page.php:646
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:632
+#: lib/page.php:650
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:667
+#: lib/page.php:685
 msgid "No Description"
 msgstr ""
 
@@ -5197,27 +5197,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:1968
+#: lib/schema.php:1976
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2495
+#: lib/schema.php:2505
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2528
+#: lib/schema.php:2538
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2530
+#: lib/schema.php:2540
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2756
+#: lib/schema.php:2774
 msgid "adding schema for place"
 msgstr ""
 
