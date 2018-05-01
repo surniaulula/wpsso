@@ -1339,7 +1339,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2018/04/30.
+		 * Deprecated on 2018/04/30 (wpsso v4.1.0).
+		 *
+		 * Several wpsso add-ons still use this method - make sure all wpsso add-ons
+		 * have been updated and have a correct min_version value for wpsso.
 		 */
 		public function get_cache( $name, $add_none = false ) {
 			return $this->p->util->get_form_cache( $name, $add_none );
