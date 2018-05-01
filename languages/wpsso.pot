@@ -2587,7 +2587,7 @@ msgstr ""
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:159 lib/loader.php:178 lib/post.php:249 lib/register.php:229
-#: lib/term.php:226 lib/user.php:193 lib/util.php:335 lib/util.php:2380
+#: lib/term.php:226 lib/user.php:193 lib/util.php:335 lib/util.php:2384
 msgid "%s warning:"
 msgstr ""
 
@@ -3086,7 +3086,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:560 lib/util.php:2650
+#: lib/messages.php:560 lib/util.php:2654
 msgid "No options available."
 msgstr ""
 
@@ -4810,44 +4810,44 @@ msgstr ""
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
-#: lib/page.php:307 lib/page.php:309 lib/page.php:558 lib/page.php:560
-#: lib/page.php:620
+#: lib/page.php:307 lib/page.php:309 lib/page.php:559 lib/page.php:561
+#: lib/page.php:621
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:381
+#: lib/page.php:382
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:606
+#: lib/page.php:607
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:611
+#: lib/page.php:612
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:631
+#: lib/page.php:632
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:638
+#: lib/page.php:639
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:642
+#: lib/page.php:643
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:646
+#: lib/page.php:647
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:650
+#: lib/page.php:651
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:685
+#: lib/page.php:686
 msgid "No Description"
 msgstr ""
 
@@ -5754,13 +5754,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
-#: lib/util.php:2362
+#: lib/util.php:2365
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/util.php:2373
+#: lib/util.php:2377
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -5769,34 +5769,34 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2373
+#: lib/util.php:2377
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2677
+#: lib/util.php:2681
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2680
+#: lib/util.php:2684
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2685
+#: lib/util.php:2689
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2688
+#: lib/util.php:2692
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2816
+#: lib/util.php:2820
 msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""

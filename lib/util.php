@@ -2236,7 +2236,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( ! has_filter( $filter_name ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: '.$filter_name.' has no filter hooks' );
+					$this->p->debug->log( 'exiting early: ' . $filter_name . ' has no filter hooks' );
 				}
 				return $filter_value;
 			}
@@ -2244,10 +2244,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Prevent recursive loops - the global variable is defined before applying the filters.
 			 */
-			if ( ! empty( $GLOBALS[$this->p->lca.'_doing_filter_'.$filter_name] ) ) {
+			if ( ! empty( $GLOBALS[$this->p->lca . '_doing_filter_' . $filter_name] ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: global variable '.
-						$this->p->lca.'_doing_filter_'.$filter_name.' is true' );
+					$this->p->debug->log( 'exiting early: global variable ' . 
+						$this->p->lca . '_doing_filter_' . $filter_name . ' is true' );
 				}
 				return $filter_value;
 			}
@@ -2256,14 +2256,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Hooked by some modules, like bbPress and social sharing buttons,
 			 * to perform actions before / after filtering the content.
 			 */
-			do_action( $this->p->lca.'_pre_apply_filters_text', $filter_name );
+			do_action( $this->p->lca . '_pre_apply_filters_text', $filter_name );
 
 			/**
 			 * Load the Block Filter Output (BFO) filters to block and show an error
 			 * for incorrectly coded filters.
 			 */
 			if ( $hook_bfo ) {
-				$classname = apply_filters( $this->p->lca.'_load_lib', false, 'com/bfo', 'SucomBFO' );
+				$classname = apply_filters( $this->p->lca . '_load_lib', false, 'com/bfo', 'SucomBFO' );
 				if ( is_string( $classname ) && class_exists( $classname ) ) {
 					$bfo_obj = new $classname( $this->p );
 					$bfo_obj->add_start_hooks( array( $filter_name ) );
@@ -2276,7 +2276,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			global $post;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'saving the original post object '.( isset( $post->ID ) ? 'id '.$post->ID : '(no post id)' ) );
+				$this->p->debug->log( 'saving the original post object ' . ( isset( $post->ID ) ? 'id ' . $post->ID : '(no post id)' ) );
 			}
 
 			$post_obj_pre_filter = $post;	// save the original global post object
@@ -2285,10 +2285,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Make sure the $post object is correct before filtering.
 			 */
 			if ( $mod['is_post'] && $mod['id'] && ( ! isset( $post->ID ) || $mod['id'] !== $post->ID ) ) {
+
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'resetting post object from mod id '.$mod['id'] );
+					$this->p->debug->log( 'resetting post object from mod id ' . $mod['id'] );
 				}
+
 				$post = SucomUtil::get_post_object( $mod['id'] );	// redefine $post global
+
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'post object id matches the post mod id' );
 			}
@@ -2305,16 +2308,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * which will be removed anyway (social sharing buttons, for example).
 			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'setting global '.$this->p->lca.'_doing_filter_'.$filter_name );
+				$this->p->debug->log( 'setting global ' . $this->p->lca . '_doing_filter_' . $filter_name );
 			}
 
-			$GLOBALS[$this->p->lca.'_doing_filter_'.$filter_name] = true;	// prevent recursive loops
+			$GLOBALS[$this->p->lca . '_doing_filter_' . $filter_name] = true;	// prevent recursive loops
 
 			/**
 			 * Apply the filters.
 			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'applying WordPress '.$filter_name.' filters' );	// being timer
+				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// being timer
 			}
 
 			$start_time   = microtime( true );
@@ -2322,17 +2325,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$total_time   = microtime( true ) - $start_time;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'applying WordPress '.$filter_name.' filters' );	// end timer
+				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// end timer
 			}
 
 			/**
 			 * Unset the recursive loop check.
 			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'unsetting global '.$this->p->lca.'_doing_filter_'.$filter_name );
+				$this->p->debug->log( 'unsetting global ' . $this->p->lca . '_doing_filter_' . $filter_name );
 			}
 
-			unset( $GLOBALS[$this->p->lca.'_doing_filter_'.$filter_name] );	// un-prevent recursive loops
+			unset( $GLOBALS[$this->p->lca . '_doing_filter_' . $filter_name] );	// un-prevent recursive loops
 
 			/**
 			 * Issue warning for slow filter performance.
@@ -2366,9 +2369,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 					if ( $is_wp_filter ) {
-						$filter_api_link    = '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/'.$filter_name.'">'.$filter_name.'</a>';
+						$filter_api_link    = '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/' .
+							$filter_name . '">' . $filter_name . '</a>';
 						$query_monitor_link = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
-						$dismiss_key        = 'slow-filter-hooks-detected-'.$filter_name;
+						$dismiss_key        = 'slow-filter-hooks-detected-' . $filter_name;
 
 						$this->p->notice->warn( sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $total_time, $max_time ) . ' ' . sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info['short'] ), true, $dismiss_key, WEEK_IN_SECONDS );
 					} else {
@@ -2378,15 +2382,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				// translators: %s is the short plugin name
 				$error_prefix = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
-				SucomUtil::safe_trigger_error( $error_prefix.' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
+				SucomUtil::safe_trigger_error( $error_prefix . ' ' . rtrim( $error_msg, '.' ), E_USER_WARNING );
 			}
 
 			/**
 			 * Restore the original post object.
 			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'restoring the original post object '.
-					( isset( $post_obj_pre_filter->ID ) ? 'id '.$post_obj_pre_filter->ID : '(no post id)' ) );
+				$this->p->debug->log( 'restoring the original post object ' . 
+					( isset( $post_obj_pre_filter->ID ) ? 'id ' . $post_obj_pre_filter->ID : '(no post id)' ) );
 			}
 
 			$post = $post_obj_pre_filter;	// restore the original global post object
@@ -2408,7 +2412,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Hooked by some modules, like bbPress and social sharing buttons,
 			 * to perform actions before / after filtering the content.
 			 */
-			do_action( $this->p->lca.'_after_apply_filters_text', $filter_name );
+			do_action( $this->p->lca . '_after_apply_filters_text', $filter_name );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'returning filtered value' );

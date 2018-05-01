@@ -359,6 +359,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$user_obj = SucomUtil::get_user_object( $mod['id'] );
 
 					$title_text = apply_filters( 'wp_title', $user_obj->display_name.' '.$sep.' ', $sep, 'right' );
+
 					$title_text = apply_filters( $this->p->lca.'_user_object_title', $title_text, $user_obj );
 
 				} else {
