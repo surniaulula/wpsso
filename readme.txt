@@ -60,99 +60,99 @@ WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's beha
 
 <span style="color:#33cc33">&#x0229b;</span> &mdash; Automatically creates complete meta tags for Facebook / Open Graph, Google Plus / Rich Cards (SEO), LinkedIn, Pinterest Rich Pin, Twitter Cards, and more, in the head section of all webpages, including custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Manage robots noindex, nofollow, noarchive, and nosnippet for each post / page.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Manage robots noindex, nofollow, noarchive, and nosnippet for each post / page.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Uses images from a variety of sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Uses images from a variety of sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards, Pinterest Rich Pins, and all Twitter Card types.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards, Pinterest Rich Pins, and all Twitter Card types.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable maximum title and description lengths (Facebook / Open Graph, Twitter Card, SEO), including both hard and soft limits.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Configurable maximum title and description lengths (Facebook / Open Graph, Twitter Card, SEO), including both hard and soft limits.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/?utm_source=wpsso-readme).
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/?utm_source=wpsso-readme).
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds author (Person), publisher (Organization), and WebSite markup using Schema JSON-LD for Google Search / Knowledge Graph (SEO), including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Adds author (Person), publisher (Organization), and WebSite markup using Schema JSON-LD for Google Search / Knowledge Graph (SEO), including markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Configurable website / business social accounts for Schema markup and Google's Knowledge Graph.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Configurable website / business social accounts for Schema markup and Google's Knowledge Graph.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; User profile contact fields for Facebook / Open Graph, Twitter Card, Schema markup, and Google's Knowledge Graph.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; User profile contact fields for Facebook / Open Graph, Twitter Card, Schema markup, and Google's Knowledge Graph.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Built-in support for [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) and [AMP for WP - Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Built-in support for [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) and [AMP for WP - Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; And even includes an option to hide the preview of all Pro settings and features. ;-)
+<span style="color:#33cc33">&#x0229b;</span> &mdash; And even includes an option to hide the preview of all Pro settings and features. ;-)
 
 <h3>WPSSO Core Pro / Additional Features</h3>
 
 WPSSO Core Pro gives you the power to further integrate and customize your meta tags and Schema markup with third party plugins and APIs.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Includes a metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages to customize the article topic, shared title, Facebook / Open Graph, Schema / Google Rich Cards (SEO), Pinterest Rich Pin, and Twitter Card descriptions, along with the shared image and/or video, customize product, recipe, event information, and much more.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Includes a metabox for Posts, Pages, custom post types, user profiles, and term / taxonomy (category and tag) editing pages to customize the article topic, shared title, Facebook / Open Graph, Schema / Google Rich Cards (SEO), Pinterest Rich Pin, and Twitter Card descriptions, along with the shared image and/or video, customize product, recipe, event information, and much more.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Optionally upscale smaller images for social sharing and Schema markup - a maximum upscale percentage can also be selected.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Optionally upscale smaller images for social sharing and Schema markup - a maximum upscale percentage can also be selected.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Optionally validate all image minimum / maximum dimensions and aspect ratios (recommended).
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Optionally validate all image minimum / maximum dimensions and aspect ratios (recommended).
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Optionally renders shortcodes for accurate description texts and embedded video detection (recommended).
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Optionally renders shortcodes for accurate description texts and embedded video detection (recommended).
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and eCommerce products.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and eCommerce products.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Include or exclude individual Facebook / Open Graph / Google / SEO / Twitter Card / Schema meta tag from the webpage head section.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Include or exclude individual Facebook / Open Graph / Google / SEO / Twitter Card / Schema meta tag from the webpage head section.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Allows you to customize the field names, label, and add / remove contacts on user profile pages and Co-Authors Plus guest author profiles.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Allows you to customize the field names, label, and add / remove contacts on user profile pages and Co-Authors Plus guest author profiles.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 
-<span style="color:#33cc33">&#x0229b;</span> &nbsp; Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more. The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 
-* **Integration with 3rd Party Plugins**
+**Integration with 3rd Party Plugins**
 
-	* All in One SEO Pack
-	* bbPress
-	* BuddyPress (including Group Forum Topics)
-	* Co-Authors Plus (including Guest Authors)
-	* Easy Digital Downloads
-	* Gravity Forms + GravityView
-	* HeadSpace2 SEO
-	* MarketPress - WordPress eCommerce
-	* NextCellent Gallery - NextGEN Legacy
-	* NextGEN Gallery
-	* Polylang
-	* rtMedia for WordPress, BuddyPress and bbPress
-	* Simple Job Board (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
-	* The Events Calendar
-	* The SEO Framework
-	* WooCommerce (versions 1, 2, and 3)
-	* WordPress REST API (version 2)
-	* WP eCommerce
-	* WP Job Manager (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
-	* WP Meta SEO
-	* WP Product Review (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
-	* WP Recipe Maker (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
-	* WP Ultimate Recipe (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
-	* Yoast SEO (aka WordPress SEO)
-	* Yotpo Social Reviews for WooCommerce
+* All in One SEO Pack
+* bbPress
+* BuddyPress (including Group Forum Topics)
+* Co-Authors Plus (including Guest Authors)
+* Easy Digital Downloads
+* Gravity Forms + GravityView
+* HeadSpace2 SEO
+* MarketPress - WordPress eCommerce
+* NextCellent Gallery - NextGEN Legacy
+* NextGEN Gallery
+* Polylang
+* rtMedia for WordPress, BuddyPress and bbPress
+* Simple Job Board (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
+* The Events Calendar
+* The SEO Framework
+* WooCommerce (versions 1, 2, and 3)
+* WordPress REST API (version 2)
+* WP eCommerce
+* WP Job Manager (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
+* WP Meta SEO
+* WP Product Review (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
+* WP Recipe Maker (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
+* WP Ultimate Recipe (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
+* Yoast SEO (aka WordPress SEO)
+* Yotpo Social Reviews for WooCommerce
 
-* **Integration with Service APIs**
+**Integration with Service APIs**
 
-	* Bitly
-	* Facebook Embedded Videos
-	* Google URL Shortener
-	* Gravatar (Author Image)
-	* Ow.ly
-	* Slideshare Presentations
-	* Soundcloud Tracks (for Twitter Player Card)
-	* TinyURL
-	* Vimeo Videos
-	* Wistia Videos
-	* WordPress Video Shortcode (and Self-Hosted Videos)
-	* Your Own URL Shortener (YOURLS)
-	* YouTube Videos and Playlists
+* Bitly
+* Facebook Embedded Videos
+* Google URL Shortener
+* Gravatar (Author Image)
+* Ow.ly
+* Slideshare Presentations
+* Soundcloud Tracks (for Twitter Player Card)
+* TinyURL
+* Vimeo Videos
+* Wistia Videos
+* WordPress Video Shortcode (and Self-Hosted Videos)
+* Your Own URL Shortener (YOURLS)
+* YouTube Videos and Playlists
 
 <!--smp-ignore-->
 
