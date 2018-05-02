@@ -765,160 +765,160 @@ msgid ""
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:2623 lib/submenu/essential.php:118
+#: lib/admin.php:2625 lib/submenu/essential.php:118
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2627 lib/submenu/essential.php:122
+#: lib/admin.php:2629 lib/submenu/essential.php:122
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:2632 lib/submenu/general.php:182
+#: lib/admin.php:2634 lib/submenu/general.php:182
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:2635 lib/submenu/general.php:185
+#: lib/admin.php:2637 lib/submenu/general.php:185
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/admin.php:2638
+#: lib/admin.php:2640
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
 
-#: lib/admin.php:2643 lib/submenu/general.php:143 lib/submenu/general.php:335
+#: lib/admin.php:2645 lib/submenu/general.php:143 lib/submenu/general.php:337
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
 
-#: lib/admin.php:2644 lib/submenu/general.php:257 lib/submenu/general.php:337
+#: lib/admin.php:2646 lib/submenu/general.php:257 lib/submenu/general.php:339
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:2647
+#: lib/admin.php:2649
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2659
+#: lib/admin.php:2663
 msgctxt "option label"
 msgid "Item Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:2660
+#: lib/admin.php:2664
 msgctxt "option label"
 msgid "Item Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:2661
+#: lib/admin.php:2665
 msgctxt "option label"
 msgid "Item Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:2662
+#: lib/admin.php:2666
 msgctxt "option label"
 msgid "Item Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:2663
+#: lib/admin.php:2667
 msgctxt "option label"
 msgid "Item Type for Other Archive Page"
 msgstr ""
 
-#: lib/admin.php:2691
+#: lib/admin.php:2695
 msgctxt "option comment"
 msgid "(Post Type) Archive Page"
 msgstr ""
 
-#: lib/admin.php:2695
+#: lib/admin.php:2699
 msgctxt "option label"
 msgid "Item Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:2720
+#: lib/admin.php:2724
 msgctxt "option label"
 msgid "Item Type by Term Taxonomy"
 msgstr ""
 
-#: lib/admin.php:2735
+#: lib/admin.php:2739
 msgctxt "option label"
 msgid "Knowledge Graph for Home Page"
 msgstr ""
 
-#: lib/admin.php:2739
+#: lib/admin.php:2743
 msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr ""
 
-#: lib/admin.php:2742
+#: lib/admin.php:2746
 msgid "Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr ""
 
-#: lib/admin.php:2745
+#: lib/admin.php:2749
 msgid "Include <a href=\"%s\">Person Social Profile</a> for the Site Owner"
 msgstr ""
 
-#: lib/admin.php:2751
+#: lib/admin.php:2755
 msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:2759
+#: lib/admin.php:2763
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2764
+#: lib/admin.php:2768
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2772
+#: lib/admin.php:2776
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:2780
+#: lib/admin.php:2784
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:2787
+#: lib/admin.php:2791
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/admin.php:2794
+#: lib/admin.php:2798
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/admin.php:2802
+#: lib/admin.php:2806
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2942
+#: lib/admin.php:2946
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2962
+#: lib/admin.php:2966
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name
-#: lib/admin.php:2982
+#: lib/admin.php:2986
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL
-#: lib/admin.php:2989
+#: lib/admin.php:2993
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
@@ -3832,7 +3832,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:1154 lib/messages.php:1267 lib/messages.php:1413
-#: lib/submenu/general.php:235 lib/submenu/general.php:305
+#: lib/submenu/general.php:235 lib/submenu/general.php:307
 msgctxt "option label"
 msgid "Author Name Format"
 msgstr ""
@@ -5450,7 +5450,7 @@ msgctxt "metabox title"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:129 lib/submenu/general.php:296
+#: lib/submenu/essential.php:129 lib/submenu/general.php:298
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
@@ -5460,7 +5460,7 @@ msgctxt "metabox title"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/essential.php:136 lib/submenu/general.php:330
+#: lib/submenu/essential.php:136 lib/submenu/general.php:332
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -5600,52 +5600,52 @@ msgctxt "option comment"
 msgid "option disabled by extension plugin or custom filter"
 msgstr ""
 
-#: lib/submenu/general.php:301
+#: lib/submenu/general.php:303
 msgctxt "option label"
 msgid "Pinterest Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:309
+#: lib/submenu/general.php:311
 msgctxt "option label"
 msgid "Add Hidden Image for Pin It Button"
 msgstr ""
 
-#: lib/submenu/general.php:313
+#: lib/submenu/general.php:315
 msgctxt "option label"
 msgid "Add \"nopin\" to Header Image Tag"
 msgstr ""
 
-#: lib/submenu/general.php:317
+#: lib/submenu/general.php:319
 msgctxt "option label"
 msgid "Add \"nopin\" to Media Lib Images"
 msgstr ""
 
-#: lib/submenu/general.php:325
+#: lib/submenu/general.php:327
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:326
+#: lib/submenu/general.php:328
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:340
+#: lib/submenu/general.php:342
 msgctxt "option label"
 msgid "Twitter Card for Post / Page Image"
 msgstr ""
 
-#: lib/submenu/general.php:344
+#: lib/submenu/general.php:346
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:348
+#: lib/submenu/general.php:350
 msgctxt "option label"
 msgid "<em>Summary</em> Card Image Dimensions"
 msgstr ""
 
-#: lib/submenu/general.php:352
+#: lib/submenu/general.php:354
 msgctxt "option label"
 msgid "<em>Large Image</em> Card Img Dimensions"
 msgstr ""

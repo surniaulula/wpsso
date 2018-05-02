@@ -2615,7 +2615,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		// called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes
+		/**
+		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
+		 */
 		protected function add_schema_item_props_table_rows( array &$table_rows ) {
 
 			$table_rows['schema_logo_url'] = $this->form->get_th_html( 
@@ -2648,7 +2650,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			'<td>' . $this->form->get_select( 'schema_author_name', $this->p->cf['form']['user_name_fields'] ) . '</td>';
 		}
 
-		// called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes
+		/**
+		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
+		 */
 		protected function add_schema_item_types_table_rows( array &$table_rows, array $hide_in_view = array(), $schema_types = null ) {
 
 			if ( ! is_array( $schema_types ) ) {
