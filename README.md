@@ -31,15 +31,15 @@
 
 <p>WPSSO Core provides a specific image for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook meta tag values.</p>
 
-<p><strong>WPSSO Core can enhance and integrate with your favorite SEO plugin:</strong></p>
+<p><strong>WPSSO Core can use and enhance your favorite SEO plugin:</strong></p>
 
-<p>WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools!</p>
+<p>WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools without any conflicts!</p>
 
 <p><strong>WPSSO Core is <em>incredibly fast</em> and coded for performance:</strong></p>
 
 <p>WPSSO Core and its add-ons make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its add-ons use only the PHP library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).</p>
 
-<p><strong>Advanced meta tag / JSON-LD markup filter hooks for developers:</strong></p>
+<p><strong>Advanced meta tag / JSON-LD markup hooks for developers:</strong></p>
 
 <p>WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several optional Free and Pro add-ons to extend WPSSO Core features.</p>
 
