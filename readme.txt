@@ -58,7 +58,7 @@ WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's beha
 
 <h3>WPSSO Core Free / Standard Features</h3>
 
-&ndash; <span style="color:#33cc33">&#x0229b;</span> &ndash; Automatically creates complete meta tags for Facebook / Open Graph, Google Plus / Rich Cards (SEO), LinkedIn, Pinterest Rich Pin, Twitter Cards, and more, in the head section of all webpages, including custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
+<span style="color:#33cc33">&#x0229b;</span> &mdash; Automatically creates complete meta tags for Facebook / Open Graph, Google Plus / Rich Cards (SEO), LinkedIn, Pinterest Rich Pin, Twitter Cards, and more, in the head section of all webpages, including custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
 
 <span style="color:#33cc33">&#x0229b;</span> &nbsp; Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
 
