@@ -5217,7 +5217,7 @@ msgid ""
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2775
+#: lib/schema.php:2774
 msgid "adding schema for place"
 msgstr ""
 

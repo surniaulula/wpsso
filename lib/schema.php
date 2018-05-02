@@ -2682,7 +2682,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'person_og_image' => $user_mod['obj']->get_og_images( 1, $size_name, $user_id, false ),
 					'person_sameas' => $user_sameas,
 				);
-				error_log( print_r( $person_opts, true ) );
 			}
 
 			if ( $wpsso->debug->enabled ) {
