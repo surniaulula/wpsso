@@ -10,8 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! function_exists( 'wpsso_is_mobile' ) ) {
+
 	function wpsso_is_mobile() {
-		// return null if the content is not allowed to vary
+
+		/**
+		 * Return null if the content is not allowed to vary.
+		 */
 		if ( ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ) {
 			return SucomUtil::is_mobile();
 		} else {

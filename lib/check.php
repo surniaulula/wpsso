@@ -210,30 +210,54 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return apply_filters( $this->p->lca.'_get_avail', $avail );
 		}
 
-		// private method to check for availability of specific features by keyword
+		/**
+		 * Private method to check for availability of specific features by keyword.
+		 */
 		private function is_avail( $key ) {
+
 			$is_avail = false;
+
 			switch ( $key ) {
+
 				case 'featured':
+
 					$is_avail = function_exists( 'has_post_thumbnail' ) ? true : false;
+
 					break;
+
 				case 'amp':
+
 					$is_avail = function_exists( 'is_amp_endpoint' ) ? true : false;
+
 					break;
+
 				case 'p_dir':
+
 					$is_avail = ! SucomUtil::get_const( 'WPSSO_PRO_MODULE_DISABLE' ) &&
 						is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ? true : false;
+
 					break;
+
 				case 'head_html':
+
 					$is_avail = ! SucomUtil::get_const( 'WPSSO_HEAD_HTML_DISABLE' ) &&
 						empty( $_SERVER['WPSSO_HEAD_HTML_DISABLE'] ) &&
 							empty( $_GET['WPSSO_HEAD_HTML_DISABLE'] ) ?
 								true : false;
+
 					break;
+
 				case 'vary_ua':
+
+					/**
+					 * WPSSO_VARY_USER_AGENT_DISABLE can be used to disable mobile browser detection
+					 * and the creation of Pinterest-specific meta tag values.
+					 */
 					$is_avail = ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ? true : false;
+
 					break;
 			}
+
 			return $is_avail;
 		}
 
