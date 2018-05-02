@@ -56,9 +56,7 @@ WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's beha
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "I've tried a number of WP SEO platforms and find this to be the most relevant and most completely thought-out platform for maximising web and social search results and presentation. Really impressed. Great support too!" - [pixmoto](https://wordpress.org/support/topic/best-seo-platform-on-the-market/)
 
-<h3>Quick List of Features</h3>
-
-<h4>WPSSO Core Free / Standard Features</h4>
+<h3>WPSSO Core Free / Standard Features</h3>
 
 * Automatically creates complete meta tags for Facebook / Open Graph, Google Plus / Rich Cards (SEO), LinkedIn, Pinterest Rich Pin, Twitter Cards, and more, in the head section of all webpages, including custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
 * Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
@@ -74,7 +72,7 @@ WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's beha
 * Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.
 * And even includes an option to hide the preview of all Pro settings and features. ;-)
 
-<h4>WPSSO Core Pro / Additional Features</h4>
+<h3>WPSSO Core Pro / Additional Features</h3>
 
 WPSSO Core Pro gives you the power to further integrate and customize your meta tags and Schema markup with third party plugins and APIs.
 
