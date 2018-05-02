@@ -830,95 +830,100 @@ msgctxt "option label"
 msgid "Item Type for Other Archive Page"
 msgstr ""
 
-#: lib/admin.php:2695
+#: lib/admin.php:2690 lib/admin.php:2695 lib/admin.php:2720
+msgctxt "option comment"
+msgid "for %s"
+msgstr ""
+
+#: lib/admin.php:2696
 msgctxt "option comment"
 msgid "(Post Type) Archive Page"
 msgstr ""
 
-#: lib/admin.php:2699
+#: lib/admin.php:2700
 msgctxt "option label"
 msgid "Item Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:2724
+#: lib/admin.php:2725
 msgctxt "option label"
 msgid "Item Type by Term Taxonomy"
 msgstr ""
 
-#: lib/admin.php:2739
+#: lib/admin.php:2740
 msgctxt "option label"
 msgid "Knowledge Graph for Home Page"
 msgstr ""
 
-#: lib/admin.php:2743
+#: lib/admin.php:2744
 msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr ""
 
-#: lib/admin.php:2746
+#: lib/admin.php:2747
 msgid "Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr ""
 
-#: lib/admin.php:2749
+#: lib/admin.php:2750
 msgid "Include <a href=\"%s\">Person Social Profile</a> for the Site Owner"
 msgstr ""
 
-#: lib/admin.php:2755
+#: lib/admin.php:2756
 msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:2763
+#: lib/admin.php:2764
 msgctxt "option label"
 msgid "Preserve Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2768
+#: lib/admin.php:2769
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2776
+#: lib/admin.php:2777
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:2784
+#: lib/admin.php:2785
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:2791
+#: lib/admin.php:2792
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/admin.php:2798
+#: lib/admin.php:2799
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/admin.php:2806
+#: lib/admin.php:2807
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2946
+#: lib/admin.php:2947
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:2966
+#: lib/admin.php:2967
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name
-#: lib/admin.php:2986
+#: lib/admin.php:2987
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL
-#: lib/admin.php:2993
+#: lib/admin.php:2994
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "

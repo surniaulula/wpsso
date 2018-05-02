@@ -2687,12 +2687,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
 				$type_opt_keys[] = $opt_key = 'schema_type_for_' . $pt->name;
 				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) .
-					' for ' . $pt->label . '</p>' . "\n";
+					' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $pt->label ) . '</p>' . "\n";
 			}
 
 			$type_opt_keys[] = $opt_key = 'schema_type_for_post_archive';
 			$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) .
-				' for ' . _x( '(Post Type) Archive Page', 'option comment', 'wpsso' ). '</p>' . "\n";
+				' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
+					_x( '(Post Type) Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
 
 			$tr_html = '';
 			$tr_key = 'schema_type_for_ptn';
@@ -2716,7 +2717,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $this->p->util->get_taxonomies( 'objects' ) as $tax ) {
 				$type_opt_keys[] = $opt_key = 'schema_type_for_tax_' . $tax->name;
 				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) .
-					' for ' . $tax->label . '</p>' . "\n";
+					' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $tax->label ) . '</p>' . "\n";
 			}
 
 			$tr_html = '';
