@@ -17,11 +17,11 @@
 
 <p><strong>Automatically create complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and many more.</strong></p>
 
-<p>WPSSO Core creates complete and accurate meta tags and Schema markup for Facebook / Open Graph, Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, Twitter Cards, and more &mdash; including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.</p>
+<p>WPSSO Core creates complete and accurate meta tags and Schema markup for Facebook / Open Graph, Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, Twitter Cards, Weibo, and more &mdash; including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.</p>
 
 <p><strong>WPSSO Core uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
-<p>There's no need to manually re-enter descriptions, titles, select images / videos, etc. WPSSO Core reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about everything. ;-)</p>
+<p>There's no need to manually re-enter descriptions, titles, select images / videos, etc. WPSSO Core reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about anything and everything. ;-)</p>
 
 <p><strong>WPSSO Core includes advanced <em>quality control</em> features and options:</strong></p>
 
@@ -37,7 +37,7 @@
 
 <p><strong>WPSSO Core is <em>incredibly fast</em> and coded for performance:</strong></p>
 
-<p>WPSSO Core and its add-ons make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its add-ons use only the PHP library files and object classes they need, keeping their code small, fast, and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).</p>
+<p>WPSSO Core and its add-ons make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its add-ons use only the PHP library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).</p>
 
 <p><strong>Advanced meta tag / JSON-LD markup filter hooks for developers:</strong></p>
 
