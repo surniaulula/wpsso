@@ -130,7 +130,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 
 <!--smp-ignore-->
 
-**[Purchase the WPSSO Core Pro plugin here](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme) (all purchases include a <em>No Risk 30 Day Refund Policy</em>).**
+[Purchase the WPSSO Core Pro plugin here](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme) (all purchases include a <em>No Risk 30 Day Refund Policy</em>).
 
 <!--/smp-ignore-->
 
@@ -292,7 +292,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.1.0-b.1 (2018/05/01)**
+**Version 4.1.0 (2018/05/02)**
 
 * *New Features*
 	* None
@@ -351,11 +351,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.1.0-b.1 =
+= 4.1.0 =
 
-(2018/05/01) Added a new "Item Type by Term Taxonomy" option. Fixed an undefined $mod variable warning when saving term meta.
-
-= 4.0.0 =
-
-(2018/04/26) Gutenberg support added: Added support for jQuery based Gutenberg notices. Added a refresh for the SSO metabox when saving a Gutenberg post.
+(2018/05/02) Added a new "Item Type by Term Taxonomy" option. Fixed an undefined $mod variable warning when saving term meta.
 
