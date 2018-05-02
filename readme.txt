@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.5
 WC Tested Up To: 3.3.5
-Stable Tag: 4.0.0
+Stable Tag: 4.1.0
 
 Automatically create complete meta tags + Schema markup from your content for Social Sharing, Google Rich Cards (SEO), Pinterest Rich Pins & more.
 
@@ -134,7 +134,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 
 <!--/smp-ignore-->
 
-<h3>WPSSO Core Add-ons</h3>
+<h3>Optional WPSSO Core Add-ons</h3>
 
 <h4>Optional Free Add-ons</h4>
 
