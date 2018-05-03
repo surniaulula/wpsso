@@ -46,7 +46,7 @@ WPSSO Core and its add-ons make full use of all available caching techniques (pe
 
 **WPSSO Core is *developer friendly* and easily customizable:**
 
-WPSSO Core offers hundreds of filter hooks to customize WPSSO Core's behavior and output, extensive developer documentation with examples, dozens of 3rd party integration modules in the Pro version, and several optional Free and Pro add-ons to extend WPSSO Core's features (ie. manage multiple locations, create different organizations, option values for different languages, sharpen social and SEO images, etc.).
+WPSSO Core offers hundreds of filter hooks to customize WPSSO Core's behavior and output, extensive developer documentation with examples, dozens of 3rd party integration modules in the Pro version, and several optional Free and Pro add-ons to extend WPSSO Core's features.
 
 <h3>Users Love WPSSO Core</h3>
 
