@@ -39,7 +39,7 @@
 
 <p>WPSSO Core and its add-ons make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its add-ons use only the PHP library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).</p>
 
-<p><strong>WPSSO Core is easily customizable and <em>developer friendly</em>:</strong></p>
+<p><strong>WPSSO Core is <em>developer friendly</em> and easily customizable:</strong></p>
 
 <p>WPSSO Core offers hundreds of filter hooks to customize WPSSO Core's behavior and output, extensive developer documentation with examples, dozens of 3rd party integration modules in the Pro version, and several optional Free and Pro add-ons to extend WPSSO Core's features (ie. manage multiple locations, create different organizations, option values for different languages, sharpen social and SEO images, etc.).</p>
 
