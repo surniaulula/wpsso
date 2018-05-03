@@ -6,7 +6,8 @@
 'wpsso_init_textdomain' ( $debug_enabled );
 
 /**
- * Hooked by some modules, like bbPress and social sharing buttons,
+ * 'wpsso_pre_apply_filters_text' and 'wpsso_after_apply_filters_text' are
+ * hooked by some modules and add-ons, like bbPress and social sharing buttons,
  * to perform actions before / after filtering the content.
  */
 'wpsso_pre_apply_filters_text' ( $filter_name );
