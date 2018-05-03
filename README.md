@@ -21,7 +21,7 @@
 
 <p><strong>WPSSO Core uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
-<p>There's no need to manually re-enter descriptions, titles, select images / videos, etc. WPSSO Core reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about anything and everything. ;-)</p>
+<p>There's no need to manually re-enter descriptions, titles, select images / videos, etc. WPSSO Core reads all of your existing WordPress content automatically &mdash; and if you want, you can also fine-tune and customize just about anything and everything. ;-) WPSSO Core is also language / locale aware, allowing you to define different plugin option values for different languages!</p>
 
 <p><strong>WPSSO Core includes advanced <em>quality control</em> features and options:</strong></p>
 
@@ -39,9 +39,9 @@
 
 <p>WPSSO Core and its add-ons make full use of all available caching techniques (persistent / non-persistent object and disk caching), and create cache objects in background to pre-seed the transient cache. WPSSO Core and its add-ons use only the PHP library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).</p>
 
-<p><strong>Advanced meta tag / JSON-LD markup hooks for developers:</strong></p>
+<p><strong>WPSSO Core is easily customizable and <em>developer friendly</em>:</strong></p>
 
-<p>WPSSO Core offers hundreds of filter hooks to easily customize WPSSO Core's behavior and output, dozens of 3rd party integration modules in the Pro version, and several optional Free and Pro add-ons to extend WPSSO Core features.</p>
+<p>WPSSO Core offers hundreds of filter hooks to customize WPSSO Core's behavior and output, extensive developer documentation with examples, dozens of 3rd party integration modules in the Pro version, and several optional Free and Pro add-ons to extend WPSSO Core's features (ie. manage multiple locations, create different organizations, option values for different languages, sharpen social and SEO images, etc.).</p>
 
 <h3>Users Love WPSSO Core</h3>
 
