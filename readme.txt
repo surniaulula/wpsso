@@ -156,7 +156,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 
 <!--smp-ignore-->
 
-[Purchase the WPSSO Core Pro plugin here](https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme) (all purchases include a <em>No Risk 30 Day Refund Policy</em>).
+&#x0229b; &nbsp; <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme">Purchase the WPSSO Core Pro plugin here</a> (all purchases include a <em>No Risk 30 Day Refund Policy</em>).
 
 <!--/smp-ignore-->
 
