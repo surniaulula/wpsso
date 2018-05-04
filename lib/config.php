@@ -657,6 +657,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_business' => 'local.business',
 					'schema_type_for_download' => 'product',	// for Easy Digital Downloads
 					'schema_type_for_event' => 'event',
+					'schema_type_for_howto' => 'howto',
 					'schema_type_for_job_listing' => 'job.posting',	// for WP Job Manager
 					'schema_type_for_jobpost' => 'job.posting',	// for Simple Job Board
 					'schema_type_for_organization' => 'organization',
@@ -983,7 +984,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url' => '_format_image_url',	// Image URL Custom Field
 					'plugin_cf_vid_url' => '_format_video_url',	// Video URL Custom Field
 					'plugin_cf_vid_embed' => '',			// Video Embed HTML Custom Field
-					'plugin_cf_addl_type_urls' => '',		// Additional Type URLs Custom Field
+					'plugin_cf_addl_type_urls' => '',		// Microdata Type URLs Custom Field
 					'plugin_cf_recipe_ingredients' => '',		// Recipe Ingredients Custom Field
 					'plugin_cf_recipe_instructions' => '',		// Recipe Instructions Custom Field
 					'plugin_cf_product_avail' => '',		// Product Availability Custom Field
@@ -994,7 +995,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_material' => '',		// Product Material Custom Field
 					'plugin_cf_product_price' => '',		// Product Price Custom Field
 					'plugin_cf_product_size' => '',			// Product Size Custom Field
-					'plugin_cf_sameas_urls' => '',			// SameAs Webpage URLs Custom Field
+					'plugin_cf_sameas_urls' => '',			// SameAs / Canonical URLs Custom Field
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week)
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
@@ -1162,7 +1163,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'vk' => 'vk',
 					'whatsapp' => 'wa',
 				),
-				'cf_md_idx' => array(		// custom field to meta data index
+				'cf_md_idx' => array(		// Custom field to meta data index.
 					'plugin_cf_img_url'             => 'og_img_url',
 					'plugin_cf_vid_url'             => 'og_vid_url',
 					'plugin_cf_vid_embed'           => 'og_vid_embed',
@@ -1179,15 +1180,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_size'        => 'product_size',
 					'plugin_cf_sameas_urls'         => 'schema_sameas_url',
 				),
-				'cf_md_multi' => array(		// read values into numeric meta data index
+				'cf_md_multi' => array(		// Read values into numeric meta data index.
 					'schema_addl_type_url' => true,
 					'schema_recipe_ingredient' => true,
 					'schema_recipe_instruction' => true,
 					'schema_sameas_url' => true,
 				),
 			),
-			'um' => array(				// update manager
-				'rec_version' => '1.9.0',	// minimum update manager version (soft limit)
+			'um' => array(				// Update manager.
+				'rec_version' => '1.9.0',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -1560,8 +1561,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'RefurbishedCondition' => 'Refurbished',
 					'UsedCondition'        => 'Used',
 				),
-				// https://developers.google.com/search/docs/data-types/job-postings
-				// {schema_property_value} => {select_value_shown}
+				/**
+				 * See https://developers.google.com/search/docs/data-types/job-postings.
+				 * {schema_property_value} => {select_value_shown}
+				 */
 				'employment_type' => array(
 					'full_time'  => 'Full Time',
 					'part_time'  => 'Part Time',
@@ -1572,11 +1575,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'per_diem'   => 'Per Diem',
 					'other'      => 'Other',
 				),
-				'cf_labels' => array(		// custom field option labels
+				'cf_labels' => array(		// Custom field option labels.
 					'plugin_cf_img_url'             => 'Image URL Custom Field',
 					'plugin_cf_vid_url'             => 'Video URL Custom Field',
 					'plugin_cf_vid_embed'           => 'Video Embed HTML Custom Field',
-					'plugin_cf_addl_type_urls'      => 'Additional Type URLs Custom Field',
+					'plugin_cf_addl_type_urls'      => 'Microdata Type URLs Custom Field',
 					'plugin_cf_recipe_ingredients'  => 'Recipe Ingredients Custom Field',
 					'plugin_cf_recipe_instructions' => 'Recipe Instructions Custom Field',
 					'plugin_cf_product_avail'       => 'Product Availability Custom Field',
@@ -1587,26 +1590,26 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_material'    => 'Product Material Custom Field',
 					'plugin_cf_product_price'       => 'Product Price Custom Field',
 					'plugin_cf_product_size'        => 'Product Size Custom Field',
-					'plugin_cf_sameas_urls'         => 'SameAs Webpage URLs Custom Field',
+					'plugin_cf_sameas_urls'         => 'SameAs / Canonical URLs Custom Field',
 				),
 			),
 			'head' => array(
 				'limit_min' => array(
 					'og_desc_len'               => 160,
-					'og_img_width'              => 200,	// https://developers.facebook.com/docs/sharing/best-practices
+					'og_img_width'              => 200,	// See https://developers.facebook.com/docs/sharing/best-practices.
 					'og_img_height'             => 200,
-					'schema_article_img_width'  => 696,	// https://developers.google.com/search/docs/data-types/articles
-					'schema_article_img_height' => 279,	// based on the max image ratio
-					'schema_img_width'          => 400,	// https://developers.google.com/+/web/snippet/article-rendering
+					'schema_article_img_width'  => 696,	// See https://developers.google.com/search/docs/data-types/articles.
+					'schema_article_img_height' => 279,	// Calculated from the Article minimum image width and maximum image ratio.
+					'schema_img_width'          => 400,	// See https://developers.google.com/+/web/snippet/article-rendering.
 					'schema_img_height'         => 160,
 				),
 				'limit_max' => array(
 					'og_img_ratio'                => 3,
 					'schema_article_headline_len' => 110,
 					'schema_article_img_ratio'    => 2.5,
-					'schema_img_ratio'            => 2.5,	// https://developers.google.com/+/web/snippet/article-rendering
+					'schema_img_ratio'            => 2.5,	// See https://developers.google.com/+/web/snippet/article-rendering.
 				),
-				'og_type_ns' => array(		// http://ogp.me/#types
+				'og_type_ns' => array(		// See http://ogp.me/#types.
 					'article'             => 'http://ogp.me/ns/article#',
 					'book'                => 'http://ogp.me/ns/book#',
 					'music.album'         => 'http://ogp.me/ns/music#',
@@ -1622,10 +1625,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'video.tv_show'       => 'http://ogp.me/ns/video#',
 					'website'             => 'http://ogp.me/ns/website#',
 				),
-				// https://developers.facebook.com/docs/reference/opengraph/
-				'og_type_mt' => array(
-					// https://developers.facebook.com/docs/reference/opengraph/object-type/article/
-					'article' => array(
+				'og_type_mt' => array(	// See https://developers.facebook.com/docs/reference/opengraph/.
+					'article' => array(	// See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.
 						'article:author' => '',
 						'article:publisher' => '',
 						'article:published_time' => '',
@@ -1673,8 +1674,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'place:postal_code' => '',
 						'place:country_name' => '',
 					),
-					// https://developers.facebook.com/docs/reference/opengraph/object-type/product/
-					'product' => array(
+					'product' => array(	// See https://developers.facebook.com/docs/reference/opengraph/object-type/product/.
 						'product:availability' => 'product_avail',
 						'product:brand' => 'product_brand',
 						'product:category' => '',
@@ -1760,9 +1760,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 *    migrate the schema.org site itself towards using https: as the default
 				 *    version of the site and our preferred form in examples.
 				 */
-				'schema_type' => array(	// element of 'head' array
-					'thing' => array(	// most generic type
-						'creative.work' => array(	// creative work, including books, movies, photographs, software programs, etc
+				'schema_type' => array(	// Element of 'head' array.
+					'thing' => array(	// Most generic type.
+						'creative.work' => array(	// Creative work, including books, movies, photographs, software programs, etc.
 							'article' => array(
 								'article' => 'https://schema.org/Article',
 								'article.news' => 'https://schema.org/NewsArticle',

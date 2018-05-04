@@ -1,6 +1,5 @@
 <?php die( 'These aren\'t the droids you\'re looking for...' );
 // extract of translatable text strings from static config array
-_x( 'Additional Type URLs Custom Field', 'option label', 'wpsso' );
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
 _x( 'All Transients', 'option label', 'wpsso' );
@@ -67,6 +66,7 @@ _x( 'Left', 'option value', 'wpsso' );
 _x( 'Limited Availability', 'option value', 'wpsso' );
 _x( 'LinkedIn Company Page URL', 'option value', 'wpsso' );
 _x( 'LinkedIn URL', 'option value', 'wpsso' );
+_x( 'Microdata Type URLs Custom Field', 'option label', 'wpsso' );
 _x( 'Monday', 'option value', 'wpsso' );
 _x( 'Month', 'option value', 'wpsso' );
 _x( 'Myspace Business Page URL', 'option value', 'wpsso' );
@@ -107,7 +107,7 @@ _x( 'Recipe Instructions Custom Field', 'option label', 'wpsso' );
 _x( 'Refurbished', 'option value', 'wpsso' );
 _x( 'Release Candidate and Up', 'option value', 'wpsso' );
 _x( 'Right', 'option value', 'wpsso' );
-_x( 'SameAs Webpage URLs Custom Field', 'option label', 'wpsso' );
+_x( 'SameAs / Canonical URLs Custom Field', 'option label', 'wpsso' );
 _x( 'Saturday', 'option value', 'wpsso' );
 _x( 'Schema Data', 'option label', 'wpsso' );
 _x( 'Schema Types', 'option label', 'wpsso' );

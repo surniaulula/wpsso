@@ -1543,12 +1543,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$org_sameas = array();
 
 			foreach ( $social_accounts as $social_key => $social_label ) {
+
 				$sameas_url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// localized value
+
 				if ( empty( $sameas_url ) ) {
 					continue;
 				} elseif ( $social_key === 'tc_site' ) {	// convert twitter name to url
 					$sameas_url = 'https://twitter.com/'.preg_replace( '/^@/', '', $sameas_url );
 				}
+
 				if ( filter_var( $sameas_url, FILTER_VALIDATE_URL ) !== false ) {
 					$org_sameas[] = $sameas_url;
 				}
@@ -2577,8 +2580,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Google Knowledge Graph
 			 */
 			$org_opts['org_sameas'] = isset( $org_opts['org_sameas'] ) ? $org_opts['org_sameas'] : array();
-			$org_opts['org_sameas'] = apply_filters( $wpsso->lca.'_json_data_single_organization_sameas',
-				$org_opts['org_sameas'], $mod, $org_id );
+			$org_opts['org_sameas'] = apply_filters( $wpsso->lca.'_json_data_single_organization_sameas', $org_opts['org_sameas'], $mod, $org_id );
 
 			if ( ! empty( $org_opts['org_sameas'] ) && is_array( $org_opts['org_sameas'] ) ) {	// Just in case.
 				foreach ( $org_opts['org_sameas'] as $sameas_url ) {
@@ -2662,12 +2664,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$user_sameas = array();
 
 				foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
+
 					$sameas_url = $user_mod['obj']->get_author_meta( $user_id, $cm_id );
+
 					if ( empty( $sameas_url ) ) {
 						continue;
 					} elseif ( $cm_id === $wpsso->options['plugin_cm_twitter_name'] ) {	// convert twitter name to url
 						$sameas_url = 'https://twitter.com/'.preg_replace( '/^@/', '', $sameas_url );
 					}
+
 					if ( filter_var( $sameas_url, FILTER_VALIDATE_URL ) !== false ) {
 						$user_sameas[] = $sameas_url;
 					}
@@ -2714,8 +2719,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Google Knowledge Graph
 			 */
-			$person_opts['person_sameas'] = apply_filters( $wpsso->lca.'_json_data_single_person_sameas',
-				( isset( $person_opts['person_sameas'] ) ? $person_opts['person_sameas'] : array() ), $mod, $user_id );
+			$person_opts['person_sameas'] = isset( $person_opts['person_sameas'] ) ? $person_opts['person_sameas'] : array();
+			$person_opts['person_sameas'] = apply_filters( $wpsso->lca.'_json_data_single_person_sameas', $person_opts['person_sameas'], $mod, $user_id );
 
 			if ( ! empty( $person_opts['person_sameas'] ) && is_array( $person_opts['person_sameas'] ) ) {	// Just in case.
 				foreach ( $person_opts['person_sameas'] as $sameas_url ) {

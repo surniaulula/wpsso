@@ -689,8 +689,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
-									_x( 'additional Schema type URLs', 'tooltip fragment', 'wpsso' ),
-									_x( 'Additional Type URLs', 'option label', 'wpsso' ),
+									_x( 'additional microdata type URLs', 'tooltip fragment', 'wpsso' ),
+									_x( 'Microdata Type URLs', 'option label', 'wpsso' ),
 								);
 							}
 
@@ -808,8 +808,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
-									_x( 'additional SameAs webpage URLs', 'tooltip fragment', 'wpsso' ),
-									_x( 'SameAs Webpage URLs', 'option label', 'wpsso' ),
+									_x( 'additional sameas / canonical URLs', 'tooltip fragment', 'wpsso' ),
+									_x( 'SameAs / Canonical URLs', 'option label', 'wpsso' ),
 								);
 							}
 
