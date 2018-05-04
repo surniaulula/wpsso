@@ -1792,10 +1792,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'game' => 'https://schema.org/Game',
 								'video.game' => 'https://schema.org/VideoGame',
 							),
-							'howto' => array(
-								'howto' => 'https://schema.org/HowTo',
-								'recipe' => 'https://schema.org/Recipe',
-							),
+							'howto' => 'https://schema.org/HowTo',	// Do not include recipe as a sub-type.
 							'map' => 'https://schema.org/Map',
 							'media.object' => array(
 								'audio.object' => 'https://schema.org/AudioObject',
@@ -1821,6 +1818,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'publication.issue' => 'https://schema.org/PublicationIssue',
 							'publication.volume' => 'https://schema.org/PublicationVolume',
 							'question' => 'https://schema.org/Question',
+							'recipe' => 'https://schema.org/Recipe',	// Do not include recipe under howto.
 							'review' => array(
 								'review' => 'https://schema.org/Review',
 								'review.claim' => 'https://schema.org/ClaimReview',

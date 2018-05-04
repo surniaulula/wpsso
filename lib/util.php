@@ -2273,13 +2273,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Save the original post object, in case some filters modify the global $post.
 			 */
-			global $post;
+			global $post, $wp_query;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'saving the original post object ' . ( isset( $post->ID ) ? 'id ' . $post->ID : '(no post id)' ) );
 			}
 
-			$post_obj_pre_filter = $post;	// save the original global post object
+			$post_obj_pre_filter = $post;		// Save the original global post object.
+			$wp_query_pre_filter = $wp_query;	// Save the original global wp_query.
 
 			/**
 			 * Make sure the $post object is correct before filtering.
@@ -2290,7 +2291,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'resetting post object from mod id ' . $mod['id'] );
 				}
 
-				$post = SucomUtil::get_post_object( $mod['id'] );	// redefine $post global
+				$post = SucomUtil::get_post_object( $mod['id'] );	// Redefine $post global.
 
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'post object id matches the post mod id' );
@@ -2393,7 +2394,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					( isset( $post_obj_pre_filter->ID ) ? 'id ' . $post_obj_pre_filter->ID : '(no post id)' ) );
 			}
 
-			$post = $post_obj_pre_filter;	// restore the original global post object
+			$post     = $post_obj_pre_filter;	// Restore the original global post object.
+			$wp_query = $wp_query_pre_filter;	// Restore the original global wp_query.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'restoring post data for template functions' );

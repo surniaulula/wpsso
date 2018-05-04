@@ -31,7 +31,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			add_action( 'amp_post_template_head', array( &$this, 'maybe_disable_rel_canonical' ), -1000 );
 			add_action( 'amp_post_template_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
-			// crawlers are only seen on the front-end, so skip if in back-end
+			/**
+			 * Crawlers are only seen on the front-end, so skip if in back-end.
+			 */
 			if ( ! is_admin() && $this->p->avail['*']['vary_ua'] ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'maybe add/remove query argument for custom crawler' );
@@ -130,7 +132,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Crawlers are only seen on the front-end, so skip if in back-end.
 			 */
 			if ( ! is_admin() && ! empty( $this->p->avail['*']['vary_ua'] ) ) {
+
 				$crawler_name = SucomUtil::get_crawler_name();
+
 				switch ( $crawler_name ) {
 					case 'pinterest':
 						$cache_index .= '_uaid:'.$crawler_name;
