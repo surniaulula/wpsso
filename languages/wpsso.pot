@@ -4686,15 +4686,15 @@ msgstr ""
 
 #: lib/meta.php:692
 msgctxt "clear cache status"
-msgid "cleared successfully"
+msgid "cleared"
 msgstr ""
 
-#: lib/meta.php:694
+#: lib/meta.php:696
 msgctxt "clear cache status"
 msgid "not cached"
 msgstr ""
 
-#: lib/meta.php:743
+#: lib/meta.php:745
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

@@ -1178,6 +1178,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					padding-left:0.8em;
 					list-style:inherit;
 				}
+				#wpadminbar .' . $this->lca . '-notice .notice-message strong,
+				.' . $this->lca . '-notice .notice-message strong {
+					font-weight:bold;
+				}
 				.' . $this->lca . '-notice .notice-message .button-highlight {
 					border-color:#0074a2;
 					background-color:#daeefc;

@@ -687,13 +687,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 					foreach ( $deleted_ids as $type_name => $cache_keys ) {
 						foreach ( $cache_keys as $key => $ret ) {
-							$inf_msg .= '<li>' . $type_name . ' ' . $key . ' &mdash; ';
 							if ( $ret ) {
-								$inf_msg .= '<strong>' . _x( 'cleared successfully', 'clear cache status', 'wpsso' ) . '</strong>';
+								$inf_msg .= '<li>' . $type_name . ' ' . $key . ' &mdash; ';
+								$inf_msg .= '<strong>' . _x( 'cleared', 'clear cache status', 'wpsso' ) . '</strong>';
+								$inf_msg .= '</li>' . "\n";
 							} else {
+								$inf_msg .= '<li style="opacity:0.3;">' . $type_name . ' ' . $key . ' &mdash; ';
 								$inf_msg .= _x( 'not cached', 'clear cache status', 'wpsso' );
+								$inf_msg .= '</li>' . "\n";
 							}
-							$inf_msg .= '</li>' . "\n";
 						}
 					}
 
