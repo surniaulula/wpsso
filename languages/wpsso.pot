@@ -935,16 +935,16 @@ msgid ""
 msgstr ""
 
 #: lib/com/bfo.php:204 lib/com/cache.php:475 lib/com/notice.php:71
-#: lib/com-gettext-extract.php:24
+#: lib/com-gettext-extract.php:23
 msgid "%s Notice"
 msgstr ""
 
 #: lib/com/bfo.php:207 lib/com/cache.php:478 lib/com/notice.php:74
-#: lib/com-gettext-extract.php:17
+#: lib/com-gettext-extract.php:16
 msgid "Notice"
 msgstr ""
 
-#: lib/com/bfo.php:219 lib/com-gettext-extract.php:25
+#: lib/com/bfo.php:219 lib/com-gettext-extract.php:24
 msgid ""
 "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
 "sent output to the webpage."
@@ -956,13 +956,13 @@ msgid ""
 "webpage output."
 msgstr ""
 
-#: lib/com/bfo.php:223 lib/com-gettext-extract.php:19
+#: lib/com/bfo.php:223 lib/com-gettext-extract.php:18
 msgid ""
 "Please contact the author of that filter hook and report this issue as a "
 "coding error."
 msgstr ""
 
-#: lib/com/bfo.php:249 lib/com-gettext-extract.php:16
+#: lib/com/bfo.php:249 lib/com-gettext-extract.php:15
 msgid "Incorrect webpage output:"
 msgstr ""
 
@@ -978,37 +978,37 @@ msgstr ""
 msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
 msgstr ""
 
-#: lib/com/cache.php:106 lib/com/cache.php:123 lib/com-gettext-extract.php:27
+#: lib/com/cache.php:106 lib/com/cache.php:123 lib/com-gettext-extract.php:26
 msgid ""
 "The PHP \"%s\" setting is enabled &mdash; the PHP cURL library cannot follow "
 "URL redirects."
 msgstr ""
 
-#: lib/com/cache.php:109 lib/com-gettext-extract.php:28
+#: lib/com/cache.php:109 lib/com-gettext-extract.php:27
 msgid ""
 "The \"%s\" setting is deprecated since PHP version 5.3 and removed from PHP "
 "since version 5.4."
 msgstr ""
 
-#: lib/com/cache.php:112 lib/com-gettext-extract.php:20
+#: lib/com/cache.php:112 lib/com-gettext-extract.php:19
 msgid ""
 "Please contact your hosting provider to have this setting disabled or "
 "install a newer version of PHP."
 msgstr ""
 
-#: lib/com/cache.php:126 lib/com-gettext-extract.php:21
+#: lib/com/cache.php:126 lib/com-gettext-extract.php:20
 msgid "Please contact your hosting provider to have this setting disabled."
 msgstr ""
 
-#: lib/com/cache.php:130 lib/com-gettext-extract.php:26
+#: lib/com/cache.php:130 lib/com-gettext-extract.php:25
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: lib/com/cache.php:135 lib/com-gettext-extract.php:23
+#: lib/com/cache.php:135 lib/com-gettext-extract.php:22
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
-#: lib/com/cache.php:245 lib/com-gettext-extract.php:18
+#: lib/com/cache.php:245 lib/com-gettext-extract.php:17
 msgid ""
 "PHP cURL library is missing &mdash; contact your hosting provider to have "
 "the cURL library installed."
@@ -1042,33 +1042,33 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: lib/com/notice.php:144 lib/com-gettext-extract.php:30
+#: lib/com/notice.php:144 lib/com-gettext-extract.php:29
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:154 lib/com-gettext-extract.php:29
+#: lib/com/notice.php:154 lib/com-gettext-extract.php:28
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:312 lib/com-gettext-extract.php:8
+#: lib/com/notice.php:308 lib/com-gettext-extract.php:8
 msgid "edit"
 msgstr ""
 
-#: lib/com/notice.php:314 lib/com-gettext-extract.php:22
+#: lib/com/notice.php:310 lib/com-gettext-extract.php:21
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/notice.php:549 lib/com/notice.php:767 lib/com-gettext-extract.php:31
+#: lib/com/notice.php:550 lib/com/notice.php:767 lib/com-gettext-extract.php:30
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:550 lib/com/notice.php:768 lib/com-gettext-extract.php:32
+#: lib/com/notice.php:551 lib/com/notice.php:768 lib/com-gettext-extract.php:31
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:559 lib/com/notice.php:777
+#: lib/com/notice.php:560 lib/com/notice.php:777
 msgid ""
 "%1$d important %2$s notice has been dismissed &mdash; <a id=\"%3$s\">show "
 "the %2$s message</a>."
@@ -1084,10 +1084,6 @@ msgstr ""
 
 #: lib/com/util.php:1517
 msgid "The plugin information for \"%s\" does not contain a download link."
-msgstr ""
-
-#: lib/com-gettext-extract.php:15
-msgid "Hide"
 msgstr ""
 
 #: lib/config-gettext-extract.php:3

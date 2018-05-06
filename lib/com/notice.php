@@ -145,17 +145,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				} elseif ( empty( $payload['dismiss_time'] ) ) {	// False or 0 seconds.
 
-					//$payload['dismiss_diff'] = __( 'Hide', $this->text_domain );
+					// Nothing to do.
 
 				} elseif ( is_numeric( $payload['dismiss_time'] ) ) {	// Seconds greater than 0.
 
 					$payload['dismiss_diff'] = human_time_diff( 0, $payload['dismiss_time'] );
 
 					$msg_dismiss_transl = __( 'This notice can be dismissed for %s.', $this->text_domain );
-
-				} else {	// Everything else.
-
-					//$payload['dismiss_diff'] = __( 'Hide', $this->text_domain );
 				}
 
 				if ( $msg_dismiss_transl ) {
@@ -419,6 +415,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$doing_block_editor = defined( 'DOING_BLOCK_EDITOR' ) ? DOING_BLOCK_EDITOR : false;
 
+			/**
+			 * If toolbar notices are being used, exclude these from being shown.
+			 * The default toolbar notices array is err, warn, and inf.
+			 */
 			if ( defined( strtoupper( $this->lca ) . '_TOOLBAR_NOTICES' ) ) {
 
 				$toolbar_notices = constant( strtoupper( $this->lca ) . '_TOOLBAR_NOTICES' );
@@ -438,7 +438,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			echo $this->get_notice_style();
 
 			/**
-			 * The notices will be retrieved using an ajax call.
+			 * Exit early if this is a block editor (aka Gutenberg) page.
+			 * The notices will be retrieved using an ajax call on page load and post save.
 			 */
 			if ( $doing_block_editor ) {
 				return;
@@ -562,11 +563,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$hidden[$msg_type], $this->text_domain
 				);
 
-				$payload['msg_text']     = sprintf( $payload['msg_text'], $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
-				$payload['msg_spoken']   = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_text'] ) );
-				//$payload['dismiss_diff'] = __( 'Hide', $this->text_domain );
-				$payload['no-unhide']    = true;
-				$payload['no-count']     = true;
+				$payload['msg_text']   = sprintf( $payload['msg_text'], $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
+				$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_text'] ) );
+				$payload['no-unhide']  = true;
+				$payload['no-count']   = true;
 
 				echo $this->get_notice_html( $msg_type, $payload );
 			}
@@ -780,12 +780,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$hidden[$msg_type], $this->text_domain
 				);
 
-				$payload['msg_text']     = sprintf( $payload['msg_text'], $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
-				$payload['msg_spoken']   = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_text'] ) );
-				$payload['msg_html']     = $this->get_notice_html( $msg_type, $payload );
-				//$payload['dismiss_diff'] = __( 'Hide', $this->text_domain );
-				$payload['no-unhide']    = true;
-				$payload['no-count']     = true;
+				$payload['msg_text']   = sprintf( $payload['msg_text'], $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
+				$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_text'] ) );
+				$payload['msg_html']   = $this->get_notice_html( $msg_type, $payload );
+				$payload['no-unhide']  = true;
+				$payload['no-count']   = true;
 
 				/**
 				 * Add paragraph tags for Gutenberg in case we want to use the 'msg_text' instead of 'msg_html'.
