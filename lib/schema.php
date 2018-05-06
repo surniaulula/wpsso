@@ -712,7 +712,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $child_family;
 		}
 
-		// returns an array of schema type ids with child, parent, gparent (in that order)
+		/**
+		 * Returns an array of schema type ids with child, parent, gparent (in that order).
+		 */
 		public function get_schema_type_children( $type_id, &$children = array(), $use_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -837,28 +839,41 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $type_id;
 		}
 
-		public function get_children_css_class( $type_id, $class_names = 'hide_schema_type' ) {
+		public function get_children_css_class( $type_id, $class_names = 'hide_schema_type', $exclude_match = '' ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
-			$class_prefix = empty( $class_names ) ? '' : SucomUtil::sanitize_hookname( $class_names ).'_';
+
+			$class_prefix = empty( $class_names ) ? '' : SucomUtil::sanitize_hookname( $class_names ) . '_';
+
 			foreach ( $this->get_schema_type_children( $type_id ) as $child ) {
-				$class_names .= ' '.$class_prefix.SucomUtil::sanitize_hookname( $child );
+				if ( ! empty( $exclude_match ) ) {
+					if ( preg_match( $exclude_match, $child ) ) {
+						continue;
+					}
+				}
+				$class_names .= ' ' . $class_prefix . SucomUtil::sanitize_hookname( $child );
 			}
+
 			return trim( $class_names );
 		}
 
 		public function is_schema_type_child( $child_id, $member_id ) {
+
 			static $local_cache = array();
+
 			if ( isset( $local_cache[$child_id][$member_id] ) ) {
 				return $local_cache[$child_id][$member_id];
 			}
+
 			if ( $child_id === $member_id ) {	// optimize and check for obvious
 				$is_child = true;
 			} else {
 				$child_family = $this->get_schema_type_child_family( $child_id );
 				$is_child = in_array( $member_id, $child_family ) ? true : false;
 			}
+
 			return $local_cache[$child_id][$member_id] = $is_child;
 		}
 

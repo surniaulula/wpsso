@@ -71,6 +71,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 
 			} else {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'DOING_AJAX is false' );
 				}
@@ -90,6 +91,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'in_admin_header', array( &$this, 'conflict_warnings' ), 10 );
 				add_action( 'in_admin_header', array( &$this, 'required_notices' ), 20 );
 				add_action( 'in_admin_header', array( &$this, 'update_count_notice' ), 30 );
+
+				if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false ) ) {
+					add_action( 'admin_bar_menu', array( &$this, 'add_admin_toolbar_notices' ), 60 );
+				}
 
 				add_filter( 'current_screen', array( &$this, 'maybe_show_screen_notices' ) );
 				add_filter( 'plugin_action_links', array( &$this, 'append_plugins_action_links' ), 10, 2 );
@@ -545,7 +550,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function maybe_allow_hosts( $is_allowed, $ip, $url ) {
-			if ( $is_allowed ) {	// already allowed
+			if ( $is_allowed ) {	// Already allowed.
 				return $is_allowed;
 			}
 			if ( isset( $this->p->cf['extend'] ) ) {
@@ -950,21 +955,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				</div><!-- #poststuff -->
 			</div><!-- .wrap -->
 			<script type="text/javascript">
-				//<![CDATA[
-				jQuery(document).ready(
-					function($) {
+				jQuery( document ).ready(
+					function( $ ) {
 						// close postboxes that should be closed
 						$('.if-js-closed').removeClass('if-js-closed').addClass('closed');
 						// postboxes setup
 						postboxes.add_postbox_toggles('<?php echo $this->pagehook; ?>');
 					}
 				);
-				//]]>
 			</script>
 			<?php
 		}
 
 		public function profile_updated_redirect( $url, $status ) {
+
 			if ( strpos( $url, 'updated=' ) !== false && strpos( $url, 'wp_http_referer=' ) ) {
 
 				// match WordPress behavior (users page for admins, profile page for everyone else)
@@ -1787,6 +1791,32 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 			echo '</table>' . "\n";
+		}
+
+		public function add_admin_toolbar_notices( $wp_admin_bar ) {
+
+			$menu_icon = '<span class="ab-icon" id="' . $this->p->lca . '-toolbar-notices-icon"></span>';
+			$menu_count = '<span id="' . $this->p->lca . '-toolbar-notices-count">0</span>';
+
+			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
+
+			$wp_admin_bar->add_node( array(	// Since wp 3.1
+				'id' => $this->p->lca . '-toolbar-notices',
+				'title' => $menu_icon . $menu_count,
+				'parent' => false,
+				'href' => false,
+				'group' => false,
+				'meta' => array(),
+			) );
+
+			$wp_admin_bar->add_node( array(
+				'id' => $this->p->lca . '-toolbar-notices-container',
+				'title' => $no_notices_text,
+				'parent' => $this->p->lca . '-toolbar-notices',
+				'href' => false,
+				'group' => false,
+				'meta' => array(),
+			) );
 		}
 
 		public function conflict_warnings() {

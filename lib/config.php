@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.1.0',		// Plugin version.
+					'version' => '4.2.0-dev.1',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -1347,6 +1347,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'title' => 'SSO',		// menu title
 				'color' => '#33cc33',		// menu color (lime green)
 				'before' => '\0229b',		// circle asterix
+				'icon_html' => '&oast;',	// circle asterix
 				'dashicons' => array(
 					'licenses' => 'editor-justify',
 					'sitelicenses' => 'editor-justify',
@@ -1792,7 +1793,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'game' => 'https://schema.org/Game',
 								'video.game' => 'https://schema.org/VideoGame',
 							),
-							'howto' => 'https://schema.org/HowTo',	// Do not include recipe as a sub-type.
+							'howto' => array(
+								'howto' => 'https://schema.org/HowTo',
+								'recipe' => 'https://schema.org/Recipe',
+							),
 							'map' => 'https://schema.org/Map',
 							'media.object' => array(
 								'audio.object' => 'https://schema.org/AudioObject',
@@ -1818,7 +1822,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'publication.issue' => 'https://schema.org/PublicationIssue',
 							'publication.volume' => 'https://schema.org/PublicationVolume',
 							'question' => 'https://schema.org/Question',
-							'recipe' => 'https://schema.org/Recipe',	// Do not include recipe under howto.
 							'review' => array(
 								'review' => 'https://schema.org/Review',
 								'review.claim' => 'https://schema.org/ClaimReview',
@@ -2553,9 +2556,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_PHP_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0';
 			$var_const['WPSSO_PHP_CURL_USERAGENT_FACEBOOK'] = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
 
+			/**
+			 * Show error, warning, and information notices in a toolbar menu item.
+			 */
+			$var_const['WPSSO_TOOLBAR_NOTICES'] = array( 'err', 'warn', 'inf' );
+
 			foreach ( $var_const as $name => $value ) {
 				if ( defined( $name ) ) {
-					$var_const[$name] = constant( $name );	// inherit existing values
+					$var_const[$name] = constant( $name );	// Inherit existing values.
 				}
 			}
 
@@ -2565,12 +2573,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function require_libs( $plugin_filepath ) {
 
 			require_once WPSSO_PLUGINDIR.'lib/com/cache.php';
-			require_once WPSSO_PLUGINDIR.'lib/com/nodebug.php';	// always load fallback class
-			require_once WPSSO_PLUGINDIR.'lib/com/nonotice.php';	// always load fallback class
+			require_once WPSSO_PLUGINDIR.'lib/com/nodebug.php';	// Always load fallback class.
+			require_once WPSSO_PLUGINDIR.'lib/com/nonotice.php';	// Always load fallback class.
 			require_once WPSSO_PLUGINDIR.'lib/com/util.php';
 
 			require_once WPSSO_PLUGINDIR.'lib/check.php';
-			require_once WPSSO_PLUGINDIR.'lib/exception.php';	// extends exception
+			require_once WPSSO_PLUGINDIR.'lib/exception.php';	// Extends exception.
 			require_once WPSSO_PLUGINDIR.'lib/filters.php';
 			require_once WPSSO_PLUGINDIR.'lib/functions.php';
 			require_once WPSSO_PLUGINDIR.'lib/head.php';

@@ -285,9 +285,10 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 						ksort( $data );
 					}
 					foreach ( $data as $key => $val ) {
-						// remove comments
-						if ( strpos( $val, '<!--' ) !== false ) {
+						if ( is_string( $val ) && strpos( $val, '<!--' ) !== false ) {	// Remove HTML comments.
 							$val = preg_replace( '/<!--.*-->/Ums', '', $val );
+						} elseif ( is_array( $val ) ) {	// Just in case.
+							$val = print_r( $val, true );
 						}
 						$html .= $is_assoc ? "\t$key = $val\n" : "\t$val\n";
 					}

@@ -26,6 +26,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				if ( is_admin() ) {
 					add_action( 'enqueue_block_editor_assets', array( &$this, 'enqueue_block_editor_assets' ), -1000 );
 					add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ), -1000 );
+				
+					if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false ) ) {
+						add_action( 'admin_footer', array( &$this, 'update_admin_toolbar_notices' ) );
+					}
 				}
 			}
 		}
@@ -47,10 +51,19 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->get_admin_gutenberg_script_data() );
 		}
 
+		/**
+		 * Start localized variable names with an underscore.
+		 */
 		public function get_admin_gutenberg_script_data() {
+
+			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
+			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
+
 			return array(
 				'_ajax_nonce' => wp_create_nonce( WPSSO_NONCE_NAME ),
 				'_metabox_id' => $this->p->lca . '_metabox_' . $this->p->cf['meta']['id'],
+				'_toolbar_notices' => SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false ),
+				'_no_notices_html' => $no_notices_html,
 			);
 		}
 
@@ -178,8 +191,95 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 		public function get_admin_media_script_data() {
 			return array(
-				'choose_image' => __( 'Use Image', 'wpsso' ),
+				'_select_image' => __( 'Select Image', 'wpsso' ),
 			);
+		}
+
+		public function update_admin_toolbar_notices() {
+
+			$doing_block_editor = defined( 'DOING_BLOCK_EDITOR' ) ? DOING_BLOCK_EDITOR : false;
+
+			/**
+			 * The notices will be retrieved using an ajax call.
+			 */
+			if ( $doing_block_editor ) {
+				return;
+			}
+
+			$toolbar_notices = SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false );
+
+			if ( empty( $toolbar_notices ) || ! is_array( $toolbar_notices ) ) {
+				return;
+			}
+
+			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
+			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
+
+			?>
+			<script type="text/javascript">
+				jQuery( document ).ready( function() {
+
+						var ajaxNoticesData = {
+							action: 'wpsso_get_notices_json',
+							context: 'toolbar_notices',
+							_ajax_nonce: '<?php echo wp_create_nonce( WPSSO_NONCE_NAME ); ?>',
+							_notice_types: <?php echo json_encode( $toolbar_notices ); ?>,
+						}
+
+						jQuery.getJSON( ajaxurl, ajaxNoticesData, function( data ) {
+
+							var noticeHtml = '';
+							var noticeStatus = '';
+							var noticeTotalCount = 0;
+							var noticeTypeCount = {};
+							var noNoticesText = '<?php echo $no_notices_html; ?>';
+
+							jQuery.each( data, function( noticeType ) {
+
+								jQuery.each( data[noticeType], function( noticeKey ) {
+
+									// skip hidden notices that we can't unhide
+									if ( data[noticeType][noticeKey]['hidden'] && 
+										data[noticeType][noticeKey]['no-unhide'] ) {
+										return;
+									}
+
+									noticeHtml += data[noticeType][noticeKey]['msg_html'];
+
+									if ( ! data[noticeType][noticeKey]['no-count'] ) {
+										noticeTotalCount++;
+										noticeTypeCount[noticeType] = ++noticeTypeCount[noticeType] || 1;
+									}
+								} );
+							} );
+
+							if ( noticeHtml ) {
+								jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noticeHtml );
+								jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'have-notices' );
+							} else {
+								jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noNoticesText );
+								jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices' );
+							}
+
+							jQuery( '#wpsso-toolbar-notices-count' ).html( noticeTotalCount );
+
+							if ( noticeTotalCount ) {
+								if ( noticeTypeCount['err'] ) {
+									noticeStatus = 'error';
+								} else if ( noticeTypeCount['warn'] ) {
+									noticeStatus = 'warning';
+								} else if ( noticeTypeCount['inf'] ) {
+									noticeStatus = 'info';
+								} else if ( noticeTypeCount['upd'] ) {
+									noticeStatus = 'success';
+								}
+								jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'have-notices-' + noticeStatus );
+							}
+						} );
+					}
+				);
+			</script>
+			<?php
 		}
 
 		/**
@@ -198,12 +298,12 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			// fix the update/install button to load the href when clicked
 			$custom_script_js = '
-jQuery(document).ready(function(){
-	jQuery("body#plugin-information.iframe a[id$=_from_iframe]").on("click", function(){
+jQuery( document ).ready( function(){
+	jQuery( "body#plugin-information.iframe a[id$=_from_iframe]" ).on( "click", function(){
 		if ( window.top.location.href.indexOf( "page=' . $this->p->lca . '-" ) ) {
 			var plugin_url = jQuery( this ).attr( "href" );
 			var pageref_url_arg = "&' . $this->p->lca . '_pageref_url=" + encodeURIComponent( window.top.location.href );
-			var pageref_title_arg = "&' . $this->p->lca . '_pageref_title=" + encodeURIComponent( jQuery("h1", window.parent.document).text() );
+			var pageref_title_arg = "&' . $this->p->lca . '_pageref_title=" + encodeURIComponent( jQuery( "h1", window.parent.document ).text() );
 			window.top.location.href = plugin_url + pageref_url_arg + pageref_title_arg;
 		}
 	});

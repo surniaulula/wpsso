@@ -212,16 +212,20 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.'_plugin_urlpath:'.$plugin_urlpath.'_plugin_version:'.$plugin_version.')';
 			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
+			$r_cache = SucomUtil::get_const( 'WPSSO_DEV' ) ? false : true;	// Read cache by default.
+
 			wp_enqueue_style( 'sucom-admin-page',
 				$plugin_urlpath.'css/com/admin-page.' . $css_file_ext,
 					array(), $plugin_version );
 
-			if ( $custom_style_css = get_transient( $cache_id ) ) {	// not empty
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'admin page style retrieved from cache' );
+			if ( $r_cache ) {
+				if ( $custom_style_css = get_transient( $cache_id ) ) {	// not empty
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'admin page style retrieved from cache' );
+					}
+					wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
+					return;
 				}
-				wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
-				return;
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -238,12 +242,16 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					'' : 'color:'.$this->p->cf['menu']['color'].';';
 
 			$menu_before_css = empty( $this->p->cf['menu']['before'] ) ?
-				'' : 'content:"'.$this->p->cf['menu']['before'].'";
+				'' : 'content:"' . $this->p->cf['menu']['before'] . '";
 					font-size:2.2em;
 					font-style:normal;
 					display:inline;
 					line-height:inherit;
 					vertical-align:middle;';
+
+			$toolbar_before_css = empty( $this->p->cf['menu']['before'] ) ?
+				'' : 'content:"' . $this->p->cf['menu']['before'] . '";
+					font-size:1.4em;';
 
 			$custom_style_css = '
 				@font-face {
@@ -255,6 +263,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					url("'.$plugin_urlpath.'fonts/star.svg#star") format("svg");
 					font-weight:normal;
 					font-style:normal;
+				}
+				#wpadminbar #wp-toolbar #'.$this->p->lca.'-toolbar-notices-icon.ab-icon { 
+					padding-top:0;
+					line-height:1em;
+				}
+				#wpadminbar #wp-toolbar #'.$this->p->lca.'-toolbar-notices-icon.ab-icon::before { 
+					'.$toolbar_before_css.'
 				}
 				#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image::before,
@@ -411,9 +426,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				';
 			}
 
-			$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
-
-			set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
+			if ( $r_cache ) {
+				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
+					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
+				}
+				set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
+			}
 
 			wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
 
