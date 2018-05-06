@@ -14,6 +14,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 	class WpssoScript {
 
 		private $p;
+		private $tb_notices;
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -23,48 +24,34 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			}
 
 			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
+
 				if ( is_admin() ) {
+
+					/**
+					 * Define which notice types, if any, will be shown in the toolbar menu.
+					 * WPSSO_TOOLBAR_NOTICES can be true, false, or an array of notice types to include in the menu.
+					 */
+					$this->tb_notices = SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false );
+
+					if ( $this->tb_notices === true ) {
+						$this->tb_notices = array( 'err', 'warn', 'inf' );
+					}
+
+					if ( empty( $this->tb_notices ) || ! is_array( $this->tb_notices ) ) {	// Quick sanity check.
+						$this->tb_notices = false;
+					}
+
 					add_action( 'enqueue_block_editor_assets', array( &$this, 'enqueue_block_editor_assets' ), -1000 );
 					add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ), -1000 );
-				
-					if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false ) ) {
-						add_action( 'admin_footer', array( &$this, 'update_admin_toolbar_notices' ) );
+
+					/**
+					 * Add jQuery to update the toolbar menu item counter and container on page load.
+					 */
+					if ( empty( $this->tb_notices ) ) {
+						add_action( 'admin_footer', array( &$this, 'add_update_tb_notices_script' ) );
 					}
 				}
 			}
-		}
-
-		public function enqueue_block_editor_assets() {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			$js_file_ext = SucomUtil::get_const( 'WPSSO_DEV' ) ? 'js' : 'min.js';
-			$plugin_version = WpssoConfig::get_version();
-
-			wp_enqueue_script( 'sucom-gutenberg-admin', 
-				WPSSO_URLPATH . 'js/gutenberg-admin.' . $js_file_ext, 
-					array( 'wp-data' ), $plugin_version, true );
-
-			wp_localize_script( 'sucom-gutenberg-admin', 'sucomGutenbergL10n',
-				$this->get_admin_gutenberg_script_data() );
-		}
-
-		/**
-		 * Start localized variable names with an underscore.
-		 */
-		public function get_admin_gutenberg_script_data() {
-
-			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
-			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
-
-			return array(
-				'_ajax_nonce' => wp_create_nonce( WPSSO_NONCE_NAME ),
-				'_metabox_id' => $this->p->lca . '_metabox_' . $this->p->cf['meta']['id'],
-				'_toolbar_notices' => SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false ),
-				'_no_notices_html' => $no_notices_html,
-			);
 		}
 
 		public function admin_enqueue_scripts( $hook_name ) {
@@ -179,7 +166,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'enqueuing scripts for plugin install page' );
 							}
-							$this->add_iframe_inline_script( $hook_name );
+							$this->add_plugin_install_iframe_script( $hook_name );
 						}
 					}
 
@@ -189,26 +176,64 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			wp_enqueue_script( 'jquery' );	// required for dismissible notices
 		}
 
+		/**
+		 * Start localized variable names with an underscore.
+		 */
 		public function get_admin_media_script_data() {
 			return array(
 				'_select_image' => __( 'Select Image', 'wpsso' ),
 			);
 		}
 
-		public function update_admin_toolbar_notices() {
+		public function enqueue_block_editor_assets() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$js_file_ext = SucomUtil::get_const( 'WPSSO_DEV' ) ? 'js' : 'min.js';
+			$plugin_version = WpssoConfig::get_version();
+
+			wp_enqueue_script( 'sucom-gutenberg-admin', 
+				WPSSO_URLPATH . 'js/gutenberg-admin.' . $js_file_ext, 
+					array( 'wp-data' ), $plugin_version, true );
+
+			wp_localize_script( 'sucom-gutenberg-admin', 'sucomGutenbergL10n',
+				$this->get_admin_gutenberg_script_data() );
+		}
+
+		/**
+		 * Start localized variable names with an underscore.
+		 */
+		public function get_admin_gutenberg_script_data() {
+
+			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
+			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
+
+			return array(
+				'_ajax_nonce' => wp_create_nonce( WPSSO_NONCE_NAME ),
+				'_metabox_id' => $this->p->lca . '_metabox_' . $this->p->cf['meta']['id'],
+				'_tb_notices' => $this->tb_notices,
+				'_no_notices_html' => $no_notices_html,
+			);
+		}
+
+		public function add_update_tb_notices_script() {
 
 			$doing_block_editor = defined( 'DOING_BLOCK_EDITOR' ) ? DOING_BLOCK_EDITOR : false;
 
 			/**
-			 * The notices will be retrieved using an ajax call.
+			 * Exit early if this is a block editor (aka Gutenberg) page.
+			 * The notices will be retrieved using an ajax call on page load and post save.
 			 */
 			if ( $doing_block_editor ) {
 				return;
 			}
 
-			$toolbar_notices = SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false );
-
-			if ( empty( $toolbar_notices ) || ! is_array( $toolbar_notices ) ) {
+			/**
+			 * Just in case - no use getting notices if there's nothing to get.
+			 */
+			if ( empty( $this->tb_notices ) ) {
 				return;
 			}
 
@@ -219,11 +244,16 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			<script type="text/javascript">
 				jQuery( document ).ready( function() {
 
+						// Just in case - make sure the same block editor function does not exist.
+						if ( typeof wpssoUpdateToolbar == 'function' ) {
+							return;
+						}
+
 						var ajaxNoticesData = {
 							action: 'wpsso_get_notices_json',
 							context: 'toolbar_notices',
 							_ajax_nonce: '<?php echo wp_create_nonce( WPSSO_NONCE_NAME ); ?>',
-							_notice_types: <?php echo json_encode( $toolbar_notices ); ?>,
+							_notice_types: <?php echo json_encode( $this->tb_notices ); ?>,
 						}
 
 						jQuery.getJSON( ajaxurl, ajaxNoticesData, function( data ) {
@@ -232,7 +262,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 							var noticeStatus = '';
 							var noticeTotalCount = 0;
 							var noticeTypeCount = {};
-							var noNoticesText = '<?php echo $no_notices_html; ?>';
+							var noNoticesHtml = '<?php echo $no_notices_html; ?>';
 
 							jQuery.each( data, function( noticeType ) {
 
@@ -257,7 +287,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 								jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noticeHtml );
 								jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'have-notices' );
 							} else {
-								jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noNoticesText );
+								jQuery( '#wp-admin-bar-wpsso-toolbar-notices-container' ).html( noNoticesHtml );
 								jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).removeClass( 'have-notices' );
 							}
 
@@ -288,7 +318,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		 * used by WpssoAdmin class filters to return the user back to the settings page after
 		 * installing / activating / updating the plugin.
 		 */
-		private function add_iframe_inline_script( $hook_name ) {	// $hook_name = plugin-install.php
+		private function add_plugin_install_iframe_script( $hook_name ) {	// $hook_name = plugin-install.php
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -296,7 +326,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			wp_enqueue_script( 'plugin-install' );	// required for the plugin details box
 
-			// fix the update/install button to load the href when clicked
+			/**
+			 * Fix the update / install button to load the href when clicked.
+			 */
 			$custom_script_js = '
 jQuery( document ).ready( function(){
 	jQuery( "body#plugin-information.iframe a[id$=_from_iframe]" ).on( "click", function(){

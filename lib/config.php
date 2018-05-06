@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.2.0-dev.1',		// Plugin version.
+					'version' => '4.2.0-dev.2',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -2484,25 +2484,26 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$var_const['WPSSO_CACHEURL'] = WPSSO_URLPATH.'cache/';
 			}
 
-			$var_const['WPSSO_MENU_ORDER'] = '99.10';			// position of the SSO menu item
-			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;			// highlight the SSO menu icon
-			$var_const['WPSSO_HIDE_ALL_ERRORS'] = false;			// auto-hide all error notices
-			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;			// auto-hide all warning notices
-			$var_const['WPSSO_JSON_PRETTY_PRINT'] = false;			// output pretty / human readable json
-			$var_const['WPSSO_UNDEF_INT'] = -1;				// undefined width / height value
+			$var_const['WPSSO_MENU_ORDER'] = '99.10';			// Position of the SSO menu item.
+			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;			// Highlight the SSO menu icon.
+			$var_const['WPSSO_TOOLBAR_NOTICES'] = true;			// Show error, warning, and info notices in the toolbar menu.
+			$var_const['WPSSO_HIDE_ALL_ERRORS'] = false;			// Auto-hide all error notices.
+			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;			// Auto-hide all warning notices.
+			$var_const['WPSSO_JSON_PRETTY_PRINT'] = false;			// Output pretty / human readable json.
+			$var_const['WPSSO_UNDEF_INT'] = -1;				// Undefined image width / height value.
 
 			$var_const['WPSSO_CONTENT_BLOCK_FILTER_OUTPUT'] = true;
 			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 1.00;
-			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT'] = 5;		// maximum number of images extracted from the content
-			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT'] = 5;		// maximum number of videos extracted from the content
+			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT'] = 5;		// Maximum number of images extracted from the content.
+			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT'] = 5;		// Maximum number of videos extracted from the content.
 
-			$var_const['WPSSO_DUPE_CHECK_HEADER_COUNT'] = 5;		// maximum number of times to check for duplicates
-			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = true;		// clear / remove cache file before fetching shortlink url
-			$var_const['WPSSO_DUPE_CHECK_WARNING_TIME'] = 2.50;		// issue a warning if getting shortlink took more than 2.5 seconds
-			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_TIME'] = 3.00;		// hard-limit - most crawlers time-out after 3 seconds
+			$var_const['WPSSO_DUPE_CHECK_HEADER_COUNT'] = 5;		// Maximum number of times to check for duplicates.
+			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = true;		// Clear / remove cache file before fetching shortlink url.
+			$var_const['WPSSO_DUPE_CHECK_WARNING_TIME'] = 2.50;		// Issue a warning if getting shortlink took more than 2.5 seconds.
+			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_TIME'] = 3.00;		// Hard-limit - most crawlers time-out after 3 seconds.
 
-			$var_const['WPSSO_GET_POSTS_MAX_TIME'] = 0.10;			// send an error to trigger_error() if get_posts() takes longer
-			$var_const['WPSSO_PHP_GETIMGSIZE_MAX_TIME'] = 1.50;		// send an error to trigger_error() if getimagesize() takes longer
+			$var_const['WPSSO_GET_POSTS_MAX_TIME'] = 0.10;			// Send an error to trigger_error() if get_posts() takes longer.
+			$var_const['WPSSO_PHP_GETIMGSIZE_MAX_TIME'] = 1.50;		// Send an error to trigger_error() if getimagesize() takes longer.
 
 			/**
 			 * Limits for some multi-options and Schema property arrays.
@@ -2555,11 +2556,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_PHP_CURL_CAINFO'] = ABSPATH.WPINC.'/certificates/ca-bundle.crt';
 			$var_const['WPSSO_PHP_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0';
 			$var_const['WPSSO_PHP_CURL_USERAGENT_FACEBOOK'] = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
-
-			/**
-			 * Show error, warning, and information notices in a toolbar menu item.
-			 */
-			$var_const['WPSSO_TOOLBAR_NOTICES'] = array( 'err', 'warn', 'inf' );
 
 			foreach ( $var_const as $name => $value ) {
 				if ( defined( $name ) ) {

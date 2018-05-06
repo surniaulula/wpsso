@@ -92,8 +92,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'in_admin_header', array( &$this, 'required_notices' ), 20 );
 				add_action( 'in_admin_header', array( &$this, 'update_count_notice' ), 30 );
 
-				if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false ) ) {
-					add_action( 'admin_bar_menu', array( &$this, 'add_admin_toolbar_notices' ), 60 );
+				/**
+				 * WPSSO_TOOLBAR_NOTICES can be true, false, or an array of notice types to include in the menu.
+				 */
+				if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false ) ) {	// Returns false if not defined.
+					add_action( 'admin_bar_menu', array( &$this, 'add_admin_tb_notices_menu_item' ), 60 );
 				}
 
 				add_filter( 'current_screen', array( &$this, 'maybe_show_screen_notices' ) );
@@ -1793,7 +1796,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</table>' . "\n";
 		}
 
-		public function add_admin_toolbar_notices( $wp_admin_bar ) {
+		public function add_admin_tb_notices_menu_item( $wp_admin_bar ) {
 
 			$menu_icon = '<span class="ab-icon" id="' . $this->p->lca . '-toolbar-notices-icon"></span>';
 			$menu_count = '<span id="' . $this->p->lca . '-toolbar-notices-count">0</span>';

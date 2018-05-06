@@ -20,6 +20,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $dis_name = 'sucom_dismissed';
 		private $hide_err = false;
 		private $hide_warn = false;
+		private $tb_notices = false;
 		private $has_shown = false;
 		private $all_types = array( 'nag', 'err', 'warn', 'upd', 'inf' );	// Sort by importance.
 		private $ref_cache = array();
@@ -76,9 +77,18 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$uca = strtoupper( $this->lca );
 
-			$this->dis_name  = defined( $uca . '_DISMISS_NAME' ) ? constant( $uca . '_DISMISS_NAME' ) : $this->lca . '_dismissed';
-			$this->hide_err  = defined( $uca . '_HIDE_ALL_ERRORS' ) ? constant( $uca . '_HIDE_ALL_ERRORS' ) : false;
-			$this->hide_warn = defined( $uca . '_HIDE_ALL_WARNINGS' ) ? constant( $uca . '_HIDE_ALL_WARNINGS' ) : false;
+			$this->dis_name   = defined( $uca . '_DISMISS_NAME' ) ? constant( $uca . '_DISMISS_NAME' ) : $this->lca . '_dismissed';
+			$this->hide_err   = defined( $uca . '_HIDE_ALL_ERRORS' ) ? constant( $uca . '_HIDE_ALL_ERRORS' ) : false;
+			$this->hide_warn  = defined( $uca . '_HIDE_ALL_WARNINGS' ) ? constant( $uca . '_HIDE_ALL_WARNINGS' ) : false;
+			$this->tb_notices = defined( $uca . '_TOOLBAR_NOTICES' ) ? constant( $uca . '_TOOLBAR_NOTICES' ) : false;
+
+			if ( $this->tb_notices === true ) {
+				$this->tb_notices = array( 'err', 'warn', 'inf' );
+			}
+
+			if ( empty( $this->tb_notices ) || ! is_array( $this->tb_notices ) ) {	// Quick sanity check.
+				$this->tb_notices = false;
+			}
 		}
 
 		private function add_actions() {
@@ -419,13 +429,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * If toolbar notices are being used, exclude these from being shown.
 			 * The default toolbar notices array is err, warn, and inf.
 			 */
-			if ( defined( strtoupper( $this->lca ) . '_TOOLBAR_NOTICES' ) ) {
-
-				$toolbar_notices = constant( strtoupper( $this->lca ) . '_TOOLBAR_NOTICES' );
-
-				if ( is_array( $toolbar_notices ) ) {
-					$notice_types = array_diff( $notice_types, $toolbar_notices );
-				}
+			if ( is_array( $this->tb_notices ) ) {
+				$notice_types = array_diff( $notice_types, $this->tb_notices );
 			}
 
 			if ( empty( $notice_types ) ) {	// Just in case.
@@ -995,8 +1000,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$cache_salt = __METHOD__.'()';
 			$cache_id = $cache_md5_pre.md5( $cache_salt );
 
+			/**
+			 * Do not use the transient cache if the DEV constant is defined.
+			 */
 			$dev_const = strtoupper( $this->lca ) . '_DEV';
-			$r_cache = defined( $dev_const ) && constant( $dev_const ) ? false : true;	// Read cache by default.
+			$r_cache = defined( $dev_const ) && constant( $dev_const ) ? false : true;
 
 			if ( $r_cache ) {
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
@@ -1005,22 +1013,21 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			$custom_style_css = '
-				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice {
+				.components-notice-list .' . $this->lca . '-notice {
 					min-height:0;
 					box-shadow:none;
-					background-color:inherit;
 				}
-				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice * {
+				.components-notice-list .' . $this->lca . '-notice * {
 					line-height:1.5em;
 				}
-				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice .notice-label,
-				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice .notice-message
-				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice .notice-dismiss {
+				.components-notice-list .' . $this->lca . '-notice .notice-label,
+				.components-notice-list .' . $this->lca . '-notice .notice-message
+				.components-notice-list .' . $this->lca . '-notice .notice-dismiss {
 					margin:0;
 					border:0;
 					background-color:inherit;
 				}
-				body.gutenberg-editor-page .components-notice-list .' . $this->lca . '-notice .notice-dismiss {
+				.components-notice-list .' . $this->lca . '-notice .notice-dismiss {
 					padding:6px;
 				}
 				#wpadminbar .have-notices #wp-admin-bar-'.$this->p->lca.'-toolbar-notices-container { 
