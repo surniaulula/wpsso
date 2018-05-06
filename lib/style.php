@@ -241,18 +241,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				! SucomUtil::get_const( 'WPSSO_MENU_ICON_HIGHLIGHT' ) ?
 					'' : 'color:'.$this->p->cf['menu']['color'].';';
 
-			$menu_before_css = empty( $this->p->cf['menu']['before'] ) ?
-				'' : 'content:"' . $this->p->cf['menu']['before'] . '";
-					font-size:2.2em;
-					font-style:normal;
-					display:inline;
-					line-height:inherit;
-					vertical-align:middle;';
-
-			$toolbar_before_css = empty( $this->p->cf['menu']['before'] ) ?
-				'' : 'content:"' . $this->p->cf['menu']['before'] . '";
-					font-size:1.4em;';
-
 			$custom_style_css = '
 				@font-face {
 					font-family:"Star";
@@ -269,14 +257,21 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					line-height:1em;
 				}
 				#wpadminbar #wp-toolbar #'.$this->p->lca.'-toolbar-notices-icon.ab-icon::before { 
-					'.$toolbar_before_css.'
+					content:"' . $this->p->cf['menu']['before'] . '";
+					font-size:1.35em;
+					top:2px;
 				}
 				#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_'.$menu.':hover div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.':hover div.wp-menu-image::before {
 					'.$highlight_color_css.'
-					'.$menu_before_css.'
+					content:"' . $this->p->cf['menu']['before'] . '";
+					font-size:2.2em;
+					font-style:normal;
+					display:inline;
+					line-height:inherit;
+					vertical-align:middle;
 				}
 				#adminmenu #toplevel_page_'.$menu.' ul > li > a,
 				#adminmenu #toplevel_page_'.$sitemenu.' ul > li > a {
