@@ -219,9 +219,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			}
 
 			/**
-			 * Define WPSSO_SEO_PLUGIN_ACTIVE as true to disable WPSSO's SEO related meta tags and features.
+			 * Define WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE as true to disable WPSSO's SEO related meta tags and features.
 			 */
-			if ( SucomUtil::get_const( 'WPSSO_SEO_PLUGIN_ACTIVE' ) ) {
+			if ( SucomUtil::get_const( 'WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE' ) ) {
 				$avail['seo']['*'] = true;
 			}
 
