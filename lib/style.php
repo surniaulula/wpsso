@@ -258,8 +258,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 				#wpadminbar #wp-toolbar #'.$this->p->lca.'-toolbar-notices-icon.ab-icon::before { 
 					content:"' . $this->p->cf['menu']['before'] . '";
-					font-size:30px;
-					top:0;
+					font-size:28px;
+					font-style:normal;
+					top:1px;
 				}
 				#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image::before,
@@ -267,7 +268,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.':hover div.wp-menu-image::before {
 					'.$highlight_color_css.'
 					content:"' . $this->p->cf['menu']['before'] . '";
-					font-size:2.2em;
+					font-size:30px;
 					font-style:normal;
 					display:inline;
 					line-height:inherit;
