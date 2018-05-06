@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					/**
 					 * Add jQuery to update the toolbar menu item counter and container on page load.
 					 */
-					if ( empty( $this->tb_notices ) ) {
+					if ( ! empty( $this->tb_notices ) ) {
 						add_action( 'admin_footer', array( &$this, 'add_update_tb_notices_script' ) );
 					}
 				}

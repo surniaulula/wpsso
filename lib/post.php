@@ -361,6 +361,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'exiting early: post_status is auto-draft' );
 				}
 				return $shortlink;	// return original shortlink
+			} elseif ( $mod['post_status'] === 'trash' ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: post_status is trash' );
+				}
+				return $shortlink;	// return original shortlink
 			}
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
@@ -521,6 +526,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				die( '-1' );
 			} elseif ( $post_obj->post_status === 'auto-draft' ) {
 				die( '-1' );
+			} elseif ( $post_obj->post_status === 'trash' ) {
+				die( '-1' );
 			}
 
 			$mod = $this->get_mod( $post_id );
@@ -577,7 +584,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$post_obj = SucomUtil::get_post_object( true );
-			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
+			$post_id  = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
 			/**
 			 * Make sure we have at least a post type and status.
@@ -617,17 +624,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			WpssoMeta::$head_meta_tags = array();
 
 			if ( $post_obj->post_status === 'auto-draft' ) {
-
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head meta skipped: post_status is auto-draft' );
 				}
-
+			} elseif ( $post_obj->post_status === 'trash' ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'head meta skipped: post_status is trash' );
+				}
+			} elseif ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] === 'trash' ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'head meta skipped: post is being trashed' );
+				}
 			} elseif ( $doing_block_editor && ! empty( $_REQUEST['meta_box'] ) ) {
-
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head meta skipped: doing block editor for meta box' );
 				}
-
 			} else {
 
 				$add_metabox = empty( $this->p->options['plugin_add_to_'.$post_obj->post_type] ) ? false : true;
@@ -1110,7 +1121,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				case 'future':
 				case 'private':
 				case 'publish':
-					break;	// stop here
+					break;	// Stop here.
+				case 'auto-draft':
+				case 'trash':
 				default:
 					return;
 			}

@@ -94,7 +94,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:797 lib/post.php:701 lib/term.php:401 lib/user.php:404
+#: lib/admin.php:797 lib/post.php:712 lib/term.php:401 lib/user.php:404
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2544,7 +2544,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:177 lib/meta.php:227 lib/post.php:1046
+#: lib/gpl/admin/post.php:177 lib/meta.php:227 lib/post.php:1057
 #: lib/pro/admin/post.php:198
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -4862,134 +4862,134 @@ msgid ""
 "children of post ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/post.php:820
+#: lib/post.php:831
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:823
+#: lib/post.php:834
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:851
+#: lib/post.php:862
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:853
+#: lib/post.php:864
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:855
+#: lib/post.php:866
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:856
+#: lib/post.php:867
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:866 lib/util.php:1223
+#: lib/post.php:877 lib/util.php:1223
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:875
+#: lib/post.php:886
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:884
+#: lib/post.php:895
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:893
+#: lib/post.php:904
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:909
+#: lib/post.php:920
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:919
+#: lib/post.php:930
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:931
+#: lib/post.php:942
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:931
+#: lib/post.php:942
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:931
+#: lib/post.php:942
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:954
+#: lib/post.php:965
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:958
+#: lib/post.php:969
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:960
+#: lib/post.php:971
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
-#: lib/post.php:1179
+#: lib/post.php:1192
 msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1188
+#: lib/post.php:1201
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1189
+#: lib/post.php:1202
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1200
+#: lib/post.php:1213
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1201
+#: lib/post.php:1214
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1202
+#: lib/post.php:1215
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1203
+#: lib/post.php:1216
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1277
+#: lib/post.php:1290
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
