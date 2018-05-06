@@ -323,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Moved error, warning, and information notices to a new SSO notices toolbar menu item.
 * *Bugfixes*
 	* None
 * *Developer Notes*
