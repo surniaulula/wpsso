@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-05-06 11:01-0600\n"
-"PO-Revision-Date: 2018-05-06 11:38-0600\n"
+"POT-Creation-Date: 2018-05-06 11:49-0600\n"
+"PO-Revision-Date: 2018-05-06 11:49-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4276,8 +4276,8 @@ msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour %1$s ID %2$s."
 
 #: lib/pro/admin/advanced.php:554
-msgid "A known SEO plugin has been detected &mdash; some basic SEO meta tags have been unchecked and disabled automatically."
-msgstr "Une extension SEO connue a été détectée &mdash; certaines balises méta SEO de base ont été décochées et désactivées automatiquement."
+msgid "An SEO plugin has been detected &mdash; some basic SEO meta tags have been unchecked and disabled automatically."
+msgstr "Une extension SEO a été détectée &mdash; certaines balises méta SEO de base ont été décochées et désactivées automatiquement."
 
 #: lib/pro/admin/meta.php:103 lib/pro/admin/meta.php:128
 #: lib/pro/admin/post.php:105 lib/pro/admin/post.php:133

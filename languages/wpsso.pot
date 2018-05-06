@@ -4995,8 +4995,8 @@ msgstr ""
 
 #: lib/pro/admin/advanced.php:554
 msgid ""
-"A known SEO plugin has been detected &mdash; some basic SEO meta tags have "
-"been unchecked and disabled automatically."
+"An SEO plugin has been detected &mdash; some basic SEO meta tags have been "
+"unchecked and disabled automatically."
 msgstr ""
 
 #: lib/pro/admin/meta.php:103 lib/pro/admin/meta.php:128
