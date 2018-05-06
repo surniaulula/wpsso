@@ -253,13 +253,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					font-style:normal;
 				}
 				#wpadminbar #wp-toolbar #'.$this->p->lca.'-toolbar-notices-icon.ab-icon { 
-					padding-top:0;
+					padding:0;
 					line-height:1em;
 				}
 				#wpadminbar #wp-toolbar #'.$this->p->lca.'-toolbar-notices-icon.ab-icon::before { 
 					content:"' . $this->p->cf['menu']['before'] . '";
-					font-size:1.35em;
-					top:2px;
+					font-size:30px;
+					top:0;
 				}
 				#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image::before,
