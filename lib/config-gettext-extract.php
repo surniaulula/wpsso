@@ -107,7 +107,7 @@ _x( 'Recipe Instructions Custom Field', 'option label', 'wpsso' );
 _x( 'Refurbished', 'option value', 'wpsso' );
 _x( 'Release Candidate and Up', 'option value', 'wpsso' );
 _x( 'Right', 'option value', 'wpsso' );
-_x( 'SameAs / Canonical URLs Custom Field', 'option label', 'wpsso' );
+_x( 'Same-As URLs Custom Field', 'option label', 'wpsso' );
 _x( 'Saturday', 'option value', 'wpsso' );
 _x( 'Schema Data', 'option label', 'wpsso' );
 _x( 'Schema Types', 'option label', 'wpsso' );

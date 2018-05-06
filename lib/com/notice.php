@@ -97,7 +97,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				add_action( 'wp_ajax_' . $this->lca . '_get_notices_json', array( &$this, 'ajax_get_notices_json' ) );
 				add_action( 'in_admin_header', array( &$this, 'hook_admin_notices' ), PHP_INT_MAX );
 				add_action( 'admin_footer', array( &$this, 'admin_footer_script' ) );
-				add_action( 'shutdown', array( &$this, 'save_notice_cache' ) );
+				add_action( 'shutdown', array( &$this, 'shutdown_notice_cache' ) );
 			}
 		}
 
@@ -948,7 +948,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		/**
 		 * Called by the WordPress 'shutdown' action.
 		 */
-		public function save_notice_cache() {
+		public function shutdown_notice_cache() {
 
 			$user_id = get_current_user_id();
 

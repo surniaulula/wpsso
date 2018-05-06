@@ -92,8 +92,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$defs[$locale_key] = $this->p->og->get_fb_locale( array(), 'current' );
 				}
 
-				$defs['seo_author_field'] = $this->p->options['plugin_cm_gp_name'];	// reset to possible custom value
-				$defs['og_author_field'] = $this->p->options['plugin_cm_fb_name'];	// reset to possible custom value
+				$defs['seo_author_field'] = $this->p->options['plugin_cm_gp_name'];	// Reset to possible custom value.
+				$defs['og_author_field'] = $this->p->options['plugin_cm_fb_name'];	// Reset to possible custom value.
 				$defs['plugin_wpseo_social_meta'] = $this->p->avail['seo']['wpseo'] || get_option( 'wpseo' ) ? 1 : 0;
 
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
@@ -220,15 +220,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Check for a new plugin versions.
 				 */
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+
 					if ( empty( $info['version'] ) ) {
 						continue;
 					}
+
 					$version_key = 'plugin_'.$ext.'_version';
+
 					if ( empty( $opts[$version_key] ) || version_compare( $opts[$version_key], $info['version'], '!=' ) ) {
 						WpssoUtil::save_time( $ext, $info['version'], 'update' );
 						$opts[$version_key] = $info['version'];
 						$has_diff_version = true;
 					}
+
 					unset( $version_key );
 				}
 

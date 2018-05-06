@@ -808,8 +808,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
-									_x( 'additional sameas / canonical URLs', 'tooltip fragment', 'wpsso' ),
-									_x( 'SameAs / Canonical URLs', 'option label', 'wpsso' ),
+									_x( 'additional Same-As URLs', 'tooltip fragment', 'wpsso' ),
+									_x( 'Same-As URLs', 'option label', 'wpsso' ),
 								);
 							}
 

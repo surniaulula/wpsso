@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.2.0-dev.2',		// Plugin version.
+					'version' => '4.2.0-b.1',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -995,7 +995,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_material' => '',		// Product Material Custom Field
 					'plugin_cf_product_price' => '',		// Product Price Custom Field
 					'plugin_cf_product_size' => '',			// Product Size Custom Field
-					'plugin_cf_sameas_urls' => '',			// SameAs / Canonical URLs Custom Field
+					'plugin_cf_sameas_urls' => '',			// Same-As URLs Custom Field
 					// Cache Settings Tab
 					'plugin_head_cache_exp' => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week)
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
@@ -1591,7 +1591,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_material'    => 'Product Material Custom Field',
 					'plugin_cf_product_price'       => 'Product Price Custom Field',
 					'plugin_cf_product_size'        => 'Product Size Custom Field',
-					'plugin_cf_sameas_urls'         => 'SameAs / Canonical URLs Custom Field',
+					'plugin_cf_sameas_urls'         => 'Same-As URLs Custom Field',
 				),
 			),
 			'head' => array(

@@ -27,6 +27,14 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$this->p =& $plugin;
 		}
 
+		/**
+		 * Please note that get_avail() is executed *before* the debug class object is defined,
+		 * so do not log any debugging messages using $this->p->debug, for example.
+		 *
+		 * Most PHP library files have already been loaded, even if the class objects have not
+		 * yet been defined, so you can safely use static methods, like SucomUtil::get_const(),
+		 * for example.
+		 */
 		public function get_avail() {
 
 			$avail = array();
@@ -50,6 +58,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					$avail[$sub][$id] = false;	// default value
 
 					switch ( $sub.'-'.$id ) {
+
 						/**
 						 * 3rd Party Plugins
 						 *
@@ -123,6 +132,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'social-buddypress':
 							$chk['plugin'] = 'buddypress/bp-loader.php';
 							break;
+
 						/**
 						 * Pro Version Features / Options
 						 */
@@ -180,11 +190,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							break;
 					}
 
+					/**
+					 * Check classes / functions first to include both free and pro / premium plugins,
+					 * which have different plugin slugs, but use the same class / function names.
+					 */
 					if ( ! empty( $chk ) ) {
-						/**
-						 * Check classes / functions first to include both free and pro / premium plugins,
-						 * which have different plugin slugs, but use the same class / function names.
-						 */
 						if ( isset( $chk['class'] ) || isset( $chk['function'] ) || isset( $chk['plugin'] ) ) {
 							if ( ( ! empty( $chk['class'] ) && class_exists( $chk['class'] ) ) ||
 								( ! empty( $chk['function'] ) && function_exists( $chk['function'] ) ) ||
@@ -207,6 +217,14 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					}
 				}
 			}
+
+			/**
+			 * Define WPSSO_OTHER_SEO_PLUGIN_ACTIVE	as true to disable WPSSO's SEO related meta tags and features.
+			 */
+			if ( SucomUtil::get_const( 'WPSSO_OTHER_SEO_PLUGIN_ACTIVE' ) ) {
+				$avail['seo']['*'] = true;
+			}
+
 			return apply_filters( $this->p->lca.'_get_avail', $avail );
 		}
 
@@ -250,8 +268,13 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				case 'vary_ua':
 
 					/**
-					 * WPSSO_VARY_USER_AGENT_DISABLE can be used to disable mobile browser detection
-					 * and the creation of Pinterest-specific meta tag values.
+					 * The WPSSO_VARY_USER_AGENT_DISABLE constant can be defined as true to disable mobile
+					 * browser detection and the creation of Pinterest-specific meta tag values.
+					 *
+					 * Mobile browser and Pinterest crawler detection does NOT create additional transient
+					 * cache objects or cached files on disk. Transient cache objects are indexed arrays,
+					 * and an additional index element - within the same transient cache object - will be
+					 * added, so browser and crawler detection does not increase the number of cache objects.
 					 */
 					$is_avail = ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ? true : false;
 

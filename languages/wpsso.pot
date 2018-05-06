@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.2.0-dev.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.2.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1628,7 +1628,7 @@ msgstr ""
 
 #: lib/config-gettext-extract.php:110
 msgctxt "option label"
-msgid "SameAs / Canonical URLs Custom Field"
+msgid "Same-As URLs Custom Field"
 msgstr ""
 
 #: lib/config-gettext-extract.php:111
@@ -3342,12 +3342,12 @@ msgstr ""
 
 #: lib/messages.php:811
 msgctxt "tooltip fragment"
-msgid "additional sameas / canonical URLs"
+msgid "additional Same-As URLs"
 msgstr ""
 
 #: lib/messages.php:812
 msgctxt "option label"
-msgid "SameAs / Canonical URLs"
+msgid "Same-As URLs"
 msgstr ""
 
 #: lib/messages.php:818
@@ -4703,114 +4703,114 @@ msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/options.php:292
+#: lib/options.php:296
 msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:385
+#: lib/options.php:389
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:387
+#: lib/options.php:391
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:389
+#: lib/options.php:393
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:391
+#: lib/options.php:395
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:404
+#: lib/options.php:408
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:488
+#: lib/options.php:492
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:541
+#: lib/options.php:545
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:589
+#: lib/options.php:593
 msgid ""
 "The value of option '%s' must be a URL - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:590
+#: lib/options.php:594
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:591
+#: lib/options.php:595
 msgid ""
 "The value of option '%s' must be numeric - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:592
+#: lib/options.php:596
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:593
+#: lib/options.php:597
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:594
+#: lib/options.php:598
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:595
+#: lib/options.php:599
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:596
+#: lib/options.php:600
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:597
+#: lib/options.php:601
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:598
+#: lib/options.php:602
 msgid ""
 "The value of option '%s' must be HTML code - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:599
+#: lib/options.php:603
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:910
+#: lib/options.php:914
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
@@ -5805,26 +5805,26 @@ msgctxt "option comment"
 msgid "%s ext. required"
 msgstr ""
 
-#: wpsso.php:345
+#: wpsso.php:352
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:360
+#: wpsso.php:367
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:368
+#: wpsso.php:375
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:369
+#: wpsso.php:376
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

@@ -15,7 +15,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 4.9.5
  * WC Tested Up To: 3.3.5
- * Version: 4.2.0-dev.2
+ * Version: 4.2.0-b.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -143,7 +143,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public function set_options( $activate = false ) {
 
 			if ( $activate && defined( 'WPSSO_RESET_ON_ACTIVATE' ) && WPSSO_RESET_ON_ACTIVATE ) {
+
 				error_log( 'WPSSO_RESET_ON_ACTIVATE constant is true - reloading default settings for plugin activation' );
+
 				delete_option( WPSSO_OPTIONS_NAME );
 			}
 
@@ -235,9 +237,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$network = is_multisite() ? true : false;
 
 			$this->check = new WpssoCheck( $this );
-			$this->avail = $this->check->get_avail();	// uses $this->options in checks
+			$this->avail = $this->check->get_avail();	// Uses $this->options for availability checks.
 
-			// configure the debug class
+			/**
+			 * Configure the debug class.
+			 */
 			if ( ! empty( $this->options['plugin_debug'] ) || ( defined( 'WPSSO_HTML_DEBUG' ) && WPSSO_HTML_DEBUG ) ) {
 				$html_debug = true;
 			} else {
@@ -253,8 +257,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			if ( $html_debug || $wp_debug ) {
+
 				require_once WPSSO_PLUGINDIR . 'lib/com/debug.php';
+
 				$this->debug = new SucomDebug( $this, array( 'html' => $html_debug, 'wp' => $wp_debug ) );
+
 				if ( $this->debug->enabled ) {
 					global $wp_version;
 					$this->debug->log( 'debug enabled on ' . date( 'c' ) );

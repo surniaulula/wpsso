@@ -11,17 +11,17 @@ WPSSO_URLPATH
 /**
  * Variable constants (define in wp-config.php file to change default values).
  */
-WPSSO_NONCE_NAME			= // md5 string unique to each version
+WPSSO_NONCE_NAME			= (variable value)	// Md5 string unique to each version.
 WPSSO_TOPICS_LIST			= WPSSO_PLUGINDIR.'share/topics.txt'
 WPSSO_CACHEDIR				= WPSSO_PLUGINDIR.'cache/'
 WPSSO_CACHEURL				= WPSSO_URLPATH.'cache/'
 WPSSO_MENU_ORDER			= 99.11
 WPSSO_MENU_ICON_HIGHLIGHT		= true
-WPSSO_HIDE_ALL_ERRORS			= false	// auto-hide all dismissable errors
-WPSSO_HIDE_ALL_WARNINGS			= false	// auto-hide all dismissable warnings
+WPSSO_HIDE_ALL_ERRORS			= false	// Auto-hide all dismissable errors.
+WPSSO_HIDE_ALL_WARNINGS			= false	// Auto-hide all dismissable warnings.
 WPSSO_JSON_PRETTY_PRINT			= false
 WPSSO_UNDEF_INT				= -1
-WPSSO_CONTENT_BLOCK_FILTER_OUTPUT	= true	// monitor and fix incorrectly coded filter hooks
+WPSSO_CONTENT_BLOCK_FILTER_OUTPUT	= true	// Monitor and fix incorrectly coded filter hooks.
 WPSSO_CONTENT_FILTERS_MAX_TIME		= 0.75
 WPSSO_CONTENT_IMAGES_MAX_LIMIT		= 5
 WPSSO_CONTENT_VIDEOS_MAX_LIMIT		= 5
@@ -34,8 +34,8 @@ WPSSO_SCHEMA_ADDL_TYPE_URL_MAX		= 5
 WPSSO_SCHEMA_EVENT_OFFERS_MAX		= 10
 WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX	= 90
 WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX	= 90
-WPSSO_SCHEMA_POSTS_PER_PAGE_MAX		= 10	// limits the WordPress posts per page value
-WPSSO_SCHEMA_POSTS_PER_SEARCH_MAX	= 3	// overrides the WordPress posts per page value
+WPSSO_SCHEMA_POSTS_PER_PAGE_MAX		= 10	// Limits the WordPress posts per page value.
+WPSSO_SCHEMA_POSTS_PER_SEARCH_MAX	= 3	// Overrides the WordPress posts per page value.
 WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX	= 30
 WPSSO_SCHEMA_SAMEAS_URL_MAX		= 5
 WPSSO_SCHEMA_BREADCRUMB_SCRIPTS_MAX	= 5
@@ -73,10 +73,11 @@ WPSSO_PHP_GETIMGSIZE_DISABLE		= (not defined)
 WPSSO_RESET_ON_ACTIVATE			= (not defined)
 WPSSO_IMAGE_UPSCALE_ALL			= (not defined)
 WPSSO_IMAGE_UPSCALE_TEST		= (not defined)
-WPSSO_HEAD_HTML_DISABLE			= (not defined)
-WPSSO_META_GENERATOR_DISABLE		= (not defined)	// please note that generator meta tags must be enabled for plugin support
-WPSSO_PRODUCT_OBJ_CHECK_DISABLE		= (not defined)	// disable check of global $product variable (false by default)
-WPSSO_PRODUCT_PRICE_INCLUDE_VAT		= (not defined)	// false by default
-WPSSO_REG_CLEAR_CACHE_DISABLE		= (not defined)	// disable cache clearing on activate and deactivate
-WPSSO_VARY_USER_AGENT_DISABLE		= (not defined)	// disable mobile browser detection and Pinterest-specific meta tag values
+WPSSO_HEAD_HTML_DISABLE			= (not defined)	// Define as true to disable the addition of HTML meta tags and Schema markup.
+WPSSO_META_GENERATOR_DISABLE		= (not defined)	// Please note that generator meta tags must be enabled for plugin support.
+WPSSO_PRODUCT_OBJ_CHECK_DISABLE		= (not defined)	// Disable check of global $product variable (false by default).
+WPSSO_PRODUCT_PRICE_INCLUDE_VAT		= (not defined)	// False by default.
+WPSSO_REG_CLEAR_CACHE_DISABLE		= (not defined)	// Disable cache clearing on activate and deactivate.
+WPSSO_VARY_USER_AGENT_DISABLE		= (not defined)	// Disable mobile browser detection and Pinterest-specific meta tag values.
+WPSSO_OTHER_SEO_PLUGIN_ACTIVE		= (not defined)	// Define as true to disable WPSSO's SEO related meta tags and features.
 
