@@ -318,6 +318,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.2.0-dev.1 (2018/05/05)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 4.1.0 (2018/05/02)**
 
 * *New Features*
@@ -338,7 +349,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Added support for jQuery based Gutenberg notices.
 		* Added a refresh for the SSO metabox when saving a Gutenberg post.
 * *Improvements*
-	* Changed the "Dismiss" button text in notices with informative label: "Hide", "Always", "1 hour", "1 month", etc.
+	* Changed the "Dismiss" button text in notices with informative label: "Hide", "1 hour", "1 month", etc.
 	* Added dismiss information to the notification message. Example:
 		* This notice can be dismissed permanently.
 		* This notice can be dismissed for 1 hour.
@@ -376,6 +387,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Added new WpssoUtil get_metabox_table() and get_metabox_tabbed() methods.
 
 == Upgrade Notice ==
+
+= 4.2.0-dev.1 =
+
+(2018/05/05) None.
 
 = 4.1.0 =
 
