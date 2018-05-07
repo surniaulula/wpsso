@@ -1896,7 +1896,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= sprintf( __( '%1$s can update your header template(s) automatically and change the existing %2$s HTML tag to:', 'wpsso' ), $info['short'], $html_tag );
 
-						$text .= '</p><p>'.$php_code.'</p><p>';
+						$text .= '</p>'.$php_code.'<p>';
 
 						$text .= sprintf( __( '<b><a href="%1$s">Click here to update header template(s) automatically</a></b> (recommended) or update the template(s) manually.', 'wpsso' ), $action_url );
 

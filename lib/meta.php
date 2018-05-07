@@ -692,7 +692,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 								$inf_msg .= '<strong>' . _x( 'cleared', 'clear cache status', 'wpsso' ) . '</strong>';
 								$inf_msg .= '</li>' . "\n";
 							} else {
-								$inf_msg .= '<li style="opacity:0.3;">' . $type_name . ' ' . $key . ' &mdash; ';
+								$inf_msg .= '<li style="opacity:0.33;">' . $type_name . ' ' . $key . ' &mdash; ';
 								$inf_msg .= _x( 'not cached', 'clear cache status', 'wpsso' );
 								$inf_msg .= '</li>' . "\n";
 							}
