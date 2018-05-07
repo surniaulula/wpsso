@@ -2338,7 +2338,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function timed_notices() {
 
-			// notices are dismissible since wp v4.2
+			/**
+			 * Notices are only dismissible since wp v4.2.
+			 */
 			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
 				return;	// stop here
 			}
@@ -2381,16 +2383,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$support_url = '';
 				}
 
-				$rate_plugin_button = '<div style="display:inline-block;vertical-align:top;margin:5px 10px 0 0;">' .
-					$this->form->get_button( sprintf( __( 'Help us by rating the %s plugin 5 stars',
-						'wpsso' ), $info['short'] ), 'button-primary dismiss-on-click', '', $info['url']['review'],
-							true, false, array( 'dismiss-msg' => sprintf( __( 'Thank you for rating the %s plugin! You\'re awesome!',
+				$rate_plugin_button = '<div style="display:inline-block;vertical-align:top;margin:10px 10px 10px 0;">' .
+					$this->form->get_button( sprintf( __( 'Yes! Contribute and rate %s 5 stars', 'wpsso' ), $info['short'] ),
+						'button-primary dismiss-on-click', '', $info['url']['review'], true, false,
+							array( 'dismiss-msg' => sprintf( __( 'Thank you for rating the %s plugin! You\'re awesome!',
 								'wpsso' ), $info['short'] ) ) ) . '</div>';
 
-				$already_rated_button = '<div style="display:inline-block;vertical-align:top;margin:5px 10px 0 0;">' .
-					$this->form->get_button( sprintf( __( 'I\'ve already rated the %s plugin 5 stars',
-						'wpsso' ), $info['short'] ), 'button-secondary dismiss-on-click', '', '',
-							false, false, array( 'dismiss-msg' => sprintf( __( 'Thank you for your earlier rating of %s! You\'re awesome!',
+				$already_rated_button = '<div style="display:inline-block;vertical-align:top;margin:10px 10px 10px 0;">' .
+					$this->form->get_button( sprintf( __( 'No thanks - I\'ve already rated %s', 'wpsso' ), $info['short'] ),
+						'button-secondary dismiss-on-click', '', '', false, false, 
+							array( 'dismiss-msg' => sprintf( __( 'Thank you for your earlier rating of %s! You\'re awesome!',
 								'wpsso' ), $info['short'] ) ) ) . '</div>';
 
 				$notice_msg = '<div style="display:table-cell;"><p style="margin-right:20px;">' .
@@ -2398,30 +2400,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
 
-				$notice_msg .= '<p style="font-size:1.05em;">' .
-					'<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ' .
-					sprintf( __( 'You\'ve been using <b>%s</b> for a week or more.',
-						'wpsso' ), '<a href="' . $info['url']['home'] . '" title="' .
-							sprintf( __( 'The %s plugin description page on WordPress.org',
-								'wpsso' ), $info['short'] ) . '">' . $info['name'] . '</a>' ) . ' ' .
-					__( 'That\'s awesome!', 'wpsso' ) . '</p>';
-					
-				$notice_msg .= '<p style="font-size:1.05em;">' .
-					sprintf( __( 'Could I ask you for a small favor? Would you rate the %s plugin on WordPress.org?',
-						'wpsso' ), $info['short'] ) . '</p>'; 
-				$notice_msg .= '<p style="font-size:1.05em;">' .
-					sprintf( __( 'Your rating will encourage us to keep improving %s and help new WordPress users find the plugin as well.',
-						'wpsso' ), $info['short'] ) . ' :-) ' . '</p>';
+				$notice_msg .= '<p>';
 				
-				$notice_msg .= $rate_plugin_button.$already_rated_button;
-					
-				$notice_msg .= '<p style="font-size:0.85em;">' .
-					( empty( $support_url ) ? '' : '<a href="' . $support_url . '" class="dismiss-on-click">' ).
-					sprintf( __( 'No thanks &mdash; I don\'t think %s is worth a 5 star rating and would like to offer a suggestion or report a problem.',
-						'wpsso' ), $info['short'] ).
-					( empty( $support_url ) ? '' : '</a>' ).
-					'</p>';
+				$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ' .
+					sprintf( __( 'You\'ve been using <b>%s</b> for a week or more.', 'wpsso' ),
+						'<a href="' . $info['url']['home'] . '" title="' . sprintf( __( 'The %s plugin description page on WordPress.org',
+							'wpsso' ), $info['short'] ) . '">' . $info['name'] . '</a>' ) . ' ';
 
+				$notice_msg .= __( 'That\'s awesome!', 'wpsso' );
+				
+				$notice_msg .= '</p><p>';
+
+				$notice_msg .= sprintf( __( 'Could you do me a small favor? Would you rate the %s plugin on WordPress.org?', 'wpsso' ), $info['short'] ) . ' ';
+
+				$notice_msg .= '</p><p>';
+
+				$notice_msg .= __( 'Your rating is a great way to encourage us &mdash; and helps other users find good plugins as well!', 'wpsso' ) . ' :-)';
+
+				$notice_msg .= '</p>';
+				
+				$notice_msg .= '<p>' . $rate_plugin_button . $already_rated_button . '</p>';
+					
 				$notice_msg .= '</div>' . "\n";
 
 				$this->p->notice->log( 'inf', $notice_msg, $user_id, $msg_id_review, true, array( 'label' => false ) );
@@ -3043,7 +3042,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$img_src .= ' srcset="' . $icons['high'] . ' 256w"';
 				}
 			}
-			return '<img ' . $img_src . ' width="128" height="128" />';
+			return '<img ' . $img_src . ' width="128" height="128" style="width:128px; height:128px"/>';
 		}
 	}
 }

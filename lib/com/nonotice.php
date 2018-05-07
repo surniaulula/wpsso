@@ -33,11 +33,9 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public function can_dismiss() {}
 		public function hook_admin_notices() {}
 		public function show_admin_notices() {}
-		public function get_notice_style() {}
-		public function get_naf_style() {}
 		public function admin_footer_script() {}
 		public function ajax_dismiss_notice() { die( -1 ); }
 		public function ajax_get_notices_json() { die( -1 ); }
-		public function save_user_notices() {}
+		public function shutdown_notice_cache() {}
 	}
 }

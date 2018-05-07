@@ -165,10 +165,21 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 
 				if ( $msg_dismiss_transl ) {
-					$msg_end_p = substr( $msg_text, -4 ) === '</p>' ? true : false;
-					$msg_text .= $msg_end_p ? '<p>' : ' ';
+
+					$msg_text = trim( $msg_text );
+					$msg_close_div = '';
+
+					if ( substr( $msg_text, -6 ) === '</div>' ) {
+						$msg_text = substr( $msg_text, 0, -6 );
+						$msg_close_div = '</div>';
+					}
+
+					$msg_add_p = substr( $msg_text, -4 ) === '</p>' ? true : false;
+
+					$msg_text .= $msg_add_p ? '<p>' : ' ';
 					$msg_text .= sprintf( $msg_dismiss_transl, $payload['dismiss_diff'] );
-					$msg_text .= $msg_end_p ? '</p>' : '';
+					$msg_text .= $msg_add_p ? '</p>' : '';
+					$msg_text .= $msg_close_div;
 				}
 			}
 
@@ -1032,7 +1043,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					padding:2px;
 				}
 				#wpadminbar .have-notices #wp-admin-bar-'.$this->p->lca.'-toolbar-notices-container { 
-					min-width:66vw !important;	/* 66% of the viewing window width */
+					min-width:66vw;	/* 66% of the viewing window width */
 				}
 				#wpadminbar .have-notices #wp-admin-bar-'.$this->p->lca.'-toolbar-notices-default { 
 					padding:0;
@@ -1053,6 +1064,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .' . $this->lca . '-notice.updated,
 				.' . $this->lca . '-notice,
 				.' . $this->lca . '-notice.updated {
+					width:unset;
+					height:unset;
 					padding:0;
 					clear:both;
 				}
@@ -1073,6 +1086,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					display:inline;
 					padding:0;
 					text-decoration:underline;
+				}
+				#wpadminbar .' . $this->lca . '-notice .button-primary,
+				#wpadminbar .' . $this->lca . '-notice .button-secondary,
+				.' . $this->lca . '-notice .button-primary,
+				.' . $this->lca . '-notice .button-secondary {
+					padding:5px 10px;
 				}
 				#wpadminbar .'.$this->p->lca.'-notice .notice-label,
 				#wpadminbar .'.$this->p->lca.'-notice .notice-message,
@@ -1191,11 +1210,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				#wpadminbar .' . $this->lca . '-notice .notice-message p.reference-message,
 				.' . $this->lca . '-notice .notice-message p.reference-message {
-					font-size:0.85em;
+					font-size:0.9em;
 					margin:10px 0 0 0;
 				}
 				#wpadminbar .' . $this->lca . '-notice .notice-message p.reference-message a {
-					font-size:0.85em;
+					font-size:0.9em;
+				}
+				#wpadminbar .' . $this->lca . '-notice .notice-message p.smaller-message,
+				#wpadminbar .' . $this->lca . '-notice .notice-message p.smaller-message a,
+				.' . $this->lca . '-notice .notice-message p.smaller-message,
+				.' . $this->lca . '-notice .notice-message p.smaller-message a {
+					font-size:0.9em;
 				}
 				#wpadminbar .' . $this->lca . '-notice .notice-message ul,
 				.' . $this->lca . '-notice .notice-message ul {
