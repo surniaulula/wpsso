@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.2.0-b.1 (2018/05/06)**
+**Version 4.2.0 (2018/05/07)**
 
 * *New Features*
 	* None
@@ -388,9 +388,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.2.0-b.1 =
+= 4.2.0 =
 
-(2018/05/06) Moved error, warning, and information notices to a new SSO notices toolbar menu item.
+(2018/05/07) Moved error, warning, and information notices to a new SSO notices toolbar menu item.
 
 = 4.1.0 =
 
