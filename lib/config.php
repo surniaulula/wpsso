@@ -2440,10 +2440,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function set_constants( $plugin_filepath ) {
 
-			if ( defined( 'WPSSO_VERSION' ) ) {			// execute and define constants only once
+			if ( defined( 'WPSSO_VERSION' ) ) {			// Execute and define constants only once.
 				return;
 			}
 
+			/**
+			 * Define fixed constants.
+			 */
 			define( 'WPSSO_VERSION', self::$cf['plugin']['wpsso']['version'] );						
 			define( 'WPSSO_FILEPATH', $plugin_filepath );						
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
@@ -2451,6 +2454,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			define( 'WPSSO_PLUGINBASE', self::$cf['plugin']['wpsso']['base'] );		// wpsso/wpsso.php
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_filepath ) ) );
 
+			/**
+			 * Define variable constants. Default values can be changed by defining 
+			 * constants in the wp-config.php file.
+			 */
 			self::set_variable_constants();
 		}
 
@@ -2471,7 +2478,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			$var_const = array();
 
-			// create a unique md5 query name from the config array and the local wp nonce key
+			/**
+			 * Create a unique md5 query name from the config array and the local wp nonce key.
+			 */
 			$var_const['WPSSO_NONCE_NAME'] = md5( var_export( self::$cf, true ).
 				( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
 
@@ -2485,6 +2494,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 
 			$var_const['WPSSO_MENU_ORDER'] = '99.10';			// Position of the SSO menu item.
+			$var_const['WPSSO_TB_NOTICE_MENU_ORDER'] = '55';		// Position of the SSO notices toolbar menu item.
+			$var_const['WPSSO_TB_LOCALE_MENU_ORDER'] = '60';		// Position of the user locale toolbar menu item.
 			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;			// Highlight the SSO menu icon.
 			$var_const['WPSSO_TOOLBAR_NOTICES'] = true;			// Show error, warning, and info notices in the toolbar menu.
 			$var_const['WPSSO_HIDE_ALL_ERRORS'] = false;			// Auto-hide all error notices.
@@ -2510,7 +2521,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			$var_const['WPSSO_SCHEMA_ADDL_TYPE_URL_MAX'] = 5;
 			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX'] = 10;
-			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX'] = 90;
+			$var_const['WPSSO_SCHEMA_HOWTO_STEPS_MAX'] = 90;
+			$var_const['WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX'] = 60;
+			$var_const['WPSSO_SCHEMA_HOWTO_TOOLS_MAX'] = 30;
+			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX'] = 60;
 			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 90;
 			$var_const['WPSSO_SCHEMA_POSTS_PER_PAGE_MAX'] = 10;
 			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH_MAX'] = 3;
@@ -2519,26 +2533,26 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_SCHEMA_BREADCRUMB_SCRIPTS_MAX'] = 5;
 
 			/**
-			 * WPSSO option and meta array names
+			 * WPSSO option and meta array names.
 			 */
 			$var_const['WPSSO_TS_NAME'] = 'wpsso_timestamps';
 			$var_const['WPSSO_OPTIONS_NAME'] = 'wpsso_options';
 			$var_const['WPSSO_SITE_OPTIONS_NAME'] = 'wpsso_site_options';
-			$var_const['WPSSO_DISMISS_NAME'] = 'wpsso_dismissed';		// dismissed notices
-			$var_const['WPSSO_META_NAME'] = '_wpsso_meta';			// post meta
-			$var_const['WPSSO_PREF_NAME'] = '_wpsso_pref';			// user meta
-			$var_const['WPSSO_POST_CHECK_NAME'] = 'wpsso_post_head_count';	// duplicate check counter
+			$var_const['WPSSO_DISMISS_NAME'] = 'wpsso_dismissed';		// Dismissed notices.
+			$var_const['WPSSO_META_NAME'] = '_wpsso_meta';			// Post meta.
+			$var_const['WPSSO_PREF_NAME'] = '_wpsso_pref';			// User meta.
+			$var_const['WPSSO_POST_CHECK_NAME'] = 'wpsso_post_head_count';	// Duplicate check counter.
 
 			/**
-			 * WPSSO option and meta array alternate names
+			 * WPSSO option and meta array alternate names.
 			 */
-			$var_const['WPSSO_OPTIONS_NAME_ALT'] = 'ngfb_options';			// fallback name
-			$var_const['WPSSO_SITE_OPTIONS_NAME_ALT'] = 'ngfb_site_options';	// fallback name
-			$var_const['WPSSO_META_NAME_ALT'] = '_ngfb_meta';			// fallback name
-			$var_const['WPSSO_PREF_NAME_ALT'] = '_ngfb_pref';			// fallback name
+			$var_const['WPSSO_OPTIONS_NAME_ALT'] = 'ngfb_options';			// Fallback name.
+			$var_const['WPSSO_SITE_OPTIONS_NAME_ALT'] = 'ngfb_site_options';	// Fallback name.
+			$var_const['WPSSO_META_NAME_ALT'] = '_ngfb_meta';			// Fallback name.
+			$var_const['WPSSO_PREF_NAME_ALT'] = '_ngfb_pref';			// Fallback name.
 
 			/**
-			 * WPSSO hook priorities
+			 * WPSSO hook priorities.
 			 */
 			$var_const['WPSSO_ADD_MENU_PRIORITY'] = -20;
 			$var_const['WPSSO_ADD_SUBMENU_PRIORITY'] = -10;

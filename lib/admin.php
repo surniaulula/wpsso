@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * WPSSO_TOOLBAR_NOTICES can be true, false, or an array of notice types to include in the menu.
 				 */
 				if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false ) ) {	// Returns false if not defined.
-					add_action( 'admin_bar_menu', array( &$this, 'add_admin_tb_notices_menu_item' ), 60 );
+					add_action( 'admin_bar_menu', array( &$this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
 				}
 
 				add_filter( 'current_screen', array( &$this, 'maybe_show_screen_notices' ) );

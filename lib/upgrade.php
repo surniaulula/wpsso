@@ -203,25 +203,33 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 			}
 		}
 
-		// def_opts accepts output from functions, so don't force reference
+		/**
+		 * The $def_opts argument accepts output from functions, so don't force reference.
+		 */
 		public function options( $options_name, &$opts = array(), $def_opts = array(), $network = false ) {
 
-			$lca = $this->p->cf['lca'];
+			/**
+			 * Save / create the current options version number for version checks to follow.
+			 */
+			$prev_version = empty( $opts['plugin_' . $this->p->lca . '_opt_version'] ) ?
+				0 : $opts['plugin_' . $this->p->lca . '_opt_version'];
 
-			// save the current options version number
-			$prev_version = empty( $opts['plugin_'.$lca.'_opt_version'] ) ?	0 : $opts['plugin_'.$lca.'_opt_version'];
-
-			// adjust before renaming the option key
+			/**
+			 * Adjust before renaming the option key(s).
+			 */
 			if ( $prev_version > 0 && $prev_version <= 342 ) {
+
 				if ( ! empty( $opts['plugin_file_cache_hrs'] ) ) {
 					$opts['plugin_social_file_cache_exp'] = $opts['plugin_file_cache_hrs'] * HOUR_IN_SECONDS;
 				}
+
 				unset( $opts['plugin_file_cache_hrs'] );
 			}
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
 
-				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $lca.'_rename_options_keys', self::$rename_options_keys ) );
+				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $this->p->lca . '_rename_options_keys',
+					self::$rename_options_keys ) );
 
 				if ( $prev_version > 0 && $prev_version <= 270 ) {
 					foreach ( $opts as $key => $val ) {
@@ -275,23 +283,28 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
-				// look for schema type id values to be renamed
+				/**
+				 * Check for schema type id values to be renamed.
+				 */
 				if ( $prev_version > 0 && $prev_version <= 566 ) {
 					$keys_preg = 'schema_type_.*|schema_review_item_type|site_org_type|org_type|plm_addr_business_type';
-					foreach ( SucomUtil::preg_grep_keys( '/^('.$keys_preg.')(_[0-9]+)?$/', $opts ) as $key => $val ) {
+					foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $opts ) as $key => $val ) {
 						if ( ! empty( $this->p->cf['head']['schema_renamed'][$val] ) ) {
 							$opts[$key] = $this->p->cf['head']['schema_renamed'][$val];
 						}
 					}
 				}
 
-				// 2017/12/20 google updated their max description length from 160 to 320 characters
+				/**
+				 * 2017/12/20 google updated their max description length from 160 to 320 characters.
+				 */
 				if ( $prev_version > 0 && $prev_version <= 571 ) {
 					$opts['seo_desc_len'] = 320;
 				}
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
-				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $lca.'_rename_site_options_keys', self::$rename_site_options_keys ) );
+				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $this->p->lca . '_rename_site_options_keys',
+					self::$rename_site_options_keys ) );
 			}
 
 			return $this->sanitize( $opts, $def_opts, $network );	// cleanup options and sanitize

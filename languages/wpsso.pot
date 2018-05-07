@@ -970,11 +970,11 @@ msgstr ""
 msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: lib/com/bfo.php:251 lib/com-gettext-extract.php:9
+#: lib/com/bfo.php:251 lib/com-gettext-extract.php:8
 msgid "END OUTPUT"
 msgstr ""
 
-#: lib/com/cache.php:92 lib/com-gettext-extract.php:10
+#: lib/com/cache.php:92 lib/com-gettext-extract.php:9
 msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
 msgstr ""
 
@@ -1014,7 +1014,7 @@ msgid ""
 "the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:325 lib/com-gettext-extract.php:11
+#: lib/com/cache.php:325 lib/com-gettext-extract.php:10
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -1022,11 +1022,11 @@ msgstr ""
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:539 lib/com-gettext-extract.php:13
+#: lib/com/cache.php:539 lib/com-gettext-extract.php:12
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:626 lib/com-gettext-extract.php:12
+#: lib/com/cache.php:626 lib/com-gettext-extract.php:11
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
@@ -1034,12 +1034,12 @@ msgstr ""
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:642 lib/com-gettext-extract.php:14
+#: lib/com/cache.php:642 lib/com-gettext-extract.php:13
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/notice.php:152 lib/com-gettext-extract.php:7
-msgid "Dismiss"
+#: lib/com/notice.php:152 lib/com-gettext-extract.php:14
+msgid "Forever"
 msgstr ""
 
 #: lib/com/notice.php:154 lib/com-gettext-extract.php:29
@@ -1050,7 +1050,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:318 lib/com-gettext-extract.php:8
+#: lib/com/notice.php:318 lib/com-gettext-extract.php:7
 msgid "edit"
 msgstr ""
 

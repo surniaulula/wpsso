@@ -343,7 +343,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$warn_msg = '';
 				$info = $this->cf['plugin']['wpsso'];
 				$dismiss_key = 'debug-mode-is-active';
-				$dismiss_time = HOUR_IN_SECONDS;
+				$dismiss_time = HOUR_IN_SECONDS * 3;
 
 				if ( $this->debug->is_enabled( 'wp' ) ) {
 					$this->debug->log( 'WP debug log mode is active' );

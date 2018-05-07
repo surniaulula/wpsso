@@ -149,7 +149,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				if ( $payload['dismiss_time'] === true ) {	// True.
 
-					$payload['dismiss_diff'] = __( 'Dismiss', $this->text_domain );
+					$payload['dismiss_diff'] = __( 'Forever', $this->text_domain );
 
 					$msg_dismiss_transl = __( 'This notice can be dismissed permanently.', $this->text_domain );
 
