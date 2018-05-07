@@ -1273,6 +1273,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$custom_style_css .= '
 				.' . $this->lca . '-notice.update-nag {
 					margin-top:0;
+					clear:none;
 				}
 				.' . $this->lca . '-notice.update-nag > div {
 					display:block;
