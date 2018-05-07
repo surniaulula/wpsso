@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.5
 WC Tested Up To: 3.3.5
-Stable Tag: 4.1.0
+Stable Tag: 4.2.0
 
 Automatically create complete meta tags + Schema markup from your content for Social Sharing, Google Rich Cards (SEO), Pinterest Rich Pins & more.
 
@@ -391,8 +391,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.2.0 =
 
 (2018/05/07) Moved error, warning, and information notices to a new SSO notices toolbar menu item.
-
-= 4.1.0 =
-
-(2018/05/02) Added a new "Item Type by Term Taxonomy" option. Fixed an undefined $mod variable warning when saving term meta.
 
