@@ -471,6 +471,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$dismissed_upd   = false;
 			$this->has_shown = true;
 
+			$allow_unhide = array(
+				'err' => _x( 'error', 'notification type', $this->text_domain ),
+				'warn' => _x( 'warning', 'notification type', $this->text_domain ),
+			);
+
 			/**
 			 * Loop through all the msg types and show them all.
 			 */
@@ -532,6 +537,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						}
 					}
 
+					/**
+					 * If the notice is hidden, and we don't provide a way to unhide it, then skip this notice.
+					 */
+					if ( ! empty( $payload['hidden'] ) && empty( $allow_unhide[$msg_type] ) ) {
+						continue;
+					}
+
 					$msg_html .= $this->get_notice_html( $msg_type, $payload );
 				}
 			}
@@ -562,10 +574,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Remind the user that there are hidden error messages.
 			 */
-			foreach ( array(
-				'err' => _x( 'error', 'notification type', $this->text_domain ),
-				'warn' => _x( 'warning', 'notification type', $this->text_domain ),
-			) as $msg_type => $log_name ) {
+			foreach ( $allow_unhide as $msg_type => $log_name ) {
 
 				if ( empty( $hidden[$msg_type] ) ) {
 					continue;
@@ -573,13 +582,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				
 				$payload = array();
 
-				$payload['msg_text'] = _n(
-					'%1$d important %2$s notice has been dismissed &mdash; <a id="%3$s">show the %2$s message</a>.',
-					'%1$d important %2$s notices have been dismissed &mdash; <a id="%3$s">show the %2$s messages</a>.',
+				$msg_text_transl = _n(
+					'%1$d %2$s notice has been dismissed &mdash; <a id="%3$s">show the %2$s message</a>.',
+					'%1$d %2$s notices have been dismissed &mdash; <a id="%3$s">show the %2$s messages</a>.',
 					$hidden[$msg_type], $this->text_domain
 				);
 
-				$payload['msg_text']   = sprintf( $payload['msg_text'], $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
+				$payload['msg_text']   = sprintf( $msg_text_transl, $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
 				$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_text'] ) );
 				$payload['no-unhide']  = true;
 				$payload['no-count']   = true;
@@ -588,6 +597,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			echo $msg_html;
+
 			echo '<!-- ' . $this->lca . ' admin notices end -->' . "\n";
 		}
 
@@ -685,6 +695,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$json_notices    = array();
 			$ajax_context    = empty( $_REQUEST['context'] ) ? '' : $_REQUEST['context'];	// 'block_editor' or 'toolbar_notices'
 
+			$allow_unhide = array(
+				'err' => _x( 'error', 'notification type', $this->text_domain ),
+				'warn' => _x( 'warning', 'notification type', $this->text_domain ),
+			);
+
 			/**
 			 * Loop through all the msg types and show them all.
 			 */
@@ -749,6 +764,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						}
 					}
 
+					/**
+					 * If the notice is hidden, and we don't provide a way to unhide it, then skip this notice.
+					 */
+					if ( ! empty( $payload['hidden'] ) && empty( $allow_unhide[$msg_type] ) ) {
+						continue;
+					}
+
 					$payload['msg_html'] = $this->get_notice_html( $msg_type, $payload, true );	// $notice_alt is true.
 
 					/**
@@ -779,10 +801,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Remind the user that there are hidden error messages.
 			 */
-			foreach ( array(
-				'err' => _x( 'error', 'notification type', $this->text_domain ),
-				'warn' => _x( 'warning', 'notification type', $this->text_domain ),
-			) as $msg_type => $log_name ) {
+			foreach ( $allow_unhide as $msg_type => $log_name ) {
 
 				if ( empty( $hidden[$msg_type] ) ) {
 					continue;
@@ -790,13 +809,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				
 				$payload = array();
 
-				$payload['msg_text'] = _n(
-					'%1$d important %2$s notice has been dismissed &mdash; <a id="%3$s">show the %2$s message</a>.',
-					'%1$d important %2$s notices have been dismissed &mdash; <a id="%3$s">show the %2$s messages</a>.',
+				$msg_text_transl = _n(
+					'%1$d %2$s notice has been dismissed &mdash; <a id="%3$s">show the %2$s message</a>.',
+					'%1$d %2$s notices have been dismissed &mdash; <a id="%3$s">show the %2$s messages</a>.',
 					$hidden[$msg_type], $this->text_domain
 				);
 
-				$payload['msg_text']   = sprintf( $payload['msg_text'], $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
+				$payload['msg_text']   = sprintf( $msg_text_transl, $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
 				$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_text'] ) );
 				$payload['msg_html']   = $this->get_notice_html( $msg_type, $payload );
 				$payload['no-unhide']  = true;
@@ -871,7 +890,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$is_dismissible = empty( $payload['dismiss_diff'] ) ? false : true;
 
-			$css_id_attr = empty( $payload['dismiss_key'] ) ? '' : ' id="' . $msg_type . '_' . $payload['dismiss_key'] . '"';
+			$css_id_attr = empty( $payload['dismiss_key'] ) ? '' : ' id="' . $msg_type . '-' . $payload['dismiss_key'] . '"';
 
 			$data_attr = $is_dismissible ?
 				' data-dismiss-nonce="' . wp_create_nonce( __FILE__ ) . '"' . 
@@ -892,7 +911,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$wp_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// display block or none
 
 			/**
-			 * Float to the right, so add the button container first.
+			 * Float the dismiss button on the right, so the button must be added first.
 			 */
 			if ( $is_dismissible ) {
 				$msg_html .= '<button class="notice-dismiss" type="button">' .

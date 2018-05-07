@@ -1051,23 +1051,23 @@ msgstr ""
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/notice.php:566 lib/com/notice.php:783 lib/com-gettext-extract.php:30
+#: lib/com/notice.php:475 lib/com/notice.php:699 lib/com-gettext-extract.php:30
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:567 lib/com/notice.php:784 lib/com-gettext-extract.php:31
+#: lib/com/notice.php:476 lib/com/notice.php:700 lib/com-gettext-extract.php:31
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:576 lib/com/notice.php:793
+#: lib/com/notice.php:585 lib/com/notice.php:812
 msgid ""
-"%1$d important %2$s notice has been dismissed &mdash; <a id=\"%3$s\">show "
-"the %2$s message</a>."
+"%1$d %2$s notice has been dismissed &mdash; <a id=\"%3$s\">show the %2$s "
+"message</a>."
 msgid_plural ""
-"%1$d important %2$s notices have been dismissed &mdash; <a id=\"%3$s\">show "
-"the %2$s messages</a>."
+"%1$d %2$s notices have been dismissed &mdash; <a id=\"%3$s\">show the %2$s "
+"messages</a>."
 msgstr[0] ""
 msgstr[1] ""
 
