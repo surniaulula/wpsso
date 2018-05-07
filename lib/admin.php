@@ -2795,42 +2795,46 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		// called from the WpssoSubmenuEssential, WpssoSubmenuAdvanced, and WpssoSitesubmenuSiteadvanced classes
 		protected function add_essential_advanced_table_rows( array &$table_rows, $network = false ) {
 
-			$table_rows['plugin_preserve'] = $this->form->get_th_html( _x( 'Preserve Settings on Uninstall',
-				'option label', 'wpsso' ), '', 'plugin_preserve' ).
+			$table_rows['plugin_preserve'] = '' .
+			$this->form->get_th_html( _x( 'Preserve Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_preserve' ).
 			'<td>' . $this->form->get_checkbox( 'plugin_preserve' ) . '</td>' .
 			self::get_option_site_use( 'plugin_preserve', $this->form, $network, true );
 
-			$table_rows['plugin_debug'] = $this->form->get_th_html( _x( 'Add Hidden Debug Messages',
-				'option label', 'wpsso' ), '', 'plugin_debug' ).
+			$table_rows['plugin_debug'] = '' .
+			$this->form->get_th_html( _x( 'Add Hidden Debug Messages', 'option label', 'wpsso' ), '', 'plugin_debug' ).
 			'<td>' . ( ! $network && SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ?
 				$this->form->get_no_checkbox( 'plugin_debug' ) . ' <em>WPSSO_HTML_DEBUG constant is true</em>' :
 				$this->form->get_checkbox( 'plugin_debug' ) ) . '</td>' .
 			self::get_option_site_use( 'plugin_debug', $this->form, $network, true );
 
 			if ( $network || ! $this->p->check->aop( $this->p->lca, true, $this->p->avail['*']['p_dir'] ) ) {
-				$table_rows['plugin_hide_pro'] = $this->form->get_th_html( _x( 'Hide All Pro Version Options',
-					'option label', 'wpsso' ), null, 'plugin_hide_pro' ).
+
+				$table_rows['plugin_hide_pro'] = $this->form->get_tr_hide( 'basic', 'plugin_hide_pro' ) .
+				$this->form->get_th_html( _x( 'Hide All Pro Version Options', 'option label', 'wpsso' ), '', 'plugin_hide_pro' ) .
 				'<td>' . $this->form->get_checkbox( 'plugin_hide_pro' ) . '</td>' .
 				self::get_option_site_use( 'plugin_show_opts', $this->form, $network, true );
+
 			} else {
 				$this->form->get_hidden( 'plugin_hide_pro', 0, true );
 			}
 
-			$table_rows['plugin_show_opts'] = $this->form->get_th_html( _x( 'Options to Show by Default',
-				'option label', 'wpsso' ), null, 'plugin_show_opts' ).
+			$table_rows['plugin_show_opts'] = '' .
+			$this->form->get_th_html( _x( 'Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
 			'<td>' . $this->form->get_select( 'plugin_show_opts', $this->p->cf['form']['show_options'] ) . '</td>' .
 			self::get_option_site_use( 'plugin_show_opts', $this->form, $network, true );
 
 			if ( ! empty( $this->p->cf['*']['lib']['shortcode'] ) ) {
-				$table_rows['plugin_shortcodes'] = $this->form->get_tr_hide( 'basic', 'plugin_shortcodes' ).
-				$this->form->get_th_html( _x( 'Enable Plugin Shortcode(s)', 'option label', 'wpsso' ), '', 'plugin_shortcodes' ).
+
+				$table_rows['plugin_shortcodes'] = $this->form->get_tr_hide( 'basic', 'plugin_shortcodes' ) .
+				$this->form->get_th_html( _x( 'Enable Plugin Shortcode(s)', 'option label', 'wpsso' ), '', 'plugin_shortcodes' ) .
 				'<td>' . $this->form->get_checkbox( 'plugin_shortcodes' ) . '</td>' .
 				self::get_option_site_use( 'plugin_shortcodes', $this->form, $network, true );
 			}
 
 			if ( ! empty( $this->p->cf['*']['lib']['widget'] ) ) {
-				$table_rows['plugin_widgets'] = $this->form->get_tr_hide( 'basic', 'plugin_widgets' ).
-				$this->form->get_th_html( _x( 'Enable Plugin Widget(s)', 'option label', 'wpsso' ), '', 'plugin_widgets' ).
+
+				$table_rows['plugin_widgets'] = $this->form->get_tr_hide( 'basic', 'plugin_widgets' ) .
+				$this->form->get_th_html( _x( 'Enable Plugin Widget(s)', 'option label', 'wpsso' ), '', 'plugin_widgets' ) .
 				'<td>' . $this->form->get_checkbox( 'plugin_widgets' ) . '</td>' .
 				self::get_option_site_use( 'plugin_widgets', $this->form, $network, true );
 			}
