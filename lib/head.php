@@ -461,29 +461,31 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				return array();
 			}
 
-			$is_admin = is_admin();	// call the function only once
+			$is_admin     = is_admin();	// Call the function only once.
 			$crawler_name = SucomUtil::get_crawler_name();
 
-			static $cache_exp_secs = null;	// filter the cache expiration value only once
-			$cache_md5_pre = $this->p->lca.'_h_';
-			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
+			static $cache_exp_secs = null;	// Filter the cache expiration value only once.
+
+			$cache_md5_pre = $this->p->lca . '_h_';
+
+			if ( ! isset( $cache_exp_secs ) ) {	// Filter cache expiration if not already set.
 				$cache_exp_filter = $this->p->cf['wp']['transient'][$cache_md5_pre]['filter'];
-				$cache_opt_key = $this->p->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
-				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
+				$cache_opt_key    = $this->p->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
+				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
 			}
 
-			$cache_salt  = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
-			$cache_id    = $cache_md5_pre.md5( $cache_salt );
-			$cache_index = $this->get_head_cache_index( $mod, $sharing_url );	// includes locale, url, $wp_query args, etc.
+			$cache_salt  = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
+			$cache_id    = $cache_md5_pre . md5( $cache_salt );
+			$cache_index = $this->get_head_cache_index( $mod, $sharing_url );	// Includes locale, url, $wp_query args, etc.
 			$cache_array = array();
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'sharing url = '.$sharing_url );
-				$this->p->debug->log( 'crawler name = '.$crawler_name );
-				$this->p->debug->log( 'cache expire = '.$cache_exp_secs );
-				$this->p->debug->log( 'cache salt = '.$cache_salt );
-				$this->p->debug->log( 'cache id = '.$cache_id );
-				$this->p->debug->log( 'cache index = '.$cache_index );
+				$this->p->debug->log( 'sharing url = ' . $sharing_url );
+				$this->p->debug->log( 'crawler name = ' . $crawler_name );
+				$this->p->debug->log( 'cache expire = ' . $cache_exp_secs );
+				$this->p->debug->log( 'cache salt = ' . $cache_salt );
+				$this->p->debug->log( 'cache id = ' . $cache_id );
+				$this->p->debug->log( 'cache index = ' . $cache_index );
 			}
 
 			if ( $cache_exp_secs > 0 ) {

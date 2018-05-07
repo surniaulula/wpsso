@@ -103,8 +103,8 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 				// WordPress SEO v4
 				if ( method_exists( 'Yoast_Notification_Center', 'get_notification_by_id' ) ) {
-					$id = 'wpseo-conflict-'.md5( $info['base'] );
-					$msg = '<style>#'.$id.'{display:none;}</style>';
+					$id = 'wpseo-conflict-' . md5( $info['base'] );
+					$msg = '<style>#' . $id . '{display:none;}</style>';
 					$notif_center = Yoast_Notification_Center::get();
 					if ( ( $notif_obj = $notif_center->get_notification_by_id( $id ) ) && $notif_obj->message !== $msg ) {
 						update_user_meta( get_current_user_id(), $notif_obj->get_dismissal_key(), 'seen' );

@@ -1064,10 +1064,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .' . $this->lca . '-notice.updated,
 				.' . $this->lca . '-notice,
 				.' . $this->lca . '-notice.updated {
-					width:unset;
-					height:unset;
-					padding:0;
 					clear:both;
+					padding:0;
+					box-shadow:none;
 				}
 				#wpadminbar .' . $this->lca . '-notice,
 				#wpadminbar .' . $this->lca . '-notice.updated {
@@ -1275,10 +1274,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function get_nag_style() {
 
-			$cache_md5_pre = $this->p->lca.'_';
+			$cache_md5_pre  = $this->p->lca . '_';
 			$cache_exp_secs = DAY_IN_SECONDS;
-			$cache_salt = __METHOD__.'()';
-			$cache_id = $cache_md5_pre.md5( $cache_salt );
+			$cache_salt     = __METHOD__ . '()';
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
 				return '<style type="text/css">' . $custom_style_css . '</style>';

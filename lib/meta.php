@@ -604,21 +604,21 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$mod_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 
 			$cache_types['transient'][] = array(
-				'id' => $this->p->lca.'_h_'.md5( 'WpssoHead::get_head_array('.$mod_salt.')' ),
-				'pre' => $this->p->lca.'_h_',
-				'salt' => 'WpssoHead::get_head_array('.$mod_salt.')',
+				'id' => $this->p->lca . '_h_' . md5( 'WpssoHead::get_head_array(' . $mod_salt . ')' ),
+				'pre' => $this->p->lca . '_h_',
+				'salt' => 'WpssoHead::get_head_array(' . $mod_salt . ')',
 			);
 
 			$cache_types['transient'][] = array(
-				'id' => $this->p->lca.'_j_'.md5( 'WpssoSchema::get_mod_cache_data('.$mod_salt.')' ),
-				'pre' => $this->p->lca.'_j_',
-				'salt' => 'WpssoSchema::get_mod_cache_data('.$mod_salt.')',
+				'id' => $this->p->lca . '_j_' . md5( 'WpssoSchema::get_mod_cache_data(' . $mod_salt . ')' ),
+				'pre' => $this->p->lca . '_j_',
+				'salt' => 'WpssoSchema::get_mod_cache_data(' . $mod_salt . ')',
 			);
 
 			$cache_types['wp_cache'][] = array(
-				'id' => $this->p->lca.'_c_'.md5( 'WpssoPage::get_content('.$mod_salt.')' ),
-				'pre' => $this->p->lca.'_c_',
-				'salt' => 'WpssoPage::get_content('.$mod_salt.')',
+				'id' => $this->p->lca . '_c_' . md5( 'WpssoPage::get_content(' . $mod_salt . ')' ),
+				'pre' => $this->p->lca . '_c_',
+				'salt' => 'WpssoPage::get_content(' . $mod_salt . ')',
 			);
 
 			$deleted_count = 0;
@@ -626,7 +626,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			foreach ( $cache_types as $type_name => $type_keys ) {
 
-				$filter_name = $this->p->lca.'_'.$mod['name'].'_cache_'.$type_name.'_keys';
+				$filter_name = $this->p->lca . '_' . $mod['name'] . '_cache_' . $type_name . '_keys';
 				$type_keys = (array) apply_filters( $filter_name, $type_keys, $mod, $sharing_url, $mod_salt );
 
 				foreach ( $type_keys as $mixed ) {

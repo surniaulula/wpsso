@@ -1128,10 +1128,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					return;
 			}
 
-			$mod = $this->get_mod( $post_id );
-			$cache_types = array();
-			$cache_md5_pre = $this->p->lca.'_';
-			$permalink = get_permalink( $post_id );
+			$mod           = $this->get_mod( $post_id );
+			$cache_types   = array();
+			$cache_md5_pre = $this->p->lca . '_';
+			$permalink     = get_permalink( $post_id );
 			$col_meta_keys = WpssoMeta::get_column_meta_keys();
 
 			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
@@ -1145,16 +1145,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$cache_types['transient'][] = array(
-				'id' => $cache_md5_pre.md5( 'SucomCache::get(url:'.$permalink.')' ),
+				'id' => $cache_md5_pre . md5( 'SucomCache::get(url:' . $permalink . ')' ),
 				'pre' => $cache_md5_pre,
-				'salt' => 'SucomCache::get(url:'.$permalink.')',
+				'salt' => 'SucomCache::get(url:' . $permalink . ')',
 			);
 
 			if ( $permalink !== $check_url ) {
 				$cache_types['transient'][] = array(
-					'id' => $cache_md5_pre.md5( 'SucomCache::get(url:'.$check_url.')' ),
+					'id' => $cache_md5_pre . md5( 'SucomCache::get(url:' . $check_url . ')' ),
 					'pre' => $cache_md5_pre,
-					'salt' => 'SucomCache::get(url:'.$check_url.')',
+					'salt' => 'SucomCache::get(url:' . $check_url . ')',
 				);
 			}
 

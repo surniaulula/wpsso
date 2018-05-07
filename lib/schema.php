@@ -487,16 +487,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! isset( $this->types_cache['filtered'] ) ) {	// check class property cache
 
-				$cache_md5_pre = $this->p->lca.'_t_';
+				$cache_md5_pre  = $this->p->lca . '_t_';
 				$cache_exp_secs = $this->get_types_cache_exp();
 
 				if ( $cache_exp_secs > 0 ) {
+
 					$cache_salt = __METHOD__;
-					$cache_id = $cache_md5_pre.md5( $cache_salt );
+					$cache_id   = $cache_md5_pre . md5( $cache_salt );
+
 					$this->types_cache = get_transient( $cache_id );	// returns false when not found
+
 					if ( ! empty( $this->types_cache ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'using schema types array from transient '.$cache_id );
+							$this->p->debug->log( 'using schema types array from transient ' . $cache_id );
 						}
 					}
 				}
@@ -511,7 +514,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->debug->mark( 'filtering schema type array' );
 					}
 
-					$this->types_cache['filtered'] = (array) apply_filters( $this->p->lca.'_schema_types',
+					$this->types_cache['filtered'] = (array) apply_filters( $this->p->lca . '_schema_types',
 						$this->p->cf['head']['schema_type'] );
 
 					if ( $this->p->debug->enabled ) {
@@ -538,7 +541,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $cache_exp_secs > 0 ) {
 						set_transient( $cache_id, $this->types_cache, $cache_exp_secs );
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'schema types array saved to transient cache for '.$cache_exp_secs.' seconds' );
+							$this->p->debug->log( 'schema types array saved to transient cache for ' . $cache_exp_secs . ' seconds' );
 						}
 					}
 

@@ -30,8 +30,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		public function admin_enqueue_styles( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'hook name = '.$hook_name );
-				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
+				$this->p->debug->log( 'hook name = ' . $hook_name );
+				$this->p->debug->log( 'screen base = ' . SucomUtil::get_screen_base() );
 			}
 
 			$css_file_ext = SucomUtil::get_const( 'WPSSO_DEV' ) ? 'css' : 'min.css';
@@ -41,23 +41,23 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 * See https://developers.google.com/speed/libraries/.
 			 */
 			wp_register_style( 'jquery-ui.js',
-				'https://ajax.googleapis.com/ajax/libs/jqueryui/'.
-					$this->p->cf['jquery-ui']['version'].'/themes/smoothness/jquery-ui.css',
+				'https://ajax.googleapis.com/ajax/libs/jqueryui/' . 
+					$this->p->cf['jquery-ui']['version'] . '/themes/smoothness/jquery-ui.css',
 						array(), $this->p->cf['jquery-ui']['version'] );
 
 			/**
 			 * See http://qtip2.com/download.
 			 */
 			wp_register_style( 'jquery-qtip.js',
-				WPSSO_URLPATH.'css/ext/jquery-qtip.' . $css_file_ext,
+				WPSSO_URLPATH . 'css/ext/jquery-qtip.' . $css_file_ext,
 					array(), $this->p->cf['jquery-qtip']['version'] );
 
 			wp_register_style( 'sucom-settings-table',
-				WPSSO_URLPATH.'css/com/settings-table.' . $css_file_ext,
+				WPSSO_URLPATH . 'css/com/settings-table.' . $css_file_ext,
 					array(), $plugin_version );
 
 			wp_register_style( 'sucom-metabox-tabs',
-				WPSSO_URLPATH.'css/com/metabox-tabs.' . $css_file_ext,
+				WPSSO_URLPATH . 'css/com/metabox-tabs.' . $css_file_ext,
 					array(), $plugin_version );
 
 			/**
@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				/**
 				 * License settings page.
 				 */
-				case ( preg_match( '/_page_'.$this->p->lca.'-(site)?licenses/', $hook_name ) ? true : false ):
+				case ( preg_match( '/_page_' . $this->p->lca . '-(site)?licenses/', $hook_name ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for licenses page' );
@@ -81,7 +81,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				/**
 				 * Any settings page. Also matches the profile_page and users_page hooks.
 				 */
-				case ( strpos( $hook_name, '_page_'.$this->p->lca.'-' ) !== false ? true : false ):
+				case ( strpos( $hook_name, '_page_' . $this->p->lca . '-' ) !== false ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for settings page' );
@@ -139,14 +139,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 		private function add_settings_page_style( $hook_name, $plugin_urlpath, $css_file_ext, $plugin_version ) {
 
-			$cache_md5_pre = $this->p->lca.'_';
-			$cache_exp_filter = $this->p->lca.'_cache_expire_admin_css';
-			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
-			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.'_plugin_urlpath:'.$plugin_urlpath.'_plugin_version:'.$plugin_version.')';
-			$cache_id = $cache_md5_pre.md5( $cache_salt );
+			$cache_md5_pre    = $this->p->lca . '_';
+			$cache_exp_filter = $this->p->lca . '_cache_expire_admin_css';
+			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
+			$cache_salt       = __METHOD__ . '(hook_name:' . $hook_name . '_plugin_urlpath:' . $plugin_urlpath . '_plugin_version:' . $plugin_version . ')';
+			$cache_id         = $cache_md5_pre . md5( $cache_salt );
 
 			wp_enqueue_style( 'sucom-settings-page',
-				$plugin_urlpath.'css/com/settings-page.' . $css_file_ext,
+				$plugin_urlpath . 'css/com/settings-page.' . $css_file_ext,
 					array(), $plugin_version );
 
 			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
@@ -164,31 +164,31 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( ! empty( $this->p->cf['menu']['color'] ) ) {
 				$custom_style_css .= '
 					#poststuff #side-info-column .postbox {
-						border:1px solid '.$this->p->cf['menu']['color'].';
+						border:1px solid ' . $this->p->cf['menu']['color'] . ';
 					}
 					#poststuff #side-info-column .postbox h2 {
-						border-bottom:1px dotted '.$this->p->cf['menu']['color'].';
+						border-bottom:1px dotted ' . $this->p->cf['menu']['color'] . ';
 					}
 					#poststuff #side-info-column .postbox.closed h2 {
-						border-bottom:1px solid '.$this->p->cf['menu']['color'].';
+						border-bottom:1px solid ' . $this->p->cf['menu']['color'] . ';
 					}
 					#poststuff #side-info-column .postbox.closed {
 						border-bottom:none;
 					}
 					#poststuff #side-info-column .postbox .inside td.blank,
 					#poststuff .dashboard_col .postbox .inside td.blank {
-						border-color:'.$this->p->cf['menu']['color'].';
-						background-color:'.$this->p->cf['nag_colors']['update-nag']['background-color'].';
-						color:'.$this->p->cf['nag_colors']['update-nag']['color'].';
+						border-color:' . $this->p->cf['menu']['color'] . ';
+						background-color:' . $this->p->cf['nag_colors']['update-nag']['background-color'] . ';
+						color:' . $this->p->cf['nag_colors']['update-nag']['color'] . ';
 					}
 				';
 			}
 
-			if ( strpos( $hook_name, '_page_'.$this->p->lca.'-dashboard' ) ) {
-				$custom_style_css .= 'div#'.$hook_name.' div#normal-sortables { min-height:0; }';
+			if ( strpos( $hook_name, '_page_' . $this->p->lca . '-dashboard' ) ) {
+				$custom_style_css .= 'div#' . $hook_name . ' div#normal-sortables { min-height:0; }';
 			}
 
-			$custom_style_css = apply_filters( $this->p->lca.'_settings_page_custom_style_css',
+			$custom_style_css = apply_filters( $this->p->lca . '_settings_page_custom_style_css',
 				$custom_style_css, $hook_name, $plugin_urlpath, $plugin_version );
 	
 			if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
@@ -206,16 +206,16 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 		private function add_admin_page_style( $hook_name, $plugin_urlpath, $css_file_ext, $plugin_version ) {
 
-			$cache_md5_pre = $this->p->lca.'_';
-			$cache_exp_filter = $this->p->lca.'_cache_expire_admin_css';
-			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
-			$cache_salt = __METHOD__.'(hook_name:'.$hook_name.'_plugin_urlpath:'.$plugin_urlpath.'_plugin_version:'.$plugin_version.')';
-			$cache_id = $cache_md5_pre.md5( $cache_salt );
+			$cache_md5_pre    = $this->p->lca . '_';
+			$cache_exp_filter = $this->p->lca . '_cache_expire_admin_css';
+			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
+			$cache_salt       = __METHOD__ . '(hook_name:' . $hook_name . '_plugin_urlpath:' . $plugin_urlpath . '_plugin_version:' . $plugin_version . ')';
+			$cache_id         = $cache_md5_pre . md5( $cache_salt );
 
 			$r_cache = SucomUtil::get_const( 'WPSSO_DEV' ) ? false : true;	// Read cache by default.
 
 			wp_enqueue_style( 'sucom-admin-page',
-				$plugin_urlpath.'css/com/admin-page.' . $css_file_ext,
+				$plugin_urlpath . 'css/com/admin-page.' . $css_file_ext,
 					array(), $plugin_version );
 
 			if ( $r_cache ) {
@@ -232,41 +232,41 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// begin timer
 			}
 
-			$sort_cols = WpssoMeta::get_sortable_columns();
+			$sort_cols  = WpssoMeta::get_sortable_columns();
 			$metabox_id = $this->p->cf['meta']['id'];
-			$menu = $this->p->lca.'-'.key( $this->p->cf['*']['lib']['submenu'] );
-			$sitemenu = $this->p->lca.'-'.key( $this->p->cf['*']['lib']['sitesubmenu'] );
+			$menu       = $this->p->lca . '-' . key( $this->p->cf['*']['lib']['submenu'] );
+			$sitemenu   = $this->p->lca . '-' . key( $this->p->cf['*']['lib']['sitesubmenu'] );
 
 			$highlight_color_css = empty( $this->p->cf['menu']['color'] ) || 
 				! SucomUtil::get_const( 'WPSSO_MENU_ICON_HIGHLIGHT' ) ?
-					'' : 'color:'.$this->p->cf['menu']['color'].';';
+					'' : 'color:' . $this->p->cf['menu']['color'] . ';';
 
 			$custom_style_css = '
 				@font-face {
 					font-family:"Star";
-					src:url("'.$plugin_urlpath.'fonts/star.eot");
-					src:url("'.$plugin_urlpath.'fonts/star.eot?#iefix") format("embedded-opentype"),
-					url("'.$plugin_urlpath.'fonts/star.woff") format("woff"),
-					url("'.$plugin_urlpath.'fonts/star.ttf") format("truetype"),
-					url("'.$plugin_urlpath.'fonts/star.svg#star") format("svg");
+					src:url("' . $plugin_urlpath . 'fonts/star.eot");
+					src:url("' . $plugin_urlpath . 'fonts/star.eot?#iefix") format("embedded-opentype"),
+					url("' . $plugin_urlpath . 'fonts/star.woff") format("woff"),
+					url("' . $plugin_urlpath . 'fonts/star.ttf") format("truetype"),
+					url("' . $plugin_urlpath . 'fonts/star.svg#star") format("svg");
 					font-weight:normal;
 					font-style:normal;
 				}
-				#wpadminbar #wp-toolbar #'.$this->p->lca.'-toolbar-notices-icon.ab-icon { 
+				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon { 
 					padding:0;
 					line-height:1em;
 				}
-				#wpadminbar #wp-toolbar #'.$this->p->lca.'-toolbar-notices-icon.ab-icon::before { 
+				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon::before { 
 					content:"' . $this->p->cf['menu']['before'] . '";
 					font-size:28px;
 					font-style:normal;
 					top:1px;
 				}
-				#adminmenu li.menu-top.toplevel_page_'.$menu.' div.wp-menu-image::before,
-				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.' div.wp-menu-image::before,
-				#adminmenu li.menu-top.toplevel_page_'.$menu.':hover div.wp-menu-image::before,
-				#adminmenu li.menu-top.toplevel_page_'.$sitemenu.':hover div.wp-menu-image::before {
-					'.$highlight_color_css.'
+				#adminmenu li.menu-top.toplevel_page_' . $menu . ' div.wp-menu-image::before,
+				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ' div.wp-menu-image::before,
+				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
+				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ':hover div.wp-menu-image::before {
+					' . $highlight_color_css . '
 					content:"' . $this->p->cf['menu']['before'] . '";
 					font-size:30px;
 					font-style:normal;
@@ -274,102 +274,102 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					line-height:inherit;
 					vertical-align:middle;
 				}
-				#adminmenu #toplevel_page_'.$menu.' ul > li > a,
-				#adminmenu #toplevel_page_'.$sitemenu.' ul > li > a {
+				#adminmenu #toplevel_page_' . $menu . ' ul > li > a,
+				#adminmenu #toplevel_page_' . $sitemenu . ' ul > li > a {
 					padding:6px 8px;	/* default is 6px 12px */
 				}
-				#adminmenu ul.wp-submenu div.'.$this->p->lca.'-menu-item {
+				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item {
 					display:table-cell;
 				}
-				#adminmenu ul.wp-submenu div.'.$this->p->lca.'-menu-item.dashicons-before {
+				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.dashicons-before {
 					max-width:1.2em;
 					padding-right:6px;
 				}
-				#adminmenu ul.wp-submenu div.'.$this->p->lca.'-menu-item.dashicons-before::before {
+				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.dashicons-before::before {
 					font-size:1.2em;
 					text-align:left;
 					opacity:0.5;
 					filter:alpha(opacity=50);	/* ie8 and earlier */
 				}
-				#adminmenu ul.wp-submenu div.'.$this->p->lca.'-menu-item.last-top-submenu-page.with-add-ons {
+				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.last-top-submenu-page.with-add-ons {
 					padding-bottom:12px;
 					border-bottom:1px solid;
 				}
-				#profile-page.wrap #your-profile #'.$this->p->lca.'_'.$metabox_id.'.postbox h3:first-of-type {
+				#profile-page.wrap #your-profile #' . $this->p->lca . '_' . $metabox_id . '.postbox h3:first-of-type {
 					margin:0;
 				}
-				#'.$this->p->lca.'_'.$metabox_id.'.postbox { 
+				#' . $this->p->lca . '_' . $metabox_id . '.postbox { 
 					min-width:760px;
 				}
-				#'.$this->p->lca.'_'.$metabox_id.' .inside {
+				#' . $this->p->lca . '_' . $metabox_id . ' .inside {
 					padding:0;
 					margin:0;
 				}
-				.column-'.$this->p->lca.'_og_img { 
-					max-width:'.$sort_cols['og_img']['width'].' !important;
+				.column-' . $this->p->lca . '_og_img { 
+					max-width:' . $sort_cols['og_img']['width'] . ' !important;
 				}
-				.column-'.$this->p->lca.'_og_img .preview_img { 
-					max-width:'.$sort_cols['og_img']['width'].' !important;
-					height:'.$sort_cols['og_img']['height'].';
-					min-height:'.$sort_cols['og_img']['height'].';
-					background-size:'.$sort_cols['og_img']['width'].' auto;
+				.column-' . $this->p->lca . '_og_img .preview_img { 
+					max-width:' . $sort_cols['og_img']['width'] . ' !important;
+					height:' . $sort_cols['og_img']['height'] . ';
+					min-height:' . $sort_cols['og_img']['height'] . ';
+					background-size:' . $sort_cols['og_img']['width'] . ' auto;
 					background-repeat:no-repeat;
 					background-position:center center;
 					overflow:hidden;
 					margin:0;
 					padding:0;
 				}
-				.column-'.$this->p->lca.'_schema_type {
-					max-width:'.$sort_cols['schema_type']['width'].' !important;
+				.column-' . $this->p->lca . '_schema_type {
+					max-width:' . $sort_cols['schema_type']['width'] . ' !important;
 					white-space:nowrap;
 					overflow:hidden;
 				}
-				.column-'.$this->p->lca.'_og_desc {
+				.column-' . $this->p->lca . '_og_desc {
 					overflow:hidden;
 				}
-				td.column-'.$this->p->lca.'_og_desc,
-				td.column-'.$this->p->lca.'_schema_type {
+				td.column-' . $this->p->lca . '_og_desc,
+				td.column-' . $this->p->lca . '_schema_type {
 					direction:ltr;
 					font-family:Helvetica;
 					text-align:left;
 					word-wrap:break-word;
 				}
 				@media ( max-width:1295px ) {
-					th.column-'.$this->p->lca.'_og_desc,
-					td.column-'.$this->p->lca.'_og_desc {
+					th.column-' . $this->p->lca . '_og_desc,
+					td.column-' . $this->p->lca . '_og_desc {
 						display:none;
 					}
 				}
-				.'.$this->p->lca.'-rate-heart {
+				.' . $this->p->lca . '-rate-heart {
 					color:red;
 					font-size:1.5em;
 					vertical-align:top;
 				}
-				.'.$this->p->lca.'-rate-heart::before {
+				.' . $this->p->lca . '-rate-heart::before {
 					content:"\2665";	/* heart */
 				}
-				#post-'.$this->p->lca.'-robots {
+				#post-' . $this->p->lca . '-robots {
 					display:table;
 				}
-				#post-'.$this->p->lca.'-robots-label {
+				#post-' . $this->p->lca . '-robots-label {
 					display:table-cell;
 					padding-left:3px;
 					vertical-align:top;
 				}
-				#post-'.$this->p->lca.'-robots-display {
+				#post-' . $this->p->lca . '-robots-display {
 					display:table-cell;
 					padding-left:3px;
 					vertical-align:top;
 				}
-				#post-'.$this->p->lca.'-robots-content {
+				#post-' . $this->p->lca . '-robots-content {
 					display:block;
 					word-wrap:normal;
 					font-weight:bold;
 				}
-				#post-'.$this->p->lca.'-robots-content a {
+				#post-' . $this->p->lca . '-robots-content a {
 					font-weight:normal;
 				}
-				#post-'.$this->p->lca.'-robots-select {
+				#post-' . $this->p->lca . '-robots-select {
 					display:none;
 				}
 			';
@@ -377,9 +377,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			foreach ( $sort_cols as $col_name => $col_info ) {
 				if ( isset( $col_info['width'] ) ) {
 					$custom_style_css .= '
-						.column-'.$this->p->lca.'_'.$col_name.' {
-							width:'.$col_info['width'].' !important;
-							min-width:'.$col_info['width'].' !important;
+						.column-' . $this->p->lca . '_' . $col_name . ' {
+							width:' . $col_info['width'] . ' !important;
+							min-width:' . $col_info['width'] . ' !important;
 						}
 					';
 				}

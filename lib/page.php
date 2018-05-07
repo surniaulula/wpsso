@@ -767,10 +767,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$lca = $this->p->lca;
 			$sharing_url = $this->p->util->get_sharing_url( $mod );
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
-			$filter_content = apply_filters( $lca.'_filter_content', $filter_content, $mod );
+			$filter_content = apply_filters( $lca . '_filter_content', $filter_content, $mod );
 
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
-			$cache_md5_pre = $lca.'_c_';
+
+			$cache_md5_pre = $lca . '_c_';
+
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_exp_filter = $this->p->cf['wp']['wp_cache'][$cache_md5_pre]['filter'];
 				$cache_opt_key = $this->p->cf['wp']['wp_cache'][$cache_md5_pre]['opt_key'];
@@ -781,19 +783,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Retrieve the Content *
 			 ************************/
 
-			$cache_salt  = __METHOD__.'('.SucomUtil::get_mod_salt( $mod, $sharing_url ).')';
-			$cache_id    = $cache_md5_pre.md5( $cache_salt );
-			$cache_index = 'locale:'.SucomUtil::get_locale( $mod ).'_filter:'.( $filter_content ? 'true' : 'false' );
+			$cache_salt  = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
+			$cache_id    = $cache_md5_pre . md5( $cache_salt );
+			$cache_index = 'locale:' . SucomUtil::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );
 			$cache_index = SucomUtil::get_query_salt( $cache_index );	// add $wp_query args
 			$cache_array = array();
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'sharing url = '.$sharing_url );
-				$this->p->debug->log( 'filter content = '.( $filter_content ? 'true' : 'false' ) );
-				$this->p->debug->log( 'wp cache expire = '.$cache_exp_secs );
-				$this->p->debug->log( 'wp cache salt = '.$cache_salt );
-				$this->p->debug->log( 'wp cache id = '.$cache_id );
-				$this->p->debug->log( 'wp cache index = '.$cache_index );
+				$this->p->debug->log( 'sharing url = ' . $sharing_url );
+				$this->p->debug->log( 'filter content = ' . ( $filter_content ? 'true' : 'false' ) );
+				$this->p->debug->log( 'wp cache expire = ' . $cache_exp_secs );
+				$this->p->debug->log( 'wp cache salt = ' . $cache_salt );
+				$this->p->debug->log( 'wp cache id = ' . $cache_id );
+				$this->p->debug->log( 'wp cache index = ' . $cache_index );
 			}
 
 			if ( $cache_exp_secs > 0 ) {
@@ -828,7 +830,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$cache_array[$cache_index] = false;		// initialize the cache element
 			$content_text =& $cache_array[$cache_index];	// reference the cache element
-			$content_text = apply_filters( $lca.'_content_seed', '', $mod, $r_cache, $md_idx );
+			$content_text = apply_filters( $lca . '_content_seed', '', $mod, $r_cache, $md_idx );
 
 			if ( $content_text === false ) {
 
@@ -839,7 +841,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} elseif ( ! empty( $content_text ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'content seed is "'.$content_text.'"' );
+					$this->p->debug->log( 'content seed is "' . $content_text . '"' );
 				}
 
 			} elseif ( $mod['is_post'] ) {
@@ -848,7 +850,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( empty( $content_text ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: no post_content for post id '.$mod['id'] );
+						$this->p->debug->log( 'exiting early: no post_content for post id ' . $mod['id'] );
 					}
 					return false;
 				}

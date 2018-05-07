@@ -2345,33 +2345,35 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// stop here
 			}
 
-			$user_id = get_current_user_id();
-			$cache_md5_pre = $this->p->lca . '_';
-			$cache_exp_secs = DAY_IN_SECONDS;	// only show every 24 hours for each user id
-			$cache_salt = __METHOD__ . '(user_id:' . $user_id . ')';
-			$cache_id = $cache_md5_pre.md5( $cache_salt );
+			$user_id        = get_current_user_id();
+			$cache_md5_pre  = $this->p->lca . '_';
+			$cache_exp_secs = DAY_IN_SECONDS;	// Only show every 24 hours for each user id.
+			$cache_salt     = __METHOD__ . '(user_id:' . $user_id . ')';
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
-			if ( get_transient( $cache_id ) ) {	// is transient value true (notice already shown)?
+			if ( get_transient( $cache_id ) ) {	// Is transient value true (notice already shown)?
 				return;	// stop here
 			}
 
+			$time_ago  = time() - WEEK_IN_SECONDS;
 			$all_times = $this->p->util->get_all_times();
-			$some_time_ago = time() - WEEK_IN_SECONDS;
+
 			$this->get_form_object( $this->p->lca );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				$msg_id_review = 'timed-notice-' . $ext . '-plugin-review';
+				$dismiss_key = 'timed-notice-' . $ext . '-plugin-review';
+				$dismiss_time = true;
 
-				if ( empty( $info['version'] ) ) {	// not installed
+				if ( empty( $info['version'] ) ) {	// Not installed.
 					continue;
-				} elseif ( empty( $info['url']['review'] ) ) {	// must be hosted on wordpress.org
+				} elseif ( empty( $info['url']['review'] ) ) {	// Must be hosted on wordpress.org.
 					continue;
-				} elseif ( $this->p->notice->is_dismissed( $msg_id_review, $user_id ) ) {
+				} elseif ( $this->p->notice->is_dismissed( $dismiss_key, $user_id ) ) {
 					continue;
-				} elseif ( ! isset( $all_times[$ext . '_activate_time'] ) ) {	// never activated
+				} elseif ( ! isset( $all_times[$ext . '_activate_time'] ) ) {	// Never activated.
 					continue;
-				} elseif ( $all_times[$ext . '_activate_time'] > $some_time_ago ) {	// activated less than a week ago
+				} elseif ( $all_times[$ext . '_activate_time'] > $time_ago ) {	// Activated less than time ago.
 					continue;
 				}
 
@@ -2423,7 +2425,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					
 				$notice_msg .= '</div>' . "\n";
 
-				$this->p->notice->log( 'inf', $notice_msg, $user_id, $msg_id_review, true, array( 'label' => false ) );
+				$this->p->notice->log( 'inf', $notice_msg, $user_id, $dismiss_key, $dismiss_time, array( 'label' => false ) );
 
 				break;	// show only one notice at a time
 			}
@@ -2865,13 +2867,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->cf['plugin'][$ext]['url'][$file_key] : false;
 
 			static $cache_exp_secs = null;
+
 			$cache_md5_pre = $this->p->lca . '_';
+
 			if ( ! isset( $cache_exp_secs ) ) {
 				$cache_exp_filter = $this->p->lca . '_cache_expire_' . $file_key;	// 'wpsso_cache_expire_readme_txt'
 				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 			}
+
 			$cache_salt = __METHOD__ . '(ext:' . $ext . ')';
-			$cache_id = $cache_md5_pre.md5( $cache_salt );
+			$cache_id = $cache_md5_pre . md5( $cache_salt );
 
 			$readme_info = false;
 			$readme_content = false;
@@ -3030,19 +3035,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $only_url ? $link_url : $link_html;
 		}
 
+		/**
+		 * Returns a 128x128px image.
+		 */
 		public function get_ext_img_icon( $ext ) {
-			// default transparent 1px image
+
+			/**
+			 * Default is a transparent 1px GIF.
+			 */
 			$img_src = 'src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="';
+
 			if ( ! empty( $this->p->cf['plugin'][$ext]['img']['icons'] ) ) {
+
 				$icons = $this->p->cf['plugin'][$ext]['img']['icons'];
+
 				if ( ! empty( $icons['low'] ) ) {
 					$img_src = 'src="' . $icons['low'] . '"';
 				}
+
 				if ( ! empty( $icons['high'] ) ) {
 					$img_src .= ' srcset="' . $icons['high'] . ' 256w"';
 				}
 			}
-			return '<img ' . $img_src . ' width="128" height="128" style="width:128px; height:128px"/>';
+
+			return '<img ' . $img_src . ' width="128" height="128" style="width:128px; height:128px;"/>';
 		}
 	}
 }
