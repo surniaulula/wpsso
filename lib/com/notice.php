@@ -176,9 +176,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					$msg_add_p = substr( $msg_text, -4 ) === '</p>' ? true : false;
 
-					$msg_text .= $msg_add_p ? '<p>' : ' ';
+					$msg_text .= $msg_add_p || $msg_close_div ? '<p>' : ' ';
 					$msg_text .= sprintf( $msg_dismiss_transl, $payload['dismiss_diff'] );
-					$msg_text .= $msg_add_p ? '</p>' : '';
+					$msg_text .= $msg_add_p || $msg_close_div ? '</p>' : '';
 					$msg_text .= $msg_close_div;
 				}
 			}
@@ -1106,9 +1106,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					text-decoration:underline;
 				}
 				#wpadminbar .' . $this->lca . '-notice .button-primary,
-				#wpadminbar .' . $this->lca . '-notice .button-secondary,
-				.' . $this->lca . '-notice .button-primary,
-				.' . $this->lca . '-notice .button-secondary {
+				#wpadminbar .' . $this->lca . '-notice .button-secondary {
 					padding:5px 10px;
 				}
 				#wpadminbar .'.$this->p->lca.'-notice .notice-label,
@@ -1257,7 +1255,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					padding-left:0.8em;
 					list-style:inherit;
 				}
+				#wpadminbar .' . $this->lca . '-notice .notice-message b,
 				#wpadminbar .' . $this->lca . '-notice .notice-message strong,
+				.' . $this->lca . '-notice .notice-message b,
 				.' . $this->lca . '-notice .notice-message strong {
 					font-weight:bold;
 				}

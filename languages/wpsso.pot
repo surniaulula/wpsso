@@ -663,62 +663,65 @@ msgstr ""
 msgid "Google+"
 msgstr ""
 
-#: lib/admin.php:2389
+#: lib/admin.php:2396
 msgid "Yes! Contribute and rate %s 5 stars"
 msgstr ""
 
-#: lib/admin.php:2391
+#: lib/admin.php:2398
 msgid "Thank you for rating the %s plugin! You're awesome!"
 msgstr ""
 
-#: lib/admin.php:2395
+#: lib/admin.php:2402
 msgid "No thanks - I've already rated %s"
 msgstr ""
 
-#: lib/admin.php:2397
+#: lib/admin.php:2404
 msgid "Thank you for your earlier rating of %s! You're awesome!"
 msgstr ""
 
-#: lib/admin.php:2407
+#: lib/admin.php:2414
 msgid "Fantastic!"
 msgstr ""
 
-#: lib/admin.php:2408
+#: lib/admin.php:2415
 msgid "You've been using <b>%s</b> for a week or more."
 msgstr ""
 
-#: lib/admin.php:2409
+#: lib/admin.php:2416
 msgid "The %s plugin description page on WordPress.org"
 msgstr ""
 
-#: lib/admin.php:2412
+#: lib/admin.php:2419
 msgid "That's awesome!"
 msgstr ""
 
-#: lib/admin.php:2416
-msgid ""
-"Could you do me a small favor? Would you rate the %s plugin on WordPress.org?"
+#: lib/admin.php:2423
+msgid "Could you do me a small favor?"
 msgstr ""
 
-#: lib/admin.php:2420
+#: lib/admin.php:2425
+msgid "Would you rate the %s plugin on WordPress.org?"
+msgstr ""
+
+#: lib/admin.php:2429
 msgid ""
 "Your rating is a great way to encourage us &mdash; and helps other users "
 "find good plugins as well!"
 msgstr ""
 
-#: lib/admin.php:2539
+#: lib/admin.php:2548
 msgid ""
 "Google has been selected as your preferred URL shortening service, but the "
 "%s option is not enabled."
 msgstr ""
 
-#: lib/admin.php:2541 lib/gpl/admin/advanced.php:391
+#: lib/admin.php:2550 lib/gpl/admin/advanced.php:391
 #: lib/pro/admin/advanced.php:383 lib/pro/util/shorten.php:268
 msgctxt "option label"
 msgid "URL Shortener API is Enabled"
 msgstr ""
 
-#: lib/admin.php:2555
+#: lib/admin.php:2564
 msgid ""
 "There is <a href=\"%1$s\">%2$d pending update for the %3$s plugin and/or its "
 "add-on(s)</a>."
@@ -728,199 +731,199 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin.php:2555
+#: lib/admin.php:2564
 msgid "Please install this update at your earliest convenience."
 msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin.php:2605
+#: lib/admin.php:2614
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:2618
+#: lib/admin.php:2627
 msgid "No %1$s HTML tag found in the %2$s template."
 msgstr ""
 
-#: lib/admin.php:2624
+#: lib/admin.php:2633
 msgid "Error copying %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:2632
+#: lib/admin.php:2641
 msgid "Failed to open template file %s for writing."
 msgstr ""
 
-#: lib/admin.php:2637
+#: lib/admin.php:2646
 msgid ""
 "The %1$s template has been successfully modified and saved. A backup copy of "
 "the original template is available as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:2640
+#: lib/admin.php:2649
 msgid ""
 "Failed to write the %1$s template. You may need to restore the original "
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:2659 lib/submenu/essential.php:118
+#: lib/admin.php:2668 lib/submenu/essential.php:118
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2663 lib/submenu/essential.php:122
+#: lib/admin.php:2672 lib/submenu/essential.php:122
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:2668 lib/submenu/general.php:182
+#: lib/admin.php:2677 lib/submenu/general.php:182
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:2671 lib/submenu/general.php:185
+#: lib/admin.php:2680 lib/submenu/general.php:185
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/admin.php:2674
+#: lib/admin.php:2683
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
 
-#: lib/admin.php:2679 lib/submenu/general.php:143 lib/submenu/general.php:337
+#: lib/admin.php:2688 lib/submenu/general.php:143 lib/submenu/general.php:337
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
 
-#: lib/admin.php:2680 lib/submenu/general.php:257 lib/submenu/general.php:339
+#: lib/admin.php:2689 lib/submenu/general.php:257 lib/submenu/general.php:339
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:2683
+#: lib/admin.php:2692
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2697
+#: lib/admin.php:2706
 msgctxt "option label"
 msgid "Item Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:2698
+#: lib/admin.php:2707
 msgctxt "option label"
 msgid "Item Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:2699
+#: lib/admin.php:2708
 msgctxt "option label"
 msgid "Item Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:2700
+#: lib/admin.php:2709
 msgctxt "option label"
 msgid "Item Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:2701
+#: lib/admin.php:2710
 msgctxt "option label"
 msgid "Item Type for Other Archive Page"
 msgstr ""
 
-#: lib/admin.php:2724 lib/admin.php:2729 lib/admin.php:2754
+#: lib/admin.php:2733 lib/admin.php:2738 lib/admin.php:2763
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
-#: lib/admin.php:2730
+#: lib/admin.php:2739
 msgctxt "option comment"
 msgid "(Post Type) Archive Page"
 msgstr ""
 
-#: lib/admin.php:2734
+#: lib/admin.php:2743
 msgctxt "option label"
 msgid "Item Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:2759
+#: lib/admin.php:2768
 msgctxt "option label"
 msgid "Item Type by Term Taxonomy"
 msgstr ""
 
-#: lib/admin.php:2774
+#: lib/admin.php:2783
 msgctxt "option label"
 msgid "Knowledge Graph for Home Page"
 msgstr ""
 
-#: lib/admin.php:2778
+#: lib/admin.php:2787
 msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr ""
 
-#: lib/admin.php:2781
+#: lib/admin.php:2790
 msgid "Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr ""
 
-#: lib/admin.php:2784
+#: lib/admin.php:2793
 msgid "Include <a href=\"%s\">Person Social Profile</a> for the Site Owner"
-msgstr ""
-
-#: lib/admin.php:2790
-msgctxt "option label"
-msgid "User for Person Social Profile"
 msgstr ""
 
 #: lib/admin.php:2799
 msgctxt "option label"
-msgid "Preserve Settings on Uninstall"
+msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:2804
+#: lib/admin.php:2808
 msgctxt "option label"
-msgid "Add Hidden Debug Messages"
+msgid "Preserve Settings on Uninstall"
 msgstr ""
 
 #: lib/admin.php:2813
 msgctxt "option label"
-msgid "Hide All Pro Version Options"
+msgid "Add Hidden Debug Messages"
 msgstr ""
 
 #: lib/admin.php:2822
 msgctxt "option label"
+msgid "Hide All Pro Version Options"
+msgstr ""
+
+#: lib/admin.php:2831
+msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:2829
+#: lib/admin.php:2838
 msgctxt "option label"
 msgid "Enable Plugin Shortcode(s)"
 msgstr ""
 
-#: lib/admin.php:2837
+#: lib/admin.php:2846
 msgctxt "option label"
 msgid "Enable Plugin Widget(s)"
 msgstr ""
 
-#: lib/admin.php:2845
+#: lib/admin.php:2854
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2988
+#: lib/admin.php:2997
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:3008
+#: lib/admin.php:3017
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name
-#: lib/admin.php:3028
+#: lib/admin.php:3037
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL
-#: lib/admin.php:3035
+#: lib/admin.php:3044
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "

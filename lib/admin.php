@@ -115,8 +115,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Don't hook the 'plugins_api_result' filter if the update manager is active as it
 				 * provides more complete plugin data than what's available from the readme.txt.
 				 */
-				if ( empty( $this->p->avail['p_ext']['um'] ) ) {	// since um v1.6.0
-					add_filter( 'plugins_api_result', array( &$this, 'external_plugin_data' ), 1000, 3 );	// since wp v2.7
+				if ( empty( $this->p->avail['p_ext']['um'] ) ) {	// Since um v1.6.0.
+					add_filter( 'plugins_api_result', array( &$this, 'external_plugin_data' ), 1000, 3 );	// Since wp v2.7.
 				}
 
 				add_filter( 'http_request_args', array( &$this, 'add_expect_header' ), 1000, 2 );
@@ -2351,12 +2351,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cache_salt     = __METHOD__ . '(user_id:' . $user_id . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
-			if ( get_transient( $cache_id ) ) {	// Is transient value true (notice already shown)?
-				return;	// stop here
+			/**
+			 * If we're running in a dev environment, be a bit more aggressive with the notices. ;-)
+			 */
+			if ( SucomUtil::get_const( 'WPSSO_DEV' ) ) {
+				$time_ago_secs  = time() - HOUR_IN_SECONDS;
+			} else {
+				if ( get_transient( $cache_id ) ) {	// Is transient value true (notice already shown)?
+					return;	// stop here
+				}
+				$time_ago_secs = time() - WEEK_IN_SECONDS;
 			}
 
-			$time_ago  = time() - WEEK_IN_SECONDS;
-			$all_times = $this->p->util->get_all_times();
+			$all_ext_times = $this->p->util->get_all_times();
 
 			$this->get_form_object( $this->p->lca );
 
@@ -2371,9 +2378,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;
 				} elseif ( $this->p->notice->is_dismissed( $dismiss_key, $user_id ) ) {
 					continue;
-				} elseif ( ! isset( $all_times[$ext . '_activate_time'] ) ) {	// Never activated.
+				} elseif ( ! isset( $all_ext_times[$ext . '_activate_time'] ) ) {	// Never activated.
 					continue;
-				} elseif ( $all_times[$ext . '_activate_time'] > $time_ago ) {	// Activated less than time ago.
+				} elseif ( $all_ext_times[$ext . '_activate_time'] > $time_ago_secs ) {	// Activated less than time ago.
 					continue;
 				}
 
@@ -2385,13 +2392,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$support_url = '';
 				}
 
-				$rate_plugin_button = '<div style="display:inline-block;vertical-align:top;margin:10px 10px 10px 0;">' .
+				$rate_plugin_button = '<div style="display:inline-block;vertical-align:top;margin:1em 0.8em 0 0;">' .
 					$this->form->get_button( sprintf( __( 'Yes! Contribute and rate %s 5 stars', 'wpsso' ), $info['short'] ),
 						'button-primary dismiss-on-click', '', $info['url']['review'], true, false,
 							array( 'dismiss-msg' => sprintf( __( 'Thank you for rating the %s plugin! You\'re awesome!',
 								'wpsso' ), $info['short'] ) ) ) . '</div>';
 
-				$already_rated_button = '<div style="display:inline-block;vertical-align:top;margin:10px 10px 10px 0;">' .
+				$already_rated_button = '<div style="display:inline-block;vertical-align:top;margin:1em 0.8em 0 0;">' .
 					$this->form->get_button( sprintf( __( 'No thanks - I\'ve already rated %s', 'wpsso' ), $info['short'] ),
 						'button-secondary dismiss-on-click', '', '', false, false, 
 							array( 'dismiss-msg' => sprintf( __( 'Thank you for your earlier rating of %s! You\'re awesome!',
@@ -2402,7 +2409,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
 
-				$notice_msg .= '<p>';
+				$notice_msg .= '<p class="top">';
 				
 				$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ' .
 					sprintf( __( 'You\'ve been using <b>%s</b> for a week or more.', 'wpsso' ),
@@ -2413,7 +2420,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= sprintf( __( 'Could you do me a small favor? Would you rate the %s plugin on WordPress.org?', 'wpsso' ), $info['short'] ) . ' ';
+				$notice_msg .= '<b>' . __( 'Could you do me a small favor?', 'wpsso' ) . '</b> ';
+
+				$notice_msg .= sprintf( __( 'Would you rate the %s plugin on WordPress.org?', 'wpsso' ), $info['short'] );
 
 				$notice_msg .= '</p><p>';
 
@@ -2421,13 +2430,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$notice_msg .= '</p>';
 				
-				$notice_msg .= '<p>' . $rate_plugin_button . $already_rated_button . '</p>';
+				$notice_msg .= $rate_plugin_button . $already_rated_button;
 					
-				$notice_msg .= '</div>' . "\n";
+				$notice_msg .= '</div>';
 
 				$this->p->notice->log( 'inf', $notice_msg, $user_id, $dismiss_key, $dismiss_time, array( 'label' => false ) );
 
-				break;	// show only one notice at a time
+				break;	// Show only one notice at a time.
 			}
 
 			set_transient( $cache_id, true, $cache_exp_secs );
