@@ -1080,18 +1080,22 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					color:#46b450;
 				}
 				#wpadminbar .' . $this->lca . '-notice,
+				#wpadminbar .' . $this->lca . '-notice.error,
 				#wpadminbar .' . $this->lca . '-notice.updated,
 				.' . $this->lca . '-notice,
-				.' . $this->lca . '-notice.updated {
+				.' . $this->lca . '-notice.error,	/* sets padding to 1px 12px */
+				.' . $this->lca . '-notice.updated {	/* sets padding to 1px 12px */
 					clear:both;
 					padding:0;
 					box-shadow:none;
 				}
 				#wpadminbar .' . $this->lca . '-notice,
+				#wpadminbar .' . $this->lca . '-notice.error,
 				#wpadminbar .' . $this->lca . '-notice.updated {
 					background:inherit;
 				}
 				#wpadminbar .' . $this->lca . '-notice > div,
+				#wpadminbar .' . $this->lca . '-notice.error > div,
 				#wpadminbar .' . $this->lca . '-notice.updated > div {
 					min-height:50px;
 				}
