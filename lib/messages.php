@@ -303,15 +303,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $idx ) {
 
+						case 'tooltip-post-og_type':
+
+							$text = __( 'A custom Facebook / Open Graph type for this content.', 'wpsso' ).' ';
+							
+							$text .= __( 'Please note that for sharing purposes, the Open Graph Type must be "article", "place", "product", or "website".', 'wpsso' ).' ';
+
+						 	break;
+
 						case 'tooltip-post-og_art_section':
 
-							$text = __( 'A custom topic, different from the default Article Topic selected in the General Settings.', 'wpsso' ).' '.sprintf( __( 'The Facebook / Open Graph %1$s meta tag must be an "article" to enable this option.', 'wpsso' ), '<code>og:type</code>' ).' '.sprintf( __( 'This value will be used in the %1$s Facebook / Open Graph and Pinterest Rich Pin meta tags. Select "[None]" if you prefer to exclude the %1$s meta tag.', 'wpsso' ), '<code>article:section</code>' );
+							$text = __( 'A custom topic for this article, which may be different from the default Article Topic selected in the General Settings page.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %1$s meta tag.', 'wpsso' ), '<code>article:section</code>' );
 
 						 	break;
 
 						case 'tooltip-post-og_desc':
 
-							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %1$s meta tag and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ).' '.__( 'The default description value is based on the excerpt (if one is available) or content.', 'wpsso' ).' '.__( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
+							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %1$s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ).' ';
+							
+							$text .= __( 'The default description value is based on the excerpt (if one is available) or content.', 'wpsso' ).' ';
+							
+							$text .= __( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
 
 						 	break;
 
