@@ -8,7 +8,7 @@
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.5</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>facebook, pinterest, twitter cards, social sharing, meta tags, open graph, schema, share, seo, local business, woocommerce, product, knowledge graph</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>facebook, pinterest, twitter cards, social sharing, open graph, meta tags, schema, seo, woocommerce, local business, product, knowledge graph</td></tr>
 </table>
 
 <h2>Description</h2>
