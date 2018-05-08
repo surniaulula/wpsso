@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.2.0',		// Plugin version.
+					'version' => '4.3.0-dev.1',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -1617,8 +1617,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'music.playlist'      => 'http://ogp.me/ns/music#',
 					'music.radio_station' => 'http://ogp.me/ns/music#',
 					'music.song'          => 'http://ogp.me/ns/music#',
-					'place'               => 'http://ogp.me/ns/place#',	// for Facebook and Pinterest
-					'product'             => 'http://ogp.me/ns/product#',	// for Facebook and Pinterest
+					'place'               => 'http://ogp.me/ns/place#',	// Supported by facebook and pinterest.
+					'product'             => 'http://ogp.me/ns/product#',	// Supported by facebook and pinterest.
 					'profile'             => 'http://ogp.me/ns/profile#',
 					'video.episode'       => 'http://ogp.me/ns/video#',
 					'video.movie'         => 'http://ogp.me/ns/video#',

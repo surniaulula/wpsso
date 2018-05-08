@@ -164,8 +164,9 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'disabling wpseo_json_ld_output filter' );
+				$this->p->debug->log( 'disabling wpseo_json_ld_output filters' );
 			}
+
 			add_filter( 'wpseo_json_ld_output', '__return_empty_array', 9000 );
 		}
 

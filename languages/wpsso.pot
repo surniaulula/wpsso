@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.2.0\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.3.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2366,57 +2366,57 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:66 lib/gpl/admin/post.php:58
-#: lib/pro/admin/meta.php:77 lib/pro/admin/post.php:69
+#: lib/gpl/admin/meta.php:66 lib/gpl/admin/post.php:59
+#: lib/pro/admin/meta.php:77 lib/pro/admin/post.php:70
 msgid ""
 "Activate the %s add-on for additional Schema markup features and options."
 msgstr ""
 
-#: lib/gpl/admin/meta.php:76 lib/gpl/admin/post.php:75
-#: lib/pro/admin/meta.php:85 lib/pro/admin/post.php:84
+#: lib/gpl/admin/meta.php:76 lib/gpl/admin/post.php:81
+#: lib/pro/admin/meta.php:85 lib/pro/admin/post.php:90
 msgctxt "option label"
 msgid "Default Title"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:81 lib/gpl/admin/post.php:81
-#: lib/pro/admin/meta.php:91 lib/pro/admin/post.php:91
+#: lib/gpl/admin/meta.php:81 lib/gpl/admin/post.php:87
+#: lib/pro/admin/meta.php:91 lib/pro/admin/post.php:97
 msgctxt "option label"
 msgid "Default Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:87 lib/gpl/admin/post.php:88
-#: lib/pro/admin/meta.php:98 lib/pro/admin/post.php:99
+#: lib/gpl/admin/meta.php:87 lib/gpl/admin/post.php:94
+#: lib/pro/admin/meta.php:98 lib/pro/admin/post.php:105
 msgctxt "option label"
 msgid "Google Search / SEO Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:93 lib/gpl/admin/post.php:95
-#: lib/pro/admin/meta.php:108 lib/pro/admin/post.php:110
+#: lib/gpl/admin/meta.php:93 lib/gpl/admin/post.php:101
+#: lib/pro/admin/meta.php:108 lib/pro/admin/post.php:116
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:99 lib/gpl/admin/post.php:102 lib/meta.php:230
-#: lib/meta.php:251 lib/pro/admin/meta.php:114 lib/pro/admin/post.php:117
+#: lib/gpl/admin/meta.php:99 lib/gpl/admin/post.php:108 lib/meta.php:230
+#: lib/meta.php:251 lib/pro/admin/meta.php:114 lib/pro/admin/post.php:123
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:106 lib/gpl/admin/post.php:110 lib/meta.php:233
-#: lib/meta.php:254 lib/pro/admin/meta.php:122 lib/pro/admin/post.php:126
+#: lib/gpl/admin/meta.php:106 lib/gpl/admin/post.php:116 lib/meta.php:233
+#: lib/meta.php:254 lib/pro/admin/meta.php:122 lib/pro/admin/post.php:132
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:112 lib/gpl/admin/post.php:167
-#: lib/pro/admin/meta.php:133 lib/pro/admin/post.php:188
+#: lib/gpl/admin/meta.php:112 lib/gpl/admin/post.php:173
+#: lib/pro/admin/meta.php:133 lib/pro/admin/post.php:194
 #: lib/submenu/general.php:264
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:115 lib/gpl/admin/post.php:171
-#: lib/pro/admin/meta.php:136 lib/pro/admin/post.php:192
+#: lib/gpl/admin/meta.php:115 lib/gpl/admin/post.php:177
+#: lib/pro/admin/meta.php:136 lib/pro/admin/post.php:198
 msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
@@ -2502,46 +2502,51 @@ msgstr ""
 
 #: lib/gpl/admin/post.php:70 lib/pro/admin/post.php:78
 msgctxt "option label"
+msgid "Open Graph Type"
+msgstr ""
+
+#: lib/gpl/admin/post.php:76 lib/pro/admin/post.php:84
+msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:120 lib/messages.php:726 lib/pro/admin/post.php:141
+#: lib/gpl/admin/post.php:126 lib/messages.php:726 lib/pro/admin/post.php:147
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gpl/admin/post.php:127 lib/messages.php:737 lib/pro/admin/post.php:148
+#: lib/gpl/admin/post.php:133 lib/messages.php:737 lib/pro/admin/post.php:154
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/gpl/admin/post.php:133 lib/messages.php:748 lib/pro/admin/post.php:154
+#: lib/gpl/admin/post.php:139 lib/messages.php:748 lib/pro/admin/post.php:160
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gpl/admin/post.php:139 lib/messages.php:759 lib/pro/admin/post.php:160
+#: lib/gpl/admin/post.php:145 lib/messages.php:759 lib/pro/admin/post.php:166
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gpl/admin/post.php:145 lib/messages.php:780 lib/pro/admin/post.php:166
+#: lib/gpl/admin/post.php:151 lib/messages.php:780 lib/pro/admin/post.php:172
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gpl/admin/post.php:152 lib/messages.php:790 lib/pro/admin/post.php:173
+#: lib/gpl/admin/post.php:158 lib/messages.php:790 lib/pro/admin/post.php:179
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gpl/admin/post.php:159 lib/messages.php:801 lib/pro/admin/post.php:180
+#: lib/gpl/admin/post.php:165 lib/messages.php:801 lib/pro/admin/post.php:186
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:177 lib/meta.php:227 lib/post.php:1057
-#: lib/pro/admin/post.php:198
+#: lib/gpl/admin/post.php:183 lib/meta.php:227 lib/post.php:1057
+#: lib/pro/admin/post.php:204
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -2607,7 +2612,7 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:378 lib/media.php:530 lib/media.php:1216
+#: lib/media.php:378 lib/media.php:530 lib/media.php:1220
 #: lib/pro/util/checkimgdims.php:89
 msgid "Media Library"
 msgstr ""
@@ -2656,22 +2661,22 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1222 lib/pro/media/ngg.php:130
+#: lib/media.php:1226 lib/pro/media/ngg.php:130
 #: lib/pro/util/checkimgdims.php:91
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1232
+#: lib/media.php:1236
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1301
+#: lib/media.php:1305
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1329
+#: lib/media.php:1333
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -4670,27 +4675,27 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:677
+#: lib/meta.php:701
 msgid "%s key(s) cleared from the cache."
 msgstr ""
 
-#: lib/meta.php:685
+#: lib/meta.php:709
 msgid ""
 "WP_DEBUG constant is enabled &ndash; the list of possible cache object names "
 "is included:"
 msgstr ""
 
-#: lib/meta.php:692
+#: lib/meta.php:716
 msgctxt "clear cache status"
 msgid "cleared"
 msgstr ""
 
-#: lib/meta.php:696
+#: lib/meta.php:720
 msgctxt "clear cache status"
 msgid "not cached"
 msgstr ""
 
-#: lib/meta.php:745
+#: lib/meta.php:769
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -4699,114 +4704,114 @@ msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/options.php:296
+#: lib/options.php:299
 msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:389
+#: lib/options.php:392
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:391
+#: lib/options.php:394
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:393
+#: lib/options.php:396
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:395
+#: lib/options.php:398
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:408
+#: lib/options.php:411
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:492
+#: lib/options.php:495
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:545
+#: lib/options.php:548
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:593
+#: lib/options.php:596
 msgid ""
 "The value of option '%s' must be a URL - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:594
+#: lib/options.php:597
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:595
+#: lib/options.php:598
 msgid ""
 "The value of option '%s' must be numeric - resetting option to default value."
 msgstr ""
 
-#: lib/options.php:596
+#: lib/options.php:599
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting option to default value."
 msgstr ""
 
-#: lib/options.php:597
+#: lib/options.php:600
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:598
+#: lib/options.php:601
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:599
+#: lib/options.php:602
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:600
+#: lib/options.php:603
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:601
+#: lib/options.php:604
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:602
+#: lib/options.php:605
 msgid ""
 "The value of option '%s' must be HTML code - resetting option to default "
 "value."
 msgstr ""
 
-#: lib/options.php:603
+#: lib/options.php:606
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting option to "
 "default value."
 msgstr ""
 
-#: lib/options.php:914
+#: lib/options.php:917
 msgid "Plugin settings (%s) have been updated and saved."
 msgstr ""
 
@@ -4996,7 +5001,7 @@ msgid ""
 msgstr ""
 
 #: lib/pro/admin/meta.php:103 lib/pro/admin/meta.php:128
-#: lib/pro/admin/post.php:105 lib/pro/admin/post.php:133
+#: lib/pro/admin/post.php:111 lib/pro/admin/post.php:139
 msgid ""
 "This option is disabled (the \"%1$s\" head tag is disabled or an SEO plugin "
 "was detected)."
@@ -5197,27 +5202,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:1997
+#: lib/schema.php:2028
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2526
+#: lib/schema.php:2561
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2559
+#: lib/schema.php:2594
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2561
+#: lib/schema.php:2596
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2797
+#: lib/schema.php:2832
 msgid "adding schema for place"
 msgstr ""
 

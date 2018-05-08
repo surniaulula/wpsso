@@ -68,41 +68,58 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				) );
 			}
 
-			$lca = $this->p->cf['lca'];
-			$use_post = apply_filters( $lca.'_use_post', false );	// used by woocommerce with is_shop()
+			$use_post = apply_filters( $this->p->lca.'_use_post', false );	// Used by woocommerce with is_shop().
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
-			$mod = $this->p->util->get_page_mod( $use_post );
-			$og_type = $this->get_og_type( $mod );
 
-			$og_ns = array(
+			$mod     = $this->p->util->get_page_mod( $use_post );
+			$og_type = $this->get_mod_og_type( $mod );
+			$og_ns   = array(
 				'og' => 'http://ogp.me/ns#',
 				'fb' => 'http://ogp.me/ns/fb#',
 			);
 
-			// check if the og_type is known and add it's namespace value
-			// example: product, place, website, etc.
-			if ( ! empty( $this->p->cf['head']['og_type_ns'][$og_type] ) )
+			/**
+			 * Check that the og_type is known and add it's namespace value.
+			 *
+			 * Example: article, place, product, website, etc.
+			 */
+			if ( ! empty( $this->p->cf['head']['og_type_ns'][$og_type] ) ) {
 				$og_ns[$og_type] = $this->p->cf['head']['og_type_ns'][$og_type];
+			}
 
-			$og_ns = apply_filters( $lca.'_og_ns', $og_ns, $mod );
+			$og_ns = apply_filters( $this->p->lca.'_og_ns', $og_ns, $mod );
 
 			if ( SucomUtil::is_amp() ) {
-				// nothing to do				
-			} else {
-				$html_attr = ' '.$html_attr;	// prepare the string for testing
 
-				// find and extract an existing prefix attribute value (if any)
+				/**
+				 * Nothing to do.
+				 */
+
+			} else {
+
+				$html_attr = ' ' . $html_attr;	// Prepare the string for testing.
+
+				/**
+				 * Find and extract an existing prefix attribute value (if any).
+				 */
 				if ( strpos( $html_attr, ' prefix=' ) &&
 					preg_match( '/^(.*) prefix=["\']([^"\']*)["\'](.*)$/', $html_attr, $match ) ) {
-						$html_attr = $match[1].$match[3];	// remove the prefix
-						$prefix_value = ' '.$match[2];
-				} else $prefix_value = '';
+
+					$html_attr    = $match[1].$match[3];	// Remove the prefix.
+					$prefix_value = ' '.$match[2];
+
+				} else {
+					$prefix_value = '';
+				}
 	
-				foreach ( $og_ns as $name => $url )
-					if ( strpos( $prefix_value, ' '.$name.': '.$url ) === false )
+				foreach ( $og_ns as $name => $url ) {
+					if ( strpos( $prefix_value, ' '.$name.': '.$url ) === false ) {
 						$prefix_value .= ' '.$name.': '.$url;
+					}
+				}
 	
 				$html_attr .= ' prefix="'.trim( $prefix_value ).'"';
 			}
@@ -110,41 +127,175 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return trim( $html_attr );
 		}
 
-		public function get_og_type( array $mod ) {
+		/**
+		 * Returns the open graph type.
+		 *
+		 * Example: article, product, place, etc.
+		 */
+		public function get_mod_og_type( array $mod, $ret_type_ns = false, $use_mod_opts = true ) {
 
-			// an index or static home page is 'website'
-			if ( $mod['is_home'] ) {
-
-				$og_type = 'website';
-
-				if ( $mod['is_home_page'] ) {
-					$og_type = apply_filters( $this->p->lca.'_og_type_for_home_page', $og_type, $mod );
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'using og:type '.$og_type.' for home page' );
-					}
-				} else {
-					$og_type = apply_filters( $this->p->lca.'_og_type_for_home_index', $og_type, $mod );
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'using og:type '.$og_type.' for home index' );
-					}
-				}
-
-			// singular posts / pages are articles by default
-			} elseif ( $mod['is_post'] ) {
-
-				// check that the post_type is a known open graph type
-				if ( ! empty( $mod['post_type'] ) && isset( $this->p->cf['head']['og_type_ns'][$mod['post_type']] ) ) {
-					$og_type = $mod['post_type'];
-				} else {
-					$og_type = empty( $this->p->options['og_post_type'] ) ?	'article' : $this->p->options['og_post_type'];
-				}
-
-			// default for everything else is 'website'
-			} else {
-				$og_type = 'website';
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
 			}
 
-			return apply_filters( $this->p->lca.'_og_type', $og_type, $mod );
+			$default_key = apply_filters( $this->p->lca . '_og_type_for_default', 'website' );
+			$og_type_ns  = $this->p->cf['head']['og_type_ns'];
+			$type_id     = null;
+
+			/**
+			 * Get custom open graph type from post, term, or user meta.
+			 */
+			if ( $use_mod_opts ) {
+
+				if ( ! empty( $mod['obj'] ) ) {	// Just in case.
+
+					$type_id = $mod['obj']->get_options( $mod['id'], 'og_type' );	// Returns null if an index key is not found.
+
+					if ( empty( $type_id ) ) {	// Must be a non-empty string.
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'custom type id from meta is empty' );
+						}
+					} elseif ( $type_id === 'none' ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'custom type id is disabled with value none' );
+						}
+					} elseif ( empty( $og_type_ns[$type_id] ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'custom type id "' . $type_id . '" not in og types' );
+						}
+						$type_id = null;
+					} elseif ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'custom type id "' . $type_id . '" from ' . $mod['name'] . ' meta' );
+					}
+
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'skipping custom type_id - mod object is empty' );
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'skipping custom type_id - use_mod_opts is false' );
+			}
+
+			if ( empty( $type_id ) ) {
+				$is_custom = false;
+			} else {
+				$is_custom = true;
+			}
+
+			if ( empty( $type_id ) ) {	// If no custom of type, then use the default settings.
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'using plugin settings to determine og type' );
+				}
+
+				/**
+				 * An index or static home page is 'website' by default.
+				 */
+				if ( $mod['is_home'] ) {
+	
+					$type_id = $default_key;
+	
+					if ( $mod['is_home_page'] ) {
+	
+						$type_id = apply_filters( $this->p->lca . '_og_type_for_home_page', $type_id, $mod );
+	
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'using og type id "' . $type_id . '" for home page' );
+						}
+	
+					} else {
+	
+						$type_id = apply_filters( $this->p->lca . '_og_type_for_home_index', $type_id, $mod );
+	
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'using og type id "' . $type_id . '" for home index' );
+						}
+					}
+	
+				/**
+				 * Singular posts / pages are articles by default.
+				 */
+				} elseif ( $mod['is_post'] ) {
+	
+					$type_id = empty( $this->p->options['og_post_type'] ) ?
+						'article' : $this->p->options['og_post_type'];
+	
+					if ( ! empty( $mod['post_type'] ) ) {
+	
+						if ( empty( $mod['id'] ) && is_post_type_archive() ) {
+	
+							$type_id = $default_key;
+	
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'using og type id "' . $type_id . '" for post type archive page' );
+							}
+
+						} elseif ( isset( $og_type_ns[ $mod[ 'post_type' ] ] ) ) {
+	
+							$type_id = $mod['post_type'];
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'using og type id "' . $type_id . '" from post type name' );
+							}
+
+						} else {
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'post type name is not a valid og type id' );
+							}
+						}
+					}
+	
+				/**
+				 * Default for everything else is 'website'.
+				 */
+				} else {
+
+					$type_id = $default_key;
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'using default og type id "' . $default_key . '"' );
+					}
+				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'og type id before filter is "' . $type_id . '"' );
+			}
+
+			$type_id = apply_filters( $this->p->lca . '_og_type', $type_id, $mod, $is_custom );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'og type id after filter is "' . $type_id . '"' );
+			}
+
+			return $type_id;
+		}
+
+		public function get_og_types_select( $add_none = true ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$og_types = $this->p->cf['head']['og_type_ns'];
+			$select = array();
+
+			foreach ( $og_types as $type_id => $type_ns ) {
+				$type_ns = preg_replace( '/(^.*\/\/|#$)/', '', $type_ns );
+				$select[ $type_id ] = $type_id . ' | ' . $type_ns;
+			}
+
+			if ( defined( 'SORT_STRING' ) ) {	// Just in case.
+				asort( $select, SORT_STRING );
+			} else {
+				asort( $select );
+			}
+
+			if ( $add_none ) {
+				return array_merge( array( 'none' => '[None]' ), $select );
+			} else {
+				return $select;
+			}
 		}
 
 		public function get_array( array $mod, array $mt_og, $crawler_name = false ) {
@@ -192,9 +343,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'og:url already defined = '.$mt_og['og:url'] );
 			}
 
-			// define the type after the url
+			/**
+			 * Define the open graph type after the url.
+			 */
 			if ( ! isset( $mt_og['og:type'] ) ) {
-				$mt_og['og:type'] = $this->get_og_type( $mod );
+				$mt_og['og:type'] = $this->get_mod_og_type( $mod );
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'og:type already defined = '.$mt_og['og:type'] );
 			}

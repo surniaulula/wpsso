@@ -35,6 +35,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$add_meta_name_description = apply_filters( $this->p->lca.'_add_meta_name_description', $add_meta_name_description, $mod );
 
 			$og_type = isset( $head['og:type'] ) ? $head['og:type'] : 'website';
+			$og_types = $this->p->og->get_og_types_select( true ); // $add_none is true.
 
 			$og_title_max_len    = $this->p->options['og_title_len'];
 			$og_desc_max_len     = $this->p->options['og_desc_len'];
@@ -65,6 +66,11 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$form_rows = array(
+				'og_type' => array(
+					'label' => _x( 'Open Graph Type', 'option label', 'wpsso' ),
+					'th_class' => 'medium', 'tooltip' => 'post-og_type',
+					'content' => $form->get_select( 'og_type', $og_types ),
+				),
 				'og_art_section' => array(
 					'tr_class' => ( $og_type === 'article' ? '' : 'hide_in_basic' ), // always hide if og:type is not an article
 					'label' => _x( 'Article Topic', 'option label', 'wpsso' ),

@@ -379,7 +379,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $shortlink;	// return original shortlink
 			} elseif ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// invalid url
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: invalid short URL (' . $short_url . ') returned by filter' );
+					$this->p->debug->log( 'exiting early: invalid short URL (' . $short_url . ') returned by filters' );
 				}
 				return $shortlink;	// return original shortlink
 			}

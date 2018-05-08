@@ -783,7 +783,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$filter_name = $this->p->lca . '_get_content_' . $tag_name . '_' . ( preg_replace( '/-/', '_', $attr_name ) );
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'applying filter '.$filter_name );
+								$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
 							}
 
 							list(
@@ -1055,17 +1055,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( has_filter( $filter_name ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'applying filter '.$filter_name );
+					$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
 				}
 
 				/**
 				 * Must return false or an array of associative arrays.
 				 */
 				if ( ( $all_matches = apply_filters( $filter_name, false, $content ) ) !== false ) {
+
 					if ( is_array( $all_matches ) ) {
+
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( count( $all_matches ).' x videos returned by '.$filter_name.' filter' );
+							$this->p->debug->log( count( $all_matches ).' x videos returned by '.$filter_name.' filters' );
 						}
+
 						foreach ( $all_matches as $match_num => $args ) {
 							if ( is_array( $args ) ) { // Just in case.
 								if ( ! empty( $args['url'] ) ) {
@@ -1082,6 +1085,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$this->p->debug->log( 'videos array element #' . $match_num . ' is not a media array' );
 							}
 						}
+
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $filter_name.' filter did not return false or an array' );
 					}

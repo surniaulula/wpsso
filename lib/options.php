@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $force_filter || ! self::$allow_cache || empty( $defs['options_filtered'] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'get_defaults filter' );	// start timer
+					$this->p->debug->mark( 'get_defaults filters' );	// start timer
 				}
 
 				/**
@@ -115,14 +115,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'applying get_defaults filter' );
+					$this->p->debug->log( 'applying get_defaults filters' );
 				}
 
 				if ( self::$allow_cache ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting options_filtered to true' );
 					}
-					$defs['options_filtered'] = true;	// set before calling filter to prevent recursion
+
+					$defs['options_filtered'] = true;	// Set before calling filter to prevent recursion.
+
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
 				}
@@ -130,7 +133,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$defs = apply_filters( $this->p->lca.'_get_defaults', $defs );
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'get_defaults filter' );	// end timer
+					$this->p->debug->mark( 'get_defaults filters' );	// end timer
 				}
 			}
 
@@ -159,7 +162,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $force_filter || ! self::$allow_cache || empty( $defs['options_filtered'] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'get_site_defaults filter' );	// start timer
+					$this->p->debug->mark( 'get_site_defaults filters' );	// start timer
 				}
 
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
@@ -171,7 +174,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'applying get_site_defaults filter' );
+					$this->p->debug->log( 'applying get_site_defaults filters' );
 				}
 
 				if ( self::$allow_cache ) {
@@ -186,7 +189,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$defs = apply_filters( $this->p->lca.'_get_site_defaults', $defs );
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'get_site_defaults filter' );	// end timer
+					$this->p->debug->mark( 'get_site_defaults filters' );	// end timer
 				}
 			}
 

@@ -15,13 +15,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		protected $p;
 		protected $form;
-		protected $opts = array();	// cache for options
-		protected $defs = array();	// cache for default values
+		protected $opts = array();	// Cache for options.
+		protected $defs = array();	// Cache for default values.
 
 		protected static $head_meta_tags = false;
 		protected static $head_meta_info = array();
-		protected static $last_column_id = null;	// cache_id of the last column request in list table
-		protected static $last_column_array = array();	// array of column values for last column requested 
+		protected static $last_column_id = null;	// Cache id of the last column request in list table.
+		protected static $last_column_array = array();	// Array of column values for last column requested.
 
 		protected static $rename_md_options_keys = array(
 			'wpsso' => array(
@@ -494,17 +494,34 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function get_defaults( $mod_id, $idx = false ) {
 
-			if ( ! isset( $this->defs[$mod_id] ) )
-				$this->defs[$mod_id] = array();
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
-			$opts =& $this->p->options;		// shortcut
-			$md_defs =& $this->defs[$mod_id];	// shortcut
+			/**
+			 * Maybe initialize the cache.
+			 */
+			if ( ! isset( $this->defs[$mod_id] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'initializing the default options cache array' );
+				}
+				$this->defs[$mod_id] = array();
+			}
+
+			$md_defs =& $this->defs[$mod_id];	// Shortcut variable name.
 
 			if ( ! WpssoOptions::can_cache() || empty( $md_defs['options_filtered'] ) ) {
+
+				$mod = $this->get_mod( $mod_id );
+
+				$opts =& $this->p->options;		// Shortcut variable name.
+
+				$og_type = $this->p->og->get_mod_og_type( $mod, false, false );	// $ret_og_ns = false, $use_mod_opts = false
 
 				$md_defs = array(
 					'options_filtered' => '',
 					'options_version' => '',
+					'og_type' => $og_type,
 					'og_art_section' => isset( $opts['og_art_section'] ) ? $opts['og_art_section'] : 'none',
 					'og_title' => '',
 					'og_desc' => '',
@@ -558,18 +575,25 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				);
 
 				if ( WpssoOptions::can_cache() ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting options_filtered to true' );
 					}
-					$md_defs['options_filtered'] = true;	// set before calling filter to prevent recursion
+
+					$md_defs['options_filtered'] = true;	// Set before calling filter to prevent recursion.
+
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
 				}
 
-				$md_defs = apply_filters( $this->p->lca.'_get_md_defaults', $md_defs, $this->get_mod( $mod_id ) );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'applying get_md_defaults filters' );
+				}
+
+				$md_defs = apply_filters( $this->p->lca . '_get_md_defaults', $md_defs, $mod );
 
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'get_defaults filter skipped' );
+				$this->p->debug->log( 'get_md_defaults filter skipped' );
 			}
 
 			if ( $idx !== false ) {
