@@ -2494,7 +2494,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		// deprecated on 2018/03/31
+		/**
+		 * Deprecated on 2018/03/31.
+		 */
 		public function do_metabox_tabs( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 			echo $this->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $args );
 		}
@@ -2556,7 +2558,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $ret_html;
 		}
 
-		// deprecated on 2018/03/31
+		/**
+		 * Deprecated on 2018/03/31.
+		 */
 		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset' ) {
 			echo $this->get_metabox_table( $table_rows, $class_href_key, $class_tabset_mb, $class_tabset );
 		}
@@ -2800,36 +2804,50 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * $ext = org, plm, etc.
+		 * Deprecated on 2018/05/08.
+		 *
+		 * Check that all add-ons are no longer using this method before removing it.
 		 */
-		public function get_ext_req_msg( $ext ) {
+		public function get_ext_req_msg( $p_ext ) {
+			return $this->get_p_ext_required_msg( $p_ext );
+		}
 
-			$req_msg = '';
+		/**
+		 * If an add-on is not available, return a short sentence that this add-on is
+		 * required. If the add-on is active, then return an empty string.
+		 *
+		 * $p_ext = json, org, plm, etc.
+		 */
+		public function get_p_ext_required_msg( $p_ext ) {
 
-			if ( $this->p->lca === $ext ) {
-				return $req_msg;
-			} elseif ( ! empty( $this->p->avail['p_ext'][$ext] ) ) {
-				return $req_msg;
+			$html = '';
+			$ext  = $this->p->lca . $p_ext;
+
+			if ( $this->p->lca === $p_ext ) {
+				return $html;
+			} elseif ( ! empty( $this->p->avail['p_ext'][$p_ext] ) ) {	// Already active.
+				return $html;
+			} elseif ( empty( $this->p->cf['plugin'][$ext]['short'] ) ) {	// Add-on config is not defined.
+				return $html;
 			}
 
-			$ext_short = empty( $this->p->cf['plugin'][$this->p->lca.$ext]['short'] ) ?	// just in case
-				strtoupper( $this->p->lca.' '.$ext ) : $this->p->cf['plugin'][$this->p->lca.$ext]['short'];
+			$short = $this->p->cf['plugin'][$ext]['short'];
 
-			$req_msg .= ' <p style="display:inline;" class="ext_req_msg"><em>';
+			$html .= ' <p style="display:inline;" class="ext_req_msg"><em>';
 
-			if ( ! empty( $this->p->cf['plugin'][$this->p->lca.$ext]['url']['home'] ) ) {
-				$req_msg .= '<a href="'.$this->p->cf['plugin'][$this->p->lca.$ext]['url']['home'].'">';
+			if ( ! empty( $this->p->cf['plugin'][$ext]['url']['home'] ) ) {
+				$html .= '<a href="' . $this->p->cf['plugin'][$ext]['url']['home'] . '">';
 			}
 
-			$req_msg .= sprintf( _x( '%s ext. required', 'option comment', 'wpsso' ), $ext_short );
+			$html .= sprintf( _x( '%s add-on required', 'option comment', 'wpsso' ), $short );
 
-			if ( ! empty( $this->p->cf['plugin'][$this->p->lca.$ext]['url']['home'] ) ) {
-				$req_msg .= '</a>';
+			if ( ! empty( $this->p->cf['plugin'][$ext]['url']['home'] ) ) {
+				$html .= '</a>';
 			}
 
-			$req_msg .= '</em></p>';
+			$html .= '</em></p>';
 
-			return $req_msg;
+			return $html;
 		}
 
 		public function get_meta_name_robots_content( array $mod ) {

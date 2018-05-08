@@ -3083,7 +3083,7 @@ msgid ""
 "%s</em>\" message, after enabling this option."
 msgstr ""
 
-#: lib/messages.php:560 lib/util.php:2658
+#: lib/messages.php:560 lib/util.php:2662
 msgid "No options available."
 msgstr ""
 
@@ -5773,29 +5773,29 @@ msgid ""
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2685
+#: lib/util.php:2689
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2688
+#: lib/util.php:2692
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2693
+#: lib/util.php:2697
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2696
+#: lib/util.php:2700
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2824
+#: lib/util.php:2842
 msgctxt "option comment"
-msgid "%s ext. required"
+msgid "%s add-on required"
 msgstr ""
 
 #: wpsso.php:352
