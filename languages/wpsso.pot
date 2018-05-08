@@ -2366,193 +2366,193 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:66 lib/gpl/admin/post.php:65
-#: lib/pro/admin/meta.php:77 lib/pro/admin/post.php:76
+#: lib/gpl/admin/meta.php:74 lib/gpl/admin/post.php:65
+#: lib/pro/admin/meta.php:83 lib/pro/admin/post.php:76
 msgid ""
 "Activate the %s add-on for additional Schema markup features and options."
 msgstr ""
 
-#: lib/gpl/admin/meta.php:76 lib/gpl/admin/post.php:92
-#: lib/pro/admin/meta.php:85 lib/pro/admin/post.php:100
-msgctxt "option label"
-msgid "Default Title"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:81 lib/gpl/admin/post.php:98
-#: lib/pro/admin/meta.php:91 lib/pro/admin/post.php:108
-msgctxt "option label"
-msgid "Default Description"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:87 lib/gpl/admin/post.php:105
-#: lib/pro/admin/meta.php:98 lib/pro/admin/post.php:117
-msgctxt "option label"
-msgid "Google Search / SEO Description"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:93 lib/gpl/admin/post.php:114
-#: lib/pro/admin/meta.php:108 lib/pro/admin/post.php:127
-msgctxt "option label"
-msgid "Twitter Card Description"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:99 lib/gpl/admin/post.php:121 lib/meta.php:230
-#: lib/meta.php:251 lib/pro/admin/meta.php:114 lib/pro/admin/post.php:134
-msgctxt "option label"
-msgid "Sharing URL"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:106 lib/gpl/admin/post.php:128 lib/meta.php:233
-#: lib/meta.php:254 lib/pro/admin/meta.php:122 lib/pro/admin/post.php:141
-msgctxt "option label"
-msgid "Canonical URL"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:112 lib/gpl/admin/post.php:180
-#: lib/pro/admin/meta.php:133 lib/pro/admin/post.php:194
-#: lib/submenu/general.php:264
-msgctxt "metabox title"
-msgid "Structured Data / Schema Markup"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:115 lib/gpl/admin/post.php:184
-#: lib/pro/admin/meta.php:136 lib/pro/admin/post.php:198
-msgctxt "option label"
-msgid "Schema Description"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:132 lib/pro/admin/meta.php:153
-msgid "Save a draft version or publish the %s to display these options."
-msgstr ""
-
-#: lib/gpl/admin/meta.php:146 lib/pro/admin/meta.php:163
-#: lib/submenu/general.php:37
-msgctxt "metabox title"
-msgid "All Social WebSites / Open Graph"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:151 lib/pro/admin/meta.php:168
-msgctxt "metabox title"
-msgid "Priority Image Information"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:156 lib/gpl/admin/meta.php:243
-#: lib/pro/admin/meta.php:173 lib/pro/admin/meta.php:260
-msgctxt "option label"
-msgid "Image Dimensions"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:162 lib/gpl/admin/meta.php:250
-#: lib/pro/admin/meta.php:179 lib/pro/admin/meta.php:267
-msgctxt "option label"
-msgid "Image ID"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:168 lib/gpl/admin/meta.php:257
-#: lib/pro/admin/meta.php:185 lib/pro/admin/meta.php:274
-msgctxt "option label"
-msgid "or an Image URL"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:176 lib/gpl/admin/meta.php:265
-#: lib/pro/admin/meta.php:193 lib/pro/admin/meta.php:282
-msgctxt "option label"
-msgid "Maximum Images"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:184 lib/pro/admin/meta.php:201
-msgctxt "metabox title"
-msgid "Priority Video Information"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:188 lib/messages.php:696 lib/pro/admin/meta.php:205
-msgctxt "option label"
-msgid "Video Embed HTML"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:194 lib/pro/admin/meta.php:211
-msgctxt "option label"
-msgid "or a Video URL"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:201 lib/pro/admin/meta.php:218
-msgctxt "option label"
-msgid "Video Name / Title"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:208 lib/pro/admin/meta.php:225
-msgctxt "option label"
-msgid "Video Description"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:216 lib/pro/admin/meta.php:233
-msgctxt "option label"
-msgid "Maximum Videos"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:224 lib/pro/admin/meta.php:241
-msgctxt "option label"
-msgid "Include Preview Images"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:238 lib/pro/admin/meta.php:255
-msgctxt "metabox title"
-msgid "Structured Data / Schema Markup / Pinterest"
-msgstr ""
-
-#: lib/gpl/admin/post.php:71 lib/pro/admin/meta.php:103
-#: lib/pro/admin/meta.php:128 lib/pro/admin/post.php:82
+#: lib/gpl/admin/meta.php:80 lib/gpl/admin/post.php:71
+#: lib/pro/admin/meta.php:89 lib/pro/admin/post.php:82
 msgid ""
 "This option is disabled (the \"%1$s\" head tag is disabled or an SEO plugin "
 "was detected)."
 msgstr ""
 
-#: lib/gpl/admin/post.php:79 lib/pro/admin/post.php:87
+#: lib/gpl/admin/meta.php:87 lib/gpl/admin/post.php:93
+#: lib/pro/admin/meta.php:93 lib/pro/admin/post.php:100
+msgctxt "option label"
+msgid "Default Title"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:92 lib/gpl/admin/post.php:99
+#: lib/pro/admin/meta.php:100 lib/pro/admin/post.php:108
+msgctxt "option label"
+msgid "Default Description"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:98 lib/gpl/admin/post.php:106
+#: lib/pro/admin/meta.php:108 lib/pro/admin/post.php:117
+msgctxt "option label"
+msgid "Google Search / SEO Description"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:106 lib/gpl/admin/post.php:115
+#: lib/pro/admin/meta.php:117 lib/pro/admin/post.php:127
+msgctxt "option label"
+msgid "Twitter Card Description"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:112 lib/gpl/admin/post.php:122 lib/meta.php:230
+#: lib/meta.php:251 lib/pro/admin/meta.php:123 lib/pro/admin/post.php:134
+msgctxt "option label"
+msgid "Sharing URL"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:118 lib/gpl/admin/post.php:129 lib/meta.php:233
+#: lib/meta.php:254 lib/pro/admin/meta.php:129 lib/pro/admin/post.php:141
+msgctxt "option label"
+msgid "Canonical URL"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:126 lib/gpl/admin/post.php:181
+#: lib/pro/admin/meta.php:138 lib/pro/admin/post.php:194
+#: lib/submenu/general.php:264
+msgctxt "metabox title"
+msgid "Structured Data / Schema Markup"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:129 lib/gpl/admin/post.php:185
+#: lib/pro/admin/meta.php:141 lib/pro/admin/post.php:198
+msgctxt "option label"
+msgid "Schema Description"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:147 lib/pro/admin/meta.php:164
+msgid "Save a draft version or publish the %s to display these options."
+msgstr ""
+
+#: lib/gpl/admin/meta.php:161 lib/pro/admin/meta.php:174
+#: lib/submenu/general.php:37
+msgctxt "metabox title"
+msgid "All Social WebSites / Open Graph"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:166 lib/pro/admin/meta.php:179
+msgctxt "metabox title"
+msgid "Priority Image Information"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:171 lib/gpl/admin/meta.php:260
+#: lib/pro/admin/meta.php:184 lib/pro/admin/meta.php:277
+msgctxt "option label"
+msgid "Image Dimensions"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:177 lib/gpl/admin/meta.php:267
+#: lib/pro/admin/meta.php:190 lib/pro/admin/meta.php:284
+msgctxt "option label"
+msgid "Image ID"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:183 lib/gpl/admin/meta.php:274
+#: lib/pro/admin/meta.php:196 lib/pro/admin/meta.php:291
+msgctxt "option label"
+msgid "or an Image URL"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:191 lib/gpl/admin/meta.php:282
+#: lib/pro/admin/meta.php:204 lib/pro/admin/meta.php:299
+msgctxt "option label"
+msgid "Maximum Images"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:200 lib/pro/admin/meta.php:213
+msgctxt "metabox title"
+msgid "Priority Video Information"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:204 lib/messages.php:696 lib/pro/admin/meta.php:217
+msgctxt "option label"
+msgid "Video Embed HTML"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:210 lib/pro/admin/meta.php:223
+msgctxt "option label"
+msgid "or a Video URL"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:217 lib/pro/admin/meta.php:230
+msgctxt "option label"
+msgid "Video Name / Title"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:224 lib/pro/admin/meta.php:239
+msgctxt "option label"
+msgid "Video Description"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:232 lib/pro/admin/meta.php:249
+msgctxt "option label"
+msgid "Maximum Videos"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:241 lib/pro/admin/meta.php:258
+msgctxt "option label"
+msgid "Include Preview Images"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:255 lib/pro/admin/meta.php:272
+msgctxt "metabox title"
+msgid "Structured Data / Schema Markup / Pinterest"
+msgstr ""
+
+#: lib/gpl/admin/post.php:80 lib/pro/admin/post.php:87
 msgctxt "option label"
 msgid "Open Graph Type"
 msgstr ""
 
-#: lib/gpl/admin/post.php:86 lib/pro/admin/post.php:94
+#: lib/gpl/admin/post.php:87 lib/pro/admin/post.php:94
 msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:136 lib/messages.php:740 lib/pro/admin/post.php:150
+#: lib/gpl/admin/post.php:137 lib/messages.php:740 lib/pro/admin/post.php:150
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gpl/admin/post.php:143 lib/messages.php:751 lib/pro/admin/post.php:157
+#: lib/gpl/admin/post.php:144 lib/messages.php:751 lib/pro/admin/post.php:157
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/gpl/admin/post.php:149 lib/messages.php:762 lib/pro/admin/post.php:163
+#: lib/gpl/admin/post.php:150 lib/messages.php:762 lib/pro/admin/post.php:163
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gpl/admin/post.php:155 lib/messages.php:773 lib/pro/admin/post.php:169
+#: lib/gpl/admin/post.php:156 lib/messages.php:773 lib/pro/admin/post.php:169
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gpl/admin/post.php:161 lib/messages.php:794 lib/pro/admin/post.php:175
+#: lib/gpl/admin/post.php:162 lib/messages.php:794 lib/pro/admin/post.php:175
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gpl/admin/post.php:167 lib/messages.php:804 lib/pro/admin/post.php:181
+#: lib/gpl/admin/post.php:168 lib/messages.php:804 lib/pro/admin/post.php:181
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gpl/admin/post.php:174 lib/messages.php:815 lib/pro/admin/post.php:188
+#: lib/gpl/admin/post.php:175 lib/messages.php:815 lib/pro/admin/post.php:188
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:191 lib/meta.php:227 lib/post.php:1057
+#: lib/gpl/admin/post.php:192 lib/meta.php:227 lib/post.php:1057
 #: lib/pro/admin/post.php:205
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""

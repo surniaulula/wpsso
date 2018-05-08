@@ -70,7 +70,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 
 			$seo_msg_transl = __( 'This option is disabled (the "%1$s" head tag is disabled or an SEO plugin was detected).', 'wpsso' );
 
-			$table_rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-about-msg-post-text' ).
+			$table_rows[] = '<td colspan="2" align="center">'.
+				$this->p->msgs->get( 'pro-about-msg-post-text' ).
 				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
 
 			$form_rows = array(
@@ -195,4 +196,3 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 		}
 	}
 }
-
