@@ -318,12 +318,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.3.0-dev.1 (TBD)**
+**Version 4.3.0-dev.1 (2018/05/08)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a new "Open Graph Type" option in the Social and Search Optimization metabox (Pro version).
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -401,7 +401,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.3.0-dev.1 =
 
-(TBD) None.
+(2018/05/08) Added a new "Open Graph Type" option in the Social and Search Optimization metabox (Pro version).
 
 = 4.2.0 =
 
