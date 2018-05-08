@@ -318,6 +318,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.3.0-dev.1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 4.2.0 (2018/05/07)**
 
 * *New Features*
@@ -387,6 +398,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Added new WpssoUtil get_metabox_table() and get_metabox_tabbed() methods.
 
 == Upgrade Notice ==
+
+= 4.3.0-dev.1 =
+
+(TBD) None.
 
 = 4.2.0 =
 
