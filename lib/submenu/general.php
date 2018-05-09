@@ -263,14 +263,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>'.
 						_x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' ).'</h4></td>';
 
-					$noscript_disabled = apply_filters( $this->p->lca.'_add_schema_noscript_array', true ) ? false : true;
-					$noscript_comment_transl = _x( 'option disabled by extension plugin or custom filter', 'option comment', 'wpsso' );
-
-					if ( ! $noscript_disabled ) {
+					if ( $this->p->schema->is_noscript_enabled() ) {
 						$table_rows['schema_add_noscript'] = $this->form->get_tr_hide( 'basic', 'schema_add_noscript' ).
 						$this->form->get_th_html( _x( 'Meta Property Containers', 'option label', 'wpsso' ), '', 'schema_add_noscript' ).
-						'<td>'.( $noscript_disabled ? $this->form->get_no_checkbox( 'schema_add_noscript', '', '', 0 ).
-							' <em>'.$noscript_comment_transl.'</em>' : $this->form->get_checkbox( 'schema_add_noscript' ) ).'</td>';
+						'<td>'.$this->form->get_checkbox( 'schema_add_noscript' ).'</td>';
 					}
 
 					$this->add_schema_knowledge_graph_table_rows( $table_rows );

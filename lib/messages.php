@@ -1566,25 +1566,49 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-meta-validate-facebook':
 
-							$text = '<p class="top">'.__( 'Facebook and most social websites read Open Graph meta tags.', 'wpsso' ).' '.__( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating the Open Graph meta tag values.', 'wpsso' ).' '.__( 'The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' ).'</p><p><i>'.__( 'You may have to click the "Fetch new scrape information" button a few times to refresh Facebook\'s cache.', 'wpsso' ).'</i></p>';
+							$text = '<p class="top">';
+							
+							$text .= __( 'Facebook and most social websites read Open Graph meta tags.', 'wpsso' ).' ';
+							
+							$text .= __( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating the Open Graph meta tag values.', 'wpsso' ).' ';
+							
+							$text .= __( 'The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' );
+							
+							$text .= '</p><p><i>';
+							
+							$text .= __( 'You may have to click the "Fetch new scrape information" button a few times to refresh Facebook\'s cache.', 'wpsso' );
+							
+							$text .= '</i></p>';
 
 						 	break;
 
 						case 'info-meta-validate-google':
 
-							$text = '<p>'.__( 'Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+.', 'wpsso' ).'</p>';
+							$text = '<p class="top">';
+							
+							$text .= __( 'Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+.', 'wpsso' );
+							
+							$text .= '</p>';
 
 						 	break;
 
 						case 'info-meta-validate-pinterest':
 
-							$text = '<p>'.__( 'Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' ).'</p>';
+							$text = '<p class="top">';
+							
+							$text .= __( 'Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' );
+
+							$text .= '</p>';
 
 						 	break;
 
 						case 'info-meta-validate-twitter':
 
-							$text = '<p><i>'.__( 'The Twitter Card Validator does not accept query arguments &mdash; paste the following URL in the Twitter Card Validator "Card URL" input field (copy the URL using the clipboard icon):', 'wpsso' ).'</i></p>';
+							$text = '<p class="top"><i>';
+							
+							$text .= __( 'The Twitter Card Validator does not accept query arguments &mdash; paste the following URL in the Twitter Card Validator "Card URL" input field (copy the URL using the clipboard icon):', 'wpsso' );
+							
+							$text .= '</i></p>';
 
 						 	break;
 
@@ -1593,19 +1617,32 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google',
 								_x( 'Meta Property Containers', 'option label', 'wpsso' ) );
 
-							$text = '<p>'.__( 'Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates markup.', 'wpsso' ).'</p>'.( empty( $this->p->options['schema_add_noscript'] ) ? '' : '<p><i>'.sprintf( __( 'When the %1$s option is enabled, the W3C validator will show errors for itemprop attributes in meta elements &mdash; you may ignore these errors or disable the %1$s option.', 'wpsso' ), $settings_page_link ).'</i></p>' );
+							$text = '<p class="top">';
+							
+							$text .= __( 'Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates markup.', 'wpsso' );
+							
+							$text .= '</p>';
+							
+							if ( $this->p->schema->is_noscript_enabled() ) {
+
+								$text .= '<p><i>';
+								
+								$text .= sprintf( __( 'When the %1$s option is enabled, the W3C validator will show errors for itemprop attributes in meta elements &mdash; you may ignore these errors or disable the %1$s option.', 'wpsso' ), $settings_page_link );
+								
+								$text .= '</i></p>';
+							}
 
 						 	break;
 
 						case 'info-meta-validate-amp':
 
-							$text = '<p>'.__( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ).'</p>'.( $this->p->avail['*']['amp'] ? '' : '<p><i>'.sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' ).'</i></p>' );
+							$text = '<p class="top">'.__( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ).'</p>'.( $this->p->avail['*']['amp'] ? '' : '<p><i>'.sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' ).'</i></p>' );
 
 						 	break;
 
 						case 'info-meta-social-preview':
 
-						 	$text = '<p>'.__( 'An <em>example</em> link share on Facebook. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
+						 	$text = '<p class="top">'.__( 'An <em>example</em> link share on Facebook. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
 
 						 	break;
 

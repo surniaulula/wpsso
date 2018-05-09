@@ -1680,6 +1680,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						self::$cache_crawler_name = 'none';
 						break;
 				}
+
 				self::$cache_crawler_name = apply_filters( 'sucom_crawler_name', self::$cache_crawler_name, $ua );
 			}
 

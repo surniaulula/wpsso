@@ -3151,7 +3151,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( false === $crawler_name ) {
-				$crawler_name = SucomUtil::get_crawler_name();
+				if ( is_admin() ) {
+					$crawler_name = 'none';
+				} else {
+					$crawler_name = SucomUtil::get_crawler_name();
+				}
 			}
 
 			$is_enabled = empty( $this->p->options['schema_add_noscript'] ) ? false : true;
@@ -3160,9 +3164,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Returns false when the wpsso-schema-json-ld add-on is active.
 			 */
 			if ( ! apply_filters( $this->p->lca . '_add_schema_noscript_array', $is_enabled, $crawler_name ) ) {
+
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'noscript disabled by option or filter for ' . $crawler_name );
+					$this->p->debug->log( 'noscript is disabled for crawler "' . $crawler_name . '"' );
 				}
+
 				return false;
 			}
 

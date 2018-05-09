@@ -1353,8 +1353,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							'status' => $this->p->options['schema_add_home_website'] ? 'on' : 'rec',
 						),
 						'(code) Schema Meta Property Containers' => array(
-							'status' => apply_filters( $this->p->lca . '_add_schema_noscript_array',
-								$this->p->options['schema_add_noscript'] ) ? 'on' : 'off',
+							'status' => $this->p->schema->is_noscript_enabled() ? 'on' : 'off',
 						),
 						'(code) Twitter Card Meta Tags' => array(
 							'status' => class_exists( $this->p->lca . 'twittercard' ) ? 'on' : 'rec',
