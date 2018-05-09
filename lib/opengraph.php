@@ -277,7 +277,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$og_types = $this->p->cf['head']['og_type_ns'];
+			$og_types = $this->p->cf['head']['og_type_ns_compat'];
+
 			$select = array();
 
 			foreach ( $og_types as $type_id => $type_ns ) {
