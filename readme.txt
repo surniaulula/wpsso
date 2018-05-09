@@ -20,7 +20,7 @@ Automatically create complete meta tags + Schema markup from your content for So
 
 <img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png">
 
-*WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
+**WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
 WPSSO Core creates complete and accurate meta tags and Schema markup for Facebook / Open Graph, Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, Twitter Cards, Weibo, and more &mdash; including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
 
