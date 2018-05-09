@@ -313,7 +313,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-post-og_art_section':
 
-							$text = __( 'A custom topic for this article, which may be different from the default Article Topic selected in the General Settings page.', 'wpsso' ).' ';
+							$text = __( 'A custom topic for this article, which may be different from the default Article Topic selected in the General settings page.', 'wpsso' ).' ';
 							
 							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %1$s meta tag.', 'wpsso' ), '<code>article:section</code>' );
 
@@ -1526,10 +1526,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-custom-cm-field-name':
 
-							$settings_page_link = $this->p->util->get_admin_url( 'general',
-								_x( 'General Settings', 'lib file description', 'wpsso' ) );
-
-							$text = '<strong>You should not modify the contact field names unless you have a specific reason to do so.</strong> As an example, to match the contact field name of a theme or other plugin, you might change "gplus" to "googleplus". If you change the Facebook or Google+ field names, please make sure to update the Open Graph <em>Author Profile URL</em> and Google <em>Author Link URL Profile Contact</em> options in the '.$settings_page_link.' as well.';
+							$text = '<strong>' . __( 'You should not modify the contact field names unless you have a specific reason to do so.', 'wpsso' ) . '</strong>';
+							
+							$text .= __( 'As an example, to match the contact field name of a theme or other plugin, you might change "gplus" to "googleplus".', 'wpsso' );
 
 							break;
 
@@ -1652,7 +1651,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $idx ) {
 
-						case 'info-plugin-tid':	// displayed in the Pro Licenses settings page
+						case 'info-plugin-tid':	// Displayed in the Core Add-ons settings page.
 
 							$um_info = $this->p->cf['plugin']['wpssoum'];
 
@@ -1672,12 +1671,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'info-plugin-tid-network':	// displayed in the Network Pro Licenses settings page
+						case 'info-plugin-tid-network':	// Displayed in the Network Core Add-ons settings page.
 
 							$um_info = $this->p->cf['plugin']['wpssoum'];
 
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-								_x( 'Core Add-ons and Pro Licenses', 'lib file description', 'wpsso' ) );
+								_x( 'Core Add-ons', 'lib file description', 'wpsso' ) );
 
 							$text = '<blockquote class="top-info">';
 
@@ -1959,7 +1958,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						if ( ! is_multisite() ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-								_x( 'Core Add-ons and Pro Licenses', 'lib file description', 'wpsso' ) );
+								_x( 'Core Add-ons', 'lib file description', 'wpsso' ) );
 
 							$text = '<p><b>'.sprintf( __( 'The %1$s plugin Authentication ID option is empty.', 'wpsso' ), $info['name'] ).'</b><br/>'.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email in the %s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
 						}
@@ -1969,7 +1968,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-pro-not-installed':
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Core Add-ons and Pro Licenses', 'lib file description', 'wpsso' ) );
+							_x( 'Core Add-ons', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin has not been installed &mdash; you can install and activate the Pro version from the %2$s settings page.', 'wpsso' ), '<b>'.$info['name'].'</b>', $settings_page_link ).' ;-)';
 
@@ -1978,7 +1977,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-pro-not-updated':
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Core Add-ons and Pro Licenses', 'lib file description', 'wpsso' ) );
+							_x( 'Core Add-ons', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the Pro version has not been installed &mdash; don\'t forget to update the plugin to install the latest Pro version.', 'wpsso' ), '<b>'.$info['name'].'</b>', $settings_page_link ).' ;-)';
 
@@ -1990,7 +1989,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$um_info = $this->p->cf['plugin']['wpssoum'];
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Core Add-ons and Pro Licenses', 'lib file description', 'wpsso' ) );
+							_x( 'Core Add-ons', 'lib file description', 'wpsso' ) );
 
 						$plugins_page_link = '<a href="'.get_admin_url( null, 'plugins.php' ).'">'.__( 'Plugins' ).'</a>';
 

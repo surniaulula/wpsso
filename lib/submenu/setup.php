@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 		// called by the extended WpssoAdmin class
 		protected function add_meta_boxes() {
 			add_meta_box( $this->pagehook.'_setup_guide',
-				_x( 'Setup Guide', 'metabox title', 'wpsso' ),
+				_x( 'Setup Guide and Other Notes', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_setup_guide' ), $this->pagehook, 'normal' );
 		}
 
@@ -45,12 +45,10 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_setup_guide() {
-			$lca = $this->p->cf['lca'];
-			echo '<table class="sucom-settings '.$lca.' html-content-metabox">';
+			echo '<table class="sucom-settings '.$this->p->lca.' html-content-metabox">';
 			echo '<tr><td>';
 			echo $this->get_config_url_content( 'wpsso', 'html/setup.html' );
 			echo '</td></tr></table>';
 		}
 	}
 }
-

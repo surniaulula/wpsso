@@ -65,24 +65,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'contact-fields' => 'User Profile Contact Methods',
 						),
 						'submenu' => array(	// Note that submenu elements must have unique keys.
-							'essential' => 'Essential Settings',
-							'general' => 'General Settings',
-							'advanced' => 'Advanced Settings',
-							'licenses' => 'Core Add-ons and Pro Licenses',
-							'dashboard' => 'Dashboard and Features Status',
-							'setup' => 'Setup Guide and Other Notes',
+							'essential' => 'Essential',
+							'general' => 'General',
+							'advanced' => 'Advanced',
+							'licenses' => 'Core Add-ons',
+							'dashboard' => 'Dashboard',
+							'setup' => 'Setup Guide',
 						),
 						'sitesubmenu' => array(	// Note that submenu elements must have unique keys.
-							'siteadvanced' => 'Advanced Settings',
-							'sitelicenses' => 'Core Add-ons and Pro Licenses',
-							'sitesetup' => 'Setup Guide and Other Notes',
+							'siteadvanced' => 'Advanced',
+							'sitelicenses' => 'Core Add-ons',
+							'sitesetup' => 'Setup Guide',
 						),
 						'gpl' => array(
 							'admin' => array(
-								'general' => 'General Settings',
-								'advanced' => 'Advanced Settings',
-								'post' => 'Post Settings',
-								'meta' => 'Term and User Settings',
+								'general' => 'Extend General Settings',
+								'advanced' => 'Extend Advanced Settings',
+								'post' => 'Extend Post Settings',
+								'meta' => 'Extend Term and User Settings',
 							),
 							'social' => array(
 								'buddypress' => '(plugin) BuddyPress',
@@ -95,10 +95,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'pro' => array(
 							'admin' => array(
-								'general' => 'General Settings',
-								'advanced' => 'Advanced Settings',
-								'post' => 'Post Settings',
-								'meta' => 'Term and User Settings',
+								'general' => 'Extend General Settings',
+								'advanced' => 'Extend Advanced Settings',
+								'post' => 'Extend Post Settings',
+								'meta' => 'Extend Term and User Settings',
 							),
 							'ecom' => array(
 								'edd' => '(plugin) Easy Digital Downloads',
@@ -918,7 +918,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_recipeingredient' => 1,	// Schema Recipe (supersedes ingredients)
 					'add_meta_itemprop_recipeinstructions' => 1,	// Schema Recipe
 					/**
-					 * Advanced Settings
+					 * Advanced
 					 */
 					// Plugin Settings Tab
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall

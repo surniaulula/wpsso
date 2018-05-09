@@ -39,24 +39,26 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 				_x( 'Optional Advanced Settings', 'metabox title', 'wpsso' ),
 					array( &$this, 'show_metabox_advanced' ), $this->pagehook, 'normal' );
 
-			// issues a warning notice if the default image size is too small
-			// unless the WPSSO_CHECK_DEFAULT_IMAGE constant has been defined as false
+			/**
+			 * Issues a warning notice if the default image size is too small.
+			 * Unless the WPSSO_CHECK_DEFAULT_IMAGE constant has been defined as false.
+			 */
 			if ( SucomUtil::get_const( 'WPSSO_CHECK_DEFAULT_IMAGE' ) !== false ) {
-				$this->p->media->get_default_images( 1, $this->p->cf['lca'].'-opengraph', false );
+				$this->p->media->get_default_images( 1, $this->p->lca.'-opengraph', false );
 			}
 		}
 
 		public function show_metabox_general() {
 			$metabox_id = $this->menu_id;
 			$tab_key = 'general';
-			$this->p->util->do_metabox_table( apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$tab_key.'_rows',
+			$this->p->util->do_metabox_table( apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows',
 				$this->get_table_rows( $metabox_id, $tab_key ), $this->form, false ), 'metabox-'.$metabox_id.'-'.$tab_key );
 		}
 
 		public function show_metabox_advanced() {
 			$metabox_id = $this->menu_id;
 			$tab_key = 'advanced';
-			$this->p->util->do_metabox_table( apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$tab_key.'_rows',
+			$this->p->util->do_metabox_table( apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows',
 				$this->get_table_rows( $metabox_id, $tab_key ), $this->form, false ), 'metabox-'.$metabox_id.'-'.$tab_key );
 		}
 
