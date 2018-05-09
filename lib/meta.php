@@ -129,19 +129,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				case $this->p->cf['meta']['id']:
 
 					$tabs = array(
+						'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
 						'edit' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
 						'media' => _x( 'Select Media', 'metabox tab', 'wpsso' ),
-						'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
 						'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
 						'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
 					);
-
-					// if pro options are hidden, move the (empty) text and media tabs to the end
-					if ( ! empty( $this->p->options['plugin_hide_pro'] ) ) {
-						foreach ( array( 'edit', 'media' ) as $tab_key ) {
-							SucomUtil::move_to_end( $tabs, $tab_key );
-						}
-					}
 
 					break;
 

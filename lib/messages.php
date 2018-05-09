@@ -571,7 +571,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_hide_pro': // Hide All Pro Settings
 
-							$text = __( 'Remove Pro version preview options from settings pages and metaboxes (default is unchecked).', 'wpsso' ).' '.sprintf( __( 'Enabling this option also re-orders the %1$s metabox tabs for your convenience &ndash; moving the %2$s, %3$s, and %4$s tabs topmost.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ), _x( 'Preview', 'metabox tab', 'wpsso' ), _x( 'Head Tags', 'metabox tab', 'wpsso' ), _x( 'Validate', 'metabox tab', 'wpsso' ) ).' '.sprintf( __( 'Please note that some metaboxes and tabs may be empty, showing only a "<em>%s</em>" message, after enabling this option.', 'wpsso' ), __( 'No options available.', 'wpsso' ) );
+							$text = __( 'Remove Pro version preview options from settings pages and metaboxes (default is unchecked).', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'Please note that some metaboxes and tabs may be empty - showing only a "<em>%s</em>" message - after enabling this option.', 'wpsso' ), __( 'No options available.', 'wpsso' ) );
 
 							break;
 
@@ -1641,7 +1643,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-meta-social-preview':
 
-						 	$text = '<p class="top">'.__( 'An <em>example</em> link share on Facebook. Images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual shares on Facebook and other social websites may look significantly different than this example (depending on the client platform, resolution, orientation, etc.).', 'wpsso' ).'</p>';
+						 	$text = '<p class="top">'.__( 'An example link share on Facebook &mdash; images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual link shares on Facebook and other social websites may look significantly different than this example (depending on the application, device, resolution, orientation, etc.).', 'wpsso' ).'</p>';
 
 						 	break;
 
