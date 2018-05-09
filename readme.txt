@@ -318,12 +318,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.3.0-b.1 (2018/05/08)**
+**Version 4.3.0-b.1 (2018/05/09)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added a new "Open Graph Type" option in the Social and Search Optimization metabox (Pro version).
+	* Renamed all the plugin settings pages:
+		* Essential Settings -&gt; Essential
+		* General Settings -&gt; General
+		* Advanced Settings -&gt; Advanced
+		* Core Add-ons and Pro Licenses -&gt; Core Add-ons
+		* Dashboard and Features Status -&gt; Dashboard
+		* Setup Guide and Other Notes -&gt; Setup Guide
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -401,7 +408,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.3.0-b.1 =
 
-(2018/05/08) Added a new "Open Graph Type" option in the Social and Search Optimization metabox (Pro version).
+(2018/05/09) Added a new "Open Graph Type" option in the Social and Search Optimization metabox (Pro version). Renamed all the plugin settings pages.
 
 = 4.2.0 =
 
