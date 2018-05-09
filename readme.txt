@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.3.0-dev.1 (2018/05/08)**
+**Version 4.3.0-b.1 (2018/05/08)**
 
 * *New Features*
 	* None
@@ -399,7 +399,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.3.0-dev.1 =
+= 4.3.0-b.1 =
 
 (2018/05/08) Added a new "Open Graph Type" option in the Social and Search Optimization metabox (Pro version).
 
