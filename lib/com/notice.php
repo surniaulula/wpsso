@@ -1047,8 +1047,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					min-height:0;
 					box-shadow:none;
 				}
-				.components-notice-list .' . $this->lca . '-notice * {
+				.components-notice-list .' . $this->lca . '-notice *,
+				#wpadminbar .' . $this->lca . '-notice *,
+				.' . $this->lca . '-notice * {
 					line-height:1.5em;
+				}
 				}
 				.components-notice-list .' . $this->lca . '-notice .notice-label,
 				.components-notice-list .' . $this->lca . '-notice .notice-message,
@@ -1063,6 +1066,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				#wpadminbar .have-notices #wp-admin-bar-'.$this->p->lca.'-toolbar-notices-container { 
 					min-width:66vw;	/* 66% of the viewing window width */
+					max-height:100vh;
+					overflow-y:scroll;
 				}
 				#wpadminbar .have-notices #wp-admin-bar-'.$this->p->lca.'-toolbar-notices-default { 
 					padding:0;
@@ -1083,8 +1088,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .' . $this->lca . '-notice.error,
 				#wpadminbar .' . $this->lca . '-notice.updated,
 				.' . $this->lca . '-notice,
-				.' . $this->lca . '-notice.error,	/* sets padding to 1px 12px */
-				.' . $this->lca . '-notice.updated {	/* sets padding to 1px 12px */
+				.' . $this->lca . '-notice.error,	/* wp sets padding to 1px 12px */
+				.' . $this->lca . '-notice.updated {	/* wp sets padding to 1px 12px */
 					clear:both;
 					padding:0;
 					box-shadow:none;
@@ -1099,10 +1104,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .' . $this->lca . '-notice.updated > div {
 					min-height:50px;
 				}
-				#wpadminbar .' . $this->lca . '-notice *,
-				.' . $this->lca . '-notice * {
-					line-height:1.5em;
-				}
 				#wpadminbar .' . $this->lca . '-notice a,
 				.' . $this->lca . '-notice a {
 					display:inline;
@@ -1111,7 +1112,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				#wpadminbar .' . $this->lca . '-notice .button-primary,
 				#wpadminbar .' . $this->lca . '-notice .button-secondary {
-					padding:5px 10px;
+					padding:0.3em 1em;
 				}
 				#wpadminbar .'.$this->p->lca.'-notice .notice-label,
 				#wpadminbar .'.$this->p->lca.'-notice .notice-message,

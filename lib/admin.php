@@ -1531,16 +1531,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'' : add_query_arg( 'utm_source', 'column-purchase-pro', $info['url']['purchase'] );
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox"><tr><td>';
+
 			echo '<div class="column-metabox-icon">';
 			echo $this->get_ext_img_icon( $this->p->lca );
 			echo '</div>';
+
 			echo '<div class="column-metabox-content has-buttons">';
 			echo $this->p->msgs->get( 'column-purchase-pro' );
 			echo '</div>';
+
 			echo '<div class="column-metabox-buttons">';
 			echo $this->form->get_button( _x( 'Purchase Pro Version', 'submit button', 'wpsso' ),
 				'button-primary', 'column-purchase-pro', $purchase_url, true );
 			echo '</div>';
+
 			echo '</td></tr></table>';
 		}
 
@@ -2330,13 +2334,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			switch ( $screen_id ) {
 				case 'dashboard':
 				case ( strpos( $screen_id, '_page_' . $this->p->lca . '-' ) !== false ? true : false ):
-					$this->timed_notices();
+					$this->maybe_show_rating_notice();
 					break;
 			}
 			return $screen;
 		}
 
-		public function timed_notices() {
+		public function maybe_show_rating_notice() {
 
 			/**
 			 * Notices are only dismissible since wp v4.2.
