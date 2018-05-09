@@ -935,7 +935,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_use_img_alt' => 1,			// Use Image Alt if No Content
 					'plugin_img_alt_prefix' => 'Image:',		// Image Alt Text Prefix
 					'plugin_p_cap_prefix' => 'Caption:',		// WP Caption Prefix
-					'plugin_gravatar_api' => 1,			// Include Author Gravatar Image
+					'plugin_gravatar_api' => 0,			// Include Author Gravatar Image
 					'plugin_facebook_api' => 1,			// Check for Embedded Media: Facebook Videos
 					'plugin_slideshare_api' => 1,			// Check for Embedded Media: Slideshare Presentations
 					'plugin_soundcloud_api' => 1,			// Check for Embedded Media: Soundcloud Tracks
