@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
-					'desc' => 'Automatically create complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), Pinterest Rich Pins, and many more.',
+					'desc' => 'Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards (SEO), Knowledge Graph, Pinterest Rich Pins and more.',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',

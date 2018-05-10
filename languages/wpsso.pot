@@ -1118,51 +1118,51 @@ msgid "at"
 msgstr ""
 
 #: lib/config-gettext-extract.php:10
-msgctxt "plugin description"
-msgid ""
-"Automatically create complete meta tags and Schema markup from your content "
-"for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), "
-"Pinterest Rich Pins, and many more."
-msgstr ""
-
-#: lib/config-gettext-extract.php:11
 msgctxt "option value"
 msgid "Basic Options"
 msgstr ""
 
-#: lib/config-gettext-extract.php:12
+#: lib/config-gettext-extract.php:11
 msgctxt "option value"
 msgid "Beta and Up"
 msgstr ""
 
-#: lib/config-gettext-extract.php:13
+#: lib/config-gettext-extract.php:12
 msgctxt "option value"
 msgid "Bitly (suggested)"
 msgstr ""
 
-#: lib/config-gettext-extract.php:14
+#: lib/config-gettext-extract.php:13
 msgctxt "option value"
 msgid "Bottom"
 msgstr ""
 
-#: lib/config-gettext-extract.php:15
+#: lib/config-gettext-extract.php:14
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/config-gettext-extract.php:16
+#: lib/config-gettext-extract.php:15
 msgctxt "option value"
 msgid "Categories"
 msgstr ""
 
-#: lib/config-gettext-extract.php:17
+#: lib/config-gettext-extract.php:16
 msgctxt "option value"
 msgid "Center"
 msgstr ""
 
-#: lib/config-gettext-extract.php:18 lib/messages.php:592
+#: lib/config-gettext-extract.php:17 lib/messages.php:592
 msgctxt "option value"
 msgid "checked"
+msgstr ""
+
+#: lib/config-gettext-extract.php:18
+msgctxt "plugin description"
+msgid ""
+"Complete meta tags and Schema markup from your content for Social Sharing "
+"(SMO), Google Rich Cards (SEO), Knowledge Graph, Pinterest Rich Pins and "
+"more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:19
@@ -5854,9 +5854,9 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Automatically create complete meta tags and Schema markup from your content "
-"for Social Sharing (SMO), Google Rich Cards / Knowledge Graph (SEO), "
-"Pinterest Rich Pins, and many more."
+"Complete meta tags and Schema markup from your content for Social Sharing "
+"(SMO), Google Rich Cards (SEO), Knowledge Graph, Pinterest Rich Pins and "
+"more."
 msgstr ""
 
 #. Author of the plugin/theme
