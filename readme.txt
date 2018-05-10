@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.5
 WC Tested Up To: 3.3.5
-Stable Tag: 4.2.0
+Stable Tag: 4.3.0
 
 Complete meta tags and Schema markup FROM YOUR CONTENT for Social Sharing, Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.
 
