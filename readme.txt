@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Dashboard and Features Status -&gt; Dashboard
 		* Setup Guide and Other Notes -&gt; Setup Guide
 * *Bugfixes*
-	* None
+	* Fixed The SEO Framework post URL filter (Pro version).
 * *Developer Notes*
 	* None
 
@@ -409,7 +409,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.3.0-rc.2 =
 
-(2018/05/10) Added a new "Open Graph Type" option in the Social and Search Optimization metabox (Pro version). Moved the Preview tab top-most in the Social and Search Optimization metabox. Renamed the plugin settings pages in the sidebar menu.
+(2018/05/10) Added a new "Open Graph Type" option in the SSO metabox (Pro version). Moved the Preview tab in the SSO metabox. Renamed plugin settings pages in the sidebar menu. Fixed The SEO Framework post URL filter (Pro version).
 
 = 4.2.0 =
 
