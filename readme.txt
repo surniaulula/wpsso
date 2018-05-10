@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Dashboard and Features Status -&gt; Dashboard
 		* Setup Guide and Other Notes -&gt; Setup Guide
 * *Bugfixes*
-	* Fixed The SEO Framework post URL filter (Pro version).
+	* Fixed The SEO Framework post URL filter to return a URL by post ID (Pro version).
 * *Developer Notes*
 	* None
 
