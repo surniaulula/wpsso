@@ -1,4 +1,4 @@
-=== WPSSO Core - Complete and Accurate Meta Tags + Schema Markup for Social Shares and SEO ===
+=== WPSSO Core - Social and Search Optimization for Facebook, Google, Pinterest, Twitter, and More ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -14,7 +14,7 @@ Tested Up To: 4.9.5
 WC Tested Up To: 3.3.5
 Stable Tag: 4.2.0
 
-Automatically create complete meta tags + Schema markup from your content for Social Sharing, Google Rich Cards (SEO), Pinterest Rich Pins & more.
+Creates complete meta tags + Schema markup from your content for Social Sharing, Google Rich Cards (SEO), Knowledge Graph, Pinterest Rich Pins & more.
 
 == Description ==
 
@@ -324,7 +324,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* Added a new "Open Graph Type" option in the Social and Search Optimization metabox (Pro version).
-	* Renamed all the plugin settings pages in the sidebar menu:
+	* Moved the Preview tab top-most in the Social and Search Optimization metabox.
+	* Renamed the plugin settings pages in the sidebar menu:
 		* Essential Settings -&gt; Essential
 		* General Settings -&gt; General
 		* Advanced Settings -&gt; Advanced
@@ -408,7 +409,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.3.0-b.1 =
 
-(2018/05/09) Added a new "Open Graph Type" option in the Social and Search Optimization metabox (Pro version). Renamed all the plugin settings pages in the sidebar menu.
+(2018/05/09) Added a new "Open Graph Type" option in the Social and Search Optimization metabox (Pro version). Moved the Preview tab top-most in the Social and Search Optimization metabox. Renamed the plugin settings pages in the sidebar menu.
 
 = 4.2.0 =
 
