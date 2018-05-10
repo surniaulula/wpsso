@@ -2599,7 +2599,7 @@ msgstr ""
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:159 lib/loader.php:178 lib/post.php:249 lib/register.php:229
-#: lib/term.php:226 lib/user.php:193 lib/util.php:337 lib/util.php:2387
+#: lib/term.php:226 lib/user.php:193 lib/util.php:337 lib/util.php:2391
 msgid "%s warning:"
 msgstr ""
 
@@ -3093,7 +3093,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:590 lib/util.php:2662
+#: lib/messages.php:590 lib/util.php:2666
 msgid "No options available."
 msgstr ""
 
@@ -5780,13 +5780,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
-#: lib/util.php:2368
+#: lib/util.php:2372
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/util.php:2380
+#: lib/util.php:2384
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -5795,34 +5795,34 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2380
+#: lib/util.php:2384
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2689
+#: lib/util.php:2693
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2692
+#: lib/util.php:2696
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2697
+#: lib/util.php:2701
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2700
+#: lib/util.php:2704
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2842
+#: lib/util.php:2846
 msgctxt "option comment"
 msgid "%s add-on required"
 msgstr ""

@@ -1823,7 +1823,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$this->p->debug->log( 'custom post '.$type.'_url = '.$url );
 						}
 					} else {
-						$url = $this->check_url_string( get_permalink( $mod['id'] ), 'post permalink' );
+						$url = get_permalink( $mod['id'] );
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'get_permalink url = '.$url );
+						}
+						$url = $this->check_url_string( $url, 'post permalink' );
 					}
 
 					if ( ! empty( $url ) && $add_page && get_query_var( 'page' ) > 1 ) {
