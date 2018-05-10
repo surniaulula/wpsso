@@ -1,4 +1,4 @@
-=== WPSSO Core - Social and Search Optimization (SEO) for Facebook, Google, Pinterest, Twitter, and More ===
+=== WPSSO Core - Social and Search Optimization (SSO + SEO) for Facebook, Google, Pinterest, Twitter and More ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -14,7 +14,7 @@ Tested Up To: 4.9.5
 WC Tested Up To: 3.3.5
 Stable Tag: 4.2.0
 
-Creates complete meta tags + Schema markup from your content for Social Sharing, Google Rich Cards (SEO), Knowledge Graph, Pinterest Rich Pins & more.
+Complete meta tags + Schema markup FROM YOUR CONTENT for Social Sharing, Google Rich Cards (SEO), Knowledge Graph, Pinterest Rich Pins and more.
 
 == Description ==
 
