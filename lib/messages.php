@@ -119,7 +119,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_desc':
 
-							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %1$s meta tag and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ).' '.__( 'The default description value is based on the category / tag description or biographical info for users.', 'wpsso' ).' '.__( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
+							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ).' ';
+							
+							$text .= __( 'The default description value is based on the category / tag description or biographical info for users.', 'wpsso' ).' ';
+							
+							$text .= __( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
 
 						 	break;
 
@@ -306,7 +310,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-post-og_type':
 
 							$text = __( 'A custom Facebook / Open Graph type for this content.', 'wpsso' ).' ';
-							
+
 							$text .= __( 'Please note that for sharing purposes, the Open Graph Type must be "article", "place", "product", or "website".', 'wpsso' ).' ';
 
 						 	break;
@@ -314,17 +318,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-post-og_art_section':
 
 							$text = __( 'A custom topic for this article, which may be different from the default Article Topic selected in the General settings page.', 'wpsso' ).' ';
-							
-							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %1$s meta tag.', 'wpsso' ), '<code>article:section</code>' );
+
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' );
 
 						 	break;
 
 						case 'tooltip-post-og_desc':
 
-							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %1$s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ).' ';
-							
+							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ).' ';
+
 							$text .= __( 'The default description value is based on the excerpt (if one is available) or content.', 'wpsso' ).' ';
-							
+
 							$text .= __( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
 
 						 	break;
@@ -477,7 +481,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_art_section':
 
-							$text = __( 'The topic that best describes the Posts and Pages on your website.', 'wpsso' ).' '.sprintf( __( 'This value will be used in the %1$s Facebook / Open Graph and Pinterest Rich Pin meta tags. Select "[None]" if you prefer to exclude the %1$s meta tag.', 'wpsso' ), '<code>article:section</code>' ).' '.__( 'The Pro version also allows you to select a custom Topic for each individual Post and Page.', 'wpsso' );
+							$text = __( 'The topic that best describes the Posts and Pages on your website.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'This value will be used in the %s Facebook / Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ), '<code>article:section</code>' ).' ';
+							
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' ).' ';
+							
+							$text .= __( 'The Pro version also allows you to select a custom Topic for each individual Post and Page.', 'wpsso' );
 
 							break;
 
@@ -522,7 +532,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-og_author_field':
 
-							$text = sprintf( __( 'Select which contact field to use from the author\'s WordPress profile page for the Facebook / Open Graph %1$s meta tag. The preferred setting is the Facebook URL field (default value). Select "[None]" if you prefer to exclude the %1$s meta tag, and prevent Facebook from including author attribution in shared links.', 'wpsso' ), '<code>article:author</code>' );
+							$text = sprintf( __( 'Select the contact field to use from the author\'s WordPress profile page for the Facebook / Open Graph %s meta tag value.', 'wpsso' ), '<code>article:author</code>' ).' ';
+							
+							$text .= __( 'The suggested setting is the Facebook URL contact field (default value).', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag and prevent Facebook from showing author attribution in shared links.', 'wpsso' ), '<code>article:author</code>' );
 
 							break;
 
@@ -572,7 +586,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_hide_pro': // Hide All Pro Settings
 
 							$text = __( 'Remove Pro version preview options from settings pages and metaboxes (default is unchecked).', 'wpsso' ).' ';
-							
+
 							$text .= sprintf( __( 'Please note that some metaboxes and tabs may be empty - showing only a "<em>%s</em>" message - after enabling this option.', 'wpsso' ), __( 'No options available.', 'wpsso' ) );
 
 							break;
@@ -592,9 +606,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'checked', 'option value', 'wpsso' ) : _x( 'unchecked', 'option value', 'wpsso' );
 
 							$text = __( 'The title values provided by WordPress may include modifications by themes and/or SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ).' ';
-							
+
 							$text .= sprintf( __( 'Uncheck this option to always use the original unmodified title value from WordPress (default is %s).', 'wpsso' ), $def_checked ).' ';
-							
+
 							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca.'_filter_title' );
 
 							break;
@@ -831,7 +845,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							// no break - fall through
 
-							$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[0] ).' '.sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[1], _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+							$meta_title_transl = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+
+							$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[0] ).' ';
+							
+							$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[1], $meta_title_transl );
 
 							break;	// stop here
 
@@ -1529,7 +1547,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-custom-cm-field-name':
 
 							$text = '<strong>' . __( 'You should not modify the contact field names unless you have a specific reason to do so.', 'wpsso' ) . '</strong>';
-							
+
 							$text .= __( 'As an example, to match the contact field name of a theme or other plugin, you might change "gplus" to "googleplus".', 'wpsso' );
 
 							break;
@@ -1568,17 +1586,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'info-meta-validate-facebook':
 
 							$text = '<p class="top">';
-							
+
 							$text .= __( 'Facebook and most social websites read Open Graph meta tags.', 'wpsso' ).' ';
-							
+
 							$text .= __( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating the Open Graph meta tag values.', 'wpsso' ).' ';
-							
+
 							$text .= __( 'The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' );
-							
+
 							$text .= '</p><p><i>';
-							
+
 							$text .= __( 'You may have to click the "Fetch new scrape information" button a few times to refresh Facebook\'s cache.', 'wpsso' );
-							
+
 							$text .= '</i></p>';
 
 						 	break;
@@ -1586,9 +1604,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'info-meta-validate-google':
 
 							$text = '<p class="top">';
-							
+
 							$text .= __( 'Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+.', 'wpsso' );
-							
+
 							$text .= '</p>';
 
 						 	break;
@@ -1596,7 +1614,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'info-meta-validate-pinterest':
 
 							$text = '<p class="top">';
-							
+
 							$text .= __( 'Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' );
 
 							$text .= '</p>';
@@ -1606,9 +1624,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'info-meta-validate-twitter':
 
 							$text = '<p class="top"><i>';
-							
+
 							$text .= __( 'The Twitter Card Validator does not accept query arguments &mdash; paste the following URL in the Twitter Card Validator "Card URL" input field (copy the URL using the clipboard icon):', 'wpsso' );
-							
+
 							$text .= '</i></p>';
 
 						 	break;
@@ -1619,17 +1637,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'Meta Property Containers', 'option label', 'wpsso' ) );
 
 							$text = '<p class="top">';
-							
+
 							$text .= __( 'Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates markup.', 'wpsso' );
-							
+
 							$text .= '</p>';
-							
+
 							if ( $this->p->schema->is_noscript_enabled() ) {
 
 								$text .= '<p><i>';
-								
+
 								$text .= sprintf( __( 'When the %1$s option is enabled, the W3C validator will show errors for itemprop attributes in meta elements &mdash; you may ignore these errors or disable the %1$s option.', 'wpsso' ), $settings_page_link );
-								
+
 								$text .= '</i></p>';
 							}
 
@@ -1643,7 +1661,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-meta-social-preview':
 
-						 	$text = '<p class="top">'.__( 'An example link share on Facebook &mdash; images are displayed using Facebooks suggested minimum image dimensions of 600x315px. Actual link shares on Facebook and other social websites may look significantly different than this example (depending on the application, device, resolution, orientation, etc.).', 'wpsso' ).'</p>';
+							$fb_img_dims = '600x315px';
+
+						 	$text = '<p class="top">';
+
+							$text .= sprintf( __( 'An example link share on Facebook &mdash; the image shown uses the Facebook minimum image dimensions of %s.', 'wpsso' ), $fb_img_dims ).' ';
+
+							$text .= __( 'Actual link shares on Facebook and other social sites may look significantly different than this example (depending on the application, device, resolution, orientation, etc.).', 'wpsso' );
+
+							$text .= '</p>';
 
 						 	break;
 
@@ -1809,7 +1835,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'pro-about-msg-post-text':
 
-						$text = '<p>'.__( 'You can update the excerpt or content text to change the default description values.', 'wpsso' ).'</p>';
+						$text = '<p class="top">';
+
+						$text .= sprintf( __( 'You can update the %s excerpt or content text to change the default description values.', 'wpsso' ), $info['post_type'] );
+
+						$text .= '</p>';
 
 						break;
 
@@ -1913,19 +1943,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							_x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) );
 
 						$text = '<p class="top">';
-						
+
 						$text .= '<b>' . sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ) . '</b> ';
-						
+
 						$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info['name'] );
-						
+
 						$text .= '</p><p>';
-						
+
 						$text .= '<b>' . __( 'Some themes / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> ';
-						
+
 						$text .= sprintf( __( '<a href="%s">If you use shortcodes in your content text, this option should be enabled</a> &mdash; if you experience display issues after enabling this option, determine which theme / plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ), $settings_page_url ).' ';
-						
+
 						$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca.'_filter_content' );
-						
+
 						$text .= '</p>';
 
 						break;
@@ -1996,9 +2026,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$plugins_page_link = '<a href="'.get_admin_url( null, 'plugins.php' ).'">'.__( 'Plugins' ).'</a>';
 
 						$text = '<p>';
-						
+
 						$text .= '<b>'.sprintf( __( 'At least one Authentication ID has been entered in the %1$s settings page,<br/>but the %2$s add-on is not active.', 'wpsso' ), $settings_page_link, $um_info['name'] ).'</b> ';
-						
+
 						$text .= sprintf( __( 'This Free add-on is required to update and enable the %1$s plugin and its Pro add-ons.', 'wpsso' ), $info['name_pro'] );
 
 						$text .= '</p><p>';
@@ -2010,7 +2040,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						}
 
 						$text .= ' '.sprintf( __( 'When the %1$s add-on is active, one or more Pro version updates may be available for your licensed plugin and/or its add-on(s).', 'wpsso' ), $um_info['name'] );
-						
+
 						$text .= '</p>';
 
 						break;

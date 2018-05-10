@@ -15,7 +15,7 @@ _x( 'Caption:', 'option value', 'wpsso' );
 _x( 'Categories', 'option value', 'wpsso' );
 _x( 'Center', 'option value', 'wpsso' );
 _x( 'checked', 'option value', 'wpsso' );
-_x( 'Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards (SEO), Knowledge Graph, Pinterest Rich Pins and more.', 'plugin description', 'wpsso' );
+_x( 'Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.', 'plugin description', 'wpsso' );
 _x( 'Contractor', 'option value', 'wpsso' );
 _x( 'Core Add-ons', 'lib file description', 'wpsso' );
 _x( '[Custom Address]', 'option value', 'wpsso' );
@@ -161,7 +161,7 @@ _x( 'WPSSO Core add-on to provide JSON-LD formatted Schema BreadcrumbList markup
 _x( 'WPSSO Core add-on to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business, and Local SEO meta tags.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, post edit pages, etc.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews + many more.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews and many more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide tuning options for the WordPress image editors and PHP image extensions.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS.', 'plugin description', 'wpsso' );

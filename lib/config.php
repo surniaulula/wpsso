@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
-					'desc' => 'Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Rich Cards (SEO), Knowledge Graph, Pinterest Rich Pins and more.',
+					'desc' => 'Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.',
 					'slug' => 'wpsso',
 					'base' => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
@@ -229,7 +229,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssojson' => array(			// Plugin acronym.
 					'short' => 'WPSSO JSON',	// Short plugin name.
 					'name' => 'WPSSO Schema JSON-LD Markup',
-					'desc' => 'WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews + many more.',
+					'desc' => 'WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews and many more.',
 					'slug' => 'wpsso-schema-json-ld',
 					'base' => 'wpsso-schema-json-ld/wpsso-schema-json-ld.php',
 					'update_auth' => 'tid',
