@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.3.0-rc.2 (2018/05/10)**
+**Version 4.3.0-rc.3 (2018/05/10)**
 
 * *New Features*
 	* None
@@ -407,7 +407,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.3.0-rc.2 =
+= 4.3.0-rc.3 =
 
 (2018/05/10) Added a new "Open Graph Type" option in the SSO metabox (Pro version). Moved the Preview tab in the SSO metabox. Renamed plugin settings pages in the sidebar menu. Fixed The SEO Framework post URL filter (Pro version).
 
