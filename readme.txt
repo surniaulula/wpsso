@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.3.0-rc.1 (2018/05/10)**
+**Version 4.3.0-rc.2 (2018/05/10)**
 
 * *New Features*
 	* None
@@ -407,7 +407,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.3.0-rc.1 =
+= 4.3.0-rc.2 =
 
 (2018/05/10) Added a new "Open Graph Type" option in the Social and Search Optimization metabox (Pro version). Moved the Preview tab top-most in the Social and Search Optimization metabox. Renamed the plugin settings pages in the sidebar menu.
 
