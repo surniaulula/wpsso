@@ -2,7 +2,7 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Complete meta tags and Schema markup FROM YOUR CONTENT for Social Sharing, Google Rich Cards (SEO), Knowledge Graph, Pinterest Rich Pins and more.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Complete meta tags and Schema markup FROM YOUR CONTENT for Social Sharing, Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.2.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.5</td></tr>
@@ -53,7 +53,7 @@
 
 <h3>WPSSO Core Free / Standard Features</h3>
 
-<p>&#x0229b; &nbsp; Automatically creates complete meta tags for Facebook / Open Graph, Google Plus / Rich Cards (SEO), LinkedIn, Pinterest Rich Pin, Twitter Cards, and more, in the head section of all webpages, including custom post types, custom taxonomy / terms, user profile pages, and attachment pages.</p>
+<p>&#x0229b; &nbsp; Automatically creates complete meta tags for Facebook / Open Graph, Google Plus, Google Knowledge Graph and Rich Cards (SEO), LinkedIn, Pinterest Rich Pin, Twitter Cards, Weibo and more, in the head section of all webpages, including custom post types, custom taxonomy / terms, user profile pages, and attachment pages.</p>
 
 <p>&#x0229b; &nbsp; Adds Pinterest-specific Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</p>
 

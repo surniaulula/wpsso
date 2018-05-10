@@ -14,7 +14,7 @@ Tested Up To: 4.9.5
 WC Tested Up To: 3.3.5
 Stable Tag: 4.2.0
 
-Complete meta tags and Schema markup FROM YOUR CONTENT for Social Sharing, Google Rich Cards (SEO), Knowledge Graph, Pinterest Rich Pins and more.
+Complete meta tags and Schema markup FROM YOUR CONTENT for Social Sharing, Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.
 
 == Description ==
 
@@ -58,7 +58,7 @@ WPSSO Core offers hundreds of filter hooks to customize WPSSO Core's behavior an
 
 <h3>WPSSO Core Free / Standard Features</h3>
 
-&#x0229b; &nbsp; Automatically creates complete meta tags for Facebook / Open Graph, Google Plus / Rich Cards (SEO), LinkedIn, Pinterest Rich Pin, Twitter Cards, and more, in the head section of all webpages, including custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
+&#x0229b; &nbsp; Automatically creates complete meta tags for Facebook / Open Graph, Google Plus, Google Knowledge Graph and Rich Cards (SEO), LinkedIn, Pinterest Rich Pin, Twitter Cards, Weibo and more, in the head section of all webpages, including custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
 
 &#x0229b; &nbsp; Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
 
