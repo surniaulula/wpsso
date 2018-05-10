@@ -1,4 +1,4 @@
-=== WPSSO Core - Social and Search Optimization for Facebook Google Pinterest Twitter and More ===
+=== WPSSO Core - Social and Search Optimization SEO for Facebook, Google, Pinterest, Twitter and More ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
