@@ -14,7 +14,7 @@ Tested Up To: 4.9.5
 WC Tested Up To: 3.3.5
 Stable Tag: 4.3.0
 
-Complete meta tags and Schema markup from your content for Social Sharing, Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.
+Complete meta tags and Schema markup from your content for Social Sharing, Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.
 
 == Description ==
 
@@ -22,7 +22,7 @@ Complete meta tags and Schema markup from your content for Social Sharing, Googl
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
-WPSSO Core creates complete and accurate meta tags and Schema markup for Facebook / Open Graph, Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins, Twitter Cards, Weibo, and more &mdash; including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
+WPSSO Core creates complete and accurate meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins, Twitter Cards, Weibo, and more &mdash; including descriptions, titles, hashtags, complete image markup, complete video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
 
 **WPSSO uses your *existing content* for meta tags and Schema markup:**
 
@@ -58,7 +58,7 @@ WPSSO Core offers hundreds of filter hooks to customize WPSSO Core's behavior an
 
 <h3>WPSSO Core Free / Standard Features</h3>
 
-&#x0229b; &nbsp; Automatically creates complete meta tags for Facebook / Open Graph, Google Plus, Google Knowledge Graph and Rich Cards (SEO), LinkedIn, Pinterest Rich Pin, Twitter Cards, Weibo and more, in the head section of all webpages, including custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
+&#x0229b; &nbsp; Automatically creates complete meta tags for Facebook / Open Graph, Google Plus, Google's Knowledge Graph and Rich Cards (SEO), LinkedIn, Pinterest Rich Pin, Twitter Cards, Weibo and more, in the head section of all webpages, including custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
 
 &#x0229b; &nbsp; Adds Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
 
