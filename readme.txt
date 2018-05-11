@@ -14,7 +14,7 @@ Tested Up To: 4.9.5
 WC Tested Up To: 3.3.5
 Stable Tag: 4.3.0
 
-Complete meta tags and Schema markup FROM YOUR CONTENT for Social Sharing, Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.
+Complete meta tags and Schema markup from your content for Social Sharing, Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.
 
 == Description ==
 
