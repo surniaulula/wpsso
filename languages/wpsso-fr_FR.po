@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 4.2.0\n"
+"Project-Id-Version: WPSSO Core 4.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-05-10 10:35-0600\n"
-"PO-Revision-Date: 2018-05-10 10:35-0600\n"
+"POT-Creation-Date: 2018-05-11 12:30-0600\n"
+"PO-Revision-Date: 2018-05-11 12:30-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1105,7 +1105,7 @@ msgstr "coché"
 
 #: lib/config-gettext-extract.php:18
 msgctxt "plugin description"
-msgid "Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more."
+msgid "Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more."
 msgstr "Balises méta et balisage de Schéma complet à partir de votre contenu pour le partage social (SMO), Google Knowledge Graph et Rich Cards (SEO), Pinterest Rich Pins et d'autres."
 
 #: lib/config-gettext-extract.php:19
@@ -2314,14 +2314,14 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr "Description pour la carte Twitter"
 
-#: lib/gpl/admin/meta.php:112 lib/gpl/admin/post.php:122 lib/meta.php:223
-#: lib/meta.php:244 lib/pro/admin/meta.php:123 lib/pro/admin/post.php:134
+#: lib/gpl/admin/meta.php:112 lib/gpl/admin/post.php:122 lib/meta.php:224
+#: lib/meta.php:248 lib/pro/admin/meta.php:123 lib/pro/admin/post.php:134
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr "URL de partage"
 
-#: lib/gpl/admin/meta.php:118 lib/gpl/admin/post.php:129 lib/meta.php:226
-#: lib/meta.php:247 lib/pro/admin/meta.php:129 lib/pro/admin/post.php:141
+#: lib/gpl/admin/meta.php:118 lib/gpl/admin/post.php:129 lib/meta.php:228
+#: lib/meta.php:252 lib/pro/admin/meta.php:129 lib/pro/admin/post.php:141
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr "URL canonique"
@@ -2507,7 +2507,7 @@ msgstr "Classe de  bibliothèque \"%s\" manquante."
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:159 lib/loader.php:178 lib/post.php:249 lib/register.php:229
-#: lib/term.php:226 lib/user.php:193 lib/util.php:337 lib/util.php:2387
+#: lib/term.php:226 lib/user.php:193 lib/util.php:337 lib/util.php:2391
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
@@ -2865,7 +2865,7 @@ msgstr "Masquer la pré-visualisation des réglages de la version Pro dans les p
 msgid "Please note that some metaboxes and tabs may be empty - showing only a \"<em>%s</em>\" message - after enabling this option."
 msgstr "SVP prendre note que certains métabox et onglets peuvent être vides - ne montrant qu'un message \"<em>%s</em>\" - après avoir activé cette option."
 
-#: lib/messages.php:590 lib/util.php:2662
+#: lib/messages.php:590 lib/util.php:2666
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -3977,95 +3977,95 @@ msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr "Aucune image Open Graph trouvé"
 
-#: lib/meta.php:229 lib/meta.php:250
+#: lib/meta.php:232 lib/meta.php:257
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr "URL lien court"
 
-#: lib/meta.php:255
+#: lib/meta.php:262
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr "Example Facebook / Open Graph"
 
-#: lib/meta.php:373
+#: lib/meta.php:380
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr "Débogueur Facebook"
 
-#: lib/meta.php:375
+#: lib/meta.php:382
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr "Valider Open Graph"
 
-#: lib/meta.php:379
+#: lib/meta.php:386
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr "Outil Google de test des données structurées"
 
-#: lib/meta.php:381
+#: lib/meta.php:388
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr "Valider données structurées"
 
-#: lib/meta.php:385
+#: lib/meta.php:392
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr "Validateur Pinterest de Rich Pin"
 
-#: lib/meta.php:387
+#: lib/meta.php:394
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr "Valider Rich Pins"
 
-#: lib/meta.php:391
+#: lib/meta.php:398
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/meta.php:393
+#: lib/meta.php:400
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr "Valider carte de Twitter"
 
-#: lib/meta.php:397
+#: lib/meta.php:404
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr "Validateur W3C de balises"
 
-#: lib/meta.php:399
+#: lib/meta.php:406
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr "Valider les balises HTML"
 
-#: lib/meta.php:404
+#: lib/meta.php:411
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr "Le validateur AMP"
 
-#: lib/meta.php:406
+#: lib/meta.php:413
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr "Valider le balisage AMP"
 
-#: lib/meta.php:694
+#: lib/meta.php:701
 msgid "%s key(s) cleared from the cache."
 msgstr "%s clé(s) effacée du cache."
 
-#: lib/meta.php:702
+#: lib/meta.php:709
 msgid "WP_DEBUG constant is enabled &ndash; the list of possible cache object names is included:"
 msgstr "La constante WP_DEBUG est active &ndash; la liste des noms d'objets de cache possibles est incluse:"
 
-#: lib/meta.php:709
+#: lib/meta.php:716
 msgctxt "clear cache status"
 msgid "cleared"
 msgstr "effacé"
 
-#: lib/meta.php:713
+#: lib/meta.php:720
 msgctxt "clear cache status"
 msgid "not cached"
 msgstr "pas en cache"
 
-#: lib/meta.php:762
+#: lib/meta.php:769
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
@@ -5028,39 +5028,39 @@ msgid "The %1$s PHP class is missing - please contact your hosting provider to i
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
-#: lib/util.php:2368
+#: lib/util.php:2372
 msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (longer than recommended max of %3$0.3f secs)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (supérieur au maximum recommandé de %3$0.3f secs)."
 
-#: lib/util.php:2380
+#: lib/util.php:2384
 msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté &mdash le filtre WordPress %1$s a pris %2$0.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:2380
+#: lib/util.php:2384
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:2689
+#: lib/util.php:2693
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2692
+#: lib/util.php:2696
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:2697
+#: lib/util.php:2701
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2700
+#: lib/util.php:2704
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: lib/util.php:2842
+#: lib/util.php:2846
 msgctxt "option comment"
 msgid "%s add-on required"
 msgstr "%s ajout requis"
@@ -5091,7 +5091,7 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more."
+msgid "Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more."
 msgstr "Balises méta et balisage de Schéma complet à partir de votre contenu pour le partage social (SMO), Google Knowledge Graph et Rich Cards (SEO), Pinterest Rich Pins et d'autres."
 
 #. Author of the plugin/theme

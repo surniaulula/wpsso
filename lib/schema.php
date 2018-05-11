@@ -2630,7 +2630,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Google Knowledge Graph
+			 * Google's Knowledge Graph
 			 */
 			$org_opts['org_sameas'] = isset( $org_opts['org_sameas'] ) ? $org_opts['org_sameas'] : array();
 			$org_opts['org_sameas'] = apply_filters( $wpsso->lca . '_json_data_single_organization_sameas', $org_opts['org_sameas'], $mod, $org_id );
@@ -2770,7 +2770,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Google Knowledge Graph
+			 * Google's Knowledge Graph
 			 */
 			$person_opts['person_sameas'] = isset( $person_opts['person_sameas'] ) ? $person_opts['person_sameas'] : array();
 			$person_opts['person_sameas'] = apply_filters( $wpsso->lca . '_json_data_single_person_sameas', $person_opts['person_sameas'], $mod, $user_id );

@@ -15,7 +15,7 @@ _x( 'Caption:', 'option value', 'wpsso' );
 _x( 'Categories', 'option value', 'wpsso' );
 _x( 'Center', 'option value', 'wpsso' );
 _x( 'checked', 'option value', 'wpsso' );
-_x( 'Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.', 'plugin description', 'wpsso' );
+_x( 'Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google\'s Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.', 'plugin description', 'wpsso' );
 _x( 'Contractor', 'option value', 'wpsso' );
 _x( 'Core Add-ons', 'lib file description', 'wpsso' );
 _x( '[Custom Address]', 'option value', 'wpsso' );

@@ -1161,8 +1161,8 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "Complete meta tags and Schema markup from your content for Social Sharing "
-"(SMO), Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and "
-"more."
+"(SMO), Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins "
+"and more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:19
@@ -2403,14 +2403,14 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:112 lib/gpl/admin/post.php:122 lib/meta.php:223
-#: lib/meta.php:244 lib/pro/admin/meta.php:123 lib/pro/admin/post.php:134
+#: lib/gpl/admin/meta.php:112 lib/gpl/admin/post.php:122 lib/meta.php:224
+#: lib/meta.php:248 lib/pro/admin/meta.php:123 lib/pro/admin/post.php:134
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:118 lib/gpl/admin/post.php:129 lib/meta.php:226
-#: lib/meta.php:247 lib/pro/admin/meta.php:129 lib/pro/admin/post.php:141
+#: lib/gpl/admin/meta.php:118 lib/gpl/admin/post.php:129 lib/meta.php:228
+#: lib/meta.php:252 lib/pro/admin/meta.php:129 lib/pro/admin/post.php:141
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -4638,97 +4638,97 @@ msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:229 lib/meta.php:250
+#: lib/meta.php:232 lib/meta.php:257
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/meta.php:255
+#: lib/meta.php:262
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:373
+#: lib/meta.php:380
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:375
+#: lib/meta.php:382
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:379
+#: lib/meta.php:386
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:381
+#: lib/meta.php:388
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:385
+#: lib/meta.php:392
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:387
+#: lib/meta.php:394
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:391
+#: lib/meta.php:398
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:393
+#: lib/meta.php:400
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:397
+#: lib/meta.php:404
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:399
+#: lib/meta.php:406
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:404
+#: lib/meta.php:411
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:406
+#: lib/meta.php:413
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:694
+#: lib/meta.php:701
 msgid "%s key(s) cleared from the cache."
 msgstr ""
 
-#: lib/meta.php:702
+#: lib/meta.php:709
 msgid ""
 "WP_DEBUG constant is enabled &ndash; the list of possible cache object names "
 "is included:"
 msgstr ""
 
-#: lib/meta.php:709
+#: lib/meta.php:716
 msgctxt "clear cache status"
 msgid "cleared"
 msgstr ""
 
-#: lib/meta.php:713
+#: lib/meta.php:720
 msgctxt "clear cache status"
 msgid "not cached"
 msgstr ""
 
-#: lib/meta.php:762
+#: lib/meta.php:769
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -5861,8 +5861,8 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "Complete meta tags and Schema markup from your content for Social Sharing "
-"(SMO), Google Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and "
-"more."
+"(SMO), Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins "
+"and more."
 msgstr ""
 
 #. Author of the plugin/theme

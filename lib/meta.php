@@ -220,14 +220,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
 					'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );
 
-				$table_rows[] = $form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ).
-					'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
+				$table_rows[] = ''.
+				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ).
+				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
-				$table_rows[] = $form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ).
-					'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
+				$table_rows[] = ( $sharing_url !== $canonical_url ? '' : '<tr class="hide_in_basic">' ).
+				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ).
+				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
-				$table_rows[] = $form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ).
-					'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
+				$table_rows[] = ( $this->p->options['plugin_shortener'] !== 'none' ? '' : '<tr class="hide_in_basic">' ).
+				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ).
+				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
 			} else {
 
@@ -241,13 +244,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$shortlink = apply_filters( $this->p->lca.'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
 				}
 
-				$table_rows[] = $form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ).
+				$table_rows[] = ''.
+				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td>'.$form->get_input_copy_clipboard( $sharing_url ).'</td>';
 
-				$table_rows[] = $form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ).
+				$table_rows[] = ( $sharing_url !== $canonical_url ? '' : '<tr class="hide_in_basic">' ).
+				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td>'.$form->get_input_copy_clipboard( $canonical_url ).'</td>';
 
-				$table_rows[] = $form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ).
+			
+				$table_rows[] = ( $this->p->options['plugin_shortener'] !== 'none' ? '' : '<tr class="hide_in_basic">' ).
+				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td>'.$form->get_input_copy_clipboard( $shortlink ).'</td>';
 			}
 
