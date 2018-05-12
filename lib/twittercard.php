@@ -125,7 +125,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						$embed_url = '';
 						$stream_url = '';
 
-						// check for embed or text/html video URL
+						/**
+						 * Check for embed or text/html video URL.
+						 */
 						if ( ! empty( $og_video['og:video:embed_url'] ) ) {
 							$embed_url = $og_video['og:video:embed_url'];
 							if ( $this->p->debug->enabled ) {
@@ -139,7 +141,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							}
 						}
 
-						// check for a video/mp4 stream URL
+						/**
+						 * Check for a video/mp4 stream URL.
+						 */
 						if ( isset( $og_video['og:video:type'] ) &&
 							$og_video['og:video:type'] === 'video/mp4' ) {
 							$stream_url = SucomUtil::get_mt_media_url( $og_video, 'og:video' );
