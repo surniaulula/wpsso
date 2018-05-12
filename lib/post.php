@@ -276,7 +276,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( isset( self::$cache_shortlinks[$post_id][$context][$allow_slugs] ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'returning shortlink / short_url (from static cache) = ' . 
+					$this->p->debug->log( 'returning shortlink (from static cache) = ' . 
 						self::$cache_shortlinks[$post_id][$context][$allow_slugs] );
 				}
 				return self::$cache_short_url = self::$cache_shortlinks[$post_id][$context][$allow_slugs];
@@ -372,12 +372,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$service_key = $this->p->options['plugin_shortener'];
 			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $service_key, $mod, $context );
 
-			if ( $sharing_url === $short_url ) {	// shortened failed
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: short URL (' . $short_url . ') returned is identical to long URL.' );
-				}
-				return $shortlink;	// return original shortlink
-			} elseif ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// invalid url
+			if ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// invalid url
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: invalid short URL (' . $short_url . ') returned by filters' );
 				}
@@ -385,7 +380,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'returning shortlink / short_url = ' . $short_url );
+				$this->p->debug->log( 'returning shortlink = ' . $short_url );
 			}
 
 			return self::$cache_short_url = self::$cache_shortlinks[$post_id][$context][$allow_slugs] = $short_url;	// success - return short url
@@ -393,10 +388,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function restore_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
 
-			if ( self::$cache_short_url === $shortlink ) {	// shortlink value has not changed
+			if ( self::$cache_short_url === $shortlink ) {	// Shortlink value has not changed.
 				self::$cache_short_url = null;	// Just in case.
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: shortlink / short_url value has not changed' );
+					$this->p->debug->log( 'exiting early: shortlink value has not changed' );
 				}
 				return $shortlink;
 			}
@@ -405,7 +400,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( isset( self::$cache_shortlinks[$post_id][$context][$allow_slugs] ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'restoring shortlink / short_url ' . $shortlink . ' to ' . 
+					$this->p->debug->log( 'restoring shortlink ' . $shortlink . ' to ' . 
 						self::$cache_shortlinks[$post_id][$context][$allow_slugs] );
 				}
 				return self::$cache_shortlinks[$post_id][$context][$allow_slugs];

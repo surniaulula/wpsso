@@ -94,7 +94,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:797 lib/post.php:712 lib/term.php:401 lib/user.php:404
+#: lib/admin.php:797 lib/post.php:707 lib/term.php:401 lib/user.php:404
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -716,7 +716,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:2553 lib/gpl/admin/advanced.php:391
-#: lib/pro/admin/advanced.php:383 lib/pro/util/shorten.php:268
+#: lib/pro/admin/advanced.php:383 lib/pro/util/shorten.php:270
 msgctxt "option label"
 msgid "URL Shortener API is Enabled"
 msgstr ""
@@ -2226,13 +2226,13 @@ msgid "Bitly URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:362 lib/pro/admin/advanced.php:356
-#: lib/pro/util/shorten.php:229
+#: lib/pro/util/shorten.php:231
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:367 lib/pro/admin/advanced.php:361
-#: lib/pro/util/shorten.php:237
+#: lib/pro/util/shorten.php:239
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
@@ -2258,7 +2258,7 @@ msgid "Google APIs"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:385 lib/pro/admin/advanced.php:379
-#: lib/pro/util/shorten.php:260
+#: lib/pro/util/shorten.php:262
 msgctxt "option label"
 msgid "Google Project API Key"
 msgstr ""
@@ -2269,7 +2269,7 @@ msgid "Ow.ly URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:398 lib/pro/admin/advanced.php:390
-#: lib/pro/util/shorten.php:285
+#: lib/pro/util/shorten.php:287
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
@@ -2280,7 +2280,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:405 lib/pro/admin/advanced.php:397
-#: lib/pro/util/shorten.php:319
+#: lib/pro/util/shorten.php:321
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
@@ -2552,7 +2552,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:192 lib/meta.php:220 lib/post.php:1057
+#: lib/gpl/admin/post.php:192 lib/meta.php:220 lib/post.php:1052
 #: lib/pro/admin/post.php:205
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -4896,134 +4896,134 @@ msgid ""
 "children of post ID %2$d (longer than recommended max of %3$0.3f secs)."
 msgstr ""
 
-#: lib/post.php:831
+#: lib/post.php:826
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:834
+#: lib/post.php:829
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:862
+#: lib/post.php:857
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:864
+#: lib/post.php:859
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:866
+#: lib/post.php:861
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:867
+#: lib/post.php:862
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:877 lib/util.php:1225
+#: lib/post.php:872 lib/util.php:1225
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:886
+#: lib/post.php:881
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:895
+#: lib/post.php:890
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:904
+#: lib/post.php:899
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:920
+#: lib/post.php:915
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:930
+#: lib/post.php:925
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:942
+#: lib/post.php:937
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:942
+#: lib/post.php:937
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:942
+#: lib/post.php:937
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:965
+#: lib/post.php:960
 msgid ""
 "%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again "
 "later)..."
 msgstr ""
 
-#: lib/post.php:969
+#: lib/post.php:964
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Debug option is enabled - will "
 "keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:971
+#: lib/post.php:966
 msgid ""
 "Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful..."
 msgstr ""
 
-#: lib/post.php:1192
+#: lib/post.php:1187
 msgctxt "option label"
 msgid "Robots:"
 msgstr ""
 
-#: lib/post.php:1201
+#: lib/post.php:1196
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1202
+#: lib/post.php:1197
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1213
+#: lib/post.php:1208
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1214
+#: lib/post.php:1209
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1215
+#: lib/post.php:1210
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1216
+#: lib/post.php:1211
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1290
+#: lib/post.php:1285
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -5186,26 +5186,26 @@ msgid ""
 "activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/pro/util/shorten.php:228 lib/pro/util/shorten.php:259
-#: lib/pro/util/shorten.php:284 lib/pro/util/shorten.php:318
+#: lib/pro/util/shorten.php:230 lib/pro/util/shorten.php:261
+#: lib/pro/util/shorten.php:286 lib/pro/util/shorten.php:320
 msgid "The %s option is empty."
 msgstr ""
 
-#: lib/pro/util/shorten.php:236
+#: lib/pro/util/shorten.php:238
 msgid ""
 "The %1$s and %2$s options are empty &mdash; at least one option is required."
 msgstr ""
 
-#: lib/pro/util/shorten.php:238
+#: lib/pro/util/shorten.php:240
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr ""
 
-#: lib/pro/util/shorten.php:267
+#: lib/pro/util/shorten.php:269
 msgid "The %s option is not enabled."
 msgstr ""
 
-#: lib/pro/util/shorten.php:351
+#: lib/pro/util/shorten.php:353
 msgid ""
 "Incomplete and/or missing %s service API credentials for URL shortening."
 msgstr ""
