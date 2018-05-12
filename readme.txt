@@ -127,12 +127,6 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 		* Your Own URL Shortener (YOURLS)
 		* YouTube Videos and Playlists
 
-<!--smp-ignore-->
-
-&#x0229b; &nbsp; <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme">Purchase the WPSSO Core Pro plugin here</a> (all purchases include a <em>No Risk 30 Day Refund Policy</em>).
-
-<!--/smp-ignore-->
-
 <h3>Optional WPSSO Core Add-ons</h3>
 
 <h4>Optional Free Add-ons</h4>

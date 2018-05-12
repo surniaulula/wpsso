@@ -138,12 +138,6 @@
 </ul></li>
 </ul>
 
-<!--smp-ignore-->
-
-<p>&#x0229b; &nbsp; <a href="https://wpsso.com/extend/plugins/wpsso/?utm_source=wpsso-readme">Purchase the WPSSO Core Pro plugin here</a> (all purchases include a <em>No Risk 30 Day Refund Policy</em>).</p>
-
-<!--/smp-ignore-->
-
 <h3>Optional WPSSO Core Add-ons</h3>
 
 <h4>Optional Free Add-ons</h4>
