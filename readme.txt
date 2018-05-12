@@ -124,17 +124,12 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 * NextGEN Gallery
 * Polylang
 * rtMedia for WordPress, BuddyPress and bbPress
-* Simple Job Board (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
 * The Events Calendar
 * The SEO Framework
 * WooCommerce (versions 1, 2, and 3)
 * WordPress REST API (version 2)
 * WP eCommerce
-* WP Job Manager (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
 * WP Meta SEO
-* WP Product Review (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
-* WP Recipe Maker (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
-* WP Ultimate Recipe (provided by optional [WPSSO JSON Pro add-on](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme))
 * Yoast SEO (aka WordPress SEO)
 * Yotpo Social Reviews for WooCommerce
 

@@ -120,17 +120,12 @@
 <li>NextGEN Gallery</li>
 <li>Polylang</li>
 <li>rtMedia for WordPress, BuddyPress and bbPress</li>
-<li>Simple Job Board (provided by optional <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a>)</li>
 <li>The Events Calendar</li>
 <li>The SEO Framework</li>
 <li>WooCommerce (versions 1, 2, and 3)</li>
 <li>WordPress REST API (version 2)</li>
 <li>WP eCommerce</li>
-<li>WP Job Manager (provided by optional <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a>)</li>
 <li>WP Meta SEO</li>
-<li>WP Product Review (provided by optional <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a>)</li>
-<li>WP Recipe Maker (provided by optional <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a>)</li>
-<li>WP Ultimate Recipe (provided by optional <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO JSON Pro add-on</a>)</li>
 <li>Yoast SEO (aka WordPress SEO)</li>
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul>
