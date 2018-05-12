@@ -17,7 +17,7 @@
 
 <p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup:</strong></p>
 
-<p>WPSSO Core creates complete and accurate meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins, Twitter Cards, Weibo, and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.</p>
+<p>WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins, Twitter Cards, Weibo, and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.</p>
 
 <p><strong>WPSSO uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
@@ -82,8 +82,8 @@
 <li>Includes a Social and Search Optimization metabox for Posts, Pages, custom post type, user profile, category, tag, and custom taxonomy editing pages.</li>
 <li>Offers individual customization of the article topic, shared title, descriptions, shared image and/or video, product information, recipe information, event information, and much more.</li>
 <li>Optionally upscale smaller images for social sharing and Schema markup, up to a maximum upscale percentage.</li>
-<li>Optionally validate all image minimum / maximum dimensions and aspect ratios (recommended).</li>
-<li>Optionally renders shortcodes for accurate description texts and embedded video detection (recommended).</li>
+<li>Optionally validate all image minimum / maximum dimensions and aspect ratios.</li>
+<li>Optionally renders shortcodes for accurate description texts and embedded video detection.</li>
 <li>Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.</li>
 <li>Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and eCommerce products.</li>
 <li>Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.</li>
@@ -128,7 +128,7 @@
 <li>Gravatar (Author Image)</li>
 <li>Ow.ly</li>
 <li>Slideshare Presentations</li>
-<li>Soundcloud Tracks (for Twitter Player Card)</li>
+<li>Soundcloud Tracks (for the Twitter Player Card)</li>
 <li>TinyURL</li>
 <li>Vimeo Videos</li>
 <li>Wistia Videos</li>
@@ -153,11 +153,11 @@
 <li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a> &mdash; <em>recommended for best SEO</em></li>
-<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> &mdash; <em>recommended for best SEO</em></li>
+<li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a> &mdash; <em>for best SEO</em></li>
+<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> &mdash; <em>for best SEO</em></li>
 <li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors">WPSSO Tune WP Image Editors</a> &mdash; <em>recommended for best social images</em></li>
+<li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors">WPSSO Tune WP Image Editors</a> &mdash; <em>for best social images</em></li>
 <li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a></li>
 </ul>
@@ -169,9 +169,9 @@
 <li><a href="https://wpsso.com/extend/plugins/wpsso-organization/?utm_source=wpsso-readme">WPSSO Organization Markup Pro</a></li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-plm/?utm_source=wpsso-readme">WPSSO Place / Location and Local Business Meta Pro</a></li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-rrssb/?utm_source=wpsso-readme">WPSSO Ridiculously Responsive Social Sharing Buttons Pro</a></li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO Schema JSON-LD Markup Pro</a> &mdash; <em>recommended for best SEO</em></li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO Schema JSON-LD Markup Pro</a> &mdash; <em>for best SEO</em></li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/?utm_source=wpsso-readme">WPSSO Social Sharing Buttons Pro</a></li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-tune-image-editors/?utm_source=wpsso-readme">WPSSO Tune WP Image Editors Pro</a> &mdash; <em>recommended for best social images</em></li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-tune-image-editors/?utm_source=wpsso-readme">WPSSO Tune WP Image Editors Pro</a> &mdash; <em>for best social images</em></li>
 </ul>
 
 <h3>Coded for Performance</h3>
