@@ -91,45 +91,41 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 * Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
 * Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more.
 * The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
-
-**Integration with 3rd Party Plugins**
-
-* All in One SEO Pack
-* bbPress
-* BuddyPress (including Group Forum Topics)
-* Co-Authors Plus (including Guest Authors)
-* Easy Digital Downloads
-* Gravity Forms + GravityView
-* HeadSpace2 SEO
-* MarketPress - WordPress eCommerce
-* NextCellent Gallery - NextGEN Legacy
-* NextGEN Gallery
-* Polylang
-* rtMedia for WordPress, BuddyPress and bbPress
-* The Events Calendar
-* The SEO Framework
-* WooCommerce (versions 1, 2, and 3)
-* WordPress REST API (version 2)
-* WP eCommerce
-* WP Meta SEO
-* Yoast SEO (aka WordPress SEO)
-* Yotpo Social Reviews for WooCommerce
-
-**Integration with Service APIs**
-
-* Bitly
-* Facebook Embedded Videos
-* Google URL Shortener
-* Gravatar (Author Image)
-* Ow.ly
-* Slideshare Presentations
-* Soundcloud Tracks (for the Twitter Player Card)
-* TinyURL
-* Vimeo Videos
-* Wistia Videos
-* WordPress Video Shortcode (and Self-Hosted Videos)
-* Your Own URL Shortener (YOURLS)
-* YouTube Videos and Playlists
+	* **Integration with 3rd Party Plugins** 
+		* All in One SEO Pack
+		* bbPress
+		* BuddyPress (including Group Forum Topics)
+		* Co-Authors Plus (including Guest Authors)
+		* Easy Digital Downloads
+		* Gravity Forms + GravityView
+		* HeadSpace2 SEO
+		* MarketPress - WordPress eCommerce
+		* NextCellent Gallery - NextGEN Legacy
+		* NextGEN Gallery
+		* Polylang
+		* rtMedia for WordPress, BuddyPress and bbPress
+		* The Events Calendar
+		* The SEO Framework
+		* WooCommerce (versions 1, 2, and 3)
+		* WordPress REST API (version 2)
+		* WP eCommerce
+		* WP Meta SEO
+		* Yoast SEO (aka WordPress SEO)
+		* Yotpo Social Reviews for WooCommerce
+	* **Integration with Service APIs**
+		* Bitly
+		* Facebook Embedded Videos
+		* Google URL Shortener
+		* Gravatar (Author Image)
+		* Ow.ly
+		* Slideshare Presentations
+		* Soundcloud Tracks (for the Twitter Player Card)
+		* TinyURL
+		* Vimeo Videos
+		* Wistia Videos
+		* WordPress Video Shortcode (and Self-Hosted Videos)
+		* Your Own URL Shortener (YOURLS)
+		* YouTube Videos and Playlists
 
 <!--smp-ignore-->
 

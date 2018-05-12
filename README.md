@@ -91,10 +91,10 @@
 <li>Allows customization of field names, labels, and add / remove contacts on user profile pages and Co-Authors Plus guest author profiles.</li>
 <li>Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.</li>
 <li>Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more.</li>
-<li>The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.</li>
-</ul>
+<li>The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 
-<p><strong>Integration with 3rd Party Plugins</strong></p>
+<ul>
+<li><strong>Integration with 3rd Party Plugins</strong> 
 
 <ul>
 <li>All in One SEO Pack</li>
@@ -117,9 +117,8 @@
 <li>WP Meta SEO</li>
 <li>Yoast SEO (aka WordPress SEO)</li>
 <li>Yotpo Social Reviews for WooCommerce</li>
-</ul>
-
-<p><strong>Integration with Service APIs</strong></p>
+</ul></li>
+<li><strong>Integration with Service APIs</strong>
 
 <ul>
 <li>Bitly</li>
@@ -135,6 +134,8 @@
 <li>WordPress Video Shortcode (and Self-Hosted Videos)</li>
 <li>Your Own URL Shortener (YOURLS)</li>
 <li>YouTube Videos and Playlists</li>
+</ul></li>
+</ul></li>
 </ul>
 
 <!--smp-ignore-->
