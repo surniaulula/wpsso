@@ -35,14 +35,6 @@
 
 <p>WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version even comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.</p>
 
-<p><strong>WPSSO is <em>incredibly fast</em> and coded for performance:</strong></p>
-
-<p>WPSSO Core make full use of all available caching techniques &mdash; even using advanced caching techniques like pre-seeding the transient cache in background. WPSSO Core and its add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).</p>
-
-<p><strong>WPSSO is <em>developer friendly</em> and easily customizable:</strong></p>
-
-<p>WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-ons to extend WPSSO Core's features.</p>
-
 <h3>Users Love WPSSO Core</h3>
 
 <p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "The plugin is indispensable to me when it comes to posting on social media... it makes it so that your posts look the best that they possible can every time when posting on Facebook, Twitter, or any other site." - <a href="https://wordpress.org/support/topic/this-is-probably-the-best-plugin-of-its-kind/">monsuirette</a></p>
@@ -54,7 +46,7 @@
 <h3>WPSSO Core Free / Standard Features</h3>
 
 <ul>
-<li>Creates complete meta tags for:
+<li>Creates complete and accurate meta tags for:
 
 <ul>
 <li>Facebook / Open Graph</li>
@@ -70,7 +62,7 @@
 <li>Provides settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.</li>
 <li>Includes support for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.</li>
 <li>Uses images from a variety of sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.</li>
-<li>Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards, Pinterest Rich Pins, and all Twitter Card types.</li>
+<li>Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards (SEO), Pinterest Rich Pins, and all Twitter Cards.</li>
 <li>Configurable maximum title and description lengths, including both hard and soft limits.</li>
 <li>Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/?utm_source=wpsso-readme">comprehensive online documentation</a>.</li>
 <li>Configurable website / business social accounts for Schema markup and Google's Knowledge Graph.</li>
@@ -181,6 +173,14 @@
 <li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/?utm_source=wpsso-readme">WPSSO Social Sharing Buttons Pro</a></li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-tune-image-editors/?utm_source=wpsso-readme">WPSSO Tune WP Image Editors Pro</a> &mdash; <em>recommended for best social images</em></li>
 </ul>
+
+<h3>Coded for Performance</h3>
+
+<p>WPSSO Core make full use of all available caching techniques &mdash; even using advanced caching techniques like pre-seeding the cache in background. WPSSO Core and its add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).</p>
+
+<h3>Highly Customizable</h3>
+
+<p>WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-ons to extend WPSSO Core's features.</p>
 
 
 <h2>Installation</h2>

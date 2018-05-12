@@ -40,14 +40,6 @@ WPSSO Core provides a specific image and image dimensions for the Pinterest Pin 
 
 WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version even comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.
 
-**WPSSO is *incredibly fast* and coded for performance:**
-
-WPSSO Core make full use of all available caching techniques &mdash; even using advanced caching techniques like pre-seeding the transient cache in background. WPSSO Core and its add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
-
-**WPSSO is *developer friendly* and easily customizable:**
-
-WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-ons to extend WPSSO Core's features.
-
 <h3>Users Love WPSSO Core</h3>
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "The plugin is indispensable to me when it comes to posting on social media... it makes it so that your posts look the best that they possible can every time when posting on Facebook, Twitter, or any other site." - [monsuirette](https://wordpress.org/support/topic/this-is-probably-the-best-plugin-of-its-kind/)
@@ -58,7 +50,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 <h3>WPSSO Core Free / Standard Features</h3>
 
-* Creates complete meta tags for:
+* Creates complete and accurate meta tags for:
 	* Facebook / Open Graph
 	* Google+
 	* Google's Knowledge Graph
@@ -71,7 +63,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 * Provides settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.
 * Includes support for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
 * Uses images from a variety of sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
-* Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards, Pinterest Rich Pins, and all Twitter Card types.
+* Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards (SEO), Pinterest Rich Pins, and all Twitter Cards.
 * Configurable maximum title and description lengths, including both hard and soft limits.
 * Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/?utm_source=wpsso-readme).
 * Configurable website / business social accounts for Schema markup and Google's Knowledge Graph.
@@ -171,6 +163,14 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 * [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme) &mdash; *recommended for best SEO*
 * [WPSSO Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-ssb/?utm_source=wpsso-readme)
 * [WPSSO Tune WP Image Editors Pro](https://wpsso.com/extend/plugins/wpsso-tune-image-editors/?utm_source=wpsso-readme) &mdash; *recommended for best social images*
+
+<h3>Coded for Performance</h3>
+
+WPSSO Core make full use of all available caching techniques &mdash; even using advanced caching techniques like pre-seeding the cache in background. WPSSO Core and its add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
+
+<h3>Highly Customizable</h3>
+
+WPSSO Core offers hundreds of filter hooks to customize its behavior and output, provides extensive developer documentation with examples, includes dozens of 3rd party integration modules in the Pro version, and offers several optional Free and Pro add-ons to extend WPSSO Core's features.
 
 == Installation ==
 
