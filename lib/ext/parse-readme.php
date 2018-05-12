@@ -219,9 +219,12 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			}
 	
 			$remaining_content = '';
+
 			foreach ( $sections as $s_name => $s_data ) {
-				$remaining_content .= "\n<h3>{$s_data['section_title']}</h3>\n{$s_data['section_content']}";
+				//$remaining_content .= '<h3>' . $s_data['section_title'] . '</h3>' . "\n";
+				$remaining_content .= $s_data['section_content'] . "\n";
 			}
+
 			$remaining_content = trim( $remaining_content );
 	
 			$r = array(
