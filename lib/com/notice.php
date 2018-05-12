@@ -916,7 +916,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( $is_dismissible ) {
 				$msg_html .= '<button class="notice-dismiss" type="button">' .
 					'<span class="notice-dismiss-text">' . $payload['dismiss_diff'] . '</span>' .
-					'</button><!-- .notice-dismiss -->';
+						'</button><!-- .notice-dismiss -->';
 			}
 
 			if ( ! empty( $payload['label'] ) ) {
@@ -1143,6 +1143,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					top:0;
 					right:0;
 					padding-left:0;
+					padding-bottom:15px;
 				}
 				#wpadminbar .' . $this->lca . '-notice .notice-label,
 				.' . $this->lca . '-notice .notice-label {

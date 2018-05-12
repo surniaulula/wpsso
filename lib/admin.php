@@ -470,19 +470,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $settings_page ) ) {
 
-				$settings_label = $ext === $this->p->lca ? 
-					_x( $this->p->cf['plugin'][$ext]['lib'][$menu_lib][$settings_page], 'lib file description', 'wpsso' ) : 
-					__( 'Add-on Settings', 'wpsso' );
+				if ( $ext === $this->p->lca ) {
+					$settings_page_transl = _x( $this->p->cf['plugin'][$ext]['lib'][$menu_lib][$settings_page], 'lib file description', 'wpsso' );
+					$settings_label_transl = sprintf( _x( '%s Settings', 'plugin action link', 'wpsso' ), $settings_page_transl );
+				} else {
+					$settings_label_transl = _x( 'Add-on Settings', 'plugin action link', 'wpsso' );
+				}
 
-				$links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' . $settings_label . '</a>';
+				$links[] = '<a href="' . $this->p->util->get_admin_url( $settings_page ) . '">' . $settings_label_transl . '</a>';
 			}
 
 			if ( ! empty( $licenses_page ) ) {
-				$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' . __( 'Core Add-ons', 'wpsso' ) . '</a>';
+				$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' . _x( 'Core Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
 			if ( ! empty( $dashboard_page ) ) {
-				$links[] = '<a href="' . $this->p->util->get_admin_url( $dashboard_page ) . '">' . __( 'Dashboard', 'wpsso' ) . '</a>';
+				$links[] = '<a href="' . $this->p->util->get_admin_url( $dashboard_page ) . '">' . _x( 'Dashboard', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
 			return $links;
@@ -507,24 +510,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! empty( $info['url']['faqs'] ) ) {
 				$links[] = '<a href="' . $info['url']['faqs'] . '"' .
 					( $tabindex !== false ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
-					_x( 'FAQs', 'plugin action link', 'wpsso' ) . '</a>';
+						_x( 'FAQs', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
 			if ( ! empty( $info['url']['notes'] ) ) {
 				$links[] = '<a href="' . $info['url']['notes'] . '"' .
 					( $tabindex !== false ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
-					_x( 'Other Notes', 'plugin action link', 'wpsso' ) . '</a>';
+						_x( 'Other Notes', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
 			if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
 				$links[] = '<a href="' . $info['url']['support'] . '"' .
 					( $tabindex !== false ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
-					_x( 'Pro Support', 'plugin action link', 'wpsso' ) . '</a>';
+						_x( 'Pro Support', 'plugin action link', 'wpsso' ) . '</a>';
 
 			} elseif ( ! empty( $info['url']['forum'] ) ) {
 				$links[] = '<a href="' . $info['url']['forum'] . '"' .
 					( $tabindex !== false ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
-					_x( 'Community Forum', 'plugin action link', 'wpsso' ) . '</a>';
+						_x( 'Community Forum', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
 			if ( ! empty( $info['url']['purchase'] ) ) {
