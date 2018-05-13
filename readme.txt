@@ -94,18 +94,31 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 WPSSO Core Pro gives you the power to further integrate and customize your meta tags and Schema markup with third party plugins and APIs.
 
 * Includes a Social and Search Optimization metabox for Posts, Pages, custom post type, user profile, category, tag, and custom taxonomy editing pages.
+
 * Offers individual customization of the article topic, shared title, descriptions, shared image and/or video, product information, recipe information, event information, and much more.
+
 * Optionally upscale smaller images for social sharing and Schema markup, up to a maximum upscale percentage.
+
 * Optionally validate all image minimum / maximum dimensions and aspect ratios.
+
 * Optionally renders shortcodes for accurate description texts and embedded video detection.
+
 * Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.
+
 * Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and eCommerce products.
+
 * Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
+
 * Include or exclude individual Facebook / Open Graph / Google / SEO / Twitter Card / Schema meta tag from the webpage head section.
+
 * Allows customization of field names, labels, and add / remove contacts on user profile pages and Co-Authors Plus guest author profiles.
+
 * Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
+
 * Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more.
+
 * The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
+
 	* **Integration with 3rd Party Plugins** 
 		* All in One SEO Pack
 		* bbPress
@@ -127,6 +140,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 		* WP Meta SEO
 		* Yoast SEO (aka WordPress SEO)
 		* Yotpo Social Reviews for WooCommerce
+
 	* **Integration with Service APIs**
 		* Bitly
 		* Facebook Embedded Videos
@@ -171,7 +185,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 
 <h3>Coded for Performance</h3>
 
-WPSSO Core make full use of all available caching techniques &mdash; even using advanced caching techniques like pre-seeding the cache in background. WPSSO Core and its add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with PHP v7.x (PHP v5.4 or better required).
+WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding the cache in background. WPSSO Core and its add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.4 or better required).
 
 <h3>Highly Customizable</h3>
 
