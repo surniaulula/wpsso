@@ -293,6 +293,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.3.1-dev.1 (2018/05/13)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added support for MP4 videos as a valid "twitter:player" meta tag value.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 4.3.0 (2018/05/10)**
 
 * *New Features*
@@ -381,6 +392,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Added new WpssoUtil get_metabox_table() and get_metabox_tabbed() methods.
 
 == Upgrade Notice ==
+
+= 4.3.1-dev.1 =
+
+(2018/05/13) Added support for MP4 videos as a valid "twitter:player" meta tag value.
 
 = 4.3.0 =
 
