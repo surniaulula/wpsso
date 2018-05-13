@@ -51,6 +51,7 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 <h3>WPSSO Core Free / Standard Features</h3>
 
 * Creates complete and accurate meta tags for:
+
 	* Facebook / Open Graph
 	* Google+
 	* Google's Knowledge Graph
@@ -59,19 +60,33 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 	* Pinterest Rich Pins
 	* Twitter Cards
 	* Weibo and many more.
+
 * Offers Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
+
 * Provides settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.
+
 * Includes support for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
+
 * Uses images from a variety of sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
+
 * Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards (SEO), Pinterest Rich Pins, and all Twitter Cards.
+
 * Configurable maximum title and description lengths, including both hard and soft limits.
-* Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/?utm_source=wpsso-readme).
+
+* Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
+
 * Configurable website / business social accounts for Schema markup and Google's Knowledge Graph.
+
 * Adds author, publisher, and website markup using Schema JSON-LD for Google's Knowledge Graph (SEO).
+
 * Adds markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
+
 * User profile contact fields for Facebook / Open Graph, Twitter Cards, Schema markup, and Google's Knowledge Graph.
+
 * Built-in support for [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) and [AMP for WP - Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
+
 * Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.
+
 * And even includes an option to hide the preview of all Pro settings and features. ;-)
 
 <h3>WPSSO Core Pro / Additional Features</h3>
@@ -146,13 +161,13 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 
 <h4>Optional Pro Add-ons</h4>
 
-* [WPSSO Mobile App Meta Pro](https://wpsso.com/extend/plugins/wpsso-am/?utm_source=wpsso-readme)
-* [WPSSO Organization Markup Pro](https://wpsso.com/extend/plugins/wpsso-organization/?utm_source=wpsso-readme)
-* [WPSSO Place / Location and Local Business Meta Pro](https://wpsso.com/extend/plugins/wpsso-plm/?utm_source=wpsso-readme)
-* [WPSSO Ridiculously Responsive Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-rrssb/?utm_source=wpsso-readme)
-* [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme) &mdash; *for best SEO*
-* [WPSSO Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-ssb/?utm_source=wpsso-readme)
-* [WPSSO Tune WP Image Editors Pro](https://wpsso.com/extend/plugins/wpsso-tune-image-editors/?utm_source=wpsso-readme) &mdash; *for best social images*
+* [WPSSO Mobile App Meta Pro](https://wpsso.com/extend/plugins/wpsso-am/)
+* [WPSSO Organization Markup Pro](https://wpsso.com/extend/plugins/wpsso-organization/)
+* [WPSSO Place / Location and Local Business Meta Pro](https://wpsso.com/extend/plugins/wpsso-plm/)
+* [WPSSO Ridiculously Responsive Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-rrssb/)
+* [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) &mdash; *for best SEO*
+* [WPSSO Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-ssb/)
+* [WPSSO Tune WP Image Editors Pro](https://wpsso.com/extend/plugins/wpsso-tune-image-editors/) &mdash; *for best social images*
 
 <h3>Coded for Performance</h3>
 
@@ -166,17 +181,17 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 <h3>Install and Uninstall</h3>
 
-* [Install the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/?utm_source=wpsso-readme)
-* [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/?utm_source=wpsso-readme)
-	* [BuddyPress Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/?utm_source=wpsso-readme)
-* [Uninstall the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/?utm_source=wpsso-readme)
-* [Performance Tuning](https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/?utm_source=wpsso-readme)
-* [Debugging and Problem Solving](https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/?utm_source=wpsso-readme)
-* [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/?utm_source=wpsso-readme)
+* [Install the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/)
+* [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
+	* [BuddyPress Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
+* [Uninstall the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/)
+* [Performance Tuning](https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/)
+* [Debugging and Problem Solving](https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/)
+* [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 
 <h3>Plugin Setup</h3>
 
-* [A Setup Guide for WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/?utm_source=wpsso-readme)
+* [A Setup Guide for WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/)
 
 == Frequently Asked Questions ==
 

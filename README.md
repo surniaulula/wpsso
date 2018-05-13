@@ -46,7 +46,7 @@
 <h3>WPSSO Core Free / Standard Features</h3>
 
 <ul>
-<li>Creates complete and accurate meta tags for:
+<li><p>Creates complete and accurate meta tags for:</p>
 
 <ul>
 <li>Facebook / Open Graph</li>
@@ -58,20 +58,20 @@
 <li>Twitter Cards</li>
 <li>Weibo and many more.</li>
 </ul></li>
-<li>Offers Pinterest-specific Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</li>
-<li>Provides settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.</li>
-<li>Includes support for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.</li>
-<li>Uses images from a variety of sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.</li>
-<li>Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards (SEO), Pinterest Rich Pins, and all Twitter Cards.</li>
-<li>Configurable maximum title and description lengths, including both hard and soft limits.</li>
-<li>Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/?utm_source=wpsso-readme">comprehensive online documentation</a>.</li>
-<li>Configurable website / business social accounts for Schema markup and Google's Knowledge Graph.</li>
-<li>Adds author, publisher, and website markup using Schema JSON-LD for Google's Knowledge Graph (SEO).</li>
-<li>Adds markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</li>
-<li>User profile contact fields for Facebook / Open Graph, Twitter Cards, Schema markup, and Google's Knowledge Graph.</li>
-<li>Built-in support for <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> and <a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP - Accelerated Mobile Pages</a> plugins.</li>
-<li>Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.</li>
-<li>And even includes an option to hide the preview of all Pro settings and features. ;-)</li>
+<li><p>Offers Pinterest-specific Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</p></li>
+<li><p>Provides settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.</p></li>
+<li><p>Includes support for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.</p></li>
+<li><p>Uses images from a variety of sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.</p></li>
+<li><p>Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards (SEO), Pinterest Rich Pins, and all Twitter Cards.</p></li>
+<li><p>Configurable maximum title and description lengths, including both hard and soft limits.</p></li>
+<li><p>Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p></li>
+<li><p>Configurable website / business social accounts for Schema markup and Google's Knowledge Graph.</p></li>
+<li><p>Adds author, publisher, and website markup using Schema JSON-LD for Google's Knowledge Graph (SEO).</p></li>
+<li><p>Adds markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</p></li>
+<li><p>User profile contact fields for Facebook / Open Graph, Twitter Cards, Schema markup, and Google's Knowledge Graph.</p></li>
+<li><p>Built-in support for <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> and <a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP - Accelerated Mobile Pages</a> plugins.</p></li>
+<li><p>Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.</p></li>
+<li><p>And even includes an option to hide the preview of all Pro settings and features. ;-)</p></li>
 </ul>
 
 <h3>WPSSO Core Pro / Additional Features</h3>
@@ -160,13 +160,13 @@
 <h4>Optional Pro Add-ons</h4>
 
 <ul>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-am/?utm_source=wpsso-readme">WPSSO Mobile App Meta Pro</a></li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-organization/?utm_source=wpsso-readme">WPSSO Organization Markup Pro</a></li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-plm/?utm_source=wpsso-readme">WPSSO Place / Location and Local Business Meta Pro</a></li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-rrssb/?utm_source=wpsso-readme">WPSSO Ridiculously Responsive Social Sharing Buttons Pro</a></li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/?utm_source=wpsso-readme">WPSSO Schema JSON-LD Markup Pro</a> &mdash; <em>for best SEO</em></li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/?utm_source=wpsso-readme">WPSSO Social Sharing Buttons Pro</a></li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-tune-image-editors/?utm_source=wpsso-readme">WPSSO Tune WP Image Editors Pro</a> &mdash; <em>for best social images</em></li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-am/">WPSSO Mobile App Meta Pro</a></li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-organization/">WPSSO Organization Markup Pro</a></li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta Pro</a></li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons Pro</a></li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup Pro</a> &mdash; <em>for best SEO</em></li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons Pro</a></li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-tune-image-editors/">WPSSO Tune WP Image Editors Pro</a> &mdash; <em>for best social images</em></li>
 </ul>
 
 <h3>Coded for Performance</h3>
@@ -183,22 +183,22 @@
 <h3>Install and Uninstall</h3>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/?utm_source=wpsso-readme">Install the WPSSO Core Plugin</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/?utm_source=wpsso-readme">Integration Notes</a>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/">Install the WPSSO Core Plugin</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/">Integration Notes</a>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/?utm_source=wpsso-readme">BuddyPress Integration</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration</a></li>
 </ul></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/?utm_source=wpsso-readme">Uninstall the WPSSO Core Plugin</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/?utm_source=wpsso-readme">Performance Tuning</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/?utm_source=wpsso-readme">Debugging and Problem Solving</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/?utm_source=wpsso-readme">Developer Special - Buy one, Get one Free</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/">Uninstall the WPSSO Core Plugin</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/">Performance Tuning</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/">Debugging and Problem Solving</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special - Buy one, Get one Free</a></li>
 </ul>
 
 <h3>Plugin Setup</h3>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/?utm_source=wpsso-readme">A Setup Guide for WPSSO</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/">A Setup Guide for WPSSO</a></li>
 </ul>
 
 
