@@ -718,7 +718,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			} else {
 
-				$dismiss_key = 'settings-saved-clear-all-cache-true-null-null';
+				$dismiss_key = 'settings-saved-clear-all-cache-and-external';
 
 				$this->p->util->clear_all_cache( true, null, null, $dismiss_key );
 
@@ -806,12 +806,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_all_cache':
 
-							$this->p->util->clear_all_cache( true );	// $clear_external = true
+							$this->p->util->clear_all_cache( true );	// $clear_external is true.
 							break;
 
 						case 'clear_all_cache_and_short_urls':
 
-							$this->p->util->clear_all_cache( true, true );	// $clear_external = true
+							$this->p->util->clear_all_cache( true, true );	// $clear_external is true.
 							break;
 
 						case 'clear_metabox_prefs':
