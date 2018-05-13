@@ -120,6 +120,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 * The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 
 	* **Integration with 3rd Party Plugins** 
+
 		* All in One SEO Pack
 		* bbPress
 		* BuddyPress (including Group Forum Topics)
@@ -142,6 +143,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 		* Yotpo Social Reviews for WooCommerce
 
 	* **Integration with Service APIs**
+
 		* Bitly
 		* Facebook Embedded Videos
 		* Google URL Shortener
