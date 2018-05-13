@@ -531,7 +531,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( ! empty( $info['url']['purchase'] ) ) {
+
 				$purchase_url = add_query_arg( 'utm_source', 'licenses-action-links', $info['url']['purchase'] );
+
 				$links[] = $this->p->msgs->get( 'pro-purchase-link', array(
 					'ext' => $ext,
 					'url' => $purchase_url, 
@@ -1387,7 +1389,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox module-status">';
 
 			/**
-			 * Pro version features
+			 * Pro version features.
 			 */
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
@@ -1398,13 +1400,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$ext_num++;
 				$features = array();
 
-				self::$pkg[$ext]['purchase'] = empty( $info['url']['purchase'] ) ?
-					'' : add_query_arg( 'utm_source', 'status-pro-feature', $info['url']['purchase'] );
+				if ( ! empty( $info['url']['purchase'] ) ) {
+					self::$pkg[$ext]['purchase'] = add_query_arg( 'utm_source', 'status-pro-feature', $info['url']['purchase'] );
+				} else {
+					self::$pkg[$ext]['purchase'] = '';
+				}
 
 				foreach ( $info['lib']['pro'] as $sub => $libs ) {
-					if ( $sub === 'admin' )	// skip status for admin menus and tabs
+
+					if ( $sub === 'admin' ) {	// Skip status for admin menus and tabs.
 						continue;
+					}
+
 					foreach ( $libs as $id_key => $label ) {
+
 						/**
 						 * Example:
 						 *	'article' => 'Item Type Article',
@@ -1412,8 +1421,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						 *	'article#tech:no_load' => 'Item Type TechArticle',
 						 */
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
-						$classname = SucomUtil::sanitize_classname( $ext . 'pro' . $sub.$id, false );	// $underscore = false
+
+						$classname  = SucomUtil::sanitize_classname( $ext . 'pro' . $sub.$id, false );	// $underscore is false.
 						$status_off = $this->p->avail[$sub][$id] ? 'rec' : 'off';
+
 						$features[$label] = array(
 							'td_class' => self::$pkg[$ext]['aop'] ? '' : 'blank',
 							'purchase' => self::$pkg[$ext]['purchase'],
@@ -1427,8 +1438,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$features = apply_filters( $ext . '_status_pro_features', $features, $ext, $info, self::$pkg[$ext] );
 
 				if ( ! empty( $features ) ) {
+
 					echo '<tr><td colspan="3"><h4' . ( $ext_num > 1 ? ' style="margin-top:10px;"' : '' ) . '>' .
 						$info['short'] . '</h4></td></tr>';
+
 					$this->show_plugin_status( $ext, $info, $features );
 				}
 			}
@@ -1529,8 +1542,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_purchase_pro() {
 
 			$info =& $this->p->cf['plugin'][$this->p->lca];
-			$purchase_url = empty( $info['url']['purchase'] ) ?
-				'' : add_query_arg( 'utm_source', 'column-purchase-pro', $info['url']['purchase'] );
+
+			if ( ! empty( $info['url']['purchase'] ) ) {
+				$purchase_url = add_query_arg( 'utm_source', 'column-purchase-pro', $info['url']['purchase'] );
+			} else {
+				$purchase_url = '';
+			}
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox"><tr><td>';
 
