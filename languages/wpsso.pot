@@ -2412,13 +2412,13 @@ msgid "Twitter Card Description"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:112 lib/gpl/admin/post.php:122 lib/meta.php:224
-#: lib/meta.php:248 lib/pro/admin/meta.php:123 lib/pro/admin/post.php:134
+#: lib/meta.php:249 lib/pro/admin/meta.php:123 lib/pro/admin/post.php:134
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:118 lib/gpl/admin/post.php:129 lib/meta.php:228
-#: lib/meta.php:252 lib/pro/admin/meta.php:129 lib/pro/admin/post.php:141
+#: lib/meta.php:253 lib/pro/admin/meta.php:129 lib/pro/admin/post.php:141
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -4650,97 +4650,97 @@ msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:232 lib/meta.php:257
+#: lib/meta.php:232 lib/meta.php:259
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/meta.php:262
+#: lib/meta.php:264
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:380
+#: lib/meta.php:382
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:382
+#: lib/meta.php:384
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:386
+#: lib/meta.php:388
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:388
+#: lib/meta.php:390
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:392
+#: lib/meta.php:394
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:394
+#: lib/meta.php:396
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:398
+#: lib/meta.php:400
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:400
+#: lib/meta.php:402
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:404
+#: lib/meta.php:406
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:406
+#: lib/meta.php:408
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:411
+#: lib/meta.php:413
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:413
+#: lib/meta.php:415
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:701
+#: lib/meta.php:703
 msgid "%s key(s) cleared from the cache."
 msgstr ""
 
-#: lib/meta.php:709
+#: lib/meta.php:711
 msgid ""
 "WP_DEBUG constant is enabled &ndash; the list of possible cache object names "
 "is included:"
 msgstr ""
 
-#: lib/meta.php:716
+#: lib/meta.php:718
 msgctxt "clear cache status"
 msgid "cleared"
 msgstr ""
 
-#: lib/meta.php:720
+#: lib/meta.php:722
 msgctxt "clear cache status"
 msgid "not cached"
 msgstr ""
 
-#: lib/meta.php:769
+#: lib/meta.php:771
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

@@ -221,41 +221,43 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );
 
 				$table_rows[] = ''.
-				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ).
+				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ) .
 				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
-				$table_rows[] = ( $sharing_url !== $canonical_url ? '' : '<tr class="hide_in_basic">' ).
-				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ).
+				$table_rows[] = '<tr class="hide_in_basic">' .
+				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ) .
 				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
-				$table_rows[] = ( $this->p->options['plugin_shortener'] !== 'none' ? '' : '<tr class="hide_in_basic">' ).
-				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ).
+				$table_rows[] = '<tr class="hide_in_basic">' .
+				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ) .
 				'<td class="blank"><em>'.$auto_draft_msg.'</em></td>';
 	
 			} else {
 
-				$sharing_url = $this->p->util->get_sharing_url( $mod, false );     // $add_page = false
-				$canonical_url = $this->p->util->get_canonical_url( $mod, false ); // $add_page = false
+				$sharing_url = $this->p->util->get_sharing_url( $mod, false );     // $add_page is false.
+				$canonical_url = $this->p->util->get_canonical_url( $mod, false ); // $add_page is false.
 
 				if ( $mod['is_post'] ) {
-					$shortlink = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
+					$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context is post.
 				} else {
 					$service_key = $this->p->options['plugin_shortener'];
-					$shortlink = apply_filters( $this->p->lca.'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
+					$shortlink_url = apply_filters( $this->p->lca.'_get_short_url',
+						$sharing_url, $service_key, $mod, $mod['name'] );
 				}
 
 				$table_rows[] = ''.
 				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td>'.$form->get_input_copy_clipboard( $sharing_url ).'</td>';
 
-				$table_rows[] = ( $sharing_url !== $canonical_url ? '' : '<tr class="hide_in_basic">' ).
+				$table_rows[] = ( $sharing_url === $canonical_url ? '<tr class="hide_in_basic">' : '' ).
 				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ).
 				'<td>'.$form->get_input_copy_clipboard( $canonical_url ).'</td>';
-
 			
-				$table_rows[] = ( $this->p->options['plugin_shortener'] !== 'none' ? '' : '<tr class="hide_in_basic">' ).
+				$table_rows[] = ( empty( $this->p->options['plugin_shortener'] ) || 
+					$this->p->options['plugin_shortener'] === 'none' ||
+						$sharing_url === $shortlink_url ? '<tr class="hide_in_basic">' : '' ).
 				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ).
-				'<td>'.$form->get_input_copy_clipboard( $shortlink ).'</td>';
+				'<td>'.$form->get_input_copy_clipboard( $shortlink_url ).'</td>';
 			}
 
 			$table_rows['subsection_og_example'] = '<td colspan="2" class="subsection"><h4>'.
