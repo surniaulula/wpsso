@@ -40,7 +40,7 @@ WPSSO Core provides a specific image and image dimensions for the Pinterest Pin 
 
 WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version even comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.
 
-<div style="clear:both"></div><!-- clear fyi container before the first h3 -->
+<div style="clear:both"></div>
 
 <h3>Users Love WPSSO Core</h3>
 

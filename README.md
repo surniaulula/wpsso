@@ -37,8 +37,6 @@
 
 <div style="clear:both"></div>
 
-<!-- clear fyi container before the first h3 -->
-
 <h3>Users Love WPSSO Core</h3>
 
 <p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "The plugin is indispensable to me when it comes to posting on social media... it makes it so that your posts look the best that they possible can every time when posting on Facebook, Twitter, or any other site." - <a href="https://wordpress.org/support/topic/this-is-probably-the-best-plugin-of-its-kind/">monsuirette</a></p>
