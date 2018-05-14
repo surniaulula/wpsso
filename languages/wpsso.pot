@@ -1877,15 +1877,15 @@ msgstr ""
 #: lib/config-gettext-extract.php:158
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on to provide Apple Store / iTunes and Google Play App meta "
-"tags for Apple's mobile Safari and Twitter's App Card."
+"WPSSO Core add-on to provide a convenient locale / language / region "
+"selector in the WordPress admin toolbar."
 msgstr ""
 
 #: lib/config-gettext-extract.php:159
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on to provide a user locale (language / region) drop-down "
-"menu in the WordPress admin back-end and front-end toolbar."
+"WPSSO Core add-on to provide Apple Store / iTunes and Google Play App meta "
+"tags for Apple's mobile Safari and Twitter's App Card."
 msgstr ""
 
 #: lib/config-gettext-extract.php:160
