@@ -1247,7 +1247,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
 		}
 
-		// $wp_meta can be a post/term/user meta array or empty / false
+		/**
+		 * $wp_meta can be a post / term / user meta array or empty / false.
+		 */
 		protected function get_custom_fields( array $md_opts, $wp_meta = false ) {
 
 			if ( $this->p->debug->enabled ) {
