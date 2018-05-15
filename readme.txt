@@ -288,13 +288,10 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 == Screenshots ==
 
-01. WPSSO Core can check the front-end webpage for duplicate meta tags, and includes a handy preview feature.
-02. WPSSO Core also includes a detailed list of the generated meta tags, for the more advanced or curious users.
-03. WPSSO Core adds optional Schema type and preview columns to the post, page, and custom post type lists (can be hidden/shown globally or per user).
-04. WPSSO Core provides an Essential settings page for a quick and easy setup, along with more detailed and advanced settings pages.
-05. WPSSO Core includes Author and Publisher social profile markup in your home page for Google Search and their Knowledge Graph.
-06. WPSSO Core detects embedded videos in your content and creates video meta tags for Twitter, Facebook, and Google (Pro version required).
-07. WPSSO Core integrates with several e-Commerce plugins to provide product details for Pinterest, Google, and others (Pro version required).
+01. WPSSO Core includes a handy preview feature and can check the front-end webpage for duplicate meta tags.
+02. WPSSO Core includes a detailed list of the generated meta tags and Schema markup for advanced users.
+03. WPSSO Core includes an optional Schema type and preview column in the post, page, and custom post type lists (can be hidden/shown globally and/or per user).
+04. WPSSO Core offers a quick and easy Essential settings page (shown here), along with a more detailed General and Advanced settings page.
 
 == Changelog ==
 
