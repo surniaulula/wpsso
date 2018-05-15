@@ -321,7 +321,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.3.1-b.1 (2018/05/13)**
+**Version 4.3.1-b.1 (2018/05/15)**
 
 * *New Features*
 	* None
@@ -423,7 +423,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.3.1-b.1 =
 
-(2018/05/13) Added support for MP4 videos as a valid "twitter:player" meta tag value.
+(2018/05/15) Added support for MP4 videos as a valid "twitter:player" meta tag value.
 
 = 4.3.0 =
 
