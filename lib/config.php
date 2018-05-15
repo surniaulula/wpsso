@@ -42,10 +42,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso',
 						'review' => 'https://wordpress.org/support/plugin/wpsso/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/readme.txt',
 						'setup_html' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/html/setup.html',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso/',
 						'faqs' => 'https://wpsso.com/docs/plugins/wpsso/faqs/',
@@ -178,9 +178,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso-am/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-am',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-am/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-am/master/readme.txt',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-am/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-am/',
 						'faqs' => '',
@@ -213,9 +213,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso-breadcrumbs/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-breadcrumbs/master/readme.txt',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-breadcrumbs/',
 						'faqs' => '',
@@ -248,10 +248,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso-schema-json-ld/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-schema-json-ld/master/readme.txt',
 						'shortcode_html' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-schema-json-ld/master/html/shortcode.html',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/',
 						'faqs' => '',
@@ -284,9 +284,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso-organization/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-organization',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-organization/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-organization/master/readme.txt',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-organization/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-organization/',
 						'faqs' => '',
@@ -319,9 +319,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso-plm/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-plm',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-plm/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-plm/master/readme.txt',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-plm/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-plm/',
 						'faqs' => '',
@@ -354,9 +354,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso-ratings-and-reviews/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-ratings-and-reviews/master/readme.txt',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-ratings-and-reviews/',
 						'faqs' => '',
@@ -389,9 +389,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso-rrssb/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-rrssb',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-rrssb/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rrssb/master/readme.txt',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-rrssb/',
 						'faqs' => '',
@@ -424,9 +424,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso-ssb/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-ssb',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-ssb/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-ssb/master/readme.txt',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-ssb/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-ssb/',
 						'faqs' => 'https://wpsso.com/docs/plugins/wpsso-ssb/faqs/',
@@ -459,9 +459,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso-strip-schema-microdata/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-strip-schema-microdata/master/readme.txt',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-strip-schema-microdata/',
 						'faqs' => '',
@@ -494,9 +494,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso-tweet-a-quote/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tweet-a-quote/master/readme.txt',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-tweet-a-quote/',
 						'faqs' => '',
@@ -529,9 +529,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso-tune-image-editors/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-tune-image-editors',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-tune-image-editors/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tune-image-editors/master/readme.txt',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-tune-image-editors/',
 						'faqs' => '',
@@ -564,9 +564,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'home' => 'https://wordpress.org/plugins/wpsso-user-locale/',
 						'forum' => 'https://wordpress.org/support/plugin/wpsso-user-locale',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-user-locale/reviews/?rate=5#new-post',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-user-locale/master/readme.txt',
-						// wpsso
+						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-user-locale/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-user-locale/',
 						'faqs' => '',
@@ -598,9 +598,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						// WordPress
 						'forum' => '',
 						'review' => '',
-						// github
+						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-um/master/readme.txt',
-						// wpsso
+						// WPSSO
 						'home' => 'https://wpsso.com/extend/plugins/wpsso-um/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-um/changelog/',
 						'docs' => 'https://wpsso.com/docs/plugins/wpsso-um/',
@@ -613,9 +613,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 			),
-			'opt' => array(						// options
+			'opt' => array(						// Plugin options.
 				'defaults' => array(
-					'options_version' => '',		// example: -wpsso512pro-wpssoum3gpl
+					'options_version' => '',		// Example: -wpsso512pro-wpssoum3gpl
 					'options_filtered' => false,
 					'site_name' => '',			// (localized)
 					'site_name_alt' => '',			// (localized)
@@ -631,35 +631,39 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_logo_url' => '',
 					'schema_banner_url' => '',
 					'schema_img_max' => 1,
-					'schema_img_width' => 800,			// must be at least 696px for Articles
+					'schema_img_width' => 800,		// Must be at least 696px for Articles.
 					'schema_img_height' => 1600,
 					'schema_img_crop' => 0,
 					'schema_img_crop_x' => 'center',
 					'schema_img_crop_y' => 'center',
-					'schema_desc_len' => 250,			// meta itemprop="description" maximum text length (hard limit)
+					'schema_desc_len' => 250,		// Meta itemprop="description" maximum text length (hard limit).
 					'schema_author_name' => 'display_name',
-					// standard types
+					/**
+					 * Standard WordPress types.
+					 */
 					'schema_type_for_tax_category' => 'item.list',
 					'schema_type_for_tax_post_tag' => 'item.list',
-					'schema_type_for_archive_page' => 'webpage.collection',	// date-based archives
+					'schema_type_for_archive_page' => 'webpage.collection',	// Date-based archives.
 					'schema_type_for_attachment' => 'webpage',
 					'schema_type_for_home_index' => 'blog',
 					'schema_type_for_home_page' => 'website',
 					'schema_type_for_page' => 'webpage',
 					'schema_type_for_post' => 'blog.posting',
-					'schema_type_for_post_archive' => 'item.list',	// post type archive page
+					'schema_type_for_post_archive' => 'item.list',	// Post type archive page.
 					'schema_type_for_search_page' => 'webpage.search.results',
 					'schema_type_for_user_page' => 'webpage.profile',
-					// custom post types
+					/**
+					 * Custom post types.
+					 */
 					'schema_type_for_article' => 'article',
 					'schema_type_for_book' => 'book',
 					'schema_type_for_blog' => 'blog',
 					'schema_type_for_business' => 'local.business',
-					'schema_type_for_download' => 'product',	// for Easy Digital Downloads
+					'schema_type_for_download' => 'product',	// For Easy Digital Downloads.
 					'schema_type_for_event' => 'event',
 					'schema_type_for_howto' => 'howto',
-					'schema_type_for_job_listing' => 'job.posting',	// for WP Job Manager
-					'schema_type_for_jobpost' => 'job.posting',	// for Simple Job Board
+					'schema_type_for_job_listing' => 'job.posting',	// For WP Job Manager
+					'schema_type_for_jobpost' => 'job.posting',	// For Simple Job Board
 					'schema_type_for_organization' => 'organization',
 					'schema_type_for_other' => 'other',
 					'schema_type_for_person' => 'person',
@@ -670,15 +674,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tribe_events' => 'event',
 					'schema_type_for_webpage' => 'webpage',
 					'schema_type_for_website' => 'website',
-					'schema_review_item_type' => 'none',	// Default Reviewed Item Type
-					'fb_publisher_url' => '',		// (localized)
+					'schema_review_item_type' => 'none',		// Default Reviewed Item Type
+					'fb_publisher_url' => '',			// (localized)
 					'fb_app_id' => '',
 					'fb_admins' => '',
 					'fb_author_name' => 'display_name',
 					'fb_locale' => 'en_US',
-					'instgram_publisher_url' => '',		// (localized)
-					'linkedin_publisher_url' => '',		// (localized)
-					'myspace_publisher_url' => '',		// (localized)
+					'instgram_publisher_url' => '',			// (localized)
+					'linkedin_publisher_url' => '',			// (localized)
+					'myspace_publisher_url' => '',			// (localized)
 					'og_post_type' => 'article',
 					'og_art_section' => 'none',
 					'og_img_width' => 600,
@@ -705,48 +709,48 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_title_sep' => '-',
 					'og_title_len' => 70,
 					'og_title_warn' => 40,
-					'og_desc_len' => 300,			// maximum length in characters (hard limit)
-					'og_desc_warn' => 200,			// recommended maximum length in characters for Facebook (soft limit)
+					'og_desc_len' => 300,				// Maximum length in characters (hard limit).
+					'og_desc_warn' => 200,				// Recommended maximum length in characters for Facebook (soft limit).
 					'og_desc_hashtags' => 0,
-					'p_publisher_url' => '',		// (localized)
-					'p_author_name' => 'display_name',	// rich-pin specific article:author
+					'p_publisher_url' => '',			// (localized)
+					'p_author_name' => 'display_name',		// Rich-pin specific article:author.
 					'p_dom_verify' => '',
 					'p_add_img_html' => 1,
 					'p_add_nopin_media_img_tag' => 1,
 					'p_add_nopin_header_img_tag' => 1,
 					'sc_publisher_url' => '',
-					'seo_desc_len' => 320,			// meta name="description" maximum text length (hard limit)
+					'seo_desc_len' => 320,				// Meta name="description" maximum text length (hard limit).
 					'seo_author_field' => 'gplus',
-					'seo_publisher_url' => '',		// (localized)
+					'seo_publisher_url' => '',			// (localized)
 					'tumblr_publisher_url' => '',
 					'yt_publisher_url' => '',
-					// twitter card options
-					'tc_site' => '',			// Twitter Business @username (localized)
-					'tc_desc_len' => 200,			// Maximum Description Length (hard limit)
+					/**
+					 * Twitter Card options.
+					 */
+					'tc_site' => '',				// Twitter Business @username (localized).
+					'tc_desc_len' => 200,				// Maximum Description Length (hard limit).
 					'tc_type_post' => 'summary_large_image',
 					'tc_type_default' => 'summary',
-					// twitter summary card
-					'tc_sum_img_width' => 600,		// Summary Card Image Dimensions
+					'tc_sum_img_width' => 600,			// Summary Card Image Dimensions.
 					'tc_sum_img_height' => 315,
 					'tc_sum_img_crop' => 1,
 					'tc_sum_img_crop_x' => 'center',
 					'tc_sum_img_crop_y' => 'center',
-					// twitter large image summary card
-					'tc_lrg_img_width' => 600,		// Large Image Card Img Dimensions
+					'tc_lrg_img_width' => 600,			// Large Image Card Img Dimensions.
 					'tc_lrg_img_height' => 1600,
 					'tc_lrg_img_crop' => 0,
 					'tc_lrg_img_crop_x' => 'center',
 					'tc_lrg_img_crop_y' => 'center',
-					// enable/disable head html tags
+					/**
+					 * Enable / disable individual head HTML tags.
+					 */
 					'add_link_rel_author' => 1,
 					'add_link_rel_canonical' => 0,
 					'add_link_rel_publisher' => 1,
 					'add_link_rel_shortlink' => 1,
-					// facebook
-					'add_meta_property_fb:admins' => 1,
+					'add_meta_property_fb:admins' => 1,		// Facebook.
 					'add_meta_property_fb:app_id' => 1,
-					// facebook applink
-					'add_meta_property_al:ios:app_name' => 1,
+					'add_meta_property_al:ios:app_name' => 1,	// Facebook applink.
 					'add_meta_property_al:ios:app_store_id' => 1,
 					'add_meta_property_al:ios:url' => 1,
 					'add_meta_property_al:android:app_name' => 1,
@@ -754,8 +758,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_al:android:url' => 1,
 					'add_meta_property_al:web:url' => 1,
 					'add_meta_property_al:web:should_fallback' => 1,
-					// open graph
-					'add_meta_property_og:altitude' => 1,
+					'add_meta_property_og:altitude' => 1,		// Open Graph.
 					'add_meta_property_og:description' => 1,
 					'add_meta_property_og:image:secure_url' => 1,
 					'add_meta_property_og:image' => 1,
@@ -775,21 +778,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_og:video:width' => 1,
 					'add_meta_property_og:video:height' => 1,
 					'add_meta_property_og:video:tag' => 0,
-					// open graph (article)
-					'add_meta_property_article:author' => 1,
+					'add_meta_property_article:author' => 1,	// Open Graph (article).
 					'add_meta_property_article:publisher' => 1,
 					'add_meta_property_article:published_time' => 1,
 					'add_meta_property_article:modified_time' => 1,
 					'add_meta_property_article:expiration_time' => 1,
 					'add_meta_property_article:section' => 1,
 					'add_meta_property_article:tag' => 1,
-					// open graph (book)
-					'add_meta_property_book:author' => 1,
+					'add_meta_property_book:author' => 1,		// Open graph (book).
 					'add_meta_property_book:isbn' => 1,
 					'add_meta_property_book:release_date' => 1,
 					'add_meta_property_book:tag' => 1,
-					// open graph (music)
-					'add_meta_property_music:album' => 1,
+					'add_meta_property_music:album' => 1,		// Open graph (music).
 					'add_meta_property_music:album:disc' => 1,
 					'add_meta_property_music:album:track' => 1,
 					'add_meta_property_music:creator' => 1,
@@ -799,8 +799,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_music:song' => 1,
 					'add_meta_property_music:song:disc' => 1,
 					'add_meta_property_music:song:track' => 1,
-					// open graph (place)
-					'add_meta_property_place:location:altitude' => 1,
+					'add_meta_property_place:location:altitude' => 1,	// Open graph (place)
 					'add_meta_property_place:location:latitude' => 1,
 					'add_meta_property_place:location:longitude' => 1,
 					'add_meta_property_place:street_address' => 1,
@@ -808,9 +807,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_place:region' => 1,
 					'add_meta_property_place:postal_code' => 1,
 					'add_meta_property_place:country_name' => 1,
-					// open graph (product)
-					// https://developers.facebook.com/docs/reference/opengraph/object-type/product/
-					'add_meta_property_product:availability' => 1,
+					'add_meta_property_product:availability' => 1,	// Open graph (product).
 					'add_meta_property_product:brand' => 1,
 					'add_meta_property_product:category' => 1,
 					'add_meta_property_product:color' => 1,
@@ -821,13 +818,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:size' => 1,
 					'add_meta_property_product:weight:value' => 1,
 					'add_meta_property_product:weight:units' => 1,
-					// open graph (profile)
-					'add_meta_property_profile:first_name' => 1,
+					'add_meta_property_profile:first_name' => 1,	// Open graph (profile).
 					'add_meta_property_profile:last_name' => 1,
 					'add_meta_property_profile:username' => 1,
 					'add_meta_property_profile:gender' => 1,
-					// open graph (video)
-					'add_meta_property_video:actor' => 1,
+					'add_meta_property_video:actor' => 1,		// Open graph (video).
 					'add_meta_property_video:actor:role' => 1,
 					'add_meta_property_video:director' => 1,
 					'add_meta_property_video:writer' => 1,
@@ -835,18 +830,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_video:release_date' => 1,
 					'add_meta_property_video:tag' => 1,
 					'add_meta_property_video:series' => 1,
-					// seo
-					'add_meta_name_author' => 1,
+					'add_meta_name_author' => 1,			// SEO.
 					'add_meta_name_description' => 1,
 					'add_meta_name_generator' => 1,
 					'add_meta_name_robots' => 1,
-					// pinterest
-					'add_meta_name_p:domain_verify' => 1,
-					// weibo
-					'add_meta_name_weibo:article:create_at' => 1,
+					'add_meta_name_p:domain_verify' => 1,		// Pinterest.
+					'add_meta_name_weibo:article:create_at' => 1,	// Weibo.
 					'add_meta_name_weibo:article:update_at' => 1,
-					// twitter cards
-					'add_meta_name_twitter:card' => 1,
+					'add_meta_name_twitter:card' => 1,		// Twitter cards.
 					'add_meta_name_twitter:creator' => 1,
 					'add_meta_name_twitter:domain' => 1,
 					'add_meta_name_twitter:site' => 1,
@@ -869,8 +860,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:app:name:googleplay' => 1,
 					'add_meta_name_twitter:app:id:googleplay' => 1,
 					'add_meta_name_twitter:app:url:googleplay' => 1,
-					// schema link
-					'add_link_itemprop_url' => 1,
+					'add_link_itemprop_url' => 1,			// Schema link.
 					'add_link_itemprop_image' => 1,
 					'add_link_itemprop_image.url' => 1,
 					'add_link_itemprop_author.url' => 1,
@@ -878,8 +868,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_link_itemprop_contributor.url' => 1,
 					'add_link_itemprop_contributor.image' => 1,
 					'add_link_itemprop_menu' => 1,
-					// schema meta
-					'add_meta_itemprop_name' => 1,
+					'add_meta_itemprop_name' => 1,			// Schema meta.
 					'add_meta_itemprop_alternatename' => 1,
 					'add_meta_itemprop_description' => 1,
 					'add_meta_itemprop_email' => 1,
@@ -908,57 +897,62 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_aggregaterating.worstrating' => 1,
 					'add_meta_itemprop_aggregaterating.bestrating' => 1,
 					'add_meta_itemprop_aggregaterating.reviewcount' => 1,
-					'add_meta_itemprop_startdate' => 1,		// Schema Event
-					'add_meta_itemprop_enddate' => 1,		// Schema Event
-					'add_meta_itemprop_location' => 1,		// Schema Event
-					'add_meta_itemprop_preptime' => 1,		// Schema Recipe
-					'add_meta_itemprop_cooktime' => 1,		// Schema Recipe
-					'add_meta_itemprop_totaltime' => 1,		// Schema Recipe
-					'add_meta_itemprop_recipeyield' => 1,		// Schema Recipe
-					'add_meta_itemprop_recipeingredient' => 1,	// Schema Recipe (supersedes ingredients)
-					'add_meta_itemprop_recipeinstructions' => 1,	// Schema Recipe
+					'add_meta_itemprop_startdate' => 1,		// Schema Event.
+					'add_meta_itemprop_enddate' => 1,		// Schema Event.
+					'add_meta_itemprop_location' => 1,		// Schema Event.
+					'add_meta_itemprop_preptime' => 1,		// Schema Recipe.
+					'add_meta_itemprop_cooktime' => 1,		// Schema Recipe.
+					'add_meta_itemprop_totaltime' => 1,		// Schema Recipe.
+					'add_meta_itemprop_recipeyield' => 1,		// Schema Recipe.
+					'add_meta_itemprop_recipeingredient' => 1,	// Schema Recipe (supersedes ingredients).
+					'add_meta_itemprop_recipeinstructions' => 1,	// Schema Recipe.
 					/**
-					 * Advanced
+					 * Advanced settings - Plugin Settings tab.
 					 */
-					// Plugin Settings Tab
-					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
-					'plugin_debug' => 0,				// Add Hidden Debug Messages
-					'plugin_hide_pro' => 0,				// Hide All Pro Version Options
-					'plugin_show_opts' => 'basic',			// Options to Show by Default
-					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s)
-					'plugin_widgets' => 1,				// Enable Plugin Widget(s)
-					// Content and Filters Tab
-					'plugin_filter_title' => 0,			// Use Filtered (SEO) Title
-					'plugin_filter_content' => 0,			// Apply WordPress Content Filters
-					'plugin_filter_excerpt' => 0,			// Apply WordPress Excerpt Filters
-					'plugin_p_strip' => 0,				// Content Starts at 1st Paragraph
-					'plugin_use_img_alt' => 1,			// Use Image Alt if No Content
-					'plugin_img_alt_prefix' => 'Image:',		// Image Alt Text Prefix
-					'plugin_p_cap_prefix' => 'Caption:',		// WP Caption Prefix
-					'plugin_gravatar_api' => 0,			// Include Author Gravatar Image
-					'plugin_facebook_api' => 1,			// Check for Embedded Media: Facebook Videos
-					'plugin_slideshare_api' => 1,			// Check for Embedded Media: Slideshare Presentations
-					'plugin_soundcloud_api' => 1,			// Check for Embedded Media: Soundcloud Tracks
-					'plugin_vimeo_api' => 1,			// Check for Embedded Media: Vimeo Videos
-					'plugin_wistia_api' => 1,			// Check for Embedded Media: Wistia Videos
-					'plugin_wpvideo_api' => 1,			// Check for Embedded Media: WordPress Video Shortcode
-					'plugin_youtube_api' => 1,			// Check for Embedded Media: Youtube Videos and Playlists
-					// Integration Tab
-					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
+					'plugin_preserve' => 0,				// Preserve Settings on Uninstall.
+					'plugin_debug' => 0,				// Add Hidden Debug Messages.
+					'plugin_hide_pro' => 0,				// Hide All Pro Version Options.
+					'plugin_show_opts' => 'basic',			// Options to Show by Default.
+					'plugin_shortcodes' => 1,			// Enable Plugin Shortcode(s).
+					'plugin_widgets' => 1,				// Enable Plugin Widget(s).
+					/**
+					 * Advanced settings - Content and Filters tab.
+					 */
+					'plugin_filter_title' => 0,			// Use Filtered (SEO) Title.
+					'plugin_filter_content' => 0,			// Apply WordPress Content Filters.
+					'plugin_filter_excerpt' => 0,			// Apply WordPress Excerpt Filters.
+					'plugin_p_strip' => 0,				// Content Starts at 1st Paragraph.
+					'plugin_use_img_alt' => 1,			// Use Image Alt if No Content.
+					'plugin_img_alt_prefix' => 'Image:',		// Image Alt Text Prefix.
+					'plugin_p_cap_prefix' => 'Caption:',		// WP Caption Prefix.
+					'plugin_gravatar_api' => 0,			// Include Author Gravatar Image.
+					'plugin_facebook_api' => 1,			// Check for Embedded Media: Facebook Videos.
+					'plugin_slideshare_api' => 1,			// Check for Embedded Media: Slideshare Presentations.
+					'plugin_soundcloud_api' => 1,			// Check for Embedded Media: Soundcloud Tracks.
+					'plugin_vimeo_api' => 1,			// Check for Embedded Media: Vimeo Videos.
+					'plugin_wistia_api' => 1,			// Check for Embedded Media: Wistia Videos.
+					'plugin_wpvideo_api' => 1,			// Check for Embedded Media: WordPress Video Shortcode.
+					'plugin_youtube_api' => 1,			// Check for Embedded Media: Youtube Videos and Playlists.
+					/**
+					 * Advanced settings - Integration tab.
+					 */
+					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant.
 					'plugin_html_attr_filter_name' => 'language_attributes',
 					'plugin_html_attr_filter_prio' => 100,
 					'plugin_head_attr_filter_name' => 'head_attributes',
 					'plugin_head_attr_filter_prio' => 100,
-					'plugin_check_head' => 1,			// Check for Duplicate Meta Tags
-					'plugin_filter_lang' => 1,			// Use WP Locale for Language
-					'plugin_create_wp_sizes' => 1,			// Create Missing WP Media Sizes
-					'plugin_check_img_dims' => 0,			// Enforce Image Dimensions Check
-					'plugin_upscale_images' => 0,			// Allow Upscale of Smaller Images
-					'plugin_upscale_img_max' => 33,			// Maximum Image Upscale Percent
-					'plugin_page_excerpt' => 1,			// Enable WP Excerpt for Pages
-					'plugin_page_tags' => 1,			// Enable WP Tags for Pages
-					'plugin_add_person_role' => 1,			// Add Person Role for New Users
-					// Custom Meta Tab
+					'plugin_check_head' => 1,			// Check for Duplicate Meta Tags.
+					'plugin_filter_lang' => 1,			// Use WP Locale for Language.
+					'plugin_create_wp_sizes' => 1,			// Create Missing WP Media Sizes.
+					'plugin_check_img_dims' => 0,			// Enforce Image Dimensions Check.
+					'plugin_upscale_images' => 0,			// Allow Upscale of Smaller Images.
+					'plugin_upscale_img_max' => 33,			// Maximum Image Upscale Percent.
+					'plugin_page_excerpt' => 1,			// Enable WP Excerpt for Pages.
+					'plugin_page_tags' => 1,			// Enable WP Tags for Pages.
+					'plugin_add_person_role' => 1,			// Add Person Role for New Users.
+					/**
+					 * Advanced settings - Custom Meta tab.
+					 */
 					'plugin_schema_type_col_media' => 0,
 					'plugin_schema_type_col_post' => 1,
 					'plugin_schema_type_col_term' => 0,
@@ -975,56 +969,62 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_page' => 1,
 					'plugin_add_to_post' => 1,
 					'plugin_add_to_product' => 1,
-					'plugin_add_to_reply' => 0,	// bbpress
+					'plugin_add_to_reply' => 0,			// Bbpress
 					'plugin_add_to_term' => 1,
-					'plugin_add_to_topic' => 0,	// bbpress
+					'plugin_add_to_topic' => 0,			// Bbpress
 					'plugin_add_to_user' => 1,
-					'plugin_wpseo_social_meta' => 0,		// Read Yoast SEO Social Meta
-					'plugin_def_currency' => 'USD',			// Default Currency
-					'plugin_cf_img_url' => '_format_image_url',	// Image URL Custom Field
-					'plugin_cf_vid_url' => '_format_video_url',	// Video URL Custom Field
-					'plugin_cf_vid_embed' => '',			// Video Embed HTML Custom Field
-					'plugin_cf_addl_type_urls' => '',		// Microdata Type URLs Custom Field
-					'plugin_cf_recipe_ingredients' => '',		// Recipe Ingredients Custom Field
-					'plugin_cf_recipe_instructions' => '',		// Recipe Instructions Custom Field
-					'plugin_cf_product_avail' => '',		// Product Availability Custom Field
-					'plugin_cf_product_brand' => '',		// Product Brand Custom Field
-					'plugin_cf_product_color' => '',		// Product Color Custom Field
-					'plugin_cf_product_condition' => '',		// Product Condition Custom Field
-					'plugin_cf_product_currency' => '',		// Product Currency Custom Field
-					'plugin_cf_product_material' => '',		// Product Material Custom Field
-					'plugin_cf_product_price' => '',		// Product Price Custom Field
-					'plugin_cf_product_size' => '',			// Product Size Custom Field
-					'plugin_cf_sameas_urls' => '',			// Same-As URLs Custom Field
-					// Cache Settings Tab
-					'plugin_head_cache_exp' => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week)
-					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
-					'plugin_json_data_cache_exp' => 1209600,	// Schema JSON Data Cache Expiry (2 weeks)
-					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image URL Info Cache Expiry (1 day)
-					'plugin_short_url_cache_exp' => 7776000,	// Get Shortened URL Cache Expiry (90 days / 3 months)
-					'plugin_topics_cache_exp' => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month)
-					'plugin_types_cache_exp' => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month)
-					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update
-					'plugin_clear_on_save' => 1,			// Clear All Caches on Save Settings
-					'plugin_clear_all_refresh' => 1,		// Auto-Refresh Cache After Clear All
-					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Caches
-					'plugin_clear_for_comment' => 1,		// Clear Post Cache for New Comment
-					// Service APIs Tab
-					'plugin_shortener' => 'none',			// Preferred URL Shortening Service
-					'plugin_wp_shortlink' => 1,			// Use Shortnened URL for WP Shortlink
+					'plugin_wpseo_social_meta' => 0,		// Read Yoast SEO Social Meta.
+					'plugin_def_currency' => 'USD',			// Default Currency.
+					'plugin_cf_img_url' => '_format_image_url',	// Image URL Custom Field.
+					'plugin_cf_vid_url' => '_format_video_url',	// Video URL Custom Field.
+					'plugin_cf_vid_embed' => '',			// Video Embed HTML Custom Field.
+					'plugin_cf_addl_type_urls' => '',		// Microdata Type URLs Custom Field.
+					'plugin_cf_recipe_ingredients' => '',		// Recipe Ingredients Custom Field.
+					'plugin_cf_recipe_instructions' => '',		// Recipe Instructions Custom Field.
+					'plugin_cf_product_avail' => '',		// Product Availability Custom Field.
+					'plugin_cf_product_brand' => '',		// Product Brand Custom Field.
+					'plugin_cf_product_color' => '',		// Product Color Custom Field.
+					'plugin_cf_product_condition' => '',		// Product Condition Custom Field.
+					'plugin_cf_product_currency' => '',		// Product Currency Custom Field.
+					'plugin_cf_product_material' => '',		// Product Material Custom Field.
+					'plugin_cf_product_price' => '',		// Product Price Custom Field.
+					'plugin_cf_product_size' => '',			// Product Size Custom Field.
+					'plugin_cf_sameas_urls' => '',			// Same-As URLs Custom Field.
+					/**
+					 * Advanced settings - Cache Settings tab.
+					 */
+					'plugin_head_cache_exp' => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
+					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour).
+					'plugin_json_data_cache_exp' => 1209600,	// Schema JSON Data Cache Expiry (2 weeks).
+					'plugin_imgsize_cache_exp' => DAY_IN_SECONDS,	// Get Image URL Info Cache Expiry (1 day).
+					'plugin_short_url_cache_exp' => 7776000,	// Get Shortened URL Cache Expiry (90 days / 3 months).
+					'plugin_topics_cache_exp' => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
+					'plugin_types_cache_exp' => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
+					'plugin_show_purge_count' => 0,			// Show Cache Purge Count on Update.
+					'plugin_clear_on_save' => 1,			// Clear All Caches on Save Settings.
+					'plugin_clear_all_refresh' => 1,		// Auto-Refresh Cache After Clear All.
+					'plugin_clear_short_urls' => 0,			// Clear Short URLs on Clear All Caches.
+					'plugin_clear_for_comment' => 1,		// Clear Post Cache for New Comment.
+					/**
+					 * Advanced settings - Service APIs tab.
+					 */
+					'plugin_shortener' => 'none',			// Preferred URL Shortening Service.
+					'plugin_wp_shortlink' => 1,			// Use Shortnened URL for WP Shortlink.
 					'plugin_min_shorten' => 23,
 					'plugin_bitly_login' => '',
 					'plugin_bitly_access_token' => '',
 					'plugin_bitly_api_key' => '',
 					'plugin_bitly_domain' => '',
-					'plugin_google_api_key' => '',			// Google Project API Key
-					'plugin_google_shorten' => 0,			// URL Shortener API is Enabled
+					'plugin_google_api_key' => '',			// Google Project API Key.
+					'plugin_google_shorten' => 0,			// URL Shortener API is Enabled.
 					'plugin_owly_api_key' => '',
 					'plugin_yourls_api_url' => '',
 					'plugin_yourls_username' => '',
 					'plugin_yourls_password' => '',
 					'plugin_yourls_token' => '',
-					// Contact Field Names and Labels
+					/**
+					 * Advanced settings - Contact Field Names and Labels.
+					 */
 					'plugin_cm_fb_name' => 'facebook',
 					'plugin_cm_fb_label' => 'Facebook User URL',
 					'plugin_cm_fb_enabled' => 1,
@@ -1067,14 +1067,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_name' => 'yim',
 					'wp_cm_yim_label' => 'Yahoo Messenger',
 					'wp_cm_yim_enabled' => 1,
-				),	// end of defaults
+				),
+				/**
+				 * Multisite options.
+				 */
 				'site_defaults' => array(
-					'options_version' => '',		// example: -wpsso512pro-wpssoum3gpl
+					'options_version' => '',			// Example: -wpsso512pro-wpssoum3gpl
 					'options_filtered' => false,
 					/**
-					 * Advanced Settings
+					 * Advanced settings - Plugin Settings tab.
 					 */
-					// Plugin Settings Tab
 					'plugin_preserve' => 0,				// Preserve Settings on Uninstall
 					'plugin_preserve:use' => 'default',
 					'plugin_debug' => 0,				// Add Hidden Debug Messages
@@ -1083,7 +1085,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_hide_pro:use' => 'default',
 					'plugin_show_opts' => 'basic',			// Options to Show by Default
 					'plugin_show_opts:use' => 'default',
-					// Integration Tab
+					/**
+					 * Advanced settings - Integration tab.
+					 */
 					'plugin_honor_force_ssl' => 1,			// Honor the FORCE_SSL Constant
 					'plugin_honor_force_ssl:use' => 'default',
 					'plugin_html_attr_filter_name' => 'language_attributes',
@@ -1116,7 +1120,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_tags:use' => 'default',
 					'plugin_add_person_role' => 1,			// Add Person Role for New Users
 					'plugin_add_person_role:use' => 'default',
-					// Cache Settings Tab
+					/**
+					 * Advanced settings - Cache Settings tab.
+					 */
 					'plugin_head_cache_exp' => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week)
 					'plugin_head_cache_exp:use' => 'default',
 					'plugin_content_cache_exp' => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
@@ -1141,8 +1147,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_short_urls:use' => 'default',
 					'plugin_clear_for_comment' => 1,		// Clear Post Cache for New Comment
 					'plugin_clear_for_comment:use' => 'default',
-				),	// end of site defaults
-				'cm_prefix' => array(		// contact method options prefix
+				),
+				/**
+				 * Contact method options prefix.
+				 */
+				'cm_prefix' => array(
 					'email' => 'email',
 					'facebook' => 'fb',
 					'gplus' => 'gp',
@@ -1163,7 +1172,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'vk' => 'vk',
 					'whatsapp' => 'wa',
 				),
-				'cf_md_idx' => array(		// Custom field to meta data index.
+				/**
+				 * Custom field to meta data index.
+				 */
+				'cf_md_idx' => array(
 					'plugin_cf_img_url'             => 'og_img_url',
 					'plugin_cf_vid_url'             => 'og_vid_url',
 					'plugin_cf_vid_embed'           => 'og_vid_embed',
@@ -1180,14 +1192,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_size'        => 'product_size',
 					'plugin_cf_sameas_urls'         => 'schema_sameas_url',
 				),
-				'cf_md_multi' => array(		// Read values into numeric meta data index.
-					'schema_addl_type_url' => true,
-					'schema_recipe_ingredient' => true,
+				/**
+				 * Read meta values into numeric meta data index.
+				 */
+				'cf_md_multi' => array(
+					'schema_addl_type_url'      => true,
+					'schema_recipe_ingredient'  => true,
 					'schema_recipe_instruction' => true,
-					'schema_sameas_url' => true,
+					'schema_sameas_url'         => true,
 				),
 			),
-			'um' => array(				// Update manager.
+			/**
+			 * Update manager config.
+			 */
+			'um' => array(
 				'rec_version' => '1.9.0',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
@@ -1213,10 +1231,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'stable' => '/^[0-9][0-9\.\-]+$/',
 				),
 			),
-			'php' => array(				// php
+			/**
+			 * PHP config.
+			 */
+			'php' => array(
 				'label' => 'PHP',
-				'min_version' => '5.4',		// hard limit - deactivate the plugin when activating
-				'rec_version' => '7.0',		// soft limit - issue warning if lower version found
+				'min_version' => '5.4',		// Hard limit - deactivate the plugin when activating.
+				'rec_version' => '7.0',		// Soft limit - issue warning if lower version found.
 				'version_url' => 'https://secure.php.net/supported-versions.php',
 				'extensions' => array(
 					'curl' => array(
@@ -1229,14 +1250,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'wp_editor' => 'WP_Image_Editor_GD',
 						'wp_ref_url' => 'https://developer.wordpress.org/reference/classes/wp_image_editor_gd/',
 					),
-					/*
-					'imagick' => array(
-						'label' => 'Image Processing (ImageMagick)',
-						'url' => 'https://secure.php.net/manual/en/book.imagick.php',
-						'wp_editor' => 'WP_Image_Editor_Imagick',
-						'wp_ref_url' => 'https://developer.wordpress.org/reference/classes/wp_image_editor_imagick/',
-					),
-					*/
 					'json' => array(
 						'label' => 'JavaScript Object Notation (JSON)',
 						'url' => 'https://secure.php.net/manual/en/book.json.php',
@@ -1251,14 +1264,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 			),
-			'wp' => array(				// WordPress
+			/**
+			 * WordPress config.
+			 */
+			'wp' => array(
 				'label' => 'WordPress',
-				'min_version' => '3.8',		// hard limit - deactivate the plugin when activating
-				'rec_version' => '4.9.4',	// soft limit - issue warning if lower version found
+				'min_version' => '3.8',		// Hard limit - deactivate the plugin when activating.
+				'rec_version' => '4.9.4',	// Soft limit - issue warning if lower version found.
 				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
-				'tb_iframe' => array(		// thickbox iframe
-					'width' => 772,		// url query argument
-					'height' => 550,	// url query argument
+				'tb_iframe' => array(		// Thickbox iframe.
+					'width' => 772,		// Url query argument.
+					'height' => 550,	// Url query argument.
 				),
 				'cm_names' => array(
 					'aim' => 'AIM',
@@ -1287,13 +1303,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'cap' => 'manage_options',
 					),
 				),
+				/**
+				 * Transient id prefix.
+				 */
 				'transient' => array(
 					'wpsso_a_' => array(
 						'label' => 'Article Topics',
 						'opt_key' => 'plugin_topics_cache_exp',
 						'filter' => 'wpsso_cache_expire_article_topics',
 					),
-					'wpsso_b_' => array(	// sharing buttons html cache
+					'wpsso_b_' => array(	// Sharing buttons html cache.
 					),
 					'wpsso_h_' => array(
 						'label' => 'Head Markup',
@@ -1325,7 +1344,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'wp_cache' => array(
-					'wpsso_c_' => array(	// post object filtered content cache
+					'wpsso_c_' => array(	// Filtered post content cache.
 						'label' => 'Filtered Content',
 						'opt_key' => 'plugin_content_cache_exp',
 						'filter' => 'wpsso_cache_expire_content_text',
@@ -2344,7 +2363,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function get_version( $add_slug = false ) {
 			$ext = 'wpsso';
 			$info =& self::$cf['plugin'][$ext];
-			return $add_slug ? $info['slug'].'-'.$info['version'] : $info['version'];
+			return $add_slug ? $info['slug'] . '-' . $info['version'] : $info['version'];
 		}
 
 		/**
@@ -2373,9 +2392,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 					foreach ( self::$cf['plugin'] as $ext => $info ) {
 
-						if ( defined( strtoupper( $ext ).'_PLUGINDIR' ) ) {
-							$pkg_lctype = is_dir( constant( strtoupper( $ext ).
-								'_PLUGINDIR' ).'lib/pro/' ) ? 'pro' : 'gpl';
+						if ( defined( strtoupper( $ext ) . '_PLUGINDIR' ) ) {
+							$pkg_lctype = is_dir( constant( strtoupper( $ext ) . 
+								'_PLUGINDIR' ) . 'lib/pro/' ) ? 'pro' : 'gpl';
 						} else {
 							$pkg_lctype = '';
 						}
@@ -2394,11 +2413,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						}
 
 						if ( isset( $info['version'] ) ) {
-							self::$cf['*']['version'] .= '-'.$ext.$info['version'].$pkg_lctype;
+							self::$cf['*']['version'] .= '-' . $ext . $info['version'] . $pkg_lctype;
 						}
 
 						if ( isset( $info['opt_version'] ) ) {
-							self::$cf['opt']['version'] .= '-'.$ext.$info['opt_version'].$pkg_lctype;
+							self::$cf['opt']['version'] .= '-' . $ext . $info['opt_version'] . $pkg_lctype;
 						}
 
 						// complete relative paths in the image arrays
@@ -2422,7 +2441,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		private static function maybe_prefix_base_url( &$url, $key, $plugin_base ) {
 			if ( ! empty( $url ) && strpos( $url, '//' ) === false ) {
-				$url = $plugin_base.$url;
+				$url = $plugin_base . $url;
 			}
 		}
 
@@ -2487,16 +2506,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Create a unique md5 query name from the config array and the local wp nonce key.
 			 */
-			$var_const['WPSSO_NONCE_NAME'] = md5( var_export( self::$cf, true ).
+			$var_const['WPSSO_NONCE_NAME'] = md5( var_export( self::$cf, true ) . 
 				( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
-				$var_const['WPSSO_CACHEDIR'] = WPSSO_PLUGINDIR.'cache/';
-				$var_const['WPSSO_TOPICS_LIST'] = WPSSO_PLUGINDIR.'share/topics.txt';
+				$var_const['WPSSO_CACHEDIR'] = WPSSO_PLUGINDIR . 'cache/';
+				$var_const['WPSSO_TOPICS_LIST'] = WPSSO_PLUGINDIR . 'share/topics.txt';
 			}
 
 			if ( defined( 'WPSSO_URLPATH' ) ) {
-				$var_const['WPSSO_CACHEURL'] = WPSSO_URLPATH.'cache/';
+				$var_const['WPSSO_CACHEURL'] = WPSSO_URLPATH . 'cache/';
 			}
 
 			$var_const['WPSSO_MENU_ORDER'] = '99.10';			// Position of the SSO menu item.
@@ -2573,8 +2592,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * WPSSO PHP cURL library settings.
 			 */
-			$var_const['WPSSO_PHP_CURL_CAINFO'] = ABSPATH.WPINC.'/certificates/ca-bundle.crt';
-			$var_const['WPSSO_PHP_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0';
+			$var_const['WPSSO_PHP_CURL_CAINFO'] = ABSPATH . WPINC . '/certificates/ca-bundle.crt';
+			$var_const['WPSSO_PHP_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0';
 			$var_const['WPSSO_PHP_CURL_USERAGENT_FACEBOOK'] = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
 
 			foreach ( $var_const as $name => $value ) {
@@ -2588,42 +2607,42 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function require_libs( $plugin_filepath ) {
 
-			require_once WPSSO_PLUGINDIR.'lib/com/cache.php';
-			require_once WPSSO_PLUGINDIR.'lib/com/nodebug.php';	// Always load fallback class.
-			require_once WPSSO_PLUGINDIR.'lib/com/nonotice.php';	// Always load fallback class.
-			require_once WPSSO_PLUGINDIR.'lib/com/util.php';
+			require_once WPSSO_PLUGINDIR . 'lib/com/cache.php';
+			require_once WPSSO_PLUGINDIR . 'lib/com/nodebug.php';	// Always load fallback class.
+			require_once WPSSO_PLUGINDIR . 'lib/com/nonotice.php';	// Always load fallback class.
+			require_once WPSSO_PLUGINDIR . 'lib/com/util.php';
 
-			require_once WPSSO_PLUGINDIR.'lib/check.php';
-			require_once WPSSO_PLUGINDIR.'lib/exception.php';	// Extends exception.
-			require_once WPSSO_PLUGINDIR.'lib/filters.php';
-			require_once WPSSO_PLUGINDIR.'lib/functions.php';
-			require_once WPSSO_PLUGINDIR.'lib/head.php';
-			require_once WPSSO_PLUGINDIR.'lib/link_rel.php';
-			require_once WPSSO_PLUGINDIR.'lib/media.php';
-			require_once WPSSO_PLUGINDIR.'lib/meta.php';
-			require_once WPSSO_PLUGINDIR.'lib/opengraph.php';
-			require_once WPSSO_PLUGINDIR.'lib/options.php';
-			require_once WPSSO_PLUGINDIR.'lib/page.php';
-			require_once WPSSO_PLUGINDIR.'lib/post.php';		// extends meta.php
-			require_once WPSSO_PLUGINDIR.'lib/register.php';
-			require_once WPSSO_PLUGINDIR.'lib/schema.php';
-			require_once WPSSO_PLUGINDIR.'lib/script.php';
-			require_once WPSSO_PLUGINDIR.'lib/style.php';
-			require_once WPSSO_PLUGINDIR.'lib/term.php';		// extends meta.php
-			require_once WPSSO_PLUGINDIR.'lib/twittercard.php';
-			require_once WPSSO_PLUGINDIR.'lib/user.php';		// extends meta.php
-			require_once WPSSO_PLUGINDIR.'lib/util.php';
-			require_once WPSSO_PLUGINDIR.'lib/weibo.php';
+			require_once WPSSO_PLUGINDIR . 'lib/check.php';
+			require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends exception.
+			require_once WPSSO_PLUGINDIR . 'lib/filters.php';
+			require_once WPSSO_PLUGINDIR . 'lib/functions.php';
+			require_once WPSSO_PLUGINDIR . 'lib/head.php';
+			require_once WPSSO_PLUGINDIR . 'lib/link_rel.php';
+			require_once WPSSO_PLUGINDIR . 'lib/media.php';
+			require_once WPSSO_PLUGINDIR . 'lib/meta.php';
+			require_once WPSSO_PLUGINDIR . 'lib/opengraph.php';
+			require_once WPSSO_PLUGINDIR . 'lib/options.php';
+			require_once WPSSO_PLUGINDIR . 'lib/page.php';
+			require_once WPSSO_PLUGINDIR . 'lib/post.php';		// Extends meta.php
+			require_once WPSSO_PLUGINDIR . 'lib/register.php';
+			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
+			require_once WPSSO_PLUGINDIR . 'lib/script.php';
+			require_once WPSSO_PLUGINDIR . 'lib/style.php';
+			require_once WPSSO_PLUGINDIR . 'lib/term.php';		// Extends meta.php
+			require_once WPSSO_PLUGINDIR . 'lib/twittercard.php';
+			require_once WPSSO_PLUGINDIR . 'lib/user.php';		// Extends meta.php
+			require_once WPSSO_PLUGINDIR . 'lib/util.php';
+			require_once WPSSO_PLUGINDIR . 'lib/weibo.php';
 
 			if ( is_admin() ) {
-				require_once WPSSO_PLUGINDIR.'lib/messages.php';
-				require_once WPSSO_PLUGINDIR.'lib/admin.php';
-				require_once WPSSO_PLUGINDIR.'lib/com/form.php';
-				require_once WPSSO_PLUGINDIR.'lib/ext/parse-readme.php';
+				require_once WPSSO_PLUGINDIR . 'lib/messages.php';
+				require_once WPSSO_PLUGINDIR . 'lib/admin.php';
+				require_once WPSSO_PLUGINDIR . 'lib/com/form.php';
+				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
 			}
 
-			if ( file_exists( WPSSO_PLUGINDIR.'lib/loader.php' ) ) {
-				require_once WPSSO_PLUGINDIR.'lib/loader.php';
+			if ( file_exists( WPSSO_PLUGINDIR . 'lib/loader.php' ) ) {
+				require_once WPSSO_PLUGINDIR . 'lib/loader.php';
 			}
 
 			add_filter( 'wpsso_load_lib', array( 'WpssoConfig', 'load_lib' ), 10, 3 );

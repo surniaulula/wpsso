@@ -1609,6 +1609,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox"><tr><td>';
 			echo $this->p->msgs->get( 'column-rate-review' );
+			echo '<h4>' . __( 'Rate these plugins:', 'wpsso' ) . '</h4>' . "\n";
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
