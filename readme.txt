@@ -321,7 +321,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.3.1-b.1 (2018/05/15)**
+**Version 4.3.1-b.2 (2018/05/16)**
 
 * *New Features*
 	* None
@@ -330,7 +330,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* If the PHP 'mbstring' extension is loaded, WPSSO Core will also checks that its 'mb_strlen', 'mb_substr', and 'mb_convert_encoding' functions are available.
 
 **Version 4.3.0 (2018/05/10)**
 
@@ -421,9 +421,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.3.1-b.1 =
+= 4.3.1-b.2 =
 
-(2018/05/15) Added support for MP4 videos as a valid "twitter:player" meta tag value.
+(2018/05/16) Added support for MP4 videos as a valid "twitter:player" meta tag value. Added extra checks for several PHP 'mbstring' functions.
 
 = 4.3.0 =
 
