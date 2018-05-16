@@ -1206,7 +1206,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .' . $this->lca . '-notice .notice-message code,
 				.' . $this->lca . '-notice .notice-message code {
 					font-family:"Courier", monospace;
-					font-size:0.95em;
+					font-size:1em;
+					vertical-align:middle;
 					padding:0 2px;
 					margin:0;
 				}

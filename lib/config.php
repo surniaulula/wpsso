@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.3.1-b.1',		// Plugin version.
+					'version' => '4.3.1-b.2',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -1240,25 +1240,32 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'rec_version' => '7.0',		// Soft limit - issue warning if lower version found.
 				'version_url' => 'https://secure.php.net/supported-versions.php',
 				'extensions' => array(
-					'curl' => array(
+					'curl' => array(	// PHP extension name.
 						'label' => 'Client URL Library (cURL)',
 						'url' => 'https://secure.php.net/manual/en/book.curl.php',
 					),
-					'gd' => array(
+					'gd' => array(		// PHP extension name.
 						'label' => 'Image Processing (GD)',
-						'url' => 'https://secure.php.net/manual/en/book.image.php',
-						'wp_editor' => 'WP_Image_Editor_GD',
-						'wp_ref_url' => 'https://developer.wordpress.org/reference/classes/wp_image_editor_gd/',
+						'url'   => 'https://secure.php.net/manual/en/book.image.php',
+						'wp_image_editor' => array(
+							'class' => 'WP_Image_Editor_GD',
+							'url'   => 'https://developer.wordpress.org/reference/classes/wp_image_editor_gd/',
+						),
 					),
-					'json' => array(
+					'json' => array(	// PHP extension name.
 						'label' => 'JavaScript Object Notation (JSON)',
 						'url' => 'https://secure.php.net/manual/en/book.json.php',
 					),
-					'mbstring' => array(
+					'mbstring' => array(	// PHP extension name.
 						'label' => 'Multibyte String',
 						'url' => 'https://secure.php.net/manual/en/book.mbstring.php',
+						'functions' => array(	// Extra checks to make sure the PHP extension is complete.
+							'mb_strlen',
+							'mb_substr',
+							'mb_convert_encoding',
+						),
 					),
-					'simplexml' => array(
+					'simplexml' => array(	// PHP extension name.
 						'label' => 'SimpleXML',
 						'url' => 'https://secure.php.net/manual/en/book.simplexml.php',
 					),

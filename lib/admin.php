@@ -1874,36 +1874,88 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $php_extensions as $php_ext => $php_info ) {
 
-				if ( ! empty( $php_info['wp_editor'] ) ) {
-					if ( ! in_array( $php_info['wp_editor'], $implementations ) ) {
+				/**
+				 * Skip image extensions for WordPress image editors that are not used.
+				 */
+				if ( ! empty( $php_info['wp_image_editor']['class'] ) ) {
+					if ( ! in_array( $php_info['wp_image_editor']['class'], $implementations ) ) {
 						continue;
 					}
 				}
 
+				$error_msg = '';	// Clear any previous error message.
+
+				/**
+				 * Check for the extension first, then maybe check for its functions.
+				 */
 				if ( ! extension_loaded( $php_ext ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'php ' . $php_ext . ' extension module is not loaded' );
 					}
 
-					$error_msg = '';
-					$func_name = 'extension_loaded()';
-					$func_url  = __( 'https://secure.php.net/manual/en/function.extension-loaded.php', 'wpsso' );
+					/**
+					 * If this is a WordPress image editing extension, add information about the WordPress image editing class.
+					 */
+					if ( ! empty( $php_info['wp_image_editor']['class'] ) ) {
 
-					if ( ! empty( $php_info['wp_editor'] ) ) {
-						$editor_label = '<a href="'.$php_info['wp_ref_url'].'">'.$php_info['wp_editor'].'</a>';
-						$error_msg .= sprintf( __( 'WordPress is configured to use the %1$s image editing class but the <a href="%2$s">PHP %3$s extension module</a> is not loaded: The <a href="%4$s">PHP %5$s function</a> for "%6$s" is false.', 'wpsso' ), $editor_label, $php_info['url'], $php_info['label'], $func_url, '<code>'.$func_name.'</code>', $php_ext ).' ';
+						/**
+						 * If we have a WordPress reference URL for this image editing class, link the image editor class name.
+						 */
+						if ( ! empty( $php_info['wp_image_editor']['url'] ) ) {
+							$editor_class = '<a href="' . $php_info['wp_image_editor']['url'] . '">' .
+								$php_info['wp_image_editor']['class'] . '</a>';
+						} else {
+							$editor_class = $php_info['wp_image_editor']['class'];
+						}
+
+						$error_msg .= sprintf( __( 'WordPress is configured to use the %1$s image editing class but the <a href="%2$s">PHP %3$s extension module</a> is not loaded:', 'wpsso' ), $editor_class, $php_info['url'], $php_info['label'] ) . ' ';
+
 					} else {
-						$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded: The <a href="%3$s">PHP %4$s function</a> for "%5$s" is false.', 'wpsso' ), $php_info['url'], $php_info['label'], $func_url, '<code>'.$func_name.'</code>', $php_ext ).' ';
+
+						$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded:', 'wpsso' ),
+							$php_info['url'], $php_info['label'] ).' ';
 					}
 
+					/**
+					 * Add additional / mode specific information about this check for the hosting provider.
+					 */
+					$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> for "%3$s" is false.', 'wpsso' ),
+						__( 'https://secure.php.net/manual/en/function.extension-loaded.php', 'wpsso' ),
+							'<code>extension_loaded()</code>', $php_ext ).' ';
+
+
+					/**
+					 * If we are checking for the ImageMagick PHP extension, make sure the user knows the
+					 * difference between the OS package and the PHP extension.
+					 */
 					if ( $php_ext === 'imagick' ) {
 						$error_msg .= sprintf( __( 'Note that the ImageMagick application and the PHP "%1$s" extension are two different products &mdash; this error is for the PHP "%1$s" extension, not the ImageMagick application.', 'wpsso' ), $php_ext ).' ';
 					}
 
-					$error_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP "%1$s" extension installed and enabled.', 'wpsso' ), $php_ext ).' ';
+					$error_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP "%1$s" extension installed and enabled.', 'wpsso' ), $php_ext );
 
-					$this->p->notice->err( trim( $error_msg ) );
+				/**
+				 * If the PHP extension is loaded, then maybe check to make sure the extension is complete. ;-)
+				 */
+				} elseif ( ! empty( $php_info['functions'] ) && is_array( $php_info['functions'] ) ) {
+
+					foreach ( $php_info['functions'] as $func_name ) {
+
+						if ( ! function_exists( $func_name ) ) {
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'php ' . $func_name . ' function is missing' );
+							}
+
+							$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s function is missing.', 'wpsso' ), $php_info['url'], $php_info['label'], '<code>' . $func_name . '()</code>' ).' ';
+							$error_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP "%1$s" function installed.', 'wpsso' ), $func_name );
+						}
+					}
+				}
+
+				if ( ! empty( $error_msg ) ) {
+					$this->p->notice->err( $error_msg );
 				}
 			}
 		}
