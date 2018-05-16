@@ -13,7 +13,7 @@
  * Description: Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.
  * Requires PHP: 5.4
  * Requires At Least: 3.8
- * Tested Up To: 4.9.5
+ * Tested Up To: 4.9.6
  * WC Tested Up To: 3.3.5
  * Version: 4.3.1-b.2
  *
