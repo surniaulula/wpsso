@@ -286,7 +286,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		// add sub-menu items to existing menus (profile and setting)
+		/**
+		 * Add sub-menu items to existing menus (profile and setting).
+		 */
 		public function add_admin_submenus() {
 
 			foreach ( array( 'profile', 'setting' ) as $menu_lib ) {
@@ -427,7 +429,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$css_class = $this->p->lca . '-menu-item' . ( $css_class ? ' ' . $css_class : '' );
 				$menu_title = '<div class="' . $css_class . ' dashicons-before dashicons-' . $dashicon . '"></div>' .
-					'<div class="' . $css_class . '">' . $menu_name . '</div>';
+					'<div class="' . $css_class . ' menu-item-label">' . $menu_name . '</div>';
 
 			} else {
 				$menu_title = $menu_name;
