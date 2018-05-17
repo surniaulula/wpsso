@@ -761,14 +761,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$og_single_embed['og:video:url'] = $og_single_video['og:video:embed_url'];
 						$og_single_embed['og:video:type'] = 'text/html';
 
-						// embedded videos may not have width / height information
+						/**
+						 * Embedded videos may not have width / height information defined.
+						 */
 						foreach ( array( 'og:video:width', 'og:video:height' ) as $mt_name ) {
 							if ( isset( $og_single_embed[$mt_name] ) && $og_single_embed[$mt_name] === '' ) {
 								unset( $og_single_embed[$mt_name] );
 							}
 						}
 
-						// add application/x-shockwave-flash video first and the text/html video second
+						/**
+						 * Add application/x-shockwave-flash video first and the text/html video second.
+						 */
 						if ( SucomUtil::get_mt_media_url( $og_single_video, 'og:video', array( ':secure_url', ':url', '' ) ) ) {
 							$og_extend[] = $og_single_video;
 						}

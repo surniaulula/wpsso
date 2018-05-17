@@ -2644,7 +2644,7 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:378 lib/media.php:530 lib/media.php:1245
+#: lib/media.php:378 lib/media.php:530 lib/media.php:1249
 #: lib/pro/util/checkimgdims.php:89
 msgid "Media Library"
 msgstr ""
@@ -2693,22 +2693,22 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1251 lib/pro/media/ngg.php:130
+#: lib/media.php:1255 lib/pro/media/ngg.php:130
 #: lib/pro/util/checkimgdims.php:91
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1261
+#: lib/media.php:1265
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1330
+#: lib/media.php:1334
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1358
+#: lib/media.php:1362
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -5169,18 +5169,18 @@ msgid ""
 "required %4$s image dimensions."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:174 lib/pro/media/vimeo.php:147
-#: lib/pro/media/wistia.php:275 lib/util.php:1290
+#: lib/pro/media/slideshare.php:194 lib/pro/media/vimeo.php:163
+#: lib/pro/media/wistia.php:303 lib/util.php:1290
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
-#: lib/pro/media/slideshare.php:176 lib/pro/media/vimeo.php:149
-#: lib/pro/media/wistia.php:277 lib/util.php:1292
+#: lib/pro/media/slideshare.php:196 lib/pro/media/vimeo.php:165
+#: lib/pro/media/wistia.php:305 lib/util.php:1292
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:179 lib/pro/media/vimeo.php:152
-#: lib/pro/media/wistia.php:280 lib/util.php:1295
+#: lib/pro/media/slideshare.php:199 lib/pro/media/vimeo.php:168
+#: lib/pro/media/wistia.php:308 lib/util.php:1295
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."

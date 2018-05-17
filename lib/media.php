@@ -1120,8 +1120,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				'url' => '',
 				'width' => -1,
 				'height' => -1,
-				'mime_type' => '',
-				'prev_url' => null,
+				'type' => '',
+				'prev_url' => '',
 				'post_id' => null,
 				'api' => '',
 			), $args );
@@ -1190,14 +1190,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$have_media[$prefix] = empty( $have_url ) ? false : true;
 
-				// remove all meta tags if there's no media URL or media is a duplicate
+				/**
+				 * Remove all meta tags if there's no media URL or media is a duplicate.
+				 */
 				if ( ! $have_media[$prefix] || ( $check_dupes && ! $this->p->util->is_uniq_url( $have_url, 'video_info' ) ) ) {
 
 					foreach( SucomUtil::preg_grep_keys( '/^'.$prefix.'(:.*)?$/', $og_video ) as $k => $v ) {
 						unset ( $og_video[$k] );
 					}
 
-				// if the media is an image, then check and add missing sizes
+				/**
+				 * If the media is an image, then check and add missing sizes.
+				 */
 				} elseif ( $prefix === 'og:image' ) {
 
 					if ( empty( $og_video['og:image:width'] ) || $og_video['og:image:width'] < 0 ||
@@ -1425,12 +1429,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * get_head_meta( $request, $query, $libxml_errors, $curl_opts );
 			 */
 			$curl_opts = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
+
 			$metas = $this->p->util->get_head_meta( $url, '//meta', false, $curl_opts );
 
 			if ( isset( $metas['meta'] ) ) {
 
-				foreach ( $metas as $m ) {		// loop through all meta tags
-					foreach ( $m as $a ) {		// loop through all attributes for that meta tag
+				foreach ( $metas as $m ) {		// Loop through all meta tags.
+
+					foreach ( $m as $a ) {		// Loop through all attributes for that meta tag.
 
 						$meta_type = key( $a );
 						$meta_name = reset( $a );
@@ -1438,26 +1444,33 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						switch ( $meta_match ) {
 
-							// use the property meta tag content as-is
+							/**
+							 * Use the property meta tag content as-is.
+							 */
 							case 'property-og:video:width':
 							case 'property-og:video:height':
-							case ( strpos( $meta_match, 'property-al:' ) === 0 ? true : false ):	// Facebook AppLink
+							case 'property-og:video:type':
+							case ( strpos( $meta_match, 'property-al:' ) === 0 ? true : false ):	// Facebook AppLink.
 								if ( ! empty( $a['content'] ) ) {
 									$og_video[$a['property']] = $a['content'];
 								}
 								break;
 
-							// add the property meta tag content as an array
+							/**
+							 * Add the property meta tag content as an array.
+							 */
 							case 'property-og:video:tag':
 								if ( ! empty( $a['content'] ) ) {
-									$og_video[$a['property']][] = $a['content'];	// array of tags
+									$og_video[$a['property']][] = $a['content'];	// Array of tags.
 								}
 								break;
 
 							case 'property-og:image:secure_url':
 								if ( ! empty( $a['content'] ) ) {
 
-									// add the meta name as a query string to know where the value came from
+									/**
+									 * Add the meta name as a query string to know where the value came from.
+									 */
 									$a['content'] = add_query_arg( 'm', $meta_name, $a['content'] );
 
 									if ( ! empty( $this->p->options['add_meta_property_og:image:secure_url'] ) ) {
@@ -1489,8 +1502,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								}
 								break;
 
-							// add additional, non-standard properties
-							// like og:video:title and og:video:description
+							/**
+							 * Add additional, non-standard properties, like og:video:title and og:video:description.
+							 */
 							case 'property-og:title':
 							case 'property-og:description':
 								if ( ! empty( $a['content'] ) ) {
@@ -1502,9 +1516,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								}
 								break;
 
-							// twitter:app:name:iphone
-							// twitter:app:id:iphone
-							// twitter:app:url:iphone
+							/**
+							 * twitter:app:name:iphone
+							 * twitter:app:id:iphone
+							 * twitter:app:url:iphone
+							 */
 							case ( strpos( $meta_match, 'name-twitter:app:' ) === 0 ? true : false ):	// Twitter Apps
 								if ( ! empty( $a['content'] ) ) {
 									if ( preg_match( '/^twitter:app:([a-z]+):([a-z]+)$/', $meta_name, $matches ) ) {
