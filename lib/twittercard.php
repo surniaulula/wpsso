@@ -152,6 +152,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						 */
 						if ( isset( $og_video['og:video:type'] ) ) {
 							switch ( $og_video['og:video:type'] ) {
+								case 'application/x-shockwave-flash':
 								case 'text/html':
 									if ( empty( $embed_url ) ) {
 										$embed_url = SucomUtil::get_mt_media_url( $og_video, 'og:video' );
