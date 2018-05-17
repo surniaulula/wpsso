@@ -321,7 +321,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.3.1-b.3 (2018/05/17)**
+**Version 4.3.1 (2018/05/17)**
 
 * *New Features*
 	* None
@@ -422,7 +422,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.3.1-b.3 =
+= 4.3.1 =
 
 (2018/05/17) Added support for MP4 videos as a valid "twitter:player" meta tag value. Added extra checks for several PHP 'mbstring' functions.
 
