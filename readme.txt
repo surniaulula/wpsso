@@ -321,6 +321,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.3.2-dev.1 (2018/05/18)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* None
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 4.3.1 (2018/05/17)**
 
 * *New Features*
@@ -422,11 +433,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
+= 4.3.2-dev.1 =
+
+(2018/05/18) None.
+
 = 4.3.1 =
 
 (2018/05/17) Added support for MP4 videos as a valid "twitter:player" meta tag value. Added extra checks for several PHP 'mbstring' functions.
-
-= 4.3.0 =
-
-(2018/05/10) Added a new "Open Graph Type" option in the SSO metabox (Pro version). Moved the Preview tab in the SSO metabox. Renamed plugin settings pages in the sidebar menu. Fixed The SEO Framework post URL filter (Pro version).
 
