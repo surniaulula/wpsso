@@ -1,5 +1,6 @@
 <?php die( 'These aren\'t the droids you\'re looking for...' );
 // extract of translatable text strings from static config array
+_x( 'Add-ons', 'lib file description', 'wpsso' );
 _x( 'Advanced', 'lib file description', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
 _x( 'All Transients', 'option label', 'wpsso' );
@@ -17,7 +18,6 @@ _x( 'Center', 'option value', 'wpsso' );
 _x( 'checked', 'option value', 'wpsso' );
 _x( 'Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google\'s Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.', 'plugin description', 'wpsso' );
 _x( 'Contractor', 'option value', 'wpsso' );
-_x( 'Core Add-ons', 'lib file description', 'wpsso' );
 _x( '[Custom Address]', 'option value', 'wpsso' );
 _x( 'Damaged', 'option value', 'wpsso' );
 _x( 'Dashboard', 'lib file description', 'wpsso' );

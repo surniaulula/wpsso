@@ -472,7 +472,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $settings_page ) ) {
 
-				if ( $ext === $this->p->lca ) {
+				if ( $ext === $this->p->lca ) {	// Only add for the core plugin.
 					$settings_page_transl = _x( $this->p->cf['plugin'][$ext]['lib'][$menu_lib][$settings_page], 'lib file description', 'wpsso' );
 					$settings_label_transl = sprintf( _x( '%s Settings', 'plugin action link', 'wpsso' ), $settings_page_transl );
 				} else {
@@ -483,11 +483,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( ! empty( $licenses_page ) ) {
-				$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' . _x( 'Core Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
+				if ( $ext === $this->p->lca ) {	// Only add for the core plugin.
+					$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' . 
+						_x( 'Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
+				}
 			}
 
 			if ( ! empty( $dashboard_page ) ) {
-				$links[] = '<a href="' . $this->p->util->get_admin_url( $dashboard_page ) . '">' . _x( 'Dashboard', 'plugin action link', 'wpsso' ) . '</a>';
+				if ( $ext === $this->p->lca ) {	// Only add for the core plugin.
+					$links[] = '<a href="' . $this->p->util->get_admin_url( $dashboard_page ) . '">' . 
+						_x( 'Dashboard', 'plugin action link', 'wpsso' ) . '</a>';
+				}
 			}
 
 			return $links;

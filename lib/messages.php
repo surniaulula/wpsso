@@ -1689,7 +1689,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $idx ) {
 
-						case 'info-plugin-tid':	// Displayed in the Core Add-ons settings page.
+						case 'info-plugin-tid':	// Displayed in the Add-ons settings page.
 
 							$um_info = $this->p->cf['plugin']['wpssoum'];
 
@@ -1709,12 +1709,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'info-plugin-tid-network':	// Displayed in the Network Core Add-ons settings page.
+						case 'info-plugin-tid-network':	// Displayed in the Network Add-ons settings page.
 
 							$um_info = $this->p->cf['plugin']['wpssoum'];
 
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-								_x( 'Core Add-ons', 'lib file description', 'wpsso' ) );
+								_x( 'Add-ons', 'lib file description', 'wpsso' ) );
 
 							$text = '<blockquote class="top-info">';
 
@@ -2000,7 +2000,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						if ( ! is_multisite() ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-								_x( 'Core Add-ons', 'lib file description', 'wpsso' ) );
+								_x( 'Add-ons', 'lib file description', 'wpsso' ) );
 
 							$text = '<p><b>'.sprintf( __( 'The %1$s plugin Authentication ID option is empty.', 'wpsso' ), $info['name'] ).'</b><br/>'.sprintf( __( 'To enable Pro version features and allow the plugin to authenticate itself for updates, please enter the unique Authentication ID you received by email in the %s settings page.', 'wpsso' ), $settings_page_link ).'</p>';
 						}
@@ -2010,7 +2010,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-pro-not-installed':
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Core Add-ons', 'lib file description', 'wpsso' ) );
+							_x( 'Add-ons', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin has not been installed &mdash; you can install and activate the Pro version from the %2$s settings page.', 'wpsso' ), '<b>'.$info['name'].'</b>', $settings_page_link ).' ;-)';
 
@@ -2019,7 +2019,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-pro-not-updated':
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Core Add-ons', 'lib file description', 'wpsso' ) );
+							_x( 'Add-ons', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the Pro version has not been installed &mdash; don\'t forget to update the plugin to install the latest Pro version.', 'wpsso' ), '<b>'.$info['name'].'</b>', $settings_page_link ).' ;-)';
 
@@ -2031,7 +2031,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$um_info = $this->p->cf['plugin']['wpssoum'];
 
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Core Add-ons', 'lib file description', 'wpsso' ) );
+							_x( 'Add-ons', 'lib file description', 'wpsso' ) );
 
 						$plugins_page_link = '<a href="'.get_admin_url( null, 'plugins.php' ).'">'.__( 'Plugins' ).'</a>';
 
@@ -2113,7 +2113,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</ul>';
 
-						$text .= '<p>'.__( '<strong>Nontransferable Pro licenses never expire</strong> &mdash; you may receive unlimited / lifetime updates and support for each licensed WordPress Site Address.', 'wpsso' ).' '.__( 'How great is that!?', 'wpsso' ).' :-)</p>';
+						$text .= '<p>'.__( '<strong>Pro licenses never expire</strong> &mdash; you may receive unlimited / lifetime updates and support for each licensed WordPress Site Address.', 'wpsso' ).' '.__( 'How great is that!?', 'wpsso' ).' :-)</p>';
 
 						if ( $this->p->avail['*']['p_dir'] ) {
 							$text .= '<p>'.sprintf( __( '<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; license the Pro version immediately after your purchase!', 'wpsso' ), $info['short_pro'] ).'</p>';
