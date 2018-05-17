@@ -321,14 +321,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.3.1-b.2 (2018/05/16)**
+**Version 4.3.1-b.3 (2018/05/17)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Added support for MP4 videos as a valid "twitter:player" meta tag value.
 * *Bugfixes*
-	* None
+	* Fixed an incorrect variable name in Wistia the video integration module (Pro version).
 * *Developer Notes*
 	* If the PHP 'mbstring' extension is loaded, WPSSO Core will also checks that its 'mb_strlen', 'mb_substr', and 'mb_convert_encoding' functions are available.
 
@@ -421,9 +421,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.3.1-b.2 =
+= 4.3.1-b.3 =
 
-(2018/05/16) Added support for MP4 videos as a valid "twitter:player" meta tag value. Added extra checks for several PHP 'mbstring' functions.
+(2018/05/17) Added support for MP4 videos as a valid "twitter:player" meta tag value. Added extra checks for several PHP 'mbstring' functions.
 
 = 4.3.0 =
 
