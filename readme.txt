@@ -330,7 +330,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed an incorrect variable name in Wistia the video integration module (Pro version).
 * *Developer Notes*
-	* If the PHP 'mbstring' extension is loaded, WPSSO Core will also checks that its 'mb_strlen', 'mb_substr', and 'mb_convert_encoding' functions are available.
+	* If the PHP 'mbstring' extension is loaded, WPSSO Core will check that its 'mb_strlen', 'mb_substr', and 'mb_convert_encoding' functions are available.
 
 **Version 4.3.0 (2018/05/10)**
 
