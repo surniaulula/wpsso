@@ -1198,6 +1198,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						if ( preg_match( '/(\/|\.[a-z0-9]+)(\?[^\?]*)?$/', $have_url, $match ) ) {
 							switch ( $match[1] ) {
 								case '/':	// WebPage
+								case '.htm':
+								case '.html':
 									$og_video['og:video:type'] = 'text/html';
 									break;
 								case '.3gp':	// 3GP Mobile
