@@ -743,10 +743,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( ! empty( $og_single_video['og:video:embed_url'] ) ) {
 
-						// start with a copy of all og meta tags
+						/**
+						 * Start with a fresh copy of all og meta tags.
+						 */
 						$og_single_embed = SucomUtil::get_mt_prop_video( 'og', $og_single_video, false );
 
-						// exclude the facebook applink meta tags
+						/**
+						 * Exclude the facebook applink meta tags.
+						 */
 						$og_single_embed = SucomUtil::preg_grep_keys( '/^og:/', $og_single_embed );
 
 						if ( strpos( $og_single_video['og:video:embed_url'], 'https:' ) !== false ) {
@@ -759,6 +763,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 
 						$og_single_embed['og:video:url'] = $og_single_video['og:video:embed_url'];
+
 						$og_single_embed['og:video:type'] = 'text/html';
 
 						/**

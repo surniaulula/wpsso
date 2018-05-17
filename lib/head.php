@@ -682,19 +682,25 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				if ( is_array( $d_val ) ) {
 
-					// skip product offer and review arrays
+					/**
+					 * Skip internal product offer and review arrays.
+					 */
 					if ( preg_match( '/:(offers|reviews)$/', $d_name ) ) {
+
 						continue;
 
-					} elseif ( empty( $d_val ) ) {	// allow hooks to modify the value
-						$singles[] = $this->get_single_mt( $tag,
-							$type, $d_name, null, '', $mod );
+					} elseif ( empty( $d_val ) ) {	// Allow hooks to modify the value.
 
-					} else foreach ( $d_val as $dd_num => $dd_val ) {	// second dimension array
+						$singles[] = $this->get_single_mt( $tag, $type, $d_name, null, '', $mod );
+
+					} else foreach ( $d_val as $dd_num => $dd_val ) {	// Second dimension array.
+
 						if ( SucomUtil::is_assoc( $dd_val ) ) {
+
 							$use_video_image = true;
 
 							if ( isset( $dd_val['og:video:type'] ) ) {
+
 								/**
 								 * og:video:has_image will be false if ithere is no preview 
 								 * image, or the preview image is a duplicate.
@@ -704,22 +710,27 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								}
 
 								if ( $dd_val['og:video:type'] === 'text/html' ) {
-									// skip if text/html video markup is disabled
+
+									/**
+									 * Skip if 'text/html' video markup is disabled.
+									 */
 									if ( empty( $this->p->options['og_vid_html_type'] ) ) {
 										continue;
 									}
 								}
 							}
 
-							foreach ( $dd_val as $ddd_name => $ddd_val ) {	// third dimension array (associative)
+							foreach ( $dd_val as $ddd_name => $ddd_val ) {	// Third dimension array (associative).
+
 								if ( ! $use_video_image && strpos( $ddd_name, 'og:image' ) === 0 ) {
 									continue;
 								}
+
 								if ( is_array( $ddd_val ) ) {
 									if ( empty( $ddd_val ) ) {
 										$singles[] = $this->get_single_mt( $tag,
 											$type, $ddd_name, null, '', $mod );
-									} else foreach ( $ddd_val as $dddd_num => $dddd_val ) {	// fourth dimension array
+									} else foreach ( $ddd_val as $dddd_num => $dddd_val ) {	// Fourth dimension array.
 										$singles[] = $this->get_single_mt( $tag,
 											$type, $ddd_name, $dddd_val, $d_name.':'.
 												( $dd_num + 1 ), $mod );
@@ -756,7 +767,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		public function get_single_mt( $tag, $type, $name, $value, $cmt, array &$mod ) {
 
-			// check for known exceptions for the 'property' $type
+			/**
+			 * Check for known exceptions for the 'property' $type.
+			 */
 			if ( $tag === 'meta' ) {
 				if ( $type === 'property' ) {
 					// double-check the name to make sure its an open graph meta tag
@@ -788,6 +801,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$log_prefix = $tag.' '.$type.' '.$name;
 
 			static $charset = null;
+
 			if ( ! isset( $charset  ) ) {
 				$charset = get_bloginfo( 'charset' );
 			}
@@ -853,6 +867,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$this->p->debug->log( $log_prefix.' value is '.WPSSO_UNDEF_INT.' (skipped)' );
 					}
 				} else {
+
 					/**
 					 * Encode and escape all values, regardless if the head tag is enabled or not.
 					 * If the head tag is enabled, HTML will be created and saved in $parts[0].
@@ -935,8 +950,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $ret;
 		}
 
-		// filtering of single meta tags can be enabled by defining WPSSO_APPLY_FILTERS_SINGLE_MT as true
-		// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
+		/**
+		 * Filtering of single meta tags can be enabled by defining WPSSO_APPLY_FILTERS_SINGLE_MT as true.
+		 *
+		 * $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
+		 */
 		private function apply_filters_single_mt( array &$parts, array &$mod ) {
 
 			$log_prefix = $parts[1].' '.$parts[2].' '.$parts[3];

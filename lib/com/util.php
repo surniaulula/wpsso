@@ -2012,7 +2012,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				 */
 				$mt_pre . ':video:secure_url' => '',
 				$mt_pre . ':video:url' => '',
-				$mt_pre . ':video:type' => '',			// application/x-shockwave-flash or  text/html
+				$mt_pre . ':video:type' => '',			// 'application/x-shockwave-flash' or 'text/html'
 				$mt_pre . ':video:width' => '',
 				$mt_pre . ':video:height' => '',
 				$mt_pre . ':video:tag' => array(),

@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 * Player Card
 			 *
 			 * The twitter:player:stream meta tags are used for self-hosted MP4 videos. The videos provided by
-			 * YouTube, Vimeo, Wistia, etc. are application/x-shockwave-flash or text/html (embed URL).
+			 * YouTube, Vimeo, Wistia, etc. are application/x-shockwave-flash or text/html.
 			 *
 			 * twitter:player:stream
 			 * 	This is a URL to the video file itself (not a video embed). The video must be an mp4 file. The

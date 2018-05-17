@@ -1161,30 +1161,51 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$have_url = SucomUtil::get_mt_media_url( $og_video, $prefix );
 
-				/**
-				 * Fallback to the original url.
-				 */
-				if ( empty( $have_url ) && 'og:video' === $prefix && $fallback ) {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'no video returned by filters' );
-						$this->p->debug->log( 'falling back to media url: '.$args['url'] );
-					}
+				if ( 'og:video' === $prefix ) {
 
 					/**
-					 * Define the og:video:secure_url meta tag if possible.
+					 * Fallback to the original video url.
 					 */
-					if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
-						$og_video['og:video:secure_url'] = strpos( $args['url'], 'https:' ) === 0 ? $args['url'] : '';
-					}
-
-					$have_url = $og_video['og:video:url'] = $args['url'];
-
-					if ( preg_match( '/\.mp4(\?.*)?$/', $have_url ) ) {	// check for video/mp4
+					if ( empty( $have_url ) && $fallback ) {
+	
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'setting og:video:type = video/mp4' );
+							$this->p->debug->log( 'no video returned by filters' );
+							$this->p->debug->log( 'falling back to media url: '.$args['url'] );
 						}
-						$og_video['og:video:type'] = 'video/mp4';
+	
+						/**
+						 * Define the og:video:secure_url meta tag if possible.
+						 */
+						if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
+							$og_video['og:video:secure_url'] = strpos( $args['url'], 'https:' ) === 0 ? $args['url'] : '';
+						}
+	
+						$have_url = $og_video['og:video:url'] = $args['url'];
+					}
+	
+					/**
+					 * Check for an empty mime_type.
+					 */
+					if ( empty( $og_video['og:video:type'] ) ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'og:video:type is empty - using URL to determine the mime-type' );
+						}
+
+						if ( preg_match( '/\.(mp4|swf)(\?.*)?$/', $have_url, $match ) ) {
+							switch ( $match[1] ) {
+								case 'mp4':
+									$og_video['og:video:type'] = 'video/mp4';
+									break;
+								case 'swf':
+									$og_video['og:video:type'] = 'application/x-shockwave-flash';
+									break;
+							}
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'setting og:video:type = '.$og_video['og:video:type'] );
+							}
+						}
 					}
 				}
 
@@ -1200,7 +1221,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 
 				/**
-				 * If the media is an image, then check and add missing sizes.
+				 * If the media is an image, then check and maybe add missing sizes.
 				 */
 				} elseif ( $prefix === 'og:image' ) {
 
