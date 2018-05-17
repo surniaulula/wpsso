@@ -523,38 +523,55 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$md_defs = array(
 					'options_filtered' => '',
 					'options_version' => '',
+					/**
+					 * Edit Text Tab.
+					 */
 					'og_type' => $og_type,
 					'og_art_section' => isset( $opts['og_art_section'] ) ? $opts['og_art_section'] : 'none',
 					'og_title' => '',
 					'og_desc' => '',
 					'seo_desc' => '',
 					'tc_desc' => '',
-					'pin_desc' => '',
-					'schema_desc' => '',
 					'sharing_url' => '',
-					'og_img_id' => '',
-					'og_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
+					'canonical_url' => '',
+					'schema_desc' => '',
+					/**
+					 * Open Graph - Product Information.
+					 */
+					'product_avail' => 'none',
+					'product_brand' => '',
+					'product_color' => '',
+					'product_condition' => 'none',
+					'product_currency' => empty( $opts['plugin_def_currency'] ) ? 'USD' : $opts['plugin_def_currency'],
+					'product_price' => '0.00',
+					'product_size' => '',
+					/**
+					 * Open Graph - Priority Image.
+					 */
+					'og_img_max' => isset( $opts['og_img_max'] ) ? (int) $opts['og_img_max'] : 1,	// Cast as integer.
 					'og_img_width' => '',
 					'og_img_height' => '',
 					'og_img_crop' => empty( $opts['og_img_crop'] ) ? 0 : 1,
 					'og_img_crop_x' => empty( $opts['og_img_crop_x'] ) ? 'center' : $opts['og_img_crop_x'],
 					'og_img_crop_y' => empty( $opts['og_img_crop_y'] ) ? 'center' : $opts['og_img_crop_y'],
+					'og_img_id' => '',
+					'og_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
 					'og_img_url' => '',
-					'og_img_max' => isset( $opts['og_img_max'] ) ? (int) $opts['og_img_max'] : 1,	// cast as integer
-					'og_vid_url' => '',
+					/**
+					 * Open Graph - Priority Video.
+					 */
+					'og_vid_prev_img' => empty( $opts['og_vid_prev_img'] ) ? 0 : 1,
+					'og_vid_max' => isset( $opts['og_vid_max'] ) ? (int) $opts['og_vid_max'] : 1,	// Cast as integer.
+					'og_vid_width' => '',
+					'og_vid_height' => '',
 					'og_vid_embed' => '',
+					'og_vid_url' => '',
 					'og_vid_title' => '',
 					'og_vid_desc' => '',
-					'og_vid_max' => isset( $opts['og_vid_max'] ) ? (int) $opts['og_vid_max'] : 1,	// cast as integer
-					'og_vid_prev_img' => empty( $opts['og_vid_prev_img'] ) ? 0 : 1,
-					'p_img_id' => '',
-					'p_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
-					'p_img_width' => '',
-					'p_img_height' => '',
-					'p_img_crop' => empty( $opts['p_img_crop'] ) ? 0 : 1,
-					'p_img_crop_x' => empty( $opts['p_img_crop_x'] ) ? 'center' : $opts['p_img_crop_x'],
-					'p_img_crop_y' => empty( $opts['p_img_crop_y'] ) ? 'center' : $opts['p_img_crop_y'],
-					'p_img_url' => '',
+					/**
+					 * Structured Data / Schema Markup / Pinterest.
+					 */
+					'schema_img_max' => isset( $opts['schema_img_max'] ) ? (int) $opts['schema_img_max'] : 1,	// Cast as integer.
 					'schema_img_id' => '',
 					'schema_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
 					'schema_img_width' => '',
@@ -563,17 +580,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'schema_img_crop_x' => empty( $opts['schema_img_crop_x'] ) ? 'center' : $opts['schema_img_crop_x'],
 					'schema_img_crop_y' => empty( $opts['schema_img_crop_y'] ) ? 'center' : $opts['schema_img_crop_y'],
 					'schema_img_url' => '',
-					'schema_img_max' => isset( $opts['schema_img_max'] ) ? (int) $opts['schema_img_max'] : 1,	// cast as integer
-					'product_avail' => 'none',
-					'product_brand' => '',
-					'product_color' => '',
-					'product_condition' => 'none',
-					'product_currency' => empty( $opts['plugin_def_currency'] ) ? 'USD' : $opts['plugin_def_currency'],
-					'product_price' => '0.00',
-					'product_size' => '',
-					'gv_id_title' => 0,
-					'gv_id_desc' => 0,
-					'gv_id_img' => 0,
+					/**
+					 * Gravity View (Side Metabox).
+					 */
+					'gv_id_title' => 0,	// Title Field ID
+					'gv_id_desc' => 0,	// Description Field ID
+					'gv_id_img' => 0,	// Post Image Field ID
 				);
 
 				if ( WpssoOptions::can_cache() ) {

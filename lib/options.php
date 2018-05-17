@@ -960,9 +960,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( preg_match( '/(_css|_js|_html)$/', $base_key ) ? true : false ):
 					return 'code';
 					break;
-				case 'gv_id_title':
-				case 'gv_id_desc':
-				case 'gv_id_img':
+				// gravity view
+				case 'gv_id_title':	// Title Field ID
+				case 'gv_id_desc':	// Description Field ID
+				case 'gv_id_img':	// Post Image Field ID
 					return 'blank_int';
 					break;
 				// cast as integer (zero and -1 is ok)
@@ -983,7 +984,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				// must be numeric (blank and zero are ok)
 				case 'og_def_img_id':
 				case 'og_img_id':
-				case 'p_img_id':
 				case 'product_price':
 					return 'blank_num';
 					break;
@@ -1044,7 +1044,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'seo_author_field':
 				case 'og_def_img_id_pre': 
 				case 'og_img_id_pre': 
-				case 'p_img_id_pre': 
 				case 'p_author_name':
 				case 'plugin_shortener':		// none or name of shortener
 				case 'product_avail':
@@ -1075,11 +1074,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'site_url':
 				case 'sharing_url':
+				case 'canonical_url':
 				case 'fb_page_url':
 				case 'og_img_url':
 				case 'og_vid_url':
 				case 'og_def_img_url':
-				case 'p_img_url':
+				case 'p_publisher_url':
 				case 'schema_logo_url':
 				case 'schema_banner_url':
 				case 'schema_addl_type_url':

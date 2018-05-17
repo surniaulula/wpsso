@@ -959,13 +959,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			/**
 			 * $use_opts is true when used for post / user meta forms (to show default values).
 			 */
-			if ( true === $use_opts ) {
+			if ( $use_opts ) {
 
-				$def_width = empty( $this->p->options[$name . '_width'] ) ?
-					'' : $this->p->options[$name . '_width'];
-
-				$def_height = empty( $this->p->options[$name . '_height'] ) ?
-					'' : $this->p->options[$name . '_height'];
+				$def_width  = empty( $this->p->options[$name . '_width'] ) ? '' : $this->p->options[$name . '_width'];
+				$def_height = empty( $this->p->options[$name . '_height'] ) ? '' : $this->p->options[$name . '_height'];
 
 				foreach ( array( 'crop', 'crop_x', 'crop_y' ) as $key ) {
 					if ( ! $this->in_options( $name . '_' . $key ) && $this->in_defaults( $name . '_' . $key ) ) {
@@ -1004,29 +1001,68 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_image_dimensions_text( $name, $use_opts = false ) {
 
-			if ( ! empty( $this->options[$name . '_width'] ) &&
-				! empty( $this->options[$name . '_height'] ) ) {
+			if ( ! empty( $this->options[$name . '_width'] ) && ! empty( $this->options[$name . '_height'] ) ) {
 
-				return $this->options[$name . '_width'] . ' x ' . $this->options[$name . '_height'] .
-					( $this->options[$name . '_crop'] ? ', cropped' : '' );
+				return $this->options[$name . '_width'] . 'x' . $this->options[$name . '_height'] . 'px'
+					( $this->options[$name . '_crop'] ? ' cropped' : '' );
 
 			} elseif ( true === $use_opts ) {
 
-				if ( ! empty( $this->p->options[$name . '_width'] ) &&
-					! empty( $this->p->options[$name . '_height'] ) ) {
+				$def_width  = empty( $this->p->options[$name . '_width'] ) ? '' : $this->p->options[$name . '_width'];
+				$def_height = empty( $this->p->options[$name . '_height'] ) ? '' : $this->p->options[$name . '_height'];
+				$def_crop   = empty( $this->p->options[$name . '_crop'] ) ? false : true;
 
-					return $this->p->options[$name . '_width'] . ' x ' . $this->p->options[$name . '_height'] .
-						( $this->p->options[$name . '_crop'] ? ', cropped' : '' );
+				if ( ! empty( $def_width ) && ! empty( $def_height ) ) {
+					return $def_width . 'x' . $def_height . 'px' . ( $def_crop ? ' cropped' : '' );
 				}
 			}
 
 			return;
 		}
 
+		public function get_input_video_dimensions( $name, $media_info = array(), $disabled = false ) {
+
+			$def_width = '';
+			$def_height = '';
+
+			if ( ! empty( $media_info ) && is_array( $media_info ) ) {
+				$def_width  = empty( $media_info['vid_width'] ) ? '' : $media_info['vid_width'];
+				$def_height = empty( $media_info['vid_height'] ) ? '' : $media_info['vid_height'];
+			}
+
+			return $this->get_input( $name . '_width', 'short', '', 0, $def_width, $disabled ) . 'x' .
+				$this->get_input( $name . '_height', 'short', '', 0, $def_height, $disabled ) . 'px';
+		}
+
+		public function get_no_input_video_dimensions( $name, $media_info = array() ) {
+			return $this->get_input_video_dimensions( $name, $media_info, true );	// $disabled is true.
+		}
+
+		public function get_video_dimensions_text( $name, $media_info ) {
+
+			if ( ! empty( $this->options[$name . '_width'] ) && ! empty( $this->options[$name . '_height'] ) ) {
+
+				return $this->options[$name . '_width'] . 'x' . $this->options[$name . '_height'];
+
+			} elseif ( ! empty( $media_info ) && is_array( $media_info ) ) {
+
+				$def_width  = empty( $media_info['vid_width'] ) ? '' : $media_info['vid_width'];
+				$def_height = empty( $media_info['vid_height'] ) ? '' : $media_info['vid_height'];
+
+				if ( ! empty( $def_width ) && ! empty( $def_height ) ) {
+					return $def_width . 'x' . $def_height;
+				}
+			}
+
+			return '';
+		}
+
 		public function get_input_copy_clipboard( $value, $class = 'wide', $id = '' ) {
+
 			if ( empty( $id ) ) {
 				$id = uniqid();
 			}
+
 			$input = '<input type="text"' .
 				( empty( $class ) ? '' : ' class="' . esc_attr( $class ) . '"' ) .
 				( empty( $id ) ? '' : ' id="text_' . esc_attr( $id ) . '"' ) .
@@ -1287,6 +1323,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_css_class_hide_img_dim( $in_view = 'basic', $opt_prefix ) {
 			foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $opt_key ) {
+				$opt_keys[] = $opt_prefix . '_' . $opt_key;
+			}
+			return self::get_css_class_hide( $in_view, $opt_keys );
+		}
+
+		public function get_css_class_hide_vid_dim( $in_view = 'basic', $opt_prefix ) {
+			foreach ( array( 'width', 'height' ) as $opt_key ) {
 				$opt_keys[] = $opt_prefix . '_' . $opt_key;
 			}
 			return self::get_css_class_hide( $in_view, $opt_keys );

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.3.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.3.2-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2457,77 +2457,82 @@ msgstr ""
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
-#: lib/gpl/admin/meta.php:161 lib/pro/admin/meta.php:174
+#: lib/gpl/admin/meta.php:161 lib/pro/admin/meta.php:175
 #: lib/submenu/general.php:37
 msgctxt "metabox title"
 msgid "All Social WebSites / Open Graph"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:166 lib/pro/admin/meta.php:179
+#: lib/gpl/admin/meta.php:166 lib/pro/admin/meta.php:180
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:171 lib/gpl/admin/meta.php:260
-#: lib/pro/admin/meta.php:184 lib/pro/admin/meta.php:277
-msgctxt "option label"
-msgid "Image Dimensions"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:177 lib/gpl/admin/meta.php:267
-#: lib/pro/admin/meta.php:190 lib/pro/admin/meta.php:284
-msgctxt "option label"
-msgid "Image ID"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:183 lib/gpl/admin/meta.php:274
-#: lib/pro/admin/meta.php:196 lib/pro/admin/meta.php:291
-msgctxt "option label"
-msgid "or an Image URL"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:191 lib/gpl/admin/meta.php:282
-#: lib/pro/admin/meta.php:204 lib/pro/admin/meta.php:299
+#: lib/gpl/admin/meta.php:172 lib/gpl/admin/meta.php:268
+#: lib/pro/admin/meta.php:186 lib/pro/admin/meta.php:286
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:200 lib/pro/admin/meta.php:213
+#: lib/gpl/admin/meta.php:181 lib/gpl/admin/meta.php:277
+#: lib/pro/admin/meta.php:195 lib/pro/admin/meta.php:295
+msgctxt "option label"
+msgid "Image Dimensions"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:187 lib/gpl/admin/meta.php:284
+#: lib/pro/admin/meta.php:201 lib/pro/admin/meta.php:302
+msgctxt "option label"
+msgid "Image ID"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:193 lib/gpl/admin/meta.php:291
+#: lib/pro/admin/meta.php:207 lib/pro/admin/meta.php:309
+msgctxt "option label"
+msgid "or an Image URL"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:200 lib/pro/admin/meta.php:214
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:204 lib/messages.php:722 lib/pro/admin/meta.php:217
-msgctxt "option label"
-msgid "Video Embed HTML"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:210 lib/pro/admin/meta.php:223
-msgctxt "option label"
-msgid "or a Video URL"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:217 lib/pro/admin/meta.php:230
-msgctxt "option label"
-msgid "Video Name / Title"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:224 lib/pro/admin/meta.php:239
-msgctxt "option label"
-msgid "Video Description"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:232 lib/pro/admin/meta.php:249
-msgctxt "option label"
-msgid "Maximum Videos"
-msgstr ""
-
-#: lib/gpl/admin/meta.php:241 lib/pro/admin/meta.php:258
+#: lib/gpl/admin/meta.php:205 lib/pro/admin/meta.php:219
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:255 lib/pro/admin/meta.php:272
+#: lib/gpl/admin/meta.php:213 lib/pro/admin/meta.php:227
+msgctxt "option label"
+msgid "Maximum Videos"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:222 lib/pro/admin/meta.php:236
+msgctxt "option label"
+msgid "Video Dimensions"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:228 lib/messages.php:722 lib/pro/admin/meta.php:242
+msgctxt "option label"
+msgid "Video Embed HTML"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:234 lib/pro/admin/meta.php:248
+msgctxt "option label"
+msgid "or a Video URL"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:241 lib/pro/admin/meta.php:255
+msgctxt "option label"
+msgid "Video Name / Title"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:248 lib/pro/admin/meta.php:264
+msgctxt "option label"
+msgid "Video Description"
+msgstr ""
+
+#: lib/gpl/admin/meta.php:262 lib/pro/admin/meta.php:280
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
@@ -4737,27 +4742,27 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:703
+#: lib/meta.php:715
 msgid "%s key(s) cleared from the cache."
 msgstr ""
 
-#: lib/meta.php:711
+#: lib/meta.php:723
 msgid ""
 "WP_DEBUG constant is enabled &ndash; the list of possible cache object names "
 "is included:"
 msgstr ""
 
-#: lib/meta.php:718
+#: lib/meta.php:730
 msgctxt "clear cache status"
 msgid "cleared"
 msgstr ""
 
-#: lib/meta.php:722
+#: lib/meta.php:734
 msgctxt "clear cache status"
 msgid "not cached"
 msgstr ""
 
-#: lib/meta.php:771
+#: lib/meta.php:783
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -5110,17 +5115,17 @@ msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr ""
 
-#: lib/pro/form/gravityview.php:71
+#: lib/pro/form/gravityview.php:70
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr ""
 
-#: lib/pro/form/gravityview.php:75
+#: lib/pro/form/gravityview.php:74
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr ""
 
-#: lib/pro/form/gravityview.php:79
+#: lib/pro/form/gravityview.php:78
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
