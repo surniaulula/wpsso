@@ -1006,7 +1006,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $og_ret;
 			}
 
-			// detect standard iframe/embed tags - use the wpsso_content_videos filter for additional html5/javascript methods
+			/**
+			 * Detect standard iframe / embed tags - use the 'wpsso_content_videos' filter
+			 * for additional html5 / javascript embed methods.
+			 */
 			if ( preg_match_all( '/<(iframe|embed)[^<>]*? (data-share-src|data-lazy-src|data-src|src)=[\'"]'.
 				'([^\'"<>]+\/(embed\/|embed_code\/|player\/|swf\/|v\/|video\/|video\.php\?)[^\'"<>]+)[\'"][^<>]*>/i',
 					$content, $all_matches, PREG_SET_ORDER ) ) {
@@ -1025,17 +1028,23 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				foreach ( $all_matches as $media ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( '<'.$media[1].'/> html tag found '.$media[2].' = '.$media[3] );
 					}
+
 					if ( ! empty( $media[3] ) ) {
+
 						if ( $check_dupes == false || $this->p->util->is_uniq_url( $media[3], 'content_video' ) ) {
+
 							$args = array(
 								'url'    => $media[3],
 								'width'  => preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF_INT,
 								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF_INT,
 							);
+
 							$og_video  = $this->get_video_info( $args, $check_dupes );
+
 							if ( ! empty( $og_video ) && $this->p->util->push_max( $og_ret, $og_video, $num ) ) {
 								return $og_ret;
 							}
@@ -1070,17 +1079,24 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 
 						foreach ( $all_matches as $match_num => $args ) {
+
 							if ( is_array( $args ) ) { // Just in case.
+
 								if ( ! empty( $args['url'] ) ) {
+
 									if ( $check_dupes == false || $this->p->util->is_uniq_url( $args['url'], 'content_video' ) ) {
+
 										$og_video = $this->get_video_info( $args, $check_dupes );
+
 										if ( ! empty( $og_video ) && $this->p->util->push_max( $og_ret, $og_video, $num ) ) {
 											return $og_ret;
 										}
 									}
+
 								} elseif ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'args url missing from videos array element #' . $match_num );
 								}
+
 							} elseif ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'videos array element #' . $match_num . ' is not a media array' );
 							}
@@ -1116,7 +1132,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$filter_name = $this->p->lca . '_video_info';
 
-			if ( ! empty( $args['api'] ) ) {	// filter using a specific api library hook
+			/**
+			 * Maybe filter using a specific API library hook.
+			 */
+			if ( ! empty( $args['api'] ) ) {
 				$filter_name .= '_' . SucomUtil::sanitize_hookname( $args['api'] );
 			}
 
@@ -1135,12 +1154,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$og_video['al:web:should_fallback'] = '';	// false by default
 			}
 
-			// sanitation of media
+			/**
+			 * Sanitation of media.
+			 */
 			foreach ( array( 'og:video', 'og:image' ) as $prefix ) {
 
 				$have_url = SucomUtil::get_mt_media_url( $og_video, $prefix );
 
-				// fallback to the original url
+				/**
+				 * Fallback to the original url.
+				 */
 				if ( empty( $have_url ) && 'og:video' === $prefix && $fallback ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -1148,7 +1171,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'falling back to media url: '.$args['url'] );
 					}
 
-					// define the og:video:secure_url meta tag if possible
+					/**
+					 * Define the og:video:secure_url meta tag if possible.
+					 */
 					if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
 						$og_video['og:video:secure_url'] = strpos( $args['url'], 'https:' ) === 0 ? $args['url'] : '';
 					}

@@ -162,7 +162,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 										}
 									}
 									break;
-								case 'audop/mpeg':
+								case 'audio/mpeg':
 								case 'video/mp4':
 									if ( empty( $stream_url ) ) {
 										$stream_url = SucomUtil::get_mt_media_url( $og_video, 'og:video' );

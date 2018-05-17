@@ -2644,7 +2644,7 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:378 lib/media.php:530 lib/media.php:1220
+#: lib/media.php:378 lib/media.php:530 lib/media.php:1245
 #: lib/pro/util/checkimgdims.php:89
 msgid "Media Library"
 msgstr ""
@@ -2693,22 +2693,22 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1226 lib/pro/media/ngg.php:130
+#: lib/media.php:1251 lib/pro/media/ngg.php:130
 #: lib/pro/util/checkimgdims.php:91
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1236
+#: lib/media.php:1261
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1305
+#: lib/media.php:1330
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1333
+#: lib/media.php:1358
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

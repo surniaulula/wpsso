@@ -779,7 +779,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$og_extend[] = $og_single_video;
 					}
 				}
+
 				return $og_extend;
+
 			} else {
 				return $og_ret;
 			}

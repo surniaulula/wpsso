@@ -1183,15 +1183,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 
 				if ( ! empty( $video_url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $video_url ) ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$video_url, get_class( $this ) );
 					}
+
 					$args = array(
 						'url'    => $video_url,
 						'width'  => WPSSO_UNDEF_INT,
 						'height' => WPSSO_UNDEF_INT,
 					);
+
 					$og_videos = $this->p->media->get_video_info( $args, $check_dupes, true );
+
 					if ( $this->p->util->push_max( $og_ret, $og_videos, $num ) )  {
 						return $og_ret;
 					}
