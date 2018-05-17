@@ -138,7 +138,7 @@
 </ul></li>
 </ul>
 
-<h3>Optional WPSSO Core Add-ons</h3>
+<h3>Optional WPSSO Add-ons</h3>
 
 <h4>Optional Free Add-ons</h4>
 

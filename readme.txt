@@ -158,7 +158,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 		* Your Own URL Shortener (YOURLS)
 		* YouTube Videos and Playlists
 
-<h3>Optional WPSSO Core Add-ons</h3>
+<h3>Optional WPSSO Add-ons</h3>
 
 <h4>Optional Free Add-ons</h4>
 
@@ -344,7 +344,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Essential Settings -&gt; Essential
 		* General Settings -&gt; General
 		* Advanced Settings -&gt; Advanced
-		* Core Add-ons and Pro Licenses -&gt; Core Add-ons
+		* Core Add-ons and Pro Licenses -&gt; Add-ons
 		* Dashboard and Features Status -&gt; Dashboard
 		* Setup Guide and Other Notes -&gt; Setup Guide
 * *Bugfixes*
