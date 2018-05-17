@@ -1920,7 +1920,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					/**
 					 * Add additional / mode specific information about this check for the hosting provider.
 					 */
-					$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> for "%3$s" is false.', 'wpsso' ),
+					$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> for "%3$s" returned false.', 'wpsso' ),
 						__( 'https://secure.php.net/manual/en/function.extension-loaded.php', 'wpsso' ),
 							'<code>extension_loaded()</code>', $php_ext ).' ';
 
@@ -1949,7 +1949,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							}
 
 							$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s function is missing.', 'wpsso' ), $php_info['url'], $php_info['label'], '<code>' . $func_name . '()</code>' ).' ';
-							$error_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP "%1$s" function installed.', 'wpsso' ), $func_name );
+							$error_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' ), $func_name );
 						}
 					}
 				}

@@ -1193,13 +1193,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 
 						/**
-						 * Check for slash or file name extension, followed by optional query string.
+						 * Check for common words, slash, or file name extension, followed by optional query string.
 						 */
-						if ( preg_match( '/(\/|\.[a-z0-9]+)(\?[^\?]*)?$/', $have_url, $match ) ) {
+						if ( preg_match( '/(\/embed\/.*|\/iframe\/.*|\/|\.[a-z0-9]+)(\?[^\?]*)?$/', $have_url, $match ) ) {
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'matched url substr "' . $match[1] . '"' );
+							}
+
 							switch ( $match[1] ) {
 								case '/':	// WebPage
 								case '.htm':
 								case '.html':
+								case ( strpos( $match[1], '/embed/' ) === 0 ? true : false ):
+								case ( strpos( $match[1], '/iframe/' ) === 0 ? true : false ):
 									$og_video['og:video:type'] = 'text/html';
 									break;
 								case '.3gp':	// 3GP Mobile
