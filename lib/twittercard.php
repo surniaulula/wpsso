@@ -151,9 +151,18 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						 * Check for mime-type meta tag values.
 						 */
 						if ( isset( $og_video['og:video:type'] ) ) {
+
 							switch ( $og_video['og:video:type'] ) {
-								case 'application/x-shockwave-flash':
+
+								/**
+								 * twitter:player
+								 *
+								 * HTTPS URL to iFrame player. This must be a HTTPS URL which does not generate active 
+								 * mixed content warnings in a web browser. The audio or video player must not require
+								 * plugins such as Adobe Flash.
+								 */
 								case 'text/html':
+
 									if ( empty( $player_embed_url ) ) {
 										$player_embed_url = SucomUtil::get_mt_media_url( $og_video, 'og:video' );
 										if ( $this->p->debug->enabled ) {
@@ -161,9 +170,14 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 												' url = ' . $player_embed_url );
 										}
 									}
+
 									break;
-								case 'audio/mpeg':
+
+								/**
+								 * twitter:player:stream
+								 */
 								case 'video/mp4':
+
 									if ( empty( $player_stream_url ) ) {
 										$player_stream_url = SucomUtil::get_mt_media_url( $og_video, 'og:video' );
 										if ( $this->p->debug->enabled ) {
@@ -171,12 +185,16 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 												' url = ' . $player_stream_url );
 										}
 									}
+
 									break;
+
 								default:
+
 									if ( $this->p->debug->enabled ) {
 										$this->p->debug->log( 'player card: video type "' .
 											$og_video['og:video:type'] . '" is unknown' );
 									}
+
 									break;
 							}
 						}
@@ -192,7 +210,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						if ( ! empty( $player_stream_url ) ) {
 							$mt_tc['twitter:card'] = 'player';
 							if ( empty( $mt_tc['twitter:player'] ) ) {
-								$mt_tc['twitter:player'] = $player_stream_url;
+								$mt_tc['twitter:player'] = $player_stream_url;	// Fallback to video/mp4.
 							}
 							$mt_tc['twitter:player:stream'] = $player_stream_url;
 							$mt_tc['twitter:player:stream:content_type'] = $og_video['og:video:type'];
