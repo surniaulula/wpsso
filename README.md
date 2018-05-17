@@ -3,7 +3,7 @@
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Complete meta tags and Schema markup from your content for Social Sharing, Google&#039;s Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and</td></tr>
-<tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.3.0</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.3.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.6</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
