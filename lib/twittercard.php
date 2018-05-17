@@ -127,23 +127,25 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 					foreach ( $mt_og['og:video'] as $og_video ) {
 
-						$embed_url = '';
-						$stream_url = '';
+						$player = array(
+							'embed_url' => '',
+							'stream_url' => '',
+						);
 
 						/**
 						 * Check for internal meta tag values.
 						 */
 						if ( ! empty( $og_video['og:video:embed_url'] ) ) {
-							$embed_url = $og_video['og:video:embed_url'];
+							$player['embed_url'] = $og_video['og:video:embed_url'];
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'player card: embed url = ' . $embed_url );
+								$this->p->debug->log( 'player card: embed url = ' . $player['embed_url'] );
 							}
 						}
 
 						if ( ! empty( $og_video['og:video:stream_url'] ) ) {
-							$embed_url = $og_video['og:video:stream_url'];
+							$player['stream_url'] = $og_video['og:video:stream_url'];
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'player card: stream url = ' . $stream_url );
+								$this->p->debug->log( 'player card: stream url = ' . $player['stream_url'] );
 							}
 						}
 
@@ -154,23 +156,23 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							switch ( $og_video['og:video:type'] ) {
 								case 'application/x-shockwave-flash':
 								case 'text/html':
-									if ( empty( $embed_url ) ) {
-										$embed_url = SucomUtil::get_mt_media_url( $og_video, 'og:video' );
+									if ( empty( $player['embed_url'] ) ) {
+										$player['embed_url'] = SucomUtil::get_mt_media_url( $og_video, 'og:video' );
 										if ( $this->p->debug->enabled ) {
 											$this->p->debug->log( 'player card: ' .
 												$og_video['og:video:type'] .
-													' url = ' . $embed_url );
+													' url = ' . $player['embed_url'] );
 										}
 									}
 									break;
 								case 'audio/mpeg':
 								case 'video/mp4':
-									if ( empty( $stream_url ) ) {
-										$stream_url = SucomUtil::get_mt_media_url( $og_video, 'og:video' );
+									if ( empty( $player['stream_url'] ) ) {
+										$player['stream_url'] = SucomUtil::get_mt_media_url( $og_video, 'og:video' );
 										if ( $this->p->debug->enabled ) {
 											$this->p->debug->log( 'player card: ' .
 												$og_video['og:video:type'] .
-													' url = ' . $embed_url );
+													' url = ' . $player['stream_url'] );
 										}
 									}
 									break;
@@ -180,17 +182,17 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						/**
 						 * Set the twitter:player meta tag value(s).
 						 */
-						if ( ! empty( $embed_url ) ) {
+						if ( ! empty( $player['embed_url'] ) ) {
 							$mt_tc['twitter:card'] = 'player';
-							$mt_tc['twitter:player'] = $embed_url;
+							$mt_tc['twitter:player'] = $player['embed_url'];
 						}
 
-						if ( ! empty( $stream_url ) ) {
+						if ( ! empty( $player['stream_url'] ) ) {
 							$mt_tc['twitter:card'] = 'player';
 							if ( empty( $mt_tc['twitter:player'] ) ) {
-								$mt_tc['twitter:player'] = $stream_url;
+								$mt_tc['twitter:player'] = $player['stream_url'];
 							}
-							$mt_tc['twitter:player:stream'] = $stream_url;
+							$mt_tc['twitter:player:stream'] = $player['stream_url'];
 							$mt_tc['twitter:player:stream:content_type'] = $og_video['og:video:type'];
 						}
 
