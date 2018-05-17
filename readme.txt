@@ -330,8 +330,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed an incorrect variable name in Wistia the video integration module (Pro version).
 * *Developer Notes*
-	* If the PHP 'mbstring' extension is loaded, WPSSO Core will check that its 'mb_strlen', 'mb_substr', and 'mb_convert_encoding' functions are available.
-	* The 'og:video:type' meta tag no longer defaults to 'application/x-shockwave-flash' - all video integration modules define the mime-type anyway.
+	* If the PHP 'mbstring' extension is loaded, WPSSO Core will check that its 'mb_strlen', 'mb_substr', and 'mb_convert_encoding' functions are also available.
+	* The 'og:video:type' meta tag no longer defaults to 'application/x-shockwave-flash' - all video integration modules define their video mime-type anyway.
 
 **Version 4.3.0 (2018/05/10)**
 
