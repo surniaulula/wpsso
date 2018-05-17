@@ -1192,13 +1192,46 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$this->p->debug->log( 'og:video:type is empty - using URL to determine the mime-type' );
 						}
 
-						if ( preg_match( '/\.(mp4|swf)(\?.*)?$/', $have_url, $match ) ) {
+						/**
+						 * Check for slash or file name extension, followed by optional query string.
+						 */
+						if ( preg_match( '/(\/|\.[a-z0-9]+)(\?[^\?]*)?$/', $have_url, $match ) ) {
 							switch ( $match[1] ) {
-								case 'mp4':
+								case '/':	// WebPage
+									$og_video['og:video:type'] = 'text/html';
+									break;
+								case '.3gp':	// 3GP Mobile
+									$og_video['og:video:type'] = 'video/3gpp';
+									break;
+								case '.avi':	// A/V Interleave
+									$og_video['og:video:type'] = 'video/x-msvideo';
+									break;
+								case '.flv':	// Flash
+									$og_video['og:video:type'] = 'video/x-flv';
+									break;
+								case '.m3u8':	// iPhone Index
+									$og_video['og:video:type'] = 'application/x-mpegURL';
+									break;
+								case '.mov':	// QuickTime
+									$og_video['og:video:type'] = 'video/quicktime';
+									break;
+								case '.mp4':	// MPEG-4
 									$og_video['og:video:type'] = 'video/mp4';
 									break;
-								case 'swf':
+								case '.swf':	// Shockwave Flash
 									$og_video['og:video:type'] = 'application/x-shockwave-flash';
+									break;
+								case '.ts':	// iPhone Segment
+									$og_video['og:video:type'] = 'video/MP2T';
+									break;
+								case '.wmv':	// Windows Media
+									$og_video['og:video:type'] = 'video/x-ms-wmv';
+									break;
+								default:
+									if ( $this->p->debug->enabled ) {
+										$this->p->debug->log( 'unknown video extension "' . $match[1] . '"' );
+									}
+									$og_video['og:video:type'] = '';
 									break;
 							}
 
