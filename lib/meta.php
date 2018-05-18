@@ -562,12 +562,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					 */
 					'og_vid_prev_img' => empty( $opts['og_vid_prev_img'] ) ? 0 : 1,
 					'og_vid_max' => isset( $opts['og_vid_max'] ) ? (int) $opts['og_vid_max'] : 1,	// Cast as integer.
-					'og_vid_width' => '',
-					'og_vid_height' => '',
+					'og_vid_width' => '',	// Custom value for first video.
+					'og_vid_height' => '',	// Custom value for first video.
 					'og_vid_embed' => '',
 					'og_vid_url' => '',
-					'og_vid_title' => '',
-					'og_vid_desc' => '',
+					'og_vid_title' => '',	// Custom value for first video.
+					'og_vid_desc' => '',	// Custom value for first video.
 					/**
 					 * Structured Data / Schema Markup / Pinterest.
 					 */
@@ -1186,6 +1186,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$embed_html = $this->get_options( $mod_id, $prefix.'_vid_embed' );
 				$video_url  = $this->get_options( $mod_id, $prefix.'_vid_url' );
 
+				/**
+				 * Retrieve one or more videos from the embed HTML code.
+				 */
 				if ( ! empty( $embed_html ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fetching video(s) from custom '.$prefix.' embed code',
@@ -1204,6 +1207,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						'url'    => $video_url,
 						'width'  => WPSSO_UNDEF_INT,
 						'height' => WPSSO_UNDEF_INT,
+						'type' => '',
+						'prev_url' => '',
+						'post_id' => null,
+						'api' => '',
 					);
 
 					$og_videos = $this->p->media->get_video_info( $args, $check_dupes, true );

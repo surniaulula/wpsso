@@ -1118,8 +1118,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$args = array_merge( array(
 				'url' => '',
-				'width' => -1,
-				'height' => -1,
+				'width' => WPSSO_UNDEF_INT,
+				'height' => WPSSO_UNDEF_INT,
 				'type' => '',
 				'prev_url' => '',
 				'post_id' => null,
@@ -1193,9 +1193,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 
 						/**
-						 * Check for common words, slash, or file name extension, followed by optional query string.
+						 * Check for filename extension, slash, or common words (in that order),
+						 * followed by an optional query string (which is ignored).
 						 */
-						if ( preg_match( '/(\/embed\/.*|\/iframe\/.*|\/|\.[a-z0-9]+)(\?[^\?]*)?$/', $have_url, $match ) ) {
+						if ( preg_match( '/(\.[a-z0-9]+|\/|\/embed\/.*|\/iframe\/.*)(\?[^\?]*)?$/', $have_url, $match ) ) {
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'matched url substr "' . $match[1] . '"' );
@@ -1285,7 +1286,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			// if there's no video or preview image, then return an empty array
+			/**
+			 * If there's no video or preview image, then return an empty array.
+			 */
 			if ( ! $have_media['og:video'] && ! $have_media['og:image'] ) {
 				return array();
 			} else {

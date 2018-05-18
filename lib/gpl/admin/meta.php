@@ -143,14 +143,16 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			}
 
 			if ( $mod['is_post'] && ( empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ) ) {
+
 				$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
 					sprintf( __( 'Save a draft version or publish the %s to display these options.',
 						'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) ).'</p></td>';
+
 				return $table_rows;	// abort
 			}
 
 			$media_info = $this->p->og->get_media_info( $this->p->lca . '-opengraph',
-				array( 'pid', 'img_url' ), $mod, 'none', 'og', $head );	// $md_pre = none
+				array( 'pid', 'img_url' ), $mod, 'none', 'og' );	// $md_pre is 'none'.
 
 			$table_rows[] = '<td colspan="2" align="center">'.
 				( $mod['is_post'] ? $this->p->msgs->get( 'pro-about-msg-post-media' ) : '' ).
@@ -251,9 +253,11 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			);
 
 			$media_info = $this->p->og->get_media_info( $this->p->lca . '-schema', 
-				array( 'pid', 'img_url' ), $mod, 'og', 'og', $head );
+				array( 'pid', 'img_url' ), $mod, 'og', 'og' );
 	
-			// hide by default unless a schema image has been defined
+			/**
+			 * Hide by default unless a schema image has been defined.
+			 */
 			$schema_tr_class = $form->in_options( '/^schema_img_/', true ) ? '' : 'hide_in_basic';
 
 			$form_rows['subsection_schema'] = array(

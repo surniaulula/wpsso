@@ -309,19 +309,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 			}
 
-			$lca = $this->p->lca;
 			$pdir = $this->p->avail['*']['p_dir'];
-			$aop = $this->p->check->aop( $lca, true, $pdir );
+			$aop = $this->p->check->aop( $this->p->lca, true, $pdir );
 			$max = $this->p->util->get_max_nums( $mod );
 			$post_id = $mod['is_post'] ? $mod['id'] : false;
 			$check_dupes = true;
 			$preview_count = 0;
 
-			$mt_og = apply_filters( $lca.'_og_seed', $mt_og, $mod );
+			$mt_og = apply_filters( $this->p->lca.'_og_seed', $mt_og, $mod );
 
 			if ( ! empty( $mt_og ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $lca.'_og_seed filter returned:' );
+					$this->p->debug->log( $this->p->lca.'_og_seed filter returned:' );
 					$this->p->debug->log( $mt_og );
 				}
 			}
@@ -410,11 +409,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'getting videos for og:video meta tag' );
 					}
+
 					$mt_og['og:video'] = $this->get_all_videos( $max['og_vid_max'], $mod, $check_dupes, 'og' );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'checking for video preview images' );
 					}
+
 					if ( ! empty( $mt_og['og:video'] ) && is_array( $mt_og['og:video'] ) ) {
 
 						foreach ( $mt_og['og:video'] as $num => $og_single_video ) {
@@ -455,7 +456,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$this->p->debug->log( 'images disabled: maximum images = 0' );
 					}
 				} else {
-					$img_sizes = array( 'og' => $lca.'-opengraph' );
+					$img_sizes = array( 'og' => $this->p->lca.'-opengraph' );
 
 					foreach ( $img_sizes as $md_pre => $size_name ) {
 
@@ -596,7 +597,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
-			return (array) apply_filters( $lca.'_og', $mt_og, $mod );
+			return (array) apply_filters( $this->p->lca.'_og', $mt_og, $mod );
 		}
 
 		/**
@@ -656,24 +657,23 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			$og_ret = array();
-			$lca = $this->p->cf['lca'];
 			$pdir = $this->p->avail['*']['p_dir'];
-			$aop = $this->p->check->aop( $lca, true, $pdir );
+			$aop = $this->p->check->aop( $this->p->lca, true, $pdir );
 			$use_prev = $this->p->options['og_vid_prev_img'];		// default option value is true/false
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
 			$this->p->util->clear_uniq_urls( array( 'video', 'content_video', 'video_info' ) );
 
 			/**
-			 * Get video and preview enable/disable option from the post/term/user meta.
+			 * Get video information and preview enable/disable option from the post/term/user meta.
 			 */
 			if ( $aop && ! empty( $mod['obj'] ) ) {
 
-				// get_options() returns null if an index key is not found
+				/**
+				 * Note that get_options() returns null if an index key is not found.
+				 */
 				if ( ( $mod_prev = $mod['obj']->get_options( $mod['id'], 'og_vid_prev_img' ) ) !== null ) {
-
 					$use_prev = $mod_prev;	// use true/false/1/0 value from the custom option
-
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting use_prev to '.( empty( $use_prev ) ? 'false' : 'true' ).' from meta data' );
 					}
@@ -711,27 +711,34 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			/**
-			 * If $md_pre is 'none' (special index keyword), then don't load custom video
-			 * title / description. Only the first video is given the custom title and
-			 * description (if one was entered). The og:video:title and og:video:description
-			 * meta tags are not standard and their values will only appear in Schema markup.
+			 * Get custom video information from post/term/user meta data for FIRST video.
+			 *
+			 * If $md_pre is 'none' (special index keyword), then don't load any custom video information.
+			 * The og:video:title and og:video:description meta tags are not standard and their values will
+			 * only appear in Schema markup.
 			 */
 			if ( $aop && ! empty( $mod['obj'] ) && $md_pre !== 'none' ) {
 
-				foreach ( array(
-					'og_vid_title' => 'og:video:title',
-					'og_vid_desc' => 'og:video:description',
-				) as $idx => $mt_name ) {
+				foreach ( $og_ret as $num => $og_single_video ) {
 
-					// get_options() returns null if an index key is not found
-					$value = $mod['obj']->get_options( $mod['id'], $idx );
-
-					if ( ! empty( $value ) ) {	// must be a non-empty string
-						foreach ( $og_ret as $num => $og_single_video ) {
+					foreach ( array(
+						'og_vid_width'  => 'og:video:width',
+						'og_vid_height' => 'og:video:height',
+						'og_vid_title'  => 'og:video:title',
+						'og_vid_desc'   => 'og:video:description',
+					) as $idx => $mt_name ) {
+	
+						/**
+						 * Note that get_options() returns null if an index key is not found.
+						 */
+						$value = $mod['obj']->get_options( $mod['id'], $idx );
+	
+						if ( ! empty( $value ) ) {	// must be a non-empty string
 							$og_ret[$num][$mt_name] = $value;
-							break;	// only do the first video
 						}
 					}
+
+					break;	// Only do the first video.
 				}
 			}
 
@@ -809,7 +816,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			$og_ret = array();
-			$lca = $this->p->cf['lca'];
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// false by default
 			$this->p->util->clear_uniq_urls( $size_name );			// clear cache for $size_name context
@@ -911,67 +917,63 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		/**
 		 * The returned array can include a varying number of elements, depending on the $request value.
 		 */
-		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og', $head = array() ) {
+		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
 			$ret = array();
-			$lca = $this->p->cf['lca'];
 			$pdir = $this->p->avail['*']['p_dir'];
-			$aop = $this->p->check->aop( $lca, true, $pdir );
+			$aop = $this->p->check->aop( $this->p->lca, true, $pdir );
 			$og_images = null;
 			$og_videos = null;
 
-			if ( empty( $head ) ) {
-				foreach ( $request as $key ) {
-					switch ( $key ) {
-						case 'pid':
-						case ( preg_match( '/^(image|img)/', $key ) ? true : false ):
-							if ( null === $og_images ) {	// get images only once
-								$og_images = $this->get_all_images( 1, $size_name, $mod, false, $md_pre );
-							}
-							break;
-						case ( preg_match( '/^(vid|prev)/', $key ) ? true : false ):
-							if ( null === $og_videos && $aop ) {	// get videos only once
-								$og_videos = $this->get_all_videos( 1, $mod, false, $md_pre );	// $check_dupes = false
-							}
-							break;
-					}
+			foreach ( $request as $key ) {
+				switch ( $key ) {
+					case 'pid':
+					case ( preg_match( '/^(image|img)/', $key ) ? true : false ):
+						if ( null === $og_images ) {	// get images only once
+							$og_images = $this->get_all_images( 1, $size_name, $mod, false, $md_pre );
+						}
+						break;
+					case ( preg_match( '/^(vid|prev)/', $key ) ? true : false ):
+						if ( null === $og_videos && $aop ) {	// get videos only once
+							$og_videos = $this->get_all_videos( 1, $mod, false, $md_pre );	// $check_dupes = false
+						}
+						break;
 				}
-			} else {
-				$og_images = $og_videos = array( $head );
 			}
 
 			foreach ( $request as $key ) {
-				unset( $mt_name );
 				switch ( $key ) {
 					case 'pid':
-						if ( ! isset( $mt_name ) ) {
-							$mt_name = $mt_pre.':image:id';
+						if ( ! isset( $get_mt_name ) ) {
+							$get_mt_name = $mt_pre.':image:id';
 						}
 						// no break - fall through
 					case 'image':
 					case 'img_url':
-						if ( ! isset( $mt_name ) ) {
-							$mt_name = $mt_pre.':image';
+						if ( ! isset( $get_mt_name ) ) {
+							$get_mt_name = $mt_pre.':image';
 						}
 						// no break - fall through
 
 						if ( $og_videos !== null ) {
-							$ret[$key] = $this->get_media_value( $mt_name, $og_videos );
+							$ret[$key] = $this->get_media_value( $get_mt_name, $og_videos );
 						}
 
 						if ( empty( $ret[$key] ) ) {
-							$ret[$key] = $this->get_media_value( $mt_name, $og_images );
+							$ret[$key] = $this->get_media_value( $get_mt_name, $og_images );
 						}
 
-						// if there's no image, and no video preview image,
-						// then add the default image for singular (aka post) webpages
+						/**
+						 * If there's no image, and no video preview image, then add
+						 * the default image for singular (aka post) webpages.
+						 */
 						if ( empty( $ret[$key] ) && $mod['is_post'] ) {
-							$og_images = $this->p->media->get_default_images( 1, $size_name, false );	// $check_dupes = false
-							$ret[$key] = $this->get_media_value( $mt_name, $og_images );
+							$og_images = $this->p->media->get_default_images( 1, $size_name, false );	// $check_dupes is false.
+							$ret[$key] = $this->get_media_value( $get_mt_name, $og_images );
 						}
 						break;
 					case 'video':
@@ -1001,6 +1003,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$ret[$key] = '';
 						break;
 				}
+				unset( $get_mt_name );
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -1052,8 +1055,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return '';
 		}
 
-		// returns an optional and customized locale value for the og:locale meta tag
-		// $mixed = 'default' | 'current' | post ID | $mod array
+		/**
+		 * Returns an optional and customized locale value for the og:locale meta tag.
+		 *
+		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 */
 		public function get_fb_locale( array $opts, $mixed = 'current' ) {
 
 			// check for customized locale

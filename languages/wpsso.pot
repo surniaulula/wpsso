@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.3.2-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.3.2-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2453,86 +2453,86 @@ msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:147 lib/pro/admin/meta.php:164
+#: lib/gpl/admin/meta.php:148 lib/pro/admin/meta.php:165
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
-#: lib/gpl/admin/meta.php:161 lib/pro/admin/meta.php:175
+#: lib/gpl/admin/meta.php:163 lib/pro/admin/meta.php:177
 #: lib/submenu/general.php:37
 msgctxt "metabox title"
 msgid "All Social WebSites / Open Graph"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:166 lib/pro/admin/meta.php:180
+#: lib/gpl/admin/meta.php:168 lib/pro/admin/meta.php:182
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:172 lib/gpl/admin/meta.php:268
-#: lib/pro/admin/meta.php:186 lib/pro/admin/meta.php:286
+#: lib/gpl/admin/meta.php:174 lib/gpl/admin/meta.php:272
+#: lib/pro/admin/meta.php:188 lib/pro/admin/meta.php:290
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:181 lib/gpl/admin/meta.php:277
-#: lib/pro/admin/meta.php:195 lib/pro/admin/meta.php:295
+#: lib/gpl/admin/meta.php:183 lib/gpl/admin/meta.php:281
+#: lib/pro/admin/meta.php:197 lib/pro/admin/meta.php:299
 msgctxt "option label"
 msgid "Image Dimensions"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:187 lib/gpl/admin/meta.php:284
-#: lib/pro/admin/meta.php:201 lib/pro/admin/meta.php:302
+#: lib/gpl/admin/meta.php:189 lib/gpl/admin/meta.php:288
+#: lib/pro/admin/meta.php:203 lib/pro/admin/meta.php:306
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:193 lib/gpl/admin/meta.php:291
-#: lib/pro/admin/meta.php:207 lib/pro/admin/meta.php:309
+#: lib/gpl/admin/meta.php:195 lib/gpl/admin/meta.php:295
+#: lib/pro/admin/meta.php:209 lib/pro/admin/meta.php:313
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:200 lib/pro/admin/meta.php:214
+#: lib/gpl/admin/meta.php:202 lib/pro/admin/meta.php:216
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:205 lib/pro/admin/meta.php:219
+#: lib/gpl/admin/meta.php:207 lib/pro/admin/meta.php:221
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:213 lib/pro/admin/meta.php:227
+#: lib/gpl/admin/meta.php:215 lib/pro/admin/meta.php:229
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:222 lib/pro/admin/meta.php:236
+#: lib/gpl/admin/meta.php:224 lib/pro/admin/meta.php:238
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:228 lib/messages.php:729 lib/pro/admin/meta.php:242
+#: lib/gpl/admin/meta.php:230 lib/messages.php:729 lib/pro/admin/meta.php:244
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:234 lib/pro/admin/meta.php:248
+#: lib/gpl/admin/meta.php:236 lib/pro/admin/meta.php:250
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:241 lib/pro/admin/meta.php:255
+#: lib/gpl/admin/meta.php:243 lib/pro/admin/meta.php:257
 msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:248 lib/pro/admin/meta.php:264
+#: lib/gpl/admin/meta.php:250 lib/pro/admin/meta.php:266
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:262 lib/pro/admin/meta.php:280
+#: lib/gpl/admin/meta.php:266 lib/pro/admin/meta.php:284
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
@@ -2649,7 +2649,7 @@ msgid ""
 "information for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:378 lib/media.php:530 lib/media.php:1312
+#: lib/media.php:378 lib/media.php:530 lib/media.php:1315
 #: lib/pro/util/checkimgdims.php:89
 msgid "Media Library"
 msgstr ""
@@ -2698,22 +2698,22 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1318 lib/pro/media/ngg.php:130
+#: lib/media.php:1321 lib/pro/media/ngg.php:130
 #: lib/pro/util/checkimgdims.php:91
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1328
+#: lib/media.php:1331
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1397
+#: lib/media.php:1400
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1425
+#: lib/media.php:1428
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
