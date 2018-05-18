@@ -263,19 +263,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_vid_embed':
 
-							$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_custom_meta',
-								_x( 'Video Embed HTML Custom Field', 'option label', 'wpsso' ) );
-
-							$text = 'Custom Video Embed HTML to use for the first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$settings_page_link.' advanced option also allows a 3rd-party theme or plugin to provide custom Video Embed HTML for this option.';
+							$text = __( 'Custom video embed HTML for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup.', 'wpsso' ).' ';
+							
+							$text .= __( 'If the video is from a recognized external video service, an API connection will be made to retrieve additional information about the video.', 'wpsso' );
 
 						 	break;
 
 						case 'tooltip-meta-og_vid_url':
 
-							$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_custom_meta',
-								_x( 'Video URL Custom Field', 'option label', 'wpsso' ) );
-
-							$text = 'A custom Video URL to include first in the Facebook / Open Graph, Pinterest Rich Pin, and \'Player\' Twitter Card meta tags. If the URL is from Youtube, Vimeo or Wistia, an API connection will be made to retrieve the preferred sharing URL, video dimensions, and video preview image. The '.$settings_page_link.' advanced option allows a 3rd-party theme or plugin to provide a custom Video URL value for this option.';
+							$text = __( 'A custom video URL for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup.', 'wpsso' ).' ';
+							
+							$text .= __( 'If the video is from a recognized external video service, an API connection will be made to retrieve additional information about the video.', 'wpsso' );
 
 						 	break;
 
@@ -284,7 +282,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( 'The %1$s video API modules can offer a default video name / title and description, provided that information is available from the API service.', 'wpsso' ), $info['short_pro'] ).' ';
 
-							$text .= __( 'The video name / title and description text can be is used for Schema JSON-LD markup (add-on required).', 'wpsso' );
+							$text .= __( 'The video name / title and description will be used in the video Schema JSON-LD markup (add-on required).', 'wpsso' );
 
 							break;
 
