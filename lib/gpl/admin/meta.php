@@ -220,7 +220,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			$form_rows['og_vid_dimensions'] = array(
 				'tr_class' => $form->get_css_class_hide_vid_dim( 'basic', 'og_vid' ),
 				'label' => _x( 'Video Dimensions', 'option label', 'wpsso' ),
-				'th_class' => 'medium', 'tooltip' => 'og_vid_dimensions', 'td_class' => 'blank',
+				'th_class' => 'medium', 'tooltip' => 'meta-og_vid_dimensions', 'td_class' => 'blank',
 				'content' => $form->get_no_input_video_dimensions( 'og_vid' ),
 			);
 

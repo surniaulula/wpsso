@@ -763,7 +763,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						' class="' . esc_attr( $input_class ) . '"' .
 						' id="text_' . esc_attr( $input_id ) . '"' .
 						' value="' . esc_attr( $input_value ) . '"' .
-						' onFocus="jQuery(\'div#wrap_' . esc_attr( $input_id_next ) . '\').show();" />' . "\n";
+						' onFocus="jQuery(\'div#wrap_' . esc_attr( $input_id_next ) . '\').show();" />';
 				}
 
 				$one_more = empty( $input_value ) ? false : true;
@@ -847,7 +847,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = '';
 			$end_num = $max_input > 0 ? $max_input - 1 : 0;
-			$input_class = empty( $class ) ? 'multi' : 'multi ' . $class;
+			$input_class = empty( $class ) ? '' : $class;
 			$input_id = empty( $id ) ? '' : $id;
 
 			foreach ( range( 0, $end_num, 1 ) as $key_num ) {
@@ -860,7 +860,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					( empty( $input_class ) ? '' : ' class="' . esc_attr( $input_class ) . '"' ) .
 					( empty( $input_id ) ? '' : ' id="text_' . esc_attr( $input_id ) . '"' ) .
 					( $placeholder === '' ? '' : ' placeholder="' . esc_attr( $placeholder ) . '"' ) .
-					' value="' . esc_attr( $value ) . '" />' . "\n";
+					' value="' . esc_attr( $value ) . '" />';
 
 				if ( $max_input > 1 ) {
 					$html .= '</div>' . "\n";
@@ -990,8 +990,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$crop_area_select .= '</div>';
 			}
 
-			return $this->get_input( $name . '_width', 'short', '', 0, $def_width, $disabled ) . 'x' .
-				$this->get_input( $name . '_height', 'short', '', 0, $def_height, $disabled ) .
+			return $this->get_input( $name . '_width', 'short width', '', 0, $def_width, $disabled ) . 'x' .
+				$this->get_input( $name . '_height', 'short height', '', 0, $def_height, $disabled ) .
 				'px crop ' . $this->get_checkbox( $name . '_crop', '', '', $disabled ) . $crop_area_select;
 		}
 
@@ -1030,8 +1030,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$def_height = empty( $media_info['vid_height'] ) ? '' : $media_info['vid_height'];
 			}
 
-			return $this->get_input( $name . '_width', 'short', '', 0, $def_width, $disabled ) . 'x' .
-				$this->get_input( $name . '_height', 'short', '', 0, $def_height, $disabled ) . 'px';
+			return $this->get_input( $name . '_width', 'short width', '', 0, $def_width, $disabled ) . 'x' .
+				$this->get_input( $name . '_height', 'short height', '', 0, $def_height, $disabled ) . 'px';
 		}
 
 		public function get_no_input_video_dimensions( $name, $media_info = array() ) {

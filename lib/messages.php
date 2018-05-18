@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					$info[$key.'_pro'] : '<a href="'.$url['purchase'].'">'.$info[$key.'_pro'].'</a>';
 			}
 
-			$fb_recommends = __( 'Facebook has published a preference for Open Graph image dimensions of 1200x630px cropped (for retina and high-PPI displays), 600x315px cropped as a minimum (the default settings value), and ignores images smaller than 200x200px.', 'wpsso' );
+			$fb_recommends_transl = __( 'Facebook has published a preference for Open Graph image dimensions of 1200x630px cropped (for retina and high-PPI displays), 600x315px cropped as a minimum (the default settings value), and ignores images smaller than 200x200px.', 'wpsso' );
 
 			/**
 			 * All tooltips
@@ -212,6 +212,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;	// stop here
 
+						case 'tooltip-meta-og_img_max':
+
+							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags.', 'wpsso' ).' ';
+							
+							$text .= __( 'There is no advantage in selecting a maximum value greater than 1.', 'wpsso' );
+
+						 	break;
+
 						case 'tooltip-meta-og_img_id':
 
 							$text = __( 'A custom image ID to include first, before any featured, attached, or content images.', 'wpsso' );
@@ -220,13 +228,36 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_img_url':
 
-							$text = __( 'A custom image URL (instead of an image ID) to include first, before any featured, attached, or content images.', 'wpsso' ).' '.__( 'Please make sure your custom image is large enough, or it may be ignored by social website(s).', 'wpsso' ).' '.$fb_recommends.' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
+							$text = __( 'A custom image URL (instead of an image ID) to include first, before any featured, attached, or content images.', 'wpsso' ).' ';
+							
+							$text .= __( 'Please make sure your custom image is large enough, or it may be ignored by social website(s).', 'wpsso' ).' ';
+							
+							$text .= $fb_recommends_transl.' ';
+							
+							$text .= '<em>' . __( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ) . '</em>';
 
 							break;
 
-						case 'tooltip-meta-og_img_max':
+						case 'tooltip-meta-og_vid_prev_img':
 
-							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags.', 'wpsso' ).' '.__( 'There is no advantage in selecting a maximum value greater than 1.', 'wpsso' );
+							$prev_option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_videos',
+								_x( 'Include Video Preview Images', 'option label', 'wpsso' ) );
+
+							$text = sprintf( __( 'When the %s option is enabled, and a preview image is available, it will be included in the Facebook / Open Graph meta tags before any other image (custom, featured, attached, etc.).', 'wpsso' ), $prev_option_link );
+
+						 	break;
+
+						case 'tooltip-meta-og_vid_max':
+
+							$text = __( 'The maximum number of embedded videos to include in the Facebook / Open Graph meta tags and Schema markup.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-og_vid_dimensions':
+
+							$text = sprintf( __( 'The %1$s video API modules can offer default video width and height values, provided that information is available from the API service.', 'wpsso' ), $info['short_pro'] ).' ';
+
+							$text .= __( 'If the default video width and/or height values are incorrect, you may adjust their values here.', 'wpsso' );
 
 						 	break;
 
@@ -251,36 +282,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-og_vid_title':
 						case 'tooltip-meta-og_vid_desc':
 
-							$text = sprintf( __( 'The %1$s video API modules can offer a default video name / title and description, when that information is provided by the video API service (not all API services offer detailed information about their videos).', 'wpsso' ), $info['name_pro'] ).' ';
+							$text = sprintf( __( 'The %1$s video API modules can offer a default video name / title and description, provided that information is available from the API service.', 'wpsso' ), $info['short_pro'] ).' ';
 
 							$text .= __( 'The video name / title and description text can be is used for Schema JSON-LD markup (add-on required).', 'wpsso' );
 
 							break;
 
-						case 'tooltip-meta-og_vid_max':
+						case 'tooltip-meta-schema_img_max':
 
-							$text = __( 'The maximum number of embedded videos to include in the Facebook / Open Graph meta tags and Schema markup.', 'wpsso' );
-
-						 	break;
-
-						case 'tooltip-meta-og_vid_prev_img':
-
-							$prev_option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_videos',
-								_x( 'Include Video Preview Images', 'option label', 'wpsso' ) );
-
-							$text = sprintf( __( 'When the %s option is enabled, and a preview image is available, it will be included in the Facebook / Open Graph meta tags before any other image (custom, featured, attached, etc.).', 'wpsso' ), $prev_option_link );
-
-						 	break;
-
-						case 'tooltip-meta-p_img_id':
-
-							$text = __( 'A custom image ID to include first when the Pinterest crawler is detected, before any featured, attached, or content images.', 'wpsso' );
-
-						 	break;
-
-						case 'tooltip-meta-p_img_url':
-
-							$text = __( 'A custom image URL (instead of an image ID) to include first when the Pinterest crawler is detected.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
+							$text = __( 'The maximum number of images to include in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' );
 
 						 	break;
 
@@ -293,12 +303,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-schema_img_url':
 
 							$text = __( 'A custom image URL (instead of an image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
-
-						 	break;
-
-						case 'tooltip-meta-schema_img_max':
-
-							$text = __( 'The maximum number of images to include in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' );
 
 						 	break;
 
@@ -410,7 +414,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$this->p->opt->get_defaults( 'og_img_height' ).' '.
 								( $this->p->opt->get_defaults( 'og_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
-							$text = 'The image dimensions used in the Facebook / Open Graph meta tags (the default dimensions are '.$def_dimensions.'). '.$fb_recommends.' Note that images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.';
+							$text = sprintf( __( 'The image dimensions used in the Facebook / Open Graph meta tags (the default dimensions are %s).', 'wpsso' ), $def_dimensions ).' ';
+							$text .= $fb_recommends_transl.' ';
+							
+							$text .= __( 'Note that images in the WordPress Media Library and/or NextGEN Gallery must be larger than your chosen image dimensions.', 'wpsso' );
 
 							break;
 
