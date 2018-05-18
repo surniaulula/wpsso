@@ -321,14 +321,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.3.2-dev.1 (2018/05/18)**
+**Version 4.3.2-dev.2 (2018/05/18)**
 
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added a new "Video Dimensions" option in the SSO metabox to customize the video dimension values.
 * *Bugfixes*
-	* None
+	* Fixed the default "Video Name / Title" and "Video Description" values in the SSO metabox when custom values have been entered.
 * *Developer Notes*
 	* None
 
@@ -433,9 +433,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.3.2-dev.1 =
+= 4.3.2-dev.2 =
 
-(2018/05/18) None.
+(2018/05/18) Added a new "Video Dimensions" option in the SSO metabox to customize the video dimension values.
 
 = 4.3.1 =
 
