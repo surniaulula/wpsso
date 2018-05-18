@@ -932,17 +932,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		public function get_opts_image( $opts, $size_name, $check_dupes = true, $force_regen = false, $opt_pre = 'og', $mt_pre = 'og' ) {
+		public function get_opts_image( $opts, $size_name, $check_dupes = true, $force_regen = false, $opt_pre = 'og', $mt_pre = 'og', $opt_num = null ) {
+
+			$img_opts = array();
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
-				$img[$key] = empty( $opts[$opt_pre.'_img_'.$key] ) ? '' : $opts[$opt_pre.'_img_'.$key];
+
+				$opt_suf = $opt_num === null ? $key : $key . '_' . $opt_num;	// Allow for 0.
+
+				$img_opts[$key] = empty( $opts[$opt_pre.'_img_'.$opt_suf] ) ? '' : $opts[$opt_pre.'_img_'.$opt_suf];
 			}
 
 			$mt_image = array();
 
-			if ( ! empty( $img['id'] ) ) {
+			if ( ! empty( $img_opts['id'] ) ) {
 
-				$img['id'] = $img['id_pre'] === 'ngg' ? 'ngg-'.$img['id'] : $img['id'];
+				$img_opts['id'] = $img_opts['id_pre'] === 'ngg' ? 'ngg-'.$img_opts['id'] : $img_opts['id'];
 
 				list( 
 					$mt_image[$mt_pre.':image'],
@@ -950,14 +955,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$mt_image[$mt_pre.':image:height'],
 					$mt_image[$mt_pre.':image:cropped'],
 					$mt_image[$mt_pre.':image:id']
-				) = $this->get_attachment_image_src( $img['id'], $size_name, $check_dupes, $force_regen );
+				) = $this->get_attachment_image_src( $img_opts['id'], $size_name, $check_dupes, $force_regen );
 			}
 
-			if ( empty( $mt_image[$mt_pre.':image'] ) && ! empty( $img['url'] ) ) {
+			if ( empty( $mt_image[$mt_pre.':image'] ) && ! empty( $img_opts['url'] ) ) {
+
 				$mt_image = array(
-					$mt_pre.':image' => $img['url'],
-					$mt_pre.':image:width' => ( $img['url:width'] > 0 ? $img['url:width'] : WPSSO_UNDEF_INT ),
-					$mt_pre.':image:height' => ( $img['url:height'] > 0 ? $img['url:height'] : WPSSO_UNDEF_INT ),
+					$mt_pre.':image' => $img_opts['url'],
+					$mt_pre.':image:width' => ( $img_opts['url:width'] > 0 ? $img_opts['url:width'] : WPSSO_UNDEF_INT ),
+					$mt_pre.':image:height' => ( $img_opts['url:height'] > 0 ? $img_opts['url:height'] : WPSSO_UNDEF_INT ),
 				);
 			}
 
