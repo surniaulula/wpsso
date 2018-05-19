@@ -14,20 +14,21 @@ if ( ! class_exists( 'SucomCache' ) ) {
 	class SucomCache {
 
 		private $p;
-		private $lca = 'sucom';
-		private $text_domain = 'sucom';
+		private $lca          = 'sucom';
+		private $text_domain  = 'sucom';
 		private $label_transl = '';
 
 		public $base_dir = '';
 		public $base_url = '/cache/';
-		public $default_file_cache_exp = DAY_IN_SECONDS;	// 1 day
-		public $default_object_cache_exp = 259200;	// 3 days
-		public $curl_connect_timeout = 10;
-		public $curl_timeout = 20;
-		public $curl_max_redirs = 10;
 
-		private $url_time = array();
-		private $transient = array(		// saved on wp shutdown action
+		public $default_file_cache_exp   = DAY_IN_SECONDS;	// 1 day.
+		public $default_object_cache_exp = 259200;		// 3 days.
+		public $curl_connect_timeout     = 5;			// The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
+		public $curl_timeout             = 10;			// The maximum number of seconds to allow cURL functions to execute. 
+		public $curl_max_redirs          = 10;			// The maximum amount of HTTP redirections to follow.
+
+		private $url_time  = array();
+		private $transient = array(				// Saved on wp shutdown action.
 			'loaded' => false,
 			'expire' => HOUR_IN_SECONDS,
 			'ignore_time' => 900,
@@ -204,7 +205,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$filepath = $this->get( $url, 'filepath', 'file', $cache_exp_secs, '', $curl_opts );
 
-			if ( ! empty( $filepath ) ) {	// false on error
+			if ( ! empty( $filepath ) ) {	// False on error.
 
 				if ( file_exists( $filepath ) ) {
 

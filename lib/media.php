@@ -305,13 +305,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 		}
 
-		// by default, return an empty image array
+		/**
+		 * Return an empty image array by default.
+		 */
 		public static function reset_image_src_info( $image_src_ret = array( null, null, null, null, null ) ) {
 			self::$image_src_info = null;
 			return $image_src_ret;
 		}
 
-		// make sure every return is wrapped with self::reset_image_src_info()
+		/**
+		 * Note that every return must be wrapped with self::reset_image_src_info().
+		 */
 		public function get_attachment_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
 
 			self::set_image_src_info( $args = array(
@@ -859,6 +863,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							if ( empty( $og_single_image['og:image:width'] ) || $og_single_image['og:image:width'] < 0 ||
 								empty( $og_single_image['og:image:height'] ) || $og_single_image['og:image:height'] < 0 ) {
 
+								/**
+								 * Add correct image sizes for the image URL using getimagesize().
+								 */
 								$this->p->util->add_image_url_size( 'og:image', $og_single_image );
 
 								if ( $this->p->debug->enabled ) {
@@ -932,38 +939,42 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		public function get_opts_image( $opts, $size_name, $check_dupes = true, $force_regen = false, $opt_pre = 'og', $mt_pre = 'og', $opt_num = null ) {
+		public function get_opts_single_image( $opts, $size_name = null, $opt_pre = 'og_img', $opt_num = null ) {
 
+			$mt_pre = 'og';
+			$check_dupes = false;
+			$force_regen = false;
 			$img_opts = array();
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
-
-				$opt_suf = $opt_num === null ? $key : $key . '_' . $opt_num;	// Allow for 0.
-
-				$img_opts[$key] = empty( $opts[$opt_pre.'_img_'.$opt_suf] ) ? '' : $opts[$opt_pre.'_img_'.$opt_suf];
+				$opt_suf        = $opt_num === null ? $key : $key . '_' . $opt_num;	// Use a numbered multi-option key.
+				$opt_key        = $opt_pre . '_' . $opt_suf;
+				$opt_key_locale = SucomUtil::get_key_locale( $opt_pre . '_' . $opt_suf, $opts );
+				$img_opts[$key] = empty( $opts[$opt_key_locale] ) ? '' : $opts[$opt_key_locale];
 			}
 
 			$mt_image = array();
 
-			if ( ! empty( $img_opts['id'] ) ) {
+			if ( ! empty( $img_opts['id'] ) && is_string( $size_name ) ) {
 
-				$img_opts['id'] = $img_opts['id_pre'] === 'ngg' ? 'ngg-'.$img_opts['id'] : $img_opts['id'];
+				$img_opts['id'] = $img_opts['id_pre'] === 'ngg' ? 'ngg-' . $img_opts['id'] : $img_opts['id'];
 
 				list( 
-					$mt_image[$mt_pre.':image'],
-					$mt_image[$mt_pre.':image:width'],
-					$mt_image[$mt_pre.':image:height'],
-					$mt_image[$mt_pre.':image:cropped'],
-					$mt_image[$mt_pre.':image:id']
+					$mt_image[$mt_pre . ':image'],
+					$mt_image[$mt_pre . ':image:width'],
+					$mt_image[$mt_pre . ':image:height'],
+					$mt_image[$mt_pre . ':image:cropped'],
+					$mt_image[$mt_pre . ':image:id']
 				) = $this->get_attachment_image_src( $img_opts['id'], $size_name, $check_dupes, $force_regen );
-			}
 
-			if ( empty( $mt_image[$mt_pre.':image'] ) && ! empty( $img_opts['url'] ) ) {
+			} elseif ( ! empty( $img_opts['url'] ) ) {
 
 				$mt_image = array(
-					$mt_pre.':image' => $img_opts['url'],
-					$mt_pre.':image:width' => ( $img_opts['url:width'] > 0 ? $img_opts['url:width'] : WPSSO_UNDEF_INT ),
-					$mt_pre.':image:height' => ( $img_opts['url:height'] > 0 ? $img_opts['url:height'] : WPSSO_UNDEF_INT ),
+					$mt_pre . ':image' => $img_opts['url'],
+					$mt_pre . ':image:width' => ( $img_opts['url:width'] > 0 ? $img_opts['url:width'] : WPSSO_UNDEF_INT ),
+					$mt_pre . ':image:height' => ( $img_opts['url:height'] > 0 ? $img_opts['url:height'] : WPSSO_UNDEF_INT ),
+					$mt_pre . ':image:cropped' => null,
+					$mt_pre . ':image:id' => null,
 				);
 			}
 
@@ -1277,7 +1288,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( empty( $og_video['og:image:width'] ) || $og_video['og:image:width'] < 0 ||
 						empty( $og_video['og:image:height'] ) || $og_video['og:image:height'] < 0 ) {
 
-						// add correct image sizes for the image URL using getimagesize()
+						/**
+						 * Add correct image sizes for the image URL using getimagesize().
+						 */
 						$this->p->util->add_image_url_size( 'og:image', $og_video );
 
 						if ( $this->p->debug->enabled ) {
@@ -1304,6 +1317,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		/**
 		 * $img_mixed can be an image id or URL.
+		 *
 		 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 		 */
 		public function img_size_within_limits( $img_mixed, $size_name, $img_width, $img_height, $media_lib = null ) {
@@ -1426,7 +1440,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$img_width.'x'.$img_height.' smaller than minimum '.$min_width.'x'.$min_height.' for '.$size_name );
 				}
 
-				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
+				if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
 
 					$dismiss_key  = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_smaller_than_minimum_allowed';
 					$dismiss_time = true;

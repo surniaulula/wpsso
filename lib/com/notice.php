@@ -322,7 +322,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( $url = $this->get_ref( 'url' ) ) {
 
-				$context_transl = $this->get_ref( 'context_transl', '', ' ' );
+				$context_transl = $this->get_ref( 'context_transl', '', ' - ' );
 
 				$url_link = '<a href="' . $url . '">' . strtolower( $url ) . '</a>';
 
@@ -943,6 +943,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $user_ids;
 		}
 
+		public function get_user_notices( $user_id = true, $use_cache = true ) {
+
+			/**
+			 * Returns a reference to the cache array.
+			 */
+			$user_notices =& $this->get_notice_cache( $user_id, $use_cache );
+
+			return $user_notices;
+		}
+
 		/**
 		 * Returns a reference to the cache array.
 		 */
@@ -1043,6 +1053,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			$custom_style_css = '
+				@keyframes blinker {
+					25% { opacity: 0; }
+					75% { opacity: 1; }
+				}
 				.components-notice-list .' . $this->lca . '-notice {
 					min-height:0;
 					box-shadow:none;
@@ -1051,7 +1065,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .' . $this->lca . '-notice *,
 				.' . $this->lca . '-notice * {
 					line-height:1.5em;
-				}
 				}
 				.components-notice-list .' . $this->lca . '-notice .notice-label,
 				.components-notice-list .' . $this->lca . '-notice .notice-message,
@@ -1074,6 +1087,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				#wpadminbar .have-notices.have-notices-error .ab-icon::before {
 					color:#dc3232;
+					animation-name:blinker;
+					animation-duration:2s;
+					animation-timing-function:linear;
+					animation-delay:0s;
+					animation-iteration-count:15;	/* blink for 30 seconds */
 				}
 				#wpadminbar .have-notices.have-notices-warning .ab-icon::before {
 					color:#ffb900;

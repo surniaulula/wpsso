@@ -328,11 +328,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * Called by show_setting_page() and extended by the sitesubmenu classes to load site options instead.
 		 */
 		protected function set_form_object( $menu_ext ) {	// $menu_ext required for text_domain
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 				$this->p->debug->log( 'setting form object for ' . $menu_ext );
 			}
+
 			$def_opts = $this->p->opt->get_defaults();
+
 			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
 		}
 
@@ -708,13 +711,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $opts;
 			}
 
-			// get default values, including css from default stylesheets
-			$def_opts = $this->p->opt->get_defaults();
+			$def_opts = $this->p->opt->get_defaults();	// Get default values, including css from default stylesheets.
+
+			$this->p->notice->trunc();	// Clear all messages before sanitation checks.
+
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $this->p->options, $opts );
-			$this->p->notice->trunc();	// clear all messages before sanitation checks
-			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
-			$opts = apply_filters( $this->p->lca . '_save_options', $opts, WPSSO_OPTIONS_NAME, $network );
+			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );	// Sanitation updates image width/height info.
+			$opts = apply_filters( $this->p->lca . '_save_options', $opts, WPSSO_OPTIONS_NAME, $network, false );	// $doing_upgrade is false.
 
 			if ( empty( $this->p->options['plugin_clear_on_save'] ) ) {
 
@@ -792,6 +796,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function load_setting_page() {
 
 			$action_query = $this->p->lca . '-action';
+
 			wp_enqueue_script( 'postbox' );
 
 			if ( ! empty( $_GET[$action_query] ) ) {
@@ -863,11 +868,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'reload_default_sizes':
 
-							$opts =& $this->p->options;	// update the existing options array
+							$opts =& $this->p->options;	// Update the existing options array.
 							$def_opts = $this->p->opt->get_defaults();
 							$img_opts = SucomUtil::preg_grep_keys( '/_img_(width|height|crop|crop_x|crop_y)$/', $def_opts );
 							$opts = array_merge( $this->p->options, $img_opts );
-							$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts, false );
+							$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts );
 							$this->p->notice->upd( __( 'All image dimensions have been reloaded with their default value and saved.',
 								'wpsso' ) );
 							break;

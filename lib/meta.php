@@ -122,6 +122,20 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__ );
 		}
 
+		/**
+		 * Does this page have a post/term/user SSO metabox?
+		 *
+		 * If this is a post/term/user editing page, and the SSO metabox is shown, then the 
+		 * WpssoMeta::$head_meta_tags variable will be an array *and* include the head meta
+		 * tags array.
+		 */
+		public static function is_meta_page() {
+			if ( ! empty( WpssoMeta::$head_meta_tags ) ) {
+				return true;
+			}
+			return false;
+		}
+
 		protected function get_custom_meta_tabs( $metabox_id, array &$mod ) {
 
 			switch ( $metabox_id ) {
@@ -1143,13 +1157,20 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			foreach ( apply_filters( $this->p->lca.'_'.$mod['name'].'_image_urls', array(), $size_name, $mod['id'], $mod ) as $url ) {
-				if ( strpos( $url, '://' ) !== false ) {	// quick sanity check
+
+				if ( strpos( $url, '://' ) !== false ) {	// Quick sanity check.
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'adding image url: '.$url );
 					}
+
 					$mt_image = SucomUtil::get_mt_prop_image( $mt_pre );
+
 					$mt_image[$mt_pre.':image'] = $url;
 
+					/**
+					 * Add correct image sizes for the image URL using getimagesize().
+					 */
 					$this->p->util->add_image_url_size( $mt_pre.':image', $mt_image );
 
 					if ( ! empty( $mt_image[$mt_pre.':image'] ) && $this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {

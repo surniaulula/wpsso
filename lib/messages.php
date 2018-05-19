@@ -1066,8 +1066,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_clear_short_urls':
 
-							$cache_exp_secs = (int) apply_filters( $lca.'_cache_expire_short_url',
+							$cache_exp_secs = (int) apply_filters( $this->p->lca.'_cache_expire_short_url',
 								$this->p->options['plugin_short_url_cache_exp'] );
+
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
 
@@ -1880,18 +1881,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-image-rejected':
 
-						$hide_const_name = strtoupper( $lca ).'_HIDE_ALL_WARNINGS';
-						$hidden_warnings = SucomUtil::get_const( $hide_const_name );
-						$is_settings_page = strpos( SucomUtil::get_screen_id(), '_page_'.$lca = $this->p->cf['lca'].'-' );
-
-						// do not add this text if hidding pro options or on a settings page
-						if ( empty( $this->p->options['plugin_hide_pro'] ) && false === $is_settings_page ) {
+						/**
+						 * Do not add this text if hidding pro options or on a settings page.
+						 */
+						if ( empty( $this->p->options['plugin_hide_pro'] ) && WpssoMeta::is_meta_page() ) {
 							$text = sprintf( __( 'A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %s metabox under the <em>Select Media</em> tab.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 						} else {
 							$text = '';
 						}
 
-						static $do_once_upscale_notice = null;	// show the upscale details only once
+						static $do_once_upscale_notice = null;	// Show the upscale details only once.
 
 						if ( $do_once_upscale_notice !== true && current_user_can( 'manage_options' ) && 
 							( ! isset( $info['allow_upscale'] ) || ! empty( $info['allow_upscale'] ) ) ) {
@@ -1915,6 +1914,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									'wpsso' ).'</em></p>';
 
 							$text .= '<ul>';
+
 							$text .= '<li>'.sprintf( __( 'You can adjust the <b>%1$s</b> option in the %2$s settings.', 'wpsso' ), $info['size_label'], $img_dim_page_link ).'</li>';
 
 							if ( empty( $this->p->options['plugin_upscale_images'] ) ) {
@@ -1922,11 +1922,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							}
 
 							$text .= '<li>'.sprintf( __( 'Increase the %1$s option value.', 'wpsso' ), $percent_option_link ).'</li>';
+
 							$text .= '<li>'.sprintf( __( 'Disable the %1$s option (not recommended).', 'wpsso' ), $img_dim_option_link ).'</li>';
 
-							if ( empty( $hidden_warnings ) ) {
-								$text .= '<li>'.sprintf( __( 'Define the %1$s constant as <em>true</em> to auto-hide all dismissable warnings.', 'wpsso' ), $hide_const_name ).'</li>';
-							}
 							$text .= '</ul>';
 						}
 

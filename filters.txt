@@ -249,7 +249,7 @@
 
 'wpsso_rename_md_options_keys' ( $options_keys );
 
-'wpsso_save_options' ( $opts, $options_name, $network );
+'wpsso_save_options' ( $opts, $options_name, $network, $doing_upgrade );
 
 'wpsso_save_site_options' ( $opts );
 

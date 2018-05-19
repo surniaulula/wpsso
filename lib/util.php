@@ -186,8 +186,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Uses a reference variable to modify the $opts array directly.
 		 * $opt_keys can be a single key name or an array of key names.
+		 * Uses a reference variable to modify the $opts array directly.
 		 */
 		public function add_image_url_size( $opt_keys, array &$opts ) {
 
@@ -203,25 +203,25 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$opt_suffix = '';
 
-				if ( preg_match( '/^(.*)(#.*)$/', $opt_prefix, $matches ) ) {	// language
+				if ( preg_match( '/^(.*)(#.*)$/', $opt_prefix, $matches ) ) {	// Language.
 					$opt_prefix = $matches[1];
-					$opt_suffix = $matches[2].$opt_suffix;
+					$opt_suffix = $matches[2] . $opt_suffix;
 				}
 
-				if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {	// multi-option
+				if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {	// Multi-option.
 					$opt_prefix = $matches[1];
-					$opt_suffix = $matches[2].$opt_suffix;
+					$opt_suffix = $matches[2] . $opt_suffix;
 				}
 
-				$media_url = SucomUtil::get_mt_media_url( $opts, $opt_prefix.$opt_suffix );
+				$media_url = SucomUtil::get_mt_media_url( $opts, $opt_prefix . $opt_suffix );
 
 				if ( ! empty( $media_url ) ) {
 
 					$image_info = $this->get_image_url_info( $media_url );
 
 					list(
-						$opts[$opt_prefix.':width'.$opt_suffix],	// example: place_addr_img_url:width_1
-						$opts[$opt_prefix.':height'.$opt_suffix],	// example: place_addr_img_url:height_1
+						$opts[$opt_prefix . ':width' . $opt_suffix],	// Example 'place_addr_img_url:width_1'.
+						$opts[$opt_prefix . ':height' . $opt_suffix],	// Example 'place_addr_img_url:height_1'.
 						$image_type,
 						$image_attr
 					) = $image_info;
@@ -246,26 +246,32 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $local_cache[$image_url];
 			}
 
-			$is_disabled = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
+			$is_disabled    = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
 			$def_image_info = array( WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, '', '' );
-			$image_info = false;
+			$image_info     = false;
 
 			if ( $is_disabled ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: use of getimagesize() is disabled' );
 				}
+
 				return $local_cache[$image_url] = $def_image_info;	// stop here
 
 			} elseif ( empty( $image_url ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: image url is empty' );
 				}
+
 				return $local_cache[$image_url] = $def_image_info;	// stop here
 
 			} elseif ( filter_var( $image_url, FILTER_VALIDATE_URL ) === false ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: invalid image url = '.$image_url );
 				}
+
 				return $local_cache[$image_url] = $def_image_info;	// stop here
 			}
 
@@ -307,7 +313,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$max_time   = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
 			$start_time = microtime( true );
-			$image_info = $this->p->cache->get_image_size( $image_url );	// wrapper for PHP's getimagesize()
+			$image_info = $this->p->cache->get_image_size( $image_url );	// Wrapper for PHP's getimagesize().
 			$total_time = microtime( true ) - $start_time;
 
 			/**
@@ -373,6 +379,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$mod = $this->p->m['util']['post']->get_mod( $post_id );
+
 			$this->add_plugin_image_sizes( false, array(), $mod, true );
 
 			return $image;

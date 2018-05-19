@@ -2942,7 +2942,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Image
 			 */
 			if ( ! empty( $place_opts['place_img_id'] ) || ! empty( $place_opts['place_img_url'] ) ) {
-				$mt_image = $wpsso->media->get_opts_image( $place_opts, $size_name, true, false, 'place', 'og' );
+				$mt_image = $wpsso->media->get_opts_single_image( $place_opts, $size_name, 'place_img' );
 				if ( ! self::add_og_single_image_data( $ret['image'], $mt_image, 'og:image', true ) ) {	// $list_element = true
 					unset( $ret['image'] );	// prevent null assignment
 				}
@@ -3201,8 +3201,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'itemprop', 'image.height', $mixed[$prefix . ':height'], '', $mod ) )
 				);
 
-			// defines a two-dimensional array
 			} else {
+				// defines a two-dimensional array
 				$mt_image = $this->p->head->get_single_mt( 'link', 'itemprop', 'image.url', $mixed, '', $mod );
 			}
 
