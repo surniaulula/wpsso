@@ -1280,13 +1280,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_logo_url':
 
-							$text = 'A URL for the website / organization\'s logo image that Google can use in search results and its <em>Knowledge Graph</em>.';
+							$text = 'A URL for this organization\'s logo image that Google can use in search results and its <em>Knowledge Graph</em>.';
 
 							break;
 
 						case 'tooltip-schema_banner_url':
 
-							$text = 'A URL for the website / organization\'s banner image &mdash; <strong>measuring exactly 600x60px</strong> &mdash; that Google / Google News can use to display content from Schema Article webpages.';
+							$text = __( 'A URL for this organization\'s banner image &mdash; <strong>measuring exactly 600x60px</strong> &mdash; that Google News can use for Schema Article content from this publisher.', 'wpsso' );
 
 							break;
 

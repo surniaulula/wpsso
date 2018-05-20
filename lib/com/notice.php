@@ -1091,7 +1091,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					animation-duration:2s;
 					animation-timing-function:linear;
 					animation-delay:0s;
-					animation-iteration-count:15;	/* blink for 30 seconds */
+					animation-iteration-count:10;	/* blink for 20 seconds */
 				}
 				#wpadminbar .have-notices.have-notices-warning .ab-icon::before {
 					color:#ffb900;

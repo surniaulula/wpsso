@@ -939,7 +939,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_ret;
 		}
 
-		public function get_opts_single_image( $opts, $size_name = null, $opt_pre = 'og_img', $opt_num = null ) {
+		/**
+		 * Example $opt_img_pre values: 'og_img', 'schema_banner', 'org_banner'.
+		 */
+		public function get_opts_single_image( $opts, $size_name = null, $opt_img_pre = 'og_img', $opt_num = null ) {
 
 			$mt_pre = 'og';
 			$check_dupes = false;
@@ -948,8 +951,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
 				$opt_suf        = $opt_num === null ? $key : $key . '_' . $opt_num;	// Use a numbered multi-option key.
-				$opt_key        = $opt_pre . '_' . $opt_suf;
-				$opt_key_locale = SucomUtil::get_key_locale( $opt_pre . '_' . $opt_suf, $opts );
+				$opt_key        = $opt_img_pre . '_' . $opt_suf;
+				$opt_key_locale = SucomUtil::get_key_locale( $opt_img_pre . '_' . $opt_suf, $opts );
 				$img_opts[$key] = empty( $opts[$opt_key_locale] ) ? '' : $opts[$opt_key_locale];
 			}
 
@@ -971,8 +974,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$mt_image = array(
 					$mt_pre . ':image' => $img_opts['url'],
-					$mt_pre . ':image:width' => ( $img_opts['url:width'] > 0 ? $img_opts['url:width'] : WPSSO_UNDEF_INT ),
-					$mt_pre . ':image:height' => ( $img_opts['url:height'] > 0 ? $img_opts['url:height'] : WPSSO_UNDEF_INT ),
+					$mt_pre . ':image:width' => $img_opts['url:width'] > 0 ? $img_opts['url:width'] : WPSSO_UNDEF_INT,
+					$mt_pre . ':image:height' => $img_opts['url:height'] > 0 ? $img_opts['url:height'] : WPSSO_UNDEF_INT,
 					$mt_pre . ':image:cropped' => null,
 					$mt_pre . ':image:id' => null,
 				);
