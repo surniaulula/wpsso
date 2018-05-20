@@ -216,8 +216,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags.', 'wpsso' ).' ';
 							
-							$text .= __( 'There is no advantage in selecting a maximum value greater than 1.', 'wpsso' );
-
 						 	break;
 
 						case 'tooltip-meta-og_img_id':
@@ -288,7 +286,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-schema_img_max':
 
-							$text = __( 'The maximum number of images to include in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' );
+							$text = __( 'The maximum number of images to include in the Schema meta tags and JSON-LD markup.', 'wpsso' );
 
 						 	break;
 
@@ -451,7 +449,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_img_max':
 
-							$text = 'The maximum number of images to include in the Facebook / Open Graph meta tags -- this includes the <em>featured</em> image, <em>attached</em> images, and any images found in the content. If you select "0", then no images will be listed in the Facebook / Open Graph meta tags (<strong>not recommended</strong>). If no images are listed in your meta tags, social websites may choose an unsuitable image from your webpage (including headers, sidebars, etc.). There is no advantage in selecting a maximum value greater than 1.';
+							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags &mdash; this includes the <em>featured</em> image, <em>attached</em> images, and any images found in the content.', 'wpsso' ).' ';
+							
+							$text .= __( 'If you select "0", then no images will be included in the Facebook / Open Graph meta tags (<strong>not recommended</strong>).', 'wpsso' ).' ';
+							
+							$text .= __( 'If no images are available in your meta tags, social sites may choose any image from your webpage (including headers, sidebars, thumbnails, etc.).', 'wpsso' );
 
 							break;
 
@@ -1280,7 +1282,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_logo_url':
 
-							$text = 'A URL for this organization\'s logo image that Google can use in search results and its <em>Knowledge Graph</em>.';
+							$text = __( 'A URL for this organization\'s logo image that Google can use in search results and its <em>Knowledge Graph</em>.', 'wpsso' );
 
 							break;
 
@@ -1293,7 +1295,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-schema_img_max':
 
 							$text = __( 'The maximum number of images to include in the Google / Schema markup &mdash; this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content.', 'wpsso' ).' ';
-							
+
 							$text .= __( 'If you select "0", then no images will be included in the Schema markup (<strong>not recommended</strong>).', 'wpsso' );
 
 							break;
