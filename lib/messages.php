@@ -1292,7 +1292,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_img_max':
 
-							$text = 'The maximum number of images to include in the Google / Schema markup -- this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content. If you select "0", then no images will be listed in the Google / Schema meta tags (<strong>not recommended</strong>).';
+							$text = __( 'The maximum number of images to include in the Google / Schema markup &mdash; this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content.', 'wpsso' ).' ';
+							
+							$text .= __( 'If you select "0", then no images will be included in the Schema markup (<strong>not recommended</strong>).', 'wpsso' );
 
 							break;
 
