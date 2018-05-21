@@ -405,32 +405,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved clearing of saved user notifications to the WordPress 'shutdown' action hook.
 	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
 
-**Version 3.57.1 (2018/04/14)**
-
-* *New Features*
-	* None
-* *Improvements*
-	* Added a check to set the Schema type as CollectionPage for post type archive pages.
-* *Bugfixes*
-	* None
-* *Developer Notes*
-	* Added a new 'wpsso_schema_type_for_post_type_archive_page' filter.
-
-**Version 3.57.0 (2018/04/05)**
-
-* *New Features*
-	* None
-* *Improvements*
-	* None
-* *Bugfixes*
-	* Fixed the post type "archive" page detection for post title and description.
-* *Developer Notes*
-	* Removed the 'is_post_archive' array element in the `$mod` variable.
-	* Changes for Gutenberg:
-		* Renamed the WpssoUtil do_table_rows() method to do_metabox_table().
-		* Renamed the WpssoUtil do_metabox_tabs() method to do_metabox_tabbed().
-		* Added new WpssoUtil get_metabox_table() and get_metabox_tabbed() methods.
-
 == Upgrade Notice ==
 
 = 4.3.2 =
