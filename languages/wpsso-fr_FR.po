@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.3.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-05-20 10:26-0600\n"
-"PO-Revision-Date: 2018-05-20 10:27-0600\n"
+"POT-Creation-Date: 2018-05-21 06:57-0600\n"
+"PO-Revision-Date: 2018-05-21 07:09-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1843,7 +1843,7 @@ msgstr "Extension d'ajout WPSSO Core pour fournir des balises méta Apple Store 
 #: lib/config-gettext-extract.php:160
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO)."
-msgstr "Extension d'ajout WPSSO Core pour fournir le balisage Schema BreadcrumbList en format JSON-LD pour Google et l'optimisation de recherche (SEO)."
+msgstr "Extension d'ajout WPSSO Core pour fournir le balisage de Schéma BreadcrumbList en format JSON-LD pour Google et l'optimisation de recherche (SEO)."
 
 #: lib/config-gettext-extract.php:161
 msgctxt "plugin description"
@@ -1888,7 +1888,7 @@ msgstr "Extension d'ajout WPSSO Core pour fournir des mises à jour pour l'exten
 #: lib/config-gettext-extract.php:169
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched."
-msgstr "Extension d'ajout WPSSO Core pour supprimer les Microdonnées de Schéma obsolète / incomplète, laissant le balisage Schéma JSON-LD recommandé par Google intact."
+msgstr "Extension d'ajout WPSSO Core pour supprimer les Microdonnées de Schéma obsolète / incomplète, laissant le balisage de Schéma JSON-LD recommandé par Google intact."
 
 #: lib/config-gettext-extract.php:170
 msgctxt "option value"
@@ -2112,7 +2112,7 @@ msgstr "Expiration cache rubriques d'article"
 #: lib/gpl/admin/advanced.php:273 lib/pro/admin/advanced.php:270
 msgctxt "option label"
 msgid "Schema JSON Data Cache Expiry"
-msgstr "Expiration cache données de Schéma"
+msgstr "Expiration cache données Schéma"
 
 #: lib/gpl/admin/advanced.php:279 lib/pro/admin/advanced.php:276
 msgctxt "option label"
@@ -2307,7 +2307,7 @@ msgstr "Forcer a jouer lorsque possible"
 #: lib/gpl/admin/meta.php:74 lib/gpl/admin/post.php:65
 #: lib/pro/admin/meta.php:83 lib/pro/admin/post.php:76
 msgid "Activate the %s add-on for additional Schema markup features and options."
-msgstr "Activer l'ajout %s pour plus de fonctions et options de balisage Schéma."
+msgstr "Activer l'ajout %s pour plus de fonctions et options de balisage de Schéma."
 
 #: lib/gpl/admin/meta.php:80 lib/gpl/admin/post.php:71
 #: lib/pro/admin/meta.php:89 lib/pro/admin/post.php:82
@@ -2355,7 +2355,7 @@ msgstr "URL canonique"
 #: lib/submenu/general.php:264
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
-msgstr "Données structurées / balises de Schéma"
+msgstr "Données structurées / balisage Schéma"
 
 #: lib/gpl/admin/meta.php:129 lib/gpl/admin/post.php:185
 #: lib/pro/admin/meta.php:141 lib/pro/admin/post.php:198
@@ -2446,7 +2446,7 @@ msgstr "Description du vidéo"
 #: lib/gpl/admin/meta.php:266 lib/pro/admin/meta.php:284
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
-msgstr "Données structurées / balises de Schéma / Pinterest"
+msgstr "Données structurées / balisage Schéma / Pinterest"
 
 #: lib/gpl/admin/post.php:80 lib/pro/admin/post.php:87
 msgctxt "option label"
@@ -2518,11 +2518,11 @@ msgstr "ajout de balises méta carte twitter"
 
 #: lib/head.php:608
 msgid "adding schema meta tags"
-msgstr "ajout de balises méta schéma"
+msgstr "ajout de balises méta de schéma"
 
 #: lib/head.php:615
 msgid "adding schema json-ld markup"
-msgstr "ajout de balisage schéma json-ld"
+msgstr "ajout de balisage de schéma json-ld"
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
 #: lib/loader.php:151
@@ -2711,7 +2711,7 @@ msgstr "%1$s du produit peut être utilisé dans les balises méta Open Graph de
 
 #: lib/messages.php:211
 msgid "The Schema markup for products with multiple variations will include all product variations with the specific %1$s of each variation."
-msgstr "Le balisage Schéma pour les produits à variations multiples inclura toutes les variations du produit avec %1$s spécifique de chaque variation."
+msgstr "Le balisage de Schéma pour les produits à variations multiples inclura toutes les variations du produit avec %1$s spécifique de chaque variation."
 
 #: lib/messages.php:217
 msgid "The maximum number of images to include in the Facebook / Open Graph meta tags."
@@ -2751,7 +2751,7 @@ msgstr "Si les valeurs de largeur et/ou de hauteur par défaut du vidéo sont in
 
 #: lib/messages.php:264
 msgid "Custom video embed HTML for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup."
-msgstr "Code HTML personnalisé de vidéo intégré pour le premier vidéo des balises méta Facebook / Open Graph et Twitter Card, et dans le balisage Schéma JSON-LD."
+msgstr "Code HTML personnalisé de vidéo intégré pour le premier vidéo des balises méta Facebook / Open Graph et Twitter Card, et dans le balisage de Schéma JSON-LD."
 
 #: lib/messages.php:266 lib/messages.php:274
 msgid "If the video is from a recognized external video service, an API connection will be made to retrieve additional information about the video."
@@ -2759,7 +2759,7 @@ msgstr "Si le vidéo provient d'un service vidéo externe reconnu, une connexion
 
 #: lib/messages.php:272
 msgid "A custom video URL for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup."
-msgstr "URL de vidéo personnalisé pour le premier vidéo des balises méta Facebook / Open Graph et Twitter Card, et dans le balisage Schéma JSON-LD."
+msgstr "URL de vidéo personnalisé pour le premier vidéo des balises méta Facebook / Open Graph et Twitter Card, et dans le balisage de Schéma JSON-LD."
 
 #: lib/messages.php:281
 msgid "The %1$s video API modules can offer a default video name / title and description, provided that information is available from the API service."
@@ -2767,11 +2767,11 @@ msgstr "Les modules d'API vidéo de %1$s peuvent offrir un nom / titre et une de
 
 #: lib/messages.php:283
 msgid "The video name / title and description will be used in the video Schema JSON-LD markup (add-on required)."
-msgstr "Le nom / titre et la description du vidéo seront utilisés dans le balisage vidéo Schema JSON-LD (ajout requis)."
+msgstr "Le nom / titre et la description du vidéo seront utilisés dans le balisage vidéo de Schéma JSON-LD (ajout requis)."
 
 #: lib/messages.php:289
 msgid "The maximum number of images to include in the Schema meta tags and JSON-LD markup."
-msgstr ""
+msgstr "Le nombre maximum d'images à inclure dans les balises méta et balisage JSON-LD de Schéma."
 
 #: lib/messages.php:295
 msgid "A custom image ID to include first in the Google / Schema meta tags and JSON-LD markup, before any featured, attached, or content images."
@@ -2855,15 +2855,15 @@ msgstr "L'image doit être au moins %s ou plus en largeur et en hauteur."
 
 #: lib/messages.php:452
 msgid "The maximum number of images to include in the Facebook / Open Graph meta tags &mdash; this includes the <em>featured</em> image, <em>attached</em> images, and any images found in the content."
-msgstr ""
+msgstr "Le nombre maximum d'images à inclure dans les balises méta Facebook / Open Graph &mdash; incluant les images <em>en vedette</em> ou <em>attachées</em>, ainsi que les images trouvées dans le contenu de l'article ou de la page."
 
 #: lib/messages.php:454
 msgid "If you select \"0\", then no images will be included in the Facebook / Open Graph meta tags (<strong>not recommended</strong>)."
-msgstr ""
+msgstr "Si vous sélectionnez \"0\", aucune image ne sera incluse dans les balises méta Facebook / Open Graph (<strong>non recommandé</strong>)."
 
 #: lib/messages.php:456
 msgid "If no images are available in your meta tags, social sites may choose any image from your webpage (including headers, sidebars, thumbnails, etc.)."
-msgstr ""
+msgstr "Si aucune image n'est disponible dans vos balises méta, les sites sociaux peuvent choisir n'importe quelle image de votre page Web (y compris les en-têtes, les encadrés, les miniatures, etc.)."
 
 #: lib/messages.php:495
 msgid "The default Open Graph type for the WordPress post object (posts, pages, and custom post types). Custom post types with a matching Open Graph type name (article, book, place, product, etc.) will use that type name instead of the default selected here. Please note that each type has a unique set of meta tags, so by selecting \"website\" here, you are excluding all \"article\" related meta tags (<code>article:author</code>, <code>article:section</code>, etc.)."
@@ -3195,7 +3195,7 @@ msgstr "Créer automatiquement les images manquantes ou incorrectes dans la bibl
 
 #: lib/messages.php:939
 msgid "When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you've defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored."
-msgstr "Lorsque cette option est activée, les images de pleine grandeur, utilisées pour les balises méta et balisage Schéma, doivent être égales (ou supérieur) aux dimensions d'image que vous avez définies dans les réglages %s &mdash; les images qui ne respectent pas, ou ne dépassent pas, les exigences minimales seront ignorées."
+msgstr "Lorsque cette option est activée, les images de pleine grandeur, utilisées pour les balises méta et balisage de Schéma, doivent être égales (ou supérieur) aux dimensions d'image que vous avez définies dans les réglages %s &mdash; les images qui ne respectent pas, ou ne dépassent pas, les exigences minimales seront ignorées."
 
 #: lib/messages.php:939
 msgid "<strong>Enabling this option is highly recommended</strong> &mdash; the option is disabled by default to avoid excessive warnings on sites with small / thumbnail images in their media library."
@@ -3477,7 +3477,7 @@ msgstr "La longueur doit être au moins %1$d caractères ou plus (la valeur par 
 
 #: lib/messages.php:1244
 msgid "%s can include an <em>author</em> link URL in the head section for Google."
-msgstr "%s peut inclure une URL de lien <em>auteur</em> dans la section d'en-tête pour Google."
+msgstr "%s peut inclure un URL de lien <em>auteur</em> dans la section d'en-tête pour Google."
 
 #: lib/messages.php:1244
 msgid "Select the user profile contact field to use for the <em>author</em> link value."
@@ -3485,7 +3485,7 @@ msgstr "Sélectionnez le champ de contact du profil utilisateur à utiliser pour
 
 #: lib/messages.php:1273
 msgid "Include WebSite, Organization, and/or Person Schema markup in the front page for Google's <em>Knowledge Graph</em>."
-msgstr "Inclure le balisage Schéma de site Web, d'Organisation, et/ou de Personne dans la page d'avant pour le <em>Knowledge Graph</em> de Google."
+msgstr "Inclure le balisage de Schéma WebSite, Organisation et/ou de Personne dans la page d'avant pour le <em>Knowledge Graph</em> de Google."
 
 #: lib/messages.php:1273
 msgid "The WebSite markup includes the site name, alternate site name, site URL and search query URL."
@@ -3522,20 +3522,20 @@ msgid "Editor"
 msgstr "Éditeur"
 
 #: lib/messages.php:1285
-msgid "A URL for this organization's logo image that Google can use in search results and its <em>Knowledge Graph</em>."
-msgstr ""
+msgid "A URL for this organization's logo image that Google can use in its search results and <em>Knowledge Graph</em>."
+msgstr "L'URL pour l'image du logo de cette organisation que Google peut utiliser dans ces résultats de recherche et <em>Knowledge Graph</em>."
 
 #: lib/messages.php:1291
 msgid "A URL for this organization's banner image &mdash; <strong>measuring exactly 600x60px</strong> &mdash; that Google News can use for Schema Article content from this publisher."
-msgstr "L'URL d'image de bannière pour cette organisation &mdash; <strong>mesurant exactement 600x60px</strong> &mdash; que Google News peut utiliser pour le contenu Schema d'Article de cet éditeur."
+msgstr "L'URL d'image de bannière pour cette organisation &mdash; <strong>mesurant exactement 600x60px</strong> &mdash; que Google News peut utiliser pour le contenu Schéma d'Article de cet éditeur."
 
 #: lib/messages.php:1297
-msgid "The maximum number of images to include in the Google / Schema markup &mdash; this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content."
-msgstr ""
+msgid "The maximum number of images to include in the Schema markup &mdash; this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content."
+msgstr "Le nombre maximum d'images à inclure dans le balisage de Schéma &mdash; incluant les images <em>en vedette</em> ou <em>attachées</em>, ainsi que les images trouvées dans le contenu de l'article ou de la page."
 
 #: lib/messages.php:1299
 msgid "If you select \"0\", then no images will be included in the Schema markup (<strong>not recommended</strong>)."
-msgstr ""
+msgstr "Si vous sélectionnez \"0\", aucune image ne sera incluse dans le balisage de Schéma (<strong>non recommandé</strong>)."
 
 #: lib/messages.php:1321
 msgid "Select an <em>%1$s</em> for the author / Person markup, or \"[None]\" to disable this feature (the recommended value is \"Display Name\")."
@@ -3740,7 +3740,7 @@ msgstr "Entrez vos informations de contact personnelles sur <a href=\"%1$s\">la 
 
 #: lib/messages.php:1753
 msgid "%s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, Google Rich Card / SEO meta tags to the <code>&lt;head&gt;</code> section of your webpages."
-msgstr "%s ajoute les balises méta Facebook, Open Graph, Twitter, Schema, Pinterest, Google Rich Card / SEO suivantes dans la section <code>&lt;head&gt;</code> de vos pages Web."
+msgstr "%s ajoute les balises méta Facebook, Open Graph, Twitter, Schéma, Pinterest, Google Rich Card / SEO suivantes dans la section <code>&lt;head&gt;</code> de vos pages Web."
 
 #: lib/messages.php:1755
 msgid "If your theme or another plugin already creates one or more of these meta tags, you can uncheck them here to prevent duplicates from being added."
@@ -3849,7 +3849,7 @@ msgstr "Une balise méta Open Graph d'image n'a pas pu être générée à parti
 
 #: lib/messages.php:1951
 msgid "A Schema image property could not be generated from this webpage content or its custom %s settings. Google <em>requires at least one image property</em> for this Schema item type."
-msgstr "Un balisage Schéma d'image n'a pas pu être générée à partir de ce contenu ou ces réglages personnalisés d'%s. Google <em>exige au moins une propriété d'image</em> pour ce type de Schéma."
+msgstr "Un balisage de Schéma d'image n'a pas pu être générée à partir de ce contenu ou de ces réglages personnalisés d'%s. Google <em>exige au moins une propriété d'image</em> pour ce type de Schéma."
 
 #: lib/messages.php:1964
 msgid "The %1$s advanced option is currently disabled."

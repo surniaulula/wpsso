@@ -1021,7 +1021,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Include WebSite, Organization, and/or Person markup on the home page.
+			 * Include WebSite, Organization and/or Person markup on the home page.
 			 * Note that the custom 'site_org_type' may be a sub-type of organization, 
 			 * and may be filtered as a local.business.
 			 */

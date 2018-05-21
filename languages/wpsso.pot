@@ -3950,7 +3950,7 @@ msgstr ""
 
 #: lib/messages.php:1273
 msgid ""
-"Include WebSite, Organization, and/or Person Schema markup in the front page "
+"Include WebSite, Organization and/or Person Schema markup in the front page "
 "for Google's <em>Knowledge Graph</em>."
 msgstr ""
 
@@ -4000,8 +4000,8 @@ msgstr ""
 
 #: lib/messages.php:1285
 msgid ""
-"A URL for this organization's logo image that Google can use in search "
-"results and its <em>Knowledge Graph</em>."
+"A URL for this organization's logo image that Google can use in its search "
+"results and <em>Knowledge Graph</em>."
 msgstr ""
 
 #: lib/messages.php:1291
@@ -4013,9 +4013,9 @@ msgstr ""
 
 #: lib/messages.php:1297
 msgid ""
-"The maximum number of images to include in the Google / Schema markup "
-"&mdash; this includes the <em>featured</em> or <em>attached</em> images, and "
-"any images found in the Post or Page content."
+"The maximum number of images to include in the Schema markup &mdash; this "
+"includes the <em>featured</em> or <em>attached</em> images, and any images "
+"found in the Post or Page content."
 msgstr ""
 
 #: lib/messages.php:1299
