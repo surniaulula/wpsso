@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.3.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-05-21 06:57-0600\n"
-"PO-Revision-Date: 2018-05-21 07:09-0600\n"
+"POT-Creation-Date: 2018-05-21 12:54-0600\n"
+"PO-Revision-Date: 2018-05-21 12:55-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3484,7 +3484,8 @@ msgid "Select the user profile contact field to use for the <em>author</em> link
 msgstr "Sélectionnez le champ de contact du profil utilisateur à utiliser pour la valeur du lien <em>author</em>."
 
 #: lib/messages.php:1273
-msgid "Include WebSite, Organization, and/or Person Schema markup in the front page for Google's <em>Knowledge Graph</em>."
+#, fuzzy
+msgid "Include WebSite, Organization and/or Person Schema markup in the front page for Google's <em>Knowledge Graph</em>."
 msgstr "Inclure le balisage de Schéma WebSite, Organisation et/ou de Personne dans la page d'avant pour le <em>Knowledge Graph</em> de Google."
 
 #: lib/messages.php:1273
