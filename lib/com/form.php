@@ -1003,7 +1003,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( ! empty( $this->options[$name . '_width'] ) && ! empty( $this->options[$name . '_height'] ) ) {
 
-				return $this->options[$name . '_width'] . 'x' . $this->options[$name . '_height'] . 'px'
+				return $this->options[$name . '_width'] . 'x' . $this->options[$name . '_height'] . 'px' .
 					( $this->options[$name . '_crop'] ? ' cropped' : '' );
 
 			} elseif ( true === $use_opts ) {
@@ -1299,7 +1299,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				} else {
 					$tooltip_index = 'tooltip-' . $css_id;
 				}
-				$tooltip_text = $this->p->msgs->get( $tooltip_index, $atts );	// text is esc_attr()
+				$tooltip_text = $this->p->msgs->get( $tooltip_index, $atts );	// Text is esc_attr().
 			} else {
 				$tooltip_text = '';
 			}
