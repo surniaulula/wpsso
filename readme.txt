@@ -14,7 +14,7 @@ Tested Up To: 4.9.6
 WC Tested Up To: 3.3.5
 Stable Tag: 4.3.1
 
-Complete meta tags and Schema markup from your content for Social Sharing, Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.
+Complete meta tags and Schema markup from your content for Social Sharing, Google's Knowledge Graph & Rich Cards (SEO), Pinterest Rich Pins and more.
 
 == Description ==
 
@@ -321,7 +321,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.3.2-b.1 (2018/05/20)**
+**Version 4.3.2-rc.1 (2018/05/21)**
 
 * *New Features*
 	* None
@@ -433,9 +433,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.3.2-b.1 =
+= 4.3.2-rc.1 =
 
-(2018/05/20) Added a new "Video Dimensions" option in the SSO metabox to customize the video dimension values.
+(2018/05/21) Added a new "Video Dimensions" option in the SSO metabox to customize the video dimension values.
 
 = 4.3.1 =
 
