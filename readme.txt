@@ -321,7 +321,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.3.2-rc.1 (2018/05/21)**
+**Version 4.3.2 (2018/05/21)**
 
 * *New Features*
 	* None
@@ -433,11 +433,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.3.2-rc.1 =
+= 4.3.2 =
 
 (2018/05/21) Added a new "Video Dimensions" option in the SSO metabox to customize the video dimension values.
-
-= 4.3.1 =
-
-(2018/05/17) Added support for MP4 videos as a valid "twitter:player" meta tag value. Added extra checks for several PHP 'mbstring' functions.
 
