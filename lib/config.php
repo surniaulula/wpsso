@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.3.2',		// Plugin version.
+					'version' => '4.4.0-dev.1',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -105,7 +105,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'marketpress' => '(plugin) MarketPress',
 								'woocommerce' => '(plugin) WooCommerce',
 								'wpecommerce' => '(plugin) WP eCommerce',
-								'yotpowc' => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
 							'event' => array(
 								'tribe_events' => '(plugin) The Events Calendar',
@@ -131,6 +130,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wistia' => '(api) Wistia Video API',
 								'wpvideo' => '(api) WordPress Video Shortcode',
 								'youtube' => '(api) YouTube Video / Playlist API',
+							),
+							'rating' => array(
+								'wppostratings' => '(plugin) WP-PostRatings',
+								'yotpowc' => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
 							'seo' => array(
 								'aioseop' => '(plugin) All in One SEO Pack',

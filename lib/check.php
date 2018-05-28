@@ -77,9 +77,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'ecom-wpecommerce':
 							$chk['class'] = 'WP_eCommerce';
 							break;
-						case 'ecom-yotpowc':				// yotpo-social-reviews-for-woocommerce
-							$chk['function'] = 'wc_yotpo_init';
-							break;
 						case 'event-tribe_events':
 							$chk['class'] = 'Tribe__Events__Main';
 							break;
@@ -100,6 +97,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							break;
 						case 'media-rtmedia':
 							$chk['plugin'] = 'buddypress-media/index.php';
+							break;
+						case 'rating-wppostratings':			// wp-postratings
+							$chk['constant'] = 'WP_POSTRATINGS_VERSION';
+							break;
+						case 'rating-yotpowc':				// yotpo-social-reviews-for-woocommerce
+							$chk['function'] = 'wc_yotpo_init';
 							break;
 						case 'seo-aioseop':
 							$chk['function'] = 'aioseop_init_class'; // Free and pro versions.
@@ -195,12 +198,16 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					 * which have different plugin slugs, but use the same class / function names.
 					 */
 					if ( ! empty( $chk ) ) {
+
 						if ( isset( $chk['class'] ) || isset( $chk['function'] ) || isset( $chk['plugin'] ) ) {
+
 							if ( ( ! empty( $chk['class'] ) && class_exists( $chk['class'] ) ) ||
 								( ! empty( $chk['function'] ) && function_exists( $chk['function'] ) ) ||
 								( ! empty( $chk['plugin'] ) && SucomUtil::active_plugins( $chk['plugin'] ) ) ) {
 
-								// check if an option value is also required
+								/**
+								 * Check if an option value is also required.
+								 */
 								if ( isset( $chk['optval'] ) ) {
 									if ( $this->has_optval( $chk['optval'] ) ) {
 										$avail[$sub]['*'] = $avail[$sub][$id] = true;
@@ -209,8 +216,16 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									$avail[$sub]['*'] = $avail[$sub][$id] = true;
 								}
 							}
-						} if ( isset( $chk['optval'] ) ) {
+
+						} elseif ( isset( $chk['optval'] ) ) {
+
 							if ( $this->has_optval( $chk['optval'] ) ) {
+								$avail[$sub]['*'] = $avail[$sub][$id] = true;
+							}
+
+						} elseif ( isset( $chk['constant'] ) ) {
+
+							if ( defined( $chk['constant'] ) ) {
 								$avail[$sub]['*'] = $avail[$sub][$id] = true;
 							}
 						}

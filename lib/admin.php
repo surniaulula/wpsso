@@ -2068,12 +2068,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					__( 'Modules', 'seo-ultimate' ) . '</a>';
 
 				if ( ! empty( $opts['modules'] ) && is_array( $opts['modules'] ) ) {
+
 					if ( array_key_exists( 'opengraph', $opts['modules'] ) && $opts['modules']['opengraph'] !== -10 ) {
+
+						// translators: please ignore - translation uses a 3rd party text domain
+						$label_transl = '<strong>' . __( 'Open Graph Integrator', 'seo-ultimate' ) . '</strong>';
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'seo ultimate opengraph module is enabled' );
 						}
-						// translators: please ignore - translation uses a 3rd party text domain
-						$label_transl = '<strong>' . __( 'Open Graph Integrator', 'seo-ultimate' ) . '</strong>';
+
 						$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s module in the %2$s settings page.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
@@ -2107,10 +2111,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'sq_auto_twitter' => '"<strong>' . __( 'Add the Twitter card in your tweets.',
 						'wpsso' ) . '</strong>"',
 				) as $opt_key => $label_transl ) {
+
 					if ( ! empty( $opts[$opt_key] ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
 						}
+
 						$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s metabox.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
@@ -2133,10 +2140,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( array(
 					'sq_auto_jsonld' => '"<strong>' . __( 'adds the Json-LD metas for Semantic SEO', 'wpsso' ) . '</strong>"',
 				) as $opt_key => $label_transl ) {
+
 					if ( ! empty( $opts[$opt_key] ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
 						}
+
 						$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s metabox.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
@@ -2253,6 +2263,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre . 'wpmetaseo metaseo_showsocial option is enabled' );
 					}
+
 					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option under the %2$s settings tab.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
@@ -2323,6 +2334,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre . 'wpseo opengraph option is enabled' );
 					}
+
 					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option under the %2$s settings tab.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
@@ -2366,6 +2378,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre . 'wpseo twitter option is enabled' );
 					}
+
 					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option under the %2$s settings tab.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
