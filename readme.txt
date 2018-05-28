@@ -139,6 +139,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 		* WordPress REST API (version 2)
 		* WP eCommerce
 		* WP Meta SEO
+		* WP-PostRatings
 		* Yoast SEO (aka WordPress SEO)
 		* Yotpo Social Reviews for WooCommerce
 
@@ -321,6 +322,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.4.0-dev.1 (2018/05/28)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added support for aggregate rating values from the WP-PostRatings plugin (Pro version).
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 4.3.2 (2018/05/21)**
 
 * *New Features*
@@ -406,6 +418,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
 
 == Upgrade Notice ==
+
+= 4.4.0-dev.1 =
+
+(2018/05/28) Added support for aggregate rating values from the WP-PostRatings plugin (Pro version).
 
 = 4.3.2 =
 
