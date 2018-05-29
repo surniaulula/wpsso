@@ -113,7 +113,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 
 * Allows customization of field names, labels, and add / remove contacts on user profile pages and Co-Authors Plus guest author profiles.
 
-* Optional URL shortening with Bitly, Google, Ow.ly, TinyURL, or YOURLS.
+* Optional URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
 * Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more.
 
@@ -146,6 +146,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 	* **Integration with Service APIs**
 
 		* Bitly
+		* DLMY.App
 		* Facebook Embedded Videos
 		* Google URL Shortener
 		* Gravatar (Author Image)
@@ -322,11 +323,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.4.0-dev.1 (2018/05/28)**
+**Version 4.4.0-dev.2 (2018/05/29)**
 
 * *New Features*
 	* None
 * *Improvements*
+	* Added support for the DLMY.App URL shortening service (Pro version).
 	* Added support for aggregate rating values from the WP-PostRatings plugin (Pro version).
 * *Bugfixes*
 	* None
@@ -419,9 +421,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.4.0-dev.1 =
+= 4.4.0-dev.2 =
 
-(2018/05/28) Added support for aggregate rating values from the WP-PostRatings plugin (Pro version).
+(2018/05/29) Added support for the DLMY.App URL shortening service (Pro version). Added support for aggregate rating values from the WP-PostRatings plugin (Pro version).
 
 = 4.3.2 =
 
