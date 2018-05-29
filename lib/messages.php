@@ -1087,68 +1087,106 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * 'Service APIs' (URL Shortening) settings
 						 */
 						case 'tooltip-plugin_shortener':
+
 							$text = sprintf( __( 'A preferred URL shortening service for %s plugin filters and/or add-ons that may need to shorten URLs &mdash; don\'t forget to define the service API keys for the URL shortening service of your choice.', 'wpsso' ), $info['short'] );
+
 							break;
 
 						case 'tooltip-plugin_min_shorten':
+
 							$text = sprintf( __( 'URLs shorter than this length will not be shortened (the default suggested by Twitter is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'plugin_min_shorten' ) );
+
 							break;
 
 						case 'tooltip-plugin_wp_shortlink':
+
 							$text = sprintf( __( 'Use the shortened sharing URL for the <em>Get Shortlink</em> button in admin editing pages, along with the "%s" HTML tag value.', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' );
+
 							break;
 
 						case 'tooltip-plugin_add_link_rel_shortlink':
+
 							$text = sprintf( __( 'Add a "%s" HTML tag for social crawlers and web browsers to the head section of webpages.', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' );
+
 							break;
 
 						case 'tooltip-plugin_bitly_login':
+
 							$text = __( 'The Bitly username to use with the Generic Access Token or API Key (deprecated).', 'wpsso' );
+
 							break;
 
 						case 'tooltip-plugin_bitly_access_token':
+
 							$text = sprintf( __( 'The Bitly shortening service requires a <a href="%s">Generic Access Token</a> or API Key (deprecated) to shorten URLs.', 'wpsso' ), 'https://bitly.com/a/oauth_apps' );
+
 							break;
 
 						case 'tooltip-plugin_bitly_api_key':
+
 							$text = sprintf( __( 'The Bitly <a href="%s">API Key</a> authentication method has been deprecated by Bitly.', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
+
 							break;
 
 						case 'tooltip-plugin_bitly_domain':
+
 							$text = __( 'An optional Bitly short domain to use; either bit.ly, j.mp, bitly.com, or another custom short domain. If no value is entered here, the short domain selected in your Bitly account settings will be used.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_dlmyapp_api_key':
+
+							$text = sprintf( __( 'The DLMY.App secret <a href="%s">API Key</a> can be found in the DLMY.App user account &gt; Tools &gt; Developer API webpage.', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
+
 							break;
 
 						case 'tooltip-plugin_google_api_key':
+
 							$text = sprintf( __( 'The Google Project API Key for this website / project. If you don\'t already have a Google project for your website, visit the <a href="%s">Google APIs developers console</a> and create a new project for your website.', 'wpsso' ), 'https://console.developers.google.com/apis/dashboard' );
+
 							break;
 
 						case 'tooltip-plugin_google_shorten':
+
 							$text = sprintf( __( 'In order to use Google\'s URL Shortener API service, you must <em>Enable</em> the URL Shortener API service from the <a href="%s">Google APIs developers console</a> (under the project\'s <em>Dashboard</em> settings page).', 'wpsso' ), 'https://console.developers.google.com/apis/dashboard' ).' '.__( 'Confirm that you have enabled Google\'s URL Shortener API service by checking the "Yes" option value.', 'wpsso' );
+
 							break;
 
 						case 'tooltip-plugin_owly_api_key':
+
 							$text = sprintf( __( 'To use Ow.ly as your preferred shortening service, you must provide the Ow.ly API Key for this website (complete this form to <a href="%s">Request Ow.ly API Access</a>).', 'wpsso' ), 'https://docs.google.com/forms/d/1Fn8E-XlJvZwlN4uSRNrAIWaY-nN_QA3xAHUJ7aEF7NU/viewform' );
+
 							break;
 
 						case 'tooltip-plugin_yourls_api_url':
+
 							$text = sprintf( __( 'The URL to <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service.', 'wpsso' ), 'http://yourls.org/' );
 							break;
 
 						case 'tooltip-plugin_yourls_username':
+
 							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured username (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'http://yourls.org/' );
+
 							break;
 
 						case 'tooltip-plugin_yourls_password':
+
 							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured user password (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'http://yourls.org/' );
+
 							break;
 
 						case 'tooltip-plugin_yourls_token':
+
 							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination.', 'wpsso' ), 'http://yourls.org/' );
+
 							break;
 
 						default:
+
 							$text = apply_filters( $lca.'_messages_tooltip_plugin', $text, $idx, $info );
+
 							break;
+
 					}	// end of tooltip-plugin switch
 				/**
 				 * Publisher 'Facebook' settings

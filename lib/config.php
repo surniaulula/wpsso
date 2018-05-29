@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.4.0-dev.1',		// Plugin version.
+					'version' => '4.4.0-dev.2',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -1018,6 +1018,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_bitly_access_token' => '',
 					'plugin_bitly_api_key' => '',
 					'plugin_bitly_domain' => '',
+					'plugin_dlmyapp_api_key' => '',
 					'plugin_google_api_key' => '',			// Google Project API Key.
 					'plugin_google_shorten' => 0,			// URL Shortener API is Enabled.
 					'plugin_owly_api_key' => '',
@@ -1542,6 +1543,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'shorteners' => array(
 					'none'    => '[None]',
 					'bitly'   => 'Bitly (suggested)',
+					'dlmyapp'   => 'DLMY.App',
 					'googl'   => 'Google',
 					'owly'    => 'Ow.ly',
 					'tinyurl' => 'TinyURL',

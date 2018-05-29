@@ -27,6 +27,7 @@ _x( '(default)', 'option value', 'wpsso' );
 _x( 'Development and Up', 'option value', 'wpsso' );
 _x( 'Discontinued', 'option value', 'wpsso' );
 _x( 'Display Name', 'option value', 'wpsso' );
+_x( 'DLMY.App', 'option value', 'wpsso' );
 _x( 'Essential', 'lib file description', 'wpsso' );
 _x( 'Every day', 'option value', 'wpsso' );
 _x( 'Every five days', 'option value', 'wpsso' );
