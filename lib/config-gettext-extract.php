@@ -118,7 +118,7 @@ _x( 'Shortened URLs', 'option label', 'wpsso' );
 _x( 'Skype Username', 'option value', 'wpsso' );
 _x( 'Slideshare Presentations', 'option value', 'wpsso' );
 _x( 'Social and Search Image Dimensions', 'lib file description', 'wpsso' );
-_x( 'Social and Search Optimization', 'metabox title', 'wpsso' );
+_x( 'Social and Search Optimization (SSO)', 'metabox title', 'wpsso' );
 _x( 'Sold Out', 'option value', 'wpsso' );
 _x( 'Soundcloud Business Page URL', 'option value', 'wpsso' );
 _x( 'Soundcloud Tracks', 'option value', 'wpsso' );

@@ -1723,9 +1723,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	$text = '<p class="top">';
 
-							$text .= sprintf( __( 'An example link share on Facebook &mdash; the image shown uses the Facebook minimum image dimensions of %s.', 'wpsso' ), $fb_img_dims ).' ';
-
-							$text .= __( 'Actual link shares on Facebook and other social sites may look significantly different than this example (depending on the device, resolution, orientation, etc.).', 'wpsso' );
+							$text .= sprintf( __( 'An example link share on Facebook &ndash; the image container in this example uses the Facebook minimum image dimensions of %s.', 'wpsso' ), $fb_img_dims );
 
 							$text .= '</p>';
 

@@ -1405,7 +1405,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'meta' => array(			// post, term, user add_meta_box() settings
 				'id' => 'sso',
-				'title' => 'Social and Search Optimization',
+				'title' => 'Social and Search Optimization (SSO)',
 			),
 			'edit' => array(			// post, term, user lists
 				'columns' => array(
