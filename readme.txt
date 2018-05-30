@@ -323,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.4.0-dev.2 (2018/05/29)**
+**Version 4.4.0-b.1 (2018/05/29)**
 
 * *New Features*
 	* None
@@ -331,7 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added support for the DLMY.App URL shortening service (Pro version).
 	* Added support for aggregate rating values from the WP-PostRatings plugin (Pro version).
 * *Bugfixes*
-	* None
+	* Fixed an image URL in the Setup Guide.
 * *Developer Notes*
 	* None
 
@@ -421,7 +421,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.4.0-dev.2 =
+= 4.4.0-b.1 =
 
 (2018/05/29) Added support for the DLMY.App URL shortening service (Pro version). Added support for aggregate rating values from the WP-PostRatings plugin (Pro version).
 
