@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>Social and Search Optimization SEO for Facebook, Google, Pinterest, Twitter and More</h3>
+<h1>WPSSO Core</h1><h3>Advanced Social and Search SEO for Facebook, Google, Pinterest, Twitter and More</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
