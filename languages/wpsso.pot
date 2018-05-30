@@ -2651,7 +2651,7 @@ msgstr ""
 
 #: lib/loader.php:174
 msgid ""
-"The installed plugin may be incomplete or the web server cannot access the "
+"The installed plugin is incomplete or the web server cannot access the "
 "library file."
 msgstr ""
 

@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									$this->p->debug->log( $log_prefix . 'library class name is not available' );
 								}
 
-								$suffix_msg = __( 'The installed plugin may be incomplete or the web server cannot access the library file.',
+								$suffix_msg = __( 'The installed plugin is incomplete or the web server cannot access the library file.',
 									'wpsso' );
 
 								if ( is_admin() && is_object( $this->p->notice ) ) {
