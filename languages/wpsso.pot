@@ -3783,8 +3783,8 @@ msgstr ""
 
 #: lib/messages.php:1139
 msgid ""
-"The DLMY.App secret <a href=\"%s\">API Key</a> can be found in the DLMY.App "
-"user account &gt; Tools &gt; Developer API webpage."
+"The DLMY.App secret API Key can be found in the DLMY.App user account &gt; "
+"Tools &gt; Developer API webpage."
 msgstr ""
 
 #: lib/messages.php:1145

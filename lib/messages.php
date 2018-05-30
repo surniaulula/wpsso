@@ -1136,7 +1136,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_dlmyapp_api_key':
 
-							$text = sprintf( __( 'The DLMY.App secret <a href="%s">API Key</a> can be found in the DLMY.App user account &gt; Tools &gt; Developer API webpage.', 'wpsso' ), 'https://bitly.com/a/your_api_key' );
+							$text = __( 'The DLMY.App secret API Key can be found in the DLMY.App user account &gt; Tools &gt; Developer API webpage.', 'wpsso' );
 
 							break;
 
