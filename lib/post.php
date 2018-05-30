@@ -247,7 +247,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				// translators: %s is the short plugin name
 				$error_prefix = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
-				SucomUtil::safe_trigger_error( $error_prefix . ' ' . rtrim( $error_msg, '.' ), E_USER_WARNING );
+
+				SucomUtil::safe_trigger_error( $error_prefix . ' ' . $error_msg, E_USER_WARNING );
 			}
 
 			if ( $this->p->debug->enabled ) {

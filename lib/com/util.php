@@ -850,12 +850,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( ! function_exists( 'get_plugins' ) ) {
+
 				$plugin_lib = trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin.php';
+
 				if ( file_exists( $plugin_lib ) ) {
 					require_once $plugin_lib;
 				} else {
 					$error_msg = sprintf( 'The WordPress %s library file is missing and required.', $plugin_lib );
-					self::safe_trigger_error( sprintf( '%s error:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_ERROR );
+
+					self::safe_trigger_error( sprintf( '%s error:', __METHOD__ ) . ' ' . $error_msg, E_USER_ERROR );
 				}
 			}
 
@@ -863,7 +866,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return self::$cache_wp_plugins = get_plugins();
 			} else {
 				$error_msg = sprintf( 'The WordPress %s function is missing and required.', 'get_plugins()' );
-				self::safe_trigger_error( sprintf( '%s error:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_ERROR );
+
+				self::safe_trigger_error( sprintf( '%s error:', __METHOD__ ) . ' ' . $error_msg, E_USER_ERROR );
 			}
 
 			return self::$cache_wp_plugins = array();
@@ -1914,14 +1918,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function array_parent_index( array $arr, $parent_key = '', $gparent_key = '', &$index = array() ) {
 		        foreach ( $arr as $child_key => $value ) {
+
 				if ( isset( $index[$child_key] ) ) {
+
 					$error_msg = sprintf( 'Duplicate child key "%s" = "%s".', $child_key, $index[$child_key] );
-					self::safe_trigger_error( sprintf( '%s warning:', __METHOD__ ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
+
+					self::safe_trigger_error( sprintf( '%s warning:', __METHOD__ ) . ' ' . $error_msg, E_USER_WARNING );
+
 				} elseif ( is_array( $value ) ) {
+
 					self::array_parent_index( $value, $child_key, $parent_key, $index );
+
 				} elseif ( $parent_key && $child_key !== $parent_key ) {
+
 					$index[$child_key] = $parent_key;
+
 				} elseif ( $gparent_key && $child_key === $parent_key ) {
+
 					$index[$child_key] = $gparent_key;
 				}
 			}
@@ -1929,12 +1942,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function has_array_element( $needle, array $arr, $strict = false ) {
+
 			foreach ( $arr as $key => $element ) {
+
 				if ( ( $strict ? $element === $needle : $element == $needle ) ||
 					( is_array( $element ) && self::has_array_element( $needle, $element, $strict ) ) ) {
+
 					return true;
 				}
 			}
+
 			return false;
 		}
 
@@ -1954,21 +1971,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_first_last_next_nums( array $input ) {
-			$keys = array_keys( $input );
+
+			$keys  = array_keys( $input );
 			$count = count( $keys );
+
 			if ( $count && ! is_numeric( implode( $keys ) ) ) { // Check for non-numeric keys.
+
 				$keys = array();
+
 				foreach ( $input as $key => $value ) { // Keep only the numeric keys.
 					if ( is_numeric( $key ) ) {
 						$keys[] = $key;
 					}
 				}
+
 				$count = count( $keys );
 			}
-			sort( $keys );                          // Sort numerically.
-			$first = (int) reset( $keys );          // Get the first number.
-			$last = (int) end( $keys );             // Get the last number.
-			$next = $count ? $last + 1 : $last;     // Next is 0 (not 1) for an empty array.
+
+			sort( $keys ); // Sort numerically.
+
+			$first = (int) reset( $keys );       // Get the first number.
+			$last  = (int) end( $keys );         // Get the last number.
+			$next  = $count ? $last + 1 : $last; // Next is 0 (not 1) for an empty array.
+
 			return array( $first, $last, $next );
 		}
 

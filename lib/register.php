@@ -225,9 +225,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					'wpsso' ), $plugin_name, $app_label, $min_version );
 
 				if ( method_exists( 'SucomUtil', 'safe_trigger_error' ) ) {
+
 					// translators: %s is the short plugin name
 					$error_prefix = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
-					SucomUtil::safe_trigger_error( $error_prefix.' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
+
+					SucomUtil::safe_trigger_error( $error_prefix . ' ' . $error_msg, E_USER_WARNING );
 				}
 
 				wp_die( 

@@ -28,7 +28,10 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 		private function mod_load( $has_action = false ) {
 
 			if ( is_admin() ) {
-				// save time on known admin pages we don't modify
+
+				/**
+				 * Save time on known admin pages we don't modify.
+				 */
 				switch ( basename( $_SERVER['PHP_SELF'] ) ) {
 					case 'index.php':		// Dashboard
 					case 'edit-comments.php':	// Comments
@@ -43,9 +46,11 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'load modules' );	// begin timer
+
+				$this->p->debug->mark( 'load modules' );	// Begin timer.
+
 				if ( $has_action ) {
-					$this->p->debug->log( 'loading modules for action '.$has_action );
+					$this->p->debug->log( 'loading modules for action ' . $has_action );
 				} else {
 					$this->p->debug->log( 'no action provided to filter module keys' );
 				}
@@ -58,24 +63,24 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 				if ( ! isset( $info['lib'][$type] ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $ext.' lib/'.$type.' not defined' );
+						$this->p->debug->log( $ext . ' lib/' . $type . ' not defined' );
 					}
 					continue;
 				}
 
 				foreach ( $info['lib'][$type] as $sub => $libs ) {
 
-					$log_prefix = 'loading '.$ext.' '.$type.'/'.$sub.': ';
+					$log_prefix = 'loading ' . $ext . ' ' . $type . '/' . $sub . ': ';
 
 					if ( $sub === 'admin' ) {
 						if ( ! is_admin() ) {	// load admin sub-folder only in back-end
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $log_prefix.'ignored - not in admin back-end' );
+								$this->p->debug->log( $log_prefix . 'ignored - not in admin back-end' );
 							}
 							continue;
 						} elseif ( $type === 'gpl' && ! empty( $this->p->options['plugin_hide_pro'] ) ) {
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $log_prefix.'ignored - pro features hidden' );
+								$this->p->debug->log( $log_prefix . 'ignored - pro features hidden' );
 							}
 							continue;
 						}
@@ -91,7 +96,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 						 */
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $lib_name );
 
-						$log_prefix = 'loading '.$ext.' '.$type.'/'.$sub.'/'.$id.': ';
+						$log_prefix = 'loading ' . $ext . ' ' . $type . '/' . $sub . '/' . $id . ': ';
 
 						if ( $this->p->avail[$sub][$id] ) {
 
@@ -101,13 +106,13 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 							 */
 							if ( $action !== $has_action ) {
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( $log_prefix.'ignored for action '.$has_action );
+									$this->p->debug->log( $log_prefix . 'ignored for action ' . $has_action );
 								}
 								continue;
 							}
 
-							$lib_path = $type.'/'.$sub.'/'.$id;
-							$classname = apply_filters( $ext.'_load_lib', false, $lib_path );
+							$lib_path  = $type . '/' . $sub . '/' . $id;
+							$classname = apply_filters( $ext . '_load_lib', false, $lib_path );
 
 							if ( is_string( $classname ) ) {
 
@@ -119,12 +124,12 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									if ( $ext === $this->p->lca ) {
 
 										if ( $this->p->debug->enabled ) {
-											$this->p->debug->log( $log_prefix.'new library module for '.$classname );
+											$this->p->debug->log( $log_prefix . 'new library module for ' . $classname );
 										}
 										if ( ! isset( $this->p->m[$sub][$id] ) ) {
 											$this->p->m[$sub][$id] = new $classname( $this->p );
 										} elseif ( $this->p->debug->enabled ) {
-											$this->p->debug->log( $log_prefix.'library module already defined' );
+											$this->p->debug->log( $log_prefix . 'library module already defined' );
 										}
 
 									/**
@@ -136,14 +141,14 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 									} elseif ( $this->p->debug->enabled ) {
 
-										$this->p->debug->log( $log_prefix.'library ext module already defined' );
+										$this->p->debug->log( $log_prefix . 'library ext module already defined' );
 
 									}
 
 								} else {
 
 									if ( $this->p->debug->enabled ) {
-										$this->p->debug->log( $log_prefix.'library class "'.$classname.'" is missing' );
+										$this->p->debug->log( $log_prefix . 'library class "' . $classname . '" is missing' );
 									}
 
 									if ( is_admin() && is_object( $this->p->notice ) ) {
@@ -156,38 +161,43 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									$error_msg = sprintf( __( 'Library class "%s" is missing.', 'wpsso' ), $classname );
 
 									// translators: %s is the short plugin name
-									SucomUtil::safe_trigger_error( sprintf( __( '%s warning:', 'wpsso' ),
-										$info['short'] ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
+									SucomUtil::safe_trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ) . ' ' .
+										$error_msg, E_USER_WARNING );
 								}
+
 							} else {
 
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( $log_prefix.'library file "'.$lib_path.'" not found' );
+									$this->p->debug->log( $log_prefix . 'library class name is not available' );
 								}
 
+								$suffix_msg = __( 'The installed plugin may be incomplete or the web server cannot access the library file.',
+									'wpsso' );
+
 								if ( is_admin() && is_object( $this->p->notice ) ) {
-									// translators: %1$s is the PHP library path
-									$this->p->notice->err( sprintf( __( 'Error loading %1$s: Library file "%1$s" not found.',
-										'wpsso' ), $lib_path, $lib_path ) );
+									// translators: %1$s is the short plugin name, %2$s is the PHP library path
+									$this->p->notice->err( sprintf( __( '%1$s library class name for "%2$s" is not available.',
+										'wpsso' ), $info['short'], $lib_path ) . ' ' . $suffix_msg );
 								}
 
 								// translators: %s is the PHP library path
-								$error_msg = sprintf( __( 'Library file "%s" not found.', 'wpsso' ), $lib_path );
+								$error_msg = sprintf( __( 'Library class name for "%s" is not available.', 'wpsso' ), $lib_path ) . ' ' .
+									$suffix_msg;
 
 								// translators: %s is the short plugin name
-								SucomUtil::safe_trigger_error( sprintf( __( '%s warning:', 'wpsso' ),
-									$info['short'] ).' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
+								SucomUtil::safe_trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ) . ' ' .
+									$error_msg, E_USER_WARNING );
 							}
 
 						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $log_prefix.'avail is false' );
+							$this->p->debug->log( $log_prefix . 'avail is false' );
 						}
 					}
 				}
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'load modules' );	// end timer
+				$this->p->debug->mark( 'load modules' );	// End timer.
 			}
 		}
 	}

@@ -341,7 +341,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				// translators: %s is the short plugin name
 				$error_prefix = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
-				SucomUtil::safe_trigger_error( $error_prefix.' '.rtrim( $error_msg, '.' ), E_USER_WARNING );
+
+				SucomUtil::safe_trigger_error( $error_prefix . ' ' . $error_msg, E_USER_WARNING );
 			}
 
 			if ( is_array( $image_info ) ) {
@@ -2396,7 +2397,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				// translators: %s is the short plugin name
 				$error_prefix = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
-				SucomUtil::safe_trigger_error( $error_prefix . ' ' . rtrim( $error_msg, '.' ), E_USER_WARNING );
+				SucomUtil::safe_trigger_error( $error_prefix . ' ' . $error_msg, E_USER_WARNING );
 			}
 
 			/**
