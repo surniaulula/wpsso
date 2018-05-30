@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				'seo_desc' => array(
 					'no_auto_draft' => true,
 					'tr_class' => ( $add_meta_name_desc ? '' : 'hide_in_basic' ), // Always hide if head tag is disabled.
-					'label' => _x( 'Google Search / SEO Description', 'option label', 'wpsso' ),
+					'label' => _x( 'Search Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) .
 						( $add_meta_name_desc ? '' : '<p class="status-msg smaller">'.
@@ -111,7 +111,6 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				),
 				'tc_desc' => array(
 					'no_auto_draft' => true,
-					'tr_class' => $form->get_css_class_hide( 'basic', 'tc_desc' ),
 					'label' => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-tc_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),

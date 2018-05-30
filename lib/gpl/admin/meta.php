@@ -94,15 +94,14 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'content' => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
 				),
 				'seo_desc' => array(
-					'tr_class' => ( $add_meta_name_desc ? '' : 'hide_in_basic' ), // always hide if head tag is disabled
-					'label' => _x( 'Google Search / SEO Description', 'option label', 'wpsso' ),
+					'tr_class' => ( $add_meta_name_desc ? '' : 'hide_in_basic' ), // Always hide if head tag is disabled.
+					'label' => _x( 'Search Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) .
 						( $add_meta_name_desc ? '' : '<p class="status-msg smaller">'.
 							sprintf( $seo_msg_transl, 'meta name description' ).'</p>' ),
 				),
 				'tc_desc' => array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'tc_desc' ),
 					'label' => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-tc_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),
@@ -249,7 +248,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_desc' ),
 				'label' => _x( 'Video Description', 'option label', 'wpsso' ),
 				'th_class' => 'medium', 'tooltip' => 'meta-og_vid_desc', 'td_class' => 'blank',
-				'content' => $form->get_no_input_value( '', 'wide' ),	// Free version does not include video modules.
+				'content' => $form->get_no_textarea_value( '' ),	// Free version does not include video modules.
 			);
 
 			$media_info = $this->p->og->get_media_info( $this->p->lca . '-schema', 

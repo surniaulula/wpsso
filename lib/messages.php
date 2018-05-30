@@ -139,7 +139,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-seo_desc':
 
-							$text = __( 'A custom description for the Google Search / SEO description meta tag.', 'wpsso' );
+							$text = __( 'A custom description for the Google Search "description" meta tag.', 'wpsso' );
 
 						 	break;
 
@@ -1274,7 +1274,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-seo_desc_len':
 
-							$text = __( 'The maximum length of text used for the Google Search / SEO description meta tag.', 'wpsso' ).' '.sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).', 'wpsso' ), $this->p->cf['head']['limit_min']['og_desc_len'], $this->p->opt->get_defaults( 'seo_desc_len' ) );
+							$text = __( 'The maximum length of text used for the Google Search "description" meta tag.', 'wpsso' ).' '.sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).', 'wpsso' ), $this->p->cf['head']['limit_min']['og_desc_len'], $this->p->opt->get_defaults( 'seo_desc_len' ) );
 							break;
 
 						case 'tooltip-seo_author_field':
@@ -1725,7 +1725,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'An example link share on Facebook &mdash; the image shown uses the Facebook minimum image dimensions of %s.', 'wpsso' ), $fb_img_dims ).' ';
 
-							$text .= __( 'Actual link shares on Facebook and other social sites may look significantly different than this example (depending on the application, device, resolution, orientation, etc.).', 'wpsso' );
+							$text .= __( 'Actual link shares on Facebook and other social sites may look significantly different than this example (depending on the device, resolution, orientation, etc.).', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1927,7 +1927,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * Do not add this text if hidding pro options or on a settings page.
 						 */
 						if ( empty( $this->p->options['plugin_hide_pro'] ) && WpssoMeta::is_meta_page() ) {
-							$text = sprintf( __( 'A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %s metabox under the <em>Select Media</em> tab.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+							$text = sprintf( __( 'A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %1$s metabox under the %2$s tab.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ), _x( 'Priority Media', 'metabox tab', 'wpsso' ) );
 						} else {
 							$text = '';
 						}

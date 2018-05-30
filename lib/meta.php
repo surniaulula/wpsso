@@ -144,8 +144,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 					$tabs = array(
 						'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
-						'edit' => _x( 'Edit Text', 'metabox tab', 'wpsso' ),
-						'media' => _x( 'Select Media', 'metabox tab', 'wpsso' ),
+						'edit' => _x( 'Customize', 'metabox tab', 'wpsso' ),
+						'media' => _x( 'Priority Media', 'metabox tab', 'wpsso' ),
 						'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
 						'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
 					);
@@ -538,7 +538,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'options_filtered' => '',
 					'options_version' => '',
 					/**
-					 * Edit Text Tab.
+					 * Customize Tab.
 					 */
 					'og_type' => $og_type,
 					'og_art_section' => isset( $opts['og_art_section'] ) ? $opts['og_art_section'] : 'none',
