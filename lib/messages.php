@@ -1972,19 +1972,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-missing-og-image':
 
-						$text = sprintf( __( 'An Open Graph image meta tag could not be generated from this webpage content or its custom %s settings. Facebook <em>requires at least one image meta tag</em> to render shared content correctly.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+						$text = sprintf( __( 'An Open Graph image meta tag could not be generated from this webpage content or its custom %s metabox settings. Facebook <em>requires at least one image meta tag</em> to render shared content correctly.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 
 						break;
 
 					case 'notice-missing-og-description':
 
-						$text = sprintf( __( 'An Open Graph description meta tag could not be generated from this webpage content or its custom %s settings. Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+						$text = sprintf( __( 'An Open Graph description meta tag could not be generated from this webpage content or its custom %s metabox settings. Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 
 						break;
 
 					case 'notice-missing-schema-image':
 
-						$text = sprintf( __( 'A Schema image property could not be generated from this webpage content or its custom %s settings. Google <em>requires at least one image property</em> for this Schema item type.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
+						$text = sprintf( __( 'A Schema image property could not be generated from this webpage content or its custom %s metabox settings. Google <em>requires at least one image property</em> for this Schema item type.', 'wpsso' ), _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) );
 
 						break;
 

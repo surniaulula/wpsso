@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-05-30 08:53-0600\n"
-"PO-Revision-Date: 2018-05-30 08:54-0600\n"
+"POT-Creation-Date: 2018-05-30 08:56-0600\n"
+"PO-Revision-Date: 2018-05-30 08:58-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3861,16 +3861,16 @@ msgid "Disable the %1$s option (not recommended)."
 msgstr "Désactiver l'option %1$s (non recommandée)."
 
 #: lib/messages.php:1975
-msgid "An Open Graph image meta tag could not be generated from this webpage content or its custom %s settings. Facebook <em>requires at least one image meta tag</em> to render shared content correctly."
-msgstr "Une balise méta Open Graph de description n'a pas pu être générée à partir de ce contenu ou ces réglages personnalisés d'%s. Facebook <em>exiges une balise de description</em> pour présenter un partage correctement."
+msgid "An Open Graph image meta tag could not be generated from this webpage content or its custom %s metabox settings. Facebook <em>requires at least one image meta tag</em> to render shared content correctly."
+msgstr "Une balise méta Open Graph de description n'a pas pu être générée à partir de ce contenu ou des réglages personnalisés du metabox %s. Facebook <em>exiges une balise de description</em> pour présenter un partage correctement."
 
 #: lib/messages.php:1981
-msgid "An Open Graph description meta tag could not be generated from this webpage content or its custom %s settings. Facebook <em>requires a description meta tag</em> to render shared content correctly."
-msgstr "Une balise méta Open Graph d'image n'a pas pu être générée à partir de ce contenu ou ces réglages personnalisés d'%s. Facebook <em>exiges une balise d'image</em> pour présenter un partage correctement."
+msgid "An Open Graph description meta tag could not be generated from this webpage content or its custom %s metabox settings. Facebook <em>requires a description meta tag</em> to render shared content correctly."
+msgstr "Une balise méta Open Graph d'image n'a pas pu être générée à partir de ce contenu ou des réglages personnalisés du metabox %s. Facebook <em>exiges une balise d'image</em> pour présenter un partage correctement."
 
 #: lib/messages.php:1987
-msgid "A Schema image property could not be generated from this webpage content or its custom %s settings. Google <em>requires at least one image property</em> for this Schema item type."
-msgstr "Un balisage de Schéma d'image n'a pas pu être générée à partir de ce contenu ou de ces réglages personnalisés d'%s. Google <em>exige au moins une propriété d'image</em> pour ce type de Schéma."
+msgid "A Schema image property could not be generated from this webpage content or its custom %s metabox settings. Google <em>requires at least one image property</em> for this Schema item type."
+msgstr "Un balisage de Schéma d'image n'a pas pu être générée à partir de ce contenu ou des réglages personnalisés du metabox %s. Google <em>exige au moins une propriété d'image</em> pour ce type de Schéma."
 
 #: lib/messages.php:2000
 msgid "The %1$s advanced option is currently disabled."
