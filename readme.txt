@@ -1,4 +1,4 @@
-=== WPSSO Core - Advanced Social + Search SEO Meta Tags and Schema Markup for Facebook, Pinterest and More ===
+=== WPSSO Core - Advanced Meta Tags and Schema Markup for Facebook, Pinterest, SEO and More ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -14,7 +14,7 @@ Tested Up To: 4.9.6
 WC Tested Up To: 3.3.5
 Stable Tag: 4.3.2
 
-Complete meta tags and Schema markup FROM YOUR CONTENT for Social Sharing, Google Knowledge Graph & Rich Cards SEO, Pinterest Rich Pins and more.
+Complete meta tags and Schema markup FROM YOUR CONTENT for social sharing, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins and more.
 
 == Description ==
 
@@ -22,7 +22,7 @@ Complete meta tags and Schema markup FROM YOUR CONTENT for Social Sharing, Googl
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
-WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google Knowledge Graph and Rich Cards SEO, Pinterest Rich Pins, Twitter Cards, Weibo, and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
+WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards, Weibo, and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
 
 **WPSSO uses your *existing content* for meta tags and Schema markup:**
 
@@ -54,8 +54,8 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 
 	* Facebook / Open Graph
 	* Google+
-	* Google Knowledge Graph
-	* Google Rich Cards SEO
+	* Google's Knowledge Graph
+	* Google's Rich Card SEO
 	* LinkedIn
 	* Pinterest Rich Pins
 	* Twitter Cards
@@ -75,13 +75,13 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 
 * Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
-* Configurable website / business social accounts for Schema markup and Google Knowledge Graph.
+* Configurable website / business social accounts for Schema markup and Google's Knowledge Graph.
 
-* Adds author, publisher, and website markup using Schema JSON-LD for Google Knowledge Graph.
+* Adds author, publisher, and website markup using Schema JSON-LD for Google's Knowledge Graph.
 
 * Adds markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
 
-* User profile contact fields for Facebook / Open Graph, Twitter Cards, Schema markup, and Google Knowledge Graph.
+* User profile contact fields for Facebook / Open Graph, Twitter Cards, Schema markup, and Google's Knowledge Graph.
 
 * Built-in support for [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) and [AMP for WP - Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
 
