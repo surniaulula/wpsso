@@ -1721,9 +1721,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$fb_img_dims = '600x315px';
 
-						 	$text = '<p class="top">';
+						 	$text = '<p class="status-msg">';
 
-							$text .= sprintf( __( 'An example link share on Facebook &ndash; the image container in this example uses the Facebook minimum image dimensions of %s.', 'wpsso' ), $fb_img_dims );
+							$text .= sprintf( __( 'The image container in this example uses the minimum Facebook image dimensions of %s.', 'wpsso' ), $fb_img_dims );
 
 							$text .= '</p>';
 

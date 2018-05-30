@@ -277,8 +277,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$table_rows['subsection_og_example'] = '<td colspan="2" class="subsection"><h4>'.
 				_x( 'Facebook / Open Graph Example', 'option label', 'wpsso' ).'</h4></td>';
 
-			$table_rows[] = '<td colspan="2">'.$this->p->msgs->get( 'info-meta-social-preview' ).'</td>';
-
 			$table_rows[] = '<td colspan="2" style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
 				<div class="preview_box_border">
 					<div class="preview_box">
@@ -300,6 +298,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					</div><!-- .preview_box -->
 				</div><!-- .preview_box_border -->
 			</td>';
+
+			$table_rows[] = '<td colspan="2">'.$this->p->msgs->get( 'info-meta-social-preview' ).'</td>';
 
 			return $table_rows;
 		}

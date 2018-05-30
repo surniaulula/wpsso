@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-05-30 08:41-0600\n"
-"PO-Revision-Date: 2018-05-30 08:43-0600\n"
+"POT-Creation-Date: 2018-05-30 08:53-0600\n"
+"PO-Revision-Date: 2018-05-30 08:54-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3691,8 +3691,8 @@ msgid "The <a href=\"%s\">AMP plugin by Automattic</a> is required to validate A
 msgstr "L'<a href=\"%s\">extension AMP d'Automattic</a> est requise pour valider des pages Web AMP."
 
 #: lib/messages.php:1726
-msgid "An example link share on Facebook &ndash; the image container in this example uses the Facebook minimum image dimensions of %s."
-msgstr "Un exemple de partage de lien sur Facebook &ndash; le conteneur d'image dans cet exemple utilise les dimensions d'image minimale Facebook de %s."
+msgid "The image container in this example uses the minimum Facebook image dimensions of %s."
+msgstr "Le conteneur d'image de cet exemple utilise les dimensions d'image Facebook minimales de %s."
 
 #: lib/messages.php:1744
 msgid "After purchasing the %1$s plugin &mdash; or any of its Pro add-ons &mdash; you'll receive an email with a unique Authentication ID for the plugin / add-on you purchased."

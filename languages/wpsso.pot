@@ -4239,8 +4239,8 @@ msgstr ""
 
 #: lib/messages.php:1726
 msgid ""
-"An example link share on Facebook &ndash; the image container in this "
-"example uses the Facebook minimum image dimensions of %s."
+"The image container in this example uses the minimum Facebook image "
+"dimensions of %s."
 msgstr ""
 
 #: lib/messages.php:1744
