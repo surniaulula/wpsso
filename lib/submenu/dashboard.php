@@ -43,12 +43,14 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			$col = 0;
 			$using_external_cache = wp_using_ext_object_cache();
 
-			// don't include the 'cache_status' metabox if we're using an external object cache
-			if ( $using_external_cache ) {
+			/**
+			 * Don't include the 'cache_status' metabox if we're using an external object cache.
+			 */
+			if ( true || $using_external_cache ) {
 				$metabox_ids = array( 
 					// first row
-					'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),
 					'rate_review' => _x( 'Ratings are Awesome!', 'metabox title', 'wpsso' ),
+					'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),
 					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ), 
 					// second row
 					'status_gpl' => _x( 'Free / Standard Features', 'metabox title', 'wpsso' ),
@@ -57,9 +59,9 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			} else {
 				$metabox_ids = array( 
 					// first row
-					'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),
-					'rate_review' => _x( 'Ratings are Awesome!', 'metabox title', 'wpsso' ),
 					'cache_status' => _x( 'Cache Status', 'metabox title', 'wpsso' ), 
+					'rate_review' => _x( 'Ratings are Awesome!', 'metabox title', 'wpsso' ),
+					'help_support' => _x( 'Help and Support', 'metabox title', 'wpsso' ),
 					// second row
 					'status_gpl' => _x( 'Free / Standard Features', 'metabox title', 'wpsso' ),
 					'status_pro' => _x( 'Pro / Additional Features', 'metabox title', 'wpsso' ),
@@ -68,10 +70,11 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			}
 
 			foreach ( $metabox_ids as $id => $name ) {
-				$col = $col >= $this->max_cols ? 1 : $col + 1;
-				$pos_id = 'dashboard_col_'.$col;	// ids must use underscores instead of hyphens to order metaboxes
-				$prio = 'default';
-				$args = array( 'id' => $id, 'name' => $name );
+
+				$col    = $col >= $this->max_cols ? 1 : $col + 1;
+				$pos_id = 'dashboard_col_'.$col;	// Use underscores instead of hyphens to order metaboxes.
+				$prio   = 'default';
+				$args   = array( 'id' => $id, 'name' => $name );
 
 				add_meta_box( $this->pagehook.'_'.$id, $name,
 					array( &$this, 'show_metabox_'.$id ), $this->pagehook, $pos_id, $prio, $args );

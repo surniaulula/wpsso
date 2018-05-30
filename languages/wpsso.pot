@@ -5519,27 +5519,27 @@ msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
 
-#: lib/submenu/dashboard.php:50 lib/submenu/dashboard.php:60
-msgctxt "metabox title"
-msgid "Help and Support"
-msgstr ""
-
-#: lib/submenu/dashboard.php:51 lib/submenu/dashboard.php:61
+#: lib/submenu/dashboard.php:52 lib/submenu/dashboard.php:63
 msgctxt "metabox title"
 msgid "Ratings are Awesome!"
 msgstr ""
 
-#: lib/submenu/dashboard.php:52 lib/submenu/dashboard.php:66
+#: lib/submenu/dashboard.php:53 lib/submenu/dashboard.php:64
+msgctxt "metabox title"
+msgid "Help and Support"
+msgstr ""
+
+#: lib/submenu/dashboard.php:54 lib/submenu/dashboard.php:68
 msgctxt "metabox title"
 msgid "Version Information"
 msgstr ""
 
-#: lib/submenu/dashboard.php:54 lib/submenu/dashboard.php:64
+#: lib/submenu/dashboard.php:56 lib/submenu/dashboard.php:66
 msgctxt "metabox title"
 msgid "Free / Standard Features"
 msgstr ""
 
-#: lib/submenu/dashboard.php:55 lib/submenu/dashboard.php:65
+#: lib/submenu/dashboard.php:57 lib/submenu/dashboard.php:67
 msgctxt "metabox title"
 msgid "Pro / Additional Features"
 msgstr ""
