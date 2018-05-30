@@ -2,7 +2,7 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Complete meta tags and Schema markup from your content for Social Sharing, Google&#039;s Knowledge Graph &amp; Rich Cards (SEO), Pinterest Rich Pins a</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Complete meta tags and Schema markup FROM YOUR CONTENT for Social Sharing, Google Knowledge Graph &amp; Rich Cards SEO, Pinterest Rich Pins and more.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.3.2</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.6</td></tr>
@@ -17,7 +17,7 @@
 
 <p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup:</strong></p>
 
-<p>WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins, Twitter Cards, Weibo, and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.</p>
+<p>WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google Knowledge Graph and Rich Cards SEO, Pinterest Rich Pins, Twitter Cards, Weibo, and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.</p>
 
 <p><strong>WPSSO uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
@@ -51,8 +51,8 @@
 <ul>
 <li>Facebook / Open Graph</li>
 <li>Google+</li>
-<li>Google's Knowledge Graph</li>
-<li>Google Rich Cards (SEO)</li>
+<li>Google Knowledge Graph</li>
+<li>Google Rich Cards SEO</li>
 <li>LinkedIn</li>
 <li>Pinterest Rich Pins</li>
 <li>Twitter Cards</li>
@@ -62,13 +62,13 @@
 <li><p>Provides settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.</p></li>
 <li><p>Includes support for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.</p></li>
 <li><p>Uses images from a variety of sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.</p></li>
-<li><p>Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards (SEO), Pinterest Rich Pins, and all Twitter Cards.</p></li>
+<li><p>Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards SEO, Pinterest Rich Pins, and all Twitter Cards.</p></li>
 <li><p>Configurable maximum title and description lengths, including both hard and soft limits.</p></li>
 <li><p>Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p></li>
-<li><p>Configurable website / business social accounts for Schema markup and Google's Knowledge Graph.</p></li>
-<li><p>Adds author, publisher, and website markup using Schema JSON-LD for Google's Knowledge Graph (SEO).</p></li>
+<li><p>Configurable website / business social accounts for Schema markup and Google Knowledge Graph.</p></li>
+<li><p>Adds author, publisher, and website markup using Schema JSON-LD for Google Knowledge Graph.</p></li>
 <li><p>Adds markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</p></li>
-<li><p>User profile contact fields for Facebook / Open Graph, Twitter Cards, Schema markup, and Google's Knowledge Graph.</p></li>
+<li><p>User profile contact fields for Facebook / Open Graph, Twitter Cards, Schema markup, and Google Knowledge Graph.</p></li>
 <li><p>Built-in support for <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> and <a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP - Accelerated Mobile Pages</a> plugins.</p></li>
 <li><p>Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.</p></li>
 <li><p>And even includes an option to hide the preview of all Pro settings and features. ;-)</p></li>
