@@ -323,6 +323,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.4.1-dev.1 (2018/05/31)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Renamed the "Search and Optimization" metabox to "Document SSO".
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 4.4.0 (2018/05/31)**
 
 * *New Features*
@@ -330,6 +341,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Added support for the DLMY.App URL shortening service (Pro version).
 	* Added support for aggregate rating values from the WP-PostRatings plugin (Pro version).
+	* Renamed the Social and Search Optimization metabox tabs:
+		* "Edit Text" to "Customize".
+		* "Select Media" to "Priority Media".
 * *Bugfixes*
 	* Fixed an image URL in the Setup Guide.
 * *Developer Notes*
@@ -421,11 +435,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
+= 4.4.1-dev.1 =
+
+(2018/05/31) Renamed the "Search and Optimization" metabox to "Document SSO".
+
 = 4.4.0 =
 
 (2018/05/31) Added support for the DLMY.App URL shortening service (Pro version). Added support for aggregate rating values from the WP-PostRatings plugin (Pro version).
-
-= 4.3.2 =
-
-(2018/05/21) Added a new "Video Dimensions" option in the SSO metabox to customize the video dimension values.
 
