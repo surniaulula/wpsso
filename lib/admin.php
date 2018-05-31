@@ -949,7 +949,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<h1>';
 			echo self::$pkg[$this->menu_ext]['short'] . ' ';
 			echo '<span class="qualifier">&ndash; ';
-			echo _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' ) . ' (' . $this->menu_name . ')';
+			echo $this->menu_name;
 			echo '</span></h1>' . "\n";
 
 			if ( ! self::$pkg[$this->p->lca]['aop'] ) {
