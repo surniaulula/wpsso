@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-05-31 08:55-0600\n"
-"PO-Revision-Date: 2018-05-31 08:59-0600\n"
+"POT-Creation-Date: 2018-05-31 09:45-0600\n"
+"PO-Revision-Date: 2018-05-31 09:45-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5147,7 +5147,7 @@ msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fourn
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max
 #: lib/util.php:2399
-msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter ($3$s)."
+msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
 #: lib/util.php:2412
