@@ -142,7 +142,6 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									} elseif ( $this->p->debug->enabled ) {
 
 										$this->p->debug->log( $log_prefix . 'library ext module already defined' );
-
 									}
 
 								} else {
@@ -152,17 +151,20 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									}
 
 									if ( is_admin() && is_object( $this->p->notice ) ) {
+
 										// translators: %1$s is the PHP library path, %2$s is the PHP library class name
 										$this->p->notice->err( sprintf( __( 'Error loading %1$s: Library class "%2$s" is missing.',
 											'wpsso' ), $lib_path, $classname ) );
 									}
 
 									// translators: %s is the PHP library class name
-									$error_msg = sprintf( __( 'Library class "%s" is missing.', 'wpsso' ), $classname );
+									$error_msg = sprintf( __( 'Library class "%s" is missing.',
+										'wpsso' ), $classname );
 
 									// translators: %s is the short plugin name
-									SucomUtil::safe_trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ) . ' ' .
-										$error_msg, E_USER_WARNING );
+									$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
+
+									SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 								}
 
 							} else {
@@ -175,18 +177,20 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									'wpsso' );
 
 								if ( is_admin() && is_object( $this->p->notice ) ) {
+
 									// translators: %1$s is the short plugin name, %2$s is the PHP library path
 									$this->p->notice->err( sprintf( __( '%1$s library class name for "%2$s" is not available.',
 										'wpsso' ), $info['short'], $lib_path ) . ' ' . $suffix_msg );
 								}
 
 								// translators: %s is the PHP library path
-								$error_msg = sprintf( __( 'Library class name for "%s" is not available.', 'wpsso' ), $lib_path ) . ' ' .
-									$suffix_msg;
+								$error_msg = sprintf( __( 'Library class name for "%s" is not available.',
+									'wpsso' ), $lib_path ) . ' ' . $suffix_msg;
 
 								// translators: %s is the short plugin name
-								SucomUtil::safe_trigger_error( sprintf( __( '%s warning:', 'wpsso' ), $info['short'] ) . ' ' .
-									$error_msg, E_USER_WARNING );
+								$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
+
+								SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 							}
 
 						} elseif ( $this->p->debug->enabled ) {

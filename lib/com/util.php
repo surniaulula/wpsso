@@ -803,12 +803,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Sets 'display_errors' to false to prevent PHP errors from being displayed.
-		 * Restores previous PHP settings after logging the error.
+		 * Sets 'display_errors' to false to prevent PHP errors from being displayed and
+		 * restores previous PHP settings after logging the error.
 		 */
-		public static function safe_trigger_error( $error_msg, $error_type = E_USER_NOTICE ) {
+		public static function safe_error_log( $error_msg ) {
 
-			// show errors only if in back-end, and always the log errors
 			$ini_set = array(
 				'display_errors' => 0,
 				'log_errors' => 1,
@@ -817,24 +816,40 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$ini_saved = array();
 
-			// save old option values and define new option values
+			/**
+			 * Save old option values and define new option values.
+			 */
 			foreach ( $ini_set as $name => $value ) {
 
-				// returns false if option does not exist
+				/**
+				 * Returns false if option does not exist.
+				 */
 				$ini_saved[$name] = ini_get( $name );
 
-				// only set the option the existing value is different
+				/**
+				 * Only set the option the existing value is different.
+				 */
 				if ( $ini_saved[$name] !== false && $ini_saved[$name] !== $value ) {
+
 					ini_set( $name, $value );
-				// unset the array element to avoid restoring it
+
+				/**
+				 * Unset the array element to avoid restoring it.
+				 */
 				} else {
+
 					unset( $ini_saved[$name] );
 				}
 			}
 
-			trigger_error( $error_msg, $error_type );
+			/**
+			 * Use error_log() instead of trigger_error() to avoid HTTP 500.
+			 */
+			error_log( $error_msg );
 
-			// restore old option values that were changed
+			/**
+			 * Restore old option values that were changed.
+			 */
 			foreach ( $ini_saved as $name => $value ) {
 				ini_set( $name, $value );
 			}
@@ -854,20 +869,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$plugin_lib = trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin.php';
 
 				if ( file_exists( $plugin_lib ) ) {
+
 					require_once $plugin_lib;
+
 				} else {
+
+					$error_pre = sprintf( '%s error:', __METHOD__ );
 					$error_msg = sprintf( 'The WordPress %s library file is missing and required.', $plugin_lib );
 
-					self::safe_trigger_error( sprintf( '%s error:', __METHOD__ ) . ' ' . $error_msg, E_USER_ERROR );
+					self::safe_error_log( $error_pre . ' ' . $error_msg );
 				}
 			}
 
 			if ( function_exists( 'get_plugins' ) ) {
+
 				return self::$cache_wp_plugins = get_plugins();
 			} else {
+
+				$error_pre = sprintf( '%s error:', __METHOD__ );
 				$error_msg = sprintf( 'The WordPress %s function is missing and required.', 'get_plugins()' );
 
-				self::safe_trigger_error( sprintf( '%s error:', __METHOD__ ) . ' ' . $error_msg, E_USER_ERROR );
+				self::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
 
 			return self::$cache_wp_plugins = array();
@@ -885,8 +907,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		private static function get_formatted_timezone( $tz_name, $format ) {
+
 			$dt = new DateTime();
+
 			$dt->setTimeZone( new DateTimeZone( $tz_name ) );
+
 			return $dt->format( $format );
 		}
 
@@ -1902,7 +1927,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function array_implode( array $arr, $glue = ' ' ) {
+
 			$return = '';
+
 		        foreach ( $arr as $value ) {
 			        if ( is_array( $value ) ) {
 					$return .= self::array_implode( $value, $glue ) . $glue;
@@ -1910,6 +1937,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$return .= $value . $glue;
 				}
 			}
+
 			return strlen( $glue ) ? rtrim( $return, $glue ) : $glue;
 		}
 
@@ -1917,13 +1945,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Array must use unique associative / string keys.
 		 */
 		public static function array_parent_index( array $arr, $parent_key = '', $gparent_key = '', &$index = array() ) {
+
 		        foreach ( $arr as $child_key => $value ) {
 
 				if ( isset( $index[$child_key] ) ) {
 
+					$error_pre = sprintf( '%s warning:', __METHOD__ );
 					$error_msg = sprintf( 'Duplicate child key "%s" = "%s".', $child_key, $index[$child_key] );
 
-					self::safe_trigger_error( sprintf( '%s warning:', __METHOD__ ) . ' ' . $error_msg, E_USER_WARNING );
+					self::safe_error_log( $error_pre . ' ' . $error_msg );
 
 				} elseif ( is_array( $value ) ) {
 
@@ -1938,6 +1968,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$index[$child_key] = $gparent_key;
 				}
 			}
+
 			return $index;
 		}
 

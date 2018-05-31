@@ -14,7 +14,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 	class WpssoRegister {
 
 		protected $p;
-		protected static $wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // default WP roles
+		protected static $wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // Default wp roles.
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private static function do_multisite( $sitewide, $method, $args = array() ) {
 			if ( is_multisite() && $sitewide ) {
 				global $wpdb;
-				$dbquery = 'SELECT blog_id FROM '.$wpdb->blogs;
+				$dbquery = 'SELECT blog_id FROM ' . $wpdb->blogs;
 				$ids = $wpdb->get_col( $dbquery );
 				foreach ( $ids as $id ) {
 					switch_to_blog( $id );
@@ -144,10 +144,10 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				/**
 				 * Delete all post meta.
 				 */
-				delete_post_meta_by_key( WPSSO_META_NAME );	// since wp v2.3
+				delete_post_meta_by_key( WPSSO_META_NAME );	// Since wp v2.3.
 
 				foreach ( get_users() as $user ) {
-					if ( ! empty( $user-> ID ) ) {	// just in case
+					if ( ! empty( $user-> ID ) ) {	// Just in case.
 
 						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, false );	// $global = false
 						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, true );	// $global = true
@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				remove_role( 'person' );
 
 				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
-					if ( ! empty( $term_id ) ) {	// just in case
+					if ( ! empty( $term_id ) ) {	// Just in case.
 						WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
 					}
 				}
@@ -174,8 +174,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 * Delete All Transients
 			 */
 			global $wpdb;
-			$prefix = '_transient_';	// clear all transients, even if no timeout value
-			$dbquery = 'SELECT option_name FROM '.$wpdb->options.' WHERE option_name LIKE \''.$prefix.'wpsso_%\';';
+			$prefix = '_transient_';	// Clear all transients, even if no timeout value.
+			$dbquery = 'SELECT option_name FROM ' . $wpdb->options . ' WHERE option_name LIKE \'' . $prefix . 'wpsso_%\';';
 			$expired = $wpdb->get_col( $dbquery ); 
 
 			foreach( $expired as $option_name ) { 
@@ -215,30 +215,30 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				}
 
 				if ( ! function_exists( 'deactivate_plugins' ) ) {
-					require_once trailingslashit( ABSPATH ).'wp-admin/includes/plugin.php';
+					require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin.php';
 				}
 
 				deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent is true
 
-				// translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
-				$error_msg = sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
-					'wpsso' ), $plugin_name, $app_label, $min_version );
-
-				if ( method_exists( 'SucomUtil', 'safe_trigger_error' ) ) {
+				if ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {
 
 					// translators: %s is the short plugin name
-					$error_prefix = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
+					$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
 
-					SucomUtil::safe_trigger_error( $error_prefix . ' ' . $error_msg, E_USER_WARNING );
+					// translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
+					$error_msg = sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
+						'wpsso' ), $plugin_name, $app_label, $min_version );
+
+					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 				}
 
 				wp_die( 
-					'<p>'.sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.',
-						'wpsso' ), $app_label, $app_version, $version_url ).'</p>'.
-					'<p>'.sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
-						'wpsso' ), $plugin_name, $app_label, $min_version ).'</p>'.
-					'<p>'.sprintf( __( 'Please upgrade %1$s before trying to re-activate the %2$s plugin.',
-						'wpsso' ), $app_label, $plugin_name ).'</p>'
+					'<p>' . sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.',
+						'wpsso' ), $app_label, $app_version, $version_url ) . '</p>' . 
+					'<p>' . sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
+						'wpsso' ), $plugin_name, $app_label, $min_version ) . '</p>' . 
+					'<p>' . sprintf( __( 'Please upgrade %1$s before trying to re-activate the %2$s plugin.',
+						'wpsso' ), $app_label, $plugin_name ) . '</p>'
 				);
 			}
 		}

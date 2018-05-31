@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action( 'wp', array( &$this, 'add_plugin_image_sizes' ), -100 );	// runs everytime a posts query is triggered from a url
+			add_action( 'wp', array( &$this, 'add_plugin_image_sizes' ), -100 );
 			add_action( 'current_screen', array( &$this, 'add_plugin_image_sizes' ), -100 );
 			add_action( 'wp_scheduled_delete', array( &$this, 'delete_expired_db_transients' ) );
 			add_action( $this->p->lca . '_refresh_all_cache', array( &$this, 'refresh_all_cache' ) );
@@ -328,9 +328,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$total_time, $image_url ) );
 				}
 
-				// translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$0.3f is a number of seconds
-				$error_msg = sprintf( __( 'Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (longer than recommended max of %3$0.3f secs).',
-					'wpsso' ), $total_time, $image_url, $max_time );
+				// translators: %1$0.3f is a number of seconds
+				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $max_time );
+
+				// translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max
+				$error_msg = sprintf( __( 'Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s).',
+					'wpsso' ), $total_time, $image_url, $rec_max_msg );
 
 				/**
 				 * Show an admin warning notice, if notices not already shown.
@@ -340,9 +343,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 
 				// translators: %s is the short plugin name
-				$error_prefix = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
+				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
 
-				SucomUtil::safe_trigger_error( $error_prefix . ' ' . $error_msg, E_USER_WARNING );
+				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
 
 			if ( is_array( $image_info ) ) {
@@ -1259,13 +1262,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$has_errors = false;
 
 			if ( $libxml_errors ) {
+
 				if ( function_exists( 'libxml_use_internal_errors' ) ) {	// since PHP v5.1
+
 					$libxml_prev_state = libxml_use_internal_errors( true );	// enable user error handling
+
 					if ( ! $doc->loadHTML( $html ) ) {	// loadXML() is too strict for most webpages
+
 						$has_errors = true;
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'loadHTML returned error(s)' );
 						}
+
 						foreach ( libxml_get_errors() as $error ) {
 							/**
 							 *	libXMLError {
@@ -1284,15 +1293,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 								$this->p->notice->err( 'PHP libXML error: '.$error->message );
 							}
 						}
+
 						libxml_clear_errors();		// clear any HTML parsing errors
+
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'loadHTML was successful' );
 					}
+
 					libxml_use_internal_errors( $libxml_prev_state );	// restore previous error handling
+
 				} else {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'libxml_use_internal_errors() function is missing' );
 					}
+
 					if ( is_admin() ) {
 						$func_name = 'simplexml_load_string()';
 						$func_url  = __( 'https://secure.php.net/manual/en/function.simplexml-load-string.php', 'wpsso' );
@@ -1304,6 +1319,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 						$this->p->notice->err( $error_msg );
 					}
+
 					@$doc->loadHTML( $html );
 				}
 			} else {
@@ -2376,8 +2392,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$total_time, $filter_name ) );
 				}
 
-				// translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$0.3f is a number of seconds
-				$error_msg = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter (longer than recommended max of %3$0.3f secs).', 'wpsso' ), $total_time, $filter_name, $max_time );
+				// translators: %1$0.3f is a number of seconds
+				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $max_time );
+
+				// translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max
+				$error_msg = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter (%3$s).',
+					'wpsso' ), $total_time, $filter_name, $rec_max_msg );
 
 				/**
 				 * Show an admin warning notice, if notices not already shown.
@@ -2396,8 +2416,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 
 				// translators: %s is the short plugin name
-				$error_prefix = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
-				SucomUtil::safe_trigger_error( $error_prefix . ' ' . $error_msg, E_USER_WARNING );
+				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
+
+				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
 
 			/**

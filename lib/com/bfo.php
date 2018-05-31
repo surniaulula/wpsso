@@ -213,14 +213,21 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		 * Checks the output buffer for any non-empty string.
 		 */
 		private function __check_output_buffer( $method_name, $value ) {
+
 			$output = ob_get_contents();
-			if ( $output !== '' ) {	// the previous hook has contributed some output
+
+			/**
+			 * Check if the previous hook has contributed some output.
+			 */
+			if ( $output !== '' ) {
 
 				$error_text = __( 'The "%1$s" hook with priority %2$d in the "%3$s" filter has incorrectly sent output to the webpage.',
-					$this->text_domain ) . ' ' .
-				__( 'All WordPress filter hooks must return their text, not send it to the webpage output.',
-					$this->text_domain ) . ' ' .
-				__( 'Please contact the author of that filter hook and report this issue as a coding error.',
+					$this->text_domain ) . ' ';
+
+				$error_text .= __( 'All WordPress filter hooks must return their text, not send it to the webpage output.',
+					$this->text_domain ) . ' ';
+
+				$error_text .= __( 'Please contact the author of that filter hook and report this issue as a coding error.',
 					$this->text_domain );
 
 				if ( preg_match( '/^' . $this->bfo_check_id . '_\[([0-9]+)\](.+)$/', urldecode( $method_name ), $matches ) ) {
@@ -251,19 +258,20 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 						'-----' . __( 'END OUTPUT', $this->text_domain ) . '-----' . "\n";
 
 					/**
-					 * Use SucomUtil::safe_trigger_error() if available, which defines the WordPress 
-					 * debug.log path and prevents the error from being displayed in the webpage.
-					 * Previous PHP settings are also restored after logging the error.
+					 * Use SucomUtil::safe_error_log() if available to define the debug.log path and
+					 * prevent the error message from being displayed in the webpage.
 					 */
-					if ( method_exists( 'SucomUtil', 'safe_trigger_error' ) ) {
-						SucomUtil::safe_trigger_error( $this->label_transl . ': ' . $error_msg . "\n" . $incorrect_msg, E_USER_WARNING );
+					if ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {
+
+						SucomUtil::safe_error_log( $this->label_transl . ': ' . $error_msg . "\n" . $incorrect_msg );
 					} else {
-						trigger_error( $this->label_transl . ': ' . $error_msg . "\n" . $incorrect_msg, E_USER_WARNING );
+						error_log( $this->label_transl . ': ' . $error_msg . "\n" . $incorrect_msg );
 					}
 				}
 
 				ob_clean();	// clean the output buffer for the next hook check
 			}
+
 			return $value;
 		}
 
