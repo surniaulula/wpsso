@@ -72,6 +72,22 @@
 <li><p>Built-in support for <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> and <a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP - Accelerated Mobile Pages</a> plugins.</p></li>
 <li><p>Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.</p></li>
 <li><p>And even includes an option to hide the preview of all Pro settings and features. ;-)</p></li>
+<li><p>Optional Free add-ons for WPSSO Core:</p>
+
+<ul>
+<li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a> &mdash; <em>for best SEO</em></li>
+<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> &mdash; <em>for best SEO</em></li>
+<li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors">WPSSO Tune WP Image Editors</a> &mdash; <em>for best social images</em></li>
+<li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a></li>
+</ul></li>
 </ul>
 
 <h3>WPSSO Core Pro / Additional Features</h3>
@@ -138,28 +154,7 @@
 <li>YouTube Videos and Playlists</li>
 </ul></li>
 </ul></li>
-</ul>
-
-<h3>Optional WPSSO Add-ons</h3>
-
-<h4>Optional Free Add-ons</h4>
-
-<ul>
-<li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a> &mdash; <em>for best SEO</em></li>
-<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> &mdash; <em>for best SEO</em></li>
-<li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors">WPSSO Tune WP Image Editors</a> &mdash; <em>for best social images</em></li>
-<li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a></li>
-</ul>
-
-<h4>Optional Pro Add-ons</h4>
+<li><p>Optional Pro add-ons for WPSSO Core Pro:</p>
 
 <ul>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-am/">WPSSO Mobile App Meta Pro</a></li>
@@ -169,6 +164,7 @@
 <li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup Pro</a> &mdash; <em>for best SEO</em></li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons Pro</a></li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-tune-image-editors/">WPSSO Tune WP Image Editors Pro</a> &mdash; <em>for best social images</em></li>
+</ul></li>
 </ul>
 
 <h3>Coded for Performance</h3>

@@ -89,6 +89,21 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 
 * And even includes an option to hide the preview of all Pro settings and features. ;-)
 
+* Optional Free add-ons for WPSSO Core:
+
+	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/)
+	* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/)
+	* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/)
+	* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/)
+	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/)
+	* [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) &mdash; *for best SEO*
+	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) &mdash; *for best SEO*
+	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/)
+	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata)
+	* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) &mdash; *for best social images*
+	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote)
+	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale)
+
 <h3>WPSSO Core Pro / Additional Features</h3>
 
 WPSSO Core Pro gives you the power to further integrate and customize your meta tags and Schema markup with third party plugins and APIs.
@@ -160,32 +175,15 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 		* Your Own URL Shortener (YOURLS)
 		* YouTube Videos and Playlists
 
-<h3>Optional WPSSO Add-ons</h3>
+* Optional Pro add-ons for WPSSO Core Pro:
 
-<h4>Optional Free Add-ons</h4>
-
-* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/)
-* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/)
-* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/)
-* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/)
-* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/)
-* [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) &mdash; *for best SEO*
-* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) &mdash; *for best SEO*
-* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/)
-* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata)
-* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) &mdash; *for best social images*
-* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote)
-* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale)
-
-<h4>Optional Pro Add-ons</h4>
-
-* [WPSSO Mobile App Meta Pro](https://wpsso.com/extend/plugins/wpsso-am/)
-* [WPSSO Organization Markup Pro](https://wpsso.com/extend/plugins/wpsso-organization/)
-* [WPSSO Place / Location and Local Business Meta Pro](https://wpsso.com/extend/plugins/wpsso-plm/)
-* [WPSSO Ridiculously Responsive Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-rrssb/)
-* [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) &mdash; *for best SEO*
-* [WPSSO Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-ssb/)
-* [WPSSO Tune WP Image Editors Pro](https://wpsso.com/extend/plugins/wpsso-tune-image-editors/) &mdash; *for best social images*
+	* [WPSSO Mobile App Meta Pro](https://wpsso.com/extend/plugins/wpsso-am/)
+	* [WPSSO Organization Markup Pro](https://wpsso.com/extend/plugins/wpsso-organization/)
+	* [WPSSO Place / Location and Local Business Meta Pro](https://wpsso.com/extend/plugins/wpsso-plm/)
+	* [WPSSO Ridiculously Responsive Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-rrssb/)
+	* [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) &mdash; *for best SEO*
+	* [WPSSO Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-ssb/)
+	* [WPSSO Tune WP Image Editors Pro](https://wpsso.com/extend/plugins/wpsso-tune-image-editors/) &mdash; *for best social images*
 
 <h3>Coded for Performance</h3>
 
@@ -345,7 +343,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* "Edit Text" to "Customize".
 		* "Select Media" to "Priority Media".
 * *Bugfixes*
-	* Fixed an image URL in the Setup Guide.
+	* Fixed an incorrect image URL in the Setup Guide.
 * *Developer Notes*
 	* None
 
