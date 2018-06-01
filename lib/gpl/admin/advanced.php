@@ -198,14 +198,15 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			/**
 			 * Include Custom Meta Metabox
 			 */
-			$add_to_menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' );
+			$add_to_metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+
 			$add_to_checklist = $form->get_no_checklist_post_types( 'plugin_add_to', array(
 				'term' => 'Terms (Categories and Tags)',
 				'user' => 'User Profile',
 			) );
 
 			$table_rows['plugin_add_to'] = $form->get_tr_hide( 'basic', SucomUtil::get_opts_begin( 'plugin_add_to_', $form->options ) ).
-			$form->get_th_html( sprintf( _x( 'Add %s Metabox to', 'option label', 'wpsso' ), $add_to_menu_title ), '', 'plugin_add_to' ).
+			$form->get_th_html( sprintf( _x( 'Add %s Metabox to', 'option label', 'wpsso' ), $add_to_metabox_title ), '', 'plugin_add_to' ).
 			'<td class="blank">'.$add_to_checklist.'</td>';
 
 			$table_rows['plugin_wpseo_social_meta'] = $form->get_tr_hide( 'basic', 'plugin_wpseo_social_meta' ).

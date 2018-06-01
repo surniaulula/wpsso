@@ -1424,7 +1424,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'height' => '40px',
 					),
 					'og_desc' => array(
-						'header' => 'SSO Desc.',
+						'header' => 'SSO Desc',
 						'meta_key' => '_wpsso_head_info_og_desc',
 						'orderby' => false,	// do not offer column sorting
 						'width' => '12%',

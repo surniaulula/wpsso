@@ -1189,7 +1189,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo "\n";
 			echo '<div class="misc-pub-section misc-pub-robots sucom-sidebox ' . $robots_css_id . '-options" id="post-' . $robots_css_id . '">'."\n";
 			echo '<div id="post-' . $robots_css_id . '-label">';
-			echo _x( 'Robots:', 'option label', 'wpsso' );
+			echo _x( 'Robots', 'option label', 'wpsso' ) . ':';
 			echo '</div>' . "\n";
 			echo '<div id="post-' . $robots_css_id . '-display">' . "\n";
 			echo '<div id="post-' . $robots_css_id . '-content">' . $content;

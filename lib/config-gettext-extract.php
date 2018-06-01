@@ -123,7 +123,7 @@ _x( 'Sold Out', 'option value', 'wpsso' );
 _x( 'Soundcloud Business Page URL', 'option value', 'wpsso' );
 _x( 'Soundcloud Tracks', 'option value', 'wpsso' );
 _x( 'Soundcloud URL', 'option value', 'wpsso' );
-_x( 'SSO Desc.', 'column header', 'wpsso' );
+_x( 'SSO Desc', 'column header', 'wpsso' );
 _x( 'SSO Image', 'column header', 'wpsso' );
 _x( 'SSO', 'menu title', 'wpsso' );
 _x( 'SSO Schema', 'column header', 'wpsso' );

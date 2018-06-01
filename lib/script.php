@@ -215,6 +215,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				'_metabox_id' => $this->p->lca . '_metabox_' . $this->p->cf['meta']['id'],
 				'_tb_notices' => $this->tb_notices,
 				'_no_notices_html' => $no_notices_html,
+				'_option_labels' => array(
+					'robots' => _x( 'Robots', 'option label', 'wpsso' ),
+				),
 			);
 		}
 
