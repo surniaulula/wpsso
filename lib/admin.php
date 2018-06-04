@@ -1801,10 +1801,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 								} elseif ( $key === 'qty_used' ) {
 
-									$val = $val . ' ' . __( 'site addresses registered', 'wpsso' );
+									/**
+									 * The default 'qty_used' value is a '#/#' string.
+									 */
+									$val = sprintf( __( '%s site addresses registered', 'wpsso' ), $val );
 
 									/**
-									 * WpssoUmConfig::get_version() returns null if $idx does not exist (since v1.10.0).
+									 * Use a better '# of #' string translation if possible - requires WPSSO UM
+									 * version 1.10.0 or better to get the 'qty_reg' and 'qty_total' values.
 									 */
 									if ( version_compare( WpssoUmConfig::get_version(), '1.10.0-dev.4', '>=' ) ) {
 
