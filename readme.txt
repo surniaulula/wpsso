@@ -321,7 +321,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.4.1-dev.2 (2018/06/01)**
+**Version 4.4.1-dev.3 (2018/06/03)**
 
 * *New Features*
 	* None
@@ -433,9 +433,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.4.1-dev.2 =
+= 4.4.1-dev.3 =
 
-(2018/06/01) Renamed the "Search and Optimization" metabox to "Document SSO".
+(2018/06/03) Renamed the "Search and Optimization" metabox to "Document SSO".
 
 = 4.4.0 =
 
