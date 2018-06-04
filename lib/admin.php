@@ -1783,7 +1783,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						} elseif ( class_exists( 'SucomUpdate' ) ) {	// Required to use SucomUpdate::get_option().
 
 							foreach ( array(
-								'exp_date' => _x( 'Support and Updates Expires', 'option label', 'wpsso' ),
+								'exp_date' => _x( 'Support and Updates Expire', 'option label', 'wpsso' ),
 								'qty_used' => _x( 'License Information', 'option label', 'wpsso' ),
 							) as $key => $label ) {
 
@@ -1802,6 +1802,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								} elseif ( $key === 'qty_used' ) {
 
 									$val = $val . ' ' . __( 'site addresses registered', 'wpsso' );
+
+									/**
+									 * WpssoUmConfig::get_version() returns null if $idx does not exist (since v1.10.0).
+									 */
+									if ( version_compare( WpssoUmConfig::get_version(), '1.10.0-dev.4', '>=' ) ) {
+
+										$qty_reg   = SucomUpdate::get_option( $ext, 'qty_reg' );
+										$qty_total = SucomUpdate::get_option( $ext, 'qty_total' );
+
+										if ( $qty_reg !== null && $qty_total !== null ) {
+											$val = sprintf( __( '%d of %d site addresses registered', 'wpsso' ),
+												$qty_reg, $qty_total );
+										}
+									}
 
 									if ( ! empty( $info['url']['info'] ) ) {
 
@@ -2471,7 +2485,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function maybe_show_rating_notice() {
 
 			/**
-			 * Notices are only dismissible since wp v4.2.
+			 * Notices are dismissible since wp v4.2.
 			 */
 			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
 				return;	// stop here

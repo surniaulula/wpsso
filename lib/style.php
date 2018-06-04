@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'enqueuing styles for plugin install page' );
 							}
-							$this->plugin_install_inline_style( $hook_name );
+							$this->plugin_install_inline_style( $hook_name, $plugin_slug );
 						}
 					}
 
@@ -439,10 +439,37 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 		}
 
-		private function plugin_install_inline_style( $hook_name ) {	// $hook_name = plugin-install.php
+		private function plugin_install_inline_style( $hook_name, $plugin_slug = false ) {	// $hook_name = plugin-install.php
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+
+			/**
+			 * Fix the WordPress banner resolution.
+			 */
+			if ( $plugin_slug !== false && ! empty( $this->p->cf['*']['slug'][$plugin_slug] ) ) {
+
+				$ext = $this->p->cf['*']['slug'][$plugin_slug];
+
+				if ( ! empty( $this->p->cf['plugin'][$ext]['img']['banners'] ) ) {
+
+					$banners = $this->p->cf['plugin'][$ext]['img']['banners'];
+
+					if ( ! empty( $banners['low'] ) || ! empty( $banners['high'] ) ) {	// Must have at least one banner.
+
+						$low  = empty( $banners['low'] ) ? $banners['high'] : $banners['low'];
+						$high = empty( $banners['high'] ) ? $banners['low'] : $banners['high'];
+					
+						echo '<style type="text/css">' . "\n";
+						echo '#plugin-information-title.with-banner { background-image: url( ' . esc_url( $low ) . ' ); }' . "\n";
+						echo '@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {' .
+							'#plugin-information-title.with-banner { background-image: url( ' . esc_url( $high ) . ' ) !important; } }' . "\n";
+						echo '</style>' . "\n";
+					}
+				}
+			}
+
 			echo '
 				<style type="text/css">
 					/* Hide the plugin name overlay */
