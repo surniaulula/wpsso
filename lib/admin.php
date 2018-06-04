@@ -48,6 +48,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'pageref_url' => 'esc_url_raw',
 				'pageref_title' => 'esc_html',
 			) as $pageref => $esc_func ) {
+
 				if ( ! empty( $_GET[$this->p->lca . '_' . $pageref] ) ) {
 					$this->$pageref = call_user_func( $esc_func, urldecode( $_GET[$this->p->lca . '_' . $pageref] ) );
 				}
@@ -555,8 +556,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $links;
 		}
 
-		// define and disable the "Expect: 100-continue" header
-		// use checks to make sure other filters aren't giving us a string or boolean
+		/**
+		 * Define and disable the "Expect: 100-continue" header. $req should be an array,
+		 * so make sure other filters aren't giving us a string or boolean.
+		 */
 		public function add_expect_header( $req, $url ) {
 			if ( ! is_array( $req ) ) {
 				$req = array();
@@ -1710,11 +1713,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $info['base'] ) ) {
 
 					$details_url = add_query_arg( array(
-						'tab' => 'plugin-information',
 						'plugin' => $info['slug'],
+						'tab' => 'plugin-information',
 						'TB_iframe' => 'true',
 						'width' => $this->p->cf['wp']['tb_iframe']['width'],
-						'height' => $this->p->cf['wp']['tb_iframe']['height']
+						'height' => $this->p->cf['wp']['tb_iframe']['height'],
 					), is_multisite() ?
 						network_admin_url( 'plugin-install.php', null ) :
 						get_admin_url( null, 'plugin-install.php' ) );
@@ -1774,34 +1777,61 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'', false, ++$tabindex ) . '</td>';
 
 						if ( $network ) {
-							$table_rows['site_use'] = self::get_option_site_use( 'plugin_' . $ext . '_tid', 
-								$this->form, $network, true );	// th and td
 
-						} elseif ( class_exists( 'SucomUpdate' ) ) {
+							$table_rows['site_use'] = self::get_option_site_use( 'plugin_' . $ext . '_tid', $this->form, $network, true );
+
+						} elseif ( class_exists( 'SucomUpdate' ) ) {	// Required to use SucomUpdate::get_option().
+
 							foreach ( array(
-								'exp_date' => _x( 'Updates and Support Expire', 'option label', 'wpsso' ),
-								'qty_used' => _x( 'Site Licenses Assigned', 'option label', 'wpsso' ),
+								'exp_date' => _x( 'Support and Updates Expires', 'option label', 'wpsso' ),
+								'qty_used' => _x( 'License Information', 'option label', 'wpsso' ),
 							) as $key => $label ) {
-								if ( $val = SucomUpdate::get_option( $ext, $key ) ) {
-									switch ( $key ) {
-										case 'exp_date':
-											if ( $val === '0000-00-00 00:00:00' ) {
-												$val = _x( 'Never', 'option value', 'wpsso' );
-											}
-											break;
+
+								$val = SucomUpdate::get_option( $ext, $key );
+
+								if ( empty( $val ) ) {	// Skip table rows for empty values.
+									
+									continue;
+
+								} elseif ( $key === 'exp_date' ) {
+
+									if ( $val === '0000-00-00 00:00:00' ) {
+										$val = _x( 'Never', 'option value', 'wpsso' );
 									}
-									$table_rows[$key] = '<th class="medium nowrap">' . $label . '</th>' .
-										'<td width="100%">' . $val . '</td>';
+
+								} elseif ( $key === 'qty_used' ) {
+
+									$val = $val . ' ' . __( 'site addresses registered', 'wpsso' );
+
+									if ( ! empty( $info['url']['info'] ) ) {
+
+										$locale = is_admin() && function_exists( 'get_user_locale' ) ?
+											get_user_locale() : get_locale();
+
+										$info_url = add_query_arg( array(
+											'tid' => $this->p->options['plugin_' . $ext . '_tid'],
+											'locale' => $locale,
+											'TB_iframe' => 'true',
+											'width' => $this->p->cf['wp']['tb_iframe']['width'],
+											'height' => $this->p->cf['wp']['tb_iframe']['height'],
+										), $info['url']['purchase'] . 'info/' );
+
+										$val = '<a href="' . $info_url . '" class="thickbox">' . $val . '</a>';
+									}
 								}
+
+								$table_rows[$key] = '<th class="medium nowrap">' . $label . '</th>' .
+									'<td width="100%">' . $val . '</td>';
 							}
 						}
 
 					} else {
+
 						$table_rows['plugin_tid'] .= '<td class="blank">' .
 							( empty( $this->p->options['plugin_' . $ext . '_tid'] ) ?
 								$this->form->get_no_input( 'plugin_' . $ext . '_tid', 'tid mono' ) :
-								$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono', '', 0,
-									'', false, ++$tabindex ) ) . '</td>';
+								$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono',
+									'', 0, '', false, ++$tabindex ) ) . '</td>';
 					}
 
 				} else {

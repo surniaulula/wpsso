@@ -445,6 +445,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 			echo '
 				<style type="text/css">
+					/* Hide the plugin name overlay */
 					body#plugin-information div#plugin-information-title.with-banner h2 {
 						display:none;
 					}
