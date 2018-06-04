@@ -462,9 +462,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						$high = empty( $banners['high'] ) ? $banners['low'] : $banners['high'];
 					
 						echo '<style type="text/css">' . "\n";
-						echo '#plugin-information-title.with-banner { background-image: url( ' . esc_url( $low ) . ' ); }' . "\n";
-						echo '@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {' .
-							'#plugin-information-title.with-banner { background-image: url( ' . esc_url( $high ) . ' ) !important; } }' . "\n";
+						echo '#plugin-information #plugin-information-title.with-banner { '.
+							'background-image: url( ' . esc_url( $low ) . ' ); }' . "\n";
+						echo '@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) { ' .
+							'#plugin-information #plugin-information-title.with-banner { ' .
+							'background-image: url( ' . esc_url( $high ) . ' ); } }' . "\n";
 						echo '</style>' . "\n";
 					}
 				}
