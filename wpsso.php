@@ -10,7 +10,7 @@
  * Author URI: https://wpsso.com/
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
- * Description: Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.
+ * Description: WPSSO Core creates complete and accurate meta tags and Schema markup from your content automatically - for social sharing, Google\'s Knowledge Graph and Rich Card SEO, Pinterest Rich Pins and more.
  * Requires PHP: 5.4
  * Requires At Least: 3.8
  * Tested Up To: 4.9.6

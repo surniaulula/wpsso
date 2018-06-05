@@ -1272,17 +1272,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				if ( empty( $info['version'] ) ) {	// only active add-ons
+				if ( empty( $info['version'] ) ) {	// Only active add-ons.
 					continue;
 				}
 
-				$installed_version = isset( $info['version'] ) ? $info['version'] : ''; // static value from config
+				$installed_version = isset( $info['version'] ) ? $info['version'] : ''; // Static value from config.
 				$installed_style   = '';
-				$stable_version    = __( 'Not Available', 'wpsso' ); // default value
-				$latest_version    = __( 'Not Available', 'wpsso' ); // default value
+				$stable_version    = __( 'Not Available', 'wpsso' ); // Default value.
+				$latest_version    = __( 'Not Available', 'wpsso' ); // Default value.
 				$latest_notice     = '';
 				$changelog_url     = isset( $info['url']['changelog'] ) ? $info['url']['changelog'] : '';
-				$readme_info       = $this->get_readme_info( $ext, true ); // $read_cache = true
+				$readme_info       = $this->get_readme_info( $ext, true ); // $read_cache is true.
 
 				if ( ! empty( $readme_info['stable_tag'] ) ) {
 
@@ -3040,7 +3040,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$file_name = 'readme.txt';
-			$file_key = SucomUtil::sanitize_hookname( $file_name );	// readme.txt -> readme_txt
+			$file_key = SucomUtil::sanitize_hookname( $file_name );	// Rename readme.txt to readme_txt.
 			$file_dir = SucomUtil::get_const( strtoupper( $ext ) . '_PLUGINDIR' );
 			$file_local = $file_dir ? trailingslashit( $file_dir ).$file_name : false;
 			$file_remote = isset( $this->p->cf['plugin'][$ext]['url'][$file_key] ) ? 
@@ -3095,7 +3095,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$parser = new SuextParseReadme( $this->p->debug );
 				$readme_info = $parser->parse_readme_contents( $readme_content );
 	
-				// remove possibly inaccurate information from local file
+				// Remove possibly inaccurate information from the local readme file.
 				if ( ! $readme_from_url && is_array( $readme_info ) ) {
 					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key ) {
 						unset ( $readme_info[$key] );

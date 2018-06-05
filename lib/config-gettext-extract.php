@@ -16,7 +16,6 @@ _x( 'Caption:', 'option value', 'wpsso' );
 _x( 'Categories', 'option value', 'wpsso' );
 _x( 'Center', 'option value', 'wpsso' );
 _x( 'checked', 'option value', 'wpsso' );
-_x( 'Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google\'s Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more.', 'plugin description', 'wpsso' );
 _x( 'Contractor', 'option value', 'wpsso' );
 _x( '[Custom Address]', 'option value', 'wpsso' );
 _x( 'Damaged', 'option value', 'wpsso' );
@@ -168,6 +167,7 @@ _x( 'WPSSO Core add-on to provide tuning options for the WordPress image editors
 _x( 'WPSSO Core add-on to provide Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide updates for the WPSSO Core Pro plugin and its Pro add-ons.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core creates complete and accurate meta tags and Schema markup from your content automatically - for social sharing, Google\'s Knowledge Graph and Rich Card SEO, Pinterest Rich Pins and more.', 'plugin description', 'wpsso' );
 _x( 'Year', 'option value', 'wpsso' );
 _x( 'Yes', 'option value', 'wpsso' );
 _x( 'YOURLS', 'option value', 'wpsso' );

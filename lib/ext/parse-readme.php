@@ -13,20 +13,23 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 	class SuextParseReadme {
 	
 		function __construct( &$debug = false ) {
-	
 			if ( ! empty( $this->debug->enabled ) ) {
 				$this->debug->mark();
 			}
 		}
 	
 		function parse_readme( $file ) {
-			$file_contents = @implode('', @file($file));
-			return $this->parse_readme_contents( $file_contents );
+
+			$file_contents = @implode( '', @file( $file ) );
+
+			$readme_contents = $this->parse_readme_contents( $file_contents );
+
+			return $readme_contents;
 		}
 	
 		function parse_readme_contents( $file_contents ) {
 	
-			$file_contents = str_replace( array("\r\n", "\r"), "\n", $file_contents );
+			$file_contents = str_replace( array( "\r\n", "\r" ), "\n", $file_contents );
 			$file_contents = trim( $file_contents );
 	
 			if ( 0 === strpos( $file_contents, "\xEF\xBB\xBF" ) ) {
