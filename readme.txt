@@ -321,7 +321,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.4.1-dev.4 (2018/06/04)**
+**Version 4.5.0-b.1 (2018/06/05)**
 
 * *New Features*
 	* None
@@ -434,9 +434,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.4.1-dev.4 =
+= 4.5.0-b.1 =
 
-(2018/06/04) Renamed the "Search and Optimization" metabox to "Document SSO". Added a "License Information" link in the Add-ons page to lookup registered site addresses (Pro version).
+(2018/06/05) Renamed the "Search and Optimization" metabox to "Document SSO". Added a "License Information" link in the Add-ons page to lookup registered site addresses (Pro version).
 
 = 4.4.0 =
 
