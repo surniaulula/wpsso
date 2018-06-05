@@ -108,7 +108,7 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 
 WPSSO Core Pro gives you the power to further integrate and customize your meta tags and Schema markup with third party plugins and APIs.
 
-* Includes a Document SSO metabox for Posts, Pages, custom post type, user profile, category, tag, and custom taxonomy editing pages.
+* Includes a Document SSO (aka Social and Search Optimization) metabox for Posts, Pages, custom post type, user profile, category, tag, and custom taxonomy editing pages.
 
 * Offers individual customization of the article topic, shared title, descriptions, shared image and/or video, product information, recipe information, event information, and much more.
 
