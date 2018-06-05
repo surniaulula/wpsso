@@ -14,9 +14,11 @@ Tested Up To: 4.9.6
 WC Tested Up To: 3.3.5
 Stable Tag: 4.4.0
 
-<p>Why manage meta tag and Schema markup values manually?</p>
+Why manage meta tag and Schema markup values manually?
 
-<p>WPSSO creates complete and accurate values from your content automatically!</p>
+&nbsp;
+
+WPSSO creates complete and accurate values from your content automatically!
 
 == Description ==
 
