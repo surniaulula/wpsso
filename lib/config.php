@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'media' => array(
 								'facebook' => '(api) Facebook Video API',
 								'gravatar' => '(api) Author Gravatar Image',
-								'ngg' => '(plugin) NGG version 1-2: NextGEN Gallery, NextCellent Gallery',
+								'ngg' => '(plugin) NextGEN Gallery, NextCellent Gallery',
 								'rtmedia' => '(plugin) rtMedia for WordPress, BuddyPress and bbPress',
 								'slideshare' => '(api) Slideshare API',
 								'soundcloud' => '(api) Soundcloud API',
@@ -736,7 +736,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'p_add_nopin_media_img_tag' => 1,
 					'p_add_nopin_header_img_tag' => 1,
 					'sc_publisher_url' => '',
-					'seo_desc_len' => 320,				// Meta name="description" maximum text length (hard limit).
+					'seo_desc_len' => 156,				// Meta name="description" maximum text length (hard limit).
 					'seo_author_field' => 'gplus',
 					'seo_publisher_url' => '',			// (localized)
 					'tumblr_publisher_url' => '',
@@ -2381,7 +2381,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'images/follow/Facebook.png' => 'https://www.facebook.com/SurniaUlulaCom',
 					'images/follow/GooglePlus.png' => 'https://plus.google.com/+SurniaUlula/',
 					'images/follow/Twitter.png' => 'https://twitter.com/surniaululacom',
-					'images/follow/Rss.png' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso/feed/',
+					//'images/follow/Rss.png' => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso/feed/',
 				),
 			),
 		);

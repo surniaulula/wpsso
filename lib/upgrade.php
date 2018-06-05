@@ -295,13 +295,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
-				/**
-				 * 2017/12/20 google updated their max description length from 160 to 320 characters.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 571 ) {
-					$opts['seo_desc_len'] = 320;
-				}
-
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $this->p->lca . '_rename_site_options_keys',
 					self::$rename_site_options_keys ) );

@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			/**
 			 * Don't include the 'cache_status' metabox if we're using an external object cache.
 			 */
-			if ( true || $using_external_cache ) {
+			if ( $using_external_cache ) {
 				$metabox_ids = array( 
 					// first row
 					'rate_review' => _x( 'Ratings are Awesome!', 'metabox title', 'wpsso' ),
@@ -94,14 +94,20 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			return $classes;
 		}
 
-		// show two-column metaboxes for sharing buttons
 		public function action_form_content_metaboxes_dashboard( $pagehook ) {
+
 			foreach ( range( 1, $this->max_cols ) as $col ) {
-				// ids must use underscores instead of hyphens to order metaboxes
+
+				/**
+				 * CSS id values must use underscores instead of hyphens to order the metaboxes.
+				 */
 				echo '<div id="dashboard_col_'.$col.'" class="max_cols_'.$this->max_cols.' dashboard_col">';
+
 				do_meta_boxes( $pagehook, 'dashboard_col_'.$col, null );
+
 				echo '</div><!-- #dashboard_col_'.$col.' -->' . "\n";
 			}
+
 			echo '<div style="clear:both;"></div>' . "\n";
 		}
 	}

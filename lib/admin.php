@@ -177,14 +177,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$has_aop = $this->p->check->aop( $this->p->lca, true, $has_pdir );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+
 				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $has_pdir );
+
 				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) && $has_aop &&
 					$this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? true : false;
+
 				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ?
-					_x( 'Pro', 'package type', 'wpsso' ) :
-					_x( 'Free', 'package type', 'wpsso' );
+					_x( 'Pro', 'package type', 'wpsso' ) : _x( 'Free', 'package type', 'wpsso' );
+
 				self::$pkg[$ext]['short'] = $info['short'] . ' ' . self::$pkg[$ext]['type'];
+
 				self::$pkg[$ext]['name'] = SucomUtil::get_pkg_name( $info['name'], self::$pkg[$ext]['type'] );
+
 				self::$pkg[$ext]['gen'] = $info['short'] . ' ' . ( isset( $info['version'] ) ? $info['version'] . '/' .
 					( self::$pkg[$ext]['aop'] ? 'L' : ( self::$pkg[$ext]['pdir'] ? 'U' : 'F' ) ) : '' );
 			}
@@ -1160,9 +1165,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$using_external_cache = wp_using_ext_object_cache();
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox cache-status">';
-			echo '<tr><td colspan="' . $table_cols . '"><h4>' .
-				sprintf( __( '%s Database Transients', 'wpsso' ), $info['short'] ).
-					'</h4></td></tr>';
+
+			echo '<tr><td colspan="' . $table_cols . '"><h4>';
+			echo sprintf( __( '%s Database Transients', 'wpsso' ), $info['short'] );
+			echo '</h4></td></tr>';
+
 			echo '<tr>';
 			echo '<th class="cache-label"></th>';
 			echo '<th class="cache-count">' . __( 'Count', 'wpsso' ) . '</th>';
@@ -1315,7 +1322,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 
-				echo '<tr><td colspan="' . $table_cols . '"><h4>' . self::$pkg[$ext]['short'] . '</h4></td></tr>';
+				echo '<tr><td colspan="' . $table_cols . '"><h4>' . $info['name'] . '</h4></td></tr>';
 
 				echo '<tr><th class="version-label">' . _x( 'Installed', 'option label', 'wpsso' ) . ':</th>
 					<td class="version-number" ' . $installed_style . '>' . $installed_version . '</td></tr>';
@@ -1389,12 +1396,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$features = apply_filters( $ext . '_status_gpl_features', $features, $ext, $info, self::$pkg[$ext] );
 
 				if ( ! empty( $features ) ) {
-					echo '<tr><td colspan="' . $table_cols . '">' .
-						'<h4' . ( $ext_num > 1 ? ' style="margin-top:10px;"' : '' ) . '>' .
-							$info['short'] . '</h4></td></tr>';
+
+					echo '<tr><td colspan="' . $table_cols . '">';
+					echo '<h4' . ( $ext_num > 1 ? ' style="margin-top:10px;"' : '' ) . '>';
+					echo $info['name'];
+					echo '</h4></td></tr>';
+
 					$this->show_plugin_status( $ext, $info, $features );
 				}
 			}
+
 			echo '</table>';
 		}
 
@@ -1455,8 +1466,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $features ) ) {
 
-					echo '<tr><td colspan="3"><h4' . ( $ext_num > 1 ? ' style="margin-top:10px;"' : '' ) . '>' .
-						$info['short'] . '</h4></td></tr>';
+					echo '<tr><td colspan="3">';
+					echo '<h4' . ( $ext_num > 1 ? ' style="margin-top:10px;"' : '' ) . '>';
+					echo $info['name'];
+					echo '</h4></td></tr>';
 
 					$this->show_plugin_status( $ext, $info, $features );
 				}
@@ -1586,7 +1599,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_help_support() {
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox"><tr><td>';
+
 			$this->show_follow_icons();
+
 			echo $this->p->msgs->get( 'column-help-support' );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
@@ -1598,22 +1613,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$links = array();
 
 				if ( ! empty( $info['url']['faqs'] ) ) {
-					$links[] = sprintf( __( 'Read the <a href="%s">Frequently Asked Questions</a>',
+					$links[] = sprintf( __( '<a href="%s">Frequently Asked Questions</a>',
 						'wpsso' ), $info['url']['faqs'] ).( ! empty( $info['url']['notes'] ) ?
 							' ' . sprintf( __( 'and <a href="%s">Other Notes</a>',
 								'wpsso' ), $info['url']['notes'] ) : '' );
 				}
 
 				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
-					$links[] = sprintf( __( 'Open a <a href="%s">Priority Support Ticket</a>',
-						'wpsso' ), $info['url']['support'] ) . ' (' . __( 'Pro version', 'wpsso' ) . ')';
+					$links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info['url']['support'] ) .
+						' (' . __( 'Pro version', 'wpsso' ) . ')';
 				} elseif ( ! empty( $info['url']['forum'] ) ) {
-					$links[] = sprintf( __( 'Post in the <a href="%s">Community Support Forum</a>',
-						'wpsso' ), $info['url']['forum'] ) . ' (' . __( 'Free version', 'wpsso' ) . ')';
+					$links[] = sprintf( __( '<a href="%s">Community Support Forum</a>', 'wpsso' ), $info['url']['forum'] );
 				}
 
 				if ( ! empty( $links ) ) {
-					echo '<h4>' . $info['short'] . '</h4>' . "\n";
+					echo '<h4>' . $info['name'] . '</h4>' . "\n";
 					echo '<ul><li>' . implode( '</li><li>', $links ) . '</li></ul>' . "\n";
 				}
 			}
@@ -1651,12 +1665,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function show_follow_icons() {
+
 			echo '<div class="follow-icons">';
+
 			$img_size = $this->p->cf['follow']['size'];
+
 			foreach ( $this->p->cf['follow']['src'] as $img_rel => $url ) {
 				echo '<a href="' . $url . '"><img src="' . WPSSO_URLPATH.$img_rel . '"
 					width="' . $img_size . '" height="' . $img_size . '" border="0" /></a>';
 			}
+
 			echo '</div>';
 		}
 
@@ -1750,16 +1768,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * Plugin Name, Description, and Links
 				 */
-				$plugin_name_html = '<strong>' . $info['name'] . '</strong>';
+				$plugin_name_html = '<h4>' . $info['name'] . '</h4>';
 
 				$plugin_desc_html = empty( $info['desc'] ) ?
 					'' : htmlentities( _x( $info['desc'], 'plugin description', 'wpsso' ),
 						ENT_QUOTES, $charset, false );
 
 				$table_rows['plugin_name'] = '<td colspan="2" class="licenses-data-plugin_name" id="licenses-data-plugin_name-' . $ext . '">' .
-					'<p style="margin-top:10px;">' . $plugin_name_html . '</p>' .
-					( empty( $plugin_desc_html ) ? '' : '<p>' . $plugin_desc_html . '</p>' ).
-					( empty( $ext_links ) ? '' : '<div class="row-actions visible">' . implode( ' | ', $ext_links ) . '</div>' ).
+					$plugin_name_html . ( empty( $plugin_desc_html ) ? '' : '<p>' . $plugin_desc_html . '</p>' ) .
+					( empty( $ext_links ) ? '' : '<div class="row-actions visible">' . implode( ' | ', $ext_links ) . '</div>' ) .
 					'</td>';
 
 				/**

@@ -339,14 +339,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( $this->p->avail['media']['ngg'] && strpos( $pid, 'ngg-' ) === 0 ) {
 
 				if ( ! empty( $this->p->m['media']['ngg'] ) ) {
+
 					return self::reset_image_src_info( $this->p->m['media']['ngg']->get_image_src( $pid, $size_name, $check_dupes ) );
+
 				} else {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'ngg module is not available: image id '.$attr_value.' ignored' );
 					}
+
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-						$this->p->notice->err( sprintf( __( 'The NextGEN Gallery integration module provided by %1$s is required to read information for image ID %2$s.', 'wpsso' ), $this->p->cf['plugin'][$this->p->lca]['short'].' Pro', $pid ) );
+						$error_msg = __( 'The NGG integration module provided by %1$s is required to read information for image ID %2$s.', 'wpsso' );
+						$this->p->notice->err( sprintf( $error_msg, $this->p->cf['plugin'][$this->p->lca]['short'].' Pro', $pid ) );
 					}
+
 					return self::reset_image_src_info();
 				}
 
@@ -355,6 +361,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: attachment '.$pid.' is not an image' );
 				}
+
 				return self::reset_image_src_info();
 			}
 

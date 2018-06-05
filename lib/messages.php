@@ -2247,15 +2247,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'column-help-support':
 
-						$text = '<p>'.sprintf( __( '<strong>Development of %1$s is driven by user requests</strong> &mdash; we welcome all your comments and suggestions!', 'wpsso' ), $info['short'] ).'</p>';
+						$text = '<p>';
+						
+						$text .= sprintf( __( '<strong>Development of %1$s is driven by user requests</strong> &mdash; we welcome all your comments and suggestions.', 'wpsso' ), $info['short'] ) . ' ;-)';
+						
+						$text .= '</p>';
 
 						break;
 
 					case 'column-rate-review':
 
-						$text = '<p>'.__( '<strong>Great ratings are a terrific way to encourage your plugin developers</strong> &mdash; and it only takes a minute.', 'wpsso' ).' ;-)</p>';
+						$text = '<p>';
+						
+						$text .= __( '<strong>Great ratings are a terrific way to encourage your plugin developers</strong> &mdash; and it only takes a minute.', 'wpsso' ) . ' ';
 
-						$text .= '<p>'.sprintf( __( 'Say "Hi" and encourage us %s by rating the plugins you use.', 'wpsso' ), '<span class="'.$lca.'-rate-heart"></span>' ).'</p>';
+						$text .= sprintf( __( 'Say "Thank you" %s by rating the plugins you use.', 'wpsso' ),
+							'<span class="' . $lca . '-rate-heart"></span>' ) . ' :-)';
+
+						$text .= '</p>';
 
 						break;
 
