@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.5.0-b.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.5.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1980,8 +1980,8 @@ msgstr ""
 #: lib/config-gettext-extract.php:170
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core creates complete and accurate meta tags and Schema markup from "
-"your content automatically - for social sharing, Google's Knowledge Graph "
+"WPSSO Core creates complete and accurate meta tags and Schema markup "
+"automatically from your content for social sharing, Google's Knowledge Graph "
 "and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
 msgstr ""
 
@@ -6006,8 +6006,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"WPSSO Core creates complete and accurate meta tags and Schema markup from "
-"your content automatically - for social sharing, Google's Knowledge Graph "
+"WPSSO Core creates complete and accurate meta tags and Schema markup "
+"automatically from your content for social sharing, Google's Knowledge Graph "
 "and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
 msgstr ""
 

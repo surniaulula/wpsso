@@ -167,7 +167,7 @@ _x( 'WPSSO Core add-on to provide tuning options for the WordPress image editors
 _x( 'WPSSO Core add-on to provide Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide updates for the WPSSO Core Pro plugin and its Pro add-ons.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Core creates complete and accurate meta tags and Schema markup from your content automatically - for social sharing, Google\'s Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google\'s Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.', 'plugin description', 'wpsso' );
 _x( 'Year', 'option value', 'wpsso' );
 _x( 'Yes', 'option value', 'wpsso' );
 _x( 'YOURLS', 'option value', 'wpsso' );

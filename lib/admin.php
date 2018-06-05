@@ -1827,7 +1827,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 									 * Use a better '# of #' string translation if possible - requires WPSSO UM
 									 * version 1.10.0 or better to get the 'qty_reg' and 'qty_total' values.
 									 */
-									if ( version_compare( WpssoUmConfig::get_version(), '1.10.0-b.1', '>=' ) ) {
+									if ( version_compare( WpssoUmConfig::get_version(), '1.10.0-b.2', '>=' ) ) {
 
 										$qty_reg   = SucomUpdate::get_option( $ext, 'qty_reg' );
 										$qty_total = SucomUpdate::get_option( $ext, 'qty_total' );

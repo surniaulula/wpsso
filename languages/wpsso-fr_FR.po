@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-06-05 09:05-0600\n"
-"PO-Revision-Date: 2018-06-05 09:07-0600\n"
+"POT-Creation-Date: 2018-06-05 12:17-0600\n"
+"PO-Revision-Date: 2018-06-05 12:18-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1139,765 +1139,765 @@ msgid "checked"
 msgstr "coché"
 
 #: lib/config-gettext-extract.php:19
-msgctxt "plugin description"
-msgid "Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more."
-msgstr "Balises méta et balisage de Schéma complet à partir de votre contenu pour le partage social (SMO), Google Knowledge Graph et Rich Cards (SEO), Pinterest Rich Pins et d'autres."
-
-#: lib/config-gettext-extract.php:20
 msgctxt "option value"
 msgid "Contractor"
 msgstr "Sous-traitant"
 
-#: lib/config-gettext-extract.php:21
+#: lib/config-gettext-extract.php:20
 msgctxt "option value"
 msgid "[Custom Address]"
 msgstr "[Adresse personnalisée]"
 
-#: lib/config-gettext-extract.php:22
+#: lib/config-gettext-extract.php:21
 msgctxt "option value"
 msgid "Damaged"
 msgstr "Endommagé"
 
-#: lib/config-gettext-extract.php:23
+#: lib/config-gettext-extract.php:22
 msgctxt "lib file description"
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: lib/config-gettext-extract.php:24
+#: lib/config-gettext-extract.php:23
 msgctxt "option value"
 msgid "Day"
 msgstr "Jour"
 
-#: lib/config-gettext-extract.php:25
+#: lib/config-gettext-extract.php:24
 msgctxt "option value"
 msgid "default is %s"
 msgstr "%s par défaut"
 
-#: lib/config-gettext-extract.php:26
+#: lib/config-gettext-extract.php:25
 msgctxt "option value"
 msgid "(default)"
 msgstr "(défaut)"
 
-#: lib/config-gettext-extract.php:27
+#: lib/config-gettext-extract.php:26
 msgctxt "option value"
 msgid "Development and Up"
 msgstr "Développement et plus"
 
-#: lib/config-gettext-extract.php:28
+#: lib/config-gettext-extract.php:27
 msgctxt "option value"
 msgid "Discontinued"
 msgstr "Discontinué"
 
-#: lib/config-gettext-extract.php:29
+#: lib/config-gettext-extract.php:28
 msgctxt "option value"
 msgid "Display Name"
 msgstr "Nom d'affichage publique"
 
-#: lib/config-gettext-extract.php:30
+#: lib/config-gettext-extract.php:29
 msgctxt "option value"
 msgid "DLMY.App"
 msgstr "DLMY.App"
 
-#: lib/config-gettext-extract.php:31
+#: lib/config-gettext-extract.php:30
 msgctxt "metabox title"
 msgid "Document SSO"
 msgstr "SSO du document"
 
-#: lib/config-gettext-extract.php:32
+#: lib/config-gettext-extract.php:31
 msgctxt "lib file description"
 msgid "Essential"
 msgstr "Essentiel"
 
-#: lib/config-gettext-extract.php:33
+#: lib/config-gettext-extract.php:32
 msgctxt "option value"
 msgid "Every day"
 msgstr "Chaque jour"
 
-#: lib/config-gettext-extract.php:34
+#: lib/config-gettext-extract.php:33
 msgctxt "option value"
 msgid "Every five days"
 msgstr "Aux cinq jours"
 
-#: lib/config-gettext-extract.php:35
+#: lib/config-gettext-extract.php:34
 msgctxt "option value"
 msgid "Every four days"
 msgstr "Aux quatre jours"
 
-#: lib/config-gettext-extract.php:36
+#: lib/config-gettext-extract.php:35
 msgctxt "option value"
 msgid "Every six days"
 msgstr "Aux six jours"
 
-#: lib/config-gettext-extract.php:37
+#: lib/config-gettext-extract.php:36
 msgctxt "option value"
 msgid "Every three days"
 msgstr "Aux trois jours"
 
-#: lib/config-gettext-extract.php:38
+#: lib/config-gettext-extract.php:37
 msgctxt "option value"
 msgid "Every two days"
 msgstr "Aux deux jours"
 
-#: lib/config-gettext-extract.php:39
+#: lib/config-gettext-extract.php:38
 msgctxt "option value"
 msgid "Every week"
 msgstr "Chaque semaine"
 
-#: lib/config-gettext-extract.php:40
+#: lib/config-gettext-extract.php:39
 msgctxt "option value"
 msgid "Excerpt Only"
 msgstr "Extrait seulement"
 
-#: lib/config-gettext-extract.php:41
+#: lib/config-gettext-extract.php:40
 msgctxt "option value"
 msgid "Facebook Business Page URL"
 msgstr "URL page d'affaires Facebook"
 
-#: lib/config-gettext-extract.php:42
+#: lib/config-gettext-extract.php:41
 msgctxt "option value"
 msgid "Facebook User URL"
 msgstr "URL d'utilisateur Facebook"
 
-#: lib/config-gettext-extract.php:43
+#: lib/config-gettext-extract.php:42
 msgctxt "option value"
 msgid "Facebook Videos"
 msgstr "Vidéos Facebook"
 
-#: lib/config-gettext-extract.php:44
+#: lib/config-gettext-extract.php:43
 msgctxt "option value"
 msgid "False"
 msgstr "Faux"
 
-#: lib/config-gettext-extract.php:45
+#: lib/config-gettext-extract.php:44
 msgctxt "option label"
 msgid "Filtered Content"
 msgstr "Contenu filtré"
 
-#: lib/config-gettext-extract.php:46
+#: lib/config-gettext-extract.php:45
 msgctxt "option value"
 msgid "First and Last Names"
 msgstr "Nom et prénom"
 
-#: lib/config-gettext-extract.php:47
+#: lib/config-gettext-extract.php:46
 msgctxt "option value"
 msgid "Footer"
 msgstr "Pied de page"
 
-#: lib/config-gettext-extract.php:48
+#: lib/config-gettext-extract.php:47
 msgctxt "option value"
 msgid "Force this value"
 msgstr "Forcer cette valeur"
 
-#: lib/config-gettext-extract.php:49
+#: lib/config-gettext-extract.php:48
 msgctxt "option value"
 msgid "Friday"
 msgstr "Vendredi"
 
-#: lib/config-gettext-extract.php:50
+#: lib/config-gettext-extract.php:49
 msgctxt "option value"
 msgid "Full Time"
 msgstr "Temps plein"
 
-#: lib/config-gettext-extract.php:51
+#: lib/config-gettext-extract.php:50
 msgctxt "lib file description"
 msgid "General"
 msgstr "Général"
 
-#: lib/config-gettext-extract.php:52
+#: lib/config-gettext-extract.php:51
 msgctxt "option value"
 msgid "Google+ Business Page URL"
 msgstr "URL page d'affaires Google+"
 
-#: lib/config-gettext-extract.php:53
+#: lib/config-gettext-extract.php:52
 msgctxt "option value"
 msgid "Google"
 msgstr "Google"
 
-#: lib/config-gettext-extract.php:54
+#: lib/config-gettext-extract.php:53
 msgctxt "option value"
 msgid "Google+ URL"
 msgstr "URL Google+"
 
-#: lib/config-gettext-extract.php:55
+#: lib/config-gettext-extract.php:54
 msgctxt "option value"
 msgid "Header"
 msgstr "Entête"
 
-#: lib/config-gettext-extract.php:56
+#: lib/config-gettext-extract.php:55
 msgctxt "option label"
 msgid "Head Markup"
 msgstr "Balisage d'entête"
 
-#: lib/config-gettext-extract.php:57
+#: lib/config-gettext-extract.php:56
 msgctxt "option value"
 msgid "Hour"
 msgstr "Heure"
 
-#: lib/config-gettext-extract.php:58
+#: lib/config-gettext-extract.php:57
 msgctxt "option value"
 msgid "If value is empty"
 msgstr "Si la valeur est vide"
 
-#: lib/config-gettext-extract.php:59
+#: lib/config-gettext-extract.php:58
 msgctxt "option value"
 msgid "Image:"
 msgstr "Image:"
 
-#: lib/config-gettext-extract.php:60
+#: lib/config-gettext-extract.php:59
 msgctxt "option label"
 msgid "Image URL Custom Field"
 msgstr "Champ personnalisé URL d'image"
 
-#: lib/config-gettext-extract.php:61
+#: lib/config-gettext-extract.php:60
 msgctxt "option label"
 msgid "Image URL Info"
 msgstr "Info image d'URL"
 
-#: lib/config-gettext-extract.php:62
+#: lib/config-gettext-extract.php:61
 msgctxt "option value"
 msgid "Instagram Business Page URL"
 msgstr "URL page d'affaires Instagram"
 
-#: lib/config-gettext-extract.php:63
+#: lib/config-gettext-extract.php:62
 msgctxt "option value"
 msgid "Instagram URL"
 msgstr "URL Instagram"
 
-#: lib/config-gettext-extract.php:64
+#: lib/config-gettext-extract.php:63
 msgctxt "option value"
 msgid "In Stock"
 msgstr "En main"
 
-#: lib/config-gettext-extract.php:65
+#: lib/config-gettext-extract.php:64
 msgctxt "option value"
 msgid "In Store Only"
 msgstr "En magasin uniquement"
 
-#: lib/config-gettext-extract.php:66
+#: lib/config-gettext-extract.php:65
 msgctxt "option value"
 msgid "Intern"
 msgstr "Stagiaire"
 
-#: lib/config-gettext-extract.php:67
+#: lib/config-gettext-extract.php:66
 msgctxt "option value"
 msgid "Left"
 msgstr "Gauche"
 
-#: lib/config-gettext-extract.php:68
+#: lib/config-gettext-extract.php:67
 msgctxt "option value"
 msgid "Limited Availability"
 msgstr "Disponibilité limitée"
 
-#: lib/config-gettext-extract.php:69
+#: lib/config-gettext-extract.php:68
 msgctxt "option value"
 msgid "LinkedIn Company Page URL"
 msgstr "URL page entreprise LinkedIn"
 
-#: lib/config-gettext-extract.php:70
+#: lib/config-gettext-extract.php:69
 msgctxt "option value"
 msgid "LinkedIn URL"
 msgstr "URL LinkedIn"
 
-#: lib/config-gettext-extract.php:71
+#: lib/config-gettext-extract.php:70
 msgctxt "option label"
 msgid "Microdata Type URLs Custom Field"
 msgstr "Champ pers. URLs de type microdonnées"
 
-#: lib/config-gettext-extract.php:72
+#: lib/config-gettext-extract.php:71
 msgctxt "option value"
 msgid "Monday"
 msgstr "Lundi"
 
-#: lib/config-gettext-extract.php:73
+#: lib/config-gettext-extract.php:72
 msgctxt "option value"
 msgid "Month"
 msgstr "Mois"
 
-#: lib/config-gettext-extract.php:74
+#: lib/config-gettext-extract.php:73
 msgctxt "option value"
 msgid "Myspace Business Page URL"
 msgstr "URL page d'affaires Myspace"
 
-#: lib/config-gettext-extract.php:75
+#: lib/config-gettext-extract.php:74
 msgctxt "option value"
 msgid "Myspace URL"
 msgstr "URL Myspace"
 
-#: lib/config-gettext-extract.php:76
+#: lib/config-gettext-extract.php:75
 msgctxt "option value"
 msgid "New activation"
 msgstr "Nouvelle activation"
 
-#: lib/config-gettext-extract.php:77
+#: lib/config-gettext-extract.php:76
 msgctxt "option value"
 msgid "[New Address]"
 msgstr "[Nouvelle adresse]"
 
-#: lib/config-gettext-extract.php:78
+#: lib/config-gettext-extract.php:77
 msgctxt "option value"
 msgid "New"
 msgstr "Neuf"
 
-#: lib/config-gettext-extract.php:79
+#: lib/config-gettext-extract.php:78
 msgctxt "option value"
 msgid "[New Organization]"
 msgstr "[Nouvelle organisation]"
 
-#: lib/config-gettext-extract.php:80
+#: lib/config-gettext-extract.php:79
 msgctxt "option value"
 msgid "Nickname"
 msgstr "Pseudonyme"
 
-#: lib/config-gettext-extract.php:81
+#: lib/config-gettext-extract.php:80
 msgctxt "option value"
 msgid "(no images)"
 msgstr "(pas d'images)"
 
-#: lib/config-gettext-extract.php:82
+#: lib/config-gettext-extract.php:81
 msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
 
-#: lib/config-gettext-extract.php:83
+#: lib/config-gettext-extract.php:82
 msgctxt "option value"
 msgid "No"
 msgstr "Non"
 
-#: lib/config-gettext-extract.php:84
+#: lib/config-gettext-extract.php:83
 msgctxt "option value"
 msgid "(no videos)"
 msgstr "(aucun vidéos)"
 
-#: lib/config-gettext-extract.php:85
+#: lib/config-gettext-extract.php:84
 msgctxt "option value"
 msgid "Off"
 msgstr "Désactivé"
 
-#: lib/config-gettext-extract.php:86
+#: lib/config-gettext-extract.php:85
 msgctxt "option value"
 msgid "Online Only"
 msgstr "En ligne seulement"
 
-#: lib/config-gettext-extract.php:87
+#: lib/config-gettext-extract.php:86
 msgctxt "option value"
 msgid "On"
 msgstr "Activer"
 
-#: lib/config-gettext-extract.php:88
+#: lib/config-gettext-extract.php:87
 msgctxt "option value"
 msgid "(option disabled)"
 msgstr "(option désactivée)"
 
-#: lib/config-gettext-extract.php:89
+#: lib/config-gettext-extract.php:88
 msgctxt "option value"
 msgid "Other"
 msgstr "Autre"
 
-#: lib/config-gettext-extract.php:90
+#: lib/config-gettext-extract.php:89
 msgctxt "option value"
 msgid "Out of Stock"
 msgstr "Rupture de stock"
 
-#: lib/config-gettext-extract.php:91
+#: lib/config-gettext-extract.php:90
 msgctxt "option value"
 msgid "Ow.ly"
 msgstr "Ow.ly"
 
-#: lib/config-gettext-extract.php:92
+#: lib/config-gettext-extract.php:91
 msgctxt "option value"
 msgid "Parents"
 msgstr "Parents"
 
-#: lib/config-gettext-extract.php:93
+#: lib/config-gettext-extract.php:92
 msgctxt "option value"
 msgid "Part Time"
 msgstr "Temps partiel"
 
-#: lib/config-gettext-extract.php:94
+#: lib/config-gettext-extract.php:93
 msgctxt "option value"
 msgid "Per Diem"
 msgstr "Per diem"
 
-#: lib/config-gettext-extract.php:95
+#: lib/config-gettext-extract.php:94
 msgctxt "option value"
 msgid "Pinterest Company Page URL"
 msgstr "URL page entreprise Pinterest"
 
-#: lib/config-gettext-extract.php:96
+#: lib/config-gettext-extract.php:95
 msgctxt "option value"
 msgid "Pinterest URL"
 msgstr "URL Pinterest"
 
-#: lib/config-gettext-extract.php:97
+#: lib/config-gettext-extract.php:96
 msgctxt "option value"
 msgid "Pre-Order"
 msgstr "Pré-commande"
 
-#: lib/config-gettext-extract.php:98
+#: lib/config-gettext-extract.php:97
 msgctxt "option label"
 msgid "Product Availability Custom Field"
 msgstr "Champ pers. disponibilité de produit"
 
-#: lib/config-gettext-extract.php:99
+#: lib/config-gettext-extract.php:98
 msgctxt "option label"
 msgid "Product Brand Custom Field"
 msgstr "Champ pers. marque de produit"
 
-#: lib/config-gettext-extract.php:100
+#: lib/config-gettext-extract.php:99
 msgctxt "option label"
 msgid "Product Color Custom Field"
 msgstr "Champ pers. couleur de produit"
 
-#: lib/config-gettext-extract.php:101
+#: lib/config-gettext-extract.php:100
 msgctxt "option label"
 msgid "Product Condition Custom Field"
 msgstr "Champ pers. condition de produit"
 
-#: lib/config-gettext-extract.php:102
+#: lib/config-gettext-extract.php:101
 msgctxt "option label"
 msgid "Product Currency Custom Field"
 msgstr "Champ pers. devise de produit"
 
-#: lib/config-gettext-extract.php:103
+#: lib/config-gettext-extract.php:102
 msgctxt "option label"
 msgid "Product Material Custom Field"
 msgstr "Champ pers. matériel de produit"
 
-#: lib/config-gettext-extract.php:104
+#: lib/config-gettext-extract.php:103
 msgctxt "option label"
 msgid "Product Price Custom Field"
 msgstr "Champ personnalisé prix de produit"
 
-#: lib/config-gettext-extract.php:105
+#: lib/config-gettext-extract.php:104
 msgctxt "option label"
 msgid "Product Size Custom Field"
 msgstr "Champ pers. taille de produit"
 
-#: lib/config-gettext-extract.php:106
+#: lib/config-gettext-extract.php:105
 msgctxt "option value"
 msgid "Public Holidays"
 msgstr "Jours fériés"
 
-#: lib/config-gettext-extract.php:107
+#: lib/config-gettext-extract.php:106
 msgctxt "option label"
 msgid "Recipe Ingredients Custom Field"
 msgstr "Champ pers. ingrédients de recette"
 
-#: lib/config-gettext-extract.php:108
+#: lib/config-gettext-extract.php:107
 msgctxt "option label"
 msgid "Recipe Instructions Custom Field"
 msgstr "Champ pers. instructions de recette"
 
-#: lib/config-gettext-extract.php:109
+#: lib/config-gettext-extract.php:108
 msgctxt "option value"
 msgid "Refurbished"
 msgstr "Remis à neuf"
 
-#: lib/config-gettext-extract.php:110
+#: lib/config-gettext-extract.php:109
 msgctxt "option value"
 msgid "Release Candidate and Up"
 msgstr "Candidat stable et plus"
 
-#: lib/config-gettext-extract.php:111
+#: lib/config-gettext-extract.php:110
 msgctxt "option value"
 msgid "Right"
 msgstr "Droite"
 
-#: lib/config-gettext-extract.php:112
+#: lib/config-gettext-extract.php:111
 msgctxt "option label"
 msgid "Same-As URLs Custom Field"
 msgstr "Champ personnalisé URLs Same-As"
 
-#: lib/config-gettext-extract.php:113
+#: lib/config-gettext-extract.php:112
 msgctxt "option value"
 msgid "Saturday"
 msgstr "Samedi"
 
-#: lib/config-gettext-extract.php:114
+#: lib/config-gettext-extract.php:113
 msgctxt "option label"
 msgid "Schema Data"
 msgstr "Données Schéma"
 
-#: lib/config-gettext-extract.php:115
+#: lib/config-gettext-extract.php:114
 msgctxt "option label"
 msgid "Schema Types"
 msgstr "Types de Schéma"
 
-#: lib/config-gettext-extract.php:116
+#: lib/config-gettext-extract.php:115
 msgctxt "option value"
 msgid "(settings value)"
 msgstr "(valeur de réglages)"
 
-#: lib/config-gettext-extract.php:117
+#: lib/config-gettext-extract.php:116
 msgctxt "lib file description"
 msgid "Setup Guide"
 msgstr "Guide de configuration"
 
-#: lib/config-gettext-extract.php:118
+#: lib/config-gettext-extract.php:117
 msgctxt "option label"
 msgid "Shortened URLs"
 msgstr "URLs raccourcies"
 
-#: lib/config-gettext-extract.php:119
+#: lib/config-gettext-extract.php:118
 msgctxt "option value"
 msgid "Skype Username"
 msgstr "Nom d'utilisateur Skype"
 
-#: lib/config-gettext-extract.php:120
+#: lib/config-gettext-extract.php:119
 msgctxt "option value"
 msgid "Slideshare Presentations"
 msgstr "Présentations Slideshare"
 
-#: lib/config-gettext-extract.php:121 lib/messages.php:961
+#: lib/config-gettext-extract.php:120 lib/messages.php:961
 #: lib/messages.php:2012
 msgctxt "lib file description"
 msgid "Social and Search Image Dimensions"
 msgstr "Dimensions d'images sociale et de recherche"
 
-#: lib/config-gettext-extract.php:122
+#: lib/config-gettext-extract.php:121
 msgctxt "option value"
 msgid "Sold Out"
 msgstr "Épuisé"
 
-#: lib/config-gettext-extract.php:123
+#: lib/config-gettext-extract.php:122
 msgctxt "option value"
 msgid "Soundcloud Business Page URL"
 msgstr "URL page d'affaires Soundcloud"
 
-#: lib/config-gettext-extract.php:124
+#: lib/config-gettext-extract.php:123
 msgctxt "option value"
 msgid "Soundcloud Tracks"
 msgstr "Pistes Soundcloud"
 
-#: lib/config-gettext-extract.php:125
+#: lib/config-gettext-extract.php:124
 msgctxt "option value"
 msgid "Soundcloud URL"
 msgstr "URL Soundcloud"
 
-#: lib/config-gettext-extract.php:126
+#: lib/config-gettext-extract.php:125
 msgctxt "column header"
 msgid "SSO Desc"
 msgstr "Desc SSO"
 
-#: lib/config-gettext-extract.php:127
+#: lib/config-gettext-extract.php:126
 msgctxt "column header"
 msgid "SSO Image"
 msgstr "Image SSO"
 
-#: lib/config-gettext-extract.php:128
+#: lib/config-gettext-extract.php:127
 msgctxt "menu title"
 msgid "SSO"
 msgstr "SSO"
 
-#: lib/config-gettext-extract.php:129
+#: lib/config-gettext-extract.php:128
 msgctxt "column header"
 msgid "SSO Schema"
 msgstr "Schéma SSO"
 
-#: lib/config-gettext-extract.php:130
+#: lib/config-gettext-extract.php:129
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr "Stable / production"
 
-#: lib/config-gettext-extract.php:131
+#: lib/config-gettext-extract.php:130
 msgctxt "option value"
 msgid "Sunday"
 msgstr "Dimanche"
 
-#: lib/config-gettext-extract.php:132
+#: lib/config-gettext-extract.php:131
 msgctxt "option value"
 msgid "Temporary"
 msgstr "Temporaire"
 
-#: lib/config-gettext-extract.php:133
+#: lib/config-gettext-extract.php:132
 msgctxt "option value"
 msgid "Thursday"
 msgstr "Jeudi"
 
-#: lib/config-gettext-extract.php:134
+#: lib/config-gettext-extract.php:133
 msgctxt "option value"
 msgid "TinyURL"
 msgstr "TinyURL"
 
-#: lib/config-gettext-extract.php:135
+#: lib/config-gettext-extract.php:134
 msgctxt "option value"
 msgid "Title and Excerpt"
 msgstr "Titre et extrait"
 
-#: lib/config-gettext-extract.php:136
+#: lib/config-gettext-extract.php:135
 msgctxt "option value"
 msgid "Title Only"
 msgstr "Titre seulement"
 
-#: lib/config-gettext-extract.php:137
+#: lib/config-gettext-extract.php:136
 msgctxt "option value"
 msgid "Top"
 msgstr "Le haut"
 
-#: lib/config-gettext-extract.php:138
+#: lib/config-gettext-extract.php:137
 msgctxt "option value"
 msgid "True"
 msgstr "Vrai"
 
-#: lib/config-gettext-extract.php:139
+#: lib/config-gettext-extract.php:138
 msgctxt "option value"
 msgid "Tuesday"
 msgstr "Mardi"
 
-#: lib/config-gettext-extract.php:140
+#: lib/config-gettext-extract.php:139
 msgctxt "option value"
 msgid "Tumblr Business Page URL"
 msgstr "URL page d'affaires Tumblr"
 
-#: lib/config-gettext-extract.php:141
+#: lib/config-gettext-extract.php:140
 msgctxt "option value"
 msgid "Tumblr URL"
 msgstr "URL Tumblr"
 
-#: lib/config-gettext-extract.php:142
+#: lib/config-gettext-extract.php:141
 msgctxt "option value"
 msgid "Twitter Business @username"
 msgstr "Le @nom d'affaires Twitter"
 
-#: lib/config-gettext-extract.php:143
+#: lib/config-gettext-extract.php:142
 msgctxt "option value"
 msgid "Twitter @username"
 msgstr "@usager Twitter"
 
-#: lib/config-gettext-extract.php:144
+#: lib/config-gettext-extract.php:143
 msgctxt "option value"
 msgid "tz"
 msgstr "fh"
 
-#: lib/config-gettext-extract.php:145 lib/messages.php:629
+#: lib/config-gettext-extract.php:144 lib/messages.php:629
 msgctxt "option value"
 msgid "unchecked"
 msgstr "décoché"
 
-#: lib/config-gettext-extract.php:146
+#: lib/config-gettext-extract.php:145
 msgctxt "option value"
 msgid "Used"
 msgstr "Usagé"
 
-#: lib/config-gettext-extract.php:147
+#: lib/config-gettext-extract.php:146
 msgctxt "lib file description"
 msgid "User Profile Contact Methods"
 msgstr "Méthodes de contact profil utilisateur"
 
-#: lib/config-gettext-extract.php:148
+#: lib/config-gettext-extract.php:147
 msgctxt "option label"
 msgid "Video Embed HTML Custom Field"
 msgstr "Champ pers. HTML vidéo intégrée"
 
-#: lib/config-gettext-extract.php:149
+#: lib/config-gettext-extract.php:148
 msgctxt "option label"
 msgid "Video URL Custom Field"
 msgstr "Champ personnalisé URL de vidéo"
 
-#: lib/config-gettext-extract.php:150
+#: lib/config-gettext-extract.php:149
 msgctxt "option value"
 msgid "Vimeo Videos"
 msgstr "Vidéos Vimeo"
 
-#: lib/config-gettext-extract.php:151
+#: lib/config-gettext-extract.php:150
 msgctxt "option value"
 msgid "Volunteer"
 msgstr "Volontaire"
 
-#: lib/config-gettext-extract.php:152
+#: lib/config-gettext-extract.php:151
 msgctxt "option value"
 msgid "[WebSite Organization]"
 msgstr "[Organisation du site Web]"
 
-#: lib/config-gettext-extract.php:153 lib/messages.php:1375
+#: lib/config-gettext-extract.php:152 lib/messages.php:1375
 msgctxt "lib file description"
 msgid "WebSite Social Pages and Accounts"
 msgstr "Pages et comptes sociaux du site Web"
 
-#: lib/config-gettext-extract.php:154
+#: lib/config-gettext-extract.php:153
 msgctxt "option value"
 msgid "Wednesday"
 msgstr "Mercredi"
 
-#: lib/config-gettext-extract.php:155
+#: lib/config-gettext-extract.php:154
 msgctxt "option value"
 msgid "Week"
 msgstr "Semaine"
 
-#: lib/config-gettext-extract.php:156
+#: lib/config-gettext-extract.php:155
 msgctxt "option value"
 msgid "Wistia Videos"
 msgstr "Vidéos Wistia"
 
-#: lib/config-gettext-extract.php:157
+#: lib/config-gettext-extract.php:156
 msgctxt "option value"
 msgid "WordPress Video Shortcode"
 msgstr "Shortcode Vidéo de WordPress"
 
-#: lib/config-gettext-extract.php:158
+#: lib/config-gettext-extract.php:157
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to manage Organizations and additional Schema markup properties (Organizer, Performer, Publisher, etc.) for Google Rich Cards / Knowledge Graph."
 msgstr "Extension d'ajout WPSSO Core pour gérer des organisations et propriétés Schéma supplémentaires (organisateur, interprète, éditeur, etc.) pour Google Rich Cards / Knowledge Graph."
 
-#: lib/config-gettext-extract.php:159
+#: lib/config-gettext-extract.php:158
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide a convenient locale / language / region selector in the WordPress admin toolbar."
 msgstr "Extension d'ajout WPSSO Core pour fournir un sélecteur pratique de langue / région dans la barre d'outils WordPress."
 
-#: lib/config-gettext-extract.php:160
+#: lib/config-gettext-extract.php:159
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari and Twitter's App Card."
 msgstr "Extension d'ajout WPSSO Core pour fournir des balises méta Apple Store / iTunes et Google Play App pour mobile Safari et la carte App de Twitter."
 
-#: lib/config-gettext-extract.php:161
+#: lib/config-gettext-extract.php:160
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO)."
 msgstr "Extension d'ajout WPSSO Core pour fournir le balisage de Schéma BreadcrumbList en format JSON-LD pour Google et l'optimisation de recherche (SEO)."
 
-#: lib/config-gettext-extract.php:162
+#: lib/config-gettext-extract.php:161
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business, and Local SEO meta tags."
 msgstr "Extension d'ajout WPSSO Core pour fournir des balises méta Pinterest place, Facebook / Open Graph de position, et Schéma d'entreprise locale."
 
-#: lib/config-gettext-extract.php:163
+#: lib/config-gettext-extract.php:162
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup."
 msgstr "Extension d'ajout WPSSO Core pour fournir des notes et critiques aux commentaires WordPress, avec balises méta Aggregate Rating et balisage de Schéma Review."
 
-#: lib/config-gettext-extract.php:164
+#: lib/config-gettext-extract.php:163
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, post edit pages, etc."
 msgstr "Extension d'ajout WPSSO Core pour fournir des boutons de partage sociaux ridiculement réactif (SVG) dans le contenu, extraits, barre flottante CSS, widget, pages d'édition, etc."
 
-#: lib/config-gettext-extract.php:165
+#: lib/config-gettext-extract.php:164
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews and many more."
 msgstr "Extension d'ajout WPSSO Core pour balisage de Schéma JSON-LD d'article, événement, entreprise locale, produit, recette, critique et bien plus."
 
-#: lib/config-gettext-extract.php:166
+#: lib/config-gettext-extract.php:165
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr "Extension d'ajout WPSSO Core pour fournir des boutons de partage social avec support pour hashtags, URLs raccourcis, bbPress, BuddyPress, WooCommerce et bien plus."
 
-#: lib/config-gettext-extract.php:167
+#: lib/config-gettext-extract.php:166
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide tuning options for the WordPress image editors and PHP image extensions."
 msgstr "Extension d'ajout WPSSO Core pour fournir des options de réglage pour les éditeurs d'image WordPress et les extensions d'image PHP."
 
-#: lib/config-gettext-extract.php:168
+#: lib/config-gettext-extract.php:167
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS."
 msgstr "Extension d'ajout WPSSO Core pour fournir des citations de style Twitter pour votre contenu, avec un lien de partage Tweet pratique et CSS personnalisable."
 
-#: lib/config-gettext-extract.php:169
+#: lib/config-gettext-extract.php:168
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide updates for the WPSSO Core Pro plugin and its Pro add-ons."
 msgstr "Extension d'ajout WPSSO Core pour fournir des mises à jour pour l'extension WPSSO Core Pro et ses ajouts Pro."
 
-#: lib/config-gettext-extract.php:170
+#: lib/config-gettext-extract.php:169
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched."
 msgstr "Extension d'ajout WPSSO Core pour supprimer les Microdonnées de Schéma obsolète / incomplète, laissant le balisage de Schéma JSON-LD recommandé par Google intact."
+
+#: lib/config-gettext-extract.php:170
+msgctxt "plugin description"
+msgid "WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
+msgstr "WPSSO Core crée des balises méta et balisage de Schéma complets et précis automatiquement à partir de votre contenu pour le partage social, Google Knowledge Graph et Rich Card SEO, Pinterest Rich Pins, Twitter Cards et d'autres."
 
 #: lib/config-gettext-extract.php:171
 msgctxt "option value"
@@ -5213,8 +5213,8 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Complete meta tags and Schema markup from your content for Social Sharing (SMO), Google's Knowledge Graph and Rich Cards (SEO), Pinterest Rich Pins and more."
-msgstr "Balises méta et balisage de Schéma complet à partir de votre contenu pour le partage social (SMO), Google Knowledge Graph et Rich Cards (SEO), Pinterest Rich Pins et d'autres."
+msgid "WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
+msgstr "WPSSO Core crée des balises méta et balisage de Schéma complets et précis automatiquement à partir de votre contenu pour le partage social, Google Knowledge Graph et Rich Card SEO, Pinterest Rich Pins, Twitter Cards et d'autres."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
@@ -5223,6 +5223,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "Free version"
-#~ msgstr "Version gratuite"
