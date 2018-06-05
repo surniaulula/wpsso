@@ -2,7 +2,9 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Why manage meta tag and Schema markup values manually? WPSSO creates complete and accurate values from your content automatically!</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Why manage meta tag and Schema markup values manually?
+
+WPSSO creates complete and accurate values from your content automatically!</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.4.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.6</td></tr>
