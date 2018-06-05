@@ -26,7 +26,7 @@ WPSSO creates complete and accurate values from your content automatically!
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
-WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards, Weibo, and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
+WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards, Weibo and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
 
 **WPSSO uses your *existing content* for meta tags and Schema markup:**
 
