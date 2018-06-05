@@ -14,9 +14,9 @@ Tested Up To: 4.9.6
 WC Tested Up To: 3.3.5
 Stable Tag: 4.4.0
 
-Why manage meta tag and Schema markup values manually?
+<p>Why manage meta tag and Schema markup values manually?</p>
 
-WPSSO creates complete and accurate values from your content automatically!
+<p>WPSSO creates complete and accurate values from your content automatically!</p>
 
 == Description ==
 
@@ -71,7 +71,7 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 
 * Uses images from a variety of sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
 
-* Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Cards SEO, Pinterest Rich Pins, and all Twitter Cards.
+* Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Card SEO, Pinterest Rich Pins, and Twitter Cards.
 
 * Configurable maximum title and description lengths, including both hard and soft limits.
 
