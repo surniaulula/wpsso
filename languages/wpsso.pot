@@ -1982,7 +1982,7 @@ msgctxt "plugin description"
 msgid ""
 "WPSSO Core creates complete and accurate meta tags and Schema markup from "
 "your content automatically - for social sharing, Google's Knowledge Graph "
-"and Rich Card SEO, Pinterest Rich Pins and more."
+"and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:171
@@ -6008,7 +6008,7 @@ msgstr ""
 msgid ""
 "WPSSO Core creates complete and accurate meta tags and Schema markup from "
 "your content automatically - for social sharing, Google's Knowledge Graph "
-"and Rich Card SEO, Pinterest Rich Pins and more."
+"and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
 msgstr ""
 
 #. Author of the plugin/theme
