@@ -1419,7 +1419,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'meta' => array(			// post, term, user add_meta_box() settings
 				'id' => 'sso',
-				'title' => 'Document SSO',
+				'title' => 'Document SSO',	// aka Social and Search Optimization metabox
 			),
 			'edit' => array(			// post, term, user lists
 				'columns' => array(
