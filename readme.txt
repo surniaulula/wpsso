@@ -14,7 +14,7 @@ Tested Up To: 4.9.6
 WC Tested Up To: 3.3.5
 Stable Tag: 4.4.0
 
-Why are you managing meta tag and Schema markup values manually? Let WPSSO create complete and accurate meta tags and Schema markup from your content for social sharing, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins and more.
+Why manage meta tag and Schema markup values manually? WPSSO creates complete and accurate values from your content automatically!
 
 == Description ==
 
