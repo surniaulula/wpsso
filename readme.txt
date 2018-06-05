@@ -14,15 +14,9 @@ Tested Up To: 4.9.6
 WC Tested Up To: 3.3.5
 Stable Tag: 4.4.0
 
-&nbsp;
-
 Why manage meta tag and Schema markup values manually?
 
-&nbsp;
-
 WPSSO creates complete and accurate values from your content automatically!
-
-&nbsp;
 
 == Description ==
 
@@ -329,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.0-b.1 (2018/06/05)**
+**Version 4.5.0-b.2 (2018/06/05)**
 
 * *New Features*
 	* None
@@ -442,7 +436,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.5.0-b.1 =
+= 4.5.0-b.2 =
 
 (2018/06/05) Renamed the "Social and Search Optimization" metabox to "Document SSO". Added a "License Information" link in the Add-ons page to lookup registered site addresses (Pro version).
 
