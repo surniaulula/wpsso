@@ -6007,7 +6007,7 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "WPSSO Core creates complete and accurate meta tags and Schema markup from "
-"your content automatically - for social sharing, Google\\'s Knowledge Graph "
+"your content automatically - for social sharing, Google's Knowledge Graph "
 "and Rich Card SEO, Pinterest Rich Pins and more."
 msgstr ""
 
