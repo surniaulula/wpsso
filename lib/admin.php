@@ -1639,7 +1639,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox"><tr><td>';
 			echo $this->p->msgs->get( 'column-rate-review' );
-			echo '<h4>' . __( 'Rate these plugins:', 'wpsso' ) . '</h4>' . "\n";
+			echo '<h4>' . __( 'Rate these plugins', 'option label', 'wpsso' ) . ':</h4>' . "\n";
+
+			$links = array();
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
@@ -1647,18 +1649,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;
 				}
 
-				$links = array();
-
 				if ( ! empty( $info['url']['review'] ) ) {
-					$plugin_name = '<strong>' . $info['name'] . '</strong>';
-					$links[] = '<a href="' . $info['url']['review'] . '">' .
-						sprintf( __( 'Rate %s', 'wpsso' ),
-							$plugin_name ) . '</a>';
+					$links[] = '<a href="' . $info['url']['review'] . '">' . $info['name'] . '</a>';
 				}
+			}
 
-				if ( ! empty( $links ) ) {
-					echo '<ul><li>' . implode( '</li><li>', $links ) . '</li></ul>' . "\n";
-				}
+			if ( ! empty( $links ) ) {
+				echo '<ul><li>' . implode( '</li><li>', $links ) . '</li></ul>' . "\n";
 			}
 
 			echo '</td></tr></table>';
