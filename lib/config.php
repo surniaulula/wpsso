@@ -2549,8 +2549,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_TB_LOCALE_MENU_ORDER'] = '60';		// Position of the user locale toolbar menu item.
 			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;			// Highlight the SSO menu icon.
 			$var_const['WPSSO_TOOLBAR_NOTICES'] = true;			// Show error, warning, and info notices in the toolbar menu.
-			$var_const['WPSSO_HIDE_ALL_ERRORS'] = false;			// Auto-hide all error notices.
-			$var_const['WPSSO_HIDE_ALL_WARNINGS'] = false;			// Auto-hide all warning notices.
 			$var_const['WPSSO_JSON_PRETTY_PRINT'] = false;			// Output pretty / human readable json.
 			$var_const['WPSSO_UNDEF_INT'] = -1;				// Undefined image width / height value.
 

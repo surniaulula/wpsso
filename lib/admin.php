@@ -2490,57 +2490,50 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * Hooked to 'current_screen' filter, so return the $screen object.
 		 */
 		public function maybe_show_screen_notices( $screen ) {
+
 			$screen_id = SucomUtil::get_screen_id( $screen );
-			switch ( $screen_id ) {
-				case 'dashboard':
-				case ( strpos( $screen_id, '_page_' . $this->p->lca . '-' ) !== false ? true : false ):
-					$this->maybe_show_rating_notice();
-					break;
+
+			/**
+			 * If adding notices in the toolbar, show the notice on all pages,
+			 * otherwise only show on the dashboard and settings pages.
+			 */
+			if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
+				$this->maybe_show_rating_notice();
+			} else {
+				switch ( $screen_id ) {
+					case 'dashboard':
+					case ( strpos( $screen_id, '_page_' . $this->p->lca . '-' ) !== false ? true : false ):
+						$this->maybe_show_rating_notice();
+						break;
+				}
 			}
+
 			return $screen;
 		}
 
 		public function maybe_show_rating_notice() {
 
-			/**
-			 * Notices are dismissible since wp v4.2.
-			 */
 			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
-				return;	// stop here
+				return;	// Stop here.
 			}
 
-			$user_id        = get_current_user_id();
-			$cache_md5_pre  = $this->p->lca . '_';
-			$cache_exp_secs = DAY_IN_SECONDS;	// Only show every 24 hours for each user id.
-			$cache_salt     = __METHOD__ . '(user_id:' . $user_id . ')';
-			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-
-			/**
-			 * If we're running in a dev environment, be a bit more aggressive with the notices. ;-)
-			 */
-			if ( SucomUtil::get_const( 'WPSSO_DEV' ) ) {
-				$time_ago_secs  = time() - HOUR_IN_SECONDS;
-			} else {
-				if ( get_transient( $cache_id ) ) {	// Is transient value true (notice already shown)?
-					return;	// stop here
-				}
-				$time_ago_secs = time() - WEEK_IN_SECONDS;
-			}
+			$user_id = get_current_user_id();
 
 			$all_ext_times = $this->p->util->get_all_times();
+			$time_ago_secs = time() - WEEK_IN_SECONDS;
 
 			$this->get_form_object( $this->p->lca );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				$dismiss_key = 'timed-notice-' . $ext . '-plugin-review';
+				$dismiss_key  = 'timed-notice-' . $ext . '-plugin-review';
 				$dismiss_time = true;
 
 				if ( empty( $info['version'] ) ) {	// Not installed.
 					continue;
 				} elseif ( empty( $info['url']['review'] ) ) {	// Must be hosted on wordpress.org.
 					continue;
-				} elseif ( $this->p->notice->is_dismissed( $dismiss_key, $user_id ) ) {
+				} elseif ( $this->p->notice->is_dismissed( $dismiss_key, $user_id ) ) {	// User has dismissed.
 					continue;
 				} elseif ( ! isset( $all_ext_times[$ext . '_activate_time'] ) ) {	// Never activated.
 					continue;
@@ -2602,8 +2595,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				break;	// Show only one notice at a time.
 			}
-
-			set_transient( $cache_id, true, $cache_exp_secs );
 		}
 
 		public function required_notices() {
