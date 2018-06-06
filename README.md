@@ -25,7 +25,7 @@ WPSSO creates complete and accurate values from your content automatically!</td>
 
 <p><strong>WPSSO uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
-<p>There's no need to manually re-enter descriptions, titles, select images / videos &mdash; WPSSO Core reads all your existing WordPress content automatically, and you can optionally fine-tune and customize just about anything and everything. ;-) WPSSO Core is also language / locale aware, allowing you to define different option values for different languages!</p>
+<p>There's no need to manually re-enter descriptions, titles, select images / videos &mdash; WPSSO Core reads all your existing WordPress content automatically, and you can optionally fine-tune and customize just about anything and everything. ;-) WPSSO Core is also language / locale aware, allowing you to customize your site information for different languages!</p>
 
 <p><strong>WPSSO includes advanced <em>quality control</em> features and options:</strong></p>
 
