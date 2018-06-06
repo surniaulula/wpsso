@@ -4,13 +4,15 @@
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Why manage meta tag and Schema markup values manually?
 
+&nbsp;
+
 WPSSO creates complete and accurate values from your content automatically!</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.4.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.6</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>facebook, pinterest, twitter, schema, meta tags, open graph, social sharing, nextgen facebook, seo, woocommerce, local business, knowledge graph, twitter cards</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>facebook, pinterest, twitter, schema, meta tags, open graph, social sharing, seo, nextgen facebook, woocommerce, local business, knowledge graph, twitter cards</td></tr>
 </table>
 
 <h2>Description</h2>

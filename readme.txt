@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: facebook, pinterest, twitter, schema, meta tags, open graph, social sharing, nextgen facebook, seo, woocommerce, local business, knowledge graph, twitter cards
+Tags: facebook, pinterest, twitter, schema, meta tags, open graph, social sharing, seo, nextgen facebook, woocommerce, local business, knowledge graph, twitter cards
 Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
@@ -15,6 +15,8 @@ WC Tested Up To: 3.3.5
 Stable Tag: 4.4.0
 
 Why manage meta tag and Schema markup values manually?
+
+&nbsp;
 
 WPSSO creates complete and accurate values from your content automatically!
 
@@ -323,7 +325,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.0-b.2 (2018/06/05)**
+**Version 4.5.0-rc.1 (2018/06/06)**
 
 * *New Features*
 	* None
@@ -436,9 +438,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.5.0-b.2 =
+= 4.5.0-rc.1 =
 
-(2018/06/05) Renamed the "Social and Search Optimization" metabox to "Document SSO". Added a "License Information" link in the Add-ons page to lookup registered site addresses (Pro version).
+(2018/06/06) Renamed the "Social and Search Optimization" metabox to "Document SSO". Added a "License Information" link in the Add-ons page to lookup registered site addresses (Pro version).
 
 = 4.4.0 =
 
