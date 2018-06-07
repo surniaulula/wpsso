@@ -887,7 +887,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					break;
 			}
 
-			if ( ! isset( $payload['notice_label'] ) ) {	// Can be false, empty string, or translated string.
+			if ( ! isset( $payload['notice_label'] ) ) {	// Can be unset, false, empty string, or translated string.
 				$payload['notice_label'] = $this->label_transl;
 			}
 
@@ -922,7 +922,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						'</button><!-- .notice-dismiss -->';
 			}
 
-			if ( false !== $payload['notice_label'] ) {
+			if ( false !== $payload['notice_label'] ) {	// Can be false, empty string, or translated string.
 				$msg_html .= '<div class="notice-label">' . $payload['notice_label'] . '</div><!-- .notice-label -->';
 			}
 
