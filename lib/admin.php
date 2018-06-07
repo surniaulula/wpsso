@@ -1824,7 +1824,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 									 * Use a better '# of #' string translation if possible - requires WPSSO UM
 									 * version 1.10.0 or better to get the 'qty_reg' and 'qty_total' values.
 									 */
-									if ( version_compare( WpssoUmConfig::get_version(), '1.10.0-rc.1', '>=' ) ) {
+									if ( version_compare( WpssoUmConfig::get_version(), '1.10.0', '>=' ) ) {
 
 										$qty_reg   = SucomUpdate::get_option( $ext, 'qty_reg' );
 										$qty_total = SucomUpdate::get_option( $ext, 'qty_total' );
@@ -2517,10 +2517,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// Stop here.
 			}
 
-			$user_id = get_current_user_id();
-
-			$all_ext_times = $this->p->util->get_all_times();
-			$time_ago_secs = time() - WEEK_IN_SECONDS;
+			$user_id        = get_current_user_id();
+			$all_ext_times  = $this->p->util->get_all_times();
+			$time_ago_secs  = time() - WEEK_IN_SECONDS;
+			$cache_md5_pre  = $this->p->lca . '_';
+			$cache_exp_secs = DAY_IN_SECONDS;
+			$cache_salt     = __METHOD__ . '(user_id:' . $user_id . ')';
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 			$this->get_form_object( $this->p->lca );
 
@@ -2528,16 +2531,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$dismiss_key  = 'timed-notice-' . $ext . '-plugin-review';
 				$dismiss_time = true;
+				$showing_ext  = get_transient( $cache_id );				// Returns empty string or $dismiss_key for 24 hours.
 
-				if ( empty( $info['version'] ) ) {	// Not installed.
+				if ( empty( $info['version'] ) ) {					// Not installed.
 					continue;
-				} elseif ( empty( $info['url']['review'] ) ) {	// Must be hosted on wordpress.org.
+				} elseif ( empty( $info['url']['review'] ) ) {				// Must be hosted on wordpress.org.
 					continue;
 				} elseif ( $this->p->notice->is_dismissed( $dismiss_key, $user_id ) ) {	// User has dismissed.
+					if ( $showing_ext === $dismiss_key ) {				// Notice was dismissed today.
+						break;
+					}
 					continue;
 				} elseif ( ! isset( $all_ext_times[$ext . '_activate_time'] ) ) {	// Never activated.
 					continue;
 				} elseif ( $all_ext_times[$ext . '_activate_time'] > $time_ago_secs ) {	// Activated less than time ago.
+					continue;
+				} elseif ( empty( $showing_ext ) || $showing_ext === '1' ) {		// Show a notice for this plugin for 24 hours.
+					set_transient( $cache_id, $dismiss_key, $cache_exp_secs );
+				} elseif ( $showing_ext !== $dismiss_key ) {				// We're not showing this plugin right now.
 					continue;
 				}
 

@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.5.0-rc.1',		// Plugin version.
+					'version' => '4.5.0',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -1224,7 +1224,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '1.10.0-rc.1',	// Minimum update manager version (soft limit).
+				'rec_version' => '1.10.0',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -1419,7 +1419,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'meta' => array(			// post, term, user add_meta_box() settings
 				'id' => 'sso',
-				'title' => 'Document SSO',	// aka Social and Search Optimization metabox
+				'title' => 'Document SSO (Social and Search Optimization)',
 			),
 			'edit' => array(			// post, term, user lists
 				'columns' => array(
