@@ -2588,13 +2588,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				$rate_plugin_button = '<div style="display:inline-block;vertical-align:top;margin:1em 0.8em 0 0;">' .
-					$this->form->get_button( sprintf( __( 'Yes! Contribute and rate %s 5 stars', 'wpsso' ), $info['short'] ),
+					$this->form->get_button( sprintf( __( 'Yes! Contribute and rate %s 5 stars!', 'wpsso' ), $info['short'] ),
 						'button-primary dismiss-on-click', '', $info['url']['review'], true, false,
 							array( 'dismiss-msg' => sprintf( __( 'Thank you for rating the %s plugin! You\'re awesome!',
 								'wpsso' ), $info['short'] ) ) ) . '</div>';
 
-				$already_rated_button = '<div style="display:inline-block;vertical-align:top;margin:1em 0.8em 0 0;">' .
-					$this->form->get_button( sprintf( __( 'No thanks - I\'ve already rated %s', 'wpsso' ), $info['short'] ),
+				$already_rated_button = '<div style="display:inline-block;vertical-align:top;margin:1em 0 0 0;">' .
+					$this->form->get_button( sprintf( __( 'I\'ve already rated %s', 'wpsso' ), $info['short'] ),
 						'button-secondary dismiss-on-click', '', '', false, false, 
 							array( 'dismiss-msg' => sprintf( __( 'Thank you for your earlier rating of %s! You\'re awesome!',
 								'wpsso' ), $info['short'] ) ) ) . '</div>';

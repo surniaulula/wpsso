@@ -690,7 +690,7 @@ msgid "Google+"
 msgstr ""
 
 #: lib/admin.php:2591
-msgid "Yes! Contribute and rate %s 5 stars"
+msgid "Yes! Contribute and rate %s 5 stars!"
 msgstr ""
 
 #: lib/admin.php:2593
@@ -698,7 +698,7 @@ msgid "Thank you for rating the %s plugin! You're awesome!"
 msgstr ""
 
 #: lib/admin.php:2597
-msgid "No thanks - I've already rated %s"
+msgid "I've already rated %s"
 msgstr ""
 
 #: lib/admin.php:2599
