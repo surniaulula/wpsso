@@ -7,7 +7,7 @@
 &nbsp;
 
 WPSSO creates complete and accurate values from your content automatically!</td></tr>
-<tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.4.0</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.5.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.6</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>

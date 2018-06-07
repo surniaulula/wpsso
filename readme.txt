@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.6
 WC Tested Up To: 3.3.5
-Stable Tag: 4.4.0
+Stable Tag: 4.5.0
 
 Why manage meta tag and Schema markup values manually?
 
@@ -325,7 +325,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.0 (2018/06/06)**
+**Version 4.5.0 (2018/06/07)**
 
 * *New Features*
 	* None
@@ -440,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.5.0 =
 
-(2018/06/06) Renamed the "Social and Search Optimization" metabox to "Document SSO (Social and Search Optimization)". Added a "License Information" link in the Add-ons page to lookup registered site addresses (Pro version).
+(2018/06/07) Renamed the "Social and Search Optimization" metabox to "Document SSO (Social and Search Optimization)". Added a "License Information" link in the Add-ons page to lookup registered site addresses (Pro version).
 
 = 4.4.0 =
 
