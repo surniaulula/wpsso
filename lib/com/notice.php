@@ -868,7 +868,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			switch ( $msg_type ) {
 				case 'nag':
-					$payload['notice_label'] = false;
+					$payload['notice_label'] = false;	// No label for nag notices.
 					$wp_class = 'update-nag';
 					break;
 				case 'warn':
@@ -887,7 +887,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					break;
 			}
 
-			if ( ! isset( $payload['notice_label'] ) ) {
+			if ( ! isset( $payload['notice_label'] ) ) {	// Can be false, empty string, or translated string.
 				$payload['notice_label'] = $this->label_transl;
 			}
 
