@@ -947,7 +947,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 
 					if ( is_admin() ) {
+
 						$dismiss_key = $options_name.'_settings_upgraded_and_saved';
+
 						$this->p->notice->inf( sprintf( __( 'Plugin settings (%s) have been upgraded and saved.',
 							'wpsso' ), $options_name ), true, $dismiss_key, true );	// Can be dismissed permanently.
 					}

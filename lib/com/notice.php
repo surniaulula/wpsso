@@ -16,7 +16,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $p;
 		private $lca = 'sucom';
 		private $text_domain = 'sucom';
-		private $label_transl = '';
+		private $label_transl = false;
 		private $dis_name = 'sucom_dismissed';
 		private $hide_err = false;
 		private $hide_warn = false;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public $enabled = true;
 
-		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
+		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = false ) {
 
 			static $do_once = null;	// Just in case.
 
@@ -45,7 +45,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		/**
 		 * Set property values for text domain, notice label, etc.
 		 */
-		private function set_config( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
+		private function set_config( $plugin = null, $lca = null, $text_domain = null, $label_transl = false ) {
 
 			if ( $plugin !== null ) {
 				$this->p =& $plugin;
@@ -66,7 +66,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->text_domain = $this->p->cf['plugin'][$this->lca]['text_domain'];
 			}
 
-			if ( $label_transl !== null ) {
+			if ( $label_transl !== false ) {
 				$this->label_transl = $label_transl;	// Argument is already translated.
 			} elseif ( ! empty( $this->p->cf['menu']['title'] ) ) {
 				$this->label_transl = sprintf( __( '%s Notice', $this->text_domain ),
@@ -135,8 +135,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			$payload['dismiss_key'] = empty( $dismiss_key ) ? false : sanitize_key( $dismiss_key );
-			$payload['dismiss_diff'] = false;
 			$payload['dismiss_time'] = false;
+			$payload['dismiss_diff'] = isset( $payload['dismiss_diff'] ) ? $payload['dismiss_diff'] : null;
 
 			/**
 			 * Add dismiss text for dismiss button and notice message.
@@ -145,41 +145,44 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				$payload['dismiss_time'] = $dismiss_time;	// Maybe true, false, 0, or seconds greater than 0.
 
-				$msg_dismiss_transl = false;
+				if ( $payload['dismiss_diff'] === null ) {
 
-				if ( $payload['dismiss_time'] === true ) {	// True.
+					$dismiss_suffix_msg = false;
 
-					$payload['dismiss_diff'] = __( 'Forever', $this->text_domain );
+					if ( $payload['dismiss_time'] === true ) {	// True.
 
-					$msg_dismiss_transl = __( 'This notice can be dismissed permanently.', $this->text_domain );
+						$payload['dismiss_diff'] = __( 'Forever', $this->text_domain );
 
-				} elseif ( empty( $payload['dismiss_time'] ) ) {	// False or 0 seconds.
+						$dismiss_suffix_msg = __( 'This notice can be dismissed permanently.', $this->text_domain );
 
-					// Nothing to do.
+					} elseif ( empty( $payload['dismiss_time'] ) ) {	// False or 0 seconds.
 
-				} elseif ( is_numeric( $payload['dismiss_time'] ) ) {	// Seconds greater than 0.
+						// Nothing to do.
 
-					$payload['dismiss_diff'] = human_time_diff( 0, $payload['dismiss_time'] );
+					} elseif ( is_numeric( $payload['dismiss_time'] ) ) {	// Seconds greater than 0.
 
-					$msg_dismiss_transl = __( 'This notice can be dismissed for %s.', $this->text_domain );
-				}
+						$payload['dismiss_diff'] = human_time_diff( 0, $payload['dismiss_time'] );
 
-				if ( $msg_dismiss_transl ) {
-
-					$msg_text = trim( $msg_text );
-					$msg_close_div = '';
-
-					if ( substr( $msg_text, -6 ) === '</div>' ) {
-						$msg_text = substr( $msg_text, 0, -6 );
-						$msg_close_div = '</div>';
+						$dismiss_suffix_msg = __( 'This notice can be dismissed for %s.', $this->text_domain );
 					}
 
-					$msg_add_p = substr( $msg_text, -4 ) === '</p>' ? true : false;
+					if ( ! empty( $payload['dismiss_diff'] ) && $dismiss_suffix_msg ) {
 
-					$msg_text .= $msg_add_p || $msg_close_div ? '<p>' : ' ';
-					$msg_text .= sprintf( $msg_dismiss_transl, $payload['dismiss_diff'] );
-					$msg_text .= $msg_add_p || $msg_close_div ? '</p>' : '';
-					$msg_text .= $msg_close_div;
+						$msg_text = trim( $msg_text );
+						$msg_close_div = '';
+
+						if ( substr( $msg_text, -6 ) === '</div>' ) {
+							$msg_text = substr( $msg_text, 0, -6 );
+							$msg_close_div = '</div>';
+						}
+
+						$msg_add_p = substr( $msg_text, -4 ) === '</p>' ? true : false;
+
+						$msg_text .= $msg_add_p || $msg_close_div ? '<p>' : ' ';
+						$msg_text .= sprintf( $dismiss_suffix_msg, $payload['dismiss_diff'] );
+						$msg_text .= $msg_add_p || $msg_close_div ? '</p>' : '';
+						$msg_text .= $msg_close_div;
+					}
 				}
 			}
 
@@ -861,15 +864,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$charset = get_bloginfo( 'charset' );
 
-			if ( ! isset( $payload['label'] ) ) {
-				$payload['label'] = $this->label_transl;
-			}
-
 			$notice_class = $notice_alt ? 'notice notice-alt' : 'notice';
 
 			switch ( $msg_type ) {
 				case 'nag':
-					$payload['label'] = '';
+					$payload['notice_label'] = false;
 					$wp_class = 'update-nag';
 					break;
 				case 'warn':
@@ -888,7 +887,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					break;
 			}
 
-			$is_dismissible = empty( $payload['dismiss_diff'] ) ? false : true;
+			if ( ! isset( $payload['notice_label'] ) ) {
+				$payload['notice_label'] = $this->label_transl;
+			}
+
+			$is_dismissible = empty( $payload['dismiss_time'] ) ? false : true;
 
 			$css_id_attr = empty( $payload['dismiss_key'] ) ? '' : ' id="' . $msg_type . '-' . $payload['dismiss_key'] . '"';
 
@@ -913,14 +916,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Float the dismiss button on the right, so the button must be added first.
 			 */
-			if ( $is_dismissible ) {
+			if ( ! empty( $payload['dismiss_diff'] ) && $is_dismissible ) {
 				$msg_html .= '<button class="notice-dismiss" type="button">' .
 					'<span class="notice-dismiss-text">' . $payload['dismiss_diff'] . '</span>' .
 						'</button><!-- .notice-dismiss -->';
 			}
 
-			if ( ! empty( $payload['label'] ) ) {
-				$msg_html .= '<div class="notice-label">' . $payload['label'] . '</div><!-- .notice-label -->';
+			if ( false !== $payload['notice_label'] ) {
+				$msg_html .= '<div class="notice-label">' . $payload['notice_label'] . '</div><!-- .notice-label -->';
 			}
 
 			$msg_html .= '<div class="notice-message">' . $payload['msg_text'] . '</div><!-- .notice-message -->';

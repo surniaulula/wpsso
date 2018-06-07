@@ -960,18 +960,29 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						}
 					}
 					if ( $is_admin ) {
+
 						$exec_count++;
+
 						if ( $conflicts_found ) {
-							$warn_msg = __( '%1$s duplicate meta tags found. Check %2$s of %3$s failed (will try again later)...', 'wpsso' );
-							$this->p->notice->warn( sprintf( $warn_msg, $conflicts_found, $exec_count, $max_count ) );
+
+							$warn_msg = sprintf( __( '%1$d duplicate meta tags found.', 'wpsso' ), $conflicts_found ) . ' ';
+							$warn_msg .= sprintf( __( 'Check %1$d of %2$d failed (will retry)...', 'wpsso' ), $exec_count, $max_count );
+
+							$this->p->notice->warn( $warn_msg );
+
 						} else {
+
+							$inf_msg = __( 'Awesome! No duplicate meta tags found.', 'wpsso' ) . ' :-) ';
+
 							if ( $this->p->debug->enabled ) {
-								$inf_msg = __( 'Awesome! No duplicate meta tags found. :-) Debug option is enabled - will keep repeating duplicate check...', 'wpsso' );
+								$inf_msg .= __( 'Debug option is enabled - will keep repeating duplicate check...', 'wpsso' );
 							} else {
-								$inf_msg = __( 'Awesome! No duplicate meta tags found. :-) Check %2$s of %3$s successful...', 'wpsso' );
+								$inf_msg .= sprintf( __( 'Check %1$d of %2$d successful...', 'wpsso' ), $exec_count, $max_count );
 							}
-							update_option( WPSSO_POST_CHECK_NAME, $exec_count, false );	// autoload = false
-							$this->p->notice->inf( sprintf( $inf_msg, $conflicts_found, $exec_count, $max_count ) );
+
+							update_option( WPSSO_POST_CHECK_NAME, $exec_count, false );	// Autoload is false.
+
+							$this->p->notice->inf( $inf_msg );
 						}
 					}
 				}

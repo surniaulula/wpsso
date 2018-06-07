@@ -239,14 +239,21 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					 * then take advantage of this and show a notice. :)
 					 */
 					if ( is_admin() ) {
+
 						if ( isset( $this->p->notice ) ) {
+
 							if ( $this->p->notice->is_admin_pre_notices() ) {
 								$this->p->notice->err( $error_msg );
 							}
+
 						} else {
+
 							$lib_dir = trailingslashit( realpath( dirname( __FILE__ ) ) );
+
 							require_once $lib_dir . 'com/notice.php';	// load the SucomNotice class
+
 							$notice = new SucomNotice( $this->p, $this->lca, $this->text_domain, $this->label_transl );
+
 							if ( $notice->is_admin_pre_notices() ) {
 								$notice->err( $error_msg );
 							}

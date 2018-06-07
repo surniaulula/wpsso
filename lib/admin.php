@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * (aka the plugin licenses settings page) after plugin installation / activation / update.
 			 */
 			foreach ( array(
-				'pageref_url' => 'esc_url_raw',
+				'pageref_url'   => 'esc_url_raw',
 				'pageref_title' => 'esc_html',
 			) as $pageref => $esc_func ) {
 
@@ -180,8 +180,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $has_pdir );
 
-				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) && $has_aop &&
-					$this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? true : false;
+				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) &&
+					$has_aop && $this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? true : false;
 
 				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ?
 					_x( 'Pro', 'package type', 'wpsso' ) : _x( 'Free', 'package type', 'wpsso' );
@@ -190,8 +190,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				self::$pkg[$ext]['name'] = SucomUtil::get_pkg_name( $info['name'], self::$pkg[$ext]['type'] );
 
-				self::$pkg[$ext]['gen'] = $info['short'] . ' ' . ( isset( $info['version'] ) ? $info['version'] . '/' .
-					( self::$pkg[$ext]['aop'] ? 'L' : ( self::$pkg[$ext]['pdir'] ? 'U' : 'F' ) ) : '' );
+				self::$pkg[$ext]['status'] = self::$pkg[$ext]['aop'] ? 'L' : self::$pkg[$ext]['pdir'] ? 'U' : 'F';
+
+				self::$pkg[$ext]['gen'] = $info['short'] . ' ' . ( isset( $info['version'] ) ?
+					$info['version'] . '/' . self::$pkg[$ext]['status'] : '' );
 			}
 		}
 
@@ -934,7 +936,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$default_locale = SucomUtil::get_locale( 'default' );
 
 			if ( $current_locale && $default_locale && $current_locale !== $default_locale ) {
+
 				$dismiss_key = $this->menu_id . '-language-notice-current-' . $current_locale . '-default-' . $default_locale;
+
 				$this->p->notice->inf( sprintf( __( 'Please note that your current language is different from the default site language (%s).', 'wpsso' ), $default_locale ) . ' ' . sprintf( __( 'Localized option values (%s) are used for webpages and content in that language only (not for the default language, or any other language).', 'wpsso' ), $current_locale ), true, $dismiss_key, true );
 			}
 		}
@@ -1008,7 +1012,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				parse_str( parse_url( $url, PHP_URL_QUERY ), $parts );
 
 				if ( strpos( $parts['wp_http_referer'], $referer_match ) ) {
+
 					$this->p->notice->upd( __( 'Profile updated.' ) );	// green status w check mark
+
 					$url = add_query_arg( 'updated', true, $parts['wp_http_referer'] );
 				}
 			}
@@ -2034,11 +2040,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		private function conflict_check_wp() {
+
 			if ( ! get_option( 'blog_public' ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'blog_public option is disabled' );
 				}
+
 				$dismiss_key = 'wordpress-search-engine-visibility-disabled';
+
 				if ( $this->p->notice->is_admin_pre_notices( $dismiss_key ) ) { // Don't bother if already dismissed.
 					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), true, $dismiss_key, MONTH_IN_SECONDS * 3 );
 				}
@@ -2071,7 +2081,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre . 'aioseop social meta feature is enabled' );
 					}
-					$this->p->notice->err( $err_pre . sprintf( __( 'please deactivate the %1$s feature in the %2$s settings page.',
+
+					$this->p->notice->err( $err_pre . sprintf( __( 'please deactivate the %1$s feature in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
@@ -2091,6 +2102,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre . 'aioseop google plus profile is enabled' );
 					}
+
 					$this->p->notice->err( $err_pre . sprintf( __( 'please check the %1$s option in the %2$s metabox.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
@@ -2111,6 +2123,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre . 'aioseop schema markup option is checked' );
 					}
+
 					$this->p->notice->err( $err_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
@@ -2140,7 +2153,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$this->p->debug->log( $log_pre . 'seo ultimate opengraph module is enabled' );
 						}
 
-						$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s module in the %2$s settings page.',
+						$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s module in the %2$s settings.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -2249,10 +2262,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'post_modify_time' => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
 						'article:modified_time', $posts_i18n ) . '</strong>',
 				) as $opt_key => $label_transl ) {
+
 					if ( $the_seo_framework->is_option_checked( $opt_key ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'autodescription ' . $opt_key . ' option is checked' );
 						}
+
 						$this->p->notice->err( $err_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
@@ -2275,6 +2291,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre . 'autodescription knowledge_output option is checked' );
 					}
+
 					$this->p->notice->err( $err_pre . sprintf( __( 'please uncheck the %1$s option in the %2$s metabox.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
@@ -2308,11 +2325,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					// translators: please ignore - translation uses a 3rd party text domain
 					'metaseo_showtwitter'  => '<strong>' . __( 'Twitter Username', 'wp-meta-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
+
 					if ( ! empty( $opts[$opt_key] ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'wpmetaseo ' . $opt_key . ' option is not empty' );
 						}
-						$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
+
+						$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value in the %2$s settings.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -2326,7 +2346,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$this->p->debug->log( $log_pre . 'wpmetaseo metaseo_showsocial option is enabled' );
 					}
 
-					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option under the %2$s settings tab.',
+					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 			}
@@ -2368,11 +2388,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					// translators: please ignore - translation uses a 3rd party text domain
 					'google_plus_url' => '<strong>' . __( 'Google+ URL', 'wordpress-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
+
 					if ( ! empty( $opts[$opt_key] ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'wpseo ' . $opt_key . ' option is not empty' );
 						}
-						$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
+
+						$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value in the %2$s settings.',
 							'wpsso' ), $label_transl, $settings_link ) );
 					}
 				}
@@ -2397,7 +2420,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$this->p->debug->log( $log_pre . 'wpseo opengraph option is enabled' );
 					}
 
-					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option under the %2$s settings tab.',
+					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
@@ -2417,7 +2440,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre . 'wpseo fbadminapp option is not empty' );
 					}
-					$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
+
+					$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
@@ -2441,7 +2465,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$this->p->debug->log( $log_pre . 'wpseo twitter option is enabled' );
 					}
 
-					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option under the %2$s settings tab.',
+					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 
@@ -2464,7 +2488,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_pre . 'wpseo plus-publisher option is not empty' );
 					}
-					$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value under the %2$s settings tab.',
+
+					$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 			}
@@ -2594,7 +2619,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= __( 'Your rating is a great way to encourage us &mdash; and helps other users find good plugins as well!', 'wpsso' ) . ' :-)';
+				$notice_msg .= __( 'Your rating is a great way to encourage us and it helps other WordPress users as well!', 'wpsso' ) . ' :-)';
 
 				$notice_msg .= '</p>';
 				
@@ -2602,7 +2627,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					
 				$notice_msg .= '</div>';
 
-				$this->p->notice->log( 'inf', $notice_msg, $user_id, $dismiss_key, $dismiss_time, array( 'label' => false ) );
+				/**
+				 * The notice provides it's own dismiss button, so do not show the dismiss 'Forever' link.
+				 */
+				$this->p->notice->log( 'inf', $notice_msg, $user_id, $dismiss_key, $dismiss_time, array( 'dismiss_diff' => false ) );
 
 				break;	// Show only one notice at a time.
 			}
