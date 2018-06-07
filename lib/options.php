@@ -903,7 +903,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		 */
 		public function save_options( $options_name, &$opts, $network = false, $has_diff_options = false ) {
 
-			// make sure we have something to work with
+			/**
+			 * Make sure we have something to work with.
+			 */
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: options variable is empty and/or not array' );

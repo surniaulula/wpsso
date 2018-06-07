@@ -359,7 +359,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_add_link_rel_shortlink'] = ''.
 			$form->get_th_html( sprintf( _x( 'Add "%s" HTML Tag', 'option label', 'wpsso' ),
 				'link&nbsp;rel&nbsp;shortlink' ), '', 'plugin_add_link_rel_shortlink' ).
-			$form->get_nocb_td( 'add_link_rel_shortlink' );	// option name from the head tags list metabox
+			'<td class="blank">'.$form->get_no_checkbox( 'add_link_rel_shortlink',
+				'', 'add_link_rel_shortlink_html_tag', null, 'add_link_rel_shortlink' ).'</td>';	// Group with option in head tags list
 
 			/**
 			 * Bitly URL  shortener.
@@ -597,34 +598,48 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		}
 
 		private function get_taglist_rows( $table_rows, $form, $network, array $opt_preg_include ) {
+
 			$table_cells = array();
+
 			foreach ( $opt_preg_include as $preg ) {
+
 				foreach ( $form->defaults as $opt_key => $opt_val ) {
 
-					if ( strpos( $opt_key, 'add_' ) !== 0 ) {	// optimize
+
+					if ( strpos( $opt_key, 'add_' ) !== 0 ) {	// Optimize
 						continue;
-					} elseif ( isset( $this->taglist_opts[$opt_key] ) ) {	// check cache for tags already shown
+					} elseif ( isset( $this->taglist_opts[$opt_key] ) ) {	// Check cache for tags already shown.
 						continue;
-					} elseif ( ! preg_match( $preg, $opt_key, $match ) ) {	// check option name for a match
+					} elseif ( ! preg_match( $preg, $opt_key, $match ) ) {	// Check option name for a match.
 						continue;
 					}
 
 					$highlight = '';
+					$css_class = '';
+					$css_id    = '';
+					$force     = null;
+					$group     = null;
+
 					$this->taglist_opts[$opt_key] = $opt_val;
+
 					switch ( $opt_key ) {
-						// disabled with a constant instead
-						case 'add_meta_name_generator':
+						case 'add_meta_name_generator':	// Disabled with a constant instead.
 							continue 2;
+						case 'add_link_rel_shortlink':
+							$group = 'add_link_rel_shortlink';
+							break;
 					}
-					$table_cells[] = '<!-- '.( implode( ' ', $match ) ).' -->'.	// required for sorting
+
+					$table_cells[] = '<!-- '.( implode( ' ', $match ) ).' -->'.	// Required for sorting.
 						'<td class="checkbox blank">'.$form->get_nocb_cmt( $opt_key ).'</td>'.
+						'<td class="checkbox blank">'.$form->get_no_checkbox( $opt_key, $css_class, $css_id, $force, $group ).'</td>'.
 						'<td class="xshort'.$highlight.'">'.$match[1].'</td>'.
 						'<td class="taglist'.$highlight.'">'.$match[2].'</td>'.
 						'<th class="taglist'.$highlight.'">'.$match[3].'</th>';
 				}
 			}
+
 			return array_merge( $table_rows, SucomUtil::get_column_rows( $table_cells, 2 ) );
 		}
 	}
 }
-
