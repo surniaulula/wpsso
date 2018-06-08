@@ -1829,10 +1829,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 									$val = sprintf( __( '%s site addresses registered', 'wpsso' ), $val );
 
 									/**
-									 * Use a better '# of #' string translation if possible - requires WPSSO UM
-									 * version 1.10.0 or better to get the 'qty_reg' and 'qty_total' values.
+									 * Use a better '# of #' string translation if possible.
 									 */
-									if ( version_compare( WpssoUmConfig::get_version(), '1.10.0', '>=' ) ) {
+									if ( version_compare( WpssoUmConfig::get_version(), '1.10.1', '>=' ) ) {
 
 										$qty_reg   = SucomUpdate::get_option( $ext, 'qty_reg' );
 										$qty_total = SucomUpdate::get_option( $ext, 'qty_total' );
