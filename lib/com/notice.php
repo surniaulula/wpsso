@@ -1080,30 +1080,40 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.components-notice-list .' . $this->lca . '-notice .notice-dismiss {
 					padding:2px;
 				}
-				#wpadminbar .have-notices #wp-admin-bar-'.$this->p->lca.'-toolbar-notices-container { 
-					min-width:70vw;	/* 70% of the viewing window width */
-					max-height:100vh;
-					overflow-y:scroll;
+				#wpadminbar #' . $this->p->lca . '-toolbar-notices-count {
+					display:none;
+				}
+				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon { 
+					margin:0;
+				}
+				#wpadminbar #wp-toolbar .have-notices #' . $this->p->lca . '-toolbar-notices-icon.ab-icon::before { 
+					display:inline-block;
+					color:#fff;
+				}
+				#wpadminbar .have-notices #' . $this->p->lca . '-toolbar-notices-count {
+					display:inline-block;
+					color:#fff;
+					margin-left:5px;
+				}
+				#wpadminbar .have-notices.have-notices-error {
+					background-color:#dc3232;
+				}
+				#wpadminbar .have-notices.have-notices-warning {
+					background-color:#ffb900;
+				}
+				#wpadminbar .have-notices.have-notices-info {
+					background-color:#00a0d2;
+				}
+				#wpadminbar .have-notices.have-notices-success {
+					background-color:#46b450;
 				}
 				#wpadminbar .have-notices #wp-admin-bar-'.$this->p->lca.'-toolbar-notices-default { 
 					padding:0;
 				}
-				#wpadminbar .have-notices.have-notices-error .ab-icon::before {
-					color:#dc3232;
-					animation-name:blinker;
-					animation-duration:2s;
-					animation-timing-function:linear;
-					animation-delay:0s;
-					animation-iteration-count:10;	/* blink for 20 seconds */
-				}
-				#wpadminbar .have-notices.have-notices-warning .ab-icon::before {
-					color:#ffb900;
-				}
-				#wpadminbar .have-notices.have-notices-info .ab-icon::before {
-					color:#00a0d2;
-				}
-				#wpadminbar .have-notices.have-notices-success .ab-icon::before {
-					color:#46b450;
+				#wpadminbar .have-notices #wp-admin-bar-'.$this->p->lca.'-toolbar-notices-container { 
+					min-width:70vw;	/* 70% of the viewing window width */
+					max-height:100vh;
+					overflow-y:scroll;
 				}
 				#wpadminbar .' . $this->lca . '-notice,
 				#wpadminbar .' . $this->lca . '-notice.error,
