@@ -1080,6 +1080,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.components-notice-list .' . $this->lca . '-notice .notice-dismiss {
 					padding:2px;
 				}
+				#wpadminbar #wp-toolbar .have-notices .ab-item:hover,
+				#wpadminbar #wp-toolbar .have-notices.hover .ab-item { 
+					background:inherit;
+				}
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon { 
 					margin:0;
 					padding:0;
