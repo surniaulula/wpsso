@@ -252,9 +252,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					font-weight:normal;
 					font-style:normal;
 				}
-				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon { 
-					padding:0;
-					line-height:1em;
+				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-count {
+					display:none;
 				}
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon::before { 
 					content:"' . $this->p->cf['menu']['before'] . '";

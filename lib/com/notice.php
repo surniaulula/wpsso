@@ -1080,20 +1080,21 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.components-notice-list .' . $this->lca . '-notice .notice-dismiss {
 					padding:2px;
 				}
-				#wpadminbar #' . $this->p->lca . '-toolbar-notices-count {
-					display:none;
-				}
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon { 
 					margin:0;
+					padding:0;
+					line-height:1em;
+				}
+				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-count {
+					margin-left:8px;
 				}
 				#wpadminbar #wp-toolbar .have-notices #' . $this->p->lca . '-toolbar-notices-icon.ab-icon::before { 
 					display:inline-block;
 					color:#fff;
 				}
-				#wpadminbar .have-notices #' . $this->p->lca . '-toolbar-notices-count {
+				#wpadminbar #wp-toolbar .have-notices #' . $this->p->lca . '-toolbar-notices-count {
 					display:inline-block;
 					color:#fff;
-					margin-left:5px;
 				}
 				#wpadminbar .have-notices.have-notices-error {
 					background-color:#dc3232;
