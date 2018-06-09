@@ -325,6 +325,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.5.1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 4.5.0 (2018/06/07)**
 
 * *New Features*
@@ -438,11 +449,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
+= 4.5.1 =
+
+(TBD) Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
+
 = 4.5.0 =
 
 (2018/06/07) Renamed the "Social and Search Optimization" metabox to "Document SSO (Social and Search Optimization)". Added a "License Information" link in the Add-ons page to lookup registered site addresses (Pro version).
-
-= 4.4.0 =
-
-(2018/05/31) Added support for the DLMY.App URL shortening service (Pro version). Added support for aggregate rating values from the WP-PostRatings plugin (Pro version).
 
