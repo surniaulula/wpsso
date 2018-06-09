@@ -100,11 +100,11 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 	* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/)
 	* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/)
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/)
-	* [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) &mdash; *for best SEO*
-	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) &mdash; *for best SEO*
+	* [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/)
+	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/)
 	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/)
 	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata)
-	* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) &mdash; *for best social images*
+	* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors)
 	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote)
 	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale)
 
@@ -185,9 +185,9 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 	* [WPSSO Organization Markup Pro](https://wpsso.com/extend/plugins/wpsso-organization/)
 	* [WPSSO Place / Location and Local Business Meta Pro](https://wpsso.com/extend/plugins/wpsso-plm/)
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-rrssb/)
-	* [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) &mdash; *for best SEO*
+	* [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/)
 	* [WPSSO Social Sharing Buttons Pro](https://wpsso.com/extend/plugins/wpsso-ssb/)
-	* [WPSSO Tune WP Image Editors Pro](https://wpsso.com/extend/plugins/wpsso-tune-image-editors/) &mdash; *for best social images*
+	* [WPSSO Tune WP Image Editors Pro](https://wpsso.com/extend/plugins/wpsso-tune-image-editors/)
 
 <h3>Coded for Performance</h3>
 

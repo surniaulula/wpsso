@@ -84,11 +84,11 @@ WPSSO creates complete and accurate values from your content automatically!</td>
 <li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a> &mdash; <em>for best SEO</em></li>
-<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> &mdash; <em>for best SEO</em></li>
+<li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors">WPSSO Tune WP Image Editors</a> &mdash; <em>for best social images</em></li>
+<li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors">WPSSO Tune WP Image Editors</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a></li>
 <li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a></li>
 </ul></li>
@@ -165,9 +165,9 @@ WPSSO creates complete and accurate values from your content automatically!</td>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-organization/">WPSSO Organization Markup Pro</a></li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta Pro</a></li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons Pro</a></li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup Pro</a> &mdash; <em>for best SEO</em></li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup Pro</a></li>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons Pro</a></li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-tune-image-editors/">WPSSO Tune WP Image Editors Pro</a> &mdash; <em>for best social images</em></li>
+<li><a href="https://wpsso.com/extend/plugins/wpsso-tune-image-editors/">WPSSO Tune WP Image Editors Pro</a></li>
 </ul></li>
 </ul>
 
