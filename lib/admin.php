@@ -392,7 +392,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$page_title = self::$pkg[$this->p->lca]['short'] . ' &mdash; ' . $this->menu_name;
 			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' ) . ' ' . self::$pkg[$this->p->lca]['type'];	// pre-translated
 			$cap_name = isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ? $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] : 'manage_options';
-			$icon_url = version_compare( $wp_version, 3.8, '>=' ) ? 'dashicons-share' : null;
+			$icon_url = version_compare( $wp_version, '3.8', '>=' ) ? 'dashicons-share' : null;
 			$function = array( &$this, 'show_setting_page' );
 
 			$this->pagehook = add_menu_page( $page_title, $menu_title, $cap_name, $menu_slug, $function, $icon_url, WPSSO_MENU_ORDER );
@@ -426,7 +426,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * WordPress version 3.8 is required for dashicons.
 			 */
-			if ( ( $menu_lib === 'submenu' || $menu_lib === 'sitesubmenu' ) && version_compare( $wp_version, 3.8, '>=' ) ) {
+			if ( ( $menu_lib === 'submenu' || $menu_lib === 'sitesubmenu' ) && version_compare( $wp_version, '3.8', '>=' ) ) {
 
 				if ( empty( $this->p->cf['menu']['dashicons'][$menu_id] ) ) {
 					if ( $menu_ext === $this->p->lca ) {

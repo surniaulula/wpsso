@@ -411,7 +411,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			if ( $this->debug->enabled ) {
 				foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
 					foreach ( array( -9000, 9000 ) as $prio ) {
-						if ( version_compare( phpversion(), 5.3, '>=' ) ) {	// Just in case.
+						if ( version_compare( phpversion(), '5.3.0', '>=' ) ) {	// Just in case.
 							$show_action_prio_func = function() use ( $action, $prio ) {
 								echo '<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->' . "\n";
 							};

@@ -422,7 +422,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function can_dismiss() {
 			global $wp_version;
-			if ( version_compare( $wp_version, 4.2, '>=' ) ) {
+			if ( version_compare( $wp_version, '4.2', '>=' ) ) {
 				return true;
 			} else {
 				return false;

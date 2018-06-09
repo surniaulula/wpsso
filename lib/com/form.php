@@ -980,7 +980,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 */
 			global $wp_version;
 
-			if ( version_compare( $wp_version, 3.9, '>=' ) ) {
+			if ( version_compare( $wp_version, '3.9', '>=' ) ) {
 
 				$crop_area_select .= true === $narrow ?
 					' <div class="img_crop_from is_narrow">' :
@@ -1081,7 +1081,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 */
 				global $wp_version;
 
-				if ( version_compare( $wp_version, 3.8, '>=' ) ) {
+				if ( version_compare( $wp_version, '3.8', '>=' ) ) {
 					$html = '<div class="clipboard"><div class="copy_button">' .
 						'<a class="outline" href="" title="Copy to clipboard"' .
 						' onClick="return sucomCopyInputId( \'text_' . esc_js( $css_id ) . '\');">' .

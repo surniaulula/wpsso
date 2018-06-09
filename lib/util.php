@@ -494,7 +494,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					 */
 					if ( true === $size_info['crop'] && ( $size_info['crop_x'] !== 'center' || $size_info['crop_y'] !== 'center' ) ) {
 						global $wp_version;
-						if ( version_compare( $wp_version, 3.9, '>=' ) ) {
+						if ( version_compare( $wp_version, '3.9', '>=' ) ) {
 							$size_info['crop'] = array( $size_info['crop_x'], $size_info['crop_y'] );
 						}
 					}
