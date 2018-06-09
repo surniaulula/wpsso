@@ -1082,6 +1082,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				#wpadminbar #wp-toolbar .have-notices .ab-item:hover,
 				#wpadminbar #wp-toolbar .have-notices.hover .ab-item { 
+					color:inherit;
 					background:inherit;
 				}
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-icon.ab-icon { 
