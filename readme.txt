@@ -325,7 +325,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.1 (TBD)**
+**Version 4.5.1-dev.1 (TBD)**
 
 * *New Features*
 	* None
@@ -449,7 +449,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.5.1 =
+= 4.5.1-dev.1 =
 
 (TBD) Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
 
