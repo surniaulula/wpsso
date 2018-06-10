@@ -22,7 +22,7 @@ WPSSO creates complete and accurate values from your content automatically!
 
 == Description ==
 
-<img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png">
+<p style="margin-top:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
 
