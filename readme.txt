@@ -325,12 +325,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.1-dev.1 (TBD)**
+**Version 4.5.1-dev.2 (2018/06/11)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
+	* Updated the metabox tab CSS to better define activive / non-active tabs.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -449,9 +450,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.5.1-dev.1 =
+= 4.5.1-dev.2 =
 
-(TBD) Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
+(2018/06/11) Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
 
 = 4.5.0 =
 
