@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				self::$pkg[$ext]['name'] = SucomUtil::get_pkg_name( $info['name'], self::$pkg[$ext]['type'] );
 
-				self::$pkg[$ext]['status'] = self::$pkg[$ext]['aop'] ? 'L' : self::$pkg[$ext]['pdir'] ? 'U' : 'F';
+				self::$pkg[$ext]['status'] = self::$pkg[$ext]['aop'] ? 'L' : ( self::$pkg[$ext]['pdir'] ? 'U' : 'F' );
 
 				self::$pkg[$ext]['gen'] = $info['short'] . ' ' . ( isset( $info['version'] ) ?
 					$info['version'] . '/' . self::$pkg[$ext]['status'] : '' );
@@ -1463,9 +1463,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$features[$label] = array(
 							'td_class' => self::$pkg[$ext]['aop'] ? '' : 'blank',
 							'purchase' => self::$pkg[$ext]['purchase'],
-							'status' => class_exists( $classname ) ?
-								( self::$pkg[$ext]['aop'] ?
-									'on' : $status_off ) : $status_off,
+							'status' => class_exists( $classname ) ? ( self::$pkg[$ext]['aop'] ? 'on' : $status_off ) : $status_off,
 						);
 					}
 				}

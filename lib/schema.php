@@ -1505,7 +1505,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark( 'organization filter for local business' );	// begin timer
 			}
 
-			// all local businesses are also organizations
+			/**
+			 * All local businesses are also organizations.
+			 */
 			$ret = $this->filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
 			if ( $this->p->debug->enabled ) {
@@ -2336,7 +2338,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return 0;
 			}
 
-			// if not adding a list element, inherit the existing schema type url (if one exists)
+			/**
+			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 */
 			list( $event_type_id, $event_type_url ) = self::get_single_type_id_url( $json_data, $event_opts, 'event_type', 'event', $list_element );
 
 			$ret = self::get_schema_type_context( $event_type_url );
@@ -2466,7 +2470,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret['employmentType'] = $job_opts['job_empl_types'];
 			}
 
-			// add single employment type options (value must be non-empty)
+			/**
+			 * Add single employment type options (value must be non-empty).
+			 */
 			foreach ( SucomUtil::preg_grep_keys( '/^job_empl_type_/', $job_opts, false, '' ) as $empl_type => $checked ) {
 				if ( ! empty( $checked ) ) {
 					$ret['employmentType'][] = $empl_type;
@@ -3054,17 +3060,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function organization_to_localbusiness( array &$json_data ) {
 
-			// Google requires a local business to have an image
-			if ( isset( $json_data['logo'] ) && empty( $json_data['image'] ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'adding logo from organization markup' );
-				}
-				$json_data['image'][] = $json_data['logo'];
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'logo is missing from organization markup' );
-			}
-
-			// promote all location information up
+			/**
+			 * Promote all location information up.
+			 */
 			if ( isset( $json_data['location'] ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -3087,6 +3085,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'no location property to promote' );
 			}
+
+			/**
+			 * Google requires a local business to have an image.
+			 * Check last as the location may have had an image that was promoted.
+			 */
+			if ( isset( $json_data['logo'] ) && empty( $json_data['image'] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding logo from organization markup' );
+				}
+				$json_data['image'][] = $json_data['logo'];
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'logo is missing from organization markup' );
+			}
+
 		}
 
 		/**
