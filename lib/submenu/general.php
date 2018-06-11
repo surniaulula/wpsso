@@ -54,7 +54,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$metabox_id = 'og';
 
-			$tabs = apply_filters( $this->p->lca.'_general_og_tabs', array(
+			$tabs = apply_filters( $this->p->lca.'_general_' . $metabox_id . '_tabs', array(
 				'general' => _x( 'Site Information', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Titles / Descriptions', 'metabox tab', 'wpsso' ),
 				'author' => _x( 'Authorship', 'metabox tab', 'wpsso' ),
@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$metabox_id = 'pub';
 
-			$tabs = apply_filters( $this->p->lca.'_general_pub_tabs', array(
+			$tabs = apply_filters( $this->p->lca.'_general_' . $metabox_id . '_tabs', array(
 				'facebook' => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'google' => _x( 'Google / Schema', 'metabox tab', 'wpsso' ),
 				'pinterest' => _x( 'Pinterest', 'metabox tab', 'wpsso' ),

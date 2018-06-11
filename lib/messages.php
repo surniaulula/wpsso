@@ -1789,7 +1789,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	$text = '<p class="status-msg">';
 
-							$text .= sprintf( __( 'The image container in this example uses the minimum Facebook image dimensions of %s.', 'wpsso' ), $fb_img_dims );
+							$text .= sprintf( __( 'The example image container uses the minimum recommended Facebook image dimensions of %s.', 'wpsso' ), $fb_img_dims );
 
 							$text .= '</p>';
 

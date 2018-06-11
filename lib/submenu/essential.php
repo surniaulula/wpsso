@@ -49,15 +49,32 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 		}
 
 		public function show_metabox_general() {
-			$metabox_id = $this->menu_id;
-			$tab_key = 'general';
-			$this->p->util->do_metabox_table( apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows',
-				$this->get_table_rows( $metabox_id, $tab_key ), $this->form, false ), 'metabox-'.$metabox_id.'-'.$tab_key );
+
+			$metabox_id = 'essential';
+
+			$tabs = apply_filters( $this->p->lca.'_essential_general_tabs', array(
+				'general' => _x( 'Site Information', 'metabox tab', 'wpsso' ),
+				'facebook' => _x( 'Facebook / Open Graph', 'metabox tab', 'wpsso' ),
+				'google' => _x( 'Google / Schema', 'metabox tab', 'wpsso' ),
+				'pinterest' => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
+				'twitter' => _x( 'Twitter', 'metabox tab', 'wpsso' ),
+			) );
+
+			$table_rows = array();
+
+			foreach ( $tabs as $tab_key => $title ) {
+				$table_rows[$tab_key] = apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows',
+					$this->get_table_rows( $metabox_id, $tab_key ), $this->form );
+			}
+
+			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
 		public function show_metabox_advanced() {
-			$metabox_id = $this->menu_id;
-			$tab_key = 'advanced';
+
+			$metabox_id = 'essential';
+			$tab_key    = 'advanced';
+
 			$this->p->util->do_metabox_table( apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows',
 				$this->get_table_rows( $metabox_id, $tab_key ), $this->form, false ), 'metabox-'.$metabox_id.'-'.$tab_key );
 		}
@@ -69,9 +86,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 			switch ( $metabox_id.'-'.$tab_key ) {
 
 				case 'essential-general':
-
-					$table_rows['subsection_site_information'] = '<td></td><td class="subsection top"><h4>'.
-						_x( 'Site Information', 'metabox title', 'wpsso' ).'</h4></td>';
 
 					$table_rows['site_name'] = $this->form->get_th_html( _x( 'WebSite Name',
 						'option label', 'wpsso' ), null, 'site_name', array( 'is_locale' => true ) ).
@@ -87,8 +101,9 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						'option label', 'wpsso' ), null, 'og_art_section' ).
 					'<td>'.$this->form->get_select( 'og_art_section', $this->p->util->get_article_topics() ).'</td>';
 
-					$table_rows['subsection_opengraph'] = '<td></td><td class="subsection"><h4>'.
-						_x( 'Facebook / Open Graph', 'metabox title', 'wpsso' ).'</h4></td>';
+					break;
+
+				case 'essential-facebook':
 
 					$table_rows['fb_publisher_url'] = $this->form->get_th_html( _x( 'Facebook Business Page URL',
 						'option label', 'wpsso' ), null, 'fb_publisher_url', array( 'is_locale' => true ) ).
@@ -106,8 +121,9 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						'option label', 'wpsso' ), null, 'og_def_img_url' ).
 					'<td>'.$this->form->get_input_image_url( 'og_def_img' ).'</td>';
 
-					$table_rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>'.
-						_x( 'Google / Schema', 'metabox title', 'wpsso' ).'</h4></td>';
+					break;
+
+				case 'essential-google':
 
 					$table_rows['seo_publisher_url'] = $this->form->get_th_html( _x( 'Google+ Business Page URL',
 						'option label', 'wpsso' ), null, 'seo_publisher_url', array( 'is_locale' => true ) ).
@@ -125,15 +141,17 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						'option label', 'wpsso' ), '', 'schema_banner_url', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ).'</td>';
 
-					$table_rows['subsection_pinterest'] = '<td></td><td class="subsection"><h4>'.
-						_x( 'Pinterest', 'metabox title', 'wpsso' ).'</h4></td>';
+					break;
+
+				case 'essential-pinterest':
 
 					$table_rows['p_publisher_url'] = $this->form->get_th_html( _x( 'Pinterest Company Page URL',
 						'option label', 'wpsso' ), null, 'p_publisher_url', array( 'is_locale' => true ) ).
 					'<td>'.$this->form->get_input( SucomUtil::get_key_locale( 'p_publisher_url', $this->p->options ), 'wide' ).'</td>';
 
-					$table_rows['subsection_twitter'] = '<td></td><td class="subsection"><h4>'.
-						_x( 'Twitter', 'metabox title', 'wpsso' ).'</h4></td>';
+					break;
+
+				case 'essential-twitter':
 
 					$table_rows['tc_site'] = $this->form->get_th_html( _x( 'Twitter Business @username',
 						'option label', 'wpsso' ), null, 'tc_site', array( 'is_locale' => true ) ).

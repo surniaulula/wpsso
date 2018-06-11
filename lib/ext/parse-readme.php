@@ -407,4 +407,3 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 	
 	} // end class
 }
-

@@ -791,12 +791,12 @@ msgid ""
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:2863 lib/submenu/essential.php:120
+#: lib/admin.php:2863 lib/submenu/essential.php:136
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2867 lib/submenu/essential.php:124
+#: lib/admin.php:2867 lib/submenu/essential.php:140
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -3189,7 +3189,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:607 lib/util.php:2695
+#: lib/messages.php:607 lib/util.php:2701
 msgid "No options available."
 msgstr ""
 
@@ -4245,7 +4245,7 @@ msgstr ""
 
 #: lib/messages.php:1792
 msgid ""
-"The image container in this example uses the minimum Facebook image "
+"The example image container uses the minimum recommended Facebook image "
 "dimensions of %s."
 msgstr ""
 
@@ -4372,7 +4372,8 @@ msgid ""
 "template)."
 msgstr ""
 
-#: lib/messages.php:1868 lib/submenu/general.php:81
+#: lib/messages.php:1868 lib/submenu/essential.php:58
+#: lib/submenu/general.php:81
 msgctxt "metabox tab"
 msgid "Google / Schema"
 msgstr ""
@@ -5512,7 +5513,8 @@ msgctxt "metabox tab"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/submenu/advanced.php:101 lib/submenu/general.php:83
+#: lib/submenu/advanced.php:101 lib/submenu/essential.php:60
+#: lib/submenu/general.php:83
 msgctxt "metabox tab"
 msgid "Twitter"
 msgstr ""
@@ -5567,77 +5569,67 @@ msgctxt "metabox title"
 msgid "Optional Advanced Settings"
 msgstr ""
 
-#: lib/submenu/essential.php:74
-msgctxt "metabox title"
+#: lib/submenu/essential.php:56 lib/submenu/general.php:58
+msgctxt "metabox tab"
 msgid "Site Information"
 msgstr ""
 
-#: lib/submenu/essential.php:76 lib/submenu/general.php:107
+#: lib/submenu/essential.php:57
+msgctxt "metabox tab"
+msgid "Facebook / Open Graph"
+msgstr ""
+
+#: lib/submenu/essential.php:59 lib/submenu/general.php:82
+msgctxt "metabox tab"
+msgid "Pinterest"
+msgstr ""
+
+#: lib/submenu/essential.php:90 lib/submenu/general.php:107
 msgctxt "option label"
 msgid "WebSite Name"
 msgstr ""
 
-#: lib/submenu/essential.php:81 lib/submenu/general.php:112
+#: lib/submenu/essential.php:95 lib/submenu/general.php:112
 msgctxt "option label"
 msgid "WebSite Description"
 msgstr ""
 
-#: lib/submenu/essential.php:86 lib/submenu/general.php:121
+#: lib/submenu/essential.php:100 lib/submenu/general.php:121
 msgctxt "option label"
 msgid "Default Article Topic"
 msgstr ""
 
-#: lib/submenu/essential.php:91
-msgctxt "metabox title"
-msgid "Facebook / Open Graph"
-msgstr ""
-
-#: lib/submenu/essential.php:93 lib/submenu/general.php:222
+#: lib/submenu/essential.php:108 lib/submenu/general.php:222
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:97 lib/submenu/general.php:227
+#: lib/submenu/essential.php:112 lib/submenu/general.php:227
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/essential.php:101 lib/submenu/general.php:192
+#: lib/submenu/essential.php:116 lib/submenu/general.php:192
 msgctxt "option label"
 msgid "Default / Fallback Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:105 lib/submenu/general.php:196
+#: lib/submenu/essential.php:120 lib/submenu/general.php:196
 msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:110
-msgctxt "metabox title"
-msgid "Google / Schema"
-msgstr ""
-
-#: lib/submenu/essential.php:112 lib/submenu/general.php:251
+#: lib/submenu/essential.php:128 lib/submenu/general.php:251
 msgctxt "option label"
 msgid "Google+ Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:129
-msgctxt "metabox title"
-msgid "Pinterest"
-msgstr ""
-
-#: lib/submenu/essential.php:131 lib/submenu/general.php:294
+#: lib/submenu/essential.php:148 lib/submenu/general.php:294
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:136
-msgctxt "metabox title"
-msgid "Twitter"
-msgstr ""
-
-#: lib/submenu/essential.php:138 lib/submenu/general.php:328
+#: lib/submenu/essential.php:156 lib/submenu/general.php:328
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
@@ -5645,11 +5637,6 @@ msgstr ""
 #: lib/submenu/general.php:41
 msgctxt "metabox title"
 msgid "Specific WebSites and Publishers"
-msgstr ""
-
-#: lib/submenu/general.php:58
-msgctxt "metabox tab"
-msgid "Site Information"
 msgstr ""
 
 #: lib/submenu/general.php:59
@@ -5670,11 +5657,6 @@ msgstr ""
 #: lib/submenu/general.php:62
 msgctxt "metabox tab"
 msgid "Videos"
-msgstr ""
-
-#: lib/submenu/general.php:82
-msgctxt "metabox tab"
-msgid "Pinterest"
 msgstr ""
 
 #: lib/submenu/general.php:84
@@ -5947,27 +5929,27 @@ msgid ""
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2722
+#: lib/util.php:2728
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2725
+#: lib/util.php:2731
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2730
+#: lib/util.php:2736
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2733
+#: lib/util.php:2739
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: lib/util.php:2875
+#: lib/util.php:2881
 msgctxt "option comment"
 msgid "%s add-on required"
 msgstr ""

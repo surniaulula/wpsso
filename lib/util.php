@@ -2568,11 +2568,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Add the settings tab list.
 			 */
+			$tab_num = 0;
+
 			foreach ( $tabs as $tab => $title ) {
+
+				$tab_num++;
+
 				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
-				$ret_html .= '<div class="tab_left">&nbsp;</div><li class="' . 
-					$class_href_key . '"><a class="' . $class_link . '" href="#' . 
-					$class_href_key . '">' . $title . '</a></li>' . "\n";
+
+				$ret_html .= '<div class="tab_space' . ( $tab_num === 1 ? ' first_tab' : '' ) . '">&nbsp;</div>' .
+					'<li class="' . $class_href_key . '"><a class="' . $class_link . '" href="#' . $class_href_key . '">' .
+						$title . '</a></li>';	// Do not add newline.
 			}
 
 			$ret_html .= '</ul><!-- .' . $class_metabox_tabs . ' -->' . "\n";

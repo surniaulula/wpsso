@@ -2637,4 +2637,3 @@ if ( ! class_exists( 'SuextMarkdownParser' ) ) {
 		}
 	}
 }
-
