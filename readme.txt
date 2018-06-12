@@ -293,7 +293,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 == Screenshots ==
 
 01. WPSSO Core includes a Facebook / Open Graph preview, customization tabs for content details, image, video, head tags list, and validation tools.
-02. WPSSO Core offers a quick and easy Essential settings page (shown here), along with more detailed General and Advanced settings pages, Free add-ons, a dashboard / status page, and an easy setup guide / check list for first time users.
+02. WPSSO Core offers a quick and easy Essential settings page (shown here), more detailed General and Advanced settings pages, several Free add-ons, a dashboard / status page, along with an easy to follow setup guide / check list.
 
 == Changelog ==
 
