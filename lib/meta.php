@@ -73,10 +73,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			'is_home' => false,		// home page (index or static)
 			'is_home_page' => false,	// static front page
 			'is_home_index' => false,	// static posts page or home index
-			'post_type' => false,
-			'post_mime' => false,
-			'post_status' => false,
-			'post_author' => false,
+			'post_slug' => false,		// post name (aka slug)
+			'post_type' => false,		// post type name
+			'post_mime' => false,		// post mime type (ie. image/jpg)
+			'post_status' => false,		// post status name
+			'post_author' => false,		// post author id
 			'post_coauthors' => array(),
 			/**
 			 * Term
@@ -101,13 +102,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_posts_mods( array $mod, $posts_per_page = false, $paged = false ) {
-			$ret = array();
+
+			$posts_mods = array();
+
 			foreach ( $this->get_posts( $mod, $posts_per_page, $paged ) as $post_obj ) {
 				if ( ! empty( $post_obj->ID ) ) {	// Just in case.
-					$ret[] = $this->p->m['util']['post']->get_mod( $post_obj->ID );
+					$posts_mods[] = $this->p->m['util']['post']->get_mod( $post_obj->ID );
 				}
 			}
-			return $ret;
+
+			return $posts_mods;
 		}
 
 		protected function add_actions() {

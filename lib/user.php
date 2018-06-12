@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$mod['name'].' id '.$mod['id'].' (posts_per_page is '.$posts_per_page.')' );
 			}
 
-			$get_posts_args = array(
+			$get_posts_args = apply_filters( $this->p->lca . '_get_posts_args', array(
 				/**
 				 * Common arguments.
 				 */
@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * Arguments for users.
 				 */
 				'author'         => $mod['id'],
-			);
+			), $mod );
 
 			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
 			$start_time = microtime( true );

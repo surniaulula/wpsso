@@ -156,10 +156,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod['is_home_page'] = SucomUtil::is_home_page( $mod_id );
 			$mod['is_home_index'] = $mod['is_home_page'] ? false : SucomUtil::is_home_index( $mod_id );
 			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;
+			$mod['post_slug'] = get_post_field( 'post_name', $mod_id );			// post name (aka slug)
 			$mod['post_type'] = get_post_type( $mod_id );					// post type name
 			$mod['post_mime'] = get_post_mime_type( $mod_id );				// post mime type (ie. image/jpg)
 			$mod['post_status'] = get_post_status( $mod_id );				// post status name
 			$mod['post_author'] = (int) get_post_field( 'post_author', $mod_id );		// post author id
+			$mod['post_coauthors'] = array();
 
 			/**
 			 * Hooked by the 'coauthors' pro module.
@@ -213,7 +215,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$mod['name'] . ' id ' . $mod['id'] . ' (posts_per_page is ' . $posts_per_page . ')' );
 			}
 
-			$get_posts_args = array(
+			$get_posts_args = apply_filters( $this->p->lca . '_get_posts_args', array(
 				/**
 				 * Common arguments.
 				 */
@@ -229,7 +231,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				'post_parent'    => $mod['id'],
 				'child_of'       => $mod['id'],		// only include direct children
-			);
+			), $mod );
 
 			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
 			$start_time = microtime( true );
