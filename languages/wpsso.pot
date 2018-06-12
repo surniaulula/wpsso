@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.5.1-dev.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.5.1-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -102,7 +102,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:827 lib/post.php:712 lib/term.php:406 lib/user.php:409
+#: lib/admin.php:827 lib/post.php:722 lib/term.php:416 lib/user.php:419
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2598,7 +2598,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:191 lib/meta.php:234 lib/post.php:1068
+#: lib/gpl/admin/post.php:191 lib/meta.php:234 lib/post.php:1078
 #: lib/pro/admin/post.php:204
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -2644,8 +2644,8 @@ msgid "Library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:165 lib/loader.php:191 lib/post.php:253 lib/register.php:226
-#: lib/term.php:230 lib/user.php:197 lib/util.php:346 lib/util.php:2419
+#: lib/loader.php:165 lib/loader.php:191 lib/post.php:263 lib/register.php:226
+#: lib/term.php:240 lib/user.php:207 lib/util.php:346 lib/util.php:2419
 msgid "%s warning:"
 msgstr ""
 
@@ -3638,7 +3638,7 @@ msgstr ""
 msgid "Automatically add the '%s' role when new users are created."
 msgstr ""
 
-#: lib/messages.php:1023 lib/user.php:30 lib/user.php:220
+#: lib/messages.php:1023 lib/user.php:30 lib/user.php:230
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -5009,149 +5009,149 @@ msgid "No Description"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
-#: lib/post.php:239 lib/term.php:216 lib/user.php:183 lib/util.php:332
+#: lib/post.php:249 lib/term.php:226 lib/user.php:193 lib/util.php:332
 #: lib/util.php:2396
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-#: lib/post.php:242
+#: lib/post.php:252
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:831
+#: lib/post.php:841
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:834
+#: lib/post.php:844
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:862
+#: lib/post.php:872
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:864
+#: lib/post.php:874
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:866
+#: lib/post.php:876
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:867
+#: lib/post.php:877
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:877 lib/util.php:1236
+#: lib/post.php:887 lib/util.php:1236
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:886
+#: lib/post.php:896
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:895
+#: lib/post.php:905
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:904
+#: lib/post.php:914
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:920
+#: lib/post.php:930
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:930
+#: lib/post.php:940
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:942
+#: lib/post.php:952
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:942
+#: lib/post.php:952
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:942
+#: lib/post.php:952
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:968
+#: lib/post.php:978
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:969
+#: lib/post.php:979
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:975
+#: lib/post.php:985
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:978
+#: lib/post.php:988
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:980
+#: lib/post.php:990
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1203 lib/script.php:219
+#: lib/post.php:1213 lib/script.php:219
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1212
+#: lib/post.php:1222
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1213
+#: lib/post.php:1223
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1224
+#: lib/post.php:1234
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1225
+#: lib/post.php:1235
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1226
+#: lib/post.php:1236
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1227
+#: lib/post.php:1237
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1301
+#: lib/post.php:1311
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -5161,25 +5161,25 @@ msgid ""
 "unchecked and disabled automatically."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:689
+#: lib/pro/ecom/woocommerce.php:691
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:691
+#: lib/pro/ecom/woocommerce.php:693
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:871
+#: lib/pro/ecom/woocommerce.php:873
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:873
+#: lib/pro/ecom/woocommerce.php:875
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:876
+#: lib/pro/ecom/woocommerce.php:878
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -5810,13 +5810,13 @@ msgid "Setup Guide and Other Notes"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$s is a recommended max
-#: lib/term.php:219
+#: lib/term.php:229
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:528
+#: lib/term.php:538
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -5831,29 +5831,29 @@ msgid "Twitter Large Image Card"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-#: lib/user.php:186
+#: lib/user.php:196
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:593
+#: lib/user.php:603
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:666
+#: lib/user.php:676
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:667
+#: lib/user.php:677
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:668
+#: lib/user.php:678
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1056
+#: lib/user.php:1066
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 

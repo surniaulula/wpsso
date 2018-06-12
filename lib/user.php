@@ -158,16 +158,26 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$mod['name'].' id '.$mod['id'].' (posts_per_page is '.$posts_per_page.')' );
 			}
 
-			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
-			$start_time = microtime( true );
-			$user_posts = get_posts( array(
-				'posts_per_page' => $posts_per_page,
+			$get_posts_args = array(
+				/**
+				 * Common arguments.
+				 */
+				'has_password'   => false,		// Since wp 3.9.
+				'orderby'        => 'date',		// Order posts by date (newest first).
+				'order'          => 'DESC',
 				'paged'          => $paged,
 				'post_status'    => 'publish',
 				'post_type'      => 'any',
-				'has_password'   => false,	// since wp 3.9
+				'posts_per_page' => $posts_per_page,
+				/**
+				 * Arguments for users.
+				 */
 				'author'         => $mod['id'],
-			) );
+			);
+
+			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
+			$start_time = microtime( true );
+			$user_posts = get_posts( $get_posts_args );
 			$total_time = microtime( true ) - $start_time;
 
 			if ( $max_time > 0 && $total_time > $max_time ) {

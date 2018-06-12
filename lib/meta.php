@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
-			return $this->must_be_extended( __METHOD__, array() );	// return an empty array
+			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
 		}
 
 		public function get_posts_mods( array $mod, $posts_per_page = false, $paged = false ) {
