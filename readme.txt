@@ -292,10 +292,8 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 == Screenshots ==
 
-01. WPSSO Core includes a handy preview feature and can check the front-end webpage for duplicate meta tags.
-02. WPSSO Core includes a detailed list of the generated meta tags and Schema markup for advanced users.
-03. WPSSO Core includes an optional Schema type and preview column in the post, page, and custom post type lists (can be hidden/shown globally and/or per user).
-04. WPSSO Core offers a quick and easy Essential settings page (shown here), along with a more detailed General and Advanced settings page.
+01. WPSSO Core includes a Facebook / Open Graph preview, customization tabs for content details, image, video, head tags list, and validation tools.
+02. WPSSO Core offers a quick and easy Essential settings page (shown here), along with more detailed General and Advanced settings pages.
 
 == Changelog ==
 
