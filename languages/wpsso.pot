@@ -5004,7 +5004,7 @@ msgstr ""
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:686
+#: lib/page.php:690
 msgid "No Description"
 msgstr ""
 

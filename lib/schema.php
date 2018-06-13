@@ -1743,13 +1743,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$ret['alternateName'] = $wpsso->page->get_title( $title_len, '...', $mod, true, false, true, 'schema_title_alt' );
 
-				if ( empty( $ret['alternateName'] ) ) {
+				if ( empty( $ret['alternateName'] ) || $ret['name'] === $ret['alternateName'] ) {
 					unset( $ret['alternateName'] );
 				}
 
 				$ret['alternativeHeadline'] = get_post_meta( $mod['id'], '_wp_attachment_image_alt', true );
 
-				if ( empty( $ret['alternativeHeadline'] ) ) {
+				if ( empty( $ret['alternativeHeadline'] ) || $ret['name'] === $ret['alternativeHeadline'] ) {
 					unset( $ret['alternativeHeadline'] );
 				}
 

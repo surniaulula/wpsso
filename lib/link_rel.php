@@ -39,16 +39,15 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca = $this->p->cf['lca'];
 			$sharing_url = empty( $mt_og['og:url'] ) ? $this->p->util->get_sharing_url( $mod ) : $mt_og['og:url'];
-			$link_rel = apply_filters( $lca.'_link_rel_seed', array(), $mod );
+			$link_rel = apply_filters( $this->p->lca . '_link_rel_seed', array(), $mod );
 
 			/**
 			 * link rel author
 			 */
 			if ( ! empty( $author_id ) ) {
 				$add_link_rel_author = empty( $this->p->options['add_link_rel_author'] ) ? false : true;
-				if ( apply_filters( $lca.'_add_link_rel_author', $add_link_rel_author, $mod ) ) {
+				if ( apply_filters( $this->p->lca . '_add_link_rel_author', $add_link_rel_author, $mod ) ) {
 					if ( is_object( $this->p->m['util']['user'] ) ) {	// Just in case.
 						$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id,
 							$this->p->options['seo_author_field'] );
@@ -63,7 +62,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			 */
 			$add_link_rel_canonical = empty( $this->p->options['add_link_rel_canonical'] ) ? false : true;
 
-			if ( apply_filters( $lca.'_add_link_rel_canonical', $add_link_rel_canonical, $mod ) ) {
+			if ( apply_filters( $this->p->lca . '_add_link_rel_canonical', $add_link_rel_canonical, $mod ) ) {
 				$link_rel['canonical'] = $this->p->util->get_canonical_url( $mod );
 			}
 
@@ -72,7 +71,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			 */
 			if ( ! empty( $this->p->options['seo_publisher_url'] ) ) {
 				$add_link_rel_publisher = empty( $this->p->options['add_link_rel_publisher'] ) ? false : true;
-				if ( apply_filters( $lca.'_add_link_rel_publisher', $add_link_rel_publisher, $mod ) ) {
+				if ( apply_filters( $this->p->lca . '_add_link_rel_publisher', $add_link_rel_publisher, $mod ) ) {
 					$link_rel['publisher'] = $this->p->options['seo_publisher_url'];
 				}
 			} elseif ( $this->p->debug->enabled ) {
@@ -92,7 +91,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$this->p->debug->log( 'pre-filter add_link_rel_shortlink is false' );
 			}
 
-			if ( apply_filters( $lca.'_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
+			if ( apply_filters( $this->p->lca . '_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
 
 				$shortlink = '';
 
@@ -101,18 +100,19 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 					$shortlink = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'WordPress wp_get_shortlink() = '.wp_get_shortlink( $mod['id'], 'post' ) );
-						$this->p->debug->log( 'SucomUtilWP::wp_get_shortlink() = '.$shortlink );
+						$this->p->debug->log( 'WordPress wp_get_shortlink() = ' . wp_get_shortlink( $mod['id'], 'post' ) );
+						$this->p->debug->log( 'SucomUtilWP::wp_get_shortlink() = ' . $shortlink );
 					}
 
 				} elseif ( ! empty( $mt_og['og:url'] ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'using '.$lca.'_get_short_url filters to get shortlink' );
+						$this->p->debug->log( 'using ' . $this->p->lca . '_get_short_url filters to get shortlink' );
 					}
 
 					$service_key = $this->p->options['plugin_shortener'];
-					$shortlink = apply_filters( $lca.'_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
+
+					$shortlink = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
 				}
 
 				if ( empty( $shortlink ) ) {
@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$this->p->debug->log( 'skipping shortlink: add_link_rel_shortlink filter returned false' );
 			}
 
-			return (array) apply_filters( $lca.'_link_rel', $link_rel, $mod );
+			return (array) apply_filters( $this->p->lca . '_link_rel', $link_rel, $mod );
 		}
 	}
 }

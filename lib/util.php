@@ -599,7 +599,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 */
 		public function get_force_regen_key( $mod, $md_pre ) {
 
-			if ( is_numeric( $mod ) && $mod > 0 ) {	// optimize by skipping get_page_mod()
+			if ( is_numeric( $mod ) && $mod > 0 ) {	// Optimize by skipping get_page_mod().
 				return 'post_'.$mod.'_regen_'.$md_pre;
 			}
 

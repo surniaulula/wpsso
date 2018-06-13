@@ -1202,7 +1202,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( empty( $cache_info ) ) {
 					continue;
-				} elseif ( empty( $cache_info['label'] ) ) {	// skip cache info without labels
+				} elseif ( empty( $cache_info['label'] ) ) {	// Skip cache info without labels.
 					continue;
 				}
 

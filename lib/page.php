@@ -678,6 +678,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'post_status is auto-draft: using empty description' );
 					}
+				} elseif ( $mod['post_type'] === 'attachment' ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'post_type is attachment: using empty description' );
+					}
 				} elseif ( $desc_text = SucomUtil::get_site_description( $this->p->options, $mod ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'fallback SucomUtil::get_site_description() = "'.$desc_text.'"' );
