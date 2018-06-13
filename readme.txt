@@ -329,7 +329,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
-	* Updated the metabox tab CSS to better define activive / non-active tabs.
+	* Updated the metabox tab CSS to better define active / non-active tabs.
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -450,7 +450,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.5.1-b.1 =
 
-(2018/06/13) Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
+(2018/06/13) Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar. Updated the metabox tab CSS to better define active / non-active tabs.
 
 = 4.5.0 =
 
