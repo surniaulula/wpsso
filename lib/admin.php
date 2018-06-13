@@ -732,7 +732,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $this->p->options['plugin_clear_on_save'] ) ) {
 
-				// admin url will redirect to the essential settings since we're not on a settings page
+				/**
+				 * Note that get_admin_url() will use the essential settings URL if we're not on a settings page.
+				 */
 				$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?' . $this->p->lca . '-action=clear_all_cache',
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
 	
@@ -931,7 +933,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			// method is extended by each submenu page
 		}
 
-		// called from the add_meta_boxes() method in specific settings pages (essential, general, etc.).
+		/**
+		 * Called from the add_meta_boxes() method in specific settings pages (essential, general, etc.).
+		 */
 		protected function maybe_show_language_notice() {
 
 			$current_locale = SucomUtil::get_locale( 'current' );
@@ -2970,7 +2974,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			unset( $type_select, $type_opt_keys );	// Just in case.
 		}
 
-		// called from the WpssoSubmenuEssential, WpssoSubmenuGeneral, and WpssoJsonSubmenuSchemaJsonLd classes
+		/**
+		 * Called from the WpssoSubmenuEssential, WpssoSubmenuGeneral, and WpssoJsonSubmenuSchemaJsonLd classes.
+		 */
 		protected function add_schema_knowledge_graph_table_rows( array &$table_rows ) {
 
 			$table_rows['schema_knowledge_graph'] = $this->form->get_th_html( _x( 'Knowledge Graph for Home Page',
@@ -2994,8 +3000,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			'<td>' . $this->form->get_select( 'schema_home_person_id', $site_owners, '', '', true ) . '</td>';
 		}
 
-		// called from the WpssoSubmenuEssential, WpssoSubmenuAdvanced, and WpssoSitesubmenuSiteadvanced classes
-		protected function add_essential_advanced_table_rows( array &$table_rows, $network = false ) {
+		/**
+		 * Called from the WpssoSubmenuEssential, WpssoSubmenuAdvanced, and WpssoSitesubmenuSiteadvanced classes.
+		 * Note that the essential settings page will unset() some table rows to keep the options list to a minimum.
+		 */
+		protected function add_optional_advanced_table_rows( array &$table_rows, $network = false ) {
 
 			$table_rows['plugin_preserve'] = '' .
 			$this->form->get_th_html( _x( 'Preserve Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_preserve' ).

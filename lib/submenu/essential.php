@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 		public function show_metabox_advanced() {
 
-			$metabox_id = 'essential';
+			$metabox_id = 'optional';
 			$tab_key    = 'advanced';
 
 			$this->p->util->do_metabox_table( apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows',
@@ -159,10 +159,11 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 					break;
 
-				case 'essential-advanced':
+				case 'optional-advanced':
 
-					$this->add_essential_advanced_table_rows( $table_rows );
+					$this->add_optional_advanced_table_rows( $table_rows );
 
+					unset ( $table_rows['plugin_debug'] );
 					unset ( $table_rows['plugin_hide_pro'] );
 					unset ( $table_rows['plugin_shortcodes'] );
 					unset ( $table_rows['plugin_widgets'] );

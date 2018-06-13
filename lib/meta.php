@@ -841,10 +841,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 * Check image size options (id, prefix, width, height, crop, etc.).
 			 */
 			foreach ( array( 'og', 'schema' ) as $md_pre ) {
-				if ( empty( $md_opts[$md_pre.'_img_id'] ) ) {
+
+				/**
+				 * If an image ID is being used, remove the image url (only one can be defined).
+				 * And if there's no image ID, then remove any image ID library prefix (wp or ngg, for example).
+				 */
+				if ( ! empty( $md_opts[$md_pre.'_img_id'] ) ) {
+					unset( $md_opts[$md_pre.'_img_url'] );
+				} else {
 					unset( $md_opts[$md_pre.'_img_id_pre'] );
 				}
+
 				$force_regen = false;
+
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $md_suffix ) {
 					// if option is the same as the default, then unset it
 					if ( isset( $md_opts[$md_pre.'_img_'.$md_suffix] ) &&
@@ -860,6 +869,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$force_regen = true;
 					}
 				}
+
 				if ( $force_regen !== false ) {
 					$this->p->util->set_force_regen( $mod, $md_pre );
 				}

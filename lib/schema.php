@@ -1608,6 +1608,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
+			/**
+			 * Logo and banner image dimensions are localized as well.
+			 *
+			 * Example: 'schema_logo_url:width#fr_FR'.
+			 */
 			return array(
 				'org_type' => $wpsso->options['site_org_type'],
 				'org_url' => SucomUtil::get_site_url( $wpsso->options, $mixed ),
@@ -1615,7 +1620,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'org_name_alt' => SucomUtil::get_site_name_alt( $wpsso->options, $mixed ),
 				'org_desc' => SucomUtil::get_site_description( $wpsso->options, $mixed ),
 				'org_logo_url' => SucomUtil::get_key_value( 'schema_logo_url', $wpsso->options, $mixed ),
+				'org_logo_url:width' => SucomUtil::get_key_value( 'schema_logo_url:width', $wpsso->options, $mixed ),
+				'org_logo_url:height' => SucomUtil::get_key_value( 'schema_logo_url:height', $wpsso->options, $mixed ),
 				'org_banner_url' => SucomUtil::get_key_value( 'schema_banner_url', $wpsso->options, $mixed ),
+				'org_banner_url:width' => SucomUtil::get_key_value( 'schema_banner_url:width', $wpsso->options, $mixed ),
+				'org_banner_url:height' => SucomUtil::get_key_value( 'schema_banner_url:height', $wpsso->options, $mixed ),
 				'org_place_id' => $wpsso->options['site_place_id'],
 				'org_sameas' => $org_sameas,
 			);
@@ -1673,10 +1682,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( isset( $og_images[0] ) && is_array( $og_images[0] ) ) {						// 2 dimensional array
 				foreach ( $og_images as $og_single_image ) {
-					$images_added += self::add_og_single_image_data( $json_data, $og_single_image, $prefix, true );	// $list_element = true
+					$images_added += self::add_og_single_image_data( $json_data, $og_single_image, $prefix, true );	// $list_element is true.
 				}
 			} elseif ( is_array( $og_images ) ) {
-				$images_added += self::add_og_single_image_data( $json_data, $og_images, $prefix, true );		// $list_element = true
+				$images_added += self::add_og_single_image_data( $json_data, $og_images, $prefix, true );	// $list_element is true.
 			}
 
 			return $images_added;	// return count of images added
@@ -2587,8 +2596,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'adding image from ' . $logo_key . ' option' );
 				}
 				if ( ! empty( $org_opts[$logo_key] ) ) {
-					if ( ! self::add_og_single_image_data( $ret['logo'], $org_opts, $logo_key, false ) ) {	// $list_element = false
-						unset( $ret['logo'] );	// prevent null assignment
+					if ( ! self::add_og_single_image_data( $ret['logo'], $org_opts, $logo_key, false ) ) {	// $list_element is false.
+						unset( $ret['logo'] );	// Prevent null assignment.
 					}
 				}
 				if ( empty( $ret['logo'] ) ) {
@@ -2949,8 +2958,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( ! empty( $place_opts['place_img_id'] ) || ! empty( $place_opts['place_img_url'] ) ) {
 				$mt_image = $wpsso->media->get_opts_single_image( $place_opts, $size_name, 'place_img' );
-				if ( ! self::add_og_single_image_data( $ret['image'], $mt_image, 'og:image', true ) ) {	// $list_element = true
-					unset( $ret['image'] );	// prevent null assignment
+				if ( ! self::add_og_single_image_data( $ret['image'], $mt_image, 'og:image', true ) ) {	// $list_element is true.
+					unset( $ret['image'] );	// Prevent null assignment.
 				}
 			}
 

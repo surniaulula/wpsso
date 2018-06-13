@@ -511,8 +511,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * If an image id is being used, remove the image url (only one can be defined).
 			 */
-			if ( ! empty( $opts['og_def_img_id'] ) && ! empty( $opts['og_def_img_url'] ) ) {
-				$opts['og_def_img_url'] = '';
+			foreach ( array( 'og_def' ) as $md_pre ) {
+				if ( ! empty( $opts[$md_pre . '_img_id'] ) ) {
+					$opts[$md_pre . '_img_url'] = '';
+				}
 			}
 
 			/**

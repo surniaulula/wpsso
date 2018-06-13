@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 
 				case 'plugin-settings':
 
-					$this->add_essential_advanced_table_rows( $table_rows, true );	// $network = true
+					$this->add_optional_advanced_table_rows( $table_rows, true );	// $network = true
 
 					break;
 			}
