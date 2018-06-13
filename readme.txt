@@ -323,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.1-dev.3 (2018/06/12)**
+**Version 4.5.1-b.1 (2018/06/13)**
 
 * *New Features*
 	* None
@@ -448,9 +448,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.5.1-dev.3 =
+= 4.5.1-b.1 =
 
-(2018/06/12) Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
+(2018/06/13) Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
 
 = 4.5.0 =
 
