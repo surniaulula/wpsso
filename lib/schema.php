@@ -1595,16 +1595,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $social_accounts as $social_key => $social_label ) {
 
-				$sameas_url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// localized value
+				$url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// localized value
 
-				if ( empty( $sameas_url ) ) {
+				if ( empty( $url ) ) {
 					continue;
 				} elseif ( $social_key === 'tc_site' ) {	// convert twitter name to url
-					$sameas_url = 'https://twitter.com/' . preg_replace( '/^@/', '', $sameas_url );
+					$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
 				}
 
-				if ( filter_var( $sameas_url, FILTER_VALIDATE_URL ) !== false ) {
-					$org_sameas[] = $sameas_url;
+				if ( filter_var( $url, FILTER_VALIDATE_URL ) !== false ) {
+					$org_sameas[] = $url;
 				}
 			}
 
@@ -2651,9 +2651,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$org_opts['org_sameas'] = apply_filters( $wpsso->lca . '_json_data_single_organization_sameas', $org_opts['org_sameas'], $mod, $org_id );
 
 			if ( ! empty( $org_opts['org_sameas'] ) && is_array( $org_opts['org_sameas'] ) ) {	// Just in case.
-				foreach ( $org_opts['org_sameas'] as $sameas_url ) {
-					if ( ! empty( $sameas_url ) ) {	// Just in case.
-						$ret['sameAs'][] = esc_url_raw( $sameas_url );
+				foreach ( $org_opts['org_sameas'] as $url ) {
+					if ( ! empty( $url ) ) {	// Just in case.
+						$ret['sameAs'][] = esc_url_raw( $url );
 					}
 				}
 			}
@@ -2733,16 +2733,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
 
-					$sameas_url = $user_mod['obj']->get_author_meta( $user_id, $cm_id );
+					$url = $user_mod['obj']->get_author_meta( $user_id, $cm_id );
 
-					if ( empty( $sameas_url ) ) {
+					if ( empty( $url ) ) {
 						continue;
 					} elseif ( $cm_id === $wpsso->options['plugin_cm_twitter_name'] ) {	// convert twitter name to url
-						$sameas_url = 'https://twitter.com/' . preg_replace( '/^@/', '', $sameas_url );
+						$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
 					}
 
-					if ( filter_var( $sameas_url, FILTER_VALIDATE_URL ) !== false ) {
-						$user_sameas[] = $sameas_url;
+					if ( filter_var( $url, FILTER_VALIDATE_URL ) !== false ) {
+						$user_sameas[] = $url;
 					}
 				}
 
@@ -2791,9 +2791,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$person_opts['person_sameas'] = apply_filters( $wpsso->lca . '_json_data_single_person_sameas', $person_opts['person_sameas'], $mod, $user_id );
 
 			if ( ! empty( $person_opts['person_sameas'] ) && is_array( $person_opts['person_sameas'] ) ) {	// Just in case.
-				foreach ( $person_opts['person_sameas'] as $sameas_url ) {
-					if ( ! empty( $sameas_url ) ) {	// Just in case.
-						$ret['sameAs'][] = esc_url_raw( $sameas_url );
+				foreach ( $person_opts['person_sameas'] as $url ) {
+					if ( ! empty( $url ) ) {	// Just in case.
+						$ret['sameAs'][] = esc_url_raw( $url );
 					}
 				}
 			}
