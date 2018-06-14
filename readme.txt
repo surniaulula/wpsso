@@ -14,7 +14,7 @@ Tested Up To: 4.9.6
 WC Tested Up To: 3.4.2
 Stable Tag: 4.5.0
 
-Why manage meta tag and Schema markup values manually?
+Why enter meta tag values and Schema markup manually?
 
 &nbsp;
 
