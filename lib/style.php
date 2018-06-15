@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			if ( is_admin() ) {
-				add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_styles' ), -1000 );
+				add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_styles' ), -1000 );
 			}
 		}
 
@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						$this->p->debug->log( 'enqueuing styles for licenses page' );
 					}
 
-					add_filter( 'admin_body_class', array( &$this, 'add_plugins_body_class' ) );
+					add_filter( 'admin_body_class', array( $this, 'add_plugins_body_class' ) );
 
 					// no break
 

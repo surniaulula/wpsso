@@ -28,18 +28,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'plugin_image_sizes' => 3,
 			), 5 );
 
-			add_action( 'add_head_attributes', array( &$this, 'add_head_attributes' ), -1000 );
+			add_action( 'add_head_attributes', array( $this, 'add_head_attributes' ), -1000 );
 
 			if ( ! empty( $this->p->options['plugin_head_attr_filter_name'] ) ) {
 
 				$filter_name = $this->p->options['plugin_head_attr_filter_name'];
 				$filter_prio = $this->p->options['plugin_head_attr_filter_prio'];
 
-				add_filter( $filter_name, array( &$this, 'filter_head_attributes' ), $filter_prio, 1 );
+				add_filter( $filter_name, array( $this, 'filter_head_attributes' ), $filter_prio, 1 );
 			}
 
 			if ( ! empty( $this->p->options['p_add_img_html'] ) ) {
-				add_filter( 'the_content', array( &$this, 'get_pinterest_img_html' ) );
+				add_filter( 'the_content', array( $this, 'get_pinterest_img_html' ) );
 			}
 		}
 

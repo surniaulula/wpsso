@@ -41,26 +41,26 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 
 				add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns',
-					array( &$this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+					array( $this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
 				/**
 				 * Enable orderby meta_key only if we have a meta table.
 				 */
 				if ( self::use_meta_table() ) {
 					add_filter( 'manage_edit-'.$this->query_tax_slug.'_sortable_columns', 
-						array( &$this, 'add_sortable_columns' ), 10, 1 );
+						array( $this, 'add_sortable_columns' ), 10, 1 );
 				}
 
 				add_filter( 'manage_'.$this->query_tax_slug.'_custom_column',
-					array( &$this, 'get_column_content' ), 10, 3 );
+					array( $this, 'get_column_content' ), 10, 3 );
 
 				/**
 				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
 				 * to set the column orderby for post, term, and user edit tables.
 				 *
-				 * add_action( 'parse_query', array( &$this, 'set_column_orderby' ), 10, 1 );
+				 * add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 				 */
-				add_action( 'get_term_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
+				add_action( 'get_term_metadata', array( $this, 'check_sortable_metadata' ), 10, 4 );
 
 				if ( ( $this->query_term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' ) {	// uses sanitize_text_field
 					return;
@@ -85,24 +85,24 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 				if ( ! empty( $_GET ) ) {
 
-					add_action( 'admin_init', array( &$this, 'add_meta_boxes' ) );
+					add_action( 'admin_init', array( $this, 'add_meta_boxes' ) );
 
 					/**
 					 * Sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties.
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term
 					 */
-					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 300, 1 );
-					add_action( $this->query_tax_slug.'_edit_form', array( &$this, 'show_metaboxes' ), 100, 1 );
+					add_action( 'current_screen', array( $this, 'load_meta_page' ), 300, 1 );
+					add_action( $this->query_tax_slug.'_edit_form', array( $this, 'show_metaboxes' ), 100, 1 );
 				}
 
-				add_action( 'created_'.$this->query_tax_slug, array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
-				add_action( 'created_'.$this->query_tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+				add_action( 'created_'.$this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
+				add_action( 'created_'.$this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
 
-				add_action( 'edited_'.$this->query_tax_slug, array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
-				add_action( 'edited_'.$this->query_tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+				add_action( 'edited_'.$this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
+				add_action( 'edited_'.$this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
 
-				add_action( 'delete_'.$this->query_tax_slug, array( &$this, 'delete_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
-				add_action( 'delete_'.$this->query_tax_slug, array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+				add_action( 'delete_'.$this->query_tax_slug, array( $this, 'delete_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
+				add_action( 'delete_'.$this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
 			}
 		}
 
@@ -447,7 +447,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
-					array( &$this, 'show_metabox_custom_meta' ), $this->p->lca.'-term', 'normal', 'low' );
+					array( $this, 'show_metabox_custom_meta' ), $this->p->lca.'-term', 'normal', 'low' );
 			}
 		}
 

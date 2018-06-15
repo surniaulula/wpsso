@@ -22,14 +22,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action( 'wp_head', array( &$this, 'maybe_disable_rel_canonical' ), -1000 );
-			add_action( 'wp_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
+			add_action( 'wp_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
+			add_action( 'wp_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
 			/**
 			 * AMP
 			 */
-			add_action( 'amp_post_template_head', array( &$this, 'maybe_disable_rel_canonical' ), -1000 );
-			add_action( 'amp_post_template_head', array( &$this, 'show_head' ), WPSSO_HEAD_PRIORITY );
+			add_action( 'amp_post_template_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
+			add_action( 'amp_post_template_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
 			/**
 			 * Crawlers are only seen on the front-end, so skip if in back-end.
@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				exit;
 			}
 
-			add_filter( 'wp_headers', array( &$this, 'add_vary_user_agent_header' ) );
+			add_filter( 'wp_headers', array( $this, 'add_vary_user_agent_header' ) );
 		}
 
 		public function add_vary_user_agent_header( $headers ) {

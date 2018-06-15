@@ -93,11 +93,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function add_actions() {
 			if ( is_admin() ) {
-				add_action( 'wp_ajax_' . $this->lca . '_dismiss_notice', array( &$this, 'ajax_dismiss_notice' ) );
-				add_action( 'wp_ajax_' . $this->lca . '_get_notices_json', array( &$this, 'ajax_get_notices_json' ) );
-				add_action( 'in_admin_header', array( &$this, 'hook_admin_notices' ), PHP_INT_MAX );
-				add_action( 'admin_footer', array( &$this, 'admin_footer_script' ) );
-				add_action( 'shutdown', array( &$this, 'shutdown_notice_cache' ) );
+				add_action( 'wp_ajax_' . $this->lca . '_dismiss_notice', array( $this, 'ajax_dismiss_notice' ) );
+				add_action( 'wp_ajax_' . $this->lca . '_get_notices_json', array( $this, 'ajax_get_notices_json' ) );
+				add_action( 'in_admin_header', array( $this, 'hook_admin_notices' ), PHP_INT_MAX );
+				add_action( 'admin_footer', array( $this, 'admin_footer_script' ) );
+				add_action( 'shutdown', array( $this, 'shutdown_notice_cache' ) );
 			}
 		}
 
@@ -430,7 +430,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		public function hook_admin_notices() {
-			add_action( 'all_admin_notices', array( &$this, 'show_admin_notices' ), -10 );
+			add_action( 'all_admin_notices', array( $this, 'show_admin_notices' ), -10 );
 		}
 
 		public function show_admin_notices() {

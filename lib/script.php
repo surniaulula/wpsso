@@ -41,14 +41,14 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						$this->tb_notices = false;
 					}
 
-					add_action( 'enqueue_block_editor_assets', array( &$this, 'enqueue_block_editor_assets' ), -1000 );
-					add_action( 'admin_enqueue_scripts', array( &$this, 'admin_enqueue_scripts' ), -1000 );
+					add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ), -1000 );
+					add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), -1000 );
 
 					/**
 					 * Add jQuery to update the toolbar menu item counter and container on page load.
 					 */
 					if ( ! empty( $this->tb_notices ) ) {
-						add_action( 'admin_footer', array( &$this, 'add_update_tb_notices_script' ) );
+						add_action( 'admin_footer', array( $this, 'add_update_tb_notices_script' ) );
 					}
 				}
 			}

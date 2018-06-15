@@ -54,12 +54,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			add_action( 'activated_plugin', array( &$this, 'reset_check_head_count' ), 10 );
-			add_action( 'after_switch_theme', array( &$this, 'reset_check_head_count' ), 10 );
-			add_action( 'upgrader_process_complete', array( &$this, 'reset_check_head_count' ), 10 );
+			add_action( 'activated_plugin', array( $this, 'reset_check_head_count' ), 10 );
+			add_action( 'after_switch_theme', array( $this, 'reset_check_head_count' ), 10 );
+			add_action( 'upgrader_process_complete', array( $this, 'reset_check_head_count' ), 10 );
 
-			add_action( 'after_switch_theme', array( &$this, 'check_tmpl_head_attributes' ), 20 );
-			add_action( 'upgrader_process_complete', array( &$this, 'check_tmpl_head_attributes' ), 20 );
+			add_action( 'after_switch_theme', array( $this, 'check_tmpl_head_attributes' ), 20 );
+			add_action( 'upgrader_process_complete', array( $this, 'check_tmpl_head_attributes' ), 20 );
 
 			if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
 
@@ -80,35 +80,35 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * The admin_menu action is run before admin_init.
 				 */
-				add_action( 'admin_menu', array( &$this, 'load_menu_objects' ), -1000 );
-				add_action( 'admin_menu', array( &$this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
-				add_action( 'admin_menu', array( &$this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
-				add_action( 'admin_init', array( &$this, 'add_plugins_page_upgrade_notice' ) );
-				add_action( 'admin_init', array( &$this, 'register_setting' ) );
+				add_action( 'admin_menu', array( $this, 'load_menu_objects' ), -1000 );
+				add_action( 'admin_menu', array( $this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
+				add_action( 'admin_menu', array( $this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
+				add_action( 'admin_init', array( $this, 'add_plugins_page_upgrade_notice' ) );
+				add_action( 'admin_init', array( $this, 'register_setting' ) );
 
 				/**
 				 * Hook in_admin_header to allow for setting changes, plugin activation / loading, etc.
 				 */
-				add_action( 'in_admin_header', array( &$this, 'conflict_warnings' ), 10 );
-				add_action( 'in_admin_header', array( &$this, 'required_notices' ), 20 );
-				add_action( 'in_admin_header', array( &$this, 'update_count_notice' ), 30 );
+				add_action( 'in_admin_header', array( $this, 'conflict_warnings' ), 10 );
+				add_action( 'in_admin_header', array( $this, 'required_notices' ), 20 );
+				add_action( 'in_admin_header', array( $this, 'update_count_notice' ), 30 );
 
 				/**
 				 * WPSSO_TOOLBAR_NOTICES can be true, false, or an array of notice types to include in the menu.
 				 */
 				if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false ) ) {	// Returns false if not defined.
-					add_action( 'admin_bar_menu', array( &$this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
+					add_action( 'admin_bar_menu', array( $this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
 				}
 
-				add_filter( 'current_screen', array( &$this, 'maybe_show_screen_notices' ) );
-				add_filter( 'plugin_action_links', array( &$this, 'append_plugins_action_links' ), 10, 2 );
-				add_filter( 'wp_redirect', array( &$this, 'profile_updated_redirect' ), -100, 2 );
+				add_filter( 'current_screen', array( $this, 'maybe_show_screen_notices' ) );
+				add_filter( 'plugin_action_links', array( $this, 'append_plugins_action_links' ), 10, 2 );
+				add_filter( 'wp_redirect', array( $this, 'profile_updated_redirect' ), -100, 2 );
 
 				if ( is_multisite() ) {
-					add_action( 'network_admin_menu', array( &$this, 'load_network_menu_objects' ), -1000 );
-					add_action( 'network_admin_menu', array( &$this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
-					add_action( 'network_admin_edit_' . WPSSO_SITE_OPTIONS_NAME, array( &$this, 'save_site_options' ) );
-					add_filter( 'network_admin_plugin_action_links', array( &$this, 'append_site_plugins_action_links' ), 10, 2 );
+					add_action( 'network_admin_menu', array( $this, 'load_network_menu_objects' ), -1000 );
+					add_action( 'network_admin_menu', array( $this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
+					add_action( 'network_admin_edit_' . WPSSO_SITE_OPTIONS_NAME, array( $this, 'save_site_options' ) );
+					add_filter( 'network_admin_plugin_action_links', array( $this, 'append_site_plugins_action_links' ), 10, 2 );
 				}
 
 		 		/**
@@ -117,14 +117,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * provides more complete plugin data than what's available from the readme.txt.
 				 */
 				if ( empty( $this->p->avail['p_ext']['um'] ) ) {	// Since um v1.6.0.
-					add_filter( 'plugins_api_result', array( &$this, 'external_plugin_data' ), 1000, 3 );	// Since wp v2.7.
+					add_filter( 'plugins_api_result', array( $this, 'external_plugin_data' ), 1000, 3 );	// Since wp v2.7.
 				}
 
-				add_filter( 'http_request_args', array( &$this, 'add_expect_header' ), 1000, 2 );
-				add_filter( 'http_request_host_is_external', array( &$this, 'maybe_allow_hosts' ), 1000, 3 );
-				add_filter( 'install_plugin_complete_actions', array( &$this, 'plugin_complete_actions' ), 1000, 1 );
-				add_filter( 'update_plugin_complete_actions', array( &$this, 'plugin_complete_actions' ), 1000, 1 );
-				add_filter( 'wp_redirect', array( &$this, 'plugin_complete_redirect' ), 1000, 1 );
+				add_filter( 'http_request_args', array( $this, 'add_expect_header' ), 1000, 2 );
+				add_filter( 'http_request_host_is_external', array( $this, 'maybe_allow_hosts' ), 1000, 3 );
+				add_filter( 'install_plugin_complete_actions', array( $this, 'plugin_complete_actions' ), 1000, 1 );
+				add_filter( 'update_plugin_complete_actions', array( $this, 'plugin_complete_actions' ), 1000, 1 );
+				add_filter( 'wp_redirect', array( $this, 'plugin_complete_redirect' ), 1000, 1 );
 			}
 		}
 
@@ -366,14 +366,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function register_setting() {
-			register_setting( $this->p->lca . '_setting', WPSSO_OPTIONS_NAME, 
-				array( &$this, 'registered_setting_sanitation' ) );
+			register_setting( $this->p->lca . '_setting', WPSSO_OPTIONS_NAME, array( $this, 'registered_setting_sanitation' ) );
 		}
 
 		public function add_plugins_page_upgrade_notice() {
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! empty( $info['base'] ) ) {
-					add_action( 'in_plugin_update_message-' . $info['base'], array( &$this, 'show_upgrade_notice' ), 10, 2 );
+					add_action( 'in_plugin_update_message-' . $info['base'], array( $this, 'show_upgrade_notice' ), 10, 2 );
 				}
 			}
 		}
@@ -393,11 +392,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' ) . ' ' . self::$pkg[$this->p->lca]['type'];	// pre-translated
 			$cap_name = isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ? $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] : 'manage_options';
 			$icon_url = version_compare( $wp_version, '3.8', '>=' ) ? 'dashicons-share' : null;
-			$function = array( &$this, 'show_setting_page' );
+			$function = array( $this, 'show_setting_page' );
 
 			$this->pagehook = add_menu_page( $page_title, $menu_title, $cap_name, $menu_slug, $function, $icon_url, WPSSO_MENU_ORDER );
 
-			add_action( 'load-' . $this->pagehook, array( &$this, 'load_setting_page' ) );
+			add_action( 'load-' . $this->pagehook, array( $this, 'load_setting_page' ) );
 		}
 
 		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '', $menu_ext = '', $css_class = '' ) {
@@ -449,12 +448,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$page_title = self::$pkg[$menu_ext]['short'] . ' &mdash; ' . $menu_name;
 			$cap_name = isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ? $this->p->cf['wp']['admin'][$menu_lib]['cap'] : 'manage_options';
 			$menu_slug = $this->p->lca . '-' . $menu_id;
-			$function = array( &$this, 'show_setting_page' );
+			$function = array( $this, 'show_setting_page' );
 
 			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title, $cap_name, $menu_slug, $function );
 
 			if ( $function ) {
-				add_action( 'load-' . $this->pagehook, array( &$this, 'load_setting_page' ) );
+				add_action( 'load-' . $this->pagehook, array( $this, 'load_setting_page' ) );
 			}
 		}
 
@@ -907,8 +906,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_footer_hooks() {
-			add_filter( 'admin_footer_text', array( &$this, 'admin_footer_ext_name' ) );
-			add_filter( 'update_footer', array( &$this, 'admin_footer_ext_gen' ) );
+			add_filter( 'admin_footer_text', array( $this, 'admin_footer_ext_name' ) );
+			add_filter( 'update_footer', array( $this, 'admin_footer_ext_gen' ) );
 		}
 
 		protected function add_plugin_hooks() {
@@ -918,9 +917,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_side_meta_boxes() {
 			if ( ! self::$pkg[$this->p->lca]['aop'] ) {
 				add_meta_box( $this->pagehook . '_purchase_pro', _x( 'Pro Version Available', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side_fixed' );
+					array( $this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side_fixed' );
 				add_meta_box( $this->pagehook . '_status_pro', _x( 'Pro Version Features', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
+					array( $this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
 				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase_pro' ), '', '', true );
 			}
 		}

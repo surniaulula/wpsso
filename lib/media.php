@@ -28,16 +28,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action( 'init', array( &$this, 'allow_img_data_attributes' ) );
+			add_action( 'init', array( $this, 'allow_img_data_attributes' ) );
 
 			// prevent image_downsize from lying about image width and height
 			if ( is_admin() ) {
-				add_filter( 'editor_max_image_size', array( &$this, 'editor_max_image_size' ), 10, 3 );
+				add_filter( 'editor_max_image_size', array( $this, 'editor_max_image_size' ), 10, 3 );
 			}
 
-			add_filter( 'wp_get_attachment_image_attributes', array( &$this, 'add_attachment_image_attributes' ), 10, 2 );
-			add_filter( 'get_image_tag', array( &$this, 'get_image_tag' ), 10, 6 );
-			add_filter( 'get_header_image_tag', array( &$this, 'get_header_image_tag' ), 10, 3 );
+			add_filter( 'wp_get_attachment_image_attributes', array( $this, 'add_attachment_image_attributes' ), 10, 2 );
+			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
+			add_filter( 'get_header_image_tag', array( $this, 'get_header_image_tag' ), 10, 3 );
 		}
 
 		public function allow_img_data_attributes() {

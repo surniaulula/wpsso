@@ -27,7 +27,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( is_admin() ) {
 
-				add_action( 'wp_ajax_' . $this->p->lca . '_get_metabox_post', array( &$this, 'ajax_get_metabox_post' ) );
+				add_action( 'wp_ajax_' . $this->p->lca . '_get_metabox_post', array( $this, 'ajax_get_metabox_post' ) );
 
 				if ( ! empty( $_GET ) || basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' ) {
 
@@ -35,19 +35,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
 					 * Sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties.
 					 */
-					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 100, 1 );
-					add_action( 'add_meta_boxes', array( &$this, 'add_meta_boxes' ) );
+					add_action( 'current_screen', array( $this, 'load_meta_page' ), 100, 1 );
+					add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 				}
 
-				add_action( 'save_post', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'save_post', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'save_post', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
-				add_action( 'edit_attachment', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'edit_attachment', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'edit_attachment', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
 				if ( ! empty( $this->p->options['add_meta_name_robots'] ) ) {
-					add_action( 'post_submitbox_misc_actions', array( &$this, 'show_robots_options' ) );
-					add_action( 'save_post', array( &$this, 'save_robots_options' ) );
+					add_action( 'post_submitbox_misc_actions', array( $this, 'show_robots_options' ) );
+					add_action( 'save_post', array( $this, 'save_robots_options' ) );
 				}
 			}
 
@@ -73,13 +73,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns.
 						 */
-						add_filter( 'manage_'.$ptn.'_posts_columns', array( &$this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
-						add_filter( 'manage_edit-'.$ptn.'_sortable_columns', array( &$this, 'add_sortable_columns' ), 10, 1 );
+						add_filter( 'manage_'.$ptn.'_posts_columns', array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+						add_filter( 'manage_edit-'.$ptn.'_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column.
 						 */
-						add_action( 'manage_'.$ptn.'_posts_custom_column', array( &$this, 'show_column_content' ), 10, 2 );
+						add_action( 'manage_'.$ptn.'_posts_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 					}
 				}
 
@@ -87,16 +87,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'adding column filters for media library' );
 				}
 
-				add_filter( 'manage_media_columns', array( &$this, 'add_media_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
-				add_filter( 'manage_upload_sortable_columns', array( &$this, 'add_sortable_columns' ), 10, 1 );
-				add_action( 'manage_media_custom_column', array( &$this, 'show_column_content' ), 10, 2 );
+				add_filter( 'manage_media_columns', array( $this, 'add_media_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+				add_filter( 'manage_upload_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
+				add_action( 'manage_media_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 
 				/**
 				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
 				 * to set the column orderby for post, term, and user edit tables.
 				 */
-				add_action( 'parse_query', array( &$this, 'set_column_orderby' ), 10, 1 );
-				add_action( 'get_post_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
+				add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
+				add_action( 'get_post_metadata', array( $this, 'check_sortable_metadata' ), 10, 4 );
 			}
 
 			if ( ! empty( $this->p->options['plugin_shortener'] ) && $this->p->options['plugin_shortener'] !== 'none' ) {
@@ -107,8 +107,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'adding pre_get_shortlink filters to shorten the sharing url' );
 					}
 
-					add_filter( 'pre_get_shortlink', array( &$this, 'get_sharing_shortlink' ), SucomUtil::get_min_int(), 4 );
-					add_filter( 'pre_get_shortlink', array( &$this, 'restore_sharing_shortlink' ), SucomUtil::get_max_int(), 4 );
+					add_filter( 'pre_get_shortlink', array( $this, 'get_sharing_shortlink' ), SucomUtil::get_min_int(), 4 );
+					add_filter( 'pre_get_shortlink', array( $this, 'restore_sharing_shortlink' ), SucomUtil::get_max_int(), 4 );
 
 					if ( function_exists( 'wpme_get_shortlink_handler' ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -128,12 +128,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				/**
 				 * Fires when a comment is inserted into the database.
 				 */
-				add_action ( 'comment_post', array( &$this, 'clear_cache_for_new_comment' ), 10, 2 );
+				add_action ( 'comment_post', array( $this, 'clear_cache_for_new_comment' ), 10, 2 );
 
 				/**
 				 * Fires before transitioning a comment's status.
 				 */
-				add_action ( 'wp_set_comment_status', array( &$this, 'clear_cache_for_comment_status' ), 10, 2 );
+				add_action ( 'wp_set_comment_status', array( $this, 'clear_cache_for_comment_status' ), 10, 2 );
 			}
 		}
 
@@ -1035,7 +1035,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
-					array( &$this, 'show_metabox_custom_meta' ), $post_obj->post_type, 'normal', 'low' );
+					array( $this, 'show_metabox_custom_meta' ), $post_obj->post_type, 'normal', 'low' );
 			}
 		}
 

@@ -31,14 +31,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
 				if ( is_multisite() ) {
-					add_action( 'wpmu_new_user', array( &$this, 'add_person_role' ), 20, 1 );
+					add_action( 'wpmu_new_user', array( $this, 'add_person_role' ), 20, 1 );
 				} else {
-					add_action( 'user_register', array( &$this, 'add_person_role' ), 20, 1 );
+					add_action( 'user_register', array( $this, 'add_person_role' ), 20, 1 );
 				}
 			}
 
-			add_filter( 'user_contactmethods', array( &$this, 'add_contact_methods' ), 20, 2 );
-			add_filter( 'user_'.$fb_cm_name_value.'_label', array( &$this, 'fb_contact_label' ), 20, 1 );
+			add_filter( 'user_contactmethods', array( $this, 'add_contact_methods' ), 20, 2 );
+			add_filter( 'user_'.$fb_cm_name_value.'_label', array( $this, 'fb_contact_label' ), 20, 1 );
 
 			/**
 			 * Hook a minimum number of admin actions to maximize performance. The user_id argument is 
@@ -51,27 +51,27 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					/**
 					 * Common to both profile and user editing pages.
 					 */
-					add_action( 'admin_init', array( &$this, 'add_meta_boxes' ) );
+					add_action( 'admin_init', array( $this, 'add_meta_boxes' ) );
 
 					/**
 					 * Sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties.
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
 					 */
-					add_action( 'current_screen', array( &$this, 'load_meta_page' ), 200, 1 );
+					add_action( 'current_screen', array( $this, 'load_meta_page' ), 200, 1 );
 				}
 
-				add_filter( 'views_users', array( &$this, 'add_person_view' ) );
-				add_filter( 'manage_users_columns', array( &$this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
-				add_filter( 'manage_users_sortable_columns', array( &$this, 'add_sortable_columns' ), 10, 1 );
-				add_filter( 'manage_users_custom_column', array( &$this, 'get_column_content',), 10, 3 );
+				add_filter( 'views_users', array( $this, 'add_person_view' ) );
+				add_filter( 'manage_users_columns', array( $this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+				add_filter( 'manage_users_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
+				add_filter( 'manage_users_custom_column', array( $this, 'get_column_content',), 10, 3 );
 
 				/**
 				 * The 'parse_query' action is hooked ONCE in the WpssoPost class
 				 * to set the column orderby for post, term, and user edit tables.
 				 *
-				 * add_action( 'parse_query', array( &$this, 'set_column_orderby' ), 10, 1 );
+				 * add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 				 */
-				add_action( 'get_user_metadata', array( &$this, 'check_sortable_metadata' ), 10, 4 );
+				add_action( 'get_user_metadata', array( $this, 'check_sortable_metadata' ), 10, 4 );
 
 				/**
 				 * Exit here if not a user or profile page.
@@ -88,15 +88,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/**
 				 * Hooks for user and profile editing.
 				 */
-				add_action( 'edit_user_profile', array( &$this, 'show_metabox_section' ), 20 );
+				add_action( 'edit_user_profile', array( $this, 'show_metabox_section' ), 20 );
 
-				add_action( 'edit_user_profile_update', array( &$this, 'sanitize_submit_cm' ), 5 );
-				add_action( 'edit_user_profile_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'edit_user_profile_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'edit_user_profile_update', array( $this, 'sanitize_submit_cm' ), 5 );
+				add_action( 'edit_user_profile_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
-				add_action( 'personal_options_update', array( &$this, 'sanitize_submit_cm' ), 5 );
-				add_action( 'personal_options_update', array( &$this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
-				add_action( 'personal_options_update', array( &$this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
+				add_action( 'personal_options_update', array( $this, 'sanitize_submit_cm' ), 5 );
+				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 			}
 		}
 
@@ -455,7 +455,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
-					array( &$this, 'show_metabox_custom_meta' ), $this->p->lca.'-user', 'normal', 'low' );
+					array( $this, 'show_metabox_custom_meta' ), $this->p->lca.'-user', 'normal', 'low' );
 			}
 		}
 

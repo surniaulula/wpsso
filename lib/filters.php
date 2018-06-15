@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			if ( is_admin() ) {
 				// cleanup incorrect Yoast SEO notifications
 				if ( function_exists( 'wpseo_init' ) ) {	// includes wpseo premium
-					add_action( 'admin_init', array( &$this, 'cleanup_wpseo_notifications' ), 15 );
+					add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
 				}
 
 				if ( class_exists( 'GFForms' ) ) {
@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 				// disable Yoast SEO social meta tags
 				// execute after add_action( 'template_redirect', 'wpseo_frontend_head_init', 999 );
 				if ( function_exists( 'wpseo_init' ) ) {	// includes wpseo premium
-					add_action( 'template_redirect', array( &$this, 'cleanup_wpseo_filters' ), 9000 );
+					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_filters' ), 9000 );
 				}
 
 				// honor the FORCE_SSL constant on the front-end with a 301 redirect
@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 				// prevent SNAP from adding meta tags for the Facebook user agent
 				if ( function_exists( 'nxs_initSNAP' ) ) {
-					add_action( 'wp_head', array( &$this, 'remove_snap_og_meta_tags_holder' ), -1000 );
+					add_action( 'wp_head', array( $this, 'remove_snap_og_meta_tags_holder' ), -1000 );
 				}
 			}
 		}

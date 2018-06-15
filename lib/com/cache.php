@@ -39,7 +39,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$this->set_config( $plugin, $lca, $text_domain, $label_transl );
 
-			add_action( 'shutdown', array( &$this, 'save_transient' ) );
+			add_action( 'shutdown', array( $this, 'save_transient' ) );
 		}
 
 		public function load_transient() {

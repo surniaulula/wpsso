@@ -89,12 +89,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->reg = new WpssoRegister( $this );		// Activate, deactivate, uninstall hooks.
 
-			add_action( 'init', array( &$this, 'set_config' ), -10 );				// Runs at init -10 (before widgets_init).
-			add_action( 'widgets_init', array( &$this, 'init_widgets' ), 10 );			// Runs at init 1.
-			add_action( 'init', array( &$this, 'set_options' ), WPSSO_INIT_PRIORITY - 3 );		// Runs at init 9 by default.
-			add_action( 'init', array( &$this, 'set_objects' ), WPSSO_INIT_PRIORITY - 2 );		// Runs at init 10 by default.
-			add_action( 'init', array( &$this, 'init_shortcodes' ), WPSSO_INIT_PRIORITY - 1 );	// Runs at init 11 by default.
-			add_action( 'init', array( &$this, 'init_plugin' ), WPSSO_INIT_PRIORITY );		// Runs at init 12 by default.
+			add_action( 'init', array( $this, 'set_config' ), -10 );				// Runs at init -10 (before widgets_init).
+			add_action( 'widgets_init', array( $this, 'init_widgets' ), 10 );			// Runs at init 1.
+			add_action( 'init', array( $this, 'set_options' ), WPSSO_INIT_PRIORITY - 3 );		// Runs at init 9 by default.
+			add_action( 'init', array( $this, 'set_objects' ), WPSSO_INIT_PRIORITY - 2 );		// Runs at init 10 by default.
+			add_action( 'init', array( $this, 'init_shortcodes' ), WPSSO_INIT_PRIORITY - 1 );	// Runs at init 11 by default.
+			add_action( 'init', array( $this, 'init_plugin' ), WPSSO_INIT_PRIORITY );		// Runs at init 12 by default.
 
 			/**
 			 * The 'wpsso_init_textdomain' action is run after the debug property is defined.
@@ -421,12 +421,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 							$show_action_prio_func = create_function( '', 'echo "<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->\n";' );
 						}
 						add_action( $action, $show_action_prio_func, $prio );
-						add_action( $action, array( &$this, 'show_debug' ), $prio + 1 );
+						add_action( $action, array( $this, 'show_debug' ), $prio + 1 );
 					}
 				}
 				foreach ( array( 'wp_footer', 'admin_footer' ) as $action ) {
 					foreach ( array( 9900 ) as $prio ) {
-						add_action( $action, array( &$this, 'show_config' ), $prio );
+						add_action( $action, array( $this, 'show_config' ), $prio );
 					}
 				}
 			}
