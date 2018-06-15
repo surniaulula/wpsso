@@ -1321,7 +1321,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				return $md_opts;
 			}
 
-			$charset = get_bloginfo( 'charset' );	// required for html_entity_decode()
+			$charset = get_bloginfo( 'charset' );	// Required for html_entity_decode().
 
 			/* Example config:
 			 *
@@ -1346,15 +1346,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			foreach ( $cf_md_idx as $cf_idx => $md_idx ) {
 
-				// custom fields can be disabled by filters
-				if ( empty( $md_idx ) ) {
+				if ( empty( $md_idx ) ) {	// Custom fields can be disabled by filters.
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'custom field '.$cf_idx.' index is disabled' );
 					}
 					continue;
-				// check that a custom field meta key has been defined
-				// example: 'plugin_cf_img_url' = '_format_image_url'
-				} elseif ( empty( $this->p->options[$cf_idx] ) ) {
+				} elseif ( empty( $this->p->options[$cf_idx] ) ) {	// Check that a custom field meta key has been defined.
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'custom field '.$cf_idx.' option is empty' );
 					}
@@ -1367,22 +1364,23 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$this->p->debug->log( 'custom field '.$cf_idx.' option has meta key '.$meta_key );
 				}
 
-				// if the array element is not set, then skip it
-				if ( ! isset( $wp_meta[$meta_key][0] ) ) {
+				if ( ! isset( $wp_meta[$meta_key][0] ) ) {	// If the array element is not set, then skip it.
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $meta_key.' meta key element 0 not found in wp_meta' );
 					}
-					continue;	// check the next custom field
+					continue;
 				}
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $meta_key.' meta key found for '.$md_idx.' option' );
 				}
 
-				$mixed = maybe_unserialize( $wp_meta[$meta_key][0] );
+				$mixed  = maybe_unserialize( $wp_meta[$meta_key][0] );	// Could be a string or an array.
 				$values = array();
 
-				// decode the string or each array element
+				/**
+				 * Decode the string or each array element.
+				 */
 				if ( is_array( $mixed ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $meta_key.' is array of '.count( $mixed ).' values (decoding each value)' );
@@ -1400,31 +1398,37 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset ) );
 				}
 
-				// check if value should be split into numeric option increments
+				/**
+				 * Check if the value should be split into numeric option increments.
+				 */
 				if ( empty( $this->p->cf['opt']['cf_md_multi'][$md_idx] ) ) {
 					$is_multi = false;
 				} else {
 					if ( ! is_array( $mixed ) ) {
-						$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );	// explode first element into array
+						$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );	// Explode first element into an array.
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'exploded '.$meta_key.' into array of '.count( $values ).' elements' );
 						}
 					}
-					$is_multi = true;		// increment the option name
+					$is_multi = true;	// Increment the option name.
 				}
 
-				// increment the option name starting with 0
+				/**
+				 * Increment the option name starting at 0.
+				 */
 				if ( $is_multi ) {
 
-					// remove any old values from the options array
-					$md_opts = SucomUtil::preg_grep_keys( '/^'.$md_idx.'_[0-9]+$/', $md_opts, true );	// $invert = true
+					/**
+					 * Remove any old values from the options array.
+					 */
+					$md_opts = SucomUtil::preg_grep_keys( '/^'.$md_idx.'_[0-9]+$/', $md_opts, true );	// $invert is true.
 
 					foreach ( $values as $num => $val ) {
 						$md_opts[$md_idx.'_'.$num] = $val;
 						$md_opts[$md_idx.'_'.$num.':is'] = 'disabled';
 					}
 				} else {
-					$md_opts[$md_idx] = reset( $values );	// get first element of $values array
+					$md_opts[$md_idx] = reset( $values );	// Get first element of $values array.
 					$md_opts[$md_idx.':is'] = 'disabled';
 				}
 			}
