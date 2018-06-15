@@ -65,13 +65,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			/**
-			 * Several actions must be hooked to call add_plugin_image_sizes() on the front-end,
-			 * back-end, REST API calls, AJAX calls, etc.
+			 * Several actions must be hooked to define our image sizes on the front-end,
+			 * back-end, AJAX calls, REST API calls, etc.
 			 */
-			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );
-			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// for AJAX compatibility.
+			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );		// for front-end
+			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// for back-end + AJAX compatibility.
 			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// for REST API compatibility.
-			add_action( 'current_screen', array( $this, 'add_plugin_image_sizes' ), -100 );
 
 			add_action( 'wp_scheduled_delete', array( $this, 'delete_expired_db_transients' ) );
 			add_action( $this->p->lca . '_refresh_all_cache', array( $this, 'refresh_all_cache' ) );
