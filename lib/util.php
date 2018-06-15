@@ -64,9 +64,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * Several actions must be hooked to call add_plugin_image_sizes() on the front-end,
+			 * back-end, REST API calls, AJAX calls, etc.
+			 */
 			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );
-			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );
+			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// for AJAX compatibility.
+			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// for REST API compatibility.
 			add_action( 'current_screen', array( $this, 'add_plugin_image_sizes' ), -100 );
+
 			add_action( 'wp_scheduled_delete', array( $this, 'delete_expired_db_transients' ) );
 			add_action( $this->p->lca . '_refresh_all_cache', array( $this, 'refresh_all_cache' ) );
 
@@ -421,12 +427,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 *	)
 			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'define image sizes' );	// begin timer
+				$this->p->debug->mark( 'define image sizes' );	// Begin timer.
+				$this->p->debug->log( '$wp_obj is ' . ( gettype( $wp_obj ) === 'object' ? get_class( $wp_obj ) . ' object' : gettype( $wp_obj ) ) );
+				$this->p->debug->log( 'DOING_AJAX is ' . ( defined( 'DOING_AJAX' ) && DOING_AJAX ? 'true' : 'false' ) );
 			}
 
-			$pdir = $this->p->avail['*']['p_dir'];
-			$aop = $this->p->check->aop( $this->p->lca, true, $pdir );
 			$use_post = false;
+			$pdir = $this->p->avail['*']['p_dir'];
+			$aop  = $this->p->check->aop( $this->p->lca, true, $pdir );
 
 			/**
 			 * The $mod array argument is preferred but not required.
@@ -459,38 +467,43 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 * Returns an empty string if no meta found.
 			 	 * Custom filters may use image sizes, so don't filter/cache the meta options.
 				 */
-				$md_opts = $mod['obj']->get_options( $mod['id'], false, false );	// $filter_opts = false
+				$md_opts = $mod['obj']->get_options( $mod['id'], false, false );	// $filter_opts is false.
 			}
 
 			foreach( $sizes as $opt_prefix => $size_info ) {
 
 				if ( ! is_array( $size_info ) ) {
-					$save_name = empty( $size_info ) ?
-						$opt_prefix : $size_info;
+
+					$save_name = empty( $size_info ) ? $opt_prefix : $size_info;
+
 					$size_info = array(
 						'name' => $save_name,
 						'label' => $save_name
 					);
-				} elseif ( ! empty( $size_info['prefix'] ) )				// allow for alternate option prefix
+
+				} elseif ( ! empty( $size_info['prefix'] ) ) {	// Allow for alternate option prefix.
+
 					$opt_prefix = $size_info['prefix'];
+				}
 
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
-					if ( isset( $size_info[$key] ) ) {					// prefer existing info from filters
+
+					if ( isset( $size_info[$key] ) ) {					// Prefer existing info from filters.
 						continue;
-					} elseif ( isset( $md_opts[$opt_prefix . '_' . $key] ) ) {		// use post meta if available
+					} elseif ( isset( $md_opts[$opt_prefix . '_' . $key] ) ) {		// Use post meta if available.
 						$size_info[$key] = $md_opts[$opt_prefix . '_' . $key];
-					} elseif ( isset( $this->p->options[$opt_prefix . '_' . $key] ) ) {	// current plugin settings
+					} elseif ( isset( $this->p->options[$opt_prefix . '_' . $key] ) ) {	// Current plugin settings.
 						$size_info[$key] = $this->p->options[$opt_prefix . '_' . $key];
 					} else {
-						if ( ! isset( $def_opts ) ) {					// only read once if necessary
+						if ( ! isset( $def_opts ) ) {					// Only read once if necessary.
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'getting default option values' );
 							}
 							$def_opts = $this->p->opt->get_defaults();
 						}
-						$size_info[$key] = $def_opts[$opt_prefix . '_' . $key];		// fallback to default value
+						$size_info[$key] = $def_opts[$opt_prefix . '_' . $key];		// Fallback to default value.
 					}
-					if ( $key === 'crop' ) {						// make sure crop is true or false
+					if ( $key === 'crop' ) {						// Make sure crop is true or false.
 						$size_info[$key] = empty( $size_info[$key] ) ? false : true;
 					}
 				}
@@ -531,7 +544,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'define image sizes' );	// end timer
+				$this->p->debug->mark( 'define image sizes' );	// End timer.
 				$this->p->debug->log_arr( 'get_all_image_sizes', SucomUtil::get_image_sizes() );
 			}
 		}
@@ -543,15 +556,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $regen_key !== false ) {
 
 				$cache_md5_pre = $this->p->lca . '_';
-				$cache_exp_secs = 0;	// never expire
+				$cache_exp_secs = 0;	// Never expire.
 				$cache_salt = __CLASS__ . '::force_regen_transient';
 				$cache_id = $cache_md5_pre . md5( $cache_salt );
 
 				if ( $this->force_regen['transient'] === null ) {
-					$this->force_regen['transient'] = get_transient( $cache_id );	// load transient if required
+					$this->force_regen['transient'] = get_transient( $cache_id );	// Load transient if required.
 				}
 
-				if ( $this->force_regen['transient'] === false ) {	// no transient in database
+				if ( $this->force_regen['transient'] === false ) {	// No transient in database.
 					$this->force_regen['transient'] = array();
 				}
 
@@ -568,34 +581,34 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $regen_key !== false ) {
 
 				$cache_md5_pre  = $this->p->lca . '_';
-				$cache_exp_secs = 0;	// never expire
+				$cache_exp_secs = 0;	// Never expire.
 				$cache_salt     = __CLASS__ . '::force_regen_transient';
 				$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 				if ( $this->force_regen['transient'] === null ) {
-					$this->force_regen['transient'] = get_transient( $cache_id );	// load transient if required
+					$this->force_regen['transient'] = get_transient( $cache_id );	// Load transient if required.
 				}
 
-				if ( $this->force_regen['transient'] === false ) {	// no transient in database
+				if ( $this->force_regen['transient'] === false ) {	// No transient in database.
 					return false;
 				}
 
-				if ( isset( $this->force_regen['cache'][$regen_key] ) )	{ // previously returned value
+				if ( isset( $this->force_regen['cache'][$regen_key] ) )	{ // Previously returned value.
 					return $this->force_regen['cache'][$regen_key];
 				}
 
 				if ( isset( $this->force_regen['transient'][$regen_key] ) ) {
-					$this->force_regen['cache'][$regen_key] = $this->force_regen['transient'][$regen_key];	// save value
-					unset( $this->force_regen['transient'][$regen_key] );	// unset the regen key and save transient
+					$this->force_regen['cache'][$regen_key] = $this->force_regen['transient'][$regen_key];	// Save value.
+					unset( $this->force_regen['transient'][$regen_key] );	// Unset the regen key and save transient.
 					if ( empty( $this->force_regen['transient'] ) ) {
 						delete_transient( $cache_id );
 					} else {
 						set_transient( $cache_id, $this->force_regen['transient'], $cache_exp_secs );
 					}
-					return $this->force_regen['cache'][$regen_key];	// return the cached value
+					return $this->force_regen['cache'][$regen_key];	// Return the cached value.
 				}
 
-				return false;	// not in the cache or transient array
+				return false;	// Not in the cache or transient array.
 			}
 
 			return false;
@@ -2358,7 +2371,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Apply the filters.
 			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// being timer
+				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// Begin timer.
 			}
 
 			$start_time   = microtime( true );
@@ -2366,7 +2379,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$total_time   = microtime( true ) - $start_time;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// end timer
+				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// End timer.
 			}
 
 			/**
