@@ -323,11 +323,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.1-rc.1 (2018/06/14)**
+**Version 4.5.1-rc.2 (2018/06/15)**
 
 * *New Features*
 	* None
 * *Improvements*
+	* Added a 'rest_api_init' hook to define our custom image sizes.
 	* Updated the metabox tab CSS to better define active / non-active tabs.
 	* Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
 * *Bugfixes*
@@ -448,9 +449,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.5.1-rc.1 =
+= 4.5.1-rc.2 =
 
-(2018/06/14) Updated the metabox tab CSS to better define active / non-active tabs. Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
+(2018/06/15) Added a 'rest_api_init' hook to define our custom image sizes. Updated the metabox tab CSS to better define active / non-active tabs. Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
 
 = 4.5.0 =
 
