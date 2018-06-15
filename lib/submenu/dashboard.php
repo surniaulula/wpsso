@@ -77,10 +77,10 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 				$args   = array( 'id' => $id, 'name' => $name );
 
 				add_meta_box( $this->pagehook.'_'.$id, $name,
-					array( &$this, 'show_metabox_'.$id ), $this->pagehook, $pos_id, $prio, $args );
+					array( $this, 'show_metabox_'.$id ), $this->pagehook, $pos_id, $prio, $args );
 
 				add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_'.$id,
-					array( &$this, 'add_class_postbox_dashboard' ) );
+					array( $this, 'add_class_postbox_dashboard' ) );
 			}
 		}
 

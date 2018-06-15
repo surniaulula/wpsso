@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 		protected function add_meta_boxes() {
 			add_meta_box( $this->pagehook.'_setup_guide',
 				_x( 'Setup Guide and Other Notes', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_setup_guide' ), $this->pagehook, 'normal' );
+					array( $this, 'show_metabox_setup_guide' ), $this->pagehook, 'normal' );
 		}
 
 		public function filter_action_buttons( $action_buttons ) {

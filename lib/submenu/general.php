@@ -35,11 +35,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			add_meta_box( $this->pagehook.'_opengraph',
 				_x( 'All Social WebSites / Open Graph', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_opengraph' ), $this->pagehook, 'normal' );
+					array( $this, 'show_metabox_opengraph' ), $this->pagehook, 'normal' );
 
 			add_meta_box( $this->pagehook.'_publishers',
 				_x( 'Specific WebSites and Publishers', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_publishers' ), $this->pagehook, 'normal' );
+					array( $this, 'show_metabox_publishers' ), $this->pagehook, 'normal' );
 
 			/**
 			 * Issues a warning notice if the default image size is too small,

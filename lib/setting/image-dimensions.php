@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 		protected function add_meta_boxes() {
 			add_meta_box( $this->pagehook.'_image_dimensions',
 				_x( 'Image Dimensions', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_image_dimensions' ), $this->pagehook, 'normal' );
+					array( $this, 'show_metabox_image_dimensions' ), $this->pagehook, 'normal' );
 		}
 
 		public function filter_action_buttons( $action_buttons ) {

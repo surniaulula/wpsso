@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 
 			add_meta_box( $this->pagehook.'_social_accounts',
 				_x( 'Social Pages and Accounts', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_social_accounts' ), $this->pagehook, 'normal' );
+					array( $this, 'show_metabox_social_accounts' ), $this->pagehook, 'normal' );
 		}
 
 		public function show_metabox_social_accounts() {

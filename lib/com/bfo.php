@@ -43,7 +43,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		public function __call( $method_name, $args ) {
 			if ( strpos( $method_name, $this->bfo_check_id . '_' ) === 0 ) {	// method name starts with 'check_output_buffer_'
 				array_unshift( $args, $method_name );				// set $method_name as first element
-				return call_user_func_array( array( &$this, '__check_output_buffer' ), $args );
+				return call_user_func_array( array( $this, '__check_output_buffer' ), $args );
 			}
 		}
 
@@ -60,7 +60,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 				if ( empty( $wp_actions[$filter_name] ) ) {			// Just in case - skip actions.
 					if ( ! isset( self::$filter_hooked[$filter_name] ) ) {	// only hook a filter once
 						self::$filter_hooked[$filter_name] = true;
-						add_filter( $filter_name, array( &$this, 'start_output_buffer' ), $min_int, 1 );
+						add_filter( $filter_name, array( $this, 'start_output_buffer' ), $min_int, 1 );
 					}
 				}
 			}
@@ -78,9 +78,9 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 				if ( empty( $wp_actions[$filter_name] ) ) {			// Just in case - skip actions.
 					if ( isset( self::$filter_hooked[$filter_name] ) ) {	// skip if not already hooked
 						unset( self::$filter_hooked[$filter_name] );
-						remove_filter( $filter_name, array( &$this, 'start_output_buffer' ), $min_int, 1 );
+						remove_filter( $filter_name, array( $this, 'start_output_buffer' ), $min_int, 1 );
 						$this->remove_check_output_hooks( $filter_name );
-						remove_filter( $filter_name, array( &$this, 'stop_output_buffer' ), $max_int, 1 );
+						remove_filter( $filter_name, array( $this, 'stop_output_buffer' ), $max_int, 1 );
 					}
 				}
 			}
@@ -106,7 +106,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					} elseif ( $filter_count[$filter_name] === 2 ) {	// remove check hooks on second run
 						$this->remove_check_output_hooks( $filter_name );
 					}
-					add_filter( $filter_name, array( &$this, 'stop_output_buffer' ), $max_int, 1 );
+					add_filter( $filter_name, array( $this, 'stop_output_buffer' ), $max_int, 1 );
 				}
 			}
 			return $value;
@@ -145,7 +145,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 						$check_arg = urlencode( '[' . $hook_prio.']' . $hook_name );	// include previous hook priority and name
 						$new_hook_group[$check_ref] = array(
 							'function' => array(
-								&$this,
+								$this,
 								$this->bfo_check_id . '_' . $check_arg		// hooks the __call() method
 							),
 							'accepted_args' => 1,

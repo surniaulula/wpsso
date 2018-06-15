@@ -33,11 +33,11 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 			add_meta_box( $this->pagehook.'_general',
 				_x( 'Essential General Settings', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_general' ), $this->pagehook, 'normal' );
+					array( $this, 'show_metabox_general' ), $this->pagehook, 'normal' );
 
 			add_meta_box( $this->pagehook.'_advanced',
 				_x( 'Optional Advanced Settings', 'metabox title', 'wpsso' ),
-					array( &$this, 'show_metabox_advanced' ), $this->pagehook, 'normal' );
+					array( $this, 'show_metabox_advanced' ), $this->pagehook, 'normal' );
 
 			/**
 			 * Issues a warning notice if the default image size is too small.
