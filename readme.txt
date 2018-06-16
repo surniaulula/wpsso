@@ -334,7 +334,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Fixed an incorrectly named Yotpo for WooCommerce filter hook.
 
 **Version 4.5.0 (2018/06/07)**
 
