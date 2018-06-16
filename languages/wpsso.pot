@@ -5161,25 +5161,25 @@ msgid ""
 "unchecked and disabled automatically."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:691
-msgid "\"%s\" is  an unknown Schema product item condition."
+#: lib/pro/ecom/woocommerce.php:760
+msgid "\"%s\" is  an unknown Schema product item condition . "
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:693
+#: lib/pro/ecom/woocommerce.php:762
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:873
+#: lib/pro/ecom/woocommerce.php:948
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:875
+#: lib/pro/ecom/woocommerce.php:950
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:878
+#: lib/pro/ecom/woocommerce.php:953
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -5290,22 +5290,22 @@ msgstr ""
 
 #. translators: %s is "App Key"
 #. translators: %s is "Secret Key"
-#: lib/pro/rating/yotpowc.php:64 lib/pro/rating/yotpowc.php:76
+#: lib/pro/rating/yotpowc.php:66 lib/pro/rating/yotpowc.php:81
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()"
-#: lib/pro/rating/yotpowc.php:88
+#: lib/pro/rating/yotpowc.php:96
 msgid "Yotpo for WooCommerce %s function returned an error."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce"
-#: lib/pro/rating/yotpowc.php:104
+#: lib/pro/rating/yotpowc.php:119
 msgid "\"%s\" not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path
-#: lib/pro/rating/yotpowc.php:123
+#: lib/pro/rating/yotpowc.php:146
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
