@@ -186,13 +186,7 @@ WPSSO creates complete and accurate values from your content automatically!</td>
 
 <ul>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/">Install the WPSSO Core Plugin</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/">Integration Notes</a>
-
-<ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration</a></li>
-</ul></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/">Uninstall the WPSSO Core Plugin</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/">Performance Tuning</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/">Debugging and Problem Solving</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special - Buy one, Get one Free</a></li>
 </ul>
@@ -201,6 +195,12 @@ WPSSO creates complete and accurate values from your content automatically!</td>
 
 <ul>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/">A Setup Guide for WPSSO</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/">Integration Notes</a>
+
+<ul>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration</a></li>
+</ul></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/">Performance Tuning</a></li>
 </ul>
 
 

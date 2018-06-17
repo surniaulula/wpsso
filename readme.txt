@@ -202,16 +202,16 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 <h3>Install and Uninstall</h3>
 
 * [Install the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/)
-* [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
-	* [BuddyPress Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
 * [Uninstall the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/)
-* [Performance Tuning](https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/)
 * [Debugging and Problem Solving](https://wpsso.com/docs/plugins/wpsso/installation/debugging-and-problem-solving/)
 * [Developer Special - Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 
 <h3>Plugin Setup</h3>
 
 * [A Setup Guide for WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/)
+* [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
+	* [BuddyPress Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
+* [Performance Tuning](https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/)
 
 == Frequently Asked Questions ==
 
