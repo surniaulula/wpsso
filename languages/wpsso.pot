@@ -2420,50 +2420,50 @@ msgid ""
 "was detected)."
 msgstr ""
 
-#: lib/gpl/admin/meta.php:87 lib/gpl/admin/post.php:93
+#: lib/gpl/admin/meta.php:87 lib/gpl/admin/post.php:95
 #: lib/pro/admin/meta.php:93 lib/pro/admin/post.php:100
 msgctxt "option label"
 msgid "Default Title"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:92 lib/gpl/admin/post.php:99
+#: lib/gpl/admin/meta.php:92 lib/gpl/admin/post.php:101
 #: lib/pro/admin/meta.php:100 lib/pro/admin/post.php:108
 msgctxt "option label"
 msgid "Default Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:98 lib/gpl/admin/post.php:106
+#: lib/gpl/admin/meta.php:98 lib/gpl/admin/post.php:108
 #: lib/pro/admin/meta.php:108 lib/pro/admin/post.php:117
 msgctxt "option label"
 msgid "Search Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:105 lib/gpl/admin/post.php:114
+#: lib/gpl/admin/meta.php:105 lib/gpl/admin/post.php:116
 #: lib/pro/admin/meta.php:116 lib/pro/admin/post.php:126
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:111 lib/gpl/admin/post.php:121 lib/meta.php:242
+#: lib/gpl/admin/meta.php:111 lib/gpl/admin/post.php:123 lib/meta.php:242
 #: lib/meta.php:267 lib/pro/admin/meta.php:122 lib/pro/admin/post.php:133
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:117 lib/gpl/admin/post.php:128 lib/meta.php:246
+#: lib/gpl/admin/meta.php:117 lib/gpl/admin/post.php:130 lib/meta.php:246
 #: lib/meta.php:271 lib/pro/admin/meta.php:128 lib/pro/admin/post.php:140
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:125 lib/gpl/admin/post.php:180
+#: lib/gpl/admin/meta.php:125 lib/gpl/admin/post.php:182
 #: lib/pro/admin/meta.php:137 lib/pro/admin/post.php:193
 #: lib/submenu/general.php:264
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:128 lib/gpl/admin/post.php:184
+#: lib/gpl/admin/meta.php:128 lib/gpl/admin/post.php:186
 #: lib/pro/admin/meta.php:140 lib/pro/admin/post.php:197
 msgctxt "option label"
 msgid "Schema Description"
@@ -2558,47 +2558,47 @@ msgctxt "option label"
 msgid "Open Graph Type"
 msgstr ""
 
-#: lib/gpl/admin/post.php:87 lib/pro/admin/post.php:94
+#: lib/gpl/admin/post.php:88 lib/pro/admin/post.php:94
 msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:136 lib/messages.php:793 lib/pro/admin/post.php:149
+#: lib/gpl/admin/post.php:138 lib/messages.php:793 lib/pro/admin/post.php:149
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gpl/admin/post.php:143 lib/messages.php:804 lib/pro/admin/post.php:156
+#: lib/gpl/admin/post.php:145 lib/messages.php:804 lib/pro/admin/post.php:156
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/gpl/admin/post.php:149 lib/messages.php:815 lib/pro/admin/post.php:162
+#: lib/gpl/admin/post.php:151 lib/messages.php:815 lib/pro/admin/post.php:162
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gpl/admin/post.php:155 lib/messages.php:826 lib/pro/admin/post.php:168
+#: lib/gpl/admin/post.php:157 lib/messages.php:826 lib/pro/admin/post.php:168
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gpl/admin/post.php:161 lib/messages.php:847 lib/pro/admin/post.php:174
+#: lib/gpl/admin/post.php:163 lib/messages.php:847 lib/pro/admin/post.php:174
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gpl/admin/post.php:167 lib/messages.php:857 lib/pro/admin/post.php:180
+#: lib/gpl/admin/post.php:169 lib/messages.php:857 lib/pro/admin/post.php:180
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gpl/admin/post.php:174 lib/messages.php:868 lib/pro/admin/post.php:187
+#: lib/gpl/admin/post.php:176 lib/messages.php:868 lib/pro/admin/post.php:187
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:191 lib/meta.php:238 lib/post.php:1080
+#: lib/gpl/admin/post.php:193 lib/meta.php:238 lib/post.php:1080
 #: lib/pro/admin/post.php:204
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
