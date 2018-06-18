@@ -4418,7 +4418,7 @@ msgstr ""
 
 #: lib/messages.php:1934
 msgctxt "option comment"
-msgid "option requires %s"
+msgid "requires %s"
 msgstr ""
 
 #: lib/messages.php:1941

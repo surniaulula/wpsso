@@ -2894,7 +2894,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$short = $this->p->cf['plugin'][$ext]['short'];
 
-			$html .= ' <p style="display:inline;" class="ext_req_msg"><em>';
+			$html .= ' <span class="ext-req-msg">';
 
 			if ( ! empty( $this->p->cf['plugin'][$ext]['url']['home'] ) ) {
 				$html .= '<a href="' . $this->p->cf['plugin'][$ext]['url']['home'] . '">';
@@ -2906,7 +2906,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$html .= '</a>';
 			}
 
-			$html .= '</em></p>';
+			$html .= '</span>';
 
 			return $html;
 		}
