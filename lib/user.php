@@ -444,18 +444,23 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			$metabox_id = $this->p->cf['meta']['id'];
-			$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
-			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
-			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_user', $add_metabox, $user_id );
+			$metabox_id      = $this->p->cf['meta']['id'];
+			$metabox_title   = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+			$metabox_screen  = $this->p->lca . '-user';
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
+			$add_metabox     = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
+			$add_metabox     = apply_filters( $this->p->lca.'_add_metabox_user', $add_metabox, $user_id );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'add metabox for user ID '.$user_id.' is '.( $add_metabox ? 'true' : 'false' ) );
+				$this->p->debug->log( 'add metabox for user ID '.$user_id.' is '.
+					( $add_metabox ? 'true' : 'false' ) );
 			}
 
 			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
-					array( $this, 'show_metabox_custom_meta' ), $this->p->lca.'-user', 'normal', 'low' );
+					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
+						$metabox_context, $metabox_prio );
 			}
 		}
 
@@ -480,11 +485,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( 'doing metabox for '.$this->p->lca.'-user' );
 			}
 
+			$metabox_screen  = $this->p->lca . '-user';
+			$metabox_context = 'normal';
+
 			echo "\n" . '<!-- '.$this->p->lca.' user metabox section begin -->' . "\n";
 			echo '<h3 id="'.$this->p->lca.'-metaboxes">'.WpssoAdmin::$pkg[$this->p->lca]['short'].'</h3>' . "\n";
 			echo '<div id="poststuff">' . "\n";
 
-			do_meta_boxes( $this->p->lca.'-user', 'normal', $user_obj );
+			do_meta_boxes( $metabox_screen, $metabox_context, $user_obj );
 
 			echo "\n" . '</div><!-- .poststuff -->' . "\n";
 			echo '<!-- '.$this->p->lca.' user metabox section end -->' . "\n";

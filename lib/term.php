@@ -435,10 +435,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			$metabox_id = $this->p->cf['meta']['id'];
-			$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
-			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
-			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_term', $add_metabox, $this->query_term_id );
+			$metabox_id      = $this->p->cf['meta']['id'];
+			$metabox_title   = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+			$metabox_screen  = $this->p->lca . '-term';
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
+			$add_metabox     = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
+			$add_metabox     = apply_filters( $this->p->lca.'_add_metabox_term', $add_metabox, $this->query_term_id );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'add metabox for term ID '.$this->query_term_id.' is '.
@@ -447,7 +450,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
-					array( $this, 'show_metabox_custom_meta' ), $this->p->lca.'-term', 'normal', 'low' );
+					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
+						$metabox_context, $metabox_prio );
 			}
 		}
 
@@ -461,11 +465,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
+			$metabox_screen  = $this->p->lca . '-term';
+			$metabox_context = 'normal';
+
 			echo "\n" . '<!-- '.$this->p->lca.' term metabox section begin -->' . "\n";
 			echo '<h3 id="'.$this->p->lca.'-metaboxes">'.WpssoAdmin::$pkg[$this->p->lca]['short'].'</h3>' . "\n";
 			echo '<div id="poststuff">' . "\n";
 
-			do_meta_boxes( $this->p->lca.'-term', 'normal', $term_obj );
+			do_meta_boxes( $metabox_screen, 'normal', $term_obj );
 
 			echo "\n" . '</div><!-- .poststuff -->' . "\n";
 			echo '<!-- '.$this->p->lca.' term metabox section end -->' . "\n";

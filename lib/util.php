@@ -2869,46 +2869,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 *
 		 * Check that all add-ons are no longer using this method before removing it.
 		 */
-		public function get_ext_req_msg( $p_ext ) {
-			return $this->get_p_ext_required_msg( $p_ext );
-		}
-
-		/**
-		 * If an add-on is not available, return a short sentence that this add-on is
-		 * required. If the add-on is active, then return an empty string.
-		 *
-		 * $p_ext = json, org, plm, etc.
-		 */
-		public function get_p_ext_required_msg( $p_ext ) {
-
-			$html = '';
-			$ext  = $this->p->lca . $p_ext;
-
-			if ( $this->p->lca === $p_ext ) {
-				return $html;
-			} elseif ( ! empty( $this->p->avail['p_ext'][$p_ext] ) ) {	// Already active.
-				return $html;
-			} elseif ( empty( $this->p->cf['plugin'][$ext]['short'] ) ) {	// Add-on config is not defined.
-				return $html;
-			}
-
-			$short = $this->p->cf['plugin'][$ext]['short'];
-
-			$html .= ' <span class="ext-req-msg">';
-
-			if ( ! empty( $this->p->cf['plugin'][$ext]['url']['home'] ) ) {
-				$html .= '<a href="' . $this->p->cf['plugin'][$ext]['url']['home'] . '">';
-			}
-
-			$html .= sprintf( _x( '%s add-on required', 'option comment', 'wpsso' ), $short );
-
-			if ( ! empty( $this->p->cf['plugin'][$ext]['url']['home'] ) ) {
-				$html .= '</a>';
-			}
-
-			$html .= '</span>';
-
-			return $html;
+		public function get_ext_req_msg( $mixed ) {
+			return $this->p->admin->get_ext_required_msg( $mixed );
 		}
 
 		public function get_meta_name_robots_content( array $mod ) {

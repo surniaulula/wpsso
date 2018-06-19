@@ -1023,10 +1023,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			$metabox_id = $this->p->cf['meta']['id'];
-			$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
-			$add_metabox = empty( $this->p->options[ 'plugin_add_to_'.$post_obj->post_type ] ) ? false : true;
-			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
+			$metabox_id      = $this->p->cf['meta']['id'];
+			$metabox_title   = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+			$metabox_screen  = $post_obj->post_type;
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
+			$add_metabox     = empty( $this->p->options[ 'plugin_add_to_'.$post_obj->post_type ] ) ? false : true;
+			$add_metabox     = apply_filters( $this->p->lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'add metabox for post ID '.$post_id.' of type '.$post_obj->post_type.' is '.
@@ -1035,7 +1038,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
-					array( $this, 'show_metabox_custom_meta' ), $post_obj->post_type, 'normal', 'low' );
+					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
+						$metabox_context, $metabox_prio );
 			}
 		}
 

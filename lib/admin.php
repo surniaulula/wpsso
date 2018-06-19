@@ -3255,7 +3255,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function get_ext_img_icon( $ext ) {
 
 			/**
-			 * Default is a transparent 1px GIF.
+			 * The default image is a transparent 1px gif.
 			 */
 			$img_src = 'src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="';
 
@@ -3273,6 +3273,54 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return '<img ' . $img_src . ' width="128" height="128" style="width:128px; height:128px;"/>';
+		}
+
+		/**
+		 * If an add-on is not available, return a short sentence that this add-on is required.
+		 *
+		 * $mixed = wpssojson, json, etc.
+		 */
+		public function get_ext_required_msg( $mixed ) {
+
+			$html = '';
+
+			if ( ! is_string( $mixed ) ) {						// Just in case.
+				return $html;
+			}
+
+			if ( strpos( $mixed, $this->p->lca ) === 0 ) {				// A complete lower case acronym was provided.
+				$p_ext = substr( $ext, 0, strlen( $this->p->lca ) );		// Change 'wpssojson' to 'json'
+				$ext   = $mixed;
+			} else {
+				$p_ext = $mixed;
+				$ext   = $this->p->lca . $p_ext;				// Change 'json' to 'wpssojson'
+			}
+
+			if ( $this->p->lca === $mixed ) {					// The main plugin is not considered an add-on.
+				return $html;
+			} elseif ( ! empty( $this->p->avail['p_ext'][$p_ext] ) ) {		// Add-on is already active.
+				return $html;
+			} elseif ( empty( $this->p->cf['plugin'][$ext]['short'] ) ) {		// Add-on config is not defined.
+				return $html;
+			}
+
+			$short = $this->p->cf['plugin'][$ext]['short'];
+
+			$html .= ' <span class="ext-req-msg">';
+
+			if ( ! empty( $this->p->cf['plugin'][$ext]['url']['home'] ) ) {
+				$html .= '<a href="' . $this->p->cf['plugin'][$ext]['url']['home'] . '">';
+			}
+
+			$html .= sprintf( _x( '%s add-on required', 'option comment', 'wpsso' ), $short );
+
+			if ( ! empty( $this->p->cf['plugin'][$ext]['url']['home'] ) ) {
+				$html .= '</a>';
+			}
+
+			$html .= '</span>';
+
+			return $html;
 		}
 	}
 }

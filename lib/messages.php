@@ -1929,9 +1929,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'pro-option-msg':
 
-						$begin_p = '<span class="pro-option-msg">' . ( empty( $url['purchase'] ) ? '' : '<a href="' . $url['purchase'] . '">' );
-						$end_p   = ( empty( $url['purchase'] ) ? '' : '</a>' ) . '</span>';
-						$text    = $begin_p . sprintf( _x( 'requires %s', 'option comment', 'wpsso' ), $info['short_pro'] ) . $end_p;
+						$text = '<span class="pro-option-msg">';
+
+						$text .= empty( $url['purchase'] ) ? '' : '<a href="' . $url['purchase'] . '">';
+
+						$text .= sprintf( _x( '[option preview] %s required', 'option comment', 'wpsso' ), $info['short_pro'] );
+
+						$text .= empty( $url['purchase'] ) ? '' : '</a>';
+
+						$text .= '</span>';
 
 						break;
 
