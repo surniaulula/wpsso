@@ -158,31 +158,32 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'create and minify settings page style' );	// begin timer
+				$this->p->debug->mark( 'create and minify settings page style' );	// Begin timer.
 			}
 
-			if ( ! empty( $this->p->cf['menu']['color'] ) ) {
-				$custom_style_css .= '
-					#poststuff #side-info-column .postbox {
-						border:1px solid ' . $this->p->cf['menu']['color'] . ';
-					}
-					#poststuff #side-info-column .postbox h2 {
-						border-bottom:1px dotted ' . $this->p->cf['menu']['color'] . ';
-					}
-					#poststuff #side-info-column .postbox.closed h2 {
-						border-bottom:1px solid ' . $this->p->cf['menu']['color'] . ';
-					}
-					#poststuff #side-info-column .postbox.closed {
-						border-bottom:none;
-					}
-					#poststuff #side-info-column .postbox .inside td.blank,
-					#poststuff .dashboard_col .postbox .inside td.blank {
-						border-color:' . $this->p->cf['menu']['color'] . ';
-						background-color:' . $this->p->cf['nag_colors']['update-nag']['background-color'] . ';
-						color:' . $this->p->cf['nag_colors']['update-nag']['color'] . ';
-					}
-				';
-			}
+			/**
+			 * Re-use the notice border colors for the side column and dashboard metaboxes.
+			 */
+			$custom_style_css .= '
+				#poststuff #side-info-column .postbox {
+					border:1px solid ' . $this->p->cf['notice']['update-nag']['border-color'] . ';
+				}
+				#poststuff #side-info-column .postbox h2 {
+					border-bottom:1px dotted ' . $this->p->cf['notice']['update-nag']['border-color'] . ';
+				}
+				#poststuff #side-info-column .postbox.closed h2 {
+					border-bottom:1px solid ' . $this->p->cf['notice']['update-nag']['border-color'] . ';
+				}
+				#poststuff #side-info-column .postbox.closed {
+					border-bottom:none;
+				}
+				#poststuff #side-info-column .postbox .inside td.blank,
+				#poststuff .dashboard_col .postbox .inside td.blank {
+					color:' . $this->p->cf['notice']['update-nag']['color'] . ';
+					border-color:' . $this->p->cf['notice']['update-nag']['border-color'] . ';
+					background-color:' . $this->p->cf['notice']['update-nag']['background-color'] . ';
+				}
+			';
 
 			if ( strpos( $hook_name, '_page_' . $this->p->lca . '-dashboard' ) ) {
 				$custom_style_css .= 'div#' . $hook_name . ' div#normal-sortables { min-height:0; }';
@@ -200,7 +201,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			wp_add_inline_style( 'sucom-settings-page', $custom_style_css );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'create and minify settings page style' );	// end timer
+				$this->p->debug->mark( 'create and minify settings page style' );	// End timer.
 			}
 		}
 

@@ -1388,23 +1388,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'version' => '1.12.1',
 			),
 			'menu' => array(
-				'title' => 'SSO',		// menu title
-				'before' => '\0229b',		// circle asterix
-				'icon_html' => '&oast;',	// circle asterix
+				'title' => 'SSO',		// Menu title.
+				'before' => '\0229b',		// Circle asterix.
+				'icon_html' => '&oast;',	// Circle asterix.
 				'dashicons' => array(
-					'licenses' => 'editor-justify',
-					'sitelicenses' => 'editor-justify',
+					'licenses' => 'star-filled',
+					'sitelicenses' => 'star-filled',
 					'dashboard' => 'dashboard',
 					'sitedashboard' => 'dashboard',
 					'setup' => 'info',
 					'sitesetup' => 'info',
 				),
 			),
-			'nag_colors' => array(
-				'update-nag' => array(
-					'border' => '1px solid #33cc33',
+			'notice' => array(
+				'update-nag' => array(		// CSS class name.
+					'color' => '#144e14',	// CSS property name and value.
+					'border-width' => '1px',
+					'border-style' => 'solid',
+					'border-color' => '#33cc33',
 					'background-color' => '#e0f7e0',
-					'color' => '#144e14',
 				),
 				'update-nag a' => array(
 					'color' => '#1f7e1f',

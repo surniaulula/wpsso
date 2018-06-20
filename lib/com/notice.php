@@ -1349,9 +1349,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$uca = strtoupper( $this->lca );
 			$custom_style_css = '';
 
-			if ( isset( $this->p->cf['nag_colors'] ) ) {
-				foreach ( $this->p->cf['nag_colors'] as $css_class => $nag_colors ) {
-					foreach ( $nag_colors as $prop_name => $prop_value ) {
+			if ( isset( $this->p->cf['notice'] ) ) {
+				foreach ( $this->p->cf['notice'] as $css_class => $css_props ) {
+					foreach ( $css_props as $prop_name => $prop_value ) {
 						$custom_style_css .= '.' . $this->lca . '-notice.' . $css_class . '{' . $prop_name . ':' . $prop_value . ';}' . "\n";
 					}
 				}
