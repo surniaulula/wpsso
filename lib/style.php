@@ -237,10 +237,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$menu       = $this->p->lca . '-' . key( $this->p->cf['*']['lib']['submenu'] );
 			$sitemenu   = $this->p->lca . '-' . key( $this->p->cf['*']['lib']['sitesubmenu'] );
 
-			$highlight_color_css = empty( $this->p->cf['menu']['color'] ) || 
-				! SucomUtil::get_const( 'WPSSO_MENU_ICON_HIGHLIGHT' ) ?
-					'' : 'color:' . $this->p->cf['menu']['color'] . ';';
-
 			$custom_style_css = '
 				@font-face {
 					font-family:"Star";
@@ -265,7 +261,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ':hover div.wp-menu-image::before {
-					' . $highlight_color_css . '
 					content:"' . $this->p->cf['menu']['before'] . '";
 					font-size:30px;
 					font-style:normal;

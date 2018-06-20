@@ -1389,7 +1389,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'menu' => array(
 				'title' => 'SSO',		// menu title
-				'color' => '#33cc33',		// menu color (lime green)
 				'before' => '\0229b',		// circle asterix
 				'icon_html' => '&oast;',	// circle asterix
 				'dashicons' => array(
@@ -2549,7 +2548,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_MENU_ORDER'] = '99.10';			// Position of the SSO menu item.
 			$var_const['WPSSO_TB_NOTICE_MENU_ORDER'] = '55';		// Position of the SSO notices toolbar menu item.
 			$var_const['WPSSO_TB_LOCALE_MENU_ORDER'] = '60';		// Position of the user locale toolbar menu item.
-			$var_const['WPSSO_MENU_ICON_HIGHLIGHT'] = true;			// Highlight the SSO menu icon.
 			$var_const['WPSSO_TOOLBAR_NOTICES'] = true;			// Show error, warning, and info notices in the toolbar menu.
 			$var_const['WPSSO_JSON_PRETTY_PRINT'] = false;			// Output pretty / human readable json.
 			$var_const['WPSSO_UNDEF_INT'] = -1;				// Undefined image width / height value.
