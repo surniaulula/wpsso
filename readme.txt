@@ -323,6 +323,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.5.2-dev.1 (2018/06/20)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Removed color highlighting of the SSO menu icon.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 4.5.1 (2018/06/16)**
 
 * *New Features*
@@ -448,6 +459,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
 
 == Upgrade Notice ==
+
+= 4.5.2-dev.1 =
+
+(2018/06/20) Removed color highlighting of the SSO menu icon.
 
 = 4.5.1 =
 
