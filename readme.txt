@@ -14,7 +14,7 @@ Tested Up To: 4.9.6
 WC Tested Up To: 3.4.2
 Stable Tag: 4.5.1
 
-Easy, complete, accurate, and automatic - provide information about your business and content for social sharing and search engines.
+Easy, complete, accurate, and automatic - provide information about your business and content to social sites and search engines.
 
 == Description ==
 
