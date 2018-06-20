@@ -2,11 +2,7 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Why enter meta tag values and Schema markup manually?
-
-&nbsp;
-
-WPSSO creates complete and accurate values from your content automatically!</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Easy, complete, accurate, and automatic - provide information about your business and content for social sharing and search engines.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.5.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.6</td></tr>
