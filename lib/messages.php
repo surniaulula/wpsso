@@ -1894,6 +1894,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'pro-feature-msg':
 
 						$begin_p = '<p class="pro-feature-msg">'.( empty( $url['purchase'] ) ? '' : '<a href="'.$url['purchase'].'">' );
+
 						$end_p   = ( empty( $url['purchase'] ) ? '' : '</a>' ).'</p>';
 
 						if ( $lca === $this->p->lca ) {
@@ -1965,7 +1966,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'pro-about-msg-post-text':
 
-						$text = '<p class="top">';
+						$text = '<p style="text-align:center;margin:0;">';
 
 						$text .= sprintf( __( 'You can update the %s excerpt or content text to change the default description values.', 'wpsso' ), $info['post_type'] );
 
@@ -1975,8 +1976,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'pro-about-msg-post-media':
 
-						$text = '<p>'.__( 'You can change the social image by selecting a featured image, attaching image(s) or including images in the content.', 'wpsso' ).'<br/>';
-						$text .= sprintf( __( 'Video service API modules, required to detect embedded videos, are provided by the %s plugin.', 'wpsso' ),  $info['short_pro'] ).'</p>';
+						$text = '<p style="text-align:center;margin:0;">';
+
+						$text .= __( 'You can change the social image by selecting a featured image, attaching image(s) or including images in the content.', 'wpsso' );
+
+						$text .= '</br/>';
+
+						$text .= sprintf( __( 'Video service API modules, required to detect embedded videos, are provided by the %s plugin.', 'wpsso' ),  $info['short_pro'] );
+						
+						$text .= '</p>';
 
 						break;
 

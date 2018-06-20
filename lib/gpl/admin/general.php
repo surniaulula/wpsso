@@ -32,7 +32,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$table_rows['og_author_gravatar'] = ''.
 			$form->get_th_html( _x( 'Include Author Gravatar Image', 'option label', 'wpsso' ), null, 'og_author_gravatar' ).
@@ -47,9 +47,9 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="2" align="center">'.
-				'<p>'.__( 'Video discovery and integration modules are provided with the Pro version.',
-					'wpsso' ).'</p>'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$table_rows[] = '<td colspan="2"><p style="text-align:center;margin:0;">' .
+				__( 'Video discovery and integration modules are provided with the Pro version.', 'wpsso' ) .
+					'</p>' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$table_rows['og_vid_max'] = $form->get_tr_hide( 'basic', 'og_vid_max' ).
 			$form->get_th_html( _x( 'Maximum Videos to Include', 'option label', 'wpsso' ), null, 'og_vid_max' ).

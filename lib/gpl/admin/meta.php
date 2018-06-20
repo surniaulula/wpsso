@@ -79,8 +79,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
 			$seo_msg_transl = __( 'This option is disabled (the "%1$s" head tag is disabled or an SEO plugin was detected).', 'wpsso' );
 
-			$table_rows[] = '<td colspan="2" align="center">'.
-				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$form_rows = array(
 				'og_title' => array(
@@ -153,9 +152,9 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			$media_info = $this->p->og->get_media_info( $this->p->lca . '-opengraph',
 				array( 'pid', 'img_url' ), $mod, 'none', 'og' );	// $md_pre is 'none'.
 
-			$table_rows[] = '<td colspan="2" align="center">'.
-				( $mod['is_post'] ? $this->p->msgs->get( 'pro-about-msg-post-media' ) : '' ).
-				$this->p->msgs->get( 'pro-feature-msg' ). '</td>';
+			$table_rows[] = '<td colspan="2">' .
+				( $mod['is_post'] ? $this->p->msgs->get( 'pro-about-msg-post-media' ) : '' ) .
+					$this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$form_rows['subsection_opengraph'] = array(
 				'td_class' => 'subsection top', 'header' => 'h4',

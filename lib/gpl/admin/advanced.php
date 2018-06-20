@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$atts_locale = array( 'is_locale' => true );
 
-			$table_rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$table_rows['plugin_filter_title'] = ''.
 			$form->get_th_html( _x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' ), '', 'plugin_filter_title' ).
@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="2" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$table_rows['plugin_honor_force_ssl'] = $form->get_tr_hide( 'basic', 'plugin_honor_force_ssl' ).
 			$form->get_th_html( _x( 'Honor the FORCE_SSL Constant', 'option label', 'wpsso' ), '', 'plugin_honor_force_ssl' ).
@@ -158,8 +158,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="2" align="center">'.
-				$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			/**
 			 * Include Columns in Admin Lists
@@ -237,8 +236,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows[] = '<td colspan="'.( $network ? 4 : 2 ).'" align="center">'.
-				$this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ).'</td>';
+			$table_rows[] = '<td colspan="' . ( $network ? 4 : 2 ) . '">' . 
+				$this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ) . '</td>';
 
 			$table_rows['plugin_head_cache_exp'] = ''.
 			$form->get_th_html( _x( 'Head Markup Array Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_head_cache_exp' ).
@@ -340,8 +339,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$tr_html['bitly'] = '';
 			}
 
-			$table_rows[] = '<td colspan="2" align="center">'.
-				$this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ).'</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg', array( 'lca' => 'wpsso' ) ) . '</td>';
 
 			$table_rows['plugin_shortener'] = ''.
 			$form->get_th_html( _x( 'Preferred URL Shortening Service', 'option label', 'wpsso' ), '', 'plugin_shortener' ).
@@ -457,7 +455,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$atts_locale = array( 'is_locale' => true );
 
-			$table_rows[] = '<td colspan="4" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$table_rows[] = '<td colspan="4">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$table_rows[] = '<td></td>'.
 			$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), 'checkbox left', 'custom-cm-show-checkbox' ).
@@ -526,7 +524,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$atts_locale = array( 'is_locale' => true );
 
-			$table_rows[] = '<td colspan="4" align="center">'.$this->p->msgs->get( 'pro-feature-msg' ).'</td>';
+			$table_rows[] = '<td colspan="4">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$table_rows[] = '<td></td>'.
 			$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), 'checkbox left', 'custom-cm-show-checkbox' ).
