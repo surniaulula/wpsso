@@ -207,6 +207,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 * [A Setup Guide for WPSSO](https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/)
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
 	* [BuddyPress Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
+	* [WooCommerce Integration](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
 * [Performance Tuning](https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/)
 
 == Frequently Asked Questions ==
@@ -328,7 +329,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added a new 'wpsso_get_robots_content' filter.
 
 **Version 4.5.1 (2018/06/16)**
 
@@ -458,7 +459,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.5.2-b.1 =
 
-(2018/06/21) Removed color highlighting of the SSO menu icon.
+(2018/06/21) Removed color highlighting of the SSO menu icon. Added a new 'wpsso_get_robots_content' filter.
 
 = 4.5.1 =
 

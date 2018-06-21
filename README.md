@@ -195,6 +195,7 @@
 
 <ul>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/">WooCommerce Integration</a></li>
 </ul></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/performance-tuning/">Performance Tuning</a></li>
 </ul>
