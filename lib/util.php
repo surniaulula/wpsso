@@ -1446,21 +1446,28 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function get_is_functions() {
+
 			$function_info = array();
+
 			foreach ( apply_filters( $this->p->lca . '_is_functions', $this->is_functions )  as $function ) {
+
 				if ( function_exists( $function ) ) {
-					$start_time = microtime( true );
+
+					$start_time   = microtime( true );
 					$function_ret = $function();
-					$total_time = microtime( true ) - $start_time;
+					$total_time   = microtime( true ) - $start_time;
+
 					$function_info[$function] = array(
 						sprintf( '%-40s (%f secs)', $function . '() = ' . ( $function_ret ? 'TRUE' : 'false' ), $total_time ),
 						$function_ret,
 						$total_time,
 					);
+
 				} else {
 					$function_info[$function] = array( $function . '() not found', null, 0 );
 				}
 			}
+
 			return $function_info;
 		}
 
@@ -1904,6 +1911,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$url = $this->check_url_string( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
 					} else {
 						$url = apply_filters( $this->p->lca . '_home_url', home_url( '/' ), $mod, $add_page, $src_id );
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'home url = ' . $url );
 						}
@@ -2315,7 +2323,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * for incorrectly coded filters.
 			 */
 			if ( $hook_bfo ) {
+
 				$classname = apply_filters( $this->p->lca . '_load_lib', false, 'com/bfo', 'SucomBFO' );
+
 				if ( is_string( $classname ) && class_exists( $classname ) ) {
 					$bfo_obj = new $classname( $this->p );
 					$bfo_obj->add_start_hooks( array( $filter_name ) );
