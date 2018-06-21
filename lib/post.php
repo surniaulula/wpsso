@@ -1207,8 +1207,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$can_publish = current_user_can( $post_type_object->cap->publish_posts );
 
 			$mod = $this->get_mod( $post->ID );
-			$content = $this->p->util->get_meta_name_robots_content( $mod );
-			$robots_css_id = $this->p->lca . '-robots';
+			$robots_content = $this->p->util->get_robots_content( $mod );
+			$robots_css_id  = $this->p->lca . '-robots';
 
 			echo "\n";
 			echo '<!-- '. $this->p->lca . ' nonce fields -->'."\n";
@@ -1219,7 +1219,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo _x( 'Robots', 'option label', 'wpsso' ) . ':';
 			echo '</div>' . "\n";
 			echo '<div id="post-' . $robots_css_id . '-display">' . "\n";
-			echo '<div id="post-' . $robots_css_id . '-content">' . $content;
+			echo '<div id="post-' . $robots_css_id . '-content">' . $robots_content;
 
 			if ( $can_publish ) {
 				echo ' <a href="#" class="hide-if-no-js" role="button" onClick="' .

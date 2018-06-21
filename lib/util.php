@@ -2873,17 +2873,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $this->p->admin->get_ext_required_msg( $mixed );
 		}
 
-		public function get_meta_name_robots_content( array $mod ) {
+		public function get_robots_content( array $mod ) {
+
 			$content = '';
+
 			if ( $mod['id'] && is_object( $mod['obj'] ) ) {
+
 				foreach ( array(
 					'noindex' => 'index',
 					'nofollow' => 'follow',
 					'noarchive' => '',
 					'nosnippet' => '',
 				) as $meta_name => $inverse_name ) {
-					$meta_key = '_' . $this->p->lca . '_' . $meta_name;
+
+					$meta_key   = '_' . $this->p->lca . '_' . $meta_name;
 					$meta_value = $mod['obj']->get_meta_cache_value( $mod['id'], $meta_key );
+
 					if ( ! empty( $meta_value ) ) {
 						$content .= $meta_name . ', ';
 					} elseif ( ! empty( $inverse_name ) ) {
@@ -2891,7 +2896,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 				}
 			}
-			return rtrim( $content, ', ' );
+
+			return apply_filters( $this->p->lca . '_get_robots_content', rtrim( $content, ', ' ), $mod );
 		}
 	}
 }

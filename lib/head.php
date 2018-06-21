@@ -592,7 +592,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			if ( ! empty( $this->p->options['add_meta_name_robots'] ) ) {
-				$mt_name['robots'] = $this->p->util->get_meta_name_robots_content( $mod );
+				$mt_name['robots'] = $this->p->util->get_robots_content( $mod );
 			}
 
 			$mt_name = (array) apply_filters( $this->p->lca.'_meta_name', $mt_name, $mod );
@@ -847,7 +847,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					continue;
 				}
 
-				// filtering of single meta tags can be enabled by defining WPSSO_APPLY_FILTERS_SINGLE_MT as true
+				/**
+				 * Filtering of individual meta tags can be enabled by defining
+				 * WPSSO_APPLY_FILTERS_SINGLE_MT as true.
+				 */
 				if ( SucomUtil::get_const( 'WPSSO_APPLY_FILTERS_SINGLE_MT' ) ) {
 					$parts = $this->apply_filters_single_mt( $parts, $mod );
 				}
@@ -957,24 +960,39 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 */
 		private function apply_filters_single_mt( array &$parts, array &$mod ) {
 
-			$log_prefix = $parts[1].' '.$parts[2].' '.$parts[3];
-			$filter_name = $this->p->lca.'_'.$parts[1].'_'.$parts[2].'_'.$parts[3].'_'.$parts[4];
-			$new_value = apply_filters( $filter_name, $parts[5], $parts[6], $mod );
+			$log_prefix  = $parts[1] . ' ' . $parts[2] . ' ' . $parts[3];
+			$filter_name = $this->p->lca . '_' . $parts[1] . '_' . $parts[2] . '_' . $parts[3] . '_' . $parts[4];
+			error_log( $filter_name );
+			$new_value   = apply_filters( $filter_name, $parts[5], $parts[6], $mod );
 
 			if ( $parts[5] !== $new_value ) {
-				if ( $this->p->debug->enabled )
-					$this->p->debug->log( $log_prefix.' (original) = "'.$parts[5].'"' );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $log_prefix . ' (original) = "' . $parts[5] . '"' );
+				}
+
 				if ( is_array( $new_value ) ) {
+
 					foreach( $new_value as $key => $value ) {
-						$this->p->debug->log( $log_prefix.' (filtered:'.$key.') = "'.$value.'"' );
-						$parts[6] = $parts[3].':'.( is_numeric( $key ) ? $key + 1 : $key );
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $log_prefix . ' (filtered:' . $key . ') = "' . $value . '"' );
+						}
+
+						$parts[6] = $parts[3] . ':' . ( is_numeric( $key ) ? $key + 1 : $key );
 						$parts[5] = $value;
 					}
+
 				} else {
-					$this->p->debug->log( $log_prefix.' (filtered) = "'.$new_value.'"' );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $log_prefix . ' (filtered) = "' . $new_value . '"' );
+					}
+
 					$parts[5] = $new_value;
 				}
 			}
+
 			return $parts;
 		}
 	}
