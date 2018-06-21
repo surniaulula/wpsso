@@ -299,7 +299,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 == Changelog ==
 
-<h3>Release Schedule</h3>
+<h3 class="top">Release Schedule</h3>
 
 <p>New versions of the plugin are released approximately every week (more or less). New features are added, tested, and released incrementally, instead of grouping them together in a major version release. When minor bugs fixes and/or code improvements are applied, new versions are also released. This release schedule keeps the code stable and reliable, at the cost of more frequent updates.</p>
 
