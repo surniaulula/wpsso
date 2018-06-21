@@ -15,7 +15,7 @@
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-<blockquote>
+<blockquote class="top">
 <p><strong>Choose a plugin for today and tomorrow!</strong></p>
 <p><strong>The WPSSO Core plugin is 100% compatible with the new "Gutenberg" block editor in WordPress 5!</strong></p>
 </blockquote>
