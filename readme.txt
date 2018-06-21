@@ -319,7 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.2-dev.2 (2018/06/20)**
+**Version 4.5.2-b.1 (2018/06/21)**
 
 * *New Features*
 	* None
@@ -456,9 +456,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.5.2-dev.2 =
+= 4.5.2-b.1 =
 
-(2018/06/20) Removed color highlighting of the SSO menu icon.
+(2018/06/21) Removed color highlighting of the SSO menu icon.
 
 = 4.5.1 =
 
