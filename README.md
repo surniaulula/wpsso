@@ -8,7 +8,7 @@
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.6</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>facebook, pinterest, twitter, schema, meta tags, open graph, social sharing, seo, nextgen facebook, woocommerce, local business, knowledge graph, twitter cards</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>facebook, pinterest, twitter, schema, meta tags, open graph, rich pins, social sharing, seo, nextgen facebook, local seo, knowledge graph, gutenberg</td></tr>
 </table>
 
 <h2>Description</h2>
@@ -17,7 +17,7 @@
 
 <blockquote>
 <p><strong>Choose a plugin for today and tomorrow!</strong></p>
-<p><strong>WPSSO Core works with the new "Gutenberg" block editor in WordPress 5!</strong></p>
+<p><strong>WPSSO Core is 100% compatible with the new "Gutenberg" block editor in WordPress 5!</strong></p>
 </blockquote>
 
 <p><strong>WPSSO creates <em>complete</em> and <em>accurate</em> meta tags and Schema markup:</strong></p>
