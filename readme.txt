@@ -22,7 +22,7 @@ Easy, complete, accurate, and automatic - provide information about your busines
 
 <blockquote>
 <p><strong>Choose a plugin for today and tomorrow!</strong></p>
-<p><strong>WPSSO Core is 100% compatible with the new "Gutenberg" block editor in WordPress 5!</strong></p>
+<p><strong>The WPSSO Core plugin is 100% compatible with the new "Gutenberg" block editor in WordPress 5!</strong></p>
 </blockquote>
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
