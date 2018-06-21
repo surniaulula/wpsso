@@ -41,7 +41,7 @@ WPSSO Core checks for minimum / maximum image dimensions and aspect ratios, show
 
 WPSSO Core provides a specific image and image dimensions for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook meta tag values.
 
-**Integrate and enhance your favorite SEO plugin:**
+**Integrates and improves your favorite SEO plugin:**
 
 WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and, if you desire, you can continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version even comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.
 
