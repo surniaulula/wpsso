@@ -14,14 +14,14 @@ Tested Up To: 4.9.6
 WC Tested Up To: 3.4.2
 Stable Tag: 4.5.1
 
-Easy, complete, accurate, and automatic - provide information about your business, authors and content to social sites and search engines.
+EASY, COMPLETE, ACCURATE, and AUTOMATIC - provide information about your business, authors and content to social sites and search engines.
 
 == Description ==
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
 <blockquote>
-<p><strong>Choose a plugin for today and tomorrow!</strong></p>
+<p><strong>CHOOSE A PLUGIN FOR TODAY AND TOMORROW!</strong></p>
 <p><strong>WPSSO Core is 100% compatible with the new "Gutenberg" block editor in WordPress 5!</strong></p>
 </blockquote>
 
