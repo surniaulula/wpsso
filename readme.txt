@@ -21,7 +21,7 @@ Easy, complete, accurate, and automatic - provide information about your busines
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
 <blockquote>
-<strong>Supports the new "Gutenberg" block editor for WordPress 5.</strong>
+<strong>WPSSO Core supports the upcoming "Gutenberg" block editor in WordPress 5!</strong>
 </blockquote>
 
 **WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
