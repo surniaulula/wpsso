@@ -25,25 +25,25 @@ Easy, complete, accurate, and automatic - provide information about your busines
 <p><strong>The WPSSO Core plugin is 100% compatible with the new "Gutenberg" block editor in WordPress 5!</strong></p>
 </blockquote>
 
-**WPSSO creates *complete* and *accurate* meta tags and Schema markup:**
+**Creates *complete* and *accurate* meta tags and Schema markup:**
 
 WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards, Weibo and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content.
 
-**WPSSO uses your *existing content* for meta tags and Schema markup:**
+**Uses your *existing content* for meta tags and Schema markup:**
 
 There's no need to manually re-enter descriptions, titles, select images / videos &mdash; WPSSO Core reads all your existing WordPress content automatically, and you can optionally fine-tune and customize just about anything and everything. ;-) WPSSO Core is also language / locale aware, allowing you to customize your site information for different languages!
 
-**WPSSO includes advanced *quality control* features and options:**
+**Includes advanced *quality control* features and options:**
 
 WPSSO Core checks for minimum / maximum image dimensions and aspect ratios, shows notices for missing and required images, verifies your webpages for duplicate meta tags, validates theme header templates for correct HTML markup, warns of any missing PHP modules, and checks 3rd party plugin settings for possible conflicts.
 
-**WPSSO offers special meta tags and features for Pinterest:**
+**Offers special meta tags and features for Pinterest:**
 
 WPSSO Core provides a specific image and image dimensions for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook meta tag values.
 
-**WPSSO can integrate and enhance your favorite SEO plugin:**
+**Integrate and enhance your favorite SEO plugin:**
 
-WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and you can still continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version even comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.
+WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and, if you desire, you can continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version even comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
