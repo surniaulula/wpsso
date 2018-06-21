@@ -200,7 +200,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 == Installation ==
 
-<h3>Install and Uninstall</h3>
+<h3 class="top">Install and Uninstall</h3>
 
 * [Install the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/install-the-plugin/)
 * [Uninstall the WPSSO Core Plugin](https://wpsso.com/docs/plugins/wpsso/installation/uninstall-the-plugin/)
@@ -217,7 +217,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 == Frequently Asked Questions ==
 
-<h3>Frequently Asked Questions</h3>
+<h3 class="top">Frequently Asked Questions</h3>
 
 * [Can I use the Pro version on multiple websites?](https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
 * [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
@@ -248,7 +248,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 == Other Notes ==
 
-<h3>Additional Documentation</h3>
+<h3 class="top">Additional Documentation</h3>
 
 * [About WPSSO Core Pro Integration Modules](https://wpsso.com/docs/plugins/wpsso/notes/modules/)
 	* [Author Gravatar](https://wpsso.com/docs/plugins/wpsso/notes/modules/author-gravatar/)
