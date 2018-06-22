@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 4.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-06-22 09:33-0600\n"
-"PO-Revision-Date: 2018-06-22 09:35-0600\n"
+"PO-Revision-Date: 2018-06-22 11:25-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3742,7 +3742,7 @@ msgstr "<strong>WordPress utilise l'ID du site / blog par défaut pour installer
 
 #: lib/messages.php:1870
 msgid "The following options allow you to customize the list of contact fields shown in the <strong>%1$s</strong> section of <a href=\"%2$s\">the user profile page</a>."
-msgstr "Les options suivantes vous permettent de personnaliser les champs de contacts affichées dans <a href=\"%s\">la page de profil utilisateur</a> sous l'entête <strong>%1$s</strong>."
+msgstr "Les options suivantes vous permettent de personnaliser les champs de contacts affichées dans <a href=\"%2$s\">la page de profil utilisateur</a> sous l'entête <strong>%1$s</strong>."
 
 #: lib/messages.php:1870
 msgid "Contact Info"
