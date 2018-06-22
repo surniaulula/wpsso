@@ -14,7 +14,7 @@
 <h2>Description</h2>
 
 <blockquote class="top">
-<p><strong>Choose a plugin for today and tomorrow!</strong></p>
+<p><strong>Choose a plugin for today AND tomorrow!</strong></p>
 <p><strong>The WPSSO Core plugin is 100% compatible with the new "Gutenberg" block editor in WordPress 5!</strong></p>
 </blockquote>
 
