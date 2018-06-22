@@ -1681,7 +1681,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $idx ) {
 
-						case 'tooltip-custom-cm-field-name':
+						case 'tooltip-custom-cm-field-id':
 
 							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
 
@@ -1689,7 +1689,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-wp-cm-field-name':
+						case 'tooltip-custom-cm-field-label':
+
+							$text = sprintf( __( 'The <em>%1$s</em> column is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) );
+
+							break;
+
+						case 'tooltip-wp-cm-field-id':
 
 							$text = sprintf( __( 'The built-in WordPress <em>%1$s</em> column cannot be modified.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) );
 
@@ -1867,7 +1873,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
 							
-							$text .= sprintf( __( 'The <em>%1$s</em> on the other hand is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) ) . ' ';
+							$text .= sprintf( __( 'The <em>%1$s</em> column on the other hand is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) ) . ' ';
 							
 							$text .= '</p><p><center>';
 							
