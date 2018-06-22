@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			$mod['is_user'] = true;
 
-			return apply_filters( $this->p->cf['lca'].'_get_user_mod', $mod, $mod_id );
+			return apply_filters( $this->p->lca . '_get_user_mod', $mod, $mod_id );
 		}
 
 		public static function get_public_user_ids() {
@@ -142,7 +142,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( false === $posts_per_page ) {
-				$posts_per_page = apply_filters( $this->p->lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
+				$posts_per_page = apply_filters( $this->p->lca . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( false === $paged ) {
@@ -254,8 +254,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function get_column_content( $value, $column_name, $user_id ) {
-			if ( ! empty( $user_id ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// just in case
-				$col_idx = str_replace( $this->p->lca.'_', '', $column_name );
+
+			if ( ! empty( $user_id ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// just in case
+
+				$col_idx = str_replace( $this->p->lca . '_', '', $column_name );
+
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// just in case
 						$value = $this->get_meta_cache_value( $user_id, $col_info['meta_key'] );
@@ -297,7 +300,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			static $do_once = array();
 
-			if ( strpos( $meta_key, '_'.$this->p->lca.'_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
+			if ( strpos( $meta_key, '_' . $this->p->lca . '_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
 				return $value;	// return null
 			}
 
@@ -341,7 +344,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				case 'profile':		// User profile page.
 				case 'user-edit':	// User editing page.
 				case ( strpos( $screen->id, 'profile_page_' ) === 0 ? true : false ):		// Your profile page.
-				case ( strpos( $screen->id, 'users_page_'.$this->p->lca ) === 0 ? true : false ):	// Custom social settings page.
+				case ( strpos( $screen->id, 'users_page_' . $this->p->lca ) === 0 ? true : false ):	// Custom social settings page.
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'screen id can show metabox' );
 					}
@@ -365,7 +368,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			WpssoMeta::$head_meta_tags = array();
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
-			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_user', $add_metabox, $user_id );
+			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_user', $add_metabox, $user_id );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'add metabox for user ID '.$user_id.' is '.
@@ -374,7 +377,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $add_metabox ) {
 
-				do_action( $this->p->lca.'_admin_user_head', $mod, $screen->id );
+				do_action( $this->p->lca . '_admin_user_head', $mod, $screen->id );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'setting head_meta_info static property' );
@@ -401,7 +404,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
-			$action_query = $this->p->lca.'-action';
+			$action_query = $this->p->lca . '-action';
 
 			if ( ! empty( $_GET[$action_query] ) ) {
 
@@ -422,7 +425,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 					switch ( $action_name ) {
 						default:
-							do_action( $this->p->lca.'_load_meta_page_user_'.$action_name, $user_id, $screen->id );
+							do_action( $this->p->lca . '_load_meta_page_user_' . $action_name, $user_id, $screen->id );
 							break;
 					}
 				}
@@ -450,7 +453,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
 			$add_metabox     = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
-			$add_metabox     = apply_filters( $this->p->lca.'_add_metabox_user', $add_metabox, $user_id );
+			$add_metabox     = apply_filters( $this->p->lca . '_add_metabox_user', $add_metabox, $user_id );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'add metabox for user ID '.$user_id.' is '.
@@ -458,7 +461,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( $add_metabox ) {
-				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
+				add_meta_box( $this->p->lca . '_'.$metabox_id, $metabox_title,
 					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
 						$metabox_context, $metabox_prio );
 			}
@@ -482,20 +485,20 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'doing metabox for '.$this->p->lca.'-user' );
+				$this->p->debug->log( 'doing metabox for '.$this->p->lca . '-user' );
 			}
 
 			$metabox_screen  = $this->p->lca . '-user';
 			$metabox_context = 'normal';
 
-			echo "\n" . '<!-- '.$this->p->lca.' user metabox section begin -->' . "\n";
-			echo '<h3 id="'.$this->p->lca.'-metaboxes">'.WpssoAdmin::$pkg[$this->p->lca]['short'].'</h3>' . "\n";
+			echo "\n" . '<!-- '.$this->p->lca . ' user metabox section begin -->' . "\n";
+			echo '<h3 id="' . $this->p->lca . '-metaboxes">' . WpssoAdmin::$pkg[$this->p->lca]['short'] . '</h3>' . "\n";
 			echo '<div id="poststuff">' . "\n";
 
 			do_meta_boxes( $metabox_screen, $metabox_context, $user_obj );
 
 			echo "\n" . '</div><!-- .poststuff -->' . "\n";
-			echo '<!-- '.$this->p->lca.' user metabox section end -->' . "\n";
+			echo '<!-- ' . $this->p->lca . ' user metabox section end -->' . "\n";
 		}
 
 		public function show_metabox_custom_meta( $user_obj ) {
@@ -530,7 +533,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $tabs as $key => $title ) {
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ),
-					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+					apply_filters( $this->p->lca . '_' . $mod['name'] . '_' . $key . '_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 
 			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows );
@@ -554,7 +557,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function add_contact_methods( $fields = array(), $user = null ) {
 
-			$aop = $this->p->check->aop( $this->p->lca, true, $this->p->avail['*']['p_dir'] );
+			$pdir = $this->p->avail['*']['p_dir'];
+			$aop  = $this->p->check->aop( $this->p->lca, true, $pdir );
 
 			/**
 			 * Unset built-in contact fields and/or update their labels.
@@ -563,8 +567,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				foreach ( $this->p->cf['wp']['cm_names'] as $id => $desc ) {
 
-					$cm_enabled_key = 'wp_cm_'.$id.'_enabled';
-					$cm_label_key = 'wp_cm_'.$id.'_label';
+					$cm_enabled_key = 'wp_cm_' . $id . '_enabled';
+					$cm_label_key   = 'wp_cm_' . $id . '_label';
 
 					if ( isset( $this->p->options[$cm_enabled_key] ) ) {
 						if ( ! empty( $this->p->options[$cm_enabled_key] ) ) {
@@ -586,11 +590,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				foreach ( $this->p->cf['opt']['cm_prefix'] as $id => $opt_pre ) {
 
-					$cm_enabled_key = 'plugin_cm_'.$opt_pre.'_enabled';
-					$cm_name_key = 'plugin_cm_'.$opt_pre.'_name';
-					$cm_label_key = 'plugin_cm_'.$opt_pre.'_label';
+					$cm_enabled_key = 'plugin_cm_' . $opt_pre . '_enabled';
+					$cm_name_key    = 'plugin_cm_' . $opt_pre . '_name';
+					$cm_label_key   = 'plugin_cm_' . $opt_pre . '_label';
 
-					if ( isset( $this->p->options[$cm_name_key] ) ) {	// Not all social websites have a contact fields, so check.
+					/**
+					 * Not all social websites have a contact fields, so check.
+					 */
+					if ( isset( $this->p->options[$cm_name_key] ) ) {
 						if ( ! empty( $this->p->options[$cm_enabled_key] ) && ! empty( $this->p->options[$cm_name_key] ) ) {
 							$cm_label_value = SucomUtil::get_key_value( $cm_label_key, $this->p->options );
 							if ( ! empty( $cm_label_value ) ) {	// Just in case.
@@ -607,8 +614,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function fb_contact_label( $label ) {
-			return $label.'<br/><span class="description">'.
-				__( '(not a Facebook Page URL)', 'wpsso' ).'</span>';
+			return $label . '<br/><span class="description">' . 
+				__( '(not a Facebook Page URL)', 'wpsso' ) . '</span>';
 		}
 
 		public function sanitize_submit_cm( $user_id ) {
@@ -619,10 +626,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $this->p->cf['opt']['cm_prefix'] as $id => $opt_pre ) {
 
-				if ( isset( $this->p->options['plugin_cm_'.$opt_pre.'_name'] ) ) {	// Not all social websites have contact fields, so check.
+				/**
+				 * Not all social websites have contact fields, so check.
+				 */
+				if ( isset( $this->p->options['plugin_cm_' . $opt_pre . '_name'] ) ) {
 
-					$cm_enabled_value = $this->p->options['plugin_cm_'.$opt_pre.'_enabled'];
-					$cm_name_value = $this->p->options['plugin_cm_'.$opt_pre.'_name'];
+					$cm_enabled_value = $this->p->options['plugin_cm_' . $opt_pre . '_enabled'];
+					$cm_name_value = $this->p->options['plugin_cm_' . $opt_pre . '_name'];
 
 					/**
 					 * Sanitize values only for those enabled contact methods.
@@ -758,7 +768,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					case 'none':
 						break;
 					case 'fullname':
-						$value = get_the_author_meta( 'first_name', $user_id ).' '.
+						$value = get_the_author_meta( 'first_name', $user_id ) . ' ' . 
 							get_the_author_meta( 'last_name', $user_id );
 						break;
 					case 'description':
@@ -771,36 +781,46 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 				$value = trim( $value );	// just in case
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'user id '.$user_id.' is not a WordPress user' );
+				$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
 			}
 
-			$value = apply_filters( $this->p->cf['lca'].'_get_author_meta', $value, $user_id, $field_id, $is_user );
+			$value = apply_filters( $this->p->lca . '_get_author_meta', $value, $user_id, $field_id, $is_user );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'user id '.$user_id.' '.$field_id.': '.$value );
+				$this->p->debug->log( 'user id ' . $user_id . ' ' . $field_id . ': ' . $value );
 			}
 
 			return $value;
 		}
 
 		public function get_author_website( $user_id, $field_id = 'url' ) {
-			$url = '';
+
 			$is_user = SucomUtil::user_exists( $user_id );
+			$website_url = '';
+
 			if ( $is_user ) {
+
 				switch ( $field_id ) {
+
 					case 'none':
+
 						break;
+
 					case 'index':
-						$url = get_author_posts_url( $user_id );
+
+						$website_url = get_author_posts_url( $user_id );
+
 						break;
+
 					default:
-						$url = get_the_author_meta( $field_id, $user_id );
+
+						$website_url = get_the_author_meta( $field_id, $user_id );
 
 						/**
 						 * If empty or not a url, then fallback to the author index page, if the requested field is 
 						 * the opengraph or link author field
 						 */
-						if ( empty( $url ) || ! preg_match( '/:\/\//', $url ) ) {
+						if ( empty( $website_url ) || ! preg_match( '/:\/\//', $website_url ) ) {
 							if ( $this->p->options['og_author_fallback'] &&
 								( $field_id === $this->p->options['og_author_field'] ||
 									$field_id === $this->p->options['seo_author_field'] ) ) {
@@ -808,20 +828,27 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'fetching the author index page url as fallback' );
 								}
-								$url = get_author_posts_url( $user_id );
+
+								$website_url = get_author_posts_url( $user_id );
 							}
 						}
+
 						break;
 				}
-				$url = trim( $url );	// just in case
+
+				$website_url = trim( $website_url );	// just in case
+
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'user id '.$user_id.' is not a WordPress user' );
+				$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
 			}
-			$url = apply_filters( $this->p->cf['lca'].'_get_author_website', $url, $user_id, $field_id, $is_user );
+
+			$website_url = apply_filters( $this->p->lca . '_get_author_website', $website_url, $user_id, $field_id, $is_user );
+
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'user id '.$user_id.' '.$field_id.': '.$url );
+				$this->p->debug->log( 'user id ' . $user_id . ' ' . $field_id . ': ' . $website_url );
 			}
-			return $url;
+
+			return $website_url;
 		}
 
 		public static function reset_metabox_prefs( $pagehook, $box_ids = array(), $meta_name = '', $context = '', $force = false ) {
@@ -848,7 +875,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $meta_states as $state ) {
 
-				$meta_key = $state.'_'.$pagehook;
+				$meta_key = $state . '_' . $pagehook;
 
 				if ( $force && empty( $box_ids ) ) {
 					delete_user_option( $user_id, $meta_key, false );	// $global = false
@@ -877,21 +904,21 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 							/**
 							 * Don't proceed if the metabox is already first.
 							 */
-							if ( strpos( $user_opts[$context], $pagehook.'_'.$box_id ) !== 0 ) {
+							if ( strpos( $user_opts[$context], $pagehook . '_' . $box_id ) !== 0 ) {
 
 								$boxes = explode( ',', $user_opts[$context] );
 
 								/**
 								 * Remove the box, no matter its position in the array.
 								 */
-								if ( $key = array_search( $pagehook.'_'.$box_id, $boxes ) !== false ) {
+								if ( $key = array_search( $pagehook . '_' . $box_id, $boxes ) !== false ) {
 									unset( $boxes[$key] );
 								}
 
 								/**
 								 * Assume we want to be top-most.
 								 */
-								array_unshift( $boxes, $pagehook.'_'.$box_id );
+								array_unshift( $boxes, $pagehook . '_' . $box_id );
 								$user_opts[$context] = implode( ',', $boxes );
 								$is_changed = true;
 							}
@@ -901,7 +928,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 							/**
 							 * Check to see if the metabox is present for that state.
 							 */
-							$key = array_search( $pagehook.'_'.$box_id, $user_opts );
+							$key = array_search( $pagehook . '_' . $box_id, $user_opts );
 
 							/**
 							 * If we're not targetting, then clear it, otherwise if we want a state, add if it's missing.
@@ -910,7 +937,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 								unset( $user_opts[$key] );
 								$is_changed = true;
 							} elseif ( ! empty( $meta_name ) && false === $key ) {
-								$user_opts[] = $pagehook.'_'.$box_id;
+								$user_opts[] = $pagehook . '_' . $box_id;
 								$is_changed = true;
 							}
 						}
@@ -933,28 +960,41 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$cf = WpssoConfig::get_config( false, true );
 
 			$parent_slug = 'options-general.php';
+
 			foreach ( array_keys( $cf['*']['lib']['setting'] ) as $lib_id ) {
-				$menu_slug = $cf['lca'].'-'.$lib_id;
+
+				$menu_slug = $cf['lca'] . '-' . $lib_id;
+
 				self::delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug );
 			}
 
-			$parent_slug = $cf['lca'].'-'.key( $cf['*']['lib']['submenu'] );
+			$parent_slug = $cf['lca'] . '-' . key( $cf['*']['lib']['submenu'] );
+
 			foreach ( array_keys( $cf['*']['lib']['submenu'] ) as $lib_id ) {
-				$menu_slug = $cf['lca'].'-'.$lib_id;
+
+				$menu_slug = $cf['lca'] . '-' . $lib_id;
+
 				self::delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug );
 			}
 		}
 
 		private static function delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug ) {
+
 			$pagehook = get_plugin_page_hookname( $menu_slug, $parent_slug);
+
 			foreach ( array( 'meta-box-order', 'metaboxhidden', 'closedpostboxes' ) as $state ) {
-				$meta_key = $state.'_'.$pagehook;
+
+				$meta_key = $state . '_' . $pagehook;
+
 				if ( false === $user_id ) {
+
 					foreach ( get_users( array( 'meta_key' => $meta_key ) ) as $user ) {
 						delete_user_option( $user->ID, $meta_key, false );	// $global = false
 						delete_user_option( $user->ID, $meta_key, true );	// $global = true
 					}
+
 				} elseif ( is_numeric( $user_id ) ) {
+
 					delete_user_option( $user_id, $meta_key, false );	// $global = false
 					delete_user_option( $user_id, $meta_key, true );	// $global = true
 				}
@@ -1004,7 +1044,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				self::$pref[$user_id]['prefs_filtered'] = true;	// set before calling filter to prevent recursion
-				self::$pref[$user_id] = apply_filters( $wpsso->cf['lca'].'_get_user_pref', self::$pref[$user_id], $user_id );
+				self::$pref[$user_id] = apply_filters( $wpsso->lca . '_get_user_pref', self::$pref[$user_id], $user_id );
 
 				if ( ! isset( self::$pref[$user_id]['show_opts'] ) ) {
 					self::$pref[$user_id]['show_opts'] = $wpsso->options['plugin_show_opts'];
@@ -1068,7 +1108,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( ! $user_can_edit = current_user_can( 'edit_user', $user_id ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'insufficient privileges to save settings for user ID '.$user_id );
+					$this->p->debug->log( 'insufficient privileges to save settings for user ID ' . $user_id );
 				}
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for user ID %1$s.',

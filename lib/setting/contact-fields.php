@@ -26,10 +26,12 @@ if ( ! class_exists( 'WpssoSettingContactfields' ) && class_exists( 'WpssoSubmen
 			$this->menu_ext = $ext;
 		}
 
-		// called by the extended WpssoAdmin class
+		/**
+		 * Called by the extended WpssoAdmin class.
+		 */
 		protected function add_meta_boxes() {
 			add_meta_box( $this->pagehook.'_contact_fields',
-				_x( 'Contact Field Names and Labels', 'metabox title', 'wpsso' ),
+				_x( 'User Profile Contact Fields', 'metabox title', 'wpsso' ),
 					array( $this, 'show_metabox_contact_fields' ), $this->pagehook, 'normal' );
 		}
 	}

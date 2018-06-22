@@ -459,8 +459,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td></td>'.
 			$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), 'checkbox left', 'custom-cm-show-checkbox' ).
-			$form->get_th_html( _x( 'Contact Field Name', 'column title', 'wpsso' ), 'medium left', 'custom-cm-field-name' ).
-			$form->get_th_html( _x( 'Profile Contact Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-contact-label', $atts_locale );
+			$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ), 'medium left', 'custom-cm-field-name' ).
+			$form->get_th_html( _x( 'Contact Field Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-contact-label', $atts_locale );
 
 			$sorted_opt_pre = $this->p->cf['opt']['cm_prefix'];
 
@@ -528,8 +528,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td></td>'.
 			$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), 'checkbox left', 'custom-cm-show-checkbox' ).
-			$form->get_th_html( _x( 'Contact Field Name', 'column title', 'wpsso' ), 'medium left', 'custom-cm-field-name' ).
-			$form->get_th_html( _x( 'Profile Contact Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-contact-label', $atts_locale );
+			$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ), 'medium left', 'custom-cm-field-name' ).
+			$form->get_th_html( _x( 'Contact Field Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-contact-label', $atts_locale );
 
 			$sorted_cm_names = $this->p->cf['wp']['cm_names'];
 

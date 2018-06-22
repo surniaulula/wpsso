@@ -73,15 +73,21 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		private static function do_multisite( $sitewide, $method, $args = array() ) {
+
 			if ( is_multisite() && $sitewide ) {
+
 				global $wpdb;
-				$dbquery = 'SELECT blog_id FROM ' . $wpdb->blogs;
-				$ids = $wpdb->get_col( $dbquery );
-				foreach ( $ids as $id ) {
-					switch_to_blog( $id );
+
+				$db_query = 'SELECT blog_id FROM ' . $wpdb->blogs;
+				$blog_ids = $wpdb->get_col( $db_query );
+
+				foreach ( $blog_ids as $blog_id ) {
+					switch_to_blog( $blog_id );
 					call_user_func_array( $method, array( $args ) );
 				}
+
 				restore_current_blog();
+
 			} else {
 				call_user_func_array( $method, array( $args ) );
 			}
@@ -149,8 +155,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				foreach ( get_users() as $user ) {
 					if ( ! empty( $user-> ID ) ) {	// Just in case.
 
-						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, false );	// $global = false
-						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, true );	// $global = true
+						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, false );	// $global is false.
+						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, true );	// $global is true.
 	
 						delete_user_meta( $user->ID, WPSSO_META_NAME );
 						delete_user_meta( $user->ID, WPSSO_PREF_NAME );
@@ -174,12 +180,15 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 * Delete All Transients
 			 */
 			global $wpdb;
-			$prefix = '_transient_';	// Clear all transients, even if no timeout value.
-			$dbquery = 'SELECT option_name FROM ' . $wpdb->options . ' WHERE option_name LIKE \'' . $prefix . 'wpsso_%\';';
-			$expired = $wpdb->get_col( $dbquery ); 
+
+			$prefix   = '_transient_';	// Clear all transients, even if no timeout value.
+			$db_query = 'SELECT option_name FROM ' . $wpdb->options . ' WHERE option_name LIKE \'' . $prefix . 'wpsso_%\';';
+			$expired  = $wpdb->get_col( $db_query ); 
 
 			foreach( $expired as $option_name ) { 
+
 				$transient_name = str_replace( $prefix, '', $option_name );
+
 				if ( ! empty( $transient_name ) ) {
 					delete_transient( $transient_name );
 				}
@@ -188,14 +197,16 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		private static function check_required( $cf ) {
 
-			$plugin_name = $cf['plugin']['wpsso']['name'];
-			$plugin_short = $cf['plugin']['wpsso']['short'];
+			$plugin_name    = $cf['plugin']['wpsso']['name'];
+			$plugin_short   = $cf['plugin']['wpsso']['short'];
 			$plugin_version = $cf['plugin']['wpsso']['version'];
 
 			foreach ( array( 'wp', 'php' ) as $key ) {
+
 				if ( empty( $cf[$key]['min_version'] ) ) {
 					return;
 				}
+
 				switch ( $key ) {
 					case 'wp':
 						global $wp_version;
@@ -206,7 +217,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 						break;
 				}
 
-				$app_label = $cf[$key]['label'];
+				$app_label   = $cf[$key]['label'];
 				$min_version = $cf[$key]['min_version'];
 				$version_url = $cf[$key]['version_url'];
 

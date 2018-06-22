@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					array( $this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
 
 			add_meta_box( $this->pagehook.'_contact_fields',
-				_x( 'Contact Field Names and Labels', 'metabox title', 'wpsso' ),
+				_x( 'Contact Field IDs and Labels', 'metabox title', 'wpsso' ),
 					array( $this, 'show_metabox_contact_fields' ), $this->pagehook, 'normal' );
 
 			add_meta_box( $this->pagehook.'_taglist',

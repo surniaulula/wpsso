@@ -20,10 +20,10 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 				$this->p->debug->mark();
 			}
 
-			$this->menu_id = $id;
+			$this->menu_id   = $id;
 			$this->menu_name = $name;
-			$this->menu_lib = $lib;
-			$this->menu_ext = $ext;
+			$this->menu_lib  = $lib;
+			$this->menu_ext  = $ext;
 		}
 
 		protected function add_plugin_hooks() {
@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 		 */
 		protected function add_meta_boxes() {
 			add_meta_box( $this->pagehook.'_image_dimensions',
-				_x( 'Image Dimensions', 'metabox title', 'wpsso' ),
+				_x( 'Social and Search Image Sizes / Dimensions', 'metabox title', 'wpsso' ),
 					array( $this, 'show_metabox_image_dimensions' ), $this->pagehook, 'normal' );
 		}
 

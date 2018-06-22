@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.5.2-b.1',		// Plugin version.
+					'version' => '4.5.2-b.2',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -61,9 +61,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'your-sso' => 'Your SSO',
 						),
 						'setting' => array(
-							'image-dimensions' => 'Social and Search Image Dimensions',
-							'social-accounts' => 'WebSite Social Pages and Accounts',
-							'contact-fields' => 'User Profile Contact Methods',
+							'image-dimensions' => 'SSO Image Sizes',
+							'contact-fields' => 'SSO Contact Fields',
+							'social-accounts' => 'SSO WebSite Pages',
 						),
 						'submenu' => array(	// Note that submenu elements must have unique keys.
 							'essential' => 'Essential',
@@ -1041,7 +1041,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_yourls_password' => '',
 					'plugin_yourls_token' => '',
 					/**
-					 * Advanced settings - Contact Field Names and Labels.
+					 * Advanced settings - Contact Field IDs and Labels.
 					 */
 					'plugin_cm_fb_name' => 'facebook',
 					'plugin_cm_fb_label' => 'Facebook User URL',

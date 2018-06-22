@@ -129,10 +129,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function load_network_menu_objects() {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
-			// some network menu pages extend the site menu pages
+
+			/**
+			 * Some network menu pages extend the site menu pages.
+			 */
 			$this->load_menu_objects( array( 'submenu', 'sitesubmenu' ) );
 		}
 
@@ -145,21 +149,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->set_plugin_pkg_info();
 
 			if ( empty( $menu_libs ) ) {
-				// 'setting' array element must follow 'submenu' to extend submenu/advanced.php
+
+				/**
+				 * Note that 'setting' MUST follow 'submenu' to extend submenu/advanced.php.
+				 */
 				$menu_libs = array( 'submenu', 'setting', 'profile' );
 			}
 
 			foreach ( $menu_libs as $menu_lib ) {	// profile, setting, submenu, or sitesubmenu
+
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+
 					if ( ! isset( $info['lib'][$menu_lib] ) ) {	// not all add-ons have submenus
 						continue;
 					}
+
 					foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
+
 						$classname = apply_filters( $ext . '_load_lib', false, $menu_lib . '/' . $menu_id );
+
 						if ( is_string( $classname ) && class_exists( $classname ) ) {
+
 							if ( ! empty( $info['text_domain'] ) ) {
 								$menu_name = _x( $menu_name, 'lib file description', $info['text_domain'] );
 							}
+
 							$this->submenu[$menu_id] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib, $ext );
 						}
 					}
@@ -220,23 +234,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$libs = $this->p->cf['*']['lib'][$menu_lib];
-			$this->menu_id = key( $libs );
+
+			$this->menu_id   = key( $libs );
 			$this->menu_name = $libs[$this->menu_id];
-			$this->menu_lib = $menu_lib;
-			$this->menu_ext = $this->p->lca;
+			$this->menu_lib  = $menu_lib;
+			$this->menu_ext  = $this->p->lca;
 
 			if ( isset( $this->submenu[$this->menu_id] ) ) {
 				$menu_slug = $this->p->lca . '-' . $this->menu_id;
 				$this->submenu[$this->menu_id]->add_menu_page( $menu_slug );
 			}
 
-			$sorted_menu = array();
+			$sorted_menu   = array();
 			$unsorted_menu = array();
 
 			$first_top_id = false;
-			$last_top_id = false;
+			$last_top_id  = false;
 			$first_ext_id = false;
-			$last_ext_id = false;
+			$last_ext_id  = false;
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
@@ -246,20 +261,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				foreach ( $info['lib'][$menu_lib] as $menu_id => $menu_name ) {
 
-					$ksort_key = $menu_name . '-' . $menu_id;
+					$ksort_key   = $menu_name . '-' . $menu_id;
 					$parent_slug = $this->p->lca . '-' . $this->menu_id;
 
 					if ( $ext === $this->p->lca ) {
+
 						$unsorted_menu[] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+
 						if ( false === $first_top_id ) {
 							$first_top_id = $menu_id;
 						}
+
 						$last_top_id = $menu_id;
+
 					} else {
+
 						$sorted_menu[$ksort_key] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+
 						if ( false === $first_ext_id ) {
 							$first_ext_id = $menu_id;
 						}
+
 						$last_ext_id = $menu_id;
 					}
 				}
@@ -301,7 +323,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( array( 'profile', 'setting' ) as $menu_lib ) {
 
-				// match WordPress behavior (users page for admins, profile page for everyone else)
+				/**
+				 * Match WordPress behavior (users page for admins, profile page for everyone else).
+				 */
 				if ( $menu_lib === 'profile' && current_user_can( 'list_users' ) ) {
 					$parent_slug = $this->p->cf['wp']['admin']['users']['page'];
 				} else {

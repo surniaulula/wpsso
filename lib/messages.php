@@ -958,7 +958,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_check_img_dims':
 
 							$settings_page_link = $this->p->util->get_admin_url( 'image-dimensions',
-								_x( 'Social and Search Image Dimensions', 'lib file description', 'wpsso' ) );
+								_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
 
 							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'wpsso' ), $settings_page_link ).' ';
 							
@@ -1307,7 +1307,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-fb_author_name':
 
-							$text = sprintf( __( '%1$s uses the Facebook contact field value in the author\'s WordPress profile for %2$s Open Graph meta tags. This allows Facebook to credit an author on shares, and link their Facebook page URL.', 'wpsso' ), $info['short'], '<code>article:author</code>' ).' '.sprintf( __( 'If an author does not have a Facebook page URL, %1$s can fallback and use the <em>%2$s</em> instead (the recommended value is "Display Name").', 'wpsso' ), $info['short'], _x( 'Author Name Format', 'option label', 'wpsso' ) );
+							$text = sprintf( __( '%1$s uses the Facebook contact field value from the author\'s WordPress profile for %2$s Open Graph meta tags. This allows Facebook to credit an author on shares and link their Facebook page URL.', 'wpsso' ), $info['short'], '<code>article:author</code>' ) . ' ';
+							
+							$text .= sprintf( __( 'If an author does not have a Facebook page URL in their WordPress profile, %1$s can fallback and use the <em>%2$s</em> instead (the recommended value is "Display Name").', 'wpsso' ), $info['short'], _x( 'Author Name Format', 'option label', 'wpsso' ) );
 
 							break;
 
@@ -1345,7 +1347,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-seo_author_field':
 
-							$text = sprintf( __( '%s can include an <em>author</em> link URL in the head section for Google.', 'wpsso' ), $info['short'] ).' '.__( 'Select the user profile contact field to use for the <em>author</em> link value.', 'wpsso' );
+							$text = sprintf( __( '%1$s can include an %2$s link URL in the head section for Google.', 'wpsso' ), $info['short'], '<code>author</code>' ) . ' ';
+
+							$text = sprintf( __( 'Select the contact field to use from the author\'s WordPress profile page for the %s link value.', 'wpsso' ), '<code>author</code>' );
+
 							break;
 
 						default:
@@ -1372,9 +1377,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-schema_knowledge_graph':
 
 							$settings_page_link = $this->p->util->get_admin_url( 'social-accounts',
-								_x( 'WebSite Social Pages and Accounts', 'lib file description', 'wpsso' ) );
+								_x( 'SSO WebSite Pages', 'lib file description', 'wpsso' ) );
 
-							$text = __( 'Include WebSite, Organization and/or Person Schema markup in the front page for Google\'s <em>Knowledge Graph</em>.', 'wpsso' ).'<br/><br/>'.__( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' '.sprintf( __( 'Developers can hook the \'%s\' filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca.'_json_ld_search_url' ).'<br/><br/>'.sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $settings_page_link ).'<br/><br/>'.__( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
+							$text = __( 'Include WebSite, Organization and/or Person Schema markup in the front page for Google\'s <em>Knowledge Graph</em>.', 'wpsso' ).'<br/><br/>';
+							
+							$text .= __( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'Developers can hook the \'%s\' filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca.'_json_ld_search_url' ).'<br/><br/>';
+							
+							$text .= sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $settings_page_link ).'<br/><br/>';
+							
+							$text .= __( 'The Person markup includes all contact method URLs entered in the user\'s WordPress profile page.', 'wpsso' );
 
 							break;
 
@@ -1670,15 +1683,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-custom-cm-field-name':
 
-							$text = '<strong>' . __( 'You should not modify the contact field names unless you have a specific reason to do so.', 'wpsso' ) . '</strong>';
+							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
 
-							$text .= __( 'As an example, to match the contact field name of a theme or other plugin, you might change "gplus" to "googleplus".', 'wpsso' );
+							$text .= sprintf( __( 'For example, to match the <em>%1$s</em> of a theme or other plugin, you might change "gplus" to "googleplus".', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) );
 
 							break;
 
 						case 'tooltip-wp-cm-field-name':
 
-							$text = __( 'The built-in WordPress contact field names cannot be modified.', 'wpsso' );
+							$text = sprintf( __( 'The built-in WordPress <em>%1$s</em> column cannot be modified.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) );
 
 							break;
 
@@ -1844,7 +1857,27 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-cm':
 
-							$text = '<blockquote class="top-info"><p>'.sprintf( __( 'The following options allow you to customize the contact fields shown in <a href="%s">the user profile page</a> in the <strong>Contact Info</strong> section.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).' '.sprintf( __( '%s uses the Facebook, Google+, and Twitter contact values for Facebook / Open Graph, Google / Schema, and Twitter Card meta tags.', 'wpsso' ), $info['short'] ).'</p><p><strong>'.sprintf( __( 'You should not modify the <em>%s</em> unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field Name', 'column title', 'wpsso' ) ).'</strong> '.sprintf( __( 'The <em>%s</em> on the other hand is for display purposes only and it can be changed as you wish.', 'wpsso' ), _x( 'Profile Contact Label', 'column title', 'wpsso' ) ).' ;-)</p><p>'.sprintf( __( 'Enabled contact methods are included on user profile editing pages automatically. Your theme is responsible for using their values in its templates (see the WordPress <a href="%s">get_the_author_meta()</a> documentation for examples).', 'wpsso' ), 'https://codex.wordpress.org/Function_Reference/get_the_author_meta' ).'</p><p><center><strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>'.sprintf( __( 'Enter your personal contact information on <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) ).'</center></p></blockquote>';
+							$text = '<blockquote class="top-info">';
+							
+							$text .= '<p>';
+							
+							$text .= sprintf( __( 'The following options allow you to customize the list of contact fields shown in the <strong>%1$s</strong> section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), __( 'Contact Info' ), get_admin_url( null, 'profile.php' ) ) . ' ';
+							
+							$text .= sprintf( __( '%1$s uses the Facebook, Google+, and Twitter contact field values in its meta tags and Schema markup.', 'wpsso' ), $info['short'] ) . ' ';
+							
+							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
+							
+							$text .= sprintf( __( 'The <em>%1$s</em> on the other hand is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) ) . ' ';
+							
+							$text .= '</p><p><center>';
+							
+							$text .= '<strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>';
+							
+							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) );
+
+							$text .= '</center></p>';
+
+							$text .= '</blockquote>';
 
 							break;
 
@@ -1857,20 +1890,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'If your theme or another plugin already creates one or more of these meta tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ).' ';
 
 							$text .= sprintf( __( 'For example, the "%1$s" SEO meta tag is automatically unchecked if a <em>known</em> SEO plugin is detected, and the "%2$s" meta tag is unchecked by default (themes often include this meta tag in their header template).', 'wpsso' ), 'meta name description', 'link rel canonical' );
-
-							$text .= '</p></blockquote>';
-
-							break;
-
-						case 'info-social-accounts':
-
-							$settings_page_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google',
-								_x( 'Google / Schema', 'metabox tab', 'wpsso' ) );
-
-							$text = '<blockquote class="top-info"><p>';
-
-							$text .= sprintf( __( 'The website / business social account values are used for SEO, Schema, Open Graph, and other social meta tags &ndash; including publisher (Organization) <a href="%s">social markup for Google Search</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/social-profile-links' ).' ';
-							$text .= sprintf( __( 'See the %s settings tab to define an organization logo for Google Search results and enable / disable the addition of publisher (Organization) and/or author (Person) JSON-LD markup.', 'wpsso' ), $settings_page_link );
 
 							$text .= '</p></blockquote>';
 
@@ -2025,7 +2044,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$do_once_upscale_notice = true;
 
 							$img_dim_page_link = $this->p->util->get_admin_url( 'image-dimensions', 
-								_x( 'Social and Search Image Dimensions', 'lib file description', 'wpsso' ) );
+								_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
 
 							$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 								_x( 'Enforce Image Dimensions Check', 'option label', 'wpsso' ) );
