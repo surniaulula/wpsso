@@ -325,12 +325,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.2-b.1 (2018/06/21)**
+**Version 4.5.2-b.2 (2018/06/22)**
 
 * *New Features*
 	* None
 * *Improvements*
 	* Removed color highlighting of the SSO menu icon.
+	* Renamed the WordPress Settings submenu pages:
+		* "Social and Search Image Dimensions" to "SSO Image Sizes".
+		* "User Profile Contact Methods" to "SSO Contact Fields".
+		* "WebSite Social Pages and Accounts" to "SSO WebSite Pages".
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -462,9 +466,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.5.2-b.1 =
+= 4.5.2-b.2 =
 
-(2018/06/21) Removed color highlighting of the SSO menu icon. Added a new 'wpsso_get_robots_content' filter.
+(2018/06/22) Removed color highlighting of the SSO menu icon. Renamed the WordPress Settings submenu pages. Added a new 'wpsso_get_robots_content' filter.
 
 = 4.5.1 =
 
