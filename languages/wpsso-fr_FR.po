@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 4.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-06-23 09:00-0600\n"
-"PO-Revision-Date: 2018-06-23 09:10-0600\n"
+"PO-Revision-Date: 2018-06-23 14:07-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3638,7 +3638,7 @@ msgstr "Ajouter un attribut \"nopin\" aux images de la bibliothèque de médias 
 
 #: lib/messages.php:1686 lib/messages.php:1874
 msgid "You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so."
-msgstr "Vous ne devriez pas modifier la colonne <em>%s</em>, a moins d'avoir une <em>très</em> bonne raison de le faire."
+msgstr "Vous ne devriez pas modifier la colonne <em>%1$s</em>, a moins d'avoir une <em>très</em> bonne raison de le faire."
 
 #: lib/messages.php:1688
 msgid "For example, to match the <em>%1$s</em> of a theme or other plugin, you might change \"gplus\" to \"googleplus\"."
@@ -3755,7 +3755,7 @@ msgstr "%1$s utilise les valeurs de contact Facebook, Google+ et Twitter pour le
 
 #: lib/messages.php:1876
 msgid "The <em>%1$s</em> column on the other hand is for display purposes only and can be changed as you wish."
-msgstr "En revanche, la colonne <em>%s</em> est utilisé uniquement à des fins d'affichage et peut être modifié à votre guise."
+msgstr "En revanche, la colonne <em>%1$s</em> est utilisé uniquement à des fins d'affichage et peut être modifié à votre guise."
 
 #: lib/messages.php:1880
 msgid "DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY."
