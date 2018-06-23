@@ -678,7 +678,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$singles = array();
-			foreach ( $mt_array as $d_name => $d_val ) {	// first dimension array (associative)
+
+			foreach ( $mt_array as $d_name => $d_val ) {	// First dimension array (associative).
 
 				if ( is_array( $d_val ) ) {
 
@@ -689,11 +690,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						continue;
 
-					} elseif ( empty( $d_val ) ) {	// Allow hooks to modify the value.
+					/**
+					 * Empty array - allow single mt filters a chance to modify the value.
+					 */
+					} elseif ( empty( $d_val ) ) {
 
-						$singles[] = $this->get_single_mt( $tag, $type, $d_name, null, '', $mod );
+						$singles[] = $this->get_single_mt( $tag, $type, $d_name, '', '', $mod );
 
-					} else foreach ( $d_val as $dd_num => $dd_val ) {	// Second dimension array.
+					/**
+					 * Second dimension array.
+					 */
+					} else foreach ( $d_val as $dd_num => $dd_val ) {
 
 						if ( SucomUtil::is_assoc( $dd_val ) ) {
 
@@ -720,7 +727,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								}
 							}
 
-							foreach ( $dd_val as $ddd_name => $ddd_val ) {	// Third dimension array (associative).
+							/**
+							 * Third dimension array (associative).
+							 */
+							foreach ( $dd_val as $ddd_name => $ddd_val ) {
 
 								if ( ! $use_video_image && strpos( $ddd_name, 'og:image' ) === 0 ) {
 									continue;
@@ -729,7 +739,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								if ( is_array( $ddd_val ) ) {
 									if ( empty( $ddd_val ) ) {
 										$singles[] = $this->get_single_mt( $tag,
-											$type, $ddd_name, null, '', $mod );
+											$type, $ddd_name, '', '', $mod );
 									} else foreach ( $ddd_val as $dddd_num => $dddd_val ) {	// Fourth dimension array.
 										$singles[] = $this->get_single_mt( $tag,
 											$type, $ddd_name, $dddd_val, $d_name.':'.
@@ -741,12 +751,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 											( $dd_num + 1 ), $mod );
 								}
 							}
+
 						} else {
 							$singles[] = $this->get_single_mt( $tag,
 								$type, $d_name, $dd_val, $d_name.':'.
 									( $dd_num + 1 ), $mod );
 						}
 					}
+
 				} else {
 					$singles[] = $this->get_single_mt( $tag,
 						$type, $d_name, $d_val, '', $mod );
@@ -768,11 +780,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		public function get_single_mt( $tag, $type, $name, $value, $cmt, array &$mod ) {
 
 			/**
-			 * Check for known exceptions for the 'property' $type.
+			 * Check for known exceptions for the "property" $type.
 			 */
 			if ( $tag === 'meta' ) {
+
 				if ( $type === 'property' ) {
-					// double-check the name to make sure its an open graph meta tag
+
+					/**
+					 * Double-check the name to make sure its an open graph meta tag.
+					 */
 					switch ( $name ) {
 						// these names are not open graph meta tag names
 						case ( strpos( $name, 'twitter:' ) === 0 ? true : false ):
@@ -781,24 +797,30 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$type = 'name';
 							break;
 					}
+
 				} elseif ( $type === 'itemprop' ) {
-					// use filter_var() instead of strpos() to exclude (description) strings that contain urls
-					if ( $tag !== 'link' && filter_var( $value, FILTER_VALIDATE_URL ) !== false ) {	// itemprop urls must be links
+
+					/**
+					 * If an "itemprop" contains a url, then make sure it's a "link".
+					 */
+					if ( $tag !== 'link' && filter_var( $value, FILTER_VALIDATE_URL ) !== false ) {
 						$tag = 'link';
 					}
 				}
 			}
 
-			// applies to both "link rel href" and "link itemprop href"
+			/**
+			 * Sanitation check for both "link rel href" and "link itemprop href".
+			 * All other meta tags use a "content" attribute name.
+			 */
 			if ( $tag === 'link' ) {
 				$attr = 'href';
-			// everything else uses the 'content' attribute name
 			} else {
 				$attr = 'content';
 			}
 
 			$ret = array();
-			$log_prefix = $tag.' '.$type.' '.$name;
+			$log_prefix = $tag . ' ' . $type . ' ' . $name;
 
 			static $charset = null;
 
@@ -808,12 +830,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( is_array( $value ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $log_prefix.' value is an array (skipped)' );
+					$this->p->debug->log( $log_prefix . ' value is an array (skipped)' );
 				}
 				return $ret;
 			} elseif ( is_object( $value ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $log_prefix.' value is an object (skipped)' );
+					$this->p->debug->log( $log_prefix . ' value is an object (skipped)' );
 				}
 				return $ret;
 			}
@@ -827,7 +849,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:video:secure_url':
 					if ( strpos( $value, 'https:' ) !== 0 ) {	// Just in case.
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $log_prefix.' is not https (skipped)' );
+							$this->p->debug->log( $log_prefix . ' skipped: value not https' );
 						}
 						return $ret;
 					}
@@ -836,7 +858,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$ret[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
 
-			// $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
+			/**
+			 * $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
+			 */
 			foreach ( $ret as $num => $parts ) {
 
 				if ( ! isset( $parts[6] ) ) {
@@ -855,99 +879,102 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$parts = $this->apply_filters_single_mt( $parts, $mod );
 				}
 
-				$log_prefix = $parts[1].' '.$parts[2].' '.$parts[3];
+				$log_prefix = $parts[1] . ' ' . $parts[2] . ' ' . $parts[3];
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $log_prefix.' = "'.$parts[5].'"' );
+					$this->p->debug->log( $log_prefix . ' = "' . $parts[5] . '"' );
 				}
 
-				if ( $parts[5] === '' || $parts[5] === null ) {	// allow for 0
+				if ( $parts[5] === '' || $parts[5] === null ) {	// Allow for 0.
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_prefix.' value is empty (skipped)' );
+						$this->p->debug->log( $log_prefix . ' skipped: value is empty' );
 					}
+					continue;
 				} elseif ( $parts[5] === WPSSO_UNDEF_INT || $parts[5] === (string) WPSSO_UNDEF_INT ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_prefix.' value is '.WPSSO_UNDEF_INT.' (skipped)' );
+						$this->p->debug->log( $log_prefix . ' skipped: value is ' . WPSSO_UNDEF_INT );
 					}
-				} else {
-
-					/**
-					 * Encode and escape all values, regardless if the head tag is enabled or not.
-					 * If the head tag is enabled, HTML will be created and saved in $parts[0].
-					 */
-					if ( $parts[2] === 'itemprop' && strpos( $parts[3], '.' ) !== 0 ) {
-						$match_name = preg_replace( '/^.*\./', '', $parts[3] );
-					} else {
-						$match_name = $parts[3];
-					}
-
-					// boolean values are converted to their string equivalent
-					if ( is_bool( $parts[5] ) ) {
-						$parts[5] = $parts[5] ? 'true' : 'false';
-					}
-
-					switch ( $match_name ) {
-						// description values that may include emoji
-						case 'og:title':
-						case 'og:description':
-						case 'twitter:title':
-						case 'twitter:description':
-						case 'description':
-						case 'name':
-							$parts[5] = SucomUtil::encode_html_emoji( $parts[5] );
-							break;
-						// url values that must be url encoded
-						case 'og:url':
-						case 'og:secure_url':
-						case 'og:image':
-						case 'og:image:url':
-						case 'og:image:secure_url':
-						case 'og:video':
-						case 'og:video:url':
-						case 'og:video:secure_url':
-						case 'og:video:embed_url':
-						case 'place:business:menu_url':
-						case 'place:business:order_url':
-						case 'twitter:image':
-						case 'twitter:player':
-						case 'canonical':
-						case 'shortlink':
-						case 'image':
-						case 'hasmenu':	// place restaurant menu url
-						case 'url':
-							$parts[5] = SucomUtil::esc_url_encode( $parts[5] );
-							if ( $parts[2] === 'itemprop' ) {	// itemprop urls must be links
-								$parts[1] = 'link';
-								$parts[4] = 'href';
-							}
-							break;
-						// allow for mobile app / non-standard protocols
-						case 'al:android:url':
-						case 'al:ios:url':
-						case 'al:web:url':
-						case 'twitter:app:url:iphone':
-						case 'twitter:app:url:ipad':
-						case 'twitter:app:url:googleplay':
-							$parts[5] = SucomUtil::esc_url_encode( $parts[5], false );	// $wp_esc_url = false
-							break;
-						// encode html entities for everything else
-						default:
-							$parts[5] = htmlentities( $parts[5], ENT_QUOTES, $charset, false );	// double_encode = false
-							break;
-					}
-
-					// convert mixed case itemprop names (for example) to lower case
-					$opt_name = strtolower( 'add_'.$parts[1].'_'.$parts[2].'_'.$parts[3] );
-
-					if ( ! empty( $this->p->options[$opt_name] ) ) {
-						$parts[0] = ( empty( $parts[6] ) ? '' : '<!-- '.$parts[6].' -->' ).
-							'<'.$parts[1].' '.$parts[2].'="'.$match_name.'" '.$parts[4].'="'.$parts[5].'"/>' . "\n";
-					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_prefix.' is disabled (skipped)' );
-					}
-
-					$ret[$num] = $parts;	// save the HTML and encoded value
+					continue;
 				}
+
+				/**
+				 * Encode and escape all values, regardless if the head tag is enabled or not.
+				 * If the head tag is enabled, HTML will be created and saved in $parts[0].
+				 */
+				if ( $parts[2] === 'itemprop' && strpos( $parts[3], '.' ) !== 0 ) {
+					$match_name = preg_replace( '/^.*\./', '', $parts[3] );
+				} else {
+					$match_name = $parts[3];
+				}
+
+				// boolean values are converted to their string equivalent
+				if ( is_bool( $parts[5] ) ) {
+					$parts[5] = $parts[5] ? 'true' : 'false';
+				}
+
+				switch ( $match_name ) {
+					// description values that may include emoji
+					case 'og:title':
+					case 'og:description':
+					case 'twitter:title':
+					case 'twitter:description':
+					case 'description':
+					case 'name':
+						$parts[5] = SucomUtil::encode_html_emoji( $parts[5] );
+						break;
+					// url values that must be url encoded
+					case 'og:url':
+					case 'og:secure_url':
+					case 'og:image':
+					case 'og:image:url':
+					case 'og:image:secure_url':
+					case 'og:video':
+					case 'og:video:url':
+					case 'og:video:secure_url':
+					case 'og:video:embed_url':
+					case 'place:business:menu_url':
+					case 'place:business:order_url':
+					case 'twitter:image':
+					case 'twitter:player':
+					case 'canonical':
+					case 'shortlink':
+					case 'image':
+					case 'hasmenu':	// place restaurant menu url
+					case 'url':
+						$parts[5] = SucomUtil::esc_url_encode( $parts[5] );
+						if ( $parts[2] === 'itemprop' ) {	// itemprop urls must be links
+							$parts[1] = 'link';
+							$parts[4] = 'href';
+						}
+						break;
+					// allow for mobile app / non-standard protocols
+					case 'al:android:url':
+					case 'al:ios:url':
+					case 'al:web:url':
+					case 'twitter:app:url:iphone':
+					case 'twitter:app:url:ipad':
+					case 'twitter:app:url:googleplay':
+						$parts[5] = SucomUtil::esc_url_encode( $parts[5], false );	// $wp_esc_url = false
+						break;
+					// encode html entities for everything else
+					default:
+						$parts[5] = htmlentities( $parts[5], ENT_QUOTES, $charset, false );	// double_encode = false
+						break;
+				}
+
+				// convert mixed case itemprop names (for example) to lower case
+				$opt_name = strtolower( 'add_' . $parts[1] . '_' . $parts[2] . '_' . $parts[3] );
+
+				if ( ! empty( $this->p->options[$opt_name] ) ) {
+
+					$parts[0] = ( empty( $parts[6] ) ? '' : '<!-- ' . $parts[6] . ' -->' ) . 
+						'<' . $parts[1] . ' ' . $parts[2] . '="' . $match_name . '" ' . $parts[4] . '="' . $parts[5] . '"/>' . "\n";
+
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $log_prefix . ' skipped: option is disabled' );
+				}
+
+				$ret[$num] = $parts;	// save the HTML and encoded value
 			}
 
 			return $ret;
@@ -962,7 +989,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$log_prefix  = $parts[1] . ' ' . $parts[2] . ' ' . $parts[3];
 			$filter_name = $this->p->lca . '_' . $parts[1] . '_' . $parts[2] . '_' . $parts[3] . '_' . $parts[4];
-			error_log( $filter_name );
 			$new_value   = apply_filters( $filter_name, $parts[5], $parts[6], $mod );
 
 			if ( $parts[5] !== $new_value ) {
