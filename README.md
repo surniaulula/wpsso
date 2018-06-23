@@ -14,7 +14,7 @@
 <h2>Description</h2>
 
 <blockquote class="top">
-<p><strong>Choose a plugin for today AND tomorrow! The WPSSO Core plugin is 100% compatible with the upcoming <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in WordPress 5!</strong></p>
+<p><strong>Choose a plugin for today AND tomorrow! The WPSSO Core plugin is 100% compatible with the upcoming <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in WordPress 5 (expected in August 2018)!</strong></p>
 </blockquote>
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
@@ -47,7 +47,7 @@
 
 <p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "Yoast on steroids! As an SEO marketer, I love using Yoast for my basic on-page SEO. But Yoast only allows you to enter basic Open Graph social settings. This plugin gives you SO many more options on completing the Open Graph for Facebook, Twitter cards, Pinterest etc. If you use WordPress, I totally recommend using this SEO plugin to help with better rankings in the SERPS!" - <a href="https://wordpress.org/support/topic/yoast-on-steroids/">gregmontag</a></p>
 
-<h3>WPSSO Core Free / Standard Features</h3>
+<h3>WPSSO Core Standard Features</h3>
 
 <ul>
 <li><p>Creates complete and accurate meta tags for:</p>
@@ -76,7 +76,7 @@
 <li><p>Built-in support for <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> and <a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP - Accelerated Mobile Pages</a> plugins.</p></li>
 <li><p>Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.</p></li>
 <li><p>And even includes an option to hide the preview of all Pro settings and features. ;-)</p></li>
-<li><p>Optional Free add-ons for WPSSO Core:</p>
+<li><p>Optional Free add-ons (non-standard / specialized features) for WPSSO Core:</p>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> to manage mobile App information.</li>
@@ -158,7 +158,7 @@
 <li>YouTube Videos and Playlists</li>
 </ul></li>
 </ul></li>
-<li><p>Optional Pro add-ons for WPSSO Core Pro:</p>
+<li><p>Optional Pro add-ons (non-standard / specialized features) for WPSSO Core Pro:</p>
 
 <ul>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-am/">WPSSO Mobile App Meta Pro</a> to manage mobile App information.</li>

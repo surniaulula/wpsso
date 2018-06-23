@@ -19,7 +19,7 @@ Easy, complete, accurate, and automatic - provide information about your content
 == Description ==
 
 <blockquote class="top">
-<p><strong>Choose a plugin for today AND tomorrow! The WPSSO Core plugin is 100% compatible with the upcoming <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in WordPress 5!</strong></p>
+<p><strong>Choose a plugin for today AND tomorrow! The WPSSO Core plugin is 100% compatible with the upcoming <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in WordPress 5 (expected in August 2018)!</strong></p>
 </blockquote>
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
@@ -52,7 +52,7 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "Yoast on steroids! As an SEO marketer, I love using Yoast for my basic on-page SEO. But Yoast only allows you to enter basic Open Graph social settings. This plugin gives you SO many more options on completing the Open Graph for Facebook, Twitter cards, Pinterest etc. If you use WordPress, I totally recommend using this SEO plugin to help with better rankings in the SERPS!" - [gregmontag](https://wordpress.org/support/topic/yoast-on-steroids/)
 
-<h3>WPSSO Core Free / Standard Features</h3>
+<h3>WPSSO Core Standard Features</h3>
 
 * Creates complete and accurate meta tags for:
 
@@ -93,7 +93,7 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 
 * And even includes an option to hide the preview of all Pro settings and features. ;-)
 
-* Optional Free add-ons for WPSSO Core:
+* Optional Free add-ons (non-standard / specialized features) for WPSSO Core:
 
 	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 	* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
@@ -179,7 +179,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 		* Your Own URL Shortener (YOURLS)
 		* YouTube Videos and Playlists
 
-* Optional Pro add-ons for WPSSO Core Pro:
+* Optional Pro add-ons (non-standard / specialized features) for WPSSO Core Pro:
 
 	* [WPSSO Mobile App Meta Pro](https://wpsso.com/extend/plugins/wpsso-am/) to manage mobile App information.
 	* [WPSSO Organization Markup Pro](https://wpsso.com/extend/plugins/wpsso-organization/) to manage multiple Organizations.
