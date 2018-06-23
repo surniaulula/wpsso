@@ -260,7 +260,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 	* [Polylang](https://wpsso.com/docs/plugins/wpsso/notes/modules/polylang/)
 	* [The Events Calendar](https://wpsso.com/docs/plugins/wpsso/notes/modules/the-events-calendar/)
 	* [WooCommerce](https://wpsso.com/docs/plugins/wpsso/notes/modules/woocommerce/)
-	* [WordPress REST API version 2](https://wpsso.com/docs/plugins/wpsso/notes/modules/wordpress-rest-api-v2/)
+	* [WordPress REST API v2](https://wpsso.com/docs/plugins/wpsso/notes/modules/wordpress-rest-api-v2/)
 	* [Yoast SEO (aka WordPress SEO)](https://wpsso.com/docs/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/)
 * [Contact Information and Feeds](https://wpsso.com/docs/plugins/wpsso/notes/contact-information/)
 * [Developer Resources](https://wpsso.com/docs/plugins/wpsso/notes/developer/)
@@ -325,7 +325,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.2-rc.1 (2018/06/23)**
+**Version 4.5.2 (2018/06/23)**
 
 * *New Features*
 	* None
@@ -466,7 +466,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.5.2-rc.1 =
+= 4.5.2 =
 
 (2018/06/23) Removed color highlighting of the SSO menu icon. Renamed the WordPress Settings submenu pages. Added a new 'wpsso_get_robots_content' filter.
 
