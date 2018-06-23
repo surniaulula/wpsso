@@ -95,18 +95,18 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 
 * Optional Free add-ons for WPSSO Core:
 
-	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/)
-	* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/)
-	* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/)
-	* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/)
+	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) (manage mobile App information)
+	* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) (manage multiple Organizations)
+	* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) (manage multiple Locations)
+	* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) (add ratings to post comments)
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/)
-	* [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/)
-	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/)
+	* [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) (breadcrumbs markup for Google)
+	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) (Schema for post and archive pages) 
 	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/)
-	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata)
-	* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors)
-	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote)
-	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale)
+	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) (strip incorrect markup from templates) 
+	* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) (have WordPress create better thumbnails)
+	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) (add quotable text to your content)
+	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) (switch languages from the toolbar)
 
 <h3>WPSSO Core Pro / Additional Features</h3>
 

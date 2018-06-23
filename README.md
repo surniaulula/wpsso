@@ -79,18 +79,18 @@
 <li><p>Optional Free add-ons for WPSSO Core:</p>
 
 <ul>
-<li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> (manage mobile App information)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a> (manage multiple Organizations)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place / Location and Local Business Meta</a> (manage multiple Locations)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a> (add ratings to post comments)</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a> (breadcrumbs markup for Google)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> (Schema for post and archive pages) </li>
 <li><a href="https://wordpress.org/plugins/wpsso-ssb/">WPSSO Social Sharing Buttons</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors">WPSSO Tune WP Image Editors</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a></li>
-<li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a></li>
+<li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata">WPSSO Strip Schema Microdata</a> (strip incorrect markup from templates) </li>
+<li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors">WPSSO Tune WP Image Editors</a> (have WordPress create better thumbnails)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-tweet-a-quote">WPSSO Tweet a Quote</a> (add quotable text to your content)</li>
+<li><a href="https://wordpress.org/plugins/wpsso-user-locale">WPSSO User Locale Selector</a> (switch languages from the toolbar)</li>
 </ul></li>
 </ul>
 
