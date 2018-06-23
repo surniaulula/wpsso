@@ -519,7 +519,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! empty( $licenses_page ) ) {
 				if ( $ext === $this->p->lca ) {	// Only add for the core plugin.
 					$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' . 
-						_x( 'Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
+						_x( 'Pro and Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
 				}
 			}
 
@@ -591,20 +591,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * so make sure other filters aren't giving us a string or boolean.
 		 */
 		public function add_expect_header( $req, $url ) {
+
 			if ( ! is_array( $req ) ) {
 				$req = array();
 			}
+
 			if ( ! isset( $req['headers'] ) || ! is_array( $req['headers'] ) ) {
 				$req['headers'] = array();
 			}
+
 			$req['headers']['Expect'] = '';
+
 			return $req;
 		}
 
 		public function maybe_allow_hosts( $is_allowed, $ip, $url ) {
+
 			if ( $is_allowed ) {	// Already allowed.
 				return $is_allowed;
 			}
+
 			if ( isset( $this->p->cf['extend'] ) ) {
 				foreach ( $this->p->cf['extend'] as $host ) {
 					if ( strpos( $url, $host ) === 0 ) {
@@ -612,6 +618,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 			}
+
 			return $is_allowed;
 		}
 
@@ -1208,18 +1215,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<tr>';
 			echo '<th class="cache-label"></th>';
 			echo '<th class="cache-count">' . __( 'Count', 'wpsso' ) . '</th>';
-			if ( self::$pkg[$this->p->lca]['aop'] ) {
-				echo '<th class="cache-expiration">' . __( 'Expiration', 'wpsso' ) . '</th>';
-			}
+			echo '<th class="cache-expiration">' . __( 'Expiration', 'wpsso' ) . '</th>';
 			echo '</tr>';
 
-			// make sure the "All Transients" count is last
+			/**
+			 * Make sure the "All Transients" count is last.
+			 */
 			if ( isset( $this->p->cf['wp']['transient'][$this->p->lca . '_'] ) ) {	
 				SucomUtil::move_to_end( $this->p->cf['wp']['transient'], $this->p->lca . '_' );
 			}
 
-			$shortened_urls_count = 0;
-			$have_filtered_cache_exp = false;
+			$short_urls_count  = 0;
+			$have_filtered_exp = false;
 
 			foreach ( $this->p->cf['wp']['transient'] as $cache_md5_pre => $cache_info ) {
 
@@ -1229,32 +1236,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;
 				}
 
-				$cache_text_dom = empty( $cache_info['text_domain'] ) ? $this->p->lca : $cache_info['text_domain'];
+				$cache_text_dom     = empty( $cache_info['text_domain'] ) ? $this->p->lca : $cache_info['text_domain'];
 				$cache_label_transl = _x( $cache_info['label'], 'option label', $cache_text_dom );
-				$cache_count = count( preg_grep( '/^' . $cache_md5_pre . '/', $transient_keys ) );
-				$cache_exp_secs = isset( $cache_info['opt_key'] ) &&
-					isset( $this->p->options[$cache_info['opt_key']] ) ?
-						 $this->p->options[$cache_info['opt_key']] : 0;
-				$cache_exp_html = isset( $cache_info['opt_key'] ) ? $cache_exp_secs : '';
+				$cache_count        = count( preg_grep( '/^' . $cache_md5_pre . '/', $transient_keys ) );
+				$cache_opt_key      = isset( $cache_info['opt_key'] ) ? $cache_info['opt_key'] : false;
+				$cache_exp_secs     = $cache_opt_key && isset( $this->p->options[$cache_opt_key] ) ? $this->p->options[$cache_opt_key] : 0;
+				$cache_exp_html     = $cache_opt_key ? $cache_exp_secs : '';
 				
 				if ( $cache_md5_pre === $this->p->lca . '_s_' ) {
-					$shortened_urls_count = $cache_count;
+					$short_urls_count = $cache_count;
 				}
 
 				if ( ! empty( $cache_info['filter'] ) ) {
-					$filter_name = $cache_info['filter'];
+
+					$filter_name        = $cache_info['filter'];
 					$cache_exp_filtered = (int) apply_filters( $filter_name, $cache_exp_secs );
+
 					if ( $cache_exp_secs !== $cache_exp_filtered ) {
-						$cache_exp_html = $cache_exp_filtered . ' [F]';	// show that values is changed
-						$have_filtered_cache_exp = true;
+						$cache_exp_html    = $cache_exp_filtered . ' [F]';	// Show that values is changed.
+						$have_filtered_exp = true;
 					}
 				}
 
 				echo '<th class="cache-label">' . $cache_label_transl . ':</th>';
 				echo '<td class="cache-count">' . $cache_count . '</td>';
-				if ( self::$pkg[$this->p->lca]['aop'] ) {
-					echo '<td class="cache-expiration">' . $cache_exp_html . '</td>';
-				}
+				echo '<td class="cache-expiration">' . $cache_exp_html . '</td>';
 				echo '</tr>';
 			}
 
@@ -1268,13 +1274,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$clear_label_transl .= ' [*]';
 			}
 
-			// add some extra space between the stats table and buttons
+			/**
+			 * Add some extra space between the stats table and buttons.
+			 */
 			echo '<tr><td colspan="' . $table_cols . '">&nbsp;</td></tr>';
 			echo '<tr><td colspan="' . $table_cols . '">';
 			echo $this->form->get_button( $clear_label_transl, 'button-secondary', '', $clear_admin_url );
 
-			// add an extra button to clear the cache and shortened urls
-			if ( $shortened_urls_count || ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' && 
+			/**
+			 * Add an extra button to clear the cache and shortened urls.
+			 */
+			if ( $short_urls_count || ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' && 
 				empty( $this->p->options['plugin_clear_short_urls'] ) ) ) {
 
 				$clear_admin_url = $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=clear_all_cache_and_short_urls' );
@@ -1286,7 +1296,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			echo '</td></tr>';
 
-			if ( $have_filtered_cache_exp ) {
+			if ( $have_filtered_exp ) {
 				if ( self::$pkg[$this->p->lca]['aop'] ) {
 					echo '<tr><td colspan="' . $table_cols . '"><small>[F] ' .
 						__( 'Expiration option value has been modified by a filter.',
@@ -1300,10 +1310,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_version_info() {
 
 			$table_cols = 2;
-			$label_width = '70px';
+			$label_width = '25%';
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox version-info" style="table-layout:fixed;">';
-			echo '<colgroup><col style="width:' . $label_width . ';"/><col/></colgroup>';	// required for chrome to display fixed table layout
+
+			/**
+			 * Required for chrome to display a fixed table layout.
+			 */
+			echo '<colgroup>';
+			echo '<col style="width:' . $label_width . ';"/>';
+			echo '<col/>';
+			echo '</colgroup>';
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
@@ -1744,10 +1761,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function licenses_metabox_content( $network = false ) {
 
-			$tabindex = 0;
-			$ext_num = 0;
+			$tabindex  = 0;
+			$ext_num   = 0;
 			$ext_total = count( $this->p->cf['plugin'] );
-			$charset = get_bloginfo( 'charset' );
+			$charset   = get_bloginfo( 'charset' );
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' licenses-metabox" style="padding-bottom:10px">' . "\n";
 			echo '<tr><td colspan="3">' . $this->p->msgs->get( 'info-plugin-tid' . ( $network ? '-network' : '' ) ) . '</td></tr>' . "\n";
@@ -2572,7 +2589,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$all_ext_times  = $this->p->util->get_all_times();
 			$time_ago_secs  = time() - WEEK_IN_SECONDS;
 			$cache_md5_pre  = $this->p->lca . '_';
-			$cache_exp_secs = DAY_IN_SECONDS;
+			$cache_exp_secs = 2 * DAY_IN_SECONDS;
 			$cache_salt     = __METHOD__ . '(user_id:' . $user_id . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
@@ -2582,25 +2599,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$dismiss_key  = 'timed-notice-' . $ext . '-plugin-review';
 				$dismiss_time = true;
-				$showing_ext  = get_transient( $cache_id );				// Returns empty string or $dismiss_key for 24 hours.
+				$showing_ext  = get_transient( $cache_id );				// Returns empty string or $dismiss_key value. 
 
-				if ( empty( $info['version'] ) ) {					// Not installed.
+				if ( empty( $info['version'] ) ) {					// Plugin not installed.
 					continue;
 				} elseif ( empty( $info['url']['review'] ) ) {				// Must be hosted on wordpress.org.
 					continue;
 				} elseif ( $this->p->notice->is_dismissed( $dismiss_key, $user_id ) ) {	// User has dismissed.
-					if ( $showing_ext === $dismiss_key ) {				// Notice was dismissed today.
-						break;
+					if ( $showing_ext === $dismiss_key ) {				// Notice was dismissed $cache_exp_secs ago.
+						break;							// Stop here.
 					}
-					continue;
+					continue;							// Get the next plugin.
 				} elseif ( ! isset( $all_ext_times[$ext . '_activate_time'] ) ) {	// Never activated.
 					continue;
 				} elseif ( $all_ext_times[$ext . '_activate_time'] > $time_ago_secs ) {	// Activated less than time ago.
 					continue;
-				} elseif ( empty( $showing_ext ) || $showing_ext === '1' ) {		// Show a notice for this plugin for 24 hours.
+				} elseif ( empty( $showing_ext ) || $showing_ext === '1' ) {		// Show this notice for $cache_exp_secs.
 					set_transient( $cache_id, $dismiss_key, $cache_exp_secs );
 				} elseif ( $showing_ext !== $dismiss_key ) {				// We're not showing this plugin right now.
-					continue;
+					continue;							// Get the next plugin.
 				}
 
 				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
@@ -2611,6 +2628,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$support_url = '';
 				}
 
+				/**
+				 * The action buttons.
+				 */
 				$rate_plugin_button = '<div style="display:inline-block;vertical-align:top;margin:1em 0.8em 0 0;">' .
 					$this->form->get_button( sprintf( __( 'Yes! Contribute and rate %s 5 stars!', 'wpsso' ), $info['short'] ),
 						'button-primary dismiss-on-click', '', $info['url']['review'], true, false,
@@ -2623,6 +2643,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							array( 'dismiss-msg' => sprintf( __( 'Thank you for your earlier rating of %s! You\'re awesome!',
 								'wpsso' ), $info['short'] ) ) ) . '</div>';
 
+				/**
+				 * The notice message.
+				 */
 				$notice_msg = '<div style="display:table-cell;"><p style="margin-right:20px;">' .
 					$this->get_ext_img_icon( $ext ) . '</p></div>' . "\n";
 
@@ -3109,8 +3132,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$cache_md5_pre = $this->p->lca . '_';
 
 			if ( ! isset( $cache_exp_secs ) ) {
-				$cache_exp_filter = $this->p->lca . '_cache_expire_' . $file_key;	// 'wpsso_cache_expire_readme_txt'
-				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
+				$cache_exp_filter = $this->p->lca . '_cache_expire_' . $file_key;	// Example: 'wpsso_cache_expire_readme_txt'.
+				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 			}
 
 			$cache_salt = __METHOD__ . '(ext:' . $ext . ')';
@@ -3161,7 +3184,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			// save the parsed readme to the transient cache
+			/**
+			 * Save the parsed readme to the transient cache.
+			 */
 			if ( $cache_exp_secs > 0 ) {
 				set_transient( $cache_id, $readme_info, $cache_exp_secs );
 				if ( $this->p->debug->enabled ) {
@@ -3176,16 +3201,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'ext' => $ext,
-					'file_name' => $file_name,
+					'ext'            => $ext,
+					'file_name'      => $file_name,
 					'cache_exp_secs' => $cache_exp_secs,
 				) );
 			}
 
-			$file_name = SucomUtil::sanitize_file_path( $file_name );
-			$file_key = SucomUtil::sanitize_hookname( basename( $file_name ) );	// html/setup.html -> setup_html
-			$file_dir = SucomUtil::get_const( strtoupper( $ext ) . '_PLUGINDIR' );
-			$file_local = $file_dir ? trailingslashit( $file_dir ).$file_name : false;
+			$file_name   = SucomUtil::sanitize_file_path( $file_name );
+			$file_key    = SucomUtil::sanitize_hookname( basename( $file_name ) );	// html/setup.html -> setup_html
+			$file_dir    = SucomUtil::get_const( strtoupper( $ext ) . '_PLUGINDIR' );
+			$file_local  = $file_dir ? trailingslashit( $file_dir ).$file_name : false;
 			$file_remote = isset( $this->p->cf['plugin'][$ext]['url'][$file_key] ) ? 
 				$this->p->cf['plugin'][$ext]['url'][$file_key] : false;
 
@@ -3194,8 +3219,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$cache_exp_filter = $this->p->lca . '_cache_expire_' . $file_key;	// 'wpsso_cache_expire_setup_html'
-			$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
-			$cache_content = false;
+			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
+			$cache_content    = false;
 
 			if ( $cache_exp_secs > 0 ) {
 				if ( $file_remote && strpos( $file_remote, '://' ) ) {
