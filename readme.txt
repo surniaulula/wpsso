@@ -325,7 +325,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.2-b.2 (2018/06/22)**
+**Version 4.5.2-rc.1 (2018/06/23)**
 
 * *New Features*
 	* None
@@ -466,9 +466,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.5.2-b.2 =
+= 4.5.2-rc.1 =
 
-(2018/06/22) Removed color highlighting of the SSO menu icon. Renamed the WordPress Settings submenu pages. Added a new 'wpsso_get_robots_content' filter.
+(2018/06/23) Removed color highlighting of the SSO menu icon. Renamed the WordPress Settings submenu pages. Added a new 'wpsso_get_robots_content' filter.
 
 = 4.5.1 =
 
