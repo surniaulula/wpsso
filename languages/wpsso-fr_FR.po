@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 4.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-06-23 09:00-0600\n"
-"PO-Revision-Date: 2018-06-23 09:01-0600\n"
+"PO-Revision-Date: 2018-06-23 09:10-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3646,7 +3646,7 @@ msgstr "Par exemple, pour dupliquer l'<em>%1$s</em> d'un thème ou d'une autre e
 
 #: lib/messages.php:1694
 msgid "The <em>%1$s</em> column is for display purposes only and can be changed as you wish."
-msgstr "La colonne <em>%s</em> est utilisé uniquement à des fins d'affichage et peut être modifié à votre guise."
+msgstr "La colonne <em>%1$s</em> est utilisé uniquement à des fins d'affichage et peut être modifié à votre guise."
 
 #: lib/messages.php:1700
 msgid "The built-in WordPress <em>%1$s</em> column cannot be modified."
