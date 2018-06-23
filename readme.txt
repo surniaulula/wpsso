@@ -24,7 +24,7 @@ Easy, complete, accurate, and automatic - provide information about your content
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-<h3>Why is WPSSO Core so much better?</h3>
+<h3>What makes WPSSO different?</h3>
 
 **Creates *complete* and *accurate* meta tags and Schema markup:**
 
