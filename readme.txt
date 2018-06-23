@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.6
 WC Tested Up To: 3.4.2
-Stable Tag: 4.5.1
+Stable Tag: 4.5.2
 
 Easy, complete, accurate, and automatic - provide information about your content, business and authors to social sites and search engines.
 
@@ -339,6 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Developer Notes*
 	* Added a new 'wpsso_get_robots_content' filter.
+	* Refactored the WpssoProUtilRestAPI class to use the post/term/user `get_mod()` methods.
 
 **Version 4.5.1 (2018/06/16)**
 
@@ -469,12 +470,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.5.2 =
 
 (2018/06/23) Removed color highlighting of the SSO menu icon. Renamed the WordPress Settings submenu pages. Added a new 'wpsso_get_robots_content' filter.
-
-= 4.5.1 =
-
-(2018/06/16) Added a 'rest_api_init' hook to define our custom image sizes. Updated the metabox tab CSS to better define active / non-active tabs. Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
-
-= 4.5.0 =
-
-(2018/06/07) Renamed the "Social and Search Optimization" metabox to "Document SSO (Social and Search Optimization)". Added a "License Information" link in the Add-ons page to lookup registered site addresses (Pro version).
 
