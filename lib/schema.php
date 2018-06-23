@@ -2866,6 +2866,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *	address as https://schema.org/PostalAddress
 			 */
 			$address = array();
+
 			if ( self::add_data_itemprop_from_assoc( $address, $place_opts, array(
 				'name' => 'place_name', 
 				'streetAddress' => 'place_streetaddr', 
@@ -2883,6 +2884,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *	geo as https://schema.org/GeoCoordinates
 			 */
 			$geo = array();
+
 			if ( self::add_data_itemprop_from_assoc( $geo, $place_opts, array(
 				'elevation' => 'place_altitude', 
 				'latitude' => 'place_latitude',
