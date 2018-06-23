@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: facebook, pinterest, twitter, schema, meta tags, open graph, rich pins, social sharing, seo, nextgen facebook, local seo, knowledge graph, gutenberg
+Tags: facebook, pinterest, twitter, schema, meta tags, open graph, rich pins, social sharing, seo, nextgen facebook, local seo, knowledge graph, linkedin, gutenberg
 Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
@@ -19,8 +19,7 @@ Easy, complete, accurate, and automatic - provide information about your content
 == Description ==
 
 <blockquote class="top">
-<p><strong>Choose a plugin for today AND tomorrow!</strong></p>
-<p><strong>The WPSSO Core plugin is 100% compatible with the new "Gutenberg" block editor in WordPress 5!</strong></p>
+<p><strong>Choose a plugin for today AND tomorrow! The WPSSO Core plugin is 100% compatible with the upcoming <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in WordPress 5!</strong></p>
 </blockquote>
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
