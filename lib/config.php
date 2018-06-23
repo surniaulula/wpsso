@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.5.2-rc.1',		// Plugin version.
+					'version' => '4.5.2',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -152,7 +152,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'language' => '(tool) WP Locale to Publisher Language Mapping',
 								'shorten' => '(api) URL Shortening Service APIs',
 								'post' => '(tool) Custom Post Meta',
-								'restapi' => '(plugin) WordPress REST API (Version 2)',
+								'restapi' => '(plugin) WordPress REST API v2',
 								'term' => '(tool) Custom Term Meta',
 								'user' => '(tool) Custom User Meta',
 								'wpseo_meta' => '(tool) Yoast SEO Social Meta',
