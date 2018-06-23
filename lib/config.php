@@ -152,7 +152,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'language' => '(tool) WP Locale to Publisher Language Mapping',
 								'shorten' => '(api) URL Shortening Service APIs',
 								'post' => '(tool) Custom Post Meta',
-								'restapi' => '(plugin) WordPress REST API v2',
+								'restapi' => '(tool) WP REST API',
 								'term' => '(tool) Custom Term Meta',
 								'user' => '(tool) Custom User Meta',
 								'wpseo_meta' => '(tool) Yoast SEO Social Meta',
