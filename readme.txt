@@ -26,13 +26,13 @@ Easy, complete, accurate, and automatic - provide information about your content
 
 <h3>What makes WPSSO Core better?</h3>
 
-**Creates *complete* and *accurate* meta tags and Schema markup:**
-
-WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards, Weibo and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!
-
 **Uses your *existing content* for meta tags and Schema markup:**
 
 There's no need to manually re-enter descriptions, titles, select images / videos &mdash; WPSSO Core reads all your existing WordPress content automatically, and you can optionally fine-tune and customize just about anything and everything. ;-) WPSSO Core is also language / locale aware, allowing you to customize your site information for different languages!
+
+**Creates *complete* and *accurate* meta tags and Schema markup:**
+
+WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards, Weibo and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!
 
 **Includes advanced *quality control* features and options:**
 
