@@ -886,14 +886,21 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 				if ( $parts[5] === '' || $parts[5] === null ) {	// Allow for 0.
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_prefix . ' skipped: value is empty' );
 					}
+
+					$ret[$num][5] = '';	// Avoid null values in REST API output.
+
 					continue;
+
 				} elseif ( $parts[5] === WPSSO_UNDEF_INT || $parts[5] === (string) WPSSO_UNDEF_INT ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $log_prefix . ' skipped: value is ' . WPSSO_UNDEF_INT );
 					}
+
 					continue;
 				}
 
@@ -913,16 +920,24 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 				switch ( $match_name ) {
-					// description values that may include emoji
+
+					/**
+					 * Description values that may include emoji.
+					 */
 					case 'og:title':
 					case 'og:description':
 					case 'twitter:title':
 					case 'twitter:description':
 					case 'description':
 					case 'name':
+
 						$parts[5] = SucomUtil::encode_html_emoji( $parts[5] );
+
 						break;
-					// url values that must be url encoded
+
+					/**
+					 * Url values that must be url encoded.
+					 */
 					case 'og:url':
 					case 'og:secure_url':
 					case 'og:image':
@@ -939,30 +954,45 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					case 'canonical':
 					case 'shortlink':
 					case 'image':
-					case 'hasmenu':	// place restaurant menu url
+					case 'hasmenu':	// Food establishment menu url.
 					case 'url':
+
 						$parts[5] = SucomUtil::esc_url_encode( $parts[5] );
-						if ( $parts[2] === 'itemprop' ) {	// itemprop urls must be links
+
+						if ( $parts[2] === 'itemprop' ) {	// Itemprop urls must be links.
 							$parts[1] = 'link';
 							$parts[4] = 'href';
 						}
+
 						break;
-					// allow for mobile app / non-standard protocols
+
+					/**
+					 * Allow for mobile app / non-standard protocols.
+					 */
 					case 'al:android:url':
 					case 'al:ios:url':
 					case 'al:web:url':
 					case 'twitter:app:url:iphone':
 					case 'twitter:app:url:ipad':
 					case 'twitter:app:url:googleplay':
+
 						$parts[5] = SucomUtil::esc_url_encode( $parts[5], false );	// $wp_esc_url = false
+
 						break;
-					// encode html entities for everything else
+
+					/**
+					 * Encode html entities for everything else.
+					 */
 					default:
+
 						$parts[5] = htmlentities( $parts[5], ENT_QUOTES, $charset, false );	// double_encode = false
+
 						break;
 				}
 
-				// convert mixed case itemprop names (for example) to lower case
+				/**
+				 * Convert mixed case itemprop names (for example) to lower case to determine the option key value.
+				 */
 				$opt_name = strtolower( 'add_' . $parts[1] . '_' . $parts[2] . '_' . $parts[3] );
 
 				if ( ! empty( $this->p->options[$opt_name] ) ) {
@@ -974,7 +1004,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$this->p->debug->log( $log_prefix . ' skipped: option is disabled' );
 				}
 
-				$ret[$num] = $parts;	// save the HTML and encoded value
+				$ret[$num] = $parts;	// Save the HTML and encoded value.
 			}
 
 			return $ret;

@@ -182,9 +182,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'util-language':
 							$chk['optval'] = 'plugin_filter_lang';
 							break;
-						case 'util-restapi':
-							$chk['function'] = 'register_rest_field';
-							break;
 						case 'util-shorten':
 							$chk['optval'] = 'plugin_shortener';
 							break;

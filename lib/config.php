@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.5.2',		// Plugin version.
+					'version' => '4.5.3-dev.1',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -51,8 +51,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faqs' => 'https://wpsso.com/docs/plugins/wpsso/faqs/',
 						'notes' => 'https://wpsso.com/docs/plugins/wpsso/notes/',
 						'support' => 'http://wpsso.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso/',	// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso/info/',	// License information.
+						'purchase' => 'https://wpsso.com/extend/plugins/wpsso/',		// Purchase page.
+						'info' => 'https://wpsso.com/extend/plugins/wpsso/info/',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso/update/',
 						'latest' => '',
 					),
@@ -152,7 +152,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'language' => '(tool) WP Locale to Publisher Language Mapping',
 								'shorten' => '(api) URL Shortening Service APIs',
 								'post' => '(tool) Custom Post Meta',
-								'restapi' => '(tool) WP REST API',
 								'term' => '(tool) Custom Term Meta',
 								'user' => '(tool) Custom User Meta',
 								'wpseo_meta' => '(tool) Yoast SEO Social Meta',
@@ -190,8 +189,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faqs' => '',
 						'notes' => '',
 						'support' => 'http://wpsso-am.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-am/',	// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-am/info/',	// License information.
+						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-am/',		// Purchase page.
+						'info' => 'https://wpsso.com/extend/plugins/wpsso-am/info/',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-am/update/',
 						'latest' => '',
 					),
@@ -227,7 +226,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'notes' => '',
 						'support' => '',	// Pro support ticket.
 						'purchase' => '',	// Purchase page.
-						'info' => '',	// License information.
+						'info' => '',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/update/',
 						'latest' => '',
 					),
@@ -263,8 +262,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faqs' => '',
 						'notes' => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/',
 						'support' => 'http://wpsso-schema-json-ld.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/',	// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/info/',	// License information.
+						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/',			// Purchase page.
+						'info' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/info/',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/update/',
 						'latest' => '',
 					),
@@ -299,8 +298,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faqs' => '',
 						'notes' => '',
 						'support' => 'http://wpsso-organization.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-organization/',	// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-organization/info/',	// License information.
+						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-organization/',		// Purchase page.
+						'info' => 'https://wpsso.com/extend/plugins/wpsso-organization/info/',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-organization/update/',
 						'latest' => '',
 					),
@@ -335,8 +334,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faqs' => '',
 						'notes' => '',
 						'support' => 'http://wpsso-plm.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-plm/',	// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-plm/info/',	// License information.
+						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-plm/',		// Purchase page.
+						'info' => 'https://wpsso.com/extend/plugins/wpsso-plm/info/',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-plm/update/',
 						'latest' => '',
 					),
@@ -372,8 +371,44 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'notes' => '',
 						'support' => '',	// Pro support ticket.
 						'purchase' => '',	// Purchase page.
-						'info' => '',	// License information.
+						'info' => '',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/update/',
+						'latest' => '',
+					),
+				),
+				'wpssorest' => array(			// Plugin acronym.
+					'short' => 'WPSSO REST',	// Short plugin name.
+					'name' => 'WPSSO REST API',
+					'desc' => 'WPSSO Core add-on to provide arrays of meta tag and Schema markup in the WordPress REST API post, term and user queries.',
+					'slug' => 'wpsso-rest-api',
+					'base' => 'wpsso-rest-api/wpsso-rest-api.php',
+					'update_auth' => '',
+					'img' => array(
+						'banners' => array(
+							'low' => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-1544x500.jpg',
+						),
+						'icons' => array(
+							'low' => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-256x256.png',
+						),
+					),
+					'url' => array(
+						// WordPress
+						'home' => 'https://wordpress.org/plugins/wpsso-rest-api/',
+						'forum' => 'https://wordpress.org/support/plugin/wpsso-rest-api',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-rest-api/reviews/?rate=5#new-post',
+						// GitHub
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rest-api/master/readme.txt',
+						// WPSSO
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-rest-api/changelog/',
+						'docs' => 'https://wpsso.com/docs/plugins/wpsso-rest-api/',
+						'faqs' => '',
+						'notes' => '',
+						'support' => '',	// Pro support ticket.
+						'purchase' => '',	// Purchase page.
+						'info' => '',		// License information.
+						'update' => 'https://wpsso.com/extend/plugins/wpsso-rest-api/update/',
 						'latest' => '',
 					),
 				),
@@ -407,8 +442,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faqs' => '',
 						'notes' => 'https://wpsso.com/docs/plugins/wpsso-rrssb/notes/',
 						'support' => 'http://wpsso-rrssb.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/',	// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/info/',	// License information.
+						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/',			// Purchase page.
+						'info' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/info/',			// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/update/',
 						'latest' => '',
 					),
@@ -443,8 +478,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faqs' => 'https://wpsso.com/docs/plugins/wpsso-ssb/faqs/',
 						'notes' => 'https://wpsso.com/docs/plugins/wpsso-ssb/notes/',
 						'support' => 'http://wpsso-ssb.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-ssb/',	// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-ssb/info/',	// License information.
+						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-ssb/',		// Purchase page.
+						'info' => 'https://wpsso.com/extend/plugins/wpsso-ssb/info/',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-ssb/update/',
 						'latest' => '',
 					),
@@ -480,7 +515,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'notes' => '',
 						'support' => '',	// Pro support ticket.
 						'purchase' => '',	// Purchase page.
-						'info' => '',	// License information.
+						'info' => '',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/update/',
 						'latest' => '',
 					),
@@ -516,7 +551,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'notes' => '',
 						'support' => '',	// Pro support ticket.
 						'purchase' => '',	// Purchase page.
-						'info' => '',	// License information.
+						'info' => '',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/update/',
 						'latest' => '',
 					),
@@ -551,8 +586,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'faqs' => '',
 						'notes' => '',
 						'support' => 'http://wpsso-tune-image-editors.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/',	// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/info/',	// License information.
+						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/',		// Purchase page.
+						'info' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/info/',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/update/',
 						'latest' => '',
 					),
@@ -588,7 +623,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'notes' => 'https://wpsso.com/docs/plugins/wpsso-user-locale/notes/',
 						'support' => '',	// Pro support ticket.
 						'purchase' => '',	// Purchase page.
-						'info' => '',	// License information.
+						'info' => '',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-user-locale/update/',
 						'latest' => '',
 					),
@@ -624,7 +659,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'notes' => '',
 						'support' => '',	// Pro support ticket.
 						'purchase' => '',	// Purchase page.
-						'info' => '',	// License information.
+						'info' => '',		// License information.
 						'update' => 'https://wpsso.com/extend/plugins/wpsso-um/update/',
 						'latest' => 'https://wpsso.com/extend/plugins/wpsso-um/latest/',
 					),

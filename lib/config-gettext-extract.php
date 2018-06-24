@@ -157,6 +157,7 @@ _x( 'WordPress Video Shortcode', 'option value', 'wpsso' );
 _x( 'WPSSO Core add-on to manage Organizations and additional Schema markup properties (Organizer, Performer, Publisher, etc.) for Google Rich Cards / Knowledge Graph.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide a convenient locale / language / region selector in the WordPress admin toolbar.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari and Twitter\'s App Card.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core add-on to provide arrays of meta tag and Schema markup in the WordPress REST API post, term and user queries.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO).', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business, and Local SEO meta tags.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup.', 'plugin description', 'wpsso' );
