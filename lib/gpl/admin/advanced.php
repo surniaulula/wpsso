@@ -216,7 +216,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ), '', 'plugin_def_currency' ).
 			'<td class="blank">'.$form->get_no_select( 'plugin_def_currency', SucomUtil::get_currencies() ).'</td>';
 
-			foreach ( (array) apply_filters( $this->p->cf['lca'].'_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
+			foreach ( (array) apply_filters( $this->p->lca.'_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
 				if ( isset( $this->p->cf['form']['cf_labels'][$cf_idx] ) && $opt_label = $this->p->cf['form']['cf_labels'][$cf_idx] ) {
 					if ( empty( $md_idx ) ) {
 						$this->p->options[$cf_idx] = '';

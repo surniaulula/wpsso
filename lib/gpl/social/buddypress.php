@@ -35,8 +35,8 @@ if ( ! class_exists( 'WpssoGplSocialBuddypress' ) ) {
 
 		public function filter_get_defaults( $def_opts ) {
 
-			$lca = $this->p->cf['lca'];
-			$bio_const_name = strtoupper( $lca ).'_BP_MEMBER_BIOGRAPHICAL_FIELD';
+			$bio_const_name = strtoupper( $this->p->lca ).'_BP_MEMBER_BIOGRAPHICAL_FIELD';
+
 			$def_opts['plugin_bp_bio_field'] = SucomUtil::get_const( $bio_const_name );
 
 			return $def_opts;
@@ -64,4 +64,3 @@ if ( ! class_exists( 'WpssoGplSocialBuddypress' ) ) {
 		}
 	}
 }
-

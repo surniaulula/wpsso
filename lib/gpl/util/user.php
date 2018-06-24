@@ -45,4 +45,3 @@ if ( ! class_exists( 'WpssoGplUtilUser' ) && class_exists( 'WpssoUser' ) ) {
 		}
 	}
 }
-

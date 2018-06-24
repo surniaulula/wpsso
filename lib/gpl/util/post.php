@@ -45,4 +45,3 @@ if ( ! class_exists( 'WpssoGplUtilPost' ) && class_exists( 'WpssoPost' ) ) {
 		}
 	}
 }
-

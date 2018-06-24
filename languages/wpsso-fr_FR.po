@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 4.5.2\n"
+"Project-Id-Version: WPSSO Core 4.5.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-06-23 15:46-0600\n"
-"PO-Revision-Date: 2018-06-23 15:46-0600\n"
+"POT-Creation-Date: 2018-06-24 14:23-0600\n"
+"PO-Revision-Date: 2018-06-24 14:23-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1843,95 +1843,100 @@ msgstr "Extension d'ajout WPSSO Core pour fournir un sélecteur pratique de lang
 
 #: lib/config-gettext-extract.php:159
 msgctxt "plugin description"
+msgid "WPSSO Core add-on to provide an array of meta tags and Schema markup in the WordPress REST API post, term and user queries."
+msgstr "Extension d'ajout WPSSO Core pour fournir un tableau de balises méta et balisage Schéma dans les requêtes WordPress REST API d'article, de terme et d'utilisateur."
+
+#: lib/config-gettext-extract.php:160
+msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari and Twitter's App Card."
 msgstr "Extension d'ajout WPSSO Core pour fournir des balises méta Apple Store / iTunes et Google Play App pour mobile Safari et la carte App de Twitter."
 
-#: lib/config-gettext-extract.php:160
+#: lib/config-gettext-extract.php:161
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO)."
 msgstr "Extension d'ajout WPSSO Core pour fournir le balisage de Schéma BreadcrumbList en format JSON-LD pour Google et l'optimisation de recherche (SEO)."
 
-#: lib/config-gettext-extract.php:161
+#: lib/config-gettext-extract.php:162
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business, and Local SEO meta tags."
 msgstr "Extension d'ajout WPSSO Core pour fournir des balises méta Pinterest place, Facebook / Open Graph de position, et Schéma d'entreprise locale."
 
-#: lib/config-gettext-extract.php:162
+#: lib/config-gettext-extract.php:163
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup."
 msgstr "Extension d'ajout WPSSO Core pour fournir des notes et critiques aux commentaires WordPress, avec balises méta Aggregate Rating et balisage de Schéma Review."
 
-#: lib/config-gettext-extract.php:163
+#: lib/config-gettext-extract.php:164
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, post edit pages, etc."
 msgstr "Extension d'ajout WPSSO Core pour fournir des boutons de partage sociaux ridiculement réactif (SVG) dans le contenu, extraits, barre flottante CSS, widget, pages d'édition, etc."
 
-#: lib/config-gettext-extract.php:164
+#: lib/config-gettext-extract.php:165
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews and many more."
 msgstr "Extension d'ajout WPSSO Core pour balisage de Schéma JSON-LD d'article, événement, entreprise locale, produit, recette, critique et bien plus."
 
-#: lib/config-gettext-extract.php:165
+#: lib/config-gettext-extract.php:166
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr "Extension d'ajout WPSSO Core pour fournir des boutons de partage social avec support pour hashtags, URLs raccourcis, bbPress, BuddyPress, WooCommerce et bien plus."
 
-#: lib/config-gettext-extract.php:166
+#: lib/config-gettext-extract.php:167
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide tuning options for the WordPress image editors and PHP image extensions."
 msgstr "Extension d'ajout WPSSO Core pour fournir des options de réglage pour les éditeurs d'image WordPress et les extensions d'image PHP."
 
-#: lib/config-gettext-extract.php:167
+#: lib/config-gettext-extract.php:168
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS."
 msgstr "Extension d'ajout WPSSO Core pour fournir des citations de style Twitter pour votre contenu, avec un lien de partage Tweet pratique et CSS personnalisable."
 
-#: lib/config-gettext-extract.php:168
+#: lib/config-gettext-extract.php:169
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide updates for the WPSSO Core Pro plugin and its Pro add-ons."
 msgstr "Extension d'ajout WPSSO Core pour fournir des mises à jour pour l'extension WPSSO Core Pro et ses ajouts Pro."
 
-#: lib/config-gettext-extract.php:169
+#: lib/config-gettext-extract.php:170
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched."
 msgstr "Extension d'ajout WPSSO Core pour supprimer les Microdonnées de Schéma obsolète / incomplète, laissant le balisage de Schéma JSON-LD recommandé par Google intact."
 
-#: lib/config-gettext-extract.php:170
+#: lib/config-gettext-extract.php:171
 msgctxt "plugin description"
 msgid "WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
 msgstr "WPSSO Core crée des balises méta et balisage de Schéma complets et précis automatiquement à partir de votre contenu pour le partage social, Google Knowledge Graph et Rich Card SEO, Pinterest Rich Pins, Twitter Cards et d'autres."
 
-#: lib/config-gettext-extract.php:171
+#: lib/config-gettext-extract.php:172
 msgctxt "option value"
 msgid "Year"
 msgstr "Année"
 
-#: lib/config-gettext-extract.php:172
+#: lib/config-gettext-extract.php:173
 msgctxt "option value"
 msgid "Yes"
 msgstr "Oui"
 
-#: lib/config-gettext-extract.php:173
+#: lib/config-gettext-extract.php:174
 msgctxt "option value"
 msgid "YOURLS"
 msgstr "YOURLS"
 
-#: lib/config-gettext-extract.php:174
+#: lib/config-gettext-extract.php:175
 msgctxt "lib file description"
 msgid "Your SSO"
 msgstr "Votre SSO"
 
-#: lib/config-gettext-extract.php:175
+#: lib/config-gettext-extract.php:176
 msgctxt "option value"
 msgid "YouTube Business Channel URL"
 msgstr "URL chaîne d'affaires Youtube"
 
-#: lib/config-gettext-extract.php:176
+#: lib/config-gettext-extract.php:177
 msgctxt "option value"
 msgid "YouTube Channel URL"
 msgstr "URL de chaîne Youtube"
 
-#: lib/config-gettext-extract.php:177
+#: lib/config-gettext-extract.php:178
 msgctxt "option value"
 msgid "YouTube Videos and Playlists"
 msgstr "Listes et vidéos YouTube"
