@@ -100,13 +100,14 @@ WPSSO Core specializes in providing all the meta tags and Schema markup social s
 	* [WPSSO Mobile App Meta](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 	* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
 	* [WPSSO Place / Location and Local Business Meta](https://wordpress.org/plugins/wpsso-plm/) to manage multiple Locations.
-	* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/)	to add ratings in WordPress comments.
+	* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) to add ratings in WordPress comments.
+	* [WPSSO REST API](https://wordpress.org/plugins/wpsso-rest-api/) to add meta tags and Schema markup in REST API queries.
 	* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
 	* [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) to add Breadcrumbs markup for Google.
 	* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) to add JSON-LD in post and archive pages.
 	* [WPSSO Social Sharing Buttons](https://wordpress.org/plugins/wpsso-ssb/) to add traditional share buttons.
 	* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata) to strip incorrect markup from templates.
-	* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors)	for better looking WordPress thumbnails.
+	* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors) for better looking WordPress thumbnails.
 	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) to add tweetable quotes to your content.
 	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) to switch languages quickly and easily.
 
