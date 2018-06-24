@@ -379,7 +379,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssorest' => array(			// Plugin acronym.
 					'short' => 'WPSSO REST',	// Short plugin name.
 					'name' => 'WPSSO REST API',
-					'desc' => 'WPSSO Core add-on to provide arrays of meta tag and Schema markup in the WordPress REST API post, term and user queries.',
+					'desc' => 'WPSSO Core add-on to provide an array of meta tags and Schema markup in the WordPress REST API post, term and user queries.',
 					'slug' => 'wpsso-rest-api',
 					'base' => 'wpsso-rest-api/wpsso-rest-api.php',
 					'update_auth' => '',

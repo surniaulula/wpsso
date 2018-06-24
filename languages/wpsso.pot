@@ -1904,15 +1904,15 @@ msgstr ""
 #: lib/config-gettext-extract.php:159
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on to provide Apple Store / iTunes and Google Play App meta "
-"tags for Apple's mobile Safari and Twitter's App Card."
+"WPSSO Core add-on to provide an array of meta tags and Schema markup in the "
+"WordPress REST API post, term and user queries."
 msgstr ""
 
 #: lib/config-gettext-extract.php:160
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core add-on to provide arrays of meta tag and Schema markup in the "
-"WordPress REST API post, term and user queries."
+"WPSSO Core add-on to provide Apple Store / iTunes and Google Play App meta "
+"tags for Apple's mobile Safari and Twitter's App Card."
 msgstr ""
 
 #: lib/config-gettext-extract.php:161
