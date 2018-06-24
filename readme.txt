@@ -325,7 +325,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.3-dev.1 (TBD)**
+**Version 4.5.3-dev.1 (2018/06/24)**
 
 * *New Features*
 	* None
@@ -480,7 +480,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.5.3-dev.1 =
 
-(TBD) Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version).
+(2018/06/24) Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version).
 
 = 4.5.2 =
 
