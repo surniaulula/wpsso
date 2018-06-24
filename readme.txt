@@ -326,6 +326,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.5.3-dev.1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version).
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 4.5.2 (2018/06/23)**
 
 * *New Features*
@@ -467,6 +478,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
 
 == Upgrade Notice ==
+
+= 4.5.3-dev.1 =
+
+(TBD) Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version).
 
 = 4.5.2 =
 
