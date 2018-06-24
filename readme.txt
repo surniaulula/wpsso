@@ -158,7 +158,6 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 		* The Events Calendar
 		* The SEO Framework
 		* WooCommerce (versions 1, 2, and 3)
-		* WordPress REST API (version 2)
 		* WP eCommerce
 		* WP Meta SEO
 		* WP-PostRatings
@@ -262,7 +261,6 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 	* [Polylang](https://wpsso.com/docs/plugins/wpsso/notes/modules/polylang/)
 	* [The Events Calendar](https://wpsso.com/docs/plugins/wpsso/notes/modules/the-events-calendar/)
 	* [WooCommerce](https://wpsso.com/docs/plugins/wpsso/notes/modules/woocommerce/)
-	* [WordPress REST API v2](https://wpsso.com/docs/plugins/wpsso/notes/modules/wordpress-rest-api-v2/)
 	* [Yoast SEO (aka WordPress SEO)](https://wpsso.com/docs/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/)
 * [Contact Information and Feeds](https://wpsso.com/docs/plugins/wpsso/notes/contact-information/)
 * [Developer Resources](https://wpsso.com/docs/plugins/wpsso/notes/developer/)

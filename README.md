@@ -135,7 +135,6 @@
 <li>The Events Calendar</li>
 <li>The SEO Framework</li>
 <li>WooCommerce (versions 1, 2, and 3)</li>
-<li>WordPress REST API (version 2)</li>
 <li>WP eCommerce</li>
 <li>WP Meta SEO</li>
 <li>WP-PostRatings</li>
@@ -260,7 +259,6 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/polylang/">Polylang</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/the-events-calendar/">The Events Calendar</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/woocommerce/">WooCommerce</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/wordpress-rest-api-v2/">WordPress REST API v2</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/yoast-seo-aka-wordpress-seo/">Yoast SEO (aka WordPress SEO)</a></li>
 </ul></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/contact-information/">Contact Information and Feeds</a></li>
