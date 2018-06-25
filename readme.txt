@@ -225,6 +225,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 * [Can I use the Pro version on multiple websites?](https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
 * [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
 * [Doesn't an SEO plugin cover that?](https://wpsso.com/docs/plugins/wpsso/faqs/doesnt-an-seo-plugin-cover-that/)
+* [How can I add Schema aggregateRating values?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-add-schema-aggregaterating-values/)
 * [How can I exclude / ignore certain parts of the content text?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-exclude-ignore-certain-parts-of-the-content-text/)
 * [How can I fix a ERR_TOO_MANY_REDIRECTS error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-err_too_many_redirects-error/)
 * [How can I fix a PHP fatal "out of memory" error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/)
@@ -333,6 +334,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version).
+	* Added a new FAQ: How can I add Schema aggregateRating values?
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -482,7 +484,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.5.3-dev.2 =
 
-(2018/06/25) Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version).
+(2018/06/25) Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version). Added a new FAQ: How can I add Schema aggregateRating values?
 
 = 4.5.2 =
 
