@@ -3263,6 +3263,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: rating average and/or counts are empty' );
 				}
+
 				return array();
 			}
 
