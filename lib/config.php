@@ -2074,7 +2074,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'program.membership' => 'https://schema.org/ProgramMembership',
 							'property.value.specification' => 'https://schema.org/PropertyValueSpecification',
 							'quantity' => 'https://schema.org/Quantity',
-							'rating' => 'https://schema.org/Rating',
+							'rating' => array(
+								'rating' => 'https://schema.org/Rating',
+								'rating.aggregate' => 'https://schema.org/AggregateRating',
+							),
 							'reservation' => 'https://schema.org/Reservation',
 							'role' => 'https://schema.org/Role',
 							'seat' => 'https://schema.org/Seat',

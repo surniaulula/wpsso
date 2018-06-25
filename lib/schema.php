@@ -3156,8 +3156,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $og_single_image ) );
 			}
 
-			// example: product:rating:average
-			if ( ! empty( $mt_og[$og_type . ':rating:average'] ) ) {
+			if ( ! empty( $mt_og[$og_type . ':rating:average'] ) ) {	// Example: "product:rating:average".
 				$ret = array_merge( $ret, $this->get_aggregate_rating_noscript( $mod, $og_type, $mt_og ) );
 			}
 
