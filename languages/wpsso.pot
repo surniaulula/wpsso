@@ -1428,7 +1428,9 @@ msgctxt "option value"
 msgid "Left"
 msgstr ""
 
-#: lib/config-gettext-extract.php:67
+#: lib/config-gettext-extract.php:67 lib/messages.php:1848
+#: lib/messages.php:2170 lib/messages.php:2180 lib/messages.php:2189
+#: lib/messages.php:2201
 msgctxt "lib file description"
 msgid "Licenses"
 msgstr ""
@@ -4291,12 +4293,6 @@ msgid ""
 "Please note that Pro add-ons use several %1$s features. This means that all "
 "Pro add-ons require an active and licensed %1$s plugin &mdash; don't forget "
 "to purchase %1$s before purchasing any of its Pro add-ons."
-msgstr ""
-
-#: lib/messages.php:1848 lib/messages.php:2170 lib/messages.php:2180
-#: lib/messages.php:2189 lib/messages.php:2201
-msgctxt "lib file description"
-msgid "Core + Add-ons"
 msgstr ""
 
 #: lib/messages.php:1854
