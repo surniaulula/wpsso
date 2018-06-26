@@ -330,13 +330,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.5.3-dev.2 (2018/06/25)**
+**Version 4.6.0-dev.3 (2018/06/26)**
 
 * *New Features*
-	* None
-* *Improvements*
+	* Moved all license information from the "Add-ons" settings page to a new "Licenses" settings page.
 	* Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version).
-	* Added a new FAQ: How can I add Schema aggregateRating values?
+* *Improvements*
+	* None
 * *Bugfixes*
 	* None
 * *Developer Notes*
@@ -484,9 +484,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.5.3-dev.2 =
+= 4.6.0-dev.3 =
 
-(2018/06/25) Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version). Added a new FAQ: How can I add Schema aggregateRating values?
+(2018/06/26) Moved all license information from the "Add-ons" settings page to a new "Licenses" settings page. Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version).
 
 = 4.5.2 =
 
