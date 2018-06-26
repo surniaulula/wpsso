@@ -519,7 +519,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! empty( $licenses_page ) ) {
 				if ( $ext === $this->p->lca ) {	// Only add for the core plugin.
 					$links[] = '<a href="' . $this->p->util->get_admin_url( $licenses_page ) . '">' . 
-						_x( 'Pro and Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
+						_x( 'Add-ons and Pro', 'plugin action link', 'wpsso' ) . '</a>';
 				}
 			}
 

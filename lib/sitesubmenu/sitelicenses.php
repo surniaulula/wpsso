@@ -43,7 +43,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 		protected function add_meta_boxes() {
 
 			add_meta_box( $this->pagehook.'_licenses',
-				_x( 'Pro Licenses and Optional Add-ons', 'metabox title', 'wpsso' ),
+				_x( 'Optional Add-ons and Pro Licenses', 'metabox title', 'wpsso' ),
 					array( $this, 'show_metabox_licenses' ), $this->pagehook, 'normal' );
 
 			/**

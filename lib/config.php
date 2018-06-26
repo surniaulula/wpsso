@@ -69,13 +69,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'essential' => 'Essential',
 							'general' => 'General',
 							'advanced' => 'Advanced',
-							'licenses' => 'Pro and Add-ons',
+							'licenses' => 'Add-ons and Pro',
 							'dashboard' => 'Dashboard',
 							'setup' => 'Setup Guide',
 						),
 						'sitesubmenu' => array(	// Note that submenu elements must have unique keys.
 							'siteadvanced' => 'Advanced',
-							'sitelicenses' => 'Pro and Add-ons',
+							'sitelicenses' => 'Add-ons and Pro',
 							'sitesetup' => 'Setup Guide',
 						),
 						'gpl' => array(
