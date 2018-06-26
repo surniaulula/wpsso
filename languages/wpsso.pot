@@ -2458,14 +2458,14 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:110 lib/gpl/admin/post.php:123 lib/meta.php:242
-#: lib/meta.php:267 lib/pro/admin/meta.php:122 lib/pro/admin/post.php:133
+#: lib/gpl/admin/meta.php:110 lib/gpl/admin/post.php:123 lib/meta.php:249
+#: lib/meta.php:274 lib/pro/admin/meta.php:122 lib/pro/admin/post.php:133
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:116 lib/gpl/admin/post.php:130 lib/meta.php:246
-#: lib/meta.php:271 lib/pro/admin/meta.php:128 lib/pro/admin/post.php:140
+#: lib/gpl/admin/meta.php:116 lib/gpl/admin/post.php:130 lib/meta.php:253
+#: lib/meta.php:278 lib/pro/admin/meta.php:128 lib/pro/admin/post.php:140
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -2612,7 +2612,7 @@ msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:193 lib/meta.php:238 lib/post.php:1084
+#: lib/gpl/admin/post.php:193 lib/meta.php:245 lib/post.php:1084
 #: lib/pro/admin/post.php:204
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
@@ -4447,7 +4447,7 @@ msgid ""
 "by the %s plugin."
 msgstr ""
 
-#: lib/messages.php:2043 lib/meta.php:152
+#: lib/messages.php:2043 lib/meta.php:159
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
@@ -4715,132 +4715,132 @@ msgid ""
 "locale</a> to define alternate values for different languages."
 msgstr ""
 
-#: lib/meta.php:150
+#: lib/meta.php:157
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/meta.php:151
+#: lib/meta.php:158
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/meta.php:153
+#: lib/meta.php:160
 msgctxt "metabox tab"
 msgid "Head Tags"
 msgstr ""
 
-#: lib/meta.php:154
+#: lib/meta.php:161
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/meta.php:223
+#: lib/meta.php:230
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:228
+#: lib/meta.php:235
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:233
+#: lib/meta.php:240
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:250 lib/meta.php:277
+#: lib/meta.php:257 lib/meta.php:284
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/meta.php:282
+#: lib/meta.php:289
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:400
+#: lib/meta.php:407
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:402
+#: lib/meta.php:409
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:406
+#: lib/meta.php:413
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:408
+#: lib/meta.php:415
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:412
+#: lib/meta.php:419
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:414
+#: lib/meta.php:421
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:418
+#: lib/meta.php:425
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:420
+#: lib/meta.php:427
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:424
+#: lib/meta.php:431
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:426
+#: lib/meta.php:433
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:431
+#: lib/meta.php:438
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:433
+#: lib/meta.php:440
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:733
+#: lib/meta.php:740
 msgid "%s key(s) cleared from the cache."
 msgstr ""
 
-#: lib/meta.php:741
+#: lib/meta.php:748
 msgid ""
 "WP_DEBUG constant is enabled &ndash; the list of possible cache object names "
 "is included:"
 msgstr ""
 
-#: lib/meta.php:748
+#: lib/meta.php:755
 msgctxt "clear cache status"
 msgid "cleared"
 msgstr ""
 
-#: lib/meta.php:752
+#: lib/meta.php:759
 msgctxt "clear cache status"
 msgid "not cached"
 msgstr ""
 
-#: lib/meta.php:801
+#: lib/meta.php:808
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
