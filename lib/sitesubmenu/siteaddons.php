@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdmin' ) ) {
+if ( ! class_exists( 'WpssoSitesubmenuSiteAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 
-	class WpssoSitesubmenuSitelicenses extends WpssoAdmin {
+	class WpssoSitesubmenuSiteAddons extends WpssoAdmin {
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 			$this->p =& $plugin;
@@ -42,19 +42,19 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 		 */
 		protected function add_meta_boxes() {
 
-			add_meta_box( $this->pagehook.'_licenses',
-				_x( 'Licenses for Core Pro and Pro Add-ons', 'metabox title', 'wpsso' ),
-					array( $this, 'show_metabox_licenses' ), $this->pagehook, 'normal' );
+			add_meta_box( $this->pagehook.'_addons',
+				_x( 'Optional Core Add-ons', 'metabox title', 'wpsso' ),
+					array( $this, 'show_metabox_addons' ), $this->pagehook, 'normal' );
 
 			/**
 			 * Add a class to set a minimum width for the network postboxes.
 			 */
-			add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_licenses',
+			add_filter( 'postbox_classes_'.$this->pagehook.'_'.$this->pagehook.'_addons',
 				array( $this, 'add_class_postbox_network' ) );
 		}
 
-		public function show_metabox_licenses() {
-			$this->licenses_metabox_content( true );	// $network = true
+		public function show_metabox_addons() {
+			$this->addons_metabox_content( true );	// $network = true
 		}
 	}
 }

@@ -1,6 +1,6 @@
 <?php die( 'These aren\'t the droids you\'re looking for...' );
 // extract of translatable text strings from static config array
-_x( 'Add-ons and Pro', 'lib file description', 'wpsso' );
+_x( 'Add-ons', 'lib file description', 'wpsso' );
 _x( 'Advanced', 'lib file description', 'wpsso' );
 _x( 'All Options', 'option value', 'wpsso' );
 _x( 'All Transients', 'option label', 'wpsso' );
@@ -64,6 +64,7 @@ _x( 'In Stock', 'option value', 'wpsso' );
 _x( 'In Store Only', 'option value', 'wpsso' );
 _x( 'Intern', 'option value', 'wpsso' );
 _x( 'Left', 'option value', 'wpsso' );
+_x( 'Licenses', 'lib file description', 'wpsso' );
 _x( 'Limited Availability', 'option value', 'wpsso' );
 _x( 'LinkedIn Company Page URL', 'option value', 'wpsso' );
 _x( 'LinkedIn URL', 'option value', 'wpsso' );

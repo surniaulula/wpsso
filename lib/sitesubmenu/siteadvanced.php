@@ -53,11 +53,6 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 				array( $this, 'add_class_postbox_network' ) );
 		}
 
-		public function add_class_postbox_network( $classes ) {
-			$classes[] = 'postbox-network';
-			return $classes;
-		}
-
 		public function show_metabox_plugin() {
 
 			$metabox_id = 'plugin';

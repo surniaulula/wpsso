@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.5.2',		// Plugin version.
+					'version' => '4.6.0-dev.3',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -69,14 +69,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'essential' => 'Essential',
 							'general' => 'General',
 							'advanced' => 'Advanced',
-							'licenses' => 'Add-ons and Pro',
 							'dashboard' => 'Dashboard',
 							'setup' => 'Setup Guide',
+							'addons' => 'Add-ons',
+							'licenses' => 'Licenses',
 						),
 						'sitesubmenu' => array(	// Note that submenu elements must have unique keys.
 							'siteadvanced' => 'Advanced',
-							'sitelicenses' => 'Add-ons and Pro',
 							'sitesetup' => 'Setup Guide',
+							'siteaddons' => 'Add-ons',
+							'sitelicenses' => 'Licenses',
 						),
 						'gpl' => array(
 							'admin' => array(
@@ -1427,8 +1429,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'before' => '\0229b',		// Circle asterix.
 				'icon_html' => '&oast;',	// Circle asterix.
 				'dashicons' => array(
-					'licenses' => 'star-filled',
-					'sitelicenses' => 'star-filled',
+					'addons' => 'star-filled',
+					'siteaddons' => 'star-filled',
+					'licenses' => 'editor-justify',
+					'sitelicenses' => 'editor-justify',
 					'dashboard' => 'dashboard',
 					'sitedashboard' => 'dashboard',
 					'setup' => 'info',
@@ -2434,9 +2438,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/**
-		 * get_config() is called very early, so don't apply filters unless instructed ($filter_cf = true).
+		 * get_config() is called very early, so don't apply filters unless instructed.
 		 */
-		public static function get_config( $idx = false, $filter_cf = false ) {
+		public static function get_config( $idx = false, $apply_filters = false ) {
 
 			if ( ! isset( self::$cf['config_filtered'] ) || self::$cf['config_filtered'] !== true ) {
 
@@ -2451,7 +2455,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				self::$cf['opt']['version'] = '';	// -wpsso416pro-wpssoplm8pro
 
-				if ( $filter_cf ) {
+				if ( $apply_filters ) {
 
 					self::$cf['config_filtered'] = true;	// set before calling filter to prevent recursion
 
@@ -2512,21 +2516,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 		}
 
-		public static function get_ext_sorted( $filter_cf = false, $lca_top = true ) {
+		public static function get_ext_sorted( $apply_filters = true, $core_first = true ) {
+
 			$idx = 'plugin';
-			$ext = self::get_config( 'plugin', $filter_cf );
-			uasort( $ext, array( 'self', 'sort_ext_by_name' ) );	// sort array and maintain index association
-			if ( $lca_top && isset( $ext['wpsso'] ) ) {
+			$ext = self::get_config( 'plugin', $apply_filters );
+
+			uasort( $ext, array( 'self', 'sort_ext_by_name' ) );	// Sort array and maintain index association.
+
+			if ( $core_first && isset( $ext['wpsso'] ) ) {
 				SucomUtil::move_to_front( $ext, 'wpsso' );
 			}
+
 			return $ext;
 		}
 
 		private static function sort_ext_by_name( $a, $b ) {
 			if ( isset( $a['name'] ) && isset( $b['name'] ) ) {	// Just in case.
-				return strcasecmp( $a['name'], $b['name'] );	// case-insensitive string comparison
+				return strcasecmp( $a['name'], $b['name'] );	// Case-insensitive string comparison.
 			} else {
-				return 0;					// no change
+				return 0;					// No change.
 			}
 		}
 

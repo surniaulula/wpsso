@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) {
+if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 
-	class WpssoSubmenuLicenses extends WpssoAdmin {
+	class WpssoSubmenuAddons extends WpssoAdmin {
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 			$this->p =& $plugin;
@@ -31,15 +31,13 @@ if ( ! class_exists( 'WpssoSubmenuLicenses' ) && class_exists( 'WpssoAdmin' ) ) 
 		 */
 		protected function add_meta_boxes() {
 	
-			$short = $this->p->cf['plugin']['wpsso']['short'];
-
-			add_meta_box( $this->pagehook.'_licenses',
-				_x( 'Licenses for Core Pro and Pro Add-ons', 'metabox title', 'wpsso' ),
-					array( $this, 'show_metabox_licenses' ), $this->pagehook, 'normal' );
+			add_meta_box( $this->pagehook.'_addons',
+				_x( 'Optional Core Add-ons', 'metabox title', 'wpsso' ),
+					array( $this, 'show_metabox_addons' ), $this->pagehook, 'normal' );
 		}
 
-		public function show_metabox_licenses() {
-			$this->licenses_metabox_content( false );	// $network = false
+		public function show_metabox_addons() {
+			$this->addons_metabox_content( false );	// $network = false
 		}
 	}
 }
