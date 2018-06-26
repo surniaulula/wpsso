@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.5.3-dev.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4268,7 +4268,7 @@ msgid ""
 "dimensions of %s."
 msgstr ""
 
-#: lib/messages.php:1829
+#: lib/messages.php:1829 lib/messages.php:1852
 msgid ""
 "After purchasing the %1$s plugin &mdash; or any of its Pro add-ons &mdash; "
 "you'll receive an email with a unique Authentication ID for the plugin / add-"
@@ -4277,8 +4277,8 @@ msgstr ""
 
 #: lib/messages.php:1831
 msgid ""
-"Enter the Authentication ID in the option field corresponding to the plugin "
-"you purchased."
+"Enter the Authentication ID in the option field corresponding to the "
+"plugin / add-on you purchased."
 msgstr ""
 
 #: lib/messages.php:1833
@@ -4292,13 +4292,6 @@ msgid ""
 "Please note that Pro add-ons use several %1$s features. This means that all "
 "Pro add-ons require an active and licensed %1$s plugin &mdash; don't forget "
 "to purchase %1$s before purchasing any of its Pro add-ons."
-msgstr ""
-
-#: lib/messages.php:1852
-msgid ""
-"After purchasing the %1$s plugin &mdash; or any of its Pro add-ons &mdash; "
-"you'll receive an email with a unique Authentication ID for the plugin you "
-"purchased."
 msgstr ""
 
 #: lib/messages.php:1854
@@ -5454,7 +5447,7 @@ msgstr ""
 
 #: lib/sitesubmenu/sitelicenses.php:46 lib/submenu/licenses.php:34
 msgctxt "metabox title"
-msgid "Optional Add-ons and Pro Licenses"
+msgid "Add-ons and Pro Licenses"
 msgstr ""
 
 #: lib/submenu/advanced.php:35
