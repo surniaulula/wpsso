@@ -459,7 +459,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
-						$error_msg = printf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_url, '<code>'.$func_name.'</code>' );
+						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_url, '<code>'.$func_name.'</code>' );
 
 						$this->p->notice->err( $error_msg.' '.$regen_msg, true, $dismiss_key, $dismiss_time );
 
