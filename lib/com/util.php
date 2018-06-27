@@ -2070,7 +2070,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				 * Do not include og:image:url - use og:image instead.
 				 */
 				$mt_pre . ':image:secure_url' => '',
-				$mt_pre . ':image'            => '',	// Same as og:image:url.
+				$mt_pre . ':image'            => '',	// Same as og:image:url - don't use og:image:url.
 				$mt_pre . ':image:width'      => '',
 				$mt_pre . ':image:height'     => '',
 				$mt_pre . ':image:cropped'    => '',	// Non-standard / internal meta tag.
@@ -2090,45 +2090,53 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_product_seed( $mt_pre = 'product', array $mt_og = array() ) {
 
 			$og_ret = array(
-				$mt_pre . ':age_group'               => '',
-				$mt_pre . ':availability'            => '',
-				$mt_pre . ':brand'                   => '',
-				$mt_pre . ':category'                => '',
-				$mt_pre . ':color'                   => '',
-				$mt_pre . ':condition'               => '',
-				$mt_pre . ':ean'                     => '',
-				$mt_pre . ':expiration_time'         => '',
-				$mt_pre . ':is_product_shareable'    => '',
-				$mt_pre . ':isbn'                    => '',
-				$mt_pre . ':material'                => '',
-				$mt_pre . ':mfr_part_no'             => '',
-				$mt_pre . ':original_price:amount'   => '',
-				$mt_pre . ':original_price:currency' => '',
-				$mt_pre . ':pattern'                 => '',
-				$mt_pre . ':plural_title'            => '',
-				$mt_pre . ':pretax_price:amount'     => '',
-				$mt_pre . ':pretax_price:currency'   => '',
-				$mt_pre . ':price:amount'            => '',
-				$mt_pre . ':price:currency'          => '',
-				$mt_pre . ':product_link'            => '',
-				$mt_pre . ':purchase_limit'          => '',
-				$mt_pre . ':retailer'                => '',	// A Facebook ID or reference to the profile of the retailer.
-				$mt_pre . ':retailer_category'       => '',
-				$mt_pre . ':retailer_part_no'        => '',
-				$mt_pre . ':retailer_title'          => '',
-				$mt_pre . ':sale_price:amount'       => '',
-				$mt_pre . ':sale_price:currency'     => '',
-				$mt_pre . ':sale_price_dates:start'  => '',
-				$mt_pre . ':sale_price_dates:end'    => '',
-				$mt_pre . ':shipping_cost:amount'    => '',
-				$mt_pre . ':shipping_cost:currency'  => '',
-				$mt_pre . ':shipping_weight:value'   => '',
-				$mt_pre . ':shipping_weight:units'   => '',
-				$mt_pre . ':size'                    => '',
-				$mt_pre . ':target_gender'           => '',
-				$mt_pre . ':upc'                     => '',
-				$mt_pre . ':weight:value'            => '',
-				$mt_pre . ':weight:units'            => '',
+				$mt_pre . ':age_group'                       => '',
+				$mt_pre . ':availability'                    => '',
+				$mt_pre . ':brand'                           => '',
+				$mt_pre . ':category'                        => '',
+				$mt_pre . ':color'                           => '',
+				$mt_pre . ':condition'                       => '',
+				$mt_pre . ':ean'                             => '',
+				$mt_pre . ':expiration_time'                 => '',
+				$mt_pre . ':is_product_shareable'            => '',
+				$mt_pre . ':isbn'                            => '',
+				$mt_pre . ':material'                        => '',
+				$mt_pre . ':mfr_part_no'                     => '',
+				$mt_pre . ':original_price:amount'           => '',
+				$mt_pre . ':original_price:currency'         => '',
+				$mt_pre . ':pattern'                         => '',
+				$mt_pre . ':plural_title'                    => '',
+				$mt_pre . ':pretax_price:amount'             => '',
+				$mt_pre . ':pretax_price:currency'           => '',
+				$mt_pre . ':price:amount'                    => '',
+				$mt_pre . ':price:currency'                  => '',
+				$mt_pre . ':product_link'                    => '',
+				$mt_pre . ':purchase_limit'                  => '',
+				$mt_pre . ':retailer'                        => '',	// A Facebook ID or reference to the profile of the retailer.
+				$mt_pre . ':retailer_category'               => '',
+				$mt_pre . ':retailer_part_no'                => '',
+				$mt_pre . ':retailer_title'                  => '',
+				$mt_pre . ':sale_price:amount'               => '',
+				$mt_pre . ':sale_price:currency'             => '',
+				$mt_pre . ':sale_price_dates:start'          => '',
+				$mt_pre . ':sale_price_dates:start_date'     => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:start_time'     => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:start_timezone' => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:start_iso'      => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:end'            => '',
+				$mt_pre . ':sale_price_dates:end_date'       => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:end_time'       => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:end_timezone'   => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':sale_price_dates:end_iso'        => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':shipping_cost:amount'            => '',
+				$mt_pre . ':shipping_cost:currency'          => '',
+				$mt_pre . ':shipping_weight:value'           => '',
+				$mt_pre . ':shipping_weight:units'           => '',
+				$mt_pre . ':size'                            => '',
+				$mt_pre . ':target_gender'                   => '',
+				$mt_pre . ':upc'                             => '',
+				$mt_pre . ':weight:value'                    => '',
+				$mt_pre . ':weight:units'                    => '',
 			);
 
 			return self::maybe_merge_mt_og( $og_ret, $mt_og );
@@ -2141,7 +2149,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				 * Do not include og:video - use og:video:url instead.
 				 */
 				$mt_pre . ':video:secure_url'    => '',
-				$mt_pre . ':video:url'           => '',		// Same as og:video.
+				$mt_pre . ':video:url'           => '',		// Same as og:video - don't use og:video.
 				$mt_pre . ':video:type'          => '',		// Example: 'application/x-shockwave-flash' or 'text/html'.
 				$mt_pre . ':video:width'         => '',
 				$mt_pre . ':video:height'        => '',

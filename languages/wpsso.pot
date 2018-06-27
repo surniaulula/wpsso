@@ -5208,17 +5208,17 @@ msgstr ""
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:981
+#: lib/pro/ecom/woocommerce.php:979
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:983
+#: lib/pro/ecom/woocommerce.php:981
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:986
+#: lib/pro/ecom/woocommerce.php:984
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
