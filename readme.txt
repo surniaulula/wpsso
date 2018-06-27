@@ -338,7 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* None
 * *Bugfixes*
-	* Fix to avoid using the new Yoast SEO private class property Yoast_Notification::$message.
+	* Fix to avoid using the previously public Yoast SEO class property Yoast_Notification::$message.
 * *Developer Notes*
 	* None
 
