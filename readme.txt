@@ -330,15 +330,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.6.0-dev.3 (2018/06/26)**
+**Version 4.6.0-b.1 (2018/06/27)**
 
 * *New Features*
-	* Moved all license information from the "Add-ons" settings page to a new "Licenses" settings page.
 	* Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version).
+	* Moved all license information from the "Add-ons" settings page to a new "Licenses" settings page.
 * *Improvements*
 	* None
 * *Bugfixes*
-	* None
+	* Fix to avoid using the new Yoast SEO private class property Yoast_Notification::$message.
 * *Developer Notes*
 	* None
 
@@ -484,9 +484,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.6.0-dev.3 =
+= 4.6.0-b.1 =
 
-(2018/06/26) Moved all license information from the "Add-ons" settings page to a new "Licenses" settings page. Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version).
+(2018/06/27) Added a new "WPSSO REST API" add-on. Moved license information to a new "Licenses" settings page. Fix for Yoast SEO class property Yoast_Notification::$message.
 
 = 4.5.2 =
 
