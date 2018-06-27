@@ -66,12 +66,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			switch ( $hook_name ) {
 
 				/**
-				 * License settings page.
+				 * Addons and license settings page.
 				 */
-				case ( preg_match( '/_page_' . $this->p->lca . '-(site)?licenses/', $hook_name ) ? true : false ):
+				case ( preg_match( '/_page_' . $this->p->lca . '-(site)?(addons|licenses)/', $hook_name ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'enqueuing styles for licenses page' );
+						$this->p->debug->log( 'enqueuing styles for addons and licenses page' );
 					}
 
 					add_filter( 'admin_body_class', array( $this, 'add_plugins_body_class' ) );
@@ -133,7 +133,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 		}
 
 		public function add_plugins_body_class( $classes ) {
+
 			$classes .= ' plugins-php';
+
 			return $classes;
 		}
 

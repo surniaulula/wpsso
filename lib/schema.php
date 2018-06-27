@@ -836,7 +836,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'type_name' => $type_name,
+					'type_name'  => $type_name,
 					'default_id' => $default_id,
 				) );
 			}
@@ -3000,14 +3000,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return array();	// empty array
 			}
 
-			$mt_schema = array();
-			$max = $this->p->util->get_max_nums( $mod, 'schema' );
-			$page_type_id = $this->get_mod_schema_type( $mod, true );	// $ret_schema_id = true
+			$mt_schema     = array();
+			$max_nums      = $this->p->util->get_max_nums( $mod, 'schema' );
+			$page_type_id  = $this->get_mod_schema_type( $mod, true );	// $ret_schema_id = true
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
-			$size_name = $this->p->lca . '-schema';
+			$size_name     = $this->p->lca . '-schema';
 
 			$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
-				'url' => 'og:url',
+				'url'  => 'og:url',
 				'name' => 'og:title',
 			) );
 
@@ -3043,7 +3043,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'getting images for ' . $page_type_url );
 				}
 
-				$og_images = $this->p->og->get_all_images( $max['schema_img_max'], $size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
+				$og_images = $this->p->og->get_all_images( $max_nums['schema_img_max'], $size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
 
 				if ( empty( $og_images ) && $mod['is_post'] ) {
 					$og_images = $this->p->media->get_default_images( 1, $size_name, true );
@@ -3125,12 +3125,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return array();	// empty array
 			}
 
-			$ret = array();
-			$max = $this->p->util->get_max_nums( $mod, 'schema' );
-			$page_type_id = $this->get_mod_schema_type( $mod, true );	// $ret_schema_id = true
+			$ret           = array();
+			$max_nums      = $this->p->util->get_max_nums( $mod, 'schema' );
+			$page_type_id  = $this->get_mod_schema_type( $mod, true );	// $ret_schema_id = true
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
-			$size_name = $this->p->lca . '-schema';
-			$og_type = $mt_og['og:type'];
+			$size_name     = $this->p->lca . '-schema';
+			$og_type_id    = $mt_og['og:type'];
 
 			switch ( $page_type_url ) {
 				case 'https://schema.org/BlogPosting':
@@ -3146,7 +3146,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'getting images for ' . $page_type_url );
 			}
 
-			$og_images = $this->p->og->get_all_images( $max['schema_img_max'], $size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
+			$og_images = $this->p->og->get_all_images( $max_nums['schema_img_max'], $size_name, $mod, true, 'schema' );	// $md_pre = 'schema'
 
 			if ( empty( $og_images ) && $mod['is_post'] ) {
 				$og_images = $this->p->media->get_default_images( 1, $size_name, true );
@@ -3156,8 +3156,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $og_single_image ) );
 			}
 
-			if ( ! empty( $mt_og[$og_type . ':rating:average'] ) ) {	// Example: "product:rating:average".
-				$ret = array_merge( $ret, $this->get_aggregate_rating_noscript( $mod, $og_type, $mt_og ) );
+			if ( ! empty( $mt_og[$og_type_id . ':rating:average'] ) ) {	// Example: "product:rating:average".
+				$ret = array_merge( $ret, $this->get_aggregate_rating_noscript( $mod, $og_type_id, $mt_og ) );
 			}
 
 			return (array) apply_filters( $this->p->lca . '_schema_noscript_array', $ret, $mod, $mt_og, $page_type_id );
@@ -3251,13 +3251,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
-		public function get_aggregate_rating_noscript( array &$mod, $og_type, array $mt_og ) {
+		public function get_aggregate_rating_noscript( array &$mod, $og_type_id, array $mt_og ) {
 
 			/**
 			 * Aggregate rating needs at least one rating or review count.
 			 */
-			if ( empty( $mt_og[$og_type . ':rating:average'] ) ||
-				( empty( $mt_og[$og_type . ':rating:count'] ) && empty( $mt_og[$og_type . ':review:count'] ) ) ) {
+			if ( empty( $mt_og[$og_type_id . ':rating:average'] ) ||
+				( empty( $mt_og[$og_type_id . ':rating:count'] ) && empty( $mt_og[$og_type_id . ':review:count'] ) ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: rating average and/or counts are empty' );
@@ -3268,21 +3268,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			return array_merge(
 				array( array( '<noscript itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">' . "\n" ) ),
-				( empty( $mt_og[$og_type . ':rating:average'] ) ? 
+				( empty( $mt_og[$og_type_id . ':rating:average'] ) ? 
 					array() : $this->p->head->get_single_mt( 'meta', 'itemprop',
-						'aggregaterating.ratingValue', $mt_og[$og_type . ':rating:average'], '', $mod ) ),
-				( empty( $mt_og[$og_type . ':rating:count'] ) ? 
+						'aggregaterating.ratingValue', $mt_og[$og_type_id . ':rating:average'], '', $mod ) ),
+				( empty( $mt_og[$og_type_id . ':rating:count'] ) ? 
 					array() : $this->p->head->get_single_mt( 'meta', 'itemprop',
-						'aggregaterating.ratingCount', $mt_og[$og_type . ':rating:count'], '', $mod ) ),
-				( empty( $mt_og[$og_type . ':rating:worst'] ) ? 
+						'aggregaterating.ratingCount', $mt_og[$og_type_id . ':rating:count'], '', $mod ) ),
+				( empty( $mt_og[$og_type_id . ':rating:worst'] ) ? 
 					array() : $this->p->head->get_single_mt( 'meta', 'itemprop',
-						'aggregaterating.worstRating', $mt_og[$og_type . ':rating:worst'], '', $mod ) ),
-				( empty( $mt_og[$og_type . ':rating:best'] ) ? 
+						'aggregaterating.worstRating', $mt_og[$og_type_id . ':rating:worst'], '', $mod ) ),
+				( empty( $mt_og[$og_type_id . ':rating:best'] ) ? 
 					array() : $this->p->head->get_single_mt( 'meta', 'itemprop',
-						'aggregaterating.bestRating', $mt_og[$og_type . ':rating:best'], '', $mod ) ),
-				( empty( $mt_og[$og_type . ':review:count'] ) ? 
+						'aggregaterating.bestRating', $mt_og[$og_type_id . ':rating:best'], '', $mod ) ),
+				( empty( $mt_og[$og_type_id . ':review:count'] ) ? 
 					array() : $this->p->head->get_single_mt( 'meta', 'itemprop', 
-						'aggregaterating.reviewCount', $mt_og[$og_type . ':review:count'], '', $mod ) ),
+						'aggregaterating.reviewCount', $mt_og[$og_type_id . ':review:count'], '', $mod ) ),
 				array( array( '</noscript>' . "\n" ) )
 			);
 		}
@@ -3312,7 +3312,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'author_id' => $author_id,
-					'itemprop' => $itemprop,
+					'itemprop'  => $itemprop,
 				) );
 			}
 

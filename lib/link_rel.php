@@ -40,6 +40,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			}
 
 			$sharing_url = empty( $mt_og['og:url'] ) ? $this->p->util->get_sharing_url( $mod ) : $mt_og['og:url'];
+
 			$link_rel = apply_filters( $this->p->lca . '_link_rel_seed', array(), $mod );
 
 			/**

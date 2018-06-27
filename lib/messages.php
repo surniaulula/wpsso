@@ -27,7 +27,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'idx' => $idx,
+					'idx'  => $idx,
 					'info' => $info,
 				) );
 			}
@@ -205,10 +205,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							}
 							// no break - fall through
 
-							// use ucfirst() for the french translation which puts the (lowercase) product meta name first 
-							$text = sprintf( __( 'You may select a custom %1$s for your product, or leave the default value as-is.', 'wpsso' ), $product_meta_name ).' '.
-							ucfirst( sprintf( __( 'The product %1$s may be used in Open Graph product meta tags and Schema markup for products with a single variation.', 'wpsso' ), $product_meta_name ).' '.
-							sprintf( __( 'The Schema markup for products with multiple variations will include all product variations with the specific %1$s of each variation.', 'wpsso' ), $product_meta_name ) );
+						case 'tooltip-meta-product_gender':
+
+							if ( ! isset( $product_meta_name ) ) {
+								$product_meta_name = _x( 'target gender', 'product meta name', 'wpsso' );
+							}
+							// no break - fall through
+
+							$text = sprintf( __( 'You may select a custom %1$s for your product, or leave the default value as-is.', 'wpsso' ), $product_meta_name ).' ';
+
+							// translators: %1$s is the product meta name - the first letter of this sentence is capitalized automatically.
+							$text .= ucfirst( sprintf( __( 'The product %1$s may be used in Open Graph product meta tags and Schema markup for products with a single variation.', 'wpsso' ), $product_meta_name ) ).' ';
+
+							$text .= sprintf( __( 'The Schema markup for products with multiple variations will include all product variations with the specific %1$s of each variation.', 'wpsso' ), $product_meta_name );
 
 						 	break;	// stop here
 
@@ -866,6 +875,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product size', 'tooltip fragment', 'wpsso' ),
 									_x( 'Product Size', 'option label', 'wpsso' ),
+								);
+							}
+
+							// no break - fall through
+
+						case 'tooltip-plugin_cf_product_gender':
+
+							if ( ! isset( $plugin_cf_info ) ) {
+								$plugin_cf_info = array(
+									_x( 'a product target gender', 'tooltip fragment', 'wpsso' ),
+									_x( 'Product Gender', 'option label', 'wpsso' ),
 								);
 							}
 

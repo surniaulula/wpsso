@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		protected $uniq_urls = array();			// array to detect duplicate images, etc.
 		protected $size_labels = array();		// reference array for image size labels
 		protected $force_regen = array(
-			'cache' => null,			// cache for returned values
+			'cache'     => null,			// cache for returned values
 			'transient' => null,			// transient array from/to database
 		);
 
@@ -1843,10 +1843,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'type' => $type,
-					'mod' => $mod,
+					'type'     => $type,
+					'mod'      => $mod,
 					'add_page' => $add_page,
-					'src_id' => $src_id,
+					'src_id'   => $src_id,
 				) );
 			}
 

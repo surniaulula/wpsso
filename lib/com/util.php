@@ -1477,27 +1477,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			static $local_cache = array();
 
 			$plugin_fields = array_merge( array(
-				'active_installs' => true, // Get by default.
-				'added' => false,
-				'banners' => false,
-				'compatibility' => false,
-				'contributors' => false,
-				'description' => false,
-				'donate_link' => false,
-				'downloadlink' => true, // Get by default.
-				'group' => false,
-				'homepage' => false,
-				'icons' => false,
-				'last_updated' => false,
-				'sections' => false,
+				'active_installs'   => true, // Get by default.
+				'added'             => false,
+				'banners'           => false,
+				'compatibility'     => false,
+				'contributors'      => false,
+				'description'       => false,
+				'donate_link'       => false,
+				'downloadlink'      => true, // Get by default.
+				'group'             => false,
+				'homepage'          => false,
+				'icons'             => false,
+				'last_updated'      => false,
+				'sections'          => false,
 				'short_description' => false,
-				'rating' => true, // Get by default.
-				'ratings' => true, // Get by default.
-				'requires' => false,
-				'reviews' => false,
-				'tags' => false,
-				'tested' => false,
-				'versions' => false
+				'rating'            => true, // Get by default.
+				'ratings'           => true, // Get by default.
+				'requires'          => false,
+				'reviews'           => false,
+				'tags'              => false,
+				'tested'            => false,
+				'versions'          => false
 			), $plugin_fields );
 
 			$fields_key = json_encode( $plugin_fields ); // Unique index based on selected fields.
@@ -2060,86 +2060,154 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ''; // Empty string.
 		}
 
-		public static function get_mt_prop_video( $mt_pre = 'og', array $og_partial = array() ) {
+		/**
+		 * Pre-define the array key order for the list() construct.
+		 */
+		public static function get_mt_image_seed( $mt_pre = 'og', array $mt_og = array() ) {
 
-			$og_complete = array(
+			$og_ret = array(
+				/**
+				 * Do not include og:image:url - use og:image instead.
+				 */
+				$mt_pre . ':image:secure_url' => '',
+				$mt_pre . ':image'            => '',	// Same as og:image:url.
+				$mt_pre . ':image:width'      => '',
+				$mt_pre . ':image:height'     => '',
+				$mt_pre . ':image:cropped'    => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':image:id'         => '',	// Non-standard / internal meta tag.
+			);
+
+			if ( ! empty( $mt_og ) ) {
+				$og_ret = array_merge( $og_ret, $mt_og );
+			}
+
+			return self::maybe_merge_mt_og( $og_ret, $mt_og );
+		}
+
+		/**
+		 * This method is used by e-Commerce modules to pre-define and pre-sort the product meta tags.
+		 */
+		public static function get_mt_product_seed( $mt_pre = 'product', array $mt_og = array() ) {
+
+			$og_ret = array(
+				$mt_pre . ':age_group'               => '',
+				$mt_pre . ':availability'            => '',
+				$mt_pre . ':brand'                   => '',
+				$mt_pre . ':category'                => '',
+				$mt_pre . ':color'                   => '',
+				$mt_pre . ':condition'               => '',
+				$mt_pre . ':ean'                     => '',
+				$mt_pre . ':expiration_time'         => '',
+				$mt_pre . ':is_product_shareable'    => '',
+				$mt_pre . ':isbn'                    => '',
+				$mt_pre . ':material'                => '',
+				$mt_pre . ':mfr_part_no'             => '',
+				$mt_pre . ':original_price:amount'   => '',
+				$mt_pre . ':original_price:currency' => '',
+				$mt_pre . ':pattern'                 => '',
+				$mt_pre . ':plural_title'            => '',
+				$mt_pre . ':pretax_price:amount'     => '',
+				$mt_pre . ':pretax_price:currency'   => '',
+				$mt_pre . ':price:amount'            => '',
+				$mt_pre . ':price:currency'          => '',
+				$mt_pre . ':product_link'            => '',
+				$mt_pre . ':purchase_limit'          => '',
+				$mt_pre . ':retailer'                => '',	// A Facebook ID or reference to the profile of the retailer.
+				$mt_pre . ':retailer_category'       => '',
+				$mt_pre . ':retailer_part_no'        => '',
+				$mt_pre . ':retailer_title'          => '',
+				$mt_pre . ':sale_price:amount'       => '',
+				$mt_pre . ':sale_price:currency'     => '',
+				$mt_pre . ':sale_price_dates:start'  => '',
+				$mt_pre . ':sale_price_dates:end'    => '',
+				$mt_pre . ':shipping_cost:amount'    => '',
+				$mt_pre . ':shipping_cost:currency'  => '',
+				$mt_pre . ':shipping_weight:value'   => '',
+				$mt_pre . ':shipping_weight:units'   => '',
+				$mt_pre . ':size'                    => '',
+				$mt_pre . ':target_gender'           => '',
+				$mt_pre . ':upc'                     => '',
+				$mt_pre . ':weight:value'            => '',
+				$mt_pre . ':weight:units'            => '',
+			);
+
+			return self::maybe_merge_mt_og( $og_ret, $mt_og );
+		}
+
+		public static function get_mt_video_seed( $mt_pre = 'og', array $mt_og = array() ) {
+
+			$og_ret = array(
 				/**
 				 * Do not include og:video - use og:video:url instead.
 				 */
-				$mt_pre . ':video:secure_url' => '',
-				$mt_pre . ':video:url' => '',
-				$mt_pre . ':video:type' => '',			// 'application/x-shockwave-flash' or 'text/html'
-				$mt_pre . ':video:width' => '',
-				$mt_pre . ':video:height' => '',
-				$mt_pre . ':video:tag' => array(),
-				$mt_pre . ':video:duration' => '',              // Non-standard / internal meta tag.
-				$mt_pre . ':video:upload_date' => '',           // Non-standard / internal meta tag.
-				$mt_pre . ':video:thumbnail_url' => '',         // Non-standard / internal meta tag.
-				$mt_pre . ':video:embed_url' => '',             // Non-standard / internal meta tag.
-				$mt_pre . ':video:has_image' => false,          // Non-standard / internal meta tag.
-				$mt_pre . ':video:title' => '',                 // Non-standard / internal meta tag.
-				$mt_pre . ':video:description' => '',           // Non-standard / internal meta tag.
+				$mt_pre . ':video:secure_url'    => '',
+				$mt_pre . ':video:url'           => '',		// Same as og:video.
+				$mt_pre . ':video:type'          => '',		// Example: 'application/x-shockwave-flash' or 'text/html'.
+				$mt_pre . ':video:width'         => '',
+				$mt_pre . ':video:height'        => '',
+				$mt_pre . ':video:tag'           => array(),
+				$mt_pre . ':video:duration'      => '',		// Non-standard / internal meta tag.
+				$mt_pre . ':video:upload_date'   => '',		// Non-standard / internal meta tag.
+				$mt_pre . ':video:thumbnail_url' => '',		// Non-standard / internal meta tag.
+				$mt_pre . ':video:embed_url'     => '',		// Non-standard / internal meta tag.
+				$mt_pre . ':video:has_image'     => false,	// Non-standard / internal meta tag.
+				$mt_pre . ':video:title'         => '',		// Non-standard / internal meta tag.
+				$mt_pre . ':video:description'   => '',		// Non-standard / internal meta tag.
 				/**
-				 * Used for twitter player card meta tags.
+				 * These meta tag values are used for the Twitter player card.
 				 */
-				$mt_pre . ':video:iphone_name' => '',           // Non-standard / internal meta tag.
-				$mt_pre . ':video:iphone_id' => '',             // Non-standard / internal meta tag.
-				$mt_pre . ':video:iphone_url' => '',            // Non-standard / internal meta tag.
-				$mt_pre . ':video:ipad_name' => '',             // Non-standard / internal meta tag.
-				$mt_pre . ':video:ipad_id' => '',               // Non-standard / internal meta tag.
-				$mt_pre . ':video:ipad_url' => '',              // Non-standard / internal meta tag.
-				$mt_pre . ':video:googleplay_name' => '',       // Non-standard / internal meta tag.
-				$mt_pre . ':video:googleplay_id' => '',         // Non-standard / internal meta tag.
-				$mt_pre . ':video:googleplay_url' => '',        // Non-standard / internal meta tag.
+				$mt_pre . ':video:iphone_name'     => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:iphone_id'       => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:iphone_url'      => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:ipad_name'       => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:ipad_id'         => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:ipad_url'        => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:googleplay_name' => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:googleplay_id'   => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:googleplay_url'  => '',	// Non-standard / internal meta tag.
 			);
 
-			$og_complete += self::get_mt_prop_image( $mt_pre );
+			$og_ret += self::get_mt_image_seed( $mt_pre );
 
 			/**
 			 * Facebook applink meta tags.
 			 */
 			if ( $mt_pre === 'og' ) {
-				$og_complete += array(
-					'al:ios:app_name' => '',
-					'al:ios:app_store_id' => '',
-					'al:ios:url' => '',
-					'al:android:app_name' => '',
-					'al:android:package' => '',
-					'al:android:url' => '',
-					'al:web:url' => '',
+				$og_ret += array(
+					'al:ios:app_name'        => '',
+					'al:ios:app_store_id'    => '',
+					'al:ios:url'             => '',
+					'al:android:app_name'    => '',
+					'al:android:package'     => '',
+					'al:android:url'         => '',
+					'al:web:url'             => '',
 					'al:web:should_fallback' => 'false',
 				);
 			}
 
-			if ( ! empty( $og_partial ) ) {
-				$og_complete = array_merge( $og_complete, $og_partial );
-			}
-
-			return $og_complete;
+			return self::maybe_merge_mt_og( $og_ret, $mt_og );
 		}
 
 		/**
-		 * Pre-define the array key order for the list() construct (which assigns elements from right to left).
+		 * Private method used by get_mt_image_seed(), get_mt_product_seed(), and get_mt_video_seed().
 		 */
-		public static function get_mt_prop_image( $mt_pre = 'og', array $og_partial = array() ) {
+		private static function maybe_merge_mt_og( array $og_ret, array $mt_og ) {
 
-			$og_complete = array(
-				/**
-				 * og:image:url is not used - do not include.
-				 */
-				$mt_pre . ':image:secure_url' => '',
-				$mt_pre . ':image' => '',
-				$mt_pre . ':image:width' => '',
-				$mt_pre . ':image:height' => '',
-				$mt_pre . ':image:cropped' => '',               // Non-standard / internal meta tag.
-				$mt_pre . ':image:id' => '',                    // Non-standard / internal meta tag.
-			);
-
-			if ( ! empty( $og_partial ) ) {
-				$og_complete = array_merge( $og_complete, $og_partial );
+			if ( empty( $mt_og ) ) {
+				return $mt_og;
+			} 
+		
+			/**
+			 * Always keep the 'og:type' meta tag top-most.
+			 *
+			 * Note that isset() does not return true for array keys that correspond to a null value,
+			 * while array_key_exists() does, so use array_key_exists() here.
+			 */
+			if ( array_key_exists( 'og:type', $mt_og ) ) {
+				return array_merge( array( 'og:type' => $mt_og['og:type'] ), $og_ret, $mt_og );
 			}
 
-			return $og_complete;
+			return array_merge( $og_ret, $mt_og );
 		}
 
 		public static function get_site_url( array $opts, $mixed = 'current' ) {

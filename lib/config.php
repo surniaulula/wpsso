@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.6.0-dev.3',		// Plugin version.
+					'version' => '4.6.0-b.1',		// Plugin version.
 					'opt_version' => '579',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -870,6 +870,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:price:amount' => 1,
 					'add_meta_property_product:price:currency' => 1,
 					'add_meta_property_product:size' => 1,
+					'add_meta_property_product:target_gender' => 1,
 					'add_meta_property_product:weight:value' => 1,
 					'add_meta_property_product:weight:units' => 1,
 					'add_meta_property_profile:first_name' => 1,	// Open graph (profile).
@@ -1043,6 +1044,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_material' => '',		// Product Material Custom Field.
 					'plugin_cf_product_price' => '',		// Product Price Custom Field.
 					'plugin_cf_product_size' => '',			// Product Size Custom Field.
+					'plugin_cf_product_gender' => '',		// Product Gender Custom Field.
 					'plugin_cf_sameas_urls' => '',			// Same-As URLs Custom Field.
 					/**
 					 * Advanced settings - Cache Settings tab.
@@ -1207,25 +1209,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Contact method options prefix.
 				 */
 				'cm_prefix' => array(
-					'email' => 'email',
-					'facebook' => 'fb',
-					'gplus' => 'gp',
-					'twitter' => 'twitter',
-					'instagram' => 'instgram',
-					'linkedin' => 'linkedin',
-					'myspace' => 'myspace',
-					'pinterest' => 'pin',
-					'pocket' => 'pocket',
-					'buffer' => 'buffer',
-					'reddit' => 'reddit',
-					'managewp' => 'managewp',
-					'soundcloud' => 'sc',
+					'email'       => 'email',
+					'facebook'    => 'fb',
+					'gplus'       => 'gp',
+					'twitter'     => 'twitter',
+					'instagram'   => 'instgram',
+					'linkedin'    => 'linkedin',
+					'myspace'     => 'myspace',
+					'pinterest'   => 'pin',
+					'pocket'      => 'pocket',
+					'buffer'      => 'buffer',
+					'reddit'      => 'reddit',
+					'managewp'    => 'managewp',
+					'soundcloud'  => 'sc',
 					'stumbleupon' => 'stumble',
-					'tumblr' => 'tumblr',
-					'youtube' => 'yt',
-					'skype' => 'skype',
-					'vk' => 'vk',
-					'whatsapp' => 'wa',
+					'tumblr'      => 'tumblr',
+					'youtube'     => 'yt',
+					'skype'       => 'skype',
+					'vk'          => 'vk',
+					'whatsapp'    => 'wa',
 				),
 				/**
 				 * Custom field to meta data index.
@@ -1245,6 +1247,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_material'    => 'product_material',
 					'plugin_cf_product_price'       => 'product_price',
 					'plugin_cf_product_size'        => 'product_size',
+					'plugin_cf_product_gender'      => 'product_gender',
 					'plugin_cf_sameas_urls'         => 'schema_sameas_url',
 				),
 				/**
@@ -1593,17 +1596,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'none'      => '[None]',
 					'ancestors' => 'Parents',
 				),
-				// shortener key is also its filename under lib/pro/ext/
+				/**
+				 * The shortener key is also its filename under lib/pro/ext/.
+				 */
 				'shorteners' => array(
 					'none'    => '[None]',
 					'bitly'   => 'Bitly (suggested)',
-					'dlmyapp'   => 'DLMY.App',
+					'dlmyapp' => 'DLMY.App',
 					'googl'   => 'Google',
 					'owly'    => 'Ow.ly',
 					'tinyurl' => 'TinyURL',
 					'yourls'  => 'YOURLS',
 				),
-				// social account keys and labels for organization sameas
+				/**
+				 * Social account keys and labels for Organization SameAs.
+				 */
 				'social_accounts' => array(
 					'fb_publisher_url'       => 'Facebook Business Page URL',
 					'instgram_publisher_url' => 'Instagram Business Page URL',
@@ -1625,42 +1632,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wpvideo_api'    => 'WordPress Video Shortcode',
 					'plugin_youtube_api'    => 'YouTube Videos and Playlists',
 				),
-				// https://schema.org/ItemAvailability
-				// {schema_property_value} => {select_value_shown}
-				'item_availability' => array(
-					'none'                => '[None]',
-			 		'Discontinued'        => 'Discontinued',
-			 		'InStock'             => 'In Stock',
-			 		'InStoreOnly'         => 'In Store Only',
-			 		'LimitedAvailability' => 'Limited Availability',
-			 		'OnlineOnly'          => 'Online Only',
-			 		'OutOfStock'          => 'Out of Stock',
-			 		'PreOrder'            => 'Pre-Order',
-			 		'SoldOut '            => 'Sold Out',
-				),
-				// https://schema.org/OfferItemCondition
-				// {schema_property_value} => {select_value_shown}
-				'item_condition' => array(
-					'none'                 => '[None]',
-					'DamagedCondition'     => 'Damaged',
-					'NewCondition'         => 'New',
-					'RefurbishedCondition' => 'Refurbished',
-					'UsedCondition'        => 'Used',
-				),
-				/**
-				 * See https://developers.google.com/search/docs/data-types/job-postings.
-				 * {schema_property_value} => {select_value_shown}
-				 */
-				'employment_type' => array(
-					'full_time'  => 'Full Time',
-					'part_time'  => 'Part Time',
-					'contractor' => 'Contractor',
-					'temporary'  => 'Temporary',
-					'intern'     => 'Intern',
-					'volunteer'  => 'Volunteer',
-					'per_diem'   => 'Per Diem',
-					'other'      => 'Other',
-				),
 				'cf_labels' => array(		// Custom field option labels.
 					'plugin_cf_img_url'             => 'Image URL Custom Field',
 					'plugin_cf_vid_url'             => 'Video URL Custom Field',
@@ -1676,7 +1647,62 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_material'    => 'Product Material Custom Field',
 					'plugin_cf_product_price'       => 'Product Price Custom Field',
 					'plugin_cf_product_size'        => 'Product Size Custom Field',
+					'plugin_cf_product_gender'      => 'Product Gender Custom Field',
 					'plugin_cf_sameas_urls'         => 'Same-As URLs Custom Field',
+				),
+				/**
+				 * See https://developers.facebook.com/docs/reference/opengraph/object-type/product/.
+				 */
+				'age_group' => array(
+					'none'   => '[None]',
+					'kids'   => 'Kids',
+					'adult'  => 'Adult',
+				),
+				/**
+				 * See https://schema.org/suggestedGender.
+				 */
+				'audience_gender' => array(
+					'none'   => '[None]',
+					'male'   => 'Male',
+					'female' => 'Female',
+					'unisex' => 'Unisex',
+				),
+				/**
+				 * See https://developers.google.com/search/docs/data-types/job-postings.
+				 */
+				'employment_type' => array(
+					'full_time'  => 'Full Time',
+					'part_time'  => 'Part Time',
+					'contractor' => 'Contractor',
+					'temporary'  => 'Temporary',
+					'intern'     => 'Intern',
+					'volunteer'  => 'Volunteer',
+					'per_diem'   => 'Per Diem',
+					'other'      => 'Other',
+				),
+				/**
+				 * See https://schema.org/ItemAvailability.
+				 */
+				'item_availability' => array(
+					'none'                => '[None]',
+			 		'Discontinued'        => 'Discontinued',
+			 		'InStock'             => 'In Stock',
+			 		'InStoreOnly'         => 'In Store Only',
+			 		'LimitedAvailability' => 'Limited Availability',
+			 		'OnlineOnly'          => 'Online Only',
+			 		'OutOfStock'          => 'Out of Stock',
+			 		'PreOrder'            => 'Pre-Order',
+			 		'SoldOut '            => 'Sold Out',
+				),
+				/**
+				 * See https://schema.org/OfferItemCondition.
+				 */
+				'item_condition' => array(
+					'none'                 => '[None]',
+					'DamagedCondition'     => 'Damaged',
+					'NewCondition'         => 'New',
+					'RefurbishedCondition' => 'Refurbished',
+					'UsedCondition'        => 'Used',
 				),
 			),
 			'head' => array(
@@ -1757,43 +1783,71 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'music:musician' => '',
 					),
 					'place' => array(
-						'place:location:latitude' => '',
+						'place:location:latitude'  => '',
 						'place:location:longitude' => '',
-						'place:location:altitude' => '',
-						'place:street_address' => '',
-						'place:locality' => '',
-						'place:region' => '',
-						'place:postal_code' => '',
-						'place:country_name' => '',
+						'place:location:altitude'  => '',
+						'place:street_address'     => '',
+						'place:locality'           => '',
+						'place:region'             => '',
+						'place:postal_code'        => '',
+						'place:country_name'       => '',
 					),
 					'product' => array(	// See https://developers.facebook.com/docs/reference/opengraph/object-type/product/.
-						'product:availability' => 'product_avail',
-						'product:brand' => 'product_brand',
-						'product:category' => '',
-						'product:color' => 'product_color',
-						'product:condition' => 'product_condition',
-						'product:material' => 'product_material',
-						'product:price:amount' => 'product_price',
-						'product:price:currency' => 'product_currency',
-						'product:size' => 'product_size',
-						'product:weight:value' => '',
-						'product:weight:units' => '',
+						'product:age_group'               => '',
+						'product:availability'            => 'product_avail',
+						'product:brand'                   => 'product_brand',
+						'product:category'                => '',
+						'product:color'                   => 'product_color',
+						'product:condition'               => 'product_condition',
+						'product:ean'                     => '',
+						'product:expiration_time'         => '',
+						'product:is_product_shareable'    => '',
+						'product:isbn'                    => '',
+						'product:material'                => 'product_material',
+						'product:mfr_part_no'             => '',
+						'product:original_price:amount'   => '',
+						'product:original_price:currency' => '',
+						'product:pattern'                 => '',
+						'product:plural_title'            => '',
+						'product:pretax_price:amount'     => '',
+						'product:pretax_price:currency'   => '',
+						'product:price:amount'            => 'product_price',
+						'product:price:currency'          => 'product_currency',
+						'product:product_link'            => '',
+						'product:purchase_limit'          => '',
+						'product:retailer'                => '',	// A Facebook ID or reference to the profile of the retailer.
+						'product:retailer_category'       => '',
+						'product:retailer_part_no'        => '',
+						'product:retailer_title'          => '',
+						'product:sale_price:amount'       => '',
+						'product:sale_price:currency'     => '',
+						'product:sale_price_dates:start'  => '',
+						'product:sale_price_dates:end'    => '',
+						'product:shipping_cost:amount'    => '',
+						'product:shipping_cost:currency'  => '',
+						'product:shipping_weight:value'   => '',
+						'product:shipping_weight:units'   => '',
+						'product:size'                    => 'product_size',
+						'product:target_gender'           => 'product_gender',
+						'product:upc'                     => '',
+						'product:weight:value'            => '',
+						'product:weight:units'            => '',
 					),
 					'profile' => array(
 						'profile:first_name' => '',
-						'profile:last_name' => '',
-						'profile:username' => '',
-						'profile:gender' => '',
+						'profile:last_name'  => '',
+						'profile:username'   => '',
+						'profile:gender'     => '',
 					),
 					'video.episode' => array(
-						'video:actor' => '',
-						'video:actor:role' => '',
-						'video:director' => '',
-						'video:writer' => '',
-						'video:duration' => '',
+						'video:actor'        => '',
+						'video:actor:role'   => '',
+						'video:director'     => '',
+						'video:writer'       => '',
+						'video:duration'     => '',
 						'video:release_date' => '',
-						'video:tag' => '',
-						'video:series' => '',
+						'video:tag'          => '',
+						'video:series'       => '',
 					),
 					'video.movie' => array(
 						'video:actor' => '',
@@ -1940,29 +1994,35 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'website' => 'https://schema.org/WebSite',
 						),
 						'event' => array(
-							'event' => 'https://schema.org/Event',
-							'event.business' => 'https://schema.org/BusinessEvent',
-							'event.childrens' => 'https://schema.org/ChildrensEvent',
-							'event.comedy' => 'https://schema.org/ComedyEvent',
-							'event.dance' => 'https://schema.org/DanceEvent',
-							'event.delivery' => 'https://schema.org/DeliveryEvent',
-							'event.education' => 'https://schema.org/EducationEvent',
-							'event.exhibition' => 'https://schema.org/ExhibitionEvent',
-							'event.festival' => 'https://schema.org/Festival',
-							'event.food' => 'https://schema.org/FoodEvent',
-							'event.literary' => 'https://schema.org/LiteraryEvent',
-							'event.music' => 'https://schema.org/MusicEvent',
+							'event'             => 'https://schema.org/Event',
+							'event.business'    => 'https://schema.org/BusinessEvent',
+							'event.childrens'   => 'https://schema.org/ChildrensEvent',
+							'event.comedy'      => 'https://schema.org/ComedyEvent',
+							'event.dance'       => 'https://schema.org/DanceEvent',
+							'event.delivery'    => 'https://schema.org/DeliveryEvent',
+							'event.education'   => 'https://schema.org/EducationEvent',
+							'event.exhibition'  => 'https://schema.org/ExhibitionEvent',
+							'event.festival'    => 'https://schema.org/Festival',
+							'event.food'        => 'https://schema.org/FoodEvent',
+							'event.literary'    => 'https://schema.org/LiteraryEvent',
+							'event.music'       => 'https://schema.org/MusicEvent',
 							'event.publication' => 'https://schema.org/PublicationEvent',
-							'event.sale' => 'https://schema.org/SaleEvent',
-							'event.screening' => 'https://schema.org/ScreeningEvent',
-							'event.social' => 'https://schema.org/SocialEvent',
-							'event.sports' => 'https://schema.org/SportsEvent',
-							'event.theater' => 'https://schema.org/TheaterEvent',
+							'event.sale'        => 'https://schema.org/SaleEvent',
+							'event.screening'   => 'https://schema.org/ScreeningEvent',
+							'event.social'      => 'https://schema.org/SocialEvent',
+							'event.sports'      => 'https://schema.org/SportsEvent',
+							'event.theater'     => 'https://schema.org/TheaterEvent',
 							'event.visual.arts' => 'https://schema.org/VisualArtsEvent',
 						),
 						'intangible' => array(
 							'alignment.object' => 'https://schema.org/AlignmentObject',
-							'audience' => 'https://schema.org/Audience',
+							'audience' => array(
+								'audience'             => 'https://schema.org/Audience',
+								'audience.business'    => 'https://schema.org/BusinessAudience',
+								'audience.educational' => 'https://schema.org/EducationalAudience',
+								'audience.medical'     => 'https://health-lifesci.schema.org/MedicalAudience',
+								'audience.people'      => 'https://schema.org/PeopleAudience',
+							),
 							'bed.details' => 'https://schema.org/BedDetails',
 							'brand' => 'https://schema.org/Brand',
 							'broadcast.channel' => 'https://schema.org/BroadcastChannel',

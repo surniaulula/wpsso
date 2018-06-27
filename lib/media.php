@@ -94,33 +94,39 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'num' => $num,
-					'size_name' => $size_name,
-					'post_id' => $post_id,
+					'num'         => $num,
+					'size_name'   => $size_name,
+					'post_id'     => $post_id,
 					'check_dupes' => $check_dupes,
-					'md_pre' => $md_pre,
+					'md_pre'      => $md_pre,
 				) );
 			}
 
-			$og_ret = array();
+			$og_ret      = array();
 			$force_regen = $this->p->util->is_force_regen( $post_id, $md_pre );	// false by default
 
 			if ( ! empty( $post_id ) ) {
 
-				// get_og_images() also provides filter hooks for additional image ids and urls
-				// unless $md_pre is 'none', get_og_images() will fallback to the 'og' custom meta
+				/**
+				 * get_og_images() also provides filter hooks for additional image ids and urls
+				 * unless $md_pre is 'none', get_og_images() will fallback to the 'og' custom meta.
+				 */
 				$og_ret = array_merge( $og_ret, $this->p->m['util']['post']->get_og_images( 1,
 					$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
 			}
 
-			// allow for empty post_id in order to execute featured / attached image filters for modules
+			/**
+			 * Allow for empty post_id in order to execute featured / attached image filters for modules.
+			 */
 			if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 				$num_diff = SucomUtil::count_diff( $og_ret, $num );
 				$og_ret = array_merge( $og_ret, $this->get_featured( $num_diff,
 					$size_name, $post_id, $check_dupes, $force_regen ) );
 			}
 
-			// 'wpsso_attached_images' filter is used by the buddypress module
+			/**
+			 * 'wpsso_attached_images' filter is used by the buddypress module.
+			 */
 			if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 				$num_diff = SucomUtil::count_diff( $og_ret, $num );
 				$og_ret = array_merge( $og_ret, $this->get_attached_images( $num_diff,
@@ -134,24 +140,28 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'num' => $num,
-					'size_name' => $size_name,
-					'post_id' => $post_id,
+					'num'         => $num,
+					'size_name'   => $size_name,
+					'post_id'     => $post_id,
 					'check_dupes' => $check_dupes,
 					'force_regen' => $force_regen,
 				) );
 			}
 
-			$og_ret = array();
-			$og_single_image = SucomUtil::get_mt_prop_image();
+			$og_ret          = array();
+			$og_single_image = SucomUtil::get_mt_image_seed();
 
 			if ( ! empty( $post_id ) ) {
-				// check for an attachment page, just in case
+
+				/**
+				 * Check for an attachment page, just in case.
+				 */
 				if ( ( is_attachment( $post_id ) || get_post_type( $post_id ) === 'attachment' ) && wp_attachment_is_image( $post_id ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'post_type is an attachment - using post_id '.$post_id. ' as the image id' );
 					}
+
 					$pid = $post_id;
 
 				} elseif ( $this->p->avail['*']['featured'] == true && has_post_thumbnail( $post_id ) ) {
@@ -174,22 +184,32 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 				}
 			}
+
 			return apply_filters( $this->p->lca . '_og_featured', $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
 		}
 
 		public function get_first_attached_image_id( $post_id ) {
+
 			if ( ! empty( $post_id ) ) {
-				// check for an attachment page, just in case
+
+				/**
+				 * Check for an attachment page, just in case.
+				 */
 				if ( ( is_attachment( $post_id ) || get_post_type( $post_id ) === 'attachment' ) && wp_attachment_is_image( $post_id ) ) {
+
 					return $post_id;
+
 				} else {
+
 					$images = get_children( array( 'post_parent' => $post_id, 'post_type' => 'attachment', 'post_mime_type' => 'image' ) );
 					$attach = reset( $images );
+
 					if ( ! empty( $attach->ID ) ) {
 						return $attach->ID;
 					}
 				}
 			}
+
 			return false;
 		}
 
@@ -197,19 +217,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'num' => $num,
-					'size_name' => $size_name,
-					'attach_id' => $attach_id,
+					'num'         => $num,
+					'size_name'   => $size_name,
+					'attach_id'   => $attach_id,
 					'check_dupes' => $check_dupes,
 					'force_regen' => $force_regen,
 				) );
 			}
 
-			$og_ret = array();
-			$og_single_image = SucomUtil::get_mt_prop_image();
+			$og_ret          = array();
+			$og_single_image = SucomUtil::get_mt_image_seed();
 
 			if ( ! empty( $attach_id ) ) {
+
 				if ( wp_attachment_is_image( $attach_id ) ) {	// since wp 2.1.0
+
 					list(
 						$og_single_image['og:image'],
 						$og_single_image['og:image:width'],
@@ -221,10 +243,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( ! empty( $og_single_image['og:image'] ) && $this->p->util->push_max( $og_ret, $og_single_image, $num ) ) {
 						return $og_ret;
 					}
+
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'attachment id '.$attach_id.' is not an image' );
 				}
 			}
+
 			return $og_ret;
 		}
 
@@ -232,31 +256,33 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'num' => $num,
-					'size_name' => $size_name,
-					'post_id' => $post_id,
+					'num'         => $num,
+					'size_name'   => $size_name,
+					'post_id'     => $post_id,
 					'check_dupes' => $check_dupes,
 					'force_regen' => $force_regen,
 				) );
 			}
 
-			$og_ret = array();
-			$og_single_image = SucomUtil::get_mt_prop_image();
+			$og_ret          = array();
+			$og_single_image = SucomUtil::get_mt_image_seed();
 
 			if ( ! empty( $post_id ) ) {
 
 				$images = get_children( array(
-					'post_parent' => $post_id,
-					'post_type' => 'attachment',
+					'post_parent'    => $post_id,
+					'post_type'      => 'attachment',
 					'post_mime_type' => 'image'
-				), OBJECT );	// OBJECT, ARRAY_A, or ARRAY_N
+				), OBJECT );	// OBJECT, ARRAY_A, or ARRAY_N.
 
 				$attach_ids = array();
+
 				foreach ( $images as $attach ) {
 					if ( ! empty( $attach->ID ) ) {
 						$attach_ids[] = $attach->ID;
 					}
 				}
+
 				rsort( $attach_ids, SORT_NUMERIC );
 
 				$attach_ids = array_unique( apply_filters( $this->p->lca . '_attached_image_ids', $attach_ids, $post_id ) );
@@ -266,6 +292,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				foreach ( $attach_ids as $pid ) {
+
 					list(
 						$og_single_image['og:image'],
 						$og_single_image['og:image:width'],
@@ -280,7 +307,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			// 'wpsso_attached_images' filter is used by the buddypress module
+			/**
+			 * The 'wpsso_attached_images' filter is used by the buddypress module.
+			 */
 			return apply_filters( $this->p->lca . '_attached_images', $og_ret, $num, $size_name, $post_id, $check_dupes, $force_regen );
 		}
 
@@ -319,8 +348,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		public function get_attachment_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
 
 			self::set_image_src_info( $args = array(
-				'pid' => $pid,
-				'size_name' => $size_name,
+				'pid'         => $pid,
+				'size_name'   => $size_name,
 				'check_dupes' => $check_dupes,
 				'force_regen' => $force_regen,
 			) );
@@ -330,10 +359,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log_args( $args );
 			}
 
-			$size_info = SucomUtil::get_size_info( $size_name );
-			$img_url = '';
-			$img_width = WPSSO_UNDEF_INT;
-			$img_height = WPSSO_UNDEF_INT;
+			$size_info   = SucomUtil::get_size_info( $size_name );
+			$img_url     = '';
+			$img_width   = WPSSO_UNDEF_INT;
+			$img_height  = WPSSO_UNDEF_INT;
 			$img_cropped = empty( $size_info['crop'] ) ? 0 : 1;	// get_size_info() returns false, true, or an array
 
 			if ( $this->p->avail['media']['ngg'] && strpos( $pid, 'ngg-' ) === 0 ) {
@@ -613,15 +642,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'num' => $num,
-					'size_name' => $size_name,
+					'num'         => $num,
+					'size_name'   => $size_name,
 					'check_dupes' => $check_dupes,
 					'force_regen' => $force_regen,
 				) );
 			}
 
-			$og_ret = array();
-			$og_single_image = SucomUtil::get_mt_prop_image();
+			$og_ret          = array();
+			$og_single_image = SucomUtil::get_mt_image_seed();
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
 				$img[$key] = empty( $this->p->options['og_def_img_'.$key] ) ?
@@ -637,8 +666,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $img['id'] ) ) {
 
-				$img['id'] = $img['id_pre'] === 'ngg' ?
-					'ngg-'.$img['id'] : $img['id'];
+				$img['id'] = $img['id_pre'] === 'ngg' ? 'ngg-'.$img['id'] : $img['id'];
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using default image pid: '.$img['id'] );
@@ -677,10 +705,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'num' => $num,
-					'size_name' => $size_name,
-					'mod' => $mod,
-					'check_dupes' => $check_dupes,
+					'num'            => $num,
+					'size_name'      => $size_name,
+					'mod'            => $mod,
+					'check_dupes'    => $check_dupes,
 					'content strlen' => strlen( $content ),
 				) );
 			}
@@ -716,9 +744,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $og_ret;
 			}
 
-			$og_single_image = SucomUtil::get_mt_prop_image();
-			$size_info = SucomUtil::get_size_info( $size_name );
-			$img_preg = $this->def_img_preg;
+			$og_single_image = SucomUtil::get_mt_image_seed();
+			$size_info       = SucomUtil::get_size_info( $size_name );
+			$img_preg        = $this->def_img_preg;
 
 			// allow the html_tag and pid_attr regex to be modified
 			foreach( array( 'html_tag', 'pid_attr' ) as $type ) {
@@ -1166,7 +1194,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$filter_name .= '_' . SucomUtil::sanitize_hookname( $args['api'] );
 			}
 
-			$og_video = array_merge( SucomUtil::get_mt_prop_video(), array(
+			$og_video = array_merge( SucomUtil::get_mt_video_seed(), array(
 				'og:video:width'  => $args['width'],	// Default width.
 				'og:video:height' => $args['height'],	// Default height.
 			) );

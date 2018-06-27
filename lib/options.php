@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'idx' => $idx, 
+					'idx'          => $idx, 
 					'force_filter' => $force_filter, 
 				) );
 			}
@@ -152,7 +152,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'idx' => $idx, 
+					'idx'          => $idx, 
 					'force_filter' => $force_filter, 
 				) );
 			}
@@ -981,36 +981,57 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			switch ( $base_key ) {
-				// use value should be default / empty / force
+
+				/**
+				 * The "use" value should be 'default', 'empty', or 'force'.
+				 */
 				case ( preg_match( '/:use$/', $base_key ) ? true : false ):
 					return 'not_blank';
 					break;
-				// optimize and check for add meta tags options first
+
+				/**
+				 * Optimize and check for add meta tags options first.
+				 */
 				case ( strpos( $base_key, 'add_' ) === 0 ? true : false ):
 				case ( strpos( $base_key, 'plugin_filter_' ) === 0 ? true : false ):
 					return 'checkbox';
 					break;
-				// empty string or must include at least one HTML tag
+
+				/**
+				 * Empty string or must include at least one HTML tag.
+				 */
 				case 'og_vid_embed':
 					return 'html';
 					break;
-				// regular expression
+
+				/**
+				 * A regular expression.
+				 */
 				case ( preg_match( '/_preg$/', $base_key ) ? true : false ):
 					return 'preg';
 					break;
-				// js and css (cannot be blank)
+
+				/**
+				 * JS and CSS code (cannot be blank).
+				 */
 				case ( strpos( $base_key, '_js_' ) !== false ? true : false ):
 				case ( strpos( $base_key, '_css_' ) !== false ? true : false ):
 				case ( preg_match( '/(_css|_js|_html)$/', $base_key ) ? true : false ):
 					return 'code';
 					break;
-				// gravity view
+
+				/**
+				 * Gravity View field IDs.
+				 */
 				case 'gv_id_title':	// Title Field ID
 				case 'gv_id_desc':	// Description Field ID
 				case 'gv_id_img':	// Post Image Field ID
 					return 'blank_int';
 					break;
-				// cast as integer (zero and -1 is ok)
+
+				/**
+				 * Cast as integer (zero and -1 is ok).
+				 */
 				case 'schema_img_max':
 				case 'og_img_max':
 				case 'og_vid_max':
@@ -1019,44 +1040,68 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
 					return 'integer';
 					break;
-				// numeric options that must be positive (1 or more)
+
+				/**
+				 * Numeric options that must be positive (1 or more).
+				 */
 				case 'plugin_upscale_img_max':
 				case 'plugin_min_shorten':
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
 					return 'pos_int';
 					break;
-				// must be numeric (blank and zero are ok)
+
+				/**
+				 * Must be numeric (blank and zero are ok).
+				 */
 				case 'og_def_img_id':
 				case 'og_img_id':
 				case 'product_price':
 					return 'blank_num';
 					break;
-				// image width, subject to minimum value (typically, at least 200px)
+
+				/**
+				 * Image width, subject to minimum value (typically, at least 200px).
+				 */
 				case ( preg_match( '/_img_width$/', $base_key ) ? true : false ):
 				case ( preg_match( '/^tc_[a-z]+_width$/', $base_key ) ? true : false ):
 					return 'img_width';
 					break;
-				// image height, subject to minimum value (typically, at least 200px)
+
+				/**
+				 * Image height, subject to minimum value (typically, at least 200px).
+				 */
 				case ( preg_match( '/_img_height$/', $base_key ) ? true : false ):
 				case ( preg_match( '/^tc_[a-z]+_height$/', $base_key ) ? true : false ):
 					return 'img_height';
 					break;
-				// must be texturized 
+
+				/**
+				 * Must be texturized.
+				 */
 				case 'og_title_sep':
 					return 'textured';
 					break;
-				// empty of alpha-numeric uppercase (hyphens are allowed as well)
+
+				/**
+				 * Empty of alpha-numeric uppercase (hyphens are allowed as well).
+				 */
 				case ( preg_match( '/_tid$/', $base_key ) ? true : false ):
 					return 'auth_id';
 					break;
-				// empty or alpha-numeric (upper or lower case), plus underscores
+
+				/**
+				 * Empty or alpha-numeric (upper or lower case), plus underscores.
+				 */
 				case 'fb_app_id':
 				case 'fb_app_secret':
 				case 'p_dom_verify':
 				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
 					return 'api_key';
 					break;
-				// text strings that can be blank (line breaks are removed)
+
+				/**
+				 * Text strings that can be blank (line breaks are removed).
+				 */
 				case 'site_name':
 				case 'site_name_alt':
 				case 'site_desc':
@@ -1081,7 +1126,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( strpos( $base_key, '_filter_name' ) !== false ? true : false ):
 					return 'one_line';
 					break;
-				// options that cannot be blank
+
+				/**
+				 * Options that cannot be blank.
+				 */
 				case 'site_org_type':
 				case 'site_place_id':
 				case 'og_author_field':
@@ -1092,19 +1140,27 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_shortener':		// none or name of shortener
 				case 'product_avail':
 				case 'product_condition':
+				case 'product_gender':
 				case ( strpos( $base_key, '_crop_x' ) !== false ? true : false ):
 				case ( strpos( $base_key, '_crop_y' ) !== false ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $base_key ) ? true : false ):
 					return 'not_blank';
 					break;
-				// twitter-style usernames (prepend with an at)
+
+				/**
+				 * twitter-style usernames (prepend with an at).
+				 */
 				case 'tc_site':
 					return 'at_name';
 					break;
-				// strip leading urls off facebook usernames
+
+				/**
+				 * Strip leading urls off facebook usernames.
+				 */
 				case 'fb_admins':
 					return 'url_base';
 					break;
+
 				/**
 				 * Must be a URL.
 				 *
@@ -1132,7 +1188,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf['form']['social_accounts'][$base_key] ) ? true : false ):
 					return 'url';
 					break;
-				// css color code
+
+				/**
+				 * CSS color code.
+				 */
 				case ( strpos( $base_key, '_color_' ) !== false ? true : false ):
 					return 'color';
 					break;

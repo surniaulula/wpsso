@@ -456,8 +456,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'mod_id' => $mod_id, 
-					'md_idx' => $md_idx, 
+					'mod_id'      => $mod_id, 
+					'md_idx'      => $md_idx, 
 					'filter_opts' => $filter_opts, 
 				) );
 			}
@@ -547,70 +547,71 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				$md_defs = array(
 					'options_filtered' => '',
-					'options_version' => '',
+					'options_version'  => '',
 					/**
 					 * Customize Tab.
 					 */
-					'og_type' => $og_type,
+					'og_type'        => $og_type,
 					'og_art_section' => isset( $opts['og_art_section'] ) ? $opts['og_art_section'] : 'none',
-					'og_title' => '',
-					'og_desc' => '',
-					'seo_desc' => '',
-					'tc_desc' => '',
-					'sharing_url' => '',
-					'canonical_url' => '',
-					'schema_desc' => '',
+					'og_title'       => '',
+					'og_desc'        => '',
+					'seo_desc'       => '',
+					'tc_desc'        => '',
+					'sharing_url'    => '',
+					'canonical_url'  => '',
+					'schema_desc'    => '',
 					/**
 					 * Open Graph - Product Information.
 					 */
-					'product_avail' => 'none',
-					'product_brand' => '',
-					'product_color' => '',
+					'product_avail'     => 'none',
+					'product_brand'     => '',
+					'product_color'     => '',
 					'product_condition' => 'none',
-					'product_currency' => empty( $opts['plugin_def_currency'] ) ? 'USD' : $opts['plugin_def_currency'],
-					'product_price' => '0.00',
-					'product_size' => '',
+					'product_currency'  => empty( $opts['plugin_def_currency'] ) ? 'USD' : $opts['plugin_def_currency'],
+					'product_price'     => '0.00',
+					'product_size'      => '',
+					'product_gender'    => 'none',
 					/**
 					 * Open Graph - Priority Image.
 					 */
-					'og_img_max' => isset( $opts['og_img_max'] ) ? (int) $opts['og_img_max'] : 1,	// Cast as integer.
-					'og_img_width' => '',
+					'og_img_max'    => isset( $opts['og_img_max'] ) ? (int) $opts['og_img_max'] : 1,	// Cast as integer.
+					'og_img_width'  => '',
 					'og_img_height' => '',
-					'og_img_crop' => empty( $opts['og_img_crop'] ) ? 0 : 1,
+					'og_img_crop'   => empty( $opts['og_img_crop'] ) ? 0 : 1,
 					'og_img_crop_x' => empty( $opts['og_img_crop_x'] ) ? 'center' : $opts['og_img_crop_x'],
 					'og_img_crop_y' => empty( $opts['og_img_crop_y'] ) ? 'center' : $opts['og_img_crop_y'],
-					'og_img_id' => '',
+					'og_img_id'     => '',
 					'og_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
-					'og_img_url' => '',
+					'og_img_url'    => '',
 					/**
 					 * Open Graph - Priority Video.
 					 */
 					'og_vid_prev_img' => empty( $opts['og_vid_prev_img'] ) ? 0 : 1,
-					'og_vid_max' => isset( $opts['og_vid_max'] ) ? (int) $opts['og_vid_max'] : 1,	// Cast as integer.
-					'og_vid_width' => '',	// Custom value for first video.
-					'og_vid_height' => '',	// Custom value for first video.
-					'og_vid_embed' => '',
-					'og_vid_url' => '',
-					'og_vid_title' => '',	// Custom value for first video.
-					'og_vid_desc' => '',	// Custom value for first video.
+					'og_vid_max'      => isset( $opts['og_vid_max'] ) ? (int) $opts['og_vid_max'] : 1,	// Cast as integer.
+					'og_vid_width'    => '',	// Custom value for first video.
+					'og_vid_height'   => '',	// Custom value for first video.
+					'og_vid_embed'    => '',
+					'og_vid_url'      => '',
+					'og_vid_title'    => '',	// Custom value for first video.
+					'og_vid_desc'     => '',	// Custom value for first video.
 					/**
 					 * Structured Data / Schema Markup / Pinterest.
 					 */
-					'schema_img_max' => isset( $opts['schema_img_max'] ) ? (int) $opts['schema_img_max'] : 1,	// Cast as integer.
-					'schema_img_id' => '',
+					'schema_img_max'    => isset( $opts['schema_img_max'] ) ? (int) $opts['schema_img_max'] : 1,	// Cast as integer.
+					'schema_img_id'     => '',
 					'schema_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],
-					'schema_img_width' => '',
+					'schema_img_width'  => '',
 					'schema_img_height' => '',
-					'schema_img_crop' => empty( $opts['schema_img_crop'] ) ? 0 : 1,
+					'schema_img_crop'   => empty( $opts['schema_img_crop'] ) ? 0 : 1,
 					'schema_img_crop_x' => empty( $opts['schema_img_crop_x'] ) ? 'center' : $opts['schema_img_crop_x'],
 					'schema_img_crop_y' => empty( $opts['schema_img_crop_y'] ) ? 'center' : $opts['schema_img_crop_y'],
-					'schema_img_url' => '',
+					'schema_img_url'    => '',
 					/**
 					 * Gravity View (Side Metabox).
 					 */
 					'gv_id_title' => 0,	// Title Field ID
-					'gv_id_desc' => 0,	// Description Field ID
-					'gv_id_img' => 0,	// Post Image Field ID
+					'gv_id_desc'  => 0,	// Description Field ID
+					'gv_id_img'   => 0,	// Post Image Field ID
 				);
 
 				if ( WpssoOptions::can_cache() ) {
@@ -1082,13 +1083,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'num' => $num,
-					'size_name' => $size_name,
-					'mod' => $mod,
+					'num'         => $num,
+					'size_name'   => $size_name,
+					'mod'         => $mod,
 					'check_dupes' => $check_dupes,
 					'force_regen' => $force_regen,
-					'md_pre' => $md_pre,
-					'mt_pre' => $mt_pre,
+					'md_pre'      => $md_pre,
+					'mt_pre'      => $mt_pre,
 				), get_class( $this ) );
 			}
 
@@ -1098,7 +1099,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				return $mt_ret;
 			}
 
-			// unless $md_pre is 'none' allways fallback to the 'og' custom meta
+			/**
+			 * Unless $md_pre is 'none' allways fallback to the 'og' custom meta.
+			 */
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
 				if ( $prefix === 'none' ) {	// special index keyword
@@ -1107,18 +1110,21 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					continue;
 				}
 
-				// get an empty image meta tag array
-				$mt_image = SucomUtil::get_mt_prop_image( $mt_pre );
+				/**
+				 * Get an empty image meta tag array.
+				 */
+				$mt_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
-				// get the image id, library prefix, and/or url values
+				/**
+				 * Get the image id, library prefix, and/or url values.
+				 */
 				$pid = $this->get_options( $mod['id'], $prefix.'_img_id' );
 				$pre = $this->get_options( $mod['id'], $prefix.'_img_id_pre' );
 				$url = $this->get_options( $mod['id'], $prefix.'_img_url' );
 
 				if ( $pid > 0 ) {
 
-					$pid = $pre === 'ngg' ?
-						'ngg-'.$pid : $pid;
+					$pid = $pre === 'ngg' ? 'ngg-'.$pid : $pid;
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'using custom '.$prefix.' image id = "'.$pid.'"',
@@ -1157,11 +1163,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			foreach ( apply_filters( $this->p->lca.'_'.$mod['name'].'_image_ids', array(), $size_name, $mod['id'], $mod ) as $pid ) {
-				if ( $pid > 0 ) {	// quick sanity check
+
+				if ( $pid > 0 ) {	// Quick sanity check.
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'adding image pid: '.$pid );
 					}
-					$mt_image = SucomUtil::get_mt_prop_image( $mt_pre );
+
+					$mt_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
 					list( 
 						$mt_image[$mt_pre.':image'],
@@ -1185,7 +1194,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$this->p->debug->log( 'adding image url: '.$url );
 					}
 
-					$mt_image = SucomUtil::get_mt_prop_image( $mt_pre );
+					$mt_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
 					$mt_image[$mt_pre.':image'] = $url;
 
@@ -1270,9 +1279,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'mod' => $mod,
+					'mod'         => $mod,
 					'check_dupes' => $check_dupes,
-					'md_pre' => $md_pre,
+					'md_pre'      => $md_pre,
 				), get_class( $this ) );
 			}
 
@@ -1333,20 +1342,21 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/* Example config:
 			 *
 			 *	'cf_md_idx' => array(
-			 *		'plugin_cf_img_url' => 'og_img_url',
-			 *		'plugin_cf_vid_url' => 'og_vid_url',
-			 *		'plugin_cf_vid_embed' => 'og_vid_embed',
-			 *		'plugin_cf_addl_type_urls' => 'schema_addl_type_url',
-			 *		'plugin_cf_recipe_ingredients' => 'schema_recipe_ingredient',
+			 *		'plugin_cf_img_url'             => 'og_img_url',
+			 *		'plugin_cf_vid_url'             => 'og_vid_url',
+			 *		'plugin_cf_vid_embed'           => 'og_vid_embed',
+			 *		'plugin_cf_addl_type_urls'      => 'schema_addl_type_url',
+			 *		'plugin_cf_recipe_ingredients'  => 'schema_recipe_ingredient',
 			 *		'plugin_cf_recipe_instructions' => 'schema_recipe_instruction',
-			 *		'plugin_cf_product_avail' => 'product_avail',
-			 *		'plugin_cf_product_brand' => 'product_brand',
-			 *		'plugin_cf_product_color' => 'product_color',
-			 *		'plugin_cf_product_condition' => 'product_condition',
-			 *		'plugin_cf_product_currency' => 'product_currency',
-			 *		'plugin_cf_product_price' => 'product_price',
-			 *		'plugin_cf_product_size' => 'product_size',
-			 *		'plugin_cf_sameas_urls' => 'schema_sameas_url',
+			 *		'plugin_cf_product_avail'       => 'product_avail',
+			 *		'plugin_cf_product_brand'       => 'product_brand',
+			 *		'plugin_cf_product_color'       => 'product_color',
+			 *		'plugin_cf_product_condition'   => 'product_condition',
+			 *		'plugin_cf_product_currency'    => 'product_currency',
+			 *		'plugin_cf_product_price'       => 'product_price',
+			 *		'plugin_cf_product_size'        => 'product_size',
+			 *		'plugin_cf_product_gender'      => 'product_gender',
+			 *		'plugin_cf_sameas_urls'         => 'schema_sameas_url',
 			 *	),
 			 */
 			$cf_md_idx = (array) apply_filters( $this->p->lca.'_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] );

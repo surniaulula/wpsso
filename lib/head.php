@@ -262,9 +262,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			/**
 			 * Save the first image and video information found. Assumes array key order
-			 * defined by SucomUtil::get_mt_prop_image() and SucomUtil::get_mt_prop_video().
+			 * defined by SucomUtil::get_mt_image_seed() and SucomUtil::get_mt_video_seed().
 			 */
 			foreach ( array( 'og:image', 'og:video', 'p:image' ) as $prefix ) {
+
 				if ( empty( $has_media[$prefix] ) ) {
 					continue;
 				}
@@ -272,18 +273,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$is_first = false;
 
 				foreach ( $head_mt as $mt ) {
+
 					if ( ! isset( $mt[2] ) || ! isset( $mt[3] ) ) {
 						continue;
 					}
 
 					if ( strpos( $mt[3], $prefix ) !== 0 ) {
+
 						$is_first = false;
 
-						// if we already found media, then skip to the next media prefix
+						/**
+						 * If we already found media, then skip to the next media prefix.
+						 */
 						if ( ! empty( $head_info[$prefix] ) ) {
 							continue 2;
 						} else {
-							continue;	// skip meta tags without matching prefix
+							continue;	// Skip meta tags without matching prefix.
 						}
 					}
 

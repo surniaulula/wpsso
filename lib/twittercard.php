@@ -64,8 +64,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$max = $this->p->util->get_max_nums( $mod );
-			$post_id = $mod['is_post'] ? $mod['id'] : false;
+			$max_nums = $this->p->util->get_max_nums( $mod );
+			$post_id  = $mod['is_post'] ? $mod['id'] : false;
 
 			/**
 			 * Read and unset pre-defined twitter card values in the open graph meta tag array.
@@ -266,7 +266,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			/**
 			 * All image cards.
 			 */
-			if ( ! isset( $mt_tc['twitter:card'] ) && ! empty( $max['og_img_max'] ) ) {
+			if ( ! isset( $mt_tc['twitter:card'] ) && ! empty( $max_nums['og_img_max'] ) ) {
 
 				/**
 				 * Default image for archive.
@@ -377,7 +377,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				$mt_tc['twitter:card'] = $card_type;
 
-				if ( ! empty( $max['og_img_max'] ) ) {
+				if ( ! empty( $max_nums['og_img_max'] ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $card_type . ' card: checking for content image' );
 					}

@@ -93,12 +93,12 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			switch ( $hook_name ) {
 
 				/**
-				 * License settings page.
+				 * Addons and license settings page.
 				 */
-				case ( preg_match( '/_page_' . $this->p->lca . '-(site)?licenses/', $hook_name ) ? true : false ) :
+				case ( preg_match( '/_page_' . $this->p->lca . '-(site)?(addons|licenses)/', $hook_name ) ? true : false ) :
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'enqueuing scripts for licenses page' );
+						$this->p->debug->log( 'enqueuing scripts for addons and licenses page' );
 					}
 
 					add_thickbox();	// required for the plugin details box

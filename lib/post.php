@@ -282,9 +282,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'shortlink' => $shortlink,
-					'post_id' => $post_id,
-					'context' => $context,
+					'shortlink'   => $shortlink,
+					'post_id'     => $post_id,
+					'context'     => $context,
 					'allow_slugs' => $allow_slugs,
 				) );
 			}

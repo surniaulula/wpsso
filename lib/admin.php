@@ -3183,15 +3183,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'ext' => $ext,
+					'ext'        => $ext,
 					'read_cache' => $read_cache,
 				) );
 			}
 
-			$file_name = 'readme.txt';
-			$file_key = SucomUtil::sanitize_hookname( $file_name );	// Rename readme.txt to readme_txt.
-			$file_dir = SucomUtil::get_const( strtoupper( $ext ) . '_PLUGINDIR' );
-			$file_local = $file_dir ? trailingslashit( $file_dir ).$file_name : false;
+			$file_name   = 'readme.txt';
+			$file_key    = SucomUtil::sanitize_hookname( $file_name );	// Rename readme.txt to readme_txt.
+			$file_dir    = SucomUtil::get_const( strtoupper( $ext ) . '_PLUGINDIR' );
+			$file_local  = $file_dir ? trailingslashit( $file_dir ).$file_name : false;
 			$file_remote = isset( $this->p->cf['plugin'][$ext]['url'][$file_key] ) ? 
 				$this->p->cf['plugin'][$ext]['url'][$file_key] : false;
 

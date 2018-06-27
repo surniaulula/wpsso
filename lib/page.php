@@ -39,7 +39,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			// remove shortcodes, etc., but don't strip html tags
+			/**
+			 * Remove shortcodes, etc., but don't strip html tags.
+			 */
 			$quote_text = $this->p->util->cleanup_html_tags( $quote_text, false );
 
 			return apply_filters( $this->p->lca.'_quote', $quote_text, $mod );
@@ -54,13 +56,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'type' => $type,
-					'max_len' => $max_len,
-					'mod' => $mod,
-					'r_cache' => $r_cache,
+					'type'      => $type,
+					'max_len'   => $max_len,
+					'mod'       => $mod,
+					'r_cache'   => $r_cache,
 					'add_htags' => $add_htags,	// true/false/numeric
 					'do_encode' => $do_encode,
-					'md_idx' => $md_idx,
+					'md_idx'    => $md_idx,
 				) );
 			}
 
@@ -187,14 +189,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'max_len' => $max_len,
-					'dots' => $dots,
-					'mod' => $mod,
-					'r_cache' => $r_cache,
+					'max_len'   => $max_len,
+					'dots'      => $dots,
+					'mod'       => $mod,
+					'r_cache'   => $r_cache,
 					'add_htags' => $add_htags,	// true/false/numeric
 					'do_encode' => $do_encode,
-					'md_idx' => $md_idx,
-					'sep' => $sep,
+					'md_idx'    => $md_idx,
+					'sep'       => $sep,
 				) );
 			}
 
@@ -460,13 +462,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark( 'render description' );	// begin timer
 
 				$this->p->debug->log_args( array(
-					'max_len' => $max_len,
-					'dots' => $dots,
-					'mod' => $mod,
-					'r_cache' => $r_cache,
+					'max_len'   => $max_len,
+					'dots'      => $dots,
+					'mod'       => $mod,
+					'r_cache'   => $r_cache,
 					'add_htags' => $add_htags, 	// true | false | numeric
 					'do_encode' => $do_encode,
-					'md_idx' => $md_idx,
+					'md_idx'    => $md_idx,
 				) );
 			}
 
@@ -762,9 +764,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'mod' => $mod,
+					'mod'     => $mod,
 					'r_cache' => $r_cache,
-					'md_idx' => $md_idx,
+					'md_idx'  => $md_idx,
 				) );
 			}
 
