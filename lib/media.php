@@ -1172,13 +1172,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * Make sure we have all array keys defined.
 			 */
 			$args = array_merge( array(
-				'url' => '',
-				'width' => WPSSO_UNDEF_INT,
-				'height' => WPSSO_UNDEF_INT,
-				'type' => '',
+				'url'      => '',
+				'width'    => WPSSO_UNDEF_INT,
+				'height'   => WPSSO_UNDEF_INT,
+				'type'     => '',
 				'prev_url' => '',
-				'post_id' => null,
-				'api' => '',
+				'post_id'  => null,
+				'api'      => '',
 			), $args );
 
 			if ( empty( $args['url'] ) ) {
@@ -1205,8 +1205,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log_arr( 'og_video after filters', $og_video );
 			}
 
-			if ( $og_video['al:web:url'] === '' ) {
-				$og_video['al:web:should_fallback'] = '';	// false by default
+			if ( isset( $og_video['al:web:url'] ) ) {	// Just in case.
+				if ( $og_video['al:web:url'] === '' ) {
+					$og_video['al:web:should_fallback'] = '';	// False by default.
+				}
 			}
 
 			/**
