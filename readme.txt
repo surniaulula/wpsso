@@ -330,11 +330,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.6.0-b.1 (2018/06/27)**
+**Version 4.6.0-rc.1 (2018/06/27)**
 
 * *New Features*
-	* Added a new "WPSSO REST API" add-on and removed the WordPress REST API integration module (Pro version).
 	* Moved all license information from the "Add-ons" settings page to a new "Licenses" settings page.
+	* Added a new WPSSO REST API Free add-on and removed the WordPress REST API module from the Pro version.
+	* Added new Facebook / Open Graph meta tags for simple (aka non-variable) WooCommerce products (Pro version):
+		* product:original_price:amount
+		* product:original_price:currency
+		* product:sale_price:amount
+		* product:sale_price:currency
+		* product:sale_price_dates:start
+		* product:sale_price_dates:end
 * *Improvements*
 	* None
 * *Bugfixes*
@@ -484,9 +491,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.6.0-b.1 =
+= 4.6.0-rc.1 =
 
-(2018/06/27) Added a new "WPSSO REST API" add-on. Moved license information to a new "Licenses" settings page. Fix for Yoast SEO class property Yoast_Notification::$message.
+(2018/06/27) Added a new WPSSO REST API Free add-on. Moved license information to a new "Licenses" settings page. Added new meta tags for simple WooCommerce products. Fix for Yoast SEO class property Yoast_Notification::$message.
 
 = 4.5.2 =
 
