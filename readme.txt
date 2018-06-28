@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.6
 WC Tested Up To: 3.4.2
-Stable Tag: 4.5.2
+Stable Tag: 4.6.0
 
 Easy, complete, accurate, and automatic - provide information about your content, business and authors to social sites and search engines.
 
@@ -494,8 +494,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.6.0 =
 
 (2018/06/28) Added a new WPSSO REST API Free add-on. Moved license information to a new "Licenses" settings page. Added new meta tags for simple WooCommerce products. Fix for Yoast SEO class property Yoast_Notification::$message.
-
-= 4.5.2 =
-
-(2018/06/23) Removed color highlighting of the SSO menu icon. Renamed the WordPress Settings submenu pages. Added a new 'wpsso_get_robots_content' filter.
 
