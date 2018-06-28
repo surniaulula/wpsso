@@ -330,7 +330,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.6.0-rc.1 (2018/06/27)**
+**Version 4.6.0 (2018/06/28)**
 
 * *New Features*
 	* Moved all license information from the "Add-ons" settings page to a new "Licenses" settings page.
@@ -491,9 +491,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.6.0-rc.1 =
+= 4.6.0 =
 
-(2018/06/27) Added a new WPSSO REST API Free add-on. Moved license information to a new "Licenses" settings page. Added new meta tags for simple WooCommerce products. Fix for Yoast SEO class property Yoast_Notification::$message.
+(2018/06/28) Added a new WPSSO REST API Free add-on. Moved license information to a new "Licenses" settings page. Added new meta tags for simple WooCommerce products. Fix for Yoast SEO class property Yoast_Notification::$message.
 
 = 4.5.2 =
 
