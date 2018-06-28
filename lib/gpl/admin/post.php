@@ -179,7 +179,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				),
 				'product_gender' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
-					'label' => _x( 'Product Gender', 'option label', 'wpsso' ),
+					'label' => _x( 'Product Target Gender', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_gender', 'td_class' => 'blank',
 					'content' => $form->get_no_select( 'product_gender', $this->p->cf['form']['audience_gender'] ),
 				),

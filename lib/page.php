@@ -495,7 +495,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$desc_text = false;
 			$hashtags = '';
 
-			// skip if no metadata index / key name
+			/**
+			 * Skip if no metadata index / key name.
+			 */
 			if ( ! empty( $md_idx ) ) {
 
 				$desc_text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], $md_idx ) : null;
@@ -512,7 +514,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'custom description skipped: no md_idx value' );
 			}
 
-			// get seed if no custom meta description
+			/**
+			 * Get seed if no custom meta description.
+			 */
 			if ( empty( $desc_text ) ) {
 				$desc_text = apply_filters( $lca.'_description_seed', '', $mod, $add_htags, $md_idx );
 				if ( ! empty( $desc_text ) ) {
@@ -522,7 +526,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			// check for hashtags in meta or seed desc, remove and then add again after shorten
+			/**
+			 * Check for hashtags in meta or seed desc, remove and then add again after shorten.
+			 */
 			if ( preg_match( '/^(.*)(( *#[a-z][a-z0-9\-]+)+)$/U', $desc_text, $match ) ) {
 				$desc_text = $match[1];
 				$hashtags = trim( $match[2] );
@@ -583,7 +589,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 	
 							$desc_text = $this->get_the_content( $mod, $r_cache, $md_idx );
 	
-							// ignore everything before the first paragraph if true
+							/**
+							 * Ignore everything before the first paragraph if true.
+							 */
 							if ( $this->p->options['plugin_p_strip'] ) {
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'removing all text before the first paragraph' );
@@ -592,7 +600,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							}
 						}
 
-						// fallback to the image alt value
+						/**
+						 * Fallback to the image alt value.
+						 */
 						if ( empty( $desc_text ) ) {
 							if ( $mod['post_type'] === 'attachment' && strpos( $mod['post_mime'], 'image/' ) === 0 ) {
 								$desc_text = get_post_meta( $mod['id'], '_wp_attachment_image_alt', true );
@@ -899,14 +909,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$content_text = preg_replace( '/^.*<!--'.$lca.'-content-->(.*)<!--\/'.
 				$lca.'-content-->.*$/', '$1', $content_text );
 
-			// remove "Google+" link and text
+			/**
+			 * Remove "Google+" link and text.
+			 */
 			if ( strpos( $content_text, '>Google+<' ) !== false ) {
 				$content_text = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content_text );
 			}
 
 			if ( strpos( $content_text, '<p class="wp-caption-text">' ) !== false ) {
+
 				$caption_prefix = isset( $this->p->options['plugin_p_cap_prefix'] ) ?
 					$this->p->options['plugin_p_cap_prefix'] : 'Caption:';
+
 				if ( ! empty( $caption_prefix ) ) {
 					$content_text = preg_replace( '/<p class="wp-caption-text">/', '${0}'.$caption_prefix.' ', $content_text );
 				}
@@ -922,12 +936,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'content strlen before '.$strlen_before_filters.' and after changes / filters '.$strlen_after_filters );
 			}
 
-			// apply filters before caching
+			/**
+			 * Apply filters before caching.
+			 */
 			$content_text = apply_filters( $lca.'_content', $content_text, $mod, $r_cache, $md_idx );
 
 			if ( $cache_exp_secs > 0 ) {
-				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );	// only some caching plugins support this feature
+
+				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );	// Only some caching plugins support this feature.
 				wp_cache_set( $cache_id, $cache_array, __METHOD__, $cache_exp_secs );
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'content array saved to wp_cache for '.$cache_exp_secs.' seconds');
 				}

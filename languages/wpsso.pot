@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.6.0-rc.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1632,22 +1632,22 @@ msgstr ""
 
 #: lib/config-gettext-extract.php:107
 msgctxt "option label"
-msgid "Product Gender Custom Field"
+msgid "Product Material Custom Field"
 msgstr ""
 
 #: lib/config-gettext-extract.php:108
 msgctxt "option label"
-msgid "Product Material Custom Field"
+msgid "Product Price Custom Field"
 msgstr ""
 
 #: lib/config-gettext-extract.php:109
 msgctxt "option label"
-msgid "Product Price Custom Field"
+msgid "Product Size Custom Field"
 msgstr ""
 
 #: lib/config-gettext-extract.php:110
 msgctxt "option label"
-msgid "Product Size Custom Field"
+msgid "Product Target Gender Custom Field"
 msgstr ""
 
 #: lib/config-gettext-extract.php:111
@@ -2644,7 +2644,7 @@ msgstr ""
 
 #: lib/gpl/admin/post.php:182 lib/messages.php:888 lib/pro/admin/post.php:193
 msgctxt "option label"
-msgid "Product Gender"
+msgid "Product Target Gender"
 msgstr ""
 
 #: lib/gpl/admin/post.php:199 lib/meta.php:245 lib/post.php:1084
@@ -5006,8 +5006,8 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/page.php:309 lib/page.php:311 lib/page.php:561 lib/page.php:563
-#: lib/page.php:623
+#: lib/page.php:309 lib/page.php:311 lib/page.php:567 lib/page.php:569
+#: lib/page.php:633
 msgid "%s Archive"
 msgstr ""
 
@@ -5015,35 +5015,35 @@ msgstr ""
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:609
+#: lib/page.php:619
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:614
+#: lib/page.php:624
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:634
+#: lib/page.php:644
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:641
+#: lib/page.php:651
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:645
+#: lib/page.php:655
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:649
+#: lib/page.php:659
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:653
+#: lib/page.php:663
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:692
+#: lib/page.php:702
 msgid "No Description"
 msgstr ""
 
@@ -5414,27 +5414,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2039
+#: lib/schema.php:2063
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2576
+#: lib/schema.php:2600
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2609
+#: lib/schema.php:2633
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2611
+#: lib/schema.php:2635
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2847
+#: lib/schema.php:2871
 msgid "adding schema for place"
 msgstr ""
 

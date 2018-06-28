@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.6.0-rc.1',		// Plugin version.
+					'version' => '4.6.0',		// Plugin version.
 					'opt_version' => '580',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
@@ -1050,7 +1050,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_material'    => '',			// Product Material Custom Field.
 					'plugin_cf_product_price'       => '',			// Product Price Custom Field.
 					'plugin_cf_product_size'        => '',			// Product Size Custom Field.
-					'plugin_cf_product_gender'      => '',			// Product Gender Custom Field.
+					'plugin_cf_product_gender'      => '',			// Product Target Gender Custom Field.
 					'plugin_cf_sameas_urls'         => '',			// Same-As URLs Custom Field.
 					/**
 					 * Advanced settings - Cache Settings tab.
@@ -1653,7 +1653,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_material'    => 'Product Material Custom Field',
 					'plugin_cf_product_price'       => 'Product Price Custom Field',
 					'plugin_cf_product_size'        => 'Product Size Custom Field',
-					'plugin_cf_product_gender'      => 'Product Gender Custom Field',
+					'plugin_cf_product_gender'      => 'Product Target Gender Custom Field',
 					'plugin_cf_sameas_urls'         => 'Same-As URLs Custom Field',
 				),
 				/**

@@ -885,7 +885,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product target gender', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Gender', 'option label', 'wpsso' ),
+									_x( 'Product Target Gender', 'option label', 'wpsso' ),
 								);
 							}
 

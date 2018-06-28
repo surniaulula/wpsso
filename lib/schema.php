@@ -1729,16 +1729,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( ! empty( $opts[$prefix . ':id'] ) && is_numeric( $opts[$prefix . ':id'] ) ) {
 
-				$wpsso = Wpsso::get_instance();
+				$wpsso   = Wpsso::get_instance();
 				$post_id = $opts[$prefix . ':id'];
-				$mod = $wpsso->m['util']['post']->get_mod( $post_id );
+				$mod     = $wpsso->m['util']['post']->get_mod( $post_id );
 
+				/**
+				 * Get the image title.
+				 */
 				$ret['name'] = $wpsso->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
 
 				if ( empty( $ret['name'] ) ) {
 					unset( $ret['name'] );
 				}
 
+				/**
+				 * Get the image alternate title, if one has been defined in the custom post meta.
+				 */
 				$title_len = $wpsso->options['og_title_len'];
 
 				$ret['alternateName'] = $wpsso->page->get_title( $title_len, '...', $mod, true, false, true, 'schema_title_alt' );
@@ -1747,28 +1753,46 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					unset( $ret['alternateName'] );
 				}
 
+				/**
+				 * Use the image "Alternative Text" for the 'alternativeHeadline' property.
+				 */
 				$ret['alternativeHeadline'] = get_post_meta( $mod['id'], '_wp_attachment_image_alt', true );
 
 				if ( empty( $ret['alternativeHeadline'] ) || $ret['name'] === $ret['alternativeHeadline'] ) {
 					unset( $ret['alternativeHeadline'] );
 				}
 
+				/**
+				 * Get the image caption (aka excerpt of the post object).
+				 */
 				$ret['caption'] = $wpsso->page->get_the_excerpt( $mod );
 
 				if ( empty( $ret['caption'] ) ) {
 					unset( $ret['caption'] );
 				}
 
+				/**
+				 * If we don't have a caption, then provide a short description.
+				 * If we have a caption, then add the complete image description.
+				 */
 				$desc_len = $wpsso->options['schema_desc_len'];
 				$desc_idx = array( 'schema_desc', 'seo_desc', 'og_desc' );
 
-				$ret['description'] = $wpsso->page->get_description( $desc_len, '...', $mod, true, false, true, $desc_idx );
+				if ( empty( $ret['caption'] ) ) {
+					$ret['description'] = $wpsso->page->get_description( $desc_len, '...', $mod, true, false, true, $desc_idx );
+				} else {
+					$ret['description'] = $wpsso->page->get_the_content( $mod, true, $desc_idx );
+					$ret['description'] = $wpsso->util->cleanup_html_tags( $ret['description'] );
+				}
 
 				if ( empty( $ret['description'] ) ) {
 					unset( $ret['description'] );
 				}
 
-				$ret['fileFormat'] = get_post_mime_type( $mod['id'] );	// mime type
+				/**
+				 * Set the 'fileFormat' property to the image mime type.
+				 */
+				$ret['fileFormat'] = get_post_mime_type( $mod['id'] );
 
 				if ( empty( $ret['fileFormat'] ) ) {
 					unset( $ret['fileFormat'] );
