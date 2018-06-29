@@ -329,6 +329,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.7.0-dev.1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 4.6.0 (2018/06/28)**
 
 * *New Features*
@@ -489,6 +500,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
 
 == Upgrade Notice ==
+
+= 4.7.0-dev.1 =
+
+(TBD) Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options.
 
 = 4.6.0 =
 
