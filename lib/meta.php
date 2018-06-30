@@ -154,9 +154,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				case $this->p->cf['meta']['id']:
 
 					$tabs = array(
-						'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
 						'edit' => _x( 'Customize', 'metabox tab', 'wpsso' ),
 						'media' => _x( 'Priority Media', 'metabox tab', 'wpsso' ),
+						'preview' => _x( 'Preview', 'metabox tab', 'wpsso' ),
 						'tags' => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
 						'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
 					);

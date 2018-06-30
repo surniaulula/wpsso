@@ -1903,16 +1903,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					} elseif ( class_exists( 'SucomUpdate' ) ) {	// Required to use SucomUpdate::get_option().
 
-						foreach ( array(
-							'exp_date' => _x( 'Support and Updates Expire', 'option label', 'wpsso' ),
+						$show_update_opts = array(
+							//'exp_date' => _x( 'Support and Updates Expire', 'option label', 'wpsso' ),
 							'qty_used' => _x( 'License Information', 'option label', 'wpsso' ),
-						) as $key => $label ) {
+						);
+
+						foreach ( $show_update_opts as $key => $label ) {
 
 							$val = SucomUpdate::get_option( $ext, $key );
 
 							if ( empty( $val ) ) {	// Add an empty row for empty values.
 								
-								$label = '';
+								$label = $val = '&nbsp;';
 
 							} elseif ( $key === 'exp_date' ) {
 
@@ -1950,33 +1952,34 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 										get_user_locale() : get_locale();
 
 									$info_url = add_query_arg( array(
-										'tid' => $this->p->options['plugin_' . $ext . '_tid'],
-										'locale' => $locale,
+										'tid'       => $this->p->options['plugin_' . $ext . '_tid'],
+										'locale'    => $locale,
 										'TB_iframe' => 'true',
-										'width' => $this->p->cf['wp']['tb_iframe']['width'],
-										'height' => $this->p->cf['wp']['tb_iframe']['height'],
+										'width'     => $this->p->cf['wp']['tb_iframe']['width'],
+										'height'    => $this->p->cf['wp']['tb_iframe']['height'],
 									), $info['url']['purchase'] . 'info/' );
 
 									$val = '<a href="' . $info_url . '" class="thickbox">' . $val . '</a>';
 								}
 							}
 
-							$table_rows[$key] = '<th class="medium nowrap">' . $label . '</th>' .
-								'<td width="100%">' . $val . '</td>';
+							$table_rows[$key] = '<th class="medium nowrap">' . $label . '</th><td width="100%">' . $val . '</td>';
 						}
+
+					} else {
+
+						$table_rows[] = '<th class="medium nowrap">&nbsp;</th><td width="100%">&nbsp;</td>';
 					}
 
 				} else {
 
-					$table_rows['plugin_tid'] .= '<td class="blank">' .
+					$table_rows['plugin_tid'] .= '<td width="100%" class="blank">' .
 						( empty( $this->p->options['plugin_' . $ext . '_tid'] ) ?
 							$this->form->get_no_input( 'plugin_' . $ext . '_tid', 'tid mono' ) :
 							$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono',
 								'', 0, '', false, ++$tabindex ) ) . '</td>';
 
-					$table_rows[] = '<td></td>';
-
-					$table_rows[] = '<td></td>';
+					$table_rows[] = '<th class="medium nowrap">&nbsp;</th><td width="100%">&nbsp;</td>';
 				}
 
 				/**

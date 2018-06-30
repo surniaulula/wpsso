@@ -977,28 +977,42 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_currency_abbrev( $idx = false, $add_none = false ) {
+
 			static $local_cache = null;
+
 			if ( ! isset( $local_cache ) ) {
+
 				$local_cache = array();
+
 				foreach ( self::$currencies as $key => $value ) {
 					$local_cache[$key] = $key;
 				}
+
 				ksort( $local_cache ); // Sort by key (same as value).
 			}
+
 			return self::get_formatted_array( $local_cache, $idx, $add_none );
 		}
 
 		public static function get_currency_symbols( $idx = false, $add_none = false, $decode = false ) {
+
 			if ( $decode ) {
+
 				static $local_cache = null;
+
 				if ( ! isset( $local_cache ) ) {
+
 					$local_cache = array();
+
 					foreach ( self::$currency_symbols as $key => $value ) {
 						$local_cache[$key] = self::decode_html( $value );
 					}
+
 					ksort( $local_cache ); // Sort by key.
 				}
+
 				return self::get_formatted_array( $local_cache, $idx, $add_none );
+
 			} else {
 				return self::get_formatted_array( self::$currency_symbols, $idx, $add_none );
 			}
@@ -1513,8 +1527,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $local_cache[$plugin_slug][$fields_key] = plugins_api( 'plugin_information', array(
-				'slug' => $plugin_slug,
-				'fields' => $plugin_fields,
+				'slug'       => $plugin_slug,
+				'fields'     => $plugin_fields,
 				'unfiltered' => $unfiltered, // true = skip the update manager filter.
 			) );
 		}
@@ -2914,11 +2928,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function encode_utf8( $decoded ) {
+
 			if ( mb_detect_encoding( $decoded, 'UTF-8') !== 'UTF-8' ) {
 				$encoded = utf8_encode( $decoded );
 			} else {
 				$encoded = $decoded;
 			}
+
 			return $encoded;
 		}
 
@@ -2927,7 +2943,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function decode_html( $encoded ) {
 
-			// if we don't have something to decode, return immediately
+			/**
+			 * If we don't have something to decode, then return immediately.
+			 */
 			if ( strpos( $encoded, '&' ) === false ) {
 				return $encoded;
 			}
@@ -2943,15 +2961,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function decode_utf8( $encoded ) {
 
-			// if we don't have something to decode, return immediately
+			/**
+			 * if we don't have something to decode, then return immediately.
+			 */
 			if ( strpos( $encoded, '&#' ) === false ) {
 				return $encoded;
 			}
 
-			// convert certain entities manually to something non-standard
+			/**
+			 * Convert certain entities manually to something non-standard.
+			 */
 			$encoded = preg_replace( '/&#8230;/', '...', $encoded );
 
-			// if mb_decode_numericentity is not available, return the string un-converted
+			/**
+			 * If mb_decode_numericentity is not available, return the string un-converted.
+			 */
 			if ( ! function_exists( 'mb_decode_numericentity' ) ) {
 				return $encoded;
 			}
@@ -2962,11 +2986,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function decode_utf8_entity( $matches ) {
+
 			$convmap = array( 0x0, 0x10000, 0, 0xfffff );
+
 			return mb_decode_numericentity( $matches[0], $convmap, 'UTF-8' );
 		}
 
 		public static function strip_html( $text ) {
+
 			$text = self::strip_shortcodes( $text );                                // Remove any remaining shortcodes.
 			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );                     // Put everything on one line.
 			$text = preg_replace( '/<\?.*\?' . '>/U', ' ', $text);                  // Remove php.
@@ -2975,6 +3002,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$text = preg_replace( '/(<p>|<p[^>]+>|<\/p>)/i', ' ', $text);           // Replace paragraph tags with a space.
 			$text = trim( strip_tags( $text ) );                                    // Remove remaining html tags.
 			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );                // Replace 1+ spaces to a single space.
+
 			return trim( $text );
 		}
 
@@ -3053,10 +3081,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function json_encode_array( array $data, $options = 0, $depth = 32 ) {
+
 			if ( function_exists( 'wp_json_encode' ) ) {
+
 				return wp_json_encode( $data, $options, $depth );
+
 			} elseif ( function_exists( 'json_encode' ) ) {
+
 				$php_version = phpversion();
+
 				if ( version_compare( $php_version, '5.5.0', '>=' ) ) {
 					return json_encode( $data, $options, $depth );  // $depth since PHP v5.5.0.
 				} elseif ( version_compare( $php_version, '5.3.0', '>=' ) ) {
@@ -3064,6 +3097,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				} else {
 					return json_encode( $data );
 				}
+
 			} else {
 				return '{}'; // Empty string.
 			}

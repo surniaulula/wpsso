@@ -48,10 +48,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			// query argument used to bust external caches
+			/**
+			 * Query argument used to bust external caches.
+			 */
 			$crawler_arg = 'uaid';
 
-			if ( strpos( $this->get_head_cache_index( false ), 'uaid:' ) !== false ) {	// custom crawler found
+			if ( strpos( $this->get_head_cache_index( false ), 'uaid:' ) !== false ) {	// Custom crawler found.
 
 				$crawler_name = SucomUtil::get_crawler_name();
 
@@ -59,33 +61,37 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$this->p->debug->log( 'custom crawler cache index found for '.$crawler_name );
 
 				}
-				if ( ! defined( 'DONOTCACHEPAGE' ) ) {	// define as true
+				if ( ! defined( 'DONOTCACHEPAGE' ) ) {	// Define as true.
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'defining DONOTCACHEPAGE as true' );
 					}
 					define( 'DONOTCACHEPAGE', true );
-				} elseif ( DONOTCACHEPAGE ) {	// already defined as true
+				} elseif ( DONOTCACHEPAGE ) {	// Already defined as true.
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'DONOTCACHEPAGE already defined as true' );
 					}
-				} else {	// already defined as false
+				} else {	// Already defined as false.
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'error defining DONOTCACHEPAGE - constant already defined as false' );
 					}
 				}
 
-				// add a query argument for this crawler and redirect to bust external caches
+				/**
+				 * Add a query argument for this crawler and redirect to bust external caches.
+				 */
 				if ( empty( $_GET[$crawler_arg] ) || $_GET[$crawler_arg] !== $crawler_name ) {
 
-					wp_redirect( add_query_arg( $crawler_arg, $crawler_name, remove_query_arg( $crawler_arg ) ) );	// 302 by default
+					wp_redirect( add_query_arg( $crawler_arg, $crawler_name, remove_query_arg( $crawler_arg ) ) );	// 302 by default.
 
 					exit;
 				}
 
-			// if not a custom crawler, then remove the query (if set) and redirect
+			/**
+			 * If not a custom crawler, then remove the query (if set) and redirect.
+			 */
 			} elseif ( isset( $_GET[$crawler_arg] ) ) {
 
-				wp_redirect( remove_query_arg( $crawler_arg ) );	// 302 by default
+				wp_redirect( remove_query_arg( $crawler_arg ) );	// 302 by default.
 
 				exit;
 			}
@@ -142,9 +148,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 			}
 
-			$cache_index = trim( $cache_index, '_' );	// cleanup leading underscores
+			$cache_index = trim( $cache_index, '_' );	// Cleanup leading underscores.
 
-			$cache_index = SucomUtil::get_query_salt( $cache_index );	// add $wp_query args
+			$cache_index = SucomUtil::get_query_salt( $cache_index );	// Add $wp_query args.
 
 			$cache_index = apply_filters( $this->p->lca.'_head_cache_index', $cache_index, $mixed, $sharing_url );
 
@@ -155,7 +161,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $cache_index;
 		}
 
-		// called by wp_head and amp_post_template_head actions
+		/**
+		 * Called by wp_head and amp_post_template_head actions.
+		 */
 		public function maybe_disable_rel_canonical() {
 
 			if ( $this->p->debug->enabled ) {
@@ -164,41 +172,43 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( ! empty( $this->p->options['add_link_rel_canonical'] ) ) {
 
-				$current = current_filter();	// since wp v2.5, aka current_action() in wp v3.9
+				$current = current_filter();	// Since wp v2.5, aka current_action() in wp v3.9.
 
 				switch( $current ) {
 
 					case 'wp_head':
 
-						remove_filter( $current, 'rel_canonical' );	// WordPress
+						remove_filter( $current, 'rel_canonical' );	// WordPress.
 
-						remove_action( $current, 'amp_frontend_add_canonical' );	// AMP
+						remove_action( $current, 'amp_frontend_add_canonical' );	// AMP.
 
 						break;
 
 					case 'amp_post_template_head':
 
-						remove_action( $current, 'amp_post_template_add_canonical' );	// AMP
+						remove_action( $current, 'amp_post_template_add_canonical' );	// AMP.
 
 						break;
 				}
 			}
 		}
 
-		// called by wp_head action
+		/**
+		 * Called by wp_head action.
+		 */
 		public function show_head() {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			$use_post = apply_filters( $this->p->lca.'_use_post', false );	// used by woocommerce with is_shop()
+			$use_post = apply_filters( $this->p->lca.'_use_post', false );	// Used by woocommerce with is_shop().
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 
-			$mod = $this->p->util->get_page_mod( $use_post );	// get post/user/term id, module name, and module object reference
+			$mod = $this->p->util->get_page_mod( $use_post );	// Get post/user/term id, module name, and module object reference.
 			$r_cache = true;
 			$mt_og = array();
 
@@ -236,6 +246,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$head_info = array();
 
 			foreach ( $head_mt as $mt ) {
+
 				if ( ! isset( $mt[2] ) || ! isset( $mt[3] ) ) {
 					continue;
 				}
@@ -243,19 +254,25 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mt_match = $mt[2].'-'.$mt[3];
 
 				switch ( $mt_match ) {
+
 					case 'property-og:type':
 					case 'property-og:title':
 					case 'property-og:description':
 					case 'property-article:author:name':
 					case ( strpos( $mt_match, 'name-schema:' ) === 0 ? true : false ):
-						if ( ! isset( $head_info[$mt[3]] ) ) {	// only save the first meta tag value
+
+						if ( ! isset( $head_info[$mt[3]] ) ) {	// Only save the first meta tag value.
 							$head_info[$mt[3]] = $mt[5];
 						}
+
 						break;
+
 					case ( preg_match( '/^property-((og|p):(image|video))(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
+
 						if ( ! empty( $mt[5] ) ) {
-							$has_media[$m[1]] = true;	// optimize media loop
+							$has_media[$m[1]] = true;	// Optimize media loop.
 						}
+
 						break;
 				}
 			}
@@ -295,20 +312,28 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$mt_match = $mt[2].'-'.$mt[3];
 
 					switch ( $mt_match ) {
+
 						case ( preg_match( '/^property-'.$prefix.'(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
-							if ( ! empty( $head_info[$prefix] ) ) {	// only save the media URL once
-								continue 2;			// get the next meta tag
+
+							if ( ! empty( $head_info[$prefix] ) ) {	// Only save the media URL once.
+								continue 2;			// Get the next meta tag.
 							}
+
 							if ( ! empty( $mt[5] ) ) {
-								$head_info[$prefix] = $mt[5];	// save the media URL
+								$head_info[$prefix] = $mt[5];	// Save the media URL.
 								$is_first = true;
 							}
+
 							break;
+
 						case ( preg_match( '/^property-'.$prefix.':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
-							if ( $is_first !== true ) {		// only save for first media found
-								continue 2;			// get the next meta tag
+
+							if ( $is_first !== true ) {		// Only save for first media found.
+								continue 2;			// Get the next meta tag.
 							}
+
 							$head_info[$mt[3]] = $mt[5];
+
 							break;
 					}
 				}
@@ -387,7 +412,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$suffix = '([\s\n\r]+--|"[\s\n\r]*\/?)>';
 		
 					$ret = '/'.$prefix.$this->p->lca.' meta tags begin'.$suffix.'.*'.
-						$prefix.$this->p->lca.' meta tags end'.$suffix.'/ums';	// enable utf8 support
+						$prefix.$this->p->lca.' meta tags end'.$suffix.'/ums';	// Enable utf8 support.
 
 					break;
 			}
@@ -412,18 +437,21 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );
 			}
 
-			$start_time = microtime( true );
+			$start_time   = microtime( true );
 			$crawler_name = SucomUtil::get_crawler_name();
-			$html = $this->get_mt_mark( 'begin' );
+			$html         = $this->get_mt_mark( 'begin' );
+			$indent       = 0;
 
-			// first element of returned array is the html tag
-			$indent = 0;
 			foreach ( $this->get_head_array( $use_post, $mod, $r_cache, $mt_og ) as $mt ) {
+
 				if ( ! empty( $mt[0] ) ) {
+
 					if ( $indent && strpos( $mt[0], '</noscript' ) === 0 ) {
 						$indent = 0;
 					}
+
 					$html .= str_repeat( "\t", (int) $indent ).$mt[0];
+
 					if ( strpos( $mt[0], '<noscript' ) === 0 ) {
 						$indent = 1;
 					}
@@ -431,6 +459,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$html .= $this->get_mt_mark( 'end' );
+
 			$html .= '<!-- added on '.date( 'c' ).' in '.sprintf( '%f secs', microtime( true ) - $start_time ).
 				( $crawler_name !== 'none' ? ' for '.$crawler_name : '' ).' from '.SucomUtilWP::raw_home_url().' -->' . "\n\n";
 
@@ -443,7 +472,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		public function get_head_array( $use_post = false, &$mod = false, $r_cache = true, &$mt_og = array() ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'build head array' );	// begin timer
+				$this->p->debug->mark( 'build head array' );	// Begin timer.
 			}
 
 			/**
@@ -457,7 +486,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );
 			}
 
-			$sharing_url = $this->p->util->get_sharing_url( $mod, true, 'head_sharing_url' );	// $add_page = true
+			$sharing_url = $this->p->util->get_sharing_url( $mod, true, 'head_sharing_url' );	// $add_page is true.
 
 			if ( empty( $sharing_url ) ) {	// Just in case.
 				if ( $this->p->debug->enabled ) {
@@ -575,7 +604,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_name = array();
 
 			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
-				// fallback for authors without a Facebook page URL in their user profile
+
+				/**
+				 * Fallback for authors without a Facebook page URL in their user profile.
+				 */
 				if ( empty( $mt_og['article:author'] ) && is_object( $this->p->m['util']['user'] ) ) {	// Just in case.
 					$mt_name['author'] = $this->p->m['util']['user']->get_author_meta( $author_id,
 						$this->p->options['fb_author_name'] );
@@ -587,7 +619,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $add_meta_name_description ) {
 				$mt_name['description'] = $this->p->page->get_description( $this->p->options['seo_desc_len'],
-					'...', $mod, true, false, true, 'seo_desc' );	// add_hashtags = false
+					'...', $mod, true, false, true, 'seo_desc' );	// add_hashtags is false.
 			}
 
 			if ( ! empty( $this->p->options['add_meta_name_p:domain_verify'] ) ) {
@@ -605,7 +637,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Link relation tags
 			 */
+			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding link relation tags', 'wpsso' ) ) : false;
 			$link_rel = $this->p->link_rel->get_array( $mod, $mt_og, $crawler_name, $author_id );
+			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
 			 * Schema meta tags
@@ -629,7 +663,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Combine and return all meta tags
 			 */
-			$mt_og = $this->p->og->sanitize_array( $mod, $mt_og );	// unset mis-matched og_type meta tags
+			$mt_og = $this->p->og->sanitize_array( $mod, $mt_og );	// Unset mis-matched og_type meta tags.
 
 			$cache_array[$cache_index] = array_merge(
 				$this->get_mt_array( 'meta', 'name', $mt_generators, $mod ),
@@ -638,14 +672,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( 'meta', 'name', $mt_weibo, $mod ),
 				$this->get_mt_array( 'meta', 'name', $mt_tc, $mod ),
 				$this->get_mt_array( 'meta', 'itemprop', $mt_schema, $mod ),
-				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),	// seo description is last
+				$this->get_mt_array( 'meta', 'name', $mt_name, $mod ),	// SEO description is last.
 				$this->p->schema->get_noscript_array( $mod, $mt_og, $crawler_name ),
 				$mt_json_array
 			);
 
 			if ( $cache_exp_secs > 0 ) {
-				// update the cached array and maintain the existing transient expiration time
+
+				/**
+				 * Update the cached array and maintain the existing transient expiration time.
+				 */
 				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $cache_array, $cache_exp_secs );
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head array saved to transient cache (expires in '.$expires_in_secs.' secs)' );
 				}
@@ -657,7 +695,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'build head array' );	// end timer
+				$this->p->debug->mark( 'build head array' );	// End timer.
 			}
 
 			return $cache_array[$cache_index];
@@ -795,11 +833,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 * Double-check the name to make sure its an open graph meta tag.
 					 */
 					switch ( $name ) {
-						// these names are not open graph meta tag names
+
+						/**
+						 * These names are not open graph meta tag names.
+						 */
 						case ( strpos( $name, 'twitter:' ) === 0 ? true : false ):
-						case ( strpos( $name, 'schema:' ) === 0 ? true : false ):	// internal meta tags
-						case ( strpos( $name, ':' ) === false ? true : false ):		// no colon in $name
+						case ( strpos( $name, 'schema:' ) === 0 ? true : false ):	// Internal meta tags.
+						case ( strpos( $name, ':' ) === false ? true : false ):		// No colon in $name.
+
 							$type = 'name';
+
 							break;
 					}
 
@@ -825,6 +868,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$ret = array();
+
 			$log_prefix = $tag . ' ' . $type . ' ' . $name;
 
 			static $charset = null;
@@ -850,14 +894,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			switch ( $name ) {
+
 				case 'og:image:secure_url':
 				case 'og:video:secure_url':
+
 					if ( strpos( $value, 'https:' ) !== 0 ) {	// Just in case.
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_prefix . ' skipped: value not https' );
 						}
+
 						return $ret;
 					}
+
 					break;
 			}
 
@@ -919,7 +968,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$match_name = $parts[3];
 				}
 
-				// boolean values are converted to their string equivalent
+				/**
+				 * Boolean values are converted to their string equivalent.
+				 */
 				if ( is_bool( $parts[5] ) ) {
 					$parts[5] = $parts[5] ? 'true' : 'false';
 				}
@@ -964,7 +1015,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						$parts[5] = SucomUtil::esc_url_encode( $parts[5] );
 
-						if ( $parts[2] === 'itemprop' ) {	// Itemprop urls must be links.
+						if ( $parts[2] === 'itemprop' ) {	// An itemprop URL must be a 'link'.
 							$parts[1] = 'link';
 							$parts[4] = 'href';
 						}
@@ -981,7 +1032,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					case 'twitter:app:url:ipad':
 					case 'twitter:app:url:googleplay':
 
-						$parts[5] = SucomUtil::esc_url_encode( $parts[5], false );	// $wp_esc_url = false
+						$parts[5] = SucomUtil::esc_url_encode( $parts[5], false );	// $wp_esc_url is false.
 
 						break;
 
@@ -990,7 +1041,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 */
 					default:
 
-						$parts[5] = htmlentities( $parts[5], ENT_QUOTES, $charset, false );	// double_encode = false
+						$parts[5] = htmlentities( $parts[5], ENT_QUOTES, $charset, false );	// $double_encode is false.
 
 						break;
 				}

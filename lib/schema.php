@@ -1004,7 +1004,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$ret = array();
-			$page_type_id = $mt_og['schema:type:id'] = $this->get_mod_schema_type( $mod, true );		// example: article.tech
+
+			$page_type_id  = $mt_og['schema:type:id'] = $this->get_mod_schema_type( $mod, true );		// example: article.tech
 			$page_type_url = $mt_og['schema:type:url'] = $this->get_schema_type_url( $page_type_id );	// example: https://schema.org/TechArticle
 
 			list(
@@ -1012,8 +1013,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$mt_og['schema:type:name'],
 			) = self::get_schema_type_parts( $page_type_url );		// example: https://schema.org, TechArticle
 
-			$page_type_ids = array();
-			$page_type_added = array();	// Prevent duplicate schema types.
+			$page_type_ids    = array();
+			$page_type_added  = array();	// Prevent duplicate schema types.
 			$site_org_type_id = false;	// Just in case.
 
 			if ( $this->p->debug->enabled ) {
@@ -1168,7 +1169,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->debug->log( 'existing @type property is ' . print_r( $json_data['@type'], true ) );	// @type can be an array.
 					}
 	
-					// encode the json data in an HTML script block
+					/**
+					 * Encode the json data in an HTML script block.
+					 */
 					$ret[] = '<script type="application/ld+json">' . $this->p->util->json_format( $json_data ) . '</script>' . "\n";
 				}
 
@@ -1177,11 +1180,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$ret = SucomUtil::a2aa( $ret );	// convert to array of arrays
+			$ret = SucomUtil::a2aa( $ret );	// Convert to array of arrays.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $ret );
-				$this->p->debug->mark( 'build json array' );	// end timer for json array
+				$this->p->debug->mark( 'build json array' );	// End timer for json array.
 			}
 
 			return $ret;

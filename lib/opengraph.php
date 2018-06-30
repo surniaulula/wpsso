@@ -622,6 +622,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * The 'og_content_map' array is also checked for Schema values that need to be
 		 * swapped for simpler Open Graph meta tag values.
+		 *
+		 * Called by WpssoHead::get_head_array() before merging all meta tag arrays.
 		 */
 		public function sanitize_array( array $mod, array $mt_og ) {
 
