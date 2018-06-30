@@ -335,6 +335,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options.
+	* Moved the Preview tab back to its original location in the Document SSO metabox.
 * *Bugfixes*
 	* None
 * *Developer Notes*
