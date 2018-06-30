@@ -329,7 +329,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.7.0-dev.1 (TBD)**
+**Version 4.7.0-dev.1 (2018/06/29)**
 
 * *New Features*
 	* None
@@ -503,7 +503,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.7.0-dev.1 =
 
-(TBD) Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options.
+(2018/06/29) Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options.
 
 = 4.6.0 =
 
