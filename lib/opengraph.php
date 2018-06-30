@@ -602,11 +602,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( ! isset( $mt_og['article:published_time'] ) ) {
-					$mt_og['article:published_time'] = trim( get_post_time( 'c', true, $post_id ) );	// $gmt = true
+					if ( $mod['post_status'] === 'publish' ) {	// Must be published to have publish time.
+						$mt_og['article:published_time'] = trim( get_post_time( 'c', true, $post_id ) );	// $gmt is true.
+					}
 				}
 
 				if ( ! isset( $mt_og['article:modified_time'] ) ) {
-					$mt_og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt = true
+					$mt_og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt is true.
 				}
 			}
 
