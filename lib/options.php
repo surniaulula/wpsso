@@ -289,22 +289,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$def_opts = $this->get_defaults();
 						}
 
-						$adv_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
+						$check_opt_vals = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
 
 						foreach ( array(
 							'plugin_preserve',
 							'plugin_debug',
 							'plugin_hide_pro',
 							'plugin_show_opts',
-							'plugin_shortcodes',
-							'plugin_widgets',
-						) as $free_opt_key ) {
-							unset( $adv_opts[$free_opt_key] );
+						) as $idx ) {
+							unset( $check_opt_vals[$idx] );
 						}
 
 						$warn_msg = __( 'Non-standard value found for "%s" option - resetting to default value.', 'wpsso' );
 
-						foreach ( $adv_opts as $idx => $def_val ) {
+						foreach ( $check_opt_vals as $idx => $def_val ) {
 							if ( isset( $opts[$idx] ) ) {
 								if ( $opts[$idx] === $def_val ) {
 									continue;

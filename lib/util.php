@@ -1521,9 +1521,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function save_all_times( $ext, $version ) {
-			self::save_time( $ext, $version, 'update', $version );	// $protect only if same version
-			self::save_time( $ext, $version, 'install', true );	// $protect = true
-			self::save_time( $ext, $version, 'activate' );		// always update timestamp
+			self::save_time( $ext, $version, 'update', $version );	// $protect only if same version.
+			self::save_time( $ext, $version, 'install', true );	// $protect is true.
+			self::save_time( $ext, $version, 'activate' );		// Always update timestamp.
 		}
 
 		/**

@@ -1588,11 +1588,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $status_key ) ) {
 
-					$td_class = empty( $arr['td_class'] ) ? '' : ' ' . $arr['td_class'];
-					$icon_type = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label, $match ) ? $match[1] : 'admin-generic';
-					$icon_title = __( 'Generic feature module', 'wpsso' );
-					$label_text = empty( $match[2] ) ? $label : $match[2];
-					$label_text = empty( $arr['label'] ) ? $label_text : $arr['label'];
+					$td_class     = empty( $arr['td_class'] ) ? '' : ' ' . $arr['td_class'];
+					$icon_type    = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label, $match ) ? $match[1] : 'admin-generic';
+					$icon_title   = __( 'Generic feature module', 'wpsso' );
+					$label_text   = empty( $match[2] ) ? $label : $match[2];
+					$label_text   = empty( $arr['label'] ) ? $label_text : $arr['label'];
 					$purchase_url = $status_key === 'rec' && ! empty( $arr['purchase'] ) ? $arr['purchase'] : '';
 
 					switch ( $icon_type ) {
@@ -2653,15 +2653,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// Stop here.
 			}
 
-			$user_id        = get_current_user_id();
-			$all_ext_times  = $this->p->util->get_all_times();
-			$time_ago_secs  = time() - WEEK_IN_SECONDS;
-			$cache_md5_pre  = $this->p->lca . '_';
+			$lca     = $this->p->lca;
+			$short   = $this->p->cf['plugin'][$lca]['short'];
+			$user_id = get_current_user_id();
+
+			$all_times     = $this->p->util->get_all_times();
+			$week_ago_secs = time() - WEEK_IN_SECONDS;
+			$year_ago_secs = time() - YEAR_IN_SECONDS;
+
+			$cache_md5_pre  = $lca . '_';
 			$cache_exp_secs = 2 * DAY_IN_SECONDS;
 			$cache_salt     = __METHOD__ . '(user_id:' . $user_id . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
-			$this->get_form_object( $this->p->lca );
+			$this->get_form_object( $lca );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
@@ -2678,9 +2683,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						break;							// Stop here.
 					}
 					continue;							// Get the next plugin.
-				} elseif ( ! isset( $all_ext_times[$ext . '_activate_time'] ) ) {	// Never activated.
+				} elseif ( empty( $all_times[$ext . '_activate_time'] ) ) {		// Never activated.
 					continue;
-				} elseif ( $all_ext_times[$ext . '_activate_time'] > $time_ago_secs ) {	// Activated less than time ago.
+				} elseif ( $all_times[$ext . '_activate_time'] > $week_ago_secs ) {	// Activated less than time ago.
 					continue;
 				} elseif ( empty( $showing_ext ) || $showing_ext === '1' ) {		// Show this notice for $cache_exp_secs.
 					set_transient( $cache_id, $dismiss_key, $cache_exp_secs );
@@ -2688,55 +2693,59 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;							// Get the next plugin.
 				}
 
-				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
-					$support_url = $info['url']['support'];
-				} elseif ( ! empty( $info['url']['forum'] ) ) {
-					$support_url = $info['url']['forum'];
-				} else {
-					$support_url = '';
-				}
+				$wp_plugin_link = '<a href="' . $info['url']['home'] . '" title="' .
+					sprintf( __( 'The %s plugin description page on WordPress.org.',
+						'wpsso' ), $info['short'] ) . '">' . $info['name'] . '</a>';
 
 				/**
 				 * The action buttons.
 				 */
-				$rate_plugin_button = '<div style="display:inline-block;vertical-align:top;margin:1em 0.8em 0 0;">' .
-					$this->form->get_button( sprintf( __( 'Yes! Contribute and rate %s 5 stars!', 'wpsso' ), $info['short'] ),
-						'button-primary dismiss-on-click', '', $info['url']['review'], true, false,
-							array( 'dismiss-msg' => sprintf( __( 'Thank you for rating the %s plugin! You\'re awesome!',
-								'wpsso' ), $info['short'] ) ) ) . '</div>';
+				$rate_plugin_label   = sprintf( __( 'Yes! Contribute and rate %s 5 stars!', 'wpsso' ), $info['short'] );
+				$rate_plugin_clicked = sprintf( __( 'Thank you for rating the %s plugin! You\'re awesome!', 'wpsso' ), $info['short'] );
+				$rate_plugin_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0.8em 0.8em 0;">' .
+					$this->form->get_button( $rate_plugin_label, 'button-primary dismiss-on-click', '', $info['url']['review'],
+						true, false, array( 'dismiss-msg' => $rate_plugin_clicked ) ) . '</div>';
 
-				$already_rated_button = '<div style="display:inline-block;vertical-align:top;margin:1em 0 0 0;">' .
-					$this->form->get_button( sprintf( __( 'I\'ve already rated %s', 'wpsso' ), $info['short'] ),
-						'button-secondary dismiss-on-click', '', '', false, false, 
-							array( 'dismiss-msg' => sprintf( __( 'Thank you for your earlier rating of %s! You\'re awesome!',
-								'wpsso' ), $info['short'] ) ) ) . '</div>';
+				$already_rated_label   = sprintf( __( 'I\'ve already rated %s.', 'wpsso' ), $info['short'] );
+				$already_rated_clicked = sprintf( __( 'Thanks again for that earlier rating of %s! You\'re awesome!', 'wpsso' ), $info['short'] );
+				$already_rated_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0 0.8em 0;">' .
+					$this->form->get_button( $already_rated_label, 'button-secondary dismiss-on-click', '', '',
+						false, false, array( 'dismiss-msg' => $already_rated_clicked ) ) . '</div>';
 
 				/**
 				 * The notice message.
 				 */
-				$notice_msg = '<div style="display:table-cell;"><p style="margin-right:20px;">' .
-					$this->get_ext_img_icon( $ext ) . '</p></div>' . "\n";
+				$notice_msg = '<div style="display:table-cell;">';
+				
+				$notice_msg .= '<p style="margin-right:20px;">' . $this->get_ext_img_icon( $ext ) . '</p>';
+				
+				$notice_msg .= '</div>';
 
 				$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
 
 				$notice_msg .= '<p class="top">';
 				
-				$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ' .
-					sprintf( __( 'You\'ve been using <b>%s</b> for a week or more.', 'wpsso' ),
-						'<a href="' . $info['url']['home'] . '" title="' . sprintf( __( 'The %s plugin description page on WordPress.org',
-							'wpsso' ), $info['short'] ) . '">' . $info['name'] . '</a>' ) . ' ';
-
-				$notice_msg .= __( 'That\'s awesome!', 'wpsso' );
+				$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 				
-				$notice_msg .= '</p><p>';
-
-				$notice_msg .= '<b>' . __( 'Could you do me a small favor?', 'wpsso' ) . '</b> ';
-
-				$notice_msg .= sprintf( __( 'Would you rate the %s plugin on WordPress.org?', 'wpsso' ), $info['short'] );
+				$notice_msg .= sprintf( __( 'You\'ve been using <b>%s</b> for a while now, which is awesome!', 'wpsso' ), $wp_plugin_link );
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= __( 'Your rating is a great way to encourage us and it helps other WordPress users as well!', 'wpsso' ) . ' :-)';
+				$notice_msg .= sprintf( __( 'We\'ve put a lot of effort into making %s and its add-ons the best possible, so it\'s great to know that you\'re finding this plugin useful.', 'wpsso' ), $short ) . ' :-)';
+
+				$notice_msg .= '</p><p>';
+
+				$notice_msg .= sprintf( __( 'Now that you\'re familiar with %s, would you do me a small favor?', 'wpsso' ), $info['short'] ) . ' ';
+
+				$notice_msg .= __( 'Just for me?', 'wpsso' );
+
+				$notice_msg .= '</p><p>';
+
+				$notice_msg .= __( 'Would you rate this plugin on WordPress.org?', 'wpsso' ) . ' :-)';
+
+				$notice_msg .= '</p><p>';
+
+				$notice_msg .= __( 'Your rating is a great way to encourage us, and it helps other WordPress users find great plugins as well!', 'wpsso' );
 
 				$notice_msg .= '</p>';
 				
@@ -2749,20 +2758,69 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 				$this->p->notice->log( 'inf', $notice_msg, $user_id, $dismiss_key, $dismiss_time, array( 'dismiss_diff' => false ) );
 
-				break;	// Show only one notice at a time.
+				return;	// Show only one notice at a time.
+			}
+
+			if ( ! self::$pkg[$lca]['aop'] ) {
+
+				if ( ! empty( $all_times[$lca . '_install_time'] ) && $all_times[$lca . '_install_time'] < $year_ago_secs ) {
+
+					$info         = $this->p->cf['plugin'][$lca];
+					$purchase_url = add_query_arg( 'utm_source', 'year-installed-notice', $info['url']['purchase'] );
+					$dismiss_key  = 'timed-notice-' . $lca . '-year-installed';
+					$dismiss_time = 3 * MONTH_IN_SECONDS;
+
+					$purchase_label   = __( 'Yes! Get the Pro update in just moments!', 'wpsso' );
+					$purchase_clicked = __( 'Thank you for your support! You\'re awesome!', 'wpsso' );
+					$purchase_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0.8em 0.8em 0;">' .
+						$this->form->get_button( $purchase_label, 'button-primary dismiss-on-click', '', $purchase_url,
+							true, false, array( 'dismiss-msg' => $purchase_clicked ) ) . '</div>';
+
+					$no_thanks_label   = __( 'No thanks, I\'ll stay with the Free version for now.', 'wpsso' );
+					$no_thanks_clicked = __( 'I\'m sorry to hear that &mdash; maybe you\'ll change your mind later.', 'wpsso' ) . ' ;-)';
+					$no_thanks_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0 0.8em 0;">' .
+						$this->form->get_button( $no_thanks_label, 'button-secondary dismiss-on-click', '', '',
+							false, false, array( 'dismiss-msg' => $no_thanks_clicked ) ) . '</div>';
+
+					$notice_msg = '<p class="top">';
+
+					$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
+
+					$notice_msg .= sprintf( __( 'You\'ve been using the %s plugin for over a year now, which is awesome!', 'wpsso' ), $info['short'] ) . ' ';
+
+					$notice_msg .= '</p><p>';
+
+					$notice_msg .= sprintf( __( 'We\'ve put a lot of effort into making %s and its add-ons the best possible &mdash; I hope you\'ve enjoyed all the new features, improvements, and updates over the past year.', 'wpsso' ), $info['short'] ) . ' :-)';
+
+					$notice_msg .= '</p><p>';
+
+					$notice_msg .= '<b>' . __( 'Have you considered purchasing the Pro version?', 'wpsso' ) . '</b> ';
+
+					$notice_msg .= __( 'It comes with a lot of new and exciting extra features!', 'wpsso' );
+
+					$notice_msg .= '</p>';
+					
+					$notice_msg .= $purchase_button . $no_thanks_button;
+
+					/**
+					 * The notice provides it's own dismiss button, so do not show the dismiss 'Forever' link.
+					 */
+					$this->p->notice->log( 'inf', $notice_msg, $user_id, $dismiss_key, $dismiss_time, array( 'dismiss_diff' => false ) );
+				}
 			}
 		}
 
 		public function required_notices() {
 
 			$has_pdir = $this->p->avail['*']['p_dir'];
-			$version = $this->p->cf['plugin'][$this->p->lca]['version'];
-			$um_info = $this->p->cf['plugin']['wpssoum'];
-			$have_ext_tid = false;
+			$version  = $this->p->cf['plugin'][$this->p->lca]['version'];
+			$um_info  = $this->p->cf['plugin']['wpssoum'];
+			$have_tid = false;
 
 			if ( $has_pdir && empty( $this->p->options['plugin_' . $this->p->lca . '_tid'] ) &&
 				( empty( $this->p->options['plugin_' . $this->p->lca . '_tid:is'] ) ||
 					$this->p->options['plugin_' . $this->p->lca . '_tid:is'] !== 'disabled' ) ) {
+
 				$this->p->notice->nag( $this->p->msgs->get( 'notice-pro-tid-missing' ) );
 			}
 
@@ -2770,7 +2828,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) ) {
 
-					$have_ext_tid = true;	// found at least one plugin with an auth id
+					$have_tid = true;	// Found at least one plugin with an auth id
 
 					/**
 					 * If the update manager is active, the version should be available.
@@ -2790,10 +2848,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			if ( true === $have_ext_tid ) {
+			if ( true === $have_tid ) {
 
-				// if the update manager is active, the version should be available
-				if ( ! empty( $um_info['version'] ) ) {
+				if ( ! empty( $um_info['version'] ) ) {	// If UM is active, its version should be available.
 
 					$um_rec_version = WpssoConfig::$cf['um']['rec_version'];
 
@@ -2802,13 +2859,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							array( 'um_rec_version' => $um_rec_version ) ) );
 					}
 
-				// if the update manager is not active, check if installed
-				} elseif ( SucomUtil::plugin_is_installed( $um_info['base'] ) ) {
+				} elseif ( SucomUtil::plugin_is_installed( $um_info['base'] ) ) {	// Check if UM is installed.
 
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
 
-				// update manager is not active or installed
-				} else {
+				} else {	// UM is not active OR installed.
+
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-add-on-required' ) );
 				}
 			}
@@ -3147,22 +3203,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->form->get_th_html( _x( 'Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
 			'<td>' . $this->form->get_select( 'plugin_show_opts', $this->p->cf['form']['show_options'] ) . '</td>' .
 			self::get_option_site_use( 'plugin_show_opts', $this->form, $network, true );
-
-			if ( ! empty( $this->p->cf['*']['lib']['shortcode'] ) ) {
-
-				$table_rows['plugin_shortcodes'] = $this->form->get_tr_hide( 'basic', 'plugin_shortcodes' ) .
-				$this->form->get_th_html( _x( 'Enable Plugin Shortcode(s)', 'option label', 'wpsso' ), '', 'plugin_shortcodes' ) .
-				'<td>' . $this->form->get_checkbox( 'plugin_shortcodes' ) . '</td>' .
-				self::get_option_site_use( 'plugin_shortcodes', $this->form, $network, true );
-			}
-
-			if ( ! empty( $this->p->cf['*']['lib']['widget'] ) ) {
-
-				$table_rows['plugin_widgets'] = $this->form->get_tr_hide( 'basic', 'plugin_widgets' ) .
-				$this->form->get_th_html( _x( 'Enable Plugin Widget(s)', 'option label', 'wpsso' ), '', 'plugin_widgets' ) .
-				'<td>' . $this->form->get_checkbox( 'plugin_widgets' ) . '</td>' .
-				self::get_option_site_use( 'plugin_widgets', $this->form, $network, true );
-			}
 		}
 
 		public static function get_option_site_use( $name, $form, $network = false, $enabled = false ) {

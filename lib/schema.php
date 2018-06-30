@@ -794,7 +794,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $type_url, $match ) ) {
 
 				$context_value = $match[1];
-				$type_value = $match[2];
+				$type_value    = $match[2];
 
 				/**
 				 * Check for schema extension (example: https://health-lifesci.schema.org).
@@ -1823,34 +1823,44 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $names, $overwrite = true ) {
-			$wpsso =& Wpsso::get_instance();
-			$itemprop_added = 0;
-			$is_assoc = SucomUtil::is_assoc( $names );
+
+			$wpsso      =& Wpsso::get_instance();
+			$is_assoc   = SucomUtil::is_assoc( $names );
+			$prop_added = 0;
+
 			foreach ( $names as $itemprop_name => $key_name ) {
+
 				if ( ! $is_assoc ) {
 					$itemprop_name = $key_name;
 				}
-				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
+
+				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// Exclude empty strings.
+
 					if ( isset( $json_data[$itemprop_name] ) && empty( $overwrite ) ) {
+
 						if ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'skipping ' . $itemprop_name . ': itemprop exists and overwrite is false' );
 						}
+
 					} else {
-						if ( is_string( $assoc[$key_name] ) && 
-							filter_var( $assoc[$key_name], FILTER_VALIDATE_URL ) !== false ) {
+
+						if ( is_string( $assoc[$key_name] ) && filter_var( $assoc[$key_name], FILTER_VALIDATE_URL ) !== false ) {
 							$json_data[$itemprop_name] = esc_url_raw( $assoc[$key_name] );
 						} else {
 							$json_data[$itemprop_name] = $assoc[$key_name];
 						}
+
 						if ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' . $itemprop_name . ' = ' . 
 								print_r( $json_data[$itemprop_name], true ) );
 						}
-						$itemprop_added++;
+
+						$prop_added++;
 					}
 				}
 			}
-			return $itemprop_added;
+
+			return $prop_added;
 		}
 
 		public static function get_data_itemprop_from_assoc( array $assoc, array $names, $exclude = array( '' ) ) {
@@ -3104,11 +3114,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'promoting location property array' );
 				}
 
-				$itemprop_added = self::add_data_itemprop_from_assoc( $json_data, $json_data['location'], 
+				$prop_added = self::add_data_itemprop_from_assoc( $json_data, $json_data['location'], 
 					array_keys( $json_data['location'] ), false );	// $overwrite = false
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'promoted ' . $itemprop_added . ' location keys' );
+					$this->p->debug->log( 'promoted ' . $prop_added . ' location keys' );
 				}
 
 				if ( $this->p->debug->enabled ) {

@@ -163,10 +163,11 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 					$this->add_optional_advanced_table_rows( $table_rows );
 
+					/**
+					 * Don't show these options in the Essential settings page.
+					 */
 					unset ( $table_rows['plugin_debug'] );
 					unset ( $table_rows['plugin_hide_pro'] );
-					unset ( $table_rows['plugin_shortcodes'] );
-					unset ( $table_rows['plugin_widgets'] );
 
 					break;
 			}

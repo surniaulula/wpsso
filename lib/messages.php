@@ -1008,18 +1008,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_shortcodes':
-
-							$text = sprintf( __( 'Enable the %s shortcode features (default is checked).', 'wpsso' ), $info['short'] );
-
-							break;
-
-						case 'tooltip-plugin_widgets':
-
-							$text = sprintf( __( 'Enable the %s widget features (default is checked).', 'wpsso' ), $info['short'] );
-
-							break;
-
 						case 'tooltip-plugin_page_excerpt':
 
 							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ).' ';
@@ -1801,7 +1789,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates markup.', 'wpsso' );
+							$text .= __( 'Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates.', 'wpsso' ).' ';
+
+							$text .= __( 'Theme templates with serious errors may prevent social and search crawlers from parsing the webpage HTML, so validating your theme template markup is important.', 'wpsso' );
 
 							$text .= '</p>';
 

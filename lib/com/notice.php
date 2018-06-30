@@ -1062,6 +1062,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				.components-notice-list .' . $this->lca . '-notice {
 					min-height:0;
+					-webkit-box-shadow:none;
+					-moz-box-shadow:none;
 					box-shadow:none;
 				}
 				.components-notice-list .' . $this->lca . '-notice *,
@@ -1129,6 +1131,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.' . $this->lca . '-notice.updated {	/* wp sets padding to 1px 12px */
 					clear:both;
 					padding:0;
+					-webkit-box-shadow:none;
+					-moz-box-shadow:none;
 					box-shadow:none;
 				}
 				#wpadminbar .' . $this->lca . '-notice,
@@ -1144,12 +1148,18 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .' . $this->lca . '-notice a,
 				.' . $this->lca . '-notice a {
 					display:inline;
-					padding:0;
 					text-decoration:underline;
+					padding:0;
 				}
 				#wpadminbar .' . $this->lca . '-notice .button-primary,
 				#wpadminbar .' . $this->lca . '-notice .button-secondary {
 					padding:0.3em 1em;
+					-webkit-border-radius:0;
+					-moz-border-radius:0;
+					border-radius:0;
+					-webkit-box-shadow:none;
+					-moz-box-shadow:none;
+					box-shadow:none;
 				}
 				#wpadminbar .'.$this->p->lca.'-notice .notice-label,
 				#wpadminbar .'.$this->p->lca.'-notice .notice-message,

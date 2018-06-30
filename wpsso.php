@@ -15,7 +15,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 4.9.6
  * WC Tested Up To: 3.4.2
- * Version: 4.6.0
+ * Version: 4.7.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -124,15 +124,19 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 * Runs at init 1.
 		 */
 		public function init_widgets() {
+
 			$opts = get_option( WPSSO_OPTIONS_NAME );
-			if ( ! empty( $opts['plugin_widgets'] ) ) {
-				foreach ( $this->cf['plugin'] as $ext => $info ) {
-					if ( isset( $info['lib']['widget'] ) && is_array( $info['lib']['widget'] ) ) {
-						foreach ( $info['lib']['widget'] as $id => $name ) {
-							$classname = apply_filters( $ext . '_load_lib', false, 'widget/' . $id );
-							if ( false !== $classname && class_exists( $classname ) ) {
-								register_widget( $classname );	// name of a class that extends WP_Widget
-							}
+
+			foreach ( $this->cf['plugin'] as $ext => $info ) {
+
+				if ( isset( $info['lib']['widget'] ) && is_array( $info['lib']['widget'] ) ) {
+
+					foreach ( $info['lib']['widget'] as $id => $name ) {
+
+						$classname = apply_filters( $ext . '_load_lib', false, 'widget/' . $id );
+
+						if ( false !== $classname && class_exists( $classname ) ) {
+							register_widget( $classname );	// name of a class that extends WP_Widget
 						}
 					}
 				}
@@ -387,14 +391,17 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 * Runs at init priority 11 by default.
 		 */
 		public function init_shortcodes() {
-			if ( ! empty( $this->options['plugin_shortcodes'] ) ) {
-				foreach ( $this->cf['plugin'] as $ext => $info ) {
-					if ( isset( $info['lib']['shortcode'] ) && is_array( $info['lib']['shortcode'] ) ) {
-						foreach ( $info['lib']['shortcode'] as $id => $name ) {
-							$classname = apply_filters( $ext . '_load_lib', false, 'shortcode/' . $id );
-							if ( false !== $classname && class_exists( $classname ) ) {
-								$this->sc[$id] = new $classname( $this );
-							}
+
+			foreach ( $this->cf['plugin'] as $ext => $info ) {
+
+				if ( isset( $info['lib']['shortcode'] ) && is_array( $info['lib']['shortcode'] ) ) {
+
+					foreach ( $info['lib']['shortcode'] as $id => $name ) {
+
+						$classname = apply_filters( $ext . '_load_lib', false, 'shortcode/' . $id );
+
+						if ( false !== $classname && class_exists( $classname ) ) {
+							$this->sc[$id] = new $classname( $this );
 						}
 					}
 				}

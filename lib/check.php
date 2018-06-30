@@ -66,74 +66,139 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						 * compatibility with free / premium / pro versions.
 						 */
 						case 'ecom-edd':
+
 							$chk['class'] = 'Easy_Digital_Downloads';
+
 							break;
+
 						case 'ecom-marketpress':
+
 							$chk['class'] = 'Marketpress';
+
 							break;
+
 						case 'ecom-woocommerce':
+
 							$chk['class'] = 'WooCommerce';
+
 							break;
+
 						case 'ecom-wpecommerce':
+
 							$chk['class'] = 'WP_eCommerce';
+
 							break;
+
 						case 'event-tribe_events':
+
 							$chk['class'] = 'Tribe__Events__Main';
+
 							break;
+
 						case 'form-gravityforms':
+
 							$chk['class'] = 'GFForms';
+
 							break;
+
 						case 'form-gravityview':
+
 							$chk['class'] = 'GravityView_Plugin';
+
 							break;
+
 						case 'forum-bbpress':
+
 							$chk['plugin'] = 'bbpress/bbpress.php';
+
 							break;
+
 						case 'lang-polylang':
+
 							$chk['class'] = 'Polylang';
+
 							break;
+
 						case 'media-ngg':	// NextGEN Gallery and NextCellent Gallery
+
 							$chk['class'] = 'nggdb';
+
 							break;
+
 						case 'media-rtmedia':
+
 							$chk['plugin'] = 'buddypress-media/index.php';
+
 							break;
+
 						case 'rating-wppostratings':			// wp-postratings
+
 							$chk['constant'] = 'WP_POSTRATINGS_VERSION';
+
 							break;
+
 						case 'rating-yotpowc':				// yotpo-social-reviews-for-woocommerce
+
 							$chk['function'] = 'wc_yotpo_init';
+
 							break;
+
 						case 'seo-aioseop':
+
 							$chk['function'] = 'aioseop_init_class'; // Free and pro versions.
+
 							break;
+
 						case 'seo-autodescription':
+
 							$chk['plugin'] = 'autodescription/autodescription.php';
+
 							break;
+
 						case 'seo-headspace2':
+
 							$chk['class'] = 'HeadSpace_Plugin';
+
 							break;
+
 						case 'seo-jetpack-seo':
+
 							if ( ! empty( $jetpack_modules ) ) {
 								if ( in_array( 'seo-tools', $jetpack_modules ) ) {
 									$avail[$sub]['*'] = $avail[$sub][$id] = true;
 								}
 							}
+
 							break;
+
 						case 'seo-seou':
+
 							$chk['plugin'] = 'seo-ultimate/seo-ultimate.php';
+
 							break;
+
 						case 'seo-sq':
+
 							$chk['plugin'] = 'squirrly-seo/squirrly.php';
+
 							break;
+
 						case 'seo-wpmetaseo':
+
 							$chk['class'] = 'WpMetaSeo';
+
 							break;
+
 						case 'seo-wpseo':
+
 							$chk['function'] = 'wpseo_init'; // Free and premium versions.
+
 							break;
+
 						case 'social-buddypress':
+
 							$chk['plugin'] = 'buddypress/bp-loader.php';
+
 							break;
 
 						/**
@@ -147,13 +212,20 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'media-wistia':
 						case 'media-wpvideo':
 						case 'media-youtube':
+
 							$chk['optval'] = 'plugin_'.$id.'_api';
+
 							break;
+
 						case 'media-upscale':
+
 							$chk['optval'] = 'plugin_upscale_images';
+
 							break;
+
 						case 'admin-general':
 						case 'admin-advanced':
+
 							// only load on the settings pages
 							if ( $is_admin ) {
 								$page = basename( $_SERVER['PHP_SELF'] );
@@ -161,32 +233,54 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									$avail[$sub]['*'] = $avail[$sub][$id] = true;
 								}
 							}
+
 							break;
+
 						case 'admin-post':
 						case 'admin-meta':
+
 							if ( $is_admin ) {
 								$avail[$sub]['*'] = $avail[$sub][$id] = true;
 							}
+
 							break;
+
 						case 'util-checkimgdims':
+
 							$chk['optval'] = 'plugin_check_img_dims';
+
 							break;
+
 						case 'util-coauthors':
+
 							$chk['plugin'] = 'co-authors-plus/co-authors-plus.php';
+
 							break;
+
 						case 'util-post':
 						case 'util-term':
 						case 'util-user':
+
 							$avail[$sub]['*'] = $avail[$sub][$id] = true;
+
 							break;
+
 						case 'util-language':
+
 							$chk['optval'] = 'plugin_filter_lang';
+
 							break;
+
 						case 'util-shorten':
+
 							$chk['optval'] = 'plugin_shortener';
+
 							break;
+
 						case 'util-wpseo_meta':
+
 							$chk['optval'] = 'plugin_wpseo_social_meta';
+
 							break;
 					}
 

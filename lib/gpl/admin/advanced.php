@@ -23,18 +23,18 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'plugin_content_rows' => 2,
+				'plugin_content_rows'     => 2,
 				'plugin_integration_rows' => 2,
 				'plugin_custom_meta_rows' => 2,
-				'plugin_cache_rows' => 3,
-				'plugin_apikeys_rows' => 2,
-				'cm_custom_rows' => 2,
-				'cm_builtin_rows' => 2,
-				'taglist_og_rows' => 3,
-				'taglist_fb_rows' => 3,
-				'taglist_twitter_rows' => 3,
-				'taglist_schema_rows' => 3,
-				'taglist_other_rows' => 3,
+				'plugin_cache_rows'       => 3,
+				'plugin_apikeys_rows'     => 2,
+				'cm_custom_rows'          => 2,
+				'cm_builtin_rows'         => 2,
+				'taglist_og_rows'         => 3,
+				'taglist_fb_rows'         => 3,
+				'taglist_twitter_rows'    => 3,
+				'taglist_schema_rows'     => 3,
+				'taglist_other_rows'      => 3,
 			), 20 );
 		}
 

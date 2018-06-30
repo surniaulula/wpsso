@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.6.0',		// Plugin version.
-					'opt_version' => '580',		// Increment when changing default option values.
+					'version' => '4.7.0-dev.1',		// Plugin version.
+					'opt_version' => '581',		// Increment when changing default option values.
 					'short' => 'WPSSO Core',	// Short plugin name.
 					'name' => 'WPSSO Core [Main Plugin]',
 					'desc' => 'WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google\'s Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -974,8 +974,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_debug'      => 0,	// Add Hidden Debug Messages.
 					'plugin_hide_pro'   => 0,	// Hide All Pro Version Options.
 					'plugin_show_opts'  => 'basic',	// Options to Show by Default.
-					'plugin_shortcodes' => 1,	// Enable Plugin Shortcode(s).
-					'plugin_widgets'    => 1,	// Enable Plugin Widget(s).
 					/**
 					 * Advanced settings - Content and Filters tab.
 					 */
@@ -1173,10 +1171,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_upscale_images:use'        => 'default',
 					'plugin_upscale_img_max'           => 33,		// Maximum Image Upscale Percent
 					'plugin_upscale_img_max:use'       => 'default',
-					'plugin_shortcodes'                => 1,		// Enable Plugin Shortcode(s)
-					'plugin_shortcodes:use'            => 'default',
-					'plugin_widgets'                   => 1,		// Enable Plugin Widget(s)
-					'plugin_widgets:use'               => 'default',
 					'plugin_page_excerpt'              => 1,		// Enable WP Excerpt for Pages
 					'plugin_page_excerpt:use'          => 'default',
 					'plugin_page_tags'                 => 1,		// Enable WP Tags for Pages
@@ -2360,72 +2354,72 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'psychiatric.business' => 'https://health-lifesci.schema.org/Psychiatric',
 									'public.health.business' => 'https://health-lifesci.schema.org/PublicHealth',
 								),
-								'professional.service' => 'https://schema.org/ProfessionalService',
-								'radio.station' => 'https://schema.org/RadioStation',
-								'real.estate.agent' => 'https://schema.org/RealEstateAgent',
-								'recycling.center' => 'https://schema.org/RecyclingCenter',
-								'self.storage' => 'https://schema.org/SelfStorage',
-								'shopping.center' => 'https://schema.org/ShoppingCenter',
+								'professional.service'     => 'https://schema.org/ProfessionalService',
+								'radio.station'            => 'https://schema.org/RadioStation',
+								'real.estate.agent'        => 'https://schema.org/RealEstateAgent',
+								'recycling.center'         => 'https://schema.org/RecyclingCenter',
+								'self.storage'             => 'https://schema.org/SelfStorage',
+								'shopping.center'          => 'https://schema.org/ShoppingCenter',
 								'sports.activity.location' => array(
 									'sports.activity.location' => 'https://schema.org/SportsActivityLocation',
-									'stadium.or.arena' => 'https://schema.org/StadiumOrArena',
+									'stadium.or.arena'         => 'https://schema.org/StadiumOrArena',
 								),
 								'store' => array(
-									'bike.store' => 'https://schema.org/BikeStore',
-									'book.store' => 'https://schema.org/BookStore',
-									'clothing.store' => 'https://schema.org/ClothingStore',
-									'computer.store' => 'https://schema.org/ComputerStore',
-									'convenience.store' => 'https://schema.org/ConvenienceStore',
-									'department.store' => 'https://schema.org/DepartmentStore',
-									'electronics.store' => 'https://schema.org/ElectronicsStore',
-									'florist' => 'https://schema.org/Florist',
-									'flower.shop' => 'https://schema.org/Florist',
-									'furniture.store' => 'https://schema.org/FurnitureStore',
-									'garden.store' => 'https://schema.org/GardenStore',
-									'grocery.store' => 'https://schema.org/GroceryStore',
-									'hardware.store' => 'https://schema.org/HardwareStore',
-									'hobby.shop' => 'https://schema.org/HobbyShop',
-									'home.goods.store' => 'https://schema.org/HomeGoodsStore',
-									'jewelry.store' => 'https://schema.org/JewelryStore',
-									'liquor.store' => 'https://schema.org/LiquorStore',
-									'mens.clothing.store' => 'https://schema.org/MensClothingStore',
-									'mobile.phone.store' => 'https://schema.org/MobilePhoneStore',
-									'movie.rental.store' => 'https://schema.org/MovieRentalStore',
-									'music.store' => 'https://schema.org/MusicStore',
+									'bike.store'             => 'https://schema.org/BikeStore',
+									'book.store'             => 'https://schema.org/BookStore',
+									'clothing.store'         => 'https://schema.org/ClothingStore',
+									'computer.store'         => 'https://schema.org/ComputerStore',
+									'convenience.store'      => 'https://schema.org/ConvenienceStore',
+									'department.store'       => 'https://schema.org/DepartmentStore',
+									'electronics.store'      => 'https://schema.org/ElectronicsStore',
+									'florist'                => 'https://schema.org/Florist',
+									'flower.shop'            => 'https://schema.org/Florist',
+									'furniture.store'        => 'https://schema.org/FurnitureStore',
+									'garden.store'           => 'https://schema.org/GardenStore',
+									'grocery.store'          => 'https://schema.org/GroceryStore',
+									'hardware.store'         => 'https://schema.org/HardwareStore',
+									'hobby.shop'             => 'https://schema.org/HobbyShop',
+									'home.goods.store'       => 'https://schema.org/HomeGoodsStore',
+									'jewelry.store'          => 'https://schema.org/JewelryStore',
+									'liquor.store'           => 'https://schema.org/LiquorStore',
+									'mens.clothing.store'    => 'https://schema.org/MensClothingStore',
+									'mobile.phone.store'     => 'https://schema.org/MobilePhoneStore',
+									'movie.rental.store'     => 'https://schema.org/MovieRentalStore',
+									'music.store'            => 'https://schema.org/MusicStore',
 									'office.equipment.store' => 'https://schema.org/OfficeEquipmentStore',
-									'outlet.store' => 'https://schema.org/OutletStore',
-									'pawn.shop' => 'https://schema.org/PawnShop',
-									'pet.store' => 'https://schema.org/PetStore',
-									'shoe.store' => 'https://schema.org/ShoeStore',
-									'sporting.goods.store' => 'https://schema.org/SportingGoodsStore',
-									'store' => 'https://schema.org/Store',
-									'tire.shop' => 'https://schema.org/TireShop',
-									'toy.store' => 'https://schema.org/ToyStore',
-									'wholesale.store' => 'https://schema.org/WholesaleStore',
+									'outlet.store'           => 'https://schema.org/OutletStore',
+									'pawn.shop'              => 'https://schema.org/PawnShop',
+									'pet.store'              => 'https://schema.org/PetStore',
+									'shoe.store'             => 'https://schema.org/ShoeStore',
+									'sporting.goods.store'   => 'https://schema.org/SportingGoodsStore',
+									'store'                  => 'https://schema.org/Store',
+									'tire.shop'              => 'https://schema.org/TireShop',
+									'toy.store'              => 'https://schema.org/ToyStore',
+									'wholesale.store'        => 'https://schema.org/WholesaleStore',
 								),
-								'television.station' => 'https://schema.org/TelevisionStation',
+								'television.station'         => 'https://schema.org/TelevisionStation',
 								'tourist.information.center' => 'https://schema.org/TouristInformationCenter',
-								'travel.agency' => 'https://schema.org/TravelAgency',
+								'travel.agency'              => 'https://schema.org/TravelAgency',
 							),
-							'place' => 'https://schema.org/Place',
+							'place'     => 'https://schema.org/Place',
 							'residence' => array(
-								'residence' => 'https://schema.org/Residence',
+								'residence'                   => 'https://schema.org/Residence',
 								'residence.apartment.complex' => 'https://schema.org/ApartmentComplex',
-								'residence.gated.community' => 'https://schema.org/GatedResidenceCommunity',
+								'residence.gated.community'   => 'https://schema.org/GatedResidenceCommunity',
 							),
 							'tourist.attraction' => 'https://schema.org/TouristAttraction',
 						),
 						'product' => array(
-							'individual.product' => 'https://schema.org/IndividualProduct',	// individual product w unique serial number
-							'product' => 'https://schema.org/Product',
-							'product.model' => 'https://schema.org/ProductModel',
-							'some.products' => 'https://schema.org/SomeProducts',
-							'vehicle' => array(
-								'bus.or.coach' => 'https://auto.schema.org/BusOrCoach',
-								'car' => 'https://auto.schema.org/Car',
-								'motorcycle' => 'https://auto.schema.org/Motorcycle',
+							'individual.product' => 'https://schema.org/IndividualProduct',	// Individual product w unique serial number.
+							'product'            => 'https://schema.org/Product',
+							'product.model'      => 'https://schema.org/ProductModel',
+							'some.products'      => 'https://schema.org/SomeProducts',
+							'vehicle'            => array(
+								'bus.or.coach'      => 'https://auto.schema.org/BusOrCoach',
+								'car'               => 'https://auto.schema.org/Car',
+								'motorcycle'        => 'https://auto.schema.org/Motorcycle',
 								'motorized.bicycle' => 'https://auto.schema.org/MotorizedBicycle',
-								'vehicle' => 'https://auto.schema.org/Vehicle',
+								'vehicle'           => 'https://auto.schema.org/Vehicle',
 							),
 						),
 						'thing' => 'https://schema.org/Thing',
