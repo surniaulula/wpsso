@@ -329,7 +329,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.7.0-dev.1 (2018/06/29)**
+**Version 4.7.0-b.1 (2018/06/30)**
 
 * *New Features*
 	* None
@@ -502,9 +502,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.7.0-dev.1 =
+= 4.7.0-b.1 =
 
-(2018/06/29) Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options.
+(2018/06/30) Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options.
 
 = 4.6.0 =
 
