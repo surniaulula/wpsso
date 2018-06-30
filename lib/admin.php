@@ -2738,7 +2738,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= sprintf( __( 'Now that you\'re familiar with %s, would you do me a small favor?', 'wpsso' ), $info['short'] ) . ' ';
+				$notice_msg .= sprintf( __( 'Now that you\'re familiar with %s, could you do me a small favor?', 'wpsso' ), $info['short'] ) . ' ';
 
 				$notice_msg .= __( 'Just for me?', 'wpsso' );
 
@@ -2799,7 +2799,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$notice_msg .= '<b>' . __( 'Have you considered purchasing the Pro version?', 'wpsso' ) . '</b> ';
 
-					$notice_msg .= __( 'It comes with a lot of new and exciting extra features!', 'wpsso' );
+					$notice_msg .= __( 'The Pro version comes with a lot of new and exciting extra features!', 'wpsso' );
 
 					$notice_msg .= '</p>';
 					
@@ -2809,6 +2809,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					 * The notice provides it's own dismiss button, so do not show the dismiss 'Forever' link.
 					 */
 					$this->p->notice->log( 'inf', $notice_msg, $user_id, $dismiss_key, $dismiss_time, array( 'dismiss_diff' => false ) );
+
+					return;	// Show only one notice at a time.
 				}
 			}
 		}
