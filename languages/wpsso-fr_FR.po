@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 4.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-06-30 09:26-0600\n"
-"PO-Revision-Date: 2018-06-30 09:40-0600\n"
+"PO-Revision-Date: 2018-06-30 11:35-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2415,7 +2415,7 @@ msgstr "Description de recherche"
 #: lib/pro/admin/meta.php:116 lib/pro/admin/post.php:126
 msgctxt "option label"
 msgid "Twitter Card Description"
-msgstr "Description pour la carte Twitter"
+msgstr "Description carte Twitter"
 
 #: lib/gpl/admin/meta.php:110 lib/gpl/admin/post.php:123 lib/meta.php:249
 #: lib/meta.php:274 lib/pro/admin/meta.php:122 lib/pro/admin/post.php:133
