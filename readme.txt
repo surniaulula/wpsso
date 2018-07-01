@@ -18,10 +18,6 @@ Easy, complete, accurate, and automatic - provide information about your content
 
 == Description ==
 
-<blockquote class="top">
-<p><strong>Choose a plugin for today AND tomorrow! The WPSSO Core plugin is 100% compatible with the upcoming <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in WordPress 5 (expected in August 2018)!</strong></p>
-</blockquote>
-
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
 <h3>What makes WPSSO Core better?</h3>
@@ -47,6 +43,10 @@ WPSSO Core provides a specific image and image dimensions for the Pinterest Pin 
 **Integrates and improves your favorite SEO plugin:**
 
 WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and, if you desire, you can continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version even comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.
+
+**Choose a meta tag and Schema plugin for today *and* tomorrow:**
+
+The WPSSO Core plugin is 100% compatible with the upcoming <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in WordPress 5 (expected in August 2018)!
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
