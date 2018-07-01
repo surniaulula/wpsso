@@ -339,7 +339,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Removed the following filters:
+		* 'wpsso_json_add_https_schema_org_blog_blogpost' ( $bool );
+		* 'wpsso_json_add_https_schema_org_collectionpage_mentions' ( $bool );
+		* 'wpsso_json_add_https_schema_org_searchresultspage_mentions' ( $bool );
+		* 'wpsso_json_add_https_schema_org_profilepage_mentions' ( $bool );
 
 **Version 4.6.0 (2018/06/28)**
 
