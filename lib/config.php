@@ -2683,8 +2683,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_SCHEMA_HOWTO_TOOLS_MAX'] = 30;
 			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX'] = 60;
 			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 90;
+			$var_const['WPSSO_SCHEMA_LINKS_PER_PAGE_MAX'] = 200;
 			$var_const['WPSSO_SCHEMA_POSTS_PER_PAGE_MAX'] = 10;
-			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH_MAX'] = 3;
+			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH_MAX'] = 3;		// Must be smaller or equal to WPSSO_SCHEMA_POSTS_PER_PAGE_MAX.
 			$var_const['WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX'] = 30;
 			$var_const['WPSSO_SCHEMA_SAMEAS_URL_MAX'] = 5;
 			$var_const['WPSSO_SCHEMA_BREADCRUMB_SCRIPTS_MAX'] = 5;

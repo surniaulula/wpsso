@@ -1334,15 +1334,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$comments = get_comments( array(
 				'post_id' => $post_id,
-				'status' => 'approve',
-				'parent' => 0,					// Parent ID of comment to retrieve children of (0 = don't get replies).
-				'order' => 'DESC',
-				'number' => get_option( 'comments_per_page' ),	// Maximum number of comments to retrieve.
+				'status'  => 'approve',
+				'parent'  => 0,					// Parent ID of comment to retrieve children of (0 = don't get replies).
+				'order'   => 'DESC',
+				'number'  => get_option( 'comments_per_page' ),	// Maximum number of comments to retrieve.
 			) );
 
 			if ( is_array( $comments ) ) {
+
 				foreach( $comments as $num => $comment_obj ) {
+
 					$og_review = $this->get_og_review_mt( $comment_obj, $og_type, $rating_meta );
+
 					if ( ! empty( $og_review ) ) {	// Just in case.
 						$ret[] = $og_review;
 					}
