@@ -329,7 +329,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.7.0-b.2 (2018/06/30)**
+**Version 4.7.0-rc.1 (2018/07/01)**
 
 * *New Features*
 	* None
@@ -506,9 +506,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.7.0-b.2 =
+= 4.7.0-rc.1 =
 
-(2018/06/30) Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options. Moved the Preview tab back to its original location in the Document SSO metabox.
+(2018/07/01) Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options. Moved the Preview tab back to its original location in the Document SSO metabox.
 
 = 4.6.0 =
 
