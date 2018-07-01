@@ -335,7 +335,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None
 * *Improvements*
 	* Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options.
-	* Moved the Preview tab back to its original location in the Document SSO metabox.
+	* Moved the Preview tab back to its original location in the Document SSO metabox. The current tab order is:
+		* Customize
+		* Priority Media
+		* Place / Location (Add-on)
+		* Sharing Buttons (Add-on)
+		* Mobile Apps (Add-on)
+		* Preview
+		* Head Tags
+		* Validate
 * *Bugfixes*
 	* None
 * *Developer Notes*
