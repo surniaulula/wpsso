@@ -17,13 +17,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version' => '4.7.0',		// Plugin version.
+					'version'     => '4.7.0',	// Plugin version.
 					'opt_version' => '581',		// Increment when changing default option values.
-					'short' => 'WPSSO Core',	// Short plugin name.
-					'name' => 'WPSSO Core [Main Plugin]',
-					'desc' => 'WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google\'s Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
-					'slug' => 'wpsso',
-					'base' => 'wpsso/wpsso.php',
+					'short'       => 'WPSSO Core',	// Short plugin name.
+					'name'        => 'WPSSO Core [Main Plugin]',
+					'desc'        => 'WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google\'s Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
+					'slug'        => 'wpsso',
+					'base'        => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
 					'text_domain' => 'wpsso',
 					'domain_path' => '/languages',
@@ -39,22 +39,23 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso',
+						'home'   => 'https://wordpress.org/plugins/wpsso/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso',
 						'review' => 'https://wordpress.org/support/plugin/wpsso/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/readme.txt',
 						'setup_html' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso/master/html/setup.html',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso/',
-						'faqs' => 'https://wpsso.com/docs/plugins/wpsso/faqs/',
-						'notes' => 'https://wpsso.com/docs/plugins/wpsso/notes/',
-						'support' => 'http://wpsso.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso/',		// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso/info/',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso/installation/',
+						'faqs'      => 'https://wpsso.com/docs/plugins/wpsso/faqs/',
+						'notes'     => 'https://wpsso.com/docs/plugins/wpsso/notes/',
+						'support'   => 'http://wpsso.support.wpsso.com/support/tickets/new',	// Pro support ticket.
+						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso/',		// Purchase page.
+						'info'      => 'https://wpsso.com/extend/plugins/wpsso/info/',		// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso/update/',
+						'latest'    => '',
 					),
 					'lib' => array(
 						'profile' => array(
@@ -62,30 +63,30 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'setting' => array(
 							'image-dimensions' => 'SSO Image Sizes',
-							'contact-fields' => 'SSO Contact Fields',
-							'social-accounts' => 'SSO WebSite Pages',
+							'contact-fields'   => 'SSO Contact Fields',
+							'social-accounts'  => 'SSO WebSite Pages',
 						),
 						'submenu' => array(	// Note that submenu elements must have unique keys.
 							'essential' => 'Essential',
-							'general' => 'General',
-							'advanced' => 'Advanced',
+							'general'   => 'General',
+							'advanced'  => 'Advanced',
 							'dashboard' => 'Dashboard',
-							'setup' => 'Setup Guide',
-							'addons' => 'Add-ons',
-							'licenses' => 'Licenses',
+							'setup'     => 'Setup Guide',
+							'addons'    => 'Add-ons',
+							'licenses'  => 'Licenses',
 						),
 						'sitesubmenu' => array(	// Note that submenu elements must have unique keys.
 							'siteadvanced' => 'Advanced',
-							'sitesetup' => 'Setup Guide',
-							'siteaddons' => 'Add-ons',
+							'sitesetup'    => 'Setup Guide',
+							'siteaddons'   => 'Add-ons',
 							'sitelicenses' => 'Licenses',
 						),
 						'gpl' => array(
 							'admin' => array(
-								'general' => 'Extend General Settings',
+								'general'  => 'Extend General Settings',
 								'advanced' => 'Extend Advanced Settings',
-								'post' => 'Extend Post Settings',
-								'meta' => 'Extend Term and User Settings',
+								'post'     => 'Extend Post Settings',
+								'meta'     => 'Extend Term and User Settings',
 							),
 							'social' => array(
 								'buddypress' => '(plugin) BuddyPress',
@@ -98,13 +99,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'pro' => array(
 							'admin' => array(
-								'general' => 'Extend General Settings',
+								'general'  => 'Extend General Settings',
 								'advanced' => 'Extend Advanced Settings',
-								'post' => 'Extend Post Settings',
-								'meta' => 'Extend Term and User Settings',
+								'post'     => 'Extend Post Settings',
+								'meta'     => 'Extend Term and User Settings',
 							),
 							'ecom' => array(
-								'edd' => '(plugin) Easy Digital Downloads',
+								'edd'         => '(plugin) Easy Digital Downloads',
 								'marketpress' => '(plugin) MarketPress',
 								'woocommerce' => '(plugin) WooCommerce',
 								'wpecommerce' => '(plugin) WP eCommerce',
@@ -122,51 +123,51 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'polylang' => '(plugin) Polylang',
 							),
 							'media' => array(
-								'facebook' => '(api) Facebook Video API',
-								'gravatar' => '(api) Author Gravatar Image',
-								'ngg' => '(plugin) NextGEN Gallery, NextCellent Gallery',
-								'rtmedia' => '(plugin) rtMedia for WordPress, BuddyPress and bbPress',
+								'facebook'   => '(api) Facebook Video API',
+								'gravatar'   => '(api) Author Gravatar Image',
+								'ngg'        => '(plugin) NextGEN Gallery, NextCellent Gallery',
+								'rtmedia'    => '(plugin) rtMedia for WordPress, BuddyPress and bbPress',
 								'slideshare' => '(api) Slideshare API',
 								'soundcloud' => '(api) Soundcloud API',
-								'upscale' => '(tool) WP Media Library Image Upscaling',
-								'vimeo' => '(api) Vimeo Video API',
-								'wistia' => '(api) Wistia Video API',
-								'wpvideo' => '(api) WordPress Video Shortcode',
-								'youtube' => '(api) YouTube Video / Playlist API',
+								'upscale'    => '(tool) WP Media Library Image Upscaling',
+								'vimeo'      => '(api) Vimeo Video API',
+								'wistia'     => '(api) Wistia Video API',
+								'wpvideo'    => '(api) WordPress Video Shortcode',
+								'youtube'    => '(api) YouTube Video / Playlist API',
 							),
 							'rating' => array(
 								'wppostratings' => '(plugin) WP-PostRatings',
-								'yotpowc' => '(plugin) Yotpo Social Reviews for WooCommerce',
+								'yotpowc'       => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
 							'seo' => array(
-								'aioseop' => '(plugin) All in One SEO Pack',
+								'aioseop'         => '(plugin) All in One SEO Pack',
 								'autodescription' => '(plugin) The SEO Framework',
-								'headspace2' => '(plugin) HeadSpace2 SEO',
-								'wpmetaseo' => '(plugin) WP Meta SEO',
-								'wpseo' => '(plugin) Yoast SEO',
+								'headspace2'      => '(plugin) HeadSpace2 SEO',
+								'wpmetaseo'       => '(plugin) WP Meta SEO',
+								'wpseo'           => '(plugin) Yoast SEO',
 							),
 							'social' => array(
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
 								'checkimgdims' => '(tool) Verify Image Dimensions',
-								'coauthors' => '(plugin) Co-Authors Plus',
-								'language' => '(tool) WP Locale to Publisher Language Mapping',
-								'shorten' => '(api) URL Shortening Service APIs',
-								'post' => '(tool) Custom Post Meta',
-								'term' => '(tool) Custom Term Meta',
-								'user' => '(tool) Custom User Meta',
-								'wpseo_meta' => '(tool) Yoast SEO Social Meta',
+								'coauthors'    => '(plugin) Co-Authors Plus',
+								'language'     => '(tool) WP Locale to Publisher Language Mapping',
+								'shorten'      => '(api) URL Shortening Service APIs',
+								'post'         => '(tool) Custom Post Meta',
+								'term'         => '(tool) Custom Term Meta',
+								'user'         => '(tool) Custom User Meta',
+								'wpseo_meta'   => '(tool) Yoast SEO Social Meta',
 							),
 						),
 					),
 				),
 				'wpssoam' => array(			// Plugin acronym.
-					'short' => 'WPSSO AM',		// Short plugin name.
-					'name' => 'WPSSO Mobile App Meta',
-					'desc' => 'WPSSO Core add-on to provide Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari and Twitter\'s App Card.',
-					'slug' => 'wpsso-am',
-					'base' => 'wpsso-am/wpsso-am.php',
+					'short'       => 'WPSSO AM',	// Short plugin name.
+					'name'        => 'WPSSO Mobile App Meta',
+					'desc'        => 'WPSSO Core add-on to provide Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari and Twitter\'s App Card.',
+					'slug'        => 'wpsso-am',
+					'base'        => 'wpsso-am/wpsso-am.php',
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
@@ -180,29 +181,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-am/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-am',
+						'home'   => 'https://wordpress.org/plugins/wpsso-am/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-am',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-am/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-am/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-am/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-am/',
-						'faqs' => '',
-						'notes' => '',
-						'support' => 'http://wpsso-am.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-am/',		// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-am/info/',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-am/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-am/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-am/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => 'http://wpsso-am.support.wpsso.com/support/tickets/new',	// Pro support ticket.
+						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-am/',		// Purchase page.
+						'info'      => 'https://wpsso.com/extend/plugins/wpsso-am/info/',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-am/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssobc' => array(			// Plugin acronym.
-					'short' => 'WPSSO BC',		// Short plugin name.
-					'name' => 'WPSSO Schema Breadcrumbs Markup',
-					'desc' => 'WPSSO Core add-on to provide JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO).',
-					'slug' => 'wpsso-breadcrumbs',
-					'base' => 'wpsso-breadcrumbs/wpsso-breadcrumbs.php',
+					'short'       => 'WPSSO BC',		// Short plugin name.
+					'name'        => 'WPSSO Schema Breadcrumbs Markup',
+					'desc'        => 'WPSSO Core add-on to provide JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO).',
+					'slug'        => 'wpsso-breadcrumbs',
+					'base'        => 'wpsso-breadcrumbs/wpsso-breadcrumbs.php',
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
@@ -216,29 +219,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-breadcrumbs/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs',
+						'home'   => 'https://wordpress.org/plugins/wpsso-breadcrumbs/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-breadcrumbs/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-breadcrumbs/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-breadcrumbs/',
-						'faqs' => '',
-						'notes' => '',
-						'support' => '',	// Pro support ticket.
-						'purchase' => '',	// Purchase page.
-						'info' => '',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-breadcrumbs/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-breadcrumbs/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Pro support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssojson' => array(			// Plugin acronym.
-					'short' => 'WPSSO JSON',	// Short plugin name.
-					'name' => 'WPSSO Schema JSON-LD Markup',
-					'desc' => 'WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews and many more.',
-					'slug' => 'wpsso-schema-json-ld',
-					'base' => 'wpsso-schema-json-ld/wpsso-schema-json-ld.php',
+					'short'       => 'WPSSO JSON',	// Short plugin name.
+					'name'        => 'WPSSO Schema JSON-LD Markup',
+					'desc'        => 'WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews and many more.',
+					'slug'        => 'wpsso-schema-json-ld',
+					'base'        => 'wpsso-schema-json-ld/wpsso-schema-json-ld.php',
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
@@ -252,30 +257,32 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-schema-json-ld/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld',
+						'home'   => 'https://wordpress.org/plugins/wpsso-schema-json-ld/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld/reviews/?rate=5#new-post',
 						// GitHub
-						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-schema-json-ld/master/readme.txt',
+						'readme_txt'     => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-schema-json-ld/master/readme.txt',
+						'setup_html'     => '',
 						'shortcode_html' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-schema-json-ld/master/html/shortcode.html',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/',
-						'faqs' => '',
-						'notes' => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/',
-						'support' => 'http://wpsso-schema-json-ld.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/',			// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/info/',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/installation/',
+						'faqs'      => '',
+						'notes'     => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/',
+						'support'   => 'http://wpsso-schema-json-ld.support.wpsso.com/support/tickets/new',	// Pro support ticket.
+						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/',		// Purchase page.
+						'info'      => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/info/',		// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssoorg' => array(			// Plugin acronym.
-					'short' => 'WPSSO ORG',		// Short plugin name.
-					'name' => 'WPSSO Organization Markup',
-					'desc' => 'WPSSO Core add-on to manage Organizations and additional Schema markup properties (Organizer, Performer, Publisher, etc.) for Google Rich Cards / Knowledge Graph.',
-					'slug' => 'wpsso-organization',
-					'base' => 'wpsso-organization/wpsso-organization.php',
+					'short'       => 'WPSSO ORG',	// Short plugin name.
+					'name'        => 'WPSSO Organization Markup',
+					'desc'        => 'WPSSO Core add-on to manage Organizations and additional Schema markup properties (Organizer, Performer, Publisher, etc.) for Google Rich Cards / Knowledge Graph.',
+					'slug'        => 'wpsso-organization',
+					'base'        => 'wpsso-organization/wpsso-organization.php',
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
@@ -289,29 +296,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-organization/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-organization',
+						'home'   => 'https://wordpress.org/plugins/wpsso-organization/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-organization',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-organization/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-organization/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-organization/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-organization/',
-						'faqs' => '',
-						'notes' => '',
-						'support' => 'http://wpsso-organization.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-organization/',		// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-organization/info/',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-organization/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-organization/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-organization/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => 'http://wpsso-organization.support.wpsso.com/support/tickets/new',	// Pro support ticket.
+						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-organization/',			// Purchase page.
+						'info'      => 'https://wpsso.com/extend/plugins/wpsso-organization/info/',		// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-organization/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssoplm' => array(			// Plugin acronym.
-					'short' => 'WPSSO PLM',		// Short plugin name.
-					'name' => 'WPSSO Place / Location and Local Business Meta',
-					'desc' => 'WPSSO Core add-on to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business, and Local SEO meta tags.',
-					'slug' => 'wpsso-plm',
-					'base' => 'wpsso-plm/wpsso-plm.php',
+					'short'       => 'WPSSO PLM',		// Short plugin name.
+					'name'        => 'WPSSO Place / Location and Local Business Meta',
+					'desc'        => 'WPSSO Core add-on to provide Pinterest Place, Facebook / Open Graph Location, Schema Local Business, and Local SEO meta tags.',
+					'slug'        => 'wpsso-plm',
+					'base'        => 'wpsso-plm/wpsso-plm.php',
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
@@ -325,29 +334,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-plm/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-plm',
+						'home'   => 'https://wordpress.org/plugins/wpsso-plm/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-plm',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-plm/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-plm/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-plm/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-plm/',
-						'faqs' => '',
-						'notes' => '',
-						'support' => 'http://wpsso-plm.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-plm/',		// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-plm/info/',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-plm/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-plm/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-plm/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => 'http://wpsso-plm.support.wpsso.com/support/tickets/new',	// Pro support ticket.
+						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-plm/',			// Purchase page.
+						'info'      => 'https://wpsso.com/extend/plugins/wpsso-plm/info/',		// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-plm/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssorar' => array(			// Plugin acronym.
-					'short' => 'WPSSO RAR',		// Short plugin name.
-					'name' => 'WPSSO Ratings and Reviews',
-					'desc' => 'WPSSO Core add-on to provide ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup.',
-					'slug' => 'wpsso-ratings-and-reviews',
-					'base' => 'wpsso-ratings-and-reviews/wpsso-ratings-and-reviews.php',
+					'short'       => 'WPSSO RAR',	// Short plugin name.
+					'name'        => 'WPSSO Ratings and Reviews',
+					'desc'        => 'WPSSO Core add-on to provide ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup.',
+					'slug'        => 'wpsso-ratings-and-reviews',
+					'base'        => 'wpsso-ratings-and-reviews/wpsso-ratings-and-reviews.php',
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
@@ -361,29 +372,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-ratings-and-reviews/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews',
+						'home'   => 'https://wordpress.org/plugins/wpsso-ratings-and-reviews/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-ratings-and-reviews/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-ratings-and-reviews/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-ratings-and-reviews/',
-						'faqs' => '',
-						'notes' => '',
-						'support' => '',	// Pro support ticket.
-						'purchase' => '',	// Purchase page.
-						'info' => '',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-ratings-and-reviews/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-ratings-and-reviews/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Pro support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssorest' => array(			// Plugin acronym.
-					'short' => 'WPSSO REST',	// Short plugin name.
-					'name' => 'WPSSO REST API',
-					'desc' => 'WPSSO Core add-on to provide an array of meta tags and Schema markup in the WordPress REST API post, term and user queries.',
-					'slug' => 'wpsso-rest-api',
-					'base' => 'wpsso-rest-api/wpsso-rest-api.php',
+					'short'       => 'WPSSO REST',	// Short plugin name.
+					'name'        => 'WPSSO REST API',
+					'desc'        => 'WPSSO Core add-on to provide an array of meta tags and Schema markup in the WordPress REST API post, term and user queries.',
+					'slug'        => 'wpsso-rest-api',
+					'base'        => 'wpsso-rest-api/wpsso-rest-api.php',
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
@@ -397,29 +410,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-rest-api/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-rest-api',
+						'home'   => 'https://wordpress.org/plugins/wpsso-rest-api/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-rest-api',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-rest-api/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rest-api/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-rest-api/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-rest-api/',
-						'faqs' => '',
-						'notes' => '',
-						'support' => '',	// Pro support ticket.
-						'purchase' => '',	// Purchase page.
-						'info' => '',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-rest-api/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-rest-api/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-rest-api/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Pro support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-rest-api/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssorrssb' => array(			// Plugin acronym.
-					'short' => 'WPSSO RRSSB',	// Short plugin name.
-					'name' => 'WPSSO Ridiculously Responsive Social Sharing Buttons',
-					'desc' => 'WPSSO Core add-on to provide Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, post edit pages, etc.',
-					'slug' => 'wpsso-rrssb',
-					'base' => 'wpsso-rrssb/wpsso-rrssb.php',
+					'short'       => 'WPSSO RRSSB',	// Short plugin name.
+					'name'        => 'WPSSO Ridiculously Responsive Social Sharing Buttons',
+					'desc'        => 'WPSSO Core add-on to provide Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, post edit pages, etc.',
+					'slug'        => 'wpsso-rrssb',
+					'base'        => 'wpsso-rrssb/wpsso-rrssb.php',
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
@@ -433,29 +448,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-rrssb/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-rrssb',
+						'home'   => 'https://wordpress.org/plugins/wpsso-rrssb/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-rrssb',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-rrssb/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-rrssb/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-rrssb/',
-						'faqs' => '',
-						'notes' => 'https://wpsso.com/docs/plugins/wpsso-rrssb/notes/',
-						'support' => 'http://wpsso-rrssb.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/',			// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/info/',			// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-rrssb/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-rrssb/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-rrssb/installation/',
+						'faqs'      => '',
+						'notes'     => 'https://wpsso.com/docs/plugins/wpsso-rrssb/notes/',
+						'support'   => 'http://wpsso-rrssb.support.wpsso.com/support/tickets/new',	// Pro support ticket.
+						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-rrssb/',			// Purchase page.
+						'info'      => 'https://wpsso.com/extend/plugins/wpsso-rrssb/info/',		// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-rrssb/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssossb' => array(			// Plugin acronym.
-					'short' => 'WPSSO SSB',		// Short plugin name.
-					'name' => 'WPSSO Social Sharing Buttons',
-					'desc' => 'WPSSO Core add-on to provide Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.',
-					'slug' => 'wpsso-ssb',
-					'base' => 'wpsso-ssb/wpsso-ssb.php',
+					'short'       => 'WPSSO SSB',	// Short plugin name.
+					'name'        => 'WPSSO Social Sharing Buttons',
+					'desc'        => 'WPSSO Core add-on to provide Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.',
+					'slug'        => 'wpsso-ssb',
+					'base'        => 'wpsso-ssb/wpsso-ssb.php',
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
@@ -469,29 +486,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-ssb/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-ssb',
+						'home'   => 'https://wordpress.org/plugins/wpsso-ssb/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-ssb',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-ssb/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-ssb/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-ssb/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-ssb/',
-						'faqs' => 'https://wpsso.com/docs/plugins/wpsso-ssb/faqs/',
-						'notes' => 'https://wpsso.com/docs/plugins/wpsso-ssb/notes/',
-						'support' => 'http://wpsso-ssb.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-ssb/',		// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-ssb/info/',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-ssb/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-ssb/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-ssb/installation/',
+						'faqs'      => 'https://wpsso.com/docs/plugins/wpsso-ssb/faqs/',
+						'notes'     => 'https://wpsso.com/docs/plugins/wpsso-ssb/notes/',
+						'support'   => 'http://wpsso-ssb.support.wpsso.com/support/tickets/new',	// Pro support ticket.
+						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-ssb/',			// Purchase page.
+						'info'      => 'https://wpsso.com/extend/plugins/wpsso-ssb/info/',		// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-ssb/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssossm' => array(			// Plugin acronym.
-					'short' => 'WPSSO SSM',		// Short plugin name.
-					'name' => 'WPSSO Strip Schema Microdata',
-					'desc' => 'WPSSO Core add-on to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched.',
-					'slug' => 'wpsso-strip-schema-microdata',
-					'base' => 'wpsso-strip-schema-microdata/wpsso-strip-schema-microdata.php',
+					'short'       => 'WPSSO SSM',		// Short plugin name.
+					'name'        => 'WPSSO Strip Schema Microdata',
+					'desc'        => 'WPSSO Core add-on to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched.',
+					'slug'        => 'wpsso-strip-schema-microdata',
+					'base'        => 'wpsso-strip-schema-microdata/wpsso-strip-schema-microdata.php',
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
@@ -505,29 +524,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-strip-schema-microdata/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata',
+						'home'   => 'https://wordpress.org/plugins/wpsso-strip-schema-microdata/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-strip-schema-microdata/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-strip-schema-microdata/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-strip-schema-microdata/',
-						'faqs' => '',
-						'notes' => '',
-						'support' => '',	// Pro support ticket.
-						'purchase' => '',	// Purchase page.
-						'info' => '',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-strip-schema-microdata/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-strip-schema-microdata/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Pro support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssotaq' => array(			// Plugin acronym.
-					'short' => 'WPSSO TAQ',		// Short plugin name.
-					'name' => 'WPSSO Tweet a Quote',
-					'desc' => 'WPSSO Core add-on to provide Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS.',
-					'slug' => 'wpsso-tweet-a-quote',
-					'base' => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
+					'short'       => 'WPSSO TAQ',	// Short plugin name.
+					'name'        => 'WPSSO Tweet a Quote',
+					'desc'        => 'WPSSO Core add-on to provide Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS.',
+					'slug'        => 'wpsso-tweet-a-quote',
+					'base'        => 'wpsso-tweet-a-quote/wpsso-tweet-a-quote.php',
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
@@ -541,29 +562,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-tweet-a-quote/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote',
+						'home'   => 'https://wordpress.org/plugins/wpsso-tweet-a-quote/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-tweet-a-quote/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tweet-a-quote/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-tweet-a-quote/',
-						'faqs' => '',
-						'notes' => '',
-						'support' => '',	// Pro support ticket.
-						'purchase' => '',	// Purchase page.
-						'info' => '',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-tweet-a-quote/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-tweet-a-quote/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Pro support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-tweet-a-quote/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssotie' => array(			// Plugin acronym.
-					'short' => 'WPSSO TIE',		// Short plugin name.
-					'name' => 'WPSSO Tune WP Image Editors',
-					'desc' => 'WPSSO Core add-on to provide tuning options for the WordPress image editors and PHP image extensions.',
-					'slug' => 'wpsso-tune-image-editors',
-					'base' => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',
+					'short'       => 'WPSSO TIE',	// Short plugin name.
+					'name'        => 'WPSSO Tune WP Image Editors',
+					'desc'        => 'WPSSO Core add-on to provide tuning options for the WordPress image editors and PHP image extensions.',
+					'slug'        => 'wpsso-tune-image-editors',
+					'base'        => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
@@ -577,29 +600,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-tune-image-editors/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-tune-image-editors',
+						'home'   => 'https://wordpress.org/plugins/wpsso-tune-image-editors/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-tune-image-editors',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-tune-image-editors/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-tune-image-editors/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-tune-image-editors/',
-						'faqs' => '',
-						'notes' => '',
-						'support' => 'http://wpsso-tune-image-editors.support.wpsso.com/support/tickets/new',	// Pro support ticket.
-						'purchase' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/',		// Purchase page.
-						'info' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/info/',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-tune-image-editors/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-tune-image-editors/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => 'http://wpsso-tune-image-editors.support.wpsso.com/support/tickets/new',	// Pro support ticket.
+						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/',		// Purchase page.
+						'info'      => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/info/',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssoul' => array(			// Plugin acronym.
-					'short' => 'WPSSO UL',		// Short plugin name.
-					'name' => 'WPSSO User Locale Selector',
-					'desc' => 'WPSSO Core add-on to provide a convenient locale / language / region selector in the WordPress admin toolbar.',
-					'slug' => 'wpsso-user-locale',
-					'base' => 'wpsso-user-locale/wpsso-user-locale.php',
+					'short'       => 'WPSSO UL',	// Short plugin name.
+					'name'        => 'WPSSO User Locale Selector',
+					'desc'        => 'WPSSO Core add-on to provide a convenient locale / language / region selector in the WordPress admin toolbar.',
+					'slug'        => 'wpsso-user-locale',
+					'base'        => 'wpsso-user-locale/wpsso-user-locale.php',
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
@@ -613,29 +638,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'home' => 'https://wordpress.org/plugins/wpsso-user-locale/',
-						'forum' => 'https://wordpress.org/support/plugin/wpsso-user-locale',
+						'home'   => 'https://wordpress.org/plugins/wpsso-user-locale/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-user-locale',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-user-locale/reviews/?rate=5#new-post',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-user-locale/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-user-locale/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-user-locale/',
-						'faqs' => '',
-						'notes' => 'https://wpsso.com/docs/plugins/wpsso-user-locale/notes/',
-						'support' => '',	// Pro support ticket.
-						'purchase' => '',	// Purchase page.
-						'info' => '',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-user-locale/update/',
-						'latest' => '',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-user-locale/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-user-locale/installation/',
+						'faqs'      => '',
+						'notes'     => 'https://wpsso.com/docs/plugins/wpsso-user-locale/notes/',
+						'support'   => '',	// Pro support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-user-locale/update/',
+						'latest'    => '',
 					),
 				),
 				'wpssoum' => array(			// Plugin acronym.
-					'short' => 'WPSSO UM',		// Short plugin name.
-					'name' => 'WPSSO Update Manager',
-					'desc' => 'WPSSO Core add-on to provide updates for the WPSSO Core Pro plugin and its Pro add-ons.',
-					'slug' => 'wpsso-um',
-					'base' => 'wpsso-um/wpsso-um.php',
+					'short'       => 'WPSSO UM',	// Short plugin name.
+					'name'        => 'WPSSO Update Manager',
+					'desc'        => 'WPSSO Core add-on to provide updates for the WPSSO Core Pro plugin and its Pro add-ons.',
+					'slug'        => 'wpsso-um',
+					'base'        => 'wpsso-um/wpsso-um.php',
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
@@ -649,21 +676,23 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'url' => array(
 						// WordPress
-						'forum' => '',
+						'forum'  => '',
 						'review' => '',
 						// GitHub
 						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-um/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
-						'home' => 'https://wpsso.com/extend/plugins/wpsso-um/',
+						'home'      => 'https://wpsso.com/extend/plugins/wpsso-um/',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-um/changelog/',
-						'docs' => 'https://wpsso.com/docs/plugins/wpsso-um/',
-						'faqs' => '',
-						'notes' => '',
-						'support' => '',	// Pro support ticket.
-						'purchase' => '',	// Purchase page.
-						'info' => '',		// License information.
-						'update' => 'https://wpsso.com/extend/plugins/wpsso-um/update/',
-						'latest' => 'https://wpsso.com/extend/plugins/wpsso-um/latest/',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-um/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-um/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Pro support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-um/update/',
+						'latest'    => 'https://wpsso.com/extend/plugins/wpsso-um/latest/',
 					),
 				),
 			),

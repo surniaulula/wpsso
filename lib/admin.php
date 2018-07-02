@@ -577,16 +577,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					_x( 'Plugin Description', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
-			if ( ! empty( $info['url']['faqs'] ) ) {
-				$action_links[] = '<a href="' . $info['url']['faqs'] . '"' .
+			if ( ! empty( $info['url']['docs'] ) ) {
+				$action_links[] = '<a href="' . $info['url']['docs'] . '"' .
 					( $tabindex !== false ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
-						_x( 'FAQs', 'plugin action link', 'wpsso' ) . '</a>';
-			}
-
-			if ( ! empty( $info['url']['notes'] ) ) {
-				$action_links[] = '<a href="' . $info['url']['notes'] . '"' .
-					( $tabindex !== false ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
-						_x( 'Other Notes', 'plugin action link', 'wpsso' ) . '</a>';
+						_x( 'Documentation', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
 			if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
@@ -1691,10 +1685,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$action_links = array();
 
 				if ( ! empty( $info['url']['faqs'] ) ) {
-					$action_links[] = sprintf( __( '<a href="%s">Frequently Asked Questions</a>',
-						'wpsso' ), $info['url']['faqs'] ).( ! empty( $info['url']['notes'] ) ?
-							' ' . sprintf( __( 'and <a href="%s">Other Notes</a>',
-								'wpsso' ), $info['url']['notes'] ) : '' );
+					$action_links[] = sprintf( __( '<a href="%s">Frequently Asked Questions</a>', 'wpsso' ), $info['url']['faqs'] );
+				}
+						
+				if ( ! empty( $info['url']['notes'] ) ) {
+					$action_links[] = sprintf( __( '<a href="%s">Documentation and Notes</a>', 'wpsso' ), $info['url']['notes'] );
 				}
 
 				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
