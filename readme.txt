@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.6
 WC Tested Up To: 3.4.2
-Stable Tag: 4.6.0
+Stable Tag: 4.7.0
 
 Easy, complete, accurate, and automatic - provide information about your content, business and authors to social sites and search engines.
 
@@ -329,7 +329,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.7.0 (2018/07/01)**
+**Version 4.7.0 (2018/07/02)**
 
 * *New Features*
 	* None
@@ -516,7 +516,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.7.0 =
 
-(2018/07/01) Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options. Moved the Preview tab back to its original location in the Document SSO metabox.
+(2018/07/02) Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options. Moved the Preview tab back to its original location in the Document SSO metabox.
 
 = 4.6.0 =
 
