@@ -244,11 +244,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/">Why shouldn't I upload small images to the Media library?</a></li>
 </ul>
 
-
-<h2>Other Notes</h2>
-
-<h3>Other Notes</h3>
-<h3 class="top">Additional Documentation</h3>
+<h3>Additional Documentation</h3>
 
 <ul>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/">About WPSSO Core Pro Integration Modules</a>
@@ -310,4 +306,9 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/inline-variables/">Inline Variables</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/">Multisite / Network Support</a></li>
 </ul>
+
+
+<h2>Other Notes</h2>
+
+
 
