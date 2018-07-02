@@ -67,19 +67,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					foreach ( $ptns as $ptn ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'adding column filters for post type '.$ptn );
+							$this->p->debug->log( 'adding column filters for post type ' . $ptn );
 						}
 
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns.
 						 */
-						add_filter( 'manage_'.$ptn.'_posts_columns', array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
-						add_filter( 'manage_edit-'.$ptn.'_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
+						add_filter( 'manage_' . $ptn . '_posts_columns', array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+						add_filter( 'manage_edit-' . $ptn . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column.
 						 */
-						add_action( 'manage_'.$ptn.'_posts_custom_column', array( $this, 'show_column_content' ), 10, 2 );
+						add_action( 'manage_' . $ptn . '_posts_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 					}
 				}
 
@@ -145,22 +145,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod = WpssoMeta::$mod_defaults;
 
-			$mod['id'] = (int) $mod_id;
+			$mod['id']   = (int) $mod_id;
 			$mod['name'] = 'post';
-			$mod['obj'] =& $this;
+			$mod['obj']  =& $this;
 
 			/**
 			 * Post
 			 */
-			$mod['is_post'] = true;
-			$mod['is_home_page'] = SucomUtil::is_home_page( $mod_id );
-			$mod['is_home_index'] = $mod['is_home_page'] ? false : SucomUtil::is_home_index( $mod_id );
-			$mod['is_home'] = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;
-			$mod['post_slug'] = get_post_field( 'post_name', $mod_id );			// post name (aka slug)
-			$mod['post_type'] = get_post_type( $mod_id );					// post type name
-			$mod['post_mime'] = get_post_mime_type( $mod_id );				// post mime type (ie. image/jpg)
-			$mod['post_status'] = get_post_status( $mod_id );				// post status name
-			$mod['post_author'] = (int) get_post_field( 'post_author', $mod_id );		// post author id
+			$mod['is_post']        = true;
+			$mod['is_home_page']   = SucomUtil::is_home_page( $mod_id );
+			$mod['is_home_index']  = $mod['is_home_page'] ? false : SucomUtil::is_home_index( $mod_id );
+			$mod['is_home']        = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;
+			$mod['post_slug']      = get_post_field( 'post_name', $mod_id );		// post name (aka slug)
+			$mod['post_type']      = get_post_type( $mod_id );				// post type name
+			$mod['post_mime']      = get_post_mime_type( $mod_id );				// post mime type (ie. image/jpg)
+			$mod['post_status']    = get_post_status( $mod_id );				// post status name
+			$mod['post_author']    = (int) get_post_field( 'post_author', $mod_id );	// post author id
 			$mod['post_coauthors'] = array();
 
 			/**
@@ -1081,8 +1081,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		protected function get_table_rows( $metabox_id, $tab_key, $head, $mod ) {
 
 			$is_auto_draft  = empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ? true : false;
-			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.', 'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );
-			$table_rows     = array();
+			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to display these options.', 'wpsso' ),
+				SucomUtil::titleize( $mod['post_type'] ) );
+
+			$table_rows = array();
 
 			switch ( $tab_key ) {
 
@@ -1095,7 +1097,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				case 'tags':
 
 					if ( $is_auto_draft ) {
-						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.$auto_draft_msg.'</p></blockquote></td>';
+						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' .
+							$auto_draft_msg . '</p></blockquote></td>';
 					} else {
 						$table_rows = $this->get_rows_head_tags( $this->form, $head, $mod );
 					}
@@ -1105,7 +1108,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				case 'validate':
 
 					if ( $is_auto_draft ) {
-						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.$auto_draft_msg.'</p></blockquote></td>';
+						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' .
+							$auto_draft_msg . '</p></blockquote></td>';
 					} else {
 						$table_rows = $this->get_rows_validate( $this->form, $head, $mod );
 					}
@@ -1121,7 +1125,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
 					$post_id = $comment->comment_post_ID;
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'clearing post_id '.$post_id.' cache for comment_id '.$comment_id );
+						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
 					}
 					$this->clear_cache( $post_id );
 				}
@@ -1133,7 +1137,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
 					$post_id = $comment->comment_post_ID;
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'clearing post_id '.$post_id.' cache for comment_id '.$comment_id );
+						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
 					}
 					$this->clear_cache( $post_id );
 				}
@@ -1211,10 +1215,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$robots_css_id  = $this->p->lca . '-robots';
 
 			echo "\n";
-			echo '<!-- '. $this->p->lca . ' nonce fields -->'."\n";
+			echo '<!-- ' .  $this->p->lca . ' nonce fields -->' . "\n";
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );	// WPSSO_NONCE_NAME is an md5() string
 			echo "\n";
-			echo '<div class="misc-pub-section misc-pub-robots sucom-sidebox ' . $robots_css_id . '-options" id="post-' . $robots_css_id . '">'."\n";
+			echo '<div class="misc-pub-section misc-pub-robots sucom-sidebox ' . $robots_css_id . '-options" id="post-' . $robots_css_id . '">' . "\n";
 			echo '<div id="post-' . $robots_css_id . '-label">';
 			echo _x( 'Robots', 'option label', 'wpsso' ) . ':';
 			echo '</div>' . "\n";
@@ -1227,7 +1231,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					'jQuery(\'div#post-' . $robots_css_id . '-select\').show();">';
 				echo '<span aria-hidden="true">' . __( 'Edit', 'wpsso' ) . '</span>'."\n";
 				echo '<span class="screen-reader-text">' . __( 'Edit robots' ) . '</span>';
-				echo '</a>'."\n";
+				echo '</a>' . "\n";
 			}
 
 			echo '</div><!-- #post-' . $robots_css_id . '-content -->' . "\n";
@@ -1302,7 +1306,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			switch ( $post_type ) {
 				case 'page' :
-					$user_can_edit = current_user_can( 'edit_'.$post_type, $post_id );
+					$user_can_edit = current_user_can( 'edit_' . $post_type, $post_id );
 					break;
 				default :
 					$user_can_edit = current_user_can( 'edit_post', $post_id );
@@ -1311,7 +1315,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( ! $user_can_edit ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'insufficient privileges to save settings for '.$post_type.' ID '.$post_id );
+					$this->p->debug->log( 'insufficient privileges to save settings for ' . $post_type . ' ID ' . $post_id );
 				}
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for %1$s ID %2$s.',
@@ -1357,7 +1361,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( count( $ret ) > $reviews_per_page_max ) {
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( count( $ret ).' reviews found (adjusted to '.$reviews_per_page_max.')' );
+						$wpsso->debug->log( count( $ret ) . ' reviews found (adjusted to ' . $reviews_per_page_max . ')' );
 					}
 					$ret = array_slice( $ret, 0, $reviews_per_page_max );
 				}
@@ -1371,20 +1375,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$ret = array();
 			$rating_value = (float) get_comment_meta( $comment_obj->comment_ID, $rating_meta, true );
 
-			$ret[$og_type.':review:id'] = $comment_obj->comment_ID;
-			$ret[$og_type.':review:url'] = get_comment_link( $comment_obj->comment_ID );
-			$ret[$og_type.':review:author:id'] = $comment_obj->user_id;	// author ID if registered (0 otherwise)
-			$ret[$og_type.':review:author:name'] = $comment_obj->comment_author;	// author display name
-			$ret[$og_type.':review:created_time'] = mysql2date( 'c', $comment_obj->comment_date_gmt );
-			$ret[$og_type.':review:excerpt'] = get_comment_excerpt( $comment_obj->comment_ID );
+			$ret[$og_type . ':review:id']           = $comment_obj->comment_ID;
+			$ret[$og_type . ':review:url']          = get_comment_link( $comment_obj->comment_ID );
+			$ret[$og_type . ':review:author:id']    = $comment_obj->user_id;	// author ID if registered (0 otherwise)
+			$ret[$og_type . ':review:author:name']  = $comment_obj->comment_author;	// author display name
+			$ret[$og_type . ':review:created_time'] = mysql2date( 'c', $comment_obj->comment_date_gmt );
+			$ret[$og_type . ':review:excerpt']      = get_comment_excerpt( $comment_obj->comment_ID );
 
 			/**
 			 * Rating values must be larger than 0 to include rating info.
 			 */
 			if ( $rating_value > 0 ) {
-				$ret[$og_type.':review:rating:value'] = $rating_value;
-				$ret[$og_type.':review:rating:worst'] = 1;
-				$ret[$og_type.':review:rating:best'] = 5;
+				$ret[$og_type . ':review:rating:value'] = $rating_value;
+				$ret[$og_type . ':review:rating:worst'] = 1;
+				$ret[$og_type . ':review:rating:best']  = 5;
 			}
 
 			return $ret;

@@ -114,14 +114,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$mod = WpssoMeta::$mod_defaults;
 
-			$mod['id'] = (int) $mod_id;
+			$mod['id']   = (int) $mod_id;
 			$mod['name'] = 'term';
-			$mod['obj'] =& $this;
+			$mod['obj']  =& $this;
 
 			/**
 			 * Term
 			 */
-			$mod['is_term'] = true;
+			$mod['is_term']  = true;
 			$mod['tax_slug'] = SucomUtil::get_term_object( $mod['id'], (string) $tax_slug, 'taxonomy' );
 
 			return apply_filters( $this->p->lca.'_get_term_mod', $mod, $mod_id, $tax_slug );
@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$term_args = array( 'fields' => 'ids' );
 			$term_oper = 'and';
-			$term_ids = array();
+			$term_ids  = array();
 
 			foreach ( self::get_public_tax_names( $tax_name ) as $tax_name ) {
 				foreach ( get_terms( $tax_name, $term_args, $term_oper ) as $term_val ) {

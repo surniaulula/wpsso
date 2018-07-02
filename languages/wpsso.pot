@@ -1121,11 +1121,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/com/util.php:1553
+#: lib/com/util.php:1564
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1560
+#: lib/com/util.php:1571
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -2534,7 +2534,7 @@ msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:146 lib/pro/admin/meta.php:164
+#: lib/gpl/admin/meta.php:146 lib/post.php:1084 lib/pro/admin/meta.php:164
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
@@ -2668,8 +2668,7 @@ msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gpl/admin/post.php:199 lib/meta.php:245 lib/post.php:1084
-#: lib/pro/admin/post.php:210
+#: lib/gpl/admin/post.php:199 lib/meta.php:245 lib/pro/admin/post.php:210
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -5181,40 +5180,40 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1219 lib/script.php:219
+#: lib/post.php:1223 lib/script.php:219
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1228
+#: lib/post.php:1232
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1229
+#: lib/post.php:1233
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1240
+#: lib/post.php:1244
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1241
+#: lib/post.php:1245
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1242
+#: lib/post.php:1246
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1243
+#: lib/post.php:1247
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1317
+#: lib/post.php:1321
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

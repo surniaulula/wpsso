@@ -108,9 +108,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$mod = WpssoMeta::$mod_defaults;
 
-			$mod['id'] = (int) $mod_id;
+			$mod['id']   = (int) $mod_id;
 			$mod['name'] = 'user';
-			$mod['obj'] =& $this;
+			$mod['obj']  =& $this;
 
 			/**
 			 * User

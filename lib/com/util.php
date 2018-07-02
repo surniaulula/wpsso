@@ -1080,22 +1080,33 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function save_current_filter_value( $value ) {
+
 			$filter_name = current_filter();
+
 			self::$cache_filter_values['original'][$filter_name] = $value; // Save value to static cache.
+
 			remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), self::get_min_int() ); // Remove ourselves.
+
 			return $value;
 		}
 
 		public static function restore_current_filter_value( $value ) {
+
 			$filter_name = current_filter();
+
 			unset( self::$cache_filter_values['modified'][$filter_name] );	// Just in case.
+
 			if ( isset( self::$cache_filter_values['original'][$filter_name] ) ) {      // Just in case.
 				if ( $value !== self::$cache_filter_values['original'][$filter_name] ) {
+
 					self::$cache_filter_values['modified'][$filter_name] = $value;
+
 					$value = self::$cache_filter_values['original'][$filter_name];      // Restore value from static cache.
 				}
 			}
+
 			remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), self::get_max_int() ); // Remove ourselves.
+
 			return $value;
 		}
 
@@ -2439,7 +2450,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$salt = '';
 
 			if ( ! empty( $mod['name'] ) ) {
+
 				$salt .= '_' . $mod['name'] . ':';
+
 				if ( $mod['id'] === false ) {
 					$salt .= 'false';
 				} elseif ( $mod['id'] === true ) {
@@ -2468,22 +2481,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_query_salt( $salt = '' ) {
+
 			global $wp_query;
+
 			if ( isset( $wp_query->query ) ) {
 				$salt = self::get_implode_assoc( '_', ':', $wp_query->query, $salt );
 			}
+
 			return $salt;
 		}
 
 		public static function get_implode_assoc( $val_glue, $key_glue, array $arr, $salt = '' ) {
+
 			foreach ( $arr as $key => $val ) {
+
 				$salt .= $val_glue;
+
 				if ( is_array( $val ) ) {
 					$salt .= self::get_implode_assoc( $val_glue, $key_glue, $val, $salt );
 				} else {
 					$salt .= (string) $key . $key_glue . $val;
 				}
 			}
+
 			return ltrim( $salt, $val_glue );
 		}
 
@@ -2495,8 +2515,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$now_time = time();
 
 			if ( isset( $data_array['__created_at'] ) ) {
-				// adjust the expiration time by removing the difference
+
+				/**
+				 * Adjust the expiration time by removing the difference.
+				 */
 				$expires_in_secs = $cache_exp_secs - ( $now_time - $data_array['__created_at'] );
+
 				if ( $expires_in_secs < $reset_at_secs ) {
 					$expires_in_secs = $cache_exp_secs;
 				}
@@ -2511,7 +2535,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function restore_checkboxes( &$opts ) {
-			// unchecked checkboxes are not provided, so re-create them here based on hidden values
+
+			/**
+			 * Unchecked checkboxes are not provided, so re-create them here based on hidden values.
+			 */
 			$checkbox = self::preg_grep_keys( '/^is_checkbox_/', $opts, false, '' );
 
 			foreach ( $checkbox as $key => $val ) {
@@ -2525,8 +2552,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_is_page( $use_post = false ) {
 
-			// optimize and only check what we need to
+			/**
+			 * Optimize and only check what we need to.
+			 */
 			$is_term_page = $is_user_page = false;
+
 			if ( ! $is_post_page = self::is_post_page( $use_post ) ) {
 				if ( ! $is_term_page = self::is_term_page() ) {
 					$is_user_page = self::is_user_page();
