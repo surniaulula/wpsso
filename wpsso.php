@@ -418,21 +418,38 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			if ( $this->debug->enabled ) {
+
+				$min_int = SucomUtil::get_min_int();
+				$max_int = SucomUtil::get_max_int();
+
+				/**
+				 * Show a comment marker at the top / bottom of the head and footer sections.
+				 */
 				foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
-					foreach ( array( -9000, 9000 ) as $prio ) {
-						if ( version_compare( phpversion(), '5.3.0', '>=' ) ) {	// Just in case.
-							$show_action_prio_func = function() use ( $action, $prio ) {
-								echo '<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->' . "\n";
-							};
-						} else {
-							$show_action_prio_func = create_function( '', 'echo "<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->\n";' );
-						}
+
+					/**
+					 * PHP v5.3+ is required for "function() use () {}" syntax.
+					 */
+					if ( version_compare( phpversion(), '5.3.0', '<' ) ) {
+						break;
+					}
+
+					foreach ( array( $min_int, $max_int ) as $prio ) {
+
+						$show_action_prio_func = function() use ( $action, $prio ) {
+							echo "\n" . '<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->' . "\n\n";
+						};
+
 						add_action( $action, $show_action_prio_func, $prio );
 						add_action( $action, array( $this, 'show_debug' ), $prio + 1 );
 					}
 				}
+
+				/**
+				 * Show the plugin settings at the end, just before the footer marker. 
+				 */
 				foreach ( array( 'wp_footer', 'admin_footer' ) as $action ) {
-					foreach ( array( 9900 ) as $prio ) {
+					foreach ( array( $max_int - 1 ) as $prio ) {
 						add_action( $action, array( $this, 'show_config' ), $prio );
 					}
 				}

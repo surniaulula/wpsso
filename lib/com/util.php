@@ -1068,13 +1068,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Returns tru if protection filters were added, false if protection filters are not required.
 		 */
 		public static function protect_filter_value( $filter_name ) {
+
 			if ( ! has_filter( $filter_name ) ) { // No protection required.
+
 				return false;
+
 			} elseif ( has_filter( $filter_name, array( __CLASS__, 'save_current_filter_value' ) ) ) { // Already protected.
+
 				return false;
+
 			} else { // Hook protection save/restore filters.
+
 				add_filter( $filter_name, array( __CLASS__, 'save_current_filter_value' ), self::get_min_int(), 1 );
 				add_filter( $filter_name, array( __CLASS__, 'restore_current_filter_value' ), self::get_max_int(), 1 );
+
 				return true;
 			}
 		}
@@ -3063,17 +3070,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_stripped_php( $file_path ) {
+
 			$ret = '';
+
 			if ( file_exists( $file_path ) ) {
-				$content = file_get_contents( $file_path );
+
+				$content  = file_get_contents( $file_path );
 				$comments = array( T_COMMENT );
+
 				if ( defined( 'T_DOC_COMMENT' ) ) {
 					$comments[] = T_DOC_COMMENT;    // PHP 5.
 				}
+
 				if ( defined( 'T_ML_COMMENT' ) ) {
 					$comments[] = T_ML_COMMENT;     // PHP 4.
 				}
+
 				$tokens = token_get_all( $content );
+
 				foreach ( $tokens as $token ) {
 					if ( is_array( $token ) ) {
 						if ( in_array( $token[0], $comments ) ) {
@@ -3083,9 +3097,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 					$ret .= $token;
 				}
+
 			} else {
 				$ret = false;
 			}
+
 			return $ret;
 		}
 

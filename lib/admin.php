@@ -19,8 +19,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $menu_lib;
 		protected $menu_ext;
 		protected $pagehook;
-		protected $pageref_url;
 		protected $pageref_title;
+		protected $pageref_url;
 
 		public static $pkg = array();
 		public static $readme = array();
@@ -44,14 +44,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * plugin_complete_redirect() methods to direct the user back to the thickbox iframe parent
 			 * (aka the plugin licenses settings page) after plugin installation / activation / update.
 			 */
-			foreach ( array(
-				'pageref_url'   => 'esc_url_raw',
-				'pageref_title' => 'esc_html',
-			) as $pageref => $esc_func ) {
+			if ( ! empty( $_GET[ $this->p->lca . '_pageref_title' ] ) ) {
+				$this->pageref_title = esc_html( urldecode( $_GET[ $this->p->lca . '_pageref_title' ] ) );
+			}
 
-				if ( ! empty( $_GET[$this->p->lca . '_' . $pageref] ) ) {
-					$this->$pageref = call_user_func( $esc_func, urldecode( $_GET[$this->p->lca . '_' . $pageref] ) );
-				}
+			if ( ! empty( $_GET[ $this->p->lca . '_pageref_url' ] ) ) {
+				$this->pageref_url = esc_url_raw( urldecode( $_GET[ $this->p->lca . '_pageref_url' ] ) );
 			}
 
 			add_action( 'activated_plugin', array( $this, 'reset_check_head_count' ), 10 );
@@ -2947,6 +2945,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			if ( empty( $this->p->options['plugin_head_attr_filter_name'] ) ||
 				$this->p->options['plugin_head_attr_filter_name'] !== 'head_attributes' ) {
+
 				return;	// exit early
 			}
 
@@ -2984,18 +2983,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $header_files as $tmpl_file ) {
 
-				$tmpl_base = basename( $tmpl_file );
-				$backup_file = $tmpl_file . '~backup-' . date( 'Ymd-His' );
-				$backup_base = basename( $backup_file );
+				$tmpl_base     = basename( $tmpl_file );
+				$backup_file   = $tmpl_file . '~backup-' . date( 'Ymd-His' );
+				$backup_base   = basename( $backup_file );
 				$html_stripped = SucomUtil::get_stripped_php( $tmpl_file );
 	
-				// double check in case of reloads etc.
+				/**
+				 * Double check in case of reloads etc.
+				 */
 				if ( empty( $html_stripped ) || strpos( $html_stripped, '<head>' ) === false ) {
 					$this->p->notice->err( sprintf( __( 'No %1$s HTML tag found in the %2$s template.', 'wpsso' ), '&lt;head&gt;', $tmpl_file ) );
 					continue;
 				}
 
-				// make a backup of the original
+				/**
+				 * Make a backup of the original.
+				 */
 				if ( ! copy( $tmpl_file, $backup_file ) ) {
 					$this->p->notice->err( sprintf( __( 'Error copying %1$s to %2$s.', 'wpsso' ), $tmpl_file, $backup_base ) );
 					continue;
@@ -3010,8 +3013,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				if ( fwrite( $tmpl_fh, $tmpl_contents ) ) {
+
 					$this->p->notice->upd( sprintf( __( 'The %1$s template has been successfully modified and saved. A backup copy of the original template is available as %2$s in the same folder.', 'wpsso' ), $tmpl_file, $backup_base ) );
+
 					$have_changes = true;
+
 				} else {
 					$this->p->notice->err( sprintf( __( 'Failed to write the %1$s template. You may need to restore the original template saved as %2$s in the same folder.', 'wpsso' ), $tmpl_file, $backup_base ) );
 				}
@@ -3020,7 +3026,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( $have_changes ) {
+
 				$dismiss_key = 'notice-header-tmpl-no-head-attr-' . SucomUtil::get_theme_slug_version();
+
 				$this->p->notice->trunc_key( $dismiss_key, 'all' );	// Just in case.
 			}
 		}
@@ -3347,35 +3355,52 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function plugin_complete_actions( $actions ) {
-			if ( ! empty( $this->pageref_url ) && ! empty( $this->pageref_title ) ) {
+
+			if ( ! empty( $this->pageref_title ) && ! empty( $this->pageref_url ) ) {
+
 				foreach ( $actions as $action => &$html ) {
+
 					switch ( $action ) {
+
 						case 'plugins_page':
+
 							$html = '<a href="' . $this->pageref_url . '" target="_parent">' .
 								sprintf( __( 'Return to %s', 'wpsso' ), $this->pageref_title ) . '</a>';
+
 							break;
+
 						default:
+
 							if ( preg_match( '/^(.*href=")([^"]+)(".*)$/', $html, $matches ) ) {
+
 								$url = add_query_arg( array(
 									$this->p->lca . '_pageref_url' => urlencode( $this->pageref_url ),
 									$this->p->lca . '_pageref_title' => urlencode( $this->pageref_title ),
 								), $matches[2] );
+
 								$html = $matches[1].$url.$matches[3];
 							}
+
 							break;
 					}
 				}
 			}
+
 			return $actions;
 		}
 
 		public function plugin_complete_redirect( $url ) {
+
 			if ( strpos( $url, '?activate=true' ) ) {
+
 				if ( ! empty( $this->pageref_url ) ) {
+
 					$this->p->notice->upd( __( 'Plugin <strong>activated</strong>.' ) );	// green status w check mark
+
 					$url = $this->pageref_url;
 				}
 			}
+
 			return $url;
 		}
 
