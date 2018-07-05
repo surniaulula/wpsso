@@ -108,7 +108,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 
 					add_filter( 'pre_get_shortlink', array( $this, 'get_sharing_shortlink' ), SucomUtil::get_min_int(), 4 );
-					add_filter( 'pre_get_shortlink', array( $this, 'restore_sharing_shortlink' ), SucomUtil::get_max_int(), 4 );
+					add_filter( 'pre_get_shortlink', array( $this, 'maybe_restore_shortlink' ), SucomUtil::get_max_int(), 4 );
 
 					if ( function_exists( 'wpme_get_shortlink_handler' ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -387,7 +387,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 			$service_key = $this->p->options['plugin_shortener'];
-			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $service_key, $mod, $context );
+			$short_url   = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $service_key, $mod, $context );
 
 			if ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// invalid url
 				if ( $this->p->debug->enabled ) {
@@ -403,13 +403,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return self::$cache_short_url = self::$cache_shortlinks[$post_id][$context][$allow_slugs] = $short_url;	// success - return short url
 		}
 
-		public function restore_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
+		public function maybe_restore_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
 
 			if ( self::$cache_short_url === $shortlink ) {	// Shortlink value has not changed.
+
 				self::$cache_short_url = null;	// Just in case.
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: shortlink value has not changed' );
 				}
+
 				return $shortlink;
 			}
 
@@ -439,14 +442,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function get_column_content( $value, $column_name, $post_id ) {
+
 			if ( ! empty( $post_id ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// Just in case.
+
 				$col_idx = str_replace( $this->p->lca.'_', '', $column_name );
+
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
+
 					if ( isset( $col_info['meta_key'] ) ) {	// Just in case.
 						$value = $this->get_meta_cache_value( $post_id, $col_info['meta_key'] );
 					}
+
 					if ( isset( $col_info['post_callbacks'] ) && is_array( $col_info['post_callbacks'] ) ) {
+
 						foreach( $col_info['post_callbacks'] as $input_name => $input_callback ) {
+
 							if ( ! empty( $input_callback ) ) {
 								$value .= "\n".'<input name="'.$input_name.'" type="hidden" value="'.
 									call_user_func( $input_callback, $post_id ).'" readonly="readonly" />';
@@ -455,19 +465,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 			}
+
 			return $value;
 		}
 
 		public function get_meta_cache_value( $post_id, $meta_key, $none = '' ) {
+
 			$meta_cache = wp_cache_get( $post_id, 'post_meta' );	// optimize and check wp_cache first
+
 			if ( isset( $meta_cache[$meta_key][0] ) ) {
 				$value = (string) maybe_unserialize( $meta_cache[$meta_key][0] );
 			} else {
 				$value = (string) get_post_meta( $post_id, $meta_key, true );	// $single = true
 			}
+
 			if ( $value === 'none' ) {
 				$value = $none;
 			}
+
 			return $value;
 		}
 
@@ -851,9 +866,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Fetch HTML using the Facebook user agent to get Open Graph meta tags.
 			 */
-			$curl_opts = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
-			$html = $this->p->cache->get( $check_url, 'raw', 'transient', false, '', $curl_opts );
-			$url_time = $this->p->cache->get_url_time( $check_url );
+			$curl_opts    = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
+			$html         = $this->p->cache->get( $check_url, 'raw', 'transient', false, '', $curl_opts );
+			$url_time     = $this->p->cache->get_url_time( $check_url );
 			$warning_time = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_WARNING_TIME', 2.5 );
 			$timeout_time = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_TIMEOUT_TIME', 3.0 );
 
@@ -1241,15 +1256,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				echo '<div id="post-' . $robots_css_id . '-select">' . "\n";
 
 				foreach ( array(
-					'noindex'  => _x( 'No index', 'option label', 'wpsso' ),
-					'nofollow' => _x( 'No follow', 'option label', 'wpsso' ),
+					'noindex'   => _x( 'No index', 'option label', 'wpsso' ),
+					'nofollow'  => _x( 'No follow', 'option label', 'wpsso' ),
 					'noarchive' => _x( 'No archive', 'option label', 'wpsso' ),
 					'nosnippet' => _x( 'No snippet', 'option label', 'wpsso' ),
 				) as $meta_name => $meta_label ) {
 
 					$meta_css_id = $this->p->lca . '_' . $meta_name;
-					$meta_key = '_' . $meta_css_id;
-					$meta_value = $this->get_meta_cache_value( $post->ID, $meta_key );
+					$meta_key    = '_' . $meta_css_id;
+					$meta_value  = $this->get_meta_cache_value( $post->ID, $meta_key );
 
 					echo '<input type="hidden" name="is_checkbox' . $meta_key . '" value="1"/>' . "\n";
 					echo '<input type="checkbox" name="' . $meta_key . '" id="' . $meta_css_id . '"' .

@@ -458,11 +458,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Get all images.
 			 */
 			if ( ! isset( $mt_og['og:image'] ) ) {
+
 				if ( empty( $max_nums['og_img_max'] ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'images disabled: maximum images = 0' );
 					}
+
 				} else {
+
 					$img_sizes = array( 'og' => $this->p->lca . '-opengraph' );
 
 					foreach ( $img_sizes as $md_pre => $size_name ) {
@@ -471,10 +475,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->debug->log( 'getting images for ' . $md_pre . ' (' . $size_name . ')' );
 						}
 
-						// the size_name is used as a context for duplicate checks
+						/**
+						 * The size_name is used as a context for duplicate checks.
+						 */
 						$mt_og[$md_pre . ':image'] = $this->get_all_images( $max_nums['og_img_max'], $size_name, $mod, $check_dupes, $md_pre );
 
-						// if there's no image, and no video preview, then add the default image for singular (aka post) webpages
+						/**
+						 * If there's no image, and no video preview, then add the default image for singular (aka post) webpages.
+						 */
 						if ( empty( $mt_og[$md_pre . ':image'] ) && ! $prev_count && $mod['is_post'] ) {
 							$mt_og[$md_pre . ':image'] = $this->p->media->get_default_images( $max_nums['og_img_max'], $size_name, $check_dupes );
 						}
@@ -840,9 +848,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				) );
 			}
 
-			$og_ret = array();
-			$num_diff = SucomUtil::count_diff( $og_ret, $num );
+			$og_ret      = array();
+			$num_diff    = SucomUtil::count_diff( $og_ret, $num );
 			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// false by default
+
 			$this->p->util->clear_uniq_urls( $size_name );			// clear cache for $size_name context
 
 			if ( $mod['is_post'] ) {

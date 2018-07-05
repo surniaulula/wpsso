@@ -254,27 +254,35 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		public function get_column_content( $value, $column_name, $term_id ) {
+
 			if ( ! empty( $term_id ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// just in case
+
 				$col_idx = str_replace( $this->p->lca.'_', '', $column_name );
+
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// just in case
 						$value = $this->get_meta_cache_value( $term_id, $col_info['meta_key'] );
 					}
 				}
 			}
+
 			return $value;
 		}
 
 		public function get_meta_cache_value( $term_id, $meta_key, $none = '' ) {
+
 			$meta_cache = wp_cache_get( $term_id, 'term_meta' );	// optimize and check wp_cache first
+
 			if ( isset( $meta_cache[$meta_key][0] ) ) {
 				$value = (string) maybe_unserialize( $meta_cache[$meta_key][0] );
 			} else {
 				$value = (string) self::get_term_meta( $term_id, $meta_key, true );	// $single = true
 			}
+
 			if ( $value === 'none' ) {
 				$value = $none;
 			}
+
 			return $value;
 		}
 

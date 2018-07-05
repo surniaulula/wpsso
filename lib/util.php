@@ -2314,7 +2314,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			/**
 			 * Hooked by some modules, like bbPress and social sharing buttons,
-			 * to perform actions before / after filtering the content.
+			 * to perform actions before/after filtering the content.
 			 */
 			do_action( $this->p->lca . '_pre_apply_filters_text', $filter_name );
 
@@ -2479,7 +2479,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			/**
 			 * Hooked by some modules, like bbPress and social sharing buttons,
-			 * to perform actions before / after filtering the content.
+			 * to perform actions before/after filtering the content.
 			 */
 			do_action( $this->p->lca . '_after_apply_filters_text', $filter_name );
 

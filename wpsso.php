@@ -13,9 +13,9 @@
  * Description: WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.
  * Requires PHP: 5.4
  * Requires At Least: 3.8
- * Tested Up To: 4.9.6
+ * Tested Up To: 4.9.7
  * WC Tested Up To: 3.4.2
- * Version: 4.7.0
+ * Version: 4.7.1-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *

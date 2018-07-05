@@ -1200,7 +1200,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$cache_index = false;
-			$cache_data = false;
+			$cache_data  = false;
 
 			/**
 			 * $page_type_id is false when called by get_single_mod_data().
@@ -1218,7 +1218,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} elseif ( $is_main && $mod['is_post'] && $mod['id'] ) {
 
 				$cache_index = self::get_mod_cache_index( $mod, $page_type_id );
-				$cache_data = self::get_mod_cache_data( $mod, $cache_index );
+				$cache_data  = self::get_mod_cache_data( $mod, $cache_index );
 
 				if ( isset( $cache_data[$cache_index] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -2057,7 +2057,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$cache_index = self::get_mod_cache_index( $mod, $page_type_id );
-			$cache_data = self::get_mod_cache_data( $mod, $cache_index );
+			$cache_data  = self::get_mod_cache_data( $mod, $cache_index );
 
 			if ( isset( $cache_data[$cache_index] ) ) {
 				if ( $wpsso->debug->enabled ) {

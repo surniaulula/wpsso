@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.7.0\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.7.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:879 lib/post.php:724 lib/term.php:416 lib/user.php:422
+#: lib/admin.php:879 lib/post.php:739 lib/term.php:424 lib/user.php:426
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -1121,11 +1121,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/com/util.php:1571
+#: lib/com/util.php:1594
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1578
+#: lib/com/util.php:1601
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -1940,54 +1940,61 @@ msgstr ""
 #: lib/config-gettext-extract.php:164
 msgctxt "plugin description"
 msgid ""
+"WPSSO Core add-on to inherit parent featured and custom images for posts, "
+"pages, custom post types, categories, tags, and custom taxonomies."
+msgstr ""
+
+#: lib/config-gettext-extract.php:165
+msgctxt "plugin description"
+msgid ""
 "WPSSO Core add-on to manage Organizations and additional Schema markup "
 "properties (Organizer, Performer, Publisher, etc.) for Google Rich Cards / "
 "Knowledge Graph."
 msgstr ""
 
-#: lib/config-gettext-extract.php:165
+#: lib/config-gettext-extract.php:166
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide a convenient locale / language / region "
 "selector in the WordPress admin toolbar."
 msgstr ""
 
-#: lib/config-gettext-extract.php:166
+#: lib/config-gettext-extract.php:167
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide an array of meta tags and Schema markup in the "
 "WordPress REST API post, term and user queries."
 msgstr ""
 
-#: lib/config-gettext-extract.php:167
+#: lib/config-gettext-extract.php:168
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Apple Store / iTunes and Google Play App meta "
 "tags for Apple's mobile Safari and Twitter's App Card."
 msgstr ""
 
-#: lib/config-gettext-extract.php:168
+#: lib/config-gettext-extract.php:169
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide JSON-LD formatted Schema BreadcrumbList markup "
 "for Google and Search Engine Optimization (SEO)."
 msgstr ""
 
-#: lib/config-gettext-extract.php:169
+#: lib/config-gettext-extract.php:170
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Pinterest Place, Facebook / Open Graph "
 "Location, Schema Local Business, and Local SEO meta tags."
 msgstr ""
 
-#: lib/config-gettext-extract.php:170
+#: lib/config-gettext-extract.php:171
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide ratings and reviews for WordPress comments, "
 "with Aggregate Rating meta tags and optional Schema Review markup."
 msgstr ""
 
-#: lib/config-gettext-extract.php:171
+#: lib/config-gettext-extract.php:172
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Ridiculously Responsive (SVG) Social Sharing "
@@ -1995,49 +2002,49 @@ msgid ""
 "pages, etc."
 msgstr ""
 
-#: lib/config-gettext-extract.php:172
+#: lib/config-gettext-extract.php:173
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, "
 "Events, Local Business, Products, Recipes, Reviews and many more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:173
+#: lib/config-gettext-extract.php:174
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Social Sharing Buttons with support for "
 "hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:174
+#: lib/config-gettext-extract.php:175
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide tuning options for the WordPress image editors "
 "and PHP image extensions."
 msgstr ""
 
-#: lib/config-gettext-extract.php:175
+#: lib/config-gettext-extract.php:176
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Twitter-style quoted text for your content, "
 "with a convenient Tweet share link and customizable CSS."
 msgstr ""
 
-#: lib/config-gettext-extract.php:176
+#: lib/config-gettext-extract.php:177
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide updates for the WPSSO Core Pro plugin and its "
 "Pro add-ons."
 msgstr ""
 
-#: lib/config-gettext-extract.php:177
+#: lib/config-gettext-extract.php:178
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to remove outdated / incomplete Schema Microdata, leaving "
 "the Google recommended Schema JSON-LD markup untouched."
 msgstr ""
 
-#: lib/config-gettext-extract.php:178
+#: lib/config-gettext-extract.php:179
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core creates complete and accurate meta tags and Schema markup "
@@ -2045,37 +2052,37 @@ msgid ""
 "and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:179
+#: lib/config-gettext-extract.php:180
 msgctxt "option value"
 msgid "Year"
 msgstr ""
 
-#: lib/config-gettext-extract.php:180
+#: lib/config-gettext-extract.php:181
 msgctxt "option value"
 msgid "Yes"
 msgstr ""
 
-#: lib/config-gettext-extract.php:181
+#: lib/config-gettext-extract.php:182
 msgctxt "option value"
 msgid "YOURLS"
 msgstr ""
 
-#: lib/config-gettext-extract.php:182
+#: lib/config-gettext-extract.php:183
 msgctxt "lib file description"
 msgid "Your SSO"
 msgstr ""
 
-#: lib/config-gettext-extract.php:183
+#: lib/config-gettext-extract.php:184
 msgctxt "option value"
 msgid "YouTube Business Channel URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:184
+#: lib/config-gettext-extract.php:185
 msgctxt "option value"
 msgid "YouTube Channel URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:185
+#: lib/config-gettext-extract.php:186
 msgctxt "option value"
 msgid "YouTube Videos and Playlists"
 msgstr ""
@@ -2534,7 +2541,7 @@ msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:146 lib/post.php:1084 lib/pro/admin/meta.php:164
+#: lib/gpl/admin/meta.php:146 lib/post.php:1099 lib/pro/admin/meta.php:164
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
@@ -2717,7 +2724,7 @@ msgid "Library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:163 lib/loader.php:189 lib/post.php:265 lib/register.php:237
+#: lib/loader.php:163 lib/loader.php:189 lib/post.php:265 lib/register.php:238
 #: lib/term.php:240 lib/user.php:207 lib/util.php:357 lib/util.php:2451
 msgid "%s warning:"
 msgstr ""
@@ -2738,77 +2745,77 @@ msgstr ""
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 
-#: lib/media.php:381
+#: lib/media.php:391
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:418 lib/media.php:570 lib/media.php:1375
+#: lib/media.php:428 lib/media.php:580 lib/media.php:1385
 #: lib/pro/util/checkimgdims.php:91
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:421
+#: lib/media.php:431
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:422 lib/media.php:573
+#: lib/media.php:432 lib/media.php:583
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:438
+#: lib/media.php:448
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:462
+#: lib/media.php:472
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:572
+#: lib/media.php:582
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:575
+#: lib/media.php:585
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:938
+#: lib/media.php:948
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1381 lib/pro/media/ngg.php:130
+#: lib/media.php:1391 lib/pro/media/ngg.php:130
 #: lib/pro/util/checkimgdims.php:93
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1391
+#: lib/media.php:1401
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1460
+#: lib/media.php:1470
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1488
+#: lib/media.php:1498
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -4703,7 +4710,7 @@ msgid ""
 "refresh of all Pro update information."
 msgstr ""
 
-#: lib/messages.php:2260 lib/register.php:247
+#: lib/messages.php:2260 lib/register.php:248
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -5083,137 +5090,137 @@ msgid ""
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:843
+#: lib/post.php:858
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:846
+#: lib/post.php:861
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:874
+#: lib/post.php:889
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:876
+#: lib/post.php:891
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:878
+#: lib/post.php:893
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:879
+#: lib/post.php:894
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:889 lib/util.php:1258
+#: lib/post.php:904 lib/util.php:1258
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:898
+#: lib/post.php:913
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:907
+#: lib/post.php:922
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:916
+#: lib/post.php:931
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:932
+#: lib/post.php:947
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:942
+#: lib/post.php:957
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:954
+#: lib/post.php:969
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:954
+#: lib/post.php:969
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:954
+#: lib/post.php:969
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:980
+#: lib/post.php:995
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:981
+#: lib/post.php:996
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:987
+#: lib/post.php:1002
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:990
+#: lib/post.php:1005
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:992
+#: lib/post.php:1007
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1223 lib/script.php:219
+#: lib/post.php:1238 lib/script.php:219
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1232
+#: lib/post.php:1247
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1233
+#: lib/post.php:1248
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1244
+#: lib/post.php:1259
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1245
+#: lib/post.php:1260
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1246
+#: lib/post.php:1261
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1247
+#: lib/post.php:1262
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1321
+#: lib/post.php:1336
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -5424,11 +5431,11 @@ msgid "Invalid user ID."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
-#: lib/register.php:240 lib/register.php:249
+#: lib/register.php:241 lib/register.php:250
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:251
+#: lib/register.php:252
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
@@ -5893,7 +5900,7 @@ msgid ""
 "for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:545
+#: lib/term.php:553
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -5914,23 +5921,23 @@ msgid ""
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:618
+#: lib/user.php:622
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:694
+#: lib/user.php:698
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:695
+#: lib/user.php:699
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:696
+#: lib/user.php:700
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1114
+#: lib/user.php:1118
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 

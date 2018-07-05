@@ -1370,41 +1370,56 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function active_plugins( $plugin_base = false, $use_cache = true ) { // Example: $plugin_base = wpsso/wpsso.php.
+
 			static $local_cache = null;
+
 			if ( ! $use_cache || ! isset( $local_cache ) ) {
-				$local_cache = array();
+
+				$local_cache    = array();
 				$active_plugins = get_option( 'active_plugins', array() );
+
 				if ( is_multisite() ) {
+
 					$active_network_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
+
 					if ( ! empty( $active_network_plugins ) ) {
 						$active_plugins = array_merge( $active_plugins, $active_network_plugins );
 					}
 				}
+
 				foreach ( $active_plugins as $base ) {
 					$local_cache[$base] = true;
 				}
 			}
+
 			if ( $plugin_base !== false ) {
+
 				if ( isset( $local_cache[$plugin_base] ) ) {
 					return $local_cache[$plugin_base];
 				}
+
 				return $local_cache[$plugin_base] = false;
 			}
+
 			return $local_cache;
 		}
 
 		public static function slug_is_active( $plugin_slug ) { // Example: $plugin_slug = wpsso.
+
 			static $local_cache = array();
+
 			if ( isset( $local_cache[$plugin_slug] ) ) {
 				return $local_cache[$plugin_slug];
 			} elseif ( empty( $plugin_slug ) ) { // Just in case.
 				return $local_cache[$plugin_slug] = false;
 			}
+
 			foreach ( SucomUtil::active_plugins() as $plugin_base => $active ) { // Call with class to use common cache.
 				if ( strpos( $plugin_base, $plugin_slug . '/' ) === 0 ) {
 					return $local_cache[$plugin_slug] = true; // Stop here.
 				}
 			}
+
 			return $local_cache[$plugin_slug] = false;
 		}
 
@@ -1412,17 +1427,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * If you need to clear the WordPress plugins cache, call wp_clean_plugins_cache() beforehand.
 		 */
 		public static function get_installed_slug_base( $plugin_slug, $use_cache = true ) { // Example: $plugin_slug = wpsso
+
 			static $local_cache = array();
+
 			if ( $use_cache && isset( $local_cache[$plugin_slug] ) ) {
 				return $local_cache[$plugin_slug];
 			} elseif ( empty( $plugin_slug ) ) { // Just in case.
 				return $local_cache[$plugin_slug] = false;
 			}
+
 			foreach ( self::get_wp_plugins() as $plugin_base => $info ) {
 				if ( strpos( $plugin_base, $plugin_slug . '/' ) === 0 ) {
 					return $local_cache[$plugin_slug] = $plugin_base; // Stop here.
 				}
 			}
+
 			return $local_cache[$plugin_slug] = false;
 		}
 
@@ -1438,7 +1457,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 
 				$active_plugins[] = $plugin_base;
+
 				sort( $active_plugins ); // Emulate the WordPress function.
+
 				$updated = update_option( 'active_plugins', $active_plugins );
 
 				if ( ! $silent ) {
@@ -1452,9 +1473,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function plugin_is_active( $plugin_base, $use_cache = true ) {
+
 			if ( empty( $plugin_base ) ) { // Just in case.
 				return false;
 			}
+
 			return SucomUtil::active_plugins( $plugin_base, $use_cache ); // Call with class to use common cache.
 		}
 
@@ -1785,20 +1808,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function preg_grep_keys( $pattern, array &$input, $invert = false, $replace = false, $remove = false ) {
 
 			$invert = $invert == false ? null : PREG_GREP_INVERT;
-			$match = preg_grep( $pattern, array_keys( $input ), $invert );
-			$found = array();
+			$match  = preg_grep( $pattern, array_keys( $input ), $invert );
+			$found  = array();
 
 			foreach ( $match as $key ) {
+
 				if ( $replace !== false ) {
+
 					$fixed = preg_replace( $pattern, $replace, $key );
+
 					$found[$fixed] = $input[$key];
 				} else {
 					$found[$key] = $input[$key];
 				}
+
 				if ( $remove !== false ) {
 					unset( $input[$key] );
 				}
 			}
+
 			return $found;
 		}
 
@@ -1903,7 +1931,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$new_array[$key] = $value;
 					}
 					/**
-					 * Add new value before / after the matched key.
+					 * Add new value before/after the matched key.
 					 * Replace the matched key by default (no test required).
 					 */
 					if ( $key === $match_key ) {
@@ -2290,10 +2318,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function transl_key_values( $pattern, array &$opts, $text_domain = false ) {
+
 			foreach ( self::preg_grep_keys( $pattern, $opts ) as $key => $val ) {
+
 				$locale_key = self::get_key_locale( $key );
+
 				if ( $locale_key !== $key && empty( $opts[$locale_key] ) ) {
+
 					$val_transl = _x( $val, 'option value', $text_domain );
+
 					if ( $val_transl !== $val ) {
 						$opts[$locale_key] = $val_transl;
 					}

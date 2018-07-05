@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.7.0',	// Plugin version.
+					'version'     => '4.7.1-dev.1',	// Plugin version.
 					'opt_version' => '581',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -235,6 +235,44 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/update/',
+						'latest'    => '',
+					),
+				),
+				'wpssoipm' => array(			// Plugin acronym.
+					'short'       => 'WPSSO IPM',	// Short plugin name.
+					'name'        => 'WPSSO Inherit Parent Meta',
+					'desc'        => 'WPSSO Core add-on to inherit parent featured and custom images for posts, pages, custom post types, categories, tags, and custom taxonomies.',
+					'slug'        => 'wpsso-inherit-parent-meta',
+					'base'        => 'wpsso-inherit-parent-meta/wpsso-inherit-parent-meta.php',
+					'update_auth' => 'tid',
+					'img' => array(
+						'banners' => array(
+							'low'  => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-1544x500.jpg',
+						),
+						'icons' => array(
+							'low'  => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/icon-128x128.png',
+							'high' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/icon-256x256.png',
+						),
+					),
+					'url' => array(
+						// WordPress
+						'home'   => 'https://wordpress.org/plugins/wpsso-inherit-parent-meta/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-inherit-parent-meta',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-inherit-parent-meta/reviews/?rate=5#new-post',
+						// GitHub
+						'readme_txt'     => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-inherit-parent-meta/master/readme.txt',
+						'setup_html'     => '',
+						// WPSSO
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-inherit-parent-meta/changelog/',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-inherit-parent-meta/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-inherit-parent-meta/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Pro support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-inherit-parent-meta/update/',
 						'latest'    => '',
 					),
 				),
@@ -514,11 +552,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-strip-schema-microdata/assets/icon-256x256.png',
 						),
 					),

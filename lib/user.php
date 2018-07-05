@@ -269,15 +269,19 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function get_meta_cache_value( $user_id, $meta_key, $none = '' ) {
+
 			$meta_cache = wp_cache_get( $user_id, 'user_meta' );	// optimize and check wp_cache first
+
 			if ( isset( $meta_cache[$meta_key][0] ) ) {
 				$value = (string) maybe_unserialize( $meta_cache[$meta_key][0] );
 			} else {
 				$value = (string) get_user_meta( $user_id, $meta_key, true );	// $single = true
 			}
+
 			if ( $value === 'none' ) {
 				$value = $none;
 			}
+
 			return $value;
 		}
 

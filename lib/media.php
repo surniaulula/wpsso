@@ -102,7 +102,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				) );
 			}
 
-			$og_ret      = array();
+			$og_images   = array();
 			$force_regen = $this->p->util->is_force_regen( $post_id, $md_pre );	// false by default
 
 			if ( ! empty( $post_id ) ) {
@@ -111,29 +111,39 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 * get_og_images() also provides filter hooks for additional image ids and urls
 				 * unless $md_pre is 'none', get_og_images() will fallback to the 'og' custom meta.
 				 */
-				$og_ret = array_merge( $og_ret, $this->p->m['util']['post']->get_og_images( 1,
-					$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
+				$og_images = array_merge(
+					$og_images,
+					$this->p->m['util']['post']->get_og_images( 1, $size_name, $post_id, $check_dupes, $force_regen, $md_pre )
+				);
 			}
 
 			/**
 			 * Allow for empty post_id in order to execute featured / attached image filters for modules.
 			 */
-			if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
-				$num_diff = SucomUtil::count_diff( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, $this->get_featured( $num_diff,
-					$size_name, $post_id, $check_dupes, $force_regen ) );
+			if ( ! $this->p->util->is_maxed( $og_images, $num ) ) {
+
+				$num_diff = SucomUtil::count_diff( $og_images, $num );
+
+				$og_images = array_merge(
+					$og_images,
+					$this->get_featured( $num_diff, $size_name, $post_id, $check_dupes, $force_regen )
+				);
 			}
 
 			/**
 			 * 'wpsso_attached_images' filter is used by the buddypress module.
 			 */
-			if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
-				$num_diff = SucomUtil::count_diff( $og_ret, $num );
-				$og_ret = array_merge( $og_ret, $this->get_attached_images( $num_diff,
-					$size_name, $post_id, $check_dupes, $force_regen ) );
+			if ( ! $this->p->util->is_maxed( $og_images, $num ) ) {
+
+				$num_diff = SucomUtil::count_diff( $og_images, $num );
+
+				$og_images = array_merge(
+					$og_images,
+					$this->get_attached_images( $num_diff, $size_name, $post_id, $check_dupes, $force_regen )
+				);
 			}
 
-			return $og_ret;
+			return $og_images;
 		}
 
 		public function get_featured( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $force_regen = false ) {

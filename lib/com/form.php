@@ -875,13 +875,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_input( $name = '', $css_class = '', $css_id = '', $placeholder = '' ) {
+
 			$html = '';
 			$value = $this->in_options( $name ) ? $this->options[$name] : '';
 			$placeholder = $this->get_placeholder_sanitized( $name, $placeholder );
+
 			if ( ! empty( $name ) ) {
 				$html .= $this->get_hidden( $name );
 			}
+
 			$html .= $this->get_no_input_value( $value, $css_class, $css_id, $placeholder );
+
 			return $html;
 		}
 
@@ -901,26 +905,25 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( strpos( $placeholder, 'ngg-' ) === 0 ) {
-				$select_lib = 'ngg';
+				$select_lib  = 'ngg';
 				$placeholder = preg_replace( '/^ngg-/', '', $placeholder );
 			}
 
 			$input_id = $this->get_input( $opt_prefix . '_id' . $opt_suffix, 'short', '', 0, $placeholder, $disabled );
 
-			$select_lib = $this->get_select( $opt_prefix . '_id_pre' . $opt_suffix,
-				$media_libs, '', '', true, ( count( $media_libs ) <= 1 ? true : $disabled ),	// disable if only 1 media lib
-					$select_lib );
+			/**
+			 * Disable the select option if only 1 media lib.
+			 */
+			$select_lib = $this->get_select( $opt_prefix . '_id_pre' . $opt_suffix, $media_libs, '', '', true,
+				( count( $media_libs ) <= 1 ? true : $disabled ), $select_lib );
 
-			$button_ul = function_exists( 'wp_enqueue_media' ) ? 
-				$this->get_button( 'Select or Upload Image',
-					'sucom_image_upload_button button', $opt_prefix . $opt_suffix,	// css id used to set values and disable image url
-						'', false, $disabled ) : '';
+			/**
+			 * The css id used to set values and disable image url.
+			 */
+			$button_ul = function_exists( 'wp_enqueue_media' ) ? $this->get_button( 'Select or Upload Image',
+				'sucom_image_upload_button button', $opt_prefix . $opt_suffix, '', false, $disabled ) : '';
 
-			return '<div class="img_upload">' .
-				$input_id . '&nbsp;in&nbsp;' .
-				$select_lib . '&nbsp;' .
-				$button_ul .
-				'</div>';
+			return '<div class="img_upload">' . $input_id . '&nbsp;in&nbsp;' . $select_lib . '&nbsp;' . $button_ul . '</div>';
 		}
 
 		public function get_no_input_image_upload( $opt_prefix, $placeholder = '' ) {
@@ -956,21 +959,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_input_image_dimensions( $name, $use_opts = false, $narrow = false, $disabled = false ) {
 
-			$def_width = '';
-			$def_height = '';
-			$crop_area_select = '';
+			$placeholder_width  = '';
+			$placeholder_height = '';
+			$crop_area_select   = '';
 
 			/**
 			 * $use_opts is true when used for post / user meta forms (to show default values).
 			 */
 			if ( $use_opts ) {
 
-				$def_width  = empty( $this->p->options[$name . '_width'] ) ? '' : $this->p->options[$name . '_width'];
-				$def_height = empty( $this->p->options[$name . '_height'] ) ? '' : $this->p->options[$name . '_height'];
+				$placeholder_width = $this->get_placeholder_sanitized( $name . '_width', true );
+				$placeholder_height = $this->get_placeholder_sanitized( $name . '_height', true );
 
 				foreach ( array( 'crop', 'crop_x', 'crop_y' ) as $key ) {
 					if ( ! $this->in_options( $name . '_' . $key ) && $this->in_defaults( $name . '_' . $key ) ) {
-						$this->options[$name . '_' . $key] = $this->defaults[$name . '_' . $key];
+						$this->options[ $name . '_' . $key ] = $this->defaults[ $name . '_' . $key ];
 					}
 				}
 			}
@@ -994,9 +997,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$crop_area_select .= '</div>';
 			}
 
-			return $this->get_input( $name . '_width', 'short width', '', 0, $def_width, $disabled ) . 'x' .
-				$this->get_input( $name . '_height', 'short height', '', 0, $def_height, $disabled ) .
-				'px crop ' . $this->get_checkbox( $name . '_crop', '', '', $disabled ) . $crop_area_select;
+			return $this->get_input( $name . '_width', 'short width', '', 0, $placeholder_width, $disabled ) . 'x' .
+				$this->get_input( $name . '_height', 'short height', '', 0, $placeholder_height, $disabled ) .
+					'px crop ' . $this->get_checkbox( $name . '_crop', '', '', $disabled ) . $crop_area_select;
 		}
 
 		public function get_no_input_image_dimensions( $name, $use_opts = false, $narrow = false ) {
@@ -1026,16 +1029,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_input_video_dimensions( $name, $media_info = array(), $disabled = false ) {
 
-			$def_width = '';
-			$def_height = '';
+			$placeholder_width = '';
+			$placeholder_height = '';
 
 			if ( ! empty( $media_info ) && is_array( $media_info ) ) {
-				$def_width  = empty( $media_info['vid_width'] ) ? '' : $media_info['vid_width'];
-				$def_height = empty( $media_info['vid_height'] ) ? '' : $media_info['vid_height'];
+				$placeholder_width  = empty( $media_info['vid_width'] ) ? '' : $media_info['vid_width'];
+				$placeholder_height = empty( $media_info['vid_height'] ) ? '' : $media_info['vid_height'];
 			}
 
-			return $this->get_input( $name . '_width', 'short width', '', 0, $def_width, $disabled ) . 'x' .
-				$this->get_input( $name . '_height', 'short height', '', 0, $def_height, $disabled ) . 'px';
+			return $this->get_input( $name . '_width', 'short width', '', 0, $placeholder_width, $disabled ) . 'x' .
+				$this->get_input( $name . '_height', 'short height', '', 0, $placeholder_height, $disabled ) . 'px';
 		}
 
 		public function get_no_input_video_dimensions( $name, $media_info = array() ) {
@@ -1170,27 +1173,34 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_options( $idx = false, $def_val = null ) {
+
 			if ( $idx !== false ) {
+
 				if ( isset( $this->options[$idx] ) ) {
 					return $this->options[$idx];
 				} else {
 					return $def_val;
 				}
+
 			} else {
 				return $this->options;
 			}
 		}
 
 		public function in_options( $idx, $is_preg = false ) {
+
 			if ( $is_preg ) {
+
 				if ( ! is_array( $this->options ) ) {
 					return false;
 				}
+
 				$opts = SucomUtil::preg_grep_keys( $idx, $this->options );
+
 				return ( ! empty( $opts ) ) ? true : false;
-			} else {
-				return isset( $this->options[$idx] ) ? true : false;
 			}
+
+			return isset( $this->options[$idx] ) ? true : false;
 		}
 
 		public function in_defaults( $idx ) {
@@ -1211,16 +1221,20 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return $placeholder;	// Just in case.
 			}
 
-			if ( true === $placeholder ) {	// use default value
+			if ( true === $placeholder ) {	// Use default value.
 				if ( isset( $this->defaults[$name] ) ) {
 					$placeholder = $this->defaults[$name];
 				}
 			}
 
 			if ( true === $placeholder || '' === $placeholder ) {
+
 				if ( ( $pos = strpos( $name, '#' ) ) > 0 ) {
+
 					$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
+
 					if ( $name !== $key_default ) {
+
 						if ( isset( $this->options[$key_default] ) ) {
 							$placeholder = $this->options[$key_default];
 						} elseif ( true === $placeholder && isset( $this->defaults[$key_default] ) ) {

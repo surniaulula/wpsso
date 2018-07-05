@@ -20,6 +20,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p =& $plugin;
 
 			register_activation_hook( WPSSO_FILEPATH, array( $this, 'network_activate' ) );
+
 			register_deactivation_hook( WPSSO_FILEPATH, array( $this, 'network_deactivate' ) );
 
 			if ( is_multisite() ) {

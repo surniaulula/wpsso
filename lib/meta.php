@@ -839,8 +839,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/**
 			 * Merge and sanitize the new options.
 			 */
-			$md_opts = empty( $_POST[ WPSSO_META_NAME ] ) ?			// make sure we have an array
-				array() : $_POST[ WPSSO_META_NAME ];
+			$md_opts = empty( $_POST[ WPSSO_META_NAME ] ) ? array() : $_POST[ WPSSO_META_NAME ];
 			$md_opts = SucomUtil::restore_checkboxes( $md_opts );
 			$md_opts = array_merge( $md_prev, $md_opts );				// update the previous options array
 			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, false, $mod );	// $network = false
@@ -1118,92 +1117,92 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				/**
 				 * Get the image id, library prefix, and/or url values.
 				 */
-				$pid = $this->get_options( $mod['id'], $prefix.'_img_id' );
-				$pre = $this->get_options( $mod['id'], $prefix.'_img_id_pre' );
-				$url = $this->get_options( $mod['id'], $prefix.'_img_url' );
+				$pid = $this->get_options( $mod['id'], $prefix . '_img_id' );
+				$pre = $this->get_options( $mod['id'], $prefix . '_img_id_pre' );
+				$url = $this->get_options( $mod['id'], $prefix . '_img_url' );
 
 				if ( $pid > 0 ) {
 
-					$pid = $pre === 'ngg' ? 'ngg-'.$pid : $pid;
+					$pid = $pre === 'ngg' ? 'ngg-' . $pid : $pid;
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'using custom '.$prefix.' image id = "'.$pid.'"',
+						$this->p->debug->log( 'using custom ' . $prefix . ' image id = "' . $pid . '"',
 							get_class( $this ) );	// log extended class name
 					}
 
 					list( 
-						$mt_image[$mt_pre.':image'],
-						$mt_image[$mt_pre.':image:width'],
-						$mt_image[$mt_pre.':image:height'],
-						$mt_image[$mt_pre.':image:cropped'],
-						$mt_image[$mt_pre.':image:id']
+						$mt_image[$mt_pre . ':image'],
+						$mt_image[$mt_pre . ':image:width'],
+						$mt_image[$mt_pre . ':image:height'],
+						$mt_image[$mt_pre . ':image:cropped'],
+						$mt_image[$mt_pre . ':image:id']
 					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 				}
 
-				if ( empty( $mt_image[$mt_pre.':image'] ) && ! empty( $url ) ) {
+				if ( empty( $mt_image[$mt_pre . ':image'] ) && ! empty( $url ) ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'using custom '.$prefix.' image url = "'.$url.'"',
+						$this->p->debug->log( 'using custom ' . $prefix . ' image url = "' . $url . '"',
 							get_class( $this ) );	// log extended class name
 					}
-					$width = $this->get_options( $mod['id'], $prefix.'_img_url:width' );
-					$height = $this->get_options( $mod['id'], $prefix.'_img_url:height' );
+					$width = $this->get_options( $mod['id'], $prefix . '_img_url:width' );
+					$height = $this->get_options( $mod['id'], $prefix . '_img_url:height' );
 
 					$mt_image = array(
-						$mt_pre.':image' => $url,
-						$mt_pre.':image:width' => ( $width > 0 ? $width : WPSSO_UNDEF_INT ), 
-						$mt_pre.':image:height' => ( $height > 0 ? $height : WPSSO_UNDEF_INT ),
+						$mt_pre . ':image' => $url,
+						$mt_pre . ':image:width' => ( $width > 0 ? $width : WPSSO_UNDEF_INT ), 
+						$mt_pre . ':image:height' => ( $height > 0 ? $height : WPSSO_UNDEF_INT ),
 					);
 				}
 
-				if ( ! empty( $mt_image[$mt_pre.':image'] ) &&
+				if ( ! empty( $mt_image[$mt_pre . ':image'] ) &&
 					$this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
 					return $mt_ret;
 				}
 			}
 
-			foreach ( apply_filters( $this->p->lca.'_'.$mod['name'].'_image_ids', array(), $size_name, $mod['id'], $mod ) as $pid ) {
+			foreach ( apply_filters( $this->p->lca . '_' . $mod['name'] . '_image_ids', array(), $size_name, $mod['id'], $mod ) as $pid ) {
 
 				if ( $pid > 0 ) {	// Quick sanity check.
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'adding image pid: '.$pid );
+						$this->p->debug->log( 'adding image pid: ' . $pid );
 					}
 
 					$mt_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
 					list( 
-						$mt_image[$mt_pre.':image'],
-						$mt_image[$mt_pre.':image:width'],
-						$mt_image[$mt_pre.':image:height'],
-						$mt_image[$mt_pre.':image:cropped'],
-						$mt_image[$mt_pre.':image:id']
+						$mt_image[$mt_pre . ':image'],
+						$mt_image[$mt_pre . ':image:width'],
+						$mt_image[$mt_pre . ':image:height'],
+						$mt_image[$mt_pre . ':image:cropped'],
+						$mt_image[$mt_pre . ':image:id']
 					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 
-					if ( ! empty( $mt_image[$mt_pre.':image'] ) && $this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
+					if ( ! empty( $mt_image[$mt_pre . ':image'] ) && $this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
 						return $mt_ret;
 					}
 				}
 			}
 
-			foreach ( apply_filters( $this->p->lca.'_'.$mod['name'].'_image_urls', array(), $size_name, $mod['id'], $mod ) as $url ) {
+			foreach ( apply_filters( $this->p->lca . '_' . $mod['name'] . '_image_urls', array(), $size_name, $mod['id'], $mod ) as $url ) {
 
 				if ( strpos( $url, '://' ) !== false ) {	// Quick sanity check.
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'adding image url: '.$url );
+						$this->p->debug->log( 'adding image url: ' . $url );
 					}
 
 					$mt_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
-					$mt_image[$mt_pre.':image'] = $url;
+					$mt_image[$mt_pre . ':image'] = $url;
 
 					/**
 					 * Add correct image sizes for the image URL using getimagesize().
 					 */
-					$this->p->util->add_image_url_size( $mt_pre.':image', $mt_image );
+					$this->p->util->add_image_url_size( $mt_pre . ':image', $mt_image );
 
-					if ( ! empty( $mt_image[$mt_pre.':image'] ) && $this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
+					if ( ! empty( $mt_image[$mt_pre . ':image'] ) && $this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
 						return $mt_ret;
 					}
 				}
@@ -1234,15 +1233,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
 
-				$embed_html = $this->get_options( $mod_id, $prefix.'_vid_embed' );
-				$video_url  = $this->get_options( $mod_id, $prefix.'_vid_url' );
+				$embed_html = $this->get_options( $mod_id, $prefix . '_vid_embed' );
+				$video_url  = $this->get_options( $mod_id, $prefix . '_vid_url' );
 
 				/**
-				 * Retrieve one or more videos from the embed HTML code.
+				 * Retrieve one or more videos from the embed HTML code . 
 				 */
 				if ( ! empty( $embed_html ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'fetching video(s) from custom '.$prefix.' embed code',
+						$this->p->debug->log( 'fetching video(s) from custom ' . $prefix . ' embed code',
 							get_class( $this ) );	// log extended class name
 					}
 					$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num, $mod, $check_dupes, $embed_html ) );
@@ -1251,7 +1250,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				if ( ! empty( $video_url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $video_url ) ) ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'fetching video from custom '.$prefix.' url '.$video_url, get_class( $this ) );
+						$this->p->debug->log( 'fetching video from custom ' . $prefix . ' url ' . $video_url, get_class( $this ) );
 					}
 
 					$args = array(
@@ -1359,18 +1358,18 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 *		'plugin_cf_sameas_urls'         => 'schema_sameas_url',
 			 *	),
 			 */
-			$cf_md_idx = (array) apply_filters( $this->p->lca.'_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] );
+			$cf_md_idx = (array) apply_filters( $this->p->lca . '_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] );
 
 			foreach ( $cf_md_idx as $cf_idx => $md_idx ) {
 
 				if ( empty( $md_idx ) ) {	// Custom fields can be disabled by filters.
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'custom field '.$cf_idx.' index is disabled' );
+						$this->p->debug->log( 'custom field ' . $cf_idx . ' index is disabled' );
 					}
 					continue;
 				} elseif ( empty( $this->p->options[$cf_idx] ) ) {	// Check that a custom field meta key has been defined.
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'custom field '.$cf_idx.' option is empty' );
+						$this->p->debug->log( 'custom field ' . $cf_idx . ' option is empty' );
 					}
 					continue;
 				}
@@ -1378,18 +1377,18 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$meta_key = $this->p->options[$cf_idx];
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'custom field '.$cf_idx.' option has meta key '.$meta_key );
+					$this->p->debug->log( 'custom field ' . $cf_idx . ' option has meta key ' . $meta_key );
 				}
 
 				if ( ! isset( $wp_meta[$meta_key][0] ) ) {	// If the array element is not set, then skip it.
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $meta_key.' meta key element 0 not found in wp_meta' );
+						$this->p->debug->log( $meta_key . ' meta key element 0 not found in wp_meta' );
 					}
 					continue;
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $meta_key.' meta key found for '.$md_idx.' option' );
+					$this->p->debug->log( $meta_key . ' meta key found for ' . $md_idx . ' option' );
 				}
 
 				$mixed  = maybe_unserialize( $wp_meta[$meta_key][0] );	// Could be a string or an array.
@@ -1400,7 +1399,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				 */
 				if ( is_array( $mixed ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $meta_key.' is array of '.count( $mixed ).' values (decoding each value)' );
+						$this->p->debug->log( $meta_key . ' is array of ' . count( $mixed ) . ' values (decoding each value)' );
 					}
 					foreach ( $mixed as $val ) {
 						if ( is_array( $val ) ) {
@@ -1410,7 +1409,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					}
 				} else {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'decoding '.$meta_key.' as string of '.strlen( $mixed ).' chars' );
+						$this->p->debug->log( 'decoding ' . $meta_key . ' as string of ' . strlen( $mixed ) . ' chars' );
 					}
 					$values[] = trim( html_entity_decode( SucomUtil::decode_utf8( $mixed ), ENT_QUOTES, $charset ) );
 				}
@@ -1424,7 +1423,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					if ( ! is_array( $mixed ) ) {
 						$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );	// Explode first element into an array.
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'exploded '.$meta_key.' into array of '.count( $values ).' elements' );
+							$this->p->debug->log( 'exploded ' . $meta_key . ' into array of ' . count( $values ) . ' elements' );
 						}
 					}
 					$is_multi = true;	// Increment the option name.
@@ -1438,19 +1437,39 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					/**
 					 * Remove any old values from the options array.
 					 */
-					$md_opts = SucomUtil::preg_grep_keys( '/^'.$md_idx.'_[0-9]+$/', $md_opts, true );	// $invert is true.
+					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_idx . '_[0-9]+$/', $md_opts, true );	// $invert is true.
 
 					foreach ( $values as $num => $val ) {
-						$md_opts[$md_idx.'_'.$num] = $val;
-						$md_opts[$md_idx.'_'.$num.':is'] = 'disabled';
+						$md_opts[$md_idx . '_' . $num] = $val;
+						$md_opts[$md_idx . '_' . $num . ':is'] = 'disabled';
 					}
 				} else {
 					$md_opts[$md_idx] = reset( $values );	// Get first element of $values array.
-					$md_opts[$md_idx.':is'] = 'disabled';
+					$md_opts[$md_idx . ':is'] = 'disabled';
 				}
 			}
 
 			return $md_opts;
+		}
+
+		public function get_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
+			return $this->must_be_extended( __METHOD__, '' );
+		}
+
+		public function maybe_restore_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
+			return $this->must_be_extended( __METHOD__, '' );
+		}
+
+		public static function get_public_post_ids() {
+			return $this->must_be_extended( __METHOD__, array() );
+		}
+
+		public static function get_public_term_ids( $tax_name = false ) {
+			return $this->must_be_extended( __METHOD__, array() );
+		}
+
+		public static function get_public_user_ids() {
+			return $this->must_be_extended( __METHOD__, array() );
 		}
 	}
 }
