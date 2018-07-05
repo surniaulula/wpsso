@@ -10,7 +10,7 @@ Tags: facebook, pinterest, twitter, schema, meta tags, open graph, rich pins, so
 Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
-Tested Up To: 4.9.6
+Tested Up To: 4.9.7
 WC Tested Up To: 3.4.2
 Stable Tag: 4.7.0
 
@@ -327,6 +327,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.7.1-dev.1 (TBD)**
+
+* *New Features*
+	* None
+* *Improvements*
+	* Added a new WPSSO Inherit Parent Meta (aka WPSSO IPM) add-on.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 4.7.0 (2018/07/02)**
 
 * *New Features*
@@ -511,6 +522,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
 
 == Upgrade Notice ==
+
+= 4.7.1-dev.1 =
+
+(TBD) Added a new WPSSO Inherit Parent Meta (aka WPSSO IPM) add-on.
 
 = 4.7.0 =
 
