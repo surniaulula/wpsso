@@ -336,7 +336,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added the `$mod` variable as an extra argument for the following filters:
+		* 'wpsso_get_post_options' ( $options, $post_id, $mod )
+		* 'wpsso_get_term_options' ( $options, $term_id, $mod )
+		* 'wpsso_get_user_options' ( $options, $user_id, $mod )
 
 **Version 4.7.0 (2018/07/02)**
 
