@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.7.1-dev.1',	// Plugin version.
+					'version'     => '4.7.1-b.1',	// Plugin version.
 					'opt_version' => '581',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -241,7 +241,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoipm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO IPM',	// Short plugin name.
 					'name'        => 'WPSSO Inherit Parent Meta',
-					'desc'        => 'WPSSO Core add-on to inherit parent featured and custom images for posts, pages, custom post types, categories, tags, and custom taxonomies.',
+					'desc'        => 'WPSSO Core add-on to inherit the featured image and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.',
 					'slug'        => 'wpsso-inherit-parent-meta',
 					'base'        => 'wpsso-inherit-parent-meta/wpsso-inherit-parent-meta.php',
 					'update_auth' => 'tid',
@@ -1087,7 +1087,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_img_col_post'        => 1,
 					'plugin_og_img_col_term'        => 1,
 					'plugin_og_img_col_user'        => 1,
-					'plugin_og_desc_col_media'      => 0,
+					'plugin_og_desc_col_media'      => 1,
 					'plugin_og_desc_col_post'       => 0,
 					'plugin_og_desc_col_term'       => 0,
 					'plugin_og_desc_col_user'       => 1,

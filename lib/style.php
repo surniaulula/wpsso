@@ -385,6 +385,19 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			}
 
+			/**
+			 * Page Template column.
+			 */
+			$custom_style_css .= '
+				.wp-list-table th.column-template,
+				.wp-list-table td.column-template {
+				        width:9%;
+				}
+			';
+
+			/**
+			 * Yoast SEO columns.
+			 */
 			if ( ! empty( $this->p->avail['seo']['wpseo'] ) ) {
 				$custom_style_css .= '
 					.wp-list-table th.column-title,

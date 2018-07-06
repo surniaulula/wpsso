@@ -2279,7 +2279,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_site_url( array $opts, $mixed = 'current' ) {
+
 			$ret = self::get_key_value( 'site_url', $opts, $mixed );
+
 			if ( empty( $ret ) ) {
 				return get_bloginfo( 'url' );
 			} else {
@@ -2292,7 +2294,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_site_name( array $opts, $mixed = 'current' ) {
+
 			$ret = self::get_key_value( 'site_name', $opts, $mixed );
+
 			if ( empty( $ret ) ) {
 				return get_bloginfo( 'name', 'display' );
 			} else {
@@ -2309,7 +2313,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_site_description( array $opts, $mixed = 'current' ) {
+
 			$ret = self::get_key_value( 'site_desc', $opts, $mixed );
+
 			if ( empty( $ret ) ) {
 				return get_bloginfo( 'description', 'display' );
 			} else {

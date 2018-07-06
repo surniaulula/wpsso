@@ -161,7 +161,7 @@ _x( 'Wednesday', 'option value', 'wpsso' );
 _x( 'Week', 'option value', 'wpsso' );
 _x( 'Wistia Videos', 'option value', 'wpsso' );
 _x( 'WordPress Video Shortcode', 'option value', 'wpsso' );
-_x( 'WPSSO Core add-on to inherit parent featured and custom images for posts, pages, custom post types, categories, tags, and custom taxonomies.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core add-on to inherit the featured image and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to manage Organizations and additional Schema markup properties (Organizer, Performer, Publisher, etc.) for Google Rich Cards / Knowledge Graph.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide a convenient locale / language / region selector in the WordPress admin toolbar.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to provide an array of meta tags and Schema markup in the WordPress REST API post, term and user queries.', 'plugin description', 'wpsso' );
