@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.7.1-b.1 (2018/07/05)**
+**Version 4.7.1 (2018/07/06)**
 
 * *New Features*
 	* None
@@ -523,9 +523,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.7.1-b.1 =
+= 4.7.1 =
 
-(2018/07/05) Added a new WPSSO Inherit Parent Meta (aka WPSSO IPM) add-on.
+(2018/07/06) Added a new WPSSO Inherit Parent Meta (aka WPSSO IPM) add-on.
 
 = 4.7.0 =
 
