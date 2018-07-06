@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.7.1-dev.1 (TBD)**
+**Version 4.7.1-b.1 (2018/07/05)**
 
 * *New Features*
 	* None
@@ -523,15 +523,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.7.1-dev.1 =
+= 4.7.1-b.1 =
 
-(TBD) Added a new WPSSO Inherit Parent Meta (aka WPSSO IPM) add-on.
+(2018/07/05) Added a new WPSSO Inherit Parent Meta (aka WPSSO IPM) add-on.
 
 = 4.7.0 =
 
 (2018/07/02) Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options. Moved the Preview tab back to its original location in the Document SSO metabox.
-
-= 4.6.0 =
-
-(2018/06/28) Added a new WPSSO REST API Free add-on. Moved license information to a new "Licenses" settings page. Added new meta tags for simple WooCommerce products. Fix for Yoast SEO class property Yoast_Notification::$message.
 
