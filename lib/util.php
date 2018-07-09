@@ -432,8 +432,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$use_post = false;
-			$pdir = $this->p->avail['*']['p_dir'];
-			$aop  = $this->p->check->aop( $this->p->lca, true, $pdir );
+			$pdir     = $this->p->avail['*']['p_dir'];
+			$aop      = $this->p->check->aop( $this->p->lca, true, $pdir );
 
 			/**
 			 * The $mod array argument is preferred but not required.
@@ -476,7 +476,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$save_name = empty( $size_info ) ? $opt_prefix : $size_info;
 
 					$size_info = array(
-						'name' => $save_name,
+						'name'  => $save_name,
 						'label' => $save_name
 					);
 
@@ -488,20 +488,31 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
 
 					if ( isset( $size_info[$key] ) ) {					// Prefer existing info from filters.
+
 						continue;
+
 					} elseif ( isset( $md_opts[$opt_prefix . '_' . $key] ) ) {		// Use post meta if available.
+
 						$size_info[$key] = $md_opts[$opt_prefix . '_' . $key];
+
 					} elseif ( isset( $this->p->options[$opt_prefix . '_' . $key] ) ) {	// Current plugin settings.
+
 						$size_info[$key] = $this->p->options[$opt_prefix . '_' . $key];
+
 					} else {
+
 						if ( ! isset( $def_opts ) ) {					// Only read once if necessary.
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'getting default option values' );
 							}
+
 							$def_opts = $this->p->opt->get_defaults();
 						}
+
 						$size_info[$key] = $def_opts[$opt_prefix . '_' . $key];		// Fallback to default value.
 					}
+
 					if ( $key === 'crop' ) {						// Make sure crop is true or false.
 						$size_info[$key] = empty( $size_info[$key] ) ? false : true;
 					}
@@ -548,16 +559,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		/**
+		 * $mod    = true | false | post_id | $mod array 
+		 * $md_pre = 'og' | 'og_img' | etc.
+		 */
 		public function set_force_regen( $mod, $md_pre = 'og', $value = true ) {
 
 			$regen_key = $this->get_force_regen_key( $mod, $md_pre );
 
 			if ( $regen_key !== false ) {
 
-				$cache_md5_pre = $this->p->lca . '_';
+				$cache_md5_pre  = $this->p->lca . '_';
 				$cache_exp_secs = 0;	// Never expire.
-				$cache_salt = __CLASS__ . '::force_regen_transient';
-				$cache_id = $cache_md5_pre . md5( $cache_salt );
+				$cache_salt     = __CLASS__ . '::force_regen_transient';
+				$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 				if ( $this->force_regen['transient'] === null ) {
 					$this->force_regen['transient'] = get_transient( $cache_id );	// Load transient if required.
@@ -573,6 +588,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		/**
+		 * $mod    = true | false | post_id | $mod array 
+		 * $md_pre = 'og' | 'og_img' | etc.
+		 */
 		public function is_force_regen( $mod, $md_pre = 'og' ) {
 
 			$regen_key = $this->get_force_regen_key( $mod, $md_pre );
@@ -597,13 +616,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 
 				if ( isset( $this->force_regen['transient'][$regen_key] ) ) {
+
 					$this->force_regen['cache'][$regen_key] = $this->force_regen['transient'][$regen_key];	// Save value.
+
 					unset( $this->force_regen['transient'][$regen_key] );	// Unset the regen key and save transient.
+
 					if ( empty( $this->force_regen['transient'] ) ) {
 						delete_transient( $cache_id );
 					} else {
 						set_transient( $cache_id, $this->force_regen['transient'], $cache_exp_secs );
 					}
+
 					return $this->force_regen['cache'][$regen_key];	// Return the cached value.
 				}
 
@@ -615,9 +638,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		/**
 		 * Get the force regen transient id for set and get methods.
-		 * $mod = true | false | post_id | $mod array 
+		 *
+		 * $mod    = true | false | post_id | $mod array 
+		 * $md_pre = 'og' | 'og_img' | etc.
 		 */
 		public function get_force_regen_key( $mod, $md_pre ) {
+
+			$md_pre = preg_replace( '/_img$/', '', $md_pre );	// Just in case.
 
 			if ( is_numeric( $mod ) && $mod > 0 ) {	// Optimize by skipping get_page_mod().
 				return 'post_' . $mod . '_regen_' . $md_pre;
@@ -628,9 +655,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
+
 				$mod = $this->get_page_mod( $mod );
 			}
 

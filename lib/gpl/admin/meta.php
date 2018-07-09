@@ -162,7 +162,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			);
 
 			$form_rows['subsection_priority_image'] = array(
-				'header' => 'h5',
+				'td_class' => 'subsection top', 'header' => 'h5',
 				'label' => _x( 'Priority Image Information', 'metabox title', 'wpsso' )
 			);
 
@@ -250,13 +250,50 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'content' => $form->get_no_textarea_value( '' ),	// Free version does not include video modules.
 			);
 
-			$media_info = $this->p->og->get_media_info( $this->p->lca . '-schema', 
+			/**
+			 * Twitter Card
+			 */
+			list( $card_type, $size_name, $md_pre ) = $this->p->tc->get_card_type_size( $mod );
+
+			$media_info = $this->p->og->get_media_info( $size_name,
 				array( 'pid', 'img_url' ), $mod, 'og', 'og' );
 	
+			$tc_tr_class = $form->in_options( '/^' . $md_pre . '_img_/', true ) ? '' : 'hide_in_basic';	// Hide unless a custom twitter card image exists.
+
+			$form_rows[ 'subsection_tc' ] = array(
+				'tr_class' => $tc_tr_class,
+				'td_class' => 'subsection', 'header' => 'h4',
+				'label' => _x( 'Twitter Card', 'metabox title', 'wpsso' )
+			);
+
+			$form_rows[ $md_pre . '_img_dimensions' ] = array(
+				'tr_class' => $form->get_css_class_hide_img_dim( 'basic', $md_pre . '_img' ),
+				'label' => _x( 'Image Dimensions', 'option label', 'wpsso' ),
+				'th_class' => 'medium', 'tooltip' => $md_pre . '_img_dimensions', 'td_class' => 'blank',
+				'content' => $form->get_no_input_image_dimensions( $md_pre . '_img', true ),	// $use_opts is true.
+			);
+
+			$form_rows[ $md_pre . '_img_id' ] = array(
+				'tr_class' => $tc_tr_class,
+				'label' => _x( 'Image ID', 'option label', 'wpsso' ),
+				'th_class' => 'medium', 'tooltip' => 'meta-' . $md_pre . '_img_id', 'td_class' => 'blank',
+				'content' => $form->get_no_input_image_upload( $md_pre . '_img', $media_info['pid'], true ),
+			);
+
+			$form_rows[ $md_pre . '_img_url' ] = array(
+				'tr_class' => $tc_tr_class,
+				'label' => _x( 'or an Image URL', 'option label', 'wpsso' ),
+				'th_class' => 'medium', 'tooltip' => 'meta-' . $md_pre . '_img_url', 'td_class' => 'blank',
+				'content' => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
+			);
+
 			/**
-			 * Hide by default unless a schema image has been defined.
+			 * Structured Data / Schema Markup / Pinterest
 			 */
-			$schema_tr_class = $form->in_options( '/^schema_img_/', true ) ? '' : 'hide_in_basic';
+			$media_info = $this->p->og->get_media_info( $this->p->lca . '-schema',
+				array( 'pid', 'img_url' ), $mod, 'og', 'og' );
+	
+			$schema_tr_class = $form->in_options( '/^schema_img_/', true ) ? '' : 'hide_in_basic';	// Hide unless a custom schema image exists.
 
 			$form_rows['subsection_schema'] = array(
 				'tr_class' => $schema_tr_class,

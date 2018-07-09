@@ -81,14 +81,14 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'th_class' => 'medium', 'tooltip' => 'post-og_type', 'td_class' => 'blank',
 					'content' => $form->get_select( 'og_type', $og_types,
 						'og_type', '', true, false, true, 'unhide_rows' ) .
-							$this->p->msgs->get( 'pro-option-msg' ),
+							$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_art_section' => array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
 					'label' => _x( 'Article Topic', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'post-og_art_section', 'td_class' => 'blank',
 					'content' => $form->get_select( 'og_art_section', $this->p->util->get_article_topics() ) .
-						$this->p->msgs->get( 'pro-option-msg' ),
+						$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_title' => array(
 					'no_auto_draft' => true,

@@ -92,14 +92,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$sizes['schema_img'] = array(		// options prefix
 				'name' => 'schema',		// wpsso-schema
-				'label' => _x( 'Google / Schema Image',
-					'image size label', 'wpsso' ),
+				'label' => _x( 'Google / Schema Image', 'image size label', 'wpsso' ),
 			);
 
 			$sizes['schema_article_img'] = array(		// options prefix
 				'name' => 'schema-article',		// wpsso-schema-article
-				'label' => _x( 'Google / Schema Image',
-					'image size label', 'wpsso' ),
+				'label' => _x( 'Google / Schema Image', 'image size label', 'wpsso' ),
 				'prefix' => 'schema_img',
 			);
 
