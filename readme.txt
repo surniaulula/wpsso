@@ -327,6 +327,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.8.0-dev.1 (TBD)**
+
+* *New Features*
+	* Added "Twitter Card" options under the Priority Media tab in the Document SSO metabox:
+		* Image Dimensions
+		* Image ID
+		* or an Image URL
+* *Improvements*
+	* Added a pre-selected image ID when using the "Select or Upload Image" button.
+* *Bugfixes*
+	* None
+* *Developer Notes*
+	* None
+
 **Version 4.7.1 (2018/07/06)**
 
 * *New Features*
@@ -526,11 +540,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
+= 4.8.0-dev.1 =
+
+(TBD) Added "Twitter Card" options under the Priority Media tab in the Document SSO metabox. Added a pre-selected image ID when using the "Select or Upload Image" button.
+
 = 4.7.1 =
 
 (2018/07/06) Added a new WPSSO Inherit Parent Meta (aka WPSSO IPM) add-on.
-
-= 4.7.0 =
-
-(2018/07/02) Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options. Moved the Preview tab back to its original location in the Document SSO metabox.
 
