@@ -1135,7 +1135,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $media_html;
 		}
 
-		public function get_pid_thumb_html( $pid, $mod, $md_pre = 'og' ) {
+		public function get_pid_thumb_img_html( $pid, $mod, $md_pre = 'og' ) {
 
 			if ( empty( $pid ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -1145,7 +1145,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			$media_html  = false;
-			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// false by default
+			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// False by default.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'getting thumbnail for image id ' . $pid );
@@ -1166,7 +1166,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			if ( ! empty( $media_url ) ) {
-				$media_html = '<img class="thumb_preview" src="' . $media_url . '">';
+				$media_html = '<img src="' . $media_url . '">';
 			}
 
 			return $media_html;

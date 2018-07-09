@@ -949,30 +949,30 @@ msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3368
+#: lib/admin.php:3385
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:3398
+#: lib/admin.php:3415
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name
-#: lib/admin.php:3420
+#: lib/admin.php:3437
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL
-#: lib/admin.php:3427
+#: lib/admin.php:3444
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3497
+#: lib/admin.php:3514
 msgctxt "option comment"
 msgid "%s add-on required"
 msgstr ""

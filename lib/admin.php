@@ -2972,8 +2972,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function modify_tmpl_head_attributes() {
 
-			$have_changes = false;
-			$header_files = SucomUtil::get_header_files();
+			$have_changes    = false;
+			$header_files    = SucomUtil::get_header_files();
 			$head_action_php = '<head <?php do_action( \'add_head_attributes\' ); ?' . '>>';	// breakup closing php for vim
 
 			if ( empty( $header_files ) ) {
@@ -3253,46 +3253,63 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$cache_salt = __METHOD__ . '(ext:' . $ext . ')';
-			$cache_id = $cache_md5_pre . md5( $cache_salt );
+			$cache_id   = $cache_md5_pre . md5( $cache_salt );
 
-			$readme_info = false;
-			$readme_content = false;
+			$readme_info     = false;
+			$readme_content  = false;
 			$readme_from_url = false;
 
 			if ( $cache_exp_secs > 0 ) {
+
 				if ( $read_cache ) {
+
 					$readme_info = get_transient( $cache_id );
+
 					if ( is_array( $readme_info ) ) {
-						return $readme_info;	// stop here
+						return $readme_info;	// Stop here.
 					}
 				}
+
 				if ( $file_remote && strpos( $file_remote, '://' ) ) {
-					// clear the cache first if reading the cache is disabled
+
+					/**
+					 * Clear the cache first if reading the cache is disabled.
+					 */
 					if ( ! $read_cache ) {
 						$this->p->cache->clear( $file_remote );
 					}
+
 					$readme_from_url = true;
-					$readme_content = $this->p->cache->get( $file_remote, 'raw', 'file', $cache_exp_secs );
+					$readme_content  = $this->p->cache->get( $file_remote, 'raw', 'file', $cache_exp_secs );
 				}
 			} else {
 				delete_transient( $cache_id );	// Just in case.
 			}
 
 			if ( empty( $readme_content ) ) {
+
 				if ( $file_local && file_exists( $file_local ) && $fh = @fopen( $file_local, 'rb' ) ) {
+
 					$readme_from_url = false;
-					$readme_content = fread( $fh, filesize( $file_local ) );
+					$readme_content  = fread( $fh, filesize( $file_local ) );
+
 					fclose( $fh );
 				}
 			}
 
 			if ( empty( $readme_content ) ) {
+
 				$readme_info = array();	// save an empty array
+
 			} else {
+
 				$parser = new SuextParseReadme( $this->p->debug );
+
 				$readme_info = $parser->parse_readme_contents( $readme_content );
 	
-				// Remove possibly inaccurate information from the local readme file.
+				/**
+				 * Remove possibly inaccurate information from the local readme file.
+				 */
 				if ( ! $readme_from_url && is_array( $readme_info ) ) {
 					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key ) {
 						unset ( $readme_info[$key] );

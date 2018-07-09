@@ -2869,33 +2869,41 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				'<!--\/'.$this->p->lca.'-ignore-->/Ui', ' ', $text );			// Remove text between comment strings.
 
 			if ( $strip_tags ) {
+
 				$text = preg_replace( '/<\/p>/i', ' ', $text);				// Replace end of paragraph with a space.
 				$text_stripped = trim( strip_tags( $text ) );				// Remove remaining html tags.
 
 				if ( $text_stripped === '' && $use_img_alt ) {				// Possibly use img alt strings if no text.
+
 					if ( strpos( $text, '<img ' ) !== false &&
 						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/Ui',
 							$text, $all_matches, PREG_PATTERN_ORDER ) ) {
 
 						foreach ( $all_matches[1] as $alt ) {
+
 							$alt = trim( $alt );
+
 							if ( ! empty( $alt ) ) {
-								$alt = empty( $alt_prefix ) ?
-									$alt : $alt_prefix.' '.$alt;
+							
+								$alt = empty( $alt_prefix ) ? $alt : $alt_prefix.' '.$alt;
 
 								/**
 								 * Add a period after the image alt text if missing.
 								 */
-								$alt_text .= ( strpos( $alt, '.' ) + 1 ) === strlen( $alt ) ?
-									$alt.' ' : $alt.'. ';
+								$alt_text .= ( strpos( $alt, '.' ) + 1 ) === strlen( $alt ) ? $alt.' ' : $alt.'. ';
 							}
 						}
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'img alt text: '.$alt_text );
 						}
 					}
+
 					$text = $alt_text;
-				} else $text = $text_stripped;
+
+				} else {
+					$text = $text_stripped;
+				}
 			}
 
 			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );	// replace 1+ spaces to a single space

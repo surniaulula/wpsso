@@ -444,7 +444,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 *	array(
 			 *		'summary_large_image',	// twitter:card value.
 			 *		'wpsso-tc-lrgimg',
-			 *		'tc_lrg_img',
+			 *		'tc_lrg',
 			 *	)
 			 */
 			return array( $card_type, $size_name, $md_pre );
