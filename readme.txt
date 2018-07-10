@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.8.0-dev.1 (TBD)**
+**Version 4.8.0-dev.1 (2018/07/10)**
 
 * *New Features*
 	* Added "Twitter Card" options under the Priority Media tab in the Document SSO metabox:
@@ -339,7 +339,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None
 * *Developer Notes*
-	* None
+	* Added an optional `$get_posts_args` argument for the following methods:
+		* WpssoMeta::get_posts_mods()
+		* WpssoMeta::get_posts()
+		* WpssoPost::get_posts()
+		* WpssoTerm::get_posts()
+		* WpssoUser::get_posts()
 
 **Version 4.7.1 (2018/07/06)**
 
@@ -542,7 +547,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.8.0-dev.1 =
 
-(TBD) Added "Twitter Card" options under the Priority Media tab in the Document SSO metabox. Added a pre-selected image ID when using the "Select or Upload Image" button.
+(2018/07/10) Added "Twitter Card" options under the Priority Media tab in the Document SSO metabox. Added a pre-selected image ID when using the "Select or Upload Image" button.
 
 = 4.7.1 =
 
