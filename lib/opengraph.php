@@ -442,11 +442,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 
 						if ( $prev_count > 0 ) {
+
 							$max_nums['og_img_max'] -= $prev_count;
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( $prev_count . ' video preview images found ' . 
 									'(og_img_max adjusted to ' . $max_nums['og_img_max'] . ')' );
 							}
+
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'no video preview images found' );
 						}
@@ -706,7 +709,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 * Note that get_options() returns null if an index key is not found.
 				 */
 				if ( ( $mod_prev = $mod['obj']->get_options( $mod['id'], 'og_vid_prev_img' ) ) !== null ) {
+
 					$use_prev = $mod_prev;	// use true/false/1/0 value from the custom option
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting use_prev to '.( empty( $use_prev ) ? 'false' : 'true' ).' from meta data' );
 					}

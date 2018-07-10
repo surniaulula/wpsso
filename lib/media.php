@@ -111,10 +111,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 * get_og_images() also provides filter hooks for additional image ids and urls
 				 * unless $md_pre is 'none', get_og_images() will fallback to the 'og' custom meta.
 				 */
-				$og_images = array_merge(
-					$og_images,
-					$this->p->m['util']['post']->get_og_images( 1, $size_name, $post_id, $check_dupes, $force_regen, $md_pre )
-				);
+				$og_images = array_merge( $og_images, $this->p->m['util']['post']->get_og_images( 1,
+					$size_name, $post_id, $check_dupes, $force_regen, $md_pre ) );
 			}
 
 			/**
@@ -124,10 +122,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$num_diff = SucomUtil::count_diff( $og_images, $num );
 
-				$og_images = array_merge(
-					$og_images,
-					$this->get_featured( $num_diff, $size_name, $post_id, $check_dupes, $force_regen )
-				);
+				$og_images = array_merge( $og_images, $this->get_featured( $num_diff,
+					$size_name, $post_id, $check_dupes, $force_regen ) );
 			}
 
 			/**
@@ -137,10 +133,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$num_diff = SucomUtil::count_diff( $og_images, $num );
 
-				$og_images = array_merge(
-					$og_images,
-					$this->get_attached_images( $num_diff, $size_name, $post_id, $check_dupes, $force_regen )
-				);
+				$og_images = array_merge( $og_images, $this->get_attached_images( $num_diff,
+					$size_name, $post_id, $check_dupes, $force_regen ) );
 			}
 
 			return $og_images;
@@ -484,11 +478,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( true === $use_full ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'requesting full size instead - image dimensions same as '.
-						$size_name.' ('.$size_info['width'].'x'.$size_info['height'].')' );
+					$this->p->debug->log( 'requesting full size instead - image dimensions same as ' . 
+						$size_name . ' (' . $size_info['width'] . 'x' . $size_info['height'] . ')' );
 				}
 
-			} elseif ( strpos( $size_name, $this->p->lca.'-' ) === 0 ) { // Only resize our own custom image sizes.
+			} elseif ( strpos( $size_name, $this->p->lca . '-' ) === 0 ) { // Only resize our own custom image sizes.
 
 				if ( $force_regen || ! empty( $this->p->options['plugin_create_wp_sizes'] ) ) {
 

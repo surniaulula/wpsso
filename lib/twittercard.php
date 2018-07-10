@@ -62,8 +62,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$max_nums = $this->p->util->get_max_nums( $mod );
-			$post_id  = $mod['is_post'] ? $mod['id'] : false;
+			$post_id     = $mod['is_post'] ? $mod['id'] : false;
+			$check_dupes = false;
 
 			/**
 			 * Read and unset pre-defined twitter card values in the open graph meta tag array.
@@ -264,7 +264,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			/**
 			 * All image cards.
 			 */
-			if ( ! isset( $mt_tc['twitter:card'] ) && ! empty( $max_nums['og_img_max'] ) ) {
+			if ( ! isset( $mt_tc['twitter:card'] ) ) {
 
 				/**
 				 * Default image for archive.
@@ -283,12 +283,13 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							$this->p->debug->log( $card_type . ' card: getting default image' );
 						}
 
-						$og_images = $this->p->media->get_default_images( 1, $size_name );
+						$og_images = $this->p->media->get_default_images( 1, $size_name, $check_dupes );
 
 						if ( count( $og_images ) > 0 ) {
 
 							$og_single_image = reset( $og_images );
-							$mt_tc['twitter:card'] = $card_type;
+
+							$mt_tc['twitter:card']  = $card_type;
 							$mt_tc['twitter:image'] = $og_single_image['og:image'];
 
 						} elseif ( $this->p->debug->enabled ) {
@@ -305,7 +306,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				if ( ! empty( $post_id ) ) {
 
 					list( $card_type, $size_name, $md_pre ) = $this->get_card_type_size( 'post' );
-
+					
 					/**
 					 * Post meta image.
 					 */
@@ -315,12 +316,13 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							$this->p->debug->log( $card_type . ' card: getting post image (meta, featured, attached)' );
 						}
 
-						$og_images = $this->p->media->get_post_images( 1, $size_name, $post_id, false );
+						$og_images = $this->p->media->get_post_images( 1, $size_name, $post_id, $check_dupes, $md_pre );
 
 						if ( count( $og_images ) > 0 ) {
 
 							$og_single_image = reset( $og_images );
-							$mt_tc['twitter:card'] = $card_type;
+
+							$mt_tc['twitter:card']  = $card_type;
 							$mt_tc['twitter:image'] = $og_single_image['og:image'];
 
 						} elseif ( $this->p->debug->enabled ) {
@@ -341,10 +343,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 									$this->p->debug->log( $card_type . ' card: checking for singlepic image' );
 								}
 	
-								$num_diff = 1;
 								$ngg_obj =& $this->p->m['media']['ngg'];
 
-								$og_images = $ngg_obj->get_singlepic_og_images( $num_diff, $size_name, $post_id, false );
+								$og_images = $ngg_obj->get_singlepic_og_images( 1, $size_name, $post_id, $check_dupes );
 	
 								if ( ! empty( $og_images ) ) {
 
@@ -382,20 +383,20 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				$mt_tc['twitter:card'] = $card_type;
 
-				if ( ! empty( $max_nums['og_img_max'] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $card_type . ' card: checking for content image' );
+				}
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $card_type . ' card: checking for content image' );
-					}
+				$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false );
 
-					$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false );
+				if ( count( $og_images ) > 0 ) {
 
-					if ( count( $og_images ) > 0 ) {
-						$og_single_image = reset( $og_images );
-						$mt_tc['twitter:image'] = $og_single_image['og:image'];
-					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'no content image returned' );
-					}
+					$og_single_image = reset( $og_images );
+
+					$mt_tc['twitter:image'] = $og_single_image['og:image'];
+
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'no content image returned' );
 				}
 			}
 
