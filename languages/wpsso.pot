@@ -112,7 +112,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:879 lib/post.php:739 lib/term.php:424 lib/user.php:426
+#: lib/admin.php:879 lib/post.php:733 lib/term.php:418 lib/user.php:420
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2517,14 +2517,14 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:110 lib/gpl/admin/post.php:123 lib/meta.php:249
-#: lib/meta.php:274 lib/pro/admin/meta.php:122 lib/pro/admin/post.php:133
+#: lib/gpl/admin/meta.php:110 lib/gpl/admin/post.php:123 lib/meta.php:254
+#: lib/meta.php:279 lib/pro/admin/meta.php:122 lib/pro/admin/post.php:133
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:116 lib/gpl/admin/post.php:130 lib/meta.php:253
-#: lib/meta.php:278 lib/pro/admin/meta.php:128 lib/pro/admin/post.php:140
+#: lib/gpl/admin/meta.php:116 lib/gpl/admin/post.php:130 lib/meta.php:258
+#: lib/meta.php:283 lib/pro/admin/meta.php:128 lib/pro/admin/post.php:140
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -2542,7 +2542,7 @@ msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:146 lib/post.php:1099 lib/pro/admin/meta.php:164
+#: lib/gpl/admin/meta.php:146 lib/post.php:1093 lib/pro/admin/meta.php:164
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
@@ -2684,7 +2684,7 @@ msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gpl/admin/post.php:199 lib/meta.php:245 lib/pro/admin/post.php:210
+#: lib/gpl/admin/post.php:199 lib/meta.php:250 lib/pro/admin/post.php:210
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -2733,8 +2733,8 @@ msgid "Library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: lib/loader.php:163 lib/loader.php:189 lib/post.php:265 lib/register.php:238
-#: lib/term.php:240 lib/user.php:207 lib/util.php:357 lib/util.php:2480
+#: lib/loader.php:163 lib/loader.php:189 lib/post.php:259 lib/register.php:238
+#: lib/term.php:234 lib/user.php:201 lib/util.php:357 lib/util.php:2480
 msgid "%s warning:"
 msgstr ""
 
@@ -3730,7 +3730,7 @@ msgstr ""
 msgid "Automatically add the '%s' role when new users are created."
 msgstr ""
 
-#: lib/messages.php:1031 lib/user.php:30 lib/user.php:230
+#: lib/messages.php:1031 lib/user.php:30 lib/user.php:224
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -4564,7 +4564,7 @@ msgid ""
 "by the %s plugin."
 msgstr ""
 
-#: lib/messages.php:2068 lib/meta.php:158
+#: lib/messages.php:2068 lib/meta.php:163
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
@@ -4832,132 +4832,132 @@ msgid ""
 "locale</a> to define alternate values for different languages."
 msgstr ""
 
-#: lib/meta.php:157
+#: lib/meta.php:162
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/meta.php:159
+#: lib/meta.php:164
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/meta.php:160
+#: lib/meta.php:165
 msgctxt "metabox tab"
 msgid "Head Tags"
 msgstr ""
 
-#: lib/meta.php:161
+#: lib/meta.php:166
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/meta.php:230
+#: lib/meta.php:235
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:235
+#: lib/meta.php:240
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:240
+#: lib/meta.php:245
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:257 lib/meta.php:284
+#: lib/meta.php:262 lib/meta.php:289
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/meta.php:289
+#: lib/meta.php:294
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:407
+#: lib/meta.php:412
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:409
+#: lib/meta.php:414
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:413
+#: lib/meta.php:418
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:415
+#: lib/meta.php:420
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:419
+#: lib/meta.php:424
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:421
+#: lib/meta.php:426
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:425
+#: lib/meta.php:430
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:427
+#: lib/meta.php:432
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:431
+#: lib/meta.php:436
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:433
+#: lib/meta.php:438
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:438
+#: lib/meta.php:443
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:440
+#: lib/meta.php:445
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:758
+#: lib/meta.php:763
 msgid "%s key(s) cleared from the cache."
 msgstr ""
 
-#: lib/meta.php:766
+#: lib/meta.php:771
 msgid ""
 "WP_DEBUG constant is enabled &ndash; the list of possible cache object names "
 "is included:"
 msgstr ""
 
-#: lib/meta.php:773
+#: lib/meta.php:778
 msgctxt "clear cache status"
 msgid "cleared"
 msgstr ""
 
-#: lib/meta.php:777
+#: lib/meta.php:782
 msgctxt "clear cache status"
 msgid "not cached"
 msgstr ""
 
-#: lib/meta.php:826
+#: lib/meta.php:831
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -5119,149 +5119,149 @@ msgid "No Description"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
-#: lib/post.php:251 lib/term.php:226 lib/user.php:193 lib/util.php:343
+#: lib/post.php:245 lib/term.php:220 lib/user.php:187 lib/util.php:343
 #: lib/util.php:2457
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-#: lib/post.php:254
+#: lib/post.php:248
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:858
+#: lib/post.php:852
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:861
+#: lib/post.php:855
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:889
+#: lib/post.php:883
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:891
+#: lib/post.php:885
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:893
+#: lib/post.php:887
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:894
+#: lib/post.php:888
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:904 lib/util.php:1287
+#: lib/post.php:898 lib/util.php:1287
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:913
+#: lib/post.php:907
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:922
+#: lib/post.php:916
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:931
+#: lib/post.php:925
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:947
+#: lib/post.php:941
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:957
+#: lib/post.php:951
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:969
+#: lib/post.php:963
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:969
+#: lib/post.php:963
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:969
+#: lib/post.php:963
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:995
+#: lib/post.php:989
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:996
+#: lib/post.php:990
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1002
+#: lib/post.php:996
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1005
+#: lib/post.php:999
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1007
+#: lib/post.php:1001
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1238 lib/script.php:219
+#: lib/post.php:1232 lib/script.php:219
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1247
+#: lib/post.php:1241
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1248
+#: lib/post.php:1242
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1259
+#: lib/post.php:1253
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1260
+#: lib/post.php:1254
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1261
+#: lib/post.php:1255
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1262
+#: lib/post.php:1256
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1336
+#: lib/post.php:1330
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -5485,27 +5485,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2074
+#: lib/schema.php:2164
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2611
+#: lib/schema.php:2701
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2644
+#: lib/schema.php:2736
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2646
+#: lib/schema.php:2738
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2882
+#: lib/schema.php:2979
 msgid "adding schema for place"
 msgstr ""
 
@@ -5935,13 +5935,13 @@ msgid "Setup Guide and Other Notes"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$s is a recommended max
-#: lib/term.php:229
+#: lib/term.php:223
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:553
+#: lib/term.php:547
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -5956,29 +5956,29 @@ msgid "Twitter Large Image Card"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-#: lib/user.php:196
+#: lib/user.php:190
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:622
+#: lib/user.php:616
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:698
+#: lib/user.php:692
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:699
+#: lib/user.php:693
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:700
+#: lib/user.php:694
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1118
+#: lib/user.php:1112
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 

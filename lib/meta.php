@@ -97,23 +97,28 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, self::$mod_defaults );
 		}
 
-		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
+		public function get_posts( array $mod, $posts_per_page = false, $paged = false, array $get_posts_args = array() ) {
 			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
 		}
 
-		public function get_posts_mods( array $mod, $posts_per_page = false, $paged = false ) {
+		public function get_posts_mods( array $mod, $posts_per_page = false, $paged = false, array $get_posts_args = array() ) {
 
 			$posts_mods = array();
 
-			foreach ( $this->get_posts( $mod, $posts_per_page, $paged ) as $post_obj ) {
+			foreach ( $this->get_posts( $mod, $posts_per_page, $paged, $get_posts_args ) as $post_obj ) {
+
 				if ( empty( $post_obj->ID ) ) {	// Just in case.
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'post object ID is empty' );
 					}
+
 				} else {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'getting mod for post object ID ' . $post_obj->ID );
 					}
+
 					$posts_mods[] = $this->p->m['util']['post']->get_mod( $post_obj->ID );
 				}
 			}

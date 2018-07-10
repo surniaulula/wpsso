@@ -135,7 +135,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $user_ids;
 		}
 
-		public function get_posts( array $mod, $posts_per_page = false, $paged = false ) {
+		public function get_posts( array $mod, $posts_per_page = false, $paged = false, array $get_posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -158,22 +158,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$mod['name'].' id '.$mod['id'].' (posts_per_page is '.$posts_per_page.')' );
 			}
 
-			$get_posts_args = apply_filters( $this->p->lca . '_get_posts_args', array(
-				/**
-				 * Common arguments.
-				 */
-				'has_password'   => false,		// Since wp 3.9.
-				'orderby'        => 'date',		// Order posts by date (newest first).
+			$get_posts_args = array_merge( array(
+				'has_password'   => false,
+				'orderby'        => 'date',
 				'order'          => 'DESC',
 				'paged'          => $paged,
 				'post_status'    => 'publish',
-				'post_type'      => 'any',
+				'post_type'      => 'any',		// Post, page, or custom post type.
 				'posts_per_page' => $posts_per_page,
-				/**
-				 * Arguments for users.
-				 */
 				'author'         => $mod['id'],
-			), $mod );
+			), $get_posts_args );
 
 			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
 			$start_time = microtime( true );
