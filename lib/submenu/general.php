@@ -197,18 +197,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_input_image_url( 'og_def_img' ).'</td>';
 
 					$table_rows['og_def_img_on_index'] = $this->form->get_tr_hide( 'basic', 'og_def_img_on_index' ).
-					$this->form->get_th_html( _x( 'Use Default Image on Archive', 'option label', 'wpsso' ), '', 'og_def_img_on_index' ).
+					$this->form->get_th_html( _x( 'Use Default Image on Archive Pages', 'option label', 'wpsso' ), '', 'og_def_img_on_index' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_index' ).'</td>';
 
 					$table_rows['og_def_img_on_search'] = $this->form->get_tr_hide( 'basic', 'og_def_img_on_search' ).
 					$this->form->get_th_html( _x( 'Use Default Image on Search Results', 'option label', 'wpsso' ), '', 'og_def_img_on_search' ).
 					'<td>'.$this->form->get_checkbox( 'og_def_img_on_search' ).'</td>';
-
-					if ( true === $this->p->avail['media']['ngg'] ) {
-						$table_rows['og_ngg_tags'] = $this->form->get_tr_hide( 'basic', 'og_ngg_tags' ).
-						$this->form->get_th_html( _x( 'Add Tags from NGG Featured Image', 'option label', 'wpsso' ), '', 'og_ngg_tags' ).
-						'<td>'.$this->form->get_checkbox( 'og_ngg_tags' ).'</td>';
-					}
 
 					break;
 

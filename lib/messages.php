@@ -440,19 +440,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_def_img_on_index':
 
-							$text = 'Check this option to force the default image on index webpages (blog front page, archives, categories). If this option is <em>checked</em>, but a Default Image ID or URL has not been defined, then <strong>no image will be included in the meta tags</strong>. If the option is <em>unchecked</em>, then '.$info['short'].' will use image(s) from the first entry on the webpage (default is checked).';
+							$text = __( 'Check this option to force the default image on index / archive webpages (blog front page, archives, categories).', 'wpsso' );
 
 							break;
 
 						case 'tooltip-og_def_img_on_search':
 
-							$text = 'Check this option to force the default image on search results. If this option is <em>checked</em>, but a Default Image ID or URL has not been defined, then <strong>no image will be included in the meta tags</strong>. If the option is <em>unchecked</em>, then '.$info['short'].' will use image(s) returned in the search results (default is unchecked).';
-
-							break;
-
-						case 'tooltip-og_ngg_tags':
-
-							$text = 'If the <em>featured</em> image in a Post or Page is from a NextGEN Gallery, then add that image\'s tags to the Facebook / Open Graph and Pinterest Rich Pin tag list (default is unchecked).';
+							$text = __( 'Check this option to force the default image on search result webpages.', 'wpsso' );
 
 							break;
 
@@ -572,7 +566,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_author_gravatar':	// aka plugin_gravatar_api
+						case 'tooltip-og_author_gravatar':	// Aka plugin_gravatar_api.
 
 							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages (default is checked).';
 
@@ -667,9 +661,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_p_strip':
 
-							$text = sprintf( __( 'If a post / page does not have an excerpt, and this option is checked, %s will ignore all text before the first paragraph tag in the content.', 'wpsso' ), $info['short'] ).' ';
+							$text = sprintf( __( 'If a post, page, or custom post type does not have an excerpt, %s will use the content text to create a description value.', 'wpsso' ), $info['short'] ) . ' ';
 							
-							$text .= __( 'If an excerpt is available, then this option is ignored and the complete text of the excerpt is used (excerpts have priority over the content text).', 'wpsso' );
+							$text .= __( 'When this option is enabled, all text before the first paragraph tag in the content will be ignored.', 'wpsso' ) . ' ';
+							
+							$text .= __( 'The option is enabled by default since WordPress should provide correct paragraph tags in the content.', 'wpsso' );
 
 							break;
 

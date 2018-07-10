@@ -97,10 +97,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
-			$table_rows['plugin_honor_force_ssl'] = $form->get_tr_hide( 'basic', 'plugin_honor_force_ssl' ).
-			$form->get_th_html( _x( 'Honor the FORCE_SSL Constant', 'option label', 'wpsso' ), '', 'plugin_honor_force_ssl' ).
-			$form->get_nocb_td( 'plugin_honor_force_ssl' );
-
 			$table_rows['plugin_html_attr_filter'] = $form->get_tr_hide( 'basic', 
 				array( 'plugin_html_attr_filter_name', 'plugin_html_attr_filter_prio' ) ).
 			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook', 'option label', 'wpsso' ), '', 'plugin_html_attr_filter' ).
@@ -113,13 +109,29 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td class="blank">Name: '.$this->p->options['plugin_head_attr_filter_name'].', '.
 			'Priority: '.$this->p->options['plugin_head_attr_filter_prio'].'</td>';
 
-			$table_rows['plugin_check_head'] = ''.
-			$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ), '', 'plugin_check_head' ).
-			$form->get_nocb_td( 'plugin_check_head' );
+			$table_rows['plugin_honor_force_ssl'] = $form->get_tr_hide( 'basic', 'plugin_honor_force_ssl' ).
+			$form->get_th_html( _x( 'Honor the FORCE_SSL Constant', 'option label', 'wpsso' ), '', 'plugin_honor_force_ssl' ).
+			$form->get_nocb_td( 'plugin_honor_force_ssl' );
+
+			$table_rows['plugin_add_person_role'] = ''.
+			$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ), '', 'plugin_add_person_role' ).
+			$form->get_nocb_td( 'plugin_add_person_role' );
 
 			$table_rows['plugin_filter_lang'] = $form->get_tr_hide( 'basic', 'plugin_filter_lang' ).
 			$form->get_th_html( _x( 'Use WP Locale for Language', 'option label', 'wpsso' ), '', 'plugin_filter_lang' ).
 			$form->get_nocb_td( 'plugin_filter_lang' );
+
+			$table_rows['plugin_page_excerpt'] = ''.
+			$form->get_th_html( _x( 'Enable WP Excerpt for Pages', 'option label', 'wpsso' ), '', 'plugin_page_excerpt' ).
+			$form->get_nocb_td( 'plugin_page_excerpt' );
+
+			$table_rows['plugin_page_tags'] = ''.
+			$form->get_th_html( _x( 'Enable WP Tags for Pages', 'option label', 'wpsso' ), '', 'plugin_page_tags' ).
+			$form->get_nocb_td( 'plugin_page_tags' );
+
+			$table_rows['plugin_check_head'] = ''.
+			$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ), '', 'plugin_check_head' ).
+			$form->get_nocb_td( 'plugin_check_head' );
 
 			$table_rows['plugin_create_wp_sizes'] = $form->get_tr_hide( 'basic', 'plugin_create_wp_sizes' ).
 			$form->get_th_html( _x( 'Create Missing WP Media Sizes', 'option label', 'wpsso' ), '', 'plugin_create_wp_sizes' ).
@@ -136,18 +148,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_upscale_img_max'] = $form->get_tr_hide( 'basic', 'plugin_upscale_img_max' ).
 			$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ), '', 'plugin_upscale_img_max' ).
 			'<td class="blank">'.$this->p->options['plugin_upscale_img_max'].' %</td>';
-
-			$table_rows['plugin_page_excerpt'] = ''.
-			$form->get_th_html( _x( 'Enable WP Excerpt for Pages', 'option label', 'wpsso' ), '', 'plugin_page_excerpt' ).
-			$form->get_nocb_td( 'plugin_page_excerpt' );
-
-			$table_rows['plugin_page_tags'] = ''.
-			$form->get_th_html( _x( 'Enable WP Tags for Pages', 'option label', 'wpsso' ), '', 'plugin_page_tags' ).
-			$form->get_nocb_td( 'plugin_page_tags' );
-
-			$table_rows['plugin_add_person_role'] = ''.
-			$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ), '', 'plugin_add_person_role' ).
-			$form->get_nocb_td( 'plugin_add_person_role' );
 
 			return $table_rows;
 		}

@@ -30,7 +30,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			add_action( 'init', array( $this, 'allow_img_data_attributes' ) );
 
-			// prevent image_downsize from lying about image width and height
+			/**
+			 * Prevent image_downsize() from lying about image width and height.
+			 */
 			if ( is_admin() ) {
 				add_filter( 'editor_max_image_size', array( $this, 'editor_max_image_size' ), 10, 3 );
 			}
@@ -48,16 +50,24 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 		}
 
-		// note that $size_name can be a string or an array()
+		/**
+		 * Note that $size_name can be a string or an array().
+		 */
 		public function editor_max_image_size( $max_sizes = array(), $size_name = '', $context = '' ) {
-			// allow only our sizes to exceed the editor width
+
+			/**
+			 * Allow only our sizes to exceed the editor width.
+			 */
 			if ( is_string( $size_name ) && strpos( $size_name, $this->p->lca . '-' ) === 0 ) {
 				$max_sizes = array( 0, 0 );
 			}
+
 			return $max_sizes;
 		}
 
-		// $attr = apply_filters( 'wp_get_attachment_image_attributes', $attr, $attachment );
+		/**
+		 * $attr = apply_filters( 'wp_get_attachment_image_attributes', $attr, $attachment );
+		 */
 		public function add_attachment_image_attributes( $attr, $attach ) {
 			$attr['data-wp-pid'] = $attach->ID;
 			if ( ! empty( $this->p->options['p_add_nopin_media_img_tag'] ) ) {
@@ -66,7 +76,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $attr;
 		}
 
-		// $html = apply_filters( 'get_image_tag', $html, $id, $alt, $title, $align, $size );
+		/**
+		 * $html = apply_filters( 'get_image_tag', $html, $id, $alt, $title, $align, $size );
+		 */
 		public function get_image_tag( $html, $id, $alt, $title, $align, $size ) {
 			return $this->add_header_image_tag( $html, array(
 				'data-wp-pid' => $id,
@@ -74,7 +86,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			) );
 		}
 
-		// $html = apply_filters( 'get_header_image_tag', $html, $header, $attr );
+		/**
+		 * $html = apply_filters( 'get_header_image_tag', $html, $header, $attr );
+		 */
 		public function get_header_image_tag( $html, $header, $attr ) {
 			return $this->add_header_image_tag( $html, array(
 				'nopin' => empty( $this->p->options['p_add_nopin_header_img_tag'] ) ? false : 'nopin'
@@ -175,6 +189,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				if ( ! empty( $pid ) ) {
+
 					list(
 						$og_single_image['og:image'],
 						$og_single_image['og:image:width'],
@@ -495,7 +510,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						}
 					}
 
-					// does the image metadata contain our image sizes?
+					/**
+					 * Does the image metadata contain our image sizes?
+					 */
 					if ( $force_regen || empty( $img_meta['sizes'][$size_name] ) ) {
 
 						$is_accurate_width = false;
@@ -503,13 +520,17 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					} else {
 
-						// is the width and height in the image metadata accurate?
+						/**
+						 * Is the width and height in the image metadata accurate?
+						 */
 						$is_accurate_width = ! empty( $img_meta['sizes'][$size_name]['width'] ) &&
 							$img_meta['sizes'][$size_name]['width'] == $size_info['width'] ? true : false;
 						$is_accurate_height = ! empty( $img_meta['sizes'][$size_name]['height'] ) &&
 							$img_meta['sizes'][$size_name]['height'] == $size_info['height'] ? true : false;
 
-						// if not cropped, make sure the resized image respects the original aspect ratio
+						/**
+						 * If not cropped, make sure the resized image respects the original aspect ratio.
+						 */
 						if ( $is_accurate_width && $is_accurate_height && empty( $img_cropped ) &&
 							isset( $img_meta['width'] ) && isset( $img_meta['height'] ) ) {
 
@@ -522,7 +543,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							}
 							$should_be = (int) round( $img_meta[$check] / $ratio );
 
-							// allow for a +/- one pixel difference
+							/**
+							 * Allow for a +/- one pixel difference.
+							 */
 							if ( $img_meta['sizes'][$size_name][$check] < ( $should_be - 1 ) ||
 								$img_meta['sizes'][$size_name][$check] > ( $should_be + 1 ) ) {
 								if ( $this->p->debug->enabled ) {
@@ -587,9 +610,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								}
 
 							} else {
+
 								$img_meta['sizes'][$size_name] = $resized_meta;
+
 								wp_update_attachment_metadata( $pid, $img_meta );
 							}
+
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'skipped image_make_intermediate_size()' );
 						}
@@ -692,8 +718,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				$og_single_image = array(
-					'og:image' => $img['url'],
-					'og:image:width' => $img['url:width'],
+					'og:image'        => $img['url'],
+					'og:image:width'  => $img['url:width'],
 					'og:image:height' => $img['url:height'],
 				);
 			}
@@ -754,9 +780,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			// allow the html_tag and pid_attr regex to be modified
 			foreach( array( 'html_tag', 'pid_attr' ) as $type ) {
+
 				$filter_name = $this->p->lca . '_content_image_preg_' . $type;
+
 				if ( has_filter( $filter_name ) ) {
+
 					$img_preg[$type] = apply_filters( $filter_name, $this->def_img_preg[$type] );
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'filtered image preg '.$type.' = \''.$img_preg[$type].'\'' );
 					}
@@ -787,12 +817,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$tag_value = $img_arr[0];
 
 					if ( empty( $img_arr[5] ) ) {
-						$tag_name = $img_arr[2];	// img
-						$attr_name = $img_arr[3];	// data-wp-pid
+						$tag_name   = $img_arr[2];	// img
+						$attr_name  = $img_arr[3];	// data-wp-pid
 						$attr_value = $img_arr[4];	// id
 					} else {
-						$tag_name = $img_arr[5];	// img
-						$attr_name = $img_arr[6];	// data-share-src|data-lazy-src|data-src|src
+						$tag_name   = $img_arr[5];	// img
+						$attr_name  = $img_arr[6];	// data-share-src|data-lazy-src|data-src|src
 						$attr_value = $img_arr[7];	// url
 					}
 
@@ -802,7 +832,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					switch ( $attr_name ) {
 
-						// WordPress media library image id
+						/**
+						 * WordPress media library image id.
+						 */
 						case 'data-wp-pid':
 
 							if ( $this->p->debug->enabled ) {
@@ -819,7 +851,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							break;
 
-						// check for other data attributes like 'data-ngg-pid'
+						/**
+						 * Check for other data attributes like 'data-ngg-pid'.
+						 */
 						case ( preg_match( '/^'.$img_preg['pid_attr'].'$/', $attr_name ) ? true : false ):
 
 							// build a filter hook for 3rd party modules to return image information
@@ -839,10 +873,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							break;
 
-						// data-share-src|data-lazy-src|data-src|src
+						/**
+						 * data-share-src | data-lazy-src | data-src | src
+						 */
 						default:
 
-							// prevent duplicates by silently ignoring ngg images (already processed by the ngg module)
+							/**
+							 * Prevent duplicates by silently ignoring ngg images (already processed by the ngg module).
+							 */
 							if ( true === $this->p->avail['media']['ngg'] && ! empty( $this->p->m['media']['ngg'] ) &&
 								( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) ||
 									preg_match( '/^('.$img_preg['ngg_src'].')$/', $attr_value ) ) ) {
@@ -852,7 +890,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								break;	// stop here
 							}
 
-							// recognize gravatar images in the content
+							/**
+							 * Recognize gravatar images in the content.
+							 */
 							if ( preg_match( '/^(https?:)?(\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+)/', $attr_value, $match ) ) {
 
 								$og_single_image['og:image'] = SucomUtil::get_prot().':'.$match[2].'?s='.$size_info['width'].'&d=404&r=G';
@@ -866,8 +906,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								break;	// stop here
 							}
 
-							// check for image id in class for old content w/o the data-wp-pid attribute
+							/**
+							 * Check for image id in class for old content w/o the data-wp-pid attribute.
+							 */
 							if ( preg_match( '/class="[^"]+ wp-image-([0-9]+)/', $tag_value, $match ) ) {
+
 								list(
 									$og_single_image['og:image'],
 									$og_single_image['og:image:width'],
@@ -875,12 +918,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									$og_single_image['og:image:cropped'],
 									$og_single_image['og:image:id']
 								) = $this->get_attachment_image_src( $match[1], $size_name, false, $force_regen );
+
 								break;	// stop here
+
 							} else {
+
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'using attribute value for og:image = '.$attr_value.
 										' ('.WPSSO_UNDEF_INT.'x'.WPSSO_UNDEF_INT.')' );
 								}
+
 								$og_single_image = array(
 									'og:image' => $attr_value,
 									'og:image:width' => WPSSO_UNDEF_INT,
@@ -889,16 +936,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							}
 
 							if ( empty( $og_single_image['og:image'] ) ) {
+
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'single image og:image value is empty' );
 								}
+
 								break;	// stop here
 							}
 
 							$check_size_limits = true;
 							$img_size_within_limits = true;
 
-							// get the actual width and height of the image using http / https
+							/**
+							 * Get the actual width and height of the image using http / https.
+							 */
 							if ( empty( $og_single_image['og:image:width'] ) || $og_single_image['og:image:width'] < 0 ||
 								empty( $og_single_image['og:image:height'] ) || $og_single_image['og:image:height'] < 0 ) {
 

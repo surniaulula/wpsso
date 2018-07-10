@@ -821,7 +821,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_def_img_id_pre'            => 'wp',
 					'og_def_img_url'               => '',
 					'og_def_img_on_index'          => 1,
-					'og_def_img_on_search'         => 0,
+					'og_def_img_on_search'         => 1,
 					'og_ngg_tags'                  => 0,
 					'og_page_parent_tags'          => 0,
 					'og_page_title_tag'            => 0,
@@ -1047,11 +1047,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_filter_title'   => 0,		// Use Filtered (SEO) Title.
 					'plugin_filter_content' => 0,		// Apply WordPress Content Filters.
 					'plugin_filter_excerpt' => 0,		// Apply WordPress Excerpt Filters.
-					'plugin_p_strip'        => 0,		// Content Starts at 1st Paragraph.
+					'plugin_p_strip'        => 1,		// Content Starts at 1st Paragraph.
 					'plugin_use_img_alt'    => 1,		// Use Image Alt if No Content.
 					'plugin_img_alt_prefix' => 'Image:',	// Image Alt Text Prefix.
 					'plugin_p_cap_prefix'   => 'Caption:',	// WP Caption Prefix.
-					'plugin_gravatar_api'   => 0,		// Include Author Gravatar Image.
+					'plugin_gravatar_api'   => 0,		// Include Author Gravatar Image (see General > Authorship tab).
 					'plugin_facebook_api'   => 1,		// Check for Embedded Media: Facebook Videos.
 					'plugin_slideshare_api' => 1,		// Check for Embedded Media: Slideshare Presentations.
 					'plugin_soundcloud_api' => 1,		// Check for Embedded Media: Soundcloud Tracks.
@@ -1062,20 +1062,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Integration tab.
 					 */
-					'plugin_honor_force_ssl'       => 1,				// Honor the FORCE_SSL Constant.
 					'plugin_html_attr_filter_name' => 'language_attributes',	// <html> Attributes Filter Hook.
 					'plugin_html_attr_filter_prio' => 100,
 					'plugin_head_attr_filter_name' => 'head_attributes',		// <head> Attributes Filter Hook.
 					'plugin_head_attr_filter_prio' => 100,
-					'plugin_check_head'            => 1,				// Check for Duplicate Meta Tags.
+					'plugin_honor_force_ssl'       => 1,				// Honor the FORCE_SSL Constant.
+					'plugin_add_person_role'       => 1,				// Add Person Role for New Users.
 					'plugin_filter_lang'           => 1,				// Use WP Locale for Language.
+					'plugin_page_excerpt'          => 1,				// Enable WP Excerpt for Pages.
+					'plugin_page_tags'             => 1,				// Enable WP Tags for Pages.
+					'plugin_check_head'            => 1,				// Check for Duplicate Meta Tags.
 					'plugin_create_wp_sizes'       => 1,				// Create Missing WP Media Sizes.
 					'plugin_check_img_dims'        => 0,				// Enforce Image Dimensions Check.
 					'plugin_upscale_images'        => 0,				// Allow Upscale of Smaller Images.
 					'plugin_upscale_img_max'       => 33,				// Maximum Image Upscale Percent.
-					'plugin_page_excerpt'          => 1,				// Enable WP Excerpt for Pages.
-					'plugin_page_tags'             => 1,				// Enable WP Tags for Pages.
-					'plugin_add_person_role'       => 1,				// Add Person Role for New Users.
 					/**
 					 * Advanced settings - Custom Meta tab.
 					 */
@@ -1216,8 +1216,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Integration tab.
 					 */
-					'plugin_honor_force_ssl'           => 1,		// Honor the FORCE_SSL Constant
-					'plugin_honor_force_ssl:use'       => 'default',
 					'plugin_html_attr_filter_name'     => 'language_attributes',
 					'plugin_html_attr_filter_name:use' => 'default',
 					'plugin_html_attr_filter_prio'     => 100,
@@ -1226,10 +1224,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_head_attr_filter_name:use' => 'default',
 					'plugin_head_attr_filter_prio'     => 100,
 					'plugin_head_attr_filter_prio:use' => 'default',
-					'plugin_check_head'                => 1,		// Check for Duplicate Meta Tags
-					'plugin_check_head:use'            => 'default',
+					'plugin_honor_force_ssl'           => 1,		// Honor the FORCE_SSL Constant
+					'plugin_honor_force_ssl:use'       => 'default',
+					'plugin_add_person_role'           => 1,		// Add Person Role for New Users
+					'plugin_add_person_role:use'       => 'default',
 					'plugin_filter_lang'               => 1,		// Use WP Locale for Language
 					'plugin_filter_lang:use'           => 'default',
+					'plugin_page_excerpt'              => 1,		// Enable WP Excerpt for Pages
+					'plugin_page_excerpt:use'          => 'default',
+					'plugin_page_tags'                 => 1,		// Enable WP Tags for Pages
+					'plugin_page_tags:use'             => 'default',
+					'plugin_check_head'                => 1,		// Check for Duplicate Meta Tags
+					'plugin_check_head:use'            => 'default',
 					'plugin_create_wp_sizes'           => 1,		// Recreate Missing WP Media Sizes
 					'plugin_create_wp_sizes:use'       => 'default',
 					'plugin_check_img_dims'            => 0,		// Enforce Image Dimensions Check
@@ -1238,12 +1244,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_upscale_images:use'        => 'default',
 					'plugin_upscale_img_max'           => 33,		// Maximum Image Upscale Percent
 					'plugin_upscale_img_max:use'       => 'default',
-					'plugin_page_excerpt'              => 1,		// Enable WP Excerpt for Pages
-					'plugin_page_excerpt:use'          => 'default',
-					'plugin_page_tags'                 => 1,		// Enable WP Tags for Pages
-					'plugin_page_tags:use'             => 'default',
-					'plugin_add_person_role'           => 1,		// Add Person Role for New Users
-					'plugin_add_person_role:use'       => 'default',
 					/**
 					 * Advanced settings - Cache Settings tab.
 					 */
