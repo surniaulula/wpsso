@@ -336,6 +336,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* or an Image URL
 * *Improvements*
 	* Added a pre-selected image ID when using the "Select or Upload Image" button.
+	* Removed the "Add Tags from NGG Featured Image" option.
 * *Bugfixes*
 	* None
 * *Developer Notes*
