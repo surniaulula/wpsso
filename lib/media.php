@@ -357,7 +357,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 * Return an empty image array by default.
 		 */
 		public static function reset_image_src_info( $image_src_ret = array( null, null, null, null, null ) ) {
+
 			self::$image_src_info = null;
+
 			return $image_src_ret;
 		}
 
