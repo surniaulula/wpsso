@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.8.0-b.1 (2018/07/11)**
+**Version 4.8.0-rc.1 (2018/07/12)**
 
 * *New Features*
 	* Added "Twitter Card" options under the Priority Media tab in the Document SSO metabox:
@@ -546,9 +546,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.8.0-b.1 =
+= 4.8.0-rc.1 =
 
-(2018/07/11) Added "Twitter Card" options under the Priority Media tab in the Document SSO metabox. Added a pre-selected image ID when using the "Select or Upload Image" button.
+(2018/07/12) Added "Twitter Card" options under the Priority Media tab in the Document SSO metabox. Added a pre-selected image ID when using the "Select or Upload Image" button.
 
 = 4.7.1 =
 
