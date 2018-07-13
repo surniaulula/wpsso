@@ -153,14 +153,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_select( 'og_desc_hashtags', range( 0, $this->p->cf['form']['max_hashtags'] ), 'short', '', true ).' '.
 						_x( 'tag names', 'option comment', 'wpsso' ).'</td>';
 
-					$table_rows['og_page_title_tag'] = $this->form->get_tr_hide( 'basic', 'og_page_title_tag' ).
-					$this->form->get_th_html( _x( 'Add Page Title in Tags / Hashtags', 'option label', 'wpsso' ), '', 'og_page_title_tag' ).
-					'<td>'.$this->form->get_checkbox( 'og_page_title_tag' ).'</td>';
-
-					$table_rows['og_page_parent_tags'] = $this->form->get_tr_hide( 'basic', 'og_page_parent_tags' ).
-					$this->form->get_th_html( _x( 'Add Parent Page Tags / Hashtags', 'option label', 'wpsso' ), '', 'og_page_parent_tags' ).
-					'<td>'.$this->form->get_checkbox( 'og_page_parent_tags' ).'</td>';
-
 					break;
 
 				case 'og-author':

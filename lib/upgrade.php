@@ -156,6 +156,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_shortcodes' => '',
 					'plugin_widgets'    => '',
 				),
+				581 => array(
+					'og_page_title_tag'   => '',
+					'og_page_parent_tags' => '',
+				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG
 				2 => array(

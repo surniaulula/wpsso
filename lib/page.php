@@ -1053,28 +1053,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} else {
 
-				$post_ids = array ( $post_id );	// array of one
-
-				/**
-				 * Add all post parent IDs to the array if 'og_page_parent_tags' option is true.
-				 */
-				if ( $this->p->options['og_page_parent_tags'] && is_page( $post_id ) ) {
-					$post_ids = array_merge( $post_ids, get_post_ancestors( $post_id ) );
-				}
-
-				foreach ( $post_ids as $id ) {
-
-					/**
-					 * Add the post title to the tag array. This includes the post parent title 
-					 * as well if the 'og_page_parent_tags' option is true.
-					 */
-					if ( $this->p->options['og_page_title_tag'] && is_page( $id ) ) {
-						$tags[] = SucomUtil::sanitize_tag( get_the_title( $id ) );
-					}
-
-					foreach ( wp_get_post_tags( $id, array( 'fields' => 'names') ) as $tag_name ) {
-						$tags[] = $tag_name;
-					}
+				foreach ( wp_get_post_tags( $post_id, array( 'fields' => 'names') ) as $tag_name ) {
+					$tags[] = $tag_name;
 				}
 			}
 

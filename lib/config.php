@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '4.8.0-rc.1',	// Plugin version.
-					'opt_version' => '581',		// Increment when changing default option values.
+					'opt_version' => '582',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google\'s Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -823,8 +823,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_def_img_on_index'          => 1,
 					'og_def_img_on_search'         => 1,
 					'og_ngg_tags'                  => 0,
-					'og_page_parent_tags'          => 0,
-					'og_page_title_tag'            => 0,
 					'og_author_field'              => 'facebook',
 					'og_author_fallback'           => 0,
 					'og_title_sep'                 => '-',
