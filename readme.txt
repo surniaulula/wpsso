@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.7
 WC Tested Up To: 3.4.3
-Stable Tag: 4.7.1
+Stable Tag: 4.8.0
 
 Easy, complete, accurate, and automatic - provide information about your content, business and authors to social sites and search engines.
 
@@ -551,8 +551,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.8.0 =
 
 (2018/07/14) Added "Twitter Card" options under the Priority Media tab in the Document SSO metabox. Added a pre-selected image ID when using the "Select or Upload Image" button.
-
-= 4.7.1 =
-
-(2018/07/06) Added a new WPSSO Inherit Parent Meta (aka WPSSO IPM) add-on.
 
