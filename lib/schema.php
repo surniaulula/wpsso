@@ -1493,11 +1493,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Potential Action (SearchAction, OrderAction, etc.)
 			 */
-			$action_data = array();
+			$ret['potentialAction'] = array();
 
 			if ( $search_url = apply_filters( $this->p->lca . '_json_ld_search_url', get_bloginfo( 'url' ) . '?s={search_term_string}' ) ) {
 				if ( ! empty( $search_url ) ) {
-					$action_data[] = array(
+					$ret['potentialAction'][] = array(
 						'@context'    => 'https://schema.org',
 						'@type'       => 'SearchAction',
 						'target'      => $search_url,
@@ -1508,11 +1508,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$action_data = (array) apply_filters( $this->p->lca . '_json_prop_https_schema_org_potentialaction',
-				$action_data, $mod, $mt_og, $page_type_id, $is_main );
+			$ret['potentialAction'] = (array) apply_filters( $this->p->lca . '_json_prop_https_schema_org_potentialaction',
+				$ret['potentialAction'], $mod, $mt_og, $page_type_id, $is_main );
 
-			if ( ! empty( $action_data ) ) {
-				$ret['potentialAction'] = $action_data;
+			if ( empty( $action_data ) ) {
+				unset( $ret['potentialAction'] );
 			}
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
