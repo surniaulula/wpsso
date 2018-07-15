@@ -434,7 +434,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_def_img_url':
 
-							$text = __( 'You can enter a default image URL (including the http:// prefix) instead of choosing an image ID &mdash; if a default image ID is specified, the image URL option is disabled.', 'wpsso' ).' <strong>'.__( 'The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image.', 'wpsso' ).'</strong> '.sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ), $this->p->cf['head']['limit_min']['og_img_width'].'x'.$this->p->cf['head']['limit_min']['og_img_height'] ).' '.__( 'The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' );
+							$text = __( 'You can enter a default image URL (including the http:// prefix) instead of choosing an image ID &mdash; if a default image ID is specified, the image URL option is disabled.', 'wpsso' ).' ';
+							
+							$text .= '<strong>'.__( 'The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image.', 'wpsso' ).'</strong> ';
+							
+							$text .= sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ), $this->p->cf['head']['limit_min']['og_img_width'].'x'.$this->p->cf['head']['limit_min']['og_img_height'].'px' ).' ';
+							
+							$text .= __( 'The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' );
 
 							break;
 
@@ -525,7 +531,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_desc_len':
 
-							$text = 'The maximum length of text used in the Facebook / Open Graph and Rich Pin description tag. The length should be at least '.$this->p->cf['head']['limit_min']['og_desc_len'].' characters or more, and the default is '.$this->p->opt->get_defaults( 'og_desc_len' ).' characters.';
+							$text = __( 'The maximum length of text used in the Facebook / Open Graph description tag.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'The length should be at least %1$s characters or more and the default is %2$s characters.',
+								'wpsso' ), $this->p->cf['head']['limit_min']['og_desc_len'],
+									$this->p->opt->get_defaults( 'og_desc_len' ) );
 
 							break;
 
@@ -1334,7 +1344,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-seo_desc_len':
 
-							$text = __( 'The maximum length of text used for the Google Search "description" meta tag.', 'wpsso' ).' '.sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).', 'wpsso' ), $this->p->cf['head']['limit_min']['og_desc_len'], $this->p->opt->get_defaults( 'seo_desc_len' ) );
+							$text = __( 'The maximum length of text used for the Google Search "description" meta tag.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
+								'wpsso' ), $this->p->cf['head']['limit_min']['seo_desc_len'], $this->p->opt->get_defaults( 'seo_desc_len' ) );
+
 							break;
 
 						case 'tooltip-seo_author_field':
@@ -1425,7 +1439,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_desc_len':
 
-							$text = 'The maximum length of text used for the Google+ / Schema description meta tag. The length should be at least '.$this->p->cf['head']['limit_min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'schema_desc_len' ).' characters).';
+							$text = __( 'The maximum length of text used for the Google+ / Schema description meta tag.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'The length should be at least %1$s characters or more (the default is %2$s characters).',
+								'wpsso' ), $this->p->cf['head']['limit_min']['schema_desc_len'],
+									$this->p->opt->get_defaults( 'schema_desc_len' ) );
 
 							break;
 
@@ -1512,7 +1530,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-tc_desc_len':
 
-							$text = 'The maximum length of text used for the Twitter Card description. The length should be at least '.$this->p->cf['head']['limit_min']['og_desc_len'].' characters or more (the default is '.$this->p->opt->get_defaults( 'tc_desc_len' ).' characters).';
+							$text = __( 'The maximum length of text used for the Twitter Card description.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'The length should be at least %1$s characters or more (the default is %2$s characters).',
+								'wpsso' ), $this->p->cf['head']['limit_min']['tc_desc_len'],
+									$this->p->opt->get_defaults( 'tc_desc_len' ) );
 
 							break;
 
@@ -1534,7 +1556,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$this->p->opt->get_defaults( 'tc_sum_img_height' ) . ' ' . 
 								( $this->p->opt->get_defaults( 'tc_sum_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
-							$text = sprintf( __( 'The image dimensions used for the <a href="%s">Summary Card</a> (should be at least 120x120, larger than 60x60, and less than 1MB).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/types/summary-card' ) . ' ';
+							$text = sprintf( __( 'The image dimensions used for the <a href="%1$s">Summary Card</a> (should be at least $2%s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/types/summary-card', '120x120px', __( '1MB', 'wpsso' ) ) . ' ';
 							
 							$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $def_dimensions );
 
@@ -1546,7 +1568,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$this->p->opt->get_defaults( 'tc_lrg_img_height' ) . ' ' . 
 								( $this->p->opt->get_defaults( 'tc_lrg_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
-							$text = sprintf( __( 'The image dimensions used for the <a href="%s">Large Image Summary Card</a> (must be larger than 280x150 and less than 1MB).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/large-image-summary-card' ) . ' ';
+							$text = sprintf( __( 'The image dimensions used for the <a href="%1$s">Large Image Summary Card</a> (must be larger than %2$s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/large-image-summary-card', '280x150px', __( '1MB', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $def_dimensions );
 

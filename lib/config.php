@@ -1778,7 +1778,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_article_img_width'  => 696,	// See https://developers.google.com/search/docs/data-types/articles.
 					'schema_article_img_height' => 279,	// Calculated from the Article minimum image width and maximum image ratio.
 					'schema_img_width'          => 400,	// See https://developers.google.com/+/web/snippet/article-rendering.
+					'schema_desc_len'           => 156,
 					'schema_img_height'         => 160,
+					'seo_desc_len'              => 156,
+					'tc_desc_len'               => 160,
 				),
 				'limit_max' => array(
 					'og_img_ratio'                => 3,
