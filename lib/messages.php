@@ -1561,7 +1561,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$this->p->opt->get_defaults( 'tc_sum_img_height' ) . ' ' . 
 								( $this->p->opt->get_defaults( 'tc_sum_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
-							$text = sprintf( __( 'The image dimensions used for the <a href="%1$s">Summary Card</a> (should be at least $2%s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/types/summary-card', '120x120px', __( '1MB', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'The image dimensions used for the <a href="%1$s">Summary Card</a> (should be at least %2$s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/types/summary-card', '120x120px', __( '1MB', 'wpsso' ) ) . ' ';
 							
 							$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $def_dimensions );
 

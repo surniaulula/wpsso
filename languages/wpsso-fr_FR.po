@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-07-15 08:25-0400\n"
-"PO-Revision-Date: 2018-07-15 08:28-0400\n"
+"POT-Creation-Date: 2018-07-15 08:36-0400\n"
+"PO-Revision-Date: 2018-07-15 08:36-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3741,7 +3741,7 @@ msgid "The maximum length of text used for the Twitter Card description."
 msgstr "La longueur maximale du texte utilisé pour la description de la carte Twitter."
 
 #: lib/messages.php:1564
-msgid "The image dimensions used for the <a href=\"%1$s\">Summary Card</a> (should be at least $2%s and less than %3$s)."
+msgid "The image dimensions used for the <a href=\"%1$s\">Summary Card</a> (should be at least %2$s and less than %3$s)."
 msgstr "Les dimensions de l'image utilisées pour la <a href=\"%1$s\">carte sommaire</a> (doivent être supérieures à %2$s et inférieures à %3$s)."
 
 #: lib/messages.php:1564 lib/messages.php:1576
@@ -4773,23 +4773,23 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:2170
+#: lib/schema.php:2173
 msgid "adding schema for %s object"
 msgstr "ajout de schéma pour un object %s"
 
-#: lib/schema.php:2707
+#: lib/schema.php:2710
 msgid "adding schema for organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema.php:2742
+#: lib/schema.php:2745
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:2744
+#: lib/schema.php:2747
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:2985
+#: lib/schema.php:2988
 msgid "adding schema for place"
 msgstr "ajout de schéma de place"
 

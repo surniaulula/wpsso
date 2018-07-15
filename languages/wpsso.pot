@@ -4278,7 +4278,7 @@ msgstr ""
 #: lib/messages.php:1564
 msgid ""
 "The image dimensions used for the <a href=\"%1$s\">Summary Card</a> (should "
-"be at least $2%s and less than %3$s)."
+"be at least %2$s and less than %3$s)."
 msgstr ""
 
 #: lib/messages.php:1564 lib/messages.php:1576
