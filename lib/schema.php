@@ -1492,27 +1492,33 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/**
 			 * Potential Action (SearchAction, OrderAction, etc.)
+			 *
+			 * The 'wpsso_json_prop_https_schema_org_potentialaction' filter may already
+			 * be applied by the WPSSO JSON add-on, so do not re-apply it here.
 			 */
-			$ret['potentialAction'] = array();
-
 			if ( $search_url = apply_filters( $this->p->lca . '_json_ld_search_url', get_bloginfo( 'url' ) . '?s={search_term_string}' ) ) {
+
 				if ( ! empty( $search_url ) ) {
+
+					/**
+					 * Potential Action may already be defined by the WPSSO JSON
+					 * 'wpsso_json_prop_https_schema_org_potentialaction' filter.
+					 * Make sure it's an array - just in case. ;-)
+					 */
+					if ( ! isset( $ret['potentialAction'] ) || ! is_array( $ret['potentialAction'] ) ) {
+						$ret['potentialAction'] = array();
+					}
+
 					$ret['potentialAction'][] = array(
 						'@context'    => 'https://schema.org',
 						'@type'       => 'SearchAction',
 						'target'      => $search_url,
 						'query-input' => 'required name=search_term_string',
 					);
+
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipping search action: search url is empty' );
 				}
-			}
-
-			$ret['potentialAction'] = (array) apply_filters( $this->p->lca . '_json_prop_https_schema_org_potentialaction',
-				$ret['potentialAction'], $mod, $mt_og, $page_type_id, $is_main );
-
-			if ( empty( $action_data ) ) {
-				unset( $ret['potentialAction'] );
 			}
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
