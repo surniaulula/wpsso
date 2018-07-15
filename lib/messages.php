@@ -519,13 +519,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_title_sep':
 
-							$text = 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph and Pinterest Rich Pin title string (the default is the hyphen "'.$this->p->opt->get_defaults( 'og_title_sep' ).'" character).';
+							$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph title string (the default is the hyphen "%s" character).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_sep' ) );
 
 							break;
 
 						case 'tooltip-og_title_len':
 
-							$text = 'The maximum length of text used in the Facebook / Open Graph and Rich Pin title tag (default is '.$this->p->opt->get_defaults( 'og_title_len' ).' characters).';
+							$text = sprintf( __( 'The maximum length of text used in the Facebook / Open Graph title tag (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_len' ) );
 
 							break;
 
@@ -533,7 +533,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The maximum length of text used in the Facebook / Open Graph description tag.', 'wpsso' ).' ';
 							
-							$text .= sprintf( __( 'The length should be at least %1$s characters or more and the default is %2$s characters.',
+							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['og_desc_len'],
 									$this->p->opt->get_defaults( 'og_desc_len' ) );
 
@@ -541,7 +541,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_desc_hashtags':
 
-							$text = 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph and Pinterest Rich Pin description, tweet text, and social captions. Each tag name is converted to lowercase with whitespaces removed.  Select "0" to disable the addition of hashtags.';
+							$text = __( 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph description.', 'wpsso' ).' ';
+							
+							$text .= __( 'Each tag name is converted to lowercase with whitespaces removed.', 'wpsso' ).' ';
+							
+							$text .= __( 'Select "0" to disable the addition of hashtags.', 'wpsso' );
 
 							break;
 
@@ -566,7 +570,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_author_gravatar':	// Aka plugin_gravatar_api.
 
-							$text = 'Check this option to include the author\'s Gravatar image in meta tags for author index / archive webpages (default is checked).';
+							$text = __( 'Include the author\'s Gravatar image in author related meta tags and Schema markup (the default is unchecked).', 'wpsso' );
 
 							break;
 
@@ -1347,7 +1351,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'The maximum length of text used for the Google Search "description" meta tag.', 'wpsso' ).' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
-								'wpsso' ), $this->p->cf['head']['limit_min']['seo_desc_len'], $this->p->opt->get_defaults( 'seo_desc_len' ) );
+								'wpsso' ), $this->p->cf['head']['limit_min']['seo_desc_len'],
+									$this->p->opt->get_defaults( 'seo_desc_len' ) );
 
 							break;
 
@@ -1441,7 +1446,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The maximum length of text used for the Google+ / Schema description meta tag.', 'wpsso' ).' ';
 							
-							$text .= sprintf( __( 'The length should be at least %1$s characters or more (the default is %2$s characters).',
+							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['schema_desc_len'],
 									$this->p->opt->get_defaults( 'schema_desc_len' ) );
 
@@ -1532,7 +1537,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The maximum length of text used for the Twitter Card description.', 'wpsso' ).' ';
 							
-							$text .= sprintf( __( 'The length should be at least %1$s characters or more (the default is %2$s characters).',
+							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['tc_desc_len'],
 									$this->p->opt->get_defaults( 'tc_desc_len' ) );
 

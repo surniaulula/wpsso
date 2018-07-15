@@ -1495,6 +1495,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *
 			 * The 'wpsso_json_prop_https_schema_org_potentialaction' filter may already
 			 * be applied by the WPSSO JSON add-on, so do not re-apply it here.
+			 *
+			 * Hook the 'wpsso_json_ld_search_url' filter and return false if you wish to
+			 * disable / skip the Potential Action property.
 			 */
 			if ( $search_url = apply_filters( $this->p->lca . '_json_ld_search_url', get_bloginfo( 'url' ) . '?s={search_term_string}' ) ) {
 
