@@ -3183,7 +3183,7 @@ msgstr ""
 #: lib/messages.php:443
 msgid ""
 "Check this option to force the default image on index / archive webpages "
-"(blog front page, archives, categories)."
+"(blog front page, tags, categories)."
 msgstr ""
 
 #: lib/messages.php:449
@@ -4163,11 +4163,11 @@ msgstr ""
 #: lib/messages.php:1418
 msgid ""
 "The image dimensions used for the Google / Schema meta tags and JSON-LD "
-"markup (the default dimensions are %1$s)."
+"markup (the default dimensions are %s)."
 msgstr ""
 
 #: lib/messages.php:1420
-msgid "The minimum width required by Google is 696px for the resulting image."
+msgid "The minimum width required by Google for the resulting image is 696px."
 msgstr ""
 
 #: lib/messages.php:1422
@@ -4228,17 +4228,17 @@ msgstr ""
 
 #: lib/messages.php:1537
 msgid ""
-"The image dimensions used for the <a href=\"%1$s\">Summary Card</a> (should "
-"be at least 120x120, larger than 60x60, and less than 1MB)."
+"The image dimensions used for the <a href=\"%s\">Summary Card</a> (should be "
+"at least 120x120, larger than 60x60, and less than 1MB)."
 msgstr ""
 
 #: lib/messages.php:1539 lib/messages.php:1551
-msgid "The default image dimensions are %1$s."
+msgid "The default image dimensions are %s."
 msgstr ""
 
 #: lib/messages.php:1549
 msgid ""
-"The image dimensions used for the <a href=\"%1$s\">Large Image Summary Card</"
+"The image dimensions used for the <a href=\"%s\">Large Image Summary Card</"
 "a> (must be larger than 280x150 and less than 1MB)."
 msgstr ""
 

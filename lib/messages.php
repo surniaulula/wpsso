@@ -440,7 +440,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_def_img_on_index':
 
-							$text = __( 'Check this option to force the default image on index / archive webpages (blog front page, archives, categories).', 'wpsso' );
+							$text = __( 'Check this option to force the default image on index / archive webpages (blog front page, tags, categories).', 'wpsso' );
 
 							break;
 
@@ -1415,9 +1415,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$this->p->opt->get_defaults( 'schema_img_height' ).' '.
 								( $this->p->opt->get_defaults( 'schema_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
-							$text = sprintf( __( 'The image dimensions used for the Google / Schema meta tags and JSON-LD markup (the default dimensions are %1$s).', 'wpsso' ), $def_dimensions ) . ' ';
+							$text = sprintf( __( 'The image dimensions used for the Google / Schema meta tags and JSON-LD markup (the default dimensions are %s).', 'wpsso' ), $def_dimensions ) . ' ';
 							
-							$text .= __( 'The minimum width required by Google is 696px for the resulting image.', 'wpsso' ) . ' ';
+							$text .= __( 'The minimum width required by Google for the resulting image is 696px.', 'wpsso' ) . ' ';
 							
 							$text .= __( 'If you choose not to crop this image size, make sure the height value is large enough for portrait / vertical images.', 'wpsso' );
 
@@ -1530,25 +1530,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-tc_sum_img_dimensions':
 
-							$def_dimensions = $this->p->opt->get_defaults( 'tc_sum_img_width' ).'x'.
-								$this->p->opt->get_defaults( 'tc_sum_img_height' ).' '.
+							$def_dimensions = $this->p->opt->get_defaults( 'tc_sum_img_width' ) . 'x' . 
+								$this->p->opt->get_defaults( 'tc_sum_img_height' ) . ' ' . 
 								( $this->p->opt->get_defaults( 'tc_sum_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
-							$text = sprintf( __( 'The image dimensions used for the <a href="%1$s">Summary Card</a> (should be at least 120x120, larger than 60x60, and less than 1MB).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/types/summary-card' ) . ' ';
+							$text = sprintf( __( 'The image dimensions used for the <a href="%s">Summary Card</a> (should be at least 120x120, larger than 60x60, and less than 1MB).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/types/summary-card' ) . ' ';
 							
-							$text .= sprintf( __( 'The default image dimensions are %1$s.', 'wpsso' ), $def_dimensions );
+							$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $def_dimensions );
 
 							break;
 
 						case 'tooltip-tc_lrg_img_dimensions':
 
-							$def_dimensions = $this->p->opt->get_defaults( 'tc_lrg_img_width' ).'x'.
-								$this->p->opt->get_defaults( 'tc_lrg_img_height' ).' '.
+							$def_dimensions = $this->p->opt->get_defaults( 'tc_lrg_img_width' ) . 'x' . 
+								$this->p->opt->get_defaults( 'tc_lrg_img_height' ) . ' ' . 
 								( $this->p->opt->get_defaults( 'tc_lrg_img_crop' ) == 0 ? 'uncropped' : 'cropped' );
 
-							$text = sprintf( __( 'The image dimensions used for the <a href="%1$s">Large Image Summary Card</a> (must be larger than 280x150 and less than 1MB).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/large-image-summary-card' ) . ' ';
+							$text = sprintf( __( 'The image dimensions used for the <a href="%s">Large Image Summary Card</a> (must be larger than 280x150 and less than 1MB).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/large-image-summary-card' ) . ' ';
 
-							$text .= sprintf( __( 'The default image dimensions are %1$s.', 'wpsso' ), $def_dimensions );
+							$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $def_dimensions );
 
 							break;
 
