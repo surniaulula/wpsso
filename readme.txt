@@ -330,14 +330,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 4.9.0-dev.1 (2018/07/17)**
 
 * *New Features*
-	* None
+	* None.
 * *Improvements*
-	* Added an 'og:image:alt' meta tag for images from the WordPress Media Library.
 	* Renamed the 'og:image' meta tag to 'og:image:url'.
+	* Added an 'og:image:alt' meta tag for images provided by WordPress Media Library.
 * *Bugfixes*
 	* Fixed default order of image and video meta tags.
 * *Developer Notes*
-	* None
+	* None.
 
 **Version 4.8.0 (2018/07/14)**
 
@@ -352,7 +352,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the "Add Parent Page Tags / Hashtags" option.
 	* Removed the "Add Tags from NGG Featured Image" option.
 * *Bugfixes*
-	* None
+	* None.
 * *Developer Notes*
 	* Added an optional `$get_posts_args` argument for the following methods:
 		* WpssoMeta::get_posts_mods()
@@ -364,11 +364,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 4.7.1 (2018/07/06)**
 
 * *New Features*
-	* None
+	* None.
 * *Improvements*
 	* Added a new WPSSO Inherit Parent Meta (aka WPSSO IPM) add-on.
 * *Bugfixes*
-	* None
+	* None.
 * *Developer Notes*
 	* Added the `$mod` variable as an extra argument for the following filters:
 		* 'wpsso_get_post_options' ( $options, $post_id, $mod )
@@ -378,7 +378,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 4.7.0 (2018/07/02)**
 
 * *New Features*
-	* None
+	* None.
 * *Improvements*
 	* Removed the "Enable Plugin Shortcode(s)" and "Enable Plugin Widgets(s)" options.
 	* Moved the Preview tab back to its original location in the Document SSO metabox. The current tab order is:
@@ -391,7 +391,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Head Tags
 		* Validate
 * *Bugfixes*
-	* None
+	* None.
 * *Developer Notes*
 	* Removed the following filters:
 		* 'wpsso_json_add_https_schema_org_blog_blogpost' ( $bool );
@@ -412,16 +412,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* product:sale_price_dates:start
 		* product:sale_price_dates:end
 * *Improvements*
-	* None
+	* None.
 * *Bugfixes*
 	* Fix to avoid using the previously public Yoast SEO class property Yoast_Notification::$message.
 * *Developer Notes*
-	* None
+	* None.
 
 **Version 4.5.2 (2018/06/23)**
 
 * *New Features*
-	* None
+	* None.
 * *Improvements*
 	* Removed color highlighting of the SSO menu icon.
 	* Renamed the WordPress Settings submenu pages:
@@ -429,7 +429,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* "User Profile Contact Methods" to "SSO Contact Fields".
 		* "WebSite Social Pages and Accounts" to "SSO WebSite Pages".
 * *Bugfixes*
-	* None
+	* None.
 * *Developer Notes*
 	* Added a new 'wpsso_get_robots_content' filter.
 	* Refactored the WpssoProUtilRestAPI class to use the post/term/user `get_mod()` methods.
@@ -437,32 +437,32 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 4.5.1 (2018/06/16)**
 
 * *New Features*
-	* None
+	* None.
 * *Improvements*
 	* Added a 'rest_api_init' hook to define our custom image sizes.
 	* Updated the metabox tab CSS to better define active / non-active tabs.
 	* Updated the SucomNotice class CSS to increase visibility of notifications in the toolbar.
 * *Bugfixes*
-	* None
+	* None.
 * *Developer Notes*
 	* Fixed an incorrectly named Yotpo for WooCommerce filter hook.
 
 **Version 4.5.0 (2018/06/07)**
 
 * *New Features*
-	* None
+	* None.
 * *Improvements*
 	* Renamed the "Social and Search Optimization" metabox to "Document SSO (Social and Search Optimization)".
 	* Added a "License Information" link in the Add-ons page to lookup registered site addresses (Pro version).
 * *Bugfixes*
-	* None
+	* None.
 * *Developer Notes*
-	* None
+	* None.
 
 **Version 4.4.0 (2018/05/31)**
 
 * *New Features*
-	* None
+	* None.
 * *Improvements*
 	* Added support for the DLMY.App URL shortening service (Pro version).
 	* Added support for aggregate rating values from the WP-PostRatings plugin (Pro version).
@@ -472,23 +472,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed an incorrect image URL in the Setup Guide.
 * *Developer Notes*
-	* None
+	* None.
 
 **Version 4.3.2 (2018/05/21)**
 
 * *New Features*
-	* None
+	* None.
 * *Improvements*
 	* Added a new "Video Dimensions" option in the SSO metabox to customize the video dimension values.
 * *Bugfixes*
 	* Fixed the default "Video Name / Title" and "Video Description" values in the SSO metabox when custom values have been entered.
 * *Developer Notes*
-	* None
+	* None.
 
 **Version 4.3.1 (2018/05/17)**
 
 * *New Features*
-	* None
+	* None.
 * *Improvements*
 	* Added support for MP4 videos as a valid "twitter:player" meta tag value.
 * *Bugfixes*
@@ -500,7 +500,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 4.3.0 (2018/05/10)**
 
 * *New Features*
-	* None
+	* None.
 * *Improvements*
 	* Added a new "Open Graph Type" option in the Social and Search Optimization metabox (Pro version).
 	* Moved the Preview tab top-most in the Social and Search Optimization metabox.
@@ -514,23 +514,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed The SEO Framework post URL filter to return a URL by post ID (Pro version).
 * *Developer Notes*
-	* None
+	* None.
 
 **Version 4.2.0 (2018/05/07)**
 
 * *New Features*
-	* None
+	* None.
 * *Improvements*
 	* Moved error, warning, and information notices to a new SSO notices toolbar menu item.
 * *Bugfixes*
-	* None
+	* None.
 * *Developer Notes*
-	* None
+	* None.
 
 **Version 4.1.0 (2018/05/02)**
 
 * *New Features*
-	* None
+	* None.
 * *Improvements*
 	* Added a new "Item Type by Term Taxonomy" option.
 * *Bugfixes*
