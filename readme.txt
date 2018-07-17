@@ -332,9 +332,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None
 * *Improvements*
-	* None
+	* Added an 'og:image:alt' meta tag for images from the WordPress Media Library.
+	* Renamed the 'og:image' meta tag to 'og:image:url'.
 * *Bugfixes*
-	* None
+	* Fixed default order of image and video meta tags.
 * *Developer Notes*
 	* None
 
@@ -561,7 +562,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.9.0-dev.1 =
 
-(2018/07/17) None.
+(2018/07/17) Fixed default order of image and video meta tags. Renamed the 'og:image' meta tag to 'og:image:url'.
 
 = 4.8.0 =
 
