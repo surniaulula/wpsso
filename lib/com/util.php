@@ -2091,29 +2091,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Return the first url from the associative array (og:image:secure_url, og:image:url, og:image).
 		 */
-		public static function get_mt_media_url( array $assoc, $mt_prefix = 'og:image', 
+		public static function get_mt_media_url( array $assoc, $mt_media_pre = 'og:image', 
 			array $mt_suffixes = array( ':secure_url', ':url', '', ':embed_url' ) ) {
 
 			/**
 			 * Check for two dimensional arrays and keep following the first array element.
-			 * Prefer the $mt_prefix array key (if it's available).
+			 * Prefer the $mt_media_pre array key (if it's available).
 			 */
-			if ( isset( $assoc[$mt_prefix] ) && is_array( $assoc[$mt_prefix] ) ) {
-				$first_element = reset( $assoc[$mt_prefix] );
+			if ( isset( $assoc[$mt_media_pre] ) && is_array( $assoc[$mt_media_pre] ) ) {
+				$first_media = reset( $assoc[$mt_media_pre] );
 			} else {
-				$first_element = reset( $assoc );
+				$first_media = reset( $assoc );
 			}
 
-			if ( is_array( $first_element ) ) {
-				return self::get_mt_media_url( $first_element, $mt_prefix );
+			if ( is_array( $first_media ) ) {
+				return self::get_mt_media_url( $first_media, $mt_media_pre );
 			}
 
 			/**
 			 * First element is a text string, so check the array keys.
 			 */
 			foreach ( $mt_suffixes as $mt_suffix ) {
-				if ( ! empty( $assoc[$mt_prefix . $mt_suffix] ) ) {
-					return $assoc[$mt_prefix . $mt_suffix]; // Return first match.
+				if ( ! empty( $assoc[$mt_media_pre . $mt_suffix] ) ) {
+					return $assoc[$mt_media_pre . $mt_suffix]; // Return first match.
 				}
 			}
 
@@ -2126,15 +2126,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_image_seed( $mt_pre = 'og', array $mt_og = array() ) {
 
 			$og_ret = array(
-				/**
-				 * Do not include og:image:url - use og:image instead.
-				 */
 				$mt_pre . ':image:secure_url' => '',
-				$mt_pre . ':image'            => '',	// Same as og:image:url - don't use og:image:url.
+				$mt_pre . ':image:url'        => '',
 				$mt_pre . ':image:width'      => '',
 				$mt_pre . ':image:height'     => '',
 				$mt_pre . ':image:cropped'    => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':image:id'         => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':image:alt'        => '',
 			);
 
 			if ( ! empty( $mt_og ) ) {
@@ -2209,8 +2207,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				 * Do not include og:video - use og:video:url instead.
 				 */
 				$mt_pre . ':video:secure_url'    => '',
-				$mt_pre . ':video:url'           => '',		// Same as og:video - don't use og:video.
-				$mt_pre . ':video:type'          => '',		// Example: 'application/x-shockwave-flash' or 'text/html'.
+				$mt_pre . ':video:url'           => '',
+				$mt_pre . ':video:type'          => '',		// 'application/x-shockwave-flash' or 'text/html'.
 				$mt_pre . ':video:width'         => '',
 				$mt_pre . ':video:height'        => '',
 				$mt_pre . ':video:tag'           => array(),
@@ -2261,8 +2259,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		private static function maybe_merge_mt_og( array $og_ret, array $mt_og ) {
 
-			if ( empty( $mt_og ) ) {
-				return $mt_og;
+			if ( empty( $mt_og ) ) {	// Nothing to merge.
+				return $og_ret;
 			} 
 		
 			/**

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.8.0\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.9.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -377,7 +377,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:2138 lib/pro/media/slideshare.php:199
-#: lib/pro/media/vimeo.php:168 lib/pro/media/wistia.php:308 lib/util.php:1369
+#: lib/pro/media/vimeo.php:168 lib/pro/media/wistia.php:332 lib/util.php:1371
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -1465,8 +1465,8 @@ msgid "Left"
 msgstr ""
 
 #: lib/config-gettext-extract.php:70 lib/messages.php:1877
-#: lib/messages.php:2206 lib/messages.php:2216 lib/messages.php:2225
-#: lib/messages.php:2237
+#: lib/messages.php:2207 lib/messages.php:2217 lib/messages.php:2226
+#: lib/messages.php:2238
 msgctxt "lib file description"
 msgid "Licenses"
 msgstr ""
@@ -1782,7 +1782,7 @@ msgid "SSO Image"
 msgstr ""
 
 #: lib/config-gettext-extract.php:133 lib/messages.php:979
-#: lib/messages.php:2095
+#: lib/messages.php:2096
 msgctxt "lib file description"
 msgid "SSO Image Sizes"
 msgstr ""
@@ -2094,7 +2094,7 @@ msgctxt "option label"
 msgid "Use Filtered (SEO) Title"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:56 lib/messages.php:2156
+#: lib/gpl/admin/advanced.php:56 lib/messages.php:2157
 #: lib/pro/admin/advanced.php:61
 msgctxt "option label"
 msgid "Apply WordPress Content Filters"
@@ -2182,19 +2182,19 @@ msgctxt "option label"
 msgid "Create Missing WP Media Sizes"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:141 lib/messages.php:2098
+#: lib/gpl/admin/advanced.php:141 lib/messages.php:2099
 #: lib/pro/admin/advanced.php:145
 msgctxt "option label"
 msgid "Enforce Image Dimensions Check"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:145 lib/messages.php:2101
+#: lib/gpl/admin/advanced.php:145 lib/messages.php:2102
 #: lib/pro/admin/advanced.php:150
 msgctxt "option label"
 msgid "Allow Upscale of WP Media Images"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:149 lib/messages.php:2104
+#: lib/gpl/admin/advanced.php:149 lib/messages.php:2105
 #: lib/pro/admin/advanced.php:154
 msgctxt "option label"
 msgid "Maximum Image Upscale Percent"
@@ -2734,7 +2734,7 @@ msgstr ""
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:163 lib/loader.php:189 lib/post.php:259 lib/register.php:238
-#: lib/term.php:234 lib/user.php:201 lib/util.php:357 lib/util.php:2480
+#: lib/term.php:234 lib/user.php:201 lib/util.php:357 lib/util.php:2487
 msgid "%s warning:"
 msgstr ""
 
@@ -2754,77 +2754,77 @@ msgstr ""
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 
-#: lib/media.php:402
+#: lib/media.php:429
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:439 lib/media.php:599 lib/media.php:1432
+#: lib/media.php:467 lib/media.php:627 lib/media.php:1469
 #: lib/pro/util/checkimgdims.php:91
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:442
+#: lib/media.php:470
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:443 lib/media.php:602
+#: lib/media.php:471 lib/media.php:630
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:459
+#: lib/media.php:487
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:483
+#: lib/media.php:511
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:601
+#: lib/media.php:629
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:604
+#: lib/media.php:632
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:995
+#: lib/media.php:1030
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1438 lib/pro/media/ngg.php:130
+#: lib/media.php:1475 lib/pro/media/ngg.php:131
 #: lib/pro/util/checkimgdims.php:93
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1448
+#: lib/media.php:1485
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1517
+#: lib/media.php:1554
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1545
+#: lib/media.php:1582
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -3339,7 +3339,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:612 lib/util.php:2762
+#: lib/messages.php:612 lib/util.php:2769
 msgid "No options available."
 msgstr ""
 
@@ -3375,7 +3375,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:640 lib/messages.php:652 lib/messages.php:660
-#: lib/messages.php:2170
+#: lib/messages.php:2171
 msgid ""
 "Advanced users can also hook the '%s' filter and return true / false to "
 "enable / disable this feature."
@@ -3388,7 +3388,7 @@ msgid ""
 "be required to detect images and videos added by these shortcodes."
 msgstr ""
 
-#: lib/messages.php:648 lib/messages.php:2166
+#: lib/messages.php:648 lib/messages.php:2167
 msgid ""
 "Some themes / plugins have badly coded content filters, so this option is "
 "disabled by default."
@@ -4575,129 +4575,129 @@ msgstr ""
 msgid "(note that all Pro add-ons require a licensed and active %1$s plugin)"
 msgstr ""
 
-#: lib/messages.php:1979
+#: lib/messages.php:1980
 msgid "Purchase %s add-on licence(s) to use the following features / options."
 msgstr ""
 
-#: lib/messages.php:1982
+#: lib/messages.php:1983
 msgid ""
 "Purchase the %s add-on to install the Pro update and use the following "
 "features / options."
 msgstr ""
 
-#: lib/messages.php:1993
+#: lib/messages.php:1994
 msgctxt "option comment"
 msgid "[select preview]"
 msgstr ""
 
-#: lib/messages.php:2000
+#: lib/messages.php:2001
 msgctxt "option comment"
 msgid "%s required"
 msgstr ""
 
-#: lib/messages.php:2015
+#: lib/messages.php:2016
 msgctxt "plugin action link"
 msgid "More Licenses"
 msgstr ""
 
-#: lib/messages.php:2017
+#: lib/messages.php:2018
 msgctxt "plugin action link"
 msgid "Purchase Core Pro"
 msgstr ""
 
-#: lib/messages.php:2019
+#: lib/messages.php:2020
 msgctxt "plugin action link"
 msgid "Purchase Pro Add-on"
 msgstr ""
 
-#: lib/messages.php:2025
+#: lib/messages.php:2026
 msgctxt "plugin action link"
 msgid "(Core Pro required)"
 msgstr ""
 
-#: lib/messages.php:2038
+#: lib/messages.php:2039
 msgid ""
 "You can update the %s excerpt or content text to change the default "
 "description values."
 msgstr ""
 
-#: lib/messages.php:2048
+#: lib/messages.php:2049
 msgid ""
 "You can change the social image by selecting a featured image, attaching "
 "image(s) or including images in the content."
 msgstr ""
 
-#: lib/messages.php:2052
+#: lib/messages.php:2053
 msgid ""
 "Video service API modules, required to detect embedded videos, are provided "
 "by the %s plugin."
 msgstr ""
 
-#: lib/messages.php:2079 lib/meta.php:163
+#: lib/messages.php:2080 lib/meta.php:163
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/messages.php:2081
+#: lib/messages.php:2082
 msgid ""
 "A larger and/or different custom image, specifically for meta tags and "
 "Schema markup, can be selected in the %1$s metabox under the %2$s tab."
 msgstr ""
 
-#: lib/messages.php:2107
+#: lib/messages.php:2108
 msgid ""
 "Additional information shown only to users with Administrative privileges:"
 msgstr ""
 
-#: lib/messages.php:2112
+#: lib/messages.php:2113
 msgid "You can adjust the <b>%1$s</b> option in the %2$s settings."
 msgstr ""
 
-#: lib/messages.php:2115
+#: lib/messages.php:2116
 msgid "Enable the %1$s option."
 msgstr ""
 
-#: lib/messages.php:2118
+#: lib/messages.php:2119
 msgid "Increase the %1$s option value."
 msgstr ""
 
-#: lib/messages.php:2120
+#: lib/messages.php:2121
 msgid "Disable the %1$s option (not recommended)."
 msgstr ""
 
-#: lib/messages.php:2131
+#: lib/messages.php:2132
 msgid ""
 "An Open Graph image meta tag could not be generated from this webpage "
 "content or its custom %s metabox settings. Facebook <em>requires at least "
 "one image meta tag</em> to render shared content correctly."
 msgstr ""
 
-#: lib/messages.php:2139
+#: lib/messages.php:2140
 msgid ""
 "An Open Graph description meta tag could not be generated from this webpage "
 "content or its custom %s metabox settings. Facebook <em>requires a "
 "description meta tag</em> to render shared content correctly."
 msgstr ""
 
-#: lib/messages.php:2147
+#: lib/messages.php:2148
 msgid ""
 "A Schema image property could not be generated from this webpage content or "
 "its custom %s metabox settings. Google <em>requires at least one image "
 "property</em> for this Schema item type."
 msgstr ""
 
-#: lib/messages.php:2160
+#: lib/messages.php:2161
 msgid "The %1$s advanced option is currently disabled."
 msgstr ""
 
-#: lib/messages.php:2162
+#: lib/messages.php:2163
 msgid ""
 "The use of WordPress content filters allows %s to fully render your content "
 "text for meta tag descriptions and detect additional images / embedded "
 "videos provided by shortcodes."
 msgstr ""
 
-#: lib/messages.php:2168
+#: lib/messages.php:2169
 msgid ""
 "<a href=\"%s\">If you use shortcodes in your content text, this option "
 "should be enabled</a> &mdash; if you experience display issues after "
@@ -4705,197 +4705,197 @@ msgid ""
 "content incorrectly and report the problem to its author(s)."
 msgstr ""
 
-#: lib/messages.php:2186
+#: lib/messages.php:2187
 msgid ""
 "<b>At least one of your theme header templates does not support Schema "
 "markup of the webpage head section</b> &mdash; this is especially important "
 "for Pinterest (and Google if not using the JSON-LD add-on)."
 msgstr ""
 
-#: lib/messages.php:2190
+#: lib/messages.php:2191
 msgid ""
 "The %1$s HTML tag in your header template(s) should include a function, "
 "action, or filter for its attributes."
 msgstr ""
 
-#: lib/messages.php:2192
+#: lib/messages.php:2193
 msgid ""
 "%1$s can update your header template(s) automatically and change the "
 "existing %2$s HTML tag to:"
 msgstr ""
 
-#: lib/messages.php:2196
+#: lib/messages.php:2197
 msgid ""
 "<b><a href=\"%1$s\">Click here to update header template(s) automatically</"
 "a></b> (recommended) or update the template(s) manually."
 msgstr ""
 
-#: lib/messages.php:2208
+#: lib/messages.php:2209
 msgid "The %1$s plugin Authentication ID option is empty."
 msgstr ""
 
-#: lib/messages.php:2208
+#: lib/messages.php:2209
 msgid ""
 "To enable Pro version features and allow the plugin to authenticate itself "
 "for updates, please enter the unique Authentication ID you received by email "
 "in the %s settings page."
 msgstr ""
 
-#: lib/messages.php:2218
+#: lib/messages.php:2219
 msgid ""
 "An Authentication ID has been entered for %1$s but the plugin has not been "
 "installed &mdash; you can install and activate the Pro version from the %2$s "
 "settings page."
 msgstr ""
 
-#: lib/messages.php:2227
+#: lib/messages.php:2228
 msgid ""
 "An Authentication ID has been entered for %1$s in the %2$s settings page but "
 "the Pro version has not been installed &mdash; don't forget to update the "
 "plugin to install the latest Pro version."
 msgstr ""
 
-#: lib/messages.php:2239
+#: lib/messages.php:2240
 msgid "Plugins"
 msgstr ""
 
-#: lib/messages.php:2243
+#: lib/messages.php:2244
 msgid ""
 "At least one Authentication ID has been entered in the %1$s settings page,"
 "<br/>but the %2$s add-on is not active."
 msgstr ""
 
-#: lib/messages.php:2245
+#: lib/messages.php:2246
 msgid ""
 "This Free add-on is required to update and enable the %1$s plugin and its "
 "Pro add-ons."
 msgstr ""
 
-#: lib/messages.php:2250
+#: lib/messages.php:2251
 msgid "Install and activate the %1$s add-on from the %2$s settings page."
 msgstr ""
 
-#: lib/messages.php:2252
+#: lib/messages.php:2253
 msgid "The %1$s add-on can be activated from the WordPress %2$s page."
 msgstr ""
 
-#: lib/messages.php:2252
+#: lib/messages.php:2253
 msgid "Please activate this Free add-on now."
 msgstr ""
 
-#: lib/messages.php:2255
+#: lib/messages.php:2256
 msgid ""
 "When the %1$s add-on is active, one or more Pro version updates may be "
 "available for your licensed plugin and/or its add-on(s)."
 msgstr ""
 
-#: lib/messages.php:2270
+#: lib/messages.php:2271
 msgctxt "submit button"
 msgid "Check for Updates"
 msgstr ""
 
-#: lib/messages.php:2273
+#: lib/messages.php:2274
 msgctxt "lib file description"
 msgid "Update Manager"
 msgstr ""
 
-#: lib/messages.php:2276
+#: lib/messages.php:2277
 msgid "Dashboard"
 msgstr ""
 
-#: lib/messages.php:2276
+#: lib/messages.php:2277
 msgid "Updates"
 msgstr ""
 
-#: lib/messages.php:2278
+#: lib/messages.php:2279
 msgid ""
 "%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
 "%5$s is currently installed)."
 msgstr ""
 
-#: lib/messages.php:2280
+#: lib/messages.php:2281
 msgid ""
 "If an update for %1$s is not available under the WordPress %2$s page, use "
 "the <em>%3$s</em> button in the %4$s settings page to force an immediate "
 "refresh of all Pro update information."
 msgstr ""
 
-#: lib/messages.php:2286 lib/register.php:248
+#: lib/messages.php:2287 lib/register.php:248
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
 "updates and features."
 msgstr ""
 
-#: lib/messages.php:2286
+#: lib/messages.php:2287
 msgid ""
 "If possible, please update to the latest %1$s stable release (or at least "
 "version %2$s)."
 msgstr ""
 
-#: lib/messages.php:2307
+#: lib/messages.php:2308
 msgid "<strong>%s includes:</strong>"
 msgstr ""
 
-#: lib/messages.php:2311
+#: lib/messages.php:2312
 msgid ""
 "%s options for posts, pages, custom post types, terms (categories, tags, "
 "custom taxonomies), and user profiles."
 msgstr ""
 
-#: lib/messages.php:2313
+#: lib/messages.php:2314
 msgid "Advanced features and settings page."
 msgstr ""
 
-#: lib/messages.php:2315
+#: lib/messages.php:2316
 msgid "Integration with 3rd party plugins and service APIs."
 msgstr ""
 
-#: lib/messages.php:2317
+#: lib/messages.php:2318
 msgid "Ability to purchase Pro add-ons."
 msgstr ""
 
-#: lib/messages.php:2321
+#: lib/messages.php:2322
 msgid ""
 "<strong>Pro licenses never expire</strong> &mdash; you may receive "
 "unlimited / lifetime updates and support for each licensed WordPress Site "
 "Address."
 msgstr ""
 
-#: lib/messages.php:2321
+#: lib/messages.php:2322
 msgid "How great is that!?"
 msgstr ""
 
-#: lib/messages.php:2324
+#: lib/messages.php:2325
 msgid ""
 "<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; license "
 "the Pro version immediately after your purchase!"
 msgstr ""
 
-#: lib/messages.php:2326
+#: lib/messages.php:2327
 msgid ""
 "<strong>Purchase %s easily and quickly with PayPal</strong> &mdash; update "
 "the Free plugin to Pro immediately after your purchase!"
 msgstr ""
 
-#: lib/messages.php:2335
+#: lib/messages.php:2336
 msgid ""
 "<strong>Development of %1$s is driven by user requests</strong> &mdash; we "
 "welcome all your comments and suggestions."
 msgstr ""
 
-#: lib/messages.php:2345
+#: lib/messages.php:2346
 msgid ""
 "<strong>Great ratings are a terrific way to encourage your plugin "
 "developers</strong> &mdash; and it only takes a minute."
 msgstr ""
 
-#: lib/messages.php:2347
+#: lib/messages.php:2348
 msgid "Say \"Thank you\" %s by rating the plugins you use."
 msgstr ""
 
 #. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on
-#: lib/messages.php:2366
+#: lib/messages.php:2367
 msgid ""
 "This option is localized &mdash; <a href=\"%s\">you may change the WordPress "
 "locale</a> to define alternate values for different languages."
@@ -5189,7 +5189,7 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #: lib/post.php:245 lib/term.php:220 lib/user.php:187 lib/util.php:343
-#: lib/util.php:2457
+#: lib/util.php:2464
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5228,7 +5228,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:898 lib/util.php:1287
+#: lib/post.php:898 lib/util.php:1289
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -5412,27 +5412,27 @@ msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:129 lib/pro/media/ngg.php:1238
+#: lib/pro/media/ngg.php:130 lib/pro/media/ngg.php:1265
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/pro/media/ngg.php:134 lib/pro/util/checkimgdims.php:98
+#: lib/pro/media/ngg.php:135 lib/pro/util/checkimgdims.php:98
 msgid "cropped"
 msgstr ""
 
-#: lib/pro/media/ngg.php:136 lib/pro/util/checkimgdims.php:100
+#: lib/pro/media/ngg.php:137 lib/pro/util/checkimgdims.php:100
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the "
 "required %4$s image dimensions."
 msgstr ""
 
 #: lib/pro/media/slideshare.php:194 lib/pro/media/vimeo.php:163
-#: lib/pro/media/wistia.php:303 lib/util.php:1364
+#: lib/pro/media/wistia.php:327 lib/util.php:1366
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/pro/media/slideshare.php:196 lib/pro/media/vimeo.php:165
-#: lib/pro/media/wistia.php:305 lib/util.php:1366
+#: lib/pro/media/wistia.php:329 lib/util.php:1368
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
@@ -5554,27 +5554,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2173
+#: lib/schema.php:2176
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2710
+#: lib/schema.php:2713
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2745
+#: lib/schema.php:2748
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2747
+#: lib/schema.php:2750
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2988
+#: lib/schema.php:2991
 msgid "adding schema for place"
 msgstr ""
 
@@ -6043,56 +6043,56 @@ msgid ""
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1006
+#: lib/util.php:1008
 msgid ""
 "%s cached files, transient cache, column meta, and WordPress object cache "
 "have been cleared."
 msgstr ""
 
-#: lib/util.php:1011
+#: lib/util.php:1013
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1039
+#: lib/util.php:1041
 msgid ""
 "A background task will begin shortly to re-create the %s post, term, and "
 "user transient cache objects."
 msgstr ""
 
-#: lib/util.php:1126
+#: lib/util.php:1128
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1143
+#: lib/util.php:1145
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1219
+#: lib/util.php:1221
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1276
+#: lib/util.php:1278
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1298
+#: lib/util.php:1300
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1414
+#: lib/util.php:1416
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max
-#: lib/util.php:2460
+#: lib/util.php:2467
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2473
+#: lib/util.php:2480
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6101,29 +6101,29 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2473
+#: lib/util.php:2480
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2789
+#: lib/util.php:2796
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2792
+#: lib/util.php:2799
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2797
+#: lib/util.php:2804
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2800
+#: lib/util.php:2807
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

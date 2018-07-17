@@ -593,7 +593,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Add correct image sizes for the image URL using getimagesize().
 			 */
-			$this->p->util->add_image_url_size( $img_url_keys, $opts );	// $opts passed by reference.
+			$this->p->util->add_image_url_size( $opts, $img_url_keys );	// $opts passed by reference.
 		}
 
 		private function check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod ) {

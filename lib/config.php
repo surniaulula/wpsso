@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.8.0',	// Plugin version.
-					'opt_version' => '582',		// Increment when changing default option values.
+					'version'     => '4.9.0-dev.1',	// Plugin version.
+					'opt_version' => '583',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google\'s Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -815,7 +815,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_vid_max'                   => 1,
 					'og_vid_https'                 => 1,
 					'og_vid_autoplay'              => 1,
-					'og_vid_prev_img'              => 0,
+					'og_vid_prev_img'              => 1,
 					'og_vid_html_type'             => 1,
 					'og_def_img_id'                => '',
 					'og_def_img_id_pre'            => 'wp',
@@ -880,9 +880,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_og:altitude'                            => 1,
 					'add_meta_property_og:description'                         => 1,
 					'add_meta_property_og:image:secure_url'                    => 1,
-					'add_meta_property_og:image'                               => 1,
+					'add_meta_property_og:image:url'                           => 1,
 					'add_meta_property_og:image:width'                         => 1,
 					'add_meta_property_og:image:height'                        => 1,
+					'add_meta_property_og:image:alt'                           => 1,
 					'add_meta_property_og:latitude'                            => 1,
 					'add_meta_property_og:locale'                              => 1,
 					'add_meta_property_og:longitude'                           => 1,
@@ -972,6 +973,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:image'                              => 1,
 					'add_meta_name_twitter:image:width'                        => 1,
 					'add_meta_name_twitter:image:height'                       => 1,
+					'add_meta_name_twitter:image:alt'                          => 1,
 					'add_meta_name_twitter:player'                             => 1,
 					'add_meta_name_twitter:player:stream'                      => 1,
 					'add_meta_name_twitter:player:stream:content_type'         => 1,

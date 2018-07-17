@@ -217,7 +217,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$prev_width    = 600;
 			$prev_height   = 315;
 			$refresh_cache = $this->p->util->is_force_regen( $mod, 'og' ) ? '?force_regen=' . time() : '';
-			$media_url     = SucomUtil::get_mt_media_url( $head_info, 'og:image' ) . $refresh_cache;
+			$media_url     = SucomUtil::get_mt_media_url( $head_info ) . $refresh_cache;
 
 			$have_sizes = ( isset( $head_info['og:image:width'] ) && $head_info['og:image:width'] > 0 && 
 				isset( $head_info['og:image:height'] ) && $head_info['og:image:height'] > 0 ) ? true : false;
@@ -1115,19 +1115,20 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 
 				list(
-					$og_single_image['og:image'],
+					$og_single_image['og:image:url'],
 					$og_single_image['og:image:width'],
 					$og_single_image['og:image:height'],
 					$og_single_image['og:image:cropped'],
-					$og_single_image['og:image:id']
+					$og_single_image['og:image:id'],
+					$og_single_image['og:image:alt']
 				) = $this->p->media->get_attachment_image_src( $head_info['og:image:id'], 'thumbnail', false, $force_regen );
 
-				if ( ! empty( $og_single_image['og:image'] ) ) {	// Just in case.
+				if ( ! empty( $og_single_image['og:image:url'] ) ) {	// Just in case.
 					$head_info =& $og_single_image;
 				}
 			}
 
-			$media_url = SucomUtil::get_mt_media_url( $head_info, 'og:image' );
+			$media_url = SucomUtil::get_mt_media_url( $head_info );
 			
 			if ( $force_regen ) {
 				$media_url = add_query_arg( 'force_regen', time(), $media_url );
@@ -1157,14 +1158,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			list(
-				$og_single_image['og:image'],
+				$og_single_image['og:image:url'],
 				$og_single_image['og:image:width'],
 				$og_single_image['og:image:height'],
 				$og_single_image['og:image:cropped'],
-				$og_single_image['og:image:id']
+				$og_single_image['og:image:id'],
+				$og_single_image['og:image:alt']
 			) = $this->p->media->get_attachment_image_src( $pid, 'thumbnail', false, $force_regen );
 
-			$media_url = SucomUtil::get_mt_media_url( $og_single_image, 'og:image' );
+			$media_url = SucomUtil::get_mt_media_url( $og_single_image );
 
 			if ( $force_regen ) {
 				$media_url = add_query_arg( 'force_regen', time(), $media_url );
@@ -1204,63 +1206,66 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/**
 			 * Unless $md_pre is 'none' allways fallback to the 'og' custom meta.
 			 */
-			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
+			foreach( array_unique( array( $md_pre, 'og' ) ) as $opt_pre ) {
 
-				if ( $prefix === 'none' ) {	// special index keyword
+				if ( $opt_pre === 'none' ) {	// special index keyword
 					break;
-				} elseif ( empty( $prefix ) ) {	// skip empty md_pre values
+				} elseif ( empty( $opt_pre ) ) {	// skip empty md_pre values
 					continue;
 				}
 
 				/**
 				 * Get an empty image meta tag array.
 				 */
-				$mt_image = SucomUtil::get_mt_image_seed( $mt_pre );
+				$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
 				/**
 				 * Get the image id, library prefix, and/or url values.
 				 */
-				$pid = $this->get_options( $mod['id'], $prefix . '_img_id' );
-				$pre = $this->get_options( $mod['id'], $prefix . '_img_id_pre' );	// Default library prefix.
-				$url = $this->get_options( $mod['id'], $prefix . '_img_url' );
+				$pid = $this->get_options( $mod['id'], $opt_pre . '_img_id' );
+				$pre = $this->get_options( $mod['id'], $opt_pre . '_img_id_pre' );	// Default library prefix.
+				$url = $this->get_options( $mod['id'], $opt_pre . '_img_url' );
 
 				if ( $pid > 0 ) {
 
 					$pid = $pre === 'ngg' ? 'ngg-' . $pid : $pid;
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'using custom ' . $prefix . ' image id = "' . $pid . '"',
+						$this->p->debug->log( 'using custom ' . $opt_pre . ' image id = "' . $pid . '"',
 							get_class( $this ) );	// log extended class name
 					}
 
 					list( 
-						$mt_image[$mt_pre . ':image'],
-						$mt_image[$mt_pre . ':image:width'],
-						$mt_image[$mt_pre . ':image:height'],
-						$mt_image[$mt_pre . ':image:cropped'],
-						$mt_image[$mt_pre . ':image:id']
+						$mt_single_image[$mt_pre . ':image:url'],
+						$mt_single_image[$mt_pre . ':image:width'],
+						$mt_single_image[$mt_pre . ':image:height'],
+						$mt_single_image[$mt_pre . ':image:cropped'],
+						$mt_single_image[$mt_pre . ':image:id'],
+						$mt_single_image[$mt_pre . ':image:alt']
 					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 				}
 
-				if ( empty( $mt_image[$mt_pre . ':image'] ) && ! empty( $url ) ) {
+				if ( empty( $mt_single_image[$mt_pre . ':image:url'] ) && ! empty( $url ) ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'using custom ' . $prefix . ' image url = "' . $url . '"',
+						$this->p->debug->log( 'using custom ' . $opt_pre . ' image url = "' . $url . '"',
 							get_class( $this ) );	// log extended class name
 					}
-					$width = $this->get_options( $mod['id'], $prefix . '_img_url:width' );
-					$height = $this->get_options( $mod['id'], $prefix . '_img_url:height' );
 
-					$mt_image = array(
-						$mt_pre . ':image' => $url,
-						$mt_pre . ':image:width' => ( $width > 0 ? $width : WPSSO_UNDEF_INT ), 
+					$width  = $this->get_options( $mod['id'], $opt_pre . '_img_url:width' );
+					$height = $this->get_options( $mod['id'], $opt_pre . '_img_url:height' );
+
+					$mt_single_image = array(
+						$mt_pre . ':image:url'    => $url,
+						$mt_pre . ':image:width'  => ( $width > 0 ? $width : WPSSO_UNDEF_INT ), 
 						$mt_pre . ':image:height' => ( $height > 0 ? $height : WPSSO_UNDEF_INT ),
 					);
 				}
 
-				if ( ! empty( $mt_image[$mt_pre . ':image'] ) &&
-					$this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
-					return $mt_ret;
+				if ( ! empty( $mt_single_image[$mt_pre . ':image:url'] ) ) {
+					if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
+						return $mt_ret;
+					}
 				}
 			}
 
@@ -1272,18 +1277,21 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$this->p->debug->log( 'adding image pid: ' . $pid );
 					}
 
-					$mt_image = SucomUtil::get_mt_image_seed( $mt_pre );
+					$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
 					list( 
-						$mt_image[$mt_pre . ':image'],
-						$mt_image[$mt_pre . ':image:width'],
-						$mt_image[$mt_pre . ':image:height'],
-						$mt_image[$mt_pre . ':image:cropped'],
-						$mt_image[$mt_pre . ':image:id']
+						$mt_single_image[$mt_pre . ':image:url'],
+						$mt_single_image[$mt_pre . ':image:width'],
+						$mt_single_image[$mt_pre . ':image:height'],
+						$mt_single_image[$mt_pre . ':image:cropped'],
+						$mt_single_image[$mt_pre . ':image:id'],
+						$mt_single_image[$mt_pre . ':image:alt']
 					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 
-					if ( ! empty( $mt_image[$mt_pre . ':image'] ) && $this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
-						return $mt_ret;
+					if ( ! empty( $mt_single_image[$mt_pre . ':image:url'] ) ) {
+						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
+							return $mt_ret;
+						}
 					}
 				}
 			}
@@ -1296,17 +1304,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$this->p->debug->log( 'adding image url: ' . $url );
 					}
 
-					$mt_image = SucomUtil::get_mt_image_seed( $mt_pre );
+					$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
-					$mt_image[$mt_pre . ':image'] = $url;
+					$mt_single_image[$mt_pre . ':image:url'] = $url;
 
 					/**
 					 * Add correct image sizes for the image URL using getimagesize().
 					 */
-					$this->p->util->add_image_url_size( $mt_pre . ':image', $mt_image );
+					$this->p->util->add_image_url_size( $mt_single_image, $mt_pre . ':image' );
 
-					if ( ! empty( $mt_image[$mt_pre . ':image'] ) && $this->p->util->push_max( $mt_ret, $mt_image, $num ) ) {
-						return $mt_ret;
+					if ( ! empty( $mt_single_image[$mt_pre . ':image:url'] ) ) {
+						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
+							return $mt_ret;
+						}
 					}
 				}
 			}
@@ -1334,36 +1344,38 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				return $og_ret;
 			}
 
-			foreach( array_unique( array( $md_pre, 'og' ) ) as $prefix ) {
+			foreach( array_unique( array( $md_pre, 'og' ) ) as $opt_pre ) {
 
-				$embed_html = $this->get_options( $mod_id, $prefix . '_vid_embed' );
-				$video_url  = $this->get_options( $mod_id, $prefix . '_vid_url' );
+				$embed_html = $this->get_options( $mod_id, $opt_pre . '_vid_embed' );
+				$video_url  = $this->get_options( $mod_id, $opt_pre . '_vid_url' );
 
 				/**
 				 * Retrieve one or more videos from the embed HTML code . 
 				 */
 				if ( ! empty( $embed_html ) ) {
+
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'fetching video(s) from custom ' . $prefix . ' embed code',
+						$this->p->debug->log( 'fetching video(s) from custom ' . $opt_pre . ' embed code',
 							get_class( $this ) );	// log extended class name
 					}
+
 					$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num, $mod, $check_dupes, $embed_html ) );
 				}
 
 				if ( ! empty( $video_url ) && ( $check_dupes == false || $this->p->util->is_uniq_url( $video_url ) ) ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'fetching video from custom ' . $prefix . ' url ' . $video_url, get_class( $this ) );
+						$this->p->debug->log( 'fetching video from custom ' . $opt_pre . ' url ' . $video_url, get_class( $this ) );
 					}
 
 					$args = array(
-						'url'    => $video_url,
-						'width'  => WPSSO_UNDEF_INT,
-						'height' => WPSSO_UNDEF_INT,
-						'type' => '',
+						'url'      => $video_url,
+						'width'    => WPSSO_UNDEF_INT,
+						'height'   => WPSSO_UNDEF_INT,
+						'type'     => '',
 						'prev_url' => '',
-						'post_id' => null,
-						'api' => '',
+						'post_id'  => null,
+						'api'      => '',
 					);
 
 					$og_videos = $this->p->media->get_video_info( $args, $check_dupes, true );
@@ -1375,55 +1387,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			}
 
 			return $og_ret;
-		}
-
-		public function get_og_preview_image( $mod, $check_dupes = false, $md_pre = 'og' ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log_args( array( 
-					'mod'         => $mod,
-					'check_dupes' => $check_dupes,
-					'md_pre'      => $md_pre,
-				), get_class( $this ) );
-			}
-
-			$og_images = array();
-
-			/**
-			 * Fallback to value from general plugin settings.
-			 */
-			if ( ( $use_prev_img = $this->get_options( $mod['id'], 'og_vid_prev_img' ) ) === null ) {
-				$use_prev_img = $this->p->options['og_vid_prev_img'];
-			}
-
-			/**
-			 * Get video preview images if allowed.
-			 */
-			if ( ! empty( $use_prev_img ) ) {
-
-				/**
-				 * Assumes the first video will have a preview image.
-				 */
-				$og_videos = $this->p->og->get_all_videos( 1, $mod, $check_dupes, $md_pre );
-
-				if ( ! empty( $og_videos ) && is_array( $og_videos ) ) {
-
-					foreach ( $og_videos as $og_single_video ) {
-
-						if ( ! empty( $og_single_video['og:image'] ) ) {
-
-							$og_images[] = $og_single_video;
-
-							break;
-						}
-					}
-				}
-
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'skipped preview image - use_prev_img is empty' );
-			}
-
-			return $og_images;
 		}
 
 		public function get_og_type_reviews( $mod_id, $og_type = 'product', $rating_meta = 'rating' ) {

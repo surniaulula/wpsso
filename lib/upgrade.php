@@ -160,6 +160,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'og_page_title_tag'   => '',
 					'og_page_parent_tags' => '',
 				),
+				582 => array(
+					'add_meta_property_og:image' => 'add_meta_property_og:image:url',
+				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG
 				2 => array(
@@ -294,9 +297,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 557 ) {
+
 					if ( isset( $opts['plugin_cm_fb_label'] ) && $opts['plugin_cm_fb_label'] === 'Facebook URL' ) {
 						$opts['plugin_cm_fb_label'] = 'Facebook User URL';
 					}
+
 					SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
 				}
 

@@ -427,7 +427,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						foreach ( $mt_og['og:video'] as $num => $og_single_video ) {
 
-							$image_url = SucomUtil::get_mt_media_url( $og_single_video, 'og:image' );
+							$image_url = SucomUtil::get_mt_media_url( $og_single_video );
 
 							/**
 							 * Check preview images for duplicates since the same videos may be available in
@@ -967,48 +967,62 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$ret = array();
-			$pdir = $this->p->avail['*']['p_dir'];
-			$aop = $this->p->check->aop( $this->p->lca, true, $pdir );
+			$ret       = array();
+			$pdir      = $this->p->avail['*']['p_dir'];
+			$aop       = $this->p->check->aop( $this->p->lca, true, $pdir );
 			$og_images = null;
 			$og_videos = null;
 
 			foreach ( $request as $key ) {
+
 				switch ( $key ) {
+
 					case 'pid':
 					case ( preg_match( '/^(image|img)/', $key ) ? true : false ):
+
 						if ( null === $og_images ) {	// get images only once
 							$og_images = $this->get_all_images( 1, $size_name, $mod, false, $md_pre );
 						}
+
 						break;
+
 					case ( preg_match( '/^(vid|prev)/', $key ) ? true : false ):
+
 						if ( null === $og_videos && $aop ) {	// get videos only once
 							$og_videos = $this->get_all_videos( 1, $mod, false, $md_pre );	// $check_dupes = false
 						}
+
 						break;
 				}
 			}
 
 			foreach ( $request as $key ) {
+
 				switch ( $key ) {
+
 					case 'pid':
+
 						if ( ! isset( $get_mt_name ) ) {
 							$get_mt_name = $mt_pre.':image:id';
 						}
+
 						// no break - fall through
+
 					case 'image':
 					case 'img_url':
+
 						if ( ! isset( $get_mt_name ) ) {
-							$get_mt_name = $mt_pre.':image';
+							$get_mt_name = $mt_pre . ':image';
 						}
+
 						// no break - fall through
 
 						if ( $og_videos !== null ) {
-							$ret[$key] = $this->get_media_value( $get_mt_name, $og_videos );
+							$ret[$key] = $this->get_media_value( $og_videos, $get_mt_name );
 						}
 
 						if ( empty( $ret[$key] ) ) {
-							$ret[$key] = $this->get_media_value( $get_mt_name, $og_images );
+							$ret[$key] = $this->get_media_value( $og_images, $get_mt_name );
 						}
 
 						/**
@@ -1017,36 +1031,68 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 */
 						if ( empty( $ret[$key] ) && $mod['is_post'] ) {
 							$og_images = $this->p->media->get_default_images( 1, $size_name, false );	// $check_dupes is false.
-							$ret[$key] = $this->get_media_value( $get_mt_name, $og_images );
+							$ret[$key] = $this->get_media_value( $og_images, $get_mt_name );
 						}
+
 						break;
+
+					case 'img_alt':
+
+						$ret[$key] = $this->get_media_value( $og_images, $mt_pre.':image:alt' );
+
+						break;
+
 					case 'video':
 					case 'vid_url':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video', $og_videos );
+
+						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video' );
+
 						break;
+
 					case 'vid_type':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video:type', $og_videos );
+
+						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video:type' );
+
 						break;
+
 					case 'vid_title':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video:title', $og_videos );
+
+						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video:title' );
+
 						break;
+
 					case 'vid_desc':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video:description', $og_videos );
+
+						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video:description' );
+
 						break;
+
 					case 'vid_width':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video:width', $og_videos );
+
+						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video:width' );
+
 						break;
+
 					case 'vid_height':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video:height', $og_videos );
+
+						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video:height' );
+
 						break;
+
 					case 'prev_url':
 					case 'preview':
-						$ret[$key] = $this->get_media_value( $mt_pre.':video:thumbnail_url', $og_videos );
+
+						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video:thumbnail_url' );
+
 						break;
+
 					default:
+
 						$ret[$key] = '';
+
 						break;
 				}
+
 				unset( $get_mt_name );
 			}
 
@@ -1057,7 +1103,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $ret;
 		}
 
-		public function get_media_value( $prefix, $mt_og ) {
+		public function get_media_value( $mt_og, $mt_media_pre ) {
 
 			if ( empty( $mt_og ) || ! is_array( $mt_og ) ) {
 				return '';
@@ -1065,32 +1111,49 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$og_media = reset( $mt_og );	// only search the first media array
 
-			switch ( $prefix ) {
-				// if we're asking for an image or video url, then search all three values sequentially
-				case ( preg_match( '/:(image|video)(:secure_url|:url)?$/', $prefix ) ? true : false ):
+			switch ( $mt_media_pre ) {
+
+				/**
+				 * If we're asking for an image or video url, then search all three values sequentially.
+				 */
+				case ( preg_match( '/:(image|video)(:secure_url|:url)?$/', $mt_media_pre ) ? true : false ):
+
 					$mt_search = array(
-						$prefix.':secure_url',	// og:image:secure_url
-						$prefix.':url',		// og:image:url
-						$prefix,		// og:image
+						$mt_media_pre . ':secure_url',	// og:image:secure_url
+						$mt_media_pre . ':url',		// og:image:url
+						$mt_media_pre,		// og:image
 					);
+
 					break;
-				// otherwise, only search for that specific meta tag name
+
+				/**
+				 * Otherwise, only search for that specific meta tag name.
+				 */
 				default:
-					$mt_search = array( $prefix );
+
+					$mt_search = array( $mt_media_pre );
+
 					break;
 			}
 
 			foreach ( $mt_search as $key ) {
+
 				if ( ! isset( $og_media[$key] ) ) {
+
 					continue;
-				} elseif ( $og_media[$key] === '' || $og_media[$key] === null ) {	// allow for 0
+
+				} elseif ( $og_media[$key] === '' || $og_media[$key] === null ) {	// Allow for 0.
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $og_media[$key].' value is empty (skipped)' );
 					}
+
 				} elseif ( $og_media[$key] === WPSSO_UNDEF_INT || $og_media[$key] === (string) WPSSO_UNDEF_INT ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $og_media[$key].' value is '.WPSSO_UNDEF_INT.' (skipped)' );
 					}
+
 				} else {
 					return $og_media[$key];
 				}

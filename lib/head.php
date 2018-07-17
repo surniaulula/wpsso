@@ -281,9 +281,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Save the first image and video information found. Assumes array key order
 			 * defined by SucomUtil::get_mt_image_seed() and SucomUtil::get_mt_video_seed().
 			 */
-			foreach ( array( 'og:image', 'og:video', 'p:image' ) as $prefix ) {
+			foreach ( array( 'og:image', 'og:video', 'p:image' ) as $mt_prefix ) {
 
-				if ( empty( $has_media[$prefix] ) ) {
+				if ( empty( $has_media[$mt_prefix] ) ) {
 					continue;
 				}
 
@@ -295,14 +295,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						continue;
 					}
 
-					if ( strpos( $mt[3], $prefix ) !== 0 ) {
+					if ( strpos( $mt[3], $mt_prefix ) !== 0 ) {
 
 						$is_first = false;
 
 						/**
 						 * If we already found media, then skip to the next media prefix.
 						 */
-						if ( ! empty( $head_info[$prefix] ) ) {
+						if ( ! empty( $head_info[$mt_prefix] ) ) {
 							continue 2;
 						} else {
 							continue;	// Skip meta tags without matching prefix.
@@ -313,20 +313,20 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					switch ( $mt_match ) {
 
-						case ( preg_match( '/^property-'.$prefix.'(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
+						case ( preg_match( '/^property-'.$mt_prefix.'(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
 
-							if ( ! empty( $head_info[$prefix] ) ) {	// Only save the media URL once.
+							if ( ! empty( $head_info[$mt_prefix] ) ) {	// Only save the media URL once.
 								continue 2;			// Get the next meta tag.
 							}
 
 							if ( ! empty( $mt[5] ) ) {
-								$head_info[$prefix] = $mt[5];	// Save the media URL.
+								$head_info[$mt_prefix] = $mt[5];	// Save the media URL.
 								$is_first = true;
 							}
 
 							break;
 
-						case ( preg_match( '/^property-'.$prefix.':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
+						case ( preg_match( '/^property-'.$mt_prefix.':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
 
 							if ( $is_first !== true ) {		// Only save for first media found.
 								continue 2;			// Get the next meta tag.
@@ -780,14 +780,19 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 								}
 
 								if ( is_array( $ddd_val ) ) {
+
 									if ( empty( $ddd_val ) ) {
+
 										$singles[] = $this->get_single_mt( $tag,
 											$type, $ddd_name, '', '', $mod );
+
 									} else foreach ( $ddd_val as $dddd_num => $dddd_val ) {	// Fourth dimension array.
+
 										$singles[] = $this->get_single_mt( $tag,
 											$type, $ddd_name, $dddd_val, $d_name.':'.
 												( $dd_num + 1 ), $mod );
 									}
+
 								} else {
 									$singles[] = $this->get_single_mt( $tag,
 										$type, $ddd_name, $ddd_val, $d_name.':'.
@@ -811,9 +816,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$merged = array();
 
 			foreach ( $singles as $num => $element ) {
+
 				foreach ( $element as $parts ) {
 					$merged[] = $parts;
 				}
+
 				unset ( $singles[$num] );
 			}
 
@@ -982,8 +989,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 */
 					case 'og:title':
 					case 'og:description':
+					case 'og:image:alt':
 					case 'twitter:title':
 					case 'twitter:description':
+					case 'twitter:image:alt':
 					case 'description':
 					case 'name':
 
@@ -994,15 +1003,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					/**
 					 * Url values that must be url encoded.
 					 */
-					case 'og:url':
 					case 'og:secure_url':
-					case 'og:image':
-					case 'og:image:url':
+					case 'og:url':
 					case 'og:image:secure_url':
-					case 'og:video':
-					case 'og:video:url':
-					case 'og:video:secure_url':
+					case 'og:image:url':
+					case 'og:image':
 					case 'og:video:embed_url':
+					case 'og:video:secure_url':
+					case 'og:video:url':
+					case 'og:video':
 					case 'place:business:menu_url':
 					case 'place:business:order_url':
 					case 'twitter:image':

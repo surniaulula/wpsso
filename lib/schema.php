@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$size_name = $this->p->lca . '-schema';
 			$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, 'schema' );	// $md_pre = 'schema'
-			$image_url = SucomUtil::get_mt_media_url( $og_images, 'og:image' );
+			$image_url = SucomUtil::get_mt_media_url( $og_images );
 
 			if ( ! empty( $image_url ) ) {
 
@@ -1756,16 +1756,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Pass a single or two dimension image array in $og_images.
 		 */
-		public static function add_og_image_list_data( &$json_data, &$og_images, $prefix = 'og:image' ) {
+		public static function add_og_image_list_data( &$json_data, &$og_images, $mt_image_pre = 'og:image' ) {
 
 			$images_added = 0;
 
 			if ( isset( $og_images[0] ) && is_array( $og_images[0] ) ) {						// 2 dimensional array
+
 				foreach ( $og_images as $og_single_image ) {
-					$images_added += self::add_og_single_image_data( $json_data, $og_single_image, $prefix, true );	// $list_element is true.
+					$images_added += self::add_og_single_image_data( $json_data, $og_single_image, $mt_image_pre, true );	// $list_element is true.
 				}
+
 			} elseif ( is_array( $og_images ) ) {
-				$images_added += self::add_og_single_image_data( $json_data, $og_images, $prefix, true );	// $list_element is true.
+
+				$images_added += self::add_og_single_image_data( $json_data, $og_images, $mt_image_pre, true );	// $list_element is true.
 			}
 
 			return $images_added;	// return count of images added
@@ -1774,7 +1777,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Pass a single dimension image array in $opts.
 		 */
-		public static function add_og_single_image_data( &$json_data, $opts, $prefix = 'og:image', $list_element = true ) {
+		public static function add_og_single_image_data( &$json_data, $opts, $mt_image_pre = 'og:image', $list_element = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1785,12 +1788,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return 0;	// return count of images added
 			}
 
-			$image_url = SucomUtil::get_mt_media_url( $opts, $prefix );
+			$image_url = SucomUtil::get_mt_media_url( $opts, $mt_image_pre );
 
 			if ( empty( $image_url ) ) {
 
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: ' . $prefix . ' URL values are empty' );
+					$wpsso->debug->log( 'exiting early: ' . $mt_image_pre . ' URL values are empty' );
 				}
 
 				return 0;	// return count of images added
@@ -1809,10 +1812,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * If we have an ID, and it's numeric (so exclude NGG v1 image IDs), 
 			 * check the WordPress Media Library for a title and description.
 			 */
-			if ( ! empty( $opts[$prefix . ':id'] ) && is_numeric( $opts[$prefix . ':id'] ) ) {
+			if ( ! empty( $opts[$mt_image_pre . ':id'] ) && is_numeric( $opts[$mt_image_pre . ':id'] ) ) {
 
 				$wpsso   = Wpsso::get_instance();
-				$post_id = $opts[$prefix . ':id'];
+				$post_id = $opts[$mt_image_pre . ':id'];
 				$mod     = $wpsso->m['util']['post']->get_mod( $post_id );
 
 				/**
@@ -1882,16 +1885,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			foreach ( array( 'width', 'height' ) as $prop_name ) {
-				if ( isset( $opts[$prefix . ':' . $prop_name] ) && $opts[$prefix . ':' . $prop_name] > 0 ) {	// Just in case.
-					$ret[$prop_name] = $opts[$prefix . ':' . $prop_name];
+				if ( isset( $opts[$mt_image_pre . ':' . $prop_name] ) && $opts[$mt_image_pre . ':' . $prop_name] > 0 ) {	// Just in case.
+					$ret[$prop_name] = $opts[$mt_image_pre . ':' . $prop_name];
 				}
 			}
 
-			if ( ! empty( $opts[$prefix . ':tag'] ) ) {
-				if ( is_array( $opts[$prefix . ':tag'] ) ) {
-					$ret['keywords'] = implode( ', ', $opts[$prefix . ':tag'] );
+			if ( ! empty( $opts[$mt_image_pre . ':tag'] ) ) {
+				if ( is_array( $opts[$mt_image_pre . ':tag'] ) ) {
+					$ret['keywords'] = implode( ', ', $opts[$mt_image_pre . ':tag'] );
 				} else {
-					$ret['keywords'] = $opts[$prefix . ':tag'];
+					$ret['keywords'] = $opts[$mt_image_pre . ':tag'];
 				}
 			}
 
@@ -2920,7 +2923,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Images
 			 */
 			if ( ! empty( $person_opts['person_og_image'] ) ) {
-				if ( ! self::add_og_image_list_data( $ret['image'], $person_opts['person_og_image'], 'og:image' ) ) {
+				if ( ! self::add_og_image_list_data( $ret['image'], $person_opts['person_og_image'] ) ) {
 					unset( $ret['image'] );	// prevent null assignment
 				}
 			}
@@ -3100,7 +3103,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Image
 			 */
 			if ( ! empty( $place_opts['place_img_id'] ) || ! empty( $place_opts['place_img_url'] ) ) {
+
 				$mt_image = $wpsso->media->get_opts_single_image( $place_opts, $size_name, 'place_img' );
+
 				if ( ! self::add_og_single_image_data( $ret['image'], $mt_image, 'og:image', true ) ) {	// $list_element is true.
 					unset( $ret['image'] );	// Prevent null assignment.
 				}
@@ -3191,7 +3196,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				foreach ( $og_images as $og_single_image ) {
-					$mt_schema['image'][] = SucomUtil::get_mt_media_url( $og_single_image, 'og:image' );
+					$mt_schema['image'][] = SucomUtil::get_mt_media_url( $og_single_image );
 				}
 			}
 
@@ -3341,7 +3346,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return true;
 		}
 
-		public function get_single_image_noscript( array &$mod, &$mixed, $prefix = 'og:image' ) {
+		public function get_single_image_noscript( array &$mod, &$mixed, $mt_image_pre = 'og:image' ) {
 
 			$mt_image = array();
 
@@ -3351,11 +3356,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			} elseif ( is_array( $mixed ) ) {
 
-				$image_url = SucomUtil::get_mt_media_url( $mixed, $prefix );
+				$image_url = SucomUtil::get_mt_media_url( $mixed, $mt_image_pre );
 
 				if ( empty( $image_url ) ) {
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: ' . $prefix . ' url values are empty' );
+						$this->p->debug->log( 'exiting early: ' . $mt_image_pre . ' url values are empty' );
 					}
 					return array();
 				}
@@ -3365,10 +3370,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				$mt_image = array_merge(
 					$this->p->head->get_single_mt( 'link', 'itemprop', 'image.url', $image_url, '', $mod ),
-					( empty( $mixed[$prefix . ':width'] ) ? array() : $this->p->head->get_single_mt( 'meta',
-						'itemprop', 'image.width', $mixed[$prefix . ':width'], '', $mod ) ),
-					( empty( $mixed[$prefix . ':height'] ) ? array() : $this->p->head->get_single_mt( 'meta',
-						'itemprop', 'image.height', $mixed[$prefix . ':height'], '', $mod ) )
+					( empty( $mixed[$mt_image_pre . ':width'] ) ? array() : $this->p->head->get_single_mt( 'meta',
+						'itemprop', 'image.width', $mixed[$mt_image_pre . ':width'], '', $mod ) ),
+					( empty( $mixed[$mt_image_pre . ':height'] ) ? array() : $this->p->head->get_single_mt( 'meta',
+						'itemprop', 'image.height', $mixed[$mt_image_pre . ':height'], '', $mod ) )
 				);
 
 			} else {
@@ -3514,7 +3519,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	
 				foreach ( $og_images as $og_single_image ) {
 
-					$image_url = SucomUtil::get_mt_media_url( $og_single_image, 'og:image' );
+					$image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
 					if ( ! empty( $image_url ) ) {
 						$mt_author = array_merge( $mt_author, $this->p->head->get_single_mt( 'link',

@@ -162,7 +162,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 								case 'text/html':
 
 									if ( empty( $player_embed_url ) ) {
+
 										$player_embed_url = SucomUtil::get_mt_media_url( $og_video, 'og:video' );
+
 										if ( $this->p->debug->enabled ) {
 											$this->p->debug->log( 'player card: ' . $og_video['og:video:type'] .
 												' url = ' . $player_embed_url );
@@ -177,7 +179,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 								case 'video/mp4':
 
 									if ( empty( $player_stream_url ) ) {
+
 										$player_stream_url = SucomUtil::get_mt_media_url( $og_video, 'og:video' );
+
 										if ( $this->p->debug->enabled ) {
 											$this->p->debug->log( 'player card: ' . $og_video['og:video:type'] .
 												' url = ' . $player_stream_url );
@@ -240,16 +244,18 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							/**
 							 * Get the video preview image (if one is available).
 							 */
-							$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $og_video, 'og:image' );
+							$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $og_video );
 
 							/**
 							 * Fallback to the open graph image.
 							 */
 							if ( empty( $mt_tc['twitter:image'] ) && ! empty( $mt_og['og:image'] ) ) {
+
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'player card: no video image - using og:image instead' );
 								}
-								$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $mt_og['og:image'], 'og:image' );
+
+								$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $mt_og['og:image'] );
 							}
 						}
 
@@ -288,9 +294,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						if ( count( $og_images ) > 0 ) {
 
 							$og_single_image = reset( $og_images );
+							$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
 							$mt_tc['twitter:card']  = $card_type;
-							$mt_tc['twitter:image'] = $og_single_image['og:image'];
+							$mt_tc['twitter:image'] = $og_single_image_url;
 
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'no default image returned' );
@@ -321,9 +328,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						if ( count( $og_images ) > 0 ) {
 
 							$og_single_image = reset( $og_images );
+							$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
 							$mt_tc['twitter:card']  = $card_type;
-							$mt_tc['twitter:image'] = $og_single_image['og:image'];
+							$mt_tc['twitter:image'] = $og_single_image_url;
 
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'no post image returned' );
@@ -350,22 +358,28 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 								if ( ! empty( $og_images ) ) {
 
 									$og_single_image = reset( $og_images );
+									$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
+
 									$mt_tc['twitter:card'] = $card_type;
-									$mt_tc['twitter:image'] = $og_single_image['og:image'];
+									$mt_tc['twitter:image'] = $og_single_image_url;
 
 								} elseif ( $this->p->debug->enabled ) {
 									$this->p->debug->log( $card_type . ' card: ngg singlepic image not found' );
 								}
+
 							} elseif ( $this->p->debug->enabled ) {
 								$this->p->debug->log( $card_type . ' card: ngg not defined - singlepic image skipped' );
 							}
+
 						} elseif ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $card_type . ' card: ngg not available - singlepic image skipped' );
 						}
 					}
+
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'empty post_id: skipped post images' );
 				}
+
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'images disabled: maximum images = 0' );
 			}
@@ -392,8 +406,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				if ( count( $og_images ) > 0 ) {
 
 					$og_single_image = reset( $og_images );
+					$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
-					$mt_tc['twitter:image'] = $og_single_image['og:image'];
+					$mt_tc['twitter:image'] = $og_single_image_url;
 
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'no content image returned' );

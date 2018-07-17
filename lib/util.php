@@ -197,42 +197,42 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * $opt_keys can be a single key name or an array of key names.
+		 * $opt_prefixes can be a single key name or an array of key names.
 		 * Uses a reference variable to modify the $opts array directly.
 		 */
-		public function add_image_url_size( $opt_keys, array &$opts ) {
+		public function add_image_url_size( array &$opts, $opt_prefixes = 'og:image' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! is_array( $opt_keys ) ) {
-				$opt_keys = array( $opt_keys );
+			if ( ! is_array( $opt_prefixes ) ) {
+				$opt_prefixes = array( $opt_prefixes );
 			}
 
-			foreach ( $opt_keys as $opt_prefix ) {
+			foreach ( $opt_prefixes as $opt_image_pre ) {
 
 				$opt_suffix = '';
 
-				if ( preg_match( '/^(.*)(#.*)$/', $opt_prefix, $matches ) ) {	// Language.
-					$opt_prefix = $matches[1];
-					$opt_suffix = $matches[2] . $opt_suffix;
+				if ( preg_match( '/^(.*)(#.*)$/', $opt_image_pre, $matches ) ) {	// Language.
+					$opt_image_pre = $matches[1];
+					$opt_suffix    = $matches[2] . $opt_suffix;
 				}
 
-				if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {	// Multi-option.
-					$opt_prefix = $matches[1];
-					$opt_suffix = $matches[2] . $opt_suffix;
+				if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_image_pre, $matches ) ) {	// Multi-option.
+					$opt_image_pre = $matches[1];
+					$opt_suffix    = $matches[2] . $opt_suffix;
 				}
 
-				$media_url = SucomUtil::get_mt_media_url( $opts, $opt_prefix . $opt_suffix );
+				$media_url = SucomUtil::get_mt_media_url( $opts, $opt_image_pre . $opt_suffix );
 
 				if ( ! empty( $media_url ) ) {
 
 					$image_info = $this->get_image_url_info( $media_url );
 
 					list(
-						$opts[$opt_prefix . ':width' . $opt_suffix],	// Example 'place_addr_img_url:width_1'.
-						$opts[$opt_prefix . ':height' . $opt_suffix],	// Example 'place_addr_img_url:height_1'.
+						$opts[$opt_image_pre . ':width' . $opt_suffix],		// Example 'place_addr_img_url:width_1'.
+						$opts[$opt_image_pre . ':height' . $opt_suffix],	// Example 'place_addr_img_url:height_1'.
 						$image_type,
 						$image_attr
 					) = $image_info;
@@ -371,7 +371,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $cache_exp_secs > 0 ) {
+
 				set_transient( $cache_id, $image_info, $cache_exp_secs );
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'image info saved to transient cache for '.$cache_exp_secs.' seconds' );
 				}
@@ -2271,7 +2273,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 * Get maximum media values from custom meta or plugin settings.
 		 */
 		public function get_max_nums( array &$mod, $opt_pre = 'og' ) {
-			$max = array();
+
+			$max_nums = array();
 			$opt_keys = array( $opt_pre.'_vid_max', $opt_pre.'_img_max' );
 
 			foreach ( $opt_keys as $max_key ) {
@@ -2286,17 +2289,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 * Quick sanitation of returned value.
 				 */
 				if ( $max_val !== null & is_numeric( $max_val ) && $max_val >= 0 ) {
-					$max[$max_key] = $max_val;
+
+					$max_nums[$max_key] = $max_val;
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'found custom meta '.$max_key.' = '.$max_val );
 					}
+
 				} else {
-					$max[$max_key] = isset( $this->p->options[$max_key] ) ?	// fallback to options
+
+					$max_nums[$max_key] = isset( $this->p->options[$max_key] ) ?	// fallback to options
 						$this->p->options[$max_key] : 0;
 				}
 			}
 
-			return $max;
+			return $max_nums;
 		}
 
 		public function safe_apply_filters( array $args, array $mod, $max_time = 0, $hook_bfo = false ) {

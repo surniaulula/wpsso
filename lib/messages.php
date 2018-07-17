@@ -1951,18 +1951,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 * The $idx value has already been added to the purchase URL as a 'utm_source' query value.
 						 */
 						$begin_p = '<p class="pro-feature-msg">' .
-							( empty( $url['purchase'] ) ? '' : '<a href="'.$url['purchase'].'">' );
+							( empty( $url['purchase'] ) ? '' : '<a href="' . $url['purchase'] . '">' );
 
 						$end_p   = ( empty( $url['purchase'] ) ? '' : '</a>' ) . '</p>';
 
 						if ( $lca === $this->p->lca ) {
 
 							if ( $this->p->check->aop( $lca, false ) ) {
-								$text = $begin_p.sprintf( __( 'Purchase %s plugin license(s) to use the following features / options.',
-									'wpsso' ), $info['short_pro'] ).$end_p;
+								$text = $begin_p . sprintf( __( 'Purchase %s plugin license(s) to use the following features / options.',
+									'wpsso' ), $info['short_pro'] ) . $end_p;
 							} else {
-								$text = $begin_p.sprintf( __( 'Purchase the %s plugin to install the Pro update and use the following features / options.',
-									'wpsso' ), $info['short_pro'] ).$end_p;
+								$text = $begin_p . sprintf( __( 'Purchase the %s plugin to install the Pro update and use the following features / options.',
+									'wpsso' ), $info['short_pro'] ) . $end_p;
 							}
 
 						} else {
@@ -1970,17 +1970,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$pdir = $this->p->avail['*']['p_dir'];
 
 							if ( ! $this->p->check->aop( $this->p->lca, true, $pdir ) ) {
-								$req_short = $this->p->cf['plugin'][$this->p->lca]['short'].' Pro';
-								$req_msg   = sprintf( __( '(note that all Pro add-ons require a licensed and active %1$s plugin)', 'wpsso' ), $req_short );
-								$end_p     = ( empty( $url['purchase'] ) ? '' : '</a>' ).'<br/>'.$req_msg.'</p>';
+								$req_short = $this->p->cf['plugin'][$this->p->lca]['short'] . ' Pro';
+								$req_msg   = sprintf( __( '(note that all Pro add-ons require a licensed and active %1$s plugin)',
+									'wpsso' ), $req_short );
+								$end_p     = ( empty( $url['purchase'] ) ? '' : '</a>' ) . '<br/>' . $req_msg . '</p>';
 							}
 
 							if ( $this->p->check->aop( $lca, false ) ) {
-								$text = $begin_p.sprintf( __( 'Purchase %s add-on licence(s) to use the following features / options.',
-									'wpsso' ), $info['short_pro'] ).$end_p;
+								$text = $begin_p . sprintf( __( 'Purchase %s add-on licence(s) to use the following features / options.',
+									'wpsso' ), $info['short_pro'] ) . $end_p;
 							} else {
-								$text = $begin_p.sprintf( __( 'Purchase the %s add-on to install the Pro update and use the following features / options.',
-									'wpsso' ), $info['short_pro'] ).$end_p;
+								$text = $begin_p . sprintf( __( 'Purchase the %s add-on to install the Pro update and use the following features / options.',
+									'wpsso' ), $info['short_pro'] ) . $end_p;
 							}
 						}
 
