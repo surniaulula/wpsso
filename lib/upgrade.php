@@ -164,9 +164,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'add_meta_property_og:image' => 'add_meta_property_og:image:url',
 				),
 				583 => array(
-					'og_ngg_tags'          => '',
+					'og_author_fallback'   => '',
 					'og_def_img_on_index'  => '',
 					'og_def_img_on_search' => '',
+					'og_ngg_tags'          => '',
 				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG
