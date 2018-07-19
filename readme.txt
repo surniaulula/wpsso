@@ -334,6 +334,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Renamed the 'og:image' meta tag to 'og:image:url'.
 	* Added an 'og:image:alt' meta tag for images provided by WordPress Media Library.
+	* Removed the following SSO > General > Authorship options:
+		* Fallback to Author's Archive Page
+	* Removed the following SSO > General > Images options:
+		* Use Default Image on Archive Pages
+		* Use Default Image on Search Results
 * *Bugfixes*
 	* Fixed the default / initial order of image and video meta tags.
 * *Developer Notes*
