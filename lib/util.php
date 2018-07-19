@@ -959,6 +959,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$mods = array();
 
+			$this->add_plugin_image_sizes();
+
 			foreach ( WpssoPost::get_public_post_ids() as $post_id ) {
 				$mods[] = $this->p->m['util']['post']->get_mod( $post_id );
 			}

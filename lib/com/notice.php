@@ -327,7 +327,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				$context_transl = $this->get_ref( 'context_transl', '', ' - ' );
 
-				$url_link = '<a href="' . $url . '">' . strtolower( $url ) . '</a>';
+				$pretty_url = strtolower( str_replace( home_url(), '', $url ) );
+
+				$url_link = '<a href="' . $url . '">' . $pretty_url . '</a>';
 
 				$edit_link = $this->get_ref( 'edit', ' (<a href="', '">' . __( 'edit', $this->text_domain ) . '</a>)' );
 

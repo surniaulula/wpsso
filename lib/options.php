@@ -214,10 +214,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'options are a valid array' );
 				}
 
+				$def_opts = null;	// Optimize and only get array when needed.
+
 				$has_diff_version = false;
 				$has_diff_options = false;
-				$has_new_options  = empty( $opts['options_version'] ) ? true : false;
-				$def_opts         = null;	// Optimize and only get array when needed.
+
+				$has_new_options = empty( $opts['options_version'] ) ? true : false;
+				$current_version = $has_new_options ? 0 : $opts['options_version'];
+				$latest_version  = $this->p->cf['opt']['version'];
+				$doing_upgrade   = $has_new_options || ! $has_diff_options || $current_version === $latest_version ? false : true;
 
 				/**
 				 * Check for new plugin versions.
@@ -231,8 +236,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$version_key = 'plugin_'.$ext.'_version';
 
 					if ( empty( $opts[$version_key] ) || version_compare( $opts[$version_key], $info['version'], '!=' ) ) {
+
 						WpssoUtil::save_time( $ext, $info['version'], 'update' );
+
 						$opts[$version_key] = $info['version'];
+
 						$has_diff_version = true;
 					}
 
@@ -242,14 +250,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Upgrade the options array if necessary (renamed or remove keys).
 				 */
-				if ( ! $has_new_options && $opts['options_version'] !== $this->p->cf['opt']['version'] ) {
+				if ( ! $has_new_options && $current_version !== $latest_version ) {
 
 					$has_diff_options = true;
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $options_name.' v'.$this->p->cf['opt']['version'].
-							' different than saved v'.( empty( $opts['options_version'] ) ?
-								0 : $opts['options_version'] ) );
+						$this->p->debug->log( $options_name.' current v'.$current_version.' different than latest v'.$latest_version );
 					}
 
 					if ( ! is_object( $this->upg ) ) {
@@ -349,13 +355,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					 * disable the generator meta tags, requests for plugin support will be denied.
 					 */
 					$opts['add_meta_name_generator'] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
+
+					$this->check_banner_image_size( $opts );
 				}
 
 				/**
 				 * Save options and show reminders.
 				 */
 				if ( $has_diff_version || $has_diff_options ) {
+
 					if ( ! $has_new_options ) {
+
 						if ( null === $def_opts ) {	// Only get default options once.
 							if ( $network ) {
 								$def_opts = $this->get_site_defaults();
@@ -363,8 +373,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								$def_opts = $this->get_defaults();
 							}
 						}
+
 						$opts = $this->sanitize( $opts, $def_opts, $network );
 					}
+
 					$this->save_options( $options_name, $opts, $network, $has_diff_options );
 				}
 
@@ -376,7 +388,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				$opts = $this->p->util->add_ptns_to_opts( $opts, array(
-					'plugin_add_to' => 1,
+					'plugin_add_to'   => 1,
 					'schema_type_for' => 'webpage',
 				) );
 
@@ -408,16 +420,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				if ( is_admin() ) {
+
 					if ( $network ) {
 						$admin_url = $this->p->util->get_admin_url( 'network' );
 					} else {
 						$admin_url = $this->p->util->get_admin_url( 'general' );
 					}
+
 					$this->p->notice->err( $error_msg.' '.sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $admin_url ) );
 				}
 
 				$opts = $network ? $this->get_site_defaults() : $this->get_defaults();
 			}
+
+			do_action( $this->p->lca . '_check_options', $opts, $options_name, $network, $doing_upgrade );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'checking options' );	// end timer
@@ -914,23 +930,25 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			$has_new_options = empty( $opts['options_version'] ) ? true : false;
-			$prev_version    = $has_new_options ? '' : $opts['options_version'];	// Save the old version string to compare.
+			$current_version = $has_new_options ? 0 : $opts['options_version'];
+			$latest_version  = $this->p->cf['opt']['version'];
+			$doing_upgrade   = $has_new_options || ! $has_diff_options || $current_version === $latest_version ? false : true;
 
 			/**
 			 * Save the plugin version and options version.
 			 */
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+
 				if ( isset( $info['version'] ) ) {
 					$opts['plugin_'.$ext.'_version'] = $info['version'];
 				}
+
 				if ( isset( $info['opt_version'] ) ) {
 					$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];
 				}
 			}
 
-			$opts['options_version'] = $this->p->cf['opt']['version'];	// Mark the new options array as current.
-
-			$doing_upgrade = $has_new_options || ! $has_diff_options || $prev_version === $opts['options_version'] ? false : true;
+			$opts['options_version'] = $latest_version;	// Mark the new options array as current.
 
 			$opts = apply_filters( $this->p->lca . '_save_options', $opts, $options_name, $network, $doing_upgrade );
 
@@ -970,6 +988,58 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			return true;
+		}
+
+		private function check_banner_image_size( $opts ) {
+
+			if ( ! $this->p->notice->is_admin_pre_notices() ) {
+				return;
+			}
+
+			$name_transl        = _x( 'Organization Banner URL', 'option label', 'wpsso' );
+			$size_name          = null;	// Only check banner urls - skip any banner image id options.
+			$opt_img_pre        = 'schema_banner';
+
+			/**
+			 * Returns an image array:
+			 *
+			 * array(
+			 *	'og:image:url'     => null,
+			 *	'og:image:width'   => null,
+			 *	'og:image:height'  => null,
+			 *	'og:image:cropped' => null,
+			 *	'og:image:id'      => null,
+			 *	'og:image:alt'     => null,
+			 * );
+			 */
+			$og_single_image     = $this->p->media->get_opts_single_image( $opts, $size_name, $opt_img_pre );
+			$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
+
+			if ( ! empty( $og_single_image_url ) ) {
+
+				$image_href    = '<a href="' . $og_single_image_url . '">' . $og_single_image_url . '</a>';
+				$image_dims    = $og_single_image['og:image:width'] . 'x' . $og_single_image['og:image:height'] . 'px';
+				$required_dims = '600x60px';
+
+				if ( $image_dims !== $required_dims ) {
+
+					if ( $image_dims === '-1x-1px' ) {
+
+						$error_msg = sprintf( __( 'The %1$s image dimensions cannot be determined.',
+							'wpsso' ), $name_transl ) . ' ';
+
+						$error_msg .= sprintf( __( 'Please make sure this site can access the banner image at %1$s.',
+							'wpsso' ), $image_href );
+
+					} else {
+
+						$error_msg = sprintf( __( 'The %1$s image dimensions are %2$s and must be exactly %3$s.',
+							'wpsso' ), $name_transl, $image_dims, $required_dims );
+					}
+
+					$this->p->notice->err( $error_msg );
+				}
+			}
 		}
 
 		public function filter_option_type( $type, $base_key ) {

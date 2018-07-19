@@ -275,6 +275,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug->log( 'PHP version ' . phpversion() );
 					$this->debug->log( $this->check->get_ext_list() );
 				}
+
 			} else {
 				$this->debug = new SucomNoDebug();	// make sure debug property is always available
 			}

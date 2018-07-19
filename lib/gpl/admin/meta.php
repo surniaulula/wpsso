@@ -44,8 +44,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			$do_encode = true;
 
 			/**
-			 * The 'add_link_rel_canonical' and 'add_meta_name_description' options
-			 * will be empty if an SEO plugin is detected.
+			 * The 'add_link_rel_canonical' and 'add_meta_name_description' options will be empty if an SEO plugin is detected.
 			 */
 			$add_link_rel_canon = empty( $this->p->options['add_link_rel_canonical'] ) ? false : true;
 			$add_meta_name_desc = empty( $this->p->options['add_meta_name_description'] ) ? false : true;
@@ -70,9 +69,9 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
 			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
 				$json_info = $this->p->cf['plugin']['wpssojson'];
-				$json_msg_transl = '<p class="status-msg smaller">'.
+				$json_msg_transl = '<p class="status-msg smaller">' . 
 					sprintf( __( 'Activate the %s add-on for additional Schema markup features and options.',
-						'wpsso' ), '<a href="'.$json_info['url']['home'].'">'.$json_info['short'].'</a>' ).'</p>';
+						'wpsso' ), '<a href="' . $json_info['url']['home'] . '">' . $json_info['short'] . '</a>' ) . '</p>';
 			} else {
 				$json_msg_transl = '';
 			}
@@ -97,8 +96,8 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'label' => _x( 'Search Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) .
-						( $add_meta_name_desc ? '' : '<p class="status-msg smaller">'.
-							sprintf( $seo_msg_transl, 'meta name description' ).'</p>' ),
+						( $add_meta_name_desc ? '' : '<p class="status-msg smaller">' . 
+							sprintf( $seo_msg_transl, 'meta name description' ) . '</p>' ),
 				),
 				'tc_desc' => array(
 					'label' => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
@@ -116,8 +115,8 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 					'label' => _x( 'Canonical URL', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-canonical_url', 'td_class' => 'blank',
 					'content' => $form->get_no_input_value( $canonical_url, 'wide' ) .
-						( $add_link_rel_canon ? '' : '<p class="status-msg smaller">'.
-							sprintf( $seo_msg_transl, 'link rel canonical' ).'</p>' ),
+						( $add_link_rel_canon ? '' : '<p class="status-msg smaller">' . 
+							sprintf( $seo_msg_transl, 'link rel canonical' ) . '</p>' ),
 				),
 				'subsection_schema' => array(
 					'td_class' => 'subsection', 'header' => 'h4',
@@ -126,7 +125,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'schema_desc' => array(
 					'label' => _x( 'Schema Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
-					'content' => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ).
+					'content' => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ) . 
 						$json_msg_transl,
 				),
 			);
@@ -142,9 +141,9 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
 			if ( $mod['is_post'] && ( empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ) ) {
 
-				$table_rows[] = '<td><blockquote class="status-info"><p class="centered">'.
+				$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' . 
 					sprintf( __( 'Save a draft version or publish the %s to display these options.',
-						'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) ).'</p></td>';
+						'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) ) . '</p></td>';
 
 				return $table_rows;	// abort
 			}

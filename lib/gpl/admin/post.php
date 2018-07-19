@@ -37,8 +37,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$og_types  = $this->p->og->get_og_types_select( true ); // $add_none is true.
 
 			/**
-			 * The 'add_link_rel_canonical' and 'add_meta_name_description' options
-			 * will be empty if an SEO plugin is detected.
+			 * The 'add_link_rel_canonical' and 'add_meta_name_description' options will be empty if an SEO plugin is detected.
 			 */
 			$add_link_rel_canon = empty( $this->p->options['add_link_rel_canonical'] ) ? false : true;
 			$add_meta_name_desc = empty( $this->p->options['add_meta_name_description'] ) ? false : true;

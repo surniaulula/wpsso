@@ -375,7 +375,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$og_single_image[ $mt_pre . ':image:cropped' ],
 				$og_single_image[ $mt_pre . ':image:id' ],
 				$og_single_image[ $mt_pre . ':image:alt' ]
-			) = $this->get_attachment_image_src( $attach_id, $size_name, $check_dupes, $force_regen );
+			) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
 		}
 
 		/**
@@ -1047,7 +1047,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$check_dupes = false;
 			$force_regen = false;
-			$img_opts = array();
+			$img_opts    = array();
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
 				$opt_suf        = $opt_num === null ? $key : $key . '_' . $opt_num;	// Use a numbered multi-option key.
