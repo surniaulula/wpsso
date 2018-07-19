@@ -62,7 +62,6 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$post_id     = $mod['is_post'] ? $mod['id'] : false;
 			$check_dupes = false;
 
 			/**
@@ -205,16 +204,19 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						 * Set the twitter:player meta tag value(s).
 						 */
 						if ( ! empty( $player_embed_url ) ) {
-							$mt_tc['twitter:card'] = 'player';
+							$mt_tc['twitter:card']   = 'player';
 							$mt_tc['twitter:player'] = $player_embed_url;
 						}
 
 						if ( ! empty( $player_stream_url ) ) {
+
 							$mt_tc['twitter:card'] = 'player';
+
 							if ( empty( $mt_tc['twitter:player'] ) ) {
 								$mt_tc['twitter:player'] = $player_stream_url;	// Fallback to video/mp4.
 							}
-							$mt_tc['twitter:player:stream'] = $player_stream_url;
+
+							$mt_tc['twitter:player:stream']              = $player_stream_url;
 							$mt_tc['twitter:player:stream:content_type'] = $og_video['og:video:type'];
 						}
 
@@ -224,17 +226,17 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						if ( ! empty( $mt_tc['twitter:card'] ) ) {
 
 							foreach ( array(
-								'og:video:width' => 'twitter:player:width',
-								'og:video:height' => 'twitter:player:height',
-								'og:video:iphone_name' => 'twitter:app:name:iphone',
-								'og:video:iphone_id' => 'twitter:app:id:iphone',
-								'og:video:iphone_url' => 'twitter:app:url:iphone',
-								'og:video:ipad_name' => 'twitter:app:name:ipad',
-								'og:video:ipad_id' => 'twitter:app:id:ipad',
-								'og:video:ipad_url' => 'twitter:app:url:ipad',
+								'og:video:width'           => 'twitter:player:width',
+								'og:video:height'          => 'twitter:player:height',
+								'og:video:iphone_name'     => 'twitter:app:name:iphone',
+								'og:video:iphone_id'       => 'twitter:app:id:iphone',
+								'og:video:iphone_url'      => 'twitter:app:url:iphone',
+								'og:video:ipad_name'       => 'twitter:app:name:ipad',
+								'og:video:ipad_id'         => 'twitter:app:id:ipad',
+								'og:video:ipad_url'        => 'twitter:app:url:ipad',
 								'og:video:googleplay_name' => 'twitter:app:name:googleplay',
-								'og:video:googleplay_id' => 'twitter:app:id:googleplay',
-								'og:video:googleplay_url' => 'twitter:app:url:googleplay',
+								'og:video:googleplay_id'   => 'twitter:app:id:googleplay',
+								'og:video:googleplay_url'  => 'twitter:app:url:googleplay',
 							) as $og_name => $tc_name ) {
 								if ( ! empty( $og_video[$og_name] ) ) {
 									$mt_tc[$tc_name] = $og_video[$og_name];
@@ -268,74 +270,33 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			/**
-			 * All image cards.
+			 * Post image cards.
 			 */
 			if ( ! isset( $mt_tc['twitter:card'] ) ) {
 
-				/**
-				 * Default image for archive.
-				 */
-				if ( ! isset( $mt_tc['twitter:card'] ) && ! $mod['use_post'] ) {
-
-					list( $card_type, $size_name, $md_pre ) = $this->get_card_type_size( 'default' );
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'use_post is false: checking for forced default image' );
-					}
-
-					if ( $this->p->util->force_default_image( $mod, 'og' ) ) {
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $card_type . ' card: getting default image' );
-						}
-
-						$og_images = $this->p->media->get_default_images( 1, $size_name, $check_dupes );
-
-						if ( count( $og_images ) > 0 ) {
-
-							$og_single_image = reset( $og_images );
-							$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
-
-							$mt_tc['twitter:card']  = $card_type;
-							$mt_tc['twitter:image'] = $og_single_image_url;
-
-						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'no default image returned' );
-						}
-
-						$post_id = false;	// Skip additional image checks.
-
-					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $card_type . ' card: no forced default image' );
-					}
-				}
-
-				if ( ! empty( $post_id ) ) {
+				if ( $mod['is_post'] ) {
 
 					list( $card_type, $size_name, $md_pre ) = $this->get_card_type_size( 'post' );
 					
 					/**
 					 * Post meta image.
 					 */
-					if ( ! isset( $mt_tc['twitter:card'] ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( $card_type . ' card: getting post image (meta, featured, attached)' );
+					}
 
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $card_type . ' card: getting post image (meta, featured, attached)' );
-						}
+					$og_images = $this->p->media->get_post_images( 1, $size_name, $mod['id'], $check_dupes, $md_pre );
 
-						$og_images = $this->p->media->get_post_images( 1, $size_name, $post_id, $check_dupes, $md_pre );
+					if ( count( $og_images ) > 0 ) {
 
-						if ( count( $og_images ) > 0 ) {
+						$og_single_image     = reset( $og_images );
+						$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
-							$og_single_image = reset( $og_images );
-							$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
+						$mt_tc['twitter:card']  = $card_type;
+						$mt_tc['twitter:image'] = $og_single_image_url;
 
-							$mt_tc['twitter:card']  = $card_type;
-							$mt_tc['twitter:image'] = $og_single_image_url;
-
-						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'no post image returned' );
-						}
+					} elseif ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'no post image found' );
 					}
 
 					/**
@@ -353,14 +314,14 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 	
 								$ngg_obj =& $this->p->m['media']['ngg'];
 
-								$og_images = $ngg_obj->get_singlepic_og_images( 1, $size_name, $post_id, $check_dupes );
+								$og_images = $ngg_obj->get_singlepic_og_images( 1, $size_name, $mod['id'], $check_dupes );
 	
 								if ( ! empty( $og_images ) ) {
 
-									$og_single_image = reset( $og_images );
+									$og_single_image     = reset( $og_images );
 									$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
-									$mt_tc['twitter:card'] = $card_type;
+									$mt_tc['twitter:card']  = $card_type;
 									$mt_tc['twitter:image'] = $og_single_image_url;
 
 								} elseif ( $this->p->debug->enabled ) {
@@ -368,24 +329,21 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 								}
 
 							} elseif ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $card_type . ' card: ngg not defined - singlepic image skipped' );
+								$this->p->debug->log( $card_type . ' card: ngg module not defined - singlepic image skipped' );
 							}
 
 						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $card_type . ' card: ngg not available - singlepic image skipped' );
+							$this->p->debug->log( $card_type . ' card: ngg plugin not available - singlepic image skipped' );
 						}
 					}
 
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'empty post_id: skipped post images' );
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'images disabled: maximum images = 0' );
 			}
 
 			/**
-			 * Summary Card (default).
+			 * Default image card.
 			 */
 			if ( ! isset( $mt_tc['twitter:card'] ) ) {
 
@@ -398,7 +356,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$mt_tc['twitter:card'] = $card_type;
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $card_type . ' card: checking for content image' );
+					$this->p->debug->log( $card_type . ' card: checking all other images' );
 				}
 
 				$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false );
@@ -411,15 +369,19 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					$mt_tc['twitter:image'] = $og_single_image_url;
 
 				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'no content image returned' );
+					$this->p->debug->log( 'no other images found' );
 				}
 			}
 
 			if ( $this->p->debug->enabled ) {
-				if ( ! empty( $mt_tc['twitter:image'] ) ) {
-					$this->p->debug->log( $mt_tc['twitter:card'] . ' card: image ' . $mt_tc['twitter:image'] );
+				if ( ! empty( $mt_tc['twitter:card'] ) ) {
+					if ( ! empty( $mt_tc['twitter:image'] ) ) {
+						$this->p->debug->log( $mt_tc['twitter:card'] . ' card: image ' . $mt_tc['twitter:image'] );
+					} else {
+						$this->p->debug->log( $mt_tc['twitter:card'] . ' card: no image defined' );
+					}
 				} else {
-					$this->p->debug->log( $mt_tc['twitter:card'] . ' card: no image defined' );
+					$this->p->debug->log( 'no twitter card type defined' );
 				}
 			}
 

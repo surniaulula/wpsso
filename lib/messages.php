@@ -413,7 +413,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $idx ) {
 
-						case 'tooltip-og_img_dimensions':
+						case 'tooltip-og_img_max':	// Maximum Images to Include
+
+							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags &mdash; this includes the <em>featured</em> image, <em>attached</em> images, and any images found in the content.', 'wpsso' ).' ';
+							
+							$text .= __( 'If you select "0", then no images will be included in the Facebook / Open Graph meta tags (<strong>not recommended</strong>).', 'wpsso' ).' ';
+							
+							$text .= __( 'If no images are available in your meta tags, social sites may choose any image from your webpage (including headers, sidebars, thumbnails, etc.).', 'wpsso' );
+
+							break;
+
+						case 'tooltip-og_img_dimensions':	// Open Graph Image Dimensions
 
 							$def_dimensions = $this->p->opt->get_defaults( 'og_img_width' ).'x'.
 								$this->p->opt->get_defaults( 'og_img_height' ).' '.
@@ -426,13 +436,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_def_img_id':
+						case 'tooltip-og_def_img_id':	// Default / Fallback Image ID
 
 							$text = __( 'An image ID and media library selection for your default / fallback website image.', 'wpsso' ).' '.__( 'The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-og_def_img_url':
+						case 'tooltip-og_def_img_url':	// or Default / Fallback Image URL
 
 							$text = __( 'You can enter a default image URL (including the http:// prefix) instead of choosing an image ID &mdash; if a default image ID is specified, the image URL option is disabled.', 'wpsso' ).' ';
 							
@@ -441,28 +451,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ), $this->p->cf['head']['limit_min']['og_img_width'].'x'.$this->p->cf['head']['limit_min']['og_img_height'].'px' ).' ';
 							
 							$text .= __( 'The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-og_def_img_on_index':
-
-							$text = __( 'Check this option to force the default image on index / archive webpages (blog front page, tags, categories).', 'wpsso' );
-
-							break;
-
-						case 'tooltip-og_def_img_on_search':
-
-							$text = __( 'Check this option to force the default image on search result webpages.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-og_img_max':
-
-							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags &mdash; this includes the <em>featured</em> image, <em>attached</em> images, and any images found in the content.', 'wpsso' ).' ';
-							
-							$text .= __( 'If you select "0", then no images will be included in the Facebook / Open Graph meta tags (<strong>not recommended</strong>).', 'wpsso' ).' ';
-							
-							$text .= __( 'If no images are available in your meta tags, social sites may choose any image from your webpage (including headers, sidebars, thumbnails, etc.).', 'wpsso' );
 
 							break;
 
@@ -562,15 +550,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_author_fallback':
+						case 'tooltip-og_author_gravatar':	// Gravatar is Default / Fallback Image
 
-							$text = sprintf( __( 'If the %1$s is not a valid URL, then fallback to using the author archive URL from this website (example: "%2$s").', 'wpsso' ), _x( 'Author Profile URL Field', 'option label', 'wpsso' ), trailingslashit( site_url() ).'author/username' ).' '.__( 'Uncheck this option to disable the author URL fallback feature (default is unchecked).', 'wpsso' );
+							$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
 
-							break;
+							$text = __( 'If no custom image has been defined for an author, fallback to using their Gravatar image in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-						case 'tooltip-og_author_gravatar':	// Aka plugin_gravatar_api.
-
-							$text = __( 'Include the author\'s Gravatar image in author related meta tags and Schema markup (the default is unchecked).', 'wpsso' );
+							$text .= sprintf( __( 'A custom image can be selected for / by each author in their WordPress user profile %s metabox.', 'wpsso' ), $metabox_title );
 
 							break;
 
@@ -2077,7 +2063,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						if ( empty( $this->p->options['plugin_hide_pro'] ) && WpssoMeta::is_meta_page() ) {
 
 							$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
-							$metabox_tab = _x( 'Priority Media', 'metabox tab', 'wpsso' );
+							$metabox_tab   = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 
 							$text = sprintf( __( 'A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %1$s metabox under the %2$s tab.', 'wpsso' ), $metabox_title, $metabox_tab );
 

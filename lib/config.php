@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '4.9.0-b.1',	// Plugin version.
-					'opt_version' => '583',		// Increment when changing default option values.
+					'opt_version' => '584',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google\'s Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -817,14 +817,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_vid_autoplay'              => 1,
 					'og_vid_prev_img'              => 1,
 					'og_vid_html_type'             => 1,
-					'og_def_img_id'                => '',
+					'og_def_img_id'                => '',			// Default / Fallback Image ID
 					'og_def_img_id_pre'            => 'wp',
-					'og_def_img_url'               => '',
-					'og_def_img_on_index'          => 1,
-					'og_def_img_on_search'         => 1,
-					'og_ngg_tags'                  => 0,
-					'og_author_field'              => 'facebook',
-					'og_author_fallback'           => 0,
+					'og_def_img_url'               => '',			// or Default / Fallback Image URL
+					'og_author_field'              => 'facebook',		// Author Profile URL Field
 					'og_title_sep'                 => '-',
 					'og_title_len'                 => 70,
 					'og_title_warn'                => 40,
@@ -1051,7 +1047,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_use_img_alt'    => 1,		// Use Image Alt if No Content.
 					'plugin_img_alt_prefix' => 'Image:',	// Image Alt Text Prefix.
 					'plugin_p_cap_prefix'   => 'Caption:',	// WP Caption Prefix.
-					'plugin_gravatar_api'   => 0,		// Include Author Gravatar Image (also see SSO > General > Authorship tab).
+					'plugin_gravatar_api'   => 0,		// Use Author Gravatar Image (also see SSO > General > Authorship tab).
 					'plugin_facebook_api'   => 1,		// Check for Embedded Media: Facebook Videos.
 					'plugin_slideshare_api' => 1,		// Check for Embedded Media: Slideshare Presentations.
 					'plugin_soundcloud_api' => 1,		// Check for Embedded Media: Soundcloud Tracks.

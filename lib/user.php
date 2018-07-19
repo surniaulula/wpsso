@@ -793,7 +793,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function get_author_website( $user_id, $field_id = 'url' ) {
 
-			$is_user = SucomUtil::user_exists( $user_id );
+			$is_user     = SucomUtil::user_exists( $user_id );
 			$website_url = '';
 
 			if ( $is_user ) {
@@ -814,23 +814,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						$website_url = get_the_author_meta( $field_id, $user_id );
 
-						/**
-						 * If empty or not a url, then fallback to the author index page, if the requested field is 
-						 * the opengraph or link author field
-						 */
-						if ( empty( $website_url ) || ! preg_match( '/:\/\//', $website_url ) ) {
-							if ( $this->p->options['og_author_fallback'] &&
-								( $field_id === $this->p->options['og_author_field'] ||
-									$field_id === $this->p->options['seo_author_field'] ) ) {
-
-								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'fetching the author index page url as fallback' );
-								}
-
-								$website_url = get_author_posts_url( $user_id );
-							}
-						}
-
 						break;
 				}
 
@@ -843,7 +826,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$website_url = apply_filters( $this->p->lca . '_get_author_website', $website_url, $user_id, $field_id, $is_user );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'user id ' . $user_id . ' ' . $field_id . ': ' . $website_url );
+				$this->p->debug->log( 'user id ' . $user_id . ' ' . $field_id . ' = ' . $website_url );
 			}
 
 			return $website_url;

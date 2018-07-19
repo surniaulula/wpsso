@@ -1522,8 +1522,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Setup default true / false values.
 			 */
 			foreach ( array( 'id', 'url', 'on_index', 'on_search' ) as $key ) {
+
 				$opt_key = $opt_pre . '_def_' . $type . '_' . $key;
 				$def_val = isset( $this->p->options[$opt_key] ) ? $this->p->options[$opt_key] : null;
+
 				$def[$key] = apply_filters( $this->p->lca . '_' . $opt_pre . '_default_' . $type . '_' . $key, $def_val );
 			}
 

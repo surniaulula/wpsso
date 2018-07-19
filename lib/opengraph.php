@@ -487,6 +487,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 * If there's no image, and no video preview, then add the default image for singular (aka post) webpages.
 						 */
 						if ( empty( $mt_og[$md_pre . ':image'] ) && ! $prev_count && $mod['is_post'] ) {
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'getting default image for ' . $md_pre . ' (' . $size_name . ')' );
+							}
+
 							$mt_og[$md_pre . ':image'] = $this->p->media->get_default_images( $max_nums['og_img_max'], $size_name, $check_dupes );
 						}
 					}
@@ -866,11 +871,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$og_single_image = $this->p->media->get_attachment_image( $num_diff, $size_name, $mod['id'], $check_dupes );
 
 					if ( empty( $og_single_image ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'exiting early: no attachment image - returning default image' );
 						}
+
 						return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff,
 							$size_name, $check_dupes, $force_regen ) );
+
 					} else {
 						return array_merge( $og_ret, $og_single_image );
 					}
@@ -895,6 +903,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 
 					$num_diff = SucomUtil::count_diff( $og_ret, $num );
+
 					$ngg_obj =& $this->p->m['media']['ngg'];
 
 					$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod['id'], $check_dupes );
@@ -904,6 +913,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'skipping NGG shortcode check - '.count( $query_images ).' query image(s) returned' );
 						}
+
 						$og_ret = array_merge( $og_ret, $query_images );
 
 					} elseif ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
@@ -941,15 +951,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				/**
 				 * get_og_images() also provides filter hooks for additional image ids and urls.
 				 */
-				if ( ! empty( $mod['obj'] ) ) {	// term or user
+				if ( ! empty( $mod['obj'] ) ) {	// Term or user.
+
 					$og_images = $mod['obj']->get_og_images( $num_diff, $size_name, $mod['id'], $check_dupes, $force_regen, $md_pre );
+
 					if ( ! empty( $og_images ) ) {
 						$og_ret = array_merge( $og_ret, $og_images );
 					}
 				}
 
-				if ( count( $og_ret ) < 1 && $this->p->util->force_default_image( $mod, 'og' ) ) {
-					return array_merge( $og_ret, $this->p->media->get_default_images( $num_diff, $size_name, $check_dupes, $force_regen ) );
+				if ( empty( $og_ret ) ) {
+					$og_ret = array_merge( $og_ret, $this->p->media->get_default_images( $num_diff,
+						$size_name, $check_dupes, $force_regen ) );
+
 				}
 			}
 

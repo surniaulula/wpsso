@@ -161,11 +161,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Author Profile URL Field', 'option label', 'wpsso' ), '', 'og_author_field' ).
 					'<td>'.$this->form->get_select( 'og_author_field', $user_contacts ).'</td>';
 
-					$table_rows['og_author_fallback'] = $this->form->get_tr_hide( 'basic', 'og_author_fallback' ).
-					$this->form->get_th_html( _x( 'Fallback to Author\'s Archive Page',
-						'option label', 'wpsso' ), '', 'og_author_fallback' ).
-					'<td>'.$this->form->get_checkbox( 'og_author_fallback' ).'</td>';
-
 					break;
 
 				case 'og-images':
@@ -187,14 +182,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows['og_def_img_url'] = ''.
 					$this->form->get_th_html( _x( 'or Default / Fallback Image URL', 'option label', 'wpsso' ), '', 'og_def_img_url' ).
 					'<td>'.$this->form->get_input_image_url( 'og_def_img' ).'</td>';
-
-					$table_rows['og_def_img_on_index'] = $this->form->get_tr_hide( 'basic', 'og_def_img_on_index' ).
-					$this->form->get_th_html( _x( 'Use Default Image on Archive Pages', 'option label', 'wpsso' ), '', 'og_def_img_on_index' ).
-					'<td>'.$this->form->get_checkbox( 'og_def_img_on_index' ).'</td>';
-
-					$table_rows['og_def_img_on_search'] = $this->form->get_tr_hide( 'basic', 'og_def_img_on_search' ).
-					$this->form->get_th_html( _x( 'Use Default Image on Search Results', 'option label', 'wpsso' ), '', 'og_def_img_on_search' ).
-					'<td>'.$this->form->get_checkbox( 'og_def_img_on_search' ).'</td>';
 
 					break;
 

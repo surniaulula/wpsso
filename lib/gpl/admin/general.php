@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$table_rows['og_author_gravatar'] = ''.
-			$form->get_th_html( _x( 'Include Author Gravatar Image', 'option label', 'wpsso' ), null, 'og_author_gravatar' ).
+			$form->get_th_html( _x( 'Gravatar is Default / Fallback Image', 'option label', 'wpsso' ), null, 'og_author_gravatar' ).
 			'<td class="blank"><input type="checkbox" disabled="disabled" /></td>';
 
 			return $table_rows;
