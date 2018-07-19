@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.9.0-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.9.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2754,77 +2754,77 @@ msgstr ""
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 
-#: lib/media.php:429
+#: lib/media.php:417
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:467 lib/media.php:627 lib/media.php:1469
+#: lib/media.php:455 lib/media.php:615 lib/media.php:1439
 #: lib/pro/util/checkimgdims.php:91
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:470
+#: lib/media.php:458
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:471 lib/media.php:630
+#: lib/media.php:459 lib/media.php:618
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:487
+#: lib/media.php:475
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:511
+#: lib/media.php:499
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:629
+#: lib/media.php:617
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:632
+#: lib/media.php:620
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1030
+#: lib/media.php:1001
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1475 lib/pro/media/ngg.php:131
+#: lib/media.php:1445 lib/pro/media/ngg.php:131
 #: lib/pro/util/checkimgdims.php:93
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1485
+#: lib/media.php:1455
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1554
+#: lib/media.php:1524
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1582
+#: lib/media.php:1552
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

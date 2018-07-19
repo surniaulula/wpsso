@@ -1114,17 +1114,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$this->p->debug->log( 'getting thumbnail for image id ' . $head_info['og:image:id'] );
 				}
 
-				list(
-					$og_single_image['og:image:url'],
-					$og_single_image['og:image:width'],
-					$og_single_image['og:image:height'],
-					$og_single_image['og:image:cropped'],
-					$og_single_image['og:image:id'],
-					$og_single_image['og:image:alt']
-				) = $this->p->media->get_attachment_image_src( $head_info['og:image:id'], 'thumbnail', false, $force_regen );
+				$mt_single_image = array();
 
-				if ( ! empty( $og_single_image['og:image:url'] ) ) {	// Just in case.
-					$head_info =& $og_single_image;
+				$this->p->media->add_mt_single_image_src( $mt_single_image, $head_info['og:image:id'], 'thumbnail', false, $force_regen );
+
+				if ( ! empty( $mt_single_image['og:image:url'] ) ) {	// Just in case.
+					$head_info =& $mt_single_image;
 				}
 			}
 
@@ -1157,16 +1152,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->log( 'getting thumbnail for image id ' . $pid );
 			}
 
-			list(
-				$og_single_image['og:image:url'],
-				$og_single_image['og:image:width'],
-				$og_single_image['og:image:height'],
-				$og_single_image['og:image:cropped'],
-				$og_single_image['og:image:id'],
-				$og_single_image['og:image:alt']
-			) = $this->p->media->get_attachment_image_src( $pid, 'thumbnail', false, $force_regen );
+			$mt_single_image = array();
 
-			$media_url = SucomUtil::get_mt_media_url( $og_single_image );
+			$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, 'thumbnail', false, $force_regen );
+
+			$media_url = SucomUtil::get_mt_media_url( $mt_single_image );
 
 			if ( $force_regen ) {
 				$media_url = add_query_arg( 'force_regen', time(), $media_url );
@@ -1235,14 +1225,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 							get_class( $this ) );	// log extended class name
 					}
 
-					list( 
-						$mt_single_image[$mt_pre . ':image:url'],
-						$mt_single_image[$mt_pre . ':image:width'],
-						$mt_single_image[$mt_pre . ':image:height'],
-						$mt_single_image[$mt_pre . ':image:cropped'],
-						$mt_single_image[$mt_pre . ':image:id'],
-						$mt_single_image[$mt_pre . ':image:alt']
-					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
+					$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $force_regen, $mt_pre );
 				}
 
 				if ( empty( $mt_single_image[$mt_pre . ':image:url'] ) && ! empty( $url ) ) {
@@ -1252,17 +1235,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 							get_class( $this ) );	// log extended class name
 					}
 
-					$width  = $this->get_options( $mod['id'], $opt_pre . '_img_url:width' );
-					$height = $this->get_options( $mod['id'], $opt_pre . '_img_url:height' );
+					$img_width  = $this->get_options( $mod['id'], $opt_pre . '_img_url:width' );
+					$img_height = $this->get_options( $mod['id'], $opt_pre . '_img_url:height' );
 
-					$mt_single_image = array(
-						$mt_pre . ':image:url'    => $url,
-						$mt_pre . ':image:width'  => ( $width > 0 ? $width : WPSSO_UNDEF_INT ), 
-						$mt_pre . ':image:height' => ( $height > 0 ? $height : WPSSO_UNDEF_INT ),
-					);
+					$mt_single_image[ $mt_pre . ':image:url' ]    = $url;
+					$mt_single_image[ $mt_pre . ':image:width' ]  = $img_width > 0 ? $img_width : WPSSO_UNDEF_INT;
+					$mt_single_image[ $mt_pre . ':image:height' ] = $img_height > 0 ? $img_height : WPSSO_UNDEF_INT;
 				}
 
-				if ( ! empty( $mt_single_image[$mt_pre . ':image:url'] ) ) {
+				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {
 					if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
 						return $mt_ret;
 					}
@@ -1279,14 +1260,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 					$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
-					list( 
-						$mt_single_image[$mt_pre . ':image:url'],
-						$mt_single_image[$mt_pre . ':image:width'],
-						$mt_single_image[$mt_pre . ':image:height'],
-						$mt_single_image[$mt_pre . ':image:cropped'],
-						$mt_single_image[$mt_pre . ':image:id'],
-						$mt_single_image[$mt_pre . ':image:alt']
-					) = $this->p->media->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
+					$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $force_regen, $mt_pre );
 
 					if ( ! empty( $mt_single_image[$mt_pre . ':image:url'] ) ) {
 						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
