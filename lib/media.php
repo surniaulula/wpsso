@@ -379,6 +379,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/**
+		 * Return only the image URL, which will be the first array element returned by get_attachment_image_src().
+		 */
+		public function get_attachment_image_url( $pid, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
+
+			$image_src = $this->get_attachment_image_src( $pid, $size_name, $check_dupes, $force_regen );
+
+			foreach ( $image_src as $num => $value ) {
+				return $value;
+			}
+
+			return null;	// Return null if array is empty.
+		}
+
+		/**
 		 * Note that every return must be wrapped with self::reset_image_src_info().
 		 */
 		public function get_attachment_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {

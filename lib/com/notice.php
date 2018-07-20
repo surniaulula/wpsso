@@ -325,16 +325,21 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( $url = $this->get_ref( 'url' ) ) {
 
-				$context_transl = $this->get_ref( 'context_transl', '', ' - ' );
-
+				/**
+				 * Show a shorter relative URL, if possible.
+				 */
 				$pretty_url = strtolower( str_replace( home_url(), '', $url ) );
 
-				$url_link = '<a href="' . $url . '">' . $pretty_url . '</a>';
+				$context_transl = $this->get_ref( 'context_transl' );
+
+				$context_transl = empty( $context_transl ) ?
+					'<a href="' . $url . '">' . $pretty_url . '</a>' :
+					'<a href="' . $url . '">' . $context_transl . '</a>';
 
 				$edit_link = $this->get_ref( 'edit', ' (<a href="', '">' . __( 'edit', $this->text_domain ) . '</a>)' );
 
 				$ref_html .= '<p class="reference-message">' . sprintf( __( 'Reference: %s', $this->text_domain ),
-					$context_transl . $url_link . $edit_link ) . '</p>';
+					$context_transl . $edit_link ) . '</p>';
 			}
 
 			return $ref_html;

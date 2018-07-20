@@ -996,9 +996,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return;
 			}
 
-			$name_transl        = _x( 'Organization Banner URL', 'option label', 'wpsso' );
-			$size_name          = null;	// Only check banner urls - skip any banner image id options.
-			$opt_img_pre        = 'schema_banner';
+			$settings_page_link = $this->p->util->get_admin_url( 'essential#sucom-tabset_essential-tab_google',
+				_x( 'Organization Banner URL', 'option label', 'wpsso' ) );
+
+			$size_name   = null;	// Only check banner urls - skip any banner image id options.
+			$opt_img_pre = 'schema_banner';
 
 			/**
 			 * Returns an image array:
@@ -1026,7 +1028,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( $image_dims === '-1x-1px' ) {
 
 						$error_msg = sprintf( __( 'The %1$s image dimensions cannot be determined.',
-							'wpsso' ), $name_transl ) . ' ';
+							'wpsso' ), $settings_page_link ) . ' ';
 
 						$error_msg .= sprintf( __( 'Please make sure this site can access the banner image at %1$s.',
 							'wpsso' ), $image_href );
@@ -1034,7 +1036,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					} else {
 
 						$error_msg = sprintf( __( 'The %1$s image dimensions are %2$s and must be exactly %3$s.',
-							'wpsso' ), $name_transl, $image_dims, $required_dims );
+							'wpsso' ), $settings_page_link, $image_dims, $required_dims );
 					}
 
 					$this->p->notice->err( $error_msg );

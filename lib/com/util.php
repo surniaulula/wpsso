@@ -1028,7 +1028,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( isset( $local_cache[$idx] ) ) {
 				return $local_cache[$idx];
-			} elseif ( $idx === '$' ) { // Match for USD first.
+			} elseif ( $idx === '$' ) {	// Match for USD first.
 				return $local_cache[$idx] = 'USD';
 			}
 
@@ -2044,6 +2044,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return false;
+		}
+
+		public static function get_first_value( array $arr ) {
+			foreach ( $arr as $value ) {
+				return $value;
+			}
+			return null;	// Return null if array is empty.
 		}
 
 		public static function get_first_num( array $input ) {
@@ -3192,13 +3199,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			static $mobile_obj = null;
 
 			if ( ! isset( $local_cache ) ) {
-				// load class object on first check
-				if ( ! isset( $mobile_obj ) ) {
+
+				if ( ! isset( $mobile_obj ) ) {	// Load class object on first check
+
 					if ( ! class_exists( 'SuextMobileDetect' ) ) {
 						require_once dirname( __FILE__ ) . '/../ext/mobile-detect.php';
 					}
+
 					$mobile_obj = new SuextMobileDetect();
 				}
+
 				$local_cache = $mobile_obj->isMobile();
 			}
 

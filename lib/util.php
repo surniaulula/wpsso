@@ -1254,6 +1254,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: the request argument is empty' );
 				}
+
 				return false;
 
 			} elseif ( empty( $query ) ) {	// just in case
@@ -1261,6 +1262,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: the query argument is empty' );
 				}
+
 				return false;
 
 			} elseif ( stripos( $request, '<html' ) !== false ) {	// request contains html
@@ -1268,7 +1270,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using the html submitted as the request argument' );
 				}
-				$html = $request;
+
+				$html    = $request;
 				$request = false;	// just in case
 
 			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {	// request is an invalid url
@@ -1276,10 +1279,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: request argument is not html or a valid url' );
 				}
+
 				if ( is_admin() ) {
 					$this->p->notice->err( sprintf( __( 'The %1$s request argument is not HTML or a valid URL.',
 						'wpsso' ), __FUNCTION__ ) );
 				}
+
 				return false;
 
 			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient', false, '', $curl_opts ) ) === false ) {
@@ -1287,10 +1292,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: error caching ' . $request );
 				}
+
 				if ( is_admin() ) {
 					$this->p->notice->err( sprintf( __( 'Error retrieving webpage from <a href="%1$s">%1$s</a>.',
 						'wpsso' ), $request ) );
 				}
+
 				return false;
 
 			} elseif ( empty( $html ) ) {	// returned html for url is empty
@@ -1298,22 +1305,25 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: html for ' . $request . ' is empty' );
 				}
+
 				if ( is_admin() ) {
 					$this->p->notice->err( sprintf( __( 'Webpage retrieved from <a href="%1$s">%1$s</a> is empty.',
 						'wpsso' ), $request ) );
 				}
+
 				return false;
 
 			} elseif ( ! class_exists( 'DOMDocument' ) ) {
 
 				$this->missing_php_class_error( 'DOMDocument' );
+
 				return false;
 			}
 
-			$ret = array();
-			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// convert to UTF8
-			$html = preg_replace( '/<!--.*-->/Uums', '', $html );	// remove all html comments
-			$doc = new DOMDocument();	// since PHP v4.1
+			$ret        = array();
+			$html       = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// convert to UTF8
+			$html       = preg_replace( '/<!--.*-->/Uums', '', $html );	// remove all html comments
+			$doc        = new DOMDocument();	// since PHP v4.1
 			$has_errors = false;
 
 			if ( $libxml_errors ) {
@@ -1411,9 +1421,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function missing_php_class_error( $classname ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $classname . ' PHP class is missing' );
 			}
+
 			if ( is_admin() ) {
 				$this->p->notice->err( sprintf( __( 'The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class.',
 					'wpsso' ), $classname ) );
@@ -1469,10 +1481,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function log_is_functions() {
+
 			if ( ! $this->p->debug->enabled ) {	// nothing to do
 				return;
 			}
+
 			$function_info = $this->get_is_functions();
+
 			foreach ( $function_info as $function => $info ) {
 				$this->p->debug->log( $info[0] );
 			}
@@ -1504,57 +1519,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $function_info;
 		}
 
-		/**
-		 * Returns true if the default image is forced.
-		 */
-		public function force_default_image( array &$mod, $opt_pre = 'og' ) {
-			return $this->force_default( 'img', $mod, $opt_pre );
-		}
-
-		/**
-		 * $type = author | img | vid
-		 */
-		public function force_default( $type, array &$mod, $opt_pre = 'og') {
-
-			$def = array();
-
-			/**
-			 * Setup default true / false values.
-			 */
-			foreach ( array( 'id', 'url', 'on_index', 'on_search' ) as $key ) {
-
-				$opt_key = $opt_pre . '_def_' . $type . '_' . $key;
-				$def_val = isset( $this->p->options[$opt_key] ) ? $this->p->options[$opt_key] : null;
-
-				$def[$key] = apply_filters( $this->p->lca . '_' . $opt_pre . '_default_' . $type . '_' . $key, $def_val );
-			}
-
-			if ( empty( $def['id'] ) && empty( $def['url'] ) ) {	// save time - if no default media, then return false
-				$ret = false;
-			} elseif ( $mod['is_post'] ) {				// check for singular pages first
-				$ret = false;
-			} elseif ( $mod['is_user'] ) {				// check for user pages first
-				$ret = false;
-			} elseif ( ! empty( $def['on_index'] ) && ( $mod['is_home_index'] || $mod['is_term'] || SucomUtil::is_archive_page() ) ) {
-				$ret = true;
-			} elseif ( ! empty( $def['on_search'] ) && is_search() ) {
-				$ret = true;
-			} else {
-				$ret = false;
-			}
-
-			/**
-			 * 'wpsso_force_default_img' is hooked by the woocommerce module (false for product category and tag pages).
-			 */
-			$ret = apply_filters( $this->p->lca . '_force_default_' . $type, $ret, $mod, $opt_pre );
-
-			if ( $ret && $this->p->debug->enabled ) {
-				$this->p->debug->log( 'default ' . $type . ' is forced' );
-			}
-
-			return $ret;
-		}
-
 		public static function save_all_times( $ext, $version ) {
 			self::save_time( $ext, $version, 'update', $version );	// $protect only if same version.
 			self::save_time( $ext, $version, 'install', true );	// $protect is true.
@@ -1565,6 +1529,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 * $protect = true | false | version
 		 */
 		public static function save_time( $ext, $version, $type, $protect = false ) {
+
 			if ( ! is_bool( $protect ) ) {
 				if ( ! empty( $protect ) ) {
 					if ( ( $ts_version = self::get_option_key( WPSSO_TS_NAME, $ext . '_' . $type . '_version' ) ) !== null &&
@@ -1577,9 +1542,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$protect = true;	// just in case
 				}
 			}
+
 			if ( ! empty( $version ) ) {
 				self::update_option_key( WPSSO_TS_NAME, $ext . '_' . $type . '_version', $version, $protect );
 			}
+
 			self::update_option_key( WPSSO_TS_NAME, $ext . '_' . $type . '_time', time(), $protect );
 		}
 
@@ -1587,20 +1554,27 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 * Get the timestamp array and perform a quick sanity check.
 		 */
 		public function get_all_times() {
+
 			$has_changed = false;
-			$all_times = get_option( WPSSO_TS_NAME, array() );
+			$all_times   = get_option( WPSSO_TS_NAME, array() );
+
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+
 				if ( empty( $info['version'] ) ) {
 					continue;
 				}
+
 				foreach ( array( 'update', 'install', 'activate' ) as $type ) {
+
 					if ( empty( $all_times[$ext . '_' . $type . '_time'] ) ||
 						( $type === 'update' && ( empty( $all_times[$ext . '_' . $type . '_version'] ) ||
 							version_compare( $all_times[$ext . '_' . $type . '_version'], $info['version'], '!=' ) ) ) ) {
+
 						$has_changed = self::save_time( $ext, $info['version'], $type );
 					}
 				}
 			}
+
 			return false === $has_changed ? $all_times : get_option( WPSSO_TS_NAME, array() );
 		}
 
@@ -1669,7 +1643,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$add_page = isset( $atts['add_page'] ) ? $atts['add_page'] : true;
-			$src_id = isset( $atts['src_id'] ) ? $atts['src_id'] : '';
+			$src_id   = isset( $atts['src_id'] ) ? $atts['src_id'] : '';
 
 			if ( empty( $atts['url'] ) ) {
 				$sharing_url = $this->get_sharing_url( $mod, $add_page, $src_id );
@@ -1685,14 +1659,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( empty( $atts['short_url'] ) ) {
 				$service_key = $this->p->options['plugin_shortener'];
-				$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
+				$short_url   = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
 			} else {
 				$short_url = $atts['short_url'];
 			}
 
-			$sitename = SucomUtil::get_site_name( $this->p->options, $mod );
+			$sitename    = SucomUtil::get_site_name( $this->p->options, $mod );
 			$sitealtname = SucomUtil::get_site_name_alt( $this->p->options, $mod );
-			$sitedesc = SucomUtil::get_site_description( $this->p->options, $mod );
+			$sitedesc    = SucomUtil::get_site_description( $this->p->options, $mod );
 
 			return array(
 				$request_url,		// %%request_url%%

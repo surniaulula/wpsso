@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			/**
-			 * Player Card
+			 * Player card.
 			 *
 			 * The twitter:player:stream meta tags are used for self-hosted MP4 videos. The videos provided by
 			 * YouTube, Vimeo, Wistia, etc. are application/x-shockwave-flash or text/html.
@@ -270,7 +270,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			/**
-			 * Post image cards.
+			 * Post object image card.
 			 */
 			if ( ! isset( $mt_tc['twitter:card'] ) ) {
 
@@ -338,7 +338,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					}
 
 				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'empty post_id: skipped post images' );
+					$this->p->debug->log( 'empty post_id: skipped post object images' );
 				}
 			}
 

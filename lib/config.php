@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.9.0-b.1',	// Plugin version.
+					'version'     => '4.9.0-b.2',	// Plugin version.
 					'opt_version' => '584',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1047,7 +1047,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_use_img_alt'    => 1,		// Use Image Alt if No Content.
 					'plugin_img_alt_prefix' => 'Image:',	// Image Alt Text Prefix.
 					'plugin_p_cap_prefix'   => 'Caption:',	// WP Caption Prefix.
-					'plugin_gravatar_api'   => 0,		// Use Author Gravatar Image (also see SSO > General > Authorship tab).
+					'plugin_gravatar_api'   => 0,		// Gravatar is Default / Fallback Image
 					'plugin_facebook_api'   => 1,		// Check for Embedded Media: Facebook Videos.
 					'plugin_slideshare_api' => 1,		// Check for Embedded Media: Slideshare Presentations.
 					'plugin_soundcloud_api' => 1,		// Check for Embedded Media: Soundcloud Tracks.

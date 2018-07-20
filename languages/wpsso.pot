@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.9.0-b.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.9.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -377,7 +377,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:2138 lib/pro/media/slideshare.php:199
-#: lib/pro/media/vimeo.php:168 lib/pro/media/wistia.php:332 lib/util.php:1373
+#: lib/pro/media/vimeo.php:168 lib/pro/media/wistia.php:332 lib/util.php:1383
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -822,7 +822,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3047 lib/options.php:999 lib/submenu/essential.php:140
+#: lib/admin.php:3047 lib/options.php:1000 lib/submenu/essential.php:140
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -1093,25 +1093,25 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:334 lib/com-gettext-extract.php:7
+#: lib/com/notice.php:339 lib/com-gettext-extract.php:7
 msgid "edit"
 msgstr ""
 
-#: lib/com/notice.php:336 lib/com-gettext-extract.php:21
+#: lib/com/notice.php:341 lib/com-gettext-extract.php:21
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/notice.php:480 lib/com/notice.php:704 lib/com-gettext-extract.php:30
+#: lib/com/notice.php:485 lib/com/notice.php:709 lib/com-gettext-extract.php:30
 msgctxt "notification type"
 msgid "error"
 msgstr ""
 
-#: lib/com/notice.php:481 lib/com/notice.php:705 lib/com-gettext-extract.php:31
+#: lib/com/notice.php:486 lib/com/notice.php:710 lib/com-gettext-extract.php:31
 msgctxt "notification type"
 msgid "warning"
 msgstr ""
 
-#: lib/com/notice.php:590 lib/com/notice.php:817
+#: lib/com/notice.php:595 lib/com/notice.php:822
 msgid ""
 "%1$d %2$s notice has been dismissed &mdash; <a id=\"%3$s\">show the %2$s "
 "message</a>."
@@ -2734,7 +2734,7 @@ msgstr ""
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:163 lib/loader.php:189 lib/post.php:259 lib/register.php:238
-#: lib/term.php:234 lib/user.php:201 lib/util.php:357 lib/util.php:2491
+#: lib/term.php:234 lib/user.php:201 lib/util.php:357 lib/util.php:2465
 msgid "%s warning:"
 msgstr ""
 
@@ -2754,77 +2754,77 @@ msgstr ""
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 
-#: lib/media.php:417
+#: lib/media.php:431
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:455 lib/media.php:615 lib/media.php:1439
+#: lib/media.php:469 lib/media.php:629 lib/media.php:1453
 #: lib/pro/util/checkimgdims.php:91
 msgid "Media Library"
 msgstr ""
 
-#: lib/media.php:458
+#: lib/media.php:472
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:459 lib/media.php:618
+#: lib/media.php:473 lib/media.php:632
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:475
+#: lib/media.php:489
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:499
+#: lib/media.php:513
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:617
+#: lib/media.php:631
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:620
+#: lib/media.php:634
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1001
+#: lib/media.php:1015
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1445 lib/pro/media/ngg.php:131
+#: lib/media.php:1459 lib/pro/media/ngg.php:131
 #: lib/pro/util/checkimgdims.php:93
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1455
+#: lib/media.php:1469
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1524
+#: lib/media.php:1538
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1552
+#: lib/media.php:1566
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -3318,7 +3318,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:598 lib/util.php:2773
+#: lib/messages.php:598 lib/util.php:2747
 msgid "No options available."
 msgstr ""
 
@@ -5125,15 +5125,15 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1028
+#: lib/options.php:1030
 msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1031
+#: lib/options.php:1033
 msgid "Please make sure this site can access the banner image at %1$s."
 msgstr ""
 
-#: lib/options.php:1036
+#: lib/options.php:1038
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
@@ -5180,7 +5180,7 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #: lib/post.php:245 lib/term.php:220 lib/user.php:187 lib/util.php:343
-#: lib/util.php:2468
+#: lib/util.php:2442
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5219,7 +5219,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:898 lib/util.php:1291
+#: lib/post.php:898 lib/util.php:1297
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -5331,25 +5331,25 @@ msgid ""
 "unchecked and disabled automatically."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:788
+#: lib/pro/ecom/woocommerce.php:771
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:791
+#: lib/pro/ecom/woocommerce.php:774
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:979
+#: lib/pro/ecom/woocommerce.php:962
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:981
+#: lib/pro/ecom/woocommerce.php:964
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:984
+#: lib/pro/ecom/woocommerce.php:967
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -5418,12 +5418,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:194 lib/pro/media/vimeo.php:163
-#: lib/pro/media/wistia.php:327 lib/util.php:1368
+#: lib/pro/media/wistia.php:327 lib/util.php:1378
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/pro/media/slideshare.php:196 lib/pro/media/vimeo.php:165
-#: lib/pro/media/wistia.php:329 lib/util.php:1370
+#: lib/pro/media/wistia.php:329 lib/util.php:1380
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
@@ -6052,28 +6052,28 @@ msgstr ""
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1280
+#: lib/util.php:1284
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1302
+#: lib/util.php:1310
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1418
+#: lib/util.php:1430
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max
-#: lib/util.php:2471
+#: lib/util.php:2445
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2484
+#: lib/util.php:2458
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6082,29 +6082,29 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2484
+#: lib/util.php:2458
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2800
+#: lib/util.php:2774
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2803
+#: lib/util.php:2777
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2808
+#: lib/util.php:2782
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2811
+#: lib/util.php:2785
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
