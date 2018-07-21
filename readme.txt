@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.9.0-b.2 (2018/07/20)**
+**Version 4.9.0-rc.1 (2018/07/21)**
 
 * *New Features*
 	* None.
@@ -565,9 +565,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.9.0-b.2 =
+= 4.9.0-rc.1 =
 
-(2018/07/20) Fixed the default / initial order of image and video meta tags. Added an 'og:image:alt' meta tag for images provided by WordPress Media Library. Renamed the 'og:image' meta tag to 'og:image:url'.
+(2018/07/21) Fixed the default / initial order of image and video meta tags. Added an 'og:image:alt' meta tag for images provided by WordPress Media Library. Renamed the 'og:image' meta tag to 'og:image:url'.
 
 = 4.8.0 =
 
