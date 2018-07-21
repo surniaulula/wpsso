@@ -29,8 +29,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		private $url_time  = array();
 		private $transient = array(				// Saved on wp shutdown action.
-			'loaded' => false,
-			'expire' => HOUR_IN_SECONDS,
+			'loaded'      => false,
+			'expire'      => HOUR_IN_SECONDS,
 			'ignore_time' => 900,
 			'ignore_urls' => array(),
 		);
@@ -43,23 +43,30 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		}
 
 		public function load_transient() {
+
 			if ( $this->transient['loaded'] !== true ) {
+
 				$cache_md5_pre = $this->lca . '_';
-				$cache_salt = __CLASS__ . '::transient';
-				$cache_id = $cache_md5_pre . md5( $cache_salt );
-				$ret = get_transient( $cache_id );
-				if ( $ret !== false ) {
-					$this->transient = $ret;
+				$cache_salt    = __CLASS__ . '::transient';
+				$cache_id      = $cache_md5_pre . md5( $cache_salt );
+				$cache_ret     = get_transient( $cache_id );
+
+				if ( $cache_ret !== false ) {
+					$this->transient = $cache_ret;
 				}
+
 				$this->transient['loaded'] = true;
 			}
 		}
 
 		public function save_transient() {
+
 			if ( true === $this->transient['loaded'] ) {
+
 				$cache_md5_pre = $this->lca . '_';
-				$cache_salt = __CLASS__ . '::transient';
-				$cache_id = $cache_md5_pre . md5( $cache_salt );
+				$cache_salt    = __CLASS__ . '::transient';
+				$cache_id      = $cache_md5_pre . md5( $cache_salt );
+
 				set_transient( $cache_id, $this->transient, $this->transient['expire'] );
 			}
 		}
@@ -159,9 +166,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			$cache_md5_pre = $this->lca . '_';
-			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';
-			$cache_file = $this->base_dir . md5( $cache_salt ) . $file_ext;
-			$cache_id = $cache_md5_pre . md5( $cache_salt );
+			$cache_salt    = __CLASS__ . '::get(url:' . $url_nofrag . ')';
+			$cache_file    = $this->base_dir . md5( $cache_salt ) . $file_ext;
+			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 			if ( wp_cache_delete( $cache_id, __CLASS__ ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -272,7 +279,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';	// SucomCache::get()
 			$cache_file = $this->base_dir . md5( $cache_salt ) . $file_ext;
-			$cache_url = $this->base_url . md5( $cache_salt ) . $file_ext . $url_fragment;
+			$cache_url  = $this->base_url . md5( $cache_salt ) . $file_ext . $url_fragment;
 			$cache_data = false;
 
 			// return immediately if the cache contains what we need

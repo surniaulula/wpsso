@@ -92,11 +92,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			static $do_once = array();
 
 			$default_filters = array(
-				'cache_expire_head_array' => '__return_zero',
+				'cache_expire_head_array'       => '__return_zero',
 				'cache_expire_schema_json_data' => '__return_zero',
-				'cache_expire_setup_html' => '__return_zero',
-				'cache_expire_shortcode_html' => '__return_zero',
-				'cache_expire_sharing_buttons' => '__return_zero',
+				'cache_expire_setup_html'       => '__return_zero',
+				'cache_expire_shortcode_html'   => '__return_zero',
+				'cache_expire_sharing_buttons'  => '__return_zero',
 			);
 
 			$disable_filters = array();
@@ -1194,12 +1194,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $cache_exp_secs > 0 ) {
+
 				/**
 				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
 				 * less in length. If using a site transient, it should be 40 characters or less in length.
 				 */
 				$cache_salt = __METHOD__ . '(' . WPSSO_TOPICS_LIST . ')';
-				$cache_id = $cache_md5_pre . md5( $cache_salt );
+				$cache_id   = $cache_md5_pre . md5( $cache_salt );
 	
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'transient cache salt ' . $cache_salt );
@@ -1216,22 +1217,29 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( ( $topics = file( WPSSO_TOPICS_LIST, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) ) === false ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'error reading %s article topic list file' );
 				}
+
 				if ( is_admin() ) {
 					$this->p->notice->err( sprintf( __( 'Error reading %s article topic list file.',
 						'wpsso' ), WPSSO_TOPICS_LIST ) );
 				}
+
 				return $topics;
 			}
 
 			$topics = apply_filters( $this->p->lca . '_article_topics', $topics );
+
 			natsort( $topics );
+
 			$topics = array_merge( array( 'none' ), $topics );	// after sorting the array, put 'none' first
 
 			if ( $cache_exp_secs > 0 ) {
+
 				set_transient( $cache_id, $topics, $cache_exp_secs );
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'article topics saved to transient cache for ' . $cache_exp_secs . ' seconds' );
 				}

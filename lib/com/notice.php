@@ -14,16 +14,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 	class SucomNotice {
 
 		private $p;
-		private $lca = 'sucom';
-		private $text_domain = 'sucom';
+		private $lca          = 'sucom';
+		private $text_domain  = 'sucom';
 		private $label_transl = false;
-		private $dis_name = 'sucom_dismissed';
-		private $hide_err = false;
-		private $hide_warn = false;
-		private $tb_notices = false;
-		private $has_shown = false;
-		private $all_types = array( 'nag', 'err', 'warn', 'upd', 'inf' );	// Sort by importance.
-		private $ref_cache = array();
+		private $dis_name     = 'sucom_dismissed';
+		private $hide_err     = false;
+		private $hide_warn    = false;
+		private $tb_notices   = false;
+		private $has_shown    = false;
+		private $all_types    = array( 'nag', 'err', 'warn', 'upd', 'inf' );	// Sort by importance.
+		private $ref_cache    = array();
 		private $notice_cache = array();
 
 		public $enabled = true;
@@ -354,30 +354,41 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		public function is_admin_pre_notices( $dismiss_key = false, $user_id = true ) {
+
 			if ( is_admin() ) {
+
 				if ( ! empty( $dismiss_key ) ) {
+
 					/**
 					 * If notice is dismissed, say that we've already shown the notices.
 					 */
 					if ( $this->is_dismissed( $dismiss_key, $user_id ) ) {
 						if ( ! empty( $this->p->debug->enabled ) ) {
-							$this->p->debug->log( 'returning false: '.$dismiss_key.' is dismissed' );
+							$this->p->debug->log( 'returning false: ' . $dismiss_key . ' is dismissed' );
 						}
 						return false;
 					}
 				}
+
 				if ( $this->has_shown ) {
+
 					if ( ! empty( $this->p->debug->enabled ) ) {
 						$this->p->debug->log( 'returning false: notices have been shown' );
 					}
+
 					return false;
 				}
+
 			} else {
+
 				if ( ! empty( $this->p->debug->enabled ) ) {
 					$this->p->debug->log( 'returning false: is not admin' );
 				}
+
 				return false;
+
 			}
+
 			return true;
 		}
 
@@ -428,7 +439,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		public function can_dismiss() {
+
 			global $wp_version;
+
 			if ( version_compare( $wp_version, '4.2', '>=' ) ) {
 				return true;
 			} else {
@@ -1017,9 +1030,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function get_notice_transient( $user_id ) {
 
-			$cache_md5_pre = $this->lca.'_';
-			$cache_salt  = 'sucom_notice_transient(user_id:'.$user_id.')';
-			$cache_id    = $cache_md5_pre.md5( $cache_salt );
+			$cache_md5_pre = $this->lca . '_';
+			$cache_salt    = 'sucom_notice_transient(user_id:' . $user_id . ')';
+			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 			return get_transient( $cache_id );
 		}
@@ -1027,34 +1040,34 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function set_notice_transient( $user_id, $value ) {
 
 			$cache_exp_secs = 3600;
-			$cache_md5_pre = $this->lca.'_';
-			$cache_salt  = 'sucom_notice_transient(user_id:'.$user_id.')';
-			$cache_id    = $cache_md5_pre.md5( $cache_salt );
+			$cache_md5_pre  = $this->lca . '_';
+			$cache_salt     = 'sucom_notice_transient(user_id:' . $user_id . ')';
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 			return set_transient( $cache_id, $value, $cache_exp_secs );
 		}
 
 		private function delete_notice_transient( $user_id ) {
 
-			$cache_md5_pre = $this->lca.'_';
-			$cache_salt  = 'sucom_notice_transient(user_id:'.$user_id.')';
-			$cache_id    = $cache_md5_pre.md5( $cache_salt );
+			$cache_md5_pre = $this->lca . '_';
+			$cache_salt    = 'sucom_notice_transient(user_id:' . $user_id . ')';
+			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 			return delete_transient( $cache_id );
 		}
 
 		private function get_notice_style() {
 
-			$cache_md5_pre = $this->p->lca.'_';
+			$cache_md5_pre  = $this->p->lca . '_';
 			$cache_exp_secs = DAY_IN_SECONDS;
-			$cache_salt = __METHOD__.'()';
-			$cache_id = $cache_md5_pre.md5( $cache_salt );
+			$cache_salt     = __METHOD__;
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 			/**
 			 * Do not use the transient cache if the DEV constant is defined.
 			 */
 			$dev_const = strtoupper( $this->lca ) . '_DEV';
-			$r_cache = defined( $dev_const ) && constant( $dev_const ) ? false : true;
+			$r_cache   = defined( $dev_const ) && constant( $dev_const ) ? false : true;
 
 			if ( $r_cache ) {
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
@@ -1356,7 +1369,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$cache_md5_pre  = $this->p->lca . '_';
 			$cache_exp_secs = DAY_IN_SECONDS;
-			$cache_salt     = __METHOD__ . '()';
+			$cache_salt     = __METHOD__;
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 			if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.

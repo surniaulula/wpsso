@@ -14,10 +14,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 	class WpssoConfig {
 
 		public static $cf = array(
-			'lca' => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
+			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.9.0-b.2',	// Plugin version.
+					'version'     => '4.9.0-rc.1',	// Plugin version.
 					'opt_version' => '584',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -29,11 +29,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'domain_path' => '/languages',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'images/icon-128x128.png',
+							'low'  => 'images/icon-128x128.png',
 							'high' => 'images/icon-256x256.png',
 						),
 					),
@@ -171,11 +171,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-am/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-am/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-am/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-am/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-am/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-am/assets/icon-256x256.png',
 						),
 					),
@@ -209,11 +209,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-breadcrumbs/assets/icon-256x256.png',
 						),
 					),
@@ -261,8 +261,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'forum'  => 'https://wordpress.org/support/plugin/wpsso-inherit-parent-meta',
 						'review' => 'https://wordpress.org/support/plugin/wpsso-inherit-parent-meta/reviews/?rate=5#new-post',
 						// GitHub
-						'readme_txt'     => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-inherit-parent-meta/master/readme.txt',
-						'setup_html'     => '',
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-inherit-parent-meta/master/readme.txt',
+						'setup_html' => '',
 						// WPSSO
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-inherit-parent-meta/changelog/',
 						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-inherit-parent-meta/',
@@ -285,11 +285,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-256x256.png',
 						),
 					),
@@ -324,11 +324,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-organization/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-organization/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-organization/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-organization/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-organization/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-organization/assets/icon-256x256.png',
 						),
 					),
@@ -362,11 +362,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-plm/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-plm/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-plm/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-plm/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-256x256.png',
 						),
 					),
@@ -400,11 +400,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-ratings-and-reviews/assets/icon-256x256.png',
 						),
 					),
@@ -438,11 +438,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-rest-api/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-rest-api/assets/icon-256x256.png',
 						),
 					),
@@ -514,11 +514,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-ssb/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-ssb/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-ssb/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-ssb/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-ssb/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-ssb/assets/icon-256x256.png',
 						),
 					),
@@ -590,11 +590,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-tweet-a-quote/assets/icon-256x256.png',
 						),
 					),
@@ -628,11 +628,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => 'tid',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-tune-image-editors/assets/icon-256x256.png',
 						),
 					),
@@ -666,11 +666,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-user-locale/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-user-locale/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-user-locale/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-user-locale/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-user-locale/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-user-locale/assets/icon-256x256.png',
 						),
 					),
@@ -704,11 +704,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-um/assets/banner-772x250.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-um/assets/banner-772x250.jpg',
 							'high' => 'https://surniaulula.github.io/wpsso-um/assets/banner-1544x500.jpg',
 						),
 						'icons' => array(
-							'low' => 'https://surniaulula.github.io/wpsso-um/assets/icon-128x128.png',
+							'low'  => 'https://surniaulula.github.io/wpsso-um/assets/icon-128x128.png',
 							'high' => 'https://surniaulula.github.io/wpsso-um/assets/icon-256x256.png',
 						),
 					),
@@ -1327,7 +1327,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '1.10.1',	// Minimum update manager version (soft limit).
+				'rec_version' => '1.11.0-rc.1',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',

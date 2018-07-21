@@ -459,9 +459,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$this->defaults[$name] = 'none';
 			}
 
-			$start_secs = 0;
-			$end_secs = DAY_IN_SECONDS;
-			$step_secs = 60 * $step_mins;
+			$start_secs  = 0;
+			$end_secs    = DAY_IN_SECONDS;
+			$step_secs   = 60 * $step_mins;
 			$time_format = '';
 
 			$times = SucomUtil::get_hours_range( $start_secs, $end_secs, $step_secs, $time_format );

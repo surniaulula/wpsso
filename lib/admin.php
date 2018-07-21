@@ -3321,7 +3321,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Save the parsed readme to the transient cache.
 			 */
 			if ( $cache_exp_secs > 0 ) {
+
 				set_transient( $cache_id, $readme_info, $cache_exp_secs );
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'readme_info saved to transient cache for ' . $cache_exp_secs . ' seconds' );
 				}

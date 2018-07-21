@@ -309,6 +309,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$warn_msg = __( 'Non-standard value found for "%s" option - resetting to default value.', 'wpsso' );
 
 						foreach ( $check_opt_vals as $idx => $def_val ) {
+
 							if ( isset( $opts[$idx] ) ) {
 								if ( $opts[$idx] === $def_val ) {
 									continue;
@@ -317,7 +318,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 									$this->p->notice->warn( sprintf( $warn_msg, $idx ) );
 								}
 							}
+
 							$opts[$idx] = $def_val;
+
 							$has_diff_options = true;	// Save the options.
 						}
 					}
@@ -326,26 +329,34 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					 * If an SEO plugin is detected, adjust some related SEO options.
 					 */
 					if ( ! empty( $this->p->avail['seo']['*'] ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'seo plugin found - checking meta tag options' );
 						}
+
 						foreach ( array(
 							'add_link_rel_canonical' => 0,
 							'add_meta_name_description' => 0,
 							'add_meta_name_robots' => 0,
 						) as $idx => $def_val ) {
+
 							$def_val = (int) apply_filters( $this->p->lca.'_'.$idx, $def_val );
+
 							$opts[$idx.':is'] = 'disabled';
+
 							if ( $opts[$idx] === $def_val ) {
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( $idx.' already set to '.$def_val );
 								}
 								continue;
 							}
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'setting '.$idx.' to '.$def_val );
 							}
+
 							$opts[$idx] = $def_val;
+
 							$has_diff_options = true;	// save the options
 						}
 					}
@@ -635,16 +646,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				$error_messages = array(
-					'url' => __( 'The value of option \'%s\' must be a URL - resetting option to default value.', 'wpsso' ),
-					'csv_urls' => __( 'The value of option \'%s\' must be a comma-delimited list of URL(s) - resetting option to default value.', 'wpsso' ),
-					'numeric' => __( 'The value of option \'%s\' must be numeric - resetting option to default value.', 'wpsso' ),
-					'pos_num' => __( 'The value of option \'%1$s\' must be equal to or greather than %2$s - resetting option to default value.', 'wpsso' ),
+					'url'       => __( 'The value of option \'%s\' must be a URL - resetting option to default value.', 'wpsso' ),
+					'csv_urls'  => __( 'The value of option \'%s\' must be a comma-delimited list of URL(s) - resetting option to default value.', 'wpsso' ),
+					'numeric'   => __( 'The value of option \'%s\' must be numeric - resetting option to default value.', 'wpsso' ),
+					'pos_num'   => __( 'The value of option \'%1$s\' must be equal to or greather than %2$s - resetting option to default value.', 'wpsso' ),
 					'blank_num' => __( 'The value of option \'%s\' must be blank or numeric - resetting option to default value.', 'wpsso' ),
-					'api_key' => __( 'The value of option \'%s\' must be alpha-numeric - resetting option to default value.', 'wpsso' ),
-					'color' => __( 'The value of option \'%s\' must be a CSS color code - resetting option to default value.', 'wpsso' ),
-					'date' => __( 'The value of option \'%s\' must be a yyyy-mm-dd date - resetting option to default value.', 'wpsso' ),
-					'time' => __( 'The value of option \'%s\' must be a hh:mm time - resetting option to default value.', 'wpsso' ),
-					'html' => __( 'The value of option \'%s\' must be HTML code - resetting option to default value.', 'wpsso' ),
+					'api_key'   => __( 'The value of option \'%s\' must be alpha-numeric - resetting option to default value.', 'wpsso' ),
+					'color'     => __( 'The value of option \'%s\' must be a CSS color code - resetting option to default value.', 'wpsso' ),
+					'date'      => __( 'The value of option \'%s\' must be a yyyy-mm-dd date - resetting option to default value.', 'wpsso' ),
+					'time'      => __( 'The value of option \'%s\' must be a hh:mm time - resetting option to default value.', 'wpsso' ),
+					'html'      => __( 'The value of option \'%s\' must be HTML code - resetting option to default value.', 'wpsso' ),
 					'not_blank' => __( 'The value of option \'%s\' cannot be an empty string - resetting option to default value.', 'wpsso' ),
 				);
 			}
@@ -996,8 +1007,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return;
 			}
 
-			$settings_page_link = $this->p->util->get_admin_url( 'essential#sucom-tabset_essential-tab_google',
-				_x( 'Organization Banner URL', 'option label', 'wpsso' ) );
+			$settings_page_link = $this->p->util->get_admin_url(
+				'essential#sucom-tabset_essential-tab_google',
+				_x( 'Organization Banner URL', 'option label', 'wpsso' )
+			);
 
 			$size_name   = null;	// Only check banner urls - skip any banner image id options.
 			$opt_img_pre = 'schema_banner';

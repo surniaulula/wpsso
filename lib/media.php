@@ -45,8 +45,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		public function allow_img_data_attributes() {
+
 			global $allowedposttags;
+
 			$allowedposttags['img']['data-wp-pid'] = true;
+
 			if ( ! empty( $this->p->options['p_add_nopin_media_img_tag'] ) ) {
 				$allowedposttags['img']['nopin'] = true;
 			}
@@ -71,10 +74,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 * $attr = apply_filters( 'wp_get_attachment_image_attributes', $attr, $attachment );
 		 */
 		public function add_attachment_image_attributes( $attr, $attach ) {
+
 			$attr['data-wp-pid'] = $attach->ID;
+
 			if ( ! empty( $this->p->options['p_add_nopin_media_img_tag'] ) ) {
 				$attr['nopin'] = 'nopin';
 			}
+
 			return $attr;
 		}
 
