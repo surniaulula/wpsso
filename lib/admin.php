@@ -2653,9 +2653,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$short   = $this->p->cf['plugin'][$lca]['short'];
 			$user_id = get_current_user_id();
 
-			$all_times     = $this->p->util->get_all_times();
-			$week_ago_secs = time() - WEEK_IN_SECONDS;
-			$year_ago_secs = time() - YEAR_IN_SECONDS;
+			$all_times           = $this->p->util->get_all_times();
+			$one_week_ago_secs   = time() - WEEK_IN_SECONDS;
+			$six_months_ago_secs = time() - ( 6 * MONTH_IN_SECONDS );
+			$one_year_ago_secs   = time() - YEAR_IN_SECONDS;
 
 			$cache_md5_pre  = $lca . '_';
 			$cache_exp_secs = 2 * DAY_IN_SECONDS;
@@ -2681,7 +2682,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;							// Get the next plugin.
 				} elseif ( empty( $all_times[$ext . '_activate_time'] ) ) {		// Never activated.
 					continue;
-				} elseif ( $all_times[$ext . '_activate_time'] > $week_ago_secs ) {	// Activated less than time ago.
+				} elseif ( $all_times[$ext . '_activate_time'] > $one_week_ago_secs ) {	// Activated less than time ago.
 					continue;
 				} elseif ( empty( $showing_ext ) || $showing_ext === '1' ) {		// Show this notice for $cache_exp_secs.
 					set_transient( $cache_id, $dismiss_key, $cache_exp_secs );
@@ -2759,11 +2760,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! self::$pkg[$lca]['aop'] ) {
 
-				if ( ! empty( $all_times[$lca . '_install_time'] ) && $all_times[$lca . '_install_time'] < $year_ago_secs ) {
+				if ( ! empty( $all_times[$lca . '_install_time'] ) && $all_times[$lca . '_install_time'] < $six_months_ago_secs ) {
 
 					$info         = $this->p->cf['plugin'][$lca];
-					$purchase_url = add_query_arg( 'utm_source', 'year-installed-notice', $info['url']['purchase'] );
-					$dismiss_key  = 'timed-notice-' . $lca . '-year-installed';
+					$purchase_url = add_query_arg( 'utm_source', 'pro-purchase-notice', $info['url']['purchase'] );
+					$dismiss_key  = 'timed-notice-' . $lca . '-pro-purchase-notice';
 					$dismiss_time = 3 * MONTH_IN_SECONDS;
 
 					$purchase_label   = __( 'Yes! Get the Pro update in just moments!', 'wpsso' );
@@ -2782,11 +2783,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 
-					$notice_msg .= sprintf( __( 'You\'ve been using the %s plugin for over a year now, which is awesome!', 'wpsso' ), $info['short'] ) . ' ';
+					$notice_msg .= sprintf( __( 'You\'ve been using the %1$s plugin for more than %2$s now, which is awesome!', 'wpsso' ),
+						$info['short'], __( 'six months', 'wpsso' ) ) . ' ';
 
 					$notice_msg .= '</p><p>';
 
-					$notice_msg .= sprintf( __( 'We\'ve put a lot of effort into making %s and its add-ons the best possible &mdash; I hope you\'ve enjoyed all the new features, improvements, and updates over the past year.', 'wpsso' ), $info['short'] ) . ' :-)';
+					$notice_msg .= sprintf( __( 'We\'ve put a lot of effort into making %1$s and its add-ons the best possible &mdash; I hope you\'ve enjoyed all the new features, improvements, and updates over the past %2$s.', 'wpsso' ), $info['short'], __( 'six months', 'wpsso' ) ) . ' :-)';
 
 					$notice_msg .= '</p><p>';
 
