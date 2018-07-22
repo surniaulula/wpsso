@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.9.0-rc.2 (2018/07/22)**
+**Version 4.9.0 (2018/07/22)**
 
 * *New Features*
 	* None.
@@ -566,7 +566,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.9.0-rc.2 =
+= 4.9.0 =
 
 (2018/07/22) Added an 'og:image:alt' meta tag for images. Renamed the 'og:image' meta tag to 'og:image:url'. Fixed missing custom image sizes when refreshing the cache. Fixed the default / initial order of image and video meta tags.
 
