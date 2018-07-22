@@ -2053,9 +2053,10 @@ msgstr ""
 #: lib/config-gettext-extract.php:179
 msgctxt "plugin description"
 msgid ""
-"WPSSO Core creates complete and accurate meta tags and Schema markup "
-"automatically from your content for social sharing, Google's Knowledge Graph "
-"and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
+"WPSSO Core gives social sites and search engines more information about your "
+"content, business and authors with complete meta tags and Schema markup for "
+"social sharing, Google's Knowledge Graph / Rich Card SEO, Pinterest Rich "
+"Pins, Twitter Cards and more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:180
@@ -6114,26 +6115,26 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:359
+#: wpsso.php:360
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:374
+#: wpsso.php:375
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:382
+#: wpsso.php:383
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:383
+#: wpsso.php:384
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 
@@ -6147,9 +6148,10 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"WPSSO Core creates complete and accurate meta tags and Schema markup "
-"automatically from your content for social sharing, Google's Knowledge Graph "
-"and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
+"WPSSO Core gives social sites and search engines more information about your "
+"content, business and authors with complete meta tags and Schema markup for "
+"social sharing, Google's Knowledge Graph / Rich Card SEO, Pinterest Rich "
+"Pins, Twitter Cards and more."
 msgstr ""
 
 #. Author of the plugin/theme
