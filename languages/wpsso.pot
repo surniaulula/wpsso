@@ -2054,9 +2054,9 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core gives social sites and search engines more information about your "
-"content, business and authors with complete meta tags and Schema markup for "
-"social sharing, Google's Knowledge Graph / Rich Card SEO, Pinterest Rich "
-"Pins, Twitter Cards and more."
+"content, business and authors, with complete meta tags and Schema markup for "
+"social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, "
+"Twitter Cards and more."
 msgstr ""
 
 #: lib/config-gettext-extract.php:180
@@ -6149,9 +6149,9 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "WPSSO Core gives social sites and search engines more information about your "
-"content, business and authors with complete meta tags and Schema markup for "
-"social sharing, Google's Knowledge Graph / Rich Card SEO, Pinterest Rich "
-"Pins, Twitter Cards and more."
+"content, business and authors, with complete meta tags and Schema markup for "
+"social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, "
+"Twitter Cards and more."
 msgstr ""
 
 #. Author of the plugin/theme

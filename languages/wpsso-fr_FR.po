@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-07-21 09:11-0400\n"
-"PO-Revision-Date: 2018-07-21 09:15-0400\n"
+"POT-Creation-Date: 2018-07-22 08:37-0400\n"
+"PO-Revision-Date: 2018-07-22 08:37-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -365,7 +365,7 @@ msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la fonction %3$s est manquante."
 
 #: lib/admin.php:2138 lib/pro/media/slideshare.php:199
-#: lib/pro/media/vimeo.php:168 lib/pro/media/wistia.php:332 lib/util.php:1391
+#: lib/pro/media/vimeo.php:168 lib/pro/media/wistia.php:332 lib/util.php:1390
 msgid "Please contact your hosting provider to have the missing PHP function installed."
 msgstr "SVP contacter votre hébergeur pour installer la fonction PHP manquante."
 
@@ -1909,7 +1909,7 @@ msgstr "Extension d'ajout WPSSO Core pour fournir des balises méta Apple Store 
 #: lib/config-gettext-extract.php:169
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO)."
-msgstr "Extension d'ajout WPSSO Core pour fournir le balisage de Schéma BreadcrumbList en format JSON-LD pour Google et l'optimisation de recherche (SEO)."
+msgstr "Extension d'ajout WPSSO Core pour fournir le balisage Schéma BreadcrumbList en format JSON-LD pour Google et l'optimisation de recherche (SEO)."
 
 #: lib/config-gettext-extract.php:170
 msgctxt "plugin description"
@@ -1919,7 +1919,7 @@ msgstr "Extension d'ajout WPSSO Core pour fournir des balises méta Pinterest pl
 #: lib/config-gettext-extract.php:171
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup."
-msgstr "Extension d'ajout WPSSO Core pour fournir des notes et critiques aux commentaires WordPress, avec balises méta Aggregate Rating et balisage de Schéma Review."
+msgstr "Extension d'ajout WPSSO Core pour fournir des notes et critiques aux commentaires WordPress, avec balises méta Aggregate Rating et balisage Schéma Review."
 
 #: lib/config-gettext-extract.php:172
 msgctxt "plugin description"
@@ -1929,7 +1929,7 @@ msgstr "Extension d'ajout WPSSO Core pour fournir des boutons de partage sociaux
 #: lib/config-gettext-extract.php:173
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, Events, Local Business, Products, Recipes, Reviews and many more."
-msgstr "Extension d'ajout WPSSO Core pour balisage de Schéma JSON-LD d'article, événement, entreprise locale, produit, recette, critique et bien plus."
+msgstr "Extension d'ajout WPSSO Core pour balisage Schéma JSON-LD d'article, événement, entreprise locale, produit, recette, critique et bien plus."
 
 #: lib/config-gettext-extract.php:174
 msgctxt "plugin description"
@@ -1954,12 +1954,12 @@ msgstr "Extension d'ajout WPSSO Core pour fournir des mises à jour pour l'exten
 #: lib/config-gettext-extract.php:178
 msgctxt "plugin description"
 msgid "WPSSO Core add-on to remove outdated / incomplete Schema Microdata, leaving the Google recommended Schema JSON-LD markup untouched."
-msgstr "Extension d'ajout WPSSO Core pour supprimer les Microdonnées de Schéma obsolète / incomplète, laissant le balisage de Schéma JSON-LD recommandé par Google intact."
+msgstr "Extension d'ajout WPSSO Core pour supprimer les Microdonnées de Schéma obsolète / incomplète, laissant le balisage Schéma JSON-LD recommandé par Google intact."
 
 #: lib/config-gettext-extract.php:179
 msgctxt "plugin description"
-msgid "WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
-msgstr "WPSSO Core crée des balises méta et balisage de Schéma complets et précis automatiquement à partir de votre contenu pour le partage social, Google Knowledge Graph et Rich Card SEO, Pinterest Rich Pins, Twitter Cards et d'autres."
+msgid "WPSSO Core gives social sites and search engines more information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
+msgstr "WPSSO Core fournit aux sites sociaux et moteurs de recherche plus d'informations sur votre contenu, votre entreprise et vos auteurs, avec des balises méta et balisage Schéma complet pour le partage social, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards et plus."
 
 #: lib/config-gettext-extract.php:180
 msgctxt "option value"
@@ -2390,7 +2390,7 @@ msgstr "Forcer a jouer lorsque possible"
 #: lib/gpl/admin/meta.php:73 lib/gpl/admin/post.php:64
 #: lib/pro/admin/meta.php:82 lib/pro/admin/post.php:75
 msgid "Activate the %s add-on for additional Schema markup features and options."
-msgstr "Activer l'ajout %s pour plus de fonctions et options de balisage de Schéma."
+msgstr "Activer l'ajout %s pour plus de fonctions et options de balisage Schéma."
 
 #: lib/gpl/admin/meta.php:79 lib/gpl/admin/post.php:70
 #: lib/pro/admin/meta.php:88 lib/pro/admin/post.php:81
@@ -2621,7 +2621,7 @@ msgstr "ajout de balises méta de schéma"
 
 #: lib/head.php:654
 msgid "adding schema json-ld markup"
-msgstr "ajout de balisage de schéma json-ld"
+msgstr "ajout de balisage schéma json-ld"
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
 #: lib/loader.php:154
@@ -2635,7 +2635,7 @@ msgstr "Classe de  bibliothèque \"%s\" manquante."
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:163 lib/loader.php:189 lib/post.php:259 lib/register.php:238
-#: lib/term.php:234 lib/user.php:201 lib/util.php:357 lib/util.php:2473
+#: lib/term.php:234 lib/user.php:201 lib/util.php:357 lib/util.php:2472
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
@@ -2713,7 +2713,7 @@ msgstr "Facebook a publié une préférence pour les dimensions d'image Open Gra
 
 #: lib/messages.php:91
 msgid "A custom sharing URL used for the Facebook / Open Graph and Pinterest Rich Pin meta tags, Schema markup, and any social sharing add-ons."
-msgstr "URL de partage personnalisée utilisée pour les balises méta Facebook / Open Graph et Pinterest Rich Pin, le balisage de Schéma, et les ajouts de partage social."
+msgstr "URL de partage personnalisée utilisée pour les balises méta Facebook / Open Graph, balisage Schéma et les ajouts de boutons pour partage social."
 
 #: lib/messages.php:91 lib/messages.php:97
 msgid "Please make sure the custom URL you enter here is functional and redirects correctly."
@@ -2816,11 +2816,11 @@ msgstr "Vous pouvez choisir %1$s pour ce produit, ou laissez la valeur par défa
 #. translators: %1$s is the product meta name - the first letter of this sentence is capitalized automatically.
 #: lib/messages.php:218
 msgid "The product %1$s may be used in Open Graph product meta tags and Schema markup for products with a single variation."
-msgstr "%1$s du produit peut être utilisé dans les balises méta Open Graph de produits et balisage de Schéma pour les produits avec une seule variation."
+msgstr "%1$s du produit peut être utilisé dans les balises méta Open Graph de produits et balisage Schéma pour les produits avec une seule variation."
 
 #: lib/messages.php:220
 msgid "The Schema markup for products with multiple variations will include all product variations with the specific %1$s of each variation."
-msgstr "Le balisage de Schéma pour les produits à variations multiples inclura toutes les variations du produit avec %1$s spécifique de chaque variation."
+msgstr "Le balisage Schéma pour les produits à variations multiples inclura toutes les variations du produit avec %1$s spécifique de chaque variation."
 
 #: lib/messages.php:226
 msgid "The maximum number of images to include in the Facebook / Open Graph meta tags."
@@ -2848,7 +2848,7 @@ msgstr "Lorsque l'option %s est activée et qu'une image de pré-visualisation e
 
 #: lib/messages.php:259
 msgid "The maximum number of embedded videos to include in the Facebook / Open Graph meta tags and Schema markup."
-msgstr "Le nombre maximum de vidéos intégrées à inclure dans les balises méta Facebook / Open Graph et le balisage de Schéma."
+msgstr "Le nombre maximum de vidéos intégrées à inclure dans les balises méta Facebook / Open Graph et le balisage Schéma."
 
 #: lib/messages.php:265
 msgid "The %1$s video API modules can offer default video width and height values, provided that information is available from the API service."
@@ -2860,7 +2860,7 @@ msgstr "Si les valeurs de largeur et/ou de hauteur par défaut du vidéo sont in
 
 #: lib/messages.php:273
 msgid "Custom video embed HTML for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup."
-msgstr "Code HTML personnalisé de vidéo intégré pour le premier vidéo des balises méta Facebook / Open Graph et Twitter Card, et dans le balisage de Schéma JSON-LD."
+msgstr "Code HTML personnalisé de vidéo intégré pour le premier vidéo des balises méta Facebook / Open Graph et Twitter Card, et dans le balisage Schéma JSON-LD."
 
 #: lib/messages.php:275 lib/messages.php:283
 msgid "If the video is from a recognized external video service, an API connection will be made to retrieve additional information about the video."
@@ -2868,7 +2868,7 @@ msgstr "Si le vidéo provient d'un service vidéo externe reconnu, une connexion
 
 #: lib/messages.php:281
 msgid "A custom video URL for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup."
-msgstr "URL de vidéo personnalisé pour le premier vidéo des balises méta Facebook / Open Graph et Twitter Card, et dans le balisage de Schéma JSON-LD."
+msgstr "URL de vidéo personnalisé pour le premier vidéo des balises méta Facebook / Open Graph et Twitter Card, et dans le balisage Schéma JSON-LD."
 
 #: lib/messages.php:290
 msgid "The %1$s video API modules can offer a default video name / title and description, provided that information is available from the API service."
@@ -3033,7 +3033,7 @@ msgstr "Sélectionnez \"[Aucun]\" si vous préférez exclure la balise méta %s 
 
 #: lib/messages.php:557
 msgid "If no custom image has been defined for an author, fallback to using their Gravatar image in author related meta tags and Schema markup."
-msgstr "Si aucune image personnalisée n'a été définie pour un auteur, utiliser l'image Gravatar dans les balises méta et balisage de Schéma liées à l'auteur."
+msgstr "Si aucune image personnalisée n'a été définie pour un auteur, utiliser l'image Gravatar dans les balises méta et balisage Schéma liées à l'auteur."
 
 #: lib/messages.php:559
 msgid "A custom image can be selected for / by each author in their WordPress user profile %s metabox."
@@ -3055,7 +3055,7 @@ msgstr "Masquer la pré-visualisation des réglages de la version Pro dans les p
 msgid "Please note that some metaboxes and tabs may be empty - showing only a \"<em>%s</em>\" message - after enabling this option."
 msgstr "SVP prendre note que certains métabox et onglets peuvent être vides - ne montrant qu'un message \"<em>%s</em>\" - après avoir activé cette option."
 
-#: lib/messages.php:598 lib/util.php:2755
+#: lib/messages.php:598 lib/util.php:2754
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -3337,7 +3337,7 @@ msgstr "Créer automatiquement les images manquantes ou incorrectes dans la bibl
 
 #: lib/messages.php:967
 msgid "When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you've defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored."
-msgstr "Lorsque cette option est activée, les images de pleine grandeur, utilisées pour les balises méta et balisage de Schéma, doivent être égales (ou supérieur) aux dimensions d'image que vous avez définies dans les réglages %s &mdash; les images qui ne respectent pas, ou ne dépassent pas, les exigences minimales seront ignorées."
+msgstr "Lorsque cette option est activée, les images de pleine grandeur, utilisées pour les balises méta et balisage Schéma, doivent être égales (ou supérieur) aux dimensions d'image que vous avez définies dans les réglages %s &mdash; les images qui ne respectent pas, ou ne dépassent pas, les exigences minimales seront ignorées."
 
 #: lib/messages.php:969
 msgid "<strong>Enabling this option is highly recommended</strong> &mdash; the option is disabled by default to avoid excessive warnings on sites with small / thumbnail images in their media library."
@@ -3373,7 +3373,7 @@ msgstr "Activer le métabox WordPress d'extrait pour les Pages."
 
 #: lib/messages.php:999
 msgid "An excerpt is an optional hand-crafted summary of your content, that %s can also use as a default description value for meta tags and Schema markup."
-msgstr "Un extrait est un résumé facultatif de votre contenu, que %s peut également utiliser comme valeur de description par défaut pour les balises méta et balisage de Schéma."
+msgstr "Un extrait est un résumé facultatif de votre contenu, que %s peut également utiliser comme valeur de description par défaut pour les balises méta et balisage Schéma."
 
 #: lib/messages.php:1005
 msgid "Enable the WordPress tags metabox for Pages."
@@ -3405,7 +3405,7 @@ msgstr "désactivé"
 
 #: lib/messages.php:1028
 msgid "Head meta tags and Schema markup are saved to the WordPress transient cache to optimize performance."
-msgstr "Les balises méta et balisage de Schéma de l'entête sont enregistrés dans le cache transitoire de WordPress pour optimiser la performance."
+msgstr "Les balises méta et balisage Schéma de l'entête sont enregistrés dans le cache transitoire de WordPress pour optimiser la performance."
 
 #: lib/messages.php:1030 lib/messages.php:1042 lib/messages.php:1054
 #: lib/messages.php:1066 lib/messages.php:1078 lib/messages.php:1090
@@ -3431,7 +3431,7 @@ msgstr "La liste des rubriques d'article filtré est enregistré dans le cache t
 
 #: lib/messages.php:1088
 msgid "When %s creates Schema markup for the Blog, CollectionPage ProfilePage, and SearchResultsPage types, the JSON-LD of each individual post is saved to the WordPress transient cache to optimize performance."
-msgstr "Lorsque %s crée le balisage de Schéma pour les types Blog, CollectionPage, ProfilePage, et SearchResultsPage, le JSON-LD de chaque article individuel est enregistré dans le cache transitoire de WordPress pour optimiser la performance."
+msgstr "Lorsque %s crée le balisage Schéma pour les types Blog, CollectionPage, ProfilePage, et SearchResultsPage, le JSON-LD de chaque article individuel est enregistré dans le cache transitoire de WordPress pour optimiser la performance."
 
 #: lib/messages.php:1100
 msgid "The filtered Schema types array is saved to the WordPress transient cache to optimize performance."
@@ -3619,7 +3619,7 @@ msgstr "Sélectionnez le champ de contact à utiliser dans la page de profil Wor
 
 #: lib/messages.php:1379
 msgid "Include WebSite, Organization and/or Person Schema markup in the front page for Google's <em>Knowledge Graph</em>."
-msgstr "Inclure le balisage de Schéma WebSite, Organisation et/ou de Personne dans la page d'avant pour le <em>Knowledge Graph</em> de Google."
+msgstr "Inclure le balisage Schéma WebSite, Organisation et/ou de Personne dans la page d'avant pour le <em>Knowledge Graph</em> de Google."
 
 #: lib/messages.php:1381
 msgid "The WebSite markup includes the site name, alternate site name, site URL and search query URL."
@@ -3665,11 +3665,11 @@ msgstr "L'URL d'image de bannière pour cette organisation &mdash; <strong>mesur
 
 #: lib/messages.php:1411
 msgid "The maximum number of images to include in the Schema markup &mdash; this includes the <em>featured</em> or <em>attached</em> images, and any images found in the Post or Page content."
-msgstr "Le nombre maximum d'images à inclure dans le balisage de Schéma &mdash; incluant les images <em>en vedette</em> ou <em>attachées</em>, ainsi que les images trouvées dans le contenu de l'article ou de la page."
+msgstr "Le nombre maximum d'images à inclure dans le balisage Schéma &mdash; incluant les images <em>en vedette</em> ou <em>attachées</em>, ainsi que les images trouvées dans le contenu de l'article ou de la page."
 
 #: lib/messages.php:1413
 msgid "If you select \"0\", then no images will be included in the Schema markup (<strong>not recommended</strong>)."
-msgstr "Si vous sélectionnez \"0\", aucune image ne sera incluse dans le balisage de Schéma (<strong>non recommandé</strong>)."
+msgstr "Si vous sélectionnez \"0\", aucune image ne sera incluse dans le balisage Schéma (<strong>non recommandé</strong>)."
 
 #: lib/messages.php:1423
 msgid "The image dimensions used for the Google / Schema meta tags and JSON-LD markup (the default dimensions are %s)."
@@ -3985,7 +3985,7 @@ msgstr "Média prioritaire"
 
 #: lib/messages.php:2068
 msgid "A larger and/or different custom image, specifically for meta tags and Schema markup, can be selected in the %1$s metabox under the %2$s tab."
-msgstr "Une image personnalisée plus grande et/ou différente, précisément pour les balises méta et balisage de Schéma, peut être sélectionné dans le métabox %1$s sous l'onglet %2$s."
+msgstr "Une image personnalisée plus grande et/ou différente, précisément pour les balises méta et balisage Schéma, peut être sélectionné dans le métabox %1$s sous l'onglet %2$s."
 
 #: lib/messages.php:2094
 msgid "Additional information shown only to users with Administrative privileges:"
@@ -4017,7 +4017,7 @@ msgstr "Une balise méta Open Graph d'image n'a pas pu être générée à parti
 
 #: lib/messages.php:2134
 msgid "A Schema image property could not be generated from this webpage content or its custom %s metabox settings. Google <em>requires at least one image property</em> for this Schema item type."
-msgstr "Un balisage de Schéma d'image n'a pas pu être générée à partir de ce contenu ou des réglages personnalisés du metabox %s. Google <em>exige au moins une propriété d'image</em> pour ce type de Schéma."
+msgstr "Un balisage Schéma d'image n'a pas pu être générée à partir de ce contenu ou des réglages personnalisés du metabox %s. Google <em>exige au moins une propriété d'image</em> pour ce type de Schéma."
 
 #: lib/messages.php:2147
 msgid "The %1$s advanced option is currently disabled."
@@ -4445,7 +4445,7 @@ msgstr "Aucune description"
 
 #. translators: %1$0.3f is a number of seconds
 #: lib/post.php:245 lib/term.php:220 lib/user.php:187 lib/util.php:343
-#: lib/util.php:2450
+#: lib/util.php:2449
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr "supérieur au max recommandé de %1$0.3f secs"
 
@@ -4478,7 +4478,7 @@ msgstr "SVP envisager d'améliorer la vitesse de votre site."
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:898 lib/util.php:1305
+#: lib/post.php:898 lib/util.php:1304
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
@@ -4658,12 +4658,12 @@ msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for th
 msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
 #: lib/pro/media/slideshare.php:194 lib/pro/media/vimeo.php:163
-#: lib/pro/media/wistia.php:327 lib/util.php:1386
+#: lib/pro/media/wistia.php:327 lib/util.php:1385
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr "https://secure.php.net/manual/fr/function.simplexml-load-string.php"
 
 #: lib/pro/media/slideshare.php:196 lib/pro/media/vimeo.php:165
-#: lib/pro/media/wistia.php:329 lib/util.php:1388
+#: lib/pro/media/wistia.php:329 lib/util.php:1387
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 
@@ -5241,89 +5241,89 @@ msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'usager ID
 msgid "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s)."
 msgstr "Fonction PHP lente détectée - getimagesize() a pris %1$0.3f secs pour %2$s (%3$s)."
 
-#: lib/util.php:1010
+#: lib/util.php:1009
 msgid "%s cached files, transient cache, column meta, and WordPress object cache have been cleared."
 msgstr "Les fichiers en cache, le cache transitoire, et le méta de colonnes %s, ainsi que le cache d'objets WordPress ont été vidés."
 
-#: lib/util.php:1015
+#: lib/util.php:1014
 msgid "The cache for %s has also been cleared."
 msgstr "Le cache pour %s a été vidé aussi."
 
-#: lib/util.php:1043
+#: lib/util.php:1042
 msgid "A background task will begin shortly to re-create the %s post, term, and user transient cache objects."
 msgstr "Une tâche d'arrière-plan commencera bientôt pour recréer les objets de cache transitoire %s d'article, terme et utilisateur."
 
-#: lib/util.php:1130
+#: lib/util.php:1129
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
-#: lib/util.php:1147
+#: lib/util.php:1146
 msgid "Failed to remove the cache file %s."
 msgstr "Impossible de supprimer le dossier de cache %s."
 
-#: lib/util.php:1226
+#: lib/util.php:1225
 msgid "Error reading %s article topic list file."
 msgstr "Erreur de lecture du fichier de la liste des rubriques d'article %s."
 
-#: lib/util.php:1292
+#: lib/util.php:1291
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:1318
+#: lib/util.php:1317
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
-#: lib/util.php:1438
+#: lib/util.php:1437
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max
-#: lib/util.php:2453
+#: lib/util.php:2452
 msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:2466
+#: lib/util.php:2465
 msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté &mdash le filtre WordPress %1$s a pris %2$0.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:2466
+#: lib/util.php:2465
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:2782
+#: lib/util.php:2781
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2785
+#: lib/util.php:2784
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:2790
+#: lib/util.php:2789
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2793
+#: lib/util.php:2792
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: wpsso.php:359
+#: wpsso.php:360
 msgid "WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif &mdash; des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:374
+#: wpsso.php:375
 msgid "HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif &mdash; des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
 #. translators: %s is the short plugin name
-#: wpsso.php:382
+#: wpsso.php:383
 msgid "Debug mode disables some %s caching features, which degrades performance slightly."
 msgstr "Le mode de débogage désactive certaines fonctionnalités de mise en cache de %s, ce qui dégrade la performance légèrement."
 
-#: wpsso.php:383
+#: wpsso.php:384
 msgid "Please disable debug mode when debugging is complete."
 msgstr "SVP désactiver le mode de débogage lorsque le débogage est terminé."
 
@@ -5336,8 +5336,8 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "WPSSO Core creates complete and accurate meta tags and Schema markup automatically from your content for social sharing, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
-msgstr "WPSSO Core crée des balises méta et balisage de Schéma complets et précis automatiquement à partir de votre contenu pour le partage social, Google Knowledge Graph et Rich Card SEO, Pinterest Rich Pins, Twitter Cards et d'autres."
+msgid "WPSSO Core gives social sites and search engines more information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
+msgstr "WPSSO Core fournit aux sites sociaux et moteurs de recherche plus d'informations sur votre contenu, votre entreprise et vos auteurs, avec des balises méta et balisage Schéma complet pour le partage social, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards et plus."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
