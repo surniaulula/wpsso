@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-07-22 08:37-0400\n"
-"PO-Revision-Date: 2018-07-22 08:37-0400\n"
+"POT-Creation-Date: 2018-07-22 08:47-0400\n"
+"PO-Revision-Date: 2018-07-22 08:48-0400\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1958,8 +1958,8 @@ msgstr "Extension d'ajout WPSSO Core pour supprimer les Microdonnées de Schéma
 
 #: lib/config-gettext-extract.php:179
 msgctxt "plugin description"
-msgid "WPSSO Core gives social sites and search engines more information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
-msgstr "WPSSO Core fournit aux sites sociaux et moteurs de recherche plus d'informations sur votre contenu, votre entreprise et vos auteurs, avec des balises méta et balisage Schéma complet pour le partage social, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards et plus."
+msgid "WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
+msgstr "WPSSO Core fournit aux sites sociaux et moteurs de recherche de meilleures informations sur votre contenu, votre entreprise et vos auteurs, avec des balises méta et balisage Schéma complet pour le partage social, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards et plus."
 
 #: lib/config-gettext-extract.php:180
 msgctxt "option value"
@@ -5336,8 +5336,8 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "WPSSO Core gives social sites and search engines more information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
-msgstr "WPSSO Core fournit aux sites sociaux et moteurs de recherche plus d'informations sur votre contenu, votre entreprise et vos auteurs, avec des balises méta et balisage Schéma complet pour le partage social, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards et plus."
+msgid "WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more."
+msgstr "WPSSO Core fournit aux sites sociaux et moteurs de recherche de meilleures informations sur votre contenu, votre entreprise et vos auteurs, avec des balises méta et balisage Schéma complet pour le partage social, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards et plus."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
