@@ -327,19 +327,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.9.0-rc.1 (2018/07/21)**
+**Version 4.9.0-rc.2 (2018/07/22)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* Renamed the 'og:image' meta tag to 'og:image:url'.
 	* Added an 'og:image:alt' meta tag for images provided by WordPress Media Library.
+	* Renamed the 'og:image' meta tag to 'og:image:url'.
 	* Removed the following SSO > General > Authorship options:
 		* Fallback to Author's Archive Page
 	* Removed the following SSO > General > Images options:
 		* Use Default Image on Archive Pages
 		* Use Default Image on Search Results
 * *Bugfixes*
+	* Fixed the missing custom image sizes when refreshing the cache in background for each post, term, and user object.
 	* Fixed the default / initial order of image and video meta tags.
 * *Developer Notes*
 	* None.
@@ -565,9 +566,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.9.0-rc.1 =
+= 4.9.0-rc.2 =
 
-(2018/07/21) Fixed the default / initial order of image and video meta tags. Added an 'og:image:alt' meta tag for images provided by WordPress Media Library. Renamed the 'og:image' meta tag to 'og:image:url'.
+(2018/07/22) Added an 'og:image:alt' meta tag for images. Renamed the 'og:image' meta tag to 'og:image:url'. Fixed missing custom image sizes when refreshing the cache. Fixed the default / initial order of image and video meta tags.
 
 = 4.8.0 =
 
