@@ -2,13 +2,13 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Easy, complete, accurate, and automatic - provide information about your content, business and authors to social sites and search engines.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Easy, complete, accurate, and automatic - give social sites and search engines more information about your content, business and authors.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.8.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.7</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>facebook, pinterest, twitter, schema, meta tags, open graph, rich pins, social sharing, seo, nextgen facebook, local seo, knowledge graph, linkedin, gutenberg</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>facebook, pinterest, twitter, linkedin, schema, meta tags, open graph, social sharing, seo, local seo, knowledge graph, rich cards, rich pins, twitter cards</td></tr>
 </table>
 
 <h2>Description</h2>

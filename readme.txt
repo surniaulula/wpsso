@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: facebook, pinterest, twitter, schema, meta tags, open graph, rich pins, social sharing, seo, nextgen facebook, local seo, knowledge graph, linkedin, gutenberg
+Tags: facebook, pinterest, twitter, linkedin, schema, meta tags, open graph, social sharing, seo, local seo, knowledge graph, rich cards, rich pins, twitter cards
 Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
@@ -14,7 +14,7 @@ Tested Up To: 4.9.7
 WC Tested Up To: 3.4.3
 Stable Tag: 4.8.0
 
-Easy, complete, accurate, and automatic - provide information about your content, business and authors to social sites and search engines.
+Easy, complete, accurate, and automatic - give social sites and search engines more information about your content, business and authors.
 
 == Description ==
 
