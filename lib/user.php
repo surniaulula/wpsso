@@ -555,13 +555,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function add_contact_methods( $fields = array(), $user = null ) {
 
-			$pdir = $this->p->avail['*']['p_dir'];
-			$aop  = $this->p->check->aop( $this->p->lca, true, $pdir );
+			$has_pdir = $this->p->avail['*']['p_dir'];
+			$has_aop  = $this->p->check->aop( $this->p->lca, true, $has_pdir );
 
 			/**
 			 * Unset built-in contact fields and/or update their labels.
 			 */
-			if ( ! empty( $this->p->cf['wp']['cm_names'] ) && is_array( $this->p->cf['wp']['cm_names'] ) && $aop ) {
+			if ( ! empty( $this->p->cf['wp']['cm_names'] ) && is_array( $this->p->cf['wp']['cm_names'] ) && $has_aop ) {
 
 				foreach ( $this->p->cf['wp']['cm_names'] as $id => $desc ) {
 

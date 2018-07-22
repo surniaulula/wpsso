@@ -409,7 +409,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 * The $mod variable can be false, and if so, it will be set using get_page_mod().
 		 * This method does not return a value, so do not use as a filter. ;-)
 		 */
-		public function add_plugin_image_sizes( $wp_obj = false, $sizes = array(), &$mod = false, $filter = true ) {
+		public function add_plugin_image_sizes( $wp_obj = false, $sizes = array(), &$mod = false, $filter_sizes = true ) {
 
 			/**
 			 * Allow various plugin add-ons to provide their image names, labels, etc.
@@ -434,8 +434,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$use_post = false;
-			$pdir     = $this->p->avail['*']['p_dir'];
-			$aop      = $this->p->check->aop( $this->p->lca, true, $pdir );
+			$has_pdir = $this->p->avail['*']['p_dir'];
+			$has_aop  = $this->p->check->aop( $this->p->lca, true, $has_pdir );
 
 			/**
 			 * The $mod array argument is preferred but not required.
@@ -450,7 +450,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$md_opts = array();
 
-			if ( true === $filter ) {
+			if ( true === $filter_sizes ) {
 				$sizes = apply_filters( $this->p->lca . '_plugin_image_sizes', $sizes, $mod, SucomUtil::get_crawler_name() );
 			}
 
@@ -462,7 +462,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'module name is unknown' );
 				}
-			} elseif ( ! empty( $mod['id'] ) && ! empty( $mod['obj'] ) && $aop ) {
+			} elseif ( ! empty( $mod['id'] ) && ! empty( $mod['obj'] ) && $has_aop ) {
 
 				/**
 				 * Returns an empty string if no meta found.
@@ -535,7 +535,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					/**
 					 * Allow custom function hooks to make changes.
 					 */
-					if ( true === $filter ) {
+					if ( true === $filter_sizes ) {
 						$size_info = apply_filters( $this->p->lca . '_size_info_' . $size_info['name'], $size_info, $mod['id'], $mod['name'] );
 					}
 
@@ -959,8 +959,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$mods = array();
 
-			$this->add_plugin_image_sizes();
-
 			foreach ( WpssoPost::get_public_post_ids() as $post_id ) {
 				$mods[] = $this->p->m['util']['post']->get_mod( $post_id );
 			}
@@ -974,6 +972,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			foreach ( $mods as $mod ) {
+				$this->add_plugin_image_sizes( false, array(), $mod, true );
 				$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}

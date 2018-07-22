@@ -1953,9 +1953,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						} else {
 
-							$pdir = $this->p->avail['*']['p_dir'];
+							$has_pdir = $this->p->avail['*']['p_dir'];
 
-							if ( ! $this->p->check->aop( $this->p->lca, true, $pdir ) ) {
+							if ( ! $this->p->check->aop( $this->p->lca, true, $has_pdir ) ) {
 								$req_short = $this->p->cf['plugin'][$this->p->lca]['short'] . ' Pro';
 								$req_msg   = sprintf( __( '(note that all Pro add-ons require a licensed and active %1$s plugin)',
 									'wpsso' ), $req_short );
