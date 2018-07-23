@@ -396,9 +396,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $image;
 			}
 
-			$mod = $this->p->m['util']['post']->get_mod( $post_id );
+			$wp_obj       = false;
+			$image_sizes  = array();
+			$mod          = $this->p->m['util']['post']->get_mod( $post_id );
+			$filter_sizes = true;
 
-			$this->add_plugin_image_sizes( false, array(), $mod, true );
+			$this->add_plugin_image_sizes( $wp_obj, $image_sizes, $mod, $filter_sizes );
 
 			return $image;
 		}
@@ -409,7 +412,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 * The $mod variable can be false, and if so, it will be set using get_page_mod().
 		 * This method does not return a value, so do not use as a filter. ;-)
 		 */
-		public function add_plugin_image_sizes( $wp_obj = false, $sizes = array(), &$mod = false, $filter_sizes = true ) {
+		public function add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), &$mod = false, $filter_sizes = true ) {
 
 			/**
 			 * Allow various plugin add-ons to provide their image names, labels, etc.
@@ -428,9 +431,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 *	)
 			 */
 			if ( $this->p->debug->enabled ) {
+
+				$wp_obj_type = gettype( $wp_obj ) === 'object' ? get_class( $wp_obj ) . ' object' : gettype( $wp_obj );
+				$is_ajax_str = defined( 'DOING_AJAX' ) && DOING_AJAX ? 'true' : 'false';
+
 				$this->p->debug->mark( 'define image sizes' );	// Begin timer.
-				$this->p->debug->log( '$wp_obj is ' . ( gettype( $wp_obj ) === 'object' ? get_class( $wp_obj ) . ' object' : gettype( $wp_obj ) ) );
-				$this->p->debug->log( 'DOING_AJAX is ' . ( defined( 'DOING_AJAX' ) && DOING_AJAX ? 'true' : 'false' ) );
+
+				$this->p->debug->log( '$wp_obj is ' . $wp_obj_type );
+				$this->p->debug->log( 'DOING_AJAX is ' . $is_ajax_str );
 			}
 
 			$use_post = false;
@@ -442,16 +450,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
+
 				$mod = $this->get_page_mod( $use_post, $mod, $wp_obj );
 			}
 
 			$md_opts = array();
 
 			if ( true === $filter_sizes ) {
-				$sizes = apply_filters( $this->p->lca . '_plugin_image_sizes', $sizes, $mod, SucomUtil::get_crawler_name() );
+				$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes', $image_sizes, $mod, SucomUtil::get_crawler_name() );
 			}
 
 			if ( empty( $mod['id'] ) ) {
@@ -471,7 +481,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$md_opts = $mod['obj']->get_options( $mod['id'], false, false );	// $filter_opts is false.
 			}
 
-			foreach( $sizes as $opt_prefix => $size_info ) {
+			foreach( $image_sizes as $opt_prefix => $size_info ) {
 
 				if ( ! is_array( $size_info ) ) {
 
@@ -526,7 +536,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					 * Preserve compatibility with older WordPress versions, use true or false when possible.
 					 */
 					if ( true === $size_info['crop'] && ( $size_info['crop_x'] !== 'center' || $size_info['crop_y'] !== 'center' ) ) {
+
 						global $wp_version;
+
 						if ( version_compare( $wp_version, '3.9', '>=' ) ) {
 							$size_info['crop'] = array( $size_info['crop_x'], $size_info['crop_y'] );
 						}
@@ -556,7 +568,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'define image sizes' );	// End timer.
+
 				$this->p->debug->log_arr( 'get_all_image_sizes', SucomUtil::get_image_sizes() );
 			}
 		}
@@ -971,8 +985,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mods[] = $this->p->m['util']['user']->get_mod( $user_id );
 			}
 
+			$wp_obj       = false;
+			$image_sizes  = array();
+			$filter_sizes = true;
+
 			foreach ( $mods as $mod ) {
-				$this->add_plugin_image_sizes( false, array(), $mod, true );
+
+				$this->add_plugin_image_sizes( $wp_obj, $image_sizes, $mod, $filter_sizes );
+
 				$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
@@ -1603,9 +1623,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
+
 				$mod = $this->get_page_mod( $mod );
 			}
 
@@ -1643,9 +1665,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
+
 				$mod = $this->get_page_mod( $mod );
 			}
 
@@ -1873,9 +1897,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
+
 				$mod = $this->get_page_mod( $mod );
 			}
 
