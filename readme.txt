@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.7
 WC Tested Up To: 3.4.3
-Stable Tag: 4.9.0
+Stable Tag: 4.9.1
 
 Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.
 
@@ -580,8 +580,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.9.1 =
 
 (2018/07/25) Renamed the 'og:image:url' meta tag back to 'og:image' for Facebook.
-
-= 4.9.0 =
-
-(2018/07/22) Added an 'og:image:alt' meta tag for images. Renamed the 'og:image' meta tag to 'og:image:url'. Fixed missing custom image sizes when refreshing the cache. Fixed the default / initial order of image and video meta tags.
 
