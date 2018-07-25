@@ -903,21 +903,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			switch ( $name ) {
 
 				case 'og:image:url':
-
-					$ret[] = array( '', $tag, $type, 'og:image', $attr, $value, $cmt );
-
-					break;
-
 				case 'og:video:url':
 
-					$ret[] = array( '', $tag, $type, 'og:video', $attr, $value, $cmt );
+					$addl_name = str_replace( ':url', '', $name );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'adding ' . $addl_name . ' meta tag with ' . $name . ' value' );
+					}
+
+					$ret[] = array( '', $tag, $type, $addl_name, $attr, $value, $cmt );
 
 					break;
 
 				case 'og:image:secure_url':
 				case 'og:video:secure_url':
 
-					if ( strpos( $value, 'https:' ) !== 0 ) {	// Just in case.
+					if ( ! empty( $value ) && strpos( $value, 'https:' ) !== 0 ) {	// Just in case.
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_prefix . ' skipped: value not https' );
