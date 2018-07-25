@@ -327,6 +327,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.9.1 (2018/07/25)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* Renamed the 'og:image:url' meta tag back to 'og:image' for Facebook.
+* *Developer Notes*
+	* None.
+
 **Version 4.9.0 (2018/07/22)**
 
 * *New Features*
@@ -565,6 +576,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
 
 == Upgrade Notice ==
+
+= 4.9.1 =
+
+(2018/07/25) Renamed the 'og:image:url' meta tag back to 'og:image' for Facebook.
 
 = 4.9.0 =
 
