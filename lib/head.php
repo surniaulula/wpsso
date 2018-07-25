@@ -316,7 +316,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						case ( preg_match( '/^property-'.$mt_prefix.'(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
 
 							if ( ! empty( $head_info[$mt_prefix] ) ) {	// Only save the media URL once.
-								continue 2;			// Get the next meta tag.
+								continue 2;				// Get the next meta tag.
 							}
 
 							if ( ! empty( $mt[5] ) ) {
@@ -901,6 +901,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			switch ( $name ) {
+
+				case 'og:image:url':
+
+					$ret[] = array( '', $tag, $type, 'og:image', $attr, $value, $cmt );
+
+					break;
+
+				case 'og:video:url':
+
+					$ret[] = array( '', $tag, $type, 'og:video', $attr, $value, $cmt );
+
+					break;
 
 				case 'og:image:secure_url':
 				case 'og:video:secure_url':

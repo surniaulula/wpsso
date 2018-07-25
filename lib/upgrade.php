@@ -331,6 +331,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
+				if ( $prev_version > 0 && $prev_version <= 585 ) {
+
+					if ( empty( $opts['add_meta_property_og:image:url'] ) ) {
+						$opts['add_meta_property_og:image'] = 0;
+					} else {
+						$opts['add_meta_property_og:image'] = 1;
+					}
+
+					$opts['add_meta_property_og:image:url'] = 0;
+				}
+
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $this->p->lca . '_rename_site_options_keys',
 					self::$rename_site_options_keys ) );

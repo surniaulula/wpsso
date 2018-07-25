@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.9.0',	// Plugin version.
-					'opt_version' => '584',		// Increment when changing default option values.
+					'version'     => '4.9.1',	// Plugin version.
+					'opt_version' => '586',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -876,7 +876,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_og:altitude'                            => 1,
 					'add_meta_property_og:description'                         => 1,
 					'add_meta_property_og:image:secure_url'                    => 1,
-					'add_meta_property_og:image:url'                           => 1,
+					'add_meta_property_og:image:url'                           => 0,
+					'add_meta_property_og:image'                               => 1,
 					'add_meta_property_og:image:width'                         => 1,
 					'add_meta_property_og:image:height'                        => 1,
 					'add_meta_property_og:image:alt'                           => 1,
@@ -890,6 +891,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_og:url'                                 => 1,
 					'add_meta_property_og:video:secure_url'                    => 1,
 					'add_meta_property_og:video:url'                           => 1,
+					'add_meta_property_og:video'                               => 0,
 					'add_meta_property_og:video:type'                          => 1,
 					'add_meta_property_og:video:width'                         => 1,
 					'add_meta_property_og:video:height'                        => 1,
