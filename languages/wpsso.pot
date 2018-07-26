@@ -2716,15 +2716,15 @@ msgstr ""
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:640
+#: lib/head.php:649
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:647
+#: lib/head.php:656
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:654
+#: lib/head.php:663
 msgid "adding schema json-ld markup"
 msgstr ""
 
