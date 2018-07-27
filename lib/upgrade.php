@@ -298,8 +298,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 453 ) {
-					$opts['add_meta_property_og:image:secure_url'] = 1;
-					$opts['add_meta_property_og:video:secure_url'] = 1;
+					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
+						$opts['add_meta_property_' . $mt_name . ':secure_url'] = 1;
+					}
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 557 ) {
@@ -332,14 +333,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				}
 
 				if ( $prev_version > 0 && $prev_version <= 585 ) {
-
-					if ( empty( $opts['add_meta_property_og:image:url'] ) ) {
-						$opts['add_meta_property_og:image'] = 0;
-					} else {
-						$opts['add_meta_property_og:image'] = 1;
+					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
+						$opts['add_meta_property_' . $mt_name] = 1;
+						$opts['add_meta_property_' . $mt_name . ':url'] = 0;
 					}
-
-					$opts['add_meta_property_og:image:url'] = 0;
 				}
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
