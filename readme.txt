@@ -32,7 +32,7 @@ WPSSO Core is language / locale aware, allowing you to customize your site infor
 
 WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards, Weibo and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!
 
-**Includes advanced *quality control* features and options:**
+**Includes advanced *quality assurance* features and options:**
 
 WPSSO Core checks for minimum / maximum image dimensions and aspect ratios, shows notices for missing and required images, verifies your webpages for duplicate meta tags, validates theme header templates for correct HTML markup, warns of any missing PHP modules, and checks 3rd party plugin settings for possible conflicts.
 
