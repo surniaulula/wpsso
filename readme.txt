@@ -327,6 +327,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.9.2 (2018/07/28)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* Updated the WpssoProUtilWpseoMeta module to work in combination with the WpssoProSeoWpseo module (Pro version).
+* *Developer Notes*
+	* None.
+
 **Version 4.9.1 (2018/07/25)**
 
 * *New Features*
@@ -577,7 +588,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.9.1 =
+= 4.9.2 =
 
-(2018/07/25) Renamed the 'og:image:url' meta tag back to 'og:image' for Facebook.
+(2018/07/28) Updated the WpssoProUtilWpseoMeta module to work in combination with the WpssoProSeoWpseo module (Pro version).
 
