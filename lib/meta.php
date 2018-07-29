@@ -602,13 +602,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					/**
 					 * Twitter Card.
 					 */
-					'tc_sum_img_width'  => isset( $opts['tc_sum_img_width'] ) ? $opts['tc_sum_img_width'] : '',
-					'tc_sum_img_height' => isset( $opts['tc_sum_img_height'] ) ? $opts['tc_sum_img_height'] : '',
-					'tc_sum_img_crop'   => empty( $opts['tc_sum_img_crop'] ) ? 0 : 1,
-					'tc_sum_img_crop_x' => empty( $opts['tc_sum_img_crop_x'] ) ? 'center' : $opts['tc_sum_img_crop_x'],
-					'tc_sum_img_crop_y' => empty( $opts['tc_sum_img_crop_y'] ) ? 'center' : $opts['tc_sum_img_crop_y'],
-					'tc_sum_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],	// Default library prefix.
-					'tc_sum_img_url'    => '',
 					'tc_lrg_img_width'  => isset( $opts['tc_lrg_img_width'] ) ? $opts['tc_lrg_img_width'] : '',
 					'tc_lrg_img_height' => isset( $opts['tc_lrg_img_height'] ) ? $opts['tc_lrg_img_height'] : '',
 					'tc_lrg_img_crop'   => empty( $opts['tc_lrg_img_crop'] ) ? 0 : 1,
@@ -616,6 +609,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'tc_lrg_img_crop_y' => empty( $opts['tc_lrg_img_crop_y'] ) ? 'center' : $opts['tc_lrg_img_crop_y'],
 					'tc_lrg_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],	// Default library prefix.
 					'tc_lrg_img_url'    => '',
+					'tc_sum_img_width'  => isset( $opts['tc_sum_img_width'] ) ? $opts['tc_sum_img_width'] : '',
+					'tc_sum_img_height' => isset( $opts['tc_sum_img_height'] ) ? $opts['tc_sum_img_height'] : '',
+					'tc_sum_img_crop'   => empty( $opts['tc_sum_img_crop'] ) ? 0 : 1,
+					'tc_sum_img_crop_x' => empty( $opts['tc_sum_img_crop_x'] ) ? 'center' : $opts['tc_sum_img_crop_x'],
+					'tc_sum_img_crop_y' => empty( $opts['tc_sum_img_crop_y'] ) ? 'center' : $opts['tc_sum_img_crop_y'],
+					'tc_sum_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],	// Default library prefix.
+					'tc_sum_img_url'    => '',
 					/**
 					 * Structured Data / Schema Markup / Pinterest.
 					 */

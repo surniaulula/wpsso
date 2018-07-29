@@ -646,17 +646,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				$error_messages = array(
-					'url'       => __( 'The value of option \'%s\' must be a URL - resetting option to default value.', 'wpsso' ),
-					'csv_urls'  => __( 'The value of option \'%s\' must be a comma-delimited list of URL(s) - resetting option to default value.', 'wpsso' ),
-					'numeric'   => __( 'The value of option \'%s\' must be numeric - resetting option to default value.', 'wpsso' ),
-					'pos_num'   => __( 'The value of option \'%1$s\' must be equal to or greather than %2$s - resetting option to default value.', 'wpsso' ),
-					'blank_num' => __( 'The value of option \'%s\' must be blank or numeric - resetting option to default value.', 'wpsso' ),
-					'api_key'   => __( 'The value of option \'%s\' must be alpha-numeric - resetting option to default value.', 'wpsso' ),
-					'color'     => __( 'The value of option \'%s\' must be a CSS color code - resetting option to default value.', 'wpsso' ),
-					'date'      => __( 'The value of option \'%s\' must be a yyyy-mm-dd date - resetting option to default value.', 'wpsso' ),
-					'time'      => __( 'The value of option \'%s\' must be a hh:mm time - resetting option to default value.', 'wpsso' ),
-					'html'      => __( 'The value of option \'%s\' must be HTML code - resetting option to default value.', 'wpsso' ),
-					'not_blank' => __( 'The value of option \'%s\' cannot be an empty string - resetting option to default value.', 'wpsso' ),
+					'api_key'   => __( 'The value of option \'%s\' must be alpha-numeric - resetting this option to its default value.', 'wpsso' ),
+					'blank_num' => __( 'The value of option \'%s\' must be blank or numeric - resetting this option to its default value.', 'wpsso' ),
+					'color'     => __( 'The value of option \'%s\' must be a CSS color code - resetting this option to its default value.', 'wpsso' ),
+					'csv_urls'  => __( 'The value of option \'%s\' must be a comma-delimited list of URL(s) - resetting this option to its default value.', 'wpsso' ),
+					'date'      => __( 'The value of option \'%s\' must be a yyyy-mm-dd date - resetting this option to its default value.', 'wpsso' ),
+					'html'      => __( 'The value of option \'%s\' must be HTML code - resetting this option to its default value.', 'wpsso' ),
+					'img_id'    => __( 'The value of option \'%s\' must be an image ID - resetting this option to its default value.', 'wpsso' ),
+					'not_blank' => __( 'The value of option \'%s\' cannot be an empty string - resetting this option to its default value.', 'wpsso' ),
+					'numeric'   => __( 'The value of option \'%s\' must be numeric - resetting this option to its default value.', 'wpsso' ),
+					'pos_num'   => __( 'The value of option \'%1$s\' must be equal to or greather than %2$s - resetting this option to its default value.', 'wpsso' ),
+					'time'      => __( 'The value of option \'%s\' must be a hh:mm time - resetting this option to its default value.', 'wpsso' ),
+					'url'       => __( 'The value of option \'%s\' must be a URL - resetting this option to its default value.', 'wpsso' ),
 				);
 			}
 
@@ -664,154 +665,87 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Pre-filter most values to remove html.
 			 */
 			switch ( $option_type ) {
+
 				case 'ignore':
+
 					return $opt_val;	// stop here
+
 					break;
+
 				case 'html':		// leave html, css, and javascript code blocks as-is
 				case 'code':		// code values cannot be blank
 				case 'preg':
+
 					break;
+
 				default:
+
 					$opt_val = wp_filter_nohtml_kses( $opt_val );	// strips all the HTML in the content
 					$opt_val = stripslashes( $opt_val );	// strip slashes added by wp_filter_nohtml_kses()
+
 					break;
 			}
 
 			/**
 			 * Optional cast on return.
 			 */
-			$ret_int = false;
+			$ret_int  = false;
 			$ret_fnum = false;
 			$num_prec = 0;
 
 			if ( strpos( $option_type, 'fnum' ) === 0 ) {
-				$num_prec = substr( $option_type, 4 );
+				$num_prec    = substr( $option_type, 4 );
 				$option_type = 'fnum';
 			}
 
 			switch ( $option_type ) {
 
 				/**
-				 * must be empty or texturized.
+				 * Empty or alpha-numeric (upper or lower case), plus underscores.
 				 */
-				case 'textured':
-					if ( $opt_val !== '' ) {
-						$opt_val = trim( wptexturize( ' '.$opt_val.' ' ) );
-					}
-					break;
+				case 'api_key':
 
-				/**
-				 * Must be empty or a url.
-				 */
-				case 'url':
-					if ( $opt_val !== '' ) {
-						$opt_val = SucomUtil::decode_html( $opt_val );	// Just in case.
-						if ( filter_var( $opt_val, FILTER_VALIDATE_URL ) === false ) {
-							$this->p->notice->err( sprintf( $error_messages[$option_type], $opt_key ) );
-							$opt_val = $def_val;
-						}
-					}
-					break;
+					$opt_val = trim( $opt_val );
 
-				/**
-				 * Strip leading urls off facebook usernames.
-				 */
-				case 'url_base':
-					if ( $opt_val !== '' ) {
-						$opt_val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $opt_val );
+					if ( $opt_val !== '' && preg_match( '/[^a-zA-Z0-9_\-]/', $opt_val ) ) {
+						$this->p->notice->err( sprintf( $error_messages['api_key'], $opt_key ) );
+						$opt_val = $def_val;
 					}
-					break;
 
-				case 'csv_blank':
-					if ( $opt_val !== '' ) {
-						$opt_val = implode( ', ', SucomUtil::explode_csv( $opt_val ) );
-					}
-					break;
-
-				case 'csv_urls':
-					if ( $opt_val !== '' ) {
-						$parts = array();
-						foreach ( SucomUtil::explode_csv( $opt_val ) as $part ) {
-							$part = SucomUtil::decode_html( $part );	// Just in case.
-							if ( filter_var( $part, FILTER_VALIDATE_URL ) === false ) {
-								$this->p->notice->err( sprintf( $error_messages[$option_type], $opt_key ) );
-								$opt_val = $def_val;
-								break;
-							} else {
-								$parts[] = $part;
-							}
-						}
-						$opt_val = implode( ', ', $parts );
-					}
 					break;
 
 				/**
 				 * Twitter-style usernames (prepend with an @ character).
 				 */
 				case 'at_name':
+
 					if ( $opt_val !== '' ) {
 						$opt_val = SucomUtil::get_at_name( $opt_val );
 					}
+
 					break;
 
 				/**
-				 * Must be a floating-point number.
-				 * The decimal precision defined before the switch() statement.
+				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
+				 * Silently convert illegal characters to single hyphens and trim excess.
 				 */
-				case 'fnum':
-					$ret_fnum = true;
-					if ( ! is_numeric( $opt_val ) ) {
-						$this->p->notice->err( sprintf( $error_messages['numeric'], $opt_key ) );
-						$opt_val = $def_val;
-					}
-					break;
+				case 'auth_id':
 
-				/**
-				 * Must be integer / numeric.
-				 */
-				case 'int':
-				case 'integer':
-					$ret_int = true;
-					// No break.
+					$opt_val = trim( preg_replace( '/[^A-Z0-9\-]+/', '-', $opt_val ), '-' );
 
-				case 'numeric':
-					if ( ! is_numeric( $opt_val ) ) {
-						$this->p->notice->err( sprintf( $error_messages['numeric'], $opt_key ) );
-						$opt_val = $def_val;
-					}
-					break;
-
-				/**
-				 * Integer / numeric options that must be 1 or more (not zero).
-				 */
-				case 'pos_int':
-				case 'img_width':	// image height, subject to minimum value (typically, at least 200px)
-				case 'img_height':	// image height, subject to minimum value (typically, at least 200px)
-					$ret_int = true;
-					// No break.
-				case 'pos_num':
-					if ( $option_type === 'img_width' ) {
-						$min_int = $this->p->cf['head']['limit_min']['og_img_width'];
-					} elseif ( $option_type === 'img_height' ) {
-						$min_int = $this->p->cf['head']['limit_min']['og_img_height'];
-					} else {
-						$min_int = 1;
-					}
-					if ( ! empty( $mod['name'] ) && $opt_val === '' ) {	// custom meta options can be empty
-						$ret_int = false;
-					} elseif ( ! is_numeric( $opt_val ) || $opt_val < $min_int ) {
-						$this->p->notice->err( sprintf( $error_messages['pos_num'], $opt_key, $min_int ) );
-						$opt_val = $def_val;
-					}
 					break;
 
 				/**
 				 * Must be blank or integer / numeric.
 				 */
 				case 'blank_int':
+
 					$ret_int = true;
+
 					// No break.
+
 				case 'blank_num':
+
 					if ( $opt_val === '' ) {
 						$ret_int = false;
 					} else {
@@ -823,51 +757,180 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							}
 						}
 					}
+
 					break;
 
 				/**
-				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
+				 * Options that cannot be blank (aka empty string).
 				 */
-				case 'auth_id':
-					// silently convert illegal characters to single hyphens and trim excess
-					$opt_val = trim( preg_replace( '/[^A-Z0-9\-]+/', '-', $opt_val ), '-' );
-					break;
+				case 'code':
+				case 'not_blank':
 
-				/**
-				 * Empty or alpha-numeric (upper or lower case), plus underscores.
-				 */
-				case 'api_key':
-					$opt_val = trim( $opt_val );
-					if ( $opt_val !== '' && preg_match( '/[^a-zA-Z0-9_\-]/', $opt_val ) ) {
-						$this->p->notice->err( sprintf( $error_messages[$option_type], $opt_key ) );
+					if ( $opt_val === '' && $def_val !== '' ) {
+						$this->p->notice->err( sprintf( $error_messages['not_blank'], $opt_key ) );
 						$opt_val = $def_val;
 					}
+
+					break;
+
+				case 'csv_blank':
+
+					if ( $opt_val !== '' ) {
+						$opt_val = implode( ', ', SucomUtil::explode_csv( $opt_val ) );
+					}
+
+					break;
+
+				case 'csv_urls':
+
+					if ( $opt_val !== '' ) {
+
+						$parts = array();
+
+						foreach ( SucomUtil::explode_csv( $opt_val ) as $part ) {
+
+							$part = SucomUtil::decode_html( $part );	// Just in case.
+
+							if ( filter_var( $part, FILTER_VALIDATE_URL ) === false ) {
+								$this->p->notice->err( sprintf( $error_messages['csv_urls'], $opt_key ) );
+								$opt_val = $def_val;
+								break;
+							} else {
+								$parts[] = $part;
+							}
+						}
+
+						$opt_val = implode( ', ', $parts );
+					}
+
+					break;
+
+				/**
+				 * Must be a floating-point number.
+				 * The decimal precision defined before the switch() statement.
+				 */
+				case 'fnum':
+
+					$ret_fnum = true;
+
+					if ( ! is_numeric( $opt_val ) ) {
+						$this->p->notice->err( sprintf( $error_messages['numeric'], $opt_key ) );
+						$opt_val = $def_val;
+					}
+
+					break;
+
+				/**
+				 * Empty string or must include at least one HTML tag.
+				 */
+				case 'html':
+
+					if ( $opt_val !== '' ) {
+
+						$opt_val = trim( $opt_val );
+
+						if ( ! preg_match( '/<.*>/', $opt_val ) ) {
+							$this->p->notice->err( sprintf( $error_messages['html'], $opt_key ) );
+							$opt_val = $def_val;
+						}
+					}
+
+					break;
+
+				/**
+				 * Empty string or an image ID.
+				 */
+				case 'img_id':
+
+					if ( $opt_val !== '' ) {
+
+						if ( ! preg_match( '/^(ngg-)?[0-9]+$/', $opt_val ) ) {
+							$this->p->notice->err( sprintf( $error_messages['img_id'], $opt_key ) );
+							$opt_val = $def_val;
+						}
+					}
+
+					break;
+
+				/**
+				 * Must be integer / numeric.
+				 */
+				case 'int':
+				case 'integer':
+
+					$ret_int = true;
+
+					// No break.
+
+				case 'numeric':
+
+					if ( ! is_numeric( $opt_val ) ) {
+						$this->p->notice->err( sprintf( $error_messages['numeric'], $opt_key ) );
+						$opt_val = $def_val;
+					}
+
+					break;
+
+				/**
+				 * Integer / numeric options that must be 1 or more (not zero).
+				 */
+				case 'pos_int':
+				case 'img_width':	// Image height, subject to minimum value (typically, at least 200px).
+				case 'img_height':	// Image height, subject to minimum value (typically, at least 200px).
+
+					$ret_int = true;
+
+					// No break.
+
+				case 'pos_num':
+
+					if ( $option_type === 'img_width' ) {
+						$min_int = $this->p->cf['head']['limit_min']['og_img_width'];
+					} elseif ( $option_type === 'img_height' ) {
+						$min_int = $this->p->cf['head']['limit_min']['og_img_height'];
+					} else {
+						$min_int = 1;
+					}
+
+					if ( ! empty( $mod['name'] ) && $opt_val === '' ) {	// custom meta options can be empty
+						$ret_int = false;
+					} elseif ( ! is_numeric( $opt_val ) || $opt_val < $min_int ) {
+						$this->p->notice->err( sprintf( $error_messages['pos_num'], $opt_key, $min_int ) );
+						$opt_val = $def_val;
+					}
+
 					break;
 
 				case 'color':
 				case 'date':
 				case 'time':
+
 					$opt_val = trim( $opt_val );
+
 					if ( $option_type === 'color' ) {
-						$fmt = '/^#[a-fA-f0-9]{6,6}$/';	// color #000000
+						$fmt = '/^#[a-fA-f0-9]{6,6}$/';	// Color as #000000.
 					} elseif ( $option_type === 'date' ) {
-						$fmt = '/^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/';	// date yyyy-mm-dd
+						$fmt = '/^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}$/';	// Date as yyyy-mm-dd.
 					} elseif ( $option_type === 'time' ) {
-						$fmt = '/^[0-9]{2,2}:[0-9]{2,2}(:[0-9]{2,2})?$/';	// time hh:mm or hh:mm:ss
+						$fmt = '/^[0-9]{2,2}:[0-9]{2,2}(:[0-9]{2,2})?$/';	// Time as hh:mm or hh:mm:ss.
 					}
+
 					if ( $opt_val !== '' && $fmt && ! preg_match( $fmt, $opt_val ) ) {
 						$this->p->notice->err( sprintf( $error_messages[$option_type], $opt_key ) );
 						$opt_val = $def_val;
 					}
+
 					break;
 
 				/**
 				 * Text strings that can be blank.
 				 */
 				case 'ok_blank':
+
 					if ( $opt_val !== '' ) {
 						$opt_val = trim( $opt_val );
 					}
+
 					break;
 
 				/**
@@ -876,33 +939,50 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'preg':
 				case 'desc':
 				case 'one_line':
+
 					if ( $opt_val !== '' ) {
 						$opt_val = trim( preg_replace( '/[\s\n\r]+/s', ' ', $opt_val ) );
 					}
+
 					break;
 
 				/**
-				 * Empty string or must include at least one HTML tag.
+				 * Must be empty or texturized.
 				 */
-				case 'html':
+				case 'textured':
+
 					if ( $opt_val !== '' ) {
-						$opt_val = trim( $opt_val );
-						if ( ! preg_match( '/<.*>/', $opt_val ) ) {
-							$this->p->notice->err( sprintf( $error_messages['html'], $opt_key ) );
+						$opt_val = trim( wptexturize( ' '.$opt_val.' ' ) );
+					}
+
+					break;
+
+				/**
+				 * Empty string or a URL.
+				 */
+				case 'url':
+
+					if ( $opt_val !== '' ) {
+
+						$opt_val = SucomUtil::decode_html( $opt_val );	// Just in case.
+
+						if ( filter_var( $opt_val, FILTER_VALIDATE_URL ) === false ) {
+							$this->p->notice->err( sprintf( $error_messages['url'], $opt_key ) );
 							$opt_val = $def_val;
 						}
 					}
+
 					break;
 
 				/**
-				 * Options that cannot be blank (aka empty string).
+				 * Strip leading urls off facebook usernames.
 				 */
-				case 'code':
-				case 'not_blank':
-					if ( $opt_val === '' && $def_val !== '' ) {
-						$this->p->notice->err( sprintf( $error_messages['not_blank'], $opt_key ) );
-						$opt_val = $def_val;
+				case 'url_base':
+
+					if ( $opt_val !== '' ) {
+						$opt_val = preg_replace( '/(http|https):\/\/[^\/]*?\//', '', $opt_val );
 					}
+
 					break;
 
 				/**
@@ -910,9 +990,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'checkbox':
 				default:
+
 					if ( $def_val === 0 || $def_val === 1 ) {	// Make sure the default option is also a 1 or 0, just in case.
 						$opt_val = empty( $opt_val ) ? 0 : 1;
 					}
+
 					break;
 			}
 
@@ -1134,10 +1216,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/**
-				 * Must be numeric (blank and zero are ok).
+				 * Empty string or an image ID.
 				 */
 				case 'og_def_img_id':
 				case 'og_img_id':
+				case 'schema_img_id':
+				case 'tc_lrg_img_id':
+				case 'tc_sum_img_id':
+					return 'img_id';
+
+				/**
+				 * Must be numeric (blank and zero are ok).
+				 */
 				case 'product_price':
 					return 'blank_num';
 					break;
@@ -1220,7 +1310,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_def_img_id_pre': 
 				case 'og_img_id_pre': 
 				case 'p_author_name':
-				case 'plugin_shortener':		// none or name of shortener
+				case 'plugin_shortener':		// 'none' or name of shortener
 				case 'product_avail':
 				case 'product_condition':
 				case 'product_gender':
@@ -1245,7 +1335,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/**
-				 * Must be a URL.
+				 * Empty string or a URL.
 				 *
 				 * Exceptions:
 				 *	'add_meta_property_og:image:secure_url' = 1
@@ -1259,15 +1349,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'sharing_url':
 				case 'canonical_url':
 				case 'fb_page_url':
+				case 'og_def_img_url':
 				case 'og_img_url':
 				case 'og_vid_url':
-				case 'og_def_img_url':
 				case 'p_publisher_url':
+				case 'plugin_yourls_api_url':
+				case 'schema_img_url':
 				case 'schema_logo_url':
 				case 'schema_banner_url':
 				case 'schema_addl_type_url':
 				case 'schema_sameas_url':
-				case 'plugin_yourls_api_url':
+				case 'tc_lrg_img_url':
+				case 'tc_sum_img_url':
 				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf['form']['social_accounts'][$base_key] ) ? true : false ):
 					return 'url';
 					break;
@@ -1284,10 +1377,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		public function filter_init_objects() {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 				$this->p->debug->log( 'setting allow_cache to true' );
 			}
+
 			self::$allow_cache = true;
 		}
 
