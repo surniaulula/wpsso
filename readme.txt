@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.9.3-dev.1 (TBD)**
+**Version 4.9.3-dev.1 (2018/07/29)**
 
 * *New Features*
 	* None.
@@ -601,7 +601,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.9.3-dev.1 =
 
-(TBD) Added a sanity check for options with an image ID value.
+(2018/07/29) Added a sanity check for options with an image ID value.
 
 = 4.9.2 =
 
