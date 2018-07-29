@@ -327,6 +327,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.9.3-dev.1 (TBD)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Added a sanity check for options with an image ID value.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.9.2 (2018/07/28)**
 
 * *New Features*
@@ -334,7 +345,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* None.
 * *Bugfixes*
-	* Updated the WpssoProUtilWpseoMeta module to work in combination with the WpssoProSeoWpseo module (Pro version).
+	* Updated the WpssoProUtilWpseoMeta module to work in conjunction with the WpssoProSeoWpseo module (Pro version).
 * *Developer Notes*
 	* None.
 
@@ -588,7 +599,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
+= 4.9.3-dev.1 =
+
+(TBD) Added a sanity check for options with an image ID value.
+
 = 4.9.2 =
 
-(2018/07/28) Updated the WpssoProUtilWpseoMeta module to work in combination with the WpssoProSeoWpseo module (Pro version).
+(2018/07/28) Updated the WpssoProUtilWpseoMeta module to work in conjunction with the WpssoProSeoWpseo module (Pro version).
 
