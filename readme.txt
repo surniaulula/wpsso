@@ -332,7 +332,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Added a sanity check for options with an image ID value.
+	* Added jQuery to show the notices drop-down if there are any error or warning notices.
+	* Added a sanity check for options with an image ID value to make sure the value is numeric.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -601,7 +602,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.9.3-dev.1 =
 
-(2018/07/29) Added a sanity check for options with an image ID value.
+(2018/07/29) Added jQuery to show the notices drop-down if there are any error or warning notices. Added a sanity check for options with an image ID value to make sure the value is numeric.
 
 = 4.9.2 =
 
