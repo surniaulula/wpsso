@@ -827,7 +827,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3049 lib/options.php:1094 lib/submenu/essential.php:140
+#: lib/admin.php:3049 lib/options.php:1103 lib/submenu/essential.php:140
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -5051,103 +5051,103 @@ msgid ""
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:527
+#: lib/options.php:528
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:582
+#: lib/options.php:591
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:649
+#: lib/options.php:658
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:650
+#: lib/options.php:659
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:651
+#: lib/options.php:660
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:652
+#: lib/options.php:661
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:653
+#: lib/options.php:662
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:654
+#: lib/options.php:663
 msgid ""
 "The value of option '%s' must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:655
+#: lib/options.php:664
 msgid ""
 "The value of option '%s' must be an image ID - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:656
+#: lib/options.php:665
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:657
+#: lib/options.php:666
 msgid ""
 "The value of option '%s' must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:658
+#: lib/options.php:667
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:659
+#: lib/options.php:668
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:660
+#: lib/options.php:669
 msgid ""
 "The value of option '%s' must be a URL - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1066
+#: lib/options.php:1075
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1125
+#: lib/options.php:1134
 msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1128
+#: lib/options.php:1137
 msgid "Please make sure this site can access the banner image at %1$s."
 msgstr ""
 
-#: lib/options.php:1133
+#: lib/options.php:1142
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 

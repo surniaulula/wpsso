@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 4.9.0\n"
+"Project-Id-Version: WPSSO Core 4.9.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-07-22 08:47-0400\n"
-"PO-Revision-Date: 2018-07-22 08:48-0400\n"
+"POT-Creation-Date: 2018-07-29 11:21-0300\n"
+"PO-Revision-Date: 2018-07-29 11:23-0300\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -365,7 +365,7 @@ msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la fonction %3$s est manquante."
 
 #: lib/admin.php:2138 lib/pro/media/slideshare.php:199
-#: lib/pro/media/vimeo.php:168 lib/pro/media/wistia.php:332 lib/util.php:1390
+#: lib/pro/media/vimeo.php:168 lib/pro/media/wistia.php:332 lib/util.php:1410
 msgid "Please contact your hosting provider to have the missing PHP function installed."
 msgstr "SVP contacter votre hébergeur pour installer la fonction PHP manquante."
 
@@ -789,7 +789,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:3049 lib/options.php:1012 lib/submenu/essential.php:140
+#: lib/admin.php:3049 lib/options.php:1094 lib/submenu/essential.php:140
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
@@ -2611,15 +2611,15 @@ msgstr "ajout de balises méta open graph"
 msgid "adding twitter card meta tags"
 msgstr "ajout de balises méta carte twitter"
 
-#: lib/head.php:640
+#: lib/head.php:649
 msgid "adding link relation tags"
 msgstr "ajout de balises de relation de lien"
 
-#: lib/head.php:647
+#: lib/head.php:656
 msgid "adding schema meta tags"
 msgstr "ajout de balises méta de schéma"
 
-#: lib/head.php:654
+#: lib/head.php:663
 msgid "adding schema json-ld markup"
 msgstr "ajout de balisage schéma json-ld"
 
@@ -2635,7 +2635,7 @@ msgstr "Classe de  bibliothèque \"%s\" manquante."
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:163 lib/loader.php:189 lib/post.php:259 lib/register.php:238
-#: lib/term.php:234 lib/user.php:201 lib/util.php:357 lib/util.php:2472
+#: lib/term.php:234 lib/user.php:201 lib/util.php:357 lib/util.php:2498
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
@@ -3055,7 +3055,7 @@ msgstr "Masquer la pré-visualisation des réglages de la version Pro dans les p
 msgid "Please note that some metaboxes and tabs may be empty - showing only a \"<em>%s</em>\" message - after enabling this option."
 msgstr "SVP prendre note que certains métabox et onglets peuvent être vides - ne montrant qu'un message \"<em>%s</em>\" - après avoir activé cette option."
 
-#: lib/messages.php:598 lib/util.php:2754
+#: lib/messages.php:598 lib/util.php:2780
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -4343,62 +4343,66 @@ msgid "The Facebook App ID must be numeric and 32 characters or less in length &
 msgstr "L'ID de l'App Facebook doit être numérique et 32 ​​caractères ou moins de longueur - la valeur \"%s\" n'est pas valide."
 
 #: lib/options.php:649
-msgid "The value of option '%s' must be a URL - resetting option to default value."
-msgstr "La valeur de l'option '%s' doit être un URL - l'option est remise à sa valeur par défaut."
-
-#: lib/options.php:650
-msgid "The value of option '%s' must be a comma-delimited list of URL(s) - resetting option to default value."
-msgstr "La valeur de l'option '%s' doit être une liste d'URLs délimitée par des virgules - l'option est remise à sa valeur par défaut."
-
-#: lib/options.php:651
-msgid "The value of option '%s' must be numeric - resetting option to default value."
-msgstr "La valeur de l'option '%s' doit être numérique - l'option est remise à sa valeur par défaut."
-
-#: lib/options.php:652
-msgid "The value of option '%1$s' must be equal to or greather than %2$s - resetting option to default value."
-msgstr "La valeur de l'option '%1$s' doit être égal ou supérieur à %2$s - l'option est remise à sa valeur par défaut."
-
-#: lib/options.php:653
-msgid "The value of option '%s' must be blank or numeric - resetting option to default value."
-msgstr "La valeur de l'option '%s' doit être vide ou numérique - l'option est remise à sa valeur par défaut."
-
-#: lib/options.php:654
-msgid "The value of option '%s' must be alpha-numeric - resetting option to default value."
+msgid "The value of option '%s' must be alpha-numeric - resetting this option to its default value."
 msgstr "La valeur de l'option '%s' doit être alphanumérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:655
-msgid "The value of option '%s' must be a CSS color code - resetting option to default value."
+#: lib/options.php:650
+msgid "The value of option '%s' must be blank or numeric - resetting this option to its default value."
+msgstr "La valeur de l'option '%s' doit être vide ou numérique - l'option est remise à sa valeur par défaut."
+
+#: lib/options.php:651
+msgid "The value of option '%s' must be a CSS color code - resetting this option to its default value."
 msgstr "La valeur de l'option '%s' doit être un code de couleur CSS - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:656
-msgid "The value of option '%s' must be a yyyy-mm-dd date - resetting option to default value."
+#: lib/options.php:652
+msgid "The value of option '%s' must be a comma-delimited list of URL(s) - resetting this option to its default value."
+msgstr "La valeur de l'option '%s' doit être une liste d'URLs délimitée par des virgules - l'option est remise à sa valeur par défaut."
+
+#: lib/options.php:653
+msgid "The value of option '%s' must be a yyyy-mm-dd date - resetting this option to its default value."
 msgstr "La valeur de l'option '%s' doit être une date yyyy-mm-dd - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:657
-msgid "The value of option '%s' must be a hh:mm time - resetting option to default value."
-msgstr "La valeur de l'option '%s' doit être une heure hh:mm - l'option est remise à sa valeur par défaut."
-
-#: lib/options.php:658
-msgid "The value of option '%s' must be HTML code - resetting option to default value."
+#: lib/options.php:654
+msgid "The value of option '%s' must be HTML code - resetting this option to its default value."
 msgstr "La valeur de l'option '%s' doit être du code HTML - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:659
-msgid "The value of option '%s' cannot be an empty string - resetting option to default value."
+#: lib/options.php:655
+msgid "The value of option '%s' must be an image ID - resetting this option to its default value."
+msgstr "La valeur de l'option '%s' doit être un ID d'image - l'option est remise à sa valeur par défaut."
+
+#: lib/options.php:656
+msgid "The value of option '%s' cannot be an empty string - resetting this option to its default value."
 msgstr "La valeur de l'option '%s' ne peut pas être un chaine de caractère vide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:984
+#: lib/options.php:657
+msgid "The value of option '%s' must be numeric - resetting this option to its default value."
+msgstr "La valeur de l'option '%s' doit être numérique - l'option est remise à sa valeur par défaut."
+
+#: lib/options.php:658
+msgid "The value of option '%1$s' must be equal to or greather than %2$s - resetting this option to its default value."
+msgstr "La valeur de l'option '%1$s' doit être égal ou supérieur à %2$s - l'option est remise à sa valeur par défaut."
+
+#: lib/options.php:659
+msgid "The value of option '%s' must be a hh:mm time - resetting this option to its default value."
+msgstr "La valeur de l'option '%s' doit être une heure hh:mm - l'option est remise à sa valeur par défaut."
+
+#: lib/options.php:660
+msgid "The value of option '%s' must be a URL - resetting this option to its default value."
+msgstr "La valeur de l'option '%s' doit être un URL - l'option est remise à sa valeur par défaut."
+
+#: lib/options.php:1066
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/options.php:1043
+#: lib/options.php:1125
 msgid "The %1$s image dimensions cannot be determined."
 msgstr "Les dimensions de l'image %1$s ne peuvent pas être déterminées."
 
-#: lib/options.php:1046
+#: lib/options.php:1128
 msgid "Please make sure this site can access the banner image at %1$s."
 msgstr "Assurez-vous que ce site peut accéder à l'image bannière à %1$s."
 
-#: lib/options.php:1051
+#: lib/options.php:1133
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr "Les dimensions de l'image %1$s sont %2$s et doivent être exactement %3$s."
 
@@ -4445,7 +4449,7 @@ msgstr "Aucune description"
 
 #. translators: %1$0.3f is a number of seconds
 #: lib/post.php:245 lib/term.php:220 lib/user.php:187 lib/util.php:343
-#: lib/util.php:2449
+#: lib/util.php:2475
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr "supérieur au max recommandé de %1$0.3f secs"
 
@@ -4478,7 +4482,7 @@ msgstr "SVP envisager d'améliorer la vitesse de votre site."
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:898 lib/util.php:1304
+#: lib/post.php:898 lib/util.php:1324
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
@@ -4658,12 +4662,12 @@ msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for th
 msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
 #: lib/pro/media/slideshare.php:194 lib/pro/media/vimeo.php:163
-#: lib/pro/media/wistia.php:327 lib/util.php:1385
+#: lib/pro/media/wistia.php:327 lib/util.php:1405
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr "https://secure.php.net/manual/fr/function.simplexml-load-string.php"
 
 #: lib/pro/media/slideshare.php:196 lib/pro/media/vimeo.php:165
-#: lib/pro/media/wistia.php:329 lib/util.php:1387
+#: lib/pro/media/wistia.php:329 lib/util.php:1407
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 
@@ -5241,71 +5245,71 @@ msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'usager ID
 msgid "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s)."
 msgstr "Fonction PHP lente détectée - getimagesize() a pris %1$0.3f secs pour %2$s (%3$s)."
 
-#: lib/util.php:1009
+#: lib/util.php:1029
 msgid "%s cached files, transient cache, column meta, and WordPress object cache have been cleared."
 msgstr "Les fichiers en cache, le cache transitoire, et le méta de colonnes %s, ainsi que le cache d'objets WordPress ont été vidés."
 
-#: lib/util.php:1014
+#: lib/util.php:1034
 msgid "The cache for %s has also been cleared."
 msgstr "Le cache pour %s a été vidé aussi."
 
-#: lib/util.php:1042
+#: lib/util.php:1062
 msgid "A background task will begin shortly to re-create the %s post, term, and user transient cache objects."
 msgstr "Une tâche d'arrière-plan commencera bientôt pour recréer les objets de cache transitoire %s d'article, terme et utilisateur."
 
-#: lib/util.php:1129
+#: lib/util.php:1149
 msgid "Failed to open the cache folder %s for reading."
 msgstr "Impossible d'ouvrir le dossier de cache %s pour lecture."
 
-#: lib/util.php:1146
+#: lib/util.php:1166
 msgid "Failed to remove the cache file %s."
 msgstr "Impossible de supprimer le dossier de cache %s."
 
-#: lib/util.php:1225
+#: lib/util.php:1245
 msgid "Error reading %s article topic list file."
 msgstr "Erreur de lecture du fichier de la liste des rubriques d'article %s."
 
-#: lib/util.php:1291
+#: lib/util.php:1311
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:1317
+#: lib/util.php:1337
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
-#: lib/util.php:1437
+#: lib/util.php:1457
 msgid "The %1$s PHP class is missing - please contact your hosting provider to install the missing %1$s PHP class."
 msgstr "La classe PHP %1$s est manquante - veuillez communiquer avec votre fournisseur d'hébergement pour installer la classe PHP %1$s manquante."
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max
-#: lib/util.php:2452
+#: lib/util.php:2478
 msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:2465
+#: lib/util.php:2491
 msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté &mdash le filtre WordPress %1$s a pris %2$0.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:2465
+#: lib/util.php:2491
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:2781
+#: lib/util.php:2807
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2784
+#: lib/util.php:2810
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:2789
+#: lib/util.php:2815
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:2792
+#: lib/util.php:2818
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"

@@ -261,11 +261,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 						jQuery.getJSON( ajaxurl, ajaxNoticesData, function( data ) {
 
-							var noticeHtml = '';
-							var noticeStatus = '';
+							var noticeHtml       = '';
+							var noticeStatus     = '';
 							var noticeTotalCount = 0;
-							var noticeTypeCount = {};
-							var noNoticesHtml = '<?php echo $no_notices_html; ?>';
+							var noticeTypeCount  = {};
+							var noNoticesHtml    = '<?php echo $no_notices_html; ?>';
 
 							jQuery.each( data, function( noticeType ) {
 
@@ -297,16 +297,27 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 							jQuery( '#wpsso-toolbar-notices-count' ).html( noticeTotalCount );
 
 							if ( noticeTotalCount ) {
+
+								var noticeStatus = '';
+								var showNotices  = false;
+
 								if ( noticeTypeCount['err'] ) {
 									noticeStatus = 'error';
+									showNotices  = true;
 								} else if ( noticeTypeCount['warn'] ) {
 									noticeStatus = 'warning';
+									showNotices  = true;
 								} else if ( noticeTypeCount['inf'] ) {
 									noticeStatus = 'info';
 								} else if ( noticeTypeCount['upd'] ) {
 									noticeStatus = 'success';
 								}
+
 								jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'have-notices-' + noticeStatus );
+
+								if ( showNotices ) {
+									jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'hover' );
+								}
 							}
 						} );
 					}

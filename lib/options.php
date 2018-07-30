@@ -514,31 +514,34 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			foreach ( array( 'og', 'schema' ) as $md_pre ) {
 
-				if ( ! empty( $opts[$md_pre.'_img_width'] ) && ! empty( $opts[$md_pre.'_img_height'] ) && ! empty( $opts[$md_pre.'_img_crop'] ) ) {
+				if ( ! empty( $opts[$md_pre . '_img_width'] ) && ! empty( $opts[$md_pre . '_img_height'] ) && ! empty( $opts[$md_pre . '_img_crop'] ) ) {
 
-					$img_width  = $opts[$md_pre.'_img_width'];
-					$img_height = $opts[$md_pre.'_img_height'];
+					$img_width  = $opts[$md_pre . '_img_width'];
+					$img_height = $opts[$md_pre . '_img_height'];
 					$img_ratio  = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
-					$max_ratio  = isset( $this->p->cf['head']['limit_max'][$md_pre.'_img_ratio'] ) ?
-						$this->p->cf['head']['limit_max'][$md_pre.'_img_ratio'] :
+					$max_ratio  = isset( $this->p->cf['head']['limit_max'][$md_pre . '_img_ratio'] ) ?
+						$this->p->cf['head']['limit_max'][$md_pre . '_img_ratio'] :
 						$this->p->cf['head']['limit_max']['og_img_ratio'];
 
 					if ( $img_ratio >= $max_ratio ) {
-						$this->p->notice->err( sprintf( __( 'The values for \'%1$s\' and  \'%2$s\' have an aspect ratio that is equal to / or greater than %3$s:1 &mdash; resetting these options to their default values.', 'wpsso' ), $md_pre.'_img_width', $md_pre.'_img_height', $max_ratio ) );
 
-						$opts[$md_pre.'_img_width'] = $def_opts[$md_pre.'_img_width'];
-						$opts[$md_pre.'_img_height'] = $def_opts[$md_pre.'_img_height'];
-						$opts[$md_pre.'_img_crop'] = $def_opts[$md_pre.'_img_crop'];
+						$this->p->notice->err( sprintf( __( 'The values for \'%1$s\' and  \'%2$s\' have an aspect ratio that is equal to / or greater than %3$s:1 &mdash; resetting these options to their default values.', 'wpsso' ), $md_pre . '_img_width', $md_pre . '_img_height', $max_ratio ) );
+
+						$opts[$md_pre . '_img_width']  = $def_opts[$md_pre . '_img_width'];
+						$opts[$md_pre . '_img_height'] = $def_opts[$md_pre . '_img_height'];
+						$opts[$md_pre . '_img_crop']   = $def_opts[$md_pre . '_img_crop'];
 					}
 				}
 			}
 
 			/**
-			 * If an image id is being used, remove the image url (only one can be defined).
+			 * If an image ID is being used, remove the image url (only one can be defined).
 			 */
 			foreach ( array( 'og_def' ) as $md_pre ) {
 				if ( ! empty( $opts[$md_pre . '_img_id'] ) ) {
 					$opts[$md_pre . '_img_url'] = '';
+				} else {
+					$opts[$md_pre . '_img_pre'] = $def_opts[$md_pre . '_img_pre'];
 				}
 			}
 
@@ -557,13 +560,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			if ( false === $mod ) {
+
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+
 					if ( empty( $info['update_auth'] ) ) {
 						continue;
 					}
+
 					$opt_name = 'plugin_'.$ext.'_'.$info['update_auth'];
+
 					if ( isset( $opts[$opt_name] ) && isset( $this->p->options[$opt_name] ) && $opts[$opt_name] !== $this->p->options[$opt_name] ) {
+
 						$this->p->options[$opt_name] = $opts[$opt_name];
+
 						foreach ( array( 'err', 'inf', 'time' ) as $key ) {
 							delete_option( $ext.'_u'.$key );
 							delete_option( $ext.'_uapi2'.$key );
@@ -844,7 +853,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( $opt_val !== '' ) {
 
-						if ( ! preg_match( '/^(ngg-)?[0-9]+$/', $opt_val ) ) {
+						if ( ! preg_match( '/^[0-9]+$/', $opt_val ) ) {
 							$this->p->notice->err( sprintf( $error_messages['img_id'], $opt_key ) );
 							$opt_val = $def_val;
 						}
