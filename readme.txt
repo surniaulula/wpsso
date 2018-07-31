@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.9.3-dev.1 (2018/07/29)**
+**Version 4.9.3 (2018/07/31)**
 
 * *New Features*
 	* None.
@@ -335,7 +335,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added jQuery to show the notices drop-down if there are any error or warning notices.
 	* Added a sanity check for options with an image ID value to make sure the value is numeric.
 * *Bugfixes*
-	* None.
+	* Fixed a variable name preventing videos from being added to the open graph video array.
 * *Developer Notes*
 	* None.
 
@@ -600,9 +600,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.9.3-dev.1 =
+= 4.9.3 =
 
-(2018/07/29) Added jQuery to show the notices drop-down if there are any error or warning notices. Added a sanity check for options with an image ID value to make sure the value is numeric.
+(2018/07/31) Added jQuery to show the notices drop-down if there are any error or warning notices. Added a sanity check for options with an image ID value to make sure the value is numeric. Fixed a variable name preventing videos from being added to the open graph video array.
 
 = 4.9.2 =
 
