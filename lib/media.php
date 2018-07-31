@@ -783,9 +783,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
+
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
@@ -1115,9 +1117,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
+
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
@@ -1152,9 +1156,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$content_vid_max = SucomUtil::get_const( 'WPSSO_CONTENT_VIDEOS_MAX_LIMIT', 5 );
 
 				if ( count( $all_matches ) > $content_vid_max ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'limiting matches returned from '.count( $all_matches ).' to '.$content_vid_max );
 					}
+
 					$all_matches = array_splice( $all_matches, 0, $content_vid_max );
 				}
 
@@ -1181,7 +1187,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$og_single_video  = $this->get_video_info( $args, $check_dupes );
 
 							if ( ! empty( $og_single_video ) ) {
-								if ( $this->p->util->push_max( $og_videos, $og_video, $num ) ) {
+								if ( $this->p->util->push_max( $og_videos, $og_single_video, $num ) ) {
+									if ( $this->p->debug->enabled ) {
+										$this->p->debug->log( 'returning ' . count( $og_videos ) . ' standard iframe / embed videos' );
+									}
 									return $og_videos;
 								}
 							}
@@ -1191,6 +1200,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'no <iframe|embed/> html tag(s) found' );
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( count( $og_videos ) . ' standard iframe / embed videos found' );
 			}
 
 			/**
@@ -1244,7 +1257,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $filter_name.' filter did not return false or an array' );
 					}
+
+				} elseif ( $this->p->debug->enabled ) {
+					$this->p->debug->log( $filter_name . ' filter returned false (no videos found)' );
 				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'returning ' . count( $og_videos ) . ' videos' );
 			}
 
 			return $og_videos;
@@ -1400,6 +1420,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 */
 				if ( ! $have_media[$mt_media_pre] || ( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video_info' ) ) ) {
 
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'no media url or duplicate - removing ' . $mt_media_pre . ' meta tags' );
+					}
+
 					foreach( SucomUtil::preg_grep_keys( '/^'.$mt_media_pre.'(:.*)?$/', $og_single_video ) as $k => $v ) {
 						unset ( $og_single_video[$k] );
 					}
@@ -1433,8 +1457,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * If there's no video or preview image, then return an empty array.
 			 */
 			if ( ! $have_media['og:video'] && ! $have_media['og:image'] ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'no media found - returning an empty array' );
+				}
+
 				return array();
+
 			} else {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returning single video array' );
+				}
+
 				return $og_single_video;
 			}
 		}

@@ -872,13 +872,13 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			foreach ( array( 'og', 'tc_sum', 'tc_lrg', 'schema' ) as $md_pre ) {
 
 				/**
-				 * If an image ID is being used, remove the image url (only one can be defined).
-				 * And if there's no image ID, then remove any image ID library prefix (wp or ngg, for example).
+				 * If there's no image ID, then remove the image ID library prefix.
+				 * If an image ID is being used, then remove the image url (only one can be defined).
 				 */
-				if ( ! empty( $md_opts[ $md_pre . '_img_id' ] ) ) {
-					unset( $md_opts[ $md_pre . '_img_url' ] );
-				} else {
+				if ( empty( $md_opts[ $md_pre . '_img_id' ] ) ) {
 					unset( $md_opts[ $md_pre . '_img_id_pre' ] );
+				} else {
+					unset( $md_opts[ $md_pre . '_img_url' ] );
 				}
 
 				$force_regen = false;

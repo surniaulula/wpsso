@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				if ( isset( $mt_og['og:video'] ) && count( $mt_og['og:video'] ) > 0 ) {
 
-					foreach ( $mt_og['og:video'] as $og_video ) {
+					foreach ( $mt_og['og:video'] as $og_single_video ) {
 
 						$player_embed_url = '';
 						$player_stream_url = '';
@@ -130,15 +130,15 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						/**
 						 * Check for internal meta tag values.
 						 */
-						if ( ! empty( $og_video['og:video:embed_url'] ) ) {
-							$player_embed_url = $og_video['og:video:embed_url'];
+						if ( ! empty( $og_single_video['og:video:embed_url'] ) ) {
+							$player_embed_url = $og_single_video['og:video:embed_url'];
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'player card: embed url = ' . $player_embed_url );
 							}
 						}
 
-						if ( ! empty( $og_video['og:video:stream_url'] ) ) {
-							$player_stream_url = $og_video['og:video:stream_url'];
+						if ( ! empty( $og_single_video['og:video:stream_url'] ) ) {
+							$player_stream_url = $og_single_video['og:video:stream_url'];
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'player card: stream url = ' . $player_stream_url );
 							}
@@ -147,9 +147,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						/**
 						 * Check for mime-type meta tag values.
 						 */
-						if ( isset( $og_video['og:video:type'] ) ) {
+						if ( isset( $og_single_video['og:video:type'] ) ) {
 
-							switch ( $og_video['og:video:type'] ) {
+							switch ( $og_single_video['og:video:type'] ) {
 
 								/**
 								 * twitter:player
@@ -162,10 +162,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 									if ( empty( $player_embed_url ) ) {
 
-										$player_embed_url = SucomUtil::get_mt_media_url( $og_video, 'og:video' );
+										$player_embed_url = SucomUtil::get_mt_media_url( $og_single_video, 'og:video' );
 
 										if ( $this->p->debug->enabled ) {
-											$this->p->debug->log( 'player card: ' . $og_video['og:video:type'] .
+											$this->p->debug->log( 'player card: ' . $og_single_video['og:video:type'] .
 												' url = ' . $player_embed_url );
 										}
 									}
@@ -179,10 +179,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 									if ( empty( $player_stream_url ) ) {
 
-										$player_stream_url = SucomUtil::get_mt_media_url( $og_video, 'og:video' );
+										$player_stream_url = SucomUtil::get_mt_media_url( $og_single_video, 'og:video' );
 
 										if ( $this->p->debug->enabled ) {
-											$this->p->debug->log( 'player card: ' . $og_video['og:video:type'] .
+											$this->p->debug->log( 'player card: ' . $og_single_video['og:video:type'] .
 												' url = ' . $player_stream_url );
 										}
 									}
@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 									if ( $this->p->debug->enabled ) {
 										$this->p->debug->log( 'player card: video type "' .
-											$og_video['og:video:type'] . '" is unknown' );
+											$og_single_video['og:video:type'] . '" is unknown' );
 									}
 
 									break;
@@ -217,7 +217,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							}
 
 							$mt_tc['twitter:player:stream']              = $player_stream_url;
-							$mt_tc['twitter:player:stream:content_type'] = $og_video['og:video:type'];
+							$mt_tc['twitter:player:stream:content_type'] = $og_single_video['og:video:type'];
 						}
 
 						/**
@@ -238,15 +238,15 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 								'og:video:googleplay_id'   => 'twitter:app:id:googleplay',
 								'og:video:googleplay_url'  => 'twitter:app:url:googleplay',
 							) as $og_name => $tc_name ) {
-								if ( ! empty( $og_video[$og_name] ) ) {
-									$mt_tc[$tc_name] = $og_video[$og_name];
+								if ( ! empty( $og_single_video[$og_name] ) ) {
+									$mt_tc[$tc_name] = $og_single_video[$og_name];
 								}
 							}
 
 							/**
 							 * Get the video preview image (if one is available).
 							 */
-							$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $og_video );
+							$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $og_single_video );
 
 							/**
 							 * Fallback to the open graph image.

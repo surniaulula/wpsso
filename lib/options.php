@@ -535,13 +535,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
-			 * If an image ID is being used, remove the image url (only one can be defined).
+			 * If there's no image ID, then reset the image ID library prefix to its default value.
+			 * If an image ID is being used, then remove the image url (only one can be defined).
 			 */
 			foreach ( array( 'og_def' ) as $md_pre ) {
-				if ( ! empty( $opts[$md_pre . '_img_id'] ) ) {
-					$opts[$md_pre . '_img_url'] = '';
+				if ( empty( $opts[$md_pre . '_img_id'] ) ) {
+					$opts[$md_pre . '_img_id_pre'] = $def_opts[$md_pre . '_img_id_pre'];
 				} else {
-					$opts[$md_pre . '_img_pre'] = $def_opts[$md_pre . '_img_pre'];
+					$opts[$md_pre . '_img_url'] = '';
 				}
 			}
 

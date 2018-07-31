@@ -631,60 +631,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return (array) apply_filters( $this->p->lca . '_og', $mt_og, $mod );
 		}
 
-		/**
-		 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference.
-		 * For example, remove all 'article' meta tags if the og_type is 'website'. Removing
-		 * only known meta tags (using the 'og_type_mt' array as a reference) protects
-		 * internal meta tags that may be used later by WpssoHead::extract_head_info().
-		 * For example, the schema:type:id and p:image meta tags.
-		 *
-		 * The 'og_content_map' array is also checked for Schema values that need to be
-		 * swapped for simpler Open Graph meta tag values.
-		 *
-		 * Called by WpssoHead::get_head_array() before merging all meta tag arrays.
-		 */
-		public function sanitize_array( array $mod, array $mt_og ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			if ( empty( $mt_og['og:type'] ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'og:type is empty and required for sanitation' );
-				}
-				return $mt_og;
-			}
-
-			foreach ( $this->p->cf['head']['og_type_mt'] as $og_type_id => $og_type_mt_md ) {
-
-				foreach ( $og_type_mt_md as $mt_name => $md_idx ) {
-
-					if ( isset( $mt_og[$mt_name] ) ) {
-
-						if (  $og_type_id !== $mt_og['og:type'] ) {	// Mis-matched meta tag for this og:type
-
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'removing extra meta tag ' . $mt_name );
-							}
-
-							unset( $mt_og[$mt_name] );
-
-						} elseif ( isset( $this->p->cf['head']['og_content_map'][$mt_name][$mt_og[$mt_name]] ) ) {
-
-							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'mapping content value for ' . $mt_name );
-							}
-
-							$mt_og[$mt_name] = $this->p->cf['head']['og_content_map'][$mt_name][$mt_og[$mt_name]];
-						}
-					}
-				}
-			}
-
-			return $mt_og;
-		}
-
 		public function get_all_videos( $num = 0, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -722,6 +668,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 				}
 
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'checking for custom videos in ' . $mod['name'] . ' options' );
+				}
+
 				$og_ret = array_merge( $og_ret, $mod['obj']->get_og_videos( $num_diff, $mod['id'], $check_dupes, $md_pre ) );
 			}
 
@@ -731,7 +681,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Optionally get more videos from the post content.
 			 */
 			if ( $mod['is_post'] && ! $this->p->util->is_maxed( $og_ret, $num ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'checking for additional videos in the post content' );
+				}
+
 				$og_ret = array_merge( $og_ret, $this->p->media->get_content_videos( $num_diff, $mod, $check_dupes ) );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( count( $og_ret ) . ' videos found in the post content' );
+				}
 			}
 
 			$this->p->util->slice_max( $og_ret, $num );
@@ -839,9 +798,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 				}
 
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returning ' . count( $og_extend ) . ' videos' );
+				}
+
 				return $og_extend;
 
 			} else {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'returning ' . count( $og_ret ) . ' videos' );
+				}
+
 				return $og_ret;
 			}
 		}
@@ -849,6 +816,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function get_all_images( $num = 0, $size_name = 'thumbnail', array $mod, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log_args( array(
 					'num'         => $num,
 					'size_name'   => $size_name,
@@ -1223,5 +1191,58 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 		}
 
+		/**
+		 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference.
+		 * For example, remove all 'article' meta tags if the og_type is 'website'. Removing
+		 * only known meta tags (using the 'og_type_mt' array as a reference) protects
+		 * internal meta tags that may be used later by WpssoHead::extract_head_info().
+		 * For example, the schema:type:id and p:image meta tags.
+		 *
+		 * The 'og_content_map' array is also checked for Schema values that need to be
+		 * swapped for simpler Open Graph meta tag values.
+		 *
+		 * Called by WpssoHead::get_head_array() before merging all meta tag arrays.
+		 */
+		public function sanitize_array( array $mod, array $mt_og ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( empty( $mt_og['og:type'] ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'og:type is empty and required for sanitation' );
+				}
+				return $mt_og;
+			}
+
+			foreach ( $this->p->cf['head']['og_type_mt'] as $og_type_id => $og_type_mt_md ) {
+
+				foreach ( $og_type_mt_md as $mt_name => $md_idx ) {
+
+					if ( isset( $mt_og[$mt_name] ) ) {
+
+						if (  $og_type_id !== $mt_og['og:type'] ) {	// Mis-matched meta tag for this og:type
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'removing extra meta tag ' . $mt_name );
+							}
+
+							unset( $mt_og[$mt_name] );
+
+						} elseif ( isset( $this->p->cf['head']['og_content_map'][$mt_name][$mt_og[$mt_name]] ) ) {
+
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'mapping content value for ' . $mt_name );
+							}
+
+							$mt_og[$mt_name] = $this->p->cf['head']['og_content_map'][$mt_name][$mt_og[$mt_name]];
+						}
+					}
+				}
+			}
+
+			return $mt_og;
+		}
 	}
 }

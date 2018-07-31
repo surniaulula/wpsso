@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.9.3-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.9.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -827,7 +827,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3049 lib/options.php:1103 lib/submenu/essential.php:140
+#: lib/admin.php:3049 lib/options.php:1104 lib/submenu/essential.php:140
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -2766,7 +2766,7 @@ msgid ""
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:475 lib/media.php:635 lib/media.php:1459
+#: lib/media.php:475 lib/media.php:635 lib/media.php:1494
 #: lib/pro/util/checkimgdims.php:91
 msgid "Media Library"
 msgstr ""
@@ -2811,26 +2811,26 @@ msgid ""
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1021
+#: lib/media.php:1023
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1465 lib/pro/media/ngg.php:131
+#: lib/media.php:1500 lib/pro/media/ngg.php:131
 #: lib/pro/util/checkimgdims.php:93
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1475
+#: lib/media.php:1510
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1544
+#: lib/media.php:1579
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1572
+#: lib/media.php:1607
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -5057,97 +5057,97 @@ msgid ""
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:591
+#: lib/options.php:592
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:658
+#: lib/options.php:659
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:659
+#: lib/options.php:660
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:660
+#: lib/options.php:661
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:661
+#: lib/options.php:662
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:662
+#: lib/options.php:663
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:663
+#: lib/options.php:664
 msgid ""
 "The value of option '%s' must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:664
+#: lib/options.php:665
 msgid ""
 "The value of option '%s' must be an image ID - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:665
+#: lib/options.php:666
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:666
+#: lib/options.php:667
 msgid ""
 "The value of option '%s' must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:667
+#: lib/options.php:668
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:668
+#: lib/options.php:669
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:669
+#: lib/options.php:670
 msgid ""
 "The value of option '%s' must be a URL - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1075
+#: lib/options.php:1076
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1134
+#: lib/options.php:1135
 msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1137
+#: lib/options.php:1138
 msgid "Please make sure this site can access the banner image at %1$s."
 msgstr ""
 
-#: lib/options.php:1142
+#: lib/options.php:1143
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 

@@ -68,9 +68,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Several actions must be hooked to define our image sizes on the front-end,
 			 * back-end, AJAX calls, REST API calls, etc.
 			 */
-			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );		// for front-end
-			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// for back-end + AJAX compatibility.
-			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// for REST API compatibility.
+			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );		// For front-end.
+			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// For back-end + AJAX compatibility.
+			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// For REST API compatibility.
 
 			add_action( 'wp_scheduled_delete', array( $this, 'delete_expired_db_transients' ) );
 			add_action( $this->p->lca . '_refresh_all_cache', array( $this, 'refresh_all_cache' ) );
@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * The "current_screen" action hook is not called when editing / saving an image.
 			 * Hook the "image_editor_save_pre" filter as to add image sizes for that attachment / post.
 			 */
-			add_filter( 'image_save_pre', array( $this, 'image_editor_save_pre_image_sizes' ), -100, 2 );	// filter deprecated in wp 3.5
+			add_filter( 'image_save_pre', array( $this, 'image_editor_save_pre_image_sizes' ), -100, 2 );	// Filter deprecated in wp 3.5.
 			add_filter( 'image_editor_save_pre', array( $this, 'image_editor_save_pre_image_sizes' ), -100, 2 );
 		}
 

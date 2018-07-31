@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoGplSocialBuddypress' ) ) {
 			if ( is_admin() || bp_current_component() ) {
 
 				$this->p->util->add_plugin_filters( $this, array( 
-					'get_defaults' => 1,
+					'get_defaults'            => 1,
 					'plugin_integration_rows' => 2,
 					'messages_tooltip_plugin' => 2,
 				), 200 );
