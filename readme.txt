@@ -11,8 +11,8 @@ Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.7
-WC Tested Up To: 3.4.3
-Stable Tag: 4.9.2
+WC Tested Up To: 3.4.4
+Stable Tag: 4.9.3
 
 Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.
 
