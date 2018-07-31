@@ -299,14 +299,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 							if ( noticeTotalCount ) {
 
 								var noticeStatus = '';
-								var showNotices  = false;
 
 								if ( noticeTypeCount['err'] ) {
 									noticeStatus = 'error';
-									showNotices  = true;
 								} else if ( noticeTypeCount['warn'] ) {
 									noticeStatus = 'warning';
-									showNotices  = true;
 								} else if ( noticeTypeCount['inf'] ) {
 									noticeStatus = 'info';
 								} else if ( noticeTypeCount['upd'] ) {
@@ -314,10 +311,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 								}
 
 								jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'have-notices-' + noticeStatus );
-
-								if ( showNotices ) {
-									jQuery( '#wp-admin-bar-wpsso-toolbar-notices' ).addClass( 'hover' );
-								}
 							}
 						} );
 					}
