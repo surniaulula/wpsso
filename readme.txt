@@ -327,6 +327,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.9.4 (2018/08/02)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* Fixed an undefined variable error when reading custom meta options.
+* *Developer Notes*
+	* None.
+
 **Version 4.9.3 (2018/07/31)**
 
 * *New Features*
@@ -600,11 +611,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.9.3 =
+= 4.9.4 =
 
-(2018/07/31) Added jQuery to show the notices drop-down if there are any error or warning notices. Added a sanity check for options with an image ID value to make sure the value is numeric. Fixed a variable name preventing videos from being added to the open graph video array.
-
-= 4.9.2 =
-
-(2018/07/28) Updated the WpssoProUtilWpseoMeta module to work in conjunction with the WpssoProSeoWpseo module (Pro version).
+(2018/08/02) Fixed an undefined variable error when reading custom meta options.
 
