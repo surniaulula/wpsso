@@ -540,8 +540,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			foreach ( array( 'og_def' ) as $md_pre ) {
 				if ( empty( $opts[$md_pre . '_img_id'] ) ) {
-					$opts[$md_pre . '_img_id_pre'] = $def_opts[$md_pre . '_img_id_pre'];
-				} else {
+					if ( isset( $def_opts[$md_pre . '_img_id_pre'] ) ) {	// Just in case.
+						$opts[$md_pre . '_img_id_pre'] = $def_opts[$md_pre . '_img_id_pre'];
+					}
+				} elseif ( isset( $opts[$md_pre . '_img_url'] ) ) {
 					$opts[$md_pre . '_img_url'] = '';
 				}
 			}
