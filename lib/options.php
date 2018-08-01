@@ -454,7 +454,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		/**
-		 * Sanitize and validate options.
+		 * Sanitize and validate options, including both the plugin options and custom meta options arrays.
 		 */
 		public function sanitize( $opts = array(), $def_opts = array(), $network = false, $mod = false ) {
 
@@ -536,7 +536,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			/**
 			 * If there's no image ID, then reset the image ID library prefix to its default value.
-			 * If an image ID is being used, then remove the image url (only one can be defined).
+			 * If an image ID is used, then remove the image url (only one option can be defined).
+			 * Use isset() to check for array keys since this method is also called to sanitize meta options.
 			 */
 			foreach ( array( 'og_def' ) as $md_pre ) {
 				if ( empty( $opts[$md_pre . '_img_id'] ) ) {
