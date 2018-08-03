@@ -413,6 +413,146 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $idx ) {
 
+						/**
+						 * Site Information tab.
+						 */
+						case 'tooltip-og_art_section':	// Default Article Topic
+
+							$text = __( 'The topic that best describes the Posts and Pages on your website.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'This value will be used in the %s Facebook / Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ), '<code>article:section</code>' ).' ';
+							
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' ).' ';
+							
+							$text .= __( 'The Pro version also allows you to select a custom Topic for each individual Post and Page.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-og_type_for_home_index':	// Type for Blog Front Page
+
+							$def_type = $this->p->opt->get_defaults( 'og_type_for_home_index' );
+
+							$text = sprintf( __( 'Select the %1$s type for a blog (non-static) front page.', 'wpsso' ), 'Open Graph' ) . ' ';
+
+							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
+
+							break;
+
+						case 'tooltip-og_type_for_home_page':	// Type for Static Front Page
+
+							$def_type = $this->p->opt->get_defaults( 'og_type_for_home_page' );
+
+							$text = sprintf( __( 'Select the %1$s type for a static front page.', 'wpsso' ), 'Open Graph' ) . ' ';
+
+							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
+
+							break;
+
+						case 'tooltip-og_type_for_user_page':	// Type for User / Author Page
+
+							$def_type = $this->p->opt->get_defaults( 'og_type_for_user_page' );
+
+							$text = sprintf( __( 'Select the %1$s type for user / author pages.', 'wpsso' ), 'Open Graph' ) . ' ';
+
+							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
+
+							break;
+
+						case 'tooltip-og_type_for_search_page':	// Type for Search Results Page
+
+							$def_type = $this->p->opt->get_defaults( 'og_type_for_search_page' );
+
+							$text = sprintf( __( 'Select the %1$s type for search results pages.', 'wpsso' ), 'Open Graph' ) . ' ';
+
+							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
+
+							break;
+
+						case 'tooltip-og_type_for_archive_page':	// Type for Other Archive Page
+
+							$def_type = $this->p->opt->get_defaults( 'og_type_for_archive_page' );
+
+							$text = sprintf( __( 'Select the %1$s type for other archive pages (example: date-based archive pages).', 'wpsso' ), 'Open Graph' ) . ' ';
+
+							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
+
+							break;
+
+						case 'tooltip-og_type_for_ptn':	// Type by Post Type
+
+							$text = sprintf( __( 'Select the %1$s type for each WordPress post type.', 'wpsso' ), 'Open Graph' ) . ' ';
+
+							$text .= __( 'Please note that each Open Graph type has a unique set of meta tags, so by selecting "website" here (for example), you would be excluding all "article" related meta tags (<code>article:author</code>, <code>article:section</code>, etc.).', 'wpsso' );
+
+							break;
+
+						case 'tooltip-og_type_for_ttn':	// Type by Term Taxonomy
+
+							$text = sprintf( __( 'Select the %1$s type for each WordPress term taxonomy.', 'wpsso' ), 'Open Graph' );
+
+							break;
+
+						/**
+						 * Titles / Descriptions tab.
+						 */
+						case 'tooltip-og_title_sep':	// Title Separator
+
+							$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph title string (the default is the hyphen "%s" character).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_sep' ) );
+
+							break;
+
+						case 'tooltip-og_title_len':	// Maximum Title Length
+
+							$text = sprintf( __( 'The maximum length of text used in the Facebook / Open Graph title tag (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_len' ) );
+
+							break;
+
+						case 'tooltip-og_desc_len':	// Maximum Description Length
+
+							$text = __( 'The maximum length of text used in the Facebook / Open Graph description tag.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
+								'wpsso' ), $this->p->cf['head']['limit_min']['og_desc_len'],
+									$this->p->opt->get_defaults( 'og_desc_len' ) );
+
+							break;
+
+						case 'tooltip-og_desc_hashtags':	// Add Hashtags to Descriptions
+
+							$text = __( 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph description.', 'wpsso' ).' ';
+							
+							$text .= __( 'Each tag name is converted to lowercase with whitespaces removed.', 'wpsso' ).' ';
+							
+							$text .= __( 'Select "0" to disable the addition of hashtags.', 'wpsso' );
+
+							break;
+
+						/**
+						 * Authorship tab.
+						 */
+						case 'tooltip-og_author_field':	// Author Profile URL Field
+
+							$text = sprintf( __( 'Select the contact field to use from the author\'s WordPress profile page for the Facebook / Open Graph %s meta tag value.', 'wpsso' ), '<code>article:author</code>' ).' ';
+							
+							$text .= __( 'The suggested setting is the Facebook URL contact field (default value).', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag and prevent Facebook from showing author attribution in shared links.', 'wpsso' ), '<code>article:author</code>' );
+
+							break;
+
+						case 'tooltip-og_author_gravatar':	// Gravatar is Default / Fallback Image
+
+							$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+
+							$text = __( 'If no custom image has been defined for an author, fallback to using their Gravatar image in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'A custom image can be selected for / by each author in their WordPress user profile %s metabox.', 'wpsso' ), $metabox_title );
+
+							break;
+
+						/**
+						 * Images tab.
+						 */
 						case 'tooltip-og_img_max':	// Maximum Images to Include
 
 							$text = __( 'The maximum number of images to include in the Facebook / Open Graph meta tags &mdash; this includes the <em>featured</em> image, <em>attached</em> images, and any images found in the content.', 'wpsso' ).' ';
@@ -454,109 +594,36 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_vid_max':
+						/**
+						 * Videos tab.
+						 */
+						case 'tooltip-og_vid_max':	// Maximum Videos to Include
 
 							$text = 'The maximum number of videos, found in the Post or Page content, to include in the Facebook / Open Graph and Pinterest Rich Pin meta tags. If you select "0", then no videos will be listed in the Facebook / Open Graph and Pinterest Rich Pin meta tags. There is no advantage in selecting a maximum value greater than 1.';
 
 							break;
 
-						case 'tooltip-og_vid_https':
+						case 'tooltip-og_vid_https':	// Use HTTPS for Video API Requests
 
 							$text = 'Use an HTTPS connection whenever possible to retrieve information about videos from YouTube, Vimeo, Wistia, etc. (default is checked).';
 
 							break;
 
-						case 'tooltip-og_vid_autoplay':
-
-							$text = 'When possible, add or modify the "autoplay" argument of video URLs in webpage meta tags (default is checked).';
-
-							break;
-
-						case 'tooltip-og_vid_prev_img':
+						case 'tooltip-og_vid_prev_img':	// Include Video Preview Images
 
 							$text = 'Include video preview images in the webpage meta tags (default is unchecked). When video preview images are enabled and available, they are included before any custom, featured, attached, etc. images.';
 
 							break;
 
-						case 'tooltip-og_vid_html_type':
+						case 'tooltip-og_vid_html_type':	// Include text/html Type Meta Tags
 
 							$text = 'Include additional Open Graph meta tags for the embed video URL as a text/html video type (default is checked).';
 
 							break;
 
-						/**
-						 * 'Description' settings
-						 */
-						case 'tooltip-og_post_type':
+						case 'tooltip-og_vid_autoplay':	// Force Autoplay when Possible
 
-							$text = __( 'The default Open Graph type for the WordPress post object (posts, pages, and custom post types). Custom post types with a matching Open Graph type name (article, book, place, product, etc.) will use that type name instead of the default selected here. Please note that each type has a unique set of meta tags, so by selecting "website" here, you are excluding all "article" related meta tags (<code>article:author</code>, <code>article:section</code>, etc.).', 'wpsso' );
-
-							break;
-
-						case 'tooltip-og_art_section':
-
-							$text = __( 'The topic that best describes the Posts and Pages on your website.', 'wpsso' ).' ';
-							
-							$text .= sprintf( __( 'This value will be used in the %s Facebook / Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ), '<code>article:section</code>' ).' ';
-							
-							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' ).' ';
-							
-							$text .= __( 'The Pro version also allows you to select a custom Topic for each individual Post and Page.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-og_title_sep':
-
-							$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph title string (the default is the hyphen "%s" character).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_sep' ) );
-
-							break;
-
-						case 'tooltip-og_title_len':
-
-							$text = sprintf( __( 'The maximum length of text used in the Facebook / Open Graph title tag (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_len' ) );
-
-							break;
-
-						case 'tooltip-og_desc_len':
-
-							$text = __( 'The maximum length of text used in the Facebook / Open Graph description tag.', 'wpsso' ).' ';
-							
-							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
-								'wpsso' ), $this->p->cf['head']['limit_min']['og_desc_len'],
-									$this->p->opt->get_defaults( 'og_desc_len' ) );
-
-							break;
-
-						case 'tooltip-og_desc_hashtags':
-
-							$text = __( 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph description.', 'wpsso' ).' ';
-							
-							$text .= __( 'Each tag name is converted to lowercase with whitespaces removed.', 'wpsso' ).' ';
-							
-							$text .= __( 'Select "0" to disable the addition of hashtags.', 'wpsso' );
-
-							break;
-
-						/**
-						 * 'Authorship' settings
-						 */
-						case 'tooltip-og_author_field':
-
-							$text = sprintf( __( 'Select the contact field to use from the author\'s WordPress profile page for the Facebook / Open Graph %s meta tag value.', 'wpsso' ), '<code>article:author</code>' ).' ';
-							
-							$text .= __( 'The suggested setting is the Facebook URL contact field (default value).', 'wpsso' ).' ';
-							
-							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag and prevent Facebook from showing author attribution in shared links.', 'wpsso' ), '<code>article:author</code>' );
-
-							break;
-
-						case 'tooltip-og_author_gravatar':	// Gravatar is Default / Fallback Image
-
-							$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
-
-							$text = __( 'If no custom image has been defined for an author, fallback to using their Gravatar image in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'A custom image can be selected for / by each author in their WordPress user profile %s metabox.', 'wpsso' ), $metabox_title );
+							$text = 'When possible, add or modify the "autoplay" argument of video URLs in webpage meta tags (default is checked).';
 
 							break;
 
@@ -1444,54 +1511,70 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_home_index':
+						case 'tooltip-schema_type_for_home_index':	// Item Type for Blog Front Page
 
-							$text = sprintf( __( 'Select the Schema type for a blog (non-static) front page. The default Schema type is %s.',
-								'wpsso' ), 'https://schema.org/CollectionPage' );
+							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_index' );
 
-							break;
+							$text = sprintf( __( 'Select the %1$s type for a blog (non-static) front page.', 'wpsso' ), 'Schema' ) . ' ';
 
-						case 'tooltip-schema_type_for_home_page':
-
-							$text = sprintf( __( 'Select the Schema type for a static front page. The default Schema type is %s.',
-								'wpsso' ), 'https://schema.org/WebSite' );
+							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
 
 							break;
 
-						case 'tooltip-schema_type_for_archive_page':
+						case 'tooltip-schema_type_for_home_page':	// Item Type for Static Front Page
 
-							$text = sprintf( __( 'Select the Schema type for other archive pages (example: date-based archive pages). The default Schema type is %s.',
-								'wpsso' ), 'https://schema.org/CollectionPage' );
+							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_page' );
 
-							break;
+							$text = sprintf( __( 'Select the %1$s type for a static front page.', 'wpsso' ), 'Schema' ) . ' ';
 
-						case 'tooltip-schema_type_for_user_page':
-
-							$text = sprintf( __( 'Select the Schema type for user / author pages. The default Schema type is %s.',
-								'wpsso' ), 'https://schema.org/ProfilePage' );
+							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
 
 							break;
 
-						case 'tooltip-schema_type_for_search_page':
+						case 'tooltip-schema_type_for_user_page':	// Item Type for User / Author Page
 
-							$text = sprintf( __( 'Select the Schema type for search results pages. The default Schema type is %s.',
-								'wpsso' ), 'https://schema.org/SearchResultsPage' );
+							$def_type = $this->p->opt->get_defaults( 'schema_type_for_user_page' );
 
-							break;
+							$text = sprintf( __( 'Select the %1$s type for user / author pages.', 'wpsso' ), 'Schema' ) . ' ';
 
-						case 'tooltip-schema_type_for_ptn':
-
-							$text = __( 'Select the Schema type for each WordPress post type.', 'wpsso' );
+							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
 
 							break;
 
-						case 'tooltip-schema_type_for_ttn':
+						case 'tooltip-schema_type_for_search_page':	// Item Type for Search Results Page
 
-							$text = __( 'Select the Schema type for each WordPress term taxonomy.', 'wpsso' );
+							$def_type = $this->p->opt->get_defaults( 'schema_type_for_search_page' );
+
+							$text = sprintf( __( 'Select the %1$s type for search results pages.', 'wpsso' ), 'Schema' ) . ' ';
+
+							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
 
 							break;
 
-						case 'tooltip-schema_review_item_type':
+						case 'tooltip-schema_type_for_archive_page':	// Item Type for Other Archive Page
+
+							$def_type = $this->p->opt->get_defaults( 'schema_type_for_archive_page' );
+
+							$text = sprintf( __( 'Select the %1$s type for other archive pages (example: date-based archive pages).', 'wpsso' ), 'Schema' ) . ' ';
+
+							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
+
+							break;
+
+						case 'tooltip-schema_type_for_ptn':	// Item Type by Post Type
+
+							$text = sprintf( __( 'Select the %1$s type for each WordPress post type.', 'wpsso' ), 'Schema' );
+
+							break;
+
+						case 'tooltip-schema_type_for_ttn':	// Item Type by Term Taxonomy
+
+							$text = sprintf( __( 'Select the %1$s type for each WordPress term taxonomy.', 'wpsso' ), 'Schema' );
+
+
+							break;
+
+						case 'tooltip-schema_review_item_type':	// Default Reviewed Item Type
 
 							$text = sprintf( __( 'Select the default Schema type for reviewed items (used when the content Schema type is a %s).',
 								'wpsso' ), 'https://schema.org/Review' );

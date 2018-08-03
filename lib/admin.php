@@ -3036,6 +3036,95 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
+		 * Called from the WpssoSubmenuGeneral class.
+		 */
+		protected function add_og_types_table_rows( array &$table_rows, array $hide_in_view = array(), $og_types = null ) {
+
+			if ( ! is_array( $og_types ) ) {
+				$og_types = $this->p->og->get_og_types_select( true );	// $add_none is true
+			}
+
+			foreach ( array( 
+				'home_index'   => _x( 'Type for Blog Front Page', 'option label', 'wpsso' ),
+				'home_page'    => _x( 'Type for Static Front Page', 'option label', 'wpsso' ),
+				'user_page'    => _x( 'Type for User / Author Page', 'option label', 'wpsso' ),
+				'search_page'  => _x( 'Type for Search Results Page', 'option label', 'wpsso' ),
+				'archive_page' => _x( 'Type for Other Archive Page', 'option label', 'wpsso' ),
+			) as $type_name => $th_label ) {
+
+				$tr_html = '';
+				$opt_key = 'og_type_for_' . $type_name;
+
+				if ( ! empty( $hide_in_view[$opt_key] ) ) {
+					$tr_html = $this->form->get_tr_hide( $hide_in_view[$opt_key], $opt_key );
+				}
+
+				$table_rows[$opt_key] = $tr_html.$this->form->get_th_html( $th_label, '', $opt_key ).
+				'<td>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . '</td>';
+			}
+
+			/**
+			 * Type by Post Type
+			 */
+			$type_select = '';
+			$type_opt_keys = array();
+
+			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
+
+				$type_opt_keys[] = $opt_key = 'og_type_for_' . $pt->name;
+
+				$type_select .= '<p>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) .
+					' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $pt->label ) . '</p>' . "\n";
+			}
+
+			$type_opt_keys[] = $opt_key = 'og_type_for_post_archive';
+
+			$type_select .= '<p>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) .
+				' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
+					_x( '(Post Type) Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
+
+			$tr_html  = '';
+			$tr_key   = 'og_type_for_ptn';
+			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
+
+			if ( ! empty( $hide_in_view[$tr_key] ) ) {
+				$tr_html = $this->form->get_tr_hide( $hide_in_view[$tr_key], $type_opt_keys );
+			}
+
+			$table_rows[$tr_key] = $tr_html.$this->form->get_th_html( $th_label, '', $tr_key ).
+			'<td>' . $type_select . '</td>';
+
+			unset( $type_select, $type_opt_keys );	// Just in case.
+
+			/**
+			 * Type by Term Taxonomy
+			 */
+			$type_select = '';
+			$type_opt_keys = array();
+
+			foreach ( $this->p->util->get_taxonomies( 'objects' ) as $tax ) {
+
+				$type_opt_keys[] = $opt_key = 'og_type_for_tax_' . $tax->name;
+
+				$type_select .= '<p>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) .
+					' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $tax->label ) . '</p>' . "\n";
+			}
+
+			$tr_html  = '';
+			$tr_key   = 'og_type_for_ttn';
+			$th_label = _x( 'Type by Term Taxonomy', 'option label', 'wpsso' );
+
+			if ( ! empty( $hide_in_view[$tr_key] ) ) {
+				$tr_html = $this->form->get_tr_hide( $hide_in_view[$tr_key], $type_opt_keys );
+			}
+
+			$table_rows[$tr_key] = $tr_html.$this->form->get_th_html( $th_label, '', $tr_key ).
+			'<td>' . $type_select . '</td>';
+
+			unset( $type_select, $type_opt_keys );	// Just in case.
+		}
+
+		/**
 		 * Called from the WpssoSubmenuGeneral and WpssoJsonSubmenuSchemaJsonLd classes.
 		 */
 		protected function add_schema_item_props_table_rows( array &$table_rows ) {
@@ -3080,10 +3169,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			foreach ( array( 
-				'home_index' => _x( 'Item Type for Blog Front Page', 'option label', 'wpsso' ),
-				'home_page' => _x( 'Item Type for Static Front Page', 'option label', 'wpsso' ),
-				'user_page' => _x( 'Item Type for User / Author Page', 'option label', 'wpsso' ),
-				'search_page' => _x( 'Item Type for Search Results Page', 'option label', 'wpsso' ),
+				'home_index'   => _x( 'Item Type for Blog Front Page', 'option label', 'wpsso' ),
+				'home_page'    => _x( 'Item Type for Static Front Page', 'option label', 'wpsso' ),
+				'user_page'    => _x( 'Item Type for User / Author Page', 'option label', 'wpsso' ),
+				'search_page'  => _x( 'Item Type for Search Results Page', 'option label', 'wpsso' ),
 				'archive_page' => _x( 'Item Type for Other Archive Page', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
 
@@ -3105,18 +3194,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$type_opt_keys = array();
 
 			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
+
 				$type_opt_keys[] = $opt_key = 'schema_type_for_' . $pt->name;
+
 				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) .
 					' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $pt->label ) . '</p>' . "\n";
 			}
 
 			$type_opt_keys[] = $opt_key = 'schema_type_for_post_archive';
+
 			$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) .
 				' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ),
 					_x( '(Post Type) Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
 
-			$tr_html = '';
-			$tr_key = 'schema_type_for_ptn';
+			$tr_html  = '';
+			$tr_key   = 'schema_type_for_ptn';
 			$th_label = _x( 'Item Type by Post Type', 'option label', 'wpsso' );
 
 			if ( ! empty( $hide_in_view[$tr_key] ) ) {
@@ -3135,13 +3227,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$type_opt_keys = array();
 
 			foreach ( $this->p->util->get_taxonomies( 'objects' ) as $tax ) {
+
 				$type_opt_keys[] = $opt_key = 'schema_type_for_tax_' . $tax->name;
+
 				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) .
 					' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $tax->label ) . '</p>' . "\n";
 			}
 
-			$tr_html = '';
-			$tr_key = 'schema_type_for_ttn';
+			$tr_html  = '';
+			$tr_key   = 'schema_type_for_ttn';
 			$th_label = _x( 'Item Type by Term Taxonomy', 'option label', 'wpsso' );
 
 			if ( ! empty( $hide_in_view[$tr_key] ) ) {

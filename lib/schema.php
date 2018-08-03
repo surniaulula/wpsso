@@ -2611,7 +2611,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				) );
 			}
 
-			// allow for a preformatted employment types array
+			/**
+			 * Allow for a preformatted employment types array.
+			 */
 			if ( ! empty( $job_opts['job_empl_types'] ) && is_array( $job_opts['job_empl_types'] ) ) {
 				$ret['employmentType'] = $job_opts['job_empl_types'];
 			}

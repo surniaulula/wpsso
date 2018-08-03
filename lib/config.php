@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.9.4',	// Plugin version.
-					'opt_version' => '587',		// Increment when changing default option values.
+					'version'     => '4.10.0-dev.1',	// Plugin version.
+					'opt_version' => '588',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -804,7 +804,28 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'instgram_publisher_url'       => '',			// (localized)
 					'linkedin_publisher_url'       => '',			// (localized)
 					'myspace_publisher_url'        => '',			// (localized)
-					'og_post_type'                 => 'article',
+					/**
+					 * Standard WordPress types.
+					 */
+					'og_type_for_tax_category'     => 'website',
+					'og_type_for_tax_post_tag'     => 'website',
+					'og_type_for_archive_page'     => 'website',	// Date-based archives.
+					'og_type_for_attachment'       => 'website',
+					'og_type_for_home_index'       => 'website',
+					'og_type_for_home_page'        => 'website',
+					'og_type_for_page'             => 'article',
+					'og_type_for_post'             => 'article',
+					'og_type_for_post_archive'     => 'website',		// Post type archive page.
+					'og_type_for_search_page'      => 'website',
+					'og_type_for_user_page'        => 'website',
+					/**
+					 * Custom post types.
+					 */
+					'og_type_for_article'          => 'article',
+					'og_type_for_download'         => 'product',		// For Easy Digital Downloads.
+					'og_type_for_place'            => 'place',
+					'og_type_for_product'          => 'product',
+					'og_type_for_website'          => 'website',
 					'og_art_section'               => 'none',
 					'og_img_width'                 => 600,
 					'og_img_height'                => 315,

@@ -113,13 +113,22 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>'.$this->form->get_textarea( SucomUtil::get_key_locale( 'site_desc', $this->p->options ),
 						'', '', 0, get_bloginfo( 'description', 'display' ) ).'</td>';
 
-					$table_rows['og_post_type'] = ''.
-					$this->form->get_th_html( _x( 'Default Post / Page Type', 'option label', 'wpsso' ), '', 'og_post_type' ).
-					'<td>'.$this->form->get_select( 'og_post_type', array( 'article', 'website' ) ).'</td>';
-
 					$table_rows['og_art_section'] = ''.
 					$this->form->get_th_html( _x( 'Default Article Topic', 'option label', 'wpsso' ), '', 'og_art_section' ).
 					'<td>'.$this->form->get_select( 'og_art_section', $this->p->util->get_article_topics() ).'</td>';
+
+					/**
+					 * Hide all options in basic view by default.
+					 */
+					$this->add_og_types_table_rows( $table_rows, array(
+						'og_type_for_home_index'   => 'basic',
+						'og_type_for_home_page'    => 'basic',
+						'og_type_for_user_page'    => 'basic',
+						'og_type_for_search_page'  => 'basic',
+						'og_type_for_archive_page' => 'basic',
+						'og_type_for_ptn'          => 'basic',
+						'og_type_for_ttn'          => 'basic',
+					) );
 
 					break;
 
@@ -250,13 +259,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					 * Hide all options in basic view by default.
 					 */
 					$this->add_schema_item_types_table_rows( $table_rows, array(
-						'schema_type_for_home_index' => 'basic',
-						'schema_type_for_home_page' => 'basic',
-						'schema_type_for_user_page' => 'basic',
-						'schema_type_for_search_page' => 'basic',
+						'schema_type_for_home_index'   => 'basic',
+						'schema_type_for_home_page'    => 'basic',
+						'schema_type_for_user_page'    => 'basic',
+						'schema_type_for_search_page'  => 'basic',
 						'schema_type_for_archive_page' => 'basic',
-						'schema_type_for_ptn' => 'basic',
-						'schema_type_for_ttn' => 'basic',
+						'schema_type_for_ptn'          => 'basic',
+						'schema_type_for_ttn'          => 'basic',
 					) );
 
 					break;

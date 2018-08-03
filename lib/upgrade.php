@@ -169,6 +169,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'og_def_img_on_search' => '',
 					'og_ngg_tags'          => '',
 				),
+				587 => array(
+					'og_post_type' => '',
+				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG
 				2 => array(

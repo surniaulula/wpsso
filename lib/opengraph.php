@@ -220,8 +220,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				} elseif ( $mod['is_post'] ) {
 	
-					$og_type_id = empty( $this->p->options['og_post_type'] ) ?
-						'article' : $this->p->options['og_post_type'];
+					$og_type_id = empty( $this->p->options['og_post_type'] ) ? 'article' : $this->p->options['og_post_type'];
 	
 					if ( ! empty( $mod['post_type'] ) ) {
 	
