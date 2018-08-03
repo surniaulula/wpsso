@@ -327,6 +327,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.10.0-dev.1 (TBD)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.9.4 (2018/08/02)**
 
 * *New Features*
@@ -610,6 +621,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
 
 == Upgrade Notice ==
+
+= 4.10.0-dev.1 =
+
+(TBD) None.
 
 = 4.9.4 =
 
