@@ -327,12 +327,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.10.0-dev.2 (2018/08/04)**
+**Version 4.10.0-dev.3 (2018/08/04)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* Added Open Graph type selections under the SSO &gt; General &gt; Site Information tab:
+	* Added a new "SSO Type" column in post, term, and user table lists with the Open Graph type value (disabled by default).
+	* Added default Open Graph type options under the SSO &gt; General &gt; Site Information settings tab:
 		* Type for Blog Front Page
 		* Type for Static Front Page
 		* Type for User / Author Page
@@ -629,7 +630,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.10.0-dev.2 =
+= 4.10.0-dev.3 =
 
 (2018/08/04) Added Open Graph type selections under the SSO &gt; General &gt; Site Information tab.
 
