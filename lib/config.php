@@ -790,8 +790,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_person'       => 'person',
 					'schema_type_for_place'        => 'place',
 					'schema_type_for_product'      => 'product',
-					'schema_type_for_recipe'       => 'recipe',
-					'schema_type_for_review'       => 'review',
+					'schema_type_for_recipe'       => 'recipe',		// For WP Ultimate Recipe
+					'schema_type_for_review'       => 'review',		// For WP Product Review
 					'schema_type_for_tribe_events' => 'event',
 					'schema_type_for_webpage'      => 'webpage',
 					'schema_type_for_website'      => 'website',
