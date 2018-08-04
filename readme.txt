@@ -314,7 +314,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * {major} = Major structural code changes / re-writes or incompatible API changes.
 * {minor} = New functionality was added or improved in a backwards-compatible manner.
 * {bugfix} = Backwards-compatible bug fixes or small improvements.
-* {stage}.{level} = Pre-production release: dev < a (alpha) < b (beta) < rc (release candidate).
+* {stage}.{level} = Pre-production release: dev &lt; a (alpha) &lt; b (beta) &lt; rc (release candidate).
 
 <h3>Free / Standard Version Repositories</h3>
 
@@ -327,12 +327,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.10.0-dev.1 (TBD)**
+**Version 4.10.0-dev.1 (2018/08/04)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Added Open Graph type selections under the SSO &gt; General &gt; Site Information tab:
+		* Type for Blog Front Page
+		* Type for Static Front Page
+		* Type for User / Author Page
+		* Type for Search Results Page
+		* Type for Other Archive Page
+		* Type by Post Type
+		* Type by Term Taxonomy
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -390,9 +397,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* Added an 'og:image:alt' meta tag for images provided by WordPress Media Library.
 	* Renamed the 'og:image' meta tag to 'og:image:url'.
-	* Removed the following SSO > General > Authorship options:
+	* Removed the following SSO &gt; General &gt; Authorship options:
 		* Fallback to Author's Archive Page
-	* Removed the following SSO > General > Images options:
+	* Removed the following SSO &gt; General &gt; Images options:
 		* Use Default Image on Archive Pages
 		* Use Default Image on Search Results
 * *Bugfixes*
@@ -624,7 +631,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.10.0-dev.1 =
 
-(TBD) None.
+(2018/08/04) Added Open Graph type selections under the SSO &gt; General &gt; Site Information tab.
 
 = 4.9.4 =
 
