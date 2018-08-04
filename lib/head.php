@@ -26,7 +26,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			add_action( 'wp_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
 			/**
-			 * AMP
+			 * AMP.
 			 */
 			add_action( 'amp_post_template_head', array( $this, 'maybe_disable_rel_canonical' ), -1000 );
 			add_action( 'amp_post_template_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'custom crawler cache index found for '.$crawler_name );
+					$this->p->debug->log( 'custom crawler cache index found for ' . $crawler_name );
 
 				}
 				if ( ! defined( 'DONOTCACHEPAGE' ) ) {	// Define as true.
@@ -120,11 +120,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cache_index = '';
 
 			if ( $mixed !== false ) {
-				$cache_index .= '_locale:'.SucomUtil::get_locale( $mixed );
+				$cache_index .= '_locale:' . SucomUtil::get_locale( $mixed );
 			}
 
 			if ( $sharing_url !== false ) {
-				$cache_index .= '_url:'.$sharing_url;
+				$cache_index .= '_url:' . $sharing_url;
 			}
 
 			/**
@@ -143,7 +143,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				switch ( $crawler_name ) {
 					case 'pinterest':
-						$cache_index .= '_uaid:'.$crawler_name;
+						$cache_index .= '_uaid:' . $crawler_name;
 						break;
 				}
 			}
@@ -152,10 +152,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$cache_index = SucomUtil::get_query_salt( $cache_index );	// Add $wp_query args.
 
-			$cache_index = apply_filters( $this->p->lca.'_head_cache_index', $cache_index, $mixed, $sharing_url );
+			$cache_index = apply_filters( $this->p->lca . '_head_cache_index', $cache_index, $mixed, $sharing_url );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'returned cache index is "'.$cache_index.'"' );
+				$this->p->debug->log( 'returned cache index is "' . $cache_index . '"' );
 			}
 
 			return $cache_index;
@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$use_post = apply_filters( $this->p->lca.'_use_post', false );	// Used by woocommerce with is_shop().
+			$use_post = apply_filters( $this->p->lca . '_use_post', false );	// Used by woocommerce with is_shop().
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
@@ -213,24 +213,24 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_og = array();
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'home url = '.get_option( 'home' ) );
-				$this->p->debug->log( 'locale default = '.SucomUtil::get_locale( 'default' ) );
-				$this->p->debug->log( 'locale current = '.SucomUtil::get_locale( 'current' ) );
-				$this->p->debug->log( 'locale mod = '.SucomUtil::get_locale( $mod ) );
+				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
+				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
+				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
+				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
 				$this->p->util->log_is_functions();
 			}
 
-			$add_head_html = apply_filters( $this->p->lca.'_add_head_html', $this->p->avail['*']['head_html'], $mod );
+			$add_head_html = apply_filters( $this->p->lca . '_add_head_html', $this->p->avail['*']['head_html'], $mod );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'avail head_html = '.( $this->p->avail['*']['head_html'] ? 'true' : 'false' ) );
-				$this->p->debug->log( 'add_head_html = '.( $add_head_html ? 'true' : 'false' ) );
+				$this->p->debug->log( 'avail head_html = ' . ( $this->p->avail['*']['head_html'] ? 'true' : 'false' ) );
+				$this->p->debug->log( 'add_head_html = ' . ( $add_head_html ? 'true' : 'false' ) );
 			}
 
 			if ( $add_head_html ) {
 				echo $this->get_head_html( $use_post, $mod, $r_cache, $mt_og );
 			} else {
-				echo "\n<!-- " . $this->p->lca . " head html is disabled -->\n";
+				echo "\n" . '<!-- ' . $this->p->lca . ' head html is disabled -->' . "\n";
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					continue;
 				}
 
-				$mt_match = $mt[2].'-'.$mt[3];
+				$mt_match = $mt[2] . '-' . $mt[3];
 
 				switch ( $mt_match ) {
 
@@ -309,11 +309,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						}
 					}
 
-					$mt_match = $mt[2].'-'.$mt[3];
+					$mt_match = $mt[2] . '-' . $mt[3];
 
 					switch ( $mt_match ) {
 
-						case ( preg_match( '/^property-'.$mt_prefix.'(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
+						case ( preg_match( '/^property-' . $mt_prefix . '(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
 
 							if ( ! empty( $head_info[$mt_prefix] ) ) {	// Only save the media URL once.
 								continue 2;				// Get the next meta tag.
@@ -326,10 +326,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 							break;
 
-						case ( preg_match( '/^property-'.$mt_prefix.':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
+						case ( preg_match( '/^property-' . $mt_prefix . ':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
 
-							if ( $is_first !== true ) {		// Only save for first media found.
-								continue 2;			// Get the next meta tag.
+							if ( $is_first !== true ) {	// Only save for first media found.
+								continue 2;		// Get the next meta tag.
 							}
 
 							$head_info[$mt[3]] = $mt[5];
@@ -344,32 +344,27 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			foreach ( WpssoMeta::get_sortable_columns() as $col_idx => $col_info ) {
 				
-				if ( empty( $col_info['meta_key'] ) || strpos( $col_info['meta_key'], '_'.$this->p->lca.'_head_info_' ) !== 0 ) {
+				if ( empty( $col_info['meta_key'] ) || strpos( $col_info['meta_key'], '_' . $this->p->lca . '_head_info_' ) !== 0 ) {
 					continue;
 				}
 
 				$meta_value = 'none';
 
-				switch ( $col_idx ) {
-		 			case 'schema_type':
-						if ( isset( $head_info['schema:type:id'] ) ) {
-							$meta_value = $head_info['schema:type:id'];
-						}
-						break;
-					case 'og_img':
-						if ( $og_img = $mod['obj']->get_og_img_column_html( $head_info, $mod ) ) {
-							$meta_value = $og_img;
-						}
-						break;
-					case 'og_desc':
-						if ( isset( $head_info['og:description'] ) ) {
-							$meta_value = $head_info['og:description'];
-						}
-						break;
+				if ( $col_idx === 'og_img' ) {
+
+					if ( $og_img = $mod['obj']->get_og_img_column_html( $head_info, $mod ) ) {
+						$meta_value = $og_img;
+					}
+
+				} elseif ( ! empty( $col_info[ 'mt_name']  ) ) {
+
+					if ( isset( $head_info[ $col_info[ 'mt_name' ] ] ) ) {
+						$meta_value = $head_info[ $col_info[ 'mt_name' ] ];
+					}
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'updating meta for '.$mod['name'].' id '.$mod['id'].' '.$col_idx.' = '.$meta_value );
+					$this->p->debug->log( 'updating meta for ' . $mod['name'] . ' id ' . $mod['id'] . ' ' . $col_idx . ' = ' . $meta_value );
 				}
 
 				$mod['obj']->update_sortable_meta( $mod['id'], $col_idx, $meta_value );
@@ -386,18 +381,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'begin':
 				case 'end':
 
-					$add_meta = apply_filters( $this->p->lca.'_add_meta_name_'.$this->p->lca.':mark',
+					$add_meta = apply_filters( $this->p->lca . '_add_meta_name_' . $this->p->lca . ':mark',
 						( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
 
-					$comment = '<!-- '.$this->p->lca.' meta tags '.$type.' -->';
+					$comment = '<!-- ' . $this->p->lca . ' meta tags ' . $type . ' -->';
 
-					$mt_name = $add_meta ? '<meta name="'.$this->p->lca.':mark:'.$type.'" '.
-						'content="'.$this->p->lca.' meta tags '.$type.'"/>' . "\n" : '';
+					$mt_name = $add_meta ? '<meta name="' . $this->p->lca . ':mark:' . $type . '" ' . 
+						'content="' . $this->p->lca . ' meta tags ' . $type . '"/>' . "\n" : '';
 
 					if ( $type === 'begin' ) {
 						$ret = "\n\n" . $comment . "\n" . $mt_name;
 					} else {
-						$ret = $mt_name.$comment . "\n";
+						$ret = $mt_name . $comment . "\n";
 					}
 
 					break;
@@ -408,11 +403,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 * Some HTML optimization plugins/services may remove the double-quotes from the name attribute, 
 					 * along with the trailing space and slash characters, so make these optional in the regex.
 					 */
-					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?'.$this->p->lca.':mark:(begin|end)"?[\s\n\r]+content=")';
+					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?' . $this->p->lca . ':mark:(begin|end)"?[\s\n\r]+content=")';
 					$suffix = '([\s\n\r]+--|"[\s\n\r]*\/?)>';
 		
-					$ret = '/'.$prefix.$this->p->lca.' meta tags begin'.$suffix.'.*'.
-						$prefix.$this->p->lca.' meta tags end'.$suffix.'/ums';	// Enable utf8 support.
+					$ret = '/' . $prefix . $this->p->lca . ' meta tags begin' . $suffix . '.*' . 
+						$prefix . $this->p->lca . ' meta tags end' . $suffix . '/ums';	// Enable utf8 support.
 
 					break;
 			}
@@ -450,7 +445,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$indent = 0;
 					}
 
-					$html .= str_repeat( "\t", (int) $indent ).$mt[0];
+					$html .= str_repeat( "\t", (int) $indent ) . $mt[0];
 
 					if ( strpos( $mt[0], '<noscript' ) === 0 ) {
 						$indent = 1;
@@ -460,8 +455,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$html .= $this->get_mt_mark( 'end' );
 
-			$html .= '<!-- added on '.date( 'c' ).' in '.sprintf( '%f secs', microtime( true ) - $start_time ).
-				( $crawler_name !== 'none' ? ' for '.$crawler_name : '' ).' from '.SucomUtilWP::raw_home_url().' -->' . "\n\n";
+			$html .= '<!-- added on ' . date( 'c' ) . ' in ' . sprintf( '%f secs', microtime( true ) - $start_time ) . 
+				( $crawler_name !== 'none' ? ' for ' . $crawler_name : '' ) . ' from ' . SucomUtilWP::raw_home_url() . ' -->' . "\n\n";
 
 			return $html;
 		}
@@ -576,7 +571,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$author_id = WpssoUser::get_author_id( $mod );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'author_id = '.( false === $author_id ? 'false' : $author_id ) );
+				$this->p->debug->log( 'author_id = ' . ( false === $author_id ? 'false' : $author_id ) );
 			}
 
 			/**
@@ -624,7 +619,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$add_meta_name_description = empty( $this->p->options['add_meta_name_description'] ) ? false : true;
-			$add_meta_name_description = apply_filters( $this->p->lca.'_add_meta_name_description', $add_meta_name_description, $mod );
+			$add_meta_name_description = apply_filters( $this->p->lca . '_add_meta_name_description', $add_meta_name_description, $mod );
 
 			if ( $add_meta_name_description ) {
 				$mt_name['description'] = $this->p->page->get_description( $this->p->options['seo_desc_len'],
@@ -641,7 +636,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mt_name['robots'] = $this->p->util->get_robots_content( $mod );
 			}
 
-			$mt_name = (array) apply_filters( $this->p->lca.'_meta_name', $mt_name, $mod );
+			$mt_name = (array) apply_filters( $this->p->lca . '_meta_name', $mt_name, $mod );
 
 			/**
 			 * Link relation tags
@@ -694,7 +689,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$expires_in_secs = SucomUtil::update_transient_array( $cache_id, $cache_array, $cache_exp_secs );
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'head array saved to transient cache (expires in '.$expires_in_secs.' secs)' );
+					$this->p->debug->log( 'head array saved to transient cache (expires in ' . $expires_in_secs . ' secs)' );
 				}
 			}
 
@@ -716,7 +711,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		private function get_mt_array( $tag, $type, array &$mt_array, array &$mod ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $mt_array ).' '.$tag.' '.$type.' to process' );
+				$this->p->debug->log( count( $mt_array ) . ' ' . $tag . ' ' . $type . ' to process' );
 				$this->p->debug->log( $mt_array );
 			}
 
@@ -798,20 +793,20 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 									} else foreach ( $ddd_val as $dddd_num => $dddd_val ) {	// Fourth dimension array.
 
 										$singles[] = $this->get_single_mt( $tag,
-											$type, $ddd_name, $dddd_val, $d_name.':'.
+											$type, $ddd_name, $dddd_val, $d_name . ':' . 
 												( $dd_num + 1 ), $mod );
 									}
 
 								} else {
 									$singles[] = $this->get_single_mt( $tag,
-										$type, $ddd_name, $ddd_val, $d_name.':'.
+										$type, $ddd_name, $ddd_val, $d_name . ':' . 
 											( $dd_num + 1 ), $mod );
 								}
 							}
 
 						} else {
 							$singles[] = $this->get_single_mt( $tag,
-								$type, $d_name, $dd_val, $d_name.':'.
+								$type, $d_name, $dd_val, $d_name . ':' . 
 									( $dd_num + 1 ), $mod );
 						}
 					}

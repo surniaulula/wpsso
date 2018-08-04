@@ -133,6 +133,7 @@ _x( 'SSO Image', 'column header', 'wpsso' );
 _x( 'SSO Image Sizes', 'lib file description', 'wpsso' );
 _x( 'SSO', 'menu title', 'wpsso' );
 _x( 'SSO Schema', 'column header', 'wpsso' );
+_x( 'SSO Type', 'column header', 'wpsso' );
 _x( 'SSO WebSite Pages', 'lib file description', 'wpsso' );
 _x( 'Stable / Production', 'option value', 'wpsso' );
 _x( 'Sunday', 'option value', 'wpsso' );

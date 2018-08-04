@@ -964,7 +964,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $md_opts;
 		}
 
-		// return sortable column keys and their query sort info
+		/**
+		 * Return sortable column keys and their query sort info.
+		 */
 		public static function get_sortable_columns( $col_idx = false ) { 
 
 			static $sort_cols = null;
@@ -1001,7 +1003,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public static function get_column_headers() { 
 
-			$headers = array();
+			$headers   = array();
 			$sort_cols = self::get_sortable_columns();
 
 			foreach ( $sort_cols as $col_idx => $col_info ) {

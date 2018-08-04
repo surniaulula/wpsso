@@ -305,6 +305,36 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					padding:0;
 					margin:0;
 				}
+				.wp-list-table th.column-title,
+				.wp-list-table td.column-title {
+					width:25%;
+				}
+				.wp-list-table th.column-author,
+				.wp-list-table td.column-author {
+					width:15%;
+				}
+				.wp-list-table th.column-categories,
+				.wp-list-table td.column-categories {
+					width:15%;
+				}
+				.wp-list-table th.column-tags,
+				.wp-list-table td.column-tags {
+					width:15%;
+				}
+				.wp-list-table th.column-date,
+				.wp-list-table td.column-date {
+					width:15%;
+				}
+				.column-' . $this->p->lca . '_schema_type {
+					max-width:' . $sort_cols['schema_type']['width'] . ' !important;
+					white-space:nowrap;
+					overflow:hidden;
+				}
+				.column-' . $this->p->lca . '_og_type {
+					max-width:' . $sort_cols['og_type']['width'] . ' !important;
+					white-space:nowrap;
+					overflow:hidden;
+				}
 				.column-' . $this->p->lca . '_og_img { 
 					max-width:' . $sort_cols['og_img']['width'] . ' !important;
 				}
@@ -319,16 +349,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					margin:0;
 					padding:0;
 				}
-				.column-' . $this->p->lca . '_schema_type {
-					max-width:' . $sort_cols['schema_type']['width'] . ' !important;
-					white-space:nowrap;
-					overflow:hidden;
-				}
 				.column-' . $this->p->lca . '_og_desc {
 					overflow:hidden;
 				}
-				td.column-' . $this->p->lca . '_og_desc,
-				td.column-' . $this->p->lca . '_schema_type {
+				td.column-' . $this->p->lca . '_schema_type,
+				td.column-' . $this->p->lca . '_og_type,
+				td.column-' . $this->p->lca . '_og_desc {
 					direction:ltr;
 					font-family:Helvetica;
 					text-align:left;
@@ -400,14 +426,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 */
 			if ( ! empty( $this->p->avail['seo']['wpseo'] ) ) {
 				$custom_style_css .= '
-					.wp-list-table th.column-title,
-					.wp-list-table td.column-title {
-					        width:25%;
-					}
-					.wp-list-table th.column-date,
-					.wp-list-table td.column-date {
-					        width:15%;
-					}
 					.wp-list-table th#wpseo-score,
 					.wp-list-table th#wpseo-score-readability,
 					.wp-list-table th#wpseo_score,
@@ -430,7 +448,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					}
 					.wp-list-table th.column-wpseo-focuskw,
 					.wp-list-table td.column-wpseo-focuskw {
-						width:7%;
+						width:10%;
 					}
 				';
 			}

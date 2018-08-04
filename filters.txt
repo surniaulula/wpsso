@@ -195,9 +195,17 @@
 
 'wpsso_og_type' ( $og_type, $mod )
 
-'wpsso_og_type_for_home_index' ( $og_type, $mod )
+'wpsso_og_type_for_default' ( 'website', $mod )
 
-'wpsso_og_type_for_home_page' ( $og_type, $mod )
+'wpsso_og_type_for_home_index' ( $type_id, $mod )
+
+'wpsso_og_type_for_home_page' ( $type_id, $mod )
+
+'wpsso_og_type_for_post_type_archive_page' ( $type_id, $mod )
+
+'wpsso_og_type_for_post_type_empty_type' ( $type_id, $mod )
+
+'wpsso_og_type_for_post_type_unknown_type' ( $type_id, $mod )
 
 'wpsso_opengraph_img_size_limits' ( array( $min_width, $min_height, $max_ratio ) )
 
@@ -253,17 +261,17 @@
 
 'wpsso_schema_noscript_array' ( $ret, $mod, $mt_og, $page_type_id )
 
-'wpsso_schema_type_for_default' ( 'webpage' )
+'wpsso_schema_type_for_default' ( 'webpage', $mod )
 
-'wpsso_schema_type_for_home_index' ( $type_id )
+'wpsso_schema_type_for_home_index' ( $type_id, $mod )
 
-'wpsso_schema_type_for_home_page' ( $type_id )
+'wpsso_schema_type_for_home_page' ( $type_id, $mod )
 
-'wpsso_schema_type_for_post_type_archive_page' ( $type_id )
+'wpsso_schema_type_for_post_type_archive_page' ( $type_id, $mod )
 
-'wpsso_schema_type_for_post_type_empty_type' ( $type_id )
+'wpsso_schema_type_for_post_type_empty_type' ( $type_id, $mod )
 
-'wpsso_schema_type_for_post_type_unknown_type' ( $type_id )
+'wpsso_schema_type_for_post_type_unknown_type' ( $type_id, $mod )
 
 'wpsso_schema_type_id' ( $type_id, $mod, $is_custom )
 

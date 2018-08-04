@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.10.0-dev.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.10.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -873,7 +873,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3138 lib/options.php:1107 lib/submenu/essential.php:140
+#: lib/admin.php:3138 lib/options.php:1109 lib/submenu/essential.php:140
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -1838,147 +1838,152 @@ msgctxt "column header"
 msgid "SSO Schema"
 msgstr ""
 
-#: lib/config-gettext-extract.php:136 lib/messages.php:1444
+#: lib/config-gettext-extract.php:136
+msgctxt "column header"
+msgid "SSO Type"
+msgstr ""
+
+#: lib/config-gettext-extract.php:137 lib/messages.php:1444
 msgctxt "lib file description"
 msgid "SSO WebSite Pages"
 msgstr ""
 
-#: lib/config-gettext-extract.php:137
+#: lib/config-gettext-extract.php:138
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
 
-#: lib/config-gettext-extract.php:138
+#: lib/config-gettext-extract.php:139
 msgctxt "option value"
 msgid "Sunday"
 msgstr ""
 
-#: lib/config-gettext-extract.php:139
+#: lib/config-gettext-extract.php:140
 msgctxt "option value"
 msgid "Temporary"
 msgstr ""
 
-#: lib/config-gettext-extract.php:140
+#: lib/config-gettext-extract.php:141
 msgctxt "option value"
 msgid "Thursday"
 msgstr ""
 
-#: lib/config-gettext-extract.php:141
+#: lib/config-gettext-extract.php:142
 msgctxt "option value"
 msgid "TinyURL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:142
+#: lib/config-gettext-extract.php:143
 msgctxt "option value"
 msgid "Title and Excerpt"
 msgstr ""
 
-#: lib/config-gettext-extract.php:143
+#: lib/config-gettext-extract.php:144
 msgctxt "option value"
 msgid "Title Only"
 msgstr ""
 
-#: lib/config-gettext-extract.php:144
+#: lib/config-gettext-extract.php:145
 msgctxt "option value"
 msgid "Top"
 msgstr ""
 
-#: lib/config-gettext-extract.php:145
+#: lib/config-gettext-extract.php:146
 msgctxt "option value"
 msgid "True"
 msgstr ""
 
-#: lib/config-gettext-extract.php:146
+#: lib/config-gettext-extract.php:147
 msgctxt "option value"
 msgid "Tuesday"
 msgstr ""
 
-#: lib/config-gettext-extract.php:147
+#: lib/config-gettext-extract.php:148
 msgctxt "option value"
 msgid "Tumblr Business Page URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:148
+#: lib/config-gettext-extract.php:149
 msgctxt "option value"
 msgid "Tumblr URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:149
+#: lib/config-gettext-extract.php:150
 msgctxt "option value"
 msgid "Twitter Business @username"
 msgstr ""
 
-#: lib/config-gettext-extract.php:150
+#: lib/config-gettext-extract.php:151
 msgctxt "option value"
 msgid "Twitter @username"
 msgstr ""
 
-#: lib/config-gettext-extract.php:151
+#: lib/config-gettext-extract.php:152
 msgctxt "option value"
 msgid "tz"
 msgstr ""
 
-#: lib/config-gettext-extract.php:152 lib/messages.php:687
+#: lib/config-gettext-extract.php:153 lib/messages.php:687
 msgctxt "option value"
 msgid "unchecked"
 msgstr ""
 
-#: lib/config-gettext-extract.php:153
+#: lib/config-gettext-extract.php:154
 msgctxt "option value"
 msgid "Unisex"
 msgstr ""
 
-#: lib/config-gettext-extract.php:154
+#: lib/config-gettext-extract.php:155
 msgctxt "option value"
 msgid "Used"
 msgstr ""
 
-#: lib/config-gettext-extract.php:155
+#: lib/config-gettext-extract.php:156
 msgctxt "option label"
 msgid "Video Embed HTML Custom Field"
 msgstr ""
 
-#: lib/config-gettext-extract.php:156
+#: lib/config-gettext-extract.php:157
 msgctxt "option label"
 msgid "Video URL Custom Field"
 msgstr ""
 
-#: lib/config-gettext-extract.php:157
+#: lib/config-gettext-extract.php:158
 msgctxt "option value"
 msgid "Vimeo Videos"
 msgstr ""
 
-#: lib/config-gettext-extract.php:158
+#: lib/config-gettext-extract.php:159
 msgctxt "option value"
 msgid "Volunteer"
 msgstr ""
 
-#: lib/config-gettext-extract.php:159
+#: lib/config-gettext-extract.php:160
 msgctxt "option value"
 msgid "[WebSite Organization]"
 msgstr ""
 
-#: lib/config-gettext-extract.php:160
+#: lib/config-gettext-extract.php:161
 msgctxt "option value"
 msgid "Wednesday"
 msgstr ""
 
-#: lib/config-gettext-extract.php:161
+#: lib/config-gettext-extract.php:162
 msgctxt "option value"
 msgid "Week"
 msgstr ""
 
-#: lib/config-gettext-extract.php:162
+#: lib/config-gettext-extract.php:163
 msgctxt "option value"
 msgid "Wistia Videos"
 msgstr ""
 
-#: lib/config-gettext-extract.php:163
+#: lib/config-gettext-extract.php:164
 msgctxt "option value"
 msgid "WordPress Video Shortcode"
 msgstr ""
 
-#: lib/config-gettext-extract.php:164
+#: lib/config-gettext-extract.php:165
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to inherit the featured image and custom images from "
@@ -1986,7 +1991,7 @@ msgid ""
 "taxonomies."
 msgstr ""
 
-#: lib/config-gettext-extract.php:165
+#: lib/config-gettext-extract.php:166
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to manage Organizations and additional Schema markup "
@@ -1994,49 +1999,49 @@ msgid ""
 "Knowledge Graph."
 msgstr ""
 
-#: lib/config-gettext-extract.php:166
+#: lib/config-gettext-extract.php:167
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide a convenient locale / language / region "
 "selector in the WordPress admin toolbar."
 msgstr ""
 
-#: lib/config-gettext-extract.php:167
+#: lib/config-gettext-extract.php:168
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide an array of meta tags and Schema markup in the "
 "WordPress REST API post, term and user queries."
 msgstr ""
 
-#: lib/config-gettext-extract.php:168
+#: lib/config-gettext-extract.php:169
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Apple Store / iTunes and Google Play App meta "
 "tags for Apple's mobile Safari and Twitter's App Card."
 msgstr ""
 
-#: lib/config-gettext-extract.php:169
+#: lib/config-gettext-extract.php:170
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide JSON-LD formatted Schema BreadcrumbList markup "
 "for Google and Search Engine Optimization (SEO)."
 msgstr ""
 
-#: lib/config-gettext-extract.php:170
+#: lib/config-gettext-extract.php:171
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Pinterest Place, Facebook / Open Graph "
 "Location, Schema Local Business, and Local SEO meta tags."
 msgstr ""
 
-#: lib/config-gettext-extract.php:171
+#: lib/config-gettext-extract.php:172
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide ratings and reviews for WordPress comments, "
 "with Aggregate Rating meta tags and optional Schema Review markup."
 msgstr ""
 
-#: lib/config-gettext-extract.php:172
+#: lib/config-gettext-extract.php:173
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Ridiculously Responsive (SVG) Social Sharing "
@@ -2044,49 +2049,49 @@ msgid ""
 "pages, etc."
 msgstr ""
 
-#: lib/config-gettext-extract.php:173
+#: lib/config-gettext-extract.php:174
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Schema JSON-LD / SEO markup for Articles, "
 "Events, Local Business, Products, Recipes, Reviews and many more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:174
+#: lib/config-gettext-extract.php:175
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Social Sharing Buttons with support for "
 "hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:175
+#: lib/config-gettext-extract.php:176
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide tuning options for the WordPress image editors "
 "and PHP image extensions."
 msgstr ""
 
-#: lib/config-gettext-extract.php:176
+#: lib/config-gettext-extract.php:177
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide Twitter-style quoted text for your content, "
 "with a convenient Tweet share link and customizable CSS."
 msgstr ""
 
-#: lib/config-gettext-extract.php:177
+#: lib/config-gettext-extract.php:178
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to provide updates for the WPSSO Core Pro plugin and its "
 "Pro add-ons."
 msgstr ""
 
-#: lib/config-gettext-extract.php:178
+#: lib/config-gettext-extract.php:179
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core add-on to remove outdated / incomplete Schema Microdata, leaving "
 "the Google recommended Schema JSON-LD markup untouched."
 msgstr ""
 
-#: lib/config-gettext-extract.php:179
+#: lib/config-gettext-extract.php:180
 msgctxt "plugin description"
 msgid ""
 "WPSSO Core gives social sites and search engines better information about "
@@ -2095,37 +2100,37 @@ msgid ""
 "Rich Pins, Twitter Cards and more."
 msgstr ""
 
-#: lib/config-gettext-extract.php:180
+#: lib/config-gettext-extract.php:181
 msgctxt "option value"
 msgid "Year"
 msgstr ""
 
-#: lib/config-gettext-extract.php:181
+#: lib/config-gettext-extract.php:182
 msgctxt "option value"
 msgid "Yes"
 msgstr ""
 
-#: lib/config-gettext-extract.php:182
+#: lib/config-gettext-extract.php:183
 msgctxt "option value"
 msgid "YOURLS"
 msgstr ""
 
-#: lib/config-gettext-extract.php:183
+#: lib/config-gettext-extract.php:184
 msgctxt "lib file description"
 msgid "Your SSO"
 msgstr ""
 
-#: lib/config-gettext-extract.php:184
+#: lib/config-gettext-extract.php:185
 msgctxt "option value"
 msgid "YouTube Business Channel URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:185
+#: lib/config-gettext-extract.php:186
 msgctxt "option value"
 msgid "YouTube Channel URL"
 msgstr ""
 
-#: lib/config-gettext-extract.php:186
+#: lib/config-gettext-extract.php:187
 msgctxt "option value"
 msgid "YouTube Videos and Playlists"
 msgstr ""
@@ -2744,23 +2749,23 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/head.php:585
+#: lib/head.php:580
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:597
+#: lib/head.php:592
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:649
+#: lib/head.php:644
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:656
+#: lib/head.php:651
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:663
+#: lib/head.php:658
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -5052,134 +5057,134 @@ msgctxt "image size label"
 msgid "Facebook / Open Graph"
 msgstr ""
 
-#: lib/options.php:309
+#: lib/options.php:310
 msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:420
-msgid "WordPress could not find an entry for %s in the options table."
-msgstr ""
-
 #: lib/options.php:422
-msgid ""
-"WordPress returned a non-array value when reading %s from the options table."
+msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
 #: lib/options.php:424
 msgid ""
-"WordPress returned an empty array when reading %s from the options table."
+"WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
 #: lib/options.php:426
+msgid ""
+"WordPress returned an empty array when reading %s from the options table."
+msgstr ""
+
+#: lib/options.php:428
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:441
+#: lib/options.php:443
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:528
+#: lib/options.php:530
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:595
+#: lib/options.php:597
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:662
+#: lib/options.php:664
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:663
+#: lib/options.php:665
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:664
+#: lib/options.php:666
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:665
+#: lib/options.php:667
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:666
+#: lib/options.php:668
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:667
+#: lib/options.php:669
 msgid ""
 "The value of option '%s' must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:668
+#: lib/options.php:670
 msgid ""
 "The value of option '%s' must be an image ID - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:669
+#: lib/options.php:671
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:670
+#: lib/options.php:672
 msgid ""
 "The value of option '%s' must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:671
+#: lib/options.php:673
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:672
+#: lib/options.php:674
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:673
+#: lib/options.php:675
 msgid ""
 "The value of option '%s' must be a URL - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1079
+#: lib/options.php:1081
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1138
+#: lib/options.php:1140
 msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1141
+#: lib/options.php:1143
 msgid "Please make sure this site can access the banner image at %1$s."
 msgstr ""
 
-#: lib/options.php:1146
+#: lib/options.php:1148
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
@@ -5586,32 +5591,32 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema.php:95 lib/schema.php:100
+#: lib/schema.php:97 lib/schema.php:102
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2176
+#: lib/schema.php:2181
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2715
+#: lib/schema.php:2720
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2750
+#: lib/schema.php:2755
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2752
+#: lib/schema.php:2757
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2993
+#: lib/schema.php:2998
 msgid "adding schema for place"
 msgstr ""
 

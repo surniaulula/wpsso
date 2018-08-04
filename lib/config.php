@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.10.0-dev.2',	// Plugin version.
-					'opt_version' => '588',		// Increment when changing default option values.
+					'version'     => '4.10.0-dev.3',	// Plugin version.
+					'opt_version' => '589',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -1102,6 +1102,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_schema_type_col_post'   => 1,
 					'plugin_schema_type_col_term'   => 0,
 					'plugin_schema_type_col_user'   => 0,
+					'plugin_og_type_col_media'      => 0,
+					'plugin_og_type_col_post'       => 0,
+					'plugin_og_type_col_term'       => 0,
+					'plugin_og_type_col_user'       => 0,
 					'plugin_og_img_col_media'       => 0,
 					'plugin_og_img_col_post'        => 1,
 					'plugin_og_img_col_term'        => 1,
@@ -1554,23 +1558,33 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'columns' => array(
 					'schema_type' => array(
 						'header'   => 'SSO Schema',
+						'mt_name'  => 'schema:type:id',
 						'meta_key' => '_wpsso_head_info_schema_type',
 						'orderby'  => 'meta_value',
-						'width'    => '130px',	// 120 + 10 for the sorting arrow
+						'width'    => '125px',	// 115 + 10 for the sorting arrow
+						'height'   => 'auto',
+					),
+					'og_type' => array(
+						'header'   => 'SSO Type',
+						'mt_name'  => 'og:type',
+						'meta_key' => '_wpsso_head_info_og_type',
+						'orderby'  => 'meta_value',
+						'width'    => '100px',	// 90 + 10 for the sorting arrow
 						'height'   => 'auto',
 					),
 					'og_img' => array(
 						'header'   => 'SSO Image',
 						'meta_key' => '_wpsso_head_info_og_img_thumb',
-						'orderby'  => false,	// do not offer column sorting
+						'orderby'  => false,	// Do not offer column sorting.
 						'width'    => '75px',
 						'height'   => '40px',
 					),
 					'og_desc' => array(
 						'header'   => 'SSO Desc',
+						'mt_name'  => 'og:description',
 						'meta_key' => '_wpsso_head_info_og_desc',
-						'orderby'  => false,	// do not offer column sorting
-						'width'    => '12%',
+						'orderby'  => false,	// Do not offer column sorting.
+						'width'    => '160px',
 						'height'   => 'auto',
 					),
 				),
