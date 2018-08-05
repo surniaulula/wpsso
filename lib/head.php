@@ -912,6 +912,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$this->p->debug->log( 'adding ' . $addl_name . ' meta tag with ' . $name . ' value' );
 					}
 
+					$ret[] = array( '', $tag, $type, $name, $attr, $value, $cmt );	// Add the url suffix first.
 					$ret[] = array( '', $tag, $type, $addl_name, $attr, $value, $cmt );
 
 					break;
@@ -929,9 +930,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					}
 
 					break;
-			}
 
-			$ret[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
+				default:
+
+					$ret[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
+
+					break;
+			}
 
 			/**
 			 * $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );

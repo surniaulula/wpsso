@@ -24,7 +24,9 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 			$add_link_rel_shortlink = empty( $this->p->options['add_link_rel_shortlink'] ) ? false : true;
 
-			// remove the 'wp_shortlink_wp_head' hook so we can add our own shortlink meta tag
+			/**
+			 * Remove the 'wp_shortlink_wp_head' hook so we can add our own shortlink meta tag.
+			 */
 			if ( $add_link_rel_shortlink ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'removing default wp_shortlink_wp_head action' );
@@ -44,7 +46,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			$link_rel = apply_filters( $this->p->lca . '_link_rel_seed', array(), $mod );
 
 			/**
-			 * link rel author
+			 * Link rel author.
 			 */
 			if ( ! empty( $author_id ) ) {
 
@@ -64,7 +66,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			}
 
 			/**
-			 * link rel canonical
+			 * Link rel canonical.
 			 */
 			$add_link_rel_canonical = empty( $this->p->options['add_link_rel_canonical'] ) ? false : true;
 
@@ -73,7 +75,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			}
 
 			/**
-			 * link rel publisher
+			 * Link rel publisher.
 			 */
 			if ( ! empty( $this->p->options['seo_publisher_url'] ) ) {
 
@@ -88,7 +90,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			}
 
 			/**
-			 * link rel shortlink
+			 * Link rel shortlink.
 			 */
 			$add_link_rel_shortlink = empty( $this->p->options['add_link_rel_shortlink'] ) || is_404() || is_search() ? false : true;
 
