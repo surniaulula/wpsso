@@ -875,7 +875,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$attr = 'content';
 			}
 
-			$ret = array();
+			$singles = array();
 
 			$log_prefix = $tag . ' ' . $type . ' ' . $name;
 
@@ -889,12 +889,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $log_prefix . ' value is an array (skipped)' );
 				}
-				return $ret;
+				return $singles;
 			} elseif ( is_object( $value ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $log_prefix . ' value is an object (skipped)' );
 				}
-				return $ret;
+				return $singles;
 			}
 
 			if ( strpos( $value, '%%' ) !== false ) {
@@ -902,6 +902,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			switch ( $name ) {
+
+				case 'og:image:secure_url':
+				case 'og:video:secure_url':
+
+					if ( ! empty( $value ) && strpos( $value, 'https:' ) !== 0 ) {
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( $log_prefix . ' skipped: value not https' );
+						}
+
+						return $singles;
+					}
+					
+					$singles[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
+
+					break;
 
 				case 'og:image:url':
 				case 'og:video:url':
@@ -912,28 +928,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$this->p->debug->log( 'adding ' . $addl_name . ' meta tag with ' . $name . ' value' );
 					}
 
-					$ret[] = array( '', $tag, $type, $name, $attr, $value, $cmt );	// Add the url suffix first.
-					$ret[] = array( '', $tag, $type, $addl_name, $attr, $value, $cmt );
-
-					break;
-
-				case 'og:image:secure_url':
-				case 'og:video:secure_url':
-
-					if ( ! empty( $value ) && strpos( $value, 'https:' ) !== 0 ) {	// Just in case.
-
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $log_prefix . ' skipped: value not https' );
-						}
-
-						return $ret;
-					}
+					$singles[] = array( '', $tag, $type, $name, $attr, $value, $cmt );	// Add the url suffix first.
+					$singles[] = array( '', $tag, $type, $addl_name, $attr, $value, $cmt );
 
 					break;
 
 				default:
 
-					$ret[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
+					$singles[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
 
 					break;
 			}
@@ -941,7 +943,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );
 			 */
-			foreach ( $ret as $num => $parts ) {
+			foreach ( $singles as $num => $parts ) {
 
 				if ( ! isset( $parts[6] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -971,7 +973,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$this->p->debug->log( $log_prefix . ' skipped: value is empty' );
 					}
 
-					$ret[$num][5] = '';	// Avoid null values in REST API output.
+					$singles[$num][5] = '';	// Avoid null values in REST API output.
 
 					continue;
 
@@ -1088,10 +1090,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$this->p->debug->log( $log_prefix . ' skipped: option is disabled' );
 				}
 
-				$ret[$num] = $parts;	// Save the HTML and encoded value.
+				$singles[$num] = $parts;	// Save the HTML and encoded value.
 			}
 
-			return $ret;
+			return $singles;
 		}
 
 		/**
