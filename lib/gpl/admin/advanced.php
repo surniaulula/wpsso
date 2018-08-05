@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$cols .= '</table>' . "\n";
 
-			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Show Columns in Admin Lists',
+			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Additional List Table Columns',
 				'option label', 'wpsso' ), '', 'plugin_show_columns' ).
 					'<td>'.$cols.'</td>';
 

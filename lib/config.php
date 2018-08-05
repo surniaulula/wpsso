@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.10.0-dev.3',	// Plugin version.
+					'version'     => '4.10.0-b.1',	// Plugin version.
 					'opt_version' => '589',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1574,6 +1574,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'og_img' => array(
 						'header'   => 'SSO Image',
+						'mt_name'  => 'og:image',
 						'meta_key' => '_wpsso_head_info_og_img_thumb',
 						'orderby'  => false,	// Do not offer column sorting.
 						'width'    => '75px',

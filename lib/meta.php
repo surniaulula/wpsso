@@ -1105,22 +1105,22 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $columns;
 		}
 
-		public function get_og_img_column_html( $head_info, $mod ) {
+		public function get_og_img_column_html( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			$media_html  = false;
-			$force_regen = $this->p->util->is_force_regen( $mod, 'og' );	// false by default
+			$force_regen = $this->p->util->is_force_regen( $mod, $md_pre );	// false by default
 
-			if ( ! empty( $head_info['og:image:id'] ) ) {
+			if ( ! empty( $head_info[ $mt_pre . ':image:id' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'getting thumbnail for image id ' . $head_info['og:image:id'] );
+					$this->p->debug->log( 'getting thumbnail for image id ' . $head_info[ $mt_pre . ':image:id' ] );
 				}
 
 				$mt_single_image = array();
 
-				$this->p->media->add_mt_single_image_src( $mt_single_image, $head_info['og:image:id'], 'thumbnail', false, $force_regen );
+				$this->p->media->add_mt_single_image_src( $mt_single_image, $head_info[ $mt_pre . ':image:id' ], 'thumbnail', false, $force_regen );
 
-				if ( ! empty( $mt_single_image['og:image:url'] ) ) {	// Just in case.
+				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.
 					$head_info =& $mt_single_image;
 				}
 			}

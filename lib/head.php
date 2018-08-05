@@ -350,15 +350,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				$meta_value = 'none';
 
-				if ( $col_idx === 'og_img' ) {
-
-					if ( $og_img = $mod['obj']->get_og_img_column_html( $head_info, $mod ) ) {
-						$meta_value = $og_img;
-					}
-
-				} elseif ( ! empty( $col_info[ 'mt_name']  ) ) {
-
-					if ( isset( $head_info[ $col_info[ 'mt_name' ] ] ) ) {
+				if ( ! empty( $col_info[ 'mt_name']  ) ) {
+					if ( $col_info[ 'mt_name'] === 'og:image' ) {	// Get the image thumbnail HTML.
+						if ( $og_img = $mod['obj']->get_og_img_column_html( $head_info, $mod ) ) {
+							$meta_value = $og_img;
+						}
+					} elseif ( isset( $head_info[ $col_info[ 'mt_name' ] ] ) ) {
 						$meta_value = $head_info[ $col_info[ 'mt_name' ] ];
 					}
 				}
