@@ -1910,23 +1910,40 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( ! empty( $mod['id'] ) ) {
 
 					if ( ! empty( $mod['obj'] ) ) {
-						$url = $mod['obj']->get_options( $mod['id'], $type . '_url' );	// returns null if an index key is not found
+						$url = $mod['obj']->get_options( $mod['id'], $type . '_url' );	// Returns null if an index key is not found.
 					}
 
-					if ( ! empty( $url ) ) {	// must be a non-empty string
+					if ( ! empty( $url ) ) {	// Must be a non-empty string.
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'custom post ' . $type . '_url = ' . $url );
 						}
+
+					} elseif ( in_array( $mod['post_status'], array( 'draft', 'pending', 'auto-draft' ) ) ) {
+
+						$post_obj = self::get_post_object( $mod['id'] );
+
+						$post_obj->post_status = 'published';
+						$post_obj->post_name   = sanitize_title( $post_obj->post_name ?
+							$post_obj->post_name : $post_obj->post_title, $post_obj->ID );
+
+						$url = get_permalink( $post_obj );
+
 					} else {
+
 						$url = get_permalink( $mod['id'] );
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'get_permalink url = ' . $url );
 						}
+
 						$url = $this->check_url_string( $url, 'post permalink' );
 					}
 
 					if ( ! empty( $url ) && $add_page && get_query_var( 'page' ) > 1 ) {
+
 						global $wp_rewrite;
+
 						$post_obj = self::get_post_object( $mod['id'] );
 						$numpages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
 
