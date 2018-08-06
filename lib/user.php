@@ -810,6 +810,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						break;
 
+					case 'twitter':
+
+						$website_url = get_the_author_meta( $field_id, $user_id );
+
+						if ( filter_var( $website_url, FILTER_VALIDATE_URL ) === false ) {
+							$website_url = 'https://twitter.com/' . preg_replace( '/^@/', '', $website_url );
+						}
+
+						break;
+
 					default:
 
 						$website_url = get_the_author_meta( $field_id, $user_id );
