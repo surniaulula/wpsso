@@ -2723,6 +2723,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_post_object( $use_post = false, $output = 'object' ) {
+
 			$post_obj = false; // Return false by default.
 
 			if ( is_numeric( $use_post ) && $use_post > 0 ) {
@@ -2908,6 +2909,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_user_object( $user_id = 0, $output = 'object' ) {
+
 			$user_obj = false; // Return false by default.
 
 			if ( is_numeric( $user_id ) && $user_id > 0 ) {

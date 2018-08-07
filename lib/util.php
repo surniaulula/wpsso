@@ -2079,9 +2079,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 
 				if ( apply_filters( $this->p->lca . '_server_request_url_disable_cache', $disable_cache, $url, $mod, $add_page, $src_id ) ) {
-					$this->disable_cache_filters( array(
-						'shorten_url' => '__return_false',
-					) );
+					$this->disable_cache_filters( array( 'shorten_url' => '__return_false' ) );
 				}
 			}
 
@@ -2089,10 +2087,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Check and possibly enforce the FORCE_SSL constant.
 			 */
 			if ( ! empty( $this->p->options['plugin_honor_force_ssl'] ) ) {
+
 				if ( SucomUtil::get_const( 'FORCE_SSL' ) && strpos( $url, 'http:' ) === 0 ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'force ssl is enabled - replacing http by https' );
 					}
+
 					$url = preg_replace( '/^http:/', 'https:', $url );
 				}
 			}
