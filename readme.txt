@@ -332,6 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
+	* Updated the admin list table styles to prevent the post / page title from being too narrow.
 	* Added a new "SSO Type" column in post, term, and user table lists with the Open Graph type value (disabled by default).
 	* Added default Open Graph type options under the SSO &gt; General &gt; Site Information settings tab:
 		* Type for Blog Front Page
