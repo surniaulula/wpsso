@@ -1924,10 +1924,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$post_obj = self::get_post_object( $mod['id'] );
 
 						$post_obj->post_status = 'published';
-						$post_obj->post_name   = sanitize_title( $post_obj->post_name ?
-							$post_obj->post_name : $post_obj->post_title, $post_obj->ID );
+						$post_obj->post_name   = $post_obj->post_name ? 
+							$post_obj->post_name : sanitize_title( $post_obj->post_title );
 
 						$url = get_permalink( $post_obj );
+
+						if ( empty( $url ) ) {	// Just in case.
+							$url = get_permalink( $mod['id'] );
+						}
 
 					} else {
 
