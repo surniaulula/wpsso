@@ -839,9 +839,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		protected function get_submit_opts( $mod_id ) {
 
-			$mod      = $this->get_mod( $mod_id );
-			$md_defs  = $this->get_defaults( $mod['id'] );
-			$md_prev  = $this->get_options( $mod['id'] );
+			$mod     = $this->get_mod( $mod_id );
+			$md_defs = $this->get_defaults( $mod['id'] );
+			$md_prev = $this->get_options( $mod['id'] );
 
 			/**
 			 * Remove plugin version strings.

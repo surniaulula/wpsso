@@ -125,8 +125,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'schema_desc' => array(
 					'label' => _x( 'Schema Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
-					'content' => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ) . 
-						$json_msg_transl,
+					'content' => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ) . $json_msg_transl,
 				),
 			);
 

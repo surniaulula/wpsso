@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			 */
 			$add_link_rel_canon = empty( $this->p->options['add_link_rel_canonical'] ) ? false : true;
 			$add_meta_name_desc = empty( $this->p->options['add_meta_name_description'] ) ? false : true;
-			$add_meta_name_desc = apply_filters( $this->p->lca.'_add_meta_name_description', $add_meta_name_desc, $mod );
+			$add_meta_name_desc = apply_filters( $this->p->lca . '_add_meta_name_description', $add_meta_name_desc, $mod );
 
 			$sharing_url   = $this->p->util->get_sharing_url( $mod, false );	// $add_page is false.
 			$canonical_url = $this->p->util->get_canonical_url( $mod, false );	// $add_page is false.
@@ -60,9 +60,9 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 
 			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
 				$json_info = $this->p->cf['plugin']['wpssojson'];
-				$json_msg_transl = '<p class="status-msg smaller">'.
+				$json_msg_transl = '<p class="status-msg smaller">' . 
 					sprintf( __( 'Activate the %s add-on for additional Schema markup features and options.',
-						'wpsso' ), '<a href="'.$json_info['url']['home'].'">'.$json_info['short'].'</a>' ).'</p>';
+						'wpsso' ), '<a href="' . $json_info['url']['home'] . '">' . $json_info['short'] . '</a>' ) . '</p>';
 			} else {
 				$json_msg_transl = '';
 			}
@@ -107,8 +107,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'label' => _x( 'Search Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
 					'content' => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) .
-						( $add_meta_name_desc ? '' : '<p class="status-msg smaller">'.
-							sprintf( $seo_msg_transl, 'meta name description' ).'</p>' ),
+						( $add_meta_name_desc ? '' : '<p class="status-msg smaller">' . 
+							sprintf( $seo_msg_transl, 'meta name description' ) . '</p>' ),
 				),
 				'tc_desc' => array(
 					'no_auto_draft' => true,
@@ -129,8 +129,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'label' => _x( 'Canonical URL', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-canonical_url', 'td_class' => 'blank',
 					'content' => $form->get_no_input_value( $canonical_url, 'wide' ) .
-						( $add_link_rel_canon ? '' : '<p class="status-msg smaller">'.
-							sprintf( $seo_msg_transl, 'link rel canonical' ).'</p>' ),
+						( $add_link_rel_canon ? '' : '<p class="status-msg smaller">' . 
+							sprintf( $seo_msg_transl, 'link rel canonical' ) . '</p>' ),
 				),
 				'product_avail' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -167,7 +167,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'label' => _x( 'Product Price', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-product_price', 'td_class' => 'blank',
-					'content' => $form->get_no_input( 'product_price', '', '', true ).' '.	// $placeholder is true for default value.
+					'content' => $form->get_no_input( 'product_price', '', '', true ) . ' ' . 	// $placeholder is true for default value.
 						$form->get_no_select( 'product_currency', SucomUtil::get_currency_abbrev(), 'currency' ),
 				),
 				'product_size' => array(
@@ -190,8 +190,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'no_auto_draft' => true,
 					'label' => _x( 'Schema Description', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
-					'content' => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ).
-						$json_msg_transl,
+					'content' => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ) . $json_msg_transl,
 				),
 			);
 
