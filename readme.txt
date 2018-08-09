@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.10.0-rc.1 (2018/08/06)**
+**Version 4.10.0-rc.2 (2018/08/09)**
 
 * *New Features*
 	* None.
@@ -631,9 +631,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.10.0-rc.1 =
+= 4.10.0-rc.2 =
 
-(2018/08/06) Added Open Graph type selections under the SSO &gt; General &gt; Site Information tab.
+(2018/08/09) Added Open Graph type selections under the SSO &gt; General &gt; Site Information tab.
 
 = 4.9.4 =
 
