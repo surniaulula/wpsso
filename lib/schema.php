@@ -3165,8 +3165,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) );
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) ) {
+
 				$desc_len = $this->p->options['schema_desc_len'];
 				$desc_idx = array( 'schema_desc', 'seo_desc', 'og_desc' );
+
 				$mt_schema['description'] = $this->p->page->get_description( $desc_len, '...', $mod, true, false, true, $desc_idx );
 			}
 
