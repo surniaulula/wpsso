@@ -1919,7 +1919,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$this->p->debug->log( 'custom post ' . $type . '_url = ' . $url );
 						}
 
-					} elseif ( in_array( $mod['post_status'], array( 'draft', 'pending', 'auto-draft' ) ) ) {
+					} elseif ( $mod['post_status'] !== 'published' ) {
 
 						$post_obj = self::get_post_object( $mod['id'] );
 

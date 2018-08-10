@@ -1000,8 +1000,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public static function get_context_extension_url( array $json_data ) {
+
 			$type_url = false;
 			$ext_data = array_reverse( $json_data );	// read the array bottom-up
+
 			foreach ( $ext_data as $val ) {
 				if ( is_array( $val ) ) {		// if it's an extension array, drill down and return that value
 					return self::get_context_extension_url( $val );
@@ -1009,6 +1011,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$type_url = $val;
 				}
 			}
+
 			return false;
 		}
 
@@ -1032,7 +1035,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = array();
 
-			$page_type_id  = $mt_og['schema:type:id'] = $this->get_mod_schema_type( $mod, true );		// example: article.tech
+			$page_type_id  = $mt_og['schema:type:id']  = $this->get_mod_schema_type( $mod, true );		// example: article.tech
 			$page_type_url = $mt_og['schema:type:url'] = $this->get_schema_type_url( $page_type_id );	// example: https://schema.org/TechArticle
 
 			list(

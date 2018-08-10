@@ -548,7 +548,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				$opts =& $this->p->options;		// Shortcut variable name.
 
-				$og_type = $this->p->og->get_mod_og_type( $mod, false, false );	// $ret_og_ns = false, $use_mod_opts = false
+				$og_type = $this->p->og->get_mod_og_type( $mod, false, false );	// $ret_og_ns is false, $use_mod_opts is false
 
 				$md_defs = array(
 					'options_filtered' => '',

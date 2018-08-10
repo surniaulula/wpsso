@@ -213,7 +213,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( ! empty( $mod['obj'] ) ) {	// Just in case.
 
-					$type_id = $mod['obj']->get_options( $mod['id'], 'og_type' );	// Returns null if an index key is not found.
+					$type_id = $mod['obj']->get_options( $mod['id'], 'og_type' );	// Returns null if index key not found.
 
 					if ( empty( $type_id ) ) {	// Must be a non-empty string.
 						if ( $this->p->debug->enabled ) {

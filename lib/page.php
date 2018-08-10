@@ -953,16 +953,20 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $content_text;
 		}
 
-		public function get_article_section( $post_id ) {
+		public function get_article_section( $post_id, $allow_none = false, $use_mod_opts = true ) {
 
 			$section = '';
 
-			if ( ! empty( $post_id ) ) {
-				// get_options() returns null if an index key is not found
-				$section = $this->p->m['util']['post']->get_options( $post_id, 'og_art_section' );
+			/**
+			 * Get custom article section from post meta.
+			 */
+			if ( $use_mod_opts ) {
+				if ( ! empty( $post_id ) ) {
+					$section = $this->p->m['util']['post']->get_options( $post_id, 'og_art_section' );	// Returns null if index key not found.
+				}
 			}
 
-			if ( ! empty( $section ) ) {	// must be a non-empty string
+			if ( ! empty( $section ) ) {	// Must be a non-empty string.
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'found custom meta article section = ' . $section );
 				}
@@ -970,8 +974,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$section = $this->p->options['og_art_section'];
 			}
 
-			if ( $section === 'none' ) {
-				$section = '';
+			if ( ! $allow_none ) {
+				if ( $section === 'none' ) {
+					$section = '';
+				}
 			}
 
 			return apply_filters( $this->p->lca . '_article_section', $section, $post_id );

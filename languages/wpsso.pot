@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.10.0-rc.3\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.10.0-rc.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -868,12 +868,12 @@ msgctxt "option label"
 msgid "Type by Term Taxonomy"
 msgstr ""
 
-#: lib/admin.php:3134 lib/submenu/essential.php:136
+#: lib/admin.php:3134 lib/submenu/essential.php:139
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3138 lib/options.php:1109 lib/submenu/essential.php:140
+#: lib/admin.php:3138 lib/options.php:1109 lib/submenu/essential.php:143
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -2527,64 +2527,64 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:73 lib/gpl/admin/post.php:64
-#: lib/pro/admin/meta.php:82 lib/pro/admin/post.php:75
+#: lib/gpl/admin/meta.php:73 lib/gpl/admin/post.php:67
+#: lib/pro/admin/meta.php:82 lib/pro/admin/post.php:76
 msgid ""
 "Activate the %s add-on for additional Schema markup features and options."
 msgstr ""
 
-#: lib/gpl/admin/meta.php:79 lib/gpl/admin/post.php:70
-#: lib/pro/admin/meta.php:88 lib/pro/admin/post.php:81
+#: lib/gpl/admin/meta.php:79 lib/gpl/admin/post.php:73
+#: lib/pro/admin/meta.php:88 lib/pro/admin/post.php:82
 msgid ""
 "This option is disabled (the \"%1$s\" head tag is disabled or an SEO plugin "
 "was detected)."
 msgstr ""
 
-#: lib/gpl/admin/meta.php:85 lib/gpl/admin/post.php:94
-#: lib/pro/admin/meta.php:92 lib/pro/admin/post.php:99
+#: lib/gpl/admin/meta.php:85 lib/gpl/admin/post.php:98
+#: lib/pro/admin/meta.php:92 lib/pro/admin/post.php:100
 msgctxt "option label"
 msgid "Default Title"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:90 lib/gpl/admin/post.php:100
-#: lib/pro/admin/meta.php:99 lib/pro/admin/post.php:107
+#: lib/gpl/admin/meta.php:90 lib/gpl/admin/post.php:104
+#: lib/pro/admin/meta.php:99 lib/pro/admin/post.php:108
 msgctxt "option label"
 msgid "Default Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:96 lib/gpl/admin/post.php:107
-#: lib/pro/admin/meta.php:107 lib/pro/admin/post.php:116
+#: lib/gpl/admin/meta.php:96 lib/gpl/admin/post.php:111
+#: lib/pro/admin/meta.php:107 lib/pro/admin/post.php:117
 msgctxt "option label"
 msgid "Search Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:103 lib/gpl/admin/post.php:115
-#: lib/pro/admin/meta.php:115 lib/pro/admin/post.php:125
+#: lib/gpl/admin/meta.php:103 lib/gpl/admin/post.php:119
+#: lib/pro/admin/meta.php:115 lib/pro/admin/post.php:126
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:109 lib/gpl/admin/post.php:122 lib/meta.php:254
-#: lib/meta.php:279 lib/pro/admin/meta.php:121 lib/pro/admin/post.php:132
+#: lib/gpl/admin/meta.php:109 lib/gpl/admin/post.php:126 lib/meta.php:254
+#: lib/meta.php:279 lib/pro/admin/meta.php:121 lib/pro/admin/post.php:133
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:115 lib/gpl/admin/post.php:129 lib/meta.php:258
-#: lib/meta.php:283 lib/pro/admin/meta.php:127 lib/pro/admin/post.php:139
+#: lib/gpl/admin/meta.php:115 lib/gpl/admin/post.php:133 lib/meta.php:258
+#: lib/meta.php:283 lib/pro/admin/meta.php:127 lib/pro/admin/post.php:140
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:123 lib/gpl/admin/post.php:187
-#: lib/pro/admin/meta.php:136 lib/pro/admin/post.php:198
+#: lib/gpl/admin/meta.php:123 lib/gpl/admin/post.php:191
+#: lib/pro/admin/meta.php:136 lib/pro/admin/post.php:199
 #: lib/submenu/general.php:246
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:126 lib/gpl/admin/post.php:191
-#: lib/pro/admin/meta.php:139 lib/pro/admin/post.php:202
+#: lib/gpl/admin/meta.php:126 lib/gpl/admin/post.php:195
+#: lib/pro/admin/meta.php:139 lib/pro/admin/post.php:203
 msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
@@ -2681,57 +2681,57 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gpl/admin/post.php:79 lib/pro/admin/post.php:86
+#: lib/gpl/admin/post.php:82 lib/pro/admin/post.php:87
 msgctxt "option label"
 msgid "Open Graph Type"
 msgstr ""
 
-#: lib/gpl/admin/post.php:87 lib/pro/admin/post.php:93
+#: lib/gpl/admin/post.php:90 lib/pro/admin/post.php:94
 msgctxt "option label"
 msgid "Article Topic"
 msgstr ""
 
-#: lib/gpl/admin/post.php:137 lib/messages.php:855 lib/pro/admin/post.php:148
+#: lib/gpl/admin/post.php:141 lib/messages.php:855 lib/pro/admin/post.php:149
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gpl/admin/post.php:144 lib/messages.php:866 lib/pro/admin/post.php:155
+#: lib/gpl/admin/post.php:148 lib/messages.php:866 lib/pro/admin/post.php:156
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/gpl/admin/post.php:150 lib/messages.php:877 lib/pro/admin/post.php:161
+#: lib/gpl/admin/post.php:154 lib/messages.php:877 lib/pro/admin/post.php:162
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gpl/admin/post.php:156 lib/messages.php:888 lib/pro/admin/post.php:167
+#: lib/gpl/admin/post.php:160 lib/messages.php:888 lib/pro/admin/post.php:168
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gpl/admin/post.php:162 lib/messages.php:909 lib/pro/admin/post.php:173
+#: lib/gpl/admin/post.php:166 lib/messages.php:909 lib/pro/admin/post.php:174
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gpl/admin/post.php:168 lib/messages.php:919 lib/pro/admin/post.php:179
+#: lib/gpl/admin/post.php:172 lib/messages.php:919 lib/pro/admin/post.php:180
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gpl/admin/post.php:175 lib/messages.php:930 lib/pro/admin/post.php:186
+#: lib/gpl/admin/post.php:179 lib/messages.php:930 lib/pro/admin/post.php:187
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:181 lib/messages.php:941 lib/pro/admin/post.php:192
+#: lib/gpl/admin/post.php:185 lib/messages.php:941 lib/pro/admin/post.php:193
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gpl/admin/post.php:197 lib/meta.php:250 lib/pro/admin/post.php:208
+#: lib/gpl/admin/post.php:201 lib/meta.php:250 lib/pro/admin/post.php:209
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -5600,27 +5600,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2181
+#: lib/schema.php:2184
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2720
+#: lib/schema.php:2723
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2755
+#: lib/schema.php:2758
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2757
+#: lib/schema.php:2760
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:2998
+#: lib/schema.php:3001
 msgid "adding schema for place"
 msgstr ""
 
@@ -5824,52 +5824,52 @@ msgctxt "metabox tab"
 msgid "Pinterest"
 msgstr ""
 
-#: lib/submenu/essential.php:90 lib/submenu/general.php:107
+#: lib/submenu/essential.php:91 lib/submenu/general.php:107
 msgctxt "option label"
 msgid "WebSite Name"
 msgstr ""
 
-#: lib/submenu/essential.php:95 lib/submenu/general.php:112
+#: lib/submenu/essential.php:96 lib/submenu/general.php:112
 msgctxt "option label"
 msgid "WebSite Description"
 msgstr ""
 
-#: lib/submenu/essential.php:100 lib/submenu/general.php:117
+#: lib/submenu/essential.php:101 lib/submenu/general.php:117
 msgctxt "option label"
 msgid "Default Article Topic"
 msgstr ""
 
-#: lib/submenu/essential.php:108 lib/submenu/general.php:204
+#: lib/submenu/essential.php:109 lib/submenu/general.php:204
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:112 lib/submenu/general.php:209
+#: lib/submenu/essential.php:114 lib/submenu/general.php:209
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/essential.php:116 lib/submenu/general.php:188
+#: lib/submenu/essential.php:118 lib/submenu/general.php:188
 msgctxt "option label"
 msgid "Default / Fallback Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:120 lib/submenu/general.php:192
+#: lib/submenu/essential.php:122 lib/submenu/general.php:192
 msgctxt "option label"
 msgid "or Default / Fallback Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:128 lib/submenu/general.php:233
+#: lib/submenu/essential.php:130 lib/submenu/general.php:233
 msgctxt "option label"
 msgid "Google+ Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:148 lib/submenu/general.php:276
+#: lib/submenu/essential.php:152 lib/submenu/general.php:276
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:156 lib/submenu/general.php:310
+#: lib/submenu/essential.php:161 lib/submenu/general.php:310
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""

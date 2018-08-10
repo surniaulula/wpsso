@@ -31,10 +31,11 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$dots      = '...';
-			$r_cache   = true;
-			$do_encode = true;
-			$og_types  = $this->p->og->get_og_types_select( true ); // $add_none is true.
+			$dots       = '...';
+			$r_cache    = true;
+			$do_encode  = true;
+			$og_types   = $this->p->og->get_og_types_select( true ); // $add_none is true.
+			$art_topics = $this->p->util->get_article_topics();
 
 			/**
 			 * The 'add_link_rel_canonical' and 'add_meta_name_description' options will be empty if an SEO plugin is detected.
@@ -52,6 +53,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$tc_desc_max_len     = $this->p->options['tc_desc_len'];
 			$schema_desc_max_len = $this->p->options['schema_desc_len'];
 
+			$def_og_type     = $this->p->og->get_mod_og_type( $mod, false, false );	// $get_type_ns is false, $use_mod_opts is false.
+			$def_art_section = $this->p->page->get_article_section( $mod['id'], true, false );	// $allow_none is true, $use_mod_opts is false.
 			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $r_cache, false, $do_encode, 'none' );
 			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $r_cache, true, $do_encode, 'none' );
 			$def_seo_desc    = $add_meta_name_desc ? $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $r_cache, false ) : '';
@@ -79,15 +82,16 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'label' => _x( 'Open Graph Type', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'post-og_type', 'td_class' => 'blank',
 					'content' => $form->get_select( 'og_type', $og_types,
-						'og_type', '', true, false, true, 'unhide_rows' ) .
+						'', '', true, $def_og_type, $def_og_type, 'unhide_rows' ) .
 							$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_art_section' => array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
 					'label' => _x( 'Article Topic', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'post-og_art_section', 'td_class' => 'blank',
-					'content' => $form->get_select( 'og_art_section', $this->p->util->get_article_topics() ) .
-						$this->p->msgs->get( 'pro-select-msg' ),
+					'content' => $form->get_select( 'og_art_section', $art_topics,
+						'', '', false, $def_art_section, $def_art_section ) .
+							$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_title' => array(
 					'no_auto_draft' => true,
