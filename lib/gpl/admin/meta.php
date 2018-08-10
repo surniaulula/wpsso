@@ -57,9 +57,9 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			$og_title_warn_len   = $this->p->options['og_title_warn'];
 			$og_desc_max_len     = $this->p->options['og_desc_len'];
 			$og_desc_warn_len    = $this->p->options['og_desc_warn'];
-			$schema_desc_max_len = $this->p->options['schema_desc_len'];
 			$seo_desc_max_len    = $this->p->options['seo_desc_len'];
 			$tc_desc_max_len     = $this->p->options['tc_desc_len'];
+			$schema_desc_max_len = $this->p->options['schema_desc_len'];
 
 			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $r_cache, false, $do_encode, 'none' );
 			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $r_cache, true, $do_encode, 'none' );
