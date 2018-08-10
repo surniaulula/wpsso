@@ -327,11 +327,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.10.0-rc.2 (2018/08/09)**
+**Version 4.10.0-rc.3 (2018/08/09)**
 
 * *New Features*
 	* None.
 * *Improvements*
+	* Added a call to `wpseo_replace_vars()` in the Yoast SEO Social Meta module for custom Yoast SEO values with variables (Pro version).
 	* Updated the admin list table styles to prevent the post / page title from being too narrow.
 	* Added a new "SSO Type" column in post, term, and user table lists with the Open Graph type value (disabled by default).
 	* Added default Open Graph type options under the SSO &gt; General &gt; Site Information settings tab:
@@ -631,7 +632,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.10.0-rc.2 =
+= 4.10.0-rc.3 =
 
 (2018/08/09) Added Open Graph type selections under the SSO &gt; General &gt; Site Information tab.
 
