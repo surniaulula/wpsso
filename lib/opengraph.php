@@ -559,11 +559,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					$mt_og['og:video'] = $this->get_all_videos( $max_nums['og_vid_max'], $mod, $check_dupes, 'og' );
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'checking for video preview images' );
-					}
+					if ( empty( $mt_og['og:video'] ) ) {
 
-					if ( ! empty( $mt_og['og:video'] ) && is_array( $mt_og['og:video'] ) ) {
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'og:video is empty - unsetting og:video meta tag' );
+						}
+
+						unset( $mt_og['og:video'] );
+
+					} elseif ( is_array( $mt_og['og:video'] ) ) {	// Just in case.
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'checking for video preview images' );
+						}
 
 						foreach ( $mt_og['og:video'] as $num => $og_single_video ) {
 
@@ -698,14 +706,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( isset( $mt_og['product:price:amount'] ) ) {
+
 					if ( is_numeric( $mt_og['product:price:amount'] ) ) {	// allow for price of 0
+
 						if ( empty( $mt_og['product:price:currency'] ) ) {
 							$mt_og['product:price:currency'] = $this->p->options['plugin_def_currency'];
 						}
+
 					} else {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'product price amount must be numeric' );
 						}
+
 						unset( $mt_og['product:price:amount'] );
 						unset( $mt_og['product:price:currency'] );
 					}
@@ -765,6 +778,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( ! isset( $mt_og['article:modified_time'] ) ) {
 					$mt_og['article:modified_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt is true.
+				}
+
+				/**
+				 * Unset optional meta tags if empty.
+				 */
+				foreach ( array( 'article:modified_time', 'article:expiration_time' ) as $optional_mt_name ) {
+					if ( empty( $mt_og[ $optional_mt_name ] ) ) {
+						unset( $mt_og[ $optional_mt_name ] );
+					}
 				}
 			}
 
