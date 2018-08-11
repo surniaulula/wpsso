@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.10.0-rc.4\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.10.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3399,7 +3399,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:665 lib/util.php:2802
+#: lib/messages.php:665 lib/util.php:2788
 msgid "No options available."
 msgstr ""
 
@@ -6139,22 +6139,22 @@ msgid ""
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2829
+#: lib/util.php:2815
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2832
+#: lib/util.php:2818
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2837
+#: lib/util.php:2823
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2840
+#: lib/util.php:2826
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

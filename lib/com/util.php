@@ -1787,11 +1787,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		// deprecated 2018/02/11
-		public static function keys_start_with( $str, array $opts ) {
-			return self::get_opts_begin( $str, $opts );
-		}
-
 		public static function get_opts_begin( $str, array $opts ) {
 			$found = array();
 			foreach ( $opts as $key => $value ) {

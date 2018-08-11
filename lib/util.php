@@ -2628,13 +2628,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		/**
-		 * Deprecated on 2018/03/31.
-		 */
-		public function do_metabox_tabs( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
-			echo $this->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $args );
-		}
-
 		public function do_metabox_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 			echo $this->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $args );
 		}
@@ -2696,13 +2689,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$ret_html .= '</div><!-- .' . $class_metabox_tabs . ' -->' . "\n\n";
 
 			return $ret_html;
-		}
-
-		/**
-		 * Deprecated on 2018/03/31.
-		 */
-		public function do_table_rows( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset' ) {
-			echo $this->get_metabox_table( $table_rows, $class_href_key, $class_tabset_mb, $class_tabset );
 		}
 
 		public function do_metabox_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset' ) {
