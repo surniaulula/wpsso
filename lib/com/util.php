@@ -2181,6 +2181,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':retailer_category'               => '',
 				$mt_pre . ':retailer_part_no'                => '',
 				$mt_pre . ':retailer_title'                  => '',
+				$mt_pre . ':rating:average'                  => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':rating:count'                    => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':rating:worst'                    => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':rating:best'                     => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':sale_price:amount'               => '',
 				$mt_pre . ':sale_price:currency'             => '',
 				$mt_pre . ':sale_price_dates:start'          => '',
@@ -2210,19 +2214,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_video_seed( $mt_pre = 'og', array $mt_og = array() ) {
 
 			$og_ret = array(
-				$mt_pre . ':video:secure_url'    => '',
-				$mt_pre . ':video:url'           => '',
-				$mt_pre . ':video:type'          => '',		// Example: 'application/x-shockwave-flash' or 'text/html'.
-				$mt_pre . ':video:width'         => '',
-				$mt_pre . ':video:height'        => '',
-				$mt_pre . ':video:tag'           => array(),
-				$mt_pre . ':video:duration'      => '',		// Non-standard / internal meta tag.
-				$mt_pre . ':video:upload_date'   => '',		// Non-standard / internal meta tag.
-				$mt_pre . ':video:thumbnail_url' => '',		// Non-standard / internal meta tag.
-				$mt_pre . ':video:embed_url'     => '',		// Non-standard / internal meta tag.
-				$mt_pre . ':video:has_image'     => false,	// Non-standard / internal meta tag.
-				$mt_pre . ':video:title'         => '',		// Non-standard / internal meta tag.
-				$mt_pre . ':video:description'   => '',		// Non-standard / internal meta tag.
+				$mt_pre . ':video:secure_url'      => '',
+				$mt_pre . ':video:url'             => '',
+				$mt_pre . ':video:type'            => '',	// Example: 'application/x-shockwave-flash' or 'text/html'.
+				$mt_pre . ':video:width'           => '',
+				$mt_pre . ':video:height'          => '',
+				$mt_pre . ':video:tag'             => array(),
+				$mt_pre . ':video:duration'        => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:upload_date'     => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:thumbnail_url'   => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:embed_url'       => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:has_image'       => false,	// Non-standard / internal meta tag.
+				$mt_pre . ':video:title'           => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:description'     => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':video:iphone_name'     => '',	// Non-standard / internal meta tag for Twitter player card.
 				$mt_pre . ':video:iphone_id'       => '',	// Non-standard / internal meta tag for Twitter player card.
 				$mt_pre . ':video:iphone_url'      => '',	// Non-standard / internal meta tag for Twitter player card.

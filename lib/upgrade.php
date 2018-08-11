@@ -172,6 +172,12 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				587 => array(
 					'og_post_type' => '',
 				),
+				592 => array(
+					'add_meta_property_product:rating:average' => '',	// Non-standard / internal meta tag.
+					'add_meta_property_product:rating:count'   => '',	// Non-standard / internal meta tag.
+					'add_meta_property_product:rating:worst'   => '',	// Non-standard / internal meta tag.
+					'add_meta_property_product:rating:best'    => '',	// Non-standard / internal meta tag.
+				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG
 				2 => array(
@@ -335,7 +341,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
-				if ( $prev_version > 0 && $prev_version <= 590 ) {
+				if ( $prev_version > 0 && $prev_version <= 591 ) {
 					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
 						$opts['add_meta_property_' . $mt_name] = 1;
 						$opts['add_meta_property_' . $mt_name . ':url'] = 0;
