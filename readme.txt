@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.8
 WC Tested Up To: 3.4.4
-Stable Tag: 4.9.4
+Stable Tag: 4.10.0
 
 Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.
 
@@ -635,8 +635,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.10.0 =
 
 (2018/08/11) Added Open Graph type selections under the SSO &gt; General &gt; Site Information tab.
-
-= 4.9.4 =
-
-(2018/08/02) Fixed an undefined variable error when reading custom meta options.
 
