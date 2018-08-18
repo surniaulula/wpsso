@@ -212,7 +212,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$cache_md5_pre    = $this->p->lca . '_';
 			$cache_exp_filter = $this->p->lca . '_cache_expire_admin_css';
 			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
-			$cache_salt       = __METHOD__ . '(hook_name:' . $hook_name . '_plugin_urlpath:' . $plugin_urlpath . '_plugin_version:' . $plugin_version . ')';
+
+			$cache_salt       = __METHOD__ . '(';
+			$cache_salt       .= 'hook_name:' . $hook_name;
+			$cache_salt       .= '_plugin_urlpath:' . $plugin_urlpath;
+			$cache_salt       .= '_plugin_version:' . $plugin_version;
+			$cache_salt       .= $this->p->avail['seo']['wpseo'] ? '_wpseo:true' : '';
+			$cache_salt       .= ')';
+
 			$cache_id         = $cache_md5_pre . md5( $cache_salt );
 
 			$r_cache = SucomUtil::get_const( 'WPSSO_DEV' ) ? false : true;	// Read cache by default.
@@ -322,7 +329,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					width:15%;
 				}
 				.wp-list-table th.column-date,
-				.wp-list-table td.column-date {
+				.wp-list-table td.column-date,
+				.wp-list-table th.column-expirationdate,
+				.wp-list-table td.column-expirationdate {
 					width:15%;
 				}
 				.column-' . $this->p->lca . '_schema_type {
@@ -403,7 +412,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			foreach ( $sort_cols as $col_name => $col_info ) {
 				if ( isset( $col_info['width'] ) ) {
 					$custom_style_css .= '
-						.column-' . $this->p->lca . '_' . $col_name . ' {
+						.wp-list-table th.column-' . $this->p->lca . '_' . $col_name . ',
+						.wp-list-table td.column-' . $this->p->lca . '_' . $col_name . ' {
 							width:' . $col_info['width'] . ' !important;
 							min-width:' . $col_info['width'] . ' !important;
 						}
@@ -426,18 +436,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 */
 			if ( ! empty( $this->p->avail['seo']['wpseo'] ) ) {
 				$custom_style_css .= '
-					.wp-list-table th#wpseo-score,
-					.wp-list-table th#wpseo-score-readability,
-					.wp-list-table th#wpseo_score,
-					.wp-list-table th#wpseo_score_readability,
-					.wp-list-table th.column-wpseo-score,
-					.wp-list-table td.column-wpseo-score,
+					.wp-list-table th.column-wpseo-links,
+					.wp-list-table td.column-wpseo-links,
 					.wp-list-table th.column_wpseo_score,
 					.wp-list-table td.column_wpseo_score,
 					.wp-list-table th.column-wpseo-score-readability,
-					.wp-list-table td.column-wpseo-score-readability,
-					.wp-list-table th.column-wpseo_score_readability,
-					.wp-list-table td.column-wpseo_score_readability {
+					.wp-list-table td.column-wpseo-score-readability {
 						width:30px;
 					}
 					.wp-list-table th.column-wpseo-title,

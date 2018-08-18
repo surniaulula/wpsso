@@ -975,7 +975,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			static $sort_cols = null;
 
 			if ( null === $sort_cols ) {
+
 				$wpsso =& Wpsso::get_instance();
+
 				$sort_cols = (array) apply_filters( $wpsso->lca . '_get_sortable_columns', $wpsso->cf['edit']['columns'] );
 			}
 
