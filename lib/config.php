@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.10.0',	// Plugin version.
-					'opt_version' => '594',		// Increment when changing default option values.
+					'version'     => '4.11.0-dev.1',	// Plugin version.
+					'opt_version' => '596',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -1137,6 +1137,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_desc_col_post'       => 0,
 					'plugin_og_desc_col_term'       => 0,
 					'plugin_og_desc_col_user'       => 1,
+					'plugin_col_def_width'          => '15%',
+					'plugin_col_title_width'        => '25%',
 					'plugin_add_to_attachment'      => 1,
 					'plugin_add_to_page'            => 1,
 					'plugin_add_to_post'            => 1,

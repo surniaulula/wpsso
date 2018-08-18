@@ -172,12 +172,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$cols .= '<td class="underline"></td></tr>' . "\n";
 
 			foreach ( array(
-				'post' => __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ),
+				'post'  => __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ),
 				'media' => __( 'Media Library Item List', 'wpsso' ),
-				'term' => __( 'Terms (Categories and Tags) List', 'wpsso' ),
-				'user' => __( 'Users List' ),
+				'term'  => __( 'Terms (Categories and Tags) List', 'wpsso' ),
+				'user'  => __( 'Users List' ),
 			) as $mod_name => $mod_label ) {
+
 				$cols .= '<tr>';
+
 				foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
 					if ( $form->in_defaults( 'plugin_'.$col_idx.'_col_'.$mod_name ) ) {	// Just in case.
 						$cols .= $form->get_nocb_td( 'plugin_'.$col_idx.'_col_'.$mod_name, '', true );	// $narrow = true
@@ -193,6 +195,17 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Additional List Table Columns',
 				'option label', 'wpsso' ), '', 'plugin_show_columns' ).
 					'<td>'.$cols.'</td>';
+
+			/**
+			 * Default and custom column widths.
+			 */
+			$table_rows['plugin_col_def_width'] = ''.
+			$form->get_th_html( _x( 'Default Post / Page Column Width', 'option label', 'wpsso' ), '', 'plugin_col_def_width' ).
+			'<td>'.$form->get_no_input( 'plugin_col_def_width', 'short' ).'</td>';
+
+			$table_rows['plugin_col_title_width'] = ''.
+			$form->get_th_html( _x( 'WordPress Title Column Width', 'option label', 'wpsso' ), '', 'plugin_col_title_width' ).
+			'<td>'.$form->get_no_input( 'plugin_col_title_width', 'short' ).'</td>';
 
 			/**
 			 * Include Custom Meta Metabox

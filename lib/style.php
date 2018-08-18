@@ -215,9 +215,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$cache_salt       = __METHOD__ . '(';
 			$cache_salt       .= 'hook_name:' . $hook_name;
-			$cache_salt       .= '_plugin_urlpath:' . $plugin_urlpath;
-			$cache_salt       .= '_plugin_version:' . $plugin_version;
-			$cache_salt       .= $this->p->avail['seo']['wpseo'] ? '_wpseo:true' : '';
+			$cache_salt       .= '_urlpath:' . $plugin_urlpath;
+			$cache_salt       .= '_version:' . $plugin_version;
+			$cache_salt       .= '_col_def_width:' . $this->p->options['plugin_col_def_width'];
+			$cache_salt       .= '_col_title_width:' . $this->p->options['plugin_col_title_width'];
 			$cache_salt       .= ')';
 
 			$cache_id         = $cache_md5_pre . md5( $cache_salt );
@@ -312,9 +313,67 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					padding:0;
 					margin:0;
 				}
-				.wp-list-table th.column-title,
-				.wp-list-table td.column-title {
-					width:25%;
+				.' . $this->p->lca . '-rate-heart {
+					color:red;
+					font-size:1.5em;
+					vertical-align:top;
+				}
+				.' . $this->p->lca . '-rate-heart::before {
+					content:"\2665";	/* heart */
+				}
+				#post-' . $this->p->lca . '-robots {
+					display:table;
+				}
+				#post-' . $this->p->lca . '-robots-label {
+					display:table-cell;
+					padding-left:3px;
+					vertical-align:top;
+				}
+				#post-' . $this->p->lca . '-robots-display {
+					display:table-cell;
+					padding-left:3px;
+					vertical-align:top;
+				}
+				#post-' . $this->p->lca . '-robots-content {
+					display:block;
+					word-wrap:normal;
+					font-weight:bold;
+				}
+				#post-' . $this->p->lca . '-robots-content a {
+					font-weight:normal;
+				}
+				#post-' . $this->p->lca . '-robots-select {
+					display:none;
+				}
+			';
+
+			/**
+			 * List table columns.
+			 */
+			if ( ! empty( $this->p->options['plugin_col_def_width'] ) ) {
+				$custom_style_css .= '
+					.wp-list-table.pages th,	/* default column width for posts and pages */
+					.wp-list-table.pages td,
+					.wp-list-table.posts th,
+					.wp-list-table.posts td {
+						width:'.$this->p->options['plugin_col_def_width'].';
+					}
+				';
+			}
+
+			if ( ! empty( $this->p->options['plugin_col_title_width'] ) ) {
+				$custom_style_css .= '
+					.wp-list-table th.column-title,
+					.wp-list-table td.column-title {
+						width:'.$this->p->options['plugin_col_title_width'].';
+					}
+				';
+			}
+
+			$custom_style_css .= '
+				.wp-list-table th.column-cb,
+				.wp-list-table td.column-cb {
+					width:2.2em;
 				}
 				.wp-list-table th.column-author,
 				.wp-list-table td.column-author {
@@ -328,11 +387,43 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				.wp-list-table td.column-tags {
 					width:15%;
 				}
+				.wp-list-table th.column-comments,
+				.wp-list-table td.column-comments {
+					width:40px;
+				}
 				.wp-list-table th.column-date,
 				.wp-list-table td.column-date,
 				.wp-list-table th.column-expirationdate,
 				.wp-list-table td.column-expirationdate {
 					width:15%;
+				}
+				.wp-list-table th.column-seotitle,	/* All In One SEO */
+				.wp-list-table td.column-seotitle,
+				.wp-list-table th.column-seodesc,
+				.wp-list-table td.column-seodesc {
+					width:20%;
+				}
+				.wp-list-table th.column-wpseo-links,	/* Yoast SEO */
+				.wp-list-table td.column-wpseo-links,
+				.wp-list-table th.column_wpseo_score,
+				.wp-list-table td.column_wpseo_score,
+				.wp-list-table th.column-wpseo-score-readability,
+				.wp-list-table td.column-wpseo-score-readability {
+					width:30px;
+				}
+				.wp-list-table th.column-wpseo-title,	/* Yoast SEO */
+				.wp-list-table td.column-wpseo-title,
+				.wp-list-table th.column-wpseo-metadesc,
+				.wp-list-table td.column-wpseo-metadesc {
+					width:12%;
+				}
+				.wp-list-table th.column-wpseo-focuskw,	/* Yoast SEO */
+				.wp-list-table td.column-wpseo-focuskw {
+					width:10%;
+				}
+				.wp-list-table th.column-template,
+				.wp-list-table td.column-template {
+				        width:9%;
 				}
 				.column-' . $this->p->lca . '_schema_type {
 					max-width:' . $sort_cols['schema_type']['width'] . ' !important;
@@ -375,38 +466,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						display:none;
 					}
 				}
-				.' . $this->p->lca . '-rate-heart {
-					color:red;
-					font-size:1.5em;
-					vertical-align:top;
-				}
-				.' . $this->p->lca . '-rate-heart::before {
-					content:"\2665";	/* heart */
-				}
-				#post-' . $this->p->lca . '-robots {
-					display:table;
-				}
-				#post-' . $this->p->lca . '-robots-label {
-					display:table-cell;
-					padding-left:3px;
-					vertical-align:top;
-				}
-				#post-' . $this->p->lca . '-robots-display {
-					display:table-cell;
-					padding-left:3px;
-					vertical-align:top;
-				}
-				#post-' . $this->p->lca . '-robots-content {
-					display:block;
-					word-wrap:normal;
-					font-weight:bold;
-				}
-				#post-' . $this->p->lca . '-robots-content a {
-					font-weight:normal;
-				}
-				#post-' . $this->p->lca . '-robots-select {
-					display:none;
-				}
 			';
 
 			foreach ( $sort_cols as $col_name => $col_info ) {
@@ -419,42 +478,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						}
 					';
 				}
-			}
-
-			/**
-			 * Page Template column.
-			 */
-			$custom_style_css .= '
-				.wp-list-table th.column-template,
-				.wp-list-table td.column-template {
-				        width:9%;
-				}
-			';
-
-			/**
-			 * Yoast SEO columns.
-			 */
-			if ( ! empty( $this->p->avail['seo']['wpseo'] ) ) {
-				$custom_style_css .= '
-					.wp-list-table th.column-wpseo-links,
-					.wp-list-table td.column-wpseo-links,
-					.wp-list-table th.column_wpseo_score,
-					.wp-list-table td.column_wpseo_score,
-					.wp-list-table th.column-wpseo-score-readability,
-					.wp-list-table td.column-wpseo-score-readability {
-						width:30px;
-					}
-					.wp-list-table th.column-wpseo-title,
-					.wp-list-table td.column-wpseo-title,
-					.wp-list-table th.column-wpseo-metadesc,
-					.wp-list-table td.column-wpseo-metadesc {
-						width:12%;
-					}
-					.wp-list-table th.column-wpseo-focuskw,
-					.wp-list-table td.column-wpseo-focuskw {
-						width:10%;
-					}
-				';
 			}
 
 			if ( $r_cache ) {
