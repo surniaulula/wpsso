@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Improvements*
 	* Added two new options under the SSO &gt; Advanced &gt; Custom Meta tab (Pro version):
-		* Default Post / Page Column Width
+		* Default Posts / Pages Column Width
 		* WordPress Title Column Width
 * *Bugfixes*
 	* None.
