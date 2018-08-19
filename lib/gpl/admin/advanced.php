@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			 * Default and custom column widths.
 			 */
 			$table_rows['plugin_col_def_width'] = ''.
-			$form->get_th_html( _x( 'Default Post / Page Column Width', 'option label', 'wpsso' ), '', 'plugin_col_def_width' ).
+			$form->get_th_html( _x( 'Default Posts / Pages Column Width', 'option label', 'wpsso' ), '', 'plugin_col_def_width' ).
 			'<td>'.$form->get_no_input( 'plugin_col_def_width', 'short' ).'</td>';
 
 			$table_rows['plugin_col_title_width'] = ''.

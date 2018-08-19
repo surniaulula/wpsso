@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.11.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-08-19 06:09-0600\n"
-"PO-Revision-Date: 2018-08-19 06:18-0600\n"
+"POT-Creation-Date: 2018-08-19 06:21-0600\n"
+"PO-Revision-Date: 2018-08-19 06:21-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2172,8 +2172,8 @@ msgstr "Colonnes suppl. pour tableau de liste"
 
 #: lib/gpl/admin/advanced.php:203 lib/pro/admin/advanced.php:204
 msgctxt "option label"
-msgid "Default Post / Page Column Width"
-msgstr "Largeur défaut col. Articles / Pages"
+msgid "Default Posts / Pages Column Width"
+msgstr "Largeur défaut col. Articles et Pages"
 
 #: lib/gpl/admin/advanced.php:207 lib/pro/admin/advanced.php:208
 msgctxt "option label"

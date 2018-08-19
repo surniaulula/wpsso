@@ -2270,7 +2270,7 @@ msgstr ""
 
 #: lib/gpl/admin/advanced.php:203 lib/pro/admin/advanced.php:204
 msgctxt "option label"
-msgid "Default Post / Page Column Width"
+msgid "Default Posts / Pages Column Width"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:207 lib/pro/admin/advanced.php:208
