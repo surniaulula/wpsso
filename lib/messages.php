@@ -761,11 +761,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_col_def_width':
 
-							$text .= __( 'A default column width for the admin Post / Page list table.', 'wpsso' ) . ' ';
+							$text .= __( 'A default column width for the admin Posts and Pages list table.', 'wpsso' ) . ' ';
 
 							$text .= __( 'All columns should have a width defined, but some 3rd party plugins do not provide width information for their columns.', 'wpsso' ) . ' ';
 
-							$text .= __( 'This option offers a way to set a generic width for all Post / Page columns.', 'wpsso' ) . ' ';
+							$text .= __( 'This option offers a way to set a generic width for all Posts and Pages list table columns.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Leave this option blank to prevent setting a column width.', 'wpsso' );
 

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.11.0-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.11.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3548,7 +3548,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:764
-msgid "A default column width for the admin Post / Page list table."
+msgid "A default column width for the admin Posts and Pages list table."
 msgstr ""
 
 #: lib/messages.php:766
@@ -3559,7 +3559,8 @@ msgstr ""
 
 #: lib/messages.php:768
 msgid ""
-"This option offers a way to set a generic width for all Post / Page columns."
+"This option offers a way to set a generic width for all Posts and Pages list "
+"table columns."
 msgstr ""
 
 #: lib/messages.php:770 lib/messages.php:780
