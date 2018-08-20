@@ -352,10 +352,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 */
 			if ( ! empty( $this->p->options['plugin_col_def_width'] ) ) {
 				$custom_style_css .= '
-					.wp-list-table.pages th,	/* default column width for posts and pages */
-					.wp-list-table.pages td,
-					.wp-list-table.posts th,
-					.wp-list-table.posts td {
+					table.wp-list-table.pages > thead > tr > th,	/* default column width for posts and pages */
+					table.wp-list-table.pages > tbody > tr > td,
+					table.wp-list-table.posts > thead > tr > th,
+					table.wp-list-table.posts > tbody > tr > td {
 						width:'.$this->p->options['plugin_col_def_width'].';
 					}
 				';
@@ -363,8 +363,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			if ( ! empty( $this->p->options['plugin_col_title_width'] ) ) {
 				$custom_style_css .= '
-					.wp-list-table th.column-title,
-					.wp-list-table td.column-title {
+					table.wp-list-table > thead > tr > th.column-title,
+					table.wp-list-table > tbody > tr > td.column-title {
 						width:'.$this->p->options['plugin_col_title_width'].';
 					}
 				';
