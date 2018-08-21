@@ -2943,28 +2943,42 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_product_page( $use_post = false, $product_obj = false ) {
+
 			$ret = false;
+
 			if ( function_exists( 'is_product' ) && is_product() ) {
-					$ret = true;
+
+				$ret = true;
+
 			} elseif ( is_admin() || is_object( $product_obj ) ) {
+
 				if ( ! is_object( $product_obj ) && ! empty( $use_post ) ) {
 					$product_obj = get_post( $use_post );
 				}
-				if ( isset( $product_obj->post_type ) &&
+
+				if ( isset( $product_obj->post_type ) && 
 					$product_obj->post_type === 'product' ) {
+
 					$ret = true;
 				}
 			}
+
 			return apply_filters( 'sucom_is_product_page', $ret, $use_post, $product_obj );
 		}
 
 		public static function is_product_category() {
+
 			$ret = false;
+
 			if ( function_exists( 'is_product_category' ) && is_product_category() ) {
+
 				$ret = true;
+
 			} elseif ( is_admin() ) {
+
 				if ( self::get_request_value( 'taxonomy' ) === 'product_cat' && // Uses sanitize_text_field().
 					self::get_request_value( 'post_type' ) === 'product' ) {
+
 					$ret = true;
 				}
 			}
@@ -2972,34 +2986,50 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_product_tag() {
+
 			$ret = false;
+
 			if ( function_exists( 'is_product_tag' ) && is_product_tag() ) {
+
 				$ret = true;
+
 			} elseif ( is_admin() ) {
+
 				if ( self::get_request_value( 'taxonomy' ) === 'product_tag' && // Uses sanitize_text_field().
 					self::get_request_value( 'post_type' ) === 'product' ) {
+
 					$ret = true;
 				}
 			}
+
 			return apply_filters( 'sucom_is_product_tag', $ret );
 		}
 
 		public static function get_request_value( $key, $method = 'ANY', $default = '' ) {
+
 			if ( $method === 'ANY' ) {
 				$method = $_SERVER['REQUEST_METHOD'];
 			}
+
 			switch( $method ) {
+
 				case 'POST':
+
 					if ( isset( $_POST[$key] ) ) {
 						return sanitize_text_field( $_POST[$key] );
 					}
+
 					break;
+
 				case 'GET':
+
 					if ( isset( $_GET[$key] ) ) {
 						return sanitize_text_field( $_GET[$key] );
 					}
+
 					break;
 			}
+
 			return $default;
 		}
 
