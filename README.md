@@ -3,7 +3,7 @@
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.</td></tr>
-<tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.10.0</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.11.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 4.9.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
