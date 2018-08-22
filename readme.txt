@@ -336,7 +336,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Replaced calls to esc_url_raw() by SucomUtil::esc_url_encode() to encode foreign characters in URLs.
 * *Developer Notes*
-	* None.
+	* The base Schema @id property value is now md5 encoded.
 
 **Version 4.11.0 (2018/08/21)**
 
@@ -658,7 +658,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.11.1-dev.2 =
 
-(2018/08/22) Replaced calls to esc_url_raw() by SucomUtil::esc_url_encode() to encode foreign characters in URLs.
+(2018/08/22) Replaced calls to esc_url_raw() by SucomUtil::esc_url_encode() to encode foreign characters in URLs. The base Schema @id property value is now md5 encoded.
 
 = 4.11.0 =
 
