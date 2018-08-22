@@ -826,7 +826,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$context_value = array( $ext[1] . $ext[3], array( $ext[2] => $ext[0] ) );
 				}
 
-				// keep the @id property top-most
+				/**
+				 * Keep the @id property top-most.
+				 */
 				if ( empty( $json_data['@id'] ) ) {
 					$json_head = array( '@context' => null, '@type' => null );
 				} else {
@@ -1525,7 +1527,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$ret['potentialAction'][] = array(
 						'@context'    => 'https://schema.org',
 						'@type'       => 'SearchAction',
-						'target'      => $search_url,
+						'target'      => SucomUtil::esc_url_encode( $search_url ),
 						'query-input' => 'required name=search_term_string',
 					);
 
@@ -3007,14 +3009,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Add schema properties from the place options.
 			 */
 			self::add_data_itemprop_from_assoc( $ret, $place_opts, array(
-				'url' => 'place_url',
-				'name' => 'place_name',
-				'alternateName' => 'place_name_alt',
-				'description' => 'place_desc',
-				'telephone' => 'place_phone',
+				'url'                => 'place_url',
+				'name'               => 'place_name',
+				'alternateName'      => 'place_name_alt',
+				'description'        => 'place_desc',
+				'telephone'          => 'place_phone',
 				'currenciesAccepted' => 'place_currencies_accepted',
-				'paymentAccepted' => 'place_payment_accepted',
-				'priceRange' => 'place_price_range',
+				'paymentAccepted'    => 'place_payment_accepted',
+				'priceRange'         => 'place_price_range',
 			) );
 
 			/**
@@ -3024,13 +3026,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$address = array();
 
 			if ( self::add_data_itemprop_from_assoc( $address, $place_opts, array(
-				'name' => 'place_name', 
-				'streetAddress' => 'place_streetaddr', 
+				'name'                => 'place_name', 
+				'streetAddress'       => 'place_streetaddr', 
 				'postOfficeBoxNumber' => 'place_po_box_number', 
-				'addressLocality' => 'place_city',
-				'addressRegion' => 'place_state',
-				'postalCode' => 'place_zipcode',
-				'addressCountry' => 'place_country',	// alpha2 country code
+				'addressLocality'     => 'place_city',
+				'addressRegion'       => 'place_state',
+				'postalCode'          => 'place_zipcode',
+				'addressCountry'      => 'place_country',	// alpha2 country code
 			) ) ) {
 				$ret['address'] = self::get_schema_type_context( 'https://schema.org/PostalAddress', $address );
 			}
@@ -3043,7 +3045,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( self::add_data_itemprop_from_assoc( $geo, $place_opts, array(
 				'elevation' => 'place_altitude', 
-				'latitude' => 'place_latitude',
+				'latitude'  => 'place_latitude',
 				'longitude' => 'place_longitude',
 			) ) ) {
 				$ret['geo'] = self::get_schema_type_context( 'https://schema.org/GeoCoordinates', $geo );

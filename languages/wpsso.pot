@@ -873,7 +873,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3138 lib/options.php:1109 lib/submenu/essential.php:143
+#: lib/admin.php:3138 lib/options.php:1111 lib/submenu/essential.php:143
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -5222,16 +5222,20 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1145
+#: lib/options.php:1144
 msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1148
+#: lib/options.php:1147
 msgid "Please make sure this site can access the banner image at %1$s."
 msgstr ""
 
-#: lib/options.php:1153
+#: lib/options.php:1152
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
+msgstr ""
+
+#: lib/options.php:1155
+msgid "Please review and correct the banner image dimensions at %1$s."
 msgstr ""
 
 #: lib/page.php:309 lib/page.php:311 lib/page.php:568 lib/page.php:570
@@ -5642,27 +5646,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2186
+#: lib/schema.php:2188
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2725
+#: lib/schema.php:2727
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2760
+#: lib/schema.php:2762
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2762
+#: lib/schema.php:2764
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3003
+#: lib/schema.php:3005
 msgid "adding schema for place"
 msgstr ""
 
