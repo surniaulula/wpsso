@@ -1152,7 +1152,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$error_msg = sprintf( __( 'The %1$s image dimensions are %2$s and must be exactly %3$s.',
 							'wpsso' ), $settings_page_link, $image_dims, $required_dims ) . ' ';
 
-						$error_msg .= sprintf( __( 'Please correct the banner image at %1$s.',
+						$error_msg .= sprintf( __( 'Please correct the banner image at %s.',
 							'wpsso' ), $image_href );
 					}
 

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.11.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-08-21 12:45-0600\n"
-"PO-Revision-Date: 2018-08-22 07:15-0600\n"
+"POT-Creation-Date: 2018-08-22 07:46-0600\n"
+"PO-Revision-Date: 2018-08-22 07:46-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -114,7 +114,7 @@ msgstr "La validation du jeton nonce pour les options de réseau a échoué (mis
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:879 lib/post.php:733 lib/term.php:418 lib/user.php:420
+#: lib/admin.php:879 lib/post.php:733 lib/term.php:421 lib/user.php:420
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -835,7 +835,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:3138 lib/options.php:1109 lib/submenu/essential.php:143
+#: lib/admin.php:3138 lib/options.php:1111 lib/submenu/essential.php:143
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
@@ -2686,7 +2686,7 @@ msgstr "Classe de  bibliothèque \"%s\" manquante."
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:163 lib/loader.php:189 lib/post.php:259 lib/register.php:238
-#: lib/term.php:234 lib/user.php:201 lib/util.php:357 lib/util.php:2520
+#: lib/term.php:237 lib/user.php:201 lib/util.php:357 lib/util.php:2520
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
@@ -4480,17 +4480,21 @@ msgstr "La valeur de l'option '%s' doit être un URL - l'option est remise à sa
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr "Les réglages (%s) ont été mis à jour et sauvegardés."
 
-#: lib/options.php:1140
+#: lib/options.php:1144
 msgid "The %1$s image dimensions cannot be determined."
 msgstr "Les dimensions de l'image %1$s ne peuvent pas être déterminées."
 
-#: lib/options.php:1143
+#: lib/options.php:1147
 msgid "Please make sure this site can access the banner image at %1$s."
 msgstr "Assurez-vous que ce site peut accéder à l'image bannière à %1$s."
 
-#: lib/options.php:1148
+#: lib/options.php:1152
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr "Les dimensions de l'image %1$s sont %2$s et doivent être exactement %3$s."
+
+#: lib/options.php:1155
+msgid "Please correct the banner image at %s."
+msgstr "Veuillez corriger l'image bannière à %s."
 
 #: lib/page.php:309 lib/page.php:311 lib/page.php:568 lib/page.php:570
 #: lib/page.php:638
@@ -4534,7 +4538,7 @@ msgid "No Description"
 msgstr "Aucune description"
 
 #. translators: %1$0.3f is a number of seconds
-#: lib/post.php:245 lib/term.php:220 lib/user.php:187 lib/util.php:343
+#: lib/post.php:245 lib/term.php:223 lib/user.php:187 lib/util.php:343
 #: lib/util.php:2497
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr "supérieur au max recommandé de %1$0.3f secs"
@@ -4673,15 +4677,15 @@ msgstr "\"%s\" est une condition de produit Schéma inconnue."
 msgid "Valid item condition values are (case is important): %s."
 msgstr "Les valeurs de condition d'élément valides sont (les majuscules et minuscules sont importants): %s."
 
-#: lib/pro/ecom/woocommerce.php:962
+#: lib/pro/ecom/woocommerce.php:965
 msgid "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 msgstr "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html"
 
-#: lib/pro/ecom/woocommerce.php:964
+#: lib/pro/ecom/woocommerce.php:967
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction WooCommerce %2$s</a> n'est pas disponible."
 
-#: lib/pro/ecom/woocommerce.php:967
+#: lib/pro/ecom/woocommerce.php:970
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr "SVP mettre à jour votre site à WooCommerce version %s ou mieux."
 
@@ -4857,28 +4861,28 @@ msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé.
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
-#: lib/schema.php:97 lib/schema.php:102
+#: lib/schema.php:99 lib/schema.php:104
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:2184
+#: lib/schema.php:2203
 msgid "adding schema for %s object"
 msgstr "ajout de schéma pour un object %s"
 
-#: lib/schema.php:2723
+#: lib/schema.php:2757
 msgid "adding schema for organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema.php:2758
+#: lib/schema.php:2792
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:2760
+#: lib/schema.php:2794
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:3001
+#: lib/schema.php:3037
 msgid "adding schema for place"
 msgstr "ajout de schéma de place"
 
@@ -5278,11 +5282,11 @@ msgid "Setup Guide and Other Notes"
 msgstr "Guide de configuration et autres notes"
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$s is a recommended max
-#: lib/term.php:223
+#: lib/term.php:226
 msgid "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr "Requête lente détectée - WordPress get_posts() a pris %1$0.3f secs pour obtenir les articles de taxonomie %3$s du terme ID %2$d (%4$s)."
 
-#: lib/term.php:547
+#: lib/term.php:550
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour le terme ID %1$s."
 
@@ -5395,20 +5399,20 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: wpsso.php:360
+#: wpsso.php:362
 msgid "WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif &mdash; des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:375
+#: wpsso.php:377
 msgid "HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif &mdash; des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
 #. translators: %s is the short plugin name
-#: wpsso.php:383
+#: wpsso.php:385
 msgid "Debug mode disables some %s caching features, which degrades performance slightly."
 msgstr "Le mode de débogage désactive certaines fonctionnalités de mise en cache de %s, ce qui dégrade la performance légèrement."
 
-#: wpsso.php:384
+#: wpsso.php:386
 msgid "Please disable debug mode when debugging is complete."
 msgstr "SVP désactiver le mode de débogage lorsque le débogage est terminé."
 
