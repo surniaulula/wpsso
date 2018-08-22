@@ -3184,6 +3184,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return str_replace( $replace, $allowed, urlencode( ( $wp_esc_url ? esc_url_raw( $url ) : $url ) ) );
 		}
 
+		public static function encode_html_emoji( $html ) {
+
+			static $charset = null;
+
+			if ( ! isset( $charset ) ) {
+				$charset = get_bloginfo( 'charset' ); // Only get it once.
+			}
+
+			$html = htmlentities( $html, ENT_QUOTES, $charset, false ); // $double_encode = false.
+
+			if ( function_exists( 'wp_encode_emoji' ) ) {
+				$html = wp_encode_emoji( $html );
+			} elseif ( method_exists( 'SucomUtilWP', 'wp_encode_emoji' ) ) { // Just in case.
+				$html = SucomUtilWP::wp_encode_emoji( $html );
+			}
+
+			return $html;
+		}
+
 		/**
 		 * Used to decode Facebook video urls.
 		 */
@@ -3616,29 +3635,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function encode_html_emoji( $html ) {
-
-			static $charset = null;
-
-			if ( ! isset( $charset ) ) {
-				$charset = get_bloginfo( 'charset' ); // Only get it once.
-			}
-
-			$html = htmlentities( $html, ENT_QUOTES, $charset, false ); // double_encode = false.
-
-			if ( function_exists( 'wp_encode_emoji' ) ) {
-				$html = wp_encode_emoji( $html );
-			} elseif ( method_exists( 'SucomUtilWP', 'wp_encode_emoji' ) ) { // Just in case.
-				$html = SucomUtilWP::wp_encode_emoji( $html );
-			}
-
-			return $html;
-		}
-
 		public static function get_plugin_updates_count( $slug_begin = '' ) {
+
 			$count = 0;
+
 			if ( $plugins = current_user_can( 'update_plugins' ) ) {
+
 				$update_plugins = get_site_transient( 'update_plugins' );
+
 				if ( ! empty( $update_plugins->response ) ) {
 					if ( ! empty( $slug_begin ) ) {
 						foreach ( $update_plugins->response as $base => $data ) {
@@ -3651,6 +3655,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 				}
 			}
+
 			return $count;
 		}
 	}

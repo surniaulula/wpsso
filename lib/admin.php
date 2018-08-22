@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( ! empty( $_GET[ $this->p->lca . '_pageref_url' ] ) ) {
-				$this->pageref_url = esc_url_raw( urldecode( $_GET[ $this->p->lca . '_pageref_url' ] ) );
+				$this->pageref_url = SucomUtil::esc_url_encode( urldecode( $_GET[ $this->p->lca . '_pageref_url' ] ) );
 			}
 
 			add_action( 'activated_plugin', array( $this, 'reset_check_head_count' ), 10 );

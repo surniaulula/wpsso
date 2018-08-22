@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$img_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n" . 
 					'<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n" . 
-					'<img src="' . $image_url . '" width="0" height="0" style="width:0;height:0;" ' . 
+					'<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" width="0" height="0" style="width:0;height:0;" ' . 
 					'data-pin-description="' . $desc_text . '" alt=""/>' . "\n" . 	// empty alt required for w3c validation
 					'</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";
 
@@ -1815,7 +1815,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			list( $image_type_id, $image_type_url ) = self::get_single_type_id_url( $json_data, false, 'image_type', 'image.object', $list_element );
 
 			$ret = self::get_schema_type_context( $image_type_url, array(
-				'url' => esc_url_raw( $image_url ),
+				'url' => SucomUtil::esc_url_encode( $image_url ),
 			) );
 
 			/**
@@ -1940,7 +1940,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					} else {
 
 						if ( is_string( $assoc[$key_name] ) && filter_var( $assoc[$key_name], FILTER_VALIDATE_URL ) !== false ) {
-							$json_data[$itemprop_name] = esc_url_raw( $assoc[$key_name] );
+							$json_data[$itemprop_name] = SucomUtil::esc_url_encode( $assoc[$key_name] );
 						} else {
 							$json_data[$itemprop_name] = $assoc[$key_name];
 						}
@@ -2807,7 +2807,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $org_opts['org_sameas'] ) && is_array( $org_opts['org_sameas'] ) ) {	// Just in case.
 				foreach ( $org_opts['org_sameas'] as $url ) {
 					if ( ! empty( $url ) ) {	// Just in case.
-						$ret['sameAs'][] = esc_url_raw( $url );
+						$ret['sameAs'][] = SucomUtil::esc_url_encode( $url );
 					}
 				}
 			}
@@ -2949,7 +2949,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $person_opts['person_sameas'] ) && is_array( $person_opts['person_sameas'] ) ) {	// Just in case.
 				foreach ( $person_opts['person_sameas'] as $url ) {
 					if ( ! empty( $url ) ) {	// Just in case.
-						$ret['sameAs'][] = esc_url_raw( $url );
+						$ret['sameAs'][] = SucomUtil::esc_url_encode( $url );
 					}
 				}
 			}

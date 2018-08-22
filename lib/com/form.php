@@ -347,7 +347,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						$html .= '<script type="text/javascript">' .
 							'jQuery( function(){ jQuery("#' . esc_js( $input_id ) . '").change( function(){ ' . 
 								'sucomSelectChangeRedirect("' . esc_js( $name ) . '",' . 
-									'this.value,"' . esc_url_raw( $redirect_url ) . '"); }); });</script>' . "\n";
+									'this.value,"' . SucomUtil::esc_url_encode( $redirect_url ) . '"); }); });</script>' . "\n";
 
 						break;
 
@@ -1235,8 +1235,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_button( $value, $css_class = '', $css_id = '', $url = '', $newtab = false, $disabled = false, $data = array() ) {
 
 			$on_click = true === $newtab ?
-				' onClick="window.open(\'' . esc_url_raw( $url ) . '\', \'_blank\');"' :
-				' onClick="location.href=\'' . esc_url_raw( $url ) . '\';"';
+				' onClick="window.open(\'' . SucomUtil::esc_url_encode( $url ) . '\', \'_blank\');"' :
+				' onClick="location.href=\'' . SucomUtil::esc_url_encode( $url ) . '\';"';
 
 			$data_attr = '';
 
