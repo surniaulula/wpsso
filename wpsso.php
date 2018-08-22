@@ -16,7 +16,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 4.9.8
  * WC Tested Up To: 3.4.4
- * Version: 4.11.1-dev.1
+ * Version: 4.11.1-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -290,25 +290,27 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->notice = new SucomNoNotice();	// make sure the notice property is always available
 			}
 
-			$this->util = new WpssoUtil( $this );			// extends SucomUtil
-			$this->opt = new WpssoOptions( $this );
-			$this->cache = new SucomCache( $this );			// object and file caching
-			$this->style = new WpssoStyle( $this );			// admin styles
-			$this->script = new WpssoScript( $this );		// admin jquery tooltips
-			$this->page = new WpssoPage( $this );			// page title, desc, etc.
-			$this->media = new WpssoMedia( $this );			// images, videos, etc.
+			$this->util    = new WpssoUtil( $this );		// extends SucomUtil
+			$this->opt     = new WpssoOptions( $this );
+			$this->cache   = new SucomCache( $this );		// object and file caching
+			$this->style   = new WpssoStyle( $this );		// admin styles
+			$this->script  = new WpssoScript( $this );		// admin jquery tooltips
+			$this->page    = new WpssoPage( $this );		// page title, desc, etc.
+			$this->media   = new WpssoMedia( $this );		// images, videos, etc.
 			$this->filters = new WpssoFilters( $this );		// integration filters
-			$this->head = new WpssoHead( $this );
+			$this->head    = new WpssoHead( $this );
 
-			// meta tags and json-ld markup
+			/**
+			 * Meta tags and json-ld markup.
+			 */
 			$this->link_rel = new WpssoLinkRel( $this );		// link relation tags
-			$this->og = new WpssoOpenGraph( $this );		// open graph meta tags
-			$this->weibo = new WpssoWeibo( $this );			// weibo meta tags
-			$this->tc = new WpssoTwitterCard( $this );		// twitter meta tags
-			$this->schema = new WpssoSchema( $this );		// schema meta tags and json markup
+			$this->og       = new WpssoOpenGraph( $this );		// open graph meta tags
+			$this->weibo    = new WpssoWeibo( $this );		// weibo meta tags
+			$this->tc       = new WpssoTwitterCard( $this );	// twitter meta tags
+			$this->schema   = new WpssoSchema( $this );		// schema meta tags and json markup
 
 			if ( is_admin() ) {
-				$this->msgs = new WpssoMessages( $this );	// admin tooltip messages
+				$this->msgs  = new WpssoMessages( $this );	// admin tooltip messages
 				$this->admin = new WpssoAdmin( $this );		// admin menus and page loader
 			}
 

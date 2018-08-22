@@ -14,7 +14,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	class WpssoSchema {
 
 		protected $p;
-		protected $types_cache = null;			// schema types array cache
+		protected $types_cache = null;			// Schema types array cache.
 		protected static $mod_cache_exp_secs = null;
 
 		public function __construct( &$plugin ) {
@@ -59,12 +59,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $content;
 			}
 
-			static $do_once = array();			// prevent recursion
+			static $do_once = array();			// Prevent recursion.
 
 			$mod        = $this->p->util->get_page_mod( true );	// $use_post is true.
 			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
-			if ( ! empty( $do_once[$cache_salt] ) ) {	// check for recursion
+			if ( ! empty( $do_once[$cache_salt] ) ) {	// Check for recursion.
 				return $content;
 			} else {
 				$do_once[$cache_salt] = true;
@@ -83,7 +83,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$img_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n" . 
 					'<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n" . 
 					'<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" width="0" height="0" style="width:0;height:0;" ' . 
-					'data-pin-description="' . $desc_text . '" alt=""/>' . "\n" . 	// empty alt required for w3c validation
+					'data-pin-description="' . $desc_text . '" alt=""/>' . "\n" . 	// Empty alt required for w3c validation.
 					'</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";
 
 				$content = $img_html . $content;
@@ -94,13 +94,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes, $mod, $crawler_name ) {
 
-			$sizes['schema_img'] = array(		// options prefix
-				'name' => 'schema',		// wpsso-schema
+			$sizes['schema_img'] = array(		// Options prefix.
+				'name' => 'schema',
 				'label' => _x( 'Google / Schema Image', 'image size label', 'wpsso' ),
 			);
 
-			$sizes['schema_article_img'] = array(		// options prefix
-				'name' => 'schema-article',		// wpsso-schema-article
+			$sizes['schema_article_img'] = array(	// Options prefix
+				'name' => 'schema-article',
 				'label' => _x( 'Google / Schema Image', 'image size label', 'wpsso' ),
 				'prefix' => 'schema_img',
 			);
@@ -515,7 +515,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function get_schema_types_array( $flatten = true ) {
 
-			if ( ! isset( $this->types_cache['filtered'] ) ) {	// check class property cache
+			if ( ! isset( $this->types_cache['filtered'] ) ) {	// Check class property cache.
 
 				$cache_md5_pre  = $this->p->lca . '_t_';
 				$cache_exp_secs = $this->get_types_cache_exp();
@@ -525,7 +525,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$cache_salt = __METHOD__;
 					$cache_id   = $cache_md5_pre . md5( $cache_salt );
 
-					$this->types_cache = get_transient( $cache_id );	// returns false when not found
+					$this->types_cache = get_transient( $cache_id );	// Returns false when not found.
 
 					if ( ! empty( $this->types_cache ) ) {
 						if ( $this->p->debug->enabled ) {
@@ -534,10 +534,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				if ( ! isset( $this->types_cache['filtered'] ) ) {	// from transient cache or not, check if filtered
+				if ( ! isset( $this->types_cache['filtered'] ) ) {	// From transient cache or not, check if filtered.
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'create schema types array' );	// begin timer
+						$this->p->debug->mark( 'create schema types array' );	// Begin timer.
 					}
 
 					if ( $this->p->debug->enabled ) {
@@ -561,7 +561,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->types_cache['parents'] = SucomUtil::array_parent_index( $this->types_cache['filtered'] );
 					ksort( $this->types_cache['parents'] );
 
-					// add cross-references at the end to avoid duplicate parent index key errors
+					/**
+					 * Add cross-references at the end to avoid duplicate parent index key errors.
+					 */
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->mark( 'adding cross-references' );
 					}
@@ -576,7 +578,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->mark( 'create schema types array' );	// end timer
+						$this->p->debug->mark( 'create schema types array' );	// End timer.
 					}
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'schema types array already filtered' );
@@ -596,7 +598,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		protected function add_schema_type_xrefs( &$schema_types ) {
 
-			$thing =& $schema_types['thing'];	// quick ref variable for the 'thing' array
+			$thing =& $schema_types['thing'];	// Quick ref variable for the 'thing' array.
 
 			/**
 			 * Intangible > Enumeration
@@ -743,7 +745,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$child_family[] = $child_id;	// add child after parents
+			$child_family[] = $child_id;	// Add child after parents.
 
 			if ( $use_cache ) {
 				if ( $cache_exp_secs > 0 ) {
@@ -783,7 +785,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$children[]   = $type_id;	// add children before parents
+			$children[]   = $type_id;	// Add children before parents.
 			$schema_types = $this->get_schema_types_array( true );	// $flatten is true.
 
 			foreach ( $this->types_cache['parents'] as $child_id => $parent_id ) {
@@ -829,7 +831,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Keep the @id property top-most.
 				 */
-				if ( empty( $json_data['@id'] ) ) {
+				if ( empty( $json_data['@id'] ) ) {	// Nothing to keep.
 					$json_head = array( '@context' => null, '@type' => null );
 				} else {
 					$json_head = array( '@id' => null, '@context' => null, '@type' => null );
@@ -845,7 +847,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $type_url, $match ) ) {
 				return array( $match[1], $match[2] );
 			} else {
-				return array( null, null );	// return two elements
+				return array( null, null );	// Return two elements.
 			}
 		}
 
@@ -921,7 +923,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $local_cache[$child_id][$member_id];
 			}
 
-			if ( $child_id === $member_id ) {	// optimize and check for obvious
+			if ( $child_id === $member_id ) {	// Optimize and check for obvious.
 				$is_child = true;
 			} else {
 				$child_family = $this->get_schema_type_child_family( $child_id );
@@ -971,12 +973,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$type_url = false;
 
 			if ( empty( $json_data['@type'] ) ) {
-				return $type_url;	// stop here
+				return $type_url;	// Stop here.
 			}
 
 			if ( is_array( $json_data['@type'] ) ) {
 
-				$json_data['@type'] = reset( $json_data['@type'] );	// use first @type element
+				$json_data['@type'] = reset( $json_data['@type'] );	// Use first @type element.
 
 				return self::get_data_type_url( $json_data );
 			}
@@ -987,7 +989,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			} elseif ( ! empty(  $json_data['@context'] ) ) {	// Just in case.
 
-				if ( is_array( $json_data['@context'] ) ) {	// get the extension url
+				if ( is_array( $json_data['@context'] ) ) {	// Get the extension url.
 
 					$context_url = self::get_context_extension_url( $json_data['@context'] );
 
@@ -1006,12 +1008,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public static function get_context_extension_url( array $json_data ) {
 
 			$type_url = false;
-			$ext_data = array_reverse( $json_data );	// read the array bottom-up
+			$ext_data = array_reverse( $json_data );	// Read the array bottom-up.
 
 			foreach ( $ext_data as $val ) {
-				if ( is_array( $val ) ) {		// if it's an extension array, drill down and return that value
+				if ( is_array( $val ) ) {		// If it's an extension array, drill down and return that value.
 					return self::get_context_extension_url( $val );
-				} elseif ( is_string( $val ) ) {	// set a backup value in case there is no extension array
+				} elseif ( is_string( $val ) ) {	// Set a backup value in case there is no extension array.
 					$type_url = $val;
 				}
 			}
@@ -1034,18 +1036,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'build json array' );	// begin timer for json array
+				$this->p->debug->mark( 'build json array' );	// Begin timer for json array.
 			}
 
 			$ret = array();
 
-			$page_type_id  = $mt_og['schema:type:id']  = $this->get_mod_schema_type( $mod, true );		// example: article.tech
-			$page_type_url = $mt_og['schema:type:url'] = $this->get_schema_type_url( $page_type_id );	// example: https://schema.org/TechArticle
+			$page_type_id  = $mt_og['schema:type:id']  = $this->get_mod_schema_type( $mod, true );		// Example: article.tech.
+			$page_type_url = $mt_og['schema:type:url'] = $this->get_schema_type_url( $page_type_id );	// Example: https://schema.org/TechArticle.
 
 			list(
 				$mt_og['schema:type:context'],
 				$mt_og['schema:type:name'],
-			) = self::get_schema_type_parts( $page_type_url );		// example: https://schema.org, TechArticle
+			) = self::get_schema_type_parts( $page_type_url );		// Example: https://schema.org, TechArticle.
 
 			$page_type_ids    = array();
 			$page_type_added  = array();	// Prevent duplicate schema types.
@@ -1060,9 +1062,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Note that the custom 'site_org_type' may be a sub-type of organization, 
 			 * and may be filtered as a local.business.
 			 */
-			if ( $mod['is_home'] ) {	// static or index home page
+			if ( $mod['is_home'] ) {	// Static or index home page.
 
-				$site_org_type_id = $this->p->options['site_org_type'];	// organization or a sub-type of organization
+				$site_org_type_id = $this->p->options['site_org_type'];	// Organization or a sub-type of organization.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'organization schema type id is ' . $site_org_type_id );
@@ -1107,23 +1109,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->debug->log( 'skipping schema type id "' . $type_id . '" (disabled)' );
 					}
 					continue;
-				} elseif ( ! empty( $page_type_added[$type_id] ) ) {	// prevent duplicate schema types
+				} elseif ( ! empty( $page_type_added[$type_id] ) ) {	// Prevent duplicate schema types.
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'skipping schema type id "' . $type_id . '" (previously added)' );
 					}
 					continue;
 				} else {
-					$page_type_added[$type_id] = true;	// prevent adding duplicate schema types
+					$page_type_added[$type_id] = true;	// Prevent adding duplicate schema types.
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'schema type id ' . $type_id );	// begin timer
+					$this->p->debug->mark( 'schema type id ' . $type_id );	// Begin timer.
 				}
 
-				if ( $type_id === $page_type_id ) {	// this is the main entity
+				if ( $type_id === $page_type_id ) {	// This is the main entity.
 					$is_main = true;
 				} else {
-					$is_main = false;	// default for all other types
+					$is_main = false;	// Default for all other types.
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -1136,7 +1138,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * The $json_data array will almost always be a single associative array,
 				 * but the breadcrumblist filter may return an array of $json_data arrays.
 				 */
-				if ( isset( $json_data[0] ) && ! SucomUtil::is_assoc( $json_data ) ) {	// multiple json scripts returned
+				if ( isset( $json_data[0] ) && ! SucomUtil::is_assoc( $json_data ) ) {	// Multiple json scripts returned.
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'multiple json data arrays returned' );
 					}
@@ -1145,7 +1147,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'single json data array returned' );
 					}
-					$scripts_data = array( $json_data );	// single json script returned
+					$scripts_data = array( $json_data );	// Single json script returned.
 				}
 
 				/**
@@ -1164,7 +1166,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( ! empty( $json_data['url'] ) ) {
 
-							$json_data = array( '@id' => $json_data['url'] . '#id/' . $type_id ) + $json_data;
+							$id_url = apply_filters( $this->p->lca . '_json_prop_id_md5_url',
+								md5( $json_data['url'] ), $json_data['url'] );
+
+							if ( ! is_string( $id_url ) ) {	// Fallback to un-encoded value.
+								$id_url = $json_data['url'];
+							}
+
+							$json_data = array( '@id' => $id_url . '#id/' . $type_id ) + $json_data;
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'added @id property is ' . $json_data['@id'] );
@@ -1235,7 +1244,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->mark( 'schema type id ' . $type_id );	// end timer
+					$this->p->debug->mark( 'schema type id ' . $type_id );	// End timer.
 				}
 			}
 
@@ -1283,7 +1292,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: returning single post cache data' );
 					}
-					return $cache_data[$cache_index];	// stop here
+					return $cache_data[$cache_index];	// Stop here.
 				}
 			}
 
@@ -1292,7 +1301,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$filter_name       = SucomUtil::sanitize_hookname( $page_type_url );
 			$child_family_urls = array();
 
-			// returns an array of type ids with gparents, parents, child (in that order)
+			/**
+			 * Returns an array of type ids with gparents, parents, child (in that order).
+			 */
 			foreach ( $this->get_schema_type_child_family( $page_type_id ) as $type_id ) {
 				$child_family_urls[] = $this->get_schema_type_url( $type_id );
 			}
@@ -1304,14 +1315,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			foreach ( $child_family_urls as $type_url ) {
 
 				$type_filter_name = SucomUtil::sanitize_hookname( $type_url );
-				$has_type_filter  = has_filter( $this->p->lca . '_json_data_' . $type_filter_name );	// check only once
+				$has_type_filter  = has_filter( $this->p->lca . '_json_data_' . $type_filter_name );	// Check only once.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'type filter name is ' . $type_filter_name . ' and has filter is ' . 
 						( $has_type_filter ? 'true' : 'false' ) );
 				}
 
-				// add website, organization, and person markup to home page
+				/**
+				 * Add website, organization, and person markup to home page.
+				 */
 				if ( $mod['is_home'] && ! $has_type_filter && method_exists( __CLASS__, 'filter_json_data_' . $type_filter_name ) ) {
 
 					$json_data = call_user_func( array( __CLASS__, 'filter_json_data_' . $type_filter_name ),
@@ -1390,7 +1403,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			} else {
 				$local_cache[$mod['name']][$mod['id']][$single_name][$single_id] = false;
-				$single_added =& $local_cache[$mod['name']][$mod['id']][$single_name][$single_id];	// return reference to false
+				$single_added =& $local_cache[$mod['name']][$mod['id']][$single_name][$single_id];	// Return reference to false.
 			}
 
 			if ( $wpsso->debug->enabled ) {
@@ -1555,7 +1568,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( null === $org_id ) {
-				if ( $mod['is_home'] ) {	// static or index page
+				if ( $mod['is_home'] ) {	// Static or index page.
 					$org_id = 'site';
 				} else {
 					$org_id = 'none';
@@ -1590,7 +1603,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'page_type_id = ' . $page_type_id );
 				$this->p->debug->log( 'is_main = ' . $is_main );
-				$this->p->debug->mark( 'organization filter for local business' );	// begin timer
+				$this->p->debug->mark( 'organization filter for local business' );	// Begin timer.
 			}
 
 			/**
@@ -1599,7 +1612,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$ret = $this->filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( 'organization filter for local business' );	// end timer
+				$this->p->debug->mark( 'organization filter for local business' );	// End timer.
 			}
 
 			$this->organization_to_localbusiness( $ret );
@@ -1683,11 +1696,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $social_accounts as $social_key => $social_label ) {
 
-				$url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// localized value
+				$url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// Localized value.
 
 				if ( empty( $url ) ) {
 					continue;
-				} elseif ( $social_key === 'tc_site' ) {	// convert twitter name to url
+				} elseif ( $social_key === 'tc_site' ) {	// Convert twitter name to url.
 					$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
 				}
 
@@ -1758,11 +1771,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( array( 'author', 'contributor' ) as $itemprop ) {
 				if ( empty( $json_data[$itemprop] ) ) {
-					unset( $json_data[$itemprop] );	// prevent null assignment
+					unset( $json_data[$itemprop] );	// Prevent null assignment.
 				}
 			}
 
-			return $authors_added + $coauthors_added;	// return count of authors and coauthors added
+			return $authors_added + $coauthors_added;	// Return count of authors and coauthors added.
 		}
 
 		/**
@@ -1783,7 +1796,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$images_added += self::add_og_single_image_data( $json_data, $og_images, $mt_image_pre, true );	// $list_element is true.
 			}
 
-			return $images_added;	// return count of images added
+			return $images_added;	// Return count of images added.
 		}
 
 		/**
@@ -1797,7 +1810,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: options array is empty or not an array' );
 				}
-				return 0;	// return count of images added
+				return 0;	// Return count of images added.
 			}
 
 			$image_url = SucomUtil::get_mt_media_url( $opts, $mt_image_pre );
@@ -1808,7 +1821,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'exiting early: ' . $mt_image_pre . ' URL values are empty' );
 				}
 
-				return 0;	// return count of images added
+				return 0;	// Return count of images added.
 			}
 
 			/**
@@ -1913,10 +1926,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( empty( $list_element ) ) {
 				$json_data = $ret;
 			} else {
-				$json_data[] = $ret;	// add an item to the list
+				$json_data[] = $ret;	// Add an item to the list.
 			}
 
-			return 1;	// return count of images added
+			return 1;	// Return count of images added.
 		}
 
 		public static function add_data_itemprop_from_assoc( array &$json_data, array $assoc, array $names, $overwrite = true ) {
@@ -1987,7 +2000,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
 			foreach ( $names as $itemprop_name => $key_name ) {
-				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// exclude empty strings
+				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// Exclude empty strings.
 					switch ( $itemprop_name ) {
 						case 'length':	// QuantitativeValue does not have a length itemprop
 							$json_data['additionalProperty'][] = array(
@@ -2046,16 +2059,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			WpssoSchema::merge_custom_mod_opts( $mod, $md_opts, array( $md_type => 'schema_' . $md_type ) );
 
-			if ( has_filter( $wpsso->lca . '_get_' . $md_type . '_place_id' ) ) {	// skip if no filters
+			if ( has_filter( $wpsso->lca . '_get_' . $md_type . '_place_id' ) ) {	// Skip if no filters.
 
 				if ( ! isset( $md_opts[$md_type . '_place_id'] ) ) {
-					$md_opts[$md_type . '_place_id'] = null;		// return null by default
+					$md_opts[$md_type . '_place_id'] = null;		// Return null by default.
 				}
 
 				$md_opts[$md_type . '_place_id'] = apply_filters( $wpsso->lca . '_get_' . $md_type . '_place_id',
 					$md_opts[$md_type . '_place_id'], $mod, $type_id );
 
-				if ( $md_opts[$md_type . '_place_id'] === null ) {	// unset if still null
+				if ( $md_opts[$md_type . '_place_id'] === null ) {	// Unset if still null.
 					unset( $md_opts[$md_type . '_place_id'] );
 				}
 			}
@@ -2115,9 +2128,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$wpsso->debug->log( 'skipping ' . $md_pre . ': date and time are empty' );
 					}
 
-					continue;	// nothing to do
+					continue;	// Nothing to do.
 
-				} elseif ( ! empty( $md_date ) && empty( $md_time ) ) {	// date with no time
+				} elseif ( ! empty( $md_date ) && empty( $md_time ) ) {	// Date with no time.
 
 					$md_time = '00:00';
 
@@ -2125,7 +2138,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$wpsso->debug->log( $md_pre . ' time is empty - using time ' . $md_time );
 					}
 
-				} elseif ( empty( $md_date ) && ! empty( $md_time ) ) {	// time with no date
+				} elseif ( empty( $md_date ) && ! empty( $md_time ) ) {	// Time with no date.
 
 					$md_date = gmdate( 'Y-m-d', time() );
 
@@ -2175,14 +2188,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: returning single "' . $mod['name'] . '" cache data' );
 				}
-				return $cache_data[$cache_index];	// stop here
+				return $cache_data[$cache_index];	// Stop here.
 			}
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->mark( 'get single ' . $mod['name'] . ' id ' . $mod['id'] . ' data' );	// end timer
+				$wpsso->debug->mark( 'get single ' . $mod['name'] . ' id ' . $mod['id'] . ' data' );	// End timer.
 			}
 
-			// set reference values for admin notices
+			/**
+			 * Set the reference values for admin notices.
+			 */
 			if ( is_admin() ) {
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
 				$wpsso->notice->set_ref( $sharing_url, $mod, sprintf( __( 'adding schema for %s object', 'wpsso' ), $mod['name'] ) );
@@ -2194,7 +2209,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$cache_data[$cache_index] = $wpsso->schema->get_json_data( $mod, $mt_og, false, true );	// $page_type_id is false.
 
-			// restore previous reference values for admin notices
+			/**
+			 * Restore previous reference values for admin notices.
+			 */
 			if ( is_admin() ) {
 				$wpsso->notice->unset_ref( $sharing_url );
 			}
@@ -2202,7 +2219,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			self::save_mod_cache_data( $mod, $cache_data );
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->mark( 'get single ' . $mod['name'] . ' id ' . $mod['id'] . ' data' );	// end timer
+				$wpsso->debug->mark( 'get single ' . $mod['name'] . ' id ' . $mod['id'] . ' data' );	// End timer.
 			}
 
 			return $cache_data[$cache_index];
@@ -2267,19 +2284,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						if ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'cache index data found in array from transient' );
 						}
-						return $cache_data;	// stop here
+						return $cache_data;	// Stop here.
 					} else {
 						if ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'cache index data not an array (unsetting index)' );
 						}
 						unset( $cache_data[$cache_index] );	// Just in case.
-						return $cache_data;	// stop here
+						return $cache_data;	// Stop here.
 					}
 				} else {
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'cache index not in transient' );
 					}
-					return $cache_data;	// stop here
+					return $cache_data;	// Stop here.
 				}
 
 			} elseif ( $wpsso->debug->enabled ) {
@@ -2445,7 +2462,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				// must have at least an offer name and price
+				/**
+				 * Must have at least an offer name and price.
+				 */
 				if ( isset( $offer_opts['offer_name'] ) && isset( $offer_opts['offer_price'] ) ) {
 
 					if ( ! isset( $event_opts['offer_url'] ) ) {
@@ -2482,7 +2501,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						if ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'custom event offer found - creating new offers array' );
 						}
-						$event_opts['event_offers'] = array();	// clear offers returned by filter
+						$event_opts['event_offers'] = array();	// Clear offers returned by filter.
 					}
 
 					$event_opts['event_offers'][] = $offer_opts;
@@ -2524,7 +2543,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				foreach ( $event_opts['event_offers'] as $event_offer ) {
 
-					// setup the offer with basic itemprops
+					/**
+					 * Setup the offer with basic itemprops.
+					 */
 					if ( is_array( $event_offer ) &&	// Just in case.
 						( $offer = self::get_data_itemprop_from_assoc( $event_offer, array( 
 							'name'          => 'offer_name',
@@ -2535,7 +2556,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							'validFrom'     => 'offer_valid_from_date',
 							'validThrough'  => 'offer_valid_to_date',
 					) ) ) !== false ) {
-						// add the complete offer
+
+						/**
+						 * Add the complete offer.
+						 */
 						$ret['offers'][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
 					}
 				}
@@ -2601,13 +2625,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 			self::add_mod_opts_date_iso( $mod, $job_opts, array( 'job_expire' => 'schema_job_expire' ) );
 
-			// add schema properties from the job options
+			/**
+			 * Add schema properties from the job options.
+			 */
 			self::add_data_itemprop_from_assoc( $ret, $job_opts, array(
 				'title'        => 'job_title',
 				'validThrough' => 'job_expire_iso',
 			) );
 
-			if ( isset( $job_opts['job_salary'] ) && is_numeric( $job_opts['job_salary'] ) ) {	// allow for 0
+			if ( isset( $job_opts['job_salary'] ) && is_numeric( $job_opts['job_salary'] ) ) {	// Allow for 0.
 
 				$ret['baseSalary'] = self::get_schema_type_context( 'https://schema.org/MonetaryAmount' );
 
@@ -2639,7 +2665,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			if ( isset( $job_opts['job_org_id'] ) && SucomUtil::is_opt_id( $job_opts['job_org_id'] ) ) {	// allow for 0
+			if ( isset( $job_opts['job_org_id'] ) && SucomUtil::is_opt_id( $job_opts['job_org_id'] ) ) {	// Allow for 0.
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding organization data for job_org_id ' . $job_opts['job_org_id'] );
 				}
@@ -2650,7 +2676,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'job_org_id is empty or none' );
 			}
 
-			if ( isset( $job_opts['job_location_id'] ) && SucomUtil::is_opt_id( $job_opts['job_location_id'] ) ) {	// allow for 0
+			if ( isset( $job_opts['job_location_id'] ) && SucomUtil::is_opt_id( $job_opts['job_location_id'] ) ) {	// Allow for 0.
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding place data for job_location_id ' . $job_opts['job_location_id'] );
 				}
@@ -2679,7 +2705,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function add_single_organization_data( &$json_data, $mod, $org_id = 'site', $logo_key = 'org_logo_url', $list_element = false ) {
 
-			if ( ! SucomUtil::is_opt_id( $org_id ) ) {	// allow for 0 but not false or null
+			if ( ! SucomUtil::is_opt_id( $org_id ) ) {	// Allow for 0 but not false or null.
 				return 0;
 			}
 
@@ -2707,7 +2733,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'getting site organization options array' );
 					}
-					$org_opts = self::get_site_organization( $mod ); // returns localized values (not the key names)
+					$org_opts = self::get_site_organization( $mod ); // Returns localized values (not the key names).
 				} else {
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'exiting early: unknown org_id ' . $org_id );
@@ -2716,12 +2742,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			// if not adding a list element, inherit the existing schema type url (if one exists)
+			/**
+			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 */
 			list( $org_type_id, $org_type_url ) = self::get_single_type_id_url( $json_data, $org_opts, 'org_type', 'organization', $list_element );
 
 			$ret = self::get_schema_type_context( $org_type_url );
 
-			// set reference values for admin notices
+			/**
+			 * Set the reference values for admin notices.
+			 */
 			if ( is_admin() ) {
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
 				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema for organization', 'wpsso' ) );
@@ -2796,7 +2826,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				if ( ! self::add_single_place_data( $ret['location'], $mod, $place_id, false ) ) {	// $list_element is false.
-					unset( $ret['location'] );	// prevent null assignment
+					unset( $ret['location'] );	// Prevent null assignment.
 				}
 			}
 
@@ -2895,7 +2925,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( empty( $url ) ) {
 						continue;
-					} elseif ( $cm_id === $wpsso->options['plugin_cm_twitter_name'] ) {	// convert twitter name to url
+					} elseif ( $cm_id === $wpsso->options['plugin_cm_twitter_name'] ) {	// Convert twitter name to url.
 						$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
 					}
 
@@ -2919,7 +2949,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log_arr( 'person options', $person_opts );
 			}
 
-			// if not adding a list element, inherit the existing schema type url (if one exists)
+			/**
+			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 */
 			list( $person_type_id, $person_type_url ) = self::get_single_type_id_url( $json_data, $person_opts, 'person_type', 'person', $list_element );
 
 			$ret = self::get_schema_type_context( $person_type_url );
@@ -2938,7 +2970,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( ! empty( $person_opts['person_og_image'] ) ) {
 				if ( ! self::add_og_image_list_data( $ret['image'], $person_opts['person_og_image'] ) ) {
-					unset( $ret['image'] );	// prevent null assignment
+					unset( $ret['image'] );	// Prevent null assignment.
 				}
 			}
 
@@ -3032,7 +3064,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'addressLocality'     => 'place_city',
 				'addressRegion'       => 'place_state',
 				'postalCode'          => 'place_zipcode',
-				'addressCountry'      => 'place_country',	// alpha2 country code
+				'addressCountry'      => 'place_country',	// Alpha2 country code.
 			) ) ) {
 				$ret['address'] = self::get_schema_type_context( 'https://schema.org/PostalAddress', $address );
 			}
@@ -3152,12 +3184,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			// returns false when the wpsso-schema-json-ld add-on is active
+			/**
+			 * Returns false when the wpsso-schema-json-ld add-on is active.
+			 */
 			if ( ! apply_filters( $this->p->lca . '_add_schema_meta_array', true ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: schema meta array disabled' );
 				}
-				return array();	// empty array
+				return array();	// Empty array.
 			}
 
 			$mt_schema     = array();
@@ -3180,15 +3214,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			switch ( $page_type_url ) {
+
 				case 'https://schema.org/BlogPosting':
+
 					$size_name = $this->p->lca . '-schema-article';
-					// no break - add date published and modified
+
+					// No break - add date published and modified.
 
 				case 'https://schema.org/WebPage':
+
 					$this->add_mt_schema_from_og( $mt_schema, $mt_og, array(
 						'datePublished' => 'article:published_time',
 						'dateModified' => 'article:modified_time',
 					) );
+
 					break;
 			}
 
@@ -3200,7 +3239,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipping images: meta itemprop image is disabled' );
 				}
-			} else {	// add single image meta tags (no width or height)
+			} else {	// Add single image meta tags (no width or height).
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting images for ' . $page_type_url );
 				}
@@ -3287,7 +3326,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! self::is_noscript_enabled( $crawler_name ) ) {
-				return array();	// empty array
+				return array();	// Empty array.
 			}
 
 			$ret           = array();
@@ -3298,12 +3337,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$og_type_id    = $mt_og['og:type'];
 
 			switch ( $page_type_url ) {
+
 				case 'https://schema.org/BlogPosting':
+
 					$size_name = $this->p->lca . '-schema-article';
-					// no break - get the webpage author list as well
+
+					// No break - get the webpage author list as well.
 
 				case 'https://schema.org/WebPage':
+
 					$ret = array_merge( $ret, $this->get_author_list_noscript( $mod ) );
+
 					break;
 			}
 

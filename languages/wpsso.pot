@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.11.1-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.11.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5646,27 +5646,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2188
+#: lib/schema.php:2203
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2727
+#: lib/schema.php:2757
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2762
+#: lib/schema.php:2792
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2764
+#: lib/schema.php:2794
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3005
+#: lib/schema.php:3037
 msgid "adding schema for place"
 msgstr ""
 
@@ -6205,26 +6205,26 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:360
+#: wpsso.php:362
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:375
+#: wpsso.php:377
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:383
+#: wpsso.php:385
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:384
+#: wpsso.php:386
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 
