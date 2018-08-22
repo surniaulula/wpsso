@@ -45,7 +45,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function get_pinterest_img_html( $content = '' ) {
 
-			// do not add the pinterest image if the current webpage is amp or rss feed
+			/**
+			 * Do not add the pinterest image if the current webpage is amp or rss feed.
+			 */
 			if ( SucomUtil::is_amp() || is_feed() ) {
 				return $content;
 			}

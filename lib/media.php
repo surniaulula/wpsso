@@ -1080,7 +1080,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$og_single_image = array();
 
-			if ( ! empty( $img_opts['id'] ) && is_string( $size_name ) ) {
+			if ( ! empty( $img_opts['id'] ) && ! empty( $size_name ) ) {
 
 				$img_opts['id'] = $img_opts['id_pre'] === 'ngg' ? 'ngg-' . $img_opts['id'] : $img_opts['id'];
 

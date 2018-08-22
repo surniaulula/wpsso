@@ -112,7 +112,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:879 lib/post.php:733 lib/term.php:418 lib/user.php:420
+#: lib/admin.php:879 lib/post.php:733 lib/term.php:421 lib/user.php:420
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2791,7 +2791,7 @@ msgstr ""
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:163 lib/loader.php:189 lib/post.php:259 lib/register.php:238
-#: lib/term.php:234 lib/user.php:201 lib/util.php:357 lib/util.php:2520
+#: lib/term.php:237 lib/user.php:201 lib/util.php:357 lib/util.php:2520
 msgid "%s warning:"
 msgstr ""
 
@@ -5222,15 +5222,15 @@ msgstr ""
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1140
+#: lib/options.php:1145
 msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1143
+#: lib/options.php:1148
 msgid "Please make sure this site can access the banner image at %1$s."
 msgstr ""
 
-#: lib/options.php:1148
+#: lib/options.php:1153
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
@@ -5276,7 +5276,7 @@ msgid "No Description"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
-#: lib/post.php:245 lib/term.php:220 lib/user.php:187 lib/util.php:343
+#: lib/post.php:245 lib/term.php:223 lib/user.php:187 lib/util.php:343
 #: lib/util.php:2497
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
@@ -5637,32 +5637,32 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema.php:97 lib/schema.php:102
+#: lib/schema.php:99 lib/schema.php:104
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2184
+#: lib/schema.php:2186
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2723
+#: lib/schema.php:2725
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2758
+#: lib/schema.php:2760
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2760
+#: lib/schema.php:2762
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3001
+#: lib/schema.php:3003
 msgid "adding schema for place"
 msgstr ""
 
@@ -6062,13 +6062,13 @@ msgid "Setup Guide and Other Notes"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$s is a recommended max
-#: lib/term.php:223
+#: lib/term.php:226
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:547
+#: lib/term.php:550
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 

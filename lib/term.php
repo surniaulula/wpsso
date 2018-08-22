@@ -161,6 +161,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $tax_names;
 		}
 
+		/**
+		 * Note that this method returns posts of child terms as well.
+		 */
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false, array $get_posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -197,7 +200,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						'taxonomy'         => $mod['tax_slug'],
 						'field'            => 'term_id',
 						'terms'            => $mod['id'],
-						'include_children' => false
+						'include_children' => true
 					)
 				),
 			), $get_posts_args );

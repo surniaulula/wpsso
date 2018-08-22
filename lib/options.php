@@ -1125,6 +1125,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * );
 			 */
 			$og_single_image     = $this->p->media->get_opts_single_image( $opts, $size_name, $opt_img_pre );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_arr( '$og_single_image', $og_single_image );
+			}
+
 			$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
 			if ( ! empty( $og_single_image_url ) ) {
