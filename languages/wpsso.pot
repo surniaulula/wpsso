@@ -5235,7 +5235,7 @@ msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
 #: lib/options.php:1155
-msgid "Please review and correct the banner image dimensions at %1$s."
+msgid "Please correct the banner image at %1$s."
 msgstr ""
 
 #: lib/page.php:309 lib/page.php:311 lib/page.php:568 lib/page.php:570
