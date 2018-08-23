@@ -336,7 +336,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Replaced calls to esc_url_raw() by SucomUtil::esc_url_encode() to encode foreign characters in URLs.
 * *Developer Notes*
-	* None.
+	* Added a new WpssoSchema::update_json_data_id() method.
+	* Added the Schema "@id" property to the json data array by default.
 
 **Version 4.11.0 (2018/08/21)**
 
