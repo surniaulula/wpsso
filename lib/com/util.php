@@ -2352,23 +2352,30 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * Fallback to default value for non-existing keys or empty strings.
 			 */
 			if ( ! isset( $opts[$key_locale] ) || $opts[$key_locale] === '' ) {
+
 				if ( ( $pos = strpos( $key_locale, '#' ) ) > 0 ) {
+
 					$key_default = self::get_key_locale( substr( $key_locale, 0, $pos ), $opts, 'default' );
+
 					if ( $key_locale !== $key_default ) {
 						return isset( $opts[$key_default] ) ? $opts[$key_default] : $val_locale;
 					} else {
 						return $val_locale;
 					}
+
 				} else {
 					return $val_locale;
 				}
+
 			} else {
 				return $val_locale;
 			}
 		}
 
 		public static function set_key_locale( $key, $value, &$opts, $mixed = 'current' ) {
+
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
+
 			$opts[$key_locale] = $value;
 		}
 
@@ -2380,8 +2387,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_key_locale( $key, $opts = false, $mixed = 'current' ) {
 
-			$default = self::get_locale( 'default' );
-			$locale = self::get_locale( $mixed );
+			$default    = self::get_locale( 'default' );
+			$locale     = self::get_locale( $mixed );
 			$key_locale = $key . '#' . $locale;
 
 			/**
@@ -2444,30 +2451,42 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $mixed === 'default' ) {
+
 				global $wp_local_package;
+
 				if ( isset( $wp_local_package ) ) {
 					$locale = $wp_local_package;
 				}
+
 				if ( defined( 'WPLANG' ) ) {
 					$locale = WPLANG;
 				}
+
 				if ( is_multisite() ) {
+
 					if ( ( $ms_locale = get_option( 'WPLANG' ) ) === false ) {
 						$ms_locale = get_site_option( 'WPLANG' );
 					}
+
 					if ( $ms_locale !== false ) {
 						$locale = $ms_locale;
 					}
+
 				} else {
+
 					$db_locale = get_option( 'WPLANG' );
+
 					if ( $db_locale !== false ) {
 						$locale = $db_locale;
 					}
 				}
+
 				if ( empty( $locale ) ) {
 					$locale = 'en_US'; // Just in case.
 				}
+
 			} else {
+
 				if ( is_admin() && function_exists( 'get_user_locale' ) ) { // Since wp 4.7.
 					$locale = get_user_locale();
 				} else {
@@ -2479,7 +2498,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_available_locales() {
+
 			$available_locales = get_available_languages(); // Since wp 3.0.
+
 			return apply_filters( 'sucom_available_locales', $available_locales );
 		}
 

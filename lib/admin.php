@@ -1918,7 +1918,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							} elseif ( $key === 'qty_used' ) {
 
 								/**
-								 * The default 'qty_used' value is a '#/#' string.
+								 * The default 'qty_used' value is a 'n/n' string.
 								 */
 								$val = sprintf( __( '%s site addresses registered', 'wpsso' ), $val );
 
