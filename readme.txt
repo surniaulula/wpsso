@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.11.1-dev.3 (2018/08/22)**
+**Version 4.11.1-dev.4 (2018/08/23)**
 
 * *New Features*
 	* None.
@@ -656,9 +656,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.11.1-dev.3 =
+= 4.11.1-dev.4 =
 
-(2018/08/22) Replaced calls to esc_url_raw() by SucomUtil::esc_url_encode() to encode foreign characters in URLs. The base Schema @id property value is now md5 encoded.
+(2018/08/23) Replaced calls to esc_url_raw() by SucomUtil::esc_url_encode() to encode foreign characters in URLs. The base Schema @id property value is now md5 encoded.
 
 = 4.11.0 =
 
