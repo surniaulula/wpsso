@@ -1042,7 +1042,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return false;
 		}
 
-		public static function update_json_data_id( array &$json_data, $type_id ) {
+		public static function update_json_data_id( &$json_data, $type_id ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1232,14 +1232,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * but the breadcrumblist filter may return an array of $json_data arrays.
 				 */
 				if ( isset( $json_data[0] ) && ! SucomUtil::is_assoc( $json_data ) ) {	// Multiple json scripts returned.
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'multiple json data arrays returned' );
 					}
+
 					$scripts_data = $json_data;
+
 				} else {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'single json data array returned' );
 					}
+
 					$scripts_data = array( $json_data );	// Single json script returned.
 				}
 
@@ -1248,7 +1253,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				foreach ( $scripts_data as $json_data ) {
 
-					if ( empty( $json_data ) || ! is_array( $json_data ) ) {
+					if ( empty( $json_data ) || ! is_array( $json_data ) ) {	// Just in case.
 						continue;
 					}
 
