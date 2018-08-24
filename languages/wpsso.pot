@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.11.1-b.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.11.1-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2791,7 +2791,7 @@ msgstr ""
 
 #. translators: %s is the short plugin name
 #: lib/loader.php:163 lib/loader.php:189 lib/post.php:259 lib/register.php:238
-#: lib/term.php:237 lib/user.php:201 lib/util.php:357 lib/util.php:2520
+#: lib/term.php:237 lib/user.php:201 lib/util.php:357 lib/util.php:2524
 msgid "%s warning:"
 msgstr ""
 
@@ -3409,7 +3409,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:665 lib/util.php:2788
+#: lib/messages.php:665 lib/util.php:2792
 msgid "No options available."
 msgstr ""
 
@@ -5281,7 +5281,7 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #: lib/post.php:245 lib/term.php:223 lib/user.php:187 lib/util.php:343
-#: lib/util.php:2497
+#: lib/util.php:2501
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5646,27 +5646,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2292
+#: lib/schema.php:2294
 msgid "adding schema for %s object"
 msgstr ""
 
-#: lib/schema.php:2869
+#: lib/schema.php:2871
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:2904
+#: lib/schema.php:2906
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:2906
+#: lib/schema.php:2908
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3159
+#: lib/schema.php:3161
 msgid "adding schema for place"
 msgstr ""
 
@@ -6163,13 +6163,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max
-#: lib/util.php:2500
+#: lib/util.php:2504
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2513
+#: lib/util.php:2517
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6178,29 +6178,29 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2513
+#: lib/util.php:2517
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2815
+#: lib/util.php:2819
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2818
+#: lib/util.php:2822
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2823
+#: lib/util.php:2827
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2826
+#: lib/util.php:2830
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

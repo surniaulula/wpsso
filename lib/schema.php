@@ -1051,7 +1051,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( empty( $json_data['url'] ) ) {
-				$wpsso->debug->log( 'exiting early: json_data url is empty and required' );
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'exiting early: json_data url is empty and required' );
+				}
+				return;
 			}
 	
 			$id_separator = '/';
@@ -1574,30 +1577,29 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Hook the 'wpsso_json_ld_search_url' filter and return false if you wish to
 			 * disable / skip the Potential Action property.
 			 */
-			if ( $search_url = apply_filters( $this->p->lca . '_json_ld_search_url',
-				SucomUtil::esc_url_encode( get_bloginfo( 'url' ) ) . '?s={search_term_string}' ) ) {
+			$search_url = SucomUtil::esc_url_encode( get_bloginfo( 'url' ) ) . '?s={search_term_string}';
+			$search_url = apply_filters( $this->p->lca . '_json_ld_search_url', $search_url );
 
-				if ( ! empty( $search_url ) ) {
+			if ( ! empty( $search_url ) ) {
 
-					/**
-					 * Potential Action may already be defined by the WPSSO JSON
-					 * 'wpsso_json_prop_https_schema_org_potentialaction' filter.
-					 * Make sure it's an array - just in case. ;-)
-					 */
-					if ( ! isset( $ret['potentialAction'] ) || ! is_array( $ret['potentialAction'] ) ) {
-						$ret['potentialAction'] = array();
-					}
-
-					$ret['potentialAction'][] = array(
-						'@context'    => 'https://schema.org',
-						'@type'       => 'SearchAction',
-						'target'      => $search_url,
-						'query-input' => 'required name=search_term_string',
-					);
-
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'skipping search action: search url is empty' );
+				/**
+				 * Potential Action may already be defined by the WPSSO JSON
+				 * 'wpsso_json_prop_https_schema_org_potentialaction' filter.
+				 * Make sure it's an array - just in case. ;-)
+				 */
+				if ( ! isset( $ret['potentialAction'] ) || ! is_array( $ret['potentialAction'] ) ) {
+					$ret['potentialAction'] = array();
 				}
+
+				$ret['potentialAction'][] = array(
+					'@context'    => 'https://schema.org',
+					'@type'       => 'SearchAction',
+					'target'      => $search_url,
+					'query-input' => 'required name=search_term_string',
+				);
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'skipping search action: search url is empty' );
 			}
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );

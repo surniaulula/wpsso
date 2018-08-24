@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( ! empty( $_GET[ $this->p->lca . '_pageref_url' ] ) ) {
-				$this->pageref_url = SucomUtil::esc_url_encode( urldecode( $_GET[ $this->p->lca . '_pageref_url' ] ) );
+				$this->pageref_url = esc_url_raw( urldecode( $_GET[ $this->p->lca . '_pageref_url' ] ) );
 			}
 
 			add_action( 'activated_plugin', array( $this, 'reset_check_head_count' ), 10 );
@@ -3479,7 +3479,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'plugins_page':
 
-							$html = '<a href="' . $this->pageref_url . '" target="_parent">' .
+							$html = '<a href="' . urlencode( $this->pageref_url ) . '" target="_parent">' .
 								sprintf( __( 'Return to %s', 'wpsso' ), $this->pageref_title ) . '</a>';
 
 							break;
@@ -3493,7 +3493,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 									$this->p->lca . '_pageref_title' => urlencode( $this->pageref_title ),
 								), $matches[2] );
 
-								$html = $matches[1].$url.$matches[3];
+								$html = $matches[1] . $url . $matches[3];
 							}
 
 							break;
@@ -3521,7 +3521,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function get_check_for_updates_link( $only_url = false ) {
 
-			$link_url = '';
+			$link_url  = '';
 			$link_html = '';
 
 			if ( class_exists( 'WpssoUm' ) ) {

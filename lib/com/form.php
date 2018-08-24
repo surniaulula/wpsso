@@ -1021,10 +1021,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( empty( $this->options[ $opt_prefix . '_id' . $opt_suffix ] ) ) {
 				$placeholder = SucomUtil::esc_url_encode( $url );
-				$disabled = false;
+				$disabled    = false;
 			} else {
 				$placeholder = '';
-				$disabled = true;
+				$disabled    = true;
 			}
 
 			return $this->get_input( $opt_prefix . '_url' . $opt_suffix, 'wide', '', 0, $placeholder, $disabled );
@@ -1234,9 +1234,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_button( $value, $css_class = '', $css_id = '', $url = '', $newtab = false, $disabled = false, $data = array() ) {
 
-			$on_click = true === $newtab ?
-				' onClick="window.open(\'' . SucomUtil::esc_url_encode( $url ) . '\', \'_blank\');"' :
-				' onClick="location.href=\'' . SucomUtil::esc_url_encode( $url ) . '\';"';
+			if ( true === $newtab ) {
+				$on_click = ' onClick="window.open(\'' . SucomUtil::esc_url_encode( $url ) . '\', \'_blank\');"';
+			} else {
+				$on_click = ' onClick="location.href=\'' . SucomUtil::esc_url_encode( $url ) . '\';"';
+			}
 
 			$data_attr = '';
 

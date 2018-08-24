@@ -1866,16 +1866,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 * $mod is true when buttons are added to individual posts on an index webpage.
 		 */
 		public function get_sharing_url( $mod = false, $add_page = true, $src_id = '' ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+
 			return $this->get_page_url( 'sharing', $mod, $add_page, $src_id );
 		}
 
 		public function get_canonical_url( $mod = false, $add_page = true, $src_id = '' ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+
 			return $this->get_page_url( 'canonical', $mod, $add_page, $src_id );
 		}
 
