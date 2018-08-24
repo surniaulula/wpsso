@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.11.1-rc.1 (2018/08/24)**
+**Version 4.11.1 (2018/08/25)**
 
 * *New Features*
 	* None.
@@ -658,11 +658,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.11.1-rc.1 =
+= 4.11.1 =
 
-(2018/08/24) Replaced several calls to esc_url_raw() by SucomUtil::esc_url_encode() to encode foreign characters in URLs. Added a Schema "@id" property to the json data array by default.
-
-= 4.11.0 =
-
-(2018/08/21) Added two new options under the SSO &gt; Advanced &gt; Custom Meta tab (Pro version).
+(2018/08/25) Replaced several calls to esc_url_raw() by SucomUtil::esc_url_encode() to encode foreign characters in URLs. Added a Schema "@id" property to the json data array by default.
 
