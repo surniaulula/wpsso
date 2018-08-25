@@ -5344,14 +5344,14 @@ msgstr ""
 
 #: lib/post.php:987
 msgid ""
-"Schema JSON-LD markup is highly recommended for higher ranking and click-"
-"through rates in Google search results."
+"Schema JSON-LD markup is highly recommended for higher ranking and better "
+"click-through rates in Google search results."
 msgstr ""
 
 #: lib/post.php:987
 msgid ""
-"Please consider activating the %1$s add-on to include additional Schema JSON-"
-"LD markup in the webpage for Google."
+"You should consider activating the %1$s add-on to include this additional "
+"markup in the webpage for Google."
 msgstr ""
 
 #: lib/post.php:1007
