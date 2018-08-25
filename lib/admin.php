@@ -705,20 +705,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( array(
 				// readme array => plugin object
-				'plugin_name' => 'name',
-				'plugin_slug' => 'slug',
-				'base' => 'plugin',
-				'stable_tag' => 'version',
-				'tested_up_to' => 'tested',
+				'plugin_name'       => 'name',
+				'plugin_slug'       => 'slug',
+				'base'              => 'plugin',
+				'stable_tag'        => 'version',
+				'tested_up_to'      => 'tested',
 				'requires_at_least' => 'requires',
-				'home' => 'homepage',
-				'latest' => 'download_link',
-				'author' => 'author',
-				'upgrade_notice' => 'upgrade_notice',
-				'last_updated' => 'last_updated',
-				'sections' => 'sections',
+				'home'              => 'homepage',
+				'latest'            => 'download_link',
+				'author'            => 'author',
+				'upgrade_notice'    => 'upgrade_notice',
+				'last_updated'      => 'last_updated',
+				'sections'          => 'sections',
 				'remaining_content' => 'other_notes',	// added to sections
-				'banners' => 'banners',
+				'banners'           => 'banners',
 			) as $key_name => $prop_name ) {
 				switch ( $key_name ) {
 					case 'base':	// from plugin config
@@ -805,9 +805,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( empty( $opts['plugin_filter_content'] ) ) {
+
 				$message_key = 'notice-content-filters-disabled';
 				$dismiss_key = $message_key . '-reminder';
-				$this->p->notice->warn( $this->p->msgs->get( $message_key ), true, $dismiss_key, true );	// can be dismissed
+
+				$this->p->notice->warn( $this->p->msgs->get( $message_key ), true, $dismiss_key, true );	// Can be dismissed.
 			}
 
 			$this->check_tmpl_head_attributes();
@@ -1796,7 +1798,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			foreach ( $ext_sorted as $ext => $info ) {
 
 				$ext_num++;
-				$ext_links = $this->get_ext_action_links( $ext, $info, $tabindex );
+				$ext_links  = $this->get_ext_action_links( $ext, $info, $tabindex );
 				$table_rows = array();
 
 				/**
@@ -1834,11 +1836,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						echo '<td class="ext-info-plugin-icon" id="ext-info-plugin-icon-' . $ext . '"' .
 							' width="168" rowspan="' . $span_rows . '" valign="top" align="left">' . "\n";
+						echo '<a class="ext-anchor" id="' . $ext . '"></a>' . "\n";	// Add an anchor for the add-on.
 						echo $this->get_ext_img_icon( $ext );
 						echo '</td>';
 					}
 
-					echo $row . '</tr>';
+					echo $row . '</tr>' . "\n";
 				}
 			}
 
@@ -3601,19 +3604,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $html;
 			}
 
-			$short = $this->p->cf['plugin'][$ext]['short'];
-
 			$html .= ' <span class="ext-req-msg">';
 
-			if ( ! empty( $this->p->cf['plugin'][$ext]['url']['home'] ) ) {
-				$html .= '<a href="' . $this->p->cf['plugin'][$ext]['url']['home'] . '">';
-			}
-
-			$html .= sprintf( _x( '%s add-on required', 'option comment', 'wpsso' ), $short );
-
-			if ( ! empty( $this->p->cf['plugin'][$ext]['url']['home'] ) ) {
-				$html .= '</a>';
-			}
+			$html .= $this->p->util->get_admin_url( 'addons#' . $ext, 
+				sprintf( _x( '%s add-on required', 'option comment', 'wpsso' ),
+					$this->p->cf['plugin'][$ext]['short'] ) );
 
 			$html .= '</span>';
 

@@ -611,19 +611,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Make sure we have at least a post type and status.
 			 */
 			if ( ! is_object( $post_obj ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_obj is not an object' );
 				}
+
 				return;
+
 			} elseif ( empty( $post_obj->post_type ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_type is empty' );
 				}
+
 				return;
+
 			} elseif ( empty( $post_obj->post_status ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_status is empty' );
 				}
+
 				return;
 			}
 
@@ -645,21 +653,29 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			WpssoMeta::$head_meta_tags = array();
 
 			if ( $post_obj->post_status === 'auto-draft' ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head meta skipped: post_status is auto-draft' );
 				}
+
 			} elseif ( $post_obj->post_status === 'trash' ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head meta skipped: post_status is trash' );
 				}
+
 			} elseif ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] === 'trash' ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head meta skipped: post is being trashed' );
 				}
+
 			} elseif ( $doing_block_editor && ! empty( $_REQUEST['meta_box'] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head meta skipped: doing block editor for meta box' );
 				}
+
 			} else {
 
 				$add_metabox = empty( $this->p->options['plugin_add_to_'.$post_obj->post_type] ) ? false : true;
@@ -956,8 +972,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ! preg_match( '/<script type=[\'"]application\/ld\+json[\'"]>/i', $webpage_html ) ) {
+
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'no application/ld+json script(s) found' );
+					$this->p->debug->log( 'application/ld+json script(s) not found' );
+				}
+
+				if ( $is_admin ) {
+
+					$json_ext        = 'wpssojson';
+					$json_info       = $this->p->cf['plugin'][$json_ext];
+					$json_addon_link = $this->p->util->get_admin_url( 'addons#' . $json_ext, $json_info['name'] );
+					$dismiss_key     = 'application-ld-json-script-not-found';
+
+					$this->p->notice->inf( sprintf( __( 'The webpage at %1$s does not include any Schema JSON-LD script(s).', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ' . __( 'Schema JSON-LD markup is highly recommended for higher ranking and click-through rates in Google search results.', 'wpsso' ) . ' ' . sprintf( __( 'Please consider activating the %1$s add-on to include additional Schema JSON-LD markup in the webpage for Google.', 'wpsso' ), $json_addon_link ), true, $dismiss_key, true );
 				}
 			}
 
@@ -965,7 +992,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Remove WPSSO meta tags from the webpage html to check the remaining html for duplicates.
 			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'removing the ' . $this->p->lca . ' meta tag section to check for duplicates' );
+				$this->p->debug->log( 'removing the ' . $this->p->lca . ' meta tag section from the webpage html' );
 			}
 
 			$html_stripped = preg_replace( $this->p->head->get_mt_mark( 'preg' ), '', $webpage_html, -1, $mark_count );

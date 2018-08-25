@@ -810,8 +810,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$ini_set = array(
 				'display_errors' => 0,
-				'log_errors' => 1,
-				'error_log' => WP_CONTENT_DIR . '/debug.log',
+				'log_errors'     => 1,
+				'error_log'      => WP_CONTENT_DIR . '/debug.log',
 			);
 
 			$ini_saved = array();

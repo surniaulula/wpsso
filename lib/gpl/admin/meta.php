@@ -68,10 +68,14 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $r_cache, false, $do_encode, array( 'seo_desc', 'og_desc' ) );
 
 			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
-				$json_info = $this->p->cf['plugin']['wpssojson'];
+
+				$json_ext        = 'wpssojson';
+				$json_info       = $this->p->cf['plugin'][$json_ext];
+				$json_addon_link = $this->p->util->get_admin_url( 'addons#' . $json_ext, $json_info['name'] );
 				$json_msg_transl = '<p class="status-msg smaller">' . 
 					sprintf( __( 'Activate the %s add-on for additional Schema markup features and options.',
-						'wpsso' ), '<a href="' . $json_info['url']['home'] . '">' . $json_info['short'] . '</a>' ) . '</p>';
+						'wpsso' ), $json_addon_link ) . '</p>';
+
 			} else {
 				$json_msg_transl = '';
 			}
