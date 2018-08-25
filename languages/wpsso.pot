@@ -2599,7 +2599,7 @@ msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:144 lib/post.php:1093 lib/pro/admin/meta.php:162
+#: lib/gpl/admin/meta.php:144 lib/post.php:1141 lib/pro/admin/meta.php:162
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
@@ -5300,129 +5300,129 @@ msgstr ""
 msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
 msgstr ""
 
-#: lib/post.php:883
+#: lib/post.php:889
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:885
+#: lib/post.php:891
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:887
+#: lib/post.php:893
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:888
+#: lib/post.php:894
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:898 lib/util.php:1324
+#: lib/post.php:906 lib/util.php:1324
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:907
+#: lib/post.php:919
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:916
+#: lib/post.php:932
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:925
+#: lib/post.php:945
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:941
+#: lib/post.php:980
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:951
+#: lib/post.php:992
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:963
+#: lib/post.php:1007
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:963
+#: lib/post.php:1007
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:963
+#: lib/post.php:1007
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:989
+#: lib/post.php:1037
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:990
+#: lib/post.php:1038
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:996
+#: lib/post.php:1044
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:999
+#: lib/post.php:1047
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1001
+#: lib/post.php:1049
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1232 lib/script.php:219
+#: lib/post.php:1280 lib/script.php:219
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1241
+#: lib/post.php:1289
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1242
+#: lib/post.php:1290
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1253
+#: lib/post.php:1301
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1254
+#: lib/post.php:1302
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1255
+#: lib/post.php:1303
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1256
+#: lib/post.php:1304
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1330
+#: lib/post.php:1378
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

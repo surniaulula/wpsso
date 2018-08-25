@@ -820,8 +820,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 *	"https://schema.org",
 				 *	array(
 				 *		"health-lifesci" => "https://health-lifesci.schema.org",
-				 *	)
-				 * )
+				 *	),
+				 * );
 				 *
 				 */
 				if ( preg_match( '/^(.+:\/\/)([^\.]+)\.([^\.]+\.[^\.]+)$/', $context_value, $ext ) ) {
@@ -1800,7 +1800,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$authors_added = 0;
+			$authors_added   = 0;
 			$coauthors_added = 0;
 
 			if ( empty( $user_id ) && isset( $mod['post_author'] ) ) {
@@ -2754,7 +2754,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret['baseSalary']['value'] = self::get_schema_type_context( 'https://schema.org/QuantitativeValue' );
 
 				self::add_data_itemprop_from_assoc( $ret['baseSalary']['value'], $job_opts, array(
-					'value' => 'job_salary',
+					'value'    => 'job_salary',
 					'unitText' => 'job_salary_period',
 				) );
 			}
@@ -3367,14 +3367,19 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $this->is_noscript_enabled( $crawler_name ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipping images: noscript is enabled for ' . $crawler_name );
 				}
+
 			} elseif ( empty( $this->p->options['add_meta_itemprop_image'] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'skipping images: meta itemprop image is disabled' );
 				}
+
 			} else {	// Add single image meta tags (no width or height).
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting images for ' . $page_type_url );
 				}
