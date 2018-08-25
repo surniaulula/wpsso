@@ -41,7 +41,7 @@
 
 <p><strong>A reliable WordPress plugin for today <em>and</em> tomorrow:</strong></p>
 
-<p>WPSSO Core is 100% compatible with the <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in the upcoming release of WordPress 5.</p>
+<p>WPSSO Core is 100% compatible with the new <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in the upcoming release of WordPress 5.</p>
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
