@@ -327,6 +327,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.11.2-dev.1 (2018/08/26)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Added sub-types to the Schema AdministrativeArea type:
+		* City
+		* Country
+		* State
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.11.1 (2018/08/25)**
 
 * *New Features*
