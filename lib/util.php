@@ -443,7 +443,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$use_post = false;
 			$has_pdir = $this->p->avail['*']['p_dir'];
-			$has_aop  = $this->p->check->aop( $this->p->lca, true, $has_pdir );
+			$has_pp   = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 
 			/**
 			 * The $mod array argument is preferred but not required.
@@ -472,7 +472,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'module name is unknown' );
 				}
-			} elseif ( ! empty( $mod['id'] ) && ! empty( $mod['obj'] ) && $has_aop ) {
+			} elseif ( ! empty( $mod['id'] ) && ! empty( $mod['obj'] ) && $has_pp ) {
 
 				/**
 				 * Returns an empty string if no meta found.

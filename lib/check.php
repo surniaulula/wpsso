@@ -14,7 +14,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 	class WpssoCheck {
 
 		private $p;
-		private static $c = array();
+		private static $pp_c = array();
 		private static $extend_lib_checks = array(
 			'seo' => array(
 				'jetpack-seo' => 'Jetpack SEO Tools',
@@ -37,27 +37,27 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		 */
 		public function get_avail() {
 
-			$avail = array();
-			$is_admin = is_admin();
-			$jetpack_modules = method_exists( 'Jetpack', 'get_active_modules' ) ? Jetpack::get_active_modules() : array();
+			$is_admin     = is_admin();
+			$jetpack_mods = method_exists( 'Jetpack', 'get_active_modules' ) ? Jetpack::get_active_modules() : array();
+			$get_avail    = array();	// Initialize the array to return.
 
 			foreach ( array( 'featured', 'amp', 'p_dir', 'head_html', 'vary_ua' ) as $key ) {
-				$avail['*'][$key] = $this->is_avail( $key );
+				$get_avail['*'][$key] = $this->is_avail( $key );
 			}
 
 			$lib_checks = SucomUtil::array_merge_recursive_distinct( $this->p->cf['*']['lib']['pro'], self::$extend_lib_checks );
 
 			foreach ( $lib_checks as $sub => $lib ) {
 
-				$avail[$sub] = array();
-				$avail[$sub]['*'] = false;
+				$get_avail[$sub] = array();
+				$get_avail[$sub]['*'] = false;
 
 				foreach ( $lib as $id => $name ) {
 
 					$chk = array();
-					$avail[$sub][$id] = false;	// default value
+					$get_avail[$sub][$id] = false;	// default value
 
-					switch ( $sub.'-'.$id ) {
+					switch ( $sub . '-' . $id ) {
 
 						/**
 						 * 3rd Party Plugins
@@ -163,9 +163,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'seo-jetpack-seo':
 
-							if ( ! empty( $jetpack_modules ) ) {
-								if ( in_array( 'seo-tools', $jetpack_modules ) ) {
-									$avail[$sub]['*'] = $avail[$sub][$id] = true;
+							if ( ! empty( $jetpack_mods ) ) {
+								if ( in_array( 'seo-tools', $jetpack_mods ) ) {
+									$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
 								}
 							}
 
@@ -213,7 +213,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'media-wpvideo':
 						case 'media-youtube':
 
-							$chk['optval'] = 'plugin_'.$id.'_api';
+							$chk['optval'] = 'plugin_' . $id . '_api';
 
 							break;
 
@@ -230,7 +230,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							if ( $is_admin ) {
 								$page = basename( $_SERVER['PHP_SELF'] );
 								if ( $page === 'admin.php' || $page === 'options-general.php' ) {
-									$avail[$sub]['*'] = $avail[$sub][$id] = true;
+									$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
 								}
 							}
 
@@ -240,7 +240,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'admin-meta':
 
 							if ( $is_admin ) {
-								$avail[$sub]['*'] = $avail[$sub][$id] = true;
+								$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
 							}
 
 							break;
@@ -261,7 +261,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'util-term':
 						case 'util-user':
 
-							$avail[$sub]['*'] = $avail[$sub][$id] = true;
+							$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
 
 							break;
 
@@ -301,23 +301,23 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								 */
 								if ( isset( $chk['optval'] ) ) {
 									if ( $this->has_optval( $chk['optval'] ) ) {
-										$avail[$sub]['*'] = $avail[$sub][$id] = true;
+										$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
 									}
 								} else {
-									$avail[$sub]['*'] = $avail[$sub][$id] = true;
+									$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
 								}
 							}
 
 						} elseif ( isset( $chk['optval'] ) ) {
 
 							if ( $this->has_optval( $chk['optval'] ) ) {
-								$avail[$sub]['*'] = $avail[$sub][$id] = true;
+								$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
 							}
 
 						} elseif ( isset( $chk['constant'] ) ) {
 
 							if ( defined( $chk['constant'] ) ) {
-								$avail[$sub]['*'] = $avail[$sub][$id] = true;
+								$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
 							}
 						}
 					}
@@ -328,10 +328,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			 * Define WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE as true to disable WPSSO's SEO related meta tags and features.
 			 */
 			if ( SucomUtil::get_const( 'WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE' ) ) {
-				$avail['seo']['*'] = true;
+				$get_avail['seo']['*'] = true;
 			}
 
-			return apply_filters( $this->p->lca.'_get_avail', $avail );
+			return apply_filters( $this->p->lca . '_get_avail', $get_avail );
 		}
 
 		/**
@@ -358,7 +358,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				case 'p_dir':
 
 					$is_avail = ! SucomUtil::get_const( 'WPSSO_PRO_MODULE_DISABLE' ) &&
-						is_dir( WPSSO_PLUGINDIR.'lib/pro/' ) ? true : false;
+						is_dir( WPSSO_PLUGINDIR . 'lib/pro/' ) ? true : false;
 
 					break;
 
@@ -390,54 +390,94 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $is_avail;
 		}
 
-		public function is_aop( $lca = '', $uc = true ) {
-			return $this->aop( $lca, true, ( isset( $this->p->avail['*']['p_dir'] ) ?
+		/**
+		 * Deprecated on 2018/08/27.
+		 */
+		public function is_aop( $ext = '', $uc = true ) {
+			return $this->is_pp( $ext, $uc );
+		}
+
+		public function is_pp( $ext = '', $uc = true ) {
+			return $this->pp( $ext, true, ( isset( $this->p->avail['*']['p_dir'] ) ?
 				$this->p->avail['*']['p_dir'] : $this->is_avail( 'p_dir' ) ), $uc );
 		}
 
-		public function aop( $lca = '', $lic = true, $rv = true, $uc = true ) {
-			$lca = empty( $lca ) ? $this->p->lca : $lca;
-			$kn = $lca.'-'.$lic.'-'.$rv;
-			if ( $uc && isset( self::$c[$kn] ) )
-				return self::$c[$kn];
-			$uca = strtoupper( $lca );
-			if ( defined( $uca.'_PLUGINDIR' ) ) {
-				$pdir = constant( $uca.'_PLUGINDIR' );
-			} elseif ( isset( $this->p->cf['plugin'][$lca]['slug'] ) ) {
-				$slug = $this->p->cf['plugin'][$lca]['slug'];
+		/**
+		 * Deprecated on 2018/08/27.
+		 */
+		public function aop( $ext = '', $lic = true, $rv = true, $uc = true ) {
+			return $this->pp( $ext, $lic, $rv, $uc );
+		}
+
+		public function pp( $ext = '', $lic = true, $rv = true, $uc = true ) {
+
+			$ext = empty( $ext ) ? $this->p->lca : $ext;
+			$key = $ext . '-' . $lic . '-' . $rv;
+
+			if ( $uc && isset( self::$pp_c[$key] ) ) {
+				return self::$pp_c[$key];
+			}
+
+			$uca = strtoupper( $ext );
+
+			if ( defined( $uca . '_PLUGINDIR' ) ) {
+
+				$pdir = constant( $uca . '_PLUGINDIR' );
+
+			} elseif ( isset( $this->p->cf['plugin'][$ext]['slug'] ) ) {
+
+				$slug = $this->p->cf['plugin'][$ext]['slug'];
+
 				if ( ! defined ( 'WPMU_PLUGIN_DIR' ) ||
-					! is_dir( $pdir = WPMU_PLUGIN_DIR.'/'.$slug.'/' ) ) {
+					! is_dir( $pdir = WPMU_PLUGIN_DIR . '/' . $slug . '/' ) ) {
+
 					if ( ! defined ( 'WP_PLUGIN_DIR' ) ||
-						! is_dir( $pdir = WP_PLUGIN_DIR.'/'.$slug.'/' ) )
-							return self::$c[$kn] = false;
+						! is_dir( $pdir = WP_PLUGIN_DIR . '/' . $slug . '/' ) ) {
+						return self::$pp_c[$key] = false;
+					}
 				}
-			} else return self::$c[$kn] = false;
-			$on = 'plugin_'.$lca.'_tid';
-			$ins = is_dir( $pdir.'lib/pro/' ) ? $rv : false;
-			return self::$c[$kn] = true === $lic ?
-				( ( ! empty( $this->p->options[$on] ) &&
+
+			} else {
+				return self::$pp_c[$key] = false;
+			}
+
+			$idx = 'plugin_' . $ext . '_tid';
+			$ins = is_dir( $pdir . 'lib/pro/' ) ? $rv : false;
+
+			return self::$pp_c[$key] = true === $lic ?
+				( ( ! empty( $this->p->options[$idx] ) &&
 					$ins && class_exists( 'SucomUpdate' ) &&
-						( $uerr = SucomUpdate::get_umsg( $lca ) ?
+						( $uerr = SucomUpdate::get_umsg( $ext ) ?
 							false : $ins ) ) ? $uerr : false ) : $ins;
 		}
 
 		public function get_ext_list() {
+
 			$ext_list = array();
+
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-				if ( empty( $info['version'] ) ) {	// only active add-ons
+
+				if ( empty( $info['version'] ) ) {	// Only active add-ons.
 					continue;
 				}
-				$ins = $this->aop( $ext, false );
-				$ext_list[] = $info['short'].' '.$info['version'].'/'.( $this->is_aop( $ext ) ? 'L' : ( $ins ? 'U' : 'F' ) );
+
+				$ins = $this->pp( $ext, false );
+
+				$ext_list[] = $info['short'] . ' ' . $info['version'] . '/' . 
+					( $this->is_pp( $ext ) ? 'L' : ( $ins ? 'U' : 'F' ) );
 			}
+
 			return $ext_list;
 		}
 
 		private function has_optval( $opt_name ) {
+
 			if ( ! empty( $opt_name ) &&
 				! empty( $this->p->options[$opt_name] ) &&
-					$this->p->options[$opt_name] !== 'none' )
-						return true;
+					$this->p->options[$opt_name] !== 'none' ) {
+
+				return true;
+			}
 		}
 	}
 }

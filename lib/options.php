@@ -280,7 +280,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				if ( ! $network ) {
 
-					if ( $this->p->check->aop( $this->p->lca, false, $this->p->avail['*']['p_dir'] ) ) {
+					if ( $this->p->check->pp( $this->p->lca, false, $this->p->avail['*']['p_dir'] ) ) {
 
 						foreach ( array( 'plugin_hide_pro' => 0 ) as $idx => $def_val ) {
 							if ( $opts[$idx] === $def_val ) {

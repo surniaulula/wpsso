@@ -418,7 +418,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			$has_pdir    = $this->p->avail['*']['p_dir'];
-			$has_aop     = $this->p->check->aop( $this->p->lca, true, $has_pdir );
+			$has_pp      = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 			$max_nums    = $this->p->util->get_max_nums( $mod );
 			$post_id     = $mod['is_post'] ? $mod['id'] : false;
 			$check_dupes = true;
@@ -546,7 +546,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *
 			 * Call before getting all images to find / use preview images.
 			 */
-			if ( ! isset( $mt_og['og:video'] ) && $has_aop ) {
+			if ( ! isset( $mt_og['og:video'] ) && $has_pp ) {
 
 				if ( empty( $max_nums['og_vid_max'] ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -884,7 +884,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$og_ret   = array();
 			$has_pdir = $this->p->avail['*']['p_dir'];
-			$has_aop  = $this->p->check->aop( $this->p->lca, true, $has_pdir );
+			$has_pp   = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 			$use_prev = $this->p->options['og_vid_prev_img'];		// default option value is true/false
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
@@ -893,7 +893,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Get video information and preview enable/disable option from the post/term/user meta.
 			 */
-			if ( $has_aop && ! empty( $mod['obj'] ) ) {
+			if ( $has_pp && ! empty( $mod['obj'] ) ) {
 
 				/**
 				 * Note that get_options() returns null if an index key is not found.
@@ -958,7 +958,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * The og:video:title and og:video:description meta tags are not standard and their values will
 			 * only appear in Schema markup.
 			 */
-			if ( $has_aop && ! empty( $mod['obj'] ) && $md_pre !== 'none' ) {
+			if ( $has_pp && ! empty( $mod['obj'] ) && $md_pre !== 'none' ) {
 
 				foreach ( $og_ret as $num => $og_single_video ) {
 
@@ -1190,7 +1190,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$ret       = array();
 			$has_pdir  = $this->p->avail['*']['p_dir'];
-			$has_aop   = $this->p->check->aop( $this->p->lca, true, $has_pdir );
+			$has_pp    = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 			$og_images = null;
 			$og_videos = null;
 
@@ -1209,7 +1209,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					case ( preg_match( '/^(vid|prev)/', $key ) ? true : false ):
 
-						if ( null === $og_videos && $has_aop ) {	// Get videos only once.
+						if ( null === $og_videos && $has_pp ) {	// Get videos only once.
 							$og_videos = $this->get_all_videos( 1, $mod, false, $md_pre );	// $check_dupes is false.
 						}
 

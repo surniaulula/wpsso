@@ -186,23 +186,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$has_pdir = $this->p->avail['*']['p_dir'];
-			$has_aop = $this->p->check->aop( $this->p->lca, true, $has_pdir );
+			$has_pp   = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				self::$pkg[$ext]['pdir'] = $this->p->check->aop( $ext, false, $has_pdir );
+				self::$pkg[$ext]['pdir'] = $this->p->check->pp( $ext, false, $has_pdir );
 
-				self::$pkg[$ext]['aop'] = ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) &&
-					$has_aop && $this->p->check->aop( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? true : false;
+				self::$pkg[$ext]['pp'] = ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) &&
+					$has_pp && $this->p->check->pp( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? true : false;
 
-				self::$pkg[$ext]['type'] = self::$pkg[$ext]['aop'] ?
+				self::$pkg[$ext]['type'] = self::$pkg[$ext]['pp'] ?
 					_x( 'Pro', 'package type', 'wpsso' ) : _x( 'Free', 'package type', 'wpsso' );
 
 				self::$pkg[$ext]['short'] = $info['short'] . ' ' . self::$pkg[$ext]['type'];
 
 				self::$pkg[$ext]['name'] = SucomUtil::get_pkg_name( $info['name'], self::$pkg[$ext]['type'] );
 
-				self::$pkg[$ext]['status'] = self::$pkg[$ext]['aop'] ? 'L' : ( self::$pkg[$ext]['pdir'] ? 'U' : 'F' );
+				self::$pkg[$ext]['status'] = self::$pkg[$ext]['pp'] ? 'L' : ( self::$pkg[$ext]['pdir'] ? 'U' : 'F' );
 
 				self::$pkg[$ext]['gen'] = $info['short'] . ' ' . ( isset( $info['version'] ) ?
 					$info['version'] . '/' . self::$pkg[$ext]['status'] : '' );
@@ -581,7 +581,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						_x( 'Documentation', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
-			if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
+			if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['pp'] ) {
 				$action_links[] = '<a href="' . $info['url']['support'] . '"' .
 					( $tabindex !== false ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
 						_x( 'Pro Support', 'plugin action link', 'wpsso' ) . '</a>';
@@ -968,7 +968,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_side_meta_boxes() {
-			if ( ! self::$pkg[$this->p->lca]['aop'] ) {
+			if ( ! self::$pkg[$this->p->lca]['pp'] ) {
 				add_meta_box( $this->pagehook . '_purchase_pro', _x( 'Pro Version Available', 'metabox title', 'wpsso' ),
 					array( $this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side_fixed' );
 				add_meta_box( $this->pagehook . '_status_pro', _x( 'Pro Version Features', 'metabox title', 'wpsso' ),
@@ -1022,7 +1022,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo $this->menu_name;
 			echo '</span></h1>' . "\n";
 
-			if ( ! self::$pkg[$this->p->lca]['aop'] ) {
+			if ( ! self::$pkg[$this->p->lca]['pp'] ) {
 				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">' . "\n";
 				echo '<div id="side-info-column" class="inner-sidebar">' . "\n";
 
@@ -1319,7 +1319,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</td></tr>';
 
 			if ( $have_filtered_exp ) {
-				if ( self::$pkg[$this->p->lca]['aop'] ) {
+				if ( self::$pkg[$this->p->lca]['pp'] ) {
 					echo '<tr><td colspan="' . $table_cols . '"><small>[F] ' .
 						__( 'Expiration option value has been modified by a filter.',
 							'wpsso' ) . '</small></em></td></tr>';
@@ -1527,9 +1527,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$status_off = $this->p->avail[$sub][$id] ? 'rec' : 'off';
 
 						$features[$label] = array(
-							'td_class' => self::$pkg[$ext]['aop'] ? '' : 'blank',
+							'td_class' => self::$pkg[$ext]['pp'] ? '' : 'blank',
 							'purchase' => self::$pkg[$ext]['purchase'],
-							'status' => class_exists( $classname ) ? ( self::$pkg[$ext]['aop'] ? 'on' : $status_off ) : $status_off,
+							'status' => class_exists( $classname ) ? ( self::$pkg[$ext]['pp'] ? 'on' : $status_off ) : $status_off,
 						);
 					}
 				}
@@ -1692,7 +1692,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$action_links[] = sprintf( __( '<a href="%s">Documentation and Notes</a>', 'wpsso' ), $info['url']['notes'] );
 				}
 
-				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['aop'] ) {
+				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['pp'] ) {
 					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info['url']['support'] ) .
 						' (' . __( 'Pro version', 'wpsso' ) . ')';
 				} elseif ( ! empty( $info['url']['forum'] ) ) {
@@ -1887,7 +1887,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$table_rows['plugin_tid'] = $this->form->get_th_html( sprintf( _x( '%s Authentication ID',
 					'option label', 'wpsso' ), $info['short'] ), 'medium nowrap' );
 
-				if ( $this->p->lca === $ext || self::$pkg[$this->p->lca]['aop'] ) {
+				if ( $this->p->lca === $ext || self::$pkg[$this->p->lca]['pp'] ) {
 
 					$table_rows['plugin_tid'] .= '<td width="100%">' .
 						$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono', '', 0, 
@@ -2761,7 +2761,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// Show only one notice at a time.
 			}
 
-			if ( ! self::$pkg[$lca]['aop'] ) {
+			if ( ! self::$pkg[$lca]['pp'] ) {
 
 				if ( ! empty( $all_times[$lca . '_install_time'] ) && $all_times[$lca . '_install_time'] < $six_months_ago_secs ) {
 
@@ -3295,7 +3295,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->form->get_checkbox( 'plugin_debug' ) ) . '</td>' .
 			self::get_option_site_use( 'plugin_debug', $this->form, $network, true );
 
-			if ( $network || ! $this->p->check->aop( $this->p->lca, true, $this->p->avail['*']['p_dir'] ) ) {
+			if ( $network || ! $this->p->check->pp( $this->p->lca, true, $this->p->avail['*']['p_dir'] ) ) {
 
 				$table_rows['plugin_hide_pro'] = $this->form->get_tr_hide( 'basic', 'plugin_hide_pro' ) .
 				$this->form->get_th_html( _x( 'Hide All Pro Version Options', 'option label', 'wpsso' ), '', 'plugin_hide_pro' ) .
@@ -3316,7 +3316,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $network ) {
 				return $form->get_th_html( _x( 'Site Use',
 					'option label (very short)', 'wpsso' ),
-						'site_use' ).( $enabled || self::$pkg['wpsso']['aop'] ?
+						'site_use' ).( $enabled || self::$pkg['wpsso']['pp'] ?
 					'<td class="site_use">' . $form->get_select( $name . ':use',
 						WpssoConfig::$cf['form']['site_option_use'], 'site_use' ) . '</td>' :
 					'<td class="blank site_use">' . $form->get_select( $name . ':use',

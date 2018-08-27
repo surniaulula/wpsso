@@ -1956,7 +1956,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'Don\'t forget that the %1$s Free add-on must also be installed and active to check for Pro version updates.', 'wpsso' ), $um_info['name'] ) . ' ;-)</p>';
 
-							if ( ! WpssoAdmin::$pkg[$lca]['aop'] ) {
+							if ( ! WpssoAdmin::$pkg[$lca]['pp'] ) {
 								$text .= '<p>' . sprintf( __( 'Please note that Pro add-ons use several %1$s features. This means that all Pro add-ons require an active and licensed %1$s plugin &mdash; don\'t forget to purchase %1$s before purchasing any of its Pro add-ons.', 'wpsso' ), $info['short_pro'] ) . ' ;-)</p>';
 							}
 
@@ -2052,7 +2052,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						if ( $lca === $this->p->lca ) {
 
-							if ( $this->p->check->aop( $lca, false ) ) {
+							if ( $this->p->check->pp( $lca, false ) ) {
 								$text = $begin_p . sprintf( __( 'Purchase %s plugin license(s) to use the following features / options.',
 									'wpsso' ), $info['short_pro'] ) . $end_p;
 							} else {
@@ -2064,14 +2064,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$has_pdir = $this->p->avail['*']['p_dir'];
 
-							if ( ! $this->p->check->aop( $this->p->lca, true, $has_pdir ) ) {
+							if ( ! $this->p->check->pp( $this->p->lca, true, $has_pdir ) ) {
 								$req_short = $this->p->cf['plugin'][$this->p->lca]['short'] . ' Pro';
 								$req_msg   = sprintf( __( '(note that all Pro add-ons require a licensed and active %1$s plugin)',
 									'wpsso' ), $req_short );
 								$end_p     = ( empty( $url['purchase'] ) ? '' : '</a>' ) . '<br/>' . $req_msg . '</p>';
 							}
 
-							if ( $this->p->check->aop( $lca, false ) ) {
+							if ( $this->p->check->pp( $lca, false ) ) {
 								$text = $begin_p . sprintf( __( 'Purchase %s add-on licence(s) to use the following features / options.',
 									'wpsso' ), $info['short_pro'] ) . $end_p;
 							} else {
@@ -2107,7 +2107,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 						}
 						
-						if ( WpssoAdmin::$pkg[$info['ext']]['aop'] ) {
+						if ( WpssoAdmin::$pkg[$info['ext']]['pp'] ) {
 							$text = _x( 'More Licenses', 'plugin action link', 'wpsso' );
 						} elseif ( $info['ext'] === $lca ) {
 							$text = _x( 'Purchase Core Pro', 'plugin action link', 'wpsso' );
@@ -2117,7 +2117,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						if ( ! empty( $info['url'] ) ) {
 
-							if ( $info['ext'] !== $lca && ! WpssoAdmin::$pkg[$lca]['aop'] ) {
+							if ( $info['ext'] !== $lca && ! WpssoAdmin::$pkg[$lca]['pp'] ) {
 								$text .= ' <em>' . _x( '(Core Pro required)', 'plugin action link', 'wpsso' ) . '</em>';
 							} else {
 								$text = '<a href="' . $info['url'] . '"' . ( empty( $info['tabindex'] ) ? '' :
