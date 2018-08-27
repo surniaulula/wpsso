@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.11.2-dev.1 (2018/08/26)**
+**Version 4.11.2-dev.2 (2018/08/27)**
 
 * *New Features*
 	* None.
@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* Minor code changes to rename the package check method.
 
 **Version 4.11.1 (2018/08/25)**
 
@@ -671,6 +671,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Improved checking of WooCommerce cart, checkout, shop, and account page IDs (Pro version).
 
 == Upgrade Notice ==
+
+= 4.11.2-dev.2 =
+
+(2018/08/27) Added sub-types to the Schema AdministrativeArea type.
 
 = 4.11.1 =
 
