@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.8
-WC Tested Up To: 3.4.4
+WC Tested Up To: 3.4.5
 Stable Tag: 4.11.1
 
 Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.
@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.11.2-dev.2 (2018/08/27)**
+**Version 4.11.2-dev.3 (2018/08/30)**
 
 * *New Features*
 	* None.
@@ -672,9 +672,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.11.2-dev.2 =
+= 4.11.2-dev.3 =
 
-(2018/08/27) Added sub-types to the Schema AdministrativeArea type.
+(2018/08/30) Added sub-types to the Schema AdministrativeArea type.
 
 = 4.11.1 =
 
