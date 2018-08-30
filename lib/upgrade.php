@@ -184,11 +184,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'org_alt_name' => 'org_name_alt',
 				),
 			),
-			'wpssoplm' => array(	// WPSSO PLM
-				16 => array(
-					'plm_addr_alt_name' => 'plm_addr_name_alt',
-				),
-			),
 			'wpssossb' => array(	// WPSSO SSB
 				14 => array(
 					'stumble_js_loc'  => 'stumble_script_loc',
@@ -332,7 +327,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				 */
 				if ( $prev_version > 0 && $prev_version <= 566 ) {
 
-					$keys_preg = 'schema_type_.*|schema_review_item_type|site_org_type|org_type|plm_addr_business_type';
+					$keys_preg = 'schema_type_.*|schema_review_item_type|site_org_type|org_type|plm_place_schema_type';
 
 					foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $opts ) as $key => $val ) {
 						if ( ! empty( $this->p->cf['head']['schema_renamed'][$val] ) ) {
@@ -349,6 +344,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				}
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
+
 				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $this->p->lca . '_rename_site_options_keys',
 					self::$rename_site_options_keys ) );
 			}

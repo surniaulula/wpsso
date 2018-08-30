@@ -83,53 +83,53 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$form_rows = array(
 				'og_type' => array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_type' ),
-					'label' => _x( 'Open Graph Type', 'option label', 'wpsso' ),
+					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'post-og_type', 'td_class' => 'blank',
-					'content' => $form->get_select( 'og_type', $og_types,
+					'content'  => $form->get_select( 'og_type', $og_types,
 						'', '', true, $def_og_type, $def_og_type, 'unhide_rows' ) .
 							$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_art_section' => array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
-					'label' => _x( 'Article Topic', 'option label', 'wpsso' ),
+					'label'    => _x( 'Article Topic', 'option label', 'wpsso' ),
 					'th_class' => 'medium', 'tooltip' => 'post-og_art_section', 'td_class' => 'blank',
-					'content' => $form->get_select( 'og_art_section', $art_topics,
+					'content'  => $form->get_select( 'og_art_section', $art_topics,
 						'', '', false, $def_art_section, $def_art_section ) .
 							$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_title' => array(
 					'no_auto_draft' => true,
-					'label' => _x( 'Default Title', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-og_title', 'td_class' => 'blank',
-					'content' => $form->get_no_input_value( $def_og_title, 'wide' ),
+					'label'         => _x( 'Default Title', 'option label', 'wpsso' ),
+					'th_class'      => 'medium', 'tooltip' => 'meta-og_title', 'td_class' => 'blank',
+					'content'       => $form->get_no_input_value( $def_og_title, 'wide' ),
 				),
 				'og_desc' => array(
 					'no_auto_draft' => true,
-					'label' => _x( 'Default Description', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'post-og_desc', 'td_class' => 'blank',
-					'content' => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
+					'label'         => _x( 'Default Description', 'option label', 'wpsso' ),
+					'th_class'      => 'medium', 'tooltip' => 'post-og_desc', 'td_class' => 'blank',
+					'content'       => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
 				),
 				'seo_desc' => array(
 					'no_auto_draft' => true,
-					'tr_class' => ( $add_meta_name_desc ? '' : 'hide_in_basic' ), // Always hide if head tag is disabled.
-					'label' => _x( 'Search Description', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
-					'content' => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) .
+					'tr_class'      => ( $add_meta_name_desc ? '' : 'hide_in_basic' ), // Always hide if head tag is disabled.
+					'label'         => _x( 'Search Description', 'option label', 'wpsso' ),
+					'th_class'      => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
+					'content'       => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) .
 						( $add_meta_name_desc ? '' : '<p class="status-msg smaller">' . 
 							sprintf( $seo_msg_transl, 'meta name description' ) . '</p>' ),
 				),
 				'tc_desc' => array(
 					'no_auto_draft' => true,
-					'label' => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-tc_desc', 'td_class' => 'blank',
-					'content' => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),
+					'label'         => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
+					'th_class'      => 'medium', 'tooltip' => 'meta-tc_desc', 'td_class' => 'blank',
+					'content'       => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),
 				),
 				'sharing_url' => array(
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
-					'tr_class' => $form->get_css_class_hide( 'basic', 'sharing_url' ),
-					'label' => _x( 'Sharing URL', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-sharing_url', 'td_class' => 'blank',
-					'content' => $form->get_no_input_value( $sharing_url, 'wide' ),
+					'tr_class'      => $form->get_css_class_hide( 'basic', 'sharing_url' ),
+					'label'         => _x( 'Sharing URL', 'option label', 'wpsso' ),
+					'th_class'      => 'medium', 'tooltip' => 'meta-sharing_url', 'td_class' => 'blank',
+					'content'       => $form->get_no_input_value( $sharing_url, 'wide' ),
 				),
 				'canonical_url' => array(
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),

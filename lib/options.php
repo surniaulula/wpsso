@@ -628,7 +628,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$img_url_keys = preg_grep( '/^plugin_cf_/', array_keys( $opts ), PREG_GREP_INVERT );
 
 			/**
-			 * Allow for multi-option keys, like 'place_addr_img_url_1'.
+			 * Allow for multi-option keys, like 'place_img_url_1'.
 			 */
 			$img_url_keys = preg_grep( '/_(img|logo|banner)_url(_[0-9]+)?(#[a-zA-Z_]+)?$/', $img_url_keys );
 

@@ -2923,10 +2923,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Check for a custom place id that might have precedence.
 				 *
-				 * 'plm_addr_id' can be 'none', 'custom', or numeric (including 0).
+				 * 'plm_place_id' can be 'none', 'custom', or numeric (including 0).
 				 */
 				if ( ! empty( $mod['obj'] ) ) {
-					$place_id = $mod['obj']->get_options( $mod['id'], 'plm_addr_id' );
+					$place_id = $mod['obj']->get_options( $mod['id'], 'plm_place_id' );
 				} else {
 					$place_id = null;
 				}
@@ -2935,7 +2935,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$place_id = $org_opts['org_place_id'];
 				} else {
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'overriding org_place_id ' . $org_opts['org_place_id'] . ' with plm_addr_id ' . $place_id );
+						$wpsso->debug->log( 'overriding org_place_id ' . $org_opts['org_place_id'] . ' with plm_place_id ' . $place_id );
 					}
 				}
 
@@ -3149,7 +3149,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $place_type_id, $place_type_url ) = self::get_single_type_id_url( $json_data, $place_opts, 'place_business_type', 'place', $list_element );
+			list( $place_type_id, $place_type_url ) = self::get_single_type_id_url( $json_data, $place_opts, 'place_schema_type', 'place', $list_element );
 
 			$ret = self::get_schema_type_context( $place_type_url );
 
@@ -3179,18 +3179,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Property:
 			 *	address as https://schema.org/PostalAddress
 			 */
-			$address = array();
+			$postal_address = array();
 
-			if ( self::add_data_itemprop_from_assoc( $address, $place_opts, array(
+			if ( self::add_data_itemprop_from_assoc( $postal_address, $place_opts, array(
 				'name'                => 'place_name', 
-				'streetAddress'       => 'place_streetaddr', 
+				'streetAddress'       => 'place_street_address', 
 				'postOfficeBoxNumber' => 'place_po_box_number', 
 				'addressLocality'     => 'place_city',
 				'addressRegion'       => 'place_state',
 				'postalCode'          => 'place_zipcode',
 				'addressCountry'      => 'place_country',	// Alpha2 country code.
 			) ) ) {
-				$ret['address'] = self::get_schema_type_context( 'https://schema.org/PostalAddress', $address );
+				$ret['address'] = self::get_schema_type_context( 'https://schema.org/PostalAddress', $postal_address );
 			}
 
 			/**
@@ -3246,9 +3246,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * FoodEstablishment schema type properties
 			 */
-			if ( ! empty( $place_opts['place_business_type'] ) && $place_opts['place_business_type'] !== 'none' ) {
+			if ( ! empty( $place_opts['place_schema_type'] ) && $place_opts['place_schema_type'] !== 'none' ) {
 
-				if ( $wpsso->schema->is_schema_type_child( $place_opts['place_business_type'], 'food.establishment' ) ) {
+				if ( $wpsso->schema->is_schema_type_child( $place_opts['place_schema_type'], 'food.establishment' ) ) {
 
 					foreach ( array(
 						'acceptsReservations' => 'place_accept_res',

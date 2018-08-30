@@ -331,6 +331,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$html        = '';
+			$tr_id       = empty( $css_id ) ? 'tr_' . $name : 'tr_' . $css_id;
 			$input_id    = empty( $css_id ) ? 'select_' . $name : 'select_' . $css_id;
 			$in_options  = $this->in_options( $name );	// optimize and call only once
 			$in_defaults = $this->in_defaults( $name );	// optimize and call only once
@@ -345,18 +346,41 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							SucomUtil::get_prot() . '://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] );
 
 						$html .= '<script type="text/javascript">' .
-							'jQuery( function(){ jQuery("#' . esc_js( $input_id ) . '").change( function(){ ' . 
-								'sucomSelectChangeRedirect("' . esc_js( $name ) . '",' . 
-									'this.value,"' . SucomUtil::esc_url_encode( $redirect_url ) . '"); }); });</script>' . "\n";
+							'jQuery( function(){ jQuery( "#' . esc_js( $input_id ) . '" ).change( function(){ ' . 
+								'sucomSelectChangeRedirect( "' . esc_js( $name ) . '",' . 
+									'this.value,"' . SucomUtil::esc_url_encode( $redirect_url ) . '" ); }); });</script>' . "\n";
 
 						break;
 
+					case 'unhide_rows_on_show':
+
+						static $show_hide_event_added = null;
+
+						if ( $show_hide_event_added === null ) {	// Only add once.
+
+							$show_hide_event_added = true;
+
+							$html .= "\n" . '<script type="text/javascript">(
+								function( $ ){
+									$.each( [ "show", "hide" ], function( i, val ){
+										var _org = $.fn[val];
+										$.fn[val] = function(){
+											this.trigger( val );
+											_org.apply( this, arguments );
+										};
+									});
+								})(jQuery);
+							</script>';
+						}
+
+						// No break.
+
 					case 'unhide_rows':
 
-						$html .= '<script type="text/javascript">' .
-							'jQuery( function(){ jQuery("#' . esc_js( $input_id ) . '").change( function(){ ' . 
-								'sucomSelectChangeUnhideRows("hide_' . esc_js( $name ) . '",' .
-									'"hide_' . esc_js( $name ) . '_"+this.value); }); });</script>' . "\n";
+						$html .= "\n" . '<script type="text/javascript">' .
+							'jQuery( function(){ jQuery( "#' . esc_js( $input_id ) . '" ).change( function(){ ' . 
+								'sucomSelectChangeUnhideRows( "hide_' . esc_js( $name ) . '",' .
+									'"hide_' . esc_js( $name ) . '_" + this.value ); }); });</script>' . "\n";
 
 						/**
 						 * If we have an option selected, unhide those rows.
@@ -365,21 +389,34 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							if ( true === $selected ) {
 								if ( $in_options ) {
-									$unhide = $this->options[$name];
+									$unhide_value = $this->options[$name];
 								} elseif ( $in_defaults ) {
-									$unhide = $this->defaults[$name];
+									$unhide_value = $this->defaults[$name];
 								} else {
-									$unhide = false;
+									$unhide_value = false;
 								}
 							} else {
-								$unhide = $selected;
+								$unhide_value = $selected;
 							}
 
-							if ( $unhide !== true ) {	// Just in case.
-								$html .= '<script type="text/javascript">' . 
-									'jQuery(document).ready( function(){ ' . 
-										'sucomSelectChangeUnhideRows("hide_' . esc_js( $name ) . '",' .
-											'"hide_' . esc_js( $name . '_' . $unhide ) . '"); });</script>' . "\n";
+							if ( $unhide_value !== true ) {	// Just in case.
+
+								if ( $on_change === 'unhide_rows_on_show' ) {
+
+									$html .= '<script type="text/javascript">' . 
+										'jQuery( "#' . esc_js( $tr_id ) . '" ).on( "show", function(){ ' . 
+											'sucomSelectChangeUnhideRows( "hide_' . esc_js( $name ) . '", ' .
+												'"hide_' . esc_js( $name . '_' . $unhide_value ) . '" ); });' .
+									'</script>' . "\n";
+
+								} else {
+
+									$html .= '<script type="text/javascript">' . 
+										'jQuery( document ).ready( function(){ ' . 
+											'sucomSelectChangeUnhideRows( "hide_' . esc_js( $name ) . '", ' .
+												'"hide_' . esc_js( $name . '_' . $unhide_value ) . '" ); });' . 
+									'</script>' . "\n";
+								}
 							}
 						}
 
@@ -1361,7 +1398,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_md_form_rows( &$table_rows, &$form_rows, &$head, &$mod, $auto_draft_msg = null ) {
+		public function get_md_form_rows( array $table_rows, array $form_rows, array $head = array(), array $mod = array(), $auto_draft_msg = null ) {
 		
 			if ( $auto_draft_msg === null ) {
 				$auto_draft_msg = 'Save a draft version or publish to update this value.';
@@ -1370,20 +1407,35 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			foreach ( $form_rows as $key => $val ) {
 
 				if ( empty( $val ) ) {
+
 					$table_rows[$key] = '';	// placeholder
+
 					continue;
 				}
 
 				if ( ! empty( $val['table_row'] ) ) {
+
 					$table_rows[ $key ] = $val['table_row'];
+
 					continue;
 				}
 
-				if ( ! empty( $val['no_auto_draft'] ) && ( empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ) ) {
-					$is_auto_draft = true;
-					$val['td_class'] = empty( $val['td_class'] ) ? 'blank' : $val['td_class'] . ' blank';
-				} else {
-					$is_auto_draft = false;
+				$is_auto_draft = false;
+
+				if ( isset( $mod['post_status'] ) ) {
+
+					/**
+					 * Do not show the option if the post status is empty or auto-draft.
+					 */
+					if ( ! empty( $val['no_auto_draft'] ) ) {
+
+						if ( empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ) {
+
+							$is_auto_draft = true;
+
+							$val['td_class'] = empty( $val['td_class'] ) ? 'blank' : $val['td_class'] . ' blank';
+						}
+					}
 				}
 
 				if ( empty( $val['label'] ) ) {	// Just in case.
@@ -1391,16 +1443,31 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				if ( ! empty( $val['header'] ) ) {
-					$table_rows[ $key ] = ( ! empty( $val['tr_class'] ) ? '<tr class="' . $val['tr_class'] . '">' . "\n" : '' ) .
-						'<td></td><td'.( ! empty( $val['td_class'] ) ? ' class="' . $val['td_class'] . '"' : '' ) .
-						'><' . $val['header'] . '>' . $val['label'] . '</' . $val['header'] . '></td>' . "\n";
+
+					$table_rows[ $key ] = empty( $val['tr_class'] ) ? '' : '<tr class="' . $val['tr_class'] . '">' . "\n";
+
+					$table_rows[ $key ] .= '<td></td>';
+					
+					$table_rows[ $key ] .= '<td' . ( ! empty( $val['td_class'] ) ? ' class="' . $val['td_class'] . '"' : '' ) . '>';
+					
+					$table_rows[ $key ] .= '<' . $val['header'] . '>' . $val['label'] . '</' . $val['header'] . '>';
+					
+					$table_rows[ $key ] .= '</td>' . "\n";
+
 				} else {
-					$table_rows[ $key ] = ( ! empty( $val['tr_class'] ) ? '<tr class="' . $val['tr_class'] . '">' . "\n" : '' ) .
-						$this->get_th_html( $val['label'], ( ! empty( $val['th_class'] ) ? $val['th_class'] : '' ),
-							( ! empty( $val['tooltip'] ) ? $val['tooltip'] : '' ) ) . "\n" . 
-						'<td'.( ! empty( $val['td_class'] ) ? ' class="' . $val['td_class'] . '"' : '' ) . '>' .
-						( $is_auto_draft ? '<em>' . $auto_draft_msg . '</em>' : ( ! empty( $val['content'] ) ? 
-							$val['content'] : '' ) ) . '</td>' . "\n";
+
+					$table_rows[ $key ] = empty( $val['tr_class'] ) ? '' : '<tr class="' . $val['tr_class'] . '">' . "\n";
+
+					$table_rows[ $key ] .= $this->get_th_html( $val['label'], 
+						( empty( $val['th_class'] ) ? '' : $val['th_class'] ),
+						( empty( $val['tooltip'] ) ? '' : $val['tooltip'] ) ) . "\n";
+
+					$table_rows[ $key ] .= '<td'.( empty( $val['td_class'] ) ? '' : ' class="' . $val['td_class'] . '"' ) . '>';
+
+					$table_rows[ $key ] .= $is_auto_draft ? '<em>' . $auto_draft_msg . '</em>' : 
+						( empty( $val['content'] ) ? '' : $val['content'] );
+							
+					$table_rows[ $key ] .= '</td>' . "\n";
 				}
 			}
 

@@ -246,10 +246,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$sorted_menu   = array();
 			$unsorted_menu = array();
 
-			$first_top_id = false;
-			$last_top_id  = false;
-			$first_ext_id = false;
-			$last_ext_id  = false;
+			$top_first_id = false;
+			$top_last_id  = false;
+			$ext_first_id = false;
+			$ext_last_id  = false;
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
@@ -266,21 +266,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						$unsorted_menu[] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
 
-						if ( false === $first_top_id ) {
-							$first_top_id = $menu_id;
+						if ( false === $top_first_id ) {
+							$top_first_id = $menu_id;
 						}
 
-						$last_top_id = $menu_id;
+						$top_last_id = $menu_id;
 
 					} else {
 
 						$sorted_menu[$ksort_key] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
 
-						if ( false === $first_ext_id ) {
-							$first_ext_id = $menu_id;
+						if ( false === $ext_first_id ) {
+							$ext_first_id = $menu_id;
 						}
 
-						$last_ext_id = $menu_id;
+						$ext_last_id = $menu_id;
 					}
 				}
 			}
@@ -289,20 +289,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( array_merge( $unsorted_menu, $sorted_menu ) as $key => $arg ) {
 
-				if ( $arg[1] === $first_top_id ) {
-					$css_class = 'first-top-submenu-page';
-				} elseif ( $arg[1] === $last_top_id ) {
-					$css_class = 'last-top-submenu-page';
-					if ( empty( $first_ext_id ) ) {
+				if ( $arg[1] === $top_first_id ) {
+
+					$css_class = 'top-first-submenu-page';
+
+				} elseif ( $arg[1] === $top_last_id ) {
+
+					$css_class = 'top-last-submenu-page';	// Underlined with add-ons.
+
+					if ( empty( $ext_first_id ) ) {
 						$css_class .= ' no-add-ons';
 					} else {
 						$css_class .= ' with-add-ons';
 					}
-				} elseif ( $arg[1] === $first_ext_id ) {
-					$css_class = 'first-ext-submenu-page';
-				} elseif ( $arg[1] === $last_ext_id ) {
-					$css_class = 'last-ext-submenu-page';
+
+				} elseif ( $arg[1] === $ext_first_id ) {
+
+					$css_class = 'ext-first-submenu-page';
+
+				} elseif ( $arg[1] === $ext_last_id ) {
+
+					$css_class = 'ext-last-submenu-page';
+
 				} else {
+
 					$css_class = '';
 				}
 

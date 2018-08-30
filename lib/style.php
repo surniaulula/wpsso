@@ -299,7 +299,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.menu-item-label {
 					width:100%;
 				}
-				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.last-top-submenu-page.with-add-ons {
+				#adminmenu ul.wp-submenu div.' . $this->p->lca . '-menu-item.top-last-submenu-page.with-add-ons {
 					padding-bottom:12px;
 					border-bottom:1px solid;
 				}

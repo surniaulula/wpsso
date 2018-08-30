@@ -15,11 +15,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		protected $p;
 
-		protected static $cache_wp_plugins = null;
-		protected static $cache_crawler_name = null;            // Saved crawler name from user-agent.
-		protected static $cache_locale_names = array();         // Saved get_locale() values.
-		protected static $cache_user_exists = array();          // Saved user_exists() values.
-		protected static $cache_filter_values = array();        // Saved filter return values.
+		protected static $cache_wp_plugins    = null;
+		protected static $cache_crawler_name  = null;		// Saved crawler name from user-agent.
+		protected static $cache_locale_names  = array();	// Saved get_locale() values.
+		protected static $cache_user_exists   = array();	// Saved user_exists() values.
+		protected static $cache_filter_values = array();	// Saved filter return values.
 
 		private static $currencies = array(
 			'AED' => 'United Arab Emirates dirham',

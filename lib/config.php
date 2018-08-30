@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.11.2-dev.2',	// Plugin version.
+					'version'     => '4.11.2-dev.3',	// Plugin version.
 					'opt_version' => '596',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1176,10 +1176,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_topics_cache_exp'    => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
 					'plugin_show_purge_count'    => 0,			// Show Cache Purge Count on Update.
-					'plugin_clear_on_save'       => 1,			// Clear All Caches on Save Settings.
-					'plugin_clear_all_refresh'   => 1,			// Auto-Refresh Cache After Clear All.
+					'plugin_clear_on_save'       => 0,			// Clear All Caches on Save Settings.
+					'plugin_clear_all_refresh'   => 0,			// Auto-Refresh Cache After Clear All.
 					'plugin_clear_short_urls'    => 0,			// Clear Short URLs on Clear All Caches.
-					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
+					'plugin_clear_for_comment'   => 0,			// Clear Post Cache for New Comment.
 					/**
 					 * Advanced settings - Service APIs tab.
 					 */
@@ -1311,13 +1311,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_types_cache_exp:use'     => 'default',
 					'plugin_show_purge_count'        => 0,			// Show Cache Purge Count on Update
 					'plugin_show_purge_count:use'    => 'default',
-					'plugin_clear_on_save'           => 1,			// Clear All Caches on Save Settings
+					'plugin_clear_on_save'           => 0,			// Clear All Caches on Save Settings
 					'plugin_clear_on_save:use'       => 'default',
-					'plugin_clear_all_refresh'       => 1,			// Auto-Refresh Cache After Clear All
+					'plugin_clear_all_refresh'       => 0,			// Auto-Refresh Cache After Clear All
 					'plugin_clear_all_refresh:use'   => 'default',
 					'plugin_clear_short_urls'        => 0,			// Clear Short URLs on Clear All Caches
 					'plugin_clear_short_urls:use'    => 'default',
-					'plugin_clear_for_comment'       => 1,			// Clear Post Cache for New Comment
+					'plugin_clear_for_comment'       => 0,			// Clear Post Cache for New Comment
 					'plugin_clear_for_comment:use'   => 'default',
 				),
 				/**
@@ -1684,15 +1684,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'display_name' => 'Display Name',
 					'nickname'     => 'Nickname',
 				),
+				'addr_select' => array(
+					'none'   => '[None]',
+					'custom' => '[Custom Address]',
+					'new'    => '[New Address]',
+				),
 				'org_select' => array(
 					'none' => '[None]',
 					'new'  => '[New Organization]',
 					'site' => '[WebSite Organization]',
 				),
-				'addr_select' => array(
+				'place_select' => array(
 					'none'   => '[None]',
-					'custom' => '[Custom Address]',
-					'new'    => '[New Address]',
+					'custom' => '[Custom Place]',
+					'new'    => '[New Place]',
 				),
 				'show_options' => array(
 					'basic' => 'Basic Options',

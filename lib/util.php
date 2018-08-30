@@ -231,8 +231,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$image_info = $this->get_image_url_info( $media_url );
 
 					list(
-						$opts[$opt_image_pre . ':width' . $opt_suffix],		// Example 'place_addr_img_url:width_1'.
-						$opts[$opt_image_pre . ':height' . $opt_suffix],	// Example 'place_addr_img_url:height_1'.
+						$opts[$opt_image_pre . ':width' . $opt_suffix],		// Example: place_img_url:width_1.
+						$opts[$opt_image_pre . ':height' . $opt_suffix],	// Example: place_img_url:height_1.
 						$image_type,
 						$image_attr
 					) = $image_info;
@@ -942,6 +942,23 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 						break;
 
+					case 'place_types':
+
+						$this->get_form_cache( 'all_types' );
+
+						self::$form_cache[$key] =& self::$form_cache['all_types']['thing']['place'];
+
+						break;
+
+					case 'place_types_select':
+
+						$this->get_form_cache( 'place_types' );
+
+						self::$form_cache[$key] = $this->p->schema->get_schema_types_select( self::$form_cache['place_types'], false );
+
+						break;
+
+					case 'org_types':
 					default:
 
 						self::$form_cache[$key] = apply_filters( $this->p->lca . '_form_cache_' . $key, self::$form_cache[$key] );
