@@ -587,9 +587,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_def_img_url':	// or Default / Fallback Image URL
 
-							$text = __( 'You can enter a default image URL (including the http:// prefix) instead of choosing an image ID &mdash; if a default image ID is specified, the image URL option is disabled.', 'wpsso' ).' ';
+							$text = __( 'You can enter a default image URL (including the http:// prefix) instead of choosing an image ID &mdash; if a default image ID is specified, it has precedence and the image URL option is disabled.', 'wpsso' ).' ';
 							
-							$text .= '<strong>'.__( 'The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image.', 'wpsso' ).'</strong> ';
+							$text .= __( 'The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image.', 'wpsso' ).' ';
 							
 							$text .= sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ), $this->p->cf['head']['limit_min']['og_img_width'].'x'.$this->p->cf['head']['limit_min']['og_img_height'].'px' ).' ';
 							
@@ -2299,6 +2299,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-pro-tid-missing':
 
 						if ( ! is_multisite() ) {
+
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
 								_x( 'Licenses', 'lib file description', 'wpsso' ) );
 

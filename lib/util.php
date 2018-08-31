@@ -1039,6 +1039,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$deleted_count += $this->delete_all_db_transients( $clear_short_urls );
 			$deleted_count += $this->delete_all_cache_files();
+
 			$this->delete_all_column_meta();
 
 			$short = $this->p->cf['plugin'][$this->p->lca]['short'];
@@ -1080,7 +1081,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					'wpsso' ), $short );
 			}
 
-			$this->p->notice->inf( $cleared_msg, true, $dismiss_key, true );	// can be dismissed depending on args
+			$this->p->notice->inf( $cleared_msg, true, $dismiss_key, true );	// Can be dismissed depending on args.
 
 			return $deleted_count;
 		}

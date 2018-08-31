@@ -361,16 +361,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							$show_hide_event_added = true;
 
-							$html .= "\n" . '<script type="text/javascript">(
-								function( $ ){
-									$.each( [ "show", "hide" ], function( i, val ){
-										var _org = $.fn[val];
-										$.fn[val] = function(){
-											this.trigger( val );
-											_org.apply( this, arguments );
-										};
-									});
-								})(jQuery);
+							$html .= "\n" . '<script type="text/javascript">
+								jQuery.each( [ "show", "hide" ], function( i, ev ){
+									var el = jQuery.fn[ ev ];
+									jQuery.fn[ ev ] = function(){
+										this.trigger( ev );
+										return el.apply( this, arguments );
+									};
+								});
 							</script>';
 						}
 

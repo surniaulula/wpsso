@@ -477,7 +477,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			echo $this->get_notice_style();
 
 			/**
-			 * Exit early if this is a block editor (aka Gutenberg) page.
+			 * Exit early if this is a block editor page.
 			 * The notices will be retrieved using an ajax call on page load and post save.
 			 */
 			if ( $doing_block_editor ) {
@@ -797,7 +797,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$payload['msg_html'] = $this->get_notice_html( $msg_type, $payload, true );	// $notice_alt is true.
 
 					/**
-					 * Add paragraph tags for Gutenberg in case we want to use the 'msg_text' instead of 'msg_html'.
+					 * Add paragraph tags for the block editor in case we want to use the 'msg_text' instead of 'msg_html'.
 					 */
 					if ( stripos( $payload['msg_text'], '<p>' ) === false ) {
 						$payload['msg_text'] = '<p>' . $payload['msg_text'] . '</p>';
@@ -845,7 +845,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$payload['no-count']   = true;
 
 				/**
-				 * Add paragraph tags for Gutenberg in case we want to use the 'msg_text' instead of 'msg_html'.
+				 * Add paragraph tags for the block editor in case we want to use the 'msg_text' instead of 'msg_html'.
 				 */
 				if ( stripos( $payload['msg_text'], '<p>' ) === false ) {
 					$payload['msg_text'] = '<p>' . $payload['msg_text'] . '</p>';
@@ -931,7 +931,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ).
 				( empty( $payload['no-unhide'] ) ? '' : $this->lca . '-no-unhide ' ).
-				$wp_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// display block or none
+				$wp_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// Display block or none.
 
 			/**
 			 * Float the dismiss button on the right, so the button must be added first.

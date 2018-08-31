@@ -776,8 +776,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$network = false;
 
 			if ( ! is_array( $opts ) ) {
+
 				add_settings_error( WPSSO_OPTIONS_NAME, 'notarray', '<b>' . strtoupper( $this->p->lca ) . ' Error</b> : ' .
 					__( 'Submitted options are not an array.', 'wpsso' ), 'error' );
+
 				return $opts;
 			}
 
@@ -790,6 +792,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );	// Sanitation updates image width/height info.
 			$opts = apply_filters( $this->p->lca . '_save_options', $opts, WPSSO_OPTIONS_NAME, $network, false );	// $doing_upgrade is false.
 
+			$this->p->options = $opts;	// Update the options with any changes.
+
 			if ( empty( $this->p->options['plugin_clear_on_save'] ) ) {
 
 				/**
@@ -798,9 +802,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$clear_cache_link = $this->p->util->get_admin_url( wp_nonce_url( '?' . $this->p->lca . '-action=clear_all_cache',
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
 	
-				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> <em>' .
-					__( 'Please note that webpage content may take several days to reflect changes.', 'wpsso' ) . ' ' .
-						sprintf( __( '%s now to force a refresh.', 'wpsso' ), $clear_cache_link ) . '</em>' );
+				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
+					sprintf( __( 'Note that some caches may take several days to reflect changes (you may %s to force a refresh).', 'wpsso' ),
+						$clear_cache_link ) );
 
 			} else {
 
@@ -808,10 +812,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$this->p->util->clear_all_cache( true, null, null, $dismiss_key );
 
+				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
+					_x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ) );
+
 				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
-					sprintf( __( 'All caches have been cleared (the %s option is enabled).', 'wpsso' ),
-						$this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-							_x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ) ) ) );
+					sprintf( __( 'Note that all caches have also been cleared (the %s option is enabled).', 'wpsso' ),
+						$settings_page_link ) );
 			}
 
 			if ( empty( $opts['plugin_filter_content'] ) ) {
@@ -898,32 +904,40 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						case 'clear_all_cache':
 
 							$this->p->util->clear_all_cache( true );	// $clear_external is true.
+
 							break;
 
 						case 'clear_all_cache_and_short_urls':
 
 							$this->p->util->clear_all_cache( true, true );	// $clear_external is true.
+
 							break;
 
 						case 'clear_metabox_prefs':
 
-							$user_id = get_current_user_id();
-							$user = get_userdata( $user_id );
-							$user_name = $user->display_name;
+							$user_id   = get_current_user_id();
+							$user_obj  = get_userdata( $user_id );
+							$user_name = $user_obj->display_name;
+
 							WpssoUser::delete_metabox_prefs( $user_id );
+
 							$this->p->notice->upd( sprintf( __( 'Metabox layout preferences for user ID #%d "%s" have been reset.',
 								'wpsso' ), $user_id, $user_name ) );
+
 							break;
 
 						case 'clear_hidden_notices':
 
-							$user_id = get_current_user_id();
-							$user = get_userdata( $user_id );
-							$user_name = $user->display_name;
+							$user_id   = get_current_user_id();
+							$user_obj  = get_userdata( $user_id );
+							$user_name = $user_obj->display_name;
+
 							delete_user_option( $user_id, WPSSO_DISMISS_NAME, false );	// $global = false
 							delete_user_option( $user_id, WPSSO_DISMISS_NAME, true );	// $global = true
+
 							$this->p->notice->upd( sprintf( __( 'Hidden notices for user ID #%d "%s" have been cleared.',
 								'wpsso' ), $user_id, $user_name ) );
+
 							break;
 
 						case 'change_show_options':
@@ -931,32 +945,40 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'show-opts' ) );
 
 							if ( isset( $this->p->cf['form']['show_options'][$_GET['show-opts']] ) ) {
+
 								$this->p->notice->upd( sprintf( __( 'Option preference saved &mdash; viewing "%s" by default.',
 									'wpsso' ), $this->p->cf['form']['show_options'][$_GET['show-opts']] ) );
+
 								WpssoUser::save_pref( array( 'show_opts' => $_GET['show-opts'] ) );
 							}
+
 							break;
 
 						case 'modify_tmpl_head_attributes':
 
 							$this->modify_tmpl_head_attributes();
+
 							break;
 
 						case 'reload_default_sizes':
 
-							$opts =& $this->p->options;	// Update the existing options array.
+							$opts     =& $this->p->options;	// Update the existing options array.
 							$def_opts = $this->p->opt->get_defaults();
 							$img_opts = SucomUtil::preg_grep_keys( '/_img_(width|height|crop|crop_x|crop_y)$/', $def_opts );
-							$opts = array_merge( $this->p->options, $img_opts );
+							$opts     = array_merge( $this->p->options, $img_opts );
+
 							$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts );
+
 							$this->p->notice->upd( __( 'All image dimensions have been reloaded with their default value and saved.',
 								'wpsso' ) );
+
 							break;
 
 						default:
 
 							do_action( $this->p->lca . '_load_setting_page_' . $action_name,
 								$this->pagehook, $this->menu_id, $this->menu_name, $this->menu_lib );
+
 							break;
 					}
 				}
@@ -978,11 +1000,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_side_meta_boxes() {
+
 			if ( ! self::$pkg[$this->p->lca]['pp'] ) {
+
 				add_meta_box( $this->pagehook . '_purchase_pro', _x( 'Pro Version Available', 'metabox title', 'wpsso' ),
 					array( $this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side_fixed' );
+
 				add_meta_box( $this->pagehook . '_status_pro', _x( 'Pro Version Features', 'metabox title', 'wpsso' ),
 					array( $this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
+
 				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase_pro' ), '', '', true );
 			}
 		}
@@ -1181,12 +1207,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$action_buttons = apply_filters( $this->p->lca . '_action_buttons', array(
 				array(
-					'submit' => $submit_label_transl,
+					'submit'                                          => $submit_label_transl,
 					'change_show_options&show-opts=' . $view_next_key => $view_label_transl,
 				),
 				array(
-					'clear_all_cache' => $clear_label_transl,
-					'clear_metabox_prefs' => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
+					'clear_all_cache'      => $clear_label_transl,
+					'clear_metabox_prefs'  => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
 					'clear_hidden_notices' => _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ),
 				),
 			), $this->menu_id, $this->menu_name, $this->menu_lib );
@@ -1298,8 +1324,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			do_action( $this->p->lca . '_column_metabox_cache_status_table_rows', $table_cols, $this->form, $transient_keys );
 
-			$clear_admin_url = $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=clear_all_cache' );
-			$clear_admin_url = wp_nonce_url( $clear_admin_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
+			$clear_admin_url    = $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=clear_all_cache' );
+			$clear_admin_url    = wp_nonce_url( $clear_admin_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 			$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
 
 			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
@@ -1319,8 +1345,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $short_urls_count || ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' && 
 				empty( $this->p->options['plugin_clear_short_urls'] ) ) ) {
 
-				$clear_admin_url = $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=clear_all_cache_and_short_urls' );
-				$clear_admin_url = wp_nonce_url( $clear_admin_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
+				$clear_admin_url    = $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=clear_all_cache_and_short_urls' );
+				$clear_admin_url    = wp_nonce_url( $clear_admin_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 				$clear_label_transl = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
 
 				echo $this->form->get_button( $clear_label_transl, 'button-secondary', '', $clear_admin_url );

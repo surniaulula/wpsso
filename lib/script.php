@@ -194,18 +194,18 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$js_file_ext = SucomUtil::get_const( 'WPSSO_DEV' ) ? 'js' : 'min.js';
 			$plugin_version = WpssoConfig::get_version();
 
-			wp_enqueue_script( 'sucom-gutenberg-admin', 
-				WPSSO_URLPATH . 'js/gutenberg-admin.' . $js_file_ext, 
+			wp_enqueue_script( 'sucom-block-editor-admin', 
+				WPSSO_URLPATH . 'js/block-editor-admin.' . $js_file_ext, 
 					array( 'wp-data' ), $plugin_version, true );
 
-			wp_localize_script( 'sucom-gutenberg-admin', 'sucomGutenbergL10n',
-				$this->get_admin_gutenberg_script_data() );
+			wp_localize_script( 'sucom-block-editor-admin', 'sucomBlockEditorL10n',
+				$this->get_admin_block_editor_script_data() );
 		}
 
 		/**
 		 * Start localized variable names with an underscore.
 		 */
-		public function get_admin_gutenberg_script_data() {
+		public function get_admin_block_editor_script_data() {
 
 			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
 			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
@@ -226,7 +226,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$doing_block_editor = defined( 'DOING_BLOCK_EDITOR' ) ? DOING_BLOCK_EDITOR : false;
 
 			/**
-			 * Exit early if this is a block editor (aka Gutenberg) page.
+			 * Exit early if this is a block editor page.
 			 * The notices will be retrieved using an ajax call on page load and post save.
 			 */
 			if ( $doing_block_editor ) {
