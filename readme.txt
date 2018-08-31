@@ -336,6 +336,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* City
 		* Country
 		* State
+	* Removed support for automatically hidden notifications.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
