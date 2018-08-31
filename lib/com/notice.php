@@ -18,8 +18,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $text_domain  = 'sucom';
 		private $label_transl = false;
 		private $dis_name     = 'sucom_dismissed';
-		private $hide_err     = false;
-		private $hide_warn    = false;
 		private $tb_notices   = false;
 		private $has_shown    = false;
 		private $all_types    = array( 'nag', 'err', 'warn', 'upd', 'inf' );	// Sort by importance.
@@ -48,7 +46,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function set_config( $plugin = null, $lca = null, $text_domain = null, $label_transl = false ) {
 
 			if ( $plugin !== null ) {
+
 				$this->p =& $plugin;
+
 				if ( ! empty( $this->p->debug->enabled ) ) {
 					$this->p->debug->mark();
 				}
@@ -78,8 +78,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$uca = strtoupper( $this->lca );
 
 			$this->dis_name   = defined( $uca . '_DISMISS_NAME' ) ? constant( $uca . '_DISMISS_NAME' ) : $this->lca . '_dismissed';
-			$this->hide_err   = defined( $uca . '_HIDE_ALL_ERRORS' ) ? constant( $uca . '_HIDE_ALL_ERRORS' ) : false;
-			$this->hide_warn  = defined( $uca . '_HIDE_ALL_WARNINGS' ) ? constant( $uca . '_HIDE_ALL_WARNINGS' ) : false;
 			$this->tb_notices = defined( $uca . '_TOOLBAR_NOTICES' ) ? constant( $uca . '_TOOLBAR_NOTICES' ) : false;
 
 			if ( $this->tb_notices === true ) {
@@ -117,9 +115,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->log( 'err', $msg_text, $user_id, $dismiss_key, $dismiss_time );
 		}
 
-		public function warn( $msg_text, $user_id = true, $dismiss_key = false, $dismiss_time = false, $no_unhide = false ) {
-			$payload = array( 'no-unhide' => $no_unhide ? true : false );
-			$this->log( 'warn', $msg_text, $user_id, $dismiss_key, $dismiss_time, $payload );
+		public function warn( $msg_text, $user_id = true, $dismiss_key = false, $dismiss_time = false ) {
+			$this->log( 'warn', $msg_text, $user_id, $dismiss_key, $dismiss_time );
 		}
 
 		public function log( $msg_type, $msg_text, $user_id = true, $dismiss_key = false, $dismiss_time = false, $payload = array() ) {
@@ -134,7 +131,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$user_id = $user_id;
 			}
 
-			$payload['dismiss_key'] = empty( $dismiss_key ) ? false : sanitize_key( $dismiss_key );
+			$payload['dismiss_key']  = empty( $dismiss_key ) ? false : sanitize_key( $dismiss_key );
 			$payload['dismiss_time'] = false;
 			$payload['dismiss_diff'] = isset( $payload['dismiss_diff'] ) ? $payload['dismiss_diff'] : null;
 
@@ -169,6 +166,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					if ( ! empty( $payload['dismiss_diff'] ) && $dismiss_suffix_msg ) {
 
 						$msg_text = trim( $msg_text );
+
 						$msg_close_div = '';
 
 						if ( substr( $msg_text, -6 ) === '</div>' ) {
@@ -191,7 +189,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 */
 			$msg_text .= $this->get_ref_url_html();
 
-			$payload['msg_text'] = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $msg_text );
+			$payload['msg_text']   = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $msg_text );
 			$payload['msg_spoken'] = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $msg_text );
 			$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_spoken'] ) );
 
@@ -286,9 +284,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 * Restore previous reference values for admin notices.
 		 */
 		public function unset_ref( $url = null ) {
+
 			if ( null === $url || $this->is_ref_url( $url ) ) {
+
 				array_pop( $this->ref_cache );
+
 				return true;
+
 			} else {
 				return false;
 			}
@@ -363,9 +365,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					 * If notice is dismissed, say that we've already shown the notices.
 					 */
 					if ( $this->is_dismissed( $dismiss_key, $user_id ) ) {
+
 						if ( ! empty( $this->p->debug->enabled ) ) {
 							$this->p->debug->log( 'returning false: ' . $dismiss_key . ' is dismissed' );
 						}
+
 						return false;
 					}
 				}
@@ -416,10 +420,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( isset( $user_dismissed[$dismiss_key] ) ) {	// Notice has been dismissed.
 
-				$now_time = time();
+				$current_time = time();
 				$dismiss_time = $user_dismissed[$dismiss_key];
 
-				if ( empty( $dismiss_time ) || $dismiss_time > $now_time ) {
+				if ( empty( $dismiss_time ) || $dismiss_time > $current_time ) {
 
 					return true;
 
@@ -484,7 +488,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return;
 			}
 
-			$hidden          = array();
 			$msg_html        = '';
 			$nag_text        = '';
 			$user_id         = get_current_user_id();
@@ -493,11 +496,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$user_dismissed  = empty( $user_id ) ? false : get_user_option( $this->dis_name, $user_id );
 			$dismissed_upd   = false;
 			$this->has_shown = true;
-
-			$allow_unhide = array(
-				'err' => _x( 'error', 'notification type', $this->text_domain ),
-				'warn' => _x( 'warning', 'notification type', $this->text_domain ),
-			);
 
 			/**
 			 * Loop through all the msg types and show them all.
@@ -523,33 +521,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					if ( ! empty( $payload['dismiss_time'] ) ) {	// True or seconds greater than 0.
 
-						if ( ! isset( $hidden[$msg_type] ) ) {
-							$hidden[$msg_type] = 0;
-						}
-
 						/**
 						 * Check for automatically hidden errors and/or warnings.
 						 */
-						if ( ( $msg_type === 'err' && $this->hide_err ) || ( $msg_type === 'warn' && $this->hide_warn ) ) {
+						if ( ! empty( $payload['dismiss_key'] ) && isset( $user_dismissed[$payload['dismiss_key']] ) ) {
 
-							$payload['hidden'] = true;
-
-							if ( empty( $payload['no-unhide'] ) ) {
-								$hidden[$msg_type]++;
-							}
-
-						} elseif ( ! empty( $payload['dismiss_key'] ) && isset( $user_dismissed[$payload['dismiss_key']] ) ) {
-
-							$now_time = time();
+							$current_time = time();
 							$dismiss_time = $user_dismissed[$payload['dismiss_key']];	// Get time for key.
 
-							if ( empty( $dismiss_time ) || $dismiss_time > $now_time ) {	// 0 or time in future.
+							if ( empty( $dismiss_time ) || $dismiss_time > $current_time ) {	// 0 or time in future.
 
 								$payload['hidden'] = true;
-
-								if ( empty( $payload['no-unhide'] ) ) {
-									$hidden[$msg_type]++;
-								}
 
 							} else {	// Dismiss has expired.
 
@@ -560,10 +542,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						}
 					}
 
-					/**
-					 * If the notice is hidden, and we don't provide a way to unhide it, then skip this notice.
-					 */
-					if ( ! empty( $payload['hidden'] ) && empty( $allow_unhide[$msg_type] ) ) {
+					if ( ! empty( $payload['hidden'] ) ) {
 						continue;
 					}
 
@@ -586,37 +565,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			if ( ! empty( $nag_text ) ) {
-				$payload = array();
-				$payload['msg_text'] = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $nag_text );
-				$payload['msg_spoken'] = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $nag_text );
-				$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_spoken'] ) );
-				echo $this->get_nag_style();
-				echo $this->get_notice_html( 'nag', $payload );
-			}
 
-			/**
-			 * Remind the user that there are hidden error messages.
-			 */
-			foreach ( $allow_unhide as $msg_type => $log_name ) {
-
-				if ( empty( $hidden[$msg_type] ) ) {
-					continue;
-				}
-				
-				$payload = array();
-
-				$msg_text_transl = _n(
-					'%1$d %2$s notice has been dismissed &mdash; <a id="%3$s">show the %2$s message</a>.',
-					'%1$d %2$s notices have been dismissed &mdash; <a id="%3$s">show the %2$s messages</a>.',
-					$hidden[$msg_type], $this->text_domain
+				$payload = array(
+					'msg_text'   => preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $nag_text ),
+					'msg_spoken' => preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $nag_text ),
+					'msg_spoken' => SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_spoken'] ) ),
 				);
 
-				$payload['msg_text']   = sprintf( $msg_text_transl, $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
-				$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_text'] ) );
-				$payload['no-unhide']  = true;
-				$payload['no-count']   = true;
-
-				echo $this->get_notice_html( $msg_type, $payload );
+				echo $this->get_nag_style();
+				echo $this->get_notice_html( 'nag', $payload );
 			}
 
 			echo $msg_html;
@@ -639,8 +596,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return;
 			}
 
+			$user_id      = get_current_user_id();
 			$dismiss_info = array();
-			$user_id  = get_current_user_id();
 
 			if ( empty( $user_id ) || ! current_user_can( 'edit_user', $user_id ) ) {
 				die( '-1' );
@@ -718,11 +675,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$json_notices    = array();
 			$ajax_context    = empty( $_REQUEST['context'] ) ? '' : $_REQUEST['context'];	// 'block_editor' or 'toolbar_notices'
 
-			$allow_unhide = array(
-				'err' => _x( 'error', 'notification type', $this->text_domain ),
-				'warn' => _x( 'warning', 'notification type', $this->text_domain ),
-			);
-
 			/**
 			 * Loop through all the msg types and show them all.
 			 */
@@ -742,41 +694,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					if ( ! empty( $payload['dismiss_time'] ) ) {	// True or seconds greater than 0.
 
-						if ( ! isset( $hidden[$msg_type] ) ) {
-							$hidden[$msg_type] = 0;
-						}
-
 						/**
 						 * Check for automatically hidden errors and/or warnings.
 						 */
-						$auto_hide = false;	// Don't auto hide by default.
+						if ( ! empty( $payload['dismiss_key'] ) && isset( $user_dismissed[$payload['dismiss_key']] ) ) {
 
-						if ( $msg_type === 'err' && $this->hide_err ) {
-							$auto_hide = true;
-						} elseif ( $msg_type === 'warn' && $this->hide_warn ) {
-							$auto_hide = true;
-						}
-
-						if ( $auto_hide ) {
-
-							$payload['hidden'] = true;
-
-							if ( empty( $payload['no-unhide'] ) ) {
-								$hidden[$msg_type]++;
-							}
-
-						} elseif ( ! empty( $payload['dismiss_key'] ) && isset( $user_dismissed[$payload['dismiss_key']] ) ) {
-
-							$now_time = time();
+							$current_time = time();
 							$dismiss_time = $user_dismissed[$payload['dismiss_key']];	// Get time for key.
 
-							if ( empty( $dismiss_time ) || $dismiss_time > $now_time ) {	// 0 or time in future.
+							if ( empty( $dismiss_time ) || $dismiss_time > $current_time ) {	// 0 or time in future.
 
 								$payload['hidden'] = true;
-
-								if ( empty( $payload['no-unhide'] ) ) {
-									$hidden[$msg_type]++;
-								}
 
 							} else {	// Dismiss has expired.
 
@@ -788,9 +716,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					}
 
 					/**
-					 * If the notice is hidden, and we don't provide a way to unhide it, then skip this notice.
+					 * If the notice is hidden, then skip this notice.
 					 */
-					if ( ! empty( $payload['hidden'] ) && empty( $allow_unhide[$msg_type] ) ) {
+					if ( ! empty( $payload['hidden'] ) ) {
 						continue;
 					}
 
@@ -821,62 +749,37 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			}
 
-			/**
-			 * Remind the user that there are hidden error messages.
-			 */
-			foreach ( $allow_unhide as $msg_type => $log_name ) {
-
-				if ( empty( $hidden[$msg_type] ) ) {
-					continue;
-				}
-				
-				$payload = array();
-
-				$msg_text_transl = _n(
-					'%1$d %2$s notice has been dismissed &mdash; <a id="%3$s">show the %2$s message</a>.',
-					'%1$d %2$s notices have been dismissed &mdash; <a id="%3$s">show the %2$s messages</a>.',
-					$hidden[$msg_type], $this->text_domain
-				);
-
-				$payload['msg_text']   = sprintf( $msg_text_transl, $hidden[$msg_type], $log_name, $this->lca . '-unhide-notice-' . $msg_type );
-				$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_text'] ) );
-				$payload['msg_html']   = $this->get_notice_html( $msg_type, $payload );
-				$payload['no-unhide']  = true;
-				$payload['no-count']   = true;
-
-				/**
-				 * Add paragraph tags for the block editor in case we want to use the 'msg_text' instead of 'msg_html'.
-				 */
-				if ( stripos( $payload['msg_text'], '<p>' ) === false ) {
-					$payload['msg_text'] = '<p>' . $payload['msg_text'] . '</p>';
-				}
-
-				$msg_key = sanitize_key( $payload['msg_spoken'] );
-
-				$json_notices[$msg_type][$msg_key] = $payload;
-			}
-
 			$json_encoded = SucomUtil::json_encode_array( $json_notices );
 
 			die( $json_encoded );
 		}
 
 		private function add_update_errors( $user_notices ) {
+
 			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
+
 				foreach ( array_keys( $this->p->cf['plugin'] ) as $ext ) {
+
 					if ( ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) ) {
+
 						$uerr = SucomUpdate::get_umsg( $ext );
+
 						if ( ! empty( $uerr ) ) {
-							$payload = array();
-							$payload['msg_text'] = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $uerr );
-							$payload['msg_spoken'] = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $uerr );
-							$payload['msg_spoken'] = SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_spoken'] ) );
+
+							$payload = array(
+								'msg_text'   => preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $uerr ),
+								'msg_spoken' => preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $uerr ),
+								'msg_spoken' => SucomUtil::decode_html( SucomUtil::strip_html( $payload['msg_spoken'] ) ),
+							);
+
 							$msg_key = sanitize_key( $payload['msg_spoken'] );
+
 							$user_notices['err'][$msg_key] = $payload;
 						}
 					}
 				}
 			}
+
 			return $user_notices;
 		}
 
@@ -930,7 +833,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ).
-				( empty( $payload['no-unhide'] ) ? '' : $this->lca . '-no-unhide ' ).
 				$wp_class . '"' . $css_id_attr . $style_attr . $data_attr . '>';	// Display block or none.
 
 			/**
@@ -1428,16 +1330,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function get_notice_script() {
 			return '
 <script type="text/javascript">
-
-	jQuery( document ).on( "click", "#' . $this->lca . '-unhide-notice-err", function() {
-		jQuery( ".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-error" ).not( ".' . $this->lca . '-no-unhide" ).show();
-		jQuery( this ).parents(".' . $this->lca . '-notice.notice-error").hide();
-	} );
-
-	jQuery( document ).on( "click", "#' . $this->lca . '-unhide-notice-warn", function() {
-		jQuery( ".' . $this->lca . '-notice.' . $this->lca . '-dismissible.notice-warning" ).not( ".' . $this->lca . '-no-unhide" ).show();
-		jQuery( this ).parents( ".' . $this->lca . '-notice.notice-warning" ).hide();
-	} );
 
 	jQuery( document ).on( "click", "div.' . $this->lca . '-dismissible > button.notice-dismiss, div.' . $this->lca . '-dismissible .dismiss-on-click", function() {
 

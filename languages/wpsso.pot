@@ -1119,45 +1119,25 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/notice.php:154 lib/com-gettext-extract.php:14
+#: lib/com/notice.php:151 lib/com-gettext-extract.php:14
 msgid "Forever"
 msgstr ""
 
-#: lib/com/notice.php:156 lib/com-gettext-extract.php:29
+#: lib/com/notice.php:153 lib/com-gettext-extract.php:29
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:166 lib/com-gettext-extract.php:28
+#: lib/com/notice.php:163 lib/com-gettext-extract.php:28
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:339 lib/com-gettext-extract.php:7
+#: lib/com/notice.php:341 lib/com-gettext-extract.php:7
 msgid "edit"
 msgstr ""
 
-#: lib/com/notice.php:341 lib/com-gettext-extract.php:21
+#: lib/com/notice.php:343 lib/com-gettext-extract.php:21
 msgid "Reference: %s"
 msgstr ""
-
-#: lib/com/notice.php:498 lib/com/notice.php:722 lib/com-gettext-extract.php:30
-msgctxt "notification type"
-msgid "error"
-msgstr ""
-
-#: lib/com/notice.php:499 lib/com/notice.php:723 lib/com-gettext-extract.php:31
-msgctxt "notification type"
-msgid "warning"
-msgstr ""
-
-#: lib/com/notice.php:608 lib/com/notice.php:835
-msgid ""
-"%1$d %2$s notice has been dismissed &mdash; <a id=\"%3$s\">show the %2$s "
-"message</a>."
-msgid_plural ""
-"%1$d %2$s notices have been dismissed &mdash; <a id=\"%3$s\">show the %2$s "
-"messages</a>."
-msgstr[0] ""
-msgstr[1] ""
 
 #: lib/com/util.php:1594
 msgid "The plugin information for \"%s\" contains an invalid download link."

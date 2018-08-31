@@ -27,5 +27,3 @@ __( 'The PHP "%s" setting is enabled &mdash; the PHP cURL library cannot follow 
 __( 'The "%s" setting is deprecated since PHP version 5.3 and removed from PHP since version 5.4.', 'wpsso' );
 __( 'This notice can be dismissed for %s.', 'wpsso' );
 __( 'This notice can be dismissed permanently.', 'wpsso' );
-_x( 'error', 'notification type', 'wpsso' );
-_x( 'warning', 'notification type', 'wpsso' );

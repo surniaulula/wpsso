@@ -271,12 +271,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 								jQuery.each( data[noticeType], function( noticeKey ) {
 
-									// Skip hidden notices that we can't unhide.
-									if ( data[noticeType][noticeKey]['hidden'] && 
-										data[noticeType][noticeKey]['no-unhide'] ) {
-										return;
-									}
-
 									noticeHtml += data[noticeType][noticeKey]['msg_html'];
 
 									if ( ! data[noticeType][noticeKey]['no-count'] ) {
