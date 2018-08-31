@@ -15,5 +15,5 @@ $plugin_filepath = $plugin_dir . 'wpsso.php';
 require_once $plugin_dir . 'lib/config.php';
 
 WpssoConfig::set_constants( $plugin_filepath );
-WpssoConfig::require_libs( $plugin_filepath );	// includes the register.php class library
+WpssoConfig::require_libs( $plugin_filepath );	// Includes the register.php class library.
 WpssoRegister::network_uninstall();

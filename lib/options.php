@@ -1061,9 +1061,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$opts = apply_filters( $this->p->lca . '_save_options', $opts, $options_name, $network, $doing_upgrade );
 
 			if ( $network ) {
-				$saved = update_site_option( $options_name, $opts );	// Auto-creates options with autoload no.
+				if ( $saved = update_site_option( $options_name, $opts ) ) {// Auto-creates options with autoload no.
+					$this->p->site_options = $opts;
+				}
 			} else {
-				$saved = update_option( $options_name, $opts );		// Auto-creates options with autoload yes.
+				if ( $saved = update_option( $options_name, $opts ) ) {		// Auto-creates options with autoload yes.
+					$this->p->options = $opts;
+				}
 			}
 
 			if ( true === $saved ) {

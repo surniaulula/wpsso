@@ -13,8 +13,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 	class WpssoRegister {
 
-		protected $p;
-		protected static $wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // Default wp roles.
+		private $p;
+
+		private static $wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // Default wp roles.
 
 		public function __construct( &$plugin ) {
 			$this->p =& $plugin;
@@ -33,8 +34,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		 * Fires immediately after a new site is created.
 		 */
 		public function wpmu_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
+
 			switch_to_blog( $blog_id );
+
 			$this->activate_plugin();
+
 			restore_current_blog();
 		}
 
@@ -42,8 +46,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		 * Fires immediately after a site is activated (not called when users and sites are created by a Super Admin).
 		 */
 		public function wpmu_activate_blog( $blog_id, $user_id, $password, $signup_title, $meta ) {
+
 			switch_to_blog( $blog_id );
+
 			$this->activate_plugin();
+
 			restore_current_blog();
 		}
 
@@ -154,6 +161,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				delete_post_meta_by_key( WPSSO_META_NAME );	// Since wp v2.3.
 
 				foreach ( get_users() as $user ) {
+
 					if ( ! empty( $user-> ID ) ) {	// Just in case.
 
 						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, false );	// $global is false.
@@ -171,6 +179,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				remove_role( 'person' );
 
 				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
+
 					if ( ! empty( $term_id ) ) {	// Just in case.
 						WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
 					}

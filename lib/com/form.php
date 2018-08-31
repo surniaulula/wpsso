@@ -31,11 +31,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$this->p->debug->log( 'form options name is ' . $opts_name );
 			}
 
-			$this->lca = $this->p->cf['lca'];
+			$this->lca          = $this->p->lca;
 			$this->options_name =& $opts_name;
-			$this->options =& $opts;
-			$this->defaults =& $def_opts;
-			$this->menu_ext = empty( $menu_ext ) ? $this->lca : $menu_ext;	// lca or ext lowercase acronym
+			$this->options      =& $opts;
+			$this->defaults     =& $def_opts;
+			$this->menu_ext     = empty( $menu_ext ) ? $this->lca : $menu_ext;	// lca or ext lowercase acronym
+
 			$this->set_text_domain( $this->menu_ext );
 			$this->set_default_text_domain( $this->lca );
 		}
