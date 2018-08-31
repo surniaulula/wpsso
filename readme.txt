@@ -655,9 +655,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 4.0.0 (2018/04/26)**
 
 * *New Features*
-	* Gutenberg support added:
-		* Added support for jQuery based Gutenberg notices.
-		* Added a refresh for the SSO metabox when saving a Gutenberg post.
+	* Gutenberg block editor support added:
+		* Added support for jQuery based Gutenberg block editor notices.
+		* Added a refresh for the SSO metabox when saving a Gutenberg block editor post.
 * *Improvements*
 	* Changed the "Dismiss" button text in notices with informative label: "Hide", "1 hour", "1 month", etc.
 	* Added dismiss information to the notification message. Example:
