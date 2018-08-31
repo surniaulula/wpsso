@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.11.2-dev.3 (2018/08/30)**
+**Version 4.11.2-dev.4 (2018/08/31)**
 
 * *New Features*
 	* None.
@@ -672,9 +672,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.11.2-dev.3 =
+= 4.11.2-dev.4 =
 
-(2018/08/30) Added sub-types to the Schema AdministrativeArea type.
+(2018/08/31) Added sub-types to the Schema AdministrativeArea type.
 
 = 4.11.1 =
 
