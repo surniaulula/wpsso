@@ -81,15 +81,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_value_transl( $value ) {
+
 			if ( $this->text_domain ) {	// Just in case.
+
 				$value_transl = _x( $value, 'option value', $this->text_domain );	// lca or ext text domain
+
 				if ( $value === $value_transl && $this->text_domain !== $this->default_text_domain ) {
 					$value_transl = _x( $value, 'option value', $this->default_text_domain );	// lca text domain
 				}
+
 				return $value_transl;
+
 			} elseif ( $this->default_text_domain ) {
 				return _x( $value, 'option value', $this->default_text_domain );	// lca text domain
 			}
+
 			return $value;
 		}
 
@@ -764,6 +770,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 									if ( ( $in_defaults && $val === $this->defaults[$opt_key] ) ||
 										( $select_default !== null && $val === $select_default ) ) {
+
 										$label_transl .= ' ' . $this->get_value_transl( '(default)' );
 									}
 
@@ -826,14 +833,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
-				$next_num = $key_num + 1;
-				$opt_key = $name . '_' . $key_num;
-				$opt_disabled = $disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
-				$input_class = empty( $css_class ) ? 'multi' : 'multi ' . $css_class;
-				$input_id = empty( $css_id ) ? $name . '_' . $key_num : $css_id . '_' . $key_num;
+				$next_num      = $key_num + 1;
+				$opt_key       = $name . '_' . $key_num;
+				$opt_disabled  = $disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
+				$input_class   = empty( $css_class ) ? 'multi' : 'multi ' . $css_class;
+				$input_id      = empty( $css_id ) ? $name . '_' . $key_num : $css_id . '_' . $key_num;
 				$input_id_next = empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num;
-				$input_value = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
-				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
+				$input_value   = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
+				$display       = empty( $one_more ) && $key_num >= $show_first ? false : true;
 
 				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $input_id ) . '"' .
 					( $display ? '' : ' style="display:none;"' ) . '>' . "\n";
@@ -852,6 +859,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				$one_more = empty( $input_value ) ? false : true;
+
 				$html .= '</div>' . "\n";
 			}
 
@@ -918,12 +926,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_input_date( $name, '', '', '', '', true );
 		}
 
-		public function get_no_input_date_options( $name, &$opts ) {
+		public function get_no_input_date_options( $name, $opts ) {
 			$value = isset( $opts[$name] ) ? $opts[$name] : '';
 			return $this->get_no_input_value( $value, 'datepicker', '', 'yyyy-mm-dd' );
 		}
 
-		public function get_no_input_options( $name, &$opts, $css_class = '', $css_id = '', $placeholder = '' ) {
+		public function get_no_input_options( $name, $opts, $css_class = '', $css_id = '', $placeholder = '' ) {
 			$value = isset( $opts[$name] ) ? $opts[$name] : '';
 			return $this->get_no_input_value( $value, $css_class, $css_id, $placeholder );
 		}
@@ -1258,6 +1266,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_textarea( $name, $css_class = '', $css_id = '', $len = 0, $placeholder = '' ) {
 			return $this->get_textarea( $name, $css_class, $css_id, $len, $placeholder, true );
+		}
+
+		public function get_no_textarea_options( $name, $opts, $css_class = '', $css_id = '', $len = 0, $placeholder = '' ) {
+			$value = isset( $opts[$name] ) ? $opts[$name] : '';
+			return $this->get_no_textarea_value( $value, $css_class, $css_id, $len, $placeholder );
 		}
 
 		public function get_no_textarea_value( $value = '', $css_class = '', $css_id = '', $len = 0, $placeholder = '' ) {

@@ -13,12 +13,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
 
-		protected $cleared_all_cache = false;
-		protected $uniq_urls = array();			// array to detect duplicate images, etc.
-		protected $size_labels = array();		// reference array for image size labels
+		protected $uniq_urls   = array();	// Array to detect duplicate images, etc.
+		protected $size_labels = array();	// Reference array for image size labels.
+
 		protected $force_regen = array(
-			'cache'     => null,			// cache for returned values
-			'transient' => null,			// transient array from/to database
+			'cache'     => null,		// Cache for returned values.
+			'transient' => null,		// Transient array from/to database.
 		);
 
 		protected $is_functions = array(
@@ -38,8 +38,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			'is_ssl',
 			'is_tag',
 			'is_tax',
+
 			/**
-			 * common e-commerce / woocommerce functions
+			 * Common e-commerce / woocommerce functions.
 			 */
 			'is_account_page',
 			'is_cart',
@@ -49,8 +50,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			'is_product_category',
 			'is_product_tag',
 			'is_shop',
+
 			/**
-			 * other functions
+			 * Other functions.
 			 */
 			'is_amp_endpoint',
 		);
@@ -267,7 +269,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'exiting early: use of getimagesize() is disabled' );
 				}
 
-				return $local_cache[$image_url] = $def_image_info;	// stop here
+				return $local_cache[$image_url] = $def_image_info;	// Stop here.
 
 			} elseif ( empty( $image_url ) ) {
 
@@ -275,7 +277,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'exiting early: image url is empty' );
 				}
 
-				return $local_cache[$image_url] = $def_image_info;	// stop here
+				return $local_cache[$image_url] = $def_image_info;	// Stop here.
 
 			} elseif ( filter_var( $image_url, FILTER_VALIDATE_URL ) === false ) {
 
@@ -283,14 +285,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'exiting early: invalid image url = '.$image_url );
 				}
 
-				return $local_cache[$image_url] = $def_image_info;	// stop here
+				return $local_cache[$image_url] = $def_image_info;	// Stop here.
 			}
 
-			static $cache_exp_secs = null;	// filter the cache expiration value only once
+			static $cache_exp_secs = null;	// Filter the cache expiration value only once.
 
 			$cache_md5_pre = $this->p->lca . '_i_';
 
-			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
+			if ( ! isset( $cache_exp_secs ) ) {	// Filter cache expiration if not already set.
 				$cache_exp_filter = $this->p->cf['wp']['transient'][$cache_md5_pre]['filter'];
 				$cache_opt_key    = $this->p->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
 				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );	// 1 * DAY_IN_SECONDS by default
@@ -339,10 +341,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$total_time, $image_url ) );
 				}
 
-				// translators: %1$0.3f is a number of seconds
+				// translators: %1$0.3f is a number of seconds.
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $max_time );
 
-				// translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max
+				// translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max.
 				$error_msg = sprintf( __( 'Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s).',
 					'wpsso' ), $total_time, $image_url, $rec_max_msg );
 
@@ -353,7 +355,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->notice->warn( $error_msg );
 				}
 
-				// translators: %s is the short plugin name
+				// translators: %s is the short plugin name.
 				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
 
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
@@ -382,7 +384,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $local_cache[$image_url] = $image_info;
 		}
 
-		public function get_image_size_label( $size_name ) {	// wpsso-opengraph
+		public function get_image_size_label( $size_name ) {	// Example: 'wpsso-opengraph'.
 			if ( ! empty( $this->size_labels[$size_name] ) ) {
 				return $this->size_labels[$size_name];
 			} else {
@@ -781,12 +783,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				case 'name':
 				case 'object':
+
 					$output = $output . 's';
-					// no break
+
+					/**
+					 * No break.
+					 */
 
 				case 'names':
 				case 'objects':
+
 					$ret = get_post_types( $obj_filter, $output );
+
 					break;
 			}
 
@@ -832,12 +840,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				case 'name':
 				case 'object':
+
 					$output = $output . 's';
-					// no break
+
+					/**
+					 * No break.
+					 */
 
 				case 'names':
 				case 'objects':
+
 					$ret = get_taxonomies( $obj_filter, $output );
+
 					break;
 			}
 
@@ -1012,16 +1026,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
+
+				usleep( 500000 );	// Sleep for 0.5 seconds.
 			}
 		}
 
 		public function clear_all_cache( $clear_external = true, $clear_short_urls = null, $refresh_cache = null, $dismiss_key = null ) {
 
-			if ( $this->cleared_all_cache ) {	// already run once
+			static $cleared_all_cache = null;
+
+			if ( $cleared_all_cache !== null ) {	// Already run once.
 				return;
 			}
 
-			$this->cleared_all_cache = true;	// prevent running a second time (by an external cache, for example)
+			$cleared_all_cache = true;	// Prevent running a second time (by an external cache, for example).
 
 			if ( null === $clear_short_urls ) {
 				$clear_short_urls = isset( $this->p->options['plugin_clear_short_urls'] ) ?
@@ -1033,7 +1051,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->options['plugin_clear_all_refresh'] : false;
 			}
 
-			wp_cache_flush();	// clear non-database transients as well
+			wp_cache_flush();	// Clear non-database transients as well.
 
 			$deleted_count = 0;
 
@@ -1051,18 +1069,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$external_msg = ' ' . __( 'The cache for %s has also been cleared.', 'wpsso' );
 
-				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// w3 total cache
+				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// W3 total cache.
 					w3tc_pgcache_flush();
 					w3tc_objectcache_flush();
 					$cleared_msg .= sprintf( $external_msg, 'W3 Total Cache' );
 				}
 
-				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// wp super cache
+				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// WP super cache
 					wp_cache_clear_cache();
 					$cleared_msg .= sprintf( $external_msg, 'WP Super Cache' );
 				}
 
-				if ( isset( $GLOBALS['comet_cache'] ) ) {		// comet cache
+				if ( isset( $GLOBALS['comet_cache'] ) ) {		// Comet cache.
 					$GLOBALS['comet_cache']->wipe_cache();
 					$cleared_msg .= sprintf( $external_msg, 'Comet Cache' );
 				}
@@ -1098,7 +1116,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 * Skip / preserve shortened urls by default.
 				 */
 				if ( ! $clear_short_urls ) {
+
 					$cache_md5_pre = $this->p->lca . '_s_';
+
 					if ( strpos( $cache_id, $cache_md5_pre ) === 0 ) {
 						continue;
 					}
@@ -1114,9 +1134,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function delete_expired_db_transients() {
 
-			$only_expired = true;
+			$only_expired   = true;
 			$transient_keys = $this->get_db_transient_keys( $only_expired );
-			$deleted_count = 0;
+			$deleted_count  = 0;
 
 			foreach( $transient_keys as $cache_id ) {
 				if ( delete_transient( $cache_id ) ) {
@@ -1130,15 +1150,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_db_transient_keys( $only_expired = false ) {
 
 			global $wpdb;
+
 			$transient_keys = array();
-			$transient_pre = $only_expired ? '_transient_timeout_' : '_transient_';
+			$transient_pre  = $only_expired ? '_transient_timeout_' : '_transient_';
+
 			$db_query = 'SELECT option_name FROM ' . $wpdb->options . ' WHERE option_name LIKE \'' . $transient_pre . $this->p->lca . '_%\'';
 
 			if ( $only_expired ) {
+
 				$current_time = isset ( $_SERVER['REQUEST_TIME'] ) ? (int) $_SERVER['REQUEST_TIME'] : time() ;
-				$db_query .= ' AND option_value < ' . $current_time . ';';	// expiration time older than current time
+
+				$db_query .= ' AND option_value < ' . $current_time . ';';	// Expiration time older than current time.
+
 			} else {
-				$db_query .= ';';	// end of query
+				$db_query .= ';';	// End of query.
 			}
 
 			$transient_names = $wpdb->get_col( $db_query );
@@ -1155,31 +1180,43 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function delete_all_cache_files() {
 
-			$uca = strtoupper( $this->p->lca );
-			$cache_dir = constant( $uca . '_CACHEDIR' );
+			$uca           = strtoupper( $this->p->lca );
+			$cache_dir     = constant( $uca . '_CACHEDIR' );
 			$deleted_count = 0;
 
 			if ( ! $dh = @opendir( $cache_dir ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'failed to open the cache folder ' . $cache_dir . ' for reading' );
 				}
+
 				if ( is_admin() ) {
 					$this->p->notice->err( sprintf( __( 'Failed to open the cache folder %s for reading.',
 						'wpsso' ), $cache_dir ) );
 				}
+
 			} else {
+
 				while ( $file_name = @readdir( $dh ) ) {
+
 					$cache_file = $cache_dir . $file_name;
+
 					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
+
 						if ( @unlink( $cache_file ) ) {
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'removed the cache file ' . $cache_file );
 							}
+
 							$deleted_count++;
+
 						} else {	
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'failed to remove the cache file '.$cache_file );
 							}
+
 							if ( is_admin() ) {
 								$this->p->notice->err( sprintf( __( 'Failed to remove the cache file %s.',
 									'wpsso' ), $cache_file ) );
@@ -1187,6 +1224,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						}
 					}
 				}
+
 				closedir( $dh );
 			}
 
@@ -1220,11 +1258,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			static $cache_exp_secs = null;	// filter the cache expiration value only once
+			static $cache_exp_secs = null;	// Filter the cache expiration value only once.
 
 			$cache_md5_pre = $this->p->lca . '_a_';
 
-			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
+			if ( ! isset( $cache_exp_secs ) ) {	// Filter cache expiration if not already set.
 				$cache_exp_filter = $this->p->cf['wp']['transient'][$cache_md5_pre]['filter'];
 				$cache_opt_key    = $this->p->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
 				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
@@ -1271,7 +1309,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			natsort( $topics );
 
-			$topics = array_merge( array( 'none' ), $topics );	// after sorting the array, put 'none' first
+			$topics = array_merge( array( 'none' ), $topics );	// After sorting the array, put 'none' first.
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1294,7 +1332,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 */
 		public function get_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false, array $curl_opts = array() ) {
 
-			if ( empty( $request ) ) {	// just in case
+			if ( empty( $request ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: the request argument is empty' );
@@ -1302,7 +1340,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				return false;
 
-			} elseif ( empty( $query ) ) {	// just in case
+			} elseif ( empty( $query ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: the query argument is empty' );
@@ -1310,16 +1348,16 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				return false;
 
-			} elseif ( stripos( $request, '<html' ) !== false ) {	// request contains html
+			} elseif ( stripos( $request, '<html' ) !== false ) {	// Request contains html.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using the html submitted as the request argument' );
 				}
 
 				$html    = $request;
-				$request = false;	// just in case
+				$request = false;	// Just in case.
 
-			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {	// request is an invalid url
+			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {	// Request is an invalid url.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: request argument is not html or a valid url' );
@@ -1345,7 +1383,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				return false;
 
-			} elseif ( empty( $html ) ) {	// returned html for url is empty
+			} elseif ( empty( $html ) ) {	// Returned html for url is empty.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: html for ' . $request . ' is empty' );
@@ -1366,18 +1404,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$ret        = array();
-			$html       = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// convert to UTF8
-			$html       = preg_replace( '/<!--.*-->/Uums', '', $html );	// remove all html comments
-			$doc        = new DOMDocument();	// since PHP v4.1
+			$html       = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
+			$html       = preg_replace( '/<!--.*-->/Uums', '', $html );	// Remove all html comments.
+			$doc        = new DOMDocument();	// Since PHP v4.1.
 			$has_errors = false;
 
 			if ( $libxml_errors ) {
 
-				if ( function_exists( 'libxml_use_internal_errors' ) ) {	// since PHP v5.1
+				if ( function_exists( 'libxml_use_internal_errors' ) ) {	// Since PHP v5.1.
 
-					$libxml_prev_state = libxml_use_internal_errors( true );	// enable user error handling
+					$libxml_prev_state = libxml_use_internal_errors( true );	// Enable user error handling.
 
-					if ( ! $doc->loadHTML( $html ) ) {	// loadXML() is too strict for most webpages
+					if ( ! $doc->loadHTML( $html ) ) {	// loadXML() is too strict for most webpages.
 
 						$has_errors = true;
 
@@ -1404,13 +1442,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							}
 						}
 
-						libxml_clear_errors();		// clear any HTML parsing errors
+						libxml_clear_errors();		// Clear any HTML parsing errors.
 
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'loadHTML was successful' );
 					}
 
-					libxml_use_internal_errors( $libxml_prev_state );	// restore previous error handling
+					libxml_use_internal_errors( $libxml_prev_state );	// Restore previous error handling.
 
 				} else {
 
@@ -1440,7 +1478,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$metas = $xpath->query( $query );
 
 			foreach ( $metas as $m ) {
-				$m_atts = array();		// put all attributes in a single array
+				$m_atts = array();		// Put all attributes in a single array.
 				foreach ( $m->attributes as $a ) {
 					$m_atts[$a->name] = $a->value;
 				}
@@ -1451,7 +1489,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				if ( empty( $ret ) ) {	// empty array
+				if ( empty( $ret ) ) {	// Empty array.
 					if ( false === $request ) {	// $request argument is html
 						$this->p->debug->log( 'meta tags found in submitted html' );
 					} else {
@@ -1478,40 +1516,57 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function get_body_html( $request, $remove_script = true ) {
+
 			$html = '';
 
 			if ( strpos( $request, '//' ) === 0 ) {
 				$request = self::get_prot() . ':' . $request;
 			}
 
-			if ( strpos( $request, '<' ) === 0 ) {	// check for HTML content
+			if ( strpos( $request, '<' ) === 0 ) {	// Check for HTML content.
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using html submitted in the request argument' );
 				}
+
 				$html = $request;
+
 			} elseif ( empty( $request ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: request argument is empty' );
 				}
+
 				return false;
+
 			} elseif ( strpos( $request, 'data:' ) === 0 ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: request argument is inline data' );
 				}
+
 				return false;
+
 			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: request argument is not html or valid url' );
 				}
+
 				return false;
+
 			} else {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'fetching body html for ' . $request );
 				}
+
 				if ( ( $html = $this->p->cache->get( $request, 'raw', 'transient' ) ) === false ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: error caching ' . $request );
 					}
+
 					return false;
 				}
 			}
@@ -1527,7 +1582,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function log_is_functions() {
 
-			if ( ! $this->p->debug->enabled ) {	// nothing to do
+			if ( ! $this->p->debug->enabled ) {	// Nothing to do.
 				return;
 			}
 
@@ -1584,7 +1639,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$protect = false;
 					}
 				} else {
-					$protect = true;	// just in case
+					$protect = true;	// Just in case.
 				}
 			}
 
@@ -1732,22 +1787,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 */
 		public function json_format( $json, $options = 0, $depth = 32 ) {
 
-			$pretty_print = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', false );
-			$ext_json_lib = self::get_const( 'WPSSO_EXT_JSON_DISABLE', false ) ? false : true;
+			$pretty_print    = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', false );
+			$ext_json_lib    = self::get_const( 'WPSSO_EXT_JSON_DISABLE', false ) ? false : true;
 			$ext_json_format = false;
 
 			if ( $options === 0 && defined( 'JSON_UNESCAPED_SLASHES' ) ) {
-				$options = JSON_UNESCAPED_SLASHES;	// since PHP v5.4
+				$options = JSON_UNESCAPED_SLASHES;	// Since PHP v5.4.
 			}
 
 			/**
 			 * Decide if the encoded json will be minimized or not.
 			 */
 			if ( is_admin() || $this->p->debug->enabled || $pretty_print ) {
-				if ( defined( 'JSON_PRETTY_PRINT' ) ) {	// since PHP v5.4
+				if ( defined( 'JSON_PRETTY_PRINT' ) ) {	// Since PHP v5.4.
 					$options = $options|JSON_PRETTY_PRINT;
 				} else {
-					$ext_json_format = true;	// use SuextJsonFormat for older PHP
+					$ext_json_format = true;	// Use SuextJsonFormat for older PHP.
 				}
 			}
 
@@ -1755,7 +1810,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Encode the json.
 			 */
 			if ( ! is_string( $json ) ) {
-				$json = self::json_encode_array( $json, $options, $depth );	// prefers wp_json_encode() to json_encode()
+				$json = self::json_encode_array( $json, $options, $depth );	// Prefers wp_json_encode() to json_encode().
 			}
 
 			/**
@@ -1850,7 +1905,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			if ( isset( $this->p->m['util'][$mod['name']] ) ) {	// make sure we have a complete $mod array
+			if ( isset( $this->p->m['util'][$mod['name']] ) ) {	// Make sure we have a complete $mod array.
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting $mod array from ' . $mod['name'] . ' module object' );
 				}
@@ -1992,7 +2047,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				if ( $mod['is_home'] ) {
 
-					if ( get_option( 'show_on_front' ) === 'page' ) {	// show_on_front = posts | page
+					if ( get_option( 'show_on_front' ) === 'page' ) {	// Show_on_front = posts | page.
 						$url = $this->check_url_string( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
 					} else {
 						$url = apply_filters( $this->p->lca . '_home_url', home_url( '/' ), $mod, $add_page, $src_id );
@@ -2007,10 +2062,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( ! empty( $mod['id'] ) ) {
 
 						if ( ! empty( $mod['obj'] ) ) {
-							$url = $mod['obj']->get_options( $mod['id'], $type . '_url' );	// returns null if an index key is not found
+							$url = $mod['obj']->get_options( $mod['id'], $type . '_url' );	// Returns null if an index key is not found.
 						}
 
-						if ( ! empty( $url ) ) {	// must be a non-empty string
+						if ( ! empty( $url ) ) {	// Must be a non-empty string.
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'custom term ' . $type . '_url = ' . $url );
 							}
@@ -2026,10 +2081,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					if ( ! empty( $mod['id'] ) ) {
 
 						if ( ! empty( $mod['obj'] ) ) {
-							$url = $mod['obj']->get_options( $mod['id'], $type . '_url' );	// returns null if an index key is not found
+							$url = $mod['obj']->get_options( $mod['id'], $type . '_url' );	// Returns null if an index key is not found.
 						}
 
-						if ( ! empty( $url ) ) {	// must be a non-empty string
+						if ( ! empty( $url ) ) {	// Must be a non-empty string.
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'custom user ' . $type . '_url = ' . $url );
 							}
@@ -2147,7 +2202,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( ! $wp_rewrite->using_permalinks() ) {
 					$url = add_query_arg( 'paged', $paged, $url );
 				} else {
-					if ( $mod['is_home_page'] ) {	// static home page (have post id)
+					if ( $mod['is_home_page'] ) {	// Static home page (have post id).
 						$base = $wp_rewrite->using_index_permalinks() ? 'index.php/' : '/';
 						$url = home_url( $base );
 						if ( $this->p->debug->enabled ) {
@@ -2170,7 +2225,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $context . ' url = ' . $url );
 				}
-				return $url;	// stop here
+				return $url;	// Stop here.
 			}
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $context . ' url is ' . gettype( $url ) );
@@ -2221,19 +2276,26 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function clear_uniq_urls( $mixed = 'default' ) {
+
 			if ( ! is_array( $mixed ) ) {
 				$mixed = array( $mixed );
 			}
+
 			$cleared = 0;
+
 			foreach ( $mixed as $context ) {
+
 				if ( isset( $this->uniq_urls[$context] ) ) {
 					$cleared += count( $this->uniq_urls[$context] );
 				}
+
 				$this->uniq_urls[$context] = array();
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'cleared uniq url cache for context '.$context );
 				}
 			}
+
 			return $cleared;
 		}
 
@@ -2295,7 +2357,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				array_push( $dst, $src );
 			}
 
-			return $this->slice_max( $dst, $num );	// returns true or false
+			return $this->slice_max( $dst, $num );	// Returns true or false.
 		}
 
 		public function slice_max( &$arr, $num = 0 ) {
@@ -2335,9 +2397,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			foreach ( $opt_keys as $max_key ) {
 
 				if ( ! empty( $mod['id'] ) && ! empty( $mod['obj'] ) ) {
-					$max_val = $mod['obj']->get_options( $mod['id'], $max_key );	// returns null if an index key is not found
+					$max_val = $mod['obj']->get_options( $mod['id'], $max_key );	// Returns null if an index key is not found.
 				} else {
-					$max_val = null;	// default value if index key is missing
+					$max_val = null;	// Default value if index key is missing.
 				}
 
 				/**
@@ -2353,7 +2415,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				} else {
 
-					$max_nums[$max_key] = isset( $this->p->options[$max_key] ) ?	// fallback to options
+					$max_nums[$max_key] = isset( $this->p->options[$max_key] ) ?	// Fallback to options.
 						$this->p->options[$max_key] : 0;
 				}
 			}
@@ -2465,7 +2527,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'setting global ' . $this->p->lca . '_doing_filter_' . $filter_name );
 			}
 
-			$GLOBALS[$this->p->lca . '_doing_filter_' . $filter_name] = true;	// prevent recursive loops
+			$GLOBALS[$this->p->lca . '_doing_filter_' . $filter_name] = true;	// Prevent recursive loops.
 
 			/**
 			 * Apply the filters.
@@ -2489,7 +2551,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'unsetting global ' . $this->p->lca . '_doing_filter_' . $filter_name );
 			}
 
-			unset( $GLOBALS[$this->p->lca . '_doing_filter_' . $filter_name] );	// un-prevent recursive loops
+			unset( $GLOBALS[$this->p->lca . '_doing_filter_' . $filter_name] );	// Un-prevent recursive loops.
 
 			/**
 			 * Issue warning for slow filter performance.
@@ -2515,10 +2577,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$total_time, $filter_name ) );
 				}
 
-				// translators: %1$0.3f is a number of seconds
+				// translators: %1$0.3f is a number of seconds.
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $max_time );
 
-				// translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max
+				// translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
 				$error_msg = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter (%3$s).',
 					'wpsso' ), $total_time, $filter_name, $rec_max_msg );
 
@@ -2538,7 +2600,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 				}
 
-				// translators: %s is the short plugin name
+				// translators: %s is the short plugin name.
 				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
 
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
@@ -2583,8 +2645,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function get_admin_url( $menu_id = '', $link_text = '', $menu_lib = '' ) {
 
-			$hash = '';
-			$query = '';
+			$hash      = '';
+			$query     = '';
 			$admin_url = '';
 
 			/**
@@ -2599,11 +2661,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( empty( $menu_id ) ) {
+
 				$current = $_SERVER['REQUEST_URI'];
+
 				if ( preg_match( '/^.*\?page='.$this->p->lca.'-([^&]*).*$/', $current, $match ) ) {
 					$menu_id = $match[1];
 				} else {
-					$menu_id = key( $this->p->cf['*']['lib']['submenu'] );	// default to first submenu
+					$menu_id = key( $this->p->cf['*']['lib']['submenu'] );	// Default to first submenu.
 				}
 			}
 
@@ -2656,17 +2720,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function get_metabox_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 
-			$ret_html = '';
-			$tab_keys = array_keys( $tabs );
-			$default_tab = '_' . reset( $tab_keys );		// must start with an underscore
+			$ret_html           = '';
+			$tab_keys           = array_keys( $tabs );
+			$default_tab        = '_' . reset( $tab_keys );		// Must start with an underscore.
 			$class_metabox_tabs = 'sucom-metabox-tabs';
-			$class_link = 'sucom-tablink';
-			$class_tabset = 'sucom-tabset';
+			$class_link         = 'sucom-tablink';
+			$class_tabset       = 'sucom-tabset';
 
 			if ( ! empty( $metabox_id ) ) {
-				$metabox_id = '_' . $metabox_id;		// must start with an underscore
+				$metabox_id         = '_' . $metabox_id;		// Must start with an underscore.
 				$class_metabox_tabs .= ' ' . $class_metabox_tabs . $metabox_id;
-				$class_link .= ' ' . $class_link . $metabox_id;
+				$class_link         .= ' ' . $class_link . $metabox_id;
 			}
 
 			/**
@@ -2703,7 +2767,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Add the settings table for each tab.
 			 */
 			foreach ( $tabs as $tab => $title ) {
+
 				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
+
 				$ret_html .= $this->get_metabox_table( $table_rows[$tab], $class_href_key, 
 					( empty( $metabox_id ) ? '' : $class_tabset . $metabox_id ), $class_tabset );
 			}
@@ -2721,12 +2787,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$ret_html = '';
 
-			if ( ! is_array( $table_rows ) ) {	// just in case
+			if ( ! is_array( $table_rows ) ) {	// Just in case.
 				return $ret_html;
 			}
 
-			$total_rows = count( $table_rows );
-			$count_rows = 0;
+			$total_rows  = count( $table_rows );
+			$count_rows  = 0;
 			$hidden_opts = 0;
 			$hidden_rows = 0;
 
@@ -2737,7 +2803,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $table_rows as $key => $row ) {
 
-				if ( empty( $row ) ) {	// just in case
+				if ( empty( $row ) ) {	// Just in case.
 					continue;
 				}
 
@@ -2819,7 +2885,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$ret_html .= '<table class="sucom-settings '.$this->p->lca.
 				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
-				( $hidden_rows > 0 && $hidden_rows === $count_rows ?	// if all rows hidden, then hide the whole table
+				( $hidden_rows > 0 && $hidden_rows === $count_rows ?	// If all rows hidden, then hide the whole table.
 					' hide_in_'.$show_opts : '' ).'">' . "\n";
 
 			foreach ( $table_rows as $row ) {
@@ -2855,19 +2921,27 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 * Rename settings array keys, preserving the option modifiers (:is|:use|#.*|_[0-9]+).
 		 */
 		public function rename_opts_by_ext( &$opts, $options_keys ) {
+
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+
 				if ( ! isset( $options_keys[$ext] ) || ! is_array( $options_keys[$ext] ) ||
 					! isset( $info['opt_version'] ) || empty( $opts['plugin_'.$ext.'_opt_version'] ) ) {
+
 					continue;
 				}
+
 				foreach ( $options_keys[$ext] as $max_version => $keys ) {
+
 					if ( is_numeric( $max_version ) && is_array( $keys ) && $opts['plugin_'.$ext.'_opt_version'] <= $max_version ) {
-						SucomUtil::rename_keys( $opts, $keys, true );	// rename $modifiers = true
-						$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];	// mark as current
+
+						SucomUtil::rename_keys( $opts, $keys, true );	// Rename $modifiers = true.
+
+						$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];	// Mark as current.
 					}
 				}
 			}
-			$opts['options_version'] = $this->p->cf['opt']['version'];	// mark as current
+
+			$opts['options_version'] = $this->p->cf['opt']['version'];	// Mark as current.
 		}
 
 		/**
@@ -2876,27 +2950,30 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function limit_text_length( $text, $maxlen = 300, $trailing = '', $cleanup_html = true ) {
 
 			if ( true === $cleanup_html ) {
-				$text = $this->cleanup_html_tags( $text );				// remove any remaining html tags
+				$text = $this->cleanup_html_tags( $text );				// Remove any remaining html tags.
 			}
 
 			$charset = get_bloginfo( 'charset' );
-			$text = html_entity_decode( self::decode_utf8( $text ), ENT_QUOTES, $charset );
+			$text    = html_entity_decode( self::decode_utf8( $text ), ENT_QUOTES, $charset );
 
 			if ( $maxlen > 0 ) {
+
 				if ( mb_strlen( $trailing ) > $maxlen ) {
-					$trailing = mb_substr( $trailing, 0, $maxlen );			// trim the trailing string, if too long
+					$trailing = mb_substr( $trailing, 0, $maxlen );			// Trim the trailing string, if too long.
 				}
+
 				if ( mb_strlen( $text ) > $maxlen ) {
 					$text = mb_substr( $text, 0, $maxlen - mb_strlen( $trailing ) );
-					$text = trim( preg_replace( '/[^ ]*$/', '', $text ) );		// remove trailing bits of words
-					$text = preg_replace( '/[,\.]*$/', '', $text );			// remove trailing puntuation
+					$text = trim( preg_replace( '/[^ ]*$/', '', $text ) );		// Remove trailing bits of words.
+					$text = preg_replace( '/[,\.]*$/', '', $text );			// Remove trailing puntuation.
 				} else {
-					$trailing = '';							// truncate trailing string if text is less than maxlen
+					$trailing = '';							// Truncate trailing string if text is less than maxlen.
 				}
-				$text = $text.$trailing;						// trim and add trailing string (if provided)
+
+				$text = $text.$trailing;						// Trim and add trailing string (if provided).
 			}
 
-			$text = preg_replace( '/&nbsp;/', ' ', $text);					// just in case
+			$text = preg_replace( '/&nbsp;/', ' ', $text);					// Just in case.
 
 			return $text;
 		}
@@ -2954,7 +3031,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );	// replace 1+ spaces to a single space
+			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );	// Replace 1+ spaces to a single space.
 
 			return trim( $text );
 		}

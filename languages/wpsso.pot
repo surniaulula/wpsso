@@ -374,7 +374,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:2177 lib/pro/media/slideshare.php:199
-#: lib/pro/media/vimeo.php:168 lib/pro/media/wistia.php:332 lib/util.php:1428
+#: lib/pro/media/vimeo.php:168 lib/pro/media/wistia.php:332 lib/util.php:1466
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -1015,43 +1015,43 @@ msgctxt "option comment"
 msgid "%s add-on required"
 msgstr ""
 
-#: lib/com/bfo.php:204 lib/com/cache.php:483 lib/com/notice.php:72
+#: lib/com/bfo.php:252 lib/com/cache.php:483 lib/com/notice.php:72
 #: lib/com-gettext-extract.php:23
 msgid "%s Notice"
 msgstr ""
 
-#: lib/com/bfo.php:207 lib/com/cache.php:486 lib/com/notice.php:75
+#: lib/com/bfo.php:255 lib/com/cache.php:486 lib/com/notice.php:75
 #: lib/com-gettext-extract.php:16
 msgid "Notice"
 msgstr ""
 
-#: lib/com/bfo.php:224 lib/com-gettext-extract.php:24
+#: lib/com/bfo.php:272 lib/com-gettext-extract.php:24
 msgid ""
 "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
 "sent output to the webpage."
 msgstr ""
 
-#: lib/com/bfo.php:227 lib/com-gettext-extract.php:3
+#: lib/com/bfo.php:275 lib/com-gettext-extract.php:3
 msgid ""
 "All WordPress filter hooks must return their text, not send it to the "
 "webpage output."
 msgstr ""
 
-#: lib/com/bfo.php:230 lib/com-gettext-extract.php:18
+#: lib/com/bfo.php:278 lib/com-gettext-extract.php:18
 msgid ""
 "Please contact the author of that filter hook and report this issue as a "
 "coding error."
 msgstr ""
 
-#: lib/com/bfo.php:263 lib/com-gettext-extract.php:15
+#: lib/com/bfo.php:311 lib/com-gettext-extract.php:15
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: lib/com/bfo.php:264 lib/com-gettext-extract.php:4
+#: lib/com/bfo.php:312 lib/com-gettext-extract.php:4
 msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: lib/com/bfo.php:265 lib/com-gettext-extract.php:8
+#: lib/com/bfo.php:313 lib/com-gettext-extract.php:8
 msgid "END OUTPUT"
 msgstr ""
 
@@ -2777,8 +2777,9 @@ msgid "Library class \"%s\" is missing."
 msgstr ""
 
 #. translators: %s is the short plugin name
+#. translators: %s is the short plugin name.
 #: lib/loader.php:163 lib/loader.php:189 lib/post.php:259 lib/register.php:247
-#: lib/term.php:237 lib/user.php:201 lib/util.php:357 lib/util.php:2542
+#: lib/term.php:237 lib/user.php:201 lib/util.php:359 lib/util.php:2604
 msgid "%s warning:"
 msgstr ""
 
@@ -3396,7 +3397,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:668 lib/util.php:2810
+#: lib/messages.php:668 lib/util.php:2876
 msgid "No options available."
 msgstr ""
 
@@ -5267,8 +5268,9 @@ msgid "No Description"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
-#: lib/post.php:245 lib/term.php:223 lib/user.php:187 lib/util.php:343
-#: lib/util.php:2519
+#. translators: %1$0.3f is a number of seconds.
+#: lib/post.php:245 lib/term.php:223 lib/user.php:187 lib/util.php:345
+#: lib/util.php:2581
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5307,7 +5309,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:922 lib/util.php:1342
+#: lib/post.php:922 lib/util.php:1380
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -5522,12 +5524,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:194 lib/pro/media/vimeo.php:163
-#: lib/pro/media/wistia.php:327 lib/util.php:1423
+#: lib/pro/media/wistia.php:327 lib/util.php:1461
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/pro/media/slideshare.php:196 lib/pro/media/vimeo.php:165
-#: lib/pro/media/wistia.php:329 lib/util.php:1425
+#: lib/pro/media/wistia.php:329 lib/util.php:1463
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
@@ -6116,63 +6118,63 @@ msgstr ""
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#. translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max
-#: lib/util.php:346
+#. translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max.
+#: lib/util.php:348
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1047
+#: lib/util.php:1065
 msgid ""
 "%s cached files, transient cache, column meta, and WordPress object cache "
 "have been cleared."
 msgstr ""
 
-#: lib/util.php:1052
+#: lib/util.php:1070
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1080
+#: lib/util.php:1098
 msgid ""
 "A background task will begin shortly to re-create the %s post, term, and "
 "user transient cache objects."
 msgstr ""
 
-#: lib/util.php:1167
+#: lib/util.php:1194
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1184
+#: lib/util.php:1221
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1263
+#: lib/util.php:1301
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1329
+#: lib/util.php:1367
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1355
+#: lib/util.php:1393
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1475
+#: lib/util.php:1513
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
-#. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max
-#: lib/util.php:2522
+#. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
+#: lib/util.php:2584
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2535
+#: lib/util.php:2597
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6181,29 +6183,29 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2535
+#: lib/util.php:2597
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:2837
+#: lib/util.php:2903
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2840
+#: lib/util.php:2906
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:2845
+#: lib/util.php:2911
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:2848
+#: lib/util.php:2914
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
