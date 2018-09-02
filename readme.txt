@@ -340,6 +340,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
+	* Added a new 'unhide_rows_on_show' event for the SucomForm::get_select() method.
 	* Minor code changes to rename the package check method.
 
 **Version 4.11.1 (2018/08/25)**
