@@ -459,7 +459,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		private function set_config( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
 
 			if ( $plugin !== null ) {
+
 				$this->p =& $plugin;
+
 				if ( ! empty( $this->p->debug->enabled ) ) {
 					$this->p->debug->mark();
 				}
@@ -467,8 +469,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $lca !== null ) {
 				$this->lca = $lca;
-			} elseif ( ! empty( $this->p->cf['lca'] ) ) {
-				$this->lca = $this->p->cf['lca'];
+			} elseif ( ! empty( $this->p->lca ) ) {
+				$this->lca = $this->p->lca;
 			}
 
 			if ( $text_domain !== null ) {

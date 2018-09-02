@@ -14,6 +14,7 @@ if ( ! class_exists( 'WpssoGplUtilTerm' ) && class_exists( 'WpssoTerm' ) ) {
 	class WpssoGplUtilTerm extends WpssoTerm {
 
 		public function __construct( &$plugin ) {
+
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {

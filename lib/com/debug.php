@@ -24,6 +24,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		public $enabled = false;	// true if at least one subsys is true
 
 		public function __construct( &$plugin, $subsys = array( 'html' => false, 'wp' => false ) ) {
+
 			$this->p =& $plugin;
 
 			$this->start_stats = array(

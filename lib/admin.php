@@ -30,6 +30,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public $submenu = array();
 
 		public function __construct( &$plugin ) {
+
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {

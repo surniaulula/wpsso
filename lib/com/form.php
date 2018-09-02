@@ -24,6 +24,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public $defaults = array();
 
 		public function __construct( &$plugin, $opts_name, &$opts, &$def_opts, $menu_ext = '' ) {
+
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {

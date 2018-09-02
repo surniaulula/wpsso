@@ -17,6 +17,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		private $tb_notices;
 
 		public function __construct( &$plugin ) {
+
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {

@@ -16,6 +16,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 		private $p;
 
 		public function __construct( &$plugin ) {
+
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {

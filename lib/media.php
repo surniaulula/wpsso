@@ -24,6 +24,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		private static $image_src_info  = null;
 
 		public function __construct( &$plugin ) {
+
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {

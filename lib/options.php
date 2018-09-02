@@ -19,6 +19,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		protected static $allow_cache = false;
 
 		public function __construct( &$plugin ) {
+
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {

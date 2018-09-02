@@ -18,6 +18,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private static $wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // Default wp roles.
 
 		public function __construct( &$plugin ) {
+
 			$this->p =& $plugin;
 
 			register_activation_hook( WPSSO_FILEPATH, array( $this, 'network_activate' ) );

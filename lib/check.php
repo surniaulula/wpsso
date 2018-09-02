@@ -24,6 +24,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		);
 
 		public function __construct( &$plugin ) {
+
 			$this->p =& $plugin;
 		}
 

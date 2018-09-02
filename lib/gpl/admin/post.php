@@ -14,6 +14,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 	class WpssoGplAdminPost {
 
 		public function __construct( &$plugin ) {
+
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {

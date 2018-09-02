@@ -16,6 +16,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 		private $taglist_opts = array();
 
 		public function __construct( &$plugin ) {
+
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
