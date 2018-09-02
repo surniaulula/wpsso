@@ -2165,7 +2165,7 @@ msgctxt "option label"
 msgid "WP Caption Prefix"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:87 lib/gpl/admin/general.php:83
+#: lib/gpl/admin/advanced.php:87 lib/gpl/admin/general.php:84
 #: lib/pro/admin/advanced.php:93 lib/pro/admin/general.php:86
 msgctxt "option label"
 msgid "Check for Embedded Media"

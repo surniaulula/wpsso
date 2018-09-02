@@ -100,15 +100,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $value;
 		}
 
+		/**
+		 * Hidden input field.
+		 */
 		public function get_hidden( $name, $value = '', $is_checkbox = false ) {
 
 			if ( empty( $name ) ) {
 				return;	// Just in case.
 			}
 
-			/**
-			 * Hide the current options value, unless one is given as an argument to the method.
-			 */
 			if ( empty( $value ) && $value !== 0 && $this->in_options( $name ) ) {
 				$value = $this->options[$name];
 			}
@@ -117,6 +117,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'<input type="hidden" name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '" value="' . esc_attr( $value ) . '" />';
 		}
 
+		/**
+		 * Checkbox input field.
+		 */
 		public function get_checkbox( $name, $css_class = '', $css_id = '', $disabled = false, $force = null, $group = null ) {
 
 			if ( empty( $name ) ) {
@@ -155,34 +158,29 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_checkbox( $name, $css_class = '', $css_id = '', $force = null, $group = null ) {
-			return $this->get_checkbox( $name, $css_class, $css_id, true, $force );
+
+			$disabled = true;
+
+			return $this->get_checkbox( $name, $css_class, $css_id, $disabled, $force, $group );
 		}
 
-		public function get_nocb_td( $name, $comment = '', $narrow = false ) {
-			return '<td class="'.( $narrow ? 'checkbox ' : '' ) . 'blank">' . $this->get_nocb_cmt( $name, $comment ) . '</td>';
+		public function get_no_checkbox_options( $name, $opts, $css_class = '', $css_id = '', $group = null ) {
+
+			$disabled = true;
+			$force    = empty( $opts[$name] ) ? 0 : 1;
+
+			return $this->get_checkbox( $name, $css_class, $css_id, $disabled, $force, $group );
 		}
 
-		public function get_nocb_cmt( $name, $comment = '' ) {
-			return $this->get_checkbox( $name, '', '', true, null ).( empty( $comment ) ? '' : ' ' . $comment );
+		public function get_no_checkbox_comment( $name, $comment = '' ) {
+
+			$disabled = true;
+
+			return $this->get_checkbox( $name, '', '', $disabled, null ).( empty( $comment ) ? '' : ' ' . $comment );
 		}
 
-		public function get_no_checklist_post_types( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '' ) {
-			return $this->get_checklist_post_types( $name_prefix, $values, $css_class, $css_id, true );
-		}
-
-		public function get_checklist_post_types( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $disabled = false ) {
-
-			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
-				$values[$pt->name] = $pt->label.( empty( $pt->description ) ? '' : ' (' . $pt->description . ')' );
-			}
-
-			asort( $values );	// Sort by label.
-
-			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, true, $disabled );
-		}
-
-		public function get_no_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null ) {
-			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc, true );
+		public function get_td_no_checkbox( $name, $comment = '', $narrow = false ) {
+			return '<td class="'.( $narrow ? 'checkbox ' : '' ) . 'blank">' . $this->get_no_checkbox_comment( $name, $comment ) . '</td>';
 		}
 
 		/**
@@ -256,6 +254,36 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
+		public function get_no_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null ) {
+
+			$disabled = true;
+
+			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc, $disabled );
+		}
+
+		public function get_checklist_post_types( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $disabled = false ) {
+
+			$is_assoc = true;
+
+			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
+				$values[$pt->name] = $pt->label.( empty( $pt->description ) ? '' : ' (' . $pt->description . ')' );
+			}
+
+			asort( $values );	// Sort by label.
+
+			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc, $disabled );
+		}
+
+		public function get_no_checklist_post_types( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '' ) {
+
+			$disabled = true;
+
+			return $this->get_checklist_post_types( $name_prefix, $values, $css_class, $css_id, $disabled );
+		}
+
+		/**
+		 * Radio input field.
+		 */
 		public function get_radio( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $disabled = false ) {
 
 			if ( empty( $name ) || ! is_array( $values ) ) {
@@ -306,9 +334,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_radio( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null ) {
-			return $this->get_radio( $name, $values, $css_class, $css_id, $is_assoc, true );
+
+			$disabled = true;
+
+			return $this->get_radio( $name, $values, $css_class, $css_id, $is_assoc, $disabled );
 		}
 
+		/**
+		 * Select drop-down field.
+		 */
 		public function get_select( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
 			$disabled = false, $selected = false, $on_change = false ) {
 
@@ -523,7 +557,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_select( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $selected = false, $on_change = false ) {
-			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc, true, $selected, $on_change );
+		
+			$disabled = true;
+
+			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc, $disabled, $selected, $on_change );
+		}
+
+		public function get_no_select_options( $name, $opts, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $on_change = false ) {
+		
+			$disabled = true;
+			$selected = isset( $opts[$name] ) ? $opts[$name] : true;
+
+			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc, $disabled, $selected, $on_change );
 		}
 
 		public function get_select_time( $name, $css_class = '', $css_id = '', $disabled = false, $selected = false, $step_mins = 30 ) {
@@ -537,15 +582,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$step_secs   = 60 * $step_mins;
 			$time_format = '';
 
-			$times = SucomUtil::get_hours_range( $start_secs, $end_secs, $step_secs, $time_format );
+			$times     = SucomUtil::get_hours_range( $start_secs, $end_secs, $step_secs, $time_format );
+			$times     = array_merge( array( 'none' => '[None]' ), $times );
 			$css_class = trim( 'hour_mins ' . $css_class );
+			$is_assoc  = true;
 
-			return $this->get_select( $name, array_merge( array( 'none' => '[None]' ), $times ),
-				$css_class, $css_id, true, $disabled, $selected );
+			return $this->get_select( $name, $times, $css_class, $css_id, $is_assoc, $disabled, $selected );
 		}
 
 		public function get_no_select_time( $name, $css_class = '', $css_id = '', $selected = false, $step_mins = 30 ) {
-			return $this->get_select_time( $name, $css_class, $css_id, true, $selected, $step_mins );
+		
+			$disabled = true;
+
+			return $this->get_select_time( $name, $css_class, $css_id, $disabled, $selected, $step_mins );
 		}
 
 		public function get_select_timezone( $name, $css_class = '', $css_id = '', $disabled = false, $selected = false ) {
@@ -561,10 +610,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_select_timezone( $name, $css_class = '', $css_id = '', $selected = false ) {
-			return $this->get_select_timezone( $name, $css_class, $css_id, true, $selected );
+
+			$disabled = true;
+
+			return $this->get_select_timezone( $name, $css_class, $css_id, $disabled, $selected );
 		}
 
 		public function get_select_country( $name, $css_class = '', $css_id = '', $disabled = false, $selected = false ) {
+
+			$is_assoc = true;
 
 			if ( empty( $name ) || ! isset( $this->defaults[$name] ) ) {
 				$this->defaults[$name] = 'none';
@@ -574,18 +628,28 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * Sanity check for possibly older input field values.
 			 */
 			if ( false === $selected ) {
-				if ( empty( $this->options[$name] ) ||
-					( $this->options[$name] !== 'none' && strlen( $this->options[$name] ) !== 2 ) ) {
+				if ( empty( $this->options[$name] ) || ( $this->options[$name] !== 'none' && strlen( $this->options[$name] ) !== 2 ) ) {
 					$selected = $this->defaults[$name];
 				}
 			}
 
 			return $this->get_select( $name, array_merge( array( 'none' => '[None]' ),
-				SucomUtil::get_alpha2_countries() ), $css_class, $css_id, true, $disabled, $selected );
+				SucomUtil::get_alpha2_countries() ), $css_class, $css_id, $is_assoc, $disabled, $selected );
 		}
 
 		public function get_no_select_country( $name, $css_class = '', $css_id = '', $selected = false ) {
-			return $this->get_select_country( $name, $css_class, $css_id, true, $selected );
+
+			$disabled = true;
+
+			return $this->get_select_country( $name, $css_class, $css_id, $disabled, $selected );
+		}
+
+		public function get_no_select_country_options( $name, $opts, $css_class = '', $css_id = '' ) {
+
+			$disabled = true;
+			$selected = isset( $opts[$name] ) ? $opts[$name] : false;
+
+			return $this->get_select_country( $name, $css_class, $css_id, $disabled, $selected );
 		}
 
 		public function get_select_img_size( $name, $name_preg = '//', $invert = false ) {
@@ -631,6 +695,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
+		/**
+		 * Text input field.
+		 */
 		public function get_input( $name, $css_class = '', $css_id = '', $len = 0, $placeholder = '', $disabled = false, $tabindex = 0 ) {
 
 			if ( empty( $name ) ) {
@@ -668,37 +735,429 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
+		public function get_no_input( $name = '', $css_class = '', $css_id = '', $placeholder = '' ) {
+
+			$html        = '';
+			$value       = $this->in_options( $name ) ? $this->options[$name] : '';
+			$placeholder = $this->get_placeholder_sanitized( $name, $placeholder );
+
+			if ( ! empty( $name ) ) {
+				$html .= $this->get_hidden( $name );
+			}
+
+			$html .= $this->get_no_input_value( $value, $css_class, $css_id, $placeholder );
+
+			return $html;
+		}
+
+		public function get_no_input_options( $name, $opts, $css_class = '', $css_id = '', $placeholder = '' ) {
+
+			$value = isset( $opts[$name] ) ? $opts[$name] : '';
+
+			return $this->get_no_input_value( $value, $css_class, $css_id, $placeholder );
+		}
+
+		public function get_no_input_value( $value = '', $css_class = '', $css_id = '', $placeholder = '', $max_input = 1 ) {
+
+			$html        = '';
+			$end_num     = $max_input > 0 ? $max_input - 1 : 0;
+			$input_class = empty( $css_class ) ? '' : $css_class;
+			$input_id    = empty( $css_id ) ? '' : $css_id;
+
+			foreach ( range( 0, $end_num, 1 ) as $key_num ) {
+				if ( $max_input > 1 ) {
+					$input_id = empty( $css_id ) ? '' : $css_id . '_' . $key_num;
+					$html .= '<div class="wrap_multi">' . "\n";
+				}
+
+				$html .= '<input type="text" disabled="disabled"' .
+					( empty( $input_class ) ? '' : ' class="' . esc_attr( $input_class ) . '"' ) .
+					( empty( $input_id ) ? '' : ' id="text_' . esc_attr( $input_id ) . '"' ) .
+					( $placeholder === '' ? '' : ' placeholder="' . esc_attr( $placeholder ) . '"' ) .
+					' value="' . esc_attr( $value ) . '" />';
+
+				if ( $max_input > 1 ) {
+					$html .= '</div>' . "\n";
+				}
+			}
+
+			return $html;
+		}
+
+		public function get_input_color( $name = '', $css_class = '', $css_id = '', $disabled = false ) {
+
+			if ( empty( $name ) ) {
+				$value = '';
+				$disabled = true;
+			} else {
+				$value = $this->in_options( $name ) ? $this->options[$name] : '';
+				if ( $this->get_options( $name . ':is' ) === 'disabled' ) {
+					$disabled = true;
+				}
+			}
+
+			return '<input type="text"' .
+				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '"' ) .
+				( empty( $css_class ) ? ' class="colorpicker"' : ' class="colorpicker ' . esc_attr( $css_class ) . '"' ) .
+				( empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
+				' placeholder="#000000" value="' . esc_attr( $value ) . '" />';
+		}
+
+		public function get_input_date( $name = '', $css_class = '', $css_id = '', $min_date = '', $max_date = '', $disabled = false ) {
+
+			if ( empty( $name ) ) {
+				$value = '';
+				$disabled = true;
+			} else {
+				$value = $this->in_options( $name ) ? $this->options[$name] : '';
+				if ( $this->get_options( $name . ':is' ) === 'disabled' ) {
+					$disabled = true;
+				}
+			}
+
+			return '<input type="text"' .
+				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '"' ) .
+				( empty( $css_class ) ? ' class="datepicker"' : ' class="datepicker ' . esc_attr( $css_class ) . '"' ) .
+				( empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
+				( empty( $min_date ) ? '' : ' min="' . esc_attr( $min_date ) . '"' ) .
+				( empty( $max_date ) ? '' : ' max="' . esc_attr( $max_date ) . '"' ) .
+				' placeholder="yyyy-mm-dd" value="' . esc_attr( $value ) . '" />';
+		}
+
+		public function get_no_input_date( $name = '' ) {
+
+			$disabled = true;
+
+			return $this->get_input_date( $name, '', '', '', '', $disabled );
+		}
+
+		public function get_no_input_date_options( $name, $opts ) {
+
+			$value = isset( $opts[$name] ) ? $opts[$name] : '';
+
+			return $this->get_no_input_value( $value, 'datepicker', '', 'yyyy-mm-dd' );
+		}
+
+		public function get_input_image_upload( $opt_prefix, $placeholder = '', $disabled = false ) {
+
+			$opt_suffix  = '';
+			$default_lib = 'wp';
+			$media_libs  = array( 'wp' => 'Media Library' );
+			$data        = array();
+
+			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
+				$opt_prefix = $matches[1];
+				$opt_suffix = $matches[2];	// mutiple numbered option
+			}
+
+			if ( true === $this->p->avail['media']['ngg'] ) {
+				$media_libs['ngg'] = 'NextGEN Gallery';
+			}
+
+			if ( strpos( $placeholder, 'ngg-' ) === 0 ) {
+				$default_lib = 'ngg';
+				$placeholder = preg_replace( '/^ngg-/', '', $placeholder );
+			}
+
+			$input_id = $this->get_input(
+				$opt_prefix . '_id' . $opt_suffix,	// $name
+				'short',				// $css_class
+				'',					// $css_id
+				0,					// $len
+				$placeholder,				// $placeholder
+				$disabled				// $disabled
+			);
+
+			/**
+			 * Disable the select option if only 1 media lib.
+			 */
+			$select_disabled = count( $media_libs ) <= 1 ? true : $disabled;
+
+			$select_lib = $this->get_select(
+				$opt_prefix . '_id_pre' . $opt_suffix,	// $name
+				$media_libs,				// $values
+				'',					// $css_class
+				'',					// $css_id
+				true,					// $is_assoc
+				$select_disabled,			// $disabled
+				$default_lib				// $selected
+			);
+
+			/**
+			 * The css id is used to set image values and disable the image url.
+			 */
+			if ( ( empty( $this->options[ $opt_prefix . '_id_pre' . $opt_suffix ] ) ||
+				$this->options[ $opt_prefix . '_id_pre' . $opt_suffix ] === 'wp' ) && 
+					! empty( $this->options[ $opt_prefix . '_id' . $opt_suffix ] ) ) {
+
+				$data['pid'] = $this->options[ $opt_prefix . '_id' . $opt_suffix ];
+
+			} elseif ( $default_lib === 'wp' && ! empty( $placeholder ) ) {
+
+				$data['pid'] = $placeholder;
+			}
+
+			$button_upload = function_exists( 'wp_enqueue_media' ) ? $this->get_button(
+				'Select or Upload Image',		// $value
+				'sucom_image_upload_button button',	// $css_class
+				$opt_prefix . $opt_suffix,		// $css_id
+				'',					// $url
+				false,					// $newtab
+				$disabled,				// $disabled
+				$data					// $data
+			) : '';
+
+			return '<div class="img_upload">' . $input_id . '&nbsp;in&nbsp;' . $select_lib . '&nbsp;' . $button_upload . '</div>';
+		}
+
+		public function get_no_input_image_upload( $opt_prefix, $placeholder = '' ) {
+
+			$disabled = true;
+
+			return $this->get_input_image_upload( $opt_prefix, $placeholder, $disabled );
+		}
+
+		public function get_input_image_dimensions( $name, $use_opts = false, $narrow = false, $disabled = false ) {
+
+			$placeholder_width  = '';
+			$placeholder_height = '';
+			$crop_area_select   = '';
+
+			/**
+			 * $use_opts is true when used for post / user meta forms (to show default values).
+			 */
+			if ( $use_opts ) {
+
+				$placeholder_width  = $this->get_placeholder_sanitized( $name . '_width', true );
+				$placeholder_height = $this->get_placeholder_sanitized( $name . '_height', true );
+
+				foreach ( array( 'crop', 'crop_x', 'crop_y' ) as $key ) {
+					if ( ! $this->in_options( $name . '_' . $key ) && $this->in_defaults( $name . '_' . $key ) ) {
+						$this->options[ $name . '_' . $key ] = $this->defaults[ $name . '_' . $key ];
+					}
+				}
+			}
+
+			/**
+			 * Crop area selection is only available since wp v3.9.
+			 */
+			global $wp_version;
+
+			if ( version_compare( $wp_version, '3.9', '>=' ) ) {
+
+				$crop_area_select .= true === $narrow ?
+					' <div class="img_crop_from is_narrow">' :
+					' <div class="img_crop_from">from';
+
+				$css_class = 'medium';
+				$css_id    = '';
+				$is_assoc  = true;
+
+				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
+					$crop_area_select .= ' ' . $this->get_select( $name . '_' . $key, $this->p->cf['form']['position_' . $key],
+						$css_class, $css_id, $is_assoc, $disabled );
+				}
+
+				$crop_area_select .= '</div>';
+			}
+
+			return $this->get_input( $name . '_width', 'short width', '', 0, $placeholder_width, $disabled ) . 'x' .
+				$this->get_input( $name . '_height', 'short height', '', 0, $placeholder_height, $disabled ) .
+					'px crop ' . $this->get_checkbox( $name . '_crop', '', '', $disabled ) . $crop_area_select;
+		}
+
+		public function get_no_input_image_dimensions( $name, $use_opts = false, $narrow = false ) {
+
+			$disabled = true;
+
+			return $this->get_input_image_dimensions( $name, $use_opts, $narrow, $disabled );
+		}
+
+		public function get_input_image_url( $opt_prefix, $url = '' ) {
+
+			$opt_suffix = '';
+
+			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
+				$opt_prefix = $matches[1];
+				$opt_suffix = $matches[2];
+			}
+
+			if ( empty( $this->options[ $opt_prefix . '_id' . $opt_suffix ] ) ) {
+				$placeholder = SucomUtil::esc_url_encode( $url );
+				$disabled    = false;
+			} else {
+				$placeholder = '';
+				$disabled    = true;
+			}
+
+			return $this->get_input( $opt_prefix . '_url' . $opt_suffix, 'wide', '', 0, $placeholder, $disabled );
+		}
+
+		public function get_input_video_dimensions( $name, $media_info = array(), $disabled = false ) {
+
+			$placeholder_width = '';
+			$placeholder_height = '';
+
+			if ( ! empty( $media_info ) && is_array( $media_info ) ) {
+				$placeholder_width  = empty( $media_info['vid_width'] ) ? '' : $media_info['vid_width'];
+				$placeholder_height = empty( $media_info['vid_height'] ) ? '' : $media_info['vid_height'];
+			}
+
+			return $this->get_input( $name . '_width', 'short width', '', 0, $placeholder_width, $disabled ) . 'x' .
+				$this->get_input( $name . '_height', 'short height', '', 0, $placeholder_height, $disabled ) . 'px';
+		}
+
+		public function get_no_input_video_dimensions( $name, $media_info = array() ) {
+
+			$disabled = true;
+
+			return $this->get_input_video_dimensions( $name, $media_info, $disabled );
+		}
+
+		public function get_input_video_url( $opt_prefix, $url = '' ) {
+
+			/**
+			 * Disable if we have a custom video embed.
+			 */
+			$disabled = empty( $this->options[$opt_prefix . '_embed'] ) ? false : true;
+
+			return $this->get_input( $opt_prefix . '_url', 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $disabled );
+		}
+
+		public function get_input_copy_clipboard( $value, $css_class = 'wide', $css_id = '' ) {
+
+			if ( empty( $css_id ) ) {
+				$css_id = uniqid();
+			}
+
+			$input = '<input type="text"' .
+				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
+				( empty( $css_id ) ? '' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
+				' value="' . esc_attr( $value ) . '" readonly' .
+				' onFocus="this.select(); document.execCommand(\'Copy\',false,null);"' .
+				' onMouseUp="return false;">';
+
+			if ( ! empty( $css_id ) ) {
+
+				/**
+				 * dashicons are only available since wp v3.8
+				 */
+				global $wp_version;
+
+				if ( version_compare( $wp_version, '3.8', '>=' ) ) {
+					$html = '<div class="clipboard"><div class="copy_button">' .
+						'<a class="outline" href="" title="Copy to clipboard"' .
+						' onClick="return sucomCopyInputId( \'text_' . esc_js( $css_id ) . '\');">' .
+						'<span class="dashicons dashicons-clipboard"></span></a>' .
+						'</div><div class="copy_text">' . $input . '</div></div>';
+				}
+
+			} else {
+				$html = $input;
+			}
+			return $html;
+		}
+
+		public function get_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 90, $show_first = 5, $disabled = false ) {
+
+			if ( empty( $name ) ) {
+				return;	// Just in case.
+			}
+
+			$html       = '';
+			$display    = true;
+			$one_more   = false;
+			$show_first = $show_first > $max_input ? $max_input : $show_first;
+			$end_num    = $max_input > 0 ? $max_input - 1 : 0;
+
+			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
+
+				$next_num      = $key_num + 1;
+				$opt_key       = $name . '_' . $key_num;
+				$opt_disabled  = $disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
+				$input_class   = empty( $css_class ) ? 'multi' : 'multi ' . $css_class;
+				$input_id      = empty( $css_id ) ? $name . '_' . $key_num : $css_id . '_' . $key_num;
+				$input_id_next = empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num;
+				$input_value   = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
+				$display       = empty( $one_more ) && $key_num >= $show_first ? false : true;
+
+				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $input_id ) . '"' .
+					( $display ? '' : ' style="display:none;"' ) . '>' . "\n";
+
+				if ( $disabled && $key_num >= $show_first && empty( $display ) ) {
+					continue;
+				} elseif ( $opt_disabled ) {
+					$html .= $this->get_no_input( $opt_key, $input_class, $input_id );	// adds 'text_' to the id value
+				} else {
+					$html .= '<input type="text"' .
+						' name="' . esc_attr( $this->options_name . '[' . $opt_key . ']' ) . '"' .
+						' class="' . esc_attr( $input_class ) . '"' .
+						' id="text_' . esc_attr( $input_id ) . '"' .
+						' value="' . esc_attr( $input_value ) . '"' .
+						' onFocus="jQuery(\'div#wrap_' . esc_attr( $input_id_next ) . '\').show();" />';
+				}
+
+				$one_more = empty( $input_value ) ? false : true;
+
+				$html .= '</div>' . "\n";
+			}
+
+			return $html;
+		}
+
+		public function get_no_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 90, $show_first = 5 ) {
+
+			$disabled = true;
+
+			return $this->get_input_multi( $name, $css_class, $css_id, $start_num, $max_input, $show_first, $disabled );
+		}
+
+		public function get_date_time_iso( $name_prefix = '', $disabled = false ) {
+			return $this->get_input_date( $name_prefix . '_date', '', '', '', '', $disabled ) . ' ' .
+				$this->get_value_transl( 'at' ) . ' ' .
+				$this->get_select_time( $name_prefix . '_time', '', '', $disabled, false, 30 ) . ' ' .
+				$this->get_value_transl( 'tz' ) . ' ' .
+				$this->get_select_timezone( $name_prefix . '_timezone', '', '', $disabled, false );
+		}
+
+		public function get_no_date_time_iso( $name_prefix = '' ) {
+
+			$disabled = true;
+
+			return $this->get_date_time_iso( $name_prefix, $disabled );
+		}
+
 		public function get_mixed_multi( $mixed, $css_class, $css_id, $start_num = 0, $max_input = 10, $show_first = 2, $disabled = false ) {
 
 			if ( empty( $mixed ) ) {
 				return;	// Just in case.
 			}
 
-			$html = '';
-			$display = true;
-			$one_more = false;
+			$html       = '';
+			$display    = true;
+			$one_more   = false;
 			$show_first = $show_first > $max_input ? $max_input : $show_first;
-			$end_num = $max_input > 0 ? $max_input - 1 : 0;
+			$end_num    = $max_input > 0 ? $max_input - 1 : 0;
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
-				$next_num = $key_num + 1;
-				$wrap_id = $css_id . '_' . $key_num;
+				$next_num     = $key_num + 1;
+				$wrap_id      = $css_id . '_' . $key_num;
 				$wrap_id_next = $css_id . '_' . $next_num;
-				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
+				$display      = empty( $one_more ) && $key_num >= $show_first ? false : true;
 
 				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $wrap_id ) . '"' .
 					( $display ? '' : ' style="display:none;"' ) . '>' . "\n";
 
 				foreach ( $mixed as $name => $atts ) {
 
-					$opt_key = $name . '_' . $key_num;
+					$opt_key      = $name . '_' . $key_num;
 					$opt_disabled = $disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
-					$in_options = $this->in_options( $opt_key );	// optimize and call only once
-					$in_defaults = $this->in_defaults( $opt_key );	// optimize and call only once
-					$input_title = empty( $atts['input_title'] ) ? '' : $atts['input_title'];
-					$input_class = empty( $atts['input_class'] ) ? 'multi' : 'multi ' . $atts['input_class'];
-					$input_id = empty( $atts['input_id'] ) ? $name . '_' . $key_num : $atts['input_id'] . '_' . $key_num;
+					$in_options   = $this->in_options( $opt_key );	// optimize and call only once
+					$in_defaults  = $this->in_defaults( $opt_key );	// optimize and call only once
+					$input_title  = empty( $atts['input_title'] ) ? '' : $atts['input_title'];
+					$input_class  = empty( $atts['input_class'] ) ? 'multi' : 'multi ' . $atts['input_class'];
+					$input_id     = empty( $atts['input_id'] ) ? $name . '_' . $key_num : $atts['input_id'] . '_' . $key_num;
 	
 					if ( $disabled && $key_num >= $show_first && empty( $display ) ) {
 						continue;
@@ -817,321 +1276,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_mixed_multi( $mixed, $css_class, $css_id, $start_num = 0, $max_input = 10, $show_first = 2 ) {
-			return $this->get_mixed_multi( $mixed, $css_class, $css_id, $start_num, $max_input, $show_first, true );
-		}
 
-		public function get_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 90, $show_first = 5, $disabled = false ) {
+			$disabled = true;
 
-			if ( empty( $name ) ) {
-				return;	// Just in case.
-			}
-
-			$html = '';
-			$display = true;
-			$one_more = false;
-			$show_first = $show_first > $max_input ? $max_input : $show_first;
-			$end_num = $max_input > 0 ? $max_input - 1 : 0;
-
-			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
-
-				$next_num      = $key_num + 1;
-				$opt_key       = $name . '_' . $key_num;
-				$opt_disabled  = $disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
-				$input_class   = empty( $css_class ) ? 'multi' : 'multi ' . $css_class;
-				$input_id      = empty( $css_id ) ? $name . '_' . $key_num : $css_id . '_' . $key_num;
-				$input_id_next = empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num;
-				$input_value   = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
-				$display       = empty( $one_more ) && $key_num >= $show_first ? false : true;
-
-				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $input_id ) . '"' .
-					( $display ? '' : ' style="display:none;"' ) . '>' . "\n";
-
-				if ( $disabled && $key_num >= $show_first && empty( $display ) ) {
-					continue;
-				} elseif ( $opt_disabled ) {
-					$html .= $this->get_no_input( $opt_key, $input_class, $input_id );	// adds 'text_' to the id value
-				} else {
-					$html .= '<input type="text"' .
-						' name="' . esc_attr( $this->options_name . '[' . $opt_key . ']' ) . '"' .
-						' class="' . esc_attr( $input_class ) . '"' .
-						' id="text_' . esc_attr( $input_id ) . '"' .
-						' value="' . esc_attr( $input_value ) . '"' .
-						' onFocus="jQuery(\'div#wrap_' . esc_attr( $input_id_next ) . '\').show();" />';
-				}
-
-				$one_more = empty( $input_value ) ? false : true;
-
-				$html .= '</div>' . "\n";
-			}
-
-			return $html;
-		}
-
-		public function get_no_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 90, $show_first = 5, $disabled = false ) {
-			return $this->get_input_multi( $name, $css_class, $css_id, $start_num, $max_input, $show_first, true );
-		}
-
-		public function get_input_color( $name = '', $css_class = '', $css_id = '', $disabled = false ) {
-
-			if ( empty( $name ) ) {
-				$value = '';
-				$disabled = true;
-			} else {
-				$value = $this->in_options( $name ) ? $this->options[$name] : '';
-				if ( $this->get_options( $name . ':is' ) === 'disabled' ) {
-					$disabled = true;
-				}
-			}
-
-			return '<input type="text"' .
-				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '"' ) .
-				( empty( $css_class ) ? ' class="colorpicker"' : ' class="colorpicker ' . esc_attr( $css_class ) . '"' ) .
-				( empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
-				' placeholder="#000000" value="' . esc_attr( $value ) . '" />';
-		}
-
-		public function get_date_time_iso( $name_prefix = '', $disabled = false ) {
-			return $this->get_input_date( $name_prefix . '_date', '', '', '', '', $disabled ) . ' ' .
-				$this->get_value_transl( 'at' ) . ' ' .
-				$this->get_select_time( $name_prefix . '_time', '', '', $disabled, false, 30 ) . ' ' .
-				$this->get_value_transl( 'tz' ) . ' ' .
-				$this->get_select_timezone( $name_prefix . '_timezone', '', '', $disabled, false );
-		}
-
-		public function get_no_date_time_iso( $name_prefix = '' ) {
-			return $this->get_date_time_iso( $name_prefix, true );
-		}
-
-		public function get_input_date( $name = '', $css_class = '', $css_id = '', $min_date = '', $max_date = '', $disabled = false ) {
-
-			if ( empty( $name ) ) {
-				$value = '';
-				$disabled = true;
-			} else {
-				$value = $this->in_options( $name ) ? $this->options[$name] : '';
-				if ( $this->get_options( $name . ':is' ) === 'disabled' ) {
-					$disabled = true;
-				}
-			}
-
-			return '<input type="text"' .
-				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '"' ) .
-				( empty( $css_class ) ? ' class="datepicker"' : ' class="datepicker ' . esc_attr( $css_class ) . '"' ) .
-				( empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
-				( empty( $min_date ) ? '' : ' min="' . esc_attr( $min_date ) . '"' ) .
-				( empty( $max_date ) ? '' : ' max="' . esc_attr( $max_date ) . '"' ) .
-				' placeholder="yyyy-mm-dd" value="' . esc_attr( $value ) . '" />';
-		}
-
-		public function get_no_input_date( $name = '' ) {
-			return $this->get_input_date( $name, '', '', '', '', true );
-		}
-
-		public function get_no_input_date_options( $name, $opts ) {
-			$value = isset( $opts[$name] ) ? $opts[$name] : '';
-			return $this->get_no_input_value( $value, 'datepicker', '', 'yyyy-mm-dd' );
-		}
-
-		public function get_no_input_options( $name, $opts, $css_class = '', $css_id = '', $placeholder = '' ) {
-			$value = isset( $opts[$name] ) ? $opts[$name] : '';
-			return $this->get_no_input_value( $value, $css_class, $css_id, $placeholder );
-		}
-
-		public function get_no_input_value( $value = '', $css_class = '', $css_id = '', $placeholder = '', $max_input = 1 ) {
-
-			$html = '';
-			$end_num = $max_input > 0 ? $max_input - 1 : 0;
-			$input_class = empty( $css_class ) ? '' : $css_class;
-			$input_id = empty( $css_id ) ? '' : $css_id;
-
-			foreach ( range( 0, $end_num, 1 ) as $key_num ) {
-				if ( $max_input > 1 ) {
-					$input_id = empty( $css_id ) ? '' : $css_id . '_' . $key_num;
-					$html .= '<div class="wrap_multi">' . "\n";
-				}
-
-				$html .= '<input type="text" disabled="disabled"' .
-					( empty( $input_class ) ? '' : ' class="' . esc_attr( $input_class ) . '"' ) .
-					( empty( $input_id ) ? '' : ' id="text_' . esc_attr( $input_id ) . '"' ) .
-					( $placeholder === '' ? '' : ' placeholder="' . esc_attr( $placeholder ) . '"' ) .
-					' value="' . esc_attr( $value ) . '" />';
-
-				if ( $max_input > 1 ) {
-					$html .= '</div>' . "\n";
-				}
-			}
-
-			return $html;
-		}
-
-		public function get_no_input( $name = '', $css_class = '', $css_id = '', $placeholder = '' ) {
-
-			$html = '';
-			$value = $this->in_options( $name ) ? $this->options[$name] : '';
-			$placeholder = $this->get_placeholder_sanitized( $name, $placeholder );
-
-			if ( ! empty( $name ) ) {
-				$html .= $this->get_hidden( $name );
-			}
-
-			$html .= $this->get_no_input_value( $value, $css_class, $css_id, $placeholder );
-
-			return $html;
-		}
-
-		public function get_input_image_upload( $opt_prefix, $placeholder = '', $disabled = false ) {
-
-			$opt_suffix  = '';
-			$default_lib = 'wp';
-			$media_libs  = array( 'wp' => 'Media Library' );
-			$data        = array();
-
-			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
-				$opt_prefix = $matches[1];
-				$opt_suffix = $matches[2];	// mutiple numbered option
-			}
-
-			if ( true === $this->p->avail['media']['ngg'] ) {
-				$media_libs['ngg'] = 'NextGEN Gallery';
-			}
-
-			if ( strpos( $placeholder, 'ngg-' ) === 0 ) {
-				$default_lib = 'ngg';
-				$placeholder = preg_replace( '/^ngg-/', '', $placeholder );
-			}
-
-			$input_id = $this->get_input(
-				$opt_prefix . '_id' . $opt_suffix,	// $name
-				'short',				// $css_class
-				'',					// $css_id
-				0,					// $len
-				$placeholder,				// $placeholder
-				$disabled				// $disabled
-			);
-
-			/**
-			 * Disable the select option if only 1 media lib.
-			 */
-			$select_disabled = count( $media_libs ) <= 1 ? true : $disabled;
-
-			$select_lib = $this->get_select(
-				$opt_prefix . '_id_pre' . $opt_suffix,	// $name
-				$media_libs,				// $values
-				'',					// $css_class
-				'',					// $css_id
-				true,					// $is_assoc
-				$select_disabled,			// $disabled
-				$default_lib				// $selected
-			);
-
-			/**
-			 * The css id is used to set image values and disable the image url.
-			 */
-			if ( ( empty( $this->options[ $opt_prefix . '_id_pre' . $opt_suffix ] ) ||
-				$this->options[ $opt_prefix . '_id_pre' . $opt_suffix ] === 'wp' ) && 
-					! empty( $this->options[ $opt_prefix . '_id' . $opt_suffix ] ) ) {
-
-				$data['pid'] = $this->options[ $opt_prefix . '_id' . $opt_suffix ];
-
-			} elseif ( $default_lib === 'wp' && ! empty( $placeholder ) ) {
-
-				$data['pid'] = $placeholder;
-			}
-
-			$button_upload = function_exists( 'wp_enqueue_media' ) ? $this->get_button(
-				'Select or Upload Image',		// $value
-				'sucom_image_upload_button button',	// $css_class
-				$opt_prefix . $opt_suffix,		// $css_id
-				'',					// $url
-				false,					// $newtab
-				$disabled,				// $disabled
-				$data					// $data
-			) : '';
-
-			return '<div class="img_upload">' . $input_id . '&nbsp;in&nbsp;' . $select_lib . '&nbsp;' . $button_upload . '</div>';
-		}
-
-		public function get_no_input_image_upload( $opt_prefix, $placeholder = '' ) {
-			return $this->get_input_image_upload( $opt_prefix, $placeholder, true );
-		}
-
-		public function get_input_image_url( $opt_prefix, $url = '' ) {
-
-			$opt_suffix = '';
-
-			if ( preg_match( '/^(.*)(_[0-9]+)$/', $opt_prefix, $matches ) ) {
-				$opt_prefix = $matches[1];
-				$opt_suffix = $matches[2];
-			}
-
-			if ( empty( $this->options[ $opt_prefix . '_id' . $opt_suffix ] ) ) {
-				$placeholder = SucomUtil::esc_url_encode( $url );
-				$disabled    = false;
-			} else {
-				$placeholder = '';
-				$disabled    = true;
-			}
-
-			return $this->get_input( $opt_prefix . '_url' . $opt_suffix, 'wide', '', 0, $placeholder, $disabled );
-		}
-
-		public function get_input_video_url( $opt_prefix, $url = '' ) {
-
-			/**
-			 * Disable if we have a custom video embed.
-			 */
-			$disabled = empty( $this->options[$opt_prefix . '_embed'] ) ? false : true;
-
-			return $this->get_input( $opt_prefix . '_url', 'wide', '', 0, SucomUtil::esc_url_encode( $url ), $disabled );
-		}
-
-		public function get_input_image_dimensions( $name, $use_opts = false, $narrow = false, $disabled = false ) {
-
-			$placeholder_width  = '';
-			$placeholder_height = '';
-			$crop_area_select   = '';
-
-			/**
-			 * $use_opts is true when used for post / user meta forms (to show default values).
-			 */
-			if ( $use_opts ) {
-
-				$placeholder_width  = $this->get_placeholder_sanitized( $name . '_width', true );
-				$placeholder_height = $this->get_placeholder_sanitized( $name . '_height', true );
-
-				foreach ( array( 'crop', 'crop_x', 'crop_y' ) as $key ) {
-					if ( ! $this->in_options( $name . '_' . $key ) && $this->in_defaults( $name . '_' . $key ) ) {
-						$this->options[ $name . '_' . $key ] = $this->defaults[ $name . '_' . $key ];
-					}
-				}
-			}
-
-			/**
-			 * Crop area selection is only available since wp v3.9.
-			 */
-			global $wp_version;
-
-			if ( version_compare( $wp_version, '3.9', '>=' ) ) {
-
-				$crop_area_select .= true === $narrow ?
-					' <div class="img_crop_from is_narrow">' :
-					' <div class="img_crop_from">from';
-
-				foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
-					$crop_area_select .= ' ' . $this->get_select( $name . '_' . $key,
-						$this->p->cf['form']['position_' . $key], 'medium', '', true, $disabled );
-				}
-
-				$crop_area_select .= '</div>';
-			}
-
-			return $this->get_input( $name . '_width', 'short width', '', 0, $placeholder_width, $disabled ) . 'x' .
-				$this->get_input( $name . '_height', 'short height', '', 0, $placeholder_height, $disabled ) .
-					'px crop ' . $this->get_checkbox( $name . '_crop', '', '', $disabled ) . $crop_area_select;
-		}
-
-		public function get_no_input_image_dimensions( $name, $use_opts = false, $narrow = false ) {
-			return $this->get_input_image_dimensions( $name, $use_opts, $narrow, true );
+			return $this->get_mixed_multi( $mixed, $css_class, $css_id, $start_num, $max_input, $show_first, $disabled );
 		}
 
 		public function get_image_dimensions_text( $name, $use_opts = false ) {
@@ -1155,24 +1303,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return;
 		}
 
-		public function get_input_video_dimensions( $name, $media_info = array(), $disabled = false ) {
-
-			$placeholder_width = '';
-			$placeholder_height = '';
-
-			if ( ! empty( $media_info ) && is_array( $media_info ) ) {
-				$placeholder_width  = empty( $media_info['vid_width'] ) ? '' : $media_info['vid_width'];
-				$placeholder_height = empty( $media_info['vid_height'] ) ? '' : $media_info['vid_height'];
-			}
-
-			return $this->get_input( $name . '_width', 'short width', '', 0, $placeholder_width, $disabled ) . 'x' .
-				$this->get_input( $name . '_height', 'short height', '', 0, $placeholder_height, $disabled ) . 'px';
-		}
-
-		public function get_no_input_video_dimensions( $name, $media_info = array() ) {
-			return $this->get_input_video_dimensions( $name, $media_info, true );	// $disabled is true.
-		}
-
 		public function get_video_dimensions_text( $name, $media_info ) {
 
 			if ( ! empty( $this->options[$name . '_width'] ) && ! empty( $this->options[$name . '_height'] ) ) {
@@ -1190,40 +1320,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			return '';
-		}
-
-		public function get_input_copy_clipboard( $value, $css_class = 'wide', $css_id = '' ) {
-
-			if ( empty( $css_id ) ) {
-				$css_id = uniqid();
-			}
-
-			$input = '<input type="text"' .
-				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
-				( empty( $css_id ) ? '' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
-				' value="' . esc_attr( $value ) . '" readonly' .
-				' onFocus="this.select(); document.execCommand(\'Copy\',false,null);"' .
-				' onMouseUp="return false;">';
-
-			if ( ! empty( $css_id ) ) {
-
-				/**
-				 * dashicons are only available since wp v3.8
-				 */
-				global $wp_version;
-
-				if ( version_compare( $wp_version, '3.8', '>=' ) ) {
-					$html = '<div class="clipboard"><div class="copy_button">' .
-						'<a class="outline" href="" title="Copy to clipboard"' .
-						' onClick="return sucomCopyInputId( \'text_' . esc_js( $css_id ) . '\');">' .
-						'<span class="dashicons dashicons-clipboard"></span></a>' .
-						'</div><div class="copy_text">' . $input . '</div></div>';
-				}
-
-			} else {
-				$html = $input;
-			}
-			return $html;
 		}
 
 		public function get_textarea( $name, $css_class = '', $css_id = '', $len = 0, $placeholder = '', $disabled = false ) {
@@ -1266,11 +1362,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_no_textarea( $name, $css_class = '', $css_id = '', $len = 0, $placeholder = '' ) {
-			return $this->get_textarea( $name, $css_class, $css_id, $len, $placeholder, true );
+
+			$disabled = true;
+
+			return $this->get_textarea( $name, $css_class, $css_id, $len, $placeholder, $disabled );
 		}
 
 		public function get_no_textarea_options( $name, $opts, $css_class = '', $css_id = '', $len = 0, $placeholder = '' ) {
+
 			$value = isset( $opts[$name] ) ? $opts[$name] : '';
+
 			return $this->get_no_textarea_value( $value, $css_class, $css_id, $len, $placeholder );
 		}
 
