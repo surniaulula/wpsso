@@ -109,6 +109,7 @@ _x( 'Product Currency Custom Field', 'option label', 'wpsso' );
 _x( 'Product Material Custom Field', 'option label', 'wpsso' );
 _x( 'Product Price Custom Field', 'option label', 'wpsso' );
 _x( 'Product Size Custom Field', 'option label', 'wpsso' );
+_x( 'Product SKU Custom Field', 'option label', 'wpsso' );
 _x( 'Product Target Gender Custom Field', 'option label', 'wpsso' );
 _x( 'Public Holidays', 'option value', 'wpsso' );
 _x( 'Recipe Ingredients Custom Field', 'option label', 'wpsso' );

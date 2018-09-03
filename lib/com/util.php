@@ -2150,6 +2150,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_product_seed( $mt_pre = 'product', array $mt_og = array() ) {
 
 			$og_ret = array(
+				$mt_pre . ':id'                              => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':age_group'                       => '',
 				$mt_pre . ':availability'                    => '',
 				$mt_pre . ':brand'                           => '',
@@ -2172,8 +2173,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':price:currency'                  => '',
 				$mt_pre . ':product_link'                    => '',
 				$mt_pre . ':purchase_limit'                  => '',
-				$mt_pre . ':retailer'                        => '',	// A Facebook ID or reference to the profile of the retailer.
+				$mt_pre . ':retailer'                        => '',
 				$mt_pre . ':retailer_category'               => '',
+				$mt_pre . ':retailer_item_id'                => '',
 				$mt_pre . ':retailer_part_no'                => '',
 				$mt_pre . ':retailer_title'                  => '',
 				$mt_pre . ':rating:average'                  => '',	// Non-standard / internal meta tag.
@@ -2577,21 +2579,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function update_transient_array( $cache_id, $data_array, $cache_exp_secs, $reset_at_secs = 300 ) {
 
-			$now_time = time();
+			$current_time = time();
 
 			if ( isset( $data_array['__created_at'] ) ) {
 
 				/**
 				 * Adjust the expiration time by removing the difference.
 				 */
-				$expires_in_secs = $cache_exp_secs - ( $now_time - $data_array['__created_at'] );
+				$expires_in_secs = $cache_exp_secs - ( $current_time - $data_array['__created_at'] );
 
 				if ( $expires_in_secs < $reset_at_secs ) {
 					$expires_in_secs = $cache_exp_secs;
 				}
+
 			} else {
+
 				$expires_in_secs = $cache_exp_secs;
-				$data_array['__created_at'] = $now_time;
+
+				$data_array['__created_at'] = $current_time;
 			}
 
 			set_transient( $cache_id, $data_array, $expires_in_secs );

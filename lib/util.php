@@ -1028,7 +1028,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 
-				usleep( 500000 );	// Sleep for 0.5 seconds.
+				usleep( WPSSO_REFRESH_CACHE_SLEEP_TIME * 1000000 );	// Sleep for 0.50 seconds by default.
 			}
 		}
 
@@ -1633,8 +1633,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( ! is_bool( $protect ) ) {
 				if ( ! empty( $protect ) ) {
-					if ( ( $ts_version = self::get_option_key( WPSSO_TS_NAME, $ext . '_' . $type . '_version' ) ) !== null &&
-						version_compare( $ts_version, $protect, '==' ) ) {
+
+					$ts_version = self::get_option_key( WPSSO_TS_NAME, $ext . '_' . $type . '_version' );
+
+					if ( $ts_version !== null && version_compare( $ts_version, $protect, '==' ) ) {
 						$protect = true;
 					} else {
 						$protect = false;
@@ -1819,7 +1821,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Define WPSSO_EXT_JSON_DISABLE as true in wp-config.php to prevent external json formatting.
 			 */
 			if ( $ext_json_lib && $ext_json_format ) {
+
 				$classname = WpssoConfig::load_lib( false, 'ext/json-format', 'suextjsonformat' );
+
 				if ( $classname !== false && class_exists( $classname ) ) {
 					$json = SuextJsonFormat::get( $json, $options, $depth );
 				}

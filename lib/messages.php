@@ -155,6 +155,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'availability', 'product meta name', 'wpsso' );
 							}
+
 							// no break - fall through
 
 						case 'tooltip-meta-product_brand':
@@ -162,6 +163,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'brand', 'product meta name', 'wpsso' );
 							}
+
 							// no break - fall through
 
 						case 'tooltip-meta-product_color':
@@ -169,6 +171,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'color', 'product meta name', 'wpsso' );
 							}
+
 							// no break - fall through
 
 						case 'tooltip-meta-product_condition':
@@ -176,13 +179,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'condition', 'product meta name', 'wpsso' );
 							}
-							// no break - fall through
 
-						case 'tooltip-meta-product_currency':
-
-							if ( ! isset( $product_meta_name ) ) {
-								$product_meta_name = _x( 'currency', 'product meta name', 'wpsso' );
-							}
 							// no break - fall through
 
 						case 'tooltip-meta-product_material':
@@ -190,6 +187,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'material', 'product meta name', 'wpsso' );
 							}
+
+							// no break - fall through
+
+						case 'tooltip-meta-product_sku':
+
+							if ( ! isset( $product_meta_name ) ) {
+								$product_meta_name = _x( 'stock-keeping unit', 'product meta name', 'wpsso' );
+							}
+
 							// no break - fall through
 
 						case 'tooltip-meta-product_price':
@@ -197,6 +203,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'price', 'product meta name', 'wpsso' );
 							}
+
+							// no break - fall through
+
+						case 'tooltip-meta-product_currency':
+
+							if ( ! isset( $product_meta_name ) ) {
+								$product_meta_name = _x( 'currency', 'product meta name', 'wpsso' );
+							}
+
 							// no break - fall through
 
 						case 'tooltip-meta-product_size':
@@ -204,6 +219,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'size', 'product meta name', 'wpsso' );
 							}
+
 							// no break - fall through
 
 						case 'tooltip-meta-product_gender':
@@ -211,6 +227,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							if ( ! isset( $product_meta_name ) ) {
 								$product_meta_name = _x( 'target gender', 'product meta name', 'wpsso' );
 							}
+
 							// no break - fall through
 
 							$text = sprintf( __( 'You may select a custom %1$s for your product, or leave the default value as-is.', 'wpsso' ), $product_meta_name ).' ';
@@ -917,22 +934,23 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							// no break - fall through
 
-						case 'tooltip-plugin_cf_product_currency':
+						case 'tooltip-plugin_cf_product_material':
 
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
-									_x( 'a product currency', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Currency', 'option label', 'wpsso' ),
+									_x( 'a product material', 'tooltip fragment', 'wpsso' ),
+									_x( 'Product Material', 'option label', 'wpsso' ),
 								);
 							}
 
 							// no break - fall through
 
-						case 'tooltip-plugin_cf_product_material':
+						case 'tooltip-plugin_cf_product_sku':
+
 							if ( ! isset( $plugin_cf_info ) ) {
 								$plugin_cf_info = array(
-									_x( 'a product material', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Material', 'option label', 'wpsso' ),
+									_x( 'a unique product identifier', 'tooltip fragment', 'wpsso' ),
+									_x( 'Product SKU', 'option label', 'wpsso' ),
 								);
 							}
 
@@ -943,6 +961,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$plugin_cf_info = array(
 									_x( 'a product price', 'tooltip fragment', 'wpsso' ),
 									_x( 'Product Price', 'option label', 'wpsso' ),
+								);
+							}
+
+							// no break - fall through
+
+						case 'tooltip-plugin_cf_product_currency':
+
+							if ( ! isset( $plugin_cf_info ) ) {
+								$plugin_cf_info = array(
+									_x( 'a product currency', 'tooltip fragment', 'wpsso' ),
+									_x( 'Product Currency', 'option label', 'wpsso' ),
 								);
 							}
 

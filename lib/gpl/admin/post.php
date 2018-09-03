@@ -172,6 +172,12 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'th_class' => 'medium', 'tooltip' => 'meta-product_material', 'td_class' => 'blank',
 					'content' => $form->get_no_input( 'product_material', '', '', true ),	// $placeholder is true for default value.
 				),
+				'product_sku' => array(
+					'tr_class' => 'hide_og_type hide_og_type_product',
+					'label' => _x( 'Product SKU', 'option label', 'wpsso' ),
+					'th_class' => 'medium', 'tooltip' => 'meta-product_sku', 'td_class' => 'blank',
+					'content' => $form->get_no_input( 'product_sku', '', '', true ),	// $placeholder is true for default value.
+				),
 				'product_price' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'label' => _x( 'Product Price', 'option label', 'wpsso' ),

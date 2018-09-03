@@ -1314,6 +1314,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'pin_desc':
 				case 'product_brand':
 				case 'product_color':
+				case 'product_sku':
 				case 'product_currency':
 				case 'product_size':
 				case 'plugin_col_def_width':

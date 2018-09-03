@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.12.0-dev.5',	// Plugin version.
-					'opt_version' => '596',		// Increment when changing default option values.
+					'version'     => '4.12.0-dev.6',	// Plugin version.
+					'opt_version' => '597',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -972,6 +972,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:purchase_limit'                 => 1,
 					'add_meta_property_product:retailer'                       => 1,
 					'add_meta_property_product:retailer_category'              => 1,
+					'add_meta_property_product:retailer_item_id'               => 1,
 					'add_meta_property_product:retailer_part_no'               => 1,
 					'add_meta_property_product:retailer_title'                 => 1,
 					'add_meta_property_product:sale_price:amount'              => 1,
@@ -1159,9 +1160,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_brand'       => '',			// Product Brand Custom Field.
 					'plugin_cf_product_color'       => '',			// Product Color Custom Field.
 					'plugin_cf_product_condition'   => '',			// Product Condition Custom Field.
-					'plugin_cf_product_currency'    => '',			// Product Currency Custom Field.
 					'plugin_cf_product_material'    => '',			// Product Material Custom Field.
+					'plugin_cf_product_sku'         => '',			// Product SKU Custom Field.
 					'plugin_cf_product_price'       => '',			// Product Price Custom Field.
+					'plugin_cf_product_currency'    => '',			// Product Currency Custom Field.
 					'plugin_cf_product_size'        => '',			// Product Size Custom Field.
 					'plugin_cf_product_gender'      => '',			// Product Target Gender Custom Field.
 					'plugin_cf_sameas_urls'         => '',			// Same-As URLs Custom Field.
@@ -1358,9 +1360,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_brand'       => 'product_brand',
 					'plugin_cf_product_color'       => 'product_color',
 					'plugin_cf_product_condition'   => 'product_condition',
-					'plugin_cf_product_currency'    => 'product_currency',
 					'plugin_cf_product_material'    => 'product_material',
+					'plugin_cf_product_sku'         => 'product_sku',
 					'plugin_cf_product_price'       => 'product_price',
+					'plugin_cf_product_currency'    => 'product_currency',
 					'plugin_cf_product_size'        => 'product_size',
 					'plugin_cf_product_gender'      => 'product_gender',
 					'plugin_cf_sameas_urls'         => 'schema_sameas_url',
@@ -1774,9 +1777,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_brand'       => 'Product Brand Custom Field',
 					'plugin_cf_product_color'       => 'Product Color Custom Field',
 					'plugin_cf_product_condition'   => 'Product Condition Custom Field',
-					'plugin_cf_product_currency'    => 'Product Currency Custom Field',
 					'plugin_cf_product_material'    => 'Product Material Custom Field',
+					'plugin_cf_product_sku'         => 'Product SKU Custom Field',
 					'plugin_cf_product_price'       => 'Product Price Custom Field',
+					'plugin_cf_product_currency'    => 'Product Currency Custom Field',
 					'plugin_cf_product_size'        => 'Product Size Custom Field',
 					'plugin_cf_product_gender'      => 'Product Target Gender Custom Field',
 					'plugin_cf_sameas_urls'         => 'Same-As URLs Custom Field',
@@ -1949,8 +1953,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:price:currency'          => 'product_currency',
 						'product:product_link'            => '',
 						'product:purchase_limit'          => '',
-						'product:retailer'                => '',	// A Facebook ID or reference to the profile of the retailer.
+						'product:retailer'                => '',
 						'product:retailer_category'       => '',
+						'product:retailer_item_id'        => 'product_sku',
 						'product:retailer_part_no'        => '',
 						'product:retailer_title'          => '',
 						'product:sale_price:amount'       => '',	// Used by WooCommerce module.
@@ -2784,7 +2789,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
-				$var_const['WPSSO_CACHEDIR'] = WPSSO_PLUGINDIR . 'cache/';
+				$var_const['WPSSO_CACHEDIR']    = WPSSO_PLUGINDIR . 'cache/';
 				$var_const['WPSSO_TOPICS_LIST'] = WPSSO_PLUGINDIR . 'share/topics.txt';
 			}
 
@@ -2792,80 +2797,78 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$var_const['WPSSO_CACHEURL'] = WPSSO_URLPATH . 'cache/';
 			}
 
-			$var_const['WPSSO_MENU_ORDER'] = '99.10';			// Position of the SSO menu item.
-			$var_const['WPSSO_TB_NOTICE_MENU_ORDER'] = '55';		// Position of the SSO notices toolbar menu item.
-			$var_const['WPSSO_TB_LOCALE_MENU_ORDER'] = '60';		// Position of the user locale toolbar menu item.
-			$var_const['WPSSO_TOOLBAR_NOTICES'] = true;			// Show error, warning, and info notices in the toolbar menu.
-			$var_const['WPSSO_JSON_PRETTY_PRINT'] = false;			// Output pretty / human readable json.
-			$var_const['WPSSO_UNDEF_INT'] = -1;				// Undefined image width / height value.
-
+			$var_const['WPSSO_MENU_ORDER']                  = '99.10';	// Position of the SSO menu item.
+			$var_const['WPSSO_TB_NOTICE_MENU_ORDER']        = '55';		// Position of the SSO notices toolbar menu item.
+			$var_const['WPSSO_TB_LOCALE_MENU_ORDER']        = '60';		// Position of the user locale toolbar menu item.
+			$var_const['WPSSO_TOOLBAR_NOTICES']             = true;		// Show error, warning, and info notices in the toolbar menu.
+			$var_const['WPSSO_JSON_PRETTY_PRINT']           = false;	// Output pretty / human readable json.
+			$var_const['WPSSO_UNDEF_INT']                   = -1;		// Undefined image width / height value.
 			$var_const['WPSSO_CONTENT_BLOCK_FILTER_OUTPUT'] = true;
-			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME'] = 1.00;
-			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT'] = 5;		// Maximum number of images extracted from the content.
-			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT'] = 5;		// Maximum number of videos extracted from the content.
-
-			$var_const['WPSSO_DUPE_CHECK_HEADER_COUNT'] = 5;		// Maximum number of times to check for duplicates.
-			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK'] = true;		// Clear / remove cache file before fetching shortlink url.
-			$var_const['WPSSO_DUPE_CHECK_WARNING_TIME'] = 2.50;		// Issue a warning if getting shortlink took more than 2.5 seconds.
-			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_TIME'] = 3.00;		// Hard-limit - most crawlers time-out after 3 seconds.
-
-			$var_const['WPSSO_GET_POSTS_MAX_TIME'] = 0.10;			// Send an error to trigger_error() if get_posts() takes longer.
-			$var_const['WPSSO_PHP_GETIMGSIZE_MAX_TIME'] = 1.50;		// Send an error to trigger_error() if getimagesize() takes longer.
+			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME']    = 1.00;
+			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT']    = 5;		// Maximum number of images extracted from the content.
+			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT']    = 5;		// Maximum number of videos extracted from the content.
+			$var_const['WPSSO_DUPE_CHECK_HEADER_COUNT']     = 5;		// Maximum number of times to check for duplicates.
+			$var_const['WPSSO_DUPE_CHECK_CLEAR_SHORTLINK']  = true;		// Clear / remove cache file before fetching shortlink url.
+			$var_const['WPSSO_DUPE_CHECK_WARNING_TIME']     = 2.50;		// Issue a warning if getting shortlink took more than 2.5 seconds.
+			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_TIME']     = 3.00;		// Hard-limit - most crawlers time-out after 3 seconds.
+			$var_const['WPSSO_GET_POSTS_MAX_TIME']          = 0.10;		// Send an error to trigger_error() if get_posts() takes longer.
+			$var_const['WPSSO_PHP_GETIMGSIZE_MAX_TIME']     = 1.50;		// Send an error to trigger_error() if getimagesize() takes longer.
+			$var_const['WPSSO_REFRESH_CACHE_SLEEP_TIME']    = 0.50;		// Seconds to sleep between requests when refreshing the cache.
 
 			/**
 			 * Limits for some multi-options and Schema property arrays.
 			 */
-			$var_const['WPSSO_SCHEMA_ADDL_TYPE_URL_MAX'] = 5;
-			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX'] = 10;
-			$var_const['WPSSO_SCHEMA_HOWTO_STEPS_MAX'] = 90;
-			$var_const['WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX'] = 60;
-			$var_const['WPSSO_SCHEMA_HOWTO_TOOLS_MAX'] = 30;
-			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX'] = 60;
+			$var_const['WPSSO_SCHEMA_ADDL_TYPE_URL_MAX']       = 5;
+			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX']        = 10;
+			$var_const['WPSSO_SCHEMA_HOWTO_STEPS_MAX']         = 90;
+			$var_const['WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX']      = 60;
+			$var_const['WPSSO_SCHEMA_HOWTO_TOOLS_MAX']         = 30;
+			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX']  = 60;
 			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 90;
-			$var_const['WPSSO_SCHEMA_LINKS_PER_PAGE_MAX'] = 200;
-			$var_const['WPSSO_SCHEMA_POSTS_PER_PAGE_MAX'] = 10;
-			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH_MAX'] = 3;		// Must be smaller or equal to WPSSO_SCHEMA_POSTS_PER_PAGE_MAX.
-			$var_const['WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX'] = 30;
-			$var_const['WPSSO_SCHEMA_SAMEAS_URL_MAX'] = 5;
-			$var_const['WPSSO_SCHEMA_BREADCRUMB_SCRIPTS_MAX'] = 5;
+			$var_const['WPSSO_SCHEMA_LINKS_PER_PAGE_MAX']      = 200;
+			$var_const['WPSSO_SCHEMA_POSTS_PER_PAGE_MAX']      = 10;
+			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH_MAX']    = 3;		// Must be smaller or equal to WPSSO_SCHEMA_POSTS_PER_PAGE_MAX.
+			$var_const['WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX']    = 30;
+			$var_const['WPSSO_SCHEMA_SAMEAS_URL_MAX']          = 5;
+			$var_const['WPSSO_SCHEMA_BREADCRUMB_SCRIPTS_MAX']  = 5;
 
 			/**
 			 * WPSSO option and meta array names.
 			 */
-			$var_const['WPSSO_TS_NAME'] = 'wpsso_timestamps';
-			$var_const['WPSSO_OPTIONS_NAME'] = 'wpsso_options';
+			$var_const['WPSSO_TS_NAME']           = 'wpsso_timestamps';
+			$var_const['WPSSO_OPTIONS_NAME']      = 'wpsso_options';
 			$var_const['WPSSO_SITE_OPTIONS_NAME'] = 'wpsso_site_options';
-			$var_const['WPSSO_DISMISS_NAME'] = 'wpsso_dismissed';		// Dismissed notices.
-			$var_const['WPSSO_META_NAME'] = '_wpsso_meta';			// Post meta.
-			$var_const['WPSSO_PREF_NAME'] = '_wpsso_pref';			// User meta.
-			$var_const['WPSSO_POST_CHECK_NAME'] = 'wpsso_post_head_count';	// Duplicate check counter.
+			$var_const['WPSSO_DISMISS_NAME']      = 'wpsso_dismissed';		// Dismissed notices.
+			$var_const['WPSSO_META_NAME']         = '_wpsso_meta';			// Post meta.
+			$var_const['WPSSO_PREF_NAME']         = '_wpsso_pref';			// User meta.
+			$var_const['WPSSO_POST_CHECK_NAME']   = 'wpsso_post_head_count';	// Duplicate check counter.
 
 			/**
 			 * WPSSO option and meta array alternate names.
 			 */
-			$var_const['WPSSO_OPTIONS_NAME_ALT'] = 'ngfb_options';			// Fallback name.
+			$var_const['WPSSO_OPTIONS_NAME_ALT']      = 'ngfb_options';		// Fallback name.
 			$var_const['WPSSO_SITE_OPTIONS_NAME_ALT'] = 'ngfb_site_options';	// Fallback name.
-			$var_const['WPSSO_META_NAME_ALT'] = '_ngfb_meta';			// Fallback name.
-			$var_const['WPSSO_PREF_NAME_ALT'] = '_ngfb_pref';			// Fallback name.
+			$var_const['WPSSO_META_NAME_ALT']         = '_ngfb_meta';		// Fallback name.
+			$var_const['WPSSO_PREF_NAME_ALT']         = '_ngfb_pref';		// Fallback name.
 
 			/**
 			 * WPSSO hook priorities.
 			 */
-			$var_const['WPSSO_ADD_MENU_PRIORITY'] = -20;
+			$var_const['WPSSO_ADD_MENU_PRIORITY']    = -20;
 			$var_const['WPSSO_ADD_SUBMENU_PRIORITY'] = -10;
-			$var_const['WPSSO_ADD_COLUMN_PRIORITY'] = 100;
-			$var_const['WPSSO_META_SAVE_PRIORITY'] = 5;
-			$var_const['WPSSO_META_CACHE_PRIORITY'] = 10;
-			$var_const['WPSSO_INIT_PRIORITY'] = 12;
-			$var_const['WPSSO_HEAD_PRIORITY'] = 10;
-			$var_const['WPSSO_FOOTER_PRIORITY'] = 100;
+			$var_const['WPSSO_ADD_COLUMN_PRIORITY']  = 100;
+			$var_const['WPSSO_META_SAVE_PRIORITY']   = 5;
+			$var_const['WPSSO_META_CACHE_PRIORITY']  = 10;
+			$var_const['WPSSO_INIT_PRIORITY']        = 12;
+			$var_const['WPSSO_HEAD_PRIORITY']        = 10;
+			$var_const['WPSSO_FOOTER_PRIORITY']      = 100;
 			$var_const['WPSSO_SEO_FILTERS_PRIORITY'] = 100;
 
 			/**
 			 * WPSSO PHP cURL library settings.
 			 */
-			$var_const['WPSSO_PHP_CURL_CAINFO'] = ABSPATH . WPINC . '/certificates/ca-bundle.crt';
-			$var_const['WPSSO_PHP_CURL_USERAGENT'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0';
+			$var_const['WPSSO_PHP_CURL_CAINFO']             = ABSPATH . WPINC . '/certificates/ca-bundle.crt';
+			$var_const['WPSSO_PHP_CURL_USERAGENT']          = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0';
 			$var_const['WPSSO_PHP_CURL_USERAGENT_FACEBOOK'] = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
 
 			foreach ( $var_const as $name => $value ) {
@@ -2921,10 +2924,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		public static function load_lib( $ret = false, $filespec = '', $classname = '' ) {
+
 			if ( false === $ret && ! empty( $filespec ) ) {
+
 				$filepath = WPSSO_PLUGINDIR.'lib/'.$filespec.'.php';
+
 				if ( file_exists( $filepath ) ) {
+
 					require_once $filepath;
+
 					if ( empty( $classname ) ) {
 						return SucomUtil::sanitize_classname( 'wpsso'.$filespec, false );	// $underscore = false
 					} else {
@@ -2932,6 +2940,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					}
 				}
 			}
+
 			return $ret;
 		}
 	}
