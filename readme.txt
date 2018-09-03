@@ -332,7 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Added support for the "product:retailer_item_id" meta tag.
+	* Added support for the "product:retailer_item_id" meta tag (aka "Product SKU").
 	* Added a new "Product SKU" option in the Document SSO metabox.
 	* Added a new "Product SKU Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
 	* Added sub-types to the Schema AdministrativeArea type:
@@ -340,8 +340,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Country
 		* State
 	* Removed support for automatically hidden notifications.
+	* Updated the WooCommerce and Easy Digital Downloads integration modules to provide a default "Product SKU" value.
 * *Bugfixes*
-	* None.
+	* Fixed an incorrect reference to 'price_high' (should have been 'price_highest') in the Easy Digital Download integration module.
 * *Developer Notes*
 	* Added a new 'unhide_rows_on_show' event for the SucomForm::get_select() method.
 	* Minor code changes to rename the package check method.
