@@ -327,11 +327,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.12.0-dev.5 (2018/09/02)**
+**Version 4.12.0-dev.6 (2018/09/03)**
 
 * *New Features*
 	* None.
 * *Improvements*
+	* Added support for the "product:retailer_item_id" meta tag.
+	* Added a new "Product SKU" option in the Document SSO metabox.
+	* Added a new "Product SKU Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
 	* Added sub-types to the Schema AdministrativeArea type:
 		* City
 		* Country
@@ -674,9 +677,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.12.0-dev.5 =
+= 4.12.0-dev.6 =
 
-(2018/09/02) Added sub-types to the Schema AdministrativeArea type. Removed support for automatically hidden notifications.
+(2018/09/03) Added sub-types to the Schema AdministrativeArea type. Removed support for automatically hidden notifications.
 
 = 4.11.1 =
 
