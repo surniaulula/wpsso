@@ -2175,7 +2175,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':purchase_limit'                  => '',
 				$mt_pre . ':retailer'                        => '',
 				$mt_pre . ':retailer_category'               => '',
-				$mt_pre . ':retailer_item_id'                => '',
+				$mt_pre . ':retailer_item_id'                => '',	// https://developers.facebook.com/docs/reference/opengraph/object-type/product.item/.
 				$mt_pre . ':retailer_part_no'                => '',
 				$mt_pre . ':retailer_title'                  => '',
 				$mt_pre . ':rating:average'                  => '',	// Non-standard / internal meta tag.

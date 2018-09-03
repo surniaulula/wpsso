@@ -5457,25 +5457,25 @@ msgid ""
 "unchecked and disabled automatically."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:780
+#: lib/pro/ecom/woocommerce.php:779
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:783
+#: lib/pro/ecom/woocommerce.php:782
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:990
+#: lib/pro/ecom/woocommerce.php:989
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:992
+#: lib/pro/ecom/woocommerce.php:991
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:995
+#: lib/pro/ecom/woocommerce.php:994
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
