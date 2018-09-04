@@ -124,13 +124,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$user_ids = array();
 
-			foreach ( get_users() as $user ) {
-				if ( ! empty( $user-> ID ) ) {	// just in case
-					$user_ids[] = $user->ID;
+			foreach ( get_users() as $user_obj ) {
+				if ( ! empty( $user_obj->ID ) ) {	// Just in case.
+					$user_ids[] = $user_obj->ID;
 				}
 			}
 
-			rsort( $user_ids );	// newest id first
+			rsort( $user_ids );	// Newest id first.
 
 			return $user_ids;
 		}

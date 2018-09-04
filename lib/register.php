@@ -132,13 +132,13 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
 
-				foreach ( SucomUtil::get_users_by_roles( self::$wp_persons ) as $user ) {
+				foreach ( SucomUtil::get_users_by_roles( self::$wp_persons ) as $user_obj  ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'adding person role for user ID ' . $user->ID );
+						$this->p->debug->log( 'adding person role for user ID ' . $user_obj->ID );
 					}
 
-					$user->add_role( 'person' );
+					$user_obj->add_role( 'person' );
 				}
 			}
 
@@ -181,19 +181,19 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				 */
 				delete_post_meta_by_key( WPSSO_META_NAME );	// Since wp v2.3.
 
-				foreach ( get_users() as $user ) {
+				foreach ( get_users() as $user_obj ) {
 
-					if ( ! empty( $user-> ID ) ) {	// Just in case.
+					if ( ! empty( $user_obj->ID ) ) {	// Just in case.
 
-						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, false );	// $global is false.
-						delete_user_option( $user->ID, WPSSO_DISMISS_NAME, true );	// $global is true.
+						delete_user_option( $user_obj->ID, WPSSO_DISMISS_NAME, false );	// $global is false.
+						delete_user_option( $user_obj->ID, WPSSO_DISMISS_NAME, true );	// $global is true.
 	
-						delete_user_meta( $user->ID, WPSSO_META_NAME );
-						delete_user_meta( $user->ID, WPSSO_PREF_NAME );
+						delete_user_meta( $user_obj->ID, WPSSO_META_NAME );
+						delete_user_meta( $user_obj->ID, WPSSO_PREF_NAME );
 	
-						WpssoUser::delete_metabox_prefs( $user->ID );
+						WpssoUser::delete_metabox_prefs( $user_obj->ID );
 
-						$user->remove_role( 'person' );
+						$user_obj->remove_role( 'person' );
 					}
 				}
 

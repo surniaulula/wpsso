@@ -183,9 +183,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'posts_per_page' => -1,
 			) );
 
-			foreach ( $post_posts as $post ) {
-				if ( ! empty( $post-> ID ) ) {	// Just in case.
-					$post_ids[] = $post-> ID;
+			foreach ( $post_posts as $post_obj ) {
+				if ( ! empty( $post_obj->ID ) ) {	// Just in case.
+					$post_ids[] = $post_obj->ID;
 				}
 			}
 
