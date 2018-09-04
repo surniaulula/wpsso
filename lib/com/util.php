@@ -3318,6 +3318,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array( $lib_id, $stub, $action );
 		}
 
+		public static function role_exists( $role ) {
+			if ( empty( $role ) ) {	// Just in case.
+				return false;
+			} elseif ( function_exists( 'wp_roles' ) ) {
+				return wp_roles()->is_role( $role );
+			} else {
+				return $GLOBALS['wp_roles']->is_role( $role );
+			}
+		}
+
 		public static function get_user_ids_by_roles( array $roles = array( 'administrator' ), $blog_id = false ) {
 
 			if ( empty( $blog_id ) ) {

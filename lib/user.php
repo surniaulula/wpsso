@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 	 */
 	class WpssoUser extends WpssoMeta {
 
-		protected static $pref = array();
+		protected static $cache_pref = array();
 		protected static $wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // default WP roles
 
 		public function __construct() {
@@ -25,9 +25,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		protected function add_actions() {
 
-			$fb_cm_name_value = $this->p->options['plugin_cm_fb_name'];
-
-			add_role( 'person', _x( 'Person', 'user role', 'wpsso' ), array() );
+			if ( ! SucomUtil::role_exists( 'person' ) ) {
+				add_role( 'person', _x( 'Person', 'user role', 'wpsso' ), array() );
+			}
 
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
 				if ( is_multisite() ) {
@@ -37,8 +37,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
+			$fb_cm_name_value = $this->p->options['plugin_cm_fb_name'];
+
 			add_filter( 'user_contactmethods', array( $this, 'add_contact_methods' ), 20, 2 );
-			add_filter( 'user_'.$fb_cm_name_value.'_label', array( $this, 'fb_contact_label' ), 20, 1 );
+			add_filter( 'user_' . $fb_cm_name_value . '_label', array( $this, 'fb_contact_label' ), 20, 1 );
 
 			/**
 			 * Hook a minimum number of admin actions to maximize performance. The user_id argument is 
@@ -154,8 +156,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'calling get_posts() for posts authored by '.
-					$mod['name'].' id '.$mod['id'].' (posts_per_page is '.$posts_per_page.')' );
+				$this->p->debug->log( 'calling get_posts() for posts authored by ' . 
+					$mod['name'] . ' id ' . $mod['id'] . ' (posts_per_page is ' . $posts_per_page . ')' );
 			}
 
 			$get_posts_args = array_merge( array(
@@ -204,7 +206,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $user_posts ).' post objects returned in '.sprintf( '%0.3f secs', $total_time ) );
+				$this->p->debug->log( count( $user_posts ) . ' post objects returned in ' . sprintf( '%0.3f secs', $total_time ) );
 			}
 
 			return $user_posts;
@@ -339,7 +341,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'screen id is '.$screen->id );
+				$this->p->debug->log( 'screen id is ' . $screen->id );
 			}
 
 			switch ( $screen->id ) {
@@ -360,10 +362,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mod = $this->get_mod( $user_id );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'home url = '.get_option( 'home' ) );
-				$this->p->debug->log( 'locale default = '.SucomUtil::get_locale( 'default' ) );
-				$this->p->debug->log( 'locale current = '.SucomUtil::get_locale( 'current' ) );
-				$this->p->debug->log( 'locale mod = '.SucomUtil::get_locale( $mod ) );
+				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
+				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
+				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
+				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 			}
 
@@ -373,7 +375,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_user', $add_metabox, $user_id );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'add metabox for user ID '.$user_id.' is '.
+				$this->p->debug->log( 'add metabox for user ID ' . $user_id . ' is ' . 
 					( $add_metabox ? 'true' : 'false' ) );
 			}
 
@@ -395,12 +397,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * Check for missing open graph image and description values.
 				 */
 				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
-					if ( empty( WpssoMeta::$head_meta_info['og:'.$mt_suffix] ) ) {
+					if ( empty( WpssoMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'og:'.$mt_suffix.' meta tag is value empty and required' );
+							$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
 						}
 						if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-'.$mt_suffix ) );
+							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix ) );
 						}
 					}
 				}
@@ -413,7 +415,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'found action query: '.$action_name );
+					$this->p->debug->log( 'found action query: ' . $action_name );
 
 				}
 				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
@@ -444,7 +446,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( ! current_user_can( 'edit_user', $user_id ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'insufficient privileges to add metabox for user ID '.$user_id );
+					$this->p->debug->log( 'insufficient privileges to add metabox for user ID ' . $user_id );
 				}
 				return;
 			}
@@ -458,12 +460,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$add_metabox     = apply_filters( $this->p->lca . '_add_metabox_user', $add_metabox, $user_id );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'add metabox for user ID '.$user_id.' is '.
+				$this->p->debug->log( 'add metabox for user ID ' . $user_id . ' is ' . 
 					( $add_metabox ? 'true' : 'false' ) );
 			}
 
 			if ( $add_metabox ) {
-				add_meta_box( $this->p->lca . '_'.$metabox_id, $metabox_title,
+				add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
 					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
 						$metabox_context, $metabox_prio );
 			}
@@ -481,19 +483,19 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( ! current_user_can( 'edit_user', $user_obj->ID ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: current user does not have edit privileges for user ID '.$user_obj->ID );
+					$this->p->debug->log( 'exiting early: current user does not have edit privileges for user ID ' . $user_obj->ID );
 				}
 				return;
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'doing metabox for '.$this->p->lca . '-user' );
+				$this->p->debug->log( 'doing metabox for ' . $this->p->lca . '-user' );
 			}
 
 			$metabox_screen  = $this->p->lca . '-user';
 			$metabox_context = 'normal';
 
-			echo "\n" . '<!-- '.$this->p->lca . ' user metabox section begin -->' . "\n";
+			echo "\n" . '<!-- ' . $this->p->lca . ' user metabox section begin -->' . "\n";
 			echo '<h3 id="' . $this->p->lca . '-metaboxes">' . WpssoAdmin::$pkg[$this->p->lca]['short'] . '</h3>' . "\n";
 			echo '<div id="poststuff">' . "\n";
 
@@ -528,7 +530,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( $metabox_id.' table rows' );	// start timer
+				$this->p->debug->mark( $metabox_id . ' table rows' );	// start timer
 			}
 
 			$table_rows = array();
@@ -541,7 +543,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( $metabox_id.' table rows' );	// end timer
+				$this->p->debug->mark( $metabox_id . ' table rows' );	// end timer
 			}
 
 			return "\n" . '<div id="' . $this->p->lca . '_metabox_' . $metabox_id . '">' . $metabox_html . '</div>' . "\n";
@@ -1022,7 +1024,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 * Don't bother saving unless we have to.
 			 */
 			if ( $old_prefs !== $new_prefs ) {
-				self::$pref[$user_id] = $new_prefs;	// update the pref cache
+				self::$cache_pref[$user_id] = $new_prefs;	// update the pref cache
 				unset( $new_prefs['prefs_filtered'] );
 				update_user_meta( $user_id, WPSSO_PREF_NAME, $new_prefs );
 				return true;
@@ -1035,32 +1037,32 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$user_id = false === $user_id ? get_current_user_id() : $user_id;
 
-			if ( ! isset( self::$pref[$user_id]['prefs_filtered'] ) || self::$pref[$user_id]['prefs_filtered'] !== true ) {
+			if ( ! isset( self::$cache_pref[$user_id]['prefs_filtered'] ) || self::$cache_pref[$user_id]['prefs_filtered'] !== true ) {
 
 				$wpsso = Wpsso::get_instance();
 
-				self::$pref[$user_id] = get_user_meta( $user_id, WPSSO_PREF_NAME, true );
+				self::$cache_pref[$user_id] = get_user_meta( $user_id, WPSSO_PREF_NAME, true );
 
-				if ( ! is_array( self::$pref[$user_id] ) ) {
-					self::$pref[$user_id] = array();
+				if ( ! is_array( self::$cache_pref[$user_id] ) ) {
+					self::$cache_pref[$user_id] = array();
 				}
 
-				self::$pref[$user_id]['prefs_filtered'] = true;	// set before calling filter to prevent recursion
-				self::$pref[$user_id] = apply_filters( $wpsso->lca . '_get_user_pref', self::$pref[$user_id], $user_id );
+				self::$cache_pref[$user_id]['prefs_filtered'] = true;	// set before calling filter to prevent recursion
+				self::$cache_pref[$user_id] = apply_filters( $wpsso->lca . '_get_user_pref', self::$cache_pref[$user_id], $user_id );
 
-				if ( ! isset( self::$pref[$user_id]['show_opts'] ) ) {
-					self::$pref[$user_id]['show_opts'] = $wpsso->options['plugin_show_opts'];
+				if ( ! isset( self::$cache_pref[$user_id]['show_opts'] ) ) {
+					self::$cache_pref[$user_id]['show_opts'] = $wpsso->options['plugin_show_opts'];
 				}
 			}
 
 			if ( $idx !== false ) {
-				if ( isset( self::$pref[$user_id][$idx] ) ) {
-					return self::$pref[$user_id][$idx];
+				if ( isset( self::$cache_pref[$user_id][$idx] ) ) {
+					return self::$cache_pref[$user_id][$idx];
 				} else {
 					return false;
 				}
 			} else {
-				return self::$pref[$user_id];
+				return self::$cache_pref[$user_id];
 			}
 		}
 

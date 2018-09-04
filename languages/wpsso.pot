@@ -109,7 +109,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:898 lib/post.php:749 lib/term.php:421 lib/user.php:424
+#: lib/admin.php:898 lib/post.php:749 lib/term.php:421 lib/user.php:426
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2784,7 +2784,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:164 lib/loader.php:190 lib/post.php:259 lib/register.php:264
-#: lib/term.php:237 lib/user.php:201 lib/util.php:366 lib/util.php:2693
+#: lib/term.php:237 lib/user.php:203 lib/util.php:366 lib/util.php:2693
 msgid "%s warning:"
 msgstr ""
 
@@ -3900,7 +3900,7 @@ msgstr ""
 msgid "Automatically add the '%s' role when new users are created."
 msgstr ""
 
-#: lib/messages.php:1139 lib/user.php:30 lib/user.php:227
+#: lib/messages.php:1139 lib/user.php:29 lib/user.php:229
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -5258,7 +5258,7 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:245 lib/term.php:223 lib/user.php:187 lib/util.php:352
+#: lib/post.php:245 lib/term.php:223 lib/user.php:189 lib/util.php:352
 #: lib/util.php:2670
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
@@ -6081,29 +6081,29 @@ msgid "Twitter Large Image Card"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-#: lib/user.php:190
+#: lib/user.php:192
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:620
+#: lib/user.php:622
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:702
+#: lib/user.php:704
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:703
+#: lib/user.php:705
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:704
+#: lib/user.php:706
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1116
+#: lib/user.php:1118
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
