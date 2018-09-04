@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.12.0-dev.6 (2018/09/03)**
+**Version 4.12.0-dev.7 (2018/09/04)**
 
 * *New Features*
 	* None.
@@ -678,9 +678,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.12.0-dev.6 =
+= 4.12.0-dev.7 =
 
-(2018/09/03) Added sub-types to the Schema AdministrativeArea type. Removed support for automatically hidden notifications.
+(2018/09/04) Added sub-types to the Schema AdministrativeArea type. Removed support for automatically hidden notifications.
 
 = 4.11.1 =
 
