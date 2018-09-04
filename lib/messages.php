@@ -331,7 +331,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip_meta', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_meta', $text, $idx, $info );
 
 							break;
 
@@ -372,7 +372,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip_post', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_post', $text, $idx, $info );
 
 							break;
 
@@ -650,7 +650,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip_og', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_og', $text, $idx, $info );
 
 							break;
 
@@ -711,7 +711,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'Uncheck this option to always use the original unmodified title value from WordPress (default is %s).', 'wpsso' ), $def_checked ).' ';
 
-							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca.'_filter_title' );
+							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca . '_filter_title' );
 
 							break;
 
@@ -723,7 +723,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= __( 'If you use shortcodes in your content text, this option should be enabled &mdash; if you experience display issues after enabling this option, determine which theme / plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ).' ';
 							
-							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca.'_filter_content' );
+							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca . '_filter_content' );
 
 							break;
 
@@ -731,7 +731,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'Apply the WordPress \'get_the_excerpt\' filter to the excerpt text (default is unchecked). Enable this option if you use shortcodes in your excerpts, for example.', 'wpsso' ).' ';
 							
-							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca.'_filter_excerpt' );
+							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca . '_filter_excerpt' );
 
 							break;
 
@@ -1247,7 +1247,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_clear_short_urls':
 
-							$cache_exp_secs = (int) apply_filters( $this->p->lca.'_cache_expire_short_url',
+							$cache_exp_secs = (int) apply_filters( $this->p->lca . '_cache_expire_short_url',
 								$this->p->options['plugin_short_url_cache_exp'] );
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
@@ -1365,7 +1365,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip_plugin', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_plugin', $text, $idx, $info );
 
 							break;
 
@@ -1437,7 +1437,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip_fb', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_fb', $text, $idx, $info );
 
 							break;
 
@@ -1476,7 +1476,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip_seo', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_seo', $text, $idx, $info );
 
 							break;
 
@@ -1504,7 +1504,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= __( 'The WebSite markup includes the site name, alternate site name, site URL and search query URL.', 'wpsso' ).' ';
 							
-							$text .= sprintf( __( 'Developers can hook the \'%s\' filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca.'_json_ld_search_url' ).'<br/><br/>';
+							$text .= sprintf( __( 'Developers can hook the \'%s\' filter to modify the site search URL (or disable its addition by returning false).', 'wpsso' ), $this->p->lca . '_json_ld_search_url' ).'<br/><br/>';
 							
 							$text .= sprintf( __( 'The Organization markup includes all URLs entered in the %s settings page.', 'wpsso' ), $settings_page_link ).'<br/><br/>';
 							
@@ -1640,7 +1640,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip_schema', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_schema', $text, $idx, $info );
 
 							break;
 
@@ -1707,7 +1707,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip_tc', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_tc', $text, $idx, $info );
 
 							break;
 
@@ -1758,7 +1758,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip_p', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_p', $text, $idx, $info );
 
 							break;
 
@@ -1779,7 +1779,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip_instgram', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_instgram', $text, $idx, $info );
 
 							break;
 
@@ -1800,7 +1800,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip_linkedin', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_linkedin', $text, $idx, $info );
 
 							break;
 
@@ -1821,7 +1821,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip_myspace', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_myspace', $text, $idx, $info );
 
 							break;
 
@@ -1862,7 +1862,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_tooltip', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip', $text, $idx, $info );
 
 							break;
 
@@ -2030,13 +2030,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= sprintf( __( 'The <em>%1$s</em> column on the other hand is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) ) . ' ';
 							
-							$text .= '</p><p><center>';
+							$text .= '</p><p>';
+							
+							$text .= '<center>';
 							
 							$text .= '<strong>'.__( 'DO NOT ENTER YOUR CONTACT INFORMATION HERE &ndash; THESE ARE CONTACT FIELD LABELS ONLY.', 'wpsso' ).'</strong><br/>';
 							
 							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( null, 'profile.php' ) );
 
-							$text .= '</center></p>';
+							$text .= '</center>';
+
+							$text .= '</p>';
 
 							$text .= '</blockquote>';
 
@@ -2044,7 +2048,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-taglist':
 
-							$text = '<blockquote class="top-info"><p>';
+							$text = '<blockquote class="top-info">';
+							
+							$text .= '<p>';
 
 							$text .= sprintf( __( '%s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, Google Rich Card / SEO meta tags to the <code>&lt;head&gt;</code> section of your webpages.', 'wpsso' ), $info['short'] ).' ';
 
@@ -2052,13 +2058,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'For example, the "%1$s" SEO meta tag is automatically unchecked if a <em>known</em> SEO plugin is detected, and the "%2$s" meta tag is unchecked by default (themes often include this meta tag in their header template).', 'wpsso' ), 'meta name description', 'link rel canonical' );
 
-							$text .= '</p></blockquote>';
+							$text .= '</p>';
+
+							$text .= '</blockquote>';
 
 							break;
 
 						default:
 
-							$text = apply_filters( $lca.'_messages_info', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_info', $text, $idx, $info );
 
 							break;
 
@@ -2184,7 +2192,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					default:
 
-						$text = apply_filters( $lca.'_messages_pro', $text, $idx, $info );
+						$text = apply_filters( $lca . '_messages_pro', $text, $idx, $info );
 
 						break;
 				}
@@ -2294,7 +2302,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= sprintf( __( '<a href="%s">If you use shortcodes in your content text, this option should be enabled</a> &mdash; if you experience display issues after enabling this option, determine which theme / plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ), $settings_page_url ).' ';
 
-						$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca.'_filter_content' );
+						$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca . '_filter_content' );
 
 						$text .= '</p>';
 
@@ -2417,7 +2425,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					default:
 
-						$text = apply_filters( $lca.'_messages_notice', $text, $idx, $info );
+						$text = apply_filters( $lca . '_messages_notice', $text, $idx, $info );
 
 						break;
 			}
@@ -2481,12 +2489,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					default:
 
-						$text = apply_filters( $lca.'_messages_side', $text, $idx, $info );
+						$text = apply_filters( $lca . '_messages_side', $text, $idx, $info );
 
 						break;
 				}
 			} else {
-				$text = apply_filters( $lca.'_messages', $text, $idx, $info );
+				$text = apply_filters( $lca . '_messages', $text, $idx, $info );
 			}
 
 			if ( is_array( $info ) && ! empty( $info['is_locale'] ) ) {

@@ -113,7 +113,12 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p->set_objects( true ); // Load all the class objects ( $activate = true ).
 
 			if ( ! SucomUtil::get_const( 'WPSSO_REG_CLEAR_CACHE_DISABLE' ) ) {
-				$this->p->util->clear_all_cache( false );
+
+				$clear_external   = false;	// Caching plugins should clear their own cache on plugin activation.
+				$clear_short_urls = null;	// Use the default value from the plugin options.
+				$refresh_cache    = false;	// Do not auto-refresh cache objects on activation.
+
+				$this->p->util->clear_all_cache( $clear_external, $clear_short_urls, $refresh_cache );
 			}
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];

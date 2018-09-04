@@ -1005,6 +1005,23 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$mods = array();
 
+			/**
+			 * A transient is set and checked to limit the runtime and allow this process
+			 * to be terminated early (by removing the transient object).
+			 */
+			$cache_md5_pre  = $this->p->lca . '_';
+			$cache_exp_secs = HOUR_IN_SECONDS;	// Run for max of 1 hour.
+			$cache_salt     = __CLASS__ . '::refresh_all_cache_run';
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
+			$cache_value    = 1;
+
+			/**
+			 * Prevent concurrent execution.
+			 */
+			if ( get_transient( $cache_id ) === $cache_value ) {
+				return;
+			}
+
 			foreach ( WpssoPost::get_public_post_ids() as $post_id ) {
 				$mods[] = $this->p->m['util']['post']->get_mod( $post_id );
 			}
@@ -1021,18 +1038,33 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$image_sizes  = array();
 			$filter_sizes = true;
 
+			set_transient( $cache_id, $cache_value, $cache_exp_secs );
+
 			foreach ( $mods as $mod ) {
+
+				/**
+				 * Make sure the transient is still good. Stop if the transient has expired
+				 * or been removed.
+				 */
+				if ( get_transient( $cache_id ) !== $cache_value ) {
+					break;	// Stop here.
+				}
 
 				$this->add_plugin_image_sizes( $wp_obj, $image_sizes, $mod, $filter_sizes );
 
 				$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 
+				/**
+				 * Delay execution in microseconds. A microsecond is one millionth of a second.
+				 */
 				usleep( WPSSO_REFRESH_CACHE_SLEEP_TIME * 1000000 );	// Sleep for 0.50 seconds by default.
 			}
+
+			delete_transient( $cache_id );
 		}
 
-		public function clear_all_cache( $clear_external = true, $clear_short_urls = null, $refresh_cache = null, $dismiss_key = null ) {
+		public function clear_all_cache( $clear_external = true, $clear_short_urls = null, $refresh_cache = null, $dismiss_key = false ) {
 
 			static $cleared_all_cache = null;
 
