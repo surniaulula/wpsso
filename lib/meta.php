@@ -213,11 +213,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows    = array();
-			$prev_width    = 600;
-			$prev_height   = 315;
-			$refresh_cache = $this->p->util->is_force_regen( $mod, 'og' ) ? '?force_regen=' . time() : '';
-			$media_url     = SucomUtil::get_mt_media_url( $head_info ) . $refresh_cache;
+			$table_rows  = array();
+			$prev_width  = 600;
+			$prev_height = 315;
+			$force_regen = $this->p->util->is_force_regen( $mod, 'og' ) ? '?force_regen=' . time() : '';
+			$media_url   = SucomUtil::get_mt_media_url( $head_info ) . $force_regen;
 
 			$have_sizes = ( isset( $head_info['og:image:width'] ) && $head_info['og:image:width'] > 0 && 
 				isset( $head_info['og:image:height'] ) && $head_info['og:image:height'] > 0 ) ? true : false;

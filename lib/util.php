@@ -1116,7 +1116,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			delete_transient( $cache_id );
 		}
 
-		public function clear_all_cache( $clear_external = true, $clear_short_urls = null, $refresh_cache = null, $dismiss_key = false ) {
+		public function clear_all_cache( $clear_external = true, $clear_short_urls = null, $refresh_all_cache = null, $dismiss_key = false ) {
 
 			static $cleared_all_cache = null;
 
@@ -1131,8 +1131,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->options['plugin_clear_short_urls'] : false;
 			}
 
-			if ( null === $refresh_cache ) {
-				$refresh_cache = isset( $this->p->options['plugin_clear_all_refresh'] ) ?
+			if ( null === $refresh_all_cache ) {
+				$refresh_all_cache = isset( $this->p->options['plugin_clear_all_refresh'] ) ?
 					$this->p->options['plugin_clear_all_refresh'] : false;
 			}
 
@@ -1173,12 +1173,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			wp_clear_scheduled_hook( $this->p->lca . '_refresh_all_cache' );
 
-			if ( $refresh_cache ) {
+			if ( $refresh_all_cache ) {
 
 				wp_schedule_single_event( time(), $this->p->lca . '_refresh_all_cache' );	// Run in the next minute.
 
-				$cleared_msg .= ' ' . sprintf( __( 'A background task will begin shortly to re-create the %s post, term, and user transient cache objects.',
-					'wpsso' ), $short );
+				$cleared_msg .= ' ' . sprintf( __( 'A background task will begin shortly to re-create the %s post, term, and user transient cache objects.', 'wpsso' ), $short );
 			}
 
 			$this->p->notice->inf( $cleared_msg, true, $dismiss_key, true );	// Can be dismissed depending on args.

@@ -117,11 +117,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					$this->p->debug->log( 'clearing all cache (external and refresh are false)' );
 				}
 
-				$clear_external   = false;	// Caching plugins should clear their own cache on plugin activation.
-				$clear_short_urls = null;	// Use the default value from the plugin options.
-				$refresh_cache    = false;	// Do not auto-refresh cache objects on activation.
+				$clear_external    = false;	// Caching plugins should clear their own cache on plugin activation.
+				$clear_short_urls  = null;	// Use the default value from the plugin options.
+				$refresh_all_cache = false;	// Do not auto-refresh cache objects on activation.
 
-				$this->p->util->clear_all_cache( $clear_external, $clear_short_urls, $refresh_cache );
+				$this->p->util->clear_all_cache( $clear_external, $clear_short_urls, $refresh_all_cache );
 			}
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
@@ -135,7 +135,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			wp_clear_scheduled_hook( $this->p->lca . '_add_person_role' );
 
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
-
 				wp_schedule_single_event( time(), $this->p->lca . '_add_person_role' );	// Run in the next minute.
 			}
 
