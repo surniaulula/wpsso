@@ -2938,17 +2938,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$user_obj = false; // Return false by default.
 
 			if ( is_numeric( $user_id ) && $user_id > 0 ) {
+
 				$user_obj = get_userdata( $user_id );
 
 			} elseif ( apply_filters( 'sucom_is_user_page', is_author() ) ) {
+
 				$user_obj = get_query_var( 'author_name' ) ?
 					get_user_by( 'slug', get_query_var( 'author_name' ) ) :
 					get_userdata( get_query_var( 'author' ) );
 
 			} elseif ( is_admin() ) {
+
 				if ( ( $user_id = self::get_request_value( 'user_id' ) ) === '' ) { // Uses sanitize_text_field().
 					$user_id = get_current_user_id();
 				}
+
 				$user_obj = get_userdata( $user_id );
 			}
 

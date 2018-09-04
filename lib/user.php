@@ -211,14 +211,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function add_person_role( $user_id ) {
-			$user = get_user_by( 'id', $user_id );
-			$user->add_role( 'person' );
+
+			$user_obj = get_user_by( 'ID', $user_id );
+
+			$user_obj->add_role( 'person' );
 		}
 
 		public function add_person_view( $user_views ) {
 
-			$user_views = array_reverse( $user_views );
+			$user_views    = array_reverse( $user_views );
 			$all_view_link = $user_views['all'];
+
 			unset( $user_views['all'], $user_views['person'] );
 
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
@@ -229,6 +232,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_views['person'] = '<a href="' . $role_view . '">' .  $role_label . '</a> (' . $user_count . ')';
 
 			$user_views['all'] = $all_view_link;
+
 			$user_views = array_reverse( $user_views );
 
 			return $user_views;
@@ -682,11 +686,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 * Provides backwards compatibility for wp 3.0.
 		 */
 		public static function get_user_id_contact_methods( $user_id ) {
-			$user = get_user_by( 'id', $user_id );
+
+			$user_obj = get_user_by( 'ID', $user_id );
+
 			if ( function_exists( 'wp_get_user_contact_methods' ) ) {	// since wp 3.7
-				return wp_get_user_contact_methods( $user );
+
+				return wp_get_user_contact_methods( $user_obj );
+
 			} else {
+
 				$methods = array();
+
 				if ( get_site_option( 'initial_db_version' ) < 23588 ) {
 					$methods = array(
 						'aim'    => __( 'AIM' ),
@@ -694,7 +704,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						'yim'    => __( 'Yahoo Messenger' )
 					);
 				}
-				return apply_filters( 'user_contactmethods', $methods, $user );
+
+				return apply_filters( 'user_contactmethods', $methods, $user_obj );
 			}
 		}
 

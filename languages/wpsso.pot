@@ -109,7 +109,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:898 lib/post.php:749 lib/term.php:421 lib/user.php:420
+#: lib/admin.php:898 lib/post.php:749 lib/term.php:421 lib/user.php:424
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -3900,7 +3900,7 @@ msgstr ""
 msgid "Automatically add the '%s' role when new users are created."
 msgstr ""
 
-#: lib/messages.php:1139 lib/user.php:30 lib/user.php:224
+#: lib/messages.php:1139 lib/user.php:30 lib/user.php:227
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -6087,23 +6087,23 @@ msgid ""
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:616
+#: lib/user.php:620
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:692
+#: lib/user.php:702
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:693
+#: lib/user.php:703
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:694
+#: lib/user.php:704
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1105
+#: lib/user.php:1116
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
