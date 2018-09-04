@@ -154,8 +154,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				}
 			}
 
-			if ( $this->debug->enabled ) {
-				$this->debug->log( 'done plugin activation' );
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'done plugin activation' );
 			}
 		}
 
