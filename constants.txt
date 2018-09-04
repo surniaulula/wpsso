@@ -61,9 +61,10 @@ WPSSO_PHP_CURL_USERAGENT		= 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47
  * Undefined constants (can be defined to change specific plugin behaviors).
  */
 FORCE_SSL				= (not defined)
-WPSSO_HTML_DEBUG			= (not defined)
-WPSSO_WP_DEBUG				= (not defined)
-WPSSO_ADMIN_WP_DEBUG			= (not defined)
+WPSSO_DEBUG_LOG				= (not defined)	// Send both front-end and back-end debug messages to the PHP error log.
+WPSSO_DEBUG_HTML			= (not defined)	// Add both front-end and back-end debug messages to the webpage HTML.
+WPSSO_ADMIN_DEBUG_LOG			= (not defined)	// Send only back-end debug messages to the PHP error log.
+WPSSO_ADMIN_DEBUG_HTML			= (not defined)	// Add only back-end debug messages to the webpage HTML.
 WPSSO_APPLY_FILTERS_SINGLE_MT		= (not defined)
 WPSSO_PHP_CURL_DISABLE			= (not defined)
 WPSSO_PHP_GETIMGSIZE_DISABLE		= (not defined)

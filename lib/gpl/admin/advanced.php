@@ -295,11 +295,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_types_cache_exp', $form, $network );
 
-			$table_rows['plugin_show_purge_count'] = ''.
-			$form->get_th_html( _x( 'Show Cache Purge Count on Update', 'option label', 'wpsso' ), '', 'plugin_show_purge_count' ).
-			$form->get_td_no_checkbox( 'plugin_show_purge_count' ).
-			WpssoAdmin::get_option_site_use( 'plugin_show_purge_count', $form, $network );
-
 			$table_rows['plugin_clear_on_save'] = ''.
 			$form->get_th_html( _x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ), '', 'plugin_clear_on_save' ).
 			$form->get_td_no_checkbox( 'plugin_clear_on_save' ).

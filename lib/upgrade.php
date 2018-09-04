@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_schema_type_id_col_term' => 'plugin_schema_type_col_term',
 					'plugin_schema_type_id_col_user' => 'plugin_schema_type_col_user',
 					'plugin_auto_img_resize'         => 'plugin_create_wp_sizes',
-					'plugin_cache_info'              => 'plugin_show_purge_count',
+					'plugin_cache_info'              => '',
 					'tc_sum_width'                   => 'tc_sum_img_width',
 					'tc_sum_height'                  => 'tc_sum_img_height',
 					'tc_sum_crop'                    => 'tc_sum_img_crop',
@@ -205,7 +205,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_ignore_small_img' => 'plugin_check_img_dims',
 					'plugin_file_cache_exp'   => 'plugin_social_file_cache_exp',
 					'plugin_object_cache_exp' => '',
-					'plugin_cache_info'       => 'plugin_show_purge_count',
+					'plugin_cache_info'       => '',
 					'plugin_verify_certs'     => '',
 				),
 				539 => array(

@@ -282,7 +282,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function set_objects( $activate = false ) {
 
-			$network = is_multisite() ? true : false;
+			$is_admin = is_admin() ? true : false;
+			$network  = is_multisite() ? true : false;
 
 			$this->check = new WpssoCheck( $this );
 			$this->avail = $this->check->get_avail();	// Uses $this->options for availability checks.
@@ -290,25 +291,29 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Configure the debug class.
 			 */
-			if ( ! empty( $this->options['plugin_debug'] ) || ( defined( 'WPSSO_HTML_DEBUG' ) && WPSSO_HTML_DEBUG ) ) {
-				$html_debug = true;
+			if ( defined( 'WPSSO_DEBUG_LOG' ) && WPSSO_DEBUG_LOG ) {
+				$debug_log = true;
+			} elseif ( $is_admin && defined( 'WPSSO_ADMIN_DEBUG_LOG' ) && WPSSO_ADMIN_DEBUG_LOG ) {
+				$debug_log = true;
 			} else {
-				$html_debug = false;
+				$debug_log = false;
 			}
 
-			if ( defined( 'WPSSO_WP_DEBUG' ) && WPSSO_WP_DEBUG ) {
-				$wp_debug = true;
-			} elseif ( is_admin() && defined( 'WPSSO_ADMIN_WP_DEBUG' ) && WPSSO_ADMIN_WP_DEBUG ) {
-				$wp_debug = true;
+			if ( ! empty( $this->options['plugin_debug'] ) ) {
+				$debug_html = true;
+			} elseif ( defined( 'WPSSO_DEBUG_HTML' ) && WPSSO_DEBUG_HTML ) {
+				$debug_html = true;
+			} elseif ( $is_admin && defined( 'WPSSO_ADMIN_DEBUG_HTML' ) && WPSSO_ADMIN_DEBUG_HTML ) {
+				$debug_html = true;
 			} else {
-				$wp_debug = false;
+				$debug_html = false;
 			}
 
-			if ( $html_debug || $wp_debug ) {
+			if ( $debug_html || $debug_log ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/com/debug.php';
 
-				$this->debug = new SucomDebug( $this, array( 'html' => $html_debug, 'wp' => $wp_debug ) );
+				$this->debug = new SucomDebug( $this, array( 'html' => $debug_html, 'log' => $debug_log ) );
 
 				if ( $this->debug->enabled ) {
 
@@ -363,13 +368,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->loader = new WpssoLoader( $this );		// module loader
 
 			if ( $this->debug->enabled ) {
-				$this->debug->mark( 'init objects action' );	// begin timer
+				$this->debug->mark( 'do init objects action' );	// Begin timer.
 			}
 
 			do_action( 'wpsso_init_objects', $activate );
 
 			if ( $this->debug->enabled ) {
-				$this->debug->mark( 'init objects action' );	// end timer
+				$this->debug->mark( 'do init objects action' );	// End timer.
 			}
 
 			/**
@@ -402,7 +407,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$dismiss_key  = 'debug-mode-is-active';
 				$dismiss_time = HOUR_IN_SECONDS * 3;
 
-				if ( $this->debug->is_enabled( 'wp' ) ) {
+				if ( $this->debug->is_enabled( 'log' ) ) {
 
 					$this->debug->log( 'WP debug log mode is active' );
 
@@ -443,12 +448,20 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->util->disable_cache_filters();
 				}
 			}
+
+			if ( $this->debug->enabled ) {
+				$this->debug->log( 'done setting objects' );
+			}
 		}
 
 		/**
 		 * Runs at init priority 11 by default.
 		 */
 		public function init_shortcodes() {
+
+			if ( $this->debug->enabled ) {
+				$this->debug->mark( 'init shortcodes' );	// Begin timer.
+			}
 
 			foreach ( $this->cf['plugin'] as $ext => $info ) {
 
@@ -464,6 +477,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					}
 				}
 			}
+
+			if ( $this->debug->enabled ) {
+				$this->debug->mark( 'init shortcodes' );	// End timer.
+			}
 		}
 
 		/**
@@ -472,7 +489,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public function init_plugin() {
 
 			if ( $this->debug->enabled ) {
-				$this->debug->mark( 'plugin initialization' );	// begin timer
+				$this->debug->mark( 'init plugin' );	// Begin timer.
 			}
 
 			if ( $this->debug->enabled ) {
@@ -514,13 +531,17 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			if ( $this->debug->enabled ) {
-				$this->debug->log( 'running init_plugin action' );
+				$this->debug->mark( 'do init plugin action' );	// Begin timer.
 			}
 
 			do_action( 'wpsso_init_plugin' );
 
 			if ( $this->debug->enabled ) {
-				$this->debug->mark( 'plugin initialization' );	// end timer
+				$this->debug->mark( 'do init plugin action' );	// End timer.
+			}
+
+			if ( $this->debug->enabled ) {
+				$this->debug->mark( 'init plugin' );	// End timer.
 			}
 		}
 

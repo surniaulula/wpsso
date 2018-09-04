@@ -763,39 +763,6 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 
-			if ( $deleted_count > 0 && ( $this->p->debug->enabled || ! empty( $this->p->options['plugin_show_purge_count'] ) ) ) {
-
-				$inf_msg = sprintf( __( '%s key(s) cleared from the cache.', 'wpsso' ), $deleted_count );
-
-				/**
-				 * Show cache purge details if WP_DEBUG is true.
-				 */
-				if ( ! empty( $deleted_ids ) && SucomUtil::get_const( 'WP_DEBUG' ) ) {
-
-					$inf_msg .= ' ';
-					$inf_msg .= __( 'WP_DEBUG constant is enabled &ndash; the list of possible cache object names is included:', 'wpsso' ) . "\n";
-					$inf_msg .= '<ol>' . "\n";
-
-					foreach ( $deleted_ids as $type_name => $cache_keys ) {
-						foreach ( $cache_keys as $key => $ret ) {
-							if ( $ret ) {
-								$inf_msg .= '<li>' . $type_name . ' ' . $key . ' &mdash; ';
-								$inf_msg .= '<strong>' . _x( 'cleared', 'clear cache status', 'wpsso' ) . '</strong>';
-								$inf_msg .= '</li>' . "\n";
-							} else {
-								$inf_msg .= '<li style="opacity:0.33;">' . $type_name . ' ' . $key . ' &mdash; ';
-								$inf_msg .= _x( 'not cached', 'clear cache status', 'wpsso' );
-								$inf_msg .= '</li>' . "\n";
-							}
-						}
-					}
-
-					$inf_msg .= '</ol>' . "\n";
-				}
-
-				$this->p->notice->inf( $inf_msg, true, __FUNCTION__ . '_show_purge_count_' . $mod['name'], true );	// can be dismissed
-			}
-
 			return $deleted_count;
 		}
 

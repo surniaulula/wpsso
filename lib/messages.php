@@ -1227,12 +1227,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_show_purge_count':
-
-							$text = __( 'Report the number of objects removed from the WordPress cache when posts, terms, and users are updated.', 'wpsso' );
-
-							break;
-
 						case 'tooltip-plugin_clear_on_save':	// Clear All Caches on Save Settings.
 
 							$text = sprintf( __( 'Automatically clear all known plugin cache(s) when saving the %s settings (default is checked).', 'wpsso' ), $info['short'] );

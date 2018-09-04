@@ -92,6 +92,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 */
 		public function disable_cache_filters( array $add_filters = array() ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			static $do_once = array();
 
 			$default_filters = array(

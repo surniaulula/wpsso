@@ -1177,7 +1177,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_short_url_cache_exp' => 7776000,		// Get Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_topics_cache_exp'    => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
-					'plugin_show_purge_count'    => 0,			// Show Cache Purge Count on Update.
 					'plugin_clear_on_save'       => 0,			// Clear All Caches on Save Settings.
 					'plugin_clear_all_refresh'   => 0,			// Auto-Refresh Cache After Clear All.
 					'plugin_clear_short_urls'    => 0,			// Clear Short URLs on Clear All Caches.
@@ -1311,8 +1310,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_topics_cache_exp:use'    => 'default',
 					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month)
 					'plugin_types_cache_exp:use'     => 'default',
-					'plugin_show_purge_count'        => 0,			// Show Cache Purge Count on Update
-					'plugin_show_purge_count:use'    => 'default',
 					'plugin_clear_on_save'           => 0,			// Clear All Caches on Save Settings
 					'plugin_clear_on_save:use'       => 'default',
 					'plugin_clear_all_refresh'       => 0,			// Auto-Refresh Cache After Clear All

@@ -67,6 +67,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		 * uninstall.php defines constants before calling network_uninstall().
 		 */
 		public static function network_uninstall() {
+
 			$sitewide = true;
 
 			/**
@@ -123,12 +124,26 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'saving times for wpsso ' . $plugin_version );
+			}
+
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
 
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
+
 				foreach ( SucomUtil::get_users_by_roles( self::$wp_persons ) as $user ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'adding person role for user ID ' . $user->ID );
+					}
+
 					$user->add_role( 'person' );
 				}
+			}
+
+			if ( $this->debug->enabled ) {
+				$this->debug->log( 'done plugin activation' );
 			}
 		}
 

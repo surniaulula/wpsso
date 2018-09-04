@@ -15,36 +15,37 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		private $p;
 		private $display_name = '';
-		private $log_prefix = '';
-		private $buffer = array();	// accumulate text strings going to html output
-		private $subsys = array();	// associative array to enable various outputs
-		private $start_stats = null;
-		private $begin_marks = array();
+		private $log_prefix   = '';
+		private $buffer       = array();	// Accumulate text strings going to html output.
+		private $subsys       = array();	// Associative array to enable various outputs.
+		private $start_stats  = null;
+		private $begin_marks  = array();
 
 		public $enabled = false;	// true if at least one subsys is true
 
-		public function __construct( &$plugin, $subsys = array( 'html' => false, 'wp' => false ) ) {
+		public function __construct( &$plugin, $subsys = array( 'html' => false, 'log' => false ) ) {
 
 			$this->p =& $plugin;
 
 			$this->start_stats = array(
 				'time' => microtime( true ),
-				'mem' => memory_get_usage( true ),
+				'mem'  => memory_get_usage(),
 			);
 
-			$this->display_name = $this->p->cf['lca'];
-			$this->log_prefix = strtoupper( $this->display_name );
-			$this->subsys = $subsys;
+			$this->display_name = $this->p->lca;
+			$this->log_prefix   = strtoupper( $this->display_name );
+			$this->subsys       = $subsys;
+
 			$this->is_enabled();	// sets $this->enabled value
 
-			if ( $this->enabled ) {
-				$this->mark();
-			}
-
-			if ( ! empty( $subsys['wp'] ) ) {
+			if ( ! empty( $subsys['log'] ) ) {
 				if ( ! isset( $_SESSION ) ) {
 					session_start();
 				}
+			}
+
+			if ( $this->enabled ) {
+				$this->mark();
 			}
 		}
 
@@ -59,14 +60,18 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 		}
 
 		public function enable( $name, $state = true ) {
+
 			if ( ! empty( $name ) ) {
+
 				$this->subsys[$name] = $state;
-				if ( $name === 'wp' ) {
+
+				if ( $name === 'log' ) {
 					if ( ! isset( $_SESSION ) ) {
 						session_start();
 					}
 				}
 			}
+
 			$this->is_enabled();	// sets $this->enabled value
 		}
 
@@ -173,13 +178,15 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$log_msg .= $input;
 			}
 
-			if ( $this->subsys['html'] == true ) {
+			if ( $this->subsys['html'] ) {
 				$this->buffer[] = $log_msg;
 			}
 
-			if ( $this->subsys['wp'] == true ) {
-				$sid = session_id();
-				$connection_id = $sid ? $sid : $_SERVER['REMOTE_ADDR'];
+			if ( $this->subsys['log'] ) {
+
+				$session_id    = session_id();
+				$connection_id = $session_id ? $session_id : $_SERVER['REMOTE_ADDR'];
+
 				error_log( $connection_id . ' ' . $this->log_prefix . ' ' . $log_msg );
 			}
 		}
@@ -192,7 +199,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			$cur_stats = array(
 				'time' => microtime( true ),
-				'mem' => memory_get_usage( true ),
+				'mem'  => memory_get_usage(),
 			);
 
 			if ( null === $this->start_stats ) {
@@ -200,20 +207,28 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( $id !== false ) {
+
 				$id_text = '- - - - - - ' . $id;
+
 				if ( isset( $this->begin_marks[$id] ) ) {
+
 					$id_text .= ' end + ('.
 						$this->get_time_text( $cur_stats['time'] - $this->begin_marks[$id]['time'] ) . ' / ' . 
 						$this->get_mem_text( $cur_stats['mem'] - $this->begin_marks[$id]['mem'] ) . ')';
+
 					unset( $this->begin_marks[$id] );
+
 				} else {
+
 					$id_text .= ' begin';
+
 					$this->begin_marks[$id] = array(
 						'time' => $cur_stats['time'],
 						'mem' => $cur_stats['mem'],
 					);
 				}
 			}
+
 			$this->log( 'mark ('.
 				$this->get_time_text( $cur_stats['time'] - $this->start_stats['time'] ) . ' / ' . 
 				$this->get_mem_text( $cur_stats['mem'] - $this->start_stats['mem'] ) . ')' . 
