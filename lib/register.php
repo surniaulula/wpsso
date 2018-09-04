@@ -144,7 +144,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				foreach ( $user_ids as $user_id => $display_name ) {
 
-					$user_obj[] = get_user_by( 'ID', $user_id );
+					$user_obj = get_user_by( 'ID', $user_id );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'adding person role for user ID ' . $user_obj->ID );
