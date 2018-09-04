@@ -115,6 +115,10 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			if ( ! SucomUtil::get_const( 'WPSSO_REG_CLEAR_CACHE_DISABLE' ) ) {
 
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'clearing all cache (external and refresh are false)' );
+				}
+
 				$clear_external   = false;	// Caching plugins should clear their own cache on plugin activation.
 				$clear_short_urls = null;	// Use the default value from the plugin options.
 				$refresh_cache    = false;	// Do not auto-refresh cache objects on activation.
@@ -125,14 +129,22 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'saving times for wpsso ' . $plugin_version );
+				$this->p->debug->log( 'saving all times for wpsso v' . $plugin_version );
 			}
 
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
 
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
 
-				foreach ( SucomUtil::get_users_by_roles( self::$wp_persons ) as $user_obj  ) {
+				$user_ids = SucomUtil::get_user_ids_by_roles( self::$wp_persons );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'adding person role to ' . count( $user_ids ) . ' users' );
+				}
+
+				foreach ( $user_ids as $user_id => $display_name ) {
+
+					$user_obj[] = get_user_by( 'ID', $user_id );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'adding person role for user ID ' . $user_obj->ID );

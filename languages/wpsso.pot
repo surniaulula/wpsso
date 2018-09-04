@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.12.0-dev.7\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.12.0-dev.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2783,7 +2783,7 @@ msgstr ""
 
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:164 lib/loader.php:190 lib/post.php:259 lib/register.php:268
+#: lib/loader.php:164 lib/loader.php:190 lib/post.php:259 lib/register.php:280
 #: lib/term.php:237 lib/user.php:201 lib/util.php:364 lib/util.php:2645
 msgid "%s warning:"
 msgstr ""
@@ -4885,7 +4885,7 @@ msgid ""
 "refresh of all Pro update information."
 msgstr ""
 
-#: lib/messages.php:2416 lib/register.php:278
+#: lib/messages.php:2416 lib/register.php:290
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -5627,11 +5627,11 @@ msgid "Invalid user ID."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
-#: lib/register.php:271 lib/register.php:280
+#: lib/register.php:283 lib/register.php:292
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:282
+#: lib/register.php:294
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 

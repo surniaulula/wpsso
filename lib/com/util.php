@@ -3314,27 +3314,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array( $lib_id, $stub, $action );
 		}
 
-		public static function get_users_by_roles( array $roles = array( 'administrator' ), $blog_id = false ) {
+		public static function get_user_ids_by_roles( array $roles = array( 'administrator' ), $blog_id = false ) {
 
 			if ( empty( $blog_id ) ) {
 				$blog_id = get_current_blog_id(); // Since WP 3.1.
 			}
 
-			$ids = array();
-			$users = array();
+			$user_ids  = array();
+			$user_objs = array();
 
 		 	/**
 			 * Avoid using the 'role__in' argument because it's only available since WP v4.4.
 			 */
 			foreach ( $roles as $role ) {
 				foreach ( get_users( array(
-					'role' => $role,
+					'role'   => $role,
 					'fields' => array(
 						'ID',
 						'display_name'
 					)
-				) ) as $user ) {
-					$ids[$user->ID] = $user->display_name;
+				) ) as $user_obj ) {
+					$user_ids[ $user_obj->ID ] = $user_obj->display_name;
 				}
 			}
 
@@ -3342,49 +3342,58 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * Use asort() or uasort() to maintain the ID => display_name association.
 			 */
 			if ( defined( 'SORT_STRING' ) ) {
-				asort( $ids, SORT_STRING );
+				asort( $user_ids, SORT_STRING );
 			} else {
-				uasort( $ids, 'strcasecmp' ); // Case-insensitive string comparison.
+				uasort( $user_ids, 'strcasecmp' ); // Case-insensitive string comparison.
 			}
 
-			foreach ( $ids as $user_id => $display_name ) {
-				$users[] = get_user_by( 'ID', $user_id );
-			}
-
-			return $users;
+			return $user_ids;
 		}
 
-		public static function get_user_select( array $roles = array( 'administrator' ), $blog_id = false, $add_none = true ) {
+		public static function get_user_objects_by_roles( array $roles = array( 'administrator' ), $blog_id = false ) {
 
-			$select = array();
-			$users = self::get_users_by_roles( $roles, $blog_id );
+			$user_ids  = get_user_ids_by_roles( $roles, $blog_id );
+			$user_objs = array();
 
-			foreach ( $users as $user ) {
-				$select[$user->ID] = $user->display_name;
+			foreach ( $user_ids as $user_id => $display_name ) {
+				$user_objs[] = get_user_by( 'ID', $user_id );
 			}
+
+			return $user_objs;
+		}
+
+		public static function get_user_select_by_roles( array $roles = array( 'administrator' ), $blog_id = false, $add_none = true ) {
+
+			$user_select = self::get_user_ids_by_roles( $roles, $blog_id );
 
 			if ( $add_none ) {
-				return array( 'none' => 'none' ) + $select;
-			} else {
-				return $select;
+				$user_select = array( 'none' => 'none' ) + $user_select;
 			}
+
+			return $user_select;
 		}
 
 		public static function count_diff( &$arr, $max = 0 ) {
+
 			$diff = 0;
+
 			if ( ! is_array( $arr ) ) {
 				return false;
 			}
+
 			if ( $max > 0 && $max >= count( $arr ) ) {
 				$diff = $max - count( $arr );
 			}
+
 			return $diff;
 		}
 
 		public static function get_alpha2_countries() {
+
 			if ( ! class_exists( 'SucomCountryCodes' ) ) {
 				require_once dirname( __FILE__ ) . '/country-codes.php';
 			}
+
 			return SucomCountryCodes::get( 'alpha2' );
 		}
 
@@ -3412,41 +3421,59 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_hours_range( $start_secs = 0, $end_secs = 86400, $step_secs = 3600, $time_format = 'g:i a' ) {
+
 			$times = array();
+
 		        foreach ( range( $start_secs, $end_secs, $step_secs ) as $ts ) {
+
 				$hour_mins = gmdate( 'H:i', $ts );
+
 				if ( ! empty( $time_format ) ) {
 					$times[$hour_mins] = gmdate( $time_format, $ts );
 				} else {
 					$times[$hour_mins] = $hour_mins;
 				}
 			}
+
 			return $times;
 		}
 
 		public static function get_column_rows( array $table_cells, $row_cols = 2 ) {
+
 			sort( $table_cells );
+
 			$table_rows = array();
 			$per_col = ceil( count( $table_cells ) / $row_cols );
+
 			foreach ( $table_cells as $num => $cell ) {
+
 				if ( empty( $table_rows[ $num % $per_col ] ) ) { // Initialize the array element.
 					$table_rows[ $num % $per_col ] = '';
 				}
+
 				$table_rows[ $num % $per_col ] .= $cell; // Create the html for each row.
 			}
+
 			return $table_rows;
 		}
 
 		public static function get_theme_slug_version( $stylesheet = null, $theme_root = null ) {
+
 			$theme = wp_get_theme( $stylesheet, $theme_root );
+
 			return $theme->get_template() . '-' . $theme->Version;
 		}
 
 		public static function get_image_sizes() {
+
 			global $_wp_additional_image_sizes;
+
 			$sizes = array();
-			foreach ( get_intermediate_image_sizes() as $size_name )
+
+			foreach ( get_intermediate_image_sizes() as $size_name ) {
 				$sizes[$size_name] = self::get_size_info( $size_name );
+			}
+
 			return $sizes;
 		}
 

@@ -238,7 +238,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$roles = array( 'person' );
 
-			$persons = SucomUtil::get_user_select( $roles, false, $add_none );
+			$persons = SucomUtil::get_user_select_by_roles( $roles, false, $add_none );
 
 			return $persons;
 		}

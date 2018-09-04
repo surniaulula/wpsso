@@ -3307,7 +3307,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ) . '</p>' .
 			'</td>';
 
-			$site_owners = SucomUtil::get_user_select( array( 'administrator', 'editor' ) );
+			$site_owners = SucomUtil::get_user_select_by_roles( array( 'administrator', 'editor' ) );
 
 			$table_rows['schema_home_person_id'] = $this->form->get_th_html( _x( 'User for Person Social Profile',
 				'option label', 'wpsso' ), '', 'schema_home_person_id' ).
