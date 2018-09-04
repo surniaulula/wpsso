@@ -1509,15 +1509,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'opt_key' => 'plugin_json_data_cache_exp',
 						'filter'  => 'wpsso_cache_expire_schema_json_data',
 					),
-					'wpsso_t_' => array(
-						'label'   => 'Schema Types',
-						'opt_key' => 'plugin_types_cache_exp',
-						'filter'  => 'wpsso_cache_expire_schema_types',
+					'wpsso_p_' => array(	// Protect transient from being cleared.
 					),
 					'wpsso_s_' => array(
 						'label'   => 'Shortened URLs',
 						'opt_key' => 'plugin_short_url_cache_exp',
 						'filter'  => 'wpsso_cache_expire_short_url',
+					),
+					'wpsso_t_' => array(
+						'label'   => 'Schema Types',
+						'opt_key' => 'plugin_types_cache_exp',
+						'filter'  => 'wpsso_cache_expire_schema_types',
 					),
 					'wpsso_' => array(
 						'label' => 'All Transients',

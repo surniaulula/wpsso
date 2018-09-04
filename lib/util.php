@@ -76,7 +76,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );	// For REST API compatibility.
 
 			add_action( 'wp_scheduled_delete', array( $this, 'delete_expired_db_transients' ) );
-			add_action( $this->p->lca . '_refresh_all_cache', array( $this, 'refresh_all_cache' ) );
+
+			add_action( $this->p->lca . '_add_person_role', array( $this, 'add_person_role' ) );		// For single schedule task.
+			add_action( $this->p->lca . '_refresh_all_cache', array( $this, 'refresh_all_cache' ) );	// For single schedule task.
 
 			/**
 			 * The "current_screen" action hook is not called when editing / saving an image.
@@ -1005,6 +1007,52 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		public function add_person_role() {
+
+			/**
+			 * A transient is set and checked to limit the runtime and allow this process
+			 * to be terminated early (by removing the transient object).
+			 */
+			$cache_md5_pre  = $this->p->lca . '_p_';	// Protect transient from being cleared.
+			$cache_exp_secs = HOUR_IN_SECONDS;		// Run for max of 1 hour.
+			$cache_salt     = __METHOD__;
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
+			$cache_status   = 'running';
+
+			/**
+			 * Prevent concurrent execution.
+			 */
+			if ( get_transient( $cache_id ) !== false ) {			// Another process is already running.
+
+				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
+
+				usleep( 5 * 1000000 );					// Sleep for 5 second.
+
+				if ( get_transient( $cache_id ) !== false ) {		// Stop here if the other process is still running.
+					return;
+				}
+			}
+
+			set_transient( $cache_id, $cache_status, $cache_exp_secs );
+
+			$wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // Default wp roles.
+
+			$user_ids = SucomUtil::get_user_ids_by_roles( $wp_persons );
+
+			foreach ( $user_ids as $user_id => $display_name ) {
+
+				if ( get_transient( $cache_id ) !== $cache_status ) {
+					break;	// Stop here and delete the transient.
+				}
+
+				$user_obj = get_user_by( 'ID', $user_id );
+
+				$user_obj->add_role( 'person' );
+			}
+
+			delete_transient( $cache_id );
+		}
+
 		public function refresh_all_cache() {
 
 			$mods = array();
@@ -1013,18 +1061,27 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * A transient is set and checked to limit the runtime and allow this process
 			 * to be terminated early (by removing the transient object).
 			 */
-			$cache_md5_pre  = $this->p->lca . '_';
-			$cache_exp_secs = HOUR_IN_SECONDS;	// Run for max of 1 hour.
-			$cache_salt     = __CLASS__ . '::refresh_all_cache_run';
+			$cache_md5_pre  = $this->p->lca . '_p_';	// Protect transient from being cleared.
+			$cache_exp_secs = HOUR_IN_SECONDS;		// Run for max of 1 hour.
+			$cache_salt     = __METHOD__;
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_value    = 1;
+			$cache_status   = 'running';
 
 			/**
 			 * Prevent concurrent execution.
 			 */
-			if ( get_transient( $cache_id ) === $cache_value ) {
-				return;
+			if ( get_transient( $cache_id ) !== false ) {			// Another process is already running.
+
+				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
+
+				usleep( 5 * 1000000 );					// Sleep for 5 second.
+
+				if ( get_transient( $cache_id ) !== false ) {		// Stop here if the other process is still running.
+					return;
+				}
 			}
+
+			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
 			foreach ( WpssoPost::get_public_post_ids() as $post_id ) {
 				$mods[] = $this->p->m['util']['post']->get_mod( $post_id );
@@ -1042,16 +1099,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$image_sizes  = array();
 			$filter_sizes = true;
 
-			set_transient( $cache_id, $cache_value, $cache_exp_secs );
-
 			foreach ( $mods as $mod ) {
 
-				/**
-				 * Make sure the transient is still good. Stop if the transient has expired
-				 * or been removed.
-				 */
-				if ( get_transient( $cache_id ) !== $cache_value ) {
-					break;	// Stop here.
+				if ( get_transient( $cache_id ) !== $cache_status ) {
+					break;	// Stop here and delete the transient.
 				}
 
 				$this->add_plugin_image_sizes( $wp_obj, $image_sizes, $mod, $filter_sizes );
@@ -1059,9 +1110,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 
-				/**
-				 * Delay execution in microseconds. A microsecond is one millionth of a second.
-				 */
 				usleep( WPSSO_REFRESH_CACHE_SLEEP_TIME * 1000000 );	// Sleep for 0.50 seconds by default.
 			}
 
@@ -1127,10 +1175,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $refresh_cache ) {
 
-				/**
-				 * Will run in the next minute.
-				 */
-				wp_schedule_single_event( time(), $this->p->lca . '_refresh_all_cache' );
+				wp_schedule_single_event( time(), $this->p->lca . '_refresh_all_cache' );	// Run in the next minute.
 
 				$cleared_msg .= ' ' . sprintf( __( 'A background task will begin shortly to re-create the %s post, term, and user transient cache objects.',
 					'wpsso' ), $short );
@@ -1150,13 +1195,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			foreach( $transient_keys as $cache_id ) {
 
 				/**
-				 * Skip / preserve shortened urls by default.
+				 * Preserve transients that begin with "wpsso_p_".
 				 */
-				if ( ! $clear_short_urls ) {
+				if ( strpos( $cache_id, $this->p->lca . '_p_' ) === 0 ) {
+					continue;
+				}
 
-					$cache_md5_pre = $this->p->lca . '_s_';
-
-					if ( strpos( $cache_id, $cache_md5_pre ) === 0 ) {
+				/**
+				 * Maybe delete shortened urls.
+				 */
+				if ( ! $clear_short_urls ) {	// False by default.
+					if ( strpos( $cache_id, $this->p->lca . '_s_' ) === 0 ) {
 						continue;
 					}
 				}

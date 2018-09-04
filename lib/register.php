@@ -15,8 +15,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		private $p;
 
-		private static $wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // Default wp roles.
-
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;
@@ -134,24 +132,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
 
+			wp_clear_scheduled_hook( $this->p->lca . '_add_person_role' );
+
 			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
 
-				$user_ids = SucomUtil::get_user_ids_by_roles( self::$wp_persons );
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'adding person role to ' . count( $user_ids ) . ' users' );
-				}
-
-				foreach ( $user_ids as $user_id => $display_name ) {
-
-					$user_obj = get_user_by( 'ID', $user_id );
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'adding person role for user ID ' . $user_obj->ID );
-					}
-
-					$user_obj->add_role( 'person' );
-				}
+				wp_schedule_single_event( time(), $this->p->lca . '_add_person_role' );	// Run in the next minute.
 			}
 
 			if ( $this->p->debug->enabled ) {
