@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					$this->p->debug->log( 'clearing all cache (external and refresh are false)' );
 				}
 
-				$clear_external    = false;	// Caching plugins should clear their own cache on plugin activation.
+				$clear_external    = false;	// Caching plugins should clear their cache on activation.
 				$clear_short_urls  = null;	// Use the default value from the plugin options.
 				$refresh_all_cache = false;	// Do not auto-refresh cache objects on activation.
 
@@ -146,17 +146,17 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private function deactivate_plugin() {
 
 			if ( ! SucomUtil::get_const( 'WPSSO_REG_CLEAR_CACHE_DISABLE' ) ) {
-				$this->p->util->clear_all_cache( false, true, false );
+
+				$clear_external    = false;	// Caching plugins should clear their cache on deactivation.
+				$clear_short_urls  = true;	// Clear the shortened URL transient cache.
+				$refresh_all_cache = false;	// Do not auto-refresh cache objects on deactivation.
+
+				$this->p->util->clear_all_cache( $clear_external, $clear_short_urls, $refresh_all_cache );
 			}
 
-			/**
-			 * Delete all stored notices for all users.
-			 */
-			$this->p->notice->trunc_all();
+			$this->p->notice->trunc_all();		// Delete all stored notices for all users.
 
-			if ( is_object( $this->p->admin ) ) {
-				$this->p->admin->reset_check_head_count();
-			}
+			delete_option( WPSSO_POST_CHECK_NAME );	// Remove the post duplicate check counter.
 		}
 
 		/**
