@@ -81,7 +81,9 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			}
 	
 			if ( preg_match( '|Tags: *(.*)|i', $file_contents, $_tags ) ) {
+
 				$tags = preg_split( '|,[\s]*?|', trim( $_tags[1] ) );
+
 				foreach ( array_keys($tags) as $t ) {
 					$tags[$t] = $this->sanitize_text( $tags[$t] );
 				}
@@ -90,13 +92,19 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			}
 	
 			$contributors = array();
+
 			if ( preg_match( '|Contributors: *(.*)|i', $file_contents, $_contributors ) ) {
+
 				$all_contributors = preg_split( '|,[\s]*|', trim( $_contributors[1] ) );
+
 				foreach ( array_keys( $all_contributors ) as $c ) {
+
 					$c_sanitized = trim( $this->user_sanitize( $all_contributors[$c] ) );
+
 					if ( strlen( $c_sanitized ) > 0 ) {
 						$contributors[$c] = $c_sanitized;
 					}
+
 					unset( $c_sanitized );
 				}
 			}

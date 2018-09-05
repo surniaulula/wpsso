@@ -1037,9 +1037,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // Default wp roles.
 
-			$user_ids = SucomUtil::get_user_ids_by_roles( $wp_persons );
+			$user_names = SucomUtil::get_user_names_by_roles( $wp_persons );
 
-			foreach ( $user_ids as $user_id => $display_name ) {
+			foreach ( $user_names as $user_id => $display_name ) {
 
 				if ( get_transient( $cache_id ) !== $cache_status ) {
 					break;	// Stop here and delete the transient.
@@ -1091,7 +1091,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mods[] = $this->p->m['util']['term']->get_mod( $term_id );
 			}
 
-			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
+			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {	// Returns an array of contributor user IDs by default.
 				$mods[] = $this->p->m['util']['user']->get_mod( $user_id );
 			}
 
@@ -1330,7 +1330,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
+			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {	// Returns an array of contributor user IDs by default.
 				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
 					delete_user_meta( $user_id, $meta_key );
 				}

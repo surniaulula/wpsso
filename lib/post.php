@@ -171,25 +171,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public static function get_public_post_ids() {
 
-			$post_ids = array();
-
-			$post_posts = get_posts( array(
+			$post_args = array(
 				'has_password'   => false,
 				'orderby'        => 'date',
 				'order'          => 'DESC',
 				'paged'          => false,
 				'post_status'    => 'publish',
-				'post_type'      => 'any',		// Post, page, or custom post type.
+				'post_type'      => 'any',	// Return post, page, or any custom post type.
 				'posts_per_page' => -1,
-			) );
+				'fields'         => 'ids',	// 'ids' (returns an array of ids).
+			);
 
-			foreach ( $post_posts as $post_obj ) {
-				if ( ! empty( $post_obj->ID ) ) {	// Just in case.
-					$post_ids[] = $post_obj->ID;
-				}
-			}
-
-			return $post_ids;
+			return get_posts( $post_args );
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false, array $get_posts_args = array() ) {

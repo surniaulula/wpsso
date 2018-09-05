@@ -217,7 +217,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function trunc( $msg_type = '', $msg_text = '', $dismiss_key = false, $user_id = true ) {
 
 			if ( $user_id === 'all' ) {
-				$user_ids = $this->get_all_user_ids();
+				$user_ids = $this->get_all_user_ids();	// Returns an array of subscriber user IDs by default.
 			} elseif ( is_array( $user_id ) ) {
 				$user_ids = $user_id;
 			} elseif ( ! is_numeric( $user_id ) ) {
@@ -855,13 +855,25 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $msg_html;
 		}
 
-		private function get_all_user_ids() {
+		/**
+		 * Returns an array of subscriber user IDs by default.
+		 * Subscribers have only read privilege.
+		 */
+		private function get_all_user_ids( $role = 'subscriber' ) {
 
 			$user_ids = array();
+			$user_args = array(
+				'role'    => $role,
+				'orderby' => 'ID',
+				'order'   => 'ASC',	// Oldest user first.
+				'fields'  => array(	// Save memory and only return only specific fields.
+					'ID',
+				),
+			);
 
-			foreach ( get_users() as $user ) {
-				if ( ! empty( $user->ID ) ) {
-					$user_ids[] = $user->ID;
+			foreach ( get_users( $user_args ) as $user_obj ) {
+				if ( ! empty( $user_obj->ID ) ) {	// Just in case.
+					$user_ids[] = $user_obj->ID;
 				}
 			}
 
@@ -876,6 +888,26 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$user_notices =& $this->get_notice_cache( $user_id, $use_cache );
 
 			return $user_notices;
+		}
+
+		/**
+		 * Called by the WordPress 'shutdown' action.
+		 */
+		public function shutdown_notice_cache() {
+
+			$user_id = get_current_user_id();
+
+			if ( empty( $user_id ) ) {
+				return;
+			}
+
+			$user_notices =& $this->get_notice_cache( $user_id );
+
+			if ( empty( $this->notice_cache[$user_id] ) ) {
+				$this->delete_notice_transient( $user_id );
+			} else {
+				$this->set_notice_transient( $user_id, $this->notice_cache[$user_id] );
+			}
 		}
 
 		/**
@@ -908,26 +940,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			return $this->notice_cache[$user_id];
-		}
-
-		/**
-		 * Called by the WordPress 'shutdown' action.
-		 */
-		public function shutdown_notice_cache() {
-
-			$user_id = get_current_user_id();
-
-			if ( empty( $user_id ) ) {
-				return;
-			}
-
-			$user_notices =& $this->get_notice_cache( $user_id );
-
-			if ( empty( $this->notice_cache[$user_id] ) ) {
-				$this->delete_notice_transient( $user_id );
-			} else {
-				$this->set_notice_transient( $user_id, $this->notice_cache[$user_id] );
-			}
 		}
 
 		private function get_notice_transient( $user_id ) {

@@ -127,38 +127,51 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return apply_filters( $this->p->lca.'_get_term_mod', $mod, $mod_id, $tax_slug );
 		}
 
-		public static function get_public_term_ids( $tax_name = false ) {
+		public static function get_public_term_ids( $tax_name = null ) {
 
-			$term_args = array( 'fields' => 'ids' );
-			$term_oper = 'and';
-			$term_ids  = array();
+			global $wp_version;
 
-			foreach ( self::get_public_tax_names( $tax_name ) as $tax_name ) {
-				foreach ( get_terms( $tax_name, $term_args, $term_oper ) as $term_val ) {
-					$term_ids[] = $term_val;
+			$term_args = array(
+				'fields' => 'ids',	// 'ids' (returns an array of ids).
+			);
+
+			$tax_in_args = version_compare( $wp_version, '4.5.0', '>=' ) ? true : false;
+
+			$public_term_ids = array();
+
+			foreach ( self::get_public_tax_names( $tax_name ) as $term_tax_name ) {
+				
+				if ( $tax_in_args ) {	// Since WP v4.5.
+					$term_args[ 'taxonomy' ] = $term_tax_name;
+					$term_ids = get_terms( $term_args );
+				} else {
+					$term_ids = get_terms( $term_tax_name, $term_args );
+				}
+
+				foreach ( $term_ids as $term_id ) {
+					$public_term_ids[ $term_id ] = $term_id;
 				}
 			}
 
-			rsort( $term_ids );	// newest id first
+			rsort( $public_term_ids );	// Newest id first.
 
-			return $term_ids;
+			return $public_term_ids;
 		}
 
-		public static function get_public_tax_names( $tax_name = false ) {
+		public static function get_public_tax_names( $tax_name = null ) {
 
-			$obj_filter = array( 'public' => 1, 'show_ui' => 1 );
+			$tax_args = array(
+				'public'  => 1,
+				'show_ui' => 1,
+			);
 
-			if ( $tax_name !== false ) {
-				$tax_filter['name'] = $tax_name;
+			if ( is_string( $tax_name ) ) {
+				$tax_args[ 'name' ] = $tax_name;
 			}
 
-			$tax_names = array();
+			$tax_oper = 'and';
 
-			foreach ( get_taxonomies( $obj_filter, 'names' ) as $tax_name ) {
-				$tax_names[] = $tax_name;
-			}
-
-			return $tax_names;
+			return get_taxonomies( $tax_args, 'names', $tax_oper );
 		}
 
 		/**

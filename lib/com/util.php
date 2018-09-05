@@ -3318,7 +3318,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array( $lib_id, $stub, $action );
 		}
 
-		public static function role_exists( $role ) {
+		public static function wp_role_exists( $role ) {
+
 			if ( empty( $role ) ) {	// Just in case.
 				return false;
 			} elseif ( function_exists( 'wp_roles' ) ) {
@@ -3328,27 +3329,28 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function get_user_ids_by_roles( array $roles = array( 'administrator' ), $blog_id = false ) {
+		public static function get_user_names_by_roles( array $roles = array( 'administrator' ), $blog_id = false ) {
 
 			if ( empty( $blog_id ) ) {
 				$blog_id = get_current_blog_id(); // Since WP 3.1.
 			}
 
-			$user_ids  = array();
-			$user_objs = array();
+			$user_names = array();
 
-		 	/**
-			 * Avoid using the 'role__in' argument because it's only available since WP v4.4.
-			 */
 			foreach ( $roles as $role ) {
-				foreach ( get_users( array(
-					'role'   => $role,
-					'fields' => array(
+
+				$user_args  = array(
+					'role'    => $role,
+					'fields'  => array(	// Save memory and only return only specific fields.
 						'ID',
 						'display_name'
 					)
-				) ) as $user_obj ) {
-					$user_ids[ $user_obj->ID ] = $user_obj->display_name;
+				);
+
+				foreach ( get_users( $user_args ) as $user_obj ) {
+					if ( ! empty( $user_obj->ID ) ) {	// Just in case.
+						$user_names[ $user_obj->ID ] = $user_obj->display_name;
+					}
 				}
 			}
 
@@ -3356,29 +3358,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * Use asort() or uasort() to maintain the ID => display_name association.
 			 */
 			if ( defined( 'SORT_STRING' ) ) {
-				asort( $user_ids, SORT_STRING );
+				asort( $user_names, SORT_STRING );
 			} else {
-				uasort( $user_ids, 'strcasecmp' ); // Case-insensitive string comparison.
+				uasort( $user_names, 'strcasecmp' ); // Case-insensitive string comparison.
 			}
 
-			return $user_ids;
-		}
-
-		public static function get_user_objects_by_roles( array $roles = array( 'administrator' ), $blog_id = false ) {
-
-			$user_ids  = get_user_ids_by_roles( $roles, $blog_id );
-			$user_objs = array();
-
-			foreach ( $user_ids as $user_id => $display_name ) {
-				$user_objs[] = get_user_by( 'ID', $user_id );
-			}
-
-			return $user_objs;
+			return $user_names;
 		}
 
 		public static function get_user_select_by_roles( array $roles = array( 'administrator' ), $blog_id = false, $add_none = true ) {
 
-			$user_select = self::get_user_ids_by_roles( $roles, $blog_id );
+			$user_select = self::get_user_names_by_roles( $roles, $blog_id );
 
 			if ( $add_none ) {
 				$user_select = array( 'none' => 'none' ) + $user_select;

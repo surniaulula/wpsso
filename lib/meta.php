@@ -1493,11 +1493,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, array() );
 		}
 
-		public static function get_public_term_ids( $tax_name = false ) {
+		public static function get_public_term_ids( $tax_name = null ) {
 			return $this->must_be_extended( __METHOD__, array() );
 		}
 
-		public static function get_public_user_ids() {
+		/**
+		 * Returns an array of contributor user IDs by default.
+		 * Contributors can delete_posts, edit_posts, read.
+		 */
+		public static function get_public_user_ids( $role = 'contributor' ) {
 			return $this->must_be_extended( __METHOD__, array() );
 		}
 	}

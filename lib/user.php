@@ -18,14 +18,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 	class WpssoUser extends WpssoMeta {
 
 		protected static $cache_pref = array();
-		protected static $wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // default WP roles
 
 		public function __construct() {
 		}
 
 		protected function add_actions() {
 
-			if ( ! SucomUtil::role_exists( 'person' ) ) {
+			if ( ! SucomUtil::wp_role_exists( 'person' ) ) {
 				add_role( 'person', _x( 'Person', 'user role', 'wpsso' ), array() );
 			}
 
@@ -122,19 +121,30 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return apply_filters( $this->p->lca . '_get_user_mod', $mod, $mod_id );
 		}
 
-		public static function get_public_user_ids() {
+		/**
+		 * Returns an array of contributor user IDs by default.
+		 * Contributors can delete_posts, edit_posts, read.
+		 */
+		public static function get_public_user_ids( $role = 'contributor' ) {
 
-			$user_ids = array();
+			$user_args = array(
+				'role'    => $role,
+				'orderby' => 'ID',
+				'order'   => 'DESC',	// Newest user first.
+				'fields'  => array(	// Save memory and only return only specific fields.
+					'ID',
+				),
+			);
 
-			foreach ( get_users() as $user_obj ) {
+			$public_user_ids = array();
+
+			foreach ( get_users( $user_args ) as $user_obj ) {
 				if ( ! empty( $user_obj->ID ) ) {	// Just in case.
-					$user_ids[] = $user_obj->ID;
+					$public_user_ids[] = $user_obj->ID;
 				}
 			}
 
-			rsort( $user_ids );	// Newest id first.
-
-			return $user_ids;
+			return $public_user_ids;
 		}
 
 		public function get_posts( array $mod, $posts_per_page = false, $paged = false, array $get_posts_args = array() ) {
@@ -217,6 +227,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_obj = get_user_by( 'ID', $user_id );
 
 			$user_obj->add_role( 'person' );
+		}
+
+		public function remove_person_role( $user_id ) {
+
+			$user_obj = get_user_by( 'ID', $user_id );
+
+			$user_obj->remove_role( 'person' );
 		}
 
 		public function add_person_view( $user_views ) {
@@ -722,12 +739,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return $ret;
 			}
 
-			if ( false === $crawler_name ) {
-				$crawler_name = SucomUtil::get_crawler_name();
-			}
-
 			if ( ! is_array( $user_ids ) ) {
 				$user_ids = array( $user_ids );
+			}
+
+			if ( false === $crawler_name ) {
+				$crawler_name = SucomUtil::get_crawler_name();
 			}
 
 			foreach ( $user_ids as $user_id ) {
@@ -992,15 +1009,26 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( false === $user_id ) {
 
-					foreach ( get_users( array( 'meta_key' => $meta_key ) ) as $user ) {
-						delete_user_option( $user->ID, $meta_key, false );	// $global = false
-						delete_user_option( $user->ID, $meta_key, true );	// $global = true
+					$user_args = array(
+						'role'     => 'contributor',	// Contributors can delete_posts, edit_posts, read.
+						'orderby'  => 'ID',
+						'order'    => 'DESC',		// Newest user first.
+						'meta_key' => $meta_key,	// The meta_key in the wp_usermeta table.
+						'fields'   => array(		// Save memory and only return only specific fields.
+							'ID',
+						),
+					);
+
+					foreach ( get_users( $user_args ) as $user_obj ) {
+						if ( ! empty( $user_obj->ID ) ) {	// Just in case.
+							delete_user_option( $user_obj->ID, $meta_key, false );	// $global is false.
+							delete_user_option( $user_obj->ID, $meta_key, true );	// $global is true.
+						}
 					}
 
 				} elseif ( is_numeric( $user_id ) ) {
-
-					delete_user_option( $user_id, $meta_key, false );	// $global = false
-					delete_user_option( $user_id, $meta_key, true );	// $global = true
+					delete_user_option( $user_id, $meta_key, false );	// $global is false.
+					delete_user_option( $user_id, $meta_key, true );	// $global is true.
 				}
 			}
 		}

@@ -90,7 +90,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				$blog_ids = $wpdb->get_col( $db_query );
 
 				foreach ( $blog_ids as $blog_id ) {
+
 					switch_to_blog( $blog_id );
+
 					call_user_func_array( $method, array( $args ) );
 				}
 
@@ -160,7 +162,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		/**
-		 * uninstall.php defines constants before calling network_uninstall().
+		 * uninstall.php defines constants before calling network_uninstall(),
+		 * which calls do_multisite(), and then calls uninstall_plugin().
 		 */
 		private static function uninstall_plugin() {
 
@@ -177,29 +180,25 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				 */
 				delete_post_meta_by_key( WPSSO_META_NAME );	// Since wp v2.3.
 
-				foreach ( get_users() as $user_obj ) {
+				foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
 
-					if ( ! empty( $user_obj->ID ) ) {	// Just in case.
-
-						delete_user_option( $user_obj->ID, WPSSO_DISMISS_NAME, false );	// $global is false.
-						delete_user_option( $user_obj->ID, WPSSO_DISMISS_NAME, true );	// $global is true.
+					delete_user_option( $user_id, WPSSO_DISMISS_NAME, false );	// $global is false.
+					delete_user_option( $user_id, WPSSO_DISMISS_NAME, true );	// $global is true.
 	
-						delete_user_meta( $user_obj->ID, WPSSO_META_NAME );
-						delete_user_meta( $user_obj->ID, WPSSO_PREF_NAME );
+					delete_user_meta( $user_id, WPSSO_META_NAME );
+					delete_user_meta( $user_id, WPSSO_PREF_NAME );
 	
-						WpssoUser::delete_metabox_prefs( $user_obj->ID );
+					WpssoUser::delete_metabox_prefs( $user_id );
 
-						$user_obj->remove_role( 'person' );
-					}
+					$user_obj = get_user_by( 'ID', $user_id );
+
+					$user_obj->remove_role( 'person' );
 				}
 
 				remove_role( 'person' );
 
 				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
-
-					if ( ! empty( $term_id ) ) {	// Just in case.
-						WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
-					}
+					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
 				}
 			}
 
