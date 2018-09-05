@@ -3329,6 +3329,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		/**
+		 * Please remember that SOME SITES MAY HAVE HUNDREDS OF THOUSANDS OF SUBSCRIBERS.
+		 * When using the result of this method, keep in mind memory usage and HTTP timeouts.
+		 */
 		public static function get_all_user_ids( $blog_id = null ) {
 
 			if ( empty( $blog_id ) ) {
@@ -3355,6 +3359,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $user_ids;
 		}
 
+		/**
+		 * See also WpssoUser::get_public_user_ids().
+		 */
 		public static function get_writer_user_ids( $blog_id = null ) {
 
 			$roles = array(
