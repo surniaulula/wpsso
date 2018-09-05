@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.12.0-dev.12',	// Plugin version.
-					'opt_version' => '600',		// Increment when changing default option values.
+					'version'     => '4.12.0-dev.13',	// Plugin version.
+					'opt_version' => '601',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -1177,10 +1177,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_short_url_cache_exp' => 7776000,		// Get Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_topics_cache_exp'    => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
-					'plugin_clear_on_save'       => 0,			// Clear All Caches on Save Settings.
-					'plugin_clear_all_refresh'   => 0,			// Auto-Refresh Cache After Clear All.
-					'plugin_clear_short_urls'    => 0,			// Clear Short URLs on Clear All Caches.
+					'plugin_clear_on_activate'   => 1,			// Clear Cache on Activate / Deactivate.
+					'plugin_clear_on_save'       => 0,			// Clear Cache on Save Settings.
 					'plugin_clear_for_comment'   => 0,			// Clear Post Cache for New Comment.
+					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
+					'plugin_clear_all_refresh'   => 0,			// Auto-Refresh Cache After Clearing.
 					/**
 					 * Advanced settings - Service APIs tab.
 					 */
@@ -1273,51 +1274,53 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_head_attr_filter_name:use' => 'default',
 					'plugin_head_attr_filter_prio'     => 100,
 					'plugin_head_attr_filter_prio:use' => 'default',
-					'plugin_honor_force_ssl'           => 1,		// Honor the FORCE_SSL Constant
+					'plugin_honor_force_ssl'           => 1,		// Honor the FORCE_SSL Constant.
 					'plugin_honor_force_ssl:use'       => 'default',
-					'plugin_new_user_is_person'        => 0,		// Add Person Role for New Users
+					'plugin_new_user_is_person'        => 0,		// Add Person Role for New Users.
 					'plugin_new_user_is_person:use'    => 'default',
-					'plugin_filter_lang'               => 1,		// Use WP Locale for Language
+					'plugin_filter_lang'               => 1,		// Use WP Locale for Language.
 					'plugin_filter_lang:use'           => 'default',
-					'plugin_page_excerpt'              => 0,		// Enable WP Excerpt for Pages
+					'plugin_page_excerpt'              => 0,		// Enable WP Excerpt for Pages.
 					'plugin_page_excerpt:use'          => 'default',
-					'plugin_page_tags'                 => 0,		// Enable WP Tags for Pages
+					'plugin_page_tags'                 => 0,		// Enable WP Tags for Pages.
 					'plugin_page_tags:use'             => 'default',
-					'plugin_check_head'                => 1,		// Check for Duplicate Meta Tags
+					'plugin_check_head'                => 1,		// Check for Duplicate Meta Tags.
 					'plugin_check_head:use'            => 'default',
-					'plugin_create_wp_sizes'           => 1,		// Recreate Missing WP Media Sizes
+					'plugin_create_wp_sizes'           => 1,		// Recreate Missing WP Media Sizes.
 					'plugin_create_wp_sizes:use'       => 'default',
-					'plugin_check_img_dims'            => 0,		// Enforce Image Dimensions Check
+					'plugin_check_img_dims'            => 0,		// Enforce Image Dimensions Check.
 					'plugin_check_img_dims:use'        => 'default',
-					'plugin_upscale_images'            => 0,		// Allow Upscale of Smaller Images
+					'plugin_upscale_images'            => 0,		// Allow Upscale of Smaller Images.
 					'plugin_upscale_images:use'        => 'default',
-					'plugin_upscale_img_max'           => 33,		// Maximum Image Upscale Percent
+					'plugin_upscale_img_max'           => 33,		// Maximum Image Upscale Percent.
 					'plugin_upscale_img_max:use'       => 'default',
 					/**
 					 * Advanced settings - Cache Settings tab.
 					 */
-					'plugin_head_cache_exp'          => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week)
+					'plugin_head_cache_exp'          => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
 					'plugin_head_cache_exp:use'      => 'default',
-					'plugin_content_cache_exp'       => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour)
+					'plugin_content_cache_exp'       => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour).
 					'plugin_content_cache_exp:use'   => 'default',
-					'plugin_json_data_cache_exp'     => 1209600,		// Schema JSON Data Cache Expiry (2 weeks)
+					'plugin_json_data_cache_exp'     => 1209600,		// Schema JSON Data Cache Expiry (2 weeks).
 					'plugin_json_data_cache_exp:use' => 'default',
-					'plugin_imgsize_cache_exp'       => DAY_IN_SECONDS,	// Get Image URL Info Cache Expiry (1 day)
+					'plugin_imgsize_cache_exp'       => DAY_IN_SECONDS,	// Get Image URL Info Cache Expiry (1 day).
 					'plugin_imgsize_cache_exp:use'   => 'default',
-					'plugin_short_url_cache_exp'     => 7776000,		// Get Shortened URL Cache Expiry (90 days / 3 months)
+					'plugin_short_url_cache_exp'     => 7776000,		// Get Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_short_url_cache_exp:use' => 'default',
-					'plugin_topics_cache_exp'        => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month)
+					'plugin_topics_cache_exp'        => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
 					'plugin_topics_cache_exp:use'    => 'default',
-					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month)
+					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
 					'plugin_types_cache_exp:use'     => 'default',
-					'plugin_clear_on_save'           => 0,			// Clear All Caches on Save Settings
+					'plugin_clear_on_activate'       => 1,			// Clear Cache on Activate / Deactivate.
+					'plugin_clear_on_activate:use'   => 'default',
+					'plugin_clear_on_save'           => 0,			// Clear Cache on Save Settings.
 					'plugin_clear_on_save:use'       => 'default',
-					'plugin_clear_all_refresh'       => 0,			// Auto-Refresh Cache After Clear All
-					'plugin_clear_all_refresh:use'   => 'default',
-					'plugin_clear_short_urls'        => 0,			// Clear Short URLs on Clear All Caches
+					'plugin_clear_short_urls'        => 0,			// Refresh Short URLs on Clear Cache.
 					'plugin_clear_short_urls:use'    => 'default',
-					'plugin_clear_for_comment'       => 0,			// Clear Post Cache for New Comment
+					'plugin_clear_for_comment'       => 0,			// Clear Post Cache for New Comment.
 					'plugin_clear_for_comment:use'   => 'default',
+					'plugin_clear_all_refresh'       => 0,			// Auto-Refresh Cache After Clearing.
+					'plugin_clear_all_refresh:use'   => 'default',
 				),
 				/**
 				 * Contact method options prefix.

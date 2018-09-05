@@ -77,6 +77,5 @@ WPSSO_META_GENERATOR_DISABLE		= (not defined)	// Please note that generator meta
 WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE		= (not defined)	// Define as true to disable WPSSO's SEO related meta tags and features.
 WPSSO_PRODUCT_OBJ_CHECK_DISABLE		= (not defined)	// Disable check of global $product variable (false by default).
 WPSSO_PRODUCT_PRICE_INCLUDE_VAT		= (not defined)	// False by default.
-WPSSO_REG_CLEAR_CACHE_DISABLE		= (not defined)	// Disable cache clearing on activate and deactivate.
 WPSSO_VARY_USER_AGENT_DISABLE		= (not defined)	// Disable mobile browser detection and Pinterest-specific meta tag values.
 

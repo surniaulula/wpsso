@@ -1228,19 +1228,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_clear_on_save':	// Clear All Caches on Save Settings.
+						case 'tooltip-plugin_clear_on_activate':	// Clear Cache on Activate / Deactivate.
 
-							$text = sprintf( __( 'Automatically clear all known plugin cache(s) when saving the %s settings (default is checked).', 'wpsso' ), $info['short'] );
-
-							break;
-
-						case 'tooltip-plugin_clear_all_refresh':	// Auto-Refresh Cache After Clear All.
-
-							$text = sprintf( __( 'After clearing all %1$s cache objects, %1$s can automatically re-create the post, term, and user cache objects from a background task (does not affect page load time).', 'wpsso' ), $info['short'] );
+							$text = sprintf( __( 'Automatically clear cache(s) when the %s plugin is activated or deactivated.', 'wpsso' ), $info['short'] );
 
 							break;
 
-						case 'tooltip-plugin_clear_short_urls':
+						case 'tooltip-plugin_clear_on_save':		// Clear Cache on Save Settings.
+
+							$text = sprintf( __( 'Automatically clear cache(s) when saving the %s settings.', 'wpsso' ), $info['short'] );
+
+							break;
+
+						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment.
+
+							$text = __( 'Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_clear_short_urls':		// Refresh Short URLs on Clear Cache
 
 							$cache_exp_secs = (int) apply_filters( $this->p->lca . '_cache_expire_short_url',
 								$this->p->options['plugin_short_url_cache_exp'] );
@@ -1254,9 +1260,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment.
+						case 'tooltip-plugin_clear_all_refresh':	// Auto-Refresh Cache After Clearing.
 
-							$text = __( 'Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed.', 'wpsso' );
+							$text = sprintf( __( 'After clearing all %1$s cache objects, %1$s can automatically re-create the post, term, and user cache objects from a background task (does not affect page load time).', 'wpsso' ), $info['short'] );
 
 							break;
 

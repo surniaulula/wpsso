@@ -814,7 +814,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->util->clear_all_cache( true, null, null, $dismiss_key );
 
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-					_x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ) );
+					_x( 'Clear Cache on Save Settings', 'option label', 'wpsso' ) );
 
 				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
 					sprintf( __( 'Note that all caches have also been cleared (the %s option is enabled).', 'wpsso' ),
@@ -1240,7 +1240,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
 
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-					_x( 'Clear Short URLs on Clear All Caches', 'option label', 'wpsso' ) );
+					_x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ) );
 
 				$html .= '<p><small>[*] ';
 				if ( empty( $this->p->options['plugin_clear_short_urls'] ) ) {
