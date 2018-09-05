@@ -786,7 +786,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$def_opts = $this->p->opt->get_defaults();	// Get default values, including css from default stylesheets.
 
-			$this->p->notice->trunc();	// Clear all messages before sanitation checks.
+			/**
+			 * Clear any old notices for the current user before sanitation checks.
+			 */
+			$this->p->notice->truncate();
 
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $this->p->options, $opts );
@@ -843,22 +846,36 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'nonce token validation post field missing' );
 				}
+
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
+
 				exit;
+
 			} elseif ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
+
 				$this->p->notice->err( __( 'Nonce token validation failed for network options (update ignored).', 'wpsso' ) );
+
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
+
 				exit;
+
 			} elseif ( ! current_user_can( 'manage_network_options' ) ) {
+
 				$this->p->notice->err( __( 'Insufficient privileges to modify network options.', 'wpsso' ) );
+
 				wp_redirect( $this->p->util->get_admin_url( $page ) );
+
 				exit;
 			}
 
-			$this->p->notice->trunc();	// Clear all notices before sanitation checks.
+			/**
+			 * Clear any old notices for the current user before sanitation checks.
+			 */
+			$this->p->notice->truncate();
 
 			$def_opts = $this->p->opt->get_site_defaults();
 
@@ -3019,8 +3036,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$head_action_php = '<head <?php do_action( \'add_head_attributes\' ); ?' . '>>';	// breakup closing php for vim
 
 			if ( empty( $header_files ) ) {
+
 				$this->p->notice->err( __( 'No header templates found in the parent or child theme directories.', 'wpsso' ) );
-				return;	// exit early
+
+				return;	// Exit early.
 			}
 
 			foreach ( $header_files as $tmpl_file ) {
@@ -3071,7 +3090,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$dismiss_key = 'notice-header-tmpl-no-head-attr-' . SucomUtil::get_theme_slug_version();
 
-				$this->p->notice->trunc_key( $dismiss_key, 'all' );	// Just in case.
+				$this->p->notice->truncate_key( $dismiss_key, 'all' );	// Just in case.
 			}
 		}
 

@@ -3355,6 +3355,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $user_ids;
 		}
 
+		public static function get_writer_user_ids( $blog_id = null ) {
+
+			$roles = array(
+				'administrator',
+				'editor',
+				'author',
+				'contributor',
+			);
+
+			return self::get_user_ids_by_roles( $roles, $blog_id );
+		}
+
+		public static function get_user_ids_by_roles( array $roles, $blog_id = null ) {
+
+			$user_ids = array_keys( self::get_user_names_by_roles( $roles, $blog_id ) );
+
+			rsort( $user_ids );	// Newest user first.
+
+			return $user_ids;
+		}
+
 		public static function get_user_names_by_roles( array $roles, $blog_id = null ) {
 
 			if ( empty( $blog_id ) ) {
@@ -3395,15 +3416,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $user_names;
-		}
-
-		public static function get_user_ids_by_roles( array $roles, $blog_id = null ) {
-
-			$user_ids = array_keys( self::get_user_names_by_roles( $roles, $blog_id ) );
-
-			rsort( $user_ids );	// Newest user first.
-
-			return $user_ids;
 		}
 
 		public static function get_user_select_by_roles( array $roles, $blog_id = null, $add_none = true ) {

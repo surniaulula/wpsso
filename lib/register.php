@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				$this->p->util->clear_all_cache( $clear_external, $clear_short_urls, $refresh_all_cache );
 
-				$this->p->notice->trunc_all();	// Delete all stored notices for all users.
+				$this->p->notice->truncate_all();	// Delete all stored notices for all users.
 			}
 
 			delete_option( WPSSO_POST_CHECK_NAME );	// Remove the post duplicate check counter.

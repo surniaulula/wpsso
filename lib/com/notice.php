@@ -210,31 +210,29 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$user_notices[$msg_type][$msg_key] = $payload;
 		}
 
-		public function trunc_key( $dismiss_key, $user_id = true ) {
-			$this->trunc( '', '', $dismiss_key, $user_id );
+		public function truncate_all() {
+
+			$user_ids = SucomUtil::get_writer_user_ids();	// Only users capable of editing a post.
+
+			foreach ( $user_ids as $user_id ) {
+				$this->delete_notice_transient( $user_id );
+			}
 		}
 
-		public function trunc_all() {
-			$this->trunc( '', '', false, 'all' );
+		public function truncate_key( $dismiss_key, $user_id = true ) {
+			$this->truncate( '', '', $dismiss_key, $user_id );
 		}
 
-		public function trunc( $msg_type = '', $msg_text = '', $dismiss_key = false, $user_id = true ) {
+		public function truncate( $msg_type = '', $msg_text = '', $dismiss_key = false, $mixed = true ) {
 
-			if ( $user_id === 'all' ) {
-
-				$user_ids = SucomUtil::get_all_user_ids();
-
-			} elseif ( is_array( $user_id ) ) {
-
-				$user_ids = $user_id;
-
-			} elseif ( ! is_numeric( $user_id ) ) {
-
-				$user_ids = array( get_current_user_id() );
-
+			if ( $mixed === 'all' ) {
+				$user_ids = SucomUtil::get_writer_user_ids();	// Only users capable of editing a post.
+			} elseif ( is_array( $mixed ) ) {
+				$user_ids = $mixed;
+			} elseif ( is_numeric( $mixed ) ) {
+				$user_ids = array( $mixed );
 			} else {
-
-				$user_ids = array( $user_id );
+				$user_ids = array( get_current_user_id() );
 			}
 
 			$trunc_types = empty( $msg_type ) ? $this->all_types : array( (string) $msg_type );
@@ -248,16 +246,18 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				foreach ( $trunc_types as $msg_type ) {
 
-					if ( isset( $user_notices[$msg_type] ) ) {
+					if ( isset( $user_notices[ $msg_type ] ) ) {
 
 						/**
 						 * Clear notice for a specific dismiss key.
 						 */
 						if ( ! empty( $dismiss_key ) && is_array( $user_notices[$msg_type] ) ) {
 
-							foreach ( $user_notices[$msg_type] as $msg_key => &$payload ) {	// use reference for payload
+							foreach ( $user_notices[$msg_type] as $msg_key => &$payload ) {	// Use reference for payload.
+
 								if ( ! empty( $payload['dismiss_key'] ) && $payload['dismiss_key'] === $dismiss_key ) {
-									unset( $payload );	// unset by reference
+
+									unset( $payload );	// Unset by reference.
 								}
 							}
 
@@ -266,20 +266,24 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						 */
 						} elseif ( empty( $msg_text ) ) {
 
-							$user_notices[$msg_type] = array();
+							unset( $user_notices[ $msg_type ] );
 
 						/**
 						 * Clear a specific message text.
 						 */
-						} elseif ( is_array( $user_notices[$msg_type] ) ) {
+						} elseif ( is_array( $user_notices[ $msg_type ] ) ) {
 
-							foreach ( $user_notices[$msg_type] as $msg_key => &$payload ) {	// use reference for payload
-								if ( ! empty( $payload['msg_text'] ) && $payload['msg_text'] === $msg_text ) {
-									unset( $payload );	// unset by reference
+							foreach ( $user_notices[ $msg_type ] as $msg_key => &$payload ) {	// Use reference for payload.
+								if ( ! empty( $payload[ 'msg_text' ] ) && $payload[ 'msg_text' ] === $msg_text ) {
+									unset( $payload );	// Unset by reference.
 								}
 							}
 						}
 					}
+				}
+
+				if ( empty( $user_notices ) ) {
+					$this->delete_notice_transient( $user_id );
 				}
 			}
 		}
@@ -889,10 +893,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$user_notices =& $this->get_notice_cache( $user_id );
 
-			if ( empty( $this->notice_cache[$user_id] ) ) {
+			if ( empty( $this->notice_cache[ $user_id ] ) ) {
 				$this->delete_notice_transient( $user_id );
 			} else {
-				$this->set_notice_transient( $user_id, $this->notice_cache[$user_id] );
+				$this->set_notice_transient( $user_id, $this->notice_cache[ $user_id ] );
 			}
 		}
 
@@ -903,29 +907,31 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( ! is_numeric( $user_id ) ) {
 				$user_id = get_current_user_id();
-			} else {
-				$user_id = $user_id;
 			}
 
-			if ( $use_cache && isset( $this->notice_cache[$user_id] ) ) {
-				return $this->notice_cache[$user_id];
+			if ( $use_cache && isset( $this->notice_cache[ $user_id ] ) ) {
+				return $this->notice_cache[ $user_id ];
 			}
 
 			if ( $user_id > 0 ) {
-				$this->notice_cache[$user_id] = $this->get_notice_transient( $user_id );
 
-				if ( ! is_array( $this->notice_cache[$user_id] ) ) {
-					$this->notice_cache[$user_id] = array();
+				$this->notice_cache[ $user_id ] = $this->get_notice_transient( $user_id );
+
+				if ( ! is_array( $this->notice_cache[ $user_id ] ) ) {
+					$this->notice_cache[ $user_id ] = array();
 				}
 			}
 
+			/**
+			 * Make sure we return a complete array, with keys for all message types.
+			 */
 			foreach ( $this->all_types as $msg_type ) {
-				if ( ! isset( $this->notice_cache[$user_id][$msg_type] ) ) {
-					$this->notice_cache[$user_id][$msg_type] = array();
+				if ( ! isset( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {
+					$this->notice_cache[ $user_id ][ $msg_type ] = array();
 				}
 			}
 
-			return $this->notice_cache[$user_id];
+			return $this->notice_cache[ $user_id ];
 		}
 
 		private function get_notice_transient( $user_id ) {
