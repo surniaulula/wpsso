@@ -3401,7 +3401,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function add_mt_schema_from_og( array &$mt_schema, array &$assoc, array $names ) {
 			foreach ( $names as $itemprop_name => $key_name ) {
-				if ( ! empty( $assoc[$key_name] ) && $assoc[$key_name] !== WPSSO_UNDEF_INT ) {
+				if ( ! empty( $assoc[$key_name] ) && $assoc[$key_name] !== WPSSO_UNDEF ) {
 					$mt_schema[$itemprop_name] = $assoc[$key_name];
 				}
 			}

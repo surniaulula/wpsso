@@ -178,6 +178,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'add_meta_property_product:rating:worst'   => '',	// Non-standard / internal meta tag.
 					'add_meta_property_product:rating:best'    => '',	// Non-standard / internal meta tag.
 				),
+				599 => array(
+					'plugin_add_person_role' => 'plugin_new_user_is_person',
+				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG
 				2 => array(
@@ -337,10 +340,26 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
+				/**
+				 * Enable og:image and og:video meta tags, and disable the og:image:url
+				 * and og:video:url meta tags, which are functionally identical.
+				 */
 				if ( $prev_version > 0 && $prev_version <= 591 ) {
 					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
 						$opts['add_meta_property_' . $mt_name] = 1;
 						$opts['add_meta_property_' . $mt_name . ':url'] = 0;
+					}
+				}
+
+				/**
+				 * Remove the 'person' role from all subscribers.
+				 */
+				if ( $prev_version > 0 && $prev_version <= 599 ) {
+					if ( empty( $this->p->options['plugin_new_user_is_person'] ) ) {
+						foreach ( SucomUtil::get_user_ids_by_roles( array( 'subscriber' ) ) as $user_id ) {
+							$user_obj = get_user_by( 'ID', $user_id );
+							$user_obj->remove_role( 'person' );
+						}
 					}
 				}
 

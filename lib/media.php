@@ -418,8 +418,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$size_info   = SucomUtil::get_size_info( $size_name );
 			$img_url     = '';
-			$img_width   = WPSSO_UNDEF_INT;
-			$img_height  = WPSSO_UNDEF_INT;
+			$img_width   = WPSSO_UNDEF;
+			$img_height  = WPSSO_UNDEF;
 			$img_cropped = empty( $size_info['crop'] ) ? 0 : 1;	// get_size_info() returns false, true, or an array.
 
 			if ( $this->p->avail['media']['ngg'] && strpos( $pid, 'ngg-' ) === 0 ) {
@@ -956,13 +956,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'using attribute value for og:image = '.$attr_value.
-										' ('.WPSSO_UNDEF_INT.'x'.WPSSO_UNDEF_INT.')' );
+										' ('.WPSSO_UNDEF.'x'.WPSSO_UNDEF.')' );
 								}
 
 								$og_single_image = array(
 									'og:image:url' => $attr_value,
-									'og:image:width' => WPSSO_UNDEF_INT,
-									'og:image:height' => WPSSO_UNDEF_INT,
+									'og:image:width' => WPSSO_UNDEF,
+									'og:image:height' => WPSSO_UNDEF,
 								);
 							}
 
@@ -997,8 +997,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								/**
 								 * No use checking / retrieving the image size twice.
 								 */
-								if ( $og_single_image['og:image:width'] === WPSSO_UNDEF_INT &&
-									$og_single_image['og:image:height'] === WPSSO_UNDEF_INT ) {
+								if ( $og_single_image['og:image:width'] === WPSSO_UNDEF &&
+									$og_single_image['og:image:height'] === WPSSO_UNDEF ) {
 
 									$check_size_limits = false;
 									$img_size_within_limits = false;
@@ -1091,8 +1091,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$og_single_image = array(
 					'og:image:url'     => $img_opts['url'],
-					'og:image:width'   => $img_opts['url:width'] > 0 ? $img_opts['url:width'] : WPSSO_UNDEF_INT,
-					'og:image:height'  => $img_opts['url:height'] > 0 ? $img_opts['url:height'] : WPSSO_UNDEF_INT,
+					'og:image:width'   => $img_opts['url:width'] > 0 ? $img_opts['url:width'] : WPSSO_UNDEF,
+					'og:image:height'  => $img_opts['url:height'] > 0 ? $img_opts['url:height'] : WPSSO_UNDEF,
 					'og:image:cropped' => null,
 					'og:image:id'      => null,
 					'og:image:alt'     => null,
@@ -1181,8 +1181,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							$args = array(
 								'url'    => $media[3],
-								'width'  => preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF_INT,
-								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF_INT,
+								'width'  => preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF,
+								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF,
 							);
 
 							$og_single_video  = $this->get_video_info( $args, $check_dupes );
@@ -1278,8 +1278,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$args = array_merge( array(
 				'url'      => '',
-				'width'    => WPSSO_UNDEF_INT,
-				'height'   => WPSSO_UNDEF_INT,
+				'width'    => WPSSO_UNDEF,
+				'height'   => WPSSO_UNDEF,
 				'type'     => '',
 				'prev_url' => '',
 				'post_id'  => null,
@@ -1503,7 +1503,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			} elseif ( strpos( $img_mixed, '://' ) !== false ) {
 
-				if ( $img_width === WPSSO_UNDEF_INT || $img_height === WPSSO_UNDEF_INT ) {
+				if ( $img_width === WPSSO_UNDEF || $img_height === WPSSO_UNDEF ) {
 					list( $img_width, $img_height, $img_type, $img_attr ) = $this->p->util->get_image_url_info( $img_mixed );
 				}
 
@@ -1514,7 +1514,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Exit silently if the image width and/or height is not valid.
 			 */
-			if ( $img_width === WPSSO_UNDEF_INT || $img_height === WPSSO_UNDEF_INT ) {
+			if ( $img_width === WPSSO_UNDEF || $img_height === WPSSO_UNDEF ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: '.strtolower( $media_lib ).' '.$img_mixed.' rejected - '.
 						'invalid width and/or height '.$img_width.'x'.$img_height );

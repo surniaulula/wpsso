@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->log( 'running init_options action' );
 			}
 
-			do_action( $this->p->lca.'_init_options' );
+			do_action( $this->p->lca . '_init_options' );
 		}
 
 		public function get_defaults( $idx = false, $force_filter = false ) {
@@ -45,7 +45,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 			}
 
-			$defs =& $this->p->cf['opt']['defaults'];	// shortcut
+			$defs =& $this->p->cf['opt']['defaults'];	// Shortcut variable.
 
 			if ( $force_filter || ! self::$allow_cache || empty( $defs['options_filtered'] ) ) {
 
@@ -61,9 +61,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				$defs = $this->p->util->add_ptns_to_opts( $defs, array(
-					'plugin_add_to'   => 1,
 					'og_type_for'     => 'article',
 					'schema_type_for' => 'webpage',
+					'plugin_add_to'   => 1,
 				) );
 
 				/**
@@ -90,26 +90,28 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Define the default Facebook locale and current locale values.
 				 */
 				$defs['fb_locale'] = $this->p->og->get_fb_locale( array(), 'default' );
+
 				if ( ( $locale_key = SucomUtil::get_key_locale( 'fb_locale' ) ) !== 'fb_locale' ) {
 					$defs[$locale_key] = $this->p->og->get_fb_locale( array(), 'current' );
 				}
 
 				$defs['seo_author_field'] = $this->p->options['plugin_cm_gp_name'];	// Reset to possible custom value.
-				$defs['og_author_field'] = $this->p->options['plugin_cm_fb_name'];	// Reset to possible custom value.
-				$defs['plugin_wpseo_social_meta'] = $this->p->avail['seo']['wpseo'] || get_option( 'wpseo' ) ? 1 : 0;
+				$defs['og_author_field']  = $this->p->options['plugin_cm_fb_name'];	// Reset to possible custom value.
+
+				$defs['plugin_wpseo_social_meta'] = $this->p->avail['seo']['wpseo'] ||
+					get_option( 'wpseo' ) ? 1 : 0;
 
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-					if ( ! empty( $info['update_auth'] ) && 
-						$info['update_auth']!== 'none' ) {	// Just in case.
-						$defs['plugin_'.$ext.'_'.$info['update_auth']] = '';
+					if ( ! empty( $info['update_auth'] ) && $info['update_auth']!== 'none' ) {	// Just in case.
+						$defs['plugin_' . $ext . '_' . $info['update_auth']] = '';
 					}
 				}
 
 				// check for default values from network admin settings
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {
 					foreach ( $this->p->site_options as $opt_key => $opt_val ) {
-						if ( isset( $defs[$opt_key] ) && isset( $this->p->site_options[$opt_key.':use'] ) ) {
-							if ( $this->p->site_options[$opt_key.':use'] === 'default' ) {
+						if ( isset( $defs[$opt_key] ) && isset( $this->p->site_options[$opt_key . ':use'] ) ) {
+							if ( $this->p->site_options[$opt_key . ':use'] === 'default' ) {
 								$defs[$opt_key] = $this->p->site_options[$opt_key];
 							}
 						}
@@ -132,7 +134,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
 				}
 
-				$defs = apply_filters( $this->p->lca.'_get_defaults', $defs );
+				$defs = apply_filters( $this->p->lca . '_get_defaults', $defs );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_defaults filters' );	// end timer
@@ -159,7 +161,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 			}
 
-			$defs =& $this->p->cf['opt']['site_defaults'];	// shortcut
+			$defs =& $this->p->cf['opt']['site_defaults'];	// Shortcut variable.
 
 			if ( $force_filter || ! self::$allow_cache || empty( $defs['options_filtered'] ) ) {
 
@@ -168,10 +170,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
-					if ( ! empty( $info['update_auth'] ) && 
-						$info['update_auth']!== 'none' ) {	// Just in case.
-						$defs['plugin_'.$ext.'_'.$info['update_auth']] = '';
-						$defs['plugin_'.$ext.'_'.$info['update_auth'].':use'] = 'default';
+					if ( ! empty( $info['update_auth'] ) && $info['update_auth']!== 'none' ) {	// Just in case.
+						$defs['plugin_' . $ext . '_' . $info['update_auth']] = '';
+						$defs['plugin_' . $ext . '_' . $info['update_auth'] . ':use'] = 'default';
 					}
 				}
 
@@ -188,7 +189,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
 				}
 
-				$defs = apply_filters( $this->p->lca.'_get_site_defaults', $defs );
+				$defs = apply_filters( $this->p->lca . '_get_site_defaults', $defs );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_site_defaults filters' );	// end timer
@@ -235,7 +236,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						continue;
 					}
 
-					$version_key = 'plugin_'.$ext.'_version';
+					$version_key = 'plugin_' . $ext . '_version';
 
 					if ( empty( $opts[$version_key] ) || version_compare( $opts[$version_key], $info['version'], '!=' ) ) {
 
@@ -257,11 +258,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$has_diff_options = true;
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $options_name.' current v'.$current_version.' different than latest v'.$latest_version );
+						$this->p->debug->log( $options_name . ' current v' . $current_version . ' different than latest v' . $latest_version );
 					}
 
 					if ( ! is_object( $this->upg ) ) {
-						require_once WPSSO_PLUGINDIR.'lib/upgrade.php';
+						require_once WPSSO_PLUGINDIR . 'lib/upgrade.php';
 						$this->upg = new WpssoOptionsUpgrade( $this->p );
 					}
 
@@ -291,7 +292,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$has_diff_options = true;	// Save the options.
 						}
 
-					} elseif ( ! $has_new_options && $has_diff_version && empty( $opts['plugin_'.$this->p->lca.'_tid'] ) ) {
+					} elseif ( ! $has_new_options && $has_diff_version && empty( $opts['plugin_' . $this->p->lca . '_tid'] ) ) {
 
 						if ( null === $def_opts ) {	// only get default options once
 							$def_opts = $this->get_defaults();
@@ -342,19 +343,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'add_meta_name_robots' => 0,
 						) as $idx => $def_val ) {
 
-							$def_val = (int) apply_filters( $this->p->lca.'_'.$idx, $def_val );
+							$def_val = (int) apply_filters( $this->p->lca . '_' . $idx, $def_val );
 
-							$opts[$idx.':is'] = 'disabled';
+							$opts[$idx . ':is'] = 'disabled';
 
 							if ( $opts[$idx] === $def_val ) {
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( $idx.' already set to '.$def_val );
+									$this->p->debug->log( $idx . ' already set to ' . $def_val );
 								}
 								continue;
 							}
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'setting '.$idx.' to '.$def_val );
+								$this->p->debug->log( 'setting ' . $idx . ' to ' . $def_val );
 							}
 
 							$opts[$idx] = $def_val;
@@ -441,7 +442,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$admin_url = $this->p->util->get_admin_url( 'general' );
 					}
 
-					$this->p->notice->err( $error_msg.' '.sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $admin_url ) );
+					$this->p->notice->err( $error_msg . ' ' . sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $admin_url ) );
 				}
 
 				$opts = $network ? $this->get_site_defaults() : $this->get_defaults();
@@ -574,15 +575,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						continue;
 					}
 
-					$opt_name = 'plugin_'.$ext.'_'.$info['update_auth'];
+					$opt_name = 'plugin_' . $ext . '_' . $info['update_auth'];
 
 					if ( isset( $opts[$opt_name] ) && isset( $this->p->options[$opt_name] ) && $opts[$opt_name] !== $this->p->options[$opt_name] ) {
 
 						$this->p->options[$opt_name] = $opts[$opt_name];
 
 						foreach ( array( 'err', 'inf', 'time' ) as $key ) {
-							delete_option( $ext.'_u'.$key );
-							delete_option( $ext.'_uapi2'.$key );
+							delete_option( $ext . '_u' . $key );
+							delete_option( $ext . '_uapi2' . $key );
 						}
 					}
 				}
@@ -648,7 +649,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Hooked by several add-ons.
 			 */
-			$option_type = apply_filters( $this->p->lca.'_option_type', false, $base_key, $network, $mod );
+			$option_type = apply_filters( $this->p->lca . '_option_type', false, $base_key, $network, $mod );
 
 			/**
 			 * Translate error messages only once.
@@ -968,7 +969,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'textured':
 
 					if ( $opt_val !== '' ) {
-						$opt_val = trim( wptexturize( ' '.$opt_val.' ' ) );
+						$opt_val = trim( wptexturize( ' ' . $opt_val . ' ' ) );
 					}
 
 					break;
@@ -1017,7 +1018,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $ret_int ) {
 				$opt_val = intval( $opt_val );
 			} elseif ( $ret_fnum ) {
-				$opt_val = sprintf( '%.'.$num_prec.'f', $opt_val );
+				$opt_val = sprintf( '%.' . $num_prec . 'f', $opt_val );
 			}
 
 			return $opt_val;
@@ -1049,11 +1050,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
 				if ( isset( $info['version'] ) ) {
-					$opts['plugin_'.$ext.'_version'] = $info['version'];
+					$opts['plugin_' . $ext . '_version'] = $info['version'];
 				}
 
 				if ( isset( $info['opt_version'] ) ) {
-					$opts['plugin_'.$ext.'_opt_version'] = $info['opt_version'];
+					$opts['plugin_' . $ext . '_opt_version'] = $info['opt_version'];
 				}
 			}
 
@@ -1076,25 +1077,25 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( $doing_upgrade ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $options_name.' settings have been upgraded and saved' );
+						$this->p->debug->log( $options_name . ' settings have been upgraded and saved' );
 					}
 
 					if ( is_admin() ) {
 
-						$dismiss_key = $options_name.'_settings_upgraded_and_saved';
+						$dismiss_key = $options_name . '_settings_upgraded_and_saved';
 
 						$this->p->notice->inf( sprintf( __( 'Plugin settings (%s) have been upgraded and saved.',
 							'wpsso' ), $options_name ), true, $dismiss_key, true );	// Can be dismissed permanently.
 					}
 
 				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $options_name.' settings have been saved silently' );
+					$this->p->debug->log( $options_name . ' settings have been saved silently' );
 				}
 
 			} else {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'wordpress failed to save the '.$options_name.' settings' );
+					$this->p->debug->log( 'wordpress failed to save the ' . $options_name . ' settings' );
 				}
 
 				return false;

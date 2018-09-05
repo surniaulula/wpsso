@@ -28,11 +28,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_role( 'person', _x( 'Person', 'user role', 'wpsso' ), array() );
 			}
 
-			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
+			if ( ! empty( $this->p->options['plugin_new_user_is_person'] ) ) {
 				if ( is_multisite() ) {
-					add_action( 'wpmu_new_user', array( $this, 'add_person_role' ), 20, 1 );
+					add_action( 'wpmu_new_user', array( __CLASS__, 'add_person_role' ), 20, 1 );
 				} else {
-					add_action( 'user_register', array( $this, 'add_person_role' ), 20, 1 );
+					add_action( 'user_register', array( __CLASS__, 'add_person_role' ), 20, 1 );
 				}
 			}
 
@@ -121,40 +121,32 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return apply_filters( $this->p->lca . '_get_user_mod', $mod, $mod_id );
 		}
 
-		/**
-		 * Returns an array of contributor user IDs by default.
-		 * Contributors can delete_posts, edit_posts, read.
-		 */
-		public static function get_public_user_ids( $role = 'contributor' ) {
+		public static function get_public_user_ids() {
 
-			$users_args = array(
-				'role'    => $role,
-				'orderby' => 'ID',
-				'order'   => 'DESC',	// Newest user first.
-				'fields'  => array(	// Save memory and only return only specific fields.
-					'ID',
-				),
-			);
+			$wpsso =& Wpsso::get_instance();
 
-			$public_user_ids = array();
+			$roles = $wpsso->cf['wp']['roles']['writer'];
 
-			foreach ( get_users( $users_args ) as $user_obj ) {
-				if ( ! empty( $user_obj->ID ) ) {	// Just in case.
-					$public_user_ids[] = $user_obj->ID;
-				}
-			}
-
-			return $public_user_ids;
+			return SucomUtil::get_user_ids_by_roles( $roles );
 		}
 
-		public function get_posts_ids( array $mod, $posts_per_page = false, $paged = false, array $posts_args = array() ) {
+		public static function get_person_names( $add_none = true ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			$roles = $wpsso->cf['wp']['roles']['person'];
+
+			return SucomUtil::get_user_select_by_roles( $roles, null, $add_none );
+		}
+
+		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			if ( false === $posts_per_page ) {
-				$posts_per_page = apply_filters( $this->p->lca . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
+			if ( false === $ppp ) {
+				$ppp = apply_filters( $this->p->lca . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( false === $paged ) {
@@ -167,7 +159,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'calling get_posts() for posts authored by ' . 
-					$mod['name'] . ' id ' . $mod['id'] . ' (posts_per_page is ' . $posts_per_page . ')' );
+					$mod['name'] . ' id ' . $mod['id'] . ' (posts_per_page is ' . $ppp . ')' );
 			}
 
 			$posts_args = array_merge( array(
@@ -177,11 +169,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				'paged'          => $paged,
 				'post_status'    => 'publish',
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
-				'posts_per_page' => $posts_per_page,
+				'posts_per_page' => $ppp,
 				'author'         => $mod['id'],
-			), $posts_args, array(
-				'fields'         => 'ids',		// 'ids' (returns an array of ids).
-			) );
+			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
 			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
 			$start_time = microtime( true );
@@ -224,14 +214,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $post_ids;
 		}
 
-		public function add_person_role( $user_id ) {
+		public static function add_person_role( $user_id ) {
 
 			$user_obj = get_user_by( 'ID', $user_id );
 
 			$user_obj->add_role( 'person' );
 		}
 
-		public function remove_person_role( $user_id ) {
+		public static function remove_person_role( $user_id ) {
 
 			$user_obj = get_user_by( 'ID', $user_id );
 
@@ -257,15 +247,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_views = array_reverse( $user_views );
 
 			return $user_views;
-		}
-
-		public static function get_person_names( $add_none = true ) {
-
-			$roles = array( 'person' );
-
-			$persons = SucomUtil::get_user_select_by_roles( $roles, false, $add_none );
-
-			return $persons;
 		}
 
 		public function add_column_headings( $columns ) {
@@ -777,6 +758,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public static function get_author_id( array $mod ) {
+
 			$author_id = false;
 
 			if ( $mod['is_post'] ) {
@@ -791,36 +773,52 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function get_author_meta( $user_id, $field_id ) {
-			$value = '';
-			$is_user = SucomUtil::user_exists( $user_id );
+
+			$is_user     = SucomUtil::user_exists( $user_id );
+			$author_meta = '';
+
 			if ( $is_user ) {
+
 				switch ( $field_id ) {
+
 					case 'none':
+
 						break;
+
 					case 'fullname':
-						$value = get_the_author_meta( 'first_name', $user_id ) . ' ' . 
+
+						$author_meta = get_the_author_meta( 'first_name', $user_id ) . ' ' . 
 							get_the_author_meta( 'last_name', $user_id );
+
 						break;
+
 					case 'description':
-						$value = preg_replace( '/[\s\n\r]+/s', ' ',
+
+						$author_meta = preg_replace( '/[\s\n\r]+/s', ' ',
 							get_the_author_meta( $field_id, $user_id ) );
+
 						break;
+
 					default:
-						$value = get_the_author_meta( $field_id, $user_id );
+
+						$author_meta = get_the_author_meta( $field_id, $user_id );
+
 						break;
 				}
-				$value = trim( $value );	// just in case
+
+				$author_meta = trim( $author_meta );	// Just in case.
+
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
 			}
 
-			$value = apply_filters( $this->p->lca . '_get_author_meta', $value, $user_id, $field_id, $is_user );
+			$author_meta = apply_filters( $this->p->lca . '_get_author_meta', $author_meta, $user_id, $field_id, $is_user );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'user id ' . $user_id . ' ' . $field_id . ': ' . $value );
+				$this->p->debug->log( 'user id ' . $user_id . ' ' . $field_id . ': ' . $author_meta );
 			}
 
-			return $value;
+			return $author_meta;
 		}
 
 		public function get_author_website( $user_id, $field_id = 'url' ) {
@@ -1054,10 +1052,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 * Don't bother saving unless we have to.
 			 */
 			if ( $old_prefs !== $new_prefs ) {
+
 				self::$cache_pref[$user_id] = $new_prefs;	// update the pref cache
+
 				unset( $new_prefs['prefs_filtered'] );
+
 				update_user_meta( $user_id, WPSSO_PREF_NAME, $new_prefs );
+
 				return true;
+
 			} else {
 				return false;
 			}
@@ -1069,7 +1072,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( ! isset( self::$cache_pref[$user_id]['prefs_filtered'] ) || self::$cache_pref[$user_id]['prefs_filtered'] !== true ) {
 
-				$wpsso = Wpsso::get_instance();
+				$wpsso =& Wpsso::get_instance();
 
 				self::$cache_pref[$user_id] = get_user_meta( $user_id, WPSSO_PREF_NAME, true );
 
@@ -1108,18 +1111,22 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 * Returns the value for show_opts, or return true/false if a value to compare is provided.
 		 */
 		public static function show_opts( $compare = false, $user_id = false ) {
-			$user_id = false === $user_id ? get_current_user_id() : $user_id;
-			$value = self::get_pref( 'show_opts' );
-			if ( $compare !== false ) {
-				return $compare === $value ? true : false;
+
+			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
+
+			$show_opts = self::get_pref( 'show_opts' );
+
+			if ( $compare ) {
+				return $compare === $show_opts ? true : false;
 			} else {
-				return $value;
+				return $show_opts;
 			}
 		}
 
 		public function clear_cache( $user_id, $rel_id = false ) {
 
 			$mod = $this->get_mod( $user_id );
+
 			$col_meta_keys = WpssoMeta::get_column_meta_keys();
 
 			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
@@ -1141,9 +1148,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( ! $user_can_edit = current_user_can( 'edit_user', $user_id ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'insufficient privileges to save settings for user ID ' . $user_id );
 				}
+
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for user ID %1$s.',
 						'wpsso' ), $user_id ) );

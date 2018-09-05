@@ -34,6 +34,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				$do_once = true;
 
+				if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
+					require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
+				}
+
 				$this->set_config( $plugin, $lca, $text_domain, $label_transl );
 
 				$this->add_actions();
@@ -217,12 +221,19 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function trunc( $msg_type = '', $msg_text = '', $dismiss_key = false, $user_id = true ) {
 
 			if ( $user_id === 'all' ) {
-				$user_ids = $this->get_all_user_ids();	// Returns an array of subscriber user IDs by default.
+
+				$user_ids = SucomUtil::get_all_user_ids();
+
 			} elseif ( is_array( $user_id ) ) {
+
 				$user_ids = $user_id;
+
 			} elseif ( ! is_numeric( $user_id ) ) {
+
 				$user_ids = array( get_current_user_id() );
+
 			} else {
+
 				$user_ids = array( $user_id );
 			}
 
@@ -853,31 +864,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$msg_html .= '</div><!-- .' . $this->lca . '-notice -->' . "\n";
 
 			return $msg_html;
-		}
-
-		/**
-		 * Returns an array of subscriber user IDs by default.
-		 * Subscribers have only read privilege.
-		 */
-		private function get_all_user_ids( $role = 'subscriber' ) {
-
-			$user_ids = array();
-			$user_args = array(
-				'role'    => $role,
-				'orderby' => 'ID',
-				'order'   => 'ASC',	// Oldest user first.
-				'fields'  => array(	// Save memory and only return only specific fields.
-					'ID',
-				),
-			);
-
-			foreach ( get_users( $user_args ) as $user_obj ) {
-				if ( ! empty( $user_obj->ID ) ) {	// Just in case.
-					$user_ids[] = $user_obj->ID;
-				}
-			}
-
-			return $user_ids;
 		}
 
 		public function get_user_notices( $user_id = true, $use_cache = true ) {

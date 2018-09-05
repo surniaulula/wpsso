@@ -1370,10 +1370,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$this->p->debug->log( $og_media[$key].' value is empty (skipped)' );
 					}
 
-				} elseif ( $og_media[$key] === WPSSO_UNDEF_INT || $og_media[$key] === (string) WPSSO_UNDEF_INT ) {
+				} elseif ( $og_media[$key] === WPSSO_UNDEF || $og_media[$key] === (string) WPSSO_UNDEF ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $og_media[$key].' value is '.WPSSO_UNDEF_INT.' (skipped)' );
+						$this->p->debug->log( $og_media[$key].' value is '.WPSSO_UNDEF.' (skipped)' );
 					}
 
 				} else {

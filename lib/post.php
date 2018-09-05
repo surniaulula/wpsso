@@ -179,20 +179,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'post_status'    => 'publish',
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
 				'posts_per_page' => -1,
-				'fields'         => 'ids',		// 'ids' (returns an array of ids).
+				'fields'         => 'ids',		// Return an array of post ids.
 			);
 
 			return get_posts( $posts_args );
 		}
 
-		public function get_posts_ids( array $mod, $posts_per_page = false, $paged = false, array $posts_args = array() ) {
+		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			if ( false === $posts_per_page ) {
-				$posts_per_page = apply_filters( $this->p->lca . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
+			if ( false === $ppp ) {
+				$ppp = apply_filters( $this->p->lca . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( false === $paged ) {
@@ -205,7 +205,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'calling get_posts() for direct children of ' . 
-					$mod['name'] . ' id ' . $mod['id'] . ' (posts_per_page is ' . $posts_per_page . ')' );
+					$mod['name'] . ' id ' . $mod['id'] . ' (posts_per_page is ' . $ppp . ')' );
 			}
 
 			$posts_args = array_merge( array(
@@ -215,12 +215,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'paged'          => $paged,
 				'post_status'    => 'publish',
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
-				'posts_per_page' => $posts_per_page,
+				'posts_per_page' => $ppp,
 				'post_parent'    => $mod['id'],
 				'child_of'       => $mod['id'],		// Only include direct children.
-			), $posts_args, array(
-				'fields'         => 'ids',		// 'ids' (returns an array of ids).
-			) );
+			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
 			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
 			$start_time = microtime( true );
@@ -515,8 +513,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function ajax_get_metabox_post() {
 
-			$doing_ajax = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
-
+			$doing_ajax     = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
 			$doing_autosave = defined( 'DOING_AUTOSAVE' ) ? DOING_AUTOSAVE : false;
 
 			if ( ! $doing_ajax ) {

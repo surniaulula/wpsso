@@ -180,14 +180,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		/**
 		 * Note that this method returns posts of child terms as well.
 		 */
-		public function get_posts_ids( array $mod, $posts_per_page = false, $paged = false, array $posts_args = array() ) {
+		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			if ( false === $posts_per_page ) {
-				$posts_per_page = apply_filters( $this->p->lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
+			if ( false === $ppp ) {
+				$ppp = apply_filters( $this->p->lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( false === $paged ) {
@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'calling get_posts() for '.$mod['name'].' id '.$mod['id'].
-					' in taxonomy '.$mod['tax_slug'].' (posts_per_page is '.$posts_per_page.')' );
+					' in taxonomy '.$mod['tax_slug'].' (posts_per_page is '.$ppp.')' );
 			}
 
 			$posts_args = array_merge( array(
@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				'paged'          => $paged,
 				'post_status'    => 'publish',
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
-				'posts_per_page' => $posts_per_page,
+				'posts_per_page' => $ppp,
 				'tax_query'      => array(
 				        array(
 						'taxonomy'         => $mod['tax_slug'],
@@ -219,9 +219,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						'include_children' => true
 					)
 				),
-			), $posts_args, array(
-				'fields'         => 'ids',		// 'ids' (returns an array of ids).
-			) );
+			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
 			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
 			$start_time = microtime( true );

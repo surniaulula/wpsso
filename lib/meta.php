@@ -97,15 +97,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, self::$mod_defaults );
 		}
 
-		public function get_posts_ids( array $mod, $posts_per_page = false, $paged = false, array $posts_args = array() ) {
+		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
 			return $this->must_be_extended( __METHOD__, array() );	// Return an empty array.
 		}
 
-		public function get_posts_mods( array $mod, $posts_per_page = false, $paged = false, array $posts_args = array() ) {
+		public function get_posts_mods( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
 
 			$posts_mods = array();
 
-			foreach ( $this->get_posts_ids( $mod, $posts_per_page, $paged, $posts_args ) as $post_id ) {
+			foreach ( $this->get_posts_ids( $mod, $ppp, $paged, $posts_args ) as $post_id ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting mod for post object ID ' . $post_id );
@@ -346,9 +346,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					/**
 					 * Skip meta tags with reserved values but display empty values.
 					 */
-					if ( $parts[5] === WPSSO_UNDEF_INT || $parts[5] === (string) WPSSO_UNDEF_INT ) {
+					if ( $parts[5] === WPSSO_UNDEF || $parts[5] === (string) WPSSO_UNDEF ) {
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $parts[3] . ' value is ' . WPSSO_UNDEF_INT . ' (skipped)' );
+							$this->p->debug->log( $parts[3] . ' value is ' . WPSSO_UNDEF . ' (skipped)' );
 						}
 						continue;
 					}
@@ -882,7 +882,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				/**
 				 * Use strict comparison to manage conversion (don't allow string to integer conversion, for example).
 				 */
-				if ( $md_val === '' || $md_val === WPSSO_UNDEF_INT || $md_val === (string) WPSSO_UNDEF_INT || 
+				if ( $md_val === '' || $md_val === WPSSO_UNDEF || $md_val === (string) WPSSO_UNDEF || 
 					( isset( $md_defs[$md_idx] ) && ( $md_val === $md_defs[$md_idx] || $md_val === (string) $md_defs[$md_idx] ) ) ) {
 
 					unset( $md_opts[$md_idx] );
@@ -1206,8 +1206,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$img_height = $this->get_options( $mod['id'], $opt_pre . '_img_url:height' );
 
 					$mt_single_image[ $mt_pre . ':image:url' ]    = $url;
-					$mt_single_image[ $mt_pre . ':image:width' ]  = $img_width > 0 ? $img_width : WPSSO_UNDEF_INT;
-					$mt_single_image[ $mt_pre . ':image:height' ] = $img_height > 0 ? $img_height : WPSSO_UNDEF_INT;
+					$mt_single_image[ $mt_pre . ':image:width' ]  = $img_width > 0 ? $img_width : WPSSO_UNDEF;
+					$mt_single_image[ $mt_pre . ':image:height' ] = $img_height > 0 ? $img_height : WPSSO_UNDEF;
 				}
 
 				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {
@@ -1311,8 +1311,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 					$args = array(
 						'url'      => $video_url,
-						'width'    => WPSSO_UNDEF_INT,
-						'height'   => WPSSO_UNDEF_INT,
+						'width'    => WPSSO_UNDEF,
+						'height'   => WPSSO_UNDEF,
 						'type'     => '',
 						'prev_url' => '',
 						'post_id'  => null,
@@ -1488,11 +1488,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__, array() );
 		}
 
-		/**
-		 * Returns an array of contributor user IDs by default.
-		 * Contributors can delete_posts, edit_posts, read.
-		 */
-		public static function get_public_user_ids( $role = 'contributor' ) {
+		public static function get_public_user_ids() {
 			return $this->must_be_extended( __METHOD__, array() );
 		}
 	}

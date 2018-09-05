@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				self::$pkg[$ext]['pdir'] = $this->p->check->pp( $ext, false, $has_pdir );
 
 				self::$pkg[$ext]['pp'] = ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) &&
-					$has_pp && $this->p->check->pp( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? true : false;
+					$has_pp && $this->p->check->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
 
 				self::$pkg[$ext]['type'] = self::$pkg[$ext]['pp'] ?
 					_x( 'Pro', 'package type', 'wpsso' ) : _x( 'Free', 'package type', 'wpsso' );
@@ -3307,7 +3307,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ) . '</p>' .
 			'</td>';
 
-			$site_owners = SucomUtil::get_user_select_by_roles( array( 'administrator', 'editor' ) );
+			$owner_roles = $this->p-cf['wp']['roles']['owner'];
+
+			$site_owners = SucomUtil::get_user_select_by_roles( $owner_roles );
 
 			$table_rows['schema_home_person_id'] = $this->form->get_th_html( _x( 'User for Person Social Profile',
 				'option label', 'wpsso' ), '', 'schema_home_person_id' ).

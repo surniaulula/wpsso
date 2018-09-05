@@ -978,10 +978,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					continue;
 
-				} elseif ( $parts[5] === WPSSO_UNDEF_INT || $parts[5] === (string) WPSSO_UNDEF_INT ) {
+				} elseif ( $parts[5] === WPSSO_UNDEF || $parts[5] === (string) WPSSO_UNDEF ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_prefix . ' skipped: value is ' . WPSSO_UNDEF_INT );
+						$this->p->debug->log( $log_prefix . ' skipped: value is ' . WPSSO_UNDEF );
 					}
 
 					continue;

@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
 				$type = $this->p->check->pp( $this->p->lca, true, $this->p->avail['*']['p_dir'] ) &&
-					$this->p->check->pp( $ext, true, WPSSO_UNDEF_INT ) === WPSSO_UNDEF_INT ? 'pro' : 'gpl';
+					$this->p->check->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? 'pro' : 'gpl';
 
 				if ( ! isset( $info['lib'][$type] ) ) {
 					if ( $this->p->debug->enabled ) {

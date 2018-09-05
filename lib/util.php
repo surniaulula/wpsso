@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			add_action( 'wp_scheduled_delete', array( $this, 'delete_expired_db_transients' ) );
 
-			add_action( $this->p->lca . '_add_person_role', array( $this, 'add_person_role' ) );		// For single schedule task.
+			add_action( $this->p->lca . '_add_user_roles', array( $this, 'add_user_roles' ) );		// For single schedule task.
 			add_action( $this->p->lca . '_refresh_all_cache', array( $this, 'refresh_all_cache' ) );	// For single schedule task.
 
 			/**
@@ -267,7 +267,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$is_disabled    = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
-			$def_image_info = array( WPSSO_UNDEF_INT, WPSSO_UNDEF_INT, '', '' );
+			$def_image_info = array( WPSSO_UNDEF, WPSSO_UNDEF, '', '' );
 			$image_info     = false;
 
 			if ( $is_disabled ) {
@@ -996,18 +996,21 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $add_none ) {
+
 				$none = array( 'none' => '[None]' );
+
 				if ( is_array( self::$form_cache[$key] ) ) {
 					return $none + self::$form_cache[$key];
 				} else {
 					return $none;
 				}
+
 			} else {
 				return self::$form_cache[$key];
 			}
 		}
 
-		public function add_person_role() {
+		public function add_user_roles() {
 
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process
@@ -1026,7 +1029,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
 
-				usleep( 5 * 1000000 );					// Sleep for 5 second.
+				usleep( 3 * 1000000 );					// Sleep for 3 second.
 
 				if ( get_transient( $cache_id ) !== false ) {		// Stop here if the other process is still running.
 					return;
@@ -1035,11 +1038,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
-			$wp_persons = array( 'administrator', 'author', 'editor', 'subscriber' ); // Default wp roles.
-
-			$user_names = SucomUtil::get_user_names_by_roles( $wp_persons );
-
-			foreach ( $user_names as $user_id => $display_name ) {
+			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
 
 				if ( get_transient( $cache_id ) !== $cache_status ) {
 					break;	// Stop here and delete the transient.
@@ -1074,7 +1073,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
 
-				usleep( 5 * 1000000 );					// Sleep for 5 second.
+				$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME + 3;
+
+				usleep( $sleep_secs * 1000000 );			// Sleep for 3 1/2 seconds by default.
 
 				if ( get_transient( $cache_id ) !== false ) {		// Stop here if the other process is still running.
 					return;
@@ -1091,7 +1092,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mods[] = $this->p->m['util']['term']->get_mod( $term_id );
 			}
 
-			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {	// Returns an array of contributor user IDs by default.
+			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
 				$mods[] = $this->p->m['util']['user']->get_mod( $user_id );
 			}
 
@@ -1110,7 +1111,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 
-				usleep( WPSSO_REFRESH_CACHE_SLEEP_TIME * 1000000 );	// Sleep for 0.50 seconds by default.
+				$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME;
+
+				usleep( $sleep_secs * 1000000 );	// Sleep for 0.50 seconds by default.
 			}
 
 			delete_transient( $cache_id );
@@ -1155,18 +1158,24 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$external_msg = ' ' . __( 'The cache for %s has also been cleared.', 'wpsso' );
 
 				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// W3 total cache.
+
 					w3tc_pgcache_flush();
 					w3tc_objectcache_flush();
+
 					$cleared_msg .= sprintf( $external_msg, 'W3 Total Cache' );
 				}
 
 				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// WP super cache
+
 					wp_cache_clear_cache();
+
 					$cleared_msg .= sprintf( $external_msg, 'WP Super Cache' );
 				}
 
 				if ( isset( $GLOBALS['comet_cache'] ) ) {		// Comet cache.
+
 					$GLOBALS['comet_cache']->wipe_cache();
+
 					$cleared_msg .= sprintf( $external_msg, 'Comet Cache' );
 				}
 			}
@@ -1330,7 +1339,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {	// Returns an array of contributor user IDs by default.
+			foreach ( SucomUtil::get_all_user_ids() as $user_id ) {
 				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
 					delete_user_meta( $user_id, $meta_key );
 				}

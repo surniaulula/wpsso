@@ -76,6 +76,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$opts = get_site_option( WPSSO_SITE_OPTIONS_NAME, array() );
 
 			if ( empty( $opts['plugin_preserve'] ) ) {
+
 				delete_site_option( WPSSO_SITE_OPTIONS_NAME );
 			}
 		}
@@ -134,11 +135,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
 
-			wp_clear_scheduled_hook( $this->p->lca . '_add_person_role' );
+			wp_clear_scheduled_hook( $this->p->lca . '_add_user_roles' );
 
-			if ( ! empty( $this->p->options['plugin_add_person_role'] ) ) {
-				wp_schedule_single_event( time(), $this->p->lca . '_add_person_role' );	// Run in the next minute.
-			}
+			wp_schedule_single_event( time(), $this->p->lca . '_add_user_roles' );	// Run in the next minute.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'done plugin activation' );
@@ -180,7 +179,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				 */
 				delete_post_meta_by_key( WPSSO_META_NAME );	// Since wp v2.3.
 
-				foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
+				foreach ( SucomUtil::get_all_user_ids() as $user_id ) {
 
 					delete_user_option( $user_id, WPSSO_DISMISS_NAME, false );	// $global is false.
 					delete_user_option( $user_id, WPSSO_DISMISS_NAME, true );	// $global is true.
@@ -255,14 +254,14 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin.php';
 				}
 
-				deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent is true
+				deactivate_plugins( WPSSO_PLUGINBASE, true );	// $silent is true.
 
 				if ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {
 
-					// translators: %s is the short plugin name
+					// translators: %s is the short plugin name.
 					$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
 
-					// translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number
+					// translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number.
 					$error_msg = sprintf( __( '%1$s requires %2$s version %3$s or higher and has been deactivated.',
 						'wpsso' ), $plugin_name, $app_label, $min_version );
 

@@ -2,11 +2,13 @@
 /**
  * Hard-coded / fixed constants (values cannot be modified).
  */
+WPSSO_VERSION
 WPSSO_FILEPATH
 WPSSO_PLUGINDIR
 WPSSO_PLUGINSLUG
 WPSSO_PLUGINBASE
 WPSSO_URLPATH
+WPSSO_UNDEF
 
 /**
  * Variable constants (define in wp-config.php file to change default values).
@@ -17,7 +19,6 @@ WPSSO_CACHEDIR				= WPSSO_PLUGINDIR.'cache/'
 WPSSO_CACHEURL				= WPSSO_URLPATH.'cache/'
 WPSSO_MENU_ORDER			= 99.11
 WPSSO_JSON_PRETTY_PRINT			= false
-WPSSO_UNDEF_INT				= -1
 WPSSO_CONTENT_BLOCK_FILTER_OUTPUT	= true	// Monitor and fix incorrectly coded filter hooks.
 WPSSO_CONTENT_FILTERS_MAX_TIME		= 0.75
 WPSSO_CONTENT_IMAGES_MAX_LIMIT		= 5

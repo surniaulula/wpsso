@@ -193,7 +193,7 @@
 
 'wpsso_og_seed' ( $og, $mod )
 
-'wpsso_og_type' ( $og_type, $mod )
+'wpsso_og_type' ( $og_type, $mod, $is_custom )
 
 'wpsso_og_type_for_default' ( 'website', $mod )
 

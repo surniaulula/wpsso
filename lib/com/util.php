@@ -3329,17 +3329,48 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function get_user_names_by_roles( array $roles = array( 'administrator' ), $blog_id = false ) {
+		public static function get_all_user_ids( $blog_id = null ) {
 
 			if ( empty( $blog_id ) ) {
-				$blog_id = get_current_blog_id(); // Since WP 3.1.
+				$blog_id = get_current_blog_id();	// Since WP v3.1.
 			}
+
+			$user_args  = array(
+				'blog_id' => $blog_id,
+				'orderby' => 'ID',
+				'order'   => 'DESC',	// Newest users first.
+				'fields'  => array(	// Save memory and only return only specific fields.
+					'ID',
+				)
+			);
+
+			$user_ids = array();
+
+			foreach ( get_users( $user_args ) as $user_obj ) {
+				if ( ! empty( $user_obj->ID ) ) {	// Just in case.
+					$user_ids[] = $user_obj->ID;
+				}
+			}
+
+			return $user_ids;
+		}
+
+		public static function get_user_names_by_roles( array $roles, $blog_id = null ) {
+
+			if ( empty( $blog_id ) ) {
+				$blog_id = get_current_blog_id();	// Since WP v3.1.
+			}
+
+			if ( empty( $roles ) ) {			// False, null, empty string or array.
+				return array();
+			};
 
 			$user_names = array();
 
 			foreach ( $roles as $role ) {
 
 				$user_args  = array(
+					'blog_id' => $blog_id,
 					'role'    => $role,
 					'fields'  => array(	// Save memory and only return only specific fields.
 						'ID',
@@ -3366,7 +3397,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $user_names;
 		}
 
-		public static function get_user_select_by_roles( array $roles = array( 'administrator' ), $blog_id = false, $add_none = true ) {
+		public static function get_user_ids_by_roles( array $roles, $blog_id = null ) {
+
+			$user_ids = array_keys( self::get_user_names_by_roles( $roles, $blog_id ) );
+
+			rsort( $user_ids );	// Newest user first.
+
+			return $user_ids;
+		}
+
+		public static function get_user_select_by_roles( array $roles, $blog_id = null, $add_none = true ) {
 
 			$user_select = self::get_user_names_by_roles( $roles, $blog_id );
 

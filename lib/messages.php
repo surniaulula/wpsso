@@ -1134,9 +1134,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_add_person_role':
+						case 'tooltip-plugin_new_user_is_person':
 
-							$text = sprintf( __( 'Automatically add the \'%s\' role when new users are created.', 'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) );
+							$text = sprintf( __( 'Automatically add the \'%s\' role when new users are created.', 'wpsso' ),
+								_x( 'Person', 'user role', 'wpsso' ) );
 
 							break;
 

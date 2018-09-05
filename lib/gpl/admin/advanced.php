@@ -114,9 +114,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Honor the FORCE_SSL Constant', 'option label', 'wpsso' ), '', 'plugin_honor_force_ssl' ).
 			$form->get_td_no_checkbox( 'plugin_honor_force_ssl' );
 
-			$table_rows['plugin_add_person_role'] = ''.
-			$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ), '', 'plugin_add_person_role' ).
-			$form->get_td_no_checkbox( 'plugin_add_person_role' );
+			$table_rows['plugin_new_user_is_person'] = ''.
+			$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ), '', 'plugin_new_user_is_person' ).
+			$form->get_td_no_checkbox( 'plugin_new_user_is_person' );
 
 			$table_rows['plugin_filter_lang'] = $form->get_tr_hide( 'basic', 'plugin_filter_lang' ).
 			$form->get_th_html( _x( 'Use WP Locale for Language', 'option label', 'wpsso' ), '', 'plugin_filter_lang' ).
