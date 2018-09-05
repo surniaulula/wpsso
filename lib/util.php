@@ -1075,7 +1075,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME + 3;
 
-				usleep( $sleep_secs * 1000000 );			// Sleep for 3 1/2 seconds by default.
+				usleep( $sleep_secs * 1000000 );			// Sleeps for 3 1/2 seconds by default.
 
 				if ( get_transient( $cache_id ) !== false ) {		// Stop here if the other process is still running.
 					return;
@@ -1113,7 +1113,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME;
 
-				usleep( $sleep_secs * 1000000 );	// Sleep for 0.50 seconds by default.
+				usleep( $sleep_secs * 1000000 );	// Sleeps for 0.50 seconds by default.
 			}
 
 			delete_transient( $cache_id );

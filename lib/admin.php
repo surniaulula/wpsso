@@ -1120,12 +1120,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $this->menu_lib === 'profile' ) {
 
-				$user_id = get_current_user_id();
-				$profileuser = get_user_to_edit( $user_id );
-				$current_color = get_user_option( 'admin_color', $user_id );
+				$user_id     = get_current_user_id();
+				$user_obj    = get_user_to_edit( $user_id );
+				$admin_color = get_user_option( 'admin_color', $user_id );
 
-				if ( empty( $current_color ) ) {
-					$current_color = 'fresh';
+				if ( empty( $admin_color ) ) {
+					$admin_color = 'fresh';
 				}
 
 				// match WordPress behavior (users page for admins, profile page for everyone else)
@@ -1137,11 +1137,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<input type="hidden" name="wp_http_referer" value="' . $referer_admin_url . '" />' . "\n";
 				echo '<input type="hidden" name="action" value="update" />' . "\n";
 				echo '<input type="hidden" name="user_id" value="' . $user_id . '" />' . "\n";
-				echo '<input type="hidden" name="nickname" value="' . $profileuser->nickname . '" />' . "\n";
-				echo '<input type="hidden" name="email" value="' . $profileuser->user_email . '" />' . "\n";
-				echo '<input type="hidden" name="admin_color" value="' . $current_color . '" />' . "\n";
-				echo '<input type="hidden" name="rich_editing" value="' . $profileuser->rich_editing . '" />' . "\n";
-				echo '<input type="hidden" name="comment_shortcuts" value="' . $profileuser->comment_shortcuts . '" />' . "\n";
+				echo '<input type="hidden" name="nickname" value="' . $user_obj->nickname . '" />' . "\n";
+				echo '<input type="hidden" name="email" value="' . $user_obj->user_email . '" />' . "\n";
+				echo '<input type="hidden" name="admin_color" value="' . $admin_color . '" />' . "\n";
+				echo '<input type="hidden" name="rich_editing" value="' . $user_obj->rich_editing . '" />' . "\n";
+				echo '<input type="hidden" name="comment_shortcuts" value="' . $user_obj->comment_shortcuts . '" />' . "\n";
 				echo '<input type="hidden" name="admin_bar_front" value="' . _get_admin_bar_pref( 'front', $user_id ) . '" />' . "\n";
 
 				wp_nonce_field( 'update-user_' . $user_id );
@@ -3307,7 +3307,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ) . '</p>' .
 			'</td>';
 
-			$owner_roles = $this->p-cf['wp']['roles']['owner'];
+			$owner_roles = $this->p->cf['wp']['roles']['owner'];
 
 			$site_owners = SucomUtil::get_user_select_by_roles( $owner_roles );
 
