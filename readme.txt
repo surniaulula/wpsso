@@ -474,12 +474,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Added an optional `$posts_args` argument for the following methods:
-		* WpssoMeta::get_posts_mods()
-		* WpssoMeta::get_posts()
-		* WpssoPost::get_posts()
-		* WpssoTerm::get_posts()
-		* WpssoUser::get_posts()
+	* None.
 
 **Version 4.7.1 (2018/07/06)**
 
