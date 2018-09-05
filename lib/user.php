@@ -127,7 +127,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public static function get_public_user_ids( $role = 'contributor' ) {
 
-			$user_args = array(
+			$users_args = array(
 				'role'    => $role,
 				'orderby' => 'ID',
 				'order'   => 'DESC',	// Newest user first.
@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$public_user_ids = array();
 
-			foreach ( get_users( $user_args ) as $user_obj ) {
+			foreach ( get_users( $users_args ) as $user_obj ) {
 				if ( ! empty( $user_obj->ID ) ) {	// Just in case.
 					$public_user_ids[] = $user_obj->ID;
 				}
@@ -147,7 +147,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $public_user_ids;
 		}
 
-		public function get_posts( array $mod, $posts_per_page = false, $paged = false, array $get_posts_args = array() ) {
+		public function get_posts_ids( array $mod, $posts_per_page = false, $paged = false, array $posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -170,20 +170,22 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$mod['name'] . ' id ' . $mod['id'] . ' (posts_per_page is ' . $posts_per_page . ')' );
 			}
 
-			$get_posts_args = array_merge( array(
+			$posts_args = array_merge( array(
 				'has_password'   => false,
 				'orderby'        => 'date',
 				'order'          => 'DESC',
 				'paged'          => $paged,
 				'post_status'    => 'publish',
-				'post_type'      => 'any',		// Post, page, or custom post type.
+				'post_type'      => 'any',		// Return post, page, or any custom post type.
 				'posts_per_page' => $posts_per_page,
 				'author'         => $mod['id'],
-			), $get_posts_args );
+			), $posts_args, array(
+				'fields'         => 'ids',		// 'ids' (returns an array of ids).
+			) );
 
 			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
 			$start_time = microtime( true );
-			$user_posts = get_posts( $get_posts_args );
+			$post_ids   = get_posts( $posts_args );
 			$total_time = microtime( true ) - $start_time;
 
 			if ( $max_time > 0 && $total_time > $max_time ) {
@@ -216,10 +218,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $user_posts ) . ' post objects returned in ' . sprintf( '%0.3f secs', $total_time ) );
+				$this->p->debug->log( count( $post_ids ) . ' post ids returned in ' . sprintf( '%0.3f secs', $total_time ) );
 			}
 
-			return $user_posts;
+			return $post_ids;
 		}
 
 		public function add_person_role( $user_id ) {
@@ -1009,7 +1011,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( false === $user_id ) {
 
-					$user_args = array(
+					$users_args = array(
 						'role'     => 'contributor',	// Contributors can delete_posts, edit_posts, read.
 						'orderby'  => 'ID',
 						'order'    => 'DESC',		// Newest user first.
@@ -1019,7 +1021,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						),
 					);
 
-					foreach ( get_users( $user_args ) as $user_obj ) {
+					foreach ( get_users( $users_args ) as $user_obj ) {
 						if ( ! empty( $user_obj->ID ) ) {	// Just in case.
 							delete_user_option( $user_obj->ID, $meta_key, false );	// $global is false.
 							delete_user_option( $user_obj->ID, $meta_key, true );	// $global is true.

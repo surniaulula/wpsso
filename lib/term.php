@@ -131,21 +131,24 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			global $wp_version;
 
-			$term_args = array(
+			$terms_args = array(
 				'fields' => 'ids',	// 'ids' (returns an array of ids).
 			);
 
-			$tax_in_args = version_compare( $wp_version, '4.5.0', '>=' ) ? true : false;
+			$add_tax_in_args = version_compare( $wp_version, '4.5.0', '>=' ) ? true : false;
 
 			$public_term_ids = array();
 
 			foreach ( self::get_public_tax_names( $tax_name ) as $term_tax_name ) {
 				
-				if ( $tax_in_args ) {	// Since WP v4.5.
-					$term_args[ 'taxonomy' ] = $term_tax_name;
-					$term_ids = get_terms( $term_args );
+				if ( $add_tax_in_args ) {	// Since WP v4.5.
+
+					$terms_args[ 'taxonomy' ] = $term_tax_name;
+
+					$term_ids = get_terms( $terms_args );
+
 				} else {
-					$term_ids = get_terms( $term_tax_name, $term_args );
+					$term_ids = get_terms( $term_tax_name, $terms_args );
 				}
 
 				foreach ( $term_ids as $term_id ) {
@@ -160,24 +163,24 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public static function get_public_tax_names( $tax_name = null ) {
 
-			$tax_args = array(
+			$get_tax_args = array(
 				'public'  => 1,
 				'show_ui' => 1,
 			);
 
 			if ( is_string( $tax_name ) ) {
-				$tax_args[ 'name' ] = $tax_name;
+				$get_tax_args[ 'name' ] = $tax_name;
 			}
 
 			$tax_oper = 'and';
 
-			return get_taxonomies( $tax_args, 'names', $tax_oper );
+			return get_taxonomies( $get_tax_args, 'names', $tax_oper );
 		}
 
 		/**
 		 * Note that this method returns posts of child terms as well.
 		 */
-		public function get_posts( array $mod, $posts_per_page = false, $paged = false, array $get_posts_args = array() ) {
+		public function get_posts_ids( array $mod, $posts_per_page = false, $paged = false, array $posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -200,13 +203,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					' in taxonomy '.$mod['tax_slug'].' (posts_per_page is '.$posts_per_page.')' );
 			}
 
-			$get_posts_args = array_merge( array(
+			$posts_args = array_merge( array(
 				'has_password'   => false,
 				'orderby'        => 'date',
 				'order'          => 'DESC',
 				'paged'          => $paged,
 				'post_status'    => 'publish',
-				'post_type'      => 'any',		// Post, page, or custom post type.
+				'post_type'      => 'any',		// Return post, page, or any custom post type.
 				'posts_per_page' => $posts_per_page,
 				'tax_query'      => array(
 				        array(
@@ -216,11 +219,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						'include_children' => true
 					)
 				),
-			), $get_posts_args );
+			), $posts_args, array(
+				'fields'         => 'ids',		// 'ids' (returns an array of ids).
+			) );
 
 			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
 			$start_time = microtime( true );
-			$term_posts = get_posts( $get_posts_args );
+			$post_ids   = get_posts( $posts_args );
 			$total_time = microtime( true ) - $start_time;
 
 			if ( $max_time > 0 && $total_time > $max_time ) {
@@ -253,10 +258,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $term_posts ).' post objects returned in '.sprintf( '%0.3f secs', $total_time ) );
+				$this->p->debug->log( count( $post_ids ).' post ids returned in '.sprintf( '%0.3f secs', $total_time ) );
 			}
 
-			return $term_posts;
+			return $post_ids;
 		}
 
 		public function add_column_headings( $columns ) {
