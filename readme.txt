@@ -474,7 +474,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Added an optional `$get_posts_args` argument for the following methods:
+	* Added an optional `$posts_args` argument for the following methods:
 		* WpssoMeta::get_posts_mods()
 		* WpssoMeta::get_posts()
 		* WpssoPost::get_posts()
