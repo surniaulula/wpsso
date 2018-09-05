@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.12.0-dev.9 (2018/09/04)**
+**Version 4.12.0-dev.10 (2018/09/04)**
 
 * *New Features*
 	* None.
@@ -346,6 +346,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Added a new 'unhide_rows_on_show' event for the SucomForm::get_select() method.
 	* Moved the "person" role additional from the plugin activation method to a scheduled task.
+	* Reviewed all calls to get_users(), get_posts(), and get_terms() to minimize memory usage.
 	* Minor code changes to rename the package check method.
 
 **Version 4.11.1 (2018/08/25)**
@@ -679,7 +680,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.12.0-dev.9 =
+= 4.12.0-dev.10 =
 
 (2018/09/04) Added sub-types to the Schema AdministrativeArea type. Removed support for automatically hidden notifications.
 
