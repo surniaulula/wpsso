@@ -2561,14 +2561,14 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:114 lib/gpl/admin/post.php:131 lib/meta.php:254
-#: lib/meta.php:279 lib/pro/admin/meta.php:126 lib/pro/admin/post.php:138
+#: lib/gpl/admin/meta.php:114 lib/gpl/admin/post.php:131 lib/meta.php:245
+#: lib/meta.php:270 lib/pro/admin/meta.php:126 lib/pro/admin/post.php:138
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:120 lib/gpl/admin/post.php:138 lib/meta.php:258
-#: lib/meta.php:283 lib/pro/admin/meta.php:132 lib/pro/admin/post.php:145
+#: lib/gpl/admin/meta.php:120 lib/gpl/admin/post.php:138 lib/meta.php:249
+#: lib/meta.php:274 lib/pro/admin/meta.php:132 lib/pro/admin/post.php:145
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -2733,7 +2733,7 @@ msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gpl/admin/post.php:212 lib/meta.php:250 lib/pro/admin/post.php:220
+#: lib/gpl/admin/post.php:212 lib/meta.php:241 lib/pro/admin/post.php:220
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -4698,7 +4698,7 @@ msgid ""
 "by the %s plugin."
 msgstr ""
 
-#: lib/messages.php:2208 lib/meta.php:163
+#: lib/messages.php:2208 lib/meta.php:154
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
@@ -4966,112 +4966,112 @@ msgid ""
 "locale</a> to define alternate values for different languages."
 msgstr ""
 
-#: lib/meta.php:162
+#: lib/meta.php:153
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/meta.php:164
+#: lib/meta.php:155
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/meta.php:165
+#: lib/meta.php:156
 msgctxt "metabox tab"
 msgid "Head Tags"
 msgstr ""
 
-#: lib/meta.php:166
+#: lib/meta.php:157
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/meta.php:235
+#: lib/meta.php:226
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:240
+#: lib/meta.php:231
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:245
+#: lib/meta.php:236
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:262 lib/meta.php:289
+#: lib/meta.php:253 lib/meta.php:280
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/meta.php:294
+#: lib/meta.php:285
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:415
+#: lib/meta.php:406
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:417
+#: lib/meta.php:408
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:421
+#: lib/meta.php:412
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:423
+#: lib/meta.php:414
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:427
+#: lib/meta.php:418
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:429
+#: lib/meta.php:420
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:433
+#: lib/meta.php:424
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:435
+#: lib/meta.php:426
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:439
+#: lib/meta.php:430
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:441
+#: lib/meta.php:432
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:446
+#: lib/meta.php:437
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:448
+#: lib/meta.php:439
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:803
+#: lib/meta.php:794
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

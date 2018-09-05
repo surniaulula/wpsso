@@ -107,20 +107,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			foreach ( $this->get_posts_ids( $mod, $posts_per_page, $paged, $posts_args ) as $post_id ) {
 
-				if ( empty( $post_id ) ) {	// Just in case.
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'post object ID is empty' );
-					}
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'getting mod for post object ID ' . $post_id );
-					}
-
-					$posts_mods[] = $this->p->m['util']['post']->get_mod( $post_id );
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'getting mod for post object ID ' . $post_id );
 				}
+
+				$posts_mods[] = $this->p->m['util']['post']->get_mod( $post_id );
 			}
 
 			return $posts_mods;
