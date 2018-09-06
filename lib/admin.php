@@ -816,15 +816,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$clear_short    = null;				// Use the default value from the plugin options.
 				$refresh_all    = null;				// Use the default value from the plugin options.
 				$user_id        = get_current_user_id();
-				$dismiss_key    = 'settings-saved-clear-all-cache-and-external';
+				$dismiss_key    = false;
 
-				$this->p->util->clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
+				$this->p->util->schedule_clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
 
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 					_x( 'Clear Cache on Save Settings', 'option label', 'wpsso' ) );
 
 				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
-					sprintf( __( 'Note that all caches have also been cleared (the %s option is enabled).', 'wpsso' ),
+					sprintf( __( 'A background task will begin shortly to clear all caches (%s option is enabled).', 'wpsso' ),
 						$settings_page_link ) );
 			}
 

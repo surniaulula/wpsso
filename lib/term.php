@@ -136,17 +136,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			);
 
 			$add_tax_in_args = version_compare( $wp_version, '4.5.0', '>=' ) ? true : false;
-
 			$public_term_ids = array();
 
 			foreach ( self::get_public_tax_names( $tax_name ) as $term_tax_name ) {
 				
 				if ( $add_tax_in_args ) {	// Since WP v4.5.
-
 					$terms_args[ 'taxonomy' ] = $term_tax_name;
-
 					$term_ids = get_terms( $terms_args );
-
 				} else {
 					$term_ids = get_terms( $term_tax_name, $terms_args );
 				}

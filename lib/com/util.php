@@ -1199,11 +1199,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return preg_replace( '/^([a-z]+:\/\/)/', $prot_slash, $url );
 		}
 
-		public static function get_const( $const, $not_found = null ) {
+		public static function get_const( $const, $undef = null ) {
 			if ( defined( $const ) ) {
 				return constant( $const );
 			} else {
-				return $not_found;
+				return $undef;
 			}
 		}
 
@@ -3326,7 +3326,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array( $lib_id, $stub, $action );
 		}
 
-		public static function wp_role_exists( $role ) {
+		public static function role_exists( $role ) {
 
 			if ( empty( $role ) ) {	// Just in case.
 				return false;
@@ -3337,55 +3337,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function get_all_user_ids( $blog_id = null, $number = '' ) {
-
-			static $offset = '';
-
-			if ( empty( $blog_id ) ) {
-				$blog_id = get_current_blog_id();	// Since WP v3.1.
-			}
-
-			if ( is_numeric( $number ) ) {
-				$offset = '' === $offset ? 0 : $offset + $number;
-			}
-
-			$user_args  = array(
-				'blog_id' => $blog_id,
-				'offset'  => $offset,
-				'number'  => $number,
-				'orderby' => 'ID',
-				'order'   => 'DESC',	// Newest users first.
-				'fields'  => array(	// Save memory and only return only specific fields.
-					'ID',
-				)
-			);
-
-			$user_ids = array();
-
-			foreach ( get_users( $user_args ) as $user_obj ) {
-				$user_ids[] = $user_obj->ID;
-			}
-
-			if ( '' !== $offset ) {
-				if ( empty( $user_ids ) ) {
-					return false;	// To break the while loop.
-				}
-			}
-
-			return $user_ids;
-		}
-
 		/**
 		 * See also WpssoUser::get_public_user_ids().
 		 */
 		public static function get_writer_user_ids( $blog_id = null ) {
 
-			$roles = array(
-				'administrator',
-				'editor',
-				'author',
-				'contributor',
-			);
+			$roles = array( 'administrator', 'editor', 'author', 'contributor' );
 
 			return self::get_user_ids_by_roles( $roles, $blog_id );
 		}
@@ -3401,30 +3358,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_user_names_by_roles( array $roles, $blog_id = null ) {
 
+			if ( empty( $roles ) ) {
+				return array();
+			};
+
 			if ( empty( $blog_id ) ) {
 				$blog_id = get_current_blog_id();	// Since WP v3.1.
 			}
 
-			if ( empty( $roles ) ) {			// False, null, empty string or array.
-				return array();
-			};
-
 			$user_names = array();
 
 			foreach ( $roles as $role ) {
-
-				$user_args  = array(
-					'blog_id' => $blog_id,
-					'role'    => $role,
-					'fields'  => array(	// Save memory and only return only specific fields.
-						'ID',
-						'display_name'
-					)
-				);
-
-				foreach ( get_users( $user_args ) as $user_obj ) {
-					$user_names[ $user_obj->ID ] = $user_obj->display_name;
-				}
+				$user_names += self::get_user_names( $blog_id, $role );
 			}
 
 			/**
@@ -3448,6 +3393,87 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $user_select;
+		}
+
+		public static function get_user_ids( $blog_id = null, $role = '', $limit = '' ) {
+
+			static $offset = '';
+
+			if ( empty( $blog_id ) ) {
+				$blog_id = get_current_blog_id();	// Since WP v3.1.
+			}
+
+			if ( is_numeric( $limit ) ) {
+				$offset = '' === $offset ? 0 : $offset + $limit;
+			}
+
+			$user_args  = array(
+				'blog_id' => $blog_id,
+				'offset'  => $offset,
+				'number'  => $limit,
+				'orderby' => 'ID',
+				'order'   => 'DESC',	// Newest users first.
+				'role'    => $role,
+				'fields'  => array(	// Save memory and only return only specific fields.
+					'ID',
+				)
+			);
+
+			$user_ids = array();
+
+			foreach ( get_users( $user_args ) as $user_obj ) {
+				$user_ids[] = $user_obj->ID;
+			}
+
+			if ( '' !== $offset ) {
+				if ( empty( $user_ids ) ) {
+					$offset = '';	// Allow the next call to start fresh.
+					return false;	// To break the while loop.
+				}
+			}
+
+			return $user_ids;
+		}
+
+		public static function get_user_names( $blog_id = null, $role = '', $limit = '' ) {
+
+			static $offset = '';
+
+			if ( empty( $blog_id ) ) {
+				$blog_id = get_current_blog_id();	// Since WP v3.1.
+			}
+
+			if ( is_numeric( $limit ) ) {
+				$offset = '' === $offset ? 0 : $offset + $limit;
+			}
+
+			$user_args  = array(
+				'blog_id' => $blog_id,
+				'offset'  => $offset,
+				'number'  => $limit,
+				'orderby' => 'display_name',
+				'order'   => 'ASC',
+				'role'    => $role,
+				'fields'  => array(	// Save memory and only return only specific fields.
+					'ID',
+					'display_name',
+				)
+			);
+
+			$user_names = array();
+
+			foreach ( get_users( $user_args ) as $user_obj ) {
+				$user_names[ $user_obj->ID ] = $user_obj->display_name;
+			}
+
+			if ( '' !== $offset ) {
+				if ( empty( $user_names ) ) {
+					$offset = '';	// Allow the next call to start fresh.
+					return false;	// To break the while loop.
+				}
+			}
+
+			return $user_names;
 		}
 
 		public static function count_diff( &$arr, $max = 0 ) {

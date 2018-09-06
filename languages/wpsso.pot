@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.12.0-b.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.12.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +98,9 @@ msgid "Clear Cache on Save Settings"
 msgstr ""
 
 #: lib/admin.php:827
-msgid "Note that all caches have also been cleared (the %s option is enabled)."
+msgid ""
+"A background task will begin shortly to clear all caches (%s option is "
+"enabled)."
 msgstr ""
 
 #: lib/admin.php:864
@@ -109,7 +111,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:920 lib/post.php:741 lib/term.php:437 lib/user.php:429
+#: lib/admin.php:920 lib/post.php:741 lib/term.php:433 lib/user.php:426
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -374,7 +376,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:2212 lib/pro/media/slideshare.php:200
-#: lib/pro/media/vimeo.php:169 lib/pro/media/wistia.php:333 lib/util.php:1686
+#: lib/pro/media/vimeo.php:169 lib/pro/media/wistia.php:333 lib/util.php:1690
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -1119,23 +1121,23 @@ msgstr ""
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: lib/com/notice.php:157 lib/com-gettext-extract.php:14
+#: lib/com/notice.php:159 lib/com-gettext-extract.php:14
 msgid "Forever"
 msgstr ""
 
-#: lib/com/notice.php:159 lib/com-gettext-extract.php:29
+#: lib/com/notice.php:161 lib/com-gettext-extract.php:29
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: lib/com/notice.php:169 lib/com-gettext-extract.php:28
+#: lib/com/notice.php:171 lib/com-gettext-extract.php:28
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:354 lib/com-gettext-extract.php:7
+#: lib/com/notice.php:360 lib/com-gettext-extract.php:7
 msgid "edit"
 msgstr ""
 
-#: lib/com/notice.php:356 lib/com-gettext-extract.php:21
+#: lib/com/notice.php:362 lib/com-gettext-extract.php:21
 msgid "Reference: %s"
 msgstr ""
 
@@ -2792,7 +2794,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:164 lib/loader.php:190 lib/post.php:252 lib/register.php:266
-#: lib/term.php:253 lib/user.php:208 lib/util.php:367 lib/util.php:2828
+#: lib/term.php:249 lib/user.php:205 lib/util.php:367 lib/util.php:2832
 msgid "%s warning:"
 msgstr ""
 
@@ -3415,7 +3417,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:686 lib/util.php:3100
+#: lib/messages.php:686 lib/util.php:3104
 msgid "No options available."
 msgstr ""
 
@@ -3908,7 +3910,7 @@ msgstr ""
 msgid "Automatically add the '%s' role when new users are created."
 msgstr ""
 
-#: lib/messages.php:1140 lib/user.php:28 lib/user.php:241
+#: lib/messages.php:1140 lib/user.php:28 lib/user.php:238
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -5269,8 +5271,8 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:238 lib/term.php:239 lib/user.php:194 lib/util.php:353
-#: lib/util.php:2805
+#: lib/post.php:238 lib/term.php:235 lib/user.php:191 lib/util.php:353
+#: lib/util.php:2809
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5309,7 +5311,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:914 lib/util.php:1600
+#: lib/post.php:914 lib/util.php:1604
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -5524,12 +5526,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:195 lib/pro/media/vimeo.php:164
-#: lib/pro/media/wistia.php:328 lib/util.php:1681
+#: lib/pro/media/wistia.php:328 lib/util.php:1685
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/pro/media/slideshare.php:197 lib/pro/media/vimeo.php:166
-#: lib/pro/media/wistia.php:330 lib/util.php:1683
+#: lib/pro/media/wistia.php:330 lib/util.php:1687
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
@@ -6071,13 +6073,13 @@ msgid "Setup Guide and Other Notes"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$s is a recommended max
-#: lib/term.php:242
+#: lib/term.php:238
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:566
+#: lib/term.php:562
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -6092,29 +6094,29 @@ msgid "Twitter Large Image Card"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-#: lib/user.php:197
+#: lib/user.php:194
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts "
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:625
+#: lib/user.php:622
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:707
+#: lib/user.php:704
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:708
+#: lib/user.php:705
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:709
+#: lib/user.php:706
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1173
+#: lib/user.php:1170
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
@@ -6125,56 +6127,56 @@ msgid ""
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1219
+#: lib/util.php:1225
 msgid ""
 "%s cached files, transient cache, column meta, and WordPress object cache "
-"have been cleared."
+"have all been cleared."
 msgstr ""
 
-#: lib/util.php:1225
+#: lib/util.php:1231
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1260
+#: lib/util.php:1259
 msgid ""
 "A background task will begin shortly to re-create the %s post, term, and "
 "user transient cache objects."
 msgstr ""
 
-#: lib/util.php:1381
+#: lib/util.php:1435
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1408
+#: lib/util.php:1462
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1517
+#: lib/util.php:1521
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1587
+#: lib/util.php:1591
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1613
+#: lib/util.php:1617
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1733
+#: lib/util.php:1737
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:2808
+#: lib/util.php:2812
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2821
+#: lib/util.php:2825
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6183,29 +6185,29 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2821
+#: lib/util.php:2825
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3127
+#: lib/util.php:3131
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3130
+#: lib/util.php:3134
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3135
+#: lib/util.php:3139
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3138
+#: lib/util.php:3142
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
@@ -6223,13 +6225,13 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:443
+#: wpsso.php:444
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:444
+#: wpsso.php:445
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

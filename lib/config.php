@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.12.0-b.1',	// Plugin version.
+					'version'     => '4.12.0-b.2',	// Plugin version.
 					'opt_version' => '601',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1520,6 +1520,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Transient id prefix.
 				 */
 				'transient' => array(
+					'wpsso_!_' => array(	// Protect transient from being cleared automatically.
+					),
 					'wpsso_a_' => array(
 						'label'   => 'Article Topics',
 						'opt_key' => 'plugin_topics_cache_exp',
@@ -1541,10 +1543,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'label'   => 'Schema Data',
 						'opt_key' => 'plugin_json_data_cache_exp',
 						'filter'  => 'wpsso_cache_expire_schema_json_data',
-					),
-					'wpsso_n_' => array(	// Notification transient cache for user IDs.
-					),
-					'wpsso_p_' => array(	// Protect transient from being cleared automatically.
 					),
 					'wpsso_s_' => array(	// Automatic clearing is enable / disabled from settings.
 						'label'   => 'Shortened URLs',

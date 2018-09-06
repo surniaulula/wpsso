@@ -528,7 +528,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				die( '-1' );
 			}
 
-			$post_id = $_POST['post_id'];
+			$post_id  = $_POST['post_id'];
 			$post_obj = SucomUtil::get_post_object( $post_id );
 
 			if ( ! is_object( $post_obj ) ) {

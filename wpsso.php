@@ -16,7 +16,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 4.9.8
  * WC Tested Up To: 3.4.5
- * Version: 4.12.0-b.1
+ * Version: 4.12.0-b.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -282,8 +282,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function set_objects( $activate = false ) {
 
-			$is_admin = is_admin() ? true : false;
-			$network  = is_multisite() ? true : false;
+			$is_admin   = is_admin() ? true : false;
+			$network    = is_multisite() ? true : false;
+			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
 
 			$this->check = new WpssoCheck( $this );
 			$this->avail = $this->check->get_avail();	// Uses $this->options for availability checks.
@@ -331,12 +332,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			do_action( 'wpsso_init_textdomain', $this->debug->enabled );
 
-			if ( is_admin() ) {
+			if ( $is_admin || $doing_cron ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/com/notice.php';
 
 				$this->notice = new SucomNotice( $this );
-
 			} else {
 				$this->notice = new SucomNoNotice();	// make sure the notice property is always available
 			}
@@ -360,7 +360,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->tc       = new WpssoTwitterCard( $this );	// twitter meta tags
 			$this->schema   = new WpssoSchema( $this );		// schema meta tags and json markup
 
-			if ( is_admin() ) {
+			if ( $is_admin ) {
 				$this->msgs  = new WpssoMessages( $this );	// admin tooltip messages
 				$this->admin = new WpssoAdmin( $this );		// admin menus and page loader
 			}
@@ -411,7 +411,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 					$this->debug->log( 'WP debug log mode is active' );
 
-					if ( is_admin() ) {
+					if ( $is_admin ) {
 						$dismiss_key .= '-with-debug-log';
 						$warn_msg .= __( 'WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log.',
 							'wpsso' ) . ' ';
@@ -429,7 +429,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 					$this->debug->log( 'HTML debug mode is active' );
 
-					if ( is_admin() ) {
+					if ( $is_admin ) {
 						$dismiss_key .= '-with-html-comments';
 						$warn_msg .= __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.',
 							'wpsso' ) . ' ';
@@ -439,9 +439,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				if ( $this->debug->enabled ) {
 
 					if ( ! empty( $warn_msg ) ) {
+
 						// translators: %s is the short plugin name
 						$warn_msg .= sprintf( __( 'Debug mode disables some %s caching features, which degrades performance slightly.',
 							'wpsso' ), $info['short'] ) . ' ' . __( 'Please disable debug mode when debugging is complete.', 'wpsso' );
+
 						$this->notice->warn( $warn_msg, true, $dismiss_key, $dismiss_time );
 					}
 

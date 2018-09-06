@@ -1028,8 +1028,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * A transient is set and checked to limit the runtime and allow this process
 			 * to be terminated early (by removing the transient object).
 			 */
-			$cache_md5_pre  = $this->p->lca . '_p_';	// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;		// Run for max of 1 hour.
+			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
+			$cache_exp_secs = HOUR_IN_SECONDS;				// Run for max of 1 hour.
 			$cache_salt     = __METHOD__;
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_status   = 'running';
@@ -1051,13 +1051,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
 			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
-
-				if ( get_transient( $cache_id ) !== $cache_status ) {
-					break;	// Stop here and delete the transient.
+				if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
+					delete_transient( $cache_id );
+					return;
 				}
-
 				$user_obj = get_user_by( 'ID', $user_id );
-
 				$user_obj->add_role( 'person' );
 			}
 
@@ -1077,14 +1075,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mods = array();
-
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process
 			 * to be terminated early (by removing the transient object).
 			 */
-			$cache_md5_pre  = $this->p->lca . '_p_';	// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;		// Run for max of 1 hour.
+			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
+			$cache_exp_secs = HOUR_IN_SECONDS;				// Run for max of 1 hour.
 			$cache_salt     = __METHOD__;
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_status   = 'running';
@@ -1107,60 +1103,50 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
-			/**
-			 * Get post mods.
-			 */
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'getting public post mods' );
-			}
-
 			foreach ( WpssoPost::get_public_post_ids() as $post_id ) {
-				$mods[] = $this->p->m['util']['post']->get_mod( $post_id );
-			}
-
-			/**
-			 * Get term mods.
-			 */
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'getting public term mods' );
+				if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
+					delete_transient( $cache_id );
+					return;
+				}
+				$mods = $this->p->m['util']['post']->get_mod( $post_id );
+				$this->refresh_mod_head_meta( $mod );
 			}
 
 			foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
-				$mods[] = $this->p->m['util']['term']->get_mod( $term_id );
-			}
-
-			/**
-			 * Get user mods.
-			 */
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'getting public user mods' );
+				if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
+					delete_transient( $cache_id );
+					return;
+				}
+				$this->refresh_mod_head_meta( $mod );
+				$mod = $this->p->m['util']['term']->get_mod( $term_id );
 			}
 
 			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
-				$mods[] = $this->p->m['util']['user']->get_mod( $user_id );
+				if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
+					delete_transient( $cache_id );
+					return;
+				}
+				$mod = $this->p->m['util']['user']->get_mod( $user_id );
+				$this->refresh_mod_head_meta( $mod );
 			}
+
+			delete_transient( $cache_id );
+		}
+
+		private function refresh_mod_head_meta( array $mod ) {
 
 			$wp_obj       = false;
 			$image_sizes  = array();
 			$filter_sizes = true;
 
-			foreach ( $mods as $mod ) {
+			$this->add_plugin_image_sizes( $wp_obj, $image_sizes, $mod, $filter_sizes );
 
-				if ( get_transient( $cache_id ) !== $cache_status ) {
-					break;	// Stop here and delete the transient.
-				}
+			$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );
+			$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 
-				$this->add_plugin_image_sizes( $wp_obj, $image_sizes, $mod, $filter_sizes );
+			$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME;
 
-				$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );
-				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
-
-				$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME;
-
-				usleep( $sleep_secs * 1000000 );	// Sleeps for 0.50 seconds by default.
-			}
-
-			delete_transient( $cache_id );
+			usleep( $sleep_secs * 1000000 );	// Sleeps for 0.50 seconds by default.
 		}
 
 		public function schedule_clear_all_cache( $clear_external = false, $clear_short = null, $refresh_all = null, $user_id = null, $dismiss_key = false ) {
@@ -1190,6 +1176,25 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$cleared_all_cache = true;	// Prevent running a second time (by an external cache, for example).
 
+			/**
+			 * A transient is set and checked to limit the runtime and allow this process
+			 * to be terminated early (by removing the transient object).
+			 */
+			$cache_md5_pre  = $this->p->lca . '_!_';	// Protect transient from being cleared.
+			$cache_exp_secs = HOUR_IN_SECONDS;		// Run for max of 1 hour.
+			$cache_salt     = __METHOD__;
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
+			$cache_status   = 'running';
+
+			/**
+			 * Prevent concurrent execution.
+			 */
+			if ( get_transient( $cache_id ) !== false ) {	// Another process is already running.
+				return;
+			}
+
+			set_transient( $cache_id, $cache_status, $cache_exp_secs );
+
 			if ( null === $clear_short ) {
 				$clear_short = isset( $this->p->options['plugin_clear_short_urls'] ) ?
 					$this->p->options['plugin_clear_short_urls'] : false;
@@ -1209,6 +1214,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$deleted_count = 0;
 
 			$deleted_count += $this->delete_all_db_transients( $clear_short );
+
 			$deleted_count += $this->delete_all_cache_files();
 
 			$this->delete_all_column_meta();
@@ -1216,7 +1222,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$cleared_msg = '';
 
 			if ( $user_id ) {
-				$cleared_msg .= sprintf( __( '%s cached files, transient cache, column meta, and WordPress object cache have been cleared.',
+				$cleared_msg .= sprintf( __( '%s cached files, transient cache, column meta, and WordPress object cache have all been cleared.',
 					'wpsso' ), $this->p->cf['plugin'][$this->p->lca]['short'] );
 			}
 
@@ -1225,28 +1231,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$external_msg = ' ' . __( 'The cache for %s has also been cleared.', 'wpsso' );
 
 				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// W3 total cache.
-
 					w3tc_pgcache_flush();
 					w3tc_objectcache_flush();
-
 					if ( $user_id ) {
 						$cleared_msg .= sprintf( $external_msg, 'W3 Total Cache' );
 					}
 				}
 
 				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// WP super cache
-
 					wp_cache_clear_cache();
-
 					if ( $user_id ) {
 						$cleared_msg .= sprintf( $external_msg, 'WP Super Cache' );
 					}
 				}
 
 				if ( isset( $GLOBALS['comet_cache'] ) ) {		// Comet cache.
-
 					$GLOBALS['comet_cache']->wipe_cache();
-
 					if ( $user_id ) {
 						$cleared_msg .= sprintf( $external_msg, 'Comet Cache' );
 					}
@@ -1254,21 +1254,75 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $refresh_all ) {
-
 				if ( $user_id ) {
 					$cleared_msg .= ' ';
 					$cleared_msg .= sprintf( __( 'A background task will begin shortly to re-create the %s post, term, and user transient cache objects.',
 						'wpsso' ), $this->p->cf['plugin'][$this->p->lca]['short'] );
 				}
-
 				$this->schedule_refresh_all_cache();
 			}
 
 			if ( $cleared_msg ) {
-				$this->p->notice->inf( $cleared_msg, $user_id, $dismiss_key, true );	// Can be dismissed forever depending on args.
+				if ( $dismiss_key ) {
+					$this->p->notice->inf( $cleared_msg, $user_id, $dismiss_key, true );
+				} else {
+					$this->p->notice->upd( $cleared_msg, $user_id );
+				}
 			}
 
+			delete_transient( $cache_id );
+
 			return $deleted_count;
+		}
+
+		public function delete_all_column_meta() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$col_meta_keys = WpssoMeta::get_column_meta_keys();
+
+			/**
+			 * Delete post meta.
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'deleting post column meta' );
+			}
+
+			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+				delete_post_meta_by_key( $meta_key );
+			}
+
+			/**
+			 * Delete term meta.
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'deleting term column meta' );
+			}
+
+			foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
+				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+					WpssoTerm::delete_term_meta( $term_id, $meta_key );
+				}
+			}
+
+			/**
+			 * Delete user meta.
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'deleting user column meta' );
+			}
+
+			$blog_id  = get_current_blog_id();
+
+			while ( $user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {
+				foreach ( $user_ids as $user_id ) {
+					foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+						delete_user_meta( $user_id, $meta_key );
+					}
+				}
+			}
 		}
 
 		public function delete_all_db_transients( $clear_short = false ) {
@@ -1284,9 +1338,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			foreach( $transient_keys as $cache_id ) {
 
 				/**
-				 * Preserve transients that begin with "wpsso_p_".
+				 * Preserve transients that begin with "wpsso_!_".
 				 */
-				if ( strpos( $cache_id, $this->p->lca . '_p_' ) === 0 ) {
+				if ( strpos( $cache_id, $this->p->lca . '_!_' ) === 0 ) {
 					continue;
 				}
 
@@ -1416,56 +1470,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $deleted_count;
-		}
-
-		public function delete_all_column_meta() {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			$col_meta_keys = WpssoMeta::get_column_meta_keys();
-
-			/**
-			 * Delete post meta.
-			 */
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'deleting post column meta' );
-			}
-
-			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
-				delete_post_meta_by_key( $meta_key );
-			}
-
-			/**
-			 * Delete term meta.
-			 */
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'deleting term column meta' );
-			}
-
-			foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
-				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
-					WpssoTerm::delete_term_meta( $term_id, $meta_key );
-				}
-			}
-
-			/**
-			 * Delete user meta.
-			 */
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'deleting user column meta' );
-			}
-
-			$blog_id  = get_current_blog_id();
-
-			while ( $user_ids = SucomUtil::get_all_user_ids( $blog_id, 1000 ) ) {
-				foreach ( $user_ids as $user_id ) {
-					foreach ( $col_meta_keys as $col_idx => $meta_key ) {
-						delete_user_meta( $user_id, $meta_key );
-					}
-				}
-			}
 		}
 
 		public function get_article_topics() {

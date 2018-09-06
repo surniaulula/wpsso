@@ -24,7 +24,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		protected function add_actions() {
 
-			if ( ! SucomUtil::wp_role_exists( 'person' ) ) {
+			if ( ! SucomUtil::role_exists( 'person' ) ) {
 				add_role( 'person', _x( 'Person', 'user role', 'wpsso' ), array() );
 			}
 
@@ -121,9 +121,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return apply_filters( $this->p->lca . '_get_user_mod', $mod, $mod_id );
 		}
 
-		/**
-		 * See also SucomUtil::get_writer_user_ids().
-		 */
 		public static function get_public_user_ids() {
 
 			$wpsso =& Wpsso::get_instance();

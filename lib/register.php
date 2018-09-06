@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				$blog_id  = get_current_blog_id();
 
-				while ( $user_ids = SucomUtil::get_all_user_ids( $blog_id, 1000 ) ) {
+				while ( $user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {
 
 					foreach ( $user_ids as $user_id ) {
 
