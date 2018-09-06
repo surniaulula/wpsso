@@ -880,20 +880,32 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$user_id = get_current_user_id();	// since wp 3.0
 
 			switch ( $meta_name ) {
+
 				case 'order':
 				case 'meta-box-order':
+
 					$meta_states = array( 'meta-box-order' );
+
 					break;
+
 				case 'hidden':
 				case 'metaboxhidden':
+
 					$meta_states = array( 'metaboxhidden' );
+
 					break;
+
 				case 'closed':
 				case 'closedpostboxes':
+
 					$meta_states = array( 'closedpostboxes' );
+
 					break;
+
 				default:
+
 					$meta_states = array( 'meta-box-order', 'metaboxhidden', 'closedpostboxes' );
+
 					break;
 			}
 
@@ -979,7 +991,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public static function delete_metabox_prefs( $user_id = false ) {
 
-			$user_id = false === $user_id ? get_current_user_id() : $user_id;
+			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
 
 			$cf = WpssoConfig::get_config( false, true );
 
@@ -1038,7 +1050,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public static function save_pref( $user_prefs, $user_id = false ) {
 
-			$user_id = false === $user_id ? get_current_user_id() : $user_id;
+			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
 
 			if ( ! current_user_can( 'edit_user', $user_id ) ) {
 				return false;
@@ -1071,7 +1083,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public static function get_pref( $idx = false, $user_id = false ) {
 
-			$user_id = false === $user_id ? get_current_user_id() : $user_id;
+			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
 
 			if ( ! isset( self::$cache_pref[$user_id]['prefs_filtered'] ) || self::$cache_pref[$user_id]['prefs_filtered'] !== true ) {
 
@@ -1084,6 +1096,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				self::$cache_pref[$user_id]['prefs_filtered'] = true;	// set before calling filter to prevent recursion
+
 				self::$cache_pref[$user_id] = apply_filters( $wpsso->lca . '_get_user_pref', self::$cache_pref[$user_id], $user_id );
 
 				if ( ! isset( self::$cache_pref[$user_id]['show_opts'] ) ) {

@@ -812,9 +812,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			} else {
 
-				$dismiss_key = 'settings-saved-clear-all-cache-and-external';
+				$clear_external = true;				// Clear known 3rd party cache plugins. 
+				$clear_short    = null;				// Use the default value from the plugin options.
+				$refresh_all    = null;				// Use the default value from the plugin options.
+				$user_id        = get_current_user_id();
+				$dismiss_key    = 'settings-saved-clear-all-cache-and-external';
 
-				$this->p->util->clear_all_cache( true, null, null, $dismiss_key );
+				$this->p->util->clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
 
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 					_x( 'Clear Cache on Save Settings', 'option label', 'wpsso' ) );
@@ -902,6 +906,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! empty( $_GET[$action_query] ) ) {
 
 				$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
+
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
 
 				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
@@ -921,13 +926,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_all_cache':
 
-							$this->p->util->clear_all_cache( true );	// $clear_external is true.
+							$clear_external = true;				// Clear known 3rd party cache plugins. 
+							$clear_short    = null;				// Use the default value from the plugin options.
+							$refresh_all    = null;				// Use the default value from the plugin options.
+							$user_id        = get_current_user_id();
+							$dismiss_key    = false;			// Skip dismiss since we're doing clear cache manually.
+
+							$this->p->util->clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
 
 							break;
 
 						case 'clear_all_cache_and_short_urls':
 
-							$this->p->util->clear_all_cache( true, true );	// $clear_external is true.
+							$clear_external = true;				// Clear known 3rd party cache plugins. 
+							$clear_short    = true;				// Cleanup the shortened URL transient cache.
+							$refresh_all    = null;				// Use the default value from the plugin options.
+							$user_id        = get_current_user_id();
+							$dismiss_key    = false;			// Skip dismiss since we're doing clear cache manually.
+
+							$this->p->util->clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
 
 							break;
 
@@ -3089,8 +3106,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $have_changes ) {
 
 				$dismiss_key = 'notice-header-tmpl-no-head-attr-' . SucomUtil::get_theme_slug_version();
+				$admin_roles = $this->p->cf['wp']['roles']['admin'];
+				$user_ids    = SucomUtil::get_user_ids_by_roles( $admin_roles );
 
-				$this->p->notice->truncate_key( $dismiss_key, 'all' );	// Just in case.
+				$this->p->notice->truncate_key( $dismiss_key, $user_ids );	// Just in case.
 			}
 		}
 

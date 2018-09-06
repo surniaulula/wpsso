@@ -119,11 +119,13 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 */
 			if ( ! empty( $this->p->options['plugin_clear_on_activate'] ) ) {
 
-				$clear_external    = false;	// Caching plugins should clear their cache on activation.
-				$clear_short_urls  = null;	// Use the default value from the plugin options.
-				$refresh_all_cache = false;	// Do not auto-refresh cache objects on activation.
+				$clear_external = false;			// Caching plugins should clear their cache on activation.
+				$clear_short    = null;				// Use the default value from the plugin options.
+				$refresh_all    = null;				// Use the default value from the plugin options.
+				$user_id        = get_current_user_id();	// Show / save notice messages for the current user.
+				$dismiss_key    = false;
 
-				$this->p->util->clear_all_cache( $clear_external, $clear_short_urls, $refresh_all_cache );
+				$this->p->util->clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
 			}
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
@@ -134,9 +136,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
 
-			wp_clear_scheduled_hook( $this->p->lca . '_add_user_roles' );
-
-			wp_schedule_single_event( time(), $this->p->lca . '_add_user_roles' );	// Run in the next minute.
+			$this->p->util->schedule_add_user_roles();
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'done plugin activation' );
@@ -150,13 +150,13 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 */
 			if ( ! empty( $this->p->options['plugin_clear_on_activate'] ) ) {
 
-				$clear_external    = false;	// Caching plugins should clear their cache on deactivation.
-				$clear_short_urls  = true;	// Clear the shortened URL transient cache.
-				$refresh_all_cache = false;	// Do not auto-refresh cache objects on deactivation.
+				$clear_external = false;	// Caching plugins should clear their cache on deactivation.
+				$clear_short    = true;		// Cleanup the shortened URL transient cache.
+				$refresh_all    = false;	// Do not auto-refresh cache objects on deactivation.
+				$user_id        = 0;		// Do not show / save any notice messages. 
+				$dismiss_key    = false;
 
-				$this->p->util->clear_all_cache( $clear_external, $clear_short_urls, $refresh_all_cache );
-
-				$this->p->notice->truncate_all();	// Delete all stored notices for all users.
+				$this->p->util->clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
 			}
 
 			delete_option( WPSSO_POST_CHECK_NAME );	// Remove the post duplicate check counter.
@@ -176,10 +176,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				delete_option( WPSSO_OPTIONS_NAME );
 
-				/**
-				 * Delete all post meta.
-				 */
 				delete_post_meta_by_key( WPSSO_META_NAME );	// Since wp v2.3.
+
+				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
+					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
+				}
 
 				foreach ( SucomUtil::get_all_user_ids() as $user_id ) {
 
@@ -197,10 +198,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				}
 
 				remove_role( 'person' );
-
-				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
-					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
-				}
 			}
 
 			/**

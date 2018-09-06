@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.12.0-dev.14',	// Plugin version.
+					'version'     => '4.12.0-b.1',	// Plugin version.
 					'opt_version' => '601',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1500,7 +1500,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'author',
 						'contributor',
 					),
-					'publish' => array(	// Users that can publish posts.
+					'publisher' => array(	// Users that can publish posts.
 						'administrator',
 						'editor',
 						'author',
@@ -1508,6 +1508,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'owner' => array(	// Users that can manage posts (edit, publish, delete, etc.).
 						'administrator',
 						'editor',
+					),
+					'admin' => array(
+						'administrator',
 					),
 					'person' => array(	// Users for the Schema Person markup.
 						'person',
@@ -1522,7 +1525,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'opt_key' => 'plugin_topics_cache_exp',
 						'filter'  => 'wpsso_cache_expire_article_topics',
 					),
-					'wpsso_b_' => array(	// Sharing buttons html cache.
+					'wpsso_b_' => array(	// Sharing buttons HTML cache.
 					),
 					'wpsso_h_' => array(
 						'label'   => 'Head Markup',
@@ -1539,9 +1542,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'opt_key' => 'plugin_json_data_cache_exp',
 						'filter'  => 'wpsso_cache_expire_schema_json_data',
 					),
-					'wpsso_p_' => array(	// Protect transient from being cleared.
+					'wpsso_n_' => array(	// Notification transient cache for user IDs.
 					),
-					'wpsso_s_' => array(
+					'wpsso_p_' => array(	// Protect transient from being cleared automatically.
+					),
+					'wpsso_s_' => array(	// Automatic clearing is enable / disabled from settings.
 						'label'   => 'Shortened URLs',
 						'opt_key' => 'plugin_short_url_cache_exp',
 						'filter'  => 'wpsso_cache_expire_short_url',
