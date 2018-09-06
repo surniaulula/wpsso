@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.12.0-dev.14 (2018/09/05)**
+**Version 4.12.0-b.1 (2018/09/05)**
 
 * *New Features*
 	* None.
@@ -348,6 +348,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved the "person" role additional from the plugin activation method to a scheduled task.
 	* Reviewed all calls to get_users(), get_posts(), and get_terms() to minimize memory usage.
 	* Minor code changes to rename the package check method.
+	* Added new methods in the WpssoUtil class to optionally run some tasks in background:
+		* schedule_add_user_roles()
+		* schedule_refresh_all_cache()
+		* schedule_clear_all_cache()
 
 **Version 4.11.1 (2018/08/25)**
 
@@ -675,7 +679,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.12.0-dev.14 =
+= 4.12.0-b.1 =
 
 (2018/09/05) Added sub-types to the Schema AdministrativeArea type. Removed support for automatically hidden notifications.
 
