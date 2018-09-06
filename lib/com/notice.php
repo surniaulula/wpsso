@@ -651,8 +651,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return;
 			} elseif ( $doing_autosave ) {
 				die( -1 );
-			} elseif ( ! class_exists( 'SucomUtil' ) ) {
-				die( -1 );
 			}
 
 			$notice_types = $this->all_types;

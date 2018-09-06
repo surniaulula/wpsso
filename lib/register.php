@@ -178,32 +178,29 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				delete_post_meta_by_key( WPSSO_META_NAME );	// Since wp v2.3.
 
-				$term_ids = WpssoTerm::get_public_term_ids();
-
-				foreach ( $term_ids as $term_id ) {
+				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
 					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
 				}
 
-				unset( $term_ids );
+				$blog_id  = get_current_blog_id();
 
-				$user_ids = SucomUtil::get_all_user_ids();
+				while ( $user_ids = SucomUtil::get_all_user_ids( $blog_id, 1000 ) ) {
 
-				foreach ( $user_ids as $user_id ) {
+					foreach ( $user_ids as $user_id ) {
 
-					delete_user_option( $user_id, WPSSO_DISMISS_NAME, false );	// $global is false.
-					delete_user_option( $user_id, WPSSO_DISMISS_NAME, true );	// $global is true.
+						delete_user_option( $user_id, WPSSO_DISMISS_NAME, false );	// $global is false.
+						delete_user_option( $user_id, WPSSO_DISMISS_NAME, true );	// $global is true.
 	
-					delete_user_meta( $user_id, WPSSO_META_NAME );
-					delete_user_meta( $user_id, WPSSO_PREF_NAME );
+						delete_user_meta( $user_id, WPSSO_META_NAME );
+						delete_user_meta( $user_id, WPSSO_PREF_NAME );
 	
-					WpssoUser::delete_metabox_prefs( $user_id );
+						WpssoUser::delete_metabox_prefs( $user_id );
 
-					$user_obj = get_user_by( 'ID', $user_id );
+						$user_obj = get_user_by( 'ID', $user_id );
 
-					$user_obj->remove_role( 'person' );
+						$user_obj->remove_role( 'person' );
+					}
 				}
-
-				unset( $user_ids );
 
 				remove_role( 'person' );
 			}

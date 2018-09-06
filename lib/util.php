@@ -1050,9 +1050,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
-			$user_ids = WpssoUser::get_public_user_ids();
-
-			foreach ( $user_ids as $user_id ) {
+			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
 
 				if ( get_transient( $cache_id ) !== $cache_status ) {
 					break;	// Stop here and delete the transient.
@@ -1062,8 +1060,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$user_obj->add_role( 'person' );
 			}
-
-			unset( $user_ids );
 
 			delete_transient( $cache_id );
 		}
@@ -1118,13 +1114,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'getting public post mods' );
 			}
 
-			$post_ids = WpssoPost::get_public_post_ids();
-
-			foreach ( $post_ids as $post_id ) {
+			foreach ( WpssoPost::get_public_post_ids() as $post_id ) {
 				$mods[] = $this->p->m['util']['post']->get_mod( $post_id );
 			}
-
-			unset( $post_ids );
 
 			/**
 			 * Get term mods.
@@ -1133,13 +1125,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'getting public term mods' );
 			}
 
-			$term_ids = WpssoTerm::get_public_term_ids();
-
-			foreach ( $term_ids as $term_id ) {
+			foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
 				$mods[] = $this->p->m['util']['term']->get_mod( $term_id );
 			}
-
-			unset( $term_ids );
 
 			/**
 			 * Get user mods.
@@ -1148,13 +1136,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'getting public user mods' );
 			}
 
-			$user_ids = WpssoUser::get_public_user_ids();
-
-			foreach ( $user_ids as $user_id ) {
+			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
 				$mods[] = $this->p->m['util']['user']->get_mod( $user_id );
 			}
-
-			unset( $user_ids );
 
 			$wp_obj       = false;
 			$image_sizes  = array();
@@ -1460,15 +1444,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'deleting term column meta' );
 			}
 
-			$term_ids = WpssoTerm::get_public_term_ids();
-
-			foreach ( $term_ids as $term_id ) {
+			foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
 				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
 					WpssoTerm::delete_term_meta( $term_id, $meta_key );
 				}
 			}
-
-			unset( $term_ids );
 
 			/**
 			 * Delete user meta.
@@ -1477,15 +1457,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'deleting user column meta' );
 			}
 
-			$user_ids = SucomUtil::get_all_user_ids();
+			$blog_id  = get_current_blog_id();
 
-			foreach ( $user_ids as $user_id ) {
-				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
-					delete_user_meta( $user_id, $meta_key );
+			while ( $user_ids = SucomUtil::get_all_user_ids( $blog_id, 1000 ) ) {
+				foreach ( $user_ids as $user_id ) {
+					foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+						delete_user_meta( $user_id, $meta_key );
+					}
 				}
 			}
-
-			unset( $user_ids );
 		}
 
 		public function get_article_topics() {

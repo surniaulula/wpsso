@@ -2779,15 +2779,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$post_obj = apply_filters( 'sucom_get_post_object', $post_obj, $use_post );
 
 			switch ( $output ) {
+
 				case 'id':
 				case 'ID':
 				case 'post_id':
-					return isset( $post_obj->ID ) ?
-						(int) $post_obj->ID : 0; // Cast as integer.
+
+					return isset( $post_obj->ID ) ? (int) $post_obj->ID : 0; // Cast as integer.
+
 					break;
+
 				default:
-					return is_object( $post_obj ) ?
-						$post_obj : false;
+
+					return is_object( $post_obj ) ? $post_obj : false;
+
 					break;
 			}
 		}
@@ -2959,15 +2963,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$user_obj = apply_filters( 'sucom_get_user_object', $user_obj, $user_id );
 
 			switch ( $output ) {
+
 				case 'id':
 				case 'ID':
 				case 'user_id':
-					return isset( $user_obj->ID ) ?
-						(int) $user_obj->ID : 0; // Cast as integer.
+
+					return isset( $user_obj->ID ) ? (int) $user_obj->ID : 0; // Cast as integer.
+
 					break;
+
 				default:
-					return is_object( $user_obj ) ?
-						$user_obj : false;
+
+					return is_object( $user_obj ) ? $user_obj : false;
+
 					break;
 			}
 		}
@@ -3329,14 +3337,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function get_all_user_ids( $blog_id = null ) {
+		public static function get_all_user_ids( $blog_id = null, $number = '' ) {
+
+			static $offset = '';
 
 			if ( empty( $blog_id ) ) {
 				$blog_id = get_current_blog_id();	// Since WP v3.1.
 			}
 
+			if ( is_numeric( $number ) ) {
+				$offset = '' === $offset ? 0 : $offset + $number;
+			}
+
 			$user_args  = array(
 				'blog_id' => $blog_id,
+				'offset'  => $offset,
+				'number'  => $number,
 				'orderby' => 'ID',
 				'order'   => 'DESC',	// Newest users first.
 				'fields'  => array(	// Save memory and only return only specific fields.
@@ -3347,8 +3363,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$user_ids = array();
 
 			foreach ( get_users( $user_args ) as $user_obj ) {
-				if ( ! empty( $user_obj->ID ) ) {	// Just in case.
-					$user_ids[] = $user_obj->ID;
+				$user_ids[] = $user_obj->ID;
+			}
+
+			if ( '' !== $offset ) {
+				if ( empty( $user_ids ) ) {
+					return false;	// To break the while loop.
 				}
 			}
 
@@ -3403,9 +3423,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				);
 
 				foreach ( get_users( $user_args ) as $user_obj ) {
-					if ( ! empty( $user_obj->ID ) ) {	// Just in case.
-						$user_names[ $user_obj->ID ] = $user_obj->display_name;
-					}
+					$user_names[ $user_obj->ID ] = $user_obj->display_name;
 				}
 			}
 
