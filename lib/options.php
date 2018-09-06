@@ -462,6 +462,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		 */
 		public function sanitize( $opts = array(), $def_opts = array(), $network = false, $mod = false ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			/**
 			 * Make sure we have something to work with.
 			 */
@@ -497,7 +501,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$base_key = preg_replace( '/(_[0-9]+)?(#.*|:[0-9]+)?$/', '', $opt_key );
 
 				if ( preg_match( '/:is$/', $base_key ) ) {
+
 					unset( $opts[$opt_key] );
+
 					continue;
 				}
 
@@ -518,10 +524,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			foreach ( array( 'og', 'schema' ) as $md_pre ) {
 
-				if ( ! empty( $opts[$md_pre . '_img_width'] ) && ! empty( $opts[$md_pre . '_img_height'] ) && ! empty( $opts[$md_pre . '_img_crop'] ) ) {
+				if ( ! empty( $opts[ $md_pre . '_img_width' ] ) && 
+					! empty( $opts[ $md_pre . '_img_height' ] ) && 
+					! empty( $opts[ $md_pre . '_img_crop' ] ) ) {
 
-					$img_width  = $opts[$md_pre . '_img_width'];
-					$img_height = $opts[$md_pre . '_img_height'];
+					$img_width  = $opts[ $md_pre . '_img_width' ];
+					$img_height = $opts[ $md_pre . '_img_height' ];
 					$img_ratio  = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
 					$max_ratio  = isset( $this->p->cf['head']['limit_max'][$md_pre . '_img_ratio'] ) ?
 						$this->p->cf['head']['limit_max'][$md_pre . '_img_ratio'] :
@@ -577,7 +585,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$opt_name = 'plugin_' . $ext . '_' . $info['update_auth'];
 
-					if ( isset( $opts[$opt_name] ) && isset( $this->p->options[$opt_name] ) && $opts[$opt_name] !== $this->p->options[$opt_name] ) {
+					if ( isset( $opts[$opt_name] ) && isset( $this->p->options[$opt_name] ) &&
+						$opts[$opt_name] !== $this->p->options[$opt_name] ) {
 
 						$this->p->options[$opt_name] = $opts[$opt_name];
 
@@ -623,6 +632,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		 * Update the width / height of remote image urls.
 		 */
 		private function refresh_image_url_sizes( array &$opts ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			/**
 			 * Remove all custom field names first, to exclude 'plugin_cf_img_url' and 'plugin_cf_vid_url'.

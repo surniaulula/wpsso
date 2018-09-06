@@ -1020,6 +1020,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function add_user_roles() {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process
 			 * to be terminated early (by removing the transient object).
@@ -1046,7 +1050,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
-			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
+			$user_ids = WpssoUser::get_public_user_ids();
+
+			foreach ( $user_ids as $user_id ) {
 
 				if ( get_transient( $cache_id ) !== $cache_status ) {
 					break;	// Stop here and delete the transient.
@@ -1056,6 +1062,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$user_obj->add_role( 'person' );
 			}
+
+			unset( $user_ids );
 
 			delete_transient( $cache_id );
 		}
@@ -1068,6 +1076,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function refresh_all_cache() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			$mods = array();
 
@@ -1099,17 +1111,50 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
-			foreach ( WpssoPost::get_public_post_ids() as $post_id ) {
+			/**
+			 * Get post mods.
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'getting public post mods' );
+			}
+
+			$post_ids = WpssoPost::get_public_post_ids();
+
+			foreach ( $post_ids as $post_id ) {
 				$mods[] = $this->p->m['util']['post']->get_mod( $post_id );
 			}
 
-			foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
+			unset( $post_ids );
+
+			/**
+			 * Get term mods.
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'getting public term mods' );
+			}
+
+			$term_ids = WpssoTerm::get_public_term_ids();
+
+			foreach ( $term_ids as $term_id ) {
 				$mods[] = $this->p->m['util']['term']->get_mod( $term_id );
 			}
 
-			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
+			unset( $term_ids );
+
+			/**
+			 * Get user mods.
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'getting public user mods' );
+			}
+
+			$user_ids = WpssoUser::get_public_user_ids();
+
+			foreach ( $user_ids as $user_id ) {
 				$mods[] = $this->p->m['util']['user']->get_mod( $user_id );
 			}
+
+			unset( $user_ids );
 
 			$wp_obj       = false;
 			$image_sizes  = array();
@@ -1148,6 +1193,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function clear_all_cache( $clear_external = false, $clear_short = null, $refresh_all = null, $user_id = null, $dismiss_key = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			static $cleared_all_cache = null;
 
@@ -1240,6 +1289,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function delete_all_db_transients( $clear_short = false ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			$only_expired   = false;
 			$transient_keys = $this->get_db_transient_keys( $only_expired );
 			$deleted_count  = 0;
@@ -1272,6 +1325,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function delete_expired_db_transients() {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			$only_expired   = true;
 			$transient_keys = $this->get_db_transient_keys( $only_expired );
 			$deleted_count  = 0;
@@ -1286,6 +1343,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function get_db_transient_keys( $only_expired = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			global $wpdb;
 
@@ -1317,6 +1378,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		public function delete_all_cache_files() {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			$uca           = strtoupper( $this->p->lca );
 			$cache_dir     = constant( $uca . '_CACHEDIR' );
@@ -1371,23 +1436,56 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function delete_all_column_meta() {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			$col_meta_keys = WpssoMeta::get_column_meta_keys();
+
+			/**
+			 * Delete post meta.
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'deleting post column meta' );
+			}
 
 			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
 				delete_post_meta_by_key( $meta_key );
 			}
 
-			foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
+			/**
+			 * Delete term meta.
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'deleting term column meta' );
+			}
+
+			$term_ids = WpssoTerm::get_public_term_ids();
+
+			foreach ( $term_ids as $term_id ) {
 				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
 					WpssoTerm::delete_term_meta( $term_id, $meta_key );
 				}
 			}
 
-			foreach ( SucomUtil::get_all_user_ids() as $user_id ) {
+			unset( $term_ids );
+
+			/**
+			 * Delete user meta.
+			 */
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'deleting user column meta' );
+			}
+
+			$user_ids = SucomUtil::get_all_user_ids();
+
+			foreach ( $user_ids as $user_id ) {
 				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
 					delete_user_meta( $user_id, $meta_key );
 				}
 			}
+
+			unset( $user_ids );
 		}
 
 		public function get_article_topics() {
@@ -1469,6 +1567,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 * 	/html/head/meta[starts-with(@property, "og:video:")]
 		 */
 		public function get_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false, array $curl_opts = array() ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			if ( empty( $request ) ) {	// Just in case.
 

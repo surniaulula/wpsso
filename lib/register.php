@@ -178,11 +178,17 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				delete_post_meta_by_key( WPSSO_META_NAME );	// Since wp v2.3.
 
-				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
+				$term_ids = WpssoTerm::get_public_term_ids();
+
+				foreach ( $term_ids as $term_id ) {
 					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
 				}
 
-				foreach ( SucomUtil::get_all_user_ids() as $user_id ) {
+				unset( $term_ids );
+
+				$user_ids = SucomUtil::get_all_user_ids();
+
+				foreach ( $user_ids as $user_id ) {
 
 					delete_user_option( $user_id, WPSSO_DISMISS_NAME, false );	// $global is false.
 					delete_user_option( $user_id, WPSSO_DISMISS_NAME, true );	// $global is true.
@@ -196,6 +202,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 					$user_obj->remove_role( 'person' );
 				}
+
+				unset( $user_ids );
 
 				remove_role( 'person' );
 			}

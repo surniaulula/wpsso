@@ -374,7 +374,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:2212 lib/pro/media/slideshare.php:200
-#: lib/pro/media/vimeo.php:169 lib/pro/media/wistia.php:333 lib/util.php:1604
+#: lib/pro/media/vimeo.php:169 lib/pro/media/wistia.php:333 lib/util.php:1706
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -870,7 +870,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3216 lib/options.php:1117 lib/submenu/essential.php:144
+#: lib/admin.php:3216 lib/options.php:1130 lib/submenu/essential.php:144
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -2791,8 +2791,8 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:164 lib/loader.php:190 lib/post.php:252 lib/register.php:261
-#: lib/term.php:253 lib/user.php:208 lib/util.php:367 lib/util.php:2746
+#: lib/loader.php:164 lib/loader.php:190 lib/post.php:252 lib/register.php:269
+#: lib/term.php:253 lib/user.php:208 lib/util.php:367 lib/util.php:2848
 msgid "%s warning:"
 msgstr ""
 
@@ -3415,7 +3415,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:686 lib/util.php:3018
+#: lib/messages.php:686 lib/util.php:3120
 msgid "No options available."
 msgstr ""
 
@@ -4896,7 +4896,7 @@ msgid ""
 "refresh of all Pro update information."
 msgstr ""
 
-#: lib/messages.php:2423 lib/register.php:271
+#: lib/messages.php:2423 lib/register.php:279
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -5122,107 +5122,107 @@ msgid ""
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:532
+#: lib/options.php:540
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:599
+#: lib/options.php:608
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:666
+#: lib/options.php:679
 msgid ""
 "The value of option '%s' must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:667
+#: lib/options.php:680
 msgid ""
 "The value of option '%s' must be blank or numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:668
+#: lib/options.php:681
 msgid ""
 "The value of option '%s' must be a CSS color code - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:669
+#: lib/options.php:682
 msgid ""
 "The value of option '%s' must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:670
+#: lib/options.php:683
 msgid ""
 "The value of option '%s' must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:671
+#: lib/options.php:684
 msgid ""
 "The value of option '%s' must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:672
+#: lib/options.php:685
 msgid ""
 "The value of option '%s' must be an image ID - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:673
+#: lib/options.php:686
 msgid ""
 "The value of option '%s' cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:674
+#: lib/options.php:687
 msgid ""
 "The value of option '%s' must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:675
+#: lib/options.php:688
 msgid ""
 "The value of option '%1$s' must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:676
+#: lib/options.php:689
 msgid ""
 "The value of option '%s' must be a hh:mm time - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:677
+#: lib/options.php:690
 msgid ""
 "The value of option '%s' must be a URL - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1087
+#: lib/options.php:1100
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1150
+#: lib/options.php:1163
 msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1153
+#: lib/options.php:1166
 msgid "Please make sure this site can access the banner image at %1$s."
 msgstr ""
 
-#: lib/options.php:1158
+#: lib/options.php:1171
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
-#: lib/options.php:1161
+#: lib/options.php:1174
 msgid "Please correct the banner image at %s."
 msgstr ""
 
@@ -5270,7 +5270,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:238 lib/term.php:239 lib/user.php:194 lib/util.php:353
-#: lib/util.php:2723
+#: lib/util.php:2825
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5309,7 +5309,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:914 lib/util.php:1518
+#: lib/post.php:914 lib/util.php:1620
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -5524,12 +5524,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:195 lib/pro/media/vimeo.php:164
-#: lib/pro/media/wistia.php:328 lib/util.php:1599
+#: lib/pro/media/wistia.php:328 lib/util.php:1701
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/pro/media/slideshare.php:197 lib/pro/media/vimeo.php:166
-#: lib/pro/media/wistia.php:330 lib/util.php:1601
+#: lib/pro/media/wistia.php:330 lib/util.php:1703
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
@@ -5638,11 +5638,11 @@ msgid "Invalid user ID."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number.
-#: lib/register.php:264 lib/register.php:273
+#: lib/register.php:272 lib/register.php:281
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:275
+#: lib/register.php:283
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
@@ -6125,56 +6125,56 @@ msgid ""
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1186
+#: lib/util.php:1235
 msgid ""
 "%s cached files, transient cache, column meta, and WordPress object cache "
 "have been cleared."
 msgstr ""
 
-#: lib/util.php:1192
+#: lib/util.php:1241
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1227
+#: lib/util.php:1276
 msgid ""
 "A background task will begin shortly to re-create the %s post, term, and "
 "user transient cache objects."
 msgstr ""
 
-#: lib/util.php:1332
+#: lib/util.php:1397
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1359
+#: lib/util.php:1424
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1439
+#: lib/util.php:1537
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1505
+#: lib/util.php:1607
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1531
+#: lib/util.php:1633
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1651
+#: lib/util.php:1753
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:2726
+#: lib/util.php:2828
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2739
+#: lib/util.php:2841
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6183,29 +6183,29 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2739
+#: lib/util.php:2841
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3045
+#: lib/util.php:3147
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3048
+#: lib/util.php:3150
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3053
+#: lib/util.php:3155
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3056
+#: lib/util.php:3158
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
