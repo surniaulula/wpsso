@@ -119,13 +119,13 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 */
 			if ( ! empty( $this->p->options['plugin_clear_on_activate'] ) ) {
 
-				$clear_external = false;			// Caching plugins should clear their cache on activation.
-				$clear_short    = null;				// Use the default value from the plugin options.
-				$refresh_all    = null;				// Use the default value from the plugin options.
-				$user_id        = get_current_user_id();	// Show / save notice messages for the current user.
-				$dismiss_key    = false;
+				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
+					_x( 'Clear Cache on Activate / Deactivate', 'option label', 'wpsso' ) );
 
-				$this->p->util->clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
+				$this->p->notice->upd( sprintf( __( 'A background task will begin shortly to clear all caches (%s option is enabled).',
+					'wpsso' ), $settings_page_link ) );
+
+				$this->p->util->schedule_clear_all_cache( get_current_user_id(), true );
 			}
 
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
@@ -149,14 +149,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			 * Clear Cache on Activate / Deactivate
 			 */
 			if ( ! empty( $this->p->options['plugin_clear_on_activate'] ) ) {
-
-				$clear_external = false;	// Caching plugins should clear their cache on deactivation.
-				$clear_short    = true;		// Cleanup the shortened URL transient cache.
-				$refresh_all    = false;	// Do not auto-refresh cache objects on deactivation.
-				$user_id        = 0;		// Do not show / save any notice messages. 
-				$dismiss_key    = false;
-
-				$this->p->util->clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
+				$this->p->util->clear_all_cache( 0, true, true, false );
 			}
 
 			delete_option( WPSSO_POST_CHECK_NAME );	// Remove the post duplicate check counter.

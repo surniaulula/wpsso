@@ -3337,16 +3337,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		/**
-		 * See also WpssoUser::get_public_user_ids().
-		 */
-		public static function get_writer_user_ids( $blog_id = null ) {
-
-			$roles = array( 'administrator', 'editor', 'author', 'contributor' );
-
-			return self::get_user_ids_by_roles( $roles, $blog_id );
-		}
-
 		public static function get_user_ids_by_roles( array $roles, $blog_id = null ) {
 
 			$user_ids = array_keys( self::get_user_names_by_roles( $roles, $blog_id ) );

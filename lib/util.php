@@ -77,9 +77,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			add_action( 'wp_scheduled_delete', array( $this, 'delete_expired_db_transients' ) );
 
-			add_action( $this->p->lca . '_add_user_roles', array( $this, 'add_user_roles' ) );		// For single schedule task.
-			add_action( $this->p->lca . '_refresh_all_cache', array( $this, 'refresh_all_cache' ) );	// For single schedule task.
-			add_action( $this->p->lca . '_clear_all_cache', array( $this, 'clear_all_cache' ), 10, 5 );	// For single schedule task.
+			add_action( $this->p->lca . '_add_user_roles', array( $this, 'add_user_roles' ), 10, 1 );	// For single schedule task.
+			add_action( $this->p->lca . '_clear_all_cache', array( $this, 'clear_all_cache' ), 10, 4 );	// For single schedule task.
+			add_action( $this->p->lca . '_refresh_all_cache', array( $this, 'refresh_all_cache' ), 10, 1 );	// For single schedule task.
 
 			/**
 			 * The "current_screen" action hook is not called when editing / saving an image.
@@ -596,8 +596,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $regen_key !== false ) {
 
 				$cache_md5_pre  = $this->p->lca . '_';
-				$cache_exp_secs = 0;	// Never expire.
-				$cache_salt     = __CLASS__ . '::force_regen_transient';
+				$cache_exp_secs = 0;					// Never expire.
+				$cache_salt     = __CLASS__ . '::force_regen';		// Generic salt value for other methods.
 				$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 				if ( $this->force_regen['transient'] === null ) {
@@ -625,8 +625,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $regen_key !== false ) {
 
 				$cache_md5_pre  = $this->p->lca . '_';
-				$cache_exp_secs = 0;	// Never expire.
-				$cache_salt     = __CLASS__ . '::force_regen_transient';
+				$cache_exp_secs = 0;					// Never expire.
+				$cache_salt     = __CLASS__ . '::force_regen';		// Generic salt value for other methods.
 				$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 				if ( $this->force_regen['transient'] === null ) {
@@ -1011,14 +1011,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public function schedule_add_user_roles() {
+		public function schedule_add_user_roles( $user_id = null ) {
+
+			if ( null === $user_id ) {
+				$user_id = get_current_user_id();
+			}
 
 			wp_clear_scheduled_hook( $this->p->lca . '_add_user_roles' );
 
-			wp_schedule_single_event( time(), $this->p->lca . '_add_user_roles' );	// Run in the next minute.
+			wp_schedule_single_event( time(), $this->p->lca . '_add_user_roles', array( $user_id ) );
 		}
 
-		public function add_user_roles() {
+		public function add_user_roles( $user_id = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1030,7 +1034,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 */
 			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;				// Run for max of 1 hour.
-			$cache_salt     = __METHOD__;
+			$cache_salt     = __CLASS__ . '::add_user_roles';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_status   = 'running';
 
@@ -1050,6 +1054,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
+			if ( null === $user_id ) {
+				$user_id = get_current_user_id();
+			}
+
 			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
 				if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
 					delete_transient( $cache_id );
@@ -1062,14 +1070,153 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			delete_transient( $cache_id );
 		}
 
-		public function schedule_refresh_all_cache() {
+		public function schedule_clear_all_cache( $user_id = null, $clear_external = false, $clear_short = null, $refresh_all = null ) {
+
+			if ( null === $user_id ) {
+				$user_id = get_current_user_id();
+			}
+
+			wp_clear_scheduled_hook( $this->p->lca . '_clear_all_cache' );
+
+			wp_schedule_single_event( time(), $this->p->lca . '_clear_all_cache', array( $user_id, $clear_external, $clear_short, $refresh_all ) );
+		}
+
+		public function clear_all_cache( $user_id = null, $clear_external = false, $clear_short = null, $refresh_all = null ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			static $cleared_all_cache = null;
+
+			if ( $cleared_all_cache !== null ) {	// Already run once.
+				return;
+			}
+
+			$cleared_all_cache = true;	// Prevent running a second time (by an external cache, for example).
+
+			/**
+			 * A transient is set and checked to limit the runtime and allow this process
+			 * to be terminated early (by removing the transient object).
+			 */
+			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
+			$cache_exp_secs = HOUR_IN_SECONDS;				// Run for max of 1 hour.
+			$cache_salt     = __CLASS__ . '::clear_all_cache';		// Generic salt value for other methods.
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
+			$cache_status   = 'running';
+
+			/**
+			 * Prevent concurrent execution.
+			 */
+			if ( get_transient( $cache_id ) !== false ) {	// Another process is already running.
+				return;
+			}
+
+			set_transient( $cache_id, $cache_status, $cache_exp_secs );
+
+			$start_time = microtime( true );
+
+			if ( null === $user_id ) {
+				$user_id = get_current_user_id();
+			}
+
+			if ( null === $clear_short ) {
+				$clear_short = isset( $this->p->options['plugin_clear_short_urls'] ) ?
+					$this->p->options['plugin_clear_short_urls'] : false;
+			}
+
+			if ( null === $refresh_all ) {
+				$refresh_all = isset( $this->p->options['plugin_clear_all_refresh'] ) ?
+					$this->p->options['plugin_clear_all_refresh'] : false;
+			}
+
+			$this->stop_refresh_all_cache();
+
+			wp_cache_flush();	// Clear non-database transients as well.
+
+			$this->delete_all_db_transients( $clear_short );
+
+			$this->delete_all_cache_files();
+
+			$this->delete_all_column_meta();
+
+			$status_msg = $user_id ? sprintf( __( '%s cached files, transient cache, column meta, and WordPress object cache have all been cleared.',
+				'wpsso' ), $this->p->cf['plugin'][$this->p->lca]['short'] ) : '';
+
+			if ( $clear_external ) {
+
+				$external_msg = ' ' . __( 'The cache for %s has also been cleared.', 'wpsso' );
+
+				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// W3 total cache.
+					w3tc_pgcache_flush();
+					w3tc_objectcache_flush();
+					if ( $status_msg ) {
+						$status_msg .= sprintf( $external_msg, 'W3 Total Cache' );
+					}
+				}
+
+				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// WP super cache
+					wp_cache_clear_cache();
+					if ( $status_msg ) {
+						$status_msg .= sprintf( $external_msg, 'WP Super Cache' );
+					}
+				}
+
+				if ( isset( $GLOBALS['comet_cache'] ) ) {		// Comet cache.
+					$GLOBALS['comet_cache']->wipe_cache();
+					if ( $status_msg ) {
+						$status_msg .= sprintf( $external_msg, 'Comet Cache' );
+					}
+				}
+			}
+
+			$total_time = microtime( true ) - $start_time;
+
+			if ( $status_msg ) {
+				$status_msg .= ' ' . sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $total_time );
+			}
+
+			if ( $refresh_all ) {
+				if ( $status_msg ) {
+					$status_msg .= ' ';
+					$status_msg .= sprintf( __( 'A background task will begin shortly to refresh the %s post, term, and user caches.',
+						'wpsso' ), $this->p->cf['plugin'][$this->p->lca]['short'] );
+				}
+				$this->schedule_refresh_all_cache( $user_id );	// Run in the next minute.
+			}
+
+			if ( $status_msg ) {
+				$this->p->notice->upd( $status_msg, $user_id );
+			}
+
+			delete_transient( $cache_id );
+		}
+
+		public function schedule_refresh_all_cache( $user_id = null ) {
+
+			if ( null === $user_id ) {
+				$user_id = get_current_user_id();
+			}
 
 			wp_clear_scheduled_hook( $this->p->lca . '_refresh_all_cache' );
 
-			wp_schedule_single_event( time(), $this->p->lca . '_refresh_all_cache' );	// Run in the next minute.
+			wp_schedule_single_event( time(), $this->p->lca . '_refresh_all_cache', array( $user_id ) );
 		}
 
-		public function refresh_all_cache() {
+		public function stop_refresh_all_cache() {
+
+			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
+			$cache_exp_secs = HOUR_IN_SECONDS;				// Run for max of 1 hour.
+			$cache_salt     = __CLASS__ . '::refresh_all_cache';		// Generic salt value for other methods.
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
+
+			delete_transient( $cache_id );
+			if ( get_transient( $cache_id ) !== false ) {			// Another process is already running.
+				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
+			}
+		}
+
+		public function refresh_all_cache( $user_id = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1081,7 +1228,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 */
 			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;				// Run for max of 1 hour.
-			$cache_salt     = __METHOD__;
+			$cache_salt     = __CLASS__ . '::refresh_all_cache';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_status   = 'running';
 
@@ -1092,9 +1239,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
 
-				$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME + 3;
+				$sleep_secs = 5 + WPSSO_REFRESH_CACHE_SLEEP_TIME;
 
-				usleep( $sleep_secs * 1000000 );			// Sleeps for 3 1/2 seconds by default.
+				usleep( $sleep_secs * 1000000 );			// Sleeps for 5.25 seconds by default.
 
 				if ( get_transient( $cache_id ) !== false ) {		// Stop here if the other process is still running.
 					return;
@@ -1103,31 +1250,48 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
-			foreach ( WpssoPost::get_public_post_ids() as $post_id ) {
-				if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
-					delete_transient( $cache_id );
-					return;
-				}
-				$mods = $this->p->m['util']['post']->get_mod( $post_id );
-				$this->refresh_mod_head_meta( $mod );
+			$start_time  = microtime( true );
+			$total_count = array(
+				'post' => 0,
+				'term' => 0,
+				'user' => 0,
+			);
+
+			if ( null === $user_id ) {
+				$user_id = get_current_user_id();
 			}
 
-			foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
-				if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
-					delete_transient( $cache_id );
-					return;
+			foreach ( $total_count as $name => &$count ) {
+
+				/**
+				 * Note that PHP class names are not case sensitive, so we can 
+				 * use "wpssopost" here instead of "WpssoPost".
+				 */
+				$object_ids = call_user_func( array( 'wpsso' . $name, 'get_public_' . $name . '_ids' ) );
+				
+				foreach ( $object_ids as $object_id ) {
+
+					if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
+						break 2;	// Stop here.
+					}
+
+					$count++;
+
+					$object_mod = $this->p->m[ 'util' ][ $name ]->get_mod( $object_id );
+
+					$this->refresh_mod_head_meta( $object_mod );
 				}
-				$this->refresh_mod_head_meta( $mod );
-				$mod = $this->p->m['util']['term']->get_mod( $term_id );
 			}
 
-			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
-				if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
-					delete_transient( $cache_id );
-					return;
-				}
-				$mod = $this->p->m['util']['user']->get_mod( $user_id );
-				$this->refresh_mod_head_meta( $mod );
+			$status_msg = $user_id ? sprintf( __( 'The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d users have been refreshed.',
+				'wpsso' ), $total_count['post'], $total_count['term'], $total_count['user'] ) : '';
+
+			$total_time = microtime( true ) - $start_time;
+
+			if ( $status_msg ) {
+				$status_msg .= ' ' . sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $total_time );
+
+				$this->p->notice->upd( $status_msg, $user_id );
 			}
 
 			delete_transient( $cache_id );
@@ -1146,133 +1310,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME;
 
-			usleep( $sleep_secs * 1000000 );	// Sleeps for 0.50 seconds by default.
-		}
-
-		public function schedule_clear_all_cache( $clear_external = false, $clear_short = null, $refresh_all = null, $user_id = null, $dismiss_key = false ) {
-
-			if ( null === $user_id ) {
-				$user_id = get_current_user_id();
-			}
-
-			wp_clear_scheduled_hook( $this->p->lca . '_clear_all_cache' );
-
-			$action_args = array( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
-
-			wp_schedule_single_event( time(), $this->p->lca . '_clear_all_cache', $action_args );	// Run in the next minute.
-		}
-
-		public function clear_all_cache( $clear_external = false, $clear_short = null, $refresh_all = null, $user_id = null, $dismiss_key = false ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			static $cleared_all_cache = null;
-
-			if ( $cleared_all_cache !== null ) {	// Already run once.
-				return;
-			}
-
-			$cleared_all_cache = true;	// Prevent running a second time (by an external cache, for example).
-
-			/**
-			 * A transient is set and checked to limit the runtime and allow this process
-			 * to be terminated early (by removing the transient object).
-			 */
-			$cache_md5_pre  = $this->p->lca . '_!_';	// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;		// Run for max of 1 hour.
-			$cache_salt     = __METHOD__;
-			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_status   = 'running';
-
-			/**
-			 * Prevent concurrent execution.
-			 */
-			if ( get_transient( $cache_id ) !== false ) {	// Another process is already running.
-				return;
-			}
-
-			set_transient( $cache_id, $cache_status, $cache_exp_secs );
-
-			if ( null === $clear_short ) {
-				$clear_short = isset( $this->p->options['plugin_clear_short_urls'] ) ?
-					$this->p->options['plugin_clear_short_urls'] : false;
-			}
-
-			if ( null === $refresh_all ) {
-				$refresh_all = isset( $this->p->options['plugin_clear_all_refresh'] ) ?
-					$this->p->options['plugin_clear_all_refresh'] : false;
-			}
-
-			if ( null === $user_id ) {
-				$user_id = get_current_user_id();
-			}
-
-			wp_cache_flush();	// Clear non-database transients as well.
-
-			$deleted_count = 0;
-
-			$deleted_count += $this->delete_all_db_transients( $clear_short );
-
-			$deleted_count += $this->delete_all_cache_files();
-
-			$this->delete_all_column_meta();
-
-			$cleared_msg = '';
-
-			if ( $user_id ) {
-				$cleared_msg .= sprintf( __( '%s cached files, transient cache, column meta, and WordPress object cache have all been cleared.',
-					'wpsso' ), $this->p->cf['plugin'][$this->p->lca]['short'] );
-			}
-
-			if ( $clear_external ) {
-
-				$external_msg = ' ' . __( 'The cache for %s has also been cleared.', 'wpsso' );
-
-				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// W3 total cache.
-					w3tc_pgcache_flush();
-					w3tc_objectcache_flush();
-					if ( $user_id ) {
-						$cleared_msg .= sprintf( $external_msg, 'W3 Total Cache' );
-					}
-				}
-
-				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// WP super cache
-					wp_cache_clear_cache();
-					if ( $user_id ) {
-						$cleared_msg .= sprintf( $external_msg, 'WP Super Cache' );
-					}
-				}
-
-				if ( isset( $GLOBALS['comet_cache'] ) ) {		// Comet cache.
-					$GLOBALS['comet_cache']->wipe_cache();
-					if ( $user_id ) {
-						$cleared_msg .= sprintf( $external_msg, 'Comet Cache' );
-					}
-				}
-			}
-
-			if ( $refresh_all ) {
-				if ( $user_id ) {
-					$cleared_msg .= ' ';
-					$cleared_msg .= sprintf( __( 'A background task will begin shortly to re-create the %s post, term, and user transient cache objects.',
-						'wpsso' ), $this->p->cf['plugin'][$this->p->lca]['short'] );
-				}
-				$this->schedule_refresh_all_cache();
-			}
-
-			if ( $cleared_msg ) {
-				if ( $dismiss_key ) {
-					$this->p->notice->inf( $cleared_msg, $user_id, $dismiss_key, true );
-				} else {
-					$this->p->notice->upd( $cleared_msg, $user_id );
-				}
-			}
-
-			delete_transient( $cache_id );
-
-			return $deleted_count;
+			usleep( $sleep_secs * 1000000 );	// Sleeps for 0.25 seconds by default.
 		}
 
 		public function delete_all_column_meta() {
@@ -1331,9 +1369,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$deleted_count  = 0;
 			$only_expired   = false;
 			$transient_keys = $this->get_db_transient_keys( $only_expired );
-			$deleted_count  = 0;
 
 			foreach( $transient_keys as $cache_id ) {
 
@@ -1367,9 +1405,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$deleted_count  = 0;
 			$only_expired   = true;
 			$transient_keys = $this->get_db_transient_keys( $only_expired );
-			$deleted_count  = 0;
 
 			foreach( $transient_keys as $cache_id ) {
 				if ( delete_transient( $cache_id ) ) {
@@ -1421,9 +1459,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$uca           = strtoupper( $this->p->lca );
-			$cache_dir     = constant( $uca . '_CACHEDIR' );
 			$deleted_count = 0;
+			$cache_dir     = constant( 'WPSSO_CACHEDIR' );
 
 			if ( ! $dh = @opendir( $cache_dir ) ) {
 
@@ -3024,10 +3061,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$hidden_opts = 0;
 			$hidden_rows = 0;
 
-			/**
-			 * Use call_user_func() instead of $classname::show_opts() for PHP 5.2.
-			 */
-			$show_opts = class_exists( $this->p->lca.'user' ) ? call_user_func( array( $this->p->lca.'user', 'show_opts' ) ) : 'basic';
+			$show_opts = class_exists( $this->p->lca.'user' ) ? 
+				call_user_func( array( $this->p->lca . 'user', 'show_opts' ) ) : 'basic';
 
 			foreach ( $table_rows as $key => $row ) {
 

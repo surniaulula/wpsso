@@ -909,9 +909,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			if ( $user_id ) {
-
 				$this->notice_cache[ $user_id ] = $this->get_notice_transient( $user_id );
-
 				if ( ! is_array( $this->notice_cache[ $user_id ] ) ) {
 					$this->notice_cache[ $user_id ] = array();
 				}

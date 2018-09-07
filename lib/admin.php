@@ -807,25 +807,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
 	
 				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
-					sprintf( __( 'Note that some caches may take several days to reflect changes (you may %s to force a refresh).', 'wpsso' ),
-						$clear_cache_link ) );
+					sprintf( __( 'Note that some caches may take several days to reflect changes (you may %s to force a refresh).',
+						'wpsso' ), $clear_cache_link ) );
 
 			} else {
-
-				$clear_external = true;				// Clear known 3rd party cache plugins. 
-				$clear_short    = null;				// Use the default value from the plugin options.
-				$refresh_all    = null;				// Use the default value from the plugin options.
-				$user_id        = get_current_user_id();
-				$dismiss_key    = false;
-
-				$this->p->util->schedule_clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
 
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 					_x( 'Clear Cache on Save Settings', 'option label', 'wpsso' ) );
 
 				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
-					sprintf( __( 'A background task will begin shortly to clear all caches (%s option is enabled).', 'wpsso' ),
-						$settings_page_link ) );
+					sprintf( __( 'A background task will begin shortly to clear all caches (%s option is enabled).',
+						'wpsso' ), $settings_page_link ) );
+
+				$this->p->util->schedule_clear_all_cache( get_current_user_id(), true );
+
 			}
 
 			if ( empty( $opts['plugin_filter_content'] ) ) {
@@ -926,25 +921,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_all_cache':
 
-							$clear_external = true;				// Clear known 3rd party cache plugins. 
-							$clear_short    = null;				// Use the default value from the plugin options.
-							$refresh_all    = null;				// Use the default value from the plugin options.
-							$user_id        = get_current_user_id();
-							$dismiss_key    = false;			// Skip dismiss since we're doing clear cache manually.
+							$this->p->notice->upd( sprintf( __( 'A background task will begin shortly to clear all caches.',
+								'wpsso' ), $settings_page_link ) );
 
-							$this->p->util->clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
+							$this->p->util->schedule_clear_all_cache( get_current_user_id(), true );
 
 							break;
 
 						case 'clear_all_cache_and_short_urls':
 
-							$clear_external = true;				// Clear known 3rd party cache plugins. 
-							$clear_short    = true;				// Cleanup the shortened URL transient cache.
-							$refresh_all    = null;				// Use the default value from the plugin options.
-							$user_id        = get_current_user_id();
-							$dismiss_key    = false;			// Skip dismiss since we're doing clear cache manually.
+							$this->p->notice->upd( sprintf( __( 'A background task will begin shortly to clear all caches and short URLs.',
+								'wpsso' ), $settings_page_link ) );
 
-							$this->p->util->clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
+							$this->p->util->schedule_clear_all_cache( get_current_user_id(), true, true );
 
 							break;
 

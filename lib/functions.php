@@ -56,16 +56,10 @@ if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 
 		if ( is_object( $wpsso->util ) ) {
 
-			$clear_external = true;				// Clear known 3rd party cache plugins. 
-			$clear_short    = null;				// Use the default value from the plugin options.
-			$refresh_all    = null;				// Use the default value from the plugin options.
-			$user_id        = get_current_user_id();
-			$dismiss_key    = __FUNCTION__.'-function-and-external';
+			$user_id = get_current_user_id();
 
-			return $wpsso->util->clear_all_cache( $clear_external, $clear_short, $refresh_all, $user_id, $dismiss_key );
+			return $wpsso->util->schedule_clear_all_cache( $user_id, $clear_external );
 		}
-
-		return 0;
 	}
 }
 
