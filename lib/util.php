@@ -1070,7 +1070,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			delete_transient( $cache_id );
 		}
 
-		public function schedule_clear_all_cache( $user_id = null, $clear_external = false, $clear_short = null, $refresh_all = null ) {
+		public function schedule_clear_all_cache( $user_id = null, $clear_other = false, $clear_short = null, $refresh_all = null ) {
 
 			if ( null === $user_id ) {
 				$user_id = get_current_user_id();
@@ -1078,22 +1078,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			wp_clear_scheduled_hook( $this->p->lca . '_clear_all_cache' );
 
-			wp_schedule_single_event( time(), $this->p->lca . '_clear_all_cache', array( $user_id, $clear_external, $clear_short, $refresh_all ) );
+			wp_schedule_single_event( time(), $this->p->lca . '_clear_all_cache', array( $user_id, $clear_other, $clear_short, $refresh_all ) );
 		}
 
-		public function clear_all_cache( $user_id = null, $clear_external = false, $clear_short = null, $refresh_all = null ) {
+		public function clear_all_cache( $user_id = null, $clear_other = false, $clear_short = null, $refresh_all = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			static $cleared_all_cache = null;
+			static $have_cleared = null;
 
-			if ( $cleared_all_cache !== null ) {	// Already run once.
+			if ( $have_cleared !== null ) {	// Already run once.
 				return;
 			}
 
-			$cleared_all_cache = true;	// Prevent running a second time (by an external cache, for example).
+			$have_cleared = true;	// Prevent running a second time (by an external cache, for example).
 
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process
@@ -1143,29 +1143,29 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$status_msg = $user_id ? sprintf( __( '%s cached files, transient cache, column meta, and WordPress object cache have all been cleared.',
 				'wpsso' ), $this->p->cf['plugin'][$this->p->lca]['short'] ) : '';
 
-			if ( $clear_external ) {
+			if ( $clear_other ) {
 
-				$external_msg = ' ' . __( 'The cache for %s has also been cleared.', 'wpsso' );
+				$other_msg = ' ' . __( 'The cache for %s has also been cleared.', 'wpsso' );
 
 				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// W3 total cache.
 					w3tc_pgcache_flush();
 					w3tc_objectcache_flush();
 					if ( $status_msg ) {
-						$status_msg .= sprintf( $external_msg, 'W3 Total Cache' );
+						$status_msg .= sprintf( $other_msg, 'W3 Total Cache' );
 					}
 				}
 
 				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// WP super cache
 					wp_cache_clear_cache();
 					if ( $status_msg ) {
-						$status_msg .= sprintf( $external_msg, 'WP Super Cache' );
+						$status_msg .= sprintf( $other_msg, 'WP Super Cache' );
 					}
 				}
 
 				if ( isset( $GLOBALS['comet_cache'] ) ) {		// Comet cache.
 					$GLOBALS['comet_cache']->wipe_cache();
 					if ( $status_msg ) {
-						$status_msg .= sprintf( $external_msg, 'Comet Cache' );
+						$status_msg .= sprintf( $other_msg, 'Comet Cache' );
 					}
 				}
 			}

@@ -50,7 +50,7 @@ if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 
 if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 
-	function wpsso_clear_all_cache( $clear_external = false ) {
+	function wpsso_clear_all_cache( $clear_other = false ) {
 
 		$wpsso =& Wpsso::get_instance();
 
@@ -58,7 +58,7 @@ if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 
 			$user_id = get_current_user_id();
 
-			return $wpsso->util->schedule_clear_all_cache( $user_id, $clear_external );
+			return $wpsso->util->schedule_clear_all_cache( $user_id, $clear_other );
 		}
 	}
 }

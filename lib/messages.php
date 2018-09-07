@@ -101,19 +101,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-schema_title':
 
-							$text = __( 'A custom name / title for the Schema item type\'s name property.', 'wpsso' );
+							$text = __( 'A custom name / title for the Schema item type\'s "name" property.', 'wpsso' );
 
 						 	break;
 
 						case 'tooltip-meta-schema_title_alt':
 
-							$text = __( 'An optional alternate custom name / title for the Schema item type\'s alternateName property.', 'wpsso' );
+							$text = __( 'An optional alternate custom name / title for the Schema item type\'s "alternateName" property.', 'wpsso' );
 
 						 	break;
 
 						case 'tooltip-meta-schema_desc':
 
-							$text = __( 'A custom description for the Schema item type\'s description property.', 'wpsso' );
+							$text = __( 'A custom description for the Schema item type\'s "description" property.', 'wpsso' );
 
 						 	break;
 
@@ -2280,7 +2280,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
 
-						$text = sprintf( __( 'A Schema image property could not be generated from this webpage content or its custom %s metabox settings. Google <em>requires at least one image property</em> for this Schema item type.', 'wpsso' ), $metabox_title );
+						$text = sprintf( __( 'A Schema "image" property could not be generated from this webpage content or its custom %s metabox settings. Google <em>requires at least one "image" property</em> for this Schema item type.', 'wpsso' ), $metabox_title );
 
 						break;
 
