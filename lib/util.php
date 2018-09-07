@@ -1123,7 +1123,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->options['plugin_clear_all_refresh'] : false;
 			}
 
-			$this->stop_refresh_all_cache();
+			$this->stop_refresh_all_cache();	// Just in case.
 
 			wp_cache_flush();	// Clear non-database transients as well.
 
