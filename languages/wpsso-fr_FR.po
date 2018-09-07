@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 4.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-09-07 07:08-0600\n"
-"PO-Revision-Date: 2018-09-07 09:14-0600\n"
+"PO-Revision-Date: 2018-09-07 09:24-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -89,9 +89,8 @@ msgid "Plugin settings have been saved."
 msgstr "Les réglages ont été sauvegardés."
 
 #: lib/admin.php:810
-#, fuzzy
 msgid "Note that some caches may take several days to expire and reflect these changes (or %s now)."
-msgstr "SVP prendre note que le contenu de la page Web pourrais prendre plusieurs jours avant de refléter les changements."
+msgstr "Notez que certains caches peuvent prendre plusieurs jours pour expirer et refléter ces modifications (ou %s maintenant)."
 
 #: lib/admin.php:816 lib/gpl/admin/advanced.php:304
 #: lib/pro/admin/advanced.php:302
@@ -2795,7 +2794,7 @@ msgstr "Un nom / titre personnalisé pour la propriété \"name\" du type d'él�
 
 #: lib/messages.php:110
 msgid "An optional alternate custom name / title for the Schema item type's alternateName property."
-msgstr "Un nom / titre personnalisé alternatif facultatif pour la propriété alternateName du type d'élément Schéma."
+msgstr "Un nom / titre personnalisé alternatif optionnel pour la propriété alternateName du type d'élément Schéma."
 
 #: lib/messages.php:116
 msgid "A custom description for the Schema item type's description property."
@@ -2987,7 +2986,7 @@ msgstr "Le Nom du site WordPress est utilisé pour la balise méta %1$s de Faceb
 
 #: lib/messages.php:398
 msgid "An optional alternate name for your WebSite that you want Google to consider."
-msgstr "Un autre nom facultatif pour votre site Web que vous souhaitez que Google considère."
+msgstr "Un autre nom optionnel pour votre site Web que vous souhaitez que Google considère."
 
 #: lib/messages.php:406
 msgid "The WordPress tagline is used as a description for the blog (non-static) front page, and as a fallback for the Facebook / Open Graph and Pinterest Rich Pin %1$s meta tag."
@@ -3002,9 +3001,8 @@ msgid "You may select a more descriptive Schema type from the Organization sub-t
 msgstr "Vous pouvez sélectionner un type de Schéma plus descriptif des sous-types d'organisation (valeur par défaut est Organization)."
 
 #: lib/messages.php:423
-#, fuzzy
 msgid "Select an optional Place / Location for this Organization (requires the %s add-on)."
-msgstr "Choisissez une adresse d'emplacement facultatif pour cette organisation (requiert l'ajout %s)."
+msgstr "Choisissez une place / position optionnel pour cette organisation (requiert l'ajout %s)."
 
 #: lib/messages.php:442
 msgid "The topic that best describes the Posts and Pages on your website."
@@ -3135,9 +3133,8 @@ msgid "The default image is used for index / archive pages, and as a fallback fo
 msgstr "L'image par défaut est utilisé pour les pages d’archives, et comme image de repli pour les articles et pages qui n’ont pas d'image en vedette, jointe, ou dans leur contenu."
 
 #: lib/messages.php:608
-#, fuzzy
 msgid "You can enter a default image URL (including the http:// prefix) instead of choosing an image ID &mdash; if a default image ID is specified, it has precedence and the image URL option is disabled."
-msgstr "Vous pouvez entrer un URL d'image par défaut (y compris le préfixe http://) au lieu de choisir un ID d'image &mdash; si un ID d'image par défaut est défini, l'option URL d'image est désactivée."
+msgstr "Vous pouvez entrer un URL d'image par défaut (y compris le préfixe http://) au lieu de choisir un ID d'image &mdash; si un ID d'image par défaut est défini, elle est prioritaire et l'option URL d'image est désactivée."
 
 #: lib/messages.php:610
 msgid "The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image."
@@ -3226,7 +3223,7 @@ msgstr "Si le texte du contenu est entièrement composé de balises HTML (qui do
 
 #: lib/messages.php:756
 msgid "When use of image <em>alt</em> attributes is enabled, %s can prefix the attribute text with an optional string."
-msgstr "Lorsque l'utilisation des attributs <em>alt</em> d'images est activée, %s peut préfixer le texte d'attribut avec une chaîne de texte facultative."
+msgstr "Lorsque l'utilisation des attributs <em>alt</em> d'images est activée, %s peut préfixer le texte d'attribut avec une chaîne de texte optionnelle."
 
 #: lib/messages.php:756
 msgid "Leave this value empty to prevent image alt attribute text from being prefixed."
@@ -3514,7 +3511,7 @@ msgstr "Activer le métabox WordPress d'extrait pour les Pages."
 
 #: lib/messages.php:1123
 msgid "An excerpt is an optional hand-crafted summary of your content, that %s can also use as a default description value for meta tags and Schema markup."
-msgstr "Un extrait est un résumé facultatif de votre contenu, que %s peut également utiliser comme valeur de description par défaut pour les balises méta et balisage Schéma."
+msgstr "Un extrait est un résumé optionnel de votre contenu, que %s peut également utiliser comme valeur de description par défaut pour les balises méta et balisage Schéma."
 
 #: lib/messages.php:1129
 msgid "Enable the WordPress tags metabox for Pages."
@@ -3522,7 +3519,7 @@ msgstr "Activer le métabox WordPress d'étiquettes pour les Pages."
 
 #: lib/messages.php:1131
 msgid "WordPress tags are optional keywords about the content subject, often used for searches and \"tag clouds\"."
-msgstr "Les tags WordPress sont des mots-clés facultatifs sur le sujet du contenu, souvent utilisés pour les recherches et les \"tags clouds\"."
+msgstr "Les tags WordPress sont des mots-clés optionnels sur le sujet du contenu, souvent utilisés pour les recherches et les \"tags clouds\"."
 
 #: lib/messages.php:1133
 msgid "%s can convert WordPress tags into hashtags for some social sites (Twitter, Facebook, Google+, etc.)."
@@ -3579,14 +3576,12 @@ msgid "The filtered Schema types array is saved to the WordPress transient cache
 msgstr "La liste filtré des types de Schéma est enregistré dans le cache transitoire de WordPress pour optimiser la performance."
 
 #: lib/messages.php:1233
-#, fuzzy
 msgid "Automatically clear cache(s) when the %s plugin is activated or deactivated."
-msgstr "Vider automatiquement tous les caches d'extensions connu lors de l'enregistrement des réglages de %s (cochée par défaut)."
+msgstr "Vider automatiquement tous les caches lorsque l'extension %s est activé ou désactivé."
 
 #: lib/messages.php:1239
-#, fuzzy
 msgid "Automatically clear cache(s) when saving the %s settings."
-msgstr "Vider automatiquement tous les caches d'extensions connu lors de l'enregistrement des réglages de %s (cochée par défaut)."
+msgstr "Vider automatiquement tous les caches lors de l'enregistrement des réglages de %s."
 
 #: lib/messages.php:1245
 msgid "Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed."
@@ -3634,7 +3629,7 @@ msgstr "La méthode d'authentification de <a href=\"%s\">Clé API</a> a été ab
 
 #: lib/messages.php:1316
 msgid "An optional Bitly short domain to use; either bit.ly, j.mp, bitly.com, or another custom short domain. If no value is entered here, the short domain selected in your Bitly account settings will be used."
-msgstr "Un domaine court facultatif pour Bitly; soit bit.ly, j.mp, bitly.com, ou un autre domaine court personnalisé. Si aucune valeur n'est entrée ici, le domaine court sélectionné dans les paramètres de votre compte Bitly sera utilisé."
+msgstr "Un domaine court optionnel pour Bitly; soit bit.ly, j.mp, bitly.com, ou un autre domaine court personnalisé. Si aucune valeur n'est entrée ici, le domaine court sélectionné dans les paramètres de votre compte Bitly sera utilisé."
 
 #: lib/messages.php:1322
 msgid "The DLMY.App secret API Key can be found in the DLMY.App user account &gt; Tools &gt; Developer API webpage."
@@ -3782,7 +3777,7 @@ msgstr "Le balisage de personne comprend toutes les URL de contact entrées dans
 
 #: lib/messages.php:1518
 msgid "Select an optional site owner for the <em>Knowledge Graph</em> Person markup included in the front page."
-msgstr "Sélectionnez un propriétaire de site facultatif pour le balisage <em> Knowledge Graph </em> de personne inclus dans la page d'accueil."
+msgstr "Sélectionnez un propriétaire de site optionnel pour le balisage <em> Knowledge Graph </em> de personne inclus dans la page d'accueil."
 
 #: lib/messages.php:1518
 msgid "The available Person list includes users with '%1$s' and/or '%2$s' roles."
@@ -4957,7 +4952,7 @@ msgstr "Pages et comptes sociaux du site Web"
 #: lib/sitesubmenu/siteaddons.php:52 lib/submenu/addons.php:41
 msgctxt "metabox title"
 msgid "Optional Core Add-ons"
-msgstr "Ajouts Core facultatifs"
+msgstr "Ajouts Core optionnels"
 
 #: lib/sitesubmenu/siteadvanced.php:47
 msgctxt "metabox title"
