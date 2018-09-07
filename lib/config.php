@@ -2153,7 +2153,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'webpage'                => 'https://schema.org/WebPage',
 								'webpage.about'          => 'https://schema.org/AboutPage',
 								'webpage.checkout'       => 'https://schema.org/CheckoutPage',
-								'webpage.collection'     => 'https://schema.org/CollectionPage',
+								'webpage.collection'     => array(
+									'webpage.collection'    => 'https://schema.org/CollectionPage',
+									'webpage.gallery.image' => 'https://schema.org/ImageGallery',
+									'webpage.gallery.video' => 'https://schema.org/VideoGallery',
+								),
 								'webpage.contact'        => 'https://schema.org/ContactPage',
 								'webpage.item'           => 'https://schema.org/ItemPage',
 								'webpage.medical'        => 'https://health-lifesci.schema.org/MedicalWebPage',

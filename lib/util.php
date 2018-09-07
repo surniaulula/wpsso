@@ -1029,7 +1029,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * to be terminated early (by removing the transient object).
 			 */
 			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;				// Run for max of 1 hour.
+			$cache_exp_secs = HOUR_IN_SECONDS;				// Protect from duplicate runs for 1 hour.
 			$cache_salt     = __CLASS__ . '::add_user_roles';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_status   = 'running';
@@ -1096,7 +1096,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * to be terminated early (by removing the transient object).
 			 */
 			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;				// Run for max of 1 hour.
+			$cache_exp_secs = HOUR_IN_SECONDS;				// Protect from duplicate runs for 1 hour.
 			$cache_salt     = __CLASS__ . '::clear_all_cache';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_status   = 'running';
@@ -1208,7 +1208,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function stop_refresh_all_cache() {
 
 			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
-			$cache_exp_secs = DAY_IN_SECONDS;				// Run for max of 1 day.
+			$cache_exp_secs = HOUR_IN_SECONDS * 6;				// Protect from duplicate runs for 6 hours.
 			$cache_salt     = __CLASS__ . '::refresh_all_cache';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
@@ -1228,7 +1228,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * to be terminated early (by removing the transient object).
 			 */
 			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
-			$cache_exp_secs = DAY_IN_SECONDS;				// Run for max of 1 day.
+			$cache_exp_secs = HOUR_IN_SECONDS * 6;				// Protect from duplicate runs for 6 hours.
 			$cache_salt     = __CLASS__ . '::refresh_all_cache';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_status   = 'running';
@@ -1240,7 +1240,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
 
-				$sleep_secs = 5 + WPSSO_REFRESH_CACHE_SLEEP_TIME;
+				$sleep_secs = WPSSO_REFRESH_CACHE_SLEEP_TIME + 5;
 
 				usleep( $sleep_secs * 1000000 );			// Sleeps for 5.25 seconds by default.
 
