@@ -1013,11 +1013,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function schedule_add_user_roles( $user_id = null ) {
 
-			if ( null === $user_id ) {
-				$user_id = get_current_user_id();
-			}
-
-			wp_clear_scheduled_hook( $this->p->lca . '_add_user_roles' );
+			$user_id = $this->maybe_change_user_id( $user_id );
 
 			wp_schedule_single_event( time(), $this->p->lca . '_add_user_roles', array( $user_id ) );
 		}
@@ -1054,16 +1050,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
-			if ( null === $user_id ) {
-				$user_id = get_current_user_id();
-			}
+			$start_time = microtime( true );
+			$user_id    = $this->maybe_change_user_id( $user_id );
 
 			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
+
 				if ( get_transient( $cache_id ) !== $cache_status ) {	// Check that we are allowed to continue.
+
 					delete_transient( $cache_id );
+
 					return;
 				}
+
 				$user_obj = get_user_by( 'ID', $user_id );
+
 				$user_obj->add_role( 'person' );
 			}
 
@@ -1072,11 +1072,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function schedule_clear_all_cache( $user_id = null, $clear_other = false, $clear_short = null, $refresh_all = null ) {
 
-			if ( null === $user_id ) {
-				$user_id = get_current_user_id();
-			}
-
-			wp_clear_scheduled_hook( $this->p->lca . '_clear_all_cache' );
+			$user_id = $this->maybe_change_user_id( $user_id );
 
 			wp_schedule_single_event( time(), $this->p->lca . '_clear_all_cache', array( $user_id, $clear_other, $clear_short, $refresh_all ) );
 		}
@@ -1115,10 +1111,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
 			$start_time = microtime( true );
-
-			if ( null === $user_id ) {
-				$user_id = get_current_user_id();
-			}
+			$user_id    = $this->maybe_change_user_id( $user_id );
 
 			if ( null === $clear_short ) {
 				$clear_short = isset( $this->p->options['plugin_clear_short_urls'] ) ?
@@ -1196,7 +1189,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $status_msg ) {
-				$this->p->notice->upd( $status_msg, $user_id );
+
+				$notice_key = 'clear-add-cache-' . $clear_other . '-' . $clear_short . '-' . $refresh_all . '-done';
+
+				$this->p->notice->upd( $status_msg, $user_id, $notice_key );
 			}
 
 			delete_transient( $cache_id );
@@ -1204,11 +1200,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 		public function schedule_refresh_all_cache( $user_id = null ) {
 
-			if ( null === $user_id ) {
-				$user_id = get_current_user_id();
-			}
-
-			wp_clear_scheduled_hook( $this->p->lca . '_refresh_all_cache' );
+			$user_id = $this->maybe_change_user_id( $user_id );
 
 			wp_schedule_single_event( time(), $this->p->lca . '_refresh_all_cache', array( $user_id ) );
 		}
@@ -1220,7 +1212,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$cache_salt     = __CLASS__ . '::refresh_all_cache';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
-			delete_transient( $cache_id );
 			if ( get_transient( $cache_id ) !== false ) {			// Another process is already running.
 				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
 			}
@@ -1261,15 +1252,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
 			$start_time  = microtime( true );
+			$user_id     = $this->maybe_change_user_id( $user_id );
 			$total_count = array(
 				'post' => 0,
 				'term' => 0,
 				'user' => 0,
 			);
-
-			if ( null === $user_id ) {
-				$user_id = get_current_user_id();
-			}
 
 			foreach ( $total_count as $name => &$count ) {
 
@@ -1369,6 +1357,19 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					foreach ( $col_meta_keys as $col_idx => $meta_key ) {
 						delete_user_meta( $user_id, $meta_key );
 					}
+				}
+			}
+		}
+
+		public function delete_expired_cache_id( $cache_id ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			if ( $transient_timeout = get_option( '_transient_timeout_' . $cache_id ) ) {
+				if ( $transient_timeout < time() ) {
+					delete_transient( $cache_id );
 				}
 			}
 		}
@@ -2125,21 +2126,32 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Check for a recognized object.
 			 */
 			if ( is_object( $wp_obj ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'wp_obj argument is ' . get_class( $wp_obj ) . ' object' );
 				}
+
 				switch ( get_class( $wp_obj ) ) {
+
 					case 'WP_Post':
+
 						$mod['name'] = 'post';
-						$mod['id'] = $wp_obj->ID;
+						$mod['id']   = $wp_obj->ID;
+
 						break;
+
 					case 'WP_Term':
+
 						$mod['name'] = 'term';
-						$mod['id'] = $wp_obj->term_id;
+						$mod['id']   = $wp_obj->term_id;
+
 						break;
+
 					case 'WP_User':
+
 						$mod['name'] = 'user';
-						$mod['id'] = $wp_obj->ID;
+						$mod['id']   = $wp_obj->ID;
+
 						break;
 				}
 			}
@@ -2148,47 +2160,69 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * We need a module name to get its id and class object.
 			 */
 			if ( empty( $mod['name'] ) ) {
+
 				if ( self::is_post_page( $use_post ) ) {	// $use_post = true | false | post_id
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'is_post_page is true' );
 					}
+
 					$mod['name'] = 'post';
+
 				} elseif ( self::is_term_page() ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'is_term_page is true' );
 					}
+
 					$mod['name'] = 'term';
+
 				} elseif ( self::is_user_page() ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'is_user_page is true' );
 					}
+
 					$mod['name'] = 'user';
+
 				} else {
 					$mod['name'] = false;
 				}
 			}
 
 			if ( empty( $mod['id'] ) ) {
+
 				if ( $mod['name'] === 'post' ) {
+
 					$mod['id'] = self::get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id
+
 				} elseif ( $mod['name'] === 'term' ) {
+
 					$mod['id'] = self::get_term_object( false, '', 'id' );
+
 				} elseif ( $mod['name'] === 'user' ) {
+
 					$mod['id'] = self::get_user_object( false, 'id' );
+
 				} else {
 					$mod['id'] = false;
 				}
 			}
 
 			if ( isset( $this->p->m['util'][$mod['name']] ) ) {	// Make sure we have a complete $mod array.
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting $mod array from ' . $mod['name'] . ' module object' );
 				}
+
 				$mod = $this->p->m['util'][$mod['name']]->get_mod( $mod['id'] );
+
 			} else {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'object is unknown - merging $mod defaults' );
 				}
+
 				$mod = array_merge( WpssoMeta::$mod_defaults, $mod );
 			}
 
@@ -2496,19 +2530,65 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		private function check_url_string( $url, $context ) {
+
 			if ( is_string( $url ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $context . ' url = ' . $url );
 				}
 				return $url;	// Stop here.
 			}
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $context . ' url is ' . gettype( $url ) );
 				if ( is_wp_error( $url ) ) {
 					$this->p->debug->log( $context . ' url error: ' . $url->get_error_message() );
 				}
 			}
+
 			return false;
+		}
+
+		/**
+		 * Called by scheduled tasks to possibly load a different user, including their preferred language.
+		 */
+		private function maybe_change_user_id( $user_id ) {
+
+			$current_user_id = get_current_user_id();	// 0 for a scheduled task.
+
+			if ( null === $user_id ) {	// Default argument value for most methods.
+
+				return $current_user_id;
+
+			} elseif ( $user_id === $current_user_id ) {
+
+				return $user_id;	// Nothing to do.
+			}
+
+			/**
+			 * The user ID is different than the current / effective user ID, so check
+			 * if the user locale is different to the current locale, and load the
+			 * user locale if required.
+			 */
+			$user_locale    = get_user_meta( $user_id, 'locale', true );
+			$current_locale = get_locale();
+
+			if ( ! empty( $user_locale ) && $user_locale !== $current_locale ) {
+
+				$domain        = 'wpsso';
+				$rel_path      = 'wpsso/languages/';
+				$mofile        = $domain . '-' . $user_locale . '.mo';
+				$wp_mopath     = WP_LANG_DIR . '/plugins/' . $mofile;
+				$plugin_mopath = WP_PLUGIN_DIR . '/' . $rel_path . $mofile;
+
+				/**
+				 * Try to load from the WordPress languages directory first.
+				 */
+				if ( ! load_textdomain( $domain, $wp_mopath ) ) {
+					load_textdomain( $domain, $plugin_mopath );
+				}
+			}
+
+			return $user_id;
 		}
 
 		/**
@@ -2863,13 +2943,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 * Show an admin warning notice, if notices not already shown.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
-					if ( $is_wp_filter ) {
-						$filter_api_link    = '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/' .
-							$filter_name . '">' . $filter_name . '</a>';
-						$query_monitor_link = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
-						$dismiss_key        = 'slow-filter-hooks-detected-' . $filter_name;
 
-						$this->p->notice->warn( sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $total_time, $max_time ) . ' ' . sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info['short'] ), true, $dismiss_key, WEEK_IN_SECONDS );
+					if ( $is_wp_filter ) {
+
+						$filter_api_link = '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/' .
+							$filter_name . '">' . $filter_name . '</a>';
+
+						$query_monitor_link = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
+
+						$notice_key = 'slow-filter-hooks-detected-' . $filter_name;
+
+						$this->p->notice->warn( sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $total_time, $max_time ) . ' ' . sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info['short'] ), null, $notice_key, WEEK_IN_SECONDS );
+
 					} else {
 						$this->p->notice->warn( $error_msg );
 					}

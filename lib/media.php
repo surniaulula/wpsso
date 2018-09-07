@@ -488,19 +488,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'full size image '.$img_meta['file'].' dimensions missing from image metadata' );
 					}
 
-					$dismiss_key = 'full-size-image-'.$pid.'-dimensions-missing';
+					$notice_key   = 'full-size-image-'.$pid.'-dimensions-missing';
 					$dismiss_time = WEEK_IN_SECONDS;
 
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
 						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_url, '<code>'.$func_name.'</code>' );
 
-						$this->p->notice->err( $error_msg.' '.$regen_msg, true, $dismiss_key, $dismiss_time );
+						$this->p->notice->err( $error_msg.' '.$regen_msg, null, $notice_key, $dismiss_time );
 
 					} elseif ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'admin error notice for missing full size image id '.$pid.' dimensions metadata is ' .
-							( $this->p->notice->is_dismissed( $dismiss_key ) ? 'dismissed' : 'shown (not dismissed)' ) );
+							( $this->p->notice->is_dismissed( $notice_key ) ? 'dismissed' : 'shown (not dismissed)' ) );
 					}
 
 				} else {
@@ -512,19 +512,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->log( 'full size image file path meta for '.$pid.' missing from image metadata' );
 					}
 
-					$dismiss_key = 'full-size-image-'.$pid.'-file-path-missing';
+					$notice_key   = 'full-size-image-'.$pid.'-file-path-missing';
 					$dismiss_time = WEEK_IN_SECONDS;
 
 					if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
 
 						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_url, '<code>'.$func_name.'</code>' );
 
-						$this->p->notice->err( $error_msg.' '.$regen_msg, true, $dismiss_key, $dismiss_time );
+						$this->p->notice->err( $error_msg.' '.$regen_msg, null, $notice_key, $dismiss_time );
 
 					} elseif ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'admin error notice for missing full size image id '.$pid.' file path metadata is ' .
-							( $this->p->notice->is_dismissed( $dismiss_key ) ? 'dismissed' : 'shown (not dismissed)' ) );
+							( $this->p->notice->is_dismissed( $notice_key ) ? 'dismissed' : 'shown (not dismissed)' ) );
 					}
 				}
 			}
@@ -628,7 +628,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 	
 							if ( $resized_meta == false ) {
 
-								$dismiss_key = 'image-make-intermediate-size-'.$fullsizepath.'-failure';
+								$notice_key   = 'image-make-intermediate-size-'.$fullsizepath.'-failure';
 								$dismiss_time = WEEK_IN_SECONDS;
 
 								if ( $this->p->notice->is_admin_pre_notices() ) { // Skip if notices already shown.
@@ -640,12 +640,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 									$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> reported an error when trying to create an image size from %4$s.', 'wpsso' ), $media_lib, $func_url, '<code>'.$func_name.'</code>', $fullsizepath );
 
-									$this->p->notice->err( $error_msg.' '.$regen_msg, true, $dismiss_key, $dismiss_time );
+									$this->p->notice->err( $error_msg.' '.$regen_msg, null, $notice_key, $dismiss_time );
 
 								} elseif ( $this->p->debug->enabled ) {
 
 									$this->p->debug->log( 'admin error notice for image_make_intermediate_size() from '.$fullsizepath.' is ' .
-										( $this->p->notice->is_dismissed( $dismiss_key ) ? 'dismissed' : 'shown (not dismissed)' ) );
+										( $this->p->notice->is_dismissed( $notice_key ) ? 'dismissed' : 'shown (not dismissed)' ) );
 								}
 
 							} else {
@@ -1574,7 +1574,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 
-					$dismiss_key  = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_ratio_greater_than_allowed';
+					$notice_key   = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_ratio_greater_than_allowed';
 					$dismiss_time = true;
 					$size_label   = $this->p->util->get_image_size_label( $size_name );
 					$error_msg    = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' );
@@ -1584,7 +1584,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
 					$this->p->notice->err( sprintf( $error_msg, $media_lib, $img_label, $img_width.'x'.$img_height,
-						$max_ratio, $spec_name ).' '.$rejected_msg, true, $dismiss_key, $dismiss_time );
+						$max_ratio, $spec_name ).' '.$rejected_msg, null, $notice_key, $dismiss_time );
 				}
 
 				return false;	// image rejected
@@ -1602,7 +1602,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
 
-					$dismiss_key  = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_smaller_than_minimum_allowed';
+					$notice_key  = 'image_' . $img_mixed . '_' . $img_width . 'x' . $img_height . '_' . $size_name . '_smaller_than_minimum_allowed';
 					$dismiss_time = true;
 					$size_label   = $this->p->util->get_image_size_label( $size_name );
 					$error_msg    = __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' );
@@ -1612,7 +1612,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
 					$this->p->notice->err( sprintf( $error_msg, $media_lib, $img_label, $img_width.'x'.$img_height,
-						$min_width.'x'.$min_height, $spec_name ).' '.$rejected_msg, true, $dismiss_key, $dismiss_time );
+						$min_width.'x'.$min_height, $spec_name ).' '.$rejected_msg, true, $notice_key, $dismiss_time );
 				}
 
 				return false;	// image rejected

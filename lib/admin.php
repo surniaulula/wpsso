@@ -825,10 +825,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $opts['plugin_filter_content'] ) ) {
 
-				$message_key = 'notice-content-filters-disabled';
-				$dismiss_key = $message_key . '-reminder';
+				$get_msg_key = 'notice-content-filters-disabled';
+				$notice_key  = $message_key . '-reminder';
 
-				$this->p->notice->warn( $this->p->msgs->get( $message_key ), true, $dismiss_key, true );	// Can be dismissed.
+				$this->p->notice->warn( $this->p->msgs->get( $get_msg_key ), null, $notice_key, true );	// Can be dismissed.
 			}
 
 			$this->check_tmpl_head_attributes();
@@ -1053,9 +1053,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $current_locale && $default_locale && $current_locale !== $default_locale ) {
 
-				$dismiss_key = $this->menu_id . '-language-notice-current-' . $current_locale . '-default-' . $default_locale;
+				$notice_key = $this->menu_id . '-language-notice-current-' . $current_locale . '-default-' . $default_locale;
 
-				$this->p->notice->inf( sprintf( __( 'Please note that your current language is different from the default site language (%s).', 'wpsso' ), $default_locale ) . ' ' . sprintf( __( 'Localized option values (%s) are used for webpages and content in that language only (not for the default language, or any other language).', 'wpsso' ), $current_locale ), true, $dismiss_key, true );
+				$this->p->notice->inf( sprintf( __( 'Please note that your current language is different from the default site language (%s).', 'wpsso' ), $default_locale ) . ' ' . sprintf( __( 'Localized option values (%s) are used for webpages and content in that language only (not for the default language, or any other language).', 'wpsso' ), $current_locale ), null, $notice_key, true );
 			}
 		}
 
@@ -2215,10 +2215,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->debug->log( 'blog_public option is disabled' );
 				}
 
-				$dismiss_key = 'wordpress-search-engine-visibility-disabled';
+				$notice_key = 'wordpress-search-engine-visibility-disabled';
 
-				if ( $this->p->notice->is_admin_pre_notices( $dismiss_key ) ) { // Don't bother if already dismissed.
-					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), true, $dismiss_key, MONTH_IN_SECONDS * 3 );
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) { // Don't bother if already dismissed.
+
+					$this->p->notice->warn( sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engine and social crawlers from indexing this site. This is not compatible with the purpose of sharing content on social sites &mdash; please uncheck the option to allow search engines and social crawlers to access your content.', 'wpsso' ), get_admin_url( null, 'options-reading.php' ) ), null, $notice_key, MONTH_IN_SECONDS * 3 );
 				}
 			}
 		}
@@ -2728,16 +2729,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
-				$dismiss_key  = 'timed-notice-' . $ext . '-plugin-review';
+				$notice_key   = 'timed-notice-' . $ext . '-plugin-review';
 				$dismiss_time = true;
-				$showing_ext  = get_transient( $cache_id );				// Returns empty string or $dismiss_key value. 
+				$showing_ext  = get_transient( $cache_id );				// Returns empty string or $notice_key value. 
 
 				if ( empty( $info['version'] ) ) {					// Plugin not installed.
 					continue;
 				} elseif ( empty( $info['url']['review'] ) ) {				// Must be hosted on wordpress.org.
 					continue;
-				} elseif ( $this->p->notice->is_dismissed( $dismiss_key, $user_id ) ) {	// User has dismissed.
-					if ( $showing_ext === $dismiss_key ) {				// Notice was dismissed $cache_exp_secs ago.
+				} elseif ( $this->p->notice->is_dismissed( $notice_key, $user_id ) ) {	// User has dismissed.
+					if ( $showing_ext === $notice_key ) {				// Notice was dismissed $cache_exp_secs ago.
 						break;							// Stop here.
 					}
 					continue;							// Get the next plugin.
@@ -2746,8 +2747,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				} elseif ( $all_times[$ext . '_activate_time'] > $one_week_ago_secs ) {	// Activated less than time ago.
 					continue;
 				} elseif ( empty( $showing_ext ) || $showing_ext === '1' ) {		// Show this notice for $cache_exp_secs.
-					set_transient( $cache_id, $dismiss_key, $cache_exp_secs );
-				} elseif ( $showing_ext !== $dismiss_key ) {				// We're not showing this plugin right now.
+					set_transient( $cache_id, $notice_key, $cache_exp_secs );
+				} elseif ( $showing_ext !== $notice_key ) {				// We're not showing this plugin right now.
 					continue;							// Get the next plugin.
 				}
 
@@ -2814,7 +2815,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * The notice provides it's own dismiss button, so do not show the dismiss 'Forever' link.
 				 */
-				$this->p->notice->log( 'inf', $notice_msg, $user_id, $dismiss_key, $dismiss_time, array( 'dismiss_diff' => false ) );
+				$this->p->notice->log( 'inf', $notice_msg, $user_id, $notice_key, $dismiss_time, array( 'dismiss_diff' => false ) );
 
 				return;	// Show only one notice at a time.
 			}
@@ -2825,7 +2826,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					$info         = $this->p->cf['plugin'][$lca];
 					$purchase_url = add_query_arg( 'utm_source', 'pro-purchase-notice', $info['url']['purchase'] );
-					$dismiss_key  = 'timed-notice-' . $lca . '-pro-purchase-notice';
+					$notice_key   = 'timed-notice-' . $lca . '-pro-purchase-notice';
 					$dismiss_time = 3 * MONTH_IN_SECONDS;
 
 					$purchase_label   = __( 'Yes! Get the Pro update in just moments!', 'wpsso' );
@@ -2864,7 +2865,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					/**
 					 * The notice provides it's own dismiss button, so do not show the dismiss 'Forever' link.
 					 */
-					$this->p->notice->log( 'inf', $notice_msg, $user_id, $dismiss_key, $dismiss_time, array( 'dismiss_diff' => false ) );
+					$this->p->notice->log( 'inf', $notice_msg, $user_id, $notice_key, $dismiss_time, array( 'dismiss_diff' => false ) );
 
 					return;	// Show only one notice at a time.
 				}
@@ -2960,10 +2961,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								'version_url' => WpssoConfig::$cf[$key]['version_url'],
 							) );
 
-							$dismiss_key  = 'notice-recommend-version-' . $this->p->lca . '-' . $version . '-' . $app_label . '-' . $app_version;
+							$notice_key   = 'notice-recommend-version-' . $this->p->lca . '-' . $version . '-' . $app_label . '-' . $app_version;
 							$dismiss_time = MONTH_IN_SECONDS;
 
-							$this->p->notice->warn( $warn_msg, true, $dismiss_key, $dismiss_time );
+							$this->p->notice->warn( $warn_msg, null, $notice_key, $dismiss_time );
 						}
 					}
 				}
@@ -2985,11 +2986,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $update_count > 0 ) {
 
-				$info        = $this->p->cf['plugin'][$this->p->lca];
-				$link_url    = self_admin_url( 'update-core.php' );
-				$dismiss_key = 'have-updates-for-' . $this->p->lca;
+				$info       = $this->p->cf['plugin'][$this->p->lca];
+				$link_url   = self_admin_url( 'update-core.php' );
+				$notice_key = 'have-updates-for-' . $this->p->lca;
 
-				$this->p->notice->inf( sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and/or its add-on(s)</a>.', 'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and/or its add-on(s)</a>.', $update_count, 'wpsso' ), $link_url, $update_count, $info['short'] ) . ' ' . _n( 'Please install this update at your earliest convenience.', 'Please install these updates at your earliest convenience.', $update_count, 'wpsso' ), true, $dismiss_key, DAY_IN_SECONDS * 3 );
+				$this->p->notice->inf( sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and/or its add-on(s)</a>.', 'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and/or its add-on(s)</a>.', $update_count, 'wpsso' ), $link_url, $update_count, $info['short'] ) . ' ' . _n( 'Please install this update at your earliest convenience.', 'Please install these updates at your earliest convenience.', $update_count, 'wpsso' ), null, $notice_key, DAY_IN_SECONDS * 3 );
 			}
 		}
 
@@ -3023,9 +3024,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				} elseif ( strpos( $html_stripped, '<head>' ) !== false ) {
 
 					if ( $this->p->notice->is_admin_pre_notices() ) {
-						$error_msg = $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' );
-						$dismiss_key = 'notice-header-tmpl-no-head-attr-' . SucomUtil::get_theme_slug_version();
-						$this->p->notice->warn( $error_msg, true, $dismiss_key, true );
+
+						$error_msg  = $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' );
+						$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtil::get_theme_slug_version();
+
+						$this->p->notice->warn( $error_msg, null, $notice_key, true );
 					}
 
 					break;
@@ -3092,11 +3095,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $have_changes ) {
 
-				$dismiss_key = 'notice-header-tmpl-no-head-attr-' . SucomUtil::get_theme_slug_version();
+				$notice_key  = 'notice-header-tmpl-no-head-attr-' . SucomUtil::get_theme_slug_version();
 				$admin_roles = $this->p->cf['wp']['roles']['admin'];
 				$user_ids    = SucomUtil::get_user_ids_by_roles( $admin_roles );
 
-				$this->p->notice->truncate_key( $dismiss_key, $user_ids );	// Just in case.
+				$this->p->notice->truncate_key( $notice_key, $user_ids );	// Just in case.
 			}
 		}
 
