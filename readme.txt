@@ -350,8 +350,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Minor code changes to rename the package check method.
 	* Added new methods in the WpssoUtil class to optionally run some tasks in background:
 		* schedule_add_user_roles()
-		* schedule_refresh_all_cache()
 		* schedule_clear_all_cache()
+		* schedule_refresh_all_cache()
 
 **Version 4.11.1 (2018/08/25)**
 
