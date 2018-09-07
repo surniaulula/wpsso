@@ -1315,10 +1315,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_on_activate:use'   => 'default',
 					'plugin_clear_on_save'           => 0,			// Clear Cache on Save Settings.
 					'plugin_clear_on_save:use'       => 'default',
-					'plugin_clear_short_urls'        => 0,			// Refresh Short URLs on Clear Cache.
-					'plugin_clear_short_urls:use'    => 'default',
 					'plugin_clear_for_comment'       => 0,			// Clear Post Cache for New Comment.
 					'plugin_clear_for_comment:use'   => 'default',
+					'plugin_clear_short_urls'        => 0,			// Refresh Short URLs on Clear Cache.
+					'plugin_clear_short_urls:use'    => 'default',
 					'plugin_clear_all_refresh'       => 0,			// Auto-Refresh Cache After Clearing.
 					'plugin_clear_all_refresh:use'   => 'default',
 				),

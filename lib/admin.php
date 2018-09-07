@@ -807,7 +807,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ), _x( 'Clear All Caches', 'submit button', 'wpsso' ) );
 	
 				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
-					sprintf( __( 'Note that some caches may take several days to reflect changes (you may %s to force a refresh).',
+					sprintf( __( 'Note that some caches may take several days to expire and reflect these changes (or %s now).',
 						'wpsso' ), $clear_cache_link ) );
 
 			} else {
@@ -816,7 +816,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					_x( 'Clear Cache on Save Settings', 'option label', 'wpsso' ) );
 
 				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
-					sprintf( __( 'A background task will begin shortly to clear all caches (%s option is enabled).',
+					sprintf( __( 'A background task will begin shortly to clear all caches (the %s option is enabled).',
 						'wpsso' ), $settings_page_link ) );
 
 				$this->p->util->schedule_clear_all_cache( get_current_user_id(), true );
@@ -921,8 +921,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_all_cache':
 
-							$this->p->notice->upd( sprintf( __( 'A background task will begin shortly to clear all caches.',
-								'wpsso' ), $settings_page_link ) );
+							$this->p->notice->upd( __( 'A background task will begin shortly to clear all caches.', 'wpsso' ) );
 
 							$this->p->util->schedule_clear_all_cache( get_current_user_id(), true );
 
@@ -930,8 +929,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_all_cache_and_short_urls':
 
-							$this->p->notice->upd( sprintf( __( 'A background task will begin shortly to clear all caches and short URLs.',
-								'wpsso' ), $settings_page_link ) );
+							$this->p->notice->upd( __( 'A background task will begin shortly to clear all caches and short URLs.', 'wpsso' ) );
 
 							$this->p->util->schedule_clear_all_cache( get_current_user_id(), true, true );
 
@@ -1266,13 +1264,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					_x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ) );
 
 				$html .= '<p><small>[*] ';
+
 				if ( empty( $this->p->options['plugin_clear_short_urls'] ) ) {
-					$html .= sprintf( __( '%1$s option is unchecked - shortened URL cache will be preserved.',
-						'wpsso' ), $settings_page_link );
+					$html .= sprintf( __( '%1$s option is unchecked - the shortened URL cache will be preserved.', 'wpsso' ), $settings_page_link );
 				} else {
-					$html .= sprintf( __( '%1$s option is checked - shortened URL cache will be refreshed.',
-						'wpsso' ), $settings_page_link );
+					$html .= sprintf( __( '%1$s option is checked - the shortened URL cache will be cleared.', 'wpsso' ), $settings_page_link );
 				}
+
 				$html .= '</small></p>';
 			}
 

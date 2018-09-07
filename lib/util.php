@@ -1177,12 +1177,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $refresh_all ) {
+
 				if ( $status_msg ) {
-					$status_msg .= ' ';
-					$status_msg .= sprintf( __( 'A background task will begin shortly to refresh the %s post, term, and user caches.',
-						'wpsso' ), $this->p->cf['plugin'][$this->p->lca]['short'] );
+					$status_msg .= ' ' . __( 'A background task will begin shortly to refresh the post, term, and user caches.', 'wpsso' );
 				}
+
 				$this->schedule_refresh_all_cache( $user_id );	// Run in the next minute.
+
+			} elseif ( empty( $this->p->options['plugin_clear_all_refresh'] ) ) {
+
+				if ( $status_msg ) {
+					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
+						_x( 'Auto-Refresh Cache After Clearing', 'option label', 'wpsso' ) );
+
+					$status_msg .= ' ' . sprintf( __( 'The post, term, and user caches will be re-created as they are needed (the %s option is disabled).',
+						'wpsso' ), $settings_page_link );
+				}
 			}
 
 			if ( $status_msg ) {

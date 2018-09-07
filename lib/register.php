@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 					_x( 'Clear Cache on Activate / Deactivate', 'option label', 'wpsso' ) );
 
-				$this->p->notice->upd( sprintf( __( 'A background task will begin shortly to clear all caches (%s option is enabled).',
+				$this->p->notice->upd( sprintf( __( 'A background task will begin shortly to clear all caches (the %s option is enabled).',
 					'wpsso' ), $settings_page_link ) );
 
 				$this->p->util->schedule_clear_all_cache( get_current_user_id(), true );
