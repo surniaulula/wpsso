@@ -2542,9 +2542,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'checking for custom event offers' );
 			}
 
-			$have_offers = false;
+			$have_event_offers = false;
+			$event_offers_max  = SucomUtil::get_const( 'WPSSO_SCHEMA_EVENT_OFFERS_MAX', 10 );
 
-			foreach ( range( 0, WPSSO_SCHEMA_EVENT_OFFERS_MAX - 1, 1 ) as $key_num ) {
+			foreach ( range( 0, $event_offers_max - 1, 1 ) as $key_num ) {
 
 				$offer_opts = apply_filters( $wpsso->lca . '_get_event_offer_options', false, $mod, $event_id, $key_num );
 
@@ -2575,39 +2576,52 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( isset( $offer_opts['offer_name'] ) && isset( $offer_opts['offer_price'] ) ) {
 
 					if ( ! isset( $event_opts['offer_url'] ) ) {
+
 						if ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'setting offer_url to ' . $sharing_url );
 						}
+
 						$offer_opts['offer_url'] = $sharing_url;
 					}
 
 					if ( ! isset( $offer_opts['offer_valid_from_date'] ) ) {
+
 						if ( ! empty( $event_opts['event_offers_start_date_iso'] ) ) {
+
 							if ( $wpsso->debug->enabled ) {
 								$wpsso->debug->log( 'setting offer_valid_from_date to ' . $event_opts['event_offers_start_date_iso'] );
 							}
+
 							$offer_opts['offer_valid_from_date'] = $event_opts['event_offers_start_date_iso'];
+
 						} elseif ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'event option event_offers_start_date_iso is empty' );
 						}
 					}
 
 					if ( ! isset( $offer_opts['offer_valid_to_date'] ) ) {
+
 						if ( ! empty( $event_opts['event_offers_end_date_iso'] ) ) {
+
 							if ( $wpsso->debug->enabled ) {
 								$wpsso->debug->log( 'setting offer_valid_to_date to ' . $event_opts['event_offers_end_date_iso'] );
 							}
+
 							$offer_opts['offer_valid_to_date'] = $event_opts['event_offers_end_date_iso'];
+
 						} elseif ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'event option event_offers_end_date_iso is empty' );
 						}
 					}
 
-					if ( false === $have_offers ) {
-						$have_offers = true;
+					if ( false === $have_event_offers ) {
+
+						$have_event_offers = true;
+
 						if ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'custom event offer found - creating new offers array' );
 						}
+
 						$event_opts['event_offers'] = array();	// Clear offers returned by filter.
 					}
 
@@ -2616,9 +2630,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( empty( $event_opts ) ) {	// $event_opts could be false or empty array.
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: empty event options' );
 				}
+
 				return 0;
 			}
 

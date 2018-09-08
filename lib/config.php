@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.12.0-rc.1',	// Plugin version.
-					'opt_version' => '601',		// Increment when changing default option values.
+					'version'     => '4.12.0-rc.2',	// Plugin version.
+					'opt_version' => '602',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -1080,10 +1080,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Plugin Settings tab.
 					 */
-					'plugin_preserve'   => 0,	// Preserve Settings on Uninstall.
-					'plugin_debug'      => 0,	// Add Hidden Debug Messages.
-					'plugin_hide_pro'   => 0,	// Hide All Pro Version Options.
-					'plugin_show_opts'  => 'basic',	// Options to Show by Default.
+					'plugin_clean_on_uninstall' => 0,	// Remove All Settings on Uninstall.
+					'plugin_debug'              => 0,	// Add Hidden Debug Messages.
+					'plugin_hide_pro'           => 0,	// Hide All Pro Version Options.
+					'plugin_show_opts'          => 'basic',	// Options to Show by Default.
 					/**
 					 * Advanced settings - Content and Filters tab.
 					 */
@@ -1177,11 +1177,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_short_url_cache_exp' => 7776000,		// Get Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_topics_cache_exp'    => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
-					'plugin_clear_on_activate'   => 1,			// Clear Cache on Activate / Deactivate.
+					'plugin_clear_on_activate'   => 0,			// Clear Cache on Activate.
+					'plugin_clear_on_deactivate' => 0,			// Clear Cache on Deactivate.
 					'plugin_clear_on_save'       => 0,			// Clear Cache on Save Settings.
-					'plugin_clear_for_comment'   => 0,			// Clear Post Cache for New Comment.
 					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
 					'plugin_clear_all_refresh'   => 0,			// Auto-Refresh Cache After Clearing.
+					'plugin_clear_post_terms'    => 1,			// Clear Term Cache on Post Update.
+					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
 					/**
 					 * Advanced settings - Service APIs tab.
 					 */
@@ -1255,14 +1257,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Plugin Settings tab.
 					 */
-					'plugin_preserve'      => 0,		// Preserve Settings on Uninstall
-					'plugin_preserve:use'  => 'default',
-					'plugin_debug'         => 0,		// Add Hidden Debug Messages
-					'plugin_debug:use'     => 'default',
-					'plugin_hide_pro'      => 0,		// Hide All Pro Version Options
-					'plugin_hide_pro:use'  => 'default',
-					'plugin_show_opts'     => 'basic',	// Options to Show by Default
-					'plugin_show_opts:use' => 'default',
+					'plugin_clean_on_uninstall'     => 0,		// Remove All Settings on Uninstall
+					'plugin_clean_on_uninstall:use' => 'default',
+					'plugin_debug'                  => 0,		// Add Hidden Debug Messages
+					'plugin_debug:use'              => 'default',
+					'plugin_hide_pro'               => 0,		// Hide All Pro Version Options
+					'plugin_hide_pro:use'           => 'default',
+					'plugin_show_opts'              => 'basic',	// Options to Show by Default
+					'plugin_show_opts:use'          => 'default',
 					/**
 					 * Advanced settings - Integration tab.
 					 */
@@ -1311,16 +1313,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_topics_cache_exp:use'    => 'default',
 					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
 					'plugin_types_cache_exp:use'     => 'default',
-					'plugin_clear_on_activate'       => 1,			// Clear Cache on Activate / Deactivate.
+					'plugin_clear_on_activate'       => 0,			// Clear Cache on Activate.
 					'plugin_clear_on_activate:use'   => 'default',
+					'plugin_clear_on_deactivate'     => 0,			// Clear Cache on Deactivate.
+					'plugin_clear_on_deactivate:use' => 'default',
 					'plugin_clear_on_save'           => 0,			// Clear Cache on Save Settings.
 					'plugin_clear_on_save:use'       => 'default',
-					'plugin_clear_for_comment'       => 0,			// Clear Post Cache for New Comment.
-					'plugin_clear_for_comment:use'   => 'default',
 					'plugin_clear_short_urls'        => 0,			// Refresh Short URLs on Clear Cache.
 					'plugin_clear_short_urls:use'    => 'default',
 					'plugin_clear_all_refresh'       => 0,			// Auto-Refresh Cache After Clearing.
 					'plugin_clear_all_refresh:use'   => 'default',
+					'plugin_clear_post_terms'        => 1,			// Clear Term Cache on Post Update.
+					'plugin_clear_post_terms:use'    => 'default',
+					'plugin_clear_for_comment'       => 1,			// Clear Post Cache for New Comment.
+					'plugin_clear_for_comment:use'   => 'default',
 				),
 				/**
 				 * Contact method options prefix.
@@ -2787,13 +2793,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Define fixed constants.
 			 */
-			define( 'WPSSO_VERSION', self::$cf['plugin']['wpsso']['version'] );						
 			define( 'WPSSO_FILEPATH', $plugin_filepath );						
+			define( 'WPSSO_PLUGINBASE', self::$cf['plugin']['wpsso']['base'] );			// Example: wpsso/wpsso.php.
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
 			define( 'WPSSO_PLUGINSLUG', self::$cf['plugin']['wpsso']['slug'] );			// Example: wpsso.
-			define( 'WPSSO_PLUGINBASE', self::$cf['plugin']['wpsso']['base'] );			// Example: wpsso/wpsso.php.
-			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_filepath ) ) );
 			define( 'WPSSO_UNDEF', -1 );								// Undefined image width / height value.
+			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_filepath ) ) );
+			define( 'WPSSO_VERSION', self::$cf['plugin']['wpsso']['version'] );						
 
 			/**
 			 * Define variable constants. Default values can be changed by defining 
@@ -2852,21 +2858,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const['WPSSO_REFRESH_CACHE_SLEEP_TIME']    = 0.25;		// Seconds to sleep between requests when refreshing the cache.
 
 			/**
-			 * Limits for some multi-options and Schema property arrays.
+			 * WPSSO schema limits.
 			 */
 			$var_const['WPSSO_SCHEMA_ADDL_TYPE_URL_MAX']       = 5;
 			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX']        = 10;
-			$var_const['WPSSO_SCHEMA_HOWTO_STEPS_MAX']         = 90;
-			$var_const['WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX']      = 60;
-			$var_const['WPSSO_SCHEMA_HOWTO_TOOLS_MAX']         = 30;
-			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX']  = 60;
-			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 90;
-			$var_const['WPSSO_SCHEMA_LINKS_PER_PAGE_MAX']      = 200;
-			$var_const['WPSSO_SCHEMA_POSTS_PER_PAGE_MAX']      = 10;
-			$var_const['WPSSO_SCHEMA_POSTS_PER_SEARCH_MAX']    = 3;		// Must be smaller or equal to WPSSO_SCHEMA_POSTS_PER_PAGE_MAX.
+			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX']  = 50;
+			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 80;
 			$var_const['WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX']    = 30;
 			$var_const['WPSSO_SCHEMA_SAMEAS_URL_MAX']          = 5;
-			$var_const['WPSSO_SCHEMA_BREADCRUMB_SCRIPTS_MAX']  = 5;
 
 			/**
 			 * WPSSO option and meta array names.

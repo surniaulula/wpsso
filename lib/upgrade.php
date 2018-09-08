@@ -181,6 +181,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				599 => array(
 					'plugin_add_person_role' => 'plugin_new_user_is_person',
 				),
+				602 => array(
+					'plugin_preserve' => '',
+				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG
 				2 => array(
@@ -217,6 +220,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				580 => array(
 					'plugin_shortcodes' => '',
 					'plugin_widgets'    => '',
+				),
+				602 => array(
+					'plugin_preserve' => '',
 				),
 			),
 		);

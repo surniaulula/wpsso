@@ -3350,16 +3350,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function add_optional_advanced_table_rows( array &$table_rows, $network = false ) {
 
-			$table_rows['plugin_preserve'] = '' .
-			$this->form->get_th_html( _x( 'Preserve Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_preserve' ).
-			'<td>' . $this->form->get_checkbox( 'plugin_preserve' ) . '</td>' .
-			self::get_option_site_use( 'plugin_preserve', $this->form, $network, true );
+			$table_rows['plugin_clean_on_uninstall'] = '' .
+			$this->form->get_th_html( _x( 'Remove All Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ).
+			'<td>' .
+				$this->form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' .
+				_x( 'including any custom post, term, and user meta', 'option comment', 'wpsso' ).' '.
+			'</td>' .
+			self::get_option_site_use( 'plugin_clean_on_uninstall', $this->form, $network, true );
 
 			$table_rows['plugin_debug'] = '' .
 			$this->form->get_th_html( _x( 'Add Hidden Debug Messages', 'option label', 'wpsso' ), '', 'plugin_debug' ).
-			'<td>' . ( ! $network && SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ?
-				$this->form->get_no_checkbox( 'plugin_debug' ) . ' <em>WPSSO_HTML_DEBUG constant is true</em>' :
-				$this->form->get_checkbox( 'plugin_debug' ) ) . '</td>' .
+			'<td>' . (
+				! $network && SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ?
+					$this->form->get_no_checkbox( 'plugin_debug' ) .
+						' <em>' . _x( 'WPSSO_HTML_DEBUG constant is true', 'option comment', 'wpsso' ) . '</em>' :
+					$this->form->get_checkbox( 'plugin_debug' )
+				) .
+			'</td>' .
 			self::get_option_site_use( 'plugin_debug', $this->form, $network, true );
 
 			if ( $network || ! $this->p->check->pp( $this->p->lca, true, $this->p->avail['*']['p_dir'] ) ) {

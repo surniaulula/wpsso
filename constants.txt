@@ -1,81 +1,78 @@
 
 /**
- * Hard-coded / fixed constants (values cannot be modified).
+ * Hard-coded / fixed constants. These values cannot be modified.
  */
-WPSSO_VERSION
 WPSSO_FILEPATH
+WPSSO_PLUGINBASE
 WPSSO_PLUGINDIR
 WPSSO_PLUGINSLUG
-WPSSO_PLUGINBASE
-WPSSO_URLPATH
 WPSSO_UNDEF
+WPSSO_URLPATH
+WPSSO_VERSION
 
 /**
- * Variable constants (define in wp-config.php file to change default values).
+ * Variable constants. Define in your wp-config.php file to change the default value.
  */
-WPSSO_NONCE_NAME			= (variable value)	// Md5 string unique to each version.
-WPSSO_TOPICS_LIST			= WPSSO_PLUGINDIR.'share/topics.txt'
-WPSSO_CACHEDIR				= WPSSO_PLUGINDIR.'cache/'
-WPSSO_CACHEURL				= WPSSO_URLPATH.'cache/'
-WPSSO_MENU_ORDER			= 99.11
-WPSSO_JSON_PRETTY_PRINT			= false
-WPSSO_CONTENT_BLOCK_FILTER_OUTPUT	= true	// Monitor and fix incorrectly coded filter hooks.
-WPSSO_CONTENT_FILTERS_MAX_TIME		= 0.75
-WPSSO_CONTENT_IMAGES_MAX_LIMIT		= 5
-WPSSO_CONTENT_VIDEOS_MAX_LIMIT		= 5
-WPSSO_DUPE_CHECK_CLEAR_SHORTLINK	= true
-WPSSO_DUPE_CHECK_WARNING_TIME		= 2.5
-WPSSO_DUPE_CHECK_TIMEOUT_TIME		= 3.0
-WPSSO_GET_POSTS_MAX_TIME		= 0.10
-WPSSO_PHP_GETIMGSIZE_MAX_TIME		= 1.50
-WPSSO_SCHEMA_ADDL_TYPE_URL_MAX		= 5
-WPSSO_SCHEMA_EVENT_OFFERS_MAX		= 10
-WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX	= 90
-WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX	= 90
-WPSSO_SCHEMA_POSTS_PER_PAGE_MAX		= 10	// Limits the WordPress posts per page value.
-WPSSO_SCHEMA_POSTS_PER_SEARCH_MAX	= 3	// Overrides the WordPress posts per page value.
-WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX	= 30
-WPSSO_SCHEMA_SAMEAS_URL_MAX		= 5
-WPSSO_SCHEMA_BREADCRUMB_SCRIPTS_MAX	= 5
-WPSSO_TS_NAME				= 'wpsso_timestamps'
-WPSSO_OPTIONS_NAME			= 'wpsso_options'
-WPSSO_SITE_OPTIONS_NAME			= 'wpsso_site_options'
-WPSSO_DISMISS_NAME			= 'wpsso_dismissed'
-WPSSO_META_NAME				= '_wpsso_meta'
-WPSSO_PREF_NAME				= '_wpsso_pref'
-WPSSO_OPTIONS_NAME_ALT			= 'wpsso_options'
-WPSSO_SITE_OPTIONS_NAME_ALT		= 'wpsso_site_options'
-WPSSO_META_NAME_ALT			= '_wpsso_meta'
-WPSSO_PREF_NAME_ALT			= '_wpsso_pref'
-WPSSO_ADD_MENU_PRIORITY			= -20
-WPSSO_ADD_SUBMENU_PRIORITY		= -10
-WPSSO_META_SAVE_PRIORITY		= 5
-WPSSO_META_CACHE_PRIORITY		= 10
-WPSSO_INIT_PRIORITY			= 12
-WPSSO_HEAD_PRIORITY			= 10
-WPSSO_FOOTER_PRIORITY			= 10
-WPSSO_SEO_FILTERS_PRIORITY		= 100
-WPSSO_PHP_CURL_CAINFO			= ABSPATH.WPINC.'/certificates/ca-bundle.crt'
-WPSSO_PHP_CURL_USERAGENT		= 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0'
+ WPSSO_ADD_MENU_PRIORITY                 = -20
+ WPSSO_ADD_SUBMENU_PRIORITY              = -10
+ WPSSO_CACHEDIR                          = WPSSO_PLUGINDIR . 'cache/'
+ WPSSO_CACHEURL                          = WPSSO_URLPATH . 'cache/'
+ WPSSO_CONTENT_BLOCK_FILTER_OUTPUT       = true  // Monitor and fix incorrectly coded filter hooks.
+ WPSSO_CONTENT_FILTERS_MAX_TIME          = 0.75
+ WPSSO_CONTENT_IMAGES_MAX_LIMIT          = 5
+ WPSSO_CONTENT_VIDEOS_MAX_LIMIT          = 5
+ WPSSO_DISMISS_NAME                      = 'wpsso_dismissed'
+ WPSSO_DUPE_CHECK_CLEAR_SHORTLINK        = true
+ WPSSO_DUPE_CHECK_TIMEOUT_TIME           = 3.0
+ WPSSO_DUPE_CHECK_WARNING_TIME           = 2.5
+ WPSSO_FOOTER_PRIORITY                   = 10
+ WPSSO_GET_POSTS_MAX_TIME                = 0.10
+ WPSSO_HEAD_PRIORITY                     = 10
+ WPSSO_INIT_PRIORITY                     = 12
+ WPSSO_JSON_PRETTY_PRINT                 = false
+ WPSSO_MENU_ORDER                        = 99.11
+ WPSSO_META_CACHE_PRIORITY               = 10
+ WPSSO_META_NAME_ALT                     = '_wpsso_meta'
+ WPSSO_META_NAME                         = '_wpsso_meta'
+ WPSSO_META_SAVE_PRIORITY                = 5
+ WPSSO_NONCE_NAME                        = (variable value)      // Md5 string unique to each version.
+ WPSSO_OPTIONS_NAME_ALT                  = 'wpsso_options'
+ WPSSO_OPTIONS_NAME                      = 'wpsso_options'
+ WPSSO_PHP_CURL_CAINFO                   = ABSPATH . WPINC . '/certificates/ca-bundle.crt'
+ WPSSO_PHP_CURL_USERAGENT                = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0'
+ WPSSO_PHP_GETIMGSIZE_MAX_TIME           = 1.50
+ WPSSO_PREF_NAME_ALT                     = '_wpsso_pref'
+ WPSSO_PREF_NAME                         = '_wpsso_pref'
+ WPSSO_SCHEMA_ADDL_TYPE_URL_MAX          = 5
+ WPSSO_SCHEMA_EVENT_OFFERS_MAX           = 10
+ WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX     = 50
+ WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX    = 80
+ WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX       = 30
+ WPSSO_SCHEMA_SAMEAS_URL_MAX             = 5
+ WPSSO_SEO_FILTERS_PRIORITY              = 100
+ WPSSO_SITE_OPTIONS_NAME_ALT             = 'wpsso_site_options'
+ WPSSO_SITE_OPTIONS_NAME                 = 'wpsso_site_options'
+ WPSSO_TOPICS_LIST                       = WPSSO_PLUGINDIR . 'share/topics.txt'
+ WPSSO_TS_NAME                           = 'wpsso_timestamps'
 
 /**
- * Undefined constants (can be defined to change specific plugin behaviors).
+ * Undefined constants. Define to control specific plugin behaviors.
  */
-FORCE_SSL				= (not defined)
-WPSSO_DEBUG_LOG				= (not defined)	// Send both front-end and back-end debug messages to the PHP error log.
-WPSSO_DEBUG_HTML			= (not defined)	// Add both front-end and back-end debug messages to the webpage HTML.
-WPSSO_ADMIN_DEBUG_LOG			= (not defined)	// Send only back-end debug messages to the PHP error log.
-WPSSO_ADMIN_DEBUG_HTML			= (not defined)	// Add only back-end debug messages to the webpage HTML.
-WPSSO_APPLY_FILTERS_SINGLE_MT		= (not defined)
-WPSSO_PHP_CURL_DISABLE			= (not defined)
-WPSSO_PHP_GETIMGSIZE_DISABLE		= (not defined)
-WPSSO_RESET_ON_ACTIVATE			= (not defined)
-WPSSO_IMAGE_UPSCALE_ALL			= (not defined)
-WPSSO_IMAGE_UPSCALE_TEST		= (not defined)
-WPSSO_HEAD_HTML_DISABLE			= (not defined)	// Define as true to disable the addition of HTML meta tags and Schema markup.
-WPSSO_META_GENERATOR_DISABLE		= (not defined)	// Please note that generator meta tags must be enabled for plugin support.
-WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE		= (not defined)	// Define as true to disable WPSSO's SEO related meta tags and features.
-WPSSO_PRODUCT_OBJ_CHECK_DISABLE		= (not defined)	// Disable check of global $product variable (false by default).
-WPSSO_PRODUCT_PRICE_INCLUDE_VAT		= (not defined)	// False by default.
-WPSSO_VARY_USER_AGENT_DISABLE		= (not defined)	// Disable mobile browser detection and Pinterest-specific meta tag values.
+FORCE_SSL                               = (not defined)
+WPSSO_ADMIN_DEBUG_HTML                  = (not defined) // Add only back-end debug messages to the webpage HTML.
+WPSSO_ADMIN_DEBUG_LOG                   = (not defined) // Send only back-end debug messages to the PHP error log.
+WPSSO_APPLY_FILTERS_SINGLE_MT           = (not defined)
+WPSSO_DEBUG_HTML                        = (not defined) // Add both front-end and back-end debug messages to the webpage HTML.
+WPSSO_DEBUG_LOG                         = (not defined) // Send both front-end and back-end debug messages to the PHP error log.
+WPSSO_HEAD_HTML_DISABLE                 = (not defined) // Define as true to disable the addition of HTML meta tags and Schema markup.
+WPSSO_IMAGE_UPSCALE_ALL                 = (not defined)
+WPSSO_IMAGE_UPSCALE_TEST                = (not defined)
+WPSSO_META_GENERATOR_DISABLE            = (not defined) // Please note that generator meta tags must be enabled for plugin support.
+WPSSO_PHP_CURL_DISABLE                  = (not defined)
+WPSSO_PHP_GETIMGSIZE_DISABLE            = (not defined)
+WPSSO_PRODUCT_OBJ_CHECK_DISABLE         = (not defined) // Disable check of global $product variable (false by default).
+WPSSO_PRODUCT_PRICE_INCLUDE_VAT         = (not defined) // False by default.
+WPSSO_RESET_ON_ACTIVATE                 = (not defined)
+WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE         = (not defined) // Define as true to disable WPSSO's SEO related meta tags and features.
+WPSSO_VARY_USER_AGENT_DISABLE           = (not defined) // Disable mobile browser detection and Pinterest-specific meta tag values.
 

@@ -295,20 +295,20 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_types_cache_exp', $form, $network );
 
-			$table_rows['plugin_clear_on_activate'] = ''.
-			$form->get_th_html( _x( 'Clear Cache on Activate / Deactivate', 'option label', 'wpsso' ), '', 'plugin_clear_on_activate' ).
+			$table_rows['plugin_clear_on_activate'] = $form->get_tr_hide( 'basic', 'plugin_clear_on_activate' ).
+			$form->get_th_html( _x( 'Clear Cache on Activate', 'option label', 'wpsso' ), '', 'plugin_clear_on_activate' ).
 			$form->get_td_no_checkbox( 'plugin_clear_on_activate' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_activate', $form, $network );
+
+			$table_rows['plugin_clear_on_deactivate'] = $form->get_tr_hide( 'basic', 'plugin_clear_on_deactivate' ).
+			$form->get_th_html( _x( 'Clear Cache on Deactivate', 'option label', 'wpsso' ), '', 'plugin_clear_on_deactivate' ).
+			$form->get_td_no_checkbox( 'plugin_clear_on_deactivate' ).
+			WpssoAdmin::get_option_site_use( 'plugin_clear_on_deactivate', $form, $network );
 
 			$table_rows['plugin_clear_on_save'] = ''.
 			$form->get_th_html( _x( 'Clear Cache on Save Settings', 'option label', 'wpsso' ), '', 'plugin_clear_on_save' ).
 			$form->get_td_no_checkbox( 'plugin_clear_on_save' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_save', $form, $network );
-
-			$table_rows['plugin_clear_for_comment'] = ''.
-			$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ), '', 'plugin_clear_for_comment' ).
-			$form->get_td_no_checkbox( 'plugin_clear_for_comment' ).
-			WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
 
 			$table_rows['plugin_clear_short_urls'] = $form->get_tr_hide( 'basic', 'plugin_clear_short_urls' ).
 			$form->get_th_html( _x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ), '', 'plugin_clear_short_urls' ).
@@ -319,6 +319,16 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Auto-Refresh Cache After Clearing', 'option label', 'wpsso' ), '', 'plugin_clear_all_refresh' ).
 			$form->get_td_no_checkbox( 'plugin_clear_all_refresh' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_all_refresh', $form, $network );
+
+			$table_rows['plugin_clear_post_terms'] = ''.
+			$form->get_th_html( _x( 'Clear Term Cache on Post Update', 'option label', 'wpsso' ), '', 'plugin_clear_post_terms' ).
+			$form->get_td_no_checkbox( 'plugin_clear_post_terms' ).
+			WpssoAdmin::get_option_site_use( 'plugin_clear_post_terms', $form, $network );
+
+			$table_rows['plugin_clear_for_comment'] = ''.
+			$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ), '', 'plugin_clear_for_comment' ).
+			$form->get_td_no_checkbox( 'plugin_clear_for_comment' ).
+			WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
 
 			return $table_rows;
 		}

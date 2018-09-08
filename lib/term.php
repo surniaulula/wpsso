@@ -530,10 +530,25 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return "\n" . '<div id="' . $this->p->lca . '_metabox_' . $metabox_id . '">' . $metabox_html . '</div>' . "\n";
 		}
 
+		/**
+		 * Hooked to these actions:
+		 *
+		 * do_action( "created_$taxonomy", $term_id, $tt_id );
+		 * do_action( "edited_$taxonomy",  $term_id, $tt_id );
+		 * do_action( "delete_$taxonomy",  $term_id, $tt_id, $deleted_term );
+		 *
+		 * Also called by WpssoPost::clear_cache() to clear the post term cache.
+		 */
 		public function clear_cache( $term_id, $term_tax_id = false ) {
 
-			$tax = get_term_by( 'term_taxonomy_id', $term_tax_id );
-			$mod = $this->get_mod( $term_id, $tax->slug );
+			$taxonomy = get_term_by( 'term_taxonomy_id', $term_tax_id );
+
+			if ( isset( $taxonomy->slug ) ) {	// Just in case.
+				$mod = $this->get_mod( $term_id, $taxonomy->slug );
+			} else {
+				$mod = $this->get_mod( $term_id );
+			}
+
 			$col_meta_keys = WpssoMeta::get_column_meta_keys();
 
 			foreach ( $col_meta_keys as $col_idx => $meta_key ) {

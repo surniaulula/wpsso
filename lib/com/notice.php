@@ -218,9 +218,24 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
+		/**
+		 * Deprecated on 2018/09/08.
+		 */
+		public function trunc_key() {}
+
 		public function truncate_key( $notice_key, $user_id = null ) {
 			$this->truncate( '', '', $notice_key, $user_id );
 		}
+
+		/**
+		 * Deprecated on 2018/09/08.
+		 */
+		public function trunc_all() {}
+
+		/**
+		 * Deprecated on 2018/09/08.
+		 */
+		public function trunc() {}
 
 		public function truncate( $msg_type = '', $msg_text = '', $notice_key = false, $user_id = null ) {
 
@@ -1000,10 +1015,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					75% { opacity: 1; }
 				}
 				.components-notice-list .' . $this->lca . '-notice {
+					margin:0;
 					min-height:0;
 					-webkit-box-shadow:none;
 					-moz-box-shadow:none;
 					box-shadow:none;
+				}
+				.components-notice-list .is-dismissible .' . $this->lca . '-notice {
+					padding-right:20px;
 				}
 				.components-notice-list .' . $this->lca . '-notice *,
 				#wpadminbar .' . $this->lca . '-notice *,

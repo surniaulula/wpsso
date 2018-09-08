@@ -1197,24 +1197,34 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function clear_cache_for_new_comment( $comment_id, $comment_approved ) {
+
 			if ( $comment_id && $comment_approved === 1 ) {
+
 				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
+
 					$post_id = $comment->comment_post_ID;
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
 					}
+
 					$this->clear_cache( $post_id );
 				}
 			}
 		}
 
 		public function clear_cache_for_comment_status( $comment_id, $comment_status ) {
+
 			if ( $comment_id ) {	// Just in case.
+
 				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
+
 					$post_id = $comment->comment_post_ID;
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
 					}
+
 					$this->clear_cache( $post_id );
 				}
 			}
@@ -1223,23 +1233,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		public function clear_cache( $post_id, $rel_id = false ) {
 
 			switch ( get_post_status( $post_id ) ) {
+
 				case 'draft':
 				case 'pending':
 				case 'future':
 				case 'private':
 				case 'publish':
+
 					break;	// Stop here.
+
 				case 'auto-draft':
 				case 'trash':
 				default:
+
 					return;
 			}
 
 			$mod           = $this->get_mod( $post_id );
-			$cache_types   = array();
-			$cache_md5_pre = $this->p->lca . '_';
 			$permalink     = get_permalink( $post_id );
 			$col_meta_keys = WpssoMeta::get_column_meta_keys();
+			$cache_types   = array();
+			$cache_md5_pre = $this->p->lca . '_';
 
 			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
 				delete_post_meta( $post_id, $meta_key );
@@ -1252,20 +1266,37 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$cache_types['transient'][] = array(
-				'id' => $cache_md5_pre . md5( 'SucomCache::get(url:' . $permalink . ')' ),
-				'pre' => $cache_md5_pre,
+				'id'   => $cache_md5_pre . md5( 'SucomCache::get(url:' . $permalink . ')' ),
+				'pre'  => $cache_md5_pre,
 				'salt' => 'SucomCache::get(url:' . $permalink . ')',
 			);
 
 			if ( $permalink !== $check_url ) {
 				$cache_types['transient'][] = array(
-					'id' => $cache_md5_pre . md5( 'SucomCache::get(url:' . $check_url . ')' ),
-					'pre' => $cache_md5_pre,
+					'id'   => $cache_md5_pre . md5( 'SucomCache::get(url:' . $check_url . ')' ),
+					'pre'  => $cache_md5_pre,
 					'salt' => 'SucomCache::get(url:' . $check_url . ')',
 				);
 			}
 
 			$this->clear_mod_cache_types( $mod, $cache_types );
+
+			/**
+			 * Clear the post terms (categories, tags, etc.).
+			 */
+			if ( ! empty( $this->p->options['plugin_clear_post_terms'] ) ) {
+
+				$post_taxonomies = get_post_taxonomies( $post_id );
+
+				foreach ( $post_taxonomies as $tax_slug ) {
+	
+					$post_terms = wp_get_post_terms( $post_id, $tax_slug );
+	
+					foreach ( $post_terms as $post_term ) {
+						$this->p->m['util']['term']->clear_cache( $post_term->term_id, $post_term->term_taxonomy_id );
+					}
+				}
+			}
 
 			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// W3 Total Cache.
 				w3tc_pgcache_flush_post( $post_id );
@@ -1404,7 +1435,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_og_type_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating' ) {
 
-			static $reviews_per_page_max = null;
+			static $reviews_max = null;
+
+			if ( null === $reviews_max ) {	// Only set the value once.
+				$reviews_max = SucomUtil::get_const( 'WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX', 30 );
+			}
 
 			$ret = array();
 
@@ -1431,15 +1466,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 
-				if ( ! isset( $reviews_per_page_max ) ) {	// Only set the value once.
-					$reviews_per_page_max = SucomUtil::get_const( 'WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX', 30 );
-				}
-
-				if ( count( $ret ) > $reviews_per_page_max ) {
+				if ( count( $ret ) > $reviews_max ) {
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( count( $ret ) . ' reviews found (adjusted to ' . $reviews_per_page_max . ')' );
+						$wpsso->debug->log( count( $ret ) . ' reviews found (adjusted to ' . $reviews_max . ')' );
 					}
-					$ret = array_slice( $ret, 0, $reviews_per_page_max );
+					$ret = array_slice( $ret, 0, $reviews_max );
 				}
 			}
 

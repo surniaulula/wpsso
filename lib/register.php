@@ -75,7 +75,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$opts = get_site_option( WPSSO_SITE_OPTIONS_NAME, array() );
 
-			if ( empty( $opts['plugin_preserve'] ) ) {
+			if ( ! empty( $opts['plugin_clean_on_uninstall'] ) ) {
 
 				delete_site_option( WPSSO_SITE_OPTIONS_NAME );
 			}
@@ -115,12 +115,12 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p->set_objects( true ); // Load all the class objects ( $activate = true ).
 
 			/**
-			 * Clear Cache on Activate / Deactivate
+			 * Clear Cache on Activate.
 			 */
 			if ( ! empty( $this->p->options['plugin_clear_on_activate'] ) ) {
 
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-					_x( 'Clear Cache on Activate / Deactivate', 'option label', 'wpsso' ) );
+					_x( 'Clear Cache on Activate', 'option label', 'wpsso' ) );
 
 				$this->p->notice->upd( sprintf( __( 'A background task will begin shortly to clear all caches (the %s option is enabled).',
 					'wpsso' ), $settings_page_link ) );
@@ -128,6 +128,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				$this->p->util->schedule_clear_all_cache( get_current_user_id(), true );
 			}
 
+			/**
+			 * Save plugin install, activation, update times.
+			 */
 			$plugin_version = WpssoConfig::$cf['plugin']['wpsso']['version'];
 
 			if ( $this->p->debug->enabled ) {
@@ -136,8 +139,14 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			WpssoUtil::save_all_times( 'wpsso', $plugin_version );
 
+			/**
+			 * Add the Person role for WpssoUser::get_public_user_ids(). 
+			 */
 			$this->p->util->schedule_add_user_roles();
 
+			/**
+			 * End of plugin activation.
+			 */
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'done plugin activation' );
 			}
@@ -146,9 +155,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private function deactivate_plugin() {
 
 			/**
-			 * Clear Cache on Activate / Deactivate
+			 * Clear Cache on Deactivate.
 			 */
-			if ( ! empty( $this->p->options['plugin_clear_on_activate'] ) ) {
+			if ( ! empty( $this->p->options['plugin_clear_on_deactivate'] ) ) {
 				$this->p->util->clear_all_cache( 0, true, true, false );
 			}
 
@@ -165,7 +174,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			delete_option( WPSSO_TS_NAME );
 
-			if ( empty( $opts['plugin_preserve'] ) ) {
+			if ( ! empty( $opts['plugin_clean_on_uninstall'] ) ) {
 
 				delete_option( WPSSO_OPTIONS_NAME );
 

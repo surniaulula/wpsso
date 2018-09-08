@@ -1138,8 +1138,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function clear_cache( $user_id, $rel_id = false ) {
 
-			$mod = $this->get_mod( $user_id );
-
+			$mod           = $this->get_mod( $user_id );
 			$col_meta_keys = WpssoMeta::get_column_meta_keys();
 
 			foreach ( $col_meta_keys as $col_idx => $meta_key ) {

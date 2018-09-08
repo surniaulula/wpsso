@@ -301,7 +301,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$check_opt_vals = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
 
 						foreach ( array(
-							'plugin_preserve',
+							'plugin_clean_on_uninstall',
 							'plugin_debug',
 							'plugin_hide_pro',
 							'plugin_show_opts',

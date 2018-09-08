@@ -667,9 +667,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * 'Plugin Settings' settings.
 						 */
-						case 'tooltip-plugin_preserve': // Preserve Settings on Uninstall.
+						case 'tooltip-plugin_clean_on_uninstall': // Preserve Settings on Uninstall.
 
-							$text = sprintf( __( 'Check this option if you would like to preserve the %s settings when you <em>uninstall</em> the plugin (default is unchecked).', 'wpsso' ), $info['short'] );
+							$text = sprintf( __( 'Check this option to remove all %s settings when you <em>uninstall</em> the plugin. This includes any custom post, term, and user meta.', 'wpsso' ), $info['short'] );
 
 							break;
 
@@ -1136,7 +1136,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_new_user_is_person':
 
-							$text = sprintf( __( 'Automatically add the \'%s\' role when new users are created.', 'wpsso' ),
+							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ),
 								_x( 'Person', 'user role', 'wpsso' ) );
 
 							break;
@@ -1228,21 +1228,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_clear_on_activate':	// Clear Cache on Activate / Deactivate.
+						case 'tooltip-plugin_clear_on_activate':	// Clear Cache on Activate.
 
-							$text = sprintf( __( 'Automatically clear cache(s) when the %s plugin is activated or deactivated.', 'wpsso' ), $info['short'] );
+							$text = sprintf( __( 'Automatically clear cache(s) when the %s plugin is activated.', 'wpsso' ), $info['short'] );
+
+							break;
+
+						case 'tooltip-plugin_clear_on_deactivate':	// Clear Cache on Deactivate.
+
+							$text = sprintf( __( 'Automatically clear cache(s) when the %s plugin is deactivated.', 'wpsso' ), $info['short'] );
 
 							break;
 
 						case 'tooltip-plugin_clear_on_save':		// Clear Cache on Save Settings.
 
-							$text = sprintf( __( 'Automatically clear cache(s) when saving the %s settings.', 'wpsso' ), $info['short'] );
-
-							break;
-
-						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment.
-
-							$text = __( 'Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed.', 'wpsso' );
+							$text = sprintf( __( 'Automatically clear cache(s) when the %s plugin settings are saved.', 'wpsso' ), $info['short'] );
 
 							break;
 
@@ -1262,7 +1262,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_clear_all_refresh':	// Auto-Refresh Cache After Clearing.
 
-							$text = sprintf( __( 'After clearing all %1$s cache objects, %1$s can automatically re-create the post, term, and user cache objects from a background task (does not affect page load time).', 'wpsso' ), $info['short'] );
+							$text = sprintf( __( 'After clearing all %1$s cache objects, %1$s can automatically re-create its post, term, and user cache objects from a background task (does not affect page load time).', 'wpsso' ), $info['short'] );
+
+							break;
+
+						case 'tooltip-plugin_clear_post_terms':		// Clear Term Cache on Post Update.
+
+							$text = __( 'When a post, page, or custom post type is updated, automatically clear the cache of selected terms (categories, tags, etc.).', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment.
+
+							$text = __( 'Automatically clear the post cache when a new comment is added or the status of an existing comment is changed.', 'wpsso' );
 
 							break;
 
