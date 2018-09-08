@@ -1642,7 +1642,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				return false;
 
-			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient', false, '', $curl_opts ) ) === false ) {
+			} elseif ( ( $html = $this->p->cache->get( $request, 'raw', 'transient', null, '', $curl_opts ) ) === false ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: error caching ' . $request );

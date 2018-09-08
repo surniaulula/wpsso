@@ -849,28 +849,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'getting html for ' . $check_url );
 			}
 
-			$clear_shortlink = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_CLEAR_SHORTLINK', true );
-
-			if ( $clear_shortlink ) {
-				$this->p->cache->clear( $check_url );	// Clear cache before fetching shortlink url.
-			}
-
 			if ( $is_admin ) {
-				if ( $clear_shortlink ) {
-					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags...', 'wpsso' ),
-						'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) );
-				} else {
-					$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags (webpage could be from cache)...', 'wpsso' ),
-						'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) );
-				}
+				$this->p->notice->inf( sprintf( __( 'Checking %1$s for duplicate meta tags...', 'wpsso' ),
+					'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) );
 			}
 
 			/**
 			 * Fetch HTML using the Facebook user agent to get Open Graph meta tags.
 			 */
-			$curl_opts    = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
-			$webpage_html = $this->p->cache->get( $check_url, 'raw', 'transient', false, '', $curl_opts );
+			$curl_opts = array( 'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK );
+
+			$this->p->cache->clear( $check_url );	// Clear the cached webpage, just in case.
+
+			$webpage_html = $this->p->cache->get( $check_url, 'raw', 'transient', null, '', $curl_opts );
 			$url_time     = $this->p->cache->get_url_time( $check_url );
+
 			$warning_time = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_WARNING_TIME', 2.5 );
 			$timeout_time = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_TIMEOUT_TIME', 3.0 );
 

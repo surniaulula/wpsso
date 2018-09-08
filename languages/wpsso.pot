@@ -1036,12 +1036,12 @@ msgctxt "option comment"
 msgid "%s add-on required"
 msgstr ""
 
-#: lib/com/bfo.php:252 lib/com/cache.php:485 lib/com/notice.php:76
+#: lib/com/bfo.php:252 lib/com/cache.php:77 lib/com/notice.php:76
 #: lib/com-gettext-extract.php:23
 msgid "%s Notice"
 msgstr ""
 
-#: lib/com/bfo.php:255 lib/com/cache.php:488 lib/com/notice.php:79
+#: lib/com/bfo.php:255 lib/com/cache.php:80 lib/com/notice.php:79
 #: lib/com-gettext-extract.php:16
 msgid "Notice"
 msgstr ""
@@ -1076,67 +1076,67 @@ msgstr ""
 msgid "END OUTPUT"
 msgstr ""
 
-#: lib/com/cache.php:100 lib/com-gettext-extract.php:9
+#: lib/com/cache.php:150 lib/com-gettext-extract.php:9
 msgid "Error connecting to %1$s for caching (HTTP code %2$d)."
 msgstr ""
 
-#: lib/com/cache.php:114 lib/com/cache.php:131 lib/com-gettext-extract.php:26
+#: lib/com/cache.php:164 lib/com/cache.php:181 lib/com-gettext-extract.php:26
 msgid ""
 "The PHP \"%s\" setting is enabled &mdash; the PHP cURL library cannot follow "
 "URL redirects."
 msgstr ""
 
-#: lib/com/cache.php:117 lib/com-gettext-extract.php:27
+#: lib/com/cache.php:167 lib/com-gettext-extract.php:27
 msgid ""
 "The \"%s\" setting is deprecated since PHP version 5.3 and removed from PHP "
 "since version 5.4."
 msgstr ""
 
-#: lib/com/cache.php:120 lib/com-gettext-extract.php:19
+#: lib/com/cache.php:170 lib/com-gettext-extract.php:19
 msgid ""
 "Please contact your hosting provider to have this setting disabled or "
 "install a newer version of PHP."
 msgstr ""
 
-#: lib/com/cache.php:134 lib/com-gettext-extract.php:20
+#: lib/com/cache.php:184 lib/com-gettext-extract.php:20
 msgid "Please contact your hosting provider to have this setting disabled."
 msgstr ""
 
-#: lib/com/cache.php:138 lib/com-gettext-extract.php:25
+#: lib/com/cache.php:188 lib/com-gettext-extract.php:25
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: lib/com/cache.php:143 lib/com-gettext-extract.php:22
+#: lib/com/cache.php:193 lib/com-gettext-extract.php:22
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
-#: lib/com/cache.php:253 lib/com-gettext-extract.php:17
+#: lib/com/cache.php:310 lib/com-gettext-extract.php:17
 msgid ""
 "PHP cURL library is missing &mdash; contact your hosting provider to have "
 "the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:333 lib/com-gettext-extract.php:10
+#: lib/com/cache.php:401 lib/com-gettext-extract.php:10
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/com/cache.php:537 lib/com-gettext-extract.php:5
+#: lib/com/cache.php:564 lib/com-gettext-extract.php:5
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:549 lib/com-gettext-extract.php:12
+#: lib/com/cache.php:576 lib/com-gettext-extract.php:12
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:636 lib/com-gettext-extract.php:11
+#: lib/com/cache.php:662 lib/com-gettext-extract.php:11
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: lib/com/cache.php:644 lib/com-gettext-extract.php:6
+#: lib/com/cache.php:670 lib/com-gettext-extract.php:6
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:652 lib/com-gettext-extract.php:13
+#: lib/com/cache.php:678 lib/com-gettext-extract.php:13
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
@@ -2624,7 +2624,7 @@ msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:149 lib/post.php:1160 lib/pro/admin/meta.php:167
+#: lib/gpl/admin/meta.php:149 lib/post.php:1153 lib/pro/admin/meta.php:167
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
@@ -5323,153 +5323,149 @@ msgid ""
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:860
+#: lib/post.php:853
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:863
-msgid "Checking %1$s for duplicate meta tags (webpage could be from cache)..."
-msgstr ""
-
-#: lib/post.php:897
+#: lib/post.php:890
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:899
+#: lib/post.php:892
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:901
+#: lib/post.php:894
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:902
+#: lib/post.php:895
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:914 lib/util.php:1652
+#: lib/post.php:907 lib/util.php:1652
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:927
+#: lib/post.php:920
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:940
+#: lib/post.php:933
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:953
+#: lib/post.php:946
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:979
+#: lib/post.php:972
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:979
+#: lib/post.php:972
 msgid ""
 "Schema JSON-LD markup is highly recommended for higher ranking and better "
 "click-through rates in Google search results."
 msgstr ""
 
-#: lib/post.php:979
+#: lib/post.php:972
 msgid ""
 "You should consider activating the %1$s add-on to include this additional "
 "markup in the webpage for Google."
 msgstr ""
 
-#: lib/post.php:999
+#: lib/post.php:992
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1011
+#: lib/post.php:1004
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1026
+#: lib/post.php:1019
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1026
+#: lib/post.php:1019
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:1026
+#: lib/post.php:1019
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1056
+#: lib/post.php:1049
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1057
+#: lib/post.php:1050
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1063
+#: lib/post.php:1056
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1066
+#: lib/post.php:1059
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1068
+#: lib/post.php:1061
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1330 lib/script.php:220
+#: lib/post.php:1323 lib/script.php:220
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1339
+#: lib/post.php:1332
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1340
+#: lib/post.php:1333
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1351
+#: lib/post.php:1344
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1352
+#: lib/post.php:1345
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1353
+#: lib/post.php:1346
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1354
+#: lib/post.php:1347
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1428
+#: lib/post.php:1421
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

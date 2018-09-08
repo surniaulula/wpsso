@@ -22,7 +22,6 @@ WPSSO_VERSION
  WPSSO_CONTENT_IMAGES_MAX_LIMIT          = 5			// Maximum number of images extracted from the content.
  WPSSO_CONTENT_VIDEOS_MAX_LIMIT          = 5			// Maximum number of videos extracted from the content.
  WPSSO_DISMISS_NAME                      = 'wpsso_dismissed'
- WPSSO_DUPE_CHECK_CLEAR_SHORTLINK        = true
  WPSSO_DUPE_CHECK_HEADER_COUNT           = 5
  WPSSO_DUPE_CHECK_TIMEOUT_TIME           = 3.0
  WPSSO_DUPE_CHECK_WARNING_TIME           = 2.5
