@@ -2926,18 +2926,17 @@ msgid "A custom URL used for the \"%1$s\" head tag."
 msgstr ""
 
 #: lib/messages.php:104
-msgid "A custom name / title for the Schema item type's \"name\" property."
+msgid "A custom name / title for the Schema \"name\" property."
 msgstr ""
 
 #: lib/messages.php:110
 msgid ""
-"An optional alternate custom name / title for the Schema item type's "
-"\"alternateName\" property."
+"An optional alternate custom name / title for the Schema \"alternateName\" "
+"property."
 msgstr ""
 
 #: lib/messages.php:116
-msgid ""
-"A custom description for the Schema item type's \"description\" property."
+msgid "A custom description for the Schema \"description\" property."
 msgstr ""
 
 #: lib/messages.php:125
@@ -4773,7 +4772,7 @@ msgstr ""
 msgid ""
 "A Schema \"image\" property could not be generated from this webpage content "
 "or its custom %s metabox settings. Google <em>requires at least one \"image"
-"\" property</em> for this Schema item type."
+"\" property</em> for this Schema type."
 msgstr ""
 
 #: lib/messages.php:2296
