@@ -327,11 +327,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.12.0-rc.1 (2018/09/07)**
+**Version 4.12.0-rc.2 (2018/09/07)**
 
 * *New Features*
 	* None.
 * *Improvements*
+	* Added new options under the SSO &gt; Advanced &gt; Cache Settings tab:
+		* Clear Cache on Activate
+		* Clear Cache on Deactivate
+		* Clear Term Cache on Post Update
+	* The "Clear All Caches" button and link now start the clear cache task in the background.
+	* The "Auto-Refresh Cache After Clearing" task is now started in the background as well.
 	* Added support for the "product:retailer_item_id" meta tag (aka "Product SKU").
 	* Added a new "Product SKU" option in the Document SSO metabox.
 	* Added a new "Product SKU Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
@@ -339,8 +345,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* City
 		* Country
 		* State
-	* Removed support for automatically hidden notifications.
 	* Updated the WooCommerce and Easy Digital Downloads integration modules to provide a default "Product SKU" value.
+	* Renamed the "Preserve Settings on Uninstall" option to "Remove All Settings on Uninstall" (unchecked by default).
+	* Removed support for automatically hidden notifications.
 * *Bugfixes*
 	* Fixed an incorrect reference to 'price_high' (should have been 'price_highest') in the Easy Digital Download integration module.
 * *Developer Notes*
@@ -679,7 +686,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.12.0-rc.1 =
+= 4.12.0-rc.2 =
 
 (2018/09/07) Added sub-types to the Schema AdministrativeArea type. Removed support for automatically hidden notifications.
 
