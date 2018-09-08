@@ -890,8 +890,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $filter_content ) {
 
-				$max_time = SucomUtil::get_const( 'WPSSO_CONTENT_FILTERS_MAX_TIME', 0.75 );
 				$hook_bfo = SucomUtil::get_const( 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT', true );
+				$max_time = SucomUtil::get_const( 'WPSSO_CONTENT_FILTERS_MAX_TIME', 1.50 );
 
 				$content_text = $this->p->util->safe_apply_filters( array( 'the_content', $content_text ), $mod, $max_time, $hook_bfo );
 
