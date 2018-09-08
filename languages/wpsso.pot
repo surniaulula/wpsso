@@ -980,7 +980,7 @@ msgstr ""
 
 #: lib/admin.php:3357
 msgctxt "option comment"
-msgid "including any custom post, term, and user meta"
+msgid "including any custom meta for posts, terms, and users"
 msgstr ""
 
 #: lib/admin.php:3362
@@ -4037,7 +4037,7 @@ msgstr ""
 #: lib/messages.php:1271
 msgid ""
 "When a post, page, or custom post type is updated, automatically clear the "
-"cache of selected terms (categories, tags, etc.)."
+"cache of its selected terms (categories, tags, etc.)."
 msgstr ""
 
 #: lib/messages.php:1277
