@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.12.0-rc.2 (2018/09/07)**
+**Version 4.12.0-rc.3 (2018/09/07)**
 
 * *New Features*
 	* None.
@@ -359,6 +359,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* schedule_add_user_roles()
 		* schedule_clear_all_cache()
 		* schedule_refresh_all_cache()
+	* Refactored SucomNotice methods to handle / store notices for different user IDs than the current user ID.
 
 **Version 4.11.1 (2018/08/25)**
 
@@ -686,7 +687,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.12.0-rc.2 =
+= 4.12.0-rc.3 =
 
 (2018/09/07) Added sub-types to the Schema AdministrativeArea type. Removed support for automatically hidden notifications.
 
