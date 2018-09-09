@@ -1240,7 +1240,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function clear_cache( $post_id, $rel_id = false ) {
 
-			switch ( get_post_status( $post_id ) ) {
+			$post_status = get_post_status( $post_id );
+
+			switch ( $post_status ) {
 
 				case 'draft':
 				case 'pending':
@@ -1290,18 +1292,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$this->clear_mod_cache_types( $mod, $cache_types );
 
 			/**
-			 * Clear the post terms (categories, tags, etc.).
+			 * Clear the post terms (categories, tags, etc.) for published (aka public) posts.
 			 */
-			if ( ! empty( $this->p->options['plugin_clear_post_terms'] ) ) {
+			if ( $post_status === 'publish' ) {
 
-				$post_taxonomies = get_post_taxonomies( $post_id );
+				if ( ! empty( $this->p->options['plugin_clear_post_terms'] ) ) {
 
-				foreach ( $post_taxonomies as $tax_slug ) {
-	
-					$post_terms = wp_get_post_terms( $post_id, $tax_slug );
-	
-					foreach ( $post_terms as $post_term ) {
-						$this->p->m['util']['term']->clear_cache( $post_term->term_id, $post_term->term_taxonomy_id );
+					$post_taxonomies = get_post_taxonomies( $post_id );
+
+					foreach ( $post_taxonomies as $tax_slug ) {
+		
+						$post_terms = wp_get_post_terms( $post_id, $tax_slug );
+		
+						foreach ( $post_terms as $post_term ) {
+							$this->p->m['util']['term']->clear_cache( $post_term->term_id, $post_term->term_taxonomy_id );
+						}
 					}
 				}
 			}
@@ -1321,13 +1326,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			$post_type = $post->post_type;
+			$post_type        = $post->post_type;
 			$post_type_object = get_post_type_object( $post_type );
-			$can_publish = current_user_can( $post_type_object->cap->publish_posts );
-
-			$mod = $this->get_mod( $post->ID );
-			$robots_content = $this->p->util->get_robots_content( $mod );
-			$robots_css_id  = $this->p->lca . '-robots';
+			$can_publish      = current_user_can( $post_type_object->cap->publish_posts );
+			$mod              = $this->get_mod( $post->ID );
+			$robots_content   = $this->p->util->get_robots_content( $mod );
+			$robots_css_id    = $this->p->lca . '-robots';
 
 			echo "\n";
 			echo '<!-- ' .  $this->p->lca . ' nonce fields -->' . "\n";

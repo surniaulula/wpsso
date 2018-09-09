@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.12.0-rc.3',	// Plugin version.
+					'version'     => '4.12.0',	// Plugin version.
 					'opt_version' => '602',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1182,7 +1182,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_on_save'       => 0,			// Clear Cache on Save Settings.
 					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
 					'plugin_clear_all_refresh'   => 0,			// Auto-Refresh Cache After Clearing.
-					'plugin_clear_post_terms'    => 1,			// Clear Term Cache on Post Update.
+					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
 					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
 					/**
 					 * Advanced settings - Service APIs tab.
@@ -1323,7 +1323,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_short_urls:use'    => 'default',
 					'plugin_clear_all_refresh'       => 0,			// Auto-Refresh Cache After Clearing.
 					'plugin_clear_all_refresh:use'   => 'default',
-					'plugin_clear_post_terms'        => 1,			// Clear Term Cache on Post Update.
+					'plugin_clear_post_terms'        => 1,			// Clear Term Cache for Published Post.
 					'plugin_clear_post_terms:use'    => 'default',
 					'plugin_clear_for_comment'       => 1,			// Clear Post Cache for New Comment.
 					'plugin_clear_for_comment:use'   => 'default',

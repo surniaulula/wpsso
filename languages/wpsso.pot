@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.12.0-rc.3\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2371,7 +2371,7 @@ msgstr ""
 
 #: lib/gpl/admin/advanced.php:324 lib/pro/admin/advanced.php:322
 msgctxt "option label"
-msgid "Clear Term Cache on Post Update"
+msgid "Clear Term Cache for Published Post"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:329 lib/pro/admin/advanced.php:327
@@ -4036,8 +4036,8 @@ msgstr ""
 
 #: lib/messages.php:1271
 msgid ""
-"When a post, page, or custom post type is updated, automatically clear the "
-"cache of its selected terms (categories, tags, etc.)."
+"When a published post, page, or custom post type is updated, automatically "
+"clear the cache of its selected terms (categories, tags, etc.)."
 msgstr ""
 
 #: lib/messages.php:1277
@@ -5432,40 +5432,40 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1338 lib/script.php:220
+#: lib/post.php:1342 lib/script.php:220
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1347
+#: lib/post.php:1351
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1348
+#: lib/post.php:1352
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1359
+#: lib/post.php:1363
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1360
+#: lib/post.php:1364
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1361
+#: lib/post.php:1365
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1362
+#: lib/post.php:1366
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1436
+#: lib/post.php:1440
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

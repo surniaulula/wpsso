@@ -321,7 +321,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			WpssoAdmin::get_option_site_use( 'plugin_clear_all_refresh', $form, $network );
 
 			$table_rows['plugin_clear_post_terms'] = ''.
-			$form->get_th_html( _x( 'Clear Term Cache on Post Update', 'option label', 'wpsso' ), '', 'plugin_clear_post_terms' ).
+			$form->get_th_html( _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' ), '', 'plugin_clear_post_terms' ).
 			$form->get_td_no_checkbox( 'plugin_clear_post_terms' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_post_terms', $form, $network );
 

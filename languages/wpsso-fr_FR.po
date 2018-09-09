@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-09-08 14:59-0600\n"
-"PO-Revision-Date: 2018-09-08 15:02-0600\n"
+"POT-Creation-Date: 2018-09-09 11:01-0600\n"
+"PO-Revision-Date: 2018-09-09 11:05-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -110,7 +110,7 @@ msgstr "La validation du jeton nonce pour les options de réseau a échoué (mis
 msgid "Insufficient privileges to modify network options."
 msgstr "Privilèges insuffisants pour modifier les options de réseau."
 
-#: lib/admin.php:915 lib/post.php:741 lib/term.php:433 lib/user.php:426
+#: lib/admin.php:915 lib/post.php:752 lib/term.php:440 lib/user.php:433
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -1087,15 +1087,15 @@ msgstr "Toujours"
 msgid "This notice can be dismissed permanently."
 msgstr "Cet avis peut être masqué définitivement."
 
-#: lib/com/notice.php:171 lib/com-gettext-extract.php:28
+#: lib/com/notice.php:172 lib/com-gettext-extract.php:28
 msgid "This notice can be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
-#: lib/com/notice.php:375 lib/com-gettext-extract.php:7
+#: lib/com/notice.php:376 lib/com-gettext-extract.php:7
 msgid "edit"
 msgstr "modifier"
 
-#: lib/com/notice.php:377 lib/com-gettext-extract.php:21
+#: lib/com/notice.php:378 lib/com-gettext-extract.php:21
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
@@ -2273,8 +2273,8 @@ msgstr "Auto-rafraîchir le cache après vider"
 
 #: lib/gpl/admin/advanced.php:324 lib/pro/admin/advanced.php:322
 msgctxt "option label"
-msgid "Clear Term Cache on Post Update"
-msgstr "Vider le cache de termes lors de sauvegarde d'article"
+msgid "Clear Term Cache for Published Post"
+msgstr "Vider le cache de termes pour un article publiée"
 
 #: lib/gpl/admin/advanced.php:329 lib/pro/admin/advanced.php:327
 msgctxt "option label"
@@ -2523,7 +2523,7 @@ msgid "Schema Description"
 msgstr "Description Schéma"
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/gpl/admin/meta.php:149 lib/post.php:1153 lib/pro/admin/meta.php:167
+#: lib/gpl/admin/meta.php:149 lib/post.php:1168 lib/pro/admin/meta.php:167
 msgid "Save a draft version or publish the %s to display these options."
 msgstr "Enregistrer un brouillon ou publier pour activer ces options."
 
@@ -3620,8 +3620,8 @@ msgid "After clearing all %1$s cache objects, %1$s can automatically re-create i
 msgstr "Après avoir vidé tous les objets de cache, %1$s peut automatiquement recréer ces objets de cache d'article, de terme et d'utilisateur à partir d'une tâche en arrière-plan (n'affecte pas le temps de chargement de la page)."
 
 #: lib/messages.php:1271
-msgid "When a post, page, or custom post type is updated, automatically clear the cache of its selected terms (categories, tags, etc.)."
-msgstr "Lorsqu'un article, une page ou un type d'article personnalisé est mis à jour, vider automatiquement le cache de ces termes sélectionnés (catégories, étiquettes, etc.)."
+msgid "When a published post, page, or custom post type is updated, automatically clear the cache of its selected terms (categories, tags, etc.)."
+msgstr "Lorsqu'un article, une page ou un type d'article personnalisé publiée est mis à jour, vider automatiquement le cache de ces termes sélectionnés (catégories, étiquettes, etc.)."
 
 #: lib/messages.php:1277
 msgid "Automatically clear the post cache when a new comment is added or the status of an existing comment is changed."
@@ -4583,128 +4583,128 @@ msgstr "supérieur au max recommandé de %1$0.3f secs"
 msgid "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the children of post ID %2$d (%3$s)."
 msgstr "Requête lente détectée - WordPress get_posts() a pris %1$0.3f secs pour obtenir les enfants de l'article ID %2$d (%3$s)."
 
-#: lib/post.php:853
+#: lib/post.php:864
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr "Vérification de balises méta en double pour %1$s..."
 
-#: lib/post.php:890
+#: lib/post.php:901
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr "Récupérer le document HTML pour %1$s a pris %2$s secondes."
 
-#: lib/post.php:892
+#: lib/post.php:903
 msgid "This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds)."
 msgstr "Cela dépasse le délai recommandé de %1$s secondes (plusieurs crawlers déconnectent après %2$s secondes)."
 
-#: lib/post.php:894
+#: lib/post.php:905
 msgid "Please consider improving the speed of your site."
 msgstr "SVP envisager d'améliorer la vitesse de votre site."
 
-#: lib/post.php:895
+#: lib/post.php:906
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:907 lib/util.php:1652
+#: lib/post.php:918 lib/util.php:1652
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur en récupérant le la page Web <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:920
+#: lib/post.php:931
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr "Une balise &lt;html&gt; n'a pas été trouvée dans <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:933
+#: lib/post.php:944
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Aucune balises HTML %1$s ont été trouvées dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:946
+#: lib/post.php:957
 msgid "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr "Une section de balises méta %2$s n'a pas été trouvée dans <a href=\"%1$s\">%1$s</a> &mdash; peut-être qu'une extension ou un service de mise en cache de page Web doit être rafraîchi?"
 
-#: lib/post.php:972
+#: lib/post.php:983
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr "La page Web à %1$s n'inclut aucun script(s) de Schéma JSON-LD."
 
-#: lib/post.php:972
+#: lib/post.php:983
 msgid "Schema JSON-LD markup is highly recommended for higher ranking and better click-through rates in Google search results."
 msgstr "Le balisage Schéma JSON-LD est fortement recommandé pour un classement plus élevé et de meilleurs taux de clics dans les résultats de recherche Google."
 
-#: lib/post.php:972
+#: lib/post.php:983
 msgid "You should consider activating the %1$s add-on to include this additional markup in the webpage for Google."
 msgstr "Vous devriez envisager d'activer l'ajout %1$s pour inclure ce balisage supplémentaire dans la page Web pour Google."
 
-#: lib/post.php:992
+#: lib/post.php:1003
 msgid "The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP's PCRE library or a webpage filter corrupting the %1$s meta tags."
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer la section de balises méta %1$s &mdash; ceci pourrait être une indication d'un problème avec la bibliothèque PHP PCRE ou un filtre de page Web qui corrompt les balises méta de %1$s."
 
-#: lib/post.php:1004
+#: lib/post.php:1015
 msgid "Conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage."
 msgstr "Conflit détecté &mdash; votre thème ou une autre extension ajoute une balise %1$s à l'entête de cette page Web."
 
-#: lib/post.php:1019
+#: lib/post.php:1031
 msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:1019
+#: lib/post.php:1031
 msgid "The webpage may contain serious HTML syntax errors &mdash; please review the <a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any errors."
 msgstr "La page Web pourrait contenir de graves erreurs de syntaxe HTML &mdash; SVP consulter les résultats du <a href=\"%1$s\">W3C Markup Validation Service</a> et corrigez toutes les erreurs."
 
-#: lib/post.php:1019
+#: lib/post.php:1031
 msgid "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr "Vous pouvez ignorer toutes les erreurs d'attribut \"nopin\" sans risque, ou désactiver l'attribut \"nopin\" sous l'<a href=\"%s\">onglet de réglages Pinterest</a>."
 
-#: lib/post.php:1049
+#: lib/post.php:1063
 msgid "%1$d duplicate meta tags found."
 msgstr "%1$d balises méta en double trouvées."
 
-#: lib/post.php:1050
+#: lib/post.php:1064
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr "Vérification %1$d de %2$d a échoué (réessaie à suivre)..."
 
-#: lib/post.php:1056
+#: lib/post.php:1070
 msgid "Awesome! No duplicate meta tags found."
 msgstr "Génial! Aucune balise méta dupliquée trouvée."
 
-#: lib/post.php:1059
+#: lib/post.php:1073
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr "L'option de débogage est activée - cette vérification sera répétée..."
 
-#: lib/post.php:1061
+#: lib/post.php:1075
 msgid "Check %1$d of %2$d successful..."
 msgstr "Vérification %1$d de %2$d réussi..."
 
-#: lib/post.php:1323 lib/script.php:220
+#: lib/post.php:1342 lib/script.php:220
 msgctxt "option label"
 msgid "Robots"
 msgstr "Robots"
 
-#: lib/post.php:1332
+#: lib/post.php:1351
 msgid "Edit"
 msgstr "Modifier"
 
-#: lib/post.php:1333
+#: lib/post.php:1352
 msgid "Edit robots"
 msgstr "Modifier robots"
 
-#: lib/post.php:1344
+#: lib/post.php:1363
 msgctxt "option label"
 msgid "No index"
 msgstr "Pas d'indexation"
 
-#: lib/post.php:1345
+#: lib/post.php:1364
 msgctxt "option label"
 msgid "No follow"
 msgstr "Pas de suivi"
 
-#: lib/post.php:1346
+#: lib/post.php:1365
 msgctxt "option label"
 msgid "No archive"
 msgstr "Pas d'archivage"
 
-#: lib/post.php:1347
+#: lib/post.php:1366
 msgctxt "option label"
 msgid "No snippet"
 msgstr "Pas d'extrait"
 
-#: lib/post.php:1421
+#: lib/post.php:1440
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour %1$s ID %2$s."
 
@@ -5329,7 +5329,7 @@ msgstr "Guide de configuration et autres notes"
 msgid "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr "Requête lente détectée - WordPress get_posts() a pris %1$0.3f secs pour obtenir les articles de taxonomie %3$s du terme ID %2$d (%4$s)."
 
-#: lib/term.php:577
+#: lib/term.php:585
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour le terme ID %1$s."
 
@@ -5348,23 +5348,23 @@ msgstr "Carte Twitter grande image"
 msgid "Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts authored by user ID %2$d (%3$s)."
 msgstr "Requête lente détectée - WordPress get_posts() a pris %1$0.3f secs pour obtenir les articles d'auteur pour l'utilisateur ID %2$d (%3$s)."
 
-#: lib/user.php:622
+#: lib/user.php:630
 msgid "(not a Facebook Page URL)"
 msgstr "(pas un URL de Page Facebook)"
 
-#: lib/user.php:704
+#: lib/user.php:712
 msgid "AIM"
 msgstr "AIM"
 
-#: lib/user.php:705
+#: lib/user.php:713
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/user.php:706
+#: lib/user.php:714
 msgid "Yahoo Messenger"
 msgstr "Yahoo Messenger"
 
-#: lib/user.php:1169
+#: lib/user.php:1177
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'usager ID %1$s."
 

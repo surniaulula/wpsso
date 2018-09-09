@@ -1266,9 +1266,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_clear_post_terms':		// Clear Term Cache on Post Update.
+						case 'tooltip-plugin_clear_post_terms':		// Clear Term Cache for Published Post.
 
-							$text = __( 'When a post, page, or custom post type is updated, automatically clear the cache of its selected terms (categories, tags, etc.).', 'wpsso' );
+							$text = __( 'When a published post, page, or custom post type is updated, automatically clear the cache of its selected terms (categories, tags, etc.).', 'wpsso' );
 
 							break;
 
