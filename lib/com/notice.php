@@ -141,7 +141,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$payload['notice_key']   = empty( $notice_key ) ? false : sanitize_key( $notice_key );
 			$payload['dismiss_time'] = false;
-			$payload['dismiss_diff'] = isset( $payload['dismiss_diff'] ) ? $payload['dismiss_diff'] : false;
+			$payload['dismiss_diff'] = isset( $payload['dismiss_diff'] ) ? $payload['dismiss_diff'] : null;
 
 			/**
 			 * Add dismiss text for dismiss button and notice message.
