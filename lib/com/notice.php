@@ -84,7 +84,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->dis_name   = defined( $uca . '_DISMISS_NAME' ) ? constant( $uca . '_DISMISS_NAME' ) : $this->lca . '_dismissed';
 			$this->tb_notices = defined( $uca . '_TOOLBAR_NOTICES' ) ? constant( $uca . '_TOOLBAR_NOTICES' ) : false;
 
-			if ( $this->tb_notices === true ) {
+			if ( true === $this->tb_notices ) {
 				$this->tb_notices = array( 'err', 'warn', 'inf' );
 			}
 
@@ -150,11 +150,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				$payload['dismiss_time'] = $dismiss_time;	// Maybe true, false, 0, or seconds greater than 0.
 
-				if ( $payload['dismiss_diff'] === null ) {
+				if ( null === $payload['dismiss_diff'] ) {	// Has not been provided, so set a default value.
 
 					$dismiss_suffix_msg = false;
 
-					if ( $payload['dismiss_time'] === true ) {	// True.
+					if ( true === $payload['dismiss_time'] ) {	// True.
 
 						$payload['dismiss_diff'] = __( 'Forever', $this->text_domain );
 
@@ -335,7 +335,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$refs = end( $this->ref_cache );	// Get the last reference added.
 
-			if ( $idx === 'edit' ) {
+			if ( 'edit' === $idx ) {
 				if ( isset( $refs['mod'] ) ) {
 					if ( $refs['mod']['is_post'] && $refs['mod']['id'] ) {
 						return $text_prefix . get_edit_post_link( $refs['mod']['id'], false ) . $text_suffix;	// $display is false.
@@ -548,7 +548,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						continue;
 					}
 
-					if ( $msg_type === 'nag' ) {
+					if ( 'nag' === $msg_type ) {
 						$nag_text .= $payload['msg_text'];	// Append to echo a single msg block.
 						continue;
 					}
