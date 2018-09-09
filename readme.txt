@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.12.0-rc.3 (2018/09/09)**
+**Version 4.12.0 (2018/09/09)**
 
 * *New Features*
 	* None.
@@ -335,7 +335,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new options under the SSO &gt; Advanced &gt; Cache Settings tab:
 		* Clear Cache on Activate
 		* Clear Cache on Deactivate
-		* Clear Term Cache on Post Update
+		* Clear Term Cache for Published Post
 	* The "Clear All Caches" button and link now start the clear cache task in the background.
 	* The "Auto-Refresh Cache After Clearing" task is now started in the background as well.
 	* Added support for the "product:retailer_item_id" meta tag (aka "Product SKU").
@@ -687,7 +687,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.12.0-rc.3 =
+= 4.12.0 =
 
 (2018/09/09) Added sub-types to the Schema AdministrativeArea type. Removed support for automatically hidden notifications.
 
