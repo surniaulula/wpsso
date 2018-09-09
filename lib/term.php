@@ -13,9 +13,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 	class WpssoTerm extends WpssoMeta {
 
-		protected $query_term_id = 0;
+		protected $query_term_id  = 0;
 		protected $query_tax_slug = '';
-		protected $query_tax_obj = false;
+		protected $query_tax_obj  = false;
 
 		public function __construct() {
 		}
@@ -40,18 +40,18 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					return;
 				}
 
-				add_filter( 'manage_edit-'.$this->query_tax_slug.'_columns',
+				add_filter( 'manage_edit-' . $this->query_tax_slug . '_columns',
 					array( $this, 'add_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
 				/**
 				 * Enable orderby meta_key only if we have a meta table.
 				 */
 				if ( self::use_meta_table() ) {
-					add_filter( 'manage_edit-'.$this->query_tax_slug.'_sortable_columns', 
+					add_filter( 'manage_edit-' . $this->query_tax_slug . '_sortable_columns', 
 						array( $this, 'add_sortable_columns' ), 10, 1 );
 				}
 
-				add_filter( 'manage_'.$this->query_tax_slug.'_custom_column',
+				add_filter( 'manage_' . $this->query_tax_slug . '_custom_column',
 					array( $this, 'get_column_content' ), 10, 3 );
 
 				/**
@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'tax_slug / term_id = '.$this->query_tax_slug.' / '.$this->query_term_id );
+					$this->p->debug->log( 'tax_slug / term_id = ' . $this->query_tax_slug . ' / ' . $this->query_term_id );
 				}
 
 				/**
@@ -92,17 +92,17 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 300, 1 );
-					add_action( $this->query_tax_slug.'_edit_form', array( $this, 'show_metaboxes' ), 100, 1 );
+					add_action( $this->query_tax_slug . '_edit_form', array( $this, 'show_metaboxes' ), 100, 1 );
 				}
 
-				add_action( 'created_'.$this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
-				add_action( 'created_'.$this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+				add_action( 'created_' . $this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
+				add_action( 'created_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
 
-				add_action( 'edited_'.$this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
-				add_action( 'edited_'.$this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+				add_action( 'edited_' . $this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
+				add_action( 'edited_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
 
-				add_action( 'delete_'.$this->query_tax_slug, array( $this, 'delete_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
-				add_action( 'delete_'.$this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
+				add_action( 'delete_' . $this->query_tax_slug, array( $this, 'delete_options' ), WPSSO_META_SAVE_PRIORITY, 2 );
+				add_action( 'delete_' . $this->query_tax_slug, array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 2 );
 			}
 		}
 
@@ -124,7 +124,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$mod['is_term']  = true;
 			$mod['tax_slug'] = SucomUtil::get_term_object( $mod['id'], (string) $tax_slug, 'taxonomy' );
 
-			return apply_filters( $this->p->lca.'_get_term_mod', $mod, $mod_id, $tax_slug );
+			return apply_filters( $this->p->lca . '_get_term_mod', $mod, $mod_id, $tax_slug );
 		}
 
 		public static function get_public_term_ids( $tax_name = null ) {
@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( false === $ppp ) {
-				$ppp = apply_filters( $this->p->lca.'_posts_per_page', get_option( 'posts_per_page' ), $mod );
+				$ppp = apply_filters( $this->p->lca . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( false === $paged ) {
@@ -195,8 +195,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'calling get_posts() for '.$mod['name'].' id '.$mod['id'].
-					' in taxonomy '.$mod['tax_slug'].' (posts_per_page is '.$ppp.')' );
+				$this->p->debug->log( 'calling get_posts() for ' . $mod['name'] . ' id ' . $mod['id'] . 
+					' in taxonomy ' . $mod['tax_slug'] . ' (posts_per_page is ' . $ppp . ')' );
 			}
 
 			$posts_args = array_merge( array(
@@ -252,7 +252,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $post_ids ).' post ids returned in '.sprintf( '%0.3f secs', $total_time ) );
+				$this->p->debug->log( count( $post_ids ) . ' post ids returned in ' . sprintf( '%0.3f secs', $total_time ) );
 			}
 
 			return $post_ids;
@@ -264,9 +264,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function get_column_content( $value, $column_name, $term_id ) {
 
-			if ( ! empty( $term_id ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// just in case
+			if ( ! empty( $term_id ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// just in case
 
-				$col_idx = str_replace( $this->p->lca.'_', '', $column_name );
+				$col_idx = str_replace( $this->p->lca . '_', '', $column_name );
 
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// just in case
@@ -314,7 +314,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			static $do_once = array();
 
-			if ( strpos( $meta_key, '_'.$this->p->lca.'_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
+			if ( strpos( $meta_key, '_' . $this->p->lca . '_head_info_' ) !== 0 ) {	// example: _wpsso_head_info_og_img_thumb
 				return $value;	// return null
 			}
 
@@ -355,11 +355,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'screen id: '.$screen->id );
+				$this->p->debug->log( 'screen id: ' . $screen->id );
 			}
 
 			switch ( $screen->id ) {
-				case 'edit-'.$this->query_tax_slug:
+				case 'edit-' . $this->query_tax_slug:
 					break;
 				default:
 					return;
@@ -369,26 +369,26 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$mod = $this->get_mod( $this->query_term_id, $this->query_tax_slug );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'home url = '.get_option( 'home' ) );
-				$this->p->debug->log( 'locale default = '.SucomUtil::get_locale( 'default' ) );
-				$this->p->debug->log( 'locale current = '.SucomUtil::get_locale( 'current' ) );
-				$this->p->debug->log( 'locale mod = '.SucomUtil::get_locale( $mod ) );
+				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
+				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
+				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
+				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 			}
 
 			WpssoMeta::$head_meta_tags = array();
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
-			$add_metabox = apply_filters( $this->p->lca.'_add_metabox_term', $add_metabox, $this->query_term_id );
+			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_term', $add_metabox, $this->query_term_id );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'add metabox for term ID '.$this->query_term_id.' is '.
+				$this->p->debug->log( 'add metabox for term ID ' . $this->query_term_id . ' is ' . 
 					( $add_metabox ? 'true' : 'false' ) );
 			}
 
 			if ( $add_metabox ) {
 
-				do_action( $this->p->lca.'_admin_term_head', $mod, $screen->id );
+				do_action( $this->p->lca . '_admin_term_head', $mod, $screen->id );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'setting head_meta_info static property' );
@@ -404,25 +404,32 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 * Check for missing open graph image and description values.
 				 */
 				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
-					if ( empty( WpssoMeta::$head_meta_info['og:'.$mt_suffix] ) ) {
+
+					if ( empty( WpssoMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
+
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'og:'.$mt_suffix.' meta tag is value empty and required' );
+							$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
 						}
-						if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-'.$mt_suffix ) );
+
+						if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
+
+							$notice_key = $mod['name'] . '-' . $mod['id'] . '-notice-missing-og-' . $mt_suffix;
+							$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
+
+							$this->p->notice->err( $error_msg, null, $notice_key );
 						}
 					}
 				}
 			}
 
-			$action_query = $this->p->lca.'-action';
+			$action_query = $this->p->lca . '-action';
 
 			if ( ! empty( $_GET[$action_query] ) ) {
 
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'found action query: '.$action_name );
+					$this->p->debug->log( 'found action query: ' . $action_name );
 				}
 
 				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
@@ -436,7 +443,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 					switch ( $action_name ) {
 						default:
-							do_action( $this->p->lca.'_load_meta_page_term_'.$action_name, $this->query_term_id );
+							do_action( $this->p->lca . '_load_meta_page_term_' . $action_name, $this->query_term_id );
 							break;
 					}
 				}
@@ -447,7 +454,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( ! current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'insufficient privileges to add metabox for term '.$this->query_term_id );
+					$this->p->debug->log( 'insufficient privileges to add metabox for term ' . $this->query_term_id );
 				}
 				return;
 			}
@@ -458,15 +465,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
 			$add_metabox     = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
-			$add_metabox     = apply_filters( $this->p->lca.'_add_metabox_term', $add_metabox, $this->query_term_id );
+			$add_metabox     = apply_filters( $this->p->lca . '_add_metabox_term', $add_metabox, $this->query_term_id );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'add metabox for term ID '.$this->query_term_id.' is '.
+				$this->p->debug->log( 'add metabox for term ID ' . $this->query_term_id . ' is ' . 
 					( $add_metabox ? 'true' : 'false' ) );
 			}
 
 			if ( $add_metabox ) {
-				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
+				add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
 					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
 						$metabox_context, $metabox_prio );
 			}
@@ -485,14 +492,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$metabox_screen  = $this->p->lca . '-term';
 			$metabox_context = 'normal';
 
-			echo "\n" . '<!-- '.$this->p->lca.' term metabox section begin -->' . "\n";
-			echo '<h3 id="'.$this->p->lca.'-metaboxes">'.WpssoAdmin::$pkg[$this->p->lca]['short'].'</h3>' . "\n";
+			echo "\n" . '<!-- ' . $this->p->lca . ' term metabox section begin -->' . "\n";
+			echo '<h3 id="' . $this->p->lca . '-metaboxes">' . WpssoAdmin::$pkg[$this->p->lca]['short'] . '</h3>' . "\n";
 			echo '<div id="poststuff">' . "\n";
 
 			do_meta_boxes( $metabox_screen, 'normal', $term_obj );
 
 			echo "\n" . '</div><!-- .poststuff -->' . "\n";
-			echo '<!-- '.$this->p->lca.' term metabox section end -->' . "\n";
+			echo '<!-- ' . $this->p->lca . ' term metabox section end -->' . "\n";
 		}
 
 		public function show_metabox_custom_meta( $term_obj ) {
@@ -511,20 +518,21 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( $metabox_id.' table rows' );	// start timer
+				$this->p->debug->mark( $metabox_id . ' table rows' );	// start timer
 			}
 
 			$table_rows = array();
 
 			foreach ( $tabs as $key => $title ) {
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ),
-					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+					apply_filters( $this->p->lca . '_' . $mod['name'] . '_' . $key . '_rows',
+						array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 
 			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( $metabox_id.' table rows' );	// end timer
+				$this->p->debug->mark( $metabox_id . ' table rows' );	// end timer
 			}
 
 			return "\n" . '<div id="' . $this->p->lca . '_metabox_' . $metabox_id . '">' . $metabox_html . '</div>' . "\n";
@@ -571,7 +579,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( ! $user_can_edit = current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'insufficient privileges to save settings for term ID '.$term_id );
+					$this->p->debug->log( 'insufficient privileges to save settings for term ID ' . $term_id );
 				}
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for term ID %1$s.',
@@ -597,19 +605,19 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					/**
 					 * If deprecated meta is found, update the meta table and delete the deprecated meta.
 					 */
-					if ( ( $opt_term_meta = get_option( $key_name.'_term_'.$term_id, null ) ) !== null ) {
+					if ( ( $opt_term_meta = get_option( $key_name . '_term_' . $term_id, null ) ) !== null ) {
 
 						$updated = update_term_meta( $term_id, $key_name, $opt_term_meta );	// since wpv4.4
 
 						if ( ! is_wp_error( $updated ) ) {
-							delete_option( $key_name.'_term_'.$term_id );
+							delete_option( $key_name . '_term_' . $term_id );
 							$term_meta = get_term_meta( $term_id, $key_name, $single );
 						} else {
 							$term_meta = false === $single ? array( $opt_term_meta ) : $opt_term_meta;
 						}
 					}
 				}
-			} elseif ( ( $opt_term_meta = get_option( $key_name.'_term_'.$term_id, null ) ) !== null ) {
+			} elseif ( ( $opt_term_meta = get_option( $key_name . '_term_' . $term_id, null ) ) !== null ) {
 				$term_meta = false === $single ? array( $opt_term_meta ) : $opt_term_meta;
 			}
 
@@ -620,7 +628,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			if ( self::use_meta_table( $term_id ) ) {
 				return update_term_meta( $term_id, $key_name, $opts );	// since wpv4.4
 			} else {
-				return update_option( $key_name.'_term_'.$term_id, $opts );
+				return update_option( $key_name . '_term_' . $term_id, $opts );
 			}
 		}
 
@@ -628,7 +636,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			if ( self::use_meta_table( $term_id ) ) {
 				return delete_term_meta( $term_id, $key_name );	// since wp v4.4
 			} else {
-				return delete_option( $key_name.'_term_'.$term_id );
+				return delete_option( $key_name . '_term_' . $term_id );
 			}
 		}
 

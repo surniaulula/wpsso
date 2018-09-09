@@ -397,12 +397,19 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * Check for missing open graph image and description values.
 				 */
 				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
+
 					if ( empty( WpssoMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
 						}
-						if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
-							$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix ) );
+
+						if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
+
+							$notice_key = $mod['name'] . '-' . $mod['id'] . '-notice-missing-og-' . $mt_suffix;
+							$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
+
+							$this->p->notice->err( $error_msg, null, $notice_key );
 						}
 					}
 				}
@@ -537,7 +544,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $tabs as $key => $title ) {
 				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ),
-					apply_filters( $this->p->lca . '_' . $mod['name'] . '_' . $key . '_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+					apply_filters( $this->p->lca . '_' . $mod['name'] . '_' . $key . '_rows',
+						array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 
 			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows );

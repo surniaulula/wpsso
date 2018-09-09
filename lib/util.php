@@ -2549,7 +2549,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Called by scheduled tasks to possibly load a different user, including their preferred language.
+		 * Called by scheduled tasks to check the user ID value, and possibly load a different textdomain language.
 		 */
 		private function maybe_change_user_id( $user_id ) {
 
@@ -3354,6 +3354,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $strip_tags ) {
 
 				$text = preg_replace( '/<\/p>/i', ' ', $text);				// Replace end of paragraph with a space.
+
 				$text_stripped = trim( strip_tags( $text ) );				// Remove remaining html tags.
 
 				if ( $text_stripped === '' && $use_img_alt ) {				// Possibly use img alt strings if no text.
@@ -3410,8 +3411,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $mod['id'] && is_object( $mod['obj'] ) ) {
 
 				foreach ( array(
-					'noindex' => 'index',
-					'nofollow' => 'follow',
+					'noindex'   => 'index',
+					'nofollow'  => 'follow',
 					'noarchive' => '',
 					'nosnippet' => '',
 				) as $meta_name => $inverse_name ) {

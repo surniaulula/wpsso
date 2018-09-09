@@ -430,9 +430,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_column_content( $value, $column_name, $post_id ) {
 
-			if ( ! empty( $post_id ) && strpos( $column_name, $this->p->lca.'_' ) === 0 ) {	// Just in case.
+			if ( ! empty( $post_id ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// Just in case.
 
-				$col_idx = str_replace( $this->p->lca.'_', '', $column_name );
+				$col_idx = str_replace( $this->p->lca . '_', '', $column_name );
 
 				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
 
@@ -445,8 +445,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						foreach( $col_info['post_callbacks'] as $input_name => $input_callback ) {
 
 							if ( ! empty( $input_callback ) ) {
-								$value .= "\n".'<input name="'.$input_name.'" type="hidden" value="'.
-									call_user_func( $input_callback, $post_id ).'" readonly="readonly" />';
+								$value .= "\n" . '<input name="' . $input_name . '" type="hidden" value="' . 
+									call_user_func( $input_callback, $post_id ) . '" readonly="readonly" />';
 							}
 						}
 					}
@@ -492,7 +492,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			static $do_once = array();
 
-			if ( strpos( $meta_key, '_'.$this->p->lca.'_head_info_' ) !== 0 ) {	// Example: _wpsso_head_info_og_img_thumb.
+			if ( strpos( $meta_key, '_' . $this->p->lca . '_head_info_' ) !== 0 ) {	// Example: _wpsso_head_info_og_img_thumb.
 				return $value;	// Return null.
 			}
 
@@ -557,9 +557,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * Check for missing open graph image and description values.
 				 */
 				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
-					if ( empty( WpssoMeta::$head_meta_info['og:'.$mt_suffix] ) ) {
-						$error_msg = $this->p->msgs->get( 'notice-missing-og-'.$mt_suffix );
-						$this->p->notice->err( $error_msg );
+
+					if ( empty( WpssoMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
+
+						$notice_key = $mod['name'] . '-' . $mod['id'] . '-notice-missing-og-' . $mt_suffix;
+						$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
+
+						$this->p->notice->err( $error_msg, null, $notice_key );
 					}
 				}
 			}
@@ -587,7 +591,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'screen id: '.$screen->id );
+				$this->p->debug->log( 'screen id: ' . $screen->id );
 			}
 
 			switch ( $screen->id ) {
@@ -635,10 +639,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod = $this->get_mod( $post_id );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'home url = '.get_option( 'home' ) );
-				$this->p->debug->log( 'locale default = '.SucomUtil::get_locale( 'default' ) );
-				$this->p->debug->log( 'locale current = '.SucomUtil::get_locale( 'current' ) );
-				$this->p->debug->log( 'locale mod = '.SucomUtil::get_locale( $mod ) );
+				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
+				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
+				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
+				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 			}
 
@@ -670,11 +674,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			} else {
 
-				$add_metabox = empty( $this->p->options['plugin_add_to_'.$post_obj->post_type] ) ? false : true;
-				$add_metabox = apply_filters( $this->p->lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
+				$add_metabox = empty( $this->p->options['plugin_add_to_' . $post_obj->post_type] ) ? false : true;
+				$add_metabox = apply_filters( $this->p->lca . '_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'add metabox for post ID '.$post_id.' of type '.$post_obj->post_type.' is '.
+					$this->p->debug->log( 'add metabox for post ID ' . $post_id . ' of type ' . $post_obj->post_type . ' is ' . 
 						( $add_metabox ? 'true' : 'false' ) );
 				}
 
@@ -683,7 +687,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					/**
 					 * Hooked by woocommerce module to load front-end libraries and start a session.
 					 */
-					do_action( $this->p->lca.'_admin_post_head', $mod, $screen->id );
+					do_action( $this->p->lca . '_admin_post_head', $mod, $screen->id );
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting head_meta_info static property' );
@@ -701,12 +705,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						 * Check for missing open graph image and description values.
 						 */
 						foreach ( array( 'image', 'description' ) as $mt_suffix ) {
-							if ( empty( WpssoMeta::$head_meta_info['og:'.$mt_suffix] ) ) {
+
+							if ( empty( WpssoMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
+
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( 'og:'.$mt_suffix.' meta tag is value empty and required' );
+									$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
 								}
+
 								if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
-									$this->p->notice->err( $this->p->msgs->get( 'notice-missing-og-'.$mt_suffix ) );
+
+									$notice_key = $mod['name'] . '-' . $mod['id'] . '-notice-missing-og-' . $mt_suffix;
+									$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
+
+									$this->p->notice->err( $error_msg, null, $notice_key );
 								}
 							}
 						}
@@ -715,7 +726,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						 * Check duplicates only when the post is available publicly and we have a valid permalink.
 						 */
 						if ( current_user_can( 'manage_options' ) ) {
-							if ( apply_filters( $this->p->lca.'_check_post_head', $this->p->options['plugin_check_head'], $post_id, $post_obj ) ) {
+							if ( apply_filters( $this->p->lca . '_check_post_head', $this->p->options['plugin_check_head'], $post_id, $post_obj ) ) {
 								$this->check_post_head_duplicates( $post_id, $post_obj );
 							}
 						}
@@ -723,14 +734,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			$action_query = $this->p->lca.'-action';
+			$action_query = $this->p->lca . '-action';
 
 			if ( ! empty( $_GET[$action_query] ) ) {
 
 				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'found action query: '.$action_name );
+					$this->p->debug->log( 'found action query: ' . $action_name );
 				}
 
 				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
@@ -744,7 +755,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 					switch ( $action_name ) {
 						default:
-							do_action( $this->p->lca.'_load_meta_page_post_'.$action_name, $post_id, $post_obj );
+							do_action( $this->p->lca . '_load_meta_page_post_' . $action_name, $post_id, $post_obj );
 							break;
 					}
 				}
@@ -1013,7 +1024,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 
 					if ( $is_admin ) {
-						$validator_url = 'https://validator.w3.org/nu/?doc=' . urlencode( $check_url );
+
+						$validator_url     = 'https://validator.w3.org/nu/?doc=' . urlencode( $check_url );
 						$settings_page_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' );
 
 						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a>.', 'wpsso' ), $check_url ) . ' ' . sprintf( __( 'The webpage may contain serious HTML syntax errors &mdash; please review the <a href="%1$s">W3C Markup Validation Service</a> results and correct any errors.', 'wpsso' ), $validator_url ) . ' ' . sprintf( __( 'You may safely ignore any "nopin" attribute errors, or disable the "nopin" attribute under the <a href="%s">Pinterest settings tab</a>.', 'wpsso' ), $settings_page_url ) );
@@ -1032,7 +1044,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 										! empty( $check_opts[$tag . '_' . $type . '_' . $meta[$type]] ) ) {
 
 										$conflicts_found++;
+
 										$conflicts_tag = '<code>' . $tag . ' ' . $type . '="' . $meta[$type] . '"</code>';
+
 										$this->p->notice->err( sprintf( $conflicts_msg, $conflicts_tag ) );
 									}
 								}
@@ -1087,7 +1101,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( ( $post_obj->post_type === 'page' && ! current_user_can( 'edit_page', $post_id ) ) || ! current_user_can( 'edit_post', $post_id ) ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'insufficient privileges to add metabox for '.$post_obj->post_type.' ID '.$post_id );
+					$this->p->debug->log( 'insufficient privileges to add metabox for ' . $post_obj->post_type . ' ID ' . $post_id );
 				}
 				return;
 			}
@@ -1097,16 +1111,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$metabox_screen  = $post_obj->post_type;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
-			$add_metabox     = empty( $this->p->options[ 'plugin_add_to_'.$post_obj->post_type ] ) ? false : true;
-			$add_metabox     = apply_filters( $this->p->lca.'_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
+			$add_metabox     = empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ? false : true;
+			$add_metabox     = apply_filters( $this->p->lca . '_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'add metabox for post ID '.$post_id.' of type '.$post_obj->post_type.' is '.
+				$this->p->debug->log( 'add metabox for post ID ' . $post_id . ' of type ' . $post_obj->post_type . ' is ' . 
 					( $add_metabox ? 'true' : 'false' ) );
 			}
 
 			if ( $add_metabox ) {
-				add_meta_box( $this->p->lca.'_'.$metabox_id, $metabox_title,
+				add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
 					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
 						$metabox_context, $metabox_prio );
 			}
@@ -1128,20 +1142,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( $metabox_id.' table rows' );	// Start timer.
+				$this->p->debug->mark( $metabox_id . ' table rows' );	// Start timer.
 			}
 
 			$table_rows = array();
 
 			foreach ( $tabs as $tab_key => $title ) {
 				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key, WpssoMeta::$head_meta_info, $mod ),
-					apply_filters( $this->p->lca.'_'.$mod['name'].'_'.$tab_key.'_rows', array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+					apply_filters( $this->p->lca . '_' . $mod['name'] . '_' . $tab_key . '_rows',
+						array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
 			}
 
 			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( $metabox_id.' table rows' );	// End timer.
+				$this->p->debug->mark( $metabox_id . ' table rows' );	// End timer.
 			}
 
 			return "\n" . '<div id="' . $this->p->lca . '_metabox_' . $metabox_id . '">' . $metabox_html . '</div>' . "\n";

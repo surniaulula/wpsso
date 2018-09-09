@@ -139,9 +139,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$r_cache = get_current_user_id() === $user_id ? true : false;
 
-			$payload['notice_key']  = empty( $notice_key ) ? false : sanitize_key( $notice_key );
+			$payload['notice_key']   = empty( $notice_key ) ? false : sanitize_key( $notice_key );
 			$payload['dismiss_time'] = false;
-			$payload['dismiss_diff'] = isset( $payload['dismiss_diff'] ) ? $payload['dismiss_diff'] : null;
+			$payload['dismiss_diff'] = isset( $payload['dismiss_diff'] ) ? $payload['dismiss_diff'] : false;
 
 			/**
 			 * Add dismiss text for dismiss button and notice message.
@@ -162,7 +162,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					} elseif ( empty( $payload['dismiss_time'] ) ) {	// False or 0 seconds.
 
-						// Nothing to do.
+						$payload['dismiss_time'] = false;
+						$payload['dismiss_diff'] = false;
 
 					} elseif ( is_numeric( $payload['dismiss_time'] ) ) {	// Seconds greater than 0.
 
@@ -1022,7 +1023,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					box-shadow:none;
 				}
 				.components-notice-list .is-dismissible .' . $this->lca . '-notice {
-					padding-right:20px;
+					padding-right:30px;
 				}
 				.components-notice-list .' . $this->lca . '-notice *,
 				#wpadminbar .' . $this->lca . '-notice *,
