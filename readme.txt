@@ -689,7 +689,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.12.0 =
 
-(2018/09/09) Added sub-types to the Schema AdministrativeArea type. Removed support for automatically hidden notifications.
+(2018/09/09) Added three new options under the SSO &gt; Advanced &gt; Cache Settings tab. Added a "Product SKU" option in the Document SSO metabox. Renamed the "Preserve Settings on Uninstall" option to "Remove All Settings on Uninstall" (unchecked by default).
 
 = 4.11.1 =
 
