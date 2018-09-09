@@ -1250,13 +1250,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				case 'private':
 				case 'publish':
 
-					break;	// Stop here.
+					break;	// Cache clearing allowed.
 
 				case 'auto-draft':
 				case 'trash':
 				default:
 
-					return;
+					return;	// Stop here.
 			}
 
 			$mod           = $this->get_mod( $post_id );
