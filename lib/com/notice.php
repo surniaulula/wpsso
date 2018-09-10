@@ -219,26 +219,31 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		/**
-		 * Deprecated on 2018/09/08.
-		 */
-		public function trunc_key() {}
+		public function trunc_key() {}	// Deprecated on 2018/09/08.
 
-		public function truncate_key( $notice_key, $user_id = null ) {
-			$this->truncate( '', '', $notice_key, $user_id );
+		public function truncate_key( $notice_key, $user_id = null ) {	// Deprecated on 2018/09/10.
+			$this->clear( '', '', $notice_key, $user_id );
+		}
+
+		public function trunc_all() {}	// Deprecated on 2018/09/08.
+
+		public function trunc() {}	// Deprecated on 2018/09/08.
+
+		public function truncate( $msg_type = '', $msg_text = '', $notice_key = false, $user_id = null ) {	// Deprecated on 2018/09/10.
+			$this->clear( $msg_type, $msg_text, $notice_key, $user_id );
 		}
 
 		/**
-		 * Deprecated on 2018/09/08.
+		 * Clear a single notice key from the notice cache.
 		 */
-		public function trunc_all() {}
+		public function clear_key( $notice_key, $user_id = null ) {
+			$this->clear( '', '', $notice_key, $user_id );
+		}
 
 		/**
-		 * Deprecated on 2018/09/08.
+		 * Clear a message type, message text, notice key from the notice cache, or clear all notices.
 		 */
-		public function trunc() {}
-
-		public function truncate( $msg_type = '', $msg_text = '', $notice_key = false, $user_id = null ) {
+		public function clear( $msg_type = '', $msg_text = '', $notice_key = false, $user_id = null ) {
 
 			if ( is_array( $user_id ) ) {
 

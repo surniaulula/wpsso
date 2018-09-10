@@ -1011,6 +1011,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		/**
+		 * Schedule the addition of user roles for WpssoUser::get_public_user_ids().
+		 */
 		public function schedule_add_user_roles( $user_id = null ) {
 
 			$user_id = $this->maybe_change_user_id( $user_id );
@@ -1050,6 +1053,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
+			if ( get_current_user_id() === 0 ) {				// User is the scheduler.
+				set_time_limit( HOUR_IN_SECONDS );
+			}
+
 			$start_time = microtime( true );
 			$user_id    = $this->maybe_change_user_id( $user_id );
 
@@ -1070,6 +1077,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			delete_transient( $cache_id );
 		}
 
+		/**
+		 * Schedule the clearing of all caches.
+		 */
 		public function schedule_clear_all_cache( $user_id = null, $clear_other = false, $clear_short = null, $refresh_all = null ) {
 
 			$user_id = $this->maybe_change_user_id( $user_id );
@@ -1110,6 +1120,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
 
+			if ( get_current_user_id() === 0 ) {				// User is the scheduler.
+				set_time_limit( HOUR_IN_SECONDS );
+			}
+
 			$start_time = microtime( true );
 			$user_id    = $this->maybe_change_user_id( $user_id );
 
@@ -1125,7 +1139,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$this->stop_refresh_all_cache();	// Just in case.
 
-			wp_cache_flush();	// Clear non-database transients as well.
+			wp_cache_flush();			// Clear non-database transients as well.
 
 			$this->delete_all_db_transients( $clear_short );
 
@@ -1140,7 +1154,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$other_msg = ' ' . __( 'The cache for %s has also been cleared.', 'wpsso' );
 
-				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// W3 total cache.
+				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// W3 Total Cache.
 					w3tc_pgcache_flush();
 					w3tc_objectcache_flush();
 					if ( $status_msg ) {
@@ -1148,17 +1162,24 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					}
 				}
 
-				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// WP super cache
+				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// WP Super Cache.
 					wp_cache_clear_cache();
 					if ( $status_msg ) {
 						$status_msg .= sprintf( $other_msg, 'WP Super Cache' );
 					}
 				}
 
-				if ( isset( $GLOBALS['comet_cache'] ) ) {		// Comet cache.
+				if ( isset( $GLOBALS['comet_cache'] ) ) {		// Comet Cache.
 					$GLOBALS['comet_cache']->wipe_cache();
 					if ( $status_msg ) {
 						$status_msg .= sprintf( $other_msg, 'Comet Cache' );
+					}
+				}
+
+				if ( class_exists( 'LiteSpeed_Cache_API' ) ) {		// LiteSpeed Cache.
+					LiteSpeed_Cache_API::purge_all();
+					if ( $status_msg ) {
+						$status_msg .= sprintf( $other_msg, 'LiteSpeed Cache' );
 					}
 				}
 			}
@@ -1198,6 +1219,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			delete_transient( $cache_id );
 		}
 
+		/**
+		 * Schedule the refreshing of all post, term, and user cache objects.
+		 */
 		public function schedule_refresh_all_cache( $user_id = null ) {
 
 			$user_id = $this->maybe_change_user_id( $user_id );
@@ -1228,7 +1252,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * to be terminated early (by removing the transient object).
 			 */
 			$cache_md5_pre  = $this->p->lca . '_!_';			// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS * 6;				// Prevent duplicate runs for max 6 hours.
+			$cache_exp_secs = HOUR_IN_SECONDS;				// Prevent duplicate runs for max 6 hours.
 			$cache_salt     = __CLASS__ . '::refresh_all_cache';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_status   = 'running';
@@ -1250,6 +1274,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			set_transient( $cache_id, $cache_status, $cache_exp_secs );
+
+			if ( get_current_user_id() === 0 ) {				// User is the scheduler.
+				set_time_limit( HOUR_IN_SECONDS );
+			}
 
 			$start_time  = microtime( true );
 			$user_id     = $this->maybe_change_user_id( $user_id );
@@ -1322,12 +1350,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Delete post meta.
 			 */
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'deleting post column meta' );
-			}
 
 			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
-				delete_post_meta_by_key( $meta_key );
+				delete_metadata( 'post', null, $meta_key, '', true );	// $delete_all is true.
 			}
 
 			/**
@@ -1337,8 +1362,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'deleting term column meta' );
 			}
 
-			foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
-				foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
 					WpssoTerm::delete_term_meta( $term_id, $meta_key );
 				}
 			}
@@ -1350,14 +1375,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'deleting user column meta' );
 			}
 
-			$blog_id  = get_current_blog_id();
-
-			while ( $user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {
-				foreach ( $user_ids as $user_id ) {
-					foreach ( $col_meta_keys as $col_idx => $meta_key ) {
-						delete_user_meta( $user_id, $meta_key );
-					}
-				}
+			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+				delete_metadata( 'user', null, $meta_key, '', true );	// $delete_all is true.
 			}
 		}
 

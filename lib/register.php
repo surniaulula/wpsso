@@ -170,7 +170,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		 */
 		private static function uninstall_plugin() {
 
-			$opts = get_option( WPSSO_OPTIONS_NAME, array() );
+			$blog_id  = get_current_blog_id();
+			$opts     = get_option( WPSSO_OPTIONS_NAME, array() );
 
 			delete_option( WPSSO_TS_NAME );
 
@@ -178,23 +179,30 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				delete_option( WPSSO_OPTIONS_NAME );
 
-				delete_post_meta_by_key( WPSSO_META_NAME );	// Since wp v2.3.
+				/**
+				 * Delete post settings and meta.
+				 */
+				delete_metadata( 'post', null, WPSSO_META_NAME, '', true );	// $delete_all is true.
 
+				/**
+				 * Delete term settings and meta.
+				 */
 				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
 					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
 				}
 
-				$blog_id  = get_current_blog_id();
+				/**
+				 * Delete user settings and meta.
+				 */
+				delete_metadata( 'user', null, WPSSO_META_NAME, '', true );	// $delete_all is true.
+				delete_metadata( 'user', null, WPSSO_PREF_NAME, '', true );	// $delete_all is true.
 
-				while ( $user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {
+				while ( $user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {	// Get a maximum of 1000 user IDs at a time.
 
 					foreach ( $user_ids as $user_id ) {
 
 						delete_user_option( $user_id, WPSSO_DISMISS_NAME, false );	// $global is false.
 						delete_user_option( $user_id, WPSSO_DISMISS_NAME, true );	// $global is true.
-	
-						delete_user_meta( $user_id, WPSSO_META_NAME );
-						delete_user_meta( $user_id, WPSSO_PREF_NAME );
 	
 						WpssoUser::delete_metabox_prefs( $user_id );
 

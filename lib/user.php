@@ -125,6 +125,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 
+			/**
+			 * Default 'writer' roles are:
+			 *
+			 * 'writer' => array(	// Users that can write posts.
+			 *	'administrator',
+			 *	'editor',
+			 *	'author',
+			 *	'contributor',
+			 * );
+			 */
 			$roles = $wpsso->cf['wp']['roles']['writer'];
 
 			return SucomUtil::get_user_ids_by_roles( $roles );
