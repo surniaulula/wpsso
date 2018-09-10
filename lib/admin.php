@@ -789,7 +789,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Clear any old notices for the current user before sanitation checks.
 			 */
-			$this->p->notice->truncate();
+			$this->p->notice->clear();
 
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $this->p->options, $opts );
@@ -874,7 +874,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Clear any old notices for the current user before sanitation checks.
 			 */
-			$this->p->notice->truncate();
+			$this->p->notice->clear();
 
 			$def_opts = $this->p->opt->get_site_defaults();
 
@@ -3099,7 +3099,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$admin_roles = $this->p->cf['wp']['roles']['admin'];
 				$user_ids    = SucomUtil::get_user_ids_by_roles( $admin_roles );
 
-				$this->p->notice->truncate_key( $notice_key, $user_ids );	// Just in case.
+				$this->p->notice->clear_key( $notice_key, $user_ids );	// Just in case.
 			}
 		}
 
