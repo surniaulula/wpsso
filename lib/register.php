@@ -115,17 +115,17 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			$this->p->set_objects( true ); // Load all the class objects ( $activate = true ).
 
 			/**
-			 * Clear Cache on Activate.
+			 * Clear All Caches on Activate.
 			 */
 			if ( ! empty( $this->p->options['plugin_clear_on_activate'] ) ) {
 
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-					_x( 'Clear Cache on Activate', 'option label', 'wpsso' ) );
+					_x( 'Clear All Caches on Activate', 'option label', 'wpsso' ) );
 
 				$this->p->notice->upd( sprintf( __( 'A background task will begin shortly to clear all caches (the %s option is enabled).',
 					'wpsso' ), $settings_page_link ) );
 
-				$this->p->util->schedule_clear_all_cache( get_current_user_id(), true );
+				$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );
 			}
 
 			/**
@@ -155,10 +155,10 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private function deactivate_plugin() {
 
 			/**
-			 * Clear Cache on Deactivate.
+			 * Clear All Caches on Deactivate.
 			 */
 			if ( ! empty( $this->p->options['plugin_clear_on_deactivate'] ) ) {
-				$this->p->util->clear_all_cache( 0, true, true, false );
+				$this->p->util->clear_all_cache( $user_id = 0, $clear_other = true, $clear_short = true, $refresh_all = false );
 			}
 
 			delete_option( WPSSO_POST_CHECK_NAME );	// Remove the post duplicate check counter.

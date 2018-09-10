@@ -1228,21 +1228,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_clear_on_activate':	// Clear Cache on Activate.
+						case 'tooltip-plugin_clear_on_activate':	// Clear All Caches on Activate.
 
-							$text = sprintf( __( 'Automatically clear cache(s) when the %s plugin is activated.', 'wpsso' ), $info['short'] );
-
-							break;
-
-						case 'tooltip-plugin_clear_on_deactivate':	// Clear Cache on Deactivate.
-
-							$text = sprintf( __( 'Automatically clear cache(s) when the %s plugin is deactivated.', 'wpsso' ), $info['short'] );
+							$text = sprintf( __( 'Automatically clear all caches when the %s plugin is activated.', 'wpsso' ), $info['short'] );
 
 							break;
 
-						case 'tooltip-plugin_clear_on_save':		// Clear Cache on Save Settings.
+						case 'tooltip-plugin_clear_on_deactivate':	// Clear All Caches on Deactivate.
 
-							$text = sprintf( __( 'Automatically clear cache(s) when the %s plugin settings are saved.', 'wpsso' ), $info['short'] );
+							$text = sprintf( __( 'Automatically clear all caches when the %s plugin is deactivated.', 'wpsso' ), $info['short'] );
+
+							break;
+
+						case 'tooltip-plugin_clear_on_save':		// Clear All Caches on Save Settings.
+
+							$text = sprintf( __( 'Automatically clear all caches when the %s plugin settings are saved.', 'wpsso' ), $info['short'] );
 
 							break;
 

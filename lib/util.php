@@ -1193,7 +1193,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( $refresh_all ) {
 
 				if ( $status_msg ) {
-					$status_msg .= ' ' . __( 'A background task will begin shortly to refresh the post, term, and user caches.', 'wpsso' );
+					$status_msg .= ' ' . __( 'A background task will begin shortly to refresh the post, term, and user cache objects.', 'wpsso' );
 				}
 
 				$this->schedule_refresh_all_cache( $user_id );	// Run in the next minute.
@@ -1204,7 +1204,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 						_x( 'Auto-Refresh Cache After Clearing', 'option label', 'wpsso' ) );
 
-					$status_msg .= ' ' . sprintf( __( 'The post, term, and user caches will be re-created as they are needed (the %s option is disabled).',
+					$status_msg .= ' ' . sprintf( __( 'All cache objects will be re-created as they are needed (the %s option is disabled).',
 						'wpsso' ), $settings_page_link );
 				}
 			}

@@ -813,13 +813,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			} else {
 
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-					_x( 'Clear Cache on Save Settings', 'option label', 'wpsso' ) );
+					_x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ) );
 
 				$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
 					sprintf( __( 'A background task will begin shortly to clear all caches (the %s option is enabled).',
 						'wpsso' ), $settings_page_link ) );
 
-				$this->p->util->schedule_clear_all_cache( get_current_user_id(), true );
+				$this->p->util->schedule_clear_all_cache( $user_id = get_current_user_id(), $clear_other = true );
 
 			}
 

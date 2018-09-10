@@ -296,17 +296,17 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			WpssoAdmin::get_option_site_use( 'plugin_types_cache_exp', $form, $network );
 
 			$table_rows['plugin_clear_on_activate'] = $form->get_tr_hide( 'basic', 'plugin_clear_on_activate' ).
-			$form->get_th_html( _x( 'Clear Cache on Activate', 'option label', 'wpsso' ), '', 'plugin_clear_on_activate' ).
+			$form->get_th_html( _x( 'Clear All Caches on Activate', 'option label', 'wpsso' ), '', 'plugin_clear_on_activate' ).
 			$form->get_td_no_checkbox( 'plugin_clear_on_activate' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_activate', $form, $network );
 
 			$table_rows['plugin_clear_on_deactivate'] = $form->get_tr_hide( 'basic', 'plugin_clear_on_deactivate' ).
-			$form->get_th_html( _x( 'Clear Cache on Deactivate', 'option label', 'wpsso' ), '', 'plugin_clear_on_deactivate' ).
+			$form->get_th_html( _x( 'Clear All Caches on Deactivate', 'option label', 'wpsso' ), '', 'plugin_clear_on_deactivate' ).
 			$form->get_td_no_checkbox( 'plugin_clear_on_deactivate' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_deactivate', $form, $network );
 
 			$table_rows['plugin_clear_on_save'] = ''.
-			$form->get_th_html( _x( 'Clear Cache on Save Settings', 'option label', 'wpsso' ), '', 'plugin_clear_on_save' ).
+			$form->get_th_html( _x( 'Clear All Caches on Save Settings', 'option label', 'wpsso' ), '', 'plugin_clear_on_save' ).
 			$form->get_td_no_checkbox( 'plugin_clear_on_save' ).
 			WpssoAdmin::get_option_site_use( 'plugin_clear_on_save', $form, $network );
 

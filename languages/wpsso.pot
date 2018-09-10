@@ -94,7 +94,7 @@ msgstr ""
 #: lib/admin.php:816 lib/gpl/admin/advanced.php:309
 #: lib/pro/admin/advanced.php:307
 msgctxt "option label"
-msgid "Clear Cache on Save Settings"
+msgid "Clear All Caches on Save Settings"
 msgstr ""
 
 #: lib/admin.php:819 lib/register.php:125
@@ -1152,11 +1152,11 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: lib/com/notice.php:381 lib/com-gettext-extract.php:7
+#: lib/com/notice.php:371 lib/com-gettext-extract.php:7
 msgid "edit"
 msgstr ""
 
-#: lib/com/notice.php:383 lib/com-gettext-extract.php:21
+#: lib/com/notice.php:373 lib/com-gettext-extract.php:21
 msgid "Reference: %s"
 msgstr ""
 
@@ -2355,12 +2355,12 @@ msgstr ""
 #: lib/gpl/admin/advanced.php:299 lib/pro/admin/advanced.php:297
 #: lib/register.php:123
 msgctxt "option label"
-msgid "Clear Cache on Activate"
+msgid "Clear All Caches on Activate"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:304 lib/pro/admin/advanced.php:302
 msgctxt "option label"
-msgid "Clear Cache on Deactivate"
+msgid "Clear All Caches on Deactivate"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:319 lib/pro/admin/advanced.php:317
@@ -4003,15 +4003,15 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:1233
-msgid "Automatically clear cache(s) when the %s plugin is activated."
+msgid "Automatically clear all caches when the %s plugin is activated."
 msgstr ""
 
 #: lib/messages.php:1239
-msgid "Automatically clear cache(s) when the %s plugin is deactivated."
+msgid "Automatically clear all caches when the %s plugin is deactivated."
 msgstr ""
 
 #: lib/messages.php:1245
-msgid "Automatically clear cache(s) when the %s plugin settings are saved."
+msgid "Automatically clear all caches when the %s plugin settings are saved."
 msgstr ""
 
 #: lib/messages.php:1257
@@ -6180,13 +6180,13 @@ msgstr ""
 #: lib/util.php:1196
 msgid ""
 "A background task will begin shortly to refresh the post, term, and user "
-"caches."
+"cache objects."
 msgstr ""
 
 #: lib/util.php:1207
 msgid ""
-"The post, term, and user caches will be re-created as they are needed (the "
-"%s option is disabled)."
+"All cache objects will be re-created as they are needed (the %s option is "
+"disabled)."
 msgstr ""
 
 #: lib/util.php:1312

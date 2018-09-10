@@ -1177,9 +1177,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_short_url_cache_exp' => 7776000,		// Get Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_topics_cache_exp'    => MONTH_IN_SECONDS,	// Article Topics Array Cache Expiry (1 month).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
-					'plugin_clear_on_activate'   => 0,			// Clear Cache on Activate.
-					'plugin_clear_on_deactivate' => 0,			// Clear Cache on Deactivate.
-					'plugin_clear_on_save'       => 0,			// Clear Cache on Save Settings.
+					'plugin_clear_on_activate'   => 0,			// Clear All Caches on Activate.
+					'plugin_clear_on_deactivate' => 0,			// Clear All Caches on Deactivate.
+					'plugin_clear_on_save'       => 0,			// Clear All Caches on Save Settings.
 					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
 					'plugin_clear_all_refresh'   => 0,			// Auto-Refresh Cache After Clearing.
 					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
@@ -1313,11 +1313,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_topics_cache_exp:use'    => 'default',
 					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
 					'plugin_types_cache_exp:use'     => 'default',
-					'plugin_clear_on_activate'       => 0,			// Clear Cache on Activate.
+					'plugin_clear_on_activate'       => 0,			// Clear All Caches on Activate.
 					'plugin_clear_on_activate:use'   => 'default',
-					'plugin_clear_on_deactivate'     => 0,			// Clear Cache on Deactivate.
+					'plugin_clear_on_deactivate'     => 0,			// Clear All Caches on Deactivate.
 					'plugin_clear_on_deactivate:use' => 'default',
-					'plugin_clear_on_save'           => 0,			// Clear Cache on Save Settings.
+					'plugin_clear_on_save'           => 0,			// Clear All Caches on Save Settings.
 					'plugin_clear_on_save:use'       => 'default',
 					'plugin_clear_short_urls'        => 0,			// Refresh Short URLs on Clear Cache.
 					'plugin_clear_short_urls:use'    => 'default',
