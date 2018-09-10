@@ -39,9 +39,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 				}
 
+				/**
+				 * The 'save_post' action is run after other post type specific actions,
+				 * so we can use it to save post meta for any post type.
+				 */
 				add_action( 'save_post', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
+
+				/**
+				 * Don't hook the 'clean_post_cache' action since 'save_post' is run after
+				 * 'clean_post_cache' and our custom post meta has not been saved yet.
+				 */
 				add_action( 'save_post', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
+				/**
+				 * The wp_insert_post() function returns after running the 'edit_attachment' action,
+				 * so the 'save_post' action is never run for attachments.
+				 */
 				add_action( 'edit_attachment', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );
 				add_action( 'edit_attachment', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );
 
@@ -1206,6 +1219,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function clear_cache_for_new_comment( $comment_id, $comment_approved ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			if ( $comment_id && $comment_approved === 1 ) {
 
 				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
@@ -1223,6 +1240,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function clear_cache_for_comment_status( $comment_id, $comment_status ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			if ( $comment_id ) {	// Just in case.
 
 				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
@@ -1239,6 +1260,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		public function clear_cache( $post_id, $rel_id = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			$post_status = get_post_status( $post_id );
 

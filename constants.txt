@@ -31,10 +31,10 @@ WPSSO_VERSION
  WPSSO_INIT_PRIORITY                     = 12
  WPSSO_JSON_PRETTY_PRINT                 = false
  WPSSO_MENU_ORDER                        = 99.11
- WPSSO_META_CACHE_PRIORITY               = 10
+ WPSSO_META_CACHE_PRIORITY               = 8
  WPSSO_META_NAME_ALT                     = '_wpsso_meta'
  WPSSO_META_NAME                         = '_wpsso_meta'
- WPSSO_META_SAVE_PRIORITY                = 5
+ WPSSO_META_SAVE_PRIORITY                = 6
  WPSSO_NONCE_NAME                        = (variable value)      // Md5 string unique to each version.
  WPSSO_OPTIONS_NAME_ALT                  = 'wpsso_options'
  WPSSO_OPTIONS_NAME                      = 'wpsso_options'
