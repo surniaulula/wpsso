@@ -349,8 +349,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Improvements*
 	* Added new options under the SSO &gt; Advanced &gt; Cache Settings tab:
-		* Clear Cache on Activate
-		* Clear Cache on Deactivate
+		* Clear All Caches on Activate
+		* Clear All Caches on Deactivate
 		* Clear Term Cache for Published Post
 	* The "Clear All Caches" button and link now start the clear cache task in the background.
 	* The "Auto-Refresh Cache After Clearing" task is now started in the background as well.
