@@ -703,11 +703,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
+= 4.12.1-dev.1 =
+
+(2018/09/10) Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button. Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 8 in order to run before caching plugins clear their cache.
+
 = 4.12.0 =
 
 (2018/09/09) Added three new options under the SSO &gt; Advanced &gt; Cache Settings tab. Added a "Product SKU" option in the Document SSO metabox. Renamed the "Preserve Settings on Uninstall" option to "Remove All Settings on Uninstall" (unchecked by default).
-
-= 4.11.1 =
-
-(2018/08/25) Replaced several calls to esc_url_raw() by SucomUtil::esc_url_encode() to encode foreign characters in URLs. Added a Schema "@id" property to the json data array by default.
 
