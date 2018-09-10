@@ -1335,14 +1335,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 			}
-
-			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// W3 Total Cache.
-				w3tc_pgcache_flush_post( $post_id );
-			}
-
-			if ( function_exists( 'wp_cache_post_change' ) ) {	// WP Super Cache.
-				wp_cache_post_change( $post_id );
-			}
 		}
 
 		public function show_robots_options( $post ) {

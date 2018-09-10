@@ -5432,40 +5432,40 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1367 lib/script.php:220
+#: lib/post.php:1359 lib/script.php:220
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1376
+#: lib/post.php:1368
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1377
+#: lib/post.php:1369
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1388
+#: lib/post.php:1380
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1389
+#: lib/post.php:1381
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1390
+#: lib/post.php:1382
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1391
+#: lib/post.php:1383
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1465
+#: lib/post.php:1457
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
