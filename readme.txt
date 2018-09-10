@@ -327,6 +327,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.12.1 (2018/09/10)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 8 in order to run before caching plugins clear their cache.
+	* Optimized the clearing of user meta columns in WpssoUtil::delete_all_column_meta().
+	* Increased the PHP set_time_limit() value when running the following methods in the WordPress scheduler:
+		* WpssoUtil::add_user_roles()
+		* WpssoUtil::clear_all_cache()
+		* WpssoUtil::refresh_all_cache()
+
 **Version 4.12.0 (2018/09/09)**
 
 * *New Features*
