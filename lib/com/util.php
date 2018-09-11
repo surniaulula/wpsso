@@ -1148,28 +1148,43 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_https( $url = '' ) {
+
 			static $local_cache = array();
+
 			if ( isset( $local_cache[$url] ) ) {
 				return $local_cache[$url];
 			}
+
 			if ( ! empty( $url ) ) {
+
 				if ( strpos( $url, '://' ) && 
+
 					parse_url( $url, PHP_URL_SCHEME ) === 'https' ) {
+
 					return $local_cache[$url] = true;
+
 				} else {
 					return $local_cache[$url] = false;
 				}
+
 			} else {
+
 				if ( is_ssl() ) {
+
 					return $local_cache[$url] = true;
+
 				} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) &&
 					strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) === 'https' ) {
+
 					return $local_cache[$url] = true;
+
 				} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_SSL'] ) &&
 					strtolower( $_SERVER['HTTP_X_FORWARDED_SSL'] ) === 'on' ) {
+
 					return $local_cache[$url] = true;
 				}
 			}
+
 			return $local_cache[$url] = false;
 		}
 
@@ -3920,28 +3935,41 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
 		 */
 		public static function raw_get_home_url( $blog_id = null, $path = '', $scheme = null ) {
+
 			global $pagenow;
+
 			if ( method_exists( 'SucomUtil', 'protect_filter_value' ) ) {
 				SucomUtil::protect_filter_value( 'pre_option_home' );
 			}
+
 			if ( empty( $blog_id ) || ! is_multisite() ) {
+
 				$url = get_option( 'home' );
+
 			} else {
 				switch_to_blog( $blog_id );
+
 				$url = get_option( 'home' );
+
 				restore_current_blog();
 			}
+
 			if ( ! in_array( $scheme, array( 'http', 'https', 'relative' ) ) ) {
+
 				if ( is_ssl() && ! is_admin() && 'wp-login.php' !== $pagenow ) {
+
 					$scheme = 'https';
 				} else {
 					$scheme = parse_url( $url, PHP_URL_SCHEME );
 				}
 			}
+
 			$url = self::set_url_scheme( $url, $scheme );
+
 			if ( $path && is_string( $path ) ) {
 				$url .= '/'.ltrim( $path, '/' );
 			}
+
 			return $url;
 		}
 
