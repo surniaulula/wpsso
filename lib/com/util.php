@@ -1294,6 +1294,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function sanitize_file_name( $file_name ) {
+
 			$special_chars = array(
 				'?',
 				'[',
@@ -1324,27 +1325,35 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				'+',
 				chr( 0 )
 			);
+
 			$file_name = preg_replace( '#\x{00a0}#siu', ' ', $file_name );
 			$file_name = str_replace( $special_chars, '', $file_name );
 			$file_name = str_replace( array( '%20', '+' ), '-', $file_name );
 			$file_name = preg_replace( '/[\r\n\t -]+/', '-', $file_name );
 			$file_name = trim( $file_name, '.-_' );
+
 			return $file_name;
 		}
 
 		public static function sanitize_hookname( $name ) {
+
 			$name = preg_replace( '/[:\/\-\. ]+/', '_', $name );
+
 			return self::sanitize_key( $name );
 		}
 
 		public static function sanitize_classname( $name, $allow_underscore = true ) {
+
 			$name = preg_replace( '/[:\/\-\. ' . ( $allow_underscore ? '' : '_' ) . ']+/', '', $name );
+
 			return self::sanitize_key( $name );
 		}
 
 		public static function sanitize_tag( $tag ) {
+
 			$tag = sanitize_title_with_dashes( $tag, '', 'display' );
 			$tag = urldecode( $tag );
+
 			return $tag;
 		}
 
@@ -2812,9 +2821,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function maybe_load_post( $id, $force = false ) {
+
 			global $post;
+
 			if ( empty( $post ) || $force ) {
+
 				$post = self::get_post_object( $id, 'object' );
+
 				return true;
 			} else {
 				return false;
@@ -2822,51 +2835,79 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_term_page( $term_id = 0, $tax_slug = '' ) {
+
 			$ret = false;
+
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
+
 				$ret = term_exists( $term_id, $tax_slug ); // Since wp 3.0.
+
 			} elseif ( is_tax() || is_category() || is_tag() ) {
+
 				$ret = true;
+
 			} elseif ( is_admin() ) {
+
 				$screen_base = self::get_screen_base();
+
 				if ( $screen_base === 'term' ) { // Since wp v4.5.
 					$ret = true;
 				} elseif ( ( false === $screen_base || $screen_base === 'edit-tags' ) &&	
 					( self::get_request_value( 'taxonomy' ) !== '' && // Uses sanitize_text_field().
 						self::get_request_value( 'tag_ID' ) !== '' ) ) {
+
 					$ret = true;
 				}
 			}
+
 			return apply_filters( 'sucom_is_term_page', $ret );
 		}
 
 		public static function is_category_page( $term_id = 0 ) {
+
 			$ret = false;
+
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
+
 				$ret = term_exists( $term_id, 'category' ); // Since wp 3.0.
+
 			} elseif ( is_category() ) {
+
 				$ret = true;
+
 			} elseif ( is_admin() ) {
+
 				if ( self::is_term_page() &&
 					self::get_request_value( 'taxonomy' ) === 'category' ) { // Uses sanitize_text_field().
+
 					$ret = true;
 				}
 			}
+
 			return apply_filters( 'sucom_is_category_page', $ret );
 		}
 
 		public static function is_tag_page( $term_id = 0 ) {
+
 			$ret = false;
+
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
+
 				$ret = term_exists( $term_id, 'post_tag' ); // Since wp 3.0.
+
 			} elseif ( is_tag() ) {
+
 				$ret = true;
+
 			} elseif ( is_admin() ) {
+
 				if ( self::is_term_page() &&
 					self::get_request_value( 'taxonomy' ) === '_tag' ) { // Uses sanitize_text_field().
+
 					$ret = true;
 				}
 			}
+
 			return apply_filters( 'sucom_is_tag_page', $ret );
 		}
 
@@ -2875,14 +2916,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$term_obj = false; // Return false by default.
 
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
+
 				$term_obj = get_term( (int) $term_id, (string) $tax_slug, OBJECT, 'raw' );
 
 			} elseif ( apply_filters( 'sucom_is_term_page', is_tax() ) || is_tag() || is_category() ) {
+
 				$term_obj = get_queried_object();
 
 			} elseif ( is_admin() ) {
+
 				if ( ( $tax_slug = self::get_request_value( 'taxonomy' ) ) !== '' && // Uses sanitize_text_field().
 					( $term_id = self::get_request_value( 'tag_ID' ) ) !== '' ) {
+
 					$term_obj = get_term( (int) $term_id, (string) $tax_slug, OBJECT, 'raw' );
 				}
 			}
@@ -2890,16 +2935,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$term_obj = apply_filters( 'sucom_get_term_object', $term_obj, $term_id, $tax_slug );
 
 			switch ( $output ) {
+
 				case 'id':
 				case 'ID':
 				case 'term_id':
+
 					return isset( $term_obj->term_id ) ? (int) $term_obj->term_id : 0; // Cast as integer.
+
 					break;
+
 				case 'taxonomy':
+
 					return isset( $term_obj->taxonomy ) ? (string) $term_obj->taxonomy : ''; // Cast as string.
+
 					break;
+
 				default:
+
 					return is_object( $term_obj ) ? $term_obj : false;
+
 					break;
 			}
 		}
@@ -2909,43 +2963,66 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_user_page( $user_id = 0 ) {
+
 			$ret = false;
+
 			if ( is_numeric( $user_id ) && $user_id > 0 ) {
+
 				$ret = self::user_exists( $user_id );
+
 			} elseif ( is_author() ) {
+
 				$ret = true;
+
 			} elseif ( is_admin() ) {
+
 				$screen_base = self::get_screen_base();
+
 				if ( $screen_base !== false ) {
+
 					switch ( $screen_base ) {
+
 						case 'profile':
 						case 'user-edit':
 						case ( strpos( $screen_base, 'profile_page_' ) === 0 ? true : false ):
 						case ( strpos( $screen_base, 'users_page_' ) === 0 ? true : false ):
+
 							$ret = true;
+
 							break;
 					}
+
 				} elseif ( self::get_request_value( 'user_id' ) !== '' ||  // Called too early for screen.
 					basename( $_SERVER['PHP_SELF'] ) === 'profile.php' ) {
+
 					$ret = true;
 				}
 			}
+
 			return apply_filters( 'sucom_is_user_page', $ret );
 		}
 
 		public static function user_exists( $user_id ) {
+
 			if ( is_numeric( $user_id ) && $user_id > 0 ) { // true is not valid.
+
 				$user_id = (int) $user_id; // Cast as integer for array.
+
 				if ( isset( self::$cache_user_exists[$user_id] ) ) {
+
 					return self::$cache_user_exists[$user_id];
+
 				} else {
+
 					global $wpdb;
+
 					$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->users . ' WHERE ID = %d';
+
 					return self::$cache_user_exists[$user_id] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
 				}
-			} else {
-				return false;
 			}
+
+			return false;
 		}
 
 		public static function get_author_object( $user_id = 0, $output = 'object' ) {
@@ -3288,6 +3365,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} else {
 				return '{}'; // Empty string.
 			}
+		}
+
+		public static function get_json_decode_scripts( $html, $assoc = true ) {
+
+			$data = array();
+
+			if ( is_string( $html ) ) {
+				if ( preg_match_all( '/<script type=[\'"]application\/ld\+json[\'"]>(.*)<\/script>/Usi',
+					$html, $all_matches, PREG_SET_ORDER ) ) {
+
+					foreach ( $all_matches as $num => $matches ) {
+						$data[] = json_decode( $matches[1], $assoc );
+					}
+				}
+			}
+
+			return $data;
 		}
 
 		public static function is_mobile() {
@@ -3639,7 +3733,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$src_id = $src_name . '-' . ( empty( $atts['css_id'] ) ? 'button' : $atts['css_id'] );
 
 			if ( ! empty( $atts['use_post'] ) || is_singular() || in_the_loop() ) {
+
 				global $post;
+
 				if ( ! empty( $post->ID ) ) {
 					$src_id .= '-post-' . $post->ID;
 				}
@@ -3835,9 +3931,13 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * Use the WordPress function if available, otherwise provide the same functionality.
 		 */
 		public static function wp_encode_emoji( $content ) {
+
 			if ( function_exists( 'wp_encode_emoji' ) ) {
+
 				return wp_encode_emoji( $content ); // Since wp 4.2.
+
 			} elseif ( function_exists( 'mb_convert_encoding' ) ) {
+
 				$regex = '/(
 				     \x23\xE2\x83\xA3               # Digits
 				     [\x30-\x39]\xE2\x83\xA3
@@ -3847,10 +3947,15 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				   | \xF0\x9F\x99[\x80-\x8F]
 				   | \xF0\x9F\x9A[\x80-\xBF]        # Transport and map symbols
 				)/x';
+
 				if ( preg_match_all( $regex, $content, $all_matches ) ) {
+
 					if ( ! empty( $all_matches[1] ) ) {
+
 						foreach ( $all_matches[1] as $emoji ) {
+
 							$unpacked = unpack( 'H*', mb_convert_encoding( $emoji, 'UTF-32', 'UTF-8' ) );
+
 							if ( isset( $unpacked[1] ) ) {
 								$entity = '&#x' . ltrim( $unpacked[1], '0' ) . ';';
 								$content = str_replace( $emoji, $entity, $content );

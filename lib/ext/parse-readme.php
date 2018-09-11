@@ -201,8 +201,11 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			}
 	
 			$final_screenshots = array();
+
 			if ( isset( $final_sections['screenshots'] ) ) {
+
 				preg_match_all('|<li>(.*?)</li>|s', $final_sections['screenshots'], $screenshots, PREG_SET_ORDER);
+
 				if ( $screenshots ) {
 					foreach ( (array) $screenshots as $ss ) {
 						$final_screenshots[] = $ss[1];
@@ -211,14 +214,18 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			}
 	
 			if ( isset( $final_sections['upgrade_notice'] ) ) {
+
 				$upgrade_notice = array();
 				$split = preg_split( '#<h4>(.*?)</h4>#', $final_sections['upgrade_notice'], -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
+
 				for ( $i = 0; $i < count( $split ); $i += 2 ) {
 					if ( isset( $split[$i + 1] ) ) {
 						$upgrade_notice[$this->sanitize_text( $split[$i] )] = substr( $this->sanitize_text( $split[$i + 1] ), 0, 300 );
 					}
 				}
+
 				unset( $final_sections['upgrade_notice'] );
+
 			} else {
 				$upgrade_notice = '';
 			}

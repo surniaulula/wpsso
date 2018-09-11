@@ -2086,6 +2086,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'schema_type' => array(	// Element of 'head' array.
 					'thing' => array(	// Most generic type.
 						'creative.work' => array(	// Creative work, including books, movies, photographs, software programs, etc.
+							'answer'  => 'https://pending.schema.org/Answer',
 							'article' => array(
 								'article'              => 'https://schema.org/Article',
 								'article.news'         => 'https://schema.org/NewsArticle',
@@ -2143,7 +2144,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'photograph'         => 'https://schema.org/Photograph',
 							'publication.issue'  => 'https://schema.org/PublicationIssue',
 							'publication.volume' => 'https://schema.org/PublicationVolume',
-							'question'           => 'https://schema.org/Question',
+							'question'           => 'https://pending.schema.org/Question',
 							'review'             => array(
 								'review'       => 'https://schema.org/Review',
 								'review.claim' => 'https://schema.org/ClaimReview',
@@ -2165,6 +2166,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 									'webpage.gallery.video' => 'https://schema.org/VideoGallery',
 								),
 								'webpage.contact'        => 'https://schema.org/ContactPage',
+								'webpage.faq'            => 'https://pending.schema.org/FAQPage',
 								'webpage.item'           => 'https://schema.org/ItemPage',
 								'webpage.medical'        => 'https://health-lifesci.schema.org/MedicalWebPage',
 								'webpage.profile'        => 'https://schema.org/ProfilePage',

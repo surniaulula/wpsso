@@ -698,9 +698,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			);
 
 			$cache_types['wp_cache'][] = array(
-				'id'   => $this->p->lca . '_c_' . md5( 'WpssoPage::get_content(' . $mod_salt . ')' ),
+				'id'   => $this->p->lca . '_c_' . md5( 'WpssoPage::get_the_content(' . $mod_salt . ')' ),
 				'pre'  => $this->p->lca . '_c_',
-				'salt' => 'WpssoPage::get_content(' . $mod_salt . ')',
+				'salt' => 'WpssoPage::get_the_content(' . $mod_salt . ')',
 			);
 
 			$deleted_count = 0;

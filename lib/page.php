@@ -143,15 +143,21 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				// request all values un-encoded, then encode once we have the complete caption text
 				switch ( $type ) {
+
 					case 'title':
+
 						$cap_text = $this->get_title( $max_len, '...', $mod, $r_cache, $add_htags, false, $md_idx_title );
+
 						break;
 
 					case 'excerpt':
+
 						$cap_text = $this->get_description( $max_len, '...', $mod, $r_cache, $add_htags, false, $md_idx_desc );
+
 						break;
 
 					case 'both':
+
 						// get the title first
 						$cap_text = $this->get_title( 0, '', $mod, $r_cache, false, false, $md_idx_title );	// $add_htags = false
 
@@ -560,11 +566,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$post_type_obj = get_post_type_object( $mod['post_type'] );
 
 						if ( ! empty( $post_type_obj->description ) ) {
+
 							$desc_text = $post_type_obj->description;
+
 						} else {
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'post type ' . $mod['post_type'] . ' description is empty - using title value' );
 							}
+
 							if ( ! empty( $post_type_obj->labels->menu_name ) ) {
 								$desc_text = sprintf( __( '%s Archive', 'wpsso' ), $post_type_obj->labels->menu_name );
 							} elseif ( ! empty( $post_type_obj->name ) ) {
@@ -785,7 +795,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				) );
 			}
 
-			$sharing_url = $this->p->util->get_sharing_url( $mod );
+			$sharing_url    = $this->p->util->get_sharing_url( $mod );
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
 			$filter_content = apply_filters( $this->p->lca . '_filter_content', $filter_content, $mod );
 
@@ -795,8 +805,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
 				$cache_exp_filter = $this->p->cf['wp']['wp_cache'][$cache_md5_pre]['filter'];
-				$cache_opt_key = $this->p->cf['wp']['wp_cache'][$cache_md5_pre]['opt_key'];
-				$cache_exp_secs = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
+				$cache_opt_key    = $this->p->cf['wp']['wp_cache'][$cache_md5_pre]['opt_key'];
+				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
 			}
 
 			/************************
@@ -849,6 +859,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$cache_array[$cache_index] = false;		// initialize the cache element
+
 			$content_text =& $cache_array[$cache_index];	// reference the cache element
 			$content_text = apply_filters( $this->p->lca . '_content_seed', '', $mod, $r_cache, $md_idx );
 

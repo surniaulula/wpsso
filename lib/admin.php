@@ -1575,19 +1575,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						/**
 						 * Example:
-						 *	'article' => 'Item Type Article',
+						 *	'article'              => 'Item Type Article',
 						 *	'article#news:no_load' => 'Item Type NewsArticle',
 						 *	'article#tech:no_load' => 'Item Type TechArticle',
 						 */
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
 
-						$classname  = SucomUtil::sanitize_classname( $ext . 'pro' . $sub.$id, false );	// $underscore is false.
-						$status_off = $this->p->avail[$sub][$id] ? 'rec' : 'off';
+						$classname  = SucomUtil::sanitize_classname( $ext . 'pro' . $sub . $id, false );	// $underscore is false.
+						$status_off = $this->p->avail[ $sub ][ $id ] ? 'rec' : 'off';
 
 						$features[$label] = array(
+							'sub'      => $sub,
+							'lib'      => $id,
+							'stub'     => $stub,
+							'action'   => $action,
 							'td_class' => self::$pkg[$ext]['pp'] ? '' : 'blank',
 							'purchase' => self::$pkg[$ext]['purchase'],
-							'status' => class_exists( $classname ) ? ( self::$pkg[$ext]['pp'] ? 'on' : $status_off ) : $status_off,
+							'status'   => class_exists( $classname ) ? ( self::$pkg[$ext]['pp'] ? 'on' : $status_off ) : $status_off,
 						);
 					}
 				}
