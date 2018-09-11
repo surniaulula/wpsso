@@ -338,7 +338,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 8 in order to run before caching plugins clear their cache.
+	* Changed the WPSSO_META_SAVE_PRIORITY constant from 5 to -10.
+	* Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 0 in order to run before caching plugins clear their cache.
 	* Optimized the clearing of user meta columns in WpssoUtil::delete_all_column_meta().
 	* Increased the PHP set_time_limit() value when running the following methods in the WordPress scheduler:
 		* WpssoUtil::add_user_roles()
@@ -707,7 +708,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.12.1-dev.2 =
 
-(2018/09/11) Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button. Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 8 in order to run before caching plugins clear their cache.
+(2018/09/11) Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button. Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 0 in order to run before caching plugins clear their cache.
 
 = 4.12.0 =
 
