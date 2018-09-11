@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.12.1-dev.1',	// Plugin version.
-					'opt_version' => '602',		// Increment when changing default option values.
+					'version'     => '4.12.1-dev.2',	// Plugin version.
+					'opt_version' => '609',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -782,7 +782,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_business'     => 'local.business',
 					'schema_type_for_download'     => 'product',		// For Easy Digital Downloads.
 					'schema_type_for_event'        => 'event',
-					'schema_type_for_howto'        => 'howto',
+					'schema_type_for_howto'        => 'how.to',
 					'schema_type_for_job_listing'  => 'job.posting',	// For WP Job Manager
 					'schema_type_for_jobpost'      => 'job.posting',	// For Simple Job Board
 					'schema_type_for_organization' => 'organization',
@@ -2115,8 +2115,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'game'       => 'https://schema.org/Game',
 								'video.game' => 'https://schema.org/VideoGame',
 							),
-							'howto' => array(
-								'howto'  => 'https://schema.org/HowTo',
+							'how.to' => array(
+								'how.to'  => 'https://schema.org/HowTo',
 								'recipe' => 'https://schema.org/Recipe',
 							),
 							'map'          => 'https://schema.org/Map',
@@ -2611,7 +2611,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'thing' => 'https://schema.org/Thing',
 					),
 				),
-				'schema_renamed' => array(	// element of 'head' array
+				'schema_renamed' => array(	// Element of 'head' array.
 					'anesthesia'           => 'anesthesia.specialty',
 					'cardiovascular'       => 'cardiovascular.specialty',
 					'community.health'     => 'community.health.specialty',
@@ -2628,6 +2628,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'geriatric'            => 'geriatric.specialty',
 					'gynecologic'          => 'gynecologic.specialty',
 					'hematologic'          => 'hematologic.specialty',
+					'howto'                => 'how.to',
 					'infectious'           => 'infectious.specialty',
 					'laboratory.science'   => 'laboratory.science.specialty',
 					'midwifery'            => 'midwifery.specialty',

@@ -266,6 +266,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $this->p->lca . '_rename_options_keys',
 					self::$rename_options_keys ) );
 
+				/**
+				 * Check for schema type IDs to be renamed.
+				 */
+				$keys_preg = 'schema_type_.*|schema_review_item_type|site_org_type|org_type|plm_place_schema_type';
+
+				foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $opts ) as $key => $val ) {
+					if ( ! empty( $this->p->cf['head']['schema_renamed'][$val] ) ) {
+						$opts[$key] = $this->p->cf['head']['schema_renamed'][$val];
+					}
+				}
+
 				if ( $prev_version > 0 && $prev_version <= 270 ) {
 
 					foreach ( $opts as $key => $val ) {
@@ -329,20 +340,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				if ( $prev_version > 0 && $prev_version <= 564 ) {
 					if ( isset( $opts['schema_type_for_job_listing'] ) && $opts['schema_type_for_job_listing'] === 'webpage' ) {
 						$opts['schema_type_for_job_listing'] = 'job.posting';
-					}
-				}
-
-				/**
-				 * Check for schema type id values to be renamed.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 566 ) {
-
-					$keys_preg = 'schema_type_.*|schema_review_item_type|site_org_type|org_type|plm_place_schema_type';
-
-					foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $opts ) as $key => $val ) {
-						if ( ! empty( $this->p->cf['head']['schema_renamed'][$val] ) ) {
-							$opts[$key] = $this->p->cf['head']['schema_renamed'][$val];
-						}
 					}
 				}
 
