@@ -5268,44 +5268,44 @@ msgstr ""
 msgid "Please correct the banner image at %s."
 msgstr ""
 
-#: lib/page.php:316 lib/page.php:318 lib/page.php:579 lib/page.php:581
-#: lib/page.php:649
+#: lib/page.php:322 lib/page.php:324 lib/page.php:585 lib/page.php:587
+#: lib/page.php:655
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:391
+#: lib/page.php:397
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:635
+#: lib/page.php:641
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:640
+#: lib/page.php:646
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:660
+#: lib/page.php:666
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:667
+#: lib/page.php:673
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:671
+#: lib/page.php:677
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:675
+#: lib/page.php:681
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:679
+#: lib/page.php:685
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:717
+#: lib/page.php:723
 msgid "No Description"
 msgstr ""
 
@@ -5517,32 +5517,32 @@ msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:98 lib/pro/forum/bbpress.php:166
+#: lib/pro/forum/bbpress.php:98 lib/pro/forum/bbpress.php:185
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:173
+#: lib/pro/forum/bbpress.php:194
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:177
+#: lib/pro/forum/bbpress.php:200
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:181
+#: lib/pro/forum/bbpress.php:206
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:185
+#: lib/pro/forum/bbpress.php:212
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:189
+#: lib/pro/forum/bbpress.php:218
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""

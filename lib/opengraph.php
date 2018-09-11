@@ -520,10 +520,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting description for og:description meta tag' );
 				}
 
-				$max_len   = $this->p->options['og_desc_len'];
-				$add_htags = $this->p->options['og_desc_hashtags'];
+				$max_len = $this->p->options['og_desc_len'];
+				$add_ht  = $this->p->options['og_desc_hashtags'];
 
-				$mt_og['og:description'] = $this->p->page->get_description( $max_len, '...', $mod, true, $add_htags );
+				$mt_og['og:description'] = $this->p->page->get_description( $max_len, '...', $mod, true, $add_ht );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'og:description value = ' . $mt_og['og:description'] );

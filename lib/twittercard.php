@@ -91,7 +91,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					$this->p->debug->log( 'getting description for twitter:description meta tag' );
 				}
 				$mt_tc['twitter:description'] = $this->p->page->get_description( $this->p->options['tc_desc_len'], 
-					'...', $mod, true, true, true, 'tc_desc' );	// $add_hashtags is true.
+					'...', $mod, true, true, true, 'tc_desc' );	// $add_ht is true.
 			}
 
 			if ( ! isset( $mt_tc['twitter:creator'] ) ) {
