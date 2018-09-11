@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.12.1 (2018/09/10)**
+**Version 4.12.1-dev.2 (2018/09/11)**
 
 * *New Features*
 	* None.
@@ -703,9 +703,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.12.1-dev.1 =
+= 4.12.1-dev.2 =
 
-(2018/09/10) Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button. Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 8 in order to run before caching plugins clear their cache.
+(2018/09/11) Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button. Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 8 in order to run before caching plugins clear their cache.
 
 = 4.12.0 =
 
