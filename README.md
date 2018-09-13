@@ -29,13 +29,14 @@
 
 <p><strong>Includes advanced <em>quality assurance</em> features and options:</strong></p>
 
-<pre><code>1. Checks for minimum / maximum image dimensions and aspect ratios.
-2. Shows notices for missing and required images.
-3. Verifies webpages for duplicate meta tags.
-4. Validates theme header templates for correct HTML markup.
-5. Checks and warns of any missing PHP modules.
-6. Checks 3rd party plugin settings for possible conflicts.
-</code></pre>
+<ol>
+<li>Checks for minimum / maximum image dimensions and aspect ratios.</li>
+<li>Shows notices for missing and required images.</li>
+<li>Verifies webpages for duplicate meta tags.</li>
+<li>Validates theme header templates for correct HTML markup.</li>
+<li>Checks and warns of any missing PHP modules.</li>
+<li>Checks 3rd party plugin settings for possible conflicts.</li>
+</ol>
 
 <p><strong>A reliable WordPress plugin for today <em>and</em> tomorrow:</strong></p>
 

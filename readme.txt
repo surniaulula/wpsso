@@ -34,12 +34,12 @@ WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google'
 
 **Includes advanced *quality assurance* features and options:**
 
-	1. Checks for minimum / maximum image dimensions and aspect ratios.
-	2. Shows notices for missing and required images.
-	3. Verifies webpages for duplicate meta tags.
-	4. Validates theme header templates for correct HTML markup.
-	5. Checks and warns of any missing PHP modules.
-	6. Checks 3rd party plugin settings for possible conflicts.
+1. Checks for minimum / maximum image dimensions and aspect ratios.
+1. Shows notices for missing and required images.
+1. Verifies webpages for duplicate meta tags.
+1. Validates theme header templates for correct HTML markup.
+1. Checks and warns of any missing PHP modules.
+1. Checks 3rd party plugin settings for possible conflicts.
 
 **A reliable WordPress plugin for today *and* tomorrow:**
 
