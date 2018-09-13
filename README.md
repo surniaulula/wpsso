@@ -35,10 +35,6 @@
 
 <p>WPSSO Core provides a specific image and image dimensions for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook meta tag values.</p>
 
-<p><strong>Integrates and improves your favorite SEO plugin:</strong></p>
-
-<p>WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and, if you desire, you can continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version even comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.</p>
-
 <p><strong>A reliable WordPress plugin for today <em>and</em> tomorrow:</strong></p>
 
 <p>WPSSO Core is 100% compatible with the new <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in the upcoming release of WordPress 5.</p>
@@ -117,7 +113,9 @@
 <li><p>Include or exclude individual Facebook / Open Graph / Google / SEO / Twitter Card / Schema meta tag from the webpage head section.</p></li>
 <li><p>Allows customization of field names, labels, and add / remove contacts on user profile pages and Co-Authors Plus guest author profiles.</p></li>
 <li><p>Optional URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.</p></li>
-<li><p>Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more.</p></li>
+<li><p>Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more.</p>
+
+<p>WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and, if you desire, you can continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.</p></li>
 <li><p>The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.</p>
 
 <ul>
