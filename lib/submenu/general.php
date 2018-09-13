@@ -282,10 +282,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Pinterest Verification ID', 'option label', 'wpsso' ), '', 'p_dom_verify' ).
 					'<td>'.$this->form->get_input( 'p_dom_verify', 'api_key' ).'</td>';
 
-					$table_rows['p_author_name'] = $this->form->get_tr_hide( 'basic', 'p_author_name' ).
-					$this->form->get_th_html( _x( 'Author Name Format', 'option label', 'wpsso' ), '', 'p_author_name' ).
-					'<td>'.$this->form->get_select( 'p_author_name', $this->p->cf['form']['user_name_fields'] ).'</td>';
-
 					$table_rows['p_add_img_html'] = ''.
 					$this->form->get_th_html( _x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' ), '', 'p_add_img_html' ).
 					'<td>'.$this->form->get_checkbox( 'p_add_img_html' ).'</td>';

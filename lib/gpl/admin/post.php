@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			}
 
 			$dots       = '...';
-			$r_cache    = true;
+			$read_cache = true;
 			$do_encode  = true;
 			$og_types   = $this->p->og->get_og_types_select( true ); // $add_none is true.
 			$art_topics = $this->p->util->get_article_topics();
@@ -56,11 +56,11 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 
 			$def_og_type     = $this->p->og->get_mod_og_type( $mod, false, false );	// $get_type_ns is false, $use_mod_opts is false.
 			$def_art_section = $this->p->page->get_article_section( $mod['id'], true, false );	// $allow_none is true, $use_mod_opts is false.
-			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $r_cache, false, $do_encode, 'none' );
-			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $r_cache, true, $do_encode, 'none' );
-			$def_seo_desc    = $add_meta_name_desc ? $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $r_cache, false ) : '';
-			$def_tc_desc     = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $r_cache );
-			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $r_cache, false, $do_encode, array( 'seo_desc', 'og_desc' ) );
+			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, false, $do_encode, 'none' );
+			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, true, $do_encode, 'none' );
+			$def_seo_desc    = $add_meta_name_desc ? $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, false ) : '';
+			$def_tc_desc     = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
+			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, false, $do_encode, array( 'seo_desc', 'og_desc' ) );
 
 			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
 

@@ -736,16 +736,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$ret = array();
 
-			if ( empty( $user_ids ) ) {
+			if ( empty( $user_ids ) ) {	// Just in case.
 				return $ret;
 			}
 
 			if ( ! is_array( $user_ids ) ) {
 				$user_ids = array( $user_ids );
-			}
-
-			if ( false === $crawler_name ) {
-				$crawler_name = SucomUtil::get_crawler_name();
 			}
 
 			foreach ( $user_ids as $user_id ) {
@@ -754,20 +750,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					continue;
 				}
 
-				if ( ! empty( $this->p->avail['*']['vary_ua'] ) ) {
-					switch ( $crawler_name ) {
-						case 'pinterest':
-							$value = $this->get_author_meta( $user_id, $this->p->options['p_author_name'] );
-							break;
-						default:
-							$value = $this->get_author_website( $user_id, $this->p->options['og_author_field'] );
-							break;
-					}
-				} else {
-					$value = $this->get_author_website( $user_id, $this->p->options['og_author_field'] );
-				}
+				$value = $this->get_author_website( $user_id, $this->p->options['og_author_field'] );
 
-				if ( ! empty( $value ) ) {	// make sure we don't add empty values
+				if ( ! empty( $value ) ) {	// Make sure we don't add empty values.
 					$ret[] = $value;
 				}
 			}

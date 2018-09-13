@@ -559,7 +559,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod = $this->get_mod( $post_id );
 
 			/**
-			 * $r_cache is false to generate notices etc.
+			 * $read_cache is false to generate notices etc.
 			 */
 			WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
 			WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );

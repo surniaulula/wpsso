@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.12.1-dev.2',	// Plugin version.
-					'opt_version' => '609',		// Increment when changing default option values.
+					'version'     => '4.12.1-dev.4',	// Plugin version.
+					'opt_version' => '610',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -795,15 +795,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tribe_events' => 'event',
 					'schema_type_for_webpage'      => 'webpage',
 					'schema_type_for_website'      => 'website',
-					'schema_review_item_type'      => 'none',		// Default Reviewed Item Type
-					'fb_publisher_url'             => '',			// (localized)
-					'fb_app_id'                    => '',
-					'fb_admins'                    => '',
-					'fb_author_name'               => 'display_name',
-					'fb_locale'                    => 'en_US',
-					'instgram_publisher_url'       => '',			// (localized)
-					'linkedin_publisher_url'       => '',			// (localized)
-					'myspace_publisher_url'        => '',			// (localized)
+					'schema_review_item_type'      => 'none',		// Default Reviewed Item Type.
+					'fb_publisher_url'             => '',			// Facebook Business Page URL (localized).
+					'fb_app_id'                    => '',			// Facebook Application ID.
+					'fb_admins'                    => '',			// or Facebook Admin Username(s).
+					'fb_author_name'               => 'display_name',	// Author Name Format.
+					'fb_locale'                    => 'en_US',		// Custom Facebook Locale.
+					'instgram_publisher_url'       => '',			// Instagram Business Page URL (localized).
+					'linkedin_publisher_url'       => '',			// LinkedIn Company Page URL (localized).
+					'myspace_publisher_url'        => '',			// Myspace Business Page URL (localized).
+					'sc_publisher_url'             => '',			// Soundcloud Business Page URL (localized).
+					'tumblr_publisher_url'         => '',                   // Tumblr Business Page URL (localized).
+					'yt_publisher_url'             => '',                   // YouTube Business Channel URL (localized).
 					/**
 					 * Standard WordPress types.
 					 */
@@ -849,11 +852,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_desc_warn'                 => 200,			// Recommended maximum length in characters for Facebook (soft limit).
 					'og_desc_hashtags'             => 0,
 					'p_publisher_url'              => '',			// (localized)
-					'p_author_name'                => 'display_name',	// Rich-pin specific article:author.
 					'p_dom_verify'                 => '',
-					'p_add_img_html'               => 1,
-					'p_add_nopin_media_img_tag'    => 1,
-					'p_add_nopin_header_img_tag'   => 1,
+					'p_add_img_html'               => 0,			// Add Hidden Image for Pin It Button
+					'p_add_nopin_header_img_tag'   => 1,			// Add "nopin" to Header Image Tag
+					'p_add_nopin_media_img_tag'    => 0,			// Add "nopin" to Media Lib Images
 					'sc_publisher_url'             => '',
 					'seo_desc_len'                 => 156,			// Meta name="description" maximum text length (hard limit).
 					'seo_author_field'             => 'gplus',
@@ -1921,13 +1923,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'og_type_mt' => array(	// See https://developers.facebook.com/docs/reference/opengraph/.
 					'article' => array(	// See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.
-						'article:author'          => '',
-						'article:publisher'       => '',
+						'article:author'          => '', // An array of Facebook profile URLs or IDs of the authors for this article.
+						'article:publisher'       => '', // A Facebook page URL or ID of the publishing entity.
 						'article:published_time'  => '',
 						'article:modified_time'   => '',
 						'article:expiration_time' => '',
-						'article:section'         => '',
-						'article:tag'             => '',
+						'article:section'         => '', // The section of your website to which the article belongs, such as 'Lifestyle' or 'Sports'
+						'article:tag'             => '', // An array of keywords relevant to the article.
 					),
 					'book' => array(
 						'book:author'       => '',
@@ -2328,7 +2330,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'reservation' => 'https://schema.org/Reservation',
 							'role' => 'https://schema.org/Role',
 							'seat' => 'https://schema.org/Seat',
-							// a service provided by an organization, e.g. delivery service, print services, etc.
+							/**
+							 * A service provided by an organization, e.g. delivery service, print services, etc.
+							 */
 							'service' => array(
 								'service' => 'https://schema.org/Service',
 								'service.broadcast' => 'https://schema.org/BroadcastService',
@@ -2612,6 +2616,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'thing' => 'https://schema.org/Thing',
 					),
+				),
+				'schema_url_fix' => array(	// Element of 'head' array.
+					'https://schema.org/Answer'   => 'https://pending.schema.org/Answer',
+					'https://schema.org/FAQPage'  => 'https://pending.schema.org/FAQPage',
+					'https://schema.org/Question' => 'https://pending.schema.org/Question',
 				),
 				'schema_renamed' => array(	// Element of 'head' array.
 					'anesthesia'           => 'anesthesia.specialty',

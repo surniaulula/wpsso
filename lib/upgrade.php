@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				),
 				514 => array(
 					'rp_publisher_url' => 'p_publisher_url',
-					'rp_author_name'   => 'p_author_name',
+					'rp_author_name'   => '',
 					'rp_img_width'     => 'p_img_width',
 					'rp_img_height'    => 'p_img_height',
 					'rp_img_crop'      => 'p_img_crop',
@@ -183,6 +183,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				),
 				602 => array(
 					'plugin_preserve' => '',
+				),
+				609 => array(
+					'p_author_name' => '',
 				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG

@@ -53,17 +53,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * $mod = true | false | post_id | array
 		 * $md_idx = true | false | string | array
 		 */
-		public function get_caption( $type = 'title', $max_len = 200, $mod = true, $r_cache = true, $add_ht = true, $do_encode = true, $md_idx = '' ) {
+		public function get_caption( $type = 'title', $max_len = 200, $mod = true, $read_cache = true,
+			$add_hashtags = true, $do_encode = true, $md_idx = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'type'      => $type,
-					'max_len'   => $max_len,
-					'mod'       => $mod,
-					'r_cache'   => $r_cache,
-					'add_ht'    => $add_ht,	// true/false/numeric
-					'do_encode' => $do_encode,
-					'md_idx'    => $md_idx,
+					'type'         => $type,
+					'max_len'      => $max_len,
+					'mod'          => $mod,
+					'read_cache'   => $read_cache,
+					'add_hashtags' => $add_hashtags,	// true/false/numeric
+					'do_encode'    => $do_encode,
+					'md_idx'       => $md_idx,
 				) );
 			}
 
@@ -121,9 +122,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				// maybe add hashtags to a post caption
 				if ( $mod['is_post'] ) {
 
-					if ( ! empty( $cap_text ) && ! empty( $add_ht ) && ! preg_match( '/( #[a-z0-9\-]+)+$/U', $cap_text ) ) {
+					if ( ! empty( $cap_text ) && ! empty( $add_hashtags ) && ! preg_match( '/( #[a-z0-9\-]+)+$/U', $cap_text ) ) {
 
-						$hashtags = $this->get_hashtags( $mod['id'], $add_ht );
+						$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );
 
 						if ( ! empty( $hashtags ) ) {
 							$adj_max_len = $max_len - strlen( $hashtags ) - 1;
@@ -151,20 +152,20 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					case 'title':
 
-						$cap_text = $this->get_title( $max_len, '...', $mod, $r_cache, $add_ht, false, $md_idx_title );
+						$cap_text = $this->get_title( $max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_idx_title );
 
 						break;
 
 					case 'excerpt':
 
-						$cap_text = $this->get_description( $max_len, '...', $mod, $r_cache, $add_ht, false, $md_idx_desc );
+						$cap_text = $this->get_description( $max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_idx_desc );
 
 						break;
 
 					case 'both':
 
 						// get the title first
-						$cap_text = $this->get_title( 0, '', $mod, $r_cache, false, false, $md_idx_title );	// $add_ht = false
+						$cap_text = $this->get_title( 0, '', $mod, $read_cache, false, false, $md_idx_title );	// $add_hashtags = false
 
 						// add a separator between title and description
 						if ( ! empty( $cap_text ) ) {
@@ -178,7 +179,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						// reduce the requested $max_len by the title text length we already have
 						$adj_max_len = $max_len - strlen( $cap_text );
 
-						$cap_text .= $this->get_description( $adj_max_len, '...', $mod, $r_cache, $add_ht, false, $md_idx_desc );
+						$cap_text .= $this->get_description( $adj_max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_idx_desc );
 
 						break;
 				}
@@ -190,25 +191,26 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$cap_text = html_entity_decode( SucomUtil::decode_utf8( $cap_text ), ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
-			return apply_filters( $this->p->lca . '_caption', $cap_text, $mod, $add_ht, $md_idx );
+			return apply_filters( $this->p->lca . '_caption', $cap_text, $mod, $add_hashtags, $md_idx );
 		}
 
 		/**
 		 * $mod = true | false | post_id | array
 		 * $md_idx = true | false | string | array
 		 */
-		public function get_title( $max_len = 70, $dots = '', $mod = false, $r_cache = true, $add_ht = false, $do_encode = true, $md_idx = 'og_title', $sep = null ) {
+		public function get_title( $max_len = 70, $dots = '', $mod = false, $read_cache = true,
+			$add_hashtags = false, $do_encode = true, $md_idx = 'og_title', $sep = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'max_len'   => $max_len,
-					'dots'      => $dots,
-					'mod'       => $mod,
-					'r_cache'   => $r_cache,
-					'add_ht'    => $add_ht,	// true/false/numeric
-					'do_encode' => $do_encode,
-					'md_idx'    => $md_idx,
-					'sep'       => $sep,
+					'max_len'      => $max_len,
+					'dots'         => $dots,
+					'mod'          => $mod,
+					'read_cache'   => $read_cache,
+					'add_hashtags' => $add_hashtags,	// true/false/numeric
+					'do_encode'    => $do_encode,
+					'md_idx'       => $md_idx,
+					'sep'          => $sep,
 				) );
 			}
 
@@ -275,7 +277,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $title_text ) ) {
 
-				$title_text = apply_filters( $this->p->lca . '_title_seed', '', $mod, $add_ht, $md_idx, $sep );
+				$title_text = apply_filters( $this->p->lca . '_title_seed', '', $mod, $add_hashtags, $md_idx, $sep );
 
 				if ( ! empty( $title_text ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -294,8 +296,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod['is_post'] ) {
 
-				if ( ! empty( $add_ht ) && ! empty( $this->p->options['og_desc_hashtags'] ) ) {
-					$hashtags = $this->get_hashtags( $mod['id'], $add_ht );	// $add_ht = true | false | numeric
+				if ( ! empty( $add_hashtags ) && ! empty( $this->p->options['og_desc_hashtags'] ) ) {
+					$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );	// $add_hashtags = true | false | numeric
 				}
 			}
 
@@ -437,7 +439,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					}
 				}
 
-				if ( ! empty( $add_ht ) && ! empty( $hashtags ) ) {
+				if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
 					$max_len = $max_len - strlen( $hashtags ) - 1;
 				}
 
@@ -448,7 +450,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title_text .= ' ' . $paged_suffix;
 			}
 
-			if ( ! empty( $add_ht ) && ! empty( $hashtags ) ) {
+			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
 				$title_text .= ' ' . $hashtags;
 			}
 
@@ -462,26 +464,27 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'before title filter = "' . $title_text . '"' );
 			}
 
-			return apply_filters( $this->p->lca . '_title', $title_text, $mod, $add_ht, $md_idx, $sep );
+			return apply_filters( $this->p->lca . '_title', $title_text, $mod, $add_hashtags, $md_idx, $sep );
 		}
 
 		/**
 		 * $mod = true | false | post_id | array
 		 * $md_idx = true | false | string | array
 		 */
-		public function get_description( $max_len = 160, $dots = '...', $mod = false, $r_cache = true, $add_ht = true, $do_encode = true, $md_idx = 'og_desc' ) {
+		public function get_description( $max_len = 160, $dots = '...', $mod = false, $read_cache = true,
+			$add_hashtags = true, $do_encode = true, $md_idx = 'og_desc' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'render description' );	// begin timer
 
 				$this->p->debug->log_args( array(
-					'max_len'   => $max_len,
-					'dots'      => $dots,
-					'mod'       => $mod,
-					'r_cache'   => $r_cache,
-					'add_ht'    => $add_ht, 	// true | false | numeric
-					'do_encode' => $do_encode,
-					'md_idx'    => $md_idx,
+					'max_len'      => $max_len,
+					'dots'         => $dots,
+					'mod'          => $mod,
+					'read_cache'   => $read_cache,
+					'add_hashtags' => $add_hashtags, 	// true | false | numeric
+					'do_encode'    => $do_encode,
+					'md_idx'       => $md_idx,
 				) );
 			}
 
@@ -531,7 +534,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $desc_text ) ) {
 
-				$desc_text = apply_filters( $this->p->lca . '_description_seed', '', $mod, $add_ht, $md_idx );
+				$desc_text = apply_filters( $this->p->lca . '_description_seed', '', $mod, $add_hashtags, $md_idx );
 
 				if ( ! empty( $desc_text ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -547,8 +550,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$desc_text = $match[1];
 				$hashtags = trim( $match[2] );
 			} elseif ( $mod['is_post'] ) {
-				if ( ! empty( $add_ht ) && ! empty( $this->p->options['og_desc_hashtags'] ) ) {
-					$hashtags = $this->get_hashtags( $mod['id'], $add_ht );
+				if ( ! empty( $add_hashtags ) && ! empty( $this->p->options['og_desc_hashtags'] ) ) {
+					$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );
 				}
 			}
 
@@ -607,7 +610,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 								$this->p->debug->log( 'getting the content for post ID ' . $mod['id'] );
 							}
 	
-							$desc_text = $this->get_the_content( $mod, $r_cache, $md_idx );
+							$desc_text = $this->get_the_content( $mod, $read_cache, $md_idx );
 	
 							/**
 							 * Ignore everything before the first paragraph if true.
@@ -728,7 +731,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$desc_text = apply_filters( $this->p->lca . '_description_pre_limit', $desc_text );
 
-				if ( ! empty( $add_ht ) && ! empty( $hashtags ) ) {
+				if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
 					$max_len = $max_len - strlen( $hashtags ) - 1;
 				}
 
@@ -742,7 +745,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'skipped the description text length limit' );
 			}
 
-			if ( ! empty( $add_ht ) && ! empty( $hashtags ) ) {
+			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
 				$desc_text .= ' ' . $hashtags;
 			}
 
@@ -758,7 +761,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'before description filter = "' . $desc_text . '"' );
 			}
 
-			return apply_filters( $this->p->lca . '_description', $desc_text, $mod, $add_ht, $md_idx );
+			return apply_filters( $this->p->lca . '_description', $desc_text, $mod, $add_hashtags, $md_idx );
 		}
 
 		public function get_the_excerpt( array $mod ) {
@@ -791,13 +794,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $excerpt_text;
 		}
 
-		public function get_the_content( array $mod, $r_cache = true, $md_idx = '' ) {
+		public function get_the_content( array $mod, $read_cache = true, $md_idx = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'mod'     => $mod,
-					'r_cache' => $r_cache,
-					'md_idx'  => $md_idx,
+					'mod'        => $mod,
+					'read_cache' => $read_cache,
+					'md_idx'     => $md_idx,
 				) );
 			}
 
@@ -836,7 +839,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $cache_exp_secs > 0 ) {
 
-				if ( $r_cache ) {
+				if ( $read_cache ) {
 
 					$cache_array = wp_cache_get( $cache_id, __METHOD__ );
 
@@ -867,7 +870,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$cache_array[$cache_index] = false;		// initialize the cache element
 
 			$content_text =& $cache_array[$cache_index];	// reference the cache element
-			$content_text = apply_filters( $this->p->lca . '_content_seed', '', $mod, $r_cache, $md_idx );
+			$content_text = apply_filters( $this->p->lca . '_content_seed', '', $mod, $read_cache, $md_idx );
 
 			if ( $content_text === false ) {
 
@@ -956,7 +959,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Apply filters before caching.
 			 */
-			$content_text = apply_filters( $this->p->lca . '_content', $content_text, $mod, $r_cache, $md_idx );
+			$content_text = apply_filters( $this->p->lca . '_content', $content_text, $mod, $read_cache, $md_idx );
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1001,19 +1004,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( $this->p->lca . '_article_section', $section, $post_id );
 		}
 
-		public function get_hashtags( $post_id, $add_ht = true ) {
+		public function get_hashtags( $post_id, $add_hashtags = true ) {
 
-			if ( empty( $add_ht ) ) {	// check for false or 0
+			if ( empty( $add_hashtags ) ) {	// check for false or 0
 				return;
-			} elseif ( is_numeric( $add_ht ) ) {
-				$max_hashtags = $add_ht;
+			} elseif ( is_numeric( $add_hashtags ) ) {
+				$max_hashtags = $add_hashtags;
 			} elseif ( ! empty( $this->p->options['og_desc_hashtags'] ) ) {
 				$max_hashtags = $this->p->options['og_desc_hashtags'];
 			} else {
 				return;
 			}
 
-			$hashtags = apply_filters( $this->p->lca . '_hashtags_seed', '', $post_id, $add_ht );
+			$hashtags = apply_filters( $this->p->lca . '_hashtags_seed', '', $post_id, $add_hashtags );
 
 			if ( ! empty( $hashtags ) ) {
 				if ( $this->p->debug->enabled ) {
@@ -1030,7 +1033,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			return apply_filters( $this->p->lca . '_hashtags', $hashtags, $post_id, $add_ht );
+			return apply_filters( $this->p->lca . '_hashtags', $hashtags, $post_id, $add_hashtags );
 		}
 
 		public function get_tags( $post_id ) {

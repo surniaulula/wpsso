@@ -26,19 +26,12 @@ if ( ! class_exists( 'WpssoWeibo' ) ) {
 
 		public function get_array( array &$mod, array &$mt_og, $crawler_name ) {
 
-			if ( ! empty( $this->p->avail['*']['vary_ua'] ) ) {
-				switch ( $crawler_name ) {
-					case 'pinterest':
-						return array();
-				}
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
 			}
 
-			if ( $this->p->debug->enabled )
-				$this->p->debug->mark();
-
-			$lca = $this->p->cf['lca'];
 			$mt_weibo = SucomUtil::preg_grep_keys( '/^weibo:/', $mt_og );	// read any pre-defined weibo meta tag values
-			$mt_weibo = apply_filters( $lca.'_weibo_seed', $mt_weibo, $mod );
+			$mt_weibo = apply_filters( $this->p->lca . '_weibo_seed', $mt_weibo, $mod );
 
 			if ( $mt_og['og:type'] === 'article' ) {
 				foreach ( array(
@@ -51,7 +44,7 @@ if ( ! class_exists( 'WpssoWeibo' ) ) {
 				}
 			}
 
-			return (array) apply_filters( $lca.'_weibo', $mt_weibo, $mod );
+			return (array) apply_filters( $this->p->lca . '_weibo', $mt_weibo, $mod );
 		}
 	}
 }

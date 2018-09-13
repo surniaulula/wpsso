@@ -48,17 +48,6 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		 */
 		public function get_array( array &$mod, array &$mt_og, $crawler_name = false ) {
 
-			if ( false === $crawler_name ) {
-				$crawler_name = SucomUtil::get_crawler_name();
-			}
-
-			if ( ! empty( $this->p->avail['*']['vary_ua'] ) ) {
-				switch ( $crawler_name ) {
-					case 'pinterest':
-						return array();
-				}
-			}
-
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
@@ -91,7 +80,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					$this->p->debug->log( 'getting description for twitter:description meta tag' );
 				}
 				$mt_tc['twitter:description'] = $this->p->page->get_description( $this->p->options['tc_desc_len'], 
-					'...', $mod, true, true, true, 'tc_desc' );	// $add_ht is true.
+					'...', $mod, true, true, true, 'tc_desc' );	// $add_hashtags is true.
 			}
 
 			if ( ! isset( $mt_tc['twitter:creator'] ) ) {

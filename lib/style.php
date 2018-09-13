@@ -224,13 +224,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$cache_id         = $cache_md5_pre . md5( $cache_salt );
 
-			$r_cache = SucomUtil::get_const( 'WPSSO_DEV' ) ? false : true;	// Read cache by default.
+			$read_cache = SucomUtil::get_const( 'WPSSO_DEV' ) ? false : true;	// Read cache by default.
 
 			wp_enqueue_style( 'sucom-admin-page',
 				$plugin_urlpath . 'css/com/admin-page.' . $css_file_ext,
 					array(), $plugin_version );
 
-			if ( $r_cache ) {
+			if ( $read_cache ) {
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// not empty
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'admin page style retrieved from cache' );
@@ -483,7 +483,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			}
 
-			if ( $r_cache ) {
+			if ( $read_cache ) {
 				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
 					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
 				}

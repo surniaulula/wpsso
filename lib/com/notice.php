@@ -137,7 +137,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return;
 			}
 
-			$r_cache = get_current_user_id() === $user_id ? true : false;
+			$read_cache = get_current_user_id() === $user_id ? true : false;
 
 			$payload['notice_key']   = empty( $notice_key ) ? false : sanitize_key( $notice_key );
 			$payload['dismiss_time'] = false;
@@ -207,14 +207,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Returns a reference to the cache array.
 			 */
-			$user_notices =& $this->get_notice_cache( $user_id, $r_cache );
+			$user_notices =& $this->get_notice_cache( $user_id, $read_cache );
 
 			/**
 			 * All user notices are saved on shutdown.
 			 */
 			$user_notices[ $msg_type ][ $msg_key ] = $payload;
 
-			if ( ! $r_cache ) {
+			if ( ! $read_cache ) {
 				$this->set_notice_transient( $user_id );
 			}
 		}
@@ -916,14 +916,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 * Returns a reference to the cache array.
 		 * This method can handle a user ID of 0.
 		 */
-		private function &get_notice_cache( $user_id = null, $r_cache = true ) {
+		private function &get_notice_cache( $user_id = null, $read_cache = true ) {
 
 			if ( ! is_numeric( $user_id ) ) {	// True, false, or null.
 				$user_id = get_current_user_id();
 			}
 
 			if ( isset( $this->notice_cache[ $user_id ] ) ) {
-				if ( $r_cache ) {
+				if ( $read_cache ) {
 					return $this->notice_cache[ $user_id ];
 				}
 			}
@@ -997,9 +997,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Do not use the transient cache if the DEV constant is defined.
 			 */
 			$dev_const = strtoupper( $this->lca ) . '_DEV';
-			$r_cache   = defined( $dev_const ) && constant( $dev_const ) ? false : true;
+			$read_cache = defined( $dev_const ) && constant( $dev_const ) ? false : true;
 
-			if ( $r_cache ) {
+			if ( $read_cache ) {
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
 					return '<style type="text/css">' . $custom_style_css . '</style>';
 				}
@@ -1286,7 +1286,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			';
 
-			if ( $r_cache ) {
+			if ( $read_cache ) {
 				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
 					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
 				}

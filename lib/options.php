@@ -1353,7 +1353,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'seo_author_field':
 				case 'og_def_img_id_pre': 
 				case 'og_img_id_pre': 
-				case 'p_author_name':
 				case 'plugin_shortener':		// 'none' or name of shortener
 				case 'product_avail':
 				case 'product_condition':
