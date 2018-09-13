@@ -673,17 +673,23 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$notice_types = $this->all_types;
 
 			if ( ! empty( $_REQUEST['_notice_types'] ) ) {
+
 				if ( is_array( $_REQUEST['_notice_types'] ) ) {
 					$notice_types = $_REQUEST['_notice_types'];
 				} else {
-					$notice_types = array();	// Just in case.
+					$notice_types = explode( ',', $_REQUEST['_notice_types'] );
 				}
 			}
 
-			if ( ! empty( $_REQUEST['_exclude_notices'] ) ) {
-				if ( is_array( $_REQUEST['_exclude_notices'] ) ) {
-					$notice_types = array_diff( $notice_types, $_REQUEST['_exclude_notices'] );
+			if ( ! empty( $_REQUEST['_exclude_types'] ) ) {
+
+				if ( is_array( $_REQUEST['_exclude_types'] ) ) {
+					$exclude_types = $_REQUEST['_exclude_types'];
+				} else {
+					$exclude_types = explode( ',', $_REQUEST['_exclude_types'] );
 				}
+
+				$notice_types = array_diff( $notice_types, $exclude_types );
 			}
 
 			if ( empty( $notice_types ) ) {	// Just in case.

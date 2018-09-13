@@ -212,12 +212,12 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
 
 			return array(
-				'_ajax_nonce' => wp_create_nonce( WPSSO_NONCE_NAME ),
-				'_metabox_id' => $this->p->lca . '_metabox_' . $this->p->cf['meta']['id'],
-				'_tb_notices' => $this->tb_notices,
+				'_ajax_nonce'      => wp_create_nonce( WPSSO_NONCE_NAME ),
+				'_metabox_id'      => $this->p->lca . '_metabox_' . $this->p->cf['meta']['id'],
+				'_tb_notices'      => $this->tb_notices,
 				'_no_notices_html' => $no_notices_html,
-				'_option_labels' => array(
-					'robots' => _x( 'Robots', 'option label', 'wpsso' ),
+				'_option_labels'   => array(
+					'robots'   => _x( 'Robots', 'option label', 'wpsso' ),
 				),
 			);
 		}
@@ -257,7 +257,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 							action: 'wpsso_get_notices_json',
 							context: 'toolbar_notices',
 							_ajax_nonce: '<?php echo wp_create_nonce( WPSSO_NONCE_NAME ); ?>',
-							_notice_types: <?php echo json_encode( $this->tb_notices ); ?>,
+							_notice_types: '<?php echo implode( ',', $this->tb_notices ); ?>',
 						}
 
 						jQuery.getJSON( ajaxurl, ajaxNoticesData, function( data ) {
