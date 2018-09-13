@@ -332,7 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.12.1-dev.4 (2018/09/13)**
+**Version 4.12.1-dev.5 (2018/09/13)**
 
 * *New Features*
 	* None.
@@ -340,7 +340,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button.
 	* Removed the Pinterest "Author Name Format" option.
 * *Bugfixes*
-	* None.
+	* Fixed the jQuery ajaxNoticesData '_notice_types' from a json encoded array to a CSV string to avoid matching a Comodo request filter.
 * *Developer Notes*
 	* Changed the WPSSO_META_SAVE_PRIORITY constant from 5 to -10.
 	* Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 0 in order to run before caching plugins clear their cache.
@@ -386,7 +386,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.12.1-dev.4 =
+= 4.12.1-dev.5 =
 
 (2018/09/13) Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button. Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 0 in order to run before caching plugins clear their cache.
 
