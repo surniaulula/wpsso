@@ -6047,12 +6047,12 @@ msgstr ""
 
 #: lib/submenu/general.php:290
 msgctxt "option label"
-msgid "Add \"nopin\" to Header Image Tag"
+msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
 #: lib/submenu/general.php:294
 msgctxt "option label"
-msgid "Add \"nopin\" to Media Lib Images"
+msgid "Add \"nopin\" to WordPress Media"
 msgstr ""
 
 #: lib/submenu/general.php:302

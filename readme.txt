@@ -1,4 +1,4 @@
-=== WPSSO Core - Advanced Open Graph & Schema Meta Tags for Facebook, Pinterest, SEO and More ===
+=== WPSSO Core - Advanced Open Graph & Schema Meta Tags for Facebook, Pinterest, LinkedIn, SEO and More ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso

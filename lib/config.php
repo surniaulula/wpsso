@@ -854,8 +854,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'p_publisher_url'              => '',			// (localized)
 					'p_dom_verify'                 => '',
 					'p_add_img_html'               => 0,			// Add Hidden Image for Pin It Button
-					'p_add_nopin_header_img_tag'   => 1,			// Add "nopin" to Header Image Tag
-					'p_add_nopin_media_img_tag'    => 0,			// Add "nopin" to Media Lib Images
+					'p_add_nopin_header_img_tag'   => 1,			// Add "nopin" to Site Header Image
+					'p_add_nopin_media_img_tag'    => 0,			// Add "nopin" to WordPress Media
 					'sc_publisher_url'             => '',
 					'seo_desc_len'                 => 156,			// Meta name="description" maximum text length (hard limit).
 					'seo_author_field'             => 'gplus',
