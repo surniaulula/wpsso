@@ -36,10 +36,6 @@ WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google'
 
 WPSSO Core checks for minimum / maximum image dimensions and aspect ratios, shows notices for missing and required images, verifies webpages for duplicate meta tags, validates theme header templates for correct HTML markup, warns of any missing PHP modules, and checks 3rd party plugin settings for possible conflicts.
 
-**Offers special meta tags and features for Pinterest:**
-
-WPSSO Core provides a specific image and image dimensions for the Pinterest Pin It button, excludes non-relevant images from being detected by Pinterest, and prevents conflicts between incompatible Pinterest and Facebook meta tag values.
-
 **A reliable WordPress plugin for today *and* tomorrow:**
 
 WPSSO Core is 100% compatible with the new <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in the upcoming release of WordPress 5.
