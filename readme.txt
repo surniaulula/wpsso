@@ -34,11 +34,16 @@ WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google'
 
 **Includes advanced *quality assurance* features and options:**
 
-WPSSO Core checks for minimum / maximum image dimensions and aspect ratios, shows notices for missing and required images, verifies webpages for duplicate meta tags, validates theme header templates for correct HTML markup, warns of any missing PHP modules, and checks 3rd party plugin settings for possible conflicts.
+	1. Checks for minimum / maximum image dimensions and aspect ratios.
+	2. Shows notices for missing and required images.
+	3. Verifies webpages for duplicate meta tags.
+	4. Validates theme header templates for correct HTML markup.
+	5. Checks and warns of any missing PHP modules.
+	6. Checks 3rd party plugin settings for possible conflicts.
 
 **A reliable WordPress plugin for today *and* tomorrow:**
 
-WPSSO Core is 100% compatible with the new <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in the upcoming release of WordPress 5.
+WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in the upcoming release of WordPress 5.
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
@@ -135,9 +140,11 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 
 * Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more.
 
-	**Integrates and improves your favorite SEO plugin:**
+	**Optionally integrate and improve your favorite SEO plugin:**
 
-	WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and, if you desire, you can continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.
+	WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and, if you desire, you can continue to use your favorite SEO content / keyword analysis tools without any conflicts!
+	
+	The Pro version comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.
 
 * The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 
