@@ -965,7 +965,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			static $local_cache = array();	// Cache for single page load.
 
-			if ( isset( $local_cache[ $child_id][ $member_id ] ) ) {
+			if ( isset( $local_cache[ $child_id ][ $member_id ] ) ) {
 				return $local_cache[ $child_id ][ $member_id ];
 			}
 

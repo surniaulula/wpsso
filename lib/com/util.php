@@ -2439,14 +2439,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$num = preg_replace( '/^' . $prefix . '_([0-9]+)(#.*)?$/', '$1', $key );
 
 				if ( ! empty( $results[$num] ) ) { // Preserve the first non-blank value.
+
 					continue;
+
 				} elseif ( ! empty( $opts[$prefix . '_' . $num . '#' . $current] ) ) { // Current locale.
+
 					$results[$num] = $opts[$prefix . '_' . $num . '#' . $current];
+
 				} elseif ( ! empty( $opts[$prefix . '_' . $num . '#' . $default] ) ) { // Default locale.
+
 					$results[$num] = $opts[$prefix . '_' . $num . '#' . $default];
+
 				} elseif ( ! empty( $opts[$prefix . '_' . $num] ) ) { // No locale.
+
 					$results[$num] = $opts[$prefix . '_' . $num];
+
 				} else { // Use value (could be empty).
+
 					$results[$num] = $value;
 				}
 			}

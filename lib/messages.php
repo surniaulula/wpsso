@@ -667,7 +667,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * 'Plugin Settings' settings.
 						 */
-						case 'tooltip-plugin_clean_on_uninstall': // Preserve Settings on Uninstall.
+						case 'tooltip-plugin_clean_on_uninstall': // Remove All Settings on Uninstall.
 
 							$text = sprintf( __( 'Check this option to remove all %s settings when you <em>uninstall</em> the plugin. This includes any custom post, term, and user meta.', 'wpsso' ), $info['short'] );
 

@@ -543,7 +543,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( $size_info['width'] > 0 && $size_info['height'] > 0 ) {
 
 					/**
-					 * Preserve compatibility with older WordPress versions, use true or false when possible.
+					 * Maintain compatibility with older WordPress versions, use true or false when possible.
 					 */
 					if ( true === $size_info['crop'] && ( $size_info['crop_x'] !== 'center' || $size_info['crop_y'] !== 'center' ) ) {
 
