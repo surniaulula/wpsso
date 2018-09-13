@@ -347,10 +347,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->util->get_page_mod( $use_post );
 			}
 
-			$start_time   = microtime( true );
+			$mtime_start = microtime( true );
+
 			$crawler_name = SucomUtil::get_crawler_name();
-			$html         = $this->get_mt_mark( 'begin' );
-			$indent       = 0;
+
+			$html = $this->get_mt_mark( 'begin' );
+
+			$indent = 0;
 
 			foreach ( $this->get_head_array( $use_post, $mod, $read_cache, $mt_og ) as $mt ) {
 
@@ -370,8 +373,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$html .= $this->get_mt_mark( 'end' );
 
-			$html .= '<!-- added on ' . date( 'c' ) . ' in ' . sprintf( '%f secs', microtime( true ) - $start_time ) . 
-				( $crawler_name !== 'none' ? ' for ' . $crawler_name : '' ) . ' from ' . SucomUtilWP::raw_home_url() . ' -->' . "\n\n";
+			$mtime_total = microtime( true ) - $mtime_start;
+
+			$html .= '<!-- added on ' . date( 'c' ) . ' in ' . sprintf( '%f secs', $mtime_total ) . 
+				( $crawler_name !== 'none' ? ' for ' . $crawler_name : '' ) . 
+					' from ' . SucomUtilWP::raw_home_url() . ' -->' . "\n\n";
 
 			return $html;
 		}

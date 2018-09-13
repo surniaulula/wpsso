@@ -217,26 +217,26 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				),
 			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
-			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
-			$start_time = microtime( true );
-			$post_ids   = get_posts( $posts_args );
-			$total_time = microtime( true ) - $start_time;
+			$mtime_max   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
+			$mtime_start = microtime( true );
+			$post_ids    = get_posts( $posts_args );
+			$mtime_total = microtime( true ) - $mtime_start;
 
-			if ( $max_time > 0 && $total_time > $max_time ) {
+			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs'.
-						' to get posts for term ID %2$d in taxonomy %3$s', $total_time, $mod['id'], $mod['tax_slug'] ) );
+						' to get posts for term ID %2$d in taxonomy %3$s', $mtime_total, $mod['id'], $mod['tax_slug'] ) );
 				}
 
 				// translators: %1$0.3f is a number of seconds
-				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $max_time );
+				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
 
 				// translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$s is a recommended max
 				$error_msg = sprintf( __( 'Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (%4$s).',
-					'wpsso' ), $total_time, $mod['id'], $mod['tax_slug'], $rec_max_msg );
+					'wpsso' ), $mtime_total, $mod['id'], $mod['tax_slug'], $rec_max_msg );
 
 				/**
 				 * Show an admin warning notice, if notices not already shown.
@@ -252,7 +252,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $post_ids ) . ' post ids returned in ' . sprintf( '%0.3f secs', $total_time ) );
+				$this->p->debug->log( count( $post_ids ) . ' post ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return $post_ids;

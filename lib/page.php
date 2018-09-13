@@ -910,10 +910,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $filter_content ) {
 
-				$hook_bfo = SucomUtil::get_const( 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT', true );
-				$max_time = SucomUtil::get_const( 'WPSSO_CONTENT_FILTERS_MAX_TIME', 1.50 );
+				$hook_bfo  = SucomUtil::get_const( 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT', true );
+				$mtime_max = SucomUtil::get_const( 'WPSSO_CONTENT_FILTERS_MAX_TIME', 1.50 );
 
-				$content_text = $this->p->util->safe_apply_filters( array( 'the_content', $content_text ), $mod, $max_time, $hook_bfo );
+				$content_text = $this->p->util->safe_apply_filters( array( 'the_content', $content_text ), $mod, $mtime_max, $hook_bfo );
 
 				/**
 				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.

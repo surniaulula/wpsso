@@ -28,8 +28,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $curl_timeout             = 10;			// The maximum number of seconds to allow cURL functions to execute. 
 		public $curl_max_redirs          = 10;			// The maximum amount of HTTP redirections to follow.
 
-		private $url_time  = array();
-		private $transient = array(				// Saved on wp shutdown action.
+		private $url_mtimes = array();
+		private $transient  = array(				// Saved on wp shutdown action.
 			'loaded'      => false,
 			'expire'      => HOUR_IN_SECONDS,
 			'ignore_time' => 900,
@@ -243,13 +243,13 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
-		public function get_url_time( $url, $precision = 3 ) {
+		public function get_url_mtime( $url, $precision = 3 ) {
 
-			if ( isset( $this->url_time[$url] ) ) {
-				if ( is_bool( $this->url_time[$url] ) ) {
-					return $this->url_time[$url];
+			if ( isset( $this->url_mtimes[$url] ) ) {
+				if ( is_bool( $this->url_mtimes[$url] ) ) {
+					return $this->url_mtimes[$url];
 				} else {
-					return sprintf( '%.0' . $precision . 'f', $this->url_time[$url] );
+					return sprintf( '%.0' . $precision . 'f', $this->url_mtimes[$url] );
 				}
 			} else {
 				return false;
@@ -298,7 +298,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$failure = $format === 'url' ? $url : false;
 
-			$this->url_time[$url] = false;	// default value for failure
+			$this->url_mtimes[ $url ] = false;	// default value for failure
 
 			if ( ! extension_loaded( 'curl' ) ) {
 
@@ -360,7 +360,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'cached data found: returning '.strlen( $cache_data ) . ' chars' );
 						}
 
-						$this->url_time[$url] = true;	// signal return is from cache
+						$this->url_mtimes[ $url ] = true;	// signal return is from cache
 
 						return $cache_data;
 					}
@@ -381,7 +381,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 									( $format === 'url' ? $cache_url : $cache_file ) );
 							}
 
-							$this->url_time[$url] = true;	// signal return is from cache
+							$this->url_mtimes[ $url ] = true;	// signal return is from cache
 
 							return $format === 'url' ? $cache_url : $cache_file;
 
@@ -473,11 +473,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->log( 'curl: fetching ' . $url_nofrag );
 			}
 
-			$start_time = microtime( true );
-			$cache_data = curl_exec( $ch );
-			$total_time = microtime( true ) - $start_time;
-			$http_code  = (int) curl_getinfo( $ch, CURLINFO_HTTP_CODE );
-			$ssl_verify = curl_getinfo( $ch, CURLINFO_SSL_VERIFYRESULT );
+			$mtime_start = microtime( true );
+			$cache_data  = curl_exec( $ch );
+			$mtime_total = microtime( true ) - $mtime_start;
+			$http_code   = (int) curl_getinfo( $ch, CURLINFO_HTTP_CODE );
+			$ssl_verify  = curl_getinfo( $ch, CURLINFO_SSL_VERIFYRESULT );
 
 			curl_close( $ch );
 
@@ -488,7 +488,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $http_code == 200 ) {
 
-				$this->url_time[$url] = $total_time;
+				$this->url_mtimes[ $url ] = $mtime_total;
 
 				if ( empty( $cache_data ) ) {
 					if ( $this->p->debug->enabled ) {

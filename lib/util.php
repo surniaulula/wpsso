@@ -332,29 +332,29 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'transient cache for image info is disabled' );
 			}
 
-			$max_time   = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
-			$start_time = microtime( true );
-			$image_info = $this->p->cache->get_image_size( $image_url );	// Wrapper for PHP's getimagesize().
-			$total_time = microtime( true ) - $start_time;
+			$mtime_max   = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
+			$mtime_start = microtime( true );
+			$image_info  = $this->p->cache->get_image_size( $image_url );	// Wrapper for PHP's getimagesize().
+			$mtime_total = microtime( true ) - $mtime_start;
 
 			/**
 			 * Issue warning for slow getimagesize() request.
 			 */
-			if ( $max_time > 0 && $total_time > $max_time ) {
+			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( sprintf( 'slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s',
-						$total_time, $image_url ) );
+						$mtime_total, $image_url ) );
 				}
 
 				// translators: %1$0.3f is a number of seconds.
-				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $max_time );
+				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
 
 				// translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max.
 				$error_msg = sprintf( __( 'Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s).',
-					'wpsso' ), $total_time, $image_url, $rec_max_msg );
+					'wpsso' ), $mtime_total, $image_url, $rec_max_msg );
 
 				/**
 				 * Show an admin warning notice, if notices not already shown.
@@ -1057,8 +1057,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				set_time_limit( HOUR_IN_SECONDS );
 			}
 
-			$start_time = microtime( true );
-			$user_id    = $this->maybe_change_user_id( $user_id );
+			$user_id = $this->maybe_change_user_id( $user_id );
 
 			foreach ( WpssoUser::get_public_user_ids() as $user_id ) {
 
@@ -1124,8 +1123,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				set_time_limit( HOUR_IN_SECONDS );
 			}
 
-			$start_time = microtime( true );
-			$user_id    = $this->maybe_change_user_id( $user_id );
+			$mtime_start = microtime( true );
+
+			$user_id = $this->maybe_change_user_id( $user_id );
 
 			if ( null === $clear_short ) {
 				$clear_short = isset( $this->p->options['plugin_clear_short_urls'] ) ?
@@ -1184,10 +1184,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			$total_time = microtime( true ) - $start_time;
+			$mtime_total = microtime( true ) - $mtime_start;
 
 			if ( $status_msg ) {
-				$status_msg .= ' ' . sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $total_time );
+				$status_msg .= ' ' . sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 			}
 
 			if ( $refresh_all ) {
@@ -1279,8 +1279,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				set_time_limit( HOUR_IN_SECONDS );
 			}
 
-			$start_time  = microtime( true );
-			$user_id     = $this->maybe_change_user_id( $user_id );
+			$mtime_start = microtime( true );
+
+			$user_id = $this->maybe_change_user_id( $user_id );
+
 			$total_count = array(
 				'post' => 0,
 				'term' => 0,
@@ -1312,10 +1314,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$status_msg = $user_id ? sprintf( __( 'The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d users have been refreshed.',
 				'wpsso' ), $total_count['post'], $total_count['term'], $total_count['user'] ) : '';
 
-			$total_time = microtime( true ) - $start_time;
+			$mtime_total = microtime( true ) - $mtime_start;
 
 			if ( $status_msg ) {
-				$status_msg .= ' ' . sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $total_time );
+				$status_msg .= ' ' . sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
 				$this->p->notice->upd( $status_msg, $user_id );
 			}
@@ -1892,14 +1894,14 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				if ( function_exists( $function ) ) {
 
-					$start_time   = microtime( true );
+					$mtime_start  = microtime( true );
 					$function_ret = $function();
-					$total_time   = microtime( true ) - $start_time;
+					$mtime_total  = microtime( true ) - $mtime_start;
 
 					$function_info[$function] = array(
-						sprintf( '%-40s (%f secs)', $function . '() = ' . ( $function_ret ? 'TRUE' : 'false' ), $total_time ),
+						sprintf( '%-40s (%f secs)', $function . '() = ' . ( $function_ret ? 'TRUE' : 'false' ), $mtime_total ),
 						$function_ret,
-						$total_time,
+						$mtime_total,
 					);
 
 				} else {
@@ -2797,7 +2799,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $max_nums;
 		}
 
-		public function safe_apply_filters( array $args, array $mod, $max_time = 0, $hook_bfo = false ) {
+		public function safe_apply_filters( array $args, array $mod, $mtime_max = 0, $hook_bfo = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -2910,9 +2912,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// Begin timer.
 			}
 
-			$start_time   = microtime( true );
+			$mtime_start  = microtime( true );
 			$filter_value = call_user_func_array( 'apply_filters', $args );
-			$total_time   = microtime( true ) - $start_time;
+			$mtime_total  = microtime( true ) - $mtime_start;
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// End timer.
@@ -2930,7 +2932,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Issue warning for slow filter performance.
 			 */
-			if ( $max_time > 0 && $total_time > $max_time ) {
+			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
 				switch ( $filter_name ) {
 
@@ -2954,15 +2956,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( sprintf( 'slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter',
-						$total_time, $filter_name ) );
+						$mtime_total, $filter_name ) );
 				}
 
 				// translators: %1$0.3f is a number of seconds.
-				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $max_time );
+				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
 
 				// translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
 				$error_msg = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter (%3$s).',
-					'wpsso' ), $total_time, $filter_name, $rec_max_msg );
+					'wpsso' ), $mtime_total, $filter_name, $rec_max_msg );
 
 				/**
 				 * Show an admin warning notice, if notices not already shown.
@@ -2978,7 +2980,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 						$notice_key = 'slow-filter-hooks-detected-' . $filter_name;
 
-						$this->p->notice->warn( sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $total_time, $max_time ) . ' ' . sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info['short'] ), null, $notice_key, WEEK_IN_SECONDS );
+						$this->p->notice->warn( sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $mtime_total, $mtime_max ) . ' ' . sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info['short'] ), null, $notice_key, WEEK_IN_SECONDS );
 
 					} else {
 						$this->p->notice->warn( $error_msg );

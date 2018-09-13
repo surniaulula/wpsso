@@ -233,26 +233,26 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'child_of'       => $mod['id'],		// Only include direct children.
 			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
-			$max_time   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
-			$start_time = microtime( true );
-			$post_ids   = get_posts( $posts_args );
-			$total_time = microtime( true ) - $start_time;
+			$mtime_max   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
+			$mtime_start = microtime( true );
+			$post_ids    = get_posts( $posts_args );
+			$mtime_total = microtime( true ) - $mtime_start;
 
-			if ( $max_time > 0 && $total_time > $max_time ) {
+			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
 				$info = $this->p->cf['plugin'][$this->p->lca];
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs' . 
-						' to get the children of post ID %2$d', $total_time, $mod['id'] ) );
+						' to get the children of post ID %2$d', $mtime_total, $mod['id'] ) );
 				}
 
 				// translators: %1$0.3f is a number of seconds
-				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $max_time );
+				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
 
 				// translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
 				$error_msg = sprintf( __( 'Slow query detected - WordPress get_posts() took %1$0.3f secs to get the children of post ID %2$d (%3$s).',
-					'wpsso' ), $total_time, $mod['id'], $rec_max_msg );
+					'wpsso' ), $mtime_total, $mod['id'], $rec_max_msg );
 
 				/**
 				 * Show an admin warning notice, if notices not already shown.
@@ -268,7 +268,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( count( $post_ids ) . ' post ids returned in ' . sprintf( '%0.3f secs', $total_time ) );
+				$this->p->debug->log( count( $post_ids ) . ' post ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return $post_ids;
@@ -886,18 +886,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$this->p->cache->clear( $check_url );	// Clear the cached webpage, just in case.
 
 			$webpage_html = $this->p->cache->get( $check_url, 'raw', 'transient', null, '', $curl_opts );
-			$url_time     = $this->p->cache->get_url_time( $check_url );
+			$url_mtime    = $this->p->cache->get_url_mtime( $check_url );
 
 			$warning_time = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_WARNING_TIME', 2.5 );
 			$timeout_time = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_TIMEOUT_TIME', 3.0 );
 
-			if ( true === $url_time ) {
+			if ( true === $url_mtime ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'fetched ' . $check_url . ' from transient cache' );
 				}
 
-			} elseif ( false === $url_time ) {
+			} elseif ( false === $url_mtime ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'fetched ' . $check_url . ' returned a failure' );
@@ -906,13 +906,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			} else {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'fetched ' . $check_url . ' in ' . $url_time . ' secs' );
+					$this->p->debug->log( 'fetched ' . $check_url . ' in ' . $url_mtime . ' secs' );
 				}
 
-				if ( is_admin() && $url_time > $warning_time ) {
+				if ( is_admin() && $url_mtime > $warning_time ) {
 					$this->p->notice->warn(
 						sprintf( __( 'Retrieving the HTML document for %1$s took %2$s seconds.', 'wpsso' ),
-							'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $url_time ) . ' ' . 
+							'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $url_mtime ) . ' ' . 
 						sprintf( __( 'This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds).',
 							'wpsso' ), $warning_time, $timeout_time ) . ' ' . 
 						__( 'Please consider improving the speed of your site.', 'wpsso' ) . ' ' . 
