@@ -568,7 +568,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $mod['post_status'] === 'publish' ) {
 
-				$this->p->notice->set_ref( WpssoMeta::$head_meta_info['og:url'], $mod );
+				$this->p->notice->set_ref( WpssoMeta::$head_meta_info['og:url'], $mod,
+					sprintf( __( 'checking meta tags for %1$s ID %2$s', 'wpsso' ),
+						$mod['post_type'], $mod['id'] ) );
+
 
 				/**
 				 * Check for missing open graph image and description values.
@@ -720,7 +723,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $mod['post_status'] === 'publish' ) {
 
-						$this->p->notice->set_ref( WpssoMeta::$head_meta_info['og:url'], $mod );
+						$this->p->notice->set_ref( WpssoMeta::$head_meta_info['og:url'], $mod,
+							sprintf( __( 'checking meta tags for %1$s ID %2$s', 'wpsso' ),
+								$mod['post_type'], $mod['id'] ) );
 
 						/**
 						 * Check for missing open graph image and description values.

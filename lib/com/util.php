@@ -1125,31 +1125,47 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function is_doing_block_editor( $post_type ) {
+		public static function is_doing_block_editor( $post_type = '' ) {
 
-			$doing_block_editor = false;
+			$is_doing = false;
+			$post_id  = false;
 
-			if ( function_exists( 'gutenberg_can_edit_post_type' ) && gutenberg_can_edit_post_type( $post_type ) ) {
+			if ( ! empty( $_REQUEST['post_ID'] ) ) {
+				$post_id = $_REQUEST['post_ID'];
+			} elseif ( ! empty( $_REQUEST['post'] ) && is_numeric( $_REQUEST['post'] ) ) {
+				$post_id = $_REQUEST['post'];
+			}
 
-				if ( ! empty( $_REQUEST['gutenberg_meta_boxes'] ) ) {
+			if ( ! empty( $post_id ) ) {
+				$post_type = get_post_type( $post_id );
+			}
 
-					$doing_block_editor = true;
+			$gutenbox = empty( $_REQUEST['gutenberg_meta_boxes'] ) ? false : true;
+			$meta_box = empty( $_REQUEST['meta_box'] ) ? false : true;
+			$classic  = isset( $_REQUEST['classic-editor'] ) && empty( $_REQUEST['classic-editor'] ) ? false : true;
+			$action   = empty( $_REQUEST['action'] ) ? false : $_REQUEST['action'];
 
-				} elseif ( ! empty( $_REQUEST['meta_box'] ) ) {
-
-					$doing_block_editor = true;
-
-				} elseif ( ! isset( $_REQUEST['classic-editor'] ) ) {
-
-					$doing_block_editor = true;
+			if ( $post_type ) {
+				if ( function_exists( 'gutenberg_can_edit_post_type' ) ) {
+					if ( gutenberg_can_edit_post_type( $post_type ) ) {
+						if ( $gutenbox ) {
+							$is_doing = true;
+						} elseif ( $meta_box ) {
+							$is_doing = true;
+						} elseif ( ! $classic ) {
+							$is_doing = true;
+						} elseif ( $post_id && $action === 'edit' ) {
+							$is_doing = true;
+						}
+					}
 				}
 			}
-
+	
 			if ( ! defined( 'DOING_BLOCK_EDITOR' ) ) {
-				define( 'DOING_BLOCK_EDITOR', $doing_block_editor );
+				define( 'DOING_BLOCK_EDITOR', $is_doing );
 			}
 
-			return $doing_block_editor;
+			return $is_doing;
 		}
 
 		public static function is_https( $url = '' ) {
@@ -1987,14 +2003,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * the first array, as is the case with array_merge().
 		 */
 		public static function array_merge_recursive_distinct( array &$arr1, array &$arr2 ) {
+
 			$merged = $arr1;
+
 			foreach ( $arr2 as $key => &$value ) {
-				if ( is_array( $value ) && isset( $merged[$key] ) && is_array( $merged[$key] ) ) {
-					$merged[$key] = self::array_merge_recursive_distinct( $merged[$key], $value );
+				if ( is_array( $value ) && isset( $merged[ $key ] ) && is_array( $merged[ $key ] ) ) {
+					$merged[ $key ] = self::array_merge_recursive_distinct( $merged[ $key ], $value );
 				} else {
-					$merged[$key] = $value;
+					$merged[ $key ] = $value;
 				}
 			}
+
 			return $merged;
 		}
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $tb_notices   = false;
 		private $has_shown    = false;
 		private $all_types    = array( 'nag', 'err', 'warn', 'upd', 'inf' );	// Sort by importance.
-		private $ref_cache    = array();
+		private $notice_info  = array();
 		private $notice_cache = array();
 
 		public $enabled = true;
@@ -39,7 +39,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 
 				$this->set_config( $plugin, $lca, $text_domain, $label_transl );
-
 				$this->add_actions();
 			}
 		}
@@ -104,7 +103,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		public function nag( $msg_text, $user_id = null, $notice_key = false ) {
-			$this->log( 'nag', $msg_text, $user_id, $notice_key, false );	// $dismiss_time is false
+			$this->log( 'nag', $msg_text, $user_id, $notice_key, false );	// $dismiss_time is false.
 		}
 
 		public function upd( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
@@ -291,7 +290,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 */
 		public function set_ref( $url = null, $mod = null, $context_transl = null ) {
 
-			$this->ref_cache[] = array(
+			$this->notice_info[] = array(
 				'url' => $url,
 				'mod' => $mod,
 				'context_transl' => $context_transl,
@@ -305,7 +304,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( null === $url || $this->is_ref_url( $url ) ) {
 
-				array_pop( $this->ref_cache );
+				array_pop( $this->notice_info );
 
 				return true;
 
@@ -316,7 +315,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function get_ref( $idx = false, $text_prefix = '', $text_suffix = '' ) {
 
-			$refs = end( $this->ref_cache );	// Get the last reference added.
+			$refs = end( $this->notice_info );	// Get the last reference added.
 
 			if ( 'edit' === $idx ) {
 				if ( isset( $refs['mod'] ) ) {
@@ -515,7 +514,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->has_shown = true;
 
 			$this->maybe_set_notice_cache( $user_id );
-			$this->add_update_errors( $user_id );
+			$this->maybe_add_update_errors( $user_id );
 
 			/**
 			 * Loop through all the msg types and show them all.
@@ -602,7 +601,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			echo $msg_html;
-
 			echo '<!-- ' . $this->lca . ' admin notices end -->' . "\n";
 		}
 
@@ -703,14 +701,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->has_shown = true;
 
 			$this->maybe_set_notice_cache( $user_id );
-			$this->add_update_errors( $user_id );
+			$this->maybe_add_update_errors( $user_id );
 
 			/**
 			 * Loop through all the msg types and show them all.
 			 */
 			foreach ( $notice_types as $msg_type ) {
 
-				if ( ! isset( $this->notice_cache[ $user_id ][$msg_type] ) ) {	// Just in case.
+				if ( ! isset( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {	// Just in case.
 					continue;
 				}
 
@@ -787,7 +785,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			die( $json_encoded );
 		}
 
-		private function add_update_errors( $user_id ) {
+		private function maybe_add_update_errors( $user_id ) {
 
 			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
 
@@ -803,6 +801,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 							$msg_spoken = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $uerr );
 							$msg_spoken = SucomUtil::decode_html( SucomUtil::strip_html( $msg_spoken ) );
 							$msg_key    = sanitize_key( $msg_spoken );
+
+							if ( ! isset( $this->notice_cache[ $user_id ][ 'err' ] ) ) {	// Just in case.
+								$this->maybe_set_notice_cache( $user_id );
+							}
 
 							$this->notice_cache[ $user_id ][ 'err' ][ $msg_key ] = array(
 								'msg_text'   => $msg_text,
@@ -919,6 +921,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function shutdown_notice_cache() {
 
 			foreach ( $this->notice_cache as $user_id => $user_notices ) {
+				$this->maybe_set_notice_cache( $user_id );
 				$this->update_notice_transient( $user_id );
 			}
 		}
@@ -933,18 +936,34 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$user_id = get_current_user_id();
 			}
 
-			if ( $read_cache ) {
-				if ( isset( $this->notice_cache[ $user_id ] ) ) {
-					return;	// Nothing to do.
-				}
+			if ( $read_cache && isset( $this->notice_cache[ $user_id ] ) ) {
+				return;	// Nothing to do.
 			}
 
 			if ( $user_id ) {
 
-				$this->notice_cache[ $user_id ] = $this->get_notice_transient( $user_id );
+				$cache_value = $this->get_notice_transient( $user_id );
 
-				if ( ! is_array( $this->notice_cache[ $user_id ] ) ) {
-					$this->notice_cache[ $user_id ] = array();
+				if ( ! is_array( $cache_value ) ) {
+					$cache_value = array();
+				}
+
+				if ( empty( $this->notice_cache[ $user_id ] ) ) {	// Set notice cache to transient notices.
+
+					$this->notice_cache[ $user_id ] = $cache_value;
+
+				} elseif ( ! empty( $cache_value ) ) {
+
+					foreach ( $this->all_types as $msg_type ) {
+						if ( ! empty( $cache_value[ $msg_type ] ) ) {
+							foreach ( $cache_value[ $msg_type ] as $msg_key => $payload ) {
+								if ( ! isset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] ) ) {
+									$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
+								}
+								
+							}
+						}
+					}
 				}
 			}
 
@@ -967,6 +986,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function update_notice_transient( $user_id ) {
 
+			if ( ! isset( $this->notice_cache[ $user_id ] ) ) {
+				return;	// Nothing to update.
+			}
+
 			$cache_exp_secs = HOUR_IN_SECONDS;
 			$cache_md5_pre  = $this->lca . '_!_';	// Protect transient from being cleared.
 			$cache_salt     = 'sucom_notice_transient(user_id:' . $user_id . ')';
@@ -986,7 +1009,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				set_transient( $cache_id, $this->notice_cache[ $user_id ], $cache_exp_secs );
 			}
 
-			unset( $this->notice_cache[ $user_id ] );	// Make sure to reload user notices next time.
+			unset( $this->notice_cache[ $user_id ] );
 		}
 
 		private function delete_notice_transient( $user_id ) {
@@ -1082,7 +1105,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					padding:0;
 				}
 				#wpadminbar .have-notices #wp-admin-bar-'.$this->p->lca.'-toolbar-notices-container { 
-					min-width:60vw;	/* 60% of the viewing window width */
+					min-width:70vw;		/* 70% of the viewing window width */
 					max-height:90vh;	/* 90% of the viewing window height */
 					overflow-y:scroll;
 				}

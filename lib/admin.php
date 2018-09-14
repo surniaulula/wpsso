@@ -88,14 +88,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * Hook admin_head to allow for setting changes, plugin activation / loading, etc.
 				 */
-				add_action( 'admin_head', array( $this, 'conflict_warnings' ), 10 );
-				add_action( 'admin_head', array( $this, 'required_notices' ), 20 );
-				add_action( 'admin_head', array( $this, 'update_count_notice' ), 30 );
+				if ( ! SucomUtil::is_doing_block_editor() ) {
+					add_action( 'admin_head', array( $this, 'conflict_warnings' ), -1000 );
+					add_action( 'admin_head', array( $this, 'required_notices' ), -500 );
+					add_action( 'admin_head', array( $this, 'update_count_notice' ), 0 );
+				}
 
 				/**
 				 * WPSSO_TOOLBAR_NOTICES can be true, false, or an array of notice types to include in the menu.
 				 */
-				if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES', false ) ) {	// Returns false if not defined.
+				if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
 					add_action( 'admin_bar_menu', array( $this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
 				}
 
@@ -2777,7 +2779,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * The action buttons.
 				 */
-				$rate_plugin_label   = sprintf( __( 'Yes! Contribute and rate %s 5 stars!', 'wpsso' ), $info['short'] );
+				$rate_plugin_label   = sprintf( __( 'Yes! Rate %s 5 stars!', 'wpsso' ), $info['short'] );
 				$rate_plugin_clicked = sprintf( __( 'Thank you for rating the %s plugin! You\'re awesome!', 'wpsso' ), $info['short'] );
 				$rate_plugin_button  = '<div style="display:inline-block;vertical-align:top;margin:1.2em 0.8em 0.8em 0;">' .
 					$this->form->get_button( $rate_plugin_label, 'button-primary dismiss-on-click', '', $info['url']['review'],

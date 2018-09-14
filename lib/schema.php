@@ -2336,7 +2336,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
 
-				$wpsso->notice->set_ref( $sharing_url, $mod, sprintf( __( 'adding schema for %s object', 'wpsso' ), $mod['name'] ) );
+				if ( $mod['post_type'] && $mod['id'] ) {
+
+					$wpsso->notice->set_ref( $sharing_url, $mod,
+						sprintf( __( 'adding schema for %1$s ID %2$s', 'wpsso' ),
+							$mod['post_type'], $mod['id'] ) );
+
+				} elseif ( $mod['name'] && $mod['id'] ) {
+
+					$wpsso->notice->set_ref( $sharing_url, $mod,
+						sprintf( __( 'adding schema for %1$s ID %2$s', 'wpsso' ),
+							$mod['name'], $mod['id'] ) );
+				} else {
+					$wpsso->notice->set_ref( $sharing_url, $mod );
+				}
 			}
 
 			if ( ! is_array( $mt_og ) ) {
@@ -2928,7 +2941,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Set the reference values for admin notices.
 			 */
 			if ( is_admin() ) {
+
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
+
 				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema for organization', 'wpsso' ) );
 			}
 
@@ -3223,7 +3238,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Set reference values for admin notices.
 			 */
 			if ( is_admin() ) {
+
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
+
 				$wpsso->notice->set_ref( $sharing_url, $mod, __( 'adding schema for place', 'wpsso' ) );
 			}
 
