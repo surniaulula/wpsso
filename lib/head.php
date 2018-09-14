@@ -173,6 +173,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				switch ( $mt_match ) {
 
+					case 'property-og:url':
 					case 'property-og:type':
 					case 'property-og:title':
 					case 'property-og:description':

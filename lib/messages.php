@@ -1644,13 +1644,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_review_item_type':	// Default Reviewed Item Type
-
-							$text = sprintf( __( 'Select the default Schema type for reviewed items (used when the content Schema type is a %s).',
-								'wpsso' ), 'https://schema.org/Review' );
-
-							break;
-
 						default:
 
 							$text = apply_filters( $lca . '_messages_tooltip_schema', $text, $idx, $info );

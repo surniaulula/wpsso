@@ -272,7 +272,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				/**
 				 * Check for schema type IDs to be renamed.
 				 */
-				$keys_preg = 'schema_type_.*|schema_review_item_type|site_org_type|org_type|plm_place_schema_type';
+				$keys_preg = 'schema_type_.*|site_org_type|org_type|plm_place_schema_type';
 
 				foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $opts ) as $key => $val ) {
 					if ( ! empty( $this->p->cf['head']['schema_renamed'][$val] ) ) {

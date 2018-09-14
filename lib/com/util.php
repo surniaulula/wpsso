@@ -1132,10 +1132,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( function_exists( 'gutenberg_can_edit_post_type' ) && gutenberg_can_edit_post_type( $post_type ) ) {
 
 				if ( ! empty( $_REQUEST['gutenberg_meta_boxes'] ) ) {
+
 					$doing_block_editor = true;
+
 				} elseif ( ! empty( $_REQUEST['meta_box'] ) ) {
+
 					$doing_block_editor = true;
+
 				} elseif ( ! isset( $_REQUEST['classic-editor'] ) ) {
+
 					$doing_block_editor = true;
 				}
 			}

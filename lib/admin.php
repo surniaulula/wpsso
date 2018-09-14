@@ -86,11 +86,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_init', array( $this, 'register_setting' ) );
 
 				/**
-				 * Hook in_admin_header to allow for setting changes, plugin activation / loading, etc.
+				 * Hook admin_head to allow for setting changes, plugin activation / loading, etc.
 				 */
-				add_action( 'in_admin_header', array( $this, 'conflict_warnings' ), 10 );
-				add_action( 'in_admin_header', array( $this, 'required_notices' ), 20 );
-				add_action( 'in_admin_header', array( $this, 'update_count_notice' ), 30 );
+				add_action( 'admin_head', array( $this, 'conflict_warnings' ), 10 );
+				add_action( 'admin_head', array( $this, 'required_notices' ), 20 );
+				add_action( 'admin_head', array( $this, 'update_count_notice' ), 30 );
 
 				/**
 				 * WPSSO_TOOLBAR_NOTICES can be true, false, or an array of notice types to include in the menu.

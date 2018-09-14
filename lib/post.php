@@ -516,7 +516,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( get_post_meta( $post_id, $meta_key, true ) === '' ) {	// Returns empty string if meta not found.
+
 				$mod = $this->get_mod( $post_id );
+
 				$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, true );	// $read_cache = true
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}
@@ -564,7 +566,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
 			WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
 
-			if ( $post_obj->post_status === 'publish' ) {
+			if ( $mod['post_status'] === 'publish' ) {
+
+				$this->p->notice->set_ref( WpssoMeta::$head_meta_info['og:url'], $mod );
 
 				/**
 				 * Check for missing open graph image and description values.
@@ -579,6 +583,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->notice->err( $error_msg, null, $notice_key );
 					}
 				}
+
+				$this->p->notice->unset_ref( WpssoMeta::$head_meta_info['og:url'] );
 			}
 
 			$metabox_html = $this->get_metabox_custom_meta( $post_obj );
@@ -712,7 +718,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
 					WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
 
-					if ( $post_obj->post_status === 'publish' ) {
+					if ( $mod['post_status'] === 'publish' ) {
+
+						$this->p->notice->set_ref( WpssoMeta::$head_meta_info['og:url'], $mod );
 
 						/**
 						 * Check for missing open graph image and description values.
@@ -725,15 +733,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 									$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
 								}
 
-								if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
+								$notice_key = $mod['name'] . '-' . $mod['id'] . '-notice-missing-og-' . $mt_suffix;
+								$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
 
-									$notice_key = $mod['name'] . '-' . $mod['id'] . '-notice-missing-og-' . $mt_suffix;
-									$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
-
-									$this->p->notice->err( $error_msg, null, $notice_key );
-								}
+								$this->p->notice->err( $error_msg, null, $notice_key );
 							}
 						}
+
+						$this->p->notice->unset_ref( WpssoMeta::$head_meta_info['og:url'] );
 
 						/**
 						 * Check duplicates only when the post is available publicly and we have a valid permalink.

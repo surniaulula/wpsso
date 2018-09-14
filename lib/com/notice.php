@@ -204,18 +204,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$msg_key = empty( $payload['notice_key'] ) ? sanitize_key( $payload['msg_spoken'] ) : $payload['notice_key'];
 
-			/**
-			 * Returns a reference to the cache array.
-			 */
-			$user_notices =& $this->get_notice_cache( $user_id, $read_cache );
+			$this->maybe_set_notice_cache( $user_id, $read_cache );
 
-			/**
-			 * All user notices are saved on shutdown.
-			 */
-			$user_notices[ $msg_type ][ $msg_key ] = $payload;
+			$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
 
 			if ( ! $read_cache ) {
-				$this->set_notice_transient( $user_id );
+				$this->update_notice_transient( $user_id );
 			}
 		}
 
@@ -258,41 +252,35 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			foreach ( $trunc_user_ids as $user_id ) {
 
-				$user_notices =& $this->get_notice_cache( $user_id );
+				$this->maybe_set_notice_cache( $user_id );
 
 				foreach ( $trunc_types as $msg_type ) {
 
-					if ( isset( $user_notices[ $msg_type ] ) ) {
-
-						if ( ! is_array( $user_notices[ $msg_type ] ) ) {	// Just in case.
-							unset( $user_notices[ $msg_type ] );
-
-						/**
-						 * Clear notice for a specific notice key.
-						 */
-						} elseif ( ! empty( $notice_key ) ) {
-							foreach ( $user_notices[ $msg_type ] as $msg_key => &$payload ) {	// Use reference for payload.
-								if ( ! empty( $payload[ 'notice_key' ] ) && $payload[ 'notice_key' ] === $notice_key ) {
-									unset( $payload );	// Unset by reference.
-								}
+					/**
+					 * Clear notice for a specific notice key.
+					 */
+					if ( ! empty( $notice_key ) ) {
+						foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
+							if ( ! empty( $payload[ 'notice_key' ] ) && $payload[ 'notice_key' ] === $notice_key ) {
+								unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );
 							}
-
-						/**
-						 * Clear a specific message text.
-						 */
-						} elseif ( ! empty( $msg_text ) ) {
-							foreach ( $user_notices[ $msg_type ] as $msg_key => &$payload ) {	// Use reference for payload.
-								if ( ! empty( $payload[ 'msg_text' ] ) && $payload[ 'msg_text' ] === $msg_text ) {
-									unset( $payload );	// Unset by reference.
-								}
-							}
-
-						/**
-						 * Clear all notices for a message type.
-						 */
-						} else {
-							unset( $user_notices[ $msg_type ] );
 						}
+
+					/**
+					 * Clear a specific message text.
+					 */
+					} elseif ( ! empty( $msg_text ) ) {
+						foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
+							if ( ! empty( $payload[ 'msg_text' ] ) && $payload[ 'msg_text' ] === $msg_text ) {
+								unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );
+							}
+						}
+
+					/**
+					 * Clear all notices for a message type.
+					 */
+					} else {
+						$this->notice_cache[ $user_id ][ $msg_type ] = array();
 					}
 				}
 			}
@@ -378,6 +366,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		public function is_ref_url( $url = null ) {
+
 			if ( null === $url || $url === $this->get_ref( 'url' ) ) {
 				return true;
 			} else {
@@ -456,7 +445,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					return true;
 
 				} else {	// Dismiss time has expired.
-					unset( $user_dismissed[$notice_key] );
+
+					unset( $user_dismissed[ $notice_key ] );
 
 					if ( empty( $user_dismissed ) ) {
 						delete_user_option( $user_id, $this->dis_name, false );	// $global is false.
@@ -516,14 +506,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return;
 			}
 
-			$msg_html        = '';
-			$nag_text        = '';
-			$user_id         = get_current_user_id();
-			$user_notices    =& $this->get_notice_cache( $user_id );
-			$user_dismissed  = empty( $user_id ) ? false : get_user_option( $this->dis_name, $user_id );
-			$dismissed_upd   = false;
+			$msg_html         = '';
+			$nag_text         = '';
+			$user_id          = get_current_user_id();
+			$user_dismissed   = empty( $user_id ) ? false : get_user_option( $this->dis_name, $user_id );
+			$update_dismissed = false;
+
 			$this->has_shown = true;
 
+			$this->maybe_set_notice_cache( $user_id );
 			$this->add_update_errors( $user_id );
 
 			/**
@@ -531,20 +522,22 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 */
 			foreach ( $notice_types as $msg_type ) {
 
-				if ( ! isset( $user_notices[$msg_type] ) ) {	// Just in case.
+				if ( ! isset( $this->notice_cache[ $user_id ][$msg_type] ) ) {	// Just in case.
 					continue;
 				}
 
-				foreach ( $user_notices[$msg_type] as $msg_key => $payload ) {
+				foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
 
-					unset( $user_notices[$msg_type][$msg_key] );	// Don't show it twice.
+					unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );	// Don't show it twice.
 
 					if ( empty( $payload['msg_text'] ) ) {	// Nothing to show.
 						continue;
 					}
 
 					if ( 'nag' === $msg_type ) {
+
 						$nag_text .= $payload['msg_text'];	// Append to echo a single msg block.
+
 						continue;
 					}
 
@@ -564,9 +557,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 							} else {	// Dismiss has expired.
 
-								$dismissed_upd = true;	// Update the user meta when done.
+								$update_dismissed = true;	// Update the user meta when done.
 
-								unset( $user_dismissed[$payload['notice_key']] );
+								unset( $user_dismissed[ $payload[ 'notice_key' ] ] );
 							}
 						}
 					}
@@ -583,8 +576,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Don't save unless we've changed something.
 			 */
 			if ( ! empty( $user_id ) ) {	// Just in case.
-				if ( true === $dismissed_upd ) {
+
+				if ( true === $update_dismissed ) {
+
 					if ( empty( $user_dismissed ) ) {
+
 						delete_user_option( $user_id, $this->dis_name, false );	// $global is false
 						delete_user_option( $user_id, $this->dis_name, true );	// $global is true
 					} else {
@@ -698,14 +694,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true );
 
-			$user_id         = get_current_user_id();
-			$user_notices    =& $this->get_notice_cache( $user_id );
-			$user_dismissed  = empty( $user_id ) ? false : get_user_option( $this->dis_name, $user_id );
-			$dismissed_upd   = false;
-			$this->has_shown = true;
-			$json_notices    = array();
-			$ajax_context    = empty( $_REQUEST['context'] ) ? '' : $_REQUEST['context'];	// 'block_editor' or 'toolbar_notices'
+			$user_id          = get_current_user_id();
+			$user_dismissed   = empty( $user_id ) ? false : get_user_option( $this->dis_name, $user_id );
+			$update_dismissed = false;
+			$json_notices     = array();
+			$ajax_context     = empty( $_REQUEST['context'] ) ? '' : $_REQUEST['context'];	// 'block_editor' or 'toolbar_notices'
 
+			$this->has_shown = true;
+
+			$this->maybe_set_notice_cache( $user_id );
 			$this->add_update_errors( $user_id );
 
 			/**
@@ -713,13 +710,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 */
 			foreach ( $notice_types as $msg_type ) {
 
-				if ( ! isset( $user_notices[$msg_type] ) ) {	// Just in case.
+				if ( ! isset( $this->notice_cache[ $user_id ][$msg_type] ) ) {	// Just in case.
 					continue;
 				}
 
-				foreach ( $user_notices[$msg_type] as $msg_key => $payload ) {
+				foreach ( $this->notice_cache[ $user_id ][ $msg_type ] as $msg_key => $payload ) {
 
-					unset( $user_notices[$msg_type][$msg_key] );	// Don't show it twice.
+					unset( $this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] );	// Don't show it twice.
 
 					if ( empty( $payload['msg_text'] ) ) {	// Nothing to show.
 						continue;
@@ -741,9 +738,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 							} else {	// Dismiss has expired.
 
-								$dismissed_upd = true;	// Update the user meta when done.
+								$update_dismissed = true;	// Update the user meta when done.
 
-								unset( $user_dismissed[$payload['notice_key']] );
+								unset( $user_dismissed[ $payload[ 'notice_key' ] ] );
 							}
 						}
 					}
@@ -772,8 +769,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Don't save unless we've changed something.
 			 */
 			if ( ! empty( $user_id ) ) {	// Just in case.
-				if ( true === $dismissed_upd ) {
+
+				if ( true === $update_dismissed ) {
+
 					if ( empty( $user_dismissed ) ) {
+
 						delete_user_option( $user_id, $this->dis_name, false );	// $global is false
 						delete_user_option( $user_id, $this->dis_name, true );	// $global is true
 					} else {
@@ -790,10 +790,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function add_update_errors( $user_id ) {
 
 			if ( isset( $this->p->cf['plugin'] ) && class_exists( 'SucomUpdate' ) ) {
+
 				foreach ( array_keys( $this->p->cf['plugin'] ) as $ext ) {
+
 					if ( ! empty( $this->p->options['plugin_' . $ext . '_tid'] ) ) {
+
 						$uerr = SucomUpdate::get_umsg( $ext );
+
 						if ( ! empty( $uerr ) ) {
+
 							$msg_text   = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $uerr );
 							$msg_spoken = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $uerr );
 							$msg_spoken = SucomUtil::decode_html( SucomUtil::strip_html( $msg_spoken ) );
@@ -914,7 +919,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		public function shutdown_notice_cache() {
 
 			foreach ( $this->notice_cache as $user_id => $user_notices ) {
-				$this->set_notice_transient( $user_id );
+				$this->update_notice_transient( $user_id );
 			}
 		}
 
@@ -922,20 +927,22 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 * Returns a reference to the cache array.
 		 * This method can handle a user ID of 0.
 		 */
-		private function &get_notice_cache( $user_id = null, $read_cache = true ) {
+		private function maybe_set_notice_cache( $user_id = null, $read_cache = true ) {
 
 			if ( ! is_numeric( $user_id ) ) {	// True, false, or null.
 				$user_id = get_current_user_id();
 			}
 
-			if ( isset( $this->notice_cache[ $user_id ] ) ) {
-				if ( $read_cache ) {
-					return $this->notice_cache[ $user_id ];
+			if ( $read_cache ) {
+				if ( isset( $this->notice_cache[ $user_id ] ) ) {
+					return;	// Nothing to do.
 				}
 			}
 
 			if ( $user_id ) {
+
 				$this->notice_cache[ $user_id ] = $this->get_notice_transient( $user_id );
+
 				if ( ! is_array( $this->notice_cache[ $user_id ] ) ) {
 					$this->notice_cache[ $user_id ] = array();
 				}
@@ -946,8 +953,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$this->notice_cache[ $user_id ][ $msg_type ] = array();
 				}
 			}
-
-			return $this->notice_cache[ $user_id ];
 		}
 
 		private function get_notice_transient( $user_id ) {
@@ -955,32 +960,33 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$cache_md5_pre = $this->lca . '_!_';	// Protect transient from being cleared.
 			$cache_salt    = 'sucom_notice_transient(user_id:' . $user_id . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
+			$cache_value   = get_transient( $cache_id );
 
-			return get_transient( $cache_id );
+			return $cache_value;
 		}
 
-		private function set_notice_transient( $user_id ) {
+		private function update_notice_transient( $user_id ) {
 
 			$cache_exp_secs = HOUR_IN_SECONDS;
 			$cache_md5_pre  = $this->lca . '_!_';	// Protect transient from being cleared.
 			$cache_salt     = 'sucom_notice_transient(user_id:' . $user_id . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
+			$cache_is_empty = true;
 
-			/**
-			 * Minimize the array by removing empty message types.
-			 */
 			foreach ( $this->all_types as $msg_type ) {
-				if ( empty( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {
-					//unset( $this->notice_cache[ $user_id ][ $msg_type ] );
+				if ( ! empty( $this->notice_cache[ $user_id ][ $msg_type ] ) ) {
+					$cache_is_empty = false;
+					break;
 				}
 			}
 
-			if ( empty( $this->notice_cache[ $user_id ] ) ) {
-				return delete_transient( $cache_id );
+			if ( $cache_is_empty ) {
+				delete_transient( $cache_id );
 			} else {
-				$status = set_transient( $cache_id, $this->notice_cache[ $user_id ], $cache_exp_secs );
-				unset( $this->notice_cache[ $user_id ] );
+				set_transient( $cache_id, $this->notice_cache[ $user_id ], $cache_exp_secs );
 			}
+
+			unset( $this->notice_cache[ $user_id ] );	// Make sure to reload user notices next time.
 		}
 
 		private function delete_notice_transient( $user_id ) {
@@ -1003,9 +1009,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Do not use the transient cache if the DEV constant is defined.
 			 */
 			$dev_const = strtoupper( $this->lca ) . '_DEV';
-			$read_cache = defined( $dev_const ) && constant( $dev_const ) ? false : true;
+			$doing_dev = defined( $dev_const ) && constant( $dev_const ) ? false : true;
 
-			if ( $read_cache ) {
+			if ( $doing_dev ) {
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// Not empty.
 					return '<style type="text/css">' . $custom_style_css . '</style>';
 				}
@@ -1292,7 +1298,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			';
 
-			if ( $read_cache ) {
+			if ( $doing_dev ) {
 				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
 					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->lca );
 				}

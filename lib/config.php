@@ -795,7 +795,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tribe_events' => 'event',
 					'schema_type_for_webpage'      => 'webpage',
 					'schema_type_for_website'      => 'website',
-					'schema_review_item_type'      => 'none',		// Default Reviewed Item Type.
 					'fb_publisher_url'             => '',			// Facebook Business Page URL (localized).
 					'fb_app_id'                    => '',			// Facebook Application ID.
 					'fb_admins'                    => '',			// or Facebook Admin Username(s).
