@@ -1722,19 +1722,28 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( null === $user_id ) {
+
 				if ( $mod['is_home'] ) {	// Static or index page.
+
 					if ( empty( $this->p->options['schema_home_person_id'] ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'exiting early: schema_home_person_id disabled for home page' );
 						}
+
 						return $json_data;	// Exit early.
+
 					} else {
+
 						$user_id = $this->p->options['schema_home_person_id'];
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'person / user_id for home page is ' . $user_id );
 						}
 					}
+
 				} elseif ( $mod['is_user'] ) {
+
 					$user_id = $mod['id'];
 				} else {
 					$user_id = false;
@@ -1742,10 +1751,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( empty( $user_id ) || $user_id === 'none' ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty user_id' );
 				}
+
 				return $json_data;
+
 			} else {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'user id is "' . $user_id . '"' );
