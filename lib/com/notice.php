@@ -1076,8 +1076,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					padding:0;
 				}
 				#wpadminbar .have-notices #wp-admin-bar-'.$this->p->lca.'-toolbar-notices-container { 
-					min-width:70vw;	/* 70% of the viewing window width */
-					max-height:100vh;
+					min-width:60vw;	/* 60% of the viewing window width */
+					max-height:90vh;	/* 90% of the viewing window height */
 					overflow-y:scroll;
 				}
 				#wpadminbar .' . $this->lca . '-notice,
