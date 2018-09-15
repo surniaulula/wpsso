@@ -2775,12 +2775,12 @@ msgstr ""
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/gpl/social/buddypress.php:48 lib/pro/social/buddypress.php:88
+#: lib/gpl/social/buddypress.php:52 lib/pro/social/buddypress.php:92
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
-#: lib/gpl/social/buddypress.php:61 lib/pro/social/buddypress.php:104
+#: lib/gpl/social/buddypress.php:65 lib/pro/social/buddypress.php:108
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
 "Info</em> text from the WordPress user profile. If you've created an "

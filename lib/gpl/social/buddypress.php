@@ -24,6 +24,10 @@ if ( ! class_exists( 'WpssoGplSocialBuddypress' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * Note that the latest BuddyPress templates use AJAX calls, so is_admin(),
+			 * bp_current_component(), and DOING_AJAX will all be true in those cases.
+			 */
 			if ( is_admin() || bp_current_component() ) {
 
 				$this->p->util->add_plugin_filters( $this, array( 

@@ -836,7 +836,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $opts['plugin_filter_content'] ) ) {
 
 				$get_msg_key = 'notice-content-filters-disabled';
-				$notice_key  = $message_key . '-reminder';
+				$notice_key  = $get_msg_key . '-reminder';
 
 				$this->p->notice->warn( $this->p->msgs->get( $get_msg_key ), null, $notice_key, true );	// Can be dismissed.
 			}
