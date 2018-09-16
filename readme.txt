@@ -332,15 +332,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.12.1-dev.8 (2018/09/15)**
+**Version 4.13.0-b.1 (2018/09/15)**
 
 * *New Features*
 	* None.
 * *Improvements*
+	* Refactored the BuddyPress integration modules to support ajax queries in the new BuddyPress templates (Pro version).
 	* Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button.
 	* Removed the Pinterest "Author Name Format" option.
 * *Bugfixes*
-	* Fixed the jQuery ajaxNoticesData '_notice_types' from a json encoded array to a CSV string to avoid matching a Comodo request filter.
+	* Fixed the jQuery ajaxNoticesData '_notice_types' query to avoid matching a Comodo request filter.
 * *Developer Notes*
 	* Changed the WPSSO_META_SAVE_PRIORITY constant from 5 to -10.
 	* Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 0 in order to run before caching plugins clear their cache.
@@ -386,9 +387,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.12.1-dev.8 =
+= 4.13.0-b.1 =
 
-(2018/09/15) Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button. Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 0 in order to run before caching plugins clear their cache.
+(2018/09/15) Refactored the BuddyPress integration modules to support ajax queries in the new BuddyPress templates (Pro version). Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button. Removed the Pinterest "Author Name Format" option.
 
 = 4.12.0 =
 
