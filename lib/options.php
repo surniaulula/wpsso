@@ -706,6 +706,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'code':		// code values cannot be blank
 				case 'preg':
 
+					$opt_val = preg_replace( '/[\r]+/', '', $opt_val );
+
 					break;
 
 				default:
@@ -1192,7 +1194,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * The "use" value should be 'default', 'empty', or 'force'.
 				 */
 				case ( preg_match( '/:use$/', $base_key ) ? true : false ):
+
 					return 'not_blank';
+
 					break;
 
 				/**
@@ -1200,21 +1204,27 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case ( strpos( $base_key, 'add_' ) === 0 ? true : false ):
 				case ( strpos( $base_key, 'plugin_filter_' ) === 0 ? true : false ):
+
 					return 'checkbox';
+
 					break;
 
 				/**
 				 * Empty string or must include at least one HTML tag.
 				 */
 				case 'og_vid_embed':
+
 					return 'html';
+
 					break;
 
 				/**
 				 * A regular expression.
 				 */
 				case ( preg_match( '/_preg$/', $base_key ) ? true : false ):
+
 					return 'preg';
+
 					break;
 
 				/**
@@ -1223,7 +1233,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( strpos( $base_key, '_js_' ) !== false ? true : false ):
 				case ( strpos( $base_key, '_css_' ) !== false ? true : false ):
 				case ( preg_match( '/(_css|_js|_html)$/', $base_key ) ? true : false ):
+
 					return 'code';
+
 					break;
 
 				/**
@@ -1232,7 +1244,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'gv_id_title':	// Title Field ID
 				case 'gv_id_desc':	// Description Field ID
 				case 'gv_id_img':	// Post Image Field ID
+
 					return 'blank_int';
+
 					break;
 
 				/**
@@ -1244,7 +1258,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_desc_hashtags': 
 				case ( preg_match( '/_(cache_exp|filter_prio)$/', $base_key ) ? true : false ):
 				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
+
 					return 'integer';
+
 					break;
 
 				/**
@@ -1253,7 +1269,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_upscale_img_max':
 				case 'plugin_min_shorten':
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
+
 					return 'pos_int';
+
 					break;
 
 				/**
@@ -1264,13 +1282,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'schema_img_id':
 				case 'tc_lrg_img_id':
 				case 'tc_sum_img_id':
+
 					return 'img_id';
 
 				/**
 				 * Must be numeric (blank and zero are ok).
 				 */
 				case 'product_price':
+
 					return 'blank_num';
+
 					break;
 
 				/**
@@ -1278,7 +1299,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case ( preg_match( '/_img_width$/', $base_key ) ? true : false ):
 				case ( preg_match( '/^tc_[a-z]+_width$/', $base_key ) ? true : false ):
+
 					return 'img_width';
+
 					break;
 
 				/**
@@ -1286,21 +1309,27 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case ( preg_match( '/_img_height$/', $base_key ) ? true : false ):
 				case ( preg_match( '/^tc_[a-z]+_height$/', $base_key ) ? true : false ):
+
 					return 'img_height';
+
 					break;
 
 				/**
 				 * Must be texturized.
 				 */
 				case 'og_title_sep':
+
 					return 'textured';
+
 					break;
 
 				/**
 				 * Empty of alpha-numeric uppercase (hyphens are allowed as well).
 				 */
 				case ( preg_match( '/_tid$/', $base_key ) ? true : false ):
+
 					return 'auth_id';
+
 					break;
 
 				/**
@@ -1310,7 +1339,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'fb_app_secret':
 				case 'p_dom_verify':
 				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
+
 					return 'api_key';
+
 					break;
 
 				/**
@@ -1341,7 +1372,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_yourls_token':
 				case ( strpos( $base_key, 'plugin_cf_' ) === 0 ? true : false ):	// value is name of meta key
 				case ( strpos( $base_key, '_filter_name' ) !== false ? true : false ):
+
 					return 'one_line';
+
 					break;
 
 				/**
@@ -1360,21 +1393,27 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( strpos( $base_key, '_crop_x' ) !== false ? true : false ):
 				case ( strpos( $base_key, '_crop_y' ) !== false ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $base_key ) ? true : false ):
+
 					return 'not_blank';
+
 					break;
 
 				/**
 				 * twitter-style usernames (prepend with an at).
 				 */
 				case 'tc_site':
+
 					return 'at_name';
+
 					break;
 
 				/**
 				 * Strip leading urls off facebook usernames.
 				 */
 				case 'fb_admins':
+
 					return 'url_base';
+
 					break;
 
 				/**
@@ -1405,14 +1444,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'tc_lrg_img_url':
 				case 'tc_sum_img_url':
 				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf['form']['social_accounts'][$base_key] ) ? true : false ):
+
 					return 'url';
+
 					break;
 
 				/**
 				 * CSS color code.
 				 */
 				case ( strpos( $base_key, '_color_' ) !== false ? true : false ):
+
 					return 'color';
+
 					break;
 			}
 

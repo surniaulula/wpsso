@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.13.0-b.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.13.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -881,7 +881,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3226 lib/options.php:1130 lib/submenu/essential.php:146
+#: lib/admin.php:3226 lib/options.php:1132 lib/submenu/essential.php:146
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -2775,12 +2775,12 @@ msgstr ""
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/gpl/social/buddypress.php:52 lib/pro/social/buddypress.php:94
+#: lib/gpl/social/buddypress.php:52 lib/pro/social/buddypress.php:100
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
-#: lib/gpl/social/buddypress.php:65 lib/pro/social/buddypress.php:110
+#: lib/gpl/social/buddypress.php:65 lib/pro/social/buddypress.php:119
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
 "Info</em> text from the WordPress user profile. If you've created an "
@@ -5224,23 +5224,23 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/options.php:1100
+#: lib/options.php:1102
 msgid "Plugin settings (%s) have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1163
+#: lib/options.php:1165
 msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1166
+#: lib/options.php:1168
 msgid "Please make sure this site can access the banner image at %1$s."
 msgstr ""
 
-#: lib/options.php:1171
+#: lib/options.php:1173
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
-#: lib/options.php:1174
+#: lib/options.php:1176
 msgid "Please correct the banner image at %s."
 msgstr ""
 
@@ -5281,7 +5281,7 @@ msgstr ""
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:758 lib/pro/social/buddypress.php:283
+#: lib/page.php:758 lib/pro/social/buddypress.php:452
 msgid "No Description"
 msgstr ""
 
