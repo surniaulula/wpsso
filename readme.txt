@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.8
 WC Tested Up To: 3.4.5
-Stable Tag: 4.12.0
+Stable Tag: 4.13.0
 
 Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.
 
