@@ -140,11 +140,11 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 
 * Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more.
 
-	**Optionally integrate and improve your favorite SEO plugin:**
+	**Optionally integrates and improves your favorite SEO plugin:**
 
 	WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and, if you desire, you can continue to use your favorite SEO content / keyword analysis tools without any conflicts!
 	
-	The Pro version comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.
+	*The Pro version comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.*
 
 * The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.
 
