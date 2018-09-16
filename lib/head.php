@@ -126,9 +126,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 
-			$mod = $this->p->util->get_page_mod( $use_post );	// Get post/user/term id, module name, and module object reference.
+			$mod        = $this->p->util->get_page_mod( $use_post );	// Get post/user/term id, module name, and module object reference.
 			$read_cache = true;
-			$mt_og = array();
+			$mt_og      = array();
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );

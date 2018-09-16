@@ -771,11 +771,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'num'            => $num,
-					'size_name'      => $size_name,
-					'mod'            => $mod,
-					'check_dupes'    => $check_dupes,
-					'content strlen' => strlen( $content ),
+					'num'              => $num,
+					'size_name'        => $size_name,
+					'mod'              => $mod,
+					'check_dupes'      => $check_dupes,
+					'strlen( content )' => strlen( $content ),
 				) );
 			}
 

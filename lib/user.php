@@ -325,7 +325,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			if ( get_user_meta( $user_id, $meta_key, true ) === '' ) {	// returns empty string if meta not found
+
 				$mod = $this->get_mod( $user_id );
+
 				$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );	// $read_cache = true
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}

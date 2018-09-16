@@ -325,7 +325,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( self::get_term_meta( $term_id, $meta_key, true ) === '' ) {	// returns empty string if meta not found
+
 				$mod = $this->get_mod( $term_id );
+
 				$head_meta_tags = $this->p->head->get_head_array( false, $mod, true );	// $read_cache = true
 				$head_meta_info = $this->p->head->extract_head_info( $mod, $head_meta_tags );
 			}

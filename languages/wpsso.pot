@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.12.1-dev.7\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.12.1-dev.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -111,7 +111,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:925 lib/post.php:777 lib/term.php:440 lib/user.php:443
+#: lib/admin.php:925 lib/post.php:777 lib/term.php:442 lib/user.php:445
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -343,7 +343,7 @@ msgstr ""
 msgid "%d of %d site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2097 lib/script.php:211 lib/script.php:244
+#: lib/admin.php:2097 lib/script.php:219 lib/script.php:252
 msgid "No new %s notifications."
 msgstr ""
 
@@ -2775,12 +2775,12 @@ msgstr ""
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
-#: lib/gpl/social/buddypress.php:52 lib/pro/social/buddypress.php:92
+#: lib/gpl/social/buddypress.php:52 lib/pro/social/buddypress.php:94
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
-#: lib/gpl/social/buddypress.php:65 lib/pro/social/buddypress.php:108
+#: lib/gpl/social/buddypress.php:65 lib/pro/social/buddypress.php:110
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
 "Info</em> text from the WordPress user profile. If you've created an "
@@ -5244,44 +5244,44 @@ msgstr ""
 msgid "Please correct the banner image at %s."
 msgstr ""
 
-#: lib/page.php:324 lib/page.php:326 lib/page.php:588 lib/page.php:590
-#: lib/page.php:658
+#: lib/page.php:346 lib/page.php:348 lib/page.php:614 lib/page.php:616
+#: lib/page.php:690
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:399
+#: lib/page.php:421
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:644
+#: lib/page.php:673
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:649
+#: lib/page.php:680
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:669
+#: lib/page.php:701
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:676
+#: lib/page.php:708
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:680
+#: lib/page.php:712
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:684
+#: lib/page.php:716
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:688
+#: lib/page.php:720
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:726
+#: lib/page.php:758 lib/pro/social/buddypress.php:283
 msgid "No Description"
 msgstr ""
 
@@ -5412,7 +5412,7 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1371 lib/script.php:220
+#: lib/post.php:1371 lib/script.php:228
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
@@ -5482,17 +5482,17 @@ msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr ""
 
-#: lib/pro/form/gravityview.php:71
+#: lib/pro/form/gravityview.php:72
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr ""
 
-#: lib/pro/form/gravityview.php:75
+#: lib/pro/form/gravityview.php:76
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr ""
 
-#: lib/pro/form/gravityview.php:79
+#: lib/pro/form/gravityview.php:80
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
@@ -5693,7 +5693,7 @@ msgstr ""
 msgid "adding schema for place"
 msgstr ""
 
-#: lib/script.php:185
+#: lib/script.php:189
 msgid "Select Image"
 msgstr ""
 
@@ -6095,7 +6095,7 @@ msgid ""
 "for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:585
+#: lib/term.php:587
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -6116,23 +6116,23 @@ msgid ""
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:640
+#: lib/user.php:642
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:722
+#: lib/user.php:724
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:723
+#: lib/user.php:725
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:724
+#: lib/user.php:726
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1172
+#: lib/user.php:1174
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 

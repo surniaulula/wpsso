@@ -2571,64 +2571,68 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_mod_salt( array $mod, $sharing_url = false ) {
 
-			$salt = '';
+			$mod_salt = '';
 
 			if ( ! empty( $mod['name'] ) ) {
 
-				$salt .= '_' . $mod['name'] . ':';
+				$mod_salt .= '_' . $mod['name'] . ':';
 
 				if ( $mod['id'] === false ) {
-					$salt .= 'false';
+					$mod_salt .= 'false';
 				} elseif ( $mod['id'] === true ) {
-					$salt .= 'true';
+					$mod_salt .= 'true';
 				} elseif ( empty( $mod['id'] ) ) {
-					$salt .= '0';
+					$mod_salt .= '0';
 				} else {
-					$salt .= $mod['id'];
+					$mod_salt .= $mod['id'];
 				}
 			}
 
 			if ( ! empty( $mod['tax_slug'] ) ) {
-				$salt .= '_tax:' . $mod['tax_slug'];
+				$mod_salt .= '_tax:' . $mod['tax_slug'];
 			}
 
 			if ( empty( $mod['id'] ) ) {
+
 				if ( ! empty( $mod['is_home'] ) ) {
-					$salt .= '_home';
+					$mod_salt .= '_home';
 				}
+
 				if ( ! empty( $sharing_url ) ) {
-					$salt .= '_url:' . $sharing_url;
+					$mod_salt .= '_url:' . $sharing_url;
 				}
 			}
 
-			return ltrim( $salt, '_' ); // Remove leading underscore.
+			$mod_salt = ltrim( $mod_salt, '_' ); // Remove leading underscore.
+
+			return apply_filters( 'sucom_mod_salt', $mod_salt, $sharing_url );
 		}
 
-		public static function get_query_salt( $salt = '' ) {
+		public static function get_query_salt( $query_salt = '' ) {
 
 			global $wp_query;
 
 			if ( isset( $wp_query->query ) ) {
-				$salt = self::get_implode_assoc( '_', ':', $wp_query->query, $salt );
+				$query_salt = self::get_implode_assoc( '_', ':', $wp_query->query, $query_salt );
 			}
 
-			return $salt;
+			return apply_filters( 'sucom_query_salt', $query_salt );
 		}
 
-		public static function get_implode_assoc( $val_glue, $key_glue, array $arr, $salt = '' ) {
+		public static function get_implode_assoc( $val_glue, $key_glue, array $arr, $salt_str = '' ) {
 
 			foreach ( $arr as $key => $val ) {
 
-				$salt .= $val_glue;
+				$salt_str .= $val_glue;
 
 				if ( is_array( $val ) ) {
-					$salt .= self::get_implode_assoc( $val_glue, $key_glue, $val, $salt );
+					$salt_str .= self::get_implode_assoc( $val_glue, $key_glue, $val, $salt_str );
 				} else {
-					$salt .= (string) $key . $key_glue . $val;
+					$salt_str .= (string) $key . $key_glue . $val;
 				}
 			}
 
-			return ltrim( $salt, $val_glue );
+			return ltrim( $salt_str, $val_glue );
 		}
 
 		/**
@@ -2809,26 +2813,33 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$post_obj = false; // Return false by default.
 
 			if ( is_numeric( $use_post ) && $use_post > 0 ) {
+
 				$post_obj = get_post( $use_post );
 
 			} elseif ( true === $use_post && ! empty( $GLOBALS['post']->ID ) ) {
+
 				$post_obj = $GLOBALS['post'];
 
 			/**
 			 * The 'sucom_is_post_page' filter is used by the buddypress module.
 			 */
 			} elseif ( false === $use_post && apply_filters( 'sucom_is_post_page', ( is_singular() ? true : false ), $use_post ) ) {
+
 				$post_obj = get_queried_object();
 
 			} elseif ( ! is_home() && is_front_page() && get_option( 'show_on_front' ) === 'page' ) { // Static front page.
+
 				$post_obj = get_post( get_option( 'page_on_front' ) );
 
 			} elseif ( is_home() && ! is_front_page() && get_option( 'show_on_front' ) === 'page' ) { // Static posts page.
+
 				$post_obj = get_post( get_option( 'page_for_posts' ) );
 
 			} elseif ( is_admin() ) {
+
 				if ( ( $post_id = self::get_request_value( 'post_ID', 'POST' ) ) !== '' || // Uses sanitize_text_field().
 					( $post_id = self::get_request_value( 'post', 'GET' ) ) !== '' ) {
+
 					$post_obj = get_post( $post_id );
 				}
 			}
@@ -3145,6 +3156,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$ret = true;
 				}
 			}
+
 			return apply_filters( 'sucom_is_product_category', $ret );
 		}
 
@@ -3844,12 +3856,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function minify_css( $css_data, $lca ) {
+
 			if ( ! empty( $css_data ) ) {
+
 				$classname = apply_filters( $lca . '_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
+
 				if ( $classname !== false && class_exists( $classname ) ) {
 					$css_data = call_user_func( array( $classname, 'process' ), $css_data );
 				}
 			}
+
 			return $css_data;
 		}
 

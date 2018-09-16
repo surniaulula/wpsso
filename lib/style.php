@@ -35,7 +35,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->log( 'screen base = ' . SucomUtil::get_screen_base() );
 			}
 
-			$css_file_ext = SucomUtil::get_const( 'WPSSO_DEV' ) ? 'css' : 'min.css';
+			/**
+			 * Do not use minified CSS if the DEV constant is defined.
+			 */
+			$doing_dev      = SucomUtil::get_const( 'WPSSO_DEV' );
+			$css_file_ext   = $doing_dev ? 'css' : 'min.css';
 			$plugin_version = WpssoConfig::get_version();
 
 			/**
@@ -224,13 +228,17 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$cache_id         = $cache_md5_pre . md5( $cache_salt );
 
-			$read_cache = SucomUtil::get_const( 'WPSSO_DEV' ) ? false : true;	// Read cache by default.
+			/**
+			 * Do not use transient cache if the DEV constant is defined.
+			 */
+			$doing_dev = SucomUtil::get_const( 'WPSSO_DEV' );
+			$use_cache = $doing_dev ? false : true;
 
 			wp_enqueue_style( 'sucom-admin-page',
 				$plugin_urlpath . 'css/com/admin-page.' . $css_file_ext,
 					array(), $plugin_version );
 
-			if ( $read_cache ) {
+			if ( $use_cache ) {
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// not empty
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'admin page style retrieved from cache' );
@@ -483,10 +491,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			}
 
-			if ( $read_cache ) {
+			if ( $use_cache ) {
+
 				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
 					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->p->lca );
 				}
+
 				set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 			}
 

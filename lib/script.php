@@ -62,7 +62,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->log( 'screen base = '.SucomUtil::get_screen_base() );
 			}
 
-			$js_file_ext = SucomUtil::get_const( 'WPSSO_DEV' ) ? 'js' : 'min.js';
+			/**
+			 * Do not use minified JS if the DEV constant is defined.
+			 */
+			$doing_dev      = SucomUtil::get_const( 'WPSSO_DEV' );
+			$js_file_ext    = $doing_dev ? 'js' : 'min.js';
 			$plugin_version = WpssoConfig::get_version();
 
 			/**
@@ -192,7 +196,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$js_file_ext = SucomUtil::get_const( 'WPSSO_DEV' ) ? 'js' : 'min.js';
+			/**
+			 * Do not use minified JS if the DEV constant is defined.
+			 */
+			$doing_dev      = SucomUtil::get_const( 'WPSSO_DEV' );
+			$js_file_ext    = $doing_dev ? 'js' : 'min.js';
 			$plugin_version = WpssoConfig::get_version();
 
 			wp_enqueue_script( 'sucom-block-editor-admin', 
