@@ -332,7 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.13.0-rc.1 (2018/09/15)**
+**Version 4.13.0 (2018/09/16)**
 
 * *New Features*
 	* None.
@@ -387,11 +387,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.13.0-rc.1 =
+= 4.13.0 =
 
-(2018/09/15) Refactored the BuddyPress integration modules to support ajax queries in the new BuddyPress templates (Pro version). Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button. Removed the Pinterest "Author Name Format" option.
-
-= 4.12.0 =
-
-(2018/09/09) Added three new options under the SSO &gt; Advanced &gt; Cache Settings tab. Added a "Product SKU" option in the Document SSO metabox. Renamed the "Preserve Settings on Uninstall" option to "Remove All Settings on Uninstall" (unchecked by default).
+(2018/09/16) Refactored the BuddyPress integration modules to support ajax queries in the new BuddyPress templates (Pro version). Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button. Removed the Pinterest "Author Name Format" option.
 
