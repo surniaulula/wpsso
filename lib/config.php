@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.12.1-dev.8',	// Plugin version.
+					'version'     => '4.13.0-b.1',	// Plugin version.
 					'opt_version' => '610',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -852,9 +852,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_desc_hashtags'             => 0,
 					'p_publisher_url'              => '',			// (localized)
 					'p_dom_verify'                 => '',
-					'p_add_img_html'               => 0,			// Add Hidden Image for Pin It Button
 					'p_add_nopin_header_img_tag'   => 1,			// Add "nopin" to Site Header Image
 					'p_add_nopin_media_img_tag'    => 0,			// Add "nopin" to WordPress Media
+					'p_add_img_html'               => 0,			// Add Hidden Image for Pin It Button
 					'sc_publisher_url'             => '',
 					'seo_desc_len'                 => 156,			// Meta name="description" maximum text length (hard limit).
 					'seo_author_field'             => 'gplus',

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.12.1-dev.8\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.13.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4420,20 +4420,20 @@ msgstr ""
 
 #: lib/messages.php:1743
 msgid ""
-"Add the Google / Schema image to the content (in a hidden container) for the "
-"Pinterest Pin It browser button."
-msgstr ""
-
-#: lib/messages.php:1749
-msgid ""
 "Add a \"nopin\" attribute to the header image (since WP v4.4) to prevent the "
 "Pin It button from suggesting that image."
 msgstr ""
 
-#: lib/messages.php:1755
+#: lib/messages.php:1749
 msgid ""
 "Add a \"nopin\" attribute to images from the WordPress Media Library to "
 "prevent the Pin It button from suggesting those images."
+msgstr ""
+
+#: lib/messages.php:1755
+msgid ""
+"Add the Google / Schema image to the content (in a hidden container) for the "
+"Pinterest Pin It browser button."
 msgstr ""
 
 #: lib/messages.php:1839 lib/messages.php:2029
@@ -6040,17 +6040,17 @@ msgstr ""
 
 #: lib/submenu/general.php:289
 msgctxt "option label"
-msgid "Add Hidden Image for Pin It Button"
+msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
 #: lib/submenu/general.php:293
 msgctxt "option label"
-msgid "Add \"nopin\" to Site Header Image"
+msgid "Add \"nopin\" to WordPress Media"
 msgstr ""
 
 #: lib/submenu/general.php:297
 msgctxt "option label"
-msgid "Add \"nopin\" to WordPress Media"
+msgid "Add Hidden Image for Pin It Button"
 msgstr ""
 
 #: lib/submenu/general.php:305

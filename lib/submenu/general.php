@@ -285,10 +285,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Pinterest Verification ID', 'option label', 'wpsso' ), '', 'p_dom_verify' ) . 
 					'<td>' . $this->form->get_input( 'p_dom_verify', 'api_key' ) . '</td>';
 
-					$table_rows['p_add_img_html'] = '' . 
-					$this->form->get_th_html( _x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' ), '', 'p_add_img_html' ) . 
-					'<td>' . $this->form->get_checkbox( 'p_add_img_html' ) . '</td>';
-
 					$table_rows['p_add_nopin_header_img_tag'] = '' . 
 					$this->form->get_th_html( _x( 'Add "nopin" to Site Header Image', 'option label', 'wpsso' ), '', 'p_add_nopin_header_img_tag' ) . 
 					'<td>' . $this->form->get_checkbox( 'p_add_nopin_header_img_tag' ) . '</td>';
@@ -296,6 +292,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows['p_add_nopin_media_img_tag'] = '' . 
 					$this->form->get_th_html( _x( 'Add "nopin" to WordPress Media', 'option label', 'wpsso' ), '', 'p_add_nopin_media_img_tag' ) . 
 					'<td>' . $this->form->get_checkbox( 'p_add_nopin_media_img_tag' ) . '</td>';
+
+					$table_rows['p_add_img_html'] = '' . 
+					$this->form->get_th_html( _x( 'Add Hidden Image for Pin It Button', 'option label', 'wpsso' ), '', 'p_add_img_html' ) . 
+					'<td>' . $this->form->get_checkbox( 'p_add_img_html' ) . '</td>';
 
 					break;
 

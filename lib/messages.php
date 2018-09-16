@@ -1738,12 +1738,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-p_add_img_html':	// Add Hidden Image for Pin It Button
-
-							$text = __( 'Add the Google / Schema image to the content (in a hidden container) for the Pinterest Pin It browser button.', 'wpsso' );
-
-							break;
-
 						case 'tooltip-p_add_nopin_header_img_tag':	// Add "nopin" to Site Header Image
 
 							$text = __( 'Add a "nopin" attribute to the header image (since WP v4.4) to prevent the Pin It button from suggesting that image.', 'wpsso' );
@@ -1753,6 +1747,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-p_add_nopin_media_img_tag':	// Add "nopin" to WordPress Media
 
 							$text = __( 'Add a "nopin" attribute to images from the WordPress Media Library to prevent the Pin It button from suggesting those images.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-p_add_img_html':	// Add Hidden Image for Pin It Button
+
+							$text = __( 'Add the Google / Schema image to the content (in a hidden container) for the Pinterest Pin It browser button.', 'wpsso' );
 
 							break;
 
