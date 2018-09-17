@@ -2422,12 +2422,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			if ( $this->p->avail['seo']['autodescription'] ) {
 
-				$the_seo_framework = the_seo_framework();
+				$tsf = the_seo_framework();
+
+				$opts = $tsf->get_all_options();
 
 				/**
 				 * The SEO Framework > Social Meta Settings Metabox
 				 */
 				$settings_url = get_admin_url( null, 'admin.php?page=theseoframework-settings' );
+
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: please ignore - translation uses a 3rd party text domain
 					__( 'The SEO Framework', 'autodescription' ) . ' &gt; ' .
@@ -2452,7 +2455,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'article:modified_time', $posts_i18n ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
-					if ( $the_seo_framework->is_option_checked( $opt_key ) ) {
+					if ( ! empty( $opts[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'autodescription ' . $opt_key . ' option is checked' );
@@ -2472,7 +2475,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					// translators: please ignore - translation uses a 3rd party text domain
 					__( 'Schema Settings', 'autodescription' ) . '</a>';
 
-				if ( $the_seo_framework->is_option_checked( 'knowledge_output' ) ) {
+				if ( ! empty( $opts[ 'knowledge_output' ] ) ) {
 
 					// translators: please ignore - translation uses a 3rd party text domain
 					$label_transl = '<strong>' . __( 'Output Authorized Presence?', 'autodescription' ) . '</strong>';
