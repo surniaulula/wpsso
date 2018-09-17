@@ -106,9 +106,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						$this->p->debug->log( 'enqueuing scripts for addons and licenses page' );
 					}
 
-					add_thickbox();	// required for the plugin details box
+					add_thickbox();	// Required for the plugin details box.
 
-					wp_enqueue_script( 'plugin-install' );	// required for the plugin details box
+					wp_enqueue_script( 'plugin-install' );	// Required for the plugin details box.
 
 					// no break
 
@@ -166,11 +166,15 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				case 'plugin-install.php':
 
 					if ( isset( $_GET['plugin'] ) ) {
+
 						$plugin_slug = $_GET['plugin'];
+
 						if ( isset( $this->p->cf['*']['slug'][$plugin_slug] ) ) {
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'enqueuing scripts for plugin install page' );
 							}
+
 							$this->add_plugin_install_iframe_script( $hook_name );
 						}
 					}
@@ -345,11 +349,15 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 */
 			$custom_script_js = '
 jQuery( document ).ready( function(){
+
 	jQuery( "body#plugin-information.iframe a[id$=_from_iframe]" ).on( "click", function(){
+
 		if ( window.top.location.href.indexOf( "page=' . $this->p->lca . '-" ) ) {
+
 			var plugin_url = jQuery( this ).attr( "href" );
 			var pageref_url_arg = "&' . $this->p->lca . '_pageref_url=" + encodeURIComponent( window.top.location.href );
 			var pageref_title_arg = "&' . $this->p->lca . '_pageref_title=" + encodeURIComponent( jQuery( "h1", window.parent.document ).text() );
+
 			window.top.location.href = plugin_url + pageref_url_arg + pageref_title_arg;
 		}
 	});
