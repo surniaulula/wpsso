@@ -1888,7 +1888,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'' : '<p>' . htmlentities( _x( $info['desc'], 'plugin description', 'wpsso' ),
 						ENT_QUOTES, $charset, false ) . '</p>';
 
-				$table_rows['plugin_name'] = '<td colspan="2" class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
+				$table_rows['plugin_name'] = '<td class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
 					$plugin_name_html . $plugin_desc_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
 						implode( ' | ', $ext_links ) . '</div>' ) . '</td>';
 
@@ -1896,7 +1896,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Plugin separator.
 				 */
 				if ( $ext_num < $ext_total ) {
-					$table_rows['dotted_line'] = '<td colspan="2" class="ext-info-plugin-separator"></td>';
+					$table_rows['dotted_line'] = '<td class="ext-info-plugin-separator"></td>';
 				} else {
 					$table_rows[] = '<td></td>';
 				}
