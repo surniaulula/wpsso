@@ -332,6 +332,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.13.1-dev.1 (2018/09/17)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* Fixed deprecated call to generate_description() for The SEO Framework (Pro version).
+* *Developer Notes*
+	* None.
+
 **Version 4.13.0 (2018/09/16)**
 
 * *New Features*
@@ -386,6 +397,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored SucomNotice methods to handle / store notices for different user IDs than the current user ID.
 
 == Upgrade Notice ==
+
+= 4.13.1-dev.1 =
+
+(2018/09/17) Fixed deprecated call to generate_description() for The SEO Framework (Pro version).
 
 = 4.13.0 =
 
