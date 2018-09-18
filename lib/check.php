@@ -152,7 +152,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'seo-autodescription':
 
-							$chk['plugin'] = 'autodescription/autodescription.php';
+							$chk['function'] = 'the_seo_framework';
 
 							break;
 
