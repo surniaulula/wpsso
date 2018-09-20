@@ -81,11 +81,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$desc_idx  = array( 'schema_desc', 'seo_desc', 'og_desc' );
 				$desc_text = $this->p->page->get_description( $desc_len, '...', $mod, true, false, true, $desc_idx );
 
-				$img_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n" . 
-					'<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n" . 
-					'<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" width="0" height="0" style="width:0;height:0;" ' . 
-					'data-pin-description="' . $desc_text . '" alt=""/>' . "\n" . 	// Empty alt required for w3c validation.
-					'</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";
+				$img_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n";
+				$img_html .= '<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n";
+				$img_html .= '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" width="0" height="0" style="width:0;height:0;" ' . 
+					'data-pin-description="' . esc_attr( $desc_text ) . '" alt=""/>' . "\n"; 	// Empty alt required for w3c validation.
+				$img_html .= '</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";
 
 				$content = $img_html . $content;
 			}

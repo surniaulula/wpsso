@@ -3412,21 +3412,41 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		/**
+		 * Deprecated on 2018/09/20.
+		 */
 		public static function get_json_decode_scripts( $html, $assoc = true ) {
+			return $this->get_json_scripts( $html );
+		}
 
-			$data = array();
+		public static function get_json_scripts( $html, $do_decode = true ) {
+
+			$json_data = array();
 
 			if ( is_string( $html ) ) {
+
 				if ( preg_match_all( '/<script type=[\'"]application\/ld\+json[\'"]>(.*)<\/script>/Usi',
 					$html, $all_matches, PREG_SET_ORDER ) ) {
 
 					foreach ( $all_matches as $num => $matches ) {
-						$data[] = json_decode( $matches[1], $assoc );
+
+						$json_md5 = md5( $matches[1] );	// md5() input must be a string.
+					
+						if ( $do_decode ) {	// Return only the decoded json data.
+
+							$json_decoded = json_decode( $matches[1], $assoc = true );
+
+							$json_data[ $json_md5 ] = $json_decoded;
+
+						} else {	// Return the complete script container.
+
+							$json_data[ $json_md5 ] = $matches[0];
+						}
 					}
 				}
 			}
 
-			return $data;
+			return $json_data;
 		}
 
 		public static function is_mobile() {
