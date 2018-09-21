@@ -22,9 +22,9 @@ Easy, complete, accurate, and automatic - give social sites and search engines b
 
 <h3>What makes WPSSO Core better?</h3>
 
-**Makes sure your content looks great on all social sites and search results &mdash; no matter how that content crawled, shared, or re-shared!**
+**Makes sure your content looks great on all social sites and search results &mdash; no matter how that content is crawled, shared, or re-shared!**
 
-WPSSO Core makes sure social and search crawlers always get the most optimized and comprehensive information about your webpage content.
+WPSSO Core makes sure social and search crawlers always get the most *optimized* and *comprehensive* information about your webpage content.
 
 **Uses your *existing content* for meta tags and Schema markup:**
 
