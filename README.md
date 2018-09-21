@@ -17,9 +17,9 @@
 
 <h3>What makes WPSSO Core better?</h3>
 
-<p><strong>Makes sure your content looks great on social sites and in search results &mdash; no matter how that content is shared or re-shared!</strong></p>
+<p><strong>Makes sure your content looks great on all social sites and search results &mdash; no matter how that content crawled, shared, or re-shared!</strong></p>
 
-<p>WPSSO Core makes sure social and search crawlers always get the most optimized and comprehensive information about your content.</p>
+<p>WPSSO Core makes sure social and search crawlers always get the most optimized and comprehensive information about your webpage content.</p>
 
 <p><strong>Uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
