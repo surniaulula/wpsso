@@ -22,9 +22,13 @@ Easy, complete, accurate, and automatic - give social sites and search engines b
 
 <h3>What makes WPSSO Core better?</h3>
 
+**Makes sure your content looks great on social sites and in search results &mdash; no matter how that content is shared or re-shared!**
+
+WPSSO Core makes sure social and search crawlers always get the most optimized and comprehensive information about your content.
+
 **Uses your *existing content* for meta tags and Schema markup:**
 
-There's no need to manually re-enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads all your existing WordPress content automatically, and you can optionally fine-tune and customize just about anything and everything. ;-)
+There's no need to manually re-enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing WordPress content automatically, and you can also fine-tune and customize just about anything and everything. ;-)
 
 WPSSO Core is language / locale aware, allowing you to customize your site information, social pages and Knowledge Graph for different languages!
 
