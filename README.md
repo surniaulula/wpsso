@@ -55,20 +55,26 @@
 <h3>WPSSO Core Standard Features</h3>
 
 <ul>
-<li><p>Creates complete and accurate meta tags for:</p>
+<li><p>Complete and accurate meta tags for all social sites, including:</p>
 
 <ul>
+<li>Buffer</li>
 <li>Facebook / Open Graph</li>
 <li>Google+</li>
 <li>Google's Knowledge Graph</li>
 <li>Google's Rich Card SEO</li>
 <li>LinkedIn</li>
+<li>ManageWP</li>
 <li>Pinterest Rich Pins</li>
+<li>Pocket</li>
+<li>Skype</li>
 <li>Twitter Cards</li>
-<li>Weibo and many more.</li>
+<li>WhatsApp</li>
+<li>Weibo</li>
+<li>And many, many more. :)</li>
 </ul></li>
-<li><p>Offers Pinterest-specific Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</p></li>
-<li><p>Provides settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.</p></li>
+<li><p>Pinterest Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</p></li>
+<li><p>Optional settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.</p></li>
 <li><p>Includes support for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.</p></li>
 <li><p>Uses images from a variety of sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.</p></li>
 <li><p>Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Card SEO, Pinterest Rich Pins, and Twitter Cards.</p></li>

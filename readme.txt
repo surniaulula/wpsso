@@ -57,20 +57,26 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 
 <h3>WPSSO Core Standard Features</h3>
 
-* Creates complete and accurate meta tags for:
+* Complete and accurate meta tags for all social sites, including:
 
+	* Buffer
 	* Facebook / Open Graph
 	* Google+
 	* Google's Knowledge Graph
 	* Google's Rich Card SEO
 	* LinkedIn
+	* ManageWP
 	* Pinterest Rich Pins
+	* Pocket
+	* Skype
 	* Twitter Cards
-	* Weibo and many more.
+	* WhatsApp
+	* Weibo
+	* And many, many more. :)
 
-* Offers Pinterest-specific Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
+* Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
 
-* Provides settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.
+* Optional settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.
 
 * Includes support for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
 
