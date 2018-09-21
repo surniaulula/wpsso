@@ -57,7 +57,7 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 
 <h3>WPSSO Core Standard Features</h3>
 
-* Complete and accurate meta tags for all social sites, including:
+* Complete and accurate meta tags for ALL social sites, including:
 
 	* Buffer
 	* Facebook / Open Graph
@@ -338,7 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.13.1-dev.2 (2018/09/17)**
+**Version 4.13.1-dev.3 (2018/09/21)**
 
 * *New Features*
 	* None.
@@ -404,9 +404,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.13.1-dev.2 =
+= 4.13.1-dev.3 =
 
-(2018/09/17) Fixed deprecated call to generate_description() for The SEO Framework (Pro version).
+(2018/09/21) Fixed deprecated call to generate_description() for The SEO Framework (Pro version).
 
 = 4.13.0 =
 
