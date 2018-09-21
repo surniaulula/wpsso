@@ -196,9 +196,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'social-buddyblog':
+
+							$chk['class'] = 'BuddyBlog';
+
+							break;
+
 						case 'social-buddypress':
 
-							$chk['plugin'] = 'buddypress/bp-loader.php';
+							$chk['class'] = 'BuddyPress';
 
 							break;
 
