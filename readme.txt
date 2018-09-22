@@ -22,9 +22,9 @@ Easy, complete, accurate, and automatic - give social sites and search engines b
 
 <h3>What makes WPSSO Core better?</h3>
 
-**Makes sure your content looks great on social sites and search results &mdash; no matter how that content is crawled, shared, or re-shared!**
+**Makes sure your content looks great - no matter how it's crawled, shared, or re-shared!**
 
-WPSSO Core makes sure all social crawlers, search engine crawlers, browser extensions, mail and messenger apps (FB Messenger, Skype, WhatsApp, etc.), always get *optimized* and *comprehensive* information about your webpage content.
+WPSSO Core makes sure all social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), always get *optimized* and *comprehensive* information about your webpage content.
 
 **Uses your *existing content* for meta tags and Schema markup:**
 
@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.13.1-dev.3 (2018/09/21)**
+**Version 4.13.1-dev.4 (2018/09/21)**
 
 * *New Features*
 	* None.
@@ -408,7 +408,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.13.1-dev.3 =
+= 4.13.1-dev.4 =
 
 (2018/09/21) Fixed deprecated call to generate_description() for The SEO Framework (Pro version).
 
