@@ -59,7 +59,7 @@
 <h3>WPSSO Core Standard Features</h3>
 
 <ul>
-<li><p>Complete and accurate meta tags for ALL social sites, including:</p>
+<li><p>Complete and accurate meta tags for ALL social sites, search engines, and messaging apps:</p>
 
 <ul>
 <li>Buffer</li>
@@ -75,7 +75,7 @@
 <li>Twitter Cards</li>
 <li>WhatsApp</li>
 <li>Weibo</li>
-<li>And many, many more. :)</li>
+<li><strong>And many more.</strong> :)</li>
 </ul></li>
 <li><p>Pinterest Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</p></li>
 <li><p>Optional settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.</p></li>

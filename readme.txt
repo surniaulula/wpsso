@@ -61,7 +61,7 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 
 <h3>WPSSO Core Standard Features</h3>
 
-* Complete and accurate meta tags for ALL social sites, including:
+* Complete and accurate meta tags for ALL social sites, search engines, and messaging apps:
 
 	* Buffer
 	* Facebook / Open Graph
@@ -76,7 +76,7 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 	* Twitter Cards
 	* WhatsApp
 	* Weibo
-	* And many, many more. :)
+	* **And many more.** :)
 
 * Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
 
