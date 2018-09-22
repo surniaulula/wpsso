@@ -24,7 +24,7 @@ Easy, complete, accurate, and automatic - give social sites and search engines b
 
 **Makes sure your content looks great - no matter how it's crawled, shared, or re-shared!**
 
-WPSSO Core makes sure all social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), always get *optimized* and *comprehensive* information about your webpage content.
+WPSSO Core makes sure all social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), always get *accurate* and *optimized* information about your webpage content.
 
 **Uses your *existing content* for meta tags and Schema markup:**
 
