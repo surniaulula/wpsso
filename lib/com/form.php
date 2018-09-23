@@ -404,15 +404,26 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							$html .= "\n" . '<script type="text/javascript">
 								jQuery.each( [ "show", "hide" ], function( i, ev ){
+
 									var el = jQuery.fn[ ev ];
+
 									jQuery.fn[ ev ] = function(){
+
+										var result = el.apply( this, arguments );
+
 										if ( jQuery( this ).is( "tr" ) ) {
+
 											var css_class = jQuery( this ).attr( "class" );
+
 											if ( css_class && css_class.indexOf( "hide_" ) == 0 ) {
-												this.trigger( ev );
+												
+												result.promise().done( function (){
+													this.trigger( ev, [ result ] );
+												});
 											}
 										}
-										return el.apply( this, arguments );
+
+										return result;
 									};
 								});
 							</script>';
