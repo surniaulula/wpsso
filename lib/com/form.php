@@ -417,9 +417,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 											if ( css_class && css_class.indexOf( "hide_" ) == 0 ) {
 
 												/* Make sure the VC change handler is not triggered. */
-												delete changeHandler;
+												if ( "undefined" !== typeof( changeHandler ) ) {
 
-												this.trigger( ev );
+													changeHandlerSaved = changeHandler;
+													changeHandler = function() { return; }
+
+													this.trigger( ev );
+
+													changeHandler = changeHandlerSaved;
+													delete changeHandlerSaved;
+
+												} else {
+													this.trigger( ev );
+												}
 											}
 										}
 
