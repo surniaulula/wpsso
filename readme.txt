@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.13.1-b.1 (2018/09/22)**
+**Version 4.13.1-b.2 (2018/09/23)**
 
 * *New Features*
 	* None.
@@ -353,6 +353,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Added detection of the BuddyBlog plugin in the WpssoCheck get_avail() method.
 	* Renamed the SucomUtil get_json_decode_scripts() method to get_json_scripts() and added a $do_encode = true argument.
+	* Fine-tuned the "show" and "hide" jQuery function hooks to trigger only for specific table rows.
 
 **Version 4.13.0 (2018/09/16)**
 
@@ -409,9 +410,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.13.1-b.1 =
+= 4.13.1-b.2 =
 
-(2018/09/22) Fixed deprecated call to generate_description() for The SEO Framework (Pro version).
+(2018/09/23) Fixed deprecated call to generate_description() for The SEO Framework (Pro version).
 
 = 4.13.0 =
 
