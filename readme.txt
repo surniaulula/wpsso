@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.13.1-b.4 (2018/09/23)**
+**Version 4.13.1-b.5 (2018/09/23)**
 
 * *New Features*
 	* None.
@@ -410,7 +410,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.13.1-b.4 =
+= 4.13.1-b.5 =
 
 (2018/09/23) Fixed deprecated call to generate_description() for The SEO Framework (Pro version).
 
