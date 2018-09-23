@@ -416,7 +416,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 											if ( css_class && css_class.indexOf( "hide_" ) == 0 ) {
 
-												this.data( "vc.accordion", this ).getRelatedTab = function() { return void 0; };
+												/* Make sure the VC change handler is not triggered. */
+												delete changeHandler;
 
 												this.trigger( ev );
 											}
