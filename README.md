@@ -17,9 +17,9 @@
 
 <h3>What makes WPSSO Core better?</h3>
 
-<p><strong>Makes sure your content looks great - no matter how it's crawled, shared, or re-shared!</strong></p>
+<p><strong>Makes sure your content looks great - no matter how it's crawled, shared, re-shared, or posted!</strong></p>
 
-<p>WPSSO Core makes sure all social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), always get <em>optimized</em> and <em>accurate</em> information about your webpage content.</p>
+<p>WPSSO Core makes sure ALL social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), always get <em>optimized</em> and <em>accurate</em> information about your webpage content.</p>
 
 <p><strong>Uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
