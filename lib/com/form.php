@@ -402,31 +402,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							$show_hide_event_added = true;
 
-							$html .= "\n" . '<script type="text/javascript">
-								jQuery.each( [ "show", "hide" ], function( i, ev ){
-
-									var el = jQuery.fn[ ev ];
-
-									jQuery.fn[ ev ] = function(){
-
-										var result = el.apply( this, arguments );
-
-										if ( jQuery( this ).is( "tr" ) ) {
-
-											var css_class = jQuery( this ).attr( "class" );
-
-											if ( css_class && css_class.indexOf( "hide_" ) == 0 ) {
-												
-												result.promise().done( function (){
-													this.trigger( ev, [ result ] );
-												});
+							$html .= '
+								<script type="text/javascript">
+									jQuery.each( [ "show", "hide" ], function( i, ev ){
+										var el = jQuery.fn[ ev ];
+										jQuery.fn[ ev ] = function(){
+											if ( jQuery( this ).is( "tr" ) ) {
+												var css_class = jQuery( this ).attr( "class" );
+												if ( css_class && css_class.indexOf( "hide_" ) == 0 ) {
+													this.trigger( ev );
+												}
 											}
-										}
-
-										return result;
-									};
-								});
-							</script>';
+											return el.apply( this, arguments );
+										};
+									});
+								</script>';
 						}
 
 						// No break.
