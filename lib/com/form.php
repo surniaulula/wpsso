@@ -403,10 +403,22 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							$show_hide_event_added = true;
 
 							$html .= "\n" . '<script type="text/javascript">
+
 								jQuery.each( [ "show", "hide" ], function( i, ev ){
+
 									var el = jQuery.fn[ ev ];
+
 									jQuery.fn[ ev ] = function(){
-										this.trigger( ev );
+
+										if ( jQuery( this ).is( "tr" ) ) {
+
+											var css_class = jQuery( this ).attr( "class" );
+
+											if ( css_class && css_class.indexOf( "hide_" ) == 0 ) {
+												this.trigger( ev );
+											}
+										}
+
 										return el.apply( this, arguments );
 									};
 								});
