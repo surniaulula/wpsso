@@ -414,7 +414,3 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 (2018/09/23) Fixed deprecated call to generate_description() for The SEO Framework (Pro version).
 
-= 4.13.0 =
-
-(2018/09/16) Refactored the BuddyPress integration modules to support ajax queries in the new BuddyPress templates (Pro version). Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button. Removed the Pinterest "Author Name Format" option.
-
