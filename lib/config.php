@@ -967,8 +967,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:pretax_price:currency'          => 1,
 					'add_meta_property_product:price:amount'                   => 1,
 					'add_meta_property_product:price:currency'                 => 1,
-					'add_meta_property_product:sale_price:amount'              => 1,
-					'add_meta_property_product:sale_price:currency'            => 1,
 					'add_meta_property_product:product_link'                   => 1,
 					'add_meta_property_product:purchase_limit'                 => 1,
 					'add_meta_property_product:retailer'                       => 1,
@@ -2053,6 +2051,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'video:duration'     => '',
 						'video:release_date' => '',
 						'video:tag'          => '',
+					),
+				),
+				'og_type_array' => array(
+					'product' => array(
+						'product:original_price:amount'   => true,	// Used by WooCommerce module.
+						'product:original_price:currency' => true,	// Used by WooCommerce module.
+						'product:pretax_price:amount'     => true,
+						'product:pretax_price:currency'   => true,
+						'product:price:amount'            => true,
+						'product:price:currency'          => true,
+						'product:sale_price:amount'       => true,	// Used by WooCommerce module.
+						'product:sale_price:currency'     => true,	// Used by WooCommerce module.
 					),
 				),
 				'og_content_map' => array(

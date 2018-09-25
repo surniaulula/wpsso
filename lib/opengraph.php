@@ -711,21 +711,19 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				if ( ! empty( $mt_og['product:offers'] ) && is_array( $mt_og['product:offers'] ) ) {
 
-					/**
-					 * Facebook only reads certain product meta tags, like product prices, as an array of values.
-					 */
-					$allow_multiple = array(
-						'product:price:amount',
-						'product:price:currency',
-					);
+					foreach ( $mt_og['product:offers'] as $num => $offer ) {
 
-					foreach( $allow_multiple as $mt_name ) {
-						foreach ( $mt_og['product:offers'] as $num => $offer ) {
-							if ( isset( $offer[$mt_name] ) ) {
-								$mt_og['product'][$num][$mt_name] = $offer[$mt_name];
+						foreach( $offer as $mt_name => $mt_value ) {
+
+							if ( isset( $this->p->cf['head']['og_type_array']['product'][$mt_name] ) ) {
+
+								$mt_og['product'][$num][$mt_name] = $mt_value;
+
+								if ( isset( $mt_og[$mt_name] ) ) {
+									unset ( $mt_og[$mt_name] );
+								}
 							}
 						}
-						unset ( $mt_og[$mt_name] );
 					}
 				
 				} elseif ( isset( $mt_og['product:price:amount'] ) ) {
