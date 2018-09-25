@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: facebook, pinterest, twitter, linkedin, schema, meta tags, open graph, social sharing, image, like, share, seo, local seo, knowledge graph, rich cards, rich pins, twitter cards, woocommerce, nextgen gallery
+Tags: facebook, pinterest, twitter, linkedin, meta tags, open graph, rich pins, rich cards, twitter cards, knowledge graph, schema, social sharing, share buttons, seo, woocommerce, nextgen gallery
 Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
