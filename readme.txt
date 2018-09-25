@@ -342,6 +342,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.14.0-dev.1 (2018/09/24)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Include the 'product:price:amount' and 'product:price:currency' meta tags for each product variation, if available.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.13.1 (2018/09/23)**
 
 * *New Features*
@@ -409,6 +420,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored SucomNotice methods to handle / store notices for different user IDs than the current user ID.
 
 == Upgrade Notice ==
+
+= 4.14.0-dev.1 =
+
+(2018/09/24) Include the 'product:price:amount' and 'product:price:currency' meta tags for each product variation, if available.
 
 = 4.13.1 =
 
