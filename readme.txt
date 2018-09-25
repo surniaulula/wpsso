@@ -347,7 +347,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Include the 'product:price:amount' and 'product:price:currency' meta tags for each product variation, if available.
+	* Added the Open Graph 'product:price:amount' and 'product:price:currency' meta tags for each product variation, if available.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -423,7 +423,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.14.0-dev.1 =
 
-(2018/09/24) Include the 'product:price:amount' and 'product:price:currency' meta tags for each product variation, if available.
+(2018/09/24) Added the Open Graph 'product:price:amount' and 'product:price:currency' meta tags for each product variation, if available.
 
 = 4.13.1 =
 
