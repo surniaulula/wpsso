@@ -2185,10 +2185,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':image:alt'        => '',
 			);
 
-			if ( ! empty( $mt_og ) ) {
-				$og_ret = array_merge( $og_ret, $mt_og );
-			}
-
 			return self::maybe_merge_mt_og( $og_ret, $mt_og );
 		}
 
@@ -2252,6 +2248,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':weight:value'                    => '',
 				$mt_pre . ':weight:units'                    => '',
 			);
+
+			if ( isset( $mt_og['og:type'] ) && $mt_og['og:type'] === 'product' ) {
+				$og_ret[ $mt_pre ]              = array();		// Non-standard / internal meta tag.
+				$og_ret[ $mt_pre . ':offers' ]  = array();		// Non-standard / internal meta tag.
+				$og_ret[ $mt_pre . ':reviews' ] = array();		// Non-standard / internal meta tag.
+			}
 
 			return self::maybe_merge_mt_og( $og_ret, $mt_og );
 		}

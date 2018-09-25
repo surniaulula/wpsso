@@ -706,9 +706,31 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 				}
 
-				if ( isset( $mt_og['product:price:amount'] ) ) {
+				/**
+				 * Include variations (aka product offers) if available.
+				 */
+				if ( ! empty( $mt_og['product:offers'] ) && is_array( $mt_og['product:offers'] ) ) {
 
-					if ( is_numeric( $mt_og['product:price:amount'] ) ) {	// allow for price of 0
+					/**
+					 * Facebook only reads certain product meta tags, like product prices, as an array of values.
+					 */
+					$allow_multiple = array(
+						'product:price:amount',
+						'product:price:currency',
+					);
+
+					foreach( $allow_multiple as $mt_name ) {
+						foreach ( $mt_og['product:offers'] as $num => $offer ) {
+							if ( isset( $offer[$mt_name] ) ) {
+								$mt_og['product'][$num][$mt_name] = $offer[$mt_name];
+							}
+						}
+						unset ( $mt_og[$mt_name] );
+					}
+				
+				} elseif ( isset( $mt_og['product:price:amount'] ) ) {
+
+					if ( is_numeric( $mt_og['product:price:amount'] ) ) {	// Allow for price of 0.
 
 						if ( empty( $mt_og['product:price:currency'] ) ) {
 							$mt_og['product:price:currency'] = $this->p->options['plugin_def_currency'];
@@ -724,6 +746,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						unset( $mt_og['product:price:currency'] );
 					}
 				}
+
 			}
 
 			/**
@@ -945,9 +968,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				foreach ( $og_ret as $num => $og_single_video ) {
+
 					foreach ( SucomUtil::preg_grep_keys( '/^og:image(:.*)?$/', $og_single_video ) as $k => $v ) {
 						unset ( $og_ret[$num][$k] );
 					}
+
 					$og_ret[$num]['og:video:has_image'] = false;
 				}
 			}
@@ -1343,7 +1368,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$mt_search = array(
 						$mt_media_pre . ':secure_url',	// og:image:secure_url
 						$mt_media_pre . ':url',		// og:image:url
-						$mt_media_pre,		// og:image
+						$mt_media_pre,			// og:image
 					);
 
 					break;
@@ -1449,17 +1474,27 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * Called by WpssoHead::get_head_array() before merging all meta tag arrays.
 		 */
-		public function sanitize_array( array $mod, array $mt_og ) {
+		public function sanitize_array( array $mod, array $mt_og, $og_type = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			if ( empty( $mt_og['og:type'] ) ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'og:type is empty and required for sanitation' );
+			if ( empty( $og_type ) ) {
+				if ( empty( $mt_og['og:type'] ) ) {
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'og:type is empty and required for sanitation' );
+					}
+					return $mt_og;
 				}
-				return $mt_og;
+				$og_type = $mt_og['og:type'];
+			}
+
+			if ( ! empty( $mt_og[$og_type] ) && is_array( $mt_og[$og_type] ) ) {
+
+				foreach ( $mt_og[$og_type] as $num => $mt_arr ) {
+					$mt_og[$og_type][$num] = $this->sanitize_array( $mod, $mt_arr, $og_type );
+				}
 			}
 
 			foreach ( $this->p->cf['head']['og_type_mt'] as $type_id => $og_type_mt_md ) {
@@ -1468,7 +1503,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( isset( $mt_og[$mt_name] ) ) {
 
-						if (  $type_id !== $mt_og['og:type'] ) {	// Mis-matched meta tag for this og:type
+						if (  $type_id !== $og_type ) {	// Mis-matched meta tag for this og:type
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'removing extra meta tag ' . $mt_name );
