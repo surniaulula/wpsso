@@ -3418,7 +3418,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Deprecated on 2018/09/20.
 		 */
 		public static function get_json_decode_scripts( $html, $assoc = true ) {
-			return $this->get_json_scripts( $html );
+			return self::get_json_scripts( $html );
 		}
 
 		public static function get_json_scripts( $html, $do_decode = true ) {
