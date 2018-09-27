@@ -80,25 +80,25 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 
 * Pinterest Rich Pin meta tags and [Structured Data](https://developers.google.com/search/docs/guides/intro-structured-data) Schema markup for Google.
 
-* Optional settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.
+* Configurable website / business social accounts for Schema markup and Google's Knowledge Graph.
 
-* Includes support for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
+* Adds author, publisher, and website markup using Schema JSON-LD for Google's Knowledge Graph.
 
-* Uses images from a variety of sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
+* User profile contact fields for Facebook / Open Graph, Twitter Cards, Schema markup, and Google's Knowledge Graph.
+
+* Adds markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
+
+* Includes meta tags and markup for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.
+
+* Uses images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
 
 * Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Card SEO, Pinterest Rich Pins, and Twitter Cards.
 
 * Configurable maximum title and description lengths, including both hard and soft limits.
 
+* Optional settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.
+
 * Contextual help for *every* plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
-
-* Configurable website / business social accounts for Schema markup and Google's Knowledge Graph.
-
-* Adds author, publisher, and website markup using Schema JSON-LD for Google's Knowledge Graph.
-
-* Adds markup for the [Google Sitelinks Searchbox](https://developers.google.com/search/docs/data-types/sitelinks-searchbox).
-
-* User profile contact fields for Facebook / Open Graph, Twitter Cards, Schema markup, and Google's Knowledge Graph.
 
 * Built-in support for [Accelerated Mobile Pages (AMP)](https://wordpress.org/plugins/amp/) and [AMP for WP - Accelerated Mobile Pages](https://wordpress.org/plugins/accelerated-mobile-pages/) plugins.
 
@@ -142,7 +142,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 
 * Twitter [Player Card](https://dev.twitter.com/cards/types/player) meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
 
-* Include or exclude individual Facebook / Open Graph / Google / SEO / Twitter Card / Schema meta tag from the webpage head section.
+* Include or exclude individual Facebook, Open Graph, Twitter Card, Pinterest, Schema, and SEO meta tag from the webpage head section.
 
 * Allows customization of field names, labels, and add / remove contacts on user profile pages and Co-Authors Plus guest author profiles.
 
