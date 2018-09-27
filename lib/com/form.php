@@ -113,8 +113,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$value = $this->options[$name];
 			}
 
-			return ( $is_checkbox ? $this->get_hidden( 'is_checkbox_' . $name, 1, false ) : '' ) . 	// recurse
-				'<input type="hidden" name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '" value="' . esc_attr( $value ) . '" />';
+			$html = $is_checkbox ? $this->get_hidden( 'is_checkbox_' . $name, 1, false ) : '';
+			$html .= '<input type="hidden" name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '" ' .
+				'value="' . esc_attr( $value ) . '" />' . "\n";
+
+			return $html;
 		}
 
 		/**
@@ -608,8 +611,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$css_class = trim( 'timezone ' . $css_class );
 			$timezones = timezone_identifiers_list();
 
-			if ( empty( $this->defaults[$name] ) ) {
-				$this->defaults[$name] = get_option( 'timezone_string' );
+			if ( empty( $this->defaults[ $name ] ) ) {
+
+				/**
+				 * The timezone string will be empty if a UTC offset, instead
+				 * of a city, has selected in the WordPress settings.
+				 */
+				$this->defaults[ $name ] = get_option( 'timezone_string' );
+
+				if ( empty( $this->defaults[ $name ] ) ) {
+					$this->defaults[ $name ] = 'UTC';
+				}
 			}
 
 			return $this->get_select( $name, $timezones, $css_class, $css_id, false, $disabled, $selected, false );
@@ -735,8 +747,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $tabindex ) ? '' : ' tabindex="' . esc_attr( $tabindex ) . '"' ) .
 				( empty( $len['max'] ) ? '' : ' maxLength="' . esc_attr( $len['max'] ) . '"' ) .
 				( empty( $len['warn'] ) ? '' : ' warnLength="' . esc_attr( $len['warn'] ) . '"' ) .
-				( $this->get_placeholder_events( 'input', $placeholder ) ) . ' value="' . esc_attr( $value ) . '" />' .
-				( empty( $len['max'] ) ? '' : ' <div id="text_' . esc_attr( $css_id ) . '-lenMsg"></div>' );
+				( $this->get_placeholder_events( 'input', $placeholder ) ) . ' value="' . esc_attr( $value ) . '" />' . "\n" .
+				( empty( $len['max'] ) ? '' : ' <div id="text_' . esc_attr( $css_id ) . '-lenMsg"></div>' ) . "\n";
 
 			return $html;
 		}
@@ -771,6 +783,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$input_id    = empty( $css_id ) ? '' : $css_id;
 
 			foreach ( range( 0, $end_num, 1 ) as $key_num ) {
+
 				if ( $max_input > 1 ) {
 					$input_id = empty( $css_id ) ? '' : $css_id . '_' . $key_num;
 					$html .= '<div class="wrap_multi">' . "\n";
@@ -780,7 +793,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					( empty( $input_class ) ? '' : ' class="' . esc_attr( $input_class ) . '"' ) .
 					( empty( $input_id ) ? '' : ' id="text_' . esc_attr( $input_id ) . '"' ) .
 					( $placeholder === '' ? '' : ' placeholder="' . esc_attr( $placeholder ) . '"' ) .
-					' value="' . esc_attr( $value ) . '" />';
+					' value="' . esc_attr( $value ) . '" />' . "\n";
 
 				if ( $max_input > 1 ) {
 					$html .= '</div>' . "\n";
@@ -1091,10 +1104,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					( $display ? '' : ' style="display:none;"' ) . '>' . "\n";
 
 				if ( $disabled && $key_num >= $show_first && empty( $display ) ) {
+
 					continue;
+
 				} elseif ( $opt_disabled ) {
+
 					$html .= $this->get_no_input( $opt_key, $input_class, $input_id );	// adds 'text_' to the id value
+
 				} else {
+
 					$html .= '<input type="text"' .
 						' name="' . esc_attr( $this->options_name . '[' . $opt_key . ']' ) . '"' .
 						' class="' . esc_attr( $input_class ) . '"' .
@@ -1119,6 +1137,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_date_time_iso( $name_prefix = '', $disabled = false ) {
+
 			return $this->get_input_date( $name_prefix . '_date', '', '', '', '', $disabled ) . ' ' .
 				$this->get_value_transl( 'at' ) . ' ' .
 				$this->get_select_time( $name_prefix . '_time', '', '', $disabled, false, 30 ) . ' ' .

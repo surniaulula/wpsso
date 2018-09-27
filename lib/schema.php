@@ -2588,7 +2588,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$sharing_url = $wpsso->util->get_sharing_url( $mod );
-			$event_opts = apply_filters( $wpsso->lca . '_get_event_options', false, $mod, $event_id );
+			$event_opts  = apply_filters( $wpsso->lca . '_get_event_options', false, $mod, $event_id );
 
 			if ( ! empty( $event_opts ) ) {
 				if ( $wpsso->debug->enabled ) {
@@ -2738,12 +2738,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = self::get_schema_type_context( $event_type_url );
 
-			if ( isset( $event_opts['event_organizer_person_id'] ) && SucomUtil::is_opt_id( $event_opts['event_organizer_person_id'] ) ) {
-				if ( ! self::add_single_person_data( $ret['organizer'], $mod, $event_opts['event_organizer_person_id'], false ) ) {
+			/**
+			 * Event organizer person.
+			 */
+			if ( isset( $event_opts['event_org_person_id'] ) && SucomUtil::is_opt_id( $event_opts['event_org_person_id'] ) ) {
+				if ( ! self::add_single_person_data( $ret['organizer'], $mod, $event_opts['event_org_person_id'], false ) ) {
 					unset( $ret['organizer'] );
 				}
 			}
 
+			/**
+			 * Event venue.
+			 */
 			if ( isset( $event_opts['event_place_id'] ) && SucomUtil::is_opt_id( $event_opts['event_place_id'] ) ) {
 				if ( ! self::add_single_place_data( $ret['location'], $mod, $event_opts['event_place_id'], false ) ) {
 					unset( $ret['location'] );
@@ -3518,7 +3524,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function add_mt_schema_from_og( array &$mt_schema, array &$assoc, array $names ) {
+
 			foreach ( $names as $itemprop_name => $key_name ) {
+
 				if ( ! empty( $assoc[$key_name] ) && $assoc[$key_name] !== WPSSO_UNDEF ) {
 					$mt_schema[$itemprop_name] = $assoc[$key_name];
 				}
@@ -3823,9 +3831,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$mt_author = array_merge(
-				( empty( $author_url ) ? array() : $this->p->head->get_single_mt( 'link', 'itemprop', $itemprop . '.url', $author_url, '', $user_mod ) ),
-				( empty( $author_name ) ? array() : $this->p->head->get_single_mt( 'meta', 'itemprop', $itemprop . '.name', $author_name, '', $user_mod ) ),
-				( empty( $author_desc ) ? array() : $this->p->head->get_single_mt( 'meta', 'itemprop', $itemprop . '.description', $author_desc, '', $user_mod ) )
+				( empty( $author_url ) ? array() : $this->p->head->get_single_mt( 'link',
+					'itemprop', $itemprop . '.url', $author_url, '', $user_mod ) ),
+				( empty( $author_name ) ? array() : $this->p->head->get_single_mt( 'meta',
+					'itemprop', $itemprop . '.name', $author_name, '', $user_mod ) ),
+				( empty( $author_desc ) ? array() : $this->p->head->get_single_mt( 'meta',
+					'itemprop', $itemprop . '.description', $author_desc, '', $user_mod ) )
 			);
 
 			/**
