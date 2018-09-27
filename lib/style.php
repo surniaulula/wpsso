@@ -362,8 +362,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( ! empty( $this->p->options['plugin_col_def_width'] ) ) {
 				$custom_style_css .= '
 					table.wp-list-table.pages > thead > tr > th,	/* default column width for posts and pages */
-					table.wp-list-table.pages > tbody > tr > td,
-					table.wp-list-table.posts > thead > tr > th,
 					table.wp-list-table.posts > tbody > tr > td {
 						width:'.$this->p->options['plugin_col_def_width'].';
 					}
@@ -380,8 +378,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			$custom_style_css .= '
-				table.wp-list-table > thead > tr > th.column-cb,
-				table.wp-list-table > tbody > tr > td.column-cb {
+				table.wp-list-table > thead > tr > td#cb,
+				table.wp-list-table > thead > tr > td.column-cb,
+				table.wp-list-table > thead > tr > td.check-column,
+				table.wp-list-table > tbody > tr > th.check-column,
+				table.wp-list-table > tbody > tr > th.column-cb {
 					width:2.2em;
 				}
 				table.wp-list-table > thead > tr > th.column-author,
@@ -404,7 +405,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-date,
 				table.wp-list-table > thead > tr > th.column-expirationdate,
 				table.wp-list-table > tbody > tr > td.column-expirationdate {
-					width:15%;
+					width:7em;
 				}
 				table.wp-list-table > thead > tr > th.column-seotitle,	/* All In One SEO */
 				table.wp-list-table > tbody > tr > td.column-seotitle,

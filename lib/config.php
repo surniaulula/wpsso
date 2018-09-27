@@ -1138,7 +1138,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_desc_col_term'       => 0,
 					'plugin_og_desc_col_user'       => 1,
 					'plugin_col_def_width'          => '15%',
-					'plugin_col_title_width'        => '25%',
+					'plugin_col_title_width'        => '20em',
 					'plugin_add_to_attachment'      => 1,
 					'plugin_add_to_page'            => 1,
 					'plugin_add_to_post'            => 1,
