@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 4.14.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-09-25 14:00-0600\n"
-"PO-Revision-Date: 2018-09-25 14:00-0600\n"
+"PO-Revision-Date: 2018-09-28 06:54-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -223,7 +223,7 @@ msgstr "Vider tout et URLs raccourcies"
 
 #: lib/admin.php:1398
 msgid "Expiration option value has been modified by a filter."
-msgstr "Valeur d’expiration de l’option a été modifiée par un filtre."
+msgstr "Valeur d'expiration de l'option a été modifiée par un filtre."
 
 #: lib/admin.php:1429 lib/admin.php:1430
 msgid "Not Available"
@@ -3150,7 +3150,7 @@ msgstr "La bibliothèque de média et un ID d'image pour votre image de site Web
 
 #: lib/messages.php:602 lib/messages.php:614
 msgid "The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content."
-msgstr "L'image par défaut est utilisé pour les pages d’archives, et comme image de repli pour les articles et pages qui n’ont pas d'image en vedette, jointe, ou dans leur contenu."
+msgstr "L'image par défaut est utilisé pour les pages d'archives, et comme image de repli pour les articles et pages qui n'ont pas d'image en vedette, jointe, ou dans leur contenu."
 
 #: lib/messages.php:608
 msgid "You can enter a default image URL (including the http:// prefix) instead of choosing an image ID &mdash; if a default image ID is specified, it has precedence and the image URL option is disabled."
@@ -4264,7 +4264,7 @@ msgstr "Modules d'intégration pour extensions tierces et APIs de services."
 
 #: lib/messages.php:2453
 msgid "Ability to purchase Pro add-ons."
-msgstr "Possibilité d’acheter des ajouts Pro."
+msgstr "Possibilité d'acheter des ajouts Pro."
 
 #: lib/messages.php:2457
 msgid "<strong>Pro licenses never expire</strong> &mdash; you may receive unlimited / lifetime updates and support for each licensed WordPress Site Address."
