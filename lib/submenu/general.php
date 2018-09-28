@@ -58,9 +58,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$tabs = apply_filters( $this->p->lca . '_general_' . $metabox_id . '_tabs', array(
 				'general' => _x( 'Site Information', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Titles / Descriptions', 'metabox tab', 'wpsso' ),
-				'author' => _x( 'Authorship', 'metabox tab', 'wpsso' ),
-				'images' => _x( 'Images', 'metabox tab', 'wpsso' ),
-				'videos' => _x( 'Videos', 'metabox tab', 'wpsso' ),
+				'author'  => _x( 'Authorship', 'metabox tab', 'wpsso' ),
+				'images'  => _x( 'Images', 'metabox tab', 'wpsso' ),
+				'videos'  => _x( 'Videos', 'metabox tab', 'wpsso' ),
 			) );
 
 			$table_rows = array();

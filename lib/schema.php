@@ -96,13 +96,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function filter_plugin_image_sizes( $sizes, $mod, $crawler_name ) {
 
 			$sizes['schema_img'] = array(		// Options prefix.
-				'name' => 'schema',
+				'name'  => 'schema',
 				'label' => _x( 'Google / Schema Image', 'image size label', 'wpsso' ),
 			);
 
 			$sizes['schema_article_img'] = array(	// Options prefix
-				'name' => 'schema-article',
-				'label' => _x( 'Google / Schema Image', 'image size label', 'wpsso' ),
+				'name'   => 'schema-article',
+				'label'  => _x( 'Google / Schema Image', 'image size label', 'wpsso' ),
 				'prefix' => 'schema_img',
 			);
 
@@ -2565,7 +2565,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Add Single Methods:
+		 * Add single methods:
 		 *
 		 *	add_single_event_data()
 		 *	add_single_job_data()
@@ -2583,12 +2583,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'event', $event_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
+			if ( $ret !== false ) {	// 0 or 1 if data was retrieved from cache.
 				return $ret;
 			}
 
 			$sharing_url = $wpsso->util->get_sharing_url( $mod );
-			$event_opts  = apply_filters( $wpsso->lca . '_get_event_options', false, $mod, $event_id );
+
+			/**
+			 * Maybe get options from Pro version integration modules.
+			 */
+			$event_opts = apply_filters( $wpsso->lca . '_get_event_options', false, $mod, $event_id );
 
 			if ( ! empty( $event_opts ) ) {
 				if ( $wpsso->debug->enabled ) {
@@ -2597,7 +2601,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Add Optional Place ID
+			 * Add optional place ID.
 			 */
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'checking for custom event place id (null by default)' );
@@ -2615,7 +2619,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$event_opts['event_place_id'] = apply_filters( $wpsso->lca . '_get_event_place_id', $event_opts['event_place_id'], $mod, $event_id );
 
 			/**
-			 * Add ISO Date Options
+			 * Add ISO date options.
 			 */
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'checking for custom event start/end date and time' );
@@ -2629,7 +2633,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) );
 
 			/**
-			 * Add Event Offers
+			 * Add event offers.
 			 */
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'checking for custom event offers' );
@@ -2808,12 +2812,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'job', $job_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
+			if ( $ret !== false ) {	// 0 or 1 if data was retrieved from cache.
 				return $ret;
 			}
 
 			/**
-			 * Get job options from Pro modules and/or custom filters.
+			 * Maybe get options from Pro version integration modules.
 			 */
 			$job_opts = apply_filters( $wpsso->lca . '_get_job_options', false, $mod, $job_id );
 
@@ -2849,6 +2853,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'checking for custom job expire date and time' );
 			}
+
 			self::add_mod_opts_date_iso( $mod, $job_opts, array( 'job_expire' => 'schema_job_expire' ) );
 
 			/**
@@ -2943,7 +2948,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'organization', $org_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
+			if ( $ret !== false ) {	// 0 or 1 if data was retrieved from cache.
 				return $ret;
 			}
 
@@ -3002,9 +3007,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			) );
 
 			/**
-			 * Organization Logo
+			 * Organization logo.
 			 *
-			 * $logo_key can be false, 'org_logo_url' (default), or 'org_banner_url' (600x60px image) for Articles
+			 * $logo_key can be false, 'org_logo_url' (default), or 'org_banner_url' (600x60px image) for Articles.
 			 */
 			if ( ! empty( $logo_key ) ) {
 
@@ -3035,7 +3040,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Place / Location Properties
+			 * Place / location properties.
 			 */
 			if ( isset( $org_opts['org_place_id'] ) && SucomUtil::is_opt_id( $org_opts['org_place_id'] ) ) {
 
@@ -3068,7 +3073,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Google's Knowledge Graph
+			 * Google's knowledge graph.
 			 */
 			$org_opts['org_sameas'] = isset( $org_opts['org_sameas'] ) ? $org_opts['org_sameas'] : array();
 			$org_opts['org_sameas'] = apply_filters( $wpsso->lca . '_json_data_single_organization_sameas', $org_opts['org_sameas'], $mod, $org_id );
@@ -3117,11 +3122,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'person', $user_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
+			if ( $ret !== false ) {	// 0 or 1 if data was retrieved from cache.
 				return $ret;
 			}
 
 			$size_name   = $wpsso->lca . '-schema';
+
+			/**
+			 * Maybe get options from Pro version integration modules.
+			 */
 			$person_opts = apply_filters( $wpsso->lca . '_get_person_options', false, $mod, $user_id );
 
 			if ( ! empty( $person_opts ) ) {
@@ -3217,7 +3226,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Google's Knowledge Graph
+			 * Google's knowledge graph.
 			 */
 			$person_opts['person_sameas'] = isset( $person_opts['person_sameas'] ) ? $person_opts['person_sameas'] : array();
 			$person_opts['person_sameas'] = apply_filters( $wpsso->lca . '_json_data_single_person_sameas', $person_opts['person_sameas'], $mod, $user_id );
@@ -3251,11 +3260,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'place', $place_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1 (data retrieved from cache)
+			if ( $ret !== false ) {	// 0 or 1 if data was retrieved from cache.
 				return $ret;
 			}
 
 			$size_name  = $wpsso->lca . '-schema';
+
+			/**
+			 * Maybe get options from Pro version integration modules.
+			 */
 			$place_opts = apply_filters( $wpsso->lca . '_get_place_options', false, $mod, $place_id );
 
 			if ( ! empty( $place_opts ) ) {
@@ -3406,7 +3419,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			/**
-			 * Image
+			 * Image.
 			 */
 			if ( ! empty( $place_opts['place_img_id'] ) || ! empty( $place_opts['place_img_url'] ) ) {
 

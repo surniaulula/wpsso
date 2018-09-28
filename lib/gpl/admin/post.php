@@ -84,128 +84,165 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$form_rows = array(
 				'og_type' => array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_type' ),
+					'th_class' => 'medium',
+					'td_class' => 'blank',
 					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'post-og_type', 'td_class' => 'blank',
+					'tooltip'  => 'post-og_type',
 					'content'  => $form->get_select( 'og_type', $og_types,
 						'', '', true, $def_og_type, $def_og_type, 'unhide_rows' ) .
 							$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_art_section' => array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
+					'th_class' => 'medium',
+					'td_class' => 'blank',
 					'label'    => _x( 'Article Topic', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'post-og_art_section', 'td_class' => 'blank',
+					'tooltip'  => 'post-og_art_section',
 					'content'  => $form->get_select( 'og_art_section', $art_topics,
 						'', '', false, $def_art_section, $def_art_section ) .
 							$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_title' => array(
 					'no_auto_draft' => true,
-					'label'         => _x( 'Default Title', 'option label', 'wpsso' ),
-					'th_class'      => 'medium', 'tooltip' => 'meta-og_title', 'td_class' => 'blank',
-					'content'       => $form->get_no_input_value( $def_og_title, 'wide' ),
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Title', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_title',
+					'content'  => $form->get_no_input_value( $def_og_title, 'wide' ),
 				),
 				'og_desc' => array(
 					'no_auto_draft' => true,
-					'label'         => _x( 'Default Description', 'option label', 'wpsso' ),
-					'th_class'      => 'medium', 'tooltip' => 'post-og_desc', 'td_class' => 'blank',
-					'content'       => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'post-og_desc',
+					'content'  => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
 				),
 				'seo_desc' => array(
 					'no_auto_draft' => true,
-					'tr_class'      => ( $add_meta_name_desc ? '' : 'hide_in_basic' ), // Always hide if head tag is disabled.
-					'label'         => _x( 'Search Description', 'option label', 'wpsso' ),
-					'th_class'      => 'medium', 'tooltip' => 'meta-seo_desc', 'td_class' => 'blank',
-					'content'       => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) .
+					'tr_class' => ( $add_meta_name_desc ? '' : 'hide_in_basic' ), // Always hide if head tag is disabled.
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Search Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-seo_desc',
+					'content'  => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) .
 						( $add_meta_name_desc ? '' : '<p class="status-msg smaller">' . 
 							sprintf( $seo_msg_transl, 'meta name description' ) . '</p>' ),
 				),
 				'tc_desc' => array(
 					'no_auto_draft' => true,
-					'label'         => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
-					'th_class'      => 'medium', 'tooltip' => 'meta-tc_desc', 'td_class' => 'blank',
-					'content'       => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-tc_desc',
+					'content'  => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),
 				),
 				'sharing_url' => array(
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
-					'tr_class'      => $form->get_css_class_hide( 'basic', 'sharing_url' ),
-					'label'         => _x( 'Sharing URL', 'option label', 'wpsso' ),
-					'th_class'      => 'medium', 'tooltip' => 'meta-sharing_url', 'td_class' => 'blank',
-					'content'       => $form->get_no_input_value( $sharing_url, 'wide' ),
+					'tr_class' => $form->get_css_class_hide( 'basic', 'sharing_url' ),
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Sharing URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-sharing_url',
+					'content'  => $form->get_no_input_value( $sharing_url, 'wide' ),
 				),
 				'canonical_url' => array(
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
 					'tr_class' => ( $add_link_rel_canon ? $form->get_css_class_hide( 'basic', 'canonical_url' ) : 'hide_in_basic' ),
-					'label' => _x( 'Canonical URL', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-canonical_url', 'td_class' => 'blank',
-					'content' => $form->get_no_input_value( $canonical_url, 'wide' ) .
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Canonical URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-canonical_url',
+					'content'  => $form->get_no_input_value( $canonical_url, 'wide' ) .
 						( $add_link_rel_canon ? '' : '<p class="status-msg smaller">' . 
 							sprintf( $seo_msg_transl, 'link rel canonical' ) . '</p>' ),
 				),
 				'product_avail' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
-					'label' => _x( 'Product Availability', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-product_avail', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'product_avail',
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Availability', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_avail',
+					'content'  => $form->get_no_select( 'product_avail',
 						$this->p->cf['form']['item_availability'] ),
 				),
 				'product_brand' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
-					'label' => _x( 'Product Brand', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-product_brand', 'td_class' => 'blank',
-					'content' => $form->get_no_input( 'product_brand', '', '', true ),	// $placeholder is true for default value.
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Brand', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_brand',
+					'content'  => $form->get_no_input( 'product_brand', '', '', true ),	// $placeholder is true for default value.
 				),
 				'product_color' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
-					'label' => _x( 'Product Color', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-product_color', 'td_class' => 'blank',
-					'content' => $form->get_no_input( 'product_color', '', '', true ),	// $placeholder is true for default value.
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Color', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_color',
+					'content'  => $form->get_no_input( 'product_color', '', '', true ),	// $placeholder is true for default value.
 				),
 				'product_condition' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
-					'label' => _x( 'Product Condition', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-product_condition', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'product_condition', $this->p->cf['form']['item_condition'] ),
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Condition', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_condition',
+					'content'  => $form->get_no_select( 'product_condition', $this->p->cf['form']['item_condition'] ),
 				),
 				'product_material' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
-					'label' => _x( 'Product Material', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-product_material', 'td_class' => 'blank',
-					'content' => $form->get_no_input( 'product_material', '', '', true ),	// $placeholder is true for default value.
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Material', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_material',
+					'content'  => $form->get_no_input( 'product_material', '', '', true ),	// $placeholder is true for default value.
 				),
 				'product_sku' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
-					'label' => _x( 'Product SKU', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-product_sku', 'td_class' => 'blank',
-					'content' => $form->get_no_input( 'product_sku', '', '', true ),	// $placeholder is true for default value.
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product SKU', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_sku',
+					'content'  => $form->get_no_input( 'product_sku', '', '', true ),	// $placeholder is true for default value.
 				),
 				'product_price' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
-					'label' => _x( 'Product Price', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-product_price', 'td_class' => 'blank',
-					'content' => $form->get_no_input( 'product_price', '', '', true ) . ' ' . 	// $placeholder is true for default value.
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Price', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_price',
+					'content'  => $form->get_no_input( 'product_price', '', '', true ) . ' ' . 	// $placeholder is true for default value.
 						$form->get_no_select( 'product_currency', SucomUtil::get_currency_abbrev(), 'currency' ),
 				),
 				'product_size' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
-					'label' => _x( 'Product Size', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-product_size', 'td_class' => 'blank',
-					'content' => $form->get_no_input( 'product_size', '', '', true ),	// $placeholder is true for default value.
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Size', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_size',
+					'content'  => $form->get_no_input( 'product_size', '', '', true ),	// $placeholder is true for default value.
 				),
 				'product_gender' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
-					'label' => _x( 'Product Target Gender', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-product_gender', 'td_class' => 'blank',
-					'content' => $form->get_no_select( 'product_gender', $this->p->cf['form']['audience_gender'] ),
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Target Gender', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_gender',
+					'content'  => $form->get_no_select( 'product_gender', $this->p->cf['form']['audience_gender'] ),
 				),
 				'subsection_schema' => array(
-					'td_class' => 'subsection', 'header' => 'h4',
-					'label' => _x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' )
+					'td_class' => 'subsection',
+					'header'   => 'h4',
+					'label'    => _x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' )
 				),
 				'schema_desc' => array(
 					'no_auto_draft' => true,
-					'label' => _x( 'Schema Description', 'option label', 'wpsso' ),
-					'th_class' => 'medium', 'tooltip' => 'meta-schema_desc', 'td_class' => 'blank',
-					'content' => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ) . $json_msg_transl,
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Schema Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_desc',
+					'content'  => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ) . $json_msg_transl,
 				),
 			);
 

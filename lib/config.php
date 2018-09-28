@@ -1540,9 +1540,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'filter'  => 'wpsso_cache_expire_head_array',
 					),
 					'wpsso_i_' => array(
-						'label' => 'Image URL Info',
+						'label'   => 'Image URL Info',
 						'opt_key' => 'plugin_imgsize_cache_exp',
-						'filter' => 'wpsso_cache_expire_image_url_size',
+						'filter'  => 'wpsso_cache_expire_image_url_size',
 					),
 					'wpsso_j_' => array(
 						'label'   => 'Schema Data',
