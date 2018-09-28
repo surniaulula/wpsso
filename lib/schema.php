@@ -1684,7 +1684,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! empty( $mod['obj'] ) ) {	// Just in case.
-				$org_id = $mod['obj']->get_options( $mod['id'], 'schema_org_org_id' );	// Returns null if an index key is not found.
+				$org_id = $mod['obj']->get_options( $mod['id'], 'schema_organization_org_id' );	// Returns null if an index key is not found.
 			} else {
 				$org_id = null;
 			}
@@ -1698,7 +1698,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $org_id === 'none' ) {
-				$this->p->debug->log( 'exiting early: organization id is none' );
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: organization id is none' );
+				}
+
 				return $json_data;
 			}
 
@@ -2607,7 +2611,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'checking for custom event place id (null by default)' );
 			}
 
-			if ( ! isset( $event_opts['event_place_id'] ) ) {
+			if ( ! isset( $event_opts['event_place_id'] ) ) {	// Make sure the array index exists.
 				$event_opts['event_place_id'] = null;
 			}
 
