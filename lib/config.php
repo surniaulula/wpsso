@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.14.0',	// Plugin version.
+					'version'     => '4.14.1-dev.2',	// Plugin version.
 					'opt_version' => '610',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -759,6 +759,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_img_crop_y'            => 'center',
 					'schema_desc_len'              => 250,		// Meta itemprop="description" maximum text length (hard limit).
 					'schema_author_name'           => 'display_name',
+
 					/**
 					 * Standard WordPress types.
 					 */
@@ -773,6 +774,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_post_archive' => 'item.list',		// Post type archive page.
 					'schema_type_for_search_page'  => 'webpage.search.results',
 					'schema_type_for_user_page'    => 'webpage.profile',
+
 					/**
 					 * Custom post types.
 					 */
@@ -806,6 +808,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'sc_publisher_url'             => '',			// Soundcloud Business Page URL (localized).
 					'tumblr_publisher_url'         => '',                   // Tumblr Business Page URL (localized).
 					'yt_publisher_url'             => '',                   // YouTube Business Channel URL (localized).
+					
 					/**
 					 * Standard WordPress types.
 					 */
@@ -820,6 +823,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_post_archive'     => 'website',		// Post type archive page.
 					'og_type_for_search_page'      => 'website',
 					'og_type_for_user_page'        => 'website',
+					
 					/**
 					 * Custom post types.
 					 */
@@ -861,6 +865,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'seo_publisher_url'            => '',			// (localized)
 					'tumblr_publisher_url'         => '',
 					'yt_publisher_url'             => '',
+					
 					/**
 					 * Twitter Card options.
 					 */
@@ -878,6 +883,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_lrg_img_crop'   => 0,
 					'tc_lrg_img_crop_x' => 'center',
 					'tc_lrg_img_crop_y' => 'center',
+					
 					/**
 					 * Enable / disable individual head HTML tags.
 					 */
@@ -1076,6 +1082,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_recipeyield'                            => 1,	// Schema Recipe.
 					'add_meta_itemprop_recipeingredient'                       => 1,	// Schema Recipe (supersedes ingredients).
 					'add_meta_itemprop_recipeinstructions'                     => 1,	// Schema Recipe.
+					
 					/**
 					 * Advanced settings - Plugin Settings tab.
 					 */
@@ -1083,6 +1090,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_debug'              => 0,	// Add Hidden Debug Messages.
 					'plugin_hide_pro'           => 0,	// Hide All Pro Version Options.
 					'plugin_show_opts'          => 'basic',	// Options to Show by Default.
+					
 					/**
 					 * Advanced settings - Content and Filters tab.
 					 */
@@ -1101,6 +1109,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wistia_api'     => 1,		// Check for Embedded Media: Wistia Videos.
 					'plugin_wpvideo_api'    => 1,		// Check for Embedded Media: WordPress Video Shortcode.
 					'plugin_youtube_api'    => 1,		// Check for Embedded Media: Youtube Videos and Playlists.
+					
 					/**
 					 * Advanced settings - Integration tab.
 					 */
@@ -1118,27 +1127,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_check_img_dims'        => 0,				// Enforce Image Dimensions Check.
 					'plugin_upscale_images'        => 0,				// Allow Upscale of Smaller Images.
 					'plugin_upscale_img_max'       => 33,				// Maximum Image Upscale Percent.
+					
 					/**
 					 * Advanced settings - Custom Meta tab.
 					 */
-					'plugin_schema_type_col_media'  => 0,
-					'plugin_schema_type_col_post'   => 1,
-					'plugin_schema_type_col_term'   => 0,
-					'plugin_schema_type_col_user'   => 0,
-					'plugin_og_type_col_media'      => 0,
-					'plugin_og_type_col_post'       => 0,
-					'plugin_og_type_col_term'       => 0,
-					'plugin_og_type_col_user'       => 0,
-					'plugin_og_img_col_media'       => 0,
-					'plugin_og_img_col_post'        => 1,
-					'plugin_og_img_col_term'        => 1,
-					'plugin_og_img_col_user'        => 1,
-					'plugin_og_desc_col_media'      => 1,
-					'plugin_og_desc_col_post'       => 0,
-					'plugin_og_desc_col_term'       => 0,
-					'plugin_og_desc_col_user'       => 1,
-					'plugin_col_def_width'          => '15%',
-					'plugin_col_title_width'        => '20em',
 					'plugin_add_to_attachment'      => 1,
 					'plugin_add_to_page'            => 1,
 					'plugin_add_to_post'            => 1,
@@ -1166,6 +1158,29 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_size'        => '',			// Product Size Custom Field.
 					'plugin_cf_product_gender'      => '',			// Product Target Gender Custom Field.
 					'plugin_cf_sameas_urls'         => '',			// Same-As URLs Custom Field.
+
+					/**
+					 * Advanced settings - Table Columns tab.
+					 */
+					'plugin_schema_type_col_media'  => 0,
+					'plugin_schema_type_col_post'   => 1,
+					'plugin_schema_type_col_term'   => 0,
+					'plugin_schema_type_col_user'   => 0,
+					'plugin_og_type_col_media'      => 0,
+					'plugin_og_type_col_post'       => 0,
+					'plugin_og_type_col_term'       => 0,
+					'plugin_og_type_col_user'       => 0,
+					'plugin_og_img_col_media'       => 0,
+					'plugin_og_img_col_post'        => 1,
+					'plugin_og_img_col_term'        => 1,
+					'plugin_og_img_col_user'        => 1,
+					'plugin_og_desc_col_media'      => 1,
+					'plugin_og_desc_col_post'       => 0,
+					'plugin_og_desc_col_term'       => 0,
+					'plugin_og_desc_col_user'       => 1,
+					'plugin_col_def_width'          => '15%',
+					'plugin_col_title_width'        => '20em',
+
 					/**
 					 * Advanced settings - Cache Settings tab.
 					 */
@@ -1183,6 +1198,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_all_refresh'   => 0,			// Auto-Refresh Cache After Clearing.
 					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
 					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
+					
 					/**
 					 * Advanced settings - Service APIs tab.
 					 */
@@ -1201,6 +1217,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_yourls_username'    => '',
 					'plugin_yourls_password'    => '',
 					'plugin_yourls_token'       => '',
+					
 					/**
 					 * Advanced settings - Contact Field IDs and Labels.
 					 */
@@ -1247,12 +1264,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_label'            => 'Yahoo Messenger',
 					'wp_cm_yim_enabled'          => 1,
 				),
+				
 				/**
 				 * Multisite options.
 				 */
 				'site_defaults' => array(
 					'options_version'  => '',		// Example: -wpsso512pro-wpssoum3gpl
 					'options_filtered' => false,
+					
 					/**
 					 * Advanced settings - Plugin Settings tab.
 					 */
@@ -1264,6 +1283,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_hide_pro:use'           => 'default',
 					'plugin_show_opts'              => 'basic',	// Options to Show by Default
 					'plugin_show_opts:use'          => 'default',
+					
 					/**
 					 * Advanced settings - Integration tab.
 					 */
@@ -1295,6 +1315,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_upscale_images:use'        => 'default',
 					'plugin_upscale_img_max'           => 33,		// Maximum Image Upscale Percent.
 					'plugin_upscale_img_max:use'       => 'default',
+					
 					/**
 					 * Advanced settings - Cache Settings tab.
 					 */
@@ -1327,6 +1348,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_for_comment'       => 1,			// Clear Post Cache for New Comment.
 					'plugin_clear_for_comment:use'   => 'default',
 				),
+				
 				/**
 				 * Contact method options prefix.
 				 */
@@ -1351,6 +1373,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'vk'          => 'vk',
 					'whatsapp'    => 'wa',
 				),
+				
 				/**
 				 * Custom field to meta data index.
 				 */
@@ -1373,6 +1396,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gender'      => 'product_gender',
 					'plugin_cf_sameas_urls'         => 'schema_sameas_url',
 				),
+				
 				/**
 				 * Read meta values into numeric meta data index.
 				 */
@@ -1383,6 +1407,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_sameas_url'         => true,
 				),
 			),
+			
 			/**
 			 * Update manager config.
 			 */
@@ -1412,6 +1437,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'stable' => '/^[0-9][0-9\.\-]+$/',
 				),
 			),
+			
 			/**
 			 * PHP config.
 			 */
@@ -1452,6 +1478,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 			),
+			
 			/**
 			 * WordPress config.
 			 */
@@ -1521,6 +1548,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'person',
 					),
 				),
+				
 				/**
 				 * Transient id prefix.
 				 */
@@ -1767,6 +1795,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'none'      => '[None]',
 					'ancestors' => 'Parents',
 				),
+				
 				/**
 				 * The shortener key is also its filename under lib/pro/ext/.
 				 */
@@ -1779,6 +1808,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tinyurl' => 'TinyURL',
 					'yourls'  => 'YOURLS',
 				),
+				
 				/**
 				 * Social account keys and labels for Organization SameAs.
 				 */
@@ -1822,6 +1852,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_gender'      => 'Product Target Gender Custom Field',
 					'plugin_cf_sameas_urls'         => 'Same-As URLs Custom Field',
 				),
+				
 				/**
 				 * See https://developers.facebook.com/docs/reference/opengraph/object-type/product/.
 				 */
@@ -1830,6 +1861,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'kids'   => 'Kids',
 					'adult'  => 'Adult',
 				),
+				
 				/**
 				 * See https://schema.org/suggestedGender.
 				 */
@@ -1839,6 +1871,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'female' => 'Female',
 					'unisex' => 'Unisex',
 				),
+				
 				/**
 				 * See https://developers.google.com/search/docs/data-types/job-postings.
 				 */
@@ -1852,6 +1885,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'per_diem'   => 'Per Diem',
 					'other'      => 'Other',
 				),
+				
 				/**
 				 * See https://schema.org/ItemAvailability.
 				 */
@@ -1866,6 +1900,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 		'PreOrder'            => 'Pre-Order',
 			 		'SoldOut '            => 'Sold Out',
 				),
+				
 				/**
 				 * See https://schema.org/OfferItemCondition.
 				 */
@@ -2083,6 +2118,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'UsedCondition'        => 'used',
 					),
 				),
+				
 				/**
 				 * WpssoSchema::get_schema_types_array() flattens the array, so AVOID DUPLICATE KEY NAMES.
 				 *
@@ -2339,6 +2375,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'reservation' => 'https://schema.org/Reservation',
 							'role' => 'https://schema.org/Role',
 							'seat' => 'https://schema.org/Seat',
+							
 							/**
 							 * A service provided by an organization, e.g. delivery service, print services, etc.
 							 */

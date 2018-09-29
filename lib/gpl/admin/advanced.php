@@ -27,6 +27,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'plugin_content_rows'     => 2,
 				'plugin_integration_rows' => 2,
 				'plugin_custom_meta_rows' => 2,
+				'plugin_table_cols_rows'  => 2,
 				'plugin_cache_rows'       => 3,
 				'plugin_apikeys_rows'     => 2,
 				'cm_custom_rows'          => 2,
@@ -162,8 +163,58 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			/**
-			 * Include Columns in Admin Lists
+			 * Add custom meta metaboxes.
 			 */
+			$add_to_metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+
+			$add_to_checklist = $form->get_no_checklist_post_types( 'plugin_add_to', array(
+				'term' => 'Terms (Categories and Tags)',
+				'user' => 'User Profile',
+			) );
+
+			$table_rows['plugin_add_to'] = '' .
+			$form->get_th_html( sprintf( _x( 'Add %s Metabox to', 'option label', 'wpsso' ), $add_to_metabox_title ), '', 'plugin_add_to' ).
+			'<td class="blank">'.$add_to_checklist.'</td>';
+
+			/**
+			 * Read Yoast SEO social meta.
+			 */
+			$table_rows['plugin_wpseo_social_meta'] = '' .
+			$form->get_th_html( _x( 'Read Yoast SEO Social Meta', 'option label', 'wpsso' ), '', 'plugin_wpseo_social_meta' ).
+			$form->get_td_no_checkbox( 'plugin_wpseo_social_meta' );
+
+			/**
+			 * Default currency.
+			 */
+			$table_rows['plugin_def_currency'] = '' .
+			$form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ), '', 'plugin_def_currency' ).
+			'<td class="blank">'.$form->get_no_select( 'plugin_def_currency', SucomUtil::get_currencies() ).'</td>';
+
+			foreach ( (array) apply_filters( $this->p->lca.'_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
+
+				if ( isset( $this->p->cf['form']['cf_labels'][$cf_idx] ) && $opt_label = $this->p->cf['form']['cf_labels'][$cf_idx] ) {
+
+					if ( empty( $md_idx ) ) {
+						$this->p->options[$cf_idx] = '';
+					}
+
+					$table_rows[ $cf_idx ] = $form->get_tr_hide( 'basic', $cf_idx ).
+					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $cf_idx ).
+					'<td class="blank">'.$form->get_no_input( $cf_idx ).'</td>';
+				}
+			}
+
+			return $table_rows;
+		}
+
+		public function filter_plugin_table_cols_rows( $table_rows, $form, $network = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
+
 			$cols = '<table class="plugin-list-columns">' . "\n" . '<tr>';
 
 			foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
@@ -183,7 +234,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 				foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
 					if ( $form->in_defaults( 'plugin_'.$col_idx.'_col_'.$mod_name ) ) {	// Just in case.
-						$cols .= $form->get_td_no_checkbox( 'plugin_'.$col_idx.'_col_'.$mod_name, '', true );	// $narrow = true
+						$cols .= $form->get_td_no_checkbox( 'plugin_'.$col_idx.'_col_'.$mod_name, '', $narrow = true );
 					} else {
 						$cols .= '<td class="checkbox"></td>';
 					}
@@ -193,7 +244,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$cols .= '</table>' . "\n";
 
-			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Additional List Table Columns',
+			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Additional WP List Table Columns',
 				'option label', 'wpsso' ), '', 'plugin_show_columns' ).
 					'<td>'.$cols.'</td>';
 
@@ -207,39 +258,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_col_title_width'] = ''.
 			$form->get_th_html( _x( 'WordPress Title Column Width', 'option label', 'wpsso' ), '', 'plugin_col_title_width' ).
 			'<td>'.$form->get_no_input( 'plugin_col_title_width', 'short' ).'</td>';
-
-			/**
-			 * Include Custom Meta Metabox
-			 */
-			$add_to_metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
-
-			$add_to_checklist = $form->get_no_checklist_post_types( 'plugin_add_to', array(
-				'term' => 'Terms (Categories and Tags)',
-				'user' => 'User Profile',
-			) );
-
-			$table_rows['plugin_add_to'] = $form->get_tr_hide( 'basic', SucomUtil::get_opts_begin( 'plugin_add_to_', $form->options ) ).
-			$form->get_th_html( sprintf( _x( 'Add %s Metabox to', 'option label', 'wpsso' ), $add_to_metabox_title ), '', 'plugin_add_to' ).
-			'<td class="blank">'.$add_to_checklist.'</td>';
-
-			$table_rows['plugin_wpseo_social_meta'] = $form->get_tr_hide( 'basic', 'plugin_wpseo_social_meta' ).
-			$form->get_th_html( _x( 'Read Yoast SEO Social Meta', 'option label', 'wpsso' ), '', 'plugin_wpseo_social_meta' ).
-			$form->get_td_no_checkbox( 'plugin_wpseo_social_meta' );
-
-			$table_rows['plugin_def_currency'] = $form->get_tr_hide( 'basic', 'plugin_def_currency' ).
-			$form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ), '', 'plugin_def_currency' ).
-			'<td class="blank">'.$form->get_no_select( 'plugin_def_currency', SucomUtil::get_currencies() ).'</td>';
-
-			foreach ( (array) apply_filters( $this->p->lca.'_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
-				if ( isset( $this->p->cf['form']['cf_labels'][$cf_idx] ) && $opt_label = $this->p->cf['form']['cf_labels'][$cf_idx] ) {
-					if ( empty( $md_idx ) ) {
-						$this->p->options[$cf_idx] = '';
-					}
-					$table_rows[$cf_idx] = $form->get_tr_hide( 'basic', $cf_idx ).
-					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $cf_idx ).
-					'<td class="blank">'.$form->get_no_input( $cf_idx ).'</td>';
-				}
-			}
 
 			return $table_rows;
 		}

@@ -665,7 +665,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					switch ( $idx ) {
 
 						/**
-						 * 'Plugin Settings' settings.
+						 * Plugin Settings settings.
 						 */
 						case 'tooltip-plugin_clean_on_uninstall': // Remove All Settings on Uninstall.
 
@@ -700,7 +700,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						/**
-						 * 'Content and Filters' settings.
+						 * Content and Filters settings.
 						 */
 						case 'tooltip-plugin_filter_title':
 
@@ -770,38 +770,131 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						/**
-						 * 'Custom Meta' settings
+						 * Integration settings
 						 */
-						case 'tooltip-plugin_show_columns':
+						case 'tooltip-plugin_honor_force_ssl':	// Honor the FORCE_SSL Constant
 
-							$text = __( 'Additional columns can be included in admin list tables to show the Schema type ID, Open Graph image, etc.', 'wpsso' ) . ' ';
+							$text = sprintf( __( 'If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked).', 'wpsso' ), $info['short'] );
+							break;
+
+						case 'tooltip-plugin_html_attr_filter':
+
+							$func_name   = 'language_attributes()';
+							$func_url    = __( 'https://developer.wordpress.org/reference/functions/language_attributes/', 'wpsso' );
+							$filter_name = 'language_attributes';
+							$html_tag    = '<code>&amp;lt;html&amp;gt;</code>';
+							$php_code    = '<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
+
+							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' ';
+
+							$text .= sprintf( __( 'The <a href="%1$s">WordPress %2$s function</a> and its \'%3$s\' filter are used by most themes &mdash; if the namespace prefix values are missing from your %4$s HTML tag attributes, make sure your header template(s) use the %2$s function.', 'wpsso' ), $func_url, '<code>'.$func_name.'</code>', $filter_name, $html_tag ).' ';
+
+							$text .= __( 'Leaving this option empty disables the addition of Open Graph namespace values.', 'wpsso' ).' ';
+
+							$text .= sprintf( __( 'Example code for header templates: %1$s', 'wpsso' ), $php_code );
+
+							break;
+
+						case 'tooltip-plugin_head_attr_filter':
+
+							$filter_name = 'head_attributes';
+							$html_tag    = '<code>&amp;lt;head&amp;gt;</code>';
+							$php_code    = '<pre><code>&amp;lt;head &amp;lt;?php do_action( &#39;add_head_attributes&#39; ); ?&amp;gt;&amp;gt;</code></pre>';
+
+							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' ';
+
+							$text .= sprintf( __( 'If your theme already offers a filter for the %1$s HTML tag attributes, enter its name here (most themes do not offer this filter).', 'wpsso' ), $html_tag ).' ';
+
+							$text .= sprintf( __( 'Alternatively, you can edit your your theme header templates and add an action to call the \'%1$s\' filter.', 'wpsso' ), $filter_name ).' ';
+
+							$text .= sprintf( __( 'Example code for header templates: %1$s', 'wpsso' ), $php_code );
+
+							break;
+
+						case 'tooltip-plugin_check_head':
+
+							$check_head_count = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT' );
+
+							$text = sprintf( __( 'When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed &mdash; until the theme and/or any plugin is updated, when another %2$d checks are performed.', 'wpsso' ), $info['short'], $check_head_count );
+
+							break;
+
+						case 'tooltip-plugin_filter_lang':
+
+							$text = sprintf( __( '%1$s can use the WordPress locale to dynamically select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ), $info['short'] ).' ';
 							
-							$text .= __( 'When a column is enabled, <strong>each user can still hide that column</strong> by using the <em>Screen Options</em> tab on the list table page.', 'wpsso' );
+							$text .= __( 'If your website is available in multiple languages, this can be a useful feature.', 'wpsso' ).' ';
+							
+							$text .= __( 'Uncheck this option to ignore the WordPress locale and always use the configured language.', 'wpsso' ); 
 
 							break;
 
-						case 'tooltip-plugin_col_def_width':
+						case 'tooltip-plugin_create_wp_sizes':
 
-							$text .= __( 'A default column width for the admin Posts and Pages list table.', 'wpsso' ) . ' ';
+							$text = __( 'Automatically create missing and/or incorrect images in the WordPress Media Library (default is checked).', 'wpsso' );
+							break;
 
-							$text .= __( 'All columns should have a width defined, but some 3rd party plugins do not provide width information for their columns.', 'wpsso' ) . ' ';
+						case 'tooltip-plugin_check_img_dims':
 
-							$text .= __( 'This option offers a way to set a generic width for all Posts and Pages list table columns.', 'wpsso' ) . ' ';
+							$settings_page_link = $this->p->util->get_admin_url( 'image-dimensions',
+								_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
 
-							$text .= __( 'Leave this option blank to prevent setting a column width.', 'wpsso' );
+							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'wpsso' ), $settings_page_link ).' ';
+							
+							$text .= __( '<strong>Enabling this option is highly recommended</strong> &mdash; the option is disabled by default to avoid excessive warnings on sites with small / thumbnail images in their media library.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-plugin_col_title_width':
+						case 'tooltip-plugin_upscale_images':
 
-							$text .= __( 'WordPress does not define a column width for its Title column, which can create display issues when showing list tables with additional columns.', 'wpsso' ) . ' ';
-
-							$text .= __( 'This option allows you to define a custom width for the Title column, to prevent these kinds of issues.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Leave this option blank to prevent setting a column width.', 'wpsso' );
+							$text = __( 'WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals.', 'wpsso' ).' ';
+							
+							$text .= __( 'Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( '%1$s includes a feature that allows upscaling of WordPress Media Library images for %2$s image sizes (up to a maximum upscale percentage).', 'wpsso' ), $info['name_pro'], $info['short'] ).' ';
+							
+							$text .= '<strong>'.__( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ).'</strong>';
 
 							break;
 
+						case 'tooltip-plugin_upscale_img_max':
+
+							$upscale_max = WpssoConfig::$cf['opt']['defaults']['plugin_upscale_img_max'];
+
+							$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info['short'], $info['name_pro'], $upscale_max ).' ';
+							
+							$text .= __( 'If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_page_excerpt':
+
+							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( 'An excerpt is an optional hand-crafted summary of your content, that %s can also use as a default description value for meta tags and Schema markup.', 'wpsso' ), $info['short'] );
+
+							break;
+
+						case 'tooltip-plugin_page_tags':
+
+							$text = __( 'Enable the WordPress tags metabox for Pages.', 'wpsso' ).' ';
+							
+							$text .= __( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ).' ';
+							
+							$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites (Twitter, Facebook, Google+, etc.).', 'wpsso' ), $info['short'] );
+
+							break;
+
+						case 'tooltip-plugin_new_user_is_person':
+
+							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ),
+								_x( 'Person', 'user role', 'wpsso' ) );
+
+							break;
+
+						/**
+						 * Custom Meta settings
+						 */
 						case 'tooltip-plugin_add_to':
 
 							$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
@@ -1019,130 +1112,41 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;	// stop here
 
 						/**
-						 * 'Integration' settings
+						 * Table Columns settings
 						 */
-						case 'tooltip-plugin_honor_force_ssl':	// Honor the FORCE_SSL Constant
+						case 'tooltip-plugin_show_columns':
 
-							$text = sprintf( __( 'If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked).', 'wpsso' ), $info['short'] );
-							break;
-
-						case 'tooltip-plugin_html_attr_filter':
-
-							$func_name   = 'language_attributes()';
-							$func_url    = __( 'https://developer.wordpress.org/reference/functions/language_attributes/', 'wpsso' );
-							$filter_name = 'language_attributes';
-							$html_tag    = '<code>&amp;lt;html&amp;gt;</code>';
-							$php_code    = '<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
-
-							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' ';
-
-							$text .= sprintf( __( 'The <a href="%1$s">WordPress %2$s function</a> and its \'%3$s\' filter are used by most themes &mdash; if the namespace prefix values are missing from your %4$s HTML tag attributes, make sure your header template(s) use the %2$s function.', 'wpsso' ), $func_url, '<code>'.$func_name.'</code>', $filter_name, $html_tag ).' ';
-
-							$text .= __( 'Leaving this option empty disables the addition of Open Graph namespace values.', 'wpsso' ).' ';
-
-							$text .= sprintf( __( 'Example code for header templates: %1$s', 'wpsso' ), $php_code );
-
-							break;
-
-						case 'tooltip-plugin_head_attr_filter':
-
-							$filter_name = 'head_attributes';
-							$html_tag    = '<code>&amp;lt;head&amp;gt;</code>';
-							$php_code    = '<pre><code>&amp;lt;head &amp;lt;?php do_action( &#39;add_head_attributes&#39; ); ?&amp;gt;&amp;gt;</code></pre>';
-
-							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info['short'], $filter_name, $html_tag ).' ';
-
-							$text .= sprintf( __( 'If your theme already offers a filter for the %1$s HTML tag attributes, enter its name here (most themes do not offer this filter).', 'wpsso' ), $html_tag ).' ';
-
-							$text .= sprintf( __( 'Alternatively, you can edit your your theme header templates and add an action to call the \'%1$s\' filter.', 'wpsso' ), $filter_name ).' ';
-
-							$text .= sprintf( __( 'Example code for header templates: %1$s', 'wpsso' ), $php_code );
-
-							break;
-
-						case 'tooltip-plugin_check_head':
-
-							$check_head_count = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT' );
-
-							$text = sprintf( __( 'When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed &mdash; until the theme and/or any plugin is updated, when another %2$d checks are performed.', 'wpsso' ), $info['short'], $check_head_count );
-
-							break;
-
-						case 'tooltip-plugin_filter_lang':
-
-							$text = sprintf( __( '%1$s can use the WordPress locale to dynamically select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ), $info['short'] ).' ';
+							$text = __( 'Additional columns can be included in admin list tables to show the Schema type ID, Open Graph image, etc.', 'wpsso' ) . ' ';
 							
-							$text .= __( 'If your website is available in multiple languages, this can be a useful feature.', 'wpsso' ).' ';
-							
-							$text .= __( 'Uncheck this option to ignore the WordPress locale and always use the configured language.', 'wpsso' ); 
+							$text .= __( 'When a column is enabled, <strong>each user can still hide that column</strong> by using the <em>Screen Options</em> tab on the list table page.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-plugin_create_wp_sizes':
+						case 'tooltip-plugin_col_def_width':
 
-							$text = __( 'Automatically create missing and/or incorrect images in the WordPress Media Library (default is checked).', 'wpsso' );
-							break;
+							$text .= __( 'A default column width for the admin Posts and Pages list table.', 'wpsso' ) . ' ';
 
-						case 'tooltip-plugin_check_img_dims':
+							$text .= __( 'All columns should have a width defined, but some 3rd party plugins do not provide width information for their columns.', 'wpsso' ) . ' ';
 
-							$settings_page_link = $this->p->util->get_admin_url( 'image-dimensions',
-								_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
+							$text .= __( 'This option offers a way to set a generic width for all Posts and Pages list table columns.', 'wpsso' ) . ' ';
 
-							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'wpsso' ), $settings_page_link ).' ';
-							
-							$text .= __( '<strong>Enabling this option is highly recommended</strong> &mdash; the option is disabled by default to avoid excessive warnings on sites with small / thumbnail images in their media library.', 'wpsso' );
+							$text .= __( 'Leave this option blank to prevent setting a column width.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-plugin_upscale_images':
+						case 'tooltip-plugin_col_title_width':
 
-							$text = __( 'WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals.', 'wpsso' ).' ';
-							
-							$text .= __( 'Upscaled images do not look as sharp or clear, and if enlarged too much, will look fuzzy and unappealing &mdash; not something you want to promote on social and search sites.', 'wpsso' ).' ';
-							
-							$text .= sprintf( __( '%1$s includes a feature that allows upscaling of WordPress Media Library images for %2$s image sizes (up to a maximum upscale percentage).', 'wpsso' ), $info['name_pro'], $info['short'] ).' ';
-							
-							$text .= '<strong>'.__( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ).'</strong>';
+							$text .= __( 'WordPress does not define a column width for its Title column, which can create display issues when showing list tables with additional columns.', 'wpsso' ) . ' ';
+
+							$text .= __( 'This option allows you to define a custom width for the Title column, to prevent these kinds of issues.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Leave this option blank to prevent setting a column width.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-plugin_upscale_img_max':
-
-							$upscale_max = WpssoConfig::$cf['opt']['defaults']['plugin_upscale_img_max'];
-
-							$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info['short'], $info['name_pro'], $upscale_max ).' ';
-							
-							$text .= __( 'If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_page_excerpt':
-
-							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ).' ';
-							
-							$text .= sprintf( __( 'An excerpt is an optional hand-crafted summary of your content, that %s can also use as a default description value for meta tags and Schema markup.', 'wpsso' ), $info['short'] );
-
-							break;
-
-						case 'tooltip-plugin_page_tags':
-
-							$text = __( 'Enable the WordPress tags metabox for Pages.', 'wpsso' ).' ';
-							
-							$text .= __( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ).' ';
-							
-							$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites (Twitter, Facebook, Google+, etc.).', 'wpsso' ), $info['short'] );
-
-							break;
-
-						case 'tooltip-plugin_new_user_is_person':
-
-							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ),
-								_x( 'Person', 'user role', 'wpsso' ) );
-
-							break;
 
 						/**
-						 * 'Cache Settings' settings.
+						 * Cache Settings settings.
 						 */
 						case 'tooltip-plugin_head_cache_exp':
 
@@ -1279,7 +1283,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						/**
-						 * 'Service APIs' (URL Shortening) settings.
+						 * Service APIs settings.
 						 */
 						case 'tooltip-plugin_shortener':
 

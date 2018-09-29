@@ -60,6 +60,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'content'     => _x( 'Content and Filters', 'metabox tab', 'wpsso' ),
 				'integration' => _x( 'Integration', 'metabox tab', 'wpsso' ),
 				'custom_meta' => _x( 'Custom Meta', 'metabox tab', 'wpsso' ),
+				'table_cols'  => _x( 'Table Columns', 'metabox tab', 'wpsso' ),
 				'cache'       => _x( 'Cache Settings', 'metabox tab', 'wpsso' ),
 				'apikeys'     => _x( 'Service APIs', 'metabox tab', 'wpsso' ),
 			) );
