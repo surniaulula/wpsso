@@ -342,12 +342,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.14.1-dev.2 (2018/09/28)**
+**Version 4.14.1 (2018/09/29)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* Moved all column related options from the SSO &gt; Advanced &gt; Custom Meta tab to a new Table Columns tab.
+	* Moved all column related options from the SSO &gt; Advanced &gt; Custom Meta tab to a new List Columns tab.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -432,9 +432,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.14.1-dev.2 =
+= 4.14.1 =
 
-(2018/09/28) Moved all column related options from the SSO &gt; Advanced &gt; Custom Meta tab to a new Table Columns tab.
+(2018/09/29) Moved all column related options from the SSO &gt; Advanced &gt; Custom Meta tab to a new List Columns tab.
 
 = 4.14.0 =
 
