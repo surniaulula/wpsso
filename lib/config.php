@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.14.1-dev.2',	// Plugin version.
+					'version'     => '4.14.1',	// Plugin version.
 					'opt_version' => '610',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_sameas_urls'         => '',			// Same-As URLs Custom Field.
 
 					/**
-					 * Advanced settings - Table Columns tab.
+					 * Advanced settings - List Columns tab.
 					 */
 					'plugin_schema_type_col_media'  => 0,
 					'plugin_schema_type_col_post'   => 1,

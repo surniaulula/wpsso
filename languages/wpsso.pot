@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.14.1-dev.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.14.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2293,17 +2293,17 @@ msgstr ""
 
 #: lib/gpl/admin/advanced.php:247 lib/pro/admin/advanced.php:248
 msgctxt "option label"
-msgid "Additional WP List Table Columns"
+msgid "Additional WordPress List Columns"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:255 lib/pro/admin/advanced.php:256
 msgctxt "option label"
-msgid "Default Posts / Pages Column Width"
+msgid "WordPress Title Column Width"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:259 lib/pro/admin/advanced.php:260
 msgctxt "option label"
-msgid "WordPress Title Column Width"
+msgid "Default Posts / Pages Column Width"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:275 lib/pro/admin/advanced.php:273
@@ -5794,7 +5794,7 @@ msgstr ""
 
 #: lib/submenu/advanced.php:63
 msgctxt "metabox tab"
-msgid "Table Columns"
+msgid "List Columns"
 msgstr ""
 
 #: lib/submenu/advanced.php:65

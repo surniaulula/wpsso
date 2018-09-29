@@ -1112,7 +1112,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;	// stop here
 
 						/**
-						 * Table Columns settings
+						 * List Columns settings
 						 */
 						case 'tooltip-plugin_show_columns':
 

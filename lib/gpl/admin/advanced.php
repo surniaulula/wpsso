@@ -24,19 +24,19 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'plugin_content_rows'     => 2,
-				'plugin_integration_rows' => 2,
-				'plugin_custom_meta_rows' => 2,
-				'plugin_table_cols_rows'  => 2,
-				'plugin_cache_rows'       => 3,
-				'plugin_apikeys_rows'     => 2,
-				'cm_custom_rows'          => 2,
-				'cm_builtin_rows'         => 2,
-				'taglist_og_rows'         => 3,
-				'taglist_fb_rows'         => 3,
-				'taglist_twitter_rows'    => 3,
-				'taglist_schema_rows'     => 3,
-				'taglist_other_rows'      => 3,
+				'plugin_content_rows'      => 2,
+				'plugin_integration_rows'  => 2,
+				'plugin_custom_meta_rows'  => 2,
+				'plugin_list_columns_rows' => 2,
+				'plugin_cache_rows'        => 3,
+				'plugin_apikeys_rows'      => 2,
+				'cm_custom_rows'           => 2,
+				'cm_builtin_rows'          => 2,
+				'taglist_og_rows'          => 3,
+				'taglist_fb_rows'          => 3,
+				'taglist_twitter_rows'     => 3,
+				'taglist_schema_rows'      => 3,
+				'taglist_other_rows'       => 3,
 			), 20 );
 		}
 
@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_plugin_custom_meta_rows( $table_rows, $form, $network = false ) {
+		public function filter_plugin_custom_meta_rows( $table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -207,7 +207,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_plugin_table_cols_rows( $table_rows, $form, $network = false ) {
+		public function filter_plugin_list_columns_rows( $table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -244,20 +244,20 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$cols .= '</table>' . "\n";
 
-			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Additional WP List Table Columns',
+			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Additional WordPress List Columns',
 				'option label', 'wpsso' ), '', 'plugin_show_columns' ).
 					'<td>'.$cols.'</td>';
 
 			/**
 			 * Default and custom column widths.
 			 */
-			$table_rows['plugin_col_def_width'] = ''.
-			$form->get_th_html( _x( 'Default Posts / Pages Column Width', 'option label', 'wpsso' ), '', 'plugin_col_def_width' ).
-			'<td>'.$form->get_no_input( 'plugin_col_def_width', 'short' ).'</td>';
-
 			$table_rows['plugin_col_title_width'] = ''.
 			$form->get_th_html( _x( 'WordPress Title Column Width', 'option label', 'wpsso' ), '', 'plugin_col_title_width' ).
 			'<td>'.$form->get_no_input( 'plugin_col_title_width', 'short' ).'</td>';
+
+			$table_rows['plugin_col_def_width'] = ''.
+			$form->get_th_html( _x( 'Default Posts / Pages Column Width', 'option label', 'wpsso' ), '', 'plugin_col_def_width' ).
+			'<td>'.$form->get_no_input( 'plugin_col_def_width', 'short' ).'</td>';
 
 			return $table_rows;
 		}

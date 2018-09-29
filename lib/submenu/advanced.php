@@ -56,13 +56,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$table_rows = array();
 
 			$tabs = apply_filters( $this->p->lca.'_advanced_'.$metabox_id.'_tabs', array(
-				'settings'    => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
-				'content'     => _x( 'Content and Filters', 'metabox tab', 'wpsso' ),
-				'integration' => _x( 'Integration', 'metabox tab', 'wpsso' ),
-				'custom_meta' => _x( 'Custom Meta', 'metabox tab', 'wpsso' ),
-				'table_cols'  => _x( 'Table Columns', 'metabox tab', 'wpsso' ),
-				'cache'       => _x( 'Cache Settings', 'metabox tab', 'wpsso' ),
-				'apikeys'     => _x( 'Service APIs', 'metabox tab', 'wpsso' ),
+				'settings'     => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
+				'content'      => _x( 'Content and Filters', 'metabox tab', 'wpsso' ),
+				'integration'  => _x( 'Integration', 'metabox tab', 'wpsso' ),
+				'custom_meta'  => _x( 'Custom Meta', 'metabox tab', 'wpsso' ),
+				'list_columns' => _x( 'List Columns', 'metabox tab', 'wpsso' ),
+				'cache'        => _x( 'Cache Settings', 'metabox tab', 'wpsso' ),
+				'apikeys'      => _x( 'Service APIs', 'metabox tab', 'wpsso' ),
 			) );
 
 			foreach ( $tabs as $tab_key => $title ) {
