@@ -50,43 +50,43 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
-			$table_rows['plugin_filter_title'] = ''.
-			$form->get_th_html( _x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' ), '', 'plugin_filter_title' ).
+			$table_rows['plugin_filter_title'] = '' . 
+			$form->get_th_html( _x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' ), '', 'plugin_filter_title' ) . 
 			$form->get_td_no_checkbox( 'plugin_filter_title' );
 
-			$table_rows['plugin_filter_content'] = ''.
-			$form->get_th_html( _x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ), '', 'plugin_filter_content' ).
-			$form->get_td_no_checkbox( 'plugin_filter_content', '<em>'._x( 'recommended', 'option comment', 'wpsso' ).'</em>' );
+			$table_rows['plugin_filter_content'] = '' . 
+			$form->get_th_html( _x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ), '', 'plugin_filter_content' ) . 
+			$form->get_td_no_checkbox( 'plugin_filter_content', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
 
-			$table_rows['plugin_filter_excerpt'] = ''.
-			$form->get_th_html( _x( 'Apply WordPress Excerpt Filters', 'option label', 'wpsso' ), '', 'plugin_filter_excerpt' ).
+			$table_rows['plugin_filter_excerpt'] = '' . 
+			$form->get_th_html( _x( 'Apply WordPress Excerpt Filters', 'option label', 'wpsso' ), '', 'plugin_filter_excerpt' ) . 
 			$form->get_td_no_checkbox( 'plugin_filter_excerpt' );
 
-			$table_rows['plugin_p_strip'] = $form->get_tr_hide( 'basic', 'plugin_p_strip' ).
-			$form->get_th_html( _x( 'Content Starts at 1st Paragraph', 'option label', 'wpsso' ), '', 'plugin_p_strip' ).
+			$table_rows['plugin_p_strip'] = $form->get_tr_hide( 'basic', 'plugin_p_strip' ) . 
+			$form->get_th_html( _x( 'Content Starts at 1st Paragraph', 'option label', 'wpsso' ), '', 'plugin_p_strip' ) . 
 			$form->get_td_no_checkbox( 'plugin_p_strip' );
 
-			$table_rows['plugin_use_img_alt'] = $form->get_tr_hide( 'basic', 'plugin_use_img_alt' ).
-			$form->get_th_html( _x( 'Use Image Alt if No Content', 'option label', 'wpsso' ), '', 'plugin_use_img_alt' ).
+			$table_rows['plugin_use_img_alt'] = $form->get_tr_hide( 'basic', 'plugin_use_img_alt' ) . 
+			$form->get_th_html( _x( 'Use Image Alt if No Content', 'option label', 'wpsso' ), '', 'plugin_use_img_alt' ) . 
 			$form->get_td_no_checkbox( 'plugin_use_img_alt' );
 
-			$table_rows['plugin_img_alt_prefix'] = ''.
-			$form->get_th_html( _x( 'Image Alt Text Prefix', 'option label', 'wpsso' ), '', 'plugin_img_alt_prefix', $atts_locale ).
-			'<td class="blank">'.SucomUtil::get_key_value( 'plugin_img_alt_prefix', $this->p->options ).'</td>';
+			$table_rows['plugin_img_alt_prefix'] = '' . 
+			$form->get_th_html( _x( 'Image Alt Text Prefix', 'option label', 'wpsso' ), '', 'plugin_img_alt_prefix', $atts_locale ) . 
+			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_img_alt_prefix', $this->p->options ) . '</td>';
 
-			$table_rows['plugin_p_cap_prefix'] = ''.
-			$form->get_th_html( _x( 'WP Caption Prefix', 'option label', 'wpsso' ), '', 'plugin_p_cap_prefix', $atts_locale ).
-			'<td class="blank">'.SucomUtil::get_key_value( 'plugin_p_cap_prefix', $this->p->options ).'</td>';
+			$table_rows['plugin_p_cap_prefix'] = '' . 
+			$form->get_th_html( _x( 'WP Caption Prefix', 'option label', 'wpsso' ), '', 'plugin_p_cap_prefix', $atts_locale ) . 
+			'<td class="blank">' . SucomUtil::get_key_value( 'plugin_p_cap_prefix', $this->p->options ) . '</td>';
 
 			$check_embed_html = '';
 
 			foreach ( $this->p->cf['form']['embed_media_apis'] as $opt_key => $opt_label ) {
-				$check_embed_html .= '<p>'.$form->get_no_checkbox_comment( $opt_key ).' '._x( $opt_label, 'option value', 'wpsso' ).'</p>';
+				$check_embed_html .= '<p>' . $form->get_no_checkbox_comment( $opt_key ) . ' ' . _x( $opt_label, 'option value', 'wpsso' ) . '</p>';
 			}
 
-			$table_rows['plugin_embed_media_apis'] = $form->get_tr_hide( 'basic', $this->p->cf['form']['embed_media_apis'] ).
+			$table_rows['plugin_embed_media_apis'] = $form->get_tr_hide( 'basic', $this->p->cf['form']['embed_media_apis'] ) . 
 			$form->get_th_html( _x( 'Check for Embedded Media', 'option label', 'wpsso' ), '', 'plugin_embed_media_apis' ).
-			'<td class="blank">'.$check_embed_html.'</td>';
+			'<td class="blank">' . $check_embed_html . '</td>';
 
 			return $table_rows;
 		}
@@ -102,14 +102,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_html_attr_filter'] = $form->get_tr_hide( 'basic', 
 				array( 'plugin_html_attr_filter_name', 'plugin_html_attr_filter_prio' ) ).
 			$form->get_th_html( _x( '&lt;html&gt; Attributes Filter Hook', 'option label', 'wpsso' ), '', 'plugin_html_attr_filter' ).
-			'<td class="blank">Name: '.$this->p->options['plugin_html_attr_filter_name'].', '.
-			'Priority: '.$this->p->options['plugin_html_attr_filter_prio'].'</td>';
+			'<td class="blank">Name: ' . $this->p->options['plugin_html_attr_filter_name'] . ', ' . 
+			'Priority: ' . $this->p->options['plugin_html_attr_filter_prio'] . '</td>';
 
 			$table_rows['plugin_head_attr_filter'] = $form->get_tr_hide( 'basic', 
 				array( 'plugin_head_attr_filter_name', 'plugin_head_attr_filter_prio' ) ).
 			$form->get_th_html( _x( '&lt;head&gt; Attributes Filter Hook', 'option label', 'wpsso' ), '', 'plugin_head_attr_filter' ).
-			'<td class="blank">Name: '.$this->p->options['plugin_head_attr_filter_name'].', '.
-			'Priority: '.$this->p->options['plugin_head_attr_filter_prio'].'</td>';
+			'<td class="blank">Name: ' . $this->p->options['plugin_head_attr_filter_name'] . ', '.
+			'Priority: ' . $this->p->options['plugin_head_attr_filter_prio'] . '</td>';
 
 			$table_rows['plugin_honor_force_ssl'] = $form->get_tr_hide( 'basic', 'plugin_honor_force_ssl' ).
 			$form->get_th_html( _x( 'Honor the FORCE_SSL Constant', 'option label', 'wpsso' ), '', 'plugin_honor_force_ssl' ).
@@ -141,7 +141,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows['plugin_check_img_dims'] = ''.
 			$form->get_th_html( _x( 'Enforce Image Dimensions Check', 'option label', 'wpsso' ), '', 'plugin_check_img_dims' ).
-			$form->get_td_no_checkbox( 'plugin_check_img_dims', '<em>'._x( 'recommended', 'option comment', 'wpsso' ).'</em>' );
+			$form->get_td_no_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows['plugin_upscale_images'] = ''.
 			$form->get_th_html( _x( 'Allow Upscale of WP Media Images', 'option label', 'wpsso' ), '', 'plugin_upscale_images' ).
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows['plugin_upscale_img_max'] = $form->get_tr_hide( 'basic', 'plugin_upscale_img_max' ).
 			$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ), '', 'plugin_upscale_img_max' ).
-			'<td class="blank">'.$this->p->options['plugin_upscale_img_max'].' %</td>';
+			'<td class="blank">' . $this->p->options['plugin_upscale_img_max'] . ' %</td>';
 
 			return $table_rows;
 		}
@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows['plugin_add_to'] = '' .
 			$form->get_th_html( sprintf( _x( 'Add %s Metabox to', 'option label', 'wpsso' ), $add_to_metabox_title ), '', 'plugin_add_to' ).
-			'<td class="blank">'.$add_to_checklist.'</td>';
+			'<td class="blank">' . $add_to_checklist . '</td>';
 
 			/**
 			 * Read Yoast SEO social meta.
@@ -188,9 +188,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			 */
 			$table_rows['plugin_def_currency'] = '' .
 			$form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ), '', 'plugin_def_currency' ).
-			'<td class="blank">'.$form->get_no_select( 'plugin_def_currency', SucomUtil::get_currencies() ).'</td>';
+			'<td class="blank">' . $form->get_no_select( 'plugin_def_currency', SucomUtil::get_currencies() ) . '</td>';
 
-			foreach ( (array) apply_filters( $this->p->lca.'_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
+			foreach ( (array) apply_filters( $this->p->lca . '_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
 
 				if ( isset( $this->p->cf['form']['cf_labels'][$cf_idx] ) && $opt_label = $this->p->cf['form']['cf_labels'][$cf_idx] ) {
 
@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 					$table_rows[ $cf_idx ] = $form->get_tr_hide( 'basic', $cf_idx ).
 					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $cf_idx ).
-					'<td class="blank">'.$form->get_no_input( $cf_idx ).'</td>';
+					'<td class="blank">' . $form->get_no_input( $cf_idx ) . '</td>';
 				}
 			}
 
@@ -218,7 +218,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$cols = '<table class="plugin-list-columns">' . "\n" . '<tr>';
 
 			foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
-				$cols .= '<th>'.$col_header.'</th>';
+				$cols .= '<th>' . $col_header . '</th>';
 			}
 
 			$cols .= '<td class="underline"></td></tr>' . "\n";
@@ -233,31 +233,31 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$cols .= '<tr>';
 
 				foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
-					if ( $form->in_defaults( 'plugin_'.$col_idx.'_col_'.$mod_name ) ) {	// Just in case.
-						$cols .= $form->get_td_no_checkbox( 'plugin_'.$col_idx.'_col_'.$mod_name, '', $narrow = true );
+					if ( $form->in_defaults( 'plugin_' . $col_idx . '_col_' . $mod_name ) ) {	// Just in case.
+						$cols .= $form->get_td_no_checkbox( 'plugin_' . $col_idx . '_col_' . $mod_name, '', $narrow = true );
 					} else {
 						$cols .= '<td class="checkbox"></td>';
 					}
 				}
-				$cols .= '<td><p>'.$mod_label.'</p></td></tr>' . "\n";
+				$cols .= '<td><p>' . $mod_label . '</p></td></tr>' . "\n";
 			}
 
 			$cols .= '</table>' . "\n";
 
 			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Additional WordPress List Columns',
 				'option label', 'wpsso' ), '', 'plugin_show_columns' ).
-					'<td>'.$cols.'</td>';
+					'<td>' . $cols . '</td>';
 
 			/**
 			 * Default and custom column widths.
 			 */
 			$table_rows['plugin_col_title_width'] = ''.
 			$form->get_th_html( _x( 'WordPress Title Column Width', 'option label', 'wpsso' ), '', 'plugin_col_title_width' ).
-			'<td>'.$form->get_no_input( 'plugin_col_title_width', 'short' ).'</td>';
+			'<td>' . $form->get_no_input( 'plugin_col_title_width', 'short' ) . '</td>';
 
 			$table_rows['plugin_col_def_width'] = ''.
 			$form->get_th_html( _x( 'Default Posts / Pages Column Width', 'option label', 'wpsso' ), '', 'plugin_col_def_width' ).
-			'<td>'.$form->get_no_input( 'plugin_col_def_width', 'short' ).'</td>';
+			'<td>' . $form->get_no_input( 'plugin_col_def_width', 'short' ) . '</td>';
 
 			return $table_rows;
 		}
@@ -273,44 +273,44 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows['plugin_head_cache_exp'] = ''.
 			$form->get_th_html( _x( 'Head Markup Array Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_head_cache_exp' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_head_cache_exp'].' '.
-			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
+			'<td nowrap class="blank">' . $this->p->options['plugin_head_cache_exp'] . ' '.
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_head_cache_exp', $form, $network );
 
 			$table_rows['plugin_content_cache_exp'] = $form->get_tr_hide( 'basic', 'plugin_content_cache_exp' ).
 			$form->get_th_html( _x( 'Filtered Content Text Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_content_cache_exp' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_content_cache_exp'].' '.
-			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
+			'<td nowrap class="blank">' . $this->p->options['plugin_content_cache_exp'] . ' '.
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_content_cache_exp', $form, $network );
 
 			$table_rows['plugin_short_url_cache_exp'] = ''.
 			$form->get_th_html( _x( 'Get Shortened URL Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_short_url_cache_exp' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_short_url_cache_exp'].' '.
-			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
+			'<td nowrap class="blank">' . $this->p->options['plugin_short_url_cache_exp'] . ' '.
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_short_url_cache_exp', $form, $network );
 
 			$table_rows['plugin_imgsize_cache_exp'] = $form->get_tr_hide( 'basic', 'plugin_imgsize_cache_exp' ).
 			$form->get_th_html( _x( 'Get Image URL Info Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_imgsize_cache_exp' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_imgsize_cache_exp'].' '.
-			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
+			'<td nowrap class="blank">' . $this->p->options['plugin_imgsize_cache_exp'] . ' '.
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_imgsize_cache_exp', $form, $network );
 
 			$table_rows['plugin_topics_cache_exp'] = $form->get_tr_hide( 'basic', 'plugin_topics_cache_exp' ).
 			$form->get_th_html( _x( 'Article Topics Array Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_topics_cache_exp' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_topics_cache_exp'].' '.
-			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
+			'<td nowrap class="blank">' . $this->p->options['plugin_topics_cache_exp'] . ' '.
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_topics_cache_exp', $form, $network );
 
 			$table_rows['plugin_json_data_cache_exp'] = $form->get_tr_hide( 'basic', 'plugin_json_data_cache_exp' ).
 			$form->get_th_html( _x( 'Schema JSON Data Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_json_data_cache_exp' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_json_data_cache_exp'].' '.
-			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
+			'<td nowrap class="blank">' . $this->p->options['plugin_json_data_cache_exp'] . ' '.
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_json_data_cache_exp', $form, $network );
 
 			$table_rows['plugin_types_cache_exp'] = $form->get_tr_hide( 'basic', 'plugin_types_cache_exp' ).
 			$form->get_th_html( _x( 'Schema Types Array Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_types_cache_exp' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_types_cache_exp'].' '.
-			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ).'</td>'.
+			'<td nowrap class="blank">' . $this->p->options['plugin_types_cache_exp'] . ' '.
+			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>'.
 			WpssoAdmin::get_option_site_use( 'plugin_types_cache_exp', $form, $network );
 
 			$table_rows['plugin_clear_on_activate'] = $form->get_tr_hide( 'basic', 'plugin_clear_on_activate' ).
@@ -360,11 +360,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$tr_html = array();
 
 			foreach ( array(
-				'bitly' => 'plugin_bitly_login',	// Bitly Username
+				'bitly'   => 'plugin_bitly_login',	// Bitly Username
 				'dlmyapp' => 'plugin_dlmyapp_api_key',	// DLMY.App API Key
-				'googl' => 'plugin_google_api_key',	// Google Project API Key
-				'owly' => 'plugin_owly_api_key',	// Ow.ly API Key
-				'yourls' => 'plugin_yourls_api_url',	// YOURLS API URL
+				'googl'   => 'plugin_google_api_key',	// Google Project API Key
+				'owly'    => 'plugin_owly_api_key',	// Ow.ly API Key
+				'yourls'  => 'plugin_yourls_api_url',	// YOURLS API URL
 			) as $tr_key => $opt_key ) {
 				$tr_html[$tr_key] = empty( $this->p->options[$opt_key] ) &&
 					$this->p->options['plugin_shortener'] !== $tr_key ?
@@ -389,8 +389,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$table_rows['plugin_min_shorten'] = $form->get_tr_hide( 'basic', 'plugin_min_shorten' ).
 			$form->get_th_html( _x( 'Minimum URL Length to Shorten', 'option label', 'wpsso' ), '', 'plugin_min_shorten' ).
-			'<td nowrap class="blank">'.$this->p->options['plugin_min_shorten'].' '.
-			_x( 'characters', 'option comment', 'wpsso' ).'</td>';
+			'<td nowrap class="blank">' . $this->p->options['plugin_min_shorten'] . ' '.
+			_x( 'characters', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows['plugin_wp_shortlink'] = ''.
 			$form->get_th_html( _x( 'Short Sharing URL for WP Shortlink', 'option label', 'wpsso' ), '', 'plugin_wp_shortlink' ).
@@ -399,92 +399,92 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_add_link_rel_shortlink'] = ''.
 			$form->get_th_html( sprintf( _x( 'Add "%s" HTML Tag', 'option label', 'wpsso' ),
 				'link&nbsp;rel&nbsp;shortlink' ), '', 'plugin_add_link_rel_shortlink' ).
-			'<td class="blank">'.$form->get_no_checkbox( 'add_link_rel_shortlink',
-				'', 'add_link_rel_shortlink_html_tag', null, 'add_link_rel_shortlink' ).'</td>';	// Group with option in head tags list
+			'<td class="blank">' . $form->get_no_checkbox( 'add_link_rel_shortlink',
+				'', 'add_link_rel_shortlink_html_tag', null, 'add_link_rel_shortlink' ) . '</td>';	// Group with option in head tags list
 
 			/**
 			 * Bitly URL  shortener.
 			 */
 			$table_rows['subsection_plugin_bitly'] = $tr_html['bitly'].
-			'<td></td><td class="subsection"><h4>'._x( 'Bitly URL Shortener', 'metabox title', 'wpsso' ).'</h4></td>';
+			'<td></td><td class="subsection"><h4>' . _x( 'Bitly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows['plugin_bitly_login'] = $tr_html['bitly'].
 			$form->get_th_html( _x( 'Bitly Username', 'option label', 'wpsso' ), '', 'plugin_bitly_login' ).
-			'<td class="blank mono">'.$this->p->options['plugin_bitly_login'].'</td>';
+			'<td class="blank mono">' . $this->p->options['plugin_bitly_login'] . '</td>';
 
 			$table_rows['plugin_bitly_access_token'] = $tr_html['bitly'].
 			$form->get_th_html( '<a href="https://bitly.com/a/oauth_apps">'.
-			_x( 'Bitly Generic Access Token', 'option label', 'wpsso' ).'</a>', '', 'plugin_bitly_access_token' ).
-			'<td class="blank mono">'.$this->p->options['plugin_bitly_access_token'].'</td>';
+			_x( 'Bitly Generic Access Token', 'option label', 'wpsso' ) . '</a>', '', 'plugin_bitly_access_token' ).
+			'<td class="blank mono">' . $this->p->options['plugin_bitly_access_token'] . '</td>';
 
 			$table_rows['plugin_bitly_api_key'] = empty( $tr_html['bitly'] ) ? 
 				$form->get_tr_hide( 'basic', 'plugin_bitly_api_key' ) : $tr_html['bitly'].
 			$form->get_th_html( '<a href="http://bitly.com/a/your_api_key">'.
-			_x( 'or Bitly API Key (deprecated)', 'option label', 'wpsso' ).'</a>', '', 'plugin_bitly_api_key' ).
-			'<td class="blank mono">'.$this->p->options['plugin_bitly_api_key'].' <em>'.
-			_x( 'api key authentication is deprecated', 'option comment', 'wpsso' ).'</em></td>';
+			_x( 'or Bitly API Key (deprecated)', 'option label', 'wpsso' ) . '</a>', '', 'plugin_bitly_api_key' ).
+			'<td class="blank mono">' . $this->p->options['plugin_bitly_api_key'] . ' <em>'.
+			_x( 'api key authentication is deprecated', 'option comment', 'wpsso' ) . '</em></td>';
 
 			$table_rows['plugin_bitly_domain'] = $tr_html['bitly'].
 			$form->get_th_html( _x( 'Bitly Custom Short Domain', 'option label', 'wpsso' ), '', 'plugin_bitly_domain' ).
-			'<td class="blank mono">'.$this->p->options['plugin_bitly_domain'].'</td>';
+			'<td class="blank mono">' . $this->p->options['plugin_bitly_domain'] . '</td>';
 
 			/**
 			 * DLMY.App URL  shortener.
 			 */
 			$table_rows['subsection_plugin_dlmyapp'] = $tr_html['dlmyapp'].
-			'<td></td><td class="subsection"><h4>'._x( 'DLMY.App URL Shortener', 'metabox title', 'wpsso' ).'</h4></td>';
+			'<td></td><td class="subsection"><h4>' . _x( 'DLMY.App URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows['plugin_dlmyapp_api_key'] = $tr_html['dlmyapp'].
 			$form->get_th_html( _x( 'DLMY.App API Key', 'option label', 'wpsso' ), '', 'plugin_dlmyapp_api_key' ).
-			'<td class="blank mono">'.$this->p->options['plugin_dlmyapp_api_key'].'</td>';
+			'<td class="blank mono">' . $this->p->options['plugin_dlmyapp_api_key'] . '</td>';
 
 			/**
 			 * Google URL  shortener.
 			 */
 			$table_rows['subsection_plugin_googl'] = $tr_html['googl'].
-			'<td></td><td class="subsection"><h4>'._x( 'Google APIs', 'metabox title', 'wpsso' ).'</h4></td>';
+			'<td></td><td class="subsection"><h4>' . _x( 'Google APIs', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows['plugin_google_api_key'] = $tr_html['googl'].
 			$form->get_th_html( _x( 'Google Project API Key', 'option label', 'wpsso' ), '', 'plugin_google_api_key' ).
-			'<td class="blank mono">'.$this->p->options['plugin_google_api_key'].'</td>';
+			'<td class="blank mono">' . $this->p->options['plugin_google_api_key'] . '</td>';
 
 			$google_shorten = $this->p->options['plugin_google_shorten'];
 
 			$table_rows['plugin_google_shorten'] = $tr_html['googl'].
 			$form->get_th_html( _x( 'URL Shortener API is Enabled', 'option label', 'wpsso' ), '', 'plugin_google_shorten' ).
-			'<td class="blank">'._x( $this->p->cf['form']['yes_no'][$google_shorten], 'option value', 'wpsso' ).'</td>';
+			'<td class="blank">' . _x( $this->p->cf['form']['yes_no'][$google_shorten], 'option value', 'wpsso' ) . '</td>';
 
 			/**
 			 * Owly URL  shortener.
 			 */
 			$table_rows['subsection_plugin_owly'] = $tr_html['owly'].
-			'<td></td><td class="subsection"><h4>'._x( 'Ow.ly URL Shortener', 'metabox title', 'wpsso' ).'</h4></td>';
+			'<td></td><td class="subsection"><h4>' . _x( 'Ow.ly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows['plugin_owly_api_key'] = $tr_html['owly'].
 			$form->get_th_html( _x( 'Ow.ly API Key', 'option label', 'wpsso' ), '', 'plugin_owly_api_key' ).
-			'<td class="blank mono">'.$this->p->options['plugin_owly_api_key'].'</td>';
+			'<td class="blank mono">' . $this->p->options['plugin_owly_api_key'] . '</td>';
 
 			/**
 			 * YOURLS URL  shortener.
 			 */
 			$table_rows['subsection_plugin_yourls'] = $tr_html['yourls'].
-			'<td></td><td class="subsection"><h4>'._x( 'Your Own URL Shortener (YOURLS)', 'metabox title', 'wpsso' ).'</h4></td>';
+			'<td></td><td class="subsection"><h4>' . _x( 'Your Own URL Shortener (YOURLS)', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows['plugin_yourls_api_url'] = $tr_html['yourls'].
 			$form->get_th_html( _x( 'YOURLS API URL', 'option label', 'wpsso' ), '', 'plugin_yourls_api_url' ).
-			'<td class="blank mono">'.$this->p->options['plugin_yourls_api_url'].'</td>';
+			'<td class="blank mono">' . $this->p->options['plugin_yourls_api_url'] . '</td>';
 
 			$table_rows['plugin_yourls_username'] = $tr_html['yourls'].
 			$form->get_th_html( _x( 'YOURLS Username', 'option label', 'wpsso' ), '', 'plugin_yourls_username' ).
-			'<td class="blank mono">'.$this->p->options['plugin_yourls_username'].'</td>';
+			'<td class="blank mono">' . $this->p->options['plugin_yourls_username'] . '</td>';
 
 			$table_rows['plugin_yourls_password'] = $tr_html['yourls'].
 			$form->get_th_html( _x( 'YOURLS Password', 'option label', 'wpsso' ), '', 'plugin_yourls_password' ).
-			'<td class="blank mono">'.$this->p->options['plugin_yourls_password'].'</td>';
+			'<td class="blank mono">' . $this->p->options['plugin_yourls_password'] . '</td>';
 
 			$table_rows['plugin_yourls_token'] = $tr_html['yourls'].
 			$form->get_th_html( _x( 'YOURLS Token', 'option label', 'wpsso' ), '', 'plugin_yourls_token' ).
-			'<td class="blank mono">'.$this->p->options['plugin_yourls_token'].'</td>';
+			'<td class="blank mono">' . $this->p->options['plugin_yourls_token'] . '</td>';
 
 			return $table_rows;
 		}
@@ -510,11 +510,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			foreach ( $sorted_opt_pre as $cm_id => $opt_pre ) {
 
-				$cm_enabled_key = 'plugin_cm_'.$opt_pre.'_enabled';
-				$cm_name_key = 'plugin_cm_'.$opt_pre.'_name';
-				$cm_label_value = SucomUtil::get_key_value( 'plugin_cm_'.$opt_pre.'_label', $this->p->options );
+				$cm_enabled_key = 'plugin_cm_' . $opt_pre . '_enabled';
+				$cm_name_key    = 'plugin_cm_' . $opt_pre . '_name';
+				$cm_label_key   = SucomUtil::get_key_value( 'plugin_cm_' . $opt_pre . '_label', $this->p->options );
 
-				// not all social websites have a contact method field
+				/**
+				 * Not all social websites have a contact method field.
+				 */
 				if ( ! isset( $this->p->options[$cm_enabled_key] ) ) {
 					continue;
 				}
@@ -523,14 +525,18 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 					ucfirst( $cm_id ) : $this->p->cf['*']['lib']['website'][$cm_id];
 
 				switch ( strtolower( $opt_label ) ) {
+
 					case 'gp':
 					case 'gplus':
 					case 'googleplus':
+
 						$opt_label = 'Google+';
+
 						break;
 				}
 
 				switch ( $cm_id ) {
+
 					case 'facebook':
 					case 'gplus':
 					case 'twitter':
@@ -544,15 +550,15 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 						/**
 						 * Hide all other contact methods if their values have not been customized.
 						 */
-						$tr_html = $form->get_tr_hide( 'basic', array( $cm_enabled_key, $cm_name_key, $cm_label_value ) );
+						$tr_html = $form->get_tr_hide( 'basic', array( $cm_enabled_key, $cm_name_key, $cm_label_key ) );
 
 						break;
 				}
 
-				$table_rows[] = $tr_html.$form->get_th_html( $opt_label, 'medium' ).
+				$table_rows[] = $tr_html . $form->get_th_html( $opt_label, 'medium' ).
 				$form->get_td_no_checkbox( $cm_enabled_key, '', true ).
-				'<td class="blank medium">'.$form->get_no_input( $cm_name_key, 'medium' ).'</td>'.
-				'<td class="blank wide">'.$form->get_no_input_value( $cm_label_value ).'</td>';
+				'<td class="blank medium">' . $form->get_no_input( $cm_name_key, 'medium' ) . '</td>'.
+				'<td class="blank wide">' . $form->get_no_input_value( $cm_label_key ) . '</td>';
 			}
 
 			return $table_rows;
@@ -579,62 +585,75 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			foreach ( $sorted_cm_names as $cm_id => $opt_label ) {
 
-				$cm_enabled_key = 'wp_cm_'.$cm_id.'_enabled';
-				$cm_name_key = 'wp_cm_'.$cm_id.'_name';
-				$cm_label_value = SucomUtil::get_key_value( 'wp_cm_'.$cm_id.'_label', $this->p->options );
+				$cm_enabled_key = 'wp_cm_' . $cm_id . '_enabled';
+				$cm_name_key = 'wp_cm_' . $cm_id . '_name';
+				$cm_label_key = SucomUtil::get_key_value( 'wp_cm_' . $cm_id . '_label', $this->p->options );
 
-				// not all social websites have a contact method field
+				/**
+				 * Not all social websites have a contact method field.
+				 */
 				if ( ! isset( $this->p->options[$cm_enabled_key] ) ) {
 					continue;
 				}
 
 				$table_rows[] = $form->get_th_html( $opt_label, 'medium' ).
-				'<td class="checkbox blank">'.$form->get_no_checkbox_comment( $cm_enabled_key ).'</td>'.
-				'<td class="medium">'.$form->get_no_input( $cm_name_key, 'medium' ).'</td>'.
-				'<td class="blank wide">'.$form->get_no_input( $cm_label_value ).'</td>';
+				'<td class="checkbox blank">' . $form->get_no_checkbox_comment( $cm_enabled_key ) . '</td>'.
+				'<td class="medium">' . $form->get_no_input( $cm_name_key, 'medium' ) . '</td>'.
+				'<td class="blank wide">' . $form->get_no_input( $cm_label_key ) . '</td>';
 			}
 
 			return $table_rows;
 		}
 
 		public function filter_taglist_og_rows( $table_rows, $form, $network = false ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
-			return $this->get_taglist_rows( $table_rows, $form, $network,
-				array( '/^add_(meta)_(property)_(.+)$/' ) );
+
+			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_(.+)$/' ) );
 		}
 
 		public function filter_taglist_fb_rows( $table_rows, $form, $network = false ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
-			return $this->get_taglist_rows( $table_rows, $form, $network,
-				array( '/^add_(meta)_(property)_((fb|al):.+)$/' ) );
+
+			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_((fb|al):.+)$/' ) );
 		}
 
 		public function filter_taglist_twitter_rows( $table_rows, $form, $network = false ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
-			return $this->get_taglist_rows( $table_rows, $form, $network,
-				array( '/^add_(meta)_(name)_(twitter:.+)$/' ) );
+
+			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(meta)_(name)_(twitter:.+)$/' ) );
 		}
 
 		public function filter_taglist_schema_rows( $table_rows, $form, $network = false ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
-			return $this->get_taglist_rows( $table_rows, $form, $network,
-				array( '/^add_(meta|link)_(itemprop)_(.+)$/' ) );
+
+			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(meta|link)_(itemprop)_(.+)$/' ) );
 		}
 
 		public function filter_taglist_other_rows( $table_rows, $form, $network = false ) {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
-			return $this->get_taglist_rows( $table_rows, $form, $network,
-				array( '/^add_(link)_([^_]+)_(.+)$/', '/^add_(meta)_(name)_(.+)$/' ) );
+
+			if ( ! empty( $this->p->avail['seo']['*'] ) ) {
+				$table_rows[] = '<td colspan="8"><blockquote class="top-info"><p>'.
+					__( 'An SEO plugin has been detected &mdash; some basic SEO meta tags have been unchecked and disabled automatically.', 'wpsso' ).
+						'</p></blockquote></td>';
+			}
+
+			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(link)_([^_]+)_(.+)$/', '/^add_(meta)_(name)_(.+)$/' ) );
 		}
 
 		private function get_taglist_rows( $table_rows, $form, $network, array $opt_preg_include ) {
@@ -670,11 +689,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 							break;
 					}
 
-					$table_cells[] = '<!-- '.( implode( ' ', $match ) ).' -->'.	// Required for sorting.
-						'<td class="checkbox blank">'.$form->get_no_checkbox( $opt_key, $css_class, $css_id, $force, $group ).'</td>'.
-						'<td class="xshort'.$highlight.'">'.$match[1].'</td>'.
-						'<td class="taglist'.$highlight.'">'.$match[2].'</td>'.
-						'<th class="taglist'.$highlight.'">'.$match[3].'</th>';
+					$table_cells[] = '<!-- ' . ( implode( ' ', $match ) ) . ' -->' . 	// Required for sorting.
+						'<td class="checkbox blank">' . $form->get_no_checkbox( $opt_key, $css_class, $css_id, $force, $group ) . '</td>'.
+						'<td class="xshort' . $highlight . '">' . $match[1] . '</td>'.
+						'<td class="taglist' . $highlight . '">' . $match[2] . '</td>'.
+						'<th class="taglist' . $highlight . '">' . $match[3] . '</th>';
 				}
 			}
 

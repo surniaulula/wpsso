@@ -2495,25 +2495,31 @@ msgctxt "option label"
 msgid "YOURLS Token"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:503 lib/gpl/admin/advanced.php:572
-#: lib/pro/admin/advanced.php:495 lib/pro/admin/advanced.php:561
+#: lib/gpl/admin/advanced.php:503 lib/gpl/admin/advanced.php:578
+#: lib/pro/admin/advanced.php:495 lib/pro/admin/advanced.php:568
 msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:504 lib/gpl/admin/advanced.php:573
+#: lib/gpl/admin/advanced.php:504 lib/gpl/admin/advanced.php:579
 #: lib/messages.php:1843 lib/messages.php:1845 lib/messages.php:1857
 #: lib/messages.php:2033 lib/pro/admin/advanced.php:496
-#: lib/pro/admin/advanced.php:562
+#: lib/pro/admin/advanced.php:569
 msgctxt "column title"
 msgid "Contact Field ID"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:505 lib/gpl/admin/advanced.php:574
+#: lib/gpl/admin/advanced.php:505 lib/gpl/admin/advanced.php:580
 #: lib/messages.php:1851 lib/messages.php:2035 lib/pro/admin/advanced.php:497
-#: lib/pro/admin/advanced.php:563
+#: lib/pro/admin/advanced.php:570
 msgctxt "column title"
 msgid "Contact Field Label"
+msgstr ""
+
+#: lib/gpl/admin/advanced.php:652 lib/pro/admin/advanced.php:642
+msgid ""
+"An SEO plugin has been detected &mdash; some basic SEO meta tags have been "
+"unchecked and disabled automatically."
 msgstr ""
 
 #: lib/gpl/admin/general.php:39 lib/pro/admin/general.php:46
@@ -5447,12 +5453,6 @@ msgstr ""
 
 #: lib/post.php:1469
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
-msgstr ""
-
-#: lib/pro/admin/advanced.php:625
-msgid ""
-"An SEO plugin has been detected &mdash; some basic SEO meta tags have been "
-"unchecked and disabled automatically."
 msgstr ""
 
 #: lib/pro/ecom/woocommerce.php:779
