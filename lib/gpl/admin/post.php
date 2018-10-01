@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$dots       = '...';
 			$read_cache = true;
 			$do_encode  = true;
-			$og_types   = $this->p->og->get_og_types_select( true ); // $add_none is true.
+			$og_types   = $this->p->og->get_og_types_select( $add_none = true );
 			$art_topics = $this->p->util->get_article_topics();
 
 			/**

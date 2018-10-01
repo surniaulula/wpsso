@@ -1585,9 +1585,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$table_rows[ $key ] = empty( $val['tr_class'] ) ? '' : '<tr class="' . $val['tr_class'] . '">' . "\n";
 
-					$table_rows[ $key ] .= '<td></td>';
-					
-					$table_rows[ $key ] .= '<td' . ( ! empty( $val['td_class'] ) ? ' class="' . $val['td_class'] . '"' : '' ) . '>';
+					$table_rows[ $key ] .= '<td colspan="2"' . ( ! empty( $val['td_class'] ) ? ' class="' . $val['td_class'] . '"' : '' ) . '>';
 					
 					$table_rows[ $key ] .= '<' . $val['header'] . '>' . $val['label'] . '</' . $val['header'] . '>';
 					

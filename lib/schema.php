@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$mod = $this->p->util->get_page_mod( $use_post );
 
-			$page_type_id  = $this->get_mod_schema_type( $mod, true );	// $get_schema_id is true.
+			$page_type_id  = $this->get_mod_schema_type( $mod, $get_schema_id = true );
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
 
 			if ( empty( $page_type_url ) ) {
@@ -1206,8 +1206,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret = array();
 
-			$page_type_id  = $mt_og['schema:type:id']  = $this->get_mod_schema_type( $mod, true );		// Example: article.tech.
-			$page_type_url = $mt_og['schema:type:url'] = $this->get_schema_type_url( $page_type_id );	// Example: https://schema.org/TechArticle.
+			$page_type_id  = $mt_og['schema:type:id']  = $this->get_mod_schema_type( $mod, $get_schema_id = true );	// Example: article.tech.
+			$page_type_url = $mt_og['schema:type:url'] = $this->get_schema_type_url( $page_type_id );		// Example: https://schema.org/TechArticle.
 
 			list(
 				$mt_og['schema:type:context'],
@@ -1386,7 +1386,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( false === $page_type_id ) {
 
-				$page_type_id = $this->get_mod_schema_type( $mod, true );	// $get_schema_id is true.
+				$page_type_id = $this->get_mod_schema_type( $mod, $get_schema_id = true );
 
 			} elseif ( $is_main && $mod['is_post'] && $mod['id'] ) {
 
@@ -2611,16 +2611,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->log( 'checking for custom event place id (null by default)' );
 			}
 
-			if ( ! isset( $event_opts['event_place_id'] ) ) {	// Make sure the array index exists.
-				$event_opts['event_place_id'] = null;
+			if ( ! isset( $event_opts['event_location_id'] ) ) {	// Make sure the array index exists.
+				$event_opts['event_location_id'] = null;
 			}
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'applying the "get_event_place_id" filter to event place id ' . 
-					( $event_opts['event_place_id'] === null ? 'null' : $event_opts['event_place_id'] ) );
+				$wpsso->debug->log( 'applying the "get_event_location_id" filter to event place id ' . 
+					( $event_opts['event_location_id'] === null ? 'null' : $event_opts['event_location_id'] ) );
 			}
 
-			$event_opts['event_place_id'] = apply_filters( $wpsso->lca . '_get_event_place_id', $event_opts['event_place_id'], $mod, $event_id );
+			$event_opts['event_location_id'] = apply_filters( $wpsso->lca . '_get_event_location_id', $event_opts['event_location_id'], $mod, $event_id );
 
 			/**
 			 * Add ISO date options.
@@ -2758,10 +2758,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Event venue.
 			 */
-			if ( isset( $event_opts['event_place_id'] ) && SucomUtil::is_opt_id( $event_opts['event_place_id'] ) ) {
-				if ( ! self::add_single_place_data( $ret['location'], $mod, $event_opts['event_place_id'], $list_element = false ) ) {
+			if ( isset( $event_opts['event_location_id'] ) && SucomUtil::is_opt_id( $event_opts['event_location_id'] ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+					$wpsso->debug->log( 'adding place data for event_location_id ' . $event_opts['event_location_id'] );
+				}
+
+				if ( ! self::add_single_place_data( $ret['location'], $mod, $event_opts['event_location_id'], $list_element = false ) ) {
 					unset( $ret['location'] );
 				}
+
+			} elseif ( $wpsso->debug->enabled ) {
+				$wpsso->debug->log( 'event_location_id is empty or none' );
 			}
 
 			self::add_data_itemprop_from_assoc( $ret, $event_opts, array(
@@ -2900,24 +2908,36 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			if ( isset( $job_opts['job_org_id'] ) && SucomUtil::is_opt_id( $job_opts['job_org_id'] ) ) {	// Allow for 0.
+			/**
+			 * Job hiring organization.
+			 */
+			if ( isset( $job_opts['job_hiring_org_id'] ) && SucomUtil::is_opt_id( $job_opts['job_hiring_org_id'] ) ) {	// Allow for 0.
+
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'adding organization data for job_org_id ' . $job_opts['job_org_id'] );
+					$wpsso->debug->log( 'adding organization data for job_hiring_org_id ' . $job_opts['job_hiring_org_id'] );
 				}
-				if ( ! self::add_single_organization_data( $ret['hiringOrganization'], $mod, $job_opts['job_org_id'], 'org_logo_url', false ) ) {
+
+				if ( ! self::add_single_organization_data( $ret['hiringOrganization'], $mod, $job_opts['job_hiring_org_id'], 'org_logo_url', false ) ) {
 					unset( $ret['hiringOrganization'] );
 				}
+
 			} elseif ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( 'job_org_id is empty or none' );
+				$wpsso->debug->log( 'job_hiring_org_id is empty or none' );
 			}
 
+			/**
+			 * Job location.
+			 */
 			if ( isset( $job_opts['job_location_id'] ) && SucomUtil::is_opt_id( $job_opts['job_location_id'] ) ) {	// Allow for 0.
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding place data for job_location_id ' . $job_opts['job_location_id'] );
 				}
+
 				if ( ! self::add_single_place_data( $ret['jobLocation'], $mod, $job_opts['job_location_id'], $list_element = false ) ) {
 					unset( $ret['jobLocation'] );
 				}
+
 			} elseif ( $wpsso->debug->enabled ) {
 				$wpsso->debug->log( 'job_location_id is empty or none' );
 			}
@@ -3473,7 +3493,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$mt_schema     = array();
 			$max_nums      = $this->p->util->get_max_nums( $mod, 'schema' );
-			$page_type_id  = $this->get_mod_schema_type( $mod, true );	// $get_schema_id is true.
+			$page_type_id  = $this->get_mod_schema_type( $mod, $get_schema_id = true );
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
 			$size_name     = $this->p->lca . '-schema';
 
@@ -3615,7 +3635,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret           = array();
 			$max_nums      = $this->p->util->get_max_nums( $mod, 'schema' );
-			$page_type_id  = $this->get_mod_schema_type( $mod, true );	// $get_schema_id is true.
+			$page_type_id  = $this->get_mod_schema_type( $mod, $get_schema_id = true );
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
 			$size_name     = $this->p->lca . '-schema';
 			$og_type_id    = $mt_og['og:type'];

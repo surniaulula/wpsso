@@ -855,183 +855,183 @@ msgctxt "option label"
 msgid "Type for Other Archive Page"
 msgstr ""
 
-#: lib/admin.php:3169 lib/admin.php:3175 lib/admin.php:3201 lib/admin.php:3291
-#: lib/admin.php:3297 lib/admin.php:3323
+#: lib/admin.php:3170 lib/admin.php:3176 lib/admin.php:3202 lib/admin.php:3294
+#: lib/admin.php:3300 lib/admin.php:3327
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
-#: lib/admin.php:3175 lib/admin.php:3297
+#: lib/admin.php:3176 lib/admin.php:3300
 msgctxt "option comment"
 msgid "(Post Type) Archive Page"
 msgstr ""
 
-#: lib/admin.php:3179
+#: lib/admin.php:3180
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:3206
+#: lib/admin.php:3207
 msgctxt "option label"
 msgid "Type by Term Taxonomy"
 msgstr ""
 
-#: lib/admin.php:3225 lib/submenu/essential.php:141
+#: lib/admin.php:3227 lib/submenu/essential.php:141
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3229 lib/options.php:1132 lib/submenu/essential.php:146
+#: lib/admin.php:3231 lib/options.php:1132 lib/submenu/essential.php:146
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:3233 lib/submenu/general.php:181
+#: lib/admin.php:3235 lib/submenu/general.php:181
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:3236 lib/submenu/general.php:184
+#: lib/admin.php:3238 lib/submenu/general.php:184
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/admin.php:3240
+#: lib/admin.php:3242
 msgctxt "option label"
 msgid "Schema Image Dimensions"
 msgstr ""
 
-#: lib/admin.php:3244 lib/submenu/general.php:155 lib/submenu/general.php:315
+#: lib/admin.php:3246 lib/submenu/general.php:155 lib/submenu/general.php:315
 msgctxt "option label"
 msgid "Maximum Description Length"
 msgstr ""
 
-#: lib/admin.php:3245 lib/submenu/general.php:243 lib/submenu/general.php:317
+#: lib/admin.php:3247 lib/submenu/general.php:243 lib/submenu/general.php:317
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:3248
+#: lib/admin.php:3250
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:3262
+#: lib/admin.php:3264
 msgctxt "option label"
 msgid "Item Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:3263
+#: lib/admin.php:3265
 msgctxt "option label"
 msgid "Item Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:3264
+#: lib/admin.php:3266
 msgctxt "option label"
 msgid "Item Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:3265
+#: lib/admin.php:3267
 msgctxt "option label"
 msgid "Item Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:3266
+#: lib/admin.php:3268
 msgctxt "option label"
 msgid "Item Type for Other Archive Page"
 msgstr ""
 
-#: lib/admin.php:3301
+#: lib/admin.php:3304
 msgctxt "option label"
 msgid "Item Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:3328
+#: lib/admin.php:3332
 msgctxt "option label"
 msgid "Item Type by Term Taxonomy"
 msgstr ""
 
-#: lib/admin.php:3346
+#: lib/admin.php:3350
 msgctxt "option label"
 msgid "Knowledge Graph for Home Page"
 msgstr ""
 
-#: lib/admin.php:3349
+#: lib/admin.php:3353
 msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr ""
 
-#: lib/admin.php:3352
+#: lib/admin.php:3356
 msgid "Include <a href=\"%s\">Organization Social Profile</a>"
 msgstr ""
 
-#: lib/admin.php:3355
+#: lib/admin.php:3359
 msgid "Include <a href=\"%s\">Person Social Profile</a> for the Site Owner"
 msgstr ""
 
-#: lib/admin.php:3364
+#: lib/admin.php:3368
 msgctxt "option label"
 msgid "User for Person Social Profile"
 msgstr ""
 
-#: lib/admin.php:3375
+#: lib/admin.php:3379
 msgctxt "option label"
 msgid "Remove All Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:3378
+#: lib/admin.php:3382
 msgctxt "option comment"
 msgid "including any custom meta for posts, terms, and users"
 msgstr ""
 
-#: lib/admin.php:3383
+#: lib/admin.php:3387
 msgctxt "option label"
 msgid "Add Hidden Debug Messages"
 msgstr ""
 
-#: lib/admin.php:3385
+#: lib/admin.php:3389
 msgctxt "option comment"
 msgid "WPSSO_HTML_DEBUG constant is true"
 msgstr ""
 
-#: lib/admin.php:3393
+#: lib/admin.php:3397
 msgctxt "option label"
 msgid "Hide All Pro Version Options"
 msgstr ""
 
-#: lib/admin.php:3402
+#: lib/admin.php:3406
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: lib/admin.php:3409
+#: lib/admin.php:3413
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3576
+#: lib/admin.php:3580
 msgid "Return to %s"
 msgstr ""
 
-#: lib/admin.php:3606
+#: lib/admin.php:3610
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name
-#: lib/admin.php:3628
+#: lib/admin.php:3632
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL
-#: lib/admin.php:3635
+#: lib/admin.php:3639
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes, and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3700
+#: lib/admin.php:3704
 msgctxt "option comment"
 msgid "%s add-on required"
 msgstr ""
@@ -2645,79 +2645,79 @@ msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:194 lib/gpl/admin/meta.php:358
-#: lib/pro/admin/meta.php:201 lib/pro/admin/meta.php:356
+#: lib/gpl/admin/meta.php:194 lib/gpl/admin/meta.php:359
+#: lib/pro/admin/meta.php:201 lib/pro/admin/meta.php:357
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:205 lib/gpl/admin/meta.php:316
-#: lib/gpl/admin/meta.php:369 lib/pro/admin/meta.php:211
-#: lib/pro/admin/meta.php:316 lib/pro/admin/meta.php:366
+#: lib/gpl/admin/meta.php:205 lib/gpl/admin/meta.php:317
+#: lib/gpl/admin/meta.php:370 lib/pro/admin/meta.php:211
+#: lib/pro/admin/meta.php:317 lib/pro/admin/meta.php:367
 msgctxt "option label"
 msgid "Image Dimensions"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:213 lib/gpl/admin/meta.php:325
-#: lib/gpl/admin/meta.php:378 lib/pro/admin/meta.php:218
-#: lib/pro/admin/meta.php:324 lib/pro/admin/meta.php:374
+#: lib/gpl/admin/meta.php:213 lib/gpl/admin/meta.php:326
+#: lib/gpl/admin/meta.php:379 lib/pro/admin/meta.php:218
+#: lib/pro/admin/meta.php:325 lib/pro/admin/meta.php:375
 msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:221 lib/gpl/admin/meta.php:334
-#: lib/gpl/admin/meta.php:387 lib/pro/admin/meta.php:225
-#: lib/pro/admin/meta.php:332 lib/pro/admin/meta.php:382
+#: lib/gpl/admin/meta.php:221 lib/gpl/admin/meta.php:335
+#: lib/gpl/admin/meta.php:388 lib/pro/admin/meta.php:225
+#: lib/pro/admin/meta.php:333 lib/pro/admin/meta.php:383
 msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:228 lib/pro/admin/meta.php:232
+#: lib/gpl/admin/meta.php:229 lib/pro/admin/meta.php:233
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:235 lib/pro/admin/meta.php:238
+#: lib/gpl/admin/meta.php:236 lib/pro/admin/meta.php:239
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:245 lib/pro/admin/meta.php:247
+#: lib/gpl/admin/meta.php:246 lib/pro/admin/meta.php:248
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:256 lib/pro/admin/meta.php:257
+#: lib/gpl/admin/meta.php:257 lib/pro/admin/meta.php:258
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:264 lib/messages.php:947 lib/pro/admin/meta.php:264
+#: lib/gpl/admin/meta.php:265 lib/messages.php:947 lib/pro/admin/meta.php:265
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:272 lib/pro/admin/meta.php:271
+#: lib/gpl/admin/meta.php:273 lib/pro/admin/meta.php:272
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:281 lib/pro/admin/meta.php:279
+#: lib/gpl/admin/meta.php:282 lib/pro/admin/meta.php:280
 msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:290 lib/pro/admin/meta.php:289
+#: lib/gpl/admin/meta.php:291 lib/pro/admin/meta.php:290
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:309 lib/pro/admin/meta.php:310
+#: lib/gpl/admin/meta.php:310 lib/pro/admin/meta.php:311
 msgctxt "metabox title"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:350 lib/pro/admin/meta.php:349
+#: lib/gpl/admin/meta.php:351 lib/pro/admin/meta.php:350
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
@@ -5673,23 +5673,23 @@ msgstr ""
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:2998
+#: lib/schema.php:3018
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3038
+#: lib/schema.php:3058
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3040
+#: lib/schema.php:3060
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3303
+#: lib/schema.php:3323
 msgid "adding schema for place"
 msgstr ""
 

@@ -224,7 +224,8 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			);
 
 			$form_rows['subsection_priority_video'] = array(
-				'header' => 'h5',
+				'td_class' => 'subsection',
+				'header'   => 'h5',
 				'label'    => _x( 'Priority Video Information', 'metabox title', 'wpsso' )
 			);
 

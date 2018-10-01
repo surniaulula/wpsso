@@ -3132,7 +3132,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_og_types_table_rows( array &$table_rows, array $hide_in_view = array(), $og_types = null ) {
 
 			if ( ! is_array( $og_types ) ) {
-				$og_types = $this->p->og->get_og_types_select( true );	// $add_none is true
+				$og_types = $this->p->og->get_og_types_select( $add_none = true );
 			}
 
 			foreach ( array( 
@@ -3146,11 +3146,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$tr_html = '';
 				$opt_key = 'og_type_for_' . $type_name;
 
-				if ( ! empty( $hide_in_view[$opt_key] ) ) {
-					$tr_html = $this->form->get_tr_hide( $hide_in_view[$opt_key], $opt_key );
+				if ( ! empty( $hide_in_view[ $opt_key ] ) ) {
+					$tr_html = $this->form->get_tr_hide( $hide_in_view[ $opt_key ], $opt_key );
 				}
 
-				$table_rows[$opt_key] = $tr_html.$this->form->get_th_html( $th_label, '', $opt_key ).
+				$table_rows[$opt_key] = $tr_html . 
+				$this->form->get_th_html( $th_label, '', $opt_key ) . 
 
 				'<td>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . '</td>';
 			}
@@ -3178,8 +3179,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$tr_key   = 'og_type_for_ptn';
 			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
 
-			if ( ! empty( $hide_in_view[$tr_key] ) ) {
-				$tr_html = $this->form->get_tr_hide( $hide_in_view[$tr_key], $type_opt_keys );
+			if ( ! empty( $hide_in_view[ $tr_key ] ) ) {
+				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_opt_keys );
 			}
 
 			$table_rows[$tr_key] = $tr_html . $this->form->get_th_html( $th_label, '', $tr_key ) .
@@ -3205,11 +3206,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$tr_key   = 'og_type_for_ttn';
 			$th_label = _x( 'Type by Term Taxonomy', 'option label', 'wpsso' );
 
-			if ( ! empty( $hide_in_view[$tr_key] ) ) {
-				$tr_html = $this->form->get_tr_hide( $hide_in_view[$tr_key], $type_opt_keys );
+			if ( ! empty( $hide_in_view[ $tr_key ] ) ) {
+				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_opt_keys );
 			}
 
-			$table_rows[$tr_key] = $tr_html.$this->form->get_th_html( $th_label, '', $tr_key ).
+			$table_rows[$tr_key] = $tr_html . 
+			$this->form->get_th_html( $th_label, '', $tr_key ) . 
 			'<td>' . $type_select . '</td>';
 
 			unset( $type_select, $type_opt_keys );	// Just in case.
@@ -3222,30 +3224,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$table_rows['schema_logo_url'] = '' . 
 			$this->form->get_th_html( '<a href="https://developers.google.com/structured-data/customize/logos">' .
-			_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', '', 'schema_logo_url', array( 'is_locale' => true ) ).
+			_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', '', 'schema_logo_url', array( 'is_locale' => true ) ) . 
 			'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_logo_url', $this->p->options ), 'wide' ) . '</td>';
 
 			$table_rows['schema_banner_url'] = '' . 
-			$this->form->get_th_html( _x( 'Organization Banner URL', 'option label', 'wpsso' ), '', 'schema_banner_url', array( 'is_locale' => true ) ).
+			$this->form->get_th_html( _x( 'Organization Banner URL', 'option label', 'wpsso' ), '', 'schema_banner_url', array( 'is_locale' => true ) ) . 
 			'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'schema_banner_url', $this->p->options ), 'wide' ) . '</td>';
 
-			$table_rows['schema_img_max'] = $this->form->get_tr_hide( 'basic', 'schema_img_max' ).
-			$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ).
-			'<td>' . $this->form->get_select( 'schema_img_max', range( 0, $this->p->cf['form']['max_media_items'] ), 'short', '', true ).
+			$table_rows['schema_img_max'] = $this->form->get_tr_hide( 'basic', 'schema_img_max' ) . 
+			$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
+			'<td>' . $this->form->get_select( 'schema_img_max', range( 0, $this->p->cf['form']['max_media_items'] ), 'short', '', true ) . 
 			( empty( $this->form->options['og_vid_prev_img'] ) ?
 				'' : ' <em>' . _x( 'video preview images are enabled (and included first)',
 					'option comment', 'wpsso' ) . '</em>' ) . '</td>';
 
 			$table_rows['schema_img'] = '' . 
-			$this->form->get_th_html( _x( 'Schema Image Dimensions', 'option label', 'wpsso' ), '', 'schema_img_dimensions' ).
+			$this->form->get_th_html( _x( 'Schema Image Dimensions', 'option label', 'wpsso' ), '', 'schema_img_dimensions' ) . 
 			'<td>' . $this->form->get_input_image_dimensions( 'schema_img' ) . '</td>';	// $use_opts = false
 
-			$table_rows['schema_desc_len'] = $this->form->get_tr_hide( 'basic', 'schema_desc_len' ).
-			$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_len' ).
+			$table_rows['schema_desc_len'] = $this->form->get_tr_hide( 'basic', 'schema_desc_len' ) . 
+			$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_len' ) . 
 			'<td>' . $this->form->get_input( 'schema_desc_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
-			$table_rows['schema_author_name'] = $this->form->get_tr_hide( 'basic', 'schema_author_name' ).
-			$this->form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), '', 'schema_author_name' ).
+			$table_rows['schema_author_name'] = $this->form->get_tr_hide( 'basic', 'schema_author_name' ) . 
+			$this->form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), '', 'schema_author_name' ) . 
 			'<td>' . $this->form->get_select( 'schema_author_name', $this->p->cf['form']['user_name_fields'] ) . '</td>';
 		}
 
@@ -3269,11 +3271,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$tr_html = '';
 				$opt_key = 'schema_type_for_' . $type_name;
 
-				if ( ! empty( $hide_in_view[$opt_key] ) ) {
-					$tr_html = $this->form->get_tr_hide( $hide_in_view[$opt_key], $opt_key );
+				if ( ! empty( $hide_in_view[ $opt_key ] ) ) {
+					$tr_html = $this->form->get_tr_hide( $hide_in_view[ $opt_key ], $opt_key );
 				}
 
-				$table_rows[$opt_key] = $tr_html.$this->form->get_th_html( $th_label, '', $opt_key ).
+				$table_rows[ $opt_key ] = $tr_html . 
+				$this->form->get_th_html( $th_label, '', $opt_key ) . 
 				'<td>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . '</td>';
 			}
 
@@ -3304,7 +3307,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$tr_html = $this->form->get_tr_hide( $hide_in_view[$tr_key], $type_opt_keys );
 			}
 
-			$table_rows[$tr_key] = $tr_html.$this->form->get_th_html( $th_label, '', $tr_key ).
+			$table_rows[$tr_key] = $tr_html . 
+			$this->form->get_th_html( $th_label, '', $tr_key ) . 
 			'<td>' . $type_select . '</td>';
 
 			unset( $type_select, $type_opt_keys );	// Just in case.
@@ -3331,7 +3335,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$tr_html = $this->form->get_tr_hide( $hide_in_view[$tr_key], $type_opt_keys );
 			}
 
-			$table_rows[$tr_key] = $tr_html.$this->form->get_th_html( $th_label, '', $tr_key ).
+			$table_rows[$tr_key] = $tr_html . $this->form->get_th_html( $th_label, '', $tr_key ) . 
 			'<td>' . $type_select . '</td>';
 
 			unset( $type_select, $type_opt_keys );	// Just in case.
@@ -3343,7 +3347,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_schema_knowledge_graph_table_rows( array &$table_rows ) {
 
 			$table_rows['schema_knowledge_graph'] = '' . 
-			$this->form->get_th_html( _x( 'Knowledge Graph for Home Page', 'option label', 'wpsso' ), '', 'schema_knowledge_graph' ).
+			$this->form->get_th_html( _x( 'Knowledge Graph for Home Page', 'option label', 'wpsso' ), '', 'schema_knowledge_graph' ) . 
 			'<td>' .
 			'<p>' . $this->form->get_checkbox( 'schema_add_home_website' ) . ' ' .
 				sprintf( __( 'Include <a href="%s">WebSite Information</a> for Google Search',
@@ -3361,7 +3365,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$site_owners = SucomUtil::get_user_select_by_roles( $owner_roles );
 
 			$table_rows['schema_home_person_id'] = '' . 
-			$this->form->get_th_html( _x( 'User for Person Social Profile', 'option label', 'wpsso' ), '', 'schema_home_person_id' ).
+			$this->form->get_th_html( _x( 'User for Person Social Profile', 'option label', 'wpsso' ), '', 'schema_home_person_id' ) . 
 			'<td>' . $this->form->get_select( 'schema_home_person_id', $site_owners, '', '', true ) . '</td>';
 		}
 
@@ -3372,16 +3376,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_optional_advanced_table_rows( array &$table_rows, $network = false ) {
 
 			$table_rows['plugin_clean_on_uninstall'] = '' .
-			$this->form->get_th_html( _x( 'Remove All Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ).
+			$this->form->get_th_html( _x( 'Remove All Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ) . 
 			'<td>' .
 				$this->form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' .
-				_x( 'including any custom meta for posts, terms, and users', 'option comment', 'wpsso' ).' '.
+				_x( 'including any custom meta for posts, terms, and users', 'option comment', 'wpsso' ) . ' ' . 
 			'</td>' .
 			self::get_option_site_use( 'plugin_clean_on_uninstall', $this->form, $network, true );
 
 			$table_rows['plugin_debug'] = '' .
-			$this->form->get_th_html( _x( 'Add Hidden Debug Messages', 'option label', 'wpsso' ), '', 'plugin_debug' ).
-			'<td>' . ( ! $network && SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ? $this->form->get_no_checkbox( 'plugin_debug' ) .
+			$this->form->get_th_html( _x( 'Add Hidden Debug Messages', 'option label', 'wpsso' ), '', 'plugin_debug' ) . 
+			'<td>'  .  ( ! $network && SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ? $this->form->get_no_checkbox( 'plugin_debug' ) .
 				' <em>' . _x( 'WPSSO_HTML_DEBUG constant is true', 'option comment', 'wpsso' ) . '</em>' :
 					$this->form->get_checkbox( 'plugin_debug' ) ) .
 			'</td>' .
