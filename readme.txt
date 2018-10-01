@@ -342,6 +342,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.14.2-dev.3 (2018/10/01)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* Minor changes for code style and standardization.
+
 **Version 4.14.1 (2018/09/29)**
 
 * *New Features*
@@ -431,6 +442,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored SucomNotice methods to handle / store notices for different user IDs than the current user ID.
 
 == Upgrade Notice ==
+
+= 4.14.2-dev.3 =
+
+(2018/10/01) Minor changes for code style and standardization.
 
 = 4.14.1 =
 
