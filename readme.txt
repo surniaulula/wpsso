@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.15.0-dev.5 (2018/10/01)**
+**Version 4.15.0-dev.5 (2018/10/02)**
 
 * *New Features*
 	* None.
@@ -351,7 +351,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Minor changes for code style and standardization.
+	* Added the Schema SoftwareApplication type and its sub-types:
+		* Schema MobileApplication
+		* Schema VideoGame
+		* Schema WebApplication
 
 **Version 4.14.1 (2018/09/29)**
 
@@ -445,7 +448,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.15.0-dev.5 =
 
-(2018/10/01) Added icons to most metabox tabs and the SSO &gt; Dashboard metabox titles. Minor changes for code style and standardization.
+(2018/10/02) Added icons to most metabox tabs and the SSO &gt; Dashboard metabox titles. Added the Schema SoftwareApplication type and its sub-types.
 
 = 4.14.1 =
 
