@@ -2198,7 +2198,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'sculpture'            => 'https://schema.org/Sculpture',
 							'series'               => 'https://schema.org/Series',
-							'software.application' => 'https://schema.org/SoftwareApplication',
+							'software.application' => array( 
+								'software.application'            => 'https://schema.org/SoftwareApplication',
+								'software.application.mobile'     => 'https://schema.org/MobileApplication',
+								'software.application.video.game' => 'https://schema.org/VideoGame',
+								'software.application.web'        => 'https://schema.org/WebApplication',
+							),
 							'software.source.code' => 'https://schema.org/SoftwareSourceCode',
 							'tv.season'            => 'https://schema.org/TVSeason',
 							'tv.series'            => 'https://schema.org/TVSeries',
