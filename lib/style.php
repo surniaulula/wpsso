@@ -239,11 +239,15 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					array(), $plugin_version );
 
 			if ( $use_cache ) {
+
 				if ( $custom_style_css = get_transient( $cache_id ) ) {	// not empty
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'admin page style retrieved from cache' );
 					}
+
 					wp_add_inline_style( 'sucom-admin-page', $custom_style_css );
+
 					return;
 				}
 			}
@@ -269,14 +273,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						url("' . $plugin_urlpath . 'fonts/star.svg#star") format("svg");
 				}
 				@font-face {
-					font-family:"FontAwesome4";
+					font-family:"WpssoIcons";
 					font-weight:normal;
 					font-style:normal;
-					src:url("' . $plugin_urlpath . 'fonts/fontawesome-webfont.eot");
-					src:url("' . $plugin_urlpath . 'fonts/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),
-						url("' . $plugin_urlpath . 'fonts/fontawesome-webfont.woff") format("woff"),
-						url("' . $plugin_urlpath . 'fonts/fontawesome-webfont.ttf") format("truetype"),
-						url("' . $plugin_urlpath . 'fonts/fontawesome-webfont.svg#fontawesomeregular") format("svg");
+					src:url("' . $plugin_urlpath . 'fonts/wpsso_icons.eot");
+					src:url("' . $plugin_urlpath . 'fonts/wpsso_icons.eot#iefix") format("embedded-opentype"),
+						url("' . $plugin_urlpath . 'fonts/wpsso_icons.woff") format("woff"),
+						url("' . $plugin_urlpath . 'fonts/wpsso_icons.ttf") format("truetype"),
+						url("' . $plugin_urlpath . 'fonts/wpsso_icons.svg#wpsso_icons") format("svg");
 				}
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-count {
 					display:none;
