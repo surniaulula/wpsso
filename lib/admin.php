@@ -1513,7 +1513,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( $ext === $this->p->lca ) {	// features for this plugin
 					$features = array(
-						'(tool) Debug Logging Enabled' => array(
+						'(feature) Debug Logging Enabled' => array(
 							'classname' => 'SucomDebug',
 						),
 						'(code) Facebook / Open Graph Meta Tags' => array(
@@ -1668,25 +1668,41 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$purchase_url = $status_key === 'rec' && ! empty( $arr['purchase'] ) ? $arr['purchase'] : '';
 
 					switch ( $icon_type ) {
+
 						case 'api':
-							$icon_type = 'controls-repeat';
+
+							$icon_type  = 'cloud';
 							$icon_title = __( 'Service API module', 'wpsso' );
+
 							break;
+
 						case 'code':
-							$icon_type = 'editor-code';
+
+							$icon_type  = 'editor-code';
 							$icon_title = __( 'Meta tag and markup module', 'wpsso' );
+
 							break;
+
 						case 'plugin':
-							$icon_type = 'admin-plugins';
+
+							$icon_type  = 'admin-plugins';
 							$icon_title = __( 'Plugin integration module', 'wpsso' );
+
 							break;
+
 						case 'sharing':
-							$icon_type = 'screenoptions';
+
+							$icon_type  = 'screenoptions';
 							$icon_title = __( 'Sharing functionality module', 'wpsso' );
+
 							break;
-						case 'tool':
-							$icon_type = 'admin-tools';
+
+						case 'tool':	// Deprecated on 2018/10/02.
+						case 'feature':
+
+							$icon_type  = 'admin-generic';
 							$icon_title = __( 'Additional functionality module', 'wpsso' );
+
 							break;
 					}
 
@@ -1706,12 +1722,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		private static function sort_plugin_features( $feature_a, $feature_b ) {
-			return strcasecmp( self::feature_priority( $feature_a ),
-				self::feature_priority( $feature_b ) );
+
+			return strcasecmp( self::feature_priority( $feature_a ), self::feature_priority( $feature_b ) );
 		}
 
 		private static function feature_priority( $feature ) {
-			if ( strpos( $feature, '(tool)' ) === 0 ) {
+
+			if ( strpos( $feature, '(feature)' ) === 0 ) {
 				return '(10) ' . $feature;
 			} else {
 				return $feature;
@@ -1749,10 +1766,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_help_support() {
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox"><tr><td>';
-
-			//$this->show_follow_icons();
-
-			//echo $this->p->msgs->get( 'column-help-support' );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 
@@ -1810,20 +1823,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			echo '</td></tr></table>';
-		}
-
-		protected function show_follow_icons() {
-
-			echo '<div class="follow-icons">';
-
-			$img_size = $this->p->cf['follow']['size'];
-
-			foreach ( $this->p->cf['follow']['src'] as $img_rel => $url ) {
-				echo '<a href="' . $url . '"><img src="' . WPSSO_URLPATH.$img_rel . '"
-					width="' . $img_size . '" height="' . $img_size . '" border="0" /></a>';
-			}
-
-			echo '</div>';
 		}
 
 		/**

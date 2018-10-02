@@ -260,13 +260,23 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$custom_style_css = '
 				@font-face {
 					font-family:"Star";
-					src:url("' . $plugin_urlpath . 'fonts/star.eot");
-					src:url("' . $plugin_urlpath . 'fonts/star.eot?#iefix") format("embedded-opentype"),
-					url("' . $plugin_urlpath . 'fonts/star.woff") format("woff"),
-					url("' . $plugin_urlpath . 'fonts/star.ttf") format("truetype"),
-					url("' . $plugin_urlpath . 'fonts/star.svg#star") format("svg");
 					font-weight:normal;
 					font-style:normal;
+					src:url("' . $plugin_urlpath . 'fonts/star.eot");
+					src:url("' . $plugin_urlpath . 'fonts/star.eot?#iefix") format("embedded-opentype"),
+						url("' . $plugin_urlpath . 'fonts/star.woff") format("woff"),
+						url("' . $plugin_urlpath . 'fonts/star.ttf") format("truetype"),
+						url("' . $plugin_urlpath . 'fonts/star.svg#star") format("svg");
+				}
+				@font-face {
+					font-family:"FontAwesome4";
+					font-weight:normal;
+					font-style:normal;
+					src:url("' . $plugin_urlpath . 'fonts/fontawesome-webfont.eot");
+					src:url("' . $plugin_urlpath . 'fonts/fontawesome-webfont.eot?#iefix") format("embedded-opentype"),
+						url("' . $plugin_urlpath . 'fonts/fontawesome-webfont.woff") format("woff"),
+						url("' . $plugin_urlpath . 'fonts/fontawesome-webfont.ttf") format("truetype"),
+						url("' . $plugin_urlpath . 'fonts/fontawesome-webfont.svg#fontawesomeregular") format("svg");
 				}
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-count {
 					display:none;
@@ -468,7 +478,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				td.column-' . $this->p->lca . '_og_type,
 				td.column-' . $this->p->lca . '_og_desc {
 					direction:ltr;
-					font-family:Helvetica;
+					font-family:"Helvetica";
 					text-align:left;
 					word-wrap:break-word;
 				}

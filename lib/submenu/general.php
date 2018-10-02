@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$metabox_id = 'og';
 
 			$tabs = apply_filters( $this->p->lca . '_general_' . $metabox_id . '_tabs', array(
-				'general' => _x( 'Site Information', 'metabox tab', 'wpsso' ),
+				'site'    => _x( 'Site Information', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Titles / Descriptions', 'metabox tab', 'wpsso' ),
 				'author'  => _x( 'Authorship', 'metabox tab', 'wpsso' ),
 				'images'  => _x( 'Images', 'metabox tab', 'wpsso' ),
@@ -78,11 +78,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$metabox_id = 'pub';
 
 			$tabs = apply_filters( $this->p->lca . '_general_' . $metabox_id . '_tabs', array(
-				'facebook'  => _x( 'Facebook', 'metabox tab', 'wpsso' ),
-				'google'    => _x( 'Google / Schema', 'metabox tab', 'wpsso' ),
-				'pinterest' => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
-				'twitter'   => _x( 'Twitter', 'metabox tab', 'wpsso' ),
-				'other'     => _x( 'Other', 'metabox tab', 'wpsso' ),
+				'facebook'     => _x( 'Facebook', 'metabox tab', 'wpsso' ),
+				'google'       => _x( 'Google', 'metabox tab', 'wpsso' ),
+				'pinterest'    => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
+				'twitter'      => _x( 'Twitter', 'metabox tab', 'wpsso' ),
+				'other_social' => _x( 'Other Sites', 'metabox tab', 'wpsso' ),
 			) );
 
 			$table_rows = array();
@@ -102,7 +102,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			switch ( $metabox_id . '-' . $tab_key ) {
 
-				case 'og-general':
+				case 'og-site':
 
 					$table_rows['site_name'] = '' . 
 					$this->form->get_th_html( _x( 'WebSite Name', 'option label', 'wpsso' ), '', 'site_name',
@@ -246,7 +246,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Author Link URL Profile Contact', 'option label', 'wpsso' ), '', 'seo_author_field' ) . 
 					'<td>' . $this->form->get_select( 'seo_author_field', $user_contacts ) . '</td>';
 
-					$table_rows['subsection_google_schema'] = '<td></td><td class="subsection"><h4>' . 
+					$table_rows['subsection_google_schema'] = '<td colspan="2" class="subsection"><h4>' . 
 					_x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 					if ( $this->p->schema->is_noscript_enabled() ) {
@@ -334,18 +334,23 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
-				case 'pub-other':
+				case 'pub-other_social':
 
 					$social_accounts = apply_filters( $this->p->lca . '_social_accounts', $this->p->cf['form']['social_accounts'] );
 					asort( $social_accounts );	// sort by translated label and maintain key association
 
 					foreach ( $social_accounts as $social_key => $label ) {
-						// skip options shown in previous tabs
+
+						/**
+						 * Skip options shown in previous tabs.
+						 */
 						switch ( $social_key ) {
-							case 'fb_publisher_url':
-							case 'seo_publisher_url':
-							case 'p_publisher_url':
-							case 'tc_site':
+
+							case 'fb_publisher_url':	// Facebook
+							case 'seo_publisher_url':	// Google
+							case 'p_publisher_url':		// Pinterest
+							case 'tc_site':			// Twitter
+
 								continue 2;
 						}
 

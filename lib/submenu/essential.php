@@ -54,9 +54,9 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 			$metabox_id = 'essential';
 
 			$tabs = apply_filters( $this->p->lca . '_essential_general_tabs', array(
-				'general'   => _x( 'Site Information', 'metabox tab', 'wpsso' ),
-				'facebook'  => _x( 'Facebook / Open Graph', 'metabox tab', 'wpsso' ),
-				'google'    => _x( 'Google / Schema', 'metabox tab', 'wpsso' ),
+				'site'      => _x( 'Site Information', 'metabox tab', 'wpsso' ),
+				'facebook'  => _x( 'Facebook', 'metabox tab', 'wpsso' ),
+				'google'    => _x( 'Google', 'metabox tab', 'wpsso' ),
 				'pinterest' => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
 				'twitter'   => _x( 'Twitter', 'metabox tab', 'wpsso' ),
 			) );
@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 			switch ( $metabox_id . '-' . $tab_key ) {
 
-				case 'essential-general':
+				case 'essential-site':
 
 					$table_rows['site_name'] = '' . 
 					$this->form->get_th_html( _x( 'WebSite Name', 'option label', 'wpsso' ), '', 'site_name',

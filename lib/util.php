@@ -3117,7 +3117,6 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			if ( ! empty( $metabox_id ) ) {
 				$metabox_id         = '_' . $metabox_id;		// Must start with an underscore.
 				$class_metabox_tabs .= ' ' . $class_metabox_tabs . $metabox_id;
-				$class_link         .= ' ' . $class_link . $metabox_id;
 			}
 
 			/**
@@ -3142,9 +3141,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$tab_num++;
 
 				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
+				$class_link_key = $class_link . ' ' . $class_link . $metabox_id . ' ' . $class_link . '-href_' . $tab;
 
 				$ret_html .= '<div class="tab_space' . ( $tab_num === 1 ? ' first_tab' : '' ) . '">&nbsp;</div>' .
-					'<li class="' . $class_href_key . '"><a class="' . $class_link . '" href="#' . $class_href_key . '">' .
+					'<li class="' . $class_href_key . '"><a class="' . $class_link_key . '" href="#' . $class_href_key . '">' .
 						$title . '</a></li>';	// Do not add newline.
 			}
 

@@ -1210,9 +1210,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				.' . $this->lca . '-notice.notice-info .notice-label::before,
 				.' . $this->lca . '-notice.notice-warning .notice-label::before,
 				.' . $this->lca . '-notice.notice-error .notice-label::before {
-					vertical-align:bottom;
-					font-family:dashicons;
+					font-family:"Dashicons";
 					font-size:1.2em;
+					vertical-align:bottom;
 					margin-right:6px;
 				}
 				.' . $this->lca . '-notice.notice-error .notice-label::before {

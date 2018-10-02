@@ -80,8 +80,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$info_msg = $this->p->msgs->get( 'info-'.$metabox_id );
 
 			$tabs = apply_filters( $this->p->lca.'_advanced_'.$metabox_id.'_tabs', array(
-				'custom'  => _x( 'Custom Contacts', 'metabox tab', 'wpsso' ),
-				'builtin' => _x( 'Built-In Contacts', 'metabox tab', 'wpsso' ),
+				'custom_contacts'  => _x( 'Custom Contacts', 'metabox tab', 'wpsso' ),
+				'default_contacts' => _x( 'Default Contacts', 'metabox tab', 'wpsso' ),
 			) );
 
 			foreach ( $tabs as $tab_key => $title ) {
@@ -98,11 +98,11 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$metabox_id = 'taglist';
 
 			$tabs = apply_filters( $this->p->lca.'_advanced_'.$metabox_id.'_tabs', array(
-				'fb' => _x( 'Facebook', 'metabox tab', 'wpsso' ),
-				'og' => _x( 'Open Graph', 'metabox tab', 'wpsso' ),
-				'twitter' => _x( 'Twitter', 'metabox tab', 'wpsso' ),
-				'schema' => _x( 'Schema', 'metabox tab', 'wpsso' ),
-				'other' => _x( 'SEO / Other', 'metabox tab', 'wpsso' ),
+				'facebook'   => _x( 'Facebook', 'metabox tab', 'wpsso' ),
+				'open_graph' => _x( 'Open Graph', 'metabox tab', 'wpsso' ),
+				'twitter'    => _x( 'Twitter', 'metabox tab', 'wpsso' ),
+				'schema'     => _x( 'Schema', 'metabox tab', 'wpsso' ),
+				'seo_other'  => _x( 'SEO / Other', 'metabox tab', 'wpsso' ),
 			) );
 
 			$table_rows = array();

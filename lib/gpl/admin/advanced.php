@@ -30,13 +30,13 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'plugin_list_columns_rows' => 2,
 				'plugin_cache_rows'        => 3,
 				'plugin_apikeys_rows'      => 2,
-				'cm_custom_rows'           => 2,
-				'cm_builtin_rows'          => 2,
-				'taglist_og_rows'          => 3,
-				'taglist_fb_rows'          => 3,
+				'cm_custom_contacts_rows'  => 2,
+				'cm_default_contacts_rows' => 2,
+				'taglist_facebook_rows'    => 3,
+				'taglist_open_graph_rows'  => 3,
 				'taglist_twitter_rows'     => 3,
 				'taglist_schema_rows'      => 3,
-				'taglist_other_rows'       => 3,
+				'taglist_seo_other_rows'   => 3,
 			), 20 );
 		}
 
@@ -190,6 +190,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ), '', 'plugin_def_currency' ).
 			'<td class="blank">' . $form->get_no_select( 'plugin_def_currency', SucomUtil::get_currencies() ) . '</td>';
 
+			/**
+			 * Custom fields.
+			 */
 			foreach ( (array) apply_filters( $this->p->lca . '_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
 
 				if ( isset( $this->p->cf['form']['cf_labels'][$cf_idx] ) && $opt_label = $this->p->cf['form']['cf_labels'][$cf_idx] ) {
@@ -406,7 +409,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			 * Bitly URL  shortener.
 			 */
 			$table_rows['subsection_plugin_bitly'] = $tr_html['bitly'].
-			'<td></td><td class="subsection"><h4>' . _x( 'Bitly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
+			'<td colspan="2" class="subsection"><h4>' . _x( 'Bitly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows['plugin_bitly_login'] = $tr_html['bitly'].
 			$form->get_th_html( _x( 'Bitly Username', 'option label', 'wpsso' ), '', 'plugin_bitly_login' ).
@@ -432,7 +435,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			 * DLMY.App URL  shortener.
 			 */
 			$table_rows['subsection_plugin_dlmyapp'] = $tr_html['dlmyapp'].
-			'<td></td><td class="subsection"><h4>' . _x( 'DLMY.App URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
+			'<td colspan="2" class="subsection"><h4>' . _x( 'DLMY.App URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows['plugin_dlmyapp_api_key'] = $tr_html['dlmyapp'].
 			$form->get_th_html( _x( 'DLMY.App API Key', 'option label', 'wpsso' ), '', 'plugin_dlmyapp_api_key' ).
@@ -442,7 +445,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			 * Google URL  shortener.
 			 */
 			$table_rows['subsection_plugin_googl'] = $tr_html['googl'].
-			'<td></td><td class="subsection"><h4>' . _x( 'Google APIs', 'metabox title', 'wpsso' ) . '</h4></td>';
+			'<td colspan="2" class="subsection"><h4>' . _x( 'Google APIs', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows['plugin_google_api_key'] = $tr_html['googl'].
 			$form->get_th_html( _x( 'Google Project API Key', 'option label', 'wpsso' ), '', 'plugin_google_api_key' ).
@@ -458,7 +461,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			 * Owly URL  shortener.
 			 */
 			$table_rows['subsection_plugin_owly'] = $tr_html['owly'].
-			'<td></td><td class="subsection"><h4>' . _x( 'Ow.ly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
+			'<td colspan="2" class="subsection"><h4>' . _x( 'Ow.ly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows['plugin_owly_api_key'] = $tr_html['owly'].
 			$form->get_th_html( _x( 'Ow.ly API Key', 'option label', 'wpsso' ), '', 'plugin_owly_api_key' ).
@@ -468,7 +471,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			 * YOURLS URL  shortener.
 			 */
 			$table_rows['subsection_plugin_yourls'] = $tr_html['yourls'].
-			'<td></td><td class="subsection"><h4>' . _x( 'Your Own URL Shortener (YOURLS)', 'metabox title', 'wpsso' ) . '</h4></td>';
+			'<td colspan="2" class="subsection"><h4>' . _x( 'Your Own URL Shortener (YOURLS)', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows['plugin_yourls_api_url'] = $tr_html['yourls'].
 			$form->get_th_html( _x( 'YOURLS API URL', 'option label', 'wpsso' ), '', 'plugin_yourls_api_url' ).
@@ -489,7 +492,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_cm_custom_rows( $table_rows, $form ) {
+		public function filter_cm_custom_contacts_rows( $table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -564,7 +567,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_cm_builtin_rows( $table_rows, $form ) {
+		public function filter_cm_default_contacts_rows( $table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -605,22 +608,22 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_taglist_og_rows( $table_rows, $form, $network = false ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_(.+)$/' ) );
-		}
-
-		public function filter_taglist_fb_rows( $table_rows, $form, $network = false ) {
+		public function filter_taglist_facebook_rows( $table_rows, $form, $network = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
 			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_((fb|al):.+)$/' ) );
+		}
+
+		public function filter_taglist_open_graph_rows( $table_rows, $form, $network = false ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_(.+)$/' ) );
 		}
 
 		public function filter_taglist_twitter_rows( $table_rows, $form, $network = false ) {
@@ -641,7 +644,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(meta|link)_(itemprop)_(.+)$/' ) );
 		}
 
-		public function filter_taglist_other_rows( $table_rows, $form, $network = false ) {
+		public function filter_taglist_seo_other_rows( $table_rows, $form, $network = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();

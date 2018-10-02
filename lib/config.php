@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.14.2-dev.3',	// Plugin version.
+					'version'     => '4.15.0-dev.4',	// Plugin version.
 					'opt_version' => '610',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -92,9 +92,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
-								'post' => '(tool) Custom Post Meta',
-								'term' => '(tool) Custom Term Meta',
-								'user' => '(tool) Custom User Meta',
+								'post' => '(feature) Custom Post Meta',
+								'term' => '(feature) Custom Term Meta',
+								'user' => '(feature) Custom User Meta',
 							),
 						),
 						'pro' => array(
@@ -129,7 +129,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'rtmedia'    => '(plugin) rtMedia for WordPress, BuddyPress and bbPress',
 								'slideshare' => '(api) Slideshare API',
 								'soundcloud' => '(api) Soundcloud API',
-								'upscale'    => '(tool) WP Media Library Image Upscaling',
+								'upscale'    => '(feature) WP Media Library Image Upscaling',
 								'vimeo'      => '(api) Vimeo Video API',
 								'wistia'     => '(api) Wistia Video API',
 								'wpvideo'    => '(api) WordPress Video Shortcode',
@@ -150,14 +150,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
-								'checkimgdims' => '(tool) Verify Image Dimensions',
+								'checkimgdims' => '(feature) Verify Image Dimensions',
 								'coauthors'    => '(plugin) Co-Authors Plus',
-								'language'     => '(tool) WP Locale to Publisher Language Mapping',
+								'language'     => '(feature) WP Locale to Publisher Language Mapping',
 								'shorten'      => '(api) URL Shortening Service APIs',
-								'post'         => '(tool) Custom Post Meta',
-								'term'         => '(tool) Custom Term Meta',
-								'user'         => '(tool) Custom User Meta',
-								'wpseo_meta'   => '(tool) Yoast SEO Social Meta',
+								'post'         => '(feature) Custom Post Meta',
+								'term'         => '(feature) Custom Term Meta',
+								'user'         => '(feature) Custom User Meta',
+								'wpseo_meta'   => '(feature) Yoast SEO Social Meta',
 							),
 						),
 					),
@@ -2721,17 +2721,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'extend' => array(
 				'https://wpsso.com/extend/plugins/',
-			),
-			'follow' => array(
-				'size' => 32,
-				'src'  => array(
-					'images/follow/Wordpress.png'  => 'https://profiles.wordpress.org/jsmoriss/',
-					'images/follow/Github.png'     => 'https://github.com/SurniaUlula',
-					'images/follow/Facebook.png'   => 'https://www.facebook.com/SurniaUlulaCom',
-					'images/follow/GooglePlus.png' => 'https://plus.google.com/+SurniaUlula/',
-					'images/follow/Twitter.png'    => 'https://twitter.com/surniaululacom',
-					//'images/follow/Rss.png'      => 'https://wpsso.com/category/application/wordpress/wp-plugins/wpsso/feed/',
-				),
 			),
 		);
 
