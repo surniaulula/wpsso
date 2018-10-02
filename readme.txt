@@ -342,12 +342,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.14.2-dev.3 (2018/10/01)**
+**Version 4.15.0-dev.4 (2018/10/01)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Added Font Awesome icons to most metabox tabs and the SSO &gt; Dashboard metabox titles.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -443,9 +443,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.14.2-dev.3 =
+= 4.15.0-dev.4 =
 
-(2018/10/01) Minor changes for code style and standardization.
+(2018/10/01) Added Font Awesome icons to most metabox tabs and the SSO &gt; Dashboard metabox titles. Minor changes for code style and standardization.
 
 = 4.14.1 =
 
