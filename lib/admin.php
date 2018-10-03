@@ -3352,10 +3352,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				sprintf( __( 'Include <a href="%s">WebSite Information</a> for Google Search',
 					'wpsso' ), 'https://developers.google.com/structured-data/site-name' ) . '</p>' .
 			'<p>' . $this->form->get_checkbox( 'schema_add_home_organization' ) . ' ' .
-				sprintf( __( 'Include <a href="%s">Organization Social Profile</a>',
+				sprintf( __( 'Include <a href="%s">Organization Social Profile</a> for a Business Site',
 					'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ) . '</p>' .
 			'<p>' . $this->form->get_checkbox( 'schema_add_home_person' ) . ' ' .
-				sprintf( __( 'Include <a href="%s">Person Social Profile</a> for the Site Owner',
+				sprintf( __( 'Include <a href="%s">Person Social Profile</a> for a Personal Site',
 					'wpsso' ), 'https://developers.google.com/structured-data/customize/social-profiles' ) . '</p>' .
 			'</td>';
 

@@ -961,11 +961,12 @@ msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr ""
 
 #: lib/admin.php:3355
-msgid "Include <a href=\"%s\">Organization Social Profile</a>"
+msgid ""
+"Include <a href=\"%s\">Organization Social Profile</a> for a Business Site"
 msgstr ""
 
 #: lib/admin.php:3358
-msgid "Include <a href=\"%s\">Person Social Profile</a> for the Site Owner"
+msgid "Include <a href=\"%s\">Person Social Profile</a> for a Personal Site"
 msgstr ""
 
 #: lib/admin.php:3367

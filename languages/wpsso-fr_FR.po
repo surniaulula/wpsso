@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.15.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-10-02 14:12-0700\n"
-"PO-Revision-Date: 2018-10-02 14:30-0700\n"
+"POT-Creation-Date: 2018-10-03 10:39-0700\n"
+"PO-Revision-Date: 2018-10-03 10:40-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -98,7 +98,7 @@ msgctxt "option label"
 msgid "Clear All Caches on Save Settings"
 msgstr "Vider les caches lors de l'enregistrement des réglages"
 
-#: lib/admin.php:829 lib/register.php:125
+#: lib/admin.php:829 lib/register.php:127
 msgid "A background task will begin shortly to clear all caches (the %s option is enabled)."
 msgstr "Une tâche en arrière-plan commencera sous peu pour vider tous les caches (l'option %s est activée)."
 
@@ -919,12 +919,12 @@ msgid "Include <a href=\"%s\">WebSite Information</a> for Google Search"
 msgstr "Inclure les <a href=\"%s\">informations du site Web</a> pour Google Search"
 
 #: lib/admin.php:3355
-msgid "Include <a href=\"%s\">Organization Social Profile</a>"
-msgstr "Inclure le <a href=\"%s\">profil social de l'organisation</a>"
+msgid "Include <a href=\"%s\">Organization Social Profile</a> for a Business Site"
+msgstr "Inclure le <a href=\"%s\">profil social de l'organisation</a> pour un site d'affaire"
 
 #: lib/admin.php:3358
-msgid "Include <a href=\"%s\">Person Social Profile</a> for the Site Owner"
-msgstr "Inclure le <a href=\"%s\">profil social d'une personne</a> pour le propriétaire du site"
+msgid "Include <a href=\"%s\">Person Social Profile</a> for a Personal Site"
+msgstr "Inclure le <a href=\"%s\">profil social d'une personne</a> pour un site personnel"
 
 #: lib/admin.php:3367
 msgctxt "option label"
@@ -2255,7 +2255,7 @@ msgid "Schema Types Array Cache Expiry"
 msgstr "Expiration cache types de Schéma"
 
 #: lib/gpl/admin/advanced.php:320 lib/pro/admin/advanced.php:318
-#: lib/register.php:123
+#: lib/register.php:125
 msgctxt "option label"
 msgid "Clear All Caches on Activate"
 msgstr "Vider les caches lors d'activation"
@@ -2723,7 +2723,7 @@ msgstr "Classe de  bibliothèque \"%s\" manquante."
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:164 lib/loader.php:190 lib/post.php:265 lib/register.php:276
+#: lib/loader.php:164 lib/loader.php:190 lib/post.php:265 lib/register.php:278
 #: lib/term.php:249 lib/user.php:215 lib/util.php:367 lib/util.php:2991
 msgid "%s warning:"
 msgstr "Alerte %s:"
@@ -4242,7 +4242,7 @@ msgstr "%1$s version %2$s requiert l'utilisation de %3$s version %4$s ou plus r�
 msgid "If an update for %1$s is not available under the WordPress %2$s page, use the <em>%3$s</em> button in the %4$s settings page to force an immediate refresh of all Pro update information."
 msgstr "Si une mise à jour pour %1$s n'est pas disponible sous la page %2$s WordPress, utilisez le bouton <em>%3$s</em> dans la page de réglages %4$s pour forcer une actualisation immédiate de toutes les informations de mise à jour Pro."
 
-#: lib/messages.php:2426 lib/register.php:286
+#: lib/messages.php:2426 lib/register.php:288
 msgid "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features."
 msgstr "Vous utilisez la version %2$s de %1$s &mdash; <a href=\"%3$s\">cette version de %1$s est obsolète, non supportée, peut-être insécure</a> et pourrait manquer certaines mises à jour et caractéristiques importantes."
 
@@ -4883,11 +4883,11 @@ msgid "Invalid user ID."
 msgstr "ID d'utilisateur non valide"
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number.
-#: lib/register.php:279 lib/register.php:288
+#: lib/register.php:281 lib/register.php:290
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé."
 
-#: lib/register.php:290
+#: lib/register.php:292
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
@@ -5478,11 +5478,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgctxt "metabox tab"
-#~ msgid "Facebook / Open Graph"
-#~ msgstr "Facebook / Open Graph"
-
-#~ msgctxt "metabox tab"
-#~ msgid "Google / Schema"
-#~ msgstr "Google / Schéma"
