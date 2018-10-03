@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.15.0-dev.5 (2018/10/02)**
+**Version 4.15.0-dev.6 (2018/10/03)**
 
 * *New Features*
 	* None.
@@ -446,9 +446,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.15.0-dev.5 =
+= 4.15.0-dev.6 =
 
-(2018/10/02) Added icons to most metabox tabs and the SSO &gt; Dashboard metabox titles. Added the Schema SoftwareApplication type and its sub-types.
+(2018/10/03) Added icons to most metabox tabs and the SSO &gt; Dashboard metabox titles. Added the Schema SoftwareApplication type and its sub-types.
 
 = 4.14.1 =
 
