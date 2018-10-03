@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.15.0-dev.5\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.15.0-dev.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -97,7 +97,7 @@ msgctxt "option label"
 msgid "Clear All Caches on Save Settings"
 msgstr ""
 
-#: lib/admin.php:829 lib/register.php:125
+#: lib/admin.php:829 lib/register.php:127
 msgid ""
 "A background task will begin shortly to clear all caches (the %s option is "
 "enabled)."
@@ -2353,7 +2353,7 @@ msgid "Schema Types Array Cache Expiry"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:320 lib/pro/admin/advanced.php:318
-#: lib/register.php:123
+#: lib/register.php:125
 msgctxt "option label"
 msgid "Clear All Caches on Activate"
 msgstr ""
@@ -2830,7 +2830,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:164 lib/loader.php:190 lib/post.php:265 lib/register.php:276
+#: lib/loader.php:164 lib/loader.php:190 lib/post.php:265 lib/register.php:278
 #: lib/term.php:249 lib/user.php:215 lib/util.php:367 lib/util.php:2991
 msgid "%s warning:"
 msgstr ""
@@ -4920,7 +4920,7 @@ msgid ""
 "refresh of all Pro update information."
 msgstr ""
 
-#: lib/messages.php:2426 lib/register.php:286
+#: lib/messages.php:2426 lib/register.php:288
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -5656,11 +5656,11 @@ msgid "Invalid user ID."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number.
-#: lib/register.php:279 lib/register.php:288
+#: lib/register.php:281 lib/register.php:290
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:290
+#: lib/register.php:292
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 

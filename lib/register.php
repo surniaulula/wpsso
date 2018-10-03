@@ -54,10 +54,12 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		}
 
 		public function network_activate( $sitewide ) {
+
 			self::do_multisite( $sitewide, array( $this, 'activate_plugin' ) );
 		}
 
 		public function network_deactivate( $sitewide ) {
+
 			self::do_multisite( $sitewide, array( $this, 'deactivate_plugin' ) );
 		}
 

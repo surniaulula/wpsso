@@ -4103,6 +4103,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
 		 */
 		public static function raw_home_url( $path = '', $scheme = null ) {
+
 			return self::raw_get_home_url( null, $path, $scheme );
 		}
 
@@ -4123,6 +4124,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$url = get_option( 'home' );
 
 			} else {
+
 				switch_to_blog( $blog_id );
 
 				$url = get_option( 'home' );
