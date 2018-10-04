@@ -1412,7 +1412,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '1.11.0',	// Minimum update manager version (soft limit).
+				'rec_version' => '1.12.0',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -1444,7 +1444,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'php' => array(
 				'label'       => 'PHP',
 				'min_version' => '5.4',		// Hard limit - deactivate the plugin when activating.
-				'rec_version' => '7.0',		// Soft limit - issue warning if lower version found.
+				'rec_version' => '7.1',		// Soft limit - issue warning if lower version found.
 				'version_url' => 'https://secure.php.net/supported-versions.php',
 				'extensions'  => array(
 					'curl' => array(	// PHP extension name.
@@ -2730,8 +2730,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		);
 
 		public static function get_version( $add_slug = false ) {
-			$ext = 'wpsso';
+
+			$ext  = 'wpsso';
 			$info =& self::$cf['plugin'][$ext];
+
 			return $add_slug ? $info['slug'] . '-' . $info['version'] : $info['version'];
 		}
 
@@ -3013,14 +3015,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			if ( false === $ret && ! empty( $filespec ) ) {
 
-				$filepath = WPSSO_PLUGINDIR.'lib/'.$filespec.'.php';
+				$filepath = WPSSO_PLUGINDIR . 'lib/' . $filespec . '.php';
 
 				if ( file_exists( $filepath ) ) {
 
 					require_once $filepath;
 
 					if ( empty( $classname ) ) {
-						return SucomUtil::sanitize_classname( 'wpsso'.$filespec, false );	// $underscore = false
+						return SucomUtil::sanitize_classname( 'wpsso' . $filespec, $allow_underscore = false );
 					} else {
 						return $classname;
 					}

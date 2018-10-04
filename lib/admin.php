@@ -1597,7 +1597,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						 */
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
 
-						$classname  = SucomUtil::sanitize_classname( $ext . 'pro' . $sub . $id, false );	// $underscore is false.
+						$classname  = SucomUtil::sanitize_classname( $ext . 'pro' . $sub . $id, $allow_underscore = false );
 						$status_off = $this->p->avail[ $sub ][ $id ] ? 'rec' : 'off';
 
 						$features[$label] = array(
