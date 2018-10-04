@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.15.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-10-03 10:39-0700\n"
-"PO-Revision-Date: 2018-10-03 10:40-0700\n"
+"POT-Creation-Date: 2018-10-04 08:23-0700\n"
+"PO-Revision-Date: 2018-10-04 08:23-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -989,37 +989,37 @@ msgctxt "option comment"
 msgid "%s add-on required"
 msgstr "%s ajout requis"
 
-#: lib/com/bfo.php:252 lib/com/cache.php:77 lib/com/notice.php:75
+#: lib/com/bfo.php:253 lib/com/cache.php:77 lib/com/notice.php:75
 #: lib/com-gettext-extract.php:23
 msgid "%s Notice"
 msgstr "Avis %s"
 
-#: lib/com/bfo.php:255 lib/com/cache.php:80 lib/com/notice.php:78
+#: lib/com/bfo.php:256 lib/com/cache.php:80 lib/com/notice.php:78
 #: lib/com-gettext-extract.php:16
 msgid "Notice"
 msgstr "Avis"
 
-#: lib/com/bfo.php:272 lib/com-gettext-extract.php:24
+#: lib/com/bfo.php:273 lib/com-gettext-extract.php:24
 msgid "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly sent output to the webpage."
 msgstr "Le crochet de filtre \"%1$s\" avec la priorité %2$d dans le filtre \"%3$s\" a envoyé une valeur à la sortie de page Web incorrectement."
 
-#: lib/com/bfo.php:275 lib/com-gettext-extract.php:3
+#: lib/com/bfo.php:276 lib/com-gettext-extract.php:3
 msgid "All WordPress filter hooks must return their text, not send it to the webpage output."
 msgstr "Tous les crochets de filtre WordPress doivent retourner leur texte, pas l'envoyer à la sortie de la page Web."
 
-#: lib/com/bfo.php:278 lib/com-gettext-extract.php:18
+#: lib/com/bfo.php:279 lib/com-gettext-extract.php:18
 msgid "Please contact the author of that filter hook and report this issue as a coding error."
 msgstr "SVP contacter l'auteur de ce filtre et signaler ce problème comme une erreur de codage."
 
-#: lib/com/bfo.php:311 lib/com-gettext-extract.php:15
+#: lib/com/bfo.php:312 lib/com-gettext-extract.php:15
 msgid "Incorrect webpage output:"
 msgstr "Sortie incorrecte à la page Web:"
 
-#: lib/com/bfo.php:312 lib/com-gettext-extract.php:4
+#: lib/com/bfo.php:313 lib/com-gettext-extract.php:4
 msgid "BEGIN OUTPUT"
 msgstr "DÉBUT DE SORTIE"
 
-#: lib/com/bfo.php:313 lib/com-gettext-extract.php:8
+#: lib/com/bfo.php:314 lib/com-gettext-extract.php:8
 msgid "END OUTPUT"
 msgstr "FIN DE SORTIE"
 

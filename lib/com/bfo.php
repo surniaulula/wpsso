@@ -30,6 +30,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		private static $filter_hooked = array();
 
 		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
+
 			$this->set_config( $plugin, $lca, $text_domain, $label_transl );
 		}
 
@@ -64,11 +65,11 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 			foreach ( $filter_names as $filter_name ) {
 
-				if ( empty( $wp_actions[$filter_name] ) ) {			// Just in case - skip actions.
+				if ( empty( $wp_actions[ $filter_name ] ) ) {			// Just in case - skip actions.
 
-					if ( ! isset( self::$filter_hooked[$filter_name] ) ) {	// Only hook a filter once.
+					if ( ! isset( self::$filter_hooked[ $filter_name ] ) ) {	// Only hook a filter once.
 
-						self::$filter_hooked[$filter_name] = true;
+						self::$filter_hooked[ $filter_name ] = true;
 
 						add_filter( $filter_name, array( $this, 'start_output_buffer' ), $min_int, 1 );
 					}
@@ -89,11 +90,11 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 			foreach ( $filter_names as $filter_name ) {
 
-				if ( empty( $wp_actions[$filter_name] ) ) {			// Just in case - skip actions.
+				if ( empty( $wp_actions[ $filter_name ] ) ) {			// Just in case - skip actions.
 
-					if ( isset( self::$filter_hooked[$filter_name] ) ) {	// Skip if not already hooked.
+					if ( isset( self::$filter_hooked[ $filter_name ] ) ) {	// Skip if not already hooked.
 
-						unset( self::$filter_hooked[$filter_name] );
+						unset( self::$filter_hooked[ $filter_name ] );
 
 						remove_filter( $filter_name, array( $this, 'start_output_buffer' ), $min_int, 1 );
 
@@ -119,17 +120,17 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 			$max_int     = self::get_max_int();
 			$filter_name = current_filter();
 
-			if ( empty( $wp_actions[$filter_name] ) ) {				// Only check filters, not actions .
+			if ( empty( $wp_actions[ $filter_name ] ) ) {				// Only check filters, not actions.
 
 				static $filter_count = array();
 
-				$filter_count[$filter_name] = isset( $filter_count[$filter_name] ) ? $filter_count[$filter_name]++ : 1;
+				$filter_count[ $filter_name ] = isset( $filter_count[ $filter_name ] ) ? $filter_count[ $filter_name ]++ : 1;
 
 				if ( ob_start() ) {
 
-					if ( $filter_count[$filter_name] === 1 ) {		// Only check output on the first run.
+					if ( $filter_count[ $filter_name ] === 1 ) {		// Only check output on the first run.
 						$this->add_check_output_hooks( $filter_name );
-					} elseif ( $filter_count[$filter_name] === 2 ) {	// Remove check hooks on second run.
+					} elseif ( $filter_count[ $filter_name ] === 2 ) {	// Remove check hooks on second run.
 						$this->remove_check_output_hooks( $filter_name );
 					}
 
@@ -159,11 +160,11 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 			global $wp_filter;
 
-			if ( isset( $wp_filter[$filter_name]->callbacks ) ) {
+			if ( isset( $wp_filter[ $filter_name ]->callbacks ) ) {
 
 				$bfo_check_str = '_' . __CLASS__ . '::' . $this->bfo_check_id;			// '_SucomBFO::check_output_buffer'
 
-				foreach ( $wp_filter[$filter_name]->callbacks as $hook_prio => &$hook_group ) {	// Use reference to modify $hook_group.
+				foreach ( $wp_filter[ $filter_name ]->callbacks as $hook_prio => &$hook_group ) {	// Use reference to modify $hook_group.
 
 					$new_hook_group = array();						// Create a new group to insert a check after each hook.
 
@@ -206,11 +207,11 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 			global $wp_filter;
 
-			if ( isset( $wp_filter[$filter_name]->callbacks ) ) {
+			if ( isset( $wp_filter[ $filter_name ]->callbacks ) ) {
 
 				$bfo_check_str = '_' . __CLASS__ . '::' . $this->bfo_check_id;
 
-				foreach ( $wp_filter[$filter_name]->callbacks as $hook_prio => &$hook_group ) {	// Use reference to modify $hook_group.
+				foreach ( $wp_filter[ $filter_name ]->callbacks as $hook_prio => &$hook_group ) {	// Use reference to modify $hook_group.
 					foreach ( $hook_group as $hook_ref => $hook_info ) {
 						if ( strpos( $hook_ref, $bfo_check_str ) !== false ) {
 							unset( $hook_group[$hook_ref] );
@@ -369,10 +370,12 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		}
 		
 		private static function get_min_int() {
+
 			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// Available since PHP 7.0.0.
 		}
 
 		private static function get_max_int() {
+
 			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// Available since PHP 5.0.2.
 		}
 	}
