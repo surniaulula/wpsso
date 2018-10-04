@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.8
 WC Tested Up To: 3.4.5
-Stable Tag: 4.14.1
+Stable Tag: 4.15.0
 
 Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.
 
@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.15.0 (2018/10/03)**
+**Version 4.15.0 (2018/10/04)**
 
 * *New Features*
 	* None.
@@ -448,9 +448,5 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.15.0 =
 
-(2018/10/03) Added icons to most metabox tabs and the SSO &gt; Dashboard metabox titles. Added the Schema SoftwareApplication type and its sub-types.
-
-= 4.14.1 =
-
-(2018/09/29) Moved all column related options from the SSO &gt; Advanced &gt; Custom Meta tab to a new List Columns tab.
+(2018/10/04) Added icons to most metabox tabs and the SSO &gt; Dashboard metabox titles. Added the Schema SoftwareApplication type and its sub-types.
 
