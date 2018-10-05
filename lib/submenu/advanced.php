@@ -37,12 +37,12 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					array( $this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
 
 			add_meta_box( $this->pagehook.'_contact_fields',
-				_x( 'Contact Field IDs and Labels', 'metabox title', 'wpsso' ),
+				_x( 'Contact Fields', 'metabox title', 'wpsso' ),
 					array( $this, 'show_metabox_contact_fields' ), $this->pagehook, 'normal' );
 
-			add_meta_box( $this->pagehook.'_taglist',
-				_x( 'Head Tags List', 'metabox title', 'wpsso' ),
-					array( $this, 'show_metabox_taglist' ), $this->pagehook, 'normal' );
+			add_meta_box( $this->pagehook.'_head_tags',
+				_x( 'Head Tags', 'metabox title', 'wpsso' ),
+					array( $this, 'show_metabox_head_tags' ), $this->pagehook, 'normal' );
 		}
 
 		public function show_metabox_plugin() {
@@ -93,9 +93,9 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
-		public function show_metabox_taglist() {
+		public function show_metabox_head_tags() {
 
-			$metabox_id = 'taglist';
+			$metabox_id = 'head_tags';
 
 			$tabs = apply_filters( $this->p->lca.'_advanced_'.$metabox_id.'_tabs', array(
 				'facebook'   => _x( 'Facebook', 'metabox tab', 'wpsso' ),

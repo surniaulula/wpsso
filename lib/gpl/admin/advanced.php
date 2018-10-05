@@ -13,7 +13,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 	class WpssoGplAdminAdvanced {
 
-		private $taglist_opts = array();
+		private $head_tags_opts = array();
 
 		public function __construct( &$plugin ) {
 
@@ -24,19 +24,19 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'plugin_content_rows'      => 2,
-				'plugin_integration_rows'  => 2,
-				'plugin_custom_meta_rows'  => 2,
-				'plugin_list_columns_rows' => 2,
-				'plugin_cache_rows'        => 3,
-				'plugin_apikeys_rows'      => 2,
-				'cm_custom_contacts_rows'  => 2,
-				'cm_default_contacts_rows' => 2,
-				'taglist_facebook_rows'    => 3,
-				'taglist_open_graph_rows'  => 3,
-				'taglist_twitter_rows'     => 3,
-				'taglist_schema_rows'      => 3,
-				'taglist_seo_other_rows'   => 3,
+				'plugin_content_rows'        => 2,
+				'plugin_integration_rows'    => 2,
+				'plugin_custom_meta_rows'    => 2,
+				'plugin_list_columns_rows'   => 2,
+				'plugin_cache_rows'          => 3,
+				'plugin_apikeys_rows'        => 2,
+				'cm_custom_contacts_rows'    => 2,
+				'cm_default_contacts_rows'   => 2,
+				'head_tags_facebook_rows'    => 3,
+				'head_tags_open_graph_rows'  => 3,
+				'head_tags_twitter_rows'     => 3,
+				'head_tags_schema_rows'      => 3,
+				'head_tags_seo_other_rows'   => 3,
 			), 20 );
 		}
 
@@ -608,43 +608,43 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_taglist_facebook_rows( $table_rows, $form, $network = false ) {
+		public function filter_head_tags_facebook_rows( $table_rows, $form, $network = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_((fb|al):.+)$/' ) );
+			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_((fb|al):.+)$/' ) );
 		}
 
-		public function filter_taglist_open_graph_rows( $table_rows, $form, $network = false ) {
+		public function filter_head_tags_open_graph_rows( $table_rows, $form, $network = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_(.+)$/' ) );
+			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_(.+)$/' ) );
 		}
 
-		public function filter_taglist_twitter_rows( $table_rows, $form, $network = false ) {
+		public function filter_head_tags_twitter_rows( $table_rows, $form, $network = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(meta)_(name)_(twitter:.+)$/' ) );
+			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(name)_(twitter:.+)$/' ) );
 		}
 
-		public function filter_taglist_schema_rows( $table_rows, $form, $network = false ) {
+		public function filter_head_tags_schema_rows( $table_rows, $form, $network = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(meta|link)_(itemprop)_(.+)$/' ) );
+			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta|link)_(itemprop)_(.+)$/' ) );
 		}
 
-		public function filter_taglist_seo_other_rows( $table_rows, $form, $network = false ) {
+		public function filter_head_tags_seo_other_rows( $table_rows, $form, $network = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -656,10 +656,10 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 						'</p></blockquote></td>';
 			}
 
-			return $this->get_taglist_rows( $table_rows, $form, $network, array( '/^add_(link)_([^_]+)_(.+)$/', '/^add_(meta)_(name)_(.+)$/' ) );
+			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(link)_([^_]+)_(.+)$/', '/^add_(meta)_(name)_(.+)$/' ) );
 		}
 
-		private function get_taglist_rows( $table_rows, $form, $network, array $opt_preg_include ) {
+		private function get_head_tags_rows( $table_rows, $form, $network, array $opt_preg_include ) {
 
 			$table_cells = array();
 
@@ -670,7 +670,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 					if ( strpos( $opt_key, 'add_' ) !== 0 ) {	// Optimize
 						continue;
-					} elseif ( isset( $this->taglist_opts[$opt_key] ) ) {	// Check cache for tags already shown.
+					} elseif ( isset( $this->head_tags_opts[$opt_key] ) ) {	// Check cache for tags already shown.
 						continue;
 					} elseif ( ! preg_match( $preg, $opt_key, $match ) ) {	// Check option name for a match.
 						continue;
@@ -682,7 +682,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 					$force     = null;
 					$group     = null;
 
-					$this->taglist_opts[$opt_key] = $opt_val;
+					$this->head_tags_opts[$opt_key] = $opt_val;
 
 					switch ( $opt_key ) {
 						case 'add_meta_name_generator':	// Disabled with a constant instead.
@@ -695,8 +695,8 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 					$table_cells[] = '<!-- ' . ( implode( ' ', $match ) ) . ' -->' . 	// Required for sorting.
 						'<td class="checkbox blank">' . $form->get_no_checkbox( $opt_key, $css_class, $css_id, $force, $group ) . '</td>'.
 						'<td class="xshort' . $highlight . '">' . $match[1] . '</td>'.
-						'<td class="taglist' . $highlight . '">' . $match[2] . '</td>'.
-						'<th class="taglist' . $highlight . '">' . $match[3] . '</th>';
+						'<td class="head_tags' . $highlight . '">' . $match[2] . '</td>'.
+						'<th class="head_tags' . $highlight . '">' . $match[3] . '</th>';
 				}
 			}
 

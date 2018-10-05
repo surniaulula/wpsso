@@ -266,21 +266,21 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					font-family:"WpssoIcons";
 					font-weight:normal;
 					font-style:normal;
-					src:url("' . $plugin_urlpath . 'fonts/icons.eot");
-					src:url("' . $plugin_urlpath . 'fonts/icons.eot#iefix") format("embedded-opentype"),
-						url("' . $plugin_urlpath . 'fonts/icons.woff") format("woff"),
-						url("' . $plugin_urlpath . 'fonts/icons.ttf") format("truetype"),
-						url("' . $plugin_urlpath . 'fonts/icons.svg#icons") format("svg");
+					src:url("' . $plugin_urlpath . 'fonts/icons.eot?' . $plugin_version . '");
+					src:url("' . $plugin_urlpath . 'fonts/icons.eot?' . $plugin_version . '#iefix") format("embedded-opentype"),
+						url("' . $plugin_urlpath . 'fonts/icons.woff?' . $plugin_version . '") format("woff"),
+						url("' . $plugin_urlpath . 'fonts/icons.ttf?' . $plugin_version . '") format("truetype"),
+						url("' . $plugin_urlpath . 'fonts/icons.svg?' . $plugin_version . '#icons") format("svg");
 				}
 				@font-face {
 					font-family:"WpssoStar";
 					font-weight:normal;
 					font-style:normal;
-					src:url("' . $plugin_urlpath . 'fonts/star.eot");
-					src:url("' . $plugin_urlpath . 'fonts/star.eot?#iefix") format("embedded-opentype"),
-						url("' . $plugin_urlpath . 'fonts/star.woff") format("woff"),
-						url("' . $plugin_urlpath . 'fonts/star.ttf") format("truetype"),
-						url("' . $plugin_urlpath . 'fonts/star.svg#star") format("svg");
+					src:url("' . $plugin_urlpath . 'fonts/star.eot?' . $plugin_version . '");
+					src:url("' . $plugin_urlpath . 'fonts/star.eot?' . $plugin_version . '#iefix") format("embedded-opentype"),
+						url("' . $plugin_urlpath . 'fonts/star.woff?' . $plugin_version . '") format("woff"),
+						url("' . $plugin_urlpath . 'fonts/star.ttf?' . $plugin_version . '") format("truetype"),
+						url("' . $plugin_urlpath . 'fonts/star.svg?' . $plugin_version . '#star") format("svg");
 				}
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-count {
 					display:none;

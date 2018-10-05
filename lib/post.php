@@ -1199,17 +1199,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				case 'preview':
 
-					$table_rows = $this->get_rows_social_preview( $this->form, $head, $mod );
+					$table_rows = $this->get_rows_preview_tab( $this->form, $head, $mod );
 
 					break;
 
-				case 'tags':
+				case 'head':
 
 					if ( $is_auto_draft ) {
 						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' .
 							$auto_draft_msg . '</p></blockquote></td>';
 					} else {
-						$table_rows = $this->get_rows_head_tags( $this->form, $head, $mod );
+						$table_rows = $this->get_rows_head_tab( $this->form, $head, $mod );
 					}
 
 					break;
@@ -1220,7 +1220,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' .
 							$auto_draft_msg . '</p></blockquote></td>';
 					} else {
-						$table_rows = $this->get_rows_validate( $this->form, $head, $mod );
+						$table_rows = $this->get_rows_validate_tab( $this->form, $head, $mod );
 					}
 
 					break;

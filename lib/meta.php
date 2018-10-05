@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						'edit'     => _x( 'Customize', 'metabox tab', 'wpsso' ),
 						'media'    => _x( 'Priority Media', 'metabox tab', 'wpsso' ),
 						'preview'  => _x( 'Preview', 'metabox tab', 'wpsso' ),
-						'tags'     => _x( 'Head Tags', 'metabox tab', 'wpsso' ),
+						'head'     => _x( 'Head', 'metabox tab', 'wpsso' ),
 						'validate' => _x( 'Validate', 'metabox tab', 'wpsso' ),
 					);
 
@@ -177,19 +177,19 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				case 'preview':
 
-					$table_rows = $this->get_rows_social_preview( $this->form, $head_info, $mod );
+					$table_rows = $this->get_rows_preview_tab( $this->form, $head_info, $mod );
 
 					break;
 
-				case 'tags':	
+				case 'head':	
 
-					$table_rows = $this->get_rows_head_tags( $this->form, $head_info, $mod );
+					$table_rows = $this->get_rows_head_tab( $this->form, $head_info, $mod );
 
 					break; 
 
 				case 'validate':
 
-					$table_rows = $this->get_rows_validate( $this->form, $head_info, $mod );
+					$table_rows = $this->get_rows_validate_tab( $this->form, $head_info, $mod );
 
 					break; 
 
@@ -198,7 +198,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_rows_social_preview( $form, $head_info, $mod ) {
+		public function get_rows_preview_tab( $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -311,7 +311,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_rows_head_tags( &$form, &$head_info, &$mod ) {
+		public function get_rows_head_tab( &$form, &$head_info, &$mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -382,14 +382,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_rows_validate( &$form, &$head_info, &$mod ) {
+		public function get_rows_validate_tab( &$form, &$head_info, &$mod ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
 			$table_rows = array();
+
 			$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
+
 			$sharing_url_encoded = urlencode( $sharing_url );
 
 			$amp_url = $mod['is_post'] && function_exists( 'amp_get_permalink' ) ?

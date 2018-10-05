@@ -2050,7 +2050,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'info-taglist':
+						case 'info-head_tags':
 
 							$text = '<blockquote class="top-info">';
 							

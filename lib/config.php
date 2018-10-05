@@ -1219,7 +1219,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_yourls_token'       => '',
 					
 					/**
-					 * Advanced settings - Contact Field IDs and Labels.
+					 * Advanced settings - Contact Fields.
 					 */
 					'plugin_cm_fb_name'          => 'facebook',
 					'plugin_cm_fb_label'         => 'Facebook User URL',
