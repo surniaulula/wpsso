@@ -263,7 +263,17 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$custom_style_css = '
 				@font-face {
-					font-family:"Star";
+					font-family:"WpssoIcons";
+					font-weight:normal;
+					font-style:normal;
+					src:url("' . $plugin_urlpath . 'fonts/icons.eot");
+					src:url("' . $plugin_urlpath . 'fonts/icons.eot#iefix") format("embedded-opentype"),
+						url("' . $plugin_urlpath . 'fonts/icons.woff") format("woff"),
+						url("' . $plugin_urlpath . 'fonts/icons.ttf") format("truetype"),
+						url("' . $plugin_urlpath . 'fonts/icons.svg#icons") format("svg");
+				}
+				@font-face {
+					font-family:"WpssoStar";
 					font-weight:normal;
 					font-style:normal;
 					src:url("' . $plugin_urlpath . 'fonts/star.eot");
@@ -271,16 +281,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						url("' . $plugin_urlpath . 'fonts/star.woff") format("woff"),
 						url("' . $plugin_urlpath . 'fonts/star.ttf") format("truetype"),
 						url("' . $plugin_urlpath . 'fonts/star.svg#star") format("svg");
-				}
-				@font-face {
-					font-family:"WpssoIcons";
-					font-weight:normal;
-					font-style:normal;
-					src:url("' . $plugin_urlpath . 'fonts/wpsso_icons.eot");
-					src:url("' . $plugin_urlpath . 'fonts/wpsso_icons.eot#iefix") format("embedded-opentype"),
-						url("' . $plugin_urlpath . 'fonts/wpsso_icons.woff") format("woff"),
-						url("' . $plugin_urlpath . 'fonts/wpsso_icons.ttf") format("truetype"),
-						url("' . $plugin_urlpath . 'fonts/wpsso_icons.svg#wpsso_icons") format("svg");
 				}
 				#wpadminbar #wp-toolbar #' . $this->p->lca . '-toolbar-notices-count {
 					display:none;
