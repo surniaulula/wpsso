@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 4.15.0\n"
+"Project-Id-Version: WPSSO Core 4.16.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-10-04 08:23-0700\n"
-"PO-Revision-Date: 2018-10-04 08:23-0700\n"
+"POT-Creation-Date: 2018-10-05 11:19-0700\n"
+"PO-Revision-Date: 2018-10-05 11:20-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4315,8 +4315,8 @@ msgstr "Aperçu"
 
 #: lib/meta.php:156
 msgctxt "metabox tab"
-msgid "Head Tags"
-msgstr "Balises d'entête"
+msgid "Head"
+msgstr "Entête"
 
 #: lib/meta.php:157
 msgctxt "metabox tab"
@@ -4348,67 +4348,67 @@ msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr "Example Facebook / Open Graph"
 
-#: lib/meta.php:406
+#: lib/meta.php:408
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr "Débogueur Facebook"
 
-#: lib/meta.php:408
+#: lib/meta.php:410
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr "Valider Open Graph"
 
-#: lib/meta.php:412
+#: lib/meta.php:414
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr "Outil Google de test des données structurées"
 
-#: lib/meta.php:414
+#: lib/meta.php:416
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr "Valider données structurées"
 
-#: lib/meta.php:418
+#: lib/meta.php:420
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr "Validateur Pinterest de Rich Pin"
 
-#: lib/meta.php:420
+#: lib/meta.php:422
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr "Valider Rich Pins"
 
-#: lib/meta.php:424
+#: lib/meta.php:426
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/meta.php:426
+#: lib/meta.php:428
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr "Valider carte de Twitter"
 
-#: lib/meta.php:430
+#: lib/meta.php:432
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr "Validateur W3C de balises"
 
-#: lib/meta.php:432
+#: lib/meta.php:434
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr "Valider les balises HTML"
 
-#: lib/meta.php:437
+#: lib/meta.php:439
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr "Le validateur AMP"
 
-#: lib/meta.php:439
+#: lib/meta.php:441
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr "Valider le balisage AMP"
 
-#: lib/meta.php:794
+#: lib/meta.php:796
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
@@ -4992,12 +4992,12 @@ msgstr "Réglages avancés"
 
 #: lib/submenu/advanced.php:40
 msgctxt "metabox title"
-msgid "Contact Field IDs and Labels"
-msgstr "IDs et titres de champs de contact"
+msgid "Contact Fields"
+msgstr "Champs de contact"
 
 #: lib/submenu/advanced.php:44
 msgctxt "metabox title"
-msgid "Head Tags List"
+msgid "Head Tags"
 msgstr "Balises d'entête"
 
 #: lib/submenu/advanced.php:60
@@ -5478,3 +5478,11 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
+
+#~ msgctxt "metabox title"
+#~ msgid "Contact Field IDs and Labels"
+#~ msgstr "IDs et titres de champs de contact"
+
+#~ msgctxt "metabox title"
+#~ msgid "Head Tags List"
+#~ msgstr "Balises d'entête"
