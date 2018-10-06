@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.0-dev.2 (2018/10/05)**
+**Version 4.16.0-dev.2 (2018/10/06)**
 
 * *New Features*
 	* None.
@@ -459,7 +459,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.16.0-dev.2 =
 
-(2018/10/05) Changed the Document SSO metabox tabs from a horizontal to a vertical layout.
+(2018/10/06) Changed the Document SSO metabox tabs from a horizontal to a vertical layout.
 
 = 4.15.0 =
 
