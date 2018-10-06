@@ -1225,17 +1225,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function update_prot( $url = '' ) {
+
 			if ( strpos( $url, '/' ) === 0 ) { // Skip relative urls.
 				return $url;
 			}
+
 			$prot_slash = self::get_prot() . '://';
+
 			if ( strpos( $url, $prot_slash ) === 0 ) { // Skip correct urls.
 				return $url;
 			}
+
 			return preg_replace( '/^([a-z]+:\/\/)/', $prot_slash, $url );
 		}
 
 		public static function get_const( $const, $undef = null ) {
+
 			if ( defined( $const ) ) {
 				return constant( $const );
 			} else {
@@ -1247,9 +1252,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Returns false or the admin screen id string.
 		 */
 		public static function get_screen_id( $screen = false ) {
+
 			if ( false === $screen && function_exists( 'get_current_screen' ) ) {
 				$screen = get_current_screen();
 			}
+
 			if ( isset( $screen->id ) ) {
 				return $screen->id;
 			} else {
@@ -1261,9 +1268,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Returns false or the admin screen base string.
 		 */
 		public static function get_screen_base( $screen = false ) {
+
 			if ( false === $screen && function_exists( 'get_current_screen' ) ) {
 				$screen = get_current_screen();
 			}
+
 			if ( isset( $screen->base ) ) {
 				return $screen->base;
 			} else {
@@ -1857,13 +1866,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$fixed = preg_replace( $pattern, $replace, $key );
 
-					$found[$fixed] = $input[$key];
+					$found[ $fixed ] = $input[$key];
+
 				} else {
-					$found[$key] = $input[$key];
+					$found[ $key ] = $input[ $key ];
 				}
 
 				if ( $remove !== false ) {
-					unset( $input[$key] );
+					unset( $input[ $key ] );
 				}
 			}
 

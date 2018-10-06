@@ -58,17 +58,16 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 
 			$metabox_id = 'plugin';
 
-			$tabs = apply_filters( $this->p->cf['lca'].'_siteadvanced_plugin_tabs', array(
+			$tabs = apply_filters( $this->p->lca.'_siteadvanced_'.$metabox_id.'_tabs', array(
 				'settings' => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
-				'cache' => _x( 'Cache Settings', 'metabox tab', 'wpsso' ),
+				'cache'    => _x( 'Cache', 'metabox tab', 'wpsso' ),
 			) );
 
 			$table_rows = array();
 
 			foreach ( $tabs as $tab_key => $title ) {
 				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
-					apply_filters( $this->p->cf['lca'].'_'.$metabox_id.'_'.$tab_key.'_rows',
-						array(), $this->form, true ) );	// $network = true
+					apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows', array(), $this->form, $network = true ) );
 			}
 
 			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
@@ -82,7 +81,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 
 				case 'plugin-settings':
 
-					$this->add_optional_advanced_table_rows( $table_rows, true );	// $network = true
+					$this->add_optional_advanced_table_rows( $table_rows, $network = true );
 
 					break;
 			}

@@ -1112,7 +1112,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;	// stop here
 
 						/**
-						 * List Columns settings
+						 * Columns settings
 						 */
 						case 'tooltip-plugin_show_columns':
 
@@ -1146,7 +1146,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 
 						/**
-						 * Cache Settings settings.
+						 * Cache settings.
 						 */
 						case 'tooltip-plugin_head_cache_exp':
 

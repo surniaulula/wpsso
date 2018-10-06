@@ -60,14 +60,14 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'content'      => _x( 'Content and Filters', 'metabox tab', 'wpsso' ),
 				'integration'  => _x( 'Integration', 'metabox tab', 'wpsso' ),
 				'custom_meta'  => _x( 'Custom Meta', 'metabox tab', 'wpsso' ),
-				'list_columns' => _x( 'List Columns', 'metabox tab', 'wpsso' ),
-				'cache'        => _x( 'Cache Settings', 'metabox tab', 'wpsso' ),
+				'list_columns' => _x( 'Columns', 'metabox tab', 'wpsso' ),
+				'cache'        => _x( 'Cache', 'metabox tab', 'wpsso' ),
 				'apikeys'      => _x( 'Service APIs', 'metabox tab', 'wpsso' ),
 			) );
 
 			foreach ( $tabs as $tab_key => $title ) {
 				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
-					apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows', array(), $this->form, false ) );	// $network = false
+					apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows', array(), $this->form, $network = false ) );
 			}
 
 			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 			$metabox_id = 'cm';
 			$table_rows = array();
-			$info_msg = $this->p->msgs->get( 'info-'.$metabox_id );
+			$info_msg   = $this->p->msgs->get( 'info-'.$metabox_id );
 
 			$tabs = apply_filters( $this->p->lca.'_advanced_'.$metabox_id.'_tabs', array(
 				'custom_contacts'  => _x( 'Custom Contacts', 'metabox tab', 'wpsso' ),
@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 			foreach ( $tabs as $tab_key => $title ) {
 				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
-					apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows', array(), $this->form, false ) );	// $network = false
+					apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows', array(), $this->form, $network = false ) );
 			}
 
 			$this->p->util->do_metabox_table( array( '<td>'.$info_msg.'</td>' ), 'metabox-'.$metabox_id.'-info' );
@@ -109,7 +109,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 			foreach ( $tabs as $tab_key => $title ) {
 				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
-					apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows', array(), $this->form, false ) );	// $network = false
+					apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows', array(), $this->form, $network = false ) );
 			}
 
 			$this->p->util->do_metabox_table( array( '<td>'.$this->p->msgs->get( 'info-'.$metabox_id ).'</td>' ), 'metabox-'.$metabox_id.'-info' );

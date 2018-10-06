@@ -60,7 +60,8 @@ if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdm
 		}
 
 		public function show_metabox_licenses() {
-			$this->licenses_metabox_content( true );	// $network = true
+
+			$this->licenses_metabox_content( $network = true );
 		}
 	}
 }

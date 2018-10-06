@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.16.0-dev.1',	// Plugin version.
-					'opt_version' => '610',		// Increment when changing default option values.
+					'version'     => '4.16.0-dev.2',	// Plugin version.
+					'opt_version' => '612',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_sameas_urls'         => '',			// Same-As URLs Custom Field.
 
 					/**
-					 * Advanced settings - List Columns tab.
+					 * Advanced settings - Columns tab.
 					 */
 					'plugin_schema_type_col_media'  => 0,
 					'plugin_schema_type_col_post'   => 1,
@@ -1178,11 +1178,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_desc_col_post'       => 0,
 					'plugin_og_desc_col_term'       => 0,
 					'plugin_og_desc_col_user'       => 1,
+					'plugin_col_title_width'        => '30%',
+					'plugin_col_title_width_max'    => '15vw',
 					'plugin_col_def_width'          => '15%',
-					'plugin_col_title_width'        => '20em',
+					'plugin_col_def_width_max'      => '15vw',
 
 					/**
-					 * Advanced settings - Cache Settings tab.
+					 * Advanced settings - Cache tab.
 					 */
 					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
 					'plugin_content_cache_exp'   => HOUR_IN_SECONDS,	// Filtered Content Text Cache Expiry (1 hour).
@@ -1317,7 +1319,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_upscale_img_max:use'       => 'default',
 					
 					/**
-					 * Advanced settings - Cache Settings tab.
+					 * Advanced settings - Cache tab.
 					 */
 					'plugin_head_cache_exp'          => WEEK_IN_SECONDS,	// Head Markup Array Cache Expiry (1 week).
 					'plugin_head_cache_exp:use'      => 'default',
@@ -1650,7 +1652,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'edit' => array(			// post, term, user lists
 				'columns' => array(
 					'schema_type' => array(
-						'header'   => 'SSO Schema',
+						'header'   => 'Schema',
 						'mt_name'  => 'schema:type:id',
 						'meta_key' => '_wpsso_head_info_schema_type',
 						'orderby'  => 'meta_value',
@@ -1658,7 +1660,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'height'   => 'auto',
 					),
 					'og_type' => array(
-						'header'   => 'SSO Type',
+						'header'   => 'OG Type',
 						'mt_name'  => 'og:type',
 						'meta_key' => '_wpsso_head_info_og_type',
 						'orderby'  => 'meta_value',

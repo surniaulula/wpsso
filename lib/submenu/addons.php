@@ -43,7 +43,8 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_addons() {
-			$this->addons_metabox_content( false );	// $network = false
+
+			$this->addons_metabox_content( $network = false );
 		}
 	}
 }

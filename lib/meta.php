@@ -828,8 +828,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 */
 			$md_opts = empty( $_POST[ WPSSO_META_NAME ] ) ? array() : $_POST[ WPSSO_META_NAME ];
 			$md_opts = SucomUtil::restore_checkboxes( $md_opts );
-			$md_opts = array_merge( $md_prev, $md_opts );				// update the previous options array
-			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, false, $mod );	// $network = false
+			$md_opts = array_merge( $md_prev, $md_opts );	// Update the previous options array.
+			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, $network = false, $mod );
 
 			/**
 			 * Check image size options (id, prefix, width, height, crop, etc.).

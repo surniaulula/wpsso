@@ -1362,8 +1362,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_sku':
 				case 'product_currency':
 				case 'product_size':
-				case 'plugin_col_def_width':
 				case 'plugin_col_title_width':
+				case 'plugin_col_title_width_max':
+				case 'plugin_col_def_width':
+				case 'plugin_col_def_width_max':
 				case 'plugin_img_alt_prefix':
 				case 'plugin_p_cap_prefix':
 				case 'plugin_bitly_login':

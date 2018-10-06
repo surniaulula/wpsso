@@ -227,10 +227,10 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$cols .= '<td class="underline"></td></tr>' . "\n";
 
 			foreach ( array(
-				'post'  => __( 'Posts, Pages, and Custom Post Types List', 'wpsso' ),
-				'media' => __( 'Media Library Item List', 'wpsso' ),
-				'term'  => __( 'Terms (Categories and Tags) List', 'wpsso' ),
-				'user'  => __( 'Users List' ),
+				'post'  => __( 'Posts, Pages, Custom Post Types', 'wpsso' ),
+				'media' => __( 'Media Library', 'wpsso' ),
+				'term'  => __( 'Terms (Categories and Tags)', 'wpsso' ),
+				'user'  => __( 'Users' ),
 			) as $mod_name => $mod_label ) {
 
 				$cols .= '<tr>';
@@ -247,7 +247,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$cols .= '</table>' . "\n";
 
-			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Additional WordPress List Columns',
+			$table_rows['plugin_show_columns'] = $form->get_th_html( _x( 'Additional List Table Columns',
 				'option label', 'wpsso' ), '', 'plugin_show_columns' ).
 					'<td>' . $cols . '</td>';
 
@@ -255,12 +255,16 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			 * Default and custom column widths.
 			 */
 			$table_rows['plugin_col_title_width'] = ''.
-			$form->get_th_html( _x( 'WordPress Title Column Width', 'option label', 'wpsso' ), '', 'plugin_col_title_width' ).
-			'<td>' . $form->get_no_input( 'plugin_col_title_width', 'short' ) . '</td>';
+			$form->get_th_html( _x( 'Title / Name Column Width', 'option label', 'wpsso' ), '', 'plugin_col_title_width' ).
+			'<td>' . $form->get_no_input( 'plugin_col_title_width', 'short' ) . ' ' .
+				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' . 
+					$form->get_no_input( 'plugin_col_title_width_max', 'short' ) . '</td>';
 
 			$table_rows['plugin_col_def_width'] = ''.
-			$form->get_th_html( _x( 'Default Posts / Pages Column Width', 'option label', 'wpsso' ), '', 'plugin_col_def_width' ).
-			'<td>' . $form->get_no_input( 'plugin_col_def_width', 'short' ) . '</td>';
+			$form->get_th_html( _x( 'Default Width for Posts / Pages', 'option label', 'wpsso' ), '', 'plugin_col_def_width' ).
+			'<td>' . $form->get_no_input( 'plugin_col_def_width', 'short' ) .
+				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' . 
+					$form->get_no_input( 'plugin_col_def_width_max', 'short' ) . '</td>';
 
 			return $table_rows;
 		}

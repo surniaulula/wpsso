@@ -222,8 +222,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			$cache_salt       .= 'hook_name:' . $hook_name;
 			$cache_salt       .= '_urlpath:' . $plugin_urlpath;
 			$cache_salt       .= '_version:' . $plugin_version;
-			$cache_salt       .= '_col_def_width:' . $this->p->options['plugin_col_def_width'];
-			$cache_salt       .= '_col_title_width:' . $this->p->options['plugin_col_title_width'];
+			$cache_salt       .= '_columns:' . implode( ',', SucomUtil::preg_grep_keys( '/^plugin_col_/', $this->p->options ) );
 			$cache_salt       .= ')';
 
 			$cache_id         = $cache_md5_pre . md5( $cache_salt );
@@ -373,22 +372,50 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			/**
 			 * List table columns.
 			 */
-			if ( ! empty( $this->p->options['plugin_col_def_width'] ) ) {
-				$custom_style_css .= '
-					table.wp-list-table.pages > thead > tr > th,	/* default column width for posts and pages */
-					table.wp-list-table.posts > tbody > tr > td {
-						width:'.$this->p->options['plugin_col_def_width'].';
-					}
-				';
-			}
+			foreach ( array(
+				'.column-title' => 'plugin_col_title_width',
+				'.column-name'  => 'plugin_col_title_width',
+				''              => 'plugin_col_def_width',
+			) as $css_class => $opt_key ) {
 
-			if ( ! empty( $this->p->options['plugin_col_title_width'] ) ) {
-				$custom_style_css .= '
-					table.wp-list-table > thead > tr > th.column-title,
-					table.wp-list-table > tbody > tr > td.column-title {
-						width:'.$this->p->options['plugin_col_title_width'].';
+				$custom_style_css .= "@media (min-width: 783px) {\n";
+
+				switch ( $css_class ) {
+
+					case '':	// Only apply to posts and pages.
+
+						$custom_style_css .= "table.wp-list-table.posts > thead > tr > th,\n";
+						$custom_style_css .= "table.wp-list-table.posts > tbody > tr > td,\n";
+						$custom_style_css .= "table.wp-list-table.pages > thead > tr > th,\n";
+						$custom_style_css .= "table.wp-list-table.pages > tbody > tr > td {\n";
+
+						break;
+
+					default:	// Apply to every WP List Table.
+
+						$custom_style_css .= 'table.wp-list-table.posts > thead > tr > th' . $css_class . ",\n";
+						$custom_style_css .= 'table.wp-list-table.posts > tbody > tr > td' . $css_class . ",\n";
+						$custom_style_css .= 'table.wp-list-table.pages > thead > tr > th' . $css_class . ",\n";
+						$custom_style_css .= 'table.wp-list-table.pages > tbody > tr > td' . $css_class . ",\n";
+						$custom_style_css .= 'table.wp-list-table > thead > tr > th' . $css_class . ",\n";
+						$custom_style_css .= 'table.wp-list-table > tbody > tr > td' . $css_class . " {\n";
+
+						break;
+				}
+
+				foreach ( array(
+					'width'     => '',
+					'min-width' => '_min',
+					'max-width' => '_max',
+				) as $css_name => $opt_suffix ) {
+
+					if ( ! empty( $this->p->options[ $opt_key . $opt_suffix ] ) ) {
+						$custom_style_css .= $css_name . ':' . $this->p->options[ $opt_key . $opt_suffix ] . ";\n";
 					}
-				';
+				}
+
+				$custom_style_css .= "}\n";
+				$custom_style_css .= "}\n";
 			}
 
 			$custom_style_css .= '
@@ -411,6 +438,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-tags {
 					width:15%;
 				}
+				table.wp-list-table > thead > tr > th.column-description,
+				table.wp-list-table > tbody > tr > td.column-description {
+					width:20%;
+				}
 				table.wp-list-table > thead > tr > th.column-comments,
 				table.wp-list-table > tbody > tr > td.column-comments {
 					width:40px;
@@ -426,6 +457,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > thead > tr > th.column-seodesc,
 				table.wp-list-table > tbody > tr > td.column-seodesc {
 					width:20%;
+				}
+				table.wp-list-table > thead > tr > th.column-term-id,
+				table.wp-list-table > tbody > tr > td.column-term-id {
+					width:40px;
 				}
 				table.wp-list-table > thead > tr > th.column-wpseo-links,	/* Yoast SEO */
 				table.wp-list-table > tbody > tr > td.column-wpseo-links,
