@@ -347,9 +347,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					 * Skip meta tags with reserved values but display empty values.
 					 */
 					if ( $parts[5] === WPSSO_UNDEF || $parts[5] === (string) WPSSO_UNDEF ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $parts[3] . ' value is ' . WPSSO_UNDEF . ' (skipped)' );
 						}
+
 						continue;
 					}
 
@@ -364,12 +366,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					 */
 					$opt_name = strtolower( 'add_' . $parts[1] . '_' . $parts[2] . '_' . $parts[3] );
 
-					$tr_class = ( empty( $script_class ) ? '' : ' ' . $script_class ) . 
-						( empty( $parts[0] ) ? ' is_disabled' : ' is_enabled' ) . 
-						( empty( $parts[5] ) && ! empty( $this->p->options[$opt_name] ) ? ' is_empty' : '' ) . 
-						( isset( $this->p->options[$opt_name] ) ? ' is_standard' : ' is_internal hide_row_in_basic' ) . '">';
+					$tr_class = empty( $script_class ) ? '' : ' ' . $script_class;
 
-					$table_rows[] = '<tr class="' . trim( $tr_class ) . 
+					$tr_class .= empty( $parts[0] ) ? ' is_disabled' : ' is_enabled';
+
+					$tr_class .= empty( $parts[5] ) && ! empty( $this->p->options[$opt_name] ) ? ' is_empty' : '';
+
+					$tr_class .= isset( $this->p->options[ $opt_name ] ) && $parts[3] !== 'og:image:url' && $parts[3] !== 'og:video:url' ?
+						' is_standard' : ' is_internal hide_row_in_basic';
+
+					$table_rows[] = '<tr class="' . trim( $tr_class ) . '">' .
 						'<th class="xshort">' . $parts[1] . '</th>' . 
 						'<th class="xshort">' . $parts[2] . '</th>' . 
 						'<td class="">' . ( empty( $parts[6] ) ? '' : '<!-- ' . $parts[6] . ' -->' ) . $match_name . '</td>' . 
