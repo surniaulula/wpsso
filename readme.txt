@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.0-dev.1 (2018/10/05)**
+**Version 4.16.0-dev.2 (2018/10/05)**
 
 * *New Features*
 	* None.
@@ -372,7 +372,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Moved all column related options from the SSO &gt; Advanced &gt; Custom Meta tab to a new List Columns tab.
+	* Moved all column related options from the SSO &gt; Advanced &gt; Custom Meta tab to a new Columns tab.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -426,7 +426,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Added new options under the SSO &gt; Advanced &gt; Cache Settings tab:
+	* Added new options under the SSO &gt; Advanced &gt; Cache tab:
 		* Clear All Caches on Activate
 		* Clear All Caches on Deactivate
 		* Clear Term Cache for Published Post
@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.0-dev.1 =
+= 4.16.0-dev.2 =
 
 (2018/10/05) Changed the Document SSO metabox tabs from a horizontal to a vertical layout.
 
