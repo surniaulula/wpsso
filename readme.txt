@@ -342,12 +342,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.0-dev.2 (2018/10/06)**
+**Version 4.16.0 (2018/10/08)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* Changed the Document SSO metabox tabs from a horizontal to a vertical layout.
+	* Renamed the "Plugin Settings" tab to "Plugin Behavior" in the SSO &gt; Advanced settings page.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -457,9 +458,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.0-dev.2 =
+= 4.16.0 =
 
-(2018/10/06) Changed the Document SSO metabox tabs from a horizontal to a vertical layout.
+(2018/10/08) Changed the Document SSO metabox tabs from a horizontal to a vertical layout.
 
 = 4.15.0 =
 
