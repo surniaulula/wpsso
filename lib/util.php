@@ -3115,16 +3115,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$class_tabset       = 'sucom-tabset';
 
 			if ( ! empty( $metabox_id ) ) {
-				$metabox_id         = '_' . $metabox_id;		// Must start with an underscore.
+				$metabox_id         = '_' . trim( $metabox_id, '_' );		// Must start with an underscore.
 				$class_metabox_tabs .= ' ' . $class_metabox_tabs . $metabox_id;
 			}
 
-			/**
-			 * Allow a css id to be passed as a query argument.
-			 */
-			extract( array_merge( array( 'scroll_to' => isset( $_GET['scroll_to'] ) ? '#' . self::sanitize_key( $_GET['scroll_to'] ) : '' ), $args ) );
+			extract( array_merge( array(
+				'layout'    => 'horizontal',	// 'horizontal', 'vertical', or 'responsive'
+				'scroll_to' => isset( $_GET['scroll_to'] ) ? '#' . self::sanitize_key( $_GET['scroll_to'] ) : '',
+			), $args ) );
 
-			$ret_html .= "\n" . '<script type="text/javascript">jQuery(document).ready(function(){ ' . 
+			$class_metabox_tabs .= ' ' . $layout;
+
+			$ret_html .= "\n" . '<script type="text/javascript">jQuery( document ).ready( function() { ' . 
 				'sucomTabs(\'' . $metabox_id . '\', \'' . $default_tab . '\', \'' . $scroll_to . '\'); });</script>' . "\n";
 
 			$ret_html .= '<div class="' . $class_metabox_tabs . '">' . "\n";

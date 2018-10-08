@@ -354,8 +354,8 @@ jQuery( document ).ready( function(){
 
 		if ( window.top.location.href.indexOf( "page=' . $this->p->lca . '-" ) ) {
 
-			var plugin_url = jQuery( this ).attr( "href" );
-			var pageref_url_arg = "&' . $this->p->lca . '_pageref_url=" + encodeURIComponent( window.top.location.href );
+			var plugin_url        = jQuery( this ).attr( "href" );
+			var pageref_url_arg   = "&' . $this->p->lca . '_pageref_url=" + encodeURIComponent( window.top.location.href );
 			var pageref_title_arg = "&' . $this->p->lca . '_pageref_title=" + encodeURIComponent( jQuery( "h1", window.parent.document ).text() );
 
 			window.top.location.href = plugin_url + pageref_url_arg + pageref_title_arg;

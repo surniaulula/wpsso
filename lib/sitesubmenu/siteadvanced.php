@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 		protected function set_form_object( $menu_ext ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'setting site form object for '.$menu_ext );
+				$this->p->debug->log( 'setting site form object for ' . $menu_ext );
 			}
 
 			$def_site_opts = $this->p->opt->get_site_defaults();
@@ -43,7 +43,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 		 */
 		protected function add_meta_boxes() {
 
-			add_meta_box( $this->pagehook.'_plugin',
+			add_meta_box( $this->pagehook . '_plugin',
 				_x( 'Network Advanced Settings', 'metabox title', 'wpsso' ),
 					array( $this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
 
@@ -58,16 +58,21 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 
 			$metabox_id = 'plugin';
 
-			$tabs = apply_filters( $this->p->lca.'_siteadvanced_'.$metabox_id.'_tabs', array(
-				'settings' => _x( 'Plugin Settings', 'metabox tab', 'wpsso' ),
+			$tabs = apply_filters( $this->p->lca . '_siteadvanced_' . $metabox_id . '_tabs', array(
+				'settings' => _x( 'Plugin Behavior', 'metabox tab', 'wpsso' ),
 				'cache'    => _x( 'Cache', 'metabox tab', 'wpsso' ),
 			) );
 
 			$table_rows = array();
 
 			foreach ( $tabs as $tab_key => $title ) {
-				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
-					apply_filters( $this->p->lca.'_'.$metabox_id.'_'.$tab_key.'_rows', array(), $this->form, $network = true ) );
+
+				$filter_name = $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows';
+
+				$table_rows[ $tab_key ] = array_merge(
+					$this->get_table_rows( $metabox_id, $tab_key ),
+					(array) apply_filters( $filter_name, array(), $this->form, $network = true )
+				);
 			}
 
 			$this->p->util->do_metabox_tabbed( $metabox_id, $tabs, $table_rows );
@@ -77,7 +82,7 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 
 			$table_rows = array();
 
-			switch ( $metabox_id.'-'.$tab_key ) {
+			switch ( $metabox_id . '-' . $tab_key ) {
 
 				case 'plugin-settings':
 

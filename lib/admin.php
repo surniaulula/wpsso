@@ -19,14 +19,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $menu_lib;
 		protected $menu_ext;
 		protected $pagehook;
-		protected $pageref_title;
 		protected $pageref_url;
+		protected $pageref_title;
 
-		public static $pkg = array();
+		public static $pkg    = array();
 		public static $readme = array();
 
-		public $form = null;
-		public $lang = array();
+		public $form    = null;
+		public $lang    = array();
 		public $submenu = array();
 
 		public function __construct( &$plugin ) {
@@ -409,10 +409,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function register_setting() {
+
 			register_setting( $this->p->lca . '_setting', WPSSO_OPTIONS_NAME, array( $this, 'registered_setting_sanitation' ) );
 		}
 
 		public function add_plugins_page_upgrade_notice() {
+
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( ! empty( $info['base'] ) ) {
 					add_action( 'in_plugin_update_message-' . $info['base'], array( $this, 'show_upgrade_notice' ), 10, 2 );
@@ -421,6 +423,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_upgrade_notice( $data, $response ) {
+
 			if ( isset( $data['upgrade_notice'] ) ) {	// Just in case.
 				echo '<span style="display:table;border-collapse:collapse;margin-left:26px;">';
 				echo '<span style="display:table-cell;">' . strip_tags( $data['upgrade_notice'] ) . '</span>';
@@ -429,13 +432,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_menu_page( $menu_slug ) {
+
 			global $wp_version;
 
 			$page_title = self::$pkg[$this->p->lca]['short'] . ' &mdash; ' . $this->menu_name;
 			$menu_title = _x( $this->p->cf['menu']['title'], 'menu title', 'wpsso' ) . ' ' . self::$pkg[$this->p->lca]['type'];	// pre-translated
-			$cap_name = isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ? $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] : 'manage_options';
-			$icon_url = version_compare( $wp_version, '3.8', '>=' ) ? 'dashicons-share' : null;
-			$function = array( $this, 'show_setting_page' );
+			$cap_name   = isset( $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] ) ? $this->p->cf['wp']['admin'][$this->menu_lib]['cap'] : 'manage_options';
+			$icon_url   = version_compare( $wp_version, '3.8', '>=' ) ? 'dashicons-share' : null;
+			$function   = array( $this, 'show_setting_page' );
 
 			$this->pagehook = add_menu_page( $page_title, $menu_title, $cap_name, $menu_slug, $function, $icon_url, WPSSO_MENU_ORDER );
 
@@ -457,7 +461,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			if ( empty( $menu_ext ) ) {
+
 				$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or add-on
+
 				if ( empty( $menu_ext ) ) {
 					$menu_ext = $this->p->lca;
 				}
@@ -480,7 +486,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$dashicon = $this->p->cf['menu']['dashicons'][$menu_id];
 				}
 
-				$css_class = $this->p->lca . '-menu-item' . ( $css_class ? ' ' . $css_class : '' );
+				$css_class  = $this->p->lca . '-menu-item' . ( $css_class ? ' ' . $css_class : '' );
 				$menu_title = '<div class="' . $css_class . ' dashicons-before dashicons-' . $dashicon . '"></div>' .
 					'<div class="' . $css_class . ' menu-item-label">' . $menu_name . '</div>';
 
@@ -489,9 +495,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 	
 			$page_title = self::$pkg[$menu_ext]['short'] . ' &mdash; ' . $menu_name;
-			$cap_name = isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ? $this->p->cf['wp']['admin'][$menu_lib]['cap'] : 'manage_options';
-			$menu_slug = $this->p->lca . '-' . $menu_id;
-			$function = array( $this, 'show_setting_page' );
+			$cap_name   = isset( $this->p->cf['wp']['admin'][$menu_lib]['cap'] ) ? $this->p->cf['wp']['admin'][$menu_lib]['cap'] : 'manage_options';
+			$menu_slug  = $this->p->lca . '-' . $menu_id;
+			$function   = array( $this, 'show_setting_page' );
 
 			$this->pagehook = add_submenu_page( $parent_slug, $page_title, $menu_title, $cap_name, $menu_slug, $function );
 
@@ -568,11 +574,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					get_admin_url( null, 'plugin-install.php' );
 
 				$details_url = add_query_arg( array(
-					'plugin' => $info['slug'],
-					'tab' => 'plugin-information',
+					'plugin'    => $info['slug'],
+					'tab'       => 'plugin-information',
 					'TB_iframe' => 'true',
-					'width' => $this->p->cf['wp']['tb_iframe']['width'],
-					'height' => $this->p->cf['wp']['tb_iframe']['height'],
+					'width'     => $this->p->cf['wp']['tb_iframe']['width'],
+					'height'    => $this->p->cf['wp']['tb_iframe']['height'],
 				), $install_url );
 
 				if ( SucomUtil::plugin_is_installed( $info['base'] ) ) {
@@ -618,8 +624,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$purchase_url = add_query_arg( 'utm_source', 'licenses-action-links', $info['url']['purchase'] );
 
 				$action_links[] = $this->p->msgs->get( 'pro-purchase-link', array(
-					'ext' => $ext,
-					'url' => $purchase_url, 
+					'ext'      => $ext,
+					'url'      => $purchase_url, 
 					'tabindex' => $tabindex !== false ? ++$tabindex : false,
 				) );
 			}
@@ -715,8 +721,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function get_plugin_data( $ext, $read_cache = true ) {
 
-			$data = new StdClass;
-			$info = $this->p->cf['plugin'][$ext];
+			$data   = new StdClass;
+			$info   = $this->p->cf['plugin'][$ext];
 			$readme = $this->get_readme_info( $ext, $read_cache );
 
 			// make sure we got something back
@@ -1023,6 +1029,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_footer_hooks() {
+
 			add_filter( 'admin_footer_text', array( $this, 'admin_footer_ext_name' ) );
 			add_filter( 'update_footer', array( $this, 'admin_footer_ext_gen' ) );
 		}
@@ -1130,9 +1137,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( strpos( $url, 'updated=' ) !== false && strpos( $url, 'wp_http_referer=' ) ) {
 
-				// match WordPress behavior (users page for admins, profile page for everyone else)
-				$menu_lib = current_user_can( 'list_users' ) ? 'users' : 'profile';
-				$parent_slug = $this->p->cf['wp']['admin'][$menu_lib]['page'];
+				/**
+				 * Match WordPress behavior (users page for admins, profile page for everyone else).
+				 */
+				$menu_lib      = current_user_can( 'list_users' ) ? 'users' : 'profile';
+				$parent_slug   = $this->p->cf['wp']['admin'][$menu_lib]['page'];
 				$referer_match = '/' . $parent_slug . '?page=' . $this->p->lca . '-';
 
 				parse_str( parse_url( $url, PHP_URL_QUERY ), $parts );
@@ -1217,9 +1226,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function get_submit_buttons( $submit_label_transl = '' ) {
 
-			$view_next_key = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
-			$view_name_transl = _x( $this->p->cf['form']['show_options'][$view_next_key], 'option value', 'wpsso' );
-			$view_label_transl = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name_transl );
+			$view_next_key        = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
+			$view_name_transl     = _x( $this->p->cf['form']['show_options'][$view_next_key], 'option value', 'wpsso' );
+			$view_label_transl    = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name_transl );
 			$using_external_cache = wp_using_ext_object_cache();
 
 			if ( empty( $submit_label_transl ) ) {
@@ -1405,7 +1414,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_version_info() {
 
-			$table_cols = 2;
+			$table_cols  = 2;
 			$label_width = '25%';
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox version-info" style="table-layout:fixed;">';
@@ -1495,7 +1504,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_status_gpl() {
 
-			$ext_num = 0;
+			$ext_num    = 0;
 			$table_cols = 3;
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox module-status">';
@@ -2323,7 +2332,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $this->p->avail['seo']['seou'] ) {
 
 				$opts = get_option( 'seo_ultimate' );
+
 				$settings_url = get_admin_url( null, 'admin.php?page=seo' );
+
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: please ignore - translation uses a 3rd party text domain
 					__( 'SEO Ultimate', 'seo-ultimate' ) . ' &gt; ' .
@@ -2358,6 +2369,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Squirrly SEO > SEO Settings > Social Media > Social Media Options Metabox
 				 */
 				$settings_url = get_admin_url( null, 'admin.php?page=sq_seo#socials' );
+
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: please ignore - translation uses a 3rd party text domain
 					__( 'Squirrly', 'squirrly-seo' ) . ' &gt; ' .
@@ -2390,6 +2402,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Squirrly SEO > SEO Settings > SEO Settings > Let Squirrly SEO Optimize This Blog Metabox
 				 */
 				$settings_url = get_admin_url( null, 'admin.php?page=sq_seo#seo' );
+
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: please ignore - translation uses a 3rd party text domain
 					__( 'Squirrly', 'squirrly-seo' ) . ' &gt; ' .
@@ -2500,6 +2513,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * WP Meta SEO > Settings > Global
 				 */
 				$settings_url = get_admin_url( null, 'admin.php?page=metaseo_settings' );
+
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: please ignore - translation uses a 3rd party text domain
 					__( 'WP Meta SEO', 'wp-meta-seo' ) . ' &gt; ' .
@@ -2553,6 +2567,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Yoast SEO > Social > Accounts Tab
 				 */
 				$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#accounts' );
+
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: please ignore - translation uses a 3rd party text domain
 					__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
@@ -2598,7 +2613,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					// translators: please ignore - translation uses a 3rd party text domain
 					$label_transl = '<strong>' . __( 'Add Open Graph meta data', 'wordpress-seo' ) . '</strong>';
+
 					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' );
+
 					$settings_link = '<a href="' . $settings_url . '">' .
 						// translators: please ignore - translation uses a 3rd party text domain
 						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
@@ -2619,7 +2636,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					// translators: please ignore - translation uses a 3rd party text domain
 					$label_transl = '<strong>' . __( 'Facebook App ID', 'wordpress-seo' ) . '</strong>';
+
 					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' );
+
 					$settings_link = '<a href="' . $settings_url . '">' .
 						// translators: please ignore - translation uses a 3rd party text domain
 						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
@@ -2643,7 +2662,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					// translators: please ignore - translation uses a 3rd party text domain
 					$label_transl = '<strong>' . __( 'Add Twitter Card meta data', 'wordpress-seo' ) . '</strong>';
+
 					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#twitterbox' );
+
 					$settings_link = '<a href="' . $settings_url . '">' .
 						// translators: please ignore - translation uses a 3rd party text domain
 						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
@@ -2667,7 +2688,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					// translators: please ignore - translation uses a 3rd party text domain
 					$label_transl = '<strong>' . __( 'Google Publisher Page', 'wordpress-seo' ) . '</strong>';
+
 					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#google' );
+
 					$settings_link = '<a href="' . $settings_url . '">' .
 						// translators: please ignore - translation uses a 3rd party text domain
 						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
@@ -2687,17 +2710,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function admin_footer_ext_name( $text ) {
+
 			if ( isset( self::$pkg[$this->menu_ext]['name'] ) ) {
 				$text = '<span class="admin-footer-ext-name">' . self::$pkg[$this->menu_ext]['name'] . '</span>';
 			}
+
 			return $text;
 		}
 
 		public function admin_footer_ext_gen( $text ) {
+
 			if ( isset( self::$pkg[$this->menu_ext]['gen'] ) ) {
 				$host = '<br/>' . preg_replace( '/^[^:]*:\/\//', '', strtolower( SucomUtilWP::raw_get_home_url() ) );
 				$text = '<span class="admin-footer-ext-gen">' . self::$pkg[$this->menu_ext]['gen'] . $host. '</span>';
 			}
+
 			return $text;
 		}
 
@@ -3567,7 +3594,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function plugin_complete_actions( $actions ) {
 
-			if ( ! empty( $this->pageref_title ) && ! empty( $this->pageref_url ) ) {
+			if ( ! empty( $this->pageref_url ) && ! empty( $this->pageref_title ) ) {
 
 				foreach ( $actions as $action => &$html ) {
 
@@ -3582,10 +3609,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						default:
 
-							if ( preg_match( '/^(.*href=")([^"]+)(".*)$/', $html, $matches ) ) {
+							if ( preg_match( '/^(.*href=["\'])([^"\']+)(["\'].*)$/', $html, $matches ) ) {
 
 								$url = add_query_arg( array(
-									$this->p->lca . '_pageref_url' => urlencode( $this->pageref_url ),
+									$this->p->lca . '_pageref_url'   => urlencode( $this->pageref_url ),
 									$this->p->lca . '_pageref_title' => urlencode( $this->pageref_title ),
 								), $matches[2] );
 

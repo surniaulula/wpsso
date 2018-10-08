@@ -525,13 +525,21 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$table_rows = array();
 
-			foreach ( $tabs as $key => $title ) {
-				$table_rows[$key] = array_merge( $this->get_table_rows( $metabox_id, $key, WpssoMeta::$head_meta_info, $mod ),
-					apply_filters( $this->p->lca . '_' . $mod['name'] . '_' . $key . '_rows',
-						array(), $this->form, WpssoMeta::$head_meta_info, $mod ) );
+			foreach ( $tabs as $tab_key => $title ) {
+
+				$filter_name = $this->p->lca . '_' . $mod['name'] . '_' . $tab_key . '_rows';
+
+				$table_rows[$tab_key] = array_merge(
+					$this->get_table_rows( $metabox_id, $tab_key, WpssoMeta::$head_meta_info, $mod ),
+					(array) apply_filters( $filter_name, array(), $this->form, WpssoMeta::$head_meta_info, $mod )
+				);
 			}
 
-			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows );
+			$tabbed_args = array(
+				'layout' => 'vertical',
+			);
+
+			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id . ' table rows' );	// end timer
