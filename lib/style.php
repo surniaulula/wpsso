@@ -442,10 +442,16 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-description {
 					width:20%;
 				}
-				table.wp-list-table.plugins > thead > tr > th.column-description,
+				table.wp-list-table.plugins > thead > tr > th.column-description,	/* Plugins table */
 				table.wp-list-table.plugins > tbody > tr > td.column-description {
 					width:75%;
 				}
+				table.wp-list-table.users > thead > tr > th,	/* Users table */
+				table.wp-list-table.users > tbody > tr > td {
+					width:15%;
+				}
+				table.wp-list-table > thead > tr > th.num,
+				table.wp-list-table > tbody > tr > td.num,
 				table.wp-list-table > thead > tr > th.column-comments,
 				table.wp-list-table > tbody > tr > td.column-comments {
 					width:40px;
