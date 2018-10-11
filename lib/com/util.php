@@ -864,16 +864,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return self::$cache_wp_plugins;
 			}
 
-			if ( ! function_exists( 'get_plugins' ) ) {
+			if ( ! function_exists( 'get_plugins' ) ) {	// Load the library if necessary.
 
 				$plugin_lib = trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin.php';
 
-				if ( file_exists( $plugin_lib ) ) {
-
+				if ( file_exists( $plugin_lib ) ) {	// Just in case.
 					require_once $plugin_lib;
-
 				} else {
-
 					$error_pre = sprintf( '%s error:', __METHOD__ );
 					$error_msg = sprintf( 'The WordPress %s library file is missing and required.', $plugin_lib );
 
@@ -882,9 +879,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( function_exists( 'get_plugins' ) ) {
-
-				return self::$cache_wp_plugins = get_plugins();
+				self::$cache_wp_plugins = get_plugins();
 			} else {
+				self::$cache_wp_plugins = array();
 
 				$error_pre = sprintf( '%s error:', __METHOD__ );
 				$error_msg = sprintf( 'The WordPress %s function is missing and required.', 'get_plugins()' );
@@ -892,7 +889,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				self::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
 
-			return self::$cache_wp_plugins = array();
+			return self::$cache_wp_plugins;
 		}
 
 		public static function clear_wp_plugins() {
@@ -3285,6 +3282,46 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return mb_decode_numericentity( $matches[0], $convmap, 'UTF-8' );
 		}
 
+		/**
+		 * Decode a URL and add query arguments. Returns false on error.
+		 */
+		public static function decode_add_query( $url, array $args ) {
+
+			if ( filter_var( $url, FILTER_VALIDATE_URL ) === false ) {	// Check for invalid URL.
+				return false;
+			}
+
+			$parsed_url = parse_url( SucomUtil::decode_html( urldecode( $url ) ) );
+
+			if ( empty( $parsed_url ) ) {
+				return false;
+			}
+
+			if ( empty( $parsed_url['query'] ) ) {
+				$parsed_url['query'] = http_build_query( $args );
+			} else {
+				$parsed_url['query'] .= '&' . http_build_query( $args );
+			}
+
+			$url = self::unparse_url( $parsed_url );
+
+			return $url;
+		}
+
+		public static function unparse_url( $parsed_url ) {
+
+			$scheme   = isset( $parsed_url['scheme'] )   ? $parsed_url['scheme'] . '://' : '';
+			$user     = isset( $parsed_url['user'] )     ? $parsed_url['user'] : '';
+			$pass     = isset( $parsed_url['pass'] )     ? ':' . $parsed_url['pass']  : '';
+			$host     = isset( $parsed_url['host'] )     ? $parsed_url['host'] : '';
+			$port     = isset( $parsed_url['port'] )     ? ':' . $parsed_url['port'] : '';
+			$path     = isset( $parsed_url['path'] )     ? $parsed_url['path'] : '';
+			$query    = isset( $parsed_url['query'] )    ? '?' . $parsed_url['query'] : '';
+			$fragment = isset( $parsed_url['fragment'] ) ? '#' . $parsed_url['fragment'] : '';
+
+			return $scheme . $user . $pass . ( $user || $pass ? '@' : '' ) . $host . $port . $path . $query . $fragment;
+		}
+
 		public static function strip_html( $text ) {
 
 			$text = self::strip_shortcodes( $text );                                // Remove any remaining shortcodes.
@@ -3525,6 +3562,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_user_ids_by_roles( array $roles, $blog_id = null ) {
 
+			/**
+			 * Get the user ID => name associative array, and keep only the array keys.
+			 */
 			$user_ids = array_keys( self::get_user_names_by_roles( $roles, $blog_id ) );
 
 			rsort( $user_ids );	// Newest user first.
@@ -4166,6 +4206,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
 		 */
 		private static function set_url_scheme( $url, $scheme = null ) {
+
 			if ( ! $scheme ) {
 				$scheme = is_ssl() ? 'https' : 'http';
 			} elseif ( $scheme === 'admin' || $scheme === 'login' || $scheme === 'login_post' || $scheme === 'rpc' ) {
@@ -4173,20 +4214,26 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			} elseif ( $scheme !== 'http' && $scheme !== 'https' && $scheme !== 'relative' ) {
 				$scheme = is_ssl() ? 'https' : 'http';
 			}
+
 			$url = trim( $url );
+
 			if ( substr( $url, 0, 2 ) === '//' ) {
 				$url = 'http:' . $url;
 			}
+
 			if ( 'relative' === $scheme ) {
+
 				$url = ltrim( preg_replace( '#^\w+://[^/]*#', '', $url ) );
+
 				if ( $url !== '' && $url[0] === '/' ) {
 					$url = '/'.ltrim( $url, "/ \t\n\r\0\x0B" );
 				}
+
 			} else {
 				$url = preg_replace( '#^\w+://#', $scheme . '://', $url );
 			}
+
 			return $url;
 		}
 	}
 }
-
