@@ -3285,7 +3285,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Decode a URL and add query arguments. Returns false on error.
 		 */
-		public static function decode_add_query( $url, array $args ) {
+		public static function decode_url_add_query( $url, array $args ) {
 
 			if ( filter_var( $url, FILTER_VALIDATE_URL ) === false ) {	// Check for invalid URL.
 				return false;
