@@ -342,6 +342,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.16.1-dev.1 (2018/10/11)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* Added new SucomUtil decode_add_query() and unparse_url() static methods.
+
 **Version 4.16.0 (2018/10/08)**
 
 * *New Features*
@@ -458,11 +469,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
+= 4.16.1-dev.1 =
+
+(2018/10/11) Added new SucomUtil decode_add_query() and unparse_url() static methods.
+
 = 4.16.0 =
 
 (2018/10/08) Changed the Document SSO metabox tabs from a horizontal to a vertical layout.
-
-= 4.15.0 =
-
-(2018/10/04) Added icons to most metabox tabs and the SSO &gt; Dashboard metabox titles. Added the Schema SoftwareApplication type and its sub-types.
 
