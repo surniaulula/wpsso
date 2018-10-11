@@ -351,7 +351,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Added new SucomUtil decode_add_query() and unparse_url() static methods.
+	* Added new SucomUtil decode_url_add_query() and unparse_url() static methods.
 
 **Version 4.16.0 (2018/10/08)**
 
@@ -471,7 +471,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.16.1-dev.1 =
 
-(2018/10/11) Added new SucomUtil decode_add_query() and unparse_url() static methods.
+(2018/10/11) Added new SucomUtil decode_url_add_query() and unparse_url() static methods.
 
 = 4.16.0 =
 
