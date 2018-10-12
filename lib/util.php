@@ -2519,6 +2519,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			global $wpsso_paged;
+
 			if ( is_numeric( $add_page ) ) {
 				$paged = $add_page;
 			} elseif ( is_numeric( $wpsso_paged ) ) {
@@ -2528,20 +2529,29 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $paged > 1 ) {
+
 				global $wp_rewrite;
+
 				if ( ! $wp_rewrite->using_permalinks() ) {
+
 					$url = add_query_arg( 'paged', $paged, $url );
+
 				} else {
+
 					if ( $mod['is_home_page'] ) {	// Static home page (have post id).
+
 						$base = $wp_rewrite->using_index_permalinks() ? 'index.php/' : '/';
-						$url = home_url( $base );
+						$url  = home_url( $base );
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'home_url for ' . $base . ' = ' . $url );
 						}
 					}
+
 					$url = user_trailingslashit( trailingslashit( $url ) . 
 						trailingslashit( $wp_rewrite->pagination_base ) . $paged );
 				}
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'get url paged = ' . $url );
 				}

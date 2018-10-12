@@ -2709,23 +2709,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function admin_footer_ext_name( $text ) {
+		public function admin_footer_ext_name( $footer_html ) {
 
 			if ( isset( self::$pkg[$this->menu_ext]['name'] ) ) {
-				$text = '<span class="admin-footer-ext-name">' . self::$pkg[$this->menu_ext]['name'] . '</span>';
+				$footer_html = '<span class="admin-footer-ext-name">' . self::$pkg[$this->menu_ext]['name'] . '</span>';
 			}
 
-			return $text;
+			return $footer_html;
 		}
 
-		public function admin_footer_ext_gen( $text ) {
+		public function admin_footer_ext_gen( $footer_html ) {
 
 			if ( isset( self::$pkg[$this->menu_ext]['gen'] ) ) {
-				$host = '<br/>' . preg_replace( '/^[^:]*:\/\//', '', strtolower( SucomUtilWP::raw_get_home_url() ) );
-				$text = '<span class="admin-footer-ext-gen">' . self::$pkg[$this->menu_ext]['gen'] . $host. '</span>';
+				$home_url    = strtolower( SucomUtilWP::raw_get_home_url() );
+				$host_html   = '<br/>' . preg_replace( '/^[^:]*:\/\//', '', $home_url );
+				$footer_html = '<span class="admin-footer-ext-gen">' . self::$pkg[$this->menu_ext]['gen'] . $host_html . '</span>';
 			}
 
-			return $text;
+			return $footer_html;
 		}
 
 		/**
