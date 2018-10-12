@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.1-dev.1 (2018/10/11)**
+**Version 4.16.1-dev.2 (2018/10/11)**
 
 * *New Features*
 	* None.
@@ -352,6 +352,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Developer Notes*
 	* Added new SucomUtil decode_url_add_query() and unparse_url() static methods.
+	* Moved the SucomUtilWP class to a new lib/com/util-wp.php library file.
 
 **Version 4.16.0 (2018/10/08)**
 
@@ -469,7 +470,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.1-dev.1 =
+= 4.16.1-dev.2 =
 
 (2018/10/11) Added new SucomUtil decode_url_add_query() and unparse_url() static methods.
 
