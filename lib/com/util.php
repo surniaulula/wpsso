@@ -9,7 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-require_once './util-wp.php';
+$lib_dir = dirname( __FILE__ ) . '/';
+
+require_once $lib_dir . 'util-wp.php';
 
 if ( ! class_exists( 'SucomUtil' ) ) {
 
