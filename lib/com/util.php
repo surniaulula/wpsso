@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-require_once 'util-wp.php';
+require_once './util-wp.php';
 
 if ( ! class_exists( 'SucomUtil' ) ) {
 
