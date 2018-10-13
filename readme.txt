@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.1-dev.2 (2018/10/11)**
+**Version 4.16.1 (2018/10/14)**
 
 * *New Features*
 	* None.
@@ -470,11 +470,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.1-dev.2 =
+= 4.16.1 =
 
-(2018/10/11) Added new SucomUtil decode_url_add_query() and unparse_url() static methods.
-
-= 4.16.0 =
-
-(2018/10/08) Changed the Document SSO metabox tabs from a horizontal to a vertical layout.
+(2018/10/14) Added new SucomUtil decode_url_add_query() and unparse_url() static methods.
 
