@@ -2723,7 +2723,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( isset( self::$pkg[$this->menu_ext]['gen'] ) ) {
 				$home_url    = strtolower( SucomUtilWP::raw_get_home_url() );
 				$host_html   = '<br/>' . preg_replace( '/^[^:]*:\/\//', '', $home_url );
-				$footer_html = '<span class="admin-footer-ext-gen">' . self::$pkg[$this->menu_ext]['gen'] . $host_html . '</span>';
+				$footer_html = '<span class="admin-footer-ext-gen">' . self::$pkg[ $this->menu_ext ][ 'gen' ] . $host_html . '</span>';
 			}
 
 			return $footer_html;
@@ -2870,7 +2870,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// Show only one notice at a time.
 			}
 
-			if ( ! self::$pkg[$lca]['pp'] ) {
+			if ( ! self::$pkg[ $lca ][ 'pp' ] ) {
 
 				if ( ! empty( $all_times[$lca . '_install_time'] ) && $all_times[$lca . '_install_time'] < $six_months_ago_secs ) {
 
@@ -2949,7 +2949,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( empty( $um_info['version'] ) ) {
 						break;
 					} else {
-						if ( ! self::$pkg[$ext]['pdir'] ) {
+						if ( ! self::$pkg[ $ext ][ 'pdir' ] ) {
 							if ( ! empty( $info['base'] ) && ! SucomUtil::plugin_is_installed( $info['base'] ) ) {
 								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'lca' => $ext ) ) );
 							} else {
@@ -3438,7 +3438,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public static function get_option_site_use( $name, $form, $network = false, $enabled = false ) {
 			if ( $network ) {
 				return $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site_use' ) . 
-					( $enabled || self::$pkg['wpsso']['pp'] ? '<td class="site_use">' . $form->get_select( $name . ':use',
+					( $enabled || self::$pkg[ 'wpsso' ][ 'pp' ] ? '<td class="site_use">' . $form->get_select( $name . ':use',
 						WpssoConfig::$cf['form']['site_option_use'], 'site_use' ) . '</td>' :
 					'<td class="blank site_use">' . $form->get_select( $name . ':use',
 						WpssoConfig::$cf['form']['site_option_use'], 'site_use', '', true, true ) . '</td>' );
@@ -3656,7 +3656,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 				// translators: %1$s is the URL, %2$s is the short plugin name
-				$link_html = sprintf( __( 'You may <a href="%1$s">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available.', 'wpsso' ), $link_url, self::$pkg[$this->p->lca]['short'] );
+				$link_html = sprintf( __( 'You may <a href="%1$s">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available.', 'wpsso' ), $link_url, self::$pkg[ $this->p->lca ][ 'short' ] );
 
 			} elseif ( empty( $_GET['force-check'] ) ) {
 

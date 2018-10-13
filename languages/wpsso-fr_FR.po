@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.16.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-10-13 07:15-0400\n"
-"PO-Revision-Date: 2018-10-13 07:15-0400\n"
+"POT-Creation-Date: 2018-10-13 16:40-0600\n"
+"PO-Revision-Date: 2018-10-13 16:40-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4963,10 +4963,10 @@ msgctxt "metabox title"
 msgid "WebSite Social Pages and Accounts"
 msgstr "Pages et comptes sociaux du site Web"
 
-#: lib/sitesubmenu/siteaddons.php:52 lib/submenu/addons.php:41
+#: lib/sitesubmenu/siteaddons.php:54 lib/submenu/addons.php:43
 msgctxt "metabox title"
-msgid "Optional Core Add-ons"
-msgstr "Ajouts Core optionnels"
+msgid "Add-ons for %s"
+msgstr "Ajouts pour %s"
 
 #: lib/sitesubmenu/siteadvanced.php:47
 msgctxt "metabox title"

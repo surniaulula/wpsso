@@ -3959,19 +3959,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function add_pkg_name( &$name, $type ) {
+
 			$name = self::get_pkg_name( $name, $type );
 		}
 
 		public static function get_pkg_name( $name, $type ) {
+
 			if ( strpos( $name, $type ) !== false ) {
 				$name = preg_replace( '/^(.*) ' . $type . '( [\[\(].+[\)\]])?$/U', '$1$2', $name );
 			}
+
 			return preg_replace( '/^(.*)( [\[\(].+[\)\]])?$/U', '$1 ' . $type . '$2', $name );
 		}
 
 		public static function get_wp_hook_names( $filter_name ) {
+
 			global $wp_filter;
+
 			$hook_names = array();
+
 			if ( isset( $wp_filter[$filter_name]->callbacks ) ) {
 				foreach ( $wp_filter[$filter_name]->callbacks as $hook_prio => $hook_group ) {
 					foreach ( $hook_group as $hook_ref => $hook_info ) {
@@ -3981,37 +3987,51 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 				}
 			}
+
 			return $hook_names;
 		}
 
 		public static function get_hook_function_name( array $hook_info ) {
+
 			$hook_name = '';
+
 			if ( ! isset( $hook_info['function'] ) ) {              // Just in case.
+
 				return $hook_name;                              // Stop here - return an empty string.
+
 			} elseif ( is_array( $hook_info['function'] ) ) {       // Hook is a class / method.
-				$class_name = '';
+
+				$class_name    = '';
 				$function_name = '';
+
 				if ( is_object( $hook_info['function'][0] ) ) {
 					$class_name = get_class( $hook_info['function'][0] );
 				} elseif ( is_string( $hook_info['function'][0] ) ) {
 					$class_name = $hook_info['function'][0];
 				}
+
 				if ( is_string( $hook_info['function'][1] ) ) {
 					$function_name = $hook_info['function'][1];
 
 				}
+
 				return $class_name . '::' . $function_name;
+
 			} elseif ( is_string ( $hook_info['function'] ) ) { // Hook is a function.
+
 				return $hook_info['function'];
 			}
+
 			return $hook_name;
 		}
 		
 		public static function get_min_int() {
+
 			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;    // Since PHP 7.0.0.
 		}
 
 		public static function get_max_int() {
+
 			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;     // Since PHP 5.0.2.
 		}
 
@@ -4019,6 +4039,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Allow for 0, but not true, false, null, or 'none'.
 		 */
 		public static function is_opt_id( $id ) {
+
 			if ( true === $id ) {
 				return false;
 			} elseif ( empty( $id ) && ! is_numeric( $id ) ) { // null or false.

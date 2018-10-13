@@ -48,8 +48,10 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 		 */
 		protected function add_meta_boxes() {
 
+			$short_name = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
+
 			add_meta_box( $this->pagehook.'_addons',
-				_x( 'Optional Core Add-ons', 'metabox title', 'wpsso' ),
+				sprintf( _x( 'Add-ons for %s', 'metabox title', 'wpsso' ), $short_name ),
 					array( $this, 'show_metabox_addons' ), $this->pagehook, 'normal' );
 
 			/**
