@@ -3365,7 +3365,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function strip_shortcodes( $text ) {
 
-			if ( strpos( $text, '[' ) === false ) { // Stop here if no shortcodes.
+			if ( strpos( $text, '[' ) === false ) { // Optimize and check if there are shortcodes.
 				return $text;
 			}
 
