@@ -342,6 +342,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.16.2-dev.1 (2018/10/15)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.16.1 (2018/10/14)**
 
 * *New Features*
@@ -469,6 +480,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored SucomNotice methods to handle / store notices for different user IDs than the current user ID.
 
 == Upgrade Notice ==
+
+= 4.16.2-dev.1 =
+
+(2018/10/15) Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
 
 = 4.16.1 =
 
