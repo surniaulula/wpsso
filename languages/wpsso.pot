@@ -129,7 +129,7 @@ msgid "Metabox layout preferences for user ID #%d \"%s\" have been reset."
 msgstr ""
 
 #: lib/admin.php:976
-msgid "Hidden notices for user ID #%d \"%s\" have been cleared."
+msgid "Dismissed notices for user ID #%d \"%s\" have been reset."
 msgstr ""
 
 #: lib/admin.php:987
@@ -194,7 +194,7 @@ msgstr ""
 
 #: lib/admin.php:1257
 msgctxt "submit button"
-msgid "Reset Hidden Notices"
+msgid "Reset Dismissed Notices"
 msgstr ""
 
 #: lib/admin.php:1289 lib/gpl/admin/advanced.php:339

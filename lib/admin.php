@@ -964,7 +964,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
-						case 'clear_hidden_notices':
+						case 'clear_dismissed_notices':
 
 							$user_id   = get_current_user_id();
 							$user_obj  = get_userdata( $user_id );
@@ -973,7 +973,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							delete_user_option( $user_id, WPSSO_DISMISS_NAME, false );	// $global = false
 							delete_user_option( $user_id, WPSSO_DISMISS_NAME, true );	// $global = true
 
-							$this->p->notice->upd( sprintf( __( 'Hidden notices for user ID #%d "%s" have been cleared.',
+							$this->p->notice->upd( sprintf( __( 'Dismissed notices for user ID #%d "%s" have been reset.',
 								'wpsso' ), $user_id, $user_name ) );
 
 							break;
@@ -1252,9 +1252,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'change_show_options&show-opts=' . $view_next_key => $view_label_transl,
 				),
 				array(
-					'clear_all_cache'      => $clear_label_transl,
-					'clear_metabox_prefs'  => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
-					'clear_hidden_notices' => _x( 'Reset Hidden Notices', 'submit button', 'wpsso' ),
+					'clear_all_cache'         => $clear_label_transl,
+					'clear_metabox_prefs'     => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
+					'clear_dismissed_notices' => _x( 'Reset Dismissed Notices', 'submit button', 'wpsso' ),
 				),
 			), $this->menu_id, $this->menu_name, $this->menu_lib );
 
