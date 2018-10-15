@@ -2189,7 +2189,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					} else {
 
 						$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is not loaded:', 'wpsso' ),
-							$php_info['url'], $php_info['label'] ).' ';
+							$php_info['url'], $php_info['label'] ) . ' ';
 					}
 
 					/**
@@ -2197,7 +2197,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					 */
 					$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> for "%3$s" returned false.', 'wpsso' ),
 						__( 'https://secure.php.net/manual/en/function.extension-loaded.php', 'wpsso' ),
-							'<code>extension_loaded()</code>', $php_ext ).' ';
+							'<code>extension_loaded()</code>', $php_ext ) . ' ';
 
 
 					/**
@@ -2205,7 +2205,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					 * difference between the OS package and the PHP extension.
 					 */
 					if ( $php_ext === 'imagick' ) {
-						$error_msg .= sprintf( __( 'Note that the ImageMagick application and the PHP "%1$s" extension are two different products &mdash; this error is for the PHP "%1$s" extension, not the ImageMagick application.', 'wpsso' ), $php_ext ).' ';
+						$error_msg .= sprintf( __( 'Note that the ImageMagick application and the PHP "%1$s" extension are two different products &mdash; this error is for the PHP "%1$s" extension, not the ImageMagick application.', 'wpsso' ), $php_ext ) . ' ';
 					}
 
 					$error_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP "%1$s" extension installed and enabled.', 'wpsso' ), $php_ext );
@@ -2223,7 +2223,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								$this->p->debug->log( 'php ' . $func_name . ' function is missing' );
 							}
 
-							$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s function is missing.', 'wpsso' ), $php_info['url'], $php_info['label'], '<code>' . $func_name . '()</code>' ).' ';
+							$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s function is missing.', 'wpsso' ), $php_info['url'], $php_info['label'], '<code>' . $func_name . '()</code>' ) . ' ';
 							$error_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' ), $func_name );
 						}
 					}

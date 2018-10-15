@@ -1754,7 +1754,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$func_url  = __( 'https://secure.php.net/manual/en/function.simplexml-load-string.php', 'wpsso' );
 
 						$error_msg = sprintf( __( 'The <a href="%1$s">PHP %2$s function</a> is not available.', 'wpsso' ),
-							$func_url, '<code>' . $func_name . '</code>' ).' ';
+							$func_url, '<code>' . $func_name . '</code>' ) . ' ';
 
 						$error_msg .= __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
 
@@ -3276,12 +3276,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$ret_html .= '<div class="'.
 				( empty( $show_opts ) ? '' : 'sucom-show_'.$show_opts ).
-				( empty( $class_tabset ) ? '' : ' '.$class_tabset ).
-				( empty( $class_tabset_mb ) ? '' : ' '.$class_tabset_mb ).
-				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).'">' . "\n";
+				( empty( $class_tabset ) ? '' : ' ' . $class_tabset ).
+				( empty( $class_tabset_mb ) ? '' : ' ' . $class_tabset_mb ).
+				( empty( $class_href_key ) ? '' : ' ' . $class_href_key ).'">' . "\n";
 
 			$ret_html .= '<table class="sucom-settings '.$this->p->lca.
-				( empty( $class_href_key ) ? '' : ' '.$class_href_key ).
+				( empty( $class_href_key ) ? '' : ' ' . $class_href_key ).
 				( $hidden_rows > 0 && $hidden_rows === $count_rows ?	// If all rows hidden, then hide the whole table.
 					' hide_in_'.$show_opts : '' ).'">' . "\n";
 
@@ -3408,12 +3408,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 							if ( ! empty( $alt ) ) {
 							
-								$alt = empty( $alt_prefix ) ? $alt : $alt_prefix.' '.$alt;
+								$alt = empty( $alt_prefix ) ? $alt : $alt_prefix . ' ' . $alt;
 
 								/**
 								 * Add a period after the image alt text if missing.
 								 */
-								$alt_text .= ( strpos( $alt, '.' ) + 1 ) === strlen( $alt ) ? $alt.' ' : $alt.'. ';
+								$alt_text .= ( strpos( $alt, '.' ) + 1 ) === strlen( $alt ) ? $alt . ' ' : $alt.'. ';
 							}
 						}
 

@@ -106,8 +106,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		private function add_header_image_tag( $html, $add_attr ) {
 			foreach ( $add_attr as $attr_name => $attr_value ) {
-				if ( $attr_value !== false && strpos( $html, ' '.$attr_name.'=' ) === false ) {
-					$html = preg_replace( '/ *\/?'.'>/', ' '.$attr_name.'="'.$attr_value.'"$0', $html );
+				if ( $attr_value !== false && strpos( $html, ' ' . $attr_name.'=' ) === false ) {
+					$html = preg_replace( '/ *\/?'.'>/', ' ' . $attr_name.'="'.$attr_value.'"$0', $html );
 				}
 			}
 			return $html;
@@ -495,7 +495,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_url, '<code>'.$func_name.'</code>' );
 
-						$this->p->notice->err( $error_msg.' '.$regen_msg, null, $notice_key, $dismiss_time );
+						$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time );
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -519,7 +519,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $media_lib, $edit_url, $pid, $func_url, '<code>'.$func_name.'</code>' );
 
-						$this->p->notice->err( $error_msg.' '.$regen_msg, null, $notice_key, $dismiss_time );
+						$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time );
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -640,7 +640,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 									$error_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> reported an error when trying to create an image size from %4$s.', 'wpsso' ), $media_lib, $func_url, '<code>'.$func_name.'</code>', $fullsizepath );
 
-									$this->p->notice->err( $error_msg.' '.$regen_msg, null, $notice_key, $dismiss_time );
+									$this->p->notice->err( $error_msg . ' ' . $regen_msg, null, $notice_key, $dismiss_time );
 
 								} elseif ( $this->p->debug->enabled ) {
 
@@ -869,7 +869,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'match '.$img_num.': '.$tag_name.' '.$attr_name.'="'.$attr_value.'"' );
+						$this->p->debug->log( 'match '.$img_num.': '.$tag_name . ' ' . $attr_name.'="'.$attr_value.'"' );
 					}
 
 					switch ( $attr_name ) {
@@ -1516,7 +1516,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			if ( $img_width === WPSSO_UNDEF || $img_height === WPSSO_UNDEF ) {
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: '.strtolower( $media_lib ).' '.$img_mixed.' rejected - '.
+					$this->p->debug->log( 'exiting early: '.strtolower( $media_lib ) . ' ' . $img_mixed.' rejected - '.
 						'invalid width and/or height '.$img_width.'x'.$img_height );
 				}
 				return false;	// image rejected
@@ -1568,7 +1568,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( $max_ratio > 0 && $img_ratio >= $max_ratio ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: '.strtolower( $media_lib ).' '.$img_mixed.' rejected - '.
+					$this->p->debug->log( 'exiting early: '.strtolower( $media_lib ) . ' ' . $img_mixed.' rejected - '.
 						$img_width.'x'.$img_height.' aspect ratio is equal to/or greater than '.$max_ratio.':1' );
 				}
 
@@ -1584,7 +1584,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
 					$this->p->notice->err( sprintf( $error_msg, $media_lib, $img_label, $img_width.'x'.$img_height,
-						$max_ratio, $spec_name ).' '.$rejected_msg, null, $notice_key, $dismiss_time );
+						$max_ratio, $spec_name ) . ' ' . $rejected_msg, null, $notice_key, $dismiss_time );
 				}
 
 				return false;	// image rejected
@@ -1596,7 +1596,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( ( $min_width > 0 || $min_height > 0 ) && ( $img_width < $min_width || $img_height < $min_height ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'exiting early: '.strtolower( $media_lib ).' '.$img_mixed.' rejected - '.
+					$this->p->debug->log( 'exiting early: '.strtolower( $media_lib ) . ' ' . $img_mixed.' rejected - '.
 						$img_width.'x'.$img_height.' smaller than minimum '.$min_width.'x'.$min_height.' for '.$size_name );
 				}
 
@@ -1612,7 +1612,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 * $media_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
 					$this->p->notice->err( sprintf( $error_msg, $media_lib, $img_label, $img_width.'x'.$img_height,
-						$min_width.'x'.$min_height, $spec_name ).' '.$rejected_msg, true, $notice_key, $dismiss_time );
+						$min_width.'x'.$min_height, $spec_name ) . ' ' . $rejected_msg, true, $notice_key, $dismiss_time );
 				}
 
 				return false;	// image rejected

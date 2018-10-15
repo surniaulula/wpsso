@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoGplAdminGeneral' ) ) {
 			$check_embed_html = '';
 
 			foreach ( $this->p->cf['form']['embed_media_apis'] as $opt_key => $opt_label ) {
-				$check_embed_html .= '<p>'.$form->get_no_checkbox_comment( $opt_key ).' '._x( $opt_label, 'option value', 'wpsso' ).'</p>';
+				$check_embed_html .= '<p>'.$form->get_no_checkbox_comment( $opt_key ) . ' ' . _x( $opt_label, 'option value', 'wpsso' ).'</p>';
 			}
 
 			$table_rows['plugin_embed_media_apis'] = $form->get_tr_hide( 'basic', $this->p->cf['form']['embed_media_apis'] ).

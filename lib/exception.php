@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoException' ) ) {
 			}
 
 			if ( null === $message && isset( $this->httpResultCodes[(int) $code] ) )
-				$message .= ' HTTP '.$code.' '.$this->httpResultCodes[(int) $code].'.';
+				$message .= ' HTTP '.$code . ' ' . $this->httpResultCodes[(int) $code].'.';
 
 			parent::__construct( trim( $message ), $code, $previous );
 		}

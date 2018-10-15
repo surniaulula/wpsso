@@ -377,7 +377,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						if ( filemtime( $cache_file ) > time() - $file_cache_exp ) {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'cached file found: returning ' . $format . ' '.
+								$this->p->debug->log( 'cached file found: returning ' . $format . ' ' . 
 									( $format === 'url' ? $cache_url : $cache_file ) );
 							}
 
@@ -622,7 +622,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					wp_cache_set( $cache_id, $cache_data, __CLASS__, $object_cache_exp );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'cache data saved to ' . $cache_type . ' '.
+						$this->p->debug->log( 'cache data saved to ' . $cache_type . ' ' .
 							$cache_id . ' (' . $object_cache_exp . ' seconds)' );
 					}
 
@@ -637,7 +637,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					set_transient( $cache_id, $cache_data, $object_cache_exp );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'cache data saved to ' . $cache_type . ' '.
+						$this->p->debug->log( 'cache data saved to ' . $cache_type . ' ' .
 							$cache_id . ' (' . $object_cache_exp . ' seconds)' );
 					}
 
