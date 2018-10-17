@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.2-dev.2 (2018/10/17)**
+**Version 4.16.2-dev.3 (2018/10/17)**
 
 * *New Features*
 	* None.
@@ -482,7 +482,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.2-dev.2 =
+= 4.16.2-dev.3 =
 
 (2018/10/17) Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
 
