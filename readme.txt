@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.2-dev.1 (2018/10/15)**
+**Version 4.16.2-dev.2 (2018/10/17)**
 
 * *New Features*
 	* None.
@@ -351,7 +351,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* Added a fallback options index argument for the post, term, and user module get_options() method.
 
 **Version 4.16.1 (2018/10/14)**
 
@@ -481,9 +481,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.2-dev.1 =
+= 4.16.2-dev.2 =
 
-(2018/10/15) Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
+(2018/10/17) Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
 
 = 4.16.1 =
 
