@@ -473,46 +473,60 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				return null;
 			}
 
-			if ( false === $md_idx ) {	// return the whole options array
+			if ( false === $md_idx ) {	// Return the whole options array.
 
 				$md_val = $this->get_options( $mod_id, $md_idx, $filter_opts );
 
-			} elseif ( true === $md_idx ) {	// true is not valid for a custom meta key
+			} elseif ( true === $md_idx ) {	// True is not valid for a custom meta key.
 
 				$md_val = null;
 
-			} else {	// return the first matching index value
+			} else {	// Return the first matching index value.
 
-				if ( ! is_array( $md_idx ) ) {		// convert a string to an array
+				if ( ! is_array( $md_idx ) ) {		// Convert a string to an array.
 					$md_idx = array( $md_idx );
 				} else {
-					$md_idx = array_unique( $md_idx );	// prevent duplicate idx values
+					$md_idx = array_unique( $md_idx );	// Prevent duplicate idx values.
 				}
 
 				foreach ( $md_idx as $md_idx ) {
-					if ( 'none' === $md_idx ) {		// special index keyword
+
+					if ( 'none' === $md_idx ) {		// Special index keyword.
+
 						return null;
-					} elseif ( empty( $md_idx ) ) {		// skip empty array keys
+
+					} elseif ( empty( $md_idx ) ) {		// Skip empty array keys.
+
 						continue;
-					} elseif ( is_array( $md_idx ) ) {	// an array of arrays is not valid
+
+					} elseif ( is_array( $md_idx ) ) {	// An array of arrays is not valid.
+
 						continue;
+
 					} else {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'getting id ' . $mod_id . ' option ' . $md_idx . ' value' );
 						}
+
 						if ( ( $md_val = $this->get_options( $mod_id, $md_idx, $filter_opts ) ) !== null ) {
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'option ' . $md_idx . ' value found (not null)' );
 							}
-							break;		// stop after first match
+
+							break;		// Stop after first match.
 						}
 					}
 				}
 			}
 
 			if ( $md_val !== null ) {
+
 				if ( $this->p->debug->enabled ) {
+
 					$mod = $this->get_mod( $mod_id );
+
 					$this->p->debug->log( 'custom ' . $mod['name'] . ' ' . ( false === $md_idx ? 'options' : 
 						( is_array( $md_idx ) ? implode( ', ', $md_idx ) : $md_idx ) ) . ' = ' . 
 						( is_array( $md_val ) ? print_r( $md_val, true ) : '"' . $md_val . '"' ) );
@@ -522,7 +536,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $md_val;
 		}
 
-		public function get_options( $mod_id, $idx = false, $filter_opts = true ) {
+		public function get_options( $mod_id, $idx = false, $filter_opts = true, $options_idx = false ) {
 			return $this->must_be_extended( __METHOD__, ( $idx !== false ? null : array() ) );	// return an empty array or null
 		}
 

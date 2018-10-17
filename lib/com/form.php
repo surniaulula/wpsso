@@ -136,14 +136,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( $force !== null ) {
 				$input_checked = checked( $force, 1, false );
 			} elseif ( $this->in_options( $name ) ) {
-				$input_checked = checked( $this->options[$name], 1, false );
+				$input_checked = checked( $this->options[ $name ], 1, false );
 			} elseif ( $this->in_defaults( $name ) ) {
-				$input_checked = checked( $this->defaults[$name], 1, false );
+				$input_checked = checked( $this->defaults[ $name ], 1, false );
 			} else {
 				$input_checked = '';
 			}
 
-			$default_is = $this->in_defaults( $name ) && ! empty( $this->defaults[$name] ) ? 'checked' : 'unchecked';
+			$default_is = $this->in_defaults( $name ) && ! empty( $this->defaults[ $name ] ) ? 'checked' : 'unchecked';
 
 			$title_transl = sprintf( $this->get_value_transl( 'default is %s' ), $this->get_value_transl( $default_is ) ) .
 				( $disabled ? ' ' . $this->get_value_transl( '(option disabled)' ) : '' );
@@ -234,14 +234,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				if ( $this->in_options( $input_name ) ) {
-					$input_checked = checked( $this->options[$input_name], 1, false );
+					$input_checked = checked( $this->options[ $input_name ], 1, false );
 				} elseif ( $this->in_defaults( $input_name ) ) {
-					$input_checked = checked( $this->defaults[$input_name], 1, false );
+					$input_checked = checked( $this->defaults[ $input_name ], 1, false );
 				} else {
 					$input_checked = '';
 				}
 
-				$default_is = $this->in_defaults( $input_name ) && ! empty( $this->defaults[$input_name] ) ? 'checked' : 'unchecked';
+				$default_is = $this->in_defaults( $input_name ) && ! empty( $this->defaults[ $input_name ] ) ? 'checked' : 'unchecked';
 
 				$title_transl = sprintf( $this->get_value_transl( 'default is %s' ), $this->get_value_transl( $default_is ) ) .
 					( $input_disabled ? ' ' . $this->get_value_transl( '(option disabled)' ) : '' );
@@ -327,7 +327,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<span><input type="radio"' .
 					( $disabled ? ' disabled="disabled"' : $attr_name_value ) .
 					( $this->in_options( $name ) ? checked( $this->options[$name], $val, false ) : '' ) .
-					( $this->in_defaults( $name ) ? ' title="default is ' . $values[$this->defaults[$name]] . '"' : '' ) .
+					( $this->in_defaults( $name ) ? ' title="default is ' . $values[ $this->defaults[ $name ] ] . '"' : '' ) .
 					'/>&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>' . "\n";
 			}
 
@@ -378,8 +378,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html        = '';
 			$tr_id       = empty( $css_id ) ? 'tr_' . $name : 'tr_' . $css_id;
 			$input_id    = empty( $css_id ) ? 'select_' . $name : 'select_' . $css_id;
-			$in_options  = $this->in_options( $name );	// optimize and call only once
-			$in_defaults = $this->in_defaults( $name );	// optimize and call only once
+			$in_options  = $this->in_options( $name );	// Optimize and call only once.
+			$in_defaults = $this->in_defaults( $name );	// Optimize and call only once.
 
 			if ( is_string( $on_change ) ) {
 
@@ -438,9 +438,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							if ( true === $selected ) {
 								if ( $in_options ) {
-									$unhide_value = $this->options[$name];
+									$unhide_value = $this->options[ $name ];
 								} elseif ( $in_defaults ) {
-									$unhide_value = $this->defaults[$name];
+									$unhide_value = $this->defaults[ $name ];
 								} else {
 									$unhide_value = false;
 								}
@@ -490,10 +490,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				/**
 				 * If the array is not associative (so a regular numbered array), 
 				 * then the label / description is used as the saved value.
+				 *
+				 * Make sure option values are cast as strings for comparison.
 				 */
 				if ( false === $is_assoc ) {
-					$option_val = $label;
+					$option_val = (string) $label;
+				} else {
+					$option_val = (string) $option_val;
 				}
+
 
 				if ( $this->text_domain ) {
 					$label_transl = $this->get_value_transl( $label );
@@ -526,16 +531,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						break;
 				}
 
-				if ( $in_defaults && $option_val === $this->defaults[$name] ) {
+				if ( $in_defaults && $option_val === (string) $this->defaults[ $name ] ) {
 					$label_transl .= ' ' . $this->get_value_transl( '(default)' );
 				}
 
 				if ( ! is_bool( $selected ) ) {
 					$is_selected_html = selected( $selected, $option_val, false );
 				} elseif ( $in_options ) {
-					$is_selected_html = selected( $this->options[$name], $option_val, false );
+					$is_selected_html = selected( $this->options[ $name ], $option_val, false );
 				} elseif ( $in_defaults ) {
-					$is_selected_html = selected( $this->defaults[$name], $option_val, false );
+					$is_selected_html = selected( $this->defaults[ $name ], $option_val, false );
 				} else {
 					$is_selected_html = '';
 				}
@@ -582,8 +587,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_select_time( $name, $css_class = '', $css_id = '', $disabled = false, $selected = false, $step_mins = 30 ) {
 
-			if ( empty( $name ) || ! isset( $this->defaults[$name] ) ) {
-				$this->defaults[$name] = 'none';
+			if ( empty( $name ) || ! isset( $this->defaults[ $name ] ) ) {
+				$this->defaults[ $name ] = 'none';
 			}
 
 			$start_secs  = 0;
@@ -638,8 +643,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$is_assoc = true;
 
-			if ( empty( $name ) || ! isset( $this->defaults[$name] ) ) {
-				$this->defaults[$name] = 'none';
+			if ( empty( $name ) || ! isset( $this->defaults[ $name ] ) ) {
+				$this->defaults[ $name ] = 'none';
 			}
 
 			/**
@@ -647,7 +652,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 */
 			if ( false === $selected ) {
 				if ( empty( $this->options[$name] ) || ( $this->options[$name] !== 'none' && strlen( $this->options[$name] ) !== 2 ) ) {
-					$selected = $this->defaults[$name];
+					$selected = $this->defaults[ $name ];
 				}
 			}
 
@@ -686,6 +691,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$in_defaults = $this->in_defaults( $name );	// optimize and call only once
 
 			foreach ( $size_names as $size_name ) {
+
 				if ( ! is_string( $size_name ) ) {
 					continue;
 				}
@@ -701,7 +707,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '>';
 				$html .= esc_html( $size_name . ' [ ' . $size['width'] . 'x' . $size['height'] . ( $size['crop'] ? ' cropped' : '' ) . ' ]' );
 
-				if ( $in_defaults && $size_name == $this->defaults[$name] ) {
+				if ( $in_defaults && $size_name === $this->defaults[ $name ] ) {
 					$html .= ' ' . $this->get_value_transl( '(default)' );
 				}
 
@@ -1253,7 +1259,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 									$label_transl = $this->get_value_transl( $label );
 
-									if ( ( $in_defaults && $val === $this->defaults[$opt_key] ) ||
+									if ( ( $in_defaults && $val === $this->defaults[ $opt_key ] ) ||
 										( $select_default !== null && $val === $select_default ) ) {
 
 										$label_transl .= ' ' . $this->get_value_transl( '(default)' );
@@ -1266,7 +1272,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									} elseif ( $select_default !== null ) {
 										$is_selected_html = selected( $select_default, $val, false );
 									} elseif ( $in_defaults ) {
-										$is_selected_html = selected( $this->defaults[$opt_key], $val, false );
+										$is_selected_html = selected( $this->defaults[ $opt_key ], $val, false );
 									} else {
 										$is_selected_html = '';
 									}
@@ -1466,10 +1472,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function in_defaults( $idx ) {
-			return isset( $this->defaults[$idx] ) ? true : false;
+
+			return isset( $this->defaults[ $idx ] ) ? true : false;
 		}
 
 		private function get_text_length_js( $css_id ) {
+
 			return empty( $css_id ) ? '' : '<script type="text/javascript">
 				jQuery(document).ready(function(){
 					jQuery(\'#' . esc_js( $css_id ) . '\').focus(function(){ sucomTextLen(\'' . esc_js( $css_id ) . '\'); });
@@ -1484,8 +1492,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( true === $placeholder ) {	// Use default value.
-				if ( isset( $this->defaults[$name] ) ) {
-					$placeholder = $this->defaults[$name];
+				if ( isset( $this->defaults[ $name ] ) ) {
+					$placeholder = $this->defaults[ $name ];
 				}
 			}
 
@@ -1497,11 +1505,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					if ( $name !== $key_default ) {
 
-						if ( isset( $this->options[$key_default] ) ) {
-							$placeholder = $this->options[$key_default];
+						if ( isset( $this->options[ $key_default ] ) ) {
+							$placeholder = $this->options[ $key_default ];
 						} elseif ( true === $placeholder ) {
-							if ( isset( $this->defaults[$key_default] ) ) {
-								$placeholder = $this->defaults[$key_default];
+							if ( isset( $this->defaults[ $key_default ] ) ) {
+								$placeholder = $this->defaults[ $key_default ];
 							}
 						}
 					}
@@ -1685,17 +1693,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( empty( $idx_default ) ) {
 					continue;
-				} elseif ( ! isset( $this->options[$idx_locale] ) ) {
+				} elseif ( ! isset( $this->options[ $idx_locale ] ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'missing options key for ' . $idx_locale );
 					}
 					continue;
-				} elseif ( ! isset( $this->defaults[$idx_default] ) ) {
+				} elseif ( ! isset( $this->defaults[ $idx_default ] ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'missing defaults key for ' . $idx_default );
 					}
 					continue;
-				} elseif ( $this->options[$idx_locale] !== $this->defaults[$idx_default] ) {
+				} elseif ( $this->options[ $idx_locale ] !== $this->defaults[ $idx_default ] ) {
 					return '';
 				}
 			}

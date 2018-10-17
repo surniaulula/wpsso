@@ -552,11 +552,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Use isset() to check for array keys since this method is also called to sanitize meta options.
 			 */
 			foreach ( array( 'og_def' ) as $md_pre ) {
+
 				if ( empty( $opts[$md_pre . '_img_id'] ) ) {
+
 					if ( isset( $def_opts[$md_pre . '_img_id_pre'] ) ) {	// Just in case.
 						$opts[$md_pre . '_img_id_pre'] = $def_opts[$md_pre . '_img_id_pre'];
 					}
+
 				} elseif ( isset( $opts[$md_pre . '_img_url'] ) ) {
+
 					$opts[$md_pre . '_img_url'] = '';
 				}
 			}
@@ -740,7 +744,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$opt_val = trim( $opt_val );
 
 					if ( $opt_val !== '' && preg_match( '/[^a-zA-Z0-9_\-]/', $opt_val ) ) {
+
 						$this->p->notice->err( sprintf( $error_messages['api_key'], $opt_key ) );
+
 						$opt_val = $def_val;
 					}
 
@@ -782,8 +788,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$ret_int = false;
 					} else {
 						if ( ! is_numeric( $opt_val ) ) {
+
 							$this->p->notice->err( sprintf( $error_messages['blank_num'], $opt_key ) );
+
 							$opt_val = $def_val;
+
 							if ( $opt_val === '' ) {
 								$ret_int = false;
 							}
@@ -799,7 +808,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'not_blank':
 
 					if ( $opt_val === '' && $def_val !== '' ) {
+
 						$this->p->notice->err( sprintf( $error_messages['not_blank'], $opt_key ) );
+
 						$opt_val = $def_val;
 					}
 
@@ -824,9 +835,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$part = SucomUtil::decode_html( $part );	// Just in case.
 
 							if ( filter_var( $part, FILTER_VALIDATE_URL ) === false ) {
+
 								$this->p->notice->err( sprintf( $error_messages['csv_urls'], $opt_key ) );
+
 								$opt_val = $def_val;
+
 								break;
+
 							} else {
 								$parts[] = $part;
 							}
@@ -862,7 +877,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$opt_val = trim( $opt_val );
 
 						if ( ! preg_match( '/<.*>/', $opt_val ) ) {
+
 							$this->p->notice->err( sprintf( $error_messages['html'], $opt_key ) );
+
 							$opt_val = $def_val;
 						}
 					}
@@ -877,7 +894,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( $opt_val !== '' ) {
 
 						if ( ! preg_match( '/^[0-9]+$/', $opt_val ) ) {
+
 							$this->p->notice->err( sprintf( $error_messages['img_id'], $opt_key ) );
+
 							$opt_val = $def_val;
 						}
 					}
