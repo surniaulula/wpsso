@@ -536,11 +536,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $md_val;
 		}
 
-		public function get_options( $mod_id, $idx = false, $filter_opts = true, $options_idx = false ) {
-			return $this->must_be_extended( __METHOD__, ( $idx !== false ? null : array() ) );	// return an empty array or null
+		public function get_options( $mod_id, $md_idx = false, $filter_opts = true, $options_idx = false ) {
+			return $this->must_be_extended( __METHOD__, ( $md_idx !== false ? null : array() ) );	// return an empty array or null
 		}
 
-		public function get_defaults( $mod_id, $idx = false ) {
+		public function get_defaults( $mod_id, $md_idx = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -550,13 +550,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 * Maybe initialize the cache.
 			 */
 			if ( ! isset( $this->defs[$mod_id] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'initializing the default options cache array' );
 				}
-				$this->defs[$mod_id] = array();
+
+				$this->defs[ $mod_id ] = array();
 			}
 
-			$md_defs =& $this->defs[$mod_id];	// Shortcut variable name.
+			$md_defs =& $this->defs[ $mod_id ];	// Shortcut variable name.
 
 			if ( ! WpssoOptions::can_cache() || empty( $md_defs['options_filtered'] ) ) {
 
@@ -569,6 +571,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$md_defs = array(
 					'options_filtered' => '',
 					'options_version'  => '',
+
 					/**
 					 * Customize Tab.
 					 */
@@ -581,6 +584,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'sharing_url'    => '',
 					'canonical_url'  => '',
 					'schema_desc'    => '',
+
 					/**
 					 * Open Graph - Product Information.
 					 */
@@ -594,6 +598,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'product_currency'  => empty( $opts['plugin_def_currency'] ) ? 'USD' : $opts['plugin_def_currency'],
 					'product_size'      => '',
 					'product_gender'    => 'none',
+
 					/**
 					 * Open Graph - Priority Image.
 					 */
@@ -606,6 +611,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'og_img_id'     => '',
 					'og_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],	// Default library prefix.
 					'og_img_url'    => '',
+
 					/**
 					 * Open Graph - Priority Video.
 					 */
@@ -617,6 +623,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'og_vid_url'      => '',
 					'og_vid_title'    => '',	// Custom value for first video.
 					'og_vid_desc'     => '',	// Custom value for first video.
+
 					/**
 					 * Twitter Card.
 					 */
@@ -634,6 +641,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'tc_sum_img_crop_y' => empty( $opts['tc_sum_img_crop_y'] ) ? 'center' : $opts['tc_sum_img_crop_y'],
 					'tc_sum_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],	// Default library prefix.
 					'tc_sum_img_url'    => '',
+
 					/**
 					 * Structured Data / Schema Markup / Pinterest.
 					 */
@@ -646,6 +654,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'schema_img_id'     => '',
 					'schema_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],	// Default library prefix.
 					'schema_img_url'    => '',
+
 					/**
 					 * Gravity View (Side Metabox).
 					 */
@@ -676,12 +685,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->log( 'get_md_defaults filter skipped' );
 			}
 
-			if ( $idx !== false ) {
-				if ( isset( $md_defs[$idx] ) ) {
-					return $md_defs[$idx];
+			if ( $md_idx !== false ) {
+
+				if ( isset( $md_defs[ $md_idx ] ) ) {
+					return $md_defs[ $md_idx ];
 				} else {
 					return null;
 				}
+
 			} else {
 				return $md_defs;
 			}

@@ -485,10 +485,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			} elseif ( ! empty( $mod['id'] ) && ! empty( $mod['obj'] ) && $has_pp ) {
 
 				/**
-				 * Returns an empty string if no meta found.
 			 	 * Custom filters may use image sizes, so don't filter/cache the meta options.
 				 */
-				$md_opts = $mod['obj']->get_options( $mod['id'], false, false );	// $filter_opts is false.
+				$md_opts = $mod['obj']->get_options( $mod['id'], false, $filter_opts = false );	// Returns an empty string if no meta found.
 			}
 
 			foreach( $image_sizes as $opt_prefix => $size_info ) {

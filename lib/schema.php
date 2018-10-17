@@ -614,6 +614,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/**
 			 * Organization > Local Business
+			 *
+			 * https://schema.org/LocalBusiness is both an Organization and a Place.
 			 */
 			$thing['organization']['local.business'] =& 
 				$thing['place']['local.business'];
