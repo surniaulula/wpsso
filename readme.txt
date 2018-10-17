@@ -351,6 +351,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
+	* Added a string cast for select option comparison in the SucomForm get_select() method.
 	* Added a fallback options index argument for the post, term, and user module get_options() method.
 
 **Version 4.16.1 (2018/10/14)**
