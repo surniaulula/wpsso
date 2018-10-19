@@ -17,7 +17,7 @@
 
 <h3>What makes WPSSO Core better?</h3>
 
-<p><strong>Makes sure your WordPress content looks great - no matter how it's crawled, shared, re-shared, or posted!</strong></p>
+<p><strong>Makes sure your content looks great on all sites - no matter how it's crawled, shared, re-shared, posted, or embedded!</strong></p>
 
 <p>WPSSO Core makes sure ALL social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), always get <em>optimized</em> and <em>accurate</em> information about your webpage content.</p>
 
