@@ -602,10 +602,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/**
-				 * If there's no google api key, then disable the shortening service.
+				 * If there's no google api key, then disable the API services.
 				 */
 				if ( isset( $opts['plugin_google_api_key'] ) && empty( $opts['plugin_google_api_key'] ) ) {
 					$opts['plugin_google_shorten'] = 0;
+					$opts['plugin_google_places']  = 0;
 				}
 
 				if ( ! empty( $opts['fb_app_id'] ) && ( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) ) {

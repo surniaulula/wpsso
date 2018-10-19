@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoException' ) ) {
 			505 => 'HTTP Version Not Supported'
 		);
 	
-		public function __construct( $message = null, $code = null, Exception $previous = null ) {
+		public function __construct( $message = null, $http_code = null, Exception $previous = null ) {
 
 			$this->p =& Wpsso::get_instance();
 
@@ -66,13 +66,15 @@ if ( ! class_exists( 'WpssoException' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( null === $message && isset( $this->httpResultCodes[(int) $code] ) )
-				$message .= ' HTTP '.$code . ' ' . $this->httpResultCodes[(int) $code].'.';
+			if ( isset( $this->httpResultCodes[ (int) $http_code ] ) ) {
+				$message .= ' HTTP '.$http_code . ' ' . $this->httpResultCodes[ (int) $http_code ] . '.';
+			}
 
-			parent::__construct( trim( $message ), $code, $previous );
+			parent::__construct( trim( $message ), $http_code, $previous );
 		}
 
 		public function errorMessage( $ret = false ) {
+
 			/**
 			 * getMessage();        // message of exception
 			 * getCode();           // code of exception

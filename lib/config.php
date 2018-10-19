@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.16.2-dev.3',	// Plugin version.
-					'opt_version' => '612',		// Increment when changing default option values.
+					'version'     => '4.16.2-dev.4',	// Plugin version.
+					'opt_version' => '613',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -70,16 +70,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'essential' => 'Essential',
 							'general'   => 'General',
 							'advanced'  => 'Advanced',
-							'dashboard' => 'Dashboard',
-							'setup'     => 'Setup Guide',
 							'addons'    => 'Add-ons',
 							'licenses'  => 'Licenses',
+							'setup'     => 'Setup Guide',
+							'dashboard' => 'Dashboard',
 						),
 						'sitesubmenu' => array(	// Note that submenu elements must have unique keys.
 							'siteadvanced' => 'Advanced',
-							'sitesetup'    => 'Setup Guide',
 							'siteaddons'   => 'Add-ons',
 							'sitelicenses' => 'Licenses',
+							'sitesetup'    => 'Setup Guide',
 						),
 						'gpl' => array(
 							'admin' => array(
@@ -1215,6 +1215,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_dlmyapp_api_key'    => '',
 					'plugin_google_api_key'     => '',			// Google Project API Key.
 					'plugin_google_shorten'     => 0,			// URL Shortener API is Enabled.
+					'plugin_google_places'      => 0,			// Places API is Enabled.
 					'plugin_owly_api_key'       => '',
 					'plugin_yourls_api_url'     => '',
 					'plugin_yourls_username'    => '',

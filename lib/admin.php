@@ -856,7 +856,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$network = true;
 
-			if ( ! $page = SucomUtil::get_request_value( 'page', 'POST' ) ) {	// uses sanitize_text_field
+			if ( ! $page = SucomUtil::get_request_value( 'page', 'POST' ) ) {	// Uses sanitize_text_field.
 				$page = key( $this->p->cf['*']['lib']['sitesubmenu'] );
 			}
 
@@ -1153,6 +1153,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$url = add_query_arg( 'updated', true, $parts['wp_http_referer'] );
 				}
 			}
+
 			return $url;
 		}
 
@@ -1168,7 +1169,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$admin_color = 'fresh';
 				}
 
-				// match WordPress behavior (users page for admins, profile page for everyone else)
+				/**
+				 * Match WordPress behavior (users page for admins, profile page for everyone else).
+				 */
 				$referer_admin_url = current_user_can( 'list_users' ) ?
 					$this->p->util->get_admin_url( $this->menu_id, null, 'users' ) :
 					$this->p->util->get_admin_url( $this->menu_id, null, $this->menu_lib );
@@ -1789,7 +1792,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 						
 				if ( ! empty( $info['url']['notes'] ) ) {
-					$action_links[] = sprintf( __( '<a href="%s">Documentation and Notes</a>', 'wpsso' ), $info['url']['notes'] );
+					$action_links[] = sprintf( __( '<a href="%s">Advanced Documentation and Notes</a>', 'wpsso' ), $info['url']['notes'] );
 				}
 
 				if ( ! empty( $info['url']['support'] ) && self::$pkg[$ext]['pp'] ) {

@@ -1353,15 +1353,29 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_google_api_key':
 
-							$text = sprintf( __( 'The Google Project API Key for this website / project. If you don\'t already have a Google project for your website, visit the <a href="%s">Google APIs developers console</a> and create a new project for your website.', 'wpsso' ), 'https://console.developers.google.com/apis/dashboard' );
+							$text = __( 'The Google APIs project API Key for this website.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'If you don\'t already have a Google project, visit the %s page and create a new project for your website.', 'wpsso' ), '<a href="https://console.developers.google.com/apis/dashboard">' . __( 'Google APIs Dashboard', 'wpsso' ) . '</a>' ) . ' ';
+
+							$text .= sprintf( __( 'After you\'ve created the project, visit the %s page and create a new API Key.', 'wpsso' ), '<a href="https://console.developers.google.com/apis/credentials">' . __( 'Google APIs Credentials', 'wpsso' ) . '</a>' ) . ' ';
+
+							$text .= __( 'Copy-paste the API Key in this option field.', 'wpsso' );
 
 							break;
 
 						case 'tooltip-plugin_google_shorten':
 
-							$text = sprintf( __( 'In order to use Google\'s URL Shortener API service, you must <em>Enable</em> the URL Shortener API service from the <a href="%s">Google APIs developers console</a> (under the project\'s <em>Dashboard</em> settings page).', 'wpsso' ), 'https://console.developers.google.com/apis/dashboard' ) . ' ';
-							
-							$text .= __( 'Confirm that you have enabled Google\'s URL Shortener API service by checking the "Yes" option value.', 'wpsso' );
+							$text = sprintf( __( 'In order to use Google\'s %1$s service, you must <em>Enable</em> the %2$s service.', 'wpsso' ), __( 'URL Shortener API', 'wpsso' ), '<a href="https://console.developers.google.com/apis/library/urlshortener.googleapis.com">' . __( 'URL Shortener API', 'wpsso' ) . '</a>' ) . ' ';
+
+							$text .= sprintf( __( 'Confirm that you have enabled Google\'s %1$s service by clicking the "Yes" option.', 'wpsso' ), __( 'URL Shortener API', 'wpsso' ) );
+
+							break;
+
+						case 'tooltip-plugin_google_places':
+
+							$text = sprintf( __( 'In order to use Google\'s %1$s service, you must <em>Enable</em> the %2$s service.', 'wpsso' ), __( 'Places API', 'wpsso' ), '<a href="https://console.developers.google.com/apis/library/places-backend.googleapis.com">' . __( 'Places API', 'wpsso' ) . '</a>' ) . ' ';
+
+							$text .= sprintf( __( 'Confirm that you have enabled Google\'s %1$s service by clicking the "Yes" option.', 'wpsso' ), __( 'Places API', 'wpsso' ) );
 
 							break;
 
