@@ -860,7 +860,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$page = key( $this->p->cf['*']['lib']['sitesubmenu'] );
 			}
 
-			if ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
+			if ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'nonce token validation post field missing' );
@@ -916,11 +916,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $_GET[$action_query] ) ) {
 
-				$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
+				$_SERVER[ 'REQUEST_URI' ] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 
-				$action_name = SucomUtil::sanitize_hookname( $_GET[$action_query] );
+				$action_name = SucomUtil::sanitize_hookname( $_GET[ $action_query ] );
 
-				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
+				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'nonce token validation query field missing' );
@@ -1205,13 +1205,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;
 			}
 
-			echo "\n";
-			echo '<!-- ' . $this->p->lca . ' nonce fields -->' . "\n";
+			echo "\n" . '<!-- ' . $this->p->lca . ' nonce fields -->' . "\n";
+
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );	// WPSSO_NONCE_NAME is an md5() string
+
 			echo "\n";
+
 			wp_nonce_field( 'closedpostboxes', 'closedpostboxesnonce', false );
+
 			echo "\n";
+
 			wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
+
 			echo "\n";
 
 			do_meta_boxes( $this->pagehook, 'normal', null );
@@ -3023,7 +3028,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			if ( $this->p->options['plugin_shortener'] === 'googl' && 
+			if ( $this->p->options['plugin_shortener'] === 'google-url-shortener' && 
 				! empty( $this->p->options['plugin_google_api_key'] ) &&
 					empty ( $this->p->options['plugin_google_shorten'] ) ) {
 

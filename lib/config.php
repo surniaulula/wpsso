@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.16.2-dev.4',	// Plugin version.
-					'opt_version' => '613',		// Increment when changing default option values.
+					'version'     => '4.16.2-dev.5',	// Plugin version.
+					'opt_version' => '614',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -1804,13 +1804,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * The shortener key is also its filename under lib/pro/ext/.
 				 */
 				'shorteners' => array(
-					'none'    => '[None]',
-					'bitly'   => 'Bitly (suggested)',
-					'dlmyapp' => 'DLMY.App',
-					'googl'   => 'Google',
-					'owly'    => 'Ow.ly',
-					'tinyurl' => 'TinyURL',
-					'yourls'  => 'YOURLS',
+					'none'                 => '[None]',
+					'bitly'                => 'Bitly (suggested)',	// Requires lib/pro/ext/bitly.php.
+					'dlmyapp'              => 'DLMY.App',		// Requires lib/pro/ext/dlmy.php.
+					'google-url-shortener' => 'Google',		// Requires lib/pro/ext/google-url-shortener.php.
+					'owly'                 => 'Ow.ly',		// Requires lib/pro/ext/owly.php.
+					'tinyurl'              => 'TinyURL',		// Requires lib/pro/ext/tinyurl.php.
+					'yourls'               => 'YOURLS',		// Requires lib/pro/ext/yourls.php.
 				),
 				
 				/**
@@ -2768,8 +2768,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					foreach ( self::$cf['plugin'] as $ext => $info ) {
 
 						if ( defined( strtoupper( $ext ) . '_PLUGINDIR' ) ) {
-							$pkg_lctype = is_dir( constant( strtoupper( $ext ) . 
-								'_PLUGINDIR' ) . 'lib/pro/' ) ? 'pro' : 'gpl';
+							$pkg_lctype = is_dir( constant( strtoupper( $ext ) . '_PLUGINDIR' ) . 'lib/pro/' ) ? 'pro' : 'gpl';
 						} else {
 							$pkg_lctype = '';
 						}

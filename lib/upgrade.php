@@ -369,6 +369,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
+				/**
+				 * Rename the lib/pro/ext/googl.php library file to lib/pro/ext/google-url-shortener.php.
+				 */
+				if ( $prev_version > 0 && $prev_version <= 613 ) {
+					if ( isset( $this->p->options['plugin_shortener'] ) ) {
+						if ( $this->p->options['plugin_shortener'] === 'googl' ) {
+							$this->p->options['plugin_shortener'] = 'google-url-shortener';
+						}
+					}
+				}
+
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 
 				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $this->p->lca . '_rename_site_options_keys',

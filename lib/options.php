@@ -742,11 +742,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'api_key':
 
-					$opt_val = trim( $opt_val );
+					$opt_val = trim( $opt_val );	// Removed extra spaces from copy-paste.
 
 					if ( $opt_val !== '' && preg_match( '/[^a-zA-Z0-9_\-]/', $opt_val ) ) {
 
-						$this->p->notice->err( sprintf( $error_messages['api_key'], $opt_key ) );
+						$this->p->notice->err( sprintf( $error_messages[ 'api_key' ], $opt_key ) );
 
 						$opt_val = $def_val;
 					}
