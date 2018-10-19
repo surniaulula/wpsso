@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.2-dev.4 (2018/10/19)**
+**Version 4.16.2-dev.5 (2018/10/19)**
 
 * *New Features*
 	* None.
@@ -354,6 +354,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Added a string cast for select option comparison in the SucomForm get_select() method.
 	* Added a fallback argument for the post, term, and user module get_options() method.
+	* Renamed the SuextGoogl class to SuextGoogleUrlShortener.
 
 **Version 4.16.1 (2018/10/14)**
 
@@ -483,9 +484,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.2-dev.4 =
+= 4.16.2-dev.5 =
 
-(2018/10/19) Added a new "Places API is Enabled" option under the SSO &gt; Advanced &gt; Service APIs tab (Pro version). Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
+(2018/10/19) Added a new "Places API is Enabled" option (Pro version). Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
 
 = 4.16.1 =
 
