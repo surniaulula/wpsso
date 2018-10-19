@@ -259,7 +259,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/">Why shouldn't I upload small images to the Media library?</a></li>
 </ul>
 
-<h3>Documentation and Notes</h3>
+<h3>Advanced Documentation and Notes</h3>
 
 <ul>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/modules/">About WPSSO Core Pro Integration Modules</a>

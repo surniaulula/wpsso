@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 4.9.8
-WC Tested Up To: 3.4.5
+WC Tested Up To: 3.4.7
 Stable Tag: 4.16.1
 
 Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.
@@ -264,7 +264,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 * [Why is the Open Graph title the same for every webpage?](https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-open-graph-title-the-same-for-every-webpage/)
 * [Why shouldn't I upload small images to the Media library?](https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/)
 
-<h3>Documentation and Notes</h3>
+<h3>Advanced Documentation and Notes</h3>
 
 * [About WPSSO Core Pro Integration Modules](https://wpsso.com/docs/plugins/wpsso/notes/modules/)
 	* [Author Gravatar](https://wpsso.com/docs/plugins/wpsso/notes/modules/author-gravatar/)
@@ -342,17 +342,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.2-dev.3 (2018/10/17)**
+**Version 4.16.2-dev.4 (2018/10/19)**
 
 * *New Features*
 	* None.
 * *Improvements*
+	* Added a new "Places API is Enabled" option under the SSO &gt; Advanced &gt; Service APIs tab (Pro version).
 	* Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
 	* Added a string cast for select option comparison in the SucomForm get_select() method.
-	* Added a fallback options index argument for the post, term, and user module get_options() method.
+	* Added a fallback argument for the post, term, and user module get_options() method.
 
 **Version 4.16.1 (2018/10/14)**
 
@@ -482,9 +483,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.2-dev.3 =
+= 4.16.2-dev.4 =
 
-(2018/10/17) Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
+(2018/10/19) Added a new "Places API is Enabled" option under the SSO &gt; Advanced &gt; Service APIs tab (Pro version). Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
 
 = 4.16.1 =
 
