@@ -14,7 +14,7 @@
  * Tagline: Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.
  * Requires PHP: 5.4
  * Requires At Least: 3.8
- * Tested Up To: 4.9.8
+ * Tested Up To: 5.0
  * WC Tested Up To: 3.4.7
  * Version: 4.16.2-dev.4
  *
