@@ -166,7 +166,7 @@
 <li>Bitly</li>
 <li>DLMY.App</li>
 <li>Facebook Embedded Videos</li>
-<li>Google URL Shortener</li>
+<li>Google Places</li>
 <li>Gravatar (Author Image)</li>
 <li>Ow.ly</li>
 <li>Slideshare Presentations</li>

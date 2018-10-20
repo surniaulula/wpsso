@@ -186,7 +186,7 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 		* Bitly
 		* DLMY.App
 		* Facebook Embedded Videos
-		* Google URL Shortener
+		* Google Places
 		* Gravatar (Author Image)
 		* Ow.ly
 		* Slideshare Presentations
@@ -342,19 +342,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.2-dev.5 (2018/10/20)**
+**Version 4.16.2-dev.6 (2018/10/20)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* Added a new "Places API is Enabled" option under the SSO &gt; Advanced &gt; Service APIs tab (Pro version).
+	* Removed the Google URL Shortener service, which was deprecated by Google in March of 2018.
+	* Added a new "Places API is Enabled" option for Google APIs under the SSO &gt; Advanced &gt; Service APIs tab (Pro version).
 	* Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
 	* Added a string cast for select option comparison in the SucomForm get_select() method.
 	* Added a fallback argument for the post, term, and user module get_options() method.
-	* Renamed the SuextGoogl class to SuextGoogleUrlShortener.
 
 **Version 4.16.1 (2018/10/14)**
 
@@ -484,9 +484,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.2-dev.5 =
+= 4.16.2-dev.6 =
 
-(2018/10/20) Added a new "Places API is Enabled" option (Pro version). Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
+(2018/10/20) Removed the Google URL Shortener service, which was deprecated by Google in March of 2018. Added a new "Places API is Enabled" option for Google APIs (Pro version).
 
 = 4.16.1 =
 
