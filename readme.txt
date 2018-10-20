@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.2-dev.5 (2018/10/19)**
+**Version 4.16.2-dev.5 (2018/10/20)**
 
 * *New Features*
 	* None.
@@ -486,7 +486,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.16.2-dev.5 =
 
-(2018/10/19) Added a new "Places API is Enabled" option (Pro version). Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
+(2018/10/20) Added a new "Places API is Enabled" option (Pro version). Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
 
 = 4.16.1 =
 
