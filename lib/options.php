@@ -602,10 +602,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/**
-				 * If there's no google api key, then disable the API services.
+				 * If there's no google api key, then disable the Google API services.
 				 */
 				if ( isset( $opts['plugin_google_api_key'] ) && empty( $opts['plugin_google_api_key'] ) ) {
-					$opts['plugin_google_shorten'] = 0;
 					$opts['plugin_google_places']  = 0;
 				}
 

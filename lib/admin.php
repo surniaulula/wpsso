@@ -3027,15 +3027,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 			}
-
-			if ( $this->p->options['plugin_shortener'] === 'google-url-shortener' && 
-				! empty( $this->p->options['plugin_google_api_key'] ) &&
-					empty ( $this->p->options['plugin_google_shorten'] ) ) {
-
-				$this->p->notice->warn( sprintf( __( 'Google has been selected as your preferred URL shortening service, but the %s option is not enabled.',
-					'wpsso' ), $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys',
-						_x( 'URL Shortener API is Enabled', 'option label', 'wpsso' ) ) ) );
-			}
 		}
 
 		public function update_count_notice() {

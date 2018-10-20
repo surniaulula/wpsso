@@ -52,7 +52,6 @@ _x( 'Friday', 'option value', 'wpsso' );
 _x( 'Full Time', 'option value', 'wpsso' );
 _x( 'General', 'lib file description', 'wpsso' );
 _x( 'Google+ Business Page URL', 'option value', 'wpsso' );
-_x( 'Google', 'option value', 'wpsso' );
 _x( 'Google+ URL', 'option value', 'wpsso' );
 _x( 'Header', 'option value', 'wpsso' );
 _x( 'Head Markup', 'option label', 'wpsso' );

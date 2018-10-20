@@ -1363,14 +1363,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_google_shorten':
-
-							$text = sprintf( __( 'In order to use Google\'s %1$s service, you must <em>Enable</em> the %2$s service.', 'wpsso' ), __( 'URL Shortener API', 'wpsso' ), '<a href="https://console.developers.google.com/apis/library/urlshortener.googleapis.com">' . __( 'URL Shortener API', 'wpsso' ) . '</a>' ) . ' ';
-
-							$text .= sprintf( __( 'Confirm that you have enabled Google\'s %1$s service by clicking the "Yes" option.', 'wpsso' ), __( 'URL Shortener API', 'wpsso' ) );
-
-							break;
-
 						case 'tooltip-plugin_google_places':
 
 							$text = sprintf( __( 'In order to use Google\'s %1$s service, you must <em>Enable</em> the %2$s service.', 'wpsso' ), __( 'Places API', 'wpsso' ), '<a href="https://console.developers.google.com/apis/library/places-backend.googleapis.com">' . __( 'Places API', 'wpsso' ) . '</a>' ) . ' ';

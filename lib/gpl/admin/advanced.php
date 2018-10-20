@@ -455,10 +455,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Google Project API Key', 'option label', 'wpsso' ), '', 'plugin_google_api_key' ) . 
 			'<td class="blank mono">' . $this->p->options['plugin_google_api_key'] . '</td>';
 
-			$table_rows['plugin_google_shorten'] = $tr_html[ 'google' ] . 
-			$form->get_th_html( _x( 'URL Shortener API is Enabled', 'option label', 'wpsso' ), '', 'plugin_google_shorten' ) . 
-			'<td class="blank">' . _x( $this->p->cf[ 'form' ][ 'yes_no' ][ $this->p->options[ 'plugin_google_shorten' ] ], 'option value', 'wpsso' ) . '</td>';
-
 			$table_rows['plugin_google_places'] = $tr_html[ 'google' ] . 
 			$form->get_th_html( _x( 'Places API is Enabled', 'option label', 'wpsso' ), '', 'plugin_google_places' ) . 
 			'<td class="blank">' . _x( $this->p->cf[ 'form' ][ 'yes_no' ][ $this->p->options[ 'plugin_google_places' ] ], 'option value', 'wpsso' ) . '</td>';
