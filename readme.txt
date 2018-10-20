@@ -342,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.2-dev.6 (2018/10/20)**
+**Version 4.16.2 (2018/10/20)**
 
 * *New Features*
 	* None.
@@ -484,7 +484,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.2-dev.6 =
+= 4.16.2 =
 
 (2018/10/20) Removed the Google URL Shortener service, which was deprecated by Google in March of 2018. Added a new "Places API is Enabled" option for Google APIs (Pro version).
 
