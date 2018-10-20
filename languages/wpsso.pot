@@ -781,7 +781,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:3037 lib/gpl/admin/advanced.php:459
-#: lib/pro/admin/advanced.php:455 lib/pro/util/shorten.php:365
+#: lib/pro/admin/advanced.php:455 lib/pro/util/shorten.php:362
 msgctxt "option label"
 msgid "URL Shortener API is Enabled"
 msgstr ""
@@ -2419,13 +2419,13 @@ msgid "Bitly URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:419 lib/pro/admin/advanced.php:415
-#: lib/pro/util/shorten.php:286
+#: lib/pro/util/shorten.php:283
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:424 lib/pro/admin/advanced.php:420
-#: lib/pro/util/shorten.php:301
+#: lib/pro/util/shorten.php:298
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
@@ -2451,7 +2451,7 @@ msgid "DLMY.App URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:445 lib/pro/admin/advanced.php:441
-#: lib/pro/util/shorten.php:330
+#: lib/pro/util/shorten.php:327
 msgctxt "option label"
 msgid "DLMY.App API Key"
 msgstr ""
@@ -2462,7 +2462,7 @@ msgid "Google APIs"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:455 lib/pro/admin/advanced.php:451
-#: lib/pro/util/shorten.php:354
+#: lib/pro/util/shorten.php:351
 msgctxt "option label"
 msgid "Google Project API Key"
 msgstr ""
@@ -2478,7 +2478,7 @@ msgid "Ow.ly URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:473 lib/pro/admin/advanced.php:469
-#: lib/pro/util/shorten.php:388
+#: lib/pro/util/shorten.php:385
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
@@ -2489,7 +2489,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:483 lib/pro/admin/advanced.php:479
-#: lib/pro/util/shorten.php:436
+#: lib/pro/util/shorten.php:433
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
@@ -5656,32 +5656,32 @@ msgid ""
 "activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/pro/util/shorten.php:268
+#: lib/pro/util/shorten.php:265
 msgid "The URL shortening library file \"%s\" is missing and required."
 msgstr ""
 
-#: lib/pro/util/shorten.php:285 lib/pro/util/shorten.php:329
-#: lib/pro/util/shorten.php:353 lib/pro/util/shorten.php:387
-#: lib/pro/util/shorten.php:435
+#: lib/pro/util/shorten.php:282 lib/pro/util/shorten.php:326
+#: lib/pro/util/shorten.php:350 lib/pro/util/shorten.php:384
+#: lib/pro/util/shorten.php:432
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: lib/pro/util/shorten.php:297
+#: lib/pro/util/shorten.php:294
 msgid ""
 "The \"%1$s\" and \"%2$s\" option values are empty &mdash; at least one "
 "option value is required."
 msgstr ""
 
-#: lib/pro/util/shorten.php:302
+#: lib/pro/util/shorten.php:299
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr ""
 
-#: lib/pro/util/shorten.php:364
+#: lib/pro/util/shorten.php:361
 msgid "The \"%s\" option is not enabled."
 msgstr ""
 
-#: lib/pro/util/shorten.php:479
+#: lib/pro/util/shorten.php:476
 msgid ""
 "Incomplete and/or missing API credentials for the \"%s\" URL shortening "
 "service."
