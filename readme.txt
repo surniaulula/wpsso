@@ -186,7 +186,6 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 		* Bitly
 		* DLMY.App
 		* Facebook Embedded Videos
-		* Google Places
 		* Gravatar (Author Image)
 		* Ow.ly
 		* Slideshare Presentations
@@ -487,8 +486,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.16.2 =
 
 (2018/10/20) Removed the Google URL Shortener service, which was deprecated by Google in March of 2018. Added a new "Places API is Enabled" option for Google APIs (Pro version).
-
-= 4.16.1 =
-
-(2018/10/14) Added new SucomUtil decode_url_add_query() and unparse_url() static methods.
 
