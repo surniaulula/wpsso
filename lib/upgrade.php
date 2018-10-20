@@ -372,9 +372,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				/**
 				 * The Google URL Shortener was discontinued by Google in March 2018.
 				 */
-				if ( $prev_version > 0 && $prev_version <= 613 ) {
+				if ( $prev_version > 0 && $prev_version <= 614 ) {
 					if ( isset( $this->p->options['plugin_shortener'] ) ) {
-						if ( $this->p->options['plugin_shortener'] === 'googl' ) {
+						if ( $this->p->options['plugin_shortener'] === 'googl' ||
+							$this->p->options['plugin_shortener'] === 'google-url-shortener' ) {
+
 							$this->p->options['plugin_shortener'] = 'none';
 						}
 					}

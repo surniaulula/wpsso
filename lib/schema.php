@@ -3671,7 +3671,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ret = array_merge( $ret, $this->get_single_image_noscript( $mod, $og_single_image ) );
 			}
 
-			if ( ! empty( $mt_og[$og_type_id . ':rating:average'] ) ) {	// Example: "product:rating:average".
+			if ( ! empty( $mt_og[ $og_type_id . ':rating:average' ] ) ) {	// Example: "product:rating:average".
 				$ret = array_merge( $ret, $this->get_aggregate_rating_noscript( $mod, $og_type_id, $mt_og ) );
 			}
 
@@ -3781,8 +3781,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Aggregate rating needs at least one rating or review count.
 			 */
-			if ( empty( $mt_og[$og_type_id . ':rating:average'] ) ||
-				( empty( $mt_og[$og_type_id . ':rating:count'] ) && empty( $mt_og[$og_type_id . ':review:count'] ) ) ) {
+			if ( empty( $mt_og[ $og_type_id . ':rating:average' ] ) ||
+				( empty( $mt_og[ $og_type_id . ':rating:count' ] ) && empty( $mt_og[ $og_type_id . ':review:count' ] ) ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: rating average and/or counts are empty' );

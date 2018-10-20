@@ -285,8 +285,6 @@
 
 'wpsso_sharing_url' ( $url, $mod, $add_page, $src_id )
 
-'wpsso_shorten_url' ( true, $long_url, $service_key )
-
 'wpsso_size_info_'.$size_info['name'] ( $size_info, $post_id )
 
 'wpsso_social_accounts' ( (array) $social_accounts )
