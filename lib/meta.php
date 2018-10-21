@@ -56,7 +56,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'schema_add_type_url' => 'schema_addl_type_url_0',
 				),
 				569 => array(
-					'schema_add_type_url' => 'schema_addl_type_url',	// option modifiers are preserved
+					'schema_add_type_url' => 'schema_addl_type_url',	// Option modifiers are preserved.
+				),
+				615 => array(
+					'org_type' => 'org_schema_type',
 				),
 			),
 		);

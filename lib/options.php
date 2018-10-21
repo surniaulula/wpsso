@@ -1401,13 +1401,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Options that cannot be blank.
 				 */
-				case 'site_org_type':
-				case 'site_place_id':
+				case 'site_org_schema_type':	// 'organization' or a sub-type.
+				case 'site_place_id':		// 'none' or place ID.
 				case 'og_author_field':
 				case 'seo_author_field':
-				case 'og_def_img_id_pre': 
-				case 'og_img_id_pre': 
-				case 'plugin_shortener':		// 'none' or name of shortener
+				case 'og_def_img_id_pre': 	// 'wp' or 'ngg' media library name.
+				case 'og_img_id_pre': 		// 'wp' or 'ngg' media library name.
+				case 'plugin_shortener':	// 'none' or name of shortener
 				case 'product_avail':
 				case 'product_condition':
 				case 'product_gender':

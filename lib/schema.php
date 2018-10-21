@@ -1226,12 +1226,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/**
 			 * Include WebSite, Organization and/or Person markup on the home page.
-			 * Note that the custom 'site_org_type' may be a sub-type of organization, 
-			 * and may be filtered as a local.business.
+			 * Note that the custom 'site_org_schema_type' may be a sub-type of
+			 * organization, and may be filtered as a local.business.
 			 */
 			if ( $mod['is_home'] ) {	// Static or index home page.
 
-				$site_org_type_id = $this->p->options['site_org_type'];	// Organization or a sub-type of organization.
+				$site_org_type_id = $this->p->options[ 'site_org_schema_type' ];	// Organization or a sub-type of organization.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'organization schema type id is ' . $site_org_type_id );
@@ -1240,7 +1240,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$page_type_ids['website'] = isset( $this->p->options['schema_add_home_website'] ) ?
 					$this->p->options['schema_add_home_website'] : 1;
 
-				$page_type_ids[$site_org_type_id] = isset( $this->p->options['schema_add_home_organization'] ) ?
+				$page_type_ids[ $site_org_type_id ] = isset( $this->p->options['schema_add_home_organization'] ) ?
 					$this->p->options['schema_add_home_organization'] : 1;
 
 				$page_type_ids['person'] = isset( $this->p->options['schema_add_home_person'] ) ?
@@ -1860,7 +1860,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Example: 'schema_logo_url:width#fr_FR'.
 			 */
 			return array(
-				'org_type'              => $wpsso->options['site_org_type'],
 				'org_url'               => SucomUtil::get_site_url( $wpsso->options, $mixed ),
 				'org_name'              => SucomUtil::get_site_name( $wpsso->options, $mixed ),
 				'org_name_alt'          => SucomUtil::get_site_name_alt( $wpsso->options, $mixed ),
@@ -1871,6 +1870,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'org_banner_url'        => SucomUtil::get_key_value( 'schema_banner_url', $wpsso->options, $mixed ),
 				'org_banner_url:width'  => SucomUtil::get_key_value( 'schema_banner_url:width', $wpsso->options, $mixed ),
 				'org_banner_url:height' => SucomUtil::get_key_value( 'schema_banner_url:height', $wpsso->options, $mixed ),
+				'org_schema_type'       => $wpsso->options['site_org_schema_type'],
 				'org_place_id'          => $wpsso->options['site_place_id'],
 				'org_sameas'            => $org_sameas,
 			);
@@ -3006,7 +3006,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $org_type_id, $org_type_url ) = self::get_single_type_id_url( $json_data, $org_opts, 'org_type', 'organization', $list_element );
+			list( $org_type_id, $org_type_url ) = self::get_single_type_id_url( $json_data, $org_opts, 'org_schema_type', 'organization', $list_element );
 
 			$ret = self::get_schema_type_context( $org_type_url );
 
@@ -3056,10 +3056,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					if ( $wpsso->notice->is_admin_pre_notices() && ( ! $mod['is_post'] || $mod['post_status'] === 'publish' ) ) {
+
 						if ( $logo_key === 'org_logo_url' ) {
-							$wpsso->notice->err( sprintf( __( 'The "%1$s" Organization Logo image is missing and required for the Schema %2$s markup.', 'wpsso' ), $ret['name'], $org_type_url ) );
+
+							$error_msg = __( 'The "%1$s" Organization Logo image is missing and required for the Schema %2$s markup.',
+								'wpsso' );
+
+							$wpsso->notice->err( sprintf( $error_msg, $ret['name'], $org_type_url ) );
+
 						} elseif ( $logo_key === 'org_banner_url' ) {
-							$wpsso->notice->err( sprintf( __( 'The "%1$s" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup.', 'wpsso' ), $ret['name'], $org_type_url ) );
+
+							$error_msg = __( 'The "%1$s" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup.',
+								'wpsso' );
+
+							$wpsso->notice->err( sprintf( $error_msg, $ret['name'], $org_type_url ) );
 						}
 					}
 				}
@@ -3114,6 +3124,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $org_type_id ) && $org_type_id !== 'organization' && 
 				$wpsso->schema->is_schema_type_child( $org_type_id, 'local.business' ) ) {
+
 				$wpsso->schema->organization_to_localbusiness( $ret );
 			}
 

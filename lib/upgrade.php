@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'og_site_name'                   => 'site_name',
 					'og_site_description'            => 'site_desc',
 					'org_url'                        => 'site_url',
-					'org_type'                       => 'site_org_type',
+					'org_type'                       => 'site_org_schema_type',
 					'org_place_id'                   => 'site_place_id',
 					'link_def_author_id'             => '',
 					'link_def_author_on_index'       => '',
@@ -187,6 +187,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				609 => array(
 					'p_author_name' => '',
 				),
+				615 => array(
+					'site_org_type' => 'site_org_schema_type',
+				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG
 				2 => array(
@@ -272,7 +275,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				/**
 				 * Check for schema type IDs to be renamed.
 				 */
-				$keys_preg = 'schema_type_.*|site_org_type|org_type|plm_place_schema_type';
+				$keys_preg = 'schema_type_.*|site_org_schema_type|org_schema_type|plm_place_schema_type';
 
 				foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $opts ) as $key => $val ) {
 					if ( ! empty( $this->p->cf['head']['schema_renamed'][$val] ) ) {

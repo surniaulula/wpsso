@@ -413,7 +413,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-site_org_type':
+						case 'tooltip-site_org_schema_type':
 
 							$text = __( 'You may select a more descriptive Schema type from the Organization sub-types (default is Organization).', 'wpsso' );
 							break;

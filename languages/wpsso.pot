@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.3-dev.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -385,7 +385,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:2235 lib/pro/media/slideshare.php:200
-#: lib/pro/media/vimeo.php:169 lib/pro/media/wistia.php:333 lib/util.php:1758
+#: lib/pro/media/vimeo.php:169 lib/pro/media/wistia.php:333 lib/util.php:1757
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -2356,7 +2356,7 @@ msgid "Clear All Caches on Deactivate"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:344 lib/pro/admin/advanced.php:342
-#: lib/util.php:1204
+#: lib/util.php:1203
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr ""
@@ -2601,14 +2601,14 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:124 lib/gpl/admin/post.php:145 lib/meta.php:245
-#: lib/meta.php:270 lib/pro/admin/meta.php:131 lib/pro/admin/post.php:145
+#: lib/gpl/admin/meta.php:124 lib/gpl/admin/post.php:145 lib/meta.php:248
+#: lib/meta.php:273 lib/pro/admin/meta.php:131 lib/pro/admin/post.php:145
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:132 lib/gpl/admin/post.php:154 lib/meta.php:249
-#: lib/meta.php:274 lib/pro/admin/meta.php:138 lib/pro/admin/post.php:153
+#: lib/gpl/admin/meta.php:132 lib/gpl/admin/post.php:154 lib/meta.php:252
+#: lib/meta.php:277 lib/pro/admin/meta.php:138 lib/pro/admin/post.php:153
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -2773,7 +2773,7 @@ msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gpl/admin/post.php:249 lib/meta.php:241 lib/pro/admin/post.php:239
+#: lib/gpl/admin/post.php:249 lib/meta.php:244 lib/pro/admin/post.php:239
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -2827,7 +2827,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:164 lib/loader.php:190 lib/post.php:265 lib/register.php:278
-#: lib/term.php:249 lib/user.php:215 lib/util.php:367 lib/util.php:3000
+#: lib/term.php:249 lib/user.php:215 lib/util.php:367 lib/util.php:2999
 msgid "%s warning:"
 msgstr ""
 
@@ -3446,7 +3446,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:694 lib/util.php:3272
+#: lib/messages.php:694 lib/util.php:3271
 msgid "No options available."
 msgstr ""
 
@@ -4747,7 +4747,7 @@ msgid ""
 "by the %s plugin."
 msgstr ""
 
-#: lib/messages.php:2248 lib/meta.php:154
+#: lib/messages.php:2248 lib/meta.php:157
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
@@ -5015,112 +5015,112 @@ msgid ""
 "locale</a> to define alternate values for different languages."
 msgstr ""
 
-#: lib/meta.php:153
+#: lib/meta.php:156
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/meta.php:155
+#: lib/meta.php:158
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/meta.php:156
+#: lib/meta.php:159
 msgctxt "metabox tab"
 msgid "Head"
 msgstr ""
 
-#: lib/meta.php:157
+#: lib/meta.php:160
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/meta.php:226
+#: lib/meta.php:229
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:231
+#: lib/meta.php:234
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:236
+#: lib/meta.php:239
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:253 lib/meta.php:280
+#: lib/meta.php:256 lib/meta.php:283
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/meta.php:285
+#: lib/meta.php:288
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:414
+#: lib/meta.php:417
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:416
+#: lib/meta.php:419
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:420
+#: lib/meta.php:423
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:422
+#: lib/meta.php:425
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:426
+#: lib/meta.php:429
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:428
+#: lib/meta.php:431
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:432
+#: lib/meta.php:435
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:434
+#: lib/meta.php:437
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:438
+#: lib/meta.php:441
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:440
+#: lib/meta.php:443
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:445
+#: lib/meta.php:448
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:447
+#: lib/meta.php:450
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:827
+#: lib/meta.php:830
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -5308,7 +5308,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:251 lib/term.php:235 lib/user.php:201 lib/util.php:353
-#: lib/util.php:2972
+#: lib/util.php:2971
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5347,7 +5347,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:943 lib/util.php:1672
+#: lib/post.php:943 lib/util.php:1671
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -5556,12 +5556,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:195 lib/pro/media/vimeo.php:164
-#: lib/pro/media/wistia.php:328 lib/util.php:1753
+#: lib/pro/media/wistia.php:328 lib/util.php:1752
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/pro/media/slideshare.php:197 lib/pro/media/vimeo.php:166
-#: lib/pro/media/wistia.php:330 lib/util.php:1755
+#: lib/pro/media/wistia.php:330 lib/util.php:1754
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
@@ -5686,19 +5686,19 @@ msgstr ""
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3060
+#: lib/schema.php:3062
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3062
+#: lib/schema.php:3069
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3325
+#: lib/schema.php:3336
 msgid "adding schema for place"
 msgstr ""
 
@@ -6153,72 +6153,72 @@ msgid ""
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1149
+#: lib/util.php:1148
 msgid ""
 "%s cached files, transient cache, column meta, and WordPress object cache "
 "have all been cleared."
 msgstr ""
 
-#: lib/util.php:1154
+#: lib/util.php:1153
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1189 lib/util.php:1319
+#: lib/util.php:1188 lib/util.php:1318
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/util.php:1195
+#: lib/util.php:1194
 msgid ""
 "A background task will begin shortly to refresh the post, term, and user "
 "cache objects."
 msgstr ""
 
-#: lib/util.php:1206
+#: lib/util.php:1205
 msgid ""
 "All cache objects will be re-created as they are needed (the %s option is "
 "disabled)."
 msgstr ""
 
-#: lib/util.php:1313
+#: lib/util.php:1312
 msgid ""
 "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d "
 "users have been refreshed."
 msgstr ""
 
-#: lib/util.php:1503
+#: lib/util.php:1502
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1530
+#: lib/util.php:1529
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1589
+#: lib/util.php:1588
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1659
+#: lib/util.php:1658
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1685
+#: lib/util.php:1684
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1805
+#: lib/util.php:1804
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:2975
+#: lib/util.php:2974
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2992
+#: lib/util.php:2991
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6227,29 +6227,29 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2992
+#: lib/util.php:2991
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3299
+#: lib/util.php:3298
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3302
+#: lib/util.php:3301
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3307
+#: lib/util.php:3306
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3310
+#: lib/util.php:3309
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
