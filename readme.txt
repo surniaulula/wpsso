@@ -341,6 +341,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.16.3-dev.6 (2018/10/21)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* Renamed the 'site_org_type' option key to 'site_org_schema_type' for standardization.
+
 **Version 4.16.2 (2018/10/20)**
 
 * *New Features*
@@ -482,6 +493,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored SucomNotice methods to handle / store notices for different user IDs than the current user ID.
 
 == Upgrade Notice ==
+
+= 4.16.3-dev.6 =
+
+(2018/10/21) Renamed the 'site_org_type' option key to 'site_org_schema_type' for standardization.
 
 = 4.16.2 =
 
