@@ -341,7 +341,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.3-dev.6 (2018/10/21)**
+**Version 4.16.3-dev.7 (2018/10/22)**
 
 * *New Features*
 	* None.
@@ -350,7 +350,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
+	* Added a new WpssoPage get_the_text() method.
 	* Renamed the 'site_org_type' option key to 'site_org_schema_type' for standardization.
+	* Renamed the following filters:
+		* 'wpsso_filter_content' to 'wpsso_can_filter_content'.
+		* 'wpsso_filter_excerpt' to 'wpsso_can_filter_excerpt'.
+		* 'wpsso_filter_title' to 'wpsso_can_filter_title'.
 
 **Version 4.16.2 (2018/10/20)**
 
@@ -494,9 +499,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.3-dev.6 =
+= 4.16.3-dev.7 =
 
-(2018/10/21) Renamed the 'site_org_type' option key to 'site_org_schema_type' for standardization.
+(2018/10/22) Renamed the 'site_org_type' option key to 'site_org_schema_type' for standardization.
 
 = 4.16.2 =
 
