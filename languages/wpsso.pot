@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.3-dev.6\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.3-dev.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2264,7 +2264,7 @@ msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:231 lib/media.php:476 lib/media.php:636
-#: lib/media.php:1495 lib/pro/admin/advanced.php:232
+#: lib/media.php:1501 lib/pro/admin/advanced.php:232
 #: lib/pro/util/checkimgdims.php:92
 msgid "Media Library"
 msgstr ""
@@ -2893,26 +2893,26 @@ msgid ""
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1024
+#: lib/media.php:1027
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1501 lib/pro/media/ngg.php:132
+#: lib/media.php:1507 lib/pro/media/ngg.php:132
 #: lib/pro/util/checkimgdims.php:94
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1511
+#: lib/media.php:1517
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1580
+#: lib/media.php:1586
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1608
+#: lib/media.php:1614
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -5264,8 +5264,8 @@ msgstr ""
 msgid "Please correct the banner image at %s."
 msgstr ""
 
-#: lib/page.php:346 lib/page.php:348 lib/page.php:614 lib/page.php:616
-#: lib/page.php:690
+#: lib/page.php:346 lib/page.php:348 lib/page.php:623 lib/page.php:625
+#: lib/page.php:699
 msgid "%s Archive"
 msgstr ""
 
@@ -5273,35 +5273,35 @@ msgstr ""
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:673
+#: lib/page.php:682
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:680
+#: lib/page.php:689
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:701
+#: lib/page.php:710
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:708
+#: lib/page.php:717
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:712
+#: lib/page.php:721
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:716
+#: lib/page.php:725
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:720
+#: lib/page.php:729
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:758 lib/pro/social/buddypress.php:452
+#: lib/page.php:767 lib/pro/social/buddypress.php:664
 msgid "No Description"
 msgstr ""
 
@@ -5469,25 +5469,25 @@ msgstr ""
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:779
+#: lib/pro/ecom/woocommerce.php:777
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:782
+#: lib/pro/ecom/woocommerce.php:780
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:991
+#: lib/pro/ecom/woocommerce.php:989
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:993
+#: lib/pro/ecom/woocommerce.php:991
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/pro/ecom/woocommerce.php:996
+#: lib/pro/ecom/woocommerce.php:994
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -5511,37 +5511,37 @@ msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:98 lib/pro/forum/bbpress.php:185
+#: lib/pro/forum/bbpress.php:100 lib/pro/forum/bbpress.php:191
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:194
+#: lib/pro/forum/bbpress.php:200
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:200
+#: lib/pro/forum/bbpress.php:206
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:206
+#: lib/pro/forum/bbpress.php:212
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:212
+#: lib/pro/forum/bbpress.php:218
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:218
+#: lib/pro/forum/bbpress.php:224
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
 
-#: lib/pro/media/ngg.php:131 lib/pro/media/ngg.php:1270
+#: lib/pro/media/ngg.php:131 lib/pro/media/ngg.php:1274
 msgid "NextGEN Gallery"
 msgstr ""
 

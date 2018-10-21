@@ -771,11 +771,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'num'              => $num,
-					'size_name'        => $size_name,
-					'mod'              => $mod,
-					'check_dupes'      => $check_dupes,
-					'strlen( content )' => strlen( $content ),
+					'num'             => $num,
+					'size_name'       => $size_name,
+					'mod'             => $mod,
+					'check_dupes'     => $check_dupes,
+					'strlen(content)' => strlen( $content ),
 				) );
 			}
 
@@ -799,8 +799,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * Allow empty post IDs to get additional content from filter hooks.
 			 */
 			if ( empty( $content ) ) {
+
 				$content = $this->p->page->get_the_content( $mod );
+
 				$content_passed = false;
+
 			} else {
 				$content_passed = true;
 			}
@@ -1133,8 +1136,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * Allow empty post IDs to get additional content from filter hooks.
 			 */
 			if ( empty( $content ) ) {
+
 				$content = $this->p->page->get_the_content( $mod );
+
 				$content_passed = false;
+
 			} else {
 				$content_passed = true;
 			}

@@ -54,8 +54,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$tc_desc_max_len     = $this->p->options['tc_desc_len'];
 			$schema_desc_max_len = $this->p->options['schema_desc_len'];
 
-			$def_og_type     = $this->p->og->get_mod_og_type( $mod, false, false );	// $get_type_ns is false, $use_mod_opts is false.
-			$def_art_section = $this->p->page->get_article_section( $mod['id'], true, false );	// $allow_none is true, $use_mod_opts is false.
+			$def_og_type     = $this->p->og->get_mod_og_type( $mod, $get_type_ns = false, $use_mod_opts = false );
+			$def_art_section = $this->p->page->get_article_section( $mod['id'], $allow_none = true, $use_mod_opts = false );
 			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, false, $do_encode, 'none' );
 			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, true, $do_encode, 'none' );
 			$def_seo_desc    = $add_meta_name_desc ? $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, false ) : '';

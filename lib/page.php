@@ -125,7 +125,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Skip if no metadata index / key name.
+			 * Check for custom caption if a metadata index key is provided.
 			 */
 			if ( ! empty( $md_idx ) ) {
 
@@ -276,7 +276,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Skip if no metadata index / key name.
+			 * Check for custom title if a metadata index key is provided.
 			 */
 			if ( ! empty( $md_idx ) ) {
 
@@ -436,7 +436,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Apply title filter before adjusting it's length.
+			 * Apply a title filter before adjusting it's length.
 			 */
 			$title_text = apply_filters( $this->p->lca . '_title_pre_limit', $title_text );
 
@@ -446,17 +446,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( $max_len > 0 ) {
 
 				if ( $this->p->avail['seo']['*'] === false ) {	// apply seo-like title modifications
+
 					global $wpsso_paged;
+
 					if ( is_numeric( $wpsso_paged ) ) {
 						$paged = $wpsso_paged;
 					} else {
 						$paged = get_query_var( 'paged' );
 					}
+
 					if ( $paged > 1 ) {
+
 						if ( ! empty( $sep ) ) {
 							$paged_suffix .= $sep . ' ';
 						}
+
 						$paged_suffix .= sprintf( 'Page %s', $paged );
+
 						$max_len = $max_len - strlen( $paged_suffix ) - 1;
 					}
 				}
@@ -477,7 +483,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( true === $do_encode ) {
-				foreach ( array( 'title_text', 'sep' ) as $var ) {	// loop through variables
+				foreach ( array( 'title_text', 'sep' ) as $var ) {	// Loop through variables.
 					$$var = SucomUtil::encode_html_emoji( $$var );
 				}
 			}
@@ -497,6 +503,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$add_hashtags = true, $do_encode = true, $md_idx = 'og_desc' ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'render description' );	// begin timer
 
 				$this->p->debug->log_args( array(
@@ -515,9 +522,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
+
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
@@ -533,7 +542,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$hashtags  = '';
 
 			/**
-			 * Skip if no metadata index / key name.
+			 * Check for custom description if a metadata index key is provided.
 			 */
 			if ( ! empty( $md_idx ) ) {
 
@@ -759,9 +768,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			if ( $max_len > 0 ) {
+			/**
+			 * Apply a description filter before adjusting it's length.
+			 */
+			$desc_text = apply_filters( $this->p->lca . '_description_pre_limit', $desc_text );
 
-				$desc_text = apply_filters( $this->p->lca . '_description_pre_limit', $desc_text );
+			/**
+			 * Check description against string length limits.
+			 */
+			if ( $max_len > 0 ) {
 
 				if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
 					$max_len = $max_len - strlen( $hashtags ) - 1;
@@ -828,6 +843,49 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $excerpt_text;
 		}
 
+		/**
+		 * Returns the content text, stripped of all HTML tags.
+		 */
+		public function get_the_text( array $mod, $read_cache = true, $md_idx = '' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * Check for custom text if a metadata index key is provided.
+			 */
+			if ( ! empty( $md_idx ) ) {
+
+				$text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], $md_idx ) : null;
+
+				if ( $this->p->debug->enabled ) {
+					if ( empty( $text ) ) {
+						$this->p->debug->log( 'no custom text found for md_idx' );
+					} else {
+						$this->p->debug->log( 'custom text = "' . $text . '"' );
+					}
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'custom text skipped: no md_idx value' );
+			}
+
+			/**
+			 * If there's no custom text, then go ahead and generate the text value.
+			 */
+			if ( empty( $text ) ) {
+
+				$text = $this->get_the_content( $mod, $read_cache, $md_idx );
+
+				$text = $this->p->util->cleanup_html_tags( $text, true, $this->p->options['plugin_use_img_alt'] );
+			}
+
+			$text = apply_filters( $this->p->lca . '_text', $text, $mod, $read_cache, $md_idx );
+
+			return $text;
+		}
+
 		public function get_the_content( array $mod, $read_cache = true, $md_idx = '' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -840,7 +898,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$sharing_url    = $this->p->util->get_sharing_url( $mod );
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
-			$filter_content = apply_filters( $this->p->lca . '_filter_content', $filter_content, $mod );
+			$filter_content = apply_filters( $this->p->lca . '_can_filter_content', $filter_content, $mod );
 
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
 
@@ -901,31 +959,33 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'initializing new wp cache element' );
 			}
 
-			$cache_array[$cache_index] = false;		// Initialize the cache element.
+			$cache_array[ $cache_index ] = false;	// Initialize the cache element.
 
-			$content_text =& $cache_array[$cache_index];	// Reference the cache element.
-			$content_text = apply_filters( $this->p->lca . '_content_seed', '', $mod, $read_cache, $md_idx );
+			$content =& $cache_array[$cache_index];	// Reference the cache element.
+			$content = apply_filters( $this->p->lca . '_content_seed', '', $mod, $read_cache, $md_idx );
 
-			if ( $content_text === false ) {
+			if ( $content === false ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'content seed is false' );
 				}
 
-			} elseif ( ! empty( $content_text ) ) {
+			} elseif ( ! empty( $content ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'content seed is "' . $content_text . '"' );
+					$this->p->debug->log( 'content seed is "' . $content . '"' );
 				}
 
 			} elseif ( $mod['is_post'] ) {
 
-				$content_text = get_post_field( 'post_content', $mod['id'] );
+				$content = get_post_field( 'post_content', $mod['id'] );
 
-				if ( empty( $content_text ) ) {
+				if ( empty( $content ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: no post_content for post id ' . $mod['id'] );
 					}
+
 					return false;
 				}
 			}
@@ -933,12 +993,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Save content length (for comparison) before making changes.
 			 */
-			$strlen_before_filters = strlen( $content_text );
+			$strlen_before_filters = strlen( $content );
 
 			/**
 			 * Remove singlepics, which we detect and use before-hand.
 			 */
-			$content_text = preg_replace( '/\[singlepic[^\]]+\]/', '', $content_text, -1, $count );
+			$content = preg_replace( '/\[singlepic[^\]]+\]/', '', $content, -1, $count );
 
 			if ( $count > 0 ) {
 				if ( $this->p->debug->enabled ) {
@@ -951,7 +1011,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$hook_bfo  = SucomUtil::get_const( 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT', true );
 				$mtime_max = SucomUtil::get_const( 'WPSSO_CONTENT_FILTERS_MAX_TIME', 1.50 );
 
-				$content_text = $this->p->util->safe_apply_filters( array( 'the_content', $content_text ), $mod, $mtime_max, $hook_bfo );
+				$content = $this->p->util->safe_apply_filters( array( 'the_content', $content ), $mod, $mtime_max, $hook_bfo );
 
 				/**
 				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.
@@ -963,32 +1023,32 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'the_content filters skipped (shortcodes not expanded)' );
 			}
 
-			$content_text = preg_replace( '/[\s\n\r]+/s', ' ', $content_text );		// put everything on one line
-			$content_text = preg_replace( '/^.*<!--' . $this->p->lca . '-content-->(.*)<!--\/' . 
-				$this->p->lca . '-content-->.*$/', '$1', $content_text );
+			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// put everything on one line
+			$content = preg_replace( '/^.*<!--' . $this->p->lca . '-content-->(.*)<!--\/' . 
+				$this->p->lca . '-content-->.*$/', '$1', $content );
 
 			/**
 			 * Remove "Google+" link and text.
 			 */
-			if ( strpos( $content_text, '>Google+<' ) !== false ) {
-				$content_text = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content_text );
+			if ( strpos( $content, '>Google+<' ) !== false ) {
+				$content = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content );
 			}
 
-			if ( strpos( $content_text, '<p class="wp-caption-text">' ) !== false ) {
+			if ( strpos( $content, '<p class="wp-caption-text">' ) !== false ) {
 
 				$caption_prefix = isset( $this->p->options['plugin_p_cap_prefix'] ) ?
 					$this->p->options['plugin_p_cap_prefix'] : 'Caption:';
 
 				if ( ! empty( $caption_prefix ) ) {
-					$content_text = preg_replace( '/<p class="wp-caption-text">/', '${0}' . $caption_prefix . ' ', $content_text );
+					$content = preg_replace( '/<p class="wp-caption-text">/', '${0}' . $caption_prefix . ' ', $content );
 				}
 			}
 
-			if ( strpos( $content_text, ']]>' ) !== false ) {
-				$content_text = str_replace( ']]>', ']]&gt;', $content_text );
+			if ( strpos( $content, ']]>' ) !== false ) {
+				$content = str_replace( ']]>', ']]&gt;', $content );
 			}
 
-			$strlen_after_filters = strlen( $content_text );
+			$strlen_after_filters = strlen( $content );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'content strlen before ' . $strlen_before_filters . ' and after changes / filters ' . $strlen_after_filters );
@@ -997,7 +1057,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Apply filters before caching.
 			 */
-			$content_text = apply_filters( $this->p->lca . '_content', $content_text, $mod, $read_cache, $md_idx );
+			$content = apply_filters( $this->p->lca . '_content', $content, $mod, $read_cache, $md_idx );
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1010,7 +1070,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			return $content_text;
+			return $content;
 		}
 
 		public function get_article_section( $post_id, $allow_none = false, $use_mod_opts = true ) {

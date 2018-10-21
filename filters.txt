@@ -41,7 +41,7 @@
 
 'wpsso_add_schema_meta_array' ( $bool )
 
-'wpsso_archive_page_description' ( $desc, $mod )
+'wpsso_archive_page_description' ( $desc_text, $mod )
 
 'wpsso_archive_page_url' ( $url, $mod, $add_page, $src_id )
 
@@ -57,7 +57,7 @@
 
 'wpsso_cache_expire_article_topics' ( $secs )
 
-'wpsso_cache_expire_content_text' ( $secs )
+'wpsso_cache_expire_content' ( $secs )
 
 'wpsso_cache_expire_head_array' ( $secs )
 
@@ -69,6 +69,12 @@
 
 'wpsso_cache_expire_short_url' ( $secs )	// Pro version
 
+'wpsso_can_filter_content' ( $bool, $mod )
+
+'wpsso_can_filter_excerpt' ( $bool, $mod )
+
+'wpsso_can_filter_title' ( $bool, $mod )
+
 'wpsso_canonical_url' ( $url, $mod, $add_page, $src_id )
 
 'wpsso_caption' ( $caption, $mod, $add_hashtags, $md_idx )
@@ -77,7 +83,7 @@
 
 'wpsso_columns_post_{post_type_name}' ( true )
 
-'wpsso_content' ( $content, $mod, $md_idx )
+'wpsso_content' ( $content, $mod, $read_cache, $md_idx )
 
 'wpsso_content_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $mod )
 
@@ -85,19 +91,13 @@
 
 'wpsso_content_image_preg_pid_attr' ( $default = 'data-[a-z]+-pid' )
 
-'wpsso_content_seed' ( '', $mod, $use_cache, $md_idx )
+'wpsso_content_seed' ( '', $mod, $read_cache, $md_idx )
 
-'wpsso_description' ( $desc, $mod, $add_hashtags, $md_idx )
+'wpsso_description' ( $desc_text, $mod, $add_hashtags, $md_idx )
 
-'wpsso_description_pre_limit' ( $desc )
+'wpsso_description_pre_limit' ( $desc_text )
 
 'wpsso_description_seed' ( '', $mod, $add_hashtags, $md_idx )
-
-'wpsso_filter_content' ( $bool, $mod )
-
-'wpsso_filter_excerpt' ( $bool, $mod )
-
-'wpsso_filter_title' ( $bool, $mod )
 
 'wpsso_get_avail' ( $ret )
 
@@ -307,7 +307,7 @@
 
 'wpsso_term_url' ( $url, $mod, $add_page, $src_id )
 
-'wpsso_title' ( $title, $mod, $add_hashtags, $md_idx, $sep )
+'wpsso_title' ( $title_text, $mod, $add_hashtags, $md_idx, $sep )
 
 'wpsso_title_pre_limit' ( $title )
 
@@ -321,9 +321,9 @@
 
 'wpsso_user_image_urls' ( array $urls, $size_name, $user_id )
 
-'wpsso_user_object_description' ( $desc, $author_obj )
+'wpsso_user_object_description' ( $desc_text, $author_obj )
 
-'wpsso_user_object_title' ( $title, $author_obj )
+'wpsso_user_object_title' ( $title_text, $author_obj )
 
 'wpsso_user_custom_meta_tabs' ( $tabs, $mod, $metabox_id )
 
