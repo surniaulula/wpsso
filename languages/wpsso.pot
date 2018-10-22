@@ -4701,7 +4701,7 @@ msgstr ""
 
 #: lib/messages.php:2162
 msgctxt "option comment"
-msgid "[click to preview Pro options]"
+msgid "select to preview Pro options"
 msgstr ""
 
 #: lib/messages.php:2175

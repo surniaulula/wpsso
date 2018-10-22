@@ -2159,7 +2159,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<span class="pro-select-msg">';
 
-						$text .= _x( '[click to preview Pro options]', 'option comment', 'wpsso' ) . ' ';
+						$text .= _x( 'select to preview Pro options', 'option comment', 'wpsso' ) . ' ';
 
 						$text .= '</span>';
 
