@@ -351,11 +351,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Developer Notes*
 	* Added a new WpssoPage get_the_text() method.
-	* Renamed the 'site_org_type' option key to 'site_org_schema_type' for standardization.
 	* Renamed the following filters:
-		* 'wpsso_filter_content' to 'wpsso_can_filter_content'.
-		* 'wpsso_filter_excerpt' to 'wpsso_can_filter_excerpt'.
-		* 'wpsso_filter_title' to 'wpsso_can_filter_title'.
+		* 'wpsso_filter_content' to 'wpsso_can_filter_content'
+		* 'wpsso_filter_excerpt' to 'wpsso_can_filter_excerpt'
+		* 'wpsso_filter_title'   to 'wpsso_can_filter_title'
+	* Renamed option keys for standardization with Core plugin and add-ons:
+		* 'site_org_type'   to 'site_org_schema_type'
+		* 'schema_desc_len' to 'schema_desc_max_len'
+		* 'og_title_len'    to 'og_title_max_len'
+		* 'og_title_warn'   to 'og_title_warn_len'
+		* 'og_desc_len'     to 'og_desc_max_len'
+		* 'og_desc_warn'    to 'og_desc_warn_len'
+		* 'seo_desc_len'    to 'seo_desc_max_len'
+		* 'tc_desc_len'     to 'tc_desc_max_len'
 
 **Version 4.16.2 (2018/10/20)**
 
@@ -501,7 +509,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.16.3-dev.7 =
 
-(2018/10/22) Renamed the 'site_org_type' option key to 'site_org_schema_type' for standardization.
+(2018/10/22) Added a new WpssoPage get_the_text() method. Renamed option keys for standardization with Core plugin and add-ons:
 
 = 4.16.2 =
 
