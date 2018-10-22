@@ -32,11 +32,13 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$dots       = '...';
-			$read_cache = true;
-			$do_encode  = true;
-			$og_types   = $this->p->og->get_og_types_select( $add_none = true );
-			$art_topics = $this->p->util->get_article_topics();
+			$dots           = '...';
+			$read_cache     = true;
+			$no_hashtags    = false;
+			$maybe_hashtags = true;
+			$do_encode      = true;
+			$og_types       = $this->p->og->get_og_types_select( $add_none = true );
+			$art_topics     = $this->p->util->get_article_topics();
 
 			/**
 			 * The 'add_link_rel_canonical' and 'add_meta_name_description' options will be empty if an SEO plugin is detected.
@@ -48,19 +50,20 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$sharing_url   = $this->p->util->get_sharing_url( $mod, false );	// $add_page is false.
 			$canonical_url = $this->p->util->get_canonical_url( $mod, false );	// $add_page is false.
 
-			$og_title_max_len    = $this->p->options['og_title_len'];
-			$og_desc_max_len     = $this->p->options['og_desc_len'];
-			$seo_desc_max_len    = $this->p->options['seo_desc_len'];
-			$tc_desc_max_len     = $this->p->options['tc_desc_len'];
-			$schema_desc_max_len = $this->p->options['schema_desc_len'];
+			$og_title_max_len    = $this->p->options['og_title_max_len'];
+			$og_desc_max_len     = $this->p->options['og_desc_max_len'];
+			$seo_desc_max_len    = $this->p->options['seo_desc_max_len'];
+			$tc_desc_max_len     = $this->p->options['tc_desc_max_len'];
+			$schema_desc_max_len = $this->p->options['schema_desc_max_len'];
+			$schema_desc_idx     = array( 'seo_desc', 'og_desc' );
 
 			$def_og_type     = $this->p->og->get_mod_og_type( $mod, $get_type_ns = false, $use_mod_opts = false );
 			$def_art_section = $this->p->page->get_article_section( $mod['id'], $allow_none = true, $use_mod_opts = false );
-			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, false, $do_encode, 'none' );
-			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, true, $do_encode, 'none' );
-			$def_seo_desc    = $add_meta_name_desc ? $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, false ) : '';
+			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
+			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
+			$def_seo_desc    = $add_meta_name_desc ? $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags ) : '';
 			$def_tc_desc     = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
-			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, false, $do_encode, array( 'seo_desc', 'og_desc' ) );
+			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, $schema_desc_idx );
 
 			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
 
@@ -88,9 +91,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'post-og_type',
-					'content'  => $form->get_select( 'og_type', $og_types,
-						'', '', true, $def_og_type, $def_og_type, 'unhide_rows' ) .
-							$this->p->msgs->get( 'pro-select-msg' ),
+					'content'  => $form->get_select( 'og_type', $og_types, '', '', true, $def_og_type, $def_og_type, 'unhide_rows' ) .
+						$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_art_section' => array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
@@ -98,62 +100,61 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Article Topic', 'option label', 'wpsso' ),
 					'tooltip'  => 'post-og_art_section',
-					'content'  => $form->get_select( 'og_art_section', $art_topics,
-						'', '', false, $def_art_section, $def_art_section ) .
-							$this->p->msgs->get( 'pro-select-msg' ),
+					'content'  => $form->get_select( 'og_art_section', $art_topics, '', '', false, $def_art_section, $def_art_section ) .
+						$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_title' => array(
 					'no_auto_draft' => true,
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Default Title', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_title',
-					'content'  => $form->get_no_input_value( $def_og_title, 'wide' ),
+					'th_class'      => 'medium',
+					'td_class'      => 'blank',
+					'label'         => _x( 'Default Title', 'option label', 'wpsso' ),
+					'tooltip'       => 'meta-og_title',
+					'content'       => $form->get_no_input_value( $def_og_title, 'wide' ),
 				),
 				'og_desc' => array(
 					'no_auto_draft' => true,
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Default Description', 'option label', 'wpsso' ),
-					'tooltip'  => 'post-og_desc',
-					'content'  => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
+					'th_class'      => 'medium',
+					'td_class'      => 'blank',
+					'label'         => _x( 'Default Description', 'option label', 'wpsso' ),
+					'tooltip'       => 'post-og_desc',
+					'content'       => $form->get_no_textarea_value( $def_og_desc, '', '', $og_desc_max_len ),
 				),
 				'seo_desc' => array(
 					'no_auto_draft' => true,
-					'tr_class' => ( $add_meta_name_desc ? '' : 'hide_in_basic' ), // Always hide if head tag is disabled.
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Search Description', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-seo_desc',
-					'content'  => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) .
+					'tr_class'      => ( $add_meta_name_desc ? '' : 'hide_in_basic' ), // Always hide if head tag is disabled.
+					'th_class'      => 'medium',
+					'td_class'      => 'blank',
+					'label'         => _x( 'Search Description', 'option label', 'wpsso' ),
+					'tooltip'       => 'meta-seo_desc',
+					'content'       => $form->get_no_textarea_value( $def_seo_desc, '', '', $seo_desc_max_len ) .
 						( $add_meta_name_desc ? '' : '<p class="status-msg smaller">' . 
 							sprintf( $seo_msg_transl, 'meta name description' ) . '</p>' ),
 				),
 				'tc_desc' => array(
 					'no_auto_draft' => true,
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-tc_desc',
-					'content'  => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),
+					'th_class'      => 'medium',
+					'td_class'      => 'blank',
+					'label'         => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
+					'tooltip'       => 'meta-tc_desc',
+					'content'       => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),
 				),
 				'sharing_url' => array(
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
-					'tr_class' => $form->get_css_class_hide( 'basic', 'sharing_url' ),
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Sharing URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-sharing_url',
-					'content'  => $form->get_no_input_value( $sharing_url, 'wide' ),
+					'tr_class'      => $form->get_css_class_hide( 'basic', 'sharing_url' ),
+					'th_class'      => 'medium',
+					'td_class'      => 'blank',
+					'label'         => _x( 'Sharing URL', 'option label', 'wpsso' ),
+					'tooltip'       => 'meta-sharing_url',
+					'content'       => $form->get_no_input_value( $sharing_url, 'wide' ),
 				),
 				'canonical_url' => array(
 					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
-					'tr_class' => ( $add_link_rel_canon ? $form->get_css_class_hide( 'basic', 'canonical_url' ) : 'hide_in_basic' ),
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Canonical URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-canonical_url',
-					'content'  => $form->get_no_input_value( $canonical_url, 'wide' ) .
+					'tr_class'      => ( $add_link_rel_canon ? $form->get_css_class_hide( 'basic', 'canonical_url' ) : 'hide_in_basic' ),
+					'th_class'      => 'medium',
+					'td_class'      => 'blank',
+					'label'         => _x( 'Canonical URL', 'option label', 'wpsso' ),
+					'tooltip'       => 'meta-canonical_url',
+					'content'       => $form->get_no_input_value( $canonical_url, 'wide' ) .
 						( $add_link_rel_canon ? '' : '<p class="status-msg smaller">' . 
 							sprintf( $seo_msg_transl, 'link rel canonical' ) . '</p>' ),
 				),
@@ -212,7 +213,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Price', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_price',
-					'content'  => $form->get_no_input( 'product_price', '', '', true ) . ' ' . 	// $placeholder is true for default value.
+					'content'  => $form->get_no_input( 'product_price', '', '', $placeholder = true ) . ' ' .
 						$form->get_no_select( 'product_currency', SucomUtil::get_currency_abbrev(), 'currency' ),
 				),
 				'product_size' => array(
@@ -221,7 +222,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Size', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_size',
-					'content'  => $form->get_no_input( 'product_size', '', '', true ),	// $placeholder is true for default value.
+					'content'  => $form->get_no_input( 'product_size', '', '', $placeholder = true ),
 				),
 				'product_gender' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -238,11 +239,11 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 				),
 				'schema_desc' => array(
 					'no_auto_draft' => true,
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Schema Description', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_desc',
-					'content'  => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ) . $json_msg_transl,
+					'th_class'      => 'medium',
+					'td_class'      => 'blank',
+					'label'         => _x( 'Schema Description', 'option label', 'wpsso' ),
+					'tooltip'       => 'meta-schema_desc',
+					'content'       => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ) . $json_msg_transl,
 				),
 			);
 

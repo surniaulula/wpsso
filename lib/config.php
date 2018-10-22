@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '4.16.3-dev.7',	// Plugin version.
-					'opt_version' => '616',		// Increment when changing default option values.
+					'opt_version' => '617',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -758,7 +758,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_img_crop'              => 0,
 					'schema_img_crop_x'            => 'center',
 					'schema_img_crop_y'            => 'center',
-					'schema_desc_len'              => 250,		// Meta itemprop="description" maximum text length (hard limit).
+					'schema_desc_max_len'          => 250,		// Meta itemprop="description" maximum text length (hard limit).
 					'schema_author_name'           => 'display_name',
 
 					/**
@@ -850,10 +850,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_def_img_url'               => '',			// or Default / Fallback Image URL
 					'og_author_field'              => 'facebook',		// Author Profile URL Field
 					'og_title_sep'                 => '-',
-					'og_title_len'                 => 70,
-					'og_title_warn'                => 40,
-					'og_desc_len'                  => 300,			// Maximum length in characters (hard limit).
-					'og_desc_warn'                 => 200,			// Recommended maximum length in characters for Facebook (soft limit).
+					'og_title_max_len'             => 70,
+					'og_title_warn_len'            => 40,
+					'og_desc_max_len'              => 300,			// Maximum length in characters (hard limit).
+					'og_desc_warn_len'             => 200,			// Recommended maximum length in characters for Facebook (soft limit).
 					'og_desc_hashtags'             => 0,
 					'p_publisher_url'              => '',			// (localized)
 					'p_dom_verify'                 => '',
@@ -861,7 +861,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'p_add_nopin_media_img_tag'    => 0,			// Add "nopin" to WordPress Media
 					'p_add_img_html'               => 0,			// Add Hidden Image for Pin It Button
 					'sc_publisher_url'             => '',
-					'seo_desc_len'                 => 156,			// Meta name="description" maximum text length (hard limit).
+					'seo_desc_max_len'             => 156,			// Meta name="description" maximum text length (hard limit).
 					'seo_author_field'             => 'gplus',
 					'seo_publisher_url'            => '',			// (localized)
 					'tumblr_publisher_url'         => '',
@@ -871,7 +871,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Twitter Card options.
 					 */
 					'tc_site'           => '',			// Twitter Business @username (localized).
-					'tc_desc_len'       => 200,			// Maximum Description Length (hard limit).
+					'tc_desc_max_len'   => 200,			// Maximum Description Length (hard limit).
 					'tc_type_post'      => 'summary_large_image',
 					'tc_type_default'   => 'summary',
 					'tc_sum_img_width'  => 600,			// Summary Card Image Dimensions.

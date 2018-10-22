@@ -486,7 +486,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			} else {	// Return the first matching index value.
 
-				if ( ! is_array( $md_idx ) ) {		// Convert a string to an array.
+				if ( ! is_array( $md_idx ) ) {	// Convert a string to an array.
 					$md_idx = array( $md_idx );
 				} else {
 					$md_idx = array_unique( $md_idx );	// Prevent duplicate idx values.
@@ -494,11 +494,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				foreach ( $md_idx as $md_idx ) {
 
-					if ( 'none' === $md_idx ) {		// Special index keyword.
+					if ( 'none' === $md_idx ) {	// Special index keyword - stop here.
 
 						return null;
 
-					} elseif ( empty( $md_idx ) ) {		// Skip empty array keys.
+					} elseif ( empty( $md_idx ) ) {	// Skip empty array keys.
 
 						continue;
 
@@ -518,7 +518,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 								$this->p->debug->log( 'option ' . $md_idx . ' value found (not null)' );
 							}
 
-							break;		// Stop after first match.
+							break;	// Stop after first match.
 						}
 					}
 				}

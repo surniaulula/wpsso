@@ -549,7 +549,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$add_meta_name_description = apply_filters( $this->p->lca . '_add_meta_name_description', $add_meta_name_description, $mod );
 
 			if ( $add_meta_name_description ) {
-				$mt_name['description'] = $this->p->page->get_description( $this->p->options['seo_desc_len'],
+				$mt_name['description'] = $this->p->page->get_description( $this->p->options['seo_desc_max_len'],
 					'...', $mod, true, false, true, 'seo_desc' );	// $add_hashtags is false.
 			}
 

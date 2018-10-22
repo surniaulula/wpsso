@@ -1533,32 +1533,41 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			switch ( $size_name ) {
+
 				case $this->p->lca.'-opengraph':
+
 					$spec_name  = 'Facebook / Open Graph';
 					$min_width  = $cf_min['og_img_width'];
 					$min_height = $cf_min['og_img_height'];
 					$max_ratio  = $cf_max['og_img_ratio'];
+
 					break;
 
 				case $this->p->lca.'-schema':
+
 					$spec_name  = 'Google / Schema';
 					$min_width  = $cf_min['schema_img_width'];
 					$min_height = $cf_min['schema_img_height'];
 					$max_ratio  = $cf_max['schema_img_ratio'];
+
 					break;
 
 				case $this->p->lca.'-schema-article':
+
 					$spec_name  = 'Google / Schema Article';
 					$min_width  = $cf_min['schema_article_img_width'];
 					$min_height = $cf_min['schema_article_img_height'];
 					$max_ratio  = $cf_max['schema_article_img_ratio'];
+
 					break;
 
 				default:
+
 					$spec_name  = '';
 					$min_width  = 0;
 					$min_height = 0;
 					$max_ratio  = 0;
+
 					break;
 			}
 

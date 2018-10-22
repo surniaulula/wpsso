@@ -40,9 +40,11 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$dots       = '...';
-			$read_cache = true;
-			$do_encode  = true;
+			$dots           = '...';
+			$read_cache     = true;
+			$no_hashtags    = false;
+			$maybe_hashtags = true;
+			$do_encode      = true;
 
 			/**
 			 * The 'add_link_rel_canonical' and 'add_meta_name_description' options will be empty if an SEO plugin is detected.
@@ -54,19 +56,18 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			$sharing_url   = $this->p->util->get_sharing_url( $mod, false );	// $add_page is false.
 			$canonical_url = $this->p->util->get_canonical_url( $mod, false );	// $add_page is false.
 
-			$og_title_max_len    = $this->p->options['og_title_len'];
-			$og_title_warn_len   = $this->p->options['og_title_warn'];
-			$og_desc_max_len     = $this->p->options['og_desc_len'];
-			$og_desc_warn_len    = $this->p->options['og_desc_warn'];
-			$seo_desc_max_len    = $this->p->options['seo_desc_len'];
-			$tc_desc_max_len     = $this->p->options['tc_desc_len'];
-			$schema_desc_max_len = $this->p->options['schema_desc_len'];
+			$og_title_max_len    = $this->p->options['og_title_max_len'];
+			$og_desc_max_len     = $this->p->options['og_desc_max_len'];
+			$seo_desc_max_len    = $this->p->options['seo_desc_max_len'];
+			$tc_desc_max_len     = $this->p->options['tc_desc_max_len'];
+			$schema_desc_max_len = $this->p->options['schema_desc_max_len'];
+			$schema_desc_idx     = array( 'seo_desc', 'og_desc' );
 
-			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, false, $do_encode, 'none' );
-			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, true, $do_encode, 'none' );
-			$def_seo_desc    = $add_meta_name_desc ? $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, false ) : '';
+			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
+			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
+			$def_seo_desc    = $add_meta_name_desc ? $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags ) : '';
 			$def_tc_desc     = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
-			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, false, $do_encode, array( 'seo_desc', 'og_desc' ) );
+			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, $schema_desc_idx );
 
 			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
 

@@ -1547,7 +1547,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_md_form_rows( array $table_rows, array $form_rows, array $head = array(), array $mod = array(), $auto_draft_msg = null ) {
 		
-			if ( $auto_draft_msg === null ) {
+			if ( null === $auto_draft_msg ) {
 				$auto_draft_msg = 'Save a draft version or publish to update this value.';
 			}
 
@@ -1555,14 +1555,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( empty( $val ) ) {
 
-					$table_rows[$key] = '';	// placeholder
+					$table_rows[ $key ] = '';	// Placeholder.
 
 					continue;
 				}
 
-				if ( ! empty( $val['table_row'] ) ) {
+				if ( ! empty( $val[ 'table_row' ] ) ) {
 
-					$table_rows[ $key ] = $val['table_row'];
+					$table_rows[ $key ] = $val[ 'table_row' ];
 
 					continue;
 				}

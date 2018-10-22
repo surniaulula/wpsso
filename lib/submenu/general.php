@@ -143,26 +143,26 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Title Separator', 'option label', 'wpsso' ), '', 'og_title_sep' ) . 
 					'<td>' . $this->form->get_input( 'og_title_sep', 'short' ) . '</td>';
 
-					$table_rows['og_title_len'] = '' . 
-					$this->form->get_th_html( _x( 'Maximum Title Length', 'option label', 'wpsso' ), '', 'og_title_len' ) . 
+					$table_rows['og_title_max_len'] = '' . 
+					$this->form->get_th_html( _x( 'Maximum Title Length', 'option label', 'wpsso' ), '', 'og_title_max_len' ) . 
 					'<td>' . 
-						$this->form->get_input( 'og_title_len', 'short' ) . ' ' . 
+						$this->form->get_input( 'og_title_max_len', 'short' ) . ' ' . 
 						_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
-						$this->form->get_input( 'og_title_warn', 'short' ) . ' ' . 
+						$this->form->get_input( 'og_title_warn_len', 'short' ) . ' ' . 
 						_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
 					'</td>';
 
 
-					$table_rows['og_desc_len'] = '' . 
-					$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'og_desc_len' ) . 
+					$table_rows['og_desc_max_len'] = '' . 
+					$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'og_desc_max_len' ) . 
 					'<td>' . 
-						$this->form->get_input( 'og_desc_len', 'short' ) . ' ' . 
+						$this->form->get_input( 'og_desc_max_len', 'short' ) . ' ' . 
 						_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
-						$this->form->get_input( 'og_desc_warn', 'short' ) . ' ' . 
+						$this->form->get_input( 'og_desc_warn_len', 'short' ) . ' ' . 
 						_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
 					'</td>';
 
-					$table_rows['og_desc_hashtags'] = $this->form->get_tr_hide( 'basic', 'og_desc_len' ) . 
+					$table_rows['og_desc_hashtags'] = $this->form->get_tr_hide( 'basic', 'og_desc_max_len' ) . 
 					$this->form->get_th_html( _x( 'Add Hashtags to Descriptions', 'option label', 'wpsso' ), '', 'og_desc_hashtags' ) . 
 					'<td>' . $this->form->get_select( 'og_desc_hashtags', range( 0, $this->p->cf['form']['max_hashtags'] ), 'short', '', true ) . ' ' . 
 						_x( 'tag names', 'option comment', 'wpsso' ) . '</td>';
@@ -239,9 +239,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						array( 'is_locale' => true ) ) . 
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'seo_publisher_url', $this->p->options ), 'wide' ) . '</td>';
 
-					$table_rows['seo_desc_len'] = $this->form->get_tr_hide( 'basic', 'seo_desc_len' ) . 
-					$this->form->get_th_html( _x( 'Search / SEO Description Length', 'option label', 'wpsso' ), '', 'seo_desc_len' ) . 
-					'<td>' . $this->form->get_input( 'seo_desc_len', 'short' ) . ' ' .
+					$table_rows['seo_desc_max_len'] = $this->form->get_tr_hide( 'basic', 'seo_desc_max_len' ) . 
+					$this->form->get_th_html( _x( 'Search / SEO Description Length', 'option label', 'wpsso' ), '', 'seo_desc_max_len' ) . 
+					'<td>' . $this->form->get_input( 'seo_desc_max_len', 'short' ) . ' ' .
 					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows['seo_author_field'] = $this->form->get_tr_hide( 'basic', 'seo_author_field' ) . 
@@ -313,9 +313,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						array( 'is_locale' => true ) ) . 
 					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'tc_site', $this->p->options ) ) . '</td>';
 
-					$table_rows['tc_desc_len'] = $this->form->get_tr_hide( 'basic', 'tc_desc_len' ) . 
-					$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'tc_desc_len' ) . 
-					'<td>' . $this->form->get_input( 'tc_desc_len', 'short' ) . ' ' . 
+					$table_rows['tc_desc_max_len'] = $this->form->get_tr_hide( 'basic', 'tc_desc_max_len' ) . 
+					$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'tc_desc_max_len' ) . 
+					'<td>' . $this->form->get_input( 'tc_desc_max_len', 'short' ) . ' ' . 
 					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows['tc_type_singular'] = $this->form->get_tr_hide( 'basic', 'tc_type_post' ) . 

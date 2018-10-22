@@ -14,7 +14,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 	class WpssoOptionsUpgrade extends WpssoOptions {
 
 		private static $rename_options_keys = array(
-			'wpsso' => array(	// WPSSO Core
+			'wpsso' => array(	// WPSSO Core plugin.
 				500 => array(
 					'og_img_resize'                  => 'plugin_create_wp_sizes',
 					'plugin_tid'                     => 'plugin_wpsso_tid',
@@ -187,16 +187,39 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				609 => array(
 					'p_author_name' => '',
 				),
-				615 => array(
-					'site_org_type' => 'site_org_schema_type',
+				616 => array(
+					'site_org_type'   => 'site_org_schema_type',
+					'schema_desc_len' => 'schema_desc_max_len',
+					'og_title_len'    => 'og_title_max_len',
+					'og_title_warn'   => 'og_title_warn_len',
+					'og_desc_len'     => 'og_desc_max_len',
+					'og_desc_warn'    => 'og_desc_warn_len',
+					'seo_desc_len'    => 'seo_desc_max_len',
+					'tc_desc_len'     => 'tc_desc_max_len',
 				),
 			),
-			'wpssoorg' => array(	// WPSSO ORG
+			'wpssoorg' => array(	// WPSSO ORG add-on.
 				2 => array(
 					'org_alt_name' => 'org_name_alt',
 				),
 			),
-			'wpssossb' => array(	// WPSSO SSB
+			'wpssorrssb' => array(	// WPSSO RRSSB add-on.
+				14 => array(
+					'email_cap_len'         => 'email_caption_max_len',
+					'twitter_cap_len'       => 'twitter_caption_max_len',
+					'pin_cap_len'           => 'pin_caption_max_len',
+					'linkedin_cap_len'      => 'linkedin_caption_max_len',
+					'reddit_cap_len'        => 'reddit_caption_max_len',
+					'tumblr_cap_len'        => 'tumblr_caption_max_len',
+					'email_cap_hashtags'    => 'email_caption_hashtags',
+					'twitter_cap_hashtags'  => 'twitter_caption_hashtags',
+					'pin_cap_hashtags'      => 'pin_caption_hashtags',
+					'linkedin_cap_hashtags' => 'linkedin_caption_hashtags',
+					'reddit_cap_hashtags'   => 'reddit_caption_hashtags',
+					'tumblr_cap_hashtags'   => 'tumblr_caption_hashtags',
+				),
+			),
+			'wpssossb' => array(	// WPSSO SSB add-on.
 				14 => array(
 					'stumble_js_loc'  => 'stumble_script_loc',
 					'pin_js_loc'      => 'pin_script_loc',
@@ -206,6 +229,15 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'twitter_js_loc'  => 'twitter_script_loc',
 					'buffer_js_loc'   => 'buffer_script_loc',
 					'linkedin_js_loc' => 'linkedin_script_loc',
+				),
+				16 => array(
+					'email_cap_len'      => 'email_caption_max_len',
+					'twitter_cap_len'    => 'twitter_caption_max_len',
+					'pin_cap_len'        => 'pin_caption_max_len',
+					'linkedin_cap_len'   => 'linkedin_caption_max_len',
+					'reddit_cap_len'     => 'reddit_caption_max_len',
+					'tumblr_cap_len'     => 'tumblr_caption_max_len',
+					'email_cap_hashtags' => 'email_caption_hashtags',
 				),
 			),
 		);

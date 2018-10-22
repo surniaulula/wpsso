@@ -566,10 +566,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
-			 * og_desc_len must be at least 160 chars (defined in config).
+			 * og_desc_max_len must be at least 160 chars (defined in config).
 			 */
-			if ( isset( $opts['og_desc_len'] ) && $opts['og_desc_len'] < $this->p->cf['head']['limit_min']['og_desc_len'] )  {
-				$opts['og_desc_len'] = $this->p->cf['head']['limit_min']['og_desc_len'];
+			if ( isset( $opts['og_desc_max_len'] ) && $opts['og_desc_max_len'] < $this->p->cf['head']['limit_min']['og_desc_len'] )  {
+				$opts['og_desc_max_len'] = $this->p->cf['head']['limit_min']['og_desc_len'];
 			}
 
 			/**

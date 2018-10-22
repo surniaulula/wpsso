@@ -77,14 +77,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $image_url ) ) {
 
-				$desc_len  = $this->p->options['schema_desc_len'];
-				$desc_idx  = array( 'schema_desc', 'seo_desc', 'og_desc' );
-				$desc_text = $this->p->page->get_description( $desc_len, '...', $mod, true, false, true, $desc_idx );
+				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
+					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
+						$md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 				$img_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n";
 				$img_html .= '<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n";
 				$img_html .= '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" width="0" height="0" style="width:0;height:0;" ' . 
-					'data-pin-description="' . esc_attr( $desc_text ) . '" alt=""/>' . "\n"; 	// Empty alt required for w3c validation.
+					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" alt=""/>' . "\n"; 	// Empty alt required for w3c validation.
 				$img_html .= '</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";
 
 				$content = $img_html . $content;
@@ -2004,9 +2004,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Get the image alternate title, if one has been defined in the custom post meta.
 				 */
-				$title_len = $wpsso->options['og_title_len'];
+				$title_max_len = $wpsso->options['og_title_max_len'];
 
-				$ret['alternateName'] = $wpsso->page->get_title( $title_len, '...', $mod, true, false, true, 'schema_title_alt' );
+				$ret['alternateName'] = $wpsso->page->get_title( $title_max_len, '...', $mod, true, false, true, 'schema_title_alt' );
 
 				if ( empty( $ret['alternateName'] ) || $ret['name'] === $ret['alternateName'] ) {
 					unset( $ret['alternateName'] );
@@ -2034,13 +2034,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * If we don't have a caption, then provide a short description.
 				 * If we have a caption, then add the complete image description.
 				 */
-				$desc_len = $wpsso->options['schema_desc_len'];
-				$desc_idx = array( 'schema_desc', 'seo_desc', 'og_desc' );
-
 				if ( empty( $ret['caption'] ) ) {
-					$ret['description'] = $wpsso->page->get_description( $desc_len, '...', $mod, true, false, true, $desc_idx );
+
+					$ret['description'] = $wpsso->page->get_description( $wpsso->options[ 'schema_desc_max_len' ],
+						$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
+							$md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+
 				} else {
-					$ret['description'] = $wpsso->page->get_the_content( $mod, true, $desc_idx );
+
+					$ret['description'] = $wpsso->page->get_the_content( $mod, $read_cache = true,
+						$md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+
 					$ret['description'] = $wpsso->util->cleanup_html_tags( $ret['description'] );
 				}
 
@@ -3171,30 +3175,39 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$person_opts = apply_filters( $wpsso->lca . '_get_person_options', false, $mod, $user_id );
 
 			if ( ! empty( $person_opts ) ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log_arr( 'get_person_options filters returned', $person_opts );
 				}
+
 			} else {
+
 				if ( empty( $user_id ) || $user_id === 'none' ) {
+
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'exiting early: empty user_id' );
 					}
+
 					return 0;
+
 				} elseif ( empty( $wpsso->m['util']['user'] ) ) {
+
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'exiting early: empty user module' );
 					}
+
 					return 0;
+
 				} else {
+
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'getting user module for user_id ' . $user_id );
 					}
+
 					$user_mod = $wpsso->m['util']['user']->get_mod( $user_id );
 				}
 
-				$md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' );
-
-				$user_desc = $user_mod['obj']->get_options_multi( $user_id, $md_idx );
+				$user_desc = $user_mod['obj']->get_options_multi( $user_id, $md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 				if ( empty( $user_desc ) ) {
 					$user_desc = $user_mod['obj']->get_author_meta( $user_id, 'description' );
@@ -3517,10 +3530,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $this->p->options['add_meta_itemprop_description'] ) ) {
 
-				$desc_len = $this->p->options['schema_desc_len'];
-				$desc_idx = array( 'schema_desc', 'seo_desc', 'og_desc' );
-
-				$mt_schema['description'] = $this->p->page->get_description( $desc_len, '...', $mod, true, false, true, $desc_idx );
+				$mt_schema['description'] = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
+					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
+						$md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 			}
 
 			switch ( $page_type_url ) {
@@ -3855,26 +3867,33 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$og_ret = array();
 
 			if ( empty( $author_id ) || $author_id === 'none' ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty author_id' );
 				}
+
 				return array();
+
 			} elseif ( empty( $this->p->m['util']['user'] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty user module' );
 				}
+
 				return array();
+
 			} else {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting user_mod for author id '.$author_id );
 				}
+
 				$user_mod = $this->p->m['util']['user']->get_mod( $author_id );
 			}
 
 			$author_url  = $user_mod['obj']->get_author_website( $author_id, 'url' );
 			$author_name = $user_mod['obj']->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
-			$desc_idx    = array( 'schema_desc', 'seo_desc', 'og_desc' );
-			$author_desc = $user_mod['obj']->get_options_multi( $author_id, $desc_idx );
+			$author_desc = $user_mod['obj']->get_options_multi( $author_id, $md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 			if ( empty( $author_desc ) ) {
 				$author_desc = $user_mod['obj']->get_author_meta( $author_id, 'description' );

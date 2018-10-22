@@ -585,7 +585,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} elseif ( $mod['is_post'] ) {
 
 				if ( ! empty( $add_hashtags ) && ! empty( $this->p->options['og_desc_hashtags'] ) ) {
-
 					$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );
 				}
 			}

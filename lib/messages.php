@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$text = $info;
 				$info = array( 'text' => $text );
 			} else {
-				$text = isset( $info['text'] ) ? $info['text'] : '';
+				$text = isset( $info[ 'text' ] ) ? $info[ 'text' ] : '';
 			}
 
 			$idx = sanitize_title_with_dashes( $idx );
@@ -528,19 +528,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_title_len':	// Maximum Title Length
+						case 'tooltip-og_title_max_len':	// Maximum Title Length
 
-							$text = sprintf( __( 'The maximum length of text used in the Facebook / Open Graph title tag (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_len' ) );
+							$text = sprintf( __( 'The maximum length of text used in the Facebook / Open Graph title tag (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_max_len' ) );
 
 							break;
 
-						case 'tooltip-og_desc_len':	// Maximum Description Length
+						case 'tooltip-og_desc_max_len':	// Maximum Description Length
 
 							$text = __( 'The maximum length of text used in the Facebook / Open Graph description tag.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['og_desc_len'],
-									$this->p->opt->get_defaults( 'og_desc_len' ) );
+									$this->p->opt->get_defaults( 'og_desc_max_len' ) );
 
 							break;
 
@@ -1497,13 +1497,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-seo_desc_len':
+						case 'tooltip-seo_desc_max_len':
 
 							$text = __( 'The maximum length of text used for the Google Search "description" meta tag.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['seo_desc_len'],
-									$this->p->opt->get_defaults( 'seo_desc_len' ) );
+									$this->p->opt->get_defaults( 'seo_desc_max_len' ) );
 
 							break;
 
@@ -1597,13 +1597,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_desc_len':
+						case 'tooltip-schema_desc_max_len':
 
 							$text = __( 'The maximum length of text used for the Google+ / Schema description meta tag.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['schema_desc_len'],
-									$this->p->opt->get_defaults( 'schema_desc_len' ) );
+									$this->p->opt->get_defaults( 'schema_desc_max_len' ) );
 
 							break;
 
@@ -1697,13 +1697,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-tc_desc_len':
+						case 'tooltip-tc_desc_max_len':
 
 							$text = __( 'The maximum length of text used for the Twitter Card description.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['tc_desc_len'],
-									$this->p->opt->get_defaults( 'tc_desc_len' ) );
+									$this->p->opt->get_defaults( 'tc_desc_max_len' ) );
 
 							break;
 
@@ -2159,16 +2159,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<span class="pro-select-msg">';
 
-						$text .= _x( '[select preview]', 'option comment', 'wpsso' ) . ' ';
-
-						/**
-						 * The $idx value has already been added to the purchase URL as a 'utm_source' query value.
-						 */
-						$text .= empty( $url['purchase'] ) ? '' : '<a href="' . $url['purchase'] . '">';
-
-						$text .= sprintf( _x( '%s required', 'option comment', 'wpsso' ), $info['short_pro'] );
-
-						$text .= empty( $url['purchase'] ) ? '' : '</a>';
+						$text .= _x( '[click to preview Pro options]', 'option comment', 'wpsso' ) . ' ';
 
 						$text .= '</span>';
 

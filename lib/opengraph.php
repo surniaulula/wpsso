@@ -499,9 +499,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting title for og:title meta tag' );
 				}
 
-				$max_len = $this->p->options['og_title_len'];
-
-				$mt_og['og:title'] = $this->p->page->get_title( $max_len, '...', $mod );
+				$mt_og['og:title'] = $this->p->page->get_title( $this->p->options['og_title_max_len'], '...', $mod );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'og:title value = ' . $mt_og['og:title'] );
@@ -520,10 +518,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting description for og:description meta tag' );
 				}
 
-				$max_len      = $this->p->options['og_desc_len'];
-				$add_hashtags = $this->p->options['og_desc_hashtags'];
-
-				$mt_og['og:description'] = $this->p->page->get_description( $max_len, '...', $mod, true, $add_hashtags );
+				$mt_og['og:description'] = $this->p->page->get_description( $this->p->options['og_desc_max_len'], '...', $mod,
+					$read_cache = true, $this->p->options['og_desc_hashtags'] );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'og:description value = ' . $mt_og['og:description'] );
@@ -583,8 +579,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							 * different formats (application/x-shockwave-flash and text/html for example).
 							 */
 							if ( $image_url && $this->p->util->is_uniq_url( $image_url, 'preview' ) ) {
+
 								$mt_og['og:video'][$num]['og:video:has_image'] = true;
+
 								$prev_count++;
+
 							} else {
 								$mt_og['og:video'][$num]['og:video:has_image'] = false;
 							}

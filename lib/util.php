@@ -3376,6 +3376,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = false ) {
 
 			$alt_text = '';
+
 			$alt_prefix = isset( $this->p->options['plugin_img_alt_prefix'] ) ?
 				$this->p->options['plugin_img_alt_prefix'] : 'Image:';
 
@@ -3390,7 +3391,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $strip_tags ) {
 
-				$text = preg_replace( '/<\/p>/i', ' ', $text);				// Replace end of paragraph with a space.
+				/**
+				 * Maybe add missing dot to headers, lists, etc.
+				 */
+				$text = preg_replace( '/([\w])<\/(dt|h[0-9]+|li|th)>/i', '$1. ', $text);
+
+				/**
+				 * Replace end of paragraph with a space.
+				 */
+				$text = preg_replace( '/<\/p>/i', ' ', $text);
 
 				$text_stripped = trim( strip_tags( $text ) );				// Remove remaining html tags.
 

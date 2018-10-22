@@ -3268,9 +3268,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->form->get_th_html( _x( 'Schema Image Dimensions', 'option label', 'wpsso' ), '', 'schema_img_dimensions' ) . 
 			'<td>' . $this->form->get_input_image_dimensions( 'schema_img' ) . '</td>';	// $use_opts = false
 
-			$table_rows['schema_desc_len'] = $this->form->get_tr_hide( 'basic', 'schema_desc_len' ) . 
-			$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_len' ) . 
-			'<td>' . $this->form->get_input( 'schema_desc_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+			$table_rows['schema_desc_max_len'] = $this->form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
+			$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
+			'<td>' . $this->form->get_input( 'schema_desc_max_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows['schema_author_name'] = $this->form->get_tr_hide( 'basic', 'schema_author_name' ) . 
 			$this->form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), '', 'schema_author_name' ) . 
