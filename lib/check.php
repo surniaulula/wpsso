@@ -211,25 +211,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						/**
 						 * Pro Version Features / Options
 						 */
-						case 'media-facebook':
-						case 'media-gravatar':
-						case 'media-slideshare':
-						case 'media-soundcloud':
-						case 'media-vimeo':
-						case 'media-wistia':
-						case 'media-wpvideo':
-						case 'media-youtube':
-
-							$chk['optval'] = 'plugin_' . $id . '_api';
-
-							break;
-
-						case 'media-upscale':
-
-							$chk['optval'] = 'plugin_upscale_images';
-
-							break;
-
 						case 'admin-general':
 						case 'admin-advanced':
 
@@ -249,6 +230,31 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							if ( $is_admin ) {
 								$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
 							}
+
+							break;
+
+						case 'media-facebook':
+						case 'media-gravatar':
+						case 'media-slideshare':
+						case 'media-soundcloud':
+						case 'media-vimeo':
+						case 'media-wistia':
+						case 'media-wpvideo':
+						case 'media-youtube':
+
+							$chk['optval'] = 'plugin_' . $id . '_api';
+
+							break;
+
+						case 'media-upscale':
+
+							$chk['optval'] = 'plugin_upscale_images';
+
+							break;
+
+						case 'places-google_places':
+
+							$chk['optval'] = 'plugin_google_places';
 
 							break;
 
