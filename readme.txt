@@ -341,7 +341,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.3-dev.7 (2018/10/22)**
+**Version 4.16.3-dev.8 (2018/10/23)**
 
 * *New Features*
 	* None.
@@ -350,12 +350,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Added a new WpssoPage get_the_text() method.
+	* Added a new WpssoPage get_the_text() method for the WPSSO JSON v1.34.2 add-on.
 	* Renamed the following filters:
 		* 'wpsso_filter_content' to 'wpsso_can_filter_content'
 		* 'wpsso_filter_excerpt' to 'wpsso_can_filter_excerpt'
 		* 'wpsso_filter_title'   to 'wpsso_can_filter_title'
-	* Renamed option keys for standardization with Core plugin and add-ons:
+		* 'wpsso_video_info'     to 'wpsso_video_details'
+	* Renamed option keys for standardization between the Core plugin and its add-ons:
 		* 'site_org_type'   to 'site_org_schema_type'
 		* 'schema_desc_len' to 'schema_desc_max_len'
 		* 'og_title_len'    to 'og_title_max_len'
@@ -507,9 +508,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.3-dev.7 =
+= 4.16.3-dev.8 =
 
-(2018/10/22) Added a new WpssoPage get_the_text() method. Renamed option keys for standardization with Core plugin and add-ons:
+(2018/10/23) Added a new WpssoPage get_the_text() method. Renamed option keys for standardization.
 
 = 4.16.2 =
 
