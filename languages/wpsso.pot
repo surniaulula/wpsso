@@ -3446,7 +3446,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:694 lib/util.php:3271
+#: lib/messages.php:694 lib/util.php:3274
 msgid "No options available."
 msgstr ""
 
@@ -6229,22 +6229,22 @@ msgid ""
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3298
+#: lib/util.php:3301
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3301
+#: lib/util.php:3304
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3306
+#: lib/util.php:3309
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3309
+#: lib/util.php:3312
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
