@@ -341,7 +341,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.3-dev.8 (2018/10/23)**
+**Version 4.16.3-b.1 (2018/10/23)**
 
 * *New Features*
 	* None.
@@ -350,6 +350,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
+	* Removed the "Google Project API Key" option since there are no Google API modules currently used.
 	* Added a new WpssoPage get_the_text() method for the WPSSO JSON v1.34.2 add-on.
 	* Renamed the following filters:
 		* 'wpsso_filter_content' to 'wpsso_can_filter_content'
@@ -508,9 +509,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.3-dev.8 =
+= 4.16.3-b.1 =
 
-(2018/10/23) Added a new WpssoPage get_the_text() method. Renamed option keys for standardization.
+(2018/10/23) Removed the "Google Project API Key" option since there are no Google API modules currently used. Added a new WpssoPage get_the_text() method. Renamed option keys for standardization.
 
 = 4.16.2 =
 
