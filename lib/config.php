@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.16.3-dev.7',	// Plugin version.
+					'version'     => '4.16.3-dev.8',	// Plugin version.
 					'opt_version' => '617',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1556,14 +1556,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Transient id prefix.
 				 */
 				'transient' => array(
-					'wpsso_!_' => array(	// Protect transient from being cleared automatically.
+					'wpsso_!_' => array(	// Protect from being cleared automatically.
 					),
 					'wpsso_a_' => array(
 						'label'   => 'Article Topics',
 						'opt_key' => 'plugin_topics_cache_exp',
 						'filter'  => 'wpsso_cache_expire_article_topics',
 					),
-					'wpsso_b_' => array(	// Sharing buttons HTML cache.
+					'wpsso_b_' => array(	// Sharing buttons HTML.
 					),
 					'wpsso_h_' => array(
 						'label'   => 'Head Markup',
@@ -1580,7 +1580,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'opt_key' => 'plugin_json_data_cache_exp',
 						'filter'  => 'wpsso_cache_expire_schema_json_data',
 					),
-					'wpsso_s_' => array(	// Automatic clearing is enable / disabled from settings.
+					'wpsso_p_' => array(	// Place details.
+					),
+					'wpsso_s_' => array(
 						'label'   => 'Shortened URLs',
 						'opt_key' => 'plugin_short_url_cache_exp',
 						'filter'  => 'wpsso_cache_expire_short_url',
@@ -2755,7 +2757,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'version' => '',		// -wpsso3.29.0pro-wpssoplm1.5.1pro-wpssoum1.4.0gpl
 				);
 
-				self::$cf['opt']['version'] = '';	// -wpsso416pro-wpssoplm8pro
+				self::$cf[ 'opt' ][ 'version' ] = '';	// -wpsso416pro-wpssoplm8pro
 
 				if ( $apply_filters ) {
 
@@ -2789,7 +2791,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						}
 
 						if ( isset( $info['opt_version'] ) ) {
-							self::$cf['opt']['version'] .= '-' . $ext . $info['opt_version'] . $pkg_lctype;
+							self::$cf[ 'opt' ][ 'version' ] .= '-' . $ext . $info['opt_version'] . $pkg_lctype;
 						}
 
 						// complete relative paths in the image arrays

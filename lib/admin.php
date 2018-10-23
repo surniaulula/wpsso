@@ -2371,7 +2371,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			if ( $this->p->avail['seo']['sq'] ) {
 
-				$opts = json_decode( get_option( 'sq_options' ), true );
+				$opts = json_decode( get_option( 'sq_options' ), $assoc = true );
 
 				/**
 				 * Squirrly SEO > SEO Settings > Social Media > Social Media Options Metabox

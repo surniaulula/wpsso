@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.3-dev.7\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.3-dev.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -111,7 +111,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:931 lib/post.php:777 lib/term.php:442 lib/user.php:445
+#: lib/admin.php:931 lib/post.php:791 lib/term.php:442 lib/user.php:445
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2263,8 +2263,8 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:231 lib/media.php:476 lib/media.php:636
-#: lib/media.php:1501 lib/pro/admin/advanced.php:232
+#: lib/gpl/admin/advanced.php:231 lib/media.php:478 lib/media.php:638
+#: lib/media.php:1503 lib/pro/admin/advanced.php:232
 #: lib/pro/util/checkimgdims.php:92
 msgid "Media Library"
 msgstr ""
@@ -2402,13 +2402,13 @@ msgid "Bitly URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:419 lib/pro/admin/advanced.php:415
-#: lib/pro/util/shorten.php:266
+#: lib/pro/util/shorten.php:268
 msgctxt "option label"
 msgid "Bitly Username"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:424 lib/pro/admin/advanced.php:420
-#: lib/pro/util/shorten.php:281
+#: lib/pro/util/shorten.php:283
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
@@ -2434,7 +2434,7 @@ msgid "DLMY.App URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:445 lib/pro/admin/advanced.php:441
-#: lib/pro/util/shorten.php:310
+#: lib/pro/util/shorten.php:312
 msgctxt "option label"
 msgid "DLMY.App API Key"
 msgstr ""
@@ -2460,7 +2460,7 @@ msgid "Ow.ly URL Shortener"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:469 lib/pro/admin/advanced.php:465
-#: lib/pro/util/shorten.php:333
+#: lib/pro/util/shorten.php:335
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
@@ -2471,7 +2471,7 @@ msgid "Your Own URL Shortener (YOURLS)"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:479 lib/pro/admin/advanced.php:475
-#: lib/pro/util/shorten.php:381
+#: lib/pro/util/shorten.php:383
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
@@ -2602,13 +2602,13 @@ msgid "Twitter Card Description"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:125 lib/gpl/admin/post.php:146 lib/meta.php:248
-#: lib/meta.php:273 lib/pro/admin/meta.php:134 lib/pro/admin/post.php:148
+#: lib/meta.php:272 lib/pro/admin/meta.php:134 lib/pro/admin/post.php:148
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gpl/admin/meta.php:133 lib/gpl/admin/post.php:155 lib/meta.php:252
-#: lib/meta.php:277 lib/pro/admin/meta.php:141 lib/pro/admin/post.php:156
+#: lib/meta.php:276 lib/pro/admin/meta.php:141 lib/pro/admin/post.php:156
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -2626,7 +2626,7 @@ msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:165 lib/post.php:1201 lib/pro/admin/meta.php:178
+#: lib/gpl/admin/meta.php:165 lib/post.php:1215 lib/pro/admin/meta.php:178
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
@@ -2847,72 +2847,72 @@ msgstr ""
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 
-#: lib/media.php:438
+#: lib/media.php:440
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:479
+#: lib/media.php:481
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:480 lib/media.php:639
+#: lib/media.php:482 lib/media.php:641
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:496
+#: lib/media.php:498
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:520
+#: lib/media.php:522
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:638
+#: lib/media.php:640
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:641
+#: lib/media.php:643
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1027
+#: lib/media.php:1029
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1507 lib/pro/media/ngg.php:132
+#: lib/media.php:1509 lib/pro/media/ngg.php:132
 #: lib/pro/util/checkimgdims.php:94
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1517
+#: lib/media.php:1519
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1595
+#: lib/media.php:1597
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1623
+#: lib/media.php:1625
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -5045,77 +5045,77 @@ msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:256 lib/meta.php:283
+#: lib/meta.php:256 lib/meta.php:282
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/meta.php:288
+#: lib/meta.php:287
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:417
+#: lib/meta.php:416
 msgctxt "option label"
 msgid "Facebook Debugger"
 msgstr ""
 
-#: lib/meta.php:419
+#: lib/meta.php:418
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:423
+#: lib/meta.php:422
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:425
+#: lib/meta.php:424
 msgctxt "submit button"
 msgid "Validate Data Markup"
 msgstr ""
 
-#: lib/meta.php:429
+#: lib/meta.php:428
 msgctxt "option label"
 msgid "Pinterest Rich Pin Validator"
 msgstr ""
 
-#: lib/meta.php:431
+#: lib/meta.php:430
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:435
+#: lib/meta.php:434
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:437
+#: lib/meta.php:436
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:441
+#: lib/meta.php:440
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:443
+#: lib/meta.php:442
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:448
+#: lib/meta.php:447
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:450
+#: lib/meta.php:449
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:830
+#: lib/meta.php:829
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -5314,153 +5314,153 @@ msgid ""
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:572 lib/post.php:727
+#: lib/post.php:586 lib/post.php:741
 msgid "checking meta tags for %1$s ID %2$s"
 msgstr ""
 
-#: lib/post.php:889
+#: lib/post.php:903
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:926
+#: lib/post.php:940
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:928
+#: lib/post.php:942
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:930
+#: lib/post.php:944
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:931
+#: lib/post.php:945
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:943 lib/util.php:1671
+#: lib/post.php:957 lib/util.php:1671
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:956
+#: lib/post.php:970
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:969
+#: lib/post.php:983
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:982
+#: lib/post.php:996
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1008
+#: lib/post.php:1022
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1008
+#: lib/post.php:1022
 msgid ""
 "Schema JSON-LD markup is highly recommended for higher ranking and better "
 "click-through rates in Google search results."
 msgstr ""
 
-#: lib/post.php:1008
+#: lib/post.php:1022
 msgid ""
 "You should consider activating the %1$s add-on to include this additional "
 "markup in the webpage for Google."
 msgstr ""
 
-#: lib/post.php:1028
+#: lib/post.php:1042
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1040
+#: lib/post.php:1054
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1056
+#: lib/post.php:1070
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1056
+#: lib/post.php:1070
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:1056
+#: lib/post.php:1070
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1088
+#: lib/post.php:1102
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1089
+#: lib/post.php:1103
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1095
+#: lib/post.php:1109
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1098
+#: lib/post.php:1112
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1100
+#: lib/post.php:1114
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1379 lib/script.php:232
+#: lib/post.php:1393 lib/script.php:232
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1388
+#: lib/post.php:1402
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1389
+#: lib/post.php:1403
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1400
+#: lib/post.php:1414
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1401
+#: lib/post.php:1415
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1402
+#: lib/post.php:1416
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1403
+#: lib/post.php:1417
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1477
+#: lib/post.php:1491
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -5629,27 +5629,27 @@ msgid ""
 "activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: lib/pro/util/shorten.php:246
+#: lib/pro/util/shorten.php:248
 msgid "The URL shortening library file \"%s\" is missing and required."
 msgstr ""
 
-#: lib/pro/util/shorten.php:265 lib/pro/util/shorten.php:309
-#: lib/pro/util/shorten.php:332 lib/pro/util/shorten.php:380
+#: lib/pro/util/shorten.php:267 lib/pro/util/shorten.php:311
+#: lib/pro/util/shorten.php:334 lib/pro/util/shorten.php:382
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: lib/pro/util/shorten.php:277
+#: lib/pro/util/shorten.php:279
 msgid ""
 "The \"%1$s\" and \"%2$s\" option values are empty &mdash; at least one "
 "option value is required."
 msgstr ""
 
-#: lib/pro/util/shorten.php:282
+#: lib/pro/util/shorten.php:284
 msgctxt "option label"
 msgid "Bitly API Key"
 msgstr ""
 
-#: lib/pro/util/shorten.php:424
+#: lib/pro/util/shorten.php:426
 msgid ""
 "Incomplete and/or missing API credentials for the \"%s\" URL shortening "
 "service."

@@ -107,7 +107,7 @@
 
 'wpsso_get_post_options' ( $options, $post_id, $mod )	// Pro version
 
-'wpsso_get_short_url' ( $long_url, $service_key, $mod, $context )
+'wpsso_get_short_url' ( $long_url, $service_id, $mod )
 
 'wpsso_get_site_defaults' ( $defaults )
 
@@ -123,9 +123,9 @@
 
 'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false )	// Pro version
 
-'wpsso_image_upscale_max' ( $max_diff = 50, $img_info )	// Pro version
+'wpsso_image_upscale_max' ( $max_diff = 50, $image_src_args )	// Pro version
 
-'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $img_info )	// Pro version
+'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args )	// Pro version
 
 'wpsso_is_functions' ( $is_functions )
 

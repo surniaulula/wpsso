@@ -909,7 +909,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$use_prev = $this->p->options['og_vid_prev_img'];		// default option value is true/false
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
-			$this->p->util->clear_uniq_urls( array( 'video', 'content_video', 'video_info' ) );
+			$this->p->util->clear_uniq_urls( array( 'video', 'content_video', 'video_details' ) );
 
 			/**
 			 * Get video information and preview enable/disable option from the post/term/user meta.

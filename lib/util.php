@@ -2055,8 +2055,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( empty( $atts['short_url'] ) ) {
-				$service_key = $this->p->options['plugin_shortener'];
-				$short_url   = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
+				$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
+					$this->p->options[ 'plugin_shortener' ], $mod );
 			} else {
 				$short_url = $atts['short_url'];
 			}

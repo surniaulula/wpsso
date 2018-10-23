@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			'ngg_src' => '[^\'"]+\/cache\/([0-9]+)_(crop)?_[0-9]+x[0-9]+_[^\/\'"]+|[^\'"]+-nggid0[1-f]([0-9]+)-[^\'"]+',
 		);
 
-		private static $image_src_info  = null;
+		private static $image_src_args  = null;
 
 		public function __construct( &$plugin ) {
 
@@ -331,19 +331,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 * Use these static methods set / reset information about the image being processed
 		 * for down-stream filters / methods lacking this information.
 		 */
-		public static function set_image_src_info( $image_src_args = null ) {
-			self::$image_src_info = $image_src_args;
+		public static function set_image_src_args( $image_src_args = null ) {
+
+			self::$image_src_args = $image_src_args;
 		}
 
-		public static function get_image_src_info( $idx = false ) {
+		public static function get_image_src_args( $idx = false ) {
+
 			if ( $idx !== false ) {
-				if ( isset( self::$image_src_info[$idx] ) ) {
-					return self::$image_src_info[$idx];
+				if ( isset( self::$image_src_args[ $idx ] ) ) {
+					return self::$image_src_args[ $idx ];
 				} else {
 					return null;
 				}
 			} else {
-				return self::$image_src_info;
+				return self::$image_src_args;
 			}
 		}
 
@@ -359,9 +361,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 *	'og:image:alt'     => null,
 		 * );
 		 */
-		public static function reset_image_src_info( array $ret_array = array(), $ret_count = 6 ) {
+		public static function reset_image_src_args( array $ret_array = array(), $ret_count = 6 ) {
 
-			self::$image_src_info = null;
+			self::$image_src_args = null;
 
 			$have_count = count( $ret_array );
 
@@ -400,11 +402,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/**
-		 * Note that every return must be wrapped with self::reset_image_src_info().
+		 * Note that every return must be wrapped with self::reset_image_src_args().
 		 */
 		public function get_attachment_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
 
-			self::set_image_src_info( $args = array(
+			self::set_image_src_args( $args = array(
 				'pid'         => $pid,
 				'size_name'   => $size_name,
 				'check_dupes' => $check_dupes,
@@ -426,7 +428,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( ! empty( $this->p->m['media']['ngg'] ) ) {
 
-					return self::reset_image_src_info( $this->p->m['media']['ngg']->get_image_src( $pid, $size_name, $check_dupes ) );
+					return self::reset_image_src_args( $this->p->m['media']['ngg']->get_image_src( $pid, $size_name, $check_dupes ) );
 
 				} else {
 
@@ -439,7 +441,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->notice->err( sprintf( $error_msg, $this->p->cf['plugin'][$this->p->lca]['short'].' Pro', $pid ) );
 					}
 
-					return self::reset_image_src_info();
+					return self::reset_image_src_args();
 				}
 
 			} elseif ( ! wp_attachment_is_image( $pid ) ) {
@@ -448,7 +450,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'exiting early: attachment '.$pid.' is not an image' );
 				}
 
-				return self::reset_image_src_info();
+				return self::reset_image_src_args();
 			}
 
 			$use_full = false;
@@ -678,7 +680,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: image_downsize returned an empty url' );
 				}
-				return self::reset_image_src_info();
+				return self::reset_image_src_args();
 			}
 
 			/**
@@ -701,11 +703,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$img_url = $this->p->util->fix_relative_url( $img_url );
 					$img_url = apply_filters( $this->p->lca.'_rewrite_image_url', $img_url );
 
-					return self::reset_image_src_info( array( $img_url, $img_width, $img_height, $img_cropped, $pid, $img_alt ) );
+					return self::reset_image_src_args( array( $img_url, $img_width, $img_height, $img_cropped, $pid, $img_alt ) );
 				}
 			}
 
-			return self::reset_image_src_info();
+			return self::reset_image_src_args();
 		}
 
 		public function get_default_images( $num = 1, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false ) {
@@ -909,7 +911,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								$og_single_image['og:image:cropped'],
 								$og_single_image['og:image:id'],
 								$og_single_image['og:image:alt']
-							) = apply_filters( $filter_name, self::reset_image_src_info(), $attr_value, $size_name, false );
+							) = apply_filters( $filter_name, self::reset_image_src_args(), $attr_value, $size_name, false );
 
 							break;
 
@@ -1191,7 +1193,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[0], $match ) ? $match[1] : WPSSO_UNDEF,
 							);
 
-							$og_single_video  = $this->get_video_info( $args, $check_dupes );
+							$og_single_video  = $this->get_video_details( $args, $check_dupes );
 
 							if ( ! empty( $og_single_video ) ) {
 								if ( $this->p->util->push_max( $og_videos, $og_single_video, $num ) ) {
@@ -1243,7 +1245,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 									if ( $check_dupes == false || $this->p->util->is_uniq_url( $args['url'], 'content_video' ) ) {
 
-										$og_single_video = $this->get_video_info( $args, $check_dupes );
+										$og_single_video = $this->get_video_details( $args, $check_dupes );
 
 										if ( ! empty( $og_single_video ) ) {
 											if ( $this->p->util->push_max( $og_videos, $og_single_video, $num ) ) {
@@ -1277,7 +1279,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $og_videos;
 		}
 
-		public function get_video_info( array $args, $check_dupes = true, $fallback = false ) {
+		public function get_video_details( array $args, $check_dupes = true, $fallback = false ) {
 
 			/**
 			 * Make sure we have all array keys defined.
@@ -1296,7 +1298,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return array();
 			}
 
-			$filter_name = $this->p->lca . '_video_info';
+			$filter_name = $this->p->lca . '_video_details';
 
 			/**
 			 * Maybe filter using a specific API library hook.
@@ -1425,7 +1427,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/**
 				 * Remove all meta tags if there's no media URL or media is a duplicate.
 				 */
-				if ( ! $have_media[$mt_media_pre] || ( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video_info' ) ) ) {
+				if ( ! $have_media[$mt_media_pre] || ( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video_details' ) ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'no media url or duplicate - removing ' . $mt_media_pre . ' meta tags' );
@@ -1652,7 +1654,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$upscale_multiplier = 1;
 
 			if ( $this->p->options['plugin_upscale_images'] ) {
-				$img_info            = (array) self::get_image_src_info();
+				$img_info            = (array) self::get_image_src_args();
 				$upscale_img_max     = apply_filters( $this->p->lca . '_image_upscale_max', $this->p->options['plugin_upscale_img_max'], $img_info );
 				$upscale_multiplier  = 1 + ( $upscale_img_max / 100 );
 				$upscale_full_width  = round( $full_width * $upscale_multiplier );

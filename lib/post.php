@@ -364,35 +364,49 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod = $this->get_mod( $post_id );
 
 			if ( empty( $mod['post_type'] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_type is empty' );
 				}
+
 				return $shortlink;	// Return original shortlink.
+
 			} elseif ( empty( $mod['post_status'] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_status is empty' );
 				}
+
 				return $shortlink;	// Return original shortlink.
+
 			} elseif ( $mod['post_status'] === 'auto-draft' ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_status is auto-draft' );
 				}
+
 				return $shortlink;	// Return original shortlink.
+
 			} elseif ( $mod['post_status'] === 'trash' ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_status is trash' );
 				}
+
 				return $shortlink;	// Return original shortlink.
 			}
 
-			$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
-			$service_key = $this->p->options['plugin_shortener'];
-			$short_url   = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $service_key, $mod, $context );
+			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = false );
+
+			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
+				$this->p->options[ 'plugin_shortener' ], $mod );
 
 			if ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// Invalid url.
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: invalid short URL (' . $short_url . ') returned by filters' );
 				}
+
 				return $shortlink;	// Return original shortlink.
 			}
 

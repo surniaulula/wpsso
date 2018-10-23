@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.16.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-10-22 09:43-0600\n"
-"PO-Revision-Date: 2018-10-22 09:44-0600\n"
+"POT-Creation-Date: 2018-10-23 06:39-0600\n"
+"PO-Revision-Date: 2018-10-23 06:40-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4079,8 +4079,8 @@ msgstr "Achetez l'ajout %s pour installer la mise à jour Pro et utilisez les fo
 
 #: lib/messages.php:2162
 msgctxt "option comment"
-msgid "[click to preview Pro options]"
-msgstr "[cliquez pour un aperçu des options Pro]"
+msgid "select to preview Pro options"
+msgstr "sélectionner pour prévisualiser les options Pro"
 
 #: lib/messages.php:2175
 msgctxt "plugin action link"
@@ -5484,11 +5484,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgctxt "option comment"
-#~ msgid "[select preview]"
-#~ msgstr "[sélection d'aperçu]"
-
-#~ msgctxt "option comment"
-#~ msgid "%s required"
-#~ msgstr "%s requis"

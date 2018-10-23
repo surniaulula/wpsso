@@ -258,15 +258,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 	
 			} else {
 
-				$sharing_url = $this->p->util->get_sharing_url( $mod, false );     // $add_page is false.
+				$sharing_url   = $this->p->util->get_sharing_url( $mod, false );     // $add_page is false.
 				$canonical_url = $this->p->util->get_canonical_url( $mod, false ); // $add_page is false.
 
 				if ( $mod['is_post'] ) {
 					$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context is post.
 				} else {
-					$service_key = $this->p->options['plugin_shortener'];
-					$shortlink_url = apply_filters( $this->p->lca . '_get_short_url',
-						$sharing_url, $service_key, $mod, $mod['name'] );
+					$shortlink_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
+						$this->p->options['plugin_shortener'], $mod );
 				}
 
 				$table_rows[] = '' . 
@@ -1355,7 +1354,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						'api'      => '',
 					);
 
-					$og_videos = $this->p->media->get_video_info( $args, $check_dupes, true );
+					$og_videos = $this->p->media->get_video_details( $args, $check_dupes, true );
 
 					if ( $this->p->util->push_max( $og_ret, $og_videos, $num ) )  {
 						return $og_ret;

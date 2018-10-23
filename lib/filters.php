@@ -162,11 +162,14 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 					if ( ( $wpseo_notif = get_transient( Yoast_Notification_Center::TRANSIENT_KEY ) ) !== false ) {
 
-						$wpseo_notif = json_decode( $wpseo_notif );
+						$wpseo_notif = json_decode( $wpseo_notif, $assoc = false );
 
 						if ( ! empty( $wpseo_notif ) ) {
+
 							foreach ( $wpseo_notif as $num => $notif_msgs ) {
+
 								if ( isset( $notif_msgs->options->type ) && $notif_msgs->options->type == 'error' ) {
+
 									if ( strpos( $notif_msgs->message, $name ) !== false ) {
 
 										unset( $wpseo_notif[$num] );

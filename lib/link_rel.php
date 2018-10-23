@@ -122,9 +122,8 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 						$this->p->debug->log( 'using ' . $this->p->lca . '_get_short_url filters to get shortlink' );
 					}
 
-					$service_key = $this->p->options['plugin_shortener'];
-
-					$shortlink = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $service_key, $mod, $mod['name'] );
+					$shortlink = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
+						$this->p->options['plugin_shortener'], $mod );
 				}
 
 				if ( empty( $shortlink ) ) {
