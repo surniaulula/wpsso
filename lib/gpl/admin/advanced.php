@@ -367,13 +367,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$tr_html = array();
 
 			foreach ( array(
-				'bitly'   => 'plugin_bitly_login',	// Bitly Username
-				'dlmyapp' => 'plugin_dlmyapp_api_key',	// DLMY.App API Key
-				'google'  => 'plugin_google_api_key',	// Google Project API Key
-				'owly'    => 'plugin_owly_api_key',	// Ow.ly API Key
-				'yourls'  => 'plugin_yourls_api_url',	// YOURLS API URL
+				'bitly'    => 'plugin_bitly_login',	// Bitly Username
+				'dlmyapp'  => 'plugin_dlmyapp_api_key',	// DLMY.App API Key
+				//'google' => 'plugin_google_api_key',	// Google Project API Key
+				'owly'     => 'plugin_owly_api_key',	// Ow.ly API Key
+				'yourls'   => 'plugin_yourls_api_url',	// YOURLS API URL
 			) as $tr_key => $opt_key ) {
-				$tr_html[$tr_key] = empty( $this->p->options[$opt_key] ) &&
+
+				$tr_html[$tr_key] = empty( $this->p->options[ $opt_key ] ) &&
 					$this->p->options['plugin_shortener'] !== $tr_key ?
 						$form->get_tr_hide( 'basic' ) : '';
 			}
@@ -410,7 +411,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'', 'add_link_rel_shortlink_html_tag', null, 'add_link_rel_shortlink' ) . '</td>';	// Group with option in head tags list
 
 			/**
-			 * Bitly URL  shortener.
+			 * Bitly URL shortener.
 			 */
 			$table_rows['subsection_plugin_bitly'] = $tr_html['bitly'] . 
 			'<td colspan="2" class="subsection"><h4>' . _x( 'Bitly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
@@ -436,7 +437,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td class="blank mono">' . $this->p->options['plugin_bitly_domain'] . '</td>';
 
 			/**
-			 * DLMY.App URL  shortener.
+			 * DLMY.App URL shortener.
 			 */
 			$table_rows['subsection_plugin_dlmyapp'] = $tr_html['dlmyapp'] . 
 			'<td colspan="2" class="subsection"><h4>' . _x( 'DLMY.App URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
@@ -446,21 +447,20 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td class="blank mono">' . $this->p->options['plugin_dlmyapp_api_key'] . '</td>';
 
 			/**
-			 * Google URL  shortener.
-			 */
+			 * Google APIs.
+			 *
 			$table_rows['subsection_plugin_googl'] = $tr_html[ 'google' ] . 
 			'<td colspan="2" class="subsection"><h4>' . _x( 'Google APIs', 'metabox title', 'wpsso' ) . '</h4></td>';
-
 			$table_rows['plugin_google_api_key'] = $tr_html[ 'google' ] . 
 			$form->get_th_html( _x( 'Google Project API Key', 'option label', 'wpsso' ), '', 'plugin_google_api_key' ) . 
 			'<td class="blank mono">' . $this->p->options['plugin_google_api_key'] . '</td>';
-
 			$table_rows['plugin_google_places'] = $tr_html[ 'google' ] . 
 			$form->get_th_html( _x( 'Places API is Enabled', 'option label', 'wpsso' ), '', 'plugin_google_places' ) . 
 			'<td class="blank">' . _x( $this->p->cf[ 'form' ][ 'yes_no' ][ $this->p->options[ 'plugin_google_places' ] ], 'option value', 'wpsso' ) . '</td>';
+			*/
 
 			/**
-			 * Owly URL  shortener.
+			 * Owly URL shortener.
 			 */
 			$table_rows['subsection_plugin_owly'] = $tr_html['owly'] . 
 			'<td colspan="2" class="subsection"><h4>' . _x( 'Ow.ly URL Shortener', 'metabox title', 'wpsso' ) . '</h4></td>';
@@ -470,7 +470,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td class="blank mono">' . $this->p->options['plugin_owly_api_key'] . '</td>';
 
 			/**
-			 * YOURLS URL  shortener.
+			 * YOURLS URL shortener.
 			 */
 			$table_rows['subsection_plugin_yourls'] = $tr_html['yourls'] . 
 			'<td colspan="2" class="subsection"><h4>' . _x( 'Your Own URL Shortener (YOURLS)', 'metabox title', 'wpsso' ) . '</h4></td>';

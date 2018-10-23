@@ -1043,21 +1043,31 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_dashicons( $idx = false, $add_none = false ) {
+
 			return self::get_formatted_array( self::$dashicons, $idx, $add_none );
 		}
 
 		public static function get_pub_lang( $pub = '' ) {
+
 			switch ( $pub ) {
+
 				case 'fb':
-					return self::$pub_lang['facebook'];
+
+					return self::$pub_lang[ 'facebook' ];
+
 				case 'gplus':
 				case 'googleplus':
-					return self::$pub_lang['google'];
+
+					return self::$pub_lang[ 'google' ];
+
 				case 'pin':
-					return self::$pub_lang['pinterest'];
+
+					return self::$pub_lang[ 'pinterest' ];
+
 				default:
-					if ( isset( self::$pub_lang[$pub] ) ) {
-						return self::$pub_lang[$pub];
+
+					if ( isset( self::$pub_lang[ $pub ] ) ) {
+						return self::$pub_lang[ $pub ];
 					} else {
 						return array();
 					}
@@ -1773,28 +1783,36 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					 * "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"
 					 */
 					case ( strpos( $ua, 'facebookexternalhit/' ) !== false ):
+
 						self::$cache_crawler_name = 'facebook';
+
 						break;
 
 					/**
 					 * "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
 					 */
 					case ( strpos( $ua, 'compatible; bingbot/' ) !== false ):
+
 						self::$cache_crawler_name = 'bing';
+
 						break;
 
 					/**
 					 * "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 					 */
 					case ( strpos( $ua, 'compatible; googlebot/' ) !== false ):
+
 						self::$cache_crawler_name = 'google';
+
 						break;
 
 					/**
 					 * Mozilla/5.0 (compatible; Google-Structured-Data-Testing-Tool +https://search.google.com/structured-data/testing-tool)"
 					 */
 					case ( strpos( $ua, 'compatible; google-structured-data-testing-tool' ) !== false ):
+
 						self::$cache_crawler_name = 'google';
+
 						break;
 
 					/**
@@ -1802,7 +1820,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					 */
 					case ( strpos( $ua, 'pinterest/' ) !== false ):
 					case ( strpos( $ua, 'pinterestbot/' ) !== false ):
+
 						self::$cache_crawler_name = 'pinterest';
+
 						break;
 
 					/**
@@ -1816,25 +1836,33 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					 * "W3C_Validator/1.3 http://validator.w3.org/services"
 					 */
 					case ( strpos( $ua, 'w3c_validator/' ) !== false ):
+
 						self::$cache_crawler_name = 'w3c';
+
 						break;
 
 					/**
 					 * "Validator.nu/LV http://validator.w3.org/services"
 					 */
 					case ( strpos( $ua, 'validator.nu/' ) !== false ):
+
 						self::$cache_crawler_name = 'w3c';
+
 						break;
 
 					/**
 					 * "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MTC19V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.81 Mobile Safari/537.36 (compatible; validator.ampproject.org) AppEngine-Google; (+http://code.google.com/appengine; appid: s~amp-validator)"
 					 */
 					case ( strpos( $ua, 'validator.ampproject.org' ) !== false ):
+
 						self::$cache_crawler_name = 'amp';
+
 						break;
 
 					default:
+
 						self::$cache_crawler_name = 'none';
+
 						break;
 				}
 
@@ -1845,14 +1873,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function a2aa( $a ) {
+
 			$aa = array();
+
 			foreach ( $a as $i ) {
 				$aa[][] = $i;
 			}
+
 			return $aa;
 		}
 
 		public static function is_assoc( $arr ) {
+
 			if ( ! is_array( $arr ) ) {
 				return false;
 			} else {
@@ -1861,12 +1893,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_opts_begin( $str, array $opts ) {
+
 			$found = array();
+
 			foreach ( $opts as $key => $value ) {
 				if ( strpos( $key, $str ) === 0 ) {
 					$found[$key] = $value;
 				}
 			}
+
 			return $found;
 		}
 

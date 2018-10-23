@@ -252,11 +252,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						/*
 						case 'places-google_places':
-
 							$chk['optval'] = 'plugin_google_places';
-
 							break;
+						 */
 
 						case 'util-checkimgdims':
 
