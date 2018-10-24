@@ -341,7 +341,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.3-b.1 (2018/10/23)**
+**Version 4.16.3 (2018/10/24)**
 
 * *New Features*
 	* None.
@@ -357,7 +357,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_filter_excerpt' to 'wpsso_can_filter_excerpt'
 		* 'wpsso_filter_title'   to 'wpsso_can_filter_title'
 		* 'wpsso_video_info'     to 'wpsso_video_details'
-	* Renamed option keys for standardization between the Core plugin and its add-ons:
+	* Renamed option keys for standardization:
 		* 'site_org_type'   to 'site_org_schema_type'
 		* 'schema_desc_len' to 'schema_desc_max_len'
 		* 'og_title_len'    to 'og_title_max_len'
@@ -509,11 +509,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.3-b.1 =
+= 4.16.3 =
 
-(2018/10/23) Removed the "Google Project API Key" option since there are no Google API modules currently used. Added a new WpssoPage get_the_text() method. Renamed option keys for standardization.
-
-= 4.16.2 =
-
-(2018/10/20) Removed the Google URL Shortener service, which was deprecated by Google in March of 2018. Added a new "Places API is Enabled" option for Google APIs (Pro version).
+(2018/10/24) Removed the "Google Project API Key" option since there are no Google API modules currently used. Added a new WpssoPage get_the_text() method. Renamed option keys for standardization.
 
