@@ -24,6 +24,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		protected function add_actions() {
 
+			$is_admin   = is_admin();
+			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+			$cm_fb_name = $this->p->options['plugin_cm_fb_name'];
+
 			if ( ! SucomUtil::role_exists( 'person' ) ) {
 				add_role( 'person', _x( 'Person', 'user role', 'wpsso' ), array() );
 			}
@@ -36,16 +40,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
-			$fb_cm_name_value = $this->p->options['plugin_cm_fb_name'];
-
 			add_filter( 'user_contactmethods', array( $this, 'add_contact_methods' ), 20, 2 );
-			add_filter( 'user_' . $fb_cm_name_value . '_label', array( $this, 'fb_contact_label' ), 20, 1 );
+			add_filter( 'user_' . $cm_fb_name . '_label', array( $this, 'fb_contact_label' ), 20, 1 );
 
 			/**
 			 * Hook a minimum number of admin actions to maximize performance. The user_id argument is 
 			 * always present when we're editing a user, but missing when viewing our own profile page.
 			 */
-			if ( is_admin() ) {
+			if ( $is_admin ) {
 
 				if ( ! empty( $_GET ) ) {
 
@@ -80,9 +82,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$user_id = SucomUtil::get_request_value( 'user_id' );	// uses sanitize_text_field
 
 				if ( empty( $user_id ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: empty user_id' );
 					}
+
 					return;
 				}
 
@@ -475,8 +479,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$metabox_screen  = $this->p->lca . '-user';
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
-			$add_metabox     = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
-			$add_metabox     = apply_filters( $this->p->lca . '_add_metabox_user', $add_metabox, $user_id );
+			$callback_args   = array(	// The SECOND argument passed to the callback.
+				'__block_editor_compatible_meta_box' => true,
+			);
+
+			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
+			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_user', $add_metabox, $user_id );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'add metabox for user ID ' . $user_id . ' is ' . 
@@ -486,7 +494,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
 					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
-						$metabox_context, $metabox_prio );
+						$metabox_context, $metabox_prio, $callback_args );
 			}
 		}
 

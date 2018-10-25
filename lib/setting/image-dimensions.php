@@ -37,13 +37,22 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 		 * Called by the extended WpssoAdmin class.
 		 */
 		protected function add_meta_boxes() {
-			add_meta_box( $this->pagehook.'_image_dimensions',
-				_x( 'Social and Search Image Sizes / Dimensions', 'metabox title', 'wpsso' ),
-					array( $this, 'show_metabox_image_dimensions' ), $this->pagehook, 'normal' );
+
+			$metabox_id      = 'image_dimensions';
+			$metabox_title   = _x( 'Social and Search Image Sizes / Dimensions', 'metabox title', 'wpsso' );
+			$metabox_screen  = $this->pagehook;
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
+
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+				array( $this, 'show_metabox_image_dimensions' ), $metabox_screen,
+					$metabox_context, $metabox_prio );
 		}
 
 		public function filter_action_buttons( $action_buttons ) {
+
 			$action_buttons[0]['reload_default_sizes'] = _x( 'Reload Default Sizes', 'submit button', 'wpsso' );
+
 			return $action_buttons;
 		}
 

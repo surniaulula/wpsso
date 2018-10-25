@@ -21,24 +21,38 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 				$this->p->debug->mark();
 			}
 
-			$this->menu_id = $id;
+			$this->menu_id   = $id;
 			$this->menu_name = $name;
-			$this->menu_lib = $lib;
-			$this->menu_ext = $ext;
+			$this->menu_lib  = $lib;
+			$this->menu_ext  = $ext;
 		}
 
-		// called by the extended WpssoAdmin class
+		/**
+		 * Called by the extended WpssoAdmin class.
+		 */
 		protected function add_meta_boxes() {
 
 			$this->maybe_show_language_notice();
 
-			add_meta_box( $this->pagehook . '_general',
-				_x( 'Essential General Settings', 'metabox title', 'wpsso' ),
-					array( $this, 'show_metabox_general' ), $this->pagehook, 'normal' );
+			$metabox_id      = 'general';
+			$metabox_title   = _x( 'Essential General Settings', 'metabox title', 'wpsso' );
+			$metabox_screen  = $this->pagehook;
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
 
-			add_meta_box( $this->pagehook . '_advanced',
-				_x( 'Optional Advanced Settings', 'metabox title', 'wpsso' ),
-					array( $this, 'show_metabox_advanced' ), $this->pagehook, 'normal' );
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+				array( $this, 'show_metabox_general' ), $metabox_screen,
+					$metabox_context, $metabox_prio );
+
+			$metabox_id      = 'advanced';
+			$metabox_title   = _x( 'Optional Advanced Settings', 'metabox title', 'wpsso' );
+			$metabox_screen  = $this->pagehook;
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
+
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+				array( $this, 'show_metabox_advanced' ), $metabox_screen,
+					$metabox_context, $metabox_prio );
 
 			/**
 			 * Issues a warning notice if the default image size is too small.

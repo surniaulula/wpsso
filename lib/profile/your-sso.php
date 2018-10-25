@@ -33,15 +33,19 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 			) );
 		}
 
-		// called by the extended WpssoAdmin class
+		/**
+		 * Called by the extended WpssoAdmin class.
+		 */
 		protected function add_meta_boxes() {
 
-			$metabox_id = $this->p->cf['meta']['id'];
-			$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+			$metabox_id      = $this->p->cf['meta']['id'];
+			$metabox_title   = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
 
-			add_meta_box( $this->pagehook.'_'.$metabox_id, $metabox_title, 
-				array( $this, 'show_metabox_custom_meta' ), $this->pagehook, 'normal' );
-
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, 
+				array( $this, 'show_metabox_custom_meta' ), $this->pagehook,
+					$metabox_context, $metabox_prio );
 		}
 
 		public function filter_action_buttons( $action_buttons ) {
@@ -53,14 +57,14 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_custom_meta() {
 
-			$user_id = get_current_user_id();	// since wp 3.0
-			$user = get_userdata( $user_id );
+			$user_id  = get_current_user_id();	// since wp 3.0
+			$user_obj = get_userdata( $user_id );
 
-			if ( empty( $user->ID ) ) {	// just in case
+			if ( empty( $user_obj->ID ) ) {	// just in case
 				wp_die( __( 'Invalid user ID.' ) );
 			}
 
-			$this->p->m['util']['user']->show_metabox_custom_meta( $user );
+			$this->p->m['util']['user']->show_metabox_custom_meta( $user_obj );
 		}
 	}
 }

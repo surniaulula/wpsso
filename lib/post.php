@@ -25,7 +25,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		protected function add_actions() {
 
-			if ( is_admin() ) {
+			$is_admin   = is_admin();
+			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+
+			if ( $is_admin ) {
 
 				add_action( 'wp_ajax_' . $this->p->lca . '_get_metabox_post', array( $this, 'ajax_get_metabox_post' ) );
 
@@ -64,12 +67,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
-
 			/**
 			 * Add the columns when doing AJAX as well to allow Quick Edit to add the required columns.
 			 */
-			if ( is_admin() || $doing_ajax ) {
+			if ( $is_admin || $doing_ajax ) {
 
 				/**
 				 * Only use public post types (to avoid menu items, product variations, etc.).
@@ -124,9 +125,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					add_filter( 'pre_get_shortlink', array( $this, 'maybe_restore_shortlink' ), SucomUtil::get_max_int(), 4 );
 
 					if ( function_exists( 'wpme_get_shortlink_handler' ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'removing the jetpack pre_get_shortlink filter hook' );
 						}
+
 						remove_filter( 'pre_get_shortlink', 'wpme_get_shortlink_handler', 1 );
 					}
 				}
@@ -1130,18 +1133,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ( $post_obj = SucomUtil::get_post_object( true ) ) === false || empty( $post_obj->post_type ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: object without post type' );
 				}
+
 				return;
+
 			} else {
 				$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 			}
 
 			if ( ( $post_obj->post_type === 'page' && ! current_user_can( 'edit_page', $post_id ) ) || ! current_user_can( 'edit_post', $post_id ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'insufficient privileges to add metabox for ' . $post_obj->post_type . ' ID ' . $post_id );
 				}
+
 				return;
 			}
 
@@ -1150,8 +1158,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$metabox_screen  = $post_obj->post_type;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
-			$add_metabox     = empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ? false : true;
-			$add_metabox     = apply_filters( $this->p->lca . '_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
+			$callback_args   = array(	// The SECOND argument passed to the callback.
+				'__block_editor_compatible_meta_box' => true,
+			);
+
+			$add_metabox = empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ? false : true;
+			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'add metabox for post ID ' . $post_id . ' of type ' . $post_obj->post_type . ' is ' . 
@@ -1161,7 +1173,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
 					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
-						$metabox_context, $metabox_prio );
+						$metabox_context, $metabox_prio, $callback_args );
 			}
 		}
 

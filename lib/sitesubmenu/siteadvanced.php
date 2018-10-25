@@ -43,9 +43,15 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteadvanced' ) && class_exists( 'WpssoAdm
 		 */
 		protected function add_meta_boxes() {
 
-			add_meta_box( $this->pagehook . '_plugin',
-				_x( 'Network Advanced Settings', 'metabox title', 'wpsso' ),
-					array( $this, 'show_metabox_plugin' ), $this->pagehook, 'normal' );
+			$metabox_id      = 'plugin';
+			$metabox_title   = _x( 'Network Advanced Settings', 'metabox title', 'wpsso' );
+			$metabox_screen  = $this->pagehook;
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
+
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+				array( $this, 'show_metabox_plugin' ), $metabox_screen,
+					$metabox_context, $metabox_prio );
 
 			/**
 			 * Add a class to set a minimum width for the network postboxes.

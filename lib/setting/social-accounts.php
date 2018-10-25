@@ -34,23 +34,29 @@ if ( ! class_exists( 'WpssoSettingSocialAccounts' ) && class_exists( 'WpssoAdmin
 
 			$this->maybe_show_language_notice();
 
-			add_meta_box( $this->pagehook.'_social_accounts',
-				_x( 'WebSite Social Pages and Accounts', 'metabox title', 'wpsso' ),
-					array( $this, 'show_metabox_social_accounts' ), $this->pagehook, 'normal' );
+			$metabox_id      = 'social_accounts';
+			$metabox_title   = _x( 'WebSite Social Pages and Accounts', 'metabox title', 'wpsso' );
+			$metabox_screen  = $this->pagehook;
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
+
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+				array( $this, 'show_metabox_social_accounts' ), $metabox_screen,
+					$metabox_context, $metabox_prio );
 		}
 
 		public function show_metabox_social_accounts() {
 
 			$metabox_id = $this->menu_id;
 
-			echo '<table class="sucom-settings '.$this->p->lca.'">';
+			echo '<table class="sucom-settings ' . $this->p->lca . '">';
 
 			$table_rows = array_merge( $this->get_table_rows( $metabox_id, 'general' ),
-				apply_filters( SucomUtil::sanitize_hookname( $this->p->lca.'_'.$metabox_id.'_general_rows' ),
+				apply_filters( SucomUtil::sanitize_hookname( $this->p->lca . '_' . $metabox_id . '_general_rows' ),
 					array(), $this->form ) );
 					
 			foreach ( $table_rows as $num => $row ) {
-				echo '<tr>'.$row.'</tr>';
+				echo '<tr>' . $row . '</tr>';
 			}
 
 			echo '</table>';

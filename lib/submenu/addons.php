@@ -39,9 +39,15 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 	
 			$short_name = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
 
-			add_meta_box( $this->pagehook.'_addons',
-				sprintf( _x( 'Add-ons for %s', 'metabox title', 'wpsso' ), $short_name ),
-					array( $this, 'show_metabox_addons' ), $this->pagehook, 'normal' );
+			$metabox_id      = 'addons';
+			$metabox_title   = sprintf( _x( 'Add-ons for %s', 'metabox title', 'wpsso' ), $short_name );
+			$metabox_screen  = $this->pagehook;
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
+
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+				array( $this, 'show_metabox_addons' ), $metabox_screen,
+					$metabox_context, $metabox_prio );
 		}
 
 		public function show_metabox_addons() {

@@ -21,10 +21,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->menu_id = $id;
+			$this->menu_id   = $id;
 			$this->menu_name = $name;
-			$this->menu_lib = $lib;
-			$this->menu_ext = $ext;
+			$this->menu_lib  = $lib;
+			$this->menu_ext  = $ext;
 		}
 
 		/**
@@ -34,13 +34,25 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$this->maybe_show_language_notice();
 
-			add_meta_box( $this->pagehook . '_opengraph',
-				_x( 'All Social WebSites / Open Graph', 'metabox title', 'wpsso' ),
-					array( $this, 'show_metabox_opengraph' ), $this->pagehook, 'normal' );
+			$metabox_id      = 'opengraph';
+			$metabox_title   = _x( 'All Social WebSites / Open Graph', 'metabox title', 'wpsso' );
+			$metabox_screen  = $this->pagehook;
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
 
-			add_meta_box( $this->pagehook . '_publishers',
-				_x( 'Specific WebSites and Publishers', 'metabox title', 'wpsso' ),
-					array( $this, 'show_metabox_publishers' ), $this->pagehook, 'normal' );
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+				array( $this, 'show_metabox_opengraph' ), $metabox_screen,
+					$metabox_context, $metabox_prio );
+
+			$metabox_id      = 'publishers';
+			$metabox_title   = _x( 'Specific WebSites and Publishers', 'metabox title', 'wpsso' );
+			$metabox_screen  = $this->pagehook;
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
+
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+				array( $this, 'show_metabox_publishers' ), $metabox_screen,
+					$metabox_context, $metabox_prio );
 
 			/**
 			 * Issues a warning notice if the default image size is too small,

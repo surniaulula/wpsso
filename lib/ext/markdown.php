@@ -29,11 +29,15 @@ if ( ! defined( 'SUEXT_MARKDOWN_FN_BACKLINK_CLASS' ) ) {
 }
 
 if ( ! function_exists( 'suext_markdown' ) ) {
+
 	function suext_markdown( $text, &$debug = false ) {
+
 		static $parser;
+
 		if ( ! isset( $parser ) ) {
 			$parser = new SuextMarkdownParserExtra( $debug );
 		}
+
 		return $parser->transform( $text );
 	}
 }

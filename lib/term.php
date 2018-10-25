@@ -22,7 +22,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		protected function add_actions() {
 
-			if ( is_admin() ) {
+			$is_admin   = is_admin();
+			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
+
+			if ( $is_admin ) {
 
 				/**
 				 * Hook a minimum number of admin actions to maximize performance.
@@ -455,9 +458,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		public function add_meta_boxes() {
 
 			if ( ! current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'insufficient privileges to add metabox for term ' . $this->query_term_id );
 				}
+
 				return;
 			}
 
@@ -466,8 +471,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$metabox_screen  = $this->p->lca . '-term';
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
-			$add_metabox     = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
-			$add_metabox     = apply_filters( $this->p->lca . '_add_metabox_term', $add_metabox, $this->query_term_id );
+			$callback_args   = array(	// The SECOND argument passed to the callback.
+				'__block_editor_compatible_meta_box' => true,
+			);
+
+			$add_metabox = empty( $this->p->options[ 'plugin_add_to_term' ] ) ? false : true;
+			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_term', $add_metabox, $this->query_term_id );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'add metabox for term ID ' . $this->query_term_id . ' is ' . 
@@ -477,7 +486,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			if ( $add_metabox ) {
 				add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
 					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
-						$metabox_context, $metabox_prio );
+						$metabox_context, $metabox_prio, $callback_args );
 			}
 		}
 
