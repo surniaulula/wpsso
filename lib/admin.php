@@ -2792,21 +2792,35 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$showing_ext  = get_transient( $cache_id );				// Returns empty string or $notice_key value. 
 
 				if ( empty( $info['version'] ) ) {					// Plugin not installed.
+
 					continue;
+
 				} elseif ( empty( $info['url']['review'] ) ) {				// Must be hosted on wordpress.org.
+
 					continue;
+
 				} elseif ( $this->p->notice->is_dismissed( $notice_key, $user_id ) ) {	// User has dismissed.
+
 					if ( $showing_ext === $notice_key ) {				// Notice was dismissed $cache_exp_secs ago.
 						break;							// Stop here.
 					}
+
 					continue;							// Get the next plugin.
+
 				} elseif ( empty( $all_times[$ext . '_activate_time'] ) ) {		// Never activated.
+
 					continue;
+
 				} elseif ( $all_times[$ext . '_activate_time'] > $one_week_ago_secs ) {	// Activated less than time ago.
+
 					continue;
+
 				} elseif ( empty( $showing_ext ) || $showing_ext === '1' ) {		// Show this notice for $cache_exp_secs.
+
 					set_transient( $cache_id, $notice_key, $cache_exp_secs );
+
 				} elseif ( $showing_ext !== $notice_key ) {				// We're not showing this plugin right now.
+
 					continue;							// Get the next plugin.
 				}
 
