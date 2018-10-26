@@ -65,15 +65,15 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( $text_domain !== null ) {
 				$this->text_domain = $text_domain;
-			} elseif ( ! empty( $this->p->cf['plugin'][$this->lca]['text_domain'] ) ) {
-				$this->text_domain = $this->p->cf['plugin'][$this->lca]['text_domain'];
+			} elseif ( ! empty( $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ] ) ) {
+				$this->text_domain = $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ];
 			}
 
 			if ( $label_transl !== false ) {
 				$this->label_transl = $label_transl;	// Argument is already translated.
-			} elseif ( ! empty( $this->p->cf['menu']['title'] ) ) {
+			} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'title' ] ) ) {
 				$this->label_transl = sprintf( __( '%s Notice', $this->text_domain ),
-					_x( $this->p->cf['menu']['title'], 'menu title', $this->text_domain ) );
+					_x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', $this->text_domain ) );
 			} else {
 				$this->label_transl = __( 'Notice', $this->text_domain );
 			}
