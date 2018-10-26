@@ -40,12 +40,15 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$metabox_id      = $this->p->cf['meta']['id'];
 			$metabox_title   = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
+			$callback_args   = array(	// Second argument passed to the callback function / method.
+			);
 
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, 
 				array( $this, 'show_metabox_custom_meta' ), $this->pagehook,
-					$metabox_context, $metabox_prio );
+					$metabox_context, $metabox_prio, $callback_args );
 		}
 
 		public function filter_action_buttons( $action_buttons ) {

@@ -90,12 +90,14 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 				$dashboard_col   = $dashboard_col >= $this->max_cols ? 1 : $dashboard_col + 1;
 				$metabox_screen  = $this->pagehook;
-				$metabox_context = 'dashboard_col_' . $dashboard_col;	// Use underscores instead of hyphens to order metaboxes.
+				$metabox_context = 'dashboard_col_' . $dashboard_col;	// Use underscores (not hyphens) to order metaboxes.
 				$metabox_prio    = 'default';
+				$callback_args   = array(	// Second argument passed to the callback function / method.
+				);
 
 				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
 					array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
-						$metabox_context, $metabox_prio );
+						$metabox_context, $metabox_prio, $callback_args );
 
 				add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_' . $metabox_id,
 					array( $this, 'add_class_postbox_dashboard' ) );

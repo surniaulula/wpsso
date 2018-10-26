@@ -2401,9 +2401,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= '</p><p>';
 
 						if ( $idx === 'notice-um-add-on-required' ) {
-							$text .= '<b>'.sprintf( __( 'Install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ), $um_info['name'], $settings_page_link ).'</b> ';
+							$text .= '<b>' . sprintf( __( 'Install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ), $um_info['name'], $settings_page_link ).'</b> ';
 						} else {
-							$text .= '<b>'.sprintf( __( 'The %1$s add-on can be activated from the WordPress %2$s page.', 'wpsso' ), $um_info['name'], $plugins_page_link ) . '</b> ' .
+							$text .= '<b>' . sprintf( __( 'The %1$s add-on can be activated from the WordPress %2$s page.', 'wpsso' ), $um_info['name'], $plugins_page_link ) . '</b> ';
 							$text .= __( 'Please activate this Free add-on now.', 'wpsso' ) . ' ';
 						}
 

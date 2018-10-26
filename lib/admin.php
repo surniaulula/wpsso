@@ -1042,11 +1042,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! self::$pkg[$this->p->lca]['pp'] ) {
 
-				add_meta_box( $this->pagehook . '_purchase_pro', _x( 'Pro Version Available', 'metabox title', 'wpsso' ),
-					array( $this, 'show_metabox_purchase_pro' ), $this->pagehook, 'side_fixed' );
+				$metabox_id      = 'purchase_pro';
+				$metabox_title   = _x( 'Pro Version Available', 'metabox title', 'wpsso' );
+				$metabox_screen  = $this->pagehook;
+				$metabox_context = 'side_fixed';
+				$metabox_prio    = 'default';
+				$callback_args   = array(	// Second argument passed to the callback function / method.
+				);
 
-				add_meta_box( $this->pagehook . '_status_pro', _x( 'Pro Version Features', 'metabox title', 'wpsso' ),
-					array( $this, 'show_metabox_status_pro' ), $this->pagehook, 'side' );
+				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+					array( $this, 'show_metabox_purchase_pro' ), $metabox_screen,
+						$metabox_context, $metabox_prio, $callback_args );
+
+				$metabox_id      = 'status_pro';
+				$metabox_title   = _x( 'Pro Version Features', 'metabox title', 'wpsso' );
+				$metabox_screen  = $this->pagehook;
+				$metabox_context = 'side';
+				$metabox_prio    = 'default';
+				$callback_args   = array(	// Second argument passed to the callback function / method.
+				);
+
+				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+					array( $this, 'show_metabox_status_pro' ), $metabox_screen,
+						$metabox_context, $metabox_prio, $callback_args );
 
 				WpssoUser::reset_metabox_prefs( $this->pagehook, array( 'purchase_pro' ), '', '', true );
 			}

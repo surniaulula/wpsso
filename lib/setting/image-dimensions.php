@@ -43,10 +43,12 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
+			$callback_args   = array(	// Second argument passed to the callback function / method.
+			);
 
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_image_dimensions' ), $metabox_screen,
-					$metabox_context, $metabox_prio );
+					$metabox_context, $metabox_prio, $callback_args );
 		}
 
 		public function filter_action_buttons( $action_buttons ) {

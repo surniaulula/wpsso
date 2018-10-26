@@ -37,30 +37,36 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
+			$callback_args   = array(	// Second argument passed to the callback function / method.
+			);
 
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_plugin' ), $metabox_screen,
-					$metabox_context, $metabox_prio );
+					$metabox_context, $metabox_prio, $callback_args );
 
 			$metabox_id      = 'contact_fields';
 			$metabox_title   = _x( 'Contact Fields', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
+			$callback_args   = array(	// Second argument passed to the callback function / method.
+			);
 
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_contact_fields' ), $metabox_screen,
-					$metabox_context, $metabox_prio );
+					$metabox_context, $metabox_prio, $callback_args );
 
 			$metabox_id      = 'head_tags';
 			$metabox_title   = _x( 'Head Tags', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
+			$callback_args   = array(	// Second argument passed to the callback function / method.
+			);
 
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_head_tags' ), $metabox_screen,
-					$metabox_context, $metabox_prio );
+					$metabox_context, $metabox_prio, $callback_args );
 		}
 
 		public function show_metabox_plugin() {

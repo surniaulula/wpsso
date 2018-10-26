@@ -21,10 +21,10 @@ if ( ! class_exists( 'WpssoSettingContactfields' ) && class_exists( 'WpssoSubmen
 				$this->p->debug->mark();
 			}
 
-			$this->menu_id = $id;
+			$this->menu_id   = $id;
 			$this->menu_name = $name;
-			$this->menu_lib = $lib;
-			$this->menu_ext = $ext;
+			$this->menu_lib  = $lib;
+			$this->menu_ext  = $ext;
 		}
 
 		/**
@@ -37,10 +37,12 @@ if ( ! class_exists( 'WpssoSettingContactfields' ) && class_exists( 'WpssoSubmen
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
+			$callback_args   = array(	// Second argument passed to the callback function / method.
+			);
 
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_contact_fields' ), $metabox_screen,
-					$metabox_context, $metabox_prio );
+					$metabox_context, $metabox_prio, $callback_args );
 		}
 	}
 }

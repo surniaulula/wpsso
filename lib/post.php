@@ -1153,15 +1153,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			$metabox_id      = $this->p->cf['meta']['id'];
-			$metabox_title   = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
-			$metabox_screen  = $post_obj->post_type;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// The SECOND argument passed to the callback.
-				'__block_editor_compatible_meta_box' => true,
-			);
-
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ? false : true;
 			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_post', $add_metabox, $post_id, $post_obj->post_type );
 
@@ -1171,6 +1162,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( $add_metabox ) {
+
+				$metabox_id      = $this->p->cf['meta']['id'];
+				$metabox_title   = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+				$metabox_screen  = $post_obj->post_type;
+				$metabox_context = 'normal';
+				$metabox_prio    = 'default';
+				$callback_args   = array(	// Second argument passed to the callback function / method.
+					'__block_editor_compatible_meta_box' => true,
+				);
+
 				add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
 					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
 						$metabox_context, $metabox_prio, $callback_args );
