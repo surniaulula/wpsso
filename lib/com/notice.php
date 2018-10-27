@@ -743,13 +743,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						}
 					}
 
-					/**
-					 * If the notice is hidden, then skip this notice.
-					 */
-					if ( ! empty( $payload['hidden'] ) ) {
-						continue;
-					}
-
 					$payload['msg_html'] = $this->get_notice_html( $msg_type, $payload, true );	// $notice_alt is true.
 
 					/**
@@ -887,8 +880,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Optionally hide / show notices by default.
 			 */
 			$style_attr = ' style="' . 
-				( empty( $payload['style'] ) ? '' : $payload['style'] ) .
-				( empty( $payload['hidden'] ) ? 'display:block;' : 'display:none;' ) . '"';
+				( empty( $payload[ 'style' ] ) ? '' : $payload[ 'style' ] ) .
+				( empty( $payload[ 'hidden' ] ) ? 'display:block;' : 'display:none;' ) . '"';
 
 			$msg_html = '<div class="' . $this->lca . '-notice ' . 
 				( ! $is_dismissible ? '' : $this->lca . '-dismissible ' ) .
