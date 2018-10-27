@@ -47,7 +47,7 @@ WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google'
 
 **A reliable WordPress plugin for today *and* tomorrow:**
 
-WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in the upcoming release of WordPress 5.
+WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in the upcoming release of WordPress 5.0.
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
@@ -93,8 +93,6 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 * Uses images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.
 
 * Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Card SEO, Pinterest Rich Pins, and Twitter Cards.
-
-* Configurable maximum title and description lengths, including both hard and soft limits.
 
 * Optional settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.
 
