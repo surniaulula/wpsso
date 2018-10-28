@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 5.0
-WC Tested Up To: 3.4.7
+WC Tested Up To: 3.5
 Stable Tag: 4.16.3
 
 Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.
@@ -339,6 +339,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.17.0-dev.1 (TBD)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.16.3 (2018/10/24)**
 
 * *New Features*
@@ -506,6 +517,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored SucomNotice methods to handle / store notices for different user IDs than the current user ID.
 
 == Upgrade Notice ==
+
+= 4.17.0-dev.1 =
+
+(TBD) None.
 
 = 4.16.3 =
 
