@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.3\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2598,15 +2598,15 @@ msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:142 lib/gpl/admin/post.php:238
-#: lib/pro/admin/meta.php:151 lib/pro/admin/post.php:231
+#: lib/gpl/admin/meta.php:142 lib/gpl/admin/post.php:237
+#: lib/pro/admin/meta.php:151 lib/pro/admin/post.php:230
 #: lib/submenu/general.php:268
 msgctxt "metabox title"
 msgid "Structured Data / Schema Markup"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:147 lib/gpl/admin/post.php:244
-#: lib/pro/admin/meta.php:155 lib/pro/admin/post.php:236
+#: lib/gpl/admin/meta.php:147 lib/gpl/admin/post.php:243
+#: lib/pro/admin/meta.php:155 lib/pro/admin/post.php:235
 msgctxt "option label"
 msgid "Schema Description"
 msgstr ""
@@ -2718,47 +2718,47 @@ msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: lib/gpl/admin/post.php:174 lib/messages.php:1014 lib/pro/admin/post.php:174
+#: lib/gpl/admin/post.php:173 lib/messages.php:1014 lib/pro/admin/post.php:173
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: lib/gpl/admin/post.php:182 lib/messages.php:1025 lib/pro/admin/post.php:181
+#: lib/gpl/admin/post.php:181 lib/messages.php:1025 lib/pro/admin/post.php:180
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: lib/gpl/admin/post.php:190 lib/messages.php:1036 lib/pro/admin/post.php:188
+#: lib/gpl/admin/post.php:189 lib/messages.php:1036 lib/pro/admin/post.php:187
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: lib/gpl/admin/post.php:198 lib/messages.php:1047 lib/pro/admin/post.php:195
+#: lib/gpl/admin/post.php:197 lib/messages.php:1047 lib/pro/admin/post.php:194
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: lib/gpl/admin/post.php:206 lib/messages.php:1058 lib/pro/admin/post.php:202
+#: lib/gpl/admin/post.php:205 lib/messages.php:1058 lib/pro/admin/post.php:201
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
-#: lib/gpl/admin/post.php:214 lib/messages.php:1068 lib/pro/admin/post.php:209
+#: lib/gpl/admin/post.php:213 lib/messages.php:1068 lib/pro/admin/post.php:208
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
-#: lib/gpl/admin/post.php:223 lib/messages.php:1090 lib/pro/admin/post.php:217
+#: lib/gpl/admin/post.php:222 lib/messages.php:1090 lib/pro/admin/post.php:216
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: lib/gpl/admin/post.php:231 lib/messages.php:1101 lib/pro/admin/post.php:224
+#: lib/gpl/admin/post.php:230 lib/messages.php:1101 lib/pro/admin/post.php:223
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gpl/admin/post.php:250 lib/meta.php:244 lib/pro/admin/post.php:242
+#: lib/gpl/admin/post.php:249 lib/meta.php:244 lib/pro/admin/post.php:241
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
