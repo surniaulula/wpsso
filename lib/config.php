@@ -748,7 +748,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_add_home_organization' => 1,
 					'schema_add_home_person'       => 0,
 					'schema_add_home_website'      => 1,
-					'schema_def_pub_org_id'        => 'site',	// Default Creative Work Publisher
 					'schema_home_person_id'        => 'none',
 					'schema_logo_url'              => '',
 					'schema_banner_url'            => '',

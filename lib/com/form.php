@@ -1097,11 +1097,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
+				$prev_num      = $key_num > 0 ? $key_num - 1 : 0;
 				$next_num      = $key_num + 1;
 				$opt_key       = $name . '_' . $key_num;
 				$opt_disabled  = $disabled || $this->get_options( $opt_key . ':is' ) === 'disabled' ? true : false;
 				$input_class   = empty( $css_class ) ? 'multi' : 'multi ' . $css_class;
 				$input_id      = empty( $css_id ) ? $name . '_' . $key_num : $css_id . '_' . $key_num;
+				$input_id_prev = empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num;
 				$input_id_next = empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num;
 				$input_value   = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
 				$display       = empty( $one_more ) && $key_num >= $show_first ? false : true;
@@ -1124,7 +1126,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						' class="' . esc_attr( $input_class ) . '"' .
 						' id="text_' . esc_attr( $input_id ) . '"' .
 						' value="' . esc_attr( $input_value ) . '"' .
-						' onFocus="jQuery(\'div#wrap_' . esc_attr( $input_id_next ) . '\').show();" />';
+						' onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length ) { '.
+							'jQuery(\'div#wrap_' . esc_attr( $input_id_next ) . '\').show(); }" />';
 				}
 
 				$one_more = empty( $input_value ) ? false : true;
@@ -1172,8 +1175,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
+				$prev_num     = $key_num > 0 ? $key_num - 1 : 0;
 				$next_num     = $key_num + 1;
 				$wrap_id      = $css_id . '_' . $key_num;
+				$wrap_id_prev = $css_id . '_' . $prev_num;
 				$wrap_id_next = $css_id . '_' . $next_num;
 				$display      = empty( $one_more ) && $key_num >= $show_first ? false : true;
 
@@ -1308,9 +1313,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_mixed_multi( $mixed, $css_class, $css_id, $start_num = 0, $max_input = 10, $show_first = 2 ) {
 
-			$disabled = true;
-
-			return $this->get_mixed_multi( $mixed, $css_class, $css_id, $start_num, $max_input, $show_first, $disabled );
+			return $this->get_mixed_multi( $mixed, $css_class, $css_id, $start_num, $max_input, $show_first, $disabled = true );
 		}
 
 		public function get_image_dimensions_text( $name, $use_opts = false ) {
@@ -1394,9 +1397,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_textarea( $name, $css_class = '', $css_id = '', $len = 0, $placeholder = '' ) {
 
-			$disabled = true;
-
-			return $this->get_textarea( $name, $css_class, $css_id, $len, $placeholder, $disabled );
+			return $this->get_textarea( $name, $css_class, $css_id, $len, $placeholder, $disabled = true );
 		}
 
 		public function get_no_textarea_options( $name, $opts, $css_class = '', $css_id = '', $len = 0, $placeholder = '' ) {
