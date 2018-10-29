@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.0-dev.1 (2010/10/29)**
+**Version 4.16.4-dev.1 (2010/10/29)**
 
 * *New Features*
 	* None.
@@ -520,7 +520,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.17.0-dev.1 =
+= 4.16.4-dev.1 =
 
 (2010/10/29) Added new methods for the WPSSO JSON add-on.
 
