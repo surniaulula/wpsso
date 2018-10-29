@@ -91,7 +91,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'post-og_type',
-					'content'  => $form->get_select( 'og_type', $og_types, '', '', true, $def_og_type, $def_og_type, 'unhide_rows' ) .
+					'content'  => $form->get_select( 'og_type', $og_types, '', '', true, $def_og_type, $def_og_type, 'on_change_unhide_rows' ) .
 						$this->p->msgs->get( 'pro-select-msg' ),
 				),
 				'og_art_section' => array(

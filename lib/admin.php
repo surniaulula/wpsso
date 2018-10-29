@@ -934,7 +934,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			wp_redirect( $this->p->util->get_admin_url( $page ) . '&settings-updated=true' );
 
-			exit;	// stop after redirect
+			exit;	// Stop after redirect.
 		}
 
 		public function load_setting_page() {
