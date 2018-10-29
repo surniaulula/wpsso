@@ -741,9 +741,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( ! empty( $len['max'] ) ) {
+
 				if ( empty( $css_id ) ) {
 					$css_id = $name;
 				}
+
 				$html .= $this->get_text_length_js( 'text_' . $css_id );
 			}
 
@@ -884,29 +886,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$placeholder = preg_replace( '/^ngg-/', '', $placeholder );
 			}
 
-			$input_id = $this->get_input(
-				$opt_prefix . '_id' . $opt_suffix,	// $name
-				'short',				// $css_class
-				'',					// $css_id
-				0,					// $len
-				$placeholder,				// $placeholder
-				$disabled				// $disabled
-			);
+			$input_id = $this->get_input( $opt_prefix . '_id' . $opt_suffix, 'short', '', 0, $placeholder, $disabled );
 
 			/**
 			 * Disable the select option if only 1 media lib.
 			 */
 			$select_disabled = count( $media_libs ) <= 1 ? true : $disabled;
 
-			$select_lib = $this->get_select(
-				$opt_prefix . '_id_pre' . $opt_suffix,	// $name
-				$media_libs,				// $values
-				'',					// $css_class
-				'',					// $css_id
-				true,					// $is_assoc
-				$select_disabled,			// $disabled
-				$default_lib				// $selected
-			);
+			$select_lib = $this->get_select( $opt_prefix . '_id_pre' . $opt_suffix, $media_libs, '', '', true, $select_disabled, $default_lib );
 
 			/**
 			 * The css id is used to set image values and disable the image url.
@@ -1375,9 +1362,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( ! empty( $len['max'] ) ) {
+
 				if ( empty( $css_id ) ) {
 					$css_id = $name;
 				}
+
 				$html .= $this->get_text_length_js( 'textarea_' . $css_id );
 			}
 
