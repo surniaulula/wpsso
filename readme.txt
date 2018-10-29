@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.0-dev.1 (TBD)**
+**Version 4.17.0-dev.1 (2010/10/29)**
 
 * *New Features*
 	* None.
@@ -348,7 +348,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* Added new methods for the WPSSO JSON add-on:
+		* WpssoSchema::add_data_time_from_assoc().
+		* WpssoSchema::check_itemprop_content_map().
 
 **Version 4.16.3 (2018/10/24)**
 
@@ -520,7 +522,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.17.0-dev.1 =
 
-(TBD) None.
+(2010/10/29) Added new methods for the WPSSO JSON add-on.
 
 = 4.16.3 =
 
