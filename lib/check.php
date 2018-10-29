@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 				case 'p_dir':
 
-					$is_avail = ! SucomUtil::get_const( 'WPSSO_PRO_MODULE_DISABLE' ) &&
+					$is_avail = ! SucomUtil::get_const( 'WPSSO_PRO_DISABLE' ) &&
 						is_dir( WPSSO_PLUGINDIR . 'lib/pro/' ) ? true : false;
 
 					break;

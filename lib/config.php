@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.16.4-dev.1',	// Plugin version.
+					'version'     => '4.16.4-dev.2',	// Plugin version.
 					'opt_version' => '617',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1930,8 +1930,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'limit_max' => array(
 					'og_img_ratio'                => 3,
-					'schema_article_headline_len' => 110,
 					'schema_article_img_ratio'    => 2.5,
+					'schema_headline_len'         => 110,
 					'schema_img_ratio'            => 2.5,	// See https://developers.google.com/+/web/snippet/article-rendering.
 				),
 				'og_type_ns' => array(		// See http://ogp.me/#types.
