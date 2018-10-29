@@ -508,7 +508,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed an incorrect reference to 'price_high' (should have been 'price_highest') in the Easy Digital Download integration module.
 * *Developer Notes*
-	* Added a new 'unhide_rows_on_show' event for the SucomForm::get_select() method.
+	* Added a new 'on_show_unhide_rows' event for the SucomForm::get_select() method.
 	* Moved the "person" role additional from the plugin activation method to a scheduled task.
 	* Reviewed all calls to get_users(), get_posts(), and get_terms() to minimize memory usage.
 	* Minor code changes to rename the package check method.
