@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.4-dev.3 (2010/10/29)**
+**Version 4.16.4-dev.4 (2010/10/30)**
 
 * *New Features*
 	* None.
@@ -351,7 +351,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new methods for the WPSSO JSON add-on:
 		* WpssoSchema::add_data_time_from_assoc().
 		* WpssoSchema::check_itemprop_content_map().
-	* Updated the SucomForm::get_select() method event names.
+	* Updated the SucomForm::get_select() method event argument values.
 
 **Version 4.16.3 (2018/10/24)**
 
@@ -521,9 +521,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.4-dev.3 =
+= 4.16.4-dev.4 =
 
-(2010/10/29) Added new methods for the WPSSO JSON add-on.
+(2010/10/30) Added new methods for the WPSSO JSON add-on. Updated the SucomForm::get_select() method event argument values.
 
 = 4.16.3 =
 
