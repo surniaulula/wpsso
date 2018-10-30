@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.4-dev.4 (2010/10/30)**
+**Version 4.16.4-dev.5 (2010/10/30)**
 
 * *New Features*
 	* None.
@@ -521,7 +521,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.4-dev.4 =
+= 4.16.4-dev.5 =
 
 (2010/10/30) Added new methods for the WPSSO JSON add-on. Updated the SucomForm::get_select() method event argument values.
 
