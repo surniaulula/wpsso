@@ -671,7 +671,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * Define the DOING_BLOCK_EDITOR constant.
+			 * Also defines the DOING_BLOCK_EDITOR constant.
 			 */
 			$doing_block_editor = SucomUtil::is_doing_block_editor( $post_obj->post_type );
 

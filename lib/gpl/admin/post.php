@@ -240,7 +240,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'no_auto_draft' => true,
 					'th_class'      => 'medium',
 					'td_class'      => 'blank',
-					'label'         => _x( 'Schema Description', 'option label', 'wpsso' ),
+					'label'         => _x( 'Description', 'option label', 'wpsso' ),
 					'tooltip'       => 'meta-schema_desc',
 					'content'       => $form->get_no_textarea_value( $def_schema_desc, '', '', $schema_desc_max_len ) . $json_msg_transl,
 				),

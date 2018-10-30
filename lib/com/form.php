@@ -465,13 +465,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
-			$html .= '<select';
-			$html .= $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '"';
-			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
-			$html .= ' id="' . esc_attr( $input_id ) . '">' . "\n";
-
 			$select_options_count = 0;
-			$select_options_shown = 0;
+			$select_options_added = 0;
+			$select_options_html  = '';
 
 			foreach ( $values as $option_val => $label ) {
 
@@ -548,15 +544,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						$option_val = $fixed_val;
 					}
 
-					$html .= '<option value="' . esc_attr( $option_val ) . '"' . $is_selected_html . '>';
-					$html .= $label_transl;
-					$html .= '</option>' . "\n";
+					$select_options_html .= '<option value="' . esc_attr( $option_val ) . '"' . $is_selected_html . '>';
+					$select_options_html .= $label_transl;
+					$select_options_html .= '</option>' . "\n";
 
-					$select_options_shown++; 
+					$select_options_added++; 
 				}
 			}
 
-			$html .= '<!-- ' . $select_options_shown . ' select options shown -->' . "\n";
+			$html .= '<select' . ( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '"' );
+			$html .= ( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .' id="' . esc_attr( $input_id ) . '">' . "\n";
+			$html .= $select_options_html;
+			$html .= '<!-- ' . $select_options_added . ' select options added -->' . "\n";
 			$html .= '</select>' . "\n";
 
 			return $html;
@@ -1216,7 +1215,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$is_assoc = SucomUtil::is_assoc( $select_options );
 
 								$select_options_count = 0;
-								$select_options_shown = 0;
+								$select_options_added = 0;
 
 								foreach ( $select_options as $val => $label ) {
 									/**
@@ -1258,11 +1257,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$html .= $label_transl;
 										$html .= '</option>' . "\n";
 
-										$select_options_shown++; 
+										$select_options_added++; 
 									}
 								}
 								
-								$html .= '<!-- ' . $select_options_shown . ' select options shown -->' . "\n";
+								$html .= '<!-- ' . $select_options_added . ' select options added -->' . "\n";
 								$html .= '</select>' . "\n";
 
 								break;
