@@ -2917,6 +2917,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			$var_const['WPSSO_SCHEMA_ADDL_TYPE_URL_MAX']       = 5;
 			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX']        = 10;
+			$var_const['WPSSO_SCHEMA_HOWTO_STEPS_MAX']         = 80;
+			$var_const['WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX']      = 40;
+			$var_const['WPSSO_SCHEMA_HOWTO_TOOLS_MAX']         = 20;
+			$var_const['WPSSO_SCHEMA_MOVIE_ACTORS_MAX']        = 20;
+			$var_const['WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX']     = 5;
 			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX']  = 50;
 			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 80;
 			$var_const['WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX']    = 30;
