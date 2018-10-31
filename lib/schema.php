@@ -1571,7 +1571,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * $type_opts may be false, null, or an array.
 				 */
-				if ( empty( $type_opts[$opt_key] ) || $type_opts[$opt_key] === 'none' ) {
+				if ( empty( $type_opts[ $opt_key ] ) || $type_opts[ $opt_key ] === 'none' ) {
 
 					$single_type_id   = $default_id;
 					$single_type_url  = $wpsso->schema->get_schema_type_url( $default_id );
@@ -1579,7 +1579,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				} else {
 
-					$single_type_id   = $type_opts[$opt_key];
+					$single_type_id   = $type_opts[ $opt_key ];
 					$single_type_url  = $wpsso->schema->get_schema_type_url( $single_type_id, $default_id );
 					$single_type_from = 'options';
 				}
@@ -1938,9 +1938,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			foreach ( array( 'author', 'contributor' ) as $itemprop_name ) {
-				if ( empty( $json_data[ $itemprop_name ] ) ) {
-					unset( $json_data[ $itemprop_name ] );	// Prevent null assignment.
+			foreach ( array( 'author', 'contributor' ) as $prop_name ) {
+				if ( empty( $json_data[ $prop_name ] ) ) {
+					unset( $json_data[ $prop_name ] );	// Prevent null assignment.
 				}
 			}
 
@@ -2108,7 +2108,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return 1;	// Return count of images added.
 		}
 
-		public static function check_itemprop_content_map( &$json_data, $itemprop_name, $map_name ) {
+		public static function check_itemprop_content_map( &$json_data, $prop_name, $map_name ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2122,10 +2122,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'nothing to do - json_data is not an array' );
 				}
 
-			} elseif ( empty( $json_data[ $itemprop_name ] ) ) {
+			} elseif ( empty( $json_data[ $prop_name ] ) ) {
 
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'item property name "' . $itemprop_name . '" value is empty' );
+					$wpsso->debug->log( 'item property name "' . $prop_name . '" value is empty' );
 				}
 
 			} elseif ( empty( $wpsso->cf[ 'head' ][ 'og_content_map' ][ $map_name ] ) ) {
@@ -2138,20 +2138,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$content_map = $wpsso->cf[ 'head' ][ 'og_content_map' ][ $map_name ];
 
-				if ( empty( $content_map[ $json_data [ $itemprop_name ] ] ) ) {
+				if ( empty( $content_map[ $json_data [ $prop_name ] ] ) ) {
 
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'unsetting invalid item property name "' . $itemprop_name . '" ' .
-							'value "' . $json_data[ $itemprop_name ] . '"' );
+						$wpsso->debug->log( 'unsetting invalid item property name "' . $prop_name . '" value "' . $json_data[ $prop_name ] . '"' );
 					}
 
-					unset( $json_data[ $itemprop_name ] );
+					unset( $json_data[ $prop_name ] );
 
 				} else {
 
 					if ( $wpsso->debug->enabled ) {
-						$wpsso->debug->log( 'item property name "' . $itemprop_name . '" ' .
-							'value "' . $json_data[ $itemprop_name ] . '" is valid' );
+						$wpsso->debug->log( 'item property name "' . $prop_name . '" value "' . $json_data[ $prop_name ] . '" is valid' );
 					}
 				}
 			}
@@ -2168,31 +2166,31 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$is_assoc   = SucomUtil::is_assoc( $names );
 			$prop_added = 0;
 
-			foreach ( $names as $itemprop_name => $key_name ) {
+			foreach ( $names as $prop_name => $key_name ) {
 
 				if ( ! $is_assoc ) {
-					$itemprop_name = $key_name;
+					$prop_name = $key_name;
 				}
 
 				if ( isset( $assoc[$key_name] ) && $assoc[$key_name] !== '' ) {	// Exclude empty strings.
 
-					if ( isset( $json_data[$itemprop_name] ) && empty( $overwrite ) ) {
+					if ( isset( $json_data[$prop_name] ) && empty( $overwrite ) ) {
 
 						if ( $wpsso->debug->enabled ) {
-							$wpsso->debug->log( 'skipping ' . $itemprop_name . ': itemprop exists and overwrite is false' );
+							$wpsso->debug->log( 'skipping ' . $prop_name . ': itemprop exists and overwrite is false' );
 						}
 
 					} else {
 
 						if ( is_string( $assoc[$key_name] ) && filter_var( $assoc[$key_name], FILTER_VALIDATE_URL ) !== false ) {
-							$json_data[$itemprop_name] = SucomUtil::esc_url_encode( $assoc[$key_name] );
+							$json_data[$prop_name] = SucomUtil::esc_url_encode( $assoc[$key_name] );
 						} else {
-							$json_data[$itemprop_name] = $assoc[$key_name];
+							$json_data[$prop_name] = $assoc[$key_name];
 						}
 
 						if ( $wpsso->debug->enabled ) {
-							$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' . $itemprop_name . ' = ' . 
-								print_r( $json_data[$itemprop_name], true ) );
+							$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' . $prop_name . ' = ' . 
+								print_r( $json_data[$prop_name], true ) );
 						}
 
 						$prop_added++;
@@ -2213,15 +2211,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$json_data = array();
 
-			foreach ( $names as $itemprop_name => $key_name ) {
+			foreach ( $names as $prop_name => $key_name ) {
 
 				if ( isset( $assoc[$key_name] ) && ! in_array( $assoc[$key_name], $exclude, true ) ) {	// $strict is true.
 
-					$json_data[$itemprop_name] = $assoc[$key_name];
+					$json_data[$prop_name] = $assoc[$key_name];
 
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'assigned ' . $key_name . ' value to itemprop ' . 
-							$itemprop_name . ' = ' . print_r( $json_data[$itemprop_name], true ) );
+							$prop_name . ' = ' . print_r( $json_data[$prop_name], true ) );
 					}
 				}
 			}
@@ -2239,7 +2237,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function add_data_time_from_assoc( array &$json_data, array $assoc, array $names ) {
 
-			foreach ( $names as $itemprop_name => $key_name ) {
+			foreach ( $names as $prop_name => $key_name ) {
 
 				$t = array();
 
@@ -2249,7 +2247,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				if ( $t[ 'days' ] . $t[ 'hours' ] . $t[ 'mins' ] . $t[ 'secs' ] > 0 ) {
-					$json_data[ $itemprop_name ] = 'P' . $t[ 'days' ] . 'DT' . $t[ 'hours' ] . 'H' . $t[ 'mins' ] . 'M' . $t[ 'secs' ] . 'S';
+					$json_data[ $prop_name ] = 'P' . $t[ 'days' ] . 'DT' . $t[ 'hours' ] . 'H' . $t[ 'mins' ] . 'M' . $t[ 'secs' ] . 'S';
 				}
 			}
 		}
@@ -2269,18 +2267,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function add_data_quant_from_assoc( array &$json_data, array $assoc, array $names ) {
 
-			foreach ( $names as $itemprop_name => $key_name ) {
+			foreach ( $names as $prop_name => $key_name ) {
 
 				if ( isset( $assoc[ $key_name ] ) && $assoc[ $key_name ] !== '' ) {	// Exclude empty strings.
 
-					switch ( $itemprop_name ) {
+					switch ( $prop_name ) {
 
 						case 'length':	// QuantitativeValue does not have a length itemprop
 
 							$json_data['additionalProperty'][] = array(
 								'@context'   => 'https://schema.org',
 								'@type'      => 'PropertyValue',
-								'propertyID' => $itemprop_name,
+								'propertyID' => $prop_name,
 								'value'      => $assoc[ $key_name ],
 								'unitCode'   => 'CMT',
 							);
@@ -2289,11 +2287,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						default:
 
-							$json_data[ $itemprop_name ] = array(
+							$json_data[ $prop_name ] = array(
 								'@context' => 'https://schema.org',
 								'@type'    => 'QuantitativeValue',
 								'value'    => $assoc[ $key_name ],
-								'unitCode' => ( $itemprop_name === 'weight' ? 'KGM' : 'CMT' ),
+								'unitCode' => ( $prop_name === 'weight' ? 'KGM' : 'CMT' ),
 							);
 
 							break;
@@ -2779,7 +2777,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'offer_price_currency' => 'schema_event_offer_currency',
 						'offer_availability'   => 'schema_event_offer_avail',
 					) as $opt_key => $md_pre ) {
-						$offer_opts[$opt_key] = $mod['obj']->get_options( $mod['id'], $md_pre . '_' . $key_num );
+						$offer_opts[ $opt_key ] = $mod['obj']->get_options( $mod['id'], $md_pre . '_' . $key_num );
 					}
 				}
 
@@ -3524,8 +3522,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'validThrough' => 'place_season_to_date',
 					) as $prop_name => $opt_key ) {
 
-						if ( isset( $place_opts[$opt_key] ) && $place_opts[$opt_key] !== '' ) {
-							$dayofweek[$prop_name] = $place_opts[$opt_key];
+						if ( isset( $place_opts[ $opt_key ] ) && $place_opts[ $opt_key ] !== '' ) {
+							$dayofweek[$prop_name] = $place_opts[ $opt_key ];
 						}
 					}
 
@@ -3551,9 +3549,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					) as $prop_name => $opt_key ) {
 
 						if ( $opt_key === 'place_accept_res' ) {
-							$ret[$prop_name] = empty( $place_opts[$opt_key] ) ? 'false' : 'true';
-						} elseif ( isset( $place_opts[$opt_key] ) ) {
-							$ret[$prop_name] = $place_opts[$opt_key];
+							$ret[$prop_name] = empty( $place_opts[ $opt_key ] ) ? 'false' : 'true';
+						} elseif ( isset( $place_opts[ $opt_key ] ) ) {
+							$ret[$prop_name] = $place_opts[ $opt_key ];
 						}
 					}
 				}
@@ -3693,10 +3691,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function add_mt_schema_from_assoc( array &$mt_schema, array &$assoc, array $names ) {
 
-			foreach ( $names as $itemprop_name => $key_name ) {
+			foreach ( $names as $prop_name => $key_name ) {
 
 				if ( ! empty( $assoc[ $key_name ] ) && $assoc[ $key_name ] !== WPSSO_UNDEF ) {
-					$mt_schema[ $itemprop_name ] = $assoc[ $key_name ];
+					$mt_schema[ $prop_name ] = $assoc[ $key_name ];
 				}
 			}
 		}
@@ -3961,12 +3959,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $ret;
 		}
 
-		public function get_single_author_noscript( array &$mod, $author_id = 0, $itemprop_name = 'author' ) {
+		public function get_single_author_noscript( array &$mod, $author_id = 0, $prop_name = 'author' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'author_id' => $author_id,
-					'itemprop_name'  => $itemprop_name,
+					'prop_name' => $prop_name,
 				) );
 			}
 
@@ -4007,11 +4005,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$mt_author = array_merge(
 				( empty( $author_url ) ? array() : $this->p->head->get_single_mt( 'link',
-					'itemprop', $itemprop_name . '.url', $author_url, '', $user_mod ) ),
+					'itemprop', $prop_name . '.url', $author_url, '', $user_mod ) ),
 				( empty( $author_name ) ? array() : $this->p->head->get_single_mt( 'meta',
-					'itemprop', $itemprop_name . '.name', $author_name, '', $user_mod ) ),
+					'itemprop', $prop_name . '.name', $author_name, '', $user_mod ) ),
 				( empty( $author_desc ) ? array() : $this->p->head->get_single_mt( 'meta',
-					'itemprop', $itemprop_name . '.description', $author_desc, '', $user_mod ) )
+					'itemprop', $prop_name . '.description', $author_desc, '', $user_mod ) )
 			);
 
 			/**
@@ -4031,7 +4029,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( ! empty( $image_url ) ) {
 						$mt_author = array_merge( $mt_author, $this->p->head->get_single_mt( 'link',
-							'itemprop', $itemprop_name . '.image', $image_url, '', $user_mod ) );
+							'itemprop', $prop_name . '.image', $image_url, '', $user_mod ) );
 					}
 				}
 			}
@@ -4050,7 +4048,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $have_author_html ) {
 				return array_merge(
-					array( array( '<noscript itemprop="' . $itemprop_name . '" itemscope itemtype="https://schema.org/Person">' . "\n" ) ),
+					array( array( '<noscript itemprop="' . $prop_name . '" itemscope itemtype="https://schema.org/Person">' . "\n" ) ),
 					$mt_author,
 					array( array( '</noscript>' . "\n" ) )
 				);

@@ -1124,7 +1124,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$input_id      = empty( $css_id ) ? $name . '_' . $key_num : $css_id . '_' . $key_num;
 				$input_id_prev = empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num;
 				$input_id_next = empty( $css_id ) ? $name . '_' . $next_num : $css_id . '_' . $next_num;
-				$input_value   = $this->in_options( $opt_key ) ? $this->options[$opt_key] : '';
+				$input_value   = $this->in_options( $opt_key ) ? $this->options[ $opt_key ] : '';
 				$display       = empty( $one_more ) && $key_num >= $show_first ? false : true;
 
 				$html .= '<div class="wrap_multi" id="wrap_' . esc_attr( $input_id ) . '"' .
@@ -1224,7 +1224,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							case 'text':
 
-								$input_value = $in_options ? $this->options[$opt_key] : '';
+								$input_value = $in_options ? $this->options[ $opt_key ] : '';
 
 								if ( $opt_disabled ) {
 									$html .= $this->get_no_input( $opt_key, $input_class, $input_id );
@@ -1293,7 +1293,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									if ( $select_selected !== null ) {
 										$is_selected_html = selected( $select_selected, $option_value, false );
 									} elseif ( $in_options ) {
-										$is_selected_html = selected( $this->options[$opt_key], $option_value, false );
+										$is_selected_html = selected( $this->options[ $opt_key ], $option_value, false );
 									} elseif ( $select_default !== null ) {
 										$is_selected_html = selected( $select_default, $option_value, false );
 									} elseif ( $in_defaults ) {
@@ -1467,8 +1467,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( $opt_key !== false ) {
 
-				if ( isset( $this->options[$opt_key] ) ) {
-					return $this->options[$opt_key];
+				if ( isset( $this->options[ $opt_key ] ) ) {
+					return $this->options[ $opt_key ];
 				} else {
 					return $def_val;
 				}
@@ -1491,7 +1491,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return ( ! empty( $opts ) ) ? true : false;
 			}
 
-			return isset( $this->options[$opt_key] ) ? true : false;
+			return isset( $this->options[ $opt_key ] ) ? true : false;
 		}
 
 		public function in_defaults( $opt_key ) {

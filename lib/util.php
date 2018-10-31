@@ -714,13 +714,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					$opt_key = $opt_pre . '_' . $ptn;
 
-					if ( ! isset( $opts[$opt_key] ) ) {
+					if ( ! isset( $opts[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'adding ' . $opt_key . ' = ' . $def_val );
 						}
 
-						$opts[$opt_key] = $def_val;
+						$opts[ $opt_key ] = $def_val;
 
 					} else {
 						if ( $this->p->debug->enabled ) {
@@ -752,13 +752,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					$opt_key = $opt_pre . '_' . $ttn;
 
-					if ( ! isset( $opts[$opt_key] ) ) {
+					if ( ! isset( $opts[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'adding ' . $opt_key . ' = ' . $def_val );
 						}
 
-						$opts[$opt_key] = $def_val;
+						$opts[ $opt_key ] = $def_val;
 
 					} else {
 						if ( $this->p->debug->enabled ) {
@@ -2792,7 +2792,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				if ( $max_val !== null & is_numeric( $max_val ) && $max_val >= 0 ) {
 
-					$max_nums[$opt_key] = $max_val;
+					$max_nums[ $opt_key ] = $max_val;
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'found custom meta ' . $opt_key . ' = ' . $max_val );
@@ -2800,7 +2800,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				} else {
 
-					$max_nums[$opt_key] = isset( $this->p->options[$opt_key] ) ? $this->p->options[$opt_key] : 0;
+					$max_nums[ $opt_key ] = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : 0;
 				}
 			}
 

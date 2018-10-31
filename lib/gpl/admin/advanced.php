@@ -674,7 +674,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 					if ( strpos( $opt_key, 'add_' ) !== 0 ) {	// Optimize
 						continue;
-					} elseif ( isset( $this->head_tags_opts[$opt_key] ) ) {	// Check cache for tags already shown.
+					} elseif ( isset( $this->head_tags_opts[ $opt_key ] ) ) {	// Check cache for tags already shown.
 						continue;
 					} elseif ( ! preg_match( $preg, $opt_key, $match ) ) {	// Check option name for a match.
 						continue;

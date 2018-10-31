@@ -754,14 +754,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'sections'          => 'sections',
 				'remaining_content' => 'other_notes',	// added to sections
 				'banners'           => 'banners',
-			) as $key_name => $prop_name ) {
+			) as $readme_key => $prop_name ) {
 
-				switch ( $key_name ) {
+				switch ( $readme_key ) {
 
 					case 'base':	// from plugin config
 
-						if ( ! empty( $info[$key_name] ) ) {
-							$data->$prop_name = $info[$key_name];
+						if ( ! empty( $info[$readme_key] ) ) {
+							$data->$prop_name = $info[$readme_key];
 						}
 
 						break;
@@ -779,32 +779,32 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					case 'latest':	// from plugin config
 
-						if ( ! empty( $info[ 'url' ][$key_name] ) ) {
-							$data->$prop_name = $info[ 'url' ][$key_name];
+						if ( ! empty( $info[ 'url' ][$readme_key] ) ) {
+							$data->$prop_name = $info[ 'url' ][$readme_key];
 						}
 
 						break;
 
 					case 'banners':	// from plugin config
 
-						if ( ! empty( $info['img'][$key_name] ) ) {
-							$data->$prop_name = $info['img'][$key_name];	// array with low/high images
+						if ( ! empty( $info['img'][$readme_key] ) ) {
+							$data->$prop_name = $info['img'][$readme_key];	// array with low/high images
 						}
 
 						break;
 
 					case 'remaining_content':
 
-						if ( ! empty( $readme[$key_name] ) ) {
-							$data->sections[$prop_name] = $readme[$key_name];
+						if ( ! empty( $readme[$readme_key] ) ) {
+							$data->sections[$prop_name] = $readme[$readme_key];
 						}
 
 						break;
 
 					default:
 
-						if ( ! empty( $readme[$key_name] ) ) {
-							$data->$prop_name = $readme[$key_name];
+						if ( ! empty( $readme[$readme_key] ) ) {
+							$data->$prop_name = $readme[$readme_key];
 						}
 
 						break;
@@ -2454,7 +2454,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'wpsso' ) . '</strong>"',
 				) as $opt_key => $label_transl ) {
 
-					if ( ! empty( $opts[$opt_key] ) ) {
+					if ( ! empty( $opts[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
@@ -2484,7 +2484,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'sq_auto_jsonld' => '"<strong>' . __( 'adds the Json-LD metas for Semantic SEO', 'wpsso' ) . '</strong>"',
 				) as $opt_key => $label_transl ) {
 
-					if ( ! empty( $opts[$opt_key] ) ) {
+					if ( ! empty( $opts[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
@@ -2598,7 +2598,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'metaseo_showtwitter'  => '<strong>' . __( 'Twitter Username', 'wp-meta-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
-					if ( ! empty( $opts[$opt_key] ) ) {
+					if ( ! empty( $opts[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'wpmetaseo ' . $opt_key . ' option is not empty' );
@@ -2662,7 +2662,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'google_plus_url' => '<strong>' . __( 'Google+ URL', 'wordpress-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
-					if ( ! empty( $opts[$opt_key] ) ) {
+					if ( ! empty( $opts[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_pre . 'wpseo ' . $opt_key . ' option is not empty' );
@@ -3249,7 +3249,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$tr_html = $this->form->get_tr_hide( $hide_in_view[ $opt_key ], $opt_key );
 				}
 
-				$table_rows[$opt_key] = $tr_html . $this->form->get_th_html( $th_label, '', $opt_key ) . 
+				$table_rows[ $opt_key ] = $tr_html . $this->form->get_th_html( $th_label, '', $opt_key ) . 
 				'<td>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . '</td>';
 			}
 
