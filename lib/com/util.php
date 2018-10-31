@@ -3825,6 +3825,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		/**
+		 * Returns an associative array.
+		 */
 		public static function get_hours_range( $start_secs = 0, $end_secs = 86400, $step_secs = 3600, $time_format = 'g:i a' ) {
 
 			$times = array();
@@ -3834,9 +3837,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$hour_mins = gmdate( 'H:i', $ts );
 
 				if ( ! empty( $time_format ) ) {
-					$times[$hour_mins] = gmdate( $time_format, $ts );
+					$times[ $hour_mins ] = gmdate( $time_format, $ts );
 				} else {
-					$times[$hour_mins] = $hour_mins;
+					$times[ $hour_mins ] = $hour_mins;
 				}
 			}
 

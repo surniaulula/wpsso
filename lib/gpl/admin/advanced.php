@@ -456,7 +456,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			'<td class="blank mono">' . $this->p->options['plugin_google_api_key'] . '</td>';
 			$table_rows['plugin_google_places'] = $tr_html[ 'google' ] . 
 			$form->get_th_html( _x( 'Places API is Enabled', 'option label', 'wpsso' ), '', 'plugin_google_places' ) . 
-			'<td class="blank">' . _x( $this->p->cf[ 'form' ][ 'yes_no' ][ $this->p->options[ 'plugin_google_places' ] ], 'option value', 'wpsso' ) . '</td>';
+			'<td class="blank">' . $form->get_no_checkbox( 'plugin_google_places' ) . '</td>';
 			*/
 
 			/**

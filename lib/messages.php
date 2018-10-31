@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-sharing_url':
 
-							$text = __( 'A custom sharing URL used for the Facebook / Open Graph and Pinterest Rich Pin meta tags, Schema markup, and any social sharing add-ons.', 'wpsso' ) . ' ';
+							$text = __( 'A customized sharing URL for Facebook / Open Graph and Pinterest Rich Pin meta tags, Schema markup, and social sharing add-ons.', 'wpsso' ) . ' ';
 							
 							$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 
@@ -97,27 +97,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-canonical_url':
 
-							$text = sprintf( __( 'A custom URL used for the "%1$s" head tag.', 'wpsso' ), 'link rel canonical' ) . ' ';
+							$text = sprintf( __( 'A customized URL used for the "%1$s" head tag.', 'wpsso' ), 'link rel canonical' ) . ' ';
 							
 							$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_title':
-
-							$text = __( 'A custom name / title for the Schema "name" property.', 'wpsso' );
-
-						 	break;
-
-						case 'tooltip-meta-schema_title_alt':
-
-							$text = __( 'An optional alternate custom name / title for the Schema "alternateName" property.', 'wpsso' );
-
-						 	break;
-
 						case 'tooltip-meta-schema_desc':
 
-							$text = __( 'A custom description for the Schema "description" property.', 'wpsso' );
+							$text = __( 'A customized description for the Schema "description" property.', 'wpsso' );
 
 						 	break;
 
@@ -126,7 +114,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
 								_x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' ) );
 
-							$text = __( 'A custom title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' ) . ' ';
+							$text = __( 'A customized title for the Facebook / Open Graph, Pinterest Rich Pin, and Twitter Card meta tags (all Twitter Card formats).', 'wpsso' ) . ' ';
+
 							// translators: %s is a link to the (translated) "Use Filtered (SEO) Title" option settings page
 							$text .= sprintf( __( 'If the %s option is enabled, the default title value may be provided by your theme or another SEO plugin.', 'wpsso' ), $settings_page_link );
 
@@ -134,7 +123,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_desc':
 
-							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
+							$text = sprintf( __( 'A customized description for the Facebook / Open Graph %s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
 							
 							$text .= __( 'The default description value is based on the category / tag description or biographical info for users.', 'wpsso' ) . ' ';
 							
@@ -144,13 +133,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-seo_desc':
 
-							$text = __( 'A custom description for the Google Search "description" meta tag.', 'wpsso' );
+							$text = __( 'A customized description for the Google Search "description" meta tag.', 'wpsso' );
 
 						 	break;
 
 						case 'tooltip-meta-tc_desc':
 
-							$text = __( 'A custom description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' );
+							$text = __( 'A customized description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' );
 
 						 	break;
 
@@ -251,13 +240,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_img_id':
 
-							$text = __( 'A custom image ID to include first, before any featured, attached, or content images.', 'wpsso' );
+							$text = __( 'A customized image ID to include first, before any featured, attached, or content images.', 'wpsso' );
 
 						 	break;
 
 						case 'tooltip-meta-og_img_url':
 
-							$text = __( 'A custom image URL (instead of an image ID) to include first, before any featured, attached, or content images.', 'wpsso' ) . ' ';
+							$text = __( 'A customized image URL (instead of an image ID) to include first, before any featured, attached, or content images.', 'wpsso' ) . ' ';
 							
 							$text .= __( 'Please make sure your custom image is large enough, or it may be ignored by social website(s).', 'wpsso' ) . ' ';
 							
@@ -300,7 +289,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_vid_url':
 
-							$text = __( 'A custom video URL for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup.', 'wpsso' ) . ' ';
+							$text = __( 'A customized video URL for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup.', 'wpsso' ) . ' ';
 							
 							$text .= __( 'If the video is from a recognized external video service, an API connection will be made to retrieve additional information about the video.', 'wpsso' );
 
@@ -323,13 +312,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-schema_img_id':
 
-							$text = __( 'A custom image ID to include first in the Google / Schema meta tags and JSON-LD markup, before any featured, attached, or content images.', 'wpsso' );
+							$text = __( 'A customized image ID to include first in the Google / Schema meta tags and JSON-LD markup, before any featured, attached, or content images.', 'wpsso' );
 
 						 	break;
 
 						case 'tooltip-meta-schema_img_url':
 
-							$text = __( 'A custom image URL (instead of an image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
+							$text = __( 'A customized image URL (instead of an image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
 
 						 	break;
 
@@ -350,7 +339,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-post-og_type':
 
-							$text = __( 'A custom Facebook / Open Graph type for this content.', 'wpsso' ) . ' ';
+							$text = __( 'A customized Facebook / Open Graph type for this content.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Please note that for sharing purposes, the Open Graph Type must be "article", "place", "product", or "website".', 'wpsso' ) . ' ';
 
@@ -358,7 +347,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-post-og_art_section':
 
-							$text = __( 'A custom topic for this article, which may be different from the default Article Topic selected in the General settings page.', 'wpsso' ) . ' ';
+							$text = __( 'A customized topic for this article, which may be different from the default Article Topic selected in the General settings page.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ), '<code>article:section</code>' );
 
@@ -366,7 +355,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-post-og_desc':
 
-							$text = sprintf( __( 'A custom description for the Facebook / Open Graph %s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
+							$text = sprintf( __( 'A customized description for the Facebook / Open Graph %s meta tag, and the default value for all other description meta tags.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
 
 							$text .= __( 'The default description value is based on the excerpt (if one is available) or content.', 'wpsso' ) . ' ';
 
@@ -573,7 +562,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'If no custom image has been defined for an author, fallback to using their Gravatar image in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'A custom image can be selected for / by each author in their WordPress user profile %s metabox.', 'wpsso' ), $metabox_title );
+							$text .= sprintf( __( 'A customized image can be selected for / by each author in their WordPress user profile %s metabox.', 'wpsso' ), $metabox_title );
 
 							break;
 
