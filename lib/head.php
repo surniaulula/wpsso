@@ -261,7 +261,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Save meta tag values for later sorting in list tables.
 			 */
-			foreach ( WpssoMeta::get_sortable_columns() as $col_idx => $col_info ) {
+			foreach ( WpssoMeta::get_sortable_columns() as $col_key => $col_info ) {
 				
 				if ( empty( $col_info['meta_key'] ) || strpos( $col_info['meta_key'], '_' . $this->p->lca . '_head_info_' ) !== 0 ) {
 					continue;
@@ -280,10 +280,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'updating meta for ' . $mod['name'] . ' id ' . $mod['id'] . ' ' . $col_idx . ' = ' . $meta_value );
+					$this->p->debug->log( 'updating meta for ' . $mod['name'] . ' id ' . $mod['id'] . ' ' . $col_key . ' = ' . $meta_value );
 				}
 
-				$mod['obj']->update_sortable_meta( $mod['id'], $col_idx, $meta_value );
+				$mod['obj']->update_sortable_meta( $mod['id'], $col_key, $meta_value );
 			}
 
 			return $head_info;

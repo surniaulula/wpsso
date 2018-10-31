@@ -49,12 +49,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * $type = 'title' | 'excerpt' | 'both'
-		 * $mod = true | false | post_id | array
-		 * $md_idx = true | false | string | array
+		 * $type   = 'title' | 'excerpt' | 'both'
+		 * $mod    = true | false | post_id | array
+		 * $md_key = true | false | string | array
 		 */
 		public function get_caption( $type = 'title', $max_len = 200, $mod = true, $read_cache = true,
-			$add_hashtags = true, $do_encode = true, $md_idx = '' ) {
+			$add_hashtags = true, $do_encode = true, $md_key = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'read_cache'   => $read_cache,
 					'add_hashtags' => $add_hashtags,	// true/false/numeric
 					'do_encode'    => $do_encode,
-					'md_idx'       => $md_idx,
+					'md_key'       => $md_key,
 				) );
 			}
 
@@ -83,53 +83,53 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$sep = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
 
-			if ( false === $md_idx ) {	// false would return the complete meta array
+			if ( false === $md_key ) {	// false would return the complete meta array
 
-				$md_idx       = '';
-				$md_idx_title = '';
-				$md_idx_desc  = '';
+				$md_key       = '';
+				$md_key_title = '';
+				$md_key_desc  = '';
 
-			} elseif ( true === $md_idx ) {	// true signals the use of the standard / fallback value
+			} elseif ( true === $md_key ) {	// true signals the use of the standard / fallback value
 
 				switch ( $type ) {
 
 					case 'title':
 
-						$md_idx       = 'og_title';
-						$md_idx_title = 'og_title';
-						$md_idx_desc  = 'og_desc';
+						$md_key       = 'og_title';
+						$md_key_title = 'og_title';
+						$md_key_desc  = 'og_desc';
 
 						break;
 
 					case 'excerpt':
 
-						$md_idx       = 'og_desc';
-						$md_idx_title = 'og_title';
-						$md_idx_desc  = 'og_desc';
+						$md_key       = 'og_desc';
+						$md_key_title = 'og_title';
+						$md_key_desc  = 'og_desc';
 
 						break;
 
 					case 'both':
 
-						$md_idx       = 'og_caption';
-						$md_idx_title = 'og_title';
-						$md_idx_desc  = 'og_desc';
+						$md_key       = 'og_caption';
+						$md_key_title = 'og_title';
+						$md_key_desc  = 'og_desc';
 
 						break;
 				}
 
-			} else {	// $md_idx could be a string or array
+			} else {	// $md_key could be a string or array
 
-				$md_idx_title = $md_idx;
-				$md_idx_desc  = $md_idx;
+				$md_key_title = $md_key;
+				$md_key_desc  = $md_key;
 			}
 
 			/**
 			 * Check for custom caption if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_idx ) ) {
+			if ( ! empty( $md_key ) ) {
 
-				$cap_text = $mod['obj'] ? $mod['obj']->get_options_multi( $mod['id'], $md_idx ) : null;
+				$cap_text = $mod['obj'] ? $mod['obj']->get_options_multi( $mod['id'], $md_key ) : null;
 
 				/**
 				 * Maybe add hashtags to a post caption.
@@ -149,14 +149,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $cap_text ) ) {
-						$this->p->debug->log( 'no custom caption found for md_idx' );
+						$this->p->debug->log( 'no custom caption found for md_key' );
 					} else {
 						$this->p->debug->log( 'custom caption = "' . $cap_text . '"' );
 					}
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'custom caption skipped: no md_idx value' );
+				$this->p->debug->log( 'custom caption skipped: no md_key value' );
 			}
 
 			if ( empty( $cap_text ) ) {
@@ -168,13 +168,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					case 'title':
 
-						$cap_text = $this->get_title( $max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_idx_title );
+						$cap_text = $this->get_title( $max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_title );
 
 						break;
 
 					case 'excerpt':
 
-						$cap_text = $this->get_description( $max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_idx_desc );
+						$cap_text = $this->get_description( $max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_desc );
 
 						break;
 
@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						/**
 						 * Get the title first.
 						 */
-						$cap_text = $this->get_title( 0, '', $mod, $read_cache, false, false, $md_idx_title );	// $add_hashtags is false.
+						$cap_text = $this->get_title( 0, '', $mod, $read_cache, false, false, $md_key_title );	// $add_hashtags is false.
 
 						/**
 						 * Add a separator between title and description.
@@ -201,7 +201,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						 */
 						$adj_max_len = $max_len - strlen( $cap_text );
 
-						$cap_text .= $this->get_description( $adj_max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_idx_desc );
+						$cap_text .= $this->get_description( $adj_max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_desc );
 
 						break;
 				}
@@ -213,15 +213,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$cap_text = html_entity_decode( SucomUtil::decode_utf8( $cap_text ), ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
-			return apply_filters( $this->p->lca . '_caption', $cap_text, $mod, $add_hashtags, $md_idx );
+			return apply_filters( $this->p->lca . '_caption', $cap_text, $mod, $add_hashtags, $md_key );
 		}
 
 		/**
-		 * $mod = true | false | post_id | array
-		 * $md_idx = true | false | string | array
+		 * $mod    = true | false | post_id | array
+		 * $md_key = true | false | string | array
 		 */
 		public function get_title( $max_len = 70, $dots = '', $mod = false, $read_cache = true,
-			$add_hashtags = false, $do_encode = true, $md_idx = 'og_title', $sep = null ) {
+			$add_hashtags = false, $do_encode = true, $md_key = 'og_title', $sep = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
@@ -231,7 +231,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'read_cache'   => $read_cache,
 					'add_hashtags' => $add_hashtags,	// true/false/numeric
 					'do_encode'    => $do_encode,
-					'md_idx'       => $md_idx,
+					'md_key'       => $md_key,
 					'sep'          => $sep,
 				) );
 			}
@@ -247,12 +247,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
-			if ( false === $md_idx ) {		// false would return the complete meta array
-				$md_idx = '';
-			} elseif ( true === $md_idx ) {		// true signals use of the standard / fallback value
-				$md_idx = array( 'og_title' );
-			} elseif ( ! is_array( $md_idx ) ) {	// use fallback by default - get_options_multi() will do array_uniq()
-				$md_idx = array( $md_idx, 'og_title' );
+			if ( false === $md_key ) {		// false would return the complete meta array
+				$md_key = '';
+			} elseif ( true === $md_key ) {		// true signals use of the standard / fallback value
+				$md_key = array( 'og_title' );
+			} elseif ( ! is_array( $md_key ) ) {	// use fallback by default - get_options_multi() will do array_uniq()
+				$md_key = array( $md_key, 'og_title' );
 			}
 
 			$title_text = false;
@@ -278,20 +278,20 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Check for custom title if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_idx ) ) {
+			if ( ! empty( $md_key ) ) {
 
-				$title_text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], $md_idx ) : null;
+				$title_text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $title_text ) ) {
-						$this->p->debug->log( 'no custom title found for md_idx' );
+						$this->p->debug->log( 'no custom title found for md_key' );
 					} else {
 						$this->p->debug->log( 'custom title = "' . $title_text . '"' );
 					}
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'custom title skipped: no md_idx value' );
+				$this->p->debug->log( 'custom title skipped: no md_key value' );
 			}
 
 			/**
@@ -299,7 +299,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $title_text ) ) {
 
-				$title_text = apply_filters( $this->p->lca . '_title_seed', '', $mod, $add_hashtags, $md_idx, $sep );
+				$title_text = apply_filters( $this->p->lca . '_title_seed', '', $mod, $add_hashtags, $md_key, $sep );
 
 				if ( ! empty( $title_text ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -492,15 +492,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'before title filter = "' . $title_text . '"' );
 			}
 
-			return apply_filters( $this->p->lca . '_title', $title_text, $mod, $add_hashtags, $md_idx, $sep );
+			return apply_filters( $this->p->lca . '_title', $title_text, $mod, $add_hashtags, $md_key, $sep );
 		}
 
 		/**
-		 * $mod = true | false | post_id | array
-		 * $md_idx = true | false | string | array
+		 * $mod    = true | false | post_id | array
+		 * $md_key = true | false | string | array
 		 */
 		public function get_description( $max_len = 160, $dots = '...', $mod = false, $read_cache = true,
-			$add_hashtags = true, $do_encode = true, $md_idx = 'og_desc' ) {
+			$add_hashtags = true, $do_encode = true, $md_key = 'og_desc' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -513,7 +513,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'read_cache'   => $read_cache,
 					'add_hashtags' => $add_hashtags, 	// true | false | numeric
 					'do_encode'    => $do_encode,
-					'md_idx'       => $md_idx,
+					'md_key'       => $md_key,
 				) );
 			}
 
@@ -530,12 +530,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
-			if ( false === $md_idx ) {		// false would return the complete meta array
-				$md_idx = '';
-			} elseif ( true === $md_idx ) {		// true signals use of the standard / fallback value
-				$md_idx = array( 'og_desc' );
-			} elseif ( ! is_array( $md_idx ) ) {	// use fallback by default - get_options_multi() will do array_uniq()
-				$md_idx = array( $md_idx, 'og_desc' );
+			if ( false === $md_key ) {		// false would return the complete meta array
+				$md_key = '';
+			} elseif ( true === $md_key ) {		// true signals use of the standard / fallback value
+				$md_key = array( 'og_desc' );
+			} elseif ( ! is_array( $md_key ) ) {	// use fallback by default - get_options_multi() will do array_uniq()
+				$md_key = array( $md_key, 'og_desc' );
 			}
 
 			$desc_text = false;
@@ -544,20 +544,20 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Check for custom description if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_idx ) ) {
+			if ( ! empty( $md_key ) ) {
 
-				$desc_text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], $md_idx ) : null;
+				$desc_text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $desc_text ) ) {
-						$this->p->debug->log( 'no custom description found for md_idx' );
+						$this->p->debug->log( 'no custom description found for md_key' );
 					} else {
 						$this->p->debug->log( 'custom description = "' . $desc_text . '"' );
 					}
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'custom description skipped: no md_idx value' );
+				$this->p->debug->log( 'custom description skipped: no md_key value' );
 			}
 
 			/**
@@ -565,7 +565,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $desc_text ) ) {
 
-				$desc_text = apply_filters( $this->p->lca . '_description_seed', '', $mod, $add_hashtags, $md_idx );
+				$desc_text = apply_filters( $this->p->lca . '_description_seed', '', $mod, $add_hashtags, $md_key );
 
 				if ( ! empty( $desc_text ) ) {
 					if ( $this->p->debug->enabled ) {
@@ -644,7 +644,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 								$this->p->debug->log( 'getting the content for post ID ' . $mod['id'] );
 							}
 	
-							$desc_text = $this->get_the_content( $mod, $read_cache, $md_idx );
+							$desc_text = $this->get_the_content( $mod, $read_cache, $md_key );
 	
 							/**
 							 * Ignore everything before the first paragraph if true.
@@ -807,7 +807,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'before description filter = "' . $desc_text . '"' );
 			}
 
-			return apply_filters( $this->p->lca . '_description', $desc_text, $mod, $add_hashtags, $md_idx );
+			return apply_filters( $this->p->lca . '_description', $desc_text, $mod, $add_hashtags, $md_key );
 		}
 
 		public function get_the_excerpt( array $mod ) {
@@ -845,7 +845,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/**
 		 * Returns the content text, stripped of all HTML tags.
 		 */
-		public function get_the_text( array $mod, $read_cache = true, $md_idx = '' ) {
+		public function get_the_text( array $mod, $read_cache = true, $md_key = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -854,20 +854,20 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Check for custom text if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_idx ) ) {
+			if ( ! empty( $md_key ) ) {
 
-				$text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], $md_idx ) : null;
+				$text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $text ) ) {
-						$this->p->debug->log( 'no custom text found for md_idx' );
+						$this->p->debug->log( 'no custom text found for md_key' );
 					} else {
 						$this->p->debug->log( 'custom text = "' . $text . '"' );
 					}
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'custom text skipped: no md_idx value' );
+				$this->p->debug->log( 'custom text skipped: no md_key value' );
 			}
 
 			/**
@@ -875,23 +875,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $text ) ) {
 
-				$text = $this->get_the_content( $mod, $read_cache, $md_idx );
+				$text = $this->get_the_content( $mod, $read_cache, $md_key );
 
 				$text = $this->p->util->cleanup_html_tags( $text, true, $this->p->options['plugin_use_img_alt'] );
 			}
 
-			$text = apply_filters( $this->p->lca . '_text', $text, $mod, $read_cache, $md_idx );
+			$text = apply_filters( $this->p->lca . '_text', $text, $mod, $read_cache, $md_key );
 
 			return $text;
 		}
 
-		public function get_the_content( array $mod, $read_cache = true, $md_idx = '' ) {
+		public function get_the_content( array $mod, $read_cache = true, $md_key = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
 					'mod'        => $mod,
 					'read_cache' => $read_cache,
-					'md_idx'     => $md_idx,
+					'md_key'     => $md_key,
 				) );
 			}
 
@@ -961,7 +961,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$cache_array[ $cache_index ] = false;	// Initialize the cache element.
 
 			$content =& $cache_array[$cache_index];	// Reference the cache element.
-			$content = apply_filters( $this->p->lca . '_content_seed', '', $mod, $read_cache, $md_idx );
+			$content = apply_filters( $this->p->lca . '_content_seed', '', $mod, $read_cache, $md_key );
 
 			if ( $content === false ) {
 
@@ -1056,7 +1056,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Apply filters before caching.
 			 */
-			$content = apply_filters( $this->p->lca . '_content', $content, $mod, $read_cache, $md_idx );
+			$content = apply_filters( $this->p->lca . '_content', $content, $mod, $read_cache, $md_key );
 
 			if ( $cache_exp_secs > 0 ) {
 

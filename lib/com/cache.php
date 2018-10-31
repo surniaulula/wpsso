@@ -461,11 +461,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			 *
 			 */
 			if ( ! empty( $curl_opts ) ) {
-				foreach ( $curl_opts as $opt_name => $opt_value ) {
+
+				foreach ( $curl_opts as $opt_key => $opt_val ) {
+
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'curl: setting custom curl option ' . $opt_name . ' = ' . $opt_value );
+						$this->p->debug->log( 'curl: setting custom curl option ' . $opt_key . ' = ' . $opt_val );
 					}
-					curl_setopt( $ch, constant( $opt_name ), $opt_value );
+
+					curl_setopt( $ch, constant( $opt_key ), $opt_val );
 				}
 			}
 

@@ -455,18 +455,18 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		/**
 		 * Return a specific option from the custom social settings meta with fallback for 
-		 * multiple option keys. If $md_idx is an array, then get the first non-empty option 
+		 * multiple option keys. If $md_key is an array, then get the first non-empty option 
 		 * from the options array. This is an easy way to provide a fallback value for the 
 		 * first array key. Use 'none' as a key name to skip this fallback behavior.
 		 *
 		 * Example: get_options_multi( $id, array( 'p_desc', 'og_desc' ) );
 		 */
-		public function get_options_multi( $mod_id, $md_idx = false, $filter_opts = true ) {
+		public function get_options_multi( $mod_id, $md_key = false, $filter_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
 					'mod_id'      => $mod_id, 
-					'md_idx'      => $md_idx, 
+					'md_key'      => $md_key, 
 					'filter_opts' => $filter_opts, 
 				) );
 			}
@@ -475,49 +475,49 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				return null;
 			}
 
-			if ( false === $md_idx ) {	// Return the whole options array.
+			if ( false === $md_key ) {					// Return the whole options array.
 
-				$md_val = $this->get_options( $mod_id, $md_idx, $filter_opts );
+				$md_val = $this->get_options( $mod_id, $md_key, $filter_opts );
 
-			} elseif ( true === $md_idx ) {	// True is not valid for a custom meta key.
+			} elseif ( true === $md_key ) {					// True is not valid for a custom meta key.
 
 				$md_val = null;
 
-			} else {	// Return the first matching index value.
+			} else {							// Return the first matching index value.
 
-				if ( ! is_array( $md_idx ) ) {	// Convert a string to an array.
-					$md_idx = array( $md_idx );
+				if ( is_array( $md_key ) ) {
+					$check_md_keys = array_unique( $md_key );	// Prevent duplicate key values.
 				} else {
-					$md_idx = array_unique( $md_idx );	// Prevent duplicate idx values.
+					$check_md_keys = array( $md_key );		// Convert a string to an array.
 				}
 
-				foreach ( $md_idx as $md_idx ) {
+				foreach ( $check_md_keys as $md_key ) {
 
-					if ( 'none' === $md_idx ) {	// Special index keyword - stop here.
+					if ( 'none' === $md_key ) {			// Special index keyword - stop here.
 
 						return null;
 
-					} elseif ( empty( $md_idx ) ) {	// Skip empty array keys.
+					} elseif ( empty( $md_key ) ) {			// Skip empty array keys.
 
 						continue;
 
-					} elseif ( is_array( $md_idx ) ) {	// An array of arrays is not valid.
+					} elseif ( is_array( $md_key ) ) {		// An array of arrays is not valid.
 
 						continue;
 
 					} else {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'getting id ' . $mod_id . ' option ' . $md_idx . ' value' );
+							$this->p->debug->log( 'getting id ' . $mod_id . ' option ' . $md_key . ' value' );
 						}
 
-						if ( ( $md_val = $this->get_options( $mod_id, $md_idx, $filter_opts ) ) !== null ) {
+						if ( ( $md_val = $this->get_options( $mod_id, $md_key, $filter_opts ) ) !== null ) {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'option ' . $md_idx . ' value found (not null)' );
+								$this->p->debug->log( 'option ' . $md_key . ' value found (not null)' );
 							}
 
-							break;	// Stop after first match.
+							break;				// Stop after first match.
 						}
 					}
 				}
@@ -529,8 +529,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 					$mod = $this->get_mod( $mod_id );
 
-					$this->p->debug->log( 'custom ' . $mod['name'] . ' ' . ( false === $md_idx ? 'options' : 
-						( is_array( $md_idx ) ? implode( ', ', $md_idx ) : $md_idx ) ) . ' = ' . 
+					$this->p->debug->log( 'custom ' . $mod['name'] . ' ' . ( false === $md_key ? 'options' : 
+						( is_array( $md_key ) ? implode( ', ', $md_key ) : $md_key ) ) . ' = ' . 
 						( is_array( $md_val ) ? print_r( $md_val, true ) : '"' . $md_val . '"' ) );
 				}
 			}
@@ -538,11 +538,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $md_val;
 		}
 
-		public function get_options( $mod_id, $md_idx = false, $filter_opts = true, $options_idx = false ) {
-			return $this->must_be_extended( __METHOD__, ( $md_idx !== false ? null : array() ) );	// return an empty array or null
+		public function get_options( $mod_id, $md_key = false, $filter_opts = true, $def_fallback = false ) {
+
+			return $this->must_be_extended( __METHOD__, ( $md_key !== false ? null : array() ) );	// return an empty array or null
 		}
 
-		public function get_defaults( $mod_id, $md_idx = false ) {
+		public function get_defaults( $mod_id, $md_key = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -687,10 +688,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->log( 'get_md_defaults filter skipped' );
 			}
 
-			if ( $md_idx !== false ) {
+			if ( $md_key !== false ) {
 
-				if ( isset( $md_defs[ $md_idx ] ) ) {
-					return $md_defs[ $md_idx ];
+				if ( isset( $md_defs[ $md_key ] ) ) {
+					return $md_defs[ $md_key ];
 				} else {
 					return null;
 				}
@@ -844,16 +845,16 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/**
 			 * Remove plugin version strings.
 			 */
-			$unset_idx = array( 'options_filtered', 'options_version' );
+			$md_unset_keys = array( 'options_filtered', 'options_version' );
 
 			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
 				if ( isset( $info['opt_version'] ) ) {
-					$unset_idx[] = 'plugin_' . $ext . '_opt_version';
+					$md_unset_keys[] = 'plugin_' . $ext . '_opt_version';
 				}
 			}
 
-			foreach ( $unset_idx as $md_idx ) {
-				unset( $md_defs[$md_idx], $md_prev[$md_idx] );
+			foreach ( $md_unset_keys as $md_key ) {
+				unset( $md_defs[$md_key], $md_prev[$md_key] );
 			}
 
 			/**
@@ -912,15 +913,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/**
 			 * Remove "use plugin settings", or "same as default" option values, or empty strings.
 			 */
-			foreach ( $md_opts as $md_idx => $md_val ) {
+			foreach ( $md_opts as $md_key => $md_val ) {
 
 				/**
 				 * Use strict comparison to manage conversion (don't allow string to integer conversion, for example).
 				 */
 				if ( $md_val === '' || $md_val === WPSSO_UNDEF || $md_val === (string) WPSSO_UNDEF || 
-					( isset( $md_defs[$md_idx] ) && ( $md_val === $md_defs[$md_idx] || $md_val === (string) $md_defs[$md_idx] ) ) ) {
+					( isset( $md_defs[$md_key] ) && ( $md_val === $md_defs[$md_key] || $md_val === (string) $md_defs[$md_key] ) ) ) {
 
-					unset( $md_opts[$md_idx] );
+					unset( $md_opts[$md_key] );
 				}
 			}
 
@@ -931,9 +932,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 				$md_renum = array();	// start with a fresh array
 
-				foreach ( SucomUtil::preg_grep_keys( '/^' . $md_multi . '_[0-9]+$/', $md_opts ) as $md_idx => $md_val ) {
+				foreach ( SucomUtil::preg_grep_keys( '/^' . $md_multi . '_[0-9]+$/', $md_opts ) as $md_key => $md_val ) {
 
-					unset( $md_opts[$md_idx] );
+					unset( $md_opts[$md_key] );
 
 					if ( $md_val !== '' ) {
 						$md_renum[] = $md_val;
@@ -965,7 +966,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		/**
 		 * Return sortable column keys and their query sort info.
 		 */
-		public static function get_sortable_columns( $col_idx = false ) { 
+		public static function get_sortable_columns( $col_key = false ) { 
 
 			static $sort_cols = null;
 
@@ -976,9 +977,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$sort_cols = (array) apply_filters( $wpsso->lca . '_get_sortable_columns', $wpsso->cf['edit']['columns'] );
 			}
 
-			if ( $col_idx !== false ) {
-				if ( isset( $sort_cols[$col_idx] ) ) {
-					return $sort_cols[$col_idx];
+			if ( $col_key !== false ) {
+				if ( isset( $sort_cols[$col_key] ) ) {
+					return $sort_cols[$col_key];
 				} else {
 					return null;
 				}
@@ -992,9 +993,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$meta_keys = array();
 			$sort_cols = self::get_sortable_columns();
 
-			foreach ( $sort_cols as $col_idx => $col_info ) {
+			foreach ( $sort_cols as $col_key => $col_info ) {
 				if ( ! empty( $col_info['meta_key'] ) ) {
-					$meta_keys[$col_idx] = $col_info['meta_key'];
+					$meta_keys[$col_key] = $col_info['meta_key'];
 				}
 			}
 
@@ -1006,9 +1007,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$headers   = array();
 			$sort_cols = self::get_sortable_columns();
 
-			foreach ( $sort_cols as $col_idx => $col_info ) {
+			foreach ( $sort_cols as $col_key => $col_info ) {
 				if ( ! empty( $col_info['header'] ) ) {
-					$headers[$col_idx] = _x( $col_info['header'], 'column header', 'wpsso' );
+					$headers[$col_key] = _x( $col_info['header'], 'column header', 'wpsso' );
 				}
 			}
 
@@ -1021,9 +1022,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			if ( ! empty( $mod['id'] ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// Just in case.
 
-				$col_idx = str_replace( $this->p->lca . '_', '', $column_name );
+				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
-				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
+				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
 
 					if ( isset( $col_info['meta_key'] ) ) {	// Just in case.
 
@@ -1045,23 +1046,28 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		}
 
 		public function get_column_content( $value, $column_name, $id ) {
+
 			return $this->must_be_extended( __METHOD__, $value );
 		}
 
 		public function get_meta_cache_value( $id, $meta_key, $none = '' ) {
+
 			return $this->must_be_extended( __METHOD__, $none );
 		}
 
-		public function update_sortable_meta( $obj_id, $col_idx, $content ) { 
+		public function update_sortable_meta( $obj_id, $col_key, $content ) { 
+
 			return $this->must_be_extended( __METHOD__ );
 		}
 
 		public function add_sortable_columns( $columns ) { 
-			foreach ( self::get_sortable_columns() as $col_idx => $col_info ) {
+
+			foreach ( self::get_sortable_columns() as $col_key => $col_info ) {
 				if ( ! empty( $col_info['orderby'] ) ) {
-					$columns[$this->p->lca . '_' . $col_idx] = $this->p->lca . '_' . $col_idx;
+					$columns[$this->p->lca . '_' . $col_key] = $this->p->lca . '_' . $col_key;
 				}
 			}
+
 			return $columns;
 		}
 
@@ -1071,9 +1077,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			if ( is_string( $col_name ) && strpos( $col_name, $this->p->lca . '_' ) === 0 ) {
 
-				$col_idx = str_replace( $this->p->lca . '_', '', $col_name );
+				$col_key = str_replace( $this->p->lca . '_', '', $col_name );
 
-				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
+				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
 
 					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {
 
@@ -1089,14 +1095,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			if ( ! empty( $mod_name ) ) {
 
-				foreach ( self::get_column_headers() as $col_idx => $col_header ) {
+				foreach ( self::get_column_headers() as $col_key => $col_header ) {
 
-					if ( ! empty( $this->p->options['plugin_' . $col_idx . '_col_' . $mod_name] ) ) {
+					if ( ! empty( $this->p->options['plugin_' . $col_key . '_col_' . $mod_name] ) ) {
 
-						$columns[$this->p->lca . '_' . $col_idx] = $col_header;
+						$columns[$this->p->lca . '_' . $col_key] = $col_header;
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'adding ' . $this->p->lca . '_' . $col_idx . ' column' );
+							$this->p->debug->log( 'adding ' . $this->p->lca . '_' . $col_key . ' column' );
 						}
 					}
 				}
@@ -1393,7 +1399,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			/* Example config:
 			 *
-			 *	'cf_md_idx' => array(
+			 *	'cf_md_key' => array(
 			 *		'plugin_cf_img_url'             => 'og_img_url',
 			 *		'plugin_cf_vid_url'             => 'og_vid_url',
 			 *		'plugin_cf_vid_embed'           => 'og_vid_embed',
@@ -1413,26 +1419,31 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 *		'plugin_cf_sameas_urls'         => 'schema_sameas_url',
 			 *	),
 			 */
-			$cf_md_idx = (array) apply_filters( $this->p->lca . '_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] );
+			$cf_md_keys = (array) apply_filters( $this->p->lca . '_cf_md_keys', $this->p->cf['opt']['cf_md_key'] );
 
-			foreach ( $cf_md_idx as $cf_idx => $md_idx ) {
+			foreach ( $cf_md_keys as $cf_key => $md_key ) {
 
-				if ( empty( $md_idx ) ) {	// Custom fields can be disabled by filters.
+				if ( empty( $md_key ) ) {	// Custom fields can be disabled by filters.
+
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'custom field ' . $cf_idx . ' index is disabled' );
+						$this->p->debug->log( 'custom field ' . $cf_key . ' index is disabled' );
 					}
+
 					continue;
-				} elseif ( empty( $this->p->options[$cf_idx] ) ) {	// Check that a custom field meta key has been defined.
+
+				} elseif ( empty( $this->p->options[ $cf_key ] ) ) {	// Check that a custom field meta key has been defined.
+
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'custom field ' . $cf_idx . ' option is empty' );
+						$this->p->debug->log( 'custom field ' . $cf_key . ' option is empty' );
 					}
+
 					continue;
 				}
 
-				$meta_key = $this->p->options[$cf_idx];
+				$meta_key = $this->p->options[ $cf_key ];
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'custom field ' . $cf_idx . ' option has meta key ' . $meta_key );
+					$this->p->debug->log( 'custom field ' . $cf_key . ' option has meta key ' . $meta_key );
 				}
 
 				if ( ! isset( $wp_meta[$meta_key][0] ) ) {	// If the array element is not set, then skip it.
@@ -1443,7 +1454,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $meta_key . ' meta key found for ' . $md_idx . ' option' );
+					$this->p->debug->log( $meta_key . ' meta key found for ' . $md_key . ' option' );
 				}
 
 				$mixed  = maybe_unserialize( $wp_meta[$meta_key][0] );	// Could be a string or an array.
@@ -1472,7 +1483,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				/**
 				 * Check if the value should be split into numeric option increments.
 				 */
-				if ( empty( $this->p->cf['opt']['cf_md_multi'][$md_idx] ) ) {
+				if ( empty( $this->p->cf['opt']['cf_md_multi'][$md_key] ) ) {
 					$is_multi = false;
 				} else {
 					if ( ! is_array( $mixed ) ) {
@@ -1492,15 +1503,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					/**
 					 * Remove any old values from the options array.
 					 */
-					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_idx . '_[0-9]+$/', $md_opts, true );	// $invert is true.
+					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_key . '_[0-9]+$/', $md_opts, true );	// $invert is true.
 
 					foreach ( $values as $num => $val ) {
-						$md_opts[$md_idx . '_' . $num] = $val;
-						$md_opts[$md_idx . '_' . $num . ':is'] = 'disabled';
+						$md_opts[$md_key . '_' . $num] = $val;
+						$md_opts[$md_key . '_' . $num . ':is'] = 'disabled';
 					}
 				} else {
-					$md_opts[$md_idx] = reset( $values );	// Get first element of $values array.
-					$md_opts[$md_idx . ':is'] = 'disabled';
+					$md_opts[$md_key] = reset( $values );	// Get first element of $values array.
+					$md_opts[$md_key . ':is'] = 'disabled';
 				}
 			}
 

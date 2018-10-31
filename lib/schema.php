@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
 					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
-						$md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 				$img_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n";
 				$img_html .= '<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n";
@@ -201,20 +201,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head attributes disabled for empty option name' );
 				}
+
 				return false;
 			}
 
 			if ( SucomUtil::is_amp() ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head attributes disabled for amp endpoint' );
 				}
+
 				return false;
 			}
 
 			if ( ! apply_filters( $this->p->lca . '_add_schema_head_attributes', true ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head attributes disabled by filters' );
 				}
+
 				return false;
 			}
 
@@ -305,18 +310,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$type_id = $mod['obj']->get_options( $mod['id'], 'schema_type' );	// Returns null if an index key is not found.
 
 					if ( empty( $type_id ) ) {	// Must be a non-empty string.
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'custom type id from meta is empty' );
 						}
+
 					} elseif ( $type_id === 'none' ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'custom type id is disabled with value none' );
 						}
+
 					} elseif ( empty( $schema_types[$type_id] ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'custom type id "' . $type_id . '" not in schema types' );
 						}
+
 						$type_id = null;
+
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'custom type id "' . $type_id . '" from ' . $mod['name'] . ' meta' );
 					}
@@ -461,26 +473,37 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$get_value = false;
 
 			if ( empty( $type_id ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: schema type id is empty' );
 				}
+
 			} elseif ( $type_id === 'none' ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: schema type id is disabled' );
 				}
+
 			} elseif ( ! isset( $schema_types[$type_id] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: schema type id "' . $type_id . '" is unknown' );
 				}
+
 			} elseif ( ! $get_schema_id ) {	// False by default.
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning schema type url "' . $schema_types[$type_id] . '"' );
 				}
+
 				$get_value = $schema_types[$type_id];
+
 			} else {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning schema type id "' . $type_id . '"' );
 				}
+
 				$get_value = $type_id;
 			}
 
@@ -2038,12 +2061,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$ret['description'] = $wpsso->page->get_description( $wpsso->options[ 'schema_desc_max_len' ],
 						$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
-							$md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+							$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 				} else {
 
 					$ret['description'] = $wpsso->page->get_the_content( $mod, $read_cache = true,
-						$md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 					$ret['description'] = $wpsso->util->cleanup_html_tags( $ret['description'] );
 				}
@@ -3290,7 +3313,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$user_mod = $wpsso->m['util']['user']->get_mod( $user_id );
 				}
 
-				$user_desc = $user_mod['obj']->get_options_multi( $user_id, $md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+				$user_desc = $user_mod['obj']->get_options_multi( $user_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 				if ( empty( $user_desc ) ) {
 					$user_desc = $user_mod['obj']->get_author_meta( $user_id, 'description' );
@@ -3615,7 +3638,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$mt_schema['description'] = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
 					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
-						$md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 			}
 
 			switch ( $page_type_url ) {
@@ -3976,7 +3999,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$author_url  = $user_mod['obj']->get_author_website( $author_id, 'url' );
 			$author_name = $user_mod['obj']->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
-			$author_desc = $user_mod['obj']->get_options_multi( $author_id, $md_idx = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+			$author_desc = $user_mod['obj']->get_options_multi( $author_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 			if ( empty( $author_desc ) ) {
 				$author_desc = $user_mod['obj']->get_author_meta( $author_id, 'description' );

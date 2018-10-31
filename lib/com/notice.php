@@ -313,26 +313,32 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 		}
 
-		public function get_ref( $idx = false, $text_prefix = '', $text_suffix = '' ) {
+		public function get_ref( $ref_key = false, $text_prefix = '', $text_suffix = '' ) {
 
 			$refs = end( $this->notice_info );	// Get the last reference added.
 
-			if ( 'edit' === $idx ) {
+			if ( 'edit' === $ref_key ) {
+
 				if ( isset( $refs[ 'mod' ] ) ) {
+
 					if ( $refs[ 'mod' ][ 'is_post' ] && $refs[ 'mod' ][ 'id' ] ) {
 						return $text_prefix . get_edit_post_link( $refs[ 'mod' ][ 'id' ], false ) . $text_suffix;	// $display is false.
 					} else {
 						return '';
 					}
+
 				} else {
 					return '';
 				}
-			} elseif ( $idx !== false ) {
-				if ( isset( $refs[ $idx ] ) ) {
-					return $text_prefix . $refs[ $idx ] . $text_suffix;
+
+			} elseif ( $ref_key !== false ) {
+
+				if ( isset( $refs[ $ref_key ] ) ) {
+					return $text_prefix . $refs[ $ref_key ] . $text_suffix;
 				} else {
 					null;
 				}
+
 			} else {
 				return $refs;
 			}

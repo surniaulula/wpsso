@@ -56,15 +56,21 @@ if ( ! class_exists( 'WpssoGplSocialBuddypress' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_messages_tooltip_plugin( $text, $idx ) {
-			if ( strpos( $idx, 'tooltip-plugin_bp_' ) !== 0 ) {
+		public function filter_messages_tooltip_plugin( $text, $msg_key ) {
+
+			if ( strpos( $msg_key, 'tooltip-plugin_bp_' ) !== 0 ) {
 				return $text;
 			}
-			switch ( $idx ) {
+
+			switch ( $msg_key ) {
+
 				case 'tooltip-plugin_bp_bio_field':
+
 					$text = __( 'The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you\'ve created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.).', 'wpsso' );
+
 					break;
 			}
+
 			return $text;
 		}
 	}

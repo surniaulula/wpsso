@@ -462,9 +462,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( ! empty( $post_id ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// Just in case.
 
-				$col_idx = str_replace( $this->p->lca . '_', '', $column_name );
+				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
-				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
+				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
 
 					if ( isset( $col_info['meta_key'] ) ) {	// Just in case.
 						$value = $this->get_meta_cache_value( $post_id, $col_info['meta_key'] );
@@ -503,14 +503,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $value;
 		}
 
-		public function update_sortable_meta( $post_id, $col_idx, $content ) {
+		public function update_sortable_meta( $post_id, $col_key, $content ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
 			if ( ! empty( $post_id ) ) {	// Just in case.
-				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
+				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// Just in case.
 						update_post_meta( $post_id, $col_info['meta_key'], $content );
 					}
@@ -1337,7 +1337,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$cache_types   = array();
 			$cache_md5_pre = $this->p->lca . '_';
 
-			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 				delete_post_meta( $post_id, $meta_key );
 			}
 

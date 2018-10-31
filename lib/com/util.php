@@ -920,10 +920,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Use "tz" in the method name to hint that input is an abbreviation.
 		 */
 		public static function get_tz_name( $tz_abbr ) {
+
 			return timezone_name_from_abbr( $tz_abbr );
 		}
 
 		public static function get_timezone_abbr( $tz_name ) {
+
 			return self::get_formatted_timezone( $tz_name, 'T' );
 		}
 
@@ -931,23 +933,32 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Timezone offset in seconds - offset west of UTC is negative, and east of UTC is positive.
 		 */
 		public static function get_timezone_offset( $tz_name ) {
+
 			return self::get_formatted_timezone( $tz_name, 'Z' );
 		}
 
-		private static function get_formatted_array( $arr, $idx = false, $add_none = false ) {
+		private static function get_formatted_array( $arr, $key = false, $add_none = false ) {
 
-			if ( null === $idx ) {
+			if ( null === $key ) {
+
 				/**
 				 * Nothing to do.
 				 */
-			} elseif ( false === $idx ) {
+
+			} elseif ( false === $key ) {
+
 				/**
 				 * Nothing to do.
 				 */
-			} elseif ( true === $idx ) { // Sort by value.
+
+			} elseif ( true === $key ) { // Sort by value.
+
 				asort( $arr );
-			} elseif ( isset( $arr[$idx] ) ) { // Return a specific dashicon label.
-				return $arr[$idx];
+
+			} elseif ( isset( $arr[$key] ) ) { // Return a specific dashicon label.
+
+				return $arr[$key];
+
 			} else {
 				return null;
 			}
@@ -959,7 +970,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $arr;
 		}
 
-		public static function get_currencies( $idx = false, $add_none = false, $format = '%2$s (%1$s)' ) {
+		public static function get_currencies( $key = false, $add_none = false, $format = '%2$s (%1$s)' ) {
 
 			static $local_cache = array(); // Array of arrays, indexed by $format.
 
@@ -974,10 +985,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				asort( $local_cache[$format] ); // Sort by value.
 			}
 
-			return self::get_formatted_array( $local_cache[$format], $idx, $add_none );
+			return self::get_formatted_array( $local_cache[$format], $key, $add_none );
 		}
 
-		public static function get_currency_abbrev( $idx = false, $add_none = false ) {
+		public static function get_currency_abbrev( $key = false, $add_none = false ) {
 
 			static $local_cache = null;
 
@@ -992,10 +1003,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				ksort( $local_cache ); // Sort by key (same as value).
 			}
 
-			return self::get_formatted_array( $local_cache, $idx, $add_none );
+			return self::get_formatted_array( $local_cache, $key, $add_none );
 		}
 
-		public static function get_currency_symbols( $idx = false, $add_none = false, $decode = false ) {
+		public static function get_currency_symbols( $key = false, $add_none = false, $decode = false ) {
 
 			if ( $decode ) {
 
@@ -1012,39 +1023,39 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					ksort( $local_cache ); // Sort by key.
 				}
 
-				return self::get_formatted_array( $local_cache, $idx, $add_none );
+				return self::get_formatted_array( $local_cache, $key, $add_none );
 
 			} else {
-				return self::get_formatted_array( self::$currency_symbols, $idx, $add_none );
+				return self::get_formatted_array( self::$currency_symbols, $key, $add_none );
 			}
 		}
 
-		public static function get_currency_symbol_abbrev( $idx = false, $default = 'USD', $decode = true ) {
+		public static function get_currency_symbol_abbrev( $key = false, $default = 'USD', $decode = true ) {
 
 			if ( $decode ) {
-				$idx = self::decode_html( $idx );
+				$key = self::decode_html( $key );
 			}
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[$idx] ) ) {
-				return $local_cache[$idx];
-			} elseif ( $idx === '$' ) {	// Match for USD first.
-				return $local_cache[$idx] = 'USD';
+			if ( isset( $local_cache[$key] ) ) {
+				return $local_cache[$key];
+			} elseif ( $key === '$' ) {	// Match for USD first.
+				return $local_cache[$key] = 'USD';
 			}
 
 			foreach ( self::get_currency_symbols( false, false, $decode ) as $abbrev => $symbol ) {
-				if ( $symbol === $idx ) {
-					return $local_cache[$idx] = $abbrev; // Stop here.
+				if ( $symbol === $key ) {
+					return $local_cache[$key] = $abbrev; // Stop here.
 				}
 			}
 
-			return $local_cache[$idx] = $default;
+			return $local_cache[$key] = $default;
 		}
 
-		public static function get_dashicons( $idx = false, $add_none = false ) {
+		public static function get_dashicons( $key = false, $add_none = false ) {
 
-			return self::get_formatted_array( self::$dashicons, $idx, $add_none );
+			return self::get_formatted_array( self::$dashicons, $key, $add_none );
 		}
 
 		public static function get_pub_lang( $pub = '' ) {
@@ -2602,10 +2613,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * to cache both self::get_locale() and SucomUtil::get_locale() in the
 			 * same variable.
 			 */
-			$idx = is_array( $mixed ) ? $mixed['name'] . '_' . $mixed['id'] : $mixed;
+			$key = is_array( $mixed ) ? $mixed['name'] . '_' . $mixed['id'] : $mixed;
 
-			if ( isset( self::$cache_locale_names[$idx] ) ) {
-				return self::$cache_locale_names[$idx];
+			if ( isset( self::$cache_locale_names[$key] ) ) {
+				return self::$cache_locale_names[$key];
 			}
 
 			if ( $mixed === 'default' ) {
@@ -2652,7 +2663,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			return self::$cache_locale_names[$idx] = apply_filters( 'sucom_locale', $locale, $mixed );
+			return self::$cache_locale_names[$key] = apply_filters( 'sucom_locale', $locale, $mixed );
 		}
 
 		public static function get_available_locales() {

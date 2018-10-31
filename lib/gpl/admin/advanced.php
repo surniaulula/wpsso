@@ -193,17 +193,19 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			/**
 			 * Custom fields.
 			 */
-			foreach ( (array) apply_filters( $this->p->lca . '_get_cf_md_idx', $this->p->cf['opt']['cf_md_idx'] ) as $cf_idx => $md_idx ) {
+			$cf_md_keys = (array) apply_filters( $this->p->lca . '_cf_md_keys', $this->p->cf['opt']['cf_md_key'] );
 
-				if ( isset( $this->p->cf['form']['cf_labels'][$cf_idx] ) && $opt_label = $this->p->cf['form']['cf_labels'][$cf_idx] ) {
+			foreach ( $cf_md_keys as $cf_key => $md_key ) {
 
-					if ( empty( $md_idx ) ) {
-						$this->p->options[$cf_idx] = '';
+				if ( ! empty( $this->p->cf['form']['cf_labels'][$cf_key] ) ) {
+
+					if ( empty( $md_key ) ) {
+						$this->p->options[ $cf_key ] = '';
 					}
 
-					$table_rows[ $cf_idx ] = $form->get_tr_hide( 'basic', $cf_idx ) . 
-					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $cf_idx ) . 
-					'<td class="blank">' . $form->get_no_input( $cf_idx ) . '</td>';
+					$table_rows[ $cf_key ] = $form->get_tr_hide( 'basic', $cf_key ) . 
+					$form->get_th_html( _x( $this->p->cf['form']['cf_labels'][$cf_key], 'option label', 'wpsso' ), '', $cf_key ) . 
+					'<td class="blank">' . $form->get_no_input( $cf_key ) . '</td>';
 				}
 			}
 
@@ -220,7 +222,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$cols = '<table class="plugin-list-columns">' . "\n" . '<tr>';
 
-			foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
+			foreach ( WpssoMeta::get_column_headers() as $col_key => $col_header ) {
 				$cols .= '<th>' . $col_header . '</th>';
 			}
 
@@ -235,9 +237,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 				$cols .= '<tr>';
 
-				foreach ( WpssoMeta::get_column_headers() as $col_idx => $col_header ) {
-					if ( $form->in_defaults( 'plugin_' . $col_idx . '_col_' . $mod_name ) ) {	// Just in case.
-						$cols .= $form->get_td_no_checkbox( 'plugin_' . $col_idx . '_col_' . $mod_name, '', $narrow = true );
+				foreach ( WpssoMeta::get_column_headers() as $col_key => $col_header ) {
+					if ( $form->in_defaults( 'plugin_' . $col_key . '_col_' . $mod_name ) ) {	// Just in case.
+						$cols .= $form->get_td_no_checkbox( 'plugin_' . $col_key . '_col_' . $mod_name, '', $narrow = true );
 					} else {
 						$cols .= '<td class="checkbox"></td>';
 					}
@@ -684,13 +686,18 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 					$force     = null;
 					$group     = null;
 
-					$this->head_tags_opts[$opt_key] = $opt_val;
+					$this->head_tags_opts[ $opt_key ] = $opt_val;
 
 					switch ( $opt_key ) {
+
 						case 'add_meta_name_generator':	// Disabled with a constant instead.
+
 							continue 2;
+
 						case 'add_link_rel_shortlink':
+
 							$group = 'add_link_rel_shortlink';
+
 							break;
 					}
 

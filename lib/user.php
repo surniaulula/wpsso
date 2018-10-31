@@ -271,9 +271,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( ! empty( $user_id ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// just in case
 
-				$col_idx = str_replace( $this->p->lca . '_', '', $column_name );
+				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
-				if ( ( $col_info = self::get_sortable_columns( $col_idx ) ) !== null ) {
+				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
 					if ( isset( $col_info['meta_key'] ) ) {	// just in case
 						$value = $this->get_meta_cache_value( $user_id, $col_info['meta_key'] );
 					}
@@ -299,14 +299,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $value;
 		}
 
-		public function update_sortable_meta( $user_id, $col_idx, $content ) {
+		public function update_sortable_meta( $user_id, $col_key, $content ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
 			if ( ! empty( $user_id ) ) {	// just in case
-				if ( ( $sort_cols = self::get_sortable_columns( $col_idx ) ) !== null ) {
+				if ( ( $sort_cols = self::get_sortable_columns( $col_key ) ) !== null ) {
 					if ( isset( $sort_cols['meta_key'] ) ) {	// just in case
 						update_user_meta( $user_id, $sort_cols['meta_key'], $content );
 					}
@@ -587,13 +587,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function get_form_contact_fields( $fields = array() ) {
-			return array_merge(
-				array( 'none' => '[None]' ), 	// make sure none is first
-				$this->add_contact_methods( array(
-					'author' => 'Author Archive',
-					'url' => 'WebSite'
-				) )
-			);
+
+			return array( 'none' => '[None]' ) + $this->add_contact_methods( array(
+				'author' => 'Author Archive',
+				'url' => 'WebSite'
+			) );
 		}
 
 		public function add_contact_methods( $fields = array(), $user = null ) {
@@ -1105,7 +1103,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public static function get_pref( $idx = false, $user_id = false ) {
+		public static function get_pref( $pref_key = false, $user_id = false ) {
 
 			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
 
@@ -1128,9 +1126,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
-			if ( $idx !== false ) {
-				if ( isset( self::$cache_pref[$user_id][$idx] ) ) {
-					return self::$cache_pref[$user_id][$idx];
+			if ( $pref_key !== false ) {
+				if ( isset( self::$cache_pref[$user_id][$pref_key] ) ) {
+					return self::$cache_pref[$user_id][$pref_key];
 				} else {
 					return false;
 				}
@@ -1168,7 +1166,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mod           = $this->get_mod( $user_id );
 			$col_meta_keys = WpssoMeta::get_column_meta_keys();
 
-			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 				delete_user_meta( $user_id, $meta_key );
 			}
 

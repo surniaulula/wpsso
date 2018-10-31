@@ -16,7 +16,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.0
  * WC Tested Up To: 3.5
- * Version: 4.16.4-b.1
+ * Version: 4.16.4-b.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -83,7 +83,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			require_once $plugin_dir . 'lib/config.php';
 
-			$this->cf = WpssoConfig::get_config( $idx = false, $apply_filters = false );
+			$this->cf = WpssoConfig::get_config( $opt_key = false, $apply_filters = false );
 
 			WpssoConfig::set_constants( __FILE__ );
 			WpssoConfig::require_libs( __FILE__ );			// Includes the register.php class library.
@@ -119,7 +119,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function set_config( $activate = false ) {
 
-			$this->cf = WpssoConfig::get_config( $idx = false, $apply_filters = true );
+			$this->cf = WpssoConfig::get_config( $opt_key = false, $apply_filters = true );
 		}
 
 		/**

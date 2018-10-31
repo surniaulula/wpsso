@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$seo_desc_max_len    = $this->p->options['seo_desc_max_len'];
 			$tc_desc_max_len     = $this->p->options['tc_desc_max_len'];
 			$schema_desc_max_len = $this->p->options['schema_desc_max_len'];
-			$schema_desc_idx     = array( 'seo_desc', 'og_desc' );
+			$schema_desc_md_key  = array( 'seo_desc', 'og_desc' );
 
 			$def_og_type     = $this->p->og->get_mod_og_type( $mod, $get_type_ns = false, $use_mod_opts = false );
 			$def_art_section = $this->p->page->get_article_section( $mod['id'], $allow_none = true, $use_mod_opts = false );
@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
 			$def_seo_desc    = $add_meta_name_desc ? $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags ) : '';
 			$def_tc_desc     = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
-			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, $schema_desc_idx );
+			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, $schema_desc_md_key );
 
 			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
 

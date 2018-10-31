@@ -217,18 +217,25 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$type_id = $mod['obj']->get_options( $mod['id'], 'og_type' );	// Returns null if index key not found.
 
 					if ( empty( $type_id ) ) {	// Must be a non-empty string.
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'custom type id from meta is empty' );
 						}
+
 					} elseif ( $type_id === 'none' ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'custom type id is disabled with value none' );
 						}
+
 					} elseif ( empty( $og_type_ns[$type_id] ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'custom type id "' . $type_id . '" not in og types' );
 						}
+
 						$type_id = null;
+
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'custom type id "' . $type_id . '" from ' . $mod['name'] . ' meta' );
 					}
@@ -375,26 +382,37 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$get_value = false;
 
 			if ( empty( $type_id ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: og type id is empty' );
 				}
+
 			} elseif ( $type_id === 'none' ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: og type id is disabled' );
 				}
+
 			} elseif ( ! isset( $og_type_ns[$type_id] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: og type id "' . $type_id . '" is unknown' );
 				}
+
 			} elseif ( $get_type_ns ) {	// False by default.
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning og type namespace "' . $og_type_ns[$type_id] . '"' );
 				}
+
 				$get_value = $og_type_ns[$type_id];
+
 			} else {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning og type id "' . $type_id . '"' );
 				}
+
 				$get_value = $type_id;
 			}
 
@@ -665,17 +683,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				$md_opts = empty( $mod['obj'] ) ? array() : (array) $mod['obj']->get_options( $mod['id'] );
 
-				foreach ( $og_type_mt_md as $mt_name => $md_idx ) {
+				foreach ( $og_type_mt_md as $mt_name => $md_key ) {
 
 					/**
 					 * Use a custom value if one is available - ignore empty strings and 'none'.
 					 */
-					if ( $md_idx && isset( $md_opts[$md_idx] ) && $md_opts[$md_idx] !== '' ) {
+					if ( $md_key && isset( $md_opts[$md_key] ) && $md_opts[$md_key] !== '' ) {
 
-						if ( $md_opts[$md_idx] === 'none' ) {
+						if ( $md_opts[$md_key] === 'none' ) {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $md_idx . ' option is "none" - unsetting ' . $mt_name . ' meta tag' );
+								$this->p->debug->log( $md_key . ' option is "none" - unsetting ' . $mt_name . ' meta tag' );
 							}
 
 							unset( $mt_og[$mt_name] );
@@ -683,10 +701,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						} else {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( $type_id . ' meta tag ' . $mt_name . ' from option = ' . $md_opts[$md_idx] );
+								$this->p->debug->log( $type_id . ' meta tag ' . $mt_name . ' from option = ' . $md_opts[$md_key] );
 							}
 
-							$mt_og[$mt_name] = $md_opts[$md_idx];
+							$mt_og[$mt_name] = $md_opts[$md_key];
 						}
 
 					} elseif ( isset( $mt_og[$mt_name] ) ) {	// if the meta tag has not already been set
@@ -990,14 +1008,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						'og_vid_height' => 'og:video:height',
 						'og_vid_title'  => 'og:video:title',
 						'og_vid_desc'   => 'og:video:description',
-					) as $idx => $mt_name ) {
+					) as $md_key => $mt_name ) {
 	
 						/**
 						 * Note that get_options() returns null if an index key is not found.
 						 */
-						$value = $mod['obj']->get_options( $mod['id'], $idx );
+						$value = $mod['obj']->get_options( $mod['id'], $md_key );
 	
-						if ( ! empty( $value ) ) {	// must be a non-empty string
+						if ( ! empty( $value ) ) {	// Must be a non-empty string.
 							$og_ret[$num][$mt_name] = $value;
 						}
 					}
@@ -1535,7 +1553,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			foreach ( $this->p->cf['head']['og_type_mt'] as $type_id => $og_type_mt_md ) {
 
-				foreach ( $og_type_mt_md as $mt_name => $md_idx ) {
+				foreach ( $og_type_mt_md as $mt_name => $md_key ) {
 
 					if ( isset( $mt_og[$mt_name] ) ) {
 

@@ -29,19 +29,23 @@ if ( ! class_exists( 'WpssoGplUtilPost' ) && class_exists( 'WpssoPost' ) ) {
 		 * does it have any video API modules, so optimize and disable some methods
 		 * that wouldn't return anything anyway. ;-)
 		 */
-		public function get_options_multi( $mod_id, $idx = false, $filter_opts = true ) {
-			return $this->not_implemented( __METHOD__, ( false === $idx ? false : null ) );
+		public function get_options_multi( $mod_id, $md_key = false, $filter_opts = true ) {
+
+			return $this->not_implemented( __METHOD__, ( false === $md_key ? false : null ) );
 		}
 
 		public function get_md_images( $num, $size_name, array $mod, $check_dupes = true, $force_regen = false, $md_pre = 'og', $mt_pre = 'og' ) {
+
 			return $this->not_implemented( __METHOD__, array() );
 		}
 
 		public function get_og_images( $num, $size_name, $mod_id, $check_dupes = true, $force_regen = false, $md_pre = 'og' ) {
+
 			return $this->not_implemented( __METHOD__, array() );
 		}
 
 		public function get_og_videos( $num, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
+
 			return $this->not_implemented( __METHOD__, array() );
 		}
 	}

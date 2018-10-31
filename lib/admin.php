@@ -3249,9 +3249,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$tr_html = $this->form->get_tr_hide( $hide_in_view[ $opt_key ], $opt_key );
 				}
 
-				$table_rows[$opt_key] = $tr_html . 
-				$this->form->get_th_html( $th_label, '', $opt_key ) . 
-
+				$table_rows[$opt_key] = $tr_html . $this->form->get_th_html( $th_label, '', $opt_key ) . 
 				'<td>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . '</td>';
 			}
 
@@ -3259,17 +3257,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Type by Post Type
 			 */
 			$type_select = '';
-			$type_opt_keys = array();
+			$type_keys = array();
 
 			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
 
-				$type_opt_keys[] = $opt_key = 'og_type_for_' . $pt->name;
+				$type_keys[] = $opt_key = 'og_type_for_' . $pt->name;
 
 				$type_select .= '<p>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $pt->label ) . '</p>' . "\n";
 			}
 
-			$type_opt_keys[] = $opt_key = 'og_type_for_post_archive';
+			$type_keys[] = $opt_key = 'og_type_for_post_archive';
 
 			$type_select .= '<p>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( '(Post Type) Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
@@ -3279,23 +3277,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
 
 			if ( ! empty( $hide_in_view[ $tr_key ] ) ) {
-				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_opt_keys );
+				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_keys );
 			}
 
 			$table_rows[$tr_key] = $tr_html . $this->form->get_th_html( $th_label, '', $tr_key ) .
 			'<td>' . $type_select . '</td>';
 
-			unset( $type_select, $type_opt_keys );	// Just in case.
+			unset( $type_select, $type_keys );	// Just in case.
 
 			/**
 			 * Type by Term Taxonomy
 			 */
 			$type_select = '';
-			$type_opt_keys = array();
+			$type_keys = array();
 
 			foreach ( $this->p->util->get_taxonomies( 'objects' ) as $tax ) {
 
-				$type_opt_keys[] = $opt_key = 'og_type_for_tax_' . $tax->name;
+				$type_keys[] = $opt_key = 'og_type_for_tax_' . $tax->name;
 
 				$type_select .= '<p>' . $this->form->get_select( $opt_key, $og_types, 'og_type' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $tax->label ) . '</p>' . "\n";
@@ -3306,14 +3304,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$th_label = _x( 'Type by Term Taxonomy', 'option label', 'wpsso' );
 
 			if ( ! empty( $hide_in_view[ $tr_key ] ) ) {
-				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_opt_keys );
+				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_keys );
 			}
 
 			$table_rows[$tr_key] = $tr_html . 
 			$this->form->get_th_html( $th_label, '', $tr_key ) . 
 			'<td>' . $type_select . '</td>';
 
-			unset( $type_select, $type_opt_keys );	// Just in case.
+			unset( $type_select, $type_keys );	// Just in case.
 		}
 
 		/**
@@ -3383,17 +3381,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Item Type by Post Type
 			 */
 			$type_select = '';
-			$type_opt_keys = array();
+			$type_keys = array();
 
 			foreach ( $this->p->util->get_post_types( 'objects' ) as $pt ) {
 
-				$type_opt_keys[] = $opt_key = 'schema_type_for_' . $pt->name;
+				$type_keys[] = $opt_key = 'schema_type_for_' . $pt->name;
 
 				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $pt->label ) . '</p>' . "\n";
 			}
 
-			$type_opt_keys[] = $opt_key = 'schema_type_for_post_archive';
+			$type_keys[] = $opt_key = 'schema_type_for_post_archive';
 
 			$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' ' .
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( '(Post Type) Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
@@ -3403,24 +3401,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$th_label = _x( 'Item Type by Post Type', 'option label', 'wpsso' );
 
 			if ( ! empty( $hide_in_view[$tr_key] ) ) {
-				$tr_html = $this->form->get_tr_hide( $hide_in_view[$tr_key], $type_opt_keys );
+				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_keys );
 			}
 
 			$table_rows[$tr_key] = $tr_html . 
 			$this->form->get_th_html( $th_label, '', $tr_key ) . 
 			'<td>' . $type_select . '</td>';
 
-			unset( $type_select, $type_opt_keys );	// Just in case.
+			unset( $type_select, $type_keys );	// Just in case.
 
 			/**
 			 * Item Type by Term Taxonomy
 			 */
-			$type_select = '';
-			$type_opt_keys = array();
+			$type_select   = '';
+			$type_keys = array();
 
 			foreach ( $this->p->util->get_taxonomies( 'objects' ) as $tax ) {
 
-				$type_opt_keys[] = $opt_key = 'schema_type_for_tax_' . $tax->name;
+				$type_keys[] = $opt_key = 'schema_type_for_tax_' . $tax->name;
 
 				$type_select .= '<p>' . $this->form->get_select( $opt_key, $schema_types, 'schema_type' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $tax->label ) . '</p>' . "\n";
@@ -3431,13 +3429,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$th_label = _x( 'Item Type by Term Taxonomy', 'option label', 'wpsso' );
 
 			if ( ! empty( $hide_in_view[$tr_key] ) ) {
-				$tr_html = $this->form->get_tr_hide( $hide_in_view[$tr_key], $type_opt_keys );
+				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_keys );
 			}
 
 			$table_rows[$tr_key] = $tr_html . $this->form->get_th_html( $th_label, '', $tr_key ) . 
 			'<td>' . $type_select . '</td>';
 
-			unset( $type_select, $type_opt_keys );	// Just in case.
+			unset( $type_select, $type_keys );	// Just in case.
 		}
 
 		/**

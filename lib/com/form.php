@@ -15,12 +15,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		private $p;
 		private $lca;
-		private $options_name = null;
-		private $menu_ext = null;		// lca or ext lowercase acronym
-		private $text_domain = false;		// lca or ext text domain
-		private $default_text_domain = false;	// lca text domain (fallback)
+		private $opts_name       = null;
+		private $menu_ext        = null;		// lca or ext lowercase acronym
+		private $text_domain     = false;		// lca or ext text domain
+		private $def_text_domain = false;	// lca text domain (fallback)
 
-		public $options = array();
+		public $options  = array();
 		public $defaults = array();
 
 		public function __construct( &$plugin, $opts_name, &$opts, &$def_opts, $menu_ext = '' ) {
@@ -32,18 +32,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$this->p->debug->log( 'form options name is ' . $opts_name );
 			}
 
-			$this->lca          = $this->p->lca;
-			$this->options_name =& $opts_name;
-			$this->options      =& $opts;
-			$this->defaults     =& $def_opts;
-			$this->menu_ext     = empty( $menu_ext ) ? $this->lca : $menu_ext;	// lca or ext lowercase acronym
+			$this->lca        = $this->p->lca;
+			$this->opts_name  =& $opts_name;
+			$this->options    =& $opts;
+			$this->defaults   =& $def_opts;
+			$this->menu_ext   = empty( $menu_ext ) ? $this->lca : $menu_ext;	// lca or ext lowercase acronym
 
 			$this->set_text_domain( $this->menu_ext );
 			$this->set_default_text_domain( $this->lca );
 		}
 
 		public function get_options_name() {
-			return $this->options_name;
+			return $this->opts_name;
 		}
 
 		public function get_menu_ext() {
@@ -55,7 +55,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_default_text_domain() {
-			return $this->default_text_domain;
+			return $this->def_text_domain;
 		}
 
 		public function set_text_domain( $maybe_ext ) {
@@ -69,10 +69,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function set_default_text_domain( $maybe_ext ) {
 
-			$this->default_text_domain = $this->get_plugin_text_domain( $maybe_ext );
+			$this->def_text_domain = $this->get_plugin_text_domain( $maybe_ext );
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'form default text domain set to ' . $this->default_text_domain );
+				$this->p->debug->log( 'form default text domain set to ' . $this->def_text_domain );
 			}
 		}
 
@@ -87,14 +87,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$value_transl = _x( $value, 'option value', $this->text_domain );	// lca or ext text domain
 
-				if ( $value === $value_transl && $this->text_domain !== $this->default_text_domain ) {
-					$value_transl = _x( $value, 'option value', $this->default_text_domain );	// lca text domain
+				if ( $value === $value_transl && $this->text_domain !== $this->def_text_domain ) {
+					$value_transl = _x( $value, 'option value', $this->def_text_domain );	// lca text domain
 				}
 
 				return $value_transl;
 
-			} elseif ( $this->default_text_domain ) {
-				return _x( $value, 'option value', $this->default_text_domain );	// lca text domain
+			} elseif ( $this->def_text_domain ) {
+				return _x( $value, 'option value', $this->def_text_domain );	// lca text domain
 			}
 
 			return $value;
@@ -114,7 +114,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$html = $is_checkbox ? $this->get_hidden( 'is_checkbox_' . $name, 1, false ) : '';
-			$html .= '<input type="hidden" name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '" ' .
+			$html .= '<input type="hidden" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" ' .
 				'value="' . esc_attr( $value ) . '" />' . "\n";
 
 			return $html;
@@ -152,7 +152,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = ( $disabled ? '' : $this->get_hidden( 'is_checkbox_' . $name, 1, false ) ) .
 				'<input type="checkbox"' .
-				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '" value="1"' ) .
+				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="1"' ) .
 				( empty( $group ) ? '' : ' data-group="' . esc_attr( $group ) . '"' ) .
 				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
 				' id="' . esc_attr( $input_id ) . '"' . $input_checked . ' title="' . $title_transl . '" />';
@@ -247,7 +247,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$html .= ( $input_disabled ? '' : $this->get_hidden( 'is_checkbox_' . $input_name, 1, false ) ) .
 					'<span><input type="checkbox"' .
-					( $input_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->options_name . '[' . $input_name . ']' ) . '" value="1"' ) .
+					( $input_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '" value="1"' ) .
 					$input_checked . ' title="' . $title_transl . '"/>&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>' . "\n";
 			}
 
@@ -319,7 +319,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$label_transl = $this->get_value_transl( $label );
 				}
 
-				$attr_name_value = ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '" value="' . esc_attr( $val ) . '"';
+				$attr_name_value = ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="' . esc_attr( $val ) . '"';
 
 				$html .= '<span><input type="radio"' .
 					( $disabled ? ' disabled="disabled"' : $attr_name_value ) .
@@ -558,7 +558,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
-			$html .= '<select' . ( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '"' );
+			$html .= '<select' . ( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' );
 			$html .= ( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .' id="' . esc_attr( $input_id ) . '">' . "\n";
 			$html .= $select_options_html;
 			$html .= '<!-- ' . $select_options_added . ' select options added -->' . "\n";
@@ -722,7 +722,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			natsort( $size_names );
 
-			$html        = '<select name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '">';
+			$html        = '<select name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '">';
 			$in_options  = $this->in_options( $name );	// optimize and call only once
 			$in_defaults = $this->in_defaults( $name );	// optimize and call only once
 
@@ -785,7 +785,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $this->get_text_length_js( 'text_' . $css_id );
 			}
 
-			$html .= '<input type="text" name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '"' .
+			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' .
 				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
 				( empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
 				( empty( $tabindex ) ? '' : ' tabindex="' . esc_attr( $tabindex ) . '"' ) .
@@ -864,7 +864,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			return '<input type="text"' .
-				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '"' ) .
+				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' ) .
 				( empty( $css_class ) ? ' class="colorpicker"' : ' class="colorpicker ' . esc_attr( $css_class ) . '"' ) .
 				( empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
 				' placeholder="#000000" value="' . esc_attr( $value ) . '" />';
@@ -887,7 +887,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			return '<input type="text"' .
-				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '"' ) .
+				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' ) .
 				( empty( $css_class ) ? ' class="datepicker"' : ' class="datepicker ' . esc_attr( $css_class ) . '"' ) .
 				( empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"' ) .
 				( empty( $min_date ) ? '' : ' min="' . esc_attr( $min_date ) . '"' ) .
@@ -1141,7 +1141,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				} else {
 
 					$html .= '<input type="text"' .
-						' name="' . esc_attr( $this->options_name . '[' . $opt_key . ']' ) . '"' .
+						' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"' .
 						' class="' . esc_attr( $input_class ) . '"' .
 						' id="text_' . esc_attr( $input_id ) . '"' .
 						' value="' . esc_attr( $input_value ) . '"' .
@@ -1230,7 +1230,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									$html .= $this->get_no_input( $opt_key, $input_class, $input_id );
 								} else {
 									$html .= '<input type="text"' .
-										' name="' . esc_attr( $this->options_name . '[' . $opt_key . ']' ) . '"' .
+										' name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"' .
 										' title="' . esc_attr( $input_title ) . '"' .
 										' class="' . esc_attr( $input_class ) . '"' .
 										' id="text_' . esc_attr( $input_id ) . '"' .
@@ -1247,7 +1247,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								if ( $opt_disabled ) {
 									$html .= '<select disabled="disabled"';
 								} else {
-									$html .= '<select name="' . esc_attr( $this->options_name . '[' . $opt_key . ']' ) . '"';
+									$html .= '<select name="' . esc_attr( $this->opts_name . '[' . $opt_key . ']' ) . '"';
 								}
 
 									
@@ -1404,7 +1404,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$html .= '<textarea ' .
-				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->options_name . '[' . $name . ']' ) . '"' ) .
+				( $disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"' ) .
 				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
 				( empty( $css_id ) ? ' id="textarea_' . esc_attr( $name ) . '"' : ' id="textarea_' . esc_attr( $css_id ) . '"' ) .
 				( empty( $len['max'] ) || $disabled ? '' : ' maxLength="' . esc_attr( $len['max'] ) . '"' ) .
@@ -1463,12 +1463,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_options( $idx = false, $def_val = null ) {
+		public function get_options( $opt_key = false, $def_val = null ) {
 
-			if ( $idx !== false ) {
+			if ( $opt_key !== false ) {
 
-				if ( isset( $this->options[$idx] ) ) {
-					return $this->options[$idx];
+				if ( isset( $this->options[$opt_key] ) ) {
+					return $this->options[$opt_key];
 				} else {
 					return $def_val;
 				}
@@ -1478,7 +1478,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 		}
 
-		public function in_options( $idx, $is_preg = false ) {
+		public function in_options( $opt_key, $is_preg = false ) {
 
 			if ( $is_preg ) {
 
@@ -1486,17 +1486,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					return false;
 				}
 
-				$opts = SucomUtil::preg_grep_keys( $idx, $this->options );
+				$opts = SucomUtil::preg_grep_keys( $opt_key, $this->options );
 
 				return ( ! empty( $opts ) ) ? true : false;
 			}
 
-			return isset( $this->options[$idx] ) ? true : false;
+			return isset( $this->options[$opt_key] ) ? true : false;
 		}
 
-		public function in_defaults( $idx ) {
+		public function in_defaults( $opt_key ) {
 
-			return isset( $this->defaults[ $idx ] ) ? true : false;
+			return isset( $this->defaults[ $opt_key ] ) ? true : false;
 		}
 
 		private function get_text_length_js( $css_id ) {
@@ -1675,21 +1675,27 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_css_class_hide_img_dim( $in_view = 'basic', $opt_prefix ) {
+
 			foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $opt_key ) {
 				$opt_keys[] = $opt_prefix . '_' . $opt_key;
 			}
+
 			return self::get_css_class_hide( $in_view, $opt_keys );
 		}
 
 		public function get_css_class_hide_vid_dim( $in_view = 'basic', $opt_prefix ) {
+
 			foreach ( array( 'width', 'height' ) as $opt_key ) {
 				$opt_keys[] = $opt_prefix . '_' . $opt_key;
 			}
+
 			return self::get_css_class_hide( $in_view, $opt_keys );
 		}
 
 		public function get_css_class_hide_prefix( $in_view = 'basic', $opt_prefix ) {
+
 			$opt_keys = SucomUtil::get_opts_begin( $opt_prefix, $this->options );
+
 			return self::get_css_class_hide( $in_view, $opt_keys );
 		}
 
@@ -1698,35 +1704,49 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$css_class = 'hide_in_' . $in_view;
 
 			if ( empty( $opt_keys ) ) {
+
 				return $css_class;
+
 			} elseif ( ! is_array( $opt_keys ) ) {
+
 				$opt_keys = array( $opt_keys );
+
 			} elseif ( SucomUtil::is_assoc( $opt_keys ) ) {
+
 				$opt_keys = array_keys( $opt_keys );
 			}
 
-			foreach ( $opt_keys as $idx_locale ) {
+			foreach ( $opt_keys as $opt_key ) {
 
-				if ( strpos( $idx_locale, ':is' ) ) {	// skip option flags
+				if ( strpos( $opt_key, ':is' ) ) {	// Skip option flags.
+
 					continue;
 				}
 
-				$idx_default = strpos( $idx_locale, '#' ) !== false ? 
-					preg_replace( '/#.*$/', '', $idx_locale ) : $idx_locale;
+				$def_key = strpos( $opt_key, '#' ) !== false ? preg_replace( '/#.*$/', '', $opt_key ) : $opt_key;
 
-				if ( empty( $idx_default ) ) {
+				if ( empty( $def_key ) ) {
+
 					continue;
-				} elseif ( ! isset( $this->options[ $idx_locale ] ) ) {
+
+				} elseif ( ! isset( $this->options[ $opt_key ] ) ) {
+
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'missing options key for ' . $idx_locale );
+						$this->p->debug->log( 'missing options key for ' . $opt_key );
 					}
+
 					continue;
-				} elseif ( ! isset( $this->defaults[ $idx_default ] ) ) {
+
+				} elseif ( ! isset( $this->defaults[ $def_key ] ) ) {
+
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'missing defaults key for ' . $idx_default );
+						$this->p->debug->log( 'missing defaults key for ' . $def_key );
 					}
+
 					continue;
-				} elseif ( $this->options[ $idx_locale ] !== $this->defaults[ $idx_default ] ) {
+
+				} elseif ( $this->options[ $opt_key ] !== $this->defaults[ $def_key ] ) {
+
 					return '';
 				}
 			}

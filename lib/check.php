@@ -242,25 +242,25 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'media-wpvideo':
 						case 'media-youtube':
 
-							$chk['optval'] = 'plugin_' . $id . '_api';
+							$chk[ 'opt_key' ] = 'plugin_' . $id . '_api';
 
 							break;
 
 						case 'media-upscale':
 
-							$chk['optval'] = 'plugin_upscale_images';
+							$chk[ 'opt_key' ] = 'plugin_upscale_images';
 
 							break;
 
 						/*
 						case 'places-google_places':
-							$chk['optval'] = 'plugin_google_places';
+							$chk[ 'opt_key' ] = 'plugin_google_places';
 							break;
 						 */
 
 						case 'util-checkimgdims':
 
-							$chk['optval'] = 'plugin_check_img_dims';
+							$chk[ 'opt_key' ] = 'plugin_check_img_dims';
 
 							break;
 
@@ -280,19 +280,19 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'util-language':
 
-							$chk['optval'] = 'plugin_filter_lang';
+							$chk[ 'opt_key' ] = 'plugin_filter_lang';
 
 							break;
 
 						case 'util-shorten':
 
-							$chk['optval'] = 'plugin_shortener';
+							$chk[ 'opt_key' ] = 'plugin_shortener';
 
 							break;
 
 						case 'util-wpseo_meta':
 
-							$chk['optval'] = 'plugin_wpseo_social_meta';
+							$chk[ 'opt_key' ] = 'plugin_wpseo_social_meta';
 
 							break;
 					}
@@ -312,19 +312,19 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								/**
 								 * Check if an option value is also required.
 								 */
-								if ( isset( $chk['optval'] ) ) {
-									if ( $this->has_optval( $chk['optval'] ) ) {
-										$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
+								if ( isset( $chk[ 'opt_key' ] ) ) {
+									if ( $this->is_opt_enabled( $chk[ 'opt_key' ] ) ) {
+										$get_avail[ $sub ][ '*' ] = $get_avail[ $sub ][ $id ] = true;
 									}
 								} else {
 									$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
 								}
 							}
 
-						} elseif ( isset( $chk['optval'] ) ) {
+						} elseif ( isset( $chk[ 'opt_key' ] ) ) {
 
-							if ( $this->has_optval( $chk['optval'] ) ) {
-								$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
+							if ( $this->is_opt_enabled( $chk[ 'opt_key' ] ) ) {
+								$get_avail[ $sub ][ '*' ] = $get_avail[ $sub ][ $id ] = true;
 							}
 
 						} elseif ( isset( $chk['constant'] ) ) {
@@ -454,11 +454,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				return self::$pp_c[$key] = false;
 			}
 
-			$idx = 'plugin_' . $ext . '_tid';
+			$key = 'plugin_' . $ext . '_tid';
 			$ins = is_dir( $pdir . 'lib/pro/' ) ? $rv : false;
 
 			return self::$pp_c[$key] = true === $lic ?
-				( ( ! empty( $this->p->options[$idx] ) &&
+				( ( ! empty( $this->p->options[$key] ) &&
 					$ins && class_exists( 'SucomUpdate' ) &&
 						( $uerr = SucomUpdate::get_umsg( $ext ) ?
 							false : $ins ) ) ? $uerr : false ) : $ins;
@@ -483,11 +483,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $ext_list;
 		}
 
-		private function has_optval( $opt_name ) {
+		private function is_opt_enabled( $opt_key ) {
 
-			if ( ! empty( $opt_name ) &&
-				! empty( $this->p->options[$opt_name] ) &&
-					$this->p->options[$opt_name] !== 'none' ) {
+			if ( ! empty( $opt_key ) &&
+				! empty( $this->p->options[ $opt_key ] ) &&
+					$this->p->options[ $opt_key ] !== 'none' ) {
 
 				return true;
 			}

@@ -24,12 +24,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			}
 		}
 
-		public function get( $idx = false, $info = array() ) {
+		public function get( $msg_key = false, $info = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array(
-					'idx'  => $idx,
-					'info' => $info,
+					'msg_key' => $msg_key,
+					'info'    => $info,
 				) );
 			}
 
@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$text = isset( $info[ 'text' ] ) ? $info[ 'text' ] : '';
 			}
 
-			$idx = sanitize_title_with_dashes( $idx );
+			$msg_key = sanitize_title_with_dashes( $msg_key );
 
 			/**
 			 * Example lcas: wpsso, wpssojson, wpssoum, etc.
@@ -55,25 +55,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$this->p->cf[ 'plugin' ][ $lca ][ 'url' ] : array();
 
 			if ( ! empty( $url[ 'purchase' ] ) ) {
-				$url[ 'purchase' ] = add_query_arg( 'utm_source', $idx, $url[ 'purchase' ] );
+				$url[ 'purchase' ] = add_query_arg( 'utm_source', $msg_key, $url[ 'purchase' ] );
 			} else {
 				$url[ 'purchase' ] = '';
 			}
 
-			foreach ( array( 'short', 'name', 'version' ) as $key ) {
+			foreach ( array( 'short', 'name', 'version' ) as $info_key ) {
 
-				if ( ! isset( $info[ $key ] ) ) {
-					if ( ! isset( $this->p->cf[ 'plugin' ][ $lca ][ $key ] ) ) {	// Just in case.
-						$info[ $key ] = null;
+				if ( ! isset( $info[ $info_key ] ) ) {
+					if ( ! isset( $this->p->cf[ 'plugin' ][ $lca ][ $info_key ] ) ) {	// Just in case.
+						$info[ $info_key ] = null;
 					} else {
-						$info[ $key ] = $this->p->cf[ 'plugin' ][ $lca ][ $key ];
+						$info[ $info_key ] = $this->p->cf[ 'plugin' ][ $lca ][ $info_key ];
 					}
 				}
 
-				$info[ $key . '_pro' ] = SucomUtil::get_pkg_name( $info[ $key ], 'Pro' );
+				$info[ $info_key . '_pro' ] = SucomUtil::get_pkg_name( $info[ $info_key ], 'Pro' );
 
-				$info[ $key . '_pro_purchase' ] = empty( $url[ 'purchase' ] ) ?
-					$info[ $key . '_pro' ] : '<a href="'.$url[ 'purchase' ].'">'.$info[ $key . '_pro'].'</a>';
+				$info[ $info_key . '_pro_purchase' ] = empty( $url[ 'purchase' ] ) ?
+					$info[ $info_key . '_pro' ] : '<a href="'.$url[ 'purchase' ].'">'.$info[ $info_key . '_pro'].'</a>';
 			}
 
 			$fb_recommends_transl = __( 'Facebook has published a preference for Open Graph image dimensions of 1200x630px cropped (for retina and high-PPI displays), 600x315px cropped as a minimum (the default settings value), and ignores images smaller than 200x200px.', 'wpsso' );
@@ -81,11 +81,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			/**
 			 * All tooltips
 			 */
-			if ( strpos( $idx, 'tooltip-' ) === 0 ) {
+			if ( strpos( $msg_key, 'tooltip-' ) === 0 ) {
 
-				if ( strpos( $idx, 'tooltip-meta-' ) === 0 ) {
+				if ( strpos( $msg_key, 'tooltip-meta-' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'tooltip-meta-sharing_url':
 
@@ -324,7 +324,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_meta', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_meta', $text, $msg_key, $info );
 
 							break;
 
@@ -333,9 +333,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Post Meta settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-post-' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-post-' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'tooltip-post-og_type':
 
@@ -365,7 +365,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_post', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_post', $text, $msg_key, $info );
 
 							break;
 
@@ -374,9 +374,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Site settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-site_' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-site_' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'tooltip-site_name':
 
@@ -425,9 +425,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Open Graph settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-og_' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-og_' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						/**
 						 * Site Information tab.
@@ -647,7 +647,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_og', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_og', $text, $msg_key, $info );
 
 							break;
 
@@ -657,9 +657,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Advanced plugin settings.
 				 */
-				} elseif ( strpos( $idx, 'tooltip-plugin_' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-plugin_' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						/**
 						 * Plugin Behavior settings.
@@ -783,12 +783,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$func_name   = 'language_attributes()';
 							$func_url    = __( 'https://developer.wordpress.org/reference/functions/language_attributes/', 'wpsso' );
 							$filter_name = 'language_attributes';
-							$html_tag    = '<code>&amp;lt;html&amp;gt;</code>';
+							$tag_code    = '<code>&amp;lt;html&amp;gt;</code>';
 							$php_code    = '<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
 
-							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info[ 'short' ], $filter_name, $html_tag ) . ' ';
+							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info[ 'short' ], $filter_name, $tag_code ) . ' ';
 
-							$text .= sprintf( __( 'The <a href="%1$s">WordPress %2$s function</a> and its \'%3$s\' filter are used by most themes &mdash; if the namespace prefix values are missing from your %4$s HTML tag attributes, make sure your header template(s) use the %2$s function.', 'wpsso' ), $func_url, '<code>'.$func_name.'</code>', $filter_name, $html_tag ) . ' ';
+							$text .= sprintf( __( 'The <a href="%1$s">WordPress %2$s function</a> and its \'%3$s\' filter are used by most themes &mdash; if the namespace prefix values are missing from your %4$s HTML tag attributes, make sure your header template(s) use the %2$s function.', 'wpsso' ), $func_url, '<code>'.$func_name.'</code>', $filter_name, $tag_code ) . ' ';
 
 							$text .= __( 'Leaving this option empty disables the addition of Open Graph namespace values.', 'wpsso' ) . ' ';
 
@@ -799,12 +799,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_head_attr_filter':
 
 							$filter_name = 'head_attributes';
-							$html_tag    = '<code>&amp;lt;head&amp;gt;</code>';
+							$tag_code    = '<code>&amp;lt;head&amp;gt;</code>';
 							$php_code    = '<pre><code>&amp;lt;head &amp;lt;?php do_action( &#39;add_head_attributes&#39; ); ?&amp;gt;&amp;gt;</code></pre>';
 
-							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info[ 'short' ], $filter_name, $html_tag ) . ' ';
+							$text = sprintf( __( '%1$s hooks the \'%2$s\' filter (by default) to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info[ 'short' ], $filter_name, $tag_code ) . ' ';
 
-							$text .= sprintf( __( 'If your theme already offers a filter for the %1$s HTML tag attributes, enter its name here (most themes do not offer this filter).', 'wpsso' ), $html_tag ) . ' ';
+							$text .= sprintf( __( 'If your theme already offers a filter for the %1$s HTML tag attributes, enter its name here (most themes do not offer this filter).', 'wpsso' ), $tag_code ) . ' ';
 
 							$text .= sprintf( __( 'Alternatively, you can edit your your theme header templates and add an action to call the \'%1$s\' filter.', 'wpsso' ), $filter_name ) . ' ';
 
@@ -1391,7 +1391,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_plugin', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_plugin', $text, $msg_key, $info );
 
 							break;
 
@@ -1399,9 +1399,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Publisher 'Facebook' settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-fb_' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-fb_' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'tooltip-fb_publisher_url':
 
@@ -1467,7 +1467,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_fb', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_fb', $text, $msg_key, $info );
 
 							break;
 
@@ -1476,9 +1476,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Publisher 'Google' / SEO settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-seo_' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-seo_' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'tooltip-seo_publisher_url':
 
@@ -1506,7 +1506,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_seo', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_seo', $text, $msg_key, $info );
 
 							break;
 
@@ -1515,9 +1515,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Publisher 'Schema' settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-schema_' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-schema_' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'tooltip-schema_add_noscript':
 
@@ -1667,7 +1667,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_schema', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_schema', $text, $msg_key, $info );
 
 							break;
 
@@ -1676,9 +1676,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Publisher 'Twitter Card' settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-tc_' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-tc_' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'tooltip-tc_site':
 
@@ -1734,7 +1734,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_tc', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_tc', $text, $msg_key, $info );
 
 							break;
 
@@ -1743,9 +1743,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Publisher 'Pinterest' (Rich Pin) settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-p_' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-p_' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'tooltip-p_publisher_url':
 
@@ -1781,7 +1781,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_p', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_p', $text, $msg_key, $info );
 
 							break;
 
@@ -1790,9 +1790,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Publisher 'Instagram' settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-instgram_' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-instgram_' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'tooltip-instgram_publisher_url':
 
@@ -1802,7 +1802,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_instgram', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_instgram', $text, $msg_key, $info );
 
 							break;
 
@@ -1811,9 +1811,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Publisher 'LinkedIn' settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-linkedin_' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-linkedin_' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'tooltip-linkedin_publisher_url':
 
@@ -1823,7 +1823,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_linkedin', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_linkedin', $text, $msg_key, $info );
 
 							break;
 
@@ -1832,9 +1832,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Publisher 'Myspace' settings
 				 */
-				} elseif ( strpos( $idx, 'tooltip-myspace_' ) === 0 ) {
+				} elseif ( strpos( $msg_key, 'tooltip-myspace_' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'tooltip-myspace_publisher_url':
 
@@ -1844,7 +1844,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_myspace', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip_myspace', $text, $msg_key, $info );
 
 							break;
 
@@ -1855,7 +1855,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				 */
 				} else {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'tooltip-custom-cm-field-id':
 
@@ -1885,7 +1885,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_tooltip', $text, $msg_key, $info );
 
 							break;
 
@@ -1896,11 +1896,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			/**
 			 * Misc informational messages
 			 */
-			} elseif ( strpos( $idx, 'info-' ) === 0 ) {
+			} elseif ( strpos( $msg_key, 'info-' ) === 0 ) {
 
-				if ( strpos( $idx, 'info-meta-' ) === 0 ) {
+				if ( strpos( $msg_key, 'info-meta-' ) === 0 ) {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'info-meta-validate-facebook':
 
@@ -1996,7 +1996,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				} else {
 
-					switch ( $idx ) {
+					switch ( $msg_key ) {
 
 						case 'info-plugin-tid':	// Displayed in the Licenses settings page.
 
@@ -2089,7 +2089,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_info', $text, $idx, $info );
+							$text = apply_filters( $lca . '_messages_info', $text, $msg_key, $info );
 
 							break;
 
@@ -2098,14 +2098,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			/**
 			 * Misc pro messages
 			 */
-			} elseif ( strpos( $idx, 'pro-' ) === 0 ) {
+			} elseif ( strpos( $msg_key, 'pro-' ) === 0 ) {
 
-				switch ( $idx ) {
+				switch ( $msg_key ) {
 
 					case 'pro-feature-msg':
 
 						/**
-						 * The $idx value has already been added to the purchase URL as a 'utm_source' query value.
+						 * The $msg_key value has already been added to the purchase URL as a 'utm_source' query value.
 						 */
 						$begin_p = '<p class="pro-feature-msg">' .
 							( empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">' );
@@ -2209,16 +2209,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					default:
 
-						$text = apply_filters( $lca . '_messages_pro', $text, $idx, $info );
+						$text = apply_filters( $lca . '_messages_pro', $text, $msg_key, $info );
 
 						break;
 				}
 			/**
 			 * Misc notice messages
 			 */
-			} elseif ( strpos( $idx, 'notice-' ) === 0 ) {
+			} elseif ( strpos( $msg_key, 'notice-' ) === 0 ) {
 
-				switch ( $idx ) {
+				switch ( $msg_key ) {
 
 					case 'notice-image-rejected':
 
@@ -2330,7 +2330,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-header-tmpl-no-head-attr':
 
 						$filter_name = 'head_attributes';
-						$html_tag    = '<code>&lt;head&gt;</code>';
+						$tag_code    = '<code>&lt;head&gt;</code>';
 						$php_code    = '<pre><code>&lt;head &lt;?php do_action( &#39;add_head_attributes&#39; ); ?&gt;&gt;</code></pre>';
 						$action_url  = wp_nonce_url( $this->p->util->get_admin_url( '?'.$this->p->cf[ 'lca' ].'-action=modify_tmpl_head_attributes' ),
 							WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
@@ -2341,9 +2341,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</p><p>';
 
-						$text .= sprintf( __( 'The %1$s HTML tag in your header template(s) should include a function, action, or filter for its attributes.', 'wpsso' ), $html_tag ) . ' ';
+						$text .= sprintf( __( 'The %1$s HTML tag in your header template(s) should include a function, action, or filter for its attributes.', 'wpsso' ), $tag_code ) . ' ';
 
-						$text .= sprintf( __( '%1$s can update your header template(s) automatically and change the existing %2$s HTML tag to:', 'wpsso' ), $info[ 'short' ], $html_tag );
+						$text .= sprintf( __( '%1$s can update your header template(s) automatically and change the existing %2$s HTML tag to:', 'wpsso' ), $info[ 'short' ], $tag_code );
 
 						$text .= '</p>'.$php_code.'<p>';
 
@@ -2401,7 +2401,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</p><p>';
 
-						if ( $idx === 'notice-um-add-on-required' ) {
+						if ( $msg_key === 'notice-um-add-on-required' ) {
 
 							$text .= '<b>' . sprintf( __( 'Install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ),
 								$um_info[ 'name' ], $settings_page_link ).'</b> ';
@@ -2453,16 +2453,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					default:
 
-						$text = apply_filters( $lca . '_messages_notice', $text, $idx, $info );
+						$text = apply_filters( $lca . '_messages_notice', $text, $msg_key, $info );
 
 						break;
 			}
 			/**
 			 * Misc sidebox messages
 			 */
-			} elseif ( strpos( $idx, 'column-' ) === 0 ) {
+			} elseif ( strpos( $msg_key, 'column-' ) === 0 ) {
 
-				switch ( $idx ) {
+				switch ( $msg_key ) {
 
 					case 'column-purchase-pro':
 
@@ -2519,12 +2519,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					default:
 
-						$text = apply_filters( $lca . '_messages_side', $text, $idx, $info );
+						$text = apply_filters( $lca . '_messages_side', $text, $msg_key, $info );
 
 						break;
 				}
 			} else {
-				$text = apply_filters( $lca . '_messages', $text, $idx, $info );
+				$text = apply_filters( $lca . '_messages', $text, $msg_key, $info );
 			}
 
 			if ( is_array( $info ) && ! empty( $info[ 'is_locale' ] ) ) {
@@ -2533,7 +2533,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$text .= ' ' . sprintf( __( 'This option is localized &mdash; <a href="%s">you may change the WordPress locale</a> to define alternate values for different languages.', 'wpsso' ), 'https://wordpress.org/plugins/wpsso-user-locale/' );
 			}
 
-			if ( strpos( $idx, 'tooltip-' ) === 0 && ! empty( $text ) ) {
+			if ( strpos( $msg_key, 'tooltip-' ) === 0 && ! empty( $text ) ) {
 
 				$text = '<img src="' . WPSSO_URLPATH . 'images/question-mark.png" width="14" height="14" class="' .
 					( isset( $info[ 'class' ] ) ? $info[ 'class' ] : $this->p->cf[ 'form' ][ 'tooltip_class' ] ) .

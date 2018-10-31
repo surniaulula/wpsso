@@ -61,13 +61,13 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			$seo_desc_max_len    = $this->p->options['seo_desc_max_len'];
 			$tc_desc_max_len     = $this->p->options['tc_desc_max_len'];
 			$schema_desc_max_len = $this->p->options['schema_desc_max_len'];
-			$schema_desc_idx     = array( 'seo_desc', 'og_desc' );
+			$schema_desc_md_key  = array( 'seo_desc', 'og_desc' );
 
 			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
 			$def_og_desc     = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
 			$def_seo_desc    = $add_meta_name_desc ? $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags ) : '';
 			$def_tc_desc     = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
-			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, $schema_desc_idx );
+			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, $schema_desc_md_key );
 
 			if ( empty( $this->p->cf['plugin']['wpssojson']['version'] ) ) {
 
@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			}
 
 			$media_info = $this->p->og->get_media_info( $this->p->lca . '-opengraph',
-				array( 'pid', 'img_url' ), $mod, 'none', 'og' );	// $md_pre is 'none'.
+				array( 'pid', 'img_url' ), $mod, $md_pre = 'none', $mt_pre = 'og' );
 
 			$table_rows[] = '<td colspan="2">' .
 				( $mod['is_post'] ? $this->p->msgs->get( 'pro-about-msg-post-media' ) : '' ) .

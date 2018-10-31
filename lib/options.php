@@ -36,11 +36,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			do_action( $this->p->lca . '_init_options' );
 		}
 
-		public function get_defaults( $idx = false, $force_filter = false ) {
+		public function get_defaults( $opt_key = false, $force_filter = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'idx'          => $idx, 
+					'opt_key'      => $opt_key, 
 					'force_filter' => $force_filter, 
 				) );
 			}
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$defs['fb_locale'] = $this->p->og->get_fb_locale( array(), 'default' );
 
 				if ( ( $locale_key = SucomUtil::get_key_locale( 'fb_locale' ) ) !== 'fb_locale' ) {
-					$defs[$locale_key] = $this->p->og->get_fb_locale( array(), 'current' );
+					$defs[ $locale_key ] = $this->p->og->get_fb_locale( array(), 'current' );
 				}
 
 				$defs['seo_author_field'] = $this->p->options['plugin_cm_gp_name'];	// Reset to possible custom value.
@@ -107,12 +107,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
-				// check for default values from network admin settings
+				/**
+				 * Check for default values from network admin settings.
+				 */
 				if ( is_multisite() && is_array( $this->p->site_options ) ) {
-					foreach ( $this->p->site_options as $opt_key => $opt_val ) {
-						if ( isset( $defs[$opt_key] ) && isset( $this->p->site_options[$opt_key . ':use'] ) ) {
-							if ( $this->p->site_options[$opt_key . ':use'] === 'default' ) {
-								$defs[$opt_key] = $this->p->site_options[$opt_key];
+
+					foreach ( $this->p->site_options as $site_opt_key => $site_opt_val ) {
+
+						if ( isset( $defs[ $site_opt_key ] ) && isset( $this->p->site_options[ $site_opt_key . ':use' ] ) ) {
+
+							if ( $this->p->site_options[ $site_opt_key . ':use' ] === 'default' ) {
+								$defs[ $site_opt_key ] = $this->p->site_options[ $site_opt_key ];
 							}
 						}
 					}
@@ -141,9 +146,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			if ( $idx !== false ) {
-				if ( isset( $defs[$idx] ) ) {
-					return $defs[$idx];
+			if ( $opt_key !== false ) {
+				if ( isset( $defs[ $opt_key ] ) ) {
+					return $defs[ $opt_key ];
 				} else {
 					return null;
 				}
@@ -152,11 +157,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 		}
 
-		public function get_site_defaults( $idx = false, $force_filter = false ) {
+		public function get_site_defaults( $opt_key = false, $force_filter = false ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_args( array( 
-					'idx'          => $idx, 
+					'opt_key'      => $opt_key, 
 					'force_filter' => $force_filter, 
 				) );
 			}
@@ -196,13 +201,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			if ( $idx !== false ) {
-				if ( isset( $defs[$idx] ) ) {
-					return $defs[$idx];
+			if ( $opt_key !== false ) {
+				if ( isset( $defs[ $opt_key ] ) ) {
+					return $defs[ $opt_key ];
 				} else {
 					return null;
 				}
-			} else return $defs;
+			} else {
+				return $defs;
+			}
 		}
 
 		public function check_options( $options_name, &$opts = array(), $network = false, $activate = false ) {
@@ -238,11 +245,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$version_key = 'plugin_' . $ext . '_version';
 
-					if ( empty( $opts[$version_key] ) || version_compare( $opts[$version_key], $info['version'], '!=' ) ) {
+					if ( empty( $opts[ $version_key ] ) || version_compare( $opts[ $version_key ], $info['version'], '!=' ) ) {
 
 						WpssoUtil::save_time( $ext, $info['version'], 'update' );
 
-						$opts[$version_key] = $info['version'];
+						$opts[ $version_key ] = $info['version'];
 
 						$has_diff_version = true;
 					}
@@ -284,11 +291,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( $this->p->check->pp( $this->p->lca, false, $this->p->avail['*']['p_dir'] ) ) {
 
-						foreach ( array( 'plugin_hide_pro' => 0 ) as $idx => $def_val ) {
-							if ( $opts[$idx] === $def_val ) {
+						foreach ( array( 'plugin_hide_pro' => 0 ) as $opt_key => $def_val ) {
+
+							if ( $opts[ $opt_key ] === $def_val ) {
 								continue;
 							}
-							$opts[$idx] = $def_val;
+
+							$opts[ $opt_key ] = $def_val;
+
 							$has_diff_options = true;	// Save the options.
 						}
 
@@ -298,31 +308,33 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$def_opts = $this->get_defaults();
 						}
 
-						$check_opt_vals = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
+						$check_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $def_opts );
 
 						foreach ( array(
 							'plugin_clean_on_uninstall',
 							'plugin_debug',
 							'plugin_hide_pro',
 							'plugin_show_opts',
-						) as $idx ) {
-							unset( $check_opt_vals[$idx] );
+						) as $opt_key ) {
+							unset( $check_opts[ $opt_key ] );
 						}
 
 						$warn_msg = __( 'Non-standard value found for "%s" option - resetting to default value.', 'wpsso' );
 
-						foreach ( $check_opt_vals as $idx => $def_val ) {
+						foreach ( $check_opts as $opt_key => $def_val ) {
 
-							if ( isset( $opts[$idx] ) ) {
-								if ( $opts[$idx] === $def_val ) {
+							if ( isset( $opts[ $opt_key ] ) ) {
+
+								if ( $opts[ $opt_key ] === $def_val ) {
 									continue;
 								}
+
 								if ( is_admin() ) {
-									$this->p->notice->warn( sprintf( $warn_msg, $idx ) );
+									$this->p->notice->warn( sprintf( $warn_msg, $opt_key ) );
 								}
 							}
 
-							$opts[$idx] = $def_val;
+							$opts[ $opt_key ] = $def_val;
 
 							$has_diff_options = true;	// Save the options.
 						}
@@ -341,24 +353,26 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'add_link_rel_canonical'    => 0,
 							'add_meta_name_description' => 0,
 							'add_meta_name_robots'      => 0,
-						) as $idx => $def_val ) {
+						) as $opt_key => $def_val ) {
 
-							$def_val = (int) apply_filters( $this->p->lca . '_' . $idx, $def_val );
+							$def_val = (int) apply_filters( $this->p->lca . '_' . $opt_key, $def_val );
 
-							$opts[$idx . ':is'] = 'disabled';
+							$opts[ $opt_key . ':is' ] = 'disabled';
 
-							if ( $opts[$idx] === $def_val ) {
+							if ( $opts[ $opt_key ] === $def_val ) {
+
 								if ( $this->p->debug->enabled ) {
-									$this->p->debug->log( $idx . ' already set to ' . $def_val );
+									$this->p->debug->log( $opt_key . ' already set to ' . $def_val );
 								}
+
 								continue;
 							}
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'setting ' . $idx . ' to ' . $def_val );
+								$this->p->debug->log( 'setting ' . $opt_key . ' to ' . $def_val );
 							}
 
-							$opts[$idx] = $def_val;
+							$opts[ $opt_key ] = $def_val;
 
 							$has_diff_options = true;	// save the options
 						}
@@ -478,8 +492,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			if ( false === $mod ) {
 				foreach ( $def_opts as $opt_key => $def_val ) {
-					if ( ! empty( $opt_key ) && ! isset( $opts[$opt_key] ) ) {
-						$opts[$opt_key] = $def_val;
+					if ( ! empty( $opt_key ) && ! isset( $opts[ $opt_key ] ) ) {
+						$opts[ $opt_key ] = $def_val;
 					}
 				}
 			}
@@ -502,7 +516,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( preg_match( '/:is$/', $base_key ) ) {
 
-					unset( $opts[$opt_key] );
+					unset( $opts[ $opt_key ] );
 
 					continue;
 				}
@@ -510,9 +524,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Multi-options and localized options will default to an empty string.
 				 */
-				$def_val = isset( $def_opts[$opt_key] ) ? $def_opts[$opt_key] : '';
+				$def_val = isset( $def_opts[ $opt_key ] ) ? $def_opts[ $opt_key ] : '';
 
-				$opts[$opt_key] = $this->check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod );
+				$opts[ $opt_key ] = $this->check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod );
 			}
 
 			/**

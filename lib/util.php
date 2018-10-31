@@ -1351,7 +1351,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Delete post meta.
 			 */
 
-			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 				delete_metadata( 'post', null, $meta_key, '', true );	// $delete_all is true.
 			}
 
@@ -1362,7 +1362,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'deleting term column meta' );
 			}
 
-			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 				foreach ( WpssoTerm::get_public_term_ids() as $term_id ) {
 					WpssoTerm::delete_term_meta( $term_id, $meta_key );
 				}
@@ -1375,7 +1375,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'deleting user column meta' );
 			}
 
-			foreach ( $col_meta_keys as $col_idx => $meta_key ) {
+			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 				delete_metadata( 'user', null, $meta_key, '', true );	// $delete_all is true.
 			}
 		}
@@ -2776,12 +2776,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_max_nums( array &$mod, $opt_pre = 'og' ) {
 
 			$max_nums = array();
-			$opt_keys = array( $opt_pre . '_vid_max', $opt_pre . '_img_max' );
 
-			foreach ( $opt_keys as $max_key ) {
+			$max_opt_keys = array( $opt_pre . '_vid_max', $opt_pre . '_img_max' );
+
+			foreach ( $max_opt_keys as $opt_key ) {
 
 				if ( ! empty( $mod['id'] ) && ! empty( $mod['obj'] ) ) {
-					$max_val = $mod['obj']->get_options( $mod['id'], $max_key );	// Returns null if an index key is not found.
+					$max_val = $mod['obj']->get_options( $mod['id'], $opt_key );	// Returns null if an index key is not found.
 				} else {
 					$max_val = null;	// Default value if index key is missing.
 				}
@@ -2791,16 +2792,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				if ( $max_val !== null & is_numeric( $max_val ) && $max_val >= 0 ) {
 
-					$max_nums[$max_key] = $max_val;
+					$max_nums[$opt_key] = $max_val;
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'found custom meta ' . $max_key . ' = ' . $max_val );
+						$this->p->debug->log( 'found custom meta ' . $opt_key . ' = ' . $max_val );
 					}
 
 				} else {
 
-					$max_nums[$max_key] = isset( $this->p->options[$max_key] ) ?	// Fallback to options.
-						$this->p->options[$max_key] : 0;
+					$max_nums[$opt_key] = isset( $this->p->options[$opt_key] ) ? $this->p->options[$opt_key] : 0;
 				}
 			}
 

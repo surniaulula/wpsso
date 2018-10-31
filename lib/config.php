@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.16.4-b.1',	// Plugin version.
+					'version'     => '4.16.4-b.2',	// Plugin version.
 					'opt_version' => '617',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1379,7 +1379,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Custom field to meta data index.
 				 */
-				'cf_md_idx' => array(
+				'cf_md_key' => array(
 					'plugin_cf_img_url'             => 'og_img_url',
 					'plugin_cf_vid_url'             => 'og_vid_url',
 					'plugin_cf_vid_embed'           => 'og_vid_embed',
@@ -2743,7 +2743,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		/**
 		 * get_config() is called very early, so don't apply filters unless instructed.
 		 */
-		public static function get_config( $idx = false, $apply_filters = false ) {
+		public static function get_config( $cf_key = false, $apply_filters = false ) {
 
 			if ( ! isset( self::$cf['config_filtered'] ) || self::$cf['config_filtered'] !== true ) {
 
@@ -2801,9 +2801,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				}
 			}
 
-			if ( $idx !== false ) {
-				if ( isset( self::$cf[$idx] ) ) {
-					return self::$cf[$idx];
+			if ( $cf_key !== false ) {
+				if ( isset( self::$cf[$cf_key] ) ) {
+					return self::$cf[$cf_key];
 				} else {
 					return null;
 				}
@@ -2820,7 +2820,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function get_ext_sorted( $apply_filters = true, $core_first = true ) {
 
-			$idx = 'plugin';
 			$ext = self::get_config( 'plugin', $apply_filters );
 
 			uasort( $ext, array( 'self', 'sort_ext_by_name' ) );	// Sort array and maintain index association.

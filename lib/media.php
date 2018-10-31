@@ -336,11 +336,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			self::$image_src_args = $image_src_args;
 		}
 
-		public static function get_image_src_args( $idx = false ) {
+		public static function get_image_src_args( $key = false ) {
 
-			if ( $idx !== false ) {
-				if ( isset( self::$image_src_args[ $idx ] ) ) {
-					return self::$image_src_args[ $idx ];
+			if ( $key !== false ) {
+				if ( isset( self::$image_src_args[ $key ] ) ) {
+					return self::$image_src_args[ $key ];
 				} else {
 					return null;
 				}

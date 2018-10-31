@@ -77,13 +77,13 @@
 
 'wpsso_canonical_url' ( $url, $mod, $add_page, $src_id )
 
-'wpsso_caption' ( $caption, $mod, $add_hashtags, $md_idx )
+'wpsso_caption' ( $caption, $mod, $add_hashtags, $md_key )
 
 'wpsso_check_post_head' ( $bool, $post_id, $post_obj )
 
 'wpsso_columns_post_{post_type_name}' ( true )
 
-'wpsso_content' ( $content, $mod, $read_cache, $md_idx )
+'wpsso_content' ( $content, $mod, $read_cache, $md_key )
 
 'wpsso_content_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $mod )
 
@@ -91,13 +91,13 @@
 
 'wpsso_content_image_preg_pid_attr' ( $default = 'data-[a-z]+-pid' )
 
-'wpsso_content_seed' ( '', $mod, $read_cache, $md_idx )
+'wpsso_content_seed' ( '', $mod, $read_cache, $md_key )
 
-'wpsso_description' ( $desc_text, $mod, $add_hashtags, $md_idx )
+'wpsso_description' ( $desc_text, $mod, $add_hashtags, $md_key )
 
 'wpsso_description_pre_limit' ( $desc_text )
 
-'wpsso_description_seed' ( '', $mod, $add_hashtags, $md_idx )
+'wpsso_description_seed' ( '', $mod, $add_hashtags, $md_key )
 
 'wpsso_get_avail' ( $ret )
 
@@ -307,11 +307,11 @@
 
 'wpsso_term_url' ( $url, $mod, $add_page, $src_id )
 
-'wpsso_title' ( $title_text, $mod, $add_hashtags, $md_idx, $sep )
+'wpsso_title' ( $title_text, $mod, $add_hashtags, $md_key, $sep )
 
 'wpsso_title_pre_limit' ( $title )
 
-'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_idx, $sep )
+'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_key, $sep )
 
 'wpsso_user_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt )
 
