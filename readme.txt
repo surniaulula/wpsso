@@ -346,12 +346,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* None.
 * *Bugfixes*
-	* None.
+	* Fixed an incorrectly named variable in WpssoMeta get_options_multi() that may have prevented some options from being properly cascaded.
 * *Developer Notes*
 	* Added new methods for the WPSSO JSON add-on:
 		* WpssoSchema::add_data_time_from_assoc().
 		* WpssoSchema::check_itemprop_content_map().
 	* Updated the SucomForm::get_select() method event argument values.
+	* Replaced 'idx' for 'key' in all variable names (associative arrays are not indexed, so using 'key' is more accurate).
 
 **Version 4.16.3 (2018/10/24)**
 
@@ -523,7 +524,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.16.4-b.2 =
 
-(2010/10/31) Added new methods for the WPSSO JSON add-on. Updated the SucomForm::get_select() method event argument values.
+(2010/10/31) Fixed an incorrectly named variable in WpssoMeta get_options_multi() that may have prevented some options from being properly cascaded. Added new methods for the WPSSO JSON add-on.
 
 = 4.16.3 =
 
