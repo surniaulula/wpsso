@@ -5192,44 +5192,44 @@ msgstr ""
 msgid "Please correct the banner image at %s."
 msgstr ""
 
-#: lib/page.php:346 lib/page.php:348 lib/page.php:622 lib/page.php:624
-#: lib/page.php:698
+#: lib/page.php:351 lib/page.php:353 lib/page.php:632 lib/page.php:634
+#: lib/page.php:708
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:421
+#: lib/page.php:426
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:681
+#: lib/page.php:691
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:688
+#: lib/page.php:698
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:709
+#: lib/page.php:719
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:716
+#: lib/page.php:726
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:720
+#: lib/page.php:730
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:724
+#: lib/page.php:734
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:728
+#: lib/page.php:738
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:766 lib/pro/social/buddypress.php:664
+#: lib/page.php:776 lib/pro/social/buddypress.php:665
 msgid "No Description"
 msgstr ""
 

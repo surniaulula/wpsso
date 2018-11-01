@@ -247,16 +247,21 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
-			if ( false === $md_key ) {		// false would return the complete meta array
+			if ( false === $md_key ) {		// False would return the complete meta array.
+
 				$md_key = '';
-			} elseif ( true === $md_key ) {		// true signals use of the standard / fallback value
+
+			} elseif ( true === $md_key ) {		// True signals use of the standard / fallback value.
+
 				$md_key = array( 'og_title' );
-			} elseif ( ! is_array( $md_key ) ) {	// use fallback by default - get_options_multi() will do array_uniq()
+
+			} elseif ( ! is_array( $md_key ) ) {	// Use fallback by default - get_options_multi() will do array_uniq().
+
 				$md_key = array( $md_key, 'og_title' );
 			}
 
-			$title_text = false;
-			$hashtags = '';
+			$title_text   = false;
+			$hashtags     = '';
 			$paged_suffix = '';
 			$filter_title = empty( $this->p->options['plugin_filter_title'] ) ? false : true;
 			$filter_title = apply_filters( $this->p->lca . '_filter_title', $filter_title, $mod );
@@ -530,11 +535,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
-			if ( false === $md_key ) {		// false would return the complete meta array
+			if ( false === $md_key ) {		// False would return the complete meta array.
+
 				$md_key = '';
-			} elseif ( true === $md_key ) {		// true signals use of the standard / fallback value
+
+			} elseif ( true === $md_key ) {		// True signals use of the standard / fallback value.
+
 				$md_key = array( 'og_desc' );
-			} elseif ( ! is_array( $md_key ) ) {	// use fallback by default - get_options_multi() will do array_uniq()
+
+			} elseif ( ! is_array( $md_key ) ) {	// Use fallback by default - get_options_multi() will do array_uniq().
+
 				$md_key = array( $md_key, 'og_desc' );
 			}
 
