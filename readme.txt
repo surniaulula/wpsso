@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.4-b.2 (2010/10/31)**
+**Version 4.16.4-b.3 (2010/11/01)**
 
 * *New Features*
 	* None.
@@ -522,9 +522,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.4-b.2 =
+= 4.16.4-b.3 =
 
-(2010/10/31) Fixed an incorrectly named variable in WpssoMeta get_options_multi() that may have prevented some options from being properly cascaded. Added new methods for the WPSSO JSON add-on.
+(2010/11/01) Fixed an incorrectly named variable in WpssoMeta get_options_multi() that may have prevented some options from being properly cascaded. Added new methods for the WPSSO JSON add-on.
 
 = 4.16.3 =
 
