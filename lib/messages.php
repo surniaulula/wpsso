@@ -2510,7 +2510,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						
 						$text .= __( '<strong>Great ratings are a terrific way to encourage your plugin developers</strong> &mdash; and it only takes a minute.', 'wpsso' ) . ' ';
 
-						$text .= sprintf( __( 'Say "Thank you" %s by rating the plugins you use.', 'wpsso' ),
+						$text .= sprintf( __( 'Say thank you %s to your developers by rating the plugins you use.', 'wpsso' ),
 							'<span class="' . $lca . '-rate-heart"></span>' ) . ' :-)';
 
 						$text .= '</p>';

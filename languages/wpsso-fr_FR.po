@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.16.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-10-31 17:13-0600\n"
-"PO-Revision-Date: 2018-10-31 17:13-0600\n"
+"POT-Creation-Date: 2018-11-02 07:34-0600\n"
+"PO-Revision-Date: 2018-11-02 07:34-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4247,8 +4247,8 @@ msgid "<strong>Great ratings are a terrific way to encourage your plugin develop
 msgstr "<strong>Une bonne cote est une excellente façon d'encourager vos développeurs d'extensions</strong> &mdash; et ça ne prend qu'une minute."
 
 #: lib/messages.php:2513
-msgid "Say \"Thank you\" %s by rating the plugins you use."
-msgstr "Dites \"Merci\" %s en notant les extensions que vous utilisez."
+msgid "Say thank you %s to your developers by rating the plugins you use."
+msgstr "Dites merci %s à vos développeurs en notant les extensions que vous utilisez."
 
 #. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on
 #: lib/messages.php:2533
@@ -4469,44 +4469,44 @@ msgstr "Les dimensions de l'image %1$s sont %2$s et doivent être exactement %3$
 msgid "Please correct the banner image at %s."
 msgstr "Veuillez corriger l'image bannière à %s."
 
-#: lib/page.php:346 lib/page.php:348 lib/page.php:622 lib/page.php:624
-#: lib/page.php:698
+#: lib/page.php:351 lib/page.php:353 lib/page.php:632 lib/page.php:634
+#: lib/page.php:708
 msgid "%s Archive"
 msgstr "Archive %s"
 
-#: lib/page.php:421
+#: lib/page.php:426
 msgid "No Title"
 msgstr "Aucun titre"
 
-#: lib/page.php:681
+#: lib/page.php:691
 msgid "Tagged with %s"
 msgstr "Marqué avec %s"
 
-#: lib/page.php:688
+#: lib/page.php:698
 msgid "%s Category"
 msgstr "Catégorie %s"
 
-#: lib/page.php:709
+#: lib/page.php:719
 msgid "Authored by %s"
 msgstr "Écrits par %s"
 
-#: lib/page.php:716
+#: lib/page.php:726
 msgid "Daily Archive for %s"
 msgstr "Archive journalière pour %s"
 
-#: lib/page.php:720
+#: lib/page.php:730
 msgid "Monthly Archive for %s"
 msgstr "Archive mensuelle pour %s"
 
-#: lib/page.php:724
+#: lib/page.php:734
 msgid "Yearly Archive for %s"
 msgstr "Archive annuelle pour %s"
 
-#: lib/page.php:728
+#: lib/page.php:738
 msgid "Archive Page"
 msgstr "Page d'archive"
 
-#: lib/page.php:766 lib/pro/social/buddypress.php:664
+#: lib/page.php:776 lib/pro/social/buddypress.php:665
 msgid "No Description"
 msgstr "Aucune description"
 

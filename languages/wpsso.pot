@@ -4933,7 +4933,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:2513
-msgid "Say \"Thank you\" %s by rating the plugins you use."
+msgid "Say thank you %s to your developers by rating the plugins you use."
 msgstr ""
 
 #. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on
