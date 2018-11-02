@@ -569,7 +569,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						}
 					}
 
-					if ( ! empty( $payload[ 'hidden' ] ) ) {
+					if ( ! empty( $payload[ 'hidden' ] ) ) {	// Notice is hidden.
 						continue;
 					}
 
@@ -749,6 +749,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 						}
 					}
 
+					if ( ! empty( $payload[ 'hidden' ] ) ) {	// Notice is hidden.
+						continue;
+					}
+
 					$payload[ 'msg_html' ] = $this->get_notice_html( $msg_type, $payload, true );	// $notice_alt is true.
 
 					/**
@@ -881,9 +885,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$data_attr .= ' data-dismiss-nonce="' . wp_create_nonce( __FILE__ ) . '"';
 			}
 
-			/**
-			 * Optionally hide / show notices by default.
-			 */
 			$style_attr = ' style="' . 
 				( empty( $payload[ 'style' ] ) ? '' : $payload[ 'style' ] ) .
 				( empty( $payload[ 'hidden' ] ) ? 'display:block;' : 'display:none;' ) . '"';
