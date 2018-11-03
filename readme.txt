@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.4-rc.1 (2010/11/02)**
+**Version 4.16.4 (2010/11/03)**
 
 * *New Features*
 	* None.
@@ -522,11 +522,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.4-rc.1 =
+= 4.16.4 =
 
-(2010/11/02) Fixed an incorrectly named variable in WpssoMeta get_options_multi() that may have prevented some options from being properly cascaded. Added new methods for the WPSSO JSON add-on.
-
-= 4.16.3 =
-
-(2018/10/24) Removed the "Google Project API Key" option since there are no Google API modules currently used. Added a new WpssoPage get_the_text() method. Renamed option keys for standardization.
+(2010/11/03) Fixed an incorrectly named variable in WpssoMeta get_options_multi() that may have prevented some options from being properly cascaded. Added new methods for the WPSSO JSON add-on.
 
