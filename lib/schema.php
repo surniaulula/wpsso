@@ -1752,8 +1752,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		public function filter_json_data_https_schema_org_localbusiness( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'page_type_id = ' . $page_type_id );
-				$this->p->debug->log( 'is_main = ' . $is_main );
 				$this->p->debug->mark( 'organization filter for local business' );	// Begin timer.
 			}
 
@@ -3700,6 +3698,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
+		 * Modifies the $json_data directly (by reference) and does not return a value.
 		 * Do not type-cast the $json_data argument as it may be false or an array.
 		 */
 		public function organization_to_localbusiness( &$json_data ) {
@@ -3749,7 +3748,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'logo is missing from organization markup' );
 			}
-
 		}
 
 		/**
