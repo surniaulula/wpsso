@@ -347,6 +347,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Bugfixes*
 	* Removed type-casting from the WpssoSchema::organization_to_localbusiness() argument to allow for mixed input (false or array).
+	* Fixed duplicate variable names in the currency abbreviation / symbol lookup methods.
 * *Developer Notes*
 	* None.
 
