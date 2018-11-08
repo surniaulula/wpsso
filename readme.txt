@@ -339,6 +339,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.16.5-dev.1 (2010/11/08)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* Removed type-casting from the WpssoSchema::organization_to_localbusiness() argument to allow for mixed input (false or array).
+* *Developer Notes*
+	* None.
+
 **Version 4.16.4 (2010/11/03)**
 
 * *New Features*
@@ -521,6 +532,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored SucomNotice methods to handle / store notices for different user IDs than the current user ID.
 
 == Upgrade Notice ==
+
+= 4.16.5-dev.1 =
+
+(2010/11/08) Removed type-casting from the WpssoSchema::organization_to_localbusiness() argument to allow for mixed input (false or array).
 
 = 4.16.4 =
 
