@@ -970,7 +970,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $arr;
 		}
 
-		public static function get_currencies( $key = false, $add_none = false, $format = '%2$s (%1$s)' ) {
+		public static function get_currencies( $currency_abbrev = false, $add_none = false, $format = '%2$s (%1$s)' ) {
 
 			static $local_cache = array(); // Array of arrays, indexed by $format.
 
@@ -987,10 +987,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				asort( $local_cache[ $format ] ); // Sort by value.
 			}
 
-			return self::get_formatted_array( $local_cache[ $format ], $key, $add_none );
+			return self::get_formatted_array( $local_cache[ $format ], $currency_abbrev, $add_none );
 		}
 
-		public static function get_currency_abbrev( $key = false, $add_none = false ) {
+		public static function get_currency_abbrev( $currency_abbrev = false, $add_none = false ) {
 
 			static $local_cache = null;
 
@@ -998,17 +998,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$local_cache = array();
 
+				/**
+				 * Create an array of currency abbrev => abbrev values.
+				 */
 				foreach ( self::$currencies as $key => $value ) {
-					$local_cache[ $key ] = $key;
+					$local_cache[ $key ] = $key;	// Example: USD => USD
 				}
 
 				ksort( $local_cache ); // Sort by key (same as value).
 			}
 
-			return self::get_formatted_array( $local_cache, $key, $add_none );
+			return self::get_formatted_array( $local_cache, $currency_abbrev, $add_none );
 		}
 
-		public static function get_currency_symbols( $key = false, $add_none = false, $decode = false ) {
+		public static function get_currency_symbols( $currency_abbrev = false, $add_none = false, $decode = false ) {
 
 			if ( $decode ) {
 
@@ -1019,52 +1022,58 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$local_cache = array();
 
 					foreach ( self::$currency_symbols as $key => $value ) {
-						$local_cache[ $key ] = self::decode_html( $value );
+						$local_cache[ $key ] = self::decode_html( $value );	// Example: USD => $
 					}
 
 					ksort( $local_cache ); // Sort by key.
 				}
 
-				return self::get_formatted_array( $local_cache, $key, $add_none );
-
+				return self::get_formatted_array( $local_cache, $currency_abbrev, $add_none );
 			}
 
-			return self::get_formatted_array( self::$currency_symbols, $key, $add_none );
+			return self::get_formatted_array( self::$currency_symbols, $currency_abbrev, $add_none );
 		}
 
-		public static function get_currency_symbol_abbrev( $key = false, $default = 'USD', $decode = true ) {
+		public static function get_currency_symbol_abbrev( $currency_symbol = false, $default = 'USD', $decode = true ) {
 
 			if ( $decode ) {
-				$key = self::decode_html( $key );
+				$currency_symbol = self::decode_html( $currency_symbol );
 			}
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[ $key ] ) ) {
-				return $local_cache[ $key ];
-			} elseif ( $key === '$' ) {	// Match for USD first.
-				return $local_cache[ $key ] = 'USD';
+			if ( isset( $local_cache[ $currency_symbol ] ) ) {
+
+				return $local_cache[ $currency_symbol ];
+
+			} elseif ( $currency_symbol === '$' ) {	// Optimize and match for USD first.
+
+				return $local_cache[ $currency_symbol ] = 'USD';
 			}
 
 			/**
 			 * Optionally decode the currency symbol values.
 			 */
-			$currency_symbols = self::get_currency_symbols( $key = false, $add_none = false, $decode );
+			$currency_symbols = self::get_currency_symbols( $currency_abbrev = false, $add_none = false, $decode );
 
 			if ( is_array( $currency_symbols ) ) {	// Just in case.
-				foreach ( $currency_symbols as $abbrev => $symbol ) {
-					if ( $symbol === $key ) {
-						return $local_cache[ $key ] = $abbrev; // Stop here.
+				foreach ( $currency_symbols as $key => $value ) {		// Example: USD => $
+					if ( $value === $currency_symbol ) {			// Example: $ === $
+
+						/**
+						 * Cache by currency symbol and return the currency abbreviation.
+						 */
+						return $local_cache[ $currency_symbol ] = $key;
 					}
 				}
 			}
 
-			return $local_cache[ $key ] = $default;
+			return $local_cache[ $currency_symbol ] = $default;
 		}
 
-		public static function get_dashicons( $key = false, $add_none = false ) {
+		public static function get_dashicons( $icon_number = false, $add_none = false ) {
 
-			return self::get_formatted_array( self::$dashicons, $key, $add_none );
+			return self::get_formatted_array( self::$dashicons, $icon_number, $add_none );
 		}
 
 		public static function get_pub_lang( $pub = '' ) {
