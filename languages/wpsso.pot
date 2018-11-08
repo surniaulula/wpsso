@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.4\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.5-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -385,7 +385,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:2294 lib/pro/media/slideshare.php:200
-#: lib/pro/media/vimeo.php:169 lib/pro/media/wistia.php:333 lib/util.php:1757
+#: lib/pro/media/vimeo.php:170 lib/pro/media/wistia.php:333 lib/util.php:1757
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -1149,11 +1149,11 @@ msgstr ""
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/util.php:1701
+#: lib/com/util.php:1727
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1712
+#: lib/com/util.php:1738
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -2264,7 +2264,7 @@ msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:233 lib/media.php:478 lib/media.php:638
-#: lib/media.php:1503 lib/pro/admin/advanced.php:234
+#: lib/media.php:1505 lib/pro/admin/advanced.php:234
 #: lib/pro/util/checkimgdims.php:92
 msgid "Media Library"
 msgstr ""
@@ -2476,28 +2476,28 @@ msgctxt "option label"
 msgid "YOURLS Token"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:510 lib/gpl/admin/advanced.php:585
-#: lib/pro/admin/advanced.php:504 lib/pro/admin/advanced.php:577
+#: lib/gpl/admin/advanced.php:510 lib/gpl/admin/advanced.php:588
+#: lib/pro/admin/advanced.php:504 lib/pro/admin/advanced.php:580
 msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:511 lib/gpl/admin/advanced.php:586
+#: lib/gpl/admin/advanced.php:511 lib/gpl/admin/advanced.php:589
 #: lib/messages.php:1862 lib/messages.php:1864 lib/messages.php:1876
 #: lib/messages.php:2052 lib/pro/admin/advanced.php:505
-#: lib/pro/admin/advanced.php:578
+#: lib/pro/admin/advanced.php:581
 msgctxt "column title"
 msgid "Contact Field ID"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:512 lib/gpl/admin/advanced.php:587
+#: lib/gpl/admin/advanced.php:512 lib/gpl/admin/advanced.php:590
 #: lib/messages.php:1870 lib/messages.php:2054 lib/pro/admin/advanced.php:506
-#: lib/pro/admin/advanced.php:579
+#: lib/pro/admin/advanced.php:582
 msgctxt "column title"
 msgid "Contact Field Label"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:659 lib/pro/admin/advanced.php:651
+#: lib/gpl/admin/advanced.php:662 lib/pro/admin/advanced.php:654
 msgid ""
 "An SEO plugin has been detected &mdash; some basic SEO meta tags have been "
 "unchecked and disabled automatically."
@@ -2882,22 +2882,22 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1509 lib/pro/media/ngg.php:132
+#: lib/media.php:1511 lib/pro/media/ngg.php:132
 #: lib/pro/util/checkimgdims.php:94
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1519
+#: lib/media.php:1521
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1597
+#: lib/media.php:1599
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1625
+#: lib/media.php:1627
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -5483,12 +5483,12 @@ msgid ""
 "required %4$s image dimensions."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:195 lib/pro/media/vimeo.php:164
+#: lib/pro/media/slideshare.php:195 lib/pro/media/vimeo.php:165
 #: lib/pro/media/wistia.php:328 lib/util.php:1752
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
-#: lib/pro/media/slideshare.php:197 lib/pro/media/vimeo.php:166
+#: lib/pro/media/slideshare.php:197 lib/pro/media/vimeo.php:167
 #: lib/pro/media/wistia.php:330 lib/util.php:1754
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
@@ -6182,26 +6182,26 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:417
+#: wpsso.php:421
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:435
+#: wpsso.php:439
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:445
+#: wpsso.php:449
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:446
+#: wpsso.php:450
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

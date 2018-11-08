@@ -1042,13 +1042,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 */
 						$og_single_embed = SucomUtil::preg_grep_keys( '/^og:/', $og_single_embed );
 
-						if ( strpos( $og_single_video['og:video:embed_url'], 'https:' ) !== false ) {
+						if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
 
-							if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
-								$og_single_embed['og:video:secure_url'] = $og_single_video['og:video:embed_url'];
-							} else {
-								$og_single_embed['og:video:secure_url'] = '';	// Just in case.
-							}
+							$og_single_embed['og:video:secure_url'] = SucomUtil::is_https( $og_single_video['og:video:embed_url'] ) ?
+								$og_single_video['og:video:embed_url'] : '';
 						}
 
 						$og_single_embed['og:video:url'] = $og_single_video['og:video:embed_url'];

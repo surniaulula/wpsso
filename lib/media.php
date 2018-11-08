@@ -1347,7 +1347,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						 * Define the og:video:secure_url meta tag if possible.
 						 */
 						if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
-							$og_single_video['og:video:secure_url'] = strpos( $args['url'], 'https:' ) === 0 ? $args['url'] : '';
+
+							$og_single_video['og:video:secure_url'] = SucomUtil::is_https( $args['url'] ) ?
+								$args['url'] : '';
 						}
 	
 						$media_url = $og_single_video['og:video:url'] = $args['url'];
@@ -1763,10 +1765,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									 */
 									$a['content'] = add_query_arg( 'm', $meta_name, $a['content'] );
 
-									if ( strpos( $a['content'], 'https:' ) === 0 &&
-										! empty( $this->p->options['add_meta_property_og:image:secure_url'] ) ) {
+									if ( ! empty( $this->p->options['add_meta_property_og:image:secure_url'] ) ) {
 
-										$og_single_video['og:image:secure_url'] = $a['content'];
+										$og_single_video['og:image:secure_url'] = SucomUtil::is_https( $a['content'] ) ?
+											$a['content'] : '';
 									}
 
 									$og_single_video['og:image:url'] = $a['content'];

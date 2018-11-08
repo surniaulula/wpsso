@@ -522,14 +522,17 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$cm_label_key   = SucomUtil::get_key_value( 'plugin_cm_' . $opt_pre . '_label', $this->p->options );
 
 				/**
-				 * Not all social websites have a contact method field.
+				 * Not all social sites have a contact method field.
 				 */
-				if ( ! isset( $this->p->options[$cm_enabled_key] ) ) {
+				if ( ! isset( $this->p->options[ $cm_enabled_key ] ) ) {
 					continue;
 				}
 
-				$opt_label = empty( $this->p->cf['*']['lib']['website'][$cm_id] ) ?	// defined by sharing buttons
-					ucfirst( $cm_id ) : $this->p->cf['*']['lib']['website'][$cm_id];
+				/**
+				 * Additional labels may be defined by social sharing add-ons.
+				 */
+				$opt_label = empty( $this->p->cf[ '*' ][ 'lib' ][ 'share' ][ $cm_id ] ) ?
+					ucfirst( $cm_id ) : $this->p->cf[ '*' ][ 'lib' ][ 'share' ][ $cm_id ];
 
 				switch ( strtolower( $opt_label ) ) {
 

@@ -955,12 +955,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				asort( $arr );
 
-			} elseif ( isset( $arr[$key] ) ) { // Return a specific dashicon label.
+			} elseif ( isset( $arr[ $key ] ) ) { // Return a specific array value.
 
-				return $arr[$key];
+				return $arr[ $key ];
 
 			} else {
-				return null;
+				return null;	// Array key not found - return null.
 			}
 
 			if ( true === $add_none ) { // Prefix array with 'none'.
@@ -974,18 +974,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			static $local_cache = array(); // Array of arrays, indexed by $format.
 
-			if ( ! isset( $local_cache[$format] ) ) {
+			if ( ! isset( $local_cache[ $format ] ) ) {
+
 				if ( $format === '%2$s' ) { // Optimize and get existing format.
-					$local_cache[$format] =& self::$currencies;
+					$local_cache[ $format ] =& self::$currencies;
 				} else {
 					foreach ( self::$currencies as $key => $value ) {
-						$local_cache[$format][$key] = sprintf( $format, $key, $value );
+						$local_cache[ $format ][ $key ] = sprintf( $format, $key, $value );
 					}
 				}
-				asort( $local_cache[$format] ); // Sort by value.
+
+				asort( $local_cache[ $format ] ); // Sort by value.
 			}
 
-			return self::get_formatted_array( $local_cache[$format], $key, $add_none );
+			return self::get_formatted_array( $local_cache[ $format ], $key, $add_none );
 		}
 
 		public static function get_currency_abbrev( $key = false, $add_none = false ) {
@@ -997,7 +999,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$local_cache = array();
 
 				foreach ( self::$currencies as $key => $value ) {
-					$local_cache[$key] = $key;
+					$local_cache[ $key ] = $key;
 				}
 
 				ksort( $local_cache ); // Sort by key (same as value).
@@ -1017,7 +1019,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$local_cache = array();
 
 					foreach ( self::$currency_symbols as $key => $value ) {
-						$local_cache[$key] = self::decode_html( $value );
+						$local_cache[ $key ] = self::decode_html( $value );
 					}
 
 					ksort( $local_cache ); // Sort by key.
@@ -1025,9 +1027,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				return self::get_formatted_array( $local_cache, $key, $add_none );
 
-			} else {
-				return self::get_formatted_array( self::$currency_symbols, $key, $add_none );
 			}
+
+			return self::get_formatted_array( self::$currency_symbols, $key, $add_none );
 		}
 
 		public static function get_currency_symbol_abbrev( $key = false, $default = 'USD', $decode = true ) {
@@ -1038,19 +1040,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[$key] ) ) {
-				return $local_cache[$key];
+			if ( isset( $local_cache[ $key ] ) ) {
+				return $local_cache[ $key ];
 			} elseif ( $key === '$' ) {	// Match for USD first.
-				return $local_cache[$key] = 'USD';
+				return $local_cache[ $key ] = 'USD';
 			}
 
-			foreach ( self::get_currency_symbols( false, false, $decode ) as $abbrev => $symbol ) {
-				if ( $symbol === $key ) {
-					return $local_cache[$key] = $abbrev; // Stop here.
+			/**
+			 * Optionally decode the currency symbol values.
+			 */
+			$currency_symbols = self::get_currency_symbols( $key = false, $add_none = false, $decode );
+
+			if ( is_array( $currency_symbols ) ) {	// Just in case.
+				foreach ( $currency_symbols as $abbrev => $symbol ) {
+					if ( $symbol === $key ) {
+						return $local_cache[ $key ] = $abbrev; // Stop here.
+					}
 				}
 			}
 
-			return $local_cache[$key] = $default;
+			return $local_cache[ $key ] = $default;
 		}
 
 		public static function get_dashicons( $key = false, $add_none = false ) {
@@ -1140,6 +1149,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_modified_filter_value( $filter_name ) {
+
 			if ( isset( self::$cache_filter_values['modified'][$filter_name] ) ) {
 				return self::$cache_filter_values['modified'][$filter_name];
 			} else {
@@ -1220,8 +1230,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[$url] ) ) {
-				return $local_cache[$url];
+			if ( isset( $local_cache[ $url ] ) ) {
+				return $local_cache[ $url ];
 			}
 
 			if ( ! empty( $url ) ) {
@@ -1230,45 +1240,54 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					parse_url( $url, PHP_URL_SCHEME ) === 'https' ) {
 
-					return $local_cache[$url] = true;
+					return $local_cache[ $url ] = true;
 
 				} else {
-					return $local_cache[$url] = false;
+					return $local_cache[ $url ] = false;
 				}
 
 			} else {
 
 				if ( is_ssl() ) {
 
-					return $local_cache[$url] = true;
+					return $local_cache[ $url ] = true;
 
-				} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) &&
-					strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) === 'https' ) {
+				} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] )
+					&& strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) === 'https' ) {
 
-					return $local_cache[$url] = true;
+					return $local_cache[ $url ] = true;
 
-				} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_SSL'] ) &&
-					strtolower( $_SERVER['HTTP_X_FORWARDED_SSL'] ) === 'on' ) {
+				} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_SSL'] )
+					&& strtolower( $_SERVER['HTTP_X_FORWARDED_SSL'] ) === 'on' ) {
 
-					return $local_cache[$url] = true;
+					return $local_cache[ $url ] = true;
 				}
 			}
 
-			return $local_cache[$url] = false;
+			return $local_cache[ $url ] = false;
 		}
 
 		public static function get_prot( $url = '' ) {
+
 			if ( ! empty( $url ) ) {
+
 				return self::is_https( $url ) ? 'https' : 'http';
+
 			} elseif ( self::is_https() ) {
+
 				return 'https';
+
 			} elseif ( is_admin() )  {
+
 				if ( defined( 'FORCE_SSL_ADMIN' ) && FORCE_SSL_ADMIN ) {
 					return 'https';
 				}
+
 			} elseif ( defined( 'FORCE_SSL' ) && FORCE_SSL ) {
+
 				return 'https';
 			}
+
 			return 'http';
 		}
 
@@ -1440,18 +1459,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * hashtags cannot begin with a number.
 		 */
 		public static function sanitize_hashtags( $tags = array() ) {
+
 			return preg_replace( array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ), array( '', '', '#$0' ), $tags );
 		}
 
 		public static function sanitize_key( $key ) {
+
 			return preg_replace( '/[^a-z0-9_\-]/', '', strtolower( $key ) );
 		}
 
 		public static function array_to_hashtags( $tags = array() ) {
+
 			return trim( implode( ' ', array_filter( self::sanitize_hashtags( $tags ) ) ) ); // array_filter() removes empty array values.
 		}
 
 		public static function explode_csv( $str ) {
+
 			if ( empty( $str ) ) {
 				return array();
 			} else {
@@ -1460,14 +1483,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		private static function unquote_csv_value( $val ) {
+
 			return trim( $val, '\'" ' ); // Remove quotes and spaces.
 		}
 
 		public static function titleize( $str ) {
+
 			return ucwords( preg_replace( '/[:\/\-\._]+/', ' ', self::decamelize( $str ) ) );
 		}
 
 		public static function decamelize( $str ) {
+
 			return ltrim( strtolower( preg_replace('/[A-Z]/', '_$0', $str ) ), '_' );
 		}
 
@@ -1774,11 +1800,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$opts = get_option( $name, array() );
 			}
 
-			if ( true === $protect && isset( $opts[$key] ) ) {
+			if ( true === $protect && isset( $opts[ $key ] ) ) {
 				return false;
 			}
 
-			$opts[$key] = $value;
+			$opts[ $key ] = $value;
 
 			if ( true === $site ) {
 				return update_site_option( $name, $opts );
@@ -1795,8 +1821,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$opts = get_option( $name, array() );
 			}
 
-			if ( isset( $opts[$key] ) ) {
-				return $opts[$key];
+			if ( isset( $opts[ $key ] ) ) {
+				return $opts[ $key ];
 			} else {
 				return null;
 			}
@@ -1935,7 +1961,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $opts as $key => $value ) {
 				if ( strpos( $key, $str ) === 0 ) {
-					$found[$key] = $value;
+					$found[ $key ] = $value;
 				}
 			}
 
@@ -1957,7 +1983,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$fixed = preg_replace( $pattern, $replace, $key );
 
-					$found[ $fixed ] = $input[$key];
+					$found[ $fixed ] = $input[ $key ];
 
 				} else {
 					$found[ $key ] = $input[ $key ];
@@ -1996,8 +2022,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function next_key( $needle, array &$input, $loop = true ) {
+
 			$keys = array_keys( $input );
 			$pos = array_search( $needle, $keys );
+
 			if ( $pos !== false ) {
 				if ( isset( $keys[ $pos + 1 ] ) ) {
 					return $keys[ $pos + 1 ];
@@ -2005,6 +2033,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					return $keys[0];
 				}
 			}
+
 			return false;
 		}
 
@@ -2012,19 +2041,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Move an associative array element to the end.
 		 */
 		public static function move_to_end( array &$arr, $key ) {
+
 			if ( array_key_exists( $key, $arr ) ) {
-				$val = $arr[$key];
-				unset( $arr[$key] );
-				$arr[$key] = $val;
+				$val = $arr[ $key ];
+				unset( $arr[ $key ] );
+				$arr[ $key ] = $val;
 			}
+
 			return $arr;
 		}
 
 		public static function move_to_front( array &$arr, $key ) {
+
 			if ( array_key_exists( $key, $arr ) ) {
-				$val = $arr[$key];
+				$val = $arr[ $key ];
 				$arr = array_merge( array( $key => $val ), $arr );
 			}
+
 			return $arr;
 		}
 
@@ -2032,6 +2065,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Returns the modified array.
 		 */
 		public static function get_before_key( array $arr, $match_key, $mixed, $add_value = '' ) {
+
 			return self::insert_in_array( 'before', $arr, $match_key, $mixed, $add_value );
 		}
 
@@ -2039,13 +2073,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Returns the modified array.
 		 */
 		public static function get_after_key( array $arr, $match_key, $mixed, $add_value = '' ) {
+
 			return self::insert_in_array( 'after', $arr, $match_key, $mixed, $add_value );
 		}
 
 		/**
-		 * returns the modified array.
+		 * Returns the modified array.
 		 */
 		public static function get_replace_key( array $arr, $match_key, $mixed, $add_value = '' ) {
+
 			return self::insert_in_array( 'replace', $arr, $match_key, $mixed, $add_value );
 		}
 
@@ -2053,6 +2089,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Modifies the referenced array directly, and returns true or false.
 		 */
 		public static function add_before_key( array &$arr, $match_key, $mixed, $add_value = '' ) {
+
 			return self::insert_in_array( 'before', $arr, $match_key, $mixed, $add_value, true ); // $ret_matched = true.
 		}
 
@@ -2060,6 +2097,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Modifies the referenced array directly, and returns true or false.
 		 */
 		public static function add_after_key( array &$arr, $match_key, $mixed, $add_value = '' ) {
+
 			return self::insert_in_array( 'after', $arr, $match_key, $mixed, $add_value, true ); // $ret_matched = true.
 		}
 
@@ -2071,18 +2109,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		private static function insert_in_array( $rel_pos, array &$arr, $match_key, $mixed, $add_value, $ret_matched = false ) {
+
 			$matched = false;
+
 			if ( array_key_exists( $match_key, $arr ) ) {
+
 				$new_array = array();
+
 				foreach ( $arr as $key => $value ) {
+
 					if ( $rel_pos === 'after' ) {
-						$new_array[$key] = $value;
+						$new_array[ $key ] = $value;
 					}
+
 					/**
 					 * Add new value before/after the matched key.
 					 * Replace the matched key by default (no test required).
 					 */
 					if ( $key === $match_key ) {
+
 						if ( is_array( $mixed ) ) {
 							$new_array = array_merge( $new_array, $mixed );
 						} elseif ( is_string( $mixed ) ) {
@@ -2090,14 +2135,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						} else {
 							$new_array[] = $add_value;
 						}
+
 						$matched = true;
 					}
-					if ( $rel_pos === 'before' )
-						$new_array[$key] = $value;
+
+					if ( $rel_pos === 'before' ) {
+						$new_array[ $key ] = $value;
+					}
 				}
+
 				$arr = $new_array;
+
 				unset( $new_array );
 			}
+
 			return $ret_matched ? $matched : $arr; // Return true/false or the array (default).
 		}
 
@@ -2126,14 +2177,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function array_flatten( array $arr ) {
+
 			$return = array();
+
 		        foreach ( $arr as $key => $value ) {
 				if ( is_array( $value ) ) {
 					$return = array_merge( $return, self::array_flatten( $value ) );
 				} else {
-					$return[$key] = $value;
+					$return[ $key ] = $value;
 				}
 			}
+
 			return $return;
 		}
 
@@ -2198,9 +2252,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_first_value( array $arr ) {
+
 			foreach ( $arr as $value ) {
 				return $value;
 			}
+
 			return null;	// Return null if array is empty.
 		}
 
@@ -2210,12 +2266,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_last_num( array $input ) {
+
 			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+
 			return $last;
 		}
 
 		public static function get_next_num( array $input ) {
+
 			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+
 			return $next;
 		}
 
@@ -2463,6 +2523,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_site_name_alt( array $opts, $mixed = 'current' ) {
+
 			return self::get_key_value( 'site_name_alt', $opts, $mixed );
 		}
 
@@ -2536,7 +2597,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
 
-			$opts[$key_locale] = $value;
+			$opts[ $key_locale ] = $value;
 		}
 
 		/**
@@ -2615,8 +2676,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 */
 			$key = is_array( $mixed ) ? $mixed['name'] . '_' . $mixed['id'] : $mixed;
 
-			if ( isset( self::$cache_locale_names[$key] ) ) {
-				return self::$cache_locale_names[$key];
+			if ( isset( self::$cache_locale_names[ $key ] ) ) {
+				return self::$cache_locale_names[ $key ];
 			}
 
 			if ( $mixed === 'default' ) {
@@ -2663,7 +2724,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			return self::$cache_locale_names[$key] = apply_filters( 'sucom_locale', $locale, $mixed );
+			return self::$cache_locale_names[ $key ] = apply_filters( 'sucom_locale', $locale, $mixed );
 		}
 
 		public static function get_available_locales() {
@@ -2674,7 +2735,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Examples:
+		 * Results a salt string based on $mod values.
+		 *
+		 * Example mod salts:
+		 *
 		 * 	'post:123'
 		 * 	'term:456_tax:post_tag'
 		 * 	'post:0_url:https://example.com/a-subject/'
@@ -2784,7 +2848,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $checkbox as $key => $val ) {
 				if ( ! array_key_exists( $key, $opts ) ) {
-					$opts[$key] = 0; // Add missing checkbox as empty.
+					$opts[ $key ] = 0; // Add missing checkbox as empty.
 				}
 				unset ( $opts['is_checkbox_' . $key] );
 			}
@@ -2885,32 +2949,43 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$ret = false;
 
 			if ( is_numeric( $use_post ) && $use_post > 0 ) {
+
 				$ret = self::is_post_exists( $use_post );
 
 			} elseif ( true === $use_post && ! empty( $GLOBALS['post']->ID ) ) {
+
 				$ret = true;
 
 			} elseif ( false === $use_post && is_post_type_archive() ) {
+
 				$ret = true;
 
 			} elseif ( false === $use_post && is_singular() ) {
+
 				$ret = true;
 
 			} elseif ( ! is_home() && is_front_page() && get_option( 'show_on_front' ) === 'page' ) { // Static front page.
+
 				$ret = true;
 
 			} elseif ( is_home() && ! is_front_page() && get_option( 'show_on_front' ) === 'page' ) { // Static posts page.
+
 				$ret = true;
 
 			} elseif ( is_admin() ) {
+
 				$screen_base = self::get_screen_base();
+
 				if ( $screen_base === 'post' ) {
 					$ret = true;
 				} elseif ( false === $screen_base && // Called too early for screen.
 					( self::get_request_value( 'post_ID', 'POST' ) !== '' || // Uses sanitize_text_field().
 						self::get_request_value( 'post', 'GET' ) !== '' ) ) {
+
 					$ret = true;
+
 				} elseif ( basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' ) {
+
 					$ret = true;
 				}
 			}
@@ -3031,8 +3106,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			} elseif ( is_admin() ) {
 
-				if ( self::is_term_page() &&
-					self::get_request_value( 'taxonomy' ) === 'category' ) { // Uses sanitize_text_field().
+				if ( self::is_term_page()
+					&& self::get_request_value( 'taxonomy' ) === 'category' ) { // Uses sanitize_text_field().
 
 					$ret = true;
 				}
@@ -3055,8 +3130,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			} elseif ( is_admin() ) {
 
-				if ( self::is_term_page() &&
-					self::get_request_value( 'taxonomy' ) === '_tag' ) { // Uses sanitize_text_field().
+				if ( self::is_term_page()
+					&& self::get_request_value( 'taxonomy' ) === '_tag' ) { // Uses sanitize_text_field().
 
 					$ret = true;
 				}
@@ -3113,6 +3188,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_author_page( $user_id = 0 ) {
+
 			return self::is_user_page( $user_id );
 		}
 
@@ -3180,6 +3256,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_author_object( $user_id = 0, $output = 'object' ) {
+
 			return self::get_user_object( $user_id, $ret );
 		}
 
@@ -3300,16 +3377,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				case 'POST':
 
-					if ( isset( $_POST[$key] ) ) {
-						return sanitize_text_field( $_POST[$key] );
+					if ( isset( $_POST[ $key ] ) ) {
+						return sanitize_text_field( $_POST[ $key ] );
 					}
 
 					break;
 
 				case 'GET':
 
-					if ( isset( $_GET[$key] ) ) {
-						return sanitize_text_field( $_GET[$key] );
+					if ( isset( $_GET[ $key ] ) ) {
+						return sanitize_text_field( $_GET[ $key ] );
 					}
 
 					break;
@@ -3527,10 +3604,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Used to decode Facebook video urls.
 		 */
 		public static function replace_unicode_escape( $str ) {
+
 			return preg_replace_callback( '/\\\\u([0-9a-f]{4})/i', array( __CLASS__, 'replace_unicode_escape_callback' ), $str );
 		}
 
 		private static function replace_unicode_escape_callback( $match ) {
+
 			return mb_convert_encoding( pack( 'H*', $match[1] ), 'UTF-8', 'UCS-2' );
 		}
 
@@ -3971,7 +4050,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_true( $mixed, $allow_null = false ) {
+
 			$ret_bool = is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE ) : (bool) $mixed;
+
 		        return null === $ret_bool && ! $allow_null ? false : $ret_bool;
 		}
 
@@ -3979,6 +4060,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Converts string to boolean.
 		 */
 		public static function get_bool( $mixed ) {
+
 			return is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN ) : (bool) $mixed;
 		}
 
@@ -3987,9 +4069,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_header_files( $skip_backups = true ) {
 
-			$ret_array = array();
-			$parent_dir = get_template_directory();
-			$child_dir = get_stylesheet_directory();
+			$ret_array    = array();
+			$parent_dir   = get_template_directory();
+			$child_dir    = get_stylesheet_directory();
 			$header_files = (array) glob( $parent_dir . '/header*.php' );
 
 			if ( $parent_dir !== $child_dir ) {
@@ -3997,10 +4079,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			foreach ( $header_files as $tmpl_file ) {
+
 				if ( $skip_backups && preg_match( '/~backup-[0-9-]+$/', $tmpl_file ) ) { // Skip backup files.
 					continue;
 				}
+
 				$tmpl_base = basename( $tmpl_file );
+
 				$ret_array[$tmpl_base] = $tmpl_file; // Child template overwrites parent.
 			}
 
@@ -4008,22 +4093,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function get_at_name( $val ) {
+
 			if ( $val !== '' ) {
-				$val = substr( preg_replace( array( '/^.*\//',
-					'/[^a-zA-Z0-9_]/' ), '', $val ), 0, 15 );
+
+				$val = substr( preg_replace( array( '/^.*\//', '/[^a-zA-Z0-9_]/' ), '', $val ), 0, 15 );
+
 				if ( ! empty( $val ) )  {
 					$val = '@' . $val;
 				}
 			}
+
 			return $val;
 		}
 
 		public static function is_amp() {
+
 			if ( ! defined( 'AMP_QUERY_VAR' ) ) {
 				$is_amp = false;
 			} else {
 				$is_amp = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
 			}
+
 			return $is_amp;
 		}
 

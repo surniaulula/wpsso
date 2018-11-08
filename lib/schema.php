@@ -1260,13 +1260,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'organization schema type id is ' . $site_org_type_id );
 				}
 
-				$page_type_ids['website'] = isset( $this->p->options['schema_add_home_website'] ) ?
+				$page_type_ids[ 'website' ] = isset( $this->p->options['schema_add_home_website'] ) ?
 					$this->p->options['schema_add_home_website'] : 1;
 
 				$page_type_ids[ $site_org_type_id ] = isset( $this->p->options['schema_add_home_organization'] ) ?
 					$this->p->options['schema_add_home_organization'] : 1;
 
-				$page_type_ids['person'] = isset( $this->p->options['schema_add_home_person'] ) ?
+				$page_type_ids[ 'person' ] = isset( $this->p->options['schema_add_home_person'] ) ?
 					$this->p->options['schema_add_home_person'] : 0;
 			}
 
@@ -3700,10 +3700,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * LocalBusiness markup requires an image, and the address, priceRange, 
-		 * and telephone properties are recommended.
+		 * Do not type-cast the $json_data argument as it may be false or an array.
 		 */
-		public function organization_to_localbusiness( array &$json_data ) {
+		public function organization_to_localbusiness( &$json_data ) {
+
+			if ( ! is_array( $json_data ) ) {	// Just in case.
+				return;
+			}
 
 			/**
 			 * Promote all location information up.
@@ -3715,7 +3718,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				$prop_added = self::add_data_itemprop_from_assoc( $json_data, $json_data['location'], 
-					array_keys( $json_data['location'] ), false );	// $overwrite is false.
+					array_keys( $json_data['location'] ), $overwrite = false );
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'promoted ' . $prop_added . ' location keys' );

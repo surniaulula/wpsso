@@ -836,7 +836,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'og:image:secure_url':
 				case 'og:video:secure_url':
 
-					if ( ! empty( $value ) && strpos( $value, 'https:' ) !== 0 ) {
+					if ( ! empty( $value ) && ! SucomUtil::is_https( $value ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( $log_prefix . ' skipped: value not https' );

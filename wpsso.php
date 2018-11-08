@@ -16,7 +16,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.0
  * WC Tested Up To: 3.5
- * Version: 4.16.4
+ * Version: 4.16.5-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -37,31 +37,35 @@ if ( ! class_exists( 'Wpsso' ) ) {
 	class Wpsso {
 
 		/**
-		 * Class Object Variables
+		 * Wpsso plugin class object variable.
 		 */
-		public $p;			// Wpsso
-		public $admin;			// WpssoAdmin (admin menus and page loader)
-		public $cache;			// SucomCache (object and file caching)
-		public $check;			// WpssoCheck
-		public $debug;			// SucomDebug or SucomNoDebug
-		public $head;			// WpssoHead
-		public $link_rel;		// WpssoLinkRel (link relation tags)
-		public $loader;			// WpssoLoader
-		public $media;			// WpssoMedia (images, videos, etc.)
-		public $msgs;			// WpssoMessages (admin tooltip messages)
-		public $notice;			// SucomNotice or SucomNoNotice
-		public $og;			// WpssoOpenGraph
-		public $opt;			// WpssoOptions
-		public $page;			// WpssoPage (page title, desc, etc.)
-		public $reg;			// WpssoRegister
-		public $script;			// WpssoScript (admin jquery tooltips)
-		public $style;			// WpssoStyle (admin styles)
-		public $tc;			// WpssoTwitterCard
-		public $util;			// WpssoUtil (extends SucomUtil)
-		public $weibo;			// WpssoWeibo
+		public $p;		// Wpsso
 
 		/**
-		 * Reference Variables (config, options, modules, etc.).
+		 * Library class object variables.
+		 */
+		public $admin;		// WpssoAdmin (admin menus and page loader)
+		public $cache;		// SucomCache (object and file caching)
+		public $check;		// WpssoCheck
+		public $debug;		// SucomDebug or SucomNoDebug
+		public $head;		// WpssoHead
+		public $link_rel;	// WpssoLinkRel (link relation tags)
+		public $loader;		// WpssoLoader
+		public $media;		// WpssoMedia (images, videos, etc.)
+		public $msgs;		// WpssoMessages (admin tooltip messages)
+		public $notice;		// SucomNotice or SucomNoNotice
+		public $og;		// WpssoOpenGraph
+		public $opt;		// WpssoOptions
+		public $page;		// WpssoPage (page title, desc, etc.)
+		public $reg;		// WpssoRegister
+		public $script;		// WpssoScript (admin jquery tooltips)
+		public $style;		// WpssoStyle (admin styles)
+		public $tc;		// WpssoTwitterCard
+		public $util;		// WpssoUtil (extends SucomUtil)
+		public $weibo;		// WpssoWeibo
+
+		/**
+		 * Reference variables (config, options, modules, etc.).
 		 */
 		public $lca          = 'wpsso';	// Main plugin lowercase acronym.
 		public $m            = array();	// Loaded module objects from core plugin.
@@ -75,7 +79,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		private static $instance;
 
 		/**
-		 * Wpsso Constructor.
+		 * Wpsso constructor.
 		 */
 		public function __construct() {
 
