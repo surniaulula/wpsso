@@ -360,12 +360,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
-				if ( $prev_version > 0 && $prev_version <= 453 ) {
-					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
-						$opts['add_meta_property_' . $mt_name . ':secure_url'] = 1;
-					}
-				}
-
 				if ( $prev_version > 0 && $prev_version <= 557 ) {
 
 					if ( isset( $opts['plugin_cm_fb_label'] ) && $opts['plugin_cm_fb_label'] === 'Facebook URL' ) {
@@ -414,6 +408,14 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 							$this->p->options['plugin_shortener'] = 'none';
 						}
+					}
+				}
+
+				if ( $prev_version > 0 && $prev_version <= 617 ) {
+					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
+						$opts['add_meta_property_' . $mt_name . ':secure_url'] = 0;
+						$opts['add_meta_property_' . $mt_name . ':url']        = 0;
+						$opts['add_meta_property_' . $mt_name ]                = 1;
 					}
 				}
 

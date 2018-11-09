@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.5-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.5-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -384,8 +384,8 @@ msgid ""
 "function is missing."
 msgstr ""
 
-#: lib/admin.php:2294 lib/pro/media/slideshare.php:200
-#: lib/pro/media/vimeo.php:170 lib/pro/media/wistia.php:333 lib/util.php:1757
+#: lib/admin.php:2294 lib/pro/media/slideshare.php:192
+#: lib/pro/media/vimeo.php:160 lib/pro/media/wistia.php:308 lib/util.php:1757
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -2264,7 +2264,7 @@ msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:233 lib/media.php:478 lib/media.php:638
-#: lib/media.php:1505 lib/pro/admin/advanced.php:234
+#: lib/media.php:1496 lib/pro/admin/advanced.php:234
 #: lib/pro/util/checkimgdims.php:92
 msgid "Media Library"
 msgstr ""
@@ -2882,22 +2882,22 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1511 lib/pro/media/ngg.php:132
+#: lib/media.php:1502 lib/pro/media/ngg.php:132
 #: lib/pro/util/checkimgdims.php:94
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1521
+#: lib/media.php:1512
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1599
+#: lib/media.php:1590
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1627
+#: lib/media.php:1618
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -5483,13 +5483,13 @@ msgid ""
 "required %4$s image dimensions."
 msgstr ""
 
-#: lib/pro/media/slideshare.php:195 lib/pro/media/vimeo.php:165
-#: lib/pro/media/wistia.php:328 lib/util.php:1752
+#: lib/pro/media/slideshare.php:187 lib/pro/media/vimeo.php:155
+#: lib/pro/media/wistia.php:303 lib/util.php:1752
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
-#: lib/pro/media/slideshare.php:197 lib/pro/media/vimeo.php:167
-#: lib/pro/media/wistia.php:330 lib/util.php:1754
+#: lib/pro/media/slideshare.php:189 lib/pro/media/vimeo.php:157
+#: lib/pro/media/wistia.php:305 lib/util.php:1754
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 

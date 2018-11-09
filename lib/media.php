@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		private $def_img_preg = array(
 			'html_tag' => 'img',
 			'pid_attr' => 'data-[a-z]+-pid',
-			'ngg_src' => '[^\'"]+\/cache\/([0-9]+)_(crop)?_[0-9]+x[0-9]+_[^\/\'"]+|[^\'"]+-nggid0[1-f]([0-9]+)-[^\'"]+',
+			'ngg_src'  => '[^\'"]+\/cache\/([0-9]+)_(crop)?_[0-9]+x[0-9]+_[^\/\'"]+|[^\'"]+-nggid0[1-f]([0-9]+)-[^\'"]+',
 		);
 
 		private static $image_src_args  = null;
@@ -937,8 +937,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 */
 							if ( preg_match( '/^(https?:)?(\/\/([^\.]+\.)?gravatar\.com\/avatar\/[a-zA-Z0-9]+)/', $attr_value, $match ) ) {
 
-								$og_single_image['og:image:url'] = SucomUtil::get_prot().':'.$match[2].'?s='.$size_info['width'].'&d=404&r=G';
-								$og_single_image['og:image:width'] = $size_info['width'];
+								$og_single_image['og:image:url']    = SucomUtil::get_prot().':'.$match[2].'?s='.$size_info['width'].'&d=404&r=G';
+								$og_single_image['og:image:width']  = $size_info['width'];
 								$og_single_image['og:image:height'] = $size_info['width'];	// square image
 
 								if ( $this->p->debug->enabled ) {
@@ -965,8 +965,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								}
 
 								$og_single_image = array(
-									'og:image:url' => $attr_value,
-									'og:image:width' => WPSSO_UNDEF,
+									'og:image:url'    => $attr_value,
+									'og:image:width'  => WPSSO_UNDEF,
 									'og:image:height' => WPSSO_UNDEF,
 								);
 							}
@@ -1343,15 +1343,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$this->p->debug->log( 'falling back to media url: '.$args['url'] );
 						}
 	
-						/**
-						 * Define the og:video:secure_url meta tag if possible.
-						 */
-						if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
-
-							$og_single_video['og:video:secure_url'] = SucomUtil::is_https( $args['url'] ) ?
-								$args['url'] : '';
-						}
-	
 						$media_url = $og_single_video['og:video:url'] = $args['url'];
 					}
 	
@@ -1703,8 +1694,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					foreach ( $m as $a ) {		// Loop through all attributes for that meta tag.
 
-						$meta_type = key( $a );
-						$meta_name = reset( $a );
+						$meta_type  = key( $a );
+						$meta_name  = reset( $a );
 						$meta_match = $meta_type.'-'.$meta_name;
 
 						switch ( $meta_match ) {
@@ -1718,7 +1709,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							case ( strpos( $meta_match, 'property-al:' ) === 0 ? true : false ):	// Facebook AppLink.
 
 								if ( ! empty( $a['content'] ) ) {
-									$og_single_video[$a['property']] = $a['content'];
+									$og_single_video[ $a[ 'property' ] ] = $a[ 'content' ];
 								}
 
 								break;
@@ -1735,46 +1726,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								break;
 
 							case 'property-og:image:secure_url':
-
-								if ( ! empty( $a['content'] ) ) {
-
-									/**
-									 * Add the meta name as a query string to know where the value came from.
-									 */
-									$a['content'] = add_query_arg( 'm', $meta_name, $a['content'] );
-
-									if ( ! empty( $this->p->options['add_meta_property_og:image:secure_url'] ) ) {
-										$og_single_video['og:image:secure_url'] = $a['content'];
-									} else {
-										$og_single_video['og:image:url'] = $a['content'];
-									}
-
-									$og_single_video['og:video:thumbnail_url'] = $a['content'];
-									$og_single_video['og:video:has_image'] = true;
-								}
-
-								break;
-
 							case 'property-og:image:url':
 							case 'property-og:image':
 
-								if ( ! empty( $a['content'] ) ) {
+								if ( ! empty( $a[ 'content' ] ) ) {
 
 									/**
 									 * Add the meta name as a query string to know where the value came from.
 									 */
-									$a['content'] = add_query_arg( 'm', $meta_name, $a['content'] );
+									$a[ 'content' ] = add_query_arg( 'm', $meta_name, $a[ 'content' ] );
 
-									if ( ! empty( $this->p->options['add_meta_property_og:image:secure_url'] ) ) {
-
-										$og_single_video['og:image:secure_url'] = SucomUtil::is_https( $a['content'] ) ?
-											$a['content'] : '';
-									}
-
-									$og_single_video['og:image:url'] = $a['content'];
-									$og_single_video['og:video:thumbnail_url'] = $a['content'];
-									$og_single_video['og:video:has_image'] = true;
+									$og_single_video[ 'og:image:url' ]           = $a[ 'content' ];
+									$og_single_video[ 'og:video:thumbnail_url' ] = $a[ 'content' ];
+									$og_single_video[ 'og:video:has_image' ]     = true;
 								}
+
 								break;
 
 							/**

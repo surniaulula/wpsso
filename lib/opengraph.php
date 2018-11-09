@@ -1042,14 +1042,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 */
 						$og_single_embed = SucomUtil::preg_grep_keys( '/^og:/', $og_single_embed );
 
-						if ( ! empty( $this->p->options['add_meta_property_og:video:secure_url'] ) ) {
-
-							$og_single_embed['og:video:secure_url'] = SucomUtil::is_https( $og_single_video['og:video:embed_url'] ) ?
-								$og_single_video['og:video:embed_url'] : '';
-						}
-
-						$og_single_embed['og:video:url'] = $og_single_video['og:video:embed_url'];
-
+						$og_single_embed['og:video:url']  = $og_single_video['og:video:embed_url'];
 						$og_single_embed['og:video:type'] = 'text/html';
 
 						/**
@@ -1064,7 +1057,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						/**
 						 * Add application/x-shockwave-flash video first and the text/html video second.
 						 */
-						if ( SucomUtil::get_mt_media_url( $og_single_video, 'og:video', array( ':secure_url', ':url', '' ) ) ) {
+						if ( SucomUtil::get_mt_media_url( $og_single_video, $mt_media_pre = 'og:video',
+							$mt_suffixes = array( ':secure_url', ':url', '' ) ) ) {	// Do not include the ':embed_url' suffix.
+
 							$og_extend[] = $og_single_video;
 						}
 
