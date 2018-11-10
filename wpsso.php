@@ -131,8 +131,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function init_widgets() {
 
-			$opts = get_option( WPSSO_OPTIONS_NAME );
-
 			foreach ( $this->cf[ 'plugin' ] as $ext => $info ) {
 
 				if ( isset( $info[ 'lib' ][ 'widget' ] ) && is_array( $info[ 'lib' ][ 'widget' ] ) ) {
@@ -175,6 +173,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					if ( is_array( $this->options ) ) {
 
 						update_option( WPSSO_OPTIONS_NAME, $this->options );	// Auto-creates with autoload yes.
+
 						delete_option( WPSSO_OPTIONS_NAME_ALT );
 					}
 				}
@@ -387,7 +386,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * After all objects have been loaded, and all filter / action hooks registered,
 			 * check to see if the options need to be reloaded from the filtered defaults.
 			 */
-			if ( isset( $this->options[ 'options_reload_defaults' ] ) && true === $this->options[ 'options_reload_defaults' ] ) {
+			if ( ! empty( $this->options[ 'options_reload_defaults' ] ) ) {
 				$this->options = $this->opt->get_defaults();	// check_options() saves the settings
 			}
 
@@ -395,8 +394,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( $network ) {
 
-				if ( isset( $this->options[ 'options_reload_defaults' ] ) && true === $this->options[ 'options_reload_defaults' ] ) {
-					$this->options = $this->opt->get_site_defaults();	// check_options() saves the settings.
+				if ( ! empty( $this->site_options[ 'options_reload_defaults' ] ) ) {
+					$this->site_options = $this->opt->get_site_defaults();	// check_options() saves the settings.
 				}
 
 				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->site_options, $network, $activate );
