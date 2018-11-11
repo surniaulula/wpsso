@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.16.5-dev.3',	// Plugin version.
+					'version'     => '4.16.5-dev.4',	// Plugin version.
 					'opt_version' => '618',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -903,7 +903,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_al:web:should_fallback'                 => 1,
 					'add_meta_property_og:altitude'                            => 1,
 					'add_meta_property_og:description'                         => 1,
-					'add_meta_property_og:image:secure_url'                    => 1,
+					'add_meta_property_og:image:secure_url'                    => 0,
 					'add_meta_property_og:image:url'                           => 0,
 					'add_meta_property_og:image'                               => 1,
 					'add_meta_property_og:image:width'                         => 1,
@@ -917,7 +917,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_og:type'                                => 1,
 					'add_meta_property_og:updated_time'                        => 1,
 					'add_meta_property_og:url'                                 => 1,
-					'add_meta_property_og:video:secure_url'                    => 1,
+					'add_meta_property_og:video:secure_url'                    => 0,
 					'add_meta_property_og:video:url'                           => 0,
 					'add_meta_property_og:video'                               => 1,
 					'add_meta_property_og:video:type'                          => 1,

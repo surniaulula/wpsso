@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.5-dev.3\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.5-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2263,8 +2263,8 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:233 lib/media.php:478 lib/media.php:638
-#: lib/media.php:1496 lib/pro/admin/advanced.php:234
+#: lib/gpl/admin/advanced.php:233 lib/media.php:478 lib/media.php:640
+#: lib/media.php:1537 lib/pro/admin/advanced.php:234
 #: lib/pro/util/checkimgdims.php:92
 msgid "Media Library"
 msgstr ""
@@ -2844,7 +2844,7 @@ msgid ""
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:482 lib/media.php:641
+#: lib/media.php:482 lib/media.php:643
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
@@ -2865,39 +2865,39 @@ msgid ""
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:640
+#: lib/media.php:642
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:643
+#: lib/media.php:645
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1029
+#: lib/media.php:1033
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1502 lib/pro/media/ngg.php:132
+#: lib/media.php:1543 lib/pro/media/ngg.php:132
 #: lib/pro/util/checkimgdims.php:94
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1512
+#: lib/media.php:1553
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1590
+#: lib/media.php:1631
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1618
+#: lib/media.php:1659
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

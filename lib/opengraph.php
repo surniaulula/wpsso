@@ -1058,7 +1058,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 * Add application/x-shockwave-flash video first and the text/html video second.
 						 */
 						if ( SucomUtil::get_mt_media_url( $og_single_video, $mt_media_pre = 'og:video',
-							$mt_suffixes = array( ':secure_url', ':url', '' ) ) ) {	// Do not include the ':embed_url' suffix.
+							$mt_suffixes = array( ':secure_url', ':url', '' ) ) ) {	// Exclude the ':embed_url' suffix.
 
 							$og_extend[] = $og_single_video;
 						}
