@@ -1777,13 +1777,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									 */
 									$a[ 'content' ] = add_query_arg( 'meta', $meta_name, $a[ 'content' ] );
 
-									if ( $meta_name === 'og:image:secure_url' ) {
-										$og_single_video[ 'og:image:secure_url' ] = $a[ 'content' ];
+									if ( SucomUtil::is_https( $a[ 'content' ] ) ) {
+
+										$og_single_video[ 'og:image:secure_url' ]    = $a[ 'content' ];
+										$og_single_video[ 'og:video:thumbnail_url' ] = $a[ 'content' ];
+
 									} else {
+
 										$og_single_video[ 'og:image:url' ] = $a[ 'content' ];
+
+										if ( empty( $og_single_video[ 'og:video:thumbnail_url' ] ) ) {
+											$og_single_video[ 'og:video:thumbnail_url' ] = $a[ 'content' ];
+										}
 									}
 
-									$og_single_video[ 'og:video:thumbnail_url' ] = $a[ 'content' ];
 									$og_single_video[ 'og:video:has_image' ]     = true;
 								}
 

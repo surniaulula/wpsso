@@ -1456,12 +1456,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Empty string or a URL.
 				 *
 				 * Exceptions:
+				 *
 				 *	'add_meta_property_og:image:secure_url' = 1
 				 *	'add_meta_property_og:video:secure_url' = 1
-				 *	'add_meta_itemprop_url' = 1
-				 *	'plugin_cf_img_url' = '_format_image_url'
-				 *	'plugin_cf_vid_url' = '_format_video_url'
-				 *	'plugin_cf_review_item_image_url' = ''
+				 *	'add_meta_itemprop_url'                 = 1
+				 *	'plugin_cf_img_url'                     = '_format_image_url'
+				 *	'plugin_cf_vid_url'                     = '_format_video_url'
+				 *	'plugin_cf_review_item_image_url'       = ''
 				 */
 				case 'site_url':
 				case 'sharing_url':

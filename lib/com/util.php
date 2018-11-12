@@ -2316,10 +2316,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Return the first url from the associative array (og:image:secure_url, og:image:url, og:image).
+		 * Return the first URL from the associative array (og:image:secure_url, og:image:url, og:image).
 		 */
-		public static function get_mt_media_url( array $assoc, $mt_media_pre = 'og:image', 
-			array $mt_suffixes = array( ':secure_url', ':url', '', ':embed_url' ) ) {
+		public static function get_mt_media_url( array $assoc, $mt_media_pre = 'og:image', $mt_suffixes = null ) {
+
+			if ( ! is_array( $mt_suffixes ) ) {
+				$mt_suffixes = array( ':secure_url', ':url', '', ':embed_url' );
+			}
 
 			/**
 			 * Check for two dimensional arrays and keep following the first array element.

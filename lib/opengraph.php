@@ -1058,7 +1058,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 * Add application/x-shockwave-flash video first and the text/html video second.
 						 */
 						if ( SucomUtil::get_mt_media_url( $og_single_video, $mt_media_pre = 'og:video',
-							$mt_suffixes = array( ':secure_url', ':url', '' ) ) ) {	// Exclude the ':embed_url' suffix.
+							$mt_suffixes = array( ':secure_url', ':url', '' ) ) ) {
 
 							$og_extend[] = $og_single_video;
 						}
@@ -1272,77 +1272,79 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						// no break - fall through
 
 						if ( $og_videos !== null ) {
-							$ret[$key] = $this->get_media_value( $og_videos, $get_mt_name );
+							$ret[ $key ] = $this->get_media_value( $og_videos, $get_mt_name );
 						}
 
-						if ( empty( $ret[$key] ) ) {
-							$ret[$key] = $this->get_media_value( $og_images, $get_mt_name );
+						if ( empty( $ret[ $key ] ) ) {
+							$ret[ $key ] = $this->get_media_value( $og_images, $get_mt_name );
 						}
 
 						/**
 						 * If there's no image, and no video preview image, then add
 						 * the default image for singular (aka post) webpages.
 						 */
-						if ( empty( $ret[$key] ) && $mod['is_post'] ) {
-							$og_images = $this->p->media->get_default_images( 1, $size_name, false );	// $check_dupes is false.
-							$ret[$key] = $this->get_media_value( $og_images, $get_mt_name );
+						if ( empty( $ret[ $key ] ) && $mod['is_post'] ) {
+
+							$og_images = $this->p->media->get_default_images( 1, $size_name, $check_dupes = false );
+
+							$ret[ $key ] = $this->get_media_value( $og_images, $get_mt_name );
 						}
 
 						break;
 
 					case 'img_alt':
 
-						$ret[$key] = $this->get_media_value( $og_images, $mt_pre.':image:alt' );
+						$ret[ $key ] = $this->get_media_value( $og_images, $mt_pre.':image:alt' );
 
 						break;
 
 					case 'video':
 					case 'vid_url':
 
-						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video' );
+						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre.':video' );
 
 						break;
 
 					case 'vid_type':
 
-						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video:type' );
+						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre.':video:type' );
 
 						break;
 
 					case 'vid_title':
 
-						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video:title' );
+						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre.':video:title' );
 
 						break;
 
 					case 'vid_desc':
 
-						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video:description' );
+						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre.':video:description' );
 
 						break;
 
 					case 'vid_width':
 
-						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video:width' );
+						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre.':video:width' );
 
 						break;
 
 					case 'vid_height':
 
-						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video:height' );
+						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre.':video:height' );
 
 						break;
 
 					case 'prev_url':
 					case 'preview':
 
-						$ret[$key] = $this->get_media_value( $og_videos, $mt_pre.':video:thumbnail_url' );
+						$ret[ $key ] = $this->get_media_value( $og_videos, $mt_pre.':video:thumbnail_url' );
 
 						break;
 
 					default:
 
-						$ret[$key] = '';
+						$ret[ $key ] = '';
 
 						break;
 				}
@@ -1392,24 +1394,24 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			foreach ( $mt_search as $key ) {
 
-				if ( ! isset( $og_media[$key] ) ) {
+				if ( ! isset( $og_media[ $key ] ) ) {
 
 					continue;
 
-				} elseif ( $og_media[$key] === '' || $og_media[$key] === null ) {	// Allow for 0.
+				} elseif ( $og_media[ $key ] === '' || $og_media[ $key ] === null ) {	// Allow for 0.
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $og_media[$key].' value is empty (skipped)' );
+						$this->p->debug->log( $og_media[ $key ].' value is empty (skipped)' );
 					}
 
-				} elseif ( $og_media[$key] === WPSSO_UNDEF || $og_media[$key] === (string) WPSSO_UNDEF ) {
+				} elseif ( $og_media[ $key ] === WPSSO_UNDEF || $og_media[ $key ] === (string) WPSSO_UNDEF ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $og_media[$key].' value is '.WPSSO_UNDEF.' (skipped)' );
+						$this->p->debug->log( $og_media[ $key ].' value is '.WPSSO_UNDEF.' (skipped)' );
 					}
 
 				} else {
-					return $og_media[$key];
+					return $og_media[ $key ];
 				}
 			}
 

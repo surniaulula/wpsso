@@ -836,36 +836,52 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$value = $this->p->util->replace_inline_vars( $value, $mod );
 			}
 
+			static $secure_url = null;
+
 			switch ( $name ) {
 
 				case 'og:image:secure_url':
 				case 'og:video:secure_url':
 
-					if ( ! empty( $value ) && ! SucomUtil::is_https( $value ) ) {
+					if ( ! empty( $value ) ) {
 
-						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $log_prefix . ' skipped: value not https' );
+						if ( SucomUtil::is_https( $value ) ) {	// Only HTTPS.
+							$singles[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
 						}
 
-						return $singles;
+						$name_url_suffix = str_replace( ':secure_url', ':url', $name );
+						$name_no_suffix  = str_replace( ':url', '', $name );
+
+						
+						$singles[] = array( '', $tag, $type, $name_url_suffix, $attr, $value, $cmt );
+						$singles[] = array( '', $tag, $type, $name_no_suffix, $attr, $value, $cmt );
 					}
-					
-					$singles[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
+
+					$secure_url = $value;
 
 					break;
 
 				case 'og:image:url':
 				case 'og:video:url':
 
-					$singles[] = array( '', $tag, $type, $name, $attr, $value, $cmt );	// Add the url suffix first.
+					if ( $secure_url !== $value ) {	// Just in case.
 
-					$addl_name = str_replace( ':url', '', $name );
+						if ( ! empty( $this->p->options['add_meta_property_og:image:secure_url'] ) ) {
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'adding ' . $addl_name . ' meta tag with ' . $name . ' value' );
+							$name_secure_suffix = str_replace( ':url', ':secure_url', $name );
+							$value_secure_url   = set_url_scheme( $value, 'https' );	// Force https.
+							$value              = set_url_scheme( $value, 'http' );		// Force HTTP.
+
+							$singles[] = array( '', $tag, $type, $name_secure_suffix, $attr, $value_secure_url, $cmt );
+						}
+
+						$name_no_suffix = str_replace( ':url', '', $name );
+	
+						$singles[] = array( '', $tag, $type, $name, $attr, $value, $cmt );
+						$singles[] = array( '', $tag, $type, $name_no_suffix, $attr, $value, $cmt );
 					}
 
-					$singles[] = array( '', $tag, $type, $addl_name, $attr, $value, $cmt );
+					$secure_url = null;
 
 					break;
 
@@ -960,7 +976,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						break;
 
 					/**
-					 * Url values that must be url encoded.
+					 * URL values that must be URL encoded.
 					 */
 					case 'og:secure_url':
 					case 'og:url':
