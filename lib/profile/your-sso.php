@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function add_meta_boxes() {
 
-			$metabox_id      = $this->p->cf['meta']['id'];
+			$metabox_id      = $this->p->cf['meta'][ 'id' ];
 			$metabox_title   = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';

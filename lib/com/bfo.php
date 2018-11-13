@@ -183,7 +183,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 						}
 
 						$check_ref = $hook_ref . $bfo_check_str;			// Include the previous hook ref for visual clue.
-						$check_arg = urlencode( '[' . $hook_prio.']' . $hook_name );	// Include previous hook priority and name.
+						$check_arg = urlencode( '[' . $hook_prio . ']' . $hook_name );	// Include previous hook priority and name.
 
 						$new_hook_group[$check_ref] = array(
 							'function' => array(
@@ -243,15 +243,15 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 			if ( $text_domain !== null ) {
 				$this->text_domain = $text_domain;
-			} elseif ( ! empty( $this->p->cf['plugin'][$this->lca]['text_domain'] ) ) {
-				$this->text_domain = $this->p->cf['plugin'][$this->lca]['text_domain'];
+			} elseif ( ! empty( $this->p->cf[ 'plugin' ][$this->lca][ 'text_domain' ] ) ) {
+				$this->text_domain = $this->p->cf[ 'plugin' ][$this->lca][ 'text_domain' ];
 			}
 
 			if ( $label_transl !== null ) {
 				$this->label_transl = $label_transl;	// Argument is already translated.
-			} elseif ( ! empty( $this->p->cf['menu']['title'] ) ) {
+			} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'title' ] ) ) {
 				$this->label_transl = sprintf( __( '%s Notice', $this->text_domain ),
-					_x( $this->p->cf['menu']['title'], 'menu title', $this->text_domain ) );
+					_x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', $this->text_domain ) );
 			} else {
 				$this->label_transl = __( 'Notice', $this->text_domain );
 			}

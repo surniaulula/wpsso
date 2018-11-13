@@ -113,9 +113,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$mod = WpssoMeta::$mod_defaults;
 
-			$mod['id']   = (int) $mod_id;
-			$mod['name'] = 'user';
-			$mod['obj']  =& $this;
+			$mod[ 'id' ]   = (int) $mod_id;
+			$mod[ 'name' ] = 'user';
+			$mod[ 'obj' ]  =& $this;
 
 			/**
 			 * User
@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'calling get_posts() for posts authored by ' . 
-					$mod['name'] . ' id ' . $mod['id'] . ' (posts_per_page is ' . $ppp . ')' );
+					$mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' (posts_per_page is ' . $ppp . ')' );
 			}
 
 			$posts_args = array_merge( array(
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				'post_status'    => 'publish',
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
 				'posts_per_page' => $ppp,
-				'author'         => $mod['id'],
+				'author'         => $mod[ 'id' ],
 			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
 			$mtime_max   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
@@ -194,11 +194,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
-				$info = $this->p->cf['plugin'][$this->p->lca];
+				$info = $this->p->cf[ 'plugin' ][$this->p->lca];
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs'.
-						' to get posts authored by user ID %2$d', $mtime_total, $mod['id'] ) );
+						' to get posts authored by user ID %2$d', $mtime_total, $mod[ 'id' ] ) );
 				}
 
 				// translators: %1$0.3f is a number of seconds
@@ -206,7 +206,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				// translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
 				$error_msg = sprintf( __( 'Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts authored by user ID %2$d (%3$s).',
-					'wpsso' ), $mtime_total, $mod['id'], $rec_max_msg );
+					'wpsso' ), $mtime_total, $mod[ 'id' ], $rec_max_msg );
 
 				/**
 				 * Show an admin warning notice, if notices not already shown.
@@ -216,7 +216,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				// translators: %s is the short plugin name
-				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
+				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
 
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
@@ -422,7 +422,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
 
-							$notice_key = $mod['name'] . '-' . $mod['id'] . '-notice-missing-og-' . $mt_suffix;
+							$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
 							$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
 
 							$this->p->notice->err( $error_msg, null, $notice_key );
@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $add_metabox ) {
 
-				$metabox_id      = $this->p->cf['meta']['id'];
+				$metabox_id      = $this->p->cf['meta'][ 'id' ];
 				$metabox_title   = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
 				$metabox_screen  = $this->p->lca . '-user';
 				$metabox_context = 'normal';
@@ -524,7 +524,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$metabox_context = 'normal';
 
 			echo "\n" . '<!-- ' . $this->p->lca . ' user metabox section begin -->' . "\n";
-			echo '<h3 id="' . $this->p->lca . '-metaboxes">' . WpssoAdmin::$pkg[$this->p->lca]['short'] . '</h3>' . "\n";
+			echo '<h3 id="' . $this->p->lca . '-metaboxes">' . WpssoAdmin::$pkg[$this->p->lca][ 'short' ] . '</h3>' . "\n";
 			echo '<div id="poststuff">' . "\n";
 
 			do_meta_boxes( $metabox_screen, $metabox_context, $user_obj );
@@ -548,7 +548,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$metabox_id = $this->p->cf['meta']['id'];
+			$metabox_id = $this->p->cf['meta'][ 'id' ];
 			$mod        = $this->get_mod( $user_obj->ID );
 			$tabs       = $this->get_custom_meta_tabs( $metabox_id, $mod );
 			$opts       = $this->get_options( $user_obj->ID );
@@ -565,7 +565,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->lca . '_' . $mod['name'] . '_' . $tab_key . '_rows';
+				$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = array_merge(
 					$this->get_table_rows( $metabox_id, $tab_key, WpssoMeta::$head_meta_info, $mod ),
@@ -596,7 +596,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function add_contact_methods( $fields = array(), $user = null ) {
 
-			$has_pdir = $this->p->avail['*']['p_dir'];
+			$has_pdir = $this->p->avail[ '*' ][ 'p_dir' ];
 			$has_pp   = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 
 			/**
@@ -786,7 +786,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$author_id = $mod['post_author'];
 				}
 			} elseif ( $mod['is_user'] ) {
-				$author_id = $mod['id'];
+				$author_id = $mod[ 'id' ];
 			}
 
 			return $author_id;
@@ -1019,16 +1019,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$parent_slug = 'options-general.php';
 
-			foreach ( array_keys( $cf['*']['lib']['setting'] ) as $lib_id ) {
+			foreach ( array_keys( $cf[ '*' ][ 'lib' ]['setting'] ) as $lib_id ) {
 
 				$menu_slug = $cf['lca'] . '-' . $lib_id;
 
 				self::delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug );
 			}
 
-			$parent_slug = $cf['lca'] . '-' . key( $cf['*']['lib']['submenu'] );
+			$parent_slug = $cf['lca'] . '-' . key( $cf[ '*' ][ 'lib' ]['submenu'] );
 
-			foreach ( array_keys( $cf['*']['lib']['submenu'] ) as $lib_id ) {
+			foreach ( array_keys( $cf[ '*' ][ 'lib' ]['submenu'] ) as $lib_id ) {
 
 				$menu_slug = $cf['lca'] . '-' . $lib_id;
 

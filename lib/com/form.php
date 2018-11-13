@@ -77,8 +77,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_plugin_text_domain( $maybe_ext ) {
-			return isset( $this->p->cf['plugin'][$maybe_ext]['text_domain'] ) ?
-				$this->p->cf['plugin'][$maybe_ext]['text_domain'] : $maybe_ext;
+			return isset( $this->p->cf[ 'plugin' ][$maybe_ext]['text_domain'] ) ?
+				$this->p->cf[ 'plugin' ][$maybe_ext]['text_domain'] : $maybe_ext;
 		}
 
 		public function get_value_transl( $value ) {

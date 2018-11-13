@@ -67,8 +67,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $text_domain !== null ) {
 				$this->text_domain = $text_domain;
-			} elseif ( ! empty( $this->p->cf['plugin'][$this->lca]['text_domain'] ) ) {
-				$this->text_domain = $this->p->cf['plugin'][$this->lca]['text_domain'];
+			} elseif ( ! empty( $this->p->cf[ 'plugin' ][$this->lca]['text_domain'] ) ) {
+				$this->text_domain = $this->p->cf[ 'plugin' ][$this->lca]['text_domain'];
 			}
 
 			if ( $label_transl !== null ) {

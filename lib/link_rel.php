@@ -109,10 +109,10 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 				if ( $mod['is_post'] ) {
 
-					$shortlink = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context = post
+					$shortlink = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], 'post' );	// $context = post
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'WordPress wp_get_shortlink() = ' . wp_get_shortlink( $mod['id'], 'post' ) );
+						$this->p->debug->log( 'WordPress wp_get_shortlink() = ' . wp_get_shortlink( $mod[ 'id' ], 'post' ) );
 						$this->p->debug->log( 'SucomUtilWP::wp_get_shortlink() = ' . $shortlink );
 					}
 

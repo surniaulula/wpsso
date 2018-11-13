@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.16.5-dev.5',	// Plugin version.
+					'version'     => '4.16.5-dev.6',	// Plugin version.
 					'opt_version' => '618',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -2734,9 +2734,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function get_version( $add_slug = false ) {
 
 			$ext  = 'wpsso';
-			$info =& self::$cf['plugin'][$ext];
+			$info =& self::$cf[ 'plugin' ][$ext];
 
-			return $add_slug ? $info['slug'] . '-' . $info['version'] : $info['version'];
+			return $add_slug ? $info[ 'slug' ] . '-' . $info[ 'version' ] : $info[ 'version' ];
 		}
 
 		/**
@@ -2746,7 +2746,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			if ( ! isset( self::$cf['config_filtered'] ) || self::$cf['config_filtered'] !== true ) {
 
-				self::$cf['*'] = array(
+				self::$cf[ '*' ] = array(
 					'base' => array(),
 					'lib' => array(
 						'gpl' => array(),
@@ -2763,7 +2763,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 					self::$cf = apply_filters( 'wpsso_get_config', self::$cf, self::get_version() );
 
-					foreach ( self::$cf['plugin'] as $ext => $info ) {
+					foreach ( self::$cf[ 'plugin' ] as $ext => $info ) {
 
 						if ( defined( strtoupper( $ext ) . '_PLUGINDIR' ) ) {
 							$pkg_lctype = is_dir( constant( strtoupper( $ext ) . '_PLUGINDIR' ) . 'lib/pro/' ) ? 'pro' : 'gpl';
@@ -2771,21 +2771,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							$pkg_lctype = '';
 						}
 
-						if ( isset( $info['slug'] ) ) {
-							self::$cf['*']['slug'][$info['slug']] = $ext;
+						if ( isset( $info[ 'slug' ] ) ) {
+							self::$cf[ '*' ][ 'slug' ][$info[ 'slug' ]] = $ext;
 						}
 
-						if ( isset( $info['base'] ) ) {
-							self::$cf['*']['base'][$info['base']] = $ext;
+						if ( isset( $info[ 'base' ] ) ) {
+							self::$cf[ '*' ][ 'base' ][$info[ 'base' ]] = $ext;
 						}
 
-						if ( isset( $info['lib'] ) && is_array( $info['lib'] ) ) {
-							self::$cf['*']['lib'] = SucomUtil::array_merge_recursive_distinct(
-								self::$cf['*']['lib'], $info['lib'] );
+						if ( isset( $info[ 'lib' ] ) && is_array( $info[ 'lib' ] ) ) {
+							self::$cf[ '*' ][ 'lib' ] = SucomUtil::array_merge_recursive_distinct(
+								self::$cf[ '*' ][ 'lib' ], $info[ 'lib' ] );
 						}
 
-						if ( isset( $info['version'] ) ) {
-							self::$cf['*']['version'] .= '-' . $ext . $info['version'] . $pkg_lctype;
+						if ( isset( $info[ 'version' ] ) ) {
+							self::$cf[ '*' ][ 'version' ] .= '-' . $ext . $info[ 'version' ] . $pkg_lctype;
 						}
 
 						if ( isset( $info['opt_version'] ) ) {
@@ -2793,8 +2793,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						}
 
 						// complete relative paths in the image arrays
-						$plugin_base = trailingslashit( plugins_url( '', $info['base'] ) );
-						array_walk_recursive( self::$cf['plugin'][$ext]['img'], 
+						$plugin_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
+						array_walk_recursive( self::$cf[ 'plugin' ][$ext]['img'], 
 							array( __CLASS__, 'maybe_prefix_base_url' ), $plugin_base );
 					}
 				}
@@ -2831,8 +2831,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		private static function sort_ext_by_name( $a, $b ) {
-			if ( isset( $a['name'] ) && isset( $b['name'] ) ) {	// Just in case.
-				return strcasecmp( $a['name'], $b['name'] );	// Case-insensitive string comparison.
+
+			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {	// Just in case.
+				return strcasecmp( $a[ 'name' ], $b[ 'name' ] );	// Case-insensitive string comparison.
 			} else {
 				return 0;					// No change.
 			}
@@ -2848,12 +2849,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Define fixed constants.
 			 */
 			define( 'WPSSO_FILEPATH', $plugin_filepath );						
-			define( 'WPSSO_PLUGINBASE', self::$cf['plugin']['wpsso']['base'] );			// Example: wpsso/wpsso.php.
+			define( 'WPSSO_PLUGINBASE', self::$cf[ 'plugin' ]['wpsso'][ 'base' ] );			// Example: wpsso/wpsso.php.
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
-			define( 'WPSSO_PLUGINSLUG', self::$cf['plugin']['wpsso']['slug'] );			// Example: wpsso.
+			define( 'WPSSO_PLUGINSLUG', self::$cf[ 'plugin' ]['wpsso'][ 'slug' ] );			// Example: wpsso.
 			define( 'WPSSO_UNDEF', -1 );								// Undefined image width / height value.
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_filepath ) ) );
-			define( 'WPSSO_VERSION', self::$cf['plugin']['wpsso']['version'] );						
+			define( 'WPSSO_VERSION', self::$cf[ 'plugin' ]['wpsso'][ 'version' ] );						
 
 			/**
 			 * Define variable constants. Default values can be changed by defining 

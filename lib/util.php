@@ -342,7 +342,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 */
 			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
-				$info = $this->p->cf['plugin'][$this->p->lca];
+				$info = $this->p->cf[ 'plugin' ][$this->p->lca];
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( sprintf( 'slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s',
@@ -364,7 +364,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 
 				// translators: %s is the short plugin name.
-				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
+				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
 
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
@@ -452,7 +452,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$use_post = false;
-			$has_pdir = $this->p->avail['*']['p_dir'];
+			$has_pdir = $this->p->avail[ '*' ][ 'p_dir' ];
 			$has_pp   = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 
 			/**
@@ -474,20 +474,20 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes', $image_sizes, $mod, SucomUtil::get_crawler_name() );
 			}
 
-			if ( empty( $mod['id'] ) ) {
+			if ( empty( $mod[ 'id' ] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'module id is unknown' );
 				}
-			} elseif ( empty( $mod['name'] ) ) {
+			} elseif ( empty( $mod[ 'name' ] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'module name is unknown' );
 				}
-			} elseif ( ! empty( $mod['id'] ) && ! empty( $mod['obj'] ) && $has_pp ) {
+			} elseif ( ! empty( $mod[ 'id' ] ) && ! empty( $mod[ 'obj' ] ) && $has_pp ) {
 
 				/**
 			 	 * Custom filters may use image sizes, so don't filter/cache the meta options.
 				 */
-				$md_opts = $mod['obj']->get_options( $mod['id'], false, $filter_opts = false );	// Returns an empty string if no meta found.
+				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ], false, $filter_opts = false );	// Returns an empty string if no meta found.
 			}
 
 			foreach( $image_sizes as $opt_prefix => $size_info ) {
@@ -557,18 +557,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					 * Allow custom function hooks to make changes.
 					 */
 					if ( true === $filter_sizes ) {
-						$size_info = apply_filters( $this->p->lca . '_size_info_' . $size_info['name'], $size_info, $mod['id'], $mod['name'] );
+						$size_info = apply_filters( $this->p->lca . '_size_info_' . $size_info[ 'name' ], $size_info, $mod[ 'id' ], $mod[ 'name' ] );
 					}
 
 					/**
 					 * A lookup array for image size labels, used in image size error messages.
 					 */
-					$this->size_labels[$this->p->lca . '-' . $size_info['name']] = $size_info['label'];
+					$this->size_labels[$this->p->lca . '-' . $size_info[ 'name' ]] = $size_info['label'];
 
-					add_image_size( $this->p->lca . '-' . $size_info['name'], $size_info['width'], $size_info['height'], $size_info['crop'] );
+					add_image_size( $this->p->lca . '-' . $size_info[ 'name' ], $size_info['width'], $size_info['height'], $size_info['crop'] );
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'image size ' . $this->p->lca . '-' . $size_info['name'] . ' ' . 
+						$this->p->debug->log( 'image size ' . $this->p->lca . '-' . $size_info[ 'name' ] . ' ' . 
 							$size_info['width'] . 'x' . $size_info['height'] . 
 							( empty( $size_info['crop'] ) ? '' : ' crop ' . 
 								$size_info['crop_x'] . '/' . $size_info['crop_y'] ) . ' added' );
@@ -688,8 +688,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = $this->get_page_mod( $mod );
 			}
 
-			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) ) {
-				return $mod['name'] . '_' . $mod['id'] . '_regen_' . $md_pre;
+			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
+				return $mod[ 'name' ] . '_' . $mod[ 'id' ] . '_regen_' . $md_pre;
 			} else {
 				return false;
 			}
@@ -1146,7 +1146,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$this->delete_all_column_meta();
 
 			$status_msg = $user_id ? sprintf( __( '%s cached files, transient cache, column meta, and WordPress object cache have all been cleared.',
-				'wpsso' ), $this->p->cf['plugin'][$this->p->lca]['short'] ) : '';
+				'wpsso' ), $this->p->cf[ 'plugin' ][$this->p->lca][ 'short' ] ) : '';
 
 			if ( $clear_other ) {
 
@@ -1951,9 +1951,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$has_changed = false;
 			$all_times   = get_option( WPSSO_TS_NAME, array() );
 
-			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info['version'] ) ) {
+				if ( empty( $info[ 'version' ] ) ) {
 					continue;
 				}
 
@@ -1961,9 +1961,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					if ( empty( $all_times[$ext . '_' . $type . '_time'] ) ||
 						( $type === 'update' && ( empty( $all_times[$ext . '_' . $type . '_version'] ) ||
-							version_compare( $all_times[$ext . '_' . $type . '_version'], $info['version'], '!=' ) ) ) ) {
+							version_compare( $all_times[$ext . '_' . $type . '_version'], $info[ 'version' ], '!=' ) ) ) ) {
 
-						$has_changed = self::save_time( $ext, $info['version'], $type );
+						$has_changed = self::save_time( $ext, $info[ 'version' ], $type );
 					}
 				}
 			}
@@ -2129,7 +2129,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( ! is_array( $mod ) ) {
 				$mod = array();
-			} elseif ( isset( $mod['obj'] ) && is_object( $mod['obj'] ) ) {
+			} elseif ( isset( $mod[ 'obj' ] ) && is_object( $mod[ 'obj' ] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: module object is defined' );
 				}
@@ -2154,22 +2154,22 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					case 'WP_Post':
 
-						$mod['name'] = 'post';
-						$mod['id']   = $wp_obj->ID;
+						$mod[ 'name' ] = 'post';
+						$mod[ 'id' ]   = $wp_obj->ID;
 
 						break;
 
 					case 'WP_Term':
 
-						$mod['name'] = 'term';
-						$mod['id']   = $wp_obj->term_id;
+						$mod[ 'name' ] = 'term';
+						$mod[ 'id' ]   = $wp_obj->term_id;
 
 						break;
 
 					case 'WP_User':
 
-						$mod['name'] = 'user';
-						$mod['id']   = $wp_obj->ID;
+						$mod[ 'name' ] = 'user';
+						$mod[ 'id' ]   = $wp_obj->ID;
 
 						break;
 				}
@@ -2178,7 +2178,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * We need a module name to get its id and class object.
 			 */
-			if ( empty( $mod['name'] ) ) {
+			if ( empty( $mod[ 'name' ] ) ) {
 
 				if ( self::is_post_page( $use_post ) ) {	// $use_post = true | false | post_id
 
@@ -2186,7 +2186,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$this->p->debug->log( 'is_post_page is true' );
 					}
 
-					$mod['name'] = 'post';
+					$mod[ 'name' ] = 'post';
 
 				} elseif ( self::is_term_page() ) {
 
@@ -2194,7 +2194,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$this->p->debug->log( 'is_term_page is true' );
 					}
 
-					$mod['name'] = 'term';
+					$mod[ 'name' ] = 'term';
 
 				} elseif ( self::is_user_page() ) {
 
@@ -2202,39 +2202,39 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$this->p->debug->log( 'is_user_page is true' );
 					}
 
-					$mod['name'] = 'user';
+					$mod[ 'name' ] = 'user';
 
 				} else {
-					$mod['name'] = false;
+					$mod[ 'name' ] = false;
 				}
 			}
 
-			if ( empty( $mod['id'] ) ) {
+			if ( empty( $mod[ 'id' ] ) ) {
 
-				if ( $mod['name'] === 'post' ) {
+				if ( $mod[ 'name' ] === 'post' ) {
 
-					$mod['id'] = self::get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id
+					$mod[ 'id' ] = self::get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id
 
-				} elseif ( $mod['name'] === 'term' ) {
+				} elseif ( $mod[ 'name' ] === 'term' ) {
 
-					$mod['id'] = self::get_term_object( false, '', 'id' );
+					$mod[ 'id' ] = self::get_term_object( false, '', 'id' );
 
-				} elseif ( $mod['name'] === 'user' ) {
+				} elseif ( $mod[ 'name' ] === 'user' ) {
 
-					$mod['id'] = self::get_user_object( false, 'id' );
+					$mod[ 'id' ] = self::get_user_object( false, 'id' );
 
 				} else {
-					$mod['id'] = false;
+					$mod[ 'id' ] = false;
 				}
 			}
 
-			if ( isset( $this->p->m['util'][$mod['name']] ) ) {	// Make sure we have a complete $mod array.
+			if ( isset( $this->p->m['util'][$mod[ 'name' ]] ) ) {	// Make sure we have a complete $mod array.
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'getting $mod array from ' . $mod['name'] . ' module object' );
+					$this->p->debug->log( 'getting $mod array from ' . $mod[ 'name' ] . ' module object' );
 				}
 
-				$mod = $this->p->m['util'][$mod['name']]->get_mod( $mod['id'] );
+				$mod = $this->p->m['util'][$mod[ 'name' ]]->get_mod( $mod[ 'id' ] );
 
 			} else {
 
@@ -2251,7 +2251,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * The post module defines is_home_page, is_home_index, and is_home.
 			 * If we don't have a module, then check if we're on the home index page.
 			 */
-			if ( $mod['name'] === false ) {
+			if ( $mod[ 'name' ] === false ) {
 				$mod['is_home_index'] = $mod['is_home'] = is_home();
 			}
 
@@ -2312,10 +2312,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			if ( $mod['is_post'] ) {
 
-				if ( ! empty( $mod['id'] ) ) {
+				if ( ! empty( $mod[ 'id' ] ) ) {
 
-					if ( ! empty( $mod['obj'] ) ) {
-						$url = $mod['obj']->get_options( $mod['id'], $type . '_url' );	// Returns null if an index key is not found.
+					if ( ! empty( $mod[ 'obj' ] ) ) {
+						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $type . '_url' );	// Returns null if an index key is not found.
 					}
 
 					if ( ! empty( $url ) ) {	// Must be a non-empty string.
@@ -2326,7 +2326,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					} elseif ( $mod['post_status'] !== 'published' ) {
 
-						$post_obj = self::get_post_object( $mod['id'] );
+						$post_obj = self::get_post_object( $mod[ 'id' ] );
 
 						$post_obj->post_status = 'published';
 						$post_obj->post_name   = $post_obj->post_name ? 
@@ -2335,12 +2335,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$url = get_permalink( $post_obj );
 
 						if ( empty( $url ) ) {	// Just in case.
-							$url = get_permalink( $mod['id'] );
+							$url = get_permalink( $mod[ 'id' ] );
 						}
 
 					} else {
 
-						$url = get_permalink( $mod['id'] );
+						$url = get_permalink( $mod[ 'id' ] );
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'get_permalink url = ' . $url );
@@ -2353,7 +2353,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 						global $wp_rewrite;
 
-						$post_obj = self::get_post_object( $mod['id'] );
+						$post_obj = self::get_post_object( $mod[ 'id' ] );
 						$numpages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
 
 						if ( $numpages && get_query_var( 'page' ) <= $numpages ) {
@@ -2387,10 +2387,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				} elseif ( $mod['is_term'] ) {
 
-					if ( ! empty( $mod['id'] ) ) {
+					if ( ! empty( $mod[ 'id' ] ) ) {
 
-						if ( ! empty( $mod['obj'] ) ) {
-							$url = $mod['obj']->get_options( $mod['id'], $type . '_url' );	// Returns null if an index key is not found.
+						if ( ! empty( $mod[ 'obj' ] ) ) {
+							$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $type . '_url' );	// Returns null if an index key is not found.
 						}
 
 						if ( ! empty( $url ) ) {	// Must be a non-empty string.
@@ -2398,7 +2398,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 								$this->p->debug->log( 'custom term ' . $type . '_url = ' . $url );
 							}
 						} else {
-							$url = $this->check_url_string( get_term_link( $mod['id'], $mod['tax_slug'] ), 'term link' );
+							$url = $this->check_url_string( get_term_link( $mod[ 'id' ], $mod['tax_slug'] ), 'term link' );
 						}
 					}
 
@@ -2406,10 +2406,10 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				} elseif ( $mod['is_user'] ) {
 
-					if ( ! empty( $mod['id'] ) ) {
+					if ( ! empty( $mod[ 'id' ] ) ) {
 
-						if ( ! empty( $mod['obj'] ) ) {
-							$url = $mod['obj']->get_options( $mod['id'], $type . '_url' );	// Returns null if an index key is not found.
+						if ( ! empty( $mod[ 'obj' ] ) ) {
+							$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $type . '_url' );	// Returns null if an index key is not found.
 						}
 
 						if ( ! empty( $url ) ) {	// Must be a non-empty string.
@@ -2417,7 +2417,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 								$this->p->debug->log( 'custom user ' . $type . '_url = ' . $url );
 							}
 						} else {
-							$url = $this->check_url_string( get_author_posts_url( $mod['id'] ), 'author posts' );
+							$url = $this->check_url_string( get_author_posts_url( $mod[ 'id' ] ), 'author posts' );
 						}
 					}
 
@@ -2781,8 +2781,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $max_opt_keys as $opt_key ) {
 
-				if ( ! empty( $mod['id'] ) && ! empty( $mod['obj'] ) ) {
-					$max_val = $mod['obj']->get_options( $mod['id'], $opt_key );	// Returns null if an index key is not found.
+				if ( ! empty( $mod[ 'id' ] ) && ! empty( $mod[ 'obj' ] ) ) {
+					$max_val = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $opt_key );	// Returns null if an index key is not found.
 				} else {
 					$max_val = null;	// Default value if index key is missing.
 				}
@@ -2884,13 +2884,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Make sure the $post object is correct before filtering.
 			 */
-			if ( $mod['is_post'] && $mod['id'] && ( ! isset( $post->ID ) || $mod['id'] !== $post->ID ) ) {
+			if ( $mod['is_post'] && $mod[ 'id' ] && ( ! isset( $post->ID ) || $mod[ 'id' ] !== $post->ID ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'resetting post object from mod id ' . $mod['id'] );
+					$this->p->debug->log( 'resetting post object from mod id ' . $mod[ 'id' ] );
 				}
 
-				$post = SucomUtil::get_post_object( $mod['id'] );	// Redefine $post global.
+				$post = SucomUtil::get_post_object( $mod[ 'id' ] );	// Redefine $post global.
 
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'post object id matches the post mod id' );
@@ -2960,7 +2960,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						break;
 				}
 
-				$info = $this->p->cf['plugin'][$this->p->lca];
+				$info = $this->p->cf[ 'plugin' ][$this->p->lca];
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( sprintf( 'slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter',
@@ -2988,7 +2988,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 						$notice_key = 'slow-filter-hooks-detected-' . $filter_name;
 
-						$this->p->notice->warn( sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $mtime_total, $mtime_max ) . ' ' . sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info['short'] ), null, $notice_key, WEEK_IN_SECONDS );
+						$this->p->notice->warn( sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $mtime_total, $mtime_max ) . ' ' . sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info[ 'short' ] ), null, $notice_key, WEEK_IN_SECONDS );
 
 					} else {
 						$this->p->notice->warn( $error_msg );
@@ -2996,7 +2996,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 
 				// translators: %s is the short plugin name.
-				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
+				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
 
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
@@ -3062,7 +3062,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( preg_match( '/^.*\?page=' . $this->p->lca . '-([^&]*).*$/', $current, $match ) ) {
 					$menu_id = $match[1];
 				} else {
-					$menu_id = key( $this->p->cf['*']['lib']['submenu'] );	// Default to first submenu.
+					$menu_id = key( $this->p->cf[ '*' ][ 'lib' ]['submenu'] );	// Default to first submenu.
 				}
 			}
 
@@ -3070,7 +3070,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Find the menu_lib value for this menu_id.
 			 */
 			if ( empty( $menu_lib ) ) {
-				foreach ( $this->p->cf['*']['lib'] as $menu_lib => $menu ) {
+				foreach ( $this->p->cf[ '*' ][ 'lib' ] as $menu_lib => $menu ) {
 					if ( isset( $menu[$menu_id] ) ) {
 						break;
 					} else {
@@ -3217,7 +3217,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				if ( strpos( $row, '<tr ' ) === false ) {
 
-					$row = '<tr class="' . $tr['class'] . '"' . ( empty( $tr['id'] ) ? '' : ' id="' . $tr['id'] . '"' ) . '>' . $row;
+					$row = '<tr class="' . $tr['class'] . '"' . ( empty( $tr[ 'id' ] ) ? '' : ' id="' . $tr[ 'id' ] . '"' ) . '>' . $row;
 
 				} else {
 
@@ -3320,7 +3320,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 */
 		public function rename_opts_by_ext( &$opts, $options_keys ) {
 
-			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 				if ( ! isset( $options_keys[$ext] ) || ! is_array( $options_keys[$ext] ) ||
 					! isset( $info['opt_version'] ) || empty( $opts['plugin_' . $ext . '_opt_version'] ) ) {
@@ -3339,7 +3339,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			$opts['options_version'] = $this->p->cf['opt']['version'];	// Mark as current.
+			$opts['options_version'] = $this->p->cf['opt'][ 'version' ];	// Mark as current.
 		}
 
 		/**
@@ -3463,7 +3463,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$content = '';
 
-			if ( $mod['id'] && is_object( $mod['obj'] ) ) {
+			if ( $mod[ 'id' ] && is_object( $mod[ 'obj' ] ) ) {
 
 				foreach ( array(
 					'noindex'   => 'index',
@@ -3473,7 +3473,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				) as $meta_name => $inverse_name ) {
 
 					$meta_key   = '_' . $this->p->lca . '_' . $meta_name;
-					$meta_value = $mod['obj']->get_meta_cache_value( $mod['id'], $meta_key );
+					$meta_value = $mod[ 'obj' ]->get_meta_cache_value( $mod[ 'id' ], $meta_key );
 
 					if ( ! empty( $meta_value ) ) {
 						$content .= $meta_name . ', ';

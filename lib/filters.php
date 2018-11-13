@@ -122,15 +122,15 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 			if ( class_exists( 'Yoast_Notification_Center' ) ) {
 
-				$info = $this->p->cf['plugin'][$this->p->lca];
-				$name = $this->p->cf['plugin'][$this->p->lca]['name'];
+				$info = $this->p->cf[ 'plugin' ][$this->p->lca];
+				$name = $this->p->cf[ 'plugin' ][$this->p->lca][ 'name' ];
 
 				/**
 				 * Since WordPress SEO v4.0.
 				 */
 				if ( method_exists( 'Yoast_Notification_Center', 'get_notification_by_id' ) ) {
 
-					$notif_id     = 'wpseo-conflict-' . md5( $info['base'] );
+					$notif_id     = 'wpseo-conflict-' . md5( $info[ 'base' ] );
 					$notif_msg    = '<style>#' . $notif_id . '{display:none;}</style>';	// Hide our empty notification. ;-)
 					$notif_center = Yoast_Notification_Center::get();
 					$notif_obj    = $notif_center->get_notification_by_id( $notif_id );

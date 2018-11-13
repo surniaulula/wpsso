@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$defs['plugin_wpseo_social_meta'] = $this->p->avail['seo']['wpseo'] ||
 					get_option( 'wpseo' ) ? 1 : 0;
 
-				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 					if ( ! empty( $info['update_auth'] ) && $info['update_auth']!== 'none' ) {	// Just in case.
 						$defs['plugin_' . $ext . '_' . $info['update_auth']] = '';
 					}
@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->mark( 'get_site_defaults filters' );	// start timer
 				}
 
-				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 					if ( ! empty( $info['update_auth'] ) && $info['update_auth']!== 'none' ) {	// Just in case.
 						$defs['plugin_' . $ext . '_' . $info['update_auth']] = '';
 						$defs['plugin_' . $ext . '_' . $info['update_auth'] . ':use'] = 'default';
@@ -231,25 +231,25 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$has_new_options = empty( $opts['options_version'] ) ? true : false;
 				$current_version = $has_new_options ? 0 : $opts['options_version'];
-				$latest_version  = $this->p->cf['opt']['version'];
+				$latest_version  = $this->p->cf['opt'][ 'version' ];
 				$doing_upgrade   = $has_new_options || ! $has_diff_options || $current_version === $latest_version ? false : true;
 
 				/**
 				 * Check for new plugin versions.
 				 */
-				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-					if ( empty( $info['version'] ) ) {
+					if ( empty( $info[ 'version' ] ) ) {
 						continue;
 					}
 
 					$version_key = 'plugin_' . $ext . '_version';
 
-					if ( empty( $opts[ $version_key ] ) || version_compare( $opts[ $version_key ], $info['version'], '!=' ) ) {
+					if ( empty( $opts[ $version_key ] ) || version_compare( $opts[ $version_key ], $info[ 'version' ], '!=' ) ) {
 
-						WpssoUtil::save_time( $ext, $info['version'], 'update' );
+						WpssoUtil::save_time( $ext, $info[ 'version' ], 'update' );
 
-						$opts[ $version_key ] = $info['version'];
+						$opts[ $version_key ] = $info[ 'version' ];
 
 						$has_diff_version = true;
 					}
@@ -289,7 +289,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				if ( ! $network ) {
 
-					if ( $this->p->check->pp( $this->p->lca, false, $this->p->avail['*']['p_dir'] ) ) {
+					if ( $this->p->check->pp( $this->p->lca, false, $this->p->avail[ '*' ][ 'p_dir' ] ) ) {
 
 						foreach ( array( 'plugin_hide_pro' => 0 ) as $opt_key => $def_val ) {
 
@@ -343,7 +343,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					/**
 					 * If an SEO plugin is detected, adjust some related SEO options.
 					 */
-					if ( ! empty( $this->p->avail['seo']['*'] ) ) {
+					if ( ! empty( $this->p->avail['seo'][ 'any' ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'seo plugin found - checking meta tag options' );
@@ -589,13 +589,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Remove the SEO description if a known SEO plugin is active.
 			 */
-			if ( isset( $opts['seo_desc'] ) && ! empty( $this->p->avail['seo']['*'] ) ) {
+			if ( isset( $opts['seo_desc'] ) && ! empty( $this->p->avail['seo'][ 'any' ] ) ) {
 				unset( $opts['seo_desc'] );
 			}
 
 			if ( false === $mod ) {
 
-				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 					if ( empty( $info['update_auth'] ) ) {
 						continue;
@@ -958,7 +958,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$min_int = 1;
 					}
 
-					if ( ! empty( $mod['name'] ) && $opt_val === '' ) {	// custom meta options can be empty
+					if ( ! empty( $mod[ 'name' ] ) && $opt_val === '' ) {	// custom meta options can be empty
 						$ret_int = false;
 					} elseif ( ! is_numeric( $opt_val ) || $opt_val < $min_int ) {
 						$this->p->notice->err( sprintf( $error_messages['pos_num'], $opt_key, $min_int ) );
@@ -1090,16 +1090,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$has_new_options = empty( $opts['options_version'] ) ? true : false;
 			$current_version = $has_new_options ? 0 : $opts['options_version'];
-			$latest_version  = $this->p->cf['opt']['version'];
+			$latest_version  = $this->p->cf['opt'][ 'version' ];
 			$doing_upgrade   = $has_new_options || ! $has_diff_options || $current_version === $latest_version ? false : true;
 
 			/**
 			 * Save the plugin version and options version.
 			 */
-			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( isset( $info['version'] ) ) {
-					$opts['plugin_' . $ext . '_version'] = $info['version'];
+				if ( isset( $info[ 'version' ] ) ) {
+					$opts['plugin_' . $ext . '_version'] = $info[ 'version' ];
 				}
 
 				if ( isset( $info['opt_version'] ) ) {

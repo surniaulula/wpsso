@@ -2686,7 +2686,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * to cache both self::get_locale() and SucomUtil::get_locale() in the
 			 * same variable.
 			 */
-			$key = is_array( $mixed ) ? $mixed['name'] . '_' . $mixed['id'] : $mixed;
+			$key = is_array( $mixed ) ? $mixed[ 'name' ] . '_' . $mixed[ 'id' ] : $mixed;
 
 			if ( isset( self::$cache_locale_names[ $key ] ) ) {
 				return self::$cache_locale_names[ $key ];
@@ -2759,18 +2759,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$mod_salt = '';
 
-			if ( ! empty( $mod['name'] ) ) {
+			if ( ! empty( $mod[ 'name' ] ) ) {
 
-				$mod_salt .= '_' . $mod['name'] . ':';
+				$mod_salt .= '_' . $mod[ 'name' ] . ':';
 
-				if ( $mod['id'] === false ) {
+				if ( $mod[ 'id' ] === false ) {
 					$mod_salt .= 'false';
-				} elseif ( $mod['id'] === true ) {
+				} elseif ( $mod[ 'id' ] === true ) {
 					$mod_salt .= 'true';
-				} elseif ( empty( $mod['id'] ) ) {
+				} elseif ( empty( $mod[ 'id' ] ) ) {
 					$mod_salt .= '0';
 				} else {
-					$mod_salt .= $mod['id'];
+					$mod_salt .= $mod[ 'id' ];
 				}
 			}
 
@@ -2778,7 +2778,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mod_salt .= '_tax:' . $mod['tax_slug'];
 			}
 
-			if ( empty( $mod['id'] ) ) {
+			if ( empty( $mod[ 'id' ] ) ) {
 
 				if ( ! empty( $mod['is_home'] ) ) {
 					$mod_salt .= '_home';

@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						$mt_tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod['post_author'] );
 					}
 				} elseif ( $mod['is_user'] ) {
-					$mt_tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod['id'] );
+					$mt_tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod[ 'id' ] );
 				}
 			}
 
@@ -275,7 +275,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						$this->p->debug->log( $card_type . ' card: getting post image (meta, featured, attached)' );
 					}
 
-					$og_images = $this->p->media->get_post_images( 1, $size_name, $mod['id'], $check_dupes, $md_pre );
+					$og_images = $this->p->media->get_post_images( 1, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
 
 					if ( count( $og_images ) > 0 ) {
 
@@ -304,7 +304,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 	
 								$ngg_obj =& $this->p->m['media']['ngg'];
 
-								$og_images = $ngg_obj->get_singlepic_og_images( 1, $size_name, $mod['id'], $check_dupes );
+								$og_images = $ngg_obj->get_singlepic_og_images( 1, $size_name, $mod[ 'id' ], $check_dupes );
 	
 								if ( ! empty( $og_images ) ) {
 

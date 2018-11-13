@@ -33,10 +33,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'quote seed = "' . $quote_text . '"' );
 				}
 			} else {
-				if ( has_excerpt( $mod['id'] ) ) {
-					$quote_text = get_the_excerpt( $mod['id'] );
+				if ( has_excerpt( $mod[ 'id' ] ) ) {
+					$quote_text = get_the_excerpt( $mod[ 'id' ] );
 				} else {
-					$quote_text = get_post_field( 'post_content', $mod['id'] );
+					$quote_text = get_post_field( 'post_content', $mod[ 'id' ] );
 				}
 			}
 
@@ -129,7 +129,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) ) {
 
-				$cap_text = $mod['obj'] ? $mod['obj']->get_options_multi( $mod['id'], $md_key ) : null;
+				$cap_text = $mod[ 'obj' ] ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				/**
 				 * Maybe add hashtags to a post caption.
@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( ! empty( $cap_text ) && ! empty( $add_hashtags ) && ! preg_match( '/( #[a-z0-9\-]+)+$/U', $cap_text ) ) {
 
-						$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );
+						$hashtags = $this->get_hashtags( $mod[ 'id' ], $add_hashtags );
 
 						if ( ! empty( $hashtags ) ) {
 							$adj_max_len = $max_len - strlen( $hashtags ) - 1;
@@ -285,7 +285,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) ) {
 
-				$title_text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], $md_key ) : null;
+				$title_text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $title_text ) ) {
@@ -324,7 +324,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} elseif ( $mod['is_post'] ) {
 
 				if ( ! empty( $add_hashtags ) && ! empty( $this->p->options['og_desc_hashtags'] ) ) {
-					$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );	// $add_hashtags = true | false | numeric
+					$hashtags = $this->get_hashtags( $mod[ 'id' ], $add_hashtags );	// $add_hashtags = true | false | numeric
 				}
 			}
 
@@ -339,7 +339,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod['is_post'] ) {
 
-					if ( empty( $mod['id'] ) && ! empty( $mod['post_type'] ) && is_post_type_archive() ) {
+					if ( empty( $mod[ 'id' ] ) && ! empty( $mod['post_type'] ) && is_post_type_archive() ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'getting the title for post type ' . $mod['post_type'] );
@@ -361,10 +361,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					} else {
 
-						$title_text = html_entity_decode( get_the_title( $mod['id'] ) ) . ' ';
+						$title_text = html_entity_decode( get_the_title( $mod[ 'id' ] ) ) . ' ';
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( $mod['name'] . ' id ' . $mod['id'] . ' get_the_title() = "' . $title_text . '"' );
+							$this->p->debug->log( $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' get_the_title() = "' . $title_text . '"' );
 						}
 					}
 
@@ -381,9 +381,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( $mod['is_term'] ) {
 
-					$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
+					$term_obj = SucomUtil::get_term_object( $mod[ 'id' ], $mod['tax_slug'] );
 
-					if ( SucomUtil::is_category_page( $mod['id'] ) ) {
+					if ( SucomUtil::is_category_page( $mod[ 'id' ] ) ) {
 
 						/**
 						 * Includes parent names in title string if the $sep is not empty.
@@ -400,7 +400,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( $mod['is_user'] ) {
 
-					$user_obj = SucomUtil::get_user_object( $mod['id'] );
+					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
 
 					$title_text = apply_filters( 'wp_title', $user_obj->display_name . ' ' . $sep . ' ', $sep, 'right' );
 
@@ -450,7 +450,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $max_len > 0 ) {
 
-				if ( $this->p->avail['seo']['*'] === false ) {	// apply seo-like title modifications
+				if ( $this->p->avail['seo'][ 'any' ] === false ) {	// apply seo-like title modifications
 
 					global $wpsso_paged;
 
@@ -556,7 +556,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) ) {
 
-				$desc_text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], $md_key ) : null;
+				$desc_text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $desc_text ) ) {
@@ -595,7 +595,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} elseif ( $mod['is_post'] ) {
 
 				if ( ! empty( $add_hashtags ) && ! empty( $this->p->options['og_desc_hashtags'] ) ) {
-					$hashtags = $this->get_hashtags( $mod['id'], $add_hashtags );
+					$hashtags = $this->get_hashtags( $mod[ 'id' ], $add_hashtags );
 				}
 			}
 
@@ -610,7 +610,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod['is_post'] ) {
 
-					if ( empty( $mod['id'] ) && ! empty( $mod['post_type'] ) && is_post_type_archive() ) {
+					if ( empty( $mod[ 'id' ] ) && ! empty( $mod['post_type'] ) && is_post_type_archive() ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'getting the description for post type ' . $mod['post_type'] );
@@ -651,7 +651,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						if ( empty( $desc_text ) ) {
 	
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'getting the content for post ID ' . $mod['id'] );
+								$this->p->debug->log( 'getting the content for post ID ' . $mod[ 'id' ] );
 							}
 	
 							$desc_text = $this->get_the_content( $mod, $read_cache, $md_key );
@@ -674,33 +674,33 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						 */
 						if ( empty( $desc_text ) ) {
 							if ( $mod['post_type'] === 'attachment' && strpos( $mod['post_mime'], 'image/' ) === 0 ) {
-								$desc_text = get_post_meta( $mod['id'], '_wp_attachment_image_alt', true );
+								$desc_text = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
 							}
 						}
 					}
 
 				} elseif ( $mod['is_term'] ) {
 
-					if ( SucomUtil::is_tag_page( $mod['id'] ) ) {
+					if ( SucomUtil::is_tag_page( $mod[ 'id' ] ) ) {
 
-						if ( ! $desc_text = tag_description( $mod['id'] ) ) {
+						if ( ! $desc_text = tag_description( $mod[ 'id' ] ) ) {
 
-							$term_obj = get_tag( $mod['id'] );
+							$term_obj = get_tag( $mod[ 'id' ] );
 
 							if ( ! empty( $term_obj->name ) ) {
 								$desc_text = sprintf( __( 'Tagged with %s', 'wpsso' ), $term_obj->name );
 							}
 						}
 
-					} elseif ( SucomUtil::is_category_page( $mod['id'] ) ) {
+					} elseif ( SucomUtil::is_category_page( $mod[ 'id' ] ) ) {
 
-						if ( ! $desc_text = category_description( $mod['id'] ) ) {
-							$desc_text = sprintf( __( '%s Category', 'wpsso' ), get_cat_name( $mod['id'] ) );
+						if ( ! $desc_text = category_description( $mod[ 'id' ] ) ) {
+							$desc_text = sprintf( __( '%s Category', 'wpsso' ), get_cat_name( $mod[ 'id' ] ) );
 						}
 
 					} else { 	// other taxonomies
 
-						$term_obj = SucomUtil::get_term_object( $mod['id'], $mod['tax_slug'] );
+						$term_obj = SucomUtil::get_term_object( $mod[ 'id' ], $mod['tax_slug'] );
 
 						if ( ! empty( $term_obj->description ) ) {
 							$desc_text = $term_obj->description;
@@ -711,7 +711,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( $mod['is_user'] ) {
 
-					$user_obj = SucomUtil::get_user_object( $mod['id'] );
+					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
 
 					if ( ! empty( $user_obj->description ) ) {
 						$desc_text = $user_obj->description;
@@ -827,13 +827,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Use the excerpt, if we have one.
 			 */
-			if ( $mod['is_post'] && has_excerpt( $mod['id'] ) ) {
+			if ( $mod['is_post'] && has_excerpt( $mod[ 'id' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'getting the excerpt for post id ' . $mod['id'] );
+					$this->p->debug->log( 'getting the excerpt for post id ' . $mod[ 'id' ] );
 				}
 
-				$excerpt_text = get_post_field( 'post_excerpt', $mod['id'] );
+				$excerpt_text = get_post_field( 'post_excerpt', $mod[ 'id' ] );
 
 				static $filter_excerpt = null;
 
@@ -866,7 +866,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) ) {
 
-				$text = is_object( $mod['obj'] ) ? $mod['obj']->get_options_multi( $mod['id'], $md_key ) : null;
+				$text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $text ) ) {
@@ -987,12 +987,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod['is_post'] ) {
 
-				$content = get_post_field( 'post_content', $mod['id'] );
+				$content = get_post_field( 'post_content', $mod[ 'id' ] );
 
 				if ( empty( $content ) ) {
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'exiting early: no post_content for post id ' . $mod['id'] );
+						$this->p->debug->log( 'exiting early: no post_content for post id ' . $mod[ 'id' ] );
 					}
 
 					return false;

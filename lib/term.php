@@ -117,15 +117,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$mod = WpssoMeta::$mod_defaults;
 
-			$mod['id']   = (int) $mod_id;
-			$mod['name'] = 'term';
-			$mod['obj']  =& $this;
+			$mod[ 'id' ]   = (int) $mod_id;
+			$mod[ 'name' ] = 'term';
+			$mod[ 'obj' ]  =& $this;
 
 			/**
 			 * Term
 			 */
 			$mod['is_term']  = true;
-			$mod['tax_slug'] = SucomUtil::get_term_object( $mod['id'], (string) $tax_slug, 'taxonomy' );
+			$mod['tax_slug'] = SucomUtil::get_term_object( $mod[ 'id' ], (string) $tax_slug, 'taxonomy' );
 
 			return apply_filters( $this->p->lca . '_get_term_mod', $mod, $mod_id, $tax_slug );
 		}
@@ -198,7 +198,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'calling get_posts() for ' . $mod['name'] . ' id ' . $mod['id'] . 
+				$this->p->debug->log( 'calling get_posts() for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . 
 					' in taxonomy ' . $mod['tax_slug'] . ' (posts_per_page is ' . $ppp . ')' );
 			}
 
@@ -214,7 +214,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				        array(
 						'taxonomy'         => $mod['tax_slug'],
 						'field'            => 'term_id',
-						'terms'            => $mod['id'],
+						'terms'            => $mod[ 'id' ],
 						'include_children' => true
 					)
 				),
@@ -227,11 +227,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
-				$info = $this->p->cf['plugin'][$this->p->lca];
+				$info = $this->p->cf[ 'plugin' ][$this->p->lca];
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs'.
-						' to get posts for term ID %2$d in taxonomy %3$s', $mtime_total, $mod['id'], $mod['tax_slug'] ) );
+						' to get posts for term ID %2$d in taxonomy %3$s', $mtime_total, $mod[ 'id' ], $mod['tax_slug'] ) );
 				}
 
 				// translators: %1$0.3f is a number of seconds
@@ -239,7 +239,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				// translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$s is a recommended max
 				$error_msg = sprintf( __( 'Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (%4$s).',
-					'wpsso' ), $mtime_total, $mod['id'], $mod['tax_slug'], $rec_max_msg );
+					'wpsso' ), $mtime_total, $mod[ 'id' ], $mod['tax_slug'], $rec_max_msg );
 
 				/**
 				 * Show an admin warning notice, if notices not already shown.
@@ -249,7 +249,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 
 				// translators: %s is the short plugin name
-				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info['short'] );
+				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
 
 				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
@@ -418,7 +418,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 						if ( $this->p->notice->is_admin_pre_notices() ) {	// Skip if notices already shown.
 
-							$notice_key = $mod['name'] . '-' . $mod['id'] . '-notice-missing-og-' . $mt_suffix;
+							$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
 							$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
 
 							$this->p->notice->err( $error_msg, null, $notice_key );
@@ -476,7 +476,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $add_metabox ) {
 
-				$metabox_id      = $this->p->cf['meta']['id'];
+				$metabox_id      = $this->p->cf['meta'][ 'id' ];
 				$metabox_title   = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
 				$metabox_screen  = $this->p->lca . '-term';
 				$metabox_context = 'normal';
@@ -505,7 +505,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$metabox_context = 'normal';
 
 			echo "\n" . '<!-- ' . $this->p->lca . ' term metabox section begin -->' . "\n";
-			echo '<h3 id="' . $this->p->lca . '-metaboxes">' . WpssoAdmin::$pkg[$this->p->lca]['short'] . '</h3>' . "\n";
+			echo '<h3 id="' . $this->p->lca . '-metaboxes">' . WpssoAdmin::$pkg[$this->p->lca][ 'short' ] . '</h3>' . "\n";
 			echo '<div id="poststuff">' . "\n";
 
 			do_meta_boxes( $metabox_screen, 'normal', $term_obj );
@@ -520,7 +520,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function get_metabox_custom_meta( $term_obj ) {
 
-			$metabox_id = $this->p->cf['meta']['id'];
+			$metabox_id = $this->p->cf['meta'][ 'id' ];
 			$mod        = $this->get_mod( $term_obj->term_id, $this->query_tax_slug );
 			$tabs       = $this->get_custom_meta_tabs( $metabox_id, $mod );
 			$opts       = $this->get_options( $term_obj->term_id );
@@ -537,7 +537,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->lca . '_' . $mod['name'] . '_' . $tab_key . '_rows';
+				$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
 				$table_rows[$tab_key] = array_merge(
 					$this->get_table_rows( $metabox_id, $tab_key, WpssoMeta::$head_meta_info, $mod ),

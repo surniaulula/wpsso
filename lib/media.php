@@ -191,7 +191,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$pid = $post_id;
 
-				} elseif ( $this->p->avail['*']['featured'] == true && has_post_thumbnail( $post_id ) ) {
+				} elseif ( $this->p->avail[ '*' ]['featured'] == true && has_post_thumbnail( $post_id ) ) {
 					$pid = get_post_thumbnail_id( $post_id );
 				} else {
 					$pid = false;
@@ -438,7 +438,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->notice->is_admin_pre_notices() ) {	// skip if notices already shown
 						$error_msg = __( 'The NGG integration module provided by %1$s is required to read information for image ID %2$s.', 'wpsso' );
-						$this->p->notice->err( sprintf( $error_msg, $this->p->cf['plugin'][$this->p->lca]['short'] . ' Pro', $pid ) );
+						$this->p->notice->err( sprintf( $error_msg, $this->p->cf[ 'plugin' ][$this->p->lca][ 'short' ] . ' Pro', $pid ) );
 					}
 
 					return self::reset_image_src_args();
@@ -730,22 +730,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'' : $this->p->options['og_def_img_' . $key];
 			}
 
-			if ( empty( $def_img['id'] ) && empty( $def_img['url'] ) ) {
+			if ( empty( $def_img[ 'id' ] ) && empty( $def_img['url'] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: no default image defined' );
 				}
 				return $og_images;
 			}
 
-			if ( ! empty( $def_img['id'] ) ) {
+			if ( ! empty( $def_img[ 'id' ] ) ) {
 
-				$def_img['id'] = $def_img['id_pre'] === 'ngg' ? 'ngg-' . $def_img['id'] : $def_img['id'];
+				$def_img[ 'id' ] = $def_img['id_pre'] === 'ngg' ? 'ngg-' . $def_img[ 'id' ] : $def_img[ 'id' ];
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'using default image pid: ' . $def_img['id'] );
+					$this->p->debug->log( 'using default image pid: ' . $def_img[ 'id' ] );
 				}
 
-				$this->add_mt_single_image_src( $og_single_image, $def_img['id'], $size_name, $check_dupes, $force_regen );
+				$this->add_mt_single_image_src( $og_single_image, $def_img[ 'id' ], $size_name, $check_dupes, $force_regen );
 			}
 
 			if ( empty( $og_single_image['og:image:url'] ) && ! empty( $def_img['url'] ) ) {
@@ -1090,11 +1090,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$og_single_image = array();
 
-			if ( ! empty( $img_opts['id'] ) && ! empty( $size_name ) ) {
+			if ( ! empty( $img_opts[ 'id' ] ) && ! empty( $size_name ) ) {
 
-				$img_opts['id'] = $img_opts['id_pre'] === 'ngg' ? 'ngg-' . $img_opts['id'] : $img_opts['id'];
+				$img_opts[ 'id' ] = $img_opts['id_pre'] === 'ngg' ? 'ngg-' . $img_opts[ 'id' ] : $img_opts[ 'id' ];
 
-				$this->add_mt_single_image_src( $og_single_image, $img_opts['id'], $size_name, $check_dupes, $force_regen );
+				$this->add_mt_single_image_src( $og_single_image, $img_opts[ 'id' ], $size_name, $check_dupes, $force_regen );
 
 			} elseif ( ! empty( $img_opts['url'] ) ) {
 

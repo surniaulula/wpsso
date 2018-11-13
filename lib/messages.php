@@ -2008,7 +2008,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .=  __( 'Enter the Authentication ID in the option field corresponding to the plugin / add-on you purchased.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Don\'t forget that the %1$s Free add-on must also be installed and active to check for Pro version updates.', 'wpsso' ), $um_info['name'] ) . ' ;-)</p>';
+							$text .= sprintf( __( 'Don\'t forget that the %1$s Free add-on must also be installed and active to check for Pro version updates.', 'wpsso' ), $um_info[ 'name' ] ) . ' ;-)</p>';
 
 							if ( ! WpssoAdmin::$pkg[ $lca ][ 'pp' ] ) {
 								$text .= '<p>' . sprintf( __( 'Please note that Pro add-ons use several %1$s features. This means that all Pro add-ons require an active and licensed %1$s plugin &mdash; don\'t forget to purchase %1$s before purchasing any of its Pro add-ons.', 'wpsso' ), $info[ 'short_pro' ] ) . ' ;-)</p>';
@@ -2033,7 +2033,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text.= '<p>' . __( 'If you enter Authentication IDs in this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; for example, to license a Pro add-on for 10 sites, you would need an Authentication ID from a 10 license pack purchase (or more) of that Pro add-on.', 'wpsso' ) . '</p>';
 
-							$text .= '<p>' . sprintf( __( '<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its Pro add-ons, please make sure the %2$s Free add-on is active on the default site, and the default site is licensed.', 'wpsso' ), $info['name_pro'], $um_info['name'] ) . '</p>';
+							$text .= '<p>' . sprintf( __( '<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its Pro add-ons, please make sure the %2$s Free add-on is active on the default site, and the default site is licensed.', 'wpsso' ), $info['name_pro'], $um_info[ 'name' ] ) . '</p>';
 
 							$text .= '</blockquote>';
 

@@ -47,15 +47,15 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 */
 			wp_register_style( 'jquery-ui.js',
 				'https://ajax.googleapis.com/ajax/libs/jqueryui/' . 
-					$this->p->cf['jquery-ui']['version'] . '/themes/smoothness/jquery-ui.css',
-						array(), $this->p->cf['jquery-ui']['version'] );
+					$this->p->cf['jquery-ui'][ 'version' ] . '/themes/smoothness/jquery-ui.css',
+						array(), $this->p->cf['jquery-ui'][ 'version' ] );
 
 			/**
 			 * See http://qtip2.com/download.
 			 */
 			wp_register_style( 'jquery-qtip.js',
 				WPSSO_URLPATH . 'css/ext/jquery-qtip.' . $css_file_ext,
-					array(), $this->p->cf['jquery-qtip']['version'] );
+					array(), $this->p->cf['jquery-qtip'][ 'version' ] );
 
 			wp_register_style( 'sucom-settings-table',
 				WPSSO_URLPATH . 'css/com/settings-table.' . $css_file_ext,
@@ -121,9 +121,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 				case 'plugin-install.php':
 
-					if ( isset( $_GET['plugin'] ) ) {
-						$plugin_slug = $_GET['plugin'];
-						if ( isset( $this->p->cf['*']['slug'][$plugin_slug] ) ) {
+					if ( isset( $_GET[ 'plugin' ] ) ) {
+						$plugin_slug = $_GET[ 'plugin' ];
+						if ( isset( $this->p->cf[ '*' ][ 'slug' ][$plugin_slug] ) ) {
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'enqueuing styles for plugin install page' );
 							}
@@ -256,9 +256,9 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			$sort_cols  = WpssoMeta::get_sortable_columns();
-			$metabox_id = $this->p->cf['meta']['id'];
-			$menu       = $this->p->lca . '-' . key( $this->p->cf['*']['lib']['submenu'] );
-			$sitemenu   = $this->p->lca . '-' . key( $this->p->cf['*']['lib']['sitesubmenu'] );
+			$metabox_id = $this->p->cf['meta'][ 'id' ];
+			$menu       = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ]['submenu'] );
+			$sitemenu   = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ]['sitesubmenu'] );
 
 			$custom_style_css = '
 				@font-face {
@@ -576,13 +576,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			/**
 			 * Fix the WordPress banner resolution.
 			 */
-			if ( $plugin_slug !== false && ! empty( $this->p->cf['*']['slug'][$plugin_slug] ) ) {
+			if ( $plugin_slug !== false && ! empty( $this->p->cf[ '*' ][ 'slug' ][$plugin_slug] ) ) {
 
-				$ext = $this->p->cf['*']['slug'][$plugin_slug];
+				$ext = $this->p->cf[ '*' ][ 'slug' ][$plugin_slug];
 
-				if ( ! empty( $this->p->cf['plugin'][$ext]['img']['banners'] ) ) {
+				if ( ! empty( $this->p->cf[ 'plugin' ][$ext]['img']['banners'] ) ) {
 
-					$banners = $this->p->cf['plugin'][$ext]['img']['banners'];
+					$banners = $this->p->cf[ 'plugin' ][$ext]['img']['banners'];
 
 					if ( ! empty( $banners['low'] ) || ! empty( $banners['high'] ) ) {	// Must have at least one banner.
 

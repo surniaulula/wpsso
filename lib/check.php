@@ -43,15 +43,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			$get_avail    = array();	// Initialize the array to return.
 
 			foreach ( array( 'featured', 'amp', 'p_dir', 'head_html', 'vary_ua' ) as $key ) {
-				$get_avail['*'][$key] = $this->is_avail( $key );
+				$get_avail[ '*' ][ $key ] = $this->is_avail( $key );
 			}
 
-			$lib_checks = SucomUtil::array_merge_recursive_distinct( $this->p->cf['*']['lib']['pro'], self::$extend_lib_checks );
+			$lib_checks = SucomUtil::array_merge_recursive_distinct( $this->p->cf[ '*' ][ 'lib' ][ 'pro' ], self::$extend_lib_checks );
 
 			foreach ( $lib_checks as $sub => $lib ) {
 
-				$get_avail[$sub] = array();
-				$get_avail[$sub]['*'] = false;
+				$get_avail[ $sub ] = array();
+				$get_avail[ $sub ][ 'any' ] = false;
 
 				foreach ( $lib as $id => $name ) {
 
@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'forum-bbpress':
 
-							$chk['plugin'] = 'bbpress/bbpress.php';
+							$chk[ 'plugin' ] = 'bbpress/bbpress.php';
 
 							break;
 
@@ -128,7 +128,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'media-rtmedia':
 
-							$chk['plugin'] = 'buddypress-media/index.php';
+							$chk[ 'plugin' ] = 'buddypress-media/index.php';
 
 							break;
 
@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							if ( ! empty( $jetpack_mods ) ) {
 								if ( in_array( 'seo-tools', $jetpack_mods ) ) {
-									$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
+									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 								}
 							}
 
@@ -174,13 +174,13 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'seo-seou':
 
-							$chk['plugin'] = 'seo-ultimate/seo-ultimate.php';
+							$chk[ 'plugin' ] = 'seo-ultimate/seo-ultimate.php';
 
 							break;
 
 						case 'seo-sq':
 
-							$chk['plugin'] = 'squirrly-seo/squirrly.php';
+							$chk[ 'plugin' ] = 'squirrly-seo/squirrly.php';
 
 							break;
 
@@ -218,7 +218,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							if ( $is_admin ) {
 								$page = basename( $_SERVER['PHP_SELF'] );
 								if ( $page === 'admin.php' || $page === 'options-general.php' ) {
-									$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
+									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 								}
 							}
 
@@ -228,7 +228,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'admin-meta':
 
 							if ( $is_admin ) {
-								$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
+								$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 							}
 
 							break;
@@ -266,7 +266,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'util-coauthors':
 
-							$chk['plugin'] = 'co-authors-plus/co-authors-plus.php';
+							$chk[ 'plugin' ] = 'co-authors-plus/co-authors-plus.php';
 
 							break;
 
@@ -274,7 +274,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						case 'util-term':
 						case 'util-user':
 
-							$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
+							$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 
 							break;
 
@@ -303,34 +303,34 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					 */
 					if ( ! empty( $chk ) ) {
 
-						if ( isset( $chk['class'] ) || isset( $chk['function'] ) || isset( $chk['plugin'] ) ) {
+						if ( isset( $chk['class'] ) || isset( $chk['function'] ) || isset( $chk[ 'plugin' ] ) ) {
 
 							if ( ( ! empty( $chk['class'] ) && class_exists( $chk['class'] ) ) ||
 								( ! empty( $chk['function'] ) && function_exists( $chk['function'] ) ) ||
-								( ! empty( $chk['plugin'] ) && SucomUtil::active_plugins( $chk['plugin'] ) ) ) {
+								( ! empty( $chk[ 'plugin' ] ) && SucomUtil::active_plugins( $chk[ 'plugin' ] ) ) ) {
 
 								/**
 								 * Check if an option value is also required.
 								 */
 								if ( isset( $chk[ 'opt_key' ] ) ) {
 									if ( $this->is_opt_enabled( $chk[ 'opt_key' ] ) ) {
-										$get_avail[ $sub ][ '*' ] = $get_avail[ $sub ][ $id ] = true;
+										$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 									}
 								} else {
-									$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
+									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 								}
 							}
 
 						} elseif ( isset( $chk[ 'opt_key' ] ) ) {
 
 							if ( $this->is_opt_enabled( $chk[ 'opt_key' ] ) ) {
-								$get_avail[ $sub ][ '*' ] = $get_avail[ $sub ][ $id ] = true;
+								$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 							}
 
 						} elseif ( isset( $chk['constant'] ) ) {
 
 							if ( defined( $chk['constant'] ) ) {
-								$get_avail[$sub]['*'] = $get_avail[$sub][$id] = true;
+								$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
 							}
 						}
 					}
@@ -341,7 +341,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			 * Define WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE as true to disable WPSSO's SEO related meta tags and features.
 			 */
 			if ( SucomUtil::get_const( 'WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE' ) ) {
-				$get_avail['seo']['*'] = true;
+				$get_avail[ 'seo' ][ 'any' ] = true;
 			}
 
 			return apply_filters( $this->p->lca . '_get_avail', $get_avail );
@@ -411,8 +411,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		}
 
 		public function is_pp( $ext = '', $uc = true ) {
-			return $this->pp( $ext, true, ( isset( $this->p->avail['*']['p_dir'] ) ?
-				$this->p->avail['*']['p_dir'] : $this->is_avail( 'p_dir' ) ), $uc );
+			return $this->pp( $ext, true, ( isset( $this->p->avail[ '*' ][ 'p_dir' ] ) ?
+				$this->p->avail[ '*' ][ 'p_dir' ] : $this->is_avail( 'p_dir' ) ), $uc );
 		}
 
 		/**
@@ -437,9 +437,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 				$pdir = constant( $uca . '_PLUGINDIR' );
 
-			} elseif ( isset( $this->p->cf['plugin'][$ext]['slug'] ) ) {
+			} elseif ( isset( $this->p->cf[ 'plugin' ][$ext][ 'slug' ] ) ) {
 
-				$slug = $this->p->cf['plugin'][$ext]['slug'];
+				$slug = $this->p->cf[ 'plugin' ][$ext][ 'slug' ];
 
 				if ( ! defined ( 'WPMU_PLUGIN_DIR' ) ||
 					! is_dir( $pdir = WPMU_PLUGIN_DIR . '/' . $slug . '/' ) ) {
@@ -468,15 +468,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			$ext_list = array();
 
-			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info['version'] ) ) {	// Only active add-ons.
+				if ( empty( $info[ 'version' ] ) ) {	// Only active add-ons.
 					continue;
 				}
 
 				$ins = $this->pp( $ext, false );
 
-				$ext_list[] = $info['short'] . ' ' . $info['version'] . '/' . 
+				$ext_list[] = $info[ 'short' ] . ' ' . $info[ 'version' ] . '/' . 
 					( $this->is_pp( $ext ) ? 'L' : ( $ins ? 'U' : 'F' ) );
 			}
 

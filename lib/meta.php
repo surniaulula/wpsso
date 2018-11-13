@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			switch ( $metabox_id ) {
 
-				case $this->p->cf['meta']['id']:
+				case $this->p->cf['meta'][ 'id' ]:
 
 					$tabs = array(
 						'edit'     => _x( 'Customize', 'metabox tab', 'wpsso' ),
@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					break;
 			}
 
-			return apply_filters( $this->p->lca . '_' . $mod['name'] . '_custom_meta_tabs', $tabs, $mod, $metabox_id );
+			return apply_filters( $this->p->lca . '_' . $mod[ 'name' ] . '_custom_meta_tabs', $tabs, $mod, $metabox_id );
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key, $head_info, $mod ) {
@@ -262,7 +262,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$canonical_url = $this->p->util->get_canonical_url( $mod, false ); // $add_page is false.
 
 				if ( $mod['is_post'] ) {
-					$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod['id'], 'post' );	// $context is post.
+					$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], 'post' );	// $context is post.
 				} else {
 					$shortlink_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
 						$this->p->options['plugin_shortener'], $mod );
@@ -403,7 +403,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$sharing_url_encoded = urlencode( $sharing_url );
 
 			$amp_url = $mod['is_post'] && function_exists( 'amp_get_permalink' ) ?
-				'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod['id'] ) ) : '';
+				'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
 
 			$bing_url      = 'https://www.bing.com/webmaster/diagnostics/markup/validator?url=' . $sharing_url_encoded;
 			$facebook_url  = 'https://developers.facebook.com/tools/debug/og/object?q=' . $sharing_url_encoded;
@@ -529,7 +529,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 					$mod = $this->get_mod( $mod_id );
 
-					$this->p->debug->log( 'custom ' . $mod['name'] . ' ' . ( false === $md_key ? 'options' : 
+					$this->p->debug->log( 'custom ' . $mod[ 'name' ] . ' ' . ( false === $md_key ? 'options' : 
 						( is_array( $md_key ) ? implode( ', ', $md_key ) : $md_key ) ) . ' = ' . 
 						( is_array( $md_val ) ? print_r( $md_val, true ) : '"' . $md_val . '"' ) );
 				}
@@ -744,14 +744,14 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			foreach ( $cache_types as $type_name => $type_keys ) {
 
-				$filter_name = $this->p->lca . '_' . $mod['name'] . '_cache_' . $type_name . '_keys';
+				$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_cache_' . $type_name . '_keys';
 				$type_keys = (array) apply_filters( $filter_name, $type_keys, $mod, $sharing_url, $mod_salt );
 
 				foreach ( $type_keys as $mixed ) {
 
-					if ( is_array( $mixed ) && isset( $mixed['id'] ) ) {
+					if ( is_array( $mixed ) && isset( $mixed[ 'id' ] ) ) {
 
-						$cache_id = $mixed['id'];
+						$cache_id = $mixed[ 'id' ];
 
 						$cache_key = '';
 						$cache_key .= isset( $mixed['pre'] ) ? $mixed['pre'] : '';
@@ -839,15 +839,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		protected function get_submit_opts( $mod_id ) {
 
 			$mod     = $this->get_mod( $mod_id );
-			$md_defs = $this->get_defaults( $mod['id'] );
-			$md_prev = $this->get_options( $mod['id'] );
+			$md_defs = $this->get_defaults( $mod[ 'id' ] );
+			$md_prev = $this->get_options( $mod[ 'id' ] );
 
 			/**
 			 * Remove plugin version strings.
 			 */
 			$md_unset_keys = array( 'options_filtered', 'options_version' );
 
-			foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 				if ( isset( $info['opt_version'] ) ) {
 					$md_unset_keys[] = 'plugin_' . $ext . '_opt_version';
 				}
@@ -951,9 +951,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 */
 			if ( ! empty( $md_opts ) ) {
 
-				$md_opts['options_version'] = $this->p->cf['opt']['version'];
+				$md_opts['options_version'] = $this->p->cf['opt'][ 'version' ];
 
-				foreach ( $this->p->cf['plugin'] as $ext => $info ) {
+				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 					if ( isset( $info['opt_version'] ) ) {
 						$md_opts['plugin_' . $ext . '_opt_version'] = $info['opt_version'];
 					}
@@ -1020,7 +1020,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			$value = '';
 
-			if ( ! empty( $mod['id'] ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// Just in case.
+			if ( ! empty( $mod[ 'id' ] ) && strpos( $column_name, $this->p->lca . '_' ) === 0 ) {	// Just in case.
 
 				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
 
@@ -1028,11 +1028,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 					if ( isset( $col_info['meta_key'] ) ) {	// Just in case.
 
-						$meta_cache = wp_cache_get( $mod['id'], $mod['name'] . '_meta' );
+						$meta_cache = wp_cache_get( $mod[ 'id' ], $mod[ 'name' ] . '_meta' );
 
 						if ( ! $meta_cache ) {
-							$meta_cache = update_meta_cache( $mod['name'], array( $mod['id'] ) );
-							$meta_cache = $meta_cache[$mod['id']];
+							$meta_cache = update_meta_cache( $mod[ 'name' ], array( $mod[ 'id' ] ) );
+							$meta_cache = $meta_cache[$mod[ 'id' ]];
 						}
 
 						if ( isset( $meta_cache[$col_info['meta_key']] ) ) {
@@ -1197,7 +1197,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			$mt_ret = array();
 
-			if ( empty( $mod['id'] ) ) {
+			if ( empty( $mod[ 'id' ] ) ) {
 				return $mt_ret;
 			}
 
@@ -1220,9 +1220,9 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				/**
 				 * Get the image id, library prefix, and/or url values.
 				 */
-				$pid = $this->get_options( $mod['id'], $opt_pre . '_img_id' );
-				$pre = $this->get_options( $mod['id'], $opt_pre . '_img_id_pre' );	// Default library prefix.
-				$url = $this->get_options( $mod['id'], $opt_pre . '_img_url' );
+				$pid = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_id' );
+				$pre = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_id_pre' );	// Default library prefix.
+				$url = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_url' );
 
 				if ( $pid > 0 ) {
 
@@ -1243,8 +1243,8 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 							get_class( $this ) );	// log extended class name
 					}
 
-					$img_width  = $this->get_options( $mod['id'], $opt_pre . '_img_url:width' );
-					$img_height = $this->get_options( $mod['id'], $opt_pre . '_img_url:height' );
+					$img_width  = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_url:width' );
+					$img_height = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_url:height' );
 
 					$mt_single_image[ $mt_pre . ':image:url' ]    = $url;
 					$mt_single_image[ $mt_pre . ':image:width' ]  = $img_width > 0 ? $img_width : WPSSO_UNDEF;
@@ -1258,7 +1258,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 
-			foreach ( apply_filters( $this->p->lca . '_' . $mod['name'] . '_image_ids', array(), $size_name, $mod['id'], $mod ) as $pid ) {
+			foreach ( apply_filters( $this->p->lca . '_' . $mod[ 'name' ] . '_image_ids', array(), $size_name, $mod[ 'id' ], $mod ) as $pid ) {
 
 				if ( $pid > 0 ) {	// Quick sanity check.
 
@@ -1278,7 +1278,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				}
 			}
 
-			foreach ( apply_filters( $this->p->lca . '_' . $mod['name'] . '_image_urls', array(), $size_name, $mod['id'], $mod ) as $url ) {
+			foreach ( apply_filters( $this->p->lca . '_' . $mod[ 'name' ] . '_image_urls', array(), $size_name, $mod[ 'id' ], $mod ) as $url ) {
 
 				if ( strpos( $url, '://' ) !== false ) {	// Quick sanity check.
 

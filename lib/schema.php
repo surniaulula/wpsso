@@ -240,11 +240,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Optimize and cache post/term/user schema type values.
 			 */
-			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) ) {
+			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
 
-				if ( isset( $local_cache[$mod['name']][$mod['id']][$get_schema_id][$use_mod_opts] ) ) {
+				if ( isset( $local_cache[$mod[ 'name' ]][$mod[ 'id' ]][$get_schema_id][$use_mod_opts] ) ) {
 
-					$value =& $local_cache[$mod['name']][$mod['id']][$get_schema_id][$use_mod_opts];
+					$value =& $local_cache[$mod[ 'name' ]][$mod[ 'id' ]][$get_schema_id][$use_mod_opts];
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'returning local cache value "' . $value . '"' );
@@ -252,13 +252,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					return $value;
 
-				} elseif ( is_object( $mod['obj'] ) && $use_mod_opts ) {	// Check for a column schema_type value in wp_cache.
+				} elseif ( is_object( $mod[ 'obj' ] ) && $use_mod_opts ) {	// Check for a column schema_type value in wp_cache.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'checking for value from column wp_cache' );
 					}
 
-					$value = $mod['obj']->get_column_wp_cache( $mod, $this->p->lca . '_schema_type' );	// Returns empty string if no value found.
+					$value = $mod[ 'obj' ]->get_column_wp_cache( $mod, $this->p->lca . '_schema_type' );	// Returns empty string if no value found.
 
 					if ( ! empty( $value ) ) {
 
@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$this->p->debug->log( 'returning column wp_cache value "' . $value . '"' );
 						}
 
-						return $local_cache[$mod['name']][$mod['id']][$get_schema_id][$use_mod_opts] = $value;
+						return $local_cache[$mod[ 'name' ]][$mod[ 'id' ]][$get_schema_id][$use_mod_opts] = $value;
 					}
 				}
 
@@ -305,9 +305,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( $use_mod_opts ) {
 
-				if ( ! empty( $mod['obj'] ) ) {	// Just in case.
+				if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
-					$type_id = $mod['obj']->get_options( $mod['id'], 'schema_type' );	// Returns null if an index key is not found.
+					$type_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_type' );	// Returns null if an index key is not found.
 
 					if ( empty( $type_id ) ) {	// Must be a non-empty string.
 
@@ -330,7 +330,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$type_id = null;
 
 					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'custom type id "' . $type_id . '" from ' . $mod['name'] . ' meta' );
+						$this->p->debug->log( 'custom type id "' . $type_id . '" from ' . $mod[ 'name' ] . ' meta' );
 					}
 
 				} elseif ( $this->p->debug->enabled ) {
@@ -378,7 +378,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( ! empty( $mod['post_type'] ) ) {
 
-						if ( empty( $mod['id'] ) && is_post_type_archive() ) {
+						if ( empty( $mod[ 'id' ] ) && is_post_type_archive() ) {
 
 							$type_id = apply_filters( $this->p->lca . '_schema_type_for_post_type_archive_page',
 								$this->get_schema_type_id_for_name( 'post_archive' ), $mod );
@@ -510,8 +510,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Optimize and cache post/term/user schema type values.
 			 */
-			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) ) {
-				$local_cache[$mod['name']][$mod['id']][$get_schema_id][$use_mod_opts] = $get_value;
+			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
+				$local_cache[$mod[ 'name' ]][$mod[ 'id' ]][$get_schema_id][$use_mod_opts] = $get_value;
 			}
 
 			return $get_value;
@@ -1413,7 +1413,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$page_type_id = $this->get_mod_schema_type( $mod, $get_schema_id = true );
 
-			} elseif ( $is_main && $mod['is_post'] && $mod['id'] ) {
+			} elseif ( $is_main && $mod['is_post'] && $mod[ 'id' ] ) {
 
 				$cache_index = self::get_mod_cache_index( $mod, $page_type_id );
 				$cache_data  = self::get_mod_cache_data( $mod, $cache_index );
@@ -1483,7 +1483,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( ! empty( $cache_index ) ) {
 
-				if ( $is_main && $mod['is_post'] && $mod['id'] ) {
+				if ( $is_main && $mod['is_post'] && $mod[ 'id' ] ) {
 
 					if ( empty( $cache_data ) ) {	// Just in case.
 						$cache_data = array();
@@ -1522,10 +1522,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			static $local_cache = array();	// Cache for single page load.
 
-			if ( isset( $local_cache[$mod['name']][$mod['id']][$single_name][$single_id] ) ) {
+			if ( isset( $local_cache[$mod[ 'name' ]][$mod[ 'id' ]][$single_name][$single_id] ) ) {
 
 				$action_name = 'using';
-				$single_data =& $local_cache[$mod['name']][$mod['id']][$single_name][$single_id];
+				$single_data =& $local_cache[$mod[ 'name' ]][$mod[ 'id' ]][$single_name][$single_id];
 
 				if ( false === $single_data ) {
 					$single_added = 0;
@@ -1539,12 +1539,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 			} else {
-				$local_cache[$mod['name']][$mod['id']][$single_name][$single_id] = false;
-				$single_added =& $local_cache[$mod['name']][$mod['id']][$single_name][$single_id];	// Return reference to false.
+				$local_cache[$mod[ 'name' ]][$mod[ 'id' ]][$single_name][$single_id] = false;
+				$single_added =& $local_cache[$mod[ 'name' ]][$mod[ 'id' ]][$single_name][$single_id];	// Return reference to false.
 			}
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->log( $action_name . ' ' . $single_name . ' cache data for mod id ' . $mod['id'] . 
+				$wpsso->debug->log( $action_name . ' ' . $single_name . ' cache data for mod id ' . $mod[ 'id' ] . 
 					' / ' . $single_name . ' id ' . ( false === $single_id ? 'is false' : $single_id ) );
 			}
 
@@ -1708,8 +1708,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! empty( $mod['obj'] ) ) {	// Just in case.
-				$org_id = $mod['obj']->get_options( $mod['id'], 'schema_organization_org_id' );	// Returns null if an index key is not found.
+			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
+				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_org_id' );	// Returns null if an index key is not found.
 			} else {
 				$org_id = null;
 			}
@@ -1778,8 +1778,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! empty( $mod['obj'] ) ) {	// Just in case.
-				$user_id = $mod['obj']->get_options( $mod['id'], 'schema_person_id' );	// Returns null if an index key is not found.
+			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
+				$user_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_person_id' );	// Returns null if an index key is not found.
 			} else {
 				$user_id = null;
 			}
@@ -1807,7 +1807,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				} elseif ( $mod['is_user'] ) {
 
-					$user_id = $mod['id'];
+					$user_id = $mod[ 'id' ];
 				} else {
 					$user_id = false;
 				}
@@ -2016,10 +2016,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Get the image title.
 				 */
-				$ret['name'] = $wpsso->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
+				$ret[ 'name' ] = $wpsso->page->get_title( 0, '', $mod, true, false, true, 'schema_title', false );
 
-				if ( empty( $ret['name'] ) ) {
-					unset( $ret['name'] );
+				if ( empty( $ret[ 'name' ] ) ) {
+					unset( $ret[ 'name' ] );
 				}
 
 				/**
@@ -2029,16 +2029,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$ret['alternateName'] = $wpsso->page->get_title( $title_max_len, '...', $mod, true, false, true, 'schema_title_alt' );
 
-				if ( empty( $ret['alternateName'] ) || $ret['name'] === $ret['alternateName'] ) {
+				if ( empty( $ret['alternateName'] ) || $ret[ 'name' ] === $ret['alternateName'] ) {
 					unset( $ret['alternateName'] );
 				}
 
 				/**
 				 * Use the image "Alternative Text" for the 'alternativeHeadline' property.
 				 */
-				$ret['alternativeHeadline'] = get_post_meta( $mod['id'], '_wp_attachment_image_alt', true );
+				$ret['alternativeHeadline'] = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
 
-				if ( empty( $ret['alternativeHeadline'] ) || $ret['name'] === $ret['alternativeHeadline'] ) {
+				if ( empty( $ret['alternativeHeadline'] ) || $ret[ 'name' ] === $ret['alternativeHeadline'] ) {
 					unset( $ret['alternativeHeadline'] );
 				}
 
@@ -2076,7 +2076,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Set the 'fileFormat' property to the image mime type.
 				 */
-				$ret['fileFormat'] = get_post_mime_type( $mod['id'] );
+				$ret['fileFormat'] = get_post_mime_type( $mod[ 'id' ] );
 
 				if ( empty( $ret['fileFormat'] ) ) {
 					unset( $ret['fileFormat'] );
@@ -2356,10 +2356,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public static function merge_custom_mod_opts( array $mod, &$opts, array $opts_md_pre ) {
 
-			if ( is_object( $mod['obj'] ) ) {	// Just in case.
+			if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
 
-				$md_defs = (array) $mod['obj']->get_defaults( $mod['id'] );
-				$md_opts = (array) $mod['obj']->get_options( $mod['id'] );
+				$md_defs = (array) $mod[ 'obj' ]->get_defaults( $mod[ 'id' ] );
+				$md_opts = (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
 				foreach ( $opts_md_pre as $opt_key => $md_pre ) {
 
@@ -2398,9 +2398,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $opts_md_pre as $opt_pre => $md_pre ) {
 
-				$md_date = $mod['obj']->get_options( $mod['id'], $md_pre . '_date' );
+				$md_date = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_date' );
 				
-				if ( ( $md_time = $mod['obj']->get_options( $mod['id'], $md_pre . '_time' ) ) === 'none' ) {
+				if ( ( $md_time = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_time' ) ) === 'none' ) {
 					$md_time = '';
 				}
 
@@ -2429,7 +2429,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				if ( ! $md_timezone = $mod['obj']->get_options( $mod['id'], $md_pre . '_timezone' ) ) {
+				if ( ! $md_timezone = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_timezone' ) ) {
 					$md_timezone = get_option( 'timezone_string' );
 				}
 
@@ -2456,7 +2456,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			if ( ! is_object( $mod['obj'] ) || ! $mod['id'] ) {
+			if ( ! is_object( $mod[ 'obj' ] ) || ! $mod[ 'id' ] ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: $mod has no object or id is empty' );
 				}
@@ -2468,13 +2468,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( isset( $cache_data[$cache_index] ) ) {
 				if ( $wpsso->debug->enabled ) {
-					$wpsso->debug->log( 'exiting early: returning single "' . $mod['name'] . '" cache data' );
+					$wpsso->debug->log( 'exiting early: returning single "' . $mod[ 'name' ] . '" cache data' );
 				}
 				return $cache_data[$cache_index];	// Stop here.
 			}
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->mark( 'get single ' . $mod['name'] . ' id ' . $mod['id'] . ' data' );	// End timer.
+				$wpsso->debug->mark( 'get single ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' data' );	// End timer.
 			}
 
 			/**
@@ -2484,17 +2484,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
 
-				if ( $mod['post_type'] && $mod['id'] ) {
+				if ( $mod['post_type'] && $mod[ 'id' ] ) {
 
 					$wpsso->notice->set_ref( $sharing_url, $mod,
 						sprintf( __( 'adding schema for %1$s ID %2$s', 'wpsso' ),
-							$mod['post_type'], $mod['id'] ) );
+							$mod['post_type'], $mod[ 'id' ] ) );
 
-				} elseif ( $mod['name'] && $mod['id'] ) {
+				} elseif ( $mod[ 'name' ] && $mod[ 'id' ] ) {
 
 					$wpsso->notice->set_ref( $sharing_url, $mod,
 						sprintf( __( 'adding schema for %1$s ID %2$s', 'wpsso' ),
-							$mod['name'], $mod['id'] ) );
+							$mod[ 'name' ], $mod[ 'id' ] ) );
 				} else {
 					$wpsso->notice->set_ref( $sharing_url, $mod );
 				}
@@ -2516,7 +2516,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			self::save_mod_cache_data( $mod, $cache_data );
 
 			if ( $wpsso->debug->enabled ) {
-				$wpsso->debug->mark( 'get single ' . $mod['name'] . ' id ' . $mod['id'] . ' data' );	// End timer.
+				$wpsso->debug->mark( 'get single ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' data' );	// End timer.
 			}
 
 			return $cache_data[$cache_index];
@@ -2775,7 +2775,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'offer_price_currency' => 'schema_event_offer_currency',
 						'offer_availability'   => 'schema_event_offer_avail',
 					) as $opt_key => $md_pre ) {
-						$offer_opts[ $opt_key ] = $mod['obj']->get_options( $mod['id'], $md_pre . '_' . $key_num );
+						$offer_opts[ $opt_key ] = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_pre . '_' . $key_num );
 					}
 				}
 
@@ -3168,14 +3168,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$error_msg = __( 'The "%1$s" Organization Logo image is missing and required for the Schema %2$s markup.',
 								'wpsso' );
 
-							$wpsso->notice->err( sprintf( $error_msg, $ret['name'], $org_type_url ) );
+							$wpsso->notice->err( sprintf( $error_msg, $ret[ 'name' ], $org_type_url ) );
 
 						} elseif ( $logo_key === 'org_banner_url' ) {
 
 							$error_msg = __( 'The "%1$s" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup.',
 								'wpsso' );
 
-							$wpsso->notice->err( sprintf( $error_msg, $ret['name'], $org_type_url ) );
+							$wpsso->notice->err( sprintf( $error_msg, $ret[ 'name' ], $org_type_url ) );
 						}
 					}
 				}
@@ -3195,8 +3195,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 *
 				 * 'plm_place_id' can be 'none', 'custom', or numeric (including 0).
 				 */
-				if ( ! empty( $mod['obj'] ) ) {
-					$place_id = $mod['obj']->get_options( $mod['id'], 'plm_place_id' );
+				if ( ! empty( $mod[ 'obj' ] ) ) {
+					$place_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'plm_place_id' );
 				} else {
 					$place_id = null;
 				}
@@ -3309,10 +3309,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$user_mod = $wpsso->m['util']['user']->get_mod( $user_id );
 				}
 
-				$user_desc = $user_mod['obj']->get_options_multi( $user_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+				$user_desc = $user_mod[ 'obj' ]->get_options_multi( $user_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 				if ( empty( $user_desc ) ) {
-					$user_desc = $user_mod['obj']->get_author_meta( $user_id, 'description' );
+					$user_desc = $user_mod[ 'obj' ]->get_author_meta( $user_id, 'description' );
 				}
 
 				/**
@@ -3324,7 +3324,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				foreach ( WpssoUser::get_user_id_contact_methods( $user_id ) as $cm_id => $cm_label ) {
 
-					$url = $user_mod['obj']->get_author_meta( $user_id, $cm_id );
+					$url = $user_mod[ 'obj' ]->get_author_meta( $user_id, $cm_id );
 
 					if ( empty( $url ) ) {
 						continue;
@@ -3339,11 +3339,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$person_opts = array(
 					'person_type'      => 'person',
-					'person_url'       => $user_mod['obj']->get_author_website( $user_id, 'url' ),
-					'person_name'      => $user_mod['obj']->get_author_meta( $user_id, $wpsso->options['schema_author_name'] ),
+					'person_url'       => $user_mod[ 'obj' ]->get_author_website( $user_id, 'url' ),
+					'person_name'      => $user_mod[ 'obj' ]->get_author_meta( $user_id, $wpsso->options['schema_author_name'] ),
 					'person_desc'      => $user_desc,
-					'person_job_title' => $user_mod['obj']->get_options( $user_id, 'schema_person_job_title' ),
-					'person_og_image'  => $user_mod['obj']->get_og_images( 1, $size_name, $user_id, false ),
+					'person_job_title' => $user_mod[ 'obj' ]->get_options( $user_id, 'schema_person_job_title' ),
+					'person_og_image'  => $user_mod[ 'obj' ]->get_og_images( 1, $size_name, $user_id, false ),
 					'person_sameas'    => $user_sameas,
 				);
 			}
@@ -3996,12 +3996,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$user_mod = $this->p->m['util']['user']->get_mod( $author_id );
 			}
 
-			$author_url  = $user_mod['obj']->get_author_website( $author_id, 'url' );
-			$author_name = $user_mod['obj']->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
-			$author_desc = $user_mod['obj']->get_options_multi( $author_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+			$author_url  = $user_mod[ 'obj' ]->get_author_website( $author_id, 'url' );
+			$author_name = $user_mod[ 'obj' ]->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
+			$author_desc = $user_mod[ 'obj' ]->get_options_multi( $author_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 			if ( empty( $author_desc ) ) {
-				$author_desc = $user_mod['obj']->get_author_meta( $author_id, 'description' );
+				$author_desc = $user_mod[ 'obj' ]->get_author_meta( $author_id, 'description' );
 			}
 
 			$mt_author = array_merge(
@@ -4022,7 +4022,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * get_og_images() also provides filter hooks for additional image ids and urls.
 				 */
 				$size_name = $this->p->lca . '-schema';
-				$og_images = $user_mod['obj']->get_og_images( 1, $size_name, $author_id, false );	// $check_dupes is false.
+				$og_images = $user_mod[ 'obj' ]->get_og_images( 1, $size_name, $author_id, false );	// $check_dupes is false.
 	
 				foreach ( $og_images as $og_single_image ) {
 

@@ -147,11 +147,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Optimize and cache post/term/user og type values.
 			 */
-			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) ) {
+			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
 
-				if ( isset( $local_cache[$mod['name']][$mod['id']][$get_type_ns][$use_mod_opts] ) ) {
+				if ( isset( $local_cache[$mod[ 'name' ]][$mod[ 'id' ]][$get_type_ns][$use_mod_opts] ) ) {
 
-					$value =& $local_cache[$mod['name']][$mod['id']][$get_type_ns][$use_mod_opts];
+					$value =& $local_cache[$mod[ 'name' ]][$mod[ 'id' ]][$get_type_ns][$use_mod_opts];
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'returning local cache value "' . $value . '"' );
@@ -159,13 +159,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					return $value;
 
-				} elseif ( is_object( $mod['obj'] ) && $use_mod_opts ) {	// Check for a column og_type value in wp_cache.
+				} elseif ( is_object( $mod[ 'obj' ] ) && $use_mod_opts ) {	// Check for a column og_type value in wp_cache.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'checking for value from column wp_cache' );
 					}
 
-					$value = $mod['obj']->get_column_wp_cache( $mod, $this->p->lca . '_og_type' );	// Returns empty string if no value found.
+					$value = $mod[ 'obj' ]->get_column_wp_cache( $mod, $this->p->lca . '_og_type' );	// Returns empty string if no value found.
 
 					if ( ! empty( $value ) ) {
 
@@ -191,7 +191,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->debug->log( 'returning column wp_cache value "' . $value . '"' );
 						}
 
-						return $local_cache[$mod['name']][$mod['id']][$get_type_ns][$use_mod_opts] = $value;
+						return $local_cache[$mod[ 'name' ]][$mod[ 'id' ]][$get_type_ns][$use_mod_opts] = $value;
 					}
 				}
 
@@ -212,9 +212,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( $use_mod_opts ) {
 
-				if ( ! empty( $mod['obj'] ) ) {	// Just in case.
+				if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
-					$type_id = $mod['obj']->get_options( $mod['id'], 'og_type' );	// Returns null if index key not found.
+					$type_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'og_type' );	// Returns null if index key not found.
 
 					if ( empty( $type_id ) ) {	// Must be a non-empty string.
 
@@ -237,7 +237,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$type_id = null;
 
 					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'custom type id "' . $type_id . '" from ' . $mod['name'] . ' meta' );
+						$this->p->debug->log( 'custom type id "' . $type_id . '" from ' . $mod[ 'name' ] . ' meta' );
 					}
 
 				} elseif ( $this->p->debug->enabled ) {
@@ -287,7 +287,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 	
 					if ( ! empty( $mod['post_type'] ) ) {
 	
-						if ( empty( $mod['id'] ) && is_post_type_archive() ) {
+						if ( empty( $mod[ 'id' ] ) && is_post_type_archive() ) {
 	
 							$type_id = apply_filters( $this->p->lca . '_og_type_for_post_type_archive_page',
 								$this->get_og_type_id_for_name( 'post_archive' ), $mod );
@@ -419,8 +419,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Optimize and cache post/term/user og type values.
 			 */
-			if ( ! empty( $mod['name'] ) && ! empty( $mod['id'] ) ) {
-				$local_cache[$mod['name']][$mod['id']][$get_type_ns][$use_mod_opts] = $get_value;
+			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
+				$local_cache[$mod[ 'name' ]][$mod[ 'id' ]][$get_type_ns][$use_mod_opts] = $get_value;
 			}
 
 			return $get_value;
@@ -436,10 +436,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$crawler_name = SucomUtil::get_crawler_name();
 			}
 
-			$has_pdir    = $this->p->avail['*']['p_dir'];
+			$has_pdir    = $this->p->avail[ '*' ][ 'p_dir' ];
 			$has_pp      = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 			$max_nums    = $this->p->util->get_max_nums( $mod );
-			$post_id     = $mod['is_post'] ? $mod['id'] : false;
+			$post_id     = $mod['is_post'] ? $mod[ 'id' ] : false;
 			$check_dupes = true;
 			$prev_count  = 0;
 			$mt_og       = apply_filters( $this->p->lca . '_og_seed', $mt_og, $mod );
@@ -681,7 +681,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				/**
 				 * Optimize and call get_options() only once. Returns an empty string if no meta found.
 				 */
-				$md_opts = empty( $mod['obj'] ) ? array() : (array) $mod['obj']->get_options( $mod['id'] );
+				$md_opts = empty( $mod[ 'obj' ] ) ? array() : (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
 				foreach ( $og_type_mt_md as $mt_name => $md_key ) {
 
@@ -922,7 +922,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			$og_ret   = array();
-			$has_pdir = $this->p->avail['*']['p_dir'];
+			$has_pdir = $this->p->avail[ '*' ][ 'p_dir' ];
 			$has_pp   = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 			$use_prev = $this->p->options['og_vid_prev_img'];		// default option value is true/false
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
@@ -932,12 +932,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Get video information and preview enable/disable option from the post/term/user meta.
 			 */
-			if ( $has_pp && ! empty( $mod['obj'] ) ) {
+			if ( $has_pp && ! empty( $mod[ 'obj' ] ) ) {
 
 				/**
 				 * Note that get_options() returns null if an index key is not found.
 				 */
-				if ( ( $mod_prev = $mod['obj']->get_options( $mod['id'], 'og_vid_prev_img' ) ) !== null ) {
+				if ( ( $mod_prev = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'og_vid_prev_img' ) ) !== null ) {
 
 					$use_prev = $mod_prev;	// use true/false/1/0 value from the custom option
 
@@ -947,10 +947,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'checking for custom videos in ' . $mod['name'] . ' options' );
+					$this->p->debug->log( 'checking for custom videos in ' . $mod[ 'name' ] . ' options' );
 				}
 
-				$og_ret = array_merge( $og_ret, $mod['obj']->get_og_videos( $num_diff, $mod['id'], $check_dupes, $md_pre ) );
+				$og_ret = array_merge( $og_ret, $mod[ 'obj' ]->get_og_videos( $num_diff, $mod[ 'id' ], $check_dupes, $md_pre ) );
 			}
 
 			$num_diff = SucomUtil::count_diff( $og_ret, $num );
@@ -999,7 +999,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * The og:video:title and og:video:description meta tags are not standard and their values will
 			 * only appear in Schema markup.
 			 */
-			if ( $has_pp && ! empty( $mod['obj'] ) && $md_pre !== 'none' ) {
+			if ( $has_pp && ! empty( $mod[ 'obj' ] ) && $md_pre !== 'none' ) {
 
 				foreach ( $og_ret as $num => $og_single_video ) {
 
@@ -1013,7 +1013,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						/**
 						 * Note that get_options() returns null if an index key is not found.
 						 */
-						$value = $mod['obj']->get_options( $mod['id'], $md_key );
+						$value = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );
 	
 						if ( ! empty( $value ) ) {	// Must be a non-empty string.
 							$og_ret[$num][$mt_name] = $value;
@@ -1106,9 +1106,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $mod['is_post'] ) {
 
-				if ( $mod['post_type'] === 'attachment' && wp_attachment_is_image( $mod['id'] ) ) {
+				if ( $mod['post_type'] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ) {
 
-					$og_single_image = $this->p->media->get_attachment_image( $num_diff, $size_name, $mod['id'], $check_dupes );
+					$og_single_image = $this->p->media->get_attachment_image( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
 
 					if ( empty( $og_single_image ) ) {
 
@@ -1130,7 +1130,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				if ( ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 					$og_ret = array_merge( $og_ret, $this->p->media->get_post_images( $num_diff,
-						$size_name, $mod['id'], $check_dupes, $md_pre ) );
+						$size_name, $mod[ 'id' ], $check_dupes, $md_pre ) );
 				}
 
 				/**
@@ -1146,7 +1146,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					$ngg_obj =& $this->p->m['media']['ngg'];
 
-					$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod['id'], $check_dupes );
+					$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
 
 					if ( count( $query_images ) > 0 ) {
 
@@ -1160,7 +1160,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						$num_diff = SucomUtil::count_diff( $og_ret, $num );
 
-						$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod['id'], $check_dupes );
+						$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
 
 						if ( ! empty( $shortcode_images ) ) {
 							$og_ret = array_merge( $og_ret, $shortcode_images );
@@ -1191,9 +1191,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				/**
 				 * get_og_images() also provides filter hooks for additional image ids and urls.
 				 */
-				if ( ! empty( $mod['obj'] ) ) {	// Term or user.
+				if ( ! empty( $mod[ 'obj' ] ) ) {	// Term or user.
 
-					$og_images = $mod['obj']->get_og_images( $num_diff, $size_name, $mod['id'], $check_dupes, $force_regen, $md_pre );
+					$og_images = $mod[ 'obj' ]->get_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes, $force_regen, $md_pre );
 
 					if ( ! empty( $og_images ) ) {
 						$og_ret = array_merge( $og_ret, $og_images );
@@ -1222,7 +1222,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			$ret       = array();
-			$has_pdir  = $this->p->avail['*']['p_dir'];
+			$has_pdir  = $this->p->avail[ '*' ][ 'p_dir' ];
 			$has_pp    = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 			$og_images = null;
 			$og_videos = null;

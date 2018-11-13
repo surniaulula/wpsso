@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 */
 			wp_register_script( 'jquery-qtip', 
 				WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $js_file_ext, 
-					array( 'jquery' ), $this->p->cf['jquery-qtip']['version'], true );
+					array( 'jquery' ), $this->p->cf['jquery-qtip'][ 'version' ], true );
 
 			wp_register_script( 'sucom-settings-page', 
 				WPSSO_URLPATH . 'js/com/jquery-settings-page.' . $js_file_ext, 
@@ -165,11 +165,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 				case 'plugin-install.php':
 
-					if ( isset( $_GET['plugin'] ) ) {
+					if ( isset( $_GET[ 'plugin' ] ) ) {
 
-						$plugin_slug = $_GET['plugin'];
+						$plugin_slug = $_GET[ 'plugin' ];
 
-						if ( isset( $this->p->cf['*']['slug'][$plugin_slug] ) ) {
+						if ( isset( $this->p->cf[ '*' ][ 'slug' ][$plugin_slug] ) ) {
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'enqueuing scripts for plugin install page' );
@@ -225,7 +225,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			return array(
 				'_ajax_nonce'      => wp_create_nonce( WPSSO_NONCE_NAME ),
-				'_metabox_id'      => $this->p->lca . '_metabox_' . $this->p->cf['meta']['id'],
+				'_metabox_id'      => $this->p->lca . '_metabox_' . $this->p->cf['meta'][ 'id' ],
 				'_tb_notices'      => $this->tb_notices,
 				'_no_notices_html' => $no_notices_html,
 				'_option_labels'   => array(
