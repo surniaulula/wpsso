@@ -2823,7 +2823,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			uasort( $ext, array( 'self', 'sort_ext_by_name' ) );	// Sort array and maintain index association.
 
-			if ( $core_first && isset( $ext['wpsso'] ) ) {
+			if ( $core_first && isset( $ext[ 'wpsso' ] ) ) {
 				SucomUtil::move_to_front( $ext, 'wpsso' );
 			}
 
@@ -2849,12 +2849,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Define fixed constants.
 			 */
 			define( 'WPSSO_FILEPATH', $plugin_filepath );						
-			define( 'WPSSO_PLUGINBASE', self::$cf[ 'plugin' ]['wpsso'][ 'base' ] );			// Example: wpsso/wpsso.php.
+			define( 'WPSSO_PLUGINBASE', self::$cf[ 'plugin' ][ 'wpsso' ][ 'base' ] );			// Example: wpsso/wpsso.php.
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_filepath ) ) ) );
-			define( 'WPSSO_PLUGINSLUG', self::$cf[ 'plugin' ]['wpsso'][ 'slug' ] );			// Example: wpsso.
+			define( 'WPSSO_PLUGINSLUG', self::$cf[ 'plugin' ][ 'wpsso' ][ 'slug' ] );			// Example: wpsso.
 			define( 'WPSSO_UNDEF', -1 );								// Undefined image width / height value.
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_filepath ) ) );
-			define( 'WPSSO_VERSION', self::$cf[ 'plugin' ]['wpsso'][ 'version' ] );						
+			define( 'WPSSO_VERSION', self::$cf[ 'plugin' ][ 'wpsso' ][ 'version' ] );						
 
 			/**
 			 * Define variable constants. Default values can be changed by defining 

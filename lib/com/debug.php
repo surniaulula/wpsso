@@ -150,7 +150,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				if ( false === $func_seq ) {
 					$func_seq = $class_seq;
 				}
-				$log_msg .= sprintf( $first_col, ( empty( $stack[$class_seq]['class'] ) ? '' : $stack[$class_seq]['class'] ) );
+				$log_msg .= sprintf( $first_col, ( empty( $stack[$class_seq][ 'class' ] ) ? '' : $stack[$class_seq][ 'class' ] ) );
 			} else {
 				if ( false === $func_seq ) {
 					$func_seq = 1;
@@ -159,7 +159,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( is_int( $func_seq ) ) {
-				$log_msg .= sprintf( $second_col, ( empty( $stack[$func_seq]['function'] ) ? '' : $stack[$func_seq]['function'] ) );
+				$log_msg .= sprintf( $second_col, ( empty( $stack[$func_seq][ 'function' ] ) ? '' : $stack[$func_seq][ 'function' ] ) );
 			} else {
 				$log_msg .= sprintf( $second_col, $func_seq );
 			}
@@ -276,12 +276,12 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$html  = '<!-- ' . $this->display_name . ' debug';
 			$stack = debug_backtrace();
 
-			if ( ! empty( $stack[$class_seq]['class'] ) ) {
-				$from .= $stack[$class_seq]['class'] . '::';
+			if ( ! empty( $stack[$class_seq][ 'class' ] ) ) {
+				$from .= $stack[$class_seq][ 'class' ] . '::';
 			}
 
-			if ( ! empty( $stack[$func_seq]['function'] ) ) {
-				$from .= $stack[$func_seq]['function'];
+			if ( ! empty( $stack[$func_seq][ 'function' ] ) ) {
+				$from .= $stack[$func_seq][ 'function' ];
 			}
 
 			if ( null === $data ) {

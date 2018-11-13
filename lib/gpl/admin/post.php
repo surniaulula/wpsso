@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$def_tc_desc     = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
 			$def_schema_desc = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, $schema_desc_md_key );
 
-			if ( empty( $this->p->cf[ 'plugin' ]['wpssojson'][ 'version' ] ) ) {
+			if ( empty( $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'version' ] ) ) {
 
 				$json_ext        = 'wpssojson';
 				$json_info       = $this->p->cf[ 'plugin' ][$json_ext];

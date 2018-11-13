@@ -4180,31 +4180,31 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$hook_name = '';
 
-			if ( ! isset( $hook_info['function'] ) ) {              // Just in case.
+			if ( ! isset( $hook_info[ 'function' ] ) ) {              // Just in case.
 
 				return $hook_name;                              // Stop here - return an empty string.
 
-			} elseif ( is_array( $hook_info['function'] ) ) {       // Hook is a class / method.
+			} elseif ( is_array( $hook_info[ 'function' ] ) ) {       // Hook is a class / method.
 
 				$class_name    = '';
 				$function_name = '';
 
-				if ( is_object( $hook_info['function'][0] ) ) {
-					$class_name = get_class( $hook_info['function'][0] );
-				} elseif ( is_string( $hook_info['function'][0] ) ) {
-					$class_name = $hook_info['function'][0];
+				if ( is_object( $hook_info[ 'function' ][0] ) ) {
+					$class_name = get_class( $hook_info[ 'function' ][0] );
+				} elseif ( is_string( $hook_info[ 'function' ][0] ) ) {
+					$class_name = $hook_info[ 'function' ][0];
 				}
 
-				if ( is_string( $hook_info['function'][1] ) ) {
-					$function_name = $hook_info['function'][1];
+				if ( is_string( $hook_info[ 'function' ][1] ) ) {
+					$function_name = $hook_info[ 'function' ][1];
 
 				}
 
 				return $class_name . '::' . $function_name;
 
-			} elseif ( is_string ( $hook_info['function'] ) ) { // Hook is a function.
+			} elseif ( is_string ( $hook_info[ 'function' ] ) ) { // Hook is a function.
 
-				return $hook_info['function'];
+				return $hook_info[ 'function' ];
 			}
 
 			return $hook_name;

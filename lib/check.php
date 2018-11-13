@@ -68,43 +68,43 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 						 */
 						case 'ecom-edd':
 
-							$chk['class'] = 'Easy_Digital_Downloads';
+							$chk[ 'class' ] = 'Easy_Digital_Downloads';
 
 							break;
 
 						case 'ecom-marketpress':
 
-							$chk['class'] = 'Marketpress';
+							$chk[ 'class' ] = 'Marketpress';
 
 							break;
 
 						case 'ecom-woocommerce':
 
-							$chk['class'] = 'WooCommerce';
+							$chk[ 'class' ] = 'WooCommerce';
 
 							break;
 
 						case 'ecom-wpecommerce':
 
-							$chk['class'] = 'WP_eCommerce';
+							$chk[ 'class' ] = 'WP_eCommerce';
 
 							break;
 
 						case 'event-tribe_events':
 
-							$chk['class'] = 'Tribe__Events__Main';
+							$chk[ 'class' ] = 'Tribe__Events__Main';
 
 							break;
 
 						case 'form-gravityforms':
 
-							$chk['class'] = 'GFForms';
+							$chk[ 'class' ] = 'GFForms';
 
 							break;
 
 						case 'form-gravityview':
 
-							$chk['class'] = 'GravityView_Plugin';
+							$chk[ 'class' ] = 'GravityView_Plugin';
 
 							break;
 
@@ -116,13 +116,13 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'lang-polylang':
 
-							$chk['class'] = 'Polylang';
+							$chk[ 'class' ] = 'Polylang';
 
 							break;
 
 						case 'media-ngg':	// NextGEN Gallery and NextCellent Gallery
 
-							$chk['class'] = 'nggdb';
+							$chk[ 'class' ] = 'nggdb';
 
 							break;
 
@@ -140,25 +140,25 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'rating-yotpowc':				// yotpo-social-reviews-for-woocommerce
 
-							$chk['function'] = 'wc_yotpo_init';
+							$chk[ 'function' ] = 'wc_yotpo_init';
 
 							break;
 
 						case 'seo-aioseop':
 
-							$chk['function'] = 'aioseop_init_class'; // Free and pro versions.
+							$chk[ 'function' ] = 'aioseop_init_class'; // Free and pro versions.
 
 							break;
 
 						case 'seo-autodescription':
 
-							$chk['function'] = 'the_seo_framework';
+							$chk[ 'function' ] = 'the_seo_framework';
 
 							break;
 
 						case 'seo-headspace2':
 
-							$chk['class'] = 'HeadSpace_Plugin';
+							$chk[ 'class' ] = 'HeadSpace_Plugin';
 
 							break;
 
@@ -186,25 +186,25 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 						case 'seo-wpmetaseo':
 
-							$chk['class'] = 'WpMetaSeo';
+							$chk[ 'class' ] = 'WpMetaSeo';
 
 							break;
 
 						case 'seo-wpseo':
 
-							$chk['function'] = 'wpseo_init'; // Free and premium versions.
+							$chk[ 'function' ] = 'wpseo_init'; // Free and premium versions.
 
 							break;
 
 						case 'social-buddyblog':
 
-							$chk['class'] = 'BuddyBlog';
+							$chk[ 'class' ] = 'BuddyBlog';
 
 							break;
 
 						case 'social-buddypress':
 
-							$chk['class'] = 'BuddyPress';
+							$chk[ 'class' ] = 'BuddyPress';
 
 							break;
 
@@ -303,10 +303,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 					 */
 					if ( ! empty( $chk ) ) {
 
-						if ( isset( $chk['class'] ) || isset( $chk['function'] ) || isset( $chk[ 'plugin' ] ) ) {
+						if ( isset( $chk[ 'class' ] ) || isset( $chk[ 'function' ] ) || isset( $chk[ 'plugin' ] ) ) {
 
-							if ( ( ! empty( $chk['class'] ) && class_exists( $chk['class'] ) ) ||
-								( ! empty( $chk['function'] ) && function_exists( $chk['function'] ) ) ||
+							if ( ( ! empty( $chk[ 'class' ] ) && class_exists( $chk[ 'class' ] ) ) ||
+								( ! empty( $chk[ 'function' ] ) && function_exists( $chk[ 'function' ] ) ) ||
 								( ! empty( $chk[ 'plugin' ] ) && SucomUtil::active_plugins( $chk[ 'plugin' ] ) ) ) {
 
 								/**

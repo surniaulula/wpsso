@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			/**
 			 * Save plugin install, activation, update times.
 			 */
-			$plugin_version = WpssoConfig::$cf[ 'plugin' ]['wpsso'][ 'version' ];
+			$plugin_version = WpssoConfig::$cf[ 'plugin' ][ 'wpsso' ][ 'version' ];
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'saving all times for wpsso v' . $plugin_version );
@@ -238,13 +238,13 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 		private static function check_required( $cf ) {
 
-			$plugin_name    = $cf[ 'plugin' ]['wpsso'][ 'name' ];
-			$plugin_short   = $cf[ 'plugin' ]['wpsso'][ 'short' ];
-			$plugin_version = $cf[ 'plugin' ]['wpsso'][ 'version' ];
+			$plugin_name    = $cf[ 'plugin' ][ 'wpsso' ][ 'name' ];
+			$plugin_short   = $cf[ 'plugin' ][ 'wpsso' ][ 'short' ];
+			$plugin_version = $cf[ 'plugin' ][ 'wpsso' ][ 'version' ];
 
 			foreach ( array( 'wp', 'php' ) as $key ) {
 
-				if ( empty( $cf[$key]['min_version'] ) ) {
+				if ( empty( $cf[$key][ 'min_version' ] ) ) {
 					return;
 				}
 
@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				}
 
 				$app_label   = $cf[$key]['label'];
-				$min_version = $cf[$key]['min_version'];
+				$min_version = $cf[$key][ 'min_version' ];
 				$version_url = $cf[$key]['version_url'];
 
 				if ( version_compare( $app_version, $min_version, '>=' ) ) {

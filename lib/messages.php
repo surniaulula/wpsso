@@ -2000,7 +2000,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-plugin-tid':	// Displayed in the Licenses settings page.
 
-							$um_info = $this->p->cf[ 'plugin' ]['wpssoum'];
+							$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
 							$text = '<blockquote class="top-info">';
 
@@ -2020,7 +2020,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-plugin-tid-network':	// Displayed in the Network Licenses settings page.
 
-							$um_info = $this->p->cf[ 'plugin' ]['wpssoum'];
+							$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
 							$settings_page_link = $this->p->util->get_admin_url( 'licenses',
 								_x( 'Licenses', 'lib file description', 'wpsso' ) );

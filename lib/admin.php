@@ -2219,8 +2219,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * Skip image extensions for WordPress image editors that are not used.
 				 */
-				if ( ! empty( $php_info['wp_image_editor']['class'] ) ) {
-					if ( ! in_array( $php_info['wp_image_editor']['class'], $implementations ) ) {
+				if ( ! empty( $php_info['wp_image_editor'][ 'class' ] ) ) {
+					if ( ! in_array( $php_info['wp_image_editor'][ 'class' ], $implementations ) ) {
 						continue;
 					}
 				}
@@ -2239,16 +2239,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					/**
 					 * If this is a WordPress image editing extension, add information about the WordPress image editing class.
 					 */
-					if ( ! empty( $php_info['wp_image_editor']['class'] ) ) {
+					if ( ! empty( $php_info['wp_image_editor'][ 'class' ] ) ) {
 
 						/**
 						 * If we have a WordPress reference URL for this image editing class, link the image editor class name.
 						 */
 						if ( ! empty( $php_info['wp_image_editor'][ 'url' ] ) ) {
 							$editor_class = '<a href="' . $php_info['wp_image_editor'][ 'url' ] . '">' .
-								$php_info['wp_image_editor']['class'] . '</a>';
+								$php_info['wp_image_editor'][ 'class' ] . '</a>';
 						} else {
-							$editor_class = $php_info['wp_image_editor']['class'];
+							$editor_class = $php_info['wp_image_editor'][ 'class' ];
 						}
 
 						$error_msg .= sprintf( __( 'WordPress is configured to use the %1$s image editing class but the <a href="%2$s">PHP %3$s extension module</a> is not loaded:', 'wpsso' ), $editor_class, $php_info[ 'url' ], $php_info['label'] ) . ' ';
@@ -3007,7 +3007,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$has_pdir = $this->p->avail[ '*' ][ 'p_dir' ];
 			$version  = $this->p->cf[ 'plugin' ][$this->p->lca][ 'version' ];
-			$um_info  = $this->p->cf[ 'plugin' ]['wpssoum'];
+			$um_info  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 			$have_tid = false;
 
 			if ( $has_pdir && empty( $this->p->options['plugin_' . $this->p->lca . '_tid'] ) &&
