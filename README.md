@@ -23,9 +23,9 @@
 
 <p><strong>Uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
-<p>There's no need to manually re-enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing WordPress content automatically, and you can also fine-tune and customize just about anything and everything. ;-)</p>
+<p>There's no need to manually re-enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing content automatically and offers fine-tuning and customization options for just about anything and everything. ;-)</p>
 
-<p>WPSSO Core is language / locale aware, allowing you to customize your site information, social pages and Knowledge Graph for different languages!</p>
+<p>WPSSO Core is language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages!</p>
 
 <p><strong>Creates <em>accurate</em> and <em>complete</em> meta tags and Schema markup:</strong></p>
 

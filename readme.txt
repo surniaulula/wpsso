@@ -28,9 +28,9 @@ WPSSO Core makes sure ALL social crawlers, search crawlers, web browser extensio
 
 **Uses your *existing content* for meta tags and Schema markup:**
 
-There's no need to manually re-enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing WordPress content automatically, and you can also fine-tune and customize just about anything and everything. ;-)
+There's no need to manually re-enter descriptions, titles, product information, select images / videos, etc. &mdash; WPSSO Core reads your existing content automatically and offers fine-tuning and customization options for just about anything and everything. ;-)
 
-WPSSO Core is language / locale aware, allowing you to customize your site information, social pages and Knowledge Graph for different languages!
+WPSSO Core is language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages!
 
 **Creates *accurate* and *complete* meta tags and Schema markup:**
 
