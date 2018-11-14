@@ -339,15 +339,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.5-dev.7 (2010/11/13)**
+**Version 4.16.5 (2010/11/14)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* Deprecated the redundant og:image:secure_url and og:video:secure_url meta tags.
+	* Deprecated the redundant og:image:secure_url and og:video:secure_url meta tags. Image and video URLs are added as og:image and og:video - the og:image:url, og:image:secure_url, og:video:url, and og:video:secure_url are redundant meta tags that can be enabled in the SSO &gt; Advanced settings page. If your site serves content using both HTTP and HTTPS, then you may enable the og:image:secure_url and og:video:secure_url meta tags to include both HTTP and HTTPS URLs. Do not enable these meta tags if you redirect HTTP requests to HTTPS as this will only create unnecessary redundant requests.
 * *Bugfixes*
 	* Fixed duplicate variable names in the currency abbreviation / symbol lookup methods.
-	* Removed type-casting from the WpssoSchema::organization_to_localbusiness() argument to allow for mixed input (false or array).
+	* Fixed unnecessary type-casting in the WpssoSchema::organization_to_localbusiness() method argument to allow for mixed input (false or array).
 * *Developer Notes*
 	* None.
 
@@ -534,9 +534,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.5-dev.7 =
+= 4.16.5 =
 
-(2010/11/13) Deprecated the redundant og:image:secure_url and og:video:secure_url meta tags. Fixed duplicate variable names in the currency abbreviation / symbol lookup methods. Removed type-casting from the WpssoSchema::organization_to_localbusiness() argument.
+(2010/11/14) Deprecated the redundant og:image:secure_url and og:video:secure_url meta tags (see changelog for details). Fixed duplicate variable names in the currency lookup methods. Fixed unnecessary type-casting in the WpssoSchema::organization_to_localbusiness() method argument.
 
 = 4.16.4 =
 
