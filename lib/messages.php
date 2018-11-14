@@ -714,13 +714,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_filter_content':
 
-							$text = __( 'Apply the WordPress \'the_content\' filter to the content text (default is unchecked). The content filter renders all registered shortcodes, which may be required to detect images and videos added by these shortcodes.', 'wpsso' ) . ' ';
+							$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $info[ 'name' ] );
 							
-							$text .= __( 'Some themes / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . ' ';
+							$text .= __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . ' ';
 							
-							$text .= __( 'If you use shortcodes in your content text, this option should be enabled &mdash; if you experience display issues after enabling this option, determine which theme / plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ) . ' ';
+							$text .= __( 'If you use shortcodes in your content text, this option should be enabled &mdash; if you experience webpage layout or performance issues after enabling this option, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ) . ' ';
 							
-							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca . '_can_filter_content' );
+							$text .= sprintf( __( 'Advanced users can also hook the "%s" filter and return true / false to enable or disable this feature dynamically.', 'wpsso' ), $this->p->lca . '_can_filter_content' );
 
 							break;
 
@@ -2304,8 +2304,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-content-filters-disabled':
 
-						$settings_page_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' );
-
 						$filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
 							_x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) );
 
@@ -2313,15 +2311,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<b>' . sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $filters_option_link ) . '</b> ';
 
-						$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images / embedded videos provided by shortcodes.', 'wpsso' ), $info[ 'name' ] );
+						$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $info[ 'name' ] );
 
 						$text .= '</p><p>';
 
-						$text .= '<b>' . __( 'Some themes / plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> ';
+						$text .= '<b>' . __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ).'</b> ';
 
-						$text .= sprintf( __( '<a href="%s">If you use shortcodes in your content text, this option should be enabled</a> &mdash; if you experience display issues after enabling this option, determine which theme / plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ), $settings_page_url ) . ' ';
+						$text .= __( 'If you use shortcodes in your content text, this option should be enabled &mdash; if you experience webpage layout or performance issues after enabling this option, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ) . ' ';
 
-						$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca . '_can_filter_content' );
+						$text .= sprintf( __( 'Advanced users can also hook the "%s" filter and return true / false to enable or disable this feature dynamically.', 'wpsso' ), $this->p->lca . '_can_filter_content' );
 
 						$text .= '</p>';
 

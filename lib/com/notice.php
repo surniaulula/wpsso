@@ -1105,8 +1105,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					padding:0;
 				}
 				#wpadminbar .have-notices #wp-admin-bar-'.$this->p->lca.'-toolbar-notices-container { 
-					min-width:70vw;		/* 70% of the viewing window width */
-					max-height:90vh;	/* 90% of the viewing window height */
+					min-width:70vw;			/* 70% of the viewing window width */
+					max-height:90vh;		/* 90% of the viewing window height */
 					overflow-y:scroll;
 				}
 				#wpadminbar .' . $this->lca . '-notice,
@@ -1180,29 +1180,25 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 				#wpadminbar .' . $this->lca . '-notice .notice-label,
 				.' . $this->lca . '-notice .notice-label {
-					font-weight:bold;
-					color:#444;	/* default text color */
+					font-weight:600;
+					color:#444;			/* default text color */
 					background-color:#fcfcfc;	/* default background color */
 					white-space:nowrap;
 				}
 				#wpadminbar .' . $this->lca . '-notice.notice-error .notice-label,
 				.' . $this->lca . '-notice.notice-error .notice-label {
-					/* color:#dc3232; */
 					background-color: #fbeaea;
 				}
 				#wpadminbar .' . $this->lca . '-notice.notice-warning .notice-label,
 				.' . $this->lca . '-notice.notice-warning .notice-label {
-					/* color:#ffb900; */
 					background-color: #fff8e5;
 				}
 				#wpadminbar .' . $this->lca . '-notice.notice-info .notice-label,
 				.' . $this->lca . '-notice.notice-info .notice-label {
-					/* color:#00a0d2; */
 					background-color: #e5f5fa;
 				}
 				#wpadminbar .' . $this->lca . '-notice.notice-success .notice-label,
 				.' . $this->lca . '-notice.notice-success .notice-label {
-					/* color:#46b450; */
 					background-color: #ecf7ed;
 				}
 				.' . $this->lca . '-notice.notice-success .notice-label::before,
@@ -1296,10 +1292,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					list-style:inherit;
 				}
 				#wpadminbar .' . $this->lca . '-notice .notice-message b,
+				#wpadminbar .' . $this->lca . '-notice .notice-message b a,
 				#wpadminbar .' . $this->lca . '-notice .notice-message strong,
+				#wpadminbar .' . $this->lca . '-notice .notice-message strong a,
 				.' . $this->lca . '-notice .notice-message b,
-				.' . $this->lca . '-notice .notice-message strong {
-					font-weight:bold;
+				.' . $this->lca . '-notice .notice-message b a,
+				.' . $this->lca . '-notice .notice-message strong,
+				.' . $this->lca . '-notice .notice-message strong a {
+					font-weight:600;
 				}
 				.' . $this->lca . '-notice .notice-message .button-highlight {
 					border-color:#0074a2;
