@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.5-dev.6 (2010/11/13)**
+**Version 4.16.5-dev.7 (2010/11/13)**
 
 * *New Features*
 	* None.
@@ -534,7 +534,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.5-dev.6 =
+= 4.16.5-dev.7 =
 
 (2010/11/13) Deprecated the redundant og:image:secure_url and og:video:secure_url meta tags. Fixed duplicate variable names in the currency abbreviation / symbol lookup methods. Removed type-casting from the WpssoSchema::organization_to_localbusiness() argument.
 
