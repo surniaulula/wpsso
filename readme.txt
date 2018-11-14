@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 5.0
 WC Tested Up To: 3.5
-Stable Tag: 4.16.4
+Stable Tag: 4.16.5
 
 Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.
 
@@ -537,8 +537,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.16.5 =
 
 (2010/11/14) Deprecated the redundant og:image:secure_url and og:video:secure_url meta tags (see changelog for details). Fixed duplicate variable names in the currency lookup methods. Fixed unnecessary type-casting in the WpssoSchema::organization_to_localbusiness() method argument.
-
-= 4.16.4 =
-
-(2010/11/03) Fixed an incorrectly named variable in WpssoMeta get_options_multi() that may have prevented some options from being properly cascaded. Added new methods for the WPSSO JSON add-on.
 
