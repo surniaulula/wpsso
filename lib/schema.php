@@ -65,10 +65,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$mod        = $this->p->util->get_page_mod( true );	// $use_post is true.
 			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
-			if ( ! empty( $do_once[$cache_salt] ) ) {	// Check for recursion.
+			if ( ! empty( $do_once[ $cache_salt ] ) ) {	// Check for recursion.
 				return $content;
 			} else {
-				$do_once[$cache_salt] = true;
+				$do_once[ $cache_salt ] = true;
 			}
 
 			$size_name = $this->p->lca . '-schema';
@@ -1418,11 +1418,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$cache_index = self::get_mod_cache_index( $mod, $page_type_id );
 				$cache_data  = self::get_mod_cache_data( $mod, $cache_index );
 
-				if ( isset( $cache_data[$cache_index] ) ) {
+				if ( isset( $cache_data[ $cache_index ] ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: returning single post cache data' );
 					}
-					return $cache_data[$cache_index];	// Stop here.
+					return $cache_data[ $cache_index ];	// Stop here.
 				}
 			}
 
@@ -1489,7 +1489,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$cache_data = array();
 					}
 
-					$cache_data[$cache_index] = $json_data;
+					$cache_data[ $cache_index ] = $json_data;
 
 					self::save_mod_cache_data( $mod, $cache_data );
 				}
@@ -2466,11 +2466,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$cache_index = self::get_mod_cache_index( $mod, $page_type_id );
 			$cache_data  = self::get_mod_cache_data( $mod, $cache_index );
 
-			if ( isset( $cache_data[$cache_index] ) ) {
+			if ( isset( $cache_data[ $cache_index ] ) ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: returning single "' . $mod[ 'name' ] . '" cache data' );
 				}
-				return $cache_data[$cache_index];	// Stop here.
+				return $cache_data[ $cache_index ];	// Stop here.
 			}
 
 			if ( $wpsso->debug->enabled ) {
@@ -2504,7 +2504,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$mt_og = $wpsso->og->get_array( $mod, $mt_og = array() );
 			}
 
-			$cache_data[$cache_index] = $wpsso->schema->get_json_data( $mod, $mt_og, false, true );
+			$cache_data[ $cache_index ] = $wpsso->schema->get_json_data( $mod, $mt_og, false, true );
 
 			/**
 			 * Restore previous reference values for admin notices.
@@ -2519,7 +2519,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark( 'get single ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' data' );	// End timer.
 			}
 
-			return $cache_data[$cache_index];
+			return $cache_data[ $cache_index ];
 		}
 
 		public static function get_mod_cache_index( $mixed, $page_type_id ) {
@@ -2576,9 +2576,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$cache_data = get_transient( $cache_id );
 
-				if ( isset( $cache_data[$cache_index] ) ) {
+				if ( isset( $cache_data[ $cache_index ] ) ) {
 
-					if ( is_array( $cache_data[$cache_index] ) ) {	// Just in case.
+					if ( is_array( $cache_data[ $cache_index ] ) ) {	// Just in case.
 
 						if ( $wpsso->debug->enabled ) {
 							$wpsso->debug->log( 'cache index data found in array from transient' );
@@ -2592,7 +2592,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$wpsso->debug->log( 'cache index data not an array (unsetting index)' );
 						}
 
-						unset( $cache_data[$cache_index] );	// Just in case.
+						unset( $cache_data[ $cache_index ] );	// Just in case.
 
 						return $cache_data;	// Stop here.
 					}

@@ -944,11 +944,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$cache_array = wp_cache_get( $cache_id, __METHOD__ );
 
-					if ( isset( $cache_array[$cache_index] ) ) {
+					if ( isset( $cache_array[ $cache_index ] ) ) {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'exiting early: cache index found in wp_cache' );
 						}
-						return $cache_array[$cache_index];
+						return $cache_array[ $cache_index ];
 					} else {
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'cache index not in wp_cache' );
@@ -970,7 +970,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$cache_array[ $cache_index ] = false;	// Initialize the cache element.
 
-			$content =& $cache_array[$cache_index];	// Reference the cache element.
+			$content =& $cache_array[ $cache_index ];	// Reference the cache element.
 			$content = apply_filters( $this->p->lca . '_content_seed', '', $mod, $read_cache, $md_key );
 
 			if ( $content === false ) {

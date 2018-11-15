@@ -445,13 +445,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					$cache_array = get_transient( $cache_id );
 
-					if ( isset( $cache_array[$cache_index] ) ) {
-						if ( is_array( $cache_array[$cache_index] ) ) {	// Just in case.
+					if ( isset( $cache_array[ $cache_index ] ) ) {
+						if ( is_array( $cache_array[ $cache_index ] ) ) {	// Just in case.
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'exiting early: cache index found in transient cache' );
 								$this->p->debug->mark( 'build head array' );	// end timer
 							}
-							return $cache_array[$cache_index];	// stop here
+							return $cache_array[ $cache_index ];	// stop here
 						} else {
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'cache index is not an array' );
@@ -596,7 +596,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$mt_og = $this->p->og->sanitize_array( $mod, $mt_og );	// Unset mis-matched og_type meta tags.
 
-			$cache_array[$cache_index] = array_merge(
+			$cache_array[ $cache_index ] = array_merge(
 				$this->get_mt_array( 'meta', 'name', $mt_generators, $mod ),
 				$this->get_mt_array( 'link', 'rel', $link_rel, $mod ),
 				$this->get_mt_array( 'meta', 'property', $mt_og, $mod ),
@@ -629,7 +629,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark( 'build head array' );	// End timer.
 			}
 
-			return $cache_array[$cache_index];
+			return $cache_array[ $cache_index ];
 		}
 
 		/**
