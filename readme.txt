@@ -339,6 +339,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.16.6 (2010/11/17)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* Fixed post, term, user options fallback in Free version.
+* *Developer Notes*
+	* None.
+
 **Version 4.16.5 (2010/11/14)**
 
 * *New Features*
@@ -533,6 +544,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored SucomNotice methods to handle / store notices for different user IDs than the current user ID.
 
 == Upgrade Notice ==
+
+= 4.16.6 =
+
+(2010/11/17) Fixed post, term, user options fallback in Free version.
 
 = 4.16.5 =
 
