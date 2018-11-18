@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			 * Issues a warning notice if the default image size is too small,
 			 * unless the WPSSO_CHECK_DEFAULT_IMAGE constant has been defined as false.
 			 */
-			if ( SucomUtil::get_const( 'WPSSO_CHECK_DEFAULT_IMAGE' ) !== false ) {
+			if ( false !== SucomUtil::get_const( 'WPSSO_CHECK_DEFAULT_IMAGE' ) ) {
 				$this->p->media->get_default_images( 1, $this->p->lca . '-opengraph', false );
 			}
 		}

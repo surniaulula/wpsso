@@ -16,7 +16,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.0
  * WC Tested Up To: 3.5
- * Version: 4.16.5
+ * Version: 4.16.6
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -245,7 +245,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 					foreach ( $this->site_options as $key => $val ) {
 
-						if ( strpos( $key, ':use' ) !== false ) {
+						if ( false !== strpos( $key, ':use' ) ) {
 							continue;
 						}
 
@@ -645,8 +645,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				switch ( $key ) {
 
-					case ( strpos( $key, '_js_' ) !== false ? true : false ):
-					case ( strpos( $key, '_css_' ) !== false ? true : false ):
+					case ( false !== strpos( $key, '_js_' ) ? true : false ):
+					case ( false !== strpos( $key, '_css_' ) ? true : false ):
 					case ( preg_match( '/(_css|_js|_html)$/', $key ) ? true : false ):
 					case ( preg_match( '/_(key|secret|tid|token)$/', $key ) ? true : false ):
 

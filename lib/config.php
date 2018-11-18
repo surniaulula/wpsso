@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.16.5',	// Plugin version.
+					'version'     => '4.16.6',	// Plugin version.
 					'opt_version' => '618',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -2744,7 +2744,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 */
 		public static function get_config( $cf_key = false, $apply_filters = false ) {
 
-			if ( ! isset( self::$cf['config_filtered'] ) || self::$cf['config_filtered'] !== true ) {
+			if ( ! isset( self::$cf['config_filtered'] ) || true !== self::$cf['config_filtered'] ) {
 
 				self::$cf[ '*' ] = array(
 					'base' => array(),
@@ -2800,7 +2800,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				}
 			}
 
-			if ( $cf_key !== false ) {
+			if ( false !== $cf_key ) {
 				if ( isset( self::$cf[$cf_key] ) ) {
 					return self::$cf[$cf_key];
 				} else {

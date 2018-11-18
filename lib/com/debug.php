@@ -84,7 +84,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		public function log_args( array $arr, $class_seq = 1, $func_seq = false ) {
 
-			if ( $this->enabled !== true ) {
+			if ( ! $this->enabled ) {
 				return;
 			}
 
@@ -106,7 +106,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		public function log_arr( $prefix, $mixed, $class_seq = 1, $func_seq = false ) {
 
-			if ( $this->enabled !== true ) {
+			if ( ! $this->enabled ) {
 				return;
 			}
 
@@ -137,7 +137,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		public function log( $input = '', $class_seq = 1, $func_seq = false ) {
 
-			if ( $this->enabled !== true ) {
+			if ( ! $this->enabled ) {
 				return;
 			}
 
@@ -192,7 +192,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		public function mark( $id = false, $comment = '' ) {
 
-			if ( $this->enabled !== true ) {
+			if ( ! $this->enabled ) {
 				return;
 			}
 
@@ -205,7 +205,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				$this->start_stats = $cur_stats;
 			}
 
-			if ( $id !== false ) {
+			if ( false !== $id ) {
 
 				$append_text = '- - - - - - ' . $id;
 
@@ -234,7 +234,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$mem_diff   = $cur_stats['mem'] - $this->start_stats['mem'];
 			$stats_text = $this->get_time_text( $mtime_diff ) . ' / ' . $this->get_mem_text( $mem_diff );
 
-			$this->log( 'mark (' . $stats_text . ')' . ( $comment ? ' ' . $comment : '' ) . ( $id !== false ? "\n\t" . $append_text : '' ), 2 );
+			$this->log( 'mark (' . $stats_text . ')' . ( $comment ? ' ' . $comment : '' ) . ( false !== $id ? "\n\t" . $append_text : '' ), 2 );
 		}
 
 		private function get_time_text( $time ) {
@@ -255,7 +255,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		public function show_html( $data = null, $title = null ) {
 
-			if ( $this->is_enabled( 'html' ) !== true ) {
+			if ( ! $this->is_enabled( 'html' ) ) {
 				return;
 			}
 
@@ -264,7 +264,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 		public function get_html( $data = null, $title = null, $class_seq = 1, $func_seq = false ) {
 
-			if ( $this->is_enabled( 'html' ) !== true ) {
+			if ( ! $this->is_enabled( 'html' ) ) {
 				return;
 			}
 
@@ -306,7 +306,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 						ksort( $data );
 					}
 					foreach ( $data as $key => $val ) {
-						if ( is_string( $val ) && strpos( $val, '<!--' ) !== false ) {	// Remove HTML comments.
+						if ( is_string( $val ) && false !== strpos( $val, '<!--' ) ) {	// Remove HTML comments.
 							$val = preg_replace( '/<!--.*-->/Ums', '', $val );
 						} elseif ( is_array( $val ) ) {	// Just in case.
 							$val = print_r( $val, true );

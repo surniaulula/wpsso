@@ -160,7 +160,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 				} elseif ( defined( 'Yoast_Notification_Center::TRANSIENT_KEY' ) ) {
 
-					if ( ( $wpseo_notif = get_transient( Yoast_Notification_Center::TRANSIENT_KEY ) ) !== false ) {
+					if ( false !== ( $wpseo_notif = get_transient( Yoast_Notification_Center::TRANSIENT_KEY ) ) ) {
 
 						$wpseo_notif = json_decode( $wpseo_notif, $assoc = false );
 
@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 
 								if ( isset( $notif_msgs->options->type ) && $notif_msgs->options->type == 'error' ) {
 
-									if ( strpos( $notif_msgs->message, $name ) !== false ) {
+									if ( false !== strpos( $notif_msgs->message, $name ) ) {
 
 										unset( $wpseo_notif[$num] );
 
@@ -195,28 +195,37 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			}
 
 			if ( isset( $GLOBALS['wpseo_og'] ) && is_object( $GLOBALS['wpseo_og'] ) ) {
-				if ( ( $prio = has_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ) ) ) !== false ) {
+
+				if ( false !== ( $prio = has_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ) ) ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'removing wpseo_head action for opengraph' );
 					}
+
 					$ret = remove_action( 'wpseo_head', array( $GLOBALS['wpseo_og'], 'opengraph' ), $prio );
 				}
 			}
 
 			if ( class_exists( 'WPSEO_Twitter' ) ) {
-				if ( ( $prio = has_action( 'wpseo_head', array( 'WPSEO_Twitter', 'get_instance' ) ) ) !== false ) {
+
+				if ( false !== ( $prio = has_action( 'wpseo_head', array( 'WPSEO_Twitter', 'get_instance' ) ) ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'removing wpseo_head action for twitter' );
 					}
+
 					$ret = remove_action( 'wpseo_head', array( 'WPSEO_Twitter', 'get_instance' ), $prio );
 				}
 			}
 
 			if ( isset( WPSEO_Frontend::$instance ) ) {
-				if ( ( $prio = has_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ) ) ) !== false ) {
+
+				if ( false !== ( $prio = has_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ) ) ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'removing wpseo_head action for publisher' );
 					}
+
 					$ret = remove_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ), $prio );
 				}
 			}

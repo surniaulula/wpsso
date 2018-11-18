@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Fix incorrect itemscope values
 			 */
-			if ( strpos( $head_attr, 'itemscope="itemscope"' ) !== false ) {
+			if ( false !== strpos( $head_attr, 'itemscope="itemscope"' ) ) {
 				$head_attr = preg_replace( '/ *itemscope="itemscope"/', ' itemscope', $head_attr );
 			} elseif ( strpos( $head_attr, 'itemscope' ) === false ) {
 				$head_attr .= ' itemscope';
@@ -178,7 +178,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Replace existing itemtype values.
 			 */
-			if ( strpos( $head_attr, 'itemtype="' ) !== false ) {
+			if ( false !== strpos( $head_attr, 'itemtype="' ) ) {
 				$head_attr = preg_replace( '/ *itemtype="[^"]+"/', ' itemtype="' . $page_type_url . '"', $head_attr );
 			} else {
 				$head_attr .= ' itemtype="' . $page_type_url . '"';
@@ -836,7 +836,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				return $schema_types[ $type_id ];
 
-			} elseif ( $default_id !== false && isset( $schema_types[ $default_id ] ) ) {
+			} elseif ( false !== $default_id && isset( $schema_types[ $default_id ] ) ) {
 
 				return $schema_types[ $default_id ];
 			}
@@ -942,7 +942,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return;
 			}
 	
-			if ( filter_var( $type_id, FILTER_VALIDATE_URL ) !== false ) {
+			if ( false !== filter_var( $type_id, FILTER_VALIDATE_URL ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -1003,7 +1003,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'previous @id property is ' . $json_data['@id'] );
 				}
 
-				if ( ( $id_pos = strpos( $json_data['@id'], $id_anchor ) ) !== false ) {
+				if ( false !== ( $id_pos = strpos( $json_data['@id'], $id_anchor ) ) ) {
 
 					$id_str = substr( $json_data['@id'], $id_pos + strlen( $id_anchor ) );
 
@@ -1138,7 +1138,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public static function get_data_context( $json_data ) {
 
-			if ( ( $type_url = self::get_data_type_url( $json_data ) ) !== false ) {
+			if ( false !== ( $type_url = self::get_data_type_url( $json_data ) ) ) {
 				return self::get_schema_type_context( $type_url );
 			}
 
@@ -1870,7 +1870,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
 				}
 
-				if ( filter_var( $url, FILTER_VALIDATE_URL ) !== false ) {
+				if ( false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {
 					$org_sameas[] = $url;
 				}
 			}
@@ -2180,7 +2180,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					} else {
 
-						if ( is_string( $assoc[$key_name] ) && filter_var( $assoc[$key_name], FILTER_VALIDATE_URL ) !== false ) {
+						if ( is_string( $assoc[$key_name] ) && false !== filter_var( $assoc[$key_name], FILTER_VALIDATE_URL ) ) {
 							$json_data[$prop_name] = SucomUtil::esc_url_encode( $assoc[$key_name] );
 						} else {
 							$json_data[$prop_name] = $assoc[$key_name];
@@ -2526,7 +2526,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$cache_index = 'page_type_id:' . $page_type_id;
 
-			if ( $mixed !== false ) {
+			if ( false !== $mixed ) {
 				$cache_index .= '_locale:' . SucomUtil::get_locale( $mixed );
 			}
 
@@ -2695,7 +2695,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'event', $event_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1 if data was retrieved from cache.
+			if ( false !== $ret ) {	// 0 or 1 if data was retrieved from cache.
 				return $ret;
 			}
 
@@ -2892,16 +2892,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					/**
 					 * Setup the offer with basic itemprops.
 					 */
-					if ( is_array( $event_offer ) &&	// Just in case.
-						( $offer = self::get_data_itemprop_from_assoc( $event_offer, array( 
-							'name'          => 'offer_name',
-							'url'           => 'offer_url',
-							'price'         => 'offer_price',
-							'priceCurrency' => 'offer_price_currency',
-							'availability'  => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
-							'validFrom'     => 'offer_valid_from_date',
-							'validThrough'  => 'offer_valid_to_date',
-					) ) ) !== false ) {
+					if ( is_array( $event_offer ) && false !== ( $offer = self::get_data_itemprop_from_assoc( $event_offer, array( 
+						'name'          => 'offer_name',
+						'url'           => 'offer_url',
+						'price'         => 'offer_price',
+						'priceCurrency' => 'offer_price_currency',
+						'availability'  => 'offer_availability',	// In stock, Out of stock, Pre-order, etc.
+						'validFrom'     => 'offer_valid_from_date',
+						'validThrough'  => 'offer_valid_to_date',
+					) ) ) ) {
 
 						/**
 						 * Add the complete offer.
@@ -2932,7 +2931,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'job', $job_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1 if data was retrieved from cache.
+			if ( false !== $ret ) {	// 0 or 1 if data was retrieved from cache.
 				return $ret;
 			}
 
@@ -3080,7 +3079,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'organization', $org_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1 if data was retrieved from cache.
+			if ( false !== $ret ) {	// 0 or 1 if data was retrieved from cache.
 				return $ret;
 			}
 
@@ -3265,7 +3264,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'person', $user_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1 if data was retrieved from cache.
+			if ( false !== $ret ) {	// 0 or 1 if data was retrieved from cache.
 				return $ret;
 			}
 
@@ -3332,7 +3331,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
 					}
 
-					if ( filter_var( $url, FILTER_VALIDATE_URL ) !== false ) {
+					if ( false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {
 						$user_sameas[] = $url;
 					}
 				}
@@ -3412,7 +3411,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$ret =& self::set_single_data_from_cache( $json_data, $mod, 'place', $place_id, $list_element );
 
-			if ( $ret !== false ) {	// 0 or 1 if data was retrieved from cache.
+			if ( false !== $ret ) {	// 0 or 1 if data was retrieved from cache.
 				return $ret;
 			}
 

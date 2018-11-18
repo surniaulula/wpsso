@@ -833,7 +833,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				/**
 				 * Only set the option the existing value is different.
 				 */
-				if ( $ini_saved[$name] !== false && $ini_saved[$name] !== $value ) {
+				if ( false !== $ini_saved[$name] && $ini_saved[$name] !== $value ) {
 
 					ini_set( $name, $value );
 
@@ -1529,7 +1529,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			if ( $plugin_base !== false ) {
+			if ( false !== $plugin_base ) {
 
 				if ( isset( $local_cache[$plugin_base] ) ) {
 					return $local_cache[$plugin_base];
@@ -1854,7 +1854,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					/**
 					 * "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"
 					 */
-					case ( strpos( $ua, 'facebookexternalhit/' ) !== false ):
+					case ( false !== strpos( $ua, 'facebookexternalhit/' ) ):
 
 						self::$cache_crawler_name = 'facebook';
 
@@ -1863,7 +1863,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					/**
 					 * "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
 					 */
-					case ( strpos( $ua, 'compatible; bingbot/' ) !== false ):
+					case ( false !== strpos( $ua, 'compatible; bingbot/' ) ):
 
 						self::$cache_crawler_name = 'bing';
 
@@ -1872,7 +1872,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					/**
 					 * "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 					 */
-					case ( strpos( $ua, 'compatible; googlebot/' ) !== false ):
+					case ( false !== strpos( $ua, 'compatible; googlebot/' ) ):
 
 						self::$cache_crawler_name = 'google';
 
@@ -1881,7 +1881,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					/**
 					 * Mozilla/5.0 (compatible; Google-Structured-Data-Testing-Tool +https://search.google.com/structured-data/testing-tool)"
 					 */
-					case ( strpos( $ua, 'compatible; google-structured-data-testing-tool' ) !== false ):
+					case ( false !== strpos( $ua, 'compatible; google-structured-data-testing-tool' ) ):
 
 						self::$cache_crawler_name = 'google';
 
@@ -1890,8 +1890,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					/**
 					 * "Pinterest/0.2 (+http://www.pinterest.com/bot.html)"
 					 */
-					case ( strpos( $ua, 'pinterest/' ) !== false ):
-					case ( strpos( $ua, 'pinterestbot/' ) !== false ):
+					case ( false !== strpos( $ua, 'pinterest/' ) ):
+					case ( false !== strpos( $ua, 'pinterestbot/' ) ):
 
 						self::$cache_crawler_name = 'pinterest';
 
@@ -1900,14 +1900,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					/**
 					 * "Twitterbot/1.0"
 					 */
-					case ( strpos( $ua, 'twitterbot/' ) !== false ):
+					case ( false !== strpos( $ua, 'twitterbot/' ) ):
 						self::$cache_crawler_name = 'twitter';
 						break;
 
 					/**
 					 * "W3C_Validator/1.3 http://validator.w3.org/services"
 					 */
-					case ( strpos( $ua, 'w3c_validator/' ) !== false ):
+					case ( false !== strpos( $ua, 'w3c_validator/' ) ):
 
 						self::$cache_crawler_name = 'w3c';
 
@@ -1916,7 +1916,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					/**
 					 * "Validator.nu/LV http://validator.w3.org/services"
 					 */
-					case ( strpos( $ua, 'validator.nu/' ) !== false ):
+					case ( false !== strpos( $ua, 'validator.nu/' ) ):
 
 						self::$cache_crawler_name = 'w3c';
 
@@ -1925,7 +1925,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					/**
 					 * "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MTC19V) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.81 Mobile Safari/537.36 (compatible; validator.ampproject.org) AppEngine-Google; (+http://code.google.com/appengine; appid: s~amp-validator)"
 					 */
-					case ( strpos( $ua, 'validator.ampproject.org' ) !== false ):
+					case ( false !== strpos( $ua, 'validator.ampproject.org' ) ):
 
 						self::$cache_crawler_name = 'amp';
 
@@ -1988,7 +1988,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			foreach ( $match as $key ) {
 
-				if ( $replace !== false ) {
+				if ( false !== $replace ) {
 
 					$fixed = preg_replace( $pattern, $replace, $key );
 
@@ -1998,7 +1998,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$found[ $key ] = $input[ $key ];
 				}
 
-				if ( $remove !== false ) {
+				if ( false !== $remove ) {
 					unset( $input[ $key ] );
 				}
 			}
@@ -2035,7 +2035,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$keys = array_keys( $input );
 			$pos = array_search( $needle, $keys );
 
-			if ( $pos !== false ) {
+			if ( false !== $pos ) {
 				if ( isset( $keys[ $pos + 1 ] ) ) {
 					return $keys[ $pos + 1 ];
 				} elseif ( true === $loop ) {
@@ -2710,7 +2710,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$ms_locale = get_site_option( 'WPLANG' );
 					}
 
-					if ( $ms_locale !== false ) {
+					if ( false !== $ms_locale ) {
 						$locale = $ms_locale;
 					}
 
@@ -2718,7 +2718,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$db_locale = get_option( 'WPLANG' );
 
-					if ( $db_locale !== false ) {
+					if ( false !== $db_locale ) {
 						$locale = $db_locale;
 					}
 				}
@@ -2899,7 +2899,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$screen_base = self::get_screen_base();
 
-				if ( $screen_base !== false ) {
+				if ( false !== $screen_base ) {
 					switch ( $screen_base ) {
 						case 'edit':		// post/page list
 						case 'edit-tags':	// categories/tags list
@@ -3220,7 +3220,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$screen_base = self::get_screen_base();
 
-				if ( $screen_base !== false ) {
+				if ( false !== $screen_base ) {
 
 					switch ( $screen_base ) {
 
@@ -3720,14 +3720,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_lib_stub_action( $lib_id ) {
 
-			if ( ( $pos = strpos( $lib_id, ':' ) ) !== false ) {
+			if ( false !== ( $pos = strpos( $lib_id, ':' ) ) ) {
 				$action = substr( $lib_id, $pos + 1 );
 				$lib_id = substr( $lib_id, 0, $pos );
 			} else {
 				$action = false;
 			}
 
-			if ( ( $pos = strpos( $lib_id, '#' ) ) !== false ) {
+			if ( false !== ( $pos = strpos( $lib_id, '#' ) ) ) {
 				$stub = substr( $lib_id, $pos + 1 );
 				$lib_id = substr( $lib_id, 0, $pos );
 			} else {
@@ -4053,7 +4053,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_toplevel_edit( $hook_name ) {
-			return strpos( $hook_name, 'toplevel_page_' ) !== false && (
+			return false !== strpos( $hook_name, 'toplevel_page_' ) && (
 				( self::get_request_value( 'action', 'GET' ) === 'edit' && // Uses sanitize_text_field().
 					(int) self::get_request_value( 'post', 'GET' ) > 0 ) ||
 				( self::get_request_value( 'action', 'GET' ) === 'create_new' &&
@@ -4135,7 +4135,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$classname = apply_filters( $lca . '_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
 
-				if ( $classname !== false && class_exists( $classname ) ) {
+				if ( false !== $classname && class_exists( $classname ) ) {
 					$css_data = call_user_func( array( $classname, 'process' ), $css_data );
 				}
 			}
@@ -4150,7 +4150,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_pkg_name( $name, $type ) {
 
-			if ( strpos( $name, $type ) !== false ) {
+			if ( false !== strpos( $name, $type ) ) {
 				$name = preg_replace( '/^(.*) ' . $type . '( [\[\(].+[\)\]])?$/U', '$1$2', $name );
 			}
 

@@ -1039,11 +1039,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Remove "Google+" link and text.
 			 */
-			if ( strpos( $content, '>Google+<' ) !== false ) {
+			if ( false !== strpos( $content, '>Google+<' ) ) {
 				$content = preg_replace( '/<a +rel="author" +href="" +style="display:none;">Google\+<\/a>/', ' ', $content );
 			}
 
-			if ( strpos( $content, '<p class="wp-caption-text">' ) !== false ) {
+			if ( false !== strpos( $content, '<p class="wp-caption-text">' ) ) {
 
 				$caption_prefix = isset( $this->p->options['plugin_p_cap_prefix'] ) ?
 					$this->p->options['plugin_p_cap_prefix'] : 'Caption:';
@@ -1053,7 +1053,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			if ( strpos( $content, ']]>' ) !== false ) {
+			if ( false !== strpos( $content, ']]>' ) ) {
 				$content = str_replace( ']]>', ']]&gt;', $content );
 			}
 

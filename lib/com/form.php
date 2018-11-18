@@ -432,7 +432,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						/**
 						 * If we have an option selected, unhide those rows.
 						 */
-						if ( $selected !== false ) {
+						if ( false !== $selected ) {
 
 							if ( true === $selected ) {
 								if ( $in_options ) {
@@ -1465,7 +1465,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_options( $opt_key = false, $def_val = null ) {
 
-			if ( $opt_key !== false ) {
+			if ( false !== $opt_key ) {
 
 				if ( isset( $this->options[ $opt_key ] ) ) {
 					return $this->options[ $opt_key ];
@@ -1723,7 +1723,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					continue;
 				}
 
-				$def_key = strpos( $opt_key, '#' ) !== false ? preg_replace( '/#.*$/', '', $opt_key ) : $opt_key;
+				$def_key = false !== strpos( $opt_key, '#' ) ? preg_replace( '/#.*$/', '', $opt_key ) : $opt_key;
 
 				if ( empty( $def_key ) ) {
 

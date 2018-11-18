@@ -592,7 +592,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$regen_key = $this->get_force_regen_key( $mod, $md_pre );
 
-			if ( $regen_key !== false ) {
+			if ( false !== $regen_key ) {
 
 				$cache_md5_pre  = $this->p->lca . '_';
 				$cache_exp_secs = 0;					// Never expire.
@@ -621,7 +621,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$regen_key = $this->get_force_regen_key( $mod, $md_pre );
 
-			if ( $regen_key !== false ) {
+			if ( false !== $regen_key ) {
 
 				$cache_md5_pre  = $this->p->lca . '_';
 				$cache_exp_secs = 0;					// Never expire.
@@ -1038,13 +1038,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Prevent concurrent execution.
 			 */
-			if ( get_transient( $cache_id ) !== false ) {			// Another process is already running.
+			if ( false !== get_transient( $cache_id ) ) {			// Another process is already running.
 
 				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
 
 				usleep( 3 * 1000000 );					// Sleep for 3 second.
 
-				if ( get_transient( $cache_id ) !== false ) {		// Stop here if the other process is still running.
+				if ( false !== get_transient( $cache_id ) ) {		// Stop here if the other process is still running.
 					return;
 				}
 			}
@@ -1111,7 +1111,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Prevent concurrent execution.
 			 */
-			if ( get_transient( $cache_id ) !== false ) {	// Another process is already running.
+			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
 				return;
 			}
 
@@ -1234,7 +1234,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$cache_salt     = __CLASS__ . '::refresh_all_cache';		// Generic salt value for other methods.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
-			if ( get_transient( $cache_id ) !== false ) {			// Another process is already running.
+			if ( false !== get_transient( $cache_id ) ) {			// Another process is already running.
 				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
 			}
 		}
@@ -1258,7 +1258,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Prevent concurrent execution.
 			 */
-			if ( get_transient( $cache_id ) !== false ) {			// Another process is already running.
+			if ( false !== get_transient( $cache_id ) ) {			// Another process is already running.
 
 				set_transient( $cache_id, 'stop', $cache_exp_secs );	// Signal the other process to stop.
 
@@ -1266,7 +1266,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				usleep( $sleep_secs * 1000000 );			// Sleeps for 5.25 seconds by default.
 
-				if ( get_transient( $cache_id ) !== false ) {		// Stop here if the other process is still running.
+				if ( false !== get_transient( $cache_id ) ) {		// Stop here if the other process is still running.
 					return;
 				}
 			}
@@ -1639,7 +1639,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				return false;
 
-			} elseif ( stripos( $request, '<html' ) !== false ) {	// Request contains html.
+			} elseif ( false !== stripos( $request, '<html' ) ) {	// Request contains html.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'using the html submitted as the request argument' );
@@ -2114,7 +2114,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$classname = WpssoConfig::load_lib( false, 'ext/json-format', 'suextjsonformat' );
 
-				if ( $classname !== false && class_exists( $classname ) ) {
+				if ( false !== $classname && class_exists( $classname ) ) {
 					$json = SuextJsonFormat::get( $json, $options, $depth );
 				}
 			}
@@ -2357,7 +2357,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						$numpages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
 
 						if ( $numpages && get_query_var( 'page' ) <= $numpages ) {
-							if ( ! $wp_rewrite->using_permalinks() || strpos( $url, '?' ) !== false ) {
+							if ( ! $wp_rewrite->using_permalinks() || false !== strpos( $url, '?' ) ) {
 								$url = add_query_arg( 'page', get_query_var( 'page' ), $url );
 							} else {
 								$url = user_trailingslashit( trailingslashit( $url ) . get_query_var( 'page' ) );
@@ -2481,7 +2481,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				/**
 				 * Maybe disable transient cache and URL shortening.
 				 */
-				if ( $src_id === 'head_sharing_url' && strpos( $url, '?' ) !== false ) {
+				if ( $src_id === 'head_sharing_url' && false !== strpos( $url, '?' ) ) {
 					$disable_cache = true;
 				} else {
 					$disable_cache = false;
@@ -2625,7 +2625,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		 */
 		public function fix_relative_url( $url ) {
 
-			if ( empty( $url ) || strpos( $url, '://' ) !== false ) {
+			if ( empty( $url ) || false !== strpos( $url, '://' ) ) {
 				return $url;
 			}
 
@@ -2644,7 +2644,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			} else {
 				$base = self::get_prot() . '://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
-				if ( strpos( $base, '?' ) !== false ) {
+				if ( false !== strpos( $base, '?' ) ) {
 					$base_parts = explode( '?', $base );
 					$base = reset( $base_parts );
 				}
@@ -3047,11 +3047,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * $menu_id may start with a hash or query, so parse before checking its value.
 			 */
-			if ( strpos( $menu_id, '#' ) !== false ) {
+			if ( false !== strpos( $menu_id, '#' ) ) {
 				list( $menu_id, $hash ) = explode( '#', $menu_id );
 			}
 
-			if ( strpos( $menu_id, '?' ) !== false ) {
+			if ( false !== strpos( $menu_id, '?' ) ) {
 				list( $menu_id, $query ) = explode( '?', $menu_id );
 			}
 
@@ -3393,7 +3393,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Remove text between ignore markers.
 			 */
-			if ( strpos( $text, $this->p->lca . '-ignore' ) !== false ) {
+			if ( false !== strpos( $text, $this->p->lca . '-ignore' ) ) {
 				$text = preg_replace( '/<!-- *' . $this->p->lca . '-ignore *-->(.*?)' .
 					'<!-- *\/' . $this->p->lca . '-ignore *-->/Ui', ' ', $text );
 			}
@@ -3414,7 +3414,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				if ( $text_stripped === '' && $use_img_alt ) {				// Possibly use img alt strings if no text.
 
-					if ( strpos( $text, '<img ' ) !== false &&
+					if ( false !== strpos( $text, '<img ' ) &&
 						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/Ui',
 							$text, $all_matches, PREG_PATTERN_ORDER ) ) {
 

@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * All meta modules set this property, so use it to optimize code execution.
 			 */
-			if ( WpssoMeta::$head_meta_tags !== false || ! isset( $screen->id ) ) {
+			if ( false !== WpssoMeta::$head_meta_tags || ! isset( $screen->id ) ) {
 				return;
 			}
 
@@ -964,7 +964,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 								/**
 								 * Remove the box, no matter its position in the array.
 								 */
-								if ( $key = array_search( $pagehook . '_' . $box_id, $boxes ) !== false ) {
+								if ( false !== ( $key = array_search( $pagehook . '_' . $box_id, $boxes ) ) ) {
 									unset( $boxes[ $key ] );
 								}
 
@@ -986,7 +986,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 							/**
 							 * If we're not targetting, then clear it, otherwise if we want a state, add if it's missing.
 							 */
-							if ( empty( $meta_name ) && $key !== false ) {
+							if ( empty( $meta_name ) && false !== $key ) {
 
 								unset( $user_opts[ $key ] );
 
@@ -1107,7 +1107,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
 
-			if ( ! isset( self::$cache_pref[$user_id]['prefs_filtered'] ) || self::$cache_pref[$user_id]['prefs_filtered'] !== true ) {
+			if ( ! isset( self::$cache_pref[$user_id]['prefs_filtered'] ) || true !== self::$cache_pref[$user_id]['prefs_filtered'] ) {
 
 				$wpsso =& Wpsso::get_instance();
 
@@ -1126,7 +1126,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
-			if ( $pref_key !== false ) {
+			if ( false !== $pref_key ) {
 				if ( isset( self::$cache_pref[$user_id][$pref_key] ) ) {
 					return self::$cache_pref[$user_id][$pref_key];
 				} else {

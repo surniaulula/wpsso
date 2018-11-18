@@ -146,7 +146,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			if ( $opt_key !== false ) {
+			if ( false !== $opt_key ) {
 				if ( isset( $defs[ $opt_key ] ) ) {
 					return $defs[ $opt_key ];
 				} else {
@@ -201,7 +201,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			if ( $opt_key !== false ) {
+			if ( false !== $opt_key ) {
 				if ( isset( $defs[ $opt_key ] ) ) {
 					return $defs[ $opt_key ];
 				} else {
@@ -1236,8 +1236,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Optimize and check for add meta tags options first.
 				 */
-				case ( strpos( $base_key, 'add_' ) === 0 ? true : false ):
-				case ( strpos( $base_key, 'plugin_filter_' ) === 0 ? true : false ):
+				case ( 0 === strpos( $base_key, 'add_' ) ? true : false ):
+				case ( 0 === strpos( $base_key, 'plugin_filter_' ) ? true : false ):
 
 					return 'checkbox';
 
@@ -1264,8 +1264,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * JS and CSS code (cannot be blank).
 				 */
-				case ( strpos( $base_key, '_js_' ) !== false ? true : false ):
-				case ( strpos( $base_key, '_css_' ) !== false ? true : false ):
+				case ( false !== strpos( $base_key, '_js_' ) ? true : false ):
+				case ( false !== strpos( $base_key, '_css_' ) ? true : false ):
 				case ( preg_match( '/(_css|_js|_html)$/', $base_key ) ? true : false ):
 
 					return 'code';
@@ -1406,8 +1406,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_yourls_username':
 				case 'plugin_yourls_password':
 				case 'plugin_yourls_token':
-				case ( strpos( $base_key, 'plugin_cf_' ) === 0 ? true : false ):	// value is name of meta key
-				case ( strpos( $base_key, '_filter_name' ) !== false ? true : false ):
+				case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):	// value is name of meta key
+				case ( false !== strpos( $base_key, '_filter_name' ) ? true : false ):
 
 					return 'one_line';
 
@@ -1426,8 +1426,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_avail':
 				case 'product_condition':
 				case 'product_gender':
-				case ( strpos( $base_key, '_crop_x' ) !== false ? true : false ):
-				case ( strpos( $base_key, '_crop_y' ) !== false ? true : false ):
+				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
+				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $base_key ) ? true : false ):
 
 					return 'not_blank';
@@ -1489,7 +1489,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * CSS color code.
 				 */
-				case ( strpos( $base_key, '_color_' ) !== false ? true : false ):
+				case ( false !== strpos( $base_key, '_color_' ) ? true : false ):
 
 					return 'color';
 

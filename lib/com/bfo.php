@@ -178,7 +178,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 							continue;
 						} elseif ( strpos( $hook_name, __CLASS__ . '::' ) === 0 ) {	// Exclude our own class methods from being checked.
 							continue;
-						} elseif ( strpos( $hook_ref, $bfo_check_str ) !== false ) {	// Just in case - don't check the check hooks.
+						} elseif ( false !== strpos( $hook_ref, $bfo_check_str ) ) {	// Just in case - don't check the check hooks.
 							continue;
 						}
 
@@ -213,7 +213,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 				foreach ( $wp_filter[ $filter_name ]->callbacks as $hook_prio => &$hook_group ) {	// Use reference to modify $hook_group.
 					foreach ( $hook_group as $hook_ref => $hook_info ) {
-						if ( strpos( $hook_ref, $bfo_check_str ) !== false ) {
+						if ( false !== strpos( $hook_ref, $bfo_check_str ) ) {
 							unset( $hook_group[ $hook_ref ] );
 						}
 					}

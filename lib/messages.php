@@ -2239,7 +2239,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						static $do_once_upscale_notice = null;	// Show the upscale details only once.
 
-						if ( $do_once_upscale_notice !== true && current_user_can( 'manage_options' ) && 
+						if ( true !== $do_once_upscale_notice && current_user_can( 'manage_options' ) && 
 							( ! isset( $info[ 'allow_upscale' ] ) || ! empty( $info[ 'allow_upscale' ] ) ) ) {
 
 							$do_once_upscale_notice = true;

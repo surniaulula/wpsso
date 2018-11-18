@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		private function add_header_image_tag( $html, $add_attr ) {
 			foreach ( $add_attr as $attr_name => $attr_value ) {
-				if ( $attr_value !== false && strpos( $html, ' ' . $attr_name . '=' ) === false ) {
+				if ( false !== $attr_value && strpos( $html, ' ' . $attr_name . '=' ) === false ) {
 					$html = preg_replace( '/ *\/?'.'>/', ' ' . $attr_name . '="' . $attr_value . '"$0', $html );
 				}
 			}
@@ -338,7 +338,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		public static function get_image_src_args( $key = false ) {
 
-			if ( $key !== false ) {
+			if ( false !== $key ) {
 				if ( isset( self::$image_src_args[ $key ] ) ) {
 					return self::$image_src_args[ $key ];
 				} else {
@@ -1236,7 +1236,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/**
 				 * Must return false or an array of associative arrays.
 				 */
-				if ( ( $all_matches = apply_filters( $filter_name, false, $content ) ) !== false ) {
+				if ( false !== ( $all_matches = apply_filters( $filter_name, false, $content ) ) ) {
 
 					if ( is_array( $all_matches ) ) {
 
@@ -1543,7 +1543,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$img_label = sprintf( __( 'image ID %s', 'wpsso' ), $img_mixed );
 				$img_label = empty( $edit_url ) ? $img_label : '<a href="' . $edit_url . '">' . $img_label . '</a>';
 
-			} elseif ( strpos( $img_mixed, '://' ) !== false ) {
+			} elseif ( false !== strpos( $img_mixed, '://' ) ) {
 
 				if ( $img_width === WPSSO_UNDEF || $img_height === WPSSO_UNDEF ) {
 					list( $img_width, $img_height, $img_type, $img_attr ) = $this->p->util->get_image_url_info( $img_mixed );

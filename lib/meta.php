@@ -540,7 +540,17 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 		public function get_options( $mod_id, $md_key = false, $filter_opts = true, $def_fallback = false ) {
 
-			return $this->must_be_extended( __METHOD__, ( $md_key !== false ? null : array() ) );	// return an empty array or null
+			$ret_val = array();
+
+			if ( false !== $md_key ) {
+				if ( $def_fallback ) {
+					$ret_val = $this->get_defaults( $mod_id, $md_key );
+				} else {
+					$ret_val = null;
+				}
+			}
+
+			return $this->must_be_extended( __METHOD__, $ret_val );
 		}
 
 		public function get_defaults( $mod_id, $md_key = false ) {
@@ -688,7 +698,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->log( 'get_md_defaults filter skipped' );
 			}
 
-			if ( $md_key !== false ) {
+			if ( false !== $md_key ) {
 
 				if ( isset( $md_defs[ $md_key ] ) ) {
 					return $md_defs[ $md_key ];
@@ -905,7 +915,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					}
 				}
 
-				if ( $force_regen !== false ) {
+				if ( false !== $force_regen ) {
 					$this->p->util->set_force_regen( $mod, $md_pre );
 				}
 			}
@@ -977,7 +987,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$sort_cols = (array) apply_filters( $wpsso->lca . '_get_sortable_columns', $wpsso->cf['edit']['columns'] );
 			}
 
-			if ( $col_key !== false ) {
+			if ( false !== $col_key ) {
 				if ( isset( $sort_cols[$col_key] ) ) {
 					return $sort_cols[$col_key];
 				} else {
@@ -1280,7 +1290,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			foreach ( apply_filters( $this->p->lca . '_' . $mod[ 'name' ] . '_image_urls', array(), $size_name, $mod[ 'id' ], $mod ) as $url ) {
 
-				if ( strpos( $url, '://' ) !== false ) {	// Quick sanity check.
+				if ( false !== strpos( $url, '://' ) ) {	// Quick sanity check.
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'adding image url: ' . $url );

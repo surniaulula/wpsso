@@ -51,11 +51,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$cache_index = '';
 
-			if ( $mixed !== false ) {
+			if ( false !== $mixed ) {
 				$cache_index .= '_locale:' . SucomUtil::get_locale( $mixed );
 			}
 
-			if ( $sharing_url !== false ) {
+			if ( false !== $sharing_url ) {
 				$cache_index .= '_url:' . $sharing_url;
 			}
 
@@ -247,7 +247,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						case ( preg_match( '/^property-' . $mt_prefix . ':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
 
-							if ( $is_first !== true ) {	// Only save for first media found.
+							if ( true !== $is_first ) {	// Only save for first media found.
 								continue 2;		// Get the next meta tag.
 							}
 
@@ -789,7 +789,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					/**
 					 * If an "itemprop" contains a url, then make sure it's a "link".
 					 */
-					if ( $tag !== 'link' && filter_var( $value, FILTER_VALIDATE_URL ) !== false ) {
+					if ( $tag !== 'link' && false !== filter_var( $value, FILTER_VALIDATE_URL ) ) {
 						$tag = 'link';
 					}
 				}
@@ -832,7 +832,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				return $singles;
 			}
 
-			if ( strpos( $value, '%%' ) !== false ) {
+			if ( false !== strpos( $value, '%%' ) ) {
 				$value = $this->p->util->replace_inline_vars( $value, $mod );
 			}
 

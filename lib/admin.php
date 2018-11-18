@@ -529,7 +529,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			foreach ( $action_links as $num => $val ) {
-				if ( strpos( $val, '>Edit<' ) !== false ) {
+				if ( false !== strpos( $val, '>Edit<' ) ) {
 					unset ( $action_links[$num] );
 				}
 			}
@@ -612,18 +612,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $info[ 'url' ]['docs'] ) ) {
 				$action_links[] = '<a href="' . $info[ 'url' ]['docs'] . '"' .
-					( $tabindex !== false ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
+					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
 						_x( 'Documentation', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
 			if ( ! empty( $info[ 'url' ]['support'] ) && self::$pkg[ $ext ][ 'pp' ] ) {
 				$action_links[] = '<a href="' . $info[ 'url' ]['support'] . '"' .
-					( $tabindex !== false ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
+					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
 						_x( 'Pro Support', 'plugin action link', 'wpsso' ) . '</a>';
 
 			} elseif ( ! empty( $info[ 'url' ]['forum'] ) ) {
 				$action_links[] = '<a href="' . $info[ 'url' ]['forum'] . '"' .
-					( $tabindex !== false ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
+					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
 						_x( 'Community Forum', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
@@ -634,7 +634,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$action_links[] = $this->p->msgs->get( 'pro-purchase-link', array(
 					'ext'      => $ext,
 					'url'      => $purchase_url, 
-					'tabindex' => $tabindex !== false ? ++$tabindex : false,
+					'tabindex' => false !== $tabindex ? ++$tabindex : false,
 				) );
 			}
 
@@ -1183,7 +1183,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function profile_updated_redirect( $url, $status ) {
 
-			if ( strpos( $url, 'updated=' ) !== false && strpos( $url, 'wp_http_referer=' ) ) {
+			if ( false !== strpos( $url, 'updated=' ) && strpos( $url, 'wp_http_referer=' ) ) {
 
 				/**
 				 * Match WordPress behavior (users page for admins, profile page for everyone else).
@@ -2813,7 +2813,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			} else {
 				switch ( $screen_id ) {
 					case 'dashboard':
-					case ( strpos( $screen_id, '_page_' . $this->p->lca . '-' ) !== false ? true : false ):
+					case ( false !== strpos( $screen_id, '_page_' . $this->p->lca . '-' ) ? true : false ):
 						$this->maybe_show_timed_notices();
 						break;
 				}
@@ -3143,7 +3143,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					continue;
 
-				} elseif ( strpos( $html_stripped, '<head>' ) !== false ) {
+				} elseif ( false !== strpos( $html_stripped, '<head>' ) ) {
 
 					if ( $this->p->notice->is_admin_pre_notices() ) {
 

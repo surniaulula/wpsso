@@ -86,14 +86,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function load_transient() {
 
-			if ( $this->transient['loaded'] !== true ) {
+			if ( true !== $this->transient['loaded'] ) {
 
 				$cache_md5_pre = $this->lca . '_';
 				$cache_salt    = __CLASS__ . '::transient';
 				$cache_id      = $cache_md5_pre . md5( $cache_salt );
 				$cache_ret     = get_transient( $cache_id );
 
-				if ( $cache_ret !== false ) {
+				if ( false !== $cache_ret ) {
 					$this->transient = $cache_ret;
 				}
 
@@ -354,7 +354,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					$cache_data = $this->get_cache_data( $cache_salt, $cache_type, $cache_exp_secs, $file_ext );
 
-					if ( $cache_data !== false ) {
+					if ( false !== $cache_data ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'cached data found: returning '.strlen( $cache_data ) . ' chars' );
@@ -595,7 +595,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					break;
 			}
 
-			if ( $this->p->debug->enabled && $cache_data !== false ) {
+			if ( $this->p->debug->enabled && false !== $cache_data ) {
 				$this->p->debug->log( 'cache data retrieved from ' . $cache_type );
 			}
 

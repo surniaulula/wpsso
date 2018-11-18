@@ -69,7 +69,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->text_domain = $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ];
 			}
 
-			if ( $label_transl !== false ) {
+			if ( false !== $label_transl ) {
 				$this->label_transl = $label_transl;	// Argument is already translated.
 			} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'title' ] ) ) {
 				$this->label_transl = sprintf( __( '%s Notice', $this->text_domain ),
@@ -331,7 +331,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					return '';
 				}
 
-			} elseif ( $ref_key !== false ) {
+			} elseif ( false !== $ref_key ) {
 
 				if ( isset( $refs[ $ref_key ] ) ) {
 					return $text_prefix . $refs[ $ref_key ] . $text_suffix;

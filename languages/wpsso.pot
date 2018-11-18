@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.5\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5038,7 +5038,7 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:830
+#: lib/meta.php:840
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -5600,23 +5600,23 @@ msgstr ""
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:3126
+#: lib/schema.php:3125
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3168
+#: lib/schema.php:3167
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3175
+#: lib/schema.php:3174
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3451
+#: lib/schema.php:3450
 msgid "adding schema for place"
 msgstr ""
 

@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				/**
 				 * Any settings page. Also matches the profile_page and users_page hooks.
 				 */
-				case ( strpos( $hook_name, '_page_' . $this->p->lca . '-' ) !== false ? true : false ):
+				case ( false !== strpos( $hook_name, '_page_' . $this->p->lca . '-' ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing scripts for settings page' );

@@ -625,7 +625,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * All meta modules set this property, so use it to optimize code execution.
 			 */
-			if ( WpssoMeta::$head_meta_tags !== false || ! isset( $screen->id ) ) {
+			if ( false !== WpssoMeta::$head_meta_tags || ! isset( $screen->id ) ) {
 				return;
 			}
 

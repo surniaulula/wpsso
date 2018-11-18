@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				/**
 				 * Any settings page. Also matches the profile_page and users_page hooks.
 				 */
-				case ( strpos( $hook_name, '_page_' . $this->p->lca . '-' ) !== false ? true : false ):
+				case ( false !== strpos( $hook_name, '_page_' . $this->p->lca . '-' ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'enqueuing styles for settings page' );
@@ -576,7 +576,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			/**
 			 * Fix the WordPress banner resolution.
 			 */
-			if ( $plugin_slug !== false && ! empty( $this->p->cf[ '*' ][ 'slug' ][$plugin_slug] ) ) {
+			if ( false !== $plugin_slug && ! empty( $this->p->cf[ '*' ][ 'slug' ][$plugin_slug] ) ) {
 
 				$ext = $this->p->cf[ '*' ][ 'slug' ][$plugin_slug];
 
