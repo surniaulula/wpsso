@@ -339,12 +339,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.7-dev.1 (TBD)**
+**Version 4.16.7-dev.1 (2018/11/19)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Added a check for the database 'max_allowed_packet' setting value.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -456,7 +456,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.16.7-dev.1 =
 
-(TBD) None.
+(2018/11/19) Added a check for the database 'max_allowed_packet' setting value.
 
 = 4.16.6 =
 
