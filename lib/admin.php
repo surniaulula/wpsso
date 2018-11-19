@@ -2196,9 +2196,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;
 			}
 
+			$this->conflict_check_db();
 			$this->conflict_check_php();
 			$this->conflict_check_wp();
 			$this->conflict_check_seo();
+		}
+
+		private function conflict_check_db() {
+
+			global $wpdb;
+
+			$query = 'SHOW VARIABLES LIKE "%s";';
+			$args  = array( 'max_allowed_packet' );
+
+			$query = $wpdb->prepare( $query, $args );
+
+			/**
+			 * OBJECT_K returns an associative array of objects.
+			 */
+			$result = $wpdb->get_results( $query, OBJECT_K );
+
+			if ( isset( $result[ 'max_allowed_packet' ]->Value ) ) {
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'db max_allowed_packet value is "' . $result[ 'max_allowed_packet' ]->Value . '"' );
+				}
+			}
 		}
 
 		private function conflict_check_php() {
@@ -2307,7 +2329,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( ! get_option( 'blog_public' ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'blog_public option is disabled' );
+					$this->p->debug->log( 'wp blog_public option is disabled' );
 				}
 
 				$notice_key = 'wordpress-search-engine-visibility-disabled';
@@ -2322,7 +2344,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private function conflict_check_seo() {
 
 			$err_pre =  __( 'Plugin conflict detected', 'wpsso' ) . ' &mdash; ';
-			$log_pre = 'plugin conflict detected - ';
+			$log_pre = 'seo plugin conflict detected - ';
 
 			/**
 			 * All in One SEO Pack

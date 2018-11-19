@@ -16,7 +16,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.0
  * WC Tested Up To: 3.5
- * Version: 4.16.6
+ * Version: 4.16.7-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -325,8 +325,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					global $wp_version;
 
 					$this->debug->log( 'debug enabled on ' . date( 'c' ) );
-					$this->debug->log( 'WP version ' . $wp_version );
 					$this->debug->log( 'PHP version ' . phpversion() );
+					$this->debug->log( 'WP version ' . $wp_version );
 					$this->debug->log( $this->check->get_ext_list() );
 				}
 
@@ -342,17 +342,17 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				$this->notice = new SucomNotice( $this );
 			} else {
-				$this->notice = new SucomNoNotice();	// make sure the notice property is always available
+				$this->notice = new SucomNoNotice();		// Make sure the notice property is always available.
 			}
 
-			$this->util    = new WpssoUtil( $this );		// extends SucomUtil
+			$this->util    = new WpssoUtil( $this );		// Extends SucomUtil.
 			$this->opt     = new WpssoOptions( $this );
-			$this->cache   = new SucomCache( $this );		// object and file caching
-			$this->style   = new WpssoStyle( $this );		// admin styles
-			$this->script  = new WpssoScript( $this );		// admin jquery tooltips
-			$this->page    = new WpssoPage( $this );		// page title, desc, etc.
-			$this->media   = new WpssoMedia( $this );		// images, videos, etc.
-			$this->filters = new WpssoFilters( $this );		// integration filters
+			$this->cache   = new SucomCache( $this );		// Object and file caching.
+			$this->style   = new WpssoStyle( $this );		// Admin styles.
+			$this->script  = new WpssoScript( $this );		// Admin jquery tooltips.
+			$this->page    = new WpssoPage( $this );		// Webpage title, desc, etc.
+			$this->media   = new WpssoMedia( $this );		// Images, videos, etc.
+			$this->filters = new WpssoFilters( $this );		// Integration filters
 			$this->head    = new WpssoHead( $this );
 
 			/**
@@ -392,6 +392,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$this->options = $this->opt->check_options( WPSSO_OPTIONS_NAME, $this->options, $network, $activate );
 
+			if ( $this->debug->enabled ) {
+				$this->debug->log( 'options array len is ' . SucomUtil::serialized_len( $this->options ) . ' bytes' );
+			}
+
 			if ( $network ) {
 
 				if ( ! empty( $this->site_options[ 'options_reload_defaults' ] ) ) {
@@ -399,6 +403,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				}
 
 				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->site_options, $network, $activate );
+
+				if ( $this->debug->enabled ) {
+					$this->debug->log( 'site options array len is ' . SucomUtil::serialized_len( $this->options ) . ' bytes' );
+				}
 			}
 
 			/**

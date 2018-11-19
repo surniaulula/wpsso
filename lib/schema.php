@@ -1378,7 +1378,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$ret = SucomUtil::a2aa( $ret );	// Convert to array of arrays.
+			$ret = SucomUtil::a_to_aa( $ret );	// Convert to array of arrays.
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( $ret );

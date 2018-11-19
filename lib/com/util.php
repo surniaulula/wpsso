@@ -1392,10 +1392,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function sanitize_file_path( $file_path ) {
+
 			if ( empty( $file_path ) ) {
 				return false;
 			}
+
 			$file_path = implode( '/', array_map( array( __CLASS__, 'sanitize_file_name' ), explode( '/', $file_path ) ) );
+
 			return $file_path;
 		}
 
@@ -1479,7 +1482,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function array_to_hashtags( $tags = array() ) {
 
-			return trim( implode( ' ', array_filter( self::sanitize_hashtags( $tags ) ) ) ); // array_filter() removes empty array values.
+			/**
+			 * array_filter() removes empty array values.
+			 */
+			return trim( implode( ' ', array_filter( self::sanitize_hashtags( $tags ) ) ) );
 		}
 
 		public static function explode_csv( $str ) {
@@ -1944,24 +1950,38 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::$cache_crawler_name;
 		}
 
-		public static function a2aa( $a ) {
+		public static function is_assoc( $mixed ) {
 
-			$aa = array();
-
-			foreach ( $a as $i ) {
-				$aa[][] = $i;
+			if ( is_array( $mixed ) ) {
+				return is_numeric( implode( array_keys( $mixed ) ) ) ? false : true;
 			}
 
-			return $aa;
+			return false;
 		}
 
-		public static function is_assoc( $arr ) {
+		public static function a_to_aa( array $arr ) {
 
-			if ( ! is_array( $arr ) ) {
-				return false;
-			} else {
-				return is_numeric( implode( array_keys( $arr ) ) ) ? false : true;
+			$arr_arr = array();
+
+			foreach ( $arr as $el ) {
+				$arr_arr[][] = $el;
 			}
+
+			return $arr_arr;
+		}
+
+		/**
+		 * Returns the number of bytes in a serialized array.
+		 */
+		public static function serialized_len( array $arr ) {
+
+			$serialized = serialize( $arr );
+
+			if ( function_exists( 'mb_strlen' ) ) {
+				return mb_strlen( $serialized, '8bit' );
+			}
+
+			return strlen( $serialized );
 		}
 
 		public static function get_opts_begin( $str, array $opts ) {
@@ -2033,7 +2053,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function next_key( $needle, array &$input, $loop = true ) {
 
 			$keys = array_keys( $input );
-			$pos = array_search( $needle, $keys );
+			$pos  = array_search( $needle, $keys );
 
 			if ( false !== $pos ) {
 				if ( isset( $keys[ $pos + 1 ] ) ) {
@@ -2052,8 +2072,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function move_to_end( array &$arr, $key ) {
 
 			if ( array_key_exists( $key, $arr ) ) {
+
 				$val = $arr[ $key ];
+
 				unset( $arr[ $key ] );
+
 				$arr[ $key ] = $val;
 			}
 
