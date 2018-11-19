@@ -20,7 +20,7 @@ Easy, complete, accurate, and automatic - give social sites and search engines b
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-<h3>What makes WPSSO Core better?</h3>
+<h3 class="top">What makes WPSSO Core better?</h3>
 
 **Makes sure your content looks great on all sites - no matter how it's crawled, shared, re-shared, posted, or embedded!**
 
@@ -339,6 +339,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.16.7-dev.1 (TBD)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.16.6 (2010/11/17)**
 
 * *New Features*
@@ -441,115 +452,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* None.
 
-**Version 4.15.0 (2018/10/04)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Added icons to most metabox tabs and the SSO &gt; Dashboard metabox titles.
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* Added the Schema SoftwareApplication type and its sub-types:
-		* Schema MobileApplication
-		* Schema VideoGame
-		* Schema WebApplication
-
-**Version 4.14.1 (2018/09/29)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Moved all column related options from the SSO &gt; Advanced &gt; Custom Meta tab to a new Columns tab.
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* None.
-
-**Version 4.14.0 (2018/09/26)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Added the Open Graph 'product:price:amount' and 'product:price:currency' meta tags for each product variation, if available.
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* None.
-
-**Version 4.13.1 (2018/09/23)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* None.
-* *Bugfixes*
-	* Fixed deprecated call to generate_description() for The SEO Framework (Pro version).
-* *Developer Notes*
-	* Added detection of the BuddyBlog plugin in the WpssoCheck get_avail() method.
-	* Renamed the SucomUtil get_json_decode_scripts() method to get_json_scripts() and added a $do_encode = true argument.
-	* Fine-tuned the "show" and "hide" jQuery function hooks to trigger only for specific table rows.
-
-**Version 4.13.0 (2018/09/16)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Refactored the BuddyPress integration modules to support ajax queries in the new BuddyPress templates (Pro version).
-	* Added clearing of the LiteSpeed Cache when using the "Clear All Cache" button.
-	* Removed the Pinterest "Author Name Format" option.
-* *Bugfixes*
-	* Fixed the jQuery ajaxNoticesData '_notice_types' query to avoid matching a Comodo request filter.
-* *Developer Notes*
-	* Changed the WPSSO_META_SAVE_PRIORITY constant from 5 to -10.
-	* Changed the WPSSO_META_CACHE_PRIORITY constant from 10 to 0 in order to run before caching plugins clear their cache.
-	* Optimized the clearing of user meta columns in WpssoUtil::delete_all_column_meta().
-	* Increased the PHP set_time_limit() value when running the following methods in the WordPress scheduler:
-		* WpssoUtil::add_user_roles()
-		* WpssoUtil::clear_all_cache()
-		* WpssoUtil::refresh_all_cache()
-
-**Version 4.12.0 (2018/09/09)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Added new options under the SSO &gt; Advanced &gt; Cache tab:
-		* Clear All Caches on Activate
-		* Clear All Caches on Deactivate
-		* Clear Term Cache for Published Post
-	* The "Clear All Caches" button and link now start the clear cache task in the background.
-	* The "Auto-Refresh Cache After Clearing" task is now started in the background as well.
-	* Added support for the "product:retailer_item_id" meta tag (aka "Product SKU").
-	* Added a new "Product SKU" option in the Document SSO metabox.
-	* Added a new "Product SKU Custom Field" option under the SSO &gt; Advanced &gt; Custom Meta tab.
-	* Added sub-types to the Schema AdministrativeArea type:
-		* City
-		* Country
-		* State
-	* Updated the WooCommerce and Easy Digital Downloads integration modules to provide a default "Product SKU" value.
-	* Renamed the "Preserve Settings on Uninstall" option to "Remove All Settings on Uninstall" (unchecked by default).
-	* Removed support for automatically hidden notifications.
-* *Bugfixes*
-	* Fixed an incorrect reference to 'price_high' (should have been 'price_highest') in the Easy Digital Download integration module.
-* *Developer Notes*
-	* Added a new 'on_show_unhide_rows' event for the SucomForm::get_select() method.
-	* Moved the "person" role additional from the plugin activation method to a scheduled task.
-	* Reviewed all calls to get_users(), get_posts(), and get_terms() to minimize memory usage.
-	* Minor code changes to rename the package check method.
-	* Added new methods in the WpssoUtil class to optionally run some tasks in background:
-		* schedule_add_user_roles()
-		* schedule_clear_all_cache()
-		* schedule_refresh_all_cache()
-	* Refactored SucomNotice methods to handle / store notices for different user IDs than the current user ID.
-
 == Upgrade Notice ==
+
+= 4.16.7-dev.1 =
+
+(TBD) None.
 
 = 4.16.6 =
 
 (2010/11/17) Fixed post, term, user options fallback in Free version.
-
-= 4.16.5 =
-
-(2010/11/14) Deprecated the redundant og:image:secure_url and og:video:secure_url meta tags (see changelog for details). Fixed duplicate variable names in the currency lookup methods. Fixed unnecessary type-casting in the WpssoSchema::organization_to_localbusiness() method argument.
 
