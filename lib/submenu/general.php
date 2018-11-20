@@ -178,7 +178,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
 					'</td>';
 
-					$table_rows['og_desc_hashtags'] = $this->form->get_tr_hide( 'basic', 'og_desc_max_len' ) . 
+					$table_rows['og_desc_hashtags'] = $this->form->get_tr_hide( 'basic', 'og_desc_hashtags' ) . 
 					$this->form->get_th_html( _x( 'Add Hashtags to Descriptions', 'option label', 'wpsso' ), '', 'og_desc_hashtags' ) . 
 					'<td>' . $this->form->get_select( 'og_desc_hashtags', range( 0, $this->p->cf['form']['max_hashtags'] ), 'short', '', true ) . ' ' . 
 						_x( 'tag names', 'option comment', 'wpsso' ) . '</td>';

@@ -1290,7 +1290,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_img_max':
 				case 'og_vid_max':
 				case 'og_desc_hashtags': 
-				case ( preg_match( '/_(cache_exp|filter_prio)$/', $base_key ) ? true : false ):
+				case ( preg_match( '/_(cache_exp|caption_hashtags|filter_prio)$/', $base_key ) ? true : false ):
 				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
 
 					return 'integer';

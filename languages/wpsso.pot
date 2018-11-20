@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.7-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.7-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1149,11 +1149,11 @@ msgstr ""
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/util.php:1742
+#: lib/com/util.php:1754
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1753
+#: lib/com/util.php:1765
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -5182,44 +5182,44 @@ msgstr ""
 msgid "Please correct the banner image at %s."
 msgstr ""
 
-#: lib/page.php:351 lib/page.php:353 lib/page.php:632 lib/page.php:634
-#: lib/page.php:708
+#: lib/page.php:353 lib/page.php:355 lib/page.php:634 lib/page.php:636
+#: lib/page.php:710
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:426
+#: lib/page.php:428
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:691
+#: lib/page.php:693
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:698
+#: lib/page.php:700
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:719
+#: lib/page.php:721
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:726
+#: lib/page.php:728
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:730
+#: lib/page.php:732
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:734
+#: lib/page.php:736
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:738
+#: lib/page.php:740
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:776 lib/pro/social/buddypress.php:665
+#: lib/page.php:778 lib/pro/social/buddypress.php:665
 msgid "No Description"
 msgstr ""
 

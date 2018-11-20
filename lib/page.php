@@ -127,7 +127,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Check for custom caption if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_key ) ) {
+			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
 				$cap_text = $mod[ 'obj' ] ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
@@ -141,7 +141,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$hashtags = $this->get_hashtags( $mod[ 'id' ], $add_hashtags );
 
 						if ( ! empty( $hashtags ) ) {
+
 							$adj_max_len = $max_len - strlen( $hashtags ) - 1;
+
 							$cap_text = $this->p->util->limit_text_length( $cap_text, $adj_max_len, '...', false ) . ' ' . $hashtags;
 						}
 					}
@@ -183,7 +185,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						/**
 						 * Get the title first.
 						 */
-						$cap_text = $this->get_title( 0, '', $mod, $read_cache, false, false, $md_key_title );	// $add_hashtags is false.
+						$cap_text = $this->get_title( 0, '', $mod, $read_cache, $add_hashtags = false, false, $md_key_title );
 
 						/**
 						 * Add a separator between title and description.
@@ -283,7 +285,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Check for custom title if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_key ) ) {
+			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
 				$title_text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
@@ -319,11 +321,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( preg_match( '/(.*)(( #[a-z0-9\-]+)+)$/U', $title_text, $match ) ) {
 
 				$title_text = $match[1];
-				$hashtags = trim( $match[2] );
+				$hashtags   = trim( $match[2] );
 
 			} elseif ( $mod['is_post'] ) {
 
-				if ( ! empty( $add_hashtags ) && ! empty( $this->p->options['og_desc_hashtags'] ) ) {
+				if ( ! empty( $add_hashtags ) ) {
 					$hashtags = $this->get_hashtags( $mod[ 'id' ], $add_hashtags );	// $add_hashtags = true | false | numeric
 				}
 			}
@@ -554,7 +556,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Check for custom description if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_key ) ) {
+			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
 				$desc_text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
@@ -594,7 +596,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod['is_post'] ) {
 
-				if ( ! empty( $add_hashtags ) && ! empty( $this->p->options['og_desc_hashtags'] ) ) {
+				if ( ! empty( $add_hashtags ) ) {
 					$hashtags = $this->get_hashtags( $mod[ 'id' ], $add_hashtags );
 				}
 			}
@@ -861,10 +863,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$text = '';
+
 			/**
 			 * Check for custom text if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_key ) ) {
+			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
 				$text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
@@ -1112,29 +1116,95 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( $this->p->lca . '_article_section', $section, $post_id );
 		}
 
+		/**
+		 * Returns a comma delimited text string of keywords (ie. post tag names).
+		 */
+		public function get_keywords( array $mod, $read_cache = true, $md_key = '' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			$keywords = '';
+
+			/**
+			 * Check for custom keywords if a metadata index key is provided.
+			 */
+			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
+
+				$keywords = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+
+				if ( $this->p->debug->enabled ) {
+					if ( empty( $keywords ) ) {
+						$this->p->debug->log( 'no custom keywords found for md_key' );
+					} else {
+						$this->p->debug->log( 'custom keywords = "' . $keywords . '"' );
+					}
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'custom keywords skipped: no md_key value' );
+			}
+
+			/**
+			 * If there's no custom keywords, then go ahead and generate the keywords value.
+			 */
+			if ( empty( $keywords ) ) {
+
+				$tags = $this->get_tags( $mod[ 'id' ] );
+
+				if ( ! empty( $tags ) ) {
+
+					$keywords = SucomUtil::array_to_keywords( $tags );	// Returns a comma delimited text string.
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'keywords = "' . $keywords . '"' );
+					}
+				}
+			}
+
+			return $keywords;
+		}
+
 		public function get_hashtags( $post_id, $add_hashtags = true ) {
 
-			if ( empty( $add_hashtags ) ) {	// check for false or 0
-				return;
-			} elseif ( is_numeric( $add_hashtags ) ) {
+			if ( empty( $add_hashtags ) ) {	// Check for false or 0.
+
+				return '';
+
+			} elseif ( is_numeric( $add_hashtags ) ) {	// Return a specific number of hashtags.
+
 				$max_hashtags = $add_hashtags;
-			} elseif ( ! empty( $this->p->options['og_desc_hashtags'] ) ) {
+
+			} elseif ( ! empty( $this->p->options['og_desc_hashtags'] ) ) {	// Return the default number of hashtags.
+
 				$max_hashtags = $this->p->options['og_desc_hashtags'];
+
 			} else {
-				return;
+				return '';
 			}
 
 			$hashtags = apply_filters( $this->p->lca . '_hashtags_seed', '', $post_id, $add_hashtags );
 
-			if ( ! empty( $hashtags ) ) {
+			if ( ! empty( $hashtags ) ) {	// Seed hashtags returned.
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'hashtags seed = "' . $hashtags . '"' );
 				}
+
 			} else {
-				$tags = array_slice( $this->get_tags( $post_id ), 0, $max_hashtags );
+
+				$tags = $this->get_tags( $post_id );
+
+				$tags = array_slice( $tags, 0, $max_hashtags );
+
 				if ( ! empty( $tags ) ) {
-					// remove special character incompatible with Twitter
+
+					/**
+					 * Remove special character incompatible with Twitter.
+					 */
 					$hashtags = SucomUtil::array_to_hashtags( $tags );
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'hashtags (max ' . $max_hashtags . ') = "' . $hashtags . '"' );
 					}
@@ -1144,11 +1214,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( $this->p->lca . '_hashtags', $hashtags, $post_id, $add_hashtags );
 		}
 
+		/**
+		 * Returns an array of post or search query tags.
+		 */
 		public function get_tags( $post_id ) {
 
 			$tags = apply_filters( $this->p->lca . '_tags_seed', array(), $post_id );
 
-			if ( ! empty( $tags ) ) {
+			if ( ! empty( $tags ) ) {	// See tags returned.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'tags seed = "' . implode( ',', $tags ) . '"' );
@@ -1156,26 +1229,41 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} else {
 
-				if ( is_singular() || ! empty( $post_id ) ) {
-					$tags = $this->get_wp_tags( $post_id );
-				} elseif ( is_search() ) {
-					$tags = preg_split( '/ *, */', get_search_query( false ) );
-				}
+				if ( is_search() ) {
 
+					$tags = preg_split( '/ *, */', get_search_query( false ) );
+
+				} else {
+
+					if ( is_singular() ) {
+						if ( empty( $post_id ) ) {
+							$post_id = SucomUtil::get_post_object( $post_id, 'ID' );
+						}
+					}
+
+					$tags = $this->get_wp_tags( $post_id );	// An empty post ID is ok.
+				}
+				
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'raw tags = "' . implode( ', ', $tags ) . '"' );
 				}
 
-				$tags = array_unique( array_map( array( 'SucomUtil', 'sanitize_tag' ), $tags ) );
+				if ( ! empty( $tags ) ) {
 
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'sanitized tags = "' . implode( ', ', $tags ) . '"' );
+					$tags = array_unique( $tags );
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'sanitized tags = "' . implode( ', ', $tags ) . '"' );
+					}
 				}
 			}
 
 			return apply_filters( $this->p->lca . '_tags', $tags, $post_id );
 		}
 
+		/**
+		 * Returns an array of post tags.
+		 */
 		public function get_wp_tags( $post_id ) {
 
 			$tags = apply_filters( $this->p->lca . '_wp_tags_seed', array(), $post_id );
@@ -1186,10 +1274,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'wp tags seed = "' . implode( ',', $tags ) . '"' );
 				}
 
-			} else {
+			} elseif ( ! empty( $post_id ) ) {
 
-				foreach ( wp_get_post_tags( $post_id, array( 'fields' => 'names') ) as $tag_name ) {
-					$tags[] = $tag_name;
+				foreach ( wp_get_post_tags( $post_id ) as $tag_obj ) {
+					if ( ! empty( $tag_obj->name ) ) {
+						$tags[] = $tag_obj->name;
+					}
 				}
 			}
 

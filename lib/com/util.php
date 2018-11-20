@@ -1461,16 +1461,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function sanitize_tag( $tag ) {
 
 			$tag = sanitize_title_with_dashes( $tag, '', 'display' );
+
 			$tag = urldecode( $tag );
 
 			return $tag;
 		}
 
 		/**
-		 * Note that sanitize_hashtags() truncates tags that begin with a number - 
-		 * hashtags cannot begin with a number.
+		 * Note that hashtags cannot begin with a number - this methos truncates tags that begin with a number.
 		 */
-		public static function sanitize_hashtags( $tags = array() ) {
+		public static function sanitize_hashtags( array $tags = array() ) {
 
 			return preg_replace( array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ), array( '', '', '#$0' ), $tags );
 		}
@@ -1480,12 +1480,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return preg_replace( '/[^a-z0-9_\-]/', '', strtolower( $key ) );
 		}
 
-		public static function array_to_hashtags( $tags = array() ) {
+		public static function array_to_keywords( array $tags = array() ) {
 
-			/**
-			 * array_filter() removes empty array values.
-			 */
-			return trim( implode( ' ', array_filter( self::sanitize_hashtags( $tags ) ) ) );
+			$keywords = array_map( 'sanitize_text_field', $tags );
+
+			$keywords = trim( implode( ', ', $keywords ) );
+
+			return $keywords;
+		}
+
+		public static function array_to_hashtags( array $tags = array() ) {
+
+			$hashtags = self::sanitize_hashtags( $tags );
+
+			$hashtags = array_filter( $hashtags );	// Removes empty array elements.
+
+			$hashtags = trim( implode( ' ', $hashtags ) );
+
+			return $hashtags;
 		}
 
 		public static function explode_csv( $str ) {
