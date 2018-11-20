@@ -339,16 +339,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.7-dev.1 (2018/11/20)**
+**Version 4.16.7-dev.2 (2018/11/20)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* Added a check for the database 'max_allowed_packet' setting value.
 * *Bugfixes*
-	* None.
+	* Fixed option value sanitation for the number of caption hashtags.
 * *Developer Notes*
-	* None.
+	* Added a new WpssoPage::get_keywords() method.
+	* Added a new SucomUtil::array_to_keywords() method.
 
 **Version 4.16.6 (2010/11/17)**
 
@@ -454,9 +455,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.7-dev.1 =
+= 4.16.7-dev.2 =
 
-(2018/11/20) Added a check for the database 'max_allowed_packet' setting value.
+(2018/11/20) Added a check for the database 'max_allowed_packet' setting value. Fixed option value sanitation for the number of caption hashtags.
 
 = 4.16.6 =
 
