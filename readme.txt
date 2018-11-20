@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.7-dev.1 (2018/11/19)**
+**Version 4.16.7-dev.1 (2018/11/20)**
 
 * *New Features*
 	* None.
@@ -456,7 +456,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.16.7-dev.1 =
 
-(2018/11/19) Added a check for the database 'max_allowed_packet' setting value.
+(2018/11/20) Added a check for the database 'max_allowed_packet' setting value.
 
 = 4.16.6 =
 
