@@ -348,8 +348,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed option value sanitation for the number of caption hashtags.
 * *Developer Notes*
-	* Added a new WpssoPage::get_keywords() method.
 	* Added a new SucomUtil::array_to_keywords() method.
+	* Added a new WpssoPage::get_text_and_hashtags() method to extract / add hashtags to titles, descriptions, and captions.
+	* Added a new WpssoPage::get_keywords() method.
+	* Removed the WpssoPage::get_wp_tags() method.
+	* Removed the following filters:
+		* 'wpsso_wp_tags_seed'
+		* 'wpsso_wp_tags'
+	* Renamed the WpssoPage::get_tags() method to get_tag_names().
+	* Renamed the following filters:
+		* 'wpsso_tags_seed' to 'wpsso_tag_names_seed'
+		* 'wpsso_tags' to 'wpsso_tag_names'
+	* Changed the WpssoPage::get_hashtags() method argument from $post_id to $mod.
+	* Changed the WpssoPage::get_tag_names() method argument from $post_id to $mod.
+	* Changed the 'wpsso_hashtags_seed', 'wpsso_hashtags', 'wpsso_tag_names_seed' and 'wpsso_tag_names' filters $post_id argument to $mod.
 
 **Version 4.16.6 (2010/11/17)**
 
