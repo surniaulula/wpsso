@@ -339,12 +339,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.0-dev.3 (2018/11/21)**
+**Version 4.17.0-dev.4 (2018/11/21)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* Added a check for the database 'max_allowed_packet' setting value.
+	* Added a button under the Document SSO &gt; Validate tab for the LinkedIn Post Inspector.
+	* Added a check for the database 'max_allowed_packet' option value, along with an error notice if the value is less than 1MB.
+	* Updated the help text and translation strings for the "SSO WebSite Pages" settings page options.
 * *Bugfixes*
 	* Fixed option value sanitation for the number of caption hashtags.
 * *Developer Notes*
@@ -467,7 +469,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.17.0-dev.3 =
+= 4.17.0-dev.4 =
 
 (2018/11/21) Added a check for the database 'max_allowed_packet' setting value. Fixed option value sanitation for the number of caption hashtags.
 
