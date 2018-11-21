@@ -784,7 +784,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( $mod['post_author'] ) {
 
-							$mt_og['article:author']      = $user_mod->get_og_profile_urls( $mod['post_author'], $crawler_name );
+							$mt_og['article:author'] = $user_mod->get_og_profile_urls( $mod['post_author'], $crawler_name );
+
 							$mt_og['article:author:name'] = $user_mod->get_author_meta( $mod['post_author'], $this->p->options['seo_author_name'] );
 
 						} else {
@@ -792,8 +793,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 
 						if ( ! empty( $mod['post_coauthors'] ) ) {
-							$mt_og['article:author'] = array_merge( $mt_og['article:author'],
-								$user_mod->get_og_profile_urls( $mod['post_coauthors'], $crawler_name ) );
+
+							$og_profile_urls = $user_mod->get_og_profile_urls( $mod['post_coauthors'], $crawler_name );
+
+							$mt_og['article:author'] = array_merge( $mt_og['article:author'], $og_profile_urls );
 						}
 					}
 				}

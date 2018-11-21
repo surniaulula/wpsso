@@ -1487,15 +1487,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-seo_author_name':	// Author / Person Name Format
+						case 'tooltip-seo_author_name':		// Author / Person Name Format
 
-							$text = sprintf( __( 'Select an <em>%1$s</em> for the author / Person markup, or "[None]" to disable this feature (the recommended value is "Display Name").', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
+							$text =  __( 'Select a name format for author meta tags and/or Schema Person markup.', 'wpsso' );
 
 							break;
 
 						case 'tooltip-seo_author_field':	// Author Link URL Profile Contact
-
-							$text = sprintf( __( '%1$s can include an %2$s link URL in the head section for Google.', 'wpsso' ), $info[ 'short' ], '<code>author</code>' ) . ' ';
 
 							$text = sprintf( __( 'Select the contact field value to use from the author\'s WordPress profile page for the %s link URL value.', 'wpsso' ), '<code>author</code>' );
 
@@ -1919,11 +1917,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Facebook and most social websites read Open Graph meta tags.', 'wpsso' ) . ' ';
+							$text .= __( 'All social websites read Open Graph meta tags.', 'wpsso' ) . ' ';
 
-							$text .= __( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating the Open Graph meta tag values.', 'wpsso' ) . ' ';
+							$text .= __( 'The Facebook debugger allows you to refresh Facebook\'s cache, while also validating Open Graph meta tag values.', 'wpsso' ) . ' ';
 
-							$text .= __( 'The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' );
+							$text .= __( 'The Facebook debugger is the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1933,7 +1931,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( '', 'wpsso' );
+							$text .= __( 'Refresh LinkedIn\'s cache and validate meta tag values.', 'wpsso' ) . ' ';
 
 							$text .= '</p>';
 
@@ -1943,7 +1941,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Verify that Google can correctly parse your structured data markup (meta tags, Schema, Microdata, and JSON-LD markup) for Google Search and Google+.', 'wpsso' );
+							$text .= __( 'Verify the webpage structured data markup (meta tags, Schema, Microdata, and JSON-LD).', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1953,7 +1951,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Validate Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' );
+							$text .= __( 'Validate Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1961,11 +1959,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-meta-validate-twitter':
 
-							$text = '<p class="top"><i>';
+							$text = '<p class="top">';
 
-							$text .= __( 'The Twitter Card Validator does not accept query arguments &mdash; paste the following URL in the Twitter Card Validator "Card URL" input field (copy the URL using the clipboard icon):', 'wpsso' );
+							$text .= __( 'The Twitter Card validator does not currently accept query arguments &mdash; paste the following URL in the Twitter Card validator "Card URL" input field:', 'wpsso' );
 
-							$text .= '</i></p>';
+							$text .= '</p>';
 
 						 	break;
 
@@ -1976,9 +1974,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates.', 'wpsso' ) . ' ';
+							$text .= __( 'Validate HTML syntax and HTML 5 conformance of your meta tags and theme templates.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Theme templates with serious errors may prevent social and search crawlers from parsing the webpage HTML, so validating your theme template markup is important.', 'wpsso' );
+							$text .= __( 'Templates with serious errors may prevent social and search crawlers from parsing the webpage HTML, so validating your theme template markup is important.', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1995,7 +1993,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-meta-validate-amp':
 
-							$text = '<p class="top">'.__( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ).'</p>'.( $this->p->avail[ '*' ]['amp'] ? '' : '<p><i>'.sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' ).'</i></p>' );
+							$text = '<p class="top">';
+							
+							$text .= __( 'Validate the HTML syntax and HTML AMP conformance of your meta tags and the AMP markup of your templates.', 'wpsso' ) .' ';
+
+							$text .= '</p>';
+
+							if ( empty( $this->p->avail[ '*' ]['amp'] ) ) {
+
+								$text .= '<p><i>';
+
+								$text .= sprintf( __( 'The <a href="%s">AMP plugin by Automattic</a> is required to validate AMP formatted webpages.', 'wpsso' ), 'https://wordpress.org/plugins/amp/' );
+
+								$text .= '</i></p>';
+							}
 
 						 	break;
 

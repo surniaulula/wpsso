@@ -423,7 +423,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/**
 			 * LinkedIn.
 			 */
-			$table_rows['validate_linkedin'] = $form->get_th_html( _x( 'LinkedIn Post Inspector ', 'option label', 'wpsso' ), 'medium' ) . 
+			$table_rows['validate_linkedin'] = $form->get_th_html( _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ), 'medium' ) . 
 			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-linkedin' ) . '</td>' . 
 			'<td class="validate">' . $form->get_button( _x( 'Validate Metadata', 'submit button', 'wpsso' ),
 				'button-secondary', '', $linkedin_url, true ) . '</td>';
@@ -433,7 +433,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 */
 			$table_rows['validate_google'] = $form->get_th_html( _x( 'Google Structured Data Testing Tool', 'option label', 'wpsso' ), 'medium' ) . 
 			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-google' ) . '</td>' . 
-			'<td class="validate">' . $form->get_button( _x( 'Validate Data Markup', 'submit button', 'wpsso' ),
+			'<td class="validate">' . $form->get_button( _x( 'Validate Structured Data', 'submit button', 'wpsso' ),
 				'button-secondary', '', $google_url, true ) . '</td>';
 
 			/**

@@ -95,11 +95,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$defs[ $locale_key ] = $this->p->og->get_fb_locale( array(), 'current' );
 				}
 
-				$defs['seo_author_field'] = $this->p->options['plugin_cm_gp_name'];	// Reset to possible custom value.
 				$defs['og_author_field']  = $this->p->options['plugin_cm_fb_name'];	// Reset to possible custom value.
 
-				$defs['plugin_wpseo_social_meta'] = $this->p->avail['seo']['wpseo'] ||
-					get_option( 'wpseo' ) ? 1 : 0;
+				$defs['seo_author_field'] = $this->p->options['plugin_cm_gp_name'];	// Reset to possible custom value.
+
+				$defs['plugin_wpseo_social_meta'] = $this->p->avail['seo']['wpseo'] || get_option( 'wpseo' ) ? 1 : 0;
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 					if ( ! empty( $info['update_auth'] ) && $info['update_auth']!== 'none' ) {	// Just in case.
