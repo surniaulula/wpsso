@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.16.7-dev.2 (2018/11/20)**
+**Version 4.17.0-dev.3 (2018/11/21)**
 
 * *New Features*
 	* None.
@@ -455,9 +455,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.16.7-dev.2 =
+= 4.17.0-dev.3 =
 
-(2018/11/20) Added a check for the database 'max_allowed_packet' setting value. Fixed option value sanitation for the number of caption hashtags.
+(2018/11/21) Added a check for the database 'max_allowed_packet' setting value. Fixed option value sanitation for the number of caption hashtags.
 
 = 4.16.6 =
 
