@@ -802,7 +802,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( ! isset( $mt_og['article:tag'] ) ) {
-					$mt_og['article:tag'] = $this->p->page->get_tags( $post_id );
+					$mt_og['article:tag'] = $this->p->page->get_tag_names( $mod );
 				}
 
 				if ( ! isset( $mt_og['article:section'] ) ) {

@@ -327,5 +327,3 @@
 
 'wpsso_user_url' ( $url, $mod, $add_page, $src_id )
 
-'wpsso_wp_tags' ( $tags, $post_id )
-

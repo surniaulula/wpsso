@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.16.7-dev.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5182,44 +5182,44 @@ msgstr ""
 msgid "Please correct the banner image at %s."
 msgstr ""
 
-#: lib/page.php:353 lib/page.php:355 lib/page.php:634 lib/page.php:636
-#: lib/page.php:710
+#: lib/page.php:332 lib/page.php:334 lib/page.php:608 lib/page.php:610
+#: lib/page.php:684
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:428
+#: lib/page.php:407
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:693
+#: lib/page.php:667
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:700
+#: lib/page.php:674
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:721
+#: lib/page.php:695
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:728
+#: lib/page.php:702
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:732
+#: lib/page.php:706
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:736
+#: lib/page.php:710
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:740
+#: lib/page.php:714
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:778 lib/pro/social/buddypress.php:665
+#: lib/page.php:752 lib/pro/social/buddypress.php:665
 msgid "No Description"
 msgstr ""
 
@@ -5429,32 +5429,32 @@ msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:100 lib/pro/forum/bbpress.php:191
+#: lib/pro/forum/bbpress.php:106 lib/pro/forum/bbpress.php:197
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:200
+#: lib/pro/forum/bbpress.php:206
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:206
+#: lib/pro/forum/bbpress.php:212
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:212
+#: lib/pro/forum/bbpress.php:218
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:218
+#: lib/pro/forum/bbpress.php:224
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:224
+#: lib/pro/forum/bbpress.php:230
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
