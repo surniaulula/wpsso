@@ -3339,7 +3339,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$person_opts = array(
 					'person_type'      => 'person',
 					'person_url'       => $user_mod[ 'obj' ]->get_author_website( $user_id, 'url' ),
-					'person_name'      => $user_mod[ 'obj' ]->get_author_meta( $user_id, $wpsso->options['schema_author_name'] ),
+					'person_name'      => $user_mod[ 'obj' ]->get_author_meta( $user_id, $wpsso->options['seo_author_name'] ),
 					'person_desc'      => $user_desc,
 					'person_job_title' => $user_mod[ 'obj' ]->get_options( $user_id, 'schema_person_job_title' ),
 					'person_og_image'  => $user_mod[ 'obj' ]->get_og_images( 1, $size_name, $user_id, false ),
@@ -3996,7 +3996,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$author_url  = $user_mod[ 'obj' ]->get_author_website( $author_id, 'url' );
-			$author_name = $user_mod[ 'obj' ]->get_author_meta( $author_id, $this->p->options['schema_author_name'] );
+			$author_name = $user_mod[ 'obj' ]->get_author_meta( $author_id, $this->p->options['seo_author_name'] );
 			$author_desc = $user_mod[ 'obj' ]->get_options_multi( $author_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 			if ( empty( $author_desc ) ) {

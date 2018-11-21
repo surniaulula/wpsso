@@ -783,9 +783,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$user_mod =& $this->p->m['util']['user'];
 
 						if ( $mod['post_author'] ) {
+
 							$mt_og['article:author']      = $user_mod->get_og_profile_urls( $mod['post_author'], $crawler_name );
-							$mt_og['article:author:name'] = $user_mod->get_author_meta( $mod['post_author'],
-								$this->p->options['fb_author_name'] );
+							$mt_og['article:author:name'] = $user_mod->get_author_meta( $mod['post_author'], $this->p->options['seo_author_name'] );
+
 						} else {
 							$mt_og['article:author'] = array();
 						}

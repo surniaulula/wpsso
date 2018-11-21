@@ -1405,20 +1405,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-fb_publisher_url':
 
-							$fb_business_url = __( 'https://www.facebook.com/business', 'wpsso' );
-							$fb_sucom_url    = __( 'https://www.facebook.com/SurniaUlulaCom', 'wpsso' );
+							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook Business Page for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://www.facebook.com/business', 'wpsso' ) ) . ' ';
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook Business Page for your website / business</a>, you may enter its URL here (for example, the Facebook Business Page URL for %2$s is <a href="%3$s">%4$s</a>).', 'wpsso' ), $fb_business_url, 'Surnia Ulula', $fb_sucom_url, $fb_sucom_url ) . ' ';
+							$text .= sprintf( __( 'As an example, the Facebook Business Page URL for %1$s is <a href="%2$s">%2$s</a>).', 'wpsso' ), 'Surnia Ulula', __( 'https://www.facebook.com/SurniaUlulaCom', 'wpsso' ) ) . ' ';
 
-							$text .= '<br/><br/>';
-
-							$text .= __( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> webpages and in the site\'s Schema Organization markup.', 'wpsso' ) . ' ';
+							$text .= __( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> webpages and the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
 							
-							$text .= __( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
-
-							$text .= '<br/><br/>';
-
-							// "This option is localized" text will be added here.
+							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
 
 							break;
 
@@ -1451,14 +1444,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-fb_author_name':
-
-							$text = sprintf( __( '%1$s uses the Facebook contact field value from the author\'s WordPress profile for %2$s Open Graph meta tags. This allows Facebook to credit an author on shares and link their Facebook page URL.', 'wpsso' ), $info[ 'short' ], '<code>article:author</code>' ) . ' ';
-							
-							$text .= sprintf( __( 'If an author does not have a Facebook page URL in their WordPress profile, %1$s can fallback and use the <em>%2$s</em> instead (the recommended value is "Display Name").', 'wpsso' ), $info[ 'short' ], _x( 'Author Name Format', 'option label', 'wpsso' ) );
-
-							break;
-
 						case 'tooltip-fb_locale':
 
 							$text = sprintf( __( 'Facebook does not support all WordPress locale values. If the Facebook debugger returns an error parsing the %1$s meta tag, you may have to choose an alternate Facebook language for that WordPress locale.', 'wpsso' ), '<code>og:locale</code>' );
@@ -1480,13 +1465,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-seo_publisher_url':
+						case 'tooltip-seo_publisher_url':	// Google+ Business Page URL
 
-							$text = 'If you have a <a href="http://www.google.com/+/business/">Google+ Business Page for your website / business</a>, you may enter its URL here (for example, the Google+ Business Page URL for Surnia Ulula is <a href="https://plus.google.com/+SurniaUlula/">https://plus.google.com/+SurniaUlula/</a>). The Google+ Business Page URL will be used in a link relation head tag, and the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = sprintf( __( 'If you have a <a href="%1$s">Google+ Business Page for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'http://www.google.com/+/business/', 'wpsso' ) ) . ' ';
+
+							$text .= sprintf( __( 'As an example, the Google+ Business Page URL for %1$s is <a href="%2$s">%2$s</a>).', 'wpsso' ), 'Surnia Ulula', __( 'https://plus.google.com/+SurniaUlula/', 'wpsso' ) ) . ' ';
+							
+							$text .= __( 'The Google+ Business Page URL will be used in a link relation head tag and the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+							
+							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-seo_desc_max_len':
+						case 'tooltip-seo_desc_max_len':	// Search / SEO Description Length
 
 							$text = __( 'The maximum length of text used for the Google Search "description" meta tag.', 'wpsso' ) . ' ';
 							
@@ -1496,11 +1487,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-seo_author_field':
+						case 'tooltip-seo_author_name':	// Author / Person Name Format
+
+							$text = sprintf( __( 'Select an <em>%1$s</em> for the author / Person markup, or "[None]" to disable this feature (the recommended value is "Display Name").', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
+
+							break;
+
+						case 'tooltip-seo_author_field':	// Author Link URL Profile Contact
 
 							$text = sprintf( __( '%1$s can include an %2$s link URL in the head section for Google.', 'wpsso' ), $info[ 'short' ], '<code>author</code>' ) . ' ';
 
-							$text = sprintf( __( 'Select the contact field to use from the author\'s WordPress profile page for the %s link value.', 'wpsso' ), '<code>author</code>' );
+							$text = sprintf( __( 'Select the contact field value to use from the author\'s WordPress profile page for the %s link URL value.', 'wpsso' ), '<code>author</code>' );
 
 							break;
 
@@ -1596,12 +1593,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_author_name':
-
-							$text = sprintf( __( 'Select an <em>%1$s</em> for the author / Person markup, or "[None]" to disable this feature (the recommended value is "Display Name").', 'wpsso' ), _x( 'Author Name Format', 'option label', 'wpsso' ) );
-
-							break;
-
 						case 'tooltip-schema_type_for_home_index':	// Item Type for Blog Front Page
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_index' );
@@ -1682,7 +1673,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-tc_site':
 
-							$text = 'The <a href="https://business.twitter.com/">Twitter @username for your website and/or business</a> (not your personal Twitter @username). As an example, the Twitter @username for Surnia Ulula is <a href="https://twitter.com/surniaululacom">@surniaululacom</a>. The website / business @username is also used for the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = sprintf( __( 'The <a href="%1$s">Twitter @username for your website and/or business</a> (not your personal Twitter @username).', 'wpsso' ), __( 'https://business.twitter.com/', 'wpsso' ) ) . ' ';
+							
+							$text .= sprintf( __( 'As an example, the Twitter @username for %1$s is <a href="%2$s">%3$s</a>.', 'wpsso' ), 'Surnia Ulula', __( 'https://twitter.com/surniaululacom', 'wpsso' ), '@surniaululacom' ) . ' ';
+							
+							$text .= __( 'The Twitter @username for your website and/or business will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
 
 							break;
 
@@ -1749,7 +1746,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-p_publisher_url':
 
-							$text = 'If you have a <a href="https://business.pinterest.com/">Pinterest Business Page for your website / business</a>, you may enter its URL here. The Publisher Business Page URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = sprintf( __( 'If you have a <a href="%1$s">Pinterest Company Page for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.pinterest.com/', 'wpsso' ) ) . ' ';
+
+							$text .= __( 'The Pinterest Company Page URL will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
 
 							break;
 
@@ -1796,7 +1797,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-instgram_publisher_url':
 
-							$text = 'If you have an <a href="http://blog.business.instagram.com/">Instagram account for your website / business</a>, you may enter its URL here. The Instagram Business Page URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = sprintf( __( 'If you have an <a href="%1$s">Intagram account for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'http://blog.business.instagram.com/', 'wpsso' ) ) . ' ';
+
+							$text .= __( 'The Instagram Business Page URL will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
 
 							break;
 
@@ -1817,7 +1822,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-linkedin_publisher_url':
 
-							$text = 'If you have a <a href="https://business.linkedin.com/marketing-solutions/company-pages/get-started">LinkedIn Company Page for your website / business</a>, you may enter its URL here (for example, the LinkedIn Company Page URL for Surnia Ulula is <a href="https://www.linkedin.com/company/surnia-ulula-ltd">https://www.linkedin.com/company/surnia-ulula-ltd</a>). The LinkedIn Company Page URL will be included in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = sprintf( __( 'If you have a <a href="%1$s">LinkedIn Company Page for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.linkedin.com/marketing-solutions/company-pages/get-started', 'wpsso' ) ) . ' ';
+
+							$text .= __( 'The LinkedIn Company Page URL will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
 
 							break;
 
@@ -1838,7 +1847,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-myspace_publisher_url':
 
-							$text = 'If you have a <a href="http://myspace.com/">Myspace account for your website / business</a>, you may enter its URL here. The Myspace Business (Brand) URL will be used in the schema publisher (Organization) social JSON. '.__( 'Google Search may use this information to display additional publisher / business details in its search results.', 'wpsso' );
+							$text = sprintf( __( 'If you have a <a href="%1$s">Myspace account for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'http://myspace.com/', 'wpsso' ) ) . ' ';
+							
+							$text .= __( 'The Myspace Business Page URL will be used in the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
 
 							break;
 
@@ -1861,7 +1874,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
 
-							$text .= sprintf( __( 'For example, to match the <em>%1$s</em> of a theme or other plugin, you might change "gplus" to "googleplus".', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) );
+							$text .= sprintf( __( 'As an example, to match the <em>%1$s</em> of a theme or other plugin, you might change "gplus" to "googleplus".', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) );
 
 							break;
 
@@ -1912,11 +1925,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'The Facebook debugger remains the most stable and reliable method to verify Open Graph meta tags.', 'wpsso' );
 
-							$text .= '</p><p><i>';
+							$text .= '</p>';
 
-							$text .= __( 'You may have to click the "Fetch new scrape information" button a few times to refresh Facebook\'s cache.', 'wpsso' );
+						 	break;
 
-							$text .= '</i></p>';
+						case 'info-meta-validate-linkedin':
+
+							$text = '<p class="top">';
+
+							$text .= __( '', 'wpsso' );
+
+							$text .= '</p>';
 
 						 	break;
 
@@ -1934,7 +1953,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Validate the Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' );
+							$text .= __( 'Validate Open Graph / Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -2079,7 +2098,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'If your theme or another plugin already creates one or more of these meta tags, you can uncheck them here to prevent duplicates from being added.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'For example, the "%1$s" SEO meta tag is automatically unchecked if a <em>known</em> SEO plugin is detected, and the "%2$s" meta tag is unchecked by default (themes often include this meta tag in their header template).', 'wpsso' ), 'meta name description', 'link rel canonical' );
+							$text .= sprintf( __( 'As an example, the "%1$s" SEO meta tag is automatically unchecked if a <em>known</em> SEO plugin is detected, and the "%2$s" meta tag is unchecked by default (themes often include this meta tag in their header template).', 'wpsso' ), 'meta name description', 'link rel canonical' );
 
 							$text .= '</p>';
 

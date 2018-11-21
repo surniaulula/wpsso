@@ -3373,9 +3373,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows['schema_img_max'] = $this->form->get_tr_hide( 'basic', 'schema_img_max' ) . 
 			$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), '', 'schema_img_max' ) . 
 			'<td>' . $this->form->get_select( 'schema_img_max', range( 0, $this->p->cf['form']['max_media_items'] ), 'short', '', true ) . 
-			( empty( $this->form->options['og_vid_prev_img'] ) ?
-				'' : ' <em>' . _x( 'video preview images are enabled (and included first)',
-					'option comment', 'wpsso' ) . '</em>' ) . '</td>';
+			( empty( $this->form->options['og_vid_prev_img'] ) ? '' : ' <em>' . _x( 'video preview images are enabled (and included first)',
+				'option comment', 'wpsso' ) . '</em>' ) . '</td>';
 
 			$table_rows['schema_img'] = '' . 
 			$this->form->get_th_html( _x( 'Schema Image Dimensions', 'option label', 'wpsso' ), '', 'schema_img_dimensions' ) . 
@@ -3384,10 +3383,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows['schema_desc_max_len'] = $this->form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
 			$this->form->get_th_html( _x( 'Maximum Description Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
 			'<td>' . $this->form->get_input( 'schema_desc_max_len', 'short' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
-
-			$table_rows['schema_author_name'] = $this->form->get_tr_hide( 'basic', 'schema_author_name' ) . 
-			$this->form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), '', 'schema_author_name' ) . 
-			'<td>' . $this->form->get_select( 'schema_author_name', $this->p->cf['form']['user_name_fields'] ) . '</td>';
 		}
 
 		/**

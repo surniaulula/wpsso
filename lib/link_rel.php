@@ -57,8 +57,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 					if ( is_object( $this->p->m['util']['user'] ) ) {	// Just in case.
 
-						$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id,
-							$this->p->options['seo_author_field'] );
+						$link_rel['author'] = $this->p->m['util']['user']->get_author_website( $author_id, $this->p->options[ 'seo_author_field' ] );
 					}
 				}
 

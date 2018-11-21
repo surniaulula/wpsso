@@ -52,7 +52,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'tc_prod_def_label2'             => '',
 					'tc_prod_def_data2'              => '',
 					'plugin_version'                 => '',
-					'seo_author_name'                => '',
 					'plugin_columns_taxonomy'        => 'plugin_columns_term',
 					'plugin_add_to_taxonomy'         => 'plugin_add_to_term',
 					'plugin_ignore_small_img'        => 'plugin_check_img_dims',
@@ -196,6 +195,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'og_desc_warn'    => 'og_desc_warn_len',
 					'seo_desc_len'    => 'seo_desc_max_len',
 					'tc_desc_len'     => 'tc_desc_max_len',
+				),
+				618 => array(
+					'fb_author_name'     => '',
+					'schema_author_name' => 'seo_author_name',
 				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG add-on.

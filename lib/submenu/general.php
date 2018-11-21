@@ -234,10 +234,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'or Facebook Admin Username(s)', 'option label', 'wpsso' ), '', 'fb_admins' ) . 
 					'<td>' . $this->form->get_input( 'fb_admins' ) . '</td>';
 
-					$table_rows['fb_author_name'] = $this->form->get_tr_hide( 'basic', 'fb_author_name' ) . 
-					$this->form->get_th_html( _x( 'Author Name Format', 'option label', 'wpsso' ), '', 'fb_author_name' ) . 
-					'<td>' . $this->form->get_select( 'fb_author_name', $this->p->cf['form']['user_name_fields'] ) . '</td>';
-
 					$fb_pub_lang   = SucomUtil::get_pub_lang( 'facebook' );
 					$fb_locale_key = SucomUtil::get_key_locale( 'fb_locale', $this->p->options );
 
@@ -259,6 +255,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->form->get_th_html( _x( 'Search / SEO Description Length', 'option label', 'wpsso' ), '', 'seo_desc_max_len' ) . 
 					'<td>' . $this->form->get_input( 'seo_desc_max_len', 'short' ) . ' ' .
 					_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+
+					$table_rows['seo_author_name'] = $this->form->get_tr_hide( 'basic', 'seo_author_name' ) . 
+					$this->form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), '', 'seo_author_name' ) . 
+					'<td>' . $this->form->get_select( 'seo_author_name', $this->p->cf['form']['user_name_fields'] ) . '</td>';
 
 					$table_rows['seo_author_field'] = $this->form->get_tr_hide( 'basic', 'seo_author_field' ) . 
 					$this->form->get_th_html( _x( 'Author Link URL Profile Contact', 'option label', 'wpsso' ), '', 'seo_author_field' ) . 
@@ -355,7 +355,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				case 'pub-other_social':
 
 					$social_accounts = apply_filters( $this->p->lca . '_social_accounts', $this->p->cf['form']['social_accounts'] );
-					asort( $social_accounts );	// sort by translated label and maintain key association
+
+					asort( $social_accounts );	// Sort by translated label and maintain key association.
 
 					foreach ( $social_accounts as $social_key => $label ) {
 
@@ -365,8 +366,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						switch ( $social_key ) {
 
 							case 'fb_publisher_url':	// Facebook
-							case 'seo_publisher_url':	// Google
 							case 'p_publisher_url':		// Pinterest
+							case 'seo_publisher_url':	// Google
 							case 'tc_site':			// Twitter
 
 								continue 2;

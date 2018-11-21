@@ -520,28 +520,20 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$mt_name = array();
 
-			/**
-			 * Fallback for article authors without a Facebook page URL in their user profile.
-			 */
 			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
 
-				if ( ! empty( $mt_og['og:type'] ) && $mt_og['og:type'] === 'article' ) {
+				if ( isset( $mt_og['og:type'] ) && $mt_og['og:type'] === 'article' ) {
 
-					if ( empty( $mt_og['article:author'] ) ) {
+					if ( is_object( $this->p->m['util']['user'] ) ) {	// Just in case.
 
-						if ( is_object( $this->p->m['util']['user'] ) ) {
-							$mt_name['author'] = $this->p->m['util']['user']->get_author_meta( $author_id,
-								$this->p->options['fb_author_name'] );
-						} elseif ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'skipped fallback author meta tag - user module not defined' );
-						}
+						$mt_name['author'] = $this->p->m['util']['user']->get_author_meta( $author_id, $this->p->options[ 'seo_author_name' ] );
 
 					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'skipped fallback author meta tag - article:author is not empty' );
+						$this->p->debug->log( 'skipped author meta tag - user module not defined' );
 					}
 
 				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'skipped fallback author meta tag - og:type is not an article' );
+					$this->p->debug->log( 'skipped author meta tag - og:type is not an article' );
 				}
 			}
 

@@ -405,44 +405,64 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$amp_url = $mod['is_post'] && function_exists( 'amp_get_permalink' ) ?
 				'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
 
-			$bing_url      = 'https://www.bing.com/webmaster/diagnostics/markup/validator?url=' . $sharing_url_encoded;
 			$facebook_url  = 'https://developers.facebook.com/tools/debug/og/object?q=' . $sharing_url_encoded;
+			$linkedin_url  = 'https://www.linkedin.com/post-inspector/inspect/' . $sharing_url_encoded;
 			$google_url    = 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_encoded;
 			$pinterest_url = 'https://developers.pinterest.com/tools/url-debugger/?link=' . $sharing_url_encoded;
 			$twitter_url   = 'https://cards-dev.twitter.com/validator';
 			$w3c_url       = 'https://validator.w3.org/nu/?doc=' . $sharing_url_encoded;
 
-			// Facebook
-			$table_rows['validate_facebook'] = $form->get_th_html( _x( 'Facebook Debugger', 'option label', 'wpsso' ), 'medium' ) . 
+			/**
+			 * Facebook.
+			 */
+			$table_rows['validate_facebook'] = $form->get_th_html( _x( 'Facebook Open Graph Object Debugger', 'option label', 'wpsso' ), 'medium' ) . 
 			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-facebook' ) . '</td>' . 
 			'<td class="validate">' . $form->get_button( _x( 'Validate Open Graph', 'submit button', 'wpsso' ),
 				'button-secondary', '', $facebook_url, true ) . '</td>';
 
-			// Google
+			/**
+			 * LinkedIn.
+			 */
+			$table_rows['validate_linkedin'] = $form->get_th_html( _x( 'LinkedIn Post Inspector ', 'option label', 'wpsso' ), 'medium' ) . 
+			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-linkedin' ) . '</td>' . 
+			'<td class="validate">' . $form->get_button( _x( 'Validate Metadata', 'submit button', 'wpsso' ),
+				'button-secondary', '', $linkedin_url, true ) . '</td>';
+
+			/**
+			 * Google.
+			 */
 			$table_rows['validate_google'] = $form->get_th_html( _x( 'Google Structured Data Testing Tool', 'option label', 'wpsso' ), 'medium' ) . 
 			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-google' ) . '</td>' . 
 			'<td class="validate">' . $form->get_button( _x( 'Validate Data Markup', 'submit button', 'wpsso' ),
 				'button-secondary', '', $google_url, true ) . '</td>';
 
-			// Pinterest
-			$table_rows['validate_pinterest'] = $form->get_th_html( _x( 'Pinterest Rich Pin Validator', 'option label', 'wpsso' ), 'medium' ) . 
+			/**
+			 * Pinterest.
+			 */
+			$table_rows['validate_pinterest'] = $form->get_th_html( _x( 'Pinterest Rich Pins Validator', 'option label', 'wpsso' ), 'medium' ) . 
 			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-pinterest' ) . '</td>' . 
 			'<td class="validate">' . $form->get_button( _x( 'Validate Rich Pins', 'submit button', 'wpsso' ),
 				'button-secondary', '', $pinterest_url, true ) . '</td>';
 
-			// Twitter
+			/**
+			 * Twitter.
+			 */
 			$table_rows['validate_twitter'] = $form->get_th_html( _x( 'Twitter Card Validator', 'option label', 'wpsso' ), 'medium' ) . 
 			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-twitter' ) . $form->get_input_copy_clipboard( $sharing_url ) . '</td>' . 
 			'<td class="validate">' . $form->get_button( _x( 'Validate Twitter Card', 'submit button', 'wpsso' ),
 				'button-secondary', '', $twitter_url, true ) . '</td>';
 
-			// W3C
+			/**
+			 * W3C.
+			 */
 			$table_rows['validate_w3c'] = $form->get_th_html( _x( 'W3C Markup Validation', 'option label', 'wpsso' ), 'medium' ) . 
 			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-w3c' ) . '</td>' . 
 			'<td class="validate">' . $form->get_button( _x( 'Validate HTML Markup', 'submit button', 'wpsso' ),
 				'button-secondary', '', $w3c_url, true ) . '</td>';
 
-			// AMP
+			/**
+			 * AMP.
+			 */
 			if ( $mod['is_post'] ) {
 				$table_rows['validate_amp'] = $form->get_th_html( _x( 'The AMP Validator', 'option label', 'wpsso' ), 'medium' ) . 
 				'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-amp' ) . '</td>' . 

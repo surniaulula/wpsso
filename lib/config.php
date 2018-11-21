@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '4.17.0-dev.3',	// Plugin version.
-					'opt_version' => '618',		// Increment when changing default option values.
+					'opt_version' => '619',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.',
@@ -758,7 +758,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_img_crop_x'            => 'center',
 					'schema_img_crop_y'            => 'center',
 					'schema_desc_max_len'          => 250,		// Meta itemprop="description" maximum text length (hard limit).
-					'schema_author_name'           => 'display_name',
 
 					/**
 					 * Standard WordPress types.
@@ -800,7 +799,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'fb_publisher_url'             => '',			// Facebook Business Page URL (localized).
 					'fb_app_id'                    => '',			// Facebook Application ID.
 					'fb_admins'                    => '',			// or Facebook Admin Username(s).
-					'fb_author_name'               => 'display_name',	// Author Name Format.
 					'fb_locale'                    => 'en_US',		// Custom Facebook Locale.
 					'instgram_publisher_url'       => '',			// Instagram Business Page URL (localized).
 					'linkedin_publisher_url'       => '',			// LinkedIn Company Page URL (localized).
@@ -860,9 +858,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'p_add_nopin_media_img_tag'    => 0,			// Add "nopin" to WordPress Media
 					'p_add_img_html'               => 0,			// Add Hidden Image for Pin It Button
 					'sc_publisher_url'             => '',
-					'seo_desc_max_len'             => 156,			// Meta name="description" maximum text length (hard limit).
-					'seo_author_field'             => 'gplus',
-					'seo_publisher_url'            => '',			// (localized)
+					'seo_publisher_url'            => '',			// Google+ Business Page URL (localized)
+					'seo_desc_max_len'             => 156,			// Search / SEO Description Length (hard limit).
+					'seo_author_name'              => 'display_name',	// Author / Person Name Format
+					'seo_author_field'             => 'gplus',		// Author Link URL Profile Contact
 					'tumblr_publisher_url'         => '',
 					'yt_publisher_url'             => '',
 					
