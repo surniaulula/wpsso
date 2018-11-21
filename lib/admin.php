@@ -2216,9 +2216,28 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$result = $wpdb->get_results( $query, OBJECT_K );
 
+			/**
+			 * https://dev.mysql.com/doc/refman/8.0/en/program-variables.html
+			 * https://dev.mysql.com/doc/refman/8.0/en/packet-too-large.html
+			 */
 			if ( isset( $result[ 'max_allowed_packet' ]->Value ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'db max_allowed_packet value is "' . $result[ 'max_allowed_packet' ]->Value . '"' );
+				}
+
+				$min_bytes = 1 * 1024 * 1024;	// 1MB in bytes.
+				$def_bytes = 16 * 1024 * 1024;	// 16MB in bytes.
+
+				if ( $result[ 'max_allowed_packet' ]->Value < $min_bytes ) {
+
+					$error_msg = sprintf( __( 'Your database is configured for a "%1$s" size of %2$d bytes, which is less than the recommended minimum value of %3$d bytes (a common default value is %4$d bytes).', 'wpsso' ), 'max_allowed_packet', $result[ 'max_allowed_packet' ]->Value, $min_bytes, $def_bytes ) . ' ';
+
+					$error_msg .= sprintf( __( 'Please contact your hosting provider and have the "%1$s" database option adjusted to a larger and safer value.', 'wpsso' ), 'max_allowed_packet' ) . ' ';
+
+					$error_msg .= sprintf( __( 'See the %1$s sections %2$s and %3$s for more information on this database option.', 'wpsso' ), 'MySQL 8.0 Reference Manual', '<a href="https://dev.mysql.com/doc/refman/8.0/en/program-variables.html">Using Options to Set Program Variables</a>', '<a href="https://dev.mysql.com/doc/refman/8.0/en/packet-too-large.html">Packet Too Large</a>', 'max_allowed_packet' ) . ' ';
+
+					$this->p->notice->err( $error_msg );
 				}
 			}
 		}
@@ -2313,7 +2332,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							}
 
 							$error_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s function is missing.', 'wpsso' ), $php_info[ 'url' ], $php_info['label'], '<code>' . $func_name . '()</code>' ) . ' ';
-							$error_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' ), $func_name );
+
+							$error_msg .= __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
 						}
 					}
 				}
