@@ -1407,7 +1407,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook Business Page for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://www.facebook.com/business', 'wpsso' ) ) . ' ';
 
-							$text .= sprintf( __( 'As an example, the Facebook Business Page URL for %1$s is <a href="%2$s">%2$s</a>).', 'wpsso' ), 'Surnia Ulula', __( 'https://www.facebook.com/SurniaUlulaCom', 'wpsso' ) ) . ' ';
+							$text .= sprintf( __( 'As an example, the Facebook Business Page URL for %1$s is <a href="%2$s">%2$s</a>.', 'wpsso' ), 'Surnia Ulula', __( 'https://www.facebook.com/SurniaUlulaCom', 'wpsso' ) ) . ' ';
 
 							$text .= __( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> webpages and the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
 							
@@ -1495,7 +1495,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-seo_author_field':	// Author Link URL Profile Contact
 
-							$text = sprintf( __( 'Select the contact field value to use from the author\'s WordPress profile page for the %s link URL value.', 'wpsso' ), '<code>author</code>' );
+							$text = sprintf( __( 'Select the contact field to use from the author\'s WordPress profile page for the %s link URL value.', 'wpsso' ), '<code>author</code>' );
 
 							break;
 
@@ -1951,7 +1951,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'Validate Rich Pin meta tags and apply to have them shown on Pinterest zoomed pins.', 'wpsso' );
+							$text .= __( 'Validate Rich Pin meta tags and submit a request to show them in Pinterest zoomed pins.', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -1976,7 +1976,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'Validate HTML syntax and HTML 5 conformance of your meta tags and theme templates.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Templates with serious errors may prevent social and search crawlers from parsing the webpage HTML, so validating your theme template markup is important.', 'wpsso' );
+							$text .= __( 'Templates with serious errors can prevent social and search crawlers from correctly parsing the webpage.', 'wpsso' ) . ' ';
+							
+							$text .= __( 'Validating your theme templates is an important step.', 'wpsso' );
 
 							$text .= '</p>';
 
