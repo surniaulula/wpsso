@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.17.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-11-21 15:16-0800\n"
-"PO-Revision-Date: 2018-11-21 15:30-0800\n"
+"POT-Creation-Date: 2018-11-21 16:03-0800\n"
+"PO-Revision-Date: 2018-11-21 16:03-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1454,7 +1454,7 @@ msgstr "Disponibilité limitée"
 #: lib/config-gettext-extract.php:72
 msgctxt "option value"
 msgid "LinkedIn Company Page URL"
-msgstr "URL page entreprise LinkedIn"
+msgstr "URL page d'entreprise LinkedIn"
 
 #: lib/config-gettext-extract.php:73
 msgctxt "option value"
@@ -1599,7 +1599,7 @@ msgstr "Per diem"
 #: lib/config-gettext-extract.php:101
 msgctxt "option value"
 msgid "Pinterest Company Page URL"
-msgstr "URL page entreprise Pinterest"
+msgstr "URL page d'entreprise Pinterest"
 
 #: lib/config-gettext-extract.php:102
 msgctxt "option value"
@@ -3683,8 +3683,8 @@ msgid "https://www.facebook.com/SurniaUlulaCom"
 msgstr "https://www.facebook.com/SurniaUlulaCom?locale=fr_FR"
 
 #: lib/messages.php:1412
-msgid "The Facebook Business Page URL will be used in Open Graph <em>article</em> webpages and the website's Schema Organization markup."
-msgstr ""
+msgid "The Facebook Business Page URL will be used in Open Graph <em>article</em> type webpages and the website's Schema Organization markup."
+msgstr "L'URL de la page d'affaire Facebook sera utilisée dans les pages Web Open Graph de type <em>article</em> et dans le balisage Schéma Organization du site Web."
 
 #: lib/messages.php:1414 lib/messages.php:1476 lib/messages.php:1680
 #: lib/messages.php:1751 lib/messages.php:1802 lib/messages.php:1827
@@ -3741,8 +3741,8 @@ msgid "http://www.google.com/+/business/"
 msgstr "http://www.google.com/+/business/"
 
 #: lib/messages.php:1472
-msgid "As an example, the Google+ Business Page URL for %1$s is <a href=\"%2$s\">%2$s</a>)."
-msgstr ""
+msgid "As an example, the Google+ Business Page URL for %1$s is <a href=\"%2$s\">%2$s</a>."
+msgstr "Par exemple, l'URL de la page d'affaire Google+ de %1$s est <a href=\"%2$s\">%2$s</a>."
 
 #: lib/messages.php:1472
 msgid "https://plus.google.com/+SurniaUlula/"
@@ -3750,7 +3750,7 @@ msgstr "https://plus.google.com/+SurniaUlula/"
 
 #: lib/messages.php:1474
 msgid "The Google+ Business Page URL will be used in a link relation head tag and the website's Schema Organization markup."
-msgstr ""
+msgstr "L'URL de la page d'affaire Google+ sera utilisée dans une balise d'entête de relation de lien et dans le balisage Schéma Organization du site Web."
 
 #: lib/messages.php:1482
 msgid "The maximum length of text used for the Google Search \"description\" meta tag."
@@ -3852,7 +3852,7 @@ msgstr "https://twitter.com/surniaululacom"
 
 #: lib/messages.php:1678
 msgid "The Twitter @username for your website and/or business will be used in the website's Schema Organization markup."
-msgstr ""
+msgstr "Le nom d'@usager Twitter de votre site Web et/ou d'entreprise sera utilisé dans le balisage Schéma Organization du site Web."
 
 #: lib/messages.php:1686
 msgid "The maximum length of text used for the Twitter Card description."
@@ -3884,7 +3884,7 @@ msgstr "https://business.pinterest.com/"
 
 #: lib/messages.php:1749
 msgid "The Pinterest Company Page URL will be used in the website's Schema Organization markup."
-msgstr ""
+msgstr "L'URL de la page d'entreprise Pinterest sera utilisé dans le balisage Schéma Organization du site Web."
 
 #: lib/messages.php:1757
 msgid "To <a href=\"%s\">verify your website</a> with Pinterest, edit your business account profile on Pinterest and click the \"Verify WebSite\" button."
@@ -3916,7 +3916,7 @@ msgstr "http://blog.business.instagram.com/"
 
 #: lib/messages.php:1800
 msgid "The Instagram Business Page URL will be used in the website's Schema Organization markup."
-msgstr ""
+msgstr "L'URL de la page d'affaire Instagram sera utilisée dans le balisage Schéma Organization du site Web."
 
 #: lib/messages.php:1823
 msgid "If you have a <a href=\"%1$s\">LinkedIn Company Page for your website / business</a>, you may enter its URL here."
@@ -3928,7 +3928,7 @@ msgstr "https://business.linkedin.com/marketing-solutions/company-pages/get-star
 
 #: lib/messages.php:1825
 msgid "The LinkedIn Company Page URL will be used in the website's Schema Organization markup."
-msgstr ""
+msgstr "L'URL de la page d'entreprise LinkedIn sera utilisé dans le balisage Schéma Organization du site Web."
 
 #: lib/messages.php:1848
 msgid "If you have a <a href=\"%1$s\">Myspace account for your website / business</a>, you may enter its URL here."
@@ -3940,7 +3940,7 @@ msgstr "http://myspace.com/"
 
 #: lib/messages.php:1850
 msgid "The Myspace Business Page URL will be used in the website's Schema Organization markup."
-msgstr ""
+msgstr "L'URL de la page d'affaire Myspace sera utilisée dans le balisage Schéma Organization du site Web."
 
 #: lib/messages.php:1873 lib/messages.php:2084
 msgid "You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so."
@@ -3948,7 +3948,7 @@ msgstr "Vous ne devriez pas modifier la colonne <em>%1$s</em>, a moins d'avoir u
 
 #: lib/messages.php:1875
 msgid "As an example, to match the <em>%1$s</em> of a theme or other plugin, you might change \"gplus\" to \"googleplus\"."
-msgstr ""
+msgstr "Par exemple, pour dupliquer l'<em>%1$s</em> d'un thème ou d'une autre extension, vous pourriez remplacer \"gplus\" par \"googleplus\"."
 
 #: lib/messages.php:1881
 msgid "The <em>%1$s</em> column is for display purposes only and can be changed as you wish."
@@ -5198,7 +5198,7 @@ msgstr "URL page d'affaires Google+"
 #: lib/submenu/essential.php:175 lib/submenu/general.php:298
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
-msgstr "URL page entreprise Pinterest"
+msgstr "URL page d'entreprise Pinterest"
 
 #: lib/submenu/essential.php:184 lib/submenu/general.php:328
 msgctxt "option label"

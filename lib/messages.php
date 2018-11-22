@@ -1409,7 +1409,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'As an example, the Facebook Business Page URL for %1$s is <a href="%2$s">%2$s</a>.', 'wpsso' ), 'Surnia Ulula', __( 'https://www.facebook.com/SurniaUlulaCom', 'wpsso' ) ) . ' ';
 
-							$text .= __( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> webpages and the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
+							$text .= __( 'The Facebook Business Page URL will be used in Open Graph <em>article</em> type webpages and the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
 							
 							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
 
@@ -1469,7 +1469,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( 'If you have a <a href="%1$s">Google+ Business Page for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'http://www.google.com/+/business/', 'wpsso' ) ) . ' ';
 
-							$text .= sprintf( __( 'As an example, the Google+ Business Page URL for %1$s is <a href="%2$s">%2$s</a>).', 'wpsso' ), 'Surnia Ulula', __( 'https://plus.google.com/+SurniaUlula/', 'wpsso' ) ) . ' ';
+							$text .= sprintf( __( 'As an example, the Google+ Business Page URL for %1$s is <a href="%2$s">%2$s</a>.', 'wpsso' ), 'Surnia Ulula', __( 'https://plus.google.com/+SurniaUlula/', 'wpsso' ) ) . ' ';
 							
 							$text .= __( 'The Google+ Business Page URL will be used in a link relation head tag and the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
 							

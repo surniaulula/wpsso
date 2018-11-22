@@ -4152,7 +4152,7 @@ msgstr ""
 #: lib/messages.php:1412
 msgid ""
 "The Facebook Business Page URL will be used in Open Graph <em>article</em> "
-"webpages and the website's Schema Organization markup."
+"type webpages and the website's Schema Organization markup."
 msgstr ""
 
 #: lib/messages.php:1414 lib/messages.php:1476 lib/messages.php:1680
@@ -4234,7 +4234,7 @@ msgstr ""
 #: lib/messages.php:1472
 msgid ""
 "As an example, the Google+ Business Page URL for %1$s is <a href=\"%2$s\">"
-"%2$s</a>)."
+"%2$s</a>."
 msgstr ""
 
 #: lib/messages.php:1472
