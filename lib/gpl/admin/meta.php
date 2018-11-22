@@ -159,11 +159,11 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $mod['is_post'] && ( empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ) ) {
+			if ( $mod[ 'is_post' ] && ( empty( $mod[ 'post_status' ] ) || $mod[ 'post_status' ] === 'auto-draft' ) ) {
 
 				$table_rows[] = '<td><blockquote class="status-info"><p class="centered">' . 
 					sprintf( __( 'Save a draft version or publish the %s to display these options.',
-						'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) ) . '</p></td>';
+						'wpsso' ), SucomUtil::titleize( $mod[ 'post_type' ] ) ) . '</p></td>';
 
 				return $table_rows;	// abort
 			}
@@ -172,7 +172,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				array( 'pid', 'img_url' ), $mod, $md_pre = 'none', $mt_pre = 'og' );
 
 			$table_rows[] = '<td colspan="2">' .
-				( $mod['is_post'] ? $this->p->msgs->get( 'pro-about-msg-post-media' ) : '' ) .
+				( $mod[ 'is_post' ] ? $this->p->msgs->get( 'pro-about-msg-post-media' ) : '' ) .
 					$this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$form_rows['subsection_opengraph'] = array(
@@ -187,7 +187,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'label'    => _x( 'Priority Image Information', 'metabox title', 'wpsso' )
 			);
 
-			if ( $mod['is_post'] ) {
+			if ( $mod[ 'is_post' ] ) {
 				$form_rows['og_img_max'] = array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_img_max' ),
 					'th_class' => 'medium',
@@ -239,7 +239,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'content'  => $form->get_no_checkbox( 'og_vid_prev_img' ),
 			);
 
-			if ( $mod['is_post'] ) {
+			if ( $mod[ 'is_post' ] ) {
 				$form_rows['og_vid_max'] = array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_max' ),
 					'th_class' => 'medium',
@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'label'    => _x( 'Structured Data / Schema Markup / Pinterest', 'metabox title', 'wpsso' )
 			);
 
-			if ( $mod['is_post'] ) {
+			if ( $mod[ 'is_post' ] ) {
 				$form_rows['schema_img_max'] = array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'schema_img_max' ),
 					'th_class' => 'medium',

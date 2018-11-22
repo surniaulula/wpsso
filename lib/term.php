@@ -124,8 +124,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			/**
 			 * Term
 			 */
-			$mod['is_term']  = true;
-			$mod['tax_slug'] = SucomUtil::get_term_object( $mod[ 'id' ], (string) $tax_slug, 'taxonomy' );
+			$mod[ 'is_term' ]  = true;
+			$mod[ 'tax_slug' ] = SucomUtil::get_term_object( $mod[ 'id' ], (string) $tax_slug, 'taxonomy' );
 
 			return apply_filters( $this->p->lca . '_get_term_mod', $mod, $mod_id, $tax_slug );
 		}

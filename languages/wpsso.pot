@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.0-dev.4\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -404,7 +404,7 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:2336 lib/pro/media/slideshare.php:192
-#: lib/pro/media/vimeo.php:157 lib/pro/media/wistia.php:314 lib/util.php:1757
+#: lib/pro/media/vimeo.php:157 lib/pro/media/wistia.php:314 lib/util.php:1761
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -1163,11 +1163,11 @@ msgstr ""
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/util.php:1754
+#: lib/com/util.php:1756
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1765
+#: lib/com/util.php:1767
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -2370,7 +2370,7 @@ msgid "Clear All Caches on Deactivate"
 msgstr ""
 
 #: lib/gpl/admin/advanced.php:346 lib/pro/admin/advanced.php:344
-#: lib/util.php:1203
+#: lib/util.php:1207
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr ""
@@ -2600,14 +2600,14 @@ msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:125 lib/gpl/admin/post.php:146 lib/meta.php:248
-#: lib/meta.php:272 lib/pro/admin/meta.php:134 lib/pro/admin/post.php:145
+#: lib/gpl/admin/meta.php:125 lib/gpl/admin/post.php:146 lib/meta.php:251
+#: lib/meta.php:275 lib/pro/admin/meta.php:134 lib/pro/admin/post.php:145
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:133 lib/gpl/admin/post.php:155 lib/meta.php:252
-#: lib/meta.php:276 lib/pro/admin/meta.php:141 lib/pro/admin/post.php:153
+#: lib/gpl/admin/meta.php:133 lib/gpl/admin/post.php:155 lib/meta.php:255
+#: lib/meta.php:279 lib/pro/admin/meta.php:141 lib/pro/admin/post.php:153
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -2772,7 +2772,7 @@ msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: lib/gpl/admin/post.php:249 lib/meta.php:244 lib/pro/admin/post.php:238
+#: lib/gpl/admin/post.php:249 lib/meta.php:247 lib/pro/admin/post.php:238
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -2826,7 +2826,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:164 lib/loader.php:190 lib/post.php:268 lib/register.php:278
-#: lib/term.php:252 lib/user.php:219 lib/util.php:367 lib/util.php:2999
+#: lib/term.php:252 lib/user.php:219 lib/util.php:371 lib/util.php:3003
 msgid "%s warning:"
 msgstr ""
 
@@ -3436,7 +3436,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:683 lib/util.php:3274
+#: lib/messages.php:683 lib/util.php:3278
 msgid "No options available."
 msgstr ""
 
@@ -4791,7 +4791,7 @@ msgid ""
 "by the %s plugin."
 msgstr ""
 
-#: lib/messages.php:2264 lib/meta.php:157
+#: lib/messages.php:2264 lib/meta.php:160
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
@@ -5044,122 +5044,122 @@ msgid ""
 "locale</a> to define alternate values for different languages."
 msgstr ""
 
-#: lib/meta.php:156
+#: lib/meta.php:159
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/meta.php:158
+#: lib/meta.php:161
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/meta.php:159
+#: lib/meta.php:162
 msgctxt "metabox tab"
 msgid "Head"
 msgstr ""
 
-#: lib/meta.php:160
+#: lib/meta.php:163
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/meta.php:229
+#: lib/meta.php:232
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/meta.php:234
+#: lib/meta.php:237
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/meta.php:239
+#: lib/meta.php:242
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/meta.php:256 lib/meta.php:282
+#: lib/meta.php:259 lib/meta.php:285
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/meta.php:287
+#: lib/meta.php:290
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:418
+#: lib/meta.php:421
 msgctxt "option label"
 msgid "Facebook Open Graph Object Debugger"
 msgstr ""
 
-#: lib/meta.php:420
+#: lib/meta.php:423
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:426
+#: lib/meta.php:429
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/meta.php:428
+#: lib/meta.php:431
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/meta.php:434
+#: lib/meta.php:437
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:436
+#: lib/meta.php:439
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/meta.php:442
+#: lib/meta.php:445
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/meta.php:444
+#: lib/meta.php:447
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:450
+#: lib/meta.php:453
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:452
+#: lib/meta.php:455
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:458
+#: lib/meta.php:461
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:460
+#: lib/meta.php:463
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:467
+#: lib/meta.php:470
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:469
+#: lib/meta.php:472
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:860
+#: lib/meta.php:863
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -5346,8 +5346,8 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:254 lib/term.php:238 lib/user.php:205 lib/util.php:353
-#: lib/util.php:2971
+#: lib/post.php:254 lib/term.php:238 lib/user.php:205 lib/util.php:357
+#: lib/util.php:2975
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5386,7 +5386,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:960 lib/util.php:1671
+#: lib/post.php:960 lib/util.php:1675
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -5595,12 +5595,12 @@ msgid ""
 msgstr ""
 
 #: lib/pro/media/slideshare.php:187 lib/pro/media/vimeo.php:152
-#: lib/pro/media/wistia.php:309 lib/util.php:1752
+#: lib/pro/media/wistia.php:309 lib/util.php:1756
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/pro/media/slideshare.php:189 lib/pro/media/vimeo.php:154
-#: lib/pro/media/wistia.php:311 lib/util.php:1754
+#: lib/pro/media/wistia.php:311 lib/util.php:1758
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
@@ -6191,78 +6191,78 @@ msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max.
-#: lib/util.php:356
+#: lib/util.php:360
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1148
+#: lib/util.php:1152
 msgid ""
 "%s cached files, transient cache, column meta, and WordPress object cache "
 "have all been cleared."
 msgstr ""
 
-#: lib/util.php:1153
+#: lib/util.php:1157
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1188 lib/util.php:1318
+#: lib/util.php:1192 lib/util.php:1322
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/util.php:1194
+#: lib/util.php:1198
 msgid ""
 "A background task will begin shortly to refresh the post, term, and user "
 "cache objects."
 msgstr ""
 
-#: lib/util.php:1205
+#: lib/util.php:1209
 msgid ""
 "All cache objects will be re-created as they are needed (the %s option is "
 "disabled)."
 msgstr ""
 
-#: lib/util.php:1312
+#: lib/util.php:1316
 msgid ""
 "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d "
 "users have been refreshed."
 msgstr ""
 
-#: lib/util.php:1502
+#: lib/util.php:1506
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1529
+#: lib/util.php:1533
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1588
+#: lib/util.php:1592
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1658
+#: lib/util.php:1662
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1684
+#: lib/util.php:1688
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1804
+#: lib/util.php:1808
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:2974
+#: lib/util.php:2978
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2991
+#: lib/util.php:2995
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6271,29 +6271,29 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2991
+#: lib/util.php:2995
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3301
+#: lib/util.php:3305
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3304
+#: lib/util.php:3308
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3309
+#: lib/util.php:3313
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3312
+#: lib/util.php:3316
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

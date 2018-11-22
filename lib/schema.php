@@ -374,9 +374,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 					}
 
-				} elseif ( $mod['is_post'] ) {
+				} elseif ( $mod[ 'is_post' ] ) {
 
-					if ( ! empty( $mod['post_type'] ) ) {
+					if ( ! empty( $mod[ 'post_type' ] ) ) {
 
 						if ( empty( $mod[ 'id' ] ) && is_post_type_archive() ) {
 
@@ -387,17 +387,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								$this->p->debug->log( 'using schema type id "' . $type_id . '" for post type archive page' );
 							}
 
-						} elseif ( isset( $this->p->options['schema_type_for_' . $mod['post_type']] ) ) {
+						} elseif ( isset( $this->p->options['schema_type_for_' . $mod[ 'post_type' ]] ) ) {
 
-							$type_id = $this->get_schema_type_id_for_name( $mod['post_type'] );
+							$type_id = $this->get_schema_type_id_for_name( $mod[ 'post_type' ] );
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'using schema type id "' . $type_id . '" from post type option value' );
 							}
 
-						} elseif ( ! empty( $schema_types[$mod['post_type']] ) ) {
+						} elseif ( ! empty( $schema_types[$mod[ 'post_type' ]] ) ) {
 
-							$type_id = $mod['post_type'];
+							$type_id = $mod[ 'post_type' ];
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'using schema type id "' . $type_id . '" from post type name' );
@@ -409,7 +409,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 								$this->get_schema_type_id_for_name( 'page' ), $mod );
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'using "page" schema type for unknown post type ' . $mod['post_type'] );
+								$this->p->debug->log( 'using "page" schema type for unknown post type ' . $mod[ 'post_type' ] );
 							}
 						}
 
@@ -423,7 +423,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 					}
 
-				} elseif ( $mod['is_term'] ) {
+				} elseif ( $mod[ 'is_term' ] ) {
 
 					if ( ! empty( $mod['tax_slug'] ) ) {
 
@@ -438,7 +438,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$type_id = $this->get_schema_type_id_for_name( 'archive_page' );
 					}
 
-				} elseif ( $mod['is_user'] ) {
+				} elseif ( $mod[ 'is_user' ] ) {
 
 					$type_id = $this->get_schema_type_id_for_name( 'user_page' );
 
@@ -966,7 +966,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return;	// Stop here.
 			}
 
-			if ( empty( $json_data['url'] ) ) {
+			if ( empty( $json_data[ 'url' ] ) ) {
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: json_data url is empty and required' );
 				}
@@ -975,7 +975,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$id_separator = '/';
 			$id_anchor    = '#id' . $id_separator;
-			$default_id   = $json_data['url'] . $id_anchor . $type_id;
+			$default_id   = $json_data[ 'url' ] . $id_anchor . $type_id;
 
 			/**
 			 * The combined url and schema type create a unique @id string.
@@ -1413,7 +1413,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$page_type_id = $this->get_mod_schema_type( $mod, $get_schema_id = true );
 
-			} elseif ( $is_main && $mod['is_post'] && $mod[ 'id' ] ) {
+			} elseif ( $is_main && $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
 				$cache_index = self::get_mod_cache_index( $mod, $page_type_id );
 				$cache_data  = self::get_mod_cache_data( $mod, $cache_index );
@@ -1483,7 +1483,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( ! empty( $cache_index ) ) {
 
-				if ( $is_main && $mod['is_post'] && $mod[ 'id' ] ) {
+				if ( $is_main && $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
 					if ( empty( $cache_data ) ) {	// Just in case.
 						$cache_data = array();
@@ -1604,8 +1604,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! isset( $merge_data['mainEntityOfPage'] ) ) {
-				if ( $is_main && ! empty( $merge_data['url'] ) ) {
-					$merge_data['mainEntityOfPage'] = $merge_data['url'];
+				if ( $is_main && ! empty( $merge_data[ 'url' ] ) ) {
+					$merge_data['mainEntityOfPage'] = $merge_data[ 'url' ];
 				}
 			}
 
@@ -1805,7 +1805,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 					}
 
-				} elseif ( $mod['is_user'] ) {
+				} elseif ( $mod[ 'is_user' ] ) {
 
 					$user_id = $mod[ 'id' ];
 				} else {
@@ -1838,7 +1838,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Override author's website url and use the open graph url instead.
 			 */
 			if ( $mod['is_home'] ) {
-				$ret['url'] = $mt_og['og:url'];
+				$ret[ 'url' ] = $mt_og['og:url'];
 			}
 
 			return self::return_data_from_filter( $json_data, $ret, $is_main );
@@ -1911,8 +1911,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$authors_added   = 0;
 			$coauthors_added = 0;
 
-			if ( empty( $user_id ) && isset( $mod['post_author'] ) ) {
-				$user_id = $mod['post_author'];
+			if ( empty( $user_id ) && isset( $mod[ 'post_author' ] ) ) {
+				$user_id = $mod[ 'post_author' ];
 			}
 
 			if ( empty( $user_id ) || $user_id === 'none' ) {
@@ -2484,11 +2484,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$sharing_url = $wpsso->util->get_sharing_url( $mod );
 
-				if ( $mod['post_type'] && $mod[ 'id' ] ) {
+				if ( $mod[ 'post_type' ] && $mod[ 'id' ] ) {
 
 					$wpsso->notice->set_ref( $sharing_url, $mod,
 						sprintf( __( 'adding schema for %1$s ID %2$s', 'wpsso' ),
-							$mod['post_type'], $mod[ 'id' ] ) );
+							$mod[ 'post_type' ], $mod[ 'id' ] ) );
 
 				} elseif ( $mod[ 'name' ] && $mod[ 'id' ] ) {
 
@@ -3160,7 +3160,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$wpsso->debug->log( 'organization ' . $logo_key . ' image is missing and required' );
 					}
 
-					if ( $wpsso->notice->is_admin_pre_notices() && ( ! $mod['is_post'] || $mod['post_status'] === 'publish' ) ) {
+					if ( $wpsso->notice->is_admin_pre_notices() && ( ! $mod[ 'is_post' ] || $mod[ 'post_status' ] === 'publish' ) ) {
 
 						if ( $logo_key === 'org_logo_url' ) {
 
@@ -3674,7 +3674,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$og_images = $this->p->og->get_all_images( $max_nums['schema_img_max'], $size_name, $mod, true, 'schema' );	// $md_pre is 'schema'.
 
-				if ( empty( $og_images ) && $mod['is_post'] ) {
+				if ( empty( $og_images ) && $mod[ 'is_post' ] ) {
 					$og_images = $this->p->media->get_default_images( 1, $size_name, true );
 				}
 
@@ -3790,7 +3790,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$og_images = $this->p->og->get_all_images( $max_nums['schema_img_max'], $size_name, $mod, true, 'schema' );	// $md_pre is 'schema'.
 
-			if ( empty( $og_images ) && $mod['is_post'] ) {
+			if ( empty( $og_images ) && $mod[ 'is_post' ] ) {
 				$og_images = $this->p->media->get_default_images( 1, $size_name, true );
 			}
 
@@ -3941,14 +3941,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function get_author_list_noscript( array &$mod ) {
 
-			if ( empty( $mod['post_author'] ) ) {
+			if ( empty( $mod[ 'post_author' ] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty post_author' );
 				}
 				return array();
 			}
 
-			$ret = $this->get_single_author_noscript( $mod, $mod['post_author'], 'author' );
+			$ret = $this->get_single_author_noscript( $mod, $mod[ 'post_author' ], 'author' );
 
 			if ( ! empty( $mod['post_coauthors'] ) ) {
 				foreach ( $mod['post_coauthors'] as $author_id ) {

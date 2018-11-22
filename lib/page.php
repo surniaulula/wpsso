@@ -320,13 +320,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'is_post' ] ) {
 
-					if ( empty( $mod[ 'id' ] ) && ! empty( $mod['post_type'] ) && is_post_type_archive() ) {
+					if ( empty( $mod[ 'id' ] ) && ! empty( $mod[ 'post_type' ] ) && is_post_type_archive() ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'getting the title for post type ' . $mod['post_type'] );
+							$this->p->debug->log( 'getting the title for post type ' . $mod[ 'post_type' ] );
 						}
 
-						$post_type_obj = get_post_type_object( $mod['post_type'] );
+						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
 						if ( ! empty( $post_type_obj->labels->menu_name ) ) {
 							$title_text = sprintf( __( '%s Archive', 'wpsso' ), $post_type_obj->labels->menu_name );
@@ -360,7 +360,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
 
-				} elseif ( $mod['is_term'] ) {
+				} elseif ( $mod[ 'is_term' ] ) {
 
 					$term_obj = SucomUtil::get_term_object( $mod[ 'id' ], $mod['tax_slug'] );
 
@@ -379,7 +379,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$this->p->debug->log( 'name property missing in term object' );
 					}
 
-				} elseif ( $mod['is_user'] ) {
+				} elseif ( $mod[ 'is_user' ] ) {
 
 					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
 
@@ -584,15 +584,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $desc_text ) ) {
 
-				if ( $mod['is_post'] ) {
+				if ( $mod[ 'is_post' ] ) {
 
-					if ( empty( $mod[ 'id' ] ) && ! empty( $mod['post_type'] ) && is_post_type_archive() ) {
+					if ( empty( $mod[ 'id' ] ) && ! empty( $mod[ 'post_type' ] ) && is_post_type_archive() ) {
 
 						if ( $this->p->debug->enabled ) {
-							$this->p->debug->log( 'getting the description for post type ' . $mod['post_type'] );
+							$this->p->debug->log( 'getting the description for post type ' . $mod[ 'post_type' ] );
 						}
 
-						$post_type_obj = get_post_type_object( $mod['post_type'] );
+						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
 						if ( ! empty( $post_type_obj->description ) ) {
 
@@ -601,7 +601,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						} else {
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'post type ' . $mod['post_type'] . ' description is empty - using title value' );
+								$this->p->debug->log( 'post type ' . $mod[ 'post_type' ] . ' description is empty - using title value' );
 							}
 
 							if ( ! empty( $post_type_obj->labels->menu_name ) ) {
@@ -649,13 +649,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						 * Fallback to the image alt value.
 						 */
 						if ( empty( $desc_text ) ) {
-							if ( $mod['post_type'] === 'attachment' && strpos( $mod['post_mime'], 'image/' ) === 0 ) {
+							if ( $mod[ 'post_type' ] === 'attachment' && strpos( $mod['post_mime'], 'image/' ) === 0 ) {
 								$desc_text = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
 							}
 						}
 					}
 
-				} elseif ( $mod['is_term'] ) {
+				} elseif ( $mod[ 'is_term' ] ) {
 
 					if ( SucomUtil::is_tag_page( $mod[ 'id' ] ) ) {
 
@@ -685,7 +685,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						}
 					}
 
-				} elseif ( $mod['is_user'] ) {
+				} elseif ( $mod[ 'is_user' ] ) {
 
 					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
 
@@ -736,11 +736,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'description is empty - falling back to generic description' );
 				}
 
-				if ( $mod['post_status'] === 'auto-draft' ) {
+				if ( $mod[ 'post_status' ] === 'auto-draft' ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'post_status is auto-draft: using empty description' );
 					}
-				} elseif ( $mod['post_type'] === 'attachment' ) {
+				} elseif ( $mod[ 'post_type' ] === 'attachment' ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'post_type is attachment: using empty description' );
 					}
@@ -805,7 +805,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Use the excerpt, if we have one.
 			 */
-			if ( $mod['is_post'] && has_excerpt( $mod[ 'id' ] ) ) {
+			if ( $mod[ 'is_post' ] && has_excerpt( $mod[ 'id' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting the excerpt for post id ' . $mod[ 'id' ] );
@@ -965,7 +965,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'content seed is "' . $content . '"' );
 				}
 
-			} elseif ( $mod['is_post'] ) {
+			} elseif ( $mod[ 'is_post' ] ) {
 
 				$content = get_post_field( 'post_content', $mod[ 'id' ] );
 
@@ -1144,6 +1144,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		public function get_text_and_hashtags( $text, array $mod, $add_hashtags = true ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			$hashtags = '';
 
 			if ( preg_match( '/^(.*)(( *#[a-z][a-z0-9\-]+)+)$/U', $text, $match ) ) {
@@ -1167,6 +1171,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * Returns a space delimited text string of hashtags.
 		 */
 		public function get_hashtags( array $mod, $add_hashtags = true ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
 
 			/**
 			 * Determine the maximum number of hashtags to return.
@@ -1218,9 +1226,24 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * Returns an array of post or search query tags.
+		 * Returns an array of post tags.
 		 */
 		public function get_tag_names( array $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'exiting early: returning tags from static cache' );
+				}
+
+				return $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ];
+			}
 
 			$tags = apply_filters( $this->p->lca . '_tag_names_seed', array(), $mod );
 
@@ -1233,7 +1256,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} else {
 
 				if ( $mod[ 'is_post' ] ) {
-					foreach ( wp_get_post_tags( $mod['id'] ) as $tag_obj ) {
+					foreach ( wp_get_post_tags( $mod[ 'id' ] ) as $tag_obj ) {
 						if ( ! empty( $tag_obj->name ) ) {
 							$tags[] = $tag_obj->name;
 						}
@@ -1243,7 +1266,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$tags = array_unique( $tags );
 			}
 
-			return apply_filters( $this->p->lca . '_tag_names', $tags, $mod );
+			$tags = $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ] = apply_filters( $this->p->lca . '_tag_names', $tags, $mod );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_arr( 'tags', $tags );
+			}
+
+			return $tags;
 		}
 
 		public function get_category_title( $term_id = 0, $tax_slug = '', $sep = null ) {

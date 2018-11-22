@@ -1033,7 +1033,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$opt_val = SucomUtil::decode_html( $opt_val );	// Just in case.
 
 						if ( filter_var( $opt_val, FILTER_VALIDATE_URL ) === false ) {
-							$this->p->notice->err( sprintf( $error_messages['url'], $opt_key ) );
+							$this->p->notice->err( sprintf( $error_messages[ 'url' ], $opt_key ) );
 							$opt_val = $def_val;
 						}
 					}

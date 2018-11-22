@@ -65,32 +65,35 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		);
 
 		public static $mod_defaults = array(
-			'id' => 0,
-			'name' => false,
-			'obj' => false,
+			'id'   => 0,			// Post, term, or user ID.
+			'name' => false,		// Module name ('post', 'term', or 'user').
+			'obj'  => false,		// Module object.
+
 			/**
 			 * Post
 			 */
-			'use_post' => false,
-			'is_post' => false,		// is post module
-			'is_home' => false,		// home page (index or static)
-			'is_home_page' => false,	// static front page
-			'is_home_index' => false,	// static posts page or home index
-			'post_slug' => false,		// post name (aka slug)
-			'post_type' => false,		// post type name
-			'post_mime' => false,		// post mime type (ie. image/jpg)
-			'post_status' => false,		// post status name
-			'post_author' => false,		// post author id
+			'use_post'       => false,
+			'is_post'        => false,	// Is post module.
+			'is_home'        => false,	// Home page (index or static)
+			'is_home_page'   => false,	// Static front page.
+			'is_home_index'  => false,	// Static posts page or home index.
+			'post_slug'      => false,	// Post name (aka slug).
+			'post_type'      => false,	// Post type name.
+			'post_mime'      => false,	// Post mime type (ie. image/jpg).
+			'post_status'    => false,	// Post status name.
+			'post_author'    => false,	// Post author id.
 			'post_coauthors' => array(),
+
 			/**
 			 * Term
 			 */
-			'is_term' => false,		// is term module
-			'tax_slug' => '',		// empty string by default
+			'is_term'  => false,		// Is term module.
+			'tax_slug' => '',		// Empty string by default.
+
 			/**
 			 * User
 			 */
-			'is_user' => false,		// is user module
+			'is_user' => false,		// Is user module.
 		);
 
 		public function __construct() {
@@ -239,10 +242,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					_x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ) . '</p></div>';
 			}
 
-			if ( isset( $mod['post_status'] ) && $mod['post_status'] === 'auto-draft' ) {
+			if ( isset( $mod[ 'post_status' ] ) && $mod[ 'post_status' ] === 'auto-draft' ) {
 
 				$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
-					'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );
+					'wpsso' ), SucomUtil::titleize( $mod[ 'post_type' ] ) );
 
 				$table_rows[] = '' . 
 				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), 'medium' ) .
@@ -261,7 +264,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$sharing_url   = $this->p->util->get_sharing_url( $mod, false );     // $add_page is false.
 				$canonical_url = $this->p->util->get_canonical_url( $mod, false ); // $add_page is false.
 
-				if ( $mod['is_post'] ) {
+				if ( $mod[ 'is_post' ] ) {
 					$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], 'post' );	// $context is post.
 				} else {
 					$shortlink_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
@@ -402,7 +405,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 
 			$sharing_url_encoded = urlencode( $sharing_url );
 
-			$amp_url = $mod['is_post'] && function_exists( 'amp_get_permalink' ) ?
+			$amp_url = $mod[ 'is_post' ] && function_exists( 'amp_get_permalink' ) ?
 				'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
 
 			$facebook_url  = 'https://developers.facebook.com/tools/debug/og/object?q=' . $sharing_url_encoded;
@@ -463,7 +466,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			/**
 			 * AMP.
 			 */
-			if ( $mod['is_post'] ) {
+			if ( $mod[ 'is_post' ] ) {
 				$table_rows['validate_amp'] = $form->get_th_html( _x( 'The AMP Validator', 'option label', 'wpsso' ), 'medium' ) . 
 				'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-amp' ) . '</td>' . 
 				'<td class="validate">' . $form->get_button( _x( 'Validate AMP Markup', 'submit button', 'wpsso' ),

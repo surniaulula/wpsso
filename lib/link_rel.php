@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 				$shortlink = '';
 
-				if ( $mod['is_post'] ) {
+				if ( $mod[ 'is_post' ] ) {
 
 					$shortlink = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], 'post' );	// $context = post
 

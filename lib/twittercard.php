@@ -84,11 +84,11 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			if ( ! isset( $mt_tc['twitter:creator'] ) ) {
-				if ( $mod['is_post'] ) {
-					if ( $mod['post_author'] ) {
-						$mt_tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod['post_author'] );
+				if ( $mod[ 'is_post' ] ) {
+					if ( $mod[ 'post_author' ] ) {
+						$mt_tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod[ 'post_author' ] );
 					}
-				} elseif ( $mod['is_user'] ) {
+				} elseif ( $mod[ 'is_user' ] ) {
 					$mt_tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod[ 'id' ] );
 				}
 			}
@@ -264,7 +264,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 */
 			if ( ! isset( $mt_tc['twitter:card'] ) ) {
 
-				if ( $mod['is_post'] ) {
+				if ( $mod[ 'is_post' ] ) {
 
 					list( $card_type, $size_name, $md_pre ) = $this->get_card_type_size( 'post' );
 					

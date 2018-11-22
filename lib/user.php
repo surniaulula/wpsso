@@ -120,7 +120,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * User
 			 */
-			$mod['is_user'] = true;
+			$mod[ 'is_user' ] = true;
 
 			return apply_filters( $this->p->lca . '_get_user_mod', $mod, $mod_id );
 		}
@@ -781,11 +781,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$author_id = false;
 
-			if ( $mod['is_post'] ) {
-				if ( $mod['post_author'] ) {
-					$author_id = $mod['post_author'];
+			if ( $mod[ 'is_post' ] ) {
+				if ( $mod[ 'post_author' ] ) {
+					$author_id = $mod[ 'post_author' ];
 				}
-			} elseif ( $mod['is_user'] ) {
+			} elseif ( $mod[ 'is_user' ] ) {
 				$author_id = $mod[ 'id' ];
 			}
 

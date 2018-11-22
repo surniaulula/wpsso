@@ -190,7 +190,7 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 			return false;
 		}
 
-		$org_opts = apply_filters( $wpsso->cf['lca'].'_get_organization_options', false, $mod, $type_id );
+		$org_opts = apply_filters( $wpsso->lca . '_get_organization_options', false, $mod, $type_id );
 
 		if ( empty( $org_opts ) ) {
 			if ( $org_id === 'site' ) {
@@ -216,6 +216,6 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 			return false;
 		}
 
-		return apply_filters( $wpsso->cf['lca'].'_get_place_options', false, $mod, $type_id );
+		return apply_filters( $wpsso->lca . '_get_place_options', false, $mod, $type_id );
 	}
 }

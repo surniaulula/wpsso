@@ -81,7 +81,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$seo_msg_transl = __( 'This option is disabled (the "%1$s" head tag is disabled or an SEO plugin was detected).', 'wpsso' );
 
 			$table_rows[] = '<td colspan="2">' . 
-				$this->p->msgs->get( 'pro-about-msg-post-text', array( 'post_type' => $mod['post_type'] ) ) . 
+				$this->p->msgs->get( 'pro-about-msg-post-text', array( 'post_type' => $mod[ 'post_type' ] ) ) . 
 				$this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
 			$form_rows = array(
@@ -139,7 +139,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'content'       => $form->get_no_textarea_value( $def_tc_desc, '', '', $tc_desc_max_len ),
 				),
 				'sharing_url' => array(
-					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
+					'no_auto_draft' => ( $mod[ 'post_type' ] === 'attachment' ? false : true ),
 					'tr_class'      => $form->get_css_class_hide( 'basic', 'sharing_url' ),
 					'th_class'      => 'medium',
 					'td_class'      => 'blank',
@@ -148,7 +148,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'content'       => $form->get_no_input_value( $sharing_url, 'wide' ),
 				),
 				'canonical_url' => array(
-					'no_auto_draft' => ( $mod['post_type'] === 'attachment' ? false : true ),
+					'no_auto_draft' => ( $mod[ 'post_type' ] === 'attachment' ? false : true ),
 					'tr_class'      => ( $add_link_rel_canon ? $form->get_css_class_hide( 'basic', 'canonical_url' ) : 'hide_in_basic' ),
 					'th_class'      => 'medium',
 					'td_class'      => 'blank',
@@ -247,7 +247,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			);
 
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to update this value.',
-				'wpsso' ), SucomUtil::titleize( $mod['post_type'] ) );
+				'wpsso' ), SucomUtil::titleize( $mod[ 'post_type' ] ) );
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod, $auto_draft_msg );
 		}

@@ -1592,14 +1592,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$is_auto_draft = false;
 
-				if ( isset( $mod['post_status'] ) ) {
+				if ( isset( $mod[ 'post_status' ] ) ) {
 
 					/**
 					 * Do not show the option if the post status is empty or auto-draft.
 					 */
 					if ( ! empty( $val['no_auto_draft'] ) ) {
 
-						if ( empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ) {
+						if ( empty( $mod[ 'post_status' ] ) || $mod[ 'post_status' ] === 'auto-draft' ) {
 
 							$is_auto_draft = true;
 

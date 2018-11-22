@@ -260,11 +260,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			static $local_cache = array(); // Optimize and get image size for a given URL only once.
 
-			if ( isset( $local_cache[$image_url] ) ) {
+			if ( isset( $local_cache[ $image_url ] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: returning image info from static cache' );
 				}
-				return $local_cache[$image_url];
+
+				return $local_cache[ $image_url ];
 			}
 
 			$is_disabled    = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
@@ -277,7 +279,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'exiting early: use of getimagesize() is disabled' );
 				}
 
-				return $local_cache[$image_url] = $def_image_info;	// Stop here.
+				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
 
 			} elseif ( empty( $image_url ) ) {
 
@@ -285,7 +287,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'exiting early: image url is empty' );
 				}
 
-				return $local_cache[$image_url] = $def_image_info;	// Stop here.
+				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
 
 			} elseif ( filter_var( $image_url, FILTER_VALIDATE_URL ) === false ) {
 
@@ -293,7 +295,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'exiting early: invalid image url = '.$image_url );
 				}
 
-				return $local_cache[$image_url] = $def_image_info;	// Stop here.
+				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
 			}
 
 			static $cache_exp_secs = null;	// Filter the cache expiration value only once.
@@ -322,10 +324,12 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$image_info = get_transient( $cache_id );
 
 				if ( is_array( $image_info ) ) {
+
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'returning image info from transient: ' . $image_info[0] . 'x' . $image_info[1] );
+						$this->p->debug->log( 'exiting early: returning image info from transient' );
 					}
-					return $local_cache[$image_url] = $image_info;
+
+					return $local_cache[ $image_url ] = $image_info;
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
@@ -389,7 +393,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			return $local_cache[$image_url] = $image_info;
+			return $local_cache[ $image_url ] = $image_info;
 		}
 
 		public function get_image_size_label( $size_name ) {	// Example: 'wpsso-opengraph'.
@@ -2039,13 +2043,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = $this->get_page_mod( $mod );
 			}
 
-			$add_page = isset( $atts['add_page'] ) ? $atts['add_page'] : true;
+			$add_page = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
 			$src_id   = isset( $atts['src_id'] ) ? $atts['src_id'] : '';
 
-			if ( empty( $atts['url'] ) ) {
+			if ( empty( $atts[ 'url' ] ) ) {
 				$sharing_url = $this->get_sharing_url( $mod, $add_page, $src_id );
 			} else {
-				$sharing_url = $atts['url'];
+				$sharing_url = $atts[ 'url' ];
 			}
 
 			if ( is_admin() ) {
@@ -2245,7 +2249,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = array_merge( WpssoMeta::$mod_defaults, $mod );
 			}
 
-			$mod['use_post'] = $use_post;
+			$mod[ 'use_post' ] = $use_post;
 
 			/**
 			 * The post module defines is_home_page, is_home_index, and is_home.
@@ -2310,7 +2314,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$mod = $this->get_page_mod( $mod );
 			}
 
-			if ( $mod['is_post'] ) {
+			if ( $mod[ 'is_post' ] ) {
 
 				if ( ! empty( $mod[ 'id' ] ) ) {
 
@@ -2324,7 +2328,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							$this->p->debug->log( 'custom post ' . $type . '_url = ' . $url );
 						}
 
-					} elseif ( $mod['post_status'] !== 'published' ) {
+					} elseif ( $mod[ 'post_status' ] !== 'published' ) {
 
 						$post_obj = self::get_post_object( $mod[ 'id' ] );
 
@@ -2385,7 +2389,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 						}
 					}
 
-				} elseif ( $mod['is_term'] ) {
+				} elseif ( $mod[ 'is_term' ] ) {
 
 					if ( ! empty( $mod[ 'id' ] ) ) {
 
@@ -2404,7 +2408,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					$url = apply_filters( $this->p->lca . '_term_url', $url, $mod, $add_page, $src_id );
 
-				} elseif ( $mod['is_user'] ) {
+				} elseif ( $mod[ 'is_user' ] ) {
 
 					if ( ! empty( $mod[ 'id' ] ) ) {
 
@@ -2884,7 +2888,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			/**
 			 * Make sure the $post object is correct before filtering.
 			 */
-			if ( $mod['is_post'] && $mod[ 'id' ] && ( ! isset( $post->ID ) || $mod[ 'id' ] !== $post->ID ) ) {
+			if ( $mod[ 'is_post' ] && $mod[ 'id' ] && ( ! isset( $post->ID ) || $mod[ 'id' ] !== $post->ID ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'resetting post object from mod id ' . $mod[ 'id' ] );

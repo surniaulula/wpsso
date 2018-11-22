@@ -168,16 +168,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Post
 			 */
-			$mod['is_post']        = true;
-			$mod['is_home_page']   = SucomUtil::is_home_page( $mod_id );
-			$mod['is_home_index']  = $mod['is_home_page'] ? false : SucomUtil::is_home_index( $mod_id );
-			$mod['is_home']        = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;
-			$mod['post_slug']      = get_post_field( 'post_name', $mod_id );		// Post name (aka slug).
-			$mod['post_type']      = get_post_type( $mod_id );				// Post type name.
-			$mod['post_mime']      = get_post_mime_type( $mod_id );				// Post mime type (ie. image/jpg).
-			$mod['post_status']    = get_post_status( $mod_id );				// Post status name.
-			$mod['post_author']    = (int) get_post_field( 'post_author', $mod_id );	// Post author id.
-			$mod['post_coauthors'] = array();
+			$mod[ 'is_post' ]        = true;
+			$mod[ 'is_home_page' ]   = SucomUtil::is_home_page( $mod_id );
+			$mod[ 'is_home_index' ]  = $mod['is_home_page'] ? false : SucomUtil::is_home_index( $mod_id );
+			$mod[ 'is_home' ]        = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;
+			$mod[ 'post_slug' ]      = get_post_field( 'post_name', $mod_id );		// Post name (aka slug).
+			$mod[ 'post_type' ]      = get_post_type( $mod_id );				// Post type name.
+			$mod[ 'post_mime' ]      = get_post_mime_type( $mod_id );				// Post mime type (ie. image/jpg).
+			$mod[ 'post_status' ]    = get_post_status( $mod_id );				// Post status name.
+			$mod[ 'post_author' ]    = (int) get_post_field( 'post_author', $mod_id );	// Post author id.
+			$mod[ 'post_coauthors' ] = array();
 
 			/**
 			 * Hooked by the 'coauthors' pro module.
@@ -366,7 +366,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod = $this->get_mod( $post_id );
 
-			if ( empty( $mod['post_type'] ) ) {
+			if ( empty( $mod[ 'post_type' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_type is empty' );
@@ -374,7 +374,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return $shortlink;	// Return original shortlink.
 
-			} elseif ( empty( $mod['post_status'] ) ) {
+			} elseif ( empty( $mod[ 'post_status' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_status is empty' );
@@ -382,7 +382,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return $shortlink;	// Return original shortlink.
 
-			} elseif ( $mod['post_status'] === 'auto-draft' ) {
+			} elseif ( $mod[ 'post_status' ] === 'auto-draft' ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_status is auto-draft' );
@@ -390,7 +390,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return $shortlink;	// Return original shortlink.
 
-			} elseif ( $mod['post_status'] === 'trash' ) {
+			} elseif ( $mod[ 'post_status' ] === 'trash' ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_status is trash' );
@@ -556,11 +556,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true );
 
-			if ( empty( $_POST['post_id'] ) ) {
+			if ( empty( $_POST[ 'post_id' ] ) ) {
 				die( '-1' );
 			}
 
-			$post_id  = $_POST['post_id'];
+			$post_id  = $_POST[ 'post_id' ];
 			$post_obj = SucomUtil::get_post_object( $post_id );
 
 			if ( ! is_object( $post_obj ) ) {
@@ -583,11 +583,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
 			WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
 
-			if ( $mod['post_status'] === 'publish' ) {
+			if ( $mod[ 'post_status' ] === 'publish' ) {
 
 				$this->p->notice->set_ref( WpssoMeta::$head_meta_info['og:url'], $mod,
 					sprintf( __( 'checking meta tags for %1$s ID %2$s', 'wpsso' ),
-						$mod['post_type'], $mod[ 'id' ] ) );
+						$mod[ 'post_type' ], $mod[ 'id' ] ) );
 
 
 				/**
@@ -738,11 +738,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
 					WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
 
-					if ( $mod['post_status'] === 'publish' ) {
+					if ( $mod[ 'post_status' ] === 'publish' ) {
 
 						$this->p->notice->set_ref( WpssoMeta::$head_meta_info['og:url'], $mod,
 							sprintf( __( 'checking meta tags for %1$s ID %2$s', 'wpsso' ),
-								$mod['post_type'], $mod[ 'id' ] ) );
+								$mod[ 'post_type' ], $mod[ 'id' ] ) );
 
 						/**
 						 * Check for missing open graph image and description values.
@@ -1224,9 +1224,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		protected function get_table_rows( $metabox_id, $tab_key, $head, $mod ) {
 
-			$is_auto_draft  = empty( $mod['post_status'] ) || $mod['post_status'] === 'auto-draft' ? true : false;
+			$is_auto_draft  = empty( $mod[ 'post_status' ] ) || $mod[ 'post_status' ] === 'auto-draft' ? true : false;
 			$auto_draft_msg = sprintf( __( 'Save a draft version or publish the %s to display these options.', 'wpsso' ),
-				SucomUtil::titleize( $mod['post_type'] ) );
+				SucomUtil::titleize( $mod[ 'post_type' ] ) );
 
 			$table_rows = array();
 

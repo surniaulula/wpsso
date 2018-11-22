@@ -62,10 +62,10 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 
 			$metabox_id = $this->menu_id;
 
-			echo '<table class="sucom-settings '.$this->p->cf['lca'].'">';
+			echo '<table class="sucom-settings ' . $this->p->lca . '">';
 
 			$table_rows = array_merge( $this->get_table_rows( $metabox_id, 'general' ),
-				apply_filters( SucomUtil::sanitize_hookname( $this->p->cf['lca'].'_'.$metabox_id.'_general_rows' ),
+				apply_filters( SucomUtil::sanitize_hookname( $this->p->lca . '_' . $metabox_id . '_general_rows' ),
 					array(), $this->form ) );
 
 			sort( $table_rows );

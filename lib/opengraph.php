@@ -283,9 +283,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 					}
 	
-				} elseif ( $mod['is_post'] ) {
+				} elseif ( $mod[ 'is_post' ] ) {
 	
-					if ( ! empty( $mod['post_type'] ) ) {
+					if ( ! empty( $mod[ 'post_type' ] ) ) {
 	
 						if ( empty( $mod[ 'id' ] ) && is_post_type_archive() ) {
 	
@@ -296,9 +296,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								$this->p->debug->log( 'using og type id "' . $type_id . '" for post type archive page' );
 							}
 
-						} elseif ( isset( $this->p->options['og_type_for_' . $mod['post_type']] ) ) {
+						} elseif ( isset( $this->p->options['og_type_for_' . $mod[ 'post_type' ]] ) ) {
 	
-							$type_id = $this->get_og_type_id_for_name( $mod['post_type'] );
+							$type_id = $this->get_og_type_id_for_name( $mod[ 'post_type' ] );
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'using og type id "' . $type_id . '" from post type option value' );
@@ -306,7 +306,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						} elseif ( ! empty( $og_type_ns[ $mod[ 'post_type' ] ] ) ) {
 
-							$type_id = $mod['post_type'];
+							$type_id = $mod[ 'post_type' ];
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'using og type id "' . $type_id . '" from post type name' );
@@ -318,7 +318,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								$this->get_og_type_id_for_name( 'page' ), $mod );
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'using "page" og type for unknown post type ' . $mod['post_type'] );
+								$this->p->debug->log( 'using "page" og type for unknown post type ' . $mod[ 'post_type' ] );
 							}
 						}
 
@@ -332,7 +332,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						}
 					}
 	
-				} elseif ( $mod['is_term'] ) {
+				} elseif ( $mod[ 'is_term' ] ) {
 
 					if ( ! empty( $mod['tax_slug'] ) ) {
 
@@ -347,7 +347,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$type_id = $this->get_og_type_id_for_name( 'archive_page' );
 					}
 
-				} elseif ( $mod['is_user'] ) {
+				} elseif ( $mod[ 'is_user' ] ) {
 
 					$type_id = $this->get_og_type_id_for_name( 'user_page' );
 
@@ -439,7 +439,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$has_pdir    = $this->p->avail[ '*' ][ 'p_dir' ];
 			$has_pp      = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 			$max_nums    = $this->p->util->get_max_nums( $mod );
-			$post_id     = $mod['is_post'] ? $mod[ 'id' ] : false;
+			$post_id     = $mod[ 'is_post' ] ? $mod[ 'id' ] : false;
 			$check_dupes = true;
 			$prev_count  = 0;
 			$mt_og       = apply_filters( $this->p->lca . '_og_seed', $mt_og, $mod );
@@ -551,7 +551,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Updated date / time meta tag.
 			 */
 			if ( ! isset( $mt_og['og:updated_time'] ) ) {
-				if ( $mod['is_post'] && $post_id ) {
+				if ( $mod[ 'is_post' ] && $post_id ) {
 					$mt_og['og:updated_time'] = trim( get_post_modified_time( 'c', true, $post_id ) );	// $gmt is true.
 				}
 			}
@@ -652,7 +652,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						/**
 						 * If there's no image, and no video preview, then add the default image for singular (aka post) webpages.
 						 */
-						if ( empty( $mt_og[$md_pre . ':image'] ) && ! $prev_count && $mod['is_post'] ) {
+						if ( empty( $mt_og[$md_pre . ':image'] ) && ! $prev_count && $mod[ 'is_post' ] ) {
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'getting default image for ' . $md_pre . ' (' . $size_name . ')' );
@@ -770,11 +770,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * not an article, the meta tags will be sanitized at the end of
 			 * WpssoHead::get_head_array().
 			 */
-			if ( $mod['is_post'] && $post_id ) {
+			if ( $mod[ 'is_post' ] && $post_id ) {
 
 				if ( ! isset( $mt_og['article:author'] ) ) {
 
-					if ( $mod['is_post'] && isset( $this->p->m['util']['user'] ) ) {
+					if ( $mod[ 'is_post' ] && isset( $this->p->m['util']['user'] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'getting names / urls for article:author meta tags' );
@@ -782,11 +782,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						$user_mod =& $this->p->m['util']['user'];
 
-						if ( $mod['post_author'] ) {
+						if ( $mod[ 'post_author' ] ) {
 
-							$mt_og['article:author'] = $user_mod->get_og_profile_urls( $mod['post_author'], $crawler_name );
+							$mt_og['article:author'] = $user_mod->get_og_profile_urls( $mod[ 'post_author' ], $crawler_name );
 
-							$mt_og['article:author:name'] = $user_mod->get_author_meta( $mod['post_author'], $this->p->options['seo_author_name'] );
+							$mt_og['article:author:name'] = $user_mod->get_author_meta( $mod[ 'post_author' ], $this->p->options['seo_author_name'] );
 
 						} else {
 							$mt_og['article:author'] = array();
@@ -814,7 +814,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				if ( ! isset( $mt_og['article:published_time'] ) ) {
-					if ( $mod['post_status'] === 'publish' ) {	// Must be published to have publish time.
+					if ( $mod[ 'post_status' ] === 'publish' ) {	// Must be published to have publish time.
 						$mt_og['article:published_time'] = trim( get_post_time( 'c', $gmt = true, $post_id ) );
 					}
 				}
@@ -962,7 +962,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Optionally get more videos from the post content.
 			 */
-			if ( $mod['is_post'] && ! $this->p->util->is_maxed( $og_ret, $num ) ) {
+			if ( $mod[ 'is_post' ] && ! $this->p->util->is_maxed( $og_ret, $num ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'checking for additional videos in the post content' );
@@ -1108,9 +1108,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$this->p->util->clear_uniq_urls( $size_name );			// clear cache for $size_name context
 
-			if ( $mod['is_post'] ) {
+			if ( $mod[ 'is_post' ] ) {
 
-				if ( $mod['post_type'] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ) {
+				if ( $mod[ 'post_type' ] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ) {
 
 					$og_single_image = $this->p->media->get_attachment_image( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
 
@@ -1287,7 +1287,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 * If there's no image, and no video preview image, then add
 						 * the default image for singular (aka post) webpages.
 						 */
-						if ( empty( $ret[ $key ] ) && $mod['is_post'] ) {
+						if ( empty( $ret[ $key ] ) && $mod[ 'is_post' ] ) {
 
 							$og_images = $this->p->media->get_default_images( 1, $size_name, $check_dupes = false );
 

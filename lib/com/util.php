@@ -1057,7 +1057,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$currency_symbols = self::get_currency_symbols( $currency_abbrev = false, $add_none = false, $decode );
 
 			if ( is_array( $currency_symbols ) ) {	// Just in case.
+
 				foreach ( $currency_symbols as $key => $value ) {		// Example: USD => $
+
 					if ( $value === $currency_symbol ) {			// Example: $ === $
 
 						/**
@@ -1375,7 +1377,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function sanitize_use_post( $mixed, $default = false ) {
 
 			if ( is_array( $mixed ) ) {
-				$use_post = isset( $mixed['use_post'] ) ? $mixed['use_post'] : $default;
+				$use_post = isset( $mixed[ 'use_post' ] ) ? $mixed[ 'use_post' ] : $default;
 			} elseif ( is_object( $mixed ) ) {
 				$use_post = isset( $mixed->use_post ) ? $mixed->use_post : $default;
 			} else {
@@ -4062,7 +4064,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_atts_css_attr( array $atts, $css_name, $css_extra = '' ) {
 
-			$css_class = $css_name . '-' . ( empty( $atts['css_class'] ) ? 'button' : $atts['css_class'] );
+			$css_class = $css_name . '-' . ( empty( $atts[ 'css_class' ] ) ? 'button' : $atts[ 'css_class' ] );
 
 			if ( ! empty( $css_extra ) ) {
 				$css_class = $css_extra . ' ' . $css_class;
@@ -4073,9 +4075,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_atts_src_id( array $atts, $src_name ) {
 
-			$src_id = $src_name . '-' . ( empty( $atts['css_id'] ) ? 'button' : $atts['css_id'] );
+			$src_id = $src_name . '-' . ( empty( $atts[ 'css_id' ] ) ? 'button' : $atts[ 'css_id' ] );
 
-			if ( ! empty( $atts['use_post'] ) || is_singular() || in_the_loop() ) {
+			if ( ! empty( $atts[ 'use_post' ] ) || is_singular() || in_the_loop() ) {
 
 				global $post;
 

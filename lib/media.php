@@ -730,7 +730,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'' : $this->p->options['og_def_img_' . $key];
 			}
 
-			if ( empty( $def_img[ 'id' ] ) && empty( $def_img['url'] ) ) {
+			if ( empty( $def_img[ 'id' ] ) && empty( $def_img[ 'url' ] ) ) {
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: no default image defined' );
 				}
@@ -748,14 +748,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->add_mt_single_image_src( $og_single_image, $def_img[ 'id' ], $size_name, $check_dupes, $force_regen );
 			}
 
-			if ( empty( $og_single_image['og:image:url'] ) && ! empty( $def_img['url'] ) ) {
+			if ( empty( $og_single_image['og:image:url'] ) && ! empty( $def_img[ 'url' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'using default image url: ' . $def_img['url'] );
+					$this->p->debug->log( 'using default image url: ' . $def_img[ 'url' ] );
 				}
 
 				$og_single_image = array(
-					'og:image:url'    => $def_img['url'],
+					'og:image:url'    => $def_img[ 'url' ],
 					'og:image:width'  => $def_img['url:width'],
 					'og:image:height' => $def_img['url:height'],
 				);
@@ -1096,10 +1096,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$this->add_mt_single_image_src( $og_single_image, $img_opts[ 'id' ], $size_name, $check_dupes, $force_regen );
 
-			} elseif ( ! empty( $img_opts['url'] ) ) {
+			} elseif ( ! empty( $img_opts[ 'url' ] ) ) {
 
 				$og_single_image = array(
-					'og:image:url'     => $img_opts['url'],
+					'og:image:url'     => $img_opts[ 'url' ],
 					'og:image:width'   => $img_opts['url:width'] > 0 ? $img_opts['url:width'] : WPSSO_UNDEF,
 					'og:image:height'  => $img_opts['url:height'] > 0 ? $img_opts['url:height'] : WPSSO_UNDEF,
 					'og:image:cropped' => null,
@@ -1248,9 +1248,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							if ( is_array( $args ) ) { // Just in case.
 
-								if ( ! empty( $args['url'] ) ) {
+								if ( ! empty( $args[ 'url' ] ) ) {
 
-									if ( $check_dupes == false || $this->p->util->is_uniq_url( $args['url'], 'content_video' ) ) {
+									if ( $check_dupes == false || $this->p->util->is_uniq_url( $args[ 'url' ], 'content_video' ) ) {
 
 										$og_single_video = $this->get_video_details( $args, $check_dupes );
 
@@ -1301,7 +1301,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				'api'      => '',
 			), $args );
 
-			if ( empty( $args['url'] ) ) {
+			if ( empty( $args[ 'url' ] ) ) {
 				return array();
 			}
 
@@ -1347,10 +1347,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 	
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'no video returned by filters' );
-							$this->p->debug->log( 'falling back to media url: ' . $args['url'] );
+							$this->p->debug->log( 'falling back to media url: ' . $args[ 'url' ] );
 						}
 	
-						$media_url = $og_single_video['og:video:url'] = $args['url'];
+						$media_url = $og_single_video['og:video:url'] = $args[ 'url' ];
 					}
 	
 					/**
