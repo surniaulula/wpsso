@@ -2811,8 +2811,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			if ( ! empty( $mod['tax_slug'] ) ) {
-				$mod_salt .= '_tax:' . $mod['tax_slug'];
+			if ( ! empty( $mod[ 'tax_slug' ] ) ) {
+				$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
 			}
 
 			if ( empty( $mod[ 'id' ] ) ) {

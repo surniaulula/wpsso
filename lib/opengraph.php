@@ -334,9 +334,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 	
 				} elseif ( $mod[ 'is_term' ] ) {
 
-					if ( ! empty( $mod['tax_slug'] ) ) {
+					if ( ! empty( $mod[ 'tax_slug' ] ) ) {
 
-						$type_id = $this->get_og_type_id_for_name( 'tax_' . $mod['tax_slug'] );
+						$type_id = $this->get_og_type_id_for_name( 'tax_' . $mod[ 'tax_slug' ] );
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'using og type id "' . $type_id . '" from term taxonomy option value' );

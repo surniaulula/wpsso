@@ -362,7 +362,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( $mod[ 'is_term' ] ) {
 
-					$term_obj = SucomUtil::get_term_object( $mod[ 'id' ], $mod['tax_slug'] );
+					$term_obj = SucomUtil::get_term_object( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
 					if ( SucomUtil::is_category_page( $mod[ 'id' ] ) ) {
 
@@ -676,7 +676,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					} else { 	// other taxonomies
 
-						$term_obj = SucomUtil::get_term_object( $mod[ 'id' ], $mod['tax_slug'] );
+						$term_obj = SucomUtil::get_term_object( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
 						if ( ! empty( $term_obj->description ) ) {
 							$desc_text = $term_obj->description;

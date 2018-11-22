@@ -199,7 +199,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'calling get_posts() for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . 
-					' in taxonomy ' . $mod['tax_slug'] . ' (posts_per_page is ' . $ppp . ')' );
+					' in taxonomy ' . $mod[ 'tax_slug' ] . ' (posts_per_page is ' . $ppp . ')' );
 			}
 
 			$posts_args = array_merge( array(
@@ -212,7 +212,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				'posts_per_page' => $ppp,
 				'tax_query'      => array(
 				        array(
-						'taxonomy'         => $mod['tax_slug'],
+						'taxonomy'         => $mod[ 'tax_slug' ],
 						'field'            => 'term_id',
 						'terms'            => $mod[ 'id' ],
 						'include_children' => true
@@ -231,7 +231,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs'.
-						' to get posts for term ID %2$d in taxonomy %3$s', $mtime_total, $mod[ 'id' ], $mod['tax_slug'] ) );
+						' to get posts for term ID %2$d in taxonomy %3$s', $mtime_total, $mod[ 'id' ], $mod[ 'tax_slug' ] ) );
 				}
 
 				// translators: %1$0.3f is a number of seconds
@@ -239,7 +239,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				// translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$s is a recommended max
 				$error_msg = sprintf( __( 'Slow query detected - WordPress get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (%4$s).',
-					'wpsso' ), $mtime_total, $mod[ 'id' ], $mod['tax_slug'], $rec_max_msg );
+					'wpsso' ), $mtime_total, $mod[ 'id' ], $mod[ 'tax_slug' ], $rec_max_msg );
 
 				/**
 				 * Show an admin warning notice, if notices not already shown.

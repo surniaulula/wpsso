@@ -2402,7 +2402,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 								$this->p->debug->log( 'custom term ' . $type . '_url = ' . $url );
 							}
 						} else {
-							$url = $this->check_url_string( get_term_link( $mod[ 'id' ], $mod['tax_slug'] ), 'term link' );
+							$url = $this->check_url_string( get_term_link( $mod[ 'id' ], $mod[ 'tax_slug' ] ), 'term link' );
 						}
 					}
 

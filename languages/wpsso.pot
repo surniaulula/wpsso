@@ -6186,7 +6186,7 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1194
+#: lib/user.php:1197
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 

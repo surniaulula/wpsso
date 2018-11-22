@@ -1010,27 +1010,28 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		/**
 		 * Called by the WpssoRegister::uninstall_plugin() method.
+		 * Do not use Wpsso::get_instance() since the Wpsso class may not exist.
 		 */
-		public static function delete_metabox_prefs( $user_id = false ) {
-
-			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
+		public static function delete_metabox_prefs( $user_id = false, $slug_prefix = 'wpsso' ) {
 
 			$cf = WpssoConfig::get_config( false, true );
+
+			$user_id = empty( $user_id ) ? get_current_user_id() : $user_id;
 
 			$parent_slug = 'options-general.php';
 
 			foreach ( array_keys( $cf[ '*' ][ 'lib' ]['setting'] ) as $lib_id ) {
 
-				$menu_slug = $cf['lca'] . '-' . $lib_id;
+				$menu_slug = $slug_prefix . '-' . $lib_id;
 
 				self::delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug );
 			}
 
-			$parent_slug = $cf['lca'] . '-' . key( $cf[ '*' ][ 'lib' ]['submenu'] );
+			$parent_slug = $slug_prefix . '-' . key( $cf[ '*' ][ 'lib' ]['submenu'] );
 
 			foreach ( array_keys( $cf[ '*' ][ 'lib' ]['submenu'] ) as $lib_id ) {
 
-				$menu_slug = $cf['lca'] . '-' . $lib_id;
+				$menu_slug = $slug_prefix . '-' . $lib_id;
 
 				self::delete_metabox_pagehook( $user_id, $menu_slug, $parent_slug );
 			}
@@ -1138,10 +1139,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public static function is_show_all( $user_id = false ) {
+
 			return self::show_opts( 'all', $user_id );
 		}
 
 		public static function get_show_val( $user_id = false ) {
+
 			return self::show_opts( false, $user_id );
 		}
 
