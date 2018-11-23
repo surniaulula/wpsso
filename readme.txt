@@ -47,7 +47,7 @@ WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google'
 
 **A reliable WordPress plugin for today *and* tomorrow:**
 
-WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in the upcoming release of WordPress 5.0.
+WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in the upcoming release of WordPress v5.0.
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.0-dev.5 (2018/11/22)**
+**Version 4.17.0-b.1 (2018/11/23)**
 
 * *New Features*
 	* None.
@@ -348,7 +348,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a check for the database 'max_allowed_packet' option value, along with an error notice if the value is less than 1MB.
 	* Updated the help text and translation strings for the "SSO WebSite Pages" settings page options.
 * *Bugfixes*
-	* Fixed option value sanitation for the number of caption hashtags.
+	* Fixed option value sanitation for the number of hashtags added to caption text.
 * *Developer Notes*
 	* Added a new SucomUtil::array_to_keywords() method.
 	* Added a new WpssoPage::get_text_and_hashtags() method to extract / add hashtags to titles, descriptions, and captions.
@@ -469,9 +469,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.17.0-dev.5 =
+= 4.17.0-b.1 =
 
-(2018/11/22) Added a check for the database 'max_allowed_packet' setting value. Fixed option value sanitation for the number of caption hashtags.
+(2018/11/23) Added a button under the Document SSO &gt; Validate tab for the LinkedIn Post Inspector. Added a check for the database 'max_allowed_packet' option value. Fixed option value sanitation for the number of hashtags added to caption text.
 
 = 4.16.6 =
 
