@@ -225,12 +225,12 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			return array(
 				'_ajax_nonce'      => wp_create_nonce( WPSSO_NONCE_NAME ),
-				'_metabox_id'      => $this->p->lca . '_metabox_' . $this->p->cf['meta'][ 'id' ],
-				'_tb_notices'      => $this->tb_notices,
+				'_tb_notices'      => $this->tb_notices,	// Maybe true, false, or array.
 				'_no_notices_html' => $no_notices_html,
 				'_option_labels'   => array(
 					'robots'   => _x( 'Robots', 'option label', 'wpsso' ),
 				),
+				'_metabox_id'      => $this->p->lca . '_metabox_' . $this->p->cf['meta'][ 'id' ],
 			);
 		}
 
@@ -249,7 +249,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			/**
 			 * Just in case - no use getting notices if there's nothing to get.
 			 */
-			if ( empty( $this->tb_notices ) ) {
+			if ( empty( $this->tb_notices ) || ! is_array( $this->tb_notices ) ) {
 				return;
 			}
 

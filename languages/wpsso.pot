@@ -5471,7 +5471,7 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1406 lib/script.php:232
+#: lib/post.php:1406 lib/script.php:231
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
