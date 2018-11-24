@@ -69,8 +69,8 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( isset( $wpsso->m['util']['post'] ) ) {	// Just in case.
-			$wpsso->m['util']['post']->clear_cache( $post_id );
+		if ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
+			$wpsso->m[ 'util' ][ 'post' ]->clear_cache( $post_id );
 		}
 	}
 }
@@ -95,8 +95,8 @@ if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( isset( $wpsso->m['util']['post'] ) ) {
-			return $wpsso->m['util']['post']->get_mod( $post_id );
+		if ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {
+			return $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
 		} else {
 			return false;
 		}
@@ -109,8 +109,8 @@ if ( ! function_exists( 'wpsso_get_term_mod' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( isset( $wpsso->m['util']['term'] ) ) {
-			return $wpsso->m['util']['term']->get_mod( $term_id );
+		if ( isset( $wpsso->m[ 'util' ][ 'term' ] ) ) {
+			return $wpsso->m[ 'util' ][ 'term' ]->get_mod( $term_id );
 		} else {
 			return false;
 		}
@@ -123,8 +123,8 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( isset( $wpsso->m['util']['user'] ) ) {
-			return $wpsso->m['util']['user']->get_mod( $user_id );
+		if ( isset( $wpsso->m[ 'util' ][ 'user' ] ) ) {
+			return $wpsso->m[ 'util' ][ 'user' ]->get_mod( $user_id );
 		} else {
 			return false;
 		}
@@ -184,8 +184,8 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 
 		if ( empty( $post_id ) ) {	// Just in case.
 			return false;
-		} elseif ( isset( $wpsso->m['util']['post'] ) ) {	// Just in case.
-			$mod = $wpsso->m['util']['post']->get_mod( $post_id );
+		} elseif ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
+			$mod = $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
 		} else {
 			return false;
 		}
@@ -210,8 +210,8 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 
 		if ( empty( $post_id ) ) {	// Just in case.
 			return false;
-		} elseif ( isset( $wpsso->m['util']['post'] ) ) {	// Just in case.
-			$mod = $wpsso->m['util']['post']->get_mod( $post_id );
+		} elseif ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
+			$mod = $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
 		} else {
 			return false;
 		}

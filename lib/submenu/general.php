@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 		protected function get_table_rows( $metabox_id, $tab_key ) {
 
 			$table_rows = array();
-			$user_contacts = $this->p->m['util']['user']->get_form_contact_fields();
+			$user_contacts = $this->p->m[ 'util' ][ 'user' ]->get_form_contact_fields();
 
 			switch ( $metabox_id . '-' . $tab_key ) {
 

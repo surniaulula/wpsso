@@ -13,7 +13,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 	/**
 	 * This class is extended by gpl/util/user.php or pro/util/user.php
-	 * and the class object is created as $this->p->m['util']['user'].
+	 * and the class object is created as $this->p->m[ 'util' ][ 'user' ].
 	 */
 	class WpssoUser extends WpssoMeta {
 

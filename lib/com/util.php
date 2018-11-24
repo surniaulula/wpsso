@@ -1132,7 +1132,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$filter_name = current_filter();
 
-			self::$cache_filter_values['original'][$filter_name] = $value; // Save value to static cache.
+			self::$cache_filter_values[ 'original' ][$filter_name] = $value; // Save value to static cache.
 
 			remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), self::get_min_int() ); // Remove ourselves.
 
@@ -1143,14 +1143,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$filter_name = current_filter();
 
-			unset( self::$cache_filter_values['modified'][$filter_name] );	// Just in case.
+			unset( self::$cache_filter_values[ 'modified' ][$filter_name] );	// Just in case.
 
-			if ( isset( self::$cache_filter_values['original'][$filter_name] ) ) {      // Just in case.
-				if ( $value !== self::$cache_filter_values['original'][$filter_name] ) {
+			if ( isset( self::$cache_filter_values[ 'original' ][$filter_name] ) ) {      // Just in case.
+				if ( $value !== self::$cache_filter_values[ 'original' ][$filter_name] ) {
 
-					self::$cache_filter_values['modified'][$filter_name] = $value;
+					self::$cache_filter_values[ 'modified' ][$filter_name] = $value;
 
-					$value = self::$cache_filter_values['original'][$filter_name];      // Restore value from static cache.
+					$value = self::$cache_filter_values[ 'original' ][$filter_name];      // Restore value from static cache.
 				}
 			}
 
@@ -1161,8 +1161,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_modified_filter_value( $filter_name ) {
 
-			if ( isset( self::$cache_filter_values['modified'][$filter_name] ) ) {
-				return self::$cache_filter_values['modified'][$filter_name];
+			if ( isset( self::$cache_filter_values[ 'modified' ][$filter_name] ) ) {
+				return self::$cache_filter_values[ 'modified' ][$filter_name];
 			} else {
 				return false;
 			}
@@ -1177,15 +1177,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$post_id       = false;
 			$can_edit_id   = false;
 			$can_edit_type = false;
-			$req_action    = empty( $_REQUEST['action'] ) ? false : $_REQUEST['action'];
-			$is_meta_box   = empty( $_REQUEST['meta-box-loader'] ) && empty( $_REQUEST['meta_box'] ) ? false : true;
-			$is_gutenbox   = empty( $_REQUEST['gutenberg_meta_boxes'] ) ? false : true;
-			$is_classic    = isset( $_REQUEST['classic-editor'] ) && empty( $_REQUEST['classic-editor'] ) ? false : true;
+			$req_action    = empty( $_REQUEST[ 'action' ] ) ? false : $_REQUEST[ 'action' ];
+			$is_meta_box   = empty( $_REQUEST[ 'meta-box-loader' ] ) && empty( $_REQUEST[ 'meta_box' ] ) ? false : true;
+			$is_gutenbox   = empty( $_REQUEST[ 'gutenberg_meta_boxes' ] ) ? false : true;
+			$is_classic    = isset( $_REQUEST[ 'classic-editor' ] ) && empty( $_REQUEST[ 'classic-editor' ] ) ? false : true;
 
-			if ( ! empty( $_REQUEST['post_ID'] ) ) {
-				$post_id = $_REQUEST['post_ID'];
-			} elseif ( ! empty( $_REQUEST['post'] ) && is_numeric( $_REQUEST['post'] ) ) {
-				$post_id = $_REQUEST['post'];
+			if ( ! empty( $_REQUEST[ 'post_ID' ] ) ) {
+				$post_id = $_REQUEST[ 'post_ID' ];
+			} elseif ( ! empty( $_REQUEST[ 'post' ] ) && is_numeric( $_REQUEST[ 'post' ] ) ) {
+				$post_id = $_REQUEST[ 'post' ];
 			}
 
 			if ( $post_id ) {
@@ -1263,13 +1263,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					return $local_cache[ $url ] = true;
 
-				} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] )
-					&& strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) === 'https' ) {
+				} elseif ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] )
+					&& strtolower( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) === 'https' ) {
 
 					return $local_cache[ $url ] = true;
 
-				} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_SSL'] )
-					&& strtolower( $_SERVER['HTTP_X_FORWARDED_SSL'] ) === 'on' ) {
+				} elseif ( isset( $_SERVER[ 'HTTP_X_FORWARDED_SSL' ] )
+					&& strtolower( $_SERVER[ 'HTTP_X_FORWARDED_SSL' ] ) === 'on' ) {
 
 					return $local_cache[ $url ] = true;
 				}
@@ -1866,8 +1866,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! isset( self::$cache_crawler_name ) ) {
 
-				$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ?
-					strtolower( $_SERVER['HTTP_USER_AGENT'] ) : '';
+				$ua = isset( $_SERVER[ 'HTTP_USER_AGENT' ] ) ?
+					strtolower( $_SERVER[ 'HTTP_USER_AGENT' ] ) : '';
 
 				switch ( true ) {
 
@@ -2466,7 +2466,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':weight:units'                    => '',
 			);
 
-			if ( isset( $mt_og['og:type'] ) && $mt_og['og:type'] === 'product' ) {
+			if ( isset( $mt_og[ 'og:type' ] ) && $mt_og[ 'og:type' ] === 'product' ) {
 				$og_ret[ $mt_pre ]              = array();		// Non-standard / internal meta tag.
 				$og_ret[ $mt_pre . ':offers' ]  = array();		// Non-standard / internal meta tag.
 				$og_ret[ $mt_pre . ':reviews' ] = array();		// Non-standard / internal meta tag.
@@ -2539,7 +2539,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * while array_key_exists() does, so use array_key_exists() here.
 			 */
 			if ( array_key_exists( 'og:type', $mt_og ) ) {
-				return array_merge( array( 'og:type' => $mt_og['og:type'] ), $og_ret, $mt_og );
+				return array_merge( array( 'og:type' => $mt_og[ 'og:type' ] ), $og_ret, $mt_og );
 			}
 
 			return array_merge( $og_ret, $mt_og );
@@ -2817,7 +2817,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( empty( $mod[ 'id' ] ) ) {
 
-				if ( ! empty( $mod['is_home'] ) ) {
+				if ( ! empty( $mod[ 'is_home' ] ) ) {
 					$mod_salt .= '_home';
 				}
 
@@ -2865,12 +2865,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$current_time = time();
 
-			if ( isset( $data_array['__created_at'] ) ) {
+			if ( isset( $data_array[ '__created_at' ] ) ) {
 
 				/**
 				 * Adjust the expiration time by removing the difference.
 				 */
-				$expires_in_secs = $cache_exp_secs - ( $current_time - $data_array['__created_at'] );
+				$expires_in_secs = $cache_exp_secs - ( $current_time - $data_array[ '__created_at' ] );
 
 				if ( $expires_in_secs < $reset_at_secs ) {
 					$expires_in_secs = $cache_exp_secs;
@@ -2880,7 +2880,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$expires_in_secs = $cache_exp_secs;
 
-				$data_array['__created_at'] = $current_time;
+				$data_array[ '__created_at' ] = $current_time;
 			}
 
 			set_transient( $cache_id, $data_array, $expires_in_secs );
@@ -2899,7 +2899,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( ! array_key_exists( $key, $opts ) ) {
 					$opts[ $key ] = 0; // Add missing checkbox as empty.
 				}
-				unset ( $opts['is_checkbox_' . $key] );
+				unset ( $opts[ 'is_checkbox_' . $key] );
 			}
 			return $opts;
 		}
@@ -3001,7 +3001,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$ret = self::is_post_exists( $use_post );
 
-			} elseif ( true === $use_post && ! empty( $GLOBALS['post']->ID ) ) {
+			} elseif ( true === $use_post && ! empty( $GLOBALS[ 'post' ]->ID ) ) {
 
 				$ret = true;
 
@@ -3033,7 +3033,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$ret = true;
 
-				} elseif ( basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' ) {
+				} elseif ( basename( $_SERVER[ 'PHP_SELF' ] ) === 'post-new.php' ) {
 
 					$ret = true;
 				}
@@ -3050,9 +3050,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$post_obj = get_post( $use_post );
 
-			} elseif ( true === $use_post && ! empty( $GLOBALS['post']->ID ) ) {
+			} elseif ( true === $use_post && ! empty( $GLOBALS[ 'post' ]->ID ) ) {
 
-				$post_obj = $GLOBALS['post'];
+				$post_obj = $GLOBALS[ 'post' ];
 
 			/**
 			 * The 'sucom_is_post_page' filter is used by the buddypress module.
@@ -3272,7 +3272,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 
 				} elseif ( self::get_request_value( 'user_id' ) !== '' ||  // Called too early for screen.
-					basename( $_SERVER['PHP_SELF'] ) === 'profile.php' ) {
+					basename( $_SERVER[ 'PHP_SELF' ] ) === 'profile.php' ) {
 
 					$ret = true;
 				}
@@ -3419,7 +3419,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_request_value( $key, $method = 'ANY', $default = '' ) {
 
 			if ( $method === 'ANY' ) {
-				$method = $_SERVER['REQUEST_METHOD'];
+				$method = $_SERVER[ 'REQUEST_METHOD' ];
 			}
 
 			switch( $method ) {
@@ -3524,10 +3524,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return false;
 			}
 
-			if ( empty( $parsed_url['query'] ) ) {
-				$parsed_url['query'] = http_build_query( $args );
+			if ( empty( $parsed_url[ 'query' ] ) ) {
+				$parsed_url[ 'query' ] = http_build_query( $args );
 			} else {
-				$parsed_url['query'] .= '&' . http_build_query( $args );
+				$parsed_url[ 'query' ] .= '&' . http_build_query( $args );
 			}
 
 			$url = self::unparse_url( $parsed_url );
@@ -3537,14 +3537,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function unparse_url( $parsed_url ) {
 
-			$scheme   = isset( $parsed_url['scheme'] )   ? $parsed_url['scheme'] . '://' : '';
-			$user     = isset( $parsed_url['user'] )     ? $parsed_url['user'] : '';
-			$pass     = isset( $parsed_url['pass'] )     ? ':' . $parsed_url['pass']  : '';
-			$host     = isset( $parsed_url['host'] )     ? $parsed_url['host'] : '';
-			$port     = isset( $parsed_url['port'] )     ? ':' . $parsed_url['port'] : '';
-			$path     = isset( $parsed_url['path'] )     ? $parsed_url['path'] : '';
-			$query    = isset( $parsed_url['query'] )    ? '?' . $parsed_url['query'] : '';
-			$fragment = isset( $parsed_url['fragment'] ) ? '#' . $parsed_url['fragment'] : '';
+			$scheme   = isset( $parsed_url[ 'scheme' ] )   ? $parsed_url[ 'scheme' ] . '://' : '';
+			$user     = isset( $parsed_url[ 'user' ] )     ? $parsed_url[ 'user' ] : '';
+			$pass     = isset( $parsed_url[ 'pass' ] )     ? ':' . $parsed_url[ 'pass' ]  : '';
+			$host     = isset( $parsed_url[ 'host' ] )     ? $parsed_url[ 'host' ] : '';
+			$port     = isset( $parsed_url[ 'port' ] )     ? ':' . $parsed_url[ 'port' ] : '';
+			$path     = isset( $parsed_url[ 'path' ] )     ? $parsed_url[ 'path' ] : '';
+			$query    = isset( $parsed_url[ 'query' ] )    ? '?' . $parsed_url[ 'query' ] : '';
+			$fragment = isset( $parsed_url[ 'fragment' ] ) ? '#' . $parsed_url[ 'fragment' ] : '';
 
 			return $scheme . $user . $pass . ( $user || $pass ? '@' : '' ) . $host . $port . $path . $query . $fragment;
 		}
@@ -3781,7 +3781,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			} elseif ( function_exists( 'wp_roles' ) ) {
 				return wp_roles()->is_role( $role );
 			} else {
-				return $GLOBALS['wp_roles']->is_role( $role );
+				return $GLOBALS[ 'wp_roles' ]->is_role( $role );
 			}
 		}
 
@@ -4034,20 +4034,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			global $_wp_additional_image_sizes;
 
-			if ( isset( $_wp_additional_image_sizes[$size_name]['width'] ) ) {
-				$width = intval( $_wp_additional_image_sizes[$size_name]['width'] );
+			if ( isset( $_wp_additional_image_sizes[$size_name][ 'width' ] ) ) {
+				$width = intval( $_wp_additional_image_sizes[$size_name][ 'width' ] );
 			} else {
 				$width = get_option( $size_name . '_size_w' );
 			}
 
-			if ( isset( $_wp_additional_image_sizes[$size_name]['height'] ) ) {
-				$height = intval( $_wp_additional_image_sizes[$size_name]['height'] );
+			if ( isset( $_wp_additional_image_sizes[$size_name][ 'height' ] ) ) {
+				$height = intval( $_wp_additional_image_sizes[$size_name][ 'height' ] );
 			} else {
 				$height = get_option( $size_name . '_size_h' );
 			}
 
-			if ( isset( $_wp_additional_image_sizes[$size_name]['crop'] ) ) {
-				$crop = $_wp_additional_image_sizes[$size_name]['crop'];
+			if ( isset( $_wp_additional_image_sizes[$size_name][ 'crop' ] ) ) {
+				$crop = $_wp_additional_image_sizes[$size_name][ 'crop' ];
 			} else {
 				$crop = get_option( $size_name . '_crop' );
 			}

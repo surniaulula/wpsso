@@ -2826,7 +2826,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:164 lib/loader.php:190 lib/post.php:268 lib/register.php:278
-#: lib/term.php:252 lib/user.php:219 lib/util.php:371 lib/util.php:3003
+#: lib/term.php:252 lib/user.php:219 lib/util.php:371 lib/util.php:3007
 msgid "%s warning:"
 msgstr ""
 
@@ -3436,7 +3436,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:683 lib/util.php:3278
+#: lib/messages.php:683 lib/util.php:3282
 msgid "No options available."
 msgstr ""
 
@@ -5347,7 +5347,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:254 lib/term.php:238 lib/user.php:205 lib/util.php:357
-#: lib/util.php:2975
+#: lib/util.php:2979
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -6256,13 +6256,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:2978
+#: lib/util.php:2982
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2995
+#: lib/util.php:2999
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6271,29 +6271,29 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2995
+#: lib/util.php:2999
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3305
+#: lib/util.php:3309
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3308
+#: lib/util.php:3312
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3313
+#: lib/util.php:3317
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3316
+#: lib/util.php:3320
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

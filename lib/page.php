@@ -1071,7 +1071,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $use_mod_opts ) {
 				if ( ! empty( $post_id ) ) {
-					$section = $this->p->m['util']['post']->get_options( $post_id, 'og_art_section' );	// Returns null if index key not found.
+					$section = $this->p->m[ 'util' ][ 'post' ]->get_options( $post_id, 'og_art_section' );	// Returns null if index key not found.
 				}
 			}
 

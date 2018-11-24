@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$this->p->debug->log( 'getting mod for post object ID ' . $post_id );
 				}
 
-				$posts_mods[] = $this->p->m['util']['post']->get_mod( $post_id );
+				$posts_mods[] = $this->p->m[ 'util' ][ 'post' ]->get_mod( $post_id );
 			}
 
 			return $posts_mods;

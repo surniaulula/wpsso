@@ -13,7 +13,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 	/**
 	 * This class is extended by gpl/util/post.php or pro/util/post.php
-	 * and the class object is created as $this->p->m['util']['post'].
+	 * and the class object is created as $this->p->m[ 'util' ][ 'post' ].
 	 */
 	class WpssoPost extends WpssoMeta {
 
@@ -1377,7 +1377,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$post_terms = wp_get_post_terms( $post_id, $tax_slug );
 		
 						foreach ( $post_terms as $post_term ) {
-							$this->p->m['util']['term']->clear_cache( $post_term->term_id, $post_term->term_taxonomy_id );
+							$this->p->m[ 'util' ][ 'term' ]->clear_cache( $post_term->term_id, $post_term->term_taxonomy_id );
 						}
 					}
 				}

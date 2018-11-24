@@ -774,13 +774,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( ! isset( $mt_og['article:author'] ) ) {
 
-					if ( $mod[ 'is_post' ] && isset( $this->p->m['util']['user'] ) ) {
+					if ( $mod[ 'is_post' ] && isset( $this->p->m[ 'util' ][ 'user' ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'getting names / urls for article:author meta tags' );
 						}
 
-						$user_mod =& $this->p->m['util']['user'];
+						$user_mod =& $this->p->m[ 'util' ][ 'user' ];
 
 						if ( $mod[ 'post_author' ] ) {
 

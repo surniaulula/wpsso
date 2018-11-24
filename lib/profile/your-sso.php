@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 				wp_die( __( 'Invalid user ID.' ) );
 			}
 
-			$this->p->m['util']['user']->show_metabox_custom_meta( $user_obj );
+			$this->p->m[ 'util' ][ 'user' ]->show_metabox_custom_meta( $user_obj );
 		}
 	}
 }

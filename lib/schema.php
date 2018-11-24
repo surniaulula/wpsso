@@ -2011,7 +2011,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $opts[$mt_image_pre . ':id'] ) && is_numeric( $opts[$mt_image_pre . ':id'] ) ) {
 
 				$post_id = $opts[$mt_image_pre . ':id'];
-				$mod     = $wpsso->m['util']['post']->get_mod( $post_id );
+				$mod     = $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
 
 				/**
 				 * Get the image title.
@@ -2317,8 +2317,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			} elseif ( empty( $md_type ) ) {	// Just in case.
 				return false;
-			} elseif ( isset( $wpsso->m['util']['post'] ) ) {
-				$mod = $wpsso->m['util']['post']->get_mod( $post_id );
+			} elseif ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {
+				$mod = $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
 			} else {
 				return false;
 			}
@@ -3291,7 +3291,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					return 0;
 
-				} elseif ( empty( $wpsso->m['util']['user'] ) ) {
+				} elseif ( empty( $wpsso->m[ 'util' ][ 'user' ] ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 						$wpsso->debug->log( 'exiting early: empty user module' );
@@ -3305,7 +3305,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$wpsso->debug->log( 'getting user module for user_id ' . $user_id );
 					}
 
-					$user_mod = $wpsso->m['util']['user']->get_mod( $user_id );
+					$user_mod = $wpsso->m[ 'util' ][ 'user' ]->get_mod( $user_id );
 				}
 
 				$user_desc = $user_mod[ 'obj' ]->get_options_multi( $user_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
@@ -3978,7 +3978,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				return array();
 
-			} elseif ( empty( $this->p->m['util']['user'] ) ) {
+			} elseif ( empty( $this->p->m[ 'util' ][ 'user' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: empty user module' );
@@ -3992,7 +3992,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'getting user_mod for author id '.$author_id );
 				}
 
-				$user_mod = $this->p->m['util']['user']->get_mod( $author_id );
+				$user_mod = $this->p->m[ 'util' ][ 'user' ]->get_mod( $author_id );
 			}
 
 			$author_url  = $user_mod[ 'obj' ]->get_author_website( $author_id, 'url' );

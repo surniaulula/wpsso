@@ -412,7 +412,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$wp_obj       = false;
 			$image_sizes  = array();
-			$mod          = $this->p->m['util']['post']->get_mod( $post_id );
+			$mod          = $this->p->m[ 'util' ][ 'post' ]->get_mod( $post_id );
 			$filter_sizes = true;
 
 			$this->add_plugin_image_sizes( $wp_obj, $image_sizes, $mod, $filter_sizes );
@@ -1314,7 +1314,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$status_msg = $user_id ? sprintf( __( 'The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d users have been refreshed.',
-				'wpsso' ), $total_count['post'], $total_count['term'], $total_count['user'] ) : '';
+				'wpsso' ), $total_count[ 'post' ], $total_count[ 'term' ], $total_count[ 'user' ] ) : '';
 
 			$mtime_total = microtime( true ) - $mtime_start;
 
@@ -2132,11 +2132,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function get_page_mod( $use_post = false, $mod = false, $wp_obj = false ) {
 
 			if ( ! is_array( $mod ) ) {
+
 				$mod = array();
+
 			} elseif ( isset( $mod[ 'obj' ] ) && is_object( $mod[ 'obj' ] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: module object is defined' );
 				}
+
 				return $mod;
 			}
 
@@ -2232,13 +2236,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			if ( isset( $this->p->m['util'][$mod[ 'name' ]] ) ) {	// Make sure we have a complete $mod array.
+			if ( isset( $this->p->m[ 'util' ][ $mod[ 'name' ] ] ) ) {	// Make sure we have a complete $mod array.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting $mod array from ' . $mod[ 'name' ] . ' module object' );
 				}
 
-				$mod = $this->p->m['util'][$mod[ 'name' ]]->get_mod( $mod[ 'id' ] );
+				$mod = $this->p->m[ 'util' ][ $mod[ 'name' ] ]->get_mod( $mod[ 'id' ] );
 
 			} else {
 
