@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.1-dev.1 (2018/11/25)**
+**Version 4.17.1-dev.2 (2018/11/25)**
 
 * *New Features*
 	* None.
@@ -348,7 +348,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Refactored metabox updates for WordPress v5.0 to allow updating multiple metabox IDs.
+	* Refactored metabox container updates for WordPress v5.0 to allow updating multiple container IDs.
 
 **Version 4.17.0 (2018/11/25)**
 
@@ -480,9 +480,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.17.1-dev.1 =
+= 4.17.1-dev.2 =
 
-(2018/11/25) Refactored metabox updates for WordPress v5.0 to allow updating multiple metabox IDs.
+(2018/11/25) Refactored metabox container updates for WordPress v5.0 to allow updating multiple container IDs.
 
 = 4.17.0 =
 
