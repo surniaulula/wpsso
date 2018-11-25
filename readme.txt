@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.1-dev.1 (TBD)**
+**Version 4.17.1-dev.1 (2018/11/25)**
 
 * *New Features*
 	* None.
@@ -348,7 +348,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* Refactored metabox updates for WordPress v5.0 to allow updating multiple metabox IDs.
 
 **Version 4.17.0 (2018/11/25)**
 
@@ -482,7 +482,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.17.1-dev.1 =
 
-(TBD) None.
+(2018/11/25) Refactored metabox updates for WordPress v5.0 to allow updating multiple metabox IDs.
 
 = 4.17.0 =
 
