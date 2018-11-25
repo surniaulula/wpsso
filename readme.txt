@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.0-rc.2 (2018/11/24)**
+**Version 4.17.0 (2018/11/25)**
 
 * *New Features*
 	* None.
@@ -469,11 +469,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.17.0-rc.2 =
+= 4.17.0 =
 
-(2018/11/24) Added a button under the Document SSO &gt; Validate tab for the LinkedIn Post Inspector. Added a check for the database 'max_allowed_packet' option value. Fixed option value sanitation for the number of hashtags added to caption text.
-
-= 4.16.6 =
-
-(2010/11/17) Fixed post, term, user options fallback in Free version.
+(2018/11/25) Added a button under the Document SSO &gt; Validate tab for the LinkedIn Post Inspector. Added a check for the database 'max_allowed_packet' option value. Fixed option value sanitation for the number of hashtags added to caption text.
 
