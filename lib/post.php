@@ -30,9 +30,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $is_admin ) {
 
-				$update_metabox_id = $this->p->lca . '_metabox_' . $this->p->cf['meta'][ 'id' ] . '_inside';
+				$metabox_id   = $this->p->cf['meta'][ 'id' ];
+				$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
 
-				add_action( 'wp_ajax_update_metabox_id_' . $update_metabox_id, array( $this, 'ajax_metabox_custom_meta' ) );
+				add_action( 'wp_ajax_update_container_id_' . $container_id, array( $this, 'ajax_metabox_custom_meta' ) );
 
 				if ( ! empty( $_GET ) || basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' ) {
 
@@ -1177,11 +1178,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$metabox_html = $this->get_metabox_custom_meta( $post_obj );
 
-			/**
-			 * Reinit the qTip tooltips.
-			 */
-			$metabox_html .= '<script type="text/javascript">sucomInitTooltips();</script>';
-
 			die( $metabox_html );
 		}
 
@@ -1191,6 +1187,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_metabox_custom_meta( $post_obj ) {
 
+			$doing_ajax = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
 			$metabox_id = $this->p->cf['meta'][ 'id' ];
 			$mod        = $this->get_mod( $post_obj->ID );
 			$tabs       = $this->get_custom_meta_tabs( $metabox_id, $mod );
@@ -1222,13 +1219,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
 
+			if ( $doing_ajax ) {
+				$metabox_html .= '<script type="text/javascript">sucomInitTooltips();</script>' . "\n";
+			}
+
+			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+			$metabox_html = "\n" . '<div id="' . $container_id . '">' . $metabox_html . '</div><!-- #'. $container_id . ' -->' . "\n";
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( $metabox_id . ' table rows' );	// End timer.
 			}
 
-			$update_metabox_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
-
-			return "\n" . '<div id="' . $update_metabox_id . '">' . $metabox_html . '</div>' . "\n";
+			return $metabox_html;
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key, $head, $mod ) {
@@ -1411,9 +1413,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );	// WPSSO_NONCE_NAME is an md5() string
 			echo "\n";
 			echo '<div class="misc-pub-section misc-pub-robots sucom-sidebox ' . $robots_css_id . '-options" id="post-' . $robots_css_id . '">' . "\n";
+
 			echo '<div id="post-' . $robots_css_id . '-label">';
 			echo _x( 'Robots', 'option label', 'wpsso' ) . ':';
-			echo '</div>' . "\n";
+			echo '</div><!-- #post-' . $robots_css_id . '-label -->' . "\n";
+
 			echo '<div id="post-' . $robots_css_id . '-display">' . "\n";
 			echo '<div id="post-' . $robots_css_id . '-content">' . $robots_content;
 

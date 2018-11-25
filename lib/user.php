@@ -547,6 +547,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$doing_ajax = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
 			$metabox_id = $this->p->cf['meta'][ 'id' ];
 			$mod        = $this->get_mod( $user_obj->ID );
 			$tabs       = $this->get_custom_meta_tabs( $metabox_id, $mod );
@@ -578,13 +579,18 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$metabox_html = $this->p->util->get_metabox_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
 
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark( $metabox_id . ' table rows' );	// end timer
+			if ( $doing_ajax ) {
+				$metabox_html .= '<script type="text/javascript">sucomInitTooltips();</script>' . "\n";
 			}
 
-			$update_metabox_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+			$metabox_html = "\n" . '<div id="' . $container_id . '">' . $metabox_html . '</div><!-- #'. $container_id . ' -->' . "\n";
 
-			return "\n" . '<div id="' . $update_metabox_id . '">' . $metabox_html . '</div>' . "\n";
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark( $metabox_id . ' table rows' );	// End timer.
+			}
+
+			return $metabox_html;
 		}
 
 		public function get_form_contact_fields( $fields = array() ) {

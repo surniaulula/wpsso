@@ -220,22 +220,28 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		 */
 		public function get_block_editor_admin_script_data() {
 
-			$no_notices_text   = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
-			$no_notices_html   = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
-			$update_metabox_id = $this->p->lca . '_metabox_' . $this->p->cf['meta'][ 'id' ] . '_inside';
+			$metabox_id   = $this->p->cf['meta'][ 'id' ];
+			$container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+
+			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
+			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
 
 			$option_labels = array( 'robots'   => _x( 'Robots', 'option label', 'wpsso' ) );
-			$metabox_ids   = array( $update_metabox_id );
+			$container_ids = array( $container_id );
 
 			$option_labels = apply_filters( $this->p->lca . '_block_editor_admin_option_labels', $option_labels );
-			$metabox_ids   = apply_filters( $this->p->lca . '_block_editor_admin_metabox_ids', $metabox_ids );
+
+			/**
+			 * Each metabox ID is sanitized by the jQuery wpssoUpdateMetabox() function.
+			 */
+			$container_ids = apply_filters( $this->p->lca . '_block_editor_admin_container_ids', $container_ids );
 
 			return array(
 				'_ajax_nonce'      => wp_create_nonce( WPSSO_NONCE_NAME ),
 				'_tb_notices'      => $this->tb_notices,	// Maybe null, true, false, or array.
 				'_no_notices_html' => $no_notices_html,
 				'_option_labels'   => $option_labels,
-				'_metabox_ids'     => $metabox_ids,	// Sanitized for WP ajax filter name in wpssoUpdateMetabox().
+				'_container_ids'   => $container_ids,
 			);
 		}
 
