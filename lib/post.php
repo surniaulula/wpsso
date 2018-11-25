@@ -30,7 +30,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $is_admin ) {
 
-				add_action( 'wp_ajax_' . $this->p->lca . '_get_metabox_post', array( $this, 'ajax_get_metabox_post' ) );
+				$metabox_meta_id = $this->p->lca . '_metabox_' . $this->p->cf['meta'][ 'id' ];
+
+				add_action( 'wp_ajax_metabox_id_' . $metabox_meta_id, array( $this, 'ajax_metabox_custom_meta' ) );
 
 				if ( ! empty( $_GET ) || basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' ) {
 
@@ -541,75 +543,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			return $value;	// Return null.
-		}
-
-		public function ajax_get_metabox_post() {
-
-			$doing_ajax     = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
-			$doing_autosave = defined( 'DOING_AUTOSAVE' ) ? DOING_AUTOSAVE : false;
-
-			if ( ! $doing_ajax ) {
-				return;
-			} elseif ( $doing_autosave ) {
-				die( -1 );
-			}
-
-			check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true );
-
-			if ( empty( $_POST[ 'post_id' ] ) ) {
-				die( '-1' );
-			}
-
-			$post_id  = $_POST[ 'post_id' ];
-			$post_obj = SucomUtil::get_post_object( $post_id );
-
-			if ( ! is_object( $post_obj ) ) {
-				die( '-1' );
-			} elseif ( empty( $post_obj->post_type ) ) {
-				die( '-1' );
-			} elseif ( empty( $post_obj->post_status ) ) {
-				die( '-1' );
-			} elseif ( $post_obj->post_status === 'auto-draft' ) {
-				die( '-1' );
-			} elseif ( $post_obj->post_status === 'trash' ) {
-				die( '-1' );
-			}
-
-			$mod = $this->get_mod( $post_id );
-
-			/**
-			 * $read_cache is false to generate notices etc.
-			 */
-			WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
-			WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
-
-			if ( $mod[ 'post_status' ] === 'publish' ) {
-
-				$this->p->notice->set_ref( WpssoMeta::$head_meta_info['og:url'], $mod,
-					sprintf( __( 'checking meta tags for %1$s ID %2$s', 'wpsso' ),
-						$mod[ 'post_type' ], $mod[ 'id' ] ) );
-
-
-				/**
-				 * Check for missing open graph image and description values.
-				 */
-				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
-
-					if ( empty( WpssoMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
-
-						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
-						$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
-
-						$this->p->notice->err( $error_msg, null, $notice_key );
-					}
-				}
-
-				$this->p->notice->unset_ref( WpssoMeta::$head_meta_info['og:url'] );
-			}
-
-			$metabox_html = $this->get_metabox_custom_meta( $post_obj );
-
-			die( $metabox_html );
 		}
 
 		/**
@@ -1176,6 +1109,80 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					array( $this, 'show_metabox_custom_meta' ), $metabox_screen,
 						$metabox_context, $metabox_prio, $callback_args );
 			}
+		}
+
+		public function ajax_metabox_custom_meta() {
+
+			$doing_ajax     = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
+			$doing_autosave = defined( 'DOING_AUTOSAVE' ) ? DOING_AUTOSAVE : false;
+
+			if ( ! $doing_ajax ) {
+				return;
+			} elseif ( $doing_autosave ) {
+				die( -1 );
+			}
+
+			check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true );
+
+			if ( empty( $_POST[ 'post_id' ] ) ) {
+				die( '-1' );
+			}
+
+			$post_id  = $_POST[ 'post_id' ];
+			$post_obj = SucomUtil::get_post_object( $post_id );
+
+			if ( ! is_object( $post_obj ) ) {
+				die( '-1' );
+			} elseif ( empty( $post_obj->post_type ) ) {
+				die( '-1' );
+			} elseif ( empty( $post_obj->post_status ) ) {
+				die( '-1' );
+			} elseif ( $post_obj->post_status === 'auto-draft' ) {
+				die( '-1' );
+			} elseif ( $post_obj->post_status === 'trash' ) {
+				die( '-1' );
+			}
+
+			$mod = $this->get_mod( $post_id );
+
+			/**
+			 * $read_cache is false to generate notices etc.
+			 */
+			WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
+			WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
+
+			if ( $mod[ 'post_status' ] === 'publish' ) {
+
+				$this->p->notice->set_ref( WpssoMeta::$head_meta_info['og:url'], $mod,
+					sprintf( __( 'checking meta tags for %1$s ID %2$s', 'wpsso' ),
+						$mod[ 'post_type' ], $mod[ 'id' ] ) );
+
+
+				/**
+				 * Check for missing open graph image and description values.
+				 */
+				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
+
+					if ( empty( WpssoMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
+
+						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
+						$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
+
+						$this->p->notice->err( $error_msg, null, $notice_key );
+					}
+				}
+
+				$this->p->notice->unset_ref( WpssoMeta::$head_meta_info['og:url'] );
+			}
+
+			$metabox_html = $this->get_metabox_custom_meta( $post_obj );
+
+			/**
+			 * Reinit the qTip tooltips.
+			 */
+			$metabox_html .= '<script type="text/javascript">sucomInitTooltips();</script>';
+
+			die( $metabox_html );
 		}
 
 		public function show_metabox_custom_meta( $post_obj ) {

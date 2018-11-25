@@ -131,7 +131,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			return $this->must_be_extended( __METHOD__ );
 		}
 
+		public function ajax_metabox_custom_meta() {
+			return $this->must_be_extended( __METHOD__ );
+		}
+
 		public function show_metabox_custom_meta( $obj ) {
+			return $this->must_be_extended( __METHOD__ );
+		}
+
+		public function get_metabox_custom_meta( $obj ) {
 			return $this->must_be_extended( __METHOD__ );
 		}
 

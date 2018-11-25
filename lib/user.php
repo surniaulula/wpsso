@@ -534,11 +534,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		public function show_metabox_custom_meta( $user_obj ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
 			echo $this->get_metabox_custom_meta( $user_obj );
 		}
 

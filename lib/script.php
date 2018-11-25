@@ -212,25 +212,30 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					array( 'wp-data' ), $plugin_version, true );
 
 			wp_localize_script( 'sucom-block-editor-admin', 'sucomBlockEditorL10n',
-				$this->get_admin_block_editor_script_data() );
+				$this->get_block_editor_admin_script_data() );
 		}
 
 		/**
-		 * Start localized variable names with an underscore.
+		 * Always start localized variable names with an underscore.
 		 */
-		public function get_admin_block_editor_script_data() {
+		public function get_block_editor_admin_script_data() {
 
 			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
 			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
+			$metabox_meta_id = $this->p->lca . '_metabox_' . $this->p->cf['meta'][ 'id' ];
+
+			$option_labels = array( 'robots'   => _x( 'Robots', 'option label', 'wpsso' ) );
+			$metabox_ids   = array( $metabox_meta_id );
+
+			$option_labels = apply_filters( $this->p->lca . '_block_editor_admin_option_labels', $option_labels );
+			$metabox_ids   = apply_filters( $this->p->lca . '_block_editor_admin_metabox_ids', $metabox_ids );
 
 			return array(
 				'_ajax_nonce'      => wp_create_nonce( WPSSO_NONCE_NAME ),
-				'_tb_notices'      => $this->tb_notices,	// Maybe true, false, or array.
+				'_tb_notices'      => $this->tb_notices,	// Maybe null, true, false, or array.
 				'_no_notices_html' => $no_notices_html,
-				'_option_labels'   => array(
-					'robots'   => _x( 'Robots', 'option label', 'wpsso' ),
-				),
-				'_metabox_id'      => $this->p->lca . '_metabox_' . $this->p->cf['meta'][ 'id' ],
+				'_option_labels'   => $option_labels,
+				'_metabox_ids'     => $metabox_ids,	// Sanitized for WP ajax filter name in wpssoUpdateMetabox().
 			);
 		}
 
