@@ -514,6 +514,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			echo '<!-- ' . $this->p->lca . ' term metabox section end -->' . "\n";
 		}
 
+		public function ajax_metabox_custom_meta() {
+			die( '-1' );	// Nothing to do.
+		}
+
 		public function show_metabox_custom_meta( $term_obj ) {
 			echo $this->get_metabox_custom_meta( $term_obj );
 		}
@@ -555,7 +559,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->mark( $metabox_id . ' table rows' );	// end timer
 			}
 
-			return "\n" . '<div id="' . $this->p->lca . '_metabox_' . $metabox_id . '">' . $metabox_html . '</div>' . "\n";
+			$update_metabox_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+
+			return "\n" . '<div id="' . $update_metabox_id . '">' . $metabox_html . '</div>' . "\n";
 		}
 
 		/**

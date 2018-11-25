@@ -30,9 +30,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $is_admin ) {
 
-				$metabox_meta_id = $this->p->lca . '_metabox_' . $this->p->cf['meta'][ 'id' ];
+				$update_metabox_id = $this->p->lca . '_metabox_' . $this->p->cf['meta'][ 'id' ] . '_inside';
 
-				add_action( 'wp_ajax_metabox_id_' . $metabox_meta_id, array( $this, 'ajax_metabox_custom_meta' ) );
+				add_action( 'wp_ajax_update_metabox_id_' . $update_metabox_id, array( $this, 'ajax_metabox_custom_meta' ) );
 
 				if ( ! empty( $_GET ) || basename( $_SERVER['PHP_SELF'] ) === 'post-new.php' ) {
 
@@ -1226,7 +1226,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark( $metabox_id . ' table rows' );	// End timer.
 			}
 
-			return "\n" . '<div id="' . $this->p->lca . '_metabox_' . $metabox_id . '">' . $metabox_html . '</div>' . "\n";
+			$update_metabox_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+
+			return "\n" . '<div id="' . $update_metabox_id . '">' . $metabox_html . '</div>' . "\n";
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key, $head, $mod ) {

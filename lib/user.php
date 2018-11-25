@@ -533,6 +533,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			echo '<!-- ' . $this->p->lca . ' user metabox section end -->' . "\n";
 		}
 
+		public function ajax_metabox_custom_meta() {
+			die( '-1' );	// Nothing to do.
+		}
+
 		public function show_metabox_custom_meta( $user_obj ) {
 			echo $this->get_metabox_custom_meta( $user_obj );
 		}
@@ -578,7 +582,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark( $metabox_id . ' table rows' );	// end timer
 			}
 
-			return "\n" . '<div id="' . $this->p->lca . '_metabox_' . $metabox_id . '">' . $metabox_html . '</div>' . "\n";
+			$update_metabox_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+
+			return "\n" . '<div id="' . $update_metabox_id . '">' . $metabox_html . '</div>' . "\n";
 		}
 
 		public function get_form_contact_fields( $fields = array() ) {

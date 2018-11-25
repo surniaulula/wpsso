@@ -2625,7 +2625,7 @@ msgctxt "option label"
 msgid "Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:165 lib/post.php:1235 lib/pro/admin/meta.php:178
+#: lib/gpl/admin/meta.php:165 lib/post.php:1237 lib/pro/admin/meta.php:178
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
@@ -5471,40 +5471,40 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1413 lib/script.php:227
+#: lib/post.php:1415 lib/script.php:227
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1422
+#: lib/post.php:1424
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1423
+#: lib/post.php:1425
 msgid "Edit robots"
-msgstr ""
-
-#: lib/post.php:1434
-msgctxt "option label"
-msgid "No index"
-msgstr ""
-
-#: lib/post.php:1435
-msgctxt "option label"
-msgid "No follow"
 msgstr ""
 
 #: lib/post.php:1436
 msgctxt "option label"
-msgid "No archive"
+msgid "No index"
 msgstr ""
 
 #: lib/post.php:1437
 msgctxt "option label"
+msgid "No follow"
+msgstr ""
+
+#: lib/post.php:1438
+msgctxt "option label"
+msgid "No archive"
+msgstr ""
+
+#: lib/post.php:1439
+msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1511
+#: lib/post.php:1513
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -6149,7 +6149,7 @@ msgid ""
 "for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:605
+#: lib/term.php:611
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -6170,23 +6170,23 @@ msgid ""
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:652
+#: lib/user.php:658
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:734
+#: lib/user.php:740
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:735
+#: lib/user.php:741
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:736
+#: lib/user.php:742
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1192
+#: lib/user.php:1198
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 

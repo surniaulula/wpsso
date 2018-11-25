@@ -220,12 +220,12 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		 */
 		public function get_block_editor_admin_script_data() {
 
-			$no_notices_text = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
-			$no_notices_html = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
-			$metabox_meta_id = $this->p->lca . '_metabox_' . $this->p->cf['meta'][ 'id' ];
+			$no_notices_text   = sprintf( __( 'No new %s notifications.', 'wpsso' ), $this->p->cf['menu']['title'] );
+			$no_notices_html   = '<div class="ab-item ab-empty-item">' . $no_notices_text . '</div>';
+			$update_metabox_id = $this->p->lca . '_metabox_' . $this->p->cf['meta'][ 'id' ] . '_inside';
 
 			$option_labels = array( 'robots'   => _x( 'Robots', 'option label', 'wpsso' ) );
-			$metabox_ids   = array( $metabox_meta_id );
+			$metabox_ids   = array( $update_metabox_id );
 
 			$option_labels = apply_filters( $this->p->lca . '_block_editor_admin_option_labels', $option_labels );
 			$metabox_ids   = apply_filters( $this->p->lca . '_block_editor_admin_metabox_ids', $metabox_ids );
