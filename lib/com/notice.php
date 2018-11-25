@@ -20,7 +20,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $dis_name     = 'sucom_dismissed';
 		private $tb_notices   = false;
 		private $has_shown    = false;
-		private $all_types    = array( 'nag', 'err', 'warn', 'upd', 'inf' );	// Sort by importance.
+		private $all_types    = array( 'nag', 'err', 'warn', 'inf', 'upd' );	// Sort by importance (most to least).
 		private $notice_info  = array();
 		private $notice_cache = array();
 
@@ -106,20 +106,20 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->log( 'nag', $msg_text, $user_id, $notice_key, false );	// $dismiss_time is false.
 		}
 
-		public function upd( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
-			$this->log( 'upd', $msg_text, $user_id, $notice_key, $dismiss_time );
-		}
-
-		public function inf( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
-			$this->log( 'inf', $msg_text, $user_id, $notice_key, $dismiss_time );
-		}
-
 		public function err( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
 			$this->log( 'err', $msg_text, $user_id, $notice_key, $dismiss_time );
 		}
 
 		public function warn( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
 			$this->log( 'warn', $msg_text, $user_id, $notice_key, $dismiss_time );
+		}
+
+		public function inf( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
+			$this->log( 'inf', $msg_text, $user_id, $notice_key, $dismiss_time );
+		}
+
+		public function upd( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false ) {
+			$this->log( 'upd', $msg_text, $user_id, $notice_key, $dismiss_time );
 		}
 
 		public function log( $msg_type, $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
@@ -211,10 +211,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->update_notice_transient( $user_id );
 			}
 		}
-
-		public function trunc() {}	// Deprecated on 2018/09/08.
-
-		public function truncate() {}	// Deprecated on 2018/09/10.
 
 		/**
 		 * Clear a single notice key from the notice cache.
@@ -831,34 +827,47 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					$payload[ 'notice_label' ] = false;	// No label for nag notices.
 
+					$msg_type = 'nag';
 					$wp_class = 'update-nag';
 
 					break;
 
-				case 'warn':
-
-					$wp_class = $notice_class . ' notice-warning';
-
-					break;
-
 				case 'err':
+				case 'error':
 
+					$msg_type = 'err';
 					$wp_class = $notice_class . ' notice-error error';
 
 					break;
 
-				case 'upd':
+				case 'warn':
+				case 'warning':
 
-					$wp_class = $notice_class . ' notice-success updated';
+					$msg_type = 'warn';
+					$wp_class = $notice_class . ' notice-warning';
 
 					break;
 
 				case 'inf':
-				default:
+				case 'info':
 
 					$msg_type = 'inf';
-
 					$wp_class = $notice_class . ' notice-info';
+
+					break;
+
+				case 'upd':
+				case 'updated':
+
+					$msg_type = 'upd';
+					$wp_class = $notice_class . ' notice-success updated';
+
+					break;
+
+				default:	// Unknown $msg_type.
+
+					$msg_type = 'unknown';
+					$wp_class = $notice_class;
 
 					break;
 			}

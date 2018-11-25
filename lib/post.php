@@ -1022,7 +1022,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$json_addon_link = $this->p->util->get_admin_url( 'addons#' . $json_ext, $json_info[ 'name' ] );
 					$notice_key      = 'application-ld-json-script-not-found';
 
-					$this->p->notice->inf( sprintf( __( 'The webpage at %1$s does not include any Schema JSON-LD script(s).', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ' . __( 'Schema JSON-LD markup is highly recommended for higher ranking and better click-through rates in Google search results.', 'wpsso' ) . ' ' . sprintf( __( 'You should consider activating the %1$s add-on to include this additional markup in the webpage for Google.', 'wpsso' ), $json_addon_link ), null, $notice_key, true );
+					$this->p->notice->warn( sprintf( __( 'The webpage at %1$s does not include any Schema JSON-LD script(s).', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ' . __( 'Schema JSON-LD markup is highly recommended for higher ranking and better click-through rates in Google search results.', 'wpsso' ) . ' ' . sprintf( __( 'You should consider activating the %1$s add-on to include this additional markup in the webpage for Google.', 'wpsso' ), $json_addon_link ), null, $notice_key, true );
 				}
 			}
 
