@@ -298,21 +298,29 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			if ( ! empty( $data ) ) {
+
 				$html .= ' : ';
+
 				if ( is_array( $data ) ) {
+
 					$html .= "\n";
+
 					$is_assoc = SucomUtil::is_assoc( $data );
+
 					if ( $is_assoc ) {
 						ksort( $data );
 					}
+
 					foreach ( $data as $key => $val ) {
 						if ( is_string( $val ) && false !== strpos( $val, '<!--' ) ) {	// Remove HTML comments.
 							$val = preg_replace( '/<!--.*-->/Ums', '', $val );
 						} elseif ( is_array( $val ) ) {	// Just in case.
 							$val = print_r( $val, true );
 						}
+
 						$html .= $is_assoc ? "\t$key = $val\n" : "\t$val\n";
 					}
+
 				} else {
 					$html .= $data;
 				}

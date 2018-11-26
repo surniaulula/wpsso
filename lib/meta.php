@@ -971,19 +971,25 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			 */
 			foreach ( $this->p->cf['opt']['cf_md_multi'] as $md_multi => $is_multi ) {
 
-				$md_renum = array();	// start with a fresh array
+				if ( ! $is_multi ) {	// Just in case.
+					continue;
+				}
 
-				foreach ( SucomUtil::preg_grep_keys( '/^' . $md_multi . '_[0-9]+$/', $md_opts ) as $md_key => $md_val ) {
+				$md_seq = array();	// Start with a fresh array.
 
-					unset( $md_opts[$md_key] );
+				$md_orig = SucomUtil::preg_grep_keys( '/^' . $md_multi . '_[0-9]+$/', $md_opts );
+
+				foreach ( $md_orig as $md_key => $md_val ) {
+
+					unset( $md_opts[ $md_key ] );
 
 					if ( $md_val !== '' ) {
-						$md_renum[] = $md_val;
+						$md_seq[] = $md_val;
 					}
 				}
 
-				foreach ( $md_renum as $num => $md_val ) {	// start at 0
-					$md_opts[$md_multi . '_' . $num] = $md_val;
+				foreach ( $md_seq as $num => $md_val ) {	// Start at 0.
+					$md_opts[ $md_multi . '_' . $num ] = $md_val;
 				}
 			}
 
@@ -1524,15 +1530,21 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				/**
 				 * Check if the value should be split into numeric option increments.
 				 */
-				if ( empty( $this->p->cf['opt']['cf_md_multi'][$md_key] ) ) {
+				if ( empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $md_key ] ) ) {
+
 					$is_multi = false;
+
 				} else {
+
 					if ( ! is_array( $mixed ) ) {
+
 						$values = array_map( 'trim', explode( PHP_EOL, reset( $values ) ) );	// Explode first element into an array.
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'exploded ' . $meta_key . ' into array of ' . count( $values ) . ' elements' );
 						}
 					}
+
 					$is_multi = true;	// Increment the option name.
 				}
 
@@ -1547,12 +1559,15 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_key . '_[0-9]+$/', $md_opts, true );	// $invert is true.
 
 					foreach ( $values as $num => $val ) {
-						$md_opts[$md_key . '_' . $num] = $val;
-						$md_opts[$md_key . '_' . $num . ':is'] = 'disabled';
+						$md_opts[ $md_key . '_' . $num ] = $val;
+						$md_opts[ $md_key . '_' . $num . ':is' ] = 'disabled';
 					}
+
 				} else {
-					$md_opts[$md_key] = reset( $values );	// Get first element of $values array.
-					$md_opts[$md_key . ':is'] = 'disabled';
+
+					$md_opts[ $md_key ] = reset( $values );	// Get first element of $values array.
+
+					$md_opts[ $md_key . ':is' ] = 'disabled';
 				}
 			}
 

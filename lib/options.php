@@ -499,10 +499,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
+			 * Sort the options to re-order 0, 1, 10, 2 as 0, 1, 2, 10.
+			 */
+			SucomUtil::natksort( $opts );
+
+			/**
 			 * Sanitize values.
 			 */
-			ksort( $opts );
-
 			foreach ( $opts as $opt_key => $opt_val ) {
 
 				if ( empty( $opt_key ) ) {

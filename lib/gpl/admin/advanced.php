@@ -511,7 +511,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ), 'medium left', 'custom-cm-field-id' ) . 
 			$form->get_th_html( _x( 'Contact Field Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-field-label', $atts_locale );
 
-			$sorted_opt_pre = $this->p->cf['opt']['cm_prefix'];
+			$sorted_opt_pre = $this->p->cf[ 'opt' ][ 'cm_prefix' ];
 
 			ksort( $sorted_opt_pre );
 
@@ -589,7 +589,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ), 'medium left', 'wp-cm-field-id' ) . 
 			$form->get_th_html( _x( 'Contact Field Label', 'column title', 'wpsso' ), 'wide left', 'custom-cm-field-label', $atts_locale );
 
-			$sorted_cm_names = $this->p->cf['wp']['cm_names'];
+			$sorted_cm_names = $this->p->cf[ 'wp' ][ 'cm_names' ];
 
 			ksort( $sorted_cm_names );
 

@@ -263,7 +263,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				foreach ( $info[ 'lib' ][$menu_lib] as $menu_id => $menu_name ) {
 
-					$ksort_key   = $menu_name . '-' . $menu_id;
+					$ksort_key = $menu_name . '-' . $menu_id;
+
 					$parent_slug = $this->p->lca . '-' . $this->menu_id;
 
 					if ( $ext === $this->p->lca ) {
@@ -278,7 +279,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					} else {
 
-						$sorted_menu[$ksort_key] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+						$sorted_menu[ $ksort_key ] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
 
 						if ( false === $ext_first_id ) {
 							$ext_first_id = $menu_id;
@@ -347,12 +348,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$sorted_menu = array();
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
 					if ( ! isset( $info[ 'lib' ][$menu_lib] ) ) {	// not all add-ons have submenus
 						continue;
 					}
+
 					foreach ( $info[ 'lib' ][$menu_lib] as $menu_id => $menu_name ) {
+
 						$ksort_key = $menu_name . '-' . $menu_id;
-						$sorted_menu[$ksort_key] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+
+						$sorted_menu[ $ksort_key ] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
 					}
 				}
 

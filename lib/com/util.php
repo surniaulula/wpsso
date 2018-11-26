@@ -2011,6 +2011,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $found;
 		}
 
+		public static function natksort( &$arr ) {
+			return uksort( $arr, 'strnatcmp' );
+		}
+
 		/**
 		 * Use reference for $input argument to allow unset of keys if $remove is true.
 		 */
