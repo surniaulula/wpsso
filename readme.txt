@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.1-dev.3 (2018/11/26)**
+**Version 4.17.1-dev.4 (2018/11/26)**
 
 * *New Features*
 	* None.
@@ -480,7 +480,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.17.1-dev.3 =
+= 4.17.1-dev.4 =
 
 (2018/11/26) Fixed numeric sorting of multi-options. Refactored metabox container updates for WordPress v5.0.
 
