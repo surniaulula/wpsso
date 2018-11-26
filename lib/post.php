@@ -1187,12 +1187,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_metabox_custom_meta( $post_obj ) {
 
-			$doing_ajax = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
 			$metabox_id = $this->p->cf['meta'][ 'id' ];
 			$mod        = $this->get_mod( $post_obj->ID );
 			$tabs       = $this->get_custom_meta_tabs( $metabox_id, $mod );
 			$opts       = $this->get_options( $post_obj->ID );
 			$def_opts   = $this->get_defaults( $post_obj->ID );
+			$doing_ajax = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
+
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->lca );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
