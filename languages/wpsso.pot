@@ -111,7 +111,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:966 lib/post.php:729 lib/term.php:445 lib/user.php:449
+#: lib/admin.php:966 lib/post.php:732 lib/term.php:448 lib/user.php:453
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2625,7 +2625,7 @@ msgctxt "option label"
 msgid "Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:165 lib/post.php:1304 lib/pro/admin/meta.php:178
+#: lib/gpl/admin/meta.php:165 lib/post.php:1313 lib/pro/admin/meta.php:178
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
@@ -5358,165 +5358,165 @@ msgid ""
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:679 lib/post.php:1222
+#: lib/post.php:679 lib/post.php:1231
 msgid "checking meta tags for %1$s ID %2$s"
 msgstr ""
 
-#: lib/post.php:858
+#: lib/post.php:867
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:895
+#: lib/post.php:904
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:897
+#: lib/post.php:906
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:899
+#: lib/post.php:908
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:900
+#: lib/post.php:909
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:912 lib/util.php:1675
+#: lib/post.php:921 lib/util.php:1675
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:925
+#: lib/post.php:934
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:938
+#: lib/post.php:947
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:951
+#: lib/post.php:960
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:973
+#: lib/post.php:982
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1011
+#: lib/post.php:1020
 msgid ""
 "The webpage at %1$s includes very basic and incomplete Schema JSON-LD "
 "product markup from the WooCommerce plugin."
 msgstr ""
 
-#: lib/post.php:1013 lib/post.php:1037
+#: lib/post.php:1022 lib/post.php:1046
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through in Google search results."
 msgstr ""
 
-#: lib/post.php:1015
+#: lib/post.php:1024
 msgid ""
 "You should consider purchasing the %1$s Pro version add-on to include better "
 "Schema JSON-LD markup for WooCommerce products."
 msgstr ""
 
-#: lib/post.php:1035
+#: lib/post.php:1044
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1039
+#: lib/post.php:1048
 msgid ""
 "You should consider activating the %1$s add-on to include Schema JSON-LD "
 "markup in the webpage for Google."
 msgstr ""
 
-#: lib/post.php:1055
+#: lib/post.php:1064
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1071
+#: lib/post.php:1080
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1071
+#: lib/post.php:1080
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:1071
+#: lib/post.php:1080
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1103
+#: lib/post.php:1112
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1104
+#: lib/post.php:1113
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1110
+#: lib/post.php:1119
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1113
+#: lib/post.php:1122
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1115
+#: lib/post.php:1124
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1483 lib/script.php:229
+#: lib/post.php:1492 lib/script.php:229
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1493
+#: lib/post.php:1502
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1494
+#: lib/post.php:1503
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1505
+#: lib/post.php:1514
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1506
+#: lib/post.php:1515
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1507
+#: lib/post.php:1516
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1508
+#: lib/post.php:1517
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1582
+#: lib/post.php:1591
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -6161,7 +6161,7 @@ msgid ""
 "for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:617
+#: lib/term.php:626
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -6182,23 +6182,23 @@ msgid ""
 "authored by user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:664
+#: lib/user.php:674
 msgid "(not a Facebook Page URL)"
 msgstr ""
 
-#: lib/user.php:746
+#: lib/user.php:756
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:747
+#: lib/user.php:757
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:748
+#: lib/user.php:758
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1204
+#: lib/user.php:1214
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 

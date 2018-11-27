@@ -207,7 +207,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				'orderby'        => 'date',
 				'order'          => 'DESC',
 				'paged'          => $paged,
-				'post_status'    => 'publish',
+				'post_status'    => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
 				'posts_per_page' => $ppp,
 				'tax_query'      => array(
@@ -438,17 +438,26 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 
 				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'nonce token query field missing' );
 					}
+
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
+
 					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
 						'wpsso' ), 'term', $action_name ) );
+
 				} else {
+
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
+
 					switch ( $action_name ) {
+
 						default:
+
 							do_action( $this->p->lca . '_load_meta_page_term_' . $action_name, $this->query_term_id );
+
 							break;
 					}
 				}

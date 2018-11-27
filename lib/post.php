@@ -196,7 +196,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'orderby'        => 'date',
 				'order'          => 'DESC',
 				'paged'          => false,
-				'post_status'    => 'publish',
+				'post_status'    => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
 				'posts_per_page' => -1,
 				'fields'         => 'ids',		// Return an array of post ids.
@@ -233,11 +233,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'orderby'        => 'date',
 				'order'          => 'DESC',
 				'paged'          => $paged,
-				'post_status'    => 'publish',
+				'post_status'    => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
 				'posts_per_page' => $ppp,
 				'post_parent'    => $mod[ 'id' ],
-				'child_of'       => $mod[ 'id' ],		// Only include direct children.
+				'child_of'       => $mod[ 'id' ],	// Only include direct children.
 			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
 			$mtime_max   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
@@ -722,17 +722,26 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'nonce token query field missing' );
 					}
+
 				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
+
 					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
 						'wpsso' ), 'post', $action_name ) );
+
 				} else {
+
 					$_SERVER['REQUEST_URI'] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
+
 					switch ( $action_name ) {
+
 						default:
+
 							do_action( $this->p->lca . '_load_meta_page_post_' . $action_name, $post_id, $post_obj );
+
 							break;
 					}
 				}
