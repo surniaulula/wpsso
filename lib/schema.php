@@ -42,55 +42,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $this->p->options['p_add_img_html'] ) ) {
 				add_filter( 'the_content', array( $this, 'get_pinterest_img_html' ) );
 			}
-		}
 
-		public function get_pinterest_img_html( $content = '' ) {
-
-			/**
-			 * Do not add the pinterest image if the current webpage is amp or rss feed.
-			 */
-			if ( SucomUtil::is_amp() || is_feed() ) {
-				return $content;
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+				if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
+					add_filter( 'woocommerce_structured_data_product', array( $this, 'add_wc_product_id_marker' ), 1000, 2 );
+				}
 			}
-
-			/**
-			 * Check if the content filter is being applied to create a description text.
-			 */
-			if ( ! empty( $GLOBALS[$this->p->lca . '_doing_filter_the_content'] ) ) {
-				return $content;
-			}
-
-			static $do_once = array();			// Prevent recursion.
-
-			$mod        = $this->p->util->get_page_mod( true );	// $use_post is true.
-			$cache_salt = SucomUtil::get_mod_salt( $mod );
-
-			if ( ! empty( $do_once[ $cache_salt ] ) ) {	// Check for recursion.
-				return $content;
-			} else {
-				$do_once[ $cache_salt ] = true;
-			}
-
-			$size_name = $this->p->lca . '-schema';
-			$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, 'schema' );	// $md_pre is 'schema'.
-			$image_url = SucomUtil::get_mt_media_url( $og_images );
-
-			if ( ! empty( $image_url ) ) {
-
-				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
-					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
-						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
-
-				$img_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n";
-				$img_html .= '<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n";
-				$img_html .= '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" width="0" height="0" style="width:0;height:0;" ' . 
-					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" alt=""/>' . "\n"; 	// Empty alt required for w3c validation.
-				$img_html .= '</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";
-
-				$content = $img_html . $content;
-			}
-
-			return $content;
 		}
 
 		public function filter_plugin_image_sizes( $sizes, $mod, $crawler_name ) {
@@ -160,9 +117,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
 
 			if ( empty( $page_type_url ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: schema head type value is empty' );
 				}
+
 				return $head_attr;
 			}
 
@@ -171,7 +130,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( false !== strpos( $head_attr, 'itemscope="itemscope"' ) ) {
 				$head_attr = preg_replace( '/ *itemscope="itemscope"/', ' itemscope', $head_attr );
-			} elseif ( strpos( $head_attr, 'itemscope' ) === false ) {
+			} elseif ( false === strpos( $head_attr, 'itemscope' ) ) {
 				$head_attr .= ' itemscope';
 			}
 
@@ -224,6 +183,73 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return true;
+		}
+
+		public function get_pinterest_img_html( $content = '' ) {
+
+			/**
+			 * Do not add the pinterest image if the current webpage is amp or rss feed.
+			 */
+			if ( SucomUtil::is_amp() || is_feed() ) {
+				return $content;
+			}
+
+			/**
+			 * Check if the content filter is being applied to create a description text.
+			 */
+			if ( ! empty( $GLOBALS[$this->p->lca . '_doing_filter_the_content'] ) ) {
+				return $content;
+			}
+
+			static $do_once = array();			// Prevent recursion.
+
+			$mod        = $this->p->util->get_page_mod( true );	// $use_post is true.
+			$cache_salt = SucomUtil::get_mod_salt( $mod );
+
+			if ( ! empty( $do_once[ $cache_salt ] ) ) {	// Check for recursion.
+				return $content;
+			} else {
+				$do_once[ $cache_salt ] = true;
+			}
+
+			$size_name = $this->p->lca . '-schema';
+			$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, 'schema' );	// $md_pre is 'schema'.
+			$image_url = SucomUtil::get_mt_media_url( $og_images );
+
+			if ( ! empty( $image_url ) ) {
+
+				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
+					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
+						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+
+				$img_html = "\n" . '<!-- ' . $this->p->lca . ' schema image for pinterest pin it button -->' . "\n";
+				$img_html .= '<div class="' . $this->p->lca . '-schema-image-for-pinterest" style="display:none;">' . "\n";
+				$img_html .= '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" width="0" height="0" style="width:0;height:0;" ' . 
+					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" alt=""/>' . "\n"; 	// Empty alt required for w3c validation.
+				$img_html .= '</div><!-- .' . $this->p->lca . '-schema-image-for-pinterest -->' . "\n\n";
+
+				$content = $img_html . $content;
+			}
+
+			return $content;
+		}
+
+		public function add_wc_product_id_marker( $json_data, $product ) {
+
+			if ( ! empty( $json_data[ '@id' ] ) ) {
+
+				$id_marker = self::get_wc_product_id_marker();
+
+				if ( false === strpos( $json_data[ '@id' ], $id_marker ) ) {
+					$json_data[ '@id' ] .= $id_marker;
+				}
+			}
+
+			return $json_data;
+		}
+
+		public static function get_wc_product_id_marker() {
+			return '#id-wc-product-data';
 		}
 
 		/**
@@ -1161,23 +1187,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$type_url = false;
 
-			if ( empty( $json_data['@type'] ) ) {
+			if ( empty( $json_data[ '@type' ] ) ) {
 
 				return false;	// Stop here.
 
-			} elseif ( is_array( $json_data['@type'] ) ) {
+			} elseif ( is_array( $json_data[ '@type' ] ) ) {
 
-				$json_data['@type'] = reset( $json_data['@type'] );	// Use first @type element.
+				$json_data[ '@type' ] = reset( $json_data[ '@type' ] );	// Use first @type element.
 
 				$type_url = self::get_data_type_url( $json_data );
 
-			} elseif ( strpos( $json_data['@type'], '://' ) ) {	// @type is a complete url
+			} elseif ( strpos( $json_data[ '@type' ], '://' ) ) {	// @type is a complete url
 
-				$type_url = $json_data['@type'];
+				$type_url = $json_data[ '@type' ];
 
-			} elseif ( ! empty(  $json_data['@context'] ) ) {	// Just in case.
+			} elseif ( ! empty(  $json_data[ '@context' ] ) ) {	// Just in case.
 
-				if ( is_array( $json_data['@context'] ) ) {	// Get the extension url.
+				if ( is_array( $json_data[ '@context' ] ) ) {	// Get the extension url.
 
 					$context_url = self::get_context_extension_url( $json_data['@context'] );
 

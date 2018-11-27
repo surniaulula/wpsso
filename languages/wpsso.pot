@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.1-dev.4\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.1-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -111,7 +111,7 @@ msgstr ""
 msgid "Insufficient privileges to modify network options."
 msgstr ""
 
-#: lib/admin.php:966 lib/post.php:728 lib/term.php:445 lib/user.php:449
+#: lib/admin.php:966 lib/post.php:729 lib/term.php:445 lib/user.php:449
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -2277,8 +2277,8 @@ msgstr ""
 msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
-#: lib/gpl/admin/advanced.php:233 lib/media.php:478 lib/media.php:640
-#: lib/media.php:1537 lib/pro/admin/advanced.php:234
+#: lib/gpl/admin/advanced.php:233 lib/media.php:482 lib/media.php:644
+#: lib/media.php:1541 lib/pro/admin/advanced.php:234
 #: lib/pro/util/checkimgdims.php:92
 msgid "Media Library"
 msgstr ""
@@ -2625,7 +2625,7 @@ msgctxt "option label"
 msgid "Description"
 msgstr ""
 
-#: lib/gpl/admin/meta.php:165 lib/post.php:1240 lib/pro/admin/meta.php:178
+#: lib/gpl/admin/meta.php:165 lib/post.php:1304 lib/pro/admin/meta.php:178
 msgid "Save a draft version or publish the %s to display these options."
 msgstr ""
 
@@ -2825,7 +2825,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:164 lib/loader.php:190 lib/post.php:271 lib/register.php:278
+#: lib/loader.php:164 lib/loader.php:190 lib/post.php:272 lib/register.php:279
 #: lib/term.php:252 lib/user.php:219 lib/util.php:371 lib/util.php:3007
 msgid "%s warning:"
 msgstr ""
@@ -2846,72 +2846,72 @@ msgstr ""
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 
-#: lib/media.php:440
+#: lib/media.php:444
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:481
+#: lib/media.php:485
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:482 lib/media.php:643
+#: lib/media.php:486 lib/media.php:647
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:498
+#: lib/media.php:502
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:522
+#: lib/media.php:526
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:642
+#: lib/media.php:646
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:645
+#: lib/media.php:649
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1033
+#: lib/media.php:1037
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1543 lib/pro/media/ngg.php:132
+#: lib/media.php:1547 lib/pro/media/ngg.php:132
 #: lib/pro/util/checkimgdims.php:94
 msgid "image ID %s"
 msgstr ""
 
-#: lib/media.php:1553
+#: lib/media.php:1557
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1631
+#: lib/media.php:1635
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1659
+#: lib/media.php:1663
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -4963,7 +4963,7 @@ msgid ""
 "refresh of all Pro update information."
 msgstr ""
 
-#: lib/messages.php:2478 lib/register.php:288
+#: lib/messages.php:2478 lib/register.php:289
 msgid ""
 "You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
 "is outdated, unsupported, possibly insecure</a>, and may lack important "
@@ -5346,165 +5346,177 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:257 lib/term.php:238 lib/user.php:205 lib/util.php:357
+#: lib/post.php:258 lib/term.php:238 lib/user.php:205 lib/util.php:357
 #: lib/util.php:2979
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a recommended max
-#: lib/post.php:260
+#: lib/post.php:261
 msgid ""
 "Slow query detected - WordPress get_posts() took %1$0.3f secs to get the "
 "children of post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:678 lib/post.php:1158
+#: lib/post.php:679 lib/post.php:1222
 msgid "checking meta tags for %1$s ID %2$s"
 msgstr ""
 
-#: lib/post.php:840
+#: lib/post.php:858
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:877
+#: lib/post.php:895
 msgid "Retrieving the HTML document for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:879
+#: lib/post.php:897
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:881
+#: lib/post.php:899
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:882
+#: lib/post.php:900
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:894 lib/util.php:1675
+#: lib/post.php:912 lib/util.php:1675
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:907
+#: lib/post.php:925
 msgid "An &lt;html&gt; tag was not found in <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:920
+#: lib/post.php:938
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:933
+#: lib/post.php:951
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:959
-msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
-msgstr ""
-
-#: lib/post.php:959
-msgid ""
-"Schema JSON-LD markup is highly recommended for higher ranking and better "
-"click-through rates in Google search results."
-msgstr ""
-
-#: lib/post.php:959
-msgid ""
-"You should consider activating the %1$s add-on to include this additional "
-"markup in the webpage for Google."
-msgstr ""
-
-#: lib/post.php:979
+#: lib/post.php:973
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:991
+#: lib/post.php:1011
+msgid ""
+"The webpage at %1$s includes very basic and incomplete Schema JSON-LD "
+"product markup from the WooCommerce plugin."
+msgstr ""
+
+#: lib/post.php:1013 lib/post.php:1037
+msgid ""
+"Complete and accurate Schema JSON-LD markup is highly recommended for better "
+"ranking and click-through in Google search results."
+msgstr ""
+
+#: lib/post.php:1015
+msgid ""
+"You should consider purchasing the %1$s Pro version add-on to include better "
+"Schema JSON-LD markup for WooCommerce products."
+msgstr ""
+
+#: lib/post.php:1035
+msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
+msgstr ""
+
+#: lib/post.php:1039
+msgid ""
+"You should consider activating the %1$s add-on to include Schema JSON-LD "
+"markup in the webpage for Google."
+msgstr ""
+
+#: lib/post.php:1055
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1007
+#: lib/post.php:1071
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1007
+#: lib/post.php:1071
 msgid ""
 "The webpage may contain serious HTML syntax errors &mdash; please review the "
 "<a href=\"%1$s\">W3C Markup Validation Service</a> results and correct any "
 "errors."
 msgstr ""
 
-#: lib/post.php:1007
+#: lib/post.php:1071
 msgid ""
 "You may safely ignore any \"nopin\" attribute errors, or disable the \"nopin"
 "\" attribute under the <a href=\"%s\">Pinterest settings tab</a>."
 msgstr ""
 
-#: lib/post.php:1039
+#: lib/post.php:1103
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1040
+#: lib/post.php:1104
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1046
+#: lib/post.php:1110
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1049
+#: lib/post.php:1113
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1051
+#: lib/post.php:1115
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1419 lib/script.php:229
+#: lib/post.php:1483 lib/script.php:229
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
 
-#: lib/post.php:1429
+#: lib/post.php:1493
 msgid "Edit"
 msgstr ""
 
-#: lib/post.php:1430
+#: lib/post.php:1494
 msgid "Edit robots"
 msgstr ""
 
-#: lib/post.php:1441
+#: lib/post.php:1505
 msgctxt "option label"
 msgid "No index"
 msgstr ""
 
-#: lib/post.php:1442
+#: lib/post.php:1506
 msgctxt "option label"
 msgid "No follow"
 msgstr ""
 
-#: lib/post.php:1443
+#: lib/post.php:1507
 msgctxt "option label"
 msgid "No archive"
 msgstr ""
 
-#: lib/post.php:1444
+#: lib/post.php:1508
 msgctxt "option label"
 msgid "No snippet"
 msgstr ""
 
-#: lib/post.php:1518
+#: lib/post.php:1582
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -5704,40 +5716,40 @@ msgid "Invalid user ID."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the application name, %3$s is the application version number.
-#: lib/register.php:281 lib/register.php:290
+#: lib/register.php:282 lib/register.php:291
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:292
+#: lib/register.php:293
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema.php:100 lib/schema.php:105
+#: lib/schema.php:57 lib/schema.php:62
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2490 lib/schema.php:2496
+#: lib/schema.php:2516 lib/schema.php:2522
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:3125
+#: lib/schema.php:3151
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3167
+#: lib/schema.php:3193
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3174
+#: lib/schema.php:3200
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3450
+#: lib/schema.php:3476
 msgid "adding schema for place"
 msgstr ""
 

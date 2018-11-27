@@ -112,12 +112,12 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$this->check_required( WpssoConfig::$cf );
 
-			$this->p->set_config( true );  // Apply filters and define $cf[ '*' ] array ( $activate = true ).
-			$this->p->set_options( true ); // Read / create options and site_options ( $activate = true ).
-			$this->p->set_objects( true ); // Load all the class objects ( $activate = true ).
+			$this->p->set_config( $activate = true );  // Apply filters and define the $cf[ '*' ] array.
+			$this->p->set_options( $activate = true ); // Read / create options and site_options.
+			$this->p->set_objects( $activate = true ); // Load all the class objects.
 
 			/**
-			 * Clear All Caches on Activate.
+			 * Clear all caches on activate.
 			 */
 			if ( ! empty( $this->p->options['plugin_clear_on_activate'] ) ) {
 
@@ -157,7 +157,8 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private function deactivate_plugin() {
 
 			/**
-			 * Clear All Caches on Deactivate.
+			 * Clear all caches on deactivate. Do not use the schedule_clear_all_cache() method
+			 * since WPSSO will be deactivated before the scheduled task can begin.
 			 */
 			if ( ! empty( $this->p->options['plugin_clear_on_deactivate'] ) ) {
 				$this->p->util->clear_all_cache( $user_id = 0, $clear_other = true, $clear_short = true, $refresh_all = false );

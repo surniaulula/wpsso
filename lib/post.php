@@ -81,6 +81,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$ptns = $this->p->util->get_post_types( 'names' );
 
 				if ( is_array( $ptns ) ) {
+
 					foreach ( $ptns as $ptn ) {
 
 						if ( $this->p->debug->enabled ) {
@@ -529,10 +530,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $value;	// Return null.
 			}
 
-			if ( isset( $do_once[$post_id][$meta_key] ) ) {
+			if ( isset( $do_once[ $post_id ][ $meta_key ] ) ) {
 				return $value;	// Return null.
 			} else {
-				$do_once[$post_id][$meta_key] = true;	// Prevent recursion.
+				$do_once[ $post_id ][ $meta_key ] = true;	// Prevent recursion.
 			}
 
 			if ( get_post_meta( $post_id, $meta_key, true ) === '' ) {	// Returns empty string if meta not found.
@@ -748,16 +749,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$short    = $this->p->cf[ 'plugin' ][$this->p->lca][ 'short' ];
 
 			if ( empty( $this->p->options['plugin_check_head'] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: plugin_check_head option is disabled');
 				}
+
 				return;	// Stop here.
 			}
 
 			if ( ! apply_filters( $this->p->lca . '_add_meta_name_' . $this->p->lca . ':mark', true ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: ' . $this->p->lca . ':mark meta tags are disabled');
 				}
+
 				return;	// Stop here.
 			}
 
@@ -766,7 +771,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ! is_object( $post_obj ) ) {
+
 				$post_obj = SucomUtil::get_post_object( $post_id );
+
 				if ( empty( $post_obj ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: unable to get the post object');
@@ -776,10 +783,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			if ( ! is_numeric( $post_id ) ) {	// Just in case the post_id is true/false.
+
 				if ( empty( $post_obj->ID ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: post id in post object is empty');
 					}
+
 					return;	// Stop here.
 				}
 				$post_id = $post_obj->ID;
@@ -789,9 +799,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Only check publicly available posts.
 			 */
 			if ( ! isset( $post_obj->post_status ) || $post_obj->post_status !== 'publish' ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_status "' . $post_obj->post_status . '" is not publish' );
 				}
+
 				return;	// Stop here.
 			}
 
@@ -801,9 +813,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$ptns = $this->p->util->get_post_types( 'names' );
 
 			if ( empty( $post_obj->post_type ) || ! in_array( $post_obj->post_type, $ptns ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: post_type "' . $post_obj->post_type . '" not public' );
 				}
+
 				return;	// Stop here.
 			}
 
@@ -811,9 +825,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$max_count  = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT' );
 
 			if ( $exec_count >= $max_count ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: exec_count of ' . $exec_count . ' exceeds max_count of ' . $max_count );
 				}
+
 				return;	// Stop here.
 			}
 
@@ -826,9 +842,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$check_url_htmlenc = SucomUtil::encode_html_emoji( urldecode( $check_url ) );
 
 			if ( empty( $check_url ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: invalid shortlink' );
 				}
+
 				return;	// Stop here.
 			}
 
@@ -923,7 +941,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return;	// Stop here.
 
-			} elseif ( strpos( $webpage_html, $this->p->lca . ' meta tags begin' ) === false ) {	// Webpage should include our own meta tags.
+			} elseif ( false === strpos( $webpage_html, $this->p->lca . ' meta tags begin' ) ) {	// Webpage should include our own meta tags.
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: ' . $this->p->lca . ' meta tag section not found in ' . $check_url );
@@ -937,31 +955,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * Check the webpage html for ld+json script(s) and if not found, then suggest enabling the WPSSO JSON add-on.
-			 */
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'checking the webpage html for ld+json script(s)' );
-			}
-
-			if ( ! preg_match( '/<script type=[\'"]application\/ld\+json[\'"]>/i', $webpage_html ) ) {
-
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'application/ld+json script(s) not found' );
-				}
-
-				if ( $is_admin ) {
-
-					$json_ext        = 'wpssojson';
-					$json_info       = $this->p->cf[ 'plugin' ][$json_ext];
-					$json_addon_link = $this->p->util->get_admin_url( 'addons#' . $json_ext, $json_info[ 'name' ] );
-					$notice_key      = 'application-ld-json-script-not-found';
-
-					$this->p->notice->warn( sprintf( __( 'The webpage at %1$s does not include any Schema JSON-LD script(s).', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ' . __( 'Schema JSON-LD markup is highly recommended for higher ranking and better click-through rates in Google search results.', 'wpsso' ) . ' ' . sprintf( __( 'You should consider activating the %1$s add-on to include this additional markup in the webpage for Google.', 'wpsso' ), $json_addon_link ), null, $notice_key, true );
-				}
-			}
-
-			/**
-			 * Remove WPSSO meta tags from the webpage html to check the remaining html for duplicates.
+			 * Remove WPSSO meta tags and Schema markup from the webpage html to check for duplicate meta tags and markup.
 			 */
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'removing the ' . $this->p->lca . ' meta tag section from the webpage html' );
@@ -982,8 +976,78 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// Stop here.
 			}
 
+			/**
+			 * Check the stripped webpage HTML for ld+json script(s) and if not found, then suggest enabling the WPSSO JSON add-on.
+			 */
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'checking the stripped webpage html for ld+json script(s)' );
+				}
+
+				$json_ext        = 'wpssojson';
+				$json_info       = $this->p->cf[ 'plugin' ][ $json_ext ];
+				$json_addon_link = $this->p->util->get_admin_url( 'addons#' . $json_ext, $json_info[ 'name' ] );
+				$scripts_json    = SucomUtil::get_json_scripts( $html_stripped, $do_decode = false );	// Return the json encoded containers.
+
+				if ( ! empty( $scripts_json ) && is_array( $scripts_json ) ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( count( $scripts_json ) . ' application/ld+json script(s) found in the webpage' );
+					}
+
+					if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
+
+						$id_marker = WpssoSchema::get_wc_product_id_marker();
+
+						foreach ( $scripts_json as $script_md5 => $single_json ) {
+
+							if ( strpos( $single_json, $id_marker ) ) {
+
+								if ( $is_admin ) {
+
+									$notice_key = 'application-ld-json-script-wc-product-found';
+						
+									$notice_msg = sprintf( __( 'The webpage at %1$s includes very basic and incomplete Schema JSON-LD product markup from the WooCommerce plugin.', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ';
+
+									$notice_msg .= __( 'Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through in Google search results.', 'wpsso' ) . ' ';
+						
+									$notice_msg .= sprintf( __( 'You should consider purchasing the %1$s Pro version add-on to include better Schema JSON-LD markup for WooCommerce products.', 'wpsso' ), $json_addon_link );
+
+									$this->p->notice->warn( $notice_msg, null, $notice_key, true );
+								}
+
+								break;
+							}
+						}
+					}
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'no application/ld+json script(s) found in the webpage' );
+					}
+
+					if ( $is_admin ) {
+
+						$notice_key = 'application-ld-json-script-not-found';
+	
+						$notice_msg = sprintf( __( 'The webpage at %1$s does not include any Schema JSON-LD script(s).', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ';
+						
+						$notice_msg .= __( 'Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through in Google search results.', 'wpsso' ) . ' ';
+						
+						$notice_msg .= sprintf( __( 'You should consider activating the %1$s add-on to include Schema JSON-LD markup in the webpage for Google.', 'wpsso' ), $json_addon_link );
+
+						$this->p->notice->warn( $notice_msg, null, $notice_key, true );
+					}
+				}
+			}
+
+			/**
+			 * Check the stripped webpage HTML for duplicate html tags.
+			 */
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'checking the remaining webpage html for duplicates' );
+				$this->p->debug->log( 'checking the stripped webpage html for duplicates' );
 			}
 
 			$metas           = $this->p->util->get_head_meta( $html_stripped, '/html/head/link|/html/head/meta', true );	// False on error.

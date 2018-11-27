@@ -974,7 +974,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$this->p->notice->upd( __( 'A background task will begin shortly to clear all caches.', 'wpsso' ) );
 
-							$this->p->util->schedule_clear_all_cache( get_current_user_id(), true );
+							$this->p->util->schedule_clear_all_cache( get_current_user_id(), $clear_other = true );
 
 							break;
 
@@ -982,7 +982,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$this->p->notice->upd( __( 'A background task will begin shortly to clear all caches and short URLs.', 'wpsso' ) );
 
-							$this->p->util->schedule_clear_all_cache( get_current_user_id(), true, true );
+							$this->p->util->schedule_clear_all_cache( get_current_user_id(), $clear_other = true, $clear_short = true );
 
 							break;
 

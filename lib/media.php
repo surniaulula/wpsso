@@ -89,9 +89,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 * $html = apply_filters( 'get_image_tag', $html, $id, $alt, $title, $align, $size );
 		 */
 		public function get_image_tag( $html, $id, $alt, $title, $align, $size ) {
+
 			return $this->add_header_image_tag( $html, array(
 				'data-wp-pid' => $id,
-				'nopin' => empty( $this->p->options['p_add_nopin_media_img_tag'] ) ? false : 'nopin'
+				'nopin'       => empty( $this->p->options['p_add_nopin_media_img_tag'] ) ? false : 'nopin'
 			) );
 		}
 
@@ -99,17 +100,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 * $html = apply_filters( 'get_header_image_tag', $html, $header, $attr );
 		 */
 		public function get_header_image_tag( $html, $header, $attr ) {
+
 			return $this->add_header_image_tag( $html, array(
 				'nopin' => empty( $this->p->options['p_add_nopin_header_img_tag'] ) ? false : 'nopin'
 			) );
 		}
 
 		private function add_header_image_tag( $html, $add_attr ) {
+
 			foreach ( $add_attr as $attr_name => $attr_value ) {
 				if ( false !== $attr_value && strpos( $html, ' ' . $attr_name . '=' ) === false ) {
 					$html = preg_replace( '/ *\/?'.'>/', ' ' . $attr_name . '="' . $attr_value . '"$0', $html );
 				}
 			}
+
 			return $html;
 		}
 
