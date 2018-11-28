@@ -14,7 +14,7 @@ Tested Up To: 5.0
 WC Tested Up To: 3.5
 Stable Tag: 4.17.0
 
-Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.
+Easy, complete, accurate, and automatic - give social and search sites comprehensive information about your content, business and authors.
 
 == Description ==
 
