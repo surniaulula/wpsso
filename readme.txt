@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.1-dev.5 (2018/11/27)**
+**Version 4.17.1-b.1 (2018/11/27)**
 
 * *New Features*
 	* None.
@@ -348,7 +348,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed numeric sorting of multi-options (recipe ingredients, instructions, etc).
 * *Developer Notes*
-	* Refactored metabox container updates for WordPress v5.0 to allow updating multiple container IDs.
+	* Refactored metabox container refresh for WordPress v5.0 to allow updating multiple container IDs.
 
 **Version 4.17.0 (2018/11/25)**
 
@@ -480,9 +480,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.17.1-dev.5 =
+= 4.17.1-b.1 =
 
-(2018/11/27) Fixed numeric sorting of multi-options. Refactored metabox container updates for WordPress v5.0.
+(2018/11/27) Fixed numeric sorting of multi-options. Refactored metabox container refresh for WordPress v5.0.
 
 = 4.17.0 =
 
