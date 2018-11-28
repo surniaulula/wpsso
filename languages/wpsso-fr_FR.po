@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.17.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-11-28 12:03-0600\n"
+"POT-Creation-Date: 2018-11-28 12:04-0600\n"
 "PO-Revision-Date: 2018-11-28 12:04-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
@@ -298,7 +298,7 @@ msgid "<a href=\"%s\">Advanced Documentation and Notes</a>"
 msgstr "<a href=\"%s\">Documentation avancée et notes</a>"
 
 #: lib/admin.php:1860
-msgid "<a href=\"%s\">Priority Pro Support Ticket</a>"
+msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr "<a href=\"%s\">Billet de soutien prioritaire</a>"
 
 #: lib/admin.php:1861
