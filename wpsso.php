@@ -10,8 +10,8 @@
  * Author URI: https://wpsso.com/
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
- * Description: WPSSO Core gives social sites and search engines better information about your content, business and authors, with complete meta tags and Schema markup for social sharing, Google Knowledge Graph / Rich Card SEO, Pinterest Rich Pins, Twitter Cards and more.
- * Tagline: Easy, complete, accurate, and automatic - give social sites and search engines better information about your content, business and authors.
+ * Description: WPSSO Core makes sure your content looks great on all social and search sites - no matter how it\'s crawled, shared, re-shared, posted, or embedded!
+ * Tagline: Makes sure your content looks great on all social and search sites - no matter how it's crawled, shared, re-shared, posted, or embedded!
  * Requires PHP: 5.4
  * Requires At Least: 3.8
  * Tested Up To: 5.0
