@@ -1857,7 +1857,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $info[ 'url' ]['support'] ) && self::$pkg[ $ext ][ 'pp' ] ) {
 
-					$action_links[] = sprintf( __( '<a href="%s">Priority Pro Support Ticket</a>', 'wpsso' ), $info[ 'url' ]['support'] ) .
+					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ]['support'] ) .
 						' (' . __( 'Pro version', 'wpsso' ) . ')';
 
 				} elseif ( ! empty( $info[ 'url' ]['forum'] ) ) {

@@ -305,7 +305,7 @@ msgid "<a href=\"%s\">Advanced Documentation and Notes</a>"
 msgstr ""
 
 #: lib/admin.php:1860
-msgid "<a href=\"%s\">Priority Pro Support Ticket</a>"
+msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr ""
 
 #: lib/admin.php:1861
