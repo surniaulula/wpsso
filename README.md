@@ -1,8 +1,8 @@
-<h1>WPSSO Core</h1><h3>Advanced Open Graph &amp; Schema Meta Tags for Facebook, Pinterest, LinkedIn, SEO and More</h3>
+<h1>WPSSO Core</h1><h3>Comprehensive Open Graph &amp; Schema Meta Tags for Facebook, Pinterest, LinkedIn, SEO and More</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Easy, complete, accurate, and automatic - give social and search sites comprehensive information about your content, business and authors.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Makes sure your content looks great on all social and search sites - no matter how it&#039;s crawled, shared, re-shared, posted, or embedded!</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>4.17.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires At Least</th><td>WordPress 3.8</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 5.0</td></tr>
@@ -17,9 +17,9 @@
 
 <h3 class="top">What makes WPSSO Core better?</h3>
 
-<p><strong>Makes sure your content looks great on all sites - no matter how it's crawled, shared, re-shared, posted, or embedded!</strong></p>
+<p><strong>Makes sure your content looks great on all social and search sites - no matter how it's crawled, shared, re-shared, posted, or embedded!</strong></p>
 
-<p>WPSSO Core makes sure ALL social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded content, always get <em>accurate</em> and <em>complete</em> information about your webpage content.</p>
+<p>WPSSO Core makes sure that all social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded object / iframe content, always get <em>accurate</em> and <em>complete</em> information about your webpage content, business, and authors.</p>
 
 <p><strong>Uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 

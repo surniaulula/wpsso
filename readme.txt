@@ -1,4 +1,4 @@
-=== WPSSO Core - Advanced Open Graph & Schema Meta Tags for Facebook, Pinterest, LinkedIn, SEO and More ===
+=== WPSSO Core - Comprehensive Open Graph & Schema Meta Tags for Facebook, Pinterest, LinkedIn, SEO and More ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -14,7 +14,7 @@ Tested Up To: 5.0
 WC Tested Up To: 3.5
 Stable Tag: 4.17.0
 
-Easy, complete, accurate, and automatic - give social and search sites comprehensive information about your content, business and authors.
+Makes sure your content looks great on all social and search sites - no matter how it's crawled, shared, re-shared, posted, or embedded!
 
 == Description ==
 
@@ -22,9 +22,9 @@ Easy, complete, accurate, and automatic - give social and search sites comprehen
 
 <h3 class="top">What makes WPSSO Core better?</h3>
 
-**Makes sure your content looks great on all sites - no matter how it's crawled, shared, re-shared, posted, or embedded!**
+**Makes sure your content looks great on all social and search sites - no matter how it's crawled, shared, re-shared, posted, or embedded!**
 
-WPSSO Core makes sure ALL social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded content, always get *accurate* and *complete* information about your webpage content.
+WPSSO Core makes sure that all social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded object / iframe content, always get *accurate* and *complete* information about your webpage content, business, and authors.
 
 **Uses your *existing content* for meta tags and Schema markup:**
 
