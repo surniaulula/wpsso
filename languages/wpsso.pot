@@ -5413,8 +5413,8 @@ msgstr ""
 
 #: lib/post.php:1020
 msgid ""
-"The webpage at %1$s includes very basic and incomplete Schema JSON-LD "
-"product markup from the WooCommerce plugin."
+"The webpage at %1$s includes basic and incomplete Schema JSON-LD product "
+"markup from the WooCommerce plugin."
 msgstr ""
 
 #: lib/post.php:1022 lib/post.php:1046
