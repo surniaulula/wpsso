@@ -1017,7 +1017,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 									$notice_key = 'application-ld-json-script-wc-product-found';
 						
-									$notice_msg = sprintf( __( 'The webpage at %1$s includes only basic and incomplete Schema JSON-LD product markup from the WooCommerce plugin.', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ';
+									$notice_msg = sprintf( __( 'The webpage at %1$s includes only basic and incomplete Schema JSON-LD product markup added by the WooCommerce plugin.', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ';
 
 									$notice_msg .= __( 'Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through in Google search results.', 'wpsso' ) . ' ';
 						

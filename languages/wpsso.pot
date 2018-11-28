@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.1-b.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.1-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5414,7 +5414,7 @@ msgstr ""
 #: lib/post.php:1020
 msgid ""
 "The webpage at %1$s includes only basic and incomplete Schema JSON-LD "
-"product markup from the WooCommerce plugin."
+"product markup added by the WooCommerce plugin."
 msgstr ""
 
 #: lib/post.php:1022 lib/post.php:1046
