@@ -988,16 +988,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Check the stripped webpage HTML for ld+json script(s) and if not found, then suggest enabling the WPSSO JSON add-on.
 			 */
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+			$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
+			$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info[ 'name' ] );
+
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) || ! $this->p->check->pp( 'wpssojson' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'checking the stripped webpage html for ld+json script(s)' );
 				}
 
-				$json_ext        = 'wpssojson';
-				$json_info       = $this->p->cf[ 'plugin' ][ $json_ext ];
-				$json_addon_link = $this->p->util->get_admin_url( 'addons#' . $json_ext, $json_info[ 'name' ] );
-				$scripts_json    = SucomUtil::get_json_scripts( $html_stripped, $do_decode = false );	// Return the json encoded containers.
+				$scripts_json = SucomUtil::get_json_scripts( $html_stripped, $do_decode = false );	// Return the json encoded containers.
 
 				if ( ! empty( $scripts_json ) && is_array( $scripts_json ) ) {
 
@@ -1031,7 +1031,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						}
 					}
 
-				} else {
+				} elseif ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'no application/ld+json script(s) found in the webpage' );

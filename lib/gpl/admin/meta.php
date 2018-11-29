@@ -71,9 +71,8 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 
 			if ( empty( $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'version' ] ) ) {
 
-				$json_ext        = 'wpssojson';
-				$json_info       = $this->p->cf[ 'plugin' ][$json_ext];
-				$json_addon_link = $this->p->util->get_admin_url( 'addons#' . $json_ext, $json_info[ 'name' ] );
+				$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
+				$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info[ 'name' ] );
 				$json_msg_transl = '<p class="status-msg smaller">' . 
 					sprintf( __( 'Activate the %s add-on for additional Schema markup features and options.',
 						'wpsso' ), $json_addon_link ) . '</p>';

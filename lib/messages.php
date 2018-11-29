@@ -411,9 +411,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( isset( $this->p->cf[ 'plugin' ][ 'wpssoplm' ] ) ) {
 
-								$plm_ext        = 'wpssoplm';
-								$plm_info       = $this->p->cf[ 'plugin' ][ $plm_ext ];
-								$plm_addon_link = $this->p->util->get_admin_url( 'addons#' . $plm_ext, $plm_info[ 'short' ] );
+								$plm_info       = $this->p->cf[ 'plugin' ][ 'wpssoplm' ];
+								$plm_addon_link = $this->p->util->get_admin_url( 'addons#wpssoplm', $plm_info[ 'short' ] );
 
 								$text = sprintf( __( 'Select an optional Place / Location for this Organization (requires the %s add-on).',
 									'wpsso' ), $plm_addon_link );
