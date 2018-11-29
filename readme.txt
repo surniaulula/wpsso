@@ -339,7 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.1-rc.1 (2018/11/28)**
+**Version 4.17.1 (2018/11/29)**
 
 * *New Features*
 	* None.
@@ -480,11 +480,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.17.1-rc.1 =
+= 4.17.1 =
 
-(2018/11/28) Fixed numeric sorting of multi-options. Refactored metabox container refresh for WordPress v5.0.
-
-= 4.17.0 =
-
-(2018/11/25) Added a button under the Document SSO &gt; Validate tab for the LinkedIn Post Inspector. Added a check for the database 'max_allowed_packet' option value. Fixed option value sanitation for the number of hashtags added to caption text.
+(2018/11/29) Fixed numeric sorting of multi-options. Refactored metabox container refresh for WordPress v5.0.
 
