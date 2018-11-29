@@ -5722,32 +5722,32 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema.php:57 lib/schema.php:62
+#: lib/schema.php:61 lib/schema.php:66
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2516 lib/schema.php:2522
+#: lib/schema.php:2520 lib/schema.php:2526
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:3151
+#: lib/schema.php:3155
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3193
+#: lib/schema.php:3197
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3200
+#: lib/schema.php:3204
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3476
+#: lib/schema.php:3480
 msgid "adding schema for place"
 msgstr ""
 

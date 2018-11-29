@@ -43,6 +43,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				add_filter( 'the_content', array( $this, 'get_pinterest_img_html' ) );
 			}
 
+			/**
+			 * Add a marker to the WooCommerce product @id property value. The marker is checked in 
+			 * WpssoPost::check_post_head_duplicates() to suggest a better JSON-LD markup solution.
+			 */
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) || ! $this->p->check->pp( 'wpssojson' ) ) {
 				if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
 					add_filter( 'woocommerce_structured_data_product', array( $this, 'add_wc_product_id_marker' ), 1000, 2 );
