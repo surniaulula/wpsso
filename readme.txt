@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: open graph, rich pins, rich cards, twitter cards, schema markup, social media, meta tags, seo, yoast seo, woocommerce, facebook, google, pinterest, twitter, linkedin, whatsapp, skype
+Tags: open graph, rich pins, rich cards, twitter cards, schema, social media, meta tags, seo, yoast seo, woocommerce, facebook, google, pinterest, twitter, linkedin, whatsapp, skype
 Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
@@ -375,108 +375,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Changed the WpssoPage::get_hashtags() method argument from $post_id to $mod.
 	* Changed the WpssoPage::get_tag_names() method argument from $post_id to $mod.
 	* Changed the 'wpsso_hashtags_seed', 'wpsso_hashtags', 'wpsso_tag_names_seed' and 'wpsso_tag_names' filters $post_id argument to $mod.
-
-**Version 4.16.6 (2010/11/17)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* None.
-* *Bugfixes*
-	* Fixed post, term, user options fallback in Free version.
-* *Developer Notes*
-	* None.
-
-**Version 4.16.5 (2010/11/14)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Deprecated the redundant og:image:secure_url and og:video:secure_url meta tags. Image and video URLs are added as og:image and og:video - the og:image:url, og:image:secure_url, og:video:url, and og:video:secure_url are redundant meta tags that can be enabled in the SSO &gt; Advanced settings page. If your site serves content using both HTTP and HTTPS, then you may enable the og:image:secure_url and og:video:secure_url meta tags to include both HTTP and HTTPS URLs. Do not enable these meta tags if you redirect HTTP requests to HTTPS as this will only create unnecessary redundant requests.
-* *Bugfixes*
-	* Fixed duplicate variable names in the currency abbreviation / symbol lookup methods.
-	* Fixed unnecessary type-casting in the WpssoSchema::organization_to_localbusiness() method argument to allow for mixed input (false or array).
-* *Developer Notes*
-	* None.
-
-**Version 4.16.4 (2010/11/03)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* None.
-* *Bugfixes*
-	* Fixed an incorrectly named variable in WpssoMeta get_options_multi() that may have prevented some options from being properly cascaded.
-* *Developer Notes*
-	* Added new methods for the WPSSO JSON add-on:
-		* WpssoSchema::add_data_time_from_assoc().
-		* WpssoSchema::check_itemprop_content_map().
-	* Updated the SucomForm::get_select() method event argument values.
-	* Replaced 'idx' for 'key' in all variable names (associative arrays are not indexed, so using 'key' is more accurate).
-
-**Version 4.16.3 (2018/10/24)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* None.
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* Removed the "Google Project API Key" option since there are no Google API modules currently used.
-	* Added a new WpssoPage get_the_text() method for the WPSSO JSON v1.34.2 add-on.
-	* Renamed the following filters:
-		* 'wpsso_filter_content' to 'wpsso_can_filter_content'
-		* 'wpsso_filter_excerpt' to 'wpsso_can_filter_excerpt'
-		* 'wpsso_filter_title'   to 'wpsso_can_filter_title'
-		* 'wpsso_video_info'     to 'wpsso_video_details'
-	* Renamed option keys for standardization:
-		* 'site_org_type'   to 'site_org_schema_type'
-		* 'schema_desc_len' to 'schema_desc_max_len'
-		* 'og_title_len'    to 'og_title_max_len'
-		* 'og_title_warn'   to 'og_title_warn_len'
-		* 'og_desc_len'     to 'og_desc_max_len'
-		* 'og_desc_warn'    to 'og_desc_warn_len'
-		* 'seo_desc_len'    to 'seo_desc_max_len'
-		* 'tc_desc_len'     to 'tc_desc_max_len'
-
-**Version 4.16.2 (2018/10/20)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Removed the Google URL Shortener service, which was deprecated by Google in March of 2018.
-	* Added a new "Places API is Enabled" option for Google APIs under the SSO &gt; Advanced &gt; Service APIs tab (Pro version).
-	* Added the "et_" page builder shortcode to the list of unregistered shortcodes stripped from the WordPress content.
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* Added a string cast for select option comparison in the SucomForm get_select() method.
-	* Added a fallback argument for the post, term, and user module get_options() method.
-
-**Version 4.16.1 (2018/10/14)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* None.
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* Added new SucomUtil decode_url_add_query() and unparse_url() static methods.
-	* Moved the SucomUtilWP class to a new lib/com/util-wp.php library file.
-
-**Version 4.16.0 (2018/10/08)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Changed the Document SSO metabox tabs from a horizontal to a vertical layout.
-	* Renamed the "Plugin Settings" tab to "Plugin Behavior" in the SSO &gt; Advanced settings page.
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* None.
 
 == Upgrade Notice ==
 
