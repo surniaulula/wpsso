@@ -897,13 +897,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function clear_wp_plugins() {
+
 			self::$cache_wp_plugins = null;
 		}
 
 		public static function get_wp_plugin_dir() {
+
 			if ( defined( 'WP_PLUGIN_DIR' ) && is_dir( WP_PLUGIN_DIR ) && is_writable( WP_PLUGIN_DIR ) ) {
 				return WP_PLUGIN_DIR;
 			}
+
 			return false;
 		}
 
@@ -2155,6 +2158,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Modifies the referenced array directly, and returns true or false.
 		 */
 		public static function do_replace_key( array &$arr, $match_key, $mixed, $add_value = '' ) {
+
 			return self::insert_in_array( 'replace', $arr, $match_key, $mixed, $add_value, true ); // $ret_matched = true.
 		}
 
@@ -3102,18 +3106,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function maybe_load_post( $id, $force = false ) {
+		public static function maybe_load_post( $post_id, $force = false ) {
 
 			global $post;
 
-			if ( empty( $post ) || $force ) {
+			if ( $force || ! isset( $post->ID ) || $post->ID !== $post_id ) {
 
-				$post = self::get_post_object( $id, 'object' );
+				$post = self::get_post_object( $post_id, 'object' );
 
 				return true;
-			} else {
-				return false;
 			}
+
+			return false;
 		}
 
 		public static function is_term_page( $term_id = 0, $tax_slug = '' ) {
@@ -4094,6 +4098,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_toplevel_edit( $hook_name ) {
+
 			return false !== strpos( $hook_name, 'toplevel_page_' ) && (
 				( self::get_request_value( 'action', 'GET' ) === 'edit' && // Uses sanitize_text_field().
 					(int) self::get_request_value( 'post', 'GET' ) > 0 ) ||

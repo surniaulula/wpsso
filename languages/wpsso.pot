@@ -1163,11 +1163,11 @@ msgstr ""
 msgid "Reference: %s"
 msgstr ""
 
-#: lib/com/util.php:1756
+#: lib/com/util.php:1759
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
-#: lib/com/util.php:1767
+#: lib/com/util.php:1770
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
