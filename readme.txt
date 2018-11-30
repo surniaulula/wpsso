@@ -95,8 +95,6 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 
 <h3>WPSSO Core Pro / Additional Features</h3>
 
-WPSSO Core Pro gives you the power to further integrate and customize your meta tags and Schema markup with third party plugins and APIs.
-
 * Customize headlines, titles, descriptions, shared image and/or video, product information, recipe information, event information, and much more.
 
 * Optionally upscale small images from the Media Library for social sharing and Schema markup.
@@ -113,11 +111,25 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 
 * URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
-* Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more.
+* Integrates with services and 3rd party plugins for additional image, video, eCommerce product details, SEO settings, and more.
 
-	WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and if you desire, you can continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.
+* The following integration modules are provided with the Pro version, and are automatically loaded when the supported services are required or 3rd party plugins detected.
 
-* The following modules are provided with the Pro version, and are automatically loaded when the supported plugins are detected or the services are required.
+	* **Integration with Service APIs**
+
+		* Bitly
+		* DLMY.App
+		* Facebook Embedded Videos
+		* Gravatar (Author Image)
+		* Ow.ly
+		* Slideshare Presentations
+		* Soundcloud Tracks (for the Twitter Player Card)
+		* TinyURL
+		* Vimeo Videos
+		* Wistia Videos
+		* WordPress Video Shortcode (and Self-Hosted Videos)
+		* Your Own URL Shortener (YOURLS)
+		* YouTube Videos and Playlists
 
 	* **Integration with 3rd Party Plugins** 
 
@@ -141,22 +153,6 @@ WPSSO Core Pro gives you the power to further integrate and customize your meta 
 		* WP-PostRatings
 		* Yoast SEO (aka WordPress SEO)
 		* Yotpo Social Reviews for WooCommerce
-
-	* **Integration with Service APIs**
-
-		* Bitly
-		* DLMY.App
-		* Facebook Embedded Videos
-		* Gravatar (Author Image)
-		* Ow.ly
-		* Slideshare Presentations
-		* Soundcloud Tracks (for the Twitter Player Card)
-		* TinyURL
-		* Vimeo Videos
-		* Wistia Videos
-		* WordPress Video Shortcode (and Self-Hosted Videos)
-		* Your Own URL Shortener (YOURLS)
-		* YouTube Videos and Playlists
 
 * Pro add-ons for even more advanced functionality:
 

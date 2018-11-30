@@ -88,8 +88,6 @@
 
 <h3>WPSSO Core Pro / Additional Features</h3>
 
-<p>WPSSO Core Pro gives you the power to further integrate and customize your meta tags and Schema markup with third party plugins and APIs.</p>
-
 <ul>
 <li><p>Customize headlines, titles, descriptions, shared image and/or video, product information, recipe information, event information, and much more.</p></li>
 <li><p>Optionally upscale small images from the Media Library for social sharing and Schema markup.</p></li>
@@ -99,12 +97,27 @@
 <li><p>Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.</p></li>
 <li><p>Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.</p></li>
 <li><p>URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.</p></li>
-<li><p>Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more.</p>
-
-<p>WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and if you desire, you can continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.</p></li>
-<li><p>The following modules are provided with the Pro version, and are automatically loaded when the supported plugins are detected or the services are required.</p>
+<li><p>Integrates with services and 3rd party plugins for additional image, video, eCommerce product details, SEO settings, and more.</p></li>
+<li><p>The following integration modules are provided with the Pro version, and are automatically loaded when the supported services are required or 3rd party plugins detected.</p>
 
 <ul>
+<li><p><strong>Integration with Service APIs</strong></p>
+
+<ul>
+<li>Bitly</li>
+<li>DLMY.App</li>
+<li>Facebook Embedded Videos</li>
+<li>Gravatar (Author Image)</li>
+<li>Ow.ly</li>
+<li>Slideshare Presentations</li>
+<li>Soundcloud Tracks (for the Twitter Player Card)</li>
+<li>TinyURL</li>
+<li>Vimeo Videos</li>
+<li>Wistia Videos</li>
+<li>WordPress Video Shortcode (and Self-Hosted Videos)</li>
+<li>Your Own URL Shortener (YOURLS)</li>
+<li>YouTube Videos and Playlists</li>
+</ul></li>
 <li><p><strong>Integration with 3rd Party Plugins</strong></p>
 
 <ul>
@@ -128,23 +141,6 @@
 <li>WP-PostRatings</li>
 <li>Yoast SEO (aka WordPress SEO)</li>
 <li>Yotpo Social Reviews for WooCommerce</li>
-</ul></li>
-<li><p><strong>Integration with Service APIs</strong></p>
-
-<ul>
-<li>Bitly</li>
-<li>DLMY.App</li>
-<li>Facebook Embedded Videos</li>
-<li>Gravatar (Author Image)</li>
-<li>Ow.ly</li>
-<li>Slideshare Presentations</li>
-<li>Soundcloud Tracks (for the Twitter Player Card)</li>
-<li>TinyURL</li>
-<li>Vimeo Videos</li>
-<li>Wistia Videos</li>
-<li>WordPress Video Shortcode (and Self-Hosted Videos)</li>
-<li>Your Own URL Shortener (YOURLS)</li>
-<li>YouTube Videos and Playlists</li>
 </ul></li>
 </ul></li>
 <li><p>Pro add-ons for even more advanced functionality:</p>
