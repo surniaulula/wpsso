@@ -157,24 +157,28 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				error_log( 'WPSSO_RESET_ON_ACTIVATE constant is true - reloading default settings for plugin activation' );
 
 				delete_option( WPSSO_OPTIONS_NAME );
-			}
 
-			$this->options = get_option( WPSSO_OPTIONS_NAME );
+				$this->options = false;
 
-			/**
-			 * Look for alternate options name.
-			 */
-			if ( ! is_array( $this->options ) ) {
+			} else {
 
-				if ( defined( 'WPSSO_OPTIONS_NAME_ALT' ) && WPSSO_OPTIONS_NAME_ALT ) {
+				$this->options = get_option( WPSSO_OPTIONS_NAME );
 
-					$this->options = get_option( WPSSO_OPTIONS_NAME_ALT );
+				/**
+				 * Look for alternate options name.
+				 */
+				if ( ! is_array( $this->options ) ) {
 
-					if ( is_array( $this->options ) ) {
+					if ( defined( 'WPSSO_OPTIONS_NAME_ALT' ) && WPSSO_OPTIONS_NAME_ALT ) {
 
-						update_option( WPSSO_OPTIONS_NAME, $this->options );	// Auto-creates with autoload yes.
+						$this->options = get_option( WPSSO_OPTIONS_NAME_ALT );
 
-						delete_option( WPSSO_OPTIONS_NAME_ALT );
+						if ( is_array( $this->options ) ) {
+
+							update_option( WPSSO_OPTIONS_NAME, $this->options );	// Auto-creates with autoload yes.
+
+							delete_option( WPSSO_OPTIONS_NAME_ALT );
+						}
 					}
 				}
 			}
