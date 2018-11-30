@@ -59,38 +59,15 @@
 <h3>WPSSO Core Standard Features</h3>
 
 <ul>
-<li><p>Complete and accurate meta tags for ALL social sites, search engines, and messaging apps:</p>
-
-<ul>
-<li>Buffer</li>
-<li>Facebook / Open Graph</li>
-<li>Google+</li>
-<li>Google's Knowledge Graph</li>
-<li>Google's Rich Card SEO</li>
-<li>LinkedIn</li>
-<li>ManageWP</li>
-<li>Pinterest Rich Pins</li>
-<li>Pocket</li>
-<li>Skype</li>
-<li>Twitter Cards</li>
-<li>WhatsApp</li>
-<li>Weibo</li>
-<li><strong>And many more.</strong> :)</li>
-</ul></li>
-<li><p>Pinterest Rich Pin meta tags and <a href="https://developers.google.com/search/docs/guides/intro-structured-data">Structured Data</a> Schema markup for Google.</p></li>
-<li><p>Configurable website / business social accounts for Schema markup and Google's Knowledge Graph.</p></li>
-<li><p>Adds author, publisher, and website markup using Schema JSON-LD for Google's Knowledge Graph.</p></li>
-<li><p>User profile contact fields for Facebook / Open Graph, Twitter Cards, Schema markup, and Google's Knowledge Graph.</p></li>
-<li><p>Adds markup for the <a href="https://developers.google.com/search/docs/data-types/sitelinks-searchbox">Google Sitelinks Searchbox</a>.</p></li>
-<li><p>Includes meta tags and markup for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.</p></li>
-<li><p>Uses images from several sources, including featured, attached, gallery shortcode, images from HTML tags in the content, or a custom fallback image.</p></li>
-<li><p>Features customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Card SEO, Pinterest Rich Pins, and Twitter Cards.</p></li>
-<li><p>Optional settings for robots noindex, nofollow, noarchive, and nosnippet for each post / page.</p></li>
+<li><p>Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.</p></li>
+<li><p>Provides meta tags and markup for custom post types, custom taxonomy / terms, user profile pages, and attachment pages.</p></li>
+<li><p>Uses images from several sources, including featured, attached, gallery shortcode, images from HTML tags, or a custom fallback image.</p></li>
+<li><p>Customizable image dimensions for Facebook / Open Graph, Schema markup, Google Rich Card SEO, Pinterest Rich Pins, and Twitter Cards.</p></li>
 <li><p>Contextual help for <em>every</em> plugin option and <a href="https://wpsso.com/docs/plugins/wpsso/">comprehensive online documentation</a>.</p></li>
 <li><p>Built-in support for <a href="https://wordpress.org/plugins/amp/">Accelerated Mobile Pages (AMP)</a> and <a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP - Accelerated Mobile Pages</a> plugins.</p></li>
 <li><p>Supports advanced WordPress configurations, including WordPress Network / Multisite installations and WordPress MU Domain Mapping.</p></li>
-<li><p>And even includes an option to hide the preview of all Pro settings and features. ;-)</p></li>
-<li><p>Optional Free add-ons (non-standard / specialized features) for WPSSO Core:</p>
+<li><p>Includes an option to hide the preview of all Pro settings and features. ;-)</p></li>
+<li><p>Free add-ons extra and advanced functionality:</p>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta</a> to manage mobile App information.</li>
@@ -114,25 +91,18 @@
 <p>WPSSO Core Pro gives you the power to further integrate and customize your meta tags and Schema markup with third party plugins and APIs.</p>
 
 <ul>
-<li><p>Includes a Document SSO (Social and Search Optimization) metabox for Posts, Pages, custom post type, user profile, category, tag, and custom taxonomy editing pages.</p></li>
-<li><p>Offers individual customization of the article topic, shared title, descriptions, shared image and/or video, product information, recipe information, event information, and much more.</p></li>
-<li><p>Optionally upscale smaller images for social sharing and Schema markup, up to a maximum upscale percentage.</p></li>
-<li><p>Optionally validate all image minimum / maximum dimensions and aspect ratios.</p></li>
-<li><p>Optionally renders shortcodes for accurate description texts and embedded video detection.</p></li>
+<li><p>Customize headlines, titles, descriptions, shared image and/or video, product information, recipe information, event information, and much more.</p></li>
+<li><p>Optionally upscale small images from the Media Library for social sharing and Schema markup.</p></li>
+<li><p>Automatically validate all image minimum / maximum dimensions and aspect ratios.</p></li>
+<li><p>Render shortcodes and blocks for accurate description texts and embedded video detection.</p></li>
+<li><p>Additional Facebook, Open Graph, Rich Pin meta tags and Schema markup for videos and eCommerce products.</p></li>
 <li><p>Support for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in content text.</p></li>
-<li><p>Additional Facebook / Open Graph / Rich Pin meta tags and Schema markup for videos and eCommerce products.</p></li>
-<li><p>Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> meta tags for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.</p></li>
-<li><p>Include or exclude individual Facebook, Open Graph, Twitter Card, Pinterest, Schema, and SEO meta tag from the webpage head section.</p></li>
-<li><p>Allows customization of field names, labels, and add / remove contacts on user profile pages and Co-Authors Plus guest author profiles.</p></li>
-<li><p>Optional URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.</p></li>
+<li><p>Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> for embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube.</p></li>
+<li><p>URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.</p></li>
 <li><p>Integrates with 3rd party plugins and services for additional image, video, eCommerce product details, SEO settings, and more.</p>
 
-<p><strong>Optionally integrates and improves your favorite SEO plugin:</strong></p>
-
-<p>WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and, if you desire, you can continue to use your favorite SEO content / keyword analysis tools without any conflicts!</p>
-
-<p><em>The Pro version comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.</em></p></li>
-<li><p>The following modules are included with the Pro version, and are automatically loaded if/when the supported plugins and/or services are required.</p>
+<p>WPSSO Core specializes in providing all the meta tags and Schema markup social sites and search engines need &mdash; and if you desire, you can continue to use your favorite SEO content / keyword analysis tools without any conflicts! The Pro version comes with special integration modules for All in One SEO Pack, The SEO Framework, WP Meta SEO, Yoast SEO, and more.</p></li>
+<li><p>The following modules are provided with the Pro version, and are automatically loaded when the supported plugins are detected or the services are required.</p>
 
 <ul>
 <li><p><strong>Integration with 3rd Party Plugins</strong></p>
@@ -177,7 +147,7 @@
 <li>YouTube Videos and Playlists</li>
 </ul></li>
 </ul></li>
-<li><p>Optional Pro add-ons (non-standard / specialized features) for WPSSO Core Pro:</p>
+<li><p>Pro add-ons for even more advanced functionality:</p>
 
 <ul>
 <li><a href="https://wpsso.com/extend/plugins/wpsso-am/">WPSSO Mobile App Meta Pro</a> to manage mobile App information.</li>
