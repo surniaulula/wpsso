@@ -91,9 +91,9 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 						/**
 						 * Example:
-						 *	'article' => 'Item Type Article',
-						 *	'article#news:no_load' => 'Item Type NewsArticle',
-						 *	'article#tech:no_load' => 'Item Type TechArticle',
+						 *	'article'              => 'Schema Type Article',
+						 *	'article#news:no_load' => 'Schema Type NewsArticle',
+						 *	'article#tech:no_load' => 'Schema Type TechArticle',
 						 */
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $lib_name );
 

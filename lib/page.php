@@ -867,7 +867,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$text = $this->get_the_content( $mod, $read_cache, $md_key );
 
-				$text = $this->p->util->cleanup_html_tags( $text, true, $this->p->options['plugin_use_img_alt'] );
+				$text = $this->p->util->cleanup_html_tags( $text, true, $this->p->options[ 'plugin_use_img_alt' ] );
 			}
 
 			$text = apply_filters( $this->p->lca . '_text', $text, $mod, $read_cache, $md_key );

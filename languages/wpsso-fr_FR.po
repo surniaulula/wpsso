@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.17.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-11-29 08:56-0600\n"
-"PO-Revision-Date: 2018-11-29 08:57-0600\n"
+"POT-Creation-Date: 2018-11-30 15:26-0600\n"
+"PO-Revision-Date: 2018-11-30 15:26-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -790,27 +790,27 @@ msgstr "Le modèle %1$s a été mis à jour et enregistré avec succès. Une sau
 msgid "Failed to write the %1$s template. You may need to restore the original template saved as %2$s in the same folder."
 msgstr "Erreur lors de l'écriture du modèle %1$s. Vous pouvez restaurer le modèle original a partir de %2$s dans dans le même dossier."
 
-#: lib/admin.php:3288
+#: lib/admin.php:3288 lib/admin.php:3406
 msgctxt "option label"
 msgid "Type for Blog Front Page"
 msgstr "Type pour page blog d'avant"
 
-#: lib/admin.php:3289
+#: lib/admin.php:3289 lib/admin.php:3407
 msgctxt "option label"
 msgid "Type for Static Front Page"
 msgstr "Type page statique d'avant"
 
-#: lib/admin.php:3290
+#: lib/admin.php:3290 lib/admin.php:3408
 msgctxt "option label"
 msgid "Type for User / Author Page"
 msgstr "Type pour page utilisateur / auteur"
 
-#: lib/admin.php:3291
+#: lib/admin.php:3291 lib/admin.php:3409
 msgctxt "option label"
 msgid "Type for Search Results Page"
 msgstr "Type pour résultats de recherche"
 
-#: lib/admin.php:3292
+#: lib/admin.php:3292 lib/admin.php:3410
 msgctxt "option label"
 msgid "Type for Other Archive Page"
 msgstr "Type pour autre page d'archive"
@@ -826,12 +826,12 @@ msgctxt "option comment"
 msgid "(Post Type) Archive Page"
 msgstr "Page d'archive (type d'article)"
 
-#: lib/admin.php:3327
+#: lib/admin.php:3327 lib/admin.php:3446
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr "Type par type d'article"
 
-#: lib/admin.php:3354
+#: lib/admin.php:3354 lib/admin.php:3474
 msgctxt "option label"
 msgid "Type by Term Taxonomy"
 msgstr "Type par taxonomie de termes"
@@ -870,41 +870,6 @@ msgstr "Longueur de description maximale"
 msgctxt "option comment"
 msgid "characters or less"
 msgstr "caractères ou moins"
-
-#: lib/admin.php:3406
-msgctxt "option label"
-msgid "Item Type for Blog Front Page"
-msgstr "Type pour page blog d'avant"
-
-#: lib/admin.php:3407
-msgctxt "option label"
-msgid "Item Type for Static Front Page"
-msgstr "Type page statique d'avant"
-
-#: lib/admin.php:3408
-msgctxt "option label"
-msgid "Item Type for User / Author Page"
-msgstr "Type pour page utilisateur / auteur"
-
-#: lib/admin.php:3409
-msgctxt "option label"
-msgid "Item Type for Search Results Page"
-msgstr "Type pour résultats de recherche"
-
-#: lib/admin.php:3410
-msgctxt "option label"
-msgid "Item Type for Other Archive Page"
-msgstr "Type pour autre page d'archive"
-
-#: lib/admin.php:3446
-msgctxt "option label"
-msgid "Item Type by Post Type"
-msgstr "Type d'élément par type d'article"
-
-#: lib/admin.php:3474
-msgctxt "option label"
-msgid "Item Type by Term Taxonomy"
-msgstr "Type d'élément par taxonomie"
 
 #: lib/admin.php:3492
 msgctxt "option label"
@@ -1096,11 +1061,11 @@ msgstr "modifier"
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#: lib/com/util.php:1756
+#: lib/com/util.php:1759
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr "Les informations pour l'extension \"%s\" contiennent un lien de téléchargement invalide."
 
-#: lib/com/util.php:1767
+#: lib/com/util.php:1770
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr "L'information pour l'extension \"%s\" ne contient pas de lien de téléchargement."
 
@@ -5493,20 +5458,20 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: wpsso.php:428
+#: wpsso.php:432
 msgid "WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif &mdash; des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:446
+#: wpsso.php:450
 msgid "HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif &mdash; des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
 #. translators: %s is the short plugin name
-#: wpsso.php:456
+#: wpsso.php:460
 msgid "Debug mode disables some %s caching features, which degrades performance slightly."
 msgstr "Le mode de débogage désactive certaines fonctionnalités de mise en cache de %s, ce qui dégrade la performance légèrement."
 
-#: wpsso.php:457
+#: wpsso.php:461
 msgid "Please disable debug mode when debugging is complete."
 msgstr "SVP désactiver le mode de débogage lorsque le débogage est terminé."
 

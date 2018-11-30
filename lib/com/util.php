@@ -3759,9 +3759,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		/**
 		 * Example:
-		 *      'article' => 'Item Type Article',
-		 *      'article#news:no_load' => 'Item Type NewsArticle',
-		 *      'article#tech:no_load' => 'Item Type TechArticle',
+		 *      'article'              => 'Schema Type Article',
+		 *      'article#news:no_load' => 'Schema Type NewsArticle',
+		 *      'article#tech:no_load' => 'Schema Type TechArticle',
 		 */
 		public static function get_lib_stub_action( $lib_id ) {
 

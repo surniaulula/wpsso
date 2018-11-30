@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -837,27 +837,27 @@ msgid ""
 "template saved as %2$s in the same folder."
 msgstr ""
 
-#: lib/admin.php:3288
+#: lib/admin.php:3288 lib/admin.php:3406
 msgctxt "option label"
 msgid "Type for Blog Front Page"
 msgstr ""
 
-#: lib/admin.php:3289
+#: lib/admin.php:3289 lib/admin.php:3407
 msgctxt "option label"
 msgid "Type for Static Front Page"
 msgstr ""
 
-#: lib/admin.php:3290
+#: lib/admin.php:3290 lib/admin.php:3408
 msgctxt "option label"
 msgid "Type for User / Author Page"
 msgstr ""
 
-#: lib/admin.php:3291
+#: lib/admin.php:3291 lib/admin.php:3409
 msgctxt "option label"
 msgid "Type for Search Results Page"
 msgstr ""
 
-#: lib/admin.php:3292
+#: lib/admin.php:3292 lib/admin.php:3410
 msgctxt "option label"
 msgid "Type for Other Archive Page"
 msgstr ""
@@ -873,12 +873,12 @@ msgctxt "option comment"
 msgid "(Post Type) Archive Page"
 msgstr ""
 
-#: lib/admin.php:3327
+#: lib/admin.php:3327 lib/admin.php:3446
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr ""
 
-#: lib/admin.php:3354
+#: lib/admin.php:3354 lib/admin.php:3474
 msgctxt "option label"
 msgid "Type by Term Taxonomy"
 msgstr ""
@@ -916,41 +916,6 @@ msgstr ""
 #: lib/admin.php:3393 lib/submenu/general.php:257 lib/submenu/general.php:335
 msgctxt "option comment"
 msgid "characters or less"
-msgstr ""
-
-#: lib/admin.php:3406
-msgctxt "option label"
-msgid "Item Type for Blog Front Page"
-msgstr ""
-
-#: lib/admin.php:3407
-msgctxt "option label"
-msgid "Item Type for Static Front Page"
-msgstr ""
-
-#: lib/admin.php:3408
-msgctxt "option label"
-msgid "Item Type for User / Author Page"
-msgstr ""
-
-#: lib/admin.php:3409
-msgctxt "option label"
-msgid "Item Type for Search Results Page"
-msgstr ""
-
-#: lib/admin.php:3410
-msgctxt "option label"
-msgid "Item Type for Other Archive Page"
-msgstr ""
-
-#: lib/admin.php:3446
-msgctxt "option label"
-msgid "Item Type by Post Type"
-msgstr ""
-
-#: lib/admin.php:3474
-msgctxt "option label"
-msgid "Item Type by Term Taxonomy"
 msgstr ""
 
 #: lib/admin.php:3492

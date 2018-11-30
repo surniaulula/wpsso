@@ -1662,9 +1662,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						/**
 						 * Example:
-						 *	'article'              => 'Item Type Article',
-						 *	'article#news:no_load' => 'Item Type NewsArticle',
-						 *	'article#tech:no_load' => 'Item Type TechArticle',
+						 *	'article'              => 'Schema Type Article',
+						 *	'article#news:no_load' => 'Schema Type NewsArticle',
+						 *	'article#tech:no_load' => 'Schema Type TechArticle',
 						 */
 						list( $id, $stub, $action ) = SucomUtil::get_lib_stub_action( $id_key );
 
@@ -3403,11 +3403,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			foreach ( array( 
-				'home_index'   => _x( 'Item Type for Blog Front Page', 'option label', 'wpsso' ),
-				'home_page'    => _x( 'Item Type for Static Front Page', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Item Type for User / Author Page', 'option label', 'wpsso' ),
-				'search_page'  => _x( 'Item Type for Search Results Page', 'option label', 'wpsso' ),
-				'archive_page' => _x( 'Item Type for Other Archive Page', 'option label', 'wpsso' ),
+				'home_index'   => _x( 'Type for Blog Front Page', 'option label', 'wpsso' ),
+				'home_page'    => _x( 'Type for Static Front Page', 'option label', 'wpsso' ),
+				'user_page'    => _x( 'Type for User / Author Page', 'option label', 'wpsso' ),
+				'search_page'  => _x( 'Type for Search Results Page', 'option label', 'wpsso' ),
+				'archive_page' => _x( 'Type for Other Archive Page', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
 
 				$tr_html = '';
@@ -3423,7 +3423,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			/**
-			 * Item Type by Post Type
+			 * Type by Post Type
 			 */
 			$type_select = '';
 			$type_keys = array();
@@ -3443,7 +3443,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$tr_html  = '';
 			$tr_key   = 'schema_type_for_ptn';
-			$th_label = _x( 'Item Type by Post Type', 'option label', 'wpsso' );
+			$th_label = _x( 'Type by Post Type', 'option label', 'wpsso' );
 
 			if ( ! empty( $hide_in_view[$tr_key] ) ) {
 				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_keys );
@@ -3456,7 +3456,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			unset( $type_select, $type_keys );	// Just in case.
 
 			/**
-			 * Item Type by Term Taxonomy
+			 * Type by Term Taxonomy
 			 */
 			$type_select   = '';
 			$type_keys = array();
@@ -3471,7 +3471,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$tr_html  = '';
 			$tr_key   = 'schema_type_for_ttn';
-			$th_label = _x( 'Item Type by Term Taxonomy', 'option label', 'wpsso' );
+			$th_label = _x( 'Type by Term Taxonomy', 'option label', 'wpsso' );
 
 			if ( ! empty( $hide_in_view[$tr_key] ) ) {
 				$tr_html = $this->form->get_tr_hide( $hide_in_view[ $tr_key ], $type_keys );
