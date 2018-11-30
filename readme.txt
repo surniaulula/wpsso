@@ -14,7 +14,7 @@ Tested Up To: 5.0
 WC Tested Up To: 3.5
 Stable Tag: 4.17.1
 
-WPSSO Core makes sure your content looks great on all social and search sites - no matter how it's crawled, shared, re-shared, posted, or embedded!
+WPSSO Core makes sure your content looks great on all social and search sites, no matter how it's crawled, shared, re-shared, posted or embedded!
 
 == Description ==
 
