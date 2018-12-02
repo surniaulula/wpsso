@@ -525,6 +525,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		);
 
 		private static $pub_lang = array(
+
 			/**
 			 * https://developers.facebook.com/docs/messenger-platform/messenger-profile/supported-locales
 			 */
@@ -672,6 +673,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				'zu_ZA' => 'Zulu',
 				'zz_TR' => 'Zazaki',
 			),
+
 			/**
 			 * https://developers.google.com/+/web/api/supported-languages
 			 */
@@ -738,10 +740,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				'vi'	=> 'Vietnamese',
 				'zu'	=> 'Zulu',
 			),
+
 			'pinterest' => array(
 				'en'	=> 'English',
 				'ja'	=> 'Japanese',
 			),
+
 			/**
 			 * https://www.tumblr.com/docs/en/share_button
 			 */
@@ -762,6 +766,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				'zh_CN' => 'Chinese (Simplified)',
 				'zh_TW' => 'Chinese (Traditional)',
 			),
+
 			/**
 			 * https://dev.twitter.com/web/overview/languages
 			 */
@@ -2787,6 +2792,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_available_locales() {
 
 			$available_locales = get_available_languages(); // Since wp 3.0.
+
+			$default_locale = self::get_locale( 'default' );
+
+			if ( ! in_array( $default_locale, $available_locales ) ) {	// Just in case.
+				$available_locales[] = $default_locale;
+			}
+
+			sort( $available_locales );
 
 			return apply_filters( 'sucom_available_locales', $available_locales );
 		}

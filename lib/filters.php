@@ -243,10 +243,16 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		 * HTTPS. See https://en.wikipedia.org/wiki/HTTP_301 for more info.
 		 */
 		public static function force_ssl_redirect() {
-			// check for web server variables in case WP is being used from the command line
+
+			/**
+			 * Check for web server variables in case WP is being used from the command line.
+			 */
 			if ( isset( $_SERVER['HTTP_HOST'] ) && isset( $_SERVER['REQUEST_URI'] ) ) {
+
 				if ( ! SucomUtil::is_https() ) {
-					wp_redirect( 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], 301 );
+
+					wp_redirect( 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301 );
+
 					exit();
 				}
 			}

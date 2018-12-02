@@ -298,6 +298,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.17.2-dev.1 (2018/12/02)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* Added the default language to the list returned by the WordPress get_available_languages() function.
+
 **Version 4.17.1 (2018/11/29)**
 
 * *New Features*
@@ -336,6 +347,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Changed the 'wpsso_hashtags_seed', 'wpsso_hashtags', 'wpsso_tag_names_seed' and 'wpsso_tag_names' filters $post_id argument to $mod.
 
 == Upgrade Notice ==
+
+= 4.17.2-dev.1 =
+
+(2018/12/02) Added the default language to the list returned by the WordPress get_available_languages() function.
 
 = 4.17.1 =
 

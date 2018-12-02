@@ -1590,7 +1590,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_home_index':	// Schema Type for Blog Front Page
+						case 'tooltip-schema_type_for_home_index':	// Type for Blog Front Page
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_index' );
 
@@ -1600,7 +1600,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_home_page':	// Schema Type for Static Front Page
+						case 'tooltip-schema_type_for_home_page':	// Type for Static Front Page
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_page' );
 
@@ -1610,7 +1610,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_user_page':	// Schema Type for User / Author Page
+						case 'tooltip-schema_type_for_user_page':	// Type for User / Author Page
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_user_page' );
 
@@ -1620,7 +1620,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_search_page':	// Schema Type for Search Results Page
+						case 'tooltip-schema_type_for_search_page':	// Type for Search Results Page
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_search_page' );
 
@@ -1630,7 +1630,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_archive_page':	// Schema Type for Other Archive Page
+						case 'tooltip-schema_type_for_archive_page':	// Type for Other Archive Page
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_archive_page' );
 
@@ -1640,13 +1640,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_type_for_ptn':	// Schema Type by Post Type
+						case 'tooltip-schema_type_for_ptn':	// Type by Post Type
 
 							$text = sprintf( __( 'Select the %1$s type for each WordPress post type.', 'wpsso' ), 'Schema' );
 
 							break;
 
-						case 'tooltip-schema_type_for_ttn':	// Schema Type by Term Taxonomy
+						case 'tooltip-schema_type_for_ttn':	// Type by Term Taxonomy
 
 							$text = sprintf( __( 'Select the %1$s type for each WordPress term taxonomy.', 'wpsso' ), 'Schema' );
 
