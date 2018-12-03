@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 4.17.1\n"
+"Project-Id-Version: WPSSO Core 4.17.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-11-30 15:26-0600\n"
-"PO-Revision-Date: 2018-11-30 15:26-0600\n"
+"POT-Creation-Date: 2018-12-03 10:41-0800\n"
+"PO-Revision-Date: 2018-12-03 11:01-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1061,11 +1061,11 @@ msgstr "modifier"
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#: lib/com/util.php:1759
+#: lib/com/util.php:1764
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr "Les informations pour l'extension \"%s\" contiennent un lien de téléchargement invalide."
 
-#: lib/com/util.php:1770
+#: lib/com/util.php:1775
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr "L'information pour l'extension \"%s\" ne contient pas de lien de téléchargement."
 
@@ -3025,11 +3025,13 @@ msgid "One or more characters used to separate values (category parent names, pa
 msgstr "Un ou plusieurs caractères utilisés pour séparer les valeurs (noms des parents de la catégorie, numéros de page, etc.) dans la chaîne de titre Facebook / Open Graph (la valeur par défaut est un trait d'union \"%s\")."
 
 #: lib/messages.php:521
-msgid "The maximum length of text used in the Facebook / Open Graph title tag (the default is %d characters)."
+#, fuzzy
+msgid "The maximum length of text used for the Facebook / Open Graph title value (the default is %d characters)."
 msgstr "La longueur maximale du texte utilisé dans la balise de titre Facebook / Open Graph (la valeur par défaut est %d caractères)."
 
 #: lib/messages.php:527
-msgid "The maximum length of text used in the Facebook / Open Graph description tag."
+#, fuzzy
+msgid "The maximum length of text used for the Facebook / Open Graph description value."
 msgstr "La longueur maximale du texte utilisé dans la balise de description Facebook / Open Graph."
 
 #: lib/messages.php:529 lib/messages.php:1483 lib/messages.php:1587
@@ -3718,7 +3720,8 @@ msgid "The Google+ Business Page URL will be used in a link relation head tag an
 msgstr "L'URL de la page d'affaire Google+ sera utilisée dans une balise d'entête de relation de lien et dans le balisage Schéma Organization du site Web."
 
 #: lib/messages.php:1481
-msgid "The maximum length of text used for the Google Search \"description\" meta tag."
+#, fuzzy
+msgid "The maximum length of text used for the Google Search \"description\" value."
 msgstr "La longueur maximale du texte utilisé pour la balise méta Google Search \"description\"."
 
 #: lib/messages.php:1491
@@ -3796,7 +3799,8 @@ msgid "If you choose not to crop this image size, make sure the height value is 
 msgstr "Si vous choisissez de ne pas recadrer cette taille d'image, assurez-vous que la valeur de hauteur est suffisante pour les images portraits / verticales."
 
 #: lib/messages.php:1585
-msgid "The maximum length of text used for the Google+ / Schema description meta tag."
+#, fuzzy
+msgid "The maximum length of text used for the Schema description value."
 msgstr "La longueur maximale du texte utilisé pour la balise méta de description Google+ / Schema."
 
 #: lib/messages.php:1673
@@ -3820,7 +3824,8 @@ msgid "The Twitter @username for your website and/or business will be used in th
 msgstr "Le nom d'@usager Twitter de votre site Web et/ou d'entreprise sera utilisé dans le balisage Schéma Organization du site Web."
 
 #: lib/messages.php:1685
-msgid "The maximum length of text used for the Twitter Card description."
+#, fuzzy
+msgid "The maximum length of text used for the Twitter Card description value."
 msgstr "La longueur maximale du texte utilisé pour la description de la carte Twitter."
 
 #: lib/messages.php:1711
@@ -4525,44 +4530,44 @@ msgstr "Les dimensions de l'image %1$s sont %2$s et doivent être exactement %3$
 msgid "Please correct the banner image at %s."
 msgstr "Veuillez corriger l'image bannière à %s."
 
-#: lib/page.php:332 lib/page.php:334 lib/page.php:608 lib/page.php:610
-#: lib/page.php:684
+#: lib/page.php:337 lib/page.php:339 lib/page.php:614 lib/page.php:616
+#: lib/page.php:690
 msgid "%s Archive"
 msgstr "Archive %s"
 
-#: lib/page.php:407
+#: lib/page.php:412
 msgid "No Title"
 msgstr "Aucun titre"
 
-#: lib/page.php:667
+#: lib/page.php:673
 msgid "Tagged with %s"
 msgstr "Marqué avec %s"
 
-#: lib/page.php:674
+#: lib/page.php:680
 msgid "%s Category"
 msgstr "Catégorie %s"
 
-#: lib/page.php:695
+#: lib/page.php:701
 msgid "Authored by %s"
 msgstr "Écrits par %s"
 
-#: lib/page.php:702
+#: lib/page.php:708
 msgid "Daily Archive for %s"
 msgstr "Archive journalière pour %s"
 
-#: lib/page.php:706
+#: lib/page.php:712
 msgid "Monthly Archive for %s"
 msgstr "Archive mensuelle pour %s"
 
-#: lib/page.php:710
+#: lib/page.php:716
 msgid "Yearly Archive for %s"
 msgstr "Archive annuelle pour %s"
 
-#: lib/page.php:714
+#: lib/page.php:720
 msgid "Archive Page"
 msgstr "Page d'archive"
 
-#: lib/page.php:752 lib/pro/social/buddypress.php:665
+#: lib/page.php:758 lib/pro/social/buddypress.php:662
 msgid "No Description"
 msgstr "Aucune description"
 

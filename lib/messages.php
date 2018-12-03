@@ -518,13 +518,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_title_max_len':	// Maximum Title Length
 
-							$text = sprintf( __( 'The maximum length of text used for the Facebook / Open Graph title value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_max_len' ) );
+							$text = sprintf( __( 'The maximum length used for the Facebook / Open Graph title value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_max_len' ) );
 
 							break;
 
 						case 'tooltip-og_desc_max_len':	// Maximum Description Length
 
-							$text = __( 'The maximum length of text used for the Facebook / Open Graph description value.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum length used for the Facebook / Open Graph description value.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ],
@@ -1478,7 +1478,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-seo_desc_max_len':	// Search / SEO Description Length
 
-							$text = __( 'The maximum length of text used for the Google Search "description" value.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum length used for the Google Search / SEO description value.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['seo_desc_len'],
@@ -1582,7 +1582,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_desc_max_len':
 
-							$text = __( 'The maximum length of text used for the Schema description value.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum length used for the Schema description property value.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['schema_desc_len'],
@@ -1682,7 +1682,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-tc_desc_max_len':
 
-							$text = __( 'The maximum length of text used for the Twitter Card description value.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum length used for the Twitter Card description value.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['tc_desc_len'],

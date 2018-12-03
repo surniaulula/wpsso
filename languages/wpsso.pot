@@ -3253,14 +3253,13 @@ msgstr ""
 
 #: lib/messages.php:521
 msgid ""
-"The maximum length of text used for the Facebook / Open Graph title value "
-"(the default is %d characters)."
+"The maximum length used for the Facebook / Open Graph title value (the "
+"default is %d characters)."
 msgstr ""
 
 #: lib/messages.php:527
 msgid ""
-"The maximum length of text used for the Facebook / Open Graph description "
-"value."
+"The maximum length used for the Facebook / Open Graph description value."
 msgstr ""
 
 #: lib/messages.php:529 lib/messages.php:1483 lib/messages.php:1587
@@ -4212,8 +4211,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:1481
-msgid ""
-"The maximum length of text used for the Google Search \"description\" value."
+msgid "The maximum length used for the Google Search / SEO description value."
 msgstr ""
 
 #: lib/messages.php:1491
@@ -4319,7 +4317,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:1585
-msgid "The maximum length of text used for the Schema description value."
+msgid "The maximum length used for the Schema description property value."
 msgstr ""
 
 #: lib/messages.php:1673
@@ -4348,7 +4346,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:1685
-msgid "The maximum length of text used for the Twitter Card description value."
+msgid "The maximum length used for the Twitter Card description value."
 msgstr ""
 
 #: lib/messages.php:1711
