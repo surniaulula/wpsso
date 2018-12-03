@@ -308,6 +308,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed the WPSSO IPM Free add-on from showing up on the SSO > Licenses settings page.
 * *Developer Notes*
 	* Added the default language to the list returned by the WordPress get_available_languages() function.
+	* Renamed the 'wpsso_cache_expire_content' filter to 'wpsso_cache_expire_the_content'.
+	* Renamed the 'wpsso_can_filter_content' filter to 'wpsso_can_filter_the_content'.
 	* Renamed the 'wpsso_content_seed' filter to 'wpsso_the_content_seed'.
 	* Renamed the 'wpsso_content' filter to 'wpsso_the_content'.
 
