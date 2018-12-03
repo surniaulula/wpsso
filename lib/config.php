@@ -244,7 +244,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'WPSSO Core add-on to inherit the featured image and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.',
 					'slug'        => 'wpsso-inherit-parent-meta',
 					'base'        => 'wpsso-inherit-parent-meta/wpsso-inherit-parent-meta.php',
-					'update_auth' => 'tid',
+					'update_auth' => '',
 					'img' => array(
 						'banners' => array(
 							'low'  => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-772x250.jpg',
