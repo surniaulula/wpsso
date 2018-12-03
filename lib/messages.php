@@ -518,13 +518,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_title_max_len':	// Maximum Title Length
 
-							$text = sprintf( __( 'The maximum length of text used in the Facebook / Open Graph title tag (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_max_len' ) );
+							$text = sprintf( __( 'The maximum length of text used for the Facebook / Open Graph title value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_max_len' ) );
 
 							break;
 
 						case 'tooltip-og_desc_max_len':	// Maximum Description Length
 
-							$text = __( 'The maximum length of text used in the Facebook / Open Graph description tag.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum length of text used for the Facebook / Open Graph description value.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ],
@@ -719,7 +719,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= __( 'If you use shortcodes in your content text, this option should be enabled &mdash; if you experience webpage layout or performance issues after enabling this option, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ) . ' ';
 							
-							$text .= sprintf( __( 'Advanced users can also hook the "%s" filter and return true / false to enable or disable this feature dynamically.', 'wpsso' ), $this->p->lca . '_can_filter_content' );
+							$text .= sprintf( __( 'Advanced users can also hook the "%s" filter and return true / false to enable or disable this feature dynamically.', 'wpsso' ), $this->p->lca . '_can_filter_the_content' );
 
 							break;
 
@@ -727,7 +727,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'Apply the WordPress \'get_the_excerpt\' filter to the excerpt text (default is unchecked). Enable this option if you use shortcodes in your excerpts, for example.', 'wpsso' ) . ' ';
 							
-							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca . '_filter_excerpt' );
+							$text .= sprintf( __( 'Advanced users can also hook the \'%s\' filter and return true / false to enable / disable this feature.', 'wpsso' ), $this->p->lca . '_can_filter_the_excerpt' );
 
 							break;
 
@@ -1478,7 +1478,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-seo_desc_max_len':	// Search / SEO Description Length
 
-							$text = __( 'The maximum length of text used for the Google Search "description" meta tag.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum length of text used for the Google Search "description" value.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['seo_desc_len'],
@@ -1582,7 +1582,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_desc_max_len':
 
-							$text = __( 'The maximum length of text used for the Google+ / Schema description meta tag.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum length of text used for the Schema description value.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['schema_desc_len'],
@@ -1682,7 +1682,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-tc_desc_max_len':
 
-							$text = __( 'The maximum length of text used for the Twitter Card description.', 'wpsso' ) . ' ';
+							$text = __( 'The maximum length of text used for the Twitter Card description value.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
 								'wpsso' ), $this->p->cf['head']['limit_min']['tc_desc_len'],
@@ -2350,7 +2350,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= __( 'If you use shortcodes in your content text, this option should be enabled &mdash; if you experience webpage layout or performance issues after enabling this option, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' ) . ' ';
 
-						$text .= sprintf( __( 'Advanced users can also hook the "%s" filter and return true / false to enable or disable this feature dynamically.', 'wpsso' ), $this->p->lca . '_can_filter_content' );
+						$text .= sprintf( __( 'Advanced users can also hook the "%s" filter and return true / false to enable or disable this feature dynamically.', 'wpsso' ), $this->p->lca . '_can_filter_the_content' );
 
 						$text .= '</p>';
 

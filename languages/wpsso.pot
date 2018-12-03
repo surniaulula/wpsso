@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.2-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.2-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3253,13 +3253,14 @@ msgstr ""
 
 #: lib/messages.php:521
 msgid ""
-"The maximum length of text used in the Facebook / Open Graph title tag (the "
-"default is %d characters)."
+"The maximum length of text used for the Facebook / Open Graph title value "
+"(the default is %d characters)."
 msgstr ""
 
 #: lib/messages.php:527
 msgid ""
-"The maximum length of text used in the Facebook / Open Graph description tag."
+"The maximum length of text used for the Facebook / Open Graph description "
+"value."
 msgstr ""
 
 #: lib/messages.php:529 lib/messages.php:1483 lib/messages.php:1587
@@ -4212,8 +4213,7 @@ msgstr ""
 
 #: lib/messages.php:1481
 msgid ""
-"The maximum length of text used for the Google Search \"description\" meta "
-"tag."
+"The maximum length of text used for the Google Search \"description\" value."
 msgstr ""
 
 #: lib/messages.php:1491
@@ -4319,9 +4319,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:1585
-msgid ""
-"The maximum length of text used for the Google+ / Schema description meta "
-"tag."
+msgid "The maximum length of text used for the Schema description value."
 msgstr ""
 
 #: lib/messages.php:1673
@@ -4350,7 +4348,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:1685
-msgid "The maximum length of text used for the Twitter Card description."
+msgid "The maximum length of text used for the Twitter Card description value."
 msgstr ""
 
 #: lib/messages.php:1711
@@ -5266,44 +5264,44 @@ msgstr ""
 msgid "Please correct the banner image at %s."
 msgstr ""
 
-#: lib/page.php:332 lib/page.php:334 lib/page.php:608 lib/page.php:610
-#: lib/page.php:684
+#: lib/page.php:337 lib/page.php:339 lib/page.php:614 lib/page.php:616
+#: lib/page.php:690
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:407
+#: lib/page.php:412
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:667
+#: lib/page.php:673
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:674
+#: lib/page.php:680
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:695
+#: lib/page.php:701
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:702
+#: lib/page.php:708
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:706
+#: lib/page.php:712
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:710
+#: lib/page.php:716
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:714
+#: lib/page.php:720
 msgid "Archive Page"
 msgstr ""
 
-#: lib/page.php:752 lib/pro/social/buddypress.php:665
+#: lib/page.php:758 lib/pro/social/buddypress.php:662
 msgid "No Description"
 msgstr ""
 

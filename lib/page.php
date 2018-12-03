@@ -135,9 +135,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				list( $cap_text, $hashtags ) = $this->get_text_and_hashtags( $cap_text, $mod, false );
 
-				if ( $max_len > 0 && ! empty( $hashtags ) ) {
+				if ( $max_len > 0 ) {
 
-					$adj_max_len = $max_len - strlen( $hashtags ) - 1;
+					$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'caption strlen before limit length ' . strlen( $cap_text ) . ' (limiting to ' . $adj_max_len . ' chars)' );
+					}
 
 					$cap_text = $this->p->util->limit_text_length( $cap_text, $adj_max_len, '...', false ) . ' ' . $hashtags;
 				}
@@ -192,7 +196,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						}
 
 						/**
-						 * Reduce the requested $max_len by the title text length we already have.
+						 * Reduce the requested $max_len by the caption length we already have.
 						 */
 						$adj_max_len = $max_len - strlen( $cap_text );
 
@@ -256,10 +260,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$title_text   = false;
-			$hashtags     = '';
 			$paged_suffix = '';
 			$filter_title = empty( $this->p->options['plugin_filter_title'] ) ? false : true;
-			$filter_title = apply_filters( $this->p->lca . '_filter_title', $filter_title, $mod );
+			$filter_title = apply_filters( $this->p->lca . '_can_filter_title', $filter_title, $mod );
 
 			if ( null === $sep ) {
 				$sep = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
@@ -269,9 +272,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Setup filters to save and restore original / pre-filtered title value.
 			 */
 			if ( ! $filter_title ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'protecting filter value for wp_title' );
 				}
+
 				SucomUtil::protect_filter_value( 'wp_title' );
 			}
 
@@ -462,11 +467,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					}
 				}
 
-				if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
-					$max_len = $max_len - strlen( $hashtags ) - 1;
+				$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'title strlen before limit length ' . strlen( $title_text ) . ' (limiting to ' . $adj_max_len . ' chars)' );
 				}
 
-				$title_text = $this->p->util->limit_text_length( $title_text, $max_len, $dots, $cleanup_html = false );
+				$title_text = $this->p->util->limit_text_length( $title_text, $adj_max_len, $dots, $cleanup_html = false );
 			}
 
 			if ( ! empty( $paged_suffix ) ) {
@@ -539,7 +546,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$desc_text = false;
-			$hashtags  = '';
 
 			/**
 			 * Check for custom description if a metadata index key is provided.
@@ -763,25 +769,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $max_len > 0 ) {
 
-				if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
-					$max_len = $max_len - strlen( $hashtags ) - 1;
-				}
+				$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'description strlen before limit length ' . strlen( $desc_text ) . ' (limiting to ' . $max_len . ' chars)' );
+					$this->p->debug->log( 'description strlen before limit length ' . strlen( $desc_text ) . ' (limiting to ' . $adj_max_len . ' chars)' );
 				}
 
-				$desc_text = $this->p->util->limit_text_length( $desc_text, $max_len, $dots, $cleanup_html = false );
+				$desc_text = $this->p->util->limit_text_length( $desc_text, $adj_max_len, $dots, $cleanup_html = false );
 
 			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'skipped the description text length limit' );
+				$this->p->debug->log( 'skipped the description length limit' );
 			}
 
 			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
 				$desc_text .= ' ' . $hashtags;
 			}
 
-			if ( true === $do_encode ) {
+			if ( $do_encode ) {
 				$desc_text = SucomUtil::encode_html_emoji( $desc_text );
 			}
 
@@ -789,13 +793,69 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'before description filter = "' . $desc_text . '"' );
 			}
 
-			$desc_text =  apply_filters( $this->p->lca . '_description', $desc_text, $mod, $add_hashtags, $md_key );
+			$desc_text = apply_filters( $this->p->lca . '_description', $desc_text, $mod, $add_hashtags, $md_key );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark( 'render description' );	// End timer.
 			}
 
 			return $desc_text;
+		}
+
+		public function get_text( $max_len = 0, $dots = '...', $mod = false, $read_cache = true,
+			$add_hashtags = false, $do_encode = true, $md_key = 'schema_text' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * The $mod array argument is preferred but not required.
+			 * $mod = true | false | post_id | $mod array
+			 */
+			if ( ! is_array( $mod ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'optional call to get_page_mod()' );
+				}
+
+				$mod = $this->p->util->get_page_mod( $mod );
+			}
+
+			$text = $this->get_the_text( $mod, $read_cache, $md_key );
+
+			/**
+			 * Check for hashtags in meta or seed text, remove and then add again after shorten.
+			 */
+			list( $text, $hashtags ) = $this->get_text_and_hashtags( $text, $mod, $add_hashtags );
+
+			if ( $max_len > 0 ) {
+
+				$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'text strlen before limit length ' . strlen( $text ) . ' (limiting to ' . $adj_max_len . ' chars)' );
+				}
+
+				$text = $this->p->util->limit_text_length( $text, $adj_max_len, $dots, $cleanup_html = false );
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'skipped the text length limit' );
+			}
+
+			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
+				$text .= ' ' . $hashtags;
+			}
+
+			if ( $do_encode ) {
+				$text = SucomUtil::encode_html_emoji( $text );
+			}
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'before text filter = "' . $text . '"' );
+			}
+
+			return apply_filters( $this->p->lca . '_text', $text, $mod, $add_hashtags, $md_key );
 		}
 
 		public function get_the_excerpt( array $mod ) {
@@ -817,7 +877,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( null === $filter_excerpt ) {
 					$filter_excerpt = empty( $this->p->options['plugin_filter_excerpt'] ) ? false : true;
-					$filter_excerpt = apply_filters( $this->p->lca . '_filter_excerpt', $filter_excerpt, $mod );
+					$filter_excerpt = apply_filters( $this->p->lca . '_can_filter_the_excerpt', $filter_excerpt, $mod );
 				}
 
 				if ( $filter_excerpt ) {
@@ -828,51 +888,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			return $excerpt_text;
-		}
-
-		/**
-		 * Returns the content text, stripped of all HTML tags.
-		 */
-		public function get_the_text( array $mod, $read_cache = true, $md_key = '' ) {
-
-			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
-			}
-
-			$text = '';
-
-			/**
-			 * Check for custom text if a metadata index key is provided.
-			 */
-			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
-
-				$text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
-
-				if ( $this->p->debug->enabled ) {
-					if ( empty( $text ) ) {
-						$this->p->debug->log( 'no custom text found for md_key' );
-					} else {
-						$this->p->debug->log( 'custom text = "' . $text . '"' );
-					}
-				}
-
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'custom text skipped: no md_key value' );
-			}
-
-			/**
-			 * If there's no custom text, then go ahead and generate the text value.
-			 */
-			if ( empty( $text ) ) {
-
-				$text = $this->get_the_content( $mod, $read_cache, $md_key );
-
-				$text = $this->p->util->cleanup_html_tags( $text, true, $this->p->options[ 'plugin_use_img_alt' ] );
-			}
-
-			$text = apply_filters( $this->p->lca . '_text', $text, $mod, $read_cache, $md_key );
-
-			return $text;
 		}
 
 		public function get_the_content( array $mod, $read_cache = true, $md_key = '' ) {
@@ -887,7 +902,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$sharing_url    = $this->p->util->get_sharing_url( $mod );
 			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
-			$filter_content = apply_filters( $this->p->lca . '_can_filter_content', $filter_content, $mod );
+			$filter_content = apply_filters( $this->p->lca . '_can_filter_the_content', $filter_content, $mod );
 
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
 
@@ -951,7 +966,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$cache_array[ $cache_index ] = false;	// Initialize the cache element.
 
 			$content =& $cache_array[ $cache_index ];	// Reference the cache element.
-			$content = apply_filters( $this->p->lca . '_content_seed', '', $mod, $read_cache, $md_key );
+			$content = apply_filters( $this->p->lca . '_the_content_seed', '', $mod, $read_cache, $md_key );
 
 			if ( $content === false ) {
 
@@ -1046,7 +1061,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Apply filters before caching.
 			 */
-			$content = apply_filters( $this->p->lca . '_content', $content, $mod, $read_cache, $md_key );
+			$content = apply_filters( $this->p->lca . '_the_content', $content, $mod, $read_cache, $md_key );
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1060,6 +1075,47 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			return $content;
+		}
+
+		/**
+		 * Returns the content text, stripped of all HTML tags.
+		 */
+		public function get_the_text( array $mod, $read_cache = true, $md_key = '' ) {
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * Check for custom text if a metadata index key is provided.
+			 */
+			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
+
+				$text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+
+				if ( $this->p->debug->enabled ) {
+					if ( empty( $text ) ) {
+						$this->p->debug->log( 'no custom text found for md_key' );
+					} else {
+						$this->p->debug->log( 'custom text = "' . $text . '"' );
+					}
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'custom text skipped: no md_key value' );
+			}
+
+			/**
+			 * If there's no custom text, then go ahead and generate the text value.
+			 */
+			if ( empty( $text ) ) {
+
+				$text = $this->get_the_content( $mod, $read_cache, $md_key );
+
+				$text = $this->p->util->cleanup_html_tags( $text, true, $this->p->options[ 'plugin_use_img_alt' ] );
+			}
+
+			return $text;
 		}
 
 		public function get_article_section( $post_id, $allow_none = false, $use_mod_opts = true ) {
