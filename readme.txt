@@ -305,7 +305,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* None.
 * *Bugfixes*
-	* None.
+	* Fixed the WPSSO IPM Free add-on from showing up on the SSO > Licenses settings page.
 * *Developer Notes*
 	* Added the default language to the list returned by the WordPress get_available_languages() function.
 
