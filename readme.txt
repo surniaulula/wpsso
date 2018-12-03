@@ -298,7 +298,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.2-dev.1 (2018/12/02)**
+**Version 4.17.2-dev.2 (2018/12/03)**
 
 * *New Features*
 	* None.
@@ -308,6 +308,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed the WPSSO IPM Free add-on from showing up on the SSO > Licenses settings page.
 * *Developer Notes*
 	* Added the default language to the list returned by the WordPress get_available_languages() function.
+	* Renamed the 'wpsso_content_seed' filter to 'wpsso_the_content_seed'.
+	* Renamed the 'wpsso_content' filter to 'wpsso_the_content'.
 
 **Version 4.17.1 (2018/11/29)**
 
@@ -348,9 +350,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.17.2-dev.1 =
+= 4.17.2-dev.2 =
 
-(2018/12/02) Added the default language to the list returned by the WordPress get_available_languages() function.
+(2018/12/03) Added the default language to the list returned by the WordPress get_available_languages() function.
 
 = 4.17.1 =
 
