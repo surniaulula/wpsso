@@ -305,8 +305,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* None.
 * *Bugfixes*
-	* Fixed the WPSSO IPM Free add-on from showing up on the SSO > Licenses settings page.
+	* Fixed the WPSSO IPM Free add-on from showing up on the SSO &gt; Licenses settings page.
 * *Developer Notes*
+	* Added a new WpssoPage::get_text() method to return the length adjusted text from Wpsso::get_the_text(). 
 	* Added the default language to the list returned by the WordPress get_available_languages() function.
 	* Renamed the 'wpsso_cache_expire_content' filter to 'wpsso_cache_expire_the_content'.
 	* Renamed the 'wpsso_can_filter_content' filter to 'wpsso_can_filter_the_content'.
@@ -354,7 +355,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.17.2-dev.2 =
 
-(2018/12/03) Added the default language to the list returned by the WordPress get_available_languages() function.
+(2018/12/03) Fixed the WPSSO IPM Free add-on from showing up on the SSO &gt; Licenses settings page. Added a new WpssoPage::get_text() method. Renamed 'wpsso_content' related filters.
 
 = 4.17.1 =
 
