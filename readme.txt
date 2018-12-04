@@ -306,6 +306,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Bugfixes*
 	* Fixed the WPSSO IPM Free add-on from showing up on the SSO &gt; Licenses settings page.
+	* Fixed the 'og:image', 'og:image:url', and 'og:image:secure_url' handling for video preview images.
+	* Fixed a 'og:video:url' and 'og:video:secure_url' URL conflict with text/html video URLs.
 * *Developer Notes*
 	* Refactored the WpssoMeta::get_rows_validate_tab() method used for the Document SSO &gt; Validate tab.
 	* Added a new WpssoPage::get_text() method to return the length adjusted text from Wpsso::get_the_text(). 
