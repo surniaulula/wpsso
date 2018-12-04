@@ -2795,7 +2795,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$default_locale = self::get_locale( 'default' );
 
-			if ( ! in_array( $default_locale, $available_locales ) ) {	// Just in case.
+			if ( ! is_array( $available_locales ) ) {	// Just in case.
+
+				$available_locales = array( $default_locale );
+
+			} elseif ( ! in_array( $default_locale, $available_locales ) ) {	// Just in case.
+
 				$available_locales[] = $default_locale;
 			}
 
@@ -3648,12 +3653,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function esc_url_encode( $url, $wp_esc_url = true ) {
 
-			$url = self::decode_html( $url ); // Just in case.
+			$decoded_url = self::decode_html( $url ); // Just in case - decode HTML entities.
+			$clean_url   = $wp_esc_url ? esc_url_raw( $decoded_url ) : $decoded_url;
+			$encoded_url = urlencode( $clean_url );
 
 			$replace = array( '%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D' );
 			$allowed = array( '!', '*', '\'', '(', ')', ';', ':', '@', '&', '=', '+', '$', ',', '/', '?', '%', '#', '[', ']' );
 
-			return str_replace( $replace, $allowed, urlencode( ( $wp_esc_url ? esc_url_raw( $url ) : $url ) ) );
+			return str_replace( $replace, $allowed, $encoded_url );
 		}
 
 		public static function encode_html_emoji( $html ) {

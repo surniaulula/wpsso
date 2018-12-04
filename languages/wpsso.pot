@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.2-dev.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.17.2-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5048,77 +5048,77 @@ msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/meta.php:429
+#: lib/meta.php:416
 msgctxt "option label"
 msgid "Facebook Open Graph Object Debugger"
 msgstr ""
 
-#: lib/meta.php:431
+#: lib/meta.php:417
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr ""
 
-#: lib/meta.php:437
+#: lib/meta.php:421
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/meta.php:439
+#: lib/meta.php:422
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr ""
 
-#: lib/meta.php:445
+#: lib/meta.php:426
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr ""
 
-#: lib/meta.php:447
+#: lib/meta.php:427
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr ""
 
-#: lib/meta.php:453
+#: lib/meta.php:431
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/meta.php:455
+#: lib/meta.php:432
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr ""
 
-#: lib/meta.php:461
+#: lib/meta.php:436
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/meta.php:463
+#: lib/meta.php:437
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr ""
 
-#: lib/meta.php:469
+#: lib/meta.php:442
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr ""
 
-#: lib/meta.php:471
+#: lib/meta.php:443
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr ""
 
-#: lib/meta.php:478
+#: lib/meta.php:447
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr ""
 
-#: lib/meta.php:480
+#: lib/meta.php:448
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:871
+#: lib/meta.php:855
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 

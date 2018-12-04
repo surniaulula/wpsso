@@ -407,78 +407,62 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$table_rows = array();
-
 			$sharing_url = $this->p->util->get_sharing_url( $mod, false );	// $add_page = false
 
 			$sharing_url_encoded = urlencode( $sharing_url );
 
-			$amp_url = $mod[ 'is_post' ] && function_exists( 'amp_get_permalink' ) ?
-				'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
+			$buttons = array(
+				'facebook' => array(
+					'title' => _x( 'Facebook Open Graph Object Debugger', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Open Graph', 'submit button', 'wpsso' ),
+					'url'   => 'https://developers.facebook.com/tools/debug/og/object?q=' . $sharing_url_encoded,
+				),
+				'linkedin' => array(
+					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Metadata', 'submit button', 'wpsso' ),
+					'url'   => 'https://www.linkedin.com/post-inspector/inspect/' . $sharing_url_encoded,
+				),
+				'google' => array(
+					'title' => _x( 'Google Structured Data Testing Tool', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Structured Data', 'submit button', 'wpsso' ),
+					'url'   => 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_encoded,
+				),
+				'pinterest' => array(
+					'title' => _x( 'Pinterest Rich Pins Validator', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Rich Pins', 'submit button', 'wpsso' ),
+					'url'   => 'https://developers.pinterest.com/tools/url-debugger/?link=' . $sharing_url_encoded,
+				),
+				'twitter' => array(
+					'title' => _x( 'Twitter Card Validator', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Twitter Card', 'submit button', 'wpsso' ),
+					'url'   => 'https://cards-dev.twitter.com/validator',
+					'msg'   => $this->p->msgs->get( 'info-meta-validate-twitter' ) . $form->get_input_copy_clipboard( $sharing_url ),
+				),
+				'w3c' => array(
+					'title' => _x( 'W3C Markup Validation', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate HTML Markup', 'submit button', 'wpsso' ),
+					'url'   => 'https://validator.w3.org/nu/?doc=' . $sharing_url_encoded,
+				),
+				'amp' => array(
+					'title' => $mod[ 'is_post' ] ? _x( 'The AMP Validator', 'option label', 'wpsso' ) : '',
+					'label' => $mod[ 'is_post' ] ? _x( 'Validate AMP Markup', 'submit button', 'wpsso' ) : '',
+					'url'   => $mod[ 'is_post' ] && function_exists( 'amp_get_permalink' ) ?
+						'https://validator.ampproject.org/#url=' . urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '',
+				),
+			);
 
-			$facebook_url  = 'https://developers.facebook.com/tools/debug/og/object?q=' . $sharing_url_encoded;
-			$linkedin_url  = 'https://www.linkedin.com/post-inspector/inspect/' . $sharing_url_encoded;
-			$google_url    = 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_encoded;
-			$pinterest_url = 'https://developers.pinterest.com/tools/url-debugger/?link=' . $sharing_url_encoded;
-			$twitter_url   = 'https://cards-dev.twitter.com/validator';
-			$w3c_url       = 'https://validator.w3.org/nu/?doc=' . $sharing_url_encoded;
+			$table_rows = array();
 
-			/**
-			 * Facebook.
-			 */
-			$table_rows['validate_facebook'] = $form->get_th_html( _x( 'Facebook Open Graph Object Debugger', 'option label', 'wpsso' ), 'medium' ) . 
-			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-facebook' ) . '</td>' . 
-			'<td class="validate">' . $form->get_button( _x( 'Validate Open Graph', 'submit button', 'wpsso' ),
-				'button-secondary', '', $facebook_url, true ) . '</td>';
+			foreach ( $buttons as $key => $btn ) {
 
-			/**
-			 * LinkedIn.
-			 */
-			$table_rows['validate_linkedin'] = $form->get_th_html( _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ), 'medium' ) . 
-			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-linkedin' ) . '</td>' . 
-			'<td class="validate">' . $form->get_button( _x( 'Validate Metadata', 'submit button', 'wpsso' ),
-				'button-secondary', '', $linkedin_url, true ) . '</td>';
+				if ( ! empty( $btn[ 'title' ] ) ) {	// The amp validator title will be empty for non-post objects.
 
-			/**
-			 * Google.
-			 */
-			$table_rows['validate_google'] = $form->get_th_html( _x( 'Google Structured Data Testing Tool', 'option label', 'wpsso' ), 'medium' ) . 
-			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-google' ) . '</td>' . 
-			'<td class="validate">' . $form->get_button( _x( 'Validate Structured Data', 'submit button', 'wpsso' ),
-				'button-secondary', '', $google_url, true ) . '</td>';
-
-			/**
-			 * Pinterest.
-			 */
-			$table_rows['validate_pinterest'] = $form->get_th_html( _x( 'Pinterest Rich Pins Validator', 'option label', 'wpsso' ), 'medium' ) . 
-			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-pinterest' ) . '</td>' . 
-			'<td class="validate">' . $form->get_button( _x( 'Validate Rich Pins', 'submit button', 'wpsso' ),
-				'button-secondary', '', $pinterest_url, true ) . '</td>';
-
-			/**
-			 * Twitter.
-			 */
-			$table_rows['validate_twitter'] = $form->get_th_html( _x( 'Twitter Card Validator', 'option label', 'wpsso' ), 'medium' ) . 
-			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-twitter' ) . $form->get_input_copy_clipboard( $sharing_url ) . '</td>' . 
-			'<td class="validate">' . $form->get_button( _x( 'Validate Twitter Card', 'submit button', 'wpsso' ),
-				'button-secondary', '', $twitter_url, true ) . '</td>';
-
-			/**
-			 * W3C.
-			 */
-			$table_rows['validate_w3c'] = $form->get_th_html( _x( 'W3C Markup Validation', 'option label', 'wpsso' ), 'medium' ) . 
-			'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-w3c' ) . '</td>' . 
-			'<td class="validate">' . $form->get_button( _x( 'Validate HTML Markup', 'submit button', 'wpsso' ),
-				'button-secondary', '', $w3c_url, true ) . '</td>';
-
-			/**
-			 * AMP.
-			 */
-			if ( $mod[ 'is_post' ] ) {
-				$table_rows['validate_amp'] = $form->get_th_html( _x( 'The AMP Validator', 'option label', 'wpsso' ), 'medium' ) . 
-				'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-amp' ) . '</td>' . 
-				'<td class="validate">' . $form->get_button( _x( 'Validate AMP Markup', 'submit button', 'wpsso' ),
-					'button-secondary', '', $amp_url, true, ( $amp_url ? false : true ) ) . '</td>';
+					$table_rows[ 'validate_' . $key ] = $form->get_th_html( $btn[ 'title' ], 'medium' ) . 
+					'<td class="validate">' . ( isset( $btn[ 'msg' ] ) ? $btn[ 'msg' ] :
+						$this->p->msgs->get( 'info-meta-validate-' . $key ) ). '</td>' . 
+					'<td class="validate">' . $form->get_button( $btn[ 'label' ], 'button-secondary', '', $btn[ 'url' ],
+						$newtab = true, ( $btn[ 'url' ] ? false : true ) ) . '</td>';
+				}
 			}
 
 			return $table_rows;
