@@ -265,8 +265,8 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 == Screenshots ==
 
-01. The document SSO metabox provides tabs to customize text, select priority media, preview social shares (shown here), view head markup, and several validation tools.
-02. The essential settings page (shown here) provides a quick and easy setup.
+01. [WordPress v5.0] The document SSO metabox provides tabs to customize text, select priority media, preview social shares (shown here), view head markup, and several validation tools.
+02. [WordPress v5.0] The essential settings page (shown here) provides a quick and easy setup.
 
 == Changelog ==
 
@@ -298,16 +298,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.2-dev.3 (2018/12/04)**
+**Version 4.17.2 (2018/12/05)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* None.
 * *Bugfixes*
-	* Fixed the WPSSO IPM Free add-on from showing up on the SSO &gt; Licenses settings page.
 	* Fixed the 'og:image', 'og:image:url', and 'og:image:secure_url' handling for video preview images.
 	* Fixed a 'og:video:url' and 'og:video:secure_url' URL conflict with text/html video URLs.
+	* Fixed the WPSSO IPM Free add-on from showing up on the SSO &gt; Licenses settings page.
 * *Developer Notes*
 	* Refactored the WpssoMeta::get_rows_validate_tab() method used for the Document SSO &gt; Validate tab.
 	* Added a new WpssoPage::get_text() method to return the length adjusted text from Wpsso::get_the_text(). 
@@ -356,9 +356,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.17.2-dev.3 =
+= 4.17.2 =
 
-(2018/12/04) Fixed the WPSSO IPM Free add-on from showing up on the SSO &gt; Licenses settings page. Added a new WpssoPage::get_text() method. Renamed 'wpsso_content' related filters.
+(2018/12/05) Fixed the meta tags of video preview images. Fixed conflict with text/html video URLs. Renamed 'wpsso_content' related filters.
 
 = 4.17.1 =
 
