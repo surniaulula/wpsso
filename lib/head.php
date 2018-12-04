@@ -842,14 +842,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						}
 
 						$name_url_suffix = str_replace( ':secure_url', ':url', $name );
-						$name_no_suffix  = str_replace( ':url', '', $name );
+						$name_no_suffix  = str_replace( ':secure_url', '', $name );
 
-						
 						$singles[] = array( '', $tag, $type, $name_url_suffix, $attr, $value, $cmt );
 						$singles[] = array( '', $tag, $type, $name_no_suffix, $attr, $value, $cmt );
 					}
 
 					$secure_url = $value;
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log_arr( 'singles', $singles );
+					}
 
 					break;
 
@@ -875,6 +878,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					$secure_url = null;
 
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log_arr( 'singles', $singles );
+					}
+
 					break;
 
 				default:
@@ -883,6 +890,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					break;
 			}
+
 
 			/**
 			 * $parts = array( $html, $tag, $type, $name, $attr, $value, $cmt );

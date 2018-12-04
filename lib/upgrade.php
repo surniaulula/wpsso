@@ -414,7 +414,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					}
 				}
 
-				if ( $prev_version > 0 && $prev_version <= 617 ) {
+				if ( $prev_version > 0 && $prev_version <= 619 ) {
 					foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
 						$opts['add_meta_property_' . $mt_name . ':secure_url'] = 0;
 						$opts['add_meta_property_' . $mt_name . ':url']        = 0;

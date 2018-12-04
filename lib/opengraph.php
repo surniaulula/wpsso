@@ -564,10 +564,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( ! isset( $mt_og['og:video'] ) && $has_pp ) {
 
 				if ( empty( $max_nums['og_vid_max'] ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'videos disabled: maximum videos = 0' );
 					}
+
 				} else {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'getting videos for og:video meta tag' );
 					}
@@ -1046,6 +1049,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 */
 						$og_single_embed = SucomUtil::preg_grep_keys( '/^og:/', $og_single_embed );
 
+						unset( $og_single_embed['og:video:secure_url'] );	// Just in case.
+
 						$og_single_embed['og:video:url']  = $og_single_video['og:video:embed_url'];
 						$og_single_embed['og:video:type'] = 'text/html';
 
@@ -1074,6 +1079,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 				}
 
+error_log( print_r( $og_extend, true ) );
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning ' . count( $og_extend ) . ' videos' );
 				}
