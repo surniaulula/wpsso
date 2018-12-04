@@ -265,7 +265,7 @@ WPSSO Core offers hundreds of filter hooks to customize its behavior and output,
 
 == Screenshots ==
 
-01. The document SSO metabox provides tabs to customize text, select priority media, preview social shares (shown here), view head markup, and validation tools.
+01. The document SSO metabox provides tabs to customize text, select priority media, preview social shares (shown here), view head markup, and several validation tools.
 02. The essential settings page (shown here) provides a quick and easy setup.
 
 == Changelog ==
