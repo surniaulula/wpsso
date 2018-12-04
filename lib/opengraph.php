@@ -1079,7 +1079,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 				}
 
-error_log( print_r( $og_extend, true ) );
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning ' . count( $og_extend ) . ' videos' );
 				}
