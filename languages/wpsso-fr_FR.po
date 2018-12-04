@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.17.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-12-03 10:41-0800\n"
-"PO-Revision-Date: 2018-12-03 11:01-0800\n"
+"POT-Creation-Date: 2018-12-03 11:04-0800\n"
+"PO-Revision-Date: 2018-12-03 11:07-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3025,14 +3025,12 @@ msgid "One or more characters used to separate values (category parent names, pa
 msgstr "Un ou plusieurs caractères utilisés pour séparer les valeurs (noms des parents de la catégorie, numéros de page, etc.) dans la chaîne de titre Facebook / Open Graph (la valeur par défaut est un trait d'union \"%s\")."
 
 #: lib/messages.php:521
-#, fuzzy
-msgid "The maximum length of text used for the Facebook / Open Graph title value (the default is %d characters)."
-msgstr "La longueur maximale du texte utilisé dans la balise de titre Facebook / Open Graph (la valeur par défaut est %d caractères)."
+msgid "The maximum length used for the Facebook / Open Graph title value (the default is %d characters)."
+msgstr "La longueur maximale utilisée pour la valeur du titre Facebook / Open Graph (la valeur par défaut est %d caractères)."
 
 #: lib/messages.php:527
-#, fuzzy
-msgid "The maximum length of text used for the Facebook / Open Graph description value."
-msgstr "La longueur maximale du texte utilisé dans la balise de description Facebook / Open Graph."
+msgid "The maximum length used for the Facebook / Open Graph description value."
+msgstr "La longueur maximale utilisée pour la valeur de description Facebook / Open Graph."
 
 #: lib/messages.php:529 lib/messages.php:1483 lib/messages.php:1587
 #: lib/messages.php:1687
@@ -3720,9 +3718,8 @@ msgid "The Google+ Business Page URL will be used in a link relation head tag an
 msgstr "L'URL de la page d'affaire Google+ sera utilisée dans une balise d'entête de relation de lien et dans le balisage Schéma Organization du site Web."
 
 #: lib/messages.php:1481
-#, fuzzy
-msgid "The maximum length of text used for the Google Search \"description\" value."
-msgstr "La longueur maximale du texte utilisé pour la balise méta Google Search \"description\"."
+msgid "The maximum length used for the Google Search / SEO description value."
+msgstr "La longueur maximale utilisée pour la valeur de description de Google Search / SEO."
 
 #: lib/messages.php:1491
 msgid "Select a name format for author meta tags and/or Schema Person markup."
@@ -3799,9 +3796,8 @@ msgid "If you choose not to crop this image size, make sure the height value is 
 msgstr "Si vous choisissez de ne pas recadrer cette taille d'image, assurez-vous que la valeur de hauteur est suffisante pour les images portraits / verticales."
 
 #: lib/messages.php:1585
-#, fuzzy
-msgid "The maximum length of text used for the Schema description value."
-msgstr "La longueur maximale du texte utilisé pour la balise méta de description Google+ / Schema."
+msgid "The maximum length used for the Schema description property value."
+msgstr "La longueur maximale utilisée pour la valeur de la propriété Schéma description."
 
 #: lib/messages.php:1673
 msgid "The <a href=\"%1$s\">Twitter @username for your website and/or business</a> (not your personal Twitter @username)."
@@ -3824,9 +3820,8 @@ msgid "The Twitter @username for your website and/or business will be used in th
 msgstr "Le nom d'@usager Twitter de votre site Web et/ou d'entreprise sera utilisé dans le balisage Schéma Organization du site Web."
 
 #: lib/messages.php:1685
-#, fuzzy
-msgid "The maximum length of text used for the Twitter Card description value."
-msgstr "La longueur maximale du texte utilisé pour la description de la carte Twitter."
+msgid "The maximum length used for the Twitter Card description value."
+msgstr "La longueur maximale utilisée pour la valeur de description de la carte Twitter."
 
 #: lib/messages.php:1711
 msgid "The image dimensions used for the <a href=\"%1$s\">Summary Card</a> (should be at least %2$s and less than %3$s)."

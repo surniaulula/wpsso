@@ -1556,12 +1556,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$js_if_same  = 'if (this.value == \'' . esc_js( $placeholder ) . '\') this.value = \'\';';
 
 			$html = ' placeholder="' . esc_attr( $placeholder ) . '"' .
+				' onClick="' . $js_if_empty . '"' .
 				' onFocus="' . $js_if_empty . '"' .
 				' onBlur="' . $js_if_same . '"';
 
 			if ( $type === 'input' ) {
-				$html .= ' onKeyPress="if (event.keyCode === 13){ ' . $js_if_same . ' }"';
+				$html .= ' onKeyPress="if ( event.keyCode === 13 ) { ' . $js_if_same . ' }"';
 			} elseif ( $type === 'textarea' ) {
+				$html .= ' onMouseOver="' . $js_if_empty . '"';
 				$html .= ' onMouseOut="' . $js_if_same . '"';
 			}
 
