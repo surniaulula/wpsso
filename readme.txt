@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 5.0
 WC Tested Up To: 3.5
-Stable Tag: 4.17.2
+Stable Tag: 4.17.3
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how it's crawled, shared, re-shared, posted or embedded!
 
@@ -298,13 +298,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.2 (2018/12/05)**
+**Version 4.17.3 (2018/12/05)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* None.
 * *Bugfixes*
+	* Fixed form select 'on_change_unhide_rows' event for option integer values.
 	* Fixed the 'og:image', 'og:image:url', and 'og:image:secure_url' handling for video preview images.
 	* Fixed a 'og:video:url' and 'og:video:secure_url' URL conflict with text/html video URLs.
 	* Fixed the WPSSO IPM Free add-on from showing up on the SSO &gt; Licenses settings page.
@@ -317,50 +318,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the 'wpsso_content_seed' filter to 'wpsso_the_content_seed'.
 	* Renamed the 'wpsso_content' filter to 'wpsso_the_content'.
 
-**Version 4.17.1 (2018/11/29)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* None.
-* *Bugfixes*
-	* Fixed numeric sorting of multi-options (recipe ingredients, instructions, etc).
-* *Developer Notes*
-	* Refactored metabox container refresh for WordPress v5.0 to allow updating multiple container IDs.
-
-**Version 4.17.0 (2018/11/25)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Added a button under the Document SSO &gt; Validate tab for the LinkedIn Post Inspector.
-	* Added a check for the database 'max_allowed_packet' option value, along with an error notice if the value is less than 1MB.
-	* Updated the help text and translation strings for the "SSO WebSite Pages" settings page options.
-* *Bugfixes*
-	* Fixed option value sanitation for the number of hashtags added to caption text.
-* *Developer Notes*
-	* Added a new SucomUtil::array_to_keywords() method.
-	* Added a new WpssoPage::get_text_and_hashtags() method to extract / add hashtags to titles, descriptions, and captions.
-	* Added a new WpssoPage::get_keywords() method.
-	* Removed the WpssoPage::get_wp_tags() method.
-	* Removed the following filters:
-		* 'wpsso_wp_tags_seed'
-		* 'wpsso_wp_tags'
-	* Renamed the WpssoPage::get_tags() method to get_tag_names().
-	* Renamed the following filters:
-		* 'wpsso_tags_seed' to 'wpsso_tag_names_seed'
-		* 'wpsso_tags' to 'wpsso_tag_names'
-	* Changed the WpssoPage::get_hashtags() method argument from $post_id to $mod.
-	* Changed the WpssoPage::get_tag_names() method argument from $post_id to $mod.
-	* Changed the 'wpsso_hashtags_seed', 'wpsso_hashtags', 'wpsso_tag_names_seed' and 'wpsso_tag_names' filters $post_id argument to $mod.
-
 == Upgrade Notice ==
 
-= 4.17.2 =
+= 4.17.3 =
 
-(2018/12/05) Fixed the meta tags of video preview images. Fixed conflict with text/html video URLs. Renamed 'wpsso_content' related filters.
-
-= 4.17.1 =
-
-(2018/11/29) Fixed numeric sorting of multi-options. Refactored metabox container refresh for WordPress v5.0.
+(2018/12/05) Fixed the meta tags of video preview images. Fixed conflict with text/html video URLs. Fixed form select 'on_change_unhide_rows' event. Renamed 'wpsso_content' related filters.
 
