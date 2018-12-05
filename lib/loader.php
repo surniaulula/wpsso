@@ -63,9 +63,11 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 					$this->p->check->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? 'pro' : 'gpl';
 
 				if ( ! isset( $info[ 'lib' ][$type] ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $ext . ' lib/' . $type . ' not defined' );
 					}
+
 					continue;
 				}
 
@@ -74,15 +76,21 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 					$log_prefix = 'loading ' . $ext . ' ' . $type . '/' . $sub . ': ';
 
 					if ( $sub === 'admin' ) {
+
 						if ( ! is_admin() ) {	// load admin sub-folder only in back-end
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( $log_prefix . 'ignored - not in admin back-end' );
 							}
+
 							continue;
-						} elseif ( $type === 'gpl' && ! empty( $this->p->options['plugin_hide_pro'] ) ) {
+
+						} elseif ( $type === 'gpl' && ! empty( $this->p->options[ 'plugin_hide_pro' ] ) ) {
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( $log_prefix . 'ignored - pro features hidden' );
 							}
+
 							continue;
 						}
 					}

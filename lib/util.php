@@ -3280,7 +3280,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( $count_rows === 0 ) {
-				$table_rows[] = '<tr><td align="center"><p><em>' . __( 'No options available.', 'wpsso' ) . '</em></p></td></tr>';
+				
+				if ( ! $this->p->check->pp( $this->p->lca, true, $this->p->avail[ '*' ][ 'p_dir' ] ) ) {
+					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings',
+						__( 'Have you hidden Pro version options?', 'wpsso' ) );
+				} else {
+					$settings_page_link = '';
+				}
+
+				$table_rows[] = '<tr><td align="center"><p><em>' . __( 'No options available.', 'wpsso' ) . ' ' .
+					$settings_page_link . '</em></p></td></tr>';
+
 				$count_rows++;
 			}
 

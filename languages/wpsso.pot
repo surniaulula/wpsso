@@ -2774,12 +2774,12 @@ msgid "adding schema json-ld markup"
 msgstr ""
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
-#: lib/loader.php:155
+#: lib/loader.php:163
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr ""
 
 #. translators: %s is the PHP library class name
-#: lib/loader.php:160
+#: lib/loader.php:168
 msgid "Library class \"%s\" is missing."
 msgstr ""
 
@@ -2788,24 +2788,24 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:164 lib/loader.php:190 lib/post.php:272 lib/register.php:279
+#: lib/loader.php:172 lib/loader.php:198 lib/post.php:272 lib/register.php:279
 #: lib/term.php:252 lib/user.php:219 lib/util.php:371 lib/util.php:3007
 msgid "%s warning:"
 msgstr ""
 
-#: lib/loader.php:175
+#: lib/loader.php:183
 msgid ""
 "The installed plugin is incomplete or the web server cannot access the "
 "library file."
 msgstr ""
 
 #. translators: %1$s is the short plugin name, %2$s is the PHP library path
-#: lib/loader.php:181
+#: lib/loader.php:189
 msgid "%1$s library class name for \"%2$s\" is not available."
 msgstr ""
 
 #. translators: %s is the PHP library path
-#: lib/loader.php:186
+#: lib/loader.php:194
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 
@@ -3399,7 +3399,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:682 lib/util.php:3283
+#: lib/messages.php:682 lib/util.php:3291
 msgid "No options available."
 msgstr ""
 
@@ -6249,22 +6249,26 @@ msgid ""
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3311
+#: lib/util.php:3286
+msgid "Have you hidden Pro version options?"
+msgstr ""
+
+#: lib/util.php:3321
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3314
+#: lib/util.php:3324
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3319
+#: lib/util.php:3329
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3322
+#: lib/util.php:3332
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

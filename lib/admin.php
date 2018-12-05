@@ -3533,9 +3533,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			'</td>' .
 			self::get_option_site_use( 'plugin_debug', $this->form, $network, true );
 
-			if ( $network || ! $this->p->check->pp( $this->p->lca, true, $this->p->avail[ '*' ][ 'p_dir' ] ) ) {
+			if ( $network || ! $this->p->check->pp( $this->p->lca, false, $this->p->avail[ '*' ][ 'p_dir' ] ) ) {
 
-				$table_rows['plugin_hide_pro'] = $this->form->get_tr_hide( 'basic', 'plugin_hide_pro' ) .
+				$table_rows[ 'plugin_hide_pro' ] = '' .
 				$this->form->get_th_html( _x( 'Hide All Pro Version Options', 'option label', 'wpsso' ), '', 'plugin_hide_pro' ) .
 				'<td>' . $this->form->get_checkbox( 'plugin_hide_pro' ) . '</td>' .
 				self::get_option_site_use( 'plugin_show_opts', $this->form, $network, true );
