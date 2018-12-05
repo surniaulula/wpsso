@@ -381,7 +381,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				switch ( $event_name ) {
 
 					case 'on_change_redirect':
-					case 'redirect':		// Deprecated on 2018/10/29.
 
 						$redirect_url = add_query_arg( array( $name => '%%' . $name . '%%' ),
 							SucomUtil::get_prot() . '://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] );
@@ -394,7 +393,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						break;
 
 					case 'on_show_unhide_rows':
-					case 'unhide_rows_on_show':	// Deprecated on 2018/10/29.
 
 						static $show_hide_event_added = null;
 
@@ -422,7 +420,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						// No break.
 
 					case 'on_change_unhide_rows':
-					case 'unhide_rows':		// Deprecated on 2018/10/29.
 
 						$html .= "\n" . '<script type="text/javascript">' .
 							'jQuery( function(){ jQuery( "#' . esc_js( $input_id ) . '" ).change( function(){ ' . 
@@ -434,19 +431,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 						 */
 						if ( false !== $selected ) {
 
+							$unhide_value = false;
+
 							if ( true === $selected ) {
+
 								if ( $in_options ) {
 									$unhide_value = $this->options[ $name ];
 								} elseif ( $in_defaults ) {
 									$unhide_value = $this->defaults[ $name ];
-								} else {
-									$unhide_value = false;
 								}
+
 							} else {
 								$unhide_value = $selected;
 							}
 
-							if ( $unhide_value && is_string( $unhide_value ) ) {	// Just in case.
+							if ( false !== $unhide_value ) {	// Just in case.
 
 								if ( $event_name === 'on_show_unhide_rows' ) {
 
