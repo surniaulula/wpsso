@@ -3283,7 +3283,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				
 				if ( ! $this->p->check->pp( $this->p->lca, true, $this->p->avail[ '*' ][ 'p_dir' ] ) ) {
 					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings',
-						__( 'Have you hidden Pro version options?', 'wpsso' ) );
+						__( 'Have you hidden the Pro options?', 'wpsso' ) );
 				} else {
 					$settings_page_link = '';
 				}

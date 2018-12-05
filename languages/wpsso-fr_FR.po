@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.17.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-12-05 06:07-0800\n"
-"PO-Revision-Date: 2018-12-05 06:07-0800\n"
+"POT-Creation-Date: 2018-12-05 08:43-0800\n"
+"PO-Revision-Date: 2018-12-05 08:45-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2663,12 +2663,12 @@ msgid "adding schema json-ld markup"
 msgstr "ajout de balisage schéma json-ld"
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
-#: lib/loader.php:155
+#: lib/loader.php:163
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr "Erreur lors du chargement de %1$s: La classe de bibliothèque \"%2$s\" est manquante."
 
 #. translators: %s is the PHP library class name
-#: lib/loader.php:160
+#: lib/loader.php:168
 msgid "Library class \"%s\" is missing."
 msgstr "Classe de  bibliothèque \"%s\" manquante."
 
@@ -2677,22 +2677,22 @@ msgstr "Classe de  bibliothèque \"%s\" manquante."
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
-#: lib/loader.php:164 lib/loader.php:190 lib/post.php:272 lib/register.php:279
+#: lib/loader.php:172 lib/loader.php:198 lib/post.php:272 lib/register.php:279
 #: lib/term.php:252 lib/user.php:219 lib/util.php:371 lib/util.php:3007
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/loader.php:175
+#: lib/loader.php:183
 msgid "The installed plugin is incomplete or the web server cannot access the library file."
 msgstr "Le plugin installé est incomplet ou le serveur Web ne peut pas accéder au fichier de bibliothèque."
 
 #. translators: %1$s is the short plugin name, %2$s is the PHP library path
-#: lib/loader.php:181
+#: lib/loader.php:189
 msgid "%1$s library class name for \"%2$s\" is not available."
 msgstr "Le nom de classe de bibliothèque %1$s pour \"%2$s\" n'est pas disponible."
 
 #. translators: %s is the PHP library path
-#: lib/loader.php:186
+#: lib/loader.php:194
 msgid "Library class name for \"%s\" is not available."
 msgstr "Le nom de classe de bibliothèque pour \"%s\" n'est pas disponible."
 
@@ -3125,7 +3125,7 @@ msgstr "Masquer la pré-visualisation des réglages de la version Pro dans les p
 msgid "Please note that some metaboxes and tabs may be empty - showing only a \"<em>%s</em>\" message - after enabling this option."
 msgstr "SVP prendre note que certains métabox et onglets peuvent être vides - ne montrant qu'un message \"<em>%s</em>\" - après avoir activé cette option."
 
-#: lib/messages.php:682 lib/util.php:3283
+#: lib/messages.php:682 lib/util.php:3291
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -5438,22 +5438,26 @@ msgstr "Crochet(s) de filtre lent détecté &mdash le filtre WordPress %1$s a pr
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3311
+#: lib/util.php:3286
+msgid "Have you hidden the Pro options?"
+msgstr "Avez-vous masqué les options Pro?"
+
+#: lib/util.php:3321
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:3314
+#: lib/util.php:3324
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr "afficher ces options"
 
-#: lib/util.php:3319
+#: lib/util.php:3329
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util.php:3322
+#: lib/util.php:3332
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"

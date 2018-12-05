@@ -6250,7 +6250,7 @@ msgid ""
 msgstr ""
 
 #: lib/util.php:3286
-msgid "Have you hidden Pro version options?"
+msgid "Have you hidden the Pro options?"
 msgstr ""
 
 #: lib/util.php:3321
