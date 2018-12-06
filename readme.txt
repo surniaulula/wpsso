@@ -298,6 +298,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.17.3.1 (2018/12/06)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Update to avoid a known bug in the WordPress v5.0 `use_block_editor_for_post()` function that hangs the browser ([core trac ticket ID #45253](https://core.trac.wordpress.org/ticket/45253)).
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.17.3 (2018/12/05)**
 
 * *New Features*
@@ -319,6 +330,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the 'wpsso_content' filter to 'wpsso_the_content'.
 
 == Upgrade Notice ==
+
+= 4.17.3.1 =
+
+(2018/12/06) Update to avoid a known bug in WordPress v5.0 that hangs the browser (core trac ticket ID #45253).
 
 = 4.17.3 =
 
