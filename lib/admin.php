@@ -443,7 +443,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$page_title = self::$pkg[$this->p->lca][ 'short' ] . ' &mdash; ' . $this->menu_name;
 			$menu_title = _x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' ) . ' ' . self::$pkg[$this->p->lca][ 'type' ]; // Pre-translated.
-			$cap_name   = isset( $this->p->cf[ 'wp' ][ 'admin' ][ $this->menu_lib ][ 'cap' ] ) ?
+			$cap_name   = isset( $this->p->cf[ 'wp' ][ 'admin' ][ $this->menu_lib ][ 'cap' ] ) ?	// Just in case.
 				$this->p->cf[ 'wp' ][ 'admin' ][ $this->menu_lib ][ 'cap' ] : 'manage_options';
 			$icon_url   = null;	// Icon is provided by WpssoStyle::add_admin_page_style(). 
 			$function   = array( $this, 'show_setting_page' );
@@ -504,7 +504,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 	
 			$page_title = self::$pkg[$menu_ext][ 'short' ] . ' &mdash; ' . $menu_name;
-			$cap_name   = isset( $this->p->cf[ 'wp' ][ 'admin' ][ $menu_lib ][ 'cap' ] ) ?
+			$cap_name   = isset( $this->p->cf[ 'wp' ][ 'admin' ][ $menu_lib ][ 'cap' ] ) ?	// Just in case.
 				$this->p->cf[ 'wp' ][ 'admin' ][ $menu_lib ][ 'cap' ] : 'manage_options';
 			$menu_slug  = $this->p->lca . '-' . $menu_id;
 			$function   = array( $this, 'show_setting_page' );
@@ -1194,7 +1194,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Match WordPress behavior (users page for admins, profile page for everyone else).
 				 */
 				$menu_lib      = current_user_can( 'list_users' ) ? 'users' : 'profile';
-				$parent_slug   = $this->p->cf['wp']['admin'][$menu_lib]['page'];
+				$parent_slug   = $this->p->cf['wp'][ 'admin' ][ $menu_lib ][ 'page' ];
 				$referer_match = '/' . $parent_slug . '?page=' . $this->p->lca . '-';
 
 				parse_str( parse_url( $url, PHP_URL_QUERY ), $parts );
@@ -3279,7 +3279,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $have_changes ) {
 
 				$notice_key  = 'notice-header-tmpl-no-head-attr-' . SucomUtil::get_theme_slug_version();
-				$admin_roles = $this->p->cf['wp']['roles']['admin'];
+				$admin_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'admin' ];
 				$user_ids    = SucomUtil::get_user_ids_by_roles( $admin_roles );
 
 				$this->p->notice->clear_key( $notice_key, $user_ids );	// Just in case.
