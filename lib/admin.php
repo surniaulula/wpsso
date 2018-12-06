@@ -2174,6 +2174,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function add_admin_tb_notices_menu_item( $wp_admin_bar ) {
 
+			if ( ! current_user_can( 'edit_posts' ) ) {
+				return;
+			}
+
 			$menu_icon  = '<span class="ab-icon" id="' . $this->p->lca . '-toolbar-notices-icon"></span>';
 			$menu_count = '<span id="' . $this->p->lca . '-toolbar-notices-count">0</span>';
 
@@ -2859,12 +2863,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * otherwise only show on the dashboard and settings pages.
 			 */
 			if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
+
 				$this->maybe_show_timed_notices();
+
 			} else {
+
 				switch ( $screen_id ) {
+
 					case 'dashboard':
+
 					case ( false !== strpos( $screen_id, '_page_' . $this->p->lca . '-' ) ? true : false ):
+
 						$this->maybe_show_timed_notices();
+
 						break;
 				}
 			}
