@@ -1202,25 +1202,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( $post_type ) {
 
-					/**
-					 * Calling use_block_editor_for_post() in WordPress v5.0 crashes the browser.
-					 */
-					global $wp_version;
+					if ( function_exists( 'use_block_editor_for_post' ) ) {
 
-					if ( version_compare( $wp_version, '5.0-RC3', '<' ) ) {
+						/**
+						 * Calling use_block_editor_for_post() in WordPress v5.0 during post save crashes
+						 * the web browser. See https://core.trac.wordpress.org/ticket/45253 for details.
+						 */
+						global $wp_version;
 
-						if ( function_exists( 'use_block_editor_for_post' ) ) {
-							if ( use_block_editor_for_post( $post_id ) ) {
-								$can_edit_id = true;
-							}
-						} elseif ( function_exists( 'gutenberg_can_edit_post' ) ) {
-							if ( gutenberg_can_edit_post( $post_id ) ) {
-								$can_edit_id = true;
-							}
+						if ( version_compare( $wp_version, '5.0', '>=' ) ) {
+							$can_edit_id = true;
+						} elseif ( use_block_editor_for_post( $post_id ) ) {
+							$can_edit_id = true;
 						}
 
-					} else {
-						$can_edit_id = true;
+					} elseif ( function_exists( 'gutenberg_can_edit_post' ) ) {
+						if ( gutenberg_can_edit_post( $post_id ) ) {
+							$can_edit_id = true;
+						}
 					}
 		
 					if ( function_exists( 'use_block_editor_for_post_type' ) ) {
