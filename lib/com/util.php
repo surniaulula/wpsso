@@ -1570,11 +1570,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( false !== $plugin_base ) {
 
-				if ( isset( $local_cache[$plugin_base] ) ) {
-					return $local_cache[$plugin_base];
+				if ( isset( $local_cache[ $plugin_base ] ) ) {
+					return $local_cache[ $plugin_base ];
 				}
 
-				return $local_cache[$plugin_base] = false;
+				return $local_cache[ $plugin_base ] = false;
 			}
 
 			return $local_cache;
@@ -1625,7 +1625,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$active_plugins = get_option( 'active_plugins', array() );
 
-			if ( empty( $active_plugins[$plugin_base] ) ) {
+			if ( empty( $active_plugins[ $plugin_base ] ) ) {
 
 				if ( ! $silent ) {
 					do_action( 'activate_plugin', $plugin_base );
@@ -1661,46 +1661,46 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			static $local_cache = array();
 
-			if ( $use_cache && isset( $local_cache[$plugin_base] ) ) {
-				return $local_cache[$plugin_base];
-			} elseif ( empty( $plugin_base ) ) { // Just in case.
-				return $local_cache[$plugin_base] = false;
-			} elseif ( validate_file( $plugin_base ) > 0 ) { // Contains invalid characters.
-				return $local_cache[$plugin_base] = false;
+			if ( $use_cache && isset( $local_cache[ $plugin_base ] ) ) {
+				return $local_cache[ $plugin_base ];
+			} elseif ( empty( $plugin_base ) ) { 				// Just in case.
+				return $local_cache[ $plugin_base ] = false;
+			} elseif ( validate_file( $plugin_base ) > 0 ) {		// Contains invalid characters.
+				return $local_cache[ $plugin_base ] = false;
 			} elseif ( ! is_file( WP_PLUGIN_DIR . '/' . $plugin_base ) ) { // Check existence of plugin folder.
-				return $local_cache[$plugin_base] = false;
+				return $local_cache[ $plugin_base ] = false;
 			}
 
 			$plugins = self::get_wp_plugins();
 
-			if ( ! isset( $plugins[$plugin_base] ) ) { // Check for a valid plugin header.
-				return $local_cache[$plugin_base] = false;
+			if ( ! isset( $plugins[ $plugin_base ] ) ) {			// Check for a valid plugin header.
+				return $local_cache[ $plugin_base ] = false;
 			}
 
-			return $local_cache[$plugin_base] = true;
+			return $local_cache[ $plugin_base ] = true;
 		}
 
 		public static function plugin_has_update( $plugin_base ) {
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[$plugin_base] ) ) {
-				return $local_cache[$plugin_base];
-			} elseif ( empty( $plugin_base ) ) { // Just in case.
-				return $local_cache[$plugin_base] = false;
+			if ( isset( $local_cache[ $plugin_base ] ) ) {
+				return $local_cache[ $plugin_base ];
+			} elseif ( empty( $plugin_base ) ) { 				// Just in case.
+				return $local_cache[ $plugin_base ] = false;
 			} elseif ( ! SucomUtil::plugin_is_installed( $plugin_base ) ) { // Call with class to use common cache.
-				return $local_cache[$plugin_base] = false;
+				return $local_cache[ $plugin_base ] = false;
 			}
 
 			$update_plugins = get_site_transient( 'update_plugins' );
 
 			if ( isset( $update_plugins->response ) && is_array( $update_plugins->response ) ) {
-				if ( isset( $update_plugins->response[$plugin_base] ) ) {
-					return $local_cache[$plugin_base] = true;
+				if ( isset( $update_plugins->response[ $plugin_base ] ) ) {
+					return $local_cache[ $plugin_base ] = true;
 				}
 			}
 
-			return $local_cache[$plugin_base] = false;
+			return $local_cache[ $plugin_base ] = false;
 		}
 
 		public static function get_slug_info( $plugin_slug, $plugin_fields = array(), $unfiltered = true ) {
@@ -1708,22 +1708,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			static $local_cache = array();
 
 			$plugin_fields = array_merge( array(
-				'active_installs'   => true, // Get by default.
+				'active_installs'   => true,	// Get by default.
 				'added'             => false,
 				'banners'           => false,
 				'compatibility'     => false,
 				'contributors'      => false,
 				'description'       => false,
 				'donate_link'       => false,
-				'downloadlink'      => true, // Get by default.
+				'downloadlink'      => true,	// Get by default.
 				'group'             => false,
 				'homepage'          => false,
 				'icons'             => false,
 				'last_updated'      => false,
 				'sections'          => false,
 				'short_description' => false,
-				'rating'            => true, // Get by default.
-				'ratings'           => true, // Get by default.
+				'rating'            => true,	// Get by default.
+				'ratings'           => true,	// Get by default.
 				'requires'          => false,
 				'reviews'           => false,
 				'tags'              => false,

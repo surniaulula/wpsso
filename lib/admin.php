@@ -1106,11 +1106,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_meta_boxes() {
-			// method is extended by each submenu page
+			// Method is extended by each submenu page.
 		}
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {
-			// method is extended by each submenu page
+			// Method is extended by each submenu page.
 		}
 
 		/**
