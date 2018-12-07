@@ -1069,8 +1069,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_filter( 'update_footer', array( $this, 'admin_footer_ext_gen' ) );
 		}
 
+		/**
+		 * This method is extended by each submenu page.
+		 */
 		protected function add_plugin_hooks() {
-			// method is extended by each submenu page
 		}
 
 		protected function add_side_meta_boxes() {
@@ -1105,12 +1107,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
+		/**
+		 * This method is extended by each submenu page.
+		 */
 		protected function add_meta_boxes() {
-			// Method is extended by each submenu page.
 		}
 
+		/**
+		 * This method is extended by each submenu page.
+		 */
 		protected function get_table_rows( $metabox_id, $tab_key ) {
-			// Method is extended by each submenu page.
 		}
 
 		/**
