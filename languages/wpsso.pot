@@ -6307,7 +6307,7 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "WPSSO Core makes sure your content looks great on all social and search "
-"sites - no matter how it\\'s crawled, shared, re-shared, posted, or embedded!"
+"sites - no matter how it's crawled, shared, re-shared, posted, or embedded!"
 msgstr ""
 
 #. Author of the plugin/theme
