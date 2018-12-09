@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 5.0
 WC Tested Up To: 3.5
-Stable Tag: 4.17.3
+Stable Tag: 4.17.3.1
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how it's crawled, shared, re-shared, posted or embedded!
 
@@ -298,6 +298,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.17.4-dev.1 (2018/12/09)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.17.3.1 (2018/12/06)**
 
 * *New Features*
@@ -330,6 +341,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the 'wpsso_content' filter to 'wpsso_the_content'.
 
 == Upgrade Notice ==
+
+= 4.17.4-dev.1 =
+
+(2018/12/09) None.
 
 = 4.17.3.1 =
 
