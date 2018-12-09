@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.17.3.1',	// Plugin version.
+					'version'     => '4.17.4-dev.1',	// Plugin version.
 					'opt_version' => '619',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -2177,7 +2177,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'schema_type' => array(	// Element of 'head' array.
 					'thing' => array(	// Most generic type.
 						'creative.work' => array(	// Creative work, including books, movies, photographs, software programs, etc.
-							'answer'  => 'https://pending.schema.org/Answer',
+							'answer'  => 'https://schema.org/Answer',
 							'article' => array(
 								'article'              => 'https://schema.org/Article',
 								'article.news'         => 'https://schema.org/NewsArticle',
@@ -2235,7 +2235,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'photograph'         => 'https://schema.org/Photograph',
 							'publication.issue'  => 'https://schema.org/PublicationIssue',
 							'publication.volume' => 'https://schema.org/PublicationVolume',
-							'question'           => 'https://pending.schema.org/Question',
+							'question'           => 'https://schema.org/Question',
 							'review'             => array(
 								'review'       => 'https://schema.org/Review',
 								'review.claim' => 'https://schema.org/ClaimReview',
@@ -2713,9 +2713,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'schema_url_fix' => array(	// Element of 'head' array.
-					'https://schema.org/Answer'   => 'https://pending.schema.org/Answer',
 					'https://schema.org/FAQPage'  => 'https://pending.schema.org/FAQPage',
-					'https://schema.org/Question' => 'https://pending.schema.org/Question',
 				),
 				'schema_renamed' => array(	// Element of 'head' array.
 					'anesthesia'           => 'anesthesia.specialty',
