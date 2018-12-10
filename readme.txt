@@ -298,7 +298,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.17.4-dev.1 (2018/12/09)**
+**Version 4.17.4-dev.2 (2018/12/10)**
 
 * *New Features*
 	* None.
@@ -342,15 +342,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.17.4-dev.1 =
+= 4.17.4-dev.2 =
 
-(2018/12/09) None.
+(2018/12/10) None.
 
 = 4.17.3.1 =
 
 (2018/12/06) Update to avoid a known bug in WordPress v5.0 that hangs the browser (core trac ticket ID #45253).
-
-= 4.17.3 =
-
-(2018/12/05) Fixed the meta tags of video preview images. Fixed conflict with text/html video URLs. Fixed form select 'on_change_unhide_rows' event. Renamed 'wpsso_content' related filters.
 
