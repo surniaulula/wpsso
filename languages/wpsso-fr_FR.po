@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 4.17.3.1\n"
+"Project-Id-Version: WPSSO Core 4.17.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-12-07 09:06-0800\n"
-"PO-Revision-Date: 2018-12-07 09:07-0800\n"
+"POT-Creation-Date: 2018-12-10 07:14-0800\n"
+"PO-Revision-Date: 2018-12-10 07:14-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1061,11 +1061,11 @@ msgstr "modifier"
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#: lib/com/util.php:1775
+#: lib/com/util.php:1774
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr "Les informations pour l'extension \"%s\" contiennent un lien de téléchargement invalide."
 
-#: lib/com/util.php:1786
+#: lib/com/util.php:1785
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr "L'information pour l'extension \"%s\" ne contient pas de lien de téléchargement."
 
@@ -4902,28 +4902,28 @@ msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé.
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
-#: lib/schema.php:61 lib/schema.php:66
+#: lib/schema.php:63 lib/schema.php:68
 msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr "Image Google / Schéma"
 
-#: lib/schema.php:2520 lib/schema.php:2526
+#: lib/schema.php:2535 lib/schema.php:2541
 msgid "adding schema for %1$s ID %2$s"
 msgstr "ajout de schéma pour %1$s ID %2$s"
 
-#: lib/schema.php:3155
+#: lib/schema.php:3170
 msgid "adding schema for organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema.php:3197
+#: lib/schema.php:3212
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:3204
+#: lib/schema.php:3219
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:3480
+#: lib/schema.php:3495
 msgid "adding schema for place"
 msgstr "ajout de schéma de place"
 
