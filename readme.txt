@@ -301,9 +301,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 4.18.0-dev.3 (2018/12/10)**
 
 * *New Features*
-	* None.
+	* Added a new SSO &gt; Tools settings page.
 * *Improvements*
-	* None.
+	* Moved the following submit / action buttons to the new SSO &gt; Tools settings page:
+		* Clear All Caches
+		* Clear All Caches and Short URLs
+		* Reset Metabox Layout
+		* Reset Dismissed Notices
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -344,7 +348,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.18.0-dev.3 =
 
-(2018/12/10) None.
+(2018/12/10) Added a new SSO &gt; Tools settings page.
 
 = 4.17.3.1 =
 
