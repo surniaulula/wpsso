@@ -28,9 +28,17 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 		}
 
 		protected function add_plugin_hooks() {
+
 			$this->p->util->add_plugin_filters( $this, array(
-				'action_buttons' => 1,
+				'submit_button_rows' => 1,
 			) );
+		}
+
+		public function filter_submit_button_rows( $submit_button_rows ) {
+
+			$submit_button_rows[ 0 ][ 'reload_default_sizes' ] = _x( 'Reload Default Sizes', 'submit button', 'wpsso' );
+
+			return $submit_button_rows;
 		}
 
 		/**
@@ -49,13 +57,6 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_image_dimensions' ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
-		}
-
-		public function filter_action_buttons( $action_buttons ) {
-
-			$action_buttons[0]['reload_default_sizes'] = _x( 'Reload Default Sizes', 'submit button', 'wpsso' );
-
-			return $action_buttons;
 		}
 
 		public function show_metabox_image_dimensions() {

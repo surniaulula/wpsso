@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.17.4-dev.2',	// Plugin version.
+					'version'     => '4.18.0-dev.3',	// Plugin version.
 					'opt_version' => '619',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -73,12 +73,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'addons'    => 'Add-ons',
 							'licenses'  => 'Licenses',
 							'dashboard' => 'Dashboard',
+							'tools'     => 'Tools',
 							'setup'     => 'Setup Guide',
 						),
 						'sitesubmenu' => array(	// Note that submenu elements must have unique keys.
 							'siteadvanced' => 'Advanced',
 							'siteaddons'   => 'Add-ons',
 							'sitelicenses' => 'Licenses',
+							'sitetools'    => 'Tools',
 							'sitesetup'    => 'Setup Guide',
 						),
 						'gpl' => array(
@@ -1623,6 +1625,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'sitelicenses'  => 'editor-justify',
 					'dashboard'     => 'dashboard',
 					'sitedashboard' => 'dashboard',
+					'tools'         => 'admin-tools',
+					'sitetools'     => 'admin-tools',
 					'setup'         => 'info',
 					'sitesetup'     => 'info',
 				),

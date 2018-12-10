@@ -30,8 +30,16 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 		protected function add_plugin_hooks() {
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'action_buttons' => 1,
+				'submit_button_rows' => 1,
 			) );
+		}
+
+		/**
+		 * Remove all submit / action buttons from the Setup Guide page.
+		 */
+		public function filter_submit_button_rows( $submit_button_rows ) {
+
+			return array();
 		}
 
 		/**
@@ -50,13 +58,6 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_setup_guide' ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
-		}
-
-		public function filter_action_buttons( $action_buttons ) {
-
-			unset( $action_buttons[0] );
-
-			return $action_buttons;
 		}
 
 		public function show_metabox_setup_guide() {

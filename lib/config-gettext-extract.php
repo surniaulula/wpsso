@@ -144,6 +144,7 @@ _x( 'Thursday', 'option value', 'wpsso' );
 _x( 'TinyURL', 'option value', 'wpsso' );
 _x( 'Title and Excerpt', 'option value', 'wpsso' );
 _x( 'Title Only', 'option value', 'wpsso' );
+_x( 'Tools', 'lib file description', 'wpsso' );
 _x( 'Top', 'option value', 'wpsso' );
 _x( 'True', 'option value', 'wpsso' );
 _x( 'Tuesday', 'option value', 'wpsso' );

@@ -533,9 +533,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $action_links;
 			}
 
-			foreach ( $action_links as $num => $val ) {
+			foreach ( $action_links as $key => $val ) {
 				if ( false !== strpos( $val, '>Edit<' ) ) {
-					unset ( $action_links[$num] );
+					unset ( $action_links[ $key ] );
 				}
 			}
 
@@ -1218,11 +1218,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function show_form_content() {
 
+			$menu_hookname = SucomUtil::sanitize_hookname( $this->menu_id );
+
 			if ( $this->menu_lib === 'profile' ) {
 
-				$user_id     = get_current_user_id();
-				$user_obj    = get_user_to_edit( $user_id );
-				$admin_color = get_user_option( 'admin_color', $user_id );
+				$user_id       = get_current_user_id();
+				$user_obj      = get_user_to_edit( $user_id );
+				$admin_color   = get_user_option( 'admin_color', $user_id );
 
 				if ( empty( $admin_color ) ) {
 					$admin_color = 'fresh';
@@ -1235,7 +1237,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$this->p->util->get_admin_url( $this->menu_id, null, 'users' ) :
 					$this->p->util->get_admin_url( $this->menu_id, null, $this->menu_lib );
 
-				echo '<form name="' . $this->p->lca . '" id="' . $this->p->lca . '_setting_form" action="user-edit.php" method="post">' . "\n";
+				echo '<form name="' . $this->p->lca . '" ' .
+					'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
+					'action="user-edit.php" method="post">' . "\n";
+
 				echo '<input type="hidden" name="wp_http_referer" value="' . $referer_admin_url . '" />' . "\n";
 				echo '<input type="hidden" name="action" value="update" />' . "\n";
 				echo '<input type="hidden" name="user_id" value="' . $user_id . '" />' . "\n";
@@ -1250,15 +1255,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			} elseif ( $this->menu_lib === 'setting' || $this->menu_lib === 'submenu' ) {
 
-				echo '<form name="' . $this->p->lca . '" id="' . $this->p->lca . '_setting_form" action="options.php" method="post">' . "\n";
+				echo '<form name="' . $this->p->lca . '" ' .
+					'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
+					'action="options.php" method="post">' . "\n";
 
 				settings_fields( $this->p->lca . '_setting' );
 
 			} elseif ( $this->menu_lib === 'sitesubmenu' ) {
 
-				echo '<form name="' . $this->p->lca . '" id="' . $this->p->lca . '_setting_form" action="edit.php?action=' .
-					WPSSO_SITE_OPTIONS_NAME . '" method="post">' . "\n";
-				echo '<input type="hidden" name="page" value="' . $this->menu_id . '" />';
+				echo '<form name="' . $this->p->lca . '" ' .
+					'id="' . $this->p->lca . '_setting_form_' . $menu_hookname . '" ' .
+					'action="edit.php?action=' . WPSSO_SITE_OPTIONS_NAME . '" method="post">' . "\n";
+
+				echo '<input type="hidden" name="page" value="' . $this->menu_id . '" />' . "\n";
 
 			} else {
 				return;
@@ -1280,7 +1289,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			do_meta_boxes( $this->pagehook, 'normal', null );
 
-			do_action( $this->p->lca . '_form_content_metaboxes_' . SucomUtil::sanitize_hookname( $this->menu_id ), $this->pagehook );
+			do_action( $this->p->lca . '_form_content_metaboxes_' . $menu_hookname, $this->pagehook );
 
 			if ( $this->menu_lib === 'profile' ) {
 				echo $this->get_submit_buttons( _x( 'Save All Profile Settings', 'submit button', 'wpsso' ) );
@@ -1288,95 +1297,71 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo $this->get_submit_buttons();
 			}
 
+			echo '<div id="' . $this->p->lca . '_form_content_footer">' . "\n";
+
+			do_action( $this->p->lca . '_form_content_footer', $this->pagehook );
+
+			echo '</div><!-- #' . $this->p->lca . '_form_content_footer -->' . "\n";
+
 			echo '</form>', "\n";
 		}
 
 		protected function get_submit_buttons( $submit_label_transl = '' ) {
 
-			$view_next_key        = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
-			$view_name_transl     = _x( $this->p->cf['form']['show_options'][$view_next_key], 'option value', 'wpsso' );
-			$view_label_transl    = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name_transl );
-			$using_external_cache = wp_using_ext_object_cache();
-
 			if ( empty( $submit_label_transl ) ) {
 				$submit_label_transl = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 			}
 
-			if ( is_multisite() ) {
-				$clear_label_transl = sprintf( _x( 'Clear All Caches for Site %d',
-					'submit button', 'wpsso' ), get_current_blog_id() );
-			} else {
-				$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
-			}
+			$view_next_key     = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
+			$view_name_transl  = _x( $this->p->cf['form']['show_options'][$view_next_key], 'option value', 'wpsso' );
+			$view_label_transl = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name_transl );
 
-			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
-				$clear_label_transl .= ' [*]';
-			}
-
-			$action_buttons = apply_filters( $this->p->lca . '_action_buttons', array(
+			/**
+			 * Two dimentional array of button rows.
+			 */
+			$submit_button_rows = array(
 				array(
-					'submit'                                          => $submit_label_transl,
+					'submit' => $submit_label_transl,
 					'change_show_options&show-opts=' . $view_next_key => $view_label_transl,
 				),
-				array(
-					'clear_all_cache'         => $clear_label_transl,
-					'clear_metabox_prefs'     => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
-					'clear_dismissed_notices' => _x( 'Reset Dismissed Notices', 'submit button', 'wpsso' ),
-				),
-			), $this->menu_id, $this->menu_name, $this->menu_lib );
+			);
 
-			$submit_buttons = '';
+			$submit_button_rows = apply_filters( $this->p->lca . '_submit_button_rows',
+				$submit_button_rows, $this->menu_id, $this->menu_name, $this->menu_lib );
 
-			foreach ( $action_buttons as $row => $row_buttons ) {
+			$buttons_html = '';
 
-				$css_class = $row ? 'button-secondary' : 'button-secondary button-highlight';	// highlight the first row
+			foreach ( $submit_button_rows as $key => $buttons_row ) {
 
-				foreach ( $row_buttons as $action_arg => $button_label ) {
+				$css_class = $key ? 'button-secondary' : 'button-secondary button-highlight';	// Highlight the first row.
 
-					if ( $action_arg === 'submit' ) {
+				$buttons_html .= '<div class="submit-buttons">';
 
-						$submit_buttons .= '<input type="' . $action_arg . '" class="button-primary" value="' . $button_label . '" />';
+				foreach ( $buttons_row as $action_name => $label_transl ) {
+
+					if ( $action_name === 'submit' ) {
+
+						$buttons_html .= '<input type="' . $action_name . '" class="button-primary" value="' . $label_transl . '" />';
 
 					} else {
-						$action_url = $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=' . $action_arg );
-						$button_url = wp_nonce_url( $action_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
-						$submit_buttons .= $this->form->get_button( $button_label, $css_class, '', $button_url );
+						$action_url   = $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=' . $action_name );
+						$button_url   = wp_nonce_url( $action_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
+						$buttons_html .= $this->form->get_button( $label_transl, $css_class, '', $button_url );
 					}
 				}
 
-				$submit_buttons .= '<br/>';
+				$buttons_html .= '</div>';
 			}
 
-			$html = '<div class="submit-buttons">' . $submit_buttons;
-
-			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
-
-				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-					_x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ) );
-
-				$html .= '<p><small>[*] ';
-
-				if ( empty( $this->p->options['plugin_clear_short_urls'] ) ) {
-					$html .= sprintf( __( '%1$s option is unchecked - the shortened URL cache will be preserved.', 'wpsso' ), $settings_page_link );
-				} else {
-					$html .= sprintf( __( '%1$s option is checked - the shortened URL cache will be cleared.', 'wpsso' ), $settings_page_link );
-				}
-
-				$html .= '</small></p>';
-			}
-
-			$html .= '</div>';
-
-			return $html;
+			return $buttons_html;
 		}
 
 		public function show_metabox_cache_status() {
 
-			$info                 = $this->p->cf[ 'plugin' ][$this->p->lca];
-			$table_cols           = 3;
-			$transient_keys       = $this->p->util->get_db_transient_keys();
-			$using_external_cache = wp_using_ext_object_cache();
+			$info           = $this->p->cf[ 'plugin' ][$this->p->lca];
+			$table_cols     = 3;
+			$transient_keys = $this->p->util->get_db_transient_keys();
 
 			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox cache-status">';
 
@@ -1425,7 +1410,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$cache_exp_filtered = (int) apply_filters( $filter_name, $cache_exp_secs );
 
 					if ( $cache_exp_secs !== $cache_exp_filtered ) {
-						$cache_exp_html    = $cache_exp_filtered . ' [F]';	// Show that values is changed.
+						$cache_exp_html    = $cache_exp_filtered . ' [F]';	// Show that value has changed.
 						$have_filtered_exp = true;
 					}
 				}
@@ -1433,46 +1418,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<th class="cache-label">' . $cache_label_transl . ':</th>';
 				echo '<td class="cache-count">' . $cache_count . '</td>';
 				echo '<td class="cache-expiration">' . $cache_exp_html . '</td>';
-				echo '</tr>';
+				echo '</tr>' . "\n";
 			}
 
 			do_action( $this->p->lca . '_column_metabox_cache_status_table_rows', $table_cols, $this->form, $transient_keys );
 
-			$clear_admin_url    = $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=clear_all_cache' );
-			$clear_admin_url    = wp_nonce_url( $clear_admin_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
-			$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
-
-			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
-				$clear_label_transl .= ' [*]';
-			}
-
-			/**
-			 * Add some extra space between the stats table and buttons.
-			 */
-			echo '<tr><td colspan="' . $table_cols . '" style="height:10px;"></td></tr>';
-			echo '<tr><td colspan="' . $table_cols . '">';
-			echo $this->form->get_button( $clear_label_transl, 'button-secondary', '', $clear_admin_url );
-
-			/**
-			 * Add an extra button to clear the cache and shortened urls.
-			 */
-			if ( $short_urls_count || ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' && 
-				empty( $this->p->options['plugin_clear_short_urls'] ) ) ) {
-
-				$clear_admin_url    = $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=clear_all_cache_and_short_urls' );
-				$clear_admin_url    = wp_nonce_url( $clear_admin_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
-				$clear_label_transl = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
-
-				echo $this->form->get_button( $clear_label_transl, 'button-secondary', '', $clear_admin_url );
-			}
-
-			echo '</td></tr>';
-
 			if ( $have_filtered_exp ) {
 				if ( self::$pkg[$this->p->lca][ 'pp' ] ) {
-					echo '<tr><td colspan="' . $table_cols . '"><small>[F] ' .
-						__( 'Expiration option value has been modified by a filter.',
-							'wpsso' ) . '</small></em></td></tr>';
+					echo '<tr><td></td></tr>' . "\n";
+					echo '<tr><td colspan="' . $table_cols . '"><p><small>[F] ' .
+						__( 'The expiration option value is modified by a filter.',
+							'wpsso' ) . '</small></p></td></tr>' . "\n";
 				}
 			}
 

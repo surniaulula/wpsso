@@ -34,9 +34,35 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			$this->p->util->add_plugin_actions( $this, array(
 				'form_content_metaboxes_dashboard' => 1,	// show four-column metaboxes
 			) );
+
 			$this->p->util->add_plugin_filters( $this, array(
-				'action_buttons' => 1,
+				'submit_button_rows' => 1,
 			) );
+		}
+
+		public function action_form_content_metaboxes_dashboard( $pagehook ) {
+
+			foreach ( range( 1, $this->max_cols ) as $dashboard_col ) {
+
+				/**
+				 * CSS id values must use underscores instead of hyphens to order the metaboxes.
+				 */
+				echo '<div id="dashboard_col_' . $dashboard_col . '" class="max_cols_' . $this->max_cols . ' dashboard_col">';
+
+				do_meta_boxes( $pagehook, 'dashboard_col_' . $dashboard_col, null );
+
+				echo '</div><!-- #dashboard_col_' . $dashboard_col . ' -->' . "\n";
+			}
+
+			echo '<div style="clear:both;"></div>' . "\n";
+		}
+
+		/**
+		 * Remove all submit / action buttons from the Dashboard page.
+		 */
+		public function filter_submit_button_rows( $submit_button_rows ) {
+
+			return array();
 		}
 
 		protected function add_meta_boxes() {
@@ -104,13 +130,6 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			}
 		}
 
-		public function filter_action_buttons( $action_buttons ) {
-
-			unset ( $action_buttons[0] );
-
-			return $action_buttons;
-		}
-
 		public function add_class_postbox_dashboard( $classes ) {
 
 			global $wp_current_filter;
@@ -122,23 +141,6 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			$classes[] = 'postbox-' . $postbox_name;
 
 			return $classes;
-		}
-
-		public function action_form_content_metaboxes_dashboard( $pagehook ) {
-
-			foreach ( range( 1, $this->max_cols ) as $dashboard_col ) {
-
-				/**
-				 * CSS id values must use underscores instead of hyphens to order the metaboxes.
-				 */
-				echo '<div id="dashboard_col_' . $dashboard_col . '" class="max_cols_' . $this->max_cols . ' dashboard_col">';
-
-				do_meta_boxes( $pagehook, 'dashboard_col_' . $dashboard_col, null );
-
-				echo '</div><!-- #dashboard_col_' . $dashboard_col . ' -->' . "\n";
-			}
-
-			echo '<div style="clear:both;"></div>' . "\n";
 		}
 	}
 }
