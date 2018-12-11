@@ -298,10 +298,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.0-dev.4 (2018/12/10)**
+**Version 4.18.0-dev.4 (2018/12/11)**
 
 * *New Features*
 	* Added a new SSO &gt; Tools settings page.
+	* Added a new "Export Plugin and Add-on Settings" button in the SSO &gt; Tools settings page.
 * *Improvements*
 	* Moved the following submit / action buttons to the new SSO &gt; Tools settings page:
 		* Clear All Caches
@@ -348,7 +349,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.18.0-dev.4 =
 
-(2018/12/10) Added a new SSO &gt; Tools settings page.
+(2018/12/11) Added a new SSO &gt; Tools settings page.
 
 = 4.17.3.1 =
 
