@@ -93,7 +93,7 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 	* [WPSSO Tweet a Quote](https://wordpress.org/plugins/wpsso-tweet-a-quote) to add tweetable quotes to your content.
 	* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale) to switch languages quickly and easily.
 
-<h3>WPSSO Core Pro / Additional Features</h3>
+<h3>WPSSO Core Additional Features (Pro version)</h3>
 
 * Customize headlines, titles, descriptions, shared image and/or video, product information, recipe information, event information, and much more.
 
@@ -298,7 +298,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.0-dev.3 (2018/12/10)**
+**Version 4.18.0-dev.4 (2018/12/10)**
 
 * *New Features*
 	* Added a new SSO &gt; Tools settings page.
@@ -346,7 +346,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.0-dev.3 =
+= 4.18.0-dev.4 =
 
 (2018/12/10) Added a new SSO &gt; Tools settings page.
 
