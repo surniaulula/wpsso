@@ -9,14 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoSitesubmenuSiteAddons' ) && class_exists( 'WpssoAdmin' ) ) {
+if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 
 	/**
 	 * Please note that this settings page also requires enqueuing special scripts and styles
 	 * for the plugin details / install thickbox link. See the WpssoScript and WpssoStyle
 	 * classes for more info.
 	 */
-	class WpssoSitesubmenuSiteAddons extends WpssoAdmin {
+	class WpssoSiteSubmenuSiteAddons extends WpssoAdmin {
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
@@ -30,6 +30,21 @@ if ( ! class_exists( 'WpssoSitesubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 			$this->menu_name = $name;
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
+		}
+
+		protected function add_plugin_hooks() {
+
+			$this->p->util->add_plugin_filters( $this, array(
+				'form_button_rows' => 1,
+			) );
+		}
+
+		/**
+		 * Remove all submit / action buttons from the Add-ons page.
+		 */
+		public function filter_form_button_rows( $form_button_rows ) {
+
+			return array();
 		}
 
 		protected function set_form_object( $menu_ext ) {

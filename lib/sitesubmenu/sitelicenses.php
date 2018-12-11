@@ -9,14 +9,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoSitesubmenuSitelicenses' ) && class_exists( 'WpssoAdmin' ) ) {
+if ( ! class_exists( 'WpssoSiteSubmenuSiteLicenses' ) && class_exists( 'WpssoAdmin' ) ) {
 
 	/**
 	 * Please note that this settings page also requires enqueuing special scripts and styles
 	 * for the plugin details / install thickbox link. See the WpssoScript and WpssoStyle
 	 * classes for more info.
 	 */
-	class WpssoSitesubmenuSitelicenses extends WpssoAdmin {
+	class WpssoSiteSubmenuSiteLicenses extends WpssoAdmin {
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 

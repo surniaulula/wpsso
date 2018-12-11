@@ -162,21 +162,28 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-					if ( ! isset( $info[ 'lib' ][$menu_lib] ) ) {	// not all add-ons have submenus
+					if ( ! isset( $info[ 'lib' ][ $menu_lib ] ) ) {	// Not all add-ons have submenus.
 						continue;
 					}
 
-					foreach ( $info[ 'lib' ][$menu_lib] as $menu_id => $menu_name ) {
+					foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
 
 						$classname = apply_filters( $ext . '_load_lib', false, $menu_lib . '/' . $menu_id );
 
 						if ( is_string( $classname ) && class_exists( $classname ) ) {
 
+							if ( $this->p->debug->enabled ) {
+								$this->p->debug->log( 'loading classname ' . $classname . ' for menu id ' . $menu_id );
+							}
+
 							if ( ! empty( $info[ 'text_domain' ] ) ) {
 								$menu_name = _x( $menu_name, 'lib file description', $info[ 'text_domain' ] );
 							}
 
-							$this->submenu[$menu_id] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib, $ext );
+							$this->submenu[ $menu_id ] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib, $ext );
+
+						} elseif ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'classname not found for menu lib ' . $menu_lib . '/' . $menu_id );
 						}
 					}
 				}
@@ -214,9 +221,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function add_network_admin_menus() {
+
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
+
 			$this->add_admin_menus( 'sitesubmenu' );
 		}
 
@@ -892,7 +901,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$network = true;
 
 			if ( ! $page = SucomUtil::get_request_value( 'page', 'POST' ) ) {	// Uses sanitize_text_field.
-				$page = key( $this->p->cf[ '*' ][ 'lib' ]['sitesubmenu'] );
+				$page = key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
 			}
 
 			if ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string.
@@ -986,7 +995,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
-						case 'clear_metabox_prefs':
+						case 'reset_user_metabox_layout':
 
 							$user_id   = get_current_user_id();
 							$user_obj  = get_userdata( $user_id );
@@ -999,7 +1008,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
-						case 'clear_dismissed_notices':
+						case 'reset_user_dismissed_notices':
 
 							$user_id   = get_current_user_id();
 							$user_obj  = get_userdata( $user_id );
@@ -1033,7 +1042,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
-						case 'reload_default_sizes':
+						case 'reload_default_image_sizes':
 
 							$opts     =& $this->p->options;	// Update the existing options array.
 							$def_opts = $this->p->opt->get_defaults();
@@ -1042,7 +1051,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts );
 
-							$this->p->notice->upd( __( 'All image dimensions have been reloaded with their default value and saved.',
+							$this->p->notice->upd( __( 'Image size settings have been reloaded with their default values and saved.',
 								'wpsso' ) );
 
 							break;
@@ -1292,9 +1301,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			do_action( $this->p->lca . '_form_content_metaboxes_' . $menu_hookname, $this->pagehook );
 
 			if ( $this->menu_lib === 'profile' ) {
-				echo $this->get_submit_buttons( _x( 'Save All Profile Settings', 'submit button', 'wpsso' ) );
+				echo $this->get_form_buttons( _x( 'Save All Profile Settings', 'submit button', 'wpsso' ) );
 			} else {
-				echo $this->get_submit_buttons();
+				echo $this->get_form_buttons();
 			}
 
 			echo '<div id="' . $this->p->lca . '_form_content_footer">' . "\n";
@@ -1306,7 +1315,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</form>', "\n";
 		}
 
-		protected function get_submit_buttons( $submit_label_transl = '' ) {
+		protected function get_form_buttons( $submit_label_transl = '' ) {
 
 			if ( empty( $submit_label_transl ) ) {
 				$submit_label_transl = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
@@ -1317,23 +1326,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$view_label_transl = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name_transl );
 
 			/**
-			 * Two dimentional array of button rows.
+			 * A two dimentional array of button rows. The 'submit' button will be assigned a class of 'button-primary',
+			 * while all other 1st row buttons will be 'button-secondary button-highlight'. The 2nd+ row buttons will be
+			 * assigned a class of 'button-secondary'.
 			 */
-			$submit_button_rows = array(
+			$form_button_rows = array(
 				array(
 					'submit' => $submit_label_transl,
 					'change_show_options&show-opts=' . $view_next_key => $view_label_transl,
 				),
 			);
 
-			$submit_button_rows = apply_filters( $this->p->lca . '_submit_button_rows',
-				$submit_button_rows, $this->menu_id, $this->menu_name, $this->menu_lib );
+			$form_button_rows = apply_filters( $this->p->lca . '_form_button_rows',
+				$form_button_rows, $this->menu_id, $this->menu_name, $this->menu_lib, $this->menu_ext );
 
 			$buttons_html = '';
 
-			foreach ( $submit_button_rows as $key => $buttons_row ) {
+			foreach ( $form_button_rows as $key => $buttons_row ) {
 
-				$css_class = $key ? 'button-secondary' : 'button-secondary button-highlight';	// Highlight the first row.
+				$css_class = $key < 1 ? 'button-secondary button-highlight' : 'button-secondary';	// Highlight the first row.
 
 				$buttons_html .= '<div class="submit-buttons">';
 

@@ -842,8 +842,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( $use_cache ) {
+
 				if ( $cache_exp_secs > 0 ) {
+
 					set_transient( $cache_id, $children, $cache_exp_secs );
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'children saved to transient cache for ' . $cache_exp_secs . ' seconds' );
 					}
@@ -1429,7 +1432,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Get the JSON-LD data array.
 		 */
-		public function get_json_data( array &$mod, array &$mt_og, $page_type_id = false, $is_main = false ) {
+		public function get_json_data( array &$mod, array &$mt_og, $page_type_id = false, $is_main = false, $use_cache = true ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
@@ -1451,15 +1454,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$page_type_id = $this->get_mod_schema_type( $mod, $get_schema_id = true );
 
-			} elseif ( $is_main && $mod[ 'is_post' ] && $mod[ 'id' ] ) {
+			} elseif ( $is_main && $use_cache && $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
 				$cache_index = self::get_mod_cache_index( $mod, $page_type_id );
 				$cache_data  = self::get_mod_cache_data( $mod, $cache_index );
 
 				if ( isset( $cache_data[ $cache_index ] ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'exiting early: returning single post cache data' );
 					}
+
 					return $cache_data[ $cache_index ];	// Stop here.
 				}
 			}
@@ -1502,7 +1507,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$json_data = apply_filters( $this->p->lca . '_json_data_' . $type_filter_name,
 						$json_data, $mod, $mt_og, $page_type_id, $is_main );
+
 				} else {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'no filters registered for ' . $type_filter_name );
 					}
@@ -1521,7 +1528,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( ! empty( $cache_index ) ) {
 
-				if ( $is_main && $mod[ 'is_post' ] && $mod[ 'id' ] ) {
+				if ( $is_main && $use_cache && $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
 					if ( empty( $cache_data ) ) {	// Just in case.
 						$cache_data = array();
@@ -2502,9 +2509,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! is_object( $mod[ 'obj' ] ) || ! $mod[ 'id' ] ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: $mod has no object or id is empty' );
 				}
+
 				return false;
 			}
 
@@ -2532,14 +2541,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				if ( $mod[ 'post_type' ] && $mod[ 'id' ] ) {
 
 					$wpsso->notice->set_ref( $sharing_url, $mod,
-						sprintf( __( 'adding schema for %1$s ID %2$s', 'wpsso' ),
-							$mod[ 'post_type' ], $mod[ 'id' ] ) );
+						sprintf( __( 'adding schema for %1$s ID %2$s', 'wpsso' ), $mod[ 'post_type' ], $mod[ 'id' ] ) );
 
 				} elseif ( $mod[ 'name' ] && $mod[ 'id' ] ) {
 
 					$wpsso->notice->set_ref( $sharing_url, $mod,
-						sprintf( __( 'adding schema for %1$s ID %2$s', 'wpsso' ),
-							$mod[ 'name' ], $mod[ 'id' ] ) );
+						sprintf( __( 'adding schema for %1$s ID %2$s', 'wpsso' ), $mod[ 'name' ], $mod[ 'id' ] ) );
 				} else {
 					$wpsso->notice->set_ref( $sharing_url, $mod );
 				}

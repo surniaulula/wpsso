@@ -34,14 +34,17 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				 * Save time on known admin pages we don't modify.
 				 */
 				switch ( basename( $_SERVER['PHP_SELF'] ) ) {
+
 					case 'index.php':		// Dashboard
 					case 'edit-comments.php':	// Comments
 					case 'themes.php':		// Appearance
 					case 'plugins.php':		// Plugins
 					case 'tools.php':		// Tools
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'no modules required for current page' );
 						}
+
 						return;
 				}
 			}
@@ -62,7 +65,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 				$type = $this->p->check->pp( $this->p->lca, true, $this->p->avail[ '*' ][ 'p_dir' ] ) &&
 					$this->p->check->pp( $ext, true, WPSSO_UNDEF ) === WPSSO_UNDEF ? 'pro' : 'gpl';
 
-				if ( ! isset( $info[ 'lib' ][$type] ) ) {
+				if ( ! isset( $info[ 'lib' ][ $type ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $ext . ' lib/' . $type . ' not defined' );
@@ -71,7 +74,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 					continue;
 				}
 
-				foreach ( $info[ 'lib' ][$type] as $sub => $libs ) {
+				foreach ( $info[ 'lib' ][ $type ] as $sub => $libs ) {
 
 					$log_prefix = 'loading ' . $ext . ' ' . $type . '/' . $sub . ': ';
 

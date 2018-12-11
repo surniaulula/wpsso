@@ -35,14 +35,14 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 		protected function add_plugin_hooks() {
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'submit_button_rows' => 1,
+				'form_button_rows' => 1,
 			) );
 		}
 
 		/**
-		 * Remove all submit / action buttons from the Setup Guide page.
+		 * Remove all submit / action buttons from the Add-ons page.
 		 */
-		public function filter_submit_button_rows( $submit_button_rows ) {
+		public function filter_form_button_rows( $form_button_rows ) {
 
 			return array();
 		}

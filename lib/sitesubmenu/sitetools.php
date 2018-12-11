@@ -9,8 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoSitesubmenuSitesetup' ) && class_exists( 'WpssoSubmenuTools' ) ) {
+if ( ! class_exists( 'WpssoSiteSubmenuSiteTools' ) && class_exists( 'WpssoSubmenuTools' ) ) {
 
-	class WpssoSitesubmenuSitesetup extends WpssoSubmenuTools {
+	class WpssoSiteSubmenuSiteTools extends WpssoSubmenuTools {
 	}
 }

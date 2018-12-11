@@ -31,13 +31,21 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 		protected function add_plugin_hooks() {
 
-			$this->p->util->add_plugin_actions( $this, array(
-				'form_content_metaboxes_dashboard' => 1,	// show four-column metaboxes
+			$this->p->util->add_plugin_filters( $this, array(
+				'form_button_rows' => 1,
 			) );
 
-			$this->p->util->add_plugin_filters( $this, array(
-				'submit_button_rows' => 1,
+			$this->p->util->add_plugin_actions( $this, array(
+				'form_content_metaboxes_dashboard' => 1,	// Show four-column metaboxes.
 			) );
+		}
+
+		/**
+		 * Remove all submit / action buttons from the Dashboard page.
+		 */
+		public function filter_form_button_rows( $form_button_rows ) {
+
+			return array();
 		}
 
 		public function action_form_content_metaboxes_dashboard( $pagehook ) {
@@ -55,14 +63,6 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			}
 
 			echo '<div style="clear:both;"></div>' . "\n";
-		}
-
-		/**
-		 * Remove all submit / action buttons from the Dashboard page.
-		 */
-		public function filter_submit_button_rows( $submit_button_rows ) {
-
-			return array();
 		}
 
 		protected function add_meta_boxes() {
@@ -88,8 +88,8 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 					/**
 					 * Second row.
 					 */
-					'status_gpl'   => _x( 'Free / Standard Features', 'metabox title', 'wpsso' ),
-					'status_pro'   => _x( 'Pro / Additional Features', 'metabox title', 'wpsso' ),
+					'status_gpl'   => _x( 'Standard Features', 'metabox title', 'wpsso' ),
+					'status_pro'   => _x( 'Additional Features (Pro version)', 'metabox title', 'wpsso' ),
 				);
 
 			} else {
@@ -106,8 +106,8 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 					/**
 					 * Second row.
 					 */
-					'status_gpl'   => _x( 'Free / Standard Features', 'metabox title', 'wpsso' ),
-					'status_pro'   => _x( 'Pro / Additional Features', 'metabox title', 'wpsso' ),
+					'status_gpl'   => _x( 'Standard Features', 'metabox title', 'wpsso' ),
+					'status_pro'   => _x( 'Additional Features (Pro version)', 'metabox title', 'wpsso' ),
 					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ), 
 				);
 			}

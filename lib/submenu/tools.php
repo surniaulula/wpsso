@@ -30,15 +30,15 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 		protected function add_plugin_hooks() {
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'submit_button_rows'  => 1,
-			) );
+				'form_button_rows'  => 1,
+			), SucomUtil::get_min_int() );
 
 			$this->p->util->add_plugin_actions( $this, array(
 				'form_content_footer' => 1,
 			) );
 		}
 
-		public function filter_submit_button_rows( $submit_button_rows ) {
+		public function filter_form_button_rows( $form_button_rows ) {
 
 			$using_external_cache = wp_using_ext_object_cache();
 
@@ -53,24 +53,25 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				$clear_label_transl .= ' [*]';
 			}
 
-			$submit_button_rows = array(
+			$form_button_rows = array(
 				array(
 					'clear_all_cache' => $clear_label_transl,
 				),
 				array(
-					'clear_metabox_prefs'     => _x( 'Reset Metabox Layout', 'submit button', 'wpsso' ),
-					'clear_dismissed_notices' => _x( 'Reset Dismissed Notices', 'submit button', 'wpsso' ),
+					'reset_user_dismissed_notices' => _x( 'Reset User Dismissed Notices', 'submit button', 'wpsso' ),
+					'reset_user_metabox_layout'     => _x( 'Reset User Metabox Layout', 'submit button', 'wpsso' ),
 				),
 			);
 
 			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
 				if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
-					$submit_button_rows[ 0 ][ 'clear_all_cache_and_short_urls' ] = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
+					$form_button_rows[ 0 ][ 'clear_all_cache_and_short_urls' ] = _x( 'Clear All Caches and Short URLs',
+						'submit button', 'wpsso' );
 				}
 
 			}
 
-			return $submit_button_rows;
+			return $form_button_rows;
 		}
 
 		public function action_form_content_footer( $pagehook ) {

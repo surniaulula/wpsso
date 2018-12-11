@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmin' ) ) {
+if ( ! class_exists( 'WpssoSettingImageDimensions' ) && class_exists( 'WpssoAdmin' ) ) {
 
-	class WpssoSettingImagedimensions extends WpssoAdmin {
+	class WpssoSettingImageDimensions extends WpssoAdmin {
 
 		public function __construct( &$plugin, $id, $name, $lib, $ext ) {
 
@@ -25,20 +25,26 @@ if ( ! class_exists( 'WpssoSettingImagedimensions' ) && class_exists( 'WpssoAdmi
 			$this->menu_name = $name;
 			$this->menu_lib  = $lib;
 			$this->menu_ext  = $ext;
-		}
-
-		protected function add_plugin_hooks() {
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'submit_button_rows' => 1,
-			) );
+				'form_button_rows' => 2,
+			), -10000 );
 		}
 
-		public function filter_submit_button_rows( $submit_button_rows ) {
+		public function filter_form_button_rows( $form_button_rows, $menu_id ) {
 
-			$submit_button_rows[ 0 ][ 'reload_default_sizes' ] = _x( 'Reload Default Sizes', 'submit button', 'wpsso' );
+			switch ( $menu_id ) {
+				
+				case 'image-dimensions':
+				case 'tools':
 
-			return $submit_button_rows;
+					$form_button_rows[ 0 ][ 'reload_default_image_sizes' ] = _x( 'Reload Default Image Sizes',
+						'submit button', 'wpsso' );
+
+					break;
+			}
+
+			return $form_button_rows;
 		}
 
 		/**
