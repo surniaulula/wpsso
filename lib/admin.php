@@ -553,7 +553,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$settings_page = empty( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][$menu_lib] ) ?
 				'' : key( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][$menu_lib] );
 
-			$addons_page = 'sitesubmenu' === $menu_lib ? 'siteaddons' : 'addons';
+			$addons_page = 'sitesubmenu' === $menu_lib ? 'site-addons' : 'addons';
 
 			$dashboard_page = 'sitesubmenu' === $menu_lib ? '' : 'dashboard';	// No dashboard for network admin.
 
@@ -1056,6 +1056,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
+						case 'export_plugin_settings_json':
+
+							$this->export_plugin_settings_json();
+
+							break;
+
+						case 'import_plugin_settings_json':
+
+							break;
+
 						default:
 
 							do_action( $this->p->lca . '_load_setting_page_' . $action_name,
@@ -1344,11 +1354,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $form_button_rows as $key => $buttons_row ) {
 
-				$css_class = $key < 1 ? 'button-secondary button-highlight' : 'button-secondary';	// Highlight the first row.
+				if ( $key >= 2 ) {
+					$css_class = 'button-secondary';
+				} elseif ( $key >= 1 ) {
+					$css_class = 'button-secondary button-alt';
+				} else {
+					$css_class = 'button-secondary button-highlight';
+				}
 
 				$buttons_html .= '<div class="submit-buttons">';
 
 				foreach ( $buttons_row as $action_name => $label_transl ) {
+
+					if ( empty( $action_name ) || empty( $label_transl ) ) {	// Just in case.
+						continue;
+					}
 
 					if ( $action_name === 'submit' ) {
 
@@ -3843,6 +3863,66 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$classes[] = 'postbox-network';
 
 			return $classes;
+		}
+
+		public function export_plugin_settings_json() {
+
+			$filename = WpssoConfig::get_version( $add_slug = true ) . '.json.gz';
+
+			$opts_encoded = SucomUtil::json_encode_array( $this->p->options );
+
+			$gzdata = gzencode( $opts_encoded, 9, FORCE_GZIP );
+
+			session_write_close();
+			@ignore_user_abort();
+			@set_time_limit( 0 );
+			@apache_setenv( 'no-gzip', 1 );
+			@ini_set( 'zlib.output_compression', 0 );
+			@ini_set( 'implicit_flush', 1 );
+			@ob_end_flush();
+
+			$filesize    = strlen( $gzdata );
+			$disposition = 'attachment';
+			$chunksize   = 1024 * 32;	// 32kb per fread().
+
+			/**
+			 * Remove all dots, except last one, for MSIE clients.
+			 */
+			if ( strstr( $_SERVER['HTTP_USER_AGENT'], 'MSIE' ) ) {
+				$filename = preg_replace( '/\./', '%2e', $filename, substr_count( $filename, '.' ) - 1 );
+			}
+	
+			if ( isset( $_SERVER['HTTPS'] ) ) {
+
+				header( 'Pragma: ' );
+				header( 'Cache-Control: ' );
+				header( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
+				header( 'Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT' );
+				header( 'Cache-Control: no-store, no-cache, must-revalidate' );
+				header( 'Cache-Control: post-check=0, pre-check=0', false );
+
+			} elseif ( $disposition == 'attachment' ) {
+
+				header( 'Cache-control: private' );
+
+			} else {
+
+				header( 'Cache-Control: no-cache, must-revalidate' );
+				header( 'Pragma: no-cache' );
+			}
+
+			header( 'Content-Type: application/' . pathinfo( $filename, PATHINFO_EXTENSION ) );
+			header( 'Content-Disposition: ' . $disposition . '; filename="' . $filename . '"' );
+			header( 'Content-Transfer-Encoding: binary' );
+			header( 'Content-Length: ' . $filesize );
+
+			echo $gzdata;
+
+			flush();
+
+			sleep( 1 );
+
+			exit();
 		}
 	}
 }

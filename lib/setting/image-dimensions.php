@@ -33,15 +33,20 @@ if ( ! class_exists( 'WpssoSettingImageDimensions' ) && class_exists( 'WpssoAdmi
 
 		public function filter_form_button_rows( $form_button_rows, $menu_id ) {
 
+			$row_num = null;
+
 			switch ( $menu_id ) {
-				
 				case 'image-dimensions':
-				case 'tools':
-
-					$form_button_rows[ 0 ][ 'reload_default_image_sizes' ] = _x( 'Reload Default Image Sizes',
-						'submit button', 'wpsso' );
-
+					$row_num = 0;
 					break;
+				case 'tools':
+					$row_num = 1;
+					break;
+			}
+
+			if ( null !== $row_num ) {
+				$form_button_rows[ $row_num ][ 'reload_default_image_sizes' ] = _x( 'Reload Default Image Sizes',
+					'submit button', 'wpsso' );
 			}
 
 			return $form_button_rows;

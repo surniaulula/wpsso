@@ -73,15 +73,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'addons'    => 'Add-ons',
 							'licenses'  => 'Licenses',
 							'dashboard' => 'Dashboard',
-							'tools'     => 'Tools',
 							'setup'     => 'Setup Guide',
+							'tools'     => 'Tools',
 						),
 						'sitesubmenu' => array(	// Note that submenu elements must have unique keys.
-							'siteadvanced' => 'Advanced',
-							'siteaddons'   => 'Add-ons',
-							'sitelicenses' => 'Licenses',
-							'sitetools'    => 'Tools',
-							'sitesetup'    => 'Setup Guide',
+							'site-advanced' => 'Advanced',
+							'site-addons'   => 'Add-ons',
+							'site-licenses' => 'Licenses',
+							'site-setup'    => 'Setup Guide',
+							'site-tools'    => 'Tools',
 						),
 						'gpl' => array(
 							'admin' => array(
@@ -1619,16 +1619,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'before'    => '\0229b',	// Circle asterix.
 				'icon_html' => '&oast;',	// Circle asterix.
 				'dashicons' => array(
-					'addons'        => 'star-filled',
-					'siteaddons'    => 'star-filled',
-					'licenses'      => 'editor-justify',
-					'sitelicenses'  => 'editor-justify',
-					'dashboard'     => 'dashboard',
-					'sitedashboard' => 'dashboard',
-					'tools'         => 'admin-tools',
-					'sitetools'     => 'admin-tools',
-					'setup'         => 'info',
-					'sitesetup'     => 'info',
+					'addons'         => 'star-filled',
+					'site-addons'    => 'star-filled',
+					'licenses'       => 'editor-justify',
+					'site-licenses'  => 'editor-justify',
+					'dashboard'      => 'dashboard',
+					'site-dashboard' => 'dashboard',
+					'setup'          => 'info',
+					'site-setup'     => 'info',
+					'tools'          => 'admin-tools',
+					'site-tools'     => 'admin-tools',
 				),
 			),
 			'notice' => array(

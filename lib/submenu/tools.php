@@ -43,10 +43,16 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$using_external_cache = wp_using_ext_object_cache();
 
 			if ( is_multisite() ) {
-				$clear_label_transl = sprintf( _x( 'Clear All Caches for Site %d',
+				$clear_label_transl = sprintf( _x( 'Clear All Caches for Site ID %d',
+					'submit button', 'wpsso' ), get_current_blog_id() );
+				$export_label_transl = sprintf( _x( 'Export Settings for Site ID %d',
+					'submit button', 'wpsso' ), get_current_blog_id() );
+				$import_label_transl = sprintf( _x( 'Import Settings for Site ID %d',
 					'submit button', 'wpsso' ), get_current_blog_id() );
 			} else {
 				$clear_label_transl = _x( 'Clear All Caches', 'submit button', 'wpsso' );
+				$export_label_transl = _x( 'Export Plugin and Add-on Settings', 'submit button', 'wpsso' );
+				$import_label_transl = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );
 			}
 
 			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
@@ -55,11 +61,16 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$form_button_rows = array(
 				array(
-					'clear_all_cache' => $clear_label_transl,
+					'clear_all_cache'                => $clear_label_transl,
+					'clear_all_cache_and_short_urls' => null,
+				),
+				array(
+					'export_plugin_settings_json' => $export_label_transl,
+					'import_plugin_settings_json' => $import_label_transl,
 				),
 				array(
 					'reset_user_dismissed_notices' => _x( 'Reset User Dismissed Notices', 'submit button', 'wpsso' ),
-					'reset_user_metabox_layout'     => _x( 'Reset User Metabox Layout', 'submit button', 'wpsso' ),
+					'reset_user_metabox_layout'    => _x( 'Reset User Metabox Layout', 'submit button', 'wpsso' ),
 				),
 			);
 
