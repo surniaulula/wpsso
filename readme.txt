@@ -298,7 +298,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.0-dev.4 (2018/12/11)**
+**Version 4.18.0-dev.5 (2018/12/11)**
 
 * *New Features*
 	* Added a new SSO &gt; Tools settings page.
@@ -347,7 +347,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.0-dev.4 =
+= 4.18.0-dev.5 =
 
 (2018/12/11) Added a new SSO &gt; Tools settings page.
 
