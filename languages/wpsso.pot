@@ -991,6 +991,10 @@ msgstr ""
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
+#: lib/admin.php:4000
+msgid "Import of plugin and add-on settings is complete."
+msgstr ""
+
 #: lib/com/bfo.php:253 lib/com/cache.php:77 lib/com/notice.php:75
 #: lib/com-gettext-extract.php:23
 msgid "%s Notice"

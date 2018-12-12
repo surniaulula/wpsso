@@ -404,7 +404,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							}
 						}
 
-						$opts = $this->sanitize( $opts, $def_opts, $network );
+						$opts = $this->sanitize( $opts, $def_opts, $network );	// Sanitation updates image width/height info.
 					}
 
 					$this->save_options( $options_name, $opts, $network, $has_diff_options );

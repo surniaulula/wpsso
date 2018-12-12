@@ -3995,7 +3995,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->p->options = $this->p->opt->check_options( WPSSO_OPTIONS_NAME, $opts );
 
-			return update_option( WPSSO_OPTIONS_NAME, $opts );	// Just in case.
+			$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts );
+
+			$this->p->notice->upd( __( 'Import of plugin and add-on settings is complete.', 'wpsso' ) );
+
+			return true;
 		}
 	}
 }
