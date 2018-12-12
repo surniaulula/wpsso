@@ -298,13 +298,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.0-dev.5 (2018/12/11)**
+**Version 4.18.0-b.1 (2018/12/12)**
 
 * *New Features*
 	* Added a new SSO &gt; Tools settings page.
-	* Added a new "Export Plugin and Add-on Settings" button in the SSO &gt; Tools settings page.
+	* Added new action buttons in the SSO &gt; Tools settings page:
+		* Export Plugin and Add-on Settings
+		* Import Plugin and Add-on Settings
 * *Improvements*
-	* Moved the following submit / action buttons to the new SSO &gt; Tools settings page:
+	* Moved action buttons to the SSO &gt; Tools settings page:
 		* Clear All Caches
 		* Clear All Caches and Short URLs
 		* Reset Metabox Layout
@@ -347,9 +349,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.0-dev.5 =
+= 4.18.0-b.1 =
 
-(2018/12/11) Added a new SSO &gt; Tools settings page.
+(2018/12/12) Added a new SSO &gt; Tools settings page and new export / import action buttons.
 
 = 4.17.3.1 =
 
