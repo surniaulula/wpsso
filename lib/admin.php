@@ -1159,7 +1159,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				settings_errors( WPSSO_OPTIONS_NAME );
 			}
 
-			$menu_ext = $this->menu_ext;	// lowercase acronyn for plugin or add-on
+			$menu_ext = $this->menu_ext;	// Lowercase acronyn for plugin or add-on.
 
 			if ( empty( $menu_ext ) ) {
 				$menu_ext = $this->p->lca;
@@ -1179,9 +1179,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">' . "\n";
 				echo '<div id="side-info-column" class="inner-sidebar">' . "\n";
 
-				do_meta_boxes( $this->pagehook, 'side_top', null );
-				do_meta_boxes( $this->pagehook, 'side_fixed', null );
-				do_meta_boxes( $this->pagehook, 'side', null );
+				do_meta_boxes( $this->pagehook, $context = 'side_top', $object = null );
+				do_meta_boxes( $this->pagehook, $context = 'side_fixed', $object = null );
+				do_meta_boxes( $this->pagehook, $context = 'side', $object = null );
 
 				echo '</div><!-- #side-info-column -->' . "\n";
 				echo '<div id="post-body" class="has-sidebar">' . "\n";
@@ -1308,7 +1308,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			echo "\n";
 
-			do_meta_boxes( $this->pagehook, 'normal', null );
+			do_meta_boxes( $this->pagehook, $context = 'normal', $object = null );
 
 			do_action( $this->p->lca . '_form_content_metaboxes_' . $menu_hookname, $this->pagehook );
 

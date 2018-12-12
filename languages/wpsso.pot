@@ -6148,17 +6148,17 @@ msgctxt "submit button"
 msgid "Import Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:124
+#: lib/submenu/tools.php:125
 msgctxt "submit button"
 msgid "Reset User Dismissed Notices"
 msgstr ""
 
-#: lib/submenu/tools.php:125
+#: lib/submenu/tools.php:126
 msgctxt "submit button"
 msgid "Reset User Metabox Layout"
 msgstr ""
 
-#: lib/submenu/tools.php:131
+#: lib/submenu/tools.php:132
 msgctxt "submit button"
 msgid "Clear All Caches and Short URLs"
 msgstr ""
