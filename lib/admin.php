@@ -834,8 +834,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function registered_setting_sanitation( $opts ) {
 
-			$network = false;
-
 			if ( ! is_array( $opts ) ) {
 
 				add_settings_error( WPSSO_OPTIONS_NAME, 'notarray', '<b>' . strtoupper( $this->p->lca ) . ' Error</b> : ' .
@@ -853,8 +851,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $this->p->options, $opts );
-			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );	// Sanitation updates image width/height info.
-			$opts = apply_filters( $this->p->lca . '_save_options', $opts, WPSSO_OPTIONS_NAME, $network, false );	// $doing_upgrade is false.
+			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = false );	// Sanitation updates image width/height info.
+			$opts = apply_filters( $this->p->lca . '_save_options', $opts, WPSSO_OPTIONS_NAME, $network = false, $doing_upgrade = false );
 
 			$this->p->options = $opts;	// Update the options with any changes.
 
@@ -898,8 +896,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function save_site_options() {
 
-			$network = true;
-
 			if ( ! $page = SucomUtil::get_request_value( 'page', 'POST' ) ) {	// Uses sanitize_text_field.
 				$page = key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
 			}
@@ -940,8 +936,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$opts = empty( $_POST[WPSSO_SITE_OPTIONS_NAME] ) ? $def_opts : SucomUtil::restore_checkboxes( $_POST[WPSSO_SITE_OPTIONS_NAME] );
 			$opts = array_merge( $this->p->site_options, $opts );
-			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network );
-			$opts = apply_filters( $this->p->lca . '_save_site_options', $opts, $def_opts, $network );
+			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = true );
+			$opts = apply_filters( $this->p->lca . '_save_site_options', $opts, $def_opts, $network = true );
 
 			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
 
@@ -955,29 +951,30 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function load_setting_page() {
 
 			$action_query = $this->p->lca . '-action';
+			$action_value = SucomUtil::get_request_value( $action_query ) ;		// POST or GET with sanitize_text_field().
+			$action_value = SucomUtil::sanitize_hookname( $action_value );
+			$nonce_value  = SucomUtil::get_request_value( WPSSO_NONCE_NAME ) ;	// POST or GET with sanitize_text_field().
 
 			wp_enqueue_script( 'postbox' );
 
-			if ( ! empty( $_GET[$action_query] ) ) {
+			if ( ! empty( $action_value ) ) {
 
 				$_SERVER[ 'REQUEST_URI' ] = remove_query_arg( array( $action_query, WPSSO_NONCE_NAME ) );
 
-				$action_name = SucomUtil::sanitize_hookname( $_GET[ $action_query ] );
-
-				if ( empty( $_GET[ WPSSO_NONCE_NAME ] ) ) {	// WPSSO_NONCE_NAME is an md5() string.
+				if ( empty( $nonce_value ) ) {	// WPSSO_NONCE_NAME is an md5() string.
 
 					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'nonce token validation query field missing' );
+						$this->p->debug->log( 'nonce token validation field missing' );
 					}
 
-				} elseif ( ! wp_verify_nonce( $_GET[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {
+				} elseif ( ! wp_verify_nonce( $nonce_value, WpssoAdmin::get_nonce_action() ) ) {
 
 					$this->p->notice->err( sprintf( __( 'Nonce token validation failed for %1$s action "%2$s".',
-						'wpsso' ), 'admin', $action_name ) );
+						'wpsso' ), 'admin', $action_value ) );
 
 				} else {
 
-					switch ( $action_name ) {
+					switch ( $action_value ) {
 
 						case 'clear_all_cache':
 
@@ -1024,7 +1021,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'change_show_options':
 
-							$_SERVER['REQUEST_URI'] = remove_query_arg( array( 'show-opts' ) );
+							$_SERVER[ 'REQUEST_URI' ] = remove_query_arg( array( 'show-opts' ) );
 
 							if ( isset( $this->p->cf['form']['show_options'][$_GET['show-opts']] ) ) {
 
@@ -1064,11 +1061,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'import_plugin_settings_json':
 
+							$this->import_plugin_settings_json();
+
 							break;
 
 						default:
 
-							do_action( $this->p->lca . '_load_setting_page_' . $action_name,
+							do_action( $this->p->lca . '_load_setting_page_' . $action_value,
 								$this->pagehook, $this->menu_id, $this->menu_name, $this->menu_lib );
 
 							break;
@@ -1316,12 +1315,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo $this->get_form_buttons();
 			}
 
-			echo '<div id="' . $this->p->lca . '_form_content_footer">' . "\n";
-
-			do_action( $this->p->lca . '_form_content_footer', $this->pagehook );
-
-			echo '</div><!-- #' . $this->p->lca . '_form_content_footer -->' . "\n";
-
 			echo '</form>', "\n";
 		}
 
@@ -1364,21 +1357,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$buttons_html .= '<div class="submit-buttons">';
 
-				foreach ( $buttons_row as $action_name => $label_transl ) {
+				foreach ( $buttons_row as $action_value => $mixed ) {
 
-					if ( empty( $action_name ) || empty( $label_transl ) ) {	// Just in case.
+					if ( empty( $action_value ) || empty( $mixed ) ) {	// Just in case.
 						continue;
 					}
 
-					if ( $action_name === 'submit' ) {
+					if ( is_string( $mixed ) ) {
 
-						$buttons_html .= '<input type="' . $action_name . '" class="button-primary" value="' . $label_transl . '" />';
+						if ( $action_value === 'submit' ) {
 
-					} else {
+							$buttons_html .= '<input type="submit" class="button-primary" value="' . $mixed . '" />' . "\n";
 
-						$action_url   = $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=' . $action_name );
-						$button_url   = wp_nonce_url( $action_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
-						$buttons_html .= $this->form->get_button( $label_transl, $css_class, '', $button_url );
+						} else {
+
+							$action_url = $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=' . $action_value );
+							$button_url = wp_nonce_url( $action_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
+
+							$buttons_html .= $this->form->get_button( $mixed, $css_class, '', $button_url );
+						}
+
+					} elseif ( is_array( $mixed ) ) {
+
+						if ( ! empty( $mixed[ 'html' ] ) ) {
+							$buttons_html .= $mixed[ 'html' ];
+						}
 					}
 				}
 
@@ -3923,6 +3926,71 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			sleep( 1 );
 
 			exit();
+		}
+
+		public function import_plugin_settings_json() {
+
+			$file_mime_type = 'application/x-gzip';
+			$dot_file_ext  = '.json.gz';
+			$max_file_size  = 100000;	// 100K
+
+			if ( ! isset( $_FILES[ 'file' ][ 'error'] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'incomplete post method upload' );
+				}
+
+				return false;
+
+			} elseif ( $_FILES[ 'file' ][ 'error'] === UPLOAD_ERR_NO_FILE ) {
+
+				$this->p->notice->err( sprintf( __( 'Please select a %1$s settings file to import.',
+					'wpsso' ), $dot_file_ext ) );
+
+				return false;
+
+			} elseif ( $_FILES[ 'file' ][ 'type'] !== 'application/x-gzip' ) {
+
+				$this->p->notice->err( sprintf( __( 'The %1%s settings file to import must be an "%2$s" mime type.',
+					'wpsso' ), $dot_file_ext, $file_mime_type ) );
+
+				return false;
+
+			} elseif ( $_FILES[ 'file' ][ 'size' ] > $max_file_size ) {	// Just in case.
+
+				$this->p->notice->err( sprintf( __( 'The %1$s settings file is larger than the maximum of %2$d bytes allowed.',
+					'wpsso' ), $dot_file_ext, $max_file_size ) );
+
+				return false;
+			}
+
+			$gzdata = file_get_contents( $_FILES[ 'file' ][ 'tmp_name'] );
+
+			@unlink( $_FILES[ 'file' ][ 'tmp_name'] );
+
+			$opts_encoded = gzdecode( $gzdata );
+
+			if ( empty( $opts_encoded ) ) {	// false or empty array.
+
+				$this->p->notice->err( sprintf( __( 'The %1$s settings file is appears to be empty or corrupted.',
+					'wpsso' ), $dot_file_ext ) );
+
+				return false;
+			}
+
+			$opts = json_decode( $opts_encoded, $assoc = true );
+
+			if ( empty( $opts ) || ! is_array( $opts ) ) {	// false or empty array.
+
+				$this->p->notice->err( sprintf( __( 'The %1$s settings file could not be decoded into a settings array.',
+					'wpsso' ), $dot_file_ext ) );
+
+				return false;
+			}
+
+			$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts );
+
+			return true;
 		}
 	}
 }

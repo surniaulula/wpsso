@@ -269,7 +269,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 
 					if ( ! is_object( $this->upg ) ) {
+
 						require_once WPSSO_PLUGINDIR . 'lib/upgrade.php';
+
 						$this->upg = new WpssoOptionsUpgrade( $this->p );
 					}
 
@@ -1085,9 +1087,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Make sure we have something to work with.
 			 */
 			if ( empty( $opts ) || ! is_array( $opts ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: options variable is empty and/or not array' );
 				}
+
 				return $opts;
 			}
 
@@ -1110,15 +1114,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			$opts['options_version'] = $latest_version;	// Mark the new options array as current.
+			$opts[ 'options_version' ] = $latest_version;	// Mark the new options array as current.
 
 			$opts = apply_filters( $this->p->lca . '_save_options', $opts, $options_name, $network, $doing_upgrade );
 
 			if ( $network ) {
-				if ( $saved = update_site_option( $options_name, $opts ) ) {// Auto-creates options with autoload no.
+
+				if ( $saved = update_site_option( $options_name, $opts ) ) {	// Auto-creates options with autoload no.
 					$this->p->site_options = $opts;
 				}
+
 			} else {
+
 				if ( $saved = update_option( $options_name, $opts ) ) {		// Auto-creates options with autoload yes.
 					$this->p->options = $opts;
 				}
@@ -1513,6 +1520,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		public static function can_cache() {
+
 			return self::$allow_cache;
 		}
 	}

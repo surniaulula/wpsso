@@ -32,10 +32,33 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->p->util->add_plugin_filters( $this, array(
 				'form_button_rows'  => 1,
 			), SucomUtil::get_min_int() );
+		}
 
-			$this->p->util->add_plugin_actions( $this, array(
-				'form_content_footer' => 1,
-			) );
+		protected function show_form_content() {
+
+			echo '<div id="tools-content">' . "\n";
+
+			echo $this->get_form_buttons();
+
+			$using_external_cache = wp_using_ext_object_cache();
+
+			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
+
+				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
+					_x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ) );
+
+				echo '<p><small>[*] ';
+
+				if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
+					echo sprintf( __( '%1$s option is unchecked - shortened URL cache will be preserved.', 'wpsso' ), $settings_page_link );
+				} else {
+					echo sprintf( __( '%1$s option is checked - shortened URL cache will be cleared.', 'wpsso' ), $settings_page_link );
+				}
+
+				echo '</small></p>';
+			}
+
+			echo '</div><!-- #wpsso_tools -->' . "\n";
 		}
 
 		public function filter_form_button_rows( $form_button_rows ) {
@@ -66,7 +89,17 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				),
 				array(
 					'export_plugin_settings_json' => $export_label_transl,
-					'import_plugin_settings_json' => $import_label_transl,
+					'import_plugin_settings_json' => array(
+						'html' => '
+							<form enctype="multipart/form-data" action="' . $this->p->util->get_admin_url() . '" method="post">' .
+							wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME ) . '
+							<input type="hidden" name="' .$this->p->lca . '-action" value="import_plugin_settings_json" />
+							<input type="submit" class="button-secondary button-alt" value="' . $import_label_transl . '"
+								style="display:inline-block;" />
+							<input type="file" name="file" accept="application/x-gzip" />
+							</form>
+						',
+					),
 				),
 				array(
 					'reset_user_dismissed_notices' => _x( 'Reset User Dismissed Notices', 'submit button', 'wpsso' ),
@@ -83,27 +116,6 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return $form_button_rows;
-		}
-
-		public function action_form_content_footer( $pagehook ) {
-
-			$using_external_cache = wp_using_ext_object_cache();
-
-			if ( ! $using_external_cache && $this->p->options['plugin_shortener'] !== 'none' ) {
-
-				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-					_x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ) );
-
-				echo '<p><small>[*] ';
-
-				if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
-					echo sprintf( __( '%1$s option is unchecked - shortened URL cache will be preserved.', 'wpsso' ), $settings_page_link );
-				} else {
-					echo sprintf( __( '%1$s option is checked - shortened URL cache will be cleared.', 'wpsso' ), $settings_page_link );
-				}
-
-				echo '</small></p>';
-			}
 		}
 	}
 }
