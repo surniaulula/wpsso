@@ -1174,7 +1174,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo $this->menu_name;
 			echo '</span></h1>' . "\n";
 
-			if ( ! self::$pkg[$this->p->lca][ 'pp' ] ) {
+			if ( ! self::$pkg[ $this->p->lca ][ 'pp' ] ) {
+
 				echo '<div id="poststuff" class="metabox-holder has-right-sidebar">' . "\n";
 				echo '<div id="side-info-column" class="inner-sidebar">' . "\n";
 
@@ -1185,7 +1186,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				echo '</div><!-- #side-info-column -->' . "\n";
 				echo '<div id="post-body" class="has-sidebar">' . "\n";
 				echo '<div id="post-body-content" class="has-sidebar-content">' . "\n";
+
 			} else {
+
 				echo '<div id="poststuff" class="metabox-holder no-right-sidebar">' . "\n";
 				echo '<div id="post-body" class="no-sidebar">' . "\n";
 				echo '<div id="post-body-content" class="no-sidebar-content">' . "\n";
@@ -1201,9 +1204,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				jQuery( document ).ready(
 					function( $ ) {
 						// close postboxes that should be closed
-						$('.if-js-closed').removeClass('if-js-closed').addClass('closed');
+						$( '.if-js-closed' ).removeClass( 'if-js-closed' ).addClass( 'closed' );
 						// postboxes setup
-						postboxes.add_postbox_toggles('<?php echo $this->pagehook; ?>');
+						postboxes.add_postbox_toggles( '<?php echo $this->pagehook; ?>' );
 					}
 				);
 			</script>
@@ -1293,7 +1296,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			echo "\n" . '<!-- ' . $this->p->lca . ' nonce fields -->' . "\n";
 
-			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );	// WPSSO_NONCE_NAME is an md5() string
+			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 			echo "\n";
 
@@ -3956,7 +3959,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			} elseif ( $_FILES[ 'file' ][ 'type'] !== 'application/x-gzip' ) {
 
-				$this->p->notice->err( sprintf( __( 'The %1%s settings file to import must be an "%2$s" mime type.',
+				$this->p->notice->err( sprintf( __( 'The %1$s settings file to import must be an "%2$s" mime type.',
 					'wpsso' ), $dot_file_ext, $mime_type_gz ) );
 
 				return false;
