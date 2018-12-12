@@ -1457,7 +1457,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
 				( empty( $css_id ) ? '' : ' id="button_' . esc_attr( $css_id ) . '"' ) .
 				( empty( $url ) || $disabled ? '' : $on_click ) .
-				' value="' . wp_kses( $value, array() ) . '" ' . $data_attr . '/>';
+				' value="' . esc_attr( wp_kses( $value, array() ) ) . '" ' . $data_attr . '/>';
 
 			return $html;
 		}

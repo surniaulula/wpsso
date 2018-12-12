@@ -1327,9 +1327,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$submit_label_transl = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
 			}
 
-			$view_next_key     = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf['form']['show_options'] );
-			$view_name_transl  = _x( $this->p->cf['form']['show_options'][$view_next_key], 'option value', 'wpsso' );
-			$view_label_transl = sprintf( _x( 'View %s by Default', 'submit button', 'wpsso' ), $view_name_transl );
+			$view_next_key     = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf[ 'form' ][ 'show_options' ] );
+			$view_name_transl  = _x( $this->p->cf[ 'form' ][ 'show_options' ][ $view_next_key ], 'option value', 'wpsso' );
+			$view_label_transl = sprintf( _x( 'View "%s" by Default', 'submit button', 'wpsso' ), $view_name_transl );
 
 			/**
 			 * A two dimentional array of button rows. The 'submit' button will be assigned a class of 'button-primary',
@@ -3558,7 +3558,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->form->get_hidden( 'plugin_hide_pro', 0, true );
 			}
 
-			$table_rows['plugin_show_opts'] = '' .
+			$table_rows[ 'plugin_show_opts' ] = '' .
 			$this->form->get_th_html( _x( 'Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
 			'<td>' . $this->form->get_select( 'plugin_show_opts', $this->p->cf['form']['show_options'] ) . '</td>' .
 			self::get_option_site_use( 'plugin_show_opts', $this->form, $network, true );

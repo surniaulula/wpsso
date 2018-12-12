@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.18.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-12-12 08:36-0800\n"
-"PO-Revision-Date: 2018-12-12 08:38-0800\n"
+"POT-Creation-Date: 2018-12-12 08:58-0800\n"
+"PO-Revision-Date: 2018-12-12 09:27-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -172,8 +172,8 @@ msgstr "Enregistrer les réglages"
 
 #: lib/admin.php:1332
 msgctxt "submit button"
-msgid "View %s by Default"
-msgstr "Montrer %s par défaut"
+msgid "View \"%s\" by Default"
+msgstr "Voir \"%s\" par défaut"
 
 #: lib/admin.php:1410
 msgid "%s Database Transients"
@@ -5331,26 +5331,26 @@ msgstr "Guide de configuration et autres notes"
 
 #: lib/submenu/tools.php:70
 msgid "%1$s option is unchecked - shortened URL cache will be preserved."
-msgstr "L'option %1$s n'est pas cochée - le cache d'URL raccourci sera préservé."
+msgstr "L'option %1$s n'est pas cochée - le cache d'URLs raccourcis sera préservé."
 
 #: lib/submenu/tools.php:72
 msgid "%1$s option is checked - shortened URL cache will be cleared."
-msgstr "L'option %1$s est cochée - le cache d'URL raccourci sera vidé."
+msgstr "L'option %1$s est cochée - le cache d'URLs raccourcis sera vidé."
 
 #: lib/submenu/tools.php:86
 msgctxt "submit button"
 msgid "Clear All Caches for Site ID %d"
-msgstr "Vider tout les caches ID de site %d"
+msgstr "Vider tout les caches pour site ID %d"
 
 #: lib/submenu/tools.php:88
 msgctxt "submit button"
 msgid "Export Settings for Site ID %d"
-msgstr "Exporter réglages ID de site %d"
+msgstr "Exporter réglages pour site ID %d"
 
 #: lib/submenu/tools.php:90
 msgctxt "submit button"
 msgid "Import Settings for Site ID %d"
-msgstr "Importer réglages ID de site %d"
+msgstr "Importer réglages pour site ID %d"
 
 #: lib/submenu/tools.php:94
 msgctxt "submit button"
@@ -5375,7 +5375,7 @@ msgstr "Réinit. disposition métabox pour l'utilisateur"
 #: lib/submenu/tools.php:131
 msgctxt "submit button"
 msgid "Clear All Caches and Short URLs"
-msgstr "Vider tout et URLs raccourcies"
+msgstr "Vider tout les caches et URLs raccourcies"
 
 #. translators: %1$0.3f is a number of seconds, %2$d is an ID number, %3$s is a taxonomy name, %4$s is a recommended max
 #: lib/term.php:241

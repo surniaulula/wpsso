@@ -179,7 +179,7 @@ msgstr ""
 
 #: lib/admin.php:1332
 msgctxt "submit button"
-msgid "View %s by Default"
+msgid "View \"%s\" by Default"
 msgstr ""
 
 #: lib/admin.php:1410
