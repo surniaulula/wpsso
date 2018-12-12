@@ -102,6 +102,8 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					),
 				),
 				array(
+				),
+				array(
 					'reset_user_dismissed_notices' => _x( 'Reset User Dismissed Notices', 'submit button', 'wpsso' ),
 					'reset_user_metabox_layout'    => _x( 'Reset User Metabox Layout', 'submit button', 'wpsso' ),
 				),

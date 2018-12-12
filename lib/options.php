@@ -229,9 +229,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$has_diff_version = false;
 				$has_diff_options = false;
 
-				$has_new_options = empty( $opts['options_version'] ) ? true : false;
-				$current_version = $has_new_options ? 0 : $opts['options_version'];
-				$latest_version  = $this->p->cf['opt'][ 'version' ];
+				$has_new_options = empty( $opts[ 'options_version' ] ) ? true : false;
+				$current_version = $has_new_options ? 0 : $opts[ 'options_version' ];
+				$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
 				$doing_upgrade   = $has_new_options || ! $has_diff_options || $current_version === $latest_version ? false : true;
 
 				/**
@@ -384,7 +384,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					 * Please note that generator meta tags are required for plugin support. If you 
 					 * disable the generator meta tags, requests for plugin support will be denied.
 					 */
-					$opts['add_meta_name_generator'] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
+					$opts[ 'add_meta_name_generator' ] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
 
 					$this->check_banner_image_size( $opts );
 				}
@@ -1092,12 +1092,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'exiting early: options variable is empty and/or not array' );
 				}
 
-				return $opts;
+				return false;
 			}
 
-			$has_new_options = empty( $opts['options_version'] ) ? true : false;
-			$current_version = $has_new_options ? 0 : $opts['options_version'];
-			$latest_version  = $this->p->cf['opt'][ 'version' ];
+			$has_new_options = empty( $opts[ 'options_version' ] ) ? true : false;
+			$current_version = $has_new_options ? 0 : $opts[ 'options_version' ];
+			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
 			$doing_upgrade   = $has_new_options || ! $has_diff_options || $current_version === $latest_version ? false : true;
 
 			/**

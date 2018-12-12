@@ -1343,16 +1343,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$form_button_rows = apply_filters( $this->p->lca . '_form_button_rows',
 				$form_button_rows, $this->menu_id, $this->menu_name, $this->menu_lib, $this->menu_ext );
 
+			$row_num = 0;
+
 			$buttons_html = '';
 
 			foreach ( $form_button_rows as $key => $buttons_row ) {
 
-				if ( $key >= 2 ) {
-					$css_class = 'button-secondary';
-				} elseif ( $key >= 1 ) {
-					$css_class = 'button-secondary button-alt';
+				if ( $row_num >= 2 ) {
+					$css_class = 'button-secondary';			// Third+ row.
+				} elseif ( $row_num >= 1 ) {
+					$css_class = 'button-secondary button-alt';		// Second row.
 				} else {
-					$css_class = 'button-secondary button-highlight';
+					$css_class = 'button-secondary button-highlight';	// First row.
 				}
 
 				$buttons_html .= '<div class="submit-buttons">';
@@ -1386,6 +1388,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				$buttons_html .= '</div>';
+
+				$row_num++;
 			}
 
 			return $buttons_html;
@@ -2116,7 +2120,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								}
 							}
 
-							$table_rows[$key] = '<th class="medium nowrap">' . $label . '</th><td width="100%">' . $val . '</td>';
+							$table_rows[ $key ] = '<th class="medium nowrap">' . $label . '</th><td width="100%">' . $val . '</td>';
 						}
 
 					} else {
@@ -3123,7 +3127,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				foreach ( array( 'wp', 'php' ) as $key ) {
 
-					if ( isset( WpssoConfig::$cf[$key]['rec_version'] ) ) {
+					if ( isset( WpssoConfig::$cf[ $key ]['rec_version'] ) ) {
 
 						switch ( $key ) {
 							case 'wp':
@@ -3137,16 +3141,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								continue 2;
 						}
 
-						$app_label   = WpssoConfig::$cf[$key]['label'];
-						$rec_version = WpssoConfig::$cf[$key]['rec_version'];
+						$app_label   = WpssoConfig::$cf[ $key ]['label'];
+						$rec_version = WpssoConfig::$cf[ $key ]['rec_version'];
 
 						if ( version_compare( $app_version, $rec_version, '<' ) ) {
 
 							$warn_msg = $this->p->msgs->get( 'notice-recommend-version', array(
 								'app_label'   => $app_label,
 								'app_version' => $app_version,
-								'rec_version' => WpssoConfig::$cf[$key]['rec_version'],
-								'version_url' => WpssoConfig::$cf[$key]['version_url'],
+								'rec_version' => WpssoConfig::$cf[ $key ]['rec_version'],
+								'version_url' => WpssoConfig::$cf[ $key ]['version_url'],
 							) );
 
 							$notice_key   = 'notice-recommend-version-' . $this->p->lca . '-' . $version . '-' . $app_label . '-' . $app_version;
@@ -3654,7 +3658,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 				if ( ! $readme_from_url && is_array( $readme_info ) ) {
 					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key ) {
-						unset ( $readme_info[$key] );
+						unset ( $readme_info[ $key ] );
 					}
 				}
 			}
@@ -3870,11 +3874,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function export_plugin_settings_json() {
 
-			$filename = WpssoConfig::get_version( $add_slug = true ) . '.json.gz';
-
+			$date_slug    = date( 'YmdHiT' );
+			$home_slug    = SucomUtil::sanitize_hookname( preg_replace( '/^.*\/\//', '', get_home_url() ) );
+			$mime_type_gz = 'application/x-gzip';
+			$file_name_gz = WpssoConfig::get_version( $add_slug = true ) . '-' . $home_slug . '-' . $date_slug . '.json.gz';
 			$opts_encoded = SucomUtil::json_encode_array( $this->p->options );
-
-			$gzdata = gzencode( $opts_encoded, 9, FORCE_GZIP );
+			$gzdata       = gzencode( $opts_encoded, 9, FORCE_GZIP );
 
 			session_write_close();
 			@ignore_user_abort();
@@ -3892,7 +3897,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Remove all dots, except last one, for MSIE clients.
 			 */
 			if ( strstr( $_SERVER['HTTP_USER_AGENT'], 'MSIE' ) ) {
-				$filename = preg_replace( '/\./', '%2e', $filename, substr_count( $filename, '.' ) - 1 );
+				$file_name_gz = preg_replace( '/\./', '%2e', $file_name_gz, substr_count( $file_name_gz, '.' ) - 1 );
 			}
 	
 			if ( isset( $_SERVER['HTTPS'] ) ) {
@@ -3914,8 +3919,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				header( 'Pragma: no-cache' );
 			}
 
-			header( 'Content-Type: application/' . pathinfo( $filename, PATHINFO_EXTENSION ) );
-			header( 'Content-Disposition: ' . $disposition . '; filename="' . $filename . '"' );
+			header( 'Content-Type: application/' . $mime_type_gz );
+			header( 'Content-Disposition: ' . $disposition . '; filename="' . $file_name_gz . '"' );
 			header( 'Content-Transfer-Encoding: binary' );
 			header( 'Content-Length: ' . $filesize );
 
@@ -3930,9 +3935,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function import_plugin_settings_json() {
 
-			$file_mime_type = 'application/x-gzip';
+			$mime_type_gz  = 'application/x-gzip';
 			$dot_file_ext  = '.json.gz';
-			$max_file_size  = 100000;	// 100K
+			$max_file_size = 100000;	// 100K
 
 			if ( ! isset( $_FILES[ 'file' ][ 'error'] ) ) {
 
@@ -3952,7 +3957,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			} elseif ( $_FILES[ 'file' ][ 'type'] !== 'application/x-gzip' ) {
 
 				$this->p->notice->err( sprintf( __( 'The %1%s settings file to import must be an "%2$s" mime type.',
-					'wpsso' ), $dot_file_ext, $file_mime_type ) );
+					'wpsso' ), $dot_file_ext, $mime_type_gz ) );
 
 				return false;
 
@@ -3988,9 +3993,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return false;
 			}
 
-			$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts );
+			$this->p->options = $this->p->opt->check_options( WPSSO_OPTIONS_NAME, $opts );
 
-			return true;
+			return update_option( WPSSO_OPTIONS_NAME, $opts );	// Just in case.
 		}
 	}
 }

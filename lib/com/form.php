@@ -1551,8 +1551,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return '';
 			}
 
-			$js_if_empty = 'if (this.value == \'\') this.value = \'' . esc_js( $placeholder ) . '\';';
-			$js_if_same  = 'if (this.value == \'' . esc_js( $placeholder ) . '\') this.value = \'\';';
+			$js_if_empty = 'if ( this.value == \'\' ) this.value = \'' . esc_js( $placeholder ) . '\';';
+			$js_if_same  = 'if ( this.value == \'' . esc_js( $placeholder ) . '\' ) this.value = \'\';';
 
 			$html = ' placeholder="' . esc_attr( $placeholder ) . '"' .
 				' onClick="' . $js_if_empty . '"' .
@@ -1561,10 +1561,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( $type === 'input' ) {
 				$html .= ' onKeyPress="if ( event.keyCode === 13 ) { ' . $js_if_same . ' }"';
-			} elseif ( $type === 'textarea' ) {
-				$html .= ' onMouseOver="' . $js_if_empty . '"';
-				$html .= ' onMouseOut="' . $js_if_same . '"';
 			}
+
+			$html .= ' onMouseEnter="' . $js_if_empty . '"';
+			$html .= ' onMouseLeave="' . $js_if_same . '"';
 
 			return $html;
 		}

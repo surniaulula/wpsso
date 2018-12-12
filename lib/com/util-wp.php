@@ -82,17 +82,21 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of wp_get_shortlink() from wordpress/wp-includes/link-template.php
-		 * Last synchronized with WordPress v4.9 on 2017/11/27.
+		 * Last synchronized with WordPress v5.0 on 2018/12/12.
 		 */
 		public static function raw_wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
 		
 			$post_id = 0;
 			
 			if ( 'query' === $context && is_singular() ) {
+
 				$post_id = get_queried_object_id();
-				$post = get_post( $post_id );
+				$post    = get_post( $post_id );
+
 			} elseif ( 'post' === $context ) {
+
 				$post = get_post( $id );
+
 				if ( ! empty( $post->ID ) ) {
 					$post_id = $post->ID;
 				}
@@ -105,8 +109,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$post_type = get_post_type_object( $post->post_type ); 
 
 				if ( 'page' === $post->post_type && $post->ID == get_option( 'page_on_front' ) && 'page' == get_option( 'show_on_front' ) ) {
+
 					$shortlink = home_url( '/' );
+
 				} elseif ( ! empty( $post_type->public ) ) {
+
 					$shortlink = home_url( '?p=' . $post_id );
 				}
 			} 
@@ -116,7 +123,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of home_url() from wordpress/wp-includes/link-template.php
-		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
+		 * Last synchronized with WordPress v5.0 on 2018/12/12.
 		 */
 		public static function raw_home_url( $path = '', $scheme = null ) {
 
@@ -125,7 +132,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of get_home_url() from wordpress/wp-includes/link-template.php
-		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
+		 * Last synchronized with WordPress v5.0 on 2018/12/12.
 		 */
 		public static function raw_get_home_url( $blog_id = null, $path = '', $scheme = null ) {
 
@@ -161,7 +168,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$url = self::raw_set_url_scheme( $url, $scheme );
 
 			if ( $path && is_string( $path ) ) {
-				$url .= '/'.ltrim( $path, '/' );
+				$url .= '/' . ltrim( $path, '/' );
 			}
 
 			return $url;
@@ -169,7 +176,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of set_url_scheme() from wordpress/wp-includes/link-template.php
-		 * Last synchronized with WordPress v4.8.2 on 2017/10/22.
+		 * Last synchronized with WordPress v5.0 on 2018/12/12.
 		 */
 		private static function raw_set_url_scheme( $url, $scheme = null ) {
 
@@ -192,7 +199,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$url = ltrim( preg_replace( '#^\w+://[^/]*#', '', $url ) );
 
 				if ( $url !== '' && $url[0] === '/' ) {
-					$url = '/'.ltrim( $url, "/ \t\n\r\0\x0B" );
+					$url = '/' . ltrim( $url, "/ \t\n\r\0\x0B" );
 				}
 
 			} else {
