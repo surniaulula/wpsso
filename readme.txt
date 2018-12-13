@@ -113,10 +113,12 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 		* Product Condition
 		* Product Material
 		* Product SKU
+		* Product EAN
 		* Product GTIN-8
 		* Product GTIN-12
 		* Product GTIN-13
 		* Product GTIN-14
+		* Product ISBN
 		* Product Price
 		* Product Size
 		* Product Target Gender
@@ -432,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.0-b.2 (2018/12/13)**
+**Version 4.18.0-b.3 (2018/12/13)**
 
 * *New Features*
 	* Added a new SSO &gt; Tools settings page.
@@ -440,15 +442,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Export Plugin and Add-on Settings
 		* Import Plugin and Add-on Settings
 	* Added new options under the SSO &gt; Advanced &gt; Custom Meta tab:
+		* Product EAN Custom Field
 		* Product GTIN-8 Custom Field
 		* Product GTIN-12 Custom Field
 		* Product GTIN-13 Custom Field
 		* Product GTIN-14 Custom Field
+		* Product ISBN Custom Field
 	* Added new options in the Document SSO metabox for products:
+		* Product EAN
 		* Product GTIN-8
 		* Product GTIN-12
 		* Product GTIN-13
 		* Product GTIN-14
+		* Product ISBN
 * *Improvements*
 	* Moved action buttons to the SSO &gt; Tools settings page:
 		* Clear All Caches
@@ -493,7 +499,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.0-b.2 =
+= 4.18.0-b.3 =
 
 (2018/12/13) Added a new SSO &gt; Tools settings page and new export / import action buttons.
 
