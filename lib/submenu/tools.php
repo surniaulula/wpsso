@@ -67,9 +67,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				echo '<p><small>[*] ';
 
 				if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
-					echo sprintf( __( '%1$s option is unchecked - shortened URL cache will be preserved.', 'wpsso' ), $settings_page_link );
+					echo sprintf( __( '%1$s option is unchecked - shortened URLs cache will be preserved.', 'wpsso' ), $settings_page_link );
 				} else {
-					echo sprintf( __( '%1$s option is checked - shortened URL cache will be cleared.', 'wpsso' ), $settings_page_link );
+					echo sprintf( __( '%1$s option is checked - shortened URLs cache will be cleared.', 'wpsso' ), $settings_page_link );
 				}
 
 				echo '</small></p>';

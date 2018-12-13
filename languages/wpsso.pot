@@ -6116,11 +6116,11 @@ msgid "Setup Guide and Other Notes"
 msgstr ""
 
 #: lib/submenu/tools.php:70
-msgid "%1$s option is unchecked - shortened URL cache will be preserved."
+msgid "%1$s option is unchecked - shortened URLs cache will be preserved."
 msgstr ""
 
 #: lib/submenu/tools.php:72
-msgid "%1$s option is checked - shortened URL cache will be cleared."
+msgid "%1$s option is checked - shortened URLs cache will be cleared."
 msgstr ""
 
 #: lib/submenu/tools.php:86
