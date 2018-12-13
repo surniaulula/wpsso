@@ -143,7 +143,93 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 			* Image ID
 			* or Image URL
 
-	Additional custom Schema property options are available from the [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) add-on (for Schema Creative Work, Event, How-To, Job Posting, Movie, Organization, Person, QA Page, Recipe, Review, Claim Review, Software Application, etc.).
+* Additional custom Schema property options are also available from the [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) add-on:
+
+	* All Schema Types
+		* Schema Type
+		* Name / Title
+		* Alternate Name
+		* Description
+		* Microdata Type URLs
+		* Same-As URLs
+	* Creative Work Information
+		* Headline
+		* Full Text
+		* Keywords
+		* Language
+		* Family Friendly
+		* Copyright Year
+		* Publisher
+		* Service Provider
+	* Event Information
+		* Event Language
+		* Event Organizer Org.
+		* Event Organizer Person
+		* Event Performer Org.
+		* Event Performer Person
+		* Event Venue
+		* Event Start (date, time, timezone)
+		* Event End (date, time, timezone)
+		* Offers Start (date, time, timezone)
+		* Offers End (date, time, timezone)
+		* Event Offers (name, price, currency, availability)
+	* How-To
+		* How-To Makes 
+		* How-To Preparation Time 
+		* How-To Total Time 
+		* How-To Supplies 
+		* How-To Tools 
+		* How-To Steps 
+	* Job Posting Information
+		* Job Posting Job Title
+		* Job Posting Hiring Organization
+		* Job Posting Job Location
+		* Job Posting Base Salary
+		* Job Posting Employment Type
+		* Job Posting Expires
+	* Movie Information
+		* Cast Names
+		* Director Names
+		* Production Company
+		* Movie Runtime
+	* Organization Information
+		* Organization
+	* Person Information
+		* Person
+	* QA Page Information
+		* QA Heading
+	* Recipe Information
+		* Recipe Cuisine 
+		* Recipe Course 
+		* Recipe Makes 
+		* Recipe Cooking Method 
+		* Recipe Preparation Time 
+		* Recipe Cooking Time 
+		* Recipe Total Time 
+		* Recipe Total Calories 
+		* Recipe Ingredients 
+		* Recipe Instructions 
+		* Recipe Nutrition Information per Serving 
+			* Serving Size
+			* Calories
+			* Protein
+			* Fiber
+			* Carbohydrates
+			* Sugar
+			* Sodium
+			* Fat
+			* Saturated Fat
+			* Unsaturated Fat
+			* Trans Fat
+			* Cholesterol
+	* Review Information
+		* Subject Webpage URL 
+		* Review Rating 
+		* Review Rating Name
+	* Claim Review Information
+		* Specific Claims Reviewed
+	* Software Application Information
+		* Operating System
 
 * Optionally upscale small images from the Media Library for social sharing and Schema markup.
 
