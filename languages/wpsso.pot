@@ -2752,9 +2752,9 @@ msgctxt "option label"
 msgid "Product GTIN-12"
 msgstr ""
 
-#: lib/gpl/admin/post.php:228
+#: lib/gpl/admin/post.php:228 lib/messages.php:2401 lib/pro/admin/post.php:218
 msgctxt "option label"
-msgid "Product GTIN-13 / ISBN"
+msgid "Product GTIN-13"
 msgstr ""
 
 #: lib/gpl/admin/post.php:236 lib/messages.php:2405 lib/pro/admin/post.php:225
@@ -2993,7 +2993,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:165
-msgid "You may select %1$s, or leave the default value as-is."
+msgid "You may specify %1$s, or leave the default value as-is."
 msgstr ""
 
 #: lib/messages.php:167
@@ -4932,11 +4932,6 @@ msgctxt "tooltip fragment"
 msgid ""
 "a product GTIN-12 code (12-digit GS1 identification key composed of a U.P.C. "
 "company prefix, item reference, and check digit)"
-msgstr ""
-
-#: lib/messages.php:2401 lib/pro/admin/post.php:218
-msgctxt "option label"
-msgid "Product GTIN-13"
 msgstr ""
 
 #: lib/messages.php:2402

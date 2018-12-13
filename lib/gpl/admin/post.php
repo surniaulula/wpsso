@@ -225,7 +225,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Product GTIN-13 / ISBN', 'option label', 'wpsso' ),
+					'label'    => _x( 'Product GTIN-13', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_gtin13',
 					'content'  => $form->get_no_input( 'product_gtin13', '', '', true ),	// $placeholder is true for default value.
 				),

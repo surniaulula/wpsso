@@ -162,7 +162,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( ! empty( $plugin_cf_info ) ) {	// Just in case.
 
-								$text = sprintf( __( 'You may select %1$s, or leave the default value as-is.', 'wpsso' ), $plugin_cf_info[ 1 ] ) . ' ';
+								$text = sprintf( __( 'You may specify %1$s, or leave the default value as-is.', 'wpsso' ), $plugin_cf_info[ 1 ] ) . ' ';
 
 								$text .= sprintf( __( 'The "%1$s" value may be used in Open Graph meta tags and <em>the Schema markup of products with a single variation</em>.', 'wpsso' ), $plugin_cf_info[ 0 ] ) . ' ';
 
