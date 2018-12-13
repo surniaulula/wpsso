@@ -157,7 +157,7 @@
 </ul></li>
 </ul>
 
-<p>Additional Schema type specific options are available with the <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup Pro</a> add-on (ie. Creative Work, Event, How-To, Job Posting, Movie, Organization, Person, QA Page, Recipe, Review, Claim Review, Software Application, etc.).</p></li>
+<p>Additional custom Schema property options are available from the <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup Pro</a> add-on (for Schema Creative Work, Event, How-To, Job Posting, Movie, Organization, Person, QA Page, Recipe, Review, Claim Review, Software Application, etc.).</p></li>
 <li><p>Optionally upscale small images from the Media Library for social sharing and Schema markup.</p></li>
 <li><p>Automatically validate all image minimum / maximum dimensions and aspect ratios.</p></li>
 <li><p>Render shortcodes and blocks for accurate description texts and embedded video detection.</p></li>

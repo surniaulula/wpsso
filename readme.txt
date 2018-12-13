@@ -143,7 +143,7 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 			* Image ID
 			* or Image URL
 
-	Additional Schema type specific options are available with the [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) add-on (ie. Creative Work, Event, How-To, Job Posting, Movie, Organization, Person, QA Page, Recipe, Review, Claim Review, Software Application, etc.).
+	Additional custom Schema property options are available from the [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) add-on (for Schema Creative Work, Event, How-To, Job Posting, Movie, Organization, Person, QA Page, Recipe, Review, Claim Review, Software Application, etc.).
 
 * Optionally upscale small images from the Media Library for social sharing and Schema markup.
 
