@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Brand', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_brand',
-					'content'  => $form->get_no_input( 'product_brand', '', '', true ),	// $placeholder is true for default value.
+					'content'  => $form->get_no_input( 'product_brand', '', '', $placeholder = true ),
 				),
 				'product_color' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -179,7 +179,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Color', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_color',
-					'content'  => $form->get_no_input( 'product_color', '', '', true ),	// $placeholder is true for default value.
+					'content'  => $form->get_no_input( 'product_color', '', '', $placeholder = true ),
 				),
 				'product_condition' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -195,7 +195,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Material', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_material',
-					'content'  => $form->get_no_input( 'product_material', '', '', true ),	// $placeholder is true for default value.
+					'content'  => $form->get_no_input( 'product_material', '', '', $placeholder = true ),
 				),
 				'product_sku' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -203,7 +203,15 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product SKU', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_sku',
-					'content'  => $form->get_no_input( 'product_sku', '', '', true ),	// $placeholder is true for default value.
+					'content'  => $form->get_no_input( 'product_sku', '', '', $placeholder = true ),
+				),
+				'product_ean' => array(
+					'tr_class' => 'hide_og_type hide_og_type_product',
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product EAN', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_ean',
+					'content'  => $form->get_no_input( 'product_ean', '', '', $placeholder = true ),
 				),
 				'product_gtin8' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -211,7 +219,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product GTIN-8', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_gtin8',
-					'content'  => $form->get_no_input( 'product_gtin8', '', '', true ),	// $placeholder is true for default value.
+					'content'  => $form->get_no_input( 'product_gtin8', '', '', $placeholder = true ),
 				),
 				'product_gtin12' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -219,7 +227,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product GTIN-12', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_gtin12',
-					'content'  => $form->get_no_input( 'product_gtin12', '', '', true ),	// $placeholder is true for default value.
+					'content'  => $form->get_no_input( 'product_gtin12', '', '', $placeholder = true ),
 				),
 				'product_gtin13' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -227,7 +235,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product GTIN-13', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_gtin13',
-					'content'  => $form->get_no_input( 'product_gtin13', '', '', true ),	// $placeholder is true for default value.
+					'content'  => $form->get_no_input( 'product_gtin13', '', '', $placeholder = true ),
 				),
 				'product_gtin14' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -235,7 +243,15 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product GTIN-14', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_gtin14',
-					'content'  => $form->get_no_input( 'product_gtin14', '', '', true ),	// $placeholder is true for default value.
+					'content'  => $form->get_no_input( 'product_gtin14', '', '', $placeholder = true ),
+				),
+				'product_isbn' => array(
+					'tr_class' => 'hide_og_type hide_og_type_product',
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product ISBN', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_isbn',
+					'content'  => $form->get_no_input( 'product_isbn', '', '', $placeholder = true ),
 				),
 				'product_price' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',

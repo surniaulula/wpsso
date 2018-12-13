@@ -2487,6 +2487,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':shipping_weight:value'           => '',
 				$mt_pre . ':shipping_weight:units'           => '',
 				$mt_pre . ':size'                            => '',
+				$mt_pre . ':sku'                             => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':target_gender'                   => '',
 				$mt_pre . ':upc'                             => '',
 				$mt_pre . ':weight:value'                    => '',

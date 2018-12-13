@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.18.0-b.2',	// Plugin version.
+					'version'     => '4.18.0-b.3',	// Plugin version.
 					'opt_version' => '623',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1154,10 +1154,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_condition'   => '',			// Product Condition Custom Field.
 					'plugin_cf_product_material'    => '',			// Product Material Custom Field.
 					'plugin_cf_product_sku'         => '',			// Product SKU Custom Field.
+					'plugin_cf_product_ean'         => '',			// Product EAN Custom Field.
 					'plugin_cf_product_gtin8'       => '',			// Product GTIN-8 Custom Field.
 					'plugin_cf_product_gtin12'      => '',			// Product GTIN-12 Custom Field.
 					'plugin_cf_product_gtin13'      => '',			// Product GTIN-13 Custom Field.
 					'plugin_cf_product_gtin14'      => '',			// Product GTIN-14 Custom Field.
+					'plugin_cf_product_isbn'        => '',			// Product ISBN Custom Field.
 					'plugin_cf_product_price'       => '',			// Product Price Custom Field.
 					'plugin_cf_product_currency'    => '',			// Product Currency Custom Field.
 					'plugin_cf_product_size'        => '',			// Product Size Custom Field.
@@ -1396,10 +1398,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_condition'   => 'product_condition',
 					'plugin_cf_product_material'    => 'product_material',
 					'plugin_cf_product_sku'         => 'product_sku',
+					'plugin_cf_product_ean'         => 'product_ean',
 					'plugin_cf_product_gtin8'       => 'product_gtin8',
 					'plugin_cf_product_gtin12'      => 'product_gtin12',
 					'plugin_cf_product_gtin13'      => 'product_gtin13',
 					'plugin_cf_product_gtin14'      => 'product_gtin14',
+					'plugin_cf_product_isbn'        => 'product_isbn',
 					'plugin_cf_product_price'       => 'product_price',
 					'plugin_cf_product_currency'    => 'product_currency',
 					'plugin_cf_product_size'        => 'product_size',
@@ -1422,7 +1426,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '1.14.0-b.2',	// Minimum update manager version (soft limit).
+				'rec_version' => '1.14.0-b.3',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -1859,10 +1863,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_condition'   => 'Product Condition Custom Field',
 					'plugin_cf_product_material'    => 'Product Material Custom Field',
 					'plugin_cf_product_sku'         => 'Product SKU Custom Field',
+					'plugin_cf_product_ean'         => 'Product EAN Custom Field',
 					'plugin_cf_product_gtin8'       => 'Product GTIN-8 Custom Field',
 					'plugin_cf_product_gtin12'      => 'Product GTIN-12 Custom Field',
 					'plugin_cf_product_gtin13'      => 'Product GTIN-13 Custom Field',
 					'plugin_cf_product_gtin14'      => 'Product GTIN-14 Custom Field',
+					'plugin_cf_product_isbn'        => 'Product ISBN Custom Field',
 					'plugin_cf_product_price'       => 'Product Price Custom Field',
 					'plugin_cf_product_currency'    => 'Product Currency Custom Field',
 					'plugin_cf_product_size'        => 'Product Size Custom Field',
@@ -1974,8 +1980,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'product'             => 'http://ogp.me/ns/product#',	// Supported by facebook and pinterest.
 					'website'             => 'http://ogp.me/ns/website#',
 				),
-				'og_type_mt' => array(	// See https://developers.facebook.com/docs/reference/opengraph/.
-					'article' => array(	// See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.
+				'og_type_mt' => array(				// See https://developers.facebook.com/docs/reference/opengraph/.
+					'article' => array(			// See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.
 						'article:author'          => '', // An array of Facebook profile URLs or IDs of the authors for this article.
 						'article:publisher'       => '', // A Facebook page URL or ID of the publishing entity.
 						'article:published_time'  => '',
@@ -2071,16 +2077,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:condition'               => 'product_condition',
 						'product:ean'                     => '',
 						'product:expiration_time'         => '',
+						'product:gtin8'                   => 'product_gtin8',
+						'product:gtin12'                  => 'product_gtin12',
+						'product:gtin13'                  => 'product_gtin13',
+						'product:gtin14'                  => 'product_gtin14',
 						'product:is_product_shareable'    => '',
-						'product:isbn'                    => 'product_gtin13',
+						'product:isbn'                    => 'product_isbn',
 						'product:material'                => 'product_material',
 						'product:mfr_part_no'             => '',
-						'product:original_price:amount'   => '',	// Used by WooCommerce module.
-						'product:original_price:currency' => '',	// Used by WooCommerce module.
+						'product:original_price:amount'   => '',		// Used by WooCommerce module.
+						'product:original_price:currency' => '',		// Used by WooCommerce module.
 						'product:pattern'                 => '',
 						'product:plural_title'            => '',
-						'product:pretax_price:amount'     => '',
-						'product:pretax_price:currency'   => '',
+						'product:pretax_price:amount'     => '',		// Used by WooCommerce module.
+						'product:pretax_price:currency'   => '',		// Used by WooCommerce module.
 						'product:price:amount'            => 'product_price',
 						'product:price:currency'          => 'product_currency',
 						'product:product_link'            => '',
@@ -2090,15 +2100,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:retailer_item_id'        => 'product_sku',
 						'product:retailer_part_no'        => '',
 						'product:retailer_title'          => '',
-						'product:sale_price:amount'       => '',	// Used by WooCommerce module.
-						'product:sale_price:currency'     => '',	// Used by WooCommerce module.
-						'product:sale_price_dates:start'  => '',	// Used by WooCommerce module.
-						'product:sale_price_dates:end'    => '',	// Used by WooCommerce module.
+						'product:sale_price:amount'       => '',		// Used by WooCommerce module.
+						'product:sale_price:currency'     => '',		// Used by WooCommerce module.
+						'product:sale_price_dates:start'  => '',		// Used by WooCommerce module.
+						'product:sale_price_dates:end'    => '',		// Used by WooCommerce module.
 						'product:shipping_cost:amount'    => '',
 						'product:shipping_cost:currency'  => '',
 						'product:shipping_weight:value'   => '',
 						'product:shipping_weight:units'   => '',
 						'product:size'                    => 'product_size',
+						'product:sku'                     => 'product_sku',
 						'product:target_gender'           => 'product_gender',
 						'product:upc'                     => '',
 						'product:weight:value'            => '',

@@ -677,9 +677,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$type_id = $mt_og['og:type'];
 
-			if ( isset( $this->p->cf['head']['og_type_mt'][$type_id] ) ) {	// Check if og:type is in config.
+			if ( isset( $this->p->cf['head'][ 'og_type_mt' ][$type_id] ) ) {	// Check if og:type is in config.
 
-				$og_type_mt_md = $this->p->cf['head']['og_type_mt'][$type_id];
+				$og_type_mt_md = $this->p->cf['head'][ 'og_type_mt' ][$type_id];
 
 				/**
 				 * Optimize and call get_options() only once. Returns an empty string if no meta found.
@@ -1538,27 +1538,31 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			if ( empty( $og_type ) ) {
+
 				if ( empty( $mt_og['og:type'] ) ) {
+
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'og:type is empty and required for sanitation' );
 					}
+
 					return $mt_og;
 				}
+
 				$og_type = $mt_og['og:type'];
 			}
 
-			if ( ! empty( $mt_og[$og_type] ) && is_array( $mt_og[$og_type] ) ) {
+			if ( ! empty( $mt_og[ $og_type ] ) && is_array( $mt_og[ $og_type ] ) ) {
 
-				foreach ( $mt_og[$og_type] as $num => $mt_arr ) {
-					$mt_og[$og_type][$num] = $this->sanitize_array( $mod, $mt_arr, $og_type );
+				foreach ( $mt_og[ $og_type ] as $num => $mt_arr ) {
+					$mt_og[ $og_type ][ $num ] = $this->sanitize_array( $mod, $mt_arr, $og_type );
 				}
 			}
 
-			foreach ( $this->p->cf['head']['og_type_mt'] as $type_id => $og_type_mt_md ) {
+			foreach ( $this->p->cf[ 'head' ][ 'og_type_mt' ] as $type_id => $og_type_mt_md ) {
 
 				foreach ( $og_type_mt_md as $mt_name => $md_key ) {
 
-					if ( isset( $mt_og[$mt_name] ) ) {
+					if ( isset( $mt_og[ $mt_name ] ) ) {
 
 						if (  $type_id !== $og_type ) {	// Mis-matched meta tag for this og:type
 

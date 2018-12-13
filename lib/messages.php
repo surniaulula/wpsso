@@ -149,10 +149,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-product_condition':
 						case 'tooltip-meta-product_material':
 						case 'tooltip-meta-product_sku':
+						case 'tooltip-meta-product_ean':
 						case 'tooltip-meta-product_gtin8':
 						case 'tooltip-meta-product_gtin12':
 						case 'tooltip-meta-product_gtin13':
 						case 'tooltip-meta-product_gtin14':
+						case 'tooltip-meta-product_isbn':
 						case 'tooltip-meta-product_price':
 						case 'tooltip-meta-product_currency':
 						case 'tooltip-meta-product_size':
@@ -864,10 +866,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_cf_product_condition':
 						case 'tooltip-plugin_cf_product_material':
 						case 'tooltip-plugin_cf_product_sku':
+						case 'tooltip-plugin_cf_product_ean':
 						case 'tooltip-plugin_cf_product_gtin8':
 						case 'tooltip-plugin_cf_product_gtin12':
 						case 'tooltip-plugin_cf_product_gtin13':
 						case 'tooltip-plugin_cf_product_gtin14':
+						case 'tooltip-plugin_cf_product_isbn':
 						case 'tooltip-plugin_cf_product_price':
 						case 'tooltip-plugin_cf_product_currency':
 						case 'tooltip-plugin_cf_product_size':
@@ -2389,6 +2393,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'Product SKU', 'option label', 'wpsso' ),
 						_x( 'a stock-keeping unit (aka unique product identifier)', 'tooltip fragment', 'wpsso' ),
 					),
+					$key_prefix . 'product_ean' => array(
+						_x( 'Product EAN', 'option label', 'wpsso' ),
+						_x( 'an International Article Number (aka European Article Number)', 'tooltip fragment', 'wpsso' ),
+					),
 					$key_prefix . 'product_gtin8' => array(
 						_x( 'Product GTIN-8', 'option label', 'wpsso' ),
 						_x( 'a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)', 'tooltip fragment', 'wpsso' ),
@@ -2399,11 +2407,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					$key_prefix . 'product_gtin13' => array(
 						_x( 'Product GTIN-13', 'option label', 'wpsso' ),
-						_x( 'a product GTIN-13 code (aka 13-digit ISBN codes or EAN UCC-13)', 'tooltip fragment', 'wpsso' ),
+						_x( 'a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)', 'tooltip fragment', 'wpsso' ),
 					),
 					$key_prefix . 'product_gtin14' => array(
 						_x( 'Product GTIN-14', 'option label', 'wpsso' ),
 						_x( 'a product GTIN-14 code', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_isbn' => array(
+						_x( 'Product ISBN', 'option label', 'wpsso' ),
+						_x( 'an ISBN code (aka International Standard Book Number)', 'tooltip fragment', 'wpsso' ),
 					),
 					$key_prefix . 'product_price' => array(
 						_x( 'Product Price', 'option label', 'wpsso' ),
