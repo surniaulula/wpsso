@@ -89,7 +89,75 @@
 <h3>WPSSO Core Additional Features (Pro version)</h3>
 
 <ul>
-<li><p>Customize headlines, titles, descriptions, shared image and/or video, product information, recipe information, event information, and much more.</p></li>
+<li><p>Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags, custom post types, and user profiles:</p>
+
+<ul>
+<li>Customize Text
+
+<ul>
+<li>Open Graph Type</li>
+<li>Article Topic</li>
+<li>Default Title</li>
+<li>Default Description</li>
+<li>Search Description</li>
+<li>Schema Description</li>
+<li>Twitter Card Description</li>
+<li>Sharing URL</li>
+<li>Canonical URL</li>
+<li>Product Availability</li>
+<li>Product Brand</li>
+<li>Product Color</li>
+<li>Product Condition</li>
+<li>Product Material</li>
+<li>Product SKU</li>
+<li>Product GTIN-8</li>
+<li>Product GTIN-12</li>
+<li>Product GTIN-13</li>
+<li>Product GTIN-14</li>
+<li>Product Price</li>
+<li>Product Size</li>
+<li>Product Target Gender</li>
+</ul></li>
+<li>Priority Media
+
+<ul>
+<li>All Social WebSites / Open Graph
+
+<ul>
+<li>Priority Image Information
+
+<ul>
+<li>Maximum Images</li>
+<li>Image Dimensions</li>
+<li>Image ID</li>
+<li>or Image URL</li>
+</ul></li>
+<li>Priority Video Information
+
+<ul>
+<li>Maximum Videos</li>
+<li>Video Dimensions</li>
+<li>or Video URL</li>
+<li>Video Name / Title</li>
+<li>Video Description</li>
+</ul></li>
+</ul></li>
+<li>Twitter Card
+
+<ul>
+<li>Image Dimensions</li>
+<li>Image ID</li>
+<li>or Image URL</li>
+<li>Structured Data / Schema Markup / Pinterest</li>
+<li>Maximum Images</li>
+<li>Image Dimensions</li>
+<li>Image ID</li>
+<li>or Image URL</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>Additional Schema type specific options are available with the <a href="https://wpsso.com/extend/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup Pro</a> add-on (ie. Creative Work, Event, How-To, Job Posting, Movie, Organization, Person, QA Page, Recipe, Review, Claim Review, Software Application, etc.).</p></li>
 <li><p>Optionally upscale small images from the Media Library for social sharing and Schema markup.</p></li>
 <li><p>Automatically validate all image minimum / maximum dimensions and aspect ratios.</p></li>
 <li><p>Render shortcodes and blocks for accurate description texts and embedded video detection.</p></li>

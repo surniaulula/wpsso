@@ -95,7 +95,55 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 
 <h3>WPSSO Core Additional Features (Pro version)</h3>
 
-* Customize headlines, titles, descriptions, shared image and/or video, product information, recipe information, event information, and much more.
+* Customize default values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags, custom post types, and user profiles:
+
+	* Customize Text
+		* Open Graph Type
+		* Article Topic
+		* Default Title
+		* Default Description
+		* Search Description
+		* Schema Description
+		* Twitter Card Description
+		* Sharing URL
+		* Canonical URL
+		* Product Availability
+		* Product Brand
+		* Product Color
+		* Product Condition
+		* Product Material
+		* Product SKU
+		* Product GTIN-8
+		* Product GTIN-12
+		* Product GTIN-13
+		* Product GTIN-14
+		* Product Price
+		* Product Size
+		* Product Target Gender
+	* Priority Media
+		* All Social WebSites / Open Graph
+			* Priority Image Information
+				* Maximum Images
+				* Image Dimensions
+				* Image ID
+				* or Image URL
+			* Priority Video Information
+				* Maximum Videos
+				* Video Dimensions
+				* or Video URL
+				* Video Name / Title
+				* Video Description
+		* Twitter Card
+			* Image Dimensions
+			* Image ID
+			* or Image URL
+		 * Structured Data / Schema Markup / Pinterest
+			* Maximum Images
+			* Image Dimensions
+			* Image ID
+			* or Image URL
+
+	Additional Schema type specific options are available with the [WPSSO Schema JSON-LD Markup Pro](https://wpsso.com/extend/plugins/wpsso-schema-json-ld/) add-on (ie. Creative Work, Event, How-To, Job Posting, Movie, Organization, Person, QA Page, Recipe, Review, Claim Review, Software Application, etc.).
 
 * Optionally upscale small images from the Media Library for social sharing and Schema markup.
 
@@ -298,13 +346,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.0-b.1 (2018/12/12)**
+**Version 4.18.0-b.2 (2018/12/13)**
 
 * *New Features*
 	* Added a new SSO &gt; Tools settings page.
 	* Added new action buttons in the SSO &gt; Tools settings page:
 		* Export Plugin and Add-on Settings
 		* Import Plugin and Add-on Settings
+	* Added new options under the SSO &gt; Advanced &gt; Custom Meta tab:
+		* Product GTIN-8 Custom Field
+		* Product GTIN-12 Custom Field
+		* Product GTIN-13 Custom Field
+		* Product GTIN-14 Custom Field
+	* Added new options in the Document SSO metabox for products:
+		* Product GTIN-8
+		* Product GTIN-12
+		* Product GTIN-13
+		* Product GTIN-14
 * *Improvements*
 	* Moved action buttons to the SSO &gt; Tools settings page:
 		* Clear All Caches
@@ -349,9 +407,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.0-b.1 =
+= 4.18.0-b.2 =
 
-(2018/12/12) Added a new SSO &gt; Tools settings page and new export / import action buttons.
+(2018/12/13) Added a new SSO &gt; Tools settings page and new export / import action buttons.
 
 = 4.17.3.1 =
 
