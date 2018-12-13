@@ -144,93 +144,32 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 	break;
 
 						case 'tooltip-meta-product_avail':
-
-							if ( ! isset( $product_meta_name ) ) {
-								$product_meta_name = _x( 'availability', 'product meta name', 'wpsso' );
-							}
-
-							// no break - fall through
-
 						case 'tooltip-meta-product_brand':
-
-							if ( ! isset( $product_meta_name ) ) {
-								$product_meta_name = _x( 'brand', 'product meta name', 'wpsso' );
-							}
-
-							// no break - fall through
-
 						case 'tooltip-meta-product_color':
-
-							if ( ! isset( $product_meta_name ) ) {
-								$product_meta_name = _x( 'color', 'product meta name', 'wpsso' );
-							}
-
-							// no break - fall through
-
 						case 'tooltip-meta-product_condition':
-
-							if ( ! isset( $product_meta_name ) ) {
-								$product_meta_name = _x( 'condition', 'product meta name', 'wpsso' );
-							}
-
-							// no break - fall through
-
 						case 'tooltip-meta-product_material':
-
-							if ( ! isset( $product_meta_name ) ) {
-								$product_meta_name = _x( 'material', 'product meta name', 'wpsso' );
-							}
-
-							// no break - fall through
-
 						case 'tooltip-meta-product_sku':
-
-							if ( ! isset( $product_meta_name ) ) {
-								$product_meta_name = _x( 'stock-keeping unit', 'product meta name', 'wpsso' );
-							}
-
-							// no break - fall through
-
+						case 'tooltip-meta-product_gtin8':
+						case 'tooltip-meta-product_gtin12':
+						case 'tooltip-meta-product_gtin13':
+						case 'tooltip-meta-product_gtin14':
 						case 'tooltip-meta-product_price':
-
-							if ( ! isset( $product_meta_name ) ) {
-								$product_meta_name = _x( 'price', 'product meta name', 'wpsso' );
-							}
-
-							// no break - fall through
-
 						case 'tooltip-meta-product_currency':
-
-							if ( ! isset( $product_meta_name ) ) {
-								$product_meta_name = _x( 'currency', 'product meta name', 'wpsso' );
-							}
-
-							// no break - fall through
-
 						case 'tooltip-meta-product_size':
-
-							if ( ! isset( $product_meta_name ) ) {
-								$product_meta_name = _x( 'size', 'product meta name', 'wpsso' );
-							}
-
-							// no break - fall through
-
 						case 'tooltip-meta-product_gender':
 
-							if ( ! isset( $product_meta_name ) ) {
-								$product_meta_name = _x( 'target gender', 'product meta name', 'wpsso' );
+							$plugin_cf_info = $this->get_plugin_cf_info( 'tooltip-meta-', $msg_key );
+
+							if ( ! empty( $plugin_cf_info ) ) {	// Just in case.
+
+								$text = sprintf( __( 'You may select %1$s, or leave the default value as-is.', 'wpsso' ), $plugin_cf_info[ 1 ] ) . ' ';
+
+								$text .= sprintf( __( 'The "%1$s" value may be used in Open Graph meta tags and <em>the Schema markup of products with a single variation</em>.', 'wpsso' ), $plugin_cf_info[ 0 ] ) . ' ';
+
+								$text .= sprintf( __( 'The Schema markup of products with multiple variations will include %1$s specific to each variation, when offered by a supported e-commerce plugin.', 'wpsso' ), $plugin_cf_info[ 1 ] );
 							}
 
-							// no break - fall through
-
-							$text = sprintf( __( 'You may select a custom %1$s for your product, or leave the default value as-is.', 'wpsso' ), $product_meta_name ) . ' ';
-
-							// translators: %1$s is the product meta name - the first letter of this sentence is capitalized automatically.
-							$text .= ucfirst( sprintf( __( 'The product %1$s may be used in Open Graph product meta tags and Schema markup for products with a single variation.', 'wpsso' ), $product_meta_name ) ) . ' ';
-
-							$text .= sprintf( __( 'The Schema markup for products with multiple variations will include all product variations with the specific %1$s of each variation.', 'wpsso' ), $product_meta_name );
-
-						 	break;	// stop here
+						 	break;
 
 						case 'tooltip-meta-og_img_max':
 
@@ -917,199 +856,39 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'tooltip-plugin_cf_addl_type_urls':
 						case 'tooltip-plugin_cf_img_url':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'an image URL', 'tooltip fragment', 'wpsso' ),
-									_x( 'Image URL', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
+						case 'tooltip-plugin_cf_product_avail':
+						case 'tooltip-plugin_cf_product_brand':
+						case 'tooltip-plugin_cf_product_color':
+						case 'tooltip-plugin_cf_product_condition':
+						case 'tooltip-plugin_cf_product_material':
+						case 'tooltip-plugin_cf_product_sku':
+						case 'tooltip-plugin_cf_product_gtin8':
+						case 'tooltip-plugin_cf_product_gtin12':
+						case 'tooltip-plugin_cf_product_gtin13':
+						case 'tooltip-plugin_cf_product_gtin14':
+						case 'tooltip-plugin_cf_product_price':
+						case 'tooltip-plugin_cf_product_currency':
+						case 'tooltip-plugin_cf_product_size':
+						case 'tooltip-plugin_cf_product_gender':
+						case 'tooltip-plugin_cf_recipe_ingredients':
+						case 'tooltip-plugin_cf_recipe_instructions':
+						case 'tooltip-plugin_cf_sameas_urls':
+						case 'tooltip-plugin_cf_vid_embed':
 						case 'tooltip-plugin_cf_vid_url':
 
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'a video URL (not HTML code)', 'tooltip fragment', 'wpsso' ),
-									_x( 'Video URL', 'option label', 'wpsso' ),
-								);
-							}
+							$plugin_cf_info = $this->get_plugin_cf_info( 'tooltip-plugin_cf_', $msg_key );
+							$metabox_title  = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
 
-							// no break - fall through
+							if ( ! empty( $plugin_cf_info ) ) {	// Just in case.
 
-						case 'tooltip-plugin_cf_vid_embed':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'video embed HTML code (not a URL)', 'tooltip fragment', 'wpsso' ),
-									_x( 'Video Embed HTML', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_addl_type_urls':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'additional microdata type URLs', 'tooltip fragment', 'wpsso' ),
-									_x( 'Microdata Type URLs', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_recipe_ingredients':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'recipe ingredients', 'tooltip fragment', 'wpsso' ),
-									_x( 'Recipe Ingredients', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_recipe_instructions':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'recipe instructions', 'tooltip fragment', 'wpsso' ),
-									_x( 'Recipe Instructions', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_product_avail':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'a product availability', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Availability', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_product_brand':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'a product brand', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Brand', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_product_color':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'a product color', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Color', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_product_condition':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'a product condition', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Condition', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_product_material':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'a product material', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Material', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_product_sku':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'a unique product identifier', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product SKU', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_product_price':
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'a product price', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Price', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_product_currency':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'a product currency', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Currency', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_product_size':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'a product size', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Size', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_product_gender':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'a product target gender', 'tooltip fragment', 'wpsso' ),
-									_x( 'Product Target Gender', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-						case 'tooltip-plugin_cf_sameas_urls':
-
-							if ( ! isset( $plugin_cf_info ) ) {
-								$plugin_cf_info = array(
-									_x( 'additional Same-As URLs', 'tooltip fragment', 'wpsso' ),
-									_x( 'Same-As URLs', 'option label', 'wpsso' ),
-								);
-							}
-
-							// no break - fall through
-
-							$metabox_title = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
-
-							$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[0] ) . ' ';
+								$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[ 1 ] ) . ' ';
 							
-							$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[1], $metabox_title );
+								$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[ 0 ], $metabox_title );
+							}
 
-							break;	// stop here
+							break;
 
 						/**
 						 * Columns settings
@@ -2570,6 +2349,110 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			}
 
 			return $text;
+		}
+
+		private function get_plugin_cf_info( $key_prefix = '', $msg_key = false ) {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+				$local_cache = array(
+					$key_prefix . 'addl_type_urls' => array(
+						_x( 'Microdata Type URLs', 'option label', 'wpsso' ),
+						_x( 'additional microdata type URLs', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'img_url' => array(
+						_x( 'Image URL', 'option label', 'wpsso' ),
+						_x( 'an image URL', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_avail' => array(
+						_x( 'Product Availability', 'option label', 'wpsso' ),
+						_x( 'a product availability', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_brand' => array(
+						_x( 'Product Brand', 'option label', 'wpsso' ),
+						_x( 'a product brand', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_color' => array(
+						_x( 'Product Color', 'option label', 'wpsso' ),
+						_x( 'a product color', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_condition' => array(
+						_x( 'Product Condition', 'option label', 'wpsso' ),
+						_x( 'a product condition', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_material' => array(
+						_x( 'Product Material', 'option label', 'wpsso' ),
+						_x( 'a product material', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_sku' => array(
+						_x( 'Product SKU', 'option label', 'wpsso' ),
+						_x( 'a stock-keeping unit (aka unique product identifier)', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_gtin8' => array(
+						_x( 'Product GTIN-8', 'option label', 'wpsso' ),
+						_x( 'a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_gtin12' => array(
+						_x( 'Product GTIN-12', 'option label', 'wpsso' ),
+						_x( 'a product GTIN-12 code (12-digit GS1 identification key composed of a U.P.C. company prefix, item reference, and check digit)', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_gtin13' => array(
+						_x( 'Product GTIN-13', 'option label', 'wpsso' ),
+						_x( 'a product GTIN-13 code (aka 13-digit ISBN codes or EAN UCC-13)', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_gtin14' => array(
+						_x( 'Product GTIN-14', 'option label', 'wpsso' ),
+						_x( 'a product GTIN-14 code', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_price' => array(
+						_x( 'Product Price', 'option label', 'wpsso' ),
+						_x( 'a product price', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_currency' => array(
+						_x( 'Product Currency', 'option label', 'wpsso' ),
+						_x( 'a product currency', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_size' => array(
+						_x( 'Product Size', 'option label', 'wpsso' ),
+						_x( 'a product size', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'product_gender' => array(
+						_x( 'Product Target Gender', 'option label', 'wpsso' ),
+						_x( 'a product target gender', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'recipe_ingredients' => array(
+						_x( 'Recipe Ingredients', 'option label', 'wpsso' ),
+						_x( 'recipe ingredients', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'recipe_instructions' => array(
+						_x( 'Recipe Instructions', 'option label', 'wpsso' ),
+						_x( 'recipe instructions', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'sameas_urls' => array(
+						_x( 'Same-As URLs', 'option label', 'wpsso' ),
+						_x( 'additional Same-As URLs', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'vid_embed' => array(
+						_x( 'Video Embed HTML', 'option label', 'wpsso' ),
+						_x( 'video embed HTML code (not a URL)', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'vid_url' => array(
+						_x( 'Video URL', 'option label', 'wpsso' ),
+						_x( 'a video URL (not HTML code)', 'tooltip fragment', 'wpsso' ),
+					),
+				);
+			}
+
+			if ( false !== $local_cache ) {
+				if ( isset( $local_cache[ $msg_key ] ) ) {
+					return $local_cache[ $msg_key ];
+				} else {
+					return null;
+				}
+			} else {
+				return $local_cache;
+			}
 		}
 	}
 }

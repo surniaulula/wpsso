@@ -205,6 +205,38 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'tooltip'  => 'meta-product_sku',
 					'content'  => $form->get_no_input( 'product_sku', '', '', true ),	// $placeholder is true for default value.
 				),
+				'product_gtin8' => array(
+					'tr_class' => 'hide_og_type hide_og_type_product',
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product GTIN-8', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_gtin8',
+					'content'  => $form->get_no_input( 'product_gtin8', '', '', true ),	// $placeholder is true for default value.
+				),
+				'product_gtin12' => array(
+					'tr_class' => 'hide_og_type hide_og_type_product',
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product GTIN-12', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_gtin12',
+					'content'  => $form->get_no_input( 'product_gtin12', '', '', true ),	// $placeholder is true for default value.
+				),
+				'product_gtin13' => array(
+					'tr_class' => 'hide_og_type hide_og_type_product',
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product GTIN-13 / ISBN', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_gtin13',
+					'content'  => $form->get_no_input( 'product_gtin13', '', '', true ),	// $placeholder is true for default value.
+				),
+				'product_gtin14' => array(
+					'tr_class' => 'hide_og_type hide_og_type_product',
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product GTIN-14', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_gtin14',
+					'content'  => $form->get_no_input( 'product_gtin14', '', '', true ),	// $placeholder is true for default value.
+				),
 				'product_price' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',

@@ -1404,6 +1404,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_brand':
 				case 'product_color':
 				case 'product_sku':
+				case 'product_gtin8':
+				case 'product_gtin12':
+				case 'product_gtin13':
+				case 'product_gtin14':
 				case 'product_currency':
 				case 'product_size':
 				case 'plugin_col_title_width':

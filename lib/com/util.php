@@ -2443,6 +2443,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':condition'                       => '',
 				$mt_pre . ':ean'                             => '',
 				$mt_pre . ':expiration_time'                 => '',
+				$mt_pre . ':gtin8'                           => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':gtin12'                          => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':gtin13'                          => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':gtin14'                          => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':is_product_shareable'            => '',
 				$mt_pre . ':isbn'                            => '',
 				$mt_pre . ':material'                        => '',

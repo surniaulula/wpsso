@@ -151,9 +151,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		 * tags array.
 		 */
 		public static function is_meta_page() {
+
 			if ( ! empty( WpssoMeta::$head_meta_tags ) ) {
 				return true;
 			}
+
 			return false;
 		}
 
@@ -374,19 +376,34 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 						$match_name = $parts[3];
 					}
 
-					/**
-					 * Convert mixed case itemprop names (for example) to lower case.
-					 */
-					$opt_name = strtolower( 'add_' . $parts[1] . '_' . $parts[2] . '_' . $parts[3] );
+					$opt_name    = strtolower( 'add_' . $parts[1] . '_' . $parts[2] . '_' . $parts[3] );
+					$opt_exists  = isset( $this->p->options[ $opt_name ] ) ? true : false;
+					$opt_enabled = empty( $this->p->options[ $opt_name ] ) ? false : true;
 
 					$tr_class = empty( $script_class ) ? '' : ' ' . $script_class;
 
-					$tr_class .= empty( $parts[0] ) ? ' is_disabled' : ' is_enabled';
+					/**
+					 * If there's no HTML to include in the webpage head section,
+					 * then mark the meta tag as disabled and hide it in basic view.
+					 */
+					if ( empty( $parts[ 0 ] ) ) {
+						$tr_class .= ' is_disabled hide_row_in_basic';
+					} else {
+						$tr_class .= ' is_enabled';
+					}
 
-					$tr_class .= empty( $parts[5] ) && ! empty( $this->p->options[$opt_name] ) ? ' is_empty' : '';
+					/**
+					 * The meta tag is enabled, but its value is empty (and not 0).
+					 */
+					if ( $opt_enabled && isset( $parts[ 5 ] ) && empty( $parts[ 5 ] ) && ! is_numeric( $parts[ 5 ] ) ) {
+						$tr_class .= ' is_empty';
+					}
 
-					$tr_class .= isset( $this->p->options[ $opt_name ] ) && $parts[3] !== 'og:image:url' && $parts[3] !== 'og:video:url' ?
-						' is_standard' : ' is_internal hide_row_in_basic';
+					/**
+					 * The meta tag is "standard" if an option exists to enable / disable
+					 * the meta tag, otherwise it's a meta tag meant for internal use.
+					 */
+					$tr_class .= $opt_exists ? ' is_standard' : ' is_internal';
 
 					$table_rows[] = '<tr class="' . trim( $tr_class ) . '">' .
 						'<th class="xshort">' . $parts[1] . '</th>' . 
@@ -622,6 +639,10 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					'product_condition' => 'none',
 					'product_material'  => '',
 					'product_sku'       => '',
+					'product_gtin8'     => '',
+					'product_gtin12'    => '',
+					'product_gtin13'    => '',
+					'product_gtin14'    => '',
 					'product_price'     => '0.00',
 					'product_currency'  => empty( $opts['plugin_def_currency'] ) ? 'USD' : $opts['plugin_def_currency'],
 					'product_size'      => '',
