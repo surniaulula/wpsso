@@ -819,14 +819,23 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 					}
 
 					switch ( $type_name ) {
+
 						case 'transient':
+
 							$ret = delete_transient( $cache_id );
+
 							break;
+
 						case 'wp_cache':
+
 							$ret = wp_cache_delete( $cache_id );
+
 							break;
+
 						default:
+
 							$ret = false;
+
 							break;
 					}
 

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.18.0-rc.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.18.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5159,7 +5159,7 @@ msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr ""
 
-#: lib/meta.php:878
+#: lib/meta.php:887
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -5685,6 +5685,12 @@ msgid ""
 "activated, try removing and adding the image back to your content."
 msgstr ""
 
+#: lib/pro/util/post.php:89
+msgid ""
+"Database meta table row \"%2$s\" for post ID %1$d was found and converted to "
+"\"%3$s\"."
+msgstr ""
+
 #: lib/pro/util/shorten.php:248
 msgid "The URL shortening library file \"%s\" is missing and required."
 msgstr ""
@@ -5709,6 +5715,18 @@ msgstr ""
 msgid ""
 "Incomplete and/or missing API credentials for the \"%s\" URL shortening "
 "service."
+msgstr ""
+
+#: lib/pro/util/term.php:81
+msgid ""
+"Database meta table row \"%2$s\" for term ID %1$d was found and converted to "
+"\"%3$s\"."
+msgstr ""
+
+#: lib/pro/util/user.php:108
+msgid ""
+"Database meta table row \"%2$s\" for user ID %1$d was found and converted to "
+"\"%3$s\"."
 msgstr ""
 
 #: lib/profile/your-sso.php:54
@@ -6362,26 +6380,38 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:432
+#: wpsso.php:386
+msgid ""
+"Database option table row \"%1$s\" for plugin settings was found and "
+"converted to \"%2$s\"."
+msgstr ""
+
+#: wpsso.php:406
+msgid ""
+"Database site option table row \"%1$s\" for plugin settings was found and "
+"converted to \"%2$s\"."
+msgstr ""
+
+#: wpsso.php:439
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:450
+#: wpsso.php:457
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:460
+#: wpsso.php:467
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:461
+#: wpsso.php:468
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 
