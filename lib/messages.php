@@ -858,7 +858,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_cf_addl_type_urls':
+						case 'tooltip-plugin_cf_addl_type_urls':	// Microdata Type URLs Custom Field.
 						case 'tooltip-plugin_cf_img_url':
 						case 'tooltip-plugin_cf_product_avail':
 						case 'tooltip-plugin_cf_product_brand':

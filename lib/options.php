@@ -1489,10 +1489,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_vid_url':
 				case 'p_publisher_url':
 				case 'plugin_yourls_api_url':
+				case 'schema_addl_type_url':
+				case 'schema_banner_url':
 				case 'schema_img_url':
 				case 'schema_logo_url':
-				case 'schema_banner_url':
-				case 'schema_addl_type_url':
 				case 'schema_sameas_url':
 				case 'tc_lrg_img_url':
 				case 'tc_sum_img_url':

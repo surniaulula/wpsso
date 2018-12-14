@@ -424,7 +424,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 
 				if ( $prev_version > 0 && $prev_version <= 622 ) {
 					$opts[ 'add_meta_property_product:age_group' ]              = 0;
-					$opts[ 'add_meta_property_product:ean' ]                    = 0;
 					$opts[ 'add_meta_property_product:expiration_time' ]        = 0;
 					$opts[ 'add_meta_property_product:is_product_shareable' ]   = 0;
 					$opts[ 'add_meta_property_product:mfr_part_no' ]            = 0;
@@ -449,7 +448,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					self::$rename_site_options_keys ) );
 			}
 
-			return $this->sanitize( $opts, $def_opts, $network );	// cleanup options and sanitize
+			return $this->sanitize( $opts, $def_opts, $network );	// Cleanup options and sanitize.
 		}
 	}
 }
