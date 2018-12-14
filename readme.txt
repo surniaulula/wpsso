@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.0-rc.2 (2018/12/14)**
+**Version 4.18.0 (2018/12/14)**
 
 * *New Features*
 	* Added a new SSO &gt; Tools settings page.
@@ -477,33 +477,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* None.
 
-**Version 4.17.3 (2018/12/05)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* None.
-* *Bugfixes*
-	* Fixed form select 'on_change_unhide_rows' event for option integer values.
-	* Fixed the 'og:image', 'og:image:url', and 'og:image:secure_url' handling for video preview images.
-	* Fixed a 'og:video:url' and 'og:video:secure_url' URL conflict with text/html video URLs.
-	* Fixed the WPSSO IPM Free add-on from showing up on the SSO &gt; Licenses settings page.
-* *Developer Notes*
-	* Refactored the WpssoMeta::get_rows_validate_tab() method used for the Document SSO &gt; Validate tab.
-	* Added a new WpssoPage::get_text() method to return the length adjusted text from Wpsso::get_the_text(). 
-	* Added the default language to the list returned by the WordPress get_available_languages() function.
-	* Renamed the 'wpsso_cache_expire_content' filter to 'wpsso_cache_expire_the_content'.
-	* Renamed the 'wpsso_can_filter_content' filter to 'wpsso_can_filter_the_content'.
-	* Renamed the 'wpsso_content_seed' filter to 'wpsso_the_content_seed'.
-	* Renamed the 'wpsso_content' filter to 'wpsso_the_content'.
-
 == Upgrade Notice ==
 
-= 4.18.0-rc.2 =
+= 4.18.0 =
 
 (2018/12/14) Added a new SSO &gt; Tools settings page and new export / import action buttons. Added new options in the Document SSO metabox for products (Pro version).
-
-= 4.17.3.1 =
-
-(2018/12/06) Update to avoid a known bug in WordPress v5.0 that hangs the browser (core trac ticket ID #45253).
 
