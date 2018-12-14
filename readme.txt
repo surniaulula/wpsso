@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.0-b.3 (2018/12/13)**
+**Version 4.18.0-rc.1 (2018/12/14)**
 
 * *New Features*
 	* Added a new SSO &gt; Tools settings page.
@@ -448,7 +448,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Product GTIN-13 Custom Field
 		* Product GTIN-14 Custom Field
 		* Product ISBN Custom Field
-	* Added new options in the Document SSO metabox for products:
+	* Added new options in the Document SSO metabox for products (Pro version):
 		* Product EAN
 		* Product GTIN-8
 		* Product GTIN-12
@@ -499,9 +499,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.0-b.3 =
+= 4.18.0-rc.1 =
 
-(2018/12/13) Added a new SSO &gt; Tools settings page and new export / import action buttons.
+(2018/12/14) Added a new SSO &gt; Tools settings page and new export / import action buttons. Added new options in the Document SSO metabox for products (Pro version).
 
 = 4.17.3.1 =
 
