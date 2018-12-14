@@ -1109,9 +1109,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * If there's no custom text, then go ahead and generate the text value.
 			 */
 			if ( empty( $text ) ) {
-
 				$text = $this->get_the_content( $mod, $read_cache, $md_key );
-
+				$text = preg_replace( '/<pre[^>]*>.*<\/pre>/Ums', '', $text );
 				$text = $this->p->util->cleanup_html_tags( $text, true, $this->p->options[ 'plugin_use_img_alt' ] );
 			}
 

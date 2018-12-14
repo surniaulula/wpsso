@@ -675,7 +675,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$md_pre = preg_replace( '/_img$/', '', $md_pre );	// Just in case.
 
-			if ( is_numeric( $mod ) && $mod > 0 ) {	// Optimize by skipping get_page_mod().
+			if ( is_numeric( $mod ) && $mod > 0 ) {			// Optimize by skipping get_page_mod().
 				return 'post_' . $mod . '_regen_' . $md_pre;
 			}
 
@@ -1699,18 +1699,18 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			$ret        = array();
-			$html       = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
-			$html       = preg_replace( '/<!--.*-->/Uums', '', $html );	// Remove all html comments.
-			$doc        = new DOMDocument();	// Since PHP v4.1.
+			$html       = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );		// Convert to UTF8.
+			$html       = preg_replace( '/<!--.*-->/Uums', '', $html );			// Pattern and subject strings are treated as UTF8.
+			$doc        = new DOMDocument();						// Since PHP v4.1.
 			$has_errors = false;
 
 			if ( $libxml_errors ) {
 
-				if ( function_exists( 'libxml_use_internal_errors' ) ) {	// Since PHP v5.1.
+				if ( function_exists( 'libxml_use_internal_errors' ) ) {		// Since PHP v5.1.
 
 					$libxml_prev_state = libxml_use_internal_errors( true );	// Enable user error handling.
 
-					if ( ! $doc->loadHTML( $html ) ) {	// loadXML() is too strict for most webpages.
+					if ( ! $doc->loadHTML( $html ) ) {				// loadXML() is too strict for most webpages.
 
 						$has_errors = true;
 
@@ -1737,7 +1737,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 							}
 						}
 
-						libxml_clear_errors();		// Clear any HTML parsing errors.
+						libxml_clear_errors();				// Clear any HTML parsing errors.
 
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'loadHTML was successful' );
@@ -1773,13 +1773,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$metas = $xpath->query( $query );
 
 			foreach ( $metas as $m ) {
+
 				$m_atts = array();		// Put all attributes in a single array.
+
 				foreach ( $m->attributes as $a ) {
 					$m_atts[$a->name] = $a->value;
 				}
+
 				if ( isset( $m->textContent ) ) {
 					$m_atts['textContent'] = $m->textContent;
 				}
+
 				$ret[$m->tagName][] = $m_atts;
 			}
 
