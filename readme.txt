@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.0-rc.1 (2018/12/14)**
+**Version 4.18.0-rc.2 (2018/12/14)**
 
 * *New Features*
 	* Added a new SSO &gt; Tools settings page.
@@ -499,7 +499,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.0-rc.1 =
+= 4.18.0-rc.2 =
 
 (2018/12/14) Added a new SSO &gt; Tools settings page and new export / import action buttons. Added new options in the Document SSO metabox for products (Pro version).
 
