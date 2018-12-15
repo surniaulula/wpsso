@@ -1129,19 +1129,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						/*
-						case 'tooltip-plugin_google_api_key':
-							$text = __( 'The Google APIs project API Key for this website.', 'wpsso' ) . ' ';
-							$text .= sprintf( __( 'If you don\'t already have a Google project, visit the %s page and create a new project for your website.', 'wpsso' ), '<a href="https://console.developers.google.com/apis/dashboard">' . __( 'Google APIs Dashboard', 'wpsso' ) . '</a>' ) . ' ';
-							$text .= sprintf( __( 'After you\'ve created the project, visit the %s page and create a new API Key.', 'wpsso' ), '<a href="https://console.developers.google.com/apis/credentials">' . __( 'Google APIs Credentials', 'wpsso' ) . '</a>' ) . ' ';
-							$text .= __( 'Copy-paste the API Key in this option field.', 'wpsso' );
-							break;
-						case 'tooltip-plugin_google_places':
-							$text = sprintf( __( 'In order to use Google\'s %1$s service, you must <em>Enable</em> the %2$s service.', 'wpsso' ), __( 'Places API', 'wpsso' ), '<a href="https://console.developers.google.com/apis/library/places-backend.googleapis.com">' . __( 'Places API', 'wpsso' ) . '</a>' ) . ' ';
-							$text .= sprintf( __( 'Confirm that you have enabled Google\'s %1$s service by clicking the "Yes" option.', 'wpsso' ), __( 'Places API', 'wpsso' ) );
-							break;
-						*/
-
 						case 'tooltip-plugin_owly_api_key':
 
 							$text = sprintf( __( 'To use Ow.ly as your preferred shortening service, you must provide the Ow.ly API Key for this website (complete this form to <a href="%s">Request Ow.ly API Access</a>).', 'wpsso' ), 'https://docs.google.com/forms/d/1Fn8E-XlJvZwlN4uSRNrAIWaY-nN_QA3xAHUJ7aEF7NU/viewform' );
@@ -1855,11 +1842,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-cm':
 
+							// translators: please ignore - translation uses a different text domain
+							$contact_info_transl = __( 'Contact Info' );
+
 							$text = '<blockquote class="top-info">';
 							
 							$text .= '<p>';
 							
-							$text .= sprintf( __( 'The following options allow you to customize the list of contact fields shown in the <strong>%1$s</strong> section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), __( 'Contact Info' ), get_admin_url( null, 'profile.php' ) ) . ' ';
+							$text .= sprintf( __( 'The following options allow you to customize the list of contact fields shown in the <strong>%1$s</strong> section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), $contact_info_transl, get_admin_url( null, 'profile.php' ) ) . ' ';
 							
 							$text .= sprintf( __( '%1$s uses the Facebook, Google+, and Twitter contact field values in its meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 							
@@ -2203,7 +2193,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$settings_page_link = $this->p->util->get_admin_url( 'licenses',
 							_x( 'Licenses', 'lib file description', 'wpsso' ) );
 
-						$plugins_page_link = '<a href="'.get_admin_url( null, 'plugins.php' ).'">'.__( 'Plugins' ).'</a>';
+						$plugins_page_link = '<a href="'.get_admin_url( null, 'plugins.php' ) . '">' .
+							// translators: please ignore - translation uses a different text domain
+							__( 'Plugins' ) . '</a>';
 
 						$text = '<p>';
 
@@ -2246,8 +2238,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$um_settings_page_link = $this->p->util->get_admin_url( 'um-general',
 							_x( 'Update Manager', 'lib file description', 'wpsso' ) );
 
-						$wp_updates_page_link = '<a href="'.admin_url( 'update-core.php' ).'">'.
-							__( 'Dashboard' ).' &gt; '.__( 'Updates' ).'</a>';
+						$wp_updates_page_link = '<a href="'.admin_url( 'update-core.php' ) . '">' . 
+							// translators: please ignore - translation uses a different text domain
+							__( 'Dashboard' ) . ' &gt; ' . 
+							// translators: please ignore - translation uses a different text domain
+							__( 'Updates' ) . '</a>';
 
 						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $info[ 'name_pro' ], $info[ 'version' ], $um_info[ 'short' ], $um_rec_version, $um_version ) . ' ';
 

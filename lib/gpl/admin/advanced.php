@@ -232,6 +232,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				'post'  => __( 'Posts, Pages, Custom Post Types', 'wpsso' ),
 				'media' => __( 'Media Library', 'wpsso' ),
 				'term'  => __( 'Terms (Categories and Tags)', 'wpsso' ),
+				// translators: please ignore - translation uses a different text domain
 				'user'  => __( 'Users' ),
 			) as $mod_name => $mod_label ) {
 
@@ -447,19 +448,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$table_rows['plugin_dlmyapp_api_key'] = $tr_html['dlmyapp'] . 
 			$form->get_th_html( _x( 'DLMY.App API Key', 'option label', 'wpsso' ), '', 'plugin_dlmyapp_api_key' ) . 
 			'<td class="blank mono">' . $this->p->options['plugin_dlmyapp_api_key'] . '</td>';
-
-			/**
-			 * Google APIs.
-			 *
-			$table_rows['subsection_plugin_googl'] = $tr_html[ 'google' ] . 
-			'<td colspan="2" class="subsection"><h4>' . _x( 'Google APIs', 'metabox title', 'wpsso' ) . '</h4></td>';
-			$table_rows['plugin_google_api_key'] = $tr_html[ 'google' ] . 
-			$form->get_th_html( _x( 'Google Project API Key', 'option label', 'wpsso' ), '', 'plugin_google_api_key' ) . 
-			'<td class="blank mono">' . $this->p->options['plugin_google_api_key'] . '</td>';
-			$table_rows['plugin_google_places'] = $tr_html[ 'google' ] . 
-			$form->get_th_html( _x( 'Places API is Enabled', 'option label', 'wpsso' ), '', 'plugin_google_places' ) . 
-			'<td class="blank">' . $form->get_no_checkbox( 'plugin_google_places' ) . '</td>';
-			*/
 
 			/**
 			 * Owly URL shortener.

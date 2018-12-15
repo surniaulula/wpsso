@@ -1228,7 +1228,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( strpos( $parts['wp_http_referer'], $referer_match ) ) {
 
-					$this->p->notice->upd( __( 'Profile updated.' ) );	// green status w check mark
+					// translators: please ignore - translation uses a different text domain
+					$this->p->notice->upd( __( 'Profile updated.' ) );
 
 					$url = add_query_arg( 'updated', true, $parts['wp_http_referer'] );
 				}
@@ -2390,13 +2391,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $opts['modules']['aiosp_feature_manager_options']['aiosp_feature_manager_enable_opengraph'] ) ) {
 
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					$label_transl = '<strong>' . __( 'Social Meta', 'all-in-one-seo-pack' ) . '</strong>';
 					$settings_url = get_admin_url( null, 'admin.php?page=all-in-one-seo-pack%2Fmodules%2Faioseop_feature_manager.php' );
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Feature Manager', 'all-in-one-seo-pack' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2409,15 +2410,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( isset( $opts['aiosp_google_disable_profile'] ) && empty( $opts['aiosp_google_disable_profile'] ) ) {
 
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					$label_transl = '<strong>' . __( 'Disable Google Plus Profile', 'all-in-one-seo-pack' ) . '</strong>';
 					$settings_url = get_admin_url( null, 'admin.php?page=all-in-one-seo-pack%2Faioseop_class.php' );
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'General Settings', 'all-in-one-seo-pack' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Google Settings', 'all-in-one-seo-pack' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2430,15 +2431,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $opts['aiosp_schema_markup'] ) ) {
 
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					$label_transl = '<strong>' . __( 'Use Schema.org Markup', 'all-in-one-seo-pack' ) . '</strong>';
 					$settings_url = get_admin_url( null, 'admin.php?page=all-in-one-seo-pack%2Faioseop_class.php' );
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'General Settings', 'all-in-one-seo-pack' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'General Settings', 'all-in-one-seo-pack' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2460,16 +2461,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_url = get_admin_url( null, 'admin.php?page=seo' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'SEO Ultimate', 'seo-ultimate' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Modules', 'seo-ultimate' ) . '</a>';
 
 				if ( ! empty( $opts['modules'] ) && is_array( $opts['modules'] ) ) {
 
 					if ( array_key_exists( 'opengraph', $opts['modules'] ) && $opts['modules']['opengraph'] !== -10 ) {
 
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						$label_transl = '<strong>' . __( 'Open Graph Integrator', 'seo-ultimate' ) . '</strong>';
 
 						if ( $this->p->debug->enabled ) {
@@ -2495,13 +2496,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_url = get_admin_url( null, 'admin.php?page=sq_seo#socials' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Squirrly', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'SEO Settings', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Social Media', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Social Media Options', 'squirrly-seo' ) . '</a>';
 
 				foreach ( array(
@@ -2528,13 +2529,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_url = get_admin_url( null, 'admin.php?page=sq_seo#seo' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Squirrly', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'SEO Settings', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'SEO Settings', 'squirrly-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Let Squirrly SEO Optimize This Blog', 'squirrly-seo' ) . '</a>';
 
 				foreach ( array(
@@ -2568,25 +2569,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_url = get_admin_url( null, 'admin.php?page=theseoframework-settings' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'The SEO Framework', 'autodescription' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Social Meta Settings', 'autodescription' ) . '</a>';
 
-				// translators: please ignore - translation uses a 3rd party text domain
+				// translators: please ignore - translation uses a different text domain
 				$posts_i18n = __( 'Posts', 'autodescription' );
 
 				foreach ( array(
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'og_tags'       => '<strong>' . __( 'Output Open Graph meta tags?', 'autodescription' ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'facebook_tags' => '<strong>' . __( 'Output Facebook meta tags?', 'autodescription' ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'twitter_tags'  => '<strong>' . __( 'Output Twitter meta tags?', 'autodescription' ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'post_publish_time' => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
 						'article:published_time', $posts_i18n ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'post_modify_time' => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
 						'article:modified_time', $posts_i18n ) . '</strong>',
 				) as $opt_key => $label_transl ) {
@@ -2606,14 +2607,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * The SEO Framework > Schema Settings Metabox
 				 */
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'The SEO Framework', 'autodescription' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Schema Settings', 'autodescription' ) . '</a>';
 
 				if ( ! empty( $opts[ 'knowledge_output' ] ) ) {
 
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					$label_transl = '<strong>' . __( 'Output Authorized Presence?', 'autodescription' ) . '</strong>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2639,19 +2640,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_url = get_admin_url( null, 'admin.php?page=metaseo_settings' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'WP Meta SEO', 'wp-meta-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Settings', 'wp-meta-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Global', 'wp-meta-seo' ) . '</a>';
 
 				foreach ( array(
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'metaseo_showfacebook' => '<strong>' . __( 'Facebook profile URL', 'wp-meta-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'metaseo_showfbappid'  => '<strong>' . __( 'Facebook App ID', 'wp-meta-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'metaseo_showtwitter'  => '<strong>' . __( 'Twitter Username', 'wp-meta-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
@@ -2668,7 +2669,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $opts['metaseo_showsocial'] ) ) {
 
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					$label_transl = '<strong>' . __( 'Social sharing block', 'wp-meta-seo' ) . '</strong>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2693,29 +2694,29 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#accounts' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					__( 'Accounts', 'wordpress-seo' ) . '</a>';
 
 				foreach ( array(
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'facebook_site'   => '<strong>' . __( 'Facebook Page URL', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'twitter_site'    => '<strong>' . __( 'Twitter Username', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'instagram_url'   => '<strong>' . __( 'Instagram URL', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'linkedin_url'    => '<strong>' . __( 'LinkedIn URL', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'myspace_url'     => '<strong>' . __( 'MySpace URL', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'pinterest_url'   => '<strong>' . __( 'Pinterest URL', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'youtube_url'     => '<strong>' . __( 'YouTube URL', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					'google_plus_url' => '<strong>' . __( 'Google+ URL', 'wordpress-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
@@ -2735,17 +2736,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 				if ( ! empty( $opts['opengraph'] ) ) {
 
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					$label_transl = '<strong>' . __( 'Add Open Graph meta data', 'wordpress-seo' ) . '</strong>';
 
 					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' );
 
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Facebook', 'wordpress-seo' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2758,17 +2759,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $opts['fbadminapp'] ) ) {
 
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					$label_transl = '<strong>' . __( 'Facebook App ID', 'wordpress-seo' ) . '</strong>';
 
 					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#facebook' );
 
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Facebook', 'wordpress-seo' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2784,17 +2785,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 				if ( ! empty( $opts['twitter'] ) ) {
 
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					$label_transl = '<strong>' . __( 'Add Twitter Card meta data', 'wordpress-seo' ) . '</strong>';
 
 					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#twitterbox' );
 
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Twitter', 'wordpress-seo' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -2810,17 +2811,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 */
 				if ( ! empty( $opts['plus-publisher'] ) ) {
 
-					// translators: please ignore - translation uses a 3rd party text domain
+					// translators: please ignore - translation uses a different text domain
 					$label_transl = '<strong>' . __( 'Google Publisher Page', 'wordpress-seo' ) . '</strong>';
 
 					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#google' );
 
 					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a 3rd party text domain
+						// translators: please ignore - translation uses a different text domain
 						__( 'Google+', 'wordpress-seo' ) . '</a>';
 
 					if ( $this->p->debug->enabled ) {
@@ -3763,7 +3764,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $this->pageref_url ) ) {
 
-					$this->p->notice->upd( __( 'Plugin <strong>activated</strong>.' ) );	// green status w check mark
+					// translators: please ignore - translation uses a different text domain
+					$this->p->notice->upd( __( 'Plugin <strong>activated</strong>.' ) );
 
 					$url = $this->pageref_url;
 				}
