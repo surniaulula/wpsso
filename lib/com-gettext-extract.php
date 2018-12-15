@@ -1,5 +1,5 @@
 <?php die( 'These aren\'t the droids you\'re looking for...' );
-// extract of translatable text strings from common library classes
+// extract of translatable text strings from lib/com classes
 __( 'All WordPress filter hooks must return their text, not send it to the webpage output.', 'wpsso' );
 __( 'BEGIN OUTPUT', 'wpsso' );
 __( 'Cache file %s is not readable.', 'wpsso' );

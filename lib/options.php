@@ -275,7 +275,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->upg = new WpssoOptionsUpgrade( $this->p );
 					}
 
-					if ( null === $def_opts ) {	// only get default options once
+					if ( null === $def_opts ) {	// Only get default options once.
 						if ( $network ) {
 							$def_opts = $this->get_site_defaults();
 						} else {
@@ -1188,7 +1188,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 *	'og:image:alt'     => null,
 			 * );
 			 */
-			$og_single_image     = $this->p->media->get_opts_single_image( $opts, $size_name, $opt_img_pre );
+			$og_single_image = $this->p->media->get_opts_single_image( $opts, $size_name, $opt_img_pre );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log_arr( '$og_single_image', $og_single_image );
@@ -1209,7 +1209,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$error_msg = sprintf( __( 'The %1$s image dimensions cannot be determined.',
 							'wpsso' ), $settings_page_link ) . ' ';
 
-						$error_msg .= sprintf( __( 'Please make sure this site can access the banner image at %1$s.',
+						$error_msg .= sprintf( __( 'Please make sure this site can access the image URL at %1$s using the PHP getimagesize() function.',
 							'wpsso' ), $image_href );
 
 					} else {

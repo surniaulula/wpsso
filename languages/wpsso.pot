@@ -5292,7 +5292,9 @@ msgid "The %1$s image dimensions cannot be determined."
 msgstr ""
 
 #: lib/options.php:1212
-msgid "Please make sure this site can access the banner image at %1$s."
+msgid ""
+"Please make sure this site can access the image URL at %1$s using the PHP "
+"getimagesize() function."
 msgstr ""
 
 #: lib/options.php:1217

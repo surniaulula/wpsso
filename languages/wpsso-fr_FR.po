@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.18.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-12-14 13:05-0800\n"
-"PO-Revision-Date: 2018-12-14 13:10-0800\n"
+"POT-Creation-Date: 2018-12-15 11:06-0800\n"
+"PO-Revision-Date: 2018-12-15 11:08-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4554,8 +4554,8 @@ msgid "The %1$s image dimensions cannot be determined."
 msgstr "Les dimensions de l'image %1$s ne peuvent pas être déterminées."
 
 #: lib/options.php:1212
-msgid "Please make sure this site can access the banner image at %1$s."
-msgstr "Assurez-vous que ce site peut accéder à l'image bannière à %1$s."
+msgid "Please make sure this site can access the image URL at %1$s using the PHP getimagesize() function."
+msgstr "Assurez-vous que ce site peut accéder à l'URL d'image %1$s en utilisant la fonction PHP getimagesize()."
 
 #: lib/options.php:1217
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
@@ -5606,9 +5606,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "Post ID %1$d database meta table entry for \"%2$s\" was found and converted to \"%3$s\"."
-#~ msgstr "Une entrée \"%2$s\" dans la table meta de la base de données pour l'article ID %1$d a été trouvée et convertie a \"%3$s\"."
-
-#~ msgid "User ID %1$d database meta table entry for \"%2$s\" was found and converted to \"%3$s\"."
-#~ msgstr "Une entrée \"%2$s\" dans la table meta de la base de données pour l'utilisateur ID %1$d a été trouvée et convertie a \"%3$s\"."
