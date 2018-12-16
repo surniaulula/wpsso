@@ -3134,14 +3134,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( isset( WpssoConfig::$cf[ $key ]['rec_version'] ) ) {
 
 						switch ( $key ) {
+
 							case 'wp':
+
 								global $wp_version;
+
 								$app_version = $wp_version;
+
 								break;
+
 							case 'php':
+
 								$app_version = phpversion();
+
 								break;
+
 							default:
+
 								continue 2;
 						}
 
@@ -3158,7 +3167,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							) );
 
 							$notice_key   = 'notice-recommend-version-' . $this->p->lca . '-' . $version . '-' . $app_label . '-' . $app_version;
-							$dismiss_time = MONTH_IN_SECONDS;
+							$dismiss_time = 3 * MONTH_IN_SECONDS;
 
 							$this->p->notice->warn( $warn_msg, null, $notice_key, $dismiss_time );
 						}

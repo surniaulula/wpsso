@@ -5,7 +5,8 @@
 
 <dt><h3>Business Social Accounts (Optional)</h3></dt>
 
-<dd><img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" style="max-width:50%;float:right;margin:0 0 30px 60px;"><p>If you haven't already done so, create a Facebook Page, Twitter account, and Google+ account (or Page) for your website / business. You can enter all your website / business social account information on the WordPress <u>Settings &gt; SSO WebSite Pages</u> settings page. The social account URLs are used by WPSSO Core for Open Graph, Schema, and other meta tag values &mdash; including the Organization social profiles in Schema JSON-LD markup (which may appear in Google Search results to highlight your website / business social pages).<p>
+<dd>
+<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" style="max-width:50%;float:right;margin:0 0 30px 60px;"><p>If you haven't already done so, create a Facebook Page, Twitter account, and Google+ account (or Page) for your website / business. You can enter all your website / business social account information on the WordPress <u>Settings &gt; SSO WebSite Pages</u> settings page. The social account URLs are used by WPSSO Core for Open Graph, Schema, and other meta tag values &mdash; including the Organization social profiles in Schema JSON-LD markup (which may appear in Google Search results to highlight your website / business social pages).<p>
 
 <p><strong>Related information:</strong></p>
 
@@ -19,28 +20,48 @@
 
 <dt><h3>Author Social Accounts (Optional)</h3></dt>
 
-<dd><p>Ask your authors to enter their Facebook, Google+, and Twitter contact information on their WordPress user profile page. Each author's contact information can appear in various meta tag values and Schema JSON-LD markup &mdash; but only if they complete their user profile. All URLs found in the author's contact methods will be listed in the author  social profile markup for Google.</p>
+<dd>
+<p>Ask your authors to enter their Facebook, Google+, and Twitter contact information on their WordPress user profile page. Each author's contact information can appear in various meta tag values and Schema JSON-LD markup &mdash; but only if they complete their user profile. All URLs found in the author's contact methods will be listed in the author  social profile markup for Google.</p>
 
 <p><strong>Related information:</strong></p>
 
 <p>Authors should take a moment to update their <a href="https://www.facebook.com/settings?tab=followers">Facebook Follower Settings</a> to enable a <em>Follow</em> button on Facebook. In this way, authors can publish both private (for friends) and public (for friends and followers) content on their Facebook wall. When an author allows followers, Facebook will also link an author's name in shares to their profile page.</p>
 </dd>
 
-<dt><h3>Essential Settings</h3></dt>
+<dt><h3>Schema vs Google Rich Cards</h3></dt>
 
-<dd><p>Review the site description on the <u>SSO &gt; Essential</u> settings page and select a default / fallback image ID or URL. The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.</p>
+<dd>
+<p>
+Schema (aka "Schema.org") is a collaborative, community lead standard for structured data. Schema is classified by type, each associated with a set of properties. The types are arranged in a hierarchy and <a href="https://schema.org/docs/schemas.html">the core vocabulary consists of 598 types, 862 properties, and 114 enumeration values</a>. The Schema vocabulary can be used with many different encodings, including RDFa, Microdata and JSON-LD. WPSSO Core adds Schema properties to webpages as meta tags for Pinterest, and other social and search crawlers that can read Schema markup.
+</p>
+
+<p>
+<a href="https://developers.google.com/search/docs/guides/intro-structured-data">Google Rich Cards are a set of minimum requirements for Schema markup</a>, which includes specific images dimensions for Google (example, a 600x60px banner "logo" for article publishers), a limited selection of values for some properties (example, product conditions), specific Schema types for some property relations, and much more. Google Rich Cards require several levels of Schema markup (aka a multi-dimensional array), that can only be expressed with RDFa or Microdata markup in theme templates (older standard), or with JSON-LD scripts included in the webpage header or footer (preferred by Google).
+</p>
+
+<p>
+If your theme templates do not include RDFa or Microdata markup for Google Rich Cards, you should enable the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on. And if your theme templates include <em>incomplete or incorrect</em> RDFa or Microdata markup, you should enable both the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on and the <a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata</a> add-on.
+</p>
+</dd>
+
+<dt><h3>Review Essential Settings</h3></dt>
+
+<dd>
+<p>Review the site description on the <u>SSO &gt; Essential</u> settings page and select a default / fallback image ID or URL. The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.</p>
 </dd>
 
 <dt><h3>Interface and General Usage</h3></dt>
 
-<dd><p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / view the "Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <u>SSO &gt; Advanced &gt; Columns</u> settings tab.</p>
+<dd>
+<p>On most WordPress admin pages you'll find a <em>Screen Options</em> drop-down tab on the upper right-hand side of the page. You can use these options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the Posts or Pages list you can use the <em>Screen Options</em> drop-down tab to hide / view the "Schema" and "SSO Image" columns. You can also enable / disable these columns globally under the <u>SSO &gt; Advanced &gt; Columns</u> settings tab.</p>
 
 <p>When editing a Post, Page, category, tag, etc., you'll find a <em>Document SSO (Social and Search Optimization)</em> metabox below the content area where you can edit various social texts and image values. The "Preview" tab shows how this webpage might look like when shared on Facebook, the "Head" tab shows a complete list of meta tags created by WPSSO Core, including additional Schema markup and LD+JSON for Google, and the "Validate" tab allows you to submit the current webpage URL to a number of test and validation tools.</p>
 </dd>
 
 <dt><h3>Social Image Dimensions</h3></dt>
 
-<dd><p>Review the WordPress <u>Settings &gt; SSO Image Sizes</u> values. If your original images are large enough, you should set the Open Graph image dimensions to 1200x630px cropped (or larger). Images that are 600px and wider are displayed more prominently on Facebook, and 1200px is required to avoid upscaling (stretching) images for retina / high-PPI displays &mdash; so it's worth taking the time to make sure your original images are at least 1200px wide, along with setting an Open Graph image dimension of 1200x630px cropped.</p>
+<dd>
+<p>Review the WordPress <u>Settings &gt; SSO Image Sizes</u> values. If your original images are large enough, you should set the Open Graph image dimensions to 1200x630px cropped (or larger). Images that are 600px and wider are displayed more prominently on Facebook, and 1200px is required to avoid upscaling (stretching) images for retina / high-PPI displays &mdash; so it's worth taking the time to make sure your original images are at least 1200px wide, along with setting an Open Graph image dimension of 1200x630px cropped.</p>
 
 <table><tr>
 
@@ -82,7 +103,8 @@
 
 <dt><h3>Validation Tools</h3></dt>
 
-<dd><p>Submit a few sample Posts, Pages, etc. to the <strong><a href="https://developers.facebook.com/tools/debug/">Facebook Open Graph Object Debugger</a> to verify your Open Graph meta tags</strong>. A link to the Facebook debugger is available under the Validate tab in the <em>Document SSO</em> metabox (on post, term, and user editing pages). Submitting a URL to the Facebook debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button). If you're validating older posts / pages, pre-dating the activation of WPSSO Core, <a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a> even after fetching the new scrape information.</p>
+<dd>
+<p>Submit a few sample Posts, Pages, etc. to the <strong><a href="https://developers.facebook.com/tools/debug/">Facebook Open Graph Object Debugger</a> to verify your Open Graph meta tags</strong>. A link to the Facebook debugger is available under the Validate tab in the <em>Document SSO</em> metabox (on post, term, and user editing pages). Submitting a URL to the Facebook debugger can also be used to clear Facebook's cache (after clicking the "Fetch new scrape information" button). If you're validating older posts / pages, pre-dating the activation of WPSSO Core, <a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Facebook may continue to use the old meta tag values from its cache</a> even after fetching the new scrape information.</p>
 
 <p>Submit a Post / Page to the <strong><a href="http://developers.pinterest.com/rich_pins/validator/">Pinterest Rich Pins Validator</a> &mdash; note that the validator recognizes known Rich Pin types only (article, recipe, product, etc.)</strong> &mdash; your home page and WordPress archive pages are generally not valid Rich Pin types. Pinterest Rich Pins are an extension of Open Graph and Schema meta tags, but the Rich Pins Validator can be a little buggy, so double check any errors with the Facebook debugger to make sure they are actual / real errors.</p>
 
@@ -114,7 +136,8 @@
 
 <dt><h3>Documentation and Resources</h3></dt>
 
-<dd><p>WPSSO Core is a powerful tool and social framework that detects images and videos from a variety of sources (attached, featured, content, etc.), along with 3rd party plugins and e-commerce product information. It's worth noting some of the most common questions, to get an idea of what WPSSO Core can do, and some of the issues that may come up. Some of the most relevant / popular frequently asked questions are:</p>
+<dd>
+<p>WPSSO Core is a powerful tool and social framework that detects images and videos from a variety of sources (attached, featured, content, etc.), along with 3rd party plugins and e-commerce product information. It's worth noting some of the most common questions, to get an idea of what WPSSO Core can do, and some of the issues that may come up. Some of the most relevant / popular frequently asked questions are:</p>
 
 <h4>Frequently Asked Questions</h4>
 
@@ -142,7 +165,8 @@
 
 <dt><h3>Developers and WebSite Designers</h3></dt>
 
-<dd><p>WebSite developers / designers may want to consider a few additional settings...</p>
+<dd>
+<p>WebSite developers / designers may want to consider a few additional settings...</p>
 
 <ul>
 
