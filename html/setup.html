@@ -36,11 +36,15 @@ Schema (aka "Schema.org") is a collaborative, community lead standard for struct
 </p>
 
 <p>
-<a href="https://developers.google.com/search/docs/guides/intro-structured-data">Google Rich Cards are a set of minimum requirements for Schema markup</a>, which includes specific images dimensions for Google (example, a 600x60px banner "logo" for article publishers), a limited selection of values for some properties (example, product conditions), specific Schema types for some property relations, and much more. Google Rich Cards require several levels of Schema markup (aka a multi-dimensional array), that can only be expressed with RDFa or Microdata markup in theme templates (older standard), or with JSON-LD scripts included in the webpage header or footer (preferred by Google).
+<a href="https://developers.google.com/search/docs/guides/intro-structured-data">Google Rich Cards are a set of minimum requirements for Schema markup</a>, which includes specific images dimensions for Google (example, a 600x60px banner "logo" image for article publishers), limited selections for some properties (example, product conditions), specific types for some property relations, and much more. Google Rich Cards require several layers of Schema markup (aka a multi-dimensional array), that can be expressed with RDFa or Microdata markup in theme templates (older standard), or with JSON-LD scripts included in the webpage header or footer (preferred by Google).
 </p>
 
 <p>
 If your theme templates do not include RDFa or Microdata markup for Google Rich Cards, you should enable the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on. And if your theme templates include <em>incomplete or incorrect</em> RDFa or Microdata markup, you should enable both the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on and the <a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata</a> add-on.
+</p>
+
+<p>
+<strong>Not sure if your theme templates support Google Rich Cards?</strong> Submit an example post / page URL from your site (not the home page) to the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Testing Tool</a>, and compare the results before / after enabling the WPSSO JSON add-on. Between checks, don't forget to clear the cache of any caching plugin or service you may use, along with clearing the WPSSO cache in the SSO &gt; Tools settings page.
 </p>
 </dd>
 
