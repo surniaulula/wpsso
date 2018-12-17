@@ -15,9 +15,9 @@ WPSSO_VERSION
  */
  WPSSO_ADD_MENU_PRIORITY                 = -20
  WPSSO_ADD_SUBMENU_PRIORITY              = -10
- WPSSO_CACHEDIR                          = WPSSO_PLUGINDIR . 'cache/'
- WPSSO_CACHEURL                          = WPSSO_URLPATH . 'cache/'
- WPSSO_CONTENT_BLOCK_FILTER_OUTPUT       = true  		// Monitor and fix incorrectly coded filter hooks.
+ WPSSO_CACHEDIR                          = trailingslashit( WP_CONTENT_DIR ) . 'cache/wpsso/'
+ WPSSO_CACHEURL                          = content_url( 'cache/wpsso/' )
+ WPSSO_CONTENT_BLOCK_FILTER_OUTPUT       = true  		// Monitor and attempt to control incorrectly coded filter output.
  WPSSO_CONTENT_FILTERS_MAX_TIME          = 1.50			// Issue a warning if the content filter takes longer than 1.5 seconds.
  WPSSO_CONTENT_IMAGES_MAX_LIMIT          = 5			// Maximum number of images extracted from the content.
  WPSSO_CONTENT_VIDEOS_MAX_LIMIT          = 5			// Maximum number of videos extracted from the content.

@@ -3074,7 +3074,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$content_dir = trailingslashit( WP_CONTENT_DIR );
 
 				if ( self::is_cache_dir( $content_dir . 'cache/wpsso/' ) ) {
-					return content_url( '/cache/wpsso/' );
+					return content_url( 'cache/wpsso/' );
 				}
 			}
 
