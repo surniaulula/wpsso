@@ -658,34 +658,46 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					}
 
 					if ( ! is_dir( $this->base_dir ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'failed to create the ' . $this->base_dir . ' cache folder.' );
 						}
+
 						if ( is_admin() ) {
 							$this->p->notice->err( sprintf( __( 'Failed to create the %s cache folder.',
 								$this->text_domain ), $this->base_dir ) );
 						}
+
 					} elseif ( ! is_writable( $this->base_dir ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'cache folder ' . $this->base_dir . ' is not writable' );
 						}
+
 						if ( is_admin() ) {
 							$this->p->notice->err( sprintf( __( 'Cache folder %s is not writable.',
 								$this->text_domain ), $this->base_dir ) );
 						}
+
 					} elseif ( ! $fh = @fopen( $cache_file, 'wb' ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'failed to open the cache file ' . $cache_file . ' for writing' );
 						}
+
 						if ( is_admin() ) {
 							$this->p->notice->err( sprintf( __( 'Failed to open the cache file %s for writing.',
 								$this->text_domain ), $cache_file ) );
 						}
+
 					} elseif ( fwrite( $fh, $cache_data ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'data saved to cache file ' . $cache_file );
 						}
+
 						fclose( $fh );
+
 						$data_saved = true;	// success
 					}
 

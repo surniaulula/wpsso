@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.18.0',	// Plugin version.
+					'version'     => '4.18.1-dev.1',	// Plugin version.
 					'opt_version' => '623',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -2811,7 +2811,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 */
 		public static function get_config( $cf_key = false, $apply_filters = false ) {
 
-			if ( ! isset( self::$cf['config_filtered'] ) || true !== self::$cf['config_filtered'] ) {
+			if ( ! isset( self::$cf[ 'config_filtered' ] ) || true !== self::$cf[ 'config_filtered' ] ) {
 
 				self::$cf[ '*' ] = array(
 					'base' => array(),
@@ -2826,7 +2826,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				if ( $apply_filters ) {
 
-					self::$cf['config_filtered'] = true;	// set before calling filter to prevent recursion
+					self::$cf[ 'config_filtered' ] = true;	// set before calling filter to prevent recursion
 
 					self::$cf = apply_filters( 'wpsso_get_config', self::$cf, self::get_version() );
 
@@ -2855,13 +2855,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							self::$cf[ '*' ][ 'version' ] .= '-' . $ext . $info[ 'version' ] . $pkg_lctype;
 						}
 
-						if ( isset( $info['opt_version'] ) ) {
-							self::$cf[ 'opt' ][ 'version' ] .= '-' . $ext . $info['opt_version'] . $pkg_lctype;
+						if ( isset( $info[ 'opt_version' ] ) ) {
+							self::$cf[ 'opt' ][ 'version' ] .= '-' . $ext . $info[ 'opt_version' ] . $pkg_lctype;
 						}
 
 						// complete relative paths in the image arrays
 						$plugin_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
-						array_walk_recursive( self::$cf[ 'plugin' ][$ext]['img'], 
+						array_walk_recursive( self::$cf[ 'plugin' ][$ext][ 'img' ], 
 							array( __CLASS__, 'maybe_prefix_base_url' ), $plugin_base );
 					}
 				}
@@ -2950,87 +2950,85 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Create a unique md5 query name from the config array and the local wp nonce key.
 			 */
-			$var_const['WPSSO_NONCE_NAME'] = md5( var_export( self::$cf, true ) . 
+			$var_const[ 'WPSSO_NONCE_NAME' ] = md5( var_export( self::$cf, true ) . 
 				( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
-				$var_const['WPSSO_CACHEDIR']    = WPSSO_PLUGINDIR . 'cache/';
-				$var_const['WPSSO_TOPICS_LIST'] = WPSSO_PLUGINDIR . 'share/topics.txt';
+				$var_const[ 'WPSSO_TOPICS_LIST' ] = WPSSO_PLUGINDIR . 'share/topics.txt';
 			}
 
-			if ( defined( 'WPSSO_URLPATH' ) ) {
-				$var_const['WPSSO_CACHEURL'] = WPSSO_URLPATH . 'cache/';
-			}
+			$var_const[ 'WPSSO_CACHEDIR' ] = self::get_cache_dir();
+			$var_const[ 'WPSSO_CACHEURL' ] = self::get_cache_url();
 
-			$var_const['WPSSO_MENU_ORDER']                  = '99.10';	// Position of the SSO menu item.
-			$var_const['WPSSO_TB_NOTICE_MENU_ORDER']        = '55';		// Position of the SSO notices toolbar menu item.
-			$var_const['WPSSO_TB_LOCALE_MENU_ORDER']        = '60';		// Position of the user locale toolbar menu item.
-			$var_const['WPSSO_TOOLBAR_NOTICES']             = true;		// Show error, warning, and info notices in the toolbar menu.
-			$var_const['WPSSO_JSON_PRETTY_PRINT']           = false;	// Output pretty / human readable json.
-			$var_const['WPSSO_CONTENT_BLOCK_FILTER_OUTPUT'] = true;		// Monitor and fix incorrectly coded filter hooks.
-			$var_const['WPSSO_CONTENT_FILTERS_MAX_TIME']    = 1.50;		// Issue a warning if the content filter takes longer than 1.5 seconds.
-			$var_const['WPSSO_CONTENT_IMAGES_MAX_LIMIT']    = 5;		// Maximum number of images extracted from the content.
-			$var_const['WPSSO_CONTENT_VIDEOS_MAX_LIMIT']    = 5;		// Maximum number of videos extracted from the content.
-			$var_const['WPSSO_DUPE_CHECK_HEADER_COUNT']     = 5;		// Maximum number of times to check for duplicates.
-			$var_const['WPSSO_DUPE_CHECK_TIMEOUT_TIME']     = 3.00;		// Hard-limit - most crawlers time-out after 3 seconds.
-			$var_const['WPSSO_DUPE_CHECK_WARNING_TIME']     = 2.50;		// Issue a warning if getting shortlink took more than 2.5 seconds.
-			$var_const['WPSSO_GET_POSTS_MAX_TIME']          = 0.10;		// Send an error to trigger_error() if get_posts() takes longer.
-			$var_const['WPSSO_PHP_GETIMGSIZE_MAX_TIME']     = 1.50;		// Send an error to trigger_error() if getimagesize() takes longer.
-			$var_const['WPSSO_REFRESH_CACHE_SLEEP_TIME']    = 0.25;		// Seconds to sleep between requests when refreshing the cache.
+			$var_const[ 'WPSSO_MENU_ORDER' ]                  = '99.10';	// Position of the SSO menu item.
+			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = '55';	// Position of the SSO notices toolbar menu item.
+			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = '60';	// Position of the user locale toolbar menu item.
+			$var_const[ 'WPSSO_TOOLBAR_NOTICES' ]             = true;	// Show error, warning, and info notices in the toolbar menu.
+			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = false;	// Output pretty / human readable json.
+			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;	// Monitor and fix incorrectly coded filter hooks.
+			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.50;	// Issue a warning if the content filter takes longer than 1.5 seconds.
+			$var_const[ 'WPSSO_CONTENT_IMAGES_MAX_LIMIT' ]    = 5;		// Maximum number of images extracted from the content.
+			$var_const[ 'WPSSO_CONTENT_VIDEOS_MAX_LIMIT' ]    = 5;		// Maximum number of videos extracted from the content.
+			$var_const[ 'WPSSO_DUPE_CHECK_HEADER_COUNT' ]     = 5;		// Maximum number of times to check for duplicates.
+			$var_const[ 'WPSSO_DUPE_CHECK_TIMEOUT_TIME' ]     = 3.00;	// Hard-limit - most crawlers time-out after 3 seconds.
+			$var_const[ 'WPSSO_DUPE_CHECK_WARNING_TIME' ]     = 2.50;	// Issue a warning if getting shortlink took more than 2.5 seconds.
+			$var_const[ 'WPSSO_GET_POSTS_MAX_TIME' ]          = 0.10;	// Send an error to trigger_error() if get_posts() takes longer.
+			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 1.50;	// Send an error to trigger_error() if getimagesize() takes longer.
+			$var_const[ 'WPSSO_REFRESH_CACHE_SLEEP_TIME' ]    = 0.25;	// Seconds to sleep between requests when refreshing the cache.
 
 			/**
 			 * WPSSO schema limits.
 			 */
-			$var_const['WPSSO_SCHEMA_ADDL_TYPE_URL_MAX']       = 5;
-			$var_const['WPSSO_SCHEMA_EVENT_OFFERS_MAX']        = 10;
-			$var_const['WPSSO_SCHEMA_HOWTO_STEPS_MAX']         = 80;
-			$var_const['WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX']      = 40;
-			$var_const['WPSSO_SCHEMA_HOWTO_TOOLS_MAX']         = 20;
-			$var_const['WPSSO_SCHEMA_MOVIE_ACTORS_MAX']        = 20;
-			$var_const['WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX']     = 5;
-			$var_const['WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX']  = 50;
-			$var_const['WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX'] = 80;
-			$var_const['WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX']    = 30;
-			$var_const['WPSSO_SCHEMA_SAMEAS_URL_MAX']          = 5;
+			$var_const[ 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX' ]       = 5;
+			$var_const[ 'WPSSO_SCHEMA_EVENT_OFFERS_MAX' ]        = 10;
+			$var_const[ 'WPSSO_SCHEMA_HOWTO_STEPS_MAX' ]         = 80;
+			$var_const[ 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX' ]      = 40;
+			$var_const[ 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX' ]         = 20;
+			$var_const[ 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX' ]        = 20;
+			$var_const[ 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX' ]     = 5;
+			$var_const[ 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX' ]  = 50;
+			$var_const[ 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX' ] = 80;
+			$var_const[ 'WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX' ]    = 30;
+			$var_const[ 'WPSSO_SCHEMA_SAMEAS_URL_MAX' ]          = 5;
 
 			/**
 			 * WPSSO option and meta array names.
 			 */
-			$var_const['WPSSO_TS_NAME']           = 'wpsso_timestamps';
-			$var_const['WPSSO_OPTIONS_NAME']      = 'wpsso_options';
-			$var_const['WPSSO_SITE_OPTIONS_NAME'] = 'wpsso_site_options';
-			$var_const['WPSSO_DISMISS_NAME']      = 'wpsso_dismissed';		// Dismissed notices.
-			$var_const['WPSSO_META_NAME']         = '_wpsso_meta';			// Post meta.
-			$var_const['WPSSO_PREF_NAME']         = '_wpsso_pref';			// User meta.
-			$var_const['WPSSO_POST_CHECK_NAME']   = 'wpsso_post_head_count';	// Duplicate check counter.
+			$var_const[ 'WPSSO_TS_NAME' ]           = 'wpsso_timestamps';
+			$var_const[ 'WPSSO_OPTIONS_NAME' ]      = 'wpsso_options';
+			$var_const[ 'WPSSO_SITE_OPTIONS_NAME' ] = 'wpsso_site_options';
+			$var_const[ 'WPSSO_DISMISS_NAME' ]      = 'wpsso_dismissed';		// Dismissed notices.
+			$var_const[ 'WPSSO_META_NAME' ]         = '_wpsso_meta';		// Post meta.
+			$var_const[ 'WPSSO_PREF_NAME' ]         = '_wpsso_pref';		// User meta.
+			$var_const[ 'WPSSO_POST_CHECK_NAME' ]   = 'wpsso_post_head_count';	// Duplicate check counter.
 
 			/**
 			 * WPSSO option and meta array alternate names.
 			 */
-			$var_const['WPSSO_OPTIONS_NAME_ALT']      = 'ngfb_options';		// Fallback name.
-			$var_const['WPSSO_SITE_OPTIONS_NAME_ALT'] = 'ngfb_site_options';	// Fallback name.
-			$var_const['WPSSO_META_NAME_ALT']         = '_ngfb_meta';		// Fallback name.
-			$var_const['WPSSO_PREF_NAME_ALT']         = '_ngfb_pref';		// Fallback name.
+			$var_const[ 'WPSSO_OPTIONS_NAME_ALT' ]      = 'ngfb_options';		// Fallback name.
+			$var_const[ 'WPSSO_SITE_OPTIONS_NAME_ALT' ] = 'ngfb_site_options';	// Fallback name.
+			$var_const[ 'WPSSO_META_NAME_ALT' ]         = '_ngfb_meta';		// Fallback name.
+			$var_const[ 'WPSSO_PREF_NAME_ALT' ]         = '_ngfb_pref';		// Fallback name.
 
 			/**
 			 * WPSSO hook priorities.
 			 */
-			$var_const['WPSSO_ADD_MENU_PRIORITY']    = -20;
-			$var_const['WPSSO_ADD_SUBMENU_PRIORITY'] = -10;
-			$var_const['WPSSO_ADD_COLUMN_PRIORITY']  = 100;
-			$var_const['WPSSO_META_SAVE_PRIORITY']   = -10;		// Save our custom post/term/user meta before clearing the cache.
-			$var_const['WPSSO_META_CACHE_PRIORITY']  = 0;		// Clear our cache before priority 10 (where most caching plugins are hooked).
-			$var_const['WPSSO_INIT_PRIORITY']        = 12;
-			$var_const['WPSSO_HEAD_PRIORITY']        = 10;
-			$var_const['WPSSO_FOOTER_PRIORITY']      = 100;
-			$var_const['WPSSO_SEO_FILTERS_PRIORITY'] = 100;
+			$var_const[ 'WPSSO_ADD_MENU_PRIORITY' ]    = -20;
+			$var_const[ 'WPSSO_ADD_SUBMENU_PRIORITY' ] = -10;
+			$var_const[ 'WPSSO_ADD_COLUMN_PRIORITY' ]  = 100;
+			$var_const[ 'WPSSO_META_SAVE_PRIORITY' ]   = -10;	// Save our custom post/term/user meta before clearing the cache.
+			$var_const[ 'WPSSO_META_CACHE_PRIORITY' ]  = 0;		// Clear our cache before priority 10 (where most caching plugins are hooked).
+			$var_const[ 'WPSSO_INIT_PRIORITY' ]        = 12;
+			$var_const[ 'WPSSO_HEAD_PRIORITY' ]        = 10;
+			$var_const[ 'WPSSO_FOOTER_PRIORITY' ]      = 100;
+			$var_const[ 'WPSSO_SEO_FILTERS_PRIORITY' ] = 100;
 
 			/**
 			 * WPSSO PHP cURL library settings.
 			 */
-			$var_const['WPSSO_PHP_CURL_CAINFO']             = ABSPATH . WPINC . '/certificates/ca-bundle.crt';
-			$var_const['WPSSO_PHP_CURL_USERAGENT']          = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0';
-			$var_const['WPSSO_PHP_CURL_USERAGENT_FACEBOOK'] = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
+			$var_const[ 'WPSSO_PHP_CURL_CAINFO' ]             = ABSPATH . WPINC . '/certificates/ca-bundle.crt';
+			$var_const[ 'WPSSO_PHP_CURL_USERAGENT' ]          = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0';
+			$var_const[ 'WPSSO_PHP_CURL_USERAGENT_FACEBOOK' ] = 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)';
 
 			foreach ( $var_const as $name => $value ) {
 				if ( defined( $name ) ) {
@@ -3039,6 +3037,102 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 
 			return $var_const;
+		}
+
+		public static function get_cache_dir() {
+
+			if ( defined( 'WPSSO_CACHEDIR' ) ) {
+				return WPSSO_CACHEDIR;
+			}
+
+			if ( defined( 'WP_CONTENT_DIR' ) ) {
+
+				$content_dir = trailingslashit( WP_CONTENT_DIR );
+
+				if ( self::is_cache_dir( $content_dir . 'cache/wpsso/' ) ) {
+					return $content_dir . 'cache/wpsso/';
+				}
+			}
+
+			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
+				if ( self::is_cache_dir( WPSSO_PLUGINDIR . 'cache/' ) ) {
+					return WPSSO_PLUGINDIR . 'cache/';
+				}
+			}
+
+			return false;
+		}
+
+		public static function get_cache_url() {
+
+			if ( defined( 'WPSSO_CACHEURL' ) ) {
+				return WPSSO_CACHEURL;
+			}
+
+			if ( defined( 'WP_CONTENT_DIR' ) ) {
+
+				$content_dir = trailingslashit( WP_CONTENT_DIR );
+
+				if ( self::is_cache_dir( $content_dir . 'cache/wpsso/' ) ) {
+					return content_url( '/cache/wpsso/' );
+				}
+			}
+
+			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
+				if ( self::is_cache_dir( WPSSO_PLUGINDIR . 'cache/' ) ) {
+					if ( defined( 'WPSSO_URLPATH' ) ) {
+						return WPSSO_URLPATH . 'cache/';
+					}
+				}
+			}
+
+			return false;
+		}
+
+		private static function is_cache_dir( $dir ) {
+			
+			$dir = trailingslashit( $dir );		// Just in case.
+
+			$index_file  = $dir . 'index.php';
+			$access_file = $dir . '.htaccess';
+
+			if ( file_exists( $index_file ) ) {	// Assume directory permissions are good.
+				return true;
+			}
+
+			$index_str  = '<?php // These aren\'t the droids you\'re looking for...' . "\n";
+			$access_str = '<FilesMatch "\.(php|pl|cgi|shtml)$">
+	# Apache 2.2
+	<IfModule !mod_authz_core.c>
+		Order	deny,allow
+		Deny	from all
+	</IfModule>
+	# Apache 2.4
+	<IfModule mod_authz_core.c>
+		Require all denied
+	</IfModule>
+</FilesMatch>' . "\n";
+
+			if ( is_dir( $dir ) || @mkdir( $dir, $mode = 0755, $recursive = true ) ) {
+
+				if ( ( $index_fh = @fopen( $index_file, $mode = 'wb' ) ) &&
+					( $htaccess_fh = @fopen( $access_file, $mode = 'wb' ) ) ) {
+
+					if ( @fwrite( $index_fh, $index_str ) &&
+						@fwrite( $htaccess_fh, $access_str ) ) {
+
+						fclose( $index_fh );
+						fclose( $htaccess_fh );
+
+						@chmod( $index_file, $mode = 0644 );
+						@chmod( $ht_file, $mode = 0644 );
+
+						return true;
+					}
+				}
+			}
+
+			return false;
 		}
 
 		public static function require_libs( $plugin_filepath ) {

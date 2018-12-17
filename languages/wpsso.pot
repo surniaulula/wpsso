@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.18.0\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.18.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1092,15 +1092,15 @@ msgstr ""
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:665 lib/gettext-com.php:20
+#: lib/com/cache.php:667 lib/gettext-com.php:20
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: lib/com/cache.php:673 lib/gettext-com.php:21
+#: lib/com/cache.php:678 lib/gettext-com.php:21
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:681 lib/gettext-com.php:22
+#: lib/com/cache.php:689 lib/gettext-com.php:22
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
