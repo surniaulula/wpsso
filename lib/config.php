@@ -3116,16 +3116,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			if ( is_dir( $dir ) || @mkdir( $dir, $mode = 0755, $recursive = true ) ) {
 
 				if ( ( $index_fh = @fopen( $index_file, $mode = 'wb' ) ) &&
-					( $htaccess_fh = @fopen( $access_file, $mode = 'wb' ) ) ) {
+					( $access_fh = @fopen( $access_file, $mode = 'wb' ) ) ) {
 
-					if ( @fwrite( $index_fh, $index_str ) &&
-						@fwrite( $htaccess_fh, $access_str ) ) {
+					if ( @fwrite( $index_fh, $index_str ) && @fwrite( $access_fh, $access_str ) ) {
 
 						fclose( $index_fh );
-						fclose( $htaccess_fh );
+						fclose( $access_fh );
 
 						@chmod( $index_file, $mode = 0644 );
-						@chmod( $ht_file, $mode = 0644 );
+						@chmod( $access_file, $mode = 0644 );
 
 						return true;
 					}
