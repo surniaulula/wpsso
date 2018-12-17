@@ -2269,15 +2269,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			require_once ABSPATH . WPINC . '/class-wp-image-editor-imagick.php';
 
 			$implementations = apply_filters( 'wp_image_editors', array( 'WP_Image_Editor_Imagick', 'WP_Image_Editor_GD' ) );
-			$php_extensions  = $this->p->cf['php']['extensions'];
+			$php_extensions  = $this->p->cf[ 'php' ][ 'extensions' ];
 
 			foreach ( $php_extensions as $php_ext => $php_info ) {
 
 				/**
 				 * Skip image extensions for WordPress image editors that are not used.
 				 */
-				if ( ! empty( $php_info['wp_image_editor'][ 'class' ] ) ) {
-					if ( ! in_array( $php_info['wp_image_editor'][ 'class' ], $implementations ) ) {
+				if ( ! empty( $php_info[ 'wp_image_editor' ][ 'class' ] ) ) {
+					if ( ! in_array( $php_info[ 'wp_image_editor' ][ 'class' ], $implementations ) ) {
 						continue;
 					}
 				}
@@ -3139,13 +3139,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 								global $wp_version;
 
-								$app_version = $wp_version;
+								$app_version  = $wp_version;
+								$dismiss_time = MONTH_IN_SECONDS;
 
 								break;
 
 							case 'php':
 
-								$app_version = phpversion();
+								$app_version  = phpversion();
+								$dismiss_time = 3 * MONTH_IN_SECONDS;
 
 								break;
 
@@ -3167,7 +3169,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							) );
 
 							$notice_key   = 'notice-recommend-version-' . $this->p->lca . '-' . $version . '-' . $app_label . '-' . $app_version;
-							$dismiss_time = 3 * MONTH_IN_SECONDS;
 
 							$this->p->notice->warn( $warn_msg, null, $notice_key, $dismiss_time );
 						}
