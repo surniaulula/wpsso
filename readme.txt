@@ -434,7 +434,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.1-dev.1 (TBD)**
+**Version 4.18.1-dev.1 (2018/12/17)**
 
 * *New Features*
 	* None.
@@ -494,7 +494,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.18.1-dev.1 =
 
-(TBD) Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/.
+(2018/12/17) Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/.
 
 = 4.18.0 =
 
