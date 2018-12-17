@@ -439,11 +439,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* Updated the WPSSO_CACHEDIR and WPSSO_CACHEURL default values:
+		* Defines WPSSO_CACHEDIR as trailingslashit( WP_CONTENT_DIR ) . 'cache/wpsso/' if possible.
+		* Defines WPSSO_CACHEURL as content_url( 'cache/wpsso/' ) if possible.
 
 **Version 4.18.0 (2018/12/14)**
 
@@ -492,7 +494,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.18.1-dev.1 =
 
-(TBD) None.
+(TBD) Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/.
 
 = 4.18.0 =
 
