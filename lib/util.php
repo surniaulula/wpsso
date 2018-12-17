@@ -1157,29 +1157,37 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$other_msg = ' ' . __( 'The cache for %s has also been cleared.', 'wpsso' );
 
 				if ( function_exists( 'w3tc_pgcache_flush' ) ) {	// W3 Total Cache.
+
 					w3tc_pgcache_flush();
 					w3tc_objectcache_flush();
+
 					if ( $status_msg ) {
 						$status_msg .= sprintf( $other_msg, 'W3 Total Cache' );
 					}
 				}
 
 				if ( function_exists( 'wp_cache_clear_cache' ) ) {	// WP Super Cache.
+
 					wp_cache_clear_cache();
+
 					if ( $status_msg ) {
 						$status_msg .= sprintf( $other_msg, 'WP Super Cache' );
 					}
 				}
 
 				if ( isset( $GLOBALS['comet_cache'] ) ) {		// Comet Cache.
+
 					$GLOBALS['comet_cache']->wipe_cache();
+
 					if ( $status_msg ) {
 						$status_msg .= sprintf( $other_msg, 'Comet Cache' );
 					}
 				}
 
 				if ( class_exists( 'LiteSpeed_Cache_API' ) ) {		// LiteSpeed Cache.
+
 					LiteSpeed_Cache_API::purge_all();
+
 					if ( $status_msg ) {
 						$status_msg .= sprintf( $other_msg, 'LiteSpeed Cache' );
 					}

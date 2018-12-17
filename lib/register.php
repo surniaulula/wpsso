@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$opts = get_site_option( WPSSO_SITE_OPTIONS_NAME, array() );
 
-			if ( ! empty( $opts['plugin_clean_on_uninstall'] ) ) {
+			if ( ! empty( $opts[ 'plugin_clean_on_uninstall' ] ) ) {
 
 				delete_site_option( WPSSO_SITE_OPTIONS_NAME );
 			}
@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			/**
 			 * Clear all caches on activate.
 			 */
-			if ( ! empty( $this->p->options['plugin_clear_on_activate'] ) ) {
+			if ( ! empty( $this->p->options[ 'plugin_clear_on_activate' ] ) ) {
 
 				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
 					_x( 'Clear All Caches on Activate', 'option label', 'wpsso' ) );
@@ -159,9 +159,30 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			/**
 			 * Clear all caches on deactivate. Do not use the schedule_clear_all_cache() method
 			 * since WPSSO will be deactivated before the scheduled task can begin.
+			 *
+			 * If 'plugin_clear_on_deactivate' is empty, then at least clear the disk cache.
 			 */
-			if ( ! empty( $this->p->options['plugin_clear_on_deactivate'] ) ) {
+			if ( ! empty( $this->p->options[ 'plugin_clear_on_deactivate' ] ) ) {
+
 				$this->p->util->clear_all_cache( $user_id = 0, $clear_other = true, $clear_short = true, $refresh_all = false );
+
+			} else {
+
+				$cache_dir = constant( 'WPSSO_CACHEDIR' );
+
+				if ( $dh = @opendir( $cache_dir ) ) {
+
+					while ( $file_name = @readdir( $dh ) ) {
+
+						$cache_file = $cache_dir . $file_name;
+
+						if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
+							@unlink( $cache_file );
+						}
+					}
+
+					closedir( $dh );
+				}
 			}
 
 			delete_option( WPSSO_POST_CHECK_NAME );	// Remove the post duplicate check counter.
@@ -173,12 +194,12 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		 */
 		private static function uninstall_plugin() {
 
-			$blog_id  = get_current_blog_id();
-			$opts     = get_option( WPSSO_OPTIONS_NAME, array() );
+			$blog_id = get_current_blog_id();
+			$opts    = get_option( WPSSO_OPTIONS_NAME, array() );
 
 			delete_option( WPSSO_TS_NAME );
 
-			if ( ! empty( $opts['plugin_clean_on_uninstall'] ) ) {
+			if ( ! empty( $opts[ 'plugin_clean_on_uninstall' ] ) ) {
 
 				delete_option( WPSSO_OPTIONS_NAME );
 
@@ -259,9 +280,9 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 						break;
 				}
 
-				$app_label   = $cf[$key]['label'];
-				$min_version = $cf[$key][ 'min_version' ];
-				$version_url = $cf[$key]['version_url'];
+				$app_label   = $cf[ $key ][ 'label' ];
+				$min_version = $cf[ $key ][ 'min_version' ];
+				$version_url = $cf[ $key ][ 'version_url' ];
 
 				if ( version_compare( $app_version, $min_version, '>=' ) ) {
 					continue;
