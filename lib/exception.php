@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoException' ) ) {
+if ( ! class_exists( 'WpssoErrorException' ) ) {
 
-	class WpssoException extends Exception {
+	class WpssoErrorException extends ErrorException {
 
 		protected $p;
 
@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoException' ) ) {
 			505 => 'HTTP Version Not Supported'
 		);
 	
-		public function __construct( $message = null, $http_code = null, Exception $previous = null ) {
+		public function __construct( $errstr = '', $errno = 0, $severity = E_ERROR, $filename = __FILE__, $lineno = __LINE__, Exception $previous = null ) {
 
 			$this->p =& Wpsso::get_instance();
 
@@ -66,33 +66,31 @@ if ( ! class_exists( 'WpssoException' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( isset( $this->httpResultCodes[ (int) $http_code ] ) ) {
-				$message .= ' HTTP '.$http_code . ' ' . $this->httpResultCodes[ (int) $http_code ] . '.';
+			if ( isset( $this->httpResultCodes[ (int) $errno ] ) ) {
+				$errstr .= ' HTTP '.$errno . ' ' . $this->httpResultCodes[ (int) $errno ] . '.';
 			}
 
-			parent::__construct( trim( $message ), $http_code, $previous );
+			parent::__construct( trim( $errstr ), $errno, $severity, $filename, $lineno, $previous );
 		}
 
 		public function errorMessage( $ret = false ) {
 
 			/**
-			 * getMessage();        // message of exception
-			 * getCode();           // code of exception
-			 * getFile();           // source filename
-			 * getLine();           // source line
-			 * getTrace();          // an array of the backtrace()
-			 * getPrevious();       // previous exception
-			 * getTraceAsString();  // formatted string of trace
+			 * getMessage();        // Message of exception.
+			 * getCode();           // Code of exception.
+			 * getFile();           // Source filename.
+			 * getLine();           // Source line.
+			 * getTrace();          // An array of the backtrace().
+			 * getPrevious();       // Previous exception.
+			 * getTraceAsString();  // Formatted string of trace.
 			 */
-			$error_msg = $this->getMessage();
+			$errstr = $this->getMessage();
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->log( $error_msg );
+				$this->p->debug->log( $errstr );
 			}
 
-			$this->p->notice->err( $error_msg );
-
-			return  $ret;
+			$this->p->notice->err( $errstr );
 		}
 	}
 }

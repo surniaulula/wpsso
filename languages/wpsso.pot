@@ -372,7 +372,7 @@ msgstr ""
 
 #: lib/admin.php:2352 lib/gettext-pro.php:167 lib/gettext-pro.php:170
 #: lib/gettext-pro.php:173 lib/pro/media/slideshare.php:192
-#: lib/pro/media/vimeo.php:157 lib/pro/media/wistia.php:314 lib/util.php:1769
+#: lib/pro/media/vimeo.php:157 lib/pro/media/wistia.php:314 lib/util.php:1778
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -1074,33 +1074,33 @@ msgstr ""
 msgid "Requests to cache this URL will be ignored for %d second(s)."
 msgstr ""
 
-#: lib/com/cache.php:320 lib/gettext-com.php:16
+#: lib/com/cache.php:328 lib/gettext-com.php:16
 msgid ""
 "PHP cURL library is missing &mdash; contact your hosting provider to have "
 "the cURL library installed."
 msgstr ""
 
-#: lib/com/cache.php:411 lib/gettext-com.php:17
+#: lib/com/cache.php:419 lib/gettext-com.php:17
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: lib/com/cache.php:608 lib/gettext-com.php:18
+#: lib/com/cache.php:616 lib/gettext-com.php:18
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: lib/com/cache.php:625 lib/gettext-com.php:19
+#: lib/com/cache.php:633 lib/gettext-com.php:19
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: lib/com/cache.php:720 lib/gettext-com.php:20
+#: lib/com/cache.php:728 lib/gettext-com.php:20
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: lib/com/cache.php:731 lib/gettext-com.php:21
+#: lib/com/cache.php:739 lib/gettext-com.php:21
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: lib/com/cache.php:742 lib/gettext-com.php:22
+#: lib/com/cache.php:750 lib/gettext-com.php:22
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
@@ -2416,7 +2416,7 @@ msgid "Refresh Short URLs on Clear Cache"
 msgstr ""
 
 #: lib/gettext-pro.php:59 lib/gpl/admin/advanced.php:347
-#: lib/pro/admin/advanced.php:345 lib/util.php:1215
+#: lib/pro/admin/advanced.php:345 lib/util.php:1224
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr ""
@@ -2944,13 +2944,13 @@ msgstr ""
 
 #: lib/gettext-pro.php:165 lib/gettext-pro.php:168 lib/gettext-pro.php:171
 #: lib/pro/media/slideshare.php:187 lib/pro/media/vimeo.php:152
-#: lib/pro/media/wistia.php:309 lib/util.php:1764
+#: lib/pro/media/wistia.php:309 lib/util.php:1773
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/gettext-pro.php:166 lib/gettext-pro.php:169 lib/gettext-pro.php:172
 #: lib/pro/media/slideshare.php:189 lib/pro/media/vimeo.php:154
-#: lib/pro/media/wistia.php:311 lib/util.php:1766
+#: lib/pro/media/wistia.php:311 lib/util.php:1775
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
@@ -3137,23 +3137,23 @@ msgid ""
 "Video discovery and integration modules are provided with the Pro version."
 msgstr ""
 
-#: lib/head.php:500
+#: lib/head.php:501
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:512
+#: lib/head.php:513
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:561
+#: lib/head.php:562
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:568
+#: lib/head.php:569
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:575
+#: lib/head.php:576
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -3173,7 +3173,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:175 lib/loader.php:201 lib/post.php:272 lib/register.php:300
-#: lib/term.php:252 lib/user.php:219 lib/util.php:371 lib/util.php:3019
+#: lib/term.php:252 lib/user.php:219 lib/util.php:372 lib/util.php:3028
 msgid "%s warning:"
 msgstr ""
 
@@ -3725,7 +3725,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:623 lib/util.php:3303
+#: lib/messages.php:623 lib/util.php:3312
 msgid "No options available."
 msgstr ""
 
@@ -5665,8 +5665,8 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:258 lib/term.php:238 lib/user.php:205 lib/util.php:357
-#: lib/util.php:2991
+#: lib/post.php:258 lib/term.php:238 lib/user.php:205 lib/util.php:358
+#: lib/util.php:3000
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5705,7 +5705,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:925 lib/util.php:1683
+#: lib/post.php:925 lib/util.php:1692
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6409,78 +6409,78 @@ msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max.
-#: lib/util.php:360
+#: lib/util.php:361
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1152
+#: lib/util.php:1161
 msgid ""
 "%s cached files, transient cache, column meta, and WordPress object cache "
 "have all been cleared."
 msgstr ""
 
-#: lib/util.php:1157
+#: lib/util.php:1166
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1200 lib/util.php:1330
+#: lib/util.php:1209 lib/util.php:1339
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/util.php:1206
+#: lib/util.php:1215
 msgid ""
 "A background task will begin shortly to refresh the post, term, and user "
 "cache objects."
 msgstr ""
 
-#: lib/util.php:1217
+#: lib/util.php:1226
 msgid ""
 "All cache objects will be re-created as they are needed (the %s option is "
 "disabled)."
 msgstr ""
 
-#: lib/util.php:1324
+#: lib/util.php:1333
 msgid ""
 "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d "
 "users have been refreshed."
 msgstr ""
 
-#: lib/util.php:1514
+#: lib/util.php:1523
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1541
+#: lib/util.php:1550
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1600
+#: lib/util.php:1609
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1670
+#: lib/util.php:1679
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1696
+#: lib/util.php:1705
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1820
+#: lib/util.php:1829
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:2994
+#: lib/util.php:3003
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3011
+#: lib/util.php:3020
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6489,33 +6489,33 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3011
+#: lib/util.php:3020
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3298
+#: lib/util.php:3307
 msgid "Have you hidden the Pro options?"
 msgstr ""
 
-#: lib/util.php:3333
+#: lib/util.php:3342
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3336
+#: lib/util.php:3345
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3341
+#: lib/util.php:3350
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3344
+#: lib/util.php:3353
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

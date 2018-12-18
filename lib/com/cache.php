@@ -117,9 +117,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$this->load_transient();
 
-			if ( ! empty( $this->transient['ignore_urls'][$url] ) ) {
+			if ( ! empty( $this->transient[ 'ignore_urls' ][ $url ] ) ) {
 
-				$time_left = $this->transient['ignore_time'] - ( time() - $this->transient['ignore_urls'][$url] );
+				$time_left = $this->transient[ 'ignore_time' ] - ( time() - $this->transient[ 'ignore_urls' ][ $url ] );
 
 				if ( $time_left > 0 ) {
 
@@ -130,7 +130,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					return true;
 
 				} else {
-					unset( $this->transient['ignore_urls'][$url] );
+					unset( $this->transient[ 'ignore_urls' ][ $url ] );
 				}
 			}
 
@@ -141,7 +141,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$this->load_transient();
 
-			$this->transient['ignore_urls'][$url] = time();
+			$this->transient[ 'ignore_urls' ][ $url ] = time();
 
 			if ( is_admin() ) {
 
@@ -191,7 +191,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				}
 
 				$errors[] = sprintf( __( 'Requests to cache this URL will be ignored for %d second(s).',
-					$this->text_domain ), $this->transient['ignore_time'] );
+					$this->text_domain ), $this->transient[ 'ignore_time' ] );
 
 				/**
 				 * Combine all strings into one error notice.
@@ -201,7 +201,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'error connecting to ' . $url . ' for caching (http code ' . $http_code . ')' );
-				$this->p->debug->log( 'requests to cache this URL ignored for ' . $this->transient['ignore_time'] . ' second(s)' );
+				$this->p->debug->log( 'requests to cache this URL ignored for ' . $this->transient[ 'ignore_time' ] . ' second(s)' );
 			}
 		}
 
@@ -265,19 +265,27 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 * If $exp_secs is null, then use the default expiration time.
 		 * If $exp_secs is false, then get but do not save the data.
 		 */
-		public function get_image_size( $url, $exp_secs = 300, array $curl_opts = array() ) {
+		public function get_image_size( $image_url, $exp_secs = 300, array $curl_opts = array(), $error_handler = null ) {
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->mark();
 			}
 
-			$filepath = $this->get( $url, 'filepath', 'file', $exp_secs, '', $curl_opts );
+			$filepath = $this->get( $image_url, 'filepath', 'file', $exp_secs, '', $curl_opts );
 
 			if ( ! empty( $filepath ) ) {	// False on error.
 
 				if ( file_exists( $filepath ) ) {
 
-					$image_size = @getimagesize( $filepath );
+					if ( null !== $error_handler ) {
+						$previous_error_handler = set_error_handler( $error_handler );
+					}
+
+					$image_size = getimagesize( $filepath );
+
+					if ( null !== $error_handler ) {
+						restore_error_handler();
+					}
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log_arr( 'getimagesize', $image_size );

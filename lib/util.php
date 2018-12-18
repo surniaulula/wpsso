@@ -338,7 +338,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$mtime_max   = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
 			$mtime_start = microtime( true );
-			$image_info  = $this->p->cache->get_image_size( $image_url );	// Wrapper for PHP's getimagesize().
+			$image_info  = $this->p->cache->get_image_size( $image_url, $exp_secs = 300,
+				$curl_opts = array(), $error_handler = 'wpsso_error_handler' );
 			$mtime_total = microtime( true ) - $mtime_start;
 
 			/**
@@ -374,13 +375,17 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			}
 
 			if ( is_array( $image_info ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'PHP getimagesize() image info: ' . $image_info[0] . 'x' . $image_info[1] );
 				}
+
 			} else {
+
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'PHP getimagesize() did not return an array - using defaults for cache' );
+					$this->p->debug->log( 'PHP getimagesize() did not return an array - using defaults' );
 				}
+
 				$image_info = $def_image_info;
 			}
 
@@ -396,7 +401,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			return $local_cache[ $image_url ] = $image_info;
 		}
 
-		public function get_image_size_label( $size_name ) {	// Example: 'wpsso-opengraph'.
+		/**
+		 * Example $size_name = 'wpsso-opengraph'.
+		 */
+		public function get_image_size_label( $size_name ) {
+
 			if ( ! empty( $this->size_labels[$size_name] ) ) {
 				return $this->size_labels[$size_name];
 			} else {

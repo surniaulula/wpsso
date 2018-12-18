@@ -9,6 +9,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
+if ( ! function_exists( 'wpsso_error_handler' ) ) {
+
+	function wpsso_error_handler( $severity, $errstr, $filename, $lineno, array $errcontext ) {
+		try {
+			throw new WpssoErrorException( $errstr, $errno = 0, $severity, $filename, $lineno );
+		} catch ( WpssoErrorException $e ) {
+			return $e->errorMessage();
+		}
+	}
+}
+
 if ( ! function_exists( 'wpsso_is_mobile' ) ) {
 
 	function wpsso_is_mobile() {

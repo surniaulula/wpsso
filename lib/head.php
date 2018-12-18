@@ -133,6 +133,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
 				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
+				$this->p->debug->log( 'query salt = ' . SucomUtil::get_query_salt() );
 				$this->p->util->log_is_functions();
 			}
 
