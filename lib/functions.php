@@ -11,6 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! function_exists( 'wpsso_error_handler' ) ) {
 
+	if ( ! class_exists( WpssoErrorException ) ) {	// Just in case.
+		require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends ErrorException.
+	}
+
 	function wpsso_error_handler( $severity, $errstr, $filename, $lineno, array $errcontext ) {
 		try {
 			throw new WpssoErrorException( $errstr, $errno = 0, $severity, $filename, $lineno );

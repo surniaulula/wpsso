@@ -3142,7 +3142,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/com/util.php';
 
 			require_once WPSSO_PLUGINDIR . 'lib/check.php';
-			require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends exception.
+			require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends ErrorException.
 			require_once WPSSO_PLUGINDIR . 'lib/filters.php';
 			require_once WPSSO_PLUGINDIR . 'lib/functions.php';
 			require_once WPSSO_PLUGINDIR . 'lib/head.php';
