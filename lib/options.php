@@ -620,14 +620,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
-				/**
-				 * If there's no google api key, then disable known Google API services.
-				 *
-				if ( isset( $opts['plugin_google_api_key'] ) && empty( $opts['plugin_google_api_key'] ) ) {
-					$opts['plugin_google_places']  = 0;
-				}
-				*/
-
 				if ( ! empty( $opts['fb_app_id'] ) && ( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) ) {
 					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ) );
 				}
@@ -636,7 +628,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * If the plugin_check_head option is disabled, then delete the check counter.
 				 */
 				if ( ! $network ) {
-					if ( empty( $this->p->options['plugin_check_head'] ) ) {
+					if ( empty( $this->p->options[ 'plugin_check_head' ] ) ) {
 						delete_option( WPSSO_POST_CHECK_NAME );
 					}
 				}

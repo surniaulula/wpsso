@@ -703,7 +703,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						 * Check duplicates only when the post is available publicly and we have a valid permalink.
 						 */
 						if ( current_user_can( 'manage_options' ) ) {
-							if ( apply_filters( $this->p->lca . '_check_post_head', $this->p->options['plugin_check_head'], $post_id, $post_obj ) ) {
+
+							if ( apply_filters( $this->p->lca . '_check_post_head',
+								$this->p->options[ 'plugin_check_head' ], $post_id, $post_obj ) ) {
+
 								$this->check_post_head_duplicates( $post_id, $post_obj );
 							}
 						}
@@ -875,7 +878,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$this->p->cache->clear( $check_url );	// Clear the cached webpage, just in case.
 
-			$webpage_html = $this->p->cache->get( $check_url, 'raw', 'transient', null, '', $curl_opts );
+			$exp_secs     = $this->p->debug->enabled ? false : null;
+			$webpage_html = $this->p->cache->get( $check_url, 'raw', 'transient', $exp_secs, '', $curl_opts );
 			$url_mtime    = $this->p->cache->get_url_mtime( $check_url );
 
 			$warning_time = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_WARNING_TIME', 2.5 );

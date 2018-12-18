@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$cache_index = trim( $cache_index, '_' );	// Cleanup leading underscores.
 
-			$cache_index = SucomUtil::get_query_salt( $cache_index );	// Add $wp_query args.
+			//$cache_index = SucomUtil::get_query_salt( $cache_index );	// Adds too much entropy.
 
 			$cache_index = apply_filters( $this->p->lca . '_head_cache_index', $cache_index, $mixed, $sharing_url );
 
@@ -294,6 +294,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$ret = '';
 
 			switch ( $type ) {
+
 				case 'begin':
 				case 'end':
 
@@ -301,7 +302,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
 
 					$comment = '<!-- ' . $this->p->lca . ' meta tags ' . $type . ' -->';
-
 					$mt_name = $add_meta ? '<meta name="' . $this->p->lca . ':mark:' . $type . '" ' . 
 						'content="' . $this->p->lca . ' meta tags ' . $type . '"/>' . "\n" : '';
 

@@ -3192,6 +3192,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function reset_check_head_count() {
+
 			delete_option( WPSSO_POST_CHECK_NAME );
 		}
 

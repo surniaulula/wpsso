@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Enable WP Tags for Pages', 'option label', 'wpsso' ), '', 'plugin_page_tags' ) . 
 			$form->get_td_no_checkbox( 'plugin_page_tags' );
 
-			$table_rows['plugin_check_head'] = '' . 
+			$table_rows[ 'plugin_check_head' ] = '' . 
 			$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ), '', 'plugin_check_head' ) . 
 			$form->get_td_no_checkbox( 'plugin_check_head' );
 

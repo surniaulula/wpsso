@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.18.1-dev.1',	// Plugin version.
+					'version'     => '4.18.1-dev.2',	// Plugin version.
 					'opt_version' => '623',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1342,7 +1342,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_topics_cache_exp:use'    => 'default',
 					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Types Array Cache Expiry (1 month).
 					'plugin_types_cache_exp:use'     => 'default',
-					'plugin_clear_on_activate'       => 0,			// Clear All Caches on Activate.
+					'plugin_clear_on_activate'       => 1,			// Clear All Caches on Activate.
 					'plugin_clear_on_activate:use'   => 'default',
 					'plugin_clear_on_deactivate'     => 0,			// Clear All Caches on Deactivate.
 					'plugin_clear_on_deactivate:use' => 'default',

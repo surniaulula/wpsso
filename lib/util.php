@@ -1130,13 +1130,13 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$user_id = $this->maybe_change_user_id( $user_id );
 
 			if ( null === $clear_short ) {
-				$clear_short = isset( $this->p->options['plugin_clear_short_urls'] ) ?
-					$this->p->options['plugin_clear_short_urls'] : false;
+				$clear_short = isset( $this->p->options[ 'plugin_clear_short_urls' ] ) ?
+					$this->p->options[ 'plugin_clear_short_urls' ] : false;
 			}
 
 			if ( null === $refresh_all ) {
-				$refresh_all = isset( $this->p->options['plugin_clear_all_refresh'] ) ?
-					$this->p->options['plugin_clear_all_refresh'] : false;
+				$refresh_all = isset( $this->p->options[ 'plugin_clear_all_refresh' ] ) ?
+					$this->p->options[ 'plugin_clear_all_refresh' ] : false;
 			}
 
 			$this->stop_refresh_all_cache();	// Just in case.
