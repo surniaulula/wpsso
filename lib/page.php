@@ -921,7 +921,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$cache_salt  = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
 			$cache_id    = $cache_md5_pre . md5( $cache_salt );
 			$cache_index = 'locale:' . SucomUtil::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );
-			//$cache_index = SucomUtil::get_query_salt( $cache_index );	// Adds too much entropy.
 			$cache_array = array();
 
 			if ( $this->p->debug->enabled ) {
