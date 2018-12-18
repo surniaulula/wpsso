@@ -434,15 +434,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.1-dev.1 (2018/12/17)**
+**Version 4.18.1-dev.2 (2018/12/17)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/.
+	* Updated the Setup Guide with a new "Schema vs Google Rich Cards" section.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
+	* Removed the addition of `$wp_query->query` from the transient cache array key values.
 	* Updated the WPSSO_CACHEDIR and WPSSO_CACHEURL default values:
 		* Defines WPSSO_CACHEDIR as trailingslashit( WP_CONTENT_DIR ) . 'cache/wpsso/' if possible.
 		* Defines WPSSO_CACHEURL as content_url( 'cache/wpsso/' ) if possible.
@@ -492,9 +494,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.1-dev.1 =
+= 4.18.1-dev.2 =
 
-(2018/12/17) Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/.
+(2018/12/17) Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/. Updated the Setup Guide with a new "Schema vs Google Rich Cards" section. Removed the addition of $wp_query->query from the transient cache array key values.
 
 = 4.18.0 =
 
