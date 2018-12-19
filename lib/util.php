@@ -3435,8 +3435,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 * Remove text between ignore markers.
 			 */
 			if ( false !== strpos( $text, $this->p->lca . '-ignore' ) ) {
-				$text = preg_replace( '/<!-- *' . $this->p->lca . '-ignore *-->(.*?)' .
-					'<!-- *\/' . $this->p->lca . '-ignore *-->/Ui', ' ', $text );
+				$text = preg_replace( '/<!-- *' . $this->p->lca . '-ignore *-->.*' .
+					'<!-- *\/' . $this->p->lca . '-ignore *-->/U', ' ', $text );
 			}
 
 			if ( $strip_tags ) {
