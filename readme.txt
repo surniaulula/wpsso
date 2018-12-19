@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 5.0
 WC Tested Up To: 3.5
-Stable Tag: 4.18.0
+Stable Tag: 4.18.1
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how it's crawled, shared, re-shared, posted or embedded!
 
@@ -34,7 +34,7 @@ WPSSO Core is language / locale aware, which means you can customize your site i
 
 **Creates *accurate* and *complete* meta tags and Schema markup:**
 
-WPSSO Core offers meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Card SEO, Pinterest Rich Pins, Twitter Cards, Weibo and more &mdash; including complete image markup, video markup, extensive eCommerce product markup, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!
+WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Card SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive eCommerce product markup, mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!
 
 **Includes advanced *quality assurance* features and options:**
 
