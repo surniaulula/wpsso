@@ -434,13 +434,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.1-rc.1 (2018/12/18)**
+**Version 4.18.1 (2018/12/19)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* Updated the Setup Guide with a new "Schema vs Google Rich Cards" section.
-	* Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/.
+	* Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/. The wpsso/cache folder is no longer included in the plugin ZIP.
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -494,11 +494,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.1-rc.1 =
+= 4.18.1 =
 
-(2018/12/18) Updated the Setup Guide with a new "Schema vs Google Rich Cards" section. Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/. Removed $wp_query as a salt for transient cache array index keys.
-
-= 4.18.0 =
-
-(2018/12/14) Added a new SSO &gt; Tools settings page and new export / import action buttons. Added new options in the Document SSO metabox for products (Pro version).
+(2018/12/19) Updated the Setup Guide with a new "Schema vs Google Rich Cards" section. Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/. Removed $wp_query as a salt for transient cache array index keys.
 
