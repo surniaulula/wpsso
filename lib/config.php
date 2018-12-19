@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.18.1-rc.1',	// Plugin version.
+					'version'     => '4.18.1',	// Plugin version.
 					'opt_version' => '623',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -3080,7 +3080,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
 				if ( self::is_cache_dir( WPSSO_PLUGINDIR . 'cache/' ) ) {
-					if ( defined( 'WPSSO_URLPATH' ) ) {
+					if ( defined( 'WPSSO_URLPATH' ) ) {	// Just in case.
 						return WPSSO_URLPATH . 'cache/';
 					}
 				}

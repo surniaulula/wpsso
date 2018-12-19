@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoErrorException' ) ) {
 			}
 
 			if ( isset( $this->httpResultCodes[ (int) $errno ] ) ) {
-				$errstr .= ' HTTP '.$errno . ' ' . $this->httpResultCodes[ (int) $errno ] . '.';
+				$errstr .= ' HTTP ' . $errno . ' ' . $this->httpResultCodes[ (int) $errno ] . '.';
 			}
 
 			parent::__construct( trim( $errstr ), $errno, $severity, $filename, $lineno, $previous );
