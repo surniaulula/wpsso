@@ -300,7 +300,7 @@
 <li><p>The following integration modules are provided with the Pro version, and are automatically loaded when the supported services are required or 3rd party plugins detected.</p>
 
 <ul>
-<li><p><strong>Integration with Service APIs</strong></p>
+<li><p><strong>Integration with Service APIs:</strong></p>
 
 <ul>
 <li>Bitly</li>
@@ -317,7 +317,7 @@
 <li>Your Own URL Shortener (YOURLS)</li>
 <li>YouTube Videos and Playlists</li>
 </ul></li>
-<li><p><strong>Integration with 3rd Party Plugins</strong></p>
+<li><p><strong>Integration with 3rd Party Plugins:</strong></p>
 
 <ul>
 <li>All in One SEO Pack</li>

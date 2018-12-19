@@ -251,7 +251,7 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 
 * The following integration modules are provided with the Pro version, and are automatically loaded when the supported services are required or 3rd party plugins detected.
 
-	* **Integration with Service APIs**
+	* **Integration with Service APIs:**
 
 		* Bitly
 		* DLMY.App
@@ -267,7 +267,7 @@ WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https:/
 		* Your Own URL Shortener (YOURLS)
 		* YouTube Videos and Playlists
 
-	* **Integration with 3rd Party Plugins** 
+	* **Integration with 3rd Party Plugins:** 
 
 		* All in One SEO Pack
 		* bbPress
