@@ -45,10 +45,6 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 5. Checks and warns of any missing PHP modules.
 6. Checks 3rd party plugin settings for possible conflicts.
 
-**A reliable WordPress plugin for today *and* tomorrow:**
-
-WPSSO Core is *extremely fast* and 100% compatible with the new <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg block editor</a> in the upcoming release of WordPress v5.0.
-
 <h3>Users Love the WPSSO Core Plugin</h3>
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "The plugin is indispensable to me when it comes to posting on social media... it makes it so that your posts look the best that they possible can every time when posting on Facebook, Twitter, or any other site." - [monsuirette](https://wordpress.org/support/topic/this-is-probably-the-best-plugin-of-its-kind/)
