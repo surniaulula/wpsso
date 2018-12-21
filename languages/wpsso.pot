@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.18.2-dev.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.18.2-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5886,7 +5886,7 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2544 lib/schema.php:2549
+#: lib/schema.php:2545 lib/schema.php:2550
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
