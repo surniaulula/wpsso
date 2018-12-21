@@ -228,7 +228,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->debug->log( 'custom type id is disabled with value none' );
 						}
 
-					} elseif ( empty( $og_type_ns[$type_id] ) ) {
+					} elseif ( empty( $og_type_ns[ $type_id ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'custom type id "' . $type_id . '" not in og types' );
@@ -287,13 +287,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 	
 					if ( ! empty( $mod[ 'post_type' ] ) ) {
 	
-						if ( empty( $mod[ 'id' ] ) && is_post_type_archive() ) {
+						if ( $mod[ 'is_post_type_archive' ] ) {
 	
 							$type_id = apply_filters( $this->p->lca . '_og_type_for_post_type_archive_page',
 								$this->get_og_type_id_for_name( 'post_archive' ), $mod );
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'using og type id "' . $type_id . '" for post type archive page' );
+								$this->p->debug->log( 'using og type id "' . $type_id . '" for post_type_archive page' );
 							}
 
 						} elseif ( isset( $this->p->options['og_type_for_' . $mod[ 'post_type' ]] ) ) {
@@ -393,7 +393,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'returning false: og type id is disabled' );
 				}
 
-			} elseif ( ! isset( $og_type_ns[$type_id] ) ) {
+			} elseif ( ! isset( $og_type_ns[ $type_id ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'returning false: og type id "' . $type_id . '" is unknown' );

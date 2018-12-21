@@ -65,33 +65,38 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		);
 
 		public static $mod_defaults = array(
+
+			/**
+			 * Common elements.
+			 */
 			'id'   => 0,			// Post, term, or user ID.
 			'name' => false,		// Module name ('post', 'term', or 'user').
 			'obj'  => false,		// Module object.
 
 			/**
-			 * Post
+			 * Post elements.
 			 */
-			'use_post'       => false,
-			'is_post'        => false,	// Is post module.
-			'is_home'        => false,	// Home page (index or static)
-			'is_home_page'   => false,	// Static front page.
-			'is_home_index'  => false,	// Static posts page or home index.
-			'post_slug'      => false,	// Post name (aka slug).
-			'post_type'      => false,	// Post type name.
-			'post_mime'      => false,	// Post mime type (ie. image/jpg).
-			'post_status'    => false,	// Post status name.
-			'post_author'    => false,	// Post author id.
-			'post_coauthors' => array(),
+			'use_post'             => false,
+			'is_post'              => false,	// Is post module.
+			'is_post_type_archive' => false,	// Post is an archive.
+			'is_home'              => false,	// Home page (index or static)
+			'is_home_page'         => false,	// Static front page.
+			'is_home_index'        => false,	// Static posts page or home index.
+			'post_slug'            => false,	// Post name (aka slug).
+			'post_type'            => false,	// Post type name.
+			'post_mime'            => false,	// Post mime type (ie. image/jpg).
+			'post_status'          => false,	// Post status name.
+			'post_author'          => false,	// Post author id.
+			'post_coauthors'       => array(),
 
 			/**
-			 * Term
+			 * Term elements.
 			 */
 			'is_term'  => false,		// Is term module.
 			'tax_slug' => '',		// Empty string by default.
 
 			/**
-			 * User
+			 * User elements.
 			 */
 			'is_user' => false,		// Is user module.
 		);

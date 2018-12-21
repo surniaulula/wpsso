@@ -2457,9 +2457,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$url = $this->check_url_string( get_search_link(), 'search link' );
 					$url = apply_filters( $this->p->lca . '_search_url', $url, $mod, $add_page, $src_id );
 
-				} elseif ( function_exists( 'get_post_type_archive_link' ) && is_post_type_archive() ) {
+				} elseif ( function_exists( 'get_post_type_archive_link' ) && $mod[ 'is_post_type_archive' ] ) {
 
-					$url = $this->check_url_string( get_post_type_archive_link( get_query_var( 'post_type' ) ), 'post type archive' );
+					$url = $this->check_url_string( get_post_type_archive_link( get_query_var( 'post_type' ) ), 'post_type_archive' );
 
 				} elseif ( SucomUtil::is_archive_page() ) {
 

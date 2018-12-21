@@ -165,23 +165,29 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod = WpssoMeta::$mod_defaults;
 
-			$mod[ 'id' ]   = (int) $mod_id;
+			$post_type = get_post_type( $mod_id );
+
+			/**
+			 * Common elements.
+			 */
+			$mod[ 'id' ]   = is_numeric( $mod_id ) ? (int) $mod_id : 0;	// Cast as integer.
 			$mod[ 'name' ] = 'post';
 			$mod[ 'obj' ]  =& $this;
 
 			/**
-			 * Post
+			 * Post elements.
 			 */
-			$mod[ 'is_post' ]        = true;
-			$mod[ 'is_home_page' ]   = SucomUtil::is_home_page( $mod_id );
-			$mod[ 'is_home_index' ]  = $mod['is_home_page'] ? false : SucomUtil::is_home_index( $mod_id );
-			$mod[ 'is_home' ]        = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;
-			$mod[ 'post_slug' ]      = get_post_field( 'post_name', $mod_id );		// Post name (aka slug).
-			$mod[ 'post_type' ]      = get_post_type( $mod_id );				// Post type name.
-			$mod[ 'post_mime' ]      = get_post_mime_type( $mod_id );				// Post mime type (ie. image/jpg).
-			$mod[ 'post_status' ]    = get_post_status( $mod_id );				// Post status name.
-			$mod[ 'post_author' ]    = (int) get_post_field( 'post_author', $mod_id );	// Post author id.
-			$mod[ 'post_coauthors' ] = array();
+			$mod[ 'is_post' ]              = true;
+			$mod[ 'is_home_page' ]         = SucomUtil::is_home_page( $mod_id );
+			$mod[ 'is_home_index' ]        = $mod['is_home_page'] ? false : SucomUtil::is_home_index( $mod_id );
+			$mod[ 'is_home' ]              = $mod['is_home_page'] || $mod['is_home_index'] ? true : false;
+			$mod[ 'is_post_type_archive' ] = is_post_type_archive( $post_type );			// Post is an archive.
+			$mod[ 'post_slug' ]            = get_post_field( 'post_name', $mod_id );		// Post name (aka slug).
+			$mod[ 'post_type' ]            = $post_type;						// Post type name.
+			$mod[ 'post_mime' ]            = get_post_mime_type( $mod_id );				// Post mime type (ie. image/jpg).
+			$mod[ 'post_status' ]          = get_post_status( $mod_id );				// Post status name.
+			$mod[ 'post_author' ]          = (int) get_post_field( 'post_author', $mod_id );	// Post author id.
+			$mod[ 'post_coauthors' ]       = array();
 
 			/**
 			 * Hooked by the 'coauthors' pro module.

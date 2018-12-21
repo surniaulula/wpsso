@@ -113,12 +113,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$mod = WpssoMeta::$mod_defaults;
 
-			$mod[ 'id' ]   = (int) $mod_id;
+			/**
+			 * Common elements.
+			 */
+			$mod[ 'id' ]   = is_numeric( $mod_id ) ? (int) $mod_id : 0;	// Cast as integer.
 			$mod[ 'name' ] = 'user';
 			$mod[ 'obj' ]  =& $this;
 
 			/**
-			 * User
+			 * User elements.
 			 */
 			$mod[ 'is_user' ] = true;
 

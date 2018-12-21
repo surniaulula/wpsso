@@ -410,13 +410,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( ! empty( $mod[ 'post_type' ] ) ) {
 
-						if ( empty( $mod[ 'id' ] ) && is_post_type_archive() ) {
+						if ( $mod[ 'is_post_type_archive' ] ) {
 
 							$type_id = apply_filters( $this->p->lca . '_schema_type_for_post_type_archive_page',
 								$this->get_schema_type_id_for_name( 'post_archive' ), $mod );
 
 							if ( $this->p->debug->enabled ) {
-								$this->p->debug->log( 'using schema type id "' . $type_id . '" for post type archive page' );
+								$this->p->debug->log( 'using schema type id "' . $type_id . '" for post_type_archive page' );
 							}
 
 						} elseif ( isset( $this->p->options['schema_type_for_' . $mod[ 'post_type' ]] ) ) {

@@ -240,9 +240,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
+
 				$mod = $this->p->util->get_page_mod( $mod );
 			}
 
@@ -325,7 +327,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'is_post' ] ) {
 
-					if ( empty( $mod[ 'id' ] ) && ! empty( $mod[ 'post_type' ] ) && is_post_type_archive() ) {
+					if ( $mod[ 'is_post_type_archive' ] ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'getting the title for post type ' . $mod[ 'post_type' ] );
@@ -592,7 +594,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'is_post' ] ) {
 
-					if ( empty( $mod[ 'id' ] ) && ! empty( $mod[ 'post_type' ] ) && is_post_type_archive() ) {
+					if ( $mod[ 'is_post_type_archive' ] ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'getting the description for post type ' . $mod[ 'post_type' ] );

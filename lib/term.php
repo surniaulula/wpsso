@@ -117,12 +117,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$mod = WpssoMeta::$mod_defaults;
 
-			$mod[ 'id' ]   = (int) $mod_id;
+			/**
+			 * Common elements.
+			 */
+			$mod[ 'id' ]   = is_numeric( $mod_id ) ? (int) $mod_id : 0;	// Cast as integer.
 			$mod[ 'name' ] = 'term';
 			$mod[ 'obj' ]  =& $this;
 
 			/**
-			 * Term
+			 * Term elements.
 			 */
 			$mod[ 'is_term' ]  = true;
 			$mod[ 'tax_slug' ] = SucomUtil::get_term_object( $mod[ 'id' ], (string) $tax_slug, 'taxonomy' );
