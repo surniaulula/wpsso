@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.18.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-12-21 19:09-0600\n"
-"PO-Revision-Date: 2018-12-21 19:19-0600\n"
+"POT-Creation-Date: 2018-12-22 10:33-0600\n"
+"PO-Revision-Date: 2018-12-22 10:36-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1057,12 +1057,12 @@ msgid "Reference: %s"
 msgstr "Référence: %s"
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/com/util.php:1774 lib/gettext-com.php:31
+#: lib/com/util.php:1775 lib/gettext-com.php:31
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr "Les informations pour l'extension \"%s\" contiennent un lien de téléchargement invalide."
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/com/util.php:1785 lib/gettext-com.php:33
+#: lib/com/util.php:1786 lib/gettext-com.php:33
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr "L'information pour l'extension \"%s\" ne contient pas de lien de téléchargement."
 
@@ -1200,13 +1200,13 @@ msgstr "WPSSO Core veille à ce que votre contenu ait une belle apparence sur to
 
 #: lib/gettext-config.php:37
 msgctxt "plugin description"
-msgid "WPSSO Core add-on provides Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari and Twitter's App Card."
-msgstr "Ajout WPSSO Core pour fournir des balises méta Apple Store / iTunes et Google Play App pour mobile Safari et la carte App de Twitter."
+msgid "WPSSO Core add-on provides Apple Store / iTunes and Google Play App meta tags for Apple's mobile Safari banner and Twitter's App Card."
+msgstr "Ajout WPSSO Core pour fournir des balises méta Apple Store / iTunes et Google Play App pour mobile Safari de Apple et la carte App de Twitter."
 
 #: lib/gettext-config.php:38
 msgctxt "plugin description"
-msgid "WPSSO Core add-on offers JSON-LD formatted Schema BreadcrumbList markup for Google and Search Engine Optimization (SEO)."
-msgstr "Ajout WPSSO Core pour fournir le balisage Schéma BreadcrumbList en format JSON-LD pour Google et l'optimisation de recherche (SEO)."
+msgid "WPSSO Core add-on offers Schema BreadcrumbList markup using the preferred JSON-LD format for Google Rich Cards and SEO."
+msgstr "Ajout WPSSO Core pour fournir le balisage Schéma BreadcrumbList utilisant le format JSON-LD préféré pour Google Rich Cards et SEO."
 
 #: lib/gettext-config.php:39
 msgctxt "plugin description"
@@ -1220,8 +1220,8 @@ msgstr "Ajout WPSSO Core pour balisage Schéma JSON-LD / Rich Card d'articles, �
 
 #: lib/gettext-config.php:41
 msgctxt "plugin description"
-msgid "WPSSO Core add-on to manage Organizations and additional Schema markup properties (Organizer, Performer, Publisher, etc.) for Google Rich Cards / Knowledge Graph."
-msgstr "Ajout WPSSO Core pour gérer des organisations et propriétés de Schéma supplémentaires (organisateur, interprète, éditeur, etc.) pour Google Rich Cards / Knowledge Graph."
+msgid "WPSSO Core add-on to customize the home page Schema Organization markup and manage additional Organizations (publisher, organizer, performer, etc.)."
+msgstr "Ajout WPSSO Core pour personnaliser le balisage Schéma Organisation de la page d'accueil et de gérer des organisations supplémentaires (éditeur, organisateur, interprète, etc.)"
 
 #: lib/gettext-config.php:42
 msgctxt "plugin description"
