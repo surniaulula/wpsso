@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 5.0
 WC Tested Up To: 3.5
-Stable Tag: 4.18.1
+Stable Tag: 4.18.2
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how it's crawled, shared, re-shared, posted or embedded!
 
@@ -505,8 +505,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 4.18.2 =
 
 (2018/12/22) Fixed WooCommerce Shop page $mod array element values (Pro version).
-
-= 4.18.1 =
-
-(2018/12/19) Updated the Setup Guide with a new "Schema vs Google Rich Cards" section. Moved the wpsso/cache/ sub-folder to wp-content/cache/wpsso/. Removed $wp_query as a salt for transient cache array index keys.
 
