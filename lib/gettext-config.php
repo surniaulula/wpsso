@@ -43,7 +43,7 @@ _x( 'WPSSO Core add-on provides Pinterest Place, Facebook / Open Graph Location,
 _x( 'WPSSO Core add-on provides ratings and reviews for WordPress comments, with Aggregate Rating meta tags and optional Schema Review markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on offers an array of meta tags and Schema markup in the WordPress REST API post, term, and user queries.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on offers Ridiculously Responsive (SVG) Social Sharing Buttons in your content, excerpts, CSS sidebar, widget, shortcode, editor pages, etc.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Core add-on offers Social Sharing Buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Core add-on offers social sharing buttons with support for hashtags, short URLs, bbPress, BuddyPress, WooCommerce, and much more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on to remove outdated or incomplete Schema Microdata to use Google\'s preferred Schema JSON-LD / Rich Card markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on offers Twitter-style quoted text for your content, with a convenient Tweet share link and customizable CSS.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Core add-on offers tuning options for the WordPress image editors and PHP image extensions.', 'plugin description', 'wpsso' );
