@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.2-rc.1 (2018/12/22)**
+**Version 4.18.2 (2018/12/22)**
 
 * *New Features*
 	* None.
@@ -502,7 +502,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.2-rc.1 =
+= 4.18.2 =
 
 (2018/12/22) Fixed WooCommerce Shop page $mod array element values (Pro version).
 
