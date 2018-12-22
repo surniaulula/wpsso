@@ -1207,10 +1207,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						/**
 						 * Calling use_block_editor_for_post() in WordPress v5.0 during post save crashes
 						 * the web browser. See https://core.trac.wordpress.org/ticket/45253 for details.
+						 * Only call use_block_editor_for_post() if using an earlier version of WordPress.
 						 */
 						global $wp_version;
 
-						if ( version_compare( $wp_version, '5.0', '>=' ) ) {
+						if ( version_compare( $wp_version, '5.0', '>=' ) ) {	// Assume can edit.
 							$can_edit_id = true;
 						} elseif ( use_block_editor_for_post( $post_id ) ) {
 							$can_edit_id = true;
