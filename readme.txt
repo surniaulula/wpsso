@@ -430,17 +430,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.2-dev.2 (2018/12/21)**
+**Version 4.18.2-rc.1 (2018/12/22)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* None.
 * *Bugfixes*
-	* Fixed the WooCommerce Shop page $mod array element values (Pro version).
+	* Fixed WooCommerce Shop page $mod array element values (Pro version).
 * *Developer Notes*
 	* Added a new 'is_post_type_archive' array element in the $mod array.
-	* Added a filter to set the $mod 'post_type' array element to "product" and 'is_post_type_archive' to true for the WooCommerce Shop page (Pro version).
+	* Added a filter to set the $mod 'post_type' to "product" and 'is_post_type_archive' to true for the WooCommerce Shop page (Pro version).
 
 **Version 4.18.1 (2018/12/19)**
 
@@ -502,9 +502,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.2-dev.2 =
+= 4.18.2-rc.1 =
 
-(2018/12/21) Fixed the WooCommerce Shop page $mod array element values (Pro version).
+(2018/12/22) Fixed WooCommerce Shop page $mod array element values (Pro version).
 
 = 4.18.1 =
 
