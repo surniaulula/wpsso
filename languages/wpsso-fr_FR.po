@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.18.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-12-22 10:33-0600\n"
-"PO-Revision-Date: 2018-12-22 10:36-0600\n"
+"POT-Creation-Date: 2018-12-23 14:33-0600\n"
+"PO-Revision-Date: 2018-12-23 14:37-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2485,8 +2485,8 @@ msgstr "Une extension SEO a été détectée &mdash; certaines balises méta SEO
 #: lib/gettext-pro.php:89 lib/gpl/admin/general.php:39
 #: lib/pro/admin/general.php:46
 msgctxt "option label"
-msgid "Gravatar is Default / Fallback Image"
-msgstr "Gravatar est l'image par défaut"
+msgid "Gravatar is Author Default Image"
+msgstr "Gravatar est l'image d'auteur par défaut"
 
 #: lib/gettext-pro.php:90 lib/gpl/admin/general.php:56
 #: lib/pro/admin/general.php:59

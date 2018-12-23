@@ -2588,7 +2588,7 @@ msgstr ""
 #: lib/gettext-pro.php:89 lib/gpl/admin/general.php:39
 #: lib/pro/admin/general.php:46
 msgctxt "option label"
-msgid "Gravatar is Default Author Image"
+msgid "Gravatar is Author Default Image"
 msgstr ""
 
 #: lib/gettext-pro.php:90 lib/gpl/admin/general.php:56

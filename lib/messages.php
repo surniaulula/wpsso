@@ -496,7 +496,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_author_gravatar':	// Gravatar is Default Author Image
+						case 'tooltip-og_author_gravatar':	// Gravatar is Author Default Image
 
 							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
