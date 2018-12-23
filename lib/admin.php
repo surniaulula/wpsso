@@ -665,11 +665,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$req = array();
 			}
 
-			if ( ! isset( $req['headers'] ) || ! is_array( $req['headers'] ) ) {
-				$req['headers'] = array();
+			if ( ! isset( $req[ 'headers' ] ) || ! is_array( $req[ 'headers' ] ) ) {
+				$req[ 'headers' ] = array();
 			}
 
-			$req['headers']['Expect'] = '';
+			$req[ 'headers' ][ 'Expect' ] = '';
 
 			return $req;
 		}

@@ -86,7 +86,7 @@ _x( 'Show', 'column title', 'wpsso' );
 _x( 'Contact Field ID', 'column title', 'wpsso' );
 _x( 'Contact Field Label', 'column title', 'wpsso' );
 __( 'An SEO plugin has been detected &mdash; some basic SEO meta tags have been unchecked and disabled automatically.', 'wpsso' );
-_x( 'Gravatar is Default / Fallback Image', 'option label', 'wpsso' );
+_x( 'Gravatar is Default Author Image', 'option label', 'wpsso' );
 _x( 'Maximum Videos to Include', 'option label', 'wpsso' );
 _x( 'Use HTTPS for Video API Requests', 'option label', 'wpsso' );
 _x( 'uses %s', 'option comment', 'wpsso' );
