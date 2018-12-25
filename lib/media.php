@@ -256,7 +256,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $attach_id ) ) {
 
-				if ( wp_attachment_is_image( $attach_id ) ) {	// since wp 2.1.0
+				if ( wp_attachment_is_image( $attach_id ) ) {
 
 					$this->add_mt_single_image_src( $og_single_image, $attach_id, $size_name, $check_dupes, $force_regen );
 

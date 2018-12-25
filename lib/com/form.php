@@ -990,7 +990,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			/**
-			 * Crop area selection is only available since wp v3.9.
+			 * Crop area selection is only available since WP v3.9.
 			 */
 			global $wp_version;
 
@@ -1083,7 +1083,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( ! empty( $css_id ) ) {
 
 				/**
-				 * dashicons are only available since wp v3.8
+				 * Dashicons are only available since WP v3.8
 				 */
 				global $wp_version;
 

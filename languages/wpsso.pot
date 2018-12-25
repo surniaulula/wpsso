@@ -310,7 +310,7 @@ msgstr ""
 msgid "%d of %d site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2188 lib/script.php:226 lib/script.php:267
+#: lib/admin.php:2188 lib/script.php:227 lib/script.php:268
 msgid "No new %s notifications."
 msgstr ""
 
@@ -5800,7 +5800,7 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1502 lib/script.php:229
+#: lib/post.php:1502 lib/script.php:230
 msgctxt "option label"
 msgid "Robots"
 msgstr ""
@@ -5909,7 +5909,7 @@ msgstr ""
 msgid "adding schema for place"
 msgstr ""
 
-#: lib/script.php:193
+#: lib/script.php:194
 msgid "Select Image"
 msgstr ""
 

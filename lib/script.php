@@ -146,7 +146,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					wp_enqueue_script( 'sucom-tooltips' );
 					wp_enqueue_script( 'wp-color-picker' );
 
-					if ( function_exists( 'wp_enqueue_media' ) ) {	// since wp 3.5.0
+					if ( function_exists( 'wp_enqueue_media' ) ) {
+
 						if ( SucomUtil::is_post_page( false ) &&
 							( $post_id = SucomUtil::get_post_object( false, 'id' ) ) > 0 ) {
 

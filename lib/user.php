@@ -746,7 +746,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$user_obj = get_user_by( 'ID', $user_id );
 
-			if ( function_exists( 'wp_get_user_contact_methods' ) ) {	// since wp 3.7
+			if ( function_exists( 'wp_get_user_contact_methods' ) ) {	// Since WP v3.7.
 
 				return wp_get_user_contact_methods( $user_obj );
 
@@ -914,7 +914,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public static function reset_metabox_prefs( $pagehook, $box_ids = array(), $meta_name = '', $context = '', $force = false ) {
 
-			$user_id = get_current_user_id();	// since wp 3.0
+			$user_id = get_current_user_id();	// Since WP v3.0.
 
 			switch ( $meta_name ) {
 
