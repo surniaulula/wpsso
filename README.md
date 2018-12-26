@@ -19,7 +19,7 @@
 
 <p><strong>Makes sure your content looks great on all social and search sites - no matter how it's crawled, shared, re-shared, posted, or embedded!</strong></p>
 
-<p>WPSSO Core makes sure that all social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded object / iframe content, always get <em>accurate</em> and <em>complete</em> information about your webpage content, business, and authors.</p>
+<p>WPSSO Core makes sure that all social crawlers, search crawlers, web browser extensions, mail and messaging apps (Facebook Messenger, iMessage, Skype, WhatsApp, etc.), and embedded object / iframe content, always get <em>accurate and complete</em> information about your webpage content, business, and authors.</p>
 
 <p><strong>Uses your <em>existing content</em> for meta tags and Schema markup:</strong></p>
 
@@ -27,7 +27,7 @@
 
 <p>WPSSO Core is language / locale aware, which means you can customize your site information, social page URLs and Knowledge Graph for different languages!</p>
 
-<p><strong>Creates <em>accurate</em> and <em>complete</em> meta tags and Schema markup:</strong></p>
+<p><strong>Creates <em>accurate and complete</em> meta tags and Schema markup:</strong></p>
 
 <p>WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph and Rich Card SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive eCommerce product markup, mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!</p>
 
