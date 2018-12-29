@@ -381,6 +381,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		public function add_mt_single_image_src( array &$og_single_image, $pid, $size_name = 'thumbnail', $check_dupes = true, $force_regen = false, $mt_pre = 'og' ) {
+
 			list(
 				$og_single_image[ $mt_pre . ':image:url' ],
 				$og_single_image[ $mt_pre . ':image:width' ],
@@ -1682,7 +1683,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$full_width = empty( $img_meta['width'] ) ? 0 : $img_meta['width'];
+			$full_width  = empty( $img_meta['width'] ) ? 0 : $img_meta['width'];
 			$full_height = empty( $img_meta['height'] ) ? 0 : $img_meta['height'];
 
 			$is_sufficient_w = $full_width >= $size_info['width'] ? true : false;

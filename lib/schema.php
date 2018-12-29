@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		protected $types_cache = null;			// Schema types array cache.
 
-		protected static $mod_cache_exp_secs = null;
+		protected static $mod_cache_exp_secs = null;	// Value used by get_mod_cache_data() and save_mod_cache_data().
 
 		public function __construct( &$plugin ) {
 
@@ -2623,7 +2623,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( self::$mod_cache_exp_secs > 0 ) {
 
-				$cache_data = get_transient( $cache_id );
+				$cache_data = SucomUtil::get_transient_array( $cache_id );
 
 				if ( isset( $cache_data[ $cache_index ] ) ) {
 
@@ -2655,12 +2655,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					return $cache_data;	// Stop here.
 				}
 
-			} elseif ( $wpsso->debug->enabled ) {
+			} else {
+			
+				if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'transient cache is disabled' );
+					$wpsso->debug->log( 'transient cache is disabled' );
 
-				if ( delete_transient( $cache_id ) ) {
-					$wpsso->debug->log( 'deleted transient cache id ' . $cache_id );
+					if ( SucomUtil::delete_transient_array( $cache_id ) ) {
+						$wpsso->debug->log( 'deleted transient cache id ' . $cache_id );
+					}
 				}
 			}
 
@@ -2705,7 +2708,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$wpsso->debug->log( 'transient cache is disabled' );
 
-				if ( delete_transient( $cache_id ) ) {
+				if ( SucomUtil::delete_transient_array( $cache_id ) ) {
 					$wpsso->debug->log( 'deleted transient cache id ' . $cache_id );
 				}
 			}
@@ -2725,7 +2728,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$cache_salt    = 'WpssoSchema::get_mod_cache_data(' . SucomUtil::get_mod_salt( $mod ) . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
-			return delete_transient( $cache_id );
+			return SucomUtil::delete_transient_array( $cache_id );
 		}
 
 		/**

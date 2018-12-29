@@ -2900,6 +2900,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ltrim( $salt_str, $val_glue );
 		}
 
+		public static function get_transient_array( $cache_id ) {
+
+			$data_array = get_transient( $cache_id );
+
+			return $data_array;
+		}
+
 		/**
 		 * Update the cached array and maintain the existing transient expiration time.
 		 */
@@ -2928,6 +2935,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			set_transient( $cache_id, $data_array, $expires_in_secs );
 
 			return $expires_in_secs;
+		}
+
+		public static function delete_transient_array( $cache_id ) {
+
+			$deleted = delete_transient( $cache_id );
+
+			return $deleted;
 		}
 
 		public static function restore_checkboxes( &$opts ) {

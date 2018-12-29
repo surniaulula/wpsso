@@ -83,7 +83,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$cap_text = false;
 
-			$sep = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 
 			if ( false === $md_key ) {	// false would return the complete meta array
 
@@ -135,15 +135,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				list( $cap_text, $hashtags ) = $this->get_text_and_hashtags( $cap_text, $mod, false );
 
-				if ( $max_len > 0 ) {
+				if ( ! empty( $cap_text ) ) {
 
-					$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
+					if ( $max_len > 0 ) {
 
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'caption strlen before limit length ' . strlen( $cap_text ) . ' (limiting to ' . $adj_max_len . ' chars)' );
+						$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
+
+						if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'caption strlen before limit length ' . strlen( $cap_text ) .
+								' (limiting to ' . $adj_max_len . ' chars)' );
+						}
+
+						$cap_text = $this->p->util->limit_text_length( $cap_text, $adj_max_len, '...', false );
 					}
+				}
 
-					$cap_text = $this->p->util->limit_text_length( $cap_text, $adj_max_len, '...', false ) . ' ' . $hashtags;
+				if ( ! empty( $hashtags ) ) {
+					$cap_text = trim( $cap_text . ' ' . $hashtags );	// Trim in case text is empty.
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -263,11 +271,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$title_text   = false;
 			$paged_suffix = '';
-			$filter_title = empty( $this->p->options['plugin_filter_title'] ) ? false : true;
+			$filter_title = empty( $this->p->options[ 'plugin_filter_title' ] ) ? false : true;
 			$filter_title = apply_filters( $this->p->lca . '_can_filter_title', $filter_title, $mod );
 
 			if ( null === $sep ) {
-				$sep = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
 			/**
@@ -447,7 +455,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				/**
 				 * Apply seo-like title modifications.
 				 */
-				if ( $this->p->avail['seo'][ 'any' ] === false ) {
+				if ( $this->p->avail[ 'seo' ][ 'any' ] === false ) {
 
 					global $wpsso_paged;
 
@@ -483,7 +491,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
-				$title_text .= ' ' . $hashtags;
+				$title_text = trim( $title_text . ' ' . $hashtags );	// Trim in case text is empty.
 			}
 
 			if ( true === $do_encode ) {
@@ -643,7 +651,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							/**
 							 * Ignore everything before the first paragraph if true.
 							 */
-							if ( $this->p->options['plugin_p_strip'] ) {
+							if ( $this->p->options[ 'plugin_p_strip' ] ) {
 
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'removing all text before the first paragraph' );
@@ -657,7 +665,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						 * Fallback to the image alt value.
 						 */
 						if ( empty( $desc_text ) ) {
-							if ( $mod[ 'post_type' ] === 'attachment' && strpos( $mod['post_mime'], 'image/' ) === 0 ) {
+							if ( $mod[ 'post_type' ] === 'attachment' && strpos( $mod[ 'post_mime' ], 'image/' ) === 0 ) {
 								$desc_text = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
 							}
 						}
@@ -729,7 +737,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			$strlen_pre_cleanup = $this->p->debug->enabled ? strlen( $desc_text ) : 0;
 
-			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, true, $this->p->options['plugin_use_img_alt'] );
+			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, true, $this->p->options[ 'plugin_use_img_alt' ] );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'description strlen before html cleanup ' . $strlen_pre_cleanup . ' and after ' . strlen( $desc_text ) );
@@ -784,7 +792,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
-				$desc_text .= ' ' . $hashtags;
+				$desc_text = trim( $desc_text . ' ' . $hashtags );	// Trim in case text is empty.
 			}
 
 			if ( $do_encode ) {
@@ -846,7 +854,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( ! empty( $add_hashtags ) && ! empty( $hashtags ) ) {
-				$text .= ' ' . $hashtags;
+				$text = trim( $text . ' ' . $hashtags );	// Trim in case text is empty.
 			}
 
 			if ( $do_encode ) {
@@ -878,7 +886,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				static $filter_excerpt = null;
 
 				if ( null === $filter_excerpt ) {
-					$filter_excerpt = empty( $this->p->options['plugin_filter_excerpt'] ) ? false : true;
+					$filter_excerpt = empty( $this->p->options[ 'plugin_filter_excerpt' ] ) ? false : true;
 					$filter_excerpt = apply_filters( $this->p->lca . '_can_filter_the_excerpt', $filter_excerpt, $mod );
 				}
 
@@ -903,7 +911,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$sharing_url    = $this->p->util->get_sharing_url( $mod );
-			$filter_content = empty( $this->p->options['plugin_filter_content'] ) ? false : true;
+			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
 			$filter_content = apply_filters( $this->p->lca . '_can_filter_the_content', $filter_content, $mod );
 
 			static $cache_exp_secs = null;	// filter the cache expiration value only once
@@ -911,8 +919,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$cache_md5_pre = $this->p->lca . '_c_';
 
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
-				$cache_exp_filter = $this->p->cf['wp']['wp_cache'][$cache_md5_pre]['filter'];
-				$cache_opt_key    = $this->p->cf['wp']['wp_cache'][$cache_md5_pre]['opt_key'];
+				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'wp_cache' ][$cache_md5_pre][ 'filter' ];
+				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'wp_cache' ][$cache_md5_pre][ 'opt_key' ];
 				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
 			}
 
@@ -1021,8 +1029,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				/**
 				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.
 				 */
-				unset ( $GLOBALS['subalbum'] );
-				unset ( $GLOBALS['nggShowGallery'] );
+				unset ( $GLOBALS[ 'subalbum' ] );
+				unset ( $GLOBALS[ 'nggShowGallery' ] );
 
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'the_content filters skipped (shortcodes not expanded)' );
@@ -1041,8 +1049,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( false !== strpos( $content, '<p class="wp-caption-text">' ) ) {
 
-				$caption_prefix = isset( $this->p->options['plugin_p_cap_prefix'] ) ?
-					$this->p->options['plugin_p_cap_prefix'] : 'Caption:';
+				$caption_prefix = isset( $this->p->options[ 'plugin_p_cap_prefix' ] ) ?
+					$this->p->options[ 'plugin_p_cap_prefix' ] : 'Caption:';
 
 				if ( ! empty( $caption_prefix ) ) {
 					$content = preg_replace( '/<p class="wp-caption-text">/', '${0}' . $caption_prefix . ' ', $content );
@@ -1136,7 +1144,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'found custom meta article section = ' . $section );
 				}
 			} else {
-				$section = $this->p->options['og_art_section'];
+				$section = $this->p->options[ 'og_art_section' ];
 			}
 
 			if ( ! $allow_none ) {
@@ -1243,9 +1251,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$max_hashtags = $add_hashtags;
 
-			} elseif ( ! empty( $this->p->options['og_desc_hashtags'] ) ) {	// Return the default number of hashtags.
+			} elseif ( ! empty( $this->p->options[ 'og_desc_hashtags' ] ) ) {	// Return the default number of hashtags.
 
-				$max_hashtags = $this->p->options['og_desc_hashtags'];
+				$max_hashtags = $this->p->options[ 'og_desc_hashtags' ];
 
 			} else {	// Just in case.
 				return '';
@@ -1342,7 +1350,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( null === $sep ) {
-				$sep = html_entity_decode( $this->p->options['og_title_sep'], ENT_QUOTES, get_bloginfo( 'charset' ) );
+				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
 			if ( isset( $term_obj->name ) ) {

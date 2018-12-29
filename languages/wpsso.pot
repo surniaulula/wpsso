@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.18.2\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.18.3-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2018-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2297,8 +2297,8 @@ msgid "Posts, Pages, Custom Post Types"
 msgstr ""
 
 #: lib/gettext-pro.php:32 lib/gettext-pro.php:201
-#: lib/gpl/admin/advanced.php:233 lib/media.php:482 lib/media.php:644
-#: lib/media.php:1541 lib/pro/admin/advanced.php:234
+#: lib/gpl/admin/advanced.php:233 lib/media.php:483 lib/media.php:645
+#: lib/media.php:1542 lib/pro/admin/advanced.php:234
 #: lib/pro/util/checkimgdims.php:92
 msgid "Media Library"
 msgstr ""
@@ -2969,7 +2969,7 @@ msgstr ""
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: lib/gettext-pro.php:177 lib/gettext-pro.php:202 lib/media.php:1547
+#: lib/gettext-pro.php:177 lib/gettext-pro.php:202 lib/media.php:1548
 #: lib/pro/media/ngg.php:132 lib/pro/util/checkimgdims.php:94
 msgid "image ID %s"
 msgstr ""
@@ -3002,7 +3002,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/gettext-pro.php:183 lib/page.php:760 lib/pro/social/buddypress.php:662
+#: lib/gettext-pro.php:183 lib/page.php:768 lib/pro/social/buddypress.php:662
 msgid "No Description"
 msgstr ""
 
@@ -3135,23 +3135,23 @@ msgid ""
 "Video discovery and integration modules are provided with the Pro version."
 msgstr ""
 
-#: lib/head.php:501
+#: lib/head.php:516
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:513
+#: lib/head.php:528
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:562
+#: lib/head.php:577
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:569
+#: lib/head.php:584
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:576
+#: lib/head.php:591
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -3191,67 +3191,67 @@ msgstr ""
 msgid "Library class name for \"%s\" is not available."
 msgstr ""
 
-#: lib/media.php:444
+#: lib/media.php:445
 msgid ""
 "The NGG integration module provided by %1$s is required to read information "
 "for image ID %2$s."
 msgstr ""
 
-#: lib/media.php:485
+#: lib/media.php:486
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:486 lib/media.php:647
+#: lib/media.php:487 lib/media.php:648
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:502
+#: lib/media.php:503
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:526
+#: lib/media.php:527
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:646
+#: lib/media.php:647
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:649
+#: lib/media.php:650
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> reported an error when trying to create an image size from "
 "%4$s."
 msgstr ""
 
-#: lib/media.php:1037
+#: lib/media.php:1038
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1557
+#: lib/media.php:1558
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:1635
+#: lib/media.php:1636
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:1663
+#: lib/media.php:1664
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -5624,40 +5624,40 @@ msgstr ""
 msgid "Please correct the banner image at %s."
 msgstr ""
 
-#: lib/page.php:339 lib/page.php:341 lib/page.php:616 lib/page.php:618
-#: lib/page.php:692
+#: lib/page.php:347 lib/page.php:349 lib/page.php:624 lib/page.php:626
+#: lib/page.php:700
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:414
+#: lib/page.php:422
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:675
+#: lib/page.php:683
 msgid "Tagged with %s"
 msgstr ""
 
-#: lib/page.php:682
+#: lib/page.php:690
 msgid "%s Category"
 msgstr ""
 
-#: lib/page.php:703
+#: lib/page.php:711
 msgid "Authored by %s"
 msgstr ""
 
-#: lib/page.php:710
+#: lib/page.php:718
 msgid "Daily Archive for %s"
 msgstr ""
 
-#: lib/page.php:714
+#: lib/page.php:722
 msgid "Monthly Archive for %s"
 msgstr ""
 
-#: lib/page.php:718
+#: lib/page.php:726
 msgid "Yearly Archive for %s"
 msgstr ""
 
-#: lib/page.php:722
+#: lib/page.php:730
 msgid "Archive Page"
 msgstr ""
 
@@ -5889,23 +5889,23 @@ msgstr ""
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:3177
+#: lib/schema.php:3180
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3219
+#: lib/schema.php:3222
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3226
+#: lib/schema.php:3229
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3502
+#: lib/schema.php:3505
 msgid "adding schema for place"
 msgstr ""
 

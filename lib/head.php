@@ -442,28 +442,36 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				if ( $read_cache ) {	// False when called by the post/term/user load_meta_page() method.
 
-					$cache_array = get_transient( $cache_id );
+					$cache_array = SucomUtil::get_transient_array( $cache_id );
 
 					if ( isset( $cache_array[ $cache_index ] ) ) {
+
 						if ( is_array( $cache_array[ $cache_index ] ) ) {	// Just in case.
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'exiting early: cache index found in transient cache' );
 								$this->p->debug->mark( 'build head array' );	// end timer
 							}
+
 							return $cache_array[ $cache_index ];	// stop here
+
 						} else {
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'cache index is not an array' );
 							}
 						}
 					} else {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'cache index not in transient cache' );
 						}
+
 						if ( ! is_array( $cache_array ) ) {
 							$cache_array = array();
 						}
 					}
+
 				} else {
 
 					if ( $this->p->debug->enabled ) {
@@ -475,9 +483,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 */
 					WpssoSchema::delete_mod_cache_data( $mod );
 				}
+
 			} else {
+			
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'head array transient cache is disabled' );
+
+					if ( SucomUtil::delete_transient_array( $cache_id ) ) {
+						$wpsso->debug->log( 'deleted transient cache id ' . $cache_id );
+					}
 				}
 			}
 
