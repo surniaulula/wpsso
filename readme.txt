@@ -437,9 +437,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Improvements*
 	* None.
 * *Bugfixes*
-	* None.
+	* Fixed issue with text + hashtags returning a single space for excerpts in WpsoPage::get_caption().
 * *Developer Notes*
-	* None.
+	* Added new methods to compliment the SucomUtil::update_transient_array() method:
+		* SucomUtil::get_transient_array().
+		* SucomUtil::delete_transient_array().
 
 **Version 4.18.2 (2018/12/22)**
 
@@ -515,7 +517,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.18.3-dev.1 =
 
-(2018/12/29) None.
+(2018/12/29) Fixed issue with text + hashtags returning a single space for excerpts in WpsoPage::get_caption().
 
 = 4.18.2 =
 
