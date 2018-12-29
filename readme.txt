@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.3-dev.1 (2018/12/29)**
+**Version 4.18.3-rc.1 (2018/12/29)**
 
 * *New Features*
 	* None.
@@ -515,7 +515,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.3-dev.1 =
+= 4.18.3-rc.1 =
 
 (2018/12/29) Fixed issue with text + hashtags returning a single space for excerpts in WpsoPage::get_caption().
 
