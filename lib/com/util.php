@@ -2910,31 +2910,49 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Update the cached array and maintain the existing transient expiration time.
 		 */
-		public static function update_transient_array( $cache_id, $cache_array, $cache_exp_secs, $reset_at_secs = 300 ) {
+		public static function update_transient_array( $cache_id, $cache_array, $cache_exp_secs ) {
 
-			$current_time = time();
+			$current_time  = time();
+			$reset_at_secs = 300;
 
+			/**
+			 * If the $cache_array already has a '__created_at'
+			 * value, calculate how long until the transient object
+			 * expires, and then set the transient with that new
+			 * expiration seconds.
+			 */
 			if ( isset( $cache_array[ '__created_at' ] ) ) {
 
 				/**
-				 * Adjust the expiration time by removing the difference.
+				 * Adjust the expiration time by removing the
+				 * difference (current time less creation time)
+				 * from the desired transient expiration
+				 * seconds.
 				 */
-				$expires_in_secs = $cache_exp_secs - ( $current_time - $cache_array[ '__created_at' ] );
+				$transient_exp_secs = $cache_exp_secs - ( $current_time - $cache_array[ '__created_at' ] );
 
-				if ( $expires_in_secs < $reset_at_secs ) {
-					$expires_in_secs = $cache_exp_secs;
+				/**
+				 * If we're 300 seconds (5 minutes) or less
+				 * from the transient expiring, then renew the
+				 * transient creation / expiration times.
+				 */
+				if ( $transient_exp_secs < $reset_at_secs ) {
+
+					$transient_exp_secs = $cache_exp_secs;
+
+					$cache_array[ '__created_at' ] = $current_time;
 				}
 
 			} else {
 
-				$expires_in_secs = $cache_exp_secs;
+				$transient_exp_secs = $cache_exp_secs;
 
 				$cache_array[ '__created_at' ] = $current_time;
 			}
 
-			set_transient( $cache_id, $cache_array, $expires_in_secs );
+			set_transient( $cache_id, $cache_array, $transient_exp_secs );
 
-			return $expires_in_secs;
+			return $transient_exp_secs;
 		}
 
 		public static function delete_transient_array( $cache_id ) {
