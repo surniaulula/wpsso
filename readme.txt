@@ -430,6 +430,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.18.3-dev.1 (2018/12/29)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.18.2 (2018/12/22)**
 
 * *New Features*
@@ -501,6 +512,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 
 == Upgrade Notice ==
+
+= 4.18.3-dev.1 =
+
+(2018/12/29) None.
 
 = 4.18.2 =
 
