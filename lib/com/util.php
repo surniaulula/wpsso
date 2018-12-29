@@ -2902,24 +2902,24 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_transient_array( $cache_id ) {
 
-			$data_array = get_transient( $cache_id );
+			$cache_array = get_transient( $cache_id );
 
-			return $data_array;
+			return $cache_array;
 		}
 
 		/**
 		 * Update the cached array and maintain the existing transient expiration time.
 		 */
-		public static function update_transient_array( $cache_id, $data_array, $cache_exp_secs, $reset_at_secs = 300 ) {
+		public static function update_transient_array( $cache_id, $cache_array, $cache_exp_secs, $reset_at_secs = 300 ) {
 
 			$current_time = time();
 
-			if ( isset( $data_array[ '__created_at' ] ) ) {
+			if ( isset( $cache_array[ '__created_at' ] ) ) {
 
 				/**
 				 * Adjust the expiration time by removing the difference.
 				 */
-				$expires_in_secs = $cache_exp_secs - ( $current_time - $data_array[ '__created_at' ] );
+				$expires_in_secs = $cache_exp_secs - ( $current_time - $cache_array[ '__created_at' ] );
 
 				if ( $expires_in_secs < $reset_at_secs ) {
 					$expires_in_secs = $cache_exp_secs;
@@ -2929,10 +2929,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$expires_in_secs = $cache_exp_secs;
 
-				$data_array[ '__created_at' ] = $current_time;
+				$cache_array[ '__created_at' ] = $current_time;
 			}
 
-			set_transient( $cache_id, $data_array, $expires_in_secs );
+			set_transient( $cache_id, $cache_array, $expires_in_secs );
 
 			return $expires_in_secs;
 		}
