@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$mod = $this->p->util->get_page_mod( $use_post );
 
-			$type_id   = $this->get_mod_og_type( $mod );
+			$type_id = $this->get_mod_og_type( $mod );
 
 			$og_ns = array(
 				'og' => 'http://ogp.me/ns#',
