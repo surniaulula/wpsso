@@ -459,12 +459,22 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			/**
-			 * Define cURL options from values defined as constants. Example: WPSSO_PHP_CURL_USERAGENT
+			 * Define cURL options from values defined as constants.
 			 */
-			foreach ( array( 'USERAGENT', 'PROXY', 'PROXYUSERPWD', 'CAINFO' ) as $const_suffix ) {
-				if ( defined( $this->uca . '_PHP_CURL_' . $const_suffix ) ) {
-					curl_setopt( $ch, constant( 'CURLOPT_' . $const_suffix ),
-						constant( $this->uca . '_PHP_CURL_' . $const_suffix ) );
+			$allowed_curl_const = array(
+				'CAINFO',
+				'USERAGENT',
+				'PROXY',
+				'PROXYUSERPWD',
+			);
+
+			foreach ( $allowed_curl_const as $const_suffix ) {
+
+				$uca_const_name  = $this->uca . '_PHP_CURL_' . $const_suffix;
+				$curl_const_name = 'CURLOPT_' . $const_suffix;
+
+				if ( defined( $uca_const_name ) ) {
+					curl_setopt( $ch, constant( $curl_const_name ), constant( $uca_const_name ) );
 				}
 			}
 

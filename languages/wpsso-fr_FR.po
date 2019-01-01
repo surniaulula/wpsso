@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the WordPress Social Sharing Optimization (WPSSO) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 4.18.2\n"
+"Project-Id-Version: WPSSO Core 4.18.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2018-12-23 14:33-0600\n"
-"PO-Revision-Date: 2018-12-23 14:37-0600\n"
+"POT-Creation-Date: 2019-01-01 13:12-0600\n"
+"PO-Revision-Date: 2019-01-01 13:12-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -303,7 +303,7 @@ msgstr "%s adresses de sites enregistrées"
 msgid "%d of %d site addresses registered"
 msgstr "%d de %d adresses de sites enregistrées"
 
-#: lib/admin.php:2188 lib/script.php:226 lib/script.php:267
+#: lib/admin.php:2188 lib/script.php:227 lib/script.php:268
 msgid "No new %s notifications."
 msgstr "Aucune nouvelle notification %s."
 
@@ -1016,23 +1016,23 @@ msgstr "La bibliothèque cURL de PHP est manquante &mdash; contactez votre hébe
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
-#: lib/com/cache.php:616 lib/gettext-com.php:18
+#: lib/com/cache.php:614 lib/gettext-com.php:18
 msgid "Cache file %s is not readable."
 msgstr "Le fichier de cache %s n'est pas lisible."
 
-#: lib/com/cache.php:633 lib/gettext-com.php:19
+#: lib/com/cache.php:631 lib/gettext-com.php:19
 msgid "Failed to open the cache file %s for reading."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour lecture."
 
-#: lib/com/cache.php:728 lib/gettext-com.php:20
+#: lib/com/cache.php:726 lib/gettext-com.php:20
 msgid "Failed to create the %s cache folder."
 msgstr "Impossible de créer le dossier de cache %s."
 
-#: lib/com/cache.php:739 lib/gettext-com.php:21
+#: lib/com/cache.php:737 lib/gettext-com.php:21
 msgid "Cache folder %s is not writable."
 msgstr "Le dossier de cache %s n'est pas accessible en écriture."
 
-#: lib/com/cache.php:750 lib/gettext-com.php:22
+#: lib/com/cache.php:748 lib/gettext-com.php:22
 msgid "Failed to open the cache file %s for writing."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 
@@ -2196,8 +2196,8 @@ msgid "Posts, Pages, Custom Post Types"
 msgstr "Articles, pages, types d'articles personnalisés"
 
 #: lib/gettext-pro.php:32 lib/gettext-pro.php:201
-#: lib/gpl/admin/advanced.php:233 lib/media.php:482 lib/media.php:644
-#: lib/media.php:1541 lib/pro/admin/advanced.php:234
+#: lib/gpl/admin/advanced.php:233 lib/media.php:483 lib/media.php:645
+#: lib/media.php:1542 lib/pro/admin/advanced.php:234
 #: lib/pro/util/checkimgdims.php:92
 msgid "Media Library"
 msgstr "la bibliothèque de médias"
@@ -2859,7 +2859,7 @@ msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s
 msgid "NextGEN Gallery"
 msgstr "NextGEN Gallery"
 
-#: lib/gettext-pro.php:177 lib/gettext-pro.php:202 lib/media.php:1547
+#: lib/gettext-pro.php:177 lib/gettext-pro.php:202 lib/media.php:1548
 #: lib/pro/media/ngg.php:132 lib/pro/util/checkimgdims.php:94
 msgid "image ID %s"
 msgstr "ID d'image %s"
@@ -2885,7 +2885,7 @@ msgstr "Nom du champ biographique de membre BuddyPress"
 msgid "The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you've created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.)."
 msgstr "La page de profil du membre BuddyPress n'inclut pas le texte <em>À propos de vous</em> du profil utilisateur WordPress. Si vous avez créé un champ de profil BuddyPress supplémentaire pour que les membres puissent entrer leur description de profil, entrez le nom du champ ici (exemple: Informations biographiques, À propos de moi, etc.)."
 
-#: lib/gettext-pro.php:183 lib/page.php:760 lib/pro/social/buddypress.php:662
+#: lib/gettext-pro.php:183 lib/page.php:768 lib/pro/social/buddypress.php:662
 msgid "No Description"
 msgstr "Aucune description"
 
@@ -3002,23 +3002,23 @@ msgstr "SVP désactiver l'option %1$s dans la page de réglages %2$s."
 msgid "Video discovery and integration modules are provided with the Pro version."
 msgstr "Les modules d'intégration et de découverte vidéo sont fournis avec la version Pro."
 
-#: lib/head.php:501
+#: lib/head.php:516
 msgid "adding open graph meta tags"
 msgstr "ajout de balises méta open graph"
 
-#: lib/head.php:513
+#: lib/head.php:528
 msgid "adding twitter card meta tags"
 msgstr "ajout de balises méta carte twitter"
 
-#: lib/head.php:562
+#: lib/head.php:577
 msgid "adding link relation tags"
 msgstr "ajout de balises de relation de lien"
 
-#: lib/head.php:569
+#: lib/head.php:584
 msgid "adding schema meta tags"
 msgstr "ajout de balises méta de schéma"
 
-#: lib/head.php:576
+#: lib/head.php:591
 msgid "adding schema json-ld markup"
 msgstr "ajout de balisage schéma json-ld"
 
@@ -3056,47 +3056,47 @@ msgstr "Le nom de classe de bibliothèque %1$s pour \"%2$s\" n'est pas disponibl
 msgid "Library class name for \"%s\" is not available."
 msgstr "Le nom de classe de bibliothèque pour \"%s\" n'est pas disponible."
 
-#: lib/media.php:444
+#: lib/media.php:445
 msgid "The NGG integration module provided by %1$s is required to read information for image ID %2$s."
 msgstr "Le module d'intégration NGG fourni par %1$s est requis pour lire les informations sur l'image d'ID %2$s."
 
-#: lib/media.php:485
+#: lib/media.php:486
 msgid "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 msgstr "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 
-#: lib/media.php:486 lib/media.php:647
+#: lib/media.php:487 lib/media.php:648
 msgid "You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href=\"%s\">several available plugins from WordPress.org</a>."
 msgstr "Vous pouvez régénérer les vignettes de toutes les images WordPress Media Library en utilisant l'une <a href=\"%s\">des extensions disponibles sur WordPress.org</a>."
 
-#: lib/media.php:502
+#: lib/media.php:503
 msgid "Possible %1$s corruption detected &mdash; the full size image dimensions for <a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté &mdash; les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:526
+#: lib/media.php:527
 msgid "Possible %1$s corruption detected &mdash; the full size image file path for <a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté &mdash; le chemin du fichier d'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> est manquant dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:646
+#: lib/media.php:647
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:649
+#: lib/media.php:650
 msgid "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress %3$s function</a> reported an error when trying to create an image size from %4$s."
 msgstr "Corruption possible de %1$s détecté &mdash; la <a href=\"%2$s\">fonction WordPress %3$s</a> a signalé une erreur lors de la tentative de création d'une taille d'image à partir de %4$s."
 
-#: lib/media.php:1037
+#: lib/media.php:1038
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1557
+#: lib/media.php:1558
 msgid "image URL %s"
 msgstr "URL d'image %s"
 
-#: lib/media.php:1635
+#: lib/media.php:1636
 msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:1663
+#: lib/media.php:1664
 msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -4863,40 +4863,40 @@ msgstr "Les dimensions de l'image %1$s sont %2$s et doivent être exactement %3$
 msgid "Please correct the banner image at %s."
 msgstr "Veuillez corriger l'image bannière à %s."
 
-#: lib/page.php:339 lib/page.php:341 lib/page.php:616 lib/page.php:618
-#: lib/page.php:692
+#: lib/page.php:347 lib/page.php:349 lib/page.php:624 lib/page.php:626
+#: lib/page.php:700
 msgid "%s Archive"
 msgstr "Archive %s"
 
-#: lib/page.php:414
+#: lib/page.php:422
 msgid "No Title"
 msgstr "Aucun titre"
 
-#: lib/page.php:675
+#: lib/page.php:683
 msgid "Tagged with %s"
 msgstr "Marqué avec %s"
 
-#: lib/page.php:682
+#: lib/page.php:690
 msgid "%s Category"
 msgstr "Catégorie %s"
 
-#: lib/page.php:703
+#: lib/page.php:711
 msgid "Authored by %s"
 msgstr "Écrits par %s"
 
-#: lib/page.php:710
+#: lib/page.php:718
 msgid "Daily Archive for %s"
 msgstr "Archive journalière pour %s"
 
-#: lib/page.php:714
+#: lib/page.php:722
 msgid "Monthly Archive for %s"
 msgstr "Archive mensuelle pour %s"
 
-#: lib/page.php:718
+#: lib/page.php:726
 msgid "Yearly Archive for %s"
 msgstr "Archive annuelle pour %s"
 
-#: lib/page.php:722
+#: lib/page.php:730
 msgid "Archive Page"
 msgstr "Page d'archive"
 
@@ -5012,7 +5012,7 @@ msgstr "L'option de débogage est activée - cette vérification sera répétée
 msgid "Check %1$d of %2$d successful..."
 msgstr "Vérification %1$d de %2$d réussi..."
 
-#: lib/post.php:1502 lib/script.php:229
+#: lib/post.php:1502 lib/script.php:230
 msgctxt "option label"
 msgid "Robots"
 msgstr "Robots"
@@ -5101,23 +5101,23 @@ msgstr "Image Google / Schéma"
 msgid "adding schema for %1$s ID %2$s"
 msgstr "ajout de schéma pour %1$s ID %2$s"
 
-#: lib/schema.php:3177
+#: lib/schema.php:3180
 msgid "adding schema for organization"
 msgstr "ajout de schéma d'organisation"
 
-#: lib/schema.php:3219
+#: lib/schema.php:3222
 msgid "The \"%1$s\" Organization Logo image is missing and required for the Schema %2$s markup."
 msgstr "L'image logo de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:3226
+#: lib/schema.php:3229
 msgid "The \"%1$s\" Organization Banner (600x60px) image is missing and required for the Schema %2$s markup."
 msgstr "L'image bannière (600x60px) de l'organisation \"%1$s\" est manquante et nécessaire pour le balisage du Schéma %2$s."
 
-#: lib/schema.php:3502
+#: lib/schema.php:3505
 msgid "adding schema for place"
 msgstr "ajout de schéma de place"
 
-#: lib/script.php:193
+#: lib/script.php:194
 msgid "Select Image"
 msgstr "Choisir l'image"
 
