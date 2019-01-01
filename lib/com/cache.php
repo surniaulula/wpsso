@@ -25,7 +25,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $default_file_cache_exp   = DAY_IN_SECONDS;	// 1 day.
 		public $default_object_cache_exp = 259200;		// 3 days.
 		public $curl_connect_timeout     = 5;			// The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
-		public $curl_timeout             = 10;			// The maximum number of seconds to allow cURL functions to execute. 
+		public $curl_timeout             = 15;			// The maximum number of seconds to allow cURL functions to execute. 
 		public $curl_max_redirs          = 10;			// The maximum amount of HTTP redirections to follow.
 
 		private $url_mtimes = array();
@@ -445,19 +445,17 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
 			curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, $this->curl_connect_timeout );
 			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->curl_timeout );
-			curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
+			curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 2 );
 			curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 1 );
+			curl_setopt( $ch, CURLOPT_HTTPHEADER, array( 'Expect:' ) );	// Define and disable the "Expect: 100-continue" header.
 
-			// define and disable the "Expect: 100-continue" header
-			curl_setopt( $ch, CURLOPT_HTTPHEADER, array( 'Expect:' ) );
+			if ( ! ini_get('safe_mode') && ! ini_get('open_basedir') ) {
 
-			if ( ini_get('safe_mode') || ini_get('open_basedir') ) {
-				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'curl: PHP safe_mode or open_basedir defined - cannot use CURLOPT_FOLLOWLOCATION' );
-				}
-			} else {
 				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1 );
 				curl_setopt( $ch, CURLOPT_MAXREDIRS, $this->curl_max_redirs );
+
+			} elseif ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'curl: PHP safe_mode or open_basedir defined - cannot use CURLOPT_FOLLOWLOCATION' );
 			}
 
 			/**
