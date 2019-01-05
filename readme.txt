@@ -430,6 +430,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.18.4-dev.1 (2019/01/05)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Added the Schema type https://health-lifesci.schema.org/MedicalEntity and it's sub-types.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.18.3 (2018/12/30)**
 
 * *New Features*
@@ -514,6 +525,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 
 == Upgrade Notice ==
+
+= 4.18.4-dev.1 =
+
+(2019/01/05) Added the Schema type https://health-lifesci.schema.org/MedicalEntity and it's sub-types.
 
 = 4.18.3 =
 
