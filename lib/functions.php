@@ -9,9 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
+
 if ( ! function_exists( 'wpsso_error_handler' ) ) {
 
-	if ( ! class_exists( 'WpssoErrorException' ) ) {	// Just in case.
+	if ( ! class_exists( 'WpssoErrorException' ) ) {		// Just in case.
 		require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends ErrorException.
 	}
 
@@ -28,14 +29,11 @@ if ( ! function_exists( 'wpsso_is_mobile' ) ) {
 
 	function wpsso_is_mobile() {
 
-		/**
-		 * Return null if the content is not allowed to vary.
-		 */
-		if ( ! SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ) {
-			return SucomUtil::is_mobile();
-		} else {
+		if ( SucomUtil::get_const( 'WPSSO_VARY_USER_AGENT_DISABLE' ) ) {
 			return null;
 		}
+
+		return SucomUtil::is_mobile();
 	}
 }
 
@@ -110,7 +108,7 @@ if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {
+		if ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
 			return $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
 		}
 
@@ -124,7 +122,7 @@ if ( ! function_exists( 'wpsso_get_term_mod' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( isset( $wpsso->m[ 'util' ][ 'term' ] ) ) {
+		if ( isset( $wpsso->m[ 'util' ][ 'term' ] ) ) {	// Just in case.
 			return $wpsso->m[ 'util' ][ 'term' ]->get_mod( $term_id );
 		}
 
@@ -138,7 +136,7 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		if ( isset( $wpsso->m[ 'util' ][ 'user' ] ) ) {
+		if ( isset( $wpsso->m[ 'util' ][ 'user' ] ) ) {	// Just in case.
 			return $wpsso->m[ 'util' ][ 'user' ]->get_mod( $user_id );
 		}
 
@@ -155,6 +153,42 @@ if ( ! function_exists( 'wpsso_get_post_og_image' ) ) {
 		if ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
 
 			$mod = $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
+
+			return $wpsso->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre = 'og' );
+
+		}
+
+		return false;
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_term_og_image' ) ) {
+
+	function wpsso_get_term_og_image( $term_id, $size_name = 'thumbnail' ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		if ( isset( $wpsso->m[ 'util' ][ 'term' ] ) ) {	// Just in case.
+
+			$mod = $wpsso->m[ 'util' ][ 'term' ]->get_mod( $term_id );
+
+			return $wpsso->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre = 'og' );
+
+		}
+
+		return false;
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_user_og_image' ) ) {
+
+	function wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		if ( isset( $wpsso->m[ 'util' ][ 'user' ] ) ) {	// Just in case.
+
+			$mod = $wpsso->m[ 'util' ][ 'user' ]->get_mod( $user_id );
 
 			return $wpsso->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre = 'og' );
 
