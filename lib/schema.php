@@ -2522,9 +2522,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$cache_data  = self::get_mod_cache_data( $mod, $cache_index );
 
 			if ( isset( $cache_data[ $cache_index ] ) ) {
+
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'exiting early: returning single "' . $mod[ 'name' ] . '" cache data' );
 				}
+
 				return $cache_data[ $cache_index ];	// Stop here.
 			}
 

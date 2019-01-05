@@ -945,7 +945,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::get_formatted_timezone( $tz_name, 'Z' );
 		}
 
-		private static function get_formatted_array( $arr, $key = false, $add_none = false ) {
+		private static function maybe_get_array( $arr, $key = false, $add_none = false ) {
 
 			if ( null === $key ) {
 
@@ -959,20 +959,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				 * Nothing to do.
 				 */
 
-			} elseif ( true === $key ) { // Sort by value.
+			} elseif ( true === $key ) {				// Sort by value.
 
 				asort( $arr );
 
-			} elseif ( isset( $arr[ $key ] ) ) { // Return a specific array value.
+			} elseif ( isset( $arr[ $key ] ) ) {			// Return a specific array value.
 
 				return $arr[ $key ];
 
 			} else {
-				return null;	// Array key not found - return null.
+				return null;					// Array key not found - return null.
 			}
 
-			if ( true === $add_none ) { // Prefix array with 'none'.
-				$arr = array( 'none' => 'none' ) + $arr; // Maintains numeric index.
+			if ( true === $add_none ) { 				// Prefix array with 'none'.
+				$arr = array( 'none' => 'none' ) + $arr; 	// Maintains numeric index.
 			}
 
 			return $arr;
@@ -995,7 +995,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				asort( $local_cache[ $format ] ); // Sort by value.
 			}
 
-			return self::get_formatted_array( $local_cache[ $format ], $currency_abbrev, $add_none );
+			return self::maybe_get_array( $local_cache[ $format ], $currency_abbrev, $add_none );
 		}
 
 		public static function get_currency_abbrev( $currency_abbrev = false, $add_none = false ) {
@@ -1016,7 +1016,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				ksort( $local_cache ); // Sort by key (same as value).
 			}
 
-			return self::get_formatted_array( $local_cache, $currency_abbrev, $add_none );
+			return self::maybe_get_array( $local_cache, $currency_abbrev, $add_none );
 		}
 
 		public static function get_currency_symbols( $currency_abbrev = false, $add_none = false, $decode = false ) {
@@ -1036,10 +1036,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					ksort( $local_cache ); // Sort by key.
 				}
 
-				return self::get_formatted_array( $local_cache, $currency_abbrev, $add_none );
+				return self::maybe_get_array( $local_cache, $currency_abbrev, $add_none );
 			}
 
-			return self::get_formatted_array( self::$currency_symbols, $currency_abbrev, $add_none );
+			return self::maybe_get_array( self::$currency_symbols, $currency_abbrev, $add_none );
 		}
 
 		public static function get_currency_symbol_abbrev( $currency_symbol = false, $default = 'USD', $decode = true ) {
@@ -1066,9 +1066,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_array( $currency_symbols ) ) {	// Just in case.
 
-				foreach ( $currency_symbols as $key => $value ) {		// Example: USD => $
+				foreach ( $currency_symbols as $key => $value ) {	// Example: USD => $
 
-					if ( $value === $currency_symbol ) {			// Example: $ === $
+					if ( $value === $currency_symbol ) {		// Example: $ === $
 
 						/**
 						 * Cache by currency symbol and return the currency abbreviation.
@@ -1083,7 +1083,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_dashicons( $icon_number = false, $add_none = false ) {
 
-			return self::get_formatted_array( self::$dashicons, $icon_number, $add_none );
+			return self::maybe_get_array( self::$dashicons, $icon_number, $add_none );
 		}
 
 		public static function get_pub_lang( $pub = '' ) {

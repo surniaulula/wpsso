@@ -98,9 +98,9 @@ if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
 
 		if ( is_object( $wpsso->util ) ) {
 			return $wpsso->util->get_page_mod( $use_post );
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 }
 
@@ -112,9 +112,9 @@ if ( ! function_exists( 'wpsso_get_post_mod' ) ) {
 
 		if ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {
 			return $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 }
 
@@ -126,9 +126,9 @@ if ( ! function_exists( 'wpsso_get_term_mod' ) ) {
 
 		if ( isset( $wpsso->m[ 'util' ][ 'term' ] ) ) {
 			return $wpsso->m[ 'util' ][ 'term' ]->get_mod( $term_id );
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 }
 
@@ -140,9 +140,27 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
 
 		if ( isset( $wpsso->m[ 'util' ][ 'user' ] ) ) {
 			return $wpsso->m[ 'util' ][ 'user' ]->get_mod( $user_id );
-		} else {
-			return false;
 		}
+
+		return false;
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_post_og_image' ) ) {
+
+	function wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		if ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
+
+			$mod = $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
+
+			return $wpsso->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre = 'og' );
+
+		}
+
+		return false;
 	}
 }
 
@@ -154,9 +172,9 @@ if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 
 		if ( is_object( $wpsso->util ) ) {
 			return $wpsso->util->get_sharing_url( $mod, $add_page );
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 }
 

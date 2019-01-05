@@ -601,12 +601,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							 */
 							if ( $image_url && $this->p->util->is_uniq_url( $image_url, 'preview' ) ) {
 
-								$mt_og['og:video'][$num]['og:video:has_image'] = true;
+								$mt_og['og:video'][ $num ]['og:video:has_image'] = true;
 
 								$prev_count++;
 
 							} else {
-								$mt_og['og:video'][$num]['og:video:has_image'] = false;
+								$mt_og['og:video'][ $num ]['og:video:has_image'] = false;
 							}
 						}
 
@@ -737,7 +737,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 							if ( isset( $this->p->cf['head']['og_type_array']['product'][$mt_name] ) ) {
 
-								$mt_og['product'][$num][$mt_name] = $mt_value;
+								$mt_og['product'][ $num ][$mt_name] = $mt_value;
 
 								if ( isset( $mt_og[$mt_name] ) ) {
 									unset ( $mt_og[$mt_name] );
