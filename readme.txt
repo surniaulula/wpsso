@@ -439,7 +439,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* Added new functions to get a single og image array for posts, terms, and users:
+		* wpsso_get_mod_og_image( array $mod, $size_name = 'thumbnail' );
+		* wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' );
+		* wpsso_get_term_og_image( $term_id, $size_name = 'thumbnail' );
+		* wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' );
 
 **Version 4.18.3 (2018/12/30)**
 
