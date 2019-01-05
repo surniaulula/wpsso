@@ -2403,8 +2403,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * First element is a text string, so check the array keys.
 			 */
 			foreach ( $mt_suffixes as $mt_suffix ) {
-				if ( ! empty( $assoc[$mt_media_pre . $mt_suffix] ) ) {
-					return $assoc[$mt_media_pre . $mt_suffix]; // Return first match.
+				if ( ! empty( $assoc[ $mt_media_pre . $mt_suffix ] ) ) {
+					return $assoc[ $mt_media_pre . $mt_suffix ];	// Return first match.
 				}
 			}
 

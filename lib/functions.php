@@ -144,18 +144,41 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
+
+	function wpsso_get_mod_og_image( array $mod, $size_name = 'thumbnail' ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		$og_image = array();
+		$og_video = $wpsso->og->get_all_videos( $num = 1, $mod, $check_dupes = false, $md_pre = 'og' );
+
+		if ( is_array( $og_video ) ) {	// Just in case.
+
+			foreach ( $og_video as $num => $og_single_video ) {
+
+				if ( SucomUtil::get_mt_media_url( $og_single_video, $mt_media_pre = 'og:image' ) ) {
+					return SucomUtil::preg_grep_keys( '/^og:image/', $og_single_video );	// Return one dimension array.
+				}
+			}
+		}
+
+		$og_image = $wpsso->og->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre = 'og' );
+
+		if ( ! empty( $og_image[ 0 ] ) ) {
+			return $og_image[ 0 ];	// Return one dimension array.
+		}
+
+		return false;
+	}
+}
+
 if ( ! function_exists( 'wpsso_get_post_og_image' ) ) {
 
 	function wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' ) {
 
-		$wpsso =& Wpsso::get_instance();
-
-		if ( isset( $wpsso->m[ 'util' ][ 'post' ] ) ) {	// Just in case.
-
-			$mod = $wpsso->m[ 'util' ][ 'post' ]->get_mod( $post_id );
-
-			return $wpsso->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre = 'og' );
-
+		if ( $mod = wpsso_get_post_mod( $post_id ) ) {
+			return wpsso_get_mod_og_image( $mod, $size_name );
 		}
 
 		return false;
@@ -166,14 +189,8 @@ if ( ! function_exists( 'wpsso_get_term_og_image' ) ) {
 
 	function wpsso_get_term_og_image( $term_id, $size_name = 'thumbnail' ) {
 
-		$wpsso =& Wpsso::get_instance();
-
-		if ( isset( $wpsso->m[ 'util' ][ 'term' ] ) ) {	// Just in case.
-
-			$mod = $wpsso->m[ 'util' ][ 'term' ]->get_mod( $term_id );
-
-			return $wpsso->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre = 'og' );
-
+		if ( $mod = wpsso_get_term_mod( $term_id ) ) {
+			return wpsso_get_mod_og_image( $mod, $size_name );
 		}
 
 		return false;
@@ -184,14 +201,8 @@ if ( ! function_exists( 'wpsso_get_user_og_image' ) ) {
 
 	function wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' ) {
 
-		$wpsso =& Wpsso::get_instance();
-
-		if ( isset( $wpsso->m[ 'util' ][ 'user' ] ) ) {	// Just in case.
-
-			$mod = $wpsso->m[ 'util' ][ 'user' ]->get_mod( $user_id );
-
-			return $wpsso->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre = 'og' );
-
+		if ( $mod = wpsso_get_user_mod( $user_id ) ) {
+			return wpsso_get_mod_og_image( $mod, $size_name );
 		}
 
 		return false;

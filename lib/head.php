@@ -34,7 +34,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		public function add_vary_user_agent_header( $headers ) {
+
 			$headers ['Vary' ] = 'User-Agent';
+
 			return $headers;
 		}
 

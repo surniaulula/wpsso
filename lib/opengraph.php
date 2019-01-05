@@ -575,7 +575,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$this->p->debug->log( 'getting videos for og:video meta tag' );
 					}
 
-					$mt_og['og:video'] = $this->get_all_videos( $max_nums['og_vid_max'], $mod, $check_dupes, 'og' );
+					$mt_og[ 'og:video' ] = $this->get_all_videos( $max_nums['og_vid_max'], $mod, $check_dupes, 'og' );
 
 					if ( empty( $mt_og['og:video'] ) ) {
 
@@ -583,9 +583,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->debug->log( 'og:video is empty - unsetting og:video meta tag' );
 						}
 
-						unset( $mt_og['og:video'] );
+						unset( $mt_og[ 'og:video' ] );
 
-					} elseif ( is_array( $mt_og['og:video'] ) ) {	// Just in case.
+					} elseif ( is_array( $mt_og[ 'og:video' ] ) ) {	// Just in case.
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'checking for video preview images' );
@@ -593,7 +593,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						foreach ( $mt_og['og:video'] as $num => $og_single_video ) {
 
-							$image_url = SucomUtil::get_mt_media_url( $og_single_video );
+							$image_url = SucomUtil::get_mt_media_url( $og_single_video, $mt_media_pre = 'og:image' );
 
 							/**
 							 * Check preview images for duplicates since the same videos may be available in
@@ -601,12 +601,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							 */
 							if ( $image_url && $this->p->util->is_uniq_url( $image_url, 'preview' ) ) {
 
-								$mt_og['og:video'][ $num ]['og:video:has_image'] = true;
+								$mt_og[ 'og:video' ][ $num ]['og:video:has_image'] = true;
 
 								$prev_count++;
 
 							} else {
-								$mt_og['og:video'][ $num ]['og:video:has_image'] = false;
+								$mt_og[ 'og:video' ][ $num ][ 'og:video:has_image' ] = false;
 							}
 						}
 
@@ -650,7 +650,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						/**
 						 * The size_name is used as a context for duplicate checks.
 						 */
-						$mt_og[$md_pre . ':image'] = $this->get_all_images( $max_nums['og_img_max'], $size_name, $mod, $check_dupes, $md_pre );
+						$mt_og[ $md_pre . ':image' ] = $this->get_all_images( $max_nums['og_img_max'], $size_name, $mod, $check_dupes, $md_pre );
 
 						/**
 						 * If there's no image, and no video preview, then add the default image for singular (aka post) webpages.
@@ -1266,7 +1266,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					case 'pid':
 
 						if ( ! isset( $get_mt_name ) ) {
-							$get_mt_name = $mt_pre.':image:id';
+							$get_mt_name = $mt_pre . ':image:id';
 						}
 
 						// no break - fall through
