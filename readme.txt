@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.4-dev.1 (2019/01/05)**
+**Version 4.18.4-dev.2 (2019/01/06)**
 
 * *New Features*
 	* None.
@@ -444,6 +444,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' );
 		* wpsso_get_term_og_image( $term_id, $size_name = 'thumbnail' );
 		* wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' );
+	* Added a fallback call to `do_blocks()` when the "Apply WordPress Content Filters" option is disabled.
 
 **Version 4.18.3 (2018/12/30)**
 
@@ -530,9 +531,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.4-dev.1 =
+= 4.18.4-dev.2 =
 
-(2019/01/05) Added the Schema type https://health-lifesci.schema.org/MedicalEntity and it's sub-types.
+(2019/01/06) Added the Schema type https://health-lifesci.schema.org/MedicalEntity and it's sub-types.
 
 = 4.18.3 =
 
