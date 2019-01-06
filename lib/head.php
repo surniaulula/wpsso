@@ -493,7 +493,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$this->p->debug->log( 'head array transient cache is disabled' );
 
 					if ( SucomUtil::delete_transient_array( $cache_id ) ) {
-						$wpsso->debug->log( 'deleted transient cache id ' . $cache_id );
+						$this->p->debug->log( 'deleted transient cache id ' . $cache_id );
 					}
 				}
 			}

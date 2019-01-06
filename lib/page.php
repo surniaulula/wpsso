@@ -1019,6 +1019,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
+			/**
+			 * Maybe apply 'the_content' filter to expand shortcodes and blocks.
+			 */
 			if ( $filter_content ) {
 
 				$hook_bfo  = SucomUtil::get_const( 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT', true );
@@ -1032,8 +1035,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				unset ( $GLOBALS[ 'subalbum' ] );
 				unset ( $GLOBALS[ 'nggShowGallery' ] );
 
-			} elseif ( $this->p->debug->enabled ) {
-				$this->p->debug->log( 'the_content filters skipped (shortcodes not expanded)' );
+			/**
+			 * Maybe apply the 'do_blocks' filters.
+			 */
+			} else {
+			
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'the_content filters skipped (shortcodes not expanded)' );
+				}
+
+				if ( function_exists( 'do_blocks' ) ) {	// Since WP v5.0.
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'calling do_blocks to filter the content text.' );
+					}
+
+					$content = do_blocks( $content );
+				}
 			}
 
 			$content = preg_replace( '/[\s\n\r]+/s', ' ', $content );		// put everything on one line
