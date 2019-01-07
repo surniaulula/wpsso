@@ -2389,8 +2389,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 * Check for two dimensional arrays and keep following the first array element.
 			 * Prefer the $mt_media_pre array key (if it's available).
 			 */
-			if ( isset( $assoc[$mt_media_pre] ) && is_array( $assoc[$mt_media_pre] ) ) {
-				$first_media = reset( $assoc[$mt_media_pre] );
+			if ( isset( $assoc[ $mt_media_pre ] ) && is_array( $assoc[ $mt_media_pre ] ) ) {
+				$first_media = reset( $assoc[ $mt_media_pre ] );
 			} else {
 				$first_media = reset( $assoc );
 			}

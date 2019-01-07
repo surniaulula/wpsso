@@ -13,7 +13,7 @@ wpsso_get_post_mod( $post_id );
 
 wpsso_get_post_organization_options( $post_id, $type_id = 'site' );
 
-wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' );
+wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' );	// Returns false or array.
 
 wpsso_get_post_place_options( $post_id, $type_id = 'custom' );
 
@@ -23,11 +23,11 @@ wpsso_get_short_url( $mod = false, $add_page = true );
 
 wpsso_get_term_mod( $term_id );
 
-wpsso_get_term_og_image( $term_id, $size_name = 'thumbnail' );
+wpsso_get_term_og_image( $term_id, $size_name = 'thumbnail' );	// Returns false or array.
 
 wpsso_get_user_mod( $user_id );
 
-wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' );
+wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' );	// Returns false or array.
 
 wpsso_is_mobile();
 
