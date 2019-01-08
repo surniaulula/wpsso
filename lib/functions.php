@@ -9,7 +9,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-
+/**
+ * The wpsso_error_handler() function can be used for cases where errors need
+ * to be captured and sent to the toolbar notification area. Example:
+ *
+ * $previous_error_handler = set_error_handler( 'wpsso_error_handler' );
+ *
+ * $image_size = getimagesize( $filepath );
+ *
+ * restore_error_handler();
+ */
 if ( ! function_exists( 'wpsso_error_handler' ) ) {
 
 	if ( ! class_exists( 'WpssoErrorException' ) ) {		// Just in case.
@@ -88,6 +97,11 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 	}
 }
 
+/**
+ * Get the $mod array for the current webpage. If $use_post is true, then the
+ * requested object is assumed to be a post, and the global $post object will
+ * be used to determine the post ID.
+ */
 if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
 
 	function wpsso_get_page_mod( $use_post = false ) {
@@ -153,6 +167,9 @@ if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
 		$og_image = array();
 		$og_video = $wpsso->og->get_all_videos( $num = 1, $mod, $check_dupes = false, $md_pre = 'og' );
 
+		/**
+		 * If there are videos, check for a preview image, and return the first one.
+		 */
 		if ( is_array( $og_video ) ) {	// Just in case.
 
 			foreach ( $og_video as $num => $og_single_video ) {

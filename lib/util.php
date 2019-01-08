@@ -338,8 +338,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 			$mtime_max   = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
 			$mtime_start = microtime( true );
-			$image_info  = $this->p->cache->get_image_size( $image_url, $exp_secs = 300,
-				$curl_opts = array(), $error_handler = 'wpsso_error_handler' );
+			$image_info  = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
 			$mtime_total = microtime( true ) - $mtime_start;
 
 			/**
