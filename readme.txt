@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 5.0
 WC Tested Up To: 3.5
-Stable Tag: 4.18.3
+Stable Tag: 4.18.4
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how it's crawled, shared, re-shared, posted or embedded!
 
@@ -518,24 +518,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* None.
 
-**Version 4.17.3.1 (2018/12/06)**
-
-* *New Features*
-	* None.
-* *Improvements*
-	* Update to avoid a known bug in the WordPress v5.0 `use_block_editor_for_post()` function that hangs the browser ([core trac ticket ID #45253](https://core.trac.wordpress.org/ticket/45253)).
-* *Bugfixes*
-	* None.
-* *Developer Notes*
-	* None.
-
 == Upgrade Notice ==
 
 = 4.18.4 =
 
 (2019/01/09) Added the Schema type https://health-lifesci.schema.org/MedicalEntity and it's sub-types.
-
-= 4.18.3 =
-
-(2018/12/30) Fixed issue with text + hashtags returning a single space for excerpts in WpsoPage::get_caption().
 
