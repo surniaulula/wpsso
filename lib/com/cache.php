@@ -442,12 +442,42 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$ch = curl_init();
 
 			curl_setopt( $ch, CURLOPT_URL, $url_nofrag );
+
 			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+
 			curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, $this->curl_connect_timeout );
+
 			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->curl_timeout );
-			curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 2 );
+
+			/**
+			 * When negotiating a TLS or SSL connection, the server sends a
+			 * certificate indicating its identity. Curl verifies whether the
+			 * certificate is authentic, i.e. that you can trust that the server is
+			 * who the certificate says it is. This trust is based on a chain of
+			 * digital signatures, rooted in certification authority (CA)
+			 * certificates you supply. curl uses a default bundle of CA
+			 * certificates (the path for that is determined at build time) and you
+			 * can specify alternate certificates with the CURLOPT_CAINFO option or
+			 * the CURLOPT_CAPATH option. 
+			 *
+			 * See https://curl.haxx.se/libcurl/c/CURLOPT_SSL_VERIFYPEER.html
+			 */
 			curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 1 );
-			curl_setopt( $ch, CURLOPT_HTTPHEADER, array( 'Expect:' ) );	// Define and disable the "Expect: 100-continue" header.
+
+			/**
+			 * When CURLOPT_SSL_VERIFYHOST is 2, that certificate must indicate
+			 * that the server is the server to which you meant to connect, or the
+			 * connection fails. Simply put, it means it has to have the same name
+			 * in the certificate as is in the URL you operate against.
+			 *
+			 * See https://curl.haxx.se/libcurl/c/CURLOPT_SSL_VERIFYHOST.html
+			 */
+			curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 2 );
+
+			/**
+			 * Define and disable the "Expect: 100-continue" header.
+			 */
+			curl_setopt( $ch, CURLOPT_HTTPHEADER, array( 'Expect:' ) );
 
 			if ( ! ini_get('safe_mode') && ! ini_get('open_basedir') ) {
 
