@@ -8,7 +8,7 @@
 <tr><th align="right" valign="top" nowrap>Tested Up To</th><td>WordPress 5.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
-<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>open graph, rich pins, rich cards, twitter cards, schema, social media, meta tags, marketplace, seo, yoast seo, woocommerce, facebook, google, pinterest, twitter, linkedin, whatsapp, skype</td></tr>
+<tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>open graph, rich pins, rich cards, twitter cards, schema, social media, meta tags, merchant, seo, yoast seo, woocommerce, facebook, google, pinterest, twitter, linkedin, whatsapp, skype</td></tr>
 </table>
 
 <h2>Description</h2>
@@ -29,7 +29,7 @@
 
 <p><strong>Creates <em>accurate and complete</em> meta tags and Schema markup:</strong></p>
 
-<p>WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph SEO, Google Rich Card SEO, Google MarketPlace SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive eCommerce product markup, mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!</p>
+<p>WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph SEO, Google Rich Card SEO, Google Merchant SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive eCommerce product markup, mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!</p>
 
 <p><strong>Includes advanced <em>quality assurance</em> features and options:</strong></p>
 

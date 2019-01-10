@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: open graph, rich pins, rich cards, twitter cards, schema, social media, meta tags, marketplace, seo, yoast seo, woocommerce, facebook, google, pinterest, twitter, linkedin, whatsapp, skype
+Tags: open graph, rich pins, rich cards, twitter cards, schema, social media, meta tags, merchant, seo, yoast seo, woocommerce, facebook, google, pinterest, twitter, linkedin, whatsapp, skype
 Contributors: jsmoriss
 Requires PHP: 5.4
 Requires At Least: 3.8
@@ -34,7 +34,7 @@ WPSSO Core is language / locale aware, which means you can customize your site i
 
 **Creates *accurate and complete* meta tags and Schema markup:**
 
-WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph SEO, Google Rich Card SEO, Google MarketPlace SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive eCommerce product markup, mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!
+WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebook / Open Graph, Google's Knowledge Graph SEO, Google Rich Card SEO, Google Merchant SEO, Mobile Web Browsers, Pinterest Rich Pins, Twitter Cards, Weibo and many more &mdash; including complete markup for images, videos, extensive eCommerce product markup, mobile apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content!
 
 **Includes advanced *quality assurance* features and options:**
 
