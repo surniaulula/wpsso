@@ -430,6 +430,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.18.5-dev.1 (2019/01/11)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Improved cell spacing in the SSO &gt; Add-ons and Licenses settings pages.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.18.4 (2019/01/09)**
 
 * *New Features*
@@ -519,6 +530,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 
 == Upgrade Notice ==
+
+= 4.18.5-dev.1 =
+
+(2019/01/11) Improved cell spacing in the SSO &gt; Add-ons and Licenses settings pages.
 
 = 4.18.4 =
 
