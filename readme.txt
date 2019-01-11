@@ -1,4 +1,4 @@
-=== WPSSO Core - Meta Tags and Schema Markup for Facebook, Google, LinkedIn, Pinterest, SEO and More ===
+=== WPSSO Core - Meta Tags and Schema for Facebook, Google, LinkedIn, Pinterest, Twitter, SEO and More ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso

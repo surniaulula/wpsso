@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>Meta Tags and Schema Markup for Facebook, Google, LinkedIn, Pinterest, SEO and More</h3>
+<h1>WPSSO Core</h1><h3>Meta Tags and Schema for Facebook, Google, LinkedIn, Pinterest, Twitter, SEO and More</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core [Main Plugin]</td></tr>
