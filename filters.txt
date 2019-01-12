@@ -91,6 +91,8 @@
 
 'wpsso_content_image_preg_pid_attr' ( $default = 'data-[a-z]+-pid' )
 
+'wpsso_daily_archive_description' ( $desc_text, $mod )
+
 'wpsso_description' ( $desc_text, $mod, $add_hashtags, $md_key )
 
 'wpsso_description_pre_limit' ( $desc_text )
@@ -152,6 +154,8 @@
 'wpsso_load_lib' ( false, "$type/$sub/$id" )
 
 'wpsso_meta_name' ( $mt_name, $mod )
+
+'wpsso_monthly_archive_description' ( $desc_text, $mod )
 
 'wpsso_ngg_accept_img_dims' ( $bool, $img_url, $img_width, $img_height, $size_name, $pid )
 
@@ -334,4 +338,6 @@
 'wpsso_user_image_urls' ( array $urls, $size_name, $user_id )
 
 'wpsso_user_url' ( $url, $mod, $add_page, $src_id )
+
+'wpsso_yearly_archive_description' ( $desc_text, $mod )
 
