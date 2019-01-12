@@ -4,9 +4,9 @@
  * Extract of translatable text strings from the lib/pro classes.
  */
 _x( 'Use Filtered (SEO) Title', 'option label', 'wpsso' );
-_x( 'Apply WordPress Content Filters', 'option label', 'wpsso' );
+_x( 'Use WordPress Content Filters', 'option label', 'wpsso' );
 _x( 'recommended', 'option comment', 'wpsso' );
-_x( 'Apply WordPress Excerpt Filters', 'option label', 'wpsso' );
+_x( 'Use WordPress Excerpt Filters', 'option label', 'wpsso' );
 _x( 'Content Starts at 1st Paragraph', 'option label', 'wpsso' );
 _x( 'Use Image Alt if No Content', 'option label', 'wpsso' );
 _x( 'Image Alt Text Prefix', 'option label', 'wpsso' );

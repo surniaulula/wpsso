@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.18.5-dev.1',	// Plugin version.
+					'version'     => '4.18.5-dev.2',	// Plugin version.
 					'opt_version' => '623',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1096,8 +1096,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced settings - Content and Filters tab.
 					 */
 					'plugin_filter_title'   => 0,		// Use Filtered (SEO) Title.
-					'plugin_filter_content' => 0,		// Apply WordPress Content Filters.
-					'plugin_filter_excerpt' => 0,		// Apply WordPress Excerpt Filters.
+					'plugin_filter_content' => 0,		// Use WordPress Content Filters.
+					'plugin_filter_excerpt' => 0,		// Use WordPress Excerpt Filters.
 					'plugin_p_strip'        => 1,		// Content Starts at 1st Paragraph.
 					'plugin_use_img_alt'    => 1,		// Use Image Alt if No Content.
 					'plugin_img_alt_prefix' => 'Image:',	// Image Alt Text Prefix.
@@ -2823,7 +2823,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function get_version( $add_slug = false ) {
 
 			$ext  = 'wpsso';
-			$info =& self::$cf[ 'plugin' ][$ext];
+			$info =& self::$cf[ 'plugin' ][ $ext ];
 
 			return $add_slug ? $info[ 'slug' ] . '-' . $info[ 'version' ] : $info[ 'version' ];
 		}
@@ -2861,11 +2861,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						}
 
 						if ( isset( $info[ 'slug' ] ) ) {
-							self::$cf[ '*' ][ 'slug' ][$info[ 'slug' ]] = $ext;
+							self::$cf[ '*' ][ 'slug' ][ $info[ 'slug' ] ] = $ext;
 						}
 
 						if ( isset( $info[ 'base' ] ) ) {
-							self::$cf[ '*' ][ 'base' ][$info[ 'base' ]] = $ext;
+							self::$cf[ '*' ][ 'base' ][ $info[ 'base' ] ] = $ext;
 						}
 
 						if ( isset( $info[ 'lib' ] ) && is_array( $info[ 'lib' ] ) ) {
@@ -2883,15 +2883,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 						// complete relative paths in the image arrays
 						$plugin_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
-						array_walk_recursive( self::$cf[ 'plugin' ][$ext][ 'img' ], 
+						array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'img' ], 
 							array( __CLASS__, 'maybe_prefix_base_url' ), $plugin_base );
 					}
 				}
 			}
 
 			if ( false !== $cf_key ) {
-				if ( isset( self::$cf[$cf_key] ) ) {
-					return self::$cf[$cf_key];
+				if ( isset( self::$cf[ $cf_key ] ) ) {
+					return self::$cf[ $cf_key ];
 				} else {
 					return null;
 				}
@@ -3054,7 +3054,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			foreach ( $var_const as $name => $value ) {
 				if ( defined( $name ) ) {
-					$var_const[$name] = constant( $name );	// Inherit existing values.
+					$var_const[ $name ] = constant( $name );	// Inherit existing values.
 				}
 			}
 

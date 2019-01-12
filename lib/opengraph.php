@@ -107,17 +107,21 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$html_attr = ' ' . $html_attr;	// Prepare the string for testing.
 
 				/**
-				 * Find and extract an existing prefix attribute value (if any).
+				 * Find and remove an existing prefix attribute value.
 				 */
-				if ( strpos( $html_attr, ' prefix=' ) &&
-					preg_match( '/^(.*) prefix=["\']([^"\']*)["\'](.*)$/', $html_attr, $match ) ) {
-
-					$html_attr    = $match[1] . $match[3];	// Remove the prefix.
-					$prefix_value = ' ' . $match[2];
-
-				} else {
-					$prefix_value = '';
+				if ( strpos( $html_attr, 'prefix=' ) ) {
+					
+					/**
+				 	 * s = A dot metacharacter in the pattern matches all characters, including newlines.
+					 *
+					 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
+					 */
+					if ( preg_match( '/^(.*)\sprefix=["\']([^"\']*)["\'](.*)$/s', $html_attr, $match ) ) {
+						$html_attr    = $match[1] . $match[3];	// Remove the prefix.
+					}
 				}
+
+				$prefix_value = '';
 	
 				foreach ( $og_ns as $name => $url ) {
 					if ( strpos( $prefix_value, ' ' . $name . ': ' . $url ) === false ) {

@@ -1431,6 +1431,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_def_img_id_pre': 	// 'wp' or 'ngg' media library name.
 				case 'og_img_id_pre': 		// 'wp' or 'ngg' media library name.
 				case 'plugin_shortener':	// 'none' or name of shortener
+				case 'plugin_col_def_width':
+				case 'plugin_col_def_width_max':
+				case 'plugin_col_title_width':
+				case 'plugin_col_title_width_max':
 				case 'product_avail':
 				case 'product_condition':
 				case 'product_gender':

@@ -320,6 +320,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 					if ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {
 
 						SucomUtil::safe_error_log( $this->label_transl . ': ' . $error_msg . "\n" . $incorrect_msg );
+
 					} else {
 						error_log( $this->label_transl . ': ' . $error_msg . "\n" . $incorrect_msg );
 					}

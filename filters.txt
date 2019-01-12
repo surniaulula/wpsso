@@ -79,6 +79,8 @@
 
 'wpsso_caption' ( $caption, $mod, $add_hashtags, $md_key )
 
+'wpsso_category_archive_description' ( $desc_text, $mod, $term_obj )
+
 'wpsso_check_post_head' ( $bool, $post_id, $post_obj )
 
 'wpsso_columns_post_{post_type_name}' ( true )
@@ -207,9 +209,9 @@
 
 'wpsso_plugin_image_sizes' ( $sizes, $mod, $crawler_name )
 
-'wpsso_post_archive_description' ( $title, $mod )
+'wpsso_post_archive_description' ( $desc_text, $mod, $post_type_obj )
 
-'wpsso_post_archive_title' ( $title, $mod )
+'wpsso_post_archive_title' ( $title_text, $mod, $post_type_obj )
 
 'wpsso_post_cache_transient_keys' ( $transient_keys, $mod, $sharing_url, $mod_salt )
 
@@ -285,9 +287,15 @@
 
 'wpsso_tags' ( $tags, $post_id )
 
+'wpsso_tag_archive_description' ( $desc_text, $mod, $term_obj )
+
 'wpsso_tc_seed' ( $tc, $mod )
 
 'wpsso_tc' ( $tc, $mod )
+
+'wpsso_term_archive_description' ( $desc_text, $mod, $term_obj )
+
+'wpsso_term_archive_title' ( $title_text, $mod, $term_obj )
 
 'wpsso_term_cache_transient_keys' ( $transient_keys, $mod, $sharing_url, $mod_salt )
 
@@ -311,6 +319,10 @@
 
 'wpsso_title' ( $title_text, $mod, $add_hashtags, $md_key, $sep )
 
+'wpsso_user_archive_description' ( $desc_text, $mod, $user_obj )
+
+'wpsso_user_archive_title' ( $title_text, $mod, $user_obj )
+
 'wpsso_user_cache_transient_keys' ( $transient_keys, $mod, $sharing_url, $mod_salt )
 
 'wpsso_user_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt )
@@ -320,10 +332,6 @@
 'wpsso_user_image_ids' ( array $ids, $size_name, $user_id )
 
 'wpsso_user_image_urls' ( array $urls, $size_name, $user_id )
-
-'wpsso_user_object_description' ( $desc_text, $author_obj )
-
-'wpsso_user_object_title' ( $title_text, $author_obj )
 
 'wpsso_user_url' ( $url, $mod, $add_page, $src_id )
 

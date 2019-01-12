@@ -1121,11 +1121,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$class_prefix = empty( $class_names ) ? '' : SucomUtil::sanitize_hookname( $class_names ) . '_';
 
 			foreach ( $this->get_schema_type_children( $type_id ) as $child ) {
+
 				if ( ! empty( $exclude_match ) ) {
 					if ( preg_match( $exclude_match, $child ) ) {
 						continue;
 					}
 				}
+
 				$class_names .= ' ' . $class_prefix . SucomUtil::sanitize_hookname( $child );
 			}
 

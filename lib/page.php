@@ -295,7 +295,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
-				$title_text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$title_text = is_object( $mod[ 'obj' ] ) ?
+					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $title_text ) ) {
@@ -353,7 +354,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$this->p->debug->log( 'before post_archive_title filter = ' . $title_text );
 						}
 	
-						$title_text = apply_filters( $this->p->lca . '_post_archive_title', $title_text, $mod );
+						$title_text = apply_filters( $this->p->lca . '_post_archive_title', $title_text, $mod, $post_type_obj );
 
 					} else {
 
@@ -377,30 +378,29 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( $mod[ 'is_term' ] ) {
 
-					$term_obj = SucomUtil::get_term_object( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+					$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
 					if ( SucomUtil::is_category_page( $mod[ 'id' ] ) ) {
 
-						/**
-						 * Includes parent names in title string if the $sep is not empty.
-						 */
-						$title_text = $this->get_category_title( $term_obj, '', $sep );
+						$title_text = $this->get_category_title( $term_obj, $sep, $mod );
 
 					} elseif ( isset( $term_obj->name ) ) {
 
-						$title_text = apply_filters( 'wp_title', $term_obj->name . ' ' . $sep . ' ', $sep, 'right' );
+						$title_text = $term_obj->name . ' ' . $sep . ' ';
+						$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
 
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'name property missing in term object' );
 					}
 
+					$title_text = apply_filters( $this->p->lca . '_term_archive_title', $title_text, $mod, $term_obj );
+
 				} elseif ( $mod[ 'is_user' ] ) {
 
-					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
-
-					$title_text = apply_filters( 'wp_title', $user_obj->display_name . ' ' . $sep . ' ', $sep, 'right' );
-
-					$title_text = apply_filters( $this->p->lca . '_user_object_title', $title_text, $user_obj );
+					$user_obj   = SucomUtil::get_user_object( $mod[ 'id' ] );
+					$title_text = $user_obj->display_name . ' ' . $sep . ' ';
+					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
+					$title_text = apply_filters( $this->p->lca . '_user_archive_title', $title_text, $mod, $user_obj );
 
 				} else {
 
@@ -562,7 +562,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
-				$desc_text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$desc_text = is_object( $mod[ 'obj' ] ) ?
+					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $desc_text ) ) {
@@ -631,7 +632,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$this->p->debug->log( 'before post_archive_description filter = ' . $desc_text );
 						}
 	
-						$desc_text = apply_filters( $this->p->lca . '_post_archive_description', $desc_text, $mod );
+						$desc_text = apply_filters( $this->p->lca . '_post_archive_description', $desc_text, $mod, $post_type_obj );
 
 					} else {
 
@@ -673,26 +674,36 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( $mod[ 'is_term' ] ) {
 
+					$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+
+					/**
+					 * Tag archive page.
+					 */
 					if ( SucomUtil::is_tag_page( $mod[ 'id' ] ) ) {
 
 						if ( ! $desc_text = tag_description( $mod[ 'id' ] ) ) {
-
-							$term_obj = get_tag( $mod[ 'id' ] );
-
 							if ( ! empty( $term_obj->name ) ) {
-								$desc_text = sprintf( __( 'Tagged with %s', 'wpsso' ), $term_obj->name );
+								$desc_text = sprintf( __( '%s Archive', 'wpsso' ), $term_obj->name );
 							}
 						}
 
+						$desc_text = apply_filters( $this->p->lca . '_tag_archive_description', $desc_text, $mod, $term_obj );
+
+					/**
+					 * Category archive page.
+					 */
 					} elseif ( SucomUtil::is_category_page( $mod[ 'id' ] ) ) {
 
 						if ( ! $desc_text = category_description( $mod[ 'id' ] ) ) {
-							$desc_text = sprintf( __( '%s Category', 'wpsso' ), get_cat_name( $mod[ 'id' ] ) );
+							$desc_text = sprintf( __( '%s Archive', 'wpsso' ), get_cat_name( $mod[ 'id' ] ) );
 						}
 
-					} else { 	// other taxonomies
+						$desc_text = apply_filters( $this->p->lca . '_category_archive_description', $desc_text, $mod, $term_obj );
 
-						$term_obj = SucomUtil::get_term_object( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+					/**
+					 * Other archive page.
+					 */
+					} else {
 
 						if ( ! empty( $term_obj->description ) ) {
 							$desc_text = $term_obj->description;
@@ -701,17 +712,22 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						}
 					}
 
+					$desc_text = apply_filters( $this->p->lca . '_term_archive_description', $desc_text, $mod, $term_obj );
+
 				} elseif ( $mod[ 'is_user' ] ) {
 
 					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
 
 					if ( ! empty( $user_obj->description ) ) {
+
 						$desc_text = $user_obj->description;
+
 					} elseif ( ! empty( $user_obj->display_name ) ) {
+
 						$desc_text = sprintf( __( 'Authored by %s', 'wpsso' ), $user_obj->display_name );
 					}
 
-					$desc_text = apply_filters( $this->p->lca . '_user_object_description', $desc_text, $user_obj );
+					$desc_text = apply_filters( $this->p->lca . '_user_archive_description', $desc_text, $mod, $user_obj );
 
 				} elseif ( is_day() ) {
 
@@ -727,7 +743,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( SucomUtil::is_archive_page() ) {	// Just in case.
 
-					$desc_text = apply_filters( $this->p->lca . '_archive_page_description', __( 'Archive Page', 'wpsso' ), $mod );
+					$desc_text = __( 'Archive Page', 'wpsso' );
+
+					$desc_text = apply_filters( $this->p->lca . '_archive_page_description', $desc_text, $mod );
 				}
 			}
 
@@ -919,9 +937,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$cache_md5_pre = $this->p->lca . '_c_';
 
 			if ( ! isset( $cache_exp_secs ) ) {	// filter cache expiration if not already set
-				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'wp_cache' ][$cache_md5_pre][ 'filter' ];
-				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'wp_cache' ][$cache_md5_pre][ 'opt_key' ];
-				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
+				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'wp_cache' ][ $cache_md5_pre ][ 'filter' ];
+				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'wp_cache' ][ $cache_md5_pre ][ 'opt_key' ];
+				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[ $cache_opt_key ] );
 			}
 
 			/************************
@@ -1118,7 +1136,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
-				$text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$text = is_object( $mod[ 'obj' ] ) ?
+					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $text ) ) {
@@ -1190,7 +1209,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
-				$keywords = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$keywords = is_object( $mod[ 'obj' ] ) ?
+					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $keywords ) ) {
@@ -1232,6 +1252,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$hashtags = '';
 
+			/**
+			 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
+			 *
+			 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
+			 */
 			if ( preg_match( '/^(.*)(( *#[a-z][a-z0-9\-]+)+)$/U', $text, $match ) ) {
 
 				$text     = $match[1];
@@ -1357,18 +1382,26 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $tags;
 		}
 
-		public function get_category_title( $term_id = 0, $tax_slug = '', $sep = null ) {
+		/**
+		 * Includes parent names in the category title if the $sep value is not empty.
+		 */
+		public function get_category_title( $term_id = 0, $sep = null, $mod = false ) {
 
 			$title_text = '';
 
 			if ( is_object( $term_id ) ) {
 				$term_obj = $term_id;
+				$term_id  = $term_obj->term_id;
 			} else {
-				$term_obj = SucomUtil::get_term_object( $term_id, $tax_slug );
+				$term_obj = get_category( $term_id );
 			}
 
 			if ( null === $sep ) {
 				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			}
+
+			if ( ! is_array( $mod ) ) {
+				$mod = $this->p->m[ 'util' ][ 'term' ]->get_mod( $term_id );
 			}
 
 			if ( isset( $term_obj->name ) ) {
@@ -1376,14 +1409,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title_text = $term_obj->name . ' ';
 
 				if ( ! empty( $sep ) ) {
-					$title_text .= $sep . ' ';	// default value
+					$title_text .= $sep . ' ';	// Default behavior.
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'name property missing in term object' );
 			}
 
-			if ( ! empty( $sep ) ) {
+			if ( ! empty( $sep ) ) {	// Just in case.
 
 				$cat = get_category( $term_obj->term_id );
 
@@ -1392,13 +1425,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$cat_parents = get_category_parents( $term_obj->term_id, false, ' ' . $sep . ' ', false );
 	
 					if ( is_wp_error( $cat_parents ) ) {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'get_category_parents error: ' . $cat_parents->get_error_message() );
 						}
+
 					} else {
+
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'get_category_parents() = "' . $cat_parents . '"' );
 						}
+
 						if ( ! empty( $cat_parents ) ) {
 							$title_text = $cat_parents;
 						}
@@ -1406,7 +1443,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			return apply_filters( 'wp_title', $title_text, $sep, 'right' );
+			$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
+
+			return $title_text;
 		}
 	}
 }

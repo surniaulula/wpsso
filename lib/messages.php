@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$info[ $info_key . '_pro' ] = SucomUtil::get_pkg_name( $info[ $info_key ], 'Pro' );
 
 				$info[ $info_key . '_pro_purchase' ] = empty( $url[ 'purchase' ] ) ?
-					$info[ $info_key . '_pro' ] : '<a href="'.$url[ 'purchase' ].'">'.$info[ $info_key . '_pro'].'</a>';
+					$info[ $info_key . '_pro' ] : '<a href="'.$url[ 'purchase' ].'">'.$info[ $info_key . '_pro' ].'</a>';
 			}
 
 			$fb_recommends_transl = __( 'Facebook has published a preference for Open Graph image dimensions of 1200x630px cropped (for retina and high-PPI displays), 600x315px cropped as a minimum (the default settings value), and ignores images smaller than 200x200px.', 'wpsso' );
@@ -692,7 +692,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( 'When use of image <em>alt</em> attributes is enabled, %s can prefix the attribute text with an optional string.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 							
-							$text .= __( 'Leave this value empty to prevent image alt attribute text from being prefixed.', 'wpsso' );
+							$text .= __( 'Leave this option blank to prevent the image alt attribute text from being prefixed.', 'wpsso' );
 
 							break;
 
@@ -700,7 +700,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( '%s can add a prefix to paragraphs found with the "wp-caption-text" class.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 							
-							$text .= __( 'Leave this value empty to prevent caption paragraphs from being prefixed.', 'wpsso' );
+							$text .= __( 'Leave this option blank to prevent caption paragraphs from being prefixed.', 'wpsso' );
 
 							break;
 
@@ -883,7 +883,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_cf_vid_url':
 
 							$plugin_cf_info = $this->get_plugin_cf_info( 'tooltip-plugin_cf_', $msg_key );
-							$metabox_title  = _x( $this->p->cf['meta']['title'], 'metabox title', 'wpsso' );
+							$metabox_title  = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 							if ( ! empty( $plugin_cf_info ) ) {	// Just in case.
 
@@ -897,7 +897,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Columns settings
 						 */
-						case 'tooltip-plugin_show_columns':
+						case 'tooltip-plugin_show_columns':	// Additional List Table Columns
 
 							$text = __( 'Additional columns can be included in admin list tables to show the Schema type ID, Open Graph image, etc.', 'wpsso' ) . ' ';
 							
@@ -905,7 +905,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_col_def_width':
+						case 'tooltip-plugin_col_title_width':	// Title / Name Column Width
+
+							$text .= __( 'WordPress does not define a column width for its Title column, which can create display issues when showing list tables with additional columns.', 'wpsso' ) . ' ';
+
+							$text .= __( 'This option allows you to define a custom width for the Title column, to prevent these kinds of issues.', 'wpsso' ) . ' ';
+
+							break;
+
+						case 'tooltip-plugin_col_def_width':	// Default Width for Posts / Pages
 
 							$text .= __( 'A default column width for the admin Posts and Pages list table.', 'wpsso' ) . ' ';
 
@@ -913,27 +921,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'This option offers a way to set a generic width for all Posts and Pages list table columns.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Leave this option blank to prevent setting a column width.', 'wpsso' );
-
 							break;
-
-						case 'tooltip-plugin_col_title_width':
-
-							$text .= __( 'WordPress does not define a column width for its Title column, which can create display issues when showing list tables with additional columns.', 'wpsso' ) . ' ';
-
-							$text .= __( 'This option allows you to define a custom width for the Title column, to prevent these kinds of issues.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Leave this option blank to prevent setting a column width.', 'wpsso' );
-
-							break;
-
 
 						/**
 						 * Cache settings.
 						 */
 						case 'tooltip-plugin_head_cache_exp':
 
-							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_head_cache_exp'];
+							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_head_cache_exp' ];
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
@@ -946,7 +941,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_content_cache_exp':
 
-							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_content_cache_exp'];
+							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_content_cache_exp' ];
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
@@ -959,7 +954,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_short_url_cache_exp':
 
-							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_short_url_cache_exp'];
+							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_short_url_cache_exp' ];
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
@@ -972,7 +967,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_imgsize_cache_exp':
 
-							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_imgsize_cache_exp'];
+							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_imgsize_cache_exp' ];
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
@@ -985,7 +980,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_topics_cache_exp':
 
-							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_topics_cache_exp'];
+							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_topics_cache_exp' ];
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
@@ -998,7 +993,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_json_data_cache_exp':
 
-							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_json_data_cache_exp'];
+							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_json_data_cache_exp' ];
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
@@ -1011,7 +1006,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_types_cache_exp':
 
-							$cache_exp_secs = WpssoConfig::$cf['opt']['defaults']['plugin_types_cache_exp'];
+							$cache_exp_secs = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_types_cache_exp' ];
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
@@ -1043,7 +1038,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_clear_short_urls':		// Refresh Short URLs on Clear Cache
 
 							$cache_exp_secs = (int) apply_filters( $this->p->lca . '_cache_expire_short_url',
-								$this->p->options['plugin_short_url_cache_exp'] );
+								$this->p->options[ 'plugin_short_url_cache_exp' ] );
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
 								_x( 'disabled', 'option comment', 'wpsso' );
@@ -1251,7 +1246,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'The maximum length used for the Google Search / SEO description value.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
-								'wpsso' ), $this->p->cf['head']['limit_min']['seo_desc_len'],
+								'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'seo_desc_len' ],
 									$this->p->opt->get_defaults( 'seo_desc_max_len' ) );
 
 							break;
@@ -1355,7 +1350,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'The maximum length used for the Schema description property value.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
-								'wpsso' ), $this->p->cf['head']['limit_min']['schema_desc_len'],
+								'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'schema_desc_len' ],
 									$this->p->opt->get_defaults( 'schema_desc_max_len' ) );
 
 							break;
@@ -1455,7 +1450,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'The maximum length used for the Twitter Card description value.', 'wpsso' ) . ' ';
 							
 							$text .= sprintf( __( 'The length should be at least %1$d characters or more (the default is %2$d characters).',
-								'wpsso' ), $this->p->cf['head']['limit_min']['tc_desc_len'],
+								'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'tc_desc_len' ],
 									$this->p->opt->get_defaults( 'tc_desc_max_len' ) );
 
 							break;
@@ -1770,7 +1765,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '</p>';
 
-							if ( empty( $this->p->avail[ '*' ]['amp'] ) ) {
+							if ( empty( $this->p->avail[ '*' ][ 'amp' ] ) ) {
 
 								$text .= '<p><i>';
 
@@ -1834,7 +1829,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text.= '<p>' . __( 'If you enter Authentication IDs in this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; for example, to license a Pro add-on for 10 sites, you would need an Authentication ID from a 10 license pack purchase (or more) of that Pro add-on.', 'wpsso' ) . '</p>';
 
-							$text .= '<p>' . sprintf( __( '<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its Pro add-ons, please make sure the %2$s Free add-on is active on the default site, and the default site is licensed.', 'wpsso' ), $info['name_pro'], $um_info[ 'name' ] ) . '</p>';
+							$text .= '<p>' . sprintf( __( '<strong>WordPress uses the default site / blog ID to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its Pro add-ons, please make sure the %2$s Free add-on is active on the default site, and the default site is licensed.', 'wpsso' ), $info[ 'name_pro' ], $um_info[ 'name' ] ) . '</p>';
 
 							$text .= '</blockquote>';
 
@@ -2109,7 +2104,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-content-filters-disabled':
 
 						$filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
-							_x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ) );
+							_x( 'Use WordPress Content Filters', 'option label', 'wpsso' ) );
 
 						$text = '<p class="top">';
 

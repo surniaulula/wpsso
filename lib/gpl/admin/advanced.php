@@ -55,11 +55,11 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_td_no_checkbox( 'plugin_filter_title' );
 
 			$table_rows['plugin_filter_content'] = '' . 
-			$form->get_th_html( _x( 'Apply WordPress Content Filters', 'option label', 'wpsso' ), '', 'plugin_filter_content' ) . 
+			$form->get_th_html( _x( 'Use WordPress Content Filters', 'option label', 'wpsso' ), '', 'plugin_filter_content' ) . 
 			$form->get_td_no_checkbox( 'plugin_filter_content', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows['plugin_filter_excerpt'] = '' . 
-			$form->get_th_html( _x( 'Apply WordPress Excerpt Filters', 'option label', 'wpsso' ), '', 'plugin_filter_excerpt' ) . 
+			$form->get_th_html( _x( 'Use WordPress Excerpt Filters', 'option label', 'wpsso' ), '', 'plugin_filter_excerpt' ) . 
 			$form->get_td_no_checkbox( 'plugin_filter_excerpt' );
 
 			$table_rows['plugin_p_strip'] = $form->get_tr_hide( 'basic', 'plugin_p_strip' ) . 

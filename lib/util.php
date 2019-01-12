@@ -2002,9 +2002,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 		public function replace_inline_vars( $content, $mod = false, $atts = array(), $extra = array() ) {
 
 			if ( strpos( $content, '%%' ) === false ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: no inline vars' );
 				}
+
 				return $content;
 			}
 
