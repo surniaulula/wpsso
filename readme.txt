@@ -448,8 +448,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_user_object_title' to 'wpsso_user_archive_title'
 	* Added new filters:
 		* 'wpsso_category_archive_description'
+		* 'wpsso_daily_archive_description'
+		* 'wpsso_monthly_archive_description'
 		* 'wpsso_tag_archive_description'
 		* 'wpsso_term_archive_description'
+		* 'wpsso_yearly_archive_description'
 
 **Version 4.18.4 (2019/01/09)**
 
