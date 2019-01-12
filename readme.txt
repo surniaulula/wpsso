@@ -436,10 +436,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Improvements*
 	* Improved cell spacing in the SSO &gt; Add-ons and Licenses settings pages.
+	* Updated the term fallback description (ie. the term does not have a description) to "%s Archive" for all terms (including tags and categories).
+	* Renamed option labels:
+		* "Apply WordPress Content Filters" to "Use WordPress Content Filters".
+		* "Apply WordPress Excerpt Filters" to "Use WordPress Excerpt Filters".
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* Renamed filters:
+		* 'wpsso_user_object_description' to 'wpsso_user_archive_description'
+		* 'wpsso_user_object_title' to 'wpsso_user_archive_title'
+	* Added new filters:
+		* 'wpsso_category_archive_description'
+		* 'wpsso_tag_archive_description'
+		* 'wpsso_term_archive_description'
 
 **Version 4.18.4 (2019/01/09)**
 
@@ -450,7 +460,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Added a fallback call to `do_blocks()` when the "Use WordPress Content Filters" option is disabled.
+	* Added a fallback call to `do_blocks()` when the "Apply WordPress Content Filters" option is disabled.
 	* Added new functions to get a single og image array for posts, terms, and users:
 		* wpsso_get_mod_og_image( array $mod, $size_name = 'thumbnail' );
 		* wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' );
