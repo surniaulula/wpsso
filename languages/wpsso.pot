@@ -3002,7 +3002,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: lib/gettext-pro.php:183 lib/page.php:786 lib/pro/social/buddypress.php:662
+#: lib/gettext-pro.php:183 lib/pro/social/buddypress.php:662
 msgid "No Description"
 msgstr ""
 
@@ -5620,33 +5620,50 @@ msgstr ""
 msgid "Please correct the banner image at %s."
 msgstr ""
 
-#: lib/page.php:348 lib/page.php:350 lib/page.php:625 lib/page.php:627
-#: lib/page.php:686 lib/page.php:698 lib/page.php:711
+#: lib/page.php:348 lib/page.php:350
+msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
 #: lib/page.php:422
+msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:727
-msgid "Authored by %s"
+#: lib/page.php:625 lib/page.php:627 lib/page.php:692 lib/page.php:704
+#: lib/page.php:717
+msgctxt "default description"
+msgid "%s Archive."
 msgstr ""
 
-#: lib/page.php:734
-msgid "Daily Archive for %s"
+#: lib/page.php:733
+msgctxt "default description"
+msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:738
-msgid "Monthly Archive for %s"
+#: lib/page.php:740
+msgctxt "default description"
+msgid "Daily Archive for %s."
 msgstr ""
 
-#: lib/page.php:742
-msgid "Yearly Archive for %s"
+#: lib/page.php:744
+msgctxt "default description"
+msgid "Monthly Archive for %s."
 msgstr ""
 
-#: lib/page.php:746
-msgid "Archive Page"
+#: lib/page.php:748
+msgctxt "default description"
+msgid "Yearly Archive for %s."
+msgstr ""
+
+#: lib/page.php:752
+msgctxt "default description"
+msgid "Archive Page."
+msgstr ""
+
+#: lib/page.php:792
+msgctxt "default description"
+msgid "No Description."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds

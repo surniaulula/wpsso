@@ -345,9 +345,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
 						if ( ! empty( $post_type_obj->labels->menu_name ) ) {
-							$title_text = sprintf( __( '%s Archive', 'wpsso' ), $post_type_obj->labels->menu_name );
+							$title_text = sprintf( _x( '%s Archive', 'default title', 'wpsso' ), $post_type_obj->labels->menu_name );
 						} elseif ( ! empty( $post_type_obj->name ) ) {
-							$title_text = sprintf( __( '%s Archive', 'wpsso' ), $post_type_obj->name );
+							$title_text = sprintf( _x( '%s Archive', 'default title', 'wpsso' ), $post_type_obj->name );
 						}
 
 						if ( $this->p->debug->enabled ) {
@@ -419,7 +419,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$this->p->debug->log( 'fallback get_bloginfo() = "' . $title_text . '"' );
 						}
 					} else {
-						$title_text = __( 'No Title', 'wpsso' );	// Just in case.
+						$title_text = _x( 'No Title', 'default title', 'wpsso' );	// Just in case.
 					}
 				}
 			}
@@ -622,9 +622,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							}
 
 							if ( ! empty( $post_type_obj->labels->menu_name ) ) {
-								$desc_text = sprintf( __( '%s Archive', 'wpsso' ), $post_type_obj->labels->menu_name );
+								$desc_text = sprintf( _x( '%s Archive.', 'default description', 'wpsso' ), $post_type_obj->labels->menu_name );
 							} elseif ( ! empty( $post_type_obj->name ) ) {
-								$desc_text = sprintf( __( '%s Archive', 'wpsso' ), $post_type_obj->name );
+								$desc_text = sprintf( _x( '%s Archive.', 'default description', 'wpsso' ), $post_type_obj->name );
 							}
 						}
 
@@ -658,7 +658,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 									$this->p->debug->log( 'removing all text before the first paragraph' );
 								}
 
-								$desc_text = preg_replace( '/^.*<p>/Ui', '', $desc_text );
+								/**
+								 * i = Letters in the pattern match both upper and lower case letters. 
+								 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
+								 *
+								 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
+								 */
+								$desc_text = preg_replace( '/^.*<p>/iU', '', $desc_text );
 							}
 						}
 
@@ -683,7 +689,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						if ( ! $desc_text = tag_description( $mod[ 'id' ] ) ) {
 							if ( ! empty( $term_obj->name ) ) {
-								$desc_text = sprintf( __( '%s Archive', 'wpsso' ), $term_obj->name );
+								$desc_text = sprintf( _x( '%s Archive.', 'default description', 'wpsso' ), $term_obj->name );
 							}
 						}
 
@@ -695,7 +701,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					} elseif ( SucomUtil::is_category_page( $mod[ 'id' ] ) ) {
 
 						if ( ! $desc_text = category_description( $mod[ 'id' ] ) ) {
-							$desc_text = sprintf( __( '%s Archive', 'wpsso' ), get_cat_name( $mod[ 'id' ] ) );
+							$desc_text = sprintf( _x( '%s Archive.', 'default description', 'wpsso' ), get_cat_name( $mod[ 'id' ] ) );
 						}
 
 						$desc_text = apply_filters( $this->p->lca . '_category_archive_description', $desc_text, $mod, $term_obj );
@@ -708,7 +714,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						if ( ! empty( $term_obj->description ) ) {
 							$desc_text = $term_obj->description;
 						} elseif ( ! empty( $term_obj->name ) ) {
-							$desc_text = sprintf( __( '%s Archive', 'wpsso' ), $term_obj->name );
+							$desc_text = sprintf( _x( '%s Archive.', 'default description', 'wpsso' ), $term_obj->name );
 						}
 					}
 
@@ -724,26 +730,26 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					} elseif ( ! empty( $user_obj->display_name ) ) {
 
-						$desc_text = sprintf( __( 'Authored by %s', 'wpsso' ), $user_obj->display_name );
+						$desc_text = sprintf( _x( 'Authored by %s.', 'default description', 'wpsso' ), $user_obj->display_name );
 					}
 
 					$desc_text = apply_filters( $this->p->lca . '_user_archive_description', $desc_text, $mod, $user_obj );
 
 				} elseif ( is_day() ) {
 
-					$desc_text = sprintf( __( 'Daily Archive for %s', 'wpsso' ), get_the_date() );
+					$desc_text = sprintf( _x( 'Daily Archive for %s.', 'default description', 'wpsso' ), get_the_date() );
 
 				} elseif ( is_month() ) {
 
-					$desc_text = sprintf( __( 'Monthly Archive for %s', 'wpsso' ), get_the_date('F Y') );
+					$desc_text = sprintf( _x( 'Monthly Archive for %s.', 'default description', 'wpsso' ), get_the_date('F Y') );
 
 				} elseif ( is_year() ) {
 
-					$desc_text = sprintf( __( 'Yearly Archive for %s', 'wpsso' ), get_the_date('Y') );
+					$desc_text = sprintf( _x( 'Yearly Archive for %s.', 'default description', 'wpsso' ), get_the_date('Y') );
 
 				} elseif ( SucomUtil::is_archive_page() ) {	// Just in case.
 
-					$desc_text = __( 'Archive Page', 'wpsso' );
+					$desc_text = _x( 'Archive Page.', 'default description', 'wpsso' );
 
 					$desc_text = apply_filters( $this->p->lca . '_archive_page_description', $desc_text, $mod );
 				}
@@ -783,7 +789,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$this->p->debug->log( 'fallback SucomUtil::get_site_description() = "' . $desc_text . '"' );
 					}
 				} else {
-					$desc_text = __( 'No Description', 'wpsso' );	// Just in case.
+					$desc_text = _x( 'No Description.', 'default description', 'wpsso' );	// Just in case.
 				}
 			}
 
