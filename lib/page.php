@@ -622,9 +622,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							}
 
 							if ( ! empty( $post_type_obj->labels->menu_name ) ) {
-								$desc_text = sprintf( _x( '%s Archive.', 'default description', 'wpsso' ), $post_type_obj->labels->menu_name );
+								$desc_text = sprintf( _x( '%s archive.', 'default description', 'wpsso' ), $post_type_obj->labels->menu_name );
 							} elseif ( ! empty( $post_type_obj->name ) ) {
-								$desc_text = sprintf( _x( '%s Archive.', 'default description', 'wpsso' ), $post_type_obj->name );
+								$desc_text = sprintf( _x( '%s archive.', 'default description', 'wpsso' ), $post_type_obj->name );
 							}
 						}
 
@@ -689,7 +689,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						if ( ! $desc_text = tag_description( $mod[ 'id' ] ) ) {
 							if ( ! empty( $term_obj->name ) ) {
-								$desc_text = sprintf( _x( '%s Archive.', 'default description', 'wpsso' ), $term_obj->name );
+								$desc_text = sprintf( _x( '%s archive.', 'default description', 'wpsso' ), $term_obj->name );
 							}
 						}
 
@@ -701,7 +701,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					} elseif ( SucomUtil::is_category_page( $mod[ 'id' ] ) ) {
 
 						if ( ! $desc_text = category_description( $mod[ 'id' ] ) ) {
-							$desc_text = sprintf( _x( '%s Archive.', 'default description', 'wpsso' ), get_cat_name( $mod[ 'id' ] ) );
+							$desc_text = sprintf( _x( '%s archive.', 'default description', 'wpsso' ), get_cat_name( $mod[ 'id' ] ) );
 						}
 
 						$desc_text = apply_filters( $this->p->lca . '_category_archive_description', $desc_text, $mod, $term_obj );
@@ -714,7 +714,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						if ( ! empty( $term_obj->description ) ) {
 							$desc_text = $term_obj->description;
 						} elseif ( ! empty( $term_obj->name ) ) {
-							$desc_text = sprintf( _x( '%s Archive.', 'default description', 'wpsso' ), $term_obj->name );
+							$desc_text = sprintf( _x( '%s archive.', 'default description', 'wpsso' ), $term_obj->name );
 						}
 					}
 
@@ -737,20 +737,22 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( is_day() ) {
 
-					$desc_text = sprintf( _x( 'Daily Archive for %s.', 'default description', 'wpsso' ), get_the_date() );
+					$desc_text = sprintf( _x( 'Daily archive for %s.', 'default description', 'wpsso' ), get_the_date() );
+					$desc_text = apply_filters( $this->p->lca . '_daily_archive_description', $desc_text, $mod );
 
 				} elseif ( is_month() ) {
 
-					$desc_text = sprintf( _x( 'Monthly Archive for %s.', 'default description', 'wpsso' ), get_the_date('F Y') );
+					$desc_text = sprintf( _x( 'Monthly archive for %s.', 'default description', 'wpsso' ), get_the_date('F Y') );
+					$desc_text = apply_filters( $this->p->lca . '_monthly_archive_description', $desc_text, $mod );
 
 				} elseif ( is_year() ) {
 
-					$desc_text = sprintf( _x( 'Yearly Archive for %s.', 'default description', 'wpsso' ), get_the_date('Y') );
+					$desc_text = sprintf( _x( 'Yearly archive for %s.', 'default description', 'wpsso' ), get_the_date('Y') );
+					$desc_text = apply_filters( $this->p->lca . '_yearly_archive_description', $desc_text, $mod );
 
 				} elseif ( SucomUtil::is_archive_page() ) {	// Just in case.
 
-					$desc_text = _x( 'Archive Page.', 'default description', 'wpsso' );
-
+					$desc_text = _x( 'Archive page.', 'default description', 'wpsso' );
 					$desc_text = apply_filters( $this->p->lca . '_archive_page_description', $desc_text, $mod );
 				}
 			}

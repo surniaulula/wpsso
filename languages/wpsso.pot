@@ -5633,7 +5633,7 @@ msgstr ""
 #: lib/page.php:625 lib/page.php:627 lib/page.php:692 lib/page.php:704
 #: lib/page.php:717
 msgctxt "default description"
-msgid "%s Archive."
+msgid "%s archive."
 msgstr ""
 
 #: lib/page.php:733
@@ -5643,25 +5643,25 @@ msgstr ""
 
 #: lib/page.php:740
 msgctxt "default description"
-msgid "Daily Archive for %s."
+msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:744
+#: lib/page.php:745
 msgctxt "default description"
-msgid "Monthly Archive for %s."
+msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:748
+#: lib/page.php:750
 msgctxt "default description"
-msgid "Yearly Archive for %s."
+msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:752
+#: lib/page.php:755
 msgctxt "default description"
-msgid "Archive Page."
+msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:792
+#: lib/page.php:794
 msgctxt "default description"
 msgid "No Description."
 msgstr ""
