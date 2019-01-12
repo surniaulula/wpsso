@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.18.5-dev.1 (2019/01/11)**
+**Version 4.18.5-dev.2 (2019/01/12)**
 
 * *New Features*
 	* None.
@@ -450,7 +450,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* Added a fallback call to `do_blocks()` when the "Apply WordPress Content Filters" option is disabled.
+	* Added a fallback call to `do_blocks()` when the "Use WordPress Content Filters" option is disabled.
 	* Added new functions to get a single og image array for posts, terms, and users:
 		* wpsso_get_mod_og_image( array $mod, $size_name = 'thumbnail' );
 		* wpsso_get_post_og_image( $post_id, $size_name = 'thumbnail' );
@@ -531,9 +531,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.18.5-dev.1 =
+= 4.18.5-dev.2 =
 
-(2019/01/11) Improved cell spacing in the SSO &gt; Add-ons and Licenses settings pages.
+(2019/01/12) Improved cell spacing in the SSO &gt; Add-ons and Licenses settings pages.
 
 = 4.18.4 =
 
