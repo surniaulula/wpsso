@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.19.0-dev.2 (2019/01/12)**
+**Version 4.19.0-dev.3 (2019/01/12)**
 
 * *New Features*
 	* None.
@@ -544,7 +544,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.19.0-dev.2 =
+= 4.19.0-dev.3 =
 
 (2019/01/12) Improved cell spacing in the SSO &gt; Add-ons and Licenses settings pages.
 
