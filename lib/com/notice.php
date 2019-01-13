@@ -1093,10 +1093,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar #wp-toolbar .have-notices #' . $this->p->lca . '-toolbar-notices-icon.ab-icon::before { 
 					display:inline-block;
 					color:#fff;
+					background-color:inherit;
 				}
 				#wpadminbar #wp-toolbar .have-notices #' . $this->p->lca . '-toolbar-notices-count {
 					display:inline-block;
 					color:#fff;
+					background-color:inherit;
 				}
 				#wpadminbar .have-notices.have-notices-error {
 					background-color:#dc3232;
