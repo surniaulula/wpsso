@@ -1125,12 +1125,12 @@ msgid "Reference: %s"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/com/util.php:1775 lib/gettext-com.php:31
+#: lib/com/util.php:1777 lib/gettext-com.php:31
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/com/util.php:1786 lib/gettext-com.php:33
+#: lib/com/util.php:1788 lib/gettext-com.php:33
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 

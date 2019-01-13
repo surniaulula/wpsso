@@ -1116,6 +1116,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Wrap a filter to return its original / unchanged value.
 		 * Returns tru if protection filters were added, false if protection filters are not required.
+		 *
+		 * Since WPSSO Core v3.46.2.
 		 */
 		public static function protect_filter_value( $filter_name ) {
 

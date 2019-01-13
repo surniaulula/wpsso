@@ -138,9 +138,9 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			global $pagenow;
 
-			if ( method_exists( 'SucomUtil', 'protect_filter_value' ) ) {
-				SucomUtil::protect_filter_value( 'pre_option_home' );
-			}
+			SucomUtil::protect_filter_value( 'default_option_home' );
+			SucomUtil::protect_filter_value( 'pre_option_home' );
+			SucomUtil::protect_filter_value( 'option_home' );
 
 			if ( empty( $blog_id ) || ! is_multisite() ) {
 
