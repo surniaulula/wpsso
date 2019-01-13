@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.19.0-rc.1 (2019/01/13)**
+**Version 4.19.0 (2019/01/13)**
 
 * *New Features*
 	* None.
@@ -547,7 +547,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.19.0-rc.1 =
+= 4.19.0 =
 
 (2019/01/13) Updated the default term description strings. Improved cell spacing in the Add-ons and Licenses settings pages. Renamed and added new archive title / description filters.
 
