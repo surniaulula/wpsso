@@ -435,8 +435,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
+	* Updated the default term description strings (ie. when the term does not have a description).
 	* Improved cell spacing in the SSO &gt; Add-ons and Licenses settings pages.
-	* Updated the term fallback description (ie. the term does not have a description) to "%s Archive" for all terms (including tags and categories).
 	* Renamed option labels:
 		* "Apply WordPress Content Filters" to "Use WordPress Content Filters".
 		* "Apply WordPress Excerpt Filters" to "Use WordPress Excerpt Filters".
@@ -546,7 +546,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.19.0-dev.3 =
 
-(2019/01/12) Improved cell spacing in the SSO &gt; Add-ons and Licenses settings pages.
+(2019/01/12) Updated the default term description strings. Improved cell spacing in the Add-ons and Licenses settings pages. Renamed and added new archive title / description filters.
 
 = 4.18.4 =
 
