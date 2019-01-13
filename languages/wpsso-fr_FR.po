@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.19.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-01-12 11:21-0600\n"
-"PO-Revision-Date: 2019-01-12 11:23-0600\n"
+"POT-Creation-Date: 2019-01-12 18:29-0600\n"
+"PO-Revision-Date: 2019-01-12 18:29-0600\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4869,38 +4869,47 @@ msgctxt "default title"
 msgid "No Title"
 msgstr "Aucun titre"
 
-#: lib/page.php:625 lib/page.php:627 lib/page.php:692 lib/page.php:704
-#: lib/page.php:717
+#: lib/page.php:625 lib/page.php:627 lib/page.php:720
 msgctxt "default description"
-msgid "%s archive."
-msgstr "Archive %s."
+msgid "Archive for %s."
+msgstr "Archive pour %s."
 
-#: lib/page.php:733
+#: lib/page.php:692
+msgctxt "default description"
+msgid "Tag archive for %s."
+msgstr "Archive de tags pour %s."
+
+#: lib/page.php:707
+msgctxt "default description"
+msgid "Category archive for %s."
+msgstr "Archive de categorie pour %s."
+
+#: lib/page.php:736
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr "Écrits par %s."
 
-#: lib/page.php:740
+#: lib/page.php:743
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr "Archive journalière pour %s."
 
-#: lib/page.php:745
+#: lib/page.php:748
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr "Archive mensuelle pour %s."
 
-#: lib/page.php:750
+#: lib/page.php:753
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr "Archive annuelle pour %s."
 
-#: lib/page.php:755
+#: lib/page.php:758
 msgctxt "default description"
 msgid "Archive page."
 msgstr "Page d'archive."
 
-#: lib/page.php:794
+#: lib/page.php:797
 msgctxt "default description"
 msgid "No Description."
 msgstr "Aucune description."

@@ -622,9 +622,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							}
 
 							if ( ! empty( $post_type_obj->labels->menu_name ) ) {
-								$desc_text = sprintf( _x( '%s archive.', 'default description', 'wpsso' ), $post_type_obj->labels->menu_name );
+								$desc_text = sprintf( _x( 'Archive for %s.', 'default description', 'wpsso' ), $post_type_obj->labels->menu_name );
 							} elseif ( ! empty( $post_type_obj->name ) ) {
-								$desc_text = sprintf( _x( '%s archive.', 'default description', 'wpsso' ), $post_type_obj->name );
+								$desc_text = sprintf( _x( 'Archive for %s.', 'default description', 'wpsso' ), $post_type_obj->name );
 							}
 						}
 
@@ -689,7 +689,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						if ( ! $desc_text = tag_description( $mod[ 'id' ] ) ) {
 							if ( ! empty( $term_obj->name ) ) {
-								$desc_text = sprintf( _x( '%s archive.', 'default description', 'wpsso' ), $term_obj->name );
+								$desc_text = sprintf( _x( 'Tag archive for %s.', 'default description', 'wpsso' ), $term_obj->name );
 							}
 						}
 
@@ -700,8 +700,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					 */
 					} elseif ( SucomUtil::is_category_page( $mod[ 'id' ] ) ) {
 
+						/**
+						 * Includes parent names in the category title if the $sep value is not empty.
+						 */
 						if ( ! $desc_text = category_description( $mod[ 'id' ] ) ) {
-							$desc_text = sprintf( _x( '%s archive.', 'default description', 'wpsso' ), get_cat_name( $mod[ 'id' ] ) );
+							$desc_text = sprintf( _x( 'Category archive for %s.', 'default description', 'wpsso' ), get_cat_name( $mod[ 'id' ] ) );
 						}
 
 						$desc_text = apply_filters( $this->p->lca . '_category_archive_description', $desc_text, $mod, $term_obj );
@@ -714,7 +717,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						if ( ! empty( $term_obj->description ) ) {
 							$desc_text = $term_obj->description;
 						} elseif ( ! empty( $term_obj->name ) ) {
-							$desc_text = sprintf( _x( '%s archive.', 'default description', 'wpsso' ), $term_obj->name );
+							$desc_text = sprintf( _x( 'Archive for %s.', 'default description', 'wpsso' ), $term_obj->name );
 						}
 					}
 
