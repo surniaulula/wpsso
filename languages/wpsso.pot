@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.19.0-dev.3\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.19.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1125,12 +1125,12 @@ msgid "Reference: %s"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/com/util.php:1777 lib/gettext-com.php:31
+#: lib/com/util.php:1720 lib/gettext-com.php:31
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/com/util.php:1788 lib/gettext-com.php:33
+#: lib/com/util.php:1731 lib/gettext-com.php:33
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -5620,57 +5620,57 @@ msgstr ""
 msgid "Please correct the banner image at %s."
 msgstr ""
 
-#: lib/page.php:348 lib/page.php:350
+#: lib/page.php:347 lib/page.php:349
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:422
+#: lib/page.php:421
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/page.php:625 lib/page.php:627 lib/page.php:720
+#: lib/page.php:624 lib/page.php:626 lib/page.php:719
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:692
+#: lib/page.php:691
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:707
+#: lib/page.php:706
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:736
+#: lib/page.php:735
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:743
+#: lib/page.php:742
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:748
+#: lib/page.php:747
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:753
+#: lib/page.php:752
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:758
+#: lib/page.php:757
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:797
+#: lib/page.php:796
 msgctxt "default description"
 msgid "No Description."
 msgstr ""

@@ -138,19 +138,13 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			global $pagenow;
 
-			SucomUtil::protect_filter_value( 'default_option_home' );
-			SucomUtil::protect_filter_value( 'pre_option_home' );
-			SucomUtil::protect_filter_value( 'option_home' );
-
 			if ( empty( $blog_id ) || ! is_multisite() ) {
 
-				$url = get_option( 'home' );
-
+				$url = SucomUtil::raw_do_option( 'get', 'home' );
 			} else {
-
 				switch_to_blog( $blog_id );
 
-				$url = get_option( 'home' );
+				$url = SucomUtil::raw_do_option( 'get', 'home' );
 
 				restore_current_blog();
 			}

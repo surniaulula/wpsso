@@ -287,7 +287,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'protecting filter value for wp_title' );
 				}
 
-				SucomUtil::protect_filter_value( 'wp_title' );
+				SucomUtil::protect_filter_value( 'wp_title', $auto_unprotect = true );
 			}
 
 			/**
@@ -295,8 +295,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
-				$title_text = is_object( $mod[ 'obj' ] ) ?
-					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$title_text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $title_text ) ) {
@@ -425,8 +424,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			if ( ! $filter_title ) {
+
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'modified / ignored wp_title value: ' . SucomUtil::get_modified_filter_value( 'wp_title' ) );
+					$this->p->debug->log( 'ignored modified wp_title value: ' . SucomUtil::get_modified_filter_value( 'wp_title' ) );
 				}
 			}
 
@@ -562,8 +562,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
-				$desc_text = is_object( $mod[ 'obj' ] ) ?
-					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$desc_text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $desc_text ) ) {
@@ -1147,8 +1146,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
-				$text = is_object( $mod[ 'obj' ] ) ?
-					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $text ) ) {
@@ -1220,8 +1218,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
-				$keywords = is_object( $mod[ 'obj' ] ) ?
-					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$keywords = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 					if ( empty( $keywords ) ) {
