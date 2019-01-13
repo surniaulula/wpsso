@@ -453,6 +453,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_tag_archive_description'
 		* 'wpsso_term_archive_description'
 		* 'wpsso_yearly_archive_description'
+	* Updated the SucomUtil::protect_filter_value() method arguments.
+	* Added a new SucomUtil::unprotect_filter_value() method.
+	* Added a new SucomUtil::raw_do_option() method.
 
 **Version 4.18.4 (2019/01/09)**
 
