@@ -45,9 +45,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 			}
 
-			$defs =& $this->p->cf['opt']['defaults'];	// Shortcut variable.
+			$defs =& $this->p->cf[ 'opt' ][ 'defaults' ];	// Shortcut variable.
 
-			if ( $force_filter || ! self::$allow_cache || empty( $defs['options_filtered'] ) ) {
+			if ( $force_filter || ! self::$allow_cache || empty( $defs[ 'options_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_defaults filters' );	// start timer
@@ -89,21 +89,21 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Define the default Facebook locale and current locale values.
 				 */
-				$defs['fb_locale'] = $this->p->og->get_fb_locale( array(), 'default' );
+				$defs[ 'fb_locale' ] = $this->p->og->get_fb_locale( array(), 'default' );
 
 				if ( ( $locale_key = SucomUtil::get_key_locale( 'fb_locale' ) ) !== 'fb_locale' ) {
 					$defs[ $locale_key ] = $this->p->og->get_fb_locale( array(), 'current' );
 				}
 
-				$defs['og_author_field']  = $this->p->options['plugin_cm_fb_name'];	// Reset to possible custom value.
+				$defs[ 'og_author_field' ]  = $this->p->options[ 'plugin_cm_fb_name' ];	// Reset to possible custom value.
 
-				$defs['seo_author_field'] = $this->p->options['plugin_cm_gp_name'];	// Reset to possible custom value.
+				$defs[ 'seo_author_field' ] = $this->p->options[ 'plugin_cm_gp_name' ];	// Reset to possible custom value.
 
-				$defs['plugin_wpseo_social_meta'] = $this->p->avail['seo']['wpseo'] || get_option( 'wpseo' ) ? 1 : 0;
+				$defs[ 'plugin_wpseo_social_meta' ] = $this->p->avail[ 'seo' ][ 'wpseo' ] || get_option( 'wpseo' ) ? 1 : 0;
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-					if ( ! empty( $info['update_auth'] ) && $info['update_auth']!== 'none' ) {	// Just in case.
-						$defs['plugin_' . $ext . '_' . $info['update_auth']] = '';
+					if ( ! empty( $info[ 'update_auth' ] ) && $info[ 'update_auth' ]!== 'none' ) {	// Just in case.
+						$defs[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
 					}
 				}
 
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->p->debug->log( 'setting options_filtered to true' );
 					}
 
-					$defs['options_filtered'] = true;	// Set before calling filter to prevent recursion.
+					$defs[ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
@@ -166,18 +166,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 			}
 
-			$defs =& $this->p->cf['opt']['site_defaults'];	// Shortcut variable.
+			$defs =& $this->p->cf[ 'opt' ][ 'site_defaults' ];	// Shortcut variable.
 
-			if ( $force_filter || ! self::$allow_cache || empty( $defs['options_filtered'] ) ) {
+			if ( $force_filter || ! self::$allow_cache || empty( $defs[ 'options_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->mark( 'get_site_defaults filters' );	// start timer
 				}
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-					if ( ! empty( $info['update_auth'] ) && $info['update_auth']!== 'none' ) {	// Just in case.
-						$defs['plugin_' . $ext . '_' . $info['update_auth']] = '';
-						$defs['plugin_' . $ext . '_' . $info['update_auth'] . ':use'] = 'default';
+					if ( ! empty( $info[ 'update_auth' ] ) && $info[ 'update_auth' ]!== 'none' ) {	// Just in case.
+						$defs[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ]] = '';
+						$defs[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] . ':use' ] = 'default';
 					}
 				}
 
@@ -189,7 +189,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'setting options_filtered to true' );
 					}
-					$defs['options_filtered'] = true;
+					$defs[ 'options_filtered' ] = true;
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
 				}
@@ -304,7 +304,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$has_diff_options = true;	// Save the options.
 						}
 
-					} elseif ( ! $has_new_options && $has_diff_version && empty( $opts['plugin_' . $this->p->lca . '_tid'] ) ) {
+					} elseif ( ! $has_new_options && $has_diff_version && empty( $opts[ 'plugin_' . $this->p->lca . '_tid' ] ) ) {
 
 						if ( null === $def_opts ) {	// only get default options once
 							$def_opts = $this->get_defaults();
@@ -345,7 +345,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					/**
 					 * If an SEO plugin is detected, adjust some related SEO options.
 					 */
-					if ( ! empty( $this->p->avail['seo'][ 'any' ] ) ) {
+					if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'seo plugin found - checking meta tag options' );
@@ -550,17 +550,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$img_width  = $opts[ $md_pre . '_img_width' ];
 					$img_height = $opts[ $md_pre . '_img_height' ];
 					$img_ratio  = $img_width >= $img_height ? $img_width / $img_height : $img_height / $img_width;
-					$max_ratio  = isset( $this->p->cf['head']['limit_max'][$md_pre . '_img_ratio'] ) ?
-						$this->p->cf['head']['limit_max'][$md_pre . '_img_ratio'] :
-						$this->p->cf['head']['limit_max']['og_img_ratio'];
+					$max_ratio  = isset( $this->p->cf[ 'head' ][ 'limit_max' ][ $md_pre . '_img_ratio' ] ) ?
+						$this->p->cf[ 'head' ][ 'limit_max' ][ $md_pre . '_img_ratio' ] :
+						$this->p->cf[ 'head' ][ 'limit_max' ][ 'og_img_ratio' ];
 
 					if ( $img_ratio >= $max_ratio ) {
 
 						$this->p->notice->err( sprintf( __( 'The values for \'%1$s\' and  \'%2$s\' have an aspect ratio that is equal to / or greater than %3$s:1 &mdash; resetting these options to their default values.', 'wpsso' ), $md_pre . '_img_width', $md_pre . '_img_height', $max_ratio ) );
 
-						$opts[$md_pre . '_img_width']  = $def_opts[$md_pre . '_img_width'];
-						$opts[$md_pre . '_img_height'] = $def_opts[$md_pre . '_img_height'];
-						$opts[$md_pre . '_img_crop']   = $def_opts[$md_pre . '_img_crop'];
+						$opts[ $md_pre . '_img_width' ]  = $def_opts[ $md_pre . '_img_width' ];
+						$opts[ $md_pre . '_img_height' ] = $def_opts[ $md_pre . '_img_height' ];
+						$opts[ $md_pre . '_img_crop' ]   = $def_opts[ $md_pre . '_img_crop' ];
 					}
 				}
 			}
@@ -572,56 +572,67 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			foreach ( array( 'og_def' ) as $md_pre ) {
 
-				if ( empty( $opts[$md_pre . '_img_id'] ) ) {
+				if ( empty( $opts[ $md_pre . '_img_id' ] ) ) {
 
-					if ( isset( $def_opts[$md_pre . '_img_id_pre'] ) ) {	// Just in case.
-						$opts[$md_pre . '_img_id_pre'] = $def_opts[$md_pre . '_img_id_pre'];
+					if ( isset( $def_opts[ $md_pre . '_img_id_pre' ] ) ) {	// Just in case.
+						$opts[ $md_pre . '_img_id_pre' ] = $def_opts[ $md_pre . '_img_id_pre' ];
 					}
 
-				} elseif ( isset( $opts[$md_pre . '_img_url'] ) ) {
+				} elseif ( isset( $opts[ $md_pre . '_img_url' ] ) ) {
 
-					$opts[$md_pre . '_img_url'] = '';
+					$opts[ $md_pre . '_img_url' ] = '';
 				}
 			}
 
 			/**
 			 * og_desc_max_len must be at least 160 chars (defined in config).
 			 */
-			if ( isset( $opts['og_desc_max_len'] ) && $opts['og_desc_max_len'] < $this->p->cf['head']['limit_min']['og_desc_len'] )  {
-				$opts['og_desc_max_len'] = $this->p->cf['head']['limit_min']['og_desc_len'];
+			if ( isset( $opts[ 'og_desc_max_len' ] ) && $opts[ 'og_desc_max_len' ] < $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ] )  {
+				$opts[ 'og_desc_max_len' ] = $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ];
 			}
 
 			/**
 			 * Remove the SEO description if a known SEO plugin is active.
 			 */
-			if ( isset( $opts['seo_desc'] ) && ! empty( $this->p->avail['seo'][ 'any' ] ) ) {
-				unset( $opts['seo_desc'] );
+			if ( isset( $opts[ 'seo_desc' ] ) && ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+				unset( $opts[ 'seo_desc' ] );
 			}
 
 			if ( false === $mod ) {
 
+				$check_required = false;
+
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-					if ( empty( $info['update_auth'] ) ) {
+					if ( empty( $info[ 'update_auth' ] ) ) {
 						continue;
 					}
 
-					$opt_name = 'plugin_' . $ext . '_' . $info['update_auth'];
+					$opt_name = 'plugin_' . $ext . '_' . $info[ 'update_auth' ];
 
-					if ( isset( $opts[$opt_name] ) && isset( $this->p->options[$opt_name] ) &&
-						$opts[$opt_name] !== $this->p->options[$opt_name] ) {
+					if ( isset( $opts[ $opt_name ] ) ) {
+						
+						if ( ! isset( $this->p->options[ $opt_name ] ) || $opts[ $opt_name ] !== $this->p->options[ $opt_name ] ) {
 
-						$this->p->options[$opt_name] = $opts[$opt_name];
+							$this->p->options[ $opt_name ] = $opts[ $opt_name ];
 
-						foreach ( array( 'err', 'inf', 'time' ) as $key ) {
-							delete_option( $ext . '_u' . $key );
-							delete_option( $ext . '_uapi2' . $key );
+							$check_required = true;
 						}
 					}
 				}
 
-				if ( ! empty( $opts['fb_app_id'] ) && ( ! is_numeric( $opts['fb_app_id'] ) || strlen( $opts['fb_app_id'] ) > 32 ) ) {
-					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts['fb_app_id'] ) );
+				if ( $check_required ) {
+
+					if ( method_exists( 'SucomUpdate', 'check_all_for_updates' ) ) {
+
+						$wpssoum =& WpssoUm::get_instance();
+
+						$wpssoum->update->check_all_for_updates( $quiet = true, $read_cache = false );
+					}
+				}
+
+				if ( ! empty( $opts[ 'fb_app_id' ] ) && ( ! is_numeric( $opts[ 'fb_app_id' ] ) || strlen( $opts[ 'fb_app_id' ] ) > 32 ) ) {
+					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts[ 'fb_app_id' ] ) );
 				}
 
 				/**
@@ -801,7 +812,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					} else {
 						if ( ! is_numeric( $opt_val ) ) {
 
-							$this->p->notice->err( sprintf( $error_messages['blank_num'], $opt_key ) );
+							$this->p->notice->err( sprintf( $error_messages[ 'blank_num' ], $opt_key ) );
 
 							$opt_val = $def_val;
 
@@ -821,7 +832,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( $opt_val === '' && $def_val !== '' ) {
 
-						$this->p->notice->err( sprintf( $error_messages['not_blank'], $opt_key ) );
+						$this->p->notice->err( sprintf( $error_messages[ 'not_blank' ], $opt_key ) );
 
 						$opt_val = $def_val;
 					}
@@ -848,7 +859,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 							if ( filter_var( $part, FILTER_VALIDATE_URL ) === false ) {
 
-								$this->p->notice->err( sprintf( $error_messages['csv_urls'], $opt_key ) );
+								$this->p->notice->err( sprintf( $error_messages[ 'csv_urls' ], $opt_key ) );
 
 								$opt_val = $def_val;
 
@@ -873,7 +884,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$ret_fnum = true;
 
 					if ( ! is_numeric( $opt_val ) ) {
-						$this->p->notice->err( sprintf( $error_messages['numeric'], $opt_key ) );
+						$this->p->notice->err( sprintf( $error_messages[ 'numeric' ], $opt_key ) );
 						$opt_val = $def_val;
 					}
 
@@ -890,7 +901,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						if ( ! preg_match( '/<.*>/', $opt_val ) ) {
 
-							$this->p->notice->err( sprintf( $error_messages['html'], $opt_key ) );
+							$this->p->notice->err( sprintf( $error_messages[ 'html' ], $opt_key ) );
 
 							$opt_val = $def_val;
 						}
@@ -907,7 +918,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						if ( ! preg_match( '/^[0-9]+$/', $opt_val ) ) {
 
-							$this->p->notice->err( sprintf( $error_messages['img_id'], $opt_key ) );
+							$this->p->notice->err( sprintf( $error_messages[ 'img_id' ], $opt_key ) );
 
 							$opt_val = $def_val;
 						}
@@ -928,7 +939,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'numeric':
 
 					if ( ! is_numeric( $opt_val ) ) {
-						$this->p->notice->err( sprintf( $error_messages['numeric'], $opt_key ) );
+						$this->p->notice->err( sprintf( $error_messages[ 'numeric' ], $opt_key ) );
 						$opt_val = $def_val;
 					}
 
@@ -948,9 +959,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'pos_num':
 
 					if ( $option_type === 'img_width' ) {
-						$min_int = $this->p->cf['head']['limit_min']['og_img_width'];
+						$min_int = $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_width' ];
 					} elseif ( $option_type === 'img_height' ) {
-						$min_int = $this->p->cf['head']['limit_min']['og_img_height'];
+						$min_int = $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_height' ];
 					} else {
 						$min_int = 1;
 					}
@@ -958,7 +969,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					if ( ! empty( $mod[ 'name' ] ) && $opt_val === '' ) {	// custom meta options can be empty
 						$ret_int = false;
 					} elseif ( ! is_numeric( $opt_val ) || $opt_val < $min_int ) {
-						$this->p->notice->err( sprintf( $error_messages['pos_num'], $opt_key, $min_int ) );
+						$this->p->notice->err( sprintf( $error_messages[ 'pos_num' ], $opt_key, $min_int ) );
 						$opt_val = $def_val;
 					}
 
@@ -979,7 +990,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 
 					if ( $opt_val !== '' && $fmt && ! preg_match( $fmt, $opt_val ) ) {
-						$this->p->notice->err( sprintf( $error_messages[$option_type], $opt_key ) );
+						$this->p->notice->err( sprintf( $error_messages[ $option_type ], $opt_key ) );
 						$opt_val = $def_val;
 					}
 
@@ -1098,11 +1109,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 				if ( isset( $info[ 'version' ] ) ) {
-					$opts['plugin_' . $ext . '_version'] = $info[ 'version' ];
+					$opts[ 'plugin_' . $ext . '_version' ] = $info[ 'version' ];
 				}
 
-				if ( isset( $info['opt_version'] ) ) {
-					$opts['plugin_' . $ext . '_opt_version'] = $info['opt_version'];
+				if ( isset( $info[ 'opt_version' ] ) ) {
+					$opts[ 'plugin_' . $ext . '_opt_version' ] = $info[ 'opt_version' ];
 				}
 			}
 
@@ -1191,7 +1202,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( ! empty( $og_single_image_url ) ) {
 
 				$image_href    = '<a href="' . $og_single_image_url . '">' . $og_single_image_url . '</a>';
-				$image_dims    = $og_single_image['og:image:width'] . 'x' . $og_single_image['og:image:height'] . 'px';
+				$image_dims    = $og_single_image[ 'og:image:width' ] . 'x' . $og_single_image[ 'og:image:height' ] . 'px';
 				$required_dims = '600x60px';
 
 				if ( $image_dims !== $required_dims ) {
@@ -1492,7 +1503,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'schema_sameas_url':
 				case 'tc_lrg_img_url':
 				case 'tc_sum_img_url':
-				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf['form']['social_accounts'][$base_key] ) ? true : false ):
+				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf[ 'form' ][ 'social_accounts' ][ $base_key ] ) ? true : false ):
 
 					return 'url';
 
