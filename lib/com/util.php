@@ -2565,6 +2565,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		public static function get_file_path_locale( $file_path ) {
+
+			if ( preg_match( '/^(.*)(\.[a-z0-9]+)$/', $file_path, $matches ) ) {
+				$file_path = $matches[1] . '-' . self::get_locale( 'current' ) . $matches[2];
+			}
+
+			return $file_path;
+		}
+
 		public static function transl_key_values( $pattern, array &$opts, $text_domain = false ) {
 
 			foreach ( self::preg_grep_keys( $pattern, $opts ) as $key => $val ) {
@@ -2583,7 +2592,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Return a localize options value.
+		 * Return a localized option value.
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
