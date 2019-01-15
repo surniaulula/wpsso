@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.20.0-dev.1 (2019/01/14)**
+**Version 4.20.0-dev.2 (2019/01/14)**
 
 * *New Features*
 	* None.
@@ -439,7 +439,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* None.
 * *Developer Notes*
-	* None.
+	* Renamed the SucomUtil is_doing_block_editor() method to doing_block_editor().
+	* Removed the DOING_BLOCK_EDITOR constant.
 
 **Version 4.19.0 (2019/01/13)**
 
@@ -558,7 +559,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.20.0-dev.1 =
+= 4.20.0-dev.2 =
 
 (2019/01/14) Optimized the checking of updates when an Authentication ID is changed (Pro version).
 
