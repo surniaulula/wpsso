@@ -611,11 +611,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			/**
-			 * Also defines the DOING_BLOCK_EDITOR constant.
-			 */
-			$doing_block_editor = SucomUtil::is_doing_block_editor( $post_obj->post_type );
-
 			$mod = $this->get_mod( $post_id );
 
 			if ( $this->p->debug->enabled ) {
@@ -646,7 +641,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'head meta skipped: post is being trashed' );
 				}
 
-			} elseif ( $doing_block_editor && ! empty( $_REQUEST['meta_box'] ) ) {
+			} elseif ( SucomUtil::doing_block_editor() && ! empty( $_REQUEST['meta_box'] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head meta skipped: doing block editor for meta box' );

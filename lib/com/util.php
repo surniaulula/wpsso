@@ -1113,10 +1113,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		/**
-		 * Defines the DOING_BLOCK_EDITOR constant.
-		 */
-		public static function is_doing_block_editor( $post_type = '' ) {
+		public static function doing_block_editor() {
 
 			$is_doing      = false;
 			$post_id       = false;
@@ -1184,10 +1181,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$is_doing = true;
 					}
 				}
-			}
-
-			if ( ! defined( 'DOING_BLOCK_EDITOR' ) ) {
-				define( 'DOING_BLOCK_EDITOR', $is_doing );
 			}
 
 			return $is_doing;

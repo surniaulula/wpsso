@@ -248,13 +248,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 		public function add_update_tb_notices_script() {
 
-			$doing_block_editor = defined( 'DOING_BLOCK_EDITOR' ) ? DOING_BLOCK_EDITOR : false;
-
 			/**
 			 * Exit early if this is a block editor page.
 			 * The notices will be retrieved using an ajax call on page load and post save.
 			 */
-			if ( $doing_block_editor ) {
+			if ( SucomUtil::doing_block_editor() ) {
 				return;
 			}
 

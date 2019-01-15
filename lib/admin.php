@@ -88,7 +88,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * Hook admin_head to allow for setting changes, plugin activation / loading, etc.
 				 */
-				if ( ! SucomUtil::is_doing_block_editor() ) {	// Also defines the DOING_BLOCK_EDITOR constant.
+				if ( ! SucomUtil::doing_block_editor() ) {
+
+					if ( $this->p->debug->enabled ) {
+						$this->p->debug->log( 'not doing the block editor - checking for conflicts and required' );
+					}
 
 					add_action( 'admin_head', array( $this, 'conflict_warnings' ), -1000 );
 					add_action( 'admin_head', array( $this, 'required_notices' ), -500 );

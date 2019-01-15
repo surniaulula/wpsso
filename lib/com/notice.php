@@ -480,8 +480,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$notice_types = $this->all_types;
 
-			$doing_block_editor = defined( 'DOING_BLOCK_EDITOR' ) ? DOING_BLOCK_EDITOR : false;
-
 			/**
 			 * If toolbar notices are being used, exclude these from being shown.
 			 * The default toolbar notices array is err, warn, and inf.
@@ -503,7 +501,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Exit early if this is a block editor page.
 			 * The notices will be retrieved using an ajax call on page load and post save.
 			 */
-			if ( $doing_block_editor ) {
+			if ( SucomUtil::doing_block_editor() ) {
 				return;
 			}
 
