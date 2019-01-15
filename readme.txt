@@ -430,14 +430,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.20.0-dev.2 (2019/01/14)**
+**Version 4.20.0 (2019/01/15)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* Optimized the checking of updates when an Authentication ID is changed (Pro version).
 * *Bugfixes*
-	* None.
+	* Fixed an incorrect SucomNotice method call when upgrading post/term/user meta.
 * *Developer Notes*
 	* Renamed the SucomUtil is_doing_block_editor() method to doing_block_editor().
 	* Removed the DOING_BLOCK_EDITOR constant.
@@ -559,11 +559,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.20.0-dev.2 =
+= 4.20.0 =
 
-(2019/01/14) Optimized the checking of updates when an Authentication ID is changed (Pro version).
-
-= 4.19.0 =
-
-(2019/01/13) Updated the default term description strings. Improved cell spacing in the Add-ons and Licenses settings pages. Renamed and added new archive title / description filters.
+(2019/01/15) Optimized the checking of updates when an Authentication ID is changed (Pro version). Fixed an incorrect SucomNotice method call when upgrading post/term/user meta.
 
