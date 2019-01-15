@@ -1426,11 +1426,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Note that hashtags cannot begin with a number - this methos truncates tags that begin with a number.
+		 * Note that hashtags cannot begin with a number - this method truncates tags that begin with a number.
 		 */
 		public static function sanitize_hashtags( array $tags = array() ) {
 
-			return preg_replace( array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ), array( '', '', '#$0' ), $tags );
+			return preg_replace(
+				array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ),
+				array( '', '', '#$0' ),
+				$tags
+			);
 		}
 
 		public static function sanitize_key( $key ) {
