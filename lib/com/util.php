@@ -1486,7 +1486,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ltrim( strtolower( preg_replace('/[A-Z]/', '_$0', $str ) ), '_' );
 		}
 
-		public static function active_plugins( $plugin_base = false, $use_cache = true ) { // Example: $plugin_base = wpsso/wpsso.php.
+		/**
+		 * Example: $plugin_base = wpsso/wpsso.php.
+		 */
+		public static function active_plugins( $plugin_base = false, $use_cache = true ) {
 
 			static $local_cache = null;
 
