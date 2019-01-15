@@ -1115,6 +1115,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function doing_block_editor() {
 
+			static $is_doing = null;
+
+			/**
+			 * Optimize - once true, stay true.
+			 */
+			if ( $is_doing ) {
+				return true;
+			}
+
 			$is_doing      = false;
 			$post_id       = false;
 			$can_edit_id   = false;
