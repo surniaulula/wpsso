@@ -9,7 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
+if ( ! class_exists( 'SucomUtil' ) ) {
+	require_once dirname( __FILE__ ) . '/com/util.php';
+}
+
+if ( ! class_exists( 'WpssoUtil' ) ) {
 
 	class WpssoUtil extends SucomUtil {
 
@@ -157,8 +161,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				if ( is_int( $val ) ) {
 
 					$arg_nums    = $val;
-					$hook_name   = SucomUtil::sanitize_hookname( $ext . '_' . $name );
-					$method_name = SucomUtil::sanitize_hookname( $type . '_' . $name );
+					$hook_name   = self::sanitize_hookname( $ext . '_' . $name );
+					$method_name = self::sanitize_hookname( $type . '_' . $name );
 
 					call_user_func( 'add_' . $type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
 
@@ -172,8 +176,8 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				} elseif ( is_string( $val ) ) {
 
 					$arg_nums      = 1;
-					$hook_name     = SucomUtil::sanitize_hookname( $ext . '_' . $name );
-					$function_name = SucomUtil::sanitize_hookname( $val );
+					$hook_name     = self::sanitize_hookname( $ext . '_' . $name );
+					$function_name = self::sanitize_hookname( $val );
 
 					call_user_func( 'add_' . $type, $hook_name, $function_name, $prio, $arg_nums );
 
@@ -190,11 +194,11 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				 */
 				} elseif ( is_array( $val ) ) {
 
-					$method_name = SucomUtil::sanitize_hookname( $type . '_' . $name );
+					$method_name = self::sanitize_hookname( $type . '_' . $name );
 
 					foreach ( $val as $hook_name => $arg_nums ) {
 
-						$hook_name = SucomUtil::sanitize_hookname( $ext . '_' . $hook_name );
+						$hook_name = self::sanitize_hookname( $ext . '_' . $hook_name );
 
 						call_user_func( 'add_' . $type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
 
@@ -234,15 +238,15 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$opt_suffix    = $matches[2] . $opt_suffix;
 				}
 
-				$media_url = SucomUtil::get_mt_media_url( $opts, $opt_image_pre . $opt_suffix );
+				$media_url = self::get_mt_media_url( $opts, $opt_image_pre . $opt_suffix );
 
 				if ( ! empty( $media_url ) ) {
 
 					$image_info = $this->get_image_url_info( $media_url );
 
 					list(
-						$opts[$opt_image_pre . ':width' . $opt_suffix],		// Example: place_img_url:width_1.
-						$opts[$opt_image_pre . ':height' . $opt_suffix],	// Example: place_img_url:height_1.
+						$opts[ $opt_image_pre . ':width' . $opt_suffix ],	// Example: place_img_url:width_1.
+						$opts[ $opt_image_pre . ':height' . $opt_suffix ],	// Example: place_img_url:height_1.
 						$image_type,
 						$image_attr
 					) = $image_info;
@@ -269,7 +273,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				return $local_cache[ $image_url ];
 			}
 
-			$is_disabled    = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
+			$is_disabled    = self::get_const( 'WPSSO_PHP_GETIMGSIZE_DISABLE' );
 			$def_image_info = array( WPSSO_UNDEF, WPSSO_UNDEF, '', '' );
 			$image_info     = false;
 
@@ -336,7 +340,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->log( 'transient cache for image info is disabled' );
 			}
 
-			$mtime_max   = SucomUtil::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
+			$mtime_max   = self::get_const( 'WPSSO_PHP_GETIMGSIZE_MAX_TIME', 1.50 );
 			$mtime_start = microtime( true );
 			$image_info  = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
 			$mtime_total = microtime( true ) - $mtime_start;
@@ -370,7 +374,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				// translators: %s is the short plugin name.
 				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
 
-				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+				self::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
 
 			if ( is_array( $image_info ) ) {
@@ -483,7 +487,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$md_opts = array();
 
 			if ( true === $filter_sizes ) {
-				$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes', $image_sizes, $mod, SucomUtil::get_crawler_name() );
+				$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes', $image_sizes, $mod, self::get_crawler_name() );
 			}
 
 			if ( empty( $mod[ 'id' ] ) ) {
@@ -592,7 +596,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 				$this->p->debug->mark( 'define image sizes' );	// End timer.
 
-				$this->p->debug->log_arr( 'get_all_image_sizes', SucomUtil::get_image_sizes() );
+				$this->p->debug->log_arr( 'get_all_image_sizes', self::get_image_sizes() );
 			}
 		}
 
@@ -903,7 +907,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$key = SucomUtil::sanitize_key( $name );	// Just in case.
+			$key = self::sanitize_key( $name );	// Just in case.
 
 			if ( ! isset( self::$form_cache[$key] ) ) {
 				self::$form_cache[$key] = null;		// Create key for default filter.
@@ -919,7 +923,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					case 'half_hours':
 
-						self::$form_cache[$key] = SucomUtil::get_hours_range( 0, DAY_IN_SECONDS, 60 * 30, '' );
+						self::$form_cache[$key] = self::get_hours_range( 0, DAY_IN_SECONDS, 60 * 30, '' );
 
 						break;
 
@@ -2087,9 +2091,9 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				$short_url = $atts['short_url'];
 			}
 
-			$sitename    = SucomUtil::get_site_name( $this->p->options, $mod );
-			$sitealtname = SucomUtil::get_site_name_alt( $this->p->options, $mod );
-			$sitedesc    = SucomUtil::get_site_description( $this->p->options, $mod );
+			$sitename    = self::get_site_name( $this->p->options, $mod );
+			$sitealtname = self::get_site_name_alt( $this->p->options, $mod );
+			$sitedesc    = self::get_site_description( $this->p->options, $mod );
 
 			return array(
 				$request_url,		// %%request_url%%
@@ -2462,7 +2466,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					$url = $this->check_url_string( get_post_type_archive_link( get_query_var( 'post_type' ) ), 'post_type_archive' );
 
-				} elseif ( SucomUtil::is_archive_page() ) {
+				} elseif ( self::is_archive_page() ) {
 
 					if ( is_date() ) {
 
@@ -2527,7 +2531,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			 */
 			if ( ! empty( $this->p->options['plugin_honor_force_ssl'] ) ) {
 
-				if ( SucomUtil::get_const( 'FORCE_SSL' ) && strpos( $url, 'http:' ) === 0 ) {
+				if ( self::get_const( 'FORCE_SSL' ) && strpos( $url, 'http:' ) === 0 ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'force ssl is enabled - replacing http by https' );
@@ -2920,7 +2924,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 					$this->p->debug->log( 'resetting post object from mod id ' . $mod[ 'id' ] );
 				}
 
-				$post = SucomUtil::get_post_object( $mod[ 'id' ] );	// Redefine $post global.
+				$post = self::get_post_object( $mod[ 'id' ] );	// Redefine $post global.
 
 			} elseif ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'post object id matches the post mod id' );
@@ -3028,7 +3032,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 				// translators: %s is the short plugin name.
 				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), $info[ 'short' ] );
 
-				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+				self::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
 
 			/**
@@ -3374,7 +3378,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 
 					if ( is_numeric( $max_version ) && is_array( $keys ) && $opts['plugin_' . $ext . '_opt_version'] <= $max_version ) {
 
-						SucomUtil::rename_keys( $opts, $keys, true );	// Rename $modifiers = true.
+						self::rename_keys( $opts, $keys, true );	// Rename $modifiers = true.
 
 						$opts['plugin_' . $ext . '_opt_version'] = $info['opt_version'];	// Mark as current.
 					}
@@ -3425,7 +3429,7 @@ if ( ! class_exists( 'WpssoUtil' ) && class_exists( 'SucomUtil' ) ) {
 			$alt_prefix = isset( $this->p->options['plugin_img_alt_prefix'] ) ?
 				$this->p->options['plugin_img_alt_prefix'] : 'Image:';
 
-			$text = SucomUtil::strip_shortcodes( $text );					// Remove any remaining shortcodes.
+			$text = self::strip_shortcodes( $text );					// Remove any remaining shortcodes.
 
 			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// Put everything on one line.
 			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text );				// Remove php.

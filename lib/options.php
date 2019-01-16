@@ -385,8 +385,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					 * disable the generator meta tags, requests for plugin support will be denied.
 					 */
 					$opts[ 'add_meta_name_generator' ] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
-
-					$this->check_banner_image_size( $opts );
 				}
 
 				/**
@@ -678,6 +676,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Add correct image sizes for the image URL using getimagesize().
 			 */
 			$this->p->util->add_image_url_size( $opts, $img_url_keys );	// $opts passed by reference.
+
+			$this->check_banner_image_size( $opts );
 		}
 
 		private function check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod ) {

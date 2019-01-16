@@ -9,10 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
-	require_once dirname( __FILE__ ) . '/util.php';
-}
-
 if ( ! class_exists( 'SucomPlugin' ) ) {
 
 	class SucomPlugin {
@@ -40,13 +36,18 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 				return self::$cache_plugins;
 			}
 
+			self::$cache_plugins = array();
+
 			if ( ! function_exists( 'get_plugins' ) ) {	// Load the WordPress library if necessary.
 
 				$plugin_lib = trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin.php';
 
 				if ( file_exists( $plugin_lib ) ) {	// Just in case.
+
 					require_once $plugin_lib;
-				} else {
+
+				} elseif ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {	// Just in case.
+
 					$error_pre = sprintf( '%s error:', __METHOD__ );
 					$error_msg = sprintf( 'The WordPress %s library file is missing and required.', $plugin_lib );
 
@@ -55,9 +56,10 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			}
 
 			if ( function_exists( 'get_plugins' ) ) {
+
 				self::$cache_plugins = get_plugins();
-			} else {
-				self::$cache_plugins = array();
+
+			} elseif ( method_exists( 'SucomUtil', 'safe_error_log' ) ) {	// Just in case.
 
 				$error_pre = sprintf( '%s error:', __METHOD__ );
 				$error_msg = sprintf( 'The WordPress %s function is missing and required.', 'get_plugins()' );
@@ -70,7 +72,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 		public static function clear_plugins_cache() {
 
-			self::$cache_plugins = null;			// Common cache for get_plugins() and clear_plugins().
+			self::$cache_plugins = null;	// Common cache for get_plugins() and clear_plugins().
 		}
 
 		/**
@@ -191,30 +193,6 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			foreach ( self::get_active_plugins( $use_cache = true ) as $plugin_base => $active ) {
 				if ( strpos( $plugin_base, $plugin_slug . '/' ) === 0 ) {	// Plugin slug found.
 					return $local_cache[ $plugin_slug ] = true;		// Stop here.
-				}
-			}
-
-			return $local_cache[ $plugin_slug ] = false;
-		}
-
-		/**
-		 * If you need to clear the WordPress plugins cache, call wp_clean_plugins_cache() beforehand.
-		 *
-		 * Example: $plugin_slug = wpsso
-		 */
-		public static function get_installed_slug_base( $plugin_slug, $use_cache = true ) {
-
-			static $local_cache = array();						// Associative array of true/false values.
-
-			if ( $use_cache && isset( $local_cache[ $plugin_slug ] ) ) {
-				return $local_cache[ $plugin_slug ];
-			} elseif ( empty( $plugin_slug ) ) {					// Just in case.
-				return $local_cache[ $plugin_slug ] = false;
-			}
-
-			foreach ( self::get_plugins() as $plugin_base => $info ) {
-				if ( strpos( $plugin_base, $plugin_slug . '/' ) === 0 ) {	// Plugin slug found.
-					return $local_cache[ $plugin_slug ] = $plugin_base; 	// Stop here.
 				}
 			}
 

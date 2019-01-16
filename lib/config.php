@@ -3162,7 +3162,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/com/nodebug.php';	// Always load fallback class.
 			require_once WPSSO_PLUGINDIR . 'lib/com/nonotice.php';	// Always load fallback class.
 			require_once WPSSO_PLUGINDIR . 'lib/com/plugin.php';
-			require_once WPSSO_PLUGINDIR . 'lib/com/util.php';	// Loads SucomUtilWP.
+			require_once WPSSO_PLUGINDIR . 'lib/com/util.php';
+			require_once WPSSO_PLUGINDIR . 'lib/com/util-wp.php';
 
 			require_once WPSSO_PLUGINDIR . 'lib/check.php';
 			require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends ErrorException.

@@ -372,7 +372,7 @@ msgstr ""
 
 #: lib/admin.php:2356 lib/gettext-pro.php:167 lib/gettext-pro.php:170
 #: lib/gettext-pro.php:173 lib/pro/media/slideshare.php:192
-#: lib/pro/media/vimeo.php:157 lib/pro/media/wistia.php:314 lib/util.php:1777
+#: lib/pro/media/vimeo.php:157 lib/pro/media/wistia.php:314 lib/util.php:1781
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -1125,12 +1125,12 @@ msgid "Reference: %s"
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/com/plugin.php:293 lib/gettext-com.php:39
+#: lib/com/plugin.php:271 lib/gettext-com.php:39
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
 #. translators: please ignore - translation uses a different text domain
-#: lib/com/plugin.php:304 lib/gettext-com.php:41
+#: lib/com/plugin.php:282 lib/gettext-com.php:41
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -2414,7 +2414,7 @@ msgid "Refresh Short URLs on Clear Cache"
 msgstr ""
 
 #: lib/gettext-pro.php:59 lib/gpl/admin/advanced.php:347
-#: lib/pro/admin/advanced.php:345 lib/util.php:1223
+#: lib/pro/admin/advanced.php:345 lib/util.php:1227
 msgctxt "option label"
 msgid "Auto-Refresh Cache After Clearing"
 msgstr ""
@@ -2942,13 +2942,13 @@ msgstr ""
 
 #: lib/gettext-pro.php:165 lib/gettext-pro.php:168 lib/gettext-pro.php:171
 #: lib/pro/media/slideshare.php:187 lib/pro/media/vimeo.php:152
-#: lib/pro/media/wistia.php:309 lib/util.php:1772
+#: lib/pro/media/wistia.php:309 lib/util.php:1776
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: lib/gettext-pro.php:166 lib/gettext-pro.php:169 lib/gettext-pro.php:172
 #: lib/pro/media/slideshare.php:189 lib/pro/media/vimeo.php:154
-#: lib/pro/media/wistia.php:311 lib/util.php:1774
+#: lib/pro/media/wistia.php:311 lib/util.php:1778
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
@@ -3171,7 +3171,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:175 lib/loader.php:201 lib/post.php:278 lib/register.php:300
-#: lib/term.php:255 lib/user.php:222 lib/util.php:371 lib/util.php:3029
+#: lib/term.php:255 lib/user.php:222 lib/util.php:375 lib/util.php:3033
 msgid "%s warning:"
 msgstr ""
 
@@ -3723,7 +3723,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:623 lib/util.php:3313
+#: lib/messages.php:623 lib/util.php:3317
 msgid "No options available."
 msgstr ""
 
@@ -5488,39 +5488,39 @@ msgid ""
 "Non-standard value found for \"%s\" option - resetting to default value."
 msgstr ""
 
-#: lib/options.php:440
+#: lib/options.php:438
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:442
+#: lib/options.php:440
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:444
+#: lib/options.php:442
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:446
+#: lib/options.php:444
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:461
+#: lib/options.php:459
 msgid ""
 "The plugin settings have been returned to their default values &mdash; <a "
 "href=\"%s\">please review and save the new settings</a>."
 msgstr ""
 
-#: lib/options.php:559
+#: lib/options.php:557
 msgid ""
 "The values for '%1$s' and  '%2$s' have an aspect ratio that is equal to / or "
 "greater than %3$s:1 &mdash; resetting these options to their default values."
 msgstr ""
 
-#: lib/options.php:635
+#: lib/options.php:633
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length "
 "&mdash; the value of \"%s\" is not valid."
@@ -5677,8 +5677,8 @@ msgstr ""
 
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
-#: lib/post.php:264 lib/term.php:241 lib/user.php:208 lib/util.php:357
-#: lib/util.php:3001
+#: lib/post.php:264 lib/term.php:241 lib/user.php:208 lib/util.php:361
+#: lib/util.php:3005
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5717,7 +5717,7 @@ msgid ""
 "results."
 msgstr ""
 
-#: lib/post.php:926 lib/util.php:1691
+#: lib/post.php:926 lib/util.php:1695
 msgid "Error retrieving webpage from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -6421,78 +6421,78 @@ msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is an image URL, %3$s is a recommended max.
-#: lib/util.php:360
+#: lib/util.php:364
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1160
+#: lib/util.php:1164
 msgid ""
 "%s cached files, transient cache, column meta, and WordPress object cache "
 "have all been cleared."
 msgstr ""
 
-#: lib/util.php:1165
+#: lib/util.php:1169
 msgid "The cache for %s has also been cleared."
 msgstr ""
 
-#: lib/util.php:1208 lib/util.php:1338
+#: lib/util.php:1212 lib/util.php:1342
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/util.php:1214
+#: lib/util.php:1218
 msgid ""
 "A background task will begin shortly to refresh the post, term, and user "
 "cache objects."
 msgstr ""
 
-#: lib/util.php:1225
+#: lib/util.php:1229
 msgid ""
 "All cache objects will be re-created as they are needed (the %s option is "
 "disabled)."
 msgstr ""
 
-#: lib/util.php:1332
+#: lib/util.php:1336
 msgid ""
 "The meta tag and Schema markup caches for %1$d posts, %2$d terms, and %3$d "
 "users have been refreshed."
 msgstr ""
 
-#: lib/util.php:1522
+#: lib/util.php:1526
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util.php:1549
+#: lib/util.php:1553
 msgid "Failed to remove the cache file %s."
 msgstr ""
 
-#: lib/util.php:1608
+#: lib/util.php:1612
 msgid "Error reading %s article topic list file."
 msgstr ""
 
-#: lib/util.php:1678
+#: lib/util.php:1682
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1704
+#: lib/util.php:1708
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
-#: lib/util.php:1828
+#: lib/util.php:1832
 msgid ""
 "The %1$s PHP class is missing - please contact your hosting provider to "
 "install the missing %1$s PHP class."
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3004
+#: lib/util.php:3008
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3021
+#: lib/util.php:3025
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6501,33 +6501,33 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3021
+#: lib/util.php:3025
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3308
+#: lib/util.php:3312
 msgid "Have you hidden the Pro options?"
 msgstr ""
 
-#: lib/util.php:3343
+#: lib/util.php:3347
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3346
+#: lib/util.php:3350
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3351
+#: lib/util.php:3355
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3354
+#: lib/util.php:3358
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

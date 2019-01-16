@@ -9,10 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'SucomUtilWP' ) ) {
-	require_once dirname( __FILE__ ) . '/util-wp.php';
-}
-
 if ( ! class_exists( 'SucomUtil' ) ) {
 
 	class SucomUtil {
@@ -1447,6 +1443,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		/**
+		 * Allow for 0, but not true, false, null, or 'none'.
+		 */
+		public static function is_opt_id( $id ) {
+
+			if ( true === $id ) {
+				return false;
+			} elseif ( empty( $id ) && ! is_numeric( $id ) ) { // null or false.
+				return false;
+			} elseif ( $id === 'none' ) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+
 		public static function is_crawler_name( $crawler_name ) {
 
 			return $crawler_name === self::get_crawler_name() ? true : false;
@@ -2281,11 +2293,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_locale( $mixed = 'current' ) {
 
-			/**
-			 * We use a class static variable (instead of a method static variable)
-			 * to cache both self::get_locale() and SucomUtil::get_locale() in the
-			 * same variable.
-			 */
 			$key = is_array( $mixed ) ? $mixed[ 'name' ] . '_' . $mixed[ 'id' ] : $mixed;
 
 			if ( isset( self::$cache_locale_names[ $key ] ) ) {
@@ -3126,7 +3133,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return false;
 			}
 
-			$parsed_url = parse_url( SucomUtil::decode_html( urldecode( $url ) ) );
+			$parsed_url = parse_url( self::decode_html( urldecode( $url ) ) );
 
 			if ( empty( $parsed_url ) ) {
 				return false;
@@ -3818,22 +3825,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 		
 		/**
-		 * Allow for 0, but not true, false, null, or 'none'.
-		 */
-		public static function is_opt_id( $id ) {
-
-			if ( true === $id ) {
-				return false;
-			} elseif ( empty( $id ) && ! is_numeric( $id ) ) { // null or false.
-				return false;
-			} elseif ( $id === 'none' ) {
-				return false;
-			} else {
-				return true;
-			}
-		}
-
-		/**
 		 * Get the width, height, and crop value for a all image sizes.
 		 * Returns an associative array with the image size name as the array key value.
 		 */
@@ -3938,77 +3929,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( empty( $ret ) ) {
 				$ret = get_bloginfo( 'url' );	// Aka get_home_url().
 			}
-
-			return $ret;
-		}
-
-		/**
-		 * Since WPSSO Core v4.19.0.
-		 */
-		public static function raw_do_option( $action, $opt_name, $val = null ) {
-
-			global $wp_filter, $wp_actions;
-
-			$saved_wp_filter  = $wp_filter;
-			$saved_wp_actions = $wp_actions;
-
-			foreach ( array(
-				'sanitize_option_' . $opt_name,
-				'default_option_' . $opt_name,
-				'pre_option_' . $opt_name,
-				'option_' . $opt_name,	
-				'pre_update_option_' . $opt_name,
-				'pre_update_option',
-			) as $tag ) {
-				unset( $wp_filter[ $tag ] );
-			}
-
-			$ret = null;
-
-			switch( $action ) {
-
-				case 'get':
-				case 'get_option':
-
-					$ret = get_option( $opt_name, $default = $val );
-
-					break;
-
-				case 'update':
-				case 'update_option':
-
-					foreach ( array(
-						'update_option',
-						'update_option_' . $opt_name,
-						'updated_option',
-					) as $tag ) {
-						unset( $wp_actions[ $tag ] );
-					}
-
-					$ret = update_option( $opt_name, $val );
-
-					break;
-
-				case 'delete':
-				case 'delete_option':
-
-					foreach ( array(
-						'delete_option',
-						'delete_option_' . $opt_name,
-						'deleted_option',
-					) as $tag ) {
-						unset( $wp_actions[ $tag ] );
-					}
-
-					$ret = delete_option( $opt_name );
-
-					break;
-			}
-
-			$wp_filter  = $saved_wp_filter;
-			$wp_actions = $saved_wp_actions;
-
-			unset( $saved_wp_filter, $saved_wp_actions );
 
 			return $ret;
 		}
