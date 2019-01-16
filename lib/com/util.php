@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-$lib_dir = dirname( __FILE__ ) . '/';
-
-require_once $lib_dir . 'util-wp.php';
+if ( ! class_exists( 'SucomUtilWP' ) ) {
+	require_once dirname( __FILE__ ) . '/util-wp.php';
+}
 
 if ( ! class_exists( 'SucomUtil' ) ) {
 
@@ -19,7 +19,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		protected $p;
 
-		protected static $cache_wp_plugins    = null;
 		protected static $cache_crawler_name  = null;		// Saved crawler name from user-agent.
 		protected static $cache_locale_names  = array();	// Saved get_locale() values.
 		protected static $cache_user_exists   = array();	// Saved user_exists() values.
@@ -811,108 +810,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function __construct() {
 		}
 
-		/**
-		 * Sets 'display_errors' to false to prevent PHP errors from being displayed and
-		 * restores previous PHP settings after logging the error.
-		 */
-		public static function safe_error_log( $error_msg ) {
+		public static function get_min_int() {
 
-			$ini_set = array(
-				'display_errors' => 0,
-				'log_errors'     => 1,
-				'error_log'      => WP_CONTENT_DIR . '/debug.log',
-			);
-
-			$ini_saved = array();
-
-			/**
-			 * Save old option values and define new option values.
-			 */
-			foreach ( $ini_set as $name => $value ) {
-
-				/**
-				 * Returns false if option does not exist.
-				 */
-				$ini_saved[ $name ] = ini_get( $name );
-
-				/**
-				 * Only set the option the existing value is different.
-				 */
-				if ( false !== $ini_saved[ $name ] && $ini_saved[ $name ] !== $value ) {
-
-					ini_set( $name, $value );
-
-				/**
-				 * Unset the array element to avoid restoring it.
-				 */
-				} else {
-
-					unset( $ini_saved[ $name ] );
-				}
-			}
-
-			/**
-			 * Use error_log() instead of trigger_error() to avoid HTTP 500.
-			 */
-			error_log( $error_msg );
-
-			/**
-			 * Restore old option values that were changed.
-			 */
-			foreach ( $ini_saved as $name => $value ) {
-				ini_set( $name, $value );
-			}
+			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;    // Since PHP 7.0.0.
 		}
 
-		/**
-		 * The WordPress get_plugins() function is very slow, so call it only once and cache its result.
-		 */
-		public static function get_wp_plugins() {
+		public static function get_max_int() {
 
-			if ( self::$cache_wp_plugins !== null ) {
-				return self::$cache_wp_plugins;
-			}
-
-			if ( ! function_exists( 'get_plugins' ) ) {	// Load the library if necessary.
-
-				$plugin_lib = trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin.php';
-
-				if ( file_exists( $plugin_lib ) ) {	// Just in case.
-					require_once $plugin_lib;
-				} else {
-					$error_pre = sprintf( '%s error:', __METHOD__ );
-					$error_msg = sprintf( 'The WordPress %s library file is missing and required.', $plugin_lib );
-
-					self::safe_error_log( $error_pre . ' ' . $error_msg );
-				}
-			}
-
-			if ( function_exists( 'get_plugins' ) ) {
-				self::$cache_wp_plugins = get_plugins();
-			} else {
-				self::$cache_wp_plugins = array();
-
-				$error_pre = sprintf( '%s error:', __METHOD__ );
-				$error_msg = sprintf( 'The WordPress %s function is missing and required.', 'get_plugins()' );
-
-				self::safe_error_log( $error_pre . ' ' . $error_msg );
-			}
-
-			return self::$cache_wp_plugins;
-		}
-
-		public static function clear_wp_plugins() {
-
-			self::$cache_wp_plugins = null;
-		}
-
-		public static function get_wp_plugin_dir() {
-
-			if ( defined( 'WP_PLUGIN_DIR' ) && is_dir( WP_PLUGIN_DIR ) && is_writable( WP_PLUGIN_DIR ) ) {
-				return WP_PLUGIN_DIR;
-			}
-
-			return false;
+			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;     // Since PHP 5.0.2.
 		}
 
 		private static function get_formatted_timezone( $tz_name, $format ) {
@@ -1486,294 +1391,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function decamelize( $str ) {
 
 			return ltrim( strtolower( preg_replace('/[A-Z]/', '_$0', $str ) ), '_' );
-		}
-
-		/**
-		 * Example: $plugin_base = wpsso/wpsso.php.
-		 */
-		public static function active_plugins( $plugin_base = false, $use_cache = true ) {
-
-			static $local_cache = null;
-
-			if ( ! $use_cache || ! isset( $local_cache ) ) {
-
-				$local_cache    = array();
-				$active_plugins = get_option( 'active_plugins', array() );
-
-				if ( is_multisite() ) {
-
-					$active_network_plugins = array_keys( get_site_option( 'active_sitewide_plugins', array() ) );
-
-					if ( ! empty( $active_network_plugins ) ) {
-						$active_plugins = array_merge( $active_plugins, $active_network_plugins );
-					}
-				}
-
-				foreach ( $active_plugins as $base ) {
-					$local_cache[ $base ] = true;
-				}
-			}
-
-			if ( false !== $plugin_base ) {
-
-				if ( isset( $local_cache[ $plugin_base ] ) ) {
-					return $local_cache[ $plugin_base ];
-				}
-
-				return $local_cache[ $plugin_base ] = false;
-			}
-
-			return $local_cache;
-		}
-
-		/**
-		 * Example: $plugin_slug = wpsso.
-		 */
-		public static function slug_is_active( $plugin_slug ) {
-
-			static $local_cache = array();
-
-			if ( isset( $local_cache[ $plugin_slug ] ) ) {
-				return $local_cache[ $plugin_slug ];
-			} elseif ( empty( $plugin_slug ) ) {	// Just in case.
-				return $local_cache[ $plugin_slug ] = false;
-			}
-
-			/**
-			 * Call with 'SucomUtil' class name to use the same static cache.
-			 */
-			foreach ( SucomUtil::active_plugins() as $plugin_base => $active ) {
-				if ( strpos( $plugin_base, $plugin_slug . '/' ) === 0 ) {
-					return $local_cache[ $plugin_slug ] = true; // Stop here.
-				}
-			}
-
-			return $local_cache[ $plugin_slug ] = false;
-		}
-
-		/**
-		 * If you need to clear the WordPress plugins cache, call wp_clean_plugins_cache() beforehand.
-		 *
-		 * Example: $plugin_slug = wpsso
-		 */
-		public static function get_installed_slug_base( $plugin_slug, $use_cache = true ) {
-
-			static $local_cache = array();
-
-			if ( $use_cache && isset( $local_cache[ $plugin_slug ] ) ) {
-				return $local_cache[ $plugin_slug ];
-			} elseif ( empty( $plugin_slug ) ) {	// Just in case.
-				return $local_cache[ $plugin_slug ] = false;
-			}
-
-			foreach ( self::get_wp_plugins() as $plugin_base => $info ) {
-				if ( strpos( $plugin_base, $plugin_slug . '/' ) === 0 ) {
-					return $local_cache[ $plugin_slug ] = $plugin_base; // Stop here.
-				}
-			}
-
-			return $local_cache[ $plugin_slug ] = false;
-		}
-
-		public static function activate_plugin( $plugin_base, $network_wide = false, $silent = true ) {
-
-			$active_plugins = get_option( 'active_plugins', array() );
-
-			if ( empty( $active_plugins[ $plugin_base ] ) ) {
-
-				if ( ! $silent ) {
-					do_action( 'activate_plugin', $plugin_base );
-					do_action( 'activate_' . $plugin_base );
-				}
-
-				$active_plugins[] = $plugin_base;
-
-				sort( $active_plugins ); // Emulate the WordPress function.
-
-				$updated = update_option( 'active_plugins', $active_plugins );
-
-				if ( ! $silent ) {
-					do_action( 'activated_plugin', $plugin_base );
-				}
-
-				return $updated;
-			}
-
-			return false; // Plugin already active.
-		}
-
-		public static function plugin_is_active( $plugin_base, $use_cache = true ) {
-
-			if ( empty( $plugin_base ) ) { // Just in case.
-				return false;
-			}
-
-			return SucomUtil::active_plugins( $plugin_base, $use_cache ); // Call with class to use common cache.
-		}
-
-		public static function plugin_is_installed( $plugin_base, $use_cache = true ) {
-
-			static $local_cache = array();
-
-			if ( $use_cache && isset( $local_cache[ $plugin_base ] ) ) {
-				return $local_cache[ $plugin_base ];
-			} elseif ( empty( $plugin_base ) ) { 				// Just in case.
-				return $local_cache[ $plugin_base ] = false;
-			} elseif ( validate_file( $plugin_base ) > 0 ) {		// Contains invalid characters.
-				return $local_cache[ $plugin_base ] = false;
-			} elseif ( ! is_file( WP_PLUGIN_DIR . '/' . $plugin_base ) ) { // Check existence of plugin folder.
-				return $local_cache[ $plugin_base ] = false;
-			}
-
-			$plugins = self::get_wp_plugins();
-
-			if ( ! isset( $plugins[ $plugin_base ] ) ) {			// Check for a valid plugin header.
-				return $local_cache[ $plugin_base ] = false;
-			}
-
-			return $local_cache[ $plugin_base ] = true;
-		}
-
-		public static function plugin_has_update( $plugin_base ) {
-
-			static $local_cache = array();
-
-			if ( isset( $local_cache[ $plugin_base ] ) ) {
-				return $local_cache[ $plugin_base ];
-			} elseif ( empty( $plugin_base ) ) { 				// Just in case.
-				return $local_cache[ $plugin_base ] = false;
-			} elseif ( ! SucomUtil::plugin_is_installed( $plugin_base ) ) { // Call with class to use common cache.
-				return $local_cache[ $plugin_base ] = false;
-			}
-
-			$update_plugins = get_site_transient( 'update_plugins' );
-
-			if ( isset( $update_plugins->response ) && is_array( $update_plugins->response ) ) {
-				if ( isset( $update_plugins->response[ $plugin_base ] ) ) {
-					return $local_cache[ $plugin_base ] = true;
-				}
-			}
-
-			return $local_cache[ $plugin_base ] = false;
-		}
-
-		public static function get_slug_info( $plugin_slug, $plugin_fields = array(), $unfiltered = true ) {
-
-			static $local_cache = array();
-
-			$plugin_fields = array_merge( array(
-				'active_installs'   => true,	// Get by default.
-				'added'             => false,
-				'banners'           => false,
-				'compatibility'     => false,
-				'contributors'      => false,
-				'description'       => false,
-				'donate_link'       => false,
-				'downloadlink'      => true,	// Get by default.
-				'group'             => false,
-				'homepage'          => false,
-				'icons'             => false,
-				'last_updated'      => false,
-				'sections'          => false,
-				'short_description' => false,
-				'rating'            => true,	// Get by default.
-				'ratings'           => true,	// Get by default.
-				'requires'          => false,
-				'reviews'           => false,
-				'tags'              => false,
-				'tested'            => false,
-				'versions'          => false
-			), $plugin_fields );
-
-			$fields_key = json_encode( $plugin_fields ); // Unique index based on selected fields.
-
-			if ( isset( $local_cache[ $plugin_slug ][ $fields_key ] ) ) {
-				return $local_cache[ $plugin_slug ][ $fields_key ];
-			} elseif ( empty( $plugin_slug ) ) { // Just in case.
-				return $local_cache[ $plugin_slug ][ $fields_key ] = false;
-			}
-
-			if ( ! function_exists( 'plugins_api' ) ) {
-				require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin-install.php';
-			}
-
-			return $local_cache[ $plugin_slug ][ $fields_key ] = plugins_api( 'plugin_information', array(
-				'slug'       => $plugin_slug,
-				'fields'     => $plugin_fields,
-				'unfiltered' => $unfiltered, // true = skip the update manager filter.
-			) );
-		}
-
-		public static function get_slug_name( $plugin_slug, $unfiltered = true ) {
-
-			$plugin_info = SucomUtil::get_slug_info( $plugin_slug, array(), $unfiltered );
-
-			return empty( $plugin_info->name ) ? $plugin_slug : $plugin_info->name;
-		}
-
-		public static function get_slug_download_url( $plugin_slug, $unfiltered = true ) {
-
-			$plugin_info = SucomUtil::get_slug_info( $plugin_slug, array( 'downloadlink' => true ), $unfiltered );
-
-			if ( is_wp_error( $plugin_info ) ) {
-
-				return $plugin_info;
-
-			} elseif ( isset( $plugin_info->download_link ) ) {
-
-				if ( filter_var( $plugin_info->download_link, FILTER_VALIDATE_URL ) === false ) { // Just in case.
-
-					$plugin_name = empty( $plugin_info->name ) ? $plugin_slug : $plugin_info->name;
-
-					return new WP_Error( 'invalid_download_link', 
-						sprintf( __( 'The plugin information for "%s" contains an invalid download link.' ),
-							$plugin_name ) );
-				}
-
-				return $plugin_info->download_link;
-
-			} else {
-
-				$plugin_name = empty( $plugin_info->name ) ? $plugin_slug : $plugin_info->name;
-
-				return new WP_Error( 'missing_download_link', 
-					sprintf( __( 'The plugin information for "%s" does not contain a download link.' ),
-						$plugin_name ) );
-			}
-		}
-
-		/**
-		 * Does not remove an existing plugin folder before extracting the zip file.
-		 */
-		public static function download_install_slug( $plugin_slug, $unfiltered = true ) {
-
-			$plugin_url = self::get_slug_download_url( $plugin_slug, $unfiltered );
-
-			if ( is_wp_error( $plugin_url ) ) {
-				return $plugin_url;
-			}
-
-			if ( ! function_exists( 'download_url' ) ) {
-				require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/file.php';
-			}
-
-			$plugin_zip = download_url( $plugin_url );
-
-			if ( is_wp_error( $plugin_zip ) ) {
-				return $plugin_zip;
-			}
-
-			WP_Filesystem();
-
-			$unzip_file = unzip_file( $plugin_zip, WP_PLUGIN_DIR );
-
-			@unlink( $plugin_zip );
-
-			if ( is_wp_error( $unzip_file ) ) {
-				return $unzip_file;
-			}
-
-			return true; // Just in case - signal success.
 		}
 
 		public static function add_site_option_key( $name, $key, $value ) {
@@ -2528,52 +2145,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array_merge( $og_ret, $mt_og );
 		}
 
-		public static function get_site_url( array $opts, $mixed = 'current' ) {
-
-			$ret = self::get_key_value( 'site_url', $opts, $mixed );
-
-			if ( empty( $ret ) ) {
-				return get_bloginfo( 'url' );
-			} else {
-				return $ret;
-			}
-		}
-
-		/**
-		 * Returns a custom site name or the default WordPress site name.
-		 * $mixed = 'default' | 'current' | post ID | $mod array
-		 */
-		public static function get_site_name( array $opts, $mixed = 'current' ) {
-
-			$ret = self::get_key_value( 'site_name', $opts, $mixed );
-
-			if ( empty( $ret ) ) {
-				return get_bloginfo( 'name', 'display' );
-			} else {
-				return $ret;
-			}
-		}
-
-		public static function get_site_name_alt( array $opts, $mixed = 'current' ) {
-
-			return self::get_key_value( 'site_name_alt', $opts, $mixed );
-		}
-
-		/**
-		 * Returns a custom site description or the default WordPress site description / tagline.
-		 * $mixed = 'default' | 'current' | post ID | $mod array
-		 */
-		public static function get_site_description( array $opts, $mixed = 'current' ) {
-
-			$ret = self::get_key_value( 'site_desc', $opts, $mixed );
-
-			if ( empty( $ret ) ) {
-				return get_bloginfo( 'description', 'display' );
-			} else {
-				return $ret;
-			}
-		}
-
 		public static function get_file_path_locale( $file_path ) {
 
 			if ( preg_match( '/^(.*)(\.[a-z0-9]+)$/', $file_path, $matches ) ) {
@@ -2941,7 +2512,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $opts;
 		}
 
-		public static function get_is_page( $use_post = false ) {
+		public static function get_page_info( $use_post = false ) {
 
 			/**
 			 * Optimize and only check what we need to.
@@ -4057,54 +3628,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $theme->get_template() . '-' . $theme->Version;
 		}
 
-		public static function get_image_sizes() {
-
-			global $_wp_additional_image_sizes;
-
-			$sizes = array();
-
-			foreach ( get_intermediate_image_sizes() as $size_name ) {
-				$sizes[ $size_name ] = self::get_size_info( $size_name );
-			}
-
-			return $sizes;
-		}
-
-		public static function get_size_info( $size_name = 'thumbnail' ) {
-
-			if ( is_integer( $size_name ) ) {
-				return;
-			} elseif ( is_array( $size_name ) ) {
-				return;
-			}
-
-			global $_wp_additional_image_sizes;
-
-			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'width' ] ) ) {
-				$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
-			} else {
-				$width = get_option( $size_name . '_size_w' );
-			}
-
-			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
-				$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
-			} else {
-				$height = get_option( $size_name . '_size_h' );
-			}
-
-			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
-				$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
-			} else {
-				$crop = get_option( $size_name . '_crop' );
-			}
-
-			if ( ! is_array( $crop ) ) {
-				$crop = empty( $crop ) ? false : true;
-			}
-
-			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
-		}
-
 		/**
 		 * Returns the class and id attributes.
 		 */
@@ -4294,16 +3817,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $hook_name;
 		}
 		
-		public static function get_min_int() {
-
-			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;    // Since PHP 7.0.0.
-		}
-
-		public static function get_max_int() {
-
-			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;     // Since PHP 5.0.2.
-		}
-
 		/**
 		 * Allow for 0, but not true, false, null, or 'none'.
 		 */
@@ -4320,28 +3833,113 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function get_plugin_updates_count( $slug_begin = '' ) {
+		/**
+		 * Get the width, height, and crop value for a all image sizes.
+		 * Returns an associative array with the image size name as the array key value.
+		 */
+		public static function get_image_sizes() {
 
-			$count = 0;
+			$sizes = array();
 
-			if ( $plugins = current_user_can( 'update_plugins' ) ) {
-
-				$update_plugins = get_site_transient( 'update_plugins' );
-
-				if ( ! empty( $update_plugins->response ) ) {
-					if ( ! empty( $slug_begin ) ) {
-						foreach ( $update_plugins->response as $base => $data ) {
-							if ( isset( $data->slug ) && strpos( $data->slug, $slug_begin ) === 0 ) {
-								$count++;
-							}
-						}
-					} else {
-						$count = count( $update_plugins->response );
-					}
-				}
+			foreach ( get_intermediate_image_sizes() as $size_name ) {
+				$sizes[ $size_name ] = self::get_size_info( $size_name );
 			}
 
-			return $count;
+			return $sizes;
+		}
+
+		/**
+		 * Get the width, height, and crop value for a specific image size.
+		 */
+		public static function get_size_info( $size_name = 'thumbnail' ) {
+
+			if ( is_integer( $size_name ) ) {
+				return;
+			} elseif ( is_array( $size_name ) ) {
+				return;
+			}
+
+			global $_wp_additional_image_sizes;
+
+			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'width' ] ) ) {
+				$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
+			} else {
+				$width = get_option( $size_name . '_size_w' );
+			}
+
+			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
+				$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
+			} else {
+				$height = get_option( $size_name . '_size_h' );
+			}
+
+			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
+				$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
+			} else {
+				$crop = get_option( $size_name . '_crop' );
+			}
+
+			if ( ! is_array( $crop ) ) {
+				$crop = empty( $crop ) ? false : true;
+			}
+
+			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
+		}
+
+		/**
+		 * Site Title
+		 *
+		 * Returns a custom site name or the default WordPress site name.
+		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 */
+		public static function get_site_name( array $opts, $mixed = 'current' ) {
+
+			$ret = self::get_key_value( 'site_name', $opts, $mixed );
+
+			if ( empty( $ret ) ) {
+				$ret = get_bloginfo( 'name', 'display' );
+			}
+
+			return $ret;
+		}
+
+		public static function get_site_name_alt( array $opts, $mixed = 'current' ) {
+
+			return self::get_key_value( 'site_name_alt', $opts, $mixed );
+		}
+
+		/**
+		 * Tagline
+		 * 
+		 * Returns a custom site description or the default WordPress site description / tagline.
+		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 */
+		public static function get_site_description( array $opts, $mixed = 'current' ) {
+
+			$ret = self::get_key_value( 'site_desc', $opts, $mixed );
+
+			if ( empty( $ret ) ) {
+				$ret = get_bloginfo( 'description', 'display' );
+			}
+
+			return $ret;
+		}
+
+		/**
+		 * Site Address (URL)
+		 *
+		 * Returns a custom site address URL or the default WordPress site address URL (aka home URL).
+		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 */
+		public static function get_site_url( array $opts, $mixed = 'current' ) {
+
+			$ret = self::get_key_value( 'site_url', $opts, $mixed );
+
+			if ( empty( $ret ) ) {
+				$ret = get_bloginfo( 'url' );	// Aka get_home_url().
+			}
+
+			return $ret;
 		}
 
 		/**
@@ -4491,6 +4089,59 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $value;
+		}
+
+		/**
+		 * Sets 'display_errors' to false to prevent PHP errors from being displayed and
+		 * restores previous PHP settings after logging the error.
+		 */
+		public static function safe_error_log( $error_msg ) {
+
+			$ini_set = array(
+				'display_errors' => 0,
+				'log_errors'     => 1,
+				'error_log'      => WP_CONTENT_DIR . '/debug.log',
+			);
+
+			$ini_saved = array();
+
+			/**
+			 * Save old option values and define new option values.
+			 */
+			foreach ( $ini_set as $name => $value ) {
+
+				/**
+				 * Returns false if option does not exist.
+				 */
+				$ini_saved[ $name ] = ini_get( $name );
+
+				/**
+				 * Only set the option the existing value is different.
+				 */
+				if ( false !== $ini_saved[ $name ] && $ini_saved[ $name ] !== $value ) {
+
+					ini_set( $name, $value );
+
+				/**
+				 * Unset the array element to avoid restoring it.
+				 */
+				} else {
+
+					unset( $ini_saved[ $name ] );
+				}
+			}
+
+			/**
+			 * Use error_log() instead of trigger_error() to avoid HTTP 500.
+			 */
+			error_log( $error_msg );
+
+			/**
+			 * Restore old option values that were changed.
+			 */
+			foreach ( $ini_saved as $name => $value ) {
+				ini_set( $name, $value );
+			}
 		}
 	}
 }

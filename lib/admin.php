@@ -607,9 +607,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'height'    => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'height' ],
 				), $install_url );
 
-				if ( SucomUtil::plugin_is_installed( $info[ 'base' ] ) ) {
+				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
 
-					if ( SucomUtil::plugin_has_update( $info[ 'base' ] ) ) {
+					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {
 						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
 							'<font color="red">' . _x( 'Plugin Details and Update', 'plugin action link',
 								'wpsso' ) . '</font></a>';
@@ -3100,7 +3100,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						break;
 					} else {
 						if ( ! self::$pkg[ $ext ][ 'pdir' ] ) {
-							if ( ! empty( $info[ 'base' ] ) && ! SucomUtil::plugin_is_installed( $info[ 'base' ] ) ) {
+							if ( ! empty( $info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
 								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'lca' => $ext ) ) );
 							} else {
 								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated', array( 'lca' => $ext ) ) );
@@ -3121,7 +3121,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							array( 'um_rec_version' => $um_rec_version ) ) );
 					}
 
-				} elseif ( SucomUtil::plugin_is_installed( $um_info[ 'base' ] ) ) {	// Check if UM is installed.
+				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ], $use_cache = true ) ) {	// Check if UM is installed.
 
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
 
@@ -3183,7 +3183,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function update_count_notice() {
 
-			$update_count = SucomUtil::get_plugin_updates_count( $this->p->lca );
+			if ( ! current_user_can( 'update_plugins' ) ) {
+				return;
+			}
+
+			$update_count = SucomPlugin::get_updates_count( $plugin_prefix = $this->p->lca );
 
 			if ( $update_count > 0 ) {
 

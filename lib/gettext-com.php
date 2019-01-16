@@ -27,10 +27,6 @@ __( 'This notice can be dismissed permanently.', 'wpsso' );
 __( 'This notice can be dismissed for %s.', 'wpsso' );
 __( 'edit', 'wpsso' );
 __( 'Reference: %s', 'wpsso' );
-// translators: please ignore - translation uses a different text domain
-__( 'The plugin information for "%s" contains an invalid download link.' );
-// translators: please ignore - translation uses a different text domain
-__( 'The plugin information for "%s" does not contain a download link.' );
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
 __( 'The "%1$s" hook with priority %2$d in the "%3$s" filter has incorrectly sent output to the webpage.', 'wpsso' );
@@ -39,3 +35,7 @@ __( 'Please contact the author of that filter hook and report this issue as a co
 __( 'Incorrect webpage output:', 'wpsso' );
 __( 'BEGIN OUTPUT', 'wpsso' );
 __( 'END OUTPUT', 'wpsso' );
+// translators: please ignore - translation uses a different text domain
+__( 'The plugin information for "%s" contains an invalid download link.' );
+// translators: please ignore - translation uses a different text domain
+__( 'The plugin information for "%s" does not contain a download link.' );

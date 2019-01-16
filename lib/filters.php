@@ -45,9 +45,9 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 			} else {
 
 				/**
-				 * Disable jetPack open graph meta tags.
+				 * Disable JetPack open graph meta tags.
 				 */
-				if ( SucomUtil::active_plugins( 'jetpack/jetpack.php' ) ) {
+				if ( SucomPlugin::is_plugin_active( 'jetpack/jetpack.php', $use_cache = true ) ) {
 					add_filter( 'jetpack_enable_opengraph', '__return_false', 1000 );
 					add_filter( 'jetpack_enable_open_graph', '__return_false', 1000 );
 					add_filter( 'jetpack_disable_twitter_cards', '__return_true', 1000 );

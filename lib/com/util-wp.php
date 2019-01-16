@@ -9,6 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
+if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
+	require_once dirname( __FILE__ ) . '/util.php';
+}
+
 if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 	class SucomUtilWP {

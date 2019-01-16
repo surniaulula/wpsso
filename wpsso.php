@@ -16,7 +16,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.0
  * WC Tested Up To: 3.5
- * Version: 4.20.0
+ * Version: 4.21.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -648,7 +648,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Show active plugins.
 			 */
-			$this->debug->show_html( print_r( SucomUtil::active_plugins(), true ), 'active plugins' );
+			$this->debug->show_html( print_r( SucomPlugin::get_active_plugins( $use_cache = true ), true ), 'active plugins' );
 
 			/**
 			 * Show available modules.

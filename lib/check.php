@@ -307,7 +307,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							if ( ( ! empty( $chk[ 'class' ] ) && class_exists( $chk[ 'class' ] ) ) ||
 								( ! empty( $chk[ 'function' ] ) && function_exists( $chk[ 'function' ] ) ) ||
-								( ! empty( $chk[ 'plugin' ] ) && SucomUtil::active_plugins( $chk[ 'plugin' ] ) ) ) {
+								( ! empty( $chk[ 'plugin' ] ) && SucomPlugin::is_plugin_active( $chk[ 'plugin' ], $use_cache = true ) ) ) {
 
 								/**
 								 * Check if an option value is also required.

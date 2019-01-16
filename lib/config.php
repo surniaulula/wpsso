@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.20.0',	// Plugin version.
+					'version'     => '4.21.0-dev.1',	// Plugin version.
 					'opt_version' => '623',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -3161,7 +3161,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/com/cache.php';
 			require_once WPSSO_PLUGINDIR . 'lib/com/nodebug.php';	// Always load fallback class.
 			require_once WPSSO_PLUGINDIR . 'lib/com/nonotice.php';	// Always load fallback class.
-			require_once WPSSO_PLUGINDIR . 'lib/com/util.php';
+			require_once WPSSO_PLUGINDIR . 'lib/com/plugin.php';
+			require_once WPSSO_PLUGINDIR . 'lib/com/util.php';	// Loads SucomUtilWP.
 
 			require_once WPSSO_PLUGINDIR . 'lib/check.php';
 			require_once WPSSO_PLUGINDIR . 'lib/exception.php';	// Extends ErrorException.
@@ -3174,15 +3175,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/opengraph.php';
 			require_once WPSSO_PLUGINDIR . 'lib/options.php';
 			require_once WPSSO_PLUGINDIR . 'lib/page.php';
-			require_once WPSSO_PLUGINDIR . 'lib/post.php';		// Extends meta.php
+			require_once WPSSO_PLUGINDIR . 'lib/post.php';		// Extends WpssoMeta.
 			require_once WPSSO_PLUGINDIR . 'lib/register.php';
 			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
 			require_once WPSSO_PLUGINDIR . 'lib/script.php';
 			require_once WPSSO_PLUGINDIR . 'lib/style.php';
-			require_once WPSSO_PLUGINDIR . 'lib/term.php';		// Extends meta.php
+			require_once WPSSO_PLUGINDIR . 'lib/term.php';		// Extends WpssoMeta.
 			require_once WPSSO_PLUGINDIR . 'lib/twittercard.php';
-			require_once WPSSO_PLUGINDIR . 'lib/user.php';		// Extends meta.php
-			require_once WPSSO_PLUGINDIR . 'lib/util.php';
+			require_once WPSSO_PLUGINDIR . 'lib/user.php';		// Extends WpssoMeta.
+			require_once WPSSO_PLUGINDIR . 'lib/util.php';		// Extends SucomUtil.
 			require_once WPSSO_PLUGINDIR . 'lib/weibo.php';
 
 			if ( is_admin() ) {
