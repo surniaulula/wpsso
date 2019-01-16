@@ -440,9 +440,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Developer Notes*
 	* Added a new SucomPlugin class.
-	* Moved SucomUtil::raw_do_option() to the SucomUtilWP class.
+	* Moved SucomUtil raw_do_option() to the SucomUtilWP class.
 	* Moved the WpssoOptions check_banner_image_size() call from check_options() to refresh_image_url_sizes().
-	* Changed calls to 'SucomUtil' methods to 'self' in the WpssoUtil class (which extends SucomUtil).
+	* Changed calls from 'SucomUtil' to 'self' in the WpssoUtil class (which extends SucomUtil).
+	* Renamed SucomUtil is_opt_id() to is_valid_option_id().
 
 **Version 4.20.0 (2019/01/15)**
 
@@ -479,9 +480,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_tag_archive_description'
 		* 'wpsso_term_archive_description'
 		* 'wpsso_yearly_archive_description'
-	* Updated the SucomUtil::protect_filter_value() method arguments.
-	* Added a new SucomUtil::unprotect_filter_value() method.
-	* Added a new SucomUtil::raw_do_option() method.
+	* Updated the SucomUtil protect_filter_value() method arguments.
+	* Added a new SucomUtil unprotect_filter_value() method.
+	* Added a new SucomUtil raw_do_option() method.
 
 **Version 4.18.4 (2019/01/09)**
 
@@ -508,9 +509,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Bugfixes*
 	* Fixed issue with text + hashtags returning a single space for excerpts in WpsoPage::get_caption().
 * *Developer Notes*
-	* Added new methods to compliment the SucomUtil::update_transient_array() method:
-		* SucomUtil::get_transient_array().
-		* SucomUtil::delete_transient_array().
+	* Added new methods to compliment the SucomUtil update_transient_array() method:
+		* SucomUtil get_transient_array().
+		* SucomUtil delete_transient_array().
 
 **Version 4.18.2 (2018/12/22)**
 
@@ -575,7 +576,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.21.0-dev.1 =
 
-(2019/01/16) Added a new SucomPlugin class.
+(2019/01/16) Added a new SucomPlugin class. Moved the WpssoOptions check_banner_image_size() call from check_options() to refresh_image_url_sizes().
 
 = 4.20.0 =
 
