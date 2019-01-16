@@ -430,6 +430,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.21.0-dev.1 (2019/01/16)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* Added a new SucomPlugin class.
+
 **Version 4.20.0 (2019/01/15)**
 
 * *New Features*
@@ -558,6 +569,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 
 == Upgrade Notice ==
+
+= 4.21.0-dev.1 =
+
+(2019/01/16) Added a new SucomPlugin class.
 
 = 4.20.0 =
 
