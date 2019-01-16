@@ -5903,23 +5903,23 @@ msgstr ""
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:3184
+#: lib/schema.php:3195
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3226
+#: lib/schema.php:3237
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3233
+#: lib/schema.php:3244
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3509
+#: lib/schema.php:3522
 msgid "adding schema for place"
 msgstr ""
 

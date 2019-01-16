@@ -292,7 +292,10 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 
 	function wpsso_get_post_organization_options( $post_id, $type_id = 'site' ) {
 
-		if ( ! SucomUtil::is_opt_id( $type_id ) ) {	// allow for 0 but not false or null
+		/**
+		 * Check that the id value is not true, false, null, or 'none'.
+		 */
+		if ( ! SucomUtil::is_valid_option_id( $type_id ) ) {
 			return array();
 		}
 

@@ -2915,8 +2915,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/**
 			 * Event organizer person.
+			 *
+			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
 			 */
-			if ( isset( $event_opts[ 'event_organizer_person_id' ] ) && SucomUtil::is_opt_id( $event_opts[ 'event_organizer_person_id' ] ) ) {
+			if ( isset( $event_opts[ 'event_organizer_person_id' ] ) && SucomUtil::is_valid_option_id( $event_opts[ 'event_organizer_person_id' ] ) ) {
 				if ( ! self::add_single_person_data( $ret[ 'organizer' ], $mod, $event_opts[ 'event_organizer_person_id' ], $list_element = true ) ) {
 					unset( $ret[ 'organizer' ] );
 				}
@@ -2924,8 +2926,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/**
 			 * Event venue.
+			 *
+			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
 			 */
-			if ( isset( $event_opts[ 'event_location_id' ] ) && SucomUtil::is_opt_id( $event_opts[ 'event_location_id' ] ) ) {
+			if ( isset( $event_opts[ 'event_location_id' ] ) && SucomUtil::is_valid_option_id( $event_opts[ 'event_location_id' ] ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding place data for event_location_id ' . $event_opts[ 'event_location_id' ] );
@@ -3076,8 +3080,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/**
 			 * Job hiring organization.
+			 *
+			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
 			 */
-			if ( isset( $job_opts[ 'job_hiring_org_id' ] ) && SucomUtil::is_opt_id( $job_opts[ 'job_hiring_org_id' ] ) ) {	// Allow for 0.
+			if ( isset( $job_opts[ 'job_hiring_org_id' ] ) && SucomUtil::is_valid_option_id( $job_opts[ 'job_hiring_org_id' ] ) ) {	// Allow for 0.
 
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding organization data for job_hiring_org_id ' . $job_opts[ 'job_hiring_org_id' ] );
@@ -3093,8 +3099,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/**
 			 * Job location.
+			 *
+			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
 			 */
-			if ( isset( $job_opts[ 'job_location_id' ] ) && SucomUtil::is_opt_id( $job_opts[ 'job_location_id' ] ) ) {	// Allow for 0.
+			if ( isset( $job_opts[ 'job_location_id' ] ) && SucomUtil::is_valid_option_id( $job_opts[ 'job_location_id' ] ) ) {	// Allow for 0.
 
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding place data for job_location_id ' . $job_opts[ 'job_location_id' ] );
@@ -3132,7 +3140,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			if ( ! SucomUtil::is_opt_id( $org_id ) ) {	// Allow for 0 but not false or null.
+			/**
+			 * Check that the id value is not true, false, null, or 'none'.
+			 */
+			if ( ! SucomUtil::is_valid_option_id( $org_id ) ) {
 				return 0;
 			}
 
@@ -3241,8 +3252,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/**
 			 * Place / location properties.
+			 *
+			 * Use is_valid_option_id() to check that the id value is not true, false, null, or 'none'.
 			 */
-			if ( isset( $org_opts[ 'org_place_id' ] ) && SucomUtil::is_opt_id( $org_opts[ 'org_place_id' ] ) ) {
+			if ( isset( $org_opts[ 'org_place_id' ] ) && SucomUtil::is_valid_option_id( $org_opts[ 'org_place_id' ] ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 					$wpsso->debug->log( 'adding place / location properties' );

@@ -731,7 +731,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					continue;
 				}
 
-				$size = SucomUtil::get_size_info( $size_name );
+				$size = SucomUtilWP::get_size_info( $size_name );
 
 				$html .= '<option value="' . esc_attr( $size_name ) . '" ';
 

@@ -596,7 +596,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$this->p->debug->mark( 'define image sizes' );	// End timer.
 
-				$this->p->debug->log_arr( 'get_all_image_sizes', self::get_image_sizes() );
+				$this->p->debug->log_arr( 'get_all_image_sizes', WpssoUtilWP::get_image_sizes() );
 			}
 		}
 

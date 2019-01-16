@@ -1096,6 +1096,43 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $is_doing;
 		}
 
+		public static function is_amp() {
+
+			if ( ! defined( 'AMP_QUERY_VAR' ) ) {
+				$is_amp = false;
+			} else {
+				$is_amp = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
+			}
+
+			return $is_amp;
+		}
+
+		public static function is_mobile() {
+
+			static $local_cache = null;
+			static $mobile_obj = null;
+
+			if ( ! isset( $local_cache ) ) {
+
+				if ( ! isset( $mobile_obj ) ) {	// Load class object on first check
+
+					if ( ! class_exists( 'SuextMobileDetect' ) ) {
+						require_once dirname( __FILE__ ) . '/../ext/mobile-detect.php';
+					}
+
+					$mobile_obj = new SuextMobileDetect();
+				}
+
+				$local_cache = $mobile_obj->isMobile();
+			}
+
+			return $local_cache;
+		}
+
+		public static function is_desktop() {
+			return self::is_mobile() ? false : true;
+		}
+
 		public static function is_https( $url = '' ) {
 
 			static $local_cache = array();
@@ -1444,13 +1481,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Allow for 0, but not true, false, null, or 'none'.
+		 * Check that the id value is not true, false, null, or 'none'.
 		 */
-		public static function is_opt_id( $id ) {
+		public static function is_valid_option_id( $id ) {
 
 			if ( true === $id ) {
 				return false;
-			} elseif ( empty( $id ) && ! is_numeric( $id ) ) { // null or false.
+			} elseif ( empty( $id ) && ! is_numeric( $id ) ) { // Null or false.
 				return false;
 			} elseif ( $id === 'none' ) {
 				return false;
@@ -1960,41 +1997,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Return the first URL from the associative array (og:image:secure_url, og:image:url, og:image).
-		 */
-		public static function get_mt_media_url( array $assoc, $mt_media_pre = 'og:image', $mt_suffixes = null ) {
-
-			if ( ! is_array( $mt_suffixes ) ) {
-				$mt_suffixes = array( ':secure_url', ':url', '', ':embed_url' );
-			}
-
-			/**
-			 * Check for two dimensional arrays and keep following the first array element.
-			 * Prefer the $mt_media_pre array key (if it's available).
-			 */
-			if ( isset( $assoc[ $mt_media_pre ] ) && is_array( $assoc[ $mt_media_pre ] ) ) {
-				$first_media = reset( $assoc[ $mt_media_pre ] );
-			} else {
-				$first_media = reset( $assoc );
-			}
-
-			if ( is_array( $first_media ) ) {
-				return self::get_mt_media_url( $first_media, $mt_media_pre );
-			}
-
-			/**
-			 * First element is a text string, so check the array keys.
-			 */
-			foreach ( $mt_suffixes as $mt_suffix ) {
-				if ( ! empty( $assoc[ $mt_media_pre . $mt_suffix ] ) ) {
-					return $assoc[ $mt_media_pre . $mt_suffix ];	// Return first match.
-				}
-			}
-
-			return ''; // Empty string.
-		}
-
-		/**
 		 * Pre-define the array key order for the list() construct.
 		 */
 		public static function get_mt_image_seed( $mt_pre = 'og', array $mt_og = array() ) {
@@ -2155,6 +2157,41 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return array_merge( $og_ret, $mt_og );
+		}
+
+		/**
+		 * Return the first URL from the associative array (og:image:secure_url, og:image:url, og:image).
+		 */
+		public static function get_mt_media_url( array $assoc, $mt_media_pre = 'og:image', $mt_suffixes = null ) {
+
+			if ( ! is_array( $mt_suffixes ) ) {
+				$mt_suffixes = array( ':secure_url', ':url', '', ':embed_url' );
+			}
+
+			/**
+			 * Check for two dimensional arrays and keep following the first array element.
+			 * Prefer the $mt_media_pre array key (if it's available).
+			 */
+			if ( isset( $assoc[ $mt_media_pre ] ) && is_array( $assoc[ $mt_media_pre ] ) ) {
+				$first_media = reset( $assoc[ $mt_media_pre ] );
+			} else {
+				$first_media = reset( $assoc );
+			}
+
+			if ( is_array( $first_media ) ) {
+				return self::get_mt_media_url( $first_media, $mt_media_pre );
+			}
+
+			/**
+			 * First element is a text string, so check the array keys.
+			 */
+			foreach ( $mt_suffixes as $mt_suffix ) {
+				if ( ! empty( $assoc[ $mt_media_pre . $mt_suffix ] ) ) {
+					return $assoc[ $mt_media_pre . $mt_suffix ];	// Return first match.
+				}
+			}
+
+			return ''; // Empty string.
 		}
 
 		public static function get_file_path_locale( $file_path ) {
@@ -3302,14 +3339,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		/**
-		 * Deprecated on 2018/09/20.
-		 */
-		public static function get_json_decode_scripts( $html, $assoc = true ) {
-
-			return self::get_json_scripts( $html );
-		}
-
 		public static function get_json_scripts( $html, $do_decode = true ) {
 
 			$json_data = array();
@@ -3345,32 +3374,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $json_data;
-		}
-
-		public static function is_mobile() {
-
-			static $local_cache = null;
-			static $mobile_obj = null;
-
-			if ( ! isset( $local_cache ) ) {
-
-				if ( ! isset( $mobile_obj ) ) {	// Load class object on first check
-
-					if ( ! class_exists( 'SuextMobileDetect' ) ) {
-						require_once dirname( __FILE__ ) . '/../ext/mobile-detect.php';
-					}
-
-					$mobile_obj = new SuextMobileDetect();
-				}
-
-				$local_cache = $mobile_obj->isMobile();
-			}
-
-			return $local_cache;
-		}
-
-		public static function is_desktop() {
-			return self::is_mobile() ? false : true;
 		}
 
 		/**
@@ -3628,13 +3631,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $table_rows;
 		}
 
-		public static function get_theme_slug_version( $stylesheet = null, $theme_root = null ) {
-
-			$theme = wp_get_theme( $stylesheet, $theme_root );
-
-			return $theme->get_template() . '-' . $theme->Version;
-		}
-
 		/**
 		 * Returns the class and id attributes.
 		 */
@@ -3690,15 +3686,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN ) : (bool) $mixed;
 		}
 
-		/**
-		 * Note that glob() returns false on error.
-		 */
+		public static function get_theme_slug_version( $stylesheet = null, $theme_root = null ) {
+
+			$theme = wp_get_theme( $stylesheet, $theme_root );
+
+			return $theme->get_template() . '-' . $theme->Version;
+		}
+
 		public static function get_header_files( $skip_backups = true ) {
 
 			$ret_array    = array();
 			$parent_dir   = get_template_directory();
 			$child_dir    = get_stylesheet_directory();
-			$header_files = (array) glob( $parent_dir . '/header*.php' );
+			$header_files = (array) glob( $parent_dir . '/header*.php' );	// Returns false on error.
 
 			if ( $parent_dir !== $child_dir ) {
 				$header_files = array_merge( $header_files, (array) glob( $child_dir . '/header*.php' ) );
@@ -3718,31 +3718,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $ret_array;
 		}
 
-		public static function get_at_name( $val ) {
-
-			if ( $val !== '' ) {
-
-				$val = substr( preg_replace( array( '/^.*\//', '/[^a-zA-Z0-9_]/' ), '', $val ), 0, 15 );
-
-				if ( ! empty( $val ) )  {
-					$val = '@' . $val;
-				}
-			}
-
-			return $val;
-		}
-
-		public static function is_amp() {
-
-			if ( ! defined( 'AMP_QUERY_VAR' ) ) {
-				$is_amp = false;
-			} else {
-				$is_amp = get_query_var( AMP_QUERY_VAR, false ) ? true : false;
-			}
-
-			return $is_amp;
-		}
-
 		public static function minify_css( $css_data, $lca ) {
 
 			if ( ! empty( $css_data ) ) {
@@ -3755,6 +3730,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $css_data;
+		}
+
+		public static function get_at_name( $val ) {
+
+			if ( $val !== '' ) {
+
+				$val = substr( preg_replace( array( '/^.*\//', '/[^a-zA-Z0-9_]/' ), '', $val ), 0, 15 );
+
+				if ( ! empty( $val ) )  {
+					$val = '@' . $val;
+				}
+			}
+
+			return $val;
 		}
 
 		public static function add_pkg_name( &$name, $type ) {
@@ -3790,6 +3779,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $hook_names;
 		}
 
+		/**
+		 * Used by the get_wp_hook_names() method.
+		 */
 		public static function get_hook_function_name( array $hook_info ) {
 
 			$hook_name = '';
@@ -3824,59 +3816,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $hook_name;
 		}
 		
-		/**
-		 * Get the width, height, and crop value for a all image sizes.
-		 * Returns an associative array with the image size name as the array key value.
-		 */
-		public static function get_image_sizes() {
-
-			$sizes = array();
-
-			foreach ( get_intermediate_image_sizes() as $size_name ) {
-				$sizes[ $size_name ] = self::get_size_info( $size_name );
-			}
-
-			return $sizes;
-		}
-
-		/**
-		 * Get the width, height, and crop value for a specific image size.
-		 */
-		public static function get_size_info( $size_name = 'thumbnail' ) {
-
-			if ( is_integer( $size_name ) ) {
-				return;
-			} elseif ( is_array( $size_name ) ) {
-				return;
-			}
-
-			global $_wp_additional_image_sizes;
-
-			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'width' ] ) ) {
-				$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
-			} else {
-				$width = get_option( $size_name . '_size_w' );
-			}
-
-			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
-				$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
-			} else {
-				$height = get_option( $size_name . '_size_h' );
-			}
-
-			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
-				$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
-			} else {
-				$crop = get_option( $size_name . '_crop' );
-			}
-
-			if ( ! is_array( $crop ) ) {
-				$crop = empty( $crop ) ? false : true;
-			}
-
-			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
-		}
-
 		/**
 		 * Site Title
 		 *

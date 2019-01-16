@@ -274,5 +274,58 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			return $ret;
 		}
+
+		/**
+		 * Get the width, height, and crop value for a all image sizes.
+		 * Returns an associative array with the image size name as the array key value.
+		 */
+		public static function get_image_sizes() {
+
+			$sizes = array();
+
+			foreach ( get_intermediate_image_sizes() as $size_name ) {
+				$sizes[ $size_name ] = self::get_size_info( $size_name );
+			}
+
+			return $sizes;
+		}
+
+		/**
+		 * Get the width, height, and crop value for a specific image size.
+		 */
+		public static function get_size_info( $size_name = 'thumbnail' ) {
+
+			if ( is_integer( $size_name ) ) {
+				return;
+			} elseif ( is_array( $size_name ) ) {
+				return;
+			}
+
+			global $_wp_additional_image_sizes;
+
+			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'width' ] ) ) {
+				$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
+			} else {
+				$width = get_option( $size_name . '_size_w' );
+			}
+
+			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
+				$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
+			} else {
+				$height = get_option( $size_name . '_size_h' );
+			}
+
+			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
+				$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
+			} else {
+				$crop = get_option( $size_name . '_crop' );
+			}
+
+			if ( ! is_array( $crop ) ) {
+				$crop = empty( $crop ) ? false : true;
+			}
+
+			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
+		}
 	}
 }

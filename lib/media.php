@@ -423,7 +423,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log_args( $args );
 			}
 
-			$size_info   = SucomUtil::get_size_info( $size_name );
+			$size_info   = SucomUtilWP::get_size_info( $size_name );
 			$img_url     = '';
 			$img_width   = WPSSO_UNDEF;
 			$img_height  = WPSSO_UNDEF;
@@ -824,7 +824,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$og_single_image = SucomUtil::get_mt_image_seed();
-			$size_info       = SucomUtil::get_size_info( $size_name );
+			$size_info       = SucomUtilWP::get_size_info( $size_name );
 			$img_preg        = $this->def_img_preg;
 
 			/**
