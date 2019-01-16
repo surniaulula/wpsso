@@ -442,6 +442,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new SucomPlugin class.
 	* Moved SucomUtil::raw_do_option() to the SucomUtilWP class.
 	* Moved the WpssoOptions check_banner_image_size() call from check_options() to refresh_image_url_sizes().
+	* Changed calls to 'SucomUtil' methods to 'self' in the WpssoUtil class (which extends SucomUtil).
 
 **Version 4.20.0 (2019/01/15)**
 
