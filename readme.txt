@@ -1,4 +1,4 @@
-=== WPSSO Core - Advanced Meta Tags and Schema Markup for FB, Google, Pinterest, Twitter, SEO and More ===
+=== WPSSO Core - Advanced Meta Tags and Schema Markup for Facebook, Google, Pinterest, Twitter, SEO and More ===
 Plugin Name: WPSSO Core [Main Plugin]
 Plugin Slug: wpsso
 Text Domain: wpsso
