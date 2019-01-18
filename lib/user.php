@@ -28,7 +28,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$doing_ajax = defined( 'DOING_AJAX' ) && DOING_AJAX ? true : false;
 			$cm_fb_name = $this->p->options['plugin_cm_fb_name'];
 
-			if ( ! SucomUtil::role_exists( 'person' ) ) {
+			if ( ! SucomUtilWP::role_exists( 'person' ) ) {
 				add_role( 'person', _x( 'Person', 'user role', 'wpsso' ), array() );
 			}
 
@@ -144,7 +144,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			$roles = $wpsso->cf['wp']['roles']['writer'];
 
-			return SucomUtil::get_user_ids_by_roles( $roles );
+			return SucomUtilWP::get_user_ids_for_roles( $roles );
 		}
 
 		public static function get_person_names( $add_none = true ) {
@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$roles = $wpsso->cf['wp']['roles']['person'];
 
-			return SucomUtil::get_user_select_by_roles( $roles, null, $add_none );
+			return SucomUtilWP::get_user_select_for_roles( $roles, null, $add_none );
 		}
 
 		public function get_posts_ids( array $mod, $ppp = false, $paged = false, array $posts_args = array() ) {
@@ -814,10 +814,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function get_author_meta( $user_id, $field_id ) {
 
-			$is_user     = SucomUtil::user_exists( $user_id );
+			$user_exists = SucomUtilWP::user_exists( $user_id );
 			$author_meta = '';
 
-			if ( $is_user ) {
+			if ( $user_exists ) {
 
 				switch ( $field_id ) {
 
@@ -852,7 +852,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
 			}
 
-			$author_meta = apply_filters( $this->p->lca . '_get_author_meta', $author_meta, $user_id, $field_id, $is_user );
+			$author_meta = apply_filters( $this->p->lca . '_get_author_meta', $author_meta, $user_id, $field_id, $user_exists );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'user id ' . $user_id . ' ' . $field_id . ': ' . $author_meta );
@@ -863,10 +863,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function get_author_website( $user_id, $field_id = 'url' ) {
 
-			$is_user     = SucomUtil::user_exists( $user_id );
+			$user_exists = SucomUtilWP::user_exists( $user_id );
 			$website_url = '';
 
-			if ( $is_user ) {
+			if ( $user_exists ) {
 
 				switch ( $field_id ) {
 
@@ -903,7 +903,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
 			}
 
-			$website_url = apply_filters( $this->p->lca . '_get_author_website', $website_url, $user_id, $field_id, $is_user );
+			$website_url = apply_filters( $this->p->lca . '_get_author_website', $website_url, $user_id, $field_id, $user_exists );
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'user id ' . $user_id . ' ' . $field_id . ' = ' . $website_url );

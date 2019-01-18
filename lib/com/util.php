@@ -17,7 +17,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		protected static $cache_crawler_name  = null;		// Saved crawler name from user-agent.
 		protected static $cache_locale_names  = array();	// Saved get_locale() values.
-		protected static $cache_user_exists   = array();	// Saved user_exists() values.
 		protected static $cache_filter_values = array();	// Saved filter return values.
 
 		private static $currencies = array(
@@ -1012,88 +1011,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						return array();
 					}
 			}
-		}
-
-		public static function doing_block_editor() {
-
-			static $is_doing = null;
-
-			/**
-			 * Optimize - once true, stay true.
-			 */
-			if ( $is_doing ) {
-				return true;
-			}
-
-			$is_doing      = false;
-			$post_id       = false;
-			$can_edit_id   = false;
-			$can_edit_type = false;
-			$req_action    = empty( $_REQUEST[ 'action' ] ) ? false : $_REQUEST[ 'action' ];
-			$is_meta_box   = empty( $_REQUEST[ 'meta-box-loader' ] ) && empty( $_REQUEST[ 'meta_box' ] ) ? false : true;
-			$is_gutenbox   = empty( $_REQUEST[ 'gutenberg_meta_boxes' ] ) ? false : true;
-			$is_classic    = isset( $_REQUEST[ 'classic-editor' ] ) && empty( $_REQUEST[ 'classic-editor' ] ) ? false : true;
-
-			if ( ! empty( $_REQUEST[ 'post_ID' ] ) ) {
-				$post_id = $_REQUEST[ 'post_ID' ];
-			} elseif ( ! empty( $_REQUEST[ 'post' ] ) && is_numeric( $_REQUEST[ 'post' ] ) ) {
-				$post_id = $_REQUEST[ 'post' ];
-			}
-
-			if ( $post_id ) {
-
-				$post_type = get_post_type( $post_id );
-
-				if ( $post_type ) {
-
-					if ( function_exists( 'use_block_editor_for_post' ) ) {
-
-						/**
-						 * Calling use_block_editor_for_post() in WordPress v5.0 during post save crashes
-						 * the web browser. See https://core.trac.wordpress.org/ticket/45253 for details.
-						 * Only call use_block_editor_for_post() if using an earlier version of WordPress.
-						 */
-						global $wp_version;
-
-						if ( version_compare( $wp_version, '5.0', '>=' ) ) {	// Assume can edit.
-							$can_edit_id = true;
-						} elseif ( use_block_editor_for_post( $post_id ) ) {
-							$can_edit_id = true;
-						}
-
-					} elseif ( function_exists( 'gutenberg_can_edit_post' ) ) {
-						if ( gutenberg_can_edit_post( $post_id ) ) {
-							$can_edit_id = true;
-						}
-					}
-		
-					if ( function_exists( 'use_block_editor_for_post_type' ) ) {
-						if ( use_block_editor_for_post_type( $post_type ) ) {
-							$can_edit_type = true;
-						}
-					} elseif ( function_exists( 'gutenberg_can_edit_post_type' ) ) {
-						if ( gutenberg_can_edit_post_type( $post_type ) ) {
-							$can_edit_type = true;
-						}
-					}
-				}
-			}
-	
-			if ( $can_edit_id ) {
-				if ( $can_edit_type ) {
-					if ( $is_gutenbox ) {
-						$is_doing = true;
-					} elseif ( $is_meta_box ) {
-						$is_doing = true;
-					} elseif ( ! $is_classic ) {
-						$is_doing = true;
-					} elseif ( $post_id && $req_action === 'edit' ) {
-						$is_doing = true;
-					}
-				}
-			}
-
-			return $is_doing;
 		}
 
 		public static function is_amp() {
@@ -2899,7 +2816,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $user_id ) && $user_id > 0 ) {
 
-				$ret = self::user_exists( $user_id );
+				$ret = SucomUtilWP::user_exists( $user_id );
 
 			} elseif ( is_author() ) {
 
@@ -2931,29 +2848,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return apply_filters( 'sucom_is_user_page', $ret );
-		}
-
-		public static function user_exists( $user_id ) {
-
-			if ( is_numeric( $user_id ) && $user_id > 0 ) { // true is not valid.
-
-				$user_id = (int) $user_id; // Cast as integer for array.
-
-				if ( isset( self::$cache_user_exists[ $user_id ] ) ) {
-
-					return self::$cache_user_exists[ $user_id ];
-
-				} else {
-
-					global $wpdb;
-
-					$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->users . ' WHERE ID = %d';
-
-					return self::$cache_user_exists[ $user_id ] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
-				}
-			}
-
-			return false;
 		}
 
 		public static function get_author_object( $user_id = 0, $output = 'object' ) {
@@ -3277,10 +3171,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $ret;
 		}
 
-		public static function esc_url_encode( $url, $wp_esc_url = true ) {
+		public static function esc_url_encode( $url, $esc_url = true ) {
 
 			$decoded_url = self::decode_html( $url ); // Just in case - decode HTML entities.
-			$clean_url   = $wp_esc_url ? esc_url_raw( $decoded_url ) : $decoded_url;
+			$clean_url   = $esc_url ? esc_url_raw( $decoded_url ) : $decoded_url;
 			$encoded_url = urlencode( $clean_url );
 
 			$replace = array( '%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D' );
@@ -3401,68 +3295,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array( $lib_id, $stub, $action );
 		}
 
-		public static function role_exists( $role ) {
-
-			if ( empty( $role ) ) {	// Just in case.
-				return false;
-			} elseif ( function_exists( 'wp_roles' ) ) {
-				return wp_roles()->is_role( $role );
-			} else {
-				return $GLOBALS[ 'wp_roles' ]->is_role( $role );
-			}
-		}
-
-		public static function get_user_ids_by_roles( array $roles, $blog_id = null ) {
-
-			/**
-			 * Get the user ID => name associative array, and keep only the array keys.
-			 */
-			$user_ids = array_keys( self::get_user_names_by_roles( $roles, $blog_id ) );
-
-			rsort( $user_ids );	// Newest user first.
-
-			return $user_ids;
-		}
-
-		public static function get_user_names_by_roles( array $roles, $blog_id = null ) {
-
-			if ( empty( $roles ) ) {
-				return array();
-			};
-
-			if ( empty( $blog_id ) ) {
-				$blog_id = get_current_blog_id();	// Since WP v3.1.
-			}
-
-			$user_names = array();
-
-			foreach ( $roles as $role ) {
-				$user_names += self::get_user_names( $blog_id, $role );
-			}
-
-			/**
-			 * Use asort() or uasort() to maintain the ID => display_name association.
-			 */
-			if ( defined( 'SORT_STRING' ) ) {
-				asort( $user_names, SORT_STRING );
-			} else {
-				uasort( $user_names, 'strcasecmp' ); // Case-insensitive string comparison.
-			}
-
-			return $user_names;
-		}
-
-		public static function get_user_select_by_roles( array $roles, $blog_id = null, $add_none = true ) {
-
-			$user_select = self::get_user_names_by_roles( $roles, $blog_id );
-
-			if ( $add_none ) {
-				$user_select = array( 'none' => 'none' ) + $user_select;
-			}
-
-			return $user_select;
-		}
-
 		public static function get_user_ids( $blog_id = null, $role = '', $limit = '' ) {
 
 			static $offset = '';
@@ -3501,47 +3333,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $user_ids;
-		}
-
-		public static function get_user_names( $blog_id = null, $role = '', $limit = '' ) {
-
-			static $offset = '';
-
-			if ( empty( $blog_id ) ) {
-				$blog_id = get_current_blog_id();	// Since WP v3.1.
-			}
-
-			if ( is_numeric( $limit ) ) {
-				$offset = '' === $offset ? 0 : $offset + $limit;
-			}
-
-			$user_args  = array(
-				'blog_id' => $blog_id,
-				'offset'  => $offset,
-				'number'  => $limit,
-				'orderby' => 'display_name',
-				'order'   => 'ASC',
-				'role'    => $role,
-				'fields'  => array(	// Save memory and only return only specific fields.
-					'ID',
-					'display_name',
-				)
-			);
-
-			$user_names = array();
-
-			foreach ( get_users( $user_args ) as $user_obj ) {
-				$user_names[ $user_obj->ID ] = $user_obj->display_name;
-			}
-
-			if ( '' !== $offset ) {
-				if ( empty( $user_names ) ) {
-					$offset = '';	// Allow the next call to start fresh.
-					return false;	// To break the while loop.
-				}
-			}
-
-			return $user_names;
 		}
 
 		public static function count_diff( &$arr, $max = 0 ) {
@@ -3686,38 +3477,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN ) : (bool) $mixed;
 		}
 
-		public static function get_theme_slug_version( $stylesheet = null, $theme_root = null ) {
-
-			$theme = wp_get_theme( $stylesheet, $theme_root );
-
-			return $theme->get_template() . '-' . $theme->Version;
-		}
-
-		public static function get_header_files( $skip_backups = true ) {
-
-			$ret_array    = array();
-			$parent_dir   = get_template_directory();
-			$child_dir    = get_stylesheet_directory();
-			$header_files = (array) glob( $parent_dir . '/header*.php' );	// Returns false on error.
-
-			if ( $parent_dir !== $child_dir ) {
-				$header_files = array_merge( $header_files, (array) glob( $child_dir . '/header*.php' ) );
-			}
-
-			foreach ( $header_files as $tmpl_file ) {
-
-				if ( $skip_backups && preg_match( '/~backup-[0-9-]+$/', $tmpl_file ) ) { // Skip backup files.
-					continue;
-				}
-
-				$tmpl_base = basename( $tmpl_file );
-
-				$ret_array[ $tmpl_base ] = $tmpl_file; // Child template overwrites parent.
-			}
-
-			return $ret_array;
-		}
-
 		public static function minify_css( $css_data, $lca ) {
 
 			if ( ! empty( $css_data ) ) {
@@ -3760,62 +3519,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return preg_replace( '/^(.*)( [\[\(].+[\)\]])?$/U', '$1 ' . $type . '$2', $name );
 		}
 
-		public static function get_wp_hook_names( $filter_name ) {
-
-			global $wp_filter;
-
-			$hook_names = array();
-
-			if ( isset( $wp_filter[ $filter_name ]->callbacks ) ) {
-				foreach ( $wp_filter[ $filter_name ]->callbacks as $hook_prio => $hook_group ) {
-					foreach ( $hook_group as $hook_ref => $hook_info ) {
-						if ( ( $hook_name = self::get_hook_function_name( $hook_info ) ) !== '' ) {
-							$hook_names[] = $hook_name;
-						}
-					}
-				}
-			}
-
-			return $hook_names;
-		}
-
-		/**
-		 * Used by the get_wp_hook_names() method.
-		 */
-		public static function get_hook_function_name( array $hook_info ) {
-
-			$hook_name = '';
-
-			if ( ! isset( $hook_info[ 'function' ] ) ) {              // Just in case.
-
-				return $hook_name;                              // Stop here - return an empty string.
-
-			} elseif ( is_array( $hook_info[ 'function' ] ) ) {       // Hook is a class / method.
-
-				$class_name    = '';
-				$function_name = '';
-
-				if ( is_object( $hook_info[ 'function' ][0] ) ) {
-					$class_name = get_class( $hook_info[ 'function' ][0] );
-				} elseif ( is_string( $hook_info[ 'function' ][0] ) ) {
-					$class_name = $hook_info[ 'function' ][0];
-				}
-
-				if ( is_string( $hook_info[ 'function' ][1] ) ) {
-					$function_name = $hook_info[ 'function' ][1];
-
-				}
-
-				return $class_name . '::' . $function_name;
-
-			} elseif ( is_string ( $hook_info[ 'function' ] ) ) { // Hook is a function.
-
-				return $hook_info[ 'function' ];
-			}
-
-			return $hook_name;
-		}
-		
 		/**
 		 * Site Title
 		 *

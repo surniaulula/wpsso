@@ -596,7 +596,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$this->p->debug->mark( 'define image sizes' );	// End timer.
 
-				$this->p->debug->log_arr( 'get_all_image_sizes', WpssoUtilWP::get_image_sizes() );
+				$this->p->debug->log_arr( 'get_all_image_sizes', SucomUtilWP::get_image_sizes() );
 			}
 		}
 
@@ -2851,24 +2851,31 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Check for required apply_filters() arguments.
 			 */
 			if ( empty( $args[0] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: filter name missing from parameter array' );
 				}
+
 				return '';
+
 			} elseif ( ! isset( $args[1] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: filter value missing from parameter array' );
 				}
+
 				return '';
 			}
 
-			$filter_name = $args[0];
+			$filter_name  = $args[0];
 			$filter_value = $args[1];
 
 			if ( ! has_filter( $filter_name ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: ' . $filter_name . ' has no filter hooks' );
 				}
+
 				return $filter_value;
 			}
 
@@ -2876,10 +2883,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Prevent recursive loops - the global variable is defined before applying the filters.
 			 */
 			if ( ! empty( $GLOBALS[$this->p->lca . '_doing_filter_' . $filter_name] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: global variable ' . 
 						$this->p->lca . '_doing_filter_' . $filter_name . ' is true' );
 				}
+
 				return $filter_value;
 			}
 

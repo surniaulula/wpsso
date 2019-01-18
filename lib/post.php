@@ -641,7 +641,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'head meta skipped: post is being trashed' );
 				}
 
-			} elseif ( SucomUtil::doing_block_editor() && ! empty( $_REQUEST['meta_box'] ) ) {
+			} elseif ( SucomUtilWP::doing_block_editor() && ! empty( $_REQUEST['meta_box'] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'head meta skipped: doing block editor for meta box' );

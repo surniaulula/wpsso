@@ -88,7 +88,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * Hook admin_head to allow for setting changes, plugin activation / loading, etc.
 				 */
-				if ( ! SucomUtil::doing_block_editor() ) {
+				if ( ! SucomUtilWP::doing_block_editor() ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'not doing the block editor - checking for conflicts and required' );
@@ -3219,7 +3219,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// exit early
 			}
 
-			foreach ( SucomUtil::get_header_files() as $tmpl_file ) {
+			$header_files = SucomUtilWP::get_theme_header_files();
+
+			foreach ( $header_files as $tmpl_base => $tmpl_file ) {
 
 				$html_stripped = SucomUtil::get_stripped_php( $tmpl_file );
 
@@ -3232,7 +3234,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					if ( $this->p->notice->is_admin_pre_notices() ) {
 
 						$error_msg  = $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' );
-						$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtil::get_theme_slug_version();
+						$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
 
 						$this->p->notice->warn( $error_msg, null, $notice_key, true );
 					}
@@ -3245,8 +3247,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function modify_tmpl_head_attributes() {
 
 			$have_changes    = false;
-			$header_files    = SucomUtil::get_header_files();
-			$head_action_php = '<head <?php do_action( \'add_head_attributes\' ); ?' . '>>';	// breakup closing php for vim
+			$header_files    = SucomUtilWP::get_theme_header_files();
+			$head_action_php = '<head <?php do_action( \'add_head_attributes\' ); ?' . '>>';	// Breakup the closing php string for vim.
 
 			if ( empty( $header_files ) ) {
 
@@ -3255,7 +3257,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return;	// Exit early.
 			}
 
-			foreach ( $header_files as $tmpl_file ) {
+			foreach ( $header_files as $tmpl_base => $tmpl_file ) {
 
 				$tmpl_base     = basename( $tmpl_file );
 				$backup_file   = $tmpl_file . '~backup-' . date( 'Ymd-His' );
@@ -3301,9 +3303,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $have_changes ) {
 
-				$notice_key  = 'notice-header-tmpl-no-head-attr-' . SucomUtil::get_theme_slug_version();
+				$notice_key  = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
 				$admin_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'admin' ];
-				$user_ids    = SucomUtil::get_user_ids_by_roles( $admin_roles );
+				$user_ids    = SucomUtilWP::get_user_ids_for_roles( $admin_roles );
 
 				$this->p->notice->clear_key( $notice_key, $user_ids );	// Just in case.
 			}
@@ -3538,7 +3540,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$owner_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
 
-			$site_owners = SucomUtil::get_user_select_by_roles( $owner_roles );
+			$site_owners = SucomUtilWP::get_user_select_for_roles( $owner_roles );
 
 			$table_rows[ 'schema_home_person_id' ] = '' . 
 			$this->form->get_th_html( _x( 'User for Person Social Profile', 'option label', 'wpsso' ), '', 'schema_home_person_id' ) . 

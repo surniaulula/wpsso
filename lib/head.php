@@ -1032,7 +1032,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					case 'twitter:app:url:ipad':
 					case 'twitter:app:url:googleplay':
 
-						$parts[ 5 ] = SucomUtil::esc_url_encode( $parts[ 5 ], false );	// $wp_esc_url is false.
+						$parts[ 5 ] = SucomUtil::esc_url_encode( $parts[ 5 ], $esc_url = false );
 
 						break;
 

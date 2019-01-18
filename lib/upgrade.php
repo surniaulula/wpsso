@@ -394,7 +394,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				 */
 				if ( $prev_version > 0 && $prev_version <= 599 ) {
 					if ( empty( $this->p->options['plugin_new_user_is_person'] ) ) {
-						foreach ( SucomUtil::get_user_ids_by_roles( array( 'subscriber' ) ) as $user_id ) {
+						foreach ( SucomUtilWP::get_user_ids_for_roles( array( 'subscriber' ) ) as $user_id ) {
 							$user_obj = get_user_by( 'ID', $user_id );
 							$user_obj->remove_role( 'person' );
 						}

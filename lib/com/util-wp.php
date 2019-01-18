@@ -13,6 +13,8 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 	class SucomUtilWP {
 
+		protected static $cache_user_exists = array();	// Saved user_exists() values.
+
 		/**
 		 * wp_encode_emoji() is only available since WordPress v4.2.
 		 * Use the WordPress function if available, otherwise provide the same functionality.
@@ -326,6 +328,304 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			}
 
 			return array( 'width' => $width, 'height' => $height, 'crop' => $crop );
+		}
+
+		public static function get_filter_hook_names( $filter_name ) {
+
+			global $wp_filter;
+
+			$hook_names = array();
+
+			if ( isset( $wp_filter[ $filter_name ]->callbacks ) ) {
+				foreach ( $wp_filter[ $filter_name ]->callbacks as $hook_prio => $hook_group ) {
+					foreach ( $hook_group as $hook_ref => $hook_info ) {
+						if ( ( $hook_name = self::get_hook_function_name( $hook_info ) ) !== '' ) {
+							$hook_names[] = $hook_name;
+						}
+					}
+				}
+			}
+
+			return $hook_names;
+		}
+
+		/**
+		 * Used by the get_wp_hook_names() method.
+		 */
+		public static function get_hook_function_name( array $hook_info ) {
+
+			$hook_name = '';
+
+			if ( ! isset( $hook_info[ 'function' ] ) ) {              // Just in case.
+
+				return $hook_name;                              // Stop here - return an empty string.
+
+			} elseif ( is_array( $hook_info[ 'function' ] ) ) {       // Hook is a class / method.
+
+				$class_name    = '';
+				$function_name = '';
+
+				if ( is_object( $hook_info[ 'function' ][0] ) ) {
+					$class_name = get_class( $hook_info[ 'function' ][0] );
+				} elseif ( is_string( $hook_info[ 'function' ][0] ) ) {
+					$class_name = $hook_info[ 'function' ][0];
+				}
+
+				if ( is_string( $hook_info[ 'function' ][1] ) ) {
+					$function_name = $hook_info[ 'function' ][1];
+
+				}
+
+				return $class_name . '::' . $function_name;
+
+			} elseif ( is_string ( $hook_info[ 'function' ] ) ) { // Hook is a function.
+
+				return $hook_info[ 'function' ];
+			}
+
+			return $hook_name;
+		}
+
+		public static function get_theme_slug_version( $stylesheet = null, $theme_root = null ) {
+
+			$theme = wp_get_theme( $stylesheet, $theme_root );
+
+			return $theme->get_template() . '-' . $theme->Version;
+		}
+
+		public static function get_theme_header_files( $skip_backups = true ) {
+
+			$header_files = array();
+			$parent_dir   = get_template_directory();
+			$child_dir    = get_stylesheet_directory();
+			$tmpl_files   = (array) glob( $parent_dir . '/header*.php' );	// Returns false on error.
+
+			if ( $parent_dir !== $child_dir ) {
+				$tmpl_files = array_merge( $tmpl_files, (array) glob( $child_dir . '/header*.php' ) );
+			}
+
+			foreach ( $tmpl_files as $tmpl_file ) {
+
+				if ( $skip_backups && preg_match( '/^.*\.php~.*$/', $tmpl_file ) ) { // Skip backup files.
+					continue;
+				}
+
+				$header_files[ basename( $tmpl_file ) ] = $tmpl_file; // Child template overwrites parent.
+			}
+
+			return $header_files;
+		}
+
+		public static function doing_block_editor() {
+
+			static $is_doing = null;
+
+			/**
+			 * Optimize - once true, stay true.
+			 */
+			if ( $is_doing ) {
+				return true;
+			}
+
+			$is_doing      = false;
+			$post_id       = false;
+			$can_edit_id   = false;
+			$can_edit_type = false;
+			$req_action    = empty( $_REQUEST[ 'action' ] ) ? false : $_REQUEST[ 'action' ];
+			$is_meta_box   = empty( $_REQUEST[ 'meta-box-loader' ] ) && empty( $_REQUEST[ 'meta_box' ] ) ? false : true;
+			$is_gutenbox   = empty( $_REQUEST[ 'gutenberg_meta_boxes' ] ) ? false : true;
+			$is_classic    = isset( $_REQUEST[ 'classic-editor' ] ) && empty( $_REQUEST[ 'classic-editor' ] ) ? false : true;
+
+			if ( ! empty( $_REQUEST[ 'post_ID' ] ) ) {
+				$post_id = $_REQUEST[ 'post_ID' ];
+			} elseif ( ! empty( $_REQUEST[ 'post' ] ) && is_numeric( $_REQUEST[ 'post' ] ) ) {
+				$post_id = $_REQUEST[ 'post' ];
+			}
+
+			if ( $post_id ) {
+
+				$post_type = get_post_type( $post_id );
+
+				if ( $post_type ) {
+
+					if ( function_exists( 'use_block_editor_for_post' ) ) {
+
+						/**
+						 * Calling use_block_editor_for_post() in WordPress v5.0 during post save crashes
+						 * the web browser. See https://core.trac.wordpress.org/ticket/45253 for details.
+						 * Only call use_block_editor_for_post() if using an earlier version of WordPress.
+						 */
+						global $wp_version;
+
+						if ( version_compare( $wp_version, '5.0', '>=' ) ) {	// Assume can edit.
+							$can_edit_id = true;
+						} elseif ( use_block_editor_for_post( $post_id ) ) {
+							$can_edit_id = true;
+						}
+
+					} elseif ( function_exists( 'gutenberg_can_edit_post' ) ) {
+						if ( gutenberg_can_edit_post( $post_id ) ) {
+							$can_edit_id = true;
+						}
+					}
+		
+					if ( function_exists( 'use_block_editor_for_post_type' ) ) {
+						if ( use_block_editor_for_post_type( $post_type ) ) {
+							$can_edit_type = true;
+						}
+					} elseif ( function_exists( 'gutenberg_can_edit_post_type' ) ) {
+						if ( gutenberg_can_edit_post_type( $post_type ) ) {
+							$can_edit_type = true;
+						}
+					}
+				}
+			}
+	
+			if ( $can_edit_id ) {
+				if ( $can_edit_type ) {
+					if ( $is_gutenbox ) {
+						$is_doing = true;
+					} elseif ( $is_meta_box ) {
+						$is_doing = true;
+					} elseif ( ! $is_classic ) {
+						$is_doing = true;
+					} elseif ( $post_id && $req_action === 'edit' ) {
+						$is_doing = true;
+					}
+				}
+			}
+
+			return $is_doing;
+		}
+
+		public static function role_exists( $role ) {
+
+			$ret = false;
+
+			if ( ! empty( $role ) ) {	// Just in case.
+				if ( function_exists( 'wp_roles' ) ) {
+					$ret = wp_roles()->is_role( $role );
+				} else {
+					$ret = $GLOBALS[ 'wp_roles' ]->is_role( $role );
+				}
+			}
+
+			return $ret;
+		}
+
+		public static function user_exists( $user_id ) {
+
+			if ( is_numeric( $user_id ) && $user_id > 0 ) { // true is not valid.
+
+				$user_id = (int) $user_id; // Cast as integer for array.
+
+				if ( isset( self::$cache_user_exists[ $user_id ] ) ) {
+
+					return self::$cache_user_exists[ $user_id ];
+
+				} else {
+
+					global $wpdb;
+
+					$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->users . ' WHERE ID = %d';
+
+					return self::$cache_user_exists[ $user_id ] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
+				}
+			}
+
+			return false;
+		}
+
+		public static function get_user_ids_for_roles( array $roles, $blog_id = null ) {
+
+			/**
+			 * Get the user ID => name associative array, and keep only the array keys.
+			 */
+			$user_ids = array_keys( self::get_user_names_for_roles( $roles, $blog_id ) );
+
+			rsort( $user_ids );	// Newest user first.
+
+			return $user_ids;
+		}
+
+		public static function get_user_select_for_roles( array $roles, $blog_id = null, $add_none = true ) {
+
+			$user_select = self::get_user_names_for_roles( $roles, $blog_id );
+
+			if ( $add_none ) {
+				$user_select = array( 'none' => 'none' ) + $user_select;
+			}
+
+			return $user_select;
+		}
+
+		public static function get_user_names_for_roles( array $roles, $blog_id = null ) {
+
+			if ( empty( $roles ) ) {
+				return array();
+			};
+
+			if ( empty( $blog_id ) ) {
+				$blog_id = get_current_blog_id();	// Since WP v3.1.
+			}
+
+			$user_names = array();
+
+			foreach ( $roles as $role ) {
+				$user_names += self::get_user_names( $blog_id, $role );
+			}
+
+			/**
+			 * Use asort() or uasort() to maintain the ID => display_name association.
+			 */
+			if ( defined( 'SORT_STRING' ) ) {
+				asort( $user_names, SORT_STRING );
+			} else {
+				uasort( $user_names, 'strcasecmp' ); // Case-insensitive string comparison.
+			}
+
+			return $user_names;
+		}
+
+		public static function get_user_names( $blog_id = null, $role = '', $limit = '' ) {
+
+			static $offset = '';
+
+			if ( empty( $blog_id ) ) {
+				$blog_id = get_current_blog_id();	// Since WP v3.1.
+			}
+
+			if ( is_numeric( $limit ) ) {
+				$offset = '' === $offset ? 0 : $offset + $limit;
+			}
+
+			$user_args  = array(
+				'blog_id' => $blog_id,
+				'offset'  => $offset,
+				'number'  => $limit,
+				'orderby' => 'display_name',
+				'order'   => 'ASC',
+				'role'    => $role,
+				'fields'  => array(	// Save memory and only return only specific fields.
+					'ID',
+					'display_name',
+				)
+			);
+
+			$user_names = array();
+
+			foreach ( get_users( $user_args ) as $user_obj ) {
+				$user_names[ $user_obj->ID ] = $user_obj->display_name;
+			}
+
+			if ( '' !== $offset ) {
+				if ( empty( $user_names ) ) {
+					$offset = '';	// Allow the next call to start fresh.
+					return false;	// To break the while loop.
+				}
+			}
+
+			return $user_names;
 		}
 	}
 }

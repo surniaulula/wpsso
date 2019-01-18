@@ -501,7 +501,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Exit early if this is a block editor page.
 			 * The notices will be retrieved using an ajax call on page load and post save.
 			 */
-			if ( SucomUtil::doing_block_editor() ) {
+			if ( SucomUtilWP::doing_block_editor() ) {
 				return;
 			}
 
