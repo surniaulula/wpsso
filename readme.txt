@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.21.0-dev.1 (2019/01/16)**
+**Version 4.21.0-dev.2 (2019/01/18)**
 
 * *New Features*
 	* None.
@@ -440,7 +440,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Developer Notes*
 	* Added a new SucomPlugin class.
-	* Moved SucomUtil raw_do_option() to the SucomUtilWP class.
+	* Moved several WordPress related methods from the SucomUtil class to the SucomUtilWP class.
 	* Moved the WpssoOptions check_banner_image_size() call from check_options() to refresh_image_url_sizes().
 	* Changed calls from 'SucomUtil' to 'self' in the WpssoUtil class (which extends SucomUtil).
 	* Renamed SucomUtil is_opt_id() to is_valid_option_id().
@@ -574,9 +574,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.21.0-dev.1 =
+= 4.21.0-dev.2 =
 
-(2019/01/16) Added a new SucomPlugin class. Moved the WpssoOptions check_banner_image_size() call from check_options() to refresh_image_url_sizes().
+(2019/01/18) Added a new SucomPlugin class. Moved the WpssoOptions check_banner_image_size() call from check_options() to refresh_image_url_sizes().
 
 = 4.20.0 =
 
