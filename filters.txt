@@ -313,6 +313,8 @@
 
 'wpsso_term_url' ( $url, $mod, $add_page, $src_id )
 
+'wpsso_text' ( $text, $mod, $add_hashtags, $md_key )
+
 'wpsso_the_content' ( $content, $mod, $read_cache, $md_key )
 
 'wpsso_the_content_seed' ( '', $mod, $read_cache, $md_key )
