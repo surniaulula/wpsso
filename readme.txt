@@ -430,11 +430,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.21.0-dev.4 (2019/10/19)**
+**Version 4.21.0-dev.5 (2019/10/19)**
 
 * *New Features*
 	* None.
 * *Improvements*
+	* Added a new "meta name thumbnail" meta tag.
 	* Added new status under the SSO > Dashboard > Standard Features metabox:
 		* Use Filtered (SEO) Title
 		* Use WordPress Content Filters
@@ -443,6 +444,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Developer Notes*
 	* Added a new SucomPlugin class.
+	* Added a new WpssoMetaName class.
 	* Moved several WordPress related methods from the SucomUtil class to the SucomUtilWP class.
 	* Optimized the WpssoOptions check_banner_image_size() call by moving it from check_options() to refresh_image_url_sizes().
 	* Changed calls from 'SucomUtil' to 'self' in the WpssoUtil class (which extends SucomUtil).
@@ -577,7 +579,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.21.0-dev.4 =
+= 4.21.0-dev.5 =
 
 (2019/10/19) Added new status under the SSO > Dashboard > Standard Features metabox. Added a new SucomPlugin class. Optimized the WpssoOptions check_banner_image_size() call.
 
