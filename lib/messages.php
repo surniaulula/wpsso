@@ -859,6 +859,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						case 'tooltip-plugin_cf_addl_type_urls':	// Microdata Type URLs Custom Field.
+						case 'tooltip-plugin_cf_howto_steps':
+						case 'tooltip-plugin_cf_howto_supplies':
+						case 'tooltip-plugin_cf_howto_tools':
 						case 'tooltip-plugin_cf_img_url':
 						case 'tooltip-plugin_cf_product_avail':
 						case 'tooltip-plugin_cf_product_brand':
@@ -882,14 +885,26 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_cf_vid_embed':
 						case 'tooltip-plugin_cf_vid_url':
 
+							$cf_key = substr( $msg_key, 8 );
+
+							$md_key = empty( $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ] ) ?
+								false : $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ];
+
+							$is_multi = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $md_key ] ) ? false : true;
+
 							$plugin_cf_info = $this->get_plugin_cf_info( 'tooltip-plugin_cf_', $msg_key );
-							$metabox_title  = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 							if ( ! empty( $plugin_cf_info ) ) {	// Just in case.
 
 								$text = sprintf( __( 'If your theme or another plugin provides a custom field for %1$s, you may enter its custom field name here.', 'wpsso' ), $plugin_cf_info[ 1 ] ) . ' ';
 							
-								$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[ 0 ], $metabox_title );
+								$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[ 0 ], $metabox_title ) . ' ';
+
+								if ( $is_multi ) {
+									$text .= sprintf( __( 'The "%1$s" option supports multiple input fields &mdash; the custom field value will be split on newline characters, and each line used for individual input fields.', 'wpsso' ), $plugin_cf_info[ 0 ] );
+								}
 							}
 
 							break;
@@ -2354,6 +2369,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					$key_prefix . 'addl_type_urls' => array(
 						_x( 'Microdata Type URLs', 'option label', 'wpsso' ),
 						_x( 'additional microdata type URLs', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'howto_steps' => array(
+						_x( 'HowTo Steps', 'option label', 'wpsso' ),
+						_x( 'how-to steps', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'howto_supplies' => array(
+						_x( 'HowTo Supplies', 'option label', 'wpsso' ),
+						_x( 'how-to supplies', 'tooltip fragment', 'wpsso' ),
+					),
+					$key_prefix . 'howto_tools' => array(
+						_x( 'HowTo Tools', 'option label', 'wpsso' ),
+						_x( 'how-to tools', 'tooltip fragment', 'wpsso' ),
 					),
 					$key_prefix . 'img_url' => array(
 						_x( 'Image URL', 'option label', 'wpsso' ),

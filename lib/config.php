@@ -17,7 +17,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.21.0-dev.5',	// Plugin version.
+					'version'     => '4.21.0-dev.6',	// Plugin version.
 					'opt_version' => '624',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
@@ -1145,6 +1145,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_def_currency'           => 'USD',		// Default Currency.
 					'plugin_cf_img_url'             => '_format_image_url',	// Image URL Custom Field.
 					'plugin_cf_addl_type_urls'      => '',			// Microdata Type URLs Custom Field.
+					'plugin_cf_howto_steps'         => '',			// HowTo Steps Custom Field.
+					'plugin_cf_howto_supplies'      => '',			// HowTo Supplies Custom Field.
+					'plugin_cf_howto_tools'         => '',			// HowTo Tools Custom Field.
 					'plugin_cf_product_avail'       => '',			// Product Availability Custom Field.
 					'plugin_cf_product_brand'       => '',			// Product Brand Custom Field.
 					'plugin_cf_product_color'       => '',			// Product Color Custom Field.
@@ -1387,8 +1390,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Custom field to meta data index.
 				 */
 				'cf_md_key' => array(
-					'plugin_cf_img_url'             => 'og_img_url',
 					'plugin_cf_addl_type_urls'      => 'schema_addl_type_url',	// Microdata Type URLs Custom Field.
+					'plugin_cf_howto_steps'         => 'schema_howto_step',
+					'plugin_cf_howto_supplies'      => 'schema_howto_supply',
+					'plugin_cf_howto_tools'         => 'schema_howto_tool',
+					'plugin_cf_img_url'             => 'og_img_url',
 					'plugin_cf_product_avail'       => 'product_avail',
 					'plugin_cf_product_brand'       => 'product_brand',
 					'plugin_cf_product_color'       => 'product_color',
@@ -1408,8 +1414,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_recipe_ingredients'  => 'schema_recipe_ingredient',
 					'plugin_cf_recipe_instructions' => 'schema_recipe_instruction',
 					'plugin_cf_sameas_urls'         => 'schema_sameas_url',
-					'plugin_cf_vid_url'             => 'og_vid_url',
 					'plugin_cf_vid_embed'           => 'og_vid_embed',
+					'plugin_cf_vid_url'             => 'og_vid_url',
 				),
 				
 				/**
@@ -1417,6 +1423,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'cf_md_multi' => array(
 					'schema_addl_type_url'      => true,	// Microdata Type URLs.
+					'schema_howto_step'         => true,
+					'schema_howto_supply'       => true,
+					'schema_howto_tool'         => true,
 					'schema_recipe_ingredient'  => true,
 					'schema_recipe_instruction' => true,
 					'schema_sameas_url'         => true,
@@ -1427,7 +1436,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '1.17.0-dev.5',	// Minimum update manager version (soft limit).
+				'rec_version' => '1.17.0-dev.6',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -1854,6 +1863,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'cf_labels' => array(		// Custom field option labels.
 					'plugin_cf_img_url'             => 'Image URL Custom Field',
 					'plugin_cf_addl_type_urls'      => 'Microdata Type URLs Custom Field',
+					'plugin_cf_howto_steps'         => 'HowTo Steps Custom Field',
+					'plugin_cf_howto_supplies'      => 'HowTo Supplies Custom Field',
+					'plugin_cf_howto_tools'         => 'HowTo Tools Custom Field',
 					'plugin_cf_product_avail'       => 'Product Availability Custom Field',
 					'plugin_cf_product_brand'       => 'Product Brand Custom Field',
 					'plugin_cf_product_color'       => 'Product Color Custom Field',

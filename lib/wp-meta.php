@@ -1468,12 +1468,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/* Example config:
 			 *
 			 *	'cf_md_key' => array(
-			 *		'plugin_cf_img_url'             => 'og_img_url',
-			 *		'plugin_cf_vid_url'             => 'og_vid_url',
-			 *		'plugin_cf_vid_embed'           => 'og_vid_embed',
 			 *		'plugin_cf_addl_type_urls'      => 'schema_addl_type_url',
-			 *		'plugin_cf_recipe_ingredients'  => 'schema_recipe_ingredient',
-			 *		'plugin_cf_recipe_instructions' => 'schema_recipe_instruction',
+			 *		'plugin_cf_howto_steps'         => 'schema_howto_step',
+			 *		'plugin_cf_howto_supplies'      => 'schema_howto_supply',
+			 *		'plugin_cf_howto_tools'         => 'schema_howto_tool',
+			 *		'plugin_cf_img_url'             => 'og_img_url',
 			 *		'plugin_cf_product_avail'       => 'product_avail',
 			 *		'plugin_cf_product_brand'       => 'product_brand',
 			 *		'plugin_cf_product_color'       => 'product_color',
@@ -1484,7 +1483,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 *		'plugin_cf_product_currency'    => 'product_currency',
 			 *		'plugin_cf_product_size'        => 'product_size',
 			 *		'plugin_cf_product_gender'      => 'product_gender',
+			 *		'plugin_cf_recipe_ingredients'  => 'schema_recipe_ingredient',
+			 *		'plugin_cf_recipe_instructions' => 'schema_recipe_instruction',
 			 *		'plugin_cf_sameas_urls'         => 'schema_sameas_url',
+			 *		'plugin_cf_vid_embed'           => 'og_vid_embed',
+			 *		'plugin_cf_vid_url'             => 'og_vid_url',
 			 *	),
 			 */
 			$cf_md_keys = (array) apply_filters( $this->p->lca . '_cf_md_keys', $this->p->cf['opt']['cf_md_key'] );
@@ -1525,7 +1528,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$this->p->debug->log( $meta_key . ' meta key found for ' . $md_key . ' option' );
 				}
 
-				$mixed  = maybe_unserialize( $wp_meta[$meta_key][0] );	// Could be a string or an array.
+				$mixed = maybe_unserialize( $wp_meta[ $meta_key ][ 0 ] );	// Could be a string or an array.
+
 				$values = array();
 
 				/**
