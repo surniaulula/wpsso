@@ -1594,6 +1594,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						'(feature) Debug Logging Enabled' => array(
 							'classname' => 'SucomDebug',
 						),
+						'(feature) Use Filtered (SEO) Title' => array(
+							'status' => $this->p->options[ 'plugin_filter_title' ] ? 'on' : 'off',
+						),
+						'(feature) Use WordPress Content Filters' => array(
+							'status' => $this->p->options[ 'plugin_filter_content' ] ? 'on' : 'rec',
+						),
+						'(feature) Use WordPress Excerpt Filters' => array(
+							'status' => $this->p->options[ 'plugin_filter_excerpt' ] ? 'on' : 'off',
+						),
 						'(code) Facebook / Open Graph Meta Tags' => array(
 							'status' => class_exists( $this->p->lca . 'opengraph' ) ? 'on' : 'rec',
 						),
