@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.21.0-dev.3 (2019/10/19)**
+**Version 4.21.0-dev.4 (2019/10/19)**
 
 * *New Features*
 	* None.
@@ -574,7 +574,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.21.0-dev.3 =
+= 4.21.0-dev.4 =
 
 (2019/10/19) Added a new SucomPlugin class. Moved the WpssoOptions check_banner_image_size() call from check_options() to refresh_image_url_sizes().
 
