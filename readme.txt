@@ -430,16 +430,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.21.0-dev.5 (2019/10/19)**
+**Version 4.21.0-dev.6 (2019/10/19)**
 
 * *New Features*
 	* None.
 * *Improvements*
 	* Added a new "meta name thumbnail" meta tag.
-	* Added new status under the SSO > Dashboard > Standard Features metabox:
+	* Added new status under the SSO &gt; Dashboard &gt; Standard Features metabox:
 		* Use Filtered (SEO) Title
 		* Use WordPress Content Filters
 		* Use WordPress Excerpt Filters
+	* Added new options under the SSO &gt; Advanced &gt; Custom Meta tab:
+		* HowTo Steps Custom Field
+		* HowTo Supplies Custom Field
+		* HowTo Tools Custom Field
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -580,9 +584,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.21.0-dev.5 =
+= 4.21.0-dev.6 =
 
-(2019/10/19) Added new status under the SSO > Dashboard > Standard Features metabox. Added a new SucomPlugin class. Optimized the WpssoOptions check_banner_image_size() call.
+(2019/10/19) Added a new "meta name thumbnail" meta tag. Added new status under the SSO &gt; Dashboard &gt; Standard Features metabox. Added new options under the SSO &gt; Advanced &gt; Custom Meta tab:
 
 = 4.20.0 =
 
