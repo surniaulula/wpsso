@@ -255,7 +255,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// begin timer
 			}
 
-			$sort_cols  = WpssoMeta::get_sortable_columns();
+			$sort_cols  = WpssoWpMeta::get_sortable_columns();
 			$metabox_id = $this->p->cf['meta'][ 'id' ];
 			$menu       = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ]['submenu'] );
 			$sitemenu   = $this->p->lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ]['sitesubmenu'] );

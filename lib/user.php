@@ -15,7 +15,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 	 * This class is extended by gpl/util/user.php or pro/util/user.php
 	 * and the class object is created as $this->p->m[ 'util' ][ 'user' ].
 	 */
-	class WpssoUser extends WpssoMeta {
+	class WpssoUser extends WpssoWpMeta {
 
 		protected static $cache_pref = array();
 
@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					add_action( 'admin_init', array( $this, 'add_meta_boxes' ) );
 
 					/**
-					 * Sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties.
+					 * Sets the WpssoWpMeta::$head_meta_tags and WpssoWpMeta::$head_meta_info class properties.
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 200, 1 );
@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mod = WpssoMeta::$mod_defaults;
+			$mod = WpssoWpMeta::$mod_defaults;
 
 			/**
 			 * Common elements.
@@ -344,7 +344,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		/**
 		 * Hooked into the current_screen action.
-		 * Sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties.
+		 * Sets the WpssoWpMeta::$head_meta_tags and WpssoWpMeta::$head_meta_info class properties.
 		 */
 		public function load_meta_page( $screen = false ) {
 
@@ -355,7 +355,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * All meta modules set this property, so use it to optimize code execution.
 			 */
-			if ( false !== WpssoMeta::$head_meta_tags || ! isset( $screen->id ) ) {
+			if ( false !== WpssoWpMeta::$head_meta_tags || ! isset( $screen->id ) ) {
 				return;
 			}
 
@@ -388,7 +388,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 			}
 
-			WpssoMeta::$head_meta_tags = array();
+			WpssoWpMeta::$head_meta_tags = array();
 
 			$add_metabox = empty( $this->p->options[ 'plugin_add_to_user' ] ) ? false : true;
 			$add_metabox = apply_filters( $this->p->lca . '_add_metabox_user', $add_metabox, $user_id );
@@ -409,15 +409,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/**
 				 * $read_cache is false to generate notices etc.
 				 */
-				WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( false, $mod, false );
-				WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
+				WpssoWpMeta::$head_meta_tags = $this->p->head->get_head_array( false, $mod, false );
+				WpssoWpMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_meta_tags );
 
 				/**
 				 * Check for missing open graph image and description values.
 				 */
 				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
-					if ( empty( WpssoMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
+					if ( empty( WpssoWpMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
@@ -581,8 +581,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = array_merge(
-					$this->get_table_rows( $metabox_id, $tab_key, WpssoMeta::$head_meta_info, $mod ),
-					(array) apply_filters( $filter_name, array(), $this->form, WpssoMeta::$head_meta_info, $mod )
+					$this->get_table_rows( $metabox_id, $tab_key, WpssoWpMeta::$head_meta_info, $mod ),
+					(array) apply_filters( $filter_name, array(), $this->form, WpssoWpMeta::$head_meta_info, $mod )
 				);
 			}
 
@@ -1187,7 +1187,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		public function clear_cache( $user_id, $rel_id = false ) {
 
 			$mod           = $this->get_mod( $user_id );
-			$col_meta_keys = WpssoMeta::get_column_meta_keys();
+			$col_meta_keys = WpssoWpMeta::get_column_meta_keys();
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 				delete_user_meta( $user_id, $meta_key );

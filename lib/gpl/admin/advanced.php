@@ -222,7 +222,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 			$cols = '<table class="plugin-list-columns">' . "\n" . '<tr>';
 
-			foreach ( WpssoMeta::get_column_headers() as $col_key => $col_header ) {
+			foreach ( WpssoWpMeta::get_column_headers() as $col_key => $col_header ) {
 				$cols .= '<th>' . $col_header . '</th>';
 			}
 
@@ -238,7 +238,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 
 				$cols .= '<tr>';
 
-				foreach ( WpssoMeta::get_column_headers() as $col_key => $col_header ) {
+				foreach ( WpssoWpMeta::get_column_headers() as $col_key => $col_header ) {
 					if ( $form->in_defaults( 'plugin_' . $col_key . '_col_' . $mod_name ) ) {	// Just in case.
 						$cols .= $form->get_td_no_checkbox( 'plugin_' . $col_key . '_col_' . $mod_name, '', $narrow = true );
 					} else {

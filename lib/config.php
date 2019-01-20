@@ -3171,22 +3171,30 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/filters.php';
 			require_once WPSSO_PLUGINDIR . 'lib/functions.php';
 			require_once WPSSO_PLUGINDIR . 'lib/head.php';
-			require_once WPSSO_PLUGINDIR . 'lib/link_rel.php';
 			require_once WPSSO_PLUGINDIR . 'lib/media.php';
-			require_once WPSSO_PLUGINDIR . 'lib/meta.php';
-			require_once WPSSO_PLUGINDIR . 'lib/meta_name.php';
-			require_once WPSSO_PLUGINDIR . 'lib/opengraph.php';
 			require_once WPSSO_PLUGINDIR . 'lib/options.php';
 			require_once WPSSO_PLUGINDIR . 'lib/page.php';
-			require_once WPSSO_PLUGINDIR . 'lib/post.php';		// Extends WpssoMeta.
 			require_once WPSSO_PLUGINDIR . 'lib/register.php';
-			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
 			require_once WPSSO_PLUGINDIR . 'lib/script.php';
 			require_once WPSSO_PLUGINDIR . 'lib/style.php';
-			require_once WPSSO_PLUGINDIR . 'lib/term.php';		// Extends WpssoMeta.
-			require_once WPSSO_PLUGINDIR . 'lib/twittercard.php';
-			require_once WPSSO_PLUGINDIR . 'lib/user.php';		// Extends WpssoMeta.
 			require_once WPSSO_PLUGINDIR . 'lib/util.php';		// Extends SucomUtil.
+
+			/**
+			 * Post, term, user modules.
+			 */
+			require_once WPSSO_PLUGINDIR . 'lib/wp-meta.php';
+			require_once WPSSO_PLUGINDIR . 'lib/post.php';		// Extends WpssoWpMeta.
+			require_once WPSSO_PLUGINDIR . 'lib/term.php';		// Extends WpssoWpMeta.
+			require_once WPSSO_PLUGINDIR . 'lib/user.php';		// Extends WpssoWpMeta.
+
+			/**
+			 * Meta tags and markup.
+			 */
+			require_once WPSSO_PLUGINDIR . 'lib/link-rel.php';
+			require_once WPSSO_PLUGINDIR . 'lib/meta-name.php';
+			require_once WPSSO_PLUGINDIR . 'lib/opengraph.php';
+			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
+			require_once WPSSO_PLUGINDIR . 'lib/twittercard.php';
 			require_once WPSSO_PLUGINDIR . 'lib/weibo.php';
 
 			if ( is_admin() ) {

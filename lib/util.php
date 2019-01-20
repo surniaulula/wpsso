@@ -1369,7 +1369,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$col_meta_keys = WpssoMeta::get_column_meta_keys();
+			$col_meta_keys = WpssoWpMeta::get_column_meta_keys();
 
 			/**
 			 * Delete post meta.
@@ -2276,7 +2276,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'object is unknown - merging $mod defaults' );
 				}
 
-				$mod = array_merge( WpssoMeta::$mod_defaults, $mod );
+				$mod = array_merge( WpssoWpMeta::$mod_defaults, $mod );
 			}
 
 			$mod[ 'use_post' ] = $use_post;

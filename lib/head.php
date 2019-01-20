@@ -262,7 +262,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Save meta tag values for later sorting in list tables.
 			 */
-			foreach ( WpssoMeta::get_sortable_columns() as $col_key => $col_info ) {
+			foreach ( WpssoWpMeta::get_sortable_columns() as $col_key => $col_info ) {
 				
 				if ( empty( $col_info[ 'meta_key' ] ) || strpos( $col_info[ 'meta_key' ], '_' . $this->p->lca . '_head_info_' ) !== 0 ) {
 					continue;

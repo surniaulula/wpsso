@@ -15,7 +15,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 	 * This class is extended by gpl/util/post.php or pro/util/post.php
 	 * and the class object is created as $this->p->m[ 'util' ][ 'post' ].
 	 */
-	class WpssoPost extends WpssoMeta {
+	class WpssoPost extends WpssoWpMeta {
 
 		protected static $cache_short_url = null;
 		protected static $cache_shortlinks = array();
@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					/**
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
-					 * Sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties.
+					 * Sets the WpssoWpMeta::$head_meta_tags and WpssoWpMeta::$head_meta_info class properties.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 100, 1 );
 					add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
@@ -163,7 +163,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mod = WpssoMeta::$mod_defaults;
+			$mod = WpssoWpMeta::$mod_defaults;
 
 			$post_type = get_post_type( $mod_id );
 
@@ -555,7 +555,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/**
 		 * Hooked into the current_screen action.
-		 * Sets the WpssoMeta::$head_meta_tags and WpssoMeta::$head_meta_info class properties.
+		 * Sets the WpssoWpMeta::$head_meta_tags and WpssoWpMeta::$head_meta_info class properties.
 		 */
 		public function load_meta_page( $screen = false ) {
 
@@ -566,7 +566,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * All meta modules set this property, so use it to optimize code execution.
 			 */
-			if ( false !== WpssoMeta::$head_meta_tags || ! isset( $screen->id ) ) {
+			if ( false !== WpssoWpMeta::$head_meta_tags || ! isset( $screen->id ) ) {
 				return;
 			}
 
@@ -621,7 +621,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( SucomDebug::pretty_array( $mod ) );
 			}
 
-			WpssoMeta::$head_meta_tags = array();
+			WpssoWpMeta::$head_meta_tags = array();
 
 			if ( $post_obj->post_status === 'auto-draft' ) {
 
@@ -671,12 +671,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					/**
 					 * $read_cache is false to generate notices etc.
 					 */
-					WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
-					WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
+					WpssoWpMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
+					WpssoWpMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_meta_tags );
 
 					if ( $mod[ 'post_status' ] === 'publish' ) {
 
-						$this->p->notice->set_ref( WpssoMeta::$head_meta_info['og:url'], $mod,
+						$this->p->notice->set_ref( WpssoWpMeta::$head_meta_info['og:url'], $mod,
 							sprintf( __( 'checking meta tags for %1$s ID %2$s', 'wpsso' ),
 								$mod[ 'post_type' ], $mod[ 'id' ] ) );
 
@@ -685,7 +685,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						 */
 						foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
-							if ( empty( WpssoMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
+							if ( empty( WpssoWpMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
 
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
@@ -698,7 +698,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							}
 						}
 
-						$this->p->notice->unset_ref( WpssoMeta::$head_meta_info['og:url'] );
+						$this->p->notice->unset_ref( WpssoWpMeta::$head_meta_info['og:url'] );
 
 						/**
 						 * Check duplicates only when the post is available publicly and we have a valid permalink.
@@ -1227,12 +1227,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * $read_cache is false to generate notices etc.
 			 */
-			WpssoMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
-			WpssoMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoMeta::$head_meta_tags );
+			WpssoWpMeta::$head_meta_tags = $this->p->head->get_head_array( $post_id, $mod, false );
+			WpssoWpMeta::$head_meta_info = $this->p->head->extract_head_info( $mod, WpssoWpMeta::$head_meta_tags );
 
 			if ( $mod[ 'post_status' ] === 'publish' ) {
 
-				$this->p->notice->set_ref( WpssoMeta::$head_meta_info['og:url'], $mod,
+				$this->p->notice->set_ref( WpssoWpMeta::$head_meta_info['og:url'], $mod,
 					sprintf( __( 'checking meta tags for %1$s ID %2$s', 'wpsso' ),
 						$mod[ 'post_type' ], $mod[ 'id' ] ) );
 
@@ -1242,7 +1242,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
 
-					if ( empty( WpssoMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
+					if ( empty( WpssoWpMeta::$head_meta_info['og:' . $mt_suffix] ) ) {
 
 						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
 						$error_msg  = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
@@ -1251,7 +1251,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 
-				$this->p->notice->unset_ref( WpssoMeta::$head_meta_info['og:url'] );
+				$this->p->notice->unset_ref( WpssoWpMeta::$head_meta_info['og:url'] );
 			}
 
 			$metabox_html = $this->get_metabox_custom_meta( $post_obj );
@@ -1287,8 +1287,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
 				$table_rows[$tab_key] = array_merge(
-					$this->get_table_rows( $metabox_id, $tab_key, WpssoMeta::$head_meta_info, $mod ),
-					(array) apply_filters( $filter_name, array(), $this->form, WpssoMeta::$head_meta_info, $mod )
+					$this->get_table_rows( $metabox_id, $tab_key, WpssoWpMeta::$head_meta_info, $mod ),
+					(array) apply_filters( $filter_name, array(), $this->form, WpssoWpMeta::$head_meta_info, $mod )
 				);
 			}
 
@@ -1423,7 +1423,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod           = $this->get_mod( $post_id );
 			$permalink     = get_permalink( $post_id );
-			$col_meta_keys = WpssoMeta::get_column_meta_keys();
+			$col_meta_keys = WpssoWpMeta::get_column_meta_keys();
 			$cache_types   = array();
 			$cache_md5_pre = $this->p->lca . '_';
 

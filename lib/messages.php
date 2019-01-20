@@ -2024,7 +2024,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Do not add this text if hidding pro options or on a settings page.
 						 */
-						if ( empty( $this->p->options[ 'plugin_hide_pro' ] ) && WpssoMeta::is_meta_page() ) {
+						if ( empty( $this->p->options[ 'plugin_hide_pro' ] ) && WpssoWpMeta::is_meta_page() ) {
 
 							$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 

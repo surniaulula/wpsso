@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for...' );
 }
 
-if ( ! class_exists( 'WpssoMeta' ) ) {
+if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
-	class WpssoMeta {
+	class WpssoWpMeta {
 
 		protected $p;
 		protected $form;
@@ -152,12 +152,12 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 		 * Does this page have a post/term/user SSO metabox?
 		 *
 		 * If this is a post/term/user editing page, and the SSO metabox is shown, then the 
-		 * WpssoMeta::$head_meta_tags variable will be an array *and* include the head meta
+		 * WpssoWpMeta::$head_meta_tags variable will be an array *and* include the head meta
 		 * tags array.
 		 */
 		public static function is_meta_page() {
 
-			if ( ! empty( WpssoMeta::$head_meta_tags ) ) {
+			if ( ! empty( WpssoWpMeta::$head_meta_tags ) ) {
 				return true;
 			}
 
@@ -340,11 +340,11 @@ if ( ! class_exists( 'WpssoMeta' ) ) {
 			$table_rows   = array();
 			$script_class = '';
 
-			if ( ! is_array( WpssoMeta::$head_meta_tags ) ) {	// Just in case.
+			if ( ! is_array( WpssoWpMeta::$head_meta_tags ) ) {	// Just in case.
 				return $table_rows;
 			}
 
-			foreach ( WpssoMeta::$head_meta_tags as $parts ) {
+			foreach ( WpssoWpMeta::$head_meta_tags as $parts ) {
 
 				if ( count( $parts ) === 1 ) {
 

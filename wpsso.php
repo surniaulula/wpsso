@@ -354,12 +354,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Meta tags and json-ld markup.
 			 */
-			$this->link_rel  = new WpssoLinkRel( $this );		// link relation tags
-			$this->meta_name = new WpssoMetaName( $this );		// meta name tags
-			$this->og        = new WpssoOpenGraph( $this );		// open graph meta tags
-			$this->weibo     = new WpssoWeibo( $this );		// weibo meta tags
-			$this->tc        = new WpssoTwitterCard( $this );	// twitter meta tags
-			$this->schema    = new WpssoSchema( $this );		// schema meta tags and json markup
+			$this->link_rel  = new WpssoLinkRel( $this );		// Link relation tags.
+			$this->meta_name = new WpssoMetaName( $this );		// Meta name tags.
+			$this->og        = new WpssoOpenGraph( $this );		// Open Graph meta tags.
+			$this->weibo     = new WpssoWeibo( $this );		// Weibo meta tags.
+			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
+			$this->schema    = new WpssoSchema( $this );		// Schema meta tags and json markup.
 
 			if ( $is_admin ) {
 				$this->msgs  = new WpssoMessages( $this );	// admin tooltip messages

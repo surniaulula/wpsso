@@ -2688,15 +2688,15 @@ msgid "Twitter Card Description"
 msgstr ""
 
 #: lib/gettext-pro.php:106 lib/gettext-pro.php:132 lib/gpl/admin/meta.php:124
-#: lib/gpl/admin/post.php:145 lib/meta.php:266 lib/meta.php:290
-#: lib/pro/admin/meta.php:133 lib/pro/admin/post.php:144
+#: lib/gpl/admin/post.php:145 lib/pro/admin/meta.php:133
+#: lib/pro/admin/post.php:144 lib/wp-meta.php:266 lib/wp-meta.php:290
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
 #: lib/gettext-pro.php:107 lib/gettext-pro.php:133 lib/gpl/admin/meta.php:132
-#: lib/gpl/admin/post.php:154 lib/meta.php:270 lib/meta.php:294
-#: lib/pro/admin/meta.php:140 lib/pro/admin/post.php:152
+#: lib/gpl/admin/post.php:154 lib/pro/admin/meta.php:140
+#: lib/pro/admin/post.php:152 lib/wp-meta.php:270 lib/wp-meta.php:294
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -2805,8 +2805,8 @@ msgctxt "option label"
 msgid "Description"
 msgstr ""
 
-#: lib/gettext-pro.php:125 lib/gpl/admin/post.php:296 lib/meta.php:262
-#: lib/pro/admin/post.php:279
+#: lib/gettext-pro.php:125 lib/gpl/admin/post.php:296
+#: lib/pro/admin/post.php:279 lib/wp-meta.php:262
 msgid "Save a draft version or publish the %s to update this value."
 msgstr ""
 
@@ -4955,7 +4955,7 @@ msgid ""
 "by the %s plugin."
 msgstr ""
 
-#: lib/messages.php:2031 lib/meta.php:175
+#: lib/messages.php:2031 lib/wp-meta.php:175
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
@@ -5361,125 +5361,6 @@ msgstr ""
 #: lib/messages.php:2444
 msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
-msgstr ""
-
-#: lib/meta.php:174
-msgctxt "metabox tab"
-msgid "Customize"
-msgstr ""
-
-#: lib/meta.php:176
-msgctxt "metabox tab"
-msgid "Preview"
-msgstr ""
-
-#: lib/meta.php:177
-msgctxt "metabox tab"
-msgid "Head"
-msgstr ""
-
-#: lib/meta.php:178
-msgctxt "metabox tab"
-msgid "Validate"
-msgstr ""
-
-#: lib/meta.php:247
-msgctxt "preview image error"
-msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
-msgstr ""
-
-#: lib/meta.php:252
-msgctxt "preview image error"
-msgid "Image Dimensions Unknown<br/>or Not Available"
-msgstr ""
-
-#: lib/meta.php:257
-msgctxt "preview image error"
-msgid "No Open Graph Image Found"
-msgstr ""
-
-#: lib/meta.php:274 lib/meta.php:300
-msgctxt "option label"
-msgid "Shortlink URL"
-msgstr ""
-
-#: lib/meta.php:305
-msgctxt "option label"
-msgid "Facebook / Open Graph Example"
-msgstr ""
-
-#: lib/meta.php:438
-msgctxt "option label"
-msgid "Facebook Open Graph Object Debugger"
-msgstr ""
-
-#: lib/meta.php:439
-msgctxt "submit button"
-msgid "Validate Open Graph"
-msgstr ""
-
-#: lib/meta.php:443
-msgctxt "option label"
-msgid "LinkedIn Post Inspector"
-msgstr ""
-
-#: lib/meta.php:444
-msgctxt "submit button"
-msgid "Validate Metadata"
-msgstr ""
-
-#: lib/meta.php:448
-msgctxt "option label"
-msgid "Google Structured Data Testing Tool"
-msgstr ""
-
-#: lib/meta.php:449
-msgctxt "submit button"
-msgid "Validate Structured Data"
-msgstr ""
-
-#: lib/meta.php:453
-msgctxt "option label"
-msgid "Pinterest Rich Pins Validator"
-msgstr ""
-
-#: lib/meta.php:454
-msgctxt "submit button"
-msgid "Validate Rich Pins"
-msgstr ""
-
-#: lib/meta.php:458
-msgctxt "option label"
-msgid "Twitter Card Validator"
-msgstr ""
-
-#: lib/meta.php:459
-msgctxt "submit button"
-msgid "Validate Twitter Card"
-msgstr ""
-
-#: lib/meta.php:464
-msgctxt "option label"
-msgid "W3C Markup Validation"
-msgstr ""
-
-#: lib/meta.php:465
-msgctxt "submit button"
-msgid "Validate HTML Markup"
-msgstr ""
-
-#: lib/meta.php:469
-msgctxt "option label"
-msgid "The AMP Validator"
-msgstr ""
-
-#: lib/meta.php:470
-msgctxt "submit button"
-msgid "Validate AMP Markup"
-msgstr ""
-
-#: lib/meta.php:892
-msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
 #: lib/opengraph.php:59
@@ -6534,6 +6415,125 @@ msgstr ""
 #: lib/util.php:3367
 msgctxt "option comment"
 msgid "unhide these rows"
+msgstr ""
+
+#: lib/wp-meta.php:174
+msgctxt "metabox tab"
+msgid "Customize"
+msgstr ""
+
+#: lib/wp-meta.php:176
+msgctxt "metabox tab"
+msgid "Preview"
+msgstr ""
+
+#: lib/wp-meta.php:177
+msgctxt "metabox tab"
+msgid "Head"
+msgstr ""
+
+#: lib/wp-meta.php:178
+msgctxt "metabox tab"
+msgid "Validate"
+msgstr ""
+
+#: lib/wp-meta.php:247
+msgctxt "preview image error"
+msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
+msgstr ""
+
+#: lib/wp-meta.php:252
+msgctxt "preview image error"
+msgid "Image Dimensions Unknown<br/>or Not Available"
+msgstr ""
+
+#: lib/wp-meta.php:257
+msgctxt "preview image error"
+msgid "No Open Graph Image Found"
+msgstr ""
+
+#: lib/wp-meta.php:274 lib/wp-meta.php:300
+msgctxt "option label"
+msgid "Shortlink URL"
+msgstr ""
+
+#: lib/wp-meta.php:305
+msgctxt "option label"
+msgid "Facebook / Open Graph Example"
+msgstr ""
+
+#: lib/wp-meta.php:438
+msgctxt "option label"
+msgid "Facebook Open Graph Object Debugger"
+msgstr ""
+
+#: lib/wp-meta.php:439
+msgctxt "submit button"
+msgid "Validate Open Graph"
+msgstr ""
+
+#: lib/wp-meta.php:443
+msgctxt "option label"
+msgid "LinkedIn Post Inspector"
+msgstr ""
+
+#: lib/wp-meta.php:444
+msgctxt "submit button"
+msgid "Validate Metadata"
+msgstr ""
+
+#: lib/wp-meta.php:448
+msgctxt "option label"
+msgid "Google Structured Data Testing Tool"
+msgstr ""
+
+#: lib/wp-meta.php:449
+msgctxt "submit button"
+msgid "Validate Structured Data"
+msgstr ""
+
+#: lib/wp-meta.php:453
+msgctxt "option label"
+msgid "Pinterest Rich Pins Validator"
+msgstr ""
+
+#: lib/wp-meta.php:454
+msgctxt "submit button"
+msgid "Validate Rich Pins"
+msgstr ""
+
+#: lib/wp-meta.php:458
+msgctxt "option label"
+msgid "Twitter Card Validator"
+msgstr ""
+
+#: lib/wp-meta.php:459
+msgctxt "submit button"
+msgid "Validate Twitter Card"
+msgstr ""
+
+#: lib/wp-meta.php:464
+msgctxt "option label"
+msgid "W3C Markup Validation"
+msgstr ""
+
+#: lib/wp-meta.php:465
+msgctxt "submit button"
+msgid "Validate HTML Markup"
+msgstr ""
+
+#: lib/wp-meta.php:469
+msgctxt "option label"
+msgid "The AMP Validator"
+msgstr ""
+
+#: lib/wp-meta.php:470
+msgctxt "submit button"
+msgid "Validate AMP Markup"
+msgstr ""
+
+#: lib/wp-meta.php:892
+msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
 #: wpsso.php:388
