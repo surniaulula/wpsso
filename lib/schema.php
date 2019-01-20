@@ -3746,7 +3746,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'getting images for ' . $page_type_url );
 				}
 
-				$og_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_name, $mod, true, 'schema' );	// $md_pre is 'schema'.
+				$og_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_name, $mod, true, $md_pre = 'schema' );
 
 				if ( empty( $og_images ) && $mod[ 'is_post' ] ) {
 					$og_images = $this->p->media->get_default_images( 1, $size_name, true );
@@ -3862,7 +3862,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'getting images for ' . $page_type_url );
 			}
 
-			$og_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_name, $mod, true, 'schema' );	// $md_pre is 'schema'.
+			$og_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_name, $mod, true, $md_pre = 'schema' );
 
 			if ( empty( $og_images ) && $mod[ 'is_post' ] ) {
 				$og_images = $this->p->media->get_default_images( 1, $size_name, true );

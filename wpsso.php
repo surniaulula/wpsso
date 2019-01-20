@@ -16,7 +16,7 @@
  * Requires At Least: 3.8
  * Tested Up To: 5.0
  * WC Tested Up To: 3.5
- * Version: 4.21.0-dev.4
+ * Version: 4.21.0-dev.5
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -53,6 +53,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $loader;		// WpssoLoader
 		public $media;		// WpssoMedia (images, videos, etc.)
 		public $msgs;		// WpssoMessages (admin tooltip messages)
+		public $name;		// WpssoName
 		public $notice;		// SucomNotice or SucomNoNotice
 		public $og;		// WpssoOpenGraph
 		public $opt;		// WpssoOptions
@@ -353,11 +354,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Meta tags and json-ld markup.
 			 */
-			$this->link_rel = new WpssoLinkRel( $this );		// link relation tags
-			$this->og       = new WpssoOpenGraph( $this );		// open graph meta tags
-			$this->weibo    = new WpssoWeibo( $this );		// weibo meta tags
-			$this->tc       = new WpssoTwitterCard( $this );	// twitter meta tags
-			$this->schema   = new WpssoSchema( $this );		// schema meta tags and json markup
+			$this->link_rel  = new WpssoLinkRel( $this );		// link relation tags
+			$this->meta_name = new WpssoMetaName( $this );		// meta name tags
+			$this->og        = new WpssoOpenGraph( $this );		// open graph meta tags
+			$this->weibo     = new WpssoWeibo( $this );		// weibo meta tags
+			$this->tc        = new WpssoTwitterCard( $this );	// twitter meta tags
+			$this->schema    = new WpssoSchema( $this );		// schema meta tags and json markup
 
 			if ( $is_admin ) {
 				$this->msgs  = new WpssoMessages( $this );	// admin tooltip messages

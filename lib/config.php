@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.21.0-dev.4',	// Plugin version.
-					'opt_version' => '623',		// Increment when changing default option values.
+					'version'     => '4.21.0-dev.5',	// Plugin version.
+					'opt_version' => '624',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how it\'s crawled, shared, re-shared, posted, or embedded!',
@@ -1011,8 +1011,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_generator'                                  => 1,
 					'add_meta_name_robots'                                     => 1,
 					'add_meta_name_p:domain_verify'                            => 1,
-					'add_meta_name_weibo:article:create_at'                    => 1,
-					'add_meta_name_weibo:article:update_at'                    => 1,
+					'add_meta_name_thumbnail'                                  => 1,
 					'add_meta_name_twitter:card'                               => 1,
 					'add_meta_name_twitter:creator'                            => 1,
 					'add_meta_name_twitter:domain'                             => 1,
@@ -1037,6 +1036,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:app:name:googleplay'                => 1,
 					'add_meta_name_twitter:app:id:googleplay'                  => 1,
 					'add_meta_name_twitter:app:url:googleplay'                 => 1,
+					'add_meta_name_weibo:article:create_at'                    => 1,
+					'add_meta_name_weibo:article:update_at'                    => 1,
 					'add_link_itemprop_url'                                    => 1,
 					'add_link_itemprop_image'                                  => 1,
 					'add_link_itemprop_image.url'                              => 1,
@@ -1426,7 +1427,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '1.17.0-dev.4',	// Minimum update manager version (soft limit).
+				'rec_version' => '1.17.0-dev.5',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -3173,6 +3174,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/link_rel.php';
 			require_once WPSSO_PLUGINDIR . 'lib/media.php';
 			require_once WPSSO_PLUGINDIR . 'lib/meta.php';
+			require_once WPSSO_PLUGINDIR . 'lib/meta_name.php';
 			require_once WPSSO_PLUGINDIR . 'lib/opengraph.php';
 			require_once WPSSO_PLUGINDIR . 'lib/options.php';
 			require_once WPSSO_PLUGINDIR . 'lib/page.php';

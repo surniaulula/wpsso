@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.21.0-dev.4\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.21.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3135,23 +3135,27 @@ msgid ""
 "Video discovery and integration modules are provided with the Pro version."
 msgstr ""
 
-#: lib/head.php:518
+#: lib/head.php:522
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:530
+#: lib/head.php:534
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:579
+#: lib/head.php:541
+msgid "adding meta name meta tags"
+msgstr ""
+
+#: lib/head.php:548
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:586
+#: lib/head.php:555
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:593
+#: lib/head.php:562
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -6532,38 +6536,38 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""
 
-#: wpsso.php:386
+#: wpsso.php:388
 msgid ""
 "Database option table row \"%1$s\" for plugin settings was found and "
 "converted to \"%2$s\"."
 msgstr ""
 
-#: wpsso.php:406
+#: wpsso.php:408
 msgid ""
 "Database site option table row \"%1$s\" for plugin settings was found and "
 "converted to \"%2$s\"."
 msgstr ""
 
-#: wpsso.php:439
+#: wpsso.php:441
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:457
+#: wpsso.php:459
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name
-#: wpsso.php:467
+#: wpsso.php:469
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:468
+#: wpsso.php:470
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		public function add_vary_user_agent_header( $headers ) {
 
-			$headers ['Vary' ] = 'User-Agent';
+			$headers [ 'Vary' ] = 'User-Agent';
 
 			return $headers;
 		}
@@ -270,8 +270,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				$meta_value = 'none';
 
-				if ( ! empty( $col_info[ 'mt_name']  ) ) {
-					if ( $col_info[ 'mt_name'] === 'og:image' ) {	// Get the image thumbnail HTML.
+				if ( ! empty( $col_info[ 'mt_name' ]  ) ) {
+					if ( $col_info[ 'mt_name' ] === 'og:image' ) {	// Get the image thumbnail HTML.
 						if ( $og_img = $mod[ 'obj' ]->get_og_img_column_html( $head_info, $mod ) ) {
 							$meta_value = $og_img;
 						}
@@ -300,7 +300,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'end':
 
 					$add_meta = apply_filters( $this->p->lca . '_add_meta_name_' . $this->p->lca . ':mark',
-						( empty( $this->p->options['plugin_check_head'] ) ? false : true ) );
+						( empty( $this->p->options[ 'plugin_check_head' ] ) ? false : true ) );
 
 					$comment = '<!-- ' . $this->p->lca . ' meta tags ' . $type . ' -->';
 					$mt_name = $add_meta ? '<meta name="' . $this->p->lca . ':mark:' . $type . '" ' . 
@@ -398,18 +398,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
+
 				$mod = $this->p->util->get_page_mod( $use_post );
 			}
 
-			$sharing_url = $this->p->util->get_sharing_url( $mod, true, 'head_sharing_url' );	// $add_page is true.
+			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = true, 'head_sharing_url' );
 
 			if ( empty( $sharing_url ) ) {	// Just in case.
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: get_sharing_url() returned an empty string' );
 				}
+
 				return array();
 			}
 
@@ -421,8 +425,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cache_md5_pre = $this->p->lca . '_h_';
 
 			if ( ! isset( $cache_exp_secs ) ) {	// Filter cache expiration if not already set.
-				$cache_exp_filter = $this->p->cf['wp']['transient'][$cache_md5_pre]['filter'];
-				$cache_opt_key    = $this->p->cf['wp']['transient'][$cache_md5_pre]['opt_key'];
+				$cache_exp_filter = $this->p->cf[ 'wp' ][ 'transient' ][$cache_md5_pre][ 'filter' ];
+				$cache_opt_key    = $this->p->cf[ 'wp' ][ 'transient' ][$cache_md5_pre][ 'opt_key' ];
 				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $this->p->options[$cache_opt_key] );
 			}
 
@@ -534,50 +538,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Name / SEO meta tags
 			 */
-			$mt_name = array();
-
-			if ( ! empty( $this->p->options['add_meta_name_author'] ) ) {
-
-				if ( isset( $mt_og['og:type'] ) && $mt_og['og:type'] === 'article' ) {
-
-					if ( is_object( $this->p->m[ 'util' ][ 'user' ] ) ) {	// Just in case.
-
-						$mt_name['author'] = $this->p->m[ 'util' ][ 'user' ]->get_author_meta( $author_id, $this->p->options[ 'seo_author_name' ] );
-
-					} elseif ( $this->p->debug->enabled ) {
-						$this->p->debug->log( 'skipped author meta tag - user module not defined' );
-					}
-
-				} elseif ( $this->p->debug->enabled ) {
-					$this->p->debug->log( 'skipped author meta tag - og:type is not an article' );
-				}
-			}
-
-			$add_meta_name_description = empty( $this->p->options['add_meta_name_description'] ) ? false : true;
-			$add_meta_name_description = apply_filters( $this->p->lca . '_add_meta_name_description', $add_meta_name_description, $mod );
-
-			if ( $add_meta_name_description ) {
-				$mt_name['description'] = $this->p->page->get_description( $this->p->options['seo_desc_max_len'],
-					'...', $mod, true, false, true, 'seo_desc' );	// $add_hashtags is false.
-			}
-
-			if ( ! empty( $this->p->options['add_meta_name_p:domain_verify'] ) ) {
-				if ( ! empty( $this->p->options['p_dom_verify'] ) ) {
-					$mt_name['p:domain_verify'] = $this->p->options['p_dom_verify'];
-				}
-			}
-
-			if ( ! empty( $this->p->options['add_meta_name_robots'] ) ) {
-				$mt_name['robots'] = $this->p->util->get_robots_content( $mod );
-			}
-
-			$mt_name = (array) apply_filters( $this->p->lca . '_meta_name', $mt_name, $mod );
+			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding meta name meta tags', 'wpsso' ) ) : false;
+			$mt_name = $this->p->meta_name->get_array( $mod, $mt_og, $crawler_name, $author_id );
+			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
 			 * Link relation tags
 			 */
 			$is_admin ? $this->p->notice->set_ref( $sharing_url, $mod, __( 'adding link relation tags', 'wpsso' ) ) : false;
-			$link_rel = $this->p->link_rel->get_array( $mod, $mt_og, $crawler_name, $author_id );
+			$link_rel = $this->p->link_rel->get_array( $mod, $mt_og, $crawler_name, $author_id, $sharing_url );
 			$is_admin ? $this->p->notice->unset_ref( $sharing_url ) : false;
 
 			/**
@@ -597,7 +566,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Generator meta tags
 			 */
-			$mt_generators['generator'] = $this->p->check->get_ext_list();
+			$mt_generators[ 'generator' ] = $this->p->check->get_ext_list();
 
 			/**
 			 * Combine and return all meta tags
@@ -688,22 +657,22 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 							$use_video_image = true;
 
-							if ( isset( $dd_val['og:video:type'] ) ) {
+							if ( isset( $dd_val[ 'og:video:type' ] ) ) {
 
 								/**
 								 * og:video:has_image will be false if ithere is no preview 
 								 * image, or the preview image is a duplicate.
 								 */
-								if ( empty( $dd_val['og:video:has_image'] ) ) {
+								if ( empty( $dd_val[ 'og:video:has_image' ] ) ) {
 									$use_video_image = false;
 								}
 
-								if ( $dd_val['og:video:type'] === 'text/html' ) {
+								if ( $dd_val[ 'og:video:type' ] === 'text/html' ) {
 
 									/**
 									 * Skip if 'text/html' video markup is disabled.
 									 */
-									if ( empty( $this->p->options['og_vid_html_type'] ) ) {
+									if ( empty( $this->p->options[ 'og_vid_html_type' ] ) ) {
 										continue;
 									}
 								}
@@ -877,7 +846,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					if ( $secure_url !== $value ) {	// Just in case.
 
-						if ( ! empty( $this->p->options['add_meta_property_og:image:secure_url'] ) ) {
+						if ( ! empty( $this->p->options[ 'add_meta_property_og:image:secure_url' ] ) ) {
 
 							$name_secure_suffix = str_replace( ':url', ':secure_url', $name );
 							$value_secure_url   = set_url_scheme( $value, 'https' );	// Force https.
