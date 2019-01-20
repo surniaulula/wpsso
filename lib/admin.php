@@ -1721,15 +1721,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$status_info = array(
 				'on' => array(
 					'img' => 'green-circle.png',
-					'title' => __( 'Module is enabled', 'wpsso' ),
+					'title' => __( 'Feature is enabled.', 'wpsso' ),
 				),
 				'off' => array(
 					'img' => 'gray-circle.png',
-					'title' => __( 'Module is disabled / not loaded', 'wpsso' ),
+					'title' => __( 'Feature is disabled.', 'wpsso' ),
 				),
 				'rec' => array(
 					'img' => 'red-circle.png',
-					'title' => __( 'Module recommended but disabled / not available', 'wpsso' ),
+					'title' => __( 'Feature is recommended but disabled.', 'wpsso' ),
 				),
 			);
 

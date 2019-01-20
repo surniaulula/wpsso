@@ -223,15 +223,15 @@ msgid "View %s changelog..."
 msgstr ""
 
 #: lib/admin.php:1724
-msgid "Module is enabled"
+msgid "Feature is enabled."
 msgstr ""
 
 #: lib/admin.php:1728
-msgid "Module is disabled / not loaded"
+msgid "Feature is disabled."
 msgstr ""
 
 #: lib/admin.php:1732
-msgid "Module recommended but disabled / not available"
+msgid "Feature is recommended but disabled."
 msgstr ""
 
 #: lib/admin.php:1754
