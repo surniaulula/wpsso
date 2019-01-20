@@ -435,15 +435,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Added new status under the SSO > Dashboard > Standard Features metabox:
+		* Use Filtered (SEO) Title
+		* Use WordPress Content Filters
+		* Use WordPress Excerpt Filters
 * *Bugfixes*
 	* None.
 * *Developer Notes*
 	* Added a new SucomPlugin class.
 	* Moved several WordPress related methods from the SucomUtil class to the SucomUtilWP class.
-	* Moved the WpssoOptions check_banner_image_size() call from check_options() to refresh_image_url_sizes().
+	* Optimized the WpssoOptions check_banner_image_size() call by moving it from check_options() to refresh_image_url_sizes().
 	* Changed calls from 'SucomUtil' to 'self' in the WpssoUtil class (which extends SucomUtil).
-	* Renamed SucomUtil is_opt_id() to is_valid_option_id().
+	* Renamed the SucomUtil is_opt_id() method to is_valid_option_id().
 
 **Version 4.20.0 (2019/01/15)**
 
@@ -576,7 +579,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.21.0-dev.4 =
 
-(2019/10/19) Added a new SucomPlugin class. Moved the WpssoOptions check_banner_image_size() call from check_options() to refresh_image_url_sizes().
+(2019/10/19) Added new status under the SSO > Dashboard > Standard Features metabox. Added a new SucomPlugin class. Optimized the WpssoOptions check_banner_image_size() call.
 
 = 4.20.0 =
 
