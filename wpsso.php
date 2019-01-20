@@ -49,20 +49,25 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $check;		// WpssoCheck
 		public $debug;		// SucomDebug or SucomNoDebug
 		public $head;		// WpssoHead
-		public $link_rel;	// WpssoLinkRel (link relation tags)
 		public $loader;		// WpssoLoader
 		public $media;		// WpssoMedia (images, videos, etc.)
 		public $msgs;		// WpssoMessages (admin tooltip messages)
-		public $meta_name;	// WpssoMetaName
 		public $notice;		// SucomNotice or SucomNoNotice
-		public $og;		// WpssoOpenGraph
 		public $opt;		// WpssoOptions
 		public $page;		// WpssoPage (page title, desc, etc.)
 		public $reg;		// WpssoRegister
 		public $script;		// WpssoScript (admin jquery tooltips)
 		public $style;		// WpssoStyle (admin styles)
-		public $tc;		// WpssoTwitterCard
 		public $util;		// WpssoUtil (extends SucomUtil)
+
+		/**
+		 * Library class object variables for meta tags and markup.
+		 */
+		public $link_rel;	// WpssoLinkRel
+		public $meta_name;	// WpssoMetaName
+		public $og;		// WpssoOpenGraph
+		public $schema;		// WpssoSchema
+		public $tc;		// WpssoTwitterCard
 		public $weibo;		// WpssoWeibo
 
 		/**
