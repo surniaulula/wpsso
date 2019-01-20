@@ -445,6 +445,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Added a new SucomPlugin class.
 	* Added a new WpssoMetaName class.
+	* Renamed the WpssoMeta class to WpssoWpMeta.
 	* Moved several WordPress related methods from the SucomUtil class to the SucomUtilWP class.
 	* Optimized the WpssoOptions check_banner_image_size() call by moving it from check_options() to refresh_image_url_sizes().
 	* Changed calls from 'SucomUtil' to 'self' in the WpssoUtil class (which extends SucomUtil).
