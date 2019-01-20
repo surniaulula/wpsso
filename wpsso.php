@@ -53,7 +53,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $loader;		// WpssoLoader
 		public $media;		// WpssoMedia (images, videos, etc.)
 		public $msgs;		// WpssoMessages (admin tooltip messages)
-		public $name;		// WpssoName
+		public $meta_name;	// WpssoMetaName
 		public $notice;		// SucomNotice or SucomNoNotice
 		public $og;		// WpssoOpenGraph
 		public $opt;		// WpssoOptions
