@@ -1145,9 +1145,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_def_currency'           => 'USD',		// Default Currency.
 					'plugin_cf_img_url'             => '_format_image_url',	// Image URL Custom Field.
 					'plugin_cf_addl_type_urls'      => '',			// Microdata Type URLs Custom Field.
-					'plugin_cf_howto_steps'         => '',			// HowTo Steps Custom Field.
-					'plugin_cf_howto_supplies'      => '',			// HowTo Supplies Custom Field.
-					'plugin_cf_howto_tools'         => '',			// HowTo Tools Custom Field.
+					'plugin_cf_howto_steps'         => '',			// How-To Steps Custom Field.
+					'plugin_cf_howto_supplies'      => '',			// How-To Supplies Custom Field.
+					'plugin_cf_howto_tools'         => '',			// How-To Tools Custom Field.
 					'plugin_cf_product_avail'       => '',			// Product Availability Custom Field.
 					'plugin_cf_product_brand'       => '',			// Product Brand Custom Field.
 					'plugin_cf_product_color'       => '',			// Product Color Custom Field.
@@ -1863,9 +1863,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'cf_labels' => array(		// Custom field option labels.
 					'plugin_cf_img_url'             => 'Image URL Custom Field',
 					'plugin_cf_addl_type_urls'      => 'Microdata Type URLs Custom Field',
-					'plugin_cf_howto_steps'         => 'HowTo Steps Custom Field',
-					'plugin_cf_howto_supplies'      => 'HowTo Supplies Custom Field',
-					'plugin_cf_howto_tools'         => 'HowTo Tools Custom Field',
+					'plugin_cf_howto_steps'         => 'How-To Steps Custom Field',
+					'plugin_cf_howto_supplies'      => 'How-To Supplies Custom Field',
+					'plugin_cf_howto_tools'         => 'How-To Tools Custom Field',
 					'plugin_cf_product_avail'       => 'Product Availability Custom Field',
 					'plugin_cf_product_brand'       => 'Product Brand Custom Field',
 					'plugin_cf_product_color'       => 'Product Color Custom Field',

@@ -903,7 +903,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[ 0 ], $metabox_title ) . ' ';
 
 								if ( $is_multi ) {
-									$text .= sprintf( __( 'The "%1$s" option supports multiple input fields &mdash; the custom field value will be split on newline characters, and each line used for individual input fields.', 'wpsso' ), $plugin_cf_info[ 0 ] );
+									$text .= sprintf( __( 'The "%1$s" option multiple input fields &mdash; the custom field value will be split on newline characters, and each line used for an individual input field.', 'wpsso' ), $plugin_cf_info[ 0 ] );
 								}
 							}
 
@@ -2371,15 +2371,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'additional microdata type URLs', 'tooltip fragment', 'wpsso' ),
 					),
 					$key_prefix . 'howto_steps' => array(
-						_x( 'HowTo Steps', 'option label', 'wpsso' ),
+						_x( 'How-To Steps', 'option label', 'wpsso' ),
 						_x( 'how-to steps', 'tooltip fragment', 'wpsso' ),
 					),
 					$key_prefix . 'howto_supplies' => array(
-						_x( 'HowTo Supplies', 'option label', 'wpsso' ),
+						_x( 'How-To Supplies', 'option label', 'wpsso' ),
 						_x( 'how-to supplies', 'tooltip fragment', 'wpsso' ),
 					),
 					$key_prefix . 'howto_tools' => array(
-						_x( 'HowTo Tools', 'option label', 'wpsso' ),
+						_x( 'How-To Tools', 'option label', 'wpsso' ),
 						_x( 'how-to tools', 'tooltip fragment', 'wpsso' ),
 					),
 					$key_prefix . 'img_url' => array(

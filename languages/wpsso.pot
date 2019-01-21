@@ -1857,17 +1857,17 @@ msgstr ""
 
 #: lib/gettext-config.php:157
 msgctxt "option label"
-msgid "HowTo Steps Custom Field"
+msgid "How-To Steps Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:158
 msgctxt "option label"
-msgid "HowTo Supplies Custom Field"
+msgid "How-To Supplies Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:159
 msgctxt "option label"
-msgid "HowTo Tools Custom Field"
+msgid "How-To Tools Custom Field"
 msgstr ""
 
 #: lib/gettext-config.php:160
@@ -4083,9 +4083,9 @@ msgstr ""
 
 #: lib/messages.php:906
 msgid ""
-"The \"%1$s\" option supports multiple input fields &mdash; the custom field "
-"value will be split on newline characters, and each line used for individual "
-"input fields."
+"The \"%1$s\" option multiple input fields &mdash; the custom field value "
+"will be split on newline characters, and each line used for an individual "
+"input field."
 msgstr ""
 
 #: lib/messages.php:917
@@ -5245,7 +5245,7 @@ msgstr ""
 
 #: lib/messages.php:2374
 msgctxt "option label"
-msgid "HowTo Steps"
+msgid "How-To Steps"
 msgstr ""
 
 #: lib/messages.php:2375
@@ -5255,7 +5255,7 @@ msgstr ""
 
 #: lib/messages.php:2378
 msgctxt "option label"
-msgid "HowTo Supplies"
+msgid "How-To Supplies"
 msgstr ""
 
 #: lib/messages.php:2379
@@ -5265,7 +5265,7 @@ msgstr ""
 
 #: lib/messages.php:2382
 msgctxt "option label"
-msgid "HowTo Tools"
+msgid "How-To Tools"
 msgstr ""
 
 #: lib/messages.php:2383
