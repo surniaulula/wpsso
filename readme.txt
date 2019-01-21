@@ -441,9 +441,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Use WordPress Content Filters
 		* Use WordPress Excerpt Filters
 	* Added new options under the SSO &gt; Advanced &gt; Custom Meta tab:
-		* HowTo Steps Custom Field
-		* HowTo Supplies Custom Field
-		* HowTo Tools Custom Field
+		* How-To Steps Custom Field
+		* How-To Supplies Custom Field
+		* How-To Tools Custom Field
 * *Bugfixes*
 	* None.
 * *Developer Notes*
