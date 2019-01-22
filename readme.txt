@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.21.0-dev.6 (2019/10/19)**
+**Version 4.21.0-rc.1 (2019/01/22)**
 
 * *New Features*
 	* None.
@@ -584,9 +584,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.21.0-dev.6 =
+= 4.21.0-rc.1 =
 
-(2019/10/19) Added a new "meta name thumbnail" meta tag. Added new status under the SSO &gt; Dashboard &gt; Standard Features metabox. Added new options under the SSO &gt; Advanced &gt; Custom Meta tab:
+(2019/01/22) Added a new "meta name thumbnail" meta tag. Added new status under the SSO &gt; Dashboard &gt; Standard Features metabox. Added new options under the SSO &gt; Advanced &gt; Custom Meta tab:
 
 = 4.20.0 =
 
