@@ -12,7 +12,7 @@ Requires PHP: 5.4
 Requires At Least: 3.8
 Tested Up To: 5.0
 WC Tested Up To: 3.5
-Stable Tag: 4.20.0
+Stable Tag: 4.21.0
 
 WPSSO Core makes sure your content looks great on all social and search sites, no matter how it's crawled, shared, re-shared, posted or embedded!
 
