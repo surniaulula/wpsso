@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.21.0-rc.1 (2019/01/22)**
+**Version 4.21.0 (2019/01/23)**
 
 * *New Features*
 	* None.
@@ -584,11 +584,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.21.0-rc.1 =
+= 4.21.0 =
 
-(2019/01/22) Added a new "meta name thumbnail" meta tag. Added new status under the SSO &gt; Dashboard &gt; Standard Features metabox. Added new options under the SSO &gt; Advanced &gt; Custom Meta tab:
-
-= 4.20.0 =
-
-(2019/01/15) Optimized the checking of updates when an Authentication ID is changed (Pro version). Fixed an incorrect SucomNotice method call when upgrading post/term/user meta.
+(2019/01/23) Added a new "meta name thumbnail" meta tag. Added new status under the SSO &gt; Dashboard &gt; Standard Features metabox. Added new options under the SSO &gt; Advanced &gt; Custom Meta tab:
 
