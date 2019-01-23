@@ -430,6 +430,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.21.1-dev.1 (2019/01/23)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* None.
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* Added a new 'wpsso_product_attribute_names' filter for WooCommerce (Pro version).
+
 **Version 4.21.0 (2019/01/23)**
 
 * *New Features*
@@ -583,6 +594,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 
 == Upgrade Notice ==
+
+= 4.21.1-dev.1 =
+
+(2019/01/23) Added a new 'wpsso_product_attribute_names' filter for WooCommerce (Pro version).
 
 = 4.21.0 =
 
