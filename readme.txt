@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.21.1-dev.4 (2019/01/27)**
+**Version 4.21.1-dev.4 (2019/01/28)**
 
 * *New Features*
 	* None.
@@ -609,7 +609,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.21.1-dev.4 =
 
-(2019/01/27) Added new product attribute name options for WooCommerce. Removed the "Create Missing WP Media Sizes" option. Added a new 'wpsso_product_attribute_names' filter for WooCommerce.
+(2019/01/28) Added new product attribute name options for WooCommerce. Removed the "Create Missing WP Media Sizes" option. Added a new 'wpsso_product_attribute_names' filter for WooCommerce.
 
 = 4.21.0 =
 
