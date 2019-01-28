@@ -430,12 +430,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.21.1-dev.2 (2019/01/25)**
+**Version 4.21.1-dev.3 (2019/01/27)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* None.
+	* Removed the "Create Missing WP Media Sizes" option under the SSO &gt; Advanced &gt; Integration tab (this feature is now permanently enabled).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -595,9 +595,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.21.1-dev.2 =
+= 4.21.1-dev.3 =
 
-(2019/01/25) Added a new 'wpsso_product_attribute_names' filter for WooCommerce (Pro version).
+(2019/01/27) Removed the "Create Missing WP Media Sizes" option (this feature is now permanently enabled). Added a new 'wpsso_product_attribute_names' filter for WooCommerce (Pro version).
 
 = 4.21.0 =
 
