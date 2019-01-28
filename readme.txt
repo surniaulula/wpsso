@@ -452,6 +452,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Developer Notes*
 	* Added a new 'wpsso_product_attribute_names' filter for WooCommerce (Pro version).
+	* Added a check when viewing the WordPress General settings page, to make sure the current site URLs match those stored in the database.
 
 **Version 4.21.0 (2019/01/23)**
 
