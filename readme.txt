@@ -430,12 +430,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.21.1-dev.3 (2019/01/27)**
+**Version 4.21.1-dev.4 (2019/01/27)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* Removed the "Create Missing WP Media Sizes" option under the SSO &gt; Advanced &gt; Integration tab (this feature is now permanently enabled).
+	* Added new product attribute name options for WooCommerce under the SSO &gt; Advanced &gt; Integration tab (Pro version):
+		* Product Brand Attribute Name
+		* Product Color Attribute Name
+		* Product Condition Attribute Name
+		* Product EAN Attribute Name
+		* Product GTIN-8 Attribute Name
+		* Product GTIN-12 Attribute Name
+		* Product GTIN-13 Attribute Name
+		* Product GTIN-14 Attribute Name
+		* Product ISBN Attribute Name
+		* Product Metarial Attribute Name
+		* Product Size Attribute Name
+	* Removed the "Create Missing WP Media Sizes" option under the SSO &gt; Advanced &gt; Integration tab (now permanently enabled).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -595,9 +607,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.21.1-dev.3 =
+= 4.21.1-dev.4 =
 
-(2019/01/27) Removed the "Create Missing WP Media Sizes" option (this feature is now permanently enabled). Added a new 'wpsso_product_attribute_names' filter for WooCommerce (Pro version).
+(2019/01/27) Added new product attribute name options for WooCommerce. Removed the "Create Missing WP Media Sizes" option. Added a new 'wpsso_product_attribute_names' filter for WooCommerce.
 
 = 4.21.0 =
 
