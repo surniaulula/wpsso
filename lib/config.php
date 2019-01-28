@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.21.1-dev.2',	// Plugin version.
-					'opt_version' => '624',		// Increment when changing default option values.
+					'version'     => '4.21.1-dev.3',	// Plugin version.
+					'opt_version' => '625',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how it\'s crawled, shared, re-shared, posted, or embedded!',
@@ -1125,7 +1125,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_excerpt'          => 0,				// Enable WP Excerpt for Pages.
 					'plugin_page_tags'             => 0,				// Enable WP Tags for Pages.
 					'plugin_check_head'            => 1,				// Check for Duplicate Meta Tags.
-					'plugin_create_wp_sizes'       => 1,				// Create Missing WP Media Sizes.
 					'plugin_check_img_dims'        => 0,				// Enforce Image Dimensions Check.
 					'plugin_upscale_images'        => 0,				// Allow Upscale of Smaller Images.
 					'plugin_upscale_img_max'       => 33,				// Maximum Image Upscale Percent.
@@ -1320,8 +1319,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_tags:use'             => 'default',
 					'plugin_check_head'                => 1,		// Check for Duplicate Meta Tags.
 					'plugin_check_head:use'            => 'default',
-					'plugin_create_wp_sizes'           => 1,		// Recreate Missing WP Media Sizes.
-					'plugin_create_wp_sizes:use'       => 'default',
 					'plugin_check_img_dims'            => 0,		// Enforce Image Dimensions Check.
 					'plugin_check_img_dims:use'        => 'default',
 					'plugin_upscale_images'            => 0,		// Allow Upscale of Smaller Images.

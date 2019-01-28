@@ -16,7 +16,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 		private static $rename_options_keys = array(
 			'wpsso' => array(	// WPSSO Core plugin.
 				500 => array(
-					'og_img_resize'                  => 'plugin_create_wp_sizes',
+					'og_img_resize'                  => '',
 					'plugin_tid'                     => 'plugin_wpsso_tid',
 					'og_publisher_url'               => 'fb_publisher_url',
 					'add_meta_property_og:video'     => 'add_meta_property_og:video:url',
@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_schema_type_id_col_post' => 'plugin_schema_type_col_post',
 					'plugin_schema_type_id_col_term' => 'plugin_schema_type_col_term',
 					'plugin_schema_type_id_col_user' => 'plugin_schema_type_col_user',
-					'plugin_auto_img_resize'         => 'plugin_create_wp_sizes',
+					'plugin_auto_img_resize'         => '',
 					'plugin_cache_info'              => '',
 					'tc_sum_width'                   => 'tc_sum_img_width',
 					'tc_sum_height'                  => 'tc_sum_img_height',
@@ -199,6 +199,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				618 => array(
 					'fb_author_name'     => '',
 					'schema_author_name' => 'seo_author_name',
+				),
+				624 => array(
+					'plugin_create_wp_sizes' => '',
 				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG add-on.

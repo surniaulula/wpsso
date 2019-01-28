@@ -770,11 +770,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_create_wp_sizes':
-
-							$text = __( 'Automatically create missing and/or incorrect images in the WordPress Media Library (default is checked).', 'wpsso' );
-							break;
-
 						case 'tooltip-plugin_check_img_dims':
 
 							$settings_page_link = $this->p->util->get_admin_url( 'image-dimensions',

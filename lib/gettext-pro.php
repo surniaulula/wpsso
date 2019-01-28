@@ -20,7 +20,6 @@ _x( 'Use WP Locale for Language', 'option label', 'wpsso' );
 _x( 'Enable WP Excerpt for Pages', 'option label', 'wpsso' );
 _x( 'Enable WP Tags for Pages', 'option label', 'wpsso' );
 _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' );
-_x( 'Create Missing WP Media Sizes', 'option label', 'wpsso' );
 _x( 'Enforce Image Dimensions Check', 'option label', 'wpsso' );
 _x( 'recommended', 'option comment', 'wpsso' );
 _x( 'Allow Upscale of WP Media Images', 'option label', 'wpsso' );

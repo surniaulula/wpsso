@@ -135,10 +135,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ), '', 'plugin_check_head' ) . 
 			$form->get_td_no_checkbox( 'plugin_check_head' );
 
-			$table_rows['plugin_create_wp_sizes'] = $form->get_tr_hide( 'basic', 'plugin_create_wp_sizes' ) . 
-			$form->get_th_html( _x( 'Create Missing WP Media Sizes', 'option label', 'wpsso' ), '', 'plugin_create_wp_sizes' ) . 
-			$form->get_td_no_checkbox( 'plugin_create_wp_sizes' );
-
 			$table_rows['plugin_check_img_dims'] = '' . 
 			$form->get_th_html( _x( 'Enforce Image Dimensions Check', 'option label', 'wpsso' ), '', 'plugin_check_img_dims' ) . 
 			$form->get_td_no_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
