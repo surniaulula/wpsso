@@ -143,22 +143,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-product_avail':
-						case 'tooltip-meta-product_brand':
-						case 'tooltip-meta-product_color':
-						case 'tooltip-meta-product_condition':
-						case 'tooltip-meta-product_material':
-						case 'tooltip-meta-product_sku':
-						case 'tooltip-meta-product_ean':
-						case 'tooltip-meta-product_gtin8':
-						case 'tooltip-meta-product_gtin12':
-						case 'tooltip-meta-product_gtin13':
-						case 'tooltip-meta-product_gtin14':
-						case 'tooltip-meta-product_isbn':
-						case 'tooltip-meta-product_price':
-						case 'tooltip-meta-product_currency':
-						case 'tooltip-meta-product_size':
-						case 'tooltip-meta-product_gender':
+						case ( 0 === strpos( $msg_key, 'tooltip-meta-product_' ) ? true : false ):
 
 							$plugin_cf_info = $this->get_plugin_cf_info( 'tooltip-meta-', $msg_key );
 
@@ -853,34 +838,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_cf_addl_type_urls':	// Microdata Type URLs Custom Field.
-						case 'tooltip-plugin_cf_howto_steps':
-						case 'tooltip-plugin_cf_howto_supplies':
-						case 'tooltip-plugin_cf_howto_tools':
-						case 'tooltip-plugin_cf_img_url':
-						case 'tooltip-plugin_cf_product_avail':
-						case 'tooltip-plugin_cf_product_brand':
-						case 'tooltip-plugin_cf_product_color':
-						case 'tooltip-plugin_cf_product_condition':
-						case 'tooltip-plugin_cf_product_material':
-						case 'tooltip-plugin_cf_product_sku':
-						case 'tooltip-plugin_cf_product_ean':
-						case 'tooltip-plugin_cf_product_gtin8':
-						case 'tooltip-plugin_cf_product_gtin12':
-						case 'tooltip-plugin_cf_product_gtin13':
-						case 'tooltip-plugin_cf_product_gtin14':
-						case 'tooltip-plugin_cf_product_isbn':
-						case 'tooltip-plugin_cf_product_price':
-						case 'tooltip-plugin_cf_product_currency':
-						case 'tooltip-plugin_cf_product_size':
-						case 'tooltip-plugin_cf_product_gender':
-						case 'tooltip-plugin_cf_recipe_ingredients':
-						case 'tooltip-plugin_cf_recipe_instructions':
-						case 'tooltip-plugin_cf_sameas_urls':
-						case 'tooltip-plugin_cf_vid_embed':
-						case 'tooltip-plugin_cf_vid_url':
+						case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):
 
-							$cf_key = substr( $msg_key, 8 );
+							$cf_key = substr( $msg_key, 8 );	// Remove the 'tooltip-' prefix.
 
 							$md_key = empty( $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ] ) ?
 								false : $this->p->cf[ 'opt' ][ 'cf_md_key' ][ $cf_key ];
@@ -898,7 +858,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$text .= sprintf( __( 'If a custom field matching that name is found, its value may be used for the "%1$s" option in the %2$s metabox.', 'wpsso' ), $plugin_cf_info[ 0 ], $metabox_title ) . ' ';
 
 								if ( $is_multi ) {
-									$text .= sprintf( __( 'The "%1$s" option multiple input fields &mdash; the custom field value will be split on newline characters, and each line used for an individual input field.', 'wpsso' ), $plugin_cf_info[ 0 ] );
+									$text .= sprintf( __( 'The "%1$s" option offers multiple input fields &mdash; the custom field value will be split on newline characters, and each line used for an individual input field.', 'wpsso' ), $plugin_cf_info[ 0 ] );
 								}
 							}
 

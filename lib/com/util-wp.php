@@ -125,7 +125,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of home_url() from wordpress/wp-includes/link-template.php
-		 * Last synchronized with WordPress v5.0 on 2018/12/12.
+		 * Last synchronized with WordPress v5.0.3 on 2019/01/28.
 		 */
 		public static function raw_home_url( $path = '', $scheme = null ) {
 
@@ -134,7 +134,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of get_home_url() from wordpress/wp-includes/link-template.php
-		 * Last synchronized with WordPress v5.0 on 2018/12/12.
+		 * Last synchronized with WordPress v5.0.3 on 2019/01/28.
 		 */
 		public static function raw_get_home_url( $blog_id = null, $path = '', $scheme = null ) {
 
@@ -159,6 +159,41 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				} else {
 					$scheme = parse_url( $url, PHP_URL_SCHEME );
 				}
+			}
+
+			$url = self::raw_set_url_scheme( $url, $scheme );
+
+			if ( $path && is_string( $path ) ) {
+				$url .= '/' . ltrim( $path, '/' );
+			}
+
+			return $url;
+		}
+
+		/**
+		 * Unfiltered version of site_url() from wordpress/wp-includes/link-template.php
+		 * Last synchronized with WordPress v5.0.3 on 2019/01/28.
+		 */
+		public static function raw_site_url( $path = '', $scheme = null ) {
+
+			return self::raw_get_site_url( null, $path, $scheme );
+		}
+
+		/**
+		 * Unfiltered version of get_site_url() from wordpress/wp-includes/link-template.php
+		 * Last synchronized with WordPress v5.0.3 on 2019/01/28.
+		 */
+		public static function raw_get_site_url( $blog_id = null, $path = '', $scheme = null ) {
+
+			if ( empty( $blog_id ) || ! is_multisite() ) {
+
+				$url = self::raw_do_option( 'get', 'siteurl' );
+			} else {
+				switch_to_blog( $blog_id );
+
+				$url = self::raw_do_option( 'get', 'siteurl' );
+
+				restore_current_blog();
 			}
 
 			$url = self::raw_set_url_scheme( $url, $scheme );

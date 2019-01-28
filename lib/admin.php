@@ -106,6 +106,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_action( 'admin_bar_menu', array( $this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
 				}
 
+				add_filter( 'current_screen', array( $this, 'maybe_update_general_site_urls' ) );
 				add_filter( 'current_screen', array( $this, 'maybe_show_screen_notices' ) );
 				add_filter( 'plugin_action_links', array( $this, 'append_wp_plugin_action_links' ), 10, 2 );
 				add_filter( 'wp_redirect', array( $this, 'profile_updated_redirect' ), -100, 2 );
@@ -2885,6 +2886,36 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
+		 * When editing the WordPress Settings > General options,
+		 * WordPress will not save the 'home' and 'siteurl' values if
+		 * they have been defined using a constant. Check to make sure
+		 * the current values are identical to the raw database values.
+		 */
+		public function maybe_update_general_site_urls( $screen ) {
+
+			$screen_id = SucomUtil::get_screen_id( $screen );
+
+			if ( 'options-general' === $screen_id ) {
+
+				$current_home_url = get_option( 'home' );
+				$current_site_url = get_option( 'siteurl' );
+
+				$raw_db_home_url  = SucomUtilWP::raw_get_home_url();
+				$raw_db_site_url  = SucomUtilWP::raw_get_site_url();
+
+				if ( $current_home_url !== $raw_db_home_url ) {
+					SucomUtilWP::raw_do_option( 'update', 'home', $current_home_url );
+				}
+
+				if ( $current_site_url !== $raw_db_site_url ) {
+					SucomUtilWP::raw_do_option( 'update', 'siteurl', $current_site_url );
+				}
+			}
+
+			return $screen;
+		}
+
+		/**
 		 * Only show notices on the dashboard and the settings pages.
 		 * Hooked to 'current_screen' filter, so return the $screen object.
 		 */
@@ -2893,8 +2924,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$screen_id = SucomUtil::get_screen_id( $screen );
 
 			/**
-			 * If adding notices in the toolbar, show the notice on all pages,
-			 * otherwise only show on the dashboard and settings pages.
+			 * If adding notices in the toolbar, show the notice on
+			 * all pages, otherwise only show on the dashboard and
+			 * settings pages.
 			 */
 			if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
 
