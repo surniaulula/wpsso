@@ -698,12 +698,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Integration settings
 						 */
-						case 'tooltip-plugin_honor_force_ssl':	// Honor the FORCE_SSL Constant
-
-							$text = sprintf( __( 'If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked).', 'wpsso' ), $info[ 'short' ] );
-							break;
-
-						case 'tooltip-plugin_html_attr_filter':
+						case 'tooltip-plugin_html_attr_filter':	// <html> Attributes Filter Hook
 
 							$func_name   = 'language_attributes()';
 							$func_url    = __( 'https://developer.wordpress.org/reference/functions/language_attributes/', 'wpsso' );
@@ -721,7 +716,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_head_attr_filter':
+						case 'tooltip-plugin_head_attr_filter':	// <head> Attributes Filter Hook
 
 							$filter_name = 'head_attributes';
 							$tag_code    = '<code>&amp;lt;head&amp;gt;</code>';
@@ -737,7 +732,48 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_check_head':
+						case 'tooltip-plugin_honor_force_ssl':	// Honor the FORCE_SSL Constant
+
+							$text = sprintf( __( 'If the FORCE_SSL constant is defined as true, %s can redirect front-end URLs from HTTP to HTTPS when required (default is checked).', 'wpsso' ), $info[ 'short' ] );
+
+							break;
+
+						case 'tooltip-plugin_new_user_is_person':	// Add Person Role for New Users
+
+							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ),
+								_x( 'Person', 'user role', 'wpsso' ) );
+
+							break;
+
+						case 'tooltip-plugin_filter_lang':	// Use WP Locale for Language
+
+							$text = sprintf( __( '%1$s can use the WordPress locale to dynamically select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+
+							$text .= __( 'If your website is available in multiple languages, this can be a useful feature.', 'wpsso' ) . ' ';
+							
+							$text .= __( 'Uncheck this option to ignore the WordPress locale and always use the configured language.', 'wpsso' ); 
+
+							break;
+
+						case 'tooltip-plugin_page_excerpt':	// Enable WP Excerpt for Pages
+
+							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ) . ' ';
+							
+							$text .= sprintf( __( 'An excerpt is an optional hand-crafted summary of your content, that %s can also use as a default description value for meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] );
+
+							break;
+
+						case 'tooltip-plugin_page_tags':	// Enable WP Tags for Pages
+
+							$text = __( 'Enable the WordPress tags metabox for Pages.', 'wpsso' ) . ' ';
+							
+							$text .= __( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ) . ' ';
+							
+							$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites (Twitter, Facebook, Google+, etc.).', 'wpsso' ), $info[ 'short' ] );
+
+							break;
+
+						case 'tooltip-plugin_check_head':	// Check for Duplicate Meta Tags
 
 							$check_head_count = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT' );
 
@@ -745,17 +781,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_filter_lang':
-
-							$text = sprintf( __( '%1$s can use the WordPress locale to dynamically select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ), $info[ 'short' ] ) . ' ';
-							
-							$text .= __( 'If your website is available in multiple languages, this can be a useful feature.', 'wpsso' ) . ' ';
-							
-							$text .= __( 'Uncheck this option to ignore the WordPress locale and always use the configured language.', 'wpsso' ); 
-
-							break;
-
-						case 'tooltip-plugin_check_img_dims':
+						case 'tooltip-plugin_check_img_dims':	// Enforce Image Dimensions Check
 
 							$settings_page_link = $this->p->util->get_admin_url( 'image-dimensions',
 								_x( 'SSO Image Sizes', 'lib file description', 'wpsso' ) );
@@ -766,7 +792,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_upscale_images':
+						case 'tooltip-plugin_upscale_images':	// Allow Upscale of WP Media Images
 
 							$text = __( 'WordPress does not upscale / enlarge images &mdash; WordPress can only create smaller images from larger full size originals.', 'wpsso' ) . ' ';
 							
@@ -778,7 +804,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_upscale_img_max':
+						case 'tooltip-plugin_upscale_img_max':	// Maximum Image Upscale Percent
 
 							$upscale_max = WpssoConfig::$cf[ 'opt' ][ 'defaults' ][ 'plugin_upscale_img_max' ];
 
@@ -788,28 +814,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_page_excerpt':
+						case ( 0 === strpos( $msg_key, 'tooltip-plugin_product_attr_' ) ? true : false ):
 
-							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ) . ' ';
+							$attr_key = substr( $msg_key, 8 );	// Remove the 'tooltip-' prefix.
+
+							$text .= __( 'Enter the name of a product attribute you have created in your e-commerce plugin (ie. WooCommerce).', 'wpsso' ) . ' ';
 							
-							$text .= sprintf( __( 'An excerpt is an optional hand-crafted summary of your content, that %s can also use as a default description value for meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] );
-
-							break;
-
-						case 'tooltip-plugin_page_tags':
-
-							$text = __( 'Enable the WordPress tags metabox for Pages.', 'wpsso' ) . ' ';
-							
-							$text .= __( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ) . ' ';
-							
-							$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites (Twitter, Facebook, Google+, etc.).', 'wpsso' ), $info[ 'short' ] );
-
-							break;
-
-						case 'tooltip-plugin_new_user_is_person':
-
-							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ),
-								_x( 'Person', 'user role', 'wpsso' ) );
+							$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $this->p->opt->get_defaults( $attr_key ) );
 
 							break;
 
