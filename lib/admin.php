@@ -1087,8 +1087,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_footer_hooks() {
 
-			add_filter( 'admin_footer_text', array( $this, 'admin_footer_ext_name' ) );
-			add_filter( 'update_footer', array( $this, 'admin_footer_ext_gen' ) );
+			add_filter( 'admin_footer_text', array( $this, 'admin_footer_ext' ) );
+			add_filter( 'update_footer', array( $this, 'admin_footer_host' ) );
 		}
 
 		/**
@@ -2847,22 +2847,39 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
-		public function admin_footer_ext_name( $footer_html ) {
+		public function admin_footer_ext( $footer_html ) {
+
+			$footer_html = '<div class="admin-footer-ext">';
 
 			if ( isset( self::$pkg[ $this->menu_ext ][ 'name' ] ) ) {
-				$footer_html = '<span class="admin-footer-ext-name">' . self::$pkg[ $this->menu_ext ][ 'name' ] . '</span>';
+				$footer_html .= self::$pkg[ $this->menu_ext ][ 'name' ] . '<br/>';
 			}
+
+			if ( isset( self::$pkg[ $this->menu_ext ][ 'gen' ] ) ) {
+				$footer_html .= self::$pkg[ $this->menu_ext ][ 'gen' ] . '<br/>';
+			}
+
+			$footer_html .= '</div>';
 
 			return $footer_html;
 		}
 
-		public function admin_footer_ext_gen( $footer_html ) {
+		public function admin_footer_host( $footer_html ) {
 
-			if ( isset( self::$pkg[ $this->menu_ext ][ 'gen' ] ) ) {
-				$home_url    = strtolower( SucomUtilWP::raw_get_home_url() );
-				$host_html   = '<br/>' . preg_replace( '/^[^:]*:\/\//', '', $home_url );
-				$footer_html = '<span class="admin-footer-ext-gen">' . self::$pkg[ $this->menu_ext ][ 'gen' ] . $host_html . '</span>';
-			}
+			global $wp_version;
+
+			$footer_html = '<div class="admin-footer-host">';
+
+			$home_url  = strtolower( SucomUtilWP::raw_get_home_url() );
+			$host_name = preg_replace( '/^[^:]*:\/\//', '', $home_url );
+
+			$footer_html .= $host_name . '<br/>';
+
+			$footer_html .= 'WordPress ' . $wp_version . '<br/>';
+
+			$footer_html .= 'PHP ' . phpversion() . '<br/>';
+
+			$footer_html .= '</div>';
 
 			return $footer_html;
 		}

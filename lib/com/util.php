@@ -3408,6 +3408,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			sort( $table_cells );
 
 			$table_rows = array();
+
 			$per_col = ceil( count( $table_cells ) / $row_cols );
 
 			foreach ( $table_cells as $num => $cell ) {

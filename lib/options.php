@@ -1288,9 +1288,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Gravity View field IDs.
 				 */
-				case 'gv_id_title':	// Title Field ID
-				case 'gv_id_desc':	// Description Field ID
-				case 'gv_id_img':	// Post Image Field ID
+				case 'gv_id_title':	// Title Field ID.
+				case 'gv_id_desc':	// Description Field ID.
+				case 'gv_id_img':	// Post Image Field ID.
 
 					return 'blank_int';
 
@@ -1425,7 +1425,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_yourls_username':
 				case 'plugin_yourls_password':
 				case 'plugin_yourls_token':
-				case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):	// value is name of meta key
+				case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):	// Value is the name of a meta key.
 				case ( false !== strpos( $base_key, '_filter_name' ) ? true : false ):
 
 					return 'one_line';
@@ -1435,13 +1435,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Options that cannot be blank.
 				 */
-				case 'site_org_schema_type':	// 'organization' or a sub-type.
-				case 'site_place_id':		// 'none' or place ID.
+				case 'site_org_schema_type':	// Example: 'organization' or a sub-type.
+				case 'site_place_id':		// Example: 'none' or place ID.
 				case 'og_author_field':
 				case 'seo_author_field':
-				case 'og_def_img_id_pre': 	// 'wp' or 'ngg' media library name.
-				case 'og_img_id_pre': 		// 'wp' or 'ngg' media library name.
-				case 'plugin_shortener':	// 'none' or name of shortener
+				case 'og_def_img_id_pre': 	// Example: 'wp' or 'ngg' media library name.
+				case 'og_img_id_pre': 		// Example: 'wp' or 'ngg' media library name.
+				case 'plugin_shortener':	// Example: 'none' or name of shortener
 				case 'plugin_col_def_width':
 				case 'plugin_col_def_width_max':
 				case 'plugin_col_title_width':
@@ -1449,6 +1449,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_avail':
 				case 'product_condition':
 				case 'product_gender':
+				case ( 0 === strpos( $base_key, 'plugin_product_attr_' ) ? true : false ):	// Value is the name of a product attribute.
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $base_key ) ? true : false ):

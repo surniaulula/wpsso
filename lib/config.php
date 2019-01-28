@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.21.1-dev.3',	// Plugin version.
-					'opt_version' => '625',		// Increment when changing default option values.
+					'version'     => '4.21.1-dev.4',	// Plugin version.
+					'opt_version' => '626',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how it\'s crawled, shared, re-shared, posted, or embedded!',
@@ -1115,19 +1115,30 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced settings - Integration tab.
 					 */
-					'plugin_html_attr_filter_name' => 'language_attributes',	// <html> Attributes Filter Hook.
-					'plugin_html_attr_filter_prio' => 100,
-					'plugin_head_attr_filter_name' => 'head_attributes',		// <head> Attributes Filter Hook.
-					'plugin_head_attr_filter_prio' => 100,
-					'plugin_honor_force_ssl'       => 1,				// Honor the FORCE_SSL Constant.
-					'plugin_new_user_is_person'    => 0,				// Add Person Role for New Users.
-					'plugin_filter_lang'           => 1,				// Use WP Locale for Language.
-					'plugin_page_excerpt'          => 0,				// Enable WP Excerpt for Pages.
-					'plugin_page_tags'             => 0,				// Enable WP Tags for Pages.
-					'plugin_check_head'            => 1,				// Check for Duplicate Meta Tags.
-					'plugin_check_img_dims'        => 0,				// Enforce Image Dimensions Check.
-					'plugin_upscale_images'        => 0,				// Allow Upscale of Smaller Images.
-					'plugin_upscale_img_max'       => 33,				// Maximum Image Upscale Percent.
+					'plugin_html_attr_filter_name'  => 'language_attributes',	// <html> Attributes Filter Hook.
+					'plugin_html_attr_filter_prio'  => 100,
+					'plugin_head_attr_filter_name'  => 'head_attributes',		// <head> Attributes Filter Hook.
+					'plugin_head_attr_filter_prio'  => 100,
+					'plugin_honor_force_ssl'        => 1,				// Honor the FORCE_SSL Constant.
+					'plugin_new_user_is_person'     => 0,				// Add Person Role for New Users.
+					'plugin_filter_lang'            => 1,				// Use WP Locale for Language.
+					'plugin_page_excerpt'           => 0,				// Enable WP Excerpt for Pages.
+					'plugin_page_tags'              => 0,				// Enable WP Tags for Pages.
+					'plugin_check_head'             => 1,				// Check for Duplicate Meta Tags.
+					'plugin_check_img_dims'         => 0,				// Enforce Image Dimensions Check.
+					'plugin_upscale_images'         => 0,				// Allow Upscale of Smaller Images.
+					'plugin_upscale_img_max'        => 33,				// Maximum Image Upscale Percent.
+					'plugin_product_attr_brand'     => 'Brand',			// Product Brand Attribute Name.
+					'plugin_product_attr_color'     => 'Color',			// Product Color Attribute Name.
+					'plugin_product_attr_condition' => 'Condition',			// Product Condition Attribute Name.
+					'plugin_product_attr_ean'       => 'EAN',			// Product EAN Attribute Name.
+					'plugin_product_attr_gtin8'     => 'GTIN-8',			// Product GTIN-8 Attribute Name.
+					'plugin_product_attr_gtin12'    => 'GTIN-12',			// Product GTIN-12 Attribute Name.
+					'plugin_product_attr_gtin13'    => 'GTIN-13',			// Product GTIN-13 Attribute Name.
+					'plugin_product_attr_gtin14'    => 'GTIN-14',			// Product GTIN-14 Attribute Name.
+					'plugin_product_attr_isbn'      => 'ISBN',			// Product ISBN Attribute Name.
+					'plugin_product_attr_material'  => 'Material',			// Product Material Attribute Name.
+					'plugin_product_attr_size'      => 'Size',			// Product Size Attribute Name.
 					
 					/**
 					 * Advanced settings - Custom Meta tab.
@@ -1884,6 +1895,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_sameas_urls'         => 'Same-As URLs Custom Field',
 					'plugin_cf_vid_url'             => 'Video URL Custom Field',
 					'plugin_cf_vid_embed'           => 'Video Embed HTML Custom Field',
+				),
+				'product_attr_labels' => array(		// Product attribute option labels.
+					'plugin_product_attr_brand'     => 'Product Brand Attribute Name',
+					'plugin_product_attr_color'     => 'Product Color Attribute Name',
+					'plugin_product_attr_condition' => 'Product Condition Attribute Name',
+					'plugin_product_attr_ean'       => 'Product EAN Attribute Name',
+					'plugin_product_attr_gtin8'     => 'Product GTIN-8 Attribute Name',
+					'plugin_product_attr_gtin12'    => 'Product GTIN-12 Attribute Name',
+					'plugin_product_attr_gtin13'    => 'Product GTIN-13 Attribute Name',
+					'plugin_product_attr_gtin14'    => 'Product GTIN-14 Attribute Name',
+					'plugin_product_attr_isbn'      => 'Product ISBN Attribute Name',
+					'plugin_product_attr_material'  => 'Product Material Attribute Name',
+					'plugin_product_attr_size'      => 'Product Size Attribute Name',
 				),
 				
 				/**

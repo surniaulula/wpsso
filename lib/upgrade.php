@@ -445,6 +445,20 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					$opts[ 'add_meta_property_product:upc' ]                    = 0;
 				}
 
+				if ( $prev_version > 0 && $prev_version <= 625 ) {
+					$opts[ 'plugin_product_attr_brand' ]     = 'brand';
+					$opts[ 'plugin_product_attr_color' ]     = 'color';
+					$opts[ 'plugin_product_attr_condition' ] = 'condition';
+					$opts[ 'plugin_product_attr_ean' ]       = 'ean';
+					$opts[ 'plugin_product_attr_gtin8' ]     = 'gtin8';
+					$opts[ 'plugin_product_attr_gtin12' ]    = 'gtin12';
+					$opts[ 'plugin_product_attr_gtin13' ]    = 'gtin13';
+					$opts[ 'plugin_product_attr_gtin14' ]    = 'gtin14';
+					$opts[ 'plugin_product_attr_isbn' ]      = 'isbn';
+					$opts[ 'plugin_product_attr_material' ]  = 'material';
+					$opts[ 'plugin_product_attr_size' ]      = 'size';
+				}
+
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 
 				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $this->p->lca . '_rename_site_options_keys',

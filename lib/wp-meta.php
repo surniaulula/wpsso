@@ -168,7 +168,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			switch ( $metabox_id ) {
 
-				case $this->p->cf['meta'][ 'id' ]:
+				case $this->p->cf[ 'meta' ][ 'id' ]:
 
 					$tabs = array(
 						'edit'     => _x( 'Customize', 'metabox tab', 'wpsso' ),
@@ -231,18 +231,18 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$force_regen = $this->p->util->is_force_regen( $mod, 'og' ) ? '?force_regen=' . time() : '';
 			$media_url   = SucomUtil::get_mt_media_url( $head_info ) . $force_regen;
 
-			$have_sizes = ( isset( $head_info['og:image:width'] ) && $head_info['og:image:width'] > 0 && 
-				isset( $head_info['og:image:height'] ) && $head_info['og:image:height'] > 0 ) ? true : false;
+			$have_sizes = ( isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 && 
+				isset( $head_info[ 'og:image:height' ] ) && $head_info[ 'og:image:height' ] > 0 ) ? true : false;
 
-			$is_sufficient = true === $have_sizes && $head_info['og:image:width'] >= $prev_width && 
-				$head_info['og:image:height'] >= $prev_height ? true : false;
+			$is_sufficient = true === $have_sizes && $head_info[ 'og:image:width' ] >= $prev_width && 
+				$head_info[ 'og:image:height' ] >= $prev_height ? true : false;
 
 			if ( ! empty( $media_url ) ) {
 
 				if ( true === $have_sizes ) {
 
 					$image_preview_html = '<div class="preview_img" style=" background-size:' . 
-						( true === $is_sufficient ? 'cover' : $head_info['og:image:width'] . ' ' . $head_info['og:image:height'] ) . 
+						( true === $is_sufficient ? 'cover' : $head_info[ 'og:image:width' ] . ' ' . $head_info[ 'og:image:height' ] ) . 
 							'; background-image:url(' . $media_url . ');" />' . 
 						( true === $is_sufficient ? '' : '<p>' . sprintf( _x( 'Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s',
 							'preview image error', 'wpsso' ), $prev_width . 'x' . $prev_height . 'px' ) . '</p>' ) . '</div>';
@@ -283,7 +283,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$shortlink_url = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], 'post' );	// $context is post.
 				} else {
 					$shortlink_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url,
-						$this->p->options['plugin_shortener'], $mod );
+						$this->p->options[ 'plugin_shortener' ], $mod );
 				}
 
 				$table_rows[] = '' . 
@@ -294,14 +294,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), 'medium' ) . 
 				'<td>' . $form->get_input_copy_clipboard( $canonical_url ) . '</td>';
 			
-				$table_rows[] = ( empty( $this->p->options['plugin_shortener'] ) || 
-					$this->p->options['plugin_shortener'] === 'none' ||
+				$table_rows[] = ( empty( $this->p->options[ 'plugin_shortener' ] ) || 
+					$this->p->options[ 'plugin_shortener' ] === 'none' ||
 						$sharing_url === $shortlink_url ? '<tr class="hide_in_basic">' : '' ) . 
 				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), 'medium' ) . 
 				'<td>' . $form->get_input_copy_clipboard( $shortlink_url ) . '</td>';
 			}
 
-			$table_rows['subsection_og_example'] = '<td colspan="2" class="subsection"><h4>' . 
+			$table_rows[ 'subsection_og_example' ] = '<td colspan="2" class="subsection"><h4>' . 
 				_x( 'Facebook / Open Graph Example', 'option label', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[] = '<td colspan="2" style="background-color:#e9eaed;border:1px dotted #e0e0e0;">
@@ -310,16 +310,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						' . $image_preview_html . '
 						<div class="preview_txt">
 							<div class="preview_title">' . 
-								( empty( $head_info['og:title'] ) ? 'No Title' : $head_info['og:title'] ) . 
+								( empty( $head_info[ 'og:title' ] ) ? 'No Title' : $head_info[ 'og:title' ] ) . 
 							'</div><!-- .preview_title -->
 							<div class="preview_desc">' . 
-								( empty( $head_info['og:description'] ) ? 'No Description' : $head_info['og:description'] ) . 
+								( empty( $head_info[ 'og:description' ] ) ? 'No Description' : $head_info[ 'og:description' ] ) . 
 							'</div><!-- .preview_desc -->
 							<div class="preview_by">' . 
-								$_SERVER['SERVER_NAME'] . 
-								( empty( $this->p->options['add_meta_property_article:author'] ) ||
-									empty( $head_info['article:author:name'] ) ?
-										'' : ' | By ' . $head_info['article:author:name'] ) . 
+								$_SERVER[ 'SERVER_NAME' ] . 
+								( empty( $this->p->options[ 'add_meta_property_article:author' ] ) ||
+									empty( $head_info[ 'article:author:name' ] ) ?
+										'' : ' | By ' . $head_info[ 'article:author:name' ] ) . 
 							'</div><!-- .preview_by -->
 						</div><!-- .preview_txt -->
 					</div><!-- .preview_box -->
@@ -599,7 +599,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Maybe initialize the cache.
 			 */
-			if ( ! isset( $this->defs[$mod_id] ) ) {
+			if ( ! isset( $this->defs[ $mod_id ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'initializing the default options cache array' );
@@ -610,7 +610,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$md_defs =& $this->defs[ $mod_id ];	// Shortcut variable name.
 
-			if ( ! WpssoOptions::can_cache() || empty( $md_defs['options_filtered'] ) ) {
+			if ( ! WpssoOptions::can_cache() || empty( $md_defs[ 'options_filtered' ] ) ) {
 
 				$mod = $this->get_mod( $mod_id );
 
@@ -626,7 +626,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 * Customize Tab.
 					 */
 					'og_type'        => $og_type,
-					'og_art_section' => isset( $opts['og_art_section'] ) ? $opts['og_art_section'] : 'none',
+					'og_art_section' => isset( $opts[ 'og_art_section' ] ) ? $opts[ 'og_art_section' ] : 'none',
 					'og_title'       => '',
 					'og_desc'        => '',
 					'seo_desc'       => '',
@@ -651,28 +651,28 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'product_gtin14'    => '',
 					'product_isbn'      => '',
 					'product_price'     => '0.00',
-					'product_currency'  => empty( $opts['plugin_def_currency'] ) ? 'USD' : $opts['plugin_def_currency'],
+					'product_currency'  => empty( $opts[ 'plugin_def_currency' ] ) ? 'USD' : $opts[ 'plugin_def_currency' ],
 					'product_size'      => '',
 					'product_gender'    => 'none',
 
 					/**
 					 * Open Graph - Priority Image.
 					 */
-					'og_img_max'    => isset( $opts['og_img_max'] ) ? (int) $opts['og_img_max'] : 1,	// Cast as integer.
-					'og_img_width'  => isset( $opts['og_img_width'] ) ? $opts['og_img_width'] : '',
-					'og_img_height' => isset( $opts['og_img_height'] ) ? $opts['og_img_height'] : '',
-					'og_img_crop'   => empty( $opts['og_img_crop'] ) ? 0 : 1,
-					'og_img_crop_x' => empty( $opts['og_img_crop_x'] ) ? 'center' : $opts['og_img_crop_x'],
-					'og_img_crop_y' => empty( $opts['og_img_crop_y'] ) ? 'center' : $opts['og_img_crop_y'],
+					'og_img_max'    => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// Cast as integer.
+					'og_img_width'  => isset( $opts[ 'og_img_width' ] ) ? $opts[ 'og_img_width' ] : '',
+					'og_img_height' => isset( $opts[ 'og_img_height' ] ) ? $opts[ 'og_img_height' ] : '',
+					'og_img_crop'   => empty( $opts[ 'og_img_crop' ] ) ? 0 : 1,
+					'og_img_crop_x' => empty( $opts[ 'og_img_crop_x' ] ) ? 'center' : $opts[ 'og_img_crop_x' ],
+					'og_img_crop_y' => empty( $opts[ 'og_img_crop_y' ] ) ? 'center' : $opts[ 'og_img_crop_y' ],
 					'og_img_id'     => '',
-					'og_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],	// Default library prefix.
+					'og_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'og_img_url'    => '',
 
 					/**
 					 * Open Graph - Priority Video.
 					 */
-					'og_vid_prev_img' => empty( $opts['og_vid_prev_img'] ) ? 0 : 1,
-					'og_vid_max'      => isset( $opts['og_vid_max'] ) ? (int) $opts['og_vid_max'] : 1,	// Cast as integer.
+					'og_vid_prev_img' => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,
+					'og_vid_max'      => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// Cast as integer.
 					'og_vid_width'    => '',	// Custom value for first video.
 					'og_vid_height'   => '',	// Custom value for first video.
 					'og_vid_embed'    => '',
@@ -683,32 +683,32 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Twitter Card.
 					 */
-					'tc_lrg_img_width'  => isset( $opts['tc_lrg_img_width'] ) ? $opts['tc_lrg_img_width'] : '',
-					'tc_lrg_img_height' => isset( $opts['tc_lrg_img_height'] ) ? $opts['tc_lrg_img_height'] : '',
-					'tc_lrg_img_crop'   => empty( $opts['tc_lrg_img_crop'] ) ? 0 : 1,
-					'tc_lrg_img_crop_x' => empty( $opts['tc_lrg_img_crop_x'] ) ? 'center' : $opts['tc_lrg_img_crop_x'],
-					'tc_lrg_img_crop_y' => empty( $opts['tc_lrg_img_crop_y'] ) ? 'center' : $opts['tc_lrg_img_crop_y'],
-					'tc_lrg_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],	// Default library prefix.
+					'tc_lrg_img_width'  => isset( $opts[ 'tc_lrg_img_width' ] ) ? $opts[ 'tc_lrg_img_width' ] : '',
+					'tc_lrg_img_height' => isset( $opts[ 'tc_lrg_img_height' ] ) ? $opts[ 'tc_lrg_img_height' ] : '',
+					'tc_lrg_img_crop'   => empty( $opts[ 'tc_lrg_img_crop' ] ) ? 0 : 1,
+					'tc_lrg_img_crop_x' => empty( $opts[ 'tc_lrg_img_crop_x' ] ) ? 'center' : $opts[ 'tc_lrg_img_crop_x' ],
+					'tc_lrg_img_crop_y' => empty( $opts[ 'tc_lrg_img_crop_y' ] ) ? 'center' : $opts[ 'tc_lrg_img_crop_y' ],
+					'tc_lrg_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'tc_lrg_img_url'    => '',
-					'tc_sum_img_width'  => isset( $opts['tc_sum_img_width'] ) ? $opts['tc_sum_img_width'] : '',
-					'tc_sum_img_height' => isset( $opts['tc_sum_img_height'] ) ? $opts['tc_sum_img_height'] : '',
-					'tc_sum_img_crop'   => empty( $opts['tc_sum_img_crop'] ) ? 0 : 1,
-					'tc_sum_img_crop_x' => empty( $opts['tc_sum_img_crop_x'] ) ? 'center' : $opts['tc_sum_img_crop_x'],
-					'tc_sum_img_crop_y' => empty( $opts['tc_sum_img_crop_y'] ) ? 'center' : $opts['tc_sum_img_crop_y'],
-					'tc_sum_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],	// Default library prefix.
+					'tc_sum_img_width'  => isset( $opts[ 'tc_sum_img_width' ] ) ? $opts[ 'tc_sum_img_width' ] : '',
+					'tc_sum_img_height' => isset( $opts[ 'tc_sum_img_height' ] ) ? $opts[ 'tc_sum_img_height' ] : '',
+					'tc_sum_img_crop'   => empty( $opts[ 'tc_sum_img_crop' ] ) ? 0 : 1,
+					'tc_sum_img_crop_x' => empty( $opts[ 'tc_sum_img_crop_x' ] ) ? 'center' : $opts[ 'tc_sum_img_crop_x' ],
+					'tc_sum_img_crop_y' => empty( $opts[ 'tc_sum_img_crop_y' ] ) ? 'center' : $opts[ 'tc_sum_img_crop_y' ],
+					'tc_sum_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'tc_sum_img_url'    => '',
 
 					/**
 					 * Structured Data / Schema Markup / Pinterest.
 					 */
-					'schema_img_max'    => isset( $opts['schema_img_max'] ) ? (int) $opts['schema_img_max'] : 1,	// Cast as integer.
-					'schema_img_width'  => isset( $opts['schema_img_width'] ) ? $opts['schema_img_width'] : '',
-					'schema_img_height' => isset( $opts['schema_img_height'] ) ? $opts['schema_img_height'] : '',
-					'schema_img_crop'   => empty( $opts['schema_img_crop'] ) ? 0 : 1,
-					'schema_img_crop_x' => empty( $opts['schema_img_crop_x'] ) ? 'center' : $opts['schema_img_crop_x'],
-					'schema_img_crop_y' => empty( $opts['schema_img_crop_y'] ) ? 'center' : $opts['schema_img_crop_y'],
+					'schema_img_max'    => isset( $opts[ 'schema_img_max' ] ) ? (int) $opts[ 'schema_img_max' ] : 1,	// Cast as integer.
+					'schema_img_width'  => isset( $opts[ 'schema_img_width' ] ) ? $opts[ 'schema_img_width' ] : '',
+					'schema_img_height' => isset( $opts[ 'schema_img_height' ] ) ? $opts[ 'schema_img_height' ] : '',
+					'schema_img_crop'   => empty( $opts[ 'schema_img_crop' ] ) ? 0 : 1,
+					'schema_img_crop_x' => empty( $opts[ 'schema_img_crop_x' ] ) ? 'center' : $opts[ 'schema_img_crop_x' ],
+					'schema_img_crop_y' => empty( $opts[ 'schema_img_crop_y' ] ) ? 'center' : $opts[ 'schema_img_crop_y' ],
 					'schema_img_id'     => '',
-					'schema_img_id_pre' => empty( $opts['og_def_img_id_pre'] ) ? '' : $opts['og_def_img_id_pre'],	// Default library prefix.
+					'schema_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
 					'schema_img_url'    => '',
 
 					/**
@@ -725,7 +725,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						$this->p->debug->log( 'setting options_filtered to true' );
 					}
 
-					$md_defs['options_filtered'] = true;	// Set before calling filter to prevent recursion.
+					$md_defs[ 'options_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'options_filtered value unchanged' );
@@ -774,19 +774,19 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$mod_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
 
-			$cache_types['transient'][] = array(
+			$cache_types[ 'transient' ][] = array(
 				'id'   => $this->p->lca . '_h_' . md5( 'WpssoHead::get_head_array(' . $mod_salt . ')' ),
 				'pre'  => $this->p->lca . '_h_',
 				'salt' => 'WpssoHead::get_head_array(' . $mod_salt . ')',
 			);
 
-			$cache_types['transient'][] = array(
+			$cache_types[ 'transient' ][] = array(
 				'id'   => $this->p->lca . '_j_' . md5( 'WpssoSchema::get_mod_cache_data(' . $mod_salt . ')' ),
 				'pre'  => $this->p->lca . '_j_',
 				'salt' => 'WpssoSchema::get_mod_cache_data(' . $mod_salt . ')',
 			);
 
-			$cache_types['wp_cache'][] = array(
+			$cache_types[ 'wp_cache' ][] = array(
 				'id'   => $this->p->lca . '_c_' . md5( 'WpssoPage::get_the_content(' . $mod_salt . ')' ),
 				'pre'  => $this->p->lca . '_c_',
 				'salt' => 'WpssoPage::get_the_content(' . $mod_salt . ')',
@@ -807,8 +807,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						$cache_id = $mixed[ 'id' ];
 
 						$cache_key = '';
-						$cache_key .= isset( $mixed['pre'] ) ? $mixed['pre'] : '';
-						$cache_key .= isset( $mixed['salt'] ) ? $mixed['salt'] : '';
+						$cache_key .= isset( $mixed[ 'pre' ] ) ? $mixed[ 'pre' ] : '';
+						$cache_key .= isset( $mixed[ 'salt' ] ) ? $mixed[ 'salt' ] : '';
 						$cache_key = trim( $cache_key );
 
 						if ( empty( $cache_key ) ) {
@@ -819,7 +819,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						$cache_id = $cache_key = $mixed;
 					}
 
-					if ( isset( $deleted_ids[$type_name][$cache_id] ) ) {	// skip duplicate cache ids
+					if ( isset( $deleted_ids[ $type_name ][ $cache_id ] ) ) {	// skip duplicate cache ids
 						continue;
 					}
 
@@ -848,7 +848,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						$deleted_count++;
 					}
 
-					$deleted_ids[$type_name][$cache_key] = $ret;
+					$deleted_ids[ $type_name ][ $cache_key ] = $ret;
 				}
 			}
 
@@ -910,13 +910,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$md_unset_keys = array( 'options_filtered', 'options_version' );
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-				if ( isset( $info['opt_version'] ) ) {
+				if ( isset( $info[ 'opt_version' ] ) ) {
 					$md_unset_keys[] = 'plugin_' . $ext . '_opt_version';
 				}
 			}
 
 			foreach ( $md_unset_keys as $md_key ) {
-				unset( $md_defs[$md_key], $md_prev[$md_key] );
+				unset( $md_defs[ $md_key ], $md_prev[ $md_key ] );
 			}
 
 			/**
@@ -949,18 +949,18 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * If the option value is the same as the default value, then unset it.
 					 */
-					if ( isset( $md_opts[$md_pre . '_img_' . $md_suffix] ) &&
-						isset( $md_defs[$md_pre . '_img_' . $md_suffix] ) &&
-						$md_opts[$md_pre . '_img_' . $md_suffix] === $md_defs[$md_pre . '_img_' . $md_suffix] ) {
+					if ( isset( $md_opts[ $md_pre . '_img_' . $md_suffix ] ) &&
+						isset( $md_defs[ $md_pre . '_img_' . $md_suffix ] ) &&
+						$md_opts[ $md_pre . '_img_' . $md_suffix ] === $md_defs[ $md_pre . '_img_' . $md_suffix ] ) {
 
-						unset( $md_opts[$md_pre . '_img_' . $md_suffix] );
+						unset( $md_opts[ $md_pre . '_img_' . $md_suffix ] );
 					}
 
-					$check_current = isset( $md_opts[$md_pre . '_img_' . $md_suffix] ) ?
-						$md_opts[$md_pre . '_img_' . $md_suffix] : '';
+					$check_current = isset( $md_opts[ $md_pre . '_img_' . $md_suffix ] ) ?
+						$md_opts[ $md_pre . '_img_' . $md_suffix ] : '';
 
-					$check_previous = isset( $md_prev[$md_pre . '_img_' . $md_suffix] ) ?
-						$md_prev[$md_pre . '_img_' . $md_suffix] : '';
+					$check_previous = isset( $md_prev[ $md_pre . '_img_' . $md_suffix ] ) ?
+						$md_prev[ $md_pre . '_img_' . $md_suffix ] : '';
 
 					if ( $check_current !== $check_previous ) {
 						$force_regen = true;
@@ -981,16 +981,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				 * Use strict comparison to manage conversion (don't allow string to integer conversion, for example).
 				 */
 				if ( $md_val === '' || $md_val === WPSSO_UNDEF || $md_val === (string) WPSSO_UNDEF || 
-					( isset( $md_defs[$md_key] ) && ( $md_val === $md_defs[$md_key] || $md_val === (string) $md_defs[$md_key] ) ) ) {
+					( isset( $md_defs[ $md_key ] ) && ( $md_val === $md_defs[ $md_key ] || $md_val === (string) $md_defs[ $md_key ] ) ) ) {
 
-					unset( $md_opts[$md_key] );
+					unset( $md_opts[ $md_key ] );
 				}
 			}
 
 			/**
 			 * Re-number multi options (example: schema type url, recipe ingredient, recipe instruction, etc.).
 			 */
-			foreach ( $this->p->cf['opt']['cf_md_multi'] as $md_multi => $is_multi ) {
+			foreach ( $this->p->cf[ 'opt' ][ 'cf_md_multi' ] as $md_multi => $is_multi ) {
 
 				if ( ! $is_multi ) {	// Just in case.
 					continue;
@@ -1019,11 +1019,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 */
 			if ( ! empty( $md_opts ) ) {
 
-				$md_opts['options_version'] = $this->p->cf['opt'][ 'version' ];
+				$md_opts[ 'options_version' ] = $this->p->cf[ 'opt' ][ 'version' ];
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-					if ( isset( $info['opt_version'] ) ) {
-						$md_opts['plugin_' . $ext . '_opt_version'] = $info['opt_version'];
+					if ( isset( $info[ 'opt_version' ] ) ) {
+						$md_opts[ 'plugin_' . $ext . '_opt_version' ] = $info[ 'opt_version' ];
 					}
 				}
 			}
@@ -1042,12 +1042,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$wpsso =& Wpsso::get_instance();
 
-				$sort_cols = (array) apply_filters( $wpsso->lca . '_get_sortable_columns', $wpsso->cf['edit']['columns'] );
+				$sort_cols = (array) apply_filters( $wpsso->lca . '_get_sortable_columns', $wpsso->cf[ 'edit' ][ 'columns' ] );
 			}
 
 			if ( false !== $col_key ) {
-				if ( isset( $sort_cols[$col_key] ) ) {
-					return $sort_cols[$col_key];
+				if ( isset( $sort_cols[ $col_key ] ) ) {
+					return $sort_cols[ $col_key ];
 				} else {
 					return null;
 				}
@@ -1062,8 +1062,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$sort_cols = self::get_sortable_columns();
 
 			foreach ( $sort_cols as $col_key => $col_info ) {
-				if ( ! empty( $col_info['meta_key'] ) ) {
-					$meta_keys[$col_key] = $col_info['meta_key'];
+				if ( ! empty( $col_info[ 'meta_key' ] ) ) {
+					$meta_keys[ $col_key ] = $col_info[ 'meta_key' ];
 				}
 			}
 
@@ -1076,8 +1076,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$sort_cols = self::get_sortable_columns();
 
 			foreach ( $sort_cols as $col_key => $col_info ) {
-				if ( ! empty( $col_info['header'] ) ) {
-					$headers[$col_key] = _x( $col_info['header'], 'column header', 'wpsso' );
+				if ( ! empty( $col_info[ 'header' ] ) ) {
+					$headers[ $col_key ] = _x( $col_info[ 'header' ], 'column header', 'wpsso' );
 				}
 			}
 
@@ -1094,17 +1094,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
 
-					if ( isset( $col_info['meta_key'] ) ) {	// Just in case.
+					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
 
 						$meta_cache = wp_cache_get( $mod[ 'id' ], $mod[ 'name' ] . '_meta' );
 
 						if ( ! $meta_cache ) {
 							$meta_cache = update_meta_cache( $mod[ 'name' ], array( $mod[ 'id' ] ) );
-							$meta_cache = $meta_cache[$mod[ 'id' ]];
+							$meta_cache = $meta_cache[ $mod[ 'id' ] ];
 						}
 
-						if ( isset( $meta_cache[$col_info['meta_key']] ) ) {
-							$value = (string) maybe_unserialize( $meta_cache[$col_info['meta_key']][0] );
+						if ( isset( $meta_cache[ $col_info[ 'meta_key' ] ] ) ) {
+							$value = (string) maybe_unserialize( $meta_cache[ $col_info[ 'meta_key' ] ][ 0 ] );
 						}
 					}
 				}
@@ -1131,8 +1131,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function add_sortable_columns( $columns ) { 
 
 			foreach ( self::get_sortable_columns() as $col_key => $col_info ) {
-				if ( ! empty( $col_info['orderby'] ) ) {
-					$columns[$this->p->lca . '_' . $col_key] = $this->p->lca . '_' . $col_key;
+				if ( ! empty( $col_info[ 'orderby' ] ) ) {
+					$columns[ $this->p->lca . '_' . $col_key ] = $this->p->lca . '_' . $col_key;
 				}
 			}
 
@@ -1151,8 +1151,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {
 
-						if ( ! empty( $col_info[$set_name] ) ) {
-							$query->set( $set_name, $col_info[$set_name] );
+						if ( ! empty( $col_info[ $set_name ] ) ) {
+							$query->set( $set_name, $col_info[ $set_name ] );
 						}
 					}
 				}
@@ -1165,9 +1165,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				foreach ( self::get_column_headers() as $col_key => $col_header ) {
 
-					if ( ! empty( $this->p->options['plugin_' . $col_key . '_col_' . $mod_name] ) ) {
+					if ( ! empty( $this->p->options[ 'plugin_' . $col_key . '_col_' . $mod_name] ) ) {
 
-						$columns[$this->p->lca . '_' . $col_key] = $col_header;
+						$columns[ $this->p->lca . '_' . $col_key ] = $col_header;
 
 						if ( $this->p->debug->enabled ) {
 							$this->p->debug->log( 'adding ' . $this->p->lca . '_' . $col_key . ' column' );
@@ -1304,7 +1304,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $force_regen, $mt_pre );
 				}
 
-				if ( empty( $mt_single_image[$mt_pre . ':image:url'] ) && ! empty( $url ) ) {
+				if ( empty( $mt_single_image[ $mt_pre . ':image:url' ] ) && ! empty( $url ) ) {
 
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'using custom ' . $opt_pre . ' image url = "' . $url . '"',
@@ -1338,7 +1338,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					$this->p->media->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $force_regen, $mt_pre );
 
-					if ( ! empty( $mt_single_image[$mt_pre . ':image:url'] ) ) {
+					if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {
 						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
 							return $mt_ret;
 						}
@@ -1356,14 +1356,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
-					$mt_single_image[$mt_pre . ':image:url'] = $url;
+					$mt_single_image[ $mt_pre . ':image:url' ] = $url;
 
 					/**
 					 * Add correct image sizes for the image URL using getimagesize().
 					 */
 					$this->p->util->add_image_url_size( $mt_single_image, $mt_pre . ':image' );
 
-					if ( ! empty( $mt_single_image[$mt_pre . ':image:url'] ) ) {
+					if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {
 						if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
 							return $mt_ret;
 						}
@@ -1490,7 +1490,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 *		'plugin_cf_vid_url'             => 'og_vid_url',
 			 *	),
 			 */
-			$cf_md_keys = (array) apply_filters( $this->p->lca . '_cf_md_keys', $this->p->cf['opt']['cf_md_key'] );
+			$cf_md_keys = (array) apply_filters( $this->p->lca . '_cf_md_keys', $this->p->cf[ 'opt' ][ 'cf_md_key' ] );
 
 			foreach ( $cf_md_keys as $cf_key => $md_key ) {
 
@@ -1517,7 +1517,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$this->p->debug->log( 'custom field ' . $cf_key . ' option has meta key ' . $meta_key );
 				}
 
-				if ( ! isset( $wp_meta[$meta_key][0] ) ) {	// If the array element is not set, then skip it.
+				if ( ! isset( $wp_meta[ $meta_key ][ 0 ] ) ) {	// If the array element is not set, then skip it.
 					if ( $this->p->debug->enabled ) {
 						$this->p->debug->log( $meta_key . ' meta key element 0 not found in wp_meta' );
 					}

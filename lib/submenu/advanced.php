@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			) );
 
 			foreach ( $tabs as $tab_key => $title ) {
-				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
+				$table_rows[ $tab_key ] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
 					apply_filters( $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows', array(), $this->form, $network = false ) );
 			}
 
@@ -137,7 +137,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$table_rows = array();
 
 			foreach ( $tabs as $tab_key => $title ) {
-				$table_rows[$tab_key] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
+				$table_rows[ $tab_key ] = array_merge( $this->get_table_rows( $metabox_id, $tab_key ),
 					apply_filters( $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows', array(), $this->form, $network = false ) );
 			}
 
