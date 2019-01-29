@@ -278,12 +278,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
-						case 'util-language':
-
-							$chk[ 'opt_key' ] = 'plugin_filter_lang';
-
-							break;
-
 						case 'util-shorten':
 
 							$chk[ 'opt_key' ] = 'plugin_shortener';

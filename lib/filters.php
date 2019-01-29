@@ -81,6 +81,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		}
 
 		public function update_gform_noconflict_styles( $styles ) {
+
 			return array_merge( $styles, array(
 				'jquery-ui.js',
 				'jquery-qtip.js',
@@ -92,6 +93,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		}
 
 		public function update_gform_noconflict_scripts( $scripts ) {
+
 			return array_merge( $scripts, array(
 				'jquery-ui-datepicker',
 				'jquery-qtip',
@@ -259,6 +261,7 @@ if ( ! class_exists( 'WpssoFilters' ) ) {
 		}
 
 		public static function remove_snap_og_meta_tags_holder() {
+
 			remove_action( 'wp_head', 'nxs_addOGTagsPreHolder', 150 );
 		}
 	}

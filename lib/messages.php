@@ -745,16 +745,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_filter_lang':	// Use WP Locale for Language
-
-							$text = sprintf( __( '%1$s can use the WordPress locale to dynamically select the correct language for the Facebook / Open Graph and Pinterest Rich Pin meta tags.', 'wpsso' ), $info[ 'short' ] ) . ' ';
-
-							$text .= __( 'If your website is available in multiple languages, this can be a useful feature.', 'wpsso' ) . ' ';
-							
-							$text .= __( 'Uncheck this option to ignore the WordPress locale and always use the configured language.', 'wpsso' ); 
-
-							break;
-
 						case 'tooltip-plugin_page_excerpt':	// Enable WP Excerpt for Pages
 
 							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ) . ' ';

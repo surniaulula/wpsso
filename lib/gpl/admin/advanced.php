@@ -119,10 +119,6 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ), '', 'plugin_new_user_is_person' ) . 
 			$form->get_td_no_checkbox( 'plugin_new_user_is_person' );
 
-			$table_rows[ 'plugin_filter_lang' ] = $form->get_tr_hide( 'basic', 'plugin_filter_lang' ) . 
-			$form->get_th_html( _x( 'Use WP Locale for Language', 'option label', 'wpsso' ), '', 'plugin_filter_lang' ) . 
-			$form->get_td_no_checkbox( 'plugin_filter_lang' );
-
 			$table_rows[ 'plugin_page_excerpt' ] = '' . 
 			$form->get_th_html( _x( 'Enable WP Excerpt for Pages', 'option label', 'wpsso' ), '', 'plugin_page_excerpt' ) . 
 			$form->get_td_no_checkbox( 'plugin_page_excerpt' );
@@ -310,14 +306,14 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_content_cache_exp', $form, $network );
 
-			$table_rows[ 'plugin_short_url_cache_exp' ] = '' . 
-			$form->get_th_html( _x( 'Get Shortened URL Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_short_url_cache_exp' ) . 
+			$table_rows[ 'plugin_short_url_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_short_url_cache_exp' ) .
+			$form->get_th_html( _x( 'Shortened URL Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_short_url_cache_exp' ) . 
 			'<td nowrap class="blank">' . $this->p->options[ 'plugin_short_url_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_short_url_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_imgsize_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_imgsize_cache_exp' ) . 
-			$form->get_th_html( _x( 'Get Image URL Info Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_imgsize_cache_exp' ) . 
+			$form->get_th_html( _x( 'Image URL Info Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_imgsize_cache_exp' ) . 
 			'<td nowrap class="blank">' . $this->p->options[ 'plugin_imgsize_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_imgsize_cache_exp', $form, $network );
@@ -328,7 +324,7 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_topics_cache_exp', $form, $network );
 
-			$table_rows[ 'plugin_json_data_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_json_data_cache_exp' ) . 
+			$table_rows[ 'plugin_json_data_cache_exp' ] = '' .
 			$form->get_th_html( _x( 'Schema JSON Data Cache Expiry', 'option label', 'wpsso' ), '', 'plugin_json_data_cache_exp' ) . 
 			'<td nowrap class="blank">' . $this->p->options[ 'plugin_json_data_cache_exp' ] . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 

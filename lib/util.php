@@ -71,6 +71,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$this->add_plugin_filters( $this, array(
+				'pub_lang' => 3,
+			) );
+
 			/**
 			 * Several actions must be hooked to define our image sizes on the front-end,
 			 * back-end, AJAX calls, REST API calls, etc.
@@ -91,6 +95,109 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			add_filter( 'image_save_pre', array( $this, 'image_editor_save_pre_image_sizes' ), -100, 2 );	// Filter deprecated in wp 3.5.
 			add_filter( 'image_editor_save_pre', array( $this, 'image_editor_save_pre_image_sizes' ), -100, 2 );
+		}
+
+		public function filter_pub_lang( $current_lang, $publisher, $mixed = 'current' ) {
+
+			if ( is_string( $publisher ) ) {	// Example: 'facebook', 'google, 'twitter', etc.
+
+				$pub_lang = SucomUtil::get_pub_lang( $publisher );
+
+			} elseif ( is_array( $publisher ) ) {
+
+				$pub_lang = $publisher;
+
+			} else {
+				return $current_lang;
+			}
+
+			/**
+			 * Returns the WP language as 'en' or 'en_US'.
+			 */
+			$locale = $fb_lang = SucomUtil::get_locale( $mixed );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'get_locale returned: ' . $locale );
+			}
+
+			/**
+			 * All facebook languages are formatted 'en_US', so
+			 * correct known two letter locales.
+			 */
+			if ( strlen( $fb_lang ) == 2 ) {
+
+				switch ( $fb_lang ) {
+
+					case 'el':
+
+						$fb_lang = 'el_GR';
+
+						break;
+
+					default:
+
+						/**
+						 * fr to fr_FR, for example.
+						 */
+						$fb_lang = $fb_lang . '_' . strtoupper( $fb_lang );
+
+						break;
+				}
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'fb_lang changed to: ' . $fb_lang );
+				}
+			}
+
+			/**
+			 * Check for complete en_US format (facebook).
+			 */
+			if ( isset( $pub_lang[ $fb_lang ] ) ) {
+
+				$current_lang = $fb_lang;
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'underscore locale found: ' . $current_lang );
+				}
+			}
+
+			/**
+			 * Hyphen instead of underscore (google).
+			 */
+			if ( ( $locale = preg_replace( '/_/', '-', $locale ) ) && isset( $pub_lang[ $locale ] ) ) {
+
+				$current_lang = $locale;
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'hyphen locale found: ' . $current_lang );
+				}
+			}
+
+			/**
+			 * Lowercase with hyphen (twitter).
+			 */
+			if ( ( $locale = strtolower( $locale ) ) && isset( $pub_lang[ $locale ] ) ) {
+
+				$current_lang = $locale;
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'lowercase locale found: ' . $current_lang );
+				}
+			}
+
+			/**
+			 * Two-letter lowercase format (google and twitter).
+			 */
+			if ( ( $locale = preg_replace( '/[_-].*$/', '', $locale ) ) && isset( $pub_lang[ $locale ] ) ) {
+
+				$current_lang = $locale;
+
+				if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'two-letter locale found: ' . $current_lang );
+				}
+			}
+
+			return $current_lang;
 		}
 
 		/**
