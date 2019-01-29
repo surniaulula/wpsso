@@ -2895,21 +2895,28 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$screen_id = SucomUtil::get_screen_id( $screen );
 
-			if ( 'options-general' === $screen_id ) {
+			switch ( $screen_id ) {
 
-				$current_home_url = get_option( 'home' );
-				$current_site_url = get_option( 'siteurl' );
+				case 'dashboard':
+				case 'options-general':
+				case 'sso-pro_page_wpsso-tools':
+				case 'sso-pro_page_wpsso-um-general':
 
-				$raw_db_home_url  = SucomUtilWP::raw_get_home_url();
-				$raw_db_site_url  = SucomUtilWP::raw_get_site_url();
+					$current_home_url = get_option( 'home' );
+					$current_site_url = get_option( 'siteurl' );
 
-				if ( $current_home_url !== $raw_db_home_url ) {
-					SucomUtilWP::raw_do_option( 'update', 'home', $current_home_url );
-				}
+					$raw_db_home_url  = SucomUtilWP::raw_get_home_url();
+					$raw_db_site_url  = SucomUtilWP::raw_get_site_url();
 
-				if ( $current_site_url !== $raw_db_site_url ) {
-					SucomUtilWP::raw_do_option( 'update', 'siteurl', $current_site_url );
-				}
+					if ( $current_home_url !== $raw_db_home_url ) {
+						SucomUtilWP::raw_do_option( 'update', 'home', $current_home_url );
+					}
+
+					if ( $current_site_url !== $raw_db_site_url ) {
+						SucomUtilWP::raw_do_option( 'update', 'siteurl', $current_site_url );
+					}
+
+				break;
 			}
 
 			return $screen;
