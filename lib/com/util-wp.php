@@ -84,7 +84,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		/**
 		 * Unfiltered version of wp_get_shortlink() from wordpress/wp-includes/link-template.php
-		 * Last synchronized with WordPress v5.0 on 2018/12/12.
+		 * Last synchronized with WordPress v5.0.3 on 2019/01/29.
 		 */
 		public static function raw_wp_get_shortlink( $id = 0, $context = 'post', $allow_slugs = true ) {
 		
@@ -112,11 +112,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				if ( 'page' === $post->post_type && $post->ID == get_option( 'page_on_front' ) && 'page' == get_option( 'show_on_front' ) ) {
 
-					$shortlink = home_url( '/' );
+					$shortlink = self::raw_home_url( '/' );
 
 				} elseif ( ! empty( $post_type->public ) ) {
 
-					$shortlink = home_url( '?p=' . $post_id );
+					$shortlink = self::raw_home_url( '?p=' . $post_id );
 				}
 			} 
 			

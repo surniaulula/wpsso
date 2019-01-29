@@ -12,11 +12,11 @@
  * License URI: https://www.gnu.org/licenses/gpl.txt
  * Description: WPSSO Core makes sure your content looks great on all social and search sites - no matter how it's crawled, shared, re-shared, posted, or embedded!
  * Tagline: Makes sure your content looks great on all social and search sites - no matter how it's crawled, shared, re-shared, posted, or embedded!
- * Requires PHP: 5.4
+ * Requires PHP: 5.5
  * Requires At Least: 3.8
  * Tested Up To: 5.0
  * WC Tested Up To: 3.5
- * Version: 4.22.0-dev.6
+ * Version: 4.22.0-dev.7
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *

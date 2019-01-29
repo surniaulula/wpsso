@@ -157,7 +157,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					 * to try to solve this problem at the PHP level, but since the alternatives at the web server and OS levels
 					 * aren't very realistic, many people, especially ISP's, use safe mode for now.
 					 *
-					 * This feature has been DEPRECATED as of PHP 5.3.0 and REMOVED as of PHP 5.4.0.
+					 * This feature has been DEPRECATED as of PHP 5.3 and REMOVED as of PHP 5.4.
 					 */
 					if ( ini_get( 'safe_mode' ) ) {
 

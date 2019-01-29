@@ -47,8 +47,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			$add_meta_name_desc = empty( $this->p->options['add_meta_name_description'] ) ? false : true;
 			$add_meta_name_desc = apply_filters( $this->p->lca . '_add_meta_name_description', $add_meta_name_desc, $mod );
 
-			$sharing_url   = $this->p->util->get_sharing_url( $mod, false );	// $add_page is false.
-			$canonical_url = $this->p->util->get_canonical_url( $mod, false );	// $add_page is false.
+			$sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
+			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
 			$og_title_max_len    = $this->p->options['og_title_max_len'];
 			$og_desc_max_len     = $this->p->options['og_desc_max_len'];
