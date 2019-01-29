@@ -8,7 +8,7 @@ License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: open graph, rich pins, rich cards, twitter cards, schema, social media, meta tags, merchant, seo, yoast seo, woocommerce, facebook, google, pinterest, twitter, linkedin, whatsapp, skype
 Contributors: jsmoriss
-Requires PHP: 5.4
+Requires PHP: 5.5
 Requires At Least: 3.8
 Tested Up To: 5.0
 WC Tested Up To: 3.5
@@ -298,7 +298,7 @@ WPSSO Core and its optional add-ons offer meta tags and Schema markup for Facebo
 
 <h3>Coded for Performance</h3>
 
-WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding the cache in background. WPSSO Core and its add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.4 or better required).
+WPSSO Core makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding the cache in background. WPSSO Core and its add-ons use only the library files and object classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v7.x (PHP v5.5 or better required).
 
 <h3>Highly Customizable</h3>
 
@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.22.0-dev.6 (2019/01/28)**
+**Version 4.22.0-dev.7 (2019/01/29)**
 
 * *New Features*
 	* None.
@@ -609,9 +609,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.22.0-dev.6 =
+= 4.22.0-dev.7 =
 
-(2019/01/28) Added new product attribute name options for WooCommerce. Removed the "Create Missing WP Media Sizes" option. Added a new 'wpsso_product_attribute_names' filter for WooCommerce.
+(2019/01/29) Added new product attribute name options for WooCommerce. Removed the "Create Missing WP Media Sizes" option. Added a new 'wpsso_product_attribute_names' filter for WooCommerce.
 
 = 4.21.0 =
 
