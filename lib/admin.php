@@ -2899,6 +2899,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				case 'dashboard':
 				case 'options-general':
+				case 'sso-gpl_page_wpsso-tools':
+				case 'sso-gpl_page_wpsso-um-general':
 				case 'sso-pro_page_wpsso-tools':
 				case 'sso-pro_page_wpsso-um-general':
 
