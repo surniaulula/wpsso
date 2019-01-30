@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.22.0-dev.7\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.22.0-dev.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6007,29 +6007,29 @@ msgctxt "metabox tab"
 msgid "Default Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:130 lib/submenu/essential.php:76
+#: lib/submenu/advanced.php:132 lib/submenu/essential.php:76
 #: lib/submenu/general.php:97
 msgctxt "metabox tab"
 msgid "Facebook"
 msgstr ""
 
-#: lib/submenu/advanced.php:131
+#: lib/submenu/advanced.php:133
 msgctxt "metabox tab"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/submenu/advanced.php:132 lib/submenu/essential.php:79
+#: lib/submenu/advanced.php:134 lib/submenu/essential.php:79
 #: lib/submenu/general.php:100
 msgctxt "metabox tab"
 msgid "Twitter"
 msgstr ""
 
-#: lib/submenu/advanced.php:133
+#: lib/submenu/advanced.php:135
 msgctxt "metabox tab"
 msgid "Schema"
 msgstr ""
 
-#: lib/submenu/advanced.php:134
+#: lib/submenu/advanced.php:136
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""

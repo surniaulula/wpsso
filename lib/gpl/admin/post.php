@@ -43,18 +43,18 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 			/**
 			 * The 'add_link_rel_canonical' and 'add_meta_name_description' options will be empty if an SEO plugin is detected.
 			 */
-			$add_link_rel_canon = empty( $this->p->options['add_link_rel_canonical'] ) ? false : true;
-			$add_meta_name_desc = empty( $this->p->options['add_meta_name_description'] ) ? false : true;
+			$add_link_rel_canon = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? false : true;
+			$add_meta_name_desc = empty( $this->p->options[ 'add_meta_name_description' ] ) ? false : true;
 			$add_meta_name_desc = apply_filters( $this->p->lca . '_add_meta_name_description', $add_meta_name_desc, $mod );
 
 			$sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
-			$og_title_max_len    = $this->p->options['og_title_max_len'];
-			$og_desc_max_len     = $this->p->options['og_desc_max_len'];
-			$seo_desc_max_len    = $this->p->options['seo_desc_max_len'];
-			$tc_desc_max_len     = $this->p->options['tc_desc_max_len'];
-			$schema_desc_max_len = $this->p->options['schema_desc_max_len'];
+			$og_title_max_len    = $this->p->options[ 'og_title_max_len' ];
+			$og_desc_max_len     = $this->p->options[ 'og_desc_max_len' ];
+			$seo_desc_max_len    = $this->p->options[ 'seo_desc_max_len' ];
+			$tc_desc_max_len     = $this->p->options[ 'tc_desc_max_len' ];
+			$schema_desc_max_len = $this->p->options[ 'schema_desc_max_len' ];
 			$schema_desc_md_key  = array( 'seo_desc', 'og_desc' );
 
 			$def_og_type     = $this->p->og->get_mod_og_type( $mod, $get_type_ns = false, $use_mod_opts = false );
@@ -163,7 +163,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Availability', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_avail',
-					'content'  => $form->get_no_select( 'product_avail', $this->p->cf['form']['item_availability'] ),
+					'content'  => $form->get_no_select( 'product_avail', $this->p->cf[ 'form' ][ 'item_availability' ] ),
 				),
 				'product_brand' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -187,7 +187,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Condition', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_condition',
-					'content'  => $form->get_no_select( 'product_condition', $this->p->cf['form']['item_condition'] ),
+					'content'  => $form->get_no_select( 'product_condition', $this->p->cf[ 'form' ][ 'item_condition' ] ),
 				),
 				'product_material' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
@@ -276,7 +276,7 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Target Gender', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_gender',
-					'content'  => $form->get_no_select( 'product_gender', $this->p->cf['form']['audience_gender'] ),
+					'content'  => $form->get_no_select( 'product_gender', $this->p->cf[ 'form' ][ 'audience_gender' ] ),
 				),
 				'subsection_schema' => array(
 					'td_class' => 'subsection',

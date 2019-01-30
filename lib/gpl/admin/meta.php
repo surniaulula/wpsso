@@ -49,18 +49,18 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			/**
 			 * The 'add_link_rel_canonical' and 'add_meta_name_description' options will be empty if an SEO plugin is detected.
 			 */
-			$add_link_rel_canon = empty( $this->p->options['add_link_rel_canonical'] ) ? false : true;
-			$add_meta_name_desc = empty( $this->p->options['add_meta_name_description'] ) ? false : true;
+			$add_link_rel_canon = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? false : true;
+			$add_meta_name_desc = empty( $this->p->options[ 'add_meta_name_description' ] ) ? false : true;
 			$add_meta_name_desc = apply_filters( $this->p->lca . '_add_meta_name_description', $add_meta_name_desc, $mod );
 
 			$sharing_url   = $this->p->util->get_sharing_url( $mod, false );	// $add_page is false.
 			$canonical_url = $this->p->util->get_canonical_url( $mod, false );	// $add_page is false.
 
-			$og_title_max_len    = $this->p->options['og_title_max_len'];
-			$og_desc_max_len     = $this->p->options['og_desc_max_len'];
-			$seo_desc_max_len    = $this->p->options['seo_desc_max_len'];
-			$tc_desc_max_len     = $this->p->options['tc_desc_max_len'];
-			$schema_desc_max_len = $this->p->options['schema_desc_max_len'];
+			$og_title_max_len    = $this->p->options[ 'og_title_max_len' ];
+			$og_desc_max_len     = $this->p->options[ 'og_desc_max_len' ];
+			$seo_desc_max_len    = $this->p->options[ 'seo_desc_max_len' ];
+			$tc_desc_max_len     = $this->p->options[ 'tc_desc_max_len' ];
+			$schema_desc_max_len = $this->p->options[ 'schema_desc_max_len' ];
 			$schema_desc_md_key  = array( 'seo_desc', 'og_desc' );
 
 			$def_og_title    = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
@@ -174,31 +174,31 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				( $mod[ 'is_post' ] ? $this->p->msgs->get( 'pro-about-msg-post-media' ) : '' ) .
 					$this->p->msgs->get( 'pro-feature-msg' ) . '</td>';
 
-			$form_rows['subsection_opengraph'] = array(
+			$form_rows[ 'subsection_opengraph' ] = array(
 				'td_class' => 'subsection top',
 				'header'   => 'h4',
 				'label'    => _x( 'All Social WebSites / Open Graph', 'metabox title', 'wpsso' )
 			);
 
-			$form_rows['subsection_priority_image'] = array(
+			$form_rows[ 'subsection_priority_image' ] = array(
 				'td_class' => 'subsection top',
 				'header'   => 'h5',
 				'label'    => _x( 'Priority Image Information', 'metabox title', 'wpsso' )
 			);
 
 			if ( $mod[ 'is_post' ] ) {
-				$form_rows['og_img_max'] = array(
+				$form_rows[ 'og_img_max' ] = array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_img_max' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_img_max',
 					'content'  => $form->get_no_select( 'og_img_max',
-						range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
+						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
 				);
 			}
 
-			$form_rows['og_img_dimensions'] = array(
+			$form_rows[ 'og_img_dimensions' ] = array(
 				'tr_class' => $form->get_css_class_hide_img_dim( 'basic', 'og_img' ),
 				'th_class' => 'medium',
 				'td_class' => 'blank',
@@ -207,29 +207,29 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'content'  => $form->get_no_input_image_dimensions( 'og_img', true ),	// $use_opts is true.
 			);
 
-			$form_rows['og_img_id'] = array(
+			$form_rows[ 'og_img_id' ] = array(
 				'th_class' => 'medium',
 				'td_class' => 'blank',
 				'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-og_img_id',
-				'content'  => $form->get_no_input_image_upload( 'og_img', $media_info['pid'], true ),
+				'content'  => $form->get_no_input_image_upload( 'og_img', $media_info[ 'pid' ], true ),
 			);
 
-			$form_rows['og_img_url'] = array(
+			$form_rows[ 'og_img_url' ] = array(
 				'th_class' => 'medium',
 				'td_class' => 'blank',
 				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-og_img_url',
-				'content'  => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
+				'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], 'wide' ),
 			);
 
-			$form_rows['subsection_priority_video'] = array(
+			$form_rows[ 'subsection_priority_video' ] = array(
 				'td_class' => 'subsection',
 				'header'   => 'h5',
 				'label'    => _x( 'Priority Video Information', 'metabox title', 'wpsso' )
 			);
 
-			$form_rows['og_vid_prev_img'] = array(
+			$form_rows[ 'og_vid_prev_img' ] = array(
 				'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_prev_img' ),
 				'th_class' => 'medium',
 				'td_class' => 'blank',
@@ -239,18 +239,18 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 			);
 
 			if ( $mod[ 'is_post' ] ) {
-				$form_rows['og_vid_max'] = array(
+				$form_rows[ 'og_vid_max' ] = array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_max' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Maximum Videos', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_max',
 					'content'  => $form->get_no_select( 'og_vid_max',
-						range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
+						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
 				);
 			}
 
-			$form_rows['og_vid_dimensions'] = array(
+			$form_rows[ 'og_vid_dimensions' ] = array(
 				'tr_class' => $form->get_css_class_hide_vid_dim( 'basic', 'og_vid' ),
 				'th_class' => 'medium',
 				'td_class' => 'blank',
@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'content'  => $form->get_no_input_video_dimensions( 'og_vid' ),
 			);
 
-			$form_rows['og_vid_embed'] = array(
+			$form_rows[ 'og_vid_embed' ] = array(
 				'th_class' => 'medium',
 				'td_class' => 'blank',
 				'label'    => _x( 'Video Embed HTML', 'option label', 'wpsso' ),
@@ -267,7 +267,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'content'  => $form->get_no_textarea_value( '' ),	// Free version does not include video modules.
 			);
 
-			$form_rows['og_vid_url'] = array(
+			$form_rows[ 'og_vid_url' ] = array(
 				'th_class' => 'medium',
 				'td_class' => 'blank',
 				'label'    => _x( 'or a Video URL', 'option label', 'wpsso' ),
@@ -275,7 +275,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'content'  => $form->get_no_input_value( '', 'wide' ),	// Free version does not include video modules.
 			);
 
-			$form_rows['og_vid_title'] = array(
+			$form_rows[ 'og_vid_title' ] = array(
 				'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_title' ),
 				'th_class' => 'medium',
 				'td_class' => 'blank',
@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'content'  => $form->get_no_input_value( '', 'wide' ),	// Free version does not include video modules.
 			);
 
-			$form_rows['og_vid_desc'] = array(
+			$form_rows[ 'og_vid_desc' ] = array(
 				'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_desc' ),
 				'th_class' => 'medium',
 				'td_class' => 'blank',
@@ -325,7 +325,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'td_class' => 'blank',
 				'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-' . $md_pre . '_img_id',
-				'content'  => $form->get_no_input_image_upload( $md_pre . '_img', $media_info['pid'], true ),
+				'content'  => $form->get_no_input_image_upload( $md_pre . '_img', $media_info[ 'pid' ], true ),
 			);
 
 			$form_rows[ $md_pre . '_img_url' ] = array(
@@ -334,7 +334,7 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'td_class' => 'blank',
 				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-' . $md_pre . '_img_url',
-				'content'  => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
+				'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], 'wide' ),
 			);
 
 			/**
@@ -345,25 +345,25 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 	
 			$schema_tr_class = $form->in_options( '/^schema_img_/', true ) ? '' : 'hide_in_basic';	// Hide unless a custom schema image exists.
 
-			$form_rows['subsection_schema'] = array(
+			$form_rows[ 'subsection_schema' ] = array(
 				'tr_class' => $schema_tr_class,
 				'td_class' => 'subsection', 'header' => 'h4',
 				'label'    => _x( 'Structured Data / Schema Markup / Pinterest', 'metabox title', 'wpsso' )
 			);
 
 			if ( $mod[ 'is_post' ] ) {
-				$form_rows['schema_img_max'] = array(
+				$form_rows[ 'schema_img_max' ] = array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'schema_img_max' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_img_max',
 					'content'  => $form->get_no_select( 'schema_img_max',
-						range( 0, $this->p->cf['form']['max_media_items'] ), 'medium' ),
+						range( 0, $this->p->cf[ 'form' ][ 'max_media_items' ] ), 'medium' ),
 				);
 			}
 
-			$form_rows['schema_img_dimensions'] = array(
+			$form_rows[ 'schema_img_dimensions' ] = array(
 				'tr_class' => $form->get_css_class_hide_img_dim( 'basic', 'schema_img' ),
 				'th_class' => 'medium',
 				'td_class' => 'blank',
@@ -372,22 +372,22 @@ if ( ! class_exists( 'WpssoGplAdminMeta' ) ) {
 				'content'  => $form->get_no_input_image_dimensions( 'schema_img', true ),	// $use_opts is true.
 			);
 
-			$form_rows['schema_img_id'] = array(
+			$form_rows[ 'schema_img_id' ] = array(
 				'tr_class' => $schema_tr_class,
 				'th_class' => 'medium',
 				'td_class' => 'blank',
 				'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-schema_img_id',
-				'content'  => $form->get_no_input_image_upload( 'schema_img', $media_info['pid'], true ),
+				'content'  => $form->get_no_input_image_upload( 'schema_img', $media_info[ 'pid' ], true ),
 			);
 
-			$form_rows['schema_img_url'] = array(
+			$form_rows[ 'schema_img_url' ] = array(
 				'tr_class' => $schema_tr_class,
 				'th_class' => 'medium',
 				'td_class' => 'blank',
 				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-schema_img_url',
-				'content'  => $form->get_no_input_value( $media_info['img_url'], 'wide' ),
+				'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], 'wide' ),
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head, $mod );
