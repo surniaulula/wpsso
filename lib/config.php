@@ -241,7 +241,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssoipm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO IPM',	// Short plugin name.
-					'name'        => 'WPSSO Inherit Parent Meta [Add-on]',
+					'name'        => 'WPSSO Inherit Parent Meta',
 					'desc'        => 'WPSSO Core add-on to inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.',
 					'slug'        => 'wpsso-inherit-parent-meta',
 					'base'        => 'wpsso-inherit-parent-meta/wpsso-inherit-parent-meta.php',
