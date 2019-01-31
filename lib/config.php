@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.22.0-dev.8',	// Plugin version.
-					'opt_version' => '626',		// Increment when changing default option values.
+					'version'     => '4.22.0',	// Plugin version.
+					'opt_version' => '627',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how it\'s crawled, shared, re-shared, posted, or embedded!',
