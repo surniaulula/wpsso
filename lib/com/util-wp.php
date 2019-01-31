@@ -146,8 +146,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					$url = WP_HOME;
 
-					if ( $url !== get_option( 'home' ) ) {			// Just in case.
-						self::raw_do_option( 'update', 'home', $url );	// Update database with correct URL.
+					/**
+					 * Compare value from database and maybe fix inconsistencies.
+					 */
+					if ( $url !== self::raw_do_option( 'get', 'home' ) ) {
+						self::raw_do_option( 'update', 'home', $url );
 					}
 
 				} else {
@@ -202,7 +205,10 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					$url = WP_SITEURL;
 
-					if ( $url !== get_option( 'siteurl' ) ) {			// Just in case.
+					/**
+					 * Compare value from database and maybe fix inconsistencies.
+					 */
+					if ( $url !== self::raw_do_option( 'get', 'siteurl' ) ) {
 						self::raw_do_option( 'update', 'siteurl', $url );	// Update database with correct URL.
 					}
 
