@@ -142,7 +142,18 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( empty( $blog_id ) || ! is_multisite() ) {
 
-				$url = self::raw_do_option( 'get', 'home' );
+				if ( defined( 'WP_HOME' ) && WP_HOME ) {
+
+					$url = WP_HOME;
+
+					if ( $url !== get_option( 'home' ) ) {			// Just in case.
+						self::raw_do_option( 'update', 'home', $url );	// Update database with correct URL.
+					}
+
+				} else {
+					$url = self::raw_do_option( 'get', 'home' );
+				}
+
 			} else {
 				switch_to_blog( $blog_id );
 
@@ -187,7 +198,18 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( empty( $blog_id ) || ! is_multisite() ) {
 
-				$url = self::raw_do_option( 'get', 'siteurl' );
+				if ( defined( 'WP_SITEURL' ) && WP_SITEURL ) {
+
+					$url = WP_SITEURL;
+
+					if ( $url !== get_option( 'siteurl' ) ) {			// Just in case.
+						self::raw_do_option( 'update', 'siteurl', $url );	// Update database with correct URL.
+					}
+
+				} else {
+					$url = self::raw_do_option( 'get', 'siteurl' );
+				}
+
 			} else {
 				switch_to_blog( $blog_id );
 
