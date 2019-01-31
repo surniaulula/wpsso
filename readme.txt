@@ -453,7 +453,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Developer Notes*
 	* Added a new 'wpsso_product_attribute_names' filter for WooCommerce (Pro version).
-	* Added a check when viewing the WordPress General settings page, to make sure the current site URLs match those stored in the database.
 	* Updated the required minimum PHP version from 5.4 to 5.5.
 
 **Version 4.21.0 (2019/01/23)**
@@ -612,7 +611,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.22.0 =
 
-(2019/01/31) Added new product attribute name options for WooCommerce. Removed the "Create Missing WP Media Sizes" option. Added a new 'wpsso_product_attribute_names' filter for WooCommerce.
+(2019/01/31) Added new product attribute name options for WooCommerce. Removed the "Use WP Locale for Language" and "Create Missing WP Media Sizes" options. Updated the required minimum PHP version from 5.4 to 5.5.
 
 = 4.21.0 =
 
