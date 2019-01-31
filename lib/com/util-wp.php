@@ -144,7 +144,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				if ( defined( 'WP_HOME' ) && WP_HOME ) {
 
-					$url = WP_HOME;
+					$url = untrailingslashit( WP_HOME );
 
 					/**
 					 * Compare value stored in database and maybe fix inconsistencies.
@@ -203,7 +203,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				if ( defined( 'WP_SITEURL' ) && WP_SITEURL ) {
 
-					$url = WP_SITEURL;
+					$url = untrailingslashit( WP_SITEURL );
 
 					/**
 					 * Compare value stored in database and maybe fix inconsistencies.
