@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.22.0-dev.8 (2019/01/30)**
+**Version 4.22.0 (2019/01/31)**
 
 * *New Features*
 	* None.
@@ -454,6 +454,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *Developer Notes*
 	* Added a new 'wpsso_product_attribute_names' filter for WooCommerce (Pro version).
 	* Added a check when viewing the WordPress General settings page, to make sure the current site URLs match those stored in the database.
+	* Updated the required minimum PHP version from 5.4 to 5.5.
 
 **Version 4.21.0 (2019/01/23)**
 
@@ -609,9 +610,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.22.0-dev.8 =
+= 4.22.0 =
 
-(2019/01/30) Added new product attribute name options for WooCommerce. Removed the "Create Missing WP Media Sizes" option. Added a new 'wpsso_product_attribute_names' filter for WooCommerce.
+(2019/01/31) Added new product attribute name options for WooCommerce. Removed the "Create Missing WP Media Sizes" option. Added a new 'wpsso_product_attribute_names' filter for WooCommerce.
 
 = 4.21.0 =
 
