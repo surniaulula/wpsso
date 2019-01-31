@@ -149,7 +149,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					/**
 					 * Compare value stored in database and maybe fix inconsistencies.
 					 */
-					if ( $url !== self::raw_do_option( 'get', 'home' ) ) {
+					if ( self::raw_do_option( 'get', 'home' ) !== $url ) {
 						self::raw_do_option( 'update', 'home', $url );
 					}
 
@@ -208,7 +208,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 					/**
 					 * Compare value stored in database and maybe fix inconsistencies.
 					 */
-					if ( $url !== self::raw_do_option( 'get', 'siteurl' ) ) {
+					if ( self::raw_do_option( 'get', 'siteurl' ) !== $url ) {
 						self::raw_do_option( 'update', 'siteurl', $url );
 					}
 
