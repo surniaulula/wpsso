@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_action( 'admin_bar_menu', array( $this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
 				}
 
-				add_filter( 'current_screen', array( $this, 'maybe_update_general_site_urls' ) );
+				add_filter( 'current_screen', array( $this, 'maybe_update_wp_site_urls' ) );
 				add_filter( 'current_screen', array( $this, 'maybe_show_screen_notices' ) );
 				add_filter( 'plugin_action_links', array( $this, 'append_wp_plugin_action_links' ), 10, 2 );
 				add_filter( 'wp_redirect', array( $this, 'profile_updated_redirect' ), -100, 2 );
@@ -2891,14 +2891,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * they have been defined using a constant. Check to make sure
 		 * the current values are identical to the raw database values.
 		 */
-		public function maybe_update_general_site_urls( $screen ) {
+		public function maybe_update_wp_site_urls( $screen ) {
 
 			$screen_id = SucomUtil::get_screen_id( $screen );
 
 			switch ( $screen_id ) {
 
-				case 'dashboard':
-				case 'options-general':
 				case 'sso-gpl_page_wpsso-tools':
 				case 'sso-gpl_page_wpsso-um-general':
 				case 'sso-pro_page_wpsso-tools':
