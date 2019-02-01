@@ -613,7 +613,3 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 (2019/01/31) Added new product attribute name options for WooCommerce. Removed the "Use WP Locale for Language" and "Create Missing WP Media Sizes" options. Updated the required minimum PHP version from 5.4 to 5.5.
 
-= 4.21.0 =
-
-(2019/01/23) Added a new "meta name thumbnail" meta tag. Added new status under the SSO &gt; Dashboard &gt; Standard Features metabox. Added new options under the SSO &gt; Advanced &gt; Custom Meta tab:
-
