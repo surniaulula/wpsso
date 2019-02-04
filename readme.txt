@@ -430,6 +430,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 4.23.0-dev.1 (2019/02/04)**
+
+* *New Features*
+	* None.
+* *Improvements*
+	* Updated the "Author Link URL Profile Contact" default value from 'Google+' to 'WebSite' (Google+ is shutting down its service on April 2nd 2019).
+* *Bugfixes*
+	* None.
+* *Developer Notes*
+	* None.
+
 **Version 4.22.0 (2019/01/31)**
 
 * *New Features*
@@ -608,6 +619,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 
 == Upgrade Notice ==
+
+= 4.23.0-dev.1 =
+
+(2019/01/04) Updated the "Author Link URL Profile Contact" default value from 'Google+' to 'WebSite' (Google+ is shutting down its service on April 2nd 2019).
 
 = 4.22.0 =
 
