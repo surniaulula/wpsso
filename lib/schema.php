@@ -105,9 +105,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			if ( ! $this->is_head_attributes_enabled() ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'exiting early: head attributes disabled' );
 				}
+
 				return $head_attr;
 			}
 
@@ -117,8 +119,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 
-			$mod = $this->p->util->get_page_mod( $use_post );
-
+			$mod           = $this->p->util->get_page_mod( $use_post );
 			$page_type_id  = $this->get_mod_schema_type( $mod, $get_schema_id = true );
 			$page_type_url = $this->get_schema_type_url( $page_type_id );
 

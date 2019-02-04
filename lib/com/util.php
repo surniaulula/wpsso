@@ -990,16 +990,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			switch ( $pub ) {
 
+				case 'facebook':
 				case 'fb':
 
 					return self::$pub_lang[ 'facebook' ];
 
-				case 'gplus':
+				case 'google':
 				case 'googleplus':
+				case 'gplus':
+				case 'gp':
 
 					return self::$pub_lang[ 'google' ];
 
+				case 'pinterest':
 				case 'pin':
+				case 'rp':
 
 					return self::$pub_lang[ 'pinterest' ];
 

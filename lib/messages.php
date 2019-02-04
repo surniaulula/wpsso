@@ -1230,7 +1230,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-seo_author_field':	// Author Link URL Profile Contact
 
-							$text = sprintf( __( 'Select the contact field to use from the author\'s WordPress profile page for the %s link URL value.', 'wpsso' ), '<code>author</code>' );
+							$text = sprintf( __( 'Select the contact field to use from the author\'s WordPress user profile page for the %s link URL value.', 'wpsso' ), '<code>author</code>' );
+
+							$text .= sprintf( __( 'The default is the author\'s "%s" from the WordPress user profile.', 'wpsso' ), __( 'WebSite' ) );
 
 							break;
 
@@ -1607,7 +1609,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
 
-							$text .= sprintf( __( 'As an example, to match the <em>%1$s</em> of a theme or other plugin, you might change "gplus" to "googleplus".', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) );
+							$text .= sprintf( __( 'As an example, to match the <em>%1$s</em> of a theme or other plugin, you might change "%2$s" to "%3$s".', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ), 'gplus', 'googleplus' );
 
 							break;
 

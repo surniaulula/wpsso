@@ -203,47 +203,15 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 				624 => array(
 					'plugin_create_wp_sizes' => '',
 				),
+				627 => array(
+					'plugin_cm_gp_name'    => '',
+					'plugin_cm_gp_label'   => '',
+					'plugin_cm_gp_enabled' => '',
+				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG add-on.
 				2 => array(
 					'org_alt_name' => 'org_name_alt',
-				),
-			),
-			'wpssorrssb' => array(	// WPSSO RRSSB add-on.
-				14 => array(
-					'email_cap_len'         => 'email_caption_max_len',
-					'twitter_cap_len'       => 'twitter_caption_max_len',
-					'pin_cap_len'           => 'pin_caption_max_len',
-					'linkedin_cap_len'      => 'linkedin_caption_max_len',
-					'reddit_cap_len'        => 'reddit_caption_max_len',
-					'tumblr_cap_len'        => 'tumblr_caption_max_len',
-					'email_cap_hashtags'    => 'email_caption_hashtags',
-					'twitter_cap_hashtags'  => 'twitter_caption_hashtags',
-					'pin_cap_hashtags'      => 'pin_caption_hashtags',
-					'linkedin_cap_hashtags' => 'linkedin_caption_hashtags',
-					'reddit_cap_hashtags'   => 'reddit_caption_hashtags',
-					'tumblr_cap_hashtags'   => 'tumblr_caption_hashtags',
-				),
-			),
-			'wpssossb' => array(	// WPSSO SSB add-on.
-				14 => array(
-					'buffer_js_loc'   => 'buffer_script_loc',
-					'fb_js_loc'       => 'fb_script_loc',
-					'gp_js_loc'       => 'gp_script_loc',
-					'linkedin_js_loc' => 'linkedin_script_loc',
-					'pin_js_loc'      => 'pin_script_loc',
-					'stumble_js_loc'  => '',
-					'tumblr_js_loc'   => 'tumblr_script_loc',
-					'twitter_js_loc'  => 'twitter_script_loc',
-				),
-				16 => array(
-					'email_cap_len'      => 'email_caption_max_len',
-					'twitter_cap_len'    => 'twitter_caption_max_len',
-					'pin_cap_len'        => 'pin_caption_max_len',
-					'linkedin_cap_len'   => 'linkedin_caption_max_len',
-					'reddit_cap_len'     => 'reddit_caption_max_len',
-					'tumblr_cap_len'     => 'tumblr_caption_max_len',
-					'email_cap_hashtags' => 'email_caption_hashtags',
 				),
 			),
 		);
@@ -457,6 +425,25 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					$opts[ 'plugin_product_attr_isbn' ]      = 'isbn';
 					$opts[ 'plugin_product_attr_material' ]  = 'material';
 					$opts[ 'plugin_product_attr_size' ]      = 'size';
+				}
+
+				if ( $prev_version > 0 && $prev_version <= 627 ) {
+
+					/**
+					 * Google+ was deprecated on April 2nd 2019. Replace the SEO author field
+					 * name (aka author link rel meta tag) from the author's Google+ URL with
+					 * the author's WebSite URL.
+					 */
+					switch ( $opts[ 'seo_author_field' ] ) {
+
+						case 'gp':
+						case 'gplus':
+						case 'googleplus':
+
+							$opts[ 'seo_author_field' ] = 'url';
+
+							break;
+					}
 				}
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {

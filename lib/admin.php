@@ -122,8 +122,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Don't hook the 'plugins_api_result' filter if the update manager is active as it
 				 * provides more complete plugin data than what's available from the readme.txt.
 				 */
-				if ( empty( $this->p->avail[ 'p_ext' ][ 'um' ] ) ) {	// Since um v1.6.0.
-					add_filter( 'plugins_api_result', array( $this, 'external_plugin_data' ), 1000, 3 );	// Since wp v2.7.
+				if ( empty( $this->p->avail[ 'p_ext' ][ 'um' ] ) ) {	// Since WPSSO UM v1.6.0.
+					add_filter( 'plugins_api_result', array( $this, 'external_plugin_data' ), 1000, 3 );	// Since WP v2.7.
 				}
 
 				add_filter( 'http_request_args', array( $this, 'add_expect_header' ), 1000, 2 );
@@ -700,13 +700,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function external_plugin_data( $res, $action = null, $args = null ) {
 
-			if ( $action !== 'plugin_information' ) {	// this filter only provides plugin data
+			if ( $action !== 'plugin_information' ) {				// This filter only provides plugin data.
 				return $res;
-			} elseif ( empty( $args->slug ) ) {	// make sure we have a slug in the request
+			} elseif ( empty( $args->slug ) ) {					// Make sure we have a slug in the request.
 				return $res;
-			} elseif ( empty( $this->p->cf[ '*' ][ 'slug' ][ $args->slug ] ) ) {	// make sure the plugin slug is one of ours
+			} elseif ( empty( $this->p->cf[ '*' ][ 'slug' ][ $args->slug ] ) ) {	// Make sure the plugin slug is one of ours.
 				return $res;
-			} elseif ( isset( $res->slug ) && $res->slug === $args->slug ) {	// if the object from WordPress looks complete, return it as-is
+			} elseif ( isset( $res->slug ) && $res->slug === $args->slug ) {	// If the object from WordPress looks complete, return it as-is.
 				return $res;
 			}
 
@@ -3243,7 +3243,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( empty( $this->p->options[ 'plugin_head_attr_filter_name' ] ) ||
 				$this->p->options[ 'plugin_head_attr_filter_name' ] !== 'head_attributes' ) {
 
-				return;	// exit early
+				return;	// Exit early.
 			}
 
 			$header_files = SucomUtilWP::get_theme_header_files();
@@ -3252,7 +3252,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$html_stripped = SucomUtil::get_stripped_php( $tmpl_file );
 
-				if ( empty( $html_stripped ) ) {	// empty string or false
+				if ( empty( $html_stripped ) ) {	// Empty string or false.
 
 					continue;
 

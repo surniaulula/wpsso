@@ -95,9 +95,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$defs[ $locale_key ] = $this->p->og->get_fb_locale( array(), 'current' );
 				}
 
-				$defs[ 'og_author_field' ]  = $this->p->options[ 'plugin_cm_fb_name' ];	// Reset to possible custom value.
-
-				$defs[ 'seo_author_field' ] = $this->p->options[ 'plugin_cm_gp_name' ];	// Reset to possible custom value.
+				/**
+				 * Maybe use a custom value from the SSO > Advanced settings page.
+				 */
+				$defs[ 'og_author_field' ]  = $this->p->options[ 'plugin_cm_fb_name' ];
 
 				$defs[ 'plugin_wpseo_social_meta' ] = $this->p->avail[ 'seo' ][ 'wpseo' ] || get_option( 'wpseo' ) ? 1 : 0;
 

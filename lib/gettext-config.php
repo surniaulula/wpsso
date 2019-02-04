@@ -6,7 +6,6 @@
 _x( 'Image:', 'option value', 'wpsso' );
 _x( 'Caption:', 'option value', 'wpsso' );
 _x( 'Facebook User URL', 'option value', 'wpsso' );
-_x( 'Google+ URL', 'option value', 'wpsso' );
 _x( 'Instagram URL', 'option value', 'wpsso' );
 _x( 'LinkedIn URL', 'option value', 'wpsso' );
 _x( 'Myspace URL', 'option value', 'wpsso' );

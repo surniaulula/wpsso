@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.22.0',	// Plugin version.
-					'opt_version' => '627',		// Increment when changing default option values.
+					'version'     => '4.23.0-dev.1',	// Plugin version.
+					'opt_version' => '628',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how it\'s crawled, shared, re-shared, posted, or embedded!',
@@ -862,7 +862,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'seo_publisher_url'            => '',			// Google+ Business Page URL (localized)
 					'seo_desc_max_len'             => 156,			// Search / SEO Description Length (hard limit).
 					'seo_author_name'              => 'display_name',	// Author / Person Name Format
-					'seo_author_field'             => 'gplus',		// Author Link URL Profile Contact
+					'seo_author_field'             => 'url',		// Author Link URL Profile Contact
 					'tumblr_publisher_url'         => '',
 					'yt_publisher_url'             => '',
 					
@@ -1245,9 +1245,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cm_fb_name'          => 'facebook',
 					'plugin_cm_fb_label'         => 'Facebook User URL',
 					'plugin_cm_fb_enabled'       => 1,
-					'plugin_cm_gp_name'          => 'gplus',
-					'plugin_cm_gp_label'         => 'Google+ URL',
-					'plugin_cm_gp_enabled'       => 1,
 					'plugin_cm_instgram_name'    => 'instagram',
 					'plugin_cm_instgram_label'   => 'Instagram URL',
 					'plugin_cm_instgram_enabled' => 1,
