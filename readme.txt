@@ -464,6 +464,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * *Developer Notes*
 	* Added a new 'wpsso_product_attribute_names' filter for WooCommerce (Pro version).
+	* Updated the SucomUtilWP::raw_get_home_url() method to use the WP_HOME constant when available.
+	* Updated the SucomUtilWP::raw_get_site_url() method to use the WP_SITEURL constant when available.
 	* Updated the required minimum PHP version from 5.4 to 5.5.
 
 **Version 4.21.0 (2019/01/23)**
