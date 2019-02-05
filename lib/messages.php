@@ -2404,7 +2404,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						_x( 'Product Size', 'option label', 'wpsso' ),
 						_x( 'a product size', 'tooltip fragment', 'wpsso' ),
 					),
-					$key_prefix . 'product_gender' => array(
+					$key_prefix . 'product_target_gender' => array(
 						_x( 'Product Target Gender', 'option label', 'wpsso' ),
 						_x( 'a product target gender', 'tooltip fragment', 'wpsso' ),
 					),

@@ -208,6 +208,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_cm_gp_label'   => '',
 					'plugin_cm_gp_enabled' => '',
 				),
+				628 => array(
+					'plugin_cf_product_gender' => 'plugin_cf_product_target_gender',
+				),
 			),
 			'wpssoorg' => array(	// WPSSO ORG add-on.
 				2 => array(

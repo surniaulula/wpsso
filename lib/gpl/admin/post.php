@@ -270,13 +270,13 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'tooltip'  => 'meta-product_size',
 					'content'  => $form->get_no_input( 'product_size', '', '', $placeholder = true ),
 				),
-				'product_gender' => array(
+				'product_target_gender' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Target Gender', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_gender',
-					'content'  => $form->get_no_select( 'product_gender', $this->p->cf[ 'form' ][ 'audience_gender' ] ),
+					'tooltip'  => 'meta-product_target_gender',
+					'content'  => $form->get_no_select( 'product_target_gender', $this->p->cf[ 'form' ][ 'audience_gender' ] ),
 				),
 				'subsection_schema' => array(
 					'td_class' => 'subsection',

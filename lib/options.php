@@ -1449,7 +1449,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_col_title_width_max':
 				case 'product_avail':
 				case 'product_condition':
-				case 'product_gender':
+				case 'product_target_gender':
 				case ( 0 === strpos( $base_key, 'plugin_product_attr_' ) ? true : false ):	// Value is the name of a product attribute.
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
