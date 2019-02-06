@@ -17,8 +17,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'lca'    => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '4.23.0-dev.2',	// Plugin version.
-					'opt_version' => '629',		// Increment when changing default option values.
+					'version'     => '4.23.0-dev.3',	// Plugin version.
+					'opt_version' => '630',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core [Main Plugin]',
 					'desc'        => 'WPSSO Core makes sure your content looks great on all social and search sites - no matter how it\'s crawled, shared, re-shared, posted, or embedded!',
@@ -859,10 +859,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'p_add_nopin_media_img_tag'    => 1,			// Add "nopin" to WordPress Media
 					'p_add_img_html'               => 1,			// Add Hidden Image for Pin It Button
 					'sc_publisher_url'             => '',
-					'seo_publisher_url'            => '',			// Google+ Business Page URL (localized)
 					'seo_desc_max_len'             => 156,			// Search / SEO Description Length (hard limit).
 					'seo_author_name'              => 'display_name',	// Author / Person Name Format
-					'seo_author_field'             => 'url',		// Author Link URL Profile Contact
 					'tumblr_publisher_url'         => '',
 					'yt_publisher_url'             => '',
 					
@@ -887,9 +885,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Enable / disable individual head HTML tags.
 					 */
-					'add_link_rel_author'                                      => 1,
-					'add_link_rel_canonical'                                   => 0,	// Disabled by default.
-					'add_link_rel_publisher'                                   => 1,
+					'add_link_rel_author'                                      => 0,	// Deprecated - no longer used by Google.
+					'add_link_rel_canonical'                                   => 0,
+					'add_link_rel_publisher'                                   => 0,	// Deprecated - no longer used by Google.
 					'add_link_rel_shortlink'                                   => 1,
 					'add_meta_property_fb:admins'                              => 1,
 					'add_meta_property_fb:app_id'                              => 1,
@@ -1370,7 +1368,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'cm_prefix' => array(
 					'email'       => 'email',
 					'facebook'    => 'fb',
-					'gplus'       => 'gp',
 					'twitter'     => 'twitter',
 					'instagram'   => 'instgram',
 					'linkedin'    => 'linkedin',
@@ -1848,7 +1845,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'myspace_publisher_url'  => 'Myspace Business Page URL',
 					'p_publisher_url'        => 'Pinterest Company Page URL',
 					'sc_publisher_url'       => 'Soundcloud Business Page URL',
-					'seo_publisher_url'      => 'Google+ Business Page URL',
 					'tc_site'                => 'Twitter Business @username',
 					'tumblr_publisher_url'   => 'Tumblr Business Page URL',
 					'yt_publisher_url'       => 'YouTube Business Channel URL',

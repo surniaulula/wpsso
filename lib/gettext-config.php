@@ -140,7 +140,6 @@ _x( 'LinkedIn Company Page URL', 'option value', 'wpsso' );
 _x( 'Myspace Business Page URL', 'option value', 'wpsso' );
 _x( 'Pinterest Company Page URL', 'option value', 'wpsso' );
 _x( 'Soundcloud Business Page URL', 'option value', 'wpsso' );
-_x( 'Google+ Business Page URL', 'option value', 'wpsso' );
 _x( 'Twitter Business @username', 'option value', 'wpsso' );
 _x( 'Tumblr Business Page URL', 'option value', 'wpsso' );
 _x( 'YouTube Business Channel URL', 'option value', 'wpsso' );

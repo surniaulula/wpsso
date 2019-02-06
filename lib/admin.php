@@ -2729,8 +2729,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'pinterest_url'   => '<strong>' . __( 'Pinterest URL', 'wordpress-seo' ) . '</strong>',
 					// translators: please ignore - translation uses a different text domain
 					'youtube_url'     => '<strong>' . __( 'YouTube URL', 'wordpress-seo' ) . '</strong>',
-					// translators: please ignore - translation uses a different text domain
-					'google_plus_url' => '<strong>' . __( 'Google+ URL', 'wordpress-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
 					if ( ! empty( $opts[ $opt_key ] ) ) {
@@ -2816,32 +2814,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					$this->p->notice->err( $err_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
-						'wpsso' ), $label_transl, $settings_link ) );
-				}
-
-				/**
-				 * Yoast SEO > Social > Google+ Tab
-				 */
-				if ( ! empty( $opts[ 'plus-publisher' ] ) ) {
-
-					// translators: please ignore - translation uses a different text domain
-					$label_transl = '<strong>' . __( 'Google Publisher Page', 'wordpress-seo' ) . '</strong>';
-
-					$settings_url = get_admin_url( null, 'admin.php?page=wpseo_social#top#google' );
-
-					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: please ignore - translation uses a different text domain
-						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
-						__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: please ignore - translation uses a different text domain
-						__( 'Google+', 'wordpress-seo' ) . '</a>';
-
-					if ( $this->p->debug->enabled ) {
-						$this->p->debug->log( $log_pre . 'wpseo plus-publisher option is not empty' );
-					}
-
-					$this->p->notice->err( $err_pre . sprintf( __( 'please remove the %1$s option value in the %2$s settings.',
 						'wpsso' ), $label_transl, $settings_link ) );
 				}
 			}

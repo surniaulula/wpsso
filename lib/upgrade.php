@@ -208,7 +208,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					'plugin_cm_gp_label'   => '',
 					'plugin_cm_gp_enabled' => '',
 				),
-				628 => array(
+				629 => array(
+					'seo_author_field'         => '',
+					'seo_publisher_url'        => '',
 					'plugin_cf_product_gender' => 'plugin_cf_product_target_gender',
 				),
 			),
@@ -428,25 +430,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) && class_exists( 'WpssoOptions' ) )
 					$opts[ 'plugin_product_attr_isbn' ]      = 'isbn';
 					$opts[ 'plugin_product_attr_material' ]  = 'material';
 					$opts[ 'plugin_product_attr_size' ]      = 'size';
-				}
-
-				if ( $prev_version > 0 && $prev_version <= 627 ) {
-
-					/**
-					 * Google+ was deprecated on April 2nd 2019. Replace the SEO author field
-					 * name (aka author link rel meta tag) from the author's Google+ URL with
-					 * the author's WebSite URL.
-					 */
-					switch ( $opts[ 'seo_author_field' ] ) {
-
-						case 'gp':
-						case 'gplus':
-						case 'googleplus':
-
-							$opts[ 'seo_author_field' ] = 'url';
-
-							break;
-					}
 				}
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {

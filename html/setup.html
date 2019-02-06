@@ -6,7 +6,7 @@
 <dt><h3>Business Social Accounts (Optional)</h3></dt>
 
 <dd>
-<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" style="max-width:50%;float:right;margin:0 0 30px 60px;"><p>If you haven't already done so, create a Facebook Page, Twitter account, and Google+ account (or Page) for your website / business. You can enter all your website / business social account information on the WordPress <u>Settings &gt; SSO WebSite Pages</u> settings page. The social account URLs are used by WPSSO Core for Open Graph, Schema, and other meta tag values &mdash; including the Organization social profiles in Schema JSON-LD markup (which may appear in Google Search results to highlight your website / business social pages).<p>
+<img src="https://surniaulula.github.io/wpsso/images/social/google-social-profiles-search-results.png" style="max-width:50%;float:right;margin:0 0 30px 60px;"><p>If you haven't already done so, create a Facebook Page and Twitter account for your website / business. You can enter all your website / business social account information on the WordPress <u>Settings &gt; SSO WebSite Pages</u> settings page. The social account URLs are used by WPSSO Core for Open Graph, Schema, and other meta tag values &mdash; including the Organization social profiles in Schema JSON-LD markup (which may appear in Google Search results to highlight your website / business social pages).<p>
 
 <p><strong>Related information:</strong></p>
 
@@ -21,7 +21,7 @@
 <dt><h3>Author Social Accounts (Optional)</h3></dt>
 
 <dd>
-<p>Ask your authors to enter their Facebook, Google+, and Twitter contact information on their WordPress user profile page. Each author's contact information can appear in various meta tag values and Schema JSON-LD markup &mdash; but only if they complete their user profile. All URLs found in the author's contact methods will be listed in the author  social profile markup for Google.</p>
+<p>Ask your authors to enter their Facebook and Twitter contact information on their WordPress user profile page. Each author's contact information can appear in various meta tag values and Schema JSON-LD markup &mdash; but only if they complete their user profile. All URLs found in the author's contact methods will be listed in the author  social profile markup for Google.</p>
 
 <p><strong>Related information:</strong></p>
 
@@ -195,7 +195,7 @@ If your theme templates do not include RDFa or Microdata markup for Google Rich 
 <p>The "meta name robots" checkbox also controls the addition of a Robots (noindex, nofollow, noarchive, nosnippet) option on post editing pages &mdash; disable this meta tag to prevent the Robots option from being shown on post editing pages.</p></li>
 
 <!-- WPSSO Schema JSON-LD Markup -->
-<li><p>WPSSO Core creates several Schema <em>meta tags</em> (name, description, image, etc.) for Google+, along with the WebSite, Organization and Person social JSON-LD markup (on the front page) for Google's Knowledge Graph. If your theme does not include proper Schema markup for your content (aka Microdata markup), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on plugin, which can add complete Schema JSON-LD / SEO markup to your webpages for Google (Schema Article, Place, Product, etc.).</p></li>
+<li><p>WPSSO Core creates Schema WebSite, Organization, and Person social JSON-LD markup in the front page for Google's Knowledge Graph. If your theme does not include proper Schema markup for your post / page content (aka Microdata markup), you should consider enabling the <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> add-on plugin, which can add complete Schema JSON-LD / SEO markup to your webpages (Schema Article, Place, Product, etc.).</p></li>
 
 <!-- WPSSO_IMAGE_UPSCALE_TEST -->
 <li><p>You can <em>simulate</em> the WPSSO Core image upscaling feature &mdash; to generate all the necessary success / failure notice messages &mdash; without having WordPress actually save the resulting images. Define the <code>WPSSO_IMAGE_UPSCALE_TEST</code> constant as true in your wp-config.php file to simulate image upscaling. Other constants and filters are also available to upscale all images (not just the WPSSO Core image sizes) and adjust the maximum percentage.</p></li>

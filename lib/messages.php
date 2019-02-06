@@ -759,7 +759,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= __( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ) . ' ';
 							
-							$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites (Twitter, Facebook, Google+, etc.).', 'wpsso' ), $info[ 'short' ] );
+							$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites.', 'wpsso' ), $info[ 'short' ] );
 
 							break;
 
@@ -1200,18 +1200,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-seo_publisher_url':	// Google+ Business Page URL
-
-							$text = sprintf( __( 'If you have a <a href="%1$s">Google+ Business Page for your website / business</a>, you may enter its URL here.', 'wpsso' ), __( 'http://www.google.com/+/business/', 'wpsso' ) ) . ' ';
-
-							$text .= sprintf( __( 'As an example, the Google+ Business Page URL for %1$s is <a href="%2$s">%2$s</a>.', 'wpsso' ), 'Surnia Ulula', __( 'https://plus.google.com/+SurniaUlula/', 'wpsso' ) ) . ' ';
-							
-							$text .= __( 'The Google+ Business Page URL will be used in a link relation head tag and the website\'s Schema Organization markup.', 'wpsso' ) . ' ';
-							
-							$text .= __( 'Google Search may use this URL to display additional information about the website / business in its search results.', 'wpsso' );
-
-							break;
-
 						case 'tooltip-seo_desc_max_len':	// Search / SEO Description Length
 
 							$text = __( 'The maximum length used for the Google Search / SEO description value.', 'wpsso' ) . ' ';
@@ -1225,14 +1213,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-seo_author_name':		// Author / Person Name Format
 
 							$text =  __( 'Select a name format for author meta tags and/or Schema Person markup.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-seo_author_field':	// Author Link URL Profile Contact
-
-							$text = sprintf( __( 'Select the contact field to use from the author\'s WordPress user profile page for the %s link URL value.', 'wpsso' ), '<code>author</code>' );
-
-							$text .= sprintf( __( 'The default is the author\'s "%s" from the WordPress user profile.', 'wpsso' ), __( 'WebSite' ) );
 
 							break;
 
@@ -1609,7 +1589,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
 
-							$text .= sprintf( __( 'As an example, to match the <em>%1$s</em> of a theme or other plugin, you might change "%2$s" to "%3$s".', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ), 'gplus', 'googleplus' );
+							$text .= sprintf( __( 'As an example, to match the <em>%1$s</em> of a theme or other plugin, you might change "%2$s" to "%3$s" or some other value.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ), 'facebook', 'fb' );
 
 							break;
 
@@ -1819,7 +1799,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= sprintf( __( 'The following options allow you to customize the list of contact fields shown in the <strong>%1$s</strong> section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), $contact_info_transl, get_admin_url( null, 'profile.php' ) ) . ' ';
 							
-							$text .= sprintf( __( '%1$s uses the Facebook, Google+, and Twitter contact field values in its meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+							$text .= sprintf( __( '%1$s uses the Facebook and Twitter contact field values in its meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 							
 							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
 							

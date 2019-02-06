@@ -535,21 +535,9 @@ if ( ! class_exists( 'WpssoGplAdminAdvanced' ) ) {
 				$opt_label = empty( $this->p->cf[ '*' ][ 'lib' ][ 'share' ][ $cm_id ] ) ?
 					ucfirst( $cm_id ) : $this->p->cf[ '*' ][ 'lib' ][ 'share' ][ $cm_id ];
 
-				switch ( strtolower( $opt_label ) ) {
-
-					case 'gp':
-					case 'gplus':
-					case 'googleplus':
-
-						$opt_label = 'Google+';
-
-						break;
-				}
-
 				switch ( $cm_id ) {
 
 					case 'facebook':
-					case 'gplus':
 					case 'twitter':
 
 						$tr_html = '';

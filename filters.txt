@@ -19,11 +19,7 @@
 
 'wpsso_add_head_html' ( $bool, $mod )
 
-'wpsso_add_link_rel_author' ( $bool, $mod )
-
 'wpsso_add_link_rel_canonical' ( $bool, $mod )
-
-'wpsso_add_link_rel_publisher' ( $bool, $mod )
 
 'wpsso_add_link_rel_shortlink' ( $bool, $mod )
 

@@ -246,11 +246,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-google':
 
-					$table_rows[ 'seo_publisher_url' ] = '' . 
-					$this->form->get_th_html( _x( 'Google+ Business Page URL', 'option label', 'wpsso' ), '', 'seo_publisher_url', 
-						array( 'is_locale' => true ) ) . 
-					'<td>' . $this->form->get_input( SucomUtil::get_key_locale( 'seo_publisher_url', $this->p->options ), 'wide' ) . '</td>';
-
 					$table_rows[ 'seo_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'seo_desc_max_len' ) . 
 					$this->form->get_th_html( _x( 'Search / SEO Description Length', 'option label', 'wpsso' ), '', 'seo_desc_max_len' ) . 
 					'<td>' . $this->form->get_input( 'seo_desc_max_len', 'short' ) . ' ' .
@@ -259,10 +254,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'seo_author_name' ] = $this->form->get_tr_hide( 'basic', 'seo_author_name' ) . 
 					$this->form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), '', 'seo_author_name' ) . 
 					'<td>' . $this->form->get_select( 'seo_author_name', $this->p->cf[ 'form' ][ 'user_name_fields' ] ) . '</td>';
-
-					$table_rows[ 'seo_author_field' ] = $this->form->get_tr_hide( 'basic', 'seo_author_field' ) . 
-					$this->form->get_th_html( _x( 'Author Link URL Profile Contact', 'option label', 'wpsso' ), '', 'seo_author_field' ) . 
-					'<td>' . $this->form->get_select( 'seo_author_field', $user_contacts ) . '</td>';
 
 					$table_rows[ 'subsection_google_schema' ] = '<td colspan="2" class="subsection"><h4>' . 
 					_x( 'Structured Data / Schema Markup', 'metabox title', 'wpsso' ) . '</h4></td>';
@@ -367,7 +358,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 							case 'fb_publisher_url':	// Facebook
 							case 'p_publisher_url':		// Pinterest
-							case 'seo_publisher_url':	// Google
 							case 'tc_site':			// Twitter
 
 								continue 2;

@@ -1439,7 +1439,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'site_org_schema_type':	// Example: 'organization' or a sub-type.
 				case 'site_place_id':		// Example: 'none' or place ID.
 				case 'og_author_field':
-				case 'seo_author_field':
 				case 'og_def_img_id_pre': 	// Example: 'wp' or 'ngg' media library name.
 				case 'og_img_id_pre': 		// Example: 'wp' or 'ngg' media library name.
 				case 'plugin_shortener':	// Example: 'none' or name of shortener

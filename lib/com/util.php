@@ -996,9 +996,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					return self::$pub_lang[ 'facebook' ];
 
 				case 'google':
-				case 'googleplus':
-				case 'gplus':
-				case 'gp':
 
 					return self::$pub_lang[ 'google' ];
 
