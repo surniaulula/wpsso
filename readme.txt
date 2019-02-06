@@ -430,12 +430,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.23.0-dev.2 (2019/02/05)**
+**Version 4.23.0-dev.3 (2019/02/05)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* Updated the "Author Link URL Profile Contact" default value from 'Google+' to 'WebSite' (Google+ is shutting down its service on April 2nd 2019).
+	* Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options (the values are no longer used by Google).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -622,9 +622,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.23.0-dev.2 =
+= 4.23.0-dev.3 =
 
-(2019/02/05) Updated the "Author Link URL Profile Contact" default value from 'Google+' to 'WebSite' (Google+ is shutting down its service on April 2nd 2019).
+(2019/02/05) Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options (the values are no longer used by Google).
 
 = 4.22.0 =
 
