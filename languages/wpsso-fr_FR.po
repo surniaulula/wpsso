@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 4.23.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2019-02-04 13:33-0800\n"
-"PO-Revision-Date: 2019-02-04 13:36-0800\n"
+"POT-Creation-Date: 2019-02-05 16:31-0800\n"
+"PO-Revision-Date: 2019-02-05 16:34-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1492,9 +1492,9 @@ msgstr "fh"
 #: lib/gettext-config.php:102 lib/gettext-config.php:106
 #: lib/gettext-config.php:109 lib/gettext-config.php:112
 #: lib/gettext-config.php:126 lib/gettext-config.php:129
-#: lib/gettext-config.php:131 lib/gettext-config.php:191
-#: lib/gettext-config.php:194 lib/gettext-config.php:206
-#: lib/gettext-config.php:215
+#: lib/gettext-config.php:131 lib/gettext-config.php:192
+#: lib/gettext-config.php:195 lib/gettext-config.php:207
+#: lib/gettext-config.php:216
 msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
@@ -1842,7 +1842,7 @@ msgstr "Champ pers. taille de produit"
 #: lib/gettext-config.php:174
 msgctxt "option label"
 msgid "Product Target Gender Custom Field"
-msgstr "Champ pers. sexe cible du produit"
+msgstr "Champ pers. sexe cible de produit"
 
 #: lib/gettext-config.php:175
 msgctxt "option label"
@@ -1924,187 +1924,192 @@ msgctxt "option value"
 msgid "Product Size Attribute Name"
 msgstr "Nom d'attribut taille de produit"
 
-#: lib/gettext-config.php:192
+#: lib/gettext-config.php:191
+msgctxt "option value"
+msgid "Product Target Gender Attribute Name"
+msgstr "Nom d'attribut sexe cible de produit"
+
+#: lib/gettext-config.php:193
 msgctxt "option value"
 msgid "Kids"
 msgstr "Enfants"
 
-#: lib/gettext-config.php:193
+#: lib/gettext-config.php:194
 msgctxt "option value"
 msgid "Adult"
 msgstr "Adulte"
 
-#: lib/gettext-config.php:195
+#: lib/gettext-config.php:196
 msgctxt "option value"
 msgid "Male"
 msgstr "Masculin"
 
-#: lib/gettext-config.php:196
+#: lib/gettext-config.php:197
 msgctxt "option value"
 msgid "Female"
 msgstr "Féminin"
 
-#: lib/gettext-config.php:197
+#: lib/gettext-config.php:198
 msgctxt "option value"
 msgid "Unisex"
 msgstr "Unisexe"
 
-#: lib/gettext-config.php:198
+#: lib/gettext-config.php:199
 msgctxt "option value"
 msgid "Full Time"
 msgstr "Temps plein"
 
-#: lib/gettext-config.php:199
+#: lib/gettext-config.php:200
 msgctxt "option value"
 msgid "Part Time"
 msgstr "Temps partiel"
 
-#: lib/gettext-config.php:200
+#: lib/gettext-config.php:201
 msgctxt "option value"
 msgid "Contractor"
 msgstr "Sous-traitant"
 
-#: lib/gettext-config.php:201
+#: lib/gettext-config.php:202
 msgctxt "option value"
 msgid "Temporary"
 msgstr "Temporaire"
 
-#: lib/gettext-config.php:202
+#: lib/gettext-config.php:203
 msgctxt "option value"
 msgid "Intern"
 msgstr "Stagiaire"
 
-#: lib/gettext-config.php:203
+#: lib/gettext-config.php:204
 msgctxt "option value"
 msgid "Volunteer"
 msgstr "Volontaire"
 
-#: lib/gettext-config.php:204
+#: lib/gettext-config.php:205
 msgctxt "option value"
 msgid "Per Diem"
 msgstr "Per diem"
 
-#: lib/gettext-config.php:205
+#: lib/gettext-config.php:206
 msgctxt "option value"
 msgid "Other"
 msgstr "Autre"
 
-#: lib/gettext-config.php:207
+#: lib/gettext-config.php:208
 msgctxt "option value"
 msgid "Discontinued"
 msgstr "Discontinué"
 
-#: lib/gettext-config.php:208
+#: lib/gettext-config.php:209
 msgctxt "option value"
 msgid "In Stock"
 msgstr "En main"
 
-#: lib/gettext-config.php:209
+#: lib/gettext-config.php:210
 msgctxt "option value"
 msgid "In Store Only"
 msgstr "En magasin uniquement"
 
-#: lib/gettext-config.php:210
+#: lib/gettext-config.php:211
 msgctxt "option value"
 msgid "Limited Availability"
 msgstr "Disponibilité limitée"
 
-#: lib/gettext-config.php:211
+#: lib/gettext-config.php:212
 msgctxt "option value"
 msgid "Online Only"
 msgstr "En ligne seulement"
 
-#: lib/gettext-config.php:212
+#: lib/gettext-config.php:213
 msgctxt "option value"
 msgid "Out of Stock"
 msgstr "Rupture de stock"
 
-#: lib/gettext-config.php:213
+#: lib/gettext-config.php:214
 msgctxt "option value"
 msgid "Pre-Order"
 msgstr "Pré-commande"
 
-#: lib/gettext-config.php:214
+#: lib/gettext-config.php:215
 msgctxt "option value"
 msgid "Sold Out"
 msgstr "Épuisé"
 
-#: lib/gettext-config.php:216
+#: lib/gettext-config.php:217
 msgctxt "option value"
 msgid "Damaged"
 msgstr "Endommagé"
 
-#: lib/gettext-config.php:217
+#: lib/gettext-config.php:218
 msgctxt "option value"
 msgid "New"
 msgstr "Neuf"
 
-#: lib/gettext-config.php:218
+#: lib/gettext-config.php:219
 msgctxt "option value"
 msgid "Refurbished"
 msgstr "Remis à neuf"
 
-#: lib/gettext-config.php:219
+#: lib/gettext-config.php:220
 msgctxt "option value"
 msgid "Used"
 msgstr "Usagé"
 
-#: lib/gettext-config.php:220
+#: lib/gettext-config.php:221
 msgctxt "option value"
 msgid "Every day"
 msgstr "Chaque jour"
 
-#: lib/gettext-config.php:221
+#: lib/gettext-config.php:222
 msgctxt "option value"
 msgid "Every two days"
 msgstr "Aux deux jours"
 
-#: lib/gettext-config.php:222
+#: lib/gettext-config.php:223
 msgctxt "option value"
 msgid "Every three days"
 msgstr "Aux trois jours"
 
-#: lib/gettext-config.php:223
+#: lib/gettext-config.php:224
 msgctxt "option value"
 msgid "Every four days"
 msgstr "Aux quatre jours"
 
-#: lib/gettext-config.php:224
+#: lib/gettext-config.php:225
 msgctxt "option value"
 msgid "Every five days"
 msgstr "Aux cinq jours"
 
-#: lib/gettext-config.php:225
+#: lib/gettext-config.php:226
 msgctxt "option value"
 msgid "Every six days"
 msgstr "Aux six jours"
 
-#: lib/gettext-config.php:226
+#: lib/gettext-config.php:227
 msgctxt "option value"
 msgid "Every week"
 msgstr "Chaque semaine"
 
-#: lib/gettext-config.php:227
+#: lib/gettext-config.php:228
 msgctxt "option value"
 msgid "Development and Up"
 msgstr "Développement et plus"
 
-#: lib/gettext-config.php:228
+#: lib/gettext-config.php:229
 msgctxt "option value"
 msgid "Alpha and Up"
 msgstr "Alpha et plus"
 
-#: lib/gettext-config.php:229
+#: lib/gettext-config.php:230
 msgctxt "option value"
 msgid "Beta and Up"
 msgstr "Bêta et plus"
 
-#: lib/gettext-config.php:230
+#: lib/gettext-config.php:231
 msgctxt "option value"
 msgid "Release Candidate and Up"
 msgstr "Candidat stable et plus"
 
-#: lib/gettext-config.php:231
+#: lib/gettext-config.php:232
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr "Stable / production"
@@ -2640,14 +2645,14 @@ msgstr "Description carte Twitter"
 
 #: lib/gettext-pro.php:108 lib/gettext-pro.php:134 lib/gpl/admin/meta.php:124
 #: lib/gpl/admin/post.php:145 lib/pro/admin/meta.php:133
-#: lib/pro/admin/post.php:144 lib/wp-meta.php:266 lib/wp-meta.php:290
+#: lib/pro/admin/post.php:144 lib/wp-meta.php:269 lib/wp-meta.php:293
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr "URL de partage"
 
 #: lib/gettext-pro.php:109 lib/gettext-pro.php:135 lib/gpl/admin/meta.php:132
 #: lib/gpl/admin/post.php:154 lib/pro/admin/meta.php:140
-#: lib/pro/admin/post.php:152 lib/wp-meta.php:270 lib/wp-meta.php:294
+#: lib/pro/admin/post.php:152 lib/wp-meta.php:273 lib/wp-meta.php:297
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr "URL canonique"
@@ -2758,7 +2763,7 @@ msgstr "Description"
 
 # Ignore the post type to avoid gender issues in the French translation.
 #: lib/gettext-pro.php:127 lib/gpl/admin/post.php:296
-#: lib/pro/admin/post.php:279 lib/wp-meta.php:262
+#: lib/pro/admin/post.php:279 lib/wp-meta.php:265
 msgid "Save a draft version or publish the %s to update this value."
 msgstr "Enregistrer un brouillon ou publiez pour mettre à jour cette valeur."
 
@@ -4355,7 +4360,7 @@ msgstr "Vous pouvez changer l'image sociale en sélectionnant une image à la Un
 msgid "Video service API modules, required to detect embedded videos, are provided by the %s plugin."
 msgstr "Les modules d'API de services vidéo, nécessaires pour détecter des vidéos intégrées, sont fournis par l'extension %s."
 
-#: lib/messages.php:2004 lib/wp-meta.php:175
+#: lib/messages.php:2004 lib/wp-meta.php:178
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr "Média prioritaire"
@@ -5690,122 +5695,122 @@ msgctxt "option comment"
 msgid "unhide these rows"
 msgstr "afficher ces lignes"
 
-#: lib/wp-meta.php:174
+#: lib/wp-meta.php:177
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr "Personnaliser"
 
-#: lib/wp-meta.php:176
+#: lib/wp-meta.php:179
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr "Aperçu"
 
-#: lib/wp-meta.php:177
+#: lib/wp-meta.php:180
 msgctxt "metabox tab"
 msgid "Head"
 msgstr "Entête"
 
-#: lib/wp-meta.php:178
+#: lib/wp-meta.php:181
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr "Validations"
 
-#: lib/wp-meta.php:247
+#: lib/wp-meta.php:250
 msgctxt "preview image error"
 msgid "Image Dimensions Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr "Dimensions de l'image plus petites<br/>que le minimum suggéré<br/>de %s"
 
-#: lib/wp-meta.php:252
+#: lib/wp-meta.php:255
 msgctxt "preview image error"
 msgid "Image Dimensions Unknown<br/>or Not Available"
 msgstr "Dimensions de l'image inconnu<br/>ou non-disponible"
 
-#: lib/wp-meta.php:257
+#: lib/wp-meta.php:260
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr "Aucune image Open Graph trouvé"
 
-#: lib/wp-meta.php:274 lib/wp-meta.php:300
+#: lib/wp-meta.php:277 lib/wp-meta.php:303
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr "URL lien court"
 
-#: lib/wp-meta.php:305
+#: lib/wp-meta.php:308
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr "Example Facebook / Open Graph"
 
-#: lib/wp-meta.php:438
+#: lib/wp-meta.php:441
 msgctxt "option label"
 msgid "Facebook Open Graph Object Debugger"
 msgstr "Débogueur d'objets Facebook Open Graph"
 
-#: lib/wp-meta.php:439
+#: lib/wp-meta.php:442
 msgctxt "submit button"
 msgid "Validate Open Graph"
 msgstr "Valider Open Graph"
 
-#: lib/wp-meta.php:443
+#: lib/wp-meta.php:446
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr "Inspecteur d'article LinkedIn"
 
-#: lib/wp-meta.php:444
+#: lib/wp-meta.php:447
 msgctxt "submit button"
 msgid "Validate Metadata"
 msgstr "Valider métadonnées"
 
-#: lib/wp-meta.php:448
+#: lib/wp-meta.php:451
 msgctxt "option label"
 msgid "Google Structured Data Testing Tool"
 msgstr "Outil Google de test des données structurées"
 
-#: lib/wp-meta.php:449
+#: lib/wp-meta.php:452
 msgctxt "submit button"
 msgid "Validate Structured Data"
 msgstr "Valider données structurées"
 
-#: lib/wp-meta.php:453
+#: lib/wp-meta.php:456
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr "Validateur Pinterest Rich Pins"
 
-#: lib/wp-meta.php:454
+#: lib/wp-meta.php:457
 msgctxt "submit button"
 msgid "Validate Rich Pins"
 msgstr "Valider Rich Pins"
 
-#: lib/wp-meta.php:458
+#: lib/wp-meta.php:461
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/wp-meta.php:459
+#: lib/wp-meta.php:462
 msgctxt "submit button"
 msgid "Validate Twitter Card"
 msgstr "Valider carte de Twitter"
 
-#: lib/wp-meta.php:464
+#: lib/wp-meta.php:467
 msgctxt "option label"
 msgid "W3C Markup Validation"
 msgstr "Validateur W3C de balises"
 
-#: lib/wp-meta.php:465
+#: lib/wp-meta.php:468
 msgctxt "submit button"
 msgid "Validate HTML Markup"
 msgstr "Valider les balises HTML"
 
-#: lib/wp-meta.php:469
+#: lib/wp-meta.php:472
 msgctxt "option label"
 msgid "The AMP Validator"
 msgstr "Le validateur AMP"
 
-#: lib/wp-meta.php:470
+#: lib/wp-meta.php:473
 msgctxt "submit button"
 msgid "Validate AMP Markup"
 msgstr "Valider le balisage AMP"
 
-#: lib/wp-meta.php:892
+#: lib/wp-meta.php:895
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
