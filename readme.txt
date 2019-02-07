@@ -435,7 +435,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * *New Features*
 	* None.
 * *Improvements*
-	* Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options (the values are no longer used by Google).
+	* The "Product Availability" option in the Document SSO metabox is now disabled automatically if a known e-commerce plugin is detected.
+	* Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options (no longer used by Google).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -624,7 +625,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 4.23.0-dev.4 =
 
-(2019/02/06) Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options (the values are no longer used by Google).
+(2019/02/06) The "Product Availability" option in the Document SSO metabox is now disabled automatically if a known e-commerce plugin is detected. Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options.
 
 = 4.22.0 =
 
