@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.23.0-dev.3 (2019/02/06)**
+**Version 4.23.0-dev.4 (2019/02/06)**
 
 * *New Features*
 	* None.
@@ -622,7 +622,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.23.0-dev.3 =
+= 4.23.0-dev.4 =
 
 (2019/02/06) Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options (the values are no longer used by Google).
 
