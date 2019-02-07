@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.23.0-dev.4 (2019/02/06)**
+**Version 4.23.0-dev.5 (2019/02/07)**
 
 * *New Features*
 	* None.
@@ -623,9 +623,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.23.0-dev.4 =
+= 4.23.0-dev.5 =
 
-(2019/02/06) The "Product Availability" option in the Document SSO metabox is now disabled automatically if a known e-commerce plugin is detected. Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options.
+(2019/02/07) The "Product Availability" option in the Document SSO metabox is now disabled automatically if a known e-commerce plugin is detected. Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options.
 
 = 4.22.0 =
 
