@@ -163,7 +163,8 @@ if ( ! class_exists( 'WpssoGplAdminPost' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Availability', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_avail',
-					'content'  => $form->get_no_select( 'product_avail', $this->p->cf[ 'form' ][ 'item_availability' ] ),
+					'content'  => $form->get_no_select( 'product_avail', $this->p->cf[ 'form' ][ 'item_availability' ],
+						$css_class = '', $css_id = '', $is_assoc = true, $selected = true ),
 				),
 				'product_brand' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
