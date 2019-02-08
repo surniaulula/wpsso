@@ -343,9 +343,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * $mod = true | false | post_id | $mod array
 			 */
 			if ( ! is_array( $mod ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'optional call to get_page_mod()' );
 				}
+
 				$mod = $this->p->util->get_page_mod( $use_post );
 			}
 

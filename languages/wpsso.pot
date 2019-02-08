@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.23.0-dev.5\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.23.0-dev.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2958,25 +2958,25 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:886
+#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:890
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:889
+#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:893
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1109
+#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1113
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1111
+#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1115
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1114
+#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1118
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -3175,27 +3175,27 @@ msgid ""
 "Video discovery and integration modules are provided with the Pro version."
 msgstr ""
 
-#: lib/head.php:522
+#: lib/head.php:524
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:534
+#: lib/head.php:536
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:541
+#: lib/head.php:543
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:548
+#: lib/head.php:550
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:555
+#: lib/head.php:557
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:562
+#: lib/head.php:564
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -3215,7 +3215,7 @@ msgstr ""
 #. translators: %s is the short plugin name
 #. translators: %s is the short plugin name.
 #: lib/loader.php:175 lib/loader.php:201 lib/post.php:278 lib/register.php:300
-#: lib/term.php:255 lib/user.php:222 lib/util.php:485 lib/util.php:3167
+#: lib/term.php:255 lib/user.php:222 lib/util.php:485 lib/util.php:3166
 msgid "%s warning:"
 msgstr ""
 
@@ -3767,7 +3767,7 @@ msgid ""
 "%s</em>\" message - after enabling this option."
 msgstr ""
 
-#: lib/messages.php:608 lib/util.php:3451
+#: lib/messages.php:608 lib/util.php:3450
 msgid "No options available."
 msgstr ""
 
@@ -5591,7 +5591,7 @@ msgstr ""
 #. translators: %1$0.3f is a number of seconds
 #. translators: %1$0.3f is a number of seconds.
 #: lib/post.php:264 lib/term.php:241 lib/user.php:208 lib/util.php:471
-#: lib/util.php:3139
+#: lib/util.php:3138
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -5812,27 +5812,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2550 lib/schema.php:2555
+#: lib/schema.php:2555 lib/schema.php:2560
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:3196
+#: lib/schema.php:3201
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3238
+#: lib/schema.php:3243
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3245
+#: lib/schema.php:3250
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3523
+#: lib/schema.php:3528
 msgid "adding schema for place"
 msgstr ""
 
@@ -6389,13 +6389,13 @@ msgid ""
 msgstr ""
 
 #. translators: %1$0.3f is a number of seconds, %2$s is a filter name, %3$s is a recommended max.
-#: lib/util.php:3142
+#: lib/util.php:3141
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3159
+#: lib/util.php:3158
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -6404,33 +6404,33 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3159
+#: lib/util.php:3158
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3446
+#: lib/util.php:3445
 msgid "Have you hidden the Pro options?"
 msgstr ""
 
-#: lib/util.php:3481
+#: lib/util.php:3480
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3484
+#: lib/util.php:3483
 msgctxt "option comment"
 msgid "unhide these options"
 msgstr ""
 
-#: lib/util.php:3489
+#: lib/util.php:3488
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util.php:3492
+#: lib/util.php:3491
 msgctxt "option comment"
 msgid "unhide these rows"
 msgstr ""

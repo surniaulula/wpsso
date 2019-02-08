@@ -2296,7 +2296,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				$this->p->debug->mark();
 				$this->p->debug->log( 'use_post is ' . self::get_use_post_string( $use_post ) );
 			}
 

@@ -192,6 +192,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return true;
 		}
 
+		public function show_pinterest_img_html() {
+			echo $this->get_pinterest_img_html();
+		}
+
 		public function get_pinterest_img_html( $content = '' ) {
 
 			/**
@@ -208,19 +212,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $content;
 			}
 
-			static $do_once = array();			// Prevent recursion.
+			static $do_once = array();					// Prevent recursion.
 
-			$mod        = $this->p->util->get_page_mod( true );	// $use_post is true.
+			$use_post = apply_filters( $this->p->lca . '_use_post', true );	// Used by woocommerce with is_shop().
+			$mod        = $this->p->util->get_page_mod( $use_post );	// $use_post is true by default.
 			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
-			if ( ! empty( $do_once[ $cache_salt ] ) ) {	// Check for recursion.
+			if ( ! empty( $do_once[ $cache_salt ] ) ) {			// Check for recursion.
 				return $content;
 			} else {
 				$do_once[ $cache_salt ] = true;
 			}
 
 			$size_name = $this->p->lca . '-schema';
-			$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, 'schema' );	// $md_pre is 'schema'.
+			$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, $md_pre = 'schema' );
 			$image_url = SucomUtil::get_mt_media_url( $og_images );
 
 			if ( ! empty( $image_url ) ) {
