@@ -457,7 +457,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Product GTIN-13 Attribute Name
 		* Product GTIN-14 Attribute Name
 		* Product ISBN Attribute Name
-		* Product Metarial Attribute Name
+		* Product Material Attribute Name
 		* Product Size Attribute Name
 	* Removed the "Use WP Locale for Language" option under the SSO &gt; Advanced &gt; Integration tab (now permanently enabled).
 	* Removed the "Create Missing WP Media Sizes" option under the SSO &gt; Advanced &gt; Integration tab (now permanently enabled).
