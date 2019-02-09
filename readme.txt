@@ -430,14 +430,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.23.0-b.1 (2019/02/08)**
+**Version 4.23.0-rc.1 (2019/02/09)**
 
 * *New Features*
 	* None.
 * *Improvements*
-	* The "Product Availability" option in the Document SSO metabox is now disabled automatically if a known e-commerce plugin is detected.
+	* Added support for the Pin It button hidden image in WooCommerce archive pages (Pro version).
 	* Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options (no longer used by Google).
-	* Added support for the hidden image for the Pin It button to WooCommerce archive pages (Pro version).
+	* The "Product Availability" option in the Document SSO metabox is now disabled automatically if a supported e-commerce plugin is detected (availability is provided by the e-commerce plugin).
 * *Bugfixes*
 	* None.
 * *Developer Notes*
@@ -624,9 +624,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.23.0-b.1 =
+= 4.23.0-rc.1 =
 
-(2019/02/08) The "Product Availability" option in the Document SSO metabox is now disabled automatically if a known e-commerce plugin is detected. Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options.
+(2019/02/09) Added support for the Pin It button in WooCommerce archive pages (Pro version). Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options. "Product Availability" is now disabled if a supported e-commerce plugin is detected.
 
 = 4.22.0 =
 
