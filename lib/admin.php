@@ -2999,7 +2999,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$notice_msg .= '</p><p>';
 
-				$notice_msg .= __( 'Would you rate this plugin on WordPress.org?', 'wpsso' ) . ' :-)';
+				$notice_msg .= __( 'Would you rate this plugin on WordPress.org?', 'wpsso' );
 
 				$notice_msg .= '</p><p>';
 
