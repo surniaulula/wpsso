@@ -577,7 +577,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->log( 'DOING_AJAX is ' . $is_ajax_str );
 			}
 
-			$use_post = false;
+			$use_post = in_the_loop() ? true : false;				// Use the $post object inside the loop.
+			$use_post = apply_filters( $this->p->lca . '_use_post', $use_post );	// Used by woocommerce with is_shop().
 			$has_pdir = $this->p->avail[ '*' ][ 'p_dir' ];
 			$has_pp   = $this->p->check->pp( $this->p->lca, true, $has_pdir );
 

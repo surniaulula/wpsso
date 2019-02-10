@@ -2556,9 +2556,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_home_index( $use_post = false ) {
+
 			$ret = false;
 
-			// fallback to null so $use_post = 0 does not match
+			/**
+			 * Fallback to null so $use_post = 0 does not match.
+			 */
 			$front_post_id = get_option( 'show_on_front' ) === 'page' ? (int) get_option( 'page_for_posts' ) : null;
 
 			if ( is_numeric( $use_post ) && (int) $use_post === $front_post_id ) {
@@ -2575,6 +2578,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function is_post_exists( $post_id ) {
+
 			  return is_string( get_post_status( $post_id ) );
 		}
 

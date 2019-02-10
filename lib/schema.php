@@ -214,7 +214,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			static $do_once = array();						// Prevent recursion.
 
-			$use_post = apply_filters( $this->p->lca . '_use_post', false );	// Used by woocommerce with is_shop().
+			$use_post = in_the_loop() ? true : false;				// Use the $post object inside the loop.
+			$use_post = apply_filters( $this->p->lca . '_use_post', $use_post );	// Used by woocommerce with is_shop().
 
 			if ( $this->p->debug->enabled ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
