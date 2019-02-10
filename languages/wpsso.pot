@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core [Main Plugin] package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core [Main Plugin] 4.23.0-rc.1\n"
+"Project-Id-Version: WPSSO Core [Main Plugin] 4.23.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2019-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2958,25 +2958,25 @@ msgctxt "metabox title"
 msgid "Structured Data / Schema Markup / Pinterest"
 msgstr ""
 
-#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:890
+#: lib/gettext-pro.php:162 lib/pro/ecom/woocommerce.php:897
 msgid "\"%s\" is  an unknown Schema product item condition."
 msgstr ""
 
-#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:893
+#: lib/gettext-pro.php:163 lib/pro/ecom/woocommerce.php:900
 msgid "Valid item condition values are (case is important): %s."
 msgstr ""
 
-#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1113
+#: lib/gettext-pro.php:164 lib/pro/ecom/woocommerce.php:1120
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
-#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1115
+#: lib/gettext-pro.php:165 lib/pro/ecom/woocommerce.php:1122
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1118
+#: lib/gettext-pro.php:166 lib/pro/ecom/woocommerce.php:1125
 msgid "Please update your site to WooCommerce version %s or better."
 msgstr ""
 
@@ -5812,27 +5812,27 @@ msgctxt "image size label"
 msgid "Google / Schema Image"
 msgstr ""
 
-#: lib/schema.php:2555 lib/schema.php:2560
+#: lib/schema.php:2560 lib/schema.php:2565
 msgid "adding schema for %1$s ID %2$s"
 msgstr ""
 
-#: lib/schema.php:3201
+#: lib/schema.php:3206
 msgid "adding schema for organization"
 msgstr ""
 
-#: lib/schema.php:3243
+#: lib/schema.php:3248
 msgid ""
 "The \"%1$s\" Organization Logo image is missing and required for the Schema "
 "%2$s markup."
 msgstr ""
 
-#: lib/schema.php:3250
+#: lib/schema.php:3255
 msgid ""
 "The \"%1$s\" Organization Banner (600x60px) image is missing and required "
 "for the Schema %2$s markup."
 msgstr ""
 
-#: lib/schema.php:3528
+#: lib/schema.php:3533
 msgid "adding schema for place"
 msgstr ""
 

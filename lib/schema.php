@@ -212,13 +212,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $content;
 			}
 
-			static $do_once = array();					// Prevent recursion.
+			static $do_once = array();						// Prevent recursion.
 
-			$use_post = apply_filters( $this->p->lca . '_use_post', true );	// Used by woocommerce with is_shop().
-			$mod        = $this->p->util->get_page_mod( $use_post );	// $use_post is true by default.
+			$use_post = apply_filters( $this->p->lca . '_use_post', false );	// Used by woocommerce with is_shop().
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log( 'required call to get_page_mod()' );
+			}
+
+			$mod        = $this->p->util->get_page_mod( $use_post );		// $use_post is true by default.
 			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
-			if ( ! empty( $do_once[ $cache_salt ] ) ) {			// Check for recursion.
+			if ( ! empty( $do_once[ $cache_salt ] ) ) {				// Check for recursion.
 				return $content;
 			} else {
 				$do_once[ $cache_salt ] = true;
