@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.23.0-rc.1 (2019/02/09)**
+**Version 4.23.0-rc.2 (2019/02/10)**
 
 * *New Features*
 	* None.
@@ -624,9 +624,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.23.0-rc.1 =
+= 4.23.0-rc.2 =
 
-(2019/02/09) Added support for the Pin It button in WooCommerce archive pages (Pro version). Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options. "Product Availability" is now disabled if a supported e-commerce plugin is detected.
+(2019/02/10) Added support for the Pin It button in WooCommerce archive pages (Pro version). Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options. "Product Availability" is now disabled if a supported e-commerce plugin is detected.
 
 = 4.22.0 =
 
