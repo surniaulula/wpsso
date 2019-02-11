@@ -430,7 +430,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 4.23.0-rc.2 (2019/02/10)**
+**Version 4.23.0 (2019/02/11)**
 
 * *New Features*
 	* None.
@@ -624,11 +624,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 4.23.0-rc.2 =
+= 4.23.0 =
 
-(2019/02/10) Added support for the Pin It button in WooCommerce archive pages (Pro version). Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options. "Product Availability" is now disabled if a supported e-commerce plugin is detected.
-
-= 4.22.0 =
-
-(2019/01/31) Added new product attribute name options for WooCommerce. Removed the "Use WP Locale for Language" and "Create Missing WP Media Sizes" options. Updated the required minimum PHP version from 5.4 to 5.5.
+(2019/02/11) Added support for the Pin It button in WooCommerce archive pages (Pro version). Removed the "Author Link URL Profile Contact" and "Google+ Business Page URL" options. "Product Availability" is now disabled if a supported e-commerce plugin is detected.
 
