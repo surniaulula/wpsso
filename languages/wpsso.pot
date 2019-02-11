@@ -3479,7 +3479,7 @@ msgstr ""
 #: lib/messages.php:241
 msgid ""
 "A customized image ID to include first in the Google / Schema meta tags and "
-"JSON-LD markup before any featured, attached, or content images."
+"JSON-LD markup, before any featured, attached, or content images."
 msgstr ""
 
 #: lib/messages.php:247
@@ -3489,12 +3489,12 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:254
-msgid "A customized image ID for the Twitter card image."
+msgid "A customized image ID for the Twitter Card image."
 msgstr ""
 
 #: lib/messages.php:261
 msgid ""
-"A customized image URL (instead of an image ID) for the Twitter card image."
+"A customized image URL (instead of an image ID) for the Twitter Card image."
 msgstr ""
 
 #: lib/messages.php:282
