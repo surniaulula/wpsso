@@ -30,12 +30,12 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 		public function filter_plugin_image_sizes( $sizes ) {
 
-			$sizes['tc_sum_img'] = array(		// options prefix
+			$sizes[ 'tc_sum_img' ] = array(		// options prefix
 				'name'  => 'tc-summary',	// wpsso-tc-summary
 				'label' => _x( 'Twitter Summary Card', 'image size label', 'wpsso' ),
 			);
 
-			$sizes['tc_lrg_img'] = array(		// options prefix
+			$sizes[ 'tc_lrg_img' ] = array(		// options prefix
 				'name'  => 'tc-lrgimg',		// wpsso-tc-lrgimg
 				'label' => _x( 'Twitter Large Image Card', 'image size label', 'wpsso' ),
 			);
@@ -63,33 +63,35 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			/**
 			 * The twitter:domain is used in place of the 'view on web' text.
 			 */
-			if ( ! isset( $mt_tc['twitter:domain'] ) && ! empty( $mt_og['og:url'] ) ) {
-				$mt_tc['twitter:domain'] = preg_replace( '/^.*\/\/([^\/]+).*$/', '$1', $mt_og['og:url'] );
+			if ( ! isset( $mt_tc[ 'twitter:domain' ] ) && ! empty( $mt_og[ 'og:url' ] ) ) {
+				$mt_tc[ 'twitter:domain' ] = preg_replace( '/^.*\/\/([^\/]+).*$/', '$1', $mt_og[ 'og:url' ] );
 			}
 
-			if ( ! isset( $mt_tc['twitter:site'] ) ) {
-				$mt_tc['twitter:site'] = SucomUtil::get_key_value( 'tc_site', $this->p->options, $mod );
+			if ( ! isset( $mt_tc[ 'twitter:site' ] ) ) {
+				$mt_tc[ 'twitter:site' ] = SucomUtil::get_key_value( 'tc_site', $this->p->options, $mod );
 			}
 
-			if ( ! isset( $mt_tc['twitter:title'] ) ) {
-				$mt_tc['twitter:title'] = $this->p->page->get_title( 70, '...', $mod, true, false, true, 'og_title' );
+			if ( ! isset( $mt_tc[ 'twitter:title' ] ) ) {
+				$mt_tc[ 'twitter:title' ] = $this->p->page->get_title( 70, '...', $mod, true, false, true, 'og_title' );
 			}
 
-			if ( ! isset( $mt_tc['twitter:description'] ) ) {
+			if ( ! isset( $mt_tc[ 'twitter:description' ] ) ) {
+
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'getting description for twitter:description meta tag' );
 				}
-				$mt_tc['twitter:description'] = $this->p->page->get_description( $this->p->options['tc_desc_max_len'], 
+
+				$mt_tc[ 'twitter:description' ] = $this->p->page->get_description( $this->p->options[ 'tc_desc_max_len' ], 
 					'...', $mod, true, true, true, 'tc_desc' );	// $add_hashtags is true.
 			}
 
-			if ( ! isset( $mt_tc['twitter:creator'] ) ) {
+			if ( ! isset( $mt_tc[ 'twitter:creator' ] ) ) {
 				if ( $mod[ 'is_post' ] ) {
 					if ( $mod[ 'post_author' ] ) {
-						$mt_tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod[ 'post_author' ] );
+						$mt_tc[ 'twitter:creator' ] = get_the_author_meta( $this->p->options[ 'plugin_cm_twitter_name' ], $mod[ 'post_author' ] );
 					}
 				} elseif ( $mod[ 'is_user' ] ) {
-					$mt_tc['twitter:creator'] = get_the_author_meta( $this->p->options['plugin_cm_twitter_name'], $mod[ 'id' ] );
+					$mt_tc[ 'twitter:creator' ] = get_the_author_meta( $this->p->options[ 'plugin_cm_twitter_name' ], $mod[ 'id' ] );
 				}
 			}
 
@@ -108,11 +110,11 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 *	The MIME type for your video file (video/mp4). This property is only required if you have set a
 			 *	twitter:player:stream meta tag.
 			 */
-			if ( ! isset( $mt_tc['twitter:card'] ) ) {
+			if ( ! isset( $mt_tc[ 'twitter:card' ] ) ) {
 
-				if ( isset( $mt_og['og:video'] ) && count( $mt_og['og:video'] ) > 0 ) {
+				if ( isset( $mt_og[ 'og:video' ] ) && count( $mt_og[ 'og:video' ] ) > 0 ) {
 
-					foreach ( $mt_og['og:video'] as $og_single_video ) {
+					foreach ( $mt_og[ 'og:video' ] as $og_single_video ) {
 
 						$player_embed_url = '';
 						$player_stream_url = '';
@@ -120,16 +122,18 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						/**
 						 * Check for internal meta tag values.
 						 */
-						if ( ! empty( $og_single_video['og:video:embed_url'] ) ) {
-							$player_embed_url = $og_single_video['og:video:embed_url'];
+						if ( ! empty( $og_single_video[ 'og:video:embed_url' ] ) ) {
+
+							$player_embed_url = $og_single_video[ 'og:video:embed_url' ];
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'player card: embed url = ' . $player_embed_url );
 							}
 						}
 
-						if ( ! empty( $og_single_video['og:video:stream_url'] ) ) {
+						if ( ! empty( $og_single_video[ 'og:video:stream_url' ] ) ) {
 
-							$player_stream_url = $og_single_video['og:video:stream_url'];
+							$player_stream_url = $og_single_video[ 'og:video:stream_url' ];
 
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'player card: stream url = ' . $player_stream_url );
@@ -139,9 +143,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						/**
 						 * Check for mime-type meta tag values.
 						 */
-						if ( isset( $og_single_video['og:video:type'] ) ) {
+						if ( isset( $og_single_video[ 'og:video:type' ] ) ) {
 
-							switch ( $og_single_video['og:video:type'] ) {
+							switch ( $og_single_video[ 'og:video:type' ] ) {
 
 								/**
 								 * twitter:player
@@ -157,7 +161,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 										$player_embed_url = SucomUtil::get_mt_media_url( $og_single_video, 'og:video' );
 
 										if ( $this->p->debug->enabled ) {
-											$this->p->debug->log( 'player card: ' . $og_single_video['og:video:type'] .
+											$this->p->debug->log( 'player card: ' . $og_single_video[ 'og:video:type' ] .
 												' url = ' . $player_embed_url );
 										}
 									}
@@ -174,7 +178,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 										$player_stream_url = SucomUtil::get_mt_media_url( $og_single_video, 'og:video' );
 
 										if ( $this->p->debug->enabled ) {
-											$this->p->debug->log( 'player card: ' . $og_single_video['og:video:type'] .
+											$this->p->debug->log( 'player card: ' . $og_single_video[ 'og:video:type' ] .
 												' url = ' . $player_stream_url );
 										}
 									}
@@ -185,7 +189,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 									if ( $this->p->debug->enabled ) {
 										$this->p->debug->log( 'player card: video type "' .
-											$og_single_video['og:video:type'] . '" is unknown' );
+											$og_single_video[ 'og:video:type' ] . '" is unknown' );
 									}
 
 									break;
@@ -196,26 +200,26 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						 * Set the twitter:player meta tag value(s).
 						 */
 						if ( ! empty( $player_embed_url ) ) {
-							$mt_tc['twitter:card']   = 'player';
-							$mt_tc['twitter:player'] = $player_embed_url;
+							$mt_tc[ 'twitter:card' ]   = 'player';
+							$mt_tc[ 'twitter:player' ] = $player_embed_url;
 						}
 
 						if ( ! empty( $player_stream_url ) ) {
 
-							$mt_tc['twitter:card'] = 'player';
+							$mt_tc[ 'twitter:card' ] = 'player';
 
-							if ( empty( $mt_tc['twitter:player'] ) ) {
-								$mt_tc['twitter:player'] = $player_stream_url;	// Fallback to video/mp4.
+							if ( empty( $mt_tc[ 'twitter:player' ] ) ) {
+								$mt_tc[ 'twitter:player' ] = $player_stream_url;	// Fallback to video/mp4.
 							}
 
-							$mt_tc['twitter:player:stream']              = $player_stream_url;
-							$mt_tc['twitter:player:stream:content_type'] = $og_single_video['og:video:type'];
+							$mt_tc[ 'twitter:player:stream' ]              = $player_stream_url;
+							$mt_tc[ 'twitter:player:stream:content_type' ] = $og_single_video[ 'og:video:type' ];
 						}
 
 						/**
 						 * Set twitter:player related values (player width, height, mobile apps, etc.)
 						 */
-						if ( ! empty( $mt_tc['twitter:card'] ) ) {
+						if ( ! empty( $mt_tc[ 'twitter:card' ] ) ) {
 
 							foreach ( array(
 								'og:video:width'           => 'twitter:player:width',
@@ -230,6 +234,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 								'og:video:googleplay_id'   => 'twitter:app:id:googleplay',
 								'og:video:googleplay_url'  => 'twitter:app:url:googleplay',
 							) as $og_name => $tc_name ) {
+
 								if ( ! empty( $og_single_video[$og_name] ) ) {
 									$mt_tc[$tc_name] = $og_single_video[$og_name];
 								}
@@ -238,18 +243,18 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							/**
 							 * Get the video preview image (if one is available).
 							 */
-							$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $og_single_video );
+							$mt_tc[ 'twitter:image' ] = SucomUtil::get_mt_media_url( $og_single_video );
 
 							/**
 							 * Fallback to the open graph image.
 							 */
-							if ( empty( $mt_tc['twitter:image'] ) && ! empty( $mt_og['og:image'] ) ) {
+							if ( empty( $mt_tc[ 'twitter:image' ] ) && ! empty( $mt_og[ 'og:image' ] ) ) {
 
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( 'player card: no video image - using og:image instead' );
 								}
 
-								$mt_tc['twitter:image'] = SucomUtil::get_mt_media_url( $mt_og['og:image'] );
+								$mt_tc[ 'twitter:image' ] = SucomUtil::get_mt_media_url( $mt_og[ 'og:image' ] );
 							}
 						}
 
@@ -264,7 +269,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			/**
 			 * Post object image card.
 			 */
-			if ( ! isset( $mt_tc['twitter:card'] ) ) {
+			if ( ! isset( $mt_tc[ 'twitter:card' ] ) ) {
 
 				if ( $mod[ 'is_post' ] ) {
 
@@ -284,8 +289,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						$og_single_image     = reset( $og_images );
 						$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
-						$mt_tc['twitter:card']  = $card_type;
-						$mt_tc['twitter:image'] = $og_single_image_url;
+						$mt_tc[ 'twitter:card' ]  = $card_type;
+						$mt_tc[ 'twitter:image' ] = $og_single_image_url;
 
 					} elseif ( $this->p->debug->enabled ) {
 						$this->p->debug->log( 'no post image found' );
@@ -294,17 +299,17 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					/**
 					 * Singlepic shortcode image.
 					 */
-					if ( ! isset( $mt_tc['twitter:card'] ) ) {
+					if ( ! isset( $mt_tc[ 'twitter:card' ] ) ) {
 
-						if ( ! empty( $this->p->avail['media']['ngg'] ) ) {
+						if ( ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
 
-							if ( ! empty( $this->p->m['media']['ngg'] ) ) {
+							if ( ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) ) {
 
 								if ( $this->p->debug->enabled ) {
 									$this->p->debug->log( $card_type . ' card: checking for singlepic image' );
 								}
 	
-								$ngg_obj =& $this->p->m['media']['ngg'];
+								$ngg_obj =& $this->p->m[ 'media' ][ 'ngg' ];
 
 								$og_images = $ngg_obj->get_singlepic_og_images( 1, $size_name, $mod[ 'id' ], $check_dupes );
 	
@@ -313,8 +318,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 									$og_single_image     = reset( $og_images );
 									$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
-									$mt_tc['twitter:card']  = $card_type;
-									$mt_tc['twitter:image'] = $og_single_image_url;
+									$mt_tc[ 'twitter:card' ]  = $card_type;
+									$mt_tc[ 'twitter:image' ] = $og_single_image_url;
 
 								} elseif ( $this->p->debug->enabled ) {
 									$this->p->debug->log( $card_type . ' card: ngg singlepic image not found' );
@@ -337,7 +342,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			/**
 			 * Default image card.
 			 */
-			if ( ! isset( $mt_tc['twitter:card'] ) ) {
+			if ( ! isset( $mt_tc[ 'twitter:card' ] ) ) {
 
 				/**
 				 * Maybe term or user meta image.
@@ -348,7 +353,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					$this->p->debug->log( $card_type . ' card: using default card type' );
 				}
 
-				$mt_tc['twitter:card'] = $card_type;
+				$mt_tc[ 'twitter:card' ] = $card_type;
 
 				if ( $this->p->debug->enabled ) {
 					$this->p->debug->log( $card_type . ' card: checking for all other images' );
@@ -361,7 +366,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					$og_single_image = reset( $og_images );
 					$og_single_image_url = SucomUtil::get_mt_media_url( $og_single_image );
 
-					$mt_tc['twitter:image'] = $og_single_image_url;
+					$mt_tc[ 'twitter:image' ] = $og_single_image_url;
 
 				} elseif ( $this->p->debug->enabled ) {
 					$this->p->debug->log( 'no other images found' );
@@ -369,11 +374,11 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			if ( $this->p->debug->enabled ) {
-				if ( ! empty( $mt_tc['twitter:card'] ) ) {
-					if ( ! empty( $mt_tc['twitter:image'] ) ) {
-						$this->p->debug->log( $mt_tc['twitter:card'] . ' card: image ' . $mt_tc['twitter:image'] );
+				if ( ! empty( $mt_tc[ 'twitter:card' ] ) ) {
+					if ( ! empty( $mt_tc[ 'twitter:image' ] ) ) {
+						$this->p->debug->log( $mt_tc[ 'twitter:card' ] . ' card: image ' . $mt_tc[ 'twitter:image' ] );
 					} else {
-						$this->p->debug->log( $mt_tc['twitter:card'] . ' card: no image defined' );
+						$this->p->debug->log( $mt_tc[ 'twitter:card' ] . ' card: no image defined' );
 					}
 				} else {
 					$this->p->debug->log( 'no twitter card type defined' );
