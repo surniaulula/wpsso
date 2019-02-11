@@ -128,7 +128,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						}
 
 						if ( ! empty( $og_single_video['og:video:stream_url'] ) ) {
+
 							$player_stream_url = $og_single_video['og:video:stream_url'];
+
 							if ( $this->p->debug->enabled ) {
 								$this->p->debug->log( 'player card: stream url = ' . $player_stream_url );
 							}
@@ -337,6 +339,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 */
 			if ( ! isset( $mt_tc['twitter:card'] ) ) {
 
+				/**
+				 * Maybe term or user meta image.
+				 */
 				list( $card_type, $size_name, $md_pre ) = $this->get_card_type_size( 'default' );
 
 				if ( $this->p->debug->enabled ) {
@@ -346,10 +351,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$mt_tc['twitter:card'] = $card_type;
 
 				if ( $this->p->debug->enabled ) {
-					$this->p->debug->log( $card_type . ' card: checking all other images' );
+					$this->p->debug->log( $card_type . ' card: checking for all other images' );
 				}
 
-				$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, false );
+				$og_images = $this->p->og->get_all_images( 1, $size_name, $mod, $check_dupes, $md_pre );
 
 				if ( count( $og_images ) > 0 ) {
 
@@ -383,6 +388,10 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		 */
 		public function get_card_type_size( $mixed ) {
 
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->mark();
+			}
+
 			$card_type = 'summary';
 
 			if ( is_string( $mixed ) ) {
@@ -396,14 +405,20 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			switch ( $card_type ) {
+
 				case 'summary_large_image':
+
 					$size_name = $this->p->lca . '-tc-lrgimg';
 					$md_pre    = 'tc_lrg';
+
 					break;
+
 				case 'summary':
 				default:
+
 					$size_name = $this->p->lca . '-tc-summary';
 					$md_pre    = 'tc_sum';
+
 					break;
 			}
 
@@ -415,7 +430,13 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 *		'tc_lrg',
 			 *	)
 			 */
-			return array( $card_type, $size_name, $md_pre );
+			$ret = array( $card_type, $size_name, $md_pre );
+
+			if ( $this->p->debug->enabled ) {
+				$this->p->debug->log_arr( '$ret', $ret );
+			}
+
+			return $ret;
 		}
 	}
 }
