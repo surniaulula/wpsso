@@ -238,13 +238,27 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-schema_img_id':
 
-							$text = __( 'A customized image ID to include first in the Google / Schema meta tags and JSON-LD markup, before any featured, attached, or content images.', 'wpsso' );
+							$text = __( 'A customized image ID to include first in the Google / Schema meta tags and JSON-LD markup before any featured, attached, or content images.', 'wpsso' );
 
 						 	break;
 
 						case 'tooltip-meta-schema_img_url':
 
 							$text = __( 'A customized image URL (instead of an image ID) to include first in the Google / Schema meta tags and JSON-LD markup.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
+
+						 	break;
+
+						case 'tooltip-meta-tc_lrg_img_id':
+						case 'tooltip-meta-tc_sum_img_id':
+
+							$text = __( 'A customized image ID for the Twitter card image.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-tc_lrg_img_url':
+						case 'tooltip-meta-tc_sum_img_url':
+
+							$text = __( 'A customized image URL (instead of an image ID) for the Twitter card image.', 'wpsso' ).' <em>'.__( 'This field is disabled if a custom image ID has been selected.', 'wpsso' ).'</em>';
 
 						 	break;
 
